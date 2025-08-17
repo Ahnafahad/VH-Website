@@ -80,7 +80,7 @@ export default function Home() {
                 <div className="relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-8 text-center hover:bg-white/10 transition-all duration-500">
                   <div className="text-5xl font-black mb-4 bg-gradient-to-r from-vh-beige to-white bg-clip-text text-transparent">46.7%</div>
                   <div className="text-lg font-semibold mb-2">Our Success Rate</div>
-                  <div className="text-sm text-white/60">14 out of 30 students from last batch</div>
+                  <div className="text-sm text-white/60">14 out of 30 students got into top universities</div>
                 </div>
               </div>
 
@@ -409,7 +409,7 @@ export default function Home() {
                   </div>
                 </div>
                 <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-                  14 out of 30 students from last batch achieved admission to top universities.
+                  14 out of 30 students from last batch got into top universities of Bangladesh.
                 </p>
               </div>
             </div>

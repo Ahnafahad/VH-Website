@@ -289,25 +289,30 @@ export default function DUFBSCoursePage() {
               </div>
             </div>
 
-            {/* Class Schedule */}
+            {/* Lead Instructor Achievements */}
             <div className="group relative">
               <div className="absolute inset-0 bg-gradient-to-br from-vh-dark-beige/20 to-transparent rounded-3xl blur-2xl group-hover:blur-3xl opacity-0 group-hover:opacity-100 transition-all duration-700"></div>
               <div className="relative bg-white rounded-3xl p-12 shadow-2xl border border-gray-200 group-hover:shadow-4xl group-hover:border-vh-dark-beige/20 transition-all duration-700">
-                <h3 className="text-3xl font-black text-gray-900 mb-8">Class Schedule</h3>
-                <div className="space-y-6">
+                <div className="flex items-center mb-8">
+                  <div className="w-20 h-20 bg-gradient-to-br from-vh-red to-vh-dark-red rounded-2xl flex items-center justify-center mr-6 shadow-xl">
+                    <Trophy className="w-10 h-10 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="text-3xl font-black text-gray-900">Md Hasan Sarower</h3>
+                    <p className="text-vh-red font-bold text-lg">Lead Mathematics Instructor</p>
+                  </div>
+                </div>
+                
+                <div className="space-y-4">
                   {[
-                    { day: "Sunday", time: "2:00 PM - 4:00 PM" },
-                    { day: "Monday", time: "3:00 PM - 5:00 PM" },
-                    { day: "Thursday", time: "2:00 PM - 4:00 PM" }
+                    { icon: <Trophy className="w-5 h-5" />, text: "O Levels: 12 A* + 0 A" },
+                    { icon: <Award className="w-5 h-5" />, text: "A Levels: 4 A* + 2 A" }
                   ].map((item, index) => (
-                    <div key={index} className="flex items-center p-6 bg-vh-beige/10 rounded-2xl group-hover:bg-vh-beige/20 transition-all duration-300">
-                      <div className="w-12 h-12 bg-vh-red rounded-xl flex items-center justify-center mr-6">
-                        <Clock className="w-6 h-6 text-white" />
+                    <div key={index} className="flex items-center group/item">
+                      <div className="w-10 h-10 bg-vh-beige/20 rounded-xl flex items-center justify-center text-vh-red mr-4 group-hover/item:bg-vh-red group-hover/item:text-white transition-all duration-300">
+                        {item.icon}
                       </div>
-                      <div>
-                        <div className="font-bold text-gray-900 text-lg">{item.day}</div>
-                        <div className="text-gray-600 font-medium">{item.time}</div>
-                      </div>
+                      <span className="text-gray-700 font-medium text-lg">{item.text}</span>
                     </div>
                   ))}
                 </div>

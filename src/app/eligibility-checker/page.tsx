@@ -159,12 +159,12 @@ export default function EligibilityCheckerPage() {
               Our admission counselors are available to help clarify eligibility requirements and guide you through the application process.
             </p>
             <a
-              href="https://forms.fillout.com/t/iCXMk5dbQsus"
+              href="https://wa.me/8801915424939?text=Hi%20VH%20Beyond%20the%20Horizons!%20I%20have%20questions%20about%20university%20eligibility%20requirements%20and%20would%20like%20to%20speak%20with%20a%20counselor."
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center text-vh-red hover:text-vh-dark-red font-semibold transition-colors"
             >
-              Contact Our Counselors →
+              Contact Our Counselors on WhatsApp →
             </a>
           </div>
         </div>

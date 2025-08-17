@@ -75,6 +75,12 @@ const UniversityEligibilityChecker = ({ onEligibilityUpdate }: EligibilityChecke
         { id: 'buet_chemistry', name: 'Chemistry', grade: '' },
         { id: 'buet_english', name: 'English', grade: '' }
       ]);
+      // Set required BUET A-Level subjects
+      setALevelSubjects([
+        { id: 'buet_a_math', name: 'Mathematics', grade: '' },
+        { id: 'buet_a_physics', name: 'Physics', grade: '' },
+        { id: 'buet_a_chemistry', name: 'Chemistry', grade: '' }
+      ]);
     }
     if (tab === 'DU Business') {
       // Set required DU Business A-Level subject with business subject dropdown
@@ -286,16 +292,13 @@ const UniversityEligibilityChecker = ({ onEligibilityUpdate }: EligibilityChecke
     const validOLevels = oLevelSubjects.filter(s => s.name.trim() && s.grade);
     const validALevels = aLevelSubjects.filter(s => s.name.trim() && s.grade);
 
+    // Must have at least 5 O-Level subjects
     if (validOLevels.length < 5) {
-      return { eligible: false, reason: 'Minimum 5 O-Level subjects required.' };
+      return { eligible: false, reason: 'Minimum 5 O-Level subjects required including Mathematics, Physics, Chemistry, and English.' };
     }
 
-    if (validALevels.length < 2) {
-      return { eligible: false, reason: 'Minimum 2 A-Level subjects required.' };
-    }
-
-    // Check BUET required O-Level subjects with hardcoded IDs
-    const buetRequiredSubjects = [
+    // Check BUET required O-Level subjects (Mathematics, Physics, Chemistry, English) with minimum grade B
+    const buetRequiredOLevelSubjects = [
       { id: 'buet_math', name: 'Mathematics' },
       { id: 'buet_physics', name: 'Physics' },
       { id: 'buet_chemistry', name: 'Chemistry' },
@@ -305,7 +308,7 @@ const UniversityEligibilityChecker = ({ onEligibilityUpdate }: EligibilityChecke
     const missingOLevelSubjects: string[] = [];
     const lowGradeOLevelSubjects: string[] = [];
 
-    buetRequiredSubjects.forEach(required => {
+    buetRequiredOLevelSubjects.forEach(required => {
       const foundSubject = oLevelSubjects.find(s => s.id === required.id);
       
       if (!foundSubject || !foundSubject.grade) {
@@ -329,11 +332,13 @@ const UniversityEligibilityChecker = ({ onEligibilityUpdate }: EligibilityChecke
       };
     }
 
+    // Check A-Level requirements: all 3 subjects (Math/Physics/Chemistry) required - 2 with grade A, 1 with grade B minimum
     const aLevelScience = validALevels.filter(s => {
       const name = s.name.toLowerCase().trim();
       return buetRequiredALevel.some(req => name.includes(req.toLowerCase()));
     });
 
+    // Must have all 3 required A-Level subjects
     if (aLevelScience.length < 3) {
       return { 
         eligible: false, 
@@ -344,13 +349,15 @@ const UniversityEligibilityChecker = ({ onEligibilityUpdate }: EligibilityChecke
     const aGradeCount = aLevelScience.filter(s => s.grade === 'A').length;
     const bOrBetterCount = aLevelScience.filter(s => s.grade === 'A' || s.grade === 'B').length;
 
+    // Need minimum 2 A grades from the 3 science subjects
     if (aGradeCount < 2) {
       return { 
         eligible: false, 
-        reason: 'Need minimum 2 A grades from the 3 required subjects (Math/Physics/Chemistry).'
+        reason: 'Need minimum 2 A grades from the 3 required subjects (Mathematics, Physics, Chemistry).'
       };
     }
 
+    // All 3 subjects must be at least grade B (2 A grades + 1 B grade minimum)
     if (bOrBetterCount < 3) {
       return { 
         eligible: false, 
@@ -368,7 +375,7 @@ const UniversityEligibilityChecker = ({ onEligibilityUpdate }: EligibilityChecke
       missingOLevelSubjects,
       lowGradeOLevelSubjects,
       reason: eligible ? 
-        'You meet BUET minimum eligibility criteria! Note: Final selection depends on ranking among top 400 candidates based on A-Level Math/Physics/Chemistry grades.' : 
+        'You meet BUET minimum eligibility criteria! Final selection: Top 400 candidates ranked by A-Level Mathematics, Physics, Chemistry grades.' : 
         'Requirements not met.'
     };
   };
@@ -469,7 +476,7 @@ const UniversityEligibilityChecker = ({ onEligibilityUpdate }: EligibilityChecke
                   ? 'Minimum 5 subjects required. Best 7 total subjects counted (O+A Level combined).'
                   : activeTab === 'DU Business'
                   ? 'Minimum 5 subjects required.'
-                  : 'Required subjects pre-filled: Math, Physics, Chemistry, English (all minimum grade B).'}
+                  : 'Minimum 5 subjects required including Math, Physics, Chemistry, English (all minimum grade B).'}
               </p>
             </div>
             
@@ -564,7 +571,9 @@ const UniversityEligibilityChecker = ({ onEligibilityUpdate }: EligibilityChecke
             <div className="p-6 space-y-3">
               {aLevelSubjects.map((subject, index) => {
                 const isFirstDUBusiness = activeTab === 'DU Business' && subject.id === 'du_business_required';
-                const canRemove = !(activeTab === 'DU Business' && subject.id === 'du_business_required');
+                const buetRequiredALevelIds = ['buet_a_math', 'buet_a_physics', 'buet_a_chemistry'];
+                const isBuetRequired = buetRequiredALevelIds.includes(subject.id) && activeTab === 'BUET';
+                const canRemove = !(activeTab === 'DU Business' && subject.id === 'du_business_required') && !(activeTab === 'BUET' && isBuetRequired);
                 
                 return (
                   <div key={subject.id} className="flex gap-3 items-center">
@@ -583,10 +592,16 @@ const UniversityEligibilityChecker = ({ onEligibilityUpdate }: EligibilityChecke
                       ) : (
                         <input
                           type="text"
-                          placeholder="Subject name"
+                          placeholder={
+                            subject.id === 'buet_a_math' ? 'Mathematics' :
+                            subject.id === 'buet_a_physics' ? 'Physics' :
+                            subject.id === 'buet_a_chemistry' ? 'Chemistry' :
+                            'Subject name'
+                          }
                           value={subject.name}
                           onChange={(e) => updateALevelSubject(subject.id, 'name', e.target.value)}
-                          className="w-full px-4 py-3 border border-gray-700 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-vh-dark-beige focus:border-transparent transition-all"
+                          disabled={isBuetRequired}
+                          className="w-full px-4 py-3 border border-gray-700 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-vh-dark-beige focus:border-transparent transition-all disabled:bg-gray-700 disabled:text-black"
                         />
                       )}
                     </div>
@@ -620,13 +635,21 @@ const UniversityEligibilityChecker = ({ onEligibilityUpdate }: EligibilityChecke
                 );
               })}
               
-              <button
-                onClick={addALevelSubject}
-                className="flex items-center gap-2 text-vh-dark-beige hover:text-vh-dark-red font-medium text-sm py-2 transition-colors touch-manipulation"
-              >
-                <Plus size={16} />
-                Add Subject
-              </button>
+              {activeTab !== 'BUET' && (
+                <button
+                  onClick={addALevelSubject}
+                  className="flex items-center gap-2 text-vh-dark-beige hover:text-vh-dark-red font-medium text-sm py-2 transition-colors touch-manipulation"
+                >
+                  <Plus size={16} />
+                  Add Subject
+                </button>
+              )}
+              
+              {activeTab === 'BUET' && (
+                <div className="text-sm text-black italic">
+                  All required A-Level subjects are pre-filled. Additional subjects can be entered but won't affect eligibility.
+                </div>
+              )}
             </div>
           </div>
 
@@ -788,7 +811,7 @@ const UniversityEligibilityChecker = ({ onEligibilityUpdate }: EligibilityChecke
                               <X size={14} className="text-white" />
                             </div>
                           }
-                          <span className="text-sm font-medium">O-Level: Math, Physics, Chemistry, English (min. grade B)</span>
+                          <span className="text-sm font-medium">O-Level: Minimum 5 subjects including Math, Physics, Chemistry, English (min. grade B)</span>
                         </div>
                         <div className="flex items-center gap-3 p-3 rounded-xl bg-gray-50">
                           {results.aGradeCount >= 2 ? 
@@ -891,11 +914,11 @@ const UniversityEligibilityChecker = ({ onEligibilityUpdate }: EligibilityChecke
                     <div className="mt-4 p-3 rounded-xl bg-red-50 border border-red-200">
                       <h4 className="font-semibold text-red-900 text-sm mb-2">BUET Engineering Requirements</h4>
                       <div className="text-xs text-red-700 space-y-1">
-                        <div>• O-Level: Math, Physics, Chemistry, English mandatory</div>
-                        <div>• All O-Level subjects minimum grade B</div>
+                        <div>• O-Level: Minimum 5 subjects including Math, Physics, Chemistry, English</div>
+                        <div>• All required O-Level subjects minimum grade B</div>
                         <div>• A-Level: All 3 subjects required (Math/Physics/Chemistry)</div>
                         <div>• A-Level grades: 2 A grades + 1 B grade minimum</div>
-                        <div>• Final selection: Top 400 based on A-Level science grades</div>
+                        <div>• Final selection: Top 400 candidates ranked by A-Level Math/Physics/Chemistry grades</div>
                       </div>
                     </div>
                   )}
