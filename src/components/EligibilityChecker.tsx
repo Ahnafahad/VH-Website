@@ -76,6 +76,13 @@ const UniversityEligibilityChecker = ({ onEligibilityUpdate }: EligibilityChecke
         { id: 'buet_english', name: 'English', grade: '' }
       ]);
     }
+    if (tab === 'DU Business') {
+      // Set required DU Business A-Level subject with business subject dropdown
+      setALevelSubjects([
+        { id: 'du_business_required', name: 'Business Studies', grade: '' },
+        { id: 'a2', name: '', grade: '' }
+      ]);
+    }
     if ((tab === 'DU Science' || tab === 'DU Business') && oLevelSubjects.find(s => s.id === 'math' && !s.name.trim() && !s.grade)) {
       setOLevelSubjects(prev => prev.filter(s => s.id !== 'math' || s.name.trim() || s.grade));
     }
@@ -231,6 +238,20 @@ const UniversityEligibilityChecker = ({ onEligibilityUpdate }: EligibilityChecke
       return { eligible: false, reason: 'Minimum 2 A-Level subjects required.' };
     }
 
+    // Check if a business subject is taken
+    const businessSubjectTaken = validALevels.some(s => 
+      businessSubjects.some(bizSubject => 
+        s.name.toLowerCase().trim() === bizSubject.toLowerCase()
+      )
+    );
+
+    if (!businessSubjectTaken) {
+      return { 
+        eligible: false, 
+        reason: 'Must take at least one business subject: Business Studies, Accounting, Economics, Mathematics, or Statistics.' 
+      };
+    }
+
     const allSubjects = [...validOLevels, ...validALevels];
     
     const gradeCount: Record<string, number> = { A: 0, B: 0, C: 0, D: 0 };
@@ -256,6 +277,7 @@ const UniversityEligibilityChecker = ({ onEligibilityUpdate }: EligibilityChecke
       minBGrades,
       minCGrades,
       allSubjects,
+      businessSubjectTaken,
       reason: eligible ? 'You meet all DU Business Studies eligibility requirements!' : 'Grade distribution requirements not met.'
     };
   };
@@ -446,7 +468,7 @@ const UniversityEligibilityChecker = ({ onEligibilityUpdate }: EligibilityChecke
                   : activeTab === 'DU Science'
                   ? 'Minimum 5 subjects required. Best 7 total subjects counted (O+A Level combined).'
                   : activeTab === 'DU Business'
-                  ? 'Minimum 5 subjects required. Check overlap with A-Level business subjects.'
+                  ? 'Minimum 5 subjects required.'
                   : 'Required subjects pre-filled: Math, Physics, Chemistry, English (all minimum grade B).'}
               </p>
             </div>
@@ -532,7 +554,7 @@ const UniversityEligibilityChecker = ({ onEligibilityUpdate }: EligibilityChecke
               <h2 className="text-lg font-semibold text-black">A-Level Subjects</h2>
               <p className="text-sm text-black mt-1">
                 {activeTab === 'DU Business'
-                  ? 'Minimum 2 subjects required. Any subjects allowed.'
+                  ? 'Minimum 2 subjects required. Any subjects allowed. Business Studies / Accounting / Economics / Mathematics / Statistics - any one of these subjects must be taken.'
                   : activeTab === 'BUET'
                   ? 'Must take all 3 subjects: Math, Physics, Chemistry. Need 2 A grades + 1 B grade minimum.'
                   : 'Minimum 2 subjects required. Best 2 subjects counted.'}
@@ -540,37 +562,63 @@ const UniversityEligibilityChecker = ({ onEligibilityUpdate }: EligibilityChecke
             </div>
             
             <div className="p-6 space-y-3">
-              {aLevelSubjects.map((subject) => (
-                <div key={subject.id} className="flex gap-3 items-center">
-                  <div className="flex-1">
-                    <input
-                      type="text"
-                      placeholder="Subject name"
-                      value={subject.name}
-                      onChange={(e) => updateALevelSubject(subject.id, 'name', e.target.value)}
-                      className="w-full px-4 py-3 border border-gray-700 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-vh-dark-beige focus:border-transparent transition-all"
-                    />
+              {aLevelSubjects.map((subject, index) => {
+                const isFirstDUBusiness = activeTab === 'DU Business' && subject.id === 'du_business_required';
+                const canRemove = !(activeTab === 'DU Business' && subject.id === 'du_business_required');
+                
+                return (
+                  <div key={subject.id} className="flex gap-3 items-center">
+                    <div className="flex-1">
+                      {isFirstDUBusiness ? (
+                        <select
+                          value={subject.name}
+                          onChange={(e) => updateALevelSubject(subject.id, 'name', e.target.value)}
+                          className="w-full px-4 py-3 border border-gray-700 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-vh-dark-beige focus:border-transparent bg-white transition-all"
+                        >
+                          <option value="">Select business subject</option>
+                          {businessSubjects.map(bizSubject => (
+                            <option key={bizSubject} value={bizSubject}>{bizSubject}</option>
+                          ))}
+                        </select>
+                      ) : (
+                        <input
+                          type="text"
+                          placeholder="Subject name"
+                          value={subject.name}
+                          onChange={(e) => updateALevelSubject(subject.id, 'name', e.target.value)}
+                          className="w-full px-4 py-3 border border-gray-700 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-vh-dark-beige focus:border-transparent transition-all"
+                        />
+                      )}
+                    </div>
+                    <div className="w-20">
+                      <select
+                        value={subject.grade}
+                        onChange={(e) => updateALevelSubject(subject.id, 'grade', e.target.value)}
+                        className="w-full px-3 py-3 border border-gray-700 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-vh-dark-beige focus:border-transparent bg-white transition-all"
+                      >
+                        <option value="">Grade</option>
+                        {(activeTab === 'DU Science' ? duScienceGrades : grades).map(grade => (
+                          <option key={grade} value={grade}>{grade}</option>
+                        ))}
+                      </select>
+                    </div>
+                    {canRemove ? (
+                      <button
+                        onClick={() => removeALevelSubject(subject.id)}
+                        className="p-3 text-red-500 hover:bg-red-50 rounded-xl transition-colors touch-manipulation"
+                      >
+                        <Trash2 size={16} />
+                      </button>
+                    ) : (
+                      <div className="p-3 w-12 flex items-center justify-center">
+                        <div className="w-4 h-4 bg-gray-700 rounded text-xs flex items-center justify-center text-black">
+                          ✓
+                        </div>
+                      </div>
+                    )}
                   </div>
-                  <div className="w-20">
-                    <select
-                      value={subject.grade}
-                      onChange={(e) => updateALevelSubject(subject.id, 'grade', e.target.value)}
-                      className="w-full px-3 py-3 border border-gray-700 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-vh-dark-beige focus:border-transparent bg-white transition-all"
-                    >
-                      <option value="">Grade</option>
-                      {(activeTab === 'DU Science' ? duScienceGrades : grades).map(grade => (
-                        <option key={grade} value={grade}>{grade}</option>
-                      ))}
-                    </select>
-                  </div>
-                  <button
-                    onClick={() => removeALevelSubject(subject.id)}
-                    className="p-3 text-red-500 hover:bg-red-50 rounded-xl transition-colors touch-manipulation"
-                  >
-                    <Trash2 size={16} />
-                  </button>
-                </div>
-              ))}
+                );
+              })}
               
               <button
                 onClick={addALevelSubject}
