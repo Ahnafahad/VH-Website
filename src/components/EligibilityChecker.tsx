@@ -538,19 +538,17 @@ const UniversityEligibilityChecker = ({ onEligibilityUpdate }: EligibilityChecke
                 );
               })}
               
-              {activeTab !== 'BUET' && (
-                <button
-                  onClick={addOLevelSubject}
-                  className="flex items-center gap-2 text-vh-red hover:text-vh-dark-red font-medium text-sm py-2 transition-colors touch-manipulation"
-                >
-                  <Plus size={16} />
-                  Add Subject
-                </button>
-              )}
+              <button
+                onClick={addOLevelSubject}
+                className="flex items-center gap-2 text-vh-red hover:text-vh-dark-red font-medium text-sm py-2 transition-colors touch-manipulation"
+              >
+                <Plus size={16} />
+                Add Subject
+              </button>
               
               {activeTab === 'BUET' && (
                 <div className="text-sm text-black italic">
-                  All required subjects are pre-filled. Additional subjects can be entered but won't affect eligibility.
+                  Required subjects (Math, Physics, Chemistry, English) are pre-filled. You need minimum 5 O-Level subjects total.
                 </div>
               )}
             </div>
