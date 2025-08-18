@@ -105,11 +105,6 @@ const UniversityEligibilityChecker = ({ onEligibilityUpdate }: EligibilityChecke
       return { eligible: false, reason: 'Mathematics is mandatory for O-Levels and must have a grade.' };
     }
 
-    // Check if Mathematics has grade D (which makes student ineligible for IBA)
-    if (mathSubject.grade === 'D') {
-      return { eligible: false, reason: 'Mathematics grade D is not acceptable for IBA admission. Mathematics must be minimum grade C.' };
-    }
-
     if (validOLevels.length < 5) {
       return { eligible: false, reason: 'Minimum 5 O-Level subjects required.' };
     }
