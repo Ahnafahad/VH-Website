@@ -214,8 +214,8 @@ const UniversityEligibilityChecker = ({ onEligibilityUpdate }: EligibilityChecke
     });
 
     const minAGrades = gradeCount.A >= 3;
-    const minBGrades = gradeCount.B >= 2;
-    const minCGrades = gradeCount.C >= 2;
+    const minBGrades = (gradeCount.A + gradeCount.B) >= 5;  // Need at least 5 subjects with B or better (A counts as B+)
+    const minCGrades = (gradeCount.A + gradeCount.B + gradeCount.C) >= 7;  // Need at least 7 subjects with C or better (all subjects)
     const totalSubjects = best7Subjects.length >= 7;
 
     const eligible = minAGrades && minBGrades && minCGrades && totalSubjects;
