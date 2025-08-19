@@ -258,6 +258,22 @@ const UniversityEligibilityChecker = ({ onEligibilityUpdate }: EligibilityChecke
       };
     }
 
+    // Calculate O-Level and A-Level GPAs (using IBA grade points)
+    const oLevelPoints = validOLevels.map(s => ibaGradePoints[s.grade]);
+    const aLevelPoints = validALevels.map(s => ibaGradePoints[s.grade]);
+
+    oLevelPoints.sort((a, b) => b - a);
+    aLevelPoints.sort((a, b) => b - a);
+
+    const best5OLevel = oLevelPoints.slice(0, 5);
+    const best2ALevel = aLevelPoints.slice(0, 2);
+
+    const oLevelGPA = best5OLevel.reduce((sum, point) => sum + point, 0) / 5;
+    const aLevelGPA = best2ALevel.reduce((sum, point) => sum + point, 0) / 2;
+
+    const oLevelPass = oLevelGPA >= 3.0;
+    const aLevelPass = aLevelGPA >= 3.0;
+
     const allSubjects = [...validOLevels, ...validALevels];
     
     const gradeCount: Record<string, number> = { A: 0, B: 0, C: 0, D: 0 };
@@ -273,7 +289,16 @@ const UniversityEligibilityChecker = ({ onEligibilityUpdate }: EligibilityChecke
     const minBGrades = bPlusCount >= 3;
     const minCGrades = cPlusCount >= 3;
 
-    const eligible = minBGrades && minCGrades;
+    const eligible = minBGrades && minCGrades && oLevelPass && aLevelPass;
+
+    let reason = '';
+    if (!eligible) {
+      if (!oLevelPass) reason = `O-Level GPA too low: ${oLevelGPA.toFixed(2)} (need ≥ 3.0)`;
+      else if (!aLevelPass) reason = `A-Level GPA too low: ${aLevelGPA.toFixed(2)} (need ≥ 3.0)`;
+      else reason = 'Grade distribution requirements not met.';
+    } else {
+      reason = 'You meet all DU FBS (Business Studies) eligibility requirements!';
+    }
 
     return {
       eligible,
@@ -282,9 +307,13 @@ const UniversityEligibilityChecker = ({ onEligibilityUpdate }: EligibilityChecke
       cPlusCount,
       minBGrades,
       minCGrades,
+      oLevelGPA: oLevelGPA.toFixed(2),
+      aLevelGPA: aLevelGPA.toFixed(2),
+      oLevelPass,
+      aLevelPass,
       allSubjects,
       businessSubjectTaken,
-      reason: eligible ? 'You meet all DU Business Studies eligibility requirements!' : 'Grade distribution requirements not met.'
+      reason
     };
   };
 
@@ -447,7 +476,7 @@ const UniversityEligibilityChecker = ({ onEligibilityUpdate }: EligibilityChecke
                     : 'text-black hover:text-vh-red hover:bg-gray-50'
                 }`}
               >
-                DU Business
+                DU FBS
               </button>
               <button
                 onClick={() => handleTabChange('BUET')}
@@ -767,6 +796,28 @@ const UniversityEligibilityChecker = ({ onEligibilityUpdate }: EligibilityChecke
                     ) : activeTab === 'DU Business' ? (
                       <>
                         <div className="flex items-center gap-3 p-3 rounded-xl bg-gray-50">
+                          {(results as any).oLevelPass ? 
+                            <div className="w-6 h-6 bg-vh-red rounded-full flex items-center justify-center">
+                              <Check size={14} className="text-white" />
+                            </div> : 
+                            <div className="w-6 h-6 bg-red-500 rounded-full flex items-center justify-center">
+                              <X size={14} className="text-white" />
+                            </div>
+                          }
+                          <span className="text-sm font-medium">O-Level GPA ≥ 3.0: {(results as any).oLevelGPA || 'N/A'}</span>
+                        </div>
+                        <div className="flex items-center gap-3 p-3 rounded-xl bg-gray-50">
+                          {(results as any).aLevelPass ? 
+                            <div className="w-6 h-6 bg-vh-red rounded-full flex items-center justify-center">
+                              <Check size={14} className="text-white" />
+                            </div> : 
+                            <div className="w-6 h-6 bg-red-500 rounded-full flex items-center justify-center">
+                              <X size={14} className="text-white" />
+                            </div>
+                          }
+                          <span className="text-sm font-medium">A-Level GPA ≥ 3.0: {(results as any).aLevelGPA || 'N/A'}</span>
+                        </div>
+                        <div className="flex items-center gap-3 p-3 rounded-xl bg-gray-50">
                           {(results as any).minBGrades ? 
                             <div className="w-6 h-6 bg-vh-red rounded-full flex items-center justify-center">
                               <Check size={14} className="text-white" />
@@ -898,12 +949,13 @@ const UniversityEligibilityChecker = ({ onEligibilityUpdate }: EligibilityChecke
                   
                   {activeTab === 'DU Business' && (
                     <div className="mt-4 p-3 rounded-xl bg-vh-beige/30 border border-vh-dark-beige">
-                      <h4 className="font-semibold text-vh-dark-red text-sm mb-2">Business Studies Rules</h4>
+                      <h4 className="font-semibold text-vh-dark-red text-sm mb-2">DU FBS Requirements</h4>
                       <div className="text-xs text-vh-red space-y-1">
+                        <div>• O-Level GPA ≥ 3.0 (best 5 subjects)</div>
+                        <div>• A-Level GPA ≥ 3.0 (best 2 subjects)</div>
                         <div>• 3 subjects minimum with B+ grades (A or B)</div>
                         <div>• 3 subjects minimum with C+ grades (A, B, or C)</div>
-                        <div>• Any subjects can be taken in both O-Level and A-Level</div>
-                        <div>• All subjects must have minimum D grade</div>
+                        <div>• Business subject required (Business Studies, Accounting, Economics, Mathematics, or Statistics)</div>
                       </div>
                     </div>
                   )}
