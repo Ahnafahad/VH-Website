@@ -40,7 +40,7 @@ const VocabularyQuizApp = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [quizResults, setQuizResults] = useState(null);
   const [explanations, setExplanations] = useState([]);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<string | null>(null);
 
   // Timer logic
   useEffect(() => {
@@ -169,7 +169,7 @@ DO NOT OUTPUT ANYTHING OTHER THAN VALID JSON.`;
       
     } catch (error) {
       console.error('Question generation failed:', error);
-      setError(`Error: ${error.message}`);
+      setError(`Error: ${error instanceof Error ? error.message : String(error)}`);
     }
     
     setIsLoading(false);
