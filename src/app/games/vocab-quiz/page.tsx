@@ -48,7 +48,7 @@ const VocabularyQuizApp = () => {
   }, [timeRemaining, currentScreen]);
 
   // Helper function to clean response
-  const cleanResponse = (response) => {
+  const cleanResponse = (response: string) => {
     let cleaned = response.trim();
     
     if (cleaned.startsWith('```json')) {
