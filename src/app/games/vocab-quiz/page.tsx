@@ -4,6 +4,13 @@ import React, { useState, useEffect } from 'react';
 import { Clock, BookOpen, Target, Award, RefreshCw } from 'lucide-react';
 import ProtectedRoute from '@/components/ProtectedRoute';
 
+interface Question {
+  sentence: string;
+  wordBank: string[];
+  correctAnswer: string;
+  difficulty: string;
+}
+
 const VocabularyQuizApp = () => {
   // Vocabulary sections from the provided list
   const vocabularySections = {
@@ -147,7 +154,7 @@ DO NOT OUTPUT ANYTHING OTHER THAN VALID JSON.`;
         throw new Error('No valid questions found in AI response');
       }
       
-      const validQuestions = parsedResponse.questions.filter(q => 
+      const validQuestions = parsedResponse.questions.filter((q: Question) => 
         q.sentence && q.wordBank && q.correctAnswer && q.difficulty &&
         Array.isArray(q.wordBank) && q.wordBank.length >= 6
       );
