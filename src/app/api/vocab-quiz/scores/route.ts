@@ -1,19 +1,28 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getServerSession } from 'next-auth';
+import { getServerSession } from 'next-auth/next';
+import { authOptions } from '@/lib/auth';
 import mongoose from 'mongoose';
 import VocabScore from '@/lib/models/VocabScore';
 import { isEmailAuthorized } from '@/data/authorizedEmails';
 
 // Connect to MongoDB
 async function connectToMongoDB() {
-  if (mongoose.connection.readyState === 0) {
-    await mongoose.connect(process.env.MONGODB_URI as string);
+  try {
+    if (mongoose.connection.readyState === 0) {
+      if (!process.env.MONGODB_URI) {
+        throw new Error('MONGODB_URI is not defined');
+      }
+      await mongoose.connect(process.env.MONGODB_URI);
+    }
+  } catch (error) {
+    console.error('MongoDB connection error:', error);
+    throw error;
   }
 }
 
 export async function POST(request: NextRequest) {
   try {
-    const session = await getServerSession();
+    const session = await getServerSession(authOptions);
     if (!session?.user?.email) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
@@ -64,12 +73,14 @@ export async function POST(request: NextRequest) {
       isAdmin
     });
 
-    await vocabScore.save();
+    const savedScore = await vocabScore.save();
+    console.log('Vocab score saved:', savedScore._id);
 
     return NextResponse.json({ 
       success: true, 
       message: 'Vocab quiz score saved successfully',
-      isAdmin 
+      isAdmin,
+      scoreId: savedScore._id
     });
   } catch (error) {
     console.error('Error saving vocab score:', error);

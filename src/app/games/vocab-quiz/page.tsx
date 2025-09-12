@@ -298,7 +298,11 @@ Respond with JSON:
       });
       
       if (response.ok) {
-        console.log('Quiz result saved successfully');
+        const responseData = await response.json();
+        console.log('Vocab score saved successfully:', responseData);
+      } else {
+        const errorData = await response.json().catch(() => ({ error: 'Unknown error' }));
+        console.error('Failed to save vocab score:', errorData);
       }
     } catch (error) {
       console.error('Error saving quiz result:', error);

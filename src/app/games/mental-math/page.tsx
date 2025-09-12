@@ -283,8 +283,13 @@ const MentalMathApp = () => {
       });
       
       if (response.ok) {
+        const responseData = await response.json();
+        console.log('Math score saved successfully:', responseData);
         // Refresh leaderboard after saving
         fetchLeaderboard();
+      } else {
+        const errorData = await response.json().catch(() => ({ error: 'Unknown error' }));
+        console.error('Failed to save score:', errorData);
       }
     } catch (error) {
       console.error('Error saving game result:', error);
