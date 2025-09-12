@@ -82,6 +82,13 @@ const Header = () => {
                     >
                       Vocabulary Quiz
                     </Link>
+                    <Link
+                      href="/games/mental-math"
+                      className="block px-4 py-2 text-gray-800 hover:text-vh-red hover:bg-vh-beige/20 transition-all duration-300"
+                      onClick={() => setIsGamesDropdownOpen(false)}
+                    >
+                      Mental Math Trainer
+                    </Link>
                   </div>
                 )}
               </div>
@@ -145,6 +152,13 @@ const Header = () => {
                     onClick={() => setIsMenuOpen(false)}
                   >
                     Vocabulary Quiz
+                  </Link>
+                  <Link
+                    href="/games/mental-math"
+                    className="block px-8 py-2 text-gray-600 hover:text-vh-red hover:bg-vh-beige/10 rounded-xl transition-all duration-300 ml-4"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    Mental Math Trainer
                   </Link>
                 </div>
               )}

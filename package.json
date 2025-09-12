@@ -13,6 +13,8 @@
     "@google-cloud/local-auth": "^3.0.1",
     "googleapis": "^159.0.0",
     "lucide-react": "^0.539.0",
+    "mongodb": "^6.19.0",
+    "mongoose": "^8.18.1",
     "next": "15.4.6",
     "next-auth": "^4.24.11",
     "react": "19.1.0",
