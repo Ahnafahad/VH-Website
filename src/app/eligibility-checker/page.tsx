@@ -4,7 +4,6 @@ import React, { useState, useCallback } from 'react';
 import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
 import EligibilityChecker from '@/components/EligibilityChecker';
-import type { Metadata } from 'next';
 
 // export const metadata: Metadata = {
 //   title: "Eligibility Checker - VH Beyond the Horizons",

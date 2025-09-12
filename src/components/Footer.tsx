@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Mail, Phone, MapPin, ExternalLink, Facebook, Instagram } from 'lucide-react';
+import { Mail, Phone, ExternalLink, Facebook, Instagram } from 'lucide-react';
 
 const Footer = () => {
   return (

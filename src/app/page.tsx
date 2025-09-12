@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { ArrowRight, CheckCircle, Trophy, Star, Clock, Users, Target, BookOpen, Award, TrendingUp, Zap, Shield, Play, ChevronRight, Quote } from 'lucide-react';
+import { ArrowRight, CheckCircle, Trophy, Star, Clock, Target, BookOpen, Award, TrendingUp, ChevronRight } from 'lucide-react';
 
 export default function Home() {
   return (

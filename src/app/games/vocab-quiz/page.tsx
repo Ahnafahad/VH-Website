@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Clock, BookOpen, Target, Award, RefreshCw, Trophy, RotateCcw } from 'lucide-react';
 import ProtectedRoute from '@/components/ProtectedRoute';
 
@@ -72,17 +72,6 @@ const VocabularyQuizApp = () => {
   const [showLeaderboard, setShowLeaderboard] = useState(false);
   const [isLoadingLeaderboard, setIsLoadingLeaderboard] = useState(false);
 
-  // Timer logic
-  useEffect(() => {
-    if (currentScreen === 'quiz' && timeRemaining > 0) {
-      const timer = setTimeout(() => {
-        setTimeRemaining(timeRemaining - 1);
-      }, 1000);
-      return () => clearTimeout(timer);
-    } else if (currentScreen === 'quiz' && timeRemaining === 0) {
-      handleNextQuestion();
-    }
-  }, [timeRemaining, currentScreen]);
 
   // Helper function to clean response
   const cleanResponse = (response: string) => {
@@ -140,12 +129,12 @@ Respond with JSON in this exact format:
 
 DO NOT OUTPUT ANYTHING OTHER THAN VALID JSON.`;
 
-      const requestBody = {
-        model: "deepseek/deepseek-chat-v3.1:free",
-        messages: [{ role: "user", content: prompt }],
-        max_tokens: 4000,
-        temperature: 0.7
-      };
+      // const requestBody = {
+      //   model: "deepseek/deepseek-chat-v3.1:free",
+      //   messages: [{ role: "user", content: prompt }],
+      //   max_tokens: 4000,
+      //   temperature: 0.7
+      // };
       
       const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent?key=AIzaSyBbzvVwymrwjGqKOkD77dkIgEnRGwbL30c`, {
         method: "POST",
@@ -178,7 +167,7 @@ DO NOT OUTPUT ANYTHING OTHER THAN VALID JSON.`;
       let parsedResponse;
       try {
         parsedResponse = JSON.parse(cleanedResponse);
-      } catch (parseError) {
+      } catch {
         console.error('Failed to parse JSON:', cleanedResponse);
         throw new Error('Failed to parse AI response as JSON');
       }
@@ -270,15 +259,53 @@ Respond with JSON:
     }, 500);
   };
 
+  // Finish quiz and calculate results
+  const finishQuiz = useCallback(() => {
+    const results = questions.map((q, index) => ({
+      ...q,
+      userAnswer: userAnswers[index],
+      isCorrect: userAnswers[index] === q.correctAnswer
+    }));
+
+    const correctCount = results.filter(r => r.isCorrect).length;
+    const wrongCount = results.length - correctCount;
+    const score = correctCount * 1 + wrongCount * (-0.25);
+
+    const quizResult = {
+      totalQuestions: results.length,
+      correctAnswers: correctCount,
+      wrongAnswers: wrongCount,
+      score: Math.max(0, score),
+      results: results
+    };
+
+    setQuizResults(quizResult);
+    saveQuizResult(quizResult);
+    generateExplanations(results);
+    setCurrentScreen('results');
+  }, [questions, userAnswers]);
+
   // Handle next question
-  const handleNextQuestion = () => {
+  const handleNextQuestion = useCallback(() => {
     if (currentQuestionIndex < questions.length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
       setTimeRemaining(quizConfig.timePerQuestion);
     } else {
       finishQuiz();
     }
-  };
+  }, [currentQuestionIndex, questions.length, quizConfig.timePerQuestion, finishQuiz]);
+
+  // Timer logic
+  useEffect(() => {
+    if (currentScreen === 'quiz' && timeRemaining > 0) {
+      const timer = setTimeout(() => {
+        setTimeRemaining(timeRemaining - 1);
+      }, 1000);
+      return () => clearTimeout(timer);
+    } else if (currentScreen === 'quiz' && timeRemaining === 0) {
+      handleNextQuestion();
+    }
+  }, [timeRemaining, currentScreen, handleNextQuestion]);
 
   // Save quiz result to database
   const saveQuizResult = async (result: QuizResult) => {
@@ -325,31 +352,6 @@ Respond with JSON:
     }
   };
 
-  // Finish quiz and calculate results
-  const finishQuiz = () => {
-    const results = questions.map((q, index) => ({
-      ...q,
-      userAnswer: userAnswers[index],
-      isCorrect: userAnswers[index] === q.correctAnswer
-    }));
-
-    const correctCount = results.filter(r => r.isCorrect).length;
-    const wrongCount = results.length - correctCount;
-    const score = correctCount * 1 + wrongCount * (-0.25);
-
-    const quizResult = {
-      totalQuestions: results.length,
-      correctAnswers: correctCount,
-      wrongAnswers: wrongCount,
-      score: Math.max(0, score),
-      results: results
-    };
-
-    setQuizResults(quizResult);
-    saveQuizResult(quizResult);
-    generateExplanations(results);
-    setCurrentScreen('results');
-  };
 
   // Reset quiz
   const resetQuiz = () => {

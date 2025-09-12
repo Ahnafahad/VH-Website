@@ -10,17 +10,17 @@ export const authOptions: NextAuthOptions = {
     })
   ],
   callbacks: {
-    async signIn({ user, account, profile }) {
+    async signIn({ user, account }) {
       if (account?.provider === 'google') {
         const email = user.email?.toLowerCase() || ''
         return isEmailAuthorized(email)
       }
       return false
     },
-    async session({ session, token }) {
+    async session({ session }) {
       return session
     },
-    async jwt({ token, user }) {
+    async jwt({ token }) {
       return token
     }
   },

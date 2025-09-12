@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useCallback } from 'react';
-import { Play, SkipForward, RotateCcw, Clock, Target, Zap, Trophy, Eye, Award } from 'lucide-react';
+import { Play, SkipForward, RotateCcw, Clock, Target, Zap, Trophy, Award } from 'lucide-react';
 import ProtectedRoute from '@/components/ProtectedRoute';
 
 interface Question {
@@ -256,7 +256,7 @@ const MentalMathApp = () => {
       setPreviousQuestions(prev => [...prev.slice(-20), question]); // Keep last 20 questions
     }
     setUserAnswer('');
-  }, [generateNumbers, selectedOperations, previousQuestions]);
+  }, [generateNumbers, selectedOperations, isQuestionUnique]);
 
   // Start the game
   const startGame = () => {
@@ -270,6 +270,22 @@ const MentalMathApp = () => {
     setPreviousQuestions([]);
     generateNewQuestion();
   };
+
+  // Fetch leaderboard data
+  const fetchLeaderboard = useCallback(async () => {
+    setIsLoading(true);
+    try {
+      const response = await fetch('/api/mental-math/leaderboard');
+      if (response.ok) {
+        const data = await response.json();
+        setLeaderboard(data);
+      }
+    } catch (error) {
+      console.error('Error fetching leaderboard:', error);
+    } finally {
+      setIsLoading(false);
+    }
+  }, []);
 
   // Save game result to database
   const saveGameResult = useCallback(async (result: GameResult) => {
@@ -295,22 +311,6 @@ const MentalMathApp = () => {
       console.error('Error saving game result:', error);
     }
   }, [fetchLeaderboard]);
-
-  // Fetch leaderboard data
-  const fetchLeaderboard = useCallback(async () => {
-    setIsLoading(true);
-    try {
-      const response = await fetch('/api/mental-math/leaderboard');
-      if (response.ok) {
-        const data = await response.json();
-        setLeaderboard(data);
-      }
-    } catch (error) {
-      console.error('Error fetching leaderboard:', error);
-    } finally {
-      setIsLoading(false);
-    }
-  }, []);
 
   // Handle answer submission
   const submitAnswer = () => {

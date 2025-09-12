@@ -415,7 +415,7 @@ const UniversityEligibilityChecker = ({ onEligibilityUpdate }: EligibilityChecke
            activeTab === 'DU Science' ? calculateDUScienceResults() :
            activeTab === 'DU Business' ? calculateDUBusinessResults() :
            calculateBUETResults();
-  }, [activeTab, oLevelSubjects, aLevelSubjects]);
+  }, [activeTab, calculateBUETResults, calculateBUPResults, calculateDUBusinessResults, calculateDUScienceResults, calculateIBAResults]);
 
   // Call the callback whenever results change
   useEffect(() => {
@@ -596,7 +596,7 @@ const UniversityEligibilityChecker = ({ onEligibilityUpdate }: EligibilityChecke
             </div>
             
             <div className="p-6 space-y-3">
-              {aLevelSubjects.map((subject, index) => {
+              {aLevelSubjects.map((subject) => {
                 const isFirstDUBusiness = activeTab === 'DU Business' && subject.id === 'du_business_required';
                 const buetRequiredALevelIds = ['buet_a_math', 'buet_a_physics', 'buet_a_chemistry'];
                 const isBuetRequired = buetRequiredALevelIds.includes(subject.id) && activeTab === 'BUET';
