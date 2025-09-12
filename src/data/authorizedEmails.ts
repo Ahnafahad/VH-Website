@@ -1,6 +1,11 @@
-// Authorized email addresses from accessmain.csv
-export const authorizedEmails = [
-  // Student emails
+// Admin email addresses
+export const adminEmails = [
+  "ahnaf816@gmail.com",
+  "hasanxsarower@gmail.com",
+];
+
+// Student email addresses
+export const studentEmails = [
   "abrarmasud20@gmail.com",
   "alexalamgirbd@gmail.com",
   "aseyasiddiqua30@gmail.com",
@@ -24,11 +29,15 @@ export const authorizedEmails = [
   "mahmudwazeed@gmail.com",
   "zaianjannat0001@gmail.com",
   "zuhayradeeb@gmail.com",
-  // Admin emails
-  "ahnaf816@gmail.com",
-  "hasanxsarower@gmail.com",
 ];
+
+// Combined authorized emails
+export const authorizedEmails = [...adminEmails, ...studentEmails];
 
 export function isEmailAuthorized(email: string): boolean {
   return authorizedEmails.includes(email.toLowerCase());
+}
+
+export function isAdminEmail(email: string): boolean {
+  return adminEmails.includes(email.toLowerCase());
 }

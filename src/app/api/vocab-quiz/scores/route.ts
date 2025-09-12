@@ -3,7 +3,7 @@ import { getServerSession } from 'next-auth/next';
 import { authOptions } from '@/lib/auth';
 import mongoose from 'mongoose';
 import VocabScore from '@/lib/models/VocabScore';
-import { isEmailAuthorized } from '@/data/authorizedEmails';
+import { isEmailAuthorized, isAdminEmail } from '@/data/authorizedEmails';
 
 // Connect to MongoDB
 async function connectToMongoDB() {
@@ -57,8 +57,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Check if user is admin (admins won't appear in leaderboard)
-    const adminEmails = ['ahnaf816@gmail.com', 'hasanxsarower@gmail.com'];
-    const isAdmin = adminEmails.includes(session.user.email.toLowerCase());
+    const isAdmin = isAdminEmail(session.user.email);
 
     // Create new vocab score entry
     const vocabScore = new VocabScore({
