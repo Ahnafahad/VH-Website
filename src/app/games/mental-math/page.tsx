@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useCallback } from 'react';
-import { Play, SkipForward, RotateCcw, Clock, Target, Zap, Trophy, Eye } from 'lucide-react';
+import { Play, SkipForward, RotateCcw, Clock, Target, Zap, Trophy, Eye, Award } from 'lucide-react';
 import ProtectedRoute from '@/components/ProtectedRoute';
 
 interface Question {
@@ -382,34 +382,48 @@ const MentalMathApp = () => {
 
   if (gameState === 'leaderboard') {
     return (
-      <div className="min-h-screen bg-vh-beige/20 p-4 relative overflow-hidden">
-        {/* Background decoration */}
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute top-20 left-10 text-vh-red text-8xl font-bold">+</div>
-          <div className="absolute top-40 right-20 text-vh-red text-6xl font-bold">×</div>
-          <div className="absolute bottom-20 left-20 text-vh-red text-7xl font-bold">÷</div>
-          <div className="absolute bottom-40 right-10 text-vh-red text-9xl font-bold">−</div>
+      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
+        {/* Professional Background Elements */}
+        <div className="absolute inset-0">
+          <div className="absolute top-20 right-20 w-72 h-72 bg-vh-red/5 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-20 left-20 w-96 h-96 bg-vh-beige/10 rounded-full blur-3xl"></div>
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full opacity-3">
+            <div className="grid grid-cols-12 gap-4 transform rotate-12">
+              {Array.from({ length: 144 }).map((_, i) => (
+                <div key={i} className="h-1 bg-gradient-to-r from-vh-red/10 to-transparent rounded animate-pulse" style={{ animationDelay: `${i * 100}ms` }}></div>
+              ))}
+            </div>
+          </div>
         </div>
 
-        <div className="max-w-4xl mx-auto relative z-10">
-          <div className="text-center mb-8">
-            <h1 className="text-4xl font-bold text-vh-red mb-2">Mental Math Leaderboard</h1>
-            <p className="text-gray-600">Top performers in our mental math challenges</p>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10">
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-vh-red to-vh-dark-red rounded-3xl mb-8 shadow-2xl">
+              <Trophy className="text-white" size={40} />
+            </div>
+            <h1 className="text-6xl lg:text-7xl font-black text-gray-900 mb-6">
+              Mental Math <span className="bg-gradient-to-r from-vh-red to-vh-dark-red bg-clip-text text-transparent">Leaderboard</span>
+            </h1>
+            <p className="text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed">Top performers in our intensive mental math challenges</p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8 mb-8">
+          <div className="grid lg:grid-cols-2 gap-12 mb-16">
             {/* Individual Game Scores */}
-            <div className="bg-white rounded-xl shadow-lg p-6 border-t-4 border-vh-red">
-              <h2 className="text-2xl font-semibold mb-4 text-gray-800 flex items-center gap-2">
-                <Trophy className="text-vh-red" />
-                Top Individual Scores
-              </h2>
+            <div className="group relative">
+              <div className="absolute inset-0 bg-gradient-to-br from-vh-red/20 to-transparent rounded-3xl blur-2xl group-hover:blur-3xl opacity-0 group-hover:opacity-100 transition-all duration-700"></div>
+              <div className="relative bg-white rounded-3xl shadow-2xl p-10 border border-gray-100 group-hover:shadow-4xl group-hover:border-vh-red/20 transition-all duration-700">
+                <div className="flex items-center mb-8">
+                  <div className="w-16 h-16 bg-gradient-to-br from-vh-red to-vh-dark-red rounded-2xl flex items-center justify-center mr-6 shadow-xl">
+                    <Trophy className="text-white" size={32} />
+                  </div>
+                  <h2 className="text-3xl font-black text-gray-900">Top Individual Scores</h2>
+                </div>
               {isLoading ? (
                 <div className="text-center py-8">Loading...</div>
               ) : (
                 <div className="space-y-3">
                   {leaderboard.individual.slice(0, 10).map((entry, index) => (
-                    <div key={index} className="flex items-center justify-between p-3 bg-vh-beige/20 rounded-lg">
+                    <div key={index} className="group/item flex items-center justify-between p-4 bg-gradient-to-r from-gray-50 to-white rounded-2xl border border-gray-100 hover:border-vh-red/30 hover:shadow-lg transition-all duration-300">
                       <div className="flex items-center gap-3">
                         <span className={`w-8 h-8 rounded-full flex items-center justify-center text-white font-bold ${
                           index === 0 ? 'bg-yellow-500' : index === 1 ? 'bg-gray-400' : index === 2 ? 'bg-amber-600' : 'bg-vh-red'
@@ -434,17 +448,21 @@ const MentalMathApp = () => {
             </div>
 
             {/* Accumulated Scores */}
-            <div className="bg-white rounded-xl shadow-lg p-6 border-t-4 border-vh-red">
-              <h2 className="text-2xl font-semibold mb-4 text-gray-800 flex items-center gap-2">
-                <Zap className="text-vh-red" />
-                Accumulated Top Scorers
-              </h2>
+            <div className="group relative">
+              <div className="absolute inset-0 bg-gradient-to-br from-vh-beige/20 to-transparent rounded-3xl blur-2xl group-hover:blur-3xl opacity-0 group-hover:opacity-100 transition-all duration-700"></div>
+              <div className="relative bg-white rounded-3xl shadow-2xl p-10 border border-gray-100 group-hover:shadow-4xl group-hover:border-vh-beige/20 transition-all duration-700">
+                <div className="flex items-center mb-8">
+                  <div className="w-16 h-16 bg-gradient-to-br from-vh-beige to-vh-dark-beige rounded-2xl flex items-center justify-center mr-6 shadow-xl">
+                    <Zap className="text-white" size={32} />
+                  </div>
+                  <h2 className="text-3xl font-black text-gray-900">Accumulated Champions</h2>
+                </div>
               {isLoading ? (
                 <div className="text-center py-8">Loading...</div>
               ) : (
                 <div className="space-y-3">
                   {leaderboard.accumulated.slice(0, 10).map((entry, index) => (
-                    <div key={index} className="flex items-center justify-between p-3 bg-vh-beige/20 rounded-lg">
+                    <div key={index} className="group/item flex items-center justify-between p-4 bg-gradient-to-r from-gray-50 to-white rounded-2xl border border-gray-100 hover:border-vh-beige/30 hover:shadow-lg transition-all duration-300">
                       <div className="flex items-center gap-3">
                         <span className={`w-8 h-8 rounded-full flex items-center justify-center text-white font-bold ${
                           index === 0 ? 'bg-yellow-500' : index === 1 ? 'bg-gray-400' : index === 2 ? 'bg-amber-600' : 'bg-vh-red'
@@ -468,43 +486,58 @@ const MentalMathApp = () => {
               )}
             </div>
           </div>
+        </div>
 
-          <div className="text-center">
+        <div className="text-center">
             <button 
               onClick={() => setGameState('setup')}
-              className="bg-vh-red text-white py-3 px-8 rounded-xl hover:bg-vh-dark-red transition-colors font-semibold shadow-lg"
+              className="group bg-gradient-to-r from-vh-red to-vh-dark-red text-white px-12 py-4 rounded-2xl font-bold text-lg hover:from-vh-dark-red hover:to-vh-red transition-all duration-300 shadow-2xl hover:shadow-vh-red/25 transform hover:-translate-y-1"
             >
+              <Target className="inline mr-3" size={20} />
               Back to Game
             </button>
           </div>
         </div>
       </div>
+    </div>
     );
   }
 
   if (gameState === 'setup') {
     return (
-      <div className="min-h-screen bg-vh-beige/20 p-4 relative overflow-hidden">
-        {/* Background decoration */}
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute top-20 left-10 text-vh-red text-8xl font-bold">+</div>
-          <div className="absolute top-40 right-20 text-vh-red text-6xl font-bold">×</div>
-          <div className="absolute bottom-20 left-20 text-vh-red text-7xl font-bold">÷</div>
-          <div className="absolute bottom-40 right-10 text-vh-red text-9xl font-bold">−</div>
+      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
+        {/* Professional Background Elements */}
+        <div className="absolute inset-0">
+          <div className="absolute top-20 right-20 w-72 h-72 bg-vh-red/5 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-20 left-20 w-96 h-96 bg-vh-beige/10 rounded-full blur-3xl"></div>
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full opacity-3">
+            <div className="grid grid-cols-12 gap-4 transform rotate-12">
+              {Array.from({ length: 144 }).map((_, i) => (
+                <div key={i} className="h-1 bg-gradient-to-r from-vh-red/10 to-transparent rounded animate-pulse" style={{ animationDelay: `${i * 100}ms` }}></div>
+              ))}
+            </div>
+          </div>
         </div>
 
-        <div className="max-w-2xl mx-auto relative z-10">
-          <div className="text-center mb-8">
-            <h1 className="text-4xl font-bold text-vh-red mb-2">Mental Math Trainer</h1>
-            <p className="text-gray-600">Challenge your mind with lightning-fast calculations</p>
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10">
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-vh-red to-vh-dark-red rounded-3xl mb-8 shadow-2xl">
+              <Target className="text-white" size={40} />
+            </div>
+            <h1 className="text-6xl lg:text-7xl font-black text-gray-900 mb-6">
+              Mental Math <span className="bg-gradient-to-r from-vh-red to-vh-dark-red bg-clip-text text-transparent">Trainer</span>
+            </h1>
+            <p className="text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed">Challenge your mind with lightning-fast calculations and compete for the top scores</p>
           </div>
 
-          <div className="bg-white rounded-xl shadow-lg p-8 mb-6 border-t-4 border-vh-red">
-            <div className="space-y-6">
-              <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-3">
-                  Choose Operations (Select one or more)
-                </label>
+          <div className="group relative mb-12">
+            <div className="absolute inset-0 bg-gradient-to-br from-vh-red/10 to-transparent rounded-3xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
+            <div className="relative bg-white rounded-3xl shadow-2xl p-12 border border-gray-100 group-hover:shadow-4xl transition-all duration-500">
+              <div className="space-y-8">
+                <div>
+                  <label className="block text-lg font-black text-gray-900 mb-6">
+                    Choose Operations (Select one or more)
+                  </label>
                 <div className="grid grid-cols-2 gap-3">
                   {Object.entries(operationLabels).map(([key, label]) => (
                     <button
@@ -529,15 +562,15 @@ const MentalMathApp = () => {
                 )}
               </div>
               
-              <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">
-                  Difficulty Level
-                </label>
-                <select 
-                  value={difficulty} 
-                  onChange={(e) => setDifficulty(e.target.value as 'easy' | 'medium' | 'hard' | 'extreme')}
-                  className="w-full p-3 border-2 border-gray-200 rounded-lg focus:ring-2 focus:ring-vh-red focus:border-vh-red font-medium"
-                >
+                <div>
+                  <label className="block text-lg font-black text-gray-900 mb-4">
+                    Difficulty Level
+                  </label>
+                  <select 
+                    value={difficulty} 
+                    onChange={(e) => setDifficulty(e.target.value as 'easy' | 'medium' | 'hard' | 'extreme')}
+                    className="w-full p-4 border-2 border-gray-200 rounded-2xl focus:ring-2 focus:ring-vh-red focus:border-vh-red font-medium text-lg bg-gradient-to-r from-gray-50 to-white"
+                  >
                   <option value="easy">Easy - Single Digits</option>
                   <option value="medium">Medium - Mixed Difficulty</option>
                   <option value="hard">Hard - Double Digits</option>
@@ -552,15 +585,15 @@ const MentalMathApp = () => {
                 )}
               </div>
               
-              <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">
-                  Time Limit
-                </label>
-                <select 
-                  value={timeLimit} 
-                  onChange={(e) => setTimeLimit(parseFloat(e.target.value))}
-                  className="w-full p-3 border-2 border-gray-200 rounded-lg focus:ring-2 focus:ring-vh-red focus:border-vh-red font-medium"
-                >
+                <div>
+                  <label className="block text-lg font-black text-gray-900 mb-4">
+                    Time Limit
+                  </label>
+                  <select 
+                    value={timeLimit} 
+                    onChange={(e) => setTimeLimit(parseFloat(e.target.value))}
+                    className="w-full p-4 border-2 border-gray-200 rounded-2xl focus:ring-2 focus:ring-vh-red focus:border-vh-red font-medium text-lg bg-gradient-to-r from-gray-50 to-white"
+                  >
                   {timeOptions.map(option => (
                     <option key={option.value} value={option.value}>
                       {option.label}
@@ -571,44 +604,43 @@ const MentalMathApp = () => {
             </div>
           </div>
 
-          <div className="flex gap-4">
+          <div className="flex flex-col sm:flex-row gap-6 justify-center">
             <button 
               onClick={startGame}
-              className="flex-1 bg-vh-red text-white py-4 px-6 rounded-xl hover:bg-vh-dark-red transition-colors flex items-center justify-center gap-2 font-semibold shadow-lg"
+              className="group bg-gradient-to-r from-vh-red to-vh-dark-red text-white px-12 py-4 rounded-2xl font-bold text-lg hover:from-vh-dark-red hover:to-vh-red transition-all duration-300 flex items-center justify-center gap-3 shadow-2xl hover:shadow-vh-red/25 transform hover:-translate-y-1"
             >
-              <Play size={20} />
-              Start Game
+              <Play size={24} />
+              Start Challenge
             </button>
             <button 
               onClick={() => {
                 fetchLeaderboard();
                 setGameState('leaderboard');
               }}
-              className="bg-white border-2 border-vh-red text-vh-red py-4 px-6 rounded-xl hover:bg-vh-beige/20 transition-colors flex items-center justify-center gap-2 font-semibold"
+              className="group border-2 border-vh-red text-vh-red px-12 py-4 rounded-2xl font-bold text-lg hover:bg-vh-red hover:text-white transition-all duration-300 flex items-center justify-center gap-3 shadow-lg"
             >
-              <Eye size={20} />
-              Leaderboard
+              <Trophy size={24} />
+              View Leaderboard
             </button>
           </div>
         </div>
       </div>
+    </div>
     );
   }
 
   if (gameState === 'playing') {
     return (
-      <div className="min-h-screen bg-vh-beige/20 p-4 relative overflow-hidden">
-        {/* Background decoration */}
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute top-20 left-10 text-vh-red text-8xl font-bold">+</div>
-          <div className="absolute top-40 right-20 text-vh-red text-6xl font-bold">×</div>
-          <div className="absolute bottom-20 left-20 text-vh-red text-7xl font-bold">÷</div>
-          <div className="absolute bottom-40 right-10 text-vh-red text-9xl font-bold">−</div>
+      <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-vh-dark-red relative overflow-hidden">
+        {/* Dynamic Background Elements */}
+        <div className="absolute inset-0">
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-vh-red/20 to-transparent rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-l from-vh-beige/10 to-transparent rounded-full blur-3xl animate-pulse" style={{animationDelay: '1s'}}></div>
         </div>
 
-        <div className="max-w-2xl mx-auto relative z-10">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 relative z-10">
           {/* Header with stats */}
-          <div className="bg-white rounded-xl shadow-lg p-6 mb-6 border-t-4 border-vh-red">
+          <div className="bg-white/95 backdrop-blur-xl rounded-3xl shadow-2xl p-8 mb-8 border border-white/20">
             <div className="flex justify-between items-center mb-4">
               <div className="flex items-center gap-2">
                 <Clock size={24} className="text-vh-red" />
@@ -642,17 +674,18 @@ const MentalMathApp = () => {
           </div>
 
           {/* Question */}
-          <div className="bg-white rounded-xl shadow-lg p-10 mb-6 border-t-4 border-vh-red">
-            <div className="text-center">
-              <div className="mb-4">
-                <span className="text-sm font-semibold text-gray-500 uppercase tracking-wide">
+          <div className="group relative mb-8">
+            <div className="absolute inset-0 bg-gradient-to-br from-vh-red/30 to-vh-dark-red/30 rounded-3xl blur-2xl group-hover:blur-3xl transition-all duration-500"></div>
+            <div className="relative bg-white/95 backdrop-blur-xl rounded-3xl shadow-2xl p-12 border border-white/20 text-center">
+              <div className="mb-6">
+                <span className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-vh-red to-vh-dark-red text-white rounded-full text-sm font-bold uppercase tracking-wide shadow-lg">
                   {currentQuestion?.operation} • {difficulty}
+                  {difficulty === 'extreme' && <span className="ml-2 text-lg">🔥</span>}
                 </span>
-                {difficulty === 'extreme' && <span className="ml-2 text-lg">🔥</span>}
               </div>
               {currentQuestion && (
-                <div className="text-5xl font-bold text-gray-800 mb-8">
-                  {currentQuestion.num1} {currentQuestion.symbol} {currentQuestion.num2} = ?
+                <div className="text-6xl lg:text-7xl font-black text-gray-900 mb-10 tracking-tight">
+                  {currentQuestion.num1} <span className="text-vh-red">{currentQuestion.symbol}</span> {currentQuestion.num2} = <span className="text-vh-red">?</span>
                 </div>
               )}
               
@@ -661,7 +694,7 @@ const MentalMathApp = () => {
                 value={userAnswer}
                 onChange={(e) => setUserAnswer(e.target.value)}
                 onKeyPress={handleKeyPress}
-                className="text-3xl font-bold text-center p-4 border-2 border-gray-300 rounded-xl focus:ring-2 focus:ring-vh-red focus:border-vh-red w-64"
+                className="text-4xl font-black text-center p-6 border-3 border-gray-200 rounded-2xl focus:ring-4 focus:ring-vh-red/50 focus:border-vh-red bg-gradient-to-r from-gray-50 to-white w-80 shadow-xl transition-all duration-300"
                 placeholder="Your answer"
                 autoFocus
               />
@@ -669,19 +702,20 @@ const MentalMathApp = () => {
           </div>
 
           {/* Action buttons */}
-          <div className="flex gap-4">
+          <div className="flex flex-col sm:flex-row gap-4">
             <button
               onClick={submitAnswer}
               disabled={userAnswer === ''}
-              className="flex-1 bg-vh-red text-white py-4 px-6 rounded-xl hover:bg-vh-dark-red disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors font-semibold shadow-lg"
+              className="group flex-1 bg-gradient-to-r from-vh-red to-vh-dark-red text-white py-4 px-8 rounded-2xl hover:from-vh-dark-red hover:to-vh-red disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 font-bold text-lg shadow-2xl hover:shadow-vh-red/25 transform hover:-translate-y-1 disabled:transform-none"
             >
+              <Target className="inline mr-3" size={20} />
               Submit Answer
             </button>
             <button
               onClick={skipQuestion}
-              className="bg-orange-500 text-white py-4 px-6 rounded-xl hover:bg-orange-600 transition-colors flex items-center gap-2 font-semibold shadow-lg"
+              className="group bg-gradient-to-r from-orange-500 to-red-500 text-white py-4 px-8 rounded-2xl hover:from-orange-600 hover:to-red-600 transition-all duration-300 flex items-center justify-center gap-3 font-bold text-lg shadow-xl hover:shadow-orange-500/25 transform hover:-translate-y-1"
             >
-              <SkipForward size={18} />
+              <SkipForward size={20} />
               Skip (-pts)
             </button>
           </div>
@@ -692,40 +726,77 @@ const MentalMathApp = () => {
 
   if (gameState === 'finished') {
     return (
-      <div className="min-h-screen bg-vh-beige/20 p-4 relative overflow-hidden">
-        {/* Background decoration */}
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute top-20 left-10 text-vh-red text-8xl font-bold">+</div>
-          <div className="absolute top-40 right-20 text-vh-red text-6xl font-bold">×</div>
-          <div className="absolute bottom-20 left-20 text-vh-red text-7xl font-bold">÷</div>
-          <div className="absolute bottom-40 right-10 text-vh-red text-9xl font-bold">−</div>
+      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
+        {/* Celebration Background */}
+        <div className="absolute inset-0">
+          <div className="absolute top-20 right-20 w-72 h-72 bg-gradient-to-r from-green-400/10 to-vh-red/10 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-20 left-20 w-96 h-96 bg-gradient-to-l from-vh-beige/20 to-green-400/10 rounded-full blur-3xl animate-pulse" style={{animationDelay: '1s'}}></div>
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full opacity-5">
+            <div className="grid grid-cols-8 gap-8">
+              {Array.from({ length: 64 }).map((_, i) => (
+                <div key={i} className="aspect-square border border-vh-red/20 rounded-full animate-pulse" style={{animationDelay: `${i * 50}ms`}}></div>
+              ))}
+            </div>
+          </div>
         </div>
 
-        <div className="max-w-xl mx-auto relative z-10">
-          <div className="bg-white rounded-xl shadow-lg p-8 border-t-4 border-vh-red">
-            <div className="text-center mb-8">
-              <h1 className="text-3xl font-bold text-vh-red mb-2">Game Complete!</h1>
-              <p className="text-gray-600">Great job on completing the challenge!</p>
-            </div>
-            
-            <div className="space-y-4 mb-8">
-              <div className="bg-vh-beige/30 p-6 rounded-lg border border-vh-beige">
-                <div className="text-3xl font-bold text-vh-red text-center mb-2">
-                  Final Score: {score}
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10">
+          <div className="group relative">
+            <div className="absolute inset-0 bg-gradient-to-br from-vh-red/20 to-green-400/20 rounded-3xl blur-2xl group-hover:blur-3xl transition-all duration-700"></div>
+            <div className="relative bg-white rounded-3xl shadow-2xl p-12 border border-gray-100 group-hover:shadow-4xl transition-all duration-700">
+              <div className="text-center mb-12">
+                <div className="inline-flex items-center justify-center w-24 h-24 bg-gradient-to-br from-green-400 to-vh-red rounded-full mb-8 shadow-2xl">
+                  <Award className="text-white" size={48} />
                 </div>
-                <div className="text-center text-gray-600">
-                  {score > 0 ? 'Excellent work!' : 'Keep practicing to improve!'}
+                <h1 className="text-5xl lg:text-6xl font-black text-gray-900 mb-4">
+                  Challenge <span className="bg-gradient-to-r from-green-400 to-vh-red bg-clip-text text-transparent">Complete!</span>
+                </h1>
+                <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">Outstanding performance! You've completed the mental math challenge.</p>
+              </div>
+            
+              <div className="mb-12">
+                <div className="relative group/score">
+                  <div className="absolute inset-0 bg-gradient-to-r from-vh-red/20 to-green-400/20 rounded-3xl blur-xl group-hover/score:blur-2xl transition-all duration-500"></div>
+                  <div className="relative bg-gradient-to-br from-gray-50 to-white rounded-3xl p-10 border border-gray-200 shadow-xl text-center">
+                    <div className="text-6xl lg:text-7xl font-black mb-4">
+                      <span className="bg-gradient-to-r from-vh-red to-green-400 bg-clip-text text-transparent">{score}</span>
+                    </div>
+                    <div className="text-2xl font-bold text-gray-600 mb-2">Final Score</div>
+                    <div className="text-lg text-gray-500">
+                      {score > 0 ? 'Exceptional performance!' : 'Keep practicing to reach new heights!'}
+                    </div>
+                  </div>
                 </div>
               </div>
               
-              <div className="grid grid-cols-2 gap-4">
-                <div className="bg-green-50 p-4 rounded-lg text-center border border-green-200">
-                  <div className="text-2xl font-bold text-green-600">{questionsCorrect}</div>
-                  <div className="text-sm text-green-700 font-medium">Correct</div>
+              <div className="grid md:grid-cols-4 gap-6 mb-12">
+                <div className="group relative">
+                  <div className="absolute inset-0 bg-gradient-to-br from-green-400/20 to-transparent rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
+                  <div className="relative bg-gradient-to-br from-green-50 to-green-100 rounded-2xl p-6 text-center border border-green-200 shadow-lg">
+                    <div className="text-3xl font-black text-green-600 mb-2">{questionsCorrect}</div>
+                    <div className="text-green-700 font-bold">Correct</div>
+                  </div>
                 </div>
-                <div className="bg-red-50 p-4 rounded-lg text-center border border-red-200">
-                  <div className="text-2xl font-bold text-red-600">{questionsAnswered - questionsCorrect}</div>
-                  <div className="text-sm text-red-700 font-medium">Incorrect</div>
+                <div className="group relative">
+                  <div className="absolute inset-0 bg-gradient-to-br from-red-400/20 to-transparent rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
+                  <div className="relative bg-gradient-to-br from-red-50 to-red-100 rounded-2xl p-6 text-center border border-red-200 shadow-lg">
+                    <div className="text-3xl font-black text-red-600 mb-2">{questionsAnswered - questionsCorrect}</div>
+                    <div className="text-red-700 font-bold">Incorrect</div>
+                  </div>
+                </div>
+                <div className="group relative">
+                  <div className="absolute inset-0 bg-gradient-to-br from-blue-400/20 to-transparent rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
+                  <div className="relative bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl p-6 text-center border border-blue-200 shadow-lg">
+                    <div className="text-3xl font-black text-blue-600 mb-2">{accuracy}%</div>
+                    <div className="text-blue-700 font-bold">Accuracy</div>
+                  </div>
+                </div>
+                <div className="group relative">
+                  <div className="absolute inset-0 bg-gradient-to-br from-orange-400/20 to-transparent rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
+                  <div className="relative bg-gradient-to-br from-orange-50 to-orange-100 rounded-2xl p-6 text-center border border-orange-200 shadow-lg">
+                    <div className="text-3xl font-black text-orange-600 mb-2">{questionsSkipped}</div>
+                    <div className="text-orange-700 font-bold">Skipped</div>
+                  </div>
                 </div>
               </div>
               
@@ -749,27 +820,27 @@ const MentalMathApp = () => {
                 </div>
               </div>
             </div>
-            
-            <div className="flex gap-4">
-              <button 
-                onClick={() => setGameState('setup')}
-                className="flex-1 bg-vh-red text-white py-3 px-6 rounded-xl hover:bg-vh-dark-red transition-colors flex items-center justify-center gap-2 font-semibold shadow-lg"
-              >
-                <RotateCcw size={20} />
-                Play Again
-              </button>
-              <button 
-                onClick={() => {
-                  fetchLeaderboard();
-                  setGameState('leaderboard');
-                }}
-                className="bg-white border-2 border-vh-red text-vh-red py-3 px-6 rounded-xl hover:bg-vh-beige/20 transition-colors flex items-center justify-center gap-2 font-semibold"
-              >
-                <Trophy size={20} />
-                Leaderboard
-              </button>
-            </div>
           </div>
+            
+          <div className="flex flex-col sm:flex-row gap-6 justify-center">
+                <button 
+                  onClick={() => setGameState('setup')}
+                  className="group bg-gradient-to-r from-vh-red to-vh-dark-red text-white px-12 py-4 rounded-2xl font-bold text-lg hover:from-vh-dark-red hover:to-vh-red transition-all duration-300 flex items-center justify-center gap-3 shadow-2xl hover:shadow-vh-red/25 transform hover:-translate-y-1"
+                >
+                  <RotateCcw size={24} />
+                  Play Again
+                </button>
+                <button 
+                  onClick={() => {
+                    fetchLeaderboard();
+                    setGameState('leaderboard');
+                  }}
+                  className="group border-2 border-vh-red text-vh-red px-12 py-4 rounded-2xl font-bold text-lg hover:bg-vh-red hover:text-white transition-all duration-300 flex items-center justify-center gap-3 shadow-lg"
+                >
+                  <Trophy size={24} />
+                  View Leaderboard
+                </button>
+              </div>
         </div>
       </div>
     );

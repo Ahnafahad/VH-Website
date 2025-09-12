@@ -16,7 +16,10 @@
       "Bash(attrib:*)",
       "Bash(del .next/trace)",
       "Bash(npx tsc:*)",
-      "Bash(curl:*)"
+      "Bash(curl:*)",
+      "Bash(mongosh:*)",
+      "Bash(npx next:*)",
+      "Bash(sed:*)"
     ],
     "deny": [],
     "ask": []

@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { Clock, BookOpen, Target, Award, RefreshCw } from 'lucide-react';
+import { Clock, BookOpen, Target, Award, RefreshCw, Trophy, RotateCcw } from 'lucide-react';
 import ProtectedRoute from '@/components/ProtectedRoute';
 
 interface Question {
@@ -20,6 +20,16 @@ interface QuizResult {
     userAnswer: string;
     isCorrect: boolean;
   }>;
+}
+
+interface LeaderboardEntry {
+  playerName: string;
+  totalQuestionsAnswered: number;
+  totalQuestionsCorrect: number;
+  gamesPlayed: number;
+  averageAccuracy: number;
+  lastPlayed: Date;
+  uniqueSectionsCount: number;
 }
 
 interface Explanation {
@@ -58,6 +68,9 @@ const VocabularyQuizApp = () => {
   const [quizResults, setQuizResults] = useState<QuizResult | null>(null);
   const [explanations, setExplanations] = useState<Explanation[]>([]);
   const [error, setError] = useState<string | null>(null);
+  const [leaderboard, setLeaderboard] = useState<LeaderboardEntry[]>([]);
+  const [showLeaderboard, setShowLeaderboard] = useState(false);
+  const [isLoadingLeaderboard, setIsLoadingLeaderboard] = useState(false);
 
   // Timer logic
   useEffect(() => {
@@ -267,6 +280,47 @@ Respond with JSON:
     }
   };
 
+  // Save quiz result to database
+  const saveQuizResult = async (result: QuizResult) => {
+    try {
+      const response = await fetch('/api/vocab-quiz/scores', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          questionsAnswered: result.totalQuestions,
+          questionsCorrect: result.correctAnswers,
+          totalSections: selectedSections.length,
+          selectedSections: selectedSections,
+          difficulty: 'mixed'
+        }),
+      });
+      
+      if (response.ok) {
+        console.log('Quiz result saved successfully');
+      }
+    } catch (error) {
+      console.error('Error saving quiz result:', error);
+    }
+  };
+
+  // Fetch leaderboard data
+  const fetchLeaderboard = async () => {
+    setIsLoadingLeaderboard(true);
+    try {
+      const response = await fetch('/api/vocab-quiz/leaderboard');
+      if (response.ok) {
+        const data = await response.json();
+        setLeaderboard(data.leaderboard);
+      }
+    } catch (error) {
+      console.error('Error fetching leaderboard:', error);
+    } finally {
+      setIsLoadingLeaderboard(false);
+    }
+  };
+
   // Finish quiz and calculate results
   const finishQuiz = () => {
     const results = questions.map((q, index) => ({
@@ -279,14 +333,16 @@ Respond with JSON:
     const wrongCount = results.length - correctCount;
     const score = correctCount * 1 + wrongCount * (-0.25);
 
-    setQuizResults({
+    const quizResult = {
       totalQuestions: results.length,
       correctAnswers: correctCount,
       wrongAnswers: wrongCount,
       score: Math.max(0, score),
       results: results
-    });
+    };
 
+    setQuizResults(quizResult);
+    saveQuizResult(quizResult);
     generateExplanations(results);
     setCurrentScreen('results');
   };
@@ -301,34 +357,142 @@ Respond with JSON:
     setQuizResults(null);
     setExplanations([]);
     setError(null);
+    setShowLeaderboard(false);
   };
+
+  // Leaderboard Screen
+  if (showLeaderboard) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
+        {/* Professional Background Elements */}
+        <div className="absolute inset-0">
+          <div className="absolute top-20 right-20 w-72 h-72 bg-vh-red/5 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-20 left-20 w-96 h-96 bg-vh-beige/10 rounded-full blur-3xl"></div>
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full opacity-3">
+            <div className="grid grid-cols-12 gap-4 transform rotate-12">
+              {Array.from({ length: 144 }).map((_, i) => (
+                <div key={i} className="h-1 bg-gradient-to-r from-vh-red/10 to-transparent rounded animate-pulse" style={{ animationDelay: `${i * 100}ms` }}></div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10">
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-vh-red to-vh-dark-red rounded-3xl mb-8 shadow-2xl">
+              <Trophy className="text-white" size={40} />
+            </div>
+            <h1 className="text-6xl lg:text-7xl font-black text-gray-900 mb-6">
+              Vocabulary <span className="bg-gradient-to-r from-vh-red to-vh-dark-red bg-clip-text text-transparent">Champions</span>
+            </h1>
+            <p className="text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed">Top performers based on lifetime questions answered</p>
+          </div>
+
+          <div className="group relative mb-16">
+            <div className="absolute inset-0 bg-gradient-to-br from-vh-red/20 to-transparent rounded-3xl blur-2xl group-hover:blur-3xl opacity-0 group-hover:opacity-100 transition-all duration-700"></div>
+            <div className="relative bg-white rounded-3xl shadow-2xl p-10 border border-gray-100 group-hover:shadow-4xl group-hover:border-vh-red/20 transition-all duration-700">
+              <div className="flex items-center mb-8">
+                <div className="w-16 h-16 bg-gradient-to-br from-vh-red to-vh-dark-red rounded-2xl flex items-center justify-center mr-6 shadow-xl">
+                  <BookOpen className="text-white" size={32} />
+                </div>
+                <h2 className="text-3xl font-black text-gray-900">Lifetime Questions Leaderboard</h2>
+              </div>
+              
+              {isLoadingLeaderboard ? (
+                <div className="text-center py-12">
+                  <RefreshCw className="animate-spin mx-auto mb-4 text-vh-red" size={48} />
+                  <p className="text-gray-600 text-lg">Loading leaderboard...</p>
+                </div>
+              ) : (
+                <div className="space-y-4">
+                  {leaderboard.slice(0, 20).map((entry, index) => (
+                    <div key={index} className="group/item flex items-center justify-between p-4 bg-gradient-to-r from-gray-50 to-white rounded-2xl border border-gray-100 hover:border-vh-red/30 hover:shadow-lg transition-all duration-300">
+                      <div className="flex items-center gap-4">
+                        <span className={`w-12 h-12 rounded-2xl flex items-center justify-center text-white font-bold text-lg shadow-lg ${
+                          index === 0 ? 'bg-gradient-to-r from-yellow-400 to-yellow-600' : 
+                          index === 1 ? 'bg-gradient-to-r from-gray-400 to-gray-600' : 
+                          index === 2 ? 'bg-gradient-to-r from-amber-600 to-amber-800' : 
+                          'bg-gradient-to-r from-vh-red to-vh-dark-red'
+                        }`}>
+                          {index + 1}
+                        </span>
+                        <div>
+                          <div className="font-black text-gray-900 text-lg">{entry.playerName || 'Anonymous'}</div>
+                          <div className="text-sm text-gray-600">
+                            {entry.gamesPlayed} games • {entry.averageAccuracy.toFixed(1)}% accuracy • {entry.uniqueSectionsCount} sections
+                          </div>
+                        </div>
+                      </div>
+                      <div className="text-right">
+                        <div className="font-black text-vh-red text-2xl">{entry.totalQuestionsAnswered}</div>
+                        <div className="text-xs text-gray-500 font-medium">Questions Answered</div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
+
+          <div className="text-center">
+            <button 
+              onClick={() => setShowLeaderboard(false)}
+              className="group bg-gradient-to-r from-vh-red to-vh-dark-red text-white px-12 py-4 rounded-2xl font-bold text-lg hover:from-vh-dark-red hover:to-vh-red transition-all duration-300 shadow-2xl hover:shadow-vh-red/25 transform hover:-translate-y-1"
+            >
+              <Target className="inline mr-3" size={20} />
+              Back to Quiz
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   // Section Selection Screen
   if (currentScreen === 'setup') {
     return (
-      <div className="min-h-screen bg-vh-beige/20 p-4 relative overflow-hidden">
-        <div className="max-w-4xl mx-auto relative z-10">
-          <div className="text-center mb-8">
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-vh-red to-vh-dark-red rounded-lg mb-4">
-              <BookOpen className="text-white" size={32} />
+      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
+        {/* Professional Background Elements */}
+        <div className="absolute inset-0">
+          <div className="absolute top-20 right-20 w-72 h-72 bg-vh-red/5 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-20 left-20 w-96 h-96 bg-vh-beige/10 rounded-full blur-3xl"></div>
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full opacity-3">
+            <div className="grid grid-cols-12 gap-4 transform rotate-12">
+              {Array.from({ length: 144 }).map((_, i) => (
+                <div key={i} className="h-1 bg-gradient-to-r from-vh-red/10 to-transparent rounded animate-pulse" style={{ animationDelay: `${i * 100}ms` }}></div>
+              ))}
             </div>
-            <h1 className="text-4xl font-bold text-gray-800 mb-2 flex items-center justify-center gap-3">
-              Vocabulary Quiz
+          </div>
+        </div>
+
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10">
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-vh-red to-vh-dark-red rounded-3xl mb-8 shadow-2xl">
+              <BookOpen className="text-white" size={40} />
+            </div>
+            <h1 className="text-6xl lg:text-7xl font-black text-gray-900 mb-6">
+              Vocabulary <span className="bg-gradient-to-r from-vh-red to-vh-dark-red bg-clip-text text-transparent">Quiz</span>
             </h1>
-            <p className="text-vh-red font-medium text-lg">Test your vocabulary mastery with adaptive difficulty</p>
+            <p className="text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed">Master academic vocabulary with AI-powered adaptive questions</p>
             
-            <div className="mt-4 p-4 bg-white rounded-lg border-l-4 border-vh-red shadow-lg">
-              <p className="text-sm font-bold text-vh-red mb-1">
-                🚀 Powered by AI-Generated Questions
-              </p>
-              <p className="text-xs text-gray-600">
-                This quiz uses advanced AI to generate custom questions tailored to your selected sections
-              </p>
+            <div className="mt-8 group relative max-w-2xl mx-auto">
+              <div className="absolute inset-0 bg-gradient-to-r from-vh-red/10 to-vh-beige/10 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
+              <div className="relative bg-white/80 backdrop-blur-sm rounded-2xl p-6 border border-gray-200 shadow-lg">
+                <p className="text-lg font-bold text-vh-red mb-2 flex items-center justify-center gap-2">
+                  <span className="text-2xl">🚀</span>
+                  Powered by Advanced AI
+                </p>
+                <p className="text-gray-700">
+                  Custom questions generated in real-time, tailored to your selected vocabulary sections
+                </p>
+              </div>
             </div>
           </div>
 
-          <div className="bg-white rounded-xl shadow-lg p-6 mb-6 border-t-4 border-vh-red">
-            <h2 className="text-2xl font-semibold mb-4 text-gray-800">Select Vocabulary Sections</h2>
+          <div className="group relative mb-12">
+            <div className="absolute inset-0 bg-gradient-to-br from-vh-red/10 to-transparent rounded-3xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
+            <div className="relative bg-white rounded-3xl shadow-2xl p-10 border border-gray-100 group-hover:shadow-4xl transition-all duration-500">
+              <h2 className="text-3xl font-black text-gray-900 mb-8">Select Vocabulary Sections</h2>
             <div className="grid grid-cols-2 md:grid-cols-5 gap-3 mb-6">
               {Object.keys(vocabularySections).map(section => (
                 <button
@@ -358,9 +522,12 @@ Respond with JSON:
               </div>
             )}
           </div>
+        </div>
 
-          <div className="bg-white rounded-xl shadow-lg p-6 mb-6 border-t-4 border-vh-red">
-            <h2 className="text-2xl font-semibold mb-4 text-gray-800">Quiz Configuration</h2>
+        <div className="group relative mb-12">
+            <div className="absolute inset-0 bg-gradient-to-br from-vh-beige/10 to-transparent rounded-3xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
+            <div className="relative bg-white rounded-3xl shadow-2xl p-10 border border-gray-100 group-hover:shadow-4xl transition-all duration-500">
+              <h2 className="text-3xl font-black text-gray-900 mb-8">Quiz Configuration</h2>
             
             <div className="grid md:grid-cols-2 gap-6">
               <div>
@@ -390,8 +557,9 @@ Respond with JSON:
               </div>
             </div>
           </div>
+        </div>
 
-          <div className="text-center">
+        <div className="text-center">
             {error && (
               <div className="bg-red-50 border border-red-200 rounded-lg p-4 mb-4 shadow-md">
                 <div className="flex items-start gap-3">
@@ -440,23 +608,35 @@ Respond with JSON:
               </div>
             )}
             
-            <button
-              onClick={generateQuestions}
-              disabled={selectedSections.length === 0 || isLoading}
-              className="bg-gradient-to-r from-vh-red to-vh-dark-red text-white px-8 py-3 rounded-lg text-lg font-semibold hover:from-vh-dark-red hover:to-vh-red disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 flex items-center gap-2 mx-auto shadow-lg"
-            >
-              {isLoading ? (
-                <>
-                  <RefreshCw className="animate-spin" size={20} />
-                  Generating Questions...
-                </>
-              ) : (
-                <>
-                  <Target size={20} />
-                  Start Quiz
-                </>
-              )}
-            </button>
+            <div className="flex flex-col sm:flex-row gap-6 justify-center">
+              <button
+                onClick={generateQuestions}
+                disabled={selectedSections.length === 0 || isLoading}
+                className="group bg-gradient-to-r from-vh-red to-vh-dark-red text-white px-12 py-4 rounded-2xl font-bold text-lg hover:from-vh-dark-red hover:to-vh-red disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 flex items-center justify-center gap-3 shadow-2xl hover:shadow-vh-red/25 transform hover:-translate-y-1 disabled:transform-none"
+              >
+                {isLoading ? (
+                  <>
+                    <RefreshCw className="animate-spin" size={24} />
+                    Generating Questions...
+                  </>
+                ) : (
+                  <>
+                    <Target size={24} />
+                    Start Quiz
+                  </>
+                )}
+              </button>
+              <button 
+                onClick={() => {
+                  fetchLeaderboard();
+                  setShowLeaderboard(true);
+                }}
+                className="group border-2 border-vh-red text-vh-red px-12 py-4 rounded-2xl font-bold text-lg hover:bg-vh-red hover:text-white transition-all duration-300 flex items-center justify-center gap-3 shadow-lg"
+              >
+                <Trophy size={24} />
+                View Champions
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -468,50 +648,62 @@ Respond with JSON:
     const currentQuestion = questions[currentQuestionIndex];
     
     return (
-      <div className="min-h-screen bg-vh-beige/20 p-4 relative overflow-hidden">
-        <div className="max-w-4xl mx-auto relative z-10">
-          <div className="bg-white rounded-xl shadow-lg p-4 mb-6 border-t-4 border-vh-red">
-            <div className="flex justify-between items-center">
-              <div className="flex items-center gap-4">
-                <span className="text-lg font-semibold">
+      <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-vh-dark-red relative overflow-hidden">
+        {/* Dynamic Background Elements */}
+        <div className="absolute inset-0">
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-vh-red/20 to-transparent rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-l from-vh-beige/10 to-transparent rounded-full blur-3xl animate-pulse" style={{animationDelay: '1s'}}></div>
+        </div>
+
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 relative z-10">
+          {/* Header with stats */}
+          <div className="bg-white/95 backdrop-blur-xl rounded-3xl shadow-2xl p-8 mb-8 border border-white/20">
+            <div className="flex justify-between items-center mb-6">
+              <div className="flex items-center gap-6">
+                <span className="text-2xl font-black text-gray-900">
                   Question {currentQuestionIndex + 1} of {questions.length}
                 </span>
-                <div className="bg-vh-beige px-3 py-1 rounded-full text-sm font-medium text-vh-red">
-                  {currentQuestion.difficulty.toUpperCase()}
+                <div className="bg-gradient-to-r from-vh-red to-vh-dark-red text-white px-4 py-2 rounded-2xl text-sm font-bold uppercase tracking-wide shadow-lg">
+                  {currentQuestion.difficulty}
                 </div>
               </div>
               
-              <div className="flex items-center gap-2 text-lg font-bold">
-                <Clock className={timeRemaining <= 10 ? 'text-red-500' : 'text-vh-red'} />
-                <span className={timeRemaining <= 10 ? 'text-red-500' : 'text-vh-red'}>
+              <div className="flex items-center gap-3 text-2xl font-black">
+                <Clock className={timeRemaining <= 10 ? 'text-red-500' : 'text-vh-red'} size={28} />
+                <span className={`${timeRemaining <= 10 ? 'text-red-500 animate-pulse' : 'text-vh-red'} font-mono`}>
                   {timeRemaining}s
                 </span>
               </div>
             </div>
             
-            <div className="mt-3 bg-gray-200 rounded-full h-2">
+            <div className="bg-gray-200 rounded-full h-3 overflow-hidden">
               <div 
-                className="bg-gradient-to-r from-vh-red to-vh-dark-red h-2 rounded-full transition-all duration-300"
+                className="bg-gradient-to-r from-vh-red to-vh-dark-red h-3 rounded-full transition-all duration-500 shadow-lg"
                 style={{ width: `${((currentQuestionIndex + 1) / questions.length) * 100}%` }}
               />
             </div>
           </div>
 
-          <div className="bg-white rounded-xl shadow-lg p-8 mb-6 border-t-4 border-vh-red">
-            <h2 className="text-2xl font-semibold mb-6 text-gray-800 leading-relaxed">
-              {currentQuestion.sentence}
-            </h2>
-            
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-              {currentQuestion.wordBank.map((word, index) => (
-                <button
-                  key={index}
-                  onClick={() => handleAnswerSelect(word)}
-                  className="p-3 border-2 border-gray-200 rounded-lg hover:border-vh-red hover:bg-vh-beige/20 transition-all text-left font-medium hover:shadow-md"
-                >
-                  {word}
-                </button>
-              ))}
+          {/* Question */}
+          <div className="group relative mb-8">
+            <div className="absolute inset-0 bg-gradient-to-br from-vh-red/30 to-vh-dark-red/30 rounded-3xl blur-2xl group-hover:blur-3xl transition-all duration-500"></div>
+            <div className="relative bg-white/95 backdrop-blur-xl rounded-3xl shadow-2xl p-12 border border-white/20">
+              <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 leading-relaxed mb-10 text-center">
+                {currentQuestion.sentence}
+              </h2>
+              
+              <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+                {currentQuestion.wordBank.map((word, index) => (
+                  <button
+                    key={index}
+                    onClick={() => handleAnswerSelect(word)}
+                    className="group/word relative bg-gradient-to-r from-gray-50 to-white p-4 border-2 border-gray-200 rounded-2xl hover:border-vh-red hover:shadow-xl transition-all duration-300 text-left font-bold hover:bg-gradient-to-r hover:from-vh-beige/20 hover:to-white transform hover:scale-105"
+                  >
+                    <div className="absolute inset-0 bg-gradient-to-r from-vh-red/10 to-vh-beige/10 rounded-2xl opacity-0 group-hover/word:opacity-100 transition-opacity duration-300"></div>
+                    <span className="relative text-gray-800 group-hover/word:text-vh-red transition-colors duration-300">{word}</span>
+                  </button>
+                ))}
+              </div>
             </div>
           </div>
         </div>
@@ -522,27 +714,58 @@ Respond with JSON:
   // Results Screen
   if (currentScreen === 'results' && quizResults) {
     return (
-      <div className="min-h-screen bg-vh-beige/20 p-4 relative overflow-hidden">
-        <div className="max-w-4xl mx-auto relative z-10">
-          <div className="bg-white rounded-xl shadow-lg p-6 mb-6 border-t-4 border-vh-red">
-            <div className="text-center">
-              <Award className="mx-auto text-vh-red mb-4" size={48} />
-              <h1 className="text-3xl font-bold text-gray-800 mb-2">Quiz Complete!</h1>
-              <div className="text-5xl font-bold text-vh-red mb-4">
-                {quizResults.score.toFixed(2)}
-              </div>
-              <div className="grid grid-cols-3 gap-4 text-center">
-                <div className="bg-green-50 p-4 rounded-lg border border-green-200">
-                  <div className="text-2xl font-bold text-green-600">{quizResults.correctAnswers}</div>
-                  <div className="text-green-700">Correct</div>
+      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
+        {/* Celebration Background */}
+        <div className="absolute inset-0">
+          <div className="absolute top-20 right-20 w-72 h-72 bg-gradient-to-r from-green-400/10 to-vh-red/10 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-20 left-20 w-96 h-96 bg-gradient-to-l from-vh-beige/20 to-green-400/10 rounded-full blur-3xl animate-pulse" style={{animationDelay: '1s'}}></div>
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full opacity-5">
+            <div className="grid grid-cols-8 gap-8">
+              {Array.from({ length: 64 }).map((_, i) => (
+                <div key={i} className="aspect-square border border-vh-red/20 rounded-full animate-pulse" style={{animationDelay: `${i * 50}ms`}}></div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10">
+          <div className="group relative mb-16">
+            <div className="absolute inset-0 bg-gradient-to-br from-vh-red/20 to-green-400/20 rounded-3xl blur-2xl group-hover:blur-3xl transition-all duration-700"></div>
+            <div className="relative bg-white rounded-3xl shadow-2xl p-12 border border-gray-100 group-hover:shadow-4xl transition-all duration-700">
+              <div className="text-center mb-12">
+                <div className="inline-flex items-center justify-center w-24 h-24 bg-gradient-to-br from-green-400 to-vh-red rounded-full mb-8 shadow-2xl">
+                  <Award className="text-white" size={48} />
                 </div>
-                <div className="bg-red-50 p-4 rounded-lg border border-red-200">
-                  <div className="text-2xl font-bold text-red-600">{quizResults.wrongAnswers}</div>
-                  <div className="text-red-700">Wrong</div>
+                <h1 className="text-5xl lg:text-6xl font-black text-gray-900 mb-6">
+                  Quiz <span className="bg-gradient-to-r from-green-400 to-vh-red bg-clip-text text-transparent">Complete!</span>
+                </h1>
+                <div className="text-6xl lg:text-7xl font-black mb-4">
+                  <span className="bg-gradient-to-r from-vh-red to-green-400 bg-clip-text text-transparent">{quizResults.score.toFixed(1)}</span>
                 </div>
-                <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
-                  <div className="text-2xl font-bold text-gray-600">{quizResults.totalQuestions}</div>
-                  <div className="text-gray-600">Total</div>
+                <p className="text-xl text-gray-600 mb-8">Final Score</p>
+                
+                <div className="grid md:grid-cols-3 gap-6">
+                  <div className="group/stat relative">
+                    <div className="absolute inset-0 bg-gradient-to-br from-green-400/20 to-transparent rounded-2xl blur-xl group-hover/stat:blur-2xl transition-all duration-500"></div>
+                    <div className="relative bg-gradient-to-br from-green-50 to-green-100 rounded-2xl p-6 text-center border border-green-200 shadow-lg">
+                      <div className="text-4xl font-black text-green-600 mb-2">{quizResults.correctAnswers}</div>
+                      <div className="text-green-700 font-bold">Correct</div>
+                    </div>
+                  </div>
+                  <div className="group/stat relative">
+                    <div className="absolute inset-0 bg-gradient-to-br from-red-400/20 to-transparent rounded-2xl blur-xl group-hover/stat:blur-2xl transition-all duration-500"></div>
+                    <div className="relative bg-gradient-to-br from-red-50 to-red-100 rounded-2xl p-6 text-center border border-red-200 shadow-lg">
+                      <div className="text-4xl font-black text-red-600 mb-2">{quizResults.wrongAnswers}</div>
+                      <div className="text-red-700 font-bold">Wrong</div>
+                    </div>
+                  </div>
+                  <div className="group/stat relative">
+                    <div className="absolute inset-0 bg-gradient-to-br from-gray-400/20 to-transparent rounded-2xl blur-xl group-hover/stat:blur-2xl transition-all duration-500"></div>
+                    <div className="relative bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl p-6 text-center border border-gray-200 shadow-lg">
+                      <div className="text-4xl font-black text-gray-600 mb-2">{quizResults.totalQuestions}</div>
+                      <div className="text-gray-700 font-bold">Total</div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -613,12 +836,23 @@ Respond with JSON:
             </div>
           </div>
 
-          <div className="text-center">
+          <div className="flex flex-col sm:flex-row gap-6 justify-center">
             <button
               onClick={resetQuiz}
-              className="bg-gradient-to-r from-vh-red to-vh-dark-red text-white px-8 py-3 rounded-lg text-lg font-semibold hover:from-vh-dark-red hover:to-vh-red transition-all duration-300 shadow-lg"
+              className="group bg-gradient-to-r from-vh-red to-vh-dark-red text-white px-12 py-4 rounded-2xl font-bold text-lg hover:from-vh-dark-red hover:to-vh-red transition-all duration-300 flex items-center justify-center gap-3 shadow-2xl hover:shadow-vh-red/25 transform hover:-translate-y-1"
             >
+              <RotateCcw size={24} />
               Take Another Quiz
+            </button>
+            <button 
+              onClick={() => {
+                fetchLeaderboard();
+                setShowLeaderboard(true);
+              }}
+              className="group border-2 border-vh-red text-vh-red px-12 py-4 rounded-2xl font-bold text-lg hover:bg-vh-red hover:text-white transition-all duration-300 flex items-center justify-center gap-3 shadow-lg"
+            >
+              <Trophy size={24} />
+              View Champions
             </button>
           </div>
         </div>

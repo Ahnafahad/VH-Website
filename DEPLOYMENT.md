@@ -12,6 +12,11 @@
    NEXT_PUBLIC_EMAILJS_SERVICE_ID=your_service_id
    NEXT_PUBLIC_EMAILJS_TEMPLATE_ID=your_template_id  
    NEXT_PUBLIC_EMAILJS_PUBLIC_KEY=your_public_key
+   MONGODB_URI=your_mongodb_connection_string
+   NEXTAUTH_SECRET=your_nextauth_secret
+   NEXTAUTH_URL=your_production_url
+   GOOGLE_CLIENT_ID=your_google_oauth_client_id
+   GOOGLE_CLIENT_SECRET=your_google_oauth_client_secret
    ```
 5. **Deploy!**
 
@@ -60,7 +65,26 @@ In Vercel dashboard → Settings → Environment Variables:
 NEXT_PUBLIC_EMAILJS_SERVICE_ID = your_service_id_here
 NEXT_PUBLIC_EMAILJS_TEMPLATE_ID = your_template_id_here
 NEXT_PUBLIC_EMAILJS_PUBLIC_KEY = your_public_key_here
+MONGODB_URI = your_mongodb_connection_string
+NEXTAUTH_SECRET = your_nextauth_secret
+NEXTAUTH_URL = https://your-domain.vercel.app
+GOOGLE_CLIENT_ID = your_google_oauth_client_id
+GOOGLE_CLIENT_SECRET = your_google_oauth_client_secret
 ```
+
+## 🎮 Mental Math Trainer Setup
+
+The application now includes a Mental Math Trainer game with MongoDB leaderboards that requires additional configuration:
+
+### MongoDB Database Setup
+- **Database**: Uses MongoDB Atlas for storing game scores and leaderboards
+- **Collection**: `mathscores` with proper indexes for performance
+- **Connection**: Configured via `MONGODB_URI` environment variable
+
+### Authentication Setup  
+- **Provider**: Google OAuth via NextAuth
+- **Required**: For accessing the mental math trainer and saving scores
+- **Authorized Users**: Configured in `src/data/authorizedEmails.ts`
 
 ## 🔧 Build Configuration
 
