@@ -272,7 +272,7 @@ const MentalMathApp = () => {
   };
 
   // Save game result to database
-  const saveGameResult = async (result: GameResult) => {
+  const saveGameResult = useCallback(async (result: GameResult) => {
     try {
       const response = await fetch('/api/mental-math/scores', {
         method: 'POST',
@@ -294,10 +294,10 @@ const MentalMathApp = () => {
     } catch (error) {
       console.error('Error saving game result:', error);
     }
-  };
+  }, [fetchLeaderboard]);
 
   // Fetch leaderboard data
-  const fetchLeaderboard = async () => {
+  const fetchLeaderboard = useCallback(async () => {
     setIsLoading(true);
     try {
       const response = await fetch('/api/mental-math/leaderboard');
@@ -310,7 +310,7 @@ const MentalMathApp = () => {
     } finally {
       setIsLoading(false);
     }
-  };
+  }, []);
 
   // Handle answer submission
   const submitAnswer = () => {
@@ -373,7 +373,7 @@ const MentalMathApp = () => {
       };
       saveGameResult(gameResult);
     }
-  }, [gameState, score, questionsCorrect, questionsAnswered, difficulty, selectedOperations, timeLimit]);
+  }, [gameState, score, questionsCorrect, questionsAnswered, difficulty, selectedOperations, timeLimit, saveGameResult]);
 
   // Format time display
   const formatTime = (seconds: number) => {
