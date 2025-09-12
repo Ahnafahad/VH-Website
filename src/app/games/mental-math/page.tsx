@@ -610,23 +610,53 @@ const MentalMathApp = () => {
           </div>
 
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
-            <button 
-              onClick={startGame}
-              className="group bg-gradient-to-r from-vh-red to-vh-dark-red text-white px-12 py-4 rounded-2xl font-bold text-lg hover:from-vh-dark-red hover:to-vh-red transition-all duration-300 flex items-center justify-center gap-3 shadow-2xl hover:shadow-vh-red/25 transform hover:-translate-y-1"
-            >
-              <Play size={24} />
-              Start Challenge
-            </button>
-            <button 
-              onClick={() => {
-                fetchLeaderboard();
-                setGameState('leaderboard');
-              }}
-              className="group border-2 border-vh-red text-vh-red px-12 py-4 rounded-2xl font-bold text-lg hover:bg-vh-red hover:text-white transition-all duration-300 flex items-center justify-center gap-3 shadow-lg"
-            >
-              <Trophy size={24} />
-              View Leaderboard
-            </button>
+            {/* Start Challenge Button */}
+            <div className="relative">
+              <button 
+                type="button"
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  console.log('Start Challenge button clicked');
+                  try {
+                    startGame();
+                  } catch (error) {
+                    console.error('Error in startGame:', error);
+                  }
+                }}
+                disabled={selectedOperations.length === 0}
+                className={`group px-12 py-4 rounded-2xl font-bold text-lg transition-all duration-300 flex items-center justify-center gap-3 shadow-2xl ${
+                  selectedOperations.length === 0 
+                    ? 'bg-gray-400 text-gray-200 cursor-not-allowed'
+                    : 'bg-gradient-to-r from-vh-red to-vh-dark-red text-white hover:from-vh-dark-red hover:to-vh-red hover:shadow-vh-red/25 transform hover:-translate-y-1 active:scale-95'
+                }`}
+              >
+                <Play size={24} />
+                Start Challenge
+              </button>
+            </div>
+            
+            {/* View Leaderboard Button */}
+            <div className="relative">
+              <button 
+                type="button"
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  console.log('View Leaderboard button clicked');
+                  try {
+                    fetchLeaderboard();
+                    setGameState('leaderboard');
+                  } catch (error) {
+                    console.error('Error in fetchLeaderboard:', error);
+                  }
+                }}
+                className="group border-2 border-vh-red text-vh-red px-12 py-4 rounded-2xl font-bold text-lg hover:bg-vh-red hover:text-white transition-all duration-300 flex items-center justify-center gap-3 shadow-lg active:scale-95"
+              >
+                <Trophy size={24} />
+                View Leaderboard
+              </button>
+            </div>
           </div>
         </div>
       </div>

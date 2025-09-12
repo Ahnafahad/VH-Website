@@ -95,14 +95,16 @@ const Header = () => {
             )}
             <div className="ml-4 flex items-center space-x-4">
               <LoginButton />
-              <a
-                href="https://forms.fillout.com/t/iCXMk5dbQsus"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-gradient-to-r from-vh-red to-vh-dark-red text-white px-8 py-3 rounded-full font-bold text-sm uppercase tracking-wide hover:shadow-lg hover:shadow-vh-red/25 transform hover:-translate-y-1 transition-all duration-300"
-              >
-                Register Now
-              </a>
+              {!session && (
+                <a
+                  href="https://forms.fillout.com/t/iCXMk5dbQsus"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-gradient-to-r from-vh-red to-vh-dark-red text-white px-8 py-3 rounded-full font-bold text-sm uppercase tracking-wide hover:shadow-lg hover:shadow-vh-red/25 transform hover:-translate-y-1 transition-all duration-300"
+                >
+                  Register Now
+                </a>
+              )}
             </div>
           </nav>
 
@@ -166,15 +168,17 @@ const Header = () => {
                 <div className="mx-2">
                   <LoginButton />
                 </div>
-                <a
-                  href="https://forms.fillout.com/t/iCXMk5dbQsus"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block mx-2 bg-gradient-to-r from-vh-red to-vh-dark-red text-white px-6 py-4 rounded-2xl font-bold text-center uppercase tracking-wide hover:shadow-lg transition-all duration-300"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  Register Now
-                </a>
+                {!session && (
+                  <a
+                    href="https://forms.fillout.com/t/iCXMk5dbQsus"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block mx-2 bg-gradient-to-r from-vh-red to-vh-dark-red text-white px-6 py-4 rounded-2xl font-bold text-center uppercase tracking-wide hover:shadow-lg transition-all duration-300"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    Register Now
+                  </a>
+                )}
               </div>
             </div>
           </div>
