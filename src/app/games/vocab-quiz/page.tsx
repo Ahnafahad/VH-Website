@@ -134,29 +134,32 @@ DO NOT OUTPUT ANYTHING OTHER THAN VALID JSON.`;
         temperature: 0.7
       };
       
-      const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+      const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent?key=AIzaSyBbzvVwymrwjGqKOkD77dkIgEnRGwbL30c`, {
         method: "POST",
         headers: {
-          "Authorization": "Bearer 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",
-          "Content-Type": "application/json",
-          "HTTP-Referer": "https://claude.ai",
-          "X-Title": "Advanced Vocabulary Quiz v3"
+          "Content-Type": "application/json"
         },
-        body: JSON.stringify(requestBody)
+        body: JSON.stringify({
+          contents: [{
+            parts: [{
+              text: prompt
+            }]
+          }]
+        })
       });
 
       if (!response.ok) {
         const errorText = await response.text();
-        throw new Error(`OpenRouter API request failed: ${response.status} ${response.statusText}. ${errorText}`);
+        throw new Error(`Google Gemini API request failed: ${response.status} ${response.statusText}. ${errorText}`);
       }
 
       const data = await response.json();
       
-      if (!data.choices || !data.choices[0] || !data.choices[0].message || !data.choices[0].message.content) {
-        throw new Error('Invalid response structure from OpenRouter API');
+      if (!data.candidates || !data.candidates[0] || !data.candidates[0].content || !data.candidates[0].content.parts || !data.candidates[0].content.parts[0]) {
+        throw new Error('Invalid response structure from Google Gemini API');
       }
 
-      const rawResponse = data.choices[0].message.content;
+      const rawResponse = data.candidates[0].content.parts[0].text;
       const cleanedResponse = cleanResponse(rawResponse);
       
       let parsedResponse;
@@ -213,22 +216,23 @@ Respond with JSON:
   ]
 }`;
 
-      const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+      const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent?key=AIzaSyBbzvVwymrwjGqKOkD77dkIgEnRGwbL30c`, {
         method: "POST",
         headers: {
-          "Authorization": "Bearer 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",
           "Content-Type": "application/json"
         },
         body: JSON.stringify({
-          model: "deepseek/deepseek-chat-v3.1:free",
-          messages: [{ role: "user", content: prompt }],
-          max_tokens: 3000
+          contents: [{
+            parts: [{
+              text: prompt
+            }]
+          }]
         })
       });
 
       if (response.ok) {
         const data = await response.json();
-        const content = data.choices?.[0]?.message?.content;
+        const content = data.candidates?.[0]?.content?.parts?.[0]?.text;
         if (content) {
           const cleaned = cleanResponse(content);
           const parsed = JSON.parse(cleaned);
