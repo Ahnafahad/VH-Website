@@ -11,9 +11,26 @@ interface Question {
   difficulty: string;
 }
 
+interface QuizResult {
+  score: number;
+  correctAnswers: number;
+  wrongAnswers: number;
+  totalQuestions: number;
+  results: Array<Question & {
+    userAnswer: string;
+    isCorrect: boolean;
+  }>;
+}
+
+interface Explanation {
+  word: string;
+  definition: string;
+  explanation: string;
+}
+
 const VocabularyQuizApp = () => {
   // Vocabulary sections from the provided list
-  const vocabularySections = {
+  const vocabularySections: { [key: number]: string[] } = {
     1: ["abash", "abate", "abdicate", "aberration", "abhor", "abject", "abnegate", "abortive", "abridge", "absolute", "absolve", "abstinent", "abstract", "abstruse", "abysmal", "accolade", "accost", "acerbic", "acquiesce", "acrid", "acrimonious", "acumen", "acute", "adamant", "address", "adherent", "admonish", "adroit", "adulation", "adulterate", "adverse", "aesthetic", "affable", "affectation", "affinity", "affluent", "agenda", "aggregate", "agnostic", "agrarian", "alacrity", "allege", "alleviate", "allocate", "alloy", "allusion", "aloof", "altruism", "ambience", "ambiguous", "ambivalent", "ameliorate", "amenable", "amenity", "amiable", "amnesty", "amoral", "amoralism", "amorous", "amorphous", "anachronism", "analogy", "anarchy", "anecdote", "anguish", "animosity", "anomaly", "antecedent", "antipathy", "antithesis", "apartheid"],
     2: ["apathy", "aphorism", "apocalypse", "apocryphal", "apotheosis", "appease", "appreciate", "apprehensive", "approbation", "appropriate", "aptitude", "arbiter", "arbitrary", "arcane", "archaic", "archetype", "ardent", "arduous", "aristocratic", "artful", "artifice", "ascendancy", "ascetic", "assiduous", "assimilate", "assuage", "astute", "atheist", "attrition", "audacity", "augment", "auspicious", "austere", "autocratic", "autonomous", "avarice", "avow", "avuncular", "awry", "axiom", "banal", "bane", "bastion", "beget", "belabor", "beleaguer", "belie", "belittle", "belligerent", "bemused", "benefactor", "benevolent", "benign", "bequest", "bereaved", "beset", "blasphemy", "blatant"],
     3: ["blight", "blithe", "bourgeois", "bovine", "brevity", "broach", "bucolic", "bureaucracy", "burgeon", "burlesque", "cacophony", "cadence", "cajole", "callow", "candor", "capitalism", "capitulate", "capricious", "caricature", "castigate", "catalyst", "categorical", "catharsis", "catholic", "caustic", "celibacy", "censure", "cerebral", "chagrin", "charisma", "charlatan", "chasm", "chastise", "chicanery", "chimera", "choleric", "chronic", "chronicle", "circuitous", "circumlocution", "circumscribe", "circumspect", "circumvent", "civil", "clemency", "cliche", "clique", "coalesce", "coerce", "cogent", "cognitive", "cognizant", "coherent", "colloquial", "collusion", "commensurate", "compelling", "compendium", "complacent", "complement", "complicity", "comprehensive", "comprise", "conciliatory", "concise", "concord", "concurrent", "condescend", "condone", "conducive", "confluence", "congenial", "congenital"],
@@ -28,18 +45,18 @@ const VocabularyQuizApp = () => {
 
   // App state
   const [currentScreen, setCurrentScreen] = useState('setup'); // setup, quiz, results
-  const [selectedSections, setSelectedSections] = useState([]);
+  const [selectedSections, setSelectedSections] = useState<number[]>([]);
   const [quizConfig, setQuizConfig] = useState({
     questionCount: 10,
     timePerQuestion: 30
   });
-  const [questions, setQuestions] = useState([]);
+  const [questions, setQuestions] = useState<Question[]>([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [userAnswers, setUserAnswers] = useState([]);
+  const [userAnswers, setUserAnswers] = useState<string[]>([]);
   const [timeRemaining, setTimeRemaining] = useState(30);
   const [isLoading, setIsLoading] = useState(false);
-  const [quizResults, setQuizResults] = useState(null);
-  const [explanations, setExplanations] = useState([]);
+  const [quizResults, setQuizResults] = useState<QuizResult | null>(null);
+  const [explanations, setExplanations] = useState<Explanation[]>([]);
   const [error, setError] = useState<string | null>(null);
 
   // Timer logic
@@ -120,7 +137,7 @@ DO NOT OUTPUT ANYTHING OTHER THAN VALID JSON.`;
       const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
         method: "POST",
         headers: {
-          "Authorization": "Bearer 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",
+          "Authorization": "Bearer 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",
           "Content-Type": "application/json",
           "HTTP-Referer": "https://claude.ai",
           "X-Title": "Advanced Vocabulary Quiz v3"
@@ -176,11 +193,11 @@ DO NOT OUTPUT ANYTHING OTHER THAN VALID JSON.`;
   };
 
   // Generate explanations using OpenRouter
-  const generateExplanations = async (questionsWithAnswers) => {
+  const generateExplanations = async (questionsWithAnswers: (Question & { userAnswer: string })[]) => {
     try {
       const prompt = `For each question below, provide explanations:
 
-${questionsWithAnswers.map((q, i) => 
+${questionsWithAnswers.map((q: Question & { userAnswer: string }, i: number) => 
   `${i + 1}. ${q.sentence.replace('_______', q.correctAnswer)}
   Correct answer: ${q.correctAnswer}`
 ).join('\n\n')}
@@ -199,7 +216,7 @@ Respond with JSON:
       const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
         method: "POST",
         headers: {
-          "Authorization": "Bearer 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",
+          "Authorization": "Bearer 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",
           "Content-Type": "application/json"
         },
         body: JSON.stringify({
@@ -226,7 +243,7 @@ Respond with JSON:
   };
 
   // Handle answer selection
-  const handleAnswerSelect = (selectedWord) => {
+  const handleAnswerSelect = (selectedWord: string) => {
     const newAnswers = [...userAnswers];
     newAnswers[currentQuestionIndex] = selectedWord;
     setUserAnswers(newAnswers);
