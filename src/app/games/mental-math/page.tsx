@@ -230,17 +230,17 @@ const MentalMathApp = () => {
     }
   }, [difficulty, selectedOperations.length, questionsAnswered, gameStartTime]);
 
-  // Check if question is unique
-  const isQuestionUnique = (newQuestion: Question) => {
-    return !previousQuestions.some(prev => 
-      prev.num1 === newQuestion.num1 && 
-      prev.num2 === newQuestion.num2 && 
-      prev.operation === newQuestion.operation
-    );
-  };
-
   // Generate new question
   const generateNewQuestion = useCallback(() => {
+    // Check if question is unique
+    const isQuestionUnique = (newQuestion: Question) => {
+      return !previousQuestions.some(prev => 
+        prev.num1 === newQuestion.num1 && 
+        prev.num2 === newQuestion.num2 && 
+        prev.operation === newQuestion.operation
+      );
+    };
+    
     let attempts = 0;
     let question;
     
@@ -256,7 +256,7 @@ const MentalMathApp = () => {
       setPreviousQuestions(prev => [...prev.slice(-20), question]); // Keep last 20 questions
     }
     setUserAnswer('');
-  }, [generateNumbers, selectedOperations, isQuestionUnique]);
+  }, [generateNumbers, selectedOperations, previousQuestions]);
 
   // Start the game
   const startGame = () => {
