@@ -19,7 +19,10 @@
       "Bash(curl:*)",
       "Bash(mongosh:*)",
       "Bash(npx next:*)",
-      "Bash(sed:*)"
+      "Bash(sed:*)",
+      "Bash(cmd /c:*)",
+      "Bash(node:*)",
+      "Bash(npm run generate:access-control:*)"
     ],
     "deny": [],
     "ask": []

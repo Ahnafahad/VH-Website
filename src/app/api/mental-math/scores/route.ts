@@ -3,7 +3,7 @@ import { getServerSession } from 'next-auth/next';
 import { authOptions } from '@/lib/auth';
 import mongoose from 'mongoose';
 import MathScore from '@/lib/models/MathScore';
-import { isEmailAuthorized, isAdminEmail } from '@/data/authorizedEmails';
+import { isEmailAuthorized, isAdminEmail } from '@/lib/generated-access-control';
 
 // Connect to MongoDB
 async function connectToMongoDB() {

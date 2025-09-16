@@ -1,0 +1,305 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema#",
+  "version": "1.0.0",
+  "lastUpdated": "2025-09-17T00:00:00.000Z",
+  "description": "Access control configuration for VH Website authentication system",
+  "admins": [
+    {
+      "id": "admin_001",
+      "name": "Ahnaf Ahad",
+      "email": "ahnaf816@gmail.com",
+      "role": "super_admin",
+      "permissions": ["read", "write", "admin", "manage_users"],
+      "addedDate": "2025-09-17",
+      "active": true
+    },
+    {
+      "id": "admin_002",
+      "name": "Hasan Sarower",
+      "email": "hasanxsarower@gmail.com",
+      "role": "admin",
+      "permissions": ["read", "write", "admin"],
+      "addedDate": "2025-09-17",
+      "active": true
+    }
+  ],
+  "students": [
+    {
+      "studentId": "757516",
+      "name": "Abrar Bin Masud",
+      "email": "abrarmasud20@gmail.com",
+      "role": "student",
+      "permissions": ["read"],
+      "addedDate": "2025-09-17",
+      "active": true,
+      "class": "DU-FBS",
+      "batch": "2025"
+    },
+    {
+      "studentId": "604057",
+      "name": "Alex Alamgir",
+      "email": "alexalamgirbd@gmail.com",
+      "role": "student",
+      "permissions": ["read"],
+      "addedDate": "2025-09-17",
+      "active": true,
+      "class": "DU-FBS",
+      "batch": "2025"
+    },
+    {
+      "studentId": "934245",
+      "name": "Aseya Siddiqua Saba",
+      "email": "aseyasiddiqua30@gmail.com",
+      "role": "student",
+      "permissions": ["read"],
+      "addedDate": "2025-09-17",
+      "active": true,
+      "class": "DU-FBS",
+      "batch": "2025"
+    },
+    {
+      "studentId": "121716",
+      "name": "Ayaz Mohammad Zahir",
+      "email": "iloveburgers2456@gmail.com",
+      "role": "student",
+      "permissions": ["read"],
+      "addedDate": "2025-09-17",
+      "active": true,
+      "class": "DU-FBS",
+      "batch": "2025"
+    },
+    {
+      "studentId": "648081",
+      "name": "Ayesha Khaled",
+      "email": "ayeshakhaled41@gmail.com",
+      "role": "student",
+      "permissions": ["read"],
+      "addedDate": "2025-09-17",
+      "active": true,
+      "class": "DU-FBS",
+      "batch": "2025"
+    },
+    {
+      "studentId": "650004",
+      "name": "Aymaan Zaman",
+      "email": "aymaanzaman05@gmail.com",
+      "role": "student",
+      "permissions": ["read"],
+      "addedDate": "2025-09-17",
+      "active": true,
+      "class": "DU-FBS",
+      "batch": "2025"
+    },
+    {
+      "studentId": "417695",
+      "name": "Kashfia Ahmed",
+      "email": "kashfiaahmed70@gmail.com",
+      "role": "student",
+      "permissions": ["read"],
+      "addedDate": "2025-09-17",
+      "active": true,
+      "class": "DU-FBS",
+      "batch": "2025"
+    },
+    {
+      "studentId": "400651",
+      "name": "Mahabub Alam Rafi",
+      "email": "mahbub59rafi@gmail.com",
+      "role": "student",
+      "permissions": ["read"],
+      "addedDate": "2025-09-17",
+      "active": true,
+      "class": "DU-FBS",
+      "batch": "2025"
+    },
+    {
+      "studentId": "979212",
+      "name": "Mahira Akhtar",
+      "email": "mahira.akh24@gmail.com",
+      "role": "student",
+      "permissions": ["read"],
+      "addedDate": "2025-09-17",
+      "active": true,
+      "class": "DU-FBS",
+      "batch": "2025"
+    },
+    {
+      "studentId": "542127",
+      "name": "Mansib Rahman",
+      "email": "mansibrahmanofficial@gmail.com",
+      "role": "student",
+      "permissions": ["read"],
+      "addedDate": "2025-09-17",
+      "active": true,
+      "class": "DU-FBS",
+      "batch": "2025"
+    },
+    {
+      "studentId": "678535",
+      "name": "Nazeef Rahman",
+      "email": "nazeefrahman.1208@gmail.com",
+      "role": "student",
+      "permissions": ["read"],
+      "addedDate": "2025-09-17",
+      "active": true,
+      "class": "DU-FBS",
+      "batch": "2025"
+    },
+    {
+      "studentId": "303558",
+      "name": "Nusrat Tasfia",
+      "email": "ntasfia4@gmail.com",
+      "role": "student",
+      "permissions": ["read"],
+      "addedDate": "2025-09-17",
+      "active": true,
+      "class": "DU-FBS",
+      "batch": "2025"
+    },
+    {
+      "studentId": "196303",
+      "name": "RAMISA MALIAT",
+      "email": "ramisamaliatyashra@gmail.com",
+      "role": "student",
+      "permissions": ["read"],
+      "addedDate": "2025-09-17",
+      "active": true,
+      "class": "DU-FBS",
+      "batch": "2025"
+    },
+    {
+      "studentId": "146014",
+      "name": "Sadia Islam Sneha",
+      "email": "snehaasadia@gmail.com",
+      "role": "student",
+      "permissions": ["read"],
+      "addedDate": "2025-09-17",
+      "active": true,
+      "class": "DU-FBS",
+      "batch": "2025"
+    },
+    {
+      "studentId": "907183",
+      "name": "Sajid Shahrier Khan",
+      "email": "sajid.rimo25@gmail.com",
+      "role": "student",
+      "permissions": ["read"],
+      "addedDate": "2025-09-17",
+      "active": true,
+      "class": "DU-FBS",
+      "batch": "2025"
+    },
+    {
+      "studentId": "399043",
+      "name": "Sara Iftekhar",
+      "email": "sara.b.iftekhar@gmail.com",
+      "role": "student",
+      "permissions": ["read"],
+      "addedDate": "2025-09-17",
+      "active": true,
+      "class": "DU-FBS",
+      "batch": "2025"
+    },
+    {
+      "studentId": "643388",
+      "name": "Sharaf Alam",
+      "email": "sharafalam16@gmail.com",
+      "role": "student",
+      "permissions": ["read"],
+      "addedDate": "2025-09-17",
+      "active": true,
+      "class": "DU-FBS",
+      "batch": "2025"
+    },
+    {
+      "studentId": "421527",
+      "name": "Sharika Sanjana Chowdhury",
+      "email": "sharikachowdhury03@gmail.com",
+      "role": "student",
+      "permissions": ["read"],
+      "addedDate": "2025-09-17",
+      "active": true,
+      "class": "DU-FBS",
+      "batch": "2025"
+    },
+    {
+      "studentId": "158296",
+      "name": "Tahiyat Abdullah",
+      "email": "tahiyatabdullah@gmail.com",
+      "role": "student",
+      "permissions": ["read"],
+      "addedDate": "2025-09-17",
+      "active": true,
+      "class": "DU-FBS",
+      "batch": "2025"
+    },
+    {
+      "studentId": "624690",
+      "name": "Tarannum Rashid",
+      "email": "sk.tarannum06@gmail.com",
+      "role": "student",
+      "permissions": ["read"],
+      "addedDate": "2025-09-17",
+      "active": true,
+      "class": "DU-FBS",
+      "batch": "2025"
+    },
+    {
+      "studentId": "575752",
+      "name": "Wazeed Mahmud",
+      "email": "mahmudwazeed@gmail.com",
+      "role": "student",
+      "permissions": ["read"],
+      "addedDate": "2025-09-17",
+      "active": true,
+      "class": "DU-FBS",
+      "batch": "2025"
+    },
+    {
+      "studentId": "764305",
+      "name": "Zayan Rahman",
+      "email": "zayan10010@gmail.com",
+      "role": "student",
+      "permissions": ["read"],
+      "addedDate": "2025-09-17",
+      "active": true,
+      "class": "DU-FBS",
+      "batch": "2025"
+    },
+    {
+      "studentId": "621172",
+      "name": "Zaian Jannat Hussain",
+      "email": "zaianjannat0001@gmail.com",
+      "role": "student",
+      "permissions": ["read"],
+      "addedDate": "2025-09-17",
+      "active": true,
+      "class": "DU-FBS",
+      "batch": "2025"
+    },
+    {
+      "studentId": "459889",
+      "name": "Zuhayr Adeeb Ahmed",
+      "email": "zuhayradeeb@gmail.com",
+      "role": "student",
+      "permissions": ["read"],
+      "addedDate": "2025-09-17",
+      "active": true,
+      "class": "DU-FBS",
+      "batch": "2025"
+    }
+  ],
+  "settings": {
+    "requireEmailVerification": true,
+    "allowSelfRegistration": false,
+    "sessionTimeout": 86400,
+    "maxFailedAttempts": 5,
+    "autoDeactivateAfterDays": 365
+  },
+  "validation": {
+    "emailRegex": "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$",
+    "studentIdFormat": "^[0-9]{6}$",
+    "allowedEmailDomains": ["gmail.com", "outlook.com", "yahoo.com"],
+    "requiredFields": ["email", "name", "role"]
+  }
+}

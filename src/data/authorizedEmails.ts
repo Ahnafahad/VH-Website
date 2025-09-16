@@ -1,43 +1,27 @@
-// Admin email addresses
-export const adminEmails = [
-  "ahnaf816@gmail.com",
-  "hasanxsarower@gmail.com",
-];
+// DEPRECATED: This file is maintained for backward compatibility only
+// Please use @/lib/generated-access-control instead for new implementations
 
-// Student email addresses
-export const studentEmails = [
-  "abrarmasud20@gmail.com",
-  "alexalamgirbd@gmail.com",
-  "aseyasiddiqua30@gmail.com",
-  "iloveburgers2456@gmail.com",
-  "ayeshakhaled41@gmail.com",
-  "aymaanzaman05@gmail.com",
-  "kashfiaahmed70@gmail.com",
-  "kibria.mobin@gmail.com",
-  "mahira.akh24@gmail.com",
-  "mansibrahmanofficial@gmail.com",
-  "nazeefrahman.1208@gmail.com",
-  "ntasfia4@gmail.com",
-  "ramisamaliatyashra@gmail.com",
-  "snehaasadia@gmail.com",
-  "sajid.rimo25@gmail.com",
-  "sara.b.iftekhar@gmail.com",
-  "sharafalam16@gmail.com",
-  "sharikachowdhury03@gmail.com",
-  "tahiyatabdullah@gmail.com",
-  "sk.tarannum06@gmail.com",
-  "mahmudwazeed@gmail.com",
-  "zaianjannat0001@gmail.com",
-  "zuhayradeeb@gmail.com",
-];
+import {
+  getAdminEmails,
+  getStudentEmails,
+  getAuthorizedEmails,
+  isEmailAuthorized as isEmailAuthorizedNew,
+  isAdminEmail as isAdminEmailNew
+} from '@/lib/generated-access-control';
 
-// Combined authorized emails
-export const authorizedEmails = [...adminEmails, ...studentEmails];
+// Legacy exports for backward compatibility
+// These now pull from the new JSON-based access control system
+export const adminEmails = getAdminEmails();
+export const studentEmails = getStudentEmails();
+export const authorizedEmails = getAuthorizedEmails();
 
+// Legacy functions that delegate to new system
 export function isEmailAuthorized(email: string): boolean {
-  return authorizedEmails.includes(email.toLowerCase());
+  console.warn('DEPRECATED: Use isEmailAuthorized from @/lib/access-control instead');
+  return isEmailAuthorizedNew(email);
 }
 
 export function isAdminEmail(email: string): boolean {
-  return adminEmails.includes(email.toLowerCase());
+  console.warn('DEPRECATED: Use isAdminEmail from @/lib/access-control instead');
+  return isAdminEmailNew(email);
 }
