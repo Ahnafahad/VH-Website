@@ -3,6 +3,7 @@ import { connectToDatabase, isConnected } from '@/lib/db';
 import { getServerSession } from 'next-auth/next';
 import { authOptions } from '@/lib/auth';
 import { isEmailAuthorized, isAdminEmail } from '@/lib/generated-access-control';
+import mongoose from 'mongoose';
 
 export async function GET() {
   const healthCheck = {
@@ -34,7 +35,7 @@ export async function GET() {
     }
 
     const missingVars = Object.entries(envStatus)
-      .filter(([_, exists]) => !exists)
+      .filter(([, exists]) => !exists)
       .map(([name]) => name);
 
     healthCheck.checks.environment.status = missingVars.length > 0 ? 'error' : 'healthy';
@@ -59,7 +60,7 @@ export async function GET() {
     healthCheck.checks.database.details = {
       connected,
       readyState: process.env.NODE_ENV === 'development' ?
-        require('mongoose').connection.readyState : 'hidden-in-prod'
+        mongoose.connection.readyState : 'hidden-in-prod'
     };
   } catch (error) {
     healthCheck.checks.database.status = 'error';
