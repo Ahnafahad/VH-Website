@@ -21,21 +21,33 @@ async function connectToMongoDB() {
 }
 
 export async function GET() {
+  console.log('Vocab Quiz Leaderboard API called');
   try {
+    console.log('Getting server session...');
     const session = await getServerSession(authOptions);
+    console.log('Session result:', session ? 'Found session' : 'No session', session?.user?.email);
+
     if (!session?.user?.email) {
+      console.log('No session or email, returning 401');
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
     // Check if user is authorized
+    console.log('Checking email authorization for:', session.user.email.toLowerCase());
     const isAuthorized = isEmailAuthorized(session.user.email.toLowerCase());
+    console.log('Authorization result:', isAuthorized);
+
     if (!isAuthorized) {
+      console.log('User not authorized, returning 403');
       return NextResponse.json({ error: 'Access denied' }, { status: 403 });
     }
 
+    console.log('Connecting to MongoDB...');
     await connectToMongoDB();
+    console.log('MongoDB connected successfully');
 
     // Get accumulated total questions answered by player (excluding admins)
+    console.log('Running vocab leaderboard aggregation...');
     const leaderboard = await VocabScore.aggregate([
       {
         $match: { isAdmin: { $ne: true } }
@@ -78,14 +90,32 @@ export async function GET() {
         }
       }
     ]);
+    console.log('Vocab leaderboard aggregation complete, found:', leaderboard.length, 'entries');
 
-    return NextResponse.json({
+    console.log('Preparing vocab response...');
+    const response = {
       leaderboard: leaderboard || [],
       isEmpty: leaderboard.length === 0,
       message: leaderboard.length === 0 ? 'No quiz scores yet. Be the first to take a quiz!' : `${leaderboard.length} players on leaderboard`
-    });
+    };
+
+    console.log('Returning vocab response:', response.isEmpty ? 'Empty leaderboard' : 'With data');
+    return NextResponse.json(response);
   } catch (error) {
-    console.error('Error fetching vocab leaderboard:', error);
-    return NextResponse.json({ error: 'Failed to fetch leaderboard' }, { status: 500 });
+    console.error('ERROR in vocab-quiz leaderboard API:', error);
+    console.error('Error type:', typeof error);
+    console.error('Error message:', error.message);
+    console.error('Error stack:', error.stack);
+
+    // Return more detailed error info in development
+    const isDev = process.env.NODE_ENV === 'development';
+    return NextResponse.json({
+      error: 'Failed to fetch leaderboard',
+      details: isDev ? {
+        message: error.message,
+        stack: error.stack,
+        type: typeof error
+      } : undefined
+    }, { status: 500 });
   }
 }

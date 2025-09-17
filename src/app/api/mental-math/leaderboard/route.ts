@@ -21,21 +21,33 @@ async function connectToMongoDB() {
 }
 
 export async function GET() {
+  console.log('Mental Math Leaderboard API called');
   try {
+    console.log('Getting server session...');
     const session = await getServerSession(authOptions);
+    console.log('Session result:', session ? 'Found session' : 'No session', session?.user?.email);
+
     if (!session?.user?.email) {
+      console.log('No session or email, returning 401');
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
     // Check if user is authorized
+    console.log('Checking email authorization for:', session.user.email.toLowerCase());
     const isAuthorized = isEmailAuthorized(session.user.email.toLowerCase());
+    console.log('Authorization result:', isAuthorized);
+
     if (!isAuthorized) {
+      console.log('User not authorized, returning 403');
       return NextResponse.json({ error: 'Access denied' }, { status: 403 });
     }
 
+    console.log('Connecting to MongoDB...');
     await connectToMongoDB();
+    console.log('MongoDB connected successfully');
 
     // Get top individual scores (excluding admin scores from leaderboard display)
+    console.log('Querying individual scores...');
     const individualScores = await MathScore.find({ isAdmin: { $ne: true } })
       .sort({ score: -1, playedAt: -1 })
       .limit(20)
@@ -50,8 +62,10 @@ export async function GET() {
         playedAt: 1
       })
       .lean();
+    console.log('Individual scores found:', individualScores.length);
 
     // Get accumulated scores by player (excluding admins)
+    console.log('Running aggregation for accumulated scores...');
     const accumulatedScores = await MathScore.aggregate([
       {
         $match: { isAdmin: { $ne: true } }
@@ -91,17 +105,35 @@ export async function GET() {
         }
       }
     ]);
+    console.log('Accumulated scores found:', accumulatedScores.length);
 
-    return NextResponse.json({
+    console.log('Preparing response...');
+    const response = {
       individual: individualScores || [],
       accumulated: accumulatedScores || [],
       isEmpty: (individualScores.length === 0 && accumulatedScores.length === 0),
       message: (individualScores.length === 0 && accumulatedScores.length === 0) ?
         'No math scores yet. Be the first to play!' :
         `${Math.max(individualScores.length, accumulatedScores.length)} players competing`
-    });
+    };
+
+    console.log('Returning successful response:', response.isEmpty ? 'Empty leaderboard' : 'With data');
+    return NextResponse.json(response);
   } catch (error) {
-    console.error('Error fetching leaderboard:', error);
-    return NextResponse.json({ error: 'Failed to fetch leaderboard' }, { status: 500 });
+    console.error('ERROR in mental-math leaderboard API:', error);
+    console.error('Error type:', typeof error);
+    console.error('Error message:', error.message);
+    console.error('Error stack:', error.stack);
+
+    // Return more detailed error info in development
+    const isDev = process.env.NODE_ENV === 'development';
+    return NextResponse.json({
+      error: 'Failed to fetch leaderboard',
+      details: isDev ? {
+        message: error.message,
+        stack: error.stack,
+        type: typeof error
+      } : undefined
+    }, { status: 500 });
   }
 }
