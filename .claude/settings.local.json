@@ -22,7 +22,9 @@
       "Bash(sed:*)",
       "Bash(cmd /c:*)",
       "Bash(node:*)",
-      "Bash(npm run generate:access-control:*)"
+      "Bash(npm run generate:access-control:*)",
+      "WebFetch(domain:vh-beyondthehorizons.vercel.app)",
+      "Bash(atlas:*)"
     ],
     "deny": [],
     "ask": []

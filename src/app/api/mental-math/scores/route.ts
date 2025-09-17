@@ -57,9 +57,8 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Check if user is admin (TEMPORARILY allowing admin scores for testing)
+    // Check if user is admin
     const isAdmin = isAdminEmail(user.email);
-    console.log('TESTING - User is admin:', isAdmin, 'Email:', user.email);
 
     // Create new score entry
     const mathScore = new MathScore({
@@ -77,12 +76,6 @@ export async function POST(request: NextRequest) {
     });
 
     const savedScore = await mathScore.save();
-    console.log('TESTING - Math score saved successfully:', {
-      scoreId: savedScore._id,
-      playerEmail: savedScore.playerEmail,
-      score: savedScore.score,
-      isAdmin: savedScore.isAdmin
-    });
 
     return NextResponse.json({
       success: true,

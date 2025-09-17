@@ -15,11 +15,11 @@ export async function GET() {
     await connectToDatabase();
     console.log('MongoDB connected successfully');
 
-    // Get accumulated total questions answered by player (TEMPORARILY INCLUDING admins for testing)
+    // Get accumulated total questions answered by player (excluding admin scores)
     console.log('Running vocab leaderboard aggregation...');
     const leaderboard = await VocabScore.aggregate([
       {
-        $match: {}
+        $match: { isAdmin: { $ne: true } }
       },
       {
         $group: {

@@ -52,9 +52,8 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Check if user is admin (TEMPORARILY allowing admin scores for testing)
+    // Check if user is admin
     const isAdmin = isAdminEmail(user.email);
-    console.log('TESTING - User is admin:', isAdmin, 'Email:', user.email);
 
     // Create new vocab score entry
     const vocabScore = new VocabScore({
@@ -70,13 +69,6 @@ export async function POST(request: NextRequest) {
     });
 
     const savedScore = await vocabScore.save();
-    console.log('TESTING - Vocab score saved successfully:', {
-      scoreId: savedScore._id,
-      playerEmail: savedScore.playerEmail,
-      questionsAnswered: savedScore.questionsAnswered,
-      questionsCorrect: savedScore.questionsCorrect,
-      isAdmin: savedScore.isAdmin
-    });
 
     return NextResponse.json({
       success: true,
