@@ -122,16 +122,22 @@ export async function GET() {
   } catch (error) {
     console.error('ERROR in mental-math leaderboard API:', error);
     console.error('Error type:', typeof error);
-    console.error('Error message:', error.message);
-    console.error('Error stack:', error.stack);
+
+    const errorMessage = error instanceof Error ? error.message : String(error);
+    const errorStack = error instanceof Error ? error.stack : undefined;
+
+    console.error('Error message:', errorMessage);
+    if (errorStack) {
+      console.error('Error stack:', errorStack);
+    }
 
     // Return more detailed error info in development
     const isDev = process.env.NODE_ENV === 'development';
     return NextResponse.json({
       error: 'Failed to fetch leaderboard',
       details: isDev ? {
-        message: error.message,
-        stack: error.stack,
+        message: errorMessage,
+        stack: errorStack,
         type: typeof error
       } : undefined
     }, { status: 500 });
