@@ -8,6 +8,15 @@ interface EligibilityCheckerProps {
   onEligibilityUpdate?: (activeTab: string, results: any) => void;
 }
 
+// Grade point mappings (moved outside component to avoid recreation on each render)
+const ibaGradePoints: Record<string, number> = { 'A': 5.0, 'B': 4.0, 'C': 3.0, 'D': 0.0 };
+const bupGradePoints: Record<string, number> = { 'A': 5.0, 'B': 4.0, 'C': 3.5, 'D': 3.0 };
+const duScienceGradePoints: Record<string, number> = { 'A': 5.0, 'B': 4.0, 'C': 3.5 };
+const businessSubjects = ['business studies', 'accounting', 'economics', 'mathematics', 'statistics'];
+const buetRequiredALevel = ['mathematics', 'physics', 'chemistry'];
+const grades = ['A', 'B', 'C', 'D'];
+const duScienceGrades = ['A', 'B', 'C'];
+
 const UniversityEligibilityChecker = ({ onEligibilityUpdate }: EligibilityCheckerProps) => {
   const [activeTab, setActiveTab] = useState('IBA');
   const [oLevelSubjects, setOLevelSubjects] = useState([
@@ -16,15 +25,6 @@ const UniversityEligibilityChecker = ({ onEligibilityUpdate }: EligibilityChecke
   const [aLevelSubjects, setALevelSubjects] = useState([
     { id: 'a1', name: '', grade: '' }
   ]);
-
-  const ibaGradePoints: Record<string, number> = { 'A': 5.0, 'B': 4.0, 'C': 3.0, 'D': 0.0 };
-  const bupGradePoints: Record<string, number> = { 'A': 5.0, 'B': 4.0, 'C': 3.5, 'D': 3.0 };
-  const duScienceGradePoints: Record<string, number> = { 'A': 5.0, 'B': 4.0, 'C': 3.5 };
-  const grades = ['A', 'B', 'C', 'D'];
-  const duScienceGrades = ['A', 'B', 'C'];
-  
-  const businessSubjects = ['business studies', 'accounting', 'economics', 'mathematics', 'statistics'];
-  const buetRequiredALevel = ['mathematics', 'physics', 'chemistry'];
 
   const updateOLevelSubject = useCallback((id: string, field: string, value: string) => {
     setOLevelSubjects(prev => prev.map(subject => 
@@ -94,7 +94,7 @@ const UniversityEligibilityChecker = ({ onEligibilityUpdate }: EligibilityChecke
     }
   };
 
-  const calculateIBAResults = () => {
+  const calculateIBAResults = useCallback(() => {
     const validOLevels = oLevelSubjects.filter(s => s.name.trim() && s.grade);
     const validALevels = aLevelSubjects.filter(s => s.name.trim() && s.grade);
 
@@ -145,9 +145,9 @@ const UniversityEligibilityChecker = ({ onEligibilityUpdate }: EligibilityChecke
       minAGrades,
       reason: eligible ? 'You meet all IBA eligibility requirements!' : 'Requirements not met.'
     };
-  };
+  }, [oLevelSubjects, aLevelSubjects]);
 
-  const calculateBUPResults = () => {
+  const calculateBUPResults = useCallback(() => {
     const validOLevels = oLevelSubjects.filter(s => s.name.trim() && s.grade);
     const validALevels = aLevelSubjects.filter(s => s.name.trim() && s.grade);
 
@@ -178,9 +178,9 @@ const UniversityEligibilityChecker = ({ onEligibilityUpdate }: EligibilityChecke
       best2ALevel,
       reason: eligible ? 'You meet all BUP eligibility requirements!' : `Need ${(26.5 - totalPoints).toFixed(1)} more points to qualify.`
     };
-  };
+  }, [oLevelSubjects, aLevelSubjects]);
 
-  const calculateDUScienceResults = () => {
+  const calculateDUScienceResults = useCallback(() => {
     const validOLevels = oLevelSubjects.filter(s => s.name.trim() && s.grade);
     const validALevels = aLevelSubjects.filter(s => s.name.trim() && s.grade);
 
@@ -230,9 +230,9 @@ const UniversityEligibilityChecker = ({ onEligibilityUpdate }: EligibilityChecke
       totalSubjects,
       reason: eligible ? 'You meet all DU Science Unit eligibility requirements!' : 'Grade distribution requirements not met.'
     };
-  };
+  }, [oLevelSubjects, aLevelSubjects]);
 
-  const calculateDUBusinessResults = () => {
+  const calculateDUBusinessResults = useCallback(() => {
     const validOLevels = oLevelSubjects.filter(s => s.name.trim() && s.grade);
     const validALevels = aLevelSubjects.filter(s => s.name.trim() && s.grade);
 
@@ -315,9 +315,9 @@ const UniversityEligibilityChecker = ({ onEligibilityUpdate }: EligibilityChecke
       businessSubjectTaken,
       reason
     };
-  };
+  }, [oLevelSubjects, aLevelSubjects]);
 
-  const calculateBUETResults = () => {
+  const calculateBUETResults = useCallback(() => {
     const validOLevels = oLevelSubjects.filter(s => s.name.trim() && s.grade);
     const validALevels = aLevelSubjects.filter(s => s.name.trim() && s.grade);
 
@@ -407,7 +407,7 @@ const UniversityEligibilityChecker = ({ onEligibilityUpdate }: EligibilityChecke
         'You meet BUET minimum eligibility criteria! Final selection: Top 400 candidates ranked by A-Level Mathematics, Physics, Chemistry grades.' : 
         'Requirements not met.'
     };
-  };
+  }, [oLevelSubjects, aLevelSubjects]);
 
   const results: any = useMemo(() => {
     return activeTab === 'IBA' ? calculateIBAResults() : 

@@ -88,12 +88,12 @@ const authorizedEmailSet = new Set(authorizedEmails);
 
 // Admin data map
 const adminDataMap = new Map<string, GeneratedAdminUser>(
-  ${JSON.stringify(activeAdmins)}.map((admin: GeneratedAdminUser) => [admin.email.toLowerCase(), admin])
+  ${JSON.stringify(activeAdmins)}.map((admin: any) => [admin.email.toLowerCase(), admin as GeneratedAdminUser])
 );
 
 // Student data map
 const studentDataMap = new Map<string, GeneratedStudentUser>(
-  ${JSON.stringify(activeStudents)}.map((student: GeneratedStudentUser) => [student.email.toLowerCase(), student])
+  ${JSON.stringify(activeStudents)}.map((student: any) => [student.email.toLowerCase(), student as GeneratedStudentUser])
 );
 
 /**

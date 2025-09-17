@@ -198,7 +198,7 @@ DO NOT OUTPUT ANYTHING OTHER THAN VALID JSON.`;
   };
 
   // Generate explanations using OpenRouter
-  const generateExplanations = async (questionsWithAnswers: (Question & { userAnswer: string })[]) => {
+  const generateExplanations = useCallback(async (questionsWithAnswers: (Question & { userAnswer: string })[]) => {
     try {
       const prompt = `For each question below, provide explanations:
 
@@ -246,7 +246,7 @@ Respond with JSON:
     } catch (error) {
       console.error('Explanation generation failed:', error);
     }
-  };
+  }, []);
 
   // Handle answer selection
   const handleAnswerSelect = (selectedWord: string) => {
@@ -258,6 +258,35 @@ Respond with JSON:
       handleNextQuestion();
     }, 500);
   };
+
+  // Save quiz result to database
+  const saveQuizResult = useCallback(async (result: QuizResult) => {
+    try {
+      const response = await fetch('/api/vocab-quiz/scores', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          questionsAnswered: result.totalQuestions,
+          questionsCorrect: result.correctAnswers,
+          totalSections: selectedSections.length,
+          selectedSections: selectedSections,
+          difficulty: 'mixed'
+        }),
+      });
+
+      if (response.ok) {
+        const responseData = await response.json();
+        console.log('Vocab score saved successfully:', responseData);
+      } else {
+        const errorData = await response.json().catch(() => ({ error: 'Unknown error' }));
+        console.error('Failed to save vocab score:', errorData);
+      }
+    } catch (error) {
+      console.error('Error saving quiz result:', error);
+    }
+  }, [selectedSections]);
 
   // Finish quiz and calculate results
   const finishQuiz = useCallback(() => {
@@ -283,7 +312,7 @@ Respond with JSON:
     saveQuizResult(quizResult);
     generateExplanations(results);
     setCurrentScreen('results');
-  }, [questions, userAnswers]);
+  }, [questions, userAnswers, generateExplanations, saveQuizResult]);
 
   // Handle next question
   const handleNextQuestion = useCallback(() => {
@@ -307,34 +336,6 @@ Respond with JSON:
     }
   }, [timeRemaining, currentScreen, handleNextQuestion]);
 
-  // Save quiz result to database
-  const saveQuizResult = async (result: QuizResult) => {
-    try {
-      const response = await fetch('/api/vocab-quiz/scores', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          questionsAnswered: result.totalQuestions,
-          questionsCorrect: result.correctAnswers,
-          totalSections: selectedSections.length,
-          selectedSections: selectedSections,
-          difficulty: 'mixed'
-        }),
-      });
-      
-      if (response.ok) {
-        const responseData = await response.json();
-        console.log('Vocab score saved successfully:', responseData);
-      } else {
-        const errorData = await response.json().catch(() => ({ error: 'Unknown error' }));
-        console.error('Failed to save vocab score:', errorData);
-      }
-    } catch (error) {
-      console.error('Error saving quiz result:', error);
-    }
-  };
 
   // Fetch leaderboard data
   const fetchLeaderboard = async () => {

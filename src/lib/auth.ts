@@ -25,7 +25,7 @@ export const authOptions: NextAuthOptions = {
       }
       return false
     },
-    async session({ session, token }) {
+    async session({ session }) {
       // Enhance session with user role and additional info
       if (session.user?.email) {
         const userInfo = getUserByEmail(session.user.email)
