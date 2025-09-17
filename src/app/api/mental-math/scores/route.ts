@@ -60,8 +60,9 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Invalid data format' }, { status: 400 });
     }
 
-    // Check if user is admin (admins won't appear in leaderboard)
+    // Check if user is admin (TEMPORARILY allowing admin scores for testing)
     const isAdmin = isAdminEmail(session.user.email);
+    console.log('TESTING - User is admin:', isAdmin, 'Email:', session.user.email);
 
     // Create new score entry
     const mathScore = new MathScore({
@@ -79,10 +80,15 @@ export async function POST(request: NextRequest) {
     });
 
     const savedScore = await mathScore.save();
-    console.log('Math score saved:', savedScore._id);
+    console.log('TESTING - Math score saved successfully:', {
+      scoreId: savedScore._id,
+      playerEmail: savedScore.playerEmail,
+      score: savedScore.score,
+      isAdmin: savedScore.isAdmin
+    });
 
-    return NextResponse.json({ 
-      success: true, 
+    return NextResponse.json({
+      success: true,
       message: 'Score saved successfully',
       isAdmin,
       scoreId: savedScore._id

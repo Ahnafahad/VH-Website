@@ -56,8 +56,9 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Invalid data format' }, { status: 400 });
     }
 
-    // Check if user is admin (admins won't appear in leaderboard)
+    // Check if user is admin (TEMPORARILY allowing admin scores for testing)
     const isAdmin = isAdminEmail(session.user.email);
+    console.log('TESTING - User is admin:', isAdmin, 'Email:', session.user.email);
 
     // Create new vocab score entry
     const vocabScore = new VocabScore({
@@ -73,10 +74,16 @@ export async function POST(request: NextRequest) {
     });
 
     const savedScore = await vocabScore.save();
-    console.log('Vocab score saved:', savedScore._id);
+    console.log('TESTING - Vocab score saved successfully:', {
+      scoreId: savedScore._id,
+      playerEmail: savedScore.playerEmail,
+      questionsAnswered: savedScore.questionsAnswered,
+      questionsCorrect: savedScore.questionsCorrect,
+      isAdmin: savedScore.isAdmin
+    });
 
-    return NextResponse.json({ 
-      success: true, 
+    return NextResponse.json({
+      success: true,
       message: 'Vocab quiz score saved successfully',
       isAdmin,
       scoreId: savedScore._id

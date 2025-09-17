@@ -46,9 +46,9 @@ export async function GET() {
     await connectToMongoDB();
     console.log('MongoDB connected successfully');
 
-    // Get top individual scores (excluding admin scores from leaderboard display)
+    // Get top individual scores (TEMPORARILY INCLUDING admin scores for testing)
     console.log('Querying individual scores...');
-    const individualScores = await MathScore.find({ isAdmin: { $ne: true } })
+    const individualScores = await MathScore.find({})
       .sort({ score: -1, playedAt: -1 })
       .limit(20)
       .select({
@@ -64,11 +64,11 @@ export async function GET() {
       .lean();
     console.log('Individual scores found:', individualScores.length);
 
-    // Get accumulated scores by player (excluding admins)
+    // Get accumulated scores by player (TEMPORARILY INCLUDING admins for testing)
     console.log('Running aggregation for accumulated scores...');
     const accumulatedScores = await MathScore.aggregate([
       {
-        $match: { isAdmin: { $ne: true } }
+        $match: {}
       },
       {
         $group: {
