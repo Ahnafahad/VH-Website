@@ -80,7 +80,9 @@ export async function GET() {
     ]);
 
     return NextResponse.json({
-      leaderboard: leaderboard
+      leaderboard: leaderboard || [],
+      isEmpty: leaderboard.length === 0,
+      message: leaderboard.length === 0 ? 'No quiz scores yet. Be the first to take a quiz!' : `${leaderboard.length} players on leaderboard`
     });
   } catch (error) {
     console.error('Error fetching vocab leaderboard:', error);

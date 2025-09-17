@@ -278,10 +278,17 @@ const MentalMathApp = () => {
       const response = await fetch('/api/mental-math/leaderboard');
       if (response.ok) {
         const data = await response.json();
-        setLeaderboard(data);
+        setLeaderboard({
+          individual: data.individual || [],
+          accumulated: data.accumulated || []
+        });
+      } else {
+        console.error('Failed to fetch leaderboard:', response.status, response.statusText);
+        setLeaderboard({ individual: [], accumulated: [] }); // Set empty arrays on error
       }
     } catch (error) {
       console.error('Error fetching leaderboard:', error);
+      setLeaderboard({ individual: [], accumulated: [] }); // Set empty arrays on error
     } finally {
       setIsLoading(false);
     }
@@ -425,6 +432,11 @@ const MentalMathApp = () => {
                 </div>
               {isLoading ? (
                 <div className="text-center py-8">Loading...</div>
+              ) : leaderboard.individual.length === 0 ? (
+                <div className="text-center py-8">
+                  <Target className="w-16 h-16 mx-auto mb-4 text-vh-red/40" />
+                  <p className="text-gray-600 text-lg">No individual scores yet. Be the first to play!</p>
+                </div>
               ) : (
                 <div className="space-y-3">
                   {leaderboard.individual.slice(0, 10).map((entry, index) => (
@@ -464,6 +476,11 @@ const MentalMathApp = () => {
                 </div>
               {isLoading ? (
                 <div className="text-center py-8">Loading...</div>
+              ) : leaderboard.accumulated.length === 0 ? (
+                <div className="text-center py-8">
+                  <Zap className="w-16 h-16 mx-auto mb-4 text-vh-beige/60" />
+                  <p className="text-gray-600 text-lg">No accumulated scores yet. Start your math journey!</p>
+                </div>
               ) : (
                 <div className="space-y-3">
                   {leaderboard.accumulated.slice(0, 10).map((entry, index) => (

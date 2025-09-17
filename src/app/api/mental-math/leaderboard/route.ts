@@ -93,8 +93,12 @@ export async function GET() {
     ]);
 
     return NextResponse.json({
-      individual: individualScores,
-      accumulated: accumulatedScores
+      individual: individualScores || [],
+      accumulated: accumulatedScores || [],
+      isEmpty: (individualScores.length === 0 && accumulatedScores.length === 0),
+      message: (individualScores.length === 0 && accumulatedScores.length === 0) ?
+        'No math scores yet. Be the first to play!' :
+        `${Math.max(individualScores.length, accumulatedScores.length)} players competing`
     });
   } catch (error) {
     console.error('Error fetching leaderboard:', error);

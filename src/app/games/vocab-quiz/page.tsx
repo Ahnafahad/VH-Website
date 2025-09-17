@@ -344,10 +344,14 @@ Respond with JSON:
       const response = await fetch('/api/vocab-quiz/leaderboard');
       if (response.ok) {
         const data = await response.json();
-        setLeaderboard(data.leaderboard);
+        setLeaderboard(data.leaderboard || []);
+      } else {
+        console.error('Failed to fetch leaderboard:', response.status, response.statusText);
+        setLeaderboard([]); // Set empty array on error
       }
     } catch (error) {
       console.error('Error fetching leaderboard:', error);
+      setLeaderboard([]); // Set empty array on error
     } finally {
       setIsLoadingLeaderboard(false);
     }
@@ -409,6 +413,22 @@ Respond with JSON:
                 <div className="text-center py-12">
                   <RefreshCw className="animate-spin mx-auto mb-4 text-vh-red" size={48} />
                   <p className="text-gray-600 text-lg">Loading leaderboard...</p>
+                </div>
+              ) : leaderboard.length === 0 ? (
+                <div className="text-center py-12">
+                  <div className="w-24 h-24 mx-auto mb-6 bg-gradient-to-br from-vh-red/20 to-vh-beige/20 rounded-full flex items-center justify-center">
+                    <Trophy className="w-12 h-12 text-vh-red/60" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-3">No Champions Yet!</h3>
+                  <p className="text-gray-600 text-lg mb-6">
+                    Be the first to take a vocabulary quiz and claim your spot on the leaderboard!
+                  </p>
+                  <button
+                    onClick={() => setCurrentScreen('setup')}
+                    className="bg-gradient-to-r from-vh-red to-vh-dark-red text-white px-8 py-3 rounded-2xl font-bold hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1"
+                  >
+                    Take the First Quiz
+                  </button>
                 </div>
               ) : (
                 <div className="space-y-4">
