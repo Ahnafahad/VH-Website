@@ -1,43 +1,20 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getServerSession } from 'next-auth/next';
-import { authOptions } from '@/lib/auth';
-import mongoose from 'mongoose';
+import { connectToDatabase } from '@/lib/db';
 import MathScore from '@/lib/models/MathScore';
-import { isEmailAuthorized, isAdminEmail } from '@/lib/generated-access-control';
-
-// Connect to MongoDB
-async function connectToMongoDB() {
-  try {
-    if (mongoose.connection.readyState === 0) {
-      if (!process.env.MONGODB_URI) {
-        throw new Error('MONGODB_URI is not defined');
-      }
-      await mongoose.connect(process.env.MONGODB_URI);
-    }
-  } catch (error) {
-    console.error('MongoDB connection error:', error);
-    throw error;
-  }
-}
+import { isAdminEmail } from '@/lib/generated-access-control';
+import { validateAuth, createErrorResponse, ApiException } from '@/lib/api-utils';
 
 export async function POST(request: NextRequest) {
   try {
-    const session = await getServerSession(authOptions);
-    if (!session?.user?.email) {
-      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-    }
+    // Validate authentication and authorization
+    const user = await validateAuth();
 
-    // Check if user is authorized
-    const isAuthorized = isEmailAuthorized(session.user.email.toLowerCase());
-    if (!isAuthorized) {
-      return NextResponse.json({ error: 'Access denied' }, { status: 403 });
-    }
-
-    await connectToMongoDB();
+    // Connect to database with error handling
+    await connectToDatabase();
 
     const data = await request.json();
-    
-    // Validate required fields
+
+    // Validate required fields with detailed error messages
     const {
       score,
       questionsCorrect,
@@ -48,26 +25,46 @@ export async function POST(request: NextRequest) {
       timeLimit
     } = data;
 
-    if (
-      typeof score !== 'number' ||
-      typeof questionsCorrect !== 'number' ||
-      typeof questionsAnswered !== 'number' ||
-      typeof accuracy !== 'number' ||
-      !difficulty ||
-      !Array.isArray(operations) ||
-      typeof timeLimit !== 'number'
-    ) {
-      return NextResponse.json({ error: 'Invalid data format' }, { status: 400 });
+    const validationErrors: string[] = [];
+
+    if (typeof score !== 'number' || score < 0) {
+      validationErrors.push('score must be a non-negative number');
+    }
+    if (typeof questionsCorrect !== 'number' || questionsCorrect < 0) {
+      validationErrors.push('questionsCorrect must be a non-negative number');
+    }
+    if (typeof questionsAnswered !== 'number' || questionsAnswered < 1) {
+      validationErrors.push('questionsAnswered must be a positive number');
+    }
+    if (typeof accuracy !== 'number' || accuracy < 0 || accuracy > 100) {
+      validationErrors.push('accuracy must be a number between 0 and 100');
+    }
+    if (!difficulty || !['easy', 'medium', 'hard', 'extreme'].includes(difficulty)) {
+      validationErrors.push('difficulty must be one of: easy, medium, hard, extreme');
+    }
+    if (!Array.isArray(operations) || operations.length === 0) {
+      validationErrors.push('operations must be a non-empty array');
+    }
+    if (typeof timeLimit !== 'number' || timeLimit < 0.5) {
+      validationErrors.push('timeLimit must be at least 0.5 seconds');
+    }
+
+    if (validationErrors.length > 0) {
+      throw new ApiException(
+        `Validation failed: ${validationErrors.join(', ')}`,
+        400,
+        'VALIDATION_ERROR'
+      );
     }
 
     // Check if user is admin (TEMPORARILY allowing admin scores for testing)
-    const isAdmin = isAdminEmail(session.user.email);
-    console.log('TESTING - User is admin:', isAdmin, 'Email:', session.user.email);
+    const isAdmin = isAdminEmail(user.email);
+    console.log('TESTING - User is admin:', isAdmin, 'Email:', user.email);
 
     // Create new score entry
     const mathScore = new MathScore({
-      playerEmail: session.user.email,
-      playerName: session.user.name || 'Anonymous',
+      playerEmail: user.email,
+      playerName: user.name || 'Anonymous',
       score,
       questionsCorrect,
       questionsAnswered,
@@ -94,7 +91,6 @@ export async function POST(request: NextRequest) {
       scoreId: savedScore._id
     });
   } catch (error) {
-    console.error('Error saving math score:', error);
-    return NextResponse.json({ error: 'Failed to save score' }, { status: 500 });
+    return createErrorResponse(error);
   }
 }

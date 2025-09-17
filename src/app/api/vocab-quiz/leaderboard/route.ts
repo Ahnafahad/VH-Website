@@ -1,49 +1,18 @@
 import { NextResponse } from 'next/server';
-import { getServerSession } from 'next-auth/next';
-import { authOptions } from '@/lib/auth';
-import mongoose from 'mongoose';
+import { connectToDatabase } from '@/lib/db';
 import VocabScore from '@/lib/models/VocabScore';
-import { isEmailAuthorized } from '@/lib/generated-access-control';
-
-// Connect to MongoDB
-async function connectToMongoDB() {
-  try {
-    if (mongoose.connection.readyState === 0) {
-      if (!process.env.MONGODB_URI) {
-        throw new Error('MONGODB_URI is not defined');
-      }
-      await mongoose.connect(process.env.MONGODB_URI);
-    }
-  } catch (error) {
-    console.error('MongoDB connection error:', error);
-    throw error;
-  }
-}
+import { validateAuth, createErrorResponse } from '@/lib/api-utils';
 
 export async function GET() {
   console.log('Vocab Quiz Leaderboard API called');
   try {
-    console.log('Getting server session...');
-    const session = await getServerSession(authOptions);
-    console.log('Session result:', session ? 'Found session' : 'No session', session?.user?.email);
+    // Validate authentication and authorization
+    const user = await validateAuth();
+    console.log('User authenticated:', user.email);
 
-    if (!session?.user?.email) {
-      console.log('No session or email, returning 401');
-      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-    }
-
-    // Check if user is authorized
-    console.log('Checking email authorization for:', session.user.email.toLowerCase());
-    const isAuthorized = isEmailAuthorized(session.user.email.toLowerCase());
-    console.log('Authorization result:', isAuthorized);
-
-    if (!isAuthorized) {
-      console.log('User not authorized, returning 403');
-      return NextResponse.json({ error: 'Access denied' }, { status: 403 });
-    }
-
+    // Connect to database with error handling
     console.log('Connecting to MongoDB...');
-    await connectToMongoDB();
+    await connectToDatabase();
     console.log('MongoDB connected successfully');
 
     // Get accumulated total questions answered by player (TEMPORARILY INCLUDING admins for testing)
@@ -102,26 +71,6 @@ export async function GET() {
     console.log('Returning vocab response:', response.isEmpty ? 'Empty leaderboard' : 'With data');
     return NextResponse.json(response);
   } catch (error) {
-    console.error('ERROR in vocab-quiz leaderboard API:', error);
-    console.error('Error type:', typeof error);
-
-    const errorMessage = error instanceof Error ? error.message : String(error);
-    const errorStack = error instanceof Error ? error.stack : undefined;
-
-    console.error('Error message:', errorMessage);
-    if (errorStack) {
-      console.error('Error stack:', errorStack);
-    }
-
-    // Return more detailed error info in development
-    const isDev = process.env.NODE_ENV === 'development';
-    return NextResponse.json({
-      error: 'Failed to fetch leaderboard',
-      details: isDev ? {
-        message: errorMessage,
-        stack: errorStack,
-        type: typeof error
-      } : undefined
-    }, { status: 500 });
+    return createErrorResponse(error);
   }
 }

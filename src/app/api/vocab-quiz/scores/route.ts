@@ -1,43 +1,20 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getServerSession } from 'next-auth/next';
-import { authOptions } from '@/lib/auth';
-import mongoose from 'mongoose';
+import { connectToDatabase } from '@/lib/db';
 import VocabScore from '@/lib/models/VocabScore';
-import { isEmailAuthorized, isAdminEmail } from '@/lib/generated-access-control';
-
-// Connect to MongoDB
-async function connectToMongoDB() {
-  try {
-    if (mongoose.connection.readyState === 0) {
-      if (!process.env.MONGODB_URI) {
-        throw new Error('MONGODB_URI is not defined');
-      }
-      await mongoose.connect(process.env.MONGODB_URI);
-    }
-  } catch (error) {
-    console.error('MongoDB connection error:', error);
-    throw error;
-  }
-}
+import { isAdminEmail } from '@/lib/generated-access-control';
+import { validateAuth, createErrorResponse, ApiException } from '@/lib/api-utils';
 
 export async function POST(request: NextRequest) {
   try {
-    const session = await getServerSession(authOptions);
-    if (!session?.user?.email) {
-      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-    }
+    // Validate authentication and authorization
+    const user = await validateAuth();
 
-    // Check if user is authorized
-    const isAuthorized = isEmailAuthorized(session.user.email.toLowerCase());
-    if (!isAuthorized) {
-      return NextResponse.json({ error: 'Access denied' }, { status: 403 });
-    }
-
-    await connectToMongoDB();
+    // Connect to database with error handling
+    await connectToDatabase();
 
     const data = await request.json();
-    
-    // Validate required fields
+
+    // Validate required fields with detailed error messages
     const {
       questionsAnswered,
       questionsCorrect,
@@ -46,24 +23,43 @@ export async function POST(request: NextRequest) {
       difficulty
     } = data;
 
-    if (
-      typeof questionsAnswered !== 'number' ||
-      typeof questionsCorrect !== 'number' ||
-      typeof totalSections !== 'number' ||
-      !Array.isArray(selectedSections) ||
-      !difficulty
-    ) {
-      return NextResponse.json({ error: 'Invalid data format' }, { status: 400 });
+    const validationErrors: string[] = [];
+
+    if (typeof questionsAnswered !== 'number' || questionsAnswered < 1) {
+      validationErrors.push('questionsAnswered must be a positive number');
+    }
+    if (typeof questionsCorrect !== 'number' || questionsCorrect < 0) {
+      validationErrors.push('questionsCorrect must be a non-negative number');
+    }
+    if (typeof totalSections !== 'number' || totalSections < 1) {
+      validationErrors.push('totalSections must be a positive number');
+    }
+    if (!Array.isArray(selectedSections) || selectedSections.length === 0) {
+      validationErrors.push('selectedSections must be a non-empty array');
+    }
+    if (!difficulty || !['easy', 'medium', 'hard'].includes(difficulty)) {
+      validationErrors.push('difficulty must be one of: easy, medium, hard');
+    }
+    if (questionsCorrect > questionsAnswered) {
+      validationErrors.push('questionsCorrect cannot exceed questionsAnswered');
+    }
+
+    if (validationErrors.length > 0) {
+      throw new ApiException(
+        `Validation failed: ${validationErrors.join(', ')}`,
+        400,
+        'VALIDATION_ERROR'
+      );
     }
 
     // Check if user is admin (TEMPORARILY allowing admin scores for testing)
-    const isAdmin = isAdminEmail(session.user.email);
-    console.log('TESTING - User is admin:', isAdmin, 'Email:', session.user.email);
+    const isAdmin = isAdminEmail(user.email);
+    console.log('TESTING - User is admin:', isAdmin, 'Email:', user.email);
 
     // Create new vocab score entry
     const vocabScore = new VocabScore({
-      playerEmail: session.user.email,
-      playerName: session.user.name || 'Anonymous',
+      playerEmail: user.email,
+      playerName: user.name || 'Anonymous',
       questionsAnswered,
       questionsCorrect,
       totalSections,
@@ -89,7 +85,6 @@ export async function POST(request: NextRequest) {
       scoreId: savedScore._id
     });
   } catch (error) {
-    console.error('Error saving vocab score:', error);
-    return NextResponse.json({ error: 'Failed to save score' }, { status: 500 });
+    return createErrorResponse(error);
   }
 }
