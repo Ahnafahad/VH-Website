@@ -13,6 +13,12 @@
 - **Temporary Email**: `ahnafahad16@gmail.com`
 - **Reason**: Allow testing of student results dashboard with admin's email
 
+#### File: `public/data/students.json`
+- **Location**: Student ID 757516 entry
+- **Original Email**: `abrarmasud20@gmail.com`
+- **Temporary Email**: `ahnafahad16@gmail.com`
+- **Reason**: Match email for student data lookup (system matches by email)
+
 ### What This Affects:
 1. **Student Authentication**: The email `ahnafahad16@gmail.com` will now authenticate as student "Abrar Bin Masud"
 2. **Results Access**: This email can access student results for testing purposes
@@ -31,6 +37,7 @@
 
 ### Files to Check Before Production Deploy:
 - [ ] `access-control.json` - Ensure Abrar's original email is restored
+- [ ] `public/data/students.json` - Ensure Abrar's original email is restored
 - [ ] No other temporary testing changes remain
 
 ### Testing Scope:
