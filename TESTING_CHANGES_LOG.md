@@ -10,11 +10,11 @@
 #### File: `access-control.json`
 - **Location**: Line 30 (Student ID: 757516 - Abrar Bin Masud)
 - **Original Email**: `abrarmasud20@gmail.com`
-- **Temporary Email**: `ahnafhad16@gmail.com`
+- **Temporary Email**: `ahnafahad16@gmail.com`
 - **Reason**: Allow testing of student results dashboard with admin's email
 
 ### What This Affects:
-1. **Student Authentication**: The email `ahnafhad16@gmail.com` will now authenticate as student "Abrar Bin Masud"
+1. **Student Authentication**: The email `ahnafahad16@gmail.com` will now authenticate as student "Abrar Bin Masud"
 2. **Results Access**: This email can access student results for testing purposes
 3. **Student Dashboard**: Will show Abrar's test results and performance data
 4. **No Admin Impact**: Admin access remains unchanged (ahnaf816@gmail.com still has admin privileges)
@@ -24,7 +24,7 @@
 
 ```json
 // Change this line back in access-control.json at line 30:
-"email": "ahnafhad16@gmail.com",  // ← REMOVE THIS (testing email)
+"email": "ahnafahad16@gmail.com",  // ← REMOVE THIS (testing email)
 // Back to:
 "email": "abrarmasud20@gmail.com",  // ← RESTORE THIS (original email)
 ```
