@@ -1,0 +1,128 @@
+{
+  "students": {
+    "121716": {
+      "id": "121716",
+      "name": "Ayaz Mohammad Zahir",
+      "email": "iloveburgers2456@gmail.com"
+    },
+    "146014": {
+      "id": "146014",
+      "name": "Sadia Islam Sneha",
+      "email": "snehaasadia@gmail.com"
+    },
+    "158296": {
+      "id": "158296",
+      "name": "Tahiyat Abdullah",
+      "email": "tahiyatabdullah@gmail.com"
+    },
+    "196303": {
+      "id": "196303",
+      "name": "RAMISA MALIAT",
+      "email": "ramisamaliatyashra@gmail.com"
+    },
+    "303558": {
+      "id": "303558",
+      "name": "Nusrat Tasfia",
+      "email": "ntasfia4@gmail.com"
+    },
+    "399043": {
+      "id": "399043",
+      "name": "Sara Iftekhar",
+      "email": "sara.b.iftekhar@gmail.com"
+    },
+    "400651": {
+      "id": "400651",
+      "name": "Mahabub Alam Rafi",
+      "email": "kibria.mobin@gmail.com"
+    },
+    "417695": {
+      "id": "417695",
+      "name": "Kashfia Ahmed",
+      "email": "kashfiaahmed70@gmail.com"
+    },
+    "421527": {
+      "id": "421527",
+      "name": "Sharika Sanjana Chowdhury",
+      "email": "sharikachowdhury03@gmail.com"
+    },
+    "459889": {
+      "id": "459889",
+      "name": "Zuhayr Adeeb Ahmed",
+      "email": "zuhayradeeb@gmail.com"
+    },
+    "542127": {
+      "id": "542127",
+      "name": "Mansib Rahman",
+      "email": "mansibrahmanofficial@gmail.com"
+    },
+    "575752": {
+      "id": "575752",
+      "name": "Wazeed Mahmud",
+      "email": "mahmudwazeed@gmail.com"
+    },
+    "604057": {
+      "id": "604057",
+      "name": "Alex Alamgir",
+      "email": "alexalamgirbd@gmail.com"
+    },
+    "621172": {
+      "id": "621172",
+      "name": "Zaian Jannat Hussain",
+      "email": "zaianjannat0001@gmail.com"
+    },
+    "624690": {
+      "id": "624690",
+      "name": "Tarannum Rashid",
+      "email": "sk.tarannum06@gmail.com"
+    },
+    "643388": {
+      "id": "643388",
+      "name": "Sharaf Alam",
+      "email": "sharafalam16@gmail.com"
+    },
+    "648081": {
+      "id": "648081",
+      "name": "Ayesha Khaled",
+      "email": "ayeshakhaled41@gmail.com"
+    },
+    "650004": {
+      "id": "650004",
+      "name": "Aymaan Zaman",
+      "email": "aymaanzaman05@gmail.com"
+    },
+    "678535": {
+      "id": "678535",
+      "name": "Nazeef Rahman",
+      "email": "nazeefrahman.1208@gmail.com"
+    },
+    "757516": {
+      "id": "757516",
+      "name": "Abrar Bin Masud",
+      "email": "abrarmasud20@gmail.com"
+    },
+    "764305": {
+      "id": "764305",
+      "name": "Zayan Rahman",
+      "email": "zayan10010@gmail.com"
+    },
+    "907183": {
+      "id": "907183",
+      "name": "Sajid Shahrier Khan",
+      "email": "sajid.rimo25@gmail.com"
+    },
+    "934245": {
+      "id": "934245",
+      "name": "Aseya Siddiqua Saba",
+      "email": "aseyasiddiqua30@gmail.com"
+    },
+    "979212": {
+      "id": "979212",
+      "name": "Mahira Akhtar",
+      "email": "mahira.akh24@gmail.com"
+    }
+  },
+  "metadata": {
+    "totalStudents": 24,
+    "lastUpdated": "2025-09-18T22:12:30.316Z"
+  }
+}

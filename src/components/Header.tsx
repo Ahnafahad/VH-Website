@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Menu, X, ChevronDown, Gamepad2 } from 'lucide-react';
+import { Menu, X, ChevronDown, Gamepad2, BarChart3 } from 'lucide-react';
 import LoginButton from './LoginButton';
 import { useSession } from 'next-auth/react';
 
@@ -63,35 +63,45 @@ const Header = () => {
               <span className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-vh-red transition-all duration-300 group-hover:w-full group-hover:left-0"></span>
             </Link>
             {session && (
-              <div className="relative">
-                <button
-                  onClick={() => setIsGamesDropdownOpen(!isGamesDropdownOpen)}
+              <>
+                <Link
+                  href="/results"
                   className="relative px-4 py-2 text-gray-800 hover:text-vh-red font-semibold transition-all duration-300 group flex items-center gap-1"
                 >
-                  <Gamepad2 size={16} />
-                  Games
-                  <ChevronDown size={16} className={`transition-transform ${isGamesDropdownOpen ? 'rotate-180' : ''}`} />
+                  <BarChart3 size={16} />
+                  Results
                   <span className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-vh-red transition-all duration-300 group-hover:w-full group-hover:left-0"></span>
-                </button>
-                {isGamesDropdownOpen && (
-                  <div className="absolute top-full left-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-vh-beige/30 py-2 z-10">
-                    <Link
-                      href="/games/vocab-quiz"
-                      className="block px-4 py-2 text-gray-800 hover:text-vh-red hover:bg-vh-beige/20 transition-all duration-300"
-                      onClick={() => setIsGamesDropdownOpen(false)}
-                    >
-                      Vocabulary Quiz
-                    </Link>
-                    <Link
-                      href="/games/mental-math"
-                      className="block px-4 py-2 text-gray-800 hover:text-vh-red hover:bg-vh-beige/20 transition-all duration-300"
-                      onClick={() => setIsGamesDropdownOpen(false)}
-                    >
-                      Mental Math Trainer
-                    </Link>
-                  </div>
-                )}
-              </div>
+                </Link>
+                <div className="relative">
+                  <button
+                    onClick={() => setIsGamesDropdownOpen(!isGamesDropdownOpen)}
+                    className="relative px-4 py-2 text-gray-800 hover:text-vh-red font-semibold transition-all duration-300 group flex items-center gap-1"
+                  >
+                    <Gamepad2 size={16} />
+                    Games
+                    <ChevronDown size={16} className={`transition-transform ${isGamesDropdownOpen ? 'rotate-180' : ''}`} />
+                    <span className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-vh-red transition-all duration-300 group-hover:w-full group-hover:left-0"></span>
+                  </button>
+                  {isGamesDropdownOpen && (
+                    <div className="absolute top-full left-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-vh-beige/30 py-2 z-10">
+                      <Link
+                        href="/games/vocab-quiz"
+                        className="block px-4 py-2 text-gray-800 hover:text-vh-red hover:bg-vh-beige/20 transition-all duration-300"
+                        onClick={() => setIsGamesDropdownOpen(false)}
+                      >
+                        Vocabulary Quiz
+                      </Link>
+                      <Link
+                        href="/games/mental-math"
+                        className="block px-4 py-2 text-gray-800 hover:text-vh-red hover:bg-vh-beige/20 transition-all duration-300"
+                        onClick={() => setIsGamesDropdownOpen(false)}
+                      >
+                        Mental Math Trainer
+                      </Link>
+                    </div>
+                  )}
+                </div>
+              </>
             )}
             <div className="ml-4 flex items-center space-x-4">
               <LoginButton />
@@ -143,26 +153,36 @@ const Header = () => {
                 DU FBS Course
               </Link>
               {session && (
-                <div>
-                  <div className="px-4 py-3 text-gray-800 font-semibold flex items-center gap-2">
-                    <Gamepad2 size={16} />
-                    Games
+                <>
+                  <Link
+                    href="/results"
+                    className="block px-4 py-3 text-gray-800 hover:text-vh-red hover:bg-vh-beige/10 font-semibold rounded-xl transition-all duration-300 flex items-center gap-2"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    <BarChart3 size={16} />
+                    Results
+                  </Link>
+                  <div>
+                    <div className="px-4 py-3 text-gray-800 font-semibold flex items-center gap-2">
+                      <Gamepad2 size={16} />
+                      Games
+                    </div>
+                    <Link
+                      href="/games/vocab-quiz"
+                      className="block px-8 py-2 text-gray-600 hover:text-vh-red hover:bg-vh-beige/10 rounded-xl transition-all duration-300 ml-4"
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      Vocabulary Quiz
+                    </Link>
+                    <Link
+                      href="/games/mental-math"
+                      className="block px-8 py-2 text-gray-600 hover:text-vh-red hover:bg-vh-beige/10 rounded-xl transition-all duration-300 ml-4"
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      Mental Math Trainer
+                    </Link>
                   </div>
-                  <Link
-                    href="/games/vocab-quiz"
-                    className="block px-8 py-2 text-gray-600 hover:text-vh-red hover:bg-vh-beige/10 rounded-xl transition-all duration-300 ml-4"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    Vocabulary Quiz
-                  </Link>
-                  <Link
-                    href="/games/mental-math"
-                    className="block px-8 py-2 text-gray-600 hover:text-vh-red hover:bg-vh-beige/10 rounded-xl transition-all duration-300 ml-4"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    Mental Math Trainer
-                  </Link>
-                </div>
+                </>
               )}
               <div className="pt-4 space-y-3">
                 <div className="mx-2">
