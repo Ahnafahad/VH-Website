@@ -44,17 +44,7 @@ const SeriesProgressChart: React.FC<SeriesProgressChartProps> = ({
 }) => {
   // Process data to create series-based progression (group by test name base)
   const processProgressionData = (): SeriesDataPoint[] => {
-    // Add comprehensive debugging
-    console.log('[SeriesProgressChart] Processing data...', {
-      hasSimpleTests: !!simpleTests?.tests,
-      hasFullTests: !!fullTests?.tests,
-      hasStudents: !!students?.students,
-      simpleTestsKeys: simpleTests?.tests ? Object.keys(simpleTests.tests) : 'undefined',
-      fullTestsKeys: fullTests?.tests ? Object.keys(fullTests.tests) : 'undefined'
-    });
-
     if (!simpleTests?.tests || !students?.students) {
-      console.log('[SeriesProgressChart] Early return - missing required data');
       return [];
     }
 
@@ -69,19 +59,10 @@ const SeriesProgressChart: React.FC<SeriesProgressChartProps> = ({
 
       // Group tests by base name (remove numbers)
       const seriesGroups: { [key: string]: any[] } = {};
-      console.log('[SeriesProgressChart] Processing testEntries:', testEntries.length, 'entries');
 
-      testEntries.forEach(([testName, test]: [string, any], index) => {
-        // Comprehensive debugging for each test
-        console.log(`[SeriesProgressChart] Processing test ${index}: '${testName}'`, {
-          hasTest: !!test,
-          hasResults: !!(test && test.results),
-          testType: test ? typeof test : 'undefined'
-        });
-
+      testEntries.forEach(([testName, test]: [string, any]) => {
         // Only process tests that have results data
         if (!test || !test.results) {
-          console.log(`[SeriesProgressChart] Skipping test '${testName}' - no results`);
           return;
         }
 
@@ -128,27 +109,14 @@ const SeriesProgressChart: React.FC<SeriesProgressChartProps> = ({
         ...(simpleTests?.tests || {}),
         ...(fullTests?.tests || {})
       };
-      console.log('[SeriesProgressChart] Individual view - Processing allTests:', Object.keys(allTests));
 
       const userTests = Object.entries(allTests)
         .filter(([testName, test]: [string, any]) => {
-          const hasTest = !!test;
-          const hasResults = !!(test && test.results);
-          const hasUserResult = !!(test && test.results && test.results[userId]);
-
-          console.log(`[SeriesProgressChart] Filter test '${testName}':`, {
-            hasTest,
-            hasResults,
-            hasUserResult,
-            userId
-          });
-
-          if (!hasTest || !hasResults) {
-            console.log(`[SeriesProgressChart] ❌ Filtering out '${testName}' - missing test or results`);
+          if (!test || !test.results) {
             return false;
           }
 
-          return hasUserResult;
+          return !!(test.results && test.results[userId]);
         });
 
       // Group by base name

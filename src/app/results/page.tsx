@@ -257,6 +257,7 @@ const ResultsDashboard = () => {
                 </div>
                 <PerformanceBarChart
                   simpleTests={simpleTests}
+                  fullTests={fullTests}
                   students={students}
                   userEmail={session?.user?.email || ''}
                 />

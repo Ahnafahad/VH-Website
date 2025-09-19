@@ -567,6 +567,7 @@ const TestDetailPage = () => {
                     <h3 className="text-lg font-semibold text-gray-800 mb-4">Performance vs Class</h3>
                     <PerformanceBarChart
                       simpleTests={simpleTests}
+                      fullTests={fullTests}
                       students={students}
                       userEmail={session.user.email}
                       testName={testName}

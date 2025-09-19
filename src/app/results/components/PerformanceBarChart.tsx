@@ -22,6 +22,7 @@ interface PerformanceData {
 
 interface PerformanceBarChartProps {
   simpleTests?: any;
+  fullTests?: any;
   students?: any;
   userEmail?: string;
   testName?: string;
@@ -33,6 +34,7 @@ interface PerformanceBarChartProps {
 
 const PerformanceBarChart: React.FC<PerformanceBarChartProps> = ({
   simpleTests,
+  fullTests,
   students,
   userEmail,
   testName,
@@ -46,9 +48,15 @@ const PerformanceBarChart: React.FC<PerformanceBarChartProps> = ({
     if (!simpleTests?.tests || !students?.students) return [];
 
     // If testName is provided, only show data for that specific test
+    // Combine both simple and full tests to find the correct test
+    const allTests = {
+      ...(simpleTests?.tests || {}),
+      ...(fullTests?.tests || {})
+    };
+
     const testsToProcess = testName ?
-      { [testName]: simpleTests.tests[testName] } :
-      simpleTests.tests;
+      { [testName]: allTests[testName] } :
+      allTests;
 
     if (isClassView || !userEmail) {
       // Return class average data for each test
