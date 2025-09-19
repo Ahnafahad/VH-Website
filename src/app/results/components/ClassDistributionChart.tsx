@@ -50,7 +50,7 @@ const ClassDistributionChart: React.FC<ClassDistributionChartProps> = ({
     const allScores: number[] = [];
 
     Object.values(allTests).forEach((test: any) => {
-      Object.values(test.results).forEach((result: any) => {
+      Object.values(test.results || {}).forEach((result: any) => {
         const score = 'score' in result ? result.score : result.totalMarks;
         allScores.push(score);
       });

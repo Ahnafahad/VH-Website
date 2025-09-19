@@ -174,7 +174,7 @@ const AdminDashboard = () => {
       }
 
       const scores = studentTests.map(([, test]) => {
-        const result = test.results[studentId];
+        const result = test.results?.[studentId] || {};
         return 'score' in result ? result.score : (result as any).totalMarks;
       });
 
@@ -234,7 +234,7 @@ const AdminDashboard = () => {
     const test = simpleTests.tests[selectedTest] || fullTests.tests[selectedTest];
     if (!test) return null;
 
-    const results = Object.values(test.results);
+    const results = Object.values(test.results || {});
     const scores = results.map(r => 'score' in r ? r.score : (r as any).totalMarks);
 
     return {
@@ -535,7 +535,7 @@ const AdminDashboard = () => {
                     const allTests = { ...simpleTests.tests, ...fullTests.tests };
 
                     Object.values(allTests).forEach((test: any) => {
-                      Object.values(test.results).forEach((result: any) => {
+                      Object.values(test.results || {}).forEach((result: any) => {
                         const score = 'score' in result ? result.score : result.totalMarks;
                         allScores.push(score);
                       });
@@ -591,7 +591,7 @@ const AdminDashboard = () => {
                   {(() => {
                     const allTests = { ...simpleTests.tests, ...fullTests.tests };
                     const testAnalysis = Object.entries(allTests).map(([testName, test]: [string, any]) => {
-                      const results = Object.values(test.results) as any[];
+                      const results = Object.values(test.results || {}) as any[];
                       const scores = results.map(r => 'score' in r ? r.score : r.totalMarks);
                       const average = scores.reduce((a, b) => a + b, 0) / scores.length;
 

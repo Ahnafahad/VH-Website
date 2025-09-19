@@ -334,7 +334,7 @@ const TestDetailPage = () => {
                   </div>
                   <div className="text-3xl font-bold text-vh-red mb-2">
                     {isFullTest ?
-                      Math.round(((userResult as FullTestResult).totalMarks / Math.max(...Object.values(currentTest.results).map(r => (r as FullTestResult).totalMarks))) * 100) :
+                      Math.round(((userResult as FullTestResult).totalMarks / Math.max(...Object.values(currentTest.results || {}).map(r => (r as FullTestResult).totalMarks))) * 100) :
                       (userResult as SimpleTestResult).analytics.accuracy
                     }%
                   </div>
@@ -508,7 +508,7 @@ const TestDetailPage = () => {
                     <h3 className="text-lg font-semibold text-gray-800 mb-4">Your Position in Class</h3>
                     <PercentileChart
                       userScore={isFullTest ? (userResult as FullTestResult).totalMarks : (userResult as SimpleTestResult).score}
-                      allScores={Object.values(currentTest.results).map(result =>
+                      allScores={Object.values(currentTest.results || {}).map(result =>
                         isFullTest ? (result as FullTestResult).totalMarks : (result as SimpleTestResult).score
                       )}
                       title=""

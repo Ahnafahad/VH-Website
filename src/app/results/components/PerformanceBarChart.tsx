@@ -53,7 +53,7 @@ const PerformanceBarChart: React.FC<PerformanceBarChartProps> = ({
     if (isClassView || !userEmail) {
       // Return class average data for each test
       return Object.entries(testsToProcess).map(([testNameKey, test]: [string, any]) => {
-        const results = Object.values(test.results) as any[];
+        const results = Object.values(test.results || {}) as any[];
         const totalCorrect = results.reduce((sum, r) => sum + (r.correct || 0), 0);
         const totalWrong = results.reduce((sum, r) => sum + (r.wrong || 0), 0);
         const totalUnattempted = results.reduce((sum, r) => sum + (r.unattempted || 0), 0);
@@ -76,7 +76,7 @@ const PerformanceBarChart: React.FC<PerformanceBarChartProps> = ({
       return Object.entries(testsToProcess)
         .filter(([_, test]: [string, any]) => test.results && test.results[userId])
         .map(([testNameKey, test]: [string, any]) => {
-          const result = test.results[userId];
+          const result = test.results?.[userId] || {};
           return {
             name: testName ? 'Your Performance' : testNameKey.slice(0, 20) + (testNameKey.length > 20 ? '...' : ''),
             correct: result.correct || 0,

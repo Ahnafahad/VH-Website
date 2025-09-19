@@ -81,7 +81,7 @@ const ResultsDashboard = () => {
 
     // Calculate stats
     const totalTests = userTests.length;
-    const scores = userTests.map(test => test.results[userId].score);
+    const scores = userTests.map(test => test.results?.[userId]?.score || 0);
     const averageScore = scores.reduce((a, b) => a + b, 0) / scores.length;
 
     // Get most recent test
@@ -89,14 +89,14 @@ const ResultsDashboard = () => {
       new Date(a.metadata.processedAt).getTime() - new Date(b.metadata.processedAt).getTime()
     );
     const recentTest = sortedTests[sortedTests.length - 1];
-    const recentScore = recentTest.results[userId].score;
-    const recentRank = recentTest.results[userId].rank;
+    const recentScore = recentTest.results?.[userId]?.score || 0;
+    const recentRank = recentTest.results?.[userId]?.rank || 0;
 
     // Calculate improvement (compare last two tests)
     let improvement = 0;
     if (sortedTests.length >= 2) {
-      const previousScore = sortedTests[sortedTests.length - 2].results[userId].score;
-      improvement = ((recentScore - previousScore) / Math.abs(previousScore)) * 100;
+      const previousScore = sortedTests[sortedTests.length - 2].results?.[userId]?.score || 0;
+      improvement = previousScore ? ((recentScore - previousScore) / Math.abs(previousScore)) * 100 : 0;
     }
 
     setStats({

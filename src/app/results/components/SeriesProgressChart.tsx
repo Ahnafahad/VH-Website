@@ -66,7 +66,7 @@ const SeriesProgressChart: React.FC<SeriesProgressChartProps> = ({
       Object.entries(filteredGroups).forEach(([baseName, tests]) => {
         if (tests && tests.length > 1) {
           tests.forEach(({ testName, test }) => {
-            const results = Object.values(test.results) as any[];
+            const results = Object.values(test.results || {}) as any[];
             const totalScore = results.reduce((sum: number, result: any) => sum + (result.score || 0), 0);
             const totalAccuracy = results.reduce((sum: number, result: any) => sum + (result.analytics?.accuracy || 0), 0);
 
@@ -110,7 +110,7 @@ const SeriesProgressChart: React.FC<SeriesProgressChartProps> = ({
       Object.entries(filteredGroups).forEach(([baseName, tests]) => {
         if (tests && tests.length > 1) {
           tests.forEach(({ testName, test }) => {
-            const result = test.results[userId];
+            const result = test.results?.[userId] || {};
             seriesData.push({
               testName,
               score: result.score || 0,
