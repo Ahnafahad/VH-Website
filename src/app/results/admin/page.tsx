@@ -121,7 +121,7 @@ const AdminDashboard = () => {
     let latestTestName = '';
 
     Object.entries(allTests).forEach(([testName, test]) => {
-      Object.entries(test.results).forEach(([studentId, result]) => {
+      Object.entries(test.results || {}).forEach(([studentId, result]) => {
         const score = 'score' in result ? result.score : (result as any).totalMarks;
         totalScores += score;
         scoreCount++;
