@@ -38,29 +38,44 @@ const SeriesProgressChart: React.FC<SeriesProgressChartProps> = ({
   title = "Series Progression",
   height = 300
 }) => {
-  // Process data to create time-based progression
+  // Process data to create series-based progression (group by test name base)
   const processProgressionData = (): SeriesDataPoint[] => {
     if (!simpleTests?.tests || !students?.students) return [];
 
     if (isClassView) {
-      // For class view, calculate average progression
-      const testNames = Object.keys(simpleTests.tests);
-      return testNames.map(testName => {
-        const test = simpleTests.tests[testName];
-        const results = Object.values(test.results) as any[];
+      // For class view, calculate average progression by series
+      const testEntries = Object.entries(simpleTests.tests);
 
-        const totalScore = results.reduce((sum: number, result: any) => sum + (result.score || 0), 0);
-        const totalAccuracy = results.reduce((sum: number, result: any) => sum + (result.analytics?.accuracy || 0), 0);
-
-        return {
-          testName,
-          score: Math.round((totalScore / results.length) * 100) / 100,
-          rank: 0, // Not applicable for class average
-          accuracy: Math.round((totalAccuracy / results.length) * 100) / 100
-        };
+      // Group tests by base name (remove numbers)
+      const seriesGroups: { [key: string]: any[] } = {};
+      testEntries.forEach(([testName, test]) => {
+        const baseName = testName.replace(/\s*\d+$/, '').trim(); // Remove trailing numbers
+        if (!seriesGroups[baseName]) seriesGroups[baseName] = [];
+        seriesGroups[baseName].push({ testName, test });
       });
+
+      // Only return series with multiple tests
+      const seriesData: SeriesDataPoint[] = [];
+      Object.entries(seriesGroups).forEach(([baseName, tests]) => {
+        if (tests.length > 1) {
+          tests.forEach(({ testName, test }) => {
+            const results = Object.values(test.results) as any[];
+            const totalScore = results.reduce((sum: number, result: any) => sum + (result.score || 0), 0);
+            const totalAccuracy = results.reduce((sum: number, result: any) => sum + (result.analytics?.accuracy || 0), 0);
+
+            seriesData.push({
+              testName,
+              score: Math.round((totalScore / results.length) * 100) / 100,
+              rank: 0,
+              accuracy: Math.round((totalAccuracy / results.length) * 100) / 100
+            });
+          });
+        }
+      });
+
+      return seriesData.sort((a, b) => a.testName.localeCompare(b.testName));
     } else {
-      // For individual user view
+      // For individual user view - only show series with multiple tests
       if (!userEmail) return [];
 
       const user = Object.values(students.students).find((s: any) => s.email === userEmail) as any;
@@ -68,18 +83,33 @@ const SeriesProgressChart: React.FC<SeriesProgressChartProps> = ({
 
       const userId = user.id;
       const userTests = Object.entries(simpleTests.tests)
-        .filter(([_, test]: [string, any]) => test.results[userId])
-        .sort(([, a], [, b]) => new Date((a as any).metadata.processedAt).getTime() - new Date((b as any).metadata.processedAt).getTime());
+        .filter(([_, test]: [string, any]) => test.results[userId]);
 
-      return userTests.map(([testName, test]: [string, any]) => {
-        const result = test.results[userId];
-        return {
-          testName,
-          score: result.score || 0,
-          rank: result.rank || 0,
-          accuracy: result.analytics?.accuracy || 0
-        };
+      // Group by base name
+      const seriesGroups: { [key: string]: any[] } = {};
+      userTests.forEach(([testName, test]) => {
+        const baseName = testName.replace(/\s*\d+$/, '').trim();
+        if (!seriesGroups[baseName]) seriesGroups[baseName] = [];
+        seriesGroups[baseName].push({ testName, test });
       });
+
+      // Only return series with multiple tests
+      const seriesData: SeriesDataPoint[] = [];
+      Object.entries(seriesGroups).forEach(([baseName, tests]) => {
+        if (tests.length > 1) {
+          tests.forEach(({ testName, test }) => {
+            const result = test.results[userId];
+            seriesData.push({
+              testName,
+              score: result.score || 0,
+              rank: result.rank || 0,
+              accuracy: result.analytics?.accuracy || 0
+            });
+          });
+        }
+      });
+
+      return seriesData.sort((a, b) => a.testName.localeCompare(b.testName));
     }
   };
 

@@ -45,9 +45,14 @@ const PerformanceBarChart: React.FC<PerformanceBarChartProps> = ({
   const processPerformanceData = (): PerformanceData[] => {
     if (!simpleTests?.tests || !students?.students) return [];
 
+    // If testName is provided, only show data for that specific test
+    const testsToProcess = testName ?
+      { [testName]: simpleTests.tests[testName] } :
+      simpleTests.tests;
+
     if (isClassView || !userEmail) {
       // Return class average data for each test
-      return Object.entries(simpleTests.tests).map(([testName, test]: [string, any]) => {
+      return Object.entries(testsToProcess).map(([testNameKey, test]: [string, any]) => {
         const results = Object.values(test.results) as any[];
         const totalCorrect = results.reduce((sum, r) => sum + (r.correct || 0), 0);
         const totalWrong = results.reduce((sum, r) => sum + (r.wrong || 0), 0);
@@ -55,7 +60,7 @@ const PerformanceBarChart: React.FC<PerformanceBarChartProps> = ({
         const averageScore = results.reduce((sum, r) => sum + (r.score || 0), 0) / results.length;
 
         return {
-          name: testName.slice(0, 20) + (testName.length > 20 ? '...' : ''),
+          name: testName ? 'Class Average' : testNameKey.slice(0, 20) + (testNameKey.length > 20 ? '...' : ''),
           correct: Math.round(totalCorrect / results.length),
           wrong: Math.round(totalWrong / results.length),
           unattempted: Math.round(totalUnattempted / results.length),
@@ -63,17 +68,17 @@ const PerformanceBarChart: React.FC<PerformanceBarChartProps> = ({
         };
       });
     } else {
-      // Return individual user data for each test
+      // Return individual user data for specified test(s)
       const user = Object.values(students.students).find((s: any) => s.email === userEmail) as any;
       if (!user) return [];
 
       const userId = user.id;
-      return Object.entries(simpleTests.tests)
+      return Object.entries(testsToProcess)
         .filter(([_, test]: [string, any]) => test.results[userId])
-        .map(([testName, test]: [string, any]) => {
+        .map(([testNameKey, test]: [string, any]) => {
           const result = test.results[userId];
           return {
-            name: testName.slice(0, 20) + (testName.length > 20 ? '...' : ''),
+            name: testName ? 'Your Performance' : testNameKey.slice(0, 20) + (testNameKey.length > 20 ? '...' : ''),
             correct: result.correct || 0,
             wrong: result.wrong || 0,
             unattempted: result.unattempted || 0,

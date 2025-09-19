@@ -8,7 +8,6 @@ import ProtectedRoute from '@/components/ProtectedRoute';
 import { SimpleTestsData, FullTestsData, StudentsData, SimpleTest, FullTest, SimpleTestResult, FullTestResult } from '@/types/results';
 import SeriesProgressChart from '../../components/SeriesProgressChart';
 import PerformanceBarChart from '../../components/PerformanceBarChart';
-import SkillRadarChart from '../../components/SkillRadarChart';
 import PercentileChart from '../../components/PercentileChart';
 
 const TestDetailPage = () => {
@@ -109,67 +108,104 @@ const TestDetailPage = () => {
     const personalAnalysis: any = {};
 
     Object.entries(test.topQuestions).forEach(([sectionNum, sectionData]) => {
+      // Only process sections that have data
+      if (!sectionData.mostCorrect?.length && !sectionData.mostWrong?.length && !sectionData.mostSkipped?.length) {
+        return; // Skip sections with no top questions data
+      }
+
       personalAnalysis[sectionNum] = {
-        easiestCorrect: 0,
-        easiestWrong: 0,
-        easiestSkipped: 0,
-        hardestCorrect: 0,
-        hardestWrong: 0,
-        hardestSkipped: 0,
-        mostSkippedCorrect: 0,
-        mostSkippedWrong: 0,
-        mostSkippedActuallySkipped: 0
+        // Top Ten Questions Right - questions most students got correct
+        topRightCorrect: 0,
+        topRightWrong: 0,
+        topRightSkipped: 0,
+        // Top Ten Questions Wrong - questions most students got wrong
+        topWrongCorrect: 0,
+        topWrongWrong: 0,
+        topWrongSkipped: 0,
+        // Ten Questions Skipped - questions most students skipped
+        topSkippedCorrect: 0,
+        topSkippedWrong: 0,
+        topSkippedActuallySkipped: 0,
+        // Store actual questions for display
+        topRightQuestions: [],
+        topWrongQuestions: [],
+        topSkippedQuestions: []
       };
 
-      // Analyze performance on easiest questions
-      sectionData.mostCorrect.forEach((question: any) => {
-        const userResponse = result.responses[question.questionId];
-        if (userResponse === 'NAN') {
-          personalAnalysis[sectionNum].easiestSkipped++;
-        } else if (userResponse?.includes('(C)')) {
-          personalAnalysis[sectionNum].easiestCorrect++;
-        } else if (userResponse?.includes('(W)')) {
-          personalAnalysis[sectionNum].easiestWrong++;
-        }
-      });
+      // Analyze performance on questions most students got RIGHT (easiest)
+      if (sectionData.mostCorrect?.length > 0) {
+        sectionData.mostCorrect.forEach((question: any) => {
+          const userResponse = result.responses[question.questionId];
+          personalAnalysis[sectionNum].topRightQuestions.push({
+            questionId: question.questionId,
+            userResponse,
+            classCorrect: question.count
+          });
 
-      // Analyze performance on hardest questions
-      sectionData.mostWrong.forEach((question: any) => {
-        const userResponse = result.responses[question.questionId];
-        if (userResponse === 'NAN') {
-          personalAnalysis[sectionNum].hardestSkipped++;
-        } else if (userResponse?.includes('(C)')) {
-          personalAnalysis[sectionNum].hardestCorrect++;
-        } else if (userResponse?.includes('(W)')) {
-          personalAnalysis[sectionNum].hardestWrong++;
-        }
-      });
+          if (userResponse === 'NAN') {
+            personalAnalysis[sectionNum].topRightSkipped++;
+          } else if (userResponse?.includes('(C)')) {
+            personalAnalysis[sectionNum].topRightCorrect++;
+          } else {
+            personalAnalysis[sectionNum].topRightWrong++;
+          }
+        });
+      }
 
-      // Analyze performance on most skipped questions
-      sectionData.mostSkipped.forEach((question: any) => {
-        const userResponse = result.responses[question.questionId];
-        if (userResponse === 'NAN') {
-          personalAnalysis[sectionNum].mostSkippedActuallySkipped++;
-        } else if (userResponse?.includes('(C)')) {
-          personalAnalysis[sectionNum].mostSkippedCorrect++;
-        } else if (userResponse?.includes('(W)')) {
-          personalAnalysis[sectionNum].mostSkippedWrong++;
-        }
-      });
+      // Analyze performance on questions most students got WRONG (hardest)
+      if (sectionData.mostWrong?.length > 0) {
+        sectionData.mostWrong.forEach((question: any) => {
+          const userResponse = result.responses[question.questionId];
+          personalAnalysis[sectionNum].topWrongQuestions.push({
+            questionId: question.questionId,
+            userResponse,
+            classWrong: question.count
+          });
+
+          if (userResponse === 'NAN') {
+            personalAnalysis[sectionNum].topWrongSkipped++;
+          } else if (userResponse?.includes('(C)')) {
+            personalAnalysis[sectionNum].topWrongCorrect++;
+          } else {
+            personalAnalysis[sectionNum].topWrongWrong++;
+          }
+        });
+      }
+
+      // Analyze performance on questions most students SKIPPED
+      if (sectionData.mostSkipped?.length > 0) {
+        sectionData.mostSkipped.forEach((question: any) => {
+          const userResponse = result.responses[question.questionId];
+          personalAnalysis[sectionNum].topSkippedQuestions.push({
+            questionId: question.questionId,
+            userResponse,
+            classSkipped: question.count
+          });
+
+          if (userResponse === 'NAN') {
+            personalAnalysis[sectionNum].topSkippedActuallySkipped++;
+          } else if (userResponse?.includes('(C)')) {
+            personalAnalysis[sectionNum].topSkippedCorrect++;
+          } else {
+            personalAnalysis[sectionNum].topSkippedWrong++;
+          }
+        });
+      }
     });
 
-    return personalAnalysis;
+    return Object.keys(personalAnalysis).length > 0 ? personalAnalysis : null;
   };
 
   if (loading) {
     return (
       <ProtectedRoute>
-        <div className="min-h-screen bg-gradient-to-br from-vh-beige/20 via-white to-vh-light-red/5">
-          <div className="max-w-7xl mx-auto px-4 py-8">
+        <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-vh-beige/5 font-['Inter'] antialiased">
+          <div className="max-w-6xl mx-auto px-6 py-12">
             <div className="flex items-center justify-center min-h-[400px]">
               <div className="text-center">
-                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-vh-red mx-auto mb-4"></div>
-                <p className="text-gray-600">Loading test details...</p>
+                <div className="w-16 h-16 border-4 border-vh-red/20 border-t-vh-red rounded-full animate-spin mx-auto mb-6"></div>
+                <h2 className="text-2xl font-bold text-gray-900 mb-2">Loading Test</h2>
+                <p className="text-gray-600">Preparing detailed analytics...</p>
               </div>
             </div>
           </div>
@@ -181,20 +217,22 @@ const TestDetailPage = () => {
   if (error || !currentTest) {
     return (
       <ProtectedRoute>
-        <div className="min-h-screen bg-gradient-to-br from-vh-beige/20 via-white to-vh-light-red/5">
-          <div className="max-w-7xl mx-auto px-4 py-8">
+        <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-vh-beige/5 font-['Inter'] antialiased">
+          <div className="max-w-6xl mx-auto px-6 py-12">
             <button
               onClick={() => router.back()}
-              className="flex items-center gap-2 text-vh-red hover:text-vh-red/80 mb-6"
+              className="flex items-center gap-2 text-vh-red hover:text-vh-red/80 mb-6 font-semibold"
             >
               <ArrowLeft size={20} />
               Back to Results
             </button>
             <div className="flex items-center justify-center min-h-[400px]">
               <div className="text-center">
-                <div className="text-red-500 text-6xl mb-4">⚠️</div>
-                <h2 className="text-xl font-semibold text-gray-800 mb-2">Test Not Found</h2>
-                <p className="text-gray-600">{error}</p>
+                <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <div className="text-red-500 text-2xl">⚠️</div>
+                </div>
+                <h2 className="text-2xl font-bold text-gray-900 mb-3">Test Not Found</h2>
+                <p className="text-gray-600 mb-6">{error}</p>
               </div>
             </div>
           </div>
@@ -205,8 +243,8 @@ const TestDetailPage = () => {
 
   return (
     <ProtectedRoute>
-      <div className="min-h-screen bg-gradient-to-br from-vh-beige/10 to-white">
-        <div className="max-w-7xl mx-auto px-4 py-8">
+      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-vh-beige/5 font-['Inter'] antialiased">
+        <div className="max-w-6xl mx-auto px-6 py-12">
 
           {/* Header */}
           <div className="mb-8">
@@ -533,16 +571,6 @@ const TestDetailPage = () => {
                     />
                   </div>
 
-                  {/* Skill Analysis */}
-                  <div className="bg-gradient-to-br from-white to-vh-beige/5 rounded-xl shadow-lg border border-vh-beige/30 hover:shadow-xl transition-all duration-300">
-                    <h3 className="text-lg font-semibold text-gray-800 mb-4">Skill Breakdown</h3>
-                    <SkillRadarChart
-                      simpleTests={simpleTests}
-                      students={students}
-                      userEmail={session.user.email}
-                      testName={testName}
-                    />
-                  </div>
                 </div>
               )}
 
@@ -631,100 +659,106 @@ const TestDetailPage = () => {
 
                         <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-4">
                           {/* Performance on Easiest Questions */}
+                          {analysis.topRightQuestions?.length > 0 && (
                           <div className="bg-green-50 border border-green-200 p-4 rounded-lg">
                             <h5 className="font-semibold text-green-800 mb-3 flex items-center gap-2">
                               <CheckCircle size={16} />
-                              Easiest Questions Performance
+                              Top Questions Right (Class Easiest)
                             </h5>
                             <div className="space-y-2 text-sm">
                               <div className="flex justify-between">
                                 <span className="text-green-700">Got Correct:</span>
-                                <span className="font-semibold text-green-600">{analysis.easiestCorrect}</span>
+                                <span className="font-semibold text-green-600">{analysis.topRightCorrect}</span>
                               </div>
                               <div className="flex justify-between">
                                 <span className="text-red-700">Got Wrong:</span>
-                                <span className="font-semibold text-red-600">{analysis.easiestWrong}</span>
+                                <span className="font-semibold text-red-600">{analysis.topRightWrong}</span>
                               </div>
                               <div className="flex justify-between">
                                 <span className="text-gray-700">Skipped:</span>
-                                <span className="font-semibold text-gray-600">{analysis.easiestSkipped}</span>
+                                <span className="font-semibold text-gray-600">{analysis.topRightSkipped}</span>
                               </div>
                               <div className="pt-2 border-t border-green-300">
                                 <div className="flex justify-between font-semibold">
                                   <span className="text-green-800">Success Rate:</span>
                                   <span className="text-green-600">
-                                    {analysis.easiestCorrect + analysis.easiestWrong > 0
-                                      ? Math.round((analysis.easiestCorrect / (analysis.easiestCorrect + analysis.easiestWrong)) * 100)
+                                    {analysis.topRightCorrect + analysis.topRightWrong > 0
+                                      ? Math.round((analysis.topRightCorrect / (analysis.topRightCorrect + analysis.topRightWrong)) * 100)
                                       : 0}%
                                   </span>
                                 </div>
                               </div>
                             </div>
                           </div>
+                          )}
 
                           {/* Performance on Hardest Questions */}
+                          {analysis.topWrongQuestions?.length > 0 && (
                           <div className="bg-red-50 border border-red-200 p-4 rounded-lg">
                             <h5 className="font-semibold text-red-800 mb-3 flex items-center gap-2">
                               <XCircle size={16} />
-                              Hardest Questions Performance
+                              Top Questions Wrong (Class Hardest)
                             </h5>
                             <div className="space-y-2 text-sm">
                               <div className="flex justify-between">
                                 <span className="text-green-700">Got Correct:</span>
-                                <span className="font-semibold text-green-600">{analysis.hardestCorrect}</span>
+                                <span className="font-semibold text-green-600">{analysis.topWrongCorrect}</span>
                               </div>
                               <div className="flex justify-between">
                                 <span className="text-red-700">Got Wrong:</span>
-                                <span className="font-semibold text-red-600">{analysis.hardestWrong}</span>
+                                <span className="font-semibold text-red-600">{analysis.topWrongWrong}</span>
                               </div>
                               <div className="flex justify-between">
                                 <span className="text-gray-700">Skipped:</span>
-                                <span className="font-semibold text-gray-600">{analysis.hardestSkipped}</span>
+                                <span className="font-semibold text-gray-600">{analysis.topWrongSkipped}</span>
                               </div>
                               <div className="pt-2 border-t border-red-300">
                                 <div className="flex justify-between font-semibold">
                                   <span className="text-red-800">Success Rate:</span>
                                   <span className="text-red-600">
-                                    {analysis.hardestCorrect + analysis.hardestWrong > 0
-                                      ? Math.round((analysis.hardestCorrect / (analysis.hardestCorrect + analysis.hardestWrong)) * 100)
+                                    {analysis.topWrongCorrect + analysis.topWrongWrong > 0
+                                      ? Math.round((analysis.topWrongCorrect / (analysis.topWrongCorrect + analysis.topWrongWrong)) * 100)
                                       : 0}%
                                   </span>
                                 </div>
                               </div>
                             </div>
                           </div>
+                          )}
 
                           {/* Performance on Most Skipped Questions */}
+                          {analysis.topSkippedQuestions?.length > 0 && (
                           <div className="bg-gray-50 border border-gray-200 p-4 rounded-lg">
                             <h5 className="font-semibold text-gray-800 mb-3 flex items-center gap-2">
                               <Clock size={16} />
-                              Most Skipped Questions Performance
+                              Top Questions Skipped (Class Avoided)
                             </h5>
                             <div className="space-y-2 text-sm">
                               <div className="flex justify-between">
                                 <span className="text-green-700">Got Correct:</span>
-                                <span className="font-semibold text-green-600">{analysis.mostSkippedCorrect}</span>
+                                <span className="font-semibold text-green-600">{analysis.topSkippedCorrect}</span>
                               </div>
                               <div className="flex justify-between">
                                 <span className="text-red-700">Got Wrong:</span>
-                                <span className="font-semibold text-red-600">{analysis.mostSkippedWrong}</span>
+                                <span className="font-semibold text-red-600">{analysis.topSkippedWrong}</span>
                               </div>
                               <div className="flex justify-between">
                                 <span className="text-gray-700">Also Skipped:</span>
-                                <span className="font-semibold text-gray-600">{analysis.mostSkippedActuallySkipped}</span>
+                                <span className="font-semibold text-gray-600">{analysis.topSkippedActuallySkipped}</span>
                               </div>
                               <div className="pt-2 border-t border-gray-300">
                                 <div className="flex justify-between font-semibold">
                                   <span className="text-gray-800">Attempt Rate:</span>
                                   <span className="text-gray-600">
-                                    {(analysis.mostSkippedCorrect + analysis.mostSkippedWrong + analysis.mostSkippedActuallySkipped) > 0
-                                      ? Math.round(((analysis.mostSkippedCorrect + analysis.mostSkippedWrong) / (analysis.mostSkippedCorrect + analysis.mostSkippedWrong + analysis.mostSkippedActuallySkipped)) * 100)
+                                    {(analysis.topSkippedCorrect + analysis.topSkippedWrong + analysis.topSkippedActuallySkipped) > 0
+                                      ? Math.round(((analysis.topSkippedCorrect + analysis.topSkippedWrong) / (analysis.topSkippedCorrect + analysis.topSkippedWrong + analysis.topSkippedActuallySkipped)) * 100)
                                       : 0}%
                                   </span>
                                 </div>
                               </div>
                             </div>
                           </div>
+                          )}
                         </div>
 
                         {/* Performance Summary */}
@@ -733,19 +767,19 @@ const TestDetailPage = () => {
                           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
                             <div className="text-center">
                               <div className="text-2xl font-bold text-green-600">
-                                {analysis.easiestCorrect + analysis.hardestCorrect + analysis.mostSkippedCorrect}
+                                {analysis.topRightCorrect + analysis.topWrongCorrect + analysis.topSkippedCorrect}
                               </div>
                               <div className="text-xs text-gray-600">Total Correct on Top Questions</div>
                             </div>
                             <div className="text-center">
                               <div className="text-2xl font-bold text-red-600">
-                                {analysis.easiestWrong + analysis.hardestWrong + analysis.mostSkippedWrong}
+                                {analysis.topRightWrong + analysis.topWrongWrong + analysis.topSkippedWrong}
                               </div>
                               <div className="text-xs text-gray-600">Total Wrong on Top Questions</div>
                             </div>
                             <div className="text-center">
                               <div className="text-2xl font-bold text-gray-600">
-                                {analysis.easiestSkipped + analysis.hardestSkipped + analysis.mostSkippedActuallySkipped}
+                                {analysis.topRightSkipped + analysis.topWrongSkipped + analysis.topSkippedActuallySkipped}
                               </div>
                               <div className="text-xs text-gray-600">Total Skipped on Top Questions</div>
                             </div>

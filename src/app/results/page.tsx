@@ -3,12 +3,11 @@
 import React, { useState, useEffect } from 'react';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
-import { BarChart3, TrendingUp, Award, Clock, BookOpen, Target } from 'lucide-react';
+import { BarChart3, BookOpen } from 'lucide-react';
 import ProtectedRoute from '@/components/ProtectedRoute';
 import { SimpleTestsData, FullTestsData, StudentsData, SystemMetadata } from '@/types/results';
 import SeriesProgressChart from './components/SeriesProgressChart';
 import PerformanceBarChart from './components/PerformanceBarChart';
-import SkillRadarChart from './components/SkillRadarChart';
 
 interface DashboardStats {
   totalTests: number;
@@ -117,12 +116,15 @@ const ResultsDashboard = () => {
   if (loading) {
     return (
       <ProtectedRoute>
-        <div className="min-h-screen bg-gradient-to-br from-vh-beige/20 via-white to-vh-light-red/5">
-          <div className="max-w-7xl mx-auto px-4 py-8">
+        <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-vh-beige/5 font-['Inter'] antialiased">
+          <div className="max-w-6xl mx-auto px-6 py-12">
             <div className="flex items-center justify-center min-h-[400px]">
               <div className="text-center">
-                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-vh-red mx-auto mb-4"></div>
-                <p className="text-gray-600">Loading your results...</p>
+                <div className="relative">
+                  <div className="w-16 h-16 border-4 border-vh-red/20 border-t-vh-red rounded-full animate-spin mx-auto mb-6"></div>
+                </div>
+                <h2 className="text-2xl font-bold text-gray-900 mb-2">Loading Dashboard</h2>
+                <p className="text-gray-600">Preparing your analytics...</p>
               </div>
             </div>
           </div>
@@ -134,16 +136,18 @@ const ResultsDashboard = () => {
   if (error) {
     return (
       <ProtectedRoute>
-        <div className="min-h-screen bg-gradient-to-br from-vh-beige/20 via-white to-vh-light-red/5">
-          <div className="max-w-7xl mx-auto px-4 py-8">
+        <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-vh-beige/5 font-['Inter'] antialiased">
+          <div className="max-w-6xl mx-auto px-6 py-12">
             <div className="flex items-center justify-center min-h-[400px]">
               <div className="text-center">
-                <div className="text-red-500 text-6xl mb-4">⚠️</div>
-                <h2 className="text-xl font-semibold text-gray-800 mb-2">Unable to Load Results</h2>
-                <p className="text-gray-600 mb-4">{error}</p>
+                <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <div className="text-red-500 text-2xl">⚠️</div>
+                </div>
+                <h2 className="text-2xl font-bold text-gray-900 mb-3">Unable to Load Results</h2>
+                <p className="text-gray-600 mb-6">{error}</p>
                 <button
                   onClick={() => window.location.reload()}
-                  className="bg-vh-red text-white px-6 py-2 rounded-lg hover:bg-vh-red/90 transition-colors"
+                  className="bg-gradient-to-r from-vh-red to-vh-dark-red text-white px-6 py-3 rounded-xl hover:shadow-lg transition-all duration-300 font-semibold"
                 >
                   Try Again
                 </button>
@@ -157,82 +161,72 @@ const ResultsDashboard = () => {
 
   return (
     <ProtectedRoute>
-      <div className="min-h-screen bg-gradient-to-br from-vh-beige/20 via-white to-vh-light-red/5">
-        <div className="max-w-7xl mx-auto px-4 py-8">
+      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-vh-beige/5 font-['Inter'] antialiased">
+        <div className="max-w-6xl mx-auto px-6 py-12">
 
           {/* Header */}
-          <div className="mb-8">
-            <div className="flex items-center gap-3 mb-4">
-              <BarChart3 className="text-vh-red" size={32} />
-              <h1 className="text-3xl font-bold text-gray-800">Test Results Dashboard</h1>
+          <div className="mb-12">
+            <div className="text-center max-w-3xl mx-auto">
+              <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-vh-red to-vh-dark-red mb-6 shadow-lg">
+                <BarChart3 className="text-white" size={28} />
+              </div>
+              <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 tracking-tight">
+                Test Results
+                <span className="bg-gradient-to-r from-vh-red to-vh-dark-red bg-clip-text text-transparent"> Dashboard</span>
+              </h1>
+              <p className="text-xl text-gray-600 leading-relaxed">
+                Track your academic progress with beautiful insights and detailed analytics
+              </p>
             </div>
-            <p className="text-gray-600">
-              Track your academic progress and performance across all tests and assessments.
-            </p>
           </div>
 
           {/* Stats Overview */}
           {stats && (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
 
               {/* Total Tests */}
-              <div className="bg-gradient-to-br from-white to-vh-beige/5 rounded-xl shadow-lg border border-vh-beige/30 hover:shadow-xl transition-all duration-300">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <p className="text-sm font-medium text-gray-600">Total Tests</p>
-                    <p className="text-2xl font-bold text-gray-800">{stats.totalTests}</p>
+              <div className="group relative bg-white rounded-2xl shadow-sm border border-gray-100 hover:shadow-xl hover:border-vh-red/20 transition-all duration-500 p-8">
+                <div className="flex items-start justify-between">
+                  <div className="space-y-2">
+                    <div className="flex items-center gap-2">
+                      <div className="w-2 h-2 bg-vh-red rounded-full"></div>
+                      <p className="text-sm font-semibold text-gray-500 uppercase tracking-wider">Total Tests</p>
+                    </div>
+                    <p className="text-3xl font-bold text-gray-900">{stats.totalTests}</p>
+                    <p className="text-sm text-gray-600">Assessments completed</p>
                   </div>
-                  <BookOpen className="text-vh-red" size={32} />
+                  <div className="p-3 rounded-xl bg-gradient-to-br from-vh-red/10 to-vh-dark-red/10 group-hover:from-vh-red/20 group-hover:to-vh-dark-red/20 transition-all duration-300">
+                    <BookOpen className="text-vh-red" size={24} />
+                  </div>
                 </div>
               </div>
 
-              {/* Average Score */}
-              <div className="bg-gradient-to-br from-white to-vh-beige/5 rounded-xl shadow-lg border border-vh-beige/30 hover:shadow-xl transition-all duration-300">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <p className="text-sm font-medium text-gray-600">Average Score</p>
-                    <p className="text-2xl font-bold text-gray-800">{stats.averageScore}</p>
-                  </div>
-                  <Target className="text-vh-red" size={32} />
-                </div>
-              </div>
 
-              {/* Recent Performance */}
-              <div className="bg-gradient-to-br from-white to-vh-beige/5 rounded-xl shadow-lg border border-vh-beige/30 hover:shadow-xl transition-all duration-300 md:col-span-2 lg:col-span-2">
-                <div className="flex items-center justify-between mb-4">
-                  <div>
-                    <p className="text-sm font-medium text-gray-600">Recent Test</p>
-                    <p className="text-lg font-semibold text-gray-800">{stats.recentTestName}</p>
-                    <p className="text-2xl font-bold text-gray-800">{stats.recentScore} points</p>
-                  </div>
-                  <Clock className="text-vh-red" size={32} />
-                </div>
-                {stats.improvement !== 0 && (
-                  <div className={`flex items-center gap-2 text-sm ${stats.improvement > 0 ? 'text-green-600' : 'text-red-600'}`}>
-                    <TrendingUp size={16} className={stats.improvement < 0 ? 'rotate-180' : ''} />
-                    <span>
-                      {stats.improvement > 0 ? '+' : ''}{stats.improvement}% from previous test
-                    </span>
-                  </div>
-                )}
-              </div>
 
               {/* Quick Actions */}
-              <div className="bg-gradient-to-br from-vh-red via-vh-light-red to-vh-dark-red rounded-xl shadow-lg p-6 text-white hover:shadow-xl transition-all duration-300">
-                <h3 className="font-semibold mb-4">Quick Actions</h3>
-                <div className="space-y-2">
-                  <button
-                    onClick={() => router.push('/results/admin')}
-                    className="w-full text-left py-2 px-3 rounded-lg bg-white/20 hover:bg-white/30 transition-colors text-sm"
-                  >
-                    View Class Analytics
-                  </button>
-                  <button
-                    onClick={() => window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' })}
-                    className="w-full text-left py-2 px-3 rounded-lg bg-white/20 hover:bg-white/30 transition-colors text-sm"
-                  >
-                    Browse All Tests
-                  </button>
+              <div className="relative overflow-hidden bg-gradient-to-br from-vh-red via-vh-red to-vh-dark-red rounded-2xl shadow-lg p-8 text-white">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -translate-y-16 translate-x-16"></div>
+                <div className="relative z-10">
+                  <div className="flex items-center gap-2 mb-6">
+                    <div className="w-2 h-2 bg-white rounded-full"></div>
+                    <h3 className="font-bold text-lg">Quick Actions</h3>
+                  </div>
+                  <div className="space-y-3">
+                    <button
+                      onClick={() => router.push('/results/admin')}
+                      className="w-full text-left py-4 px-5 rounded-xl bg-white/15 backdrop-blur-sm hover:bg-white/25 transition-all duration-300 border border-white/20 hover:border-white/30"
+                    >
+                      <div className="font-semibold">Class Analytics</div>
+                      <div className="text-sm text-white/80">View comprehensive insights</div>
+                    </button>
+                    <button
+                      onClick={() => window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' })}
+                      className="w-full text-left py-4 px-5 rounded-xl bg-white/15 backdrop-blur-sm hover:bg-white/25 transition-all duration-300 border border-white/20 hover:border-white/30"
+                    >
+                      <div className="font-semibold">Browse Tests</div>
+                      <div className="text-sm text-white/80">Explore all assessments</div>
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -240,10 +234,13 @@ const ResultsDashboard = () => {
 
           {/* Performance Analytics Charts */}
           {stats && simpleTests && (
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
               {/* Series Progress Chart */}
-              <div className="bg-gradient-to-br from-white to-vh-beige/5 rounded-xl shadow-lg border border-vh-beige/30 hover:shadow-xl transition-all duration-300">
-                <h3 className="text-lg font-semibold text-gray-800 mb-4">Progress Over Time</h3>
+              <div className="bg-white rounded-2xl shadow-sm border border-gray-100 hover:shadow-lg transition-all duration-500 p-8">
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="w-3 h-3 bg-gradient-to-r from-vh-red to-vh-dark-red rounded-full"></div>
+                  <h3 className="text-xl font-bold text-gray-900">Progress Over Time</h3>
+                </div>
                 <SeriesProgressChart
                   simpleTests={simpleTests}
                   students={students}
@@ -252,8 +249,11 @@ const ResultsDashboard = () => {
               </div>
 
               {/* Performance Bar Chart */}
-              <div className="bg-gradient-to-br from-white to-vh-beige/5 rounded-xl shadow-lg border border-vh-beige/30 hover:shadow-xl transition-all duration-300">
-                <h3 className="text-lg font-semibold text-gray-800 mb-4">Performance Breakdown</h3>
+              <div className="bg-white rounded-2xl shadow-sm border border-gray-100 hover:shadow-lg transition-all duration-500 p-8">
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="w-3 h-3 bg-gradient-to-r from-vh-red to-vh-dark-red rounded-full"></div>
+                  <h3 className="text-xl font-bold text-gray-900">Performance Breakdown</h3>
+                </div>
                 <PerformanceBarChart
                   simpleTests={simpleTests}
                   students={students}
@@ -261,25 +261,19 @@ const ResultsDashboard = () => {
                 />
               </div>
 
-              {/* Skill Radar Chart */}
-              <div className="bg-gradient-to-br from-white to-vh-beige/5 rounded-xl shadow-lg border border-vh-beige/30 hover:shadow-xl transition-all duration-300">
-                <h3 className="text-lg font-semibold text-gray-800 mb-4">Skill Analysis</h3>
-                <SkillRadarChart
-                  simpleTests={simpleTests}
-                  students={students}
-                  userEmail={session?.user?.email || ''}
-                />
-              </div>
             </div>
           )}
 
           {/* Test Categories */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
 
             {/* Simple Tests */}
-            <div className="bg-gradient-to-br from-white to-vh-beige/5 rounded-xl shadow-lg border border-vh-beige/30 hover:shadow-xl transition-all duration-300">
-              <h2 className="text-xl font-semibold text-gray-800 mb-4">Simple Tests</h2>
-              <p className="text-gray-600 mb-6">Quick assessments and quizzes</p>
+            <div className="bg-white rounded-2xl shadow-sm border border-gray-100 hover:shadow-lg transition-all duration-500 p-8">
+              <div className="flex items-center gap-3 mb-2">
+                <div className="w-3 h-3 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full"></div>
+                <h2 className="text-2xl font-bold text-gray-900">Simple Tests</h2>
+              </div>
+              <p className="text-gray-600 mb-8 text-lg">Quick assessments and quizzes</p>
 
               {simpleTests && Object.keys(simpleTests.tests).length > 0 ? (
                 <div className="space-y-3">
@@ -293,20 +287,22 @@ const ResultsDashboard = () => {
                       <div
                         key={testName}
                         onClick={() => navigateToTest(testName)}
-                        className="flex items-center justify-between p-4 rounded-lg border border-gray-200 hover:border-vh-red/50 hover:bg-vh-beige/5 cursor-pointer transition-all"
+                        className="group flex items-center justify-between p-6 rounded-xl border border-gray-100 hover:border-blue-200 hover:bg-blue-50/30 cursor-pointer transition-all duration-300 hover:shadow-md"
                       >
-                        <div>
-                          <h3 className="font-medium text-gray-800">{testName}</h3>
-                          <p className="text-sm text-gray-600">{test.testSeries}</p>
+                        <div className="flex-1">
+                          <h3 className="font-semibold text-gray-900 group-hover:text-blue-700 transition-colors">{testName}</h3>
+                          <p className="text-sm text-gray-500 mt-1">{test.testSeries}</p>
                         </div>
                         <div className="text-right">
                           {result ? (
-                            <>
-                              <p className="font-semibold text-vh-red">{result.score}</p>
-                              <p className="text-xs text-gray-500">Rank #{result.rank}</p>
-                            </>
+                            <div className="bg-blue-50 px-3 py-2 rounded-lg border border-blue-100">
+                              <p className="font-bold text-blue-700 text-lg">{result.score}</p>
+                              <p className="text-xs text-blue-600">Rank #{result.rank}</p>
+                            </div>
                           ) : (
-                            <p className="text-sm text-gray-400">Not taken</p>
+                            <div className="bg-gray-50 px-3 py-2 rounded-lg border border-gray-100">
+                              <p className="text-sm text-gray-500 font-medium">Not taken</p>
+                            </div>
                           )}
                         </div>
                       </div>
@@ -319,9 +315,12 @@ const ResultsDashboard = () => {
             </div>
 
             {/* Full Tests */}
-            <div className="bg-gradient-to-br from-white to-vh-beige/5 rounded-xl shadow-lg border border-vh-beige/30 hover:shadow-xl transition-all duration-300">
-              <h2 className="text-xl font-semibold text-gray-800 mb-4">Full Tests</h2>
-              <p className="text-gray-600 mb-6">Comprehensive examinations with detailed analytics</p>
+            <div className="bg-white rounded-2xl shadow-sm border border-gray-100 hover:shadow-lg transition-all duration-500 p-8">
+              <div className="flex items-center gap-3 mb-2">
+                <div className="w-3 h-3 bg-gradient-to-r from-purple-500 to-purple-600 rounded-full"></div>
+                <h2 className="text-2xl font-bold text-gray-900">Full Tests</h2>
+              </div>
+              <p className="text-gray-600 mb-8 text-lg">Comprehensive examinations with detailed analytics</p>
 
               {fullTests && Object.keys(fullTests.tests).length > 0 ? (
                 <div className="space-y-3">
@@ -335,22 +334,24 @@ const ResultsDashboard = () => {
                       <div
                         key={testName}
                         onClick={() => navigateToTest(testName)}
-                        className="flex items-center justify-between p-4 rounded-lg border border-gray-200 hover:border-vh-red/50 hover:bg-vh-beige/5 cursor-pointer transition-all"
+                        className="group flex items-center justify-between p-6 rounded-xl border border-gray-100 hover:border-purple-200 hover:bg-purple-50/30 cursor-pointer transition-all duration-300 hover:shadow-md"
                       >
-                        <div>
-                          <h3 className="font-medium text-gray-800">{testName}</h3>
-                          <p className="text-sm text-gray-600">
+                        <div className="flex-1">
+                          <h3 className="font-semibold text-gray-900 group-hover:text-purple-700 transition-colors">{testName}</h3>
+                          <p className="text-sm text-gray-500 mt-1">
                             {test.sections.length} section{test.sections.length !== 1 ? 's' : ''}
                           </p>
                         </div>
                         <div className="text-right">
                           {result ? (
-                            <>
-                              <p className="font-semibold text-vh-red">{result.totalMarks}</p>
-                              <p className="text-xs text-gray-500">Rank #{result.rank}</p>
-                            </>
+                            <div className="bg-purple-50 px-3 py-2 rounded-lg border border-purple-100">
+                              <p className="font-bold text-purple-700 text-lg">{result.totalMarks}</p>
+                              <p className="text-xs text-purple-600">Rank #{result.rank}</p>
+                            </div>
                           ) : (
-                            <p className="text-sm text-gray-400">Not taken</p>
+                            <div className="bg-gray-50 px-3 py-2 rounded-lg border border-gray-100">
+                              <p className="text-sm text-gray-500 font-medium">Not taken</p>
+                            </div>
                           )}
                         </div>
                       </div>
@@ -365,12 +366,18 @@ const ResultsDashboard = () => {
 
           {/* System Info */}
           {metadata && (
-            <div className="mt-8 text-center text-sm text-gray-500">
-              <p>
-                Last updated: {new Date(metadata.lastProcessed).toLocaleDateString()} •
-                {metadata.totalStudents} students •
-                {metadata.totalSimpleTests + metadata.totalFullTests} total tests
-              </p>
+            <div className="mt-16 py-8 border-t border-gray-100">
+              <div className="text-center space-y-2">
+                <div className="inline-flex items-center gap-2 px-4 py-2 bg-gray-50 rounded-full">
+                  <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                  <span className="text-sm text-gray-600 font-medium">System Active</span>
+                </div>
+                <p className="text-sm text-gray-500">
+                  Last updated: {new Date(metadata.lastProcessed).toLocaleDateString()} •
+                  {metadata.totalStudents} students •
+                  {metadata.totalSimpleTests + metadata.totalFullTests} total tests
+                </p>
+              </div>
             </div>
           )}
         </div>
