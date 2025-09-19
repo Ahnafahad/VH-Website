@@ -74,7 +74,7 @@ const PerformanceBarChart: React.FC<PerformanceBarChartProps> = ({
 
       const userId = user.id;
       return Object.entries(testsToProcess)
-        .filter(([_, test]: [string, any]) => test.results[userId])
+        .filter(([_, test]: [string, any]) => test.results && test.results[userId])
         .map(([testNameKey, test]: [string, any]) => {
           const result = test.results[userId];
           return {

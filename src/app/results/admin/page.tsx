@@ -157,7 +157,7 @@ const AdminDashboard = () => {
     const allTests = { ...simpleData.tests, ...fullData.tests };
 
     Object.entries(studentsData.students).forEach(([studentId, student]) => {
-      const studentTests = Object.entries(allTests).filter(([, test]) => test.results[studentId]);
+      const studentTests = Object.entries(allTests).filter(([, test]) => test.results && test.results[studentId]);
 
       if (studentTests.length === 0) {
         summaries.push({

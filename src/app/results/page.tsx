@@ -75,7 +75,7 @@ const ResultsDashboard = () => {
     if (!user) return;
 
     const userId = user.id;
-    const userTests = Object.values(simpleData.tests).filter(test => test.results[userId]);
+    const userTests = Object.values(simpleData.tests).filter(test => test.results && test.results[userId]);
 
     if (userTests.length === 0) return;
 
@@ -281,7 +281,7 @@ const ResultsDashboard = () => {
                     const userResult = session?.user?.email ?
                       Object.values(students?.students || {}).find(s => s.email === session.user?.email) : null;
                     const userId = userResult?.id;
-                    const result = userId ? test.results[userId] : null;
+                    const result = userId && test.results ? test.results[userId] : null;
 
                     return (
                       <div
@@ -328,7 +328,7 @@ const ResultsDashboard = () => {
                     const userResult = session?.user?.email ?
                       Object.values(students?.students || {}).find(s => s.email === session.user?.email) : null;
                     const userId = userResult?.id;
-                    const result = userId ? test.results[userId] : null;
+                    const result = userId && test.results ? test.results[userId] : null;
 
                     return (
                       <div

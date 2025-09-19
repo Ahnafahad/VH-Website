@@ -24,6 +24,7 @@ interface SeriesProgressChartProps {
   students: any;
   userEmail: string;
   highlightTest?: string;
+  targetSeries?: string; // Only show progression for this specific test series
   isClassView?: boolean;
   title?: string;
   height?: number;
@@ -34,6 +35,7 @@ const SeriesProgressChart: React.FC<SeriesProgressChartProps> = ({
   students,
   userEmail,
   highlightTest,
+  targetSeries,
   isClassView = false,
   title = "Series Progression",
   height = 300
@@ -54,10 +56,15 @@ const SeriesProgressChart: React.FC<SeriesProgressChartProps> = ({
         seriesGroups[baseName].push({ testName, test });
       });
 
+      // Filter to target series if specified
+      const filteredGroups = targetSeries ?
+        { [targetSeries]: seriesGroups[targetSeries] || [] } :
+        seriesGroups;
+
       // Only return series with multiple tests
       const seriesData: SeriesDataPoint[] = [];
-      Object.entries(seriesGroups).forEach(([baseName, tests]) => {
-        if (tests.length > 1) {
+      Object.entries(filteredGroups).forEach(([baseName, tests]) => {
+        if (tests && tests.length > 1) {
           tests.forEach(({ testName, test }) => {
             const results = Object.values(test.results) as any[];
             const totalScore = results.reduce((sum: number, result: any) => sum + (result.score || 0), 0);
@@ -83,7 +90,7 @@ const SeriesProgressChart: React.FC<SeriesProgressChartProps> = ({
 
       const userId = user.id;
       const userTests = Object.entries(simpleTests.tests)
-        .filter(([_, test]: [string, any]) => test.results[userId]);
+        .filter(([_, test]: [string, any]) => test.results && test.results[userId]);
 
       // Group by base name
       const seriesGroups: { [key: string]: any[] } = {};
@@ -93,10 +100,15 @@ const SeriesProgressChart: React.FC<SeriesProgressChartProps> = ({
         seriesGroups[baseName].push({ testName, test });
       });
 
+      // Filter to target series if specified
+      const filteredGroups = targetSeries ?
+        { [targetSeries]: seriesGroups[targetSeries] || [] } :
+        seriesGroups;
+
       // Only return series with multiple tests
       const seriesData: SeriesDataPoint[] = [];
-      Object.entries(seriesGroups).forEach(([baseName, tests]) => {
-        if (tests.length > 1) {
+      Object.entries(filteredGroups).forEach(([baseName, tests]) => {
+        if (tests && tests.length > 1) {
           tests.forEach(({ testName, test }) => {
             const result = test.results[userId];
             seriesData.push({

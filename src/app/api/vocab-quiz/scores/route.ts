@@ -37,8 +37,8 @@ export async function POST(request: NextRequest) {
     if (!Array.isArray(selectedSections) || selectedSections.length === 0) {
       validationErrors.push('selectedSections must be a non-empty array');
     }
-    if (!difficulty || !['easy', 'medium', 'hard'].includes(difficulty)) {
-      validationErrors.push('difficulty must be one of: easy, medium, hard');
+    if (!difficulty || !['easy', 'medium', 'hard', 'mixed'].includes(difficulty)) {
+      validationErrors.push('difficulty must be one of: easy, medium, hard, mixed');
     }
     if (questionsCorrect > questionsAnswered) {
       validationErrors.push('questionsCorrect cannot exceed questionsAnswered');

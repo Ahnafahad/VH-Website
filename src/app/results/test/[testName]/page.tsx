@@ -62,7 +62,7 @@ const TestDetailPage = () => {
         // Find user result
         if (session?.user?.email) {
           const user = Object.values(studentsResponse.students).find((s: any) => s.email === session.user?.email) as any;
-          if (user && test.results[user.id]) {
+          if (user && test.results && test.results[user.id]) {
             setUserResult(test.results[user.id]);
           }
         }
@@ -557,6 +557,7 @@ const TestDetailPage = () => {
                       students={students}
                       userEmail={session.user.email}
                       highlightTest={testName}
+                      targetSeries={testName.replace(/\s*\d+$/, '').trim()}
                     />
                   </div>
 

@@ -24,7 +24,11 @@
       "Bash(node:*)",
       "Bash(npm run generate:access-control:*)",
       "WebFetch(domain:vh-beyondthehorizons.vercel.app)",
-      "Bash(atlas:*)"
+      "Bash(atlas:*)",
+      "Bash(npm run tsc:*)",
+      "Bash(npm run lint)",
+      "Bash(find:*)",
+      "Bash(del test-functionality.js test-components.mjs)"
     ],
     "deny": [],
     "ask": []
