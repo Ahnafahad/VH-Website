@@ -196,6 +196,23 @@ const TestDetailPage = () => {
     return Object.keys(personalAnalysis).length > 0 ? personalAnalysis : null;
   };
 
+  // Helper function to get user's performance indicator for a specific question
+  const getUserQuestionStatus = (questionId: string): string => {
+    if (!isFullTest || !userResult || !session?.user?.email) return '';
+
+    const result = userResult as FullTestResult;
+    const userResponse = result.responses?.[questionId];
+
+    if (!userResponse || userResponse === 'NAN') {
+      return '⚪'; // Skipped
+    } else if (userResponse.includes('(C)')) {
+      return '✅'; // Correct
+    } else if (userResponse.includes('(W)')) {
+      return '❌'; // Wrong
+    }
+    return '';
+  };
+
   if (loading) {
     return (
       <ProtectedRoute>
@@ -581,6 +598,13 @@ const TestDetailPage = () => {
               {isFullTest && (currentTest as FullTest).topQuestions && (
                 <div className="bg-gradient-to-br from-white to-vh-beige/5 rounded-xl shadow-lg border border-vh-beige/30 hover:shadow-xl transition-all duration-300">
                   <h3 className="text-lg font-semibold text-gray-800 mb-4">Question Difficulty Analysis</h3>
+                  {userResult && (
+                    <p className="text-sm text-gray-600 mb-4 px-6">
+                      <span className="inline-flex items-center gap-1"><span className="text-green-600">✅</span> You got correct</span>
+                      <span className="inline-flex items-center gap-1 ml-4"><span className="text-red-600">❌</span> You got wrong</span>
+                      <span className="inline-flex items-center gap-1 ml-4"><span className="text-gray-500">⚪</span> You skipped</span>
+                    </p>
+                  )}
 
                   {Object.entries((currentTest as FullTest).topQuestions)
                     .filter(([sectionNum, sectionData]: [string, any]) =>
@@ -601,8 +625,13 @@ const TestDetailPage = () => {
                           </h5>
                           <div className="space-y-1 max-h-64 overflow-y-auto">
                             {sectionData.mostCorrect.map((question: any, index: number) => (
-                              <div key={question.questionId} className="flex justify-between text-sm">
-                                <span className="text-green-700">{question.questionId.replace(`Section${sectionNum}-Q`, 'Q')}</span>
+                              <div key={question.questionId} className="flex justify-between items-center text-sm">
+                                <div className="flex items-center gap-2">
+                                  <span className="text-green-700">{question.questionId.replace(`Section${sectionNum}-Q`, 'Q')}</span>
+                                  {userResult && (
+                                    <span className="text-lg leading-none">{getUserQuestionStatus(question.questionId)}</span>
+                                  )}
+                                </div>
                                 <span className="text-green-600 font-medium">{question.count} correct</span>
                               </div>
                             ))}
@@ -620,8 +649,13 @@ const TestDetailPage = () => {
                           </h5>
                           <div className="space-y-1 max-h-64 overflow-y-auto">
                             {sectionData.mostWrong.map((question: any, index: number) => (
-                              <div key={question.questionId} className="flex justify-between text-sm">
-                                <span className="text-red-700">{question.questionId.replace(`Section${sectionNum}-Q`, 'Q')}</span>
+                              <div key={question.questionId} className="flex justify-between items-center text-sm">
+                                <div className="flex items-center gap-2">
+                                  <span className="text-red-700">{question.questionId.replace(`Section${sectionNum}-Q`, 'Q')}</span>
+                                  {userResult && (
+                                    <span className="text-lg leading-none">{getUserQuestionStatus(question.questionId)}</span>
+                                  )}
+                                </div>
                                 <span className="text-red-600 font-medium">{question.count} wrong</span>
                               </div>
                             ))}
@@ -639,8 +673,13 @@ const TestDetailPage = () => {
                           </h5>
                           <div className="space-y-1 max-h-64 overflow-y-auto">
                             {sectionData.mostSkipped.map((question: any, index: number) => (
-                              <div key={question.questionId} className="flex justify-between text-sm">
-                                <span className="text-gray-700">{question.questionId.replace(`Section${sectionNum}-Q`, 'Q')}</span>
+                              <div key={question.questionId} className="flex justify-between items-center text-sm">
+                                <div className="flex items-center gap-2">
+                                  <span className="text-gray-700">{question.questionId.replace(`Section${sectionNum}-Q`, 'Q')}</span>
+                                  {userResult && (
+                                    <span className="text-lg leading-none">{getUserQuestionStatus(question.questionId)}</span>
+                                  )}
+                                </div>
                                 <span className="text-gray-600 font-medium">{question.count} skipped</span>
                               </div>
                             ))}
