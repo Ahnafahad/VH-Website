@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSession } from 'next-auth/react';
 import { useParams, useRouter } from 'next/navigation';
-import { ArrowLeft, Award, Target, TrendingUp, Eye, CheckCircle, XCircle, Clock } from 'lucide-react';
+import { ArrowLeft, Award, Target, TrendingUp, Eye, CheckCircle, XCircle, Clock, Minus } from 'lucide-react';
 import ProtectedRoute from '@/components/ProtectedRoute';
 import { SimpleTestsData, FullTestsData, StudentsData, SimpleTest, FullTest, SimpleTestResult, FullTestResult } from '@/types/results';
 import SeriesProgressChart from '../../components/SeriesProgressChart';
@@ -197,20 +197,20 @@ const TestDetailPage = () => {
   };
 
   // Helper function to get user's performance indicator for a specific question
-  const getUserQuestionStatus = (questionId: string): string => {
-    if (!isFullTest || !userResult || !session?.user?.email) return '';
+  const getUserQuestionStatus = (questionId: string): React.ReactNode => {
+    if (!isFullTest || !userResult || !session?.user?.email) return null;
 
     const result = userResult as FullTestResult;
     const userResponse = result.responses?.[questionId];
 
     if (!userResponse || userResponse === 'NAN') {
-      return '⚪'; // Skipped
+      return <Minus size={14} className="text-gray-400" />;
     } else if (userResponse.includes('(C)')) {
-      return '✅'; // Correct
+      return <CheckCircle size={14} className="text-green-500" />;
     } else if (userResponse.includes('(W)')) {
-      return '❌'; // Wrong
+      return <XCircle size={14} className="text-red-500" />;
     }
-    return '';
+    return null;
   };
 
   if (loading) {
@@ -314,7 +314,7 @@ const TestDetailPage = () => {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
 
                 {/* Score/Marks */}
-                <div className="bg-gradient-to-br from-white to-vh-beige/5 rounded-xl shadow-lg border border-vh-beige/30 hover:shadow-xl transition-all duration-300">
+                <div className="bg-gradient-to-br from-white to-vh-beige/5 rounded-xl shadow-lg border border-vh-beige/30 hover:shadow-xl transition-all duration-300 p-6">
                   <div className="flex items-center justify-between mb-4">
                     <h3 className="text-lg font-semibold text-gray-800">
                       {isFullTest ? 'Total Marks' : 'Score'}
@@ -332,7 +332,7 @@ const TestDetailPage = () => {
                 </div>
 
                 {/* Rank */}
-                <div className="bg-gradient-to-br from-white to-vh-beige/5 rounded-xl shadow-lg border border-vh-beige/30 hover:shadow-xl transition-all duration-300">
+                <div className="bg-gradient-to-br from-white to-vh-beige/5 rounded-xl shadow-lg border border-vh-beige/30 hover:shadow-xl transition-all duration-300 p-6">
                   <div className="flex items-center justify-between mb-4">
                     <h3 className="text-lg font-semibold text-gray-800">Class Rank</h3>
                     <Award className="text-vh-red" size={24} />
@@ -344,7 +344,7 @@ const TestDetailPage = () => {
                 </div>
 
                 {/* Accuracy */}
-                <div className="bg-gradient-to-br from-white to-vh-beige/5 rounded-xl shadow-lg border border-vh-beige/30 hover:shadow-xl transition-all duration-300">
+                <div className="bg-gradient-to-br from-white to-vh-beige/5 rounded-xl shadow-lg border border-vh-beige/30 hover:shadow-xl transition-all duration-300 p-6">
                   <div className="flex items-center justify-between mb-4">
                     <h3 className="text-lg font-semibold text-gray-800">Accuracy</h3>
                     <TrendingUp className="text-vh-red" size={24} />
@@ -363,8 +363,8 @@ const TestDetailPage = () => {
 
               {/* Simple Test Details */}
               {!isFullTest && (
-                <div className="bg-gradient-to-br from-white to-vh-beige/5 rounded-xl shadow-lg border border-vh-beige/30 hover:shadow-xl transition-all duration-300">
-                  <h3 className="text-lg font-semibold text-gray-800 mb-4">Performance Breakdown</h3>
+                <div className="bg-gradient-to-br from-white to-vh-beige/5 rounded-xl shadow-lg border border-vh-beige/30 hover:shadow-xl transition-all duration-300 p-6">
+                  <h3 className="text-lg font-semibold text-gray-800 mb-6">Performance Breakdown</h3>
 
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                     <div className="text-center p-4 bg-green-50 rounded-lg">
@@ -437,8 +437,8 @@ const TestDetailPage = () => {
                 <div className="space-y-6">
 
                   {/* Section Performance */}
-                  <div className="bg-gradient-to-br from-white to-vh-beige/5 rounded-xl shadow-lg border border-vh-beige/30 hover:shadow-xl transition-all duration-300">
-                    <h3 className="text-lg font-semibold text-gray-800 mb-4">Section Performance</h3>
+                  <div className="bg-gradient-to-br from-white to-vh-beige/5 rounded-xl shadow-lg border border-vh-beige/30 hover:shadow-xl transition-all duration-300 p-6">
+                    <h3 className="text-lg font-semibold text-gray-800 mb-6">Section Performance</h3>
 
                     <div className="space-y-4">
                       {Object.entries((userResult as FullTestResult).sections).map(([sectionNum, section]) => (
@@ -469,8 +469,8 @@ const TestDetailPage = () => {
 
                   {/* Individual Responses */}
                   {(userResult as FullTestResult).responses && (
-                    <div className="bg-gradient-to-br from-white to-vh-beige/5 rounded-xl shadow-lg border border-vh-beige/30 hover:shadow-xl transition-all duration-300">
-                      <h3 className="text-lg font-semibold text-gray-800 mb-4">Question Responses</h3>
+                    <div className="bg-gradient-to-br from-white to-vh-beige/5 rounded-xl shadow-lg border border-vh-beige/30 hover:shadow-xl transition-all duration-300 p-6">
+                      <h3 className="text-lg font-semibold text-gray-800 mb-6">Question Responses</h3>
 
                       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 max-h-96 overflow-y-auto">
                         {Object.entries((userResult as FullTestResult).responses).map(([questionId, response]) => (
@@ -485,8 +485,8 @@ const TestDetailPage = () => {
 
                   {/* Advanced Analytics */}
                   {(userResult as FullTestResult).analytics && (
-                    <div className="bg-gradient-to-br from-white to-vh-beige/5 rounded-xl shadow-lg border border-vh-beige/30 hover:shadow-xl transition-all duration-300">
-                      <h3 className="text-lg font-semibold text-gray-800 mb-4">Advanced Analytics</h3>
+                    <div className="bg-gradient-to-br from-white to-vh-beige/5 rounded-xl shadow-lg border border-vh-beige/30 hover:shadow-xl transition-all duration-300 p-6">
+                      <h3 className="text-lg font-semibold text-gray-800 mb-6">Advanced Analytics</h3>
 
                       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                         <div className="text-center p-4 bg-blue-50 rounded-lg">
@@ -580,8 +580,8 @@ const TestDetailPage = () => {
                   </div>
 
                   {/* Performance Comparison */}
-                  <div className="bg-gradient-to-br from-white to-vh-beige/5 rounded-xl shadow-lg border border-vh-beige/30 hover:shadow-xl transition-all duration-300">
-                    <h3 className="text-lg font-semibold text-gray-800 mb-4">Performance vs Class</h3>
+                  <div className="bg-gradient-to-br from-white to-vh-beige/5 rounded-xl shadow-lg border border-vh-beige/30 hover:shadow-xl transition-all duration-300 p-6">
+                    <h3 className="text-lg font-semibold text-gray-800 mb-6">Performance vs Class</h3>
                     <PerformanceBarChart
                       simpleTests={simpleTests}
                       fullTests={fullTests}
@@ -596,14 +596,26 @@ const TestDetailPage = () => {
 
               {/* Question Performance Analytics (Sheet 2 Data) */}
               {isFullTest && (currentTest as FullTest).topQuestions && (
-                <div className="bg-gradient-to-br from-white to-vh-beige/5 rounded-xl shadow-lg border border-vh-beige/30 hover:shadow-xl transition-all duration-300">
-                  <h3 className="text-lg font-semibold text-gray-800 mb-4">Question Difficulty Analysis</h3>
+                <div className="bg-gradient-to-br from-white to-vh-beige/5 rounded-xl shadow-lg border border-vh-beige/30 hover:shadow-xl transition-all duration-300 p-6">
+                  <h3 className="text-lg font-semibold text-gray-800 mb-6">Question Difficulty Analysis</h3>
                   {userResult && (
-                    <p className="text-sm text-gray-600 mb-4 px-6">
-                      <span className="inline-flex items-center gap-1"><span className="text-green-600">✅</span> You got correct</span>
-                      <span className="inline-flex items-center gap-1 ml-4"><span className="text-red-600">❌</span> You got wrong</span>
-                      <span className="inline-flex items-center gap-1 ml-4"><span className="text-gray-500">⚪</span> You skipped</span>
-                    </p>
+                    <div className="bg-gray-50 border border-gray-100 rounded-lg p-4 mb-6">
+                      <p className="text-sm font-medium text-gray-700 mb-2">Your Performance Legend:</p>
+                      <div className="flex flex-wrap gap-4 text-sm">
+                        <span className="flex items-center gap-2">
+                          <CheckCircle size={14} className="text-green-500" />
+                          <span className="text-gray-600">Correct</span>
+                        </span>
+                        <span className="flex items-center gap-2">
+                          <XCircle size={14} className="text-red-500" />
+                          <span className="text-gray-600">Wrong</span>
+                        </span>
+                        <span className="flex items-center gap-2">
+                          <Minus size={14} className="text-gray-400" />
+                          <span className="text-gray-600">Skipped</span>
+                        </span>
+                      </div>
+                    </div>
                   )}
 
                   {Object.entries((currentTest as FullTest).topQuestions)
@@ -613,13 +625,13 @@ const TestDetailPage = () => {
                       sectionData.mostSkipped.length > 0
                     )
                     .map(([sectionNum, sectionData]) => (
-                    <div key={sectionNum} className="mb-6">
-                      <h4 className="font-semibold text-gray-700 mb-3">Section {sectionNum}</h4>
+                    <div key={sectionNum} className="mb-8">
+                      <h4 className="font-semibold text-gray-700 mb-4 text-base">Section {sectionNum}</h4>
 
-                      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+                      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
                         {/* Most Correct Questions */}
-                        <div className="bg-green-50 p-4 rounded-lg">
-                          <h5 className="font-semibold text-green-800 mb-2 flex items-center gap-2">
+                        <div className="bg-green-50 p-5 rounded-lg">
+                          <h5 className="font-semibold text-green-800 mb-3 flex items-center gap-2">
                             <CheckCircle size={16} />
                             Easiest Questions
                           </h5>
@@ -628,9 +640,7 @@ const TestDetailPage = () => {
                               <div key={question.questionId} className="flex justify-between items-center text-sm">
                                 <div className="flex items-center gap-2">
                                   <span className="text-green-700">{question.questionId.replace(`Section${sectionNum}-Q`, 'Q')}</span>
-                                  {userResult && (
-                                    <span className="text-lg leading-none">{getUserQuestionStatus(question.questionId)}</span>
-                                  )}
+                                  {userResult && getUserQuestionStatus(question.questionId)}
                                 </div>
                                 <span className="text-green-600 font-medium">{question.count} correct</span>
                               </div>
@@ -642,8 +652,8 @@ const TestDetailPage = () => {
                         </div>
 
                         {/* Most Wrong Questions */}
-                        <div className="bg-red-50 p-4 rounded-lg">
-                          <h5 className="font-semibold text-red-800 mb-2 flex items-center gap-2">
+                        <div className="bg-red-50 p-5 rounded-lg">
+                          <h5 className="font-semibold text-red-800 mb-3 flex items-center gap-2">
                             <XCircle size={16} />
                             Hardest Questions
                           </h5>
@@ -652,9 +662,7 @@ const TestDetailPage = () => {
                               <div key={question.questionId} className="flex justify-between items-center text-sm">
                                 <div className="flex items-center gap-2">
                                   <span className="text-red-700">{question.questionId.replace(`Section${sectionNum}-Q`, 'Q')}</span>
-                                  {userResult && (
-                                    <span className="text-lg leading-none">{getUserQuestionStatus(question.questionId)}</span>
-                                  )}
+                                  {userResult && getUserQuestionStatus(question.questionId)}
                                 </div>
                                 <span className="text-red-600 font-medium">{question.count} wrong</span>
                               </div>
@@ -666,8 +674,8 @@ const TestDetailPage = () => {
                         </div>
 
                         {/* Most Skipped Questions */}
-                        <div className="bg-gray-50 p-4 rounded-lg">
-                          <h5 className="font-semibold text-gray-800 mb-2 flex items-center gap-2">
+                        <div className="bg-gray-50 p-5 rounded-lg">
+                          <h5 className="font-semibold text-gray-800 mb-3 flex items-center gap-2">
                             <Clock size={16} />
                             Most Skipped
                           </h5>
@@ -676,9 +684,7 @@ const TestDetailPage = () => {
                               <div key={question.questionId} className="flex justify-between items-center text-sm">
                                 <div className="flex items-center gap-2">
                                   <span className="text-gray-700">{question.questionId.replace(`Section${sectionNum}-Q`, 'Q')}</span>
-                                  {userResult && (
-                                    <span className="text-lg leading-none">{getUserQuestionStatus(question.questionId)}</span>
-                                  )}
+                                  {userResult && getUserQuestionStatus(question.questionId)}
                                 </div>
                                 <span className="text-gray-600 font-medium">{question.count} skipped</span>
                               </div>
@@ -696,19 +702,19 @@ const TestDetailPage = () => {
 
               {/* Personal Performance vs Top Questions */}
               {isFullTest && (currentTest as FullTest).topQuestions && userResult && (
-                <div className="bg-gradient-to-br from-white to-vh-beige/5 rounded-xl shadow-lg border border-vh-beige/30 hover:shadow-xl transition-all duration-300">
-                  <h3 className="text-lg font-semibold text-gray-800 mb-4 p-6 pb-0">Your Performance vs Class Top Questions</h3>
-                  <p className="text-sm text-gray-600 mb-6 px-6">See how you performed on the questions that were easiest, hardest, and most skipped by the class</p>
+                <div className="bg-gradient-to-br from-white to-vh-beige/5 rounded-xl shadow-lg border border-vh-beige/30 hover:shadow-xl transition-all duration-300 p-6">
+                  <h3 className="text-lg font-semibold text-gray-800 mb-4">Your Performance vs Class Top Questions</h3>
+                  <p className="text-sm text-gray-600 mb-6">See how you performed on the questions that were easiest, hardest, and most skipped by the class</p>
 
                   {(() => {
                     const personalAnalysis = analyzePersonalTopQuestionsPerformance();
                     if (!personalAnalysis) return null;
 
                     return Object.entries(personalAnalysis).map(([sectionNum, analysis]: [string, any]) => (
-                      <div key={sectionNum} className="mb-6 px-6">
-                        <h4 className="font-semibold text-gray-700 mb-4">Section {sectionNum}</h4>
+                      <div key={sectionNum} className="mb-8">
+                        <h4 className="font-semibold text-gray-700 mb-4 text-base">Section {sectionNum}</h4>
 
-                        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-4">
+                        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
                           {/* Performance on Easiest Questions */}
                           {analysis.topRightQuestions?.length > 0 && (
                           <div className="bg-green-50 border border-green-200 p-4 rounded-lg">
