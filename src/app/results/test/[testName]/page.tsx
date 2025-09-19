@@ -554,6 +554,7 @@ const TestDetailPage = () => {
                     <h3 className="text-lg font-semibold text-gray-800 mb-4">Your Progress Trend</h3>
                     <SeriesProgressChart
                       simpleTests={simpleTests}
+                      fullTests={fullTests}
                       students={students}
                       userEmail={session.user.email}
                       highlightTest={testName}

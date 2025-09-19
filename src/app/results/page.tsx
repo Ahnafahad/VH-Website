@@ -243,6 +243,7 @@ const ResultsDashboard = () => {
                 </div>
                 <SeriesProgressChart
                   simpleTests={simpleTests}
+                  fullTests={fullTests}
                   students={students}
                   userEmail={session?.user?.email || ''}
                 />

@@ -21,6 +21,7 @@ interface SeriesDataPoint {
 
 interface SeriesProgressChartProps {
   simpleTests: any;
+  fullTests?: any; // Add full tests to combine with simple tests for series detection
   students: any;
   userEmail: string;
   highlightTest?: string;
@@ -32,6 +33,7 @@ interface SeriesProgressChartProps {
 
 const SeriesProgressChart: React.FC<SeriesProgressChartProps> = ({
   simpleTests,
+  fullTests,
   students,
   userEmail,
   highlightTest,
@@ -46,11 +48,19 @@ const SeriesProgressChart: React.FC<SeriesProgressChartProps> = ({
 
     if (isClassView) {
       // For class view, calculate average progression by series
-      const testEntries = Object.entries(simpleTests.tests);
+      // Combine both simple and full tests for comprehensive series detection
+      const allTests = {
+        ...(simpleTests?.tests || {}),
+        ...(fullTests?.tests || {})
+      };
+      const testEntries = Object.entries(allTests);
 
       // Group tests by base name (remove numbers)
       const seriesGroups: { [key: string]: any[] } = {};
-      testEntries.forEach(([testName, test]) => {
+      testEntries.forEach(([testName, test]: [string, any]) => {
+        // Only process tests that have results data
+        if (!test || !test.results) return;
+
         const baseName = testName.replace(/\s*\d+$/, '').trim(); // Remove trailing numbers
         if (!seriesGroups[baseName]) seriesGroups[baseName] = [];
         seriesGroups[baseName].push({ testName, test });
@@ -89,8 +99,13 @@ const SeriesProgressChart: React.FC<SeriesProgressChartProps> = ({
       if (!user) return [];
 
       const userId = user.id;
-      const userTests = Object.entries(simpleTests.tests)
-        .filter(([_, test]: [string, any]) => test.results && test.results[userId]);
+      // Combine simple and full tests for comprehensive series detection
+      const allTests = {
+        ...(simpleTests?.tests || {}),
+        ...(fullTests?.tests || {})
+      };
+      const userTests = Object.entries(allTests)
+        .filter(([_, test]: [string, any]) => test && test.results && test.results[userId]);
 
       // Group by base name
       const seriesGroups: { [key: string]: any[] } = {};
