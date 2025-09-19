@@ -21,7 +21,7 @@
           },
           "totalMarks": 0,
           "totalPercentage": 0,
-          "rank": 14,
+          "rank": 17,
           "responses": {},
           "analytics": {
             "skipStrategy": 0,
@@ -52,7 +52,7 @@
           },
           "totalMarks": 0,
           "totalPercentage": 0,
-          "rank": 14,
+          "rank": 17,
           "responses": {},
           "analytics": {
             "skipStrategy": 0,
@@ -83,7 +83,7 @@
           },
           "totalMarks": 7.5,
           "totalPercentage": 16.666666666666664,
-          "rank": 9,
+          "rank": 12,
           "responses": {
             "Section1-Q1": "E (C)",
             "Section1-Q2": "C (W)",
@@ -160,7 +160,7 @@
           },
           "totalMarks": 19.25,
           "totalPercentage": 42.77777777777778,
-          "rank": 1,
+          "rank": 2,
           "responses": {
             "Section1-Q1": "E (C)",
             "Section1-Q2": "E (W)",
@@ -237,7 +237,7 @@
           },
           "totalMarks": 5,
           "totalPercentage": 11.11111111111111,
-          "rank": 12,
+          "rank": 15,
           "responses": {
             "Section1-Q1": "E (C)",
             "Section1-Q2": "NAN",
@@ -314,7 +314,7 @@
           },
           "totalMarks": 0,
           "totalPercentage": 0,
-          "rank": 14,
+          "rank": 17,
           "responses": {},
           "analytics": {
             "skipStrategy": 0,
@@ -345,7 +345,7 @@
           },
           "totalMarks": 10,
           "totalPercentage": 22.22222222222222,
-          "rank": 6,
+          "rank": 9,
           "responses": {
             "Section1-Q1": "E (C)",
             "Section1-Q2": "C (W)",
@@ -422,7 +422,7 @@
           },
           "totalMarks": 11.5,
           "totalPercentage": 25.555555555555554,
-          "rank": 5,
+          "rank": 7,
           "responses": {
             "Section1-Q1": "E (C)",
             "Section1-Q2": "NAN",
@@ -499,7 +499,7 @@
           },
           "totalMarks": 9.5,
           "totalPercentage": 21.11111111111111,
-          "rank": 7,
+          "rank": 10,
           "responses": {
             "Section1-Q1": "E (C)",
             "Section1-Q2": "E (W)",
@@ -574,9 +574,9 @@
               "totalQuestions": 0
             }
           },
-          "totalMarks": 0,
+          "totalMarks": 10.75,
           "totalPercentage": 23.88888888888889,
-          "rank": 0,
+          "rank": 8,
           "responses": {
             "Section1-Q1": "E (C)",
             "Section1-Q2": "E (W)",
@@ -653,7 +653,7 @@
           },
           "totalMarks": 0,
           "totalPercentage": 0,
-          "rank": 14,
+          "rank": 17,
           "responses": {},
           "analytics": {
             "skipStrategy": 0,
@@ -684,7 +684,7 @@
           },
           "totalMarks": 7.25,
           "totalPercentage": 16.11111111111111,
-          "rank": 10,
+          "rank": 13,
           "responses": {
             "Section1-Q1": "E (C)",
             "Section1-Q2": "E (W)",
@@ -761,7 +761,7 @@
           },
           "totalMarks": 5.5,
           "totalPercentage": 12.222222222222221,
-          "rank": 11,
+          "rank": 14,
           "responses": {
             "Section1-Q1": "B (W)",
             "Section1-Q2": "E (W)",
@@ -836,9 +836,9 @@
               "totalQuestions": 0
             }
           },
-          "totalMarks": 0,
+          "totalMarks": 13,
           "totalPercentage": 28.888888888888886,
-          "rank": 0,
+          "rank": 5,
           "responses": {
             "Section1-Q1": "E (C)",
             "Section1-Q2": "D (C)",
@@ -915,7 +915,7 @@
           },
           "totalMarks": 9.5,
           "totalPercentage": 21.11111111111111,
-          "rank": 7,
+          "rank": 10,
           "responses": {
             "Section1-Q1": "E (C)",
             "Section1-Q2": "NAN",
@@ -992,7 +992,7 @@
           },
           "totalMarks": 11.75,
           "totalPercentage": 26.111111111111114,
-          "rank": 4,
+          "rank": 6,
           "responses": {
             "Section1-Q1": "E (C)",
             "Section1-Q2": "D (C)",
@@ -1069,7 +1069,7 @@
           },
           "totalMarks": 5,
           "totalPercentage": 11.11111111111111,
-          "rank": 12,
+          "rank": 15,
           "responses": {
             "Section1-Q1": "NAN",
             "Section1-Q2": "AB (W)",
@@ -1146,7 +1146,7 @@
           },
           "totalMarks": 0,
           "totalPercentage": 0,
-          "rank": 14,
+          "rank": 17,
           "responses": {},
           "analytics": {
             "skipStrategy": 0,
@@ -1177,7 +1177,7 @@
           },
           "totalMarks": 0,
           "totalPercentage": 0,
-          "rank": 14,
+          "rank": 17,
           "responses": {},
           "analytics": {
             "skipStrategy": 0,
@@ -1208,7 +1208,7 @@
           },
           "totalMarks": 15.5,
           "totalPercentage": 34.44444444444444,
-          "rank": 2,
+          "rank": 3,
           "responses": {
             "Section1-Q1": "E (C)",
             "Section1-Q2": "E (W)",
@@ -1283,9 +1283,9 @@
               "totalQuestions": 0
             }
           },
-          "totalMarks": 0,
+          "totalMarks": 28.5,
           "totalPercentage": 63.33333333333333,
-          "rank": 0,
+          "rank": 1,
           "responses": {
             "Section1-Q1": "C (W)",
             "Section1-Q2": "D (C)",
@@ -1362,7 +1362,7 @@
           },
           "totalMarks": 0,
           "totalPercentage": 0,
-          "rank": 14,
+          "rank": 17,
           "responses": {},
           "analytics": {
             "skipStrategy": 0,
@@ -1393,7 +1393,7 @@
           },
           "totalMarks": 15.25,
           "totalPercentage": 33.88888888888889,
-          "rank": 3,
+          "rank": 4,
           "responses": {
             "Section1-Q1": "E (C)",
             "Section1-Q2": "NAN",
@@ -1470,7 +1470,7 @@
           },
           "totalMarks": 0,
           "totalPercentage": 0,
-          "rank": 14,
+          "rank": 17,
           "responses": {},
           "analytics": {
             "skipStrategy": 0,
@@ -1489,13 +1489,13 @@
         }
       },
       "classStats": {
-        "averageScore": 5.52,
-        "top5Average": 14.65,
+        "averageScore": 7.7,
+        "top5Average": 18.3,
         "totalStudents": 24,
-        "passRate": 54.17,
-        "maxScore": 19.25,
+        "passRate": 66.67,
+        "maxScore": 28.5,
         "minScore": 0,
-        "threshold": 3.3124999999999996
+        "threshold": 4.61875
       },
       "topQuestions": {
         "1": {
@@ -1541,8 +1541,90 @@
               "count": 8
             }
           ],
-          "mostSkipped": [],
-          "mostWrong": []
+          "mostSkipped": [
+            {
+              "questionId": "Section1-Q28",
+              "count": 15
+            },
+            {
+              "questionId": "Section1-Q29",
+              "count": 14
+            },
+            {
+              "questionId": "Section1-Q38",
+              "count": 14
+            },
+            {
+              "questionId": "Section1-Q23",
+              "count": 12
+            },
+            {
+              "questionId": "Section1-Q36",
+              "count": 12
+            },
+            {
+              "questionId": "Section1-Q41",
+              "count": 12
+            },
+            {
+              "questionId": "Section1-Q44",
+              "count": 12
+            },
+            {
+              "questionId": "Section1-Q14",
+              "count": 11
+            },
+            {
+              "questionId": "Section1-Q19",
+              "count": 11
+            },
+            {
+              "questionId": "Section1-Q24",
+              "count": 11
+            }
+          ],
+          "mostWrong": [
+            {
+              "questionId": "Section1-Q6",
+              "count": 10
+            },
+            {
+              "questionId": "Section1-Q7",
+              "count": 10
+            },
+            {
+              "questionId": "Section1-Q2",
+              "count": 9
+            },
+            {
+              "questionId": "Section1-Q22",
+              "count": 9
+            },
+            {
+              "questionId": "Section1-Q11",
+              "count": 8
+            },
+            {
+              "questionId": "Section1-Q18",
+              "count": 8
+            },
+            {
+              "questionId": "Section1-Q33",
+              "count": 7
+            },
+            {
+              "questionId": "Section1-Q12",
+              "count": 5
+            },
+            {
+              "questionId": "Section1-Q13",
+              "count": 5
+            },
+            {
+              "questionId": "Section1-Q15",
+              "count": 5
+            }
+          ]
         },
         "2": {
           "mostCorrect": [],
@@ -1556,7 +1638,7 @@
         }
       },
       "metadata": {
-        "processedAt": "2025-09-18T23:13:02.119Z",
+        "processedAt": "2025-09-19T23:18:05.805Z",
         "sourceFile": "Mathematics CT 2.xlsx",
         "sheets": [
           "Sheet1",
@@ -1568,7 +1650,7 @@
   },
   "metadata": {
     "totalTests": 1,
-    "lastProcessed": "2025-09-18T23:13:02.123Z",
+    "lastProcessed": "2025-09-19T23:18:05.810Z",
     "version": "1.0.0"
   }
 }

@@ -582,7 +582,13 @@ const TestDetailPage = () => {
                 <div className="bg-gradient-to-br from-white to-vh-beige/5 rounded-xl shadow-lg border border-vh-beige/30 hover:shadow-xl transition-all duration-300">
                   <h3 className="text-lg font-semibold text-gray-800 mb-4">Question Difficulty Analysis</h3>
 
-                  {Object.entries((currentTest as FullTest).topQuestions).map(([sectionNum, sectionData]) => (
+                  {Object.entries((currentTest as FullTest).topQuestions)
+                    .filter(([sectionNum, sectionData]: [string, any]) =>
+                      sectionData.mostCorrect.length > 0 ||
+                      sectionData.mostWrong.length > 0 ||
+                      sectionData.mostSkipped.length > 0
+                    )
+                    .map(([sectionNum, sectionData]) => (
                     <div key={sectionNum} className="mb-6">
                       <h4 className="font-semibold text-gray-700 mb-3">Section {sectionNum}</h4>
 
@@ -593,13 +599,16 @@ const TestDetailPage = () => {
                             <CheckCircle size={16} />
                             Easiest Questions
                           </h5>
-                          <div className="space-y-1">
-                            {sectionData.mostCorrect.slice(0, 5).map((question: any, index: number) => (
+                          <div className="space-y-1 max-h-64 overflow-y-auto">
+                            {sectionData.mostCorrect.map((question: any, index: number) => (
                               <div key={question.questionId} className="flex justify-between text-sm">
-                                <span className="text-green-700">{question.questionId.replace('Section1-Q', 'Q')}</span>
+                                <span className="text-green-700">{question.questionId.replace(`Section${sectionNum}-Q`, 'Q')}</span>
                                 <span className="text-green-600 font-medium">{question.count} correct</span>
                               </div>
                             ))}
+                            {sectionData.mostCorrect.length === 0 && (
+                              <div className="text-sm text-gray-500 italic">No data available</div>
+                            )}
                           </div>
                         </div>
 
@@ -609,10 +618,10 @@ const TestDetailPage = () => {
                             <XCircle size={16} />
                             Hardest Questions
                           </h5>
-                          <div className="space-y-1">
-                            {sectionData.mostWrong.slice(0, 5).map((question: any, index: number) => (
+                          <div className="space-y-1 max-h-64 overflow-y-auto">
+                            {sectionData.mostWrong.map((question: any, index: number) => (
                               <div key={question.questionId} className="flex justify-between text-sm">
-                                <span className="text-red-700">{question.questionId.replace('Section1-Q', 'Q')}</span>
+                                <span className="text-red-700">{question.questionId.replace(`Section${sectionNum}-Q`, 'Q')}</span>
                                 <span className="text-red-600 font-medium">{question.count} wrong</span>
                               </div>
                             ))}
@@ -628,10 +637,10 @@ const TestDetailPage = () => {
                             <Clock size={16} />
                             Most Skipped
                           </h5>
-                          <div className="space-y-1">
-                            {sectionData.mostSkipped.slice(0, 5).map((question: any, index: number) => (
+                          <div className="space-y-1 max-h-64 overflow-y-auto">
+                            {sectionData.mostSkipped.map((question: any, index: number) => (
                               <div key={question.questionId} className="flex justify-between text-sm">
-                                <span className="text-gray-700">{question.questionId.replace('Section1-Q', 'Q')}</span>
+                                <span className="text-gray-700">{question.questionId.replace(`Section${sectionNum}-Q`, 'Q')}</span>
                                 <span className="text-gray-600 font-medium">{question.count} skipped</span>
                               </div>
                             ))}

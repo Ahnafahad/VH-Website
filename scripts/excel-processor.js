@@ -458,18 +458,20 @@ class ExcelProcessor {
     // Find section patterns in headers
     const sectionColumns = {};
     headers.forEach((header, index) => {
-      const sectionMatch = header.match(/(\d+)\s+(Top Ten Questions|right|skipped|wrong)/i);
+      const sectionMatch = header.match(/(\d+)\s+.*?(right|skipped|wrong)/i);
       if (sectionMatch) {
         const sectionNumber = sectionMatch[1];
+        const questionType = sectionMatch[2].toLowerCase();
+
         if (!sectionColumns[sectionNumber]) {
           sectionColumns[sectionNumber] = {};
         }
 
-        if (header.includes('right')) {
+        if (questionType === 'right') {
           sectionColumns[sectionNumber].rightQuestions = index;
-        } else if (header.includes('skipped')) {
+        } else if (questionType === 'skipped') {
           sectionColumns[sectionNumber].skippedQuestions = index;
-        } else if (header.includes('wrong')) {
+        } else if (questionType === 'wrong') {
           sectionColumns[sectionNumber].wrongQuestions = index;
         }
       }
