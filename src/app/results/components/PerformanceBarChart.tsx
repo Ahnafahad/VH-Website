@@ -21,18 +21,70 @@ interface PerformanceData {
 }
 
 interface PerformanceBarChartProps {
-  data: PerformanceData[];
+  simpleTests?: any;
+  students?: any;
+  userEmail?: string;
+  testName?: string;
+  isClassView?: boolean;
   title?: string;
   height?: number;
   showUnattempted?: boolean;
 }
 
 const PerformanceBarChart: React.FC<PerformanceBarChartProps> = ({
-  data,
+  simpleTests,
+  students,
+  userEmail,
+  testName,
+  isClassView = false,
   title = "Performance Breakdown",
   height = 300,
   showUnattempted = true
 }) => {
+  // Process data from props
+  const processPerformanceData = (): PerformanceData[] => {
+    if (!simpleTests?.tests || !students?.students) return [];
+
+    if (isClassView || !userEmail) {
+      // Return class average data for each test
+      return Object.entries(simpleTests.tests).map(([testName, test]: [string, any]) => {
+        const results = Object.values(test.results) as any[];
+        const totalCorrect = results.reduce((sum, r) => sum + (r.correct || 0), 0);
+        const totalWrong = results.reduce((sum, r) => sum + (r.wrong || 0), 0);
+        const totalUnattempted = results.reduce((sum, r) => sum + (r.unattempted || 0), 0);
+        const averageScore = results.reduce((sum, r) => sum + (r.score || 0), 0) / results.length;
+
+        return {
+          name: testName.slice(0, 20) + (testName.length > 20 ? '...' : ''),
+          correct: Math.round(totalCorrect / results.length),
+          wrong: Math.round(totalWrong / results.length),
+          unattempted: Math.round(totalUnattempted / results.length),
+          score: Math.round(averageScore * 10) / 10
+        };
+      });
+    } else {
+      // Return individual user data for each test
+      const user = Object.values(students.students).find((s: any) => s.email === userEmail) as any;
+      if (!user) return [];
+
+      const userId = user.id;
+      return Object.entries(simpleTests.tests)
+        .filter(([_, test]: [string, any]) => test.results[userId])
+        .map(([testName, test]: [string, any]) => {
+          const result = test.results[userId];
+          return {
+            name: testName.slice(0, 20) + (testName.length > 20 ? '...' : ''),
+            correct: result.correct || 0,
+            wrong: result.wrong || 0,
+            unattempted: result.unattempted || 0,
+            score: result.score || 0
+          };
+        });
+    }
+  };
+
+  const data = processPerformanceData();
+
   if (!data || data.length === 0) {
     return (
       <div className="flex items-center justify-center h-64 bg-gray-50 rounded-lg">

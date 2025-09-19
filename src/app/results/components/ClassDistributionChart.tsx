@@ -18,18 +18,61 @@ interface DistributionData {
 }
 
 interface ClassDistributionChartProps {
-  data: DistributionData[];
+  simpleTests?: any;
+  fullTests?: any;
+  students?: any;
   title?: string;
   height?: number;
   colors?: string[];
 }
 
 const ClassDistributionChart: React.FC<ClassDistributionChartProps> = ({
-  data,
+  simpleTests,
+  fullTests,
+  students,
   title = "Class Distribution",
   height = 300,
   colors = ['#760F13', '#D4B094', '#8B5A3C', '#F4E6D9', '#5D4E37']
 }) => {
+  // Process distribution data
+  const processDistributionData = (): DistributionData[] => {
+    if (!simpleTests?.tests || !students?.students) return [];
+
+    const gradeRanges = [
+      { name: 'A (90-100)', min: 90, max: 100, count: 0 },
+      { name: 'B (80-89)', min: 80, max: 89, count: 0 },
+      { name: 'C (70-79)', min: 70, max: 79, count: 0 },
+      { name: 'D (60-69)', min: 60, max: 69, count: 0 },
+      { name: 'F (0-59)', min: 0, max: 59, count: 0 }
+    ];
+
+    const allTests = { ...simpleTests.tests, ...(fullTests?.tests || {}) };
+    const allScores: number[] = [];
+
+    Object.values(allTests).forEach((test: any) => {
+      Object.values(test.results).forEach((result: any) => {
+        const score = 'score' in result ? result.score : result.totalMarks;
+        allScores.push(score);
+      });
+    });
+
+    allScores.forEach(score => {
+      gradeRanges.forEach(range => {
+        if (score >= range.min && score <= range.max) {
+          range.count++;
+        }
+      });
+    });
+
+    return gradeRanges.map(range => ({
+      name: range.name,
+      value: range.count,
+      percentage: allScores.length > 0 ? Math.round((range.count / allScores.length) * 100) : 0
+    }));
+  };
+
+  const data = processDistributionData();
+
   if (!data || data.length === 0) {
     return (
       <div className="flex items-center justify-center h-64 bg-gray-50 rounded-lg">

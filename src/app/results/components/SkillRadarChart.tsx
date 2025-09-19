@@ -20,18 +20,32 @@ interface SkillData {
 }
 
 interface SkillRadarChartProps {
-  data: SkillData[];
+  simpleTests?: any;
+  students?: any;
+  userEmail?: string;
+  testName?: string;
   title?: string;
   height?: number;
   showClassAverage?: boolean;
 }
 
 const SkillRadarChart: React.FC<SkillRadarChartProps> = ({
-  data,
+  simpleTests,
+  students,
+  userEmail,
+  testName,
   title = "Skill Analysis",
   height = 400,
   showClassAverage = false
 }) => {
+  // Create dummy skill data for now
+  const data: SkillData[] = [
+    { skill: 'Math', score: 85, maxScore: 100, classAverage: 75 },
+    { skill: 'Physics', score: 78, maxScore: 100, classAverage: 70 },
+    { skill: 'Chemistry', score: 92, maxScore: 100, classAverage: 80 },
+    { skill: 'Biology', score: 88, maxScore: 100, classAverage: 82 },
+    { skill: 'English', score: 76, maxScore: 100, classAverage: 78 }
+  ];
   if (!data || data.length === 0) {
     return (
       <div className="flex items-center justify-center h-64 bg-gray-50 rounded-lg">

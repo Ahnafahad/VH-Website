@@ -6,6 +6,9 @@ import { useRouter } from 'next/navigation';
 import { Shield, Users, BarChart3, TrendingUp, Award, Clock, Eye, Download, ArrowLeft } from 'lucide-react';
 import ProtectedRoute from '@/components/ProtectedRoute';
 import { SimpleTestsData, FullTestsData, StudentsData, SystemMetadata } from '@/types/results';
+import ClassDistributionChart from '../components/ClassDistributionChart';
+import SeriesProgressChart from '../components/SeriesProgressChart';
+import PerformanceBarChart from '../components/PerformanceBarChart';
 
 interface ClassStats {
   totalStudents: number;
@@ -31,7 +34,7 @@ const AdminDashboard = () => {
   const router = useRouter();
   const [simpleTests, setSimpleTests] = useState<SimpleTestsData | null>(null);
   const [fullTests, setFullTests] = useState<FullTestsData | null>(null);
-  const [, setStudents] = useState<StudentsData | null>(null);
+  const [students, setStudents] = useState<StudentsData | null>(null);
   const [metadata, setMetadata] = useState<SystemMetadata | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -256,7 +259,7 @@ const AdminDashboard = () => {
   if (loading) {
     return (
       <ProtectedRoute>
-        <div className="min-h-screen bg-gradient-to-br from-vh-beige/10 to-white">
+        <div className="min-h-screen bg-gradient-to-br from-vh-beige/20 via-white to-vh-light-red/5">
           <div className="max-w-7xl mx-auto px-4 py-8">
             <div className="flex items-center justify-center min-h-[400px]">
               <div className="text-center">
@@ -273,7 +276,7 @@ const AdminDashboard = () => {
   if (error || !isAdmin) {
     return (
       <ProtectedRoute>
-        <div className="min-h-screen bg-gradient-to-br from-vh-beige/10 to-white">
+        <div className="min-h-screen bg-gradient-to-br from-vh-beige/20 via-white to-vh-light-red/5">
           <div className="max-w-7xl mx-auto px-4 py-8">
             <button
               onClick={() => router.push('/results')}
@@ -333,7 +336,7 @@ const AdminDashboard = () => {
           {classStats && (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 mb-8">
 
-              <div className="bg-white rounded-xl shadow-md p-6 border border-vh-beige/20">
+              <div className="bg-gradient-to-br from-white to-vh-beige/5 rounded-xl shadow-lg border border-vh-beige/30 hover:shadow-xl transition-all duration-300">
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="text-sm font-medium text-gray-600">Total Students</p>
@@ -343,7 +346,7 @@ const AdminDashboard = () => {
                 </div>
               </div>
 
-              <div className="bg-white rounded-xl shadow-md p-6 border border-vh-beige/20">
+              <div className="bg-gradient-to-br from-white to-vh-beige/5 rounded-xl shadow-lg border border-vh-beige/30 hover:shadow-xl transition-all duration-300">
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="text-sm font-medium text-gray-600">Tests Available</p>
@@ -353,7 +356,7 @@ const AdminDashboard = () => {
                 </div>
               </div>
 
-              <div className="bg-white rounded-xl shadow-md p-6 border border-vh-beige/20">
+              <div className="bg-gradient-to-br from-white to-vh-beige/5 rounded-xl shadow-lg border border-vh-beige/30 hover:shadow-xl transition-all duration-300">
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="text-sm font-medium text-gray-600">Class Average</p>
@@ -363,7 +366,7 @@ const AdminDashboard = () => {
                 </div>
               </div>
 
-              <div className="bg-white rounded-xl shadow-md p-6 border border-vh-beige/20">
+              <div className="bg-gradient-to-br from-white to-vh-beige/5 rounded-xl shadow-lg border border-vh-beige/30 hover:shadow-xl transition-all duration-300">
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="text-sm font-medium text-gray-600">Top Performer</p>
@@ -373,7 +376,7 @@ const AdminDashboard = () => {
                 </div>
               </div>
 
-              <div className="bg-white rounded-xl shadow-md p-6 border border-vh-beige/20">
+              <div className="bg-gradient-to-br from-white to-vh-beige/5 rounded-xl shadow-lg border border-vh-beige/30 hover:shadow-xl transition-all duration-300">
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="text-sm font-medium text-gray-600">Latest Test</p>
@@ -385,11 +388,48 @@ const AdminDashboard = () => {
             </div>
           )}
 
+          {/* Class Analytics Charts */}
+          {simpleTests && fullTests && classStats && (
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+              {/* Class Distribution Chart */}
+              <div className="bg-gradient-to-br from-white to-vh-beige/5 rounded-xl shadow-lg border border-vh-beige/30 hover:shadow-xl transition-all duration-300">
+                <h3 className="text-lg font-semibold text-gray-800 mb-4">Class Performance Distribution</h3>
+                <ClassDistributionChart
+                  simpleTests={simpleTests}
+                  fullTests={fullTests}
+                  students={students}
+                />
+              </div>
+
+              {/* Class Progress Chart */}
+              <div className="bg-gradient-to-br from-white to-vh-beige/5 rounded-xl shadow-lg border border-vh-beige/30 hover:shadow-xl transition-all duration-300">
+                <h3 className="text-lg font-semibold text-gray-800 mb-4">Average Class Progress</h3>
+                <SeriesProgressChart
+                  simpleTests={simpleTests}
+                  students={students}
+                  userEmail=""
+                  isClassView={true}
+                />
+              </div>
+
+              {/* Class Performance Breakdown */}
+              <div className="bg-gradient-to-br from-white to-vh-beige/5 rounded-xl shadow-lg border border-vh-beige/30 hover:shadow-xl transition-all duration-300">
+                <h3 className="text-lg font-semibold text-gray-800 mb-4">Overall Performance Analysis</h3>
+                <PerformanceBarChart
+                  simpleTests={simpleTests}
+                  students={students}
+                  userEmail=""
+                  isClassView={true}
+                />
+              </div>
+            </div>
+          )}
+
           {/* Test Analytics */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
 
             {/* Test Selector */}
-            <div className="bg-white rounded-xl shadow-md p-6 border border-vh-beige/20">
+            <div className="bg-gradient-to-br from-white to-vh-beige/5 rounded-xl shadow-lg border border-vh-beige/30 hover:shadow-xl transition-all duration-300">
               <h3 className="text-lg font-semibold text-gray-800 mb-4">Test Analytics</h3>
 
               <div className="mb-4">
@@ -435,7 +475,7 @@ const AdminDashboard = () => {
             </div>
 
             {/* System Information */}
-            <div className="bg-white rounded-xl shadow-md p-6 border border-vh-beige/20">
+            <div className="bg-gradient-to-br from-white to-vh-beige/5 rounded-xl shadow-lg border border-vh-beige/30 hover:shadow-xl transition-all duration-300">
               <h3 className="text-lg font-semibold text-gray-800 mb-4">System Information</h3>
 
               {metadata && (
@@ -482,8 +522,211 @@ const AdminDashboard = () => {
             </div>
           </div>
 
+          {/* Comprehensive Class Analytics */}
+          {simpleTests && fullTests && classStats && (
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+              {/* Performance Distribution */}
+              <div className="bg-gradient-to-br from-white to-vh-beige/5 rounded-xl shadow-lg border border-vh-beige/30 hover:shadow-xl transition-all duration-300">
+                <div className="p-6">
+                  <h3 className="text-lg font-semibold text-gray-800 mb-4">Class Performance Distribution</h3>
+                  {(() => {
+                    // Calculate performance distribution across all tests
+                    const allScores: number[] = [];
+                    const allTests = { ...simpleTests.tests, ...fullTests.tests };
+
+                    Object.values(allTests).forEach((test: any) => {
+                      Object.values(test.results).forEach((result: any) => {
+                        const score = 'score' in result ? result.score : result.totalMarks;
+                        allScores.push(score);
+                      });
+                    });
+
+                    // Create distribution ranges
+                    const distribution = [
+                      { range: '90-100%', count: 0, color: '#22C55E' },
+                      { range: '80-89%', count: 0, color: '#84CC16' },
+                      { range: '70-79%', count: 0, color: '#EAB308' },
+                      { range: '60-69%', count: 0, color: '#F97316' },
+                      { range: 'Below 60%', count: 0, color: '#EF4444' }
+                    ];
+
+                    allScores.forEach(score => {
+                      if (score >= 90) distribution[0].count++;
+                      else if (score >= 80) distribution[1].count++;
+                      else if (score >= 70) distribution[2].count++;
+                      else if (score >= 60) distribution[3].count++;
+                      else distribution[4].count++;
+                    });
+
+                    return (
+                      <div className="space-y-3">
+                        {distribution.map((range, index) => (
+                          <div key={index} className="flex items-center gap-4">
+                            <div className="w-20 text-sm font-medium text-gray-700">{range.range}</div>
+                            <div className="flex-1 bg-gray-200 rounded-full h-4 relative">
+                              <div
+                                className="h-4 rounded-full transition-all duration-500"
+                                style={{
+                                  backgroundColor: range.color,
+                                  width: `${allScores.length > 0 ? (range.count / allScores.length) * 100 : 0}%`
+                                }}
+                              />
+                            </div>
+                            <div className="w-12 text-sm font-semibold text-gray-800">{range.count}</div>
+                          </div>
+                        ))}
+                        <div className="mt-4 text-xs text-gray-500 text-center">
+                          Total Submissions: {allScores.length}
+                        </div>
+                      </div>
+                    );
+                  })()}
+                </div>
+              </div>
+
+              {/* Test Difficulty Analysis */}
+              <div className="bg-gradient-to-br from-white to-vh-beige/5 rounded-xl shadow-lg border border-vh-beige/30 hover:shadow-xl transition-all duration-300">
+                <div className="p-6">
+                  <h3 className="text-lg font-semibold text-gray-800 mb-4">Test Difficulty Analysis</h3>
+                  {(() => {
+                    const allTests = { ...simpleTests.tests, ...fullTests.tests };
+                    const testAnalysis = Object.entries(allTests).map(([testName, test]: [string, any]) => {
+                      const results = Object.values(test.results) as any[];
+                      const scores = results.map(r => 'score' in r ? r.score : r.totalMarks);
+                      const average = scores.reduce((a, b) => a + b, 0) / scores.length;
+
+                      let difficulty = '';
+                      let difficultyColor = '';
+                      if (average >= 80) {
+                        difficulty = 'Easy';
+                        difficultyColor = 'text-green-600';
+                      } else if (average >= 65) {
+                        difficulty = 'Medium';
+                        difficultyColor = 'text-yellow-600';
+                      } else {
+                        difficulty = 'Hard';
+                        difficultyColor = 'text-red-600';
+                      }
+
+                      return {
+                        testName,
+                        average: Math.round(average * 10) / 10,
+                        difficulty,
+                        difficultyColor,
+                        submissions: results.length
+                      };
+                    }).sort((a, b) => a.average - b.average);
+
+                    return (
+                      <div className="space-y-3 max-h-64 overflow-y-auto">
+                        {testAnalysis.map((test, index) => (
+                          <div key={index} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                            <div className="flex-1">
+                              <div className="font-medium text-gray-800 text-sm truncate">{test.testName}</div>
+                              <div className="text-xs text-gray-500">{test.submissions} students</div>
+                            </div>
+                            <div className="text-right">
+                              <div className="font-semibold text-gray-800">{test.average}</div>
+                              <div className={`text-xs font-medium ${test.difficultyColor}`}>{test.difficulty}</div>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    );
+                  })()}
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* Top Performers Analysis */}
+          {studentSummaries.length > 0 && (
+            <div className="mb-8">
+              <div className="bg-gradient-to-br from-white to-vh-beige/5 rounded-xl shadow-lg border border-vh-beige/30 hover:shadow-xl transition-all duration-300">
+                <div className="p-6">
+                  <h3 className="text-lg font-semibold text-gray-800 mb-4">Top Performers Insights</h3>
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    {/* Top 3 Students */}
+                    <div>
+                      <h4 className="font-semibold text-gray-700 mb-3">Top 3 Students</h4>
+                      <div className="space-y-2">
+                        {studentSummaries.slice(0, 3).map((student, index) => (
+                          <div key={student.id} className="flex items-center gap-3 p-2 bg-yellow-50 rounded-lg">
+                            <div className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold ${
+                              index === 0 ? 'bg-yellow-500 text-white' :
+                              index === 1 ? 'bg-gray-400 text-white' :
+                              'bg-orange-400 text-white'
+                            }`}>
+                              {index + 1}
+                            </div>
+                            <div className="flex-1">
+                              <div className="font-medium text-sm">{student.name}</div>
+                              <div className="text-xs text-gray-600">{student.averageScore} avg</div>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Class Statistics */}
+                    <div>
+                      <h4 className="font-semibold text-gray-700 mb-3">Class Statistics</h4>
+                      <div className="space-y-3">
+                        <div className="flex justify-between items-center">
+                          <span className="text-sm text-gray-600">Active Students:</span>
+                          <span className="font-semibold">{studentSummaries.filter(s => s.testsCompleted > 0).length}</span>
+                        </div>
+                        <div className="flex justify-between items-center">
+                          <span className="text-sm text-gray-600">Avg Tests/Student:</span>
+                          <span className="font-semibold">
+                            {Math.round((studentSummaries.reduce((sum, s) => sum + s.testsCompleted, 0) / studentSummaries.length) * 10) / 10}
+                          </span>
+                        </div>
+                        <div className="flex justify-between items-center">
+                          <span className="text-sm text-gray-600">Class Average:</span>
+                          <span className="font-semibold text-vh-red">{classStats?.averagePerformance || 0}</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Performance Insights */}
+                    <div>
+                      <h4 className="font-semibold text-gray-700 mb-3">Performance Insights</h4>
+                      <div className="space-y-2">
+                        {(() => {
+                          const activeStudents = studentSummaries.filter(s => s.testsCompleted > 0);
+                          const highPerformers = activeStudents.filter(s => s.averageScore >= 80).length;
+                          const needsSupport = activeStudents.filter(s => s.averageScore < 60).length;
+
+                          return (
+                            <>
+                              <div className="flex justify-between items-center text-sm">
+                                <span className="text-gray-600">High Performers (≥80):</span>
+                                <span className="font-semibold text-green-600">{highPerformers}</span>
+                              </div>
+                              <div className="flex justify-between items-center text-sm">
+                                <span className="text-gray-600">Needs Support (&lt;60):</span>
+                                <span className="font-semibold text-red-600">{needsSupport}</span>
+                              </div>
+                              <div className="flex justify-between items-center text-sm">
+                                <span className="text-gray-600">Success Rate:</span>
+                                <span className="font-semibold text-blue-600">
+                                  {activeStudents.length > 0 ? Math.round((highPerformers / activeStudents.length) * 100) : 0}%
+                                </span>
+                              </div>
+                            </>
+                          );
+                        })()}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+
           {/* Student Performance Table */}
-          <div className="bg-white rounded-xl shadow-md border border-vh-beige/20 overflow-hidden">
+          <div className="bg-gradient-to-br from-white to-vh-beige/5 rounded-xl shadow-lg border border-vh-beige/30 overflow-hidden hover:shadow-xl transition-all duration-300">
             <div className="p-6 border-b border-gray-200">
               <h3 className="text-lg font-semibold text-gray-800">Student Performance Overview</h3>
               <p className="text-sm text-gray-600 mt-1">Complete performance summary for all students</p>

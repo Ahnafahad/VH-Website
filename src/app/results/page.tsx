@@ -6,6 +6,9 @@ import { useRouter } from 'next/navigation';
 import { BarChart3, TrendingUp, Award, Clock, BookOpen, Target } from 'lucide-react';
 import ProtectedRoute from '@/components/ProtectedRoute';
 import { SimpleTestsData, FullTestsData, StudentsData, SystemMetadata } from '@/types/results';
+import SeriesProgressChart from './components/SeriesProgressChart';
+import PerformanceBarChart from './components/PerformanceBarChart';
+import SkillRadarChart from './components/SkillRadarChart';
 
 interface DashboardStats {
   totalTests: number;
@@ -114,7 +117,7 @@ const ResultsDashboard = () => {
   if (loading) {
     return (
       <ProtectedRoute>
-        <div className="min-h-screen bg-gradient-to-br from-vh-beige/10 to-white">
+        <div className="min-h-screen bg-gradient-to-br from-vh-beige/20 via-white to-vh-light-red/5">
           <div className="max-w-7xl mx-auto px-4 py-8">
             <div className="flex items-center justify-center min-h-[400px]">
               <div className="text-center">
@@ -131,7 +134,7 @@ const ResultsDashboard = () => {
   if (error) {
     return (
       <ProtectedRoute>
-        <div className="min-h-screen bg-gradient-to-br from-vh-beige/10 to-white">
+        <div className="min-h-screen bg-gradient-to-br from-vh-beige/20 via-white to-vh-light-red/5">
           <div className="max-w-7xl mx-auto px-4 py-8">
             <div className="flex items-center justify-center min-h-[400px]">
               <div className="text-center">
@@ -154,7 +157,7 @@ const ResultsDashboard = () => {
 
   return (
     <ProtectedRoute>
-      <div className="min-h-screen bg-gradient-to-br from-vh-beige/10 to-white">
+      <div className="min-h-screen bg-gradient-to-br from-vh-beige/20 via-white to-vh-light-red/5">
         <div className="max-w-7xl mx-auto px-4 py-8">
 
           {/* Header */}
@@ -170,10 +173,10 @@ const ResultsDashboard = () => {
 
           {/* Stats Overview */}
           {stats && (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
 
               {/* Total Tests */}
-              <div className="bg-white rounded-xl shadow-md p-6 border border-vh-beige/20">
+              <div className="bg-gradient-to-br from-white to-vh-beige/5 rounded-xl shadow-lg border border-vh-beige/30 hover:shadow-xl transition-all duration-300">
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="text-sm font-medium text-gray-600">Total Tests</p>
@@ -184,7 +187,7 @@ const ResultsDashboard = () => {
               </div>
 
               {/* Average Score */}
-              <div className="bg-white rounded-xl shadow-md p-6 border border-vh-beige/20">
+              <div className="bg-gradient-to-br from-white to-vh-beige/5 rounded-xl shadow-lg border border-vh-beige/30 hover:shadow-xl transition-all duration-300">
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="text-sm font-medium text-gray-600">Average Score</p>
@@ -194,19 +197,8 @@ const ResultsDashboard = () => {
                 </div>
               </div>
 
-              {/* Current Rank */}
-              <div className="bg-white rounded-xl shadow-md p-6 border border-vh-beige/20">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <p className="text-sm font-medium text-gray-600">Latest Rank</p>
-                    <p className="text-2xl font-bold text-gray-800">#{stats.rank}</p>
-                  </div>
-                  <Award className="text-vh-red" size={32} />
-                </div>
-              </div>
-
               {/* Recent Performance */}
-              <div className="bg-white rounded-xl shadow-md p-6 border border-vh-beige/20 md:col-span-2 lg:col-span-2">
+              <div className="bg-gradient-to-br from-white to-vh-beige/5 rounded-xl shadow-lg border border-vh-beige/30 hover:shadow-xl transition-all duration-300 md:col-span-2 lg:col-span-2">
                 <div className="flex items-center justify-between mb-4">
                   <div>
                     <p className="text-sm font-medium text-gray-600">Recent Test</p>
@@ -226,7 +218,7 @@ const ResultsDashboard = () => {
               </div>
 
               {/* Quick Actions */}
-              <div className="bg-gradient-to-br from-vh-red to-vh-red/80 rounded-xl shadow-md p-6 text-white">
+              <div className="bg-gradient-to-br from-vh-red via-vh-light-red to-vh-dark-red rounded-xl shadow-lg p-6 text-white hover:shadow-xl transition-all duration-300">
                 <h3 className="font-semibold mb-4">Quick Actions</h3>
                 <div className="space-y-2">
                   <button
@@ -246,11 +238,46 @@ const ResultsDashboard = () => {
             </div>
           )}
 
+          {/* Performance Analytics Charts */}
+          {stats && simpleTests && (
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+              {/* Series Progress Chart */}
+              <div className="bg-gradient-to-br from-white to-vh-beige/5 rounded-xl shadow-lg border border-vh-beige/30 hover:shadow-xl transition-all duration-300">
+                <h3 className="text-lg font-semibold text-gray-800 mb-4">Progress Over Time</h3>
+                <SeriesProgressChart
+                  simpleTests={simpleTests}
+                  students={students}
+                  userEmail={session?.user?.email || ''}
+                />
+              </div>
+
+              {/* Performance Bar Chart */}
+              <div className="bg-gradient-to-br from-white to-vh-beige/5 rounded-xl shadow-lg border border-vh-beige/30 hover:shadow-xl transition-all duration-300">
+                <h3 className="text-lg font-semibold text-gray-800 mb-4">Performance Breakdown</h3>
+                <PerformanceBarChart
+                  simpleTests={simpleTests}
+                  students={students}
+                  userEmail={session?.user?.email || ''}
+                />
+              </div>
+
+              {/* Skill Radar Chart */}
+              <div className="bg-gradient-to-br from-white to-vh-beige/5 rounded-xl shadow-lg border border-vh-beige/30 hover:shadow-xl transition-all duration-300">
+                <h3 className="text-lg font-semibold text-gray-800 mb-4">Skill Analysis</h3>
+                <SkillRadarChart
+                  simpleTests={simpleTests}
+                  students={students}
+                  userEmail={session?.user?.email || ''}
+                />
+              </div>
+            </div>
+          )}
+
           {/* Test Categories */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
 
             {/* Simple Tests */}
-            <div className="bg-white rounded-xl shadow-md p-6 border border-vh-beige/20">
+            <div className="bg-gradient-to-br from-white to-vh-beige/5 rounded-xl shadow-lg border border-vh-beige/30 hover:shadow-xl transition-all duration-300">
               <h2 className="text-xl font-semibold text-gray-800 mb-4">Simple Tests</h2>
               <p className="text-gray-600 mb-6">Quick assessments and quizzes</p>
 
@@ -292,7 +319,7 @@ const ResultsDashboard = () => {
             </div>
 
             {/* Full Tests */}
-            <div className="bg-white rounded-xl shadow-md p-6 border border-vh-beige/20">
+            <div className="bg-gradient-to-br from-white to-vh-beige/5 rounded-xl shadow-lg border border-vh-beige/30 hover:shadow-xl transition-all duration-300">
               <h2 className="text-xl font-semibold text-gray-800 mb-4">Full Tests</h2>
               <p className="text-gray-600 mb-6">Comprehensive examinations with detailed analytics</p>
 
