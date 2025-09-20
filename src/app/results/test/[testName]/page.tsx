@@ -98,18 +98,46 @@ const TestDetailPage = () => {
   };
 
   const analyzePersonalTopQuestionsPerformance = () => {
-    if (!isFullTest || !currentTest || !userResult || !session?.user?.email) return null;
+    if (!isFullTest || !currentTest || !userResult || !session?.user?.email) {
+      console.log('DEBUG: Early return - missing data', {
+        isFullTest,
+        hasCurrentTest: !!currentTest,
+        hasUserResult: !!userResult,
+        hasEmail: !!session?.user?.email
+      });
+      return null;
+    }
 
     const test = currentTest as FullTest;
     const result = userResult as FullTestResult;
 
-    if (!test.topQuestions || !result.responses) return null;
+    if (!test.topQuestions || !result.responses) {
+      console.log('DEBUG: Missing topQuestions or responses', {
+        hasTopQuestions: !!test.topQuestions,
+        hasResponses: !!result.responses,
+        topQuestions: test.topQuestions
+      });
+      return null;
+    }
+
+    console.log('DEBUG: Starting analysis', {
+      testName: test.testName,
+      topQuestionsSections: Object.keys(test.topQuestions),
+      responseCount: Object.keys(result.responses).length
+    });
 
     const personalAnalysis: any = {};
 
     Object.entries(test.topQuestions).forEach(([sectionNum, sectionData]) => {
+      console.log(`DEBUG: Processing section ${sectionNum}`, {
+        mostCorrectLength: sectionData.mostCorrect?.length || 0,
+        mostWrongLength: sectionData.mostWrong?.length || 0,
+        mostSkippedLength: sectionData.mostSkipped?.length || 0
+      });
+
       // Only process sections that have data
       if (!sectionData.mostCorrect?.length && !sectionData.mostWrong?.length && !sectionData.mostSkipped?.length) {
+        console.log(`DEBUG: Skipping section ${sectionNum} - no data`);
         return; // Skip sections with no top questions data
       }
 
@@ -191,6 +219,11 @@ const TestDetailPage = () => {
           }
         });
       }
+    });
+
+    console.log('DEBUG: Final personalAnalysis', {
+      analysisKeys: Object.keys(personalAnalysis),
+      analysis: personalAnalysis
     });
 
     return Object.keys(personalAnalysis).length > 0 ? personalAnalysis : null;
@@ -564,8 +597,8 @@ const TestDetailPage = () => {
               </div>
 
               {/* Performance Analytics Charts */}
-              {simpleTests && students && session?.user?.email && (
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+              {(simpleTests || fullTests) && students && session?.user?.email && (
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                   {/* Progress Trend Chart */}
                   <div className="bg-gradient-to-br from-white to-vh-beige/5 rounded-xl shadow-lg border border-vh-beige/30 hover:shadow-xl transition-all duration-300">
                     <h3 className="text-lg font-semibold text-gray-800 mb-4">Your Progress Trend</h3>

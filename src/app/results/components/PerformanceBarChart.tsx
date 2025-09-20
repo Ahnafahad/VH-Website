@@ -43,9 +43,44 @@ const PerformanceBarChart: React.FC<PerformanceBarChartProps> = ({
   height = 300,
   showUnattempted = true
 }) => {
+  // Helper function to extract performance data from a result object
+  const extractPerformanceData = (result: any): { correct: number; wrong: number; unattempted: number; score: number } => {
+    // Check if this is a full test (has sections)
+    if (result.sections && typeof result.sections === 'object') {
+      // Full test: aggregate from sections
+      const sections = Object.values(result.sections) as any[];
+      const totalCorrect = sections.reduce((sum, section) => sum + (section.correct || 0), 0);
+      const totalWrong = sections.reduce((sum, section) => sum + (section.wrong || 0), 0);
+      const score = result.totalMarks || 0;
+
+      // Calculate unattempted based on responses if available
+      let unattempted = 0;
+      if (result.responses && typeof result.responses === 'object') {
+        const totalQuestions = Object.keys(result.responses).length;
+        const attempted = totalCorrect + totalWrong;
+        unattempted = Math.max(0, totalQuestions - attempted);
+      }
+
+      return {
+        correct: totalCorrect,
+        wrong: totalWrong,
+        unattempted,
+        score
+      };
+    } else {
+      // Simple test: use direct properties
+      return {
+        correct: result.correct || 0,
+        wrong: result.wrong || 0,
+        unattempted: result.unattempted || 0,
+        score: result.score || 0
+      };
+    }
+  };
+
   // Process data from props
   const processPerformanceData = (): PerformanceData[] => {
-    if (!simpleTests?.tests || !students?.students) return [];
+    if (!students?.students) return [];
 
     // If testName is provided, only show data for that specific test
     // Combine both simple and full tests to find the correct test
@@ -62,17 +97,27 @@ const PerformanceBarChart: React.FC<PerformanceBarChartProps> = ({
       // Return class average data for each test
       return Object.entries(testsToProcess).map(([testNameKey, test]: [string, any]) => {
         const results = Object.values(test.results || {}) as any[];
-        const totalCorrect = results.reduce((sum, r) => sum + (r.correct || 0), 0);
-        const totalWrong = results.reduce((sum, r) => sum + (r.wrong || 0), 0);
-        const totalUnattempted = results.reduce((sum, r) => sum + (r.unattempted || 0), 0);
-        const averageScore = results.reduce((sum, r) => sum + (r.score || 0), 0) / results.length;
+        if (results.length === 0) return {
+          name: testName ? 'Class Average' : testNameKey.slice(0, 20) + (testNameKey.length > 20 ? '...' : ''),
+          correct: 0,
+          wrong: 0,
+          unattempted: 0,
+          score: 0
+        };
+
+        // Extract performance data from each result and average
+        const performanceData = results.map(result => extractPerformanceData(result));
+        const totalCorrect = performanceData.reduce((sum, p) => sum + p.correct, 0);
+        const totalWrong = performanceData.reduce((sum, p) => sum + p.wrong, 0);
+        const totalUnattempted = performanceData.reduce((sum, p) => sum + p.unattempted, 0);
+        const totalScore = performanceData.reduce((sum, p) => sum + p.score, 0);
 
         return {
           name: testName ? 'Class Average' : testNameKey.slice(0, 20) + (testNameKey.length > 20 ? '...' : ''),
           correct: Math.round(totalCorrect / results.length),
           wrong: Math.round(totalWrong / results.length),
           unattempted: Math.round(totalUnattempted / results.length),
-          score: Math.round(averageScore * 10) / 10
+          score: Math.round((totalScore / results.length) * 10) / 10
         };
       });
     } else {
@@ -82,15 +127,17 @@ const PerformanceBarChart: React.FC<PerformanceBarChartProps> = ({
 
       const userId = user.id;
       return Object.entries(testsToProcess)
-        .filter(([_, test]: [string, any]) => test.results && test.results[userId])
+        .filter(([, test]: [string, any]) => test.results && test.results[userId])
         .map(([testNameKey, test]: [string, any]) => {
           const result = test.results?.[userId] || {};
+          const performanceData = extractPerformanceData(result);
+
           return {
             name: testName ? 'Your Performance' : testNameKey.slice(0, 20) + (testNameKey.length > 20 ? '...' : ''),
-            correct: result.correct || 0,
-            wrong: result.wrong || 0,
-            unattempted: result.unattempted || 0,
-            score: result.score || 0
+            correct: performanceData.correct,
+            wrong: performanceData.wrong,
+            unattempted: performanceData.unattempted,
+            score: performanceData.score
           };
         });
     }
