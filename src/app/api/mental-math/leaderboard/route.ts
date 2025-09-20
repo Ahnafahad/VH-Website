@@ -19,7 +19,7 @@ export async function GET() {
     console.log('Querying individual scores...');
     const individualScores = await MathScore.find({ isAdmin: { $ne: true } })
       .sort({ score: -1, playedAt: -1 })
-      .limit(20)
+      .limit(10)
       .select({
         playerName: 1,
         score: 1,
