@@ -655,26 +655,26 @@ const TestDetailPage = () => {
               )}
 
               {/* Class Comparison */}
-              <div className="bg-gradient-to-br from-white to-vh-beige/5 rounded-xl shadow-lg border border-vh-beige/30 hover:shadow-xl transition-all duration-300 p-6 mb-8">
-                <h3 className="text-lg font-semibold text-gray-800 mb-6">Class Comparison</h3>
+              <div className="bg-gradient-to-br from-white to-vh-beige/5 rounded-xl shadow-lg border border-vh-beige/30 hover:shadow-xl transition-all duration-300 p-8 mb-8">
+                <h3 className="text-lg font-semibold text-gray-800 mb-8">Class Comparison</h3>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                  <div className="text-center p-4 bg-gray-50 rounded-lg">
-                    <div className="text-2xl font-bold text-gray-600">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  <div className="text-center p-6 bg-gray-50 rounded-lg">
+                    <div className="text-2xl font-bold text-gray-600 mb-2">
                       {currentTest.classStats.averageScore.toFixed(1)}
                     </div>
                     <div className="text-sm text-gray-700">Class Average</div>
                   </div>
 
-                  <div className="text-center p-4 bg-yellow-50 rounded-lg">
-                    <div className="text-2xl font-bold text-yellow-600">
+                  <div className="text-center p-6 bg-yellow-50 rounded-lg">
+                    <div className="text-2xl font-bold text-yellow-600 mb-2">
                       {currentTest.classStats.top5Average.toFixed(1)}
                     </div>
                     <div className="text-sm text-yellow-700">Top 5 Average</div>
                   </div>
 
-                  <div className="text-center p-4 bg-vh-beige/20 rounded-lg">
-                    <div className="text-2xl font-bold text-vh-red">
+                  <div className="text-center p-6 bg-vh-beige/20 rounded-lg">
+                    <div className="text-2xl font-bold text-vh-red mb-2">
                       {Math.round(currentTest.classStats.passRate)}%
                     </div>
                     <div className="text-sm text-vh-red">Pass Rate</div>
@@ -724,7 +724,7 @@ const TestDetailPage = () => {
 
               {/* Question Performance Analytics (Sheet 2 Data) */}
               {isFullTest && (currentTest as FullTest).topQuestions && (
-                <div className="bg-gradient-to-br from-white to-vh-beige/5 rounded-xl shadow-lg border border-vh-beige/30 hover:shadow-xl transition-all duration-300 p-6">
+                <div className="bg-gradient-to-br from-white to-vh-beige/5 rounded-xl shadow-lg border border-vh-beige/30 hover:shadow-xl transition-all duration-300 p-6 mt-8">
                   <h3 className="text-lg font-semibold text-gray-800 mb-6">Question Difficulty Analysis</h3>
                   {userResult && (
                     <div className="bg-gray-50 border border-gray-100 rounded-lg p-4 mb-6">
