@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSession } from 'next-auth/react';
 import { useParams, useRouter } from 'next/navigation';
-import { ArrowLeft, Award, Target, TrendingUp, Eye, CheckCircle, XCircle, Clock, Minus } from 'lucide-react';
+import { ArrowLeft, Award, Target, TrendingUp, Eye, CheckCircle, XCircle, Clock, Minus, Users } from 'lucide-react';
 import ProtectedRoute from '@/components/ProtectedRoute';
 import { SimpleTestsData, FullTestsData, StudentsData, SimpleTest, FullTest, SimpleTestResult, FullTestResult } from '@/types/results';
 import SeriesProgressChart from '../../components/SeriesProgressChart';
@@ -25,6 +25,9 @@ const TestDetailPage = () => {
   const [currentTest, setCurrentTest] = useState<SimpleTest | FullTest | null>(null);
   const [userResult, setUserResult] = useState<SimpleTestResult | FullTestResult | null>(null);
   const [isFullTest, setIsFullTest] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
+  const [selectedStudentId, setSelectedStudentId] = useState<string | null>(null);
+  const [selectedStudentName, setSelectedStudentName] = useState<string>('');
 
   useEffect(() => {
     const fetchData = async () => {
@@ -32,15 +35,17 @@ const TestDetailPage = () => {
         setLoading(true);
         setError(null);
 
-        const [simpleResponse, fullResponse, studentsResponse] = await Promise.all([
+        const [simpleResponse, fullResponse, studentsResponse, adminCheckResponse] = await Promise.all([
           fetch('/data/simple-tests.json').then(res => res.json()),
           fetch('/data/full-tests.json').then(res => res.json()),
-          fetch('/data/students.json').then(res => res.json())
+          fetch('/data/students.json').then(res => res.json()),
+          fetch('/api/auth/check-admin').then(res => res.json())
         ]);
 
         setSimpleTests(simpleResponse);
         setFullTests(fullResponse);
         setStudents(studentsResponse);
+        setIsAdmin(adminCheckResponse.isAdmin);
 
         // Find the test
         let test = simpleResponse.tests[testName];
@@ -59,11 +64,21 @@ const TestDetailPage = () => {
         setCurrentTest(test);
         setIsFullTest(isFullTestType);
 
-        // Find user result
+        // Find user result based on admin status
         if (session?.user?.email) {
-          const user = Object.values(studentsResponse.students).find((s: any) => s.email === session.user?.email) as any;
-          if (user && test.results && test.results[user.id]) {
-            setUserResult(test.results[user.id]);
+          if (adminCheckResponse.isAdmin) {
+            // Admin: don't show their own results initially
+            setUserResult(null);
+            setSelectedStudentId(null);
+            setSelectedStudentName('');
+          } else {
+            // Student: show their own results
+            const user = Object.values(studentsResponse.students).find((s: any) => s.email === session.user?.email) as any;
+            if (user && test.results && test.results[user.id]) {
+              setUserResult(test.results[user.id]);
+              setSelectedStudentId(user.id);
+              setSelectedStudentName(user.name);
+            }
           }
         }
 
@@ -77,6 +92,35 @@ const TestDetailPage = () => {
 
     fetchData();
   }, [testName, session]);
+
+  const handleStudentSelection = (studentId: string) => {
+    if (!currentTest || !students) return;
+
+    setSelectedStudentId(studentId);
+
+    // Find student name
+    const student = Object.values(students.students).find((s: any) => s.id === studentId) as any;
+    setSelectedStudentName(student?.name || '');
+
+    // Find student result
+    if (currentTest.results && currentTest.results[studentId]) {
+      setUserResult(currentTest.results[studentId]);
+    } else {
+      setUserResult(null);
+    }
+  };
+
+  // Get the email to use for charts (selected student for admin, own email for students)
+  const getChartUserEmail = (): string | undefined => {
+    if (!session?.user?.email) return undefined;
+
+    if (isAdmin && selectedStudentId && students) {
+      const selectedStudent = Object.values(students.students).find((s: any) => s.id === selectedStudentId) as any;
+      return selectedStudent?.email;
+    }
+
+    return session.user.email;
+  };
 
   const formatResponseText = (response: string) => {
     if (response === 'NAN') return 'Not Attempted';
@@ -329,16 +373,56 @@ const TestDetailPage = () => {
                     {isFullTest ? (userResult as FullTestResult).totalMarks : (userResult as SimpleTestResult).score}
                   </div>
                   <div className="text-sm text-gray-600">Rank #{userResult.rank}</div>
+                  {selectedStudentName && (
+                    <div className="text-xs text-gray-500 mt-1">
+                      Viewing: {selectedStudentName}
+                    </div>
+                  )}
                 </div>
               )}
             </div>
+
+            {/* Admin Student Selector */}
+            {isAdmin && students && currentTest && (
+              <div className="mt-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+                <div className="flex items-center gap-3 mb-3">
+                  <Users size={20} className="text-blue-600" />
+                  <h3 className="text-lg font-semibold text-blue-800">Admin: Select Student to View</h3>
+                </div>
+                <select
+                  value={selectedStudentId || ''}
+                  onChange={(e) => handleStudentSelection(e.target.value)}
+                  className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                >
+                  <option value="">Select a student...</option>
+                  {Object.values(students.students)
+                    .filter((student: any) => currentTest.results && currentTest.results[student.id])
+                    .sort((a: any, b: any) => a.name.localeCompare(b.name))
+                    .map((student: any) => (
+                      <option key={student.id} value={student.id}>
+                        {student.name} (ID: {student.id})
+                      </option>
+                    ))}
+                </select>
+              </div>
+            )}
           </div>
 
           {!userResult ? (
             <div className="bg-gradient-to-br from-white to-vh-beige/5 rounded-xl shadow-lg p-8 text-center border border-vh-beige/30">
-              <Clock size={48} className="text-gray-400 mx-auto mb-4" />
-              <h3 className="text-xl font-semibold text-gray-800 mb-2">Test Not Taken</h3>
-              <p className="text-gray-600">You haven't taken this test yet.</p>
+              {isAdmin ? (
+                <>
+                  <Users size={48} className="text-blue-400 mx-auto mb-4" />
+                  <h3 className="text-xl font-semibold text-gray-800 mb-2">No Student Selected</h3>
+                  <p className="text-gray-600">Please select a student from the dropdown above to view their test results.</p>
+                </>
+              ) : (
+                <>
+                  <Clock size={48} className="text-gray-400 mx-auto mb-4" />
+                  <h3 className="text-xl font-semibold text-gray-800 mb-2">Test Not Taken</h3>
+                  <p className="text-gray-600">You haven't taken this test yet.</p>
+                </>
+              )}
             </div>
           ) : (
             <div className="space-y-8">
@@ -553,24 +637,26 @@ const TestDetailPage = () => {
 
               {/* Class Percentile Positioning */}
               {userResult && currentTest && (
-                <div className="bg-gradient-to-br from-white to-vh-beige/5 rounded-xl shadow-lg border border-vh-beige/30 hover:shadow-xl transition-all duration-300">
+                <div className="bg-gradient-to-br from-white to-vh-beige/5 rounded-xl shadow-lg border border-vh-beige/30 hover:shadow-xl transition-all duration-300 mb-8">
                   <div className="p-6">
-                    <h3 className="text-lg font-semibold text-gray-800 mb-4">Your Position in Class</h3>
-                    <PercentileChart
-                      userScore={isFullTest ? (userResult as FullTestResult).totalMarks : (userResult as SimpleTestResult).score}
-                      allScores={Object.values(currentTest.results || {}).map(result =>
-                        isFullTest ? (result as FullTestResult).totalMarks : (result as SimpleTestResult).score
-                      )}
-                      title=""
-                      height={250}
-                    />
+                    <h3 className="text-lg font-semibold text-gray-800 mb-6">Your Position in Class</h3>
+                    <div className="h-64 mb-4">
+                      <PercentileChart
+                        userScore={isFullTest ? (userResult as FullTestResult).totalMarks : (userResult as SimpleTestResult).score}
+                        allScores={Object.values(currentTest.results || {}).map(result =>
+                          isFullTest ? (result as FullTestResult).totalMarks : (result as SimpleTestResult).score
+                        )}
+                        title=""
+                        height={250}
+                      />
+                    </div>
                   </div>
                 </div>
               )}
 
               {/* Class Comparison */}
-              <div className="bg-gradient-to-br from-white to-vh-beige/5 rounded-xl shadow-lg border border-vh-beige/30 hover:shadow-xl transition-all duration-300">
-                <h3 className="text-lg font-semibold text-gray-800 mb-4">Class Comparison</h3>
+              <div className="bg-gradient-to-br from-white to-vh-beige/5 rounded-xl shadow-lg border border-vh-beige/30 hover:shadow-xl transition-all duration-300 p-6 mb-8">
+                <h3 className="text-lg font-semibold text-gray-800 mb-6">Class Comparison</h3>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   <div className="text-center p-4 bg-gray-50 rounded-lg">
@@ -597,31 +683,40 @@ const TestDetailPage = () => {
               </div>
 
               {/* Performance Analytics Charts */}
-              {(simpleTests || fullTests) && students && session?.user?.email && (
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              {(simpleTests || fullTests) && students && getChartUserEmail() && (
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
                   {/* Progress Trend Chart */}
-                  <div className="bg-gradient-to-br from-white to-vh-beige/5 rounded-xl shadow-lg border border-vh-beige/30 hover:shadow-xl transition-all duration-300">
-                    <h3 className="text-lg font-semibold text-gray-800 mb-4">Your Progress Trend</h3>
-                    <SeriesProgressChart
-                      simpleTests={simpleTests}
-                      fullTests={fullTests}
-                      students={students}
-                      userEmail={session.user.email}
-                      highlightTest={testName}
-                      targetSeries={testName.replace(/\s*\d+$/, '').trim()}
-                    />
+                  <div className="bg-gradient-to-br from-white to-vh-beige/5 rounded-xl shadow-lg border border-vh-beige/30 hover:shadow-xl transition-all duration-300 p-6">
+                    <h3 className="text-lg font-semibold text-gray-800 mb-6">
+                      {isAdmin && selectedStudentName ? `${selectedStudentName}'s Progress Trend` : 'Your Progress Trend'}
+                    </h3>
+                    <div className="h-80 mb-4">
+                      <SeriesProgressChart
+                        simpleTests={simpleTests}
+                        fullTests={fullTests}
+                        students={students}
+                        userEmail={getChartUserEmail()!}
+                        highlightTest={testName}
+                        targetSeries={testName.replace(/\s*\d+$/, '').trim()}
+                      />
+                    </div>
                   </div>
 
                   {/* Performance Comparison */}
                   <div className="bg-gradient-to-br from-white to-vh-beige/5 rounded-xl shadow-lg border border-vh-beige/30 hover:shadow-xl transition-all duration-300 p-6">
-                    <h3 className="text-lg font-semibold text-gray-800 mb-6">Performance vs Class</h3>
-                    <PerformanceBarChart
-                      simpleTests={simpleTests}
-                      fullTests={fullTests}
-                      students={students}
-                      userEmail={session.user.email}
-                      testName={testName}
-                    />
+                    <h3 className="text-lg font-semibold text-gray-800 mb-6">
+                      {isAdmin && selectedStudentName ? `${selectedStudentName} vs Class` : 'Performance vs Class'}
+                    </h3>
+                    <div className="h-80 mb-4">
+                      <PerformanceBarChart
+                        simpleTests={simpleTests}
+                        fullTests={fullTests}
+                        students={students}
+                        userEmail={getChartUserEmail()!}
+                        testName={testName}
+                        height={320}
+                      />
+                    </div>
                   </div>
 
                 </div>
