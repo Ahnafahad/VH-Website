@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
-import { BarChart3, BookOpen } from 'lucide-react';
+import { BarChart3, BookOpen, Users } from 'lucide-react';
 import ProtectedRoute from '@/components/ProtectedRoute';
 import { SimpleTestsData, FullTestsData, StudentsData, SystemMetadata } from '@/types/results';
 import SeriesProgressChart from './components/SeriesProgressChart';
@@ -28,6 +28,9 @@ const ResultsDashboard = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [stats, setStats] = useState<DashboardStats | null>(null);
+  const [isAdmin, setIsAdmin] = useState(false);
+  const [selectedStudentId, setSelectedStudentId] = useState<string | null>(null);
+  const [selectedStudentName, setSelectedStudentName] = useState<string>('');
 
   useEffect(() => {
     const fetchData = async () => {
@@ -36,21 +39,31 @@ const ResultsDashboard = () => {
         setError(null);
 
         // Fetch all data files
-        const [simpleResponse, fullResponse, studentsResponse, metadataResponse] = await Promise.all([
+        const [simpleResponse, fullResponse, studentsResponse, metadataResponse, adminCheckResponse] = await Promise.all([
           fetch('/data/simple-tests.json').then(res => res.json()),
           fetch('/data/full-tests.json').then(res => res.json()),
           fetch('/data/students.json').then(res => res.json()),
-          fetch('/data/metadata.json').then(res => res.json())
+          fetch('/data/metadata.json').then(res => res.json()),
+          fetch('/api/auth/check-admin').then(res => res.json())
         ]);
 
         setSimpleTests(simpleResponse);
         setFullTests(fullResponse);
         setStudents(studentsResponse);
         setMetadata(metadataResponse);
+        setIsAdmin(adminCheckResponse.isAdmin);
 
         // Calculate user stats if authenticated
         if (session?.user?.email) {
-          calculateUserStats(simpleResponse, fullResponse, studentsResponse, session.user.email);
+          if (adminCheckResponse.isAdmin) {
+            // Admin: don't show their own stats initially
+            setStats(null);
+            setSelectedStudentId(null);
+            setSelectedStudentName('');
+          } else {
+            // Student: show their own stats
+            calculateUserStats(simpleResponse, fullResponse, studentsResponse, session.user.email);
+          }
         }
 
       } catch (err) {
@@ -63,6 +76,33 @@ const ResultsDashboard = () => {
 
     fetchData();
   }, [session]);
+
+  const handleStudentSelection = (studentId: string) => {
+    if (!simpleTests || !fullTests || !students) return;
+
+    setSelectedStudentId(studentId);
+
+    // Find student name and email
+    const student = Object.values(students.students).find((s: any) => s.id === studentId) as any;
+    setSelectedStudentName(student?.name || '');
+
+    // Calculate stats for selected student
+    if (student?.email) {
+      calculateUserStats(simpleTests, fullTests, students, student.email);
+    }
+  };
+
+  // Get the email to use for charts (selected student for admin, own email for students)
+  const getChartUserEmail = (): string | undefined => {
+    if (!session?.user?.email) return undefined;
+
+    if (isAdmin && selectedStudentId && students) {
+      const selectedStudent = Object.values(students.students).find((s: any) => s.id === selectedStudentId) as any;
+      return selectedStudent?.email;
+    }
+
+    return session.user.email;
+  };
 
   const calculateUserStats = (
     simpleData: SimpleTestsData,
@@ -175,9 +215,38 @@ const ResultsDashboard = () => {
                 <span className="bg-gradient-to-r from-vh-red to-vh-dark-red bg-clip-text text-transparent"> Dashboard</span>
               </h1>
               <p className="text-xl text-gray-600 leading-relaxed">
-                Track your academic progress with beautiful insights and detailed analytics
+                {isAdmin ? 'View any student\'s academic progress with detailed analytics' : 'Track your academic progress with beautiful insights and detailed analytics'}
               </p>
             </div>
+
+            {/* Admin Student Selector */}
+            {isAdmin && students && (
+              <div className="mt-8 p-6 bg-blue-50 border border-blue-200 rounded-xl max-w-2xl mx-auto">
+                <div className="flex items-center gap-3 mb-4">
+                  <Users size={24} className="text-blue-600" />
+                  <h3 className="text-xl font-semibold text-blue-800">Admin: Select Student to View</h3>
+                </div>
+                <select
+                  value={selectedStudentId || ''}
+                  onChange={(e) => handleStudentSelection(e.target.value)}
+                  className="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-lg"
+                >
+                  <option value="">Select a student to view their complete performance...</option>
+                  {Object.values(students.students)
+                    .sort((a: any, b: any) => a.name.localeCompare(b.name))
+                    .map((student: any) => (
+                      <option key={student.id} value={student.id}>
+                        {student.name} (ID: {student.id})
+                      </option>
+                    ))}
+                </select>
+                {selectedStudentName && (
+                  <div className="mt-3 text-sm text-blue-700">
+                    <strong>Viewing:</strong> {selectedStudentName}'s complete test performance across all tests
+                  </div>
+                )}
+              </div>
+            )}
           </div>
 
           {/* Stats Overview */}
@@ -239,13 +308,15 @@ const ResultsDashboard = () => {
               <div className="bg-white rounded-2xl shadow-sm border border-gray-100 hover:shadow-lg transition-all duration-500 p-8">
                 <div className="flex items-center gap-3 mb-6">
                   <div className="w-3 h-3 bg-gradient-to-r from-vh-red to-vh-dark-red rounded-full"></div>
-                  <h3 className="text-xl font-bold text-gray-900">Progress Over Time</h3>
+                  <h3 className="text-xl font-bold text-gray-900">
+                    {isAdmin && selectedStudentName ? `${selectedStudentName}'s Progress Over Time` : 'Progress Over Time'}
+                  </h3>
                 </div>
                 <SeriesProgressChart
                   simpleTests={simpleTests}
                   fullTests={fullTests}
                   students={students}
-                  userEmail={session?.user?.email || ''}
+                  userEmail={getChartUserEmail() || ''}
                 />
               </div>
 
@@ -253,13 +324,15 @@ const ResultsDashboard = () => {
               <div className="bg-white rounded-2xl shadow-sm border border-gray-100 hover:shadow-lg transition-all duration-500 p-8">
                 <div className="flex items-center gap-3 mb-6">
                   <div className="w-3 h-3 bg-gradient-to-r from-vh-red to-vh-dark-red rounded-full"></div>
-                  <h3 className="text-xl font-bold text-gray-900">Performance Breakdown</h3>
+                  <h3 className="text-xl font-bold text-gray-900">
+                    {isAdmin && selectedStudentName ? `${selectedStudentName}'s Performance Breakdown` : 'Performance Breakdown'}
+                  </h3>
                 </div>
                 <PerformanceBarChart
                   simpleTests={simpleTests}
                   fullTests={fullTests}
                   students={students}
-                  userEmail={session?.user?.email || ''}
+                  userEmail={getChartUserEmail() || ''}
                 />
               </div>
 
@@ -280,8 +353,13 @@ const ResultsDashboard = () => {
               {simpleTests && Object.keys(simpleTests.tests).length > 0 ? (
                 <div className="space-y-3">
                   {Object.entries(simpleTests.tests).slice(0, 5).map(([testName, test]) => {
-                    const userResult = session?.user?.email ?
-                      Object.values(students?.students || {}).find(s => s.email === session.user?.email) : null;
+                    // Get the correct user based on admin status
+                    let userResult = null;
+                    if (isAdmin && selectedStudentId) {
+                      userResult = Object.values(students?.students || {}).find((s: any) => s.id === selectedStudentId);
+                    } else if (session?.user?.email) {
+                      userResult = Object.values(students?.students || {}).find((s: any) => s.email === session.user?.email);
+                    }
                     const userId = userResult?.id;
                     const result = userId && test.results ? test.results[userId] : null;
 
@@ -327,8 +405,13 @@ const ResultsDashboard = () => {
               {fullTests && Object.keys(fullTests.tests).length > 0 ? (
                 <div className="space-y-3">
                   {Object.entries(fullTests.tests).slice(0, 5).map(([testName, test]) => {
-                    const userResult = session?.user?.email ?
-                      Object.values(students?.students || {}).find(s => s.email === session.user?.email) : null;
+                    // Get the correct user based on admin status
+                    let userResult = null;
+                    if (isAdmin && selectedStudentId) {
+                      userResult = Object.values(students?.students || {}).find((s: any) => s.id === selectedStudentId);
+                    } else if (session?.user?.email) {
+                      userResult = Object.values(students?.students || {}).find((s: any) => s.email === session.user?.email);
+                    }
                     const userId = userResult?.id;
                     const result = userId && test.results ? test.results[userId] : null;
 
