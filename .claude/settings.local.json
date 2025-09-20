@@ -28,7 +28,8 @@
       "Bash(npm run tsc:*)",
       "Bash(npm run lint)",
       "Bash(find:*)",
-      "Bash(del test-functionality.js test-components.mjs)"
+      "Bash(del test-functionality.js test-components.mjs)",
+      "Bash(tree:*)"
     ],
     "deny": [],
     "ask": []
