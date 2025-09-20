@@ -109,18 +109,34 @@ const VocabularyQuizApp = () => {
 
 Create ${hardCount} hard questions, ${mediumCount} medium questions, and ${easyCount} easy questions.
 
+CRITICAL REQUIREMENTS:
+1. Each sentence must have EXACTLY ONE correct answer that is unambiguous
+2. Create sentences where ONLY the correct word makes logical and grammatical sense
+3. NO duplicate words in word banks - each word must be unique
+4. RANDOMIZE the position of correct answers - do NOT always put correct answer first
+5. Use strong contextual clues that clearly indicate one specific word
+6. Ensure distractors are plausible but clearly incorrect in context
+
 Format rules:
 1. Each sentence should have ONE blank marked with _______
-2. Word bank should have 8-10 words (include correct answer + distractors)
-3. Questions should test contextual understanding
-4. Use formal, academic language
+2. Word bank should have exactly 8 unique words (include correct answer + 7 distractors)
+3. Mix correct answer position randomly throughout the word bank
+4. Questions should test precise contextual understanding
+5. Use formal, academic language
+6. Verify each question has only ONE defensible correct answer
+
+Quality checks before responding:
+- Is the correct answer unambiguous?
+- Are all 8 words in the word bank unique?
+- Is the correct answer NOT always in the first position?
+- Would only one word make complete sense in context?
 
 Respond with JSON in this exact format:
 {
   "questions": [
     {
       "sentence": "Complete sentence with _______",
-      "wordBank": ["word1", "word2", "word3", "word4", "word5", "word6", "word7", "word8"],
+      "wordBank": ["word1", "word2", "correctword", "word4", "word5", "word6", "word7", "word8"],
       "correctAnswer": "correctword",
       "difficulty": "easy|medium|hard"
     }
@@ -176,16 +192,47 @@ DO NOT OUTPUT ANYTHING OTHER THAN VALID JSON.`;
         throw new Error('No valid questions found in AI response');
       }
       
-      const validQuestions = parsedResponse.questions.filter((q: Question) => 
-        q.sentence && q.wordBank && q.correctAnswer && q.difficulty &&
-        Array.isArray(q.wordBank) && q.wordBank.length >= 6
-      );
+      const validQuestions = parsedResponse.questions.filter((q: Question) => {
+        // Basic structure check
+        if (!(q.sentence && q.wordBank && q.correctAnswer && q.difficulty && Array.isArray(q.wordBank))) {
+          return false;
+        }
+
+        // Check for minimum word bank size
+        if (q.wordBank.length < 6) {
+          return false;
+        }
+
+        // Check for duplicate words in word bank
+        const uniqueWords = new Set(q.wordBank.map(word => word.toLowerCase()));
+        if (uniqueWords.size !== q.wordBank.length) {
+          console.warn('Question filtered: Duplicate words found in word bank', q.wordBank);
+          return false;
+        }
+
+        // Check if correct answer is in word bank
+        if (!q.wordBank.includes(q.correctAnswer)) {
+          console.warn('Question filtered: Correct answer not in word bank', q.correctAnswer, q.wordBank);
+          return false;
+        }
+
+        return true;
+      });
       
       if (validQuestions.length === 0) {
         throw new Error('No valid questions generated');
       }
+
+      // Randomize word bank positions to prevent answer bias
+      const randomizedQuestions = validQuestions.map((q: Question) => {
+        const shuffledWordBank = [...q.wordBank].sort(() => Math.random() - 0.5);
+        return {
+          ...q,
+          wordBank: shuffledWordBank
+        };
+      });
       
-      setQuestions(validQuestions.slice(0, quizConfig.questionCount));
+      setQuestions(randomizedQuestions.slice(0, quizConfig.questionCount));
       setCurrentScreen('quiz');
       setTimeRemaining(quizConfig.timePerQuestion);
       
