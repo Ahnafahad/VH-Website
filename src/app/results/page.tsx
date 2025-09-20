@@ -303,7 +303,7 @@ const ResultsDashboard = () => {
 
           {/* Performance Analytics Charts */}
           {stats && simpleTests && (
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
               {/* Series Progress Chart */}
               <div className="bg-white rounded-2xl shadow-sm border border-gray-100 hover:shadow-lg transition-all duration-500 p-8">
                 <div className="flex items-center gap-3 mb-6">
@@ -312,12 +312,14 @@ const ResultsDashboard = () => {
                     {isAdmin && selectedStudentName ? `${selectedStudentName}'s Progress Over Time` : 'Progress Over Time'}
                   </h3>
                 </div>
-                <SeriesProgressChart
-                  simpleTests={simpleTests}
-                  fullTests={fullTests}
-                  students={students}
-                  userEmail={getChartUserEmail() || ''}
-                />
+                <div className="h-80 mb-4">
+                  <SeriesProgressChart
+                    simpleTests={simpleTests}
+                    fullTests={fullTests}
+                    students={students}
+                    userEmail={getChartUserEmail() || ''}
+                  />
+                </div>
               </div>
 
               {/* Performance Bar Chart */}
@@ -328,12 +330,14 @@ const ResultsDashboard = () => {
                     {isAdmin && selectedStudentName ? `${selectedStudentName}'s Performance Breakdown` : 'Performance Breakdown'}
                   </h3>
                 </div>
-                <PerformanceBarChart
-                  simpleTests={simpleTests}
-                  fullTests={fullTests}
-                  students={students}
-                  userEmail={getChartUserEmail() || ''}
-                />
+                <div className="h-80 mb-4">
+                  <PerformanceBarChart
+                    simpleTests={simpleTests}
+                    fullTests={fullTests}
+                    students={students}
+                    userEmail={getChartUserEmail() || ''}
+                  />
+                </div>
               </div>
 
             </div>

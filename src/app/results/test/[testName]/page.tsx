@@ -655,8 +655,8 @@ const TestDetailPage = () => {
               )}
 
               {/* Class Comparison */}
-              <div className="bg-gradient-to-br from-white to-vh-beige/5 rounded-xl shadow-lg border border-vh-beige/30 hover:shadow-xl transition-all duration-300 p-8 mb-8">
-                <h3 className="text-lg font-semibold text-gray-800 mb-8">Class Comparison</h3>
+              <div className="bg-gradient-to-br from-white to-vh-beige/5 rounded-xl shadow-lg border border-vh-beige/30 hover:shadow-xl transition-all duration-300 p-8 mb-8 mt-8">
+                <h3 className="text-lg font-semibold text-gray-800 mb-10">Class Comparison</h3>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                   <div className="text-center p-6 bg-gray-50 rounded-lg">
@@ -724,8 +724,8 @@ const TestDetailPage = () => {
 
               {/* Question Performance Analytics (Sheet 2 Data) */}
               {isFullTest && (currentTest as FullTest).topQuestions && (
-                <div className="bg-gradient-to-br from-white to-vh-beige/5 rounded-xl shadow-lg border border-vh-beige/30 hover:shadow-xl transition-all duration-300 p-6 mt-8">
-                  <h3 className="text-lg font-semibold text-gray-800 mb-6">Question Difficulty Analysis</h3>
+                <div className="bg-gradient-to-br from-white to-vh-beige/5 rounded-xl shadow-lg border border-vh-beige/30 hover:shadow-xl transition-all duration-300 p-8 mt-12">
+                  <h3 className="text-lg font-semibold text-gray-800 mb-8">Question Difficulty Analysis</h3>
                   {userResult && (
                     <div className="bg-gray-50 border border-gray-100 rounded-lg p-4 mb-6">
                       <p className="text-sm font-medium text-gray-700 mb-2">Your Performance Legend:</p>
