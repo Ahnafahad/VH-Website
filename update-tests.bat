@@ -81,13 +81,47 @@ if errorlevel 1 (
 echo ✅ Excel files processed successfully
 
 :: Run access control generator
-echo [6/6] Updating access control...
+echo [6/8] Updating access control...
 node "%SCRIPTS_DIR%\generate-access-control.js"
 if errorlevel 1 (
     echo ❌ WARNING: Access control update failed
     echo This is not critical, but you may want to check it manually
 )
 echo ✅ Access control updated
+
+:: Git operations - Add updated files
+echo [7/8] Adding updated files to git...
+git add public/data/*.json
+if errorlevel 1 (
+    echo ❌ WARNING: Git add failed
+    echo You may need to commit and push manually
+) else (
+    echo ✅ Files added to git staging
+)
+
+:: Git operations - Commit and push
+echo [8/8] Committing and pushing to GitHub...
+git status
+set /p "commit_message=Enter commit message (or press Enter for default): "
+if "%commit_message%"=="" (
+    set "commit_message=Update test data with latest Excel files"
+)
+
+git commit -m "%commit_message%"
+if errorlevel 1 (
+    echo ❌ WARNING: Git commit failed - possibly no changes to commit
+) else (
+    echo ✅ Changes committed successfully
+
+    echo Pushing to GitHub...
+    git push
+    if errorlevel 1 (
+        echo ❌ WARNING: Git push failed
+        echo You may need to push manually or check your git configuration
+    ) else (
+        echo ✅ Changes pushed to GitHub successfully
+    )
+)
 
 :: Clean up temporary Results directory (optional)
 echo.

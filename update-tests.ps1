@@ -105,7 +105,7 @@ try {
     Write-Status "Excel files processed successfully" "SUCCESS"
 
     # Update access control
-    Write-Host "[6/6] Updating access control..." -ForegroundColor Yellow
+    Write-Host "[6/8] Updating access control..." -ForegroundColor Yellow
     Push-Location $ProjectRoot
     $accessResult = & node "$ScriptsDir/generate-access-control.js" 2>&1
     $accessExitCode = $LASTEXITCODE
@@ -116,6 +116,59 @@ try {
     } else {
         Write-Status "Access control updated" "SUCCESS"
     }
+
+    # Git operations - Add updated files
+    Write-Host "[7/8] Adding updated files to git..." -ForegroundColor Yellow
+    Push-Location $ProjectRoot
+    $gitAddResult = & git add "public/data/*.json" 2>&1
+    $gitAddExitCode = $LASTEXITCODE
+    Pop-Location
+
+    if ($gitAddExitCode -ne 0) {
+        Write-Status "Git add failed - you may need to commit manually" "WARNING"
+    } else {
+        Write-Status "Files added to git staging" "SUCCESS"
+    }
+
+    # Git operations - Commit and push
+    Write-Host "[8/8] Committing and pushing to GitHub..." -ForegroundColor Yellow
+    Push-Location $ProjectRoot
+
+    # Show git status
+    & git status
+
+    # Get commit message
+    if (-not $Silent) {
+        $commitMessage = Read-Host "Enter commit message (or press Enter for default)"
+        if ([string]::IsNullOrWhiteSpace($commitMessage)) {
+            $commitMessage = "Update test data with latest Excel files"
+        }
+    } else {
+        $commitMessage = "Update test data with latest Excel files"
+    }
+
+    # Commit changes
+    $gitCommitResult = & git commit -m $commitMessage 2>&1
+    $gitCommitExitCode = $LASTEXITCODE
+
+    if ($gitCommitExitCode -ne 0) {
+        Write-Status "Git commit failed - possibly no changes to commit" "WARNING"
+    } else {
+        Write-Status "Changes committed successfully" "SUCCESS"
+
+        # Push to GitHub
+        Write-Host "Pushing to GitHub..." -ForegroundColor Gray
+        $gitPushResult = & git push 2>&1
+        $gitPushExitCode = $LASTEXITCODE
+
+        if ($gitPushExitCode -ne 0) {
+            Write-Status "Git push failed - you may need to push manually" "WARNING"
+        } else {
+            Write-Status "Changes pushed to GitHub successfully" "SUCCESS"
+        }
+    }
+
+    Pop-Location
 
     # Cleanup
     if (-not $SkipCleanup) {

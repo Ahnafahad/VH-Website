@@ -37,7 +37,8 @@ This guide explains how to update test data in the VH Website system when new Ex
 4. **Copy Files**: Moves Excel files to processing location
 5. **Process Excel**: Converts Excel files to JSON format
 6. **Update Access Control**: Refreshes user permissions
-7. **Cleanup**: Removes temporary files
+7. **Git Operations**: Adds, commits, and pushes changes to GitHub
+8. **Cleanup**: Removes temporary files
 
 ## Updated Files
 
@@ -79,6 +80,12 @@ After running the scripts, these files will be updated:
 - This is usually non-critical
 - Check `access-control.json` file permissions
 - Manually run `node scripts/generate-access-control.js`
+
+#### "Git add/commit/push failed"
+- Check if you're in a git repository
+- Ensure you have write permissions
+- Verify git credentials are configured
+- May indicate no changes to commit (not an error)
 
 ### Getting Help
 1. Check the console output for detailed error messages
@@ -126,6 +133,8 @@ schtasks /create /tn "VH Website Test Update" /tr "C:\path\to\update-tests.bat" 
 3. **Timing**: Update during low-traffic periods
 4. **Verification**: Check website functionality after updates
 5. **Documentation**: Keep track of changes and versions
+6. **Git Workflow**: Scripts automatically commit and push changes
+7. **Commit Messages**: Provide descriptive commit messages when prompted
 
 ## Security Notes
 
