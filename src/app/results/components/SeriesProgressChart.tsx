@@ -42,6 +42,42 @@ const SeriesProgressChart: React.FC<SeriesProgressChartProps> = ({
   title = "Series Progression",
   height = 300
 }) => {
+  // Helper function to extract score from result (handles both simple and full tests)
+  const getScore = (result: any): number => {
+    // Full test: use totalMarks
+    if (result.totalMarks !== undefined) {
+      return result.totalMarks;
+    }
+    // Simple test: use score
+    return result.score || 0;
+  };
+
+  // Helper function to calculate accuracy from result (handles both simple and full tests)
+  const getAccuracy = (result: any): number => {
+    // If analytics.accuracy exists, use it
+    if (result.analytics?.accuracy !== undefined) {
+      return result.analytics.accuracy;
+    }
+
+    // Full test: calculate from sections
+    if (result.sections && typeof result.sections === 'object') {
+      const sections = Object.values(result.sections) as any[];
+      const totalCorrect = sections.reduce((sum, section) => sum + (section.correct || 0), 0);
+      const totalWrong = sections.reduce((sum, section) => sum + (section.wrong || 0), 0);
+      const totalAttempted = totalCorrect + totalWrong;
+
+      return totalAttempted > 0 ? (totalCorrect / totalAttempted) * 100 : 0;
+    }
+
+    // Simple test: calculate from correct/wrong
+    if (result.correct !== undefined && result.wrong !== undefined) {
+      const totalAttempted = result.correct + result.wrong;
+      return totalAttempted > 0 ? (result.correct / totalAttempted) * 100 : 0;
+    }
+
+    return 0;
+  };
+
   // Process data to create series-based progression (group by test name base)
   const processProgressionData = (): SeriesDataPoint[] => {
     if (!simpleTests?.tests || !students?.students) {
@@ -82,8 +118,8 @@ const SeriesProgressChart: React.FC<SeriesProgressChartProps> = ({
         if (tests && tests.length > 1) {
           tests.forEach(({ testName, test }) => {
             const results = Object.values(test.results || {}) as any[];
-            const totalScore = results.reduce((sum: number, result: any) => sum + (result.score || 0), 0);
-            const totalAccuracy = results.reduce((sum: number, result: any) => sum + (result.analytics?.accuracy || 0), 0);
+            const totalScore = results.reduce((sum: number, result: any) => sum + getScore(result), 0);
+            const totalAccuracy = results.reduce((sum: number, result: any) => sum + getAccuracy(result), 0);
 
             seriesData.push({
               testName,
@@ -140,9 +176,9 @@ const SeriesProgressChart: React.FC<SeriesProgressChartProps> = ({
             const result = test.results?.[userId] || {};
             seriesData.push({
               testName,
-              score: result.score || 0,
+              score: getScore(result),
               rank: result.rank || 0,
-              accuracy: result.analytics?.accuracy || 0
+              accuracy: getAccuracy(result)
             });
           });
         }
