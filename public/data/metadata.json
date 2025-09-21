@@ -1,12 +1,12 @@
 {
   "version": "1.0.0",
-  "lastProcessed": "2025-09-21T08:20:09.573Z",
+  "lastProcessed": "2025-09-21T08:38:08.383Z",
   "totalStudents": 24,
   "totalSimpleTests": 6,
-  "totalFullTests": 0,
+  "totalFullTests": 1,
   "processingStats": {
-    "successfulTests": 1,
-    "failedTests": 1,
+    "successfulTests": 2,
+    "failedTests": 0,
     "warnings": []
   }
 }
