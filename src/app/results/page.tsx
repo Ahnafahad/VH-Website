@@ -356,7 +356,7 @@ const ResultsDashboard = () => {
 
               {simpleTests && Object.keys(simpleTests.tests).length > 0 ? (
                 <div className="space-y-3">
-                  {Object.entries(simpleTests.tests).slice(0, 5).map(([testName, test]) => {
+                  {Object.entries(simpleTests.tests).map(([testName, test]) => {
                     // Get the correct user based on admin status
                     let userResult = null;
                     if (isAdmin && selectedStudentId) {
@@ -408,7 +408,7 @@ const ResultsDashboard = () => {
 
               {fullTests && Object.keys(fullTests.tests).length > 0 ? (
                 <div className="space-y-3">
-                  {Object.entries(fullTests.tests).slice(0, 5).map(([testName, test]) => {
+                  {Object.entries(fullTests.tests).map(([testName, test]) => {
                     // Get the correct user based on admin status
                     let userResult = null;
                     if (isAdmin && selectedStudentId) {
