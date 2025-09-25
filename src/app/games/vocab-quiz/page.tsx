@@ -223,16 +223,24 @@ DO NOT OUTPUT ANYTHING OTHER THAN VALID JSON.`;
         throw new Error('No valid questions generated');
       }
 
+      // Ensure we have exactly the requested number of questions
+      let finalQuestions = validQuestions;
+      if (validQuestions.length < quizConfig.questionCount) {
+        console.warn(`AI generated ${validQuestions.length} questions but ${quizConfig.questionCount} were requested. Using all available.`);
+      } else if (validQuestions.length > quizConfig.questionCount) {
+        finalQuestions = validQuestions.slice(0, quizConfig.questionCount);
+      }
+
       // Randomize word bank positions to prevent answer bias
-      const randomizedQuestions = validQuestions.map((q: Question) => {
+      const randomizedQuestions = finalQuestions.map((q: Question) => {
         const shuffledWordBank = [...q.wordBank].sort(() => Math.random() - 0.5);
         return {
           ...q,
           wordBank: shuffledWordBank
         };
       });
-      
-      setQuestions(randomizedQuestions.slice(0, quizConfig.questionCount));
+
+      setQuestions(randomizedQuestions);
       setCurrentScreen('quiz');
       setTimeRemaining(quizConfig.timePerQuestion);
       
