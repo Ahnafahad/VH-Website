@@ -96,9 +96,9 @@ if not "%CD%"=="%PROJECT_ROOT%" (
     exit /b 1
 )
 
-call :log "INFO: Executing: node %SCRIPTS_DIR%\excel-processor.js"
+call :log "INFO: Executing: node %SCRIPTS_DIR%\process-results.js"
 call :log "INFO: Excel processor started at %time%"
-node "%SCRIPTS_DIR%\excel-processor.js"
+node "%SCRIPTS_DIR%\process-results.js"
 set "EXCEL_RESULT=%ERRORLEVEL%"
 call :log "INFO: Excel processor finished at %time% with exit code: %EXCEL_RESULT%"
 if %EXCEL_RESULT% neq 0 (
