@@ -37,6 +37,7 @@ export async function GET() {
               difficulty: '$difficulty',
               operations: '$operations',
               playedAt: '$playedAt',
+              timeLimit: '$timeLimit',
               isSuspicious: '$isSuspicious'
             }
           }

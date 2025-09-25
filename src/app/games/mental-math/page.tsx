@@ -569,7 +569,7 @@ const MentalMathApp = () => {
                             )}
                           </div>
                           <div className="text-sm text-gray-600">
-                            {entry.difficulty} • {entry.operations?.join(', ')} • {entry.accuracy}% accuracy
+                            {entry.difficulty} • {entry.operations?.join(', ')} • {entry.accuracy}% accuracy • {(entry as any).timeLimit}min game
                           </div>
                         </div>
                       </div>
