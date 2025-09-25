@@ -223,56 +223,67 @@ const MentalMathApp = () => {
     }
   }, [difficulty]);
 
-  // Calculate points based on various factors
-  const calculatePoints = useCallback((isCorrect: boolean, isSkipped = false, questionOperation: string) => {
+  // Calculate points based on various factors including time penalties
+  const calculatePoints = useCallback((isCorrect: boolean, isSkipped = false, questionOperation: string, timeOverage = 0) => {
     const basePoints = {
       easy: 10,
       medium: 15,
       hard: 25,
       extreme: 40
     };
-    
+
     const difficultyMultiplier = {
       easy: 1,
       medium: 1.5,
       hard: 2,
       extreme: 3
     };
-    
+
     const operationBonus: { [key: string]: number } = {
       addition: 1,
       subtraction: 1.2,
       multiplication: 1.5,
       division: 1.8
     };
-    
+
     // Multi-operation bonus
     const multiOpBonus = selectedOperations.length > 1 ? 1.3 : 1;
-    
+
     if (isSkipped) {
       return -Math.floor(basePoints[difficulty] * 0.3); // 30% penalty for skipping
     }
-    
+
     if (isCorrect) {
       let points = basePoints[difficulty];
       points *= difficultyMultiplier[difficulty];
       points *= operationBonus[questionOperation];
       points *= multiOpBonus;
-      
-      // Time bonus: faster answers get bonus points
-      const timeSpent = Date.now() - (gameStartTime || Date.now());
-      const avgTimePerQuestion = timeSpent / (questionsAnswered + 1);
-      if (avgTimePerQuestion < 3000) { // Less than 3 seconds
-        points *= 1.5;
-      } else if (avgTimePerQuestion < 5000) { // Less than 5 seconds
-        points *= 1.2;
+
+      // Time bonus for fast answers (within allocated time)
+      if (timeOverage <= 0) {
+        const timeSpent = Date.now() - (gameStartTime || Date.now());
+        const avgTimePerQuestion = timeSpent / (questionsAnswered + 1);
+        if (avgTimePerQuestion < 3000) { // Less than 3 seconds
+          points *= 1.5;
+        } else if (avgTimePerQuestion < 5000) { // Less than 5 seconds
+          points *= 1.2;
+        }
       }
-      
+
+      // Exponential time penalty for overtime
+      if (timeOverage > 0) {
+        const allocatedTime = getQuestionTimeLimit(questionOperation, difficulty);
+        // Penalty factor increases exponentially - shorter questions penalize more severely
+        const penaltyRate = Math.max(0.1, 1 / Math.sqrt(allocatedTime)); // Inverse square root for exponential effect
+        const penaltyMultiplier = Math.pow(0.5, timeOverage * penaltyRate);
+        points *= Math.max(0.1, penaltyMultiplier); // Minimum 10% of original points
+      }
+
       return Math.floor(points);
     } else {
       return -Math.floor(basePoints[difficulty] * 0.5); // 50% penalty for wrong answer
     }
-  }, [difficulty, selectedOperations.length, questionsAnswered, gameStartTime]);
+  }, [difficulty, selectedOperations.length, questionsAnswered, gameStartTime, getQuestionTimeLimit]);
 
   // Generate new question
   const generateNewQuestion = useCallback(() => {
@@ -384,6 +395,10 @@ const MentalMathApp = () => {
     const responseTime = (Date.now() - questionStartTime) / 1000; // Convert to seconds
     const isCorrect = parseInt(userAnswer) === currentQuestion.answer;
 
+    // Calculate time overage (negative questionTimeRemaining means overtime)
+    const allocatedTime = getQuestionTimeLimit(currentQuestion.operation, difficulty);
+    const timeOverage = Math.max(0, allocatedTime - questionTimeRemaining);
+
     // Run calculator detection
     const isSuspicious = detectCalculatorUse(responseTime, currentQuestion.operation, difficulty);
 
@@ -391,7 +406,7 @@ const MentalMathApp = () => {
     setResponseTimes(prev => [...prev, responseTime]);
     setSuspiciousResponses(prev => [...prev, isSuspicious]);
 
-    const points = calculatePoints(isCorrect, false, currentQuestion.operation);
+    const points = calculatePoints(isCorrect, false, currentQuestion.operation, timeOverage);
 
     setScore(prev => prev + points);
     setQuestionsAnswered(prev => prev + 1);
@@ -412,7 +427,7 @@ const MentalMathApp = () => {
     setResponseTimes(prev => [...prev, responseTime]);
     setSuspiciousResponses(prev => [...prev, false]);
 
-    const points = calculatePoints(false, true, currentQuestion.operation);
+    const points = calculatePoints(false, true, currentQuestion.operation, 0); // No time overage for skips
     setScore(prev => prev + points);
     setQuestionsAnswered(prev => prev + 1);
     setQuestionsSkipped(prev => prev + 1);
@@ -449,16 +464,13 @@ const MentalMathApp = () => {
 
   // Per-question timer effect
   useEffect(() => {
-    if (gameState === 'playing' && questionTimeRemaining > 0) {
+    if (gameState === 'playing') {
       const timer = setTimeout(() => {
         setQuestionTimeRemaining(prev => prev - 1);
       }, 1000);
       return () => clearTimeout(timer);
-    } else if (gameState === 'playing' && questionTimeRemaining === 0) {
-      // Auto-skip question when time runs out
-      skipQuestion();
     }
-  }, [gameState, questionTimeRemaining, skipQuestion]);
+  }, [gameState, questionTimeRemaining]);
 
   // Save game when finished
   useEffect(() => {
@@ -815,10 +827,28 @@ const MentalMathApp = () => {
                     {formatTime(timeRemaining)}
                   </span>
                 </div>
-                <div className="flex items-center gap-2 bg-orange-100 px-3 py-1 rounded-full border border-orange-300">
-                  <Clock size={16} className={questionTimeRemaining <= 3 ? 'text-red-500' : 'text-orange-600'} />
-                  <span className={`font-mono text-lg font-bold ${questionTimeRemaining <= 3 ? 'text-red-500 animate-pulse' : 'text-orange-600'}`}>
-                    {questionTimeRemaining}s
+                <div className={`flex items-center gap-2 px-3 py-1 rounded-full border ${
+                  questionTimeRemaining < 0
+                    ? 'bg-red-100 border-red-300'
+                    : questionTimeRemaining <= 3
+                      ? 'bg-yellow-100 border-yellow-300'
+                      : 'bg-orange-100 border-orange-300'
+                }`}>
+                  <Clock size={16} className={
+                    questionTimeRemaining < 0
+                      ? 'text-red-600'
+                      : questionTimeRemaining <= 3
+                        ? 'text-yellow-600'
+                        : 'text-orange-600'
+                  } />
+                  <span className={`font-mono text-lg font-bold ${
+                    questionTimeRemaining < 0
+                      ? 'text-red-600 animate-pulse'
+                      : questionTimeRemaining <= 3
+                        ? 'text-yellow-600 animate-pulse'
+                        : 'text-orange-600'
+                  }`}>
+                    {questionTimeRemaining < 0 ? `+${Math.abs(questionTimeRemaining)}s` : `${questionTimeRemaining}s`}
                   </span>
                 </div>
               </div>
@@ -884,6 +914,18 @@ const MentalMathApp = () => {
               />
             </div>
           </div>
+
+          {/* Overtime warning */}
+          {questionTimeRemaining < 0 && (
+            <div className="bg-red-50 border border-red-200 rounded-2xl p-4 mb-6 text-center">
+              <div className="text-red-800 font-bold mb-2">⏱️ Time Over!</div>
+              <div className="text-red-700 text-sm">
+                You've exceeded the allocated time by <span className="font-bold">{Math.abs(questionTimeRemaining)} seconds</span>
+                <br />
+                Your points for this question will be reduced exponentially based on overtime.
+              </div>
+            </div>
+          )}
 
           {/* Skip warning */}
           {skipsRemaining === 0 && timePenalty > 0 && (
