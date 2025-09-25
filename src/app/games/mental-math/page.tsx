@@ -67,6 +67,10 @@ const MentalMathApp = () => {
   const [responseTimes, setResponseTimes] = useState<number[]>([]);
   const [suspiciousResponses, setSuspiciousResponses] = useState<boolean[]>([]);
 
+  // Skip limit system
+  const [skipsRemaining, setSkipsRemaining] = useState(3);
+  const [timePenalty, setTimePenalty] = useState(0); // Additional seconds added to question timers
+
   const operationLabels: { [key: string]: string } = {
     addition: 'Addition (+)',
     subtraction: 'Subtraction (−)',
@@ -92,8 +96,9 @@ const MentalMathApp = () => {
       division: { easy: 10, medium: 15, hard: 25, extreme: 30 }
     };
 
-    return baseTimes[operation as keyof typeof baseTimes]?.[difficulty as keyof typeof baseTimes.addition] || 15;
-  }, []);
+    const baseTime = baseTimes[operation as keyof typeof baseTimes]?.[difficulty as keyof typeof baseTimes.addition] || 15;
+    return baseTime + timePenalty; // Add progressive time penalty for excessive skips
+  }, [timePenalty]);
 
   // Calculator detection algorithm
   const detectCalculatorUse = (responseTime: number, operation: string, difficulty: string): boolean => {
@@ -317,6 +322,10 @@ const MentalMathApp = () => {
     setResponseTimes([]);
     setSuspiciousResponses([]);
 
+    // Reset skip system
+    setSkipsRemaining(3);
+    setTimePenalty(0);
+
     generateNewQuestion();
   };
 
@@ -407,8 +416,17 @@ const MentalMathApp = () => {
     setScore(prev => prev + points);
     setQuestionsAnswered(prev => prev + 1);
     setQuestionsSkipped(prev => prev + 1);
+
+    // Handle skip limit and progressive penalties
+    if (skipsRemaining > 0) {
+      setSkipsRemaining(prev => prev - 1);
+    } else {
+      // Progressive time penalty: +60 seconds for each skip beyond the limit
+      setTimePenalty(prev => prev + 60);
+    }
+
     generateNewQuestion();
-  }, [currentQuestion, questionStartTime, calculatePoints, generateNewQuestion]);
+  }, [currentQuestion, questionStartTime, calculatePoints, generateNewQuestion, skipsRemaining]);
 
   // Handle enter key press
   const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -813,6 +831,16 @@ const MentalMathApp = () => {
                   <Zap size={20} className="text-green-600" />
                   <span className="font-medium">{questionsAnswered} solved</span>
                 </div>
+                <div className={`flex items-center gap-2 px-3 py-1 rounded-full border ${
+                  skipsRemaining > 0
+                    ? 'bg-blue-100 border-blue-300 text-blue-700'
+                    : 'bg-red-100 border-red-300 text-red-700'
+                }`}>
+                  <SkipForward size={16} />
+                  <span className="font-bold text-sm">
+                    {skipsRemaining > 0 ? `${skipsRemaining} skips left` : `+${timePenalty}s penalty`}
+                  </span>
+                </div>
               </div>
             </div>
             
@@ -857,6 +885,18 @@ const MentalMathApp = () => {
             </div>
           </div>
 
+          {/* Skip warning */}
+          {skipsRemaining === 0 && timePenalty > 0 && (
+            <div className="bg-red-50 border border-red-200 rounded-2xl p-4 mb-6 text-center">
+              <div className="text-red-800 font-bold mb-2">⚠️ No Free Skips Remaining</div>
+              <div className="text-red-700 text-sm">
+                Each skip now adds +60 seconds to all future questions in this game.
+                <br />
+                Current penalty: <span className="font-bold">+{timePenalty} seconds</span>
+              </div>
+            </div>
+          )}
+
           {/* Action buttons */}
           <div className="flex flex-col sm:flex-row gap-4">
             <button
@@ -869,10 +909,22 @@ const MentalMathApp = () => {
             </button>
             <button
               onClick={skipQuestion}
-              className="group bg-gradient-to-r from-orange-500 to-red-500 text-white py-4 px-8 rounded-2xl hover:from-orange-600 hover:to-red-600 transition-all duration-300 flex items-center justify-center gap-3 font-bold text-lg shadow-xl hover:shadow-orange-500/25 transform hover:-translate-y-1"
+              className={`group py-4 px-8 rounded-2xl transition-all duration-300 flex items-center justify-center gap-3 font-bold text-lg shadow-xl transform hover:-translate-y-1 ${
+                skipsRemaining > 0
+                  ? 'bg-gradient-to-r from-orange-500 to-red-500 text-white hover:from-orange-600 hover:to-red-600 hover:shadow-orange-500/25'
+                  : 'bg-gradient-to-r from-red-600 to-red-700 text-white hover:from-red-700 hover:to-red-800 hover:shadow-red-600/25'
+              }`}
+              title={
+                skipsRemaining > 0
+                  ? `${skipsRemaining} free skips remaining`
+                  : `Skip will add +60s penalty to all future questions`
+              }
             >
               <SkipForward size={20} />
-              Skip (-pts)
+              {skipsRemaining > 0
+                ? `Skip (${skipsRemaining} left)`
+                : 'Skip (+60s penalty)'
+              }
             </button>
           </div>
         </div>
