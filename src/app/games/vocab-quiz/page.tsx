@@ -300,10 +300,19 @@ Respond with JSON:
     const newAnswers = [...userAnswers];
     newAnswers[currentQuestionIndex] = selectedWord;
     setUserAnswers(newAnswers);
-    
-    setTimeout(() => {
-      handleNextQuestion();
-    }, 500);
+
+    // Check if this is the last question
+    if (currentQuestionIndex === questions.length - 1) {
+      // For the last question, finish quiz immediately with the updated answers
+      setTimeout(() => {
+        finishQuizWithAnswers(newAnswers);
+      }, 500);
+    } else {
+      // For other questions, proceed normally
+      setTimeout(() => {
+        handleNextQuestion();
+      }, 500);
+    }
   };
 
   // Save quiz result to database
@@ -335,12 +344,12 @@ Respond with JSON:
     }
   }, [selectedSections]);
 
-  // Finish quiz and calculate results
-  const finishQuiz = useCallback(() => {
+  // Finish quiz with specific answers array (used for last question handling)
+  const finishQuizWithAnswers = useCallback((answersArray: string[]) => {
     const results = questions.map((q, index) => ({
       ...q,
-      userAnswer: userAnswers[index],
-      isCorrect: userAnswers[index] === q.correctAnswer
+      userAnswer: answersArray[index],
+      isCorrect: answersArray[index] === q.correctAnswer
     }));
 
     const correctCount = results.filter(r => r.isCorrect).length;
@@ -359,7 +368,12 @@ Respond with JSON:
     saveQuizResult(quizResult);
     generateExplanations(results);
     setCurrentScreen('results');
-  }, [questions, userAnswers, generateExplanations, saveQuizResult]);
+  }, [questions, generateExplanations, saveQuizResult]);
+
+  // Finish quiz and calculate results (fallback for timeout scenarios)
+  const finishQuiz = useCallback(() => {
+    finishQuizWithAnswers(userAnswers);
+  }, [userAnswers, finishQuizWithAnswers]);
 
   // Handle next question
   const handleNextQuestion = useCallback(() => {

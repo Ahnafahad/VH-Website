@@ -61,6 +61,12 @@ const MentalMathApp = () => {
   const [leaderboard, setLeaderboard] = useState<{ individual: LeaderboardEntry[], accumulated: AccumulatedScore[] }>({ individual: [], accumulated: [] });
   const [isLoading, setIsLoading] = useState(false);
 
+  // Anti-cheat system state
+  const [questionStartTime, setQuestionStartTime] = useState<number | null>(null);
+  const [questionTimeRemaining, setQuestionTimeRemaining] = useState(0);
+  const [responseTimes, setResponseTimes] = useState<number[]>([]);
+  const [suspiciousResponses, setSuspiciousResponses] = useState<boolean[]>([]);
+
   const operationLabels: { [key: string]: string } = {
     addition: 'Addition (+)',
     subtraction: 'Subtraction (−)',
@@ -76,6 +82,39 @@ const MentalMathApp = () => {
     { value: 3, label: '3 minutes' },
     { value: 5, label: '5 minutes' }
   ];
+
+  // Calculate dynamic time per question based on operation and difficulty
+  const getQuestionTimeLimit = useCallback((operation: string, difficulty: string): number => {
+    const baseTimes = {
+      addition: { easy: 5, medium: 8, hard: 12, extreme: 18 },
+      subtraction: { easy: 6, medium: 10, hard: 15, extreme: 20 },
+      multiplication: { easy: 8, medium: 12, hard: 20, extreme: 25 },
+      division: { easy: 10, medium: 15, hard: 25, extreme: 30 }
+    };
+
+    return baseTimes[operation as keyof typeof baseTimes]?.[difficulty as keyof typeof baseTimes.addition] || 15;
+  }, []);
+
+  // Calculator detection algorithm
+  const detectCalculatorUse = (responseTime: number, operation: string, difficulty: string): boolean => {
+    const expectedTime = getQuestionTimeLimit(operation, difficulty);
+    const minHumanTime = Math.max(2, expectedTime * 0.1); // Minimum human response time
+
+    // Suspicious if too fast (likely calculator) or consistently at exact intervals
+    if (responseTime < minHumanTime) return true;
+
+    // Check for pattern in response times (calculator users often have consistent timing)
+    if (responseTimes.length >= 3) {
+      const recentTimes = responseTimes.slice(-3);
+      const avgTime = recentTimes.reduce((a, b) => a + b, 0) / recentTimes.length;
+      const variance = recentTimes.reduce((acc, time) => acc + Math.pow(time - avgTime, 2), 0) / recentTimes.length;
+
+      // Very low variance in response times is suspicious
+      if (variance < 0.5 && responseTime < expectedTime * 0.3) return true;
+    }
+
+    return false;
+  };
 
   // Handle operation selection (multiple)
   const toggleOperation = (operation: string) => {
@@ -234,29 +273,34 @@ const MentalMathApp = () => {
   const generateNewQuestion = useCallback(() => {
     // Check if question is unique
     const isQuestionUnique = (newQuestion: Question) => {
-      return !previousQuestions.some(prev => 
-        prev.num1 === newQuestion.num1 && 
-        prev.num2 === newQuestion.num2 && 
+      return !previousQuestions.some(prev =>
+        prev.num1 === newQuestion.num1 &&
+        prev.num2 === newQuestion.num2 &&
         prev.operation === newQuestion.operation
       );
     };
-    
+
     let attempts = 0;
     let question;
-    
+
     do {
       // Randomly select from chosen operations
       const randomOperation = selectedOperations[Math.floor(Math.random() * selectedOperations.length)];
       question = generateNumbers(randomOperation);
       attempts++;
     } while (question && !isQuestionUnique(question) && attempts < 50); // Prevent infinite loop
-    
+
     if (question) {
       setCurrentQuestion(question);
       setPreviousQuestions(prev => [...prev.slice(-20), question]); // Keep last 20 questions
+
+      // Set dynamic timer for this specific question
+      const timeLimit = getQuestionTimeLimit(question.operation, difficulty);
+      setQuestionTimeRemaining(timeLimit);
+      setQuestionStartTime(Date.now());
     }
     setUserAnswer('');
-  }, [generateNumbers, selectedOperations, previousQuestions]);
+  }, [generateNumbers, selectedOperations, previousQuestions, difficulty, getQuestionTimeLimit]);
 
   // Start the game
   const startGame = () => {
@@ -268,6 +312,11 @@ const MentalMathApp = () => {
     setTimeRemaining(timeLimit * 60); // Convert minutes to seconds
     setGameStartTime(Date.now());
     setPreviousQuestions([]);
+
+    // Reset anti-cheat tracking
+    setResponseTimes([]);
+    setSuspiciousResponses([]);
+
     generateNewQuestion();
   };
 
@@ -321,29 +370,45 @@ const MentalMathApp = () => {
 
   // Handle answer submission
   const submitAnswer = () => {
-    if (userAnswer === '' || !currentQuestion) return;
-    
+    if (userAnswer === '' || !currentQuestion || !questionStartTime) return;
+
+    const responseTime = (Date.now() - questionStartTime) / 1000; // Convert to seconds
     const isCorrect = parseInt(userAnswer) === currentQuestion.answer;
+
+    // Run calculator detection
+    const isSuspicious = detectCalculatorUse(responseTime, currentQuestion.operation, difficulty);
+
+    // Update tracking arrays
+    setResponseTimes(prev => [...prev, responseTime]);
+    setSuspiciousResponses(prev => [...prev, isSuspicious]);
+
     const points = calculatePoints(isCorrect, false, currentQuestion.operation);
-    
+
     setScore(prev => prev + points);
     setQuestionsAnswered(prev => prev + 1);
     if (isCorrect) {
       setQuestionsCorrect(prev => prev + 1);
     }
-    
+
     generateNewQuestion();
   };
 
   // Skip question
-  const skipQuestion = () => {
-    if (!currentQuestion) return;
+  const skipQuestion = useCallback(() => {
+    if (!currentQuestion || !questionStartTime) return;
+
+    const responseTime = (Date.now() - questionStartTime) / 1000;
+
+    // Mark skipped questions as not suspicious (user chose to skip rather than cheat)
+    setResponseTimes(prev => [...prev, responseTime]);
+    setSuspiciousResponses(prev => [...prev, false]);
+
     const points = calculatePoints(false, true, currentQuestion.operation);
     setScore(prev => prev + points);
     setQuestionsAnswered(prev => prev + 1);
     setQuestionsSkipped(prev => prev + 1);
     generateNewQuestion();
-  };
+  }, [currentQuestion, questionStartTime, calculatePoints, generateNewQuestion]);
 
   // Handle enter key press
   const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -352,7 +417,7 @@ const MentalMathApp = () => {
     }
   };
 
-  // Timer effect
+  // Main game timer effect
   useEffect(() => {
     if (gameState === 'playing' && timeRemaining > 0) {
       const timer = setTimeout(() => {
@@ -364,11 +429,27 @@ const MentalMathApp = () => {
     }
   }, [gameState, timeRemaining]);
 
+  // Per-question timer effect
+  useEffect(() => {
+    if (gameState === 'playing' && questionTimeRemaining > 0) {
+      const timer = setTimeout(() => {
+        setQuestionTimeRemaining(prev => prev - 1);
+      }, 1000);
+      return () => clearTimeout(timer);
+    } else if (gameState === 'playing' && questionTimeRemaining === 0) {
+      // Auto-skip question when time runs out
+      skipQuestion();
+    }
+  }, [gameState, questionTimeRemaining, skipQuestion]);
+
   // Save game when finished
   useEffect(() => {
     if (gameState === 'finished' && questionsAnswered > 0) {
       const accuracy = Math.round((questionsCorrect / questionsAnswered) * 100);
-      const gameResult: GameResult = {
+      const suspiciousCount = suspiciousResponses.filter(Boolean).length;
+      const suspiciousPercentage = (suspiciousCount / questionsAnswered) * 100;
+
+      const gameResult: GameResult & { isSuspicious?: boolean } = {
         score,
         questionsCorrect,
         questionsAnswered,
@@ -376,11 +457,12 @@ const MentalMathApp = () => {
         difficulty,
         operations: selectedOperations,
         timeLimit,
-        playedAt: new Date()
+        playedAt: new Date(),
+        isSuspicious: suspiciousPercentage > 30 // Mark as suspicious if >30% of responses were flagged
       };
       saveGameResult(gameResult);
     }
-  }, [gameState, score, questionsCorrect, questionsAnswered, difficulty, selectedOperations, timeLimit, saveGameResult]);
+  }, [gameState, score, questionsCorrect, questionsAnswered, difficulty, selectedOperations, timeLimit, suspiciousResponses, saveGameResult]);
 
   // Format time display
   const formatTime = (seconds: number) => {
@@ -447,8 +529,15 @@ const MentalMathApp = () => {
                         }`}>
                           {index + 1}
                         </span>
-                        <div>
-                          <div className="font-semibold text-gray-800">{entry.playerName || 'Anonymous'}</div>
+                        <div className="flex-1">
+                          <div className="flex items-center gap-2">
+                            <span className="font-semibold text-gray-800">{entry.playerName || 'Anonymous'}</span>
+                            {(entry as any).isSuspicious && (
+                              <span className="bg-red-500 text-white text-xs px-2 py-1 rounded-full font-bold flex items-center gap-1" title="Suspicious calculator usage detected">
+                                C
+                              </span>
+                            )}
+                          </div>
                           <div className="text-sm text-gray-600">
                             {entry.difficulty} • {entry.operations?.join(', ')} • {entry.accuracy}% accuracy
                           </div>
@@ -491,8 +580,15 @@ const MentalMathApp = () => {
                         }`}>
                           {index + 1}
                         </span>
-                        <div>
-                          <div className="font-semibold text-gray-800">{entry.playerName || 'Anonymous'}</div>
+                        <div className="flex-1">
+                          <div className="flex items-center gap-2">
+                            <span className="font-semibold text-gray-800">{entry.playerName || 'Anonymous'}</span>
+                            {(entry as any).hasSuspiciousGames && (
+                              <span className="bg-red-500 text-white text-xs px-2 py-1 rounded-full font-bold flex items-center gap-1" title="Has suspicious games with calculator usage">
+                                C
+                              </span>
+                            )}
+                          </div>
                           <div className="text-sm text-gray-600">
                             {entry.gamesPlayed} games • Avg: {Math.round(entry.averageScore)}
                           </div>
@@ -694,11 +790,19 @@ const MentalMathApp = () => {
           {/* Header with stats */}
           <div className="bg-white/95 backdrop-blur-xl rounded-3xl shadow-2xl p-8 mb-8 border border-white/20">
             <div className="flex justify-between items-center mb-4">
-              <div className="flex items-center gap-2">
-                <Clock size={24} className="text-vh-red" />
-                <span className="font-mono text-2xl font-bold text-vh-red">
-                  {formatTime(timeRemaining)}
-                </span>
+              <div className="flex items-center gap-4">
+                <div className="flex items-center gap-2">
+                  <Clock size={24} className="text-vh-red" />
+                  <span className="font-mono text-2xl font-bold text-vh-red">
+                    {formatTime(timeRemaining)}
+                  </span>
+                </div>
+                <div className="flex items-center gap-2 bg-orange-100 px-3 py-1 rounded-full border border-orange-300">
+                  <Clock size={16} className={questionTimeRemaining <= 3 ? 'text-red-500' : 'text-orange-600'} />
+                  <span className={`font-mono text-lg font-bold ${questionTimeRemaining <= 3 ? 'text-red-500 animate-pulse' : 'text-orange-600'}`}>
+                    {questionTimeRemaining}s
+                  </span>
+                </div>
               </div>
               <div className="flex items-center gap-6">
                 <div className="flex items-center gap-2">
