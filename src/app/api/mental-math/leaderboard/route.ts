@@ -15,22 +15,57 @@ export async function GET() {
     await connectToDatabase();
     console.log('MongoDB connected successfully');
 
-    // Get top individual scores (excluding admin scores)
-    console.log('Querying individual scores...');
-    const individualScores = await MathScore.find({ isAdmin: { $ne: true } })
-      .sort({ score: -1, playedAt: -1 })
-      .limit(10)
-      .select({
-        playerName: 1,
-        score: 1,
-        questionsCorrect: 1,
-        questionsAnswered: 1,
-        accuracy: 1,
-        difficulty: 1,
-        operations: 1,
-        playedAt: 1
-      })
-      .lean();
+    // Get top 3 individual scores per player (excluding admin scores)
+    console.log('Querying individual scores with max 3 per player...');
+    const individualScores = await MathScore.aggregate([
+      {
+        $match: { isAdmin: { $ne: true } }
+      },
+      {
+        $sort: { score: -1, playedAt: -1 }
+      },
+      {
+        $group: {
+          _id: '$playerEmail',
+          playerName: { $first: '$playerName' },
+          topScores: {
+            $push: {
+              score: '$score',
+              questionsCorrect: '$questionsCorrect',
+              questionsAnswered: '$questionsAnswered',
+              accuracy: '$accuracy',
+              difficulty: '$difficulty',
+              operations: '$operations',
+              playedAt: '$playedAt',
+              isSuspicious: '$isSuspicious'
+            }
+          }
+        }
+      },
+      {
+        $project: {
+          _id: 0,
+          playerName: 1,
+          topScores: { $slice: ['$topScores', 3] } // Limit to top 3 scores per player
+        }
+      },
+      {
+        $unwind: '$topScores'
+      },
+      {
+        $replaceRoot: {
+          newRoot: {
+            $mergeObjects: ['$topScores', { playerName: '$playerName' }]
+          }
+        }
+      },
+      {
+        $sort: { score: -1, playedAt: -1 }
+      },
+      {
+        $limit: 10 // Show top 10 individual games total
+      }
+    ]);
     console.log('Individual scores found:', individualScores.length);
 
     // Get accumulated scores by player (excluding admin scores)
