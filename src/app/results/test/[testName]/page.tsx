@@ -470,14 +470,14 @@ const TestDetailPage = () => {
                   </div>
                   <div className="text-3xl font-bold text-vh-red mb-2">
                     {isFullTest ?
-                      `${(userResult as FullTestResult).totalPercentage || 0}%` :
-                      `${(userResult as SimpleTestResult).analytics.accuracy}%`
+                      `${((userResult as FullTestResult).totalPercentage || 0).toFixed(2)}%` :
+                      `${((userResult as SimpleTestResult).analytics.accuracy).toFixed(2)}%`
                     }
                   </div>
                   <div className="text-sm text-gray-600">
                     {isFullTest ?
-                      `MCQ: ${(userResult as FullTestResult).mcqPercentage || 0}%` :
-                      `${(userResult as SimpleTestResult).analytics.attemptRate}% attempted`
+                      `MCQ: ${((userResult as FullTestResult).mcqPercentage || 0).toFixed(2)}%` :
+                      `${((userResult as SimpleTestResult).analytics.attemptRate).toFixed(2)}% attempted`
                     }
                   </div>
                 </div>
@@ -567,7 +567,7 @@ const TestDetailPage = () => {
                         <div className="text-center p-4 bg-blue-50 rounded-lg border border-blue-100">
                           <div className="text-2xl font-bold text-blue-600">{(userResult as FullTestResult).mcqMarks}</div>
                           <div className="text-sm text-blue-700 mt-1">MCQ Marks</div>
-                          <div className="text-xs text-blue-600 mt-1">{(userResult as FullTestResult).mcqPercentage}%</div>
+                          <div className="text-xs text-blue-600 mt-1">{((userResult as FullTestResult).mcqPercentage || 0).toFixed(2)}%</div>
                         </div>
 
                         {(userResult as FullTestResult).essayMarks !== undefined && (userResult as FullTestResult).essayMarks! > 0 && (
@@ -583,7 +583,7 @@ const TestDetailPage = () => {
                         <div className="text-center p-4 bg-vh-red/10 rounded-lg border border-vh-red/30">
                           <div className="text-2xl font-bold text-vh-red">{(userResult as FullTestResult).totalMarks}</div>
                           <div className="text-sm text-vh-red mt-1">Total Marks</div>
-                          <div className="text-xs text-vh-red/80 mt-1">{(userResult as FullTestResult).totalPercentage}%</div>
+                          <div className="text-xs text-vh-red/80 mt-1">{((userResult as FullTestResult).totalPercentage || 0).toFixed(2)}%</div>
                         </div>
                       </div>
                     </div>
@@ -611,7 +611,7 @@ const TestDetailPage = () => {
                               <div className="text-gray-600">Wrong</div>
                             </div>
                             <div className="text-center">
-                              <div className="text-lg font-semibold text-blue-600">{section.percentage}%</div>
+                              <div className="text-lg font-semibold text-blue-600">{(section.percentage || 0).toFixed(2)}%</div>
                               <div className="text-gray-600">Percentage</div>
                             </div>
                           </div>

@@ -15,14 +15,14 @@
               "correct": 41,
               "wrong": 37,
               "marks": 31.75,
-              "percentage": 35.27777777777778,
+              "percentage": 35.28,
               "totalQuestions": 0
             }
           },
           "totalMarks": 53.25,
           "mcqMarks": 31.75,
           "essayMarks": 21.5,
-          "mcqPercentage": 35.27777777777778,
+          "mcqPercentage": 35.28,
           "totalPercentage": 44.38,
           "rank": 9,
           "essays": {
@@ -180,14 +180,14 @@
               "correct": 23,
               "wrong": 17,
               "marks": 18.75,
-              "percentage": 20.833333333333336,
+              "percentage": 20.83,
               "totalQuestions": 0
             }
           },
           "totalMarks": 30.25,
           "mcqMarks": 18.75,
           "essayMarks": 11.5,
-          "mcqPercentage": 20.833333333333336,
+          "mcqPercentage": 20.83,
           "totalPercentage": 25.21,
           "rank": 12,
           "essays": {
@@ -311,14 +311,14 @@
               "correct": 64,
               "wrong": 5,
               "marks": 62.75,
-              "percentage": 69.72222222222221,
+              "percentage": 69.72,
               "totalQuestions": 0
             }
           },
           "totalMarks": 85.25,
           "mcqMarks": 62.75,
           "essayMarks": 22.5,
-          "mcqPercentage": 69.72222222222221,
+          "mcqPercentage": 69.72,
           "totalPercentage": 71.04,
           "rank": 1,
           "essays": {
@@ -544,14 +544,14 @@
               "correct": 45,
               "wrong": 14,
               "marks": 41.5,
-              "percentage": 46.111111111111114,
+              "percentage": 46.11,
               "totalQuestions": 0
             }
           },
           "totalMarks": 54.5,
           "mcqMarks": 41.5,
           "essayMarks": 13,
-          "mcqPercentage": 46.111111111111114,
+          "mcqPercentage": 46.11,
           "totalPercentage": 45.42,
           "rank": 8,
           "essays": {
@@ -709,14 +709,14 @@
               "correct": 67,
               "wrong": 14,
               "marks": 63.5,
-              "percentage": 70.55555555555556,
+              "percentage": 70.56,
               "totalQuestions": 0
             }
           },
           "totalMarks": 80,
           "mcqMarks": 63.5,
           "essayMarks": 16.5,
-          "mcqPercentage": 70.55555555555556,
+          "mcqPercentage": 70.56,
           "totalPercentage": 66.67,
           "rank": 2,
           "essays": {
@@ -874,14 +874,14 @@
               "correct": 41,
               "wrong": 18,
               "marks": 36.5,
-              "percentage": 40.55555555555556,
+              "percentage": 40.56,
               "totalQuestions": 0
             }
           },
           "totalMarks": 51.5,
           "mcqMarks": 36.5,
           "essayMarks": 15,
-          "mcqPercentage": 40.55555555555556,
+          "mcqPercentage": 40.56,
           "totalPercentage": 42.92,
           "rank": 10,
           "essays": {
@@ -1005,15 +1005,15 @@
               "correct": 10,
               "wrong": 10,
               "marks": 7.5,
-              "percentage": 8.333333333333332,
+              "percentage": 8.33,
               "totalQuestions": "Total Question 3"
             }
           },
           "totalMarks": 22.5,
           "mcqMarks": 7.5,
           "essayMarks": 15,
-          "mcqPercentage": 8.333333333333332,
-          "totalPercentage": 18.75,
+          "mcqPercentage": 8.33,
+          "totalPercentage": 18.74,
           "rank": 13,
           "essays": {
             "1": 6,
@@ -1136,14 +1136,14 @@
               "correct": 37,
               "wrong": 24,
               "marks": 31,
-              "percentage": 34.44444444444444,
+              "percentage": 34.44,
               "totalQuestions": 0
             }
           },
           "totalMarks": 45,
           "mcqMarks": 31,
           "essayMarks": 14,
-          "mcqPercentage": 34.44444444444444,
+          "mcqPercentage": 34.44,
           "totalPercentage": 37.5,
           "rank": 11,
           "essays": {
@@ -1398,14 +1398,14 @@
               "correct": 52,
               "wrong": 22,
               "marks": 46.5,
-              "percentage": 51.66666666666667,
+              "percentage": 51.67,
               "totalQuestions": 0
             }
           },
           "totalMarks": 61.5,
           "mcqMarks": 46.5,
           "essayMarks": 15,
-          "mcqPercentage": 51.66666666666667,
+          "mcqPercentage": 51.67,
           "totalPercentage": 51.25,
           "rank": 7,
           "essays": {
@@ -1631,14 +1631,14 @@
               "correct": 58,
               "wrong": 22,
               "marks": 52.5,
-              "percentage": 58.333333333333336,
+              "percentage": 58.33,
               "totalQuestions": "Total Question 2"
             }
           },
           "totalMarks": 74.5,
           "mcqMarks": 52.5,
           "essayMarks": 22,
-          "mcqPercentage": 58.333333333333336,
+          "mcqPercentage": 58.33,
           "totalPercentage": 62.08,
           "rank": 4,
           "essays": {
@@ -1762,15 +1762,15 @@
               "correct": 57,
               "wrong": 27,
               "marks": 50.25,
-              "percentage": 55.833333333333336,
+              "percentage": 55.83,
               "totalQuestions": 0
             }
           },
           "totalMarks": 72.75,
           "mcqMarks": 50.25,
           "essayMarks": 22.5,
-          "mcqPercentage": 55.833333333333336,
-          "totalPercentage": 60.63,
+          "mcqPercentage": 55.83,
+          "totalPercentage": 60.62,
           "rank": 5,
           "essays": {
             "1": 7.5,
@@ -1927,15 +1927,15 @@
               "correct": 52,
               "wrong": 16,
               "marks": 48,
-              "percentage": 53.333333333333336,
+              "percentage": 53.33,
               "totalQuestions": 0
             }
           },
           "totalMarks": 62,
           "mcqMarks": 48,
           "essayMarks": 14,
-          "mcqPercentage": 53.333333333333336,
-          "totalPercentage": 51.67,
+          "mcqPercentage": 53.33,
+          "totalPercentage": 51.66,
           "rank": 6,
           "essays": {
             "1": 8,
@@ -2235,7 +2235,7 @@
         }
       },
       "metadata": {
-        "processedAt": "2025-10-09T21:13:12.050Z",
+        "processedAt": "2025-10-09T21:20:37.881Z",
         "sourceFile": "English Test 2.xlsx",
         "sheets": [
           "Sheet1",
@@ -2373,14 +2373,14 @@
               "correct": 15,
               "wrong": 30,
               "marks": 7.5,
-              "percentage": 16.666666666666664,
+              "percentage": 16.67,
               "totalQuestions": 0
             }
           },
           "totalMarks": 7.5,
           "mcqMarks": 7.5,
           "essayMarks": 0,
-          "mcqPercentage": 16.666666666666664,
+          "mcqPercentage": 16.67,
           "totalPercentage": 16.67,
           "rank": 9,
           "responses": {
@@ -2453,14 +2453,14 @@
               "correct": 21,
               "wrong": 7,
               "marks": 19.25,
-              "percentage": 42.77777777777778,
+              "percentage": 42.78,
               "totalQuestions": 0
             }
           },
           "totalMarks": 19.25,
           "mcqMarks": 19.25,
           "essayMarks": 0,
-          "mcqPercentage": 42.77777777777778,
+          "mcqPercentage": 42.78,
           "totalPercentage": 42.78,
           "rank": 1,
           "responses": {
@@ -2533,14 +2533,14 @@
               "correct": 7,
               "wrong": 8,
               "marks": 5,
-              "percentage": 11.11111111111111,
+              "percentage": 11.11,
               "totalQuestions": 0
             }
           },
           "totalMarks": 5,
           "mcqMarks": 5,
           "essayMarks": 0,
-          "mcqPercentage": 11.11111111111111,
+          "mcqPercentage": 11.11,
           "totalPercentage": 11.11,
           "rank": 12,
           "responses": {
@@ -2647,14 +2647,14 @@
               "correct": 11,
               "wrong": 4,
               "marks": 10,
-              "percentage": 22.22222222222222,
+              "percentage": 22.22,
               "totalQuestions": 0
             }
           },
           "totalMarks": 10,
           "mcqMarks": 10,
           "essayMarks": 0,
-          "mcqPercentage": 22.22222222222222,
+          "mcqPercentage": 22.22,
           "totalPercentage": 22.22,
           "rank": 6,
           "responses": {
@@ -2727,14 +2727,14 @@
               "correct": 14,
               "wrong": 10,
               "marks": 11.5,
-              "percentage": 25.555555555555554,
+              "percentage": 25.56,
               "totalQuestions": 0
             }
           },
           "totalMarks": 11.5,
           "mcqMarks": 11.5,
           "essayMarks": 0,
-          "mcqPercentage": 25.555555555555554,
+          "mcqPercentage": 25.56,
           "totalPercentage": 25.56,
           "rank": 5,
           "responses": {
@@ -2807,14 +2807,14 @@
               "correct": 13,
               "wrong": 14,
               "marks": 9.5,
-              "percentage": 21.11111111111111,
+              "percentage": 21.11,
               "totalQuestions": 0
             }
           },
           "totalMarks": 9.5,
           "mcqMarks": 9.5,
           "essayMarks": 0,
-          "mcqPercentage": 21.11111111111111,
+          "mcqPercentage": 21.11,
           "totalPercentage": 21.11,
           "rank": 7,
           "responses": {
@@ -2887,14 +2887,14 @@
               "correct": 13,
               "wrong": 9,
               "marks": 10.75,
-              "percentage": 23.88888888888889,
+              "percentage": 23.89,
               "totalQuestions": 0
             }
           },
           "totalMarks": 10.75,
           "mcqMarks": 10.75,
           "essayMarks": 0,
-          "mcqPercentage": 23.88888888888889,
+          "mcqPercentage": 23.89,
           "totalPercentage": 23.89,
           "rank": 0,
           "responses": {
@@ -3001,14 +3001,14 @@
               "correct": 9,
               "wrong": 7,
               "marks": 7.25,
-              "percentage": 16.11111111111111,
+              "percentage": 16.11,
               "totalQuestions": 0
             }
           },
           "totalMarks": 7.25,
           "mcqMarks": 7.25,
           "essayMarks": 0,
-          "mcqPercentage": 16.11111111111111,
+          "mcqPercentage": 16.11,
           "totalPercentage": 16.11,
           "rank": 10,
           "responses": {
@@ -3081,14 +3081,14 @@
               "correct": 9,
               "wrong": 14,
               "marks": 5.5,
-              "percentage": 12.222222222222221,
+              "percentage": 12.22,
               "totalQuestions": "Total Question 3"
             }
           },
           "totalMarks": 5.5,
           "mcqMarks": 5.5,
           "essayMarks": 0,
-          "mcqPercentage": 12.222222222222221,
+          "mcqPercentage": 12.22,
           "totalPercentage": 12.22,
           "rank": 11,
           "responses": {
@@ -3161,14 +3161,14 @@
               "correct": 15,
               "wrong": 8,
               "marks": 13,
-              "percentage": 28.888888888888886,
+              "percentage": 28.89,
               "totalQuestions": 0
             }
           },
           "totalMarks": 13,
           "mcqMarks": 13,
           "essayMarks": 0,
-          "mcqPercentage": 28.888888888888886,
+          "mcqPercentage": 28.89,
           "totalPercentage": 28.89,
           "rank": 0,
           "responses": {
@@ -3241,14 +3241,14 @@
               "correct": 12,
               "wrong": 10,
               "marks": 9.5,
-              "percentage": 21.11111111111111,
+              "percentage": 21.11,
               "totalQuestions": 0
             }
           },
           "totalMarks": 9.5,
           "mcqMarks": 9.5,
           "essayMarks": 0,
-          "mcqPercentage": 21.11111111111111,
+          "mcqPercentage": 21.11,
           "totalPercentage": 21.11,
           "rank": 7,
           "responses": {
@@ -3321,14 +3321,14 @@
               "correct": 16,
               "wrong": 17,
               "marks": 11.75,
-              "percentage": 26.111111111111114,
+              "percentage": 26.11,
               "totalQuestions": 0
             }
           },
           "totalMarks": 11.75,
           "mcqMarks": 11.75,
           "essayMarks": 0,
-          "mcqPercentage": 26.111111111111114,
+          "mcqPercentage": 26.11,
           "totalPercentage": 26.11,
           "rank": 4,
           "responses": {
@@ -3401,14 +3401,14 @@
               "correct": 8,
               "wrong": 12,
               "marks": 5,
-              "percentage": 11.11111111111111,
+              "percentage": 11.11,
               "totalQuestions": 0
             }
           },
           "totalMarks": 5,
           "mcqMarks": 5,
           "essayMarks": 0,
-          "mcqPercentage": 11.11111111111111,
+          "mcqPercentage": 11.11,
           "totalPercentage": 11.11,
           "rank": 12,
           "responses": {
@@ -3549,14 +3549,14 @@
               "correct": 17,
               "wrong": 6,
               "marks": 15.5,
-              "percentage": 34.44444444444444,
+              "percentage": 34.44,
               "totalQuestions": "Total Question 2"
             }
           },
           "totalMarks": 15.5,
           "mcqMarks": 15.5,
           "essayMarks": 0,
-          "mcqPercentage": 34.44444444444444,
+          "mcqPercentage": 34.44,
           "totalPercentage": 34.44,
           "rank": 2,
           "responses": {
@@ -3629,14 +3629,14 @@
               "correct": 30,
               "wrong": 6,
               "marks": 28.5,
-              "percentage": 63.33333333333333,
+              "percentage": 63.33,
               "totalQuestions": 0
             }
           },
           "totalMarks": 28.5,
           "mcqMarks": 28.5,
           "essayMarks": 0,
-          "mcqPercentage": 63.33333333333333,
+          "mcqPercentage": 63.33,
           "totalPercentage": 63.33,
           "rank": 0,
           "responses": {
@@ -3743,14 +3743,14 @@
               "correct": 16,
               "wrong": 3,
               "marks": 15.25,
-              "percentage": 33.88888888888889,
+              "percentage": 33.89,
               "totalQuestions": 0
             }
           },
           "totalMarks": 15.25,
           "mcqMarks": 15.25,
           "essayMarks": 0,
-          "mcqPercentage": 33.88888888888889,
+          "mcqPercentage": 33.89,
           "totalPercentage": 33.89,
           "rank": 3,
           "responses": {
@@ -4000,7 +4000,7 @@
         }
       },
       "metadata": {
-        "processedAt": "2025-10-09T21:13:12.074Z",
+        "processedAt": "2025-10-09T21:20:37.900Z",
         "sourceFile": "Mathematics CT 2.xlsx",
         "sheets": [
           "Sheet1",
@@ -4012,7 +4012,7 @@
   },
   "metadata": {
     "totalTests": 2,
-    "lastProcessed": "2025-10-09T21:13:12.124Z",
+    "lastProcessed": "2025-10-09T21:20:37.937Z",
     "version": "1.0.0"
   }
 }

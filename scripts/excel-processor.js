@@ -425,7 +425,7 @@ class ExcelProcessor {
         correct: sectionData.correct || 0,
         wrong: sectionData.wrong || 0,
         marks: sectionMarks,
-        percentage: sectionData.percentage || 0,
+        percentage: Math.round((sectionData.percentage || 0) * 100) / 100,
         totalQuestions: sectionData.totalQuestions || 0
       };
     });
@@ -443,7 +443,7 @@ class ExcelProcessor {
 
     // Calculate percentages
     // MCQ percentage is already in basic.percentage or can be calculated
-    const mcqPercentage = basic.percentage || 0;
+    const mcqPercentage = Math.round((basic.percentage || 0) * 100) / 100;
 
     // Total possible marks = MCQ marks (from file) + essays (10 marks each)
     const maxEssayMarks = essayCount * 10;
