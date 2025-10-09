@@ -4,7 +4,9 @@
       "testName": "Mathematics CT 2",
       "testType": "full",
       "sections": [
-        "1"
+        "1",
+        "2",
+        "3"
       ],
       "results": {
         "121716": {
@@ -12,6 +14,20 @@
           "studentName": "Ayaz Mohammad Zahir",
           "sections": {
             "1": {
+              "correct": 9,
+              "wrong": 18,
+              "marks": 4.5,
+              "percentage": 10,
+              "totalQuestions": 0
+            },
+            "2": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 0
+            },
+            "3": {
               "correct": 0,
               "wrong": 0,
               "marks": 0,
@@ -19,16 +35,76 @@
               "totalQuestions": 0
             }
           },
-          "totalMarks": 0,
-          "totalPercentage": 0,
-          "rank": 17,
-          "responses": {},
+          "totalMarks": 4.5,
+          "totalPercentage": 10,
+          "rank": 14,
+          "responses": {
+            "Section1-Q1": "A (W)",
+            "Section1-Q2": "D (C)",
+            "Section1-Q3": "D (C)",
+            "Section1-Q4": "D (C)",
+            "Section1-Q5": "NAN",
+            "Section1-Q6": "E (W)",
+            "Section1-Q7": "B (W)",
+            "Section1-Q8": "NAN",
+            "Section1-Q9": "NAN",
+            "Section1-Q10": "NAN",
+            "Section1-Q11": "E (W)",
+            "Section1-Q12": "A (W)",
+            "Section1-Q13": "D (W)",
+            "Section1-Q14": "A (W)",
+            "Section1-Q15": "E (W)",
+            "Section1-Q16": "NAN",
+            "Section1-Q17": "D (W)",
+            "Section1-Q18": "C (C)",
+            "Section1-Q19": "NAN",
+            "Section1-Q20": "C (C)",
+            "Section1-Q21": "NAN",
+            "Section1-Q22": "D (W)",
+            "Section1-Q23": "NAN",
+            "Section1-Q24": "E (W)",
+            "Section1-Q25": "NAN",
+            "Section1-Q26": "D (W)",
+            "Section1-Q27": "D (W)",
+            "Section1-Q28": "NAN",
+            "Section1-Q29": "NAN",
+            "Section1-Q30": "NAN",
+            "Section1-Q31": "D (W)",
+            "Section1-Q32": "C (W)",
+            "Section1-Q33": "B (W)",
+            "Section1-Q34": "D (C)",
+            "Section1-Q35": "NAN",
+            "Section1-Q36": "NAN",
+            "Section1-Q37": "NAN",
+            "Section1-Q38": "C (W)",
+            "Section1-Q39": "B (C)",
+            "Section1-Q40": "A (W)",
+            "Section1-Q41": "NAN",
+            "Section1-Q42": "NAN",
+            "Section1-Q43": "C (C)",
+            "Section1-Q44": "NAN",
+            "Section1-Q45": "C (C)"
+          },
           "analytics": {
-            "skipStrategy": 0,
-            "questionChoiceStrategy": 0,
-            "recoveryScore": 0,
+            "skipStrategy": 70,
+            "questionChoiceStrategy": 62,
+            "recoveryScore": 51,
             "sectionPerformance": {
               "1": {
+                "accuracy": 33.33,
+                "attemptRate": 60,
+                "attempted": 27,
+                "unattempted": 18,
+                "efficiency": 20
+              },
+              "2": {
+                "accuracy": 0,
+                "attemptRate": 0,
+                "attempted": 0,
+                "unattempted": 0,
+                "efficiency": 0
+              },
+              "3": {
                 "accuracy": 0,
                 "attemptRate": 0,
                 "attempted": 0,
@@ -48,11 +124,25 @@
               "marks": 0,
               "percentage": 0,
               "totalQuestions": 0
+            },
+            "2": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 0
+            },
+            "3": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 0
             }
           },
           "totalMarks": 0,
           "totalPercentage": 0,
-          "rank": 17,
+          "rank": 15,
           "responses": {},
           "analytics": {
             "skipStrategy": 0,
@@ -60,6 +150,20 @@
             "recoveryScore": 0,
             "sectionPerformance": {
               "1": {
+                "accuracy": 0,
+                "attemptRate": 0,
+                "attempted": 0,
+                "unattempted": 0,
+                "efficiency": 0
+              },
+              "2": {
+                "accuracy": 0,
+                "attemptRate": 0,
+                "attempted": 0,
+                "unattempted": 0,
+                "efficiency": 0
+              },
+              "3": {
                 "accuracy": 0,
                 "attemptRate": 0,
                 "attempted": 0,
@@ -79,11 +183,25 @@
               "marks": 7.5,
               "percentage": 16.666666666666664,
               "totalQuestions": 0
+            },
+            "2": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 0
+            },
+            "3": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 0
             }
           },
           "totalMarks": 7.5,
           "totalPercentage": 16.666666666666664,
-          "rank": 12,
+          "rank": 9,
           "responses": {
             "Section1-Q1": "E (C)",
             "Section1-Q2": "C (W)",
@@ -133,7 +251,7 @@
           },
           "analytics": {
             "skipStrategy": 76,
-            "questionChoiceStrategy": 67,
+            "questionChoiceStrategy": 66,
             "recoveryScore": 52,
             "sectionPerformance": {
               "1": {
@@ -142,6 +260,20 @@
                 "attempted": 45,
                 "unattempted": 0,
                 "efficiency": 33.33
+              },
+              "2": {
+                "accuracy": 0,
+                "attemptRate": 0,
+                "attempted": 0,
+                "unattempted": 0,
+                "efficiency": 0
+              },
+              "3": {
+                "accuracy": 0,
+                "attemptRate": 0,
+                "attempted": 0,
+                "unattempted": 0,
+                "efficiency": 0
               }
             }
           }
@@ -156,11 +288,25 @@
               "marks": 19.25,
               "percentage": 42.77777777777778,
               "totalQuestions": 0
+            },
+            "2": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 0
+            },
+            "3": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 0
             }
           },
           "totalMarks": 19.25,
           "totalPercentage": 42.77777777777778,
-          "rank": 2,
+          "rank": 1,
           "responses": {
             "Section1-Q1": "E (C)",
             "Section1-Q2": "E (W)",
@@ -209,7 +355,7 @@
             "Section1-Q45": "NAN"
           },
           "analytics": {
-            "skipStrategy": 84,
+            "skipStrategy": 85,
             "questionChoiceStrategy": 72,
             "recoveryScore": 71,
             "sectionPerformance": {
@@ -219,6 +365,20 @@
                 "attempted": 28,
                 "unattempted": 17,
                 "efficiency": 46.67
+              },
+              "2": {
+                "accuracy": 0,
+                "attemptRate": 0,
+                "attempted": 0,
+                "unattempted": 0,
+                "efficiency": 0
+              },
+              "3": {
+                "accuracy": 0,
+                "attemptRate": 0,
+                "attempted": 0,
+                "unattempted": 0,
+                "efficiency": 0
               }
             }
           }
@@ -233,11 +393,25 @@
               "marks": 5,
               "percentage": 11.11111111111111,
               "totalQuestions": 0
+            },
+            "2": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 0
+            },
+            "3": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 0
             }
           },
           "totalMarks": 5,
           "totalPercentage": 11.11111111111111,
-          "rank": 15,
+          "rank": 12,
           "responses": {
             "Section1-Q1": "E (C)",
             "Section1-Q2": "NAN",
@@ -296,6 +470,20 @@
                 "attempted": 15,
                 "unattempted": 30,
                 "efficiency": 15.56
+              },
+              "2": {
+                "accuracy": 0,
+                "attemptRate": 0,
+                "attempted": 0,
+                "unattempted": 0,
+                "efficiency": 0
+              },
+              "3": {
+                "accuracy": 0,
+                "attemptRate": 0,
+                "attempted": 0,
+                "unattempted": 0,
+                "efficiency": 0
               }
             }
           }
@@ -310,11 +498,25 @@
               "marks": 0,
               "percentage": 0,
               "totalQuestions": 0
+            },
+            "2": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 0
+            },
+            "3": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 0
             }
           },
           "totalMarks": 0,
           "totalPercentage": 0,
-          "rank": 17,
+          "rank": 15,
           "responses": {},
           "analytics": {
             "skipStrategy": 0,
@@ -322,6 +524,20 @@
             "recoveryScore": 0,
             "sectionPerformance": {
               "1": {
+                "accuracy": 0,
+                "attemptRate": 0,
+                "attempted": 0,
+                "unattempted": 0,
+                "efficiency": 0
+              },
+              "2": {
+                "accuracy": 0,
+                "attemptRate": 0,
+                "attempted": 0,
+                "unattempted": 0,
+                "efficiency": 0
+              },
+              "3": {
                 "accuracy": 0,
                 "attemptRate": 0,
                 "attempted": 0,
@@ -341,11 +557,25 @@
               "marks": 10,
               "percentage": 22.22222222222222,
               "totalQuestions": 0
+            },
+            "2": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 0
+            },
+            "3": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 0
             }
           },
           "totalMarks": 10,
           "totalPercentage": 22.22222222222222,
-          "rank": 9,
+          "rank": 6,
           "responses": {
             "Section1-Q1": "E (C)",
             "Section1-Q2": "C (W)",
@@ -394,7 +624,7 @@
             "Section1-Q45": "C (C)"
           },
           "analytics": {
-            "skipStrategy": 72,
+            "skipStrategy": 73,
             "questionChoiceStrategy": 64,
             "recoveryScore": 90,
             "sectionPerformance": {
@@ -404,6 +634,20 @@
                 "attempted": 15,
                 "unattempted": 30,
                 "efficiency": 24.44
+              },
+              "2": {
+                "accuracy": 0,
+                "attemptRate": 0,
+                "attempted": 0,
+                "unattempted": 0,
+                "efficiency": 0
+              },
+              "3": {
+                "accuracy": 0,
+                "attemptRate": 0,
+                "attempted": 0,
+                "unattempted": 0,
+                "efficiency": 0
               }
             }
           }
@@ -418,11 +662,25 @@
               "marks": 11.5,
               "percentage": 25.555555555555554,
               "totalQuestions": 0
+            },
+            "2": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 0
+            },
+            "3": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 0
             }
           },
           "totalMarks": 11.5,
           "totalPercentage": 25.555555555555554,
-          "rank": 7,
+          "rank": 5,
           "responses": {
             "Section1-Q1": "E (C)",
             "Section1-Q2": "NAN",
@@ -471,8 +729,8 @@
             "Section1-Q45": "NAN"
           },
           "analytics": {
-            "skipStrategy": 78,
-            "questionChoiceStrategy": 66,
+            "skipStrategy": 79,
+            "questionChoiceStrategy": 67,
             "recoveryScore": 56,
             "sectionPerformance": {
               "1": {
@@ -481,6 +739,20 @@
                 "attempted": 24,
                 "unattempted": 21,
                 "efficiency": 31.11
+              },
+              "2": {
+                "accuracy": 0,
+                "attemptRate": 0,
+                "attempted": 0,
+                "unattempted": 0,
+                "efficiency": 0
+              },
+              "3": {
+                "accuracy": 0,
+                "attemptRate": 0,
+                "attempted": 0,
+                "unattempted": 0,
+                "efficiency": 0
               }
             }
           }
@@ -495,11 +767,25 @@
               "marks": 9.5,
               "percentage": 21.11111111111111,
               "totalQuestions": 0
+            },
+            "2": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 0
+            },
+            "3": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 0
             }
           },
           "totalMarks": 9.5,
           "totalPercentage": 21.11111111111111,
-          "rank": 10,
+          "rank": 7,
           "responses": {
             "Section1-Q1": "E (C)",
             "Section1-Q2": "E (W)",
@@ -549,7 +835,7 @@
           },
           "analytics": {
             "skipStrategy": 75,
-            "questionChoiceStrategy": 66,
+            "questionChoiceStrategy": 65,
             "recoveryScore": 63,
             "sectionPerformance": {
               "1": {
@@ -558,6 +844,20 @@
                 "attempted": 27,
                 "unattempted": 18,
                 "efficiency": 28.89
+              },
+              "2": {
+                "accuracy": 0,
+                "attemptRate": 0,
+                "attempted": 0,
+                "unattempted": 0,
+                "efficiency": 0
+              },
+              "3": {
+                "accuracy": 0,
+                "attemptRate": 0,
+                "attempted": 0,
+                "unattempted": 0,
+                "efficiency": 0
               }
             }
           }
@@ -572,11 +872,25 @@
               "marks": 10.75,
               "percentage": 23.88888888888889,
               "totalQuestions": 0
+            },
+            "2": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 0
+            },
+            "3": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 0
             }
           },
-          "totalMarks": 10.75,
+          "totalMarks": 0,
           "totalPercentage": 23.88888888888889,
-          "rank": 8,
+          "rank": 0,
           "responses": {
             "Section1-Q1": "E (C)",
             "Section1-Q2": "E (W)",
@@ -635,6 +949,20 @@
                 "attempted": 22,
                 "unattempted": 23,
                 "efficiency": 28.89
+              },
+              "2": {
+                "accuracy": 0,
+                "attemptRate": 0,
+                "attempted": 0,
+                "unattempted": 0,
+                "efficiency": 0
+              },
+              "3": {
+                "accuracy": 0,
+                "attemptRate": 0,
+                "attempted": 0,
+                "unattempted": 0,
+                "efficiency": 0
               }
             }
           }
@@ -649,11 +977,25 @@
               "marks": 0,
               "percentage": 0,
               "totalQuestions": 0
+            },
+            "2": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 0
+            },
+            "3": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 0
             }
           },
           "totalMarks": 0,
           "totalPercentage": 0,
-          "rank": 17,
+          "rank": 15,
           "responses": {},
           "analytics": {
             "skipStrategy": 0,
@@ -661,6 +1003,20 @@
             "recoveryScore": 0,
             "sectionPerformance": {
               "1": {
+                "accuracy": 0,
+                "attemptRate": 0,
+                "attempted": 0,
+                "unattempted": 0,
+                "efficiency": 0
+              },
+              "2": {
+                "accuracy": 0,
+                "attemptRate": 0,
+                "attempted": 0,
+                "unattempted": 0,
+                "efficiency": 0
+              },
+              "3": {
                 "accuracy": 0,
                 "attemptRate": 0,
                 "attempted": 0,
@@ -680,11 +1036,25 @@
               "marks": 7.25,
               "percentage": 16.11111111111111,
               "totalQuestions": 0
+            },
+            "2": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 0
+            },
+            "3": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 0
             }
           },
           "totalMarks": 7.25,
           "totalPercentage": 16.11111111111111,
-          "rank": 13,
+          "rank": 10,
           "responses": {
             "Section1-Q1": "E (C)",
             "Section1-Q2": "E (W)",
@@ -733,7 +1103,7 @@
             "Section1-Q45": "NAN"
           },
           "analytics": {
-            "skipStrategy": 70,
+            "skipStrategy": 72,
             "questionChoiceStrategy": 61,
             "recoveryScore": 60,
             "sectionPerformance": {
@@ -743,6 +1113,20 @@
                 "attempted": 16,
                 "unattempted": 29,
                 "efficiency": 20
+              },
+              "2": {
+                "accuracy": 0,
+                "attemptRate": 0,
+                "attempted": 0,
+                "unattempted": 0,
+                "efficiency": 0
+              },
+              "3": {
+                "accuracy": 0,
+                "attemptRate": 0,
+                "attempted": 0,
+                "unattempted": 0,
+                "efficiency": 0
               }
             }
           }
@@ -757,11 +1141,25 @@
               "marks": 5.5,
               "percentage": 12.222222222222221,
               "totalQuestions": "Total Question 3"
+            },
+            "2": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 0
+            },
+            "3": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 0
             }
           },
           "totalMarks": 5.5,
           "totalPercentage": 12.222222222222221,
-          "rank": 14,
+          "rank": 11,
           "responses": {
             "Section1-Q1": "B (W)",
             "Section1-Q2": "E (W)",
@@ -810,7 +1208,7 @@
             "Section1-Q45": "C (C)"
           },
           "analytics": {
-            "skipStrategy": 69,
+            "skipStrategy": 70,
             "questionChoiceStrategy": 61,
             "recoveryScore": 46,
             "sectionPerformance": {
@@ -819,6 +1217,20 @@
                 "attemptRate": 0,
                 "attempted": 23,
                 "unattempted": null,
+                "efficiency": 0
+              },
+              "2": {
+                "accuracy": 0,
+                "attemptRate": 0,
+                "attempted": 0,
+                "unattempted": 0,
+                "efficiency": 0
+              },
+              "3": {
+                "accuracy": 0,
+                "attemptRate": 0,
+                "attempted": 0,
+                "unattempted": 0,
                 "efficiency": 0
               }
             }
@@ -834,11 +1246,25 @@
               "marks": 13,
               "percentage": 28.888888888888886,
               "totalQuestions": 0
+            },
+            "2": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 0
+            },
+            "3": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 0
             }
           },
-          "totalMarks": 13,
+          "totalMarks": 0,
           "totalPercentage": 28.888888888888886,
-          "rank": 5,
+          "rank": 0,
           "responses": {
             "Section1-Q1": "E (C)",
             "Section1-Q2": "D (C)",
@@ -887,7 +1313,7 @@
             "Section1-Q45": "C (C)"
           },
           "analytics": {
-            "skipStrategy": 77,
+            "skipStrategy": 78,
             "questionChoiceStrategy": 66,
             "recoveryScore": 70,
             "sectionPerformance": {
@@ -897,6 +1323,20 @@
                 "attempted": 23,
                 "unattempted": 22,
                 "efficiency": 33.33
+              },
+              "2": {
+                "accuracy": 0,
+                "attemptRate": 0,
+                "attempted": 0,
+                "unattempted": 0,
+                "efficiency": 0
+              },
+              "3": {
+                "accuracy": 0,
+                "attemptRate": 0,
+                "attempted": 0,
+                "unattempted": 0,
+                "efficiency": 0
               }
             }
           }
@@ -911,11 +1351,25 @@
               "marks": 9.5,
               "percentage": 21.11111111111111,
               "totalQuestions": 0
+            },
+            "2": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 0
+            },
+            "3": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 0
             }
           },
           "totalMarks": 9.5,
           "totalPercentage": 21.11111111111111,
-          "rank": 10,
+          "rank": 7,
           "responses": {
             "Section1-Q1": "E (C)",
             "Section1-Q2": "NAN",
@@ -965,7 +1419,7 @@
           },
           "analytics": {
             "skipStrategy": 74,
-            "questionChoiceStrategy": 65,
+            "questionChoiceStrategy": 64,
             "recoveryScore": 64,
             "sectionPerformance": {
               "1": {
@@ -974,6 +1428,20 @@
                 "attempted": 22,
                 "unattempted": 23,
                 "efficiency": 26.67
+              },
+              "2": {
+                "accuracy": 0,
+                "attemptRate": 0,
+                "attempted": 0,
+                "unattempted": 0,
+                "efficiency": 0
+              },
+              "3": {
+                "accuracy": 0,
+                "attemptRate": 0,
+                "attempted": 0,
+                "unattempted": 0,
+                "efficiency": 0
               }
             }
           }
@@ -988,11 +1456,25 @@
               "marks": 11.75,
               "percentage": 26.111111111111114,
               "totalQuestions": 0
+            },
+            "2": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 0
+            },
+            "3": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 0
             }
           },
           "totalMarks": 11.75,
           "totalPercentage": 26.111111111111114,
-          "rank": 6,
+          "rank": 4,
           "responses": {
             "Section1-Q1": "E (C)",
             "Section1-Q2": "D (C)",
@@ -1051,6 +1533,20 @@
                 "attempted": 33,
                 "unattempted": 12,
                 "efficiency": 35.55
+              },
+              "2": {
+                "accuracy": 0,
+                "attemptRate": 0,
+                "attempted": 0,
+                "unattempted": 0,
+                "efficiency": 0
+              },
+              "3": {
+                "accuracy": 0,
+                "attemptRate": 0,
+                "attempted": 0,
+                "unattempted": 0,
+                "efficiency": 0
               }
             }
           }
@@ -1065,11 +1561,25 @@
               "marks": 5,
               "percentage": 11.11111111111111,
               "totalQuestions": 0
+            },
+            "2": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 0
+            },
+            "3": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 0
             }
           },
           "totalMarks": 5,
           "totalPercentage": 11.11111111111111,
-          "rank": 15,
+          "rank": 12,
           "responses": {
             "Section1-Q1": "NAN",
             "Section1-Q2": "AB (W)",
@@ -1119,7 +1629,7 @@
           },
           "analytics": {
             "skipStrategy": 71,
-            "questionChoiceStrategy": 62,
+            "questionChoiceStrategy": 61,
             "recoveryScore": 57,
             "sectionPerformance": {
               "1": {
@@ -1128,6 +1638,20 @@
                 "attempted": 20,
                 "unattempted": 25,
                 "efficiency": 17.78
+              },
+              "2": {
+                "accuracy": 0,
+                "attemptRate": 0,
+                "attempted": 0,
+                "unattempted": 0,
+                "efficiency": 0
+              },
+              "3": {
+                "accuracy": 0,
+                "attemptRate": 0,
+                "attempted": 0,
+                "unattempted": 0,
+                "efficiency": 0
               }
             }
           }
@@ -1142,11 +1666,25 @@
               "marks": 0,
               "percentage": 0,
               "totalQuestions": 0
+            },
+            "2": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 0
+            },
+            "3": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 0
             }
           },
           "totalMarks": 0,
           "totalPercentage": 0,
-          "rank": 17,
+          "rank": 15,
           "responses": {},
           "analytics": {
             "skipStrategy": 0,
@@ -1154,6 +1692,20 @@
             "recoveryScore": 0,
             "sectionPerformance": {
               "1": {
+                "accuracy": 0,
+                "attemptRate": 0,
+                "attempted": 0,
+                "unattempted": 0,
+                "efficiency": 0
+              },
+              "2": {
+                "accuracy": 0,
+                "attemptRate": 0,
+                "attempted": 0,
+                "unattempted": 0,
+                "efficiency": 0
+              },
+              "3": {
                 "accuracy": 0,
                 "attemptRate": 0,
                 "attempted": 0,
@@ -1173,11 +1725,25 @@
               "marks": 0,
               "percentage": 0,
               "totalQuestions": 0
+            },
+            "2": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 0
+            },
+            "3": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 0
             }
           },
           "totalMarks": 0,
           "totalPercentage": 0,
-          "rank": 17,
+          "rank": 15,
           "responses": {},
           "analytics": {
             "skipStrategy": 0,
@@ -1185,6 +1751,20 @@
             "recoveryScore": 0,
             "sectionPerformance": {
               "1": {
+                "accuracy": 0,
+                "attemptRate": 0,
+                "attempted": 0,
+                "unattempted": 0,
+                "efficiency": 0
+              },
+              "2": {
+                "accuracy": 0,
+                "attemptRate": 0,
+                "attempted": 0,
+                "unattempted": 0,
+                "efficiency": 0
+              },
+              "3": {
                 "accuracy": 0,
                 "attemptRate": 0,
                 "attempted": 0,
@@ -1204,11 +1784,25 @@
               "marks": 15.5,
               "percentage": 34.44444444444444,
               "totalQuestions": "Total Question 2"
+            },
+            "2": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 0
+            },
+            "3": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 0
             }
           },
           "totalMarks": 15.5,
           "totalPercentage": 34.44444444444444,
-          "rank": 3,
+          "rank": 2,
           "responses": {
             "Section1-Q1": "E (C)",
             "Section1-Q2": "E (W)",
@@ -1267,6 +1861,20 @@
                 "attempted": 23,
                 "unattempted": null,
                 "efficiency": 0
+              },
+              "2": {
+                "accuracy": 0,
+                "attemptRate": 0,
+                "attempted": 0,
+                "unattempted": 0,
+                "efficiency": 0
+              },
+              "3": {
+                "accuracy": 0,
+                "attemptRate": 0,
+                "attempted": 0,
+                "unattempted": 0,
+                "efficiency": 0
               }
             }
           }
@@ -1281,11 +1889,25 @@
               "marks": 28.5,
               "percentage": 63.33333333333333,
               "totalQuestions": 0
+            },
+            "2": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 0
+            },
+            "3": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 0
             }
           },
-          "totalMarks": 28.5,
+          "totalMarks": 0,
           "totalPercentage": 63.33333333333333,
-          "rank": 1,
+          "rank": 0,
           "responses": {
             "Section1-Q1": "C (W)",
             "Section1-Q2": "D (C)",
@@ -1344,6 +1966,20 @@
                 "attempted": 36,
                 "unattempted": 9,
                 "efficiency": 66.66
+              },
+              "2": {
+                "accuracy": 0,
+                "attemptRate": 0,
+                "attempted": 0,
+                "unattempted": 0,
+                "efficiency": 0
+              },
+              "3": {
+                "accuracy": 0,
+                "attemptRate": 0,
+                "attempted": 0,
+                "unattempted": 0,
+                "efficiency": 0
               }
             }
           }
@@ -1358,11 +1994,25 @@
               "marks": 0,
               "percentage": 0,
               "totalQuestions": 0
+            },
+            "2": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 0
+            },
+            "3": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 0
             }
           },
           "totalMarks": 0,
           "totalPercentage": 0,
-          "rank": 17,
+          "rank": 15,
           "responses": {},
           "analytics": {
             "skipStrategy": 0,
@@ -1370,6 +2020,20 @@
             "recoveryScore": 0,
             "sectionPerformance": {
               "1": {
+                "accuracy": 0,
+                "attemptRate": 0,
+                "attempted": 0,
+                "unattempted": 0,
+                "efficiency": 0
+              },
+              "2": {
+                "accuracy": 0,
+                "attemptRate": 0,
+                "attempted": 0,
+                "unattempted": 0,
+                "efficiency": 0
+              },
+              "3": {
                 "accuracy": 0,
                 "attemptRate": 0,
                 "attempted": 0,
@@ -1389,11 +2053,25 @@
               "marks": 15.25,
               "percentage": 33.88888888888889,
               "totalQuestions": 0
+            },
+            "2": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 0
+            },
+            "3": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 0
             }
           },
           "totalMarks": 15.25,
           "totalPercentage": 33.88888888888889,
-          "rank": 4,
+          "rank": 3,
           "responses": {
             "Section1-Q1": "E (C)",
             "Section1-Q2": "NAN",
@@ -1452,6 +2130,20 @@
                 "attempted": 19,
                 "unattempted": 26,
                 "efficiency": 35.55
+              },
+              "2": {
+                "accuracy": 0,
+                "attemptRate": 0,
+                "attempted": 0,
+                "unattempted": 0,
+                "efficiency": 0
+              },
+              "3": {
+                "accuracy": 0,
+                "attemptRate": 0,
+                "attempted": 0,
+                "unattempted": 0,
+                "efficiency": 0
               }
             }
           }
@@ -1466,11 +2158,25 @@
               "marks": 0,
               "percentage": 0,
               "totalQuestions": 0
+            },
+            "2": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 0
+            },
+            "3": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 0
             }
           },
           "totalMarks": 0,
           "totalPercentage": 0,
-          "rank": 17,
+          "rank": 15,
           "responses": {},
           "analytics": {
             "skipStrategy": 0,
@@ -1483,38 +2189,52 @@
                 "attempted": 0,
                 "unattempted": 0,
                 "efficiency": 0
+              },
+              "2": {
+                "accuracy": 0,
+                "attemptRate": 0,
+                "attempted": 0,
+                "unattempted": 0,
+                "efficiency": 0
+              },
+              "3": {
+                "accuracy": 0,
+                "attemptRate": 0,
+                "attempted": 0,
+                "unattempted": 0,
+                "efficiency": 0
               }
             }
           }
         }
       },
       "classStats": {
-        "averageScore": 7.7,
-        "top5Average": 18.3,
+        "averageScore": 5.71,
+        "top5Average": 14.65,
         "totalStudents": 24,
-        "passRate": 66.67,
-        "maxScore": 28.5,
+        "passRate": 58.33,
+        "maxScore": 19.25,
         "minScore": 0,
-        "threshold": 4.61875
+        "threshold": 3.425
       },
       "topQuestions": {
         "1": {
           "mostCorrect": [
             {
+              "questionId": "Section1-Q45",
+              "count": 14
+            },
+            {
               "questionId": "Section1-Q1",
               "count": 13
             },
             {
-              "questionId": "Section1-Q45",
-              "count": 13
-            },
-            {
               "questionId": "Section1-Q3",
-              "count": 11
+              "count": 12
             },
             {
               "questionId": "Section1-Q43",
-              "count": 11
+              "count": 12
             },
             {
               "questionId": "Section1-Q17",
@@ -1522,6 +2242,10 @@
             },
             {
               "questionId": "Section1-Q32",
+              "count": 9
+            },
+            {
+              "questionId": "Section1-Q4",
               "count": 9
             },
             {
@@ -1535,20 +2259,16 @@
             {
               "questionId": "Section1-Q31",
               "count": 8
-            },
-            {
-              "questionId": "Section1-Q4",
-              "count": 8
             }
           ],
           "mostSkipped": [
             {
               "questionId": "Section1-Q28",
-              "count": 15
+              "count": 16
             },
             {
               "questionId": "Section1-Q29",
-              "count": 14
+              "count": 15
             },
             {
               "questionId": "Section1-Q38",
@@ -1556,53 +2276,53 @@
             },
             {
               "questionId": "Section1-Q23",
-              "count": 12
+              "count": 13
             },
             {
               "questionId": "Section1-Q36",
-              "count": 12
+              "count": 13
             },
             {
               "questionId": "Section1-Q41",
-              "count": 12
+              "count": 13
             },
             {
               "questionId": "Section1-Q44",
-              "count": 12
-            },
-            {
-              "questionId": "Section1-Q14",
-              "count": 11
+              "count": 13
             },
             {
               "questionId": "Section1-Q19",
-              "count": 11
+              "count": 12
             },
             {
-              "questionId": "Section1-Q24",
-              "count": 11
+              "questionId": "Section1-Q35",
+              "count": 12
+            },
+            {
+              "questionId": "Section1-Q8",
+              "count": 12
             }
           ],
           "mostWrong": [
             {
               "questionId": "Section1-Q6",
-              "count": 10
+              "count": 11
             },
             {
               "questionId": "Section1-Q7",
+              "count": 11
+            },
+            {
+              "questionId": "Section1-Q22",
               "count": 10
+            },
+            {
+              "questionId": "Section1-Q11",
+              "count": 9
             },
             {
               "questionId": "Section1-Q2",
               "count": 9
-            },
-            {
-              "questionId": "Section1-Q22",
-              "count": 9
-            },
-            {
-              "questionId": "Section1-Q11",
-              "count": 8
             },
             {
               "questionId": "Section1-Q18",
@@ -1610,19 +2330,19 @@
             },
             {
               "questionId": "Section1-Q33",
-              "count": 7
+              "count": 8
             },
             {
               "questionId": "Section1-Q12",
-              "count": 5
+              "count": 6
             },
             {
               "questionId": "Section1-Q13",
-              "count": 5
+              "count": 6
             },
             {
               "questionId": "Section1-Q15",
-              "count": 5
+              "count": 6
             }
           ]
         },
@@ -1638,7 +2358,7 @@
         }
       },
       "metadata": {
-        "processedAt": "2025-09-25T14:12:11.499Z",
+        "processedAt": "2025-10-09T20:49:44.587Z",
         "sourceFile": "Mathematics CT 2.xlsx",
         "sheets": [
           "Sheet1",
@@ -1650,7 +2370,7 @@
   },
   "metadata": {
     "totalTests": 1,
-    "lastProcessed": "2025-09-25T14:12:11.503Z",
+    "lastProcessed": "2025-10-09T20:49:44.605Z",
     "version": "1.0.0"
   }
 }
