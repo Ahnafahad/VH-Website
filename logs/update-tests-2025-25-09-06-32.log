@@ -1,0 +1,42 @@
+ 
+============================================= 
+VH Website Test Update Script Log 
+============================================= 
+[Thu 25/09/2025 18:32:51.93] INFO: Project paths initialized 
+Script started: Thu 25/09/2025 18:32:51.94 
+Script path: D:\VH Website\vh-website\update-tests.bat 
+Working directory: D:\VH Website\vh-website 
+User: ahnaf 
+Computer: SASUKE 
+============================================= 
+ 
+[Thu 25/09/2025 18:32:51.99] INFO: PROJECT_ROOT=D:\VH Website\vh-website\ 
+[Thu 25/09/2025 18:32:51.99] INFO: Script started at Thu 25/09/2025 18:32:51.98 
+[Thu 25/09/2025 18:32:52.00] INFO: Log file: logs\update-tests-2025-25-09-06-32.log 
+[Thu 25/09/2025 18:32:52.00] INFO: RESULTS_DIR=D:\VH Website\vh-website\Results 
+[Thu 25/09/2025 18:32:52.04] INFO: Project paths initialized 
+[Thu 25/09/2025 18:32:52.05] INFO: PUBLIC_DATA_DIR=D:\VH Website\vh-website\public\data 
+[Thu 25/09/2025 18:32:52.11] INFO: PROJECT_ROOT=D:\VH Website\vh-website\ 
+[Thu 25/09/2025 18:32:52.12] INFO: RESULTS_DIR=D:\VH Website\vh-website\Results 
+[Thu 25/09/2025 18:32:52.12] INFO: Checking Node.js installation... 
+[Thu 25/09/2025 18:32:52.12] INFO: PUBLIC_DATA_DIR=D:\VH Website\vh-website\public\data 
+[Thu 25/09/2025 18:32:52.15] INFO: Checking Node.js installation... 
+[Thu 25/09/2025 18:32:52.85] INFO: Node.js found - version v20.17.0 
+[Thu 25/09/2025 18:32:52.97] INFO: Checking Results directory: D:\VH Website\vh-website\Results 
+[Thu 25/09/2025 18:32:53.00] INFO: Results directory found 
+[Thu 25/09/2025 18:32:53.15] INFO: Scanning for Excel files in Results directory... 
+[Thu 25/09/2025 18:32:53.26] INFO: Found Excel file: Mathematics CT 2.xlsx (Size: 18878 bytes) 
+[Thu 25/09/2025 18:32:53.28] INFO: Found Excel file: Simple Test Data.xlsx (Size: 37563 bytes) 
+[Thu 25/09/2025 18:32:53.28] INFO: Checking Results directory: D:\VH Website\vh-website\Results 
+[Thu 25/09/2025 18:32:53.29] INFO: Total Excel files found: 2 
+[Thu 25/09/2025 18:32:53.30] INFO: Results directory found 
+[Thu 25/09/2025 18:32:53.30] INFO: Starting Excel processing... 
+[Thu 25/09/2025 18:32:53.34] INFO: Scanning for Excel files in Results directory... 
+[Thu 25/09/2025 18:32:53.34] INFO: Changing to project root: D:\VH Website\vh-website\ 
+[Thu 25/09/2025 18:32:53.40] INFO: Found Excel file: Mathematics CT 2.xlsx (Size: 18878 bytes) 
+[Thu 25/09/2025 18:32:53.40] ERROR: Failed to change to project root directory 
+[Thu 25/09/2025 18:32:53.41] INFO: Found Excel file: Simple Test Data.xlsx (Size: 37563 bytes) 
+[Thu 25/09/2025 18:32:53.42] INFO: Total Excel files found: 2 
+[Thu 25/09/2025 18:32:53.45] INFO: Starting Excel processing... 
+[Thu 25/09/2025 18:32:53.46] INFO: Changing to project root: D:\VH Website\vh-website\ 
+[Thu 25/09/2025 18:32:53.48] ERROR: Failed to change to project root directory 

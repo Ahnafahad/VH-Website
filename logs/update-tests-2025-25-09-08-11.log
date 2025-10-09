@@ -1,0 +1,21 @@
+ 
+============================================= 
+VH Website Test Update Script Log 
+============================================= 
+Script started: Thu 25/09/2025 20:11:31.21 
+Script path: D:\VH Website\vh-website\update-tests.bat 
+Working directory: D:\VH Website\vh-website 
+User: ahnaf 
+Computer: SASUKE 
+============================================= 
+ 
+[Thu 25/09/2025 20:11:31.25] INFO: Script started at Thu 25/09/2025 20:11:31.24 
+[Thu 25/09/2025 20:11:31.25] INFO: Log file: logs\update-tests-2025-25-09-08-11.log 
+[Thu 25/09/2025 20:11:31.36] INFO: Project paths initialized 
+[Thu 25/09/2025 20:11:31.36] INFO: PROJECT_ROOT=D:\VH Website\vh-website 
+[Thu 25/09/2025 20:11:31.37] INFO: RESULTS_DIR=D:\VH Website\vh-websiteResults 
+[Thu 25/09/2025 20:11:31.38] INFO: PUBLIC_DATA_DIR=D:\VH Website\vh-websitepublic\data 
+[Thu 25/09/2025 20:11:31.39] INFO: Checking Node.js installation... 
+[Thu 25/09/2025 20:11:32.39] INFO: Node.js found - version v20.17.0 
+[Thu 25/09/2025 20:11:32.40] INFO: Checking Results directory: D:\VH Website\vh-websiteResults 
+[Thu 25/09/2025 20:11:32.41] ERROR: Results directory not found: D:\VH Website\vh-websiteResults 

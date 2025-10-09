@@ -763,6 +763,38 @@ class ExcelProcessor {
   }
 
   /**
+   * Scan Results directory and get all Excel files
+   * @returns {Array} - List of Excel filenames to process
+   */
+  scanResultsDirectory() {
+    console.log('📂 Scanning Results directory for Excel files...');
+
+    if (!fs.existsSync(this.resultsDir)) {
+      console.error(`❌ Results directory not found: ${this.resultsDir}`);
+      return [];
+    }
+
+    const allFiles = fs.readdirSync(this.resultsDir);
+    const excelFiles = allFiles.filter(file => {
+      // Include only .xlsx files
+      if (!file.endsWith('.xlsx')) return false;
+
+      // Exclude template files and temporary files
+      const excludePatterns = ['template', '~$', '.tmp'];
+      const shouldExclude = excludePatterns.some(pattern =>
+        file.toLowerCase().includes(pattern.toLowerCase())
+      );
+
+      return !shouldExclude;
+    });
+
+    console.log(`✅ Found ${excelFiles.length} Excel file(s) to process:`);
+    excelFiles.forEach(file => console.log(`   - ${file}`));
+
+    return excelFiles;
+  }
+
+  /**
    * Run the complete processing pipeline
    */
   async run() {
@@ -770,11 +802,18 @@ class ExcelProcessor {
 
     this.initialize();
 
-    const filesToProcess = [
-      'Simple Test Data.xlsx',
-      'Mathematics CT 2.xlsx'
-      // Add more full test files as needed
-    ];
+    // Automatically scan for all Excel files
+    const filesToProcess = this.scanResultsDirectory();
+
+    if (filesToProcess.length === 0) {
+      console.log('⚠️  No Excel files found to process');
+      return {
+        success: false,
+        processed: 0,
+        errors: ['No Excel files found'],
+        warnings: this.warnings
+      };
+    }
 
     // Process each file
     for (const filename of filesToProcess) {

@@ -29,7 +29,17 @@
       "Bash(npm run lint)",
       "Bash(find:*)",
       "Bash(del test-functionality.js test-components.mjs)",
-      "Bash(tree:*)"
+      "Bash(tree:*)",
+      "Bash(update-tests.bat)",
+      "Bash(start /wait cmd /c update-tests.bat)",
+      "Bash(dir scripts)",
+      "Bash(dir Results)",
+      "Bash(.update-tests.bat)",
+      "Bash(cp:*)",
+      "Bash(dir)",
+      "Bash(dir publicdata)",
+      "Bash(dir:*)",
+      "Bash(timeout:*)"
     ],
     "deny": [],
     "ask": []

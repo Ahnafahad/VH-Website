@@ -582,6 +582,21 @@ const TestDetailPage = () => {
                         </div>
                       ))}
                     </div>
+
+                    {/* Essays for Full Tests */}
+                    {(userResult as FullTestResult).essays && Object.keys((userResult as FullTestResult).essays!).length > 0 && (
+                      <div className="mt-6 pt-6 border-t border-gray-200">
+                        <h4 className="font-semibold text-gray-800 mb-4">Essay Scores</h4>
+                        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+                          {Object.entries((userResult as FullTestResult).essays!).map(([essayNum, score]) => (
+                            <div key={essayNum} className="text-center p-4 bg-gradient-to-br from-purple-50 to-pink-50 rounded-lg border border-purple-200 hover:shadow-md transition-all duration-300">
+                              <div className="text-2xl font-bold text-purple-600 mb-1">{score}</div>
+                              <div className="text-sm text-purple-700 font-medium">Essay {essayNum}</div>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
                   </div>
 
                   {/* Individual Responses */}

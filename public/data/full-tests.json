@@ -4,9 +4,7 @@
       "testName": "English Test 2",
       "testType": "full",
       "sections": [
-        "1",
-        "2",
-        "3"
+        "1"
       ],
       "results": {
         "121716": {
@@ -18,20 +16,6 @@
               "wrong": 37,
               "marks": 31.75,
               "percentage": 35.27777777777778,
-              "totalQuestions": 0
-            },
-            "2": {
-              "correct": 0,
-              "wrong": 0,
-              "marks": 0,
-              "percentage": 0,
-              "totalQuestions": 0
-            },
-            "3": {
-              "correct": 0,
-              "wrong": 0,
-              "marks": 0,
-              "percentage": 0,
               "totalQuestions": 0
             }
           },
@@ -146,20 +130,6 @@
                 "attempted": 78,
                 "unattempted": 12,
                 "efficiency": 45.55
-              },
-              "2": {
-                "accuracy": 0,
-                "attemptRate": 0,
-                "attempted": 0,
-                "unattempted": 0,
-                "efficiency": 0
-              },
-              "3": {
-                "accuracy": 0,
-                "attemptRate": 0,
-                "attempted": 0,
-                "unattempted": 0,
-                "efficiency": 0
               }
             }
           }
@@ -169,20 +139,6 @@
           "studentName": "Sadia Islam Sneha",
           "sections": {
             "1": {
-              "correct": 0,
-              "wrong": 0,
-              "marks": 0,
-              "percentage": 0,
-              "totalQuestions": 0
-            },
-            "2": {
-              "correct": 0,
-              "wrong": 0,
-              "marks": 0,
-              "percentage": 0,
-              "totalQuestions": 0
-            },
-            "3": {
               "correct": 0,
               "wrong": 0,
               "marks": 0,
@@ -205,20 +161,6 @@
                 "attempted": 0,
                 "unattempted": 0,
                 "efficiency": 0
-              },
-              "2": {
-                "accuracy": 0,
-                "attemptRate": 0,
-                "attempted": 0,
-                "unattempted": 0,
-                "efficiency": 0
-              },
-              "3": {
-                "accuracy": 0,
-                "attemptRate": 0,
-                "attempted": 0,
-                "unattempted": 0,
-                "efficiency": 0
               }
             }
           }
@@ -232,20 +174,6 @@
               "wrong": 17,
               "marks": 18.75,
               "percentage": 20.833333333333336,
-              "totalQuestions": 0
-            },
-            "2": {
-              "correct": 0,
-              "wrong": 0,
-              "marks": 0,
-              "percentage": 0,
-              "totalQuestions": 0
-            },
-            "3": {
-              "correct": 0,
-              "wrong": 0,
-              "marks": 0,
-              "percentage": 0,
               "totalQuestions": 0
             }
           },
@@ -360,20 +288,6 @@
                 "attempted": 40,
                 "unattempted": 50,
                 "efficiency": 25.55
-              },
-              "2": {
-                "accuracy": 0,
-                "attemptRate": 0,
-                "attempted": 0,
-                "unattempted": 0,
-                "efficiency": 0
-              },
-              "3": {
-                "accuracy": 0,
-                "attemptRate": 0,
-                "attempted": 0,
-                "unattempted": 0,
-                "efficiency": 0
               }
             }
           }
@@ -387,20 +301,6 @@
               "wrong": 5,
               "marks": 62.75,
               "percentage": 69.72222222222221,
-              "totalQuestions": 0
-            },
-            "2": {
-              "correct": 0,
-              "wrong": 0,
-              "marks": 0,
-              "percentage": 0,
-              "totalQuestions": 0
-            },
-            "3": {
-              "correct": 0,
-              "wrong": 0,
-              "marks": 0,
-              "percentage": 0,
               "totalQuestions": 0
             }
           },
@@ -515,20 +415,6 @@
                 "attempted": 69,
                 "unattempted": 21,
                 "efficiency": 71.11
-              },
-              "2": {
-                "accuracy": 0,
-                "attemptRate": 0,
-                "attempted": 0,
-                "unattempted": 0,
-                "efficiency": 0
-              },
-              "3": {
-                "accuracy": 0,
-                "attemptRate": 0,
-                "attempted": 0,
-                "unattempted": 0,
-                "efficiency": 0
               }
             }
           }
@@ -538,20 +424,6 @@
           "studentName": "Nusrat Tasfia",
           "sections": {
             "1": {
-              "correct": 0,
-              "wrong": 0,
-              "marks": 0,
-              "percentage": 0,
-              "totalQuestions": 0
-            },
-            "2": {
-              "correct": 0,
-              "wrong": 0,
-              "marks": 0,
-              "percentage": 0,
-              "totalQuestions": 0
-            },
-            "3": {
               "correct": 0,
               "wrong": 0,
               "marks": 0,
@@ -569,20 +441,6 @@
             "recoveryScore": 0,
             "sectionPerformance": {
               "1": {
-                "accuracy": 0,
-                "attemptRate": 0,
-                "attempted": 0,
-                "unattempted": 0,
-                "efficiency": 0
-              },
-              "2": {
-                "accuracy": 0,
-                "attemptRate": 0,
-                "attempted": 0,
-                "unattempted": 0,
-                "efficiency": 0
-              },
-              "3": {
                 "accuracy": 0,
                 "attemptRate": 0,
                 "attempted": 0,
@@ -602,20 +460,6 @@
               "marks": 0,
               "percentage": 0,
               "totalQuestions": 0
-            },
-            "2": {
-              "correct": 0,
-              "wrong": 0,
-              "marks": 0,
-              "percentage": 0,
-              "totalQuestions": 0
-            },
-            "3": {
-              "correct": 0,
-              "wrong": 0,
-              "marks": 0,
-              "percentage": 0,
-              "totalQuestions": 0
             }
           },
           "totalMarks": 0,
@@ -628,20 +472,6 @@
             "recoveryScore": 0,
             "sectionPerformance": {
               "1": {
-                "accuracy": 0,
-                "attemptRate": 0,
-                "attempted": 0,
-                "unattempted": 0,
-                "efficiency": 0
-              },
-              "2": {
-                "accuracy": 0,
-                "attemptRate": 0,
-                "attempted": 0,
-                "unattempted": 0,
-                "efficiency": 0
-              },
-              "3": {
                 "accuracy": 0,
                 "attemptRate": 0,
                 "attempted": 0,
@@ -661,20 +491,6 @@
               "marks": 0,
               "percentage": 0,
               "totalQuestions": 0
-            },
-            "2": {
-              "correct": 0,
-              "wrong": 0,
-              "marks": 0,
-              "percentage": 0,
-              "totalQuestions": 0
-            },
-            "3": {
-              "correct": 0,
-              "wrong": 0,
-              "marks": 0,
-              "percentage": 0,
-              "totalQuestions": 0
             }
           },
           "totalMarks": 0,
@@ -687,20 +503,6 @@
             "recoveryScore": 0,
             "sectionPerformance": {
               "1": {
-                "accuracy": 0,
-                "attemptRate": 0,
-                "attempted": 0,
-                "unattempted": 0,
-                "efficiency": 0
-              },
-              "2": {
-                "accuracy": 0,
-                "attemptRate": 0,
-                "attempted": 0,
-                "unattempted": 0,
-                "efficiency": 0
-              },
-              "3": {
                 "accuracy": 0,
                 "attemptRate": 0,
                 "attempted": 0,
@@ -719,20 +521,6 @@
               "wrong": 14,
               "marks": 41.5,
               "percentage": 46.111111111111114,
-              "totalQuestions": 0
-            },
-            "2": {
-              "correct": 0,
-              "wrong": 0,
-              "marks": 0,
-              "percentage": 0,
-              "totalQuestions": 0
-            },
-            "3": {
-              "correct": 0,
-              "wrong": 0,
-              "marks": 0,
-              "percentage": 0,
               "totalQuestions": 0
             }
           },
@@ -847,20 +635,6 @@
                 "attempted": 59,
                 "unattempted": 31,
                 "efficiency": 50
-              },
-              "2": {
-                "accuracy": 0,
-                "attemptRate": 0,
-                "attempted": 0,
-                "unattempted": 0,
-                "efficiency": 0
-              },
-              "3": {
-                "accuracy": 0,
-                "attemptRate": 0,
-                "attempted": 0,
-                "unattempted": 0,
-                "efficiency": 0
               }
             }
           }
@@ -870,20 +644,6 @@
           "studentName": "Sharika Sanjana Chowdhury",
           "sections": {
             "1": {
-              "correct": 0,
-              "wrong": 0,
-              "marks": 0,
-              "percentage": 0,
-              "totalQuestions": 0
-            },
-            "2": {
-              "correct": 0,
-              "wrong": 0,
-              "marks": 0,
-              "percentage": 0,
-              "totalQuestions": 0
-            },
-            "3": {
               "correct": 0,
               "wrong": 0,
               "marks": 0,
@@ -906,20 +666,6 @@
                 "attempted": 0,
                 "unattempted": 0,
                 "efficiency": 0
-              },
-              "2": {
-                "accuracy": 0,
-                "attemptRate": 0,
-                "attempted": 0,
-                "unattempted": 0,
-                "efficiency": 0
-              },
-              "3": {
-                "accuracy": 0,
-                "attemptRate": 0,
-                "attempted": 0,
-                "unattempted": 0,
-                "efficiency": 0
               }
             }
           }
@@ -933,20 +679,6 @@
               "wrong": 14,
               "marks": 63.5,
               "percentage": 70.55555555555556,
-              "totalQuestions": 0
-            },
-            "2": {
-              "correct": 0,
-              "wrong": 0,
-              "marks": 0,
-              "percentage": 0,
-              "totalQuestions": 0
-            },
-            "3": {
-              "correct": 0,
-              "wrong": 0,
-              "marks": 0,
-              "percentage": 0,
               "totalQuestions": 0
             }
           },
@@ -1061,20 +793,6 @@
                 "attempted": 81,
                 "unattempted": 9,
                 "efficiency": 74.45
-              },
-              "2": {
-                "accuracy": 0,
-                "attemptRate": 0,
-                "attempted": 0,
-                "unattempted": 0,
-                "efficiency": 0
-              },
-              "3": {
-                "accuracy": 0,
-                "attemptRate": 0,
-                "attempted": 0,
-                "unattempted": 0,
-                "efficiency": 0
               }
             }
           }
@@ -1084,20 +802,6 @@
           "studentName": "Mansib Rahman",
           "sections": {
             "1": {
-              "correct": 0,
-              "wrong": 0,
-              "marks": 0,
-              "percentage": 0,
-              "totalQuestions": 0
-            },
-            "2": {
-              "correct": 0,
-              "wrong": 0,
-              "marks": 0,
-              "percentage": 0,
-              "totalQuestions": 0
-            },
-            "3": {
               "correct": 0,
               "wrong": 0,
               "marks": 0,
@@ -1120,20 +824,6 @@
                 "attempted": 0,
                 "unattempted": 0,
                 "efficiency": 0
-              },
-              "2": {
-                "accuracy": 0,
-                "attemptRate": 0,
-                "attempted": 0,
-                "unattempted": 0,
-                "efficiency": 0
-              },
-              "3": {
-                "accuracy": 0,
-                "attemptRate": 0,
-                "attempted": 0,
-                "unattempted": 0,
-                "efficiency": 0
               }
             }
           }
@@ -1147,20 +837,6 @@
               "wrong": 18,
               "marks": 36.5,
               "percentage": 40.55555555555556,
-              "totalQuestions": 0
-            },
-            "2": {
-              "correct": 0,
-              "wrong": 0,
-              "marks": 0,
-              "percentage": 0,
-              "totalQuestions": 0
-            },
-            "3": {
-              "correct": 0,
-              "wrong": 0,
-              "marks": 0,
-              "percentage": 0,
               "totalQuestions": 0
             }
           },
@@ -1275,20 +951,6 @@
                 "attempted": 59,
                 "unattempted": 31,
                 "efficiency": 45.56
-              },
-              "2": {
-                "accuracy": 0,
-                "attemptRate": 0,
-                "attempted": 0,
-                "unattempted": 0,
-                "efficiency": 0
-              },
-              "3": {
-                "accuracy": 0,
-                "attemptRate": 0,
-                "attempted": 0,
-                "unattempted": 0,
-                "efficiency": 0
               }
             }
           }
@@ -1303,20 +965,6 @@
               "marks": 7.5,
               "percentage": 8.333333333333332,
               "totalQuestions": "Total Question 3"
-            },
-            "2": {
-              "correct": 0,
-              "wrong": 0,
-              "marks": 0,
-              "percentage": 0,
-              "totalQuestions": 0
-            },
-            "3": {
-              "correct": 0,
-              "wrong": 0,
-              "marks": 0,
-              "percentage": 0,
-              "totalQuestions": 0
             }
           },
           "totalMarks": 22.5,
@@ -1430,20 +1078,6 @@
                 "attempted": 20,
                 "unattempted": null,
                 "efficiency": 0
-              },
-              "2": {
-                "accuracy": 0,
-                "attemptRate": 0,
-                "attempted": 0,
-                "unattempted": 0,
-                "efficiency": 0
-              },
-              "3": {
-                "accuracy": 0,
-                "attemptRate": 0,
-                "attempted": 0,
-                "unattempted": 0,
-                "efficiency": 0
               }
             }
           }
@@ -1457,20 +1091,6 @@
               "wrong": 24,
               "marks": 31,
               "percentage": 34.44444444444444,
-              "totalQuestions": 0
-            },
-            "2": {
-              "correct": 0,
-              "wrong": 0,
-              "marks": 0,
-              "percentage": 0,
-              "totalQuestions": 0
-            },
-            "3": {
-              "correct": 0,
-              "wrong": 0,
-              "marks": 0,
-              "percentage": 0,
               "totalQuestions": 0
             }
           },
@@ -1585,20 +1205,6 @@
                 "attempted": 61,
                 "unattempted": 29,
                 "efficiency": 41.12
-              },
-              "2": {
-                "accuracy": 0,
-                "attemptRate": 0,
-                "attempted": 0,
-                "unattempted": 0,
-                "efficiency": 0
-              },
-              "3": {
-                "accuracy": 0,
-                "attemptRate": 0,
-                "attempted": 0,
-                "unattempted": 0,
-                "efficiency": 0
               }
             }
           }
@@ -1612,20 +1218,6 @@
               "wrong": 10,
               "marks": 58.5,
               "percentage": 65,
-              "totalQuestions": 0
-            },
-            "2": {
-              "correct": 0,
-              "wrong": 0,
-              "marks": 0,
-              "percentage": 0,
-              "totalQuestions": 0
-            },
-            "3": {
-              "correct": 0,
-              "wrong": 0,
-              "marks": 0,
-              "percentage": 0,
               "totalQuestions": 0
             }
           },
@@ -1740,20 +1332,6 @@
                 "attempted": 71,
                 "unattempted": 19,
                 "efficiency": 67.78
-              },
-              "2": {
-                "accuracy": 0,
-                "attemptRate": 0,
-                "attempted": 0,
-                "unattempted": 0,
-                "efficiency": 0
-              },
-              "3": {
-                "accuracy": 0,
-                "attemptRate": 0,
-                "attempted": 0,
-                "unattempted": 0,
-                "efficiency": 0
               }
             }
           }
@@ -1767,20 +1345,6 @@
               "wrong": 22,
               "marks": 46.5,
               "percentage": 51.66666666666667,
-              "totalQuestions": 0
-            },
-            "2": {
-              "correct": 0,
-              "wrong": 0,
-              "marks": 0,
-              "percentage": 0,
-              "totalQuestions": 0
-            },
-            "3": {
-              "correct": 0,
-              "wrong": 0,
-              "marks": 0,
-              "percentage": 0,
               "totalQuestions": 0
             }
           },
@@ -1895,20 +1459,6 @@
                 "attempted": 74,
                 "unattempted": 16,
                 "efficiency": 57.78
-              },
-              "2": {
-                "accuracy": 0,
-                "attemptRate": 0,
-                "attempted": 0,
-                "unattempted": 0,
-                "efficiency": 0
-              },
-              "3": {
-                "accuracy": 0,
-                "attemptRate": 0,
-                "attempted": 0,
-                "unattempted": 0,
-                "efficiency": 0
               }
             }
           }
@@ -1918,20 +1468,6 @@
           "studentName": "Ayesha Khaled",
           "sections": {
             "1": {
-              "correct": 0,
-              "wrong": 0,
-              "marks": 0,
-              "percentage": 0,
-              "totalQuestions": 0
-            },
-            "2": {
-              "correct": 0,
-              "wrong": 0,
-              "marks": 0,
-              "percentage": 0,
-              "totalQuestions": 0
-            },
-            "3": {
               "correct": 0,
               "wrong": 0,
               "marks": 0,
@@ -1949,20 +1485,6 @@
             "recoveryScore": 0,
             "sectionPerformance": {
               "1": {
-                "accuracy": 0,
-                "attemptRate": 0,
-                "attempted": 0,
-                "unattempted": 0,
-                "efficiency": 0
-              },
-              "2": {
-                "accuracy": 0,
-                "attemptRate": 0,
-                "attempted": 0,
-                "unattempted": 0,
-                "efficiency": 0
-              },
-              "3": {
                 "accuracy": 0,
                 "attemptRate": 0,
                 "attempted": 0,
@@ -1982,20 +1504,6 @@
               "marks": 0,
               "percentage": 0,
               "totalQuestions": 0
-            },
-            "2": {
-              "correct": 0,
-              "wrong": 0,
-              "marks": 0,
-              "percentage": 0,
-              "totalQuestions": 0
-            },
-            "3": {
-              "correct": 0,
-              "wrong": 0,
-              "marks": 0,
-              "percentage": 0,
-              "totalQuestions": 0
             }
           },
           "totalMarks": 0,
@@ -2013,20 +1521,6 @@
                 "attempted": 0,
                 "unattempted": 0,
                 "efficiency": 0
-              },
-              "2": {
-                "accuracy": 0,
-                "attemptRate": 0,
-                "attempted": 0,
-                "unattempted": 0,
-                "efficiency": 0
-              },
-              "3": {
-                "accuracy": 0,
-                "attemptRate": 0,
-                "attempted": 0,
-                "unattempted": 0,
-                "efficiency": 0
               }
             }
           }
@@ -2036,20 +1530,6 @@
           "studentName": "Nazeef Rahman",
           "sections": {
             "1": {
-              "correct": 0,
-              "wrong": 0,
-              "marks": 0,
-              "percentage": 0,
-              "totalQuestions": 0
-            },
-            "2": {
-              "correct": 0,
-              "wrong": 0,
-              "marks": 0,
-              "percentage": 0,
-              "totalQuestions": 0
-            },
-            "3": {
               "correct": 0,
               "wrong": 0,
               "marks": 0,
@@ -2072,20 +1552,6 @@
                 "attempted": 0,
                 "unattempted": 0,
                 "efficiency": 0
-              },
-              "2": {
-                "accuracy": 0,
-                "attemptRate": 0,
-                "attempted": 0,
-                "unattempted": 0,
-                "efficiency": 0
-              },
-              "3": {
-                "accuracy": 0,
-                "attemptRate": 0,
-                "attempted": 0,
-                "unattempted": 0,
-                "efficiency": 0
               }
             }
           }
@@ -2100,20 +1566,6 @@
               "marks": 52.5,
               "percentage": 58.333333333333336,
               "totalQuestions": "Total Question 2"
-            },
-            "2": {
-              "correct": 0,
-              "wrong": 0,
-              "marks": 0,
-              "percentage": 0,
-              "totalQuestions": 0
-            },
-            "3": {
-              "correct": 0,
-              "wrong": 0,
-              "marks": 0,
-              "percentage": 0,
-              "totalQuestions": 0
             }
           },
           "totalMarks": 74.5,
@@ -2227,20 +1679,6 @@
                 "attempted": 80,
                 "unattempted": null,
                 "efficiency": 0
-              },
-              "2": {
-                "accuracy": 0,
-                "attemptRate": 0,
-                "attempted": 0,
-                "unattempted": 0,
-                "efficiency": 0
-              },
-              "3": {
-                "accuracy": 0,
-                "attemptRate": 0,
-                "attempted": 0,
-                "unattempted": 0,
-                "efficiency": 0
               }
             }
           }
@@ -2254,20 +1692,6 @@
               "wrong": 27,
               "marks": 50.25,
               "percentage": 55.833333333333336,
-              "totalQuestions": 0
-            },
-            "2": {
-              "correct": 0,
-              "wrong": 0,
-              "marks": 0,
-              "percentage": 0,
-              "totalQuestions": 0
-            },
-            "3": {
-              "correct": 0,
-              "wrong": 0,
-              "marks": 0,
-              "percentage": 0,
               "totalQuestions": 0
             }
           },
@@ -2382,20 +1806,6 @@
                 "attempted": 84,
                 "unattempted": 6,
                 "efficiency": 63.33
-              },
-              "2": {
-                "accuracy": 0,
-                "attemptRate": 0,
-                "attempted": 0,
-                "unattempted": 0,
-                "efficiency": 0
-              },
-              "3": {
-                "accuracy": 0,
-                "attemptRate": 0,
-                "attempted": 0,
-                "unattempted": 0,
-                "efficiency": 0
               }
             }
           }
@@ -2405,20 +1815,6 @@
           "studentName": "Sajid Shahrier Khan",
           "sections": {
             "1": {
-              "correct": 0,
-              "wrong": 0,
-              "marks": 0,
-              "percentage": 0,
-              "totalQuestions": 0
-            },
-            "2": {
-              "correct": 0,
-              "wrong": 0,
-              "marks": 0,
-              "percentage": 0,
-              "totalQuestions": 0
-            },
-            "3": {
               "correct": 0,
               "wrong": 0,
               "marks": 0,
@@ -2441,20 +1837,6 @@
                 "attempted": 0,
                 "unattempted": 0,
                 "efficiency": 0
-              },
-              "2": {
-                "accuracy": 0,
-                "attemptRate": 0,
-                "attempted": 0,
-                "unattempted": 0,
-                "efficiency": 0
-              },
-              "3": {
-                "accuracy": 0,
-                "attemptRate": 0,
-                "attempted": 0,
-                "unattempted": 0,
-                "efficiency": 0
               }
             }
           }
@@ -2468,20 +1850,6 @@
               "wrong": 16,
               "marks": 48,
               "percentage": 53.333333333333336,
-              "totalQuestions": 0
-            },
-            "2": {
-              "correct": 0,
-              "wrong": 0,
-              "marks": 0,
-              "percentage": 0,
-              "totalQuestions": 0
-            },
-            "3": {
-              "correct": 0,
-              "wrong": 0,
-              "marks": 0,
-              "percentage": 0,
               "totalQuestions": 0
             }
           },
@@ -2596,20 +1964,6 @@
                 "attempted": 68,
                 "unattempted": 22,
                 "efficiency": 57.78
-              },
-              "2": {
-                "accuracy": 0,
-                "attemptRate": 0,
-                "attempted": 0,
-                "unattempted": 0,
-                "efficiency": 0
-              },
-              "3": {
-                "accuracy": 0,
-                "attemptRate": 0,
-                "attempted": 0,
-                "unattempted": 0,
-                "efficiency": 0
               }
             }
           }
@@ -2619,20 +1973,6 @@
           "studentName": "Mahira Akhtar",
           "sections": {
             "1": {
-              "correct": 0,
-              "wrong": 0,
-              "marks": 0,
-              "percentage": 0,
-              "totalQuestions": 0
-            },
-            "2": {
-              "correct": 0,
-              "wrong": 0,
-              "marks": 0,
-              "percentage": 0,
-              "totalQuestions": 0
-            },
-            "3": {
               "correct": 0,
               "wrong": 0,
               "marks": 0,
@@ -2650,20 +1990,6 @@
             "recoveryScore": 0,
             "sectionPerformance": {
               "1": {
-                "accuracy": 0,
-                "attemptRate": 0,
-                "attempted": 0,
-                "unattempted": 0,
-                "efficiency": 0
-              },
-              "2": {
-                "accuracy": 0,
-                "attemptRate": 0,
-                "attempted": 0,
-                "unattempted": 0,
-                "efficiency": 0
-              },
-              "3": {
                 "accuracy": 0,
                 "attemptRate": 0,
                 "attempted": 0,
@@ -2824,7 +2150,7 @@
         }
       },
       "metadata": {
-        "processedAt": "2025-10-09T20:54:19.278Z",
+        "processedAt": "2025-10-09T20:58:34.217Z",
         "sourceFile": "English Test 2.xlsx",
         "sheets": [
           "Sheet1",
@@ -2837,9 +2163,7 @@
       "testName": "Mathematics CT 2",
       "testType": "full",
       "sections": [
-        "1",
-        "2",
-        "3"
+        "1"
       ],
       "results": {
         "121716": {
@@ -2851,20 +2175,6 @@
               "wrong": 18,
               "marks": 4.5,
               "percentage": 10,
-              "totalQuestions": 0
-            },
-            "2": {
-              "correct": 0,
-              "wrong": 0,
-              "marks": 0,
-              "percentage": 0,
-              "totalQuestions": 0
-            },
-            "3": {
-              "correct": 0,
-              "wrong": 0,
-              "marks": 0,
-              "percentage": 0,
               "totalQuestions": 0
             }
           },
@@ -2929,20 +2239,6 @@
                 "attempted": 27,
                 "unattempted": 18,
                 "efficiency": 20
-              },
-              "2": {
-                "accuracy": 0,
-                "attemptRate": 0,
-                "attempted": 0,
-                "unattempted": 0,
-                "efficiency": 0
-              },
-              "3": {
-                "accuracy": 0,
-                "attemptRate": 0,
-                "attempted": 0,
-                "unattempted": 0,
-                "efficiency": 0
               }
             }
           }
@@ -2952,20 +2248,6 @@
           "studentName": "Sadia Islam Sneha",
           "sections": {
             "1": {
-              "correct": 0,
-              "wrong": 0,
-              "marks": 0,
-              "percentage": 0,
-              "totalQuestions": 0
-            },
-            "2": {
-              "correct": 0,
-              "wrong": 0,
-              "marks": 0,
-              "percentage": 0,
-              "totalQuestions": 0
-            },
-            "3": {
               "correct": 0,
               "wrong": 0,
               "marks": 0,
@@ -2988,20 +2270,6 @@
                 "attempted": 0,
                 "unattempted": 0,
                 "efficiency": 0
-              },
-              "2": {
-                "accuracy": 0,
-                "attemptRate": 0,
-                "attempted": 0,
-                "unattempted": 0,
-                "efficiency": 0
-              },
-              "3": {
-                "accuracy": 0,
-                "attemptRate": 0,
-                "attempted": 0,
-                "unattempted": 0,
-                "efficiency": 0
               }
             }
           }
@@ -3015,20 +2283,6 @@
               "wrong": 30,
               "marks": 7.5,
               "percentage": 16.666666666666664,
-              "totalQuestions": 0
-            },
-            "2": {
-              "correct": 0,
-              "wrong": 0,
-              "marks": 0,
-              "percentage": 0,
-              "totalQuestions": 0
-            },
-            "3": {
-              "correct": 0,
-              "wrong": 0,
-              "marks": 0,
-              "percentage": 0,
               "totalQuestions": 0
             }
           },
@@ -3093,20 +2347,6 @@
                 "attempted": 45,
                 "unattempted": 0,
                 "efficiency": 33.33
-              },
-              "2": {
-                "accuracy": 0,
-                "attemptRate": 0,
-                "attempted": 0,
-                "unattempted": 0,
-                "efficiency": 0
-              },
-              "3": {
-                "accuracy": 0,
-                "attemptRate": 0,
-                "attempted": 0,
-                "unattempted": 0,
-                "efficiency": 0
               }
             }
           }
@@ -3120,20 +2360,6 @@
               "wrong": 7,
               "marks": 19.25,
               "percentage": 42.77777777777778,
-              "totalQuestions": 0
-            },
-            "2": {
-              "correct": 0,
-              "wrong": 0,
-              "marks": 0,
-              "percentage": 0,
-              "totalQuestions": 0
-            },
-            "3": {
-              "correct": 0,
-              "wrong": 0,
-              "marks": 0,
-              "percentage": 0,
               "totalQuestions": 0
             }
           },
@@ -3198,20 +2424,6 @@
                 "attempted": 28,
                 "unattempted": 17,
                 "efficiency": 46.67
-              },
-              "2": {
-                "accuracy": 0,
-                "attemptRate": 0,
-                "attempted": 0,
-                "unattempted": 0,
-                "efficiency": 0
-              },
-              "3": {
-                "accuracy": 0,
-                "attemptRate": 0,
-                "attempted": 0,
-                "unattempted": 0,
-                "efficiency": 0
               }
             }
           }
@@ -3225,20 +2437,6 @@
               "wrong": 8,
               "marks": 5,
               "percentage": 11.11111111111111,
-              "totalQuestions": 0
-            },
-            "2": {
-              "correct": 0,
-              "wrong": 0,
-              "marks": 0,
-              "percentage": 0,
-              "totalQuestions": 0
-            },
-            "3": {
-              "correct": 0,
-              "wrong": 0,
-              "marks": 0,
-              "percentage": 0,
               "totalQuestions": 0
             }
           },
@@ -3303,20 +2501,6 @@
                 "attempted": 15,
                 "unattempted": 30,
                 "efficiency": 15.56
-              },
-              "2": {
-                "accuracy": 0,
-                "attemptRate": 0,
-                "attempted": 0,
-                "unattempted": 0,
-                "efficiency": 0
-              },
-              "3": {
-                "accuracy": 0,
-                "attemptRate": 0,
-                "attempted": 0,
-                "unattempted": 0,
-                "efficiency": 0
               }
             }
           }
@@ -3326,20 +2510,6 @@
           "studentName": "Sara Iftekhar",
           "sections": {
             "1": {
-              "correct": 0,
-              "wrong": 0,
-              "marks": 0,
-              "percentage": 0,
-              "totalQuestions": 0
-            },
-            "2": {
-              "correct": 0,
-              "wrong": 0,
-              "marks": 0,
-              "percentage": 0,
-              "totalQuestions": 0
-            },
-            "3": {
               "correct": 0,
               "wrong": 0,
               "marks": 0,
@@ -3362,20 +2532,6 @@
                 "attempted": 0,
                 "unattempted": 0,
                 "efficiency": 0
-              },
-              "2": {
-                "accuracy": 0,
-                "attemptRate": 0,
-                "attempted": 0,
-                "unattempted": 0,
-                "efficiency": 0
-              },
-              "3": {
-                "accuracy": 0,
-                "attemptRate": 0,
-                "attempted": 0,
-                "unattempted": 0,
-                "efficiency": 0
               }
             }
           }
@@ -3389,20 +2545,6 @@
               "wrong": 4,
               "marks": 10,
               "percentage": 22.22222222222222,
-              "totalQuestions": 0
-            },
-            "2": {
-              "correct": 0,
-              "wrong": 0,
-              "marks": 0,
-              "percentage": 0,
-              "totalQuestions": 0
-            },
-            "3": {
-              "correct": 0,
-              "wrong": 0,
-              "marks": 0,
-              "percentage": 0,
               "totalQuestions": 0
             }
           },
@@ -3467,20 +2609,6 @@
                 "attempted": 15,
                 "unattempted": 30,
                 "efficiency": 24.44
-              },
-              "2": {
-                "accuracy": 0,
-                "attemptRate": 0,
-                "attempted": 0,
-                "unattempted": 0,
-                "efficiency": 0
-              },
-              "3": {
-                "accuracy": 0,
-                "attemptRate": 0,
-                "attempted": 0,
-                "unattempted": 0,
-                "efficiency": 0
               }
             }
           }
@@ -3494,20 +2622,6 @@
               "wrong": 10,
               "marks": 11.5,
               "percentage": 25.555555555555554,
-              "totalQuestions": 0
-            },
-            "2": {
-              "correct": 0,
-              "wrong": 0,
-              "marks": 0,
-              "percentage": 0,
-              "totalQuestions": 0
-            },
-            "3": {
-              "correct": 0,
-              "wrong": 0,
-              "marks": 0,
-              "percentage": 0,
               "totalQuestions": 0
             }
           },
@@ -3572,20 +2686,6 @@
                 "attempted": 24,
                 "unattempted": 21,
                 "efficiency": 31.11
-              },
-              "2": {
-                "accuracy": 0,
-                "attemptRate": 0,
-                "attempted": 0,
-                "unattempted": 0,
-                "efficiency": 0
-              },
-              "3": {
-                "accuracy": 0,
-                "attemptRate": 0,
-                "attempted": 0,
-                "unattempted": 0,
-                "efficiency": 0
               }
             }
           }
@@ -3599,20 +2699,6 @@
               "wrong": 14,
               "marks": 9.5,
               "percentage": 21.11111111111111,
-              "totalQuestions": 0
-            },
-            "2": {
-              "correct": 0,
-              "wrong": 0,
-              "marks": 0,
-              "percentage": 0,
-              "totalQuestions": 0
-            },
-            "3": {
-              "correct": 0,
-              "wrong": 0,
-              "marks": 0,
-              "percentage": 0,
               "totalQuestions": 0
             }
           },
@@ -3677,20 +2763,6 @@
                 "attempted": 27,
                 "unattempted": 18,
                 "efficiency": 28.89
-              },
-              "2": {
-                "accuracy": 0,
-                "attemptRate": 0,
-                "attempted": 0,
-                "unattempted": 0,
-                "efficiency": 0
-              },
-              "3": {
-                "accuracy": 0,
-                "attemptRate": 0,
-                "attempted": 0,
-                "unattempted": 0,
-                "efficiency": 0
               }
             }
           }
@@ -3704,20 +2776,6 @@
               "wrong": 9,
               "marks": 10.75,
               "percentage": 23.88888888888889,
-              "totalQuestions": 0
-            },
-            "2": {
-              "correct": 0,
-              "wrong": 0,
-              "marks": 0,
-              "percentage": 0,
-              "totalQuestions": 0
-            },
-            "3": {
-              "correct": 0,
-              "wrong": 0,
-              "marks": 0,
-              "percentage": 0,
               "totalQuestions": 0
             }
           },
@@ -3782,20 +2840,6 @@
                 "attempted": 22,
                 "unattempted": 23,
                 "efficiency": 28.89
-              },
-              "2": {
-                "accuracy": 0,
-                "attemptRate": 0,
-                "attempted": 0,
-                "unattempted": 0,
-                "efficiency": 0
-              },
-              "3": {
-                "accuracy": 0,
-                "attemptRate": 0,
-                "attempted": 0,
-                "unattempted": 0,
-                "efficiency": 0
               }
             }
           }
@@ -3805,20 +2849,6 @@
           "studentName": "Mansib Rahman",
           "sections": {
             "1": {
-              "correct": 0,
-              "wrong": 0,
-              "marks": 0,
-              "percentage": 0,
-              "totalQuestions": 0
-            },
-            "2": {
-              "correct": 0,
-              "wrong": 0,
-              "marks": 0,
-              "percentage": 0,
-              "totalQuestions": 0
-            },
-            "3": {
               "correct": 0,
               "wrong": 0,
               "marks": 0,
@@ -3841,20 +2871,6 @@
                 "attempted": 0,
                 "unattempted": 0,
                 "efficiency": 0
-              },
-              "2": {
-                "accuracy": 0,
-                "attemptRate": 0,
-                "attempted": 0,
-                "unattempted": 0,
-                "efficiency": 0
-              },
-              "3": {
-                "accuracy": 0,
-                "attemptRate": 0,
-                "attempted": 0,
-                "unattempted": 0,
-                "efficiency": 0
               }
             }
           }
@@ -3868,20 +2884,6 @@
               "wrong": 7,
               "marks": 7.25,
               "percentage": 16.11111111111111,
-              "totalQuestions": 0
-            },
-            "2": {
-              "correct": 0,
-              "wrong": 0,
-              "marks": 0,
-              "percentage": 0,
-              "totalQuestions": 0
-            },
-            "3": {
-              "correct": 0,
-              "wrong": 0,
-              "marks": 0,
-              "percentage": 0,
               "totalQuestions": 0
             }
           },
@@ -3946,20 +2948,6 @@
                 "attempted": 16,
                 "unattempted": 29,
                 "efficiency": 20
-              },
-              "2": {
-                "accuracy": 0,
-                "attemptRate": 0,
-                "attempted": 0,
-                "unattempted": 0,
-                "efficiency": 0
-              },
-              "3": {
-                "accuracy": 0,
-                "attemptRate": 0,
-                "attempted": 0,
-                "unattempted": 0,
-                "efficiency": 0
               }
             }
           }
@@ -3974,20 +2962,6 @@
               "marks": 5.5,
               "percentage": 12.222222222222221,
               "totalQuestions": "Total Question 3"
-            },
-            "2": {
-              "correct": 0,
-              "wrong": 0,
-              "marks": 0,
-              "percentage": 0,
-              "totalQuestions": 0
-            },
-            "3": {
-              "correct": 0,
-              "wrong": 0,
-              "marks": 0,
-              "percentage": 0,
-              "totalQuestions": 0
             }
           },
           "totalMarks": 5.5,
@@ -4051,20 +3025,6 @@
                 "attempted": 23,
                 "unattempted": null,
                 "efficiency": 0
-              },
-              "2": {
-                "accuracy": 0,
-                "attemptRate": 0,
-                "attempted": 0,
-                "unattempted": 0,
-                "efficiency": 0
-              },
-              "3": {
-                "accuracy": 0,
-                "attemptRate": 0,
-                "attempted": 0,
-                "unattempted": 0,
-                "efficiency": 0
               }
             }
           }
@@ -4078,20 +3038,6 @@
               "wrong": 8,
               "marks": 13,
               "percentage": 28.888888888888886,
-              "totalQuestions": 0
-            },
-            "2": {
-              "correct": 0,
-              "wrong": 0,
-              "marks": 0,
-              "percentage": 0,
-              "totalQuestions": 0
-            },
-            "3": {
-              "correct": 0,
-              "wrong": 0,
-              "marks": 0,
-              "percentage": 0,
               "totalQuestions": 0
             }
           },
@@ -4156,20 +3102,6 @@
                 "attempted": 23,
                 "unattempted": 22,
                 "efficiency": 33.33
-              },
-              "2": {
-                "accuracy": 0,
-                "attemptRate": 0,
-                "attempted": 0,
-                "unattempted": 0,
-                "efficiency": 0
-              },
-              "3": {
-                "accuracy": 0,
-                "attemptRate": 0,
-                "attempted": 0,
-                "unattempted": 0,
-                "efficiency": 0
               }
             }
           }
@@ -4183,20 +3115,6 @@
               "wrong": 10,
               "marks": 9.5,
               "percentage": 21.11111111111111,
-              "totalQuestions": 0
-            },
-            "2": {
-              "correct": 0,
-              "wrong": 0,
-              "marks": 0,
-              "percentage": 0,
-              "totalQuestions": 0
-            },
-            "3": {
-              "correct": 0,
-              "wrong": 0,
-              "marks": 0,
-              "percentage": 0,
               "totalQuestions": 0
             }
           },
@@ -4261,20 +3179,6 @@
                 "attempted": 22,
                 "unattempted": 23,
                 "efficiency": 26.67
-              },
-              "2": {
-                "accuracy": 0,
-                "attemptRate": 0,
-                "attempted": 0,
-                "unattempted": 0,
-                "efficiency": 0
-              },
-              "3": {
-                "accuracy": 0,
-                "attemptRate": 0,
-                "attempted": 0,
-                "unattempted": 0,
-                "efficiency": 0
               }
             }
           }
@@ -4288,20 +3192,6 @@
               "wrong": 17,
               "marks": 11.75,
               "percentage": 26.111111111111114,
-              "totalQuestions": 0
-            },
-            "2": {
-              "correct": 0,
-              "wrong": 0,
-              "marks": 0,
-              "percentage": 0,
-              "totalQuestions": 0
-            },
-            "3": {
-              "correct": 0,
-              "wrong": 0,
-              "marks": 0,
-              "percentage": 0,
               "totalQuestions": 0
             }
           },
@@ -4366,20 +3256,6 @@
                 "attempted": 33,
                 "unattempted": 12,
                 "efficiency": 35.55
-              },
-              "2": {
-                "accuracy": 0,
-                "attemptRate": 0,
-                "attempted": 0,
-                "unattempted": 0,
-                "efficiency": 0
-              },
-              "3": {
-                "accuracy": 0,
-                "attemptRate": 0,
-                "attempted": 0,
-                "unattempted": 0,
-                "efficiency": 0
               }
             }
           }
@@ -4393,20 +3269,6 @@
               "wrong": 12,
               "marks": 5,
               "percentage": 11.11111111111111,
-              "totalQuestions": 0
-            },
-            "2": {
-              "correct": 0,
-              "wrong": 0,
-              "marks": 0,
-              "percentage": 0,
-              "totalQuestions": 0
-            },
-            "3": {
-              "correct": 0,
-              "wrong": 0,
-              "marks": 0,
-              "percentage": 0,
               "totalQuestions": 0
             }
           },
@@ -4471,20 +3333,6 @@
                 "attempted": 20,
                 "unattempted": 25,
                 "efficiency": 17.78
-              },
-              "2": {
-                "accuracy": 0,
-                "attemptRate": 0,
-                "attempted": 0,
-                "unattempted": 0,
-                "efficiency": 0
-              },
-              "3": {
-                "accuracy": 0,
-                "attemptRate": 0,
-                "attempted": 0,
-                "unattempted": 0,
-                "efficiency": 0
               }
             }
           }
@@ -4494,20 +3342,6 @@
           "studentName": "Aymaan Zaman",
           "sections": {
             "1": {
-              "correct": 0,
-              "wrong": 0,
-              "marks": 0,
-              "percentage": 0,
-              "totalQuestions": 0
-            },
-            "2": {
-              "correct": 0,
-              "wrong": 0,
-              "marks": 0,
-              "percentage": 0,
-              "totalQuestions": 0
-            },
-            "3": {
               "correct": 0,
               "wrong": 0,
               "marks": 0,
@@ -4525,20 +3359,6 @@
             "recoveryScore": 0,
             "sectionPerformance": {
               "1": {
-                "accuracy": 0,
-                "attemptRate": 0,
-                "attempted": 0,
-                "unattempted": 0,
-                "efficiency": 0
-              },
-              "2": {
-                "accuracy": 0,
-                "attemptRate": 0,
-                "attempted": 0,
-                "unattempted": 0,
-                "efficiency": 0
-              },
-              "3": {
                 "accuracy": 0,
                 "attemptRate": 0,
                 "attempted": 0,
@@ -4558,20 +3378,6 @@
               "marks": 0,
               "percentage": 0,
               "totalQuestions": 0
-            },
-            "2": {
-              "correct": 0,
-              "wrong": 0,
-              "marks": 0,
-              "percentage": 0,
-              "totalQuestions": 0
-            },
-            "3": {
-              "correct": 0,
-              "wrong": 0,
-              "marks": 0,
-              "percentage": 0,
-              "totalQuestions": 0
             }
           },
           "totalMarks": 0,
@@ -4584,20 +3390,6 @@
             "recoveryScore": 0,
             "sectionPerformance": {
               "1": {
-                "accuracy": 0,
-                "attemptRate": 0,
-                "attempted": 0,
-                "unattempted": 0,
-                "efficiency": 0
-              },
-              "2": {
-                "accuracy": 0,
-                "attemptRate": 0,
-                "attempted": 0,
-                "unattempted": 0,
-                "efficiency": 0
-              },
-              "3": {
                 "accuracy": 0,
                 "attemptRate": 0,
                 "attempted": 0,
@@ -4617,20 +3409,6 @@
               "marks": 15.5,
               "percentage": 34.44444444444444,
               "totalQuestions": "Total Question 2"
-            },
-            "2": {
-              "correct": 0,
-              "wrong": 0,
-              "marks": 0,
-              "percentage": 0,
-              "totalQuestions": 0
-            },
-            "3": {
-              "correct": 0,
-              "wrong": 0,
-              "marks": 0,
-              "percentage": 0,
-              "totalQuestions": 0
             }
           },
           "totalMarks": 15.5,
@@ -4694,20 +3472,6 @@
                 "attempted": 23,
                 "unattempted": null,
                 "efficiency": 0
-              },
-              "2": {
-                "accuracy": 0,
-                "attemptRate": 0,
-                "attempted": 0,
-                "unattempted": 0,
-                "efficiency": 0
-              },
-              "3": {
-                "accuracy": 0,
-                "attemptRate": 0,
-                "attempted": 0,
-                "unattempted": 0,
-                "efficiency": 0
               }
             }
           }
@@ -4721,20 +3485,6 @@
               "wrong": 6,
               "marks": 28.5,
               "percentage": 63.33333333333333,
-              "totalQuestions": 0
-            },
-            "2": {
-              "correct": 0,
-              "wrong": 0,
-              "marks": 0,
-              "percentage": 0,
-              "totalQuestions": 0
-            },
-            "3": {
-              "correct": 0,
-              "wrong": 0,
-              "marks": 0,
-              "percentage": 0,
               "totalQuestions": 0
             }
           },
@@ -4799,20 +3549,6 @@
                 "attempted": 36,
                 "unattempted": 9,
                 "efficiency": 66.66
-              },
-              "2": {
-                "accuracy": 0,
-                "attemptRate": 0,
-                "attempted": 0,
-                "unattempted": 0,
-                "efficiency": 0
-              },
-              "3": {
-                "accuracy": 0,
-                "attemptRate": 0,
-                "attempted": 0,
-                "unattempted": 0,
-                "efficiency": 0
               }
             }
           }
@@ -4822,20 +3558,6 @@
           "studentName": "Sajid Shahrier Khan",
           "sections": {
             "1": {
-              "correct": 0,
-              "wrong": 0,
-              "marks": 0,
-              "percentage": 0,
-              "totalQuestions": 0
-            },
-            "2": {
-              "correct": 0,
-              "wrong": 0,
-              "marks": 0,
-              "percentage": 0,
-              "totalQuestions": 0
-            },
-            "3": {
               "correct": 0,
               "wrong": 0,
               "marks": 0,
@@ -4858,20 +3580,6 @@
                 "attempted": 0,
                 "unattempted": 0,
                 "efficiency": 0
-              },
-              "2": {
-                "accuracy": 0,
-                "attemptRate": 0,
-                "attempted": 0,
-                "unattempted": 0,
-                "efficiency": 0
-              },
-              "3": {
-                "accuracy": 0,
-                "attemptRate": 0,
-                "attempted": 0,
-                "unattempted": 0,
-                "efficiency": 0
               }
             }
           }
@@ -4885,20 +3593,6 @@
               "wrong": 3,
               "marks": 15.25,
               "percentage": 33.88888888888889,
-              "totalQuestions": 0
-            },
-            "2": {
-              "correct": 0,
-              "wrong": 0,
-              "marks": 0,
-              "percentage": 0,
-              "totalQuestions": 0
-            },
-            "3": {
-              "correct": 0,
-              "wrong": 0,
-              "marks": 0,
-              "percentage": 0,
               "totalQuestions": 0
             }
           },
@@ -4963,20 +3657,6 @@
                 "attempted": 19,
                 "unattempted": 26,
                 "efficiency": 35.55
-              },
-              "2": {
-                "accuracy": 0,
-                "attemptRate": 0,
-                "attempted": 0,
-                "unattempted": 0,
-                "efficiency": 0
-              },
-              "3": {
-                "accuracy": 0,
-                "attemptRate": 0,
-                "attempted": 0,
-                "unattempted": 0,
-                "efficiency": 0
               }
             }
           }
@@ -4986,20 +3666,6 @@
           "studentName": "Mahira Akhtar",
           "sections": {
             "1": {
-              "correct": 0,
-              "wrong": 0,
-              "marks": 0,
-              "percentage": 0,
-              "totalQuestions": 0
-            },
-            "2": {
-              "correct": 0,
-              "wrong": 0,
-              "marks": 0,
-              "percentage": 0,
-              "totalQuestions": 0
-            },
-            "3": {
               "correct": 0,
               "wrong": 0,
               "marks": 0,
@@ -5017,20 +3683,6 @@
             "recoveryScore": 0,
             "sectionPerformance": {
               "1": {
-                "accuracy": 0,
-                "attemptRate": 0,
-                "attempted": 0,
-                "unattempted": 0,
-                "efficiency": 0
-              },
-              "2": {
-                "accuracy": 0,
-                "attemptRate": 0,
-                "attempted": 0,
-                "unattempted": 0,
-                "efficiency": 0
-              },
-              "3": {
                 "accuracy": 0,
                 "attemptRate": 0,
                 "attempted": 0,
@@ -5191,7 +3843,7 @@
         }
       },
       "metadata": {
-        "processedAt": "2025-10-09T20:54:19.296Z",
+        "processedAt": "2025-10-09T20:58:34.234Z",
         "sourceFile": "Mathematics CT 2.xlsx",
         "sheets": [
           "Sheet1",
@@ -5203,7 +3855,7 @@
   },
   "metadata": {
     "totalTests": 2,
-    "lastProcessed": "2025-10-09T20:54:19.332Z",
+    "lastProcessed": "2025-10-09T20:58:34.269Z",
     "version": "1.0.0"
   }
 }
