@@ -410,29 +410,62 @@ class ExcelProcessor {
     const sections = extractedData.sections;
     const essays = extractedData.essays;
 
-    const studentResult = {
-      studentId: basic.studentId,
-      studentName: basic.studentName,
-      sections: {},
-      totalMarks: basic.score || 0,
-      totalPercentage: basic.percentage || 0,
-      rank: basic.rank || 0
-    };
+    // Calculate MCQ marks and essay marks separately
+    let mcqMarks = 0;
+    let essayMarks = 0;
+    let essayCount = 0;
 
     // Process section data
+    const processedSections = {};
     Object.entries(sections).forEach(([sectionNumber, sectionData]) => {
-      studentResult.sections[sectionNumber] = {
+      const sectionMarks = sectionData.score || 0;
+      mcqMarks += sectionMarks;
+
+      processedSections[sectionNumber] = {
         correct: sectionData.correct || 0,
         wrong: sectionData.wrong || 0,
-        marks: sectionData.score || 0,
+        marks: sectionMarks,
         percentage: sectionData.percentage || 0,
         totalQuestions: sectionData.totalQuestions || 0
       };
     });
 
+    // Calculate essay marks
+    if (Object.keys(essays).length > 0) {
+      Object.values(essays).forEach(score => {
+        essayMarks += score || 0;
+        essayCount++;
+      });
+    }
+
+    // Calculate total marks including essays
+    const totalMarks = basic.score || (mcqMarks + essayMarks);
+
+    // Calculate percentages
+    // MCQ percentage is already in basic.percentage or can be calculated
+    const mcqPercentage = basic.percentage || 0;
+
+    // Total possible marks = MCQ marks (from file) + essays (10 marks each)
+    const maxEssayMarks = essayCount * 10;
+    const maxTotalMarks = (mcqPercentage > 0 ? (mcqMarks / mcqPercentage) * 100 : 0) + maxEssayMarks;
+    const totalPercentage = maxTotalMarks > 0 ? (totalMarks / maxTotalMarks) * 100 : 0;
+
+    const studentResult = {
+      studentId: basic.studentId,
+      studentName: basic.studentName,
+      sections: processedSections,
+      totalMarks,
+      mcqMarks,
+      essayMarks,
+      mcqPercentage,
+      totalPercentage: Math.round(totalPercentage * 100) / 100,
+      rank: basic.rank || 0
+    };
+
     // Add essay data if available
     if (Object.keys(essays).length > 0) {
       studentResult.essays = essays;
+      studentResult.maxEssayMarks = maxEssayMarks;
     }
 
     return studentResult;

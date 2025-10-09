@@ -460,20 +460,25 @@ const TestDetailPage = () => {
                   </div>
                 </div>
 
-                {/* Accuracy */}
+                {/* Accuracy/Percentage */}
                 <div className="bg-gradient-to-br from-white to-vh-beige/5 rounded-xl shadow-lg border border-vh-beige/30 hover:shadow-xl transition-all duration-300 p-6">
                   <div className="flex items-center justify-between mb-4">
-                    <h3 className="text-lg font-semibold text-gray-800">Accuracy</h3>
+                    <h3 className="text-lg font-semibold text-gray-800">
+                      {isFullTest ? 'Overall %' : 'Accuracy'}
+                    </h3>
                     <TrendingUp className="text-vh-red" size={24} />
                   </div>
                   <div className="text-3xl font-bold text-vh-red mb-2">
                     {isFullTest ?
-                      Math.round(((userResult as FullTestResult).totalMarks / Math.max(...Object.values(currentTest.results || {}).map(r => (r as FullTestResult).totalMarks))) * 100) :
-                      (userResult as SimpleTestResult).analytics.accuracy
-                    }%
+                      `${(userResult as FullTestResult).totalPercentage || 0}%` :
+                      `${(userResult as SimpleTestResult).analytics.accuracy}%`
+                    }
                   </div>
                   <div className="text-sm text-gray-600">
-                    {!isFullTest && `${(userResult as SimpleTestResult).analytics.attemptRate}% attempted`}
+                    {isFullTest ?
+                      `MCQ: ${(userResult as FullTestResult).mcqPercentage || 0}%` :
+                      `${(userResult as SimpleTestResult).analytics.attemptRate}% attempted`
+                    }
                   </div>
                 </div>
               </div>
@@ -553,9 +558,40 @@ const TestDetailPage = () => {
               {isFullTest && (
                 <div className="space-y-6">
 
+                  {/* Marks Breakdown */}
+                  {(userResult as FullTestResult).mcqMarks !== undefined && (
+                    <div className="bg-gradient-to-br from-white to-vh-beige/5 rounded-xl shadow-lg border border-vh-beige/30 hover:shadow-xl transition-all duration-300 p-6">
+                      <h3 className="text-lg font-semibold text-gray-800 mb-6">Marks Breakdown</h3>
+
+                      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div className="text-center p-4 bg-blue-50 rounded-lg border border-blue-100">
+                          <div className="text-2xl font-bold text-blue-600">{(userResult as FullTestResult).mcqMarks}</div>
+                          <div className="text-sm text-blue-700 mt-1">MCQ Marks</div>
+                          <div className="text-xs text-blue-600 mt-1">{(userResult as FullTestResult).mcqPercentage}%</div>
+                        </div>
+
+                        {(userResult as FullTestResult).essayMarks !== undefined && (userResult as FullTestResult).essayMarks! > 0 && (
+                          <>
+                            <div className="text-center p-4 bg-purple-50 rounded-lg border border-purple-100">
+                              <div className="text-2xl font-bold text-purple-600">{(userResult as FullTestResult).essayMarks}</div>
+                              <div className="text-sm text-purple-700 mt-1">Essay Marks</div>
+                              <div className="text-xs text-purple-600 mt-1">out of {(userResult as FullTestResult).maxEssayMarks || 0}</div>
+                            </div>
+                          </>
+                        )}
+
+                        <div className="text-center p-4 bg-vh-red/10 rounded-lg border border-vh-red/30">
+                          <div className="text-2xl font-bold text-vh-red">{(userResult as FullTestResult).totalMarks}</div>
+                          <div className="text-sm text-vh-red mt-1">Total Marks</div>
+                          <div className="text-xs text-vh-red/80 mt-1">{(userResult as FullTestResult).totalPercentage}%</div>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
                   {/* Section Performance */}
                   <div className="bg-gradient-to-br from-white to-vh-beige/5 rounded-xl shadow-lg border border-vh-beige/30 hover:shadow-xl transition-all duration-300 p-6">
-                    <h3 className="text-lg font-semibold text-gray-800 mb-6">Section Performance</h3>
+                    <h3 className="text-lg font-semibold text-gray-800 mb-6">MCQ Section Performance</h3>
 
                     <div className="space-y-4">
                       {Object.entries((userResult as FullTestResult).sections).map(([sectionNum, section]) => (
@@ -590,7 +626,7 @@ const TestDetailPage = () => {
                         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
                           {Object.entries((userResult as FullTestResult).essays!).map(([essayNum, score]) => (
                             <div key={essayNum} className="text-center p-4 bg-gradient-to-br from-purple-50 to-pink-50 rounded-lg border border-purple-200 hover:shadow-md transition-all duration-300">
-                              <div className="text-2xl font-bold text-purple-600 mb-1">{score}</div>
+                              <div className="text-2xl font-bold text-purple-600 mb-1">{score}<span className="text-sm text-purple-500">/10</span></div>
                               <div className="text-sm text-purple-700 font-medium">Essay {essayNum}</div>
                             </div>
                           ))}

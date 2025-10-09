@@ -159,14 +159,12 @@ function calculateQuestionChoiceStrategy(responses, questionStats) {
   if (!questionStats || Object.keys(responses).length === 0) return 0;
 
   let strategyPoints = 0;
-  let totalQuestions = 0;
+  let maxPoints = 0;
 
   const attemptedQuestions = Object.entries(responses).filter(([_, response]) => response !== 'NAN');
   const skippedQuestions = Object.entries(responses).filter(([_, response]) => response === 'NAN');
 
-  totalQuestions = Object.keys(responses).length;
-
-  // Analyze attempt pattern
+  // Analyze attempt pattern - focus on positive scoring
   for (const [questionId, response] of attemptedQuestions) {
     const stat = questionStats[questionId];
     if (!stat) continue;
@@ -175,27 +173,33 @@ function calculateQuestionChoiceStrategy(responses, questionStats) {
     const isCorrect = response.includes('(C)');
 
     if (isCorrect) {
-      // Points for getting questions right
+      // Reward correct answers based on difficulty
       if (difficulty < 30) {
-        strategyPoints += 8; // Expected to get easy questions right
+        strategyPoints += 10; // Good job on easy questions
+        maxPoints += 10;
       } else if (difficulty < 60) {
-        strategyPoints += 10; // Good job on medium questions
+        strategyPoints += 12; // Great job on medium questions
+        maxPoints += 12;
       } else {
-        strategyPoints += 12; // Excellent job on hard questions
+        strategyPoints += 15; // Excellent job on hard questions
+        maxPoints += 15;
       }
     } else {
-      // Penalty for getting questions wrong
+      // Less penalty for wrong attempts - attempting shows effort
       if (difficulty < 30) {
-        strategyPoints += 2; // Should have gotten easy questions right
+        strategyPoints += 4; // Missed an easy one
+        maxPoints += 10;
       } else if (difficulty < 60) {
-        strategyPoints += 6; // Reasonable miss on medium questions
+        strategyPoints += 7; // Understandable miss on medium
+        maxPoints += 12;
       } else {
-        strategyPoints += 8; // Understandable miss on hard questions
+        strategyPoints += 10; // Good attempt on hard question
+        maxPoints += 15;
       }
     }
   }
 
-  // Analyze skip pattern
+  // Analyze skip pattern - be more lenient
   for (const [questionId] of skippedQuestions) {
     const stat = questionStats[questionId];
     if (!stat) continue;
@@ -203,16 +207,21 @@ function calculateQuestionChoiceStrategy(responses, questionStats) {
     const difficulty = stat.difficulty || 50;
 
     if (difficulty > 70) {
-      strategyPoints += 9; // Good skip of very hard question
+      strategyPoints += 12; // Smart skip of very hard question
+      maxPoints += 15;
     } else if (difficulty > 50) {
-      strategyPoints += 7; // Reasonable skip
+      strategyPoints += 8; // Reasonable skip
+      maxPoints += 12;
+    } else if (difficulty > 30) {
+      strategyPoints += 5; // Okay skip of medium question
+      maxPoints += 10;
     } else {
-      strategyPoints += 4; // Could have attempted easier questions
+      strategyPoints += 3; // Should have attempted easy questions
+      maxPoints += 10;
     }
   }
 
-  const maxPossiblePoints = totalQuestions * 12; // Maximum points per question
-  return maxPossiblePoints > 0 ? Math.round((strategyPoints / maxPossiblePoints) * 100) : 0;
+  return maxPoints > 0 ? Math.round((strategyPoints / maxPoints) * 100) : 0;
 }
 
 /**

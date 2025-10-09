@@ -49,7 +49,11 @@ export interface FullTestResult {
     };
   };
   totalMarks: number;
-  totalPercentage: number;
+  mcqMarks?: number; // MCQ marks only
+  essayMarks?: number; // Essay marks only
+  mcqPercentage?: number; // MCQ percentage (separate from total)
+  totalPercentage: number; // Overall percentage including essays
+  maxEssayMarks?: number; // Maximum possible essay marks
   rank: number;
   essays?: {
     [essayNumber: string]: number;

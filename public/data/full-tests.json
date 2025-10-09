@@ -20,13 +20,17 @@
             }
           },
           "totalMarks": 53.25,
-          "totalPercentage": 35.27777777777778,
+          "mcqMarks": 31.75,
+          "essayMarks": 21.5,
+          "mcqPercentage": 35.27777777777778,
+          "totalPercentage": 44.38,
           "rank": 9,
           "essays": {
             "1": 7,
             "2": 6.5,
             "3": 8
           },
+          "maxEssayMarks": 30,
           "responses": {
             "Section1-Q1": "D (C)",
             "Section1-Q2": "C (C)",
@@ -121,7 +125,7 @@
           },
           "analytics": {
             "skipStrategy": 72,
-            "questionChoiceStrategy": 61,
+            "questionChoiceStrategy": 76,
             "recoveryScore": 55,
             "sectionPerformance": {
               "1": {
@@ -147,6 +151,9 @@
             }
           },
           "totalMarks": 0,
+          "mcqMarks": 0,
+          "essayMarks": 0,
+          "mcqPercentage": 0,
           "totalPercentage": 0,
           "rank": 0,
           "responses": {},
@@ -178,13 +185,17 @@
             }
           },
           "totalMarks": 30.25,
-          "totalPercentage": 20.833333333333336,
+          "mcqMarks": 18.75,
+          "essayMarks": 11.5,
+          "mcqPercentage": 20.833333333333336,
+          "totalPercentage": 25.21,
           "rank": 12,
           "essays": {
             "1": 6.5,
             "2": 0,
             "3": 5
           },
+          "maxEssayMarks": 30,
           "responses": {
             "Section1-Q1": "D (C)",
             "Section1-Q2": "C (C)",
@@ -279,7 +290,7 @@
           },
           "analytics": {
             "skipStrategy": 55,
-            "questionChoiceStrategy": 52,
+            "questionChoiceStrategy": 66,
             "recoveryScore": 65,
             "sectionPerformance": {
               "1": {
@@ -305,13 +316,17 @@
             }
           },
           "totalMarks": 85.25,
-          "totalPercentage": 69.72222222222221,
+          "mcqMarks": 62.75,
+          "essayMarks": 22.5,
+          "mcqPercentage": 69.72222222222221,
+          "totalPercentage": 71.04,
           "rank": 1,
           "essays": {
             "1": 7.5,
             "2": 7,
             "3": 8
           },
+          "maxEssayMarks": 30,
           "responses": {
             "Section1-Q1": "D (C)",
             "Section1-Q2": "C (C)",
@@ -406,7 +421,7 @@
           },
           "analytics": {
             "skipStrategy": 87,
-            "questionChoiceStrategy": 69,
+            "questionChoiceStrategy": 89,
             "recoveryScore": 100,
             "sectionPerformance": {
               "1": {
@@ -432,6 +447,9 @@
             }
           },
           "totalMarks": 0,
+          "mcqMarks": 0,
+          "essayMarks": 0,
+          "mcqPercentage": 0,
           "totalPercentage": 0,
           "rank": 0,
           "responses": {},
@@ -463,6 +481,9 @@
             }
           },
           "totalMarks": 0,
+          "mcqMarks": 0,
+          "essayMarks": 0,
+          "mcqPercentage": 0,
           "totalPercentage": 0,
           "rank": 0,
           "responses": {},
@@ -494,6 +515,9 @@
             }
           },
           "totalMarks": 0,
+          "mcqMarks": 0,
+          "essayMarks": 0,
+          "mcqPercentage": 0,
           "totalPercentage": 0,
           "rank": 0,
           "responses": {},
@@ -525,13 +549,17 @@
             }
           },
           "totalMarks": 54.5,
-          "totalPercentage": 46.111111111111114,
+          "mcqMarks": 41.5,
+          "essayMarks": 13,
+          "mcqPercentage": 46.111111111111114,
+          "totalPercentage": 45.42,
           "rank": 8,
           "essays": {
             "1": 0,
             "2": 5,
             "3": 8
           },
+          "maxEssayMarks": 30,
           "responses": {
             "Section1-Q1": "D (C)",
             "Section1-Q2": "C (C)",
@@ -626,7 +654,7 @@
           },
           "analytics": {
             "skipStrategy": 74,
-            "questionChoiceStrategy": 61,
+            "questionChoiceStrategy": 78,
             "recoveryScore": 66,
             "sectionPerformance": {
               "1": {
@@ -652,6 +680,9 @@
             }
           },
           "totalMarks": 0,
+          "mcqMarks": 0,
+          "essayMarks": 0,
+          "mcqPercentage": 0,
           "totalPercentage": 0,
           "rank": 0,
           "responses": {},
@@ -683,13 +714,17 @@
             }
           },
           "totalMarks": 80,
-          "totalPercentage": 70.55555555555556,
+          "mcqMarks": 63.5,
+          "essayMarks": 16.5,
+          "mcqPercentage": 70.55555555555556,
+          "totalPercentage": 66.67,
           "rank": 2,
           "essays": {
             "1": 7.5,
             "2": 1,
             "3": 8
           },
+          "maxEssayMarks": 30,
           "responses": {
             "Section1-Q1": "D (C)",
             "Section1-Q2": "C (C)",
@@ -784,7 +819,7 @@
           },
           "analytics": {
             "skipStrategy": 86,
-            "questionChoiceStrategy": 70,
+            "questionChoiceStrategy": 89,
             "recoveryScore": 77,
             "sectionPerformance": {
               "1": {
@@ -810,6 +845,9 @@
             }
           },
           "totalMarks": 0,
+          "mcqMarks": 0,
+          "essayMarks": 0,
+          "mcqPercentage": 0,
           "totalPercentage": 0,
           "rank": 0,
           "responses": {},
@@ -841,13 +879,17 @@
             }
           },
           "totalMarks": 51.5,
-          "totalPercentage": 40.55555555555556,
+          "mcqMarks": 36.5,
+          "essayMarks": 15,
+          "mcqPercentage": 40.55555555555556,
+          "totalPercentage": 42.92,
           "rank": 10,
           "essays": {
             "1": 1,
             "2": 7,
             "3": 7
           },
+          "maxEssayMarks": 30,
           "responses": {
             "Section1-Q1": "D (C)",
             "Section1-Q2": "C (C)",
@@ -942,7 +984,7 @@
           },
           "analytics": {
             "skipStrategy": 71,
-            "questionChoiceStrategy": 59,
+            "questionChoiceStrategy": 76,
             "recoveryScore": 71,
             "sectionPerformance": {
               "1": {
@@ -968,13 +1010,17 @@
             }
           },
           "totalMarks": 22.5,
-          "totalPercentage": 8.333333333333332,
+          "mcqMarks": 7.5,
+          "essayMarks": 15,
+          "mcqPercentage": 8.333333333333332,
+          "totalPercentage": 18.75,
           "rank": 13,
           "essays": {
             "1": 6,
             "2": 5,
             "3": 4
           },
+          "maxEssayMarks": 30,
           "responses": {
             "Section1-Q1": "D (C)",
             "Section1-Q2": "C (C)",
@@ -1069,7 +1115,7 @@
           },
           "analytics": {
             "skipStrategy": 41,
-            "questionChoiceStrategy": 46,
+            "questionChoiceStrategy": 57,
             "recoveryScore": 64,
             "sectionPerformance": {
               "1": {
@@ -1095,13 +1141,17 @@
             }
           },
           "totalMarks": 45,
-          "totalPercentage": 34.44444444444444,
+          "mcqMarks": 31,
+          "essayMarks": 14,
+          "mcqPercentage": 34.44444444444444,
+          "totalPercentage": 37.5,
           "rank": 11,
           "essays": {
             "1": 0,
             "2": 7,
             "3": 7
           },
+          "maxEssayMarks": 30,
           "responses": {
             "Section1-Q1": "D (C)",
             "Section1-Q2": "E (W)",
@@ -1196,7 +1246,7 @@
           },
           "analytics": {
             "skipStrategy": 69,
-            "questionChoiceStrategy": 58,
+            "questionChoiceStrategy": 75,
             "recoveryScore": 70,
             "sectionPerformance": {
               "1": {
@@ -1222,13 +1272,17 @@
             }
           },
           "totalMarks": 76.5,
-          "totalPercentage": 65,
+          "mcqMarks": 58.5,
+          "essayMarks": 18,
+          "mcqPercentage": 65,
+          "totalPercentage": 63.75,
           "rank": 3,
           "essays": {
             "1": 2,
             "2": 7.5,
             "3": 8.5
           },
+          "maxEssayMarks": 30,
           "responses": {
             "Section1-Q1": "D (C)",
             "Section1-Q2": "C (C)",
@@ -1323,7 +1377,7 @@
           },
           "analytics": {
             "skipStrategy": 85,
-            "questionChoiceStrategy": 69,
+            "questionChoiceStrategy": 87,
             "recoveryScore": 96,
             "sectionPerformance": {
               "1": {
@@ -1349,13 +1403,17 @@
             }
           },
           "totalMarks": 61.5,
-          "totalPercentage": 51.66666666666667,
+          "mcqMarks": 46.5,
+          "essayMarks": 15,
+          "mcqPercentage": 51.66666666666667,
+          "totalPercentage": 51.25,
           "rank": 7,
           "essays": {
             "1": 8,
             "2": 0,
             "3": 7
           },
+          "maxEssayMarks": 30,
           "responses": {
             "Section1-Q1": "D (C)",
             "Section1-Q2": "C (C)",
@@ -1450,7 +1508,7 @@
           },
           "analytics": {
             "skipStrategy": 82,
-            "questionChoiceStrategy": 65,
+            "questionChoiceStrategy": 83,
             "recoveryScore": 70,
             "sectionPerformance": {
               "1": {
@@ -1476,6 +1534,9 @@
             }
           },
           "totalMarks": 0,
+          "mcqMarks": 0,
+          "essayMarks": 0,
+          "mcqPercentage": 0,
           "totalPercentage": 0,
           "rank": 14,
           "responses": {},
@@ -1507,6 +1568,9 @@
             }
           },
           "totalMarks": 0,
+          "mcqMarks": 0,
+          "essayMarks": 0,
+          "mcqPercentage": 0,
           "totalPercentage": 0,
           "rank": 14,
           "responses": {},
@@ -1538,6 +1602,9 @@
             }
           },
           "totalMarks": 0,
+          "mcqMarks": 0,
+          "essayMarks": 0,
+          "mcqPercentage": 0,
           "totalPercentage": 0,
           "rank": 0,
           "responses": {},
@@ -1569,13 +1636,17 @@
             }
           },
           "totalMarks": 74.5,
-          "totalPercentage": 58.333333333333336,
+          "mcqMarks": 52.5,
+          "essayMarks": 22,
+          "mcqPercentage": 58.333333333333336,
+          "totalPercentage": 62.08,
           "rank": 4,
           "essays": {
             "1": 7.5,
             "2": 7,
             "3": 7.5
           },
+          "maxEssayMarks": 30,
           "responses": {
             "Section1-Q1": "D (C)",
             "Section1-Q2": "B (W)",
@@ -1670,7 +1741,7 @@
           },
           "analytics": {
             "skipStrategy": 84,
-            "questionChoiceStrategy": 68,
+            "questionChoiceStrategy": 85,
             "recoveryScore": 73,
             "sectionPerformance": {
               "1": {
@@ -1696,13 +1767,17 @@
             }
           },
           "totalMarks": 72.75,
-          "totalPercentage": 55.833333333333336,
+          "mcqMarks": 50.25,
+          "essayMarks": 22.5,
+          "mcqPercentage": 55.833333333333336,
+          "totalPercentage": 60.63,
           "rank": 5,
           "essays": {
             "1": 7.5,
             "2": 7,
             "3": 8
           },
+          "maxEssayMarks": 30,
           "responses": {
             "Section1-Q1": "D (C)",
             "Section1-Q2": "D (W)",
@@ -1797,7 +1872,7 @@
           },
           "analytics": {
             "skipStrategy": 82,
-            "questionChoiceStrategy": 67,
+            "questionChoiceStrategy": 84,
             "recoveryScore": 75,
             "sectionPerformance": {
               "1": {
@@ -1823,6 +1898,9 @@
             }
           },
           "totalMarks": 0,
+          "mcqMarks": 0,
+          "essayMarks": 0,
+          "mcqPercentage": 0,
           "totalPercentage": 0,
           "rank": 0,
           "responses": {},
@@ -1854,13 +1932,17 @@
             }
           },
           "totalMarks": 62,
-          "totalPercentage": 53.333333333333336,
+          "mcqMarks": 48,
+          "essayMarks": 14,
+          "mcqPercentage": 53.333333333333336,
+          "totalPercentage": 51.67,
           "rank": 6,
           "essays": {
             "1": 8,
             "2": 1,
             "3": 5
           },
+          "maxEssayMarks": 30,
           "responses": {
             "Section1-Q1": "D (C)",
             "Section1-Q2": "C (C)",
@@ -1955,7 +2037,7 @@
           },
           "analytics": {
             "skipStrategy": 81,
-            "questionChoiceStrategy": 65,
+            "questionChoiceStrategy": 83,
             "recoveryScore": 80,
             "sectionPerformance": {
               "1": {
@@ -1981,6 +2063,9 @@
             }
           },
           "totalMarks": 0,
+          "mcqMarks": 0,
+          "essayMarks": 0,
+          "mcqPercentage": 0,
           "totalPercentage": 0,
           "rank": 0,
           "responses": {},
@@ -2150,7 +2235,7 @@
         }
       },
       "metadata": {
-        "processedAt": "2025-10-09T20:58:34.217Z",
+        "processedAt": "2025-10-09T21:13:12.050Z",
         "sourceFile": "English Test 2.xlsx",
         "sheets": [
           "Sheet1",
@@ -2179,6 +2264,9 @@
             }
           },
           "totalMarks": 4.5,
+          "mcqMarks": 4.5,
+          "essayMarks": 0,
+          "mcqPercentage": 10,
           "totalPercentage": 10,
           "rank": 14,
           "responses": {
@@ -2230,7 +2318,7 @@
           },
           "analytics": {
             "skipStrategy": 70,
-            "questionChoiceStrategy": 62,
+            "questionChoiceStrategy": 71,
             "recoveryScore": 51,
             "sectionPerformance": {
               "1": {
@@ -2256,6 +2344,9 @@
             }
           },
           "totalMarks": 0,
+          "mcqMarks": 0,
+          "essayMarks": 0,
+          "mcqPercentage": 0,
           "totalPercentage": 0,
           "rank": 15,
           "responses": {},
@@ -2287,7 +2378,10 @@
             }
           },
           "totalMarks": 7.5,
-          "totalPercentage": 16.666666666666664,
+          "mcqMarks": 7.5,
+          "essayMarks": 0,
+          "mcqPercentage": 16.666666666666664,
+          "totalPercentage": 16.67,
           "rank": 9,
           "responses": {
             "Section1-Q1": "E (C)",
@@ -2338,7 +2432,7 @@
           },
           "analytics": {
             "skipStrategy": 76,
-            "questionChoiceStrategy": 66,
+            "questionChoiceStrategy": 74,
             "recoveryScore": 52,
             "sectionPerformance": {
               "1": {
@@ -2364,7 +2458,10 @@
             }
           },
           "totalMarks": 19.25,
-          "totalPercentage": 42.77777777777778,
+          "mcqMarks": 19.25,
+          "essayMarks": 0,
+          "mcqPercentage": 42.77777777777778,
+          "totalPercentage": 42.78,
           "rank": 1,
           "responses": {
             "Section1-Q1": "E (C)",
@@ -2415,7 +2512,7 @@
           },
           "analytics": {
             "skipStrategy": 85,
-            "questionChoiceStrategy": 72,
+            "questionChoiceStrategy": 83,
             "recoveryScore": 71,
             "sectionPerformance": {
               "1": {
@@ -2441,7 +2538,10 @@
             }
           },
           "totalMarks": 5,
-          "totalPercentage": 11.11111111111111,
+          "mcqMarks": 5,
+          "essayMarks": 0,
+          "mcqPercentage": 11.11111111111111,
+          "totalPercentage": 11.11,
           "rank": 12,
           "responses": {
             "Section1-Q1": "E (C)",
@@ -2492,7 +2592,7 @@
           },
           "analytics": {
             "skipStrategy": 69,
-            "questionChoiceStrategy": 61,
+            "questionChoiceStrategy": 71,
             "recoveryScore": 65,
             "sectionPerformance": {
               "1": {
@@ -2518,6 +2618,9 @@
             }
           },
           "totalMarks": 0,
+          "mcqMarks": 0,
+          "essayMarks": 0,
+          "mcqPercentage": 0,
           "totalPercentage": 0,
           "rank": 15,
           "responses": {},
@@ -2549,7 +2652,10 @@
             }
           },
           "totalMarks": 10,
-          "totalPercentage": 22.22222222222222,
+          "mcqMarks": 10,
+          "essayMarks": 0,
+          "mcqPercentage": 22.22222222222222,
+          "totalPercentage": 22.22,
           "rank": 6,
           "responses": {
             "Section1-Q1": "E (C)",
@@ -2600,7 +2706,7 @@
           },
           "analytics": {
             "skipStrategy": 73,
-            "questionChoiceStrategy": 64,
+            "questionChoiceStrategy": 75,
             "recoveryScore": 90,
             "sectionPerformance": {
               "1": {
@@ -2626,7 +2732,10 @@
             }
           },
           "totalMarks": 11.5,
-          "totalPercentage": 25.555555555555554,
+          "mcqMarks": 11.5,
+          "essayMarks": 0,
+          "mcqPercentage": 25.555555555555554,
+          "totalPercentage": 25.56,
           "rank": 5,
           "responses": {
             "Section1-Q1": "E (C)",
@@ -2677,7 +2786,7 @@
           },
           "analytics": {
             "skipStrategy": 79,
-            "questionChoiceStrategy": 67,
+            "questionChoiceStrategy": 77,
             "recoveryScore": 56,
             "sectionPerformance": {
               "1": {
@@ -2703,7 +2812,10 @@
             }
           },
           "totalMarks": 9.5,
-          "totalPercentage": 21.11111111111111,
+          "mcqMarks": 9.5,
+          "essayMarks": 0,
+          "mcqPercentage": 21.11111111111111,
+          "totalPercentage": 21.11,
           "rank": 7,
           "responses": {
             "Section1-Q1": "E (C)",
@@ -2754,7 +2866,7 @@
           },
           "analytics": {
             "skipStrategy": 75,
-            "questionChoiceStrategy": 65,
+            "questionChoiceStrategy": 75,
             "recoveryScore": 63,
             "sectionPerformance": {
               "1": {
@@ -2779,8 +2891,11 @@
               "totalQuestions": 0
             }
           },
-          "totalMarks": 0,
-          "totalPercentage": 23.88888888888889,
+          "totalMarks": 10.75,
+          "mcqMarks": 10.75,
+          "essayMarks": 0,
+          "mcqPercentage": 23.88888888888889,
+          "totalPercentage": 23.89,
           "rank": 0,
           "responses": {
             "Section1-Q1": "E (C)",
@@ -2831,7 +2946,7 @@
           },
           "analytics": {
             "skipStrategy": 74,
-            "questionChoiceStrategy": 65,
+            "questionChoiceStrategy": 75,
             "recoveryScore": 60,
             "sectionPerformance": {
               "1": {
@@ -2857,6 +2972,9 @@
             }
           },
           "totalMarks": 0,
+          "mcqMarks": 0,
+          "essayMarks": 0,
+          "mcqPercentage": 0,
           "totalPercentage": 0,
           "rank": 15,
           "responses": {},
@@ -2888,7 +3006,10 @@
             }
           },
           "totalMarks": 7.25,
-          "totalPercentage": 16.11111111111111,
+          "mcqMarks": 7.25,
+          "essayMarks": 0,
+          "mcqPercentage": 16.11111111111111,
+          "totalPercentage": 16.11,
           "rank": 10,
           "responses": {
             "Section1-Q1": "E (C)",
@@ -2939,7 +3060,7 @@
           },
           "analytics": {
             "skipStrategy": 72,
-            "questionChoiceStrategy": 61,
+            "questionChoiceStrategy": 73,
             "recoveryScore": 60,
             "sectionPerformance": {
               "1": {
@@ -2965,7 +3086,10 @@
             }
           },
           "totalMarks": 5.5,
-          "totalPercentage": 12.222222222222221,
+          "mcqMarks": 5.5,
+          "essayMarks": 0,
+          "mcqPercentage": 12.222222222222221,
+          "totalPercentage": 12.22,
           "rank": 11,
           "responses": {
             "Section1-Q1": "B (W)",
@@ -3016,7 +3140,7 @@
           },
           "analytics": {
             "skipStrategy": 70,
-            "questionChoiceStrategy": 61,
+            "questionChoiceStrategy": 72,
             "recoveryScore": 46,
             "sectionPerformance": {
               "1": {
@@ -3041,8 +3165,11 @@
               "totalQuestions": 0
             }
           },
-          "totalMarks": 0,
-          "totalPercentage": 28.888888888888886,
+          "totalMarks": 13,
+          "mcqMarks": 13,
+          "essayMarks": 0,
+          "mcqPercentage": 28.888888888888886,
+          "totalPercentage": 28.89,
           "rank": 0,
           "responses": {
             "Section1-Q1": "E (C)",
@@ -3093,7 +3220,7 @@
           },
           "analytics": {
             "skipStrategy": 78,
-            "questionChoiceStrategy": 66,
+            "questionChoiceStrategy": 78,
             "recoveryScore": 70,
             "sectionPerformance": {
               "1": {
@@ -3119,7 +3246,10 @@
             }
           },
           "totalMarks": 9.5,
-          "totalPercentage": 21.11111111111111,
+          "mcqMarks": 9.5,
+          "essayMarks": 0,
+          "mcqPercentage": 21.11111111111111,
+          "totalPercentage": 21.11,
           "rank": 7,
           "responses": {
             "Section1-Q1": "E (C)",
@@ -3170,7 +3300,7 @@
           },
           "analytics": {
             "skipStrategy": 74,
-            "questionChoiceStrategy": 64,
+            "questionChoiceStrategy": 75,
             "recoveryScore": 64,
             "sectionPerformance": {
               "1": {
@@ -3196,7 +3326,10 @@
             }
           },
           "totalMarks": 11.75,
-          "totalPercentage": 26.111111111111114,
+          "mcqMarks": 11.75,
+          "essayMarks": 0,
+          "mcqPercentage": 26.111111111111114,
+          "totalPercentage": 26.11,
           "rank": 4,
           "responses": {
             "Section1-Q1": "E (C)",
@@ -3247,7 +3380,7 @@
           },
           "analytics": {
             "skipStrategy": 76,
-            "questionChoiceStrategy": 67,
+            "questionChoiceStrategy": 76,
             "recoveryScore": 60,
             "sectionPerformance": {
               "1": {
@@ -3273,7 +3406,10 @@
             }
           },
           "totalMarks": 5,
-          "totalPercentage": 11.11111111111111,
+          "mcqMarks": 5,
+          "essayMarks": 0,
+          "mcqPercentage": 11.11111111111111,
+          "totalPercentage": 11.11,
           "rank": 12,
           "responses": {
             "Section1-Q1": "NAN",
@@ -3324,7 +3460,7 @@
           },
           "analytics": {
             "skipStrategy": 71,
-            "questionChoiceStrategy": 61,
+            "questionChoiceStrategy": 72,
             "recoveryScore": 57,
             "sectionPerformance": {
               "1": {
@@ -3350,6 +3486,9 @@
             }
           },
           "totalMarks": 0,
+          "mcqMarks": 0,
+          "essayMarks": 0,
+          "mcqPercentage": 0,
           "totalPercentage": 0,
           "rank": 15,
           "responses": {},
@@ -3381,6 +3520,9 @@
             }
           },
           "totalMarks": 0,
+          "mcqMarks": 0,
+          "essayMarks": 0,
+          "mcqPercentage": 0,
           "totalPercentage": 0,
           "rank": 15,
           "responses": {},
@@ -3412,7 +3554,10 @@
             }
           },
           "totalMarks": 15.5,
-          "totalPercentage": 34.44444444444444,
+          "mcqMarks": 15.5,
+          "essayMarks": 0,
+          "mcqPercentage": 34.44444444444444,
+          "totalPercentage": 34.44,
           "rank": 2,
           "responses": {
             "Section1-Q1": "E (C)",
@@ -3463,7 +3608,7 @@
           },
           "analytics": {
             "skipStrategy": 76,
-            "questionChoiceStrategy": 67,
+            "questionChoiceStrategy": 78,
             "recoveryScore": 80,
             "sectionPerformance": {
               "1": {
@@ -3488,8 +3633,11 @@
               "totalQuestions": 0
             }
           },
-          "totalMarks": 0,
-          "totalPercentage": 63.33333333333333,
+          "totalMarks": 28.5,
+          "mcqMarks": 28.5,
+          "essayMarks": 0,
+          "mcqPercentage": 63.33333333333333,
+          "totalPercentage": 63.33,
           "rank": 0,
           "responses": {
             "Section1-Q1": "C (W)",
@@ -3540,7 +3688,7 @@
           },
           "analytics": {
             "skipStrategy": 93,
-            "questionChoiceStrategy": 79,
+            "questionChoiceStrategy": 90,
             "recoveryScore": 80,
             "sectionPerformance": {
               "1": {
@@ -3566,6 +3714,9 @@
             }
           },
           "totalMarks": 0,
+          "mcqMarks": 0,
+          "essayMarks": 0,
+          "mcqPercentage": 0,
           "totalPercentage": 0,
           "rank": 15,
           "responses": {},
@@ -3597,7 +3748,10 @@
             }
           },
           "totalMarks": 15.25,
-          "totalPercentage": 33.88888888888889,
+          "mcqMarks": 15.25,
+          "essayMarks": 0,
+          "mcqPercentage": 33.88888888888889,
+          "totalPercentage": 33.89,
           "rank": 3,
           "responses": {
             "Section1-Q1": "E (C)",
@@ -3648,7 +3802,7 @@
           },
           "analytics": {
             "skipStrategy": 75,
-            "questionChoiceStrategy": 66,
+            "questionChoiceStrategy": 78,
             "recoveryScore": 87,
             "sectionPerformance": {
               "1": {
@@ -3674,6 +3828,9 @@
             }
           },
           "totalMarks": 0,
+          "mcqMarks": 0,
+          "essayMarks": 0,
+          "mcqPercentage": 0,
           "totalPercentage": 0,
           "rank": 15,
           "responses": {},
@@ -3694,13 +3851,13 @@
         }
       },
       "classStats": {
-        "averageScore": 5.71,
-        "top5Average": 14.65,
+        "averageScore": 7.89,
+        "top5Average": 18.3,
         "totalStudents": 24,
-        "passRate": 58.33,
-        "maxScore": 19.25,
+        "passRate": 66.67,
+        "maxScore": 28.5,
         "minScore": 0,
-        "threshold": 3.425
+        "threshold": 4.73125
       },
       "topQuestions": {
         "1": {
@@ -3843,7 +4000,7 @@
         }
       },
       "metadata": {
-        "processedAt": "2025-10-09T20:58:34.234Z",
+        "processedAt": "2025-10-09T21:13:12.074Z",
         "sourceFile": "Mathematics CT 2.xlsx",
         "sheets": [
           "Sheet1",
@@ -3855,7 +4012,7 @@
   },
   "metadata": {
     "totalTests": 2,
-    "lastProcessed": "2025-10-09T20:58:34.269Z",
+    "lastProcessed": "2025-10-09T21:13:12.124Z",
     "version": "1.0.0"
   }
 }
