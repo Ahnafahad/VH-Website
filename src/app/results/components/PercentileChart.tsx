@@ -77,7 +77,7 @@ const PercentileChart: React.FC<PercentileChartProps> = ({
     if (active && payload && payload.length) {
       const data = payload[0].payload;
       return (
-        <div className="bg-white p-3 border border-gray-200 rounded-lg shadow-md">
+        <div className="bg-white p-3 border border-gray-200 rounded-lg shadow-md z-50">
           <p className="font-semibold text-gray-800">Score Range: {label}</p>
           <p className="text-sm text-gray-600">Students: {data.count}</p>
           {data.isUserRange && (
@@ -107,7 +107,7 @@ const PercentileChart: React.FC<PercentileChartProps> = ({
       </div>
 
       <ResponsiveContainer width="100%" height={height}>
-        <BarChart data={data} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
+        <BarChart data={data} margin={{ top: 20, right: 30, left: 20, bottom: 70 }}>
           <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
           <XAxis
             dataKey="range"
@@ -115,10 +115,10 @@ const PercentileChart: React.FC<PercentileChartProps> = ({
             fontSize={12}
             angle={-45}
             textAnchor="end"
-            height={60}
+            height={80}
           />
           <YAxis stroke="#6b7280" fontSize={12} />
-          <Tooltip content={<CustomTooltip />} />
+          <Tooltip content={<CustomTooltip />} wrapperStyle={{ zIndex: 1000 }} />
 
           <Bar
             dataKey="count"

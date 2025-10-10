@@ -490,7 +490,14 @@ const AdminDashboard = () => {
                   <div className="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
                     <span className="text-sm font-medium text-gray-600">Last Updated</span>
                     <span className="font-semibold text-gray-800">
-                      {new Date(metadata.lastProcessed).toLocaleDateString()}
+                      {(() => {
+                        try {
+                          const date = new Date(metadata.lastProcessed);
+                          return !isNaN(date.getTime()) ? date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }) : 'N/A';
+                        } catch {
+                          return 'N/A';
+                        }
+                      })()}
                     </span>
                   </div>
 

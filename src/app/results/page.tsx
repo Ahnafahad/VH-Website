@@ -462,7 +462,14 @@ const ResultsDashboard = () => {
                   <span className="text-sm text-gray-600 font-medium">System Active</span>
                 </div>
                 <p className="text-sm text-gray-500">
-                  Last updated: {new Date(metadata.lastProcessed).toLocaleDateString()} •
+                  Last updated: {(() => {
+                    try {
+                      const date = new Date(metadata.lastProcessed);
+                      return !isNaN(date.getTime()) ? date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }) : 'N/A';
+                    } catch {
+                      return 'N/A';
+                    }
+                  })()} •
                   {metadata.totalStudents} students •
                   {metadata.totalSimpleTests + metadata.totalFullTests} total tests
                 </p>

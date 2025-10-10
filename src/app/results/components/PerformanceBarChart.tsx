@@ -156,7 +156,7 @@ const PerformanceBarChart: React.FC<PerformanceBarChartProps> = ({
   const CustomTooltip = ({ active, payload, label }: any) => {
     if (active && payload && payload.length) {
       return (
-        <div className="bg-white p-3 border border-gray-200 rounded-lg shadow-md">
+        <div className="bg-white p-3 border border-gray-200 rounded-lg shadow-md z-50">
           <p className="font-semibold text-gray-800">{label}</p>
           {payload.map((entry: any, index: number) => (
             <p key={index} style={{ color: entry.color }} className="text-sm">
@@ -174,7 +174,7 @@ const PerformanceBarChart: React.FC<PerformanceBarChartProps> = ({
       {title && <h3 className="text-lg font-semibold text-gray-800 mb-4">{title}</h3>}
 
       <ResponsiveContainer width="100%" height={height}>
-        <BarChart data={data} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
+        <BarChart data={data} margin={{ top: 20, right: 30, left: 20, bottom: 70 }}>
           <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
           <XAxis
             dataKey="name"
@@ -182,11 +182,11 @@ const PerformanceBarChart: React.FC<PerformanceBarChartProps> = ({
             fontSize={12}
             angle={-45}
             textAnchor="end"
-            height={60}
+            height={80}
           />
           <YAxis stroke="#6b7280" fontSize={12} />
-          <Tooltip content={<CustomTooltip />} />
-          <Legend />
+          <Tooltip content={<CustomTooltip />} wrapperStyle={{ zIndex: 1000 }} />
+          <Legend wrapperStyle={{ paddingTop: '10px' }} />
 
           <Bar
             dataKey="correct"

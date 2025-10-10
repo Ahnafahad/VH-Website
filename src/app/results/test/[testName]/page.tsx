@@ -697,14 +697,14 @@ const TestDetailPage = () => {
                 <div className="bg-gradient-to-br from-white to-vh-beige/5 rounded-xl shadow-lg border border-vh-beige/30 hover:shadow-xl transition-all duration-300 mb-8">
                   <div className="p-6">
                     <h3 className="text-lg font-semibold text-gray-800 mb-6">Your Position in Class</h3>
-                    <div className="h-64 mb-4">
+                    <div className="h-80 mb-4">
                       <PercentileChart
                         userScore={isFullTest ? (userResult as FullTestResult).totalMarks : (userResult as SimpleTestResult).score}
                         allScores={Object.values(currentTest.results || {}).map(result =>
                           isFullTest ? (result as FullTestResult).totalMarks : (result as SimpleTestResult).score
                         )}
                         title=""
-                        height={250}
+                        height={280}
                       />
                     </div>
                   </div>
@@ -712,8 +712,8 @@ const TestDetailPage = () => {
               )}
 
               {/* Class Comparison */}
-              <div className="bg-gradient-to-br from-white to-vh-beige/5 rounded-xl shadow-lg border border-vh-beige/30 hover:shadow-xl transition-all duration-300 p-8 mb-8 mt-8">
-                <h3 className="text-lg font-semibold text-gray-800 mb-10">Class Comparison</h3>
+              <div className="bg-gradient-to-br from-white to-vh-beige/5 rounded-xl shadow-lg border border-vh-beige/30 hover:shadow-xl transition-all duration-300 p-8 mb-8 mt-12">
+                <h3 className="text-lg font-semibold text-gray-800 mb-6">Class Comparison</h3>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                   <div className="text-center p-6 bg-gray-50 rounded-lg">
@@ -744,10 +744,10 @@ const TestDetailPage = () => {
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
                   {/* Progress Trend Chart */}
                   <div className="bg-gradient-to-br from-white to-vh-beige/5 rounded-xl shadow-lg border border-vh-beige/30 hover:shadow-xl transition-all duration-300 p-6">
-                    <h3 className="text-lg font-semibold text-gray-800 mb-6">
+                    <h3 className="text-lg font-semibold text-gray-800 mb-4">
                       {isAdmin && selectedStudentName ? `${selectedStudentName}'s Progress Trend` : 'Your Progress Trend'}
                     </h3>
-                    <div className="h-80 mb-4">
+                    <div className="h-96">
                       <SeriesProgressChart
                         simpleTests={simpleTests}
                         fullTests={fullTests}
@@ -755,23 +755,24 @@ const TestDetailPage = () => {
                         userEmail={getChartUserEmail()!}
                         highlightTest={testName}
                         targetSeries={testName.replace(/\s*\d+$/, '').trim()}
+                        height={360}
                       />
                     </div>
                   </div>
 
                   {/* Performance Comparison */}
                   <div className="bg-gradient-to-br from-white to-vh-beige/5 rounded-xl shadow-lg border border-vh-beige/30 hover:shadow-xl transition-all duration-300 p-6">
-                    <h3 className="text-lg font-semibold text-gray-800 mb-6">
+                    <h3 className="text-lg font-semibold text-gray-800 mb-4">
                       {isAdmin && selectedStudentName ? `${selectedStudentName} vs Class` : 'Performance vs Class'}
                     </h3>
-                    <div className="h-80 mb-4">
+                    <div className="h-96">
                       <PerformanceBarChart
                         simpleTests={simpleTests}
                         fullTests={fullTests}
                         students={students}
                         userEmail={getChartUserEmail()!}
                         testName={testName}
-                        height={320}
+                        height={360}
                       />
                     </div>
                   </div>

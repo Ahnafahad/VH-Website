@@ -202,13 +202,13 @@ const SeriesProgressChart: React.FC<SeriesProgressChartProps> = ({
   const CustomTooltip = ({ active, payload, label }: any) => {
     if (active && payload && payload.length) {
       return (
-        <div className="bg-white p-3 border border-gray-200 rounded-lg shadow-md">
+        <div className="bg-white p-3 border border-gray-200 rounded-lg shadow-md z-50">
           <p className="font-semibold text-gray-800">{label}</p>
           {payload.map((entry: any, index: number) => (
             <p key={index} style={{ color: entry.color }} className="text-sm">
               {entry.dataKey === 'score' && `Score: ${entry.value}`}
               {entry.dataKey === 'rank' && `Rank: #${entry.value}`}
-              {entry.dataKey === 'accuracy' && `Accuracy: ${entry.value}%`}
+              {entry.dataKey === 'accuracy' && `Accuracy: ${entry.value.toFixed(2)}%`}
             </p>
           ))}
         </div>
@@ -222,7 +222,7 @@ const SeriesProgressChart: React.FC<SeriesProgressChartProps> = ({
       {title && <h3 className="text-lg font-semibold text-gray-800 mb-4">{title}</h3>}
 
       <ResponsiveContainer width="100%" height={height}>
-        <LineChart data={data} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
+        <LineChart data={data} margin={{ top: 20, right: 30, left: 20, bottom: 70 }}>
           <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
           <XAxis
             dataKey="testName"
@@ -230,7 +230,7 @@ const SeriesProgressChart: React.FC<SeriesProgressChartProps> = ({
             fontSize={12}
             angle={-45}
             textAnchor="end"
-            height={60}
+            height={80}
           />
           <YAxis yAxisId="left" stroke="#6b7280" fontSize={12} />
           {!isClassView && (
@@ -242,8 +242,8 @@ const SeriesProgressChart: React.FC<SeriesProgressChartProps> = ({
               reversed={true}
             />
           )}
-          <Tooltip content={<CustomTooltip />} />
-          <Legend />
+          <Tooltip content={<CustomTooltip />} wrapperStyle={{ zIndex: 1000 }} />
+          <Legend wrapperStyle={{ paddingTop: '10px' }} />
 
           <Line
             type="monotone"
