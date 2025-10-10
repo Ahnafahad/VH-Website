@@ -9,6 +9,7 @@ import { SimpleTestsData, FullTestsData, StudentsData, SimpleTest, FullTest, Sim
 import SeriesProgressChart from '../../components/SeriesProgressChart';
 import PerformanceBarChart from '../../components/PerformanceBarChart';
 import PercentileChart from '../../components/PercentileChart';
+import Top5LeaderboardTable from '../../components/Top5LeaderboardTable';
 
 const TestDetailPage = () => {
   const { data: session } = useSession();
@@ -736,6 +737,17 @@ const TestDetailPage = () => {
                   </div>
                 </div>
               </div>
+
+              {/* Top 5 Leaderboard */}
+              {currentTest && currentTest.results && (
+                <div className="bg-gradient-to-br from-white to-vh-beige/5 rounded-xl shadow-lg border border-vh-beige/30 hover:shadow-xl transition-all duration-300 p-8 mb-8">
+                  <Top5LeaderboardTable
+                    testResults={currentTest.results}
+                    isFullTest={isFullTest}
+                    title="Top 5 Performers"
+                  />
+                </div>
+              )}
 
               {/* Performance Analytics Charts */}
               {(simpleTests || fullTests) && students && getChartUserEmail() && (
