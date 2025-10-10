@@ -184,7 +184,11 @@ const PerformanceBarChart: React.FC<PerformanceBarChartProps> = ({
             textAnchor="end"
             height={80}
           />
-          <YAxis stroke="#6b7280" fontSize={12} />
+          <YAxis
+            stroke="#6b7280"
+            fontSize={12}
+            domain={[0, (dataMax: number) => Math.ceil(dataMax * 1.1)]}
+          />
           <Tooltip content={<CustomTooltip />} wrapperStyle={{ zIndex: 1000 }} />
           <Legend wrapperStyle={{ paddingTop: '10px' }} />
 

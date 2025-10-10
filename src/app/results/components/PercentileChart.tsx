@@ -139,18 +139,18 @@ const PercentileChart: React.FC<PercentileChartProps> = ({
       </ResponsiveContainer>
 
       {/* Position Summary */}
-      <div className="mt-4 grid grid-cols-3 gap-4 text-xs">
-        <div className="text-center p-2 bg-green-50 rounded">
-          <div className="font-semibold text-green-800">Better Than</div>
-          <div className="text-xl font-bold text-green-600">{userPercentile}%</div>
+      <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
+        <div className="text-center p-3 bg-green-50 rounded-lg border border-green-100">
+          <div className="font-semibold text-green-800 text-sm mb-1">Better Than</div>
+          <div className="text-2xl font-bold text-green-600">{userPercentile}%</div>
         </div>
-        <div className="text-center p-2 bg-vh-beige/20 rounded">
-          <div className="font-semibold text-vh-red">Your Score</div>
-          <div className="text-xl font-bold text-vh-red">{userScore}</div>
+        <div className="text-center p-3 bg-vh-beige/30 rounded-lg border border-vh-red/20">
+          <div className="font-semibold text-vh-red text-sm mb-1">Your Score</div>
+          <div className="text-2xl font-bold text-vh-red">{userScore}</div>
         </div>
-        <div className="text-center p-2 bg-gray-50 rounded">
-          <div className="font-semibold text-gray-700">Class Size</div>
-          <div className="text-xl font-bold text-gray-600">{allScores.length}</div>
+        <div className="text-center p-3 bg-gray-50 rounded-lg border border-gray-200">
+          <div className="font-semibold text-gray-700 text-sm mb-1">Class Size</div>
+          <div className="text-2xl font-bold text-gray-600">{allScores.length}</div>
         </div>
       </div>
     </div>

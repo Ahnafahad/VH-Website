@@ -428,7 +428,7 @@ const TestDetailPage = () => {
             <div className="space-y-8">
 
               {/* Performance Overview */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
 
                 {/* Score/Marks */}
                 <div className="bg-gradient-to-br from-white to-vh-beige/5 rounded-xl shadow-lg border border-vh-beige/30 hover:shadow-xl transition-all duration-300 p-6">
@@ -485,7 +485,7 @@ const TestDetailPage = () => {
 
               {/* Simple Test Details */}
               {!isFullTest && (
-                <div className="bg-gradient-to-br from-white to-vh-beige/5 rounded-xl shadow-lg border border-vh-beige/30 hover:shadow-xl transition-all duration-300 p-6">
+                <div className="bg-gradient-to-br from-white to-vh-beige/5 rounded-xl shadow-lg border border-vh-beige/30 hover:shadow-xl transition-all duration-300 p-6 mb-8">
                   <h3 className="text-lg font-semibold text-gray-800 mb-6">Performance Breakdown</h3>
 
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -556,7 +556,7 @@ const TestDetailPage = () => {
 
               {/* Full Test Details */}
               {isFullTest && (
-                <div className="space-y-6">
+                <div className="space-y-8 mb-8">
 
                   {/* Marks Breakdown */}
                   {(userResult as FullTestResult).mcqMarks !== undefined && (
@@ -712,42 +712,42 @@ const TestDetailPage = () => {
               )}
 
               {/* Class Comparison */}
-              <div className="bg-gradient-to-br from-white to-vh-beige/5 rounded-xl shadow-lg border border-vh-beige/30 hover:shadow-xl transition-all duration-300 p-8 mb-8 mt-12">
-                <h3 className="text-lg font-semibold text-gray-800 mb-6">Class Comparison</h3>
+              <div className="bg-gradient-to-br from-white to-vh-beige/5 rounded-xl shadow-lg border border-vh-beige/30 hover:shadow-xl transition-all duration-300 p-8 mb-8 mt-16">
+                <h3 className="text-lg font-semibold text-gray-800 mb-8">Class Comparison</h3>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                  <div className="text-center p-6 bg-gray-50 rounded-lg">
-                    <div className="text-2xl font-bold text-gray-600 mb-2">
+                  <div className="text-center p-6 bg-gray-50 rounded-lg border border-gray-200">
+                    <div className="text-3xl font-bold text-gray-700 mb-2">
                       {currentTest.classStats.averageScore.toFixed(1)}
                     </div>
-                    <div className="text-sm text-gray-700">Class Average</div>
+                    <div className="text-sm font-medium text-gray-600">Class Average</div>
                   </div>
 
-                  <div className="text-center p-6 bg-yellow-50 rounded-lg">
-                    <div className="text-2xl font-bold text-yellow-600 mb-2">
+                  <div className="text-center p-6 bg-yellow-50 rounded-lg border border-yellow-200">
+                    <div className="text-3xl font-bold text-yellow-700 mb-2">
                       {currentTest.classStats.top5Average.toFixed(1)}
                     </div>
-                    <div className="text-sm text-yellow-700">Top 5 Average</div>
+                    <div className="text-sm font-medium text-yellow-800">Top 5 Average</div>
                   </div>
 
-                  <div className="text-center p-6 bg-vh-beige/20 rounded-lg">
-                    <div className="text-2xl font-bold text-vh-red mb-2">
+                  <div className="text-center p-6 bg-red-50 rounded-lg border border-red-200">
+                    <div className="text-3xl font-bold text-red-700 mb-2">
                       {Math.round(currentTest.classStats.passRate)}%
                     </div>
-                    <div className="text-sm text-vh-red">Pass Rate</div>
+                    <div className="text-sm font-medium text-red-800">Pass Rate</div>
                   </div>
                 </div>
               </div>
 
               {/* Performance Analytics Charts */}
               {(simpleTests || fullTests) && students && getChartUserEmail() && (
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8 items-stretch">
                   {/* Progress Trend Chart */}
-                  <div className="bg-gradient-to-br from-white to-vh-beige/5 rounded-xl shadow-lg border border-vh-beige/30 hover:shadow-xl transition-all duration-300 p-6">
+                  <div className="bg-gradient-to-br from-white to-vh-beige/5 rounded-xl shadow-lg border border-vh-beige/30 hover:shadow-xl transition-all duration-300 p-6 flex flex-col">
                     <h3 className="text-lg font-semibold text-gray-800 mb-4">
                       {isAdmin && selectedStudentName ? `${selectedStudentName}'s Progress Trend` : 'Your Progress Trend'}
                     </h3>
-                    <div className="h-96">
+                    <div className="flex-1 min-h-[24rem]">
                       <SeriesProgressChart
                         simpleTests={simpleTests}
                         fullTests={fullTests}
@@ -761,11 +761,11 @@ const TestDetailPage = () => {
                   </div>
 
                   {/* Performance Comparison */}
-                  <div className="bg-gradient-to-br from-white to-vh-beige/5 rounded-xl shadow-lg border border-vh-beige/30 hover:shadow-xl transition-all duration-300 p-6">
+                  <div className="bg-gradient-to-br from-white to-vh-beige/5 rounded-xl shadow-lg border border-vh-beige/30 hover:shadow-xl transition-all duration-300 p-6 flex flex-col">
                     <h3 className="text-lg font-semibold text-gray-800 mb-4">
                       {isAdmin && selectedStudentName ? `${selectedStudentName} vs Class` : 'Performance vs Class'}
                     </h3>
-                    <div className="h-96">
+                    <div className="flex-1 min-h-[24rem]">
                       <PerformanceBarChart
                         simpleTests={simpleTests}
                         fullTests={fullTests}
@@ -782,7 +782,7 @@ const TestDetailPage = () => {
 
               {/* Question Performance Analytics (Sheet 2 Data) */}
               {isFullTest && (currentTest as FullTest).topQuestions && (
-                <div className="bg-gradient-to-br from-white to-vh-beige/5 rounded-xl shadow-lg border border-vh-beige/30 hover:shadow-xl transition-all duration-300 p-8 mt-12">
+                <div className="bg-gradient-to-br from-white to-vh-beige/5 rounded-xl shadow-lg border border-vh-beige/30 hover:shadow-xl transition-all duration-300 p-8 mb-8 mt-16">
                   <h3 className="text-lg font-semibold text-gray-800 mb-8">Question Difficulty Analysis</h3>
                   {userResult && (
                     <div className="bg-gray-50 border border-gray-100 rounded-lg p-4 mb-6">
@@ -888,7 +888,7 @@ const TestDetailPage = () => {
 
               {/* Personal Performance vs Top Questions */}
               {isFullTest && (currentTest as FullTest).topQuestions && userResult && (
-                <div className="bg-gradient-to-br from-white to-vh-beige/5 rounded-xl shadow-lg border border-vh-beige/30 hover:shadow-xl transition-all duration-300 p-6">
+                <div className="bg-gradient-to-br from-white to-vh-beige/5 rounded-xl shadow-lg border border-vh-beige/30 hover:shadow-xl transition-all duration-300 p-6 mb-8">
                   <h3 className="text-lg font-semibold text-gray-800 mb-4">Your Performance vs Class Top Questions</h3>
                   <p className="text-sm text-gray-600 mb-6">See how you performed on the questions that were easiest, hardest, and most skipped by the class</p>
 

@@ -308,10 +308,10 @@ const SeriesProgressChart: React.FC<SeriesProgressChartProps> = ({
 
       {/* Trend Analysis */}
       {data.length > 1 && !isClassView && (
-        <div className="mt-4 p-3 bg-vh-beige/10 rounded-lg">
-          <h4 className="font-semibold text-gray-800 text-sm mb-2">Trend Analysis</h4>
-          <div className="grid grid-cols-2 gap-4 text-xs">
-            <div>
+        <div className="mt-6 p-4 bg-gradient-to-br from-vh-beige/20 to-white border border-vh-beige/30 rounded-lg shadow-sm">
+          <h4 className="font-semibold text-gray-800 text-sm mb-3">Trend Analysis</h4>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
+            <div className="p-2 bg-white rounded border border-gray-100">
               <span className="text-gray-600">Score Trend: </span>
               <span className={`font-semibold ${
                 data[data.length - 1].score >= data[0].score ? 'text-green-600' : 'text-red-600'
@@ -320,7 +320,7 @@ const SeriesProgressChart: React.FC<SeriesProgressChartProps> = ({
                 {Math.abs(data[data.length - 1].score - data[0].score).toFixed(1)} points
               </span>
             </div>
-            <div>
+            <div className="p-2 bg-white rounded border border-gray-100">
               <span className="text-gray-600">Accuracy Trend: </span>
               <span className={`font-semibold ${
                 data[data.length - 1].accuracy >= data[0].accuracy ? 'text-green-600' : 'text-red-600'
