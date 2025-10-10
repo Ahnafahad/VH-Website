@@ -695,18 +695,16 @@ const TestDetailPage = () => {
               {/* Class Percentile Positioning */}
               {userResult && currentTest && (
                 <div className="bg-gradient-to-br from-white to-vh-beige/5 rounded-xl shadow-lg border border-vh-beige/30 hover:shadow-xl transition-all duration-300 mb-8">
-                  <div className="p-6">
+                  <div className="p-6 pb-8">
                     <h3 className="text-lg font-semibold text-gray-800 mb-6">Your Position in Class</h3>
-                    <div className="h-80 mb-4">
-                      <PercentileChart
-                        userScore={isFullTest ? (userResult as FullTestResult).totalMarks : (userResult as SimpleTestResult).score}
-                        allScores={Object.values(currentTest.results || {}).map(result =>
-                          isFullTest ? (result as FullTestResult).totalMarks : (result as SimpleTestResult).score
-                        )}
-                        title=""
-                        height={280}
-                      />
-                    </div>
+                    <PercentileChart
+                      userScore={isFullTest ? (userResult as FullTestResult).totalMarks : (userResult as SimpleTestResult).score}
+                      allScores={Object.values(currentTest.results || {}).map(result =>
+                        isFullTest ? (result as FullTestResult).totalMarks : (result as SimpleTestResult).score
+                      )}
+                      title=""
+                      height={280}
+                    />
                   </div>
                 </div>
               )}
