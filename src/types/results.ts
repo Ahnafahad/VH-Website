@@ -51,6 +51,9 @@ export interface FullTestResult {
   totalMarks: number;
   mcqMarks?: number; // MCQ marks only
   essayMarks?: number; // Essay marks only
+  mcqCorrect?: number; // Total MCQ correct answers
+  mcqWrong?: number; // Total MCQ wrong answers
+  mcqAccuracy?: number; // MCQ accuracy (correct/attempted) %
   mcqPercentage?: number; // MCQ percentage (separate from total)
   totalPercentage: number; // Overall percentage including essays
   maxEssayMarks?: number; // Maximum possible essay marks

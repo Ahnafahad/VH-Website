@@ -414,16 +414,23 @@ class ExcelProcessor {
     let mcqMarks = 0;
     let essayMarks = 0;
     let essayCount = 0;
+    let totalMCQCorrect = 0;
+    let totalMCQWrong = 0;
 
     // Process section data
     const processedSections = {};
     Object.entries(sections).forEach(([sectionNumber, sectionData]) => {
       const sectionMarks = sectionData.score || 0;
+      const sectionCorrect = sectionData.correct || 0;
+      const sectionWrong = sectionData.wrong || 0;
+
       mcqMarks += sectionMarks;
+      totalMCQCorrect += sectionCorrect;
+      totalMCQWrong += sectionWrong;
 
       processedSections[sectionNumber] = {
-        correct: sectionData.correct || 0,
-        wrong: sectionData.wrong || 0,
+        correct: sectionCorrect,
+        wrong: sectionWrong,
         marks: sectionMarks,
         percentage: Math.round((sectionData.percentage || 0) * 100) / 100,
         totalQuestions: sectionData.totalQuestions || 0
@@ -441,6 +448,10 @@ class ExcelProcessor {
     // Calculate total marks including essays
     const totalMarks = basic.score || (mcqMarks + essayMarks);
 
+    // Calculate MCQ accuracy (correct/attempted)
+    const mcqAttempted = totalMCQCorrect + totalMCQWrong;
+    const mcqAccuracy = mcqAttempted > 0 ? (totalMCQCorrect / mcqAttempted) * 100 : 0;
+
     // Calculate percentages
     // MCQ percentage is already in basic.percentage or can be calculated
     const mcqPercentage = Math.round((basic.percentage || 0) * 100) / 100;
@@ -457,6 +468,9 @@ class ExcelProcessor {
       totalMarks,
       mcqMarks,
       essayMarks,
+      mcqCorrect: totalMCQCorrect,
+      mcqWrong: totalMCQWrong,
+      mcqAccuracy: Math.round(mcqAccuracy * 100) / 100,
       mcqPercentage,
       totalPercentage: Math.round(totalPercentage * 100) / 100,
       rank: basic.rank || 0

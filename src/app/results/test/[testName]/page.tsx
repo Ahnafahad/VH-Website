@@ -561,13 +561,19 @@ const TestDetailPage = () => {
                   {/* Marks Breakdown */}
                   {(userResult as FullTestResult).mcqMarks !== undefined && (
                     <div className="bg-gradient-to-br from-white to-vh-beige/5 rounded-xl shadow-lg border border-vh-beige/30 hover:shadow-xl transition-all duration-300 p-6">
-                      <h3 className="text-lg font-semibold text-gray-800 mb-6">Marks Breakdown</h3>
+                      <h3 className="text-lg font-semibold text-gray-800 mb-6">Performance Breakdown</h3>
 
                       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                         <div className="text-center p-4 bg-blue-50 rounded-lg border border-blue-100">
                           <div className="text-2xl font-bold text-blue-600">{(userResult as FullTestResult).mcqMarks}</div>
                           <div className="text-sm text-blue-700 mt-1">MCQ Marks</div>
                           <div className="text-xs text-blue-600 mt-1">{((userResult as FullTestResult).mcqPercentage || 0).toFixed(2)}%</div>
+                        </div>
+
+                        <div className="text-center p-4 bg-green-50 rounded-lg border border-green-100">
+                          <div className="text-2xl font-bold text-green-600">{((userResult as FullTestResult).mcqAccuracy || 0).toFixed(2)}%</div>
+                          <div className="text-sm text-green-700 mt-1">MCQ Accuracy</div>
+                          <div className="text-xs text-green-600 mt-1">{(userResult as FullTestResult).mcqCorrect}/{((userResult as FullTestResult).mcqCorrect || 0) + ((userResult as FullTestResult).mcqWrong || 0)} attempted</div>
                         </div>
 
                         {(userResult as FullTestResult).essayMarks !== undefined && (userResult as FullTestResult).essayMarks! > 0 && (
