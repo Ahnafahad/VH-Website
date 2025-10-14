@@ -34,6 +34,9 @@ const COLUMN_PATTERNS = {
   rank: [
     'Rank', 'rank', 'RANK', 'Position', 'position'
   ],
+  rankInMCQ: [
+    'Rank in MCQ', 'rank in mcq', 'MCQ Rank', 'mcq rank'
+  ],
   threshold: [
     'Threshold', 'threshold', 'THRESHOLD', 'Pass Mark', 'pass_mark'
   ],

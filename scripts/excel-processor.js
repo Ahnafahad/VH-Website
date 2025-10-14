@@ -130,7 +130,7 @@ class ExcelProcessor {
       try {
         console.log(`  📄 Processing sheet: ${sheetName}`);
         const worksheet = workbook.Sheets[sheetName];
-        const rawData = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
+        const rawData = XLSX.utils.sheet_to_json(worksheet, { header: 1, defval: '' });
 
         if (rawData.length < 2) {
           this.warnings.push(`Sheet ${sheetName} has insufficient data`);
@@ -364,7 +364,8 @@ class ExcelProcessor {
    * @returns {Object} - Processed sheet 1 data
    */
   processFullTestSheet1(worksheet) {
-    const rawData = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
+    // Use defval to ensure all cells are included, even empty ones
+    const rawData = XLSX.utils.sheet_to_json(worksheet, { header: 1, defval: '' });
     if (rawData.length < 2) {
       throw new Error('Sheet 1 has insufficient data');
     }
@@ -461,6 +462,9 @@ class ExcelProcessor {
     const maxTotalMarks = (mcqPercentage > 0 ? (mcqMarks / mcqPercentage) * 100 : 0) + maxEssayMarks;
     const totalPercentage = maxTotalMarks > 0 ? (totalMarks / maxTotalMarks) * 100 : 0;
 
+    // Use Rank in MCQ as fallback if Rank is not provided
+    const rank = basic.rank || basic.rankInMCQ || 0;
+
     const studentResult = {
       studentId: basic.studentId,
       studentName: basic.studentName,
@@ -473,7 +477,7 @@ class ExcelProcessor {
       mcqAccuracy: Math.round(mcqAccuracy * 100) / 100,
       mcqPercentage,
       totalPercentage: Math.round(totalPercentage * 100) / 100,
-      rank: basic.rank || 0
+      rank
     };
 
     // Add essay data if available
@@ -491,7 +495,7 @@ class ExcelProcessor {
    * @returns {Object} - Top questions data
    */
   processFullTestSheet2(worksheet) {
-    const rawData = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
+    const rawData = XLSX.utils.sheet_to_json(worksheet, { header: 1, defval: '' });
     if (rawData.length < 2) {
       return {};
     }
@@ -565,7 +569,7 @@ class ExcelProcessor {
    * @returns {Object} - Individual responses data
    */
   processFullTestSheet3(worksheet) {
-    const rawData = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
+    const rawData = XLSX.utils.sheet_to_json(worksheet, { header: 1, defval: '' });
     if (rawData.length < 2) {
       return {};
     }

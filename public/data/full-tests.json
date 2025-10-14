@@ -2307,7 +2307,7 @@
         }
       },
       "metadata": {
-        "processedAt": "2025-10-10T13:01:19.569Z",
+        "processedAt": "2025-10-14T16:23:54.871Z",
         "sourceFile": "English Test 2.xlsx",
         "sheets": [
           "Sheet1",
@@ -2343,7 +2343,7 @@
           "mcqAccuracy": 33.33,
           "mcqPercentage": 10,
           "totalPercentage": 10,
-          "rank": 14,
+          "rank": 17,
           "responses": {
             "Section1-Q1": "A (W)",
             "Section1-Q2": "D (C)",
@@ -2426,7 +2426,7 @@
           "mcqAccuracy": 0,
           "mcqPercentage": 0,
           "totalPercentage": 0,
-          "rank": 15,
+          "rank": 18,
           "responses": {},
           "analytics": {
             "skipStrategy": 0,
@@ -2463,7 +2463,7 @@
           "mcqAccuracy": 33.33,
           "mcqPercentage": 16.67,
           "totalPercentage": 16.67,
-          "rank": 9,
+          "rank": 12,
           "responses": {
             "Section1-Q1": "E (C)",
             "Section1-Q2": "C (W)",
@@ -2546,7 +2546,7 @@
           "mcqAccuracy": 75,
           "mcqPercentage": 42.78,
           "totalPercentage": 42.78,
-          "rank": 1,
+          "rank": 2,
           "responses": {
             "Section1-Q1": "E (C)",
             "Section1-Q2": "E (W)",
@@ -2629,7 +2629,7 @@
           "mcqAccuracy": 46.67,
           "mcqPercentage": 11.11,
           "totalPercentage": 11.11,
-          "rank": 12,
+          "rank": 15,
           "responses": {
             "Section1-Q1": "E (C)",
             "Section1-Q2": "NAN",
@@ -2712,7 +2712,7 @@
           "mcqAccuracy": 0,
           "mcqPercentage": 0,
           "totalPercentage": 0,
-          "rank": 15,
+          "rank": 18,
           "responses": {},
           "analytics": {
             "skipStrategy": 0,
@@ -2749,7 +2749,7 @@
           "mcqAccuracy": 73.33,
           "mcqPercentage": 22.22,
           "totalPercentage": 22.22,
-          "rank": 6,
+          "rank": 9,
           "responses": {
             "Section1-Q1": "E (C)",
             "Section1-Q2": "C (W)",
@@ -2832,7 +2832,7 @@
           "mcqAccuracy": 58.33,
           "mcqPercentage": 25.56,
           "totalPercentage": 25.56,
-          "rank": 5,
+          "rank": 7,
           "responses": {
             "Section1-Q1": "E (C)",
             "Section1-Q2": "NAN",
@@ -2915,7 +2915,7 @@
           "mcqAccuracy": 48.15,
           "mcqPercentage": 21.11,
           "totalPercentage": 21.11,
-          "rank": 7,
+          "rank": 10,
           "responses": {
             "Section1-Q1": "E (C)",
             "Section1-Q2": "E (W)",
@@ -2998,7 +2998,7 @@
           "mcqAccuracy": 59.09,
           "mcqPercentage": 23.89,
           "totalPercentage": 23.89,
-          "rank": 0,
+          "rank": 8,
           "responses": {
             "Section1-Q1": "E (C)",
             "Section1-Q2": "E (W)",
@@ -3081,7 +3081,7 @@
           "mcqAccuracy": 0,
           "mcqPercentage": 0,
           "totalPercentage": 0,
-          "rank": 15,
+          "rank": 18,
           "responses": {},
           "analytics": {
             "skipStrategy": 0,
@@ -3118,7 +3118,7 @@
           "mcqAccuracy": 56.25,
           "mcqPercentage": 16.11,
           "totalPercentage": 16.11,
-          "rank": 10,
+          "rank": 13,
           "responses": {
             "Section1-Q1": "E (C)",
             "Section1-Q2": "E (W)",
@@ -3201,7 +3201,7 @@
           "mcqAccuracy": 39.13,
           "mcqPercentage": 12.22,
           "totalPercentage": 12.22,
-          "rank": 11,
+          "rank": 14,
           "responses": {
             "Section1-Q1": "B (W)",
             "Section1-Q2": "E (W)",
@@ -3284,7 +3284,7 @@
           "mcqAccuracy": 65.22,
           "mcqPercentage": 28.89,
           "totalPercentage": 28.89,
-          "rank": 0,
+          "rank": 5,
           "responses": {
             "Section1-Q1": "E (C)",
             "Section1-Q2": "D (C)",
@@ -3367,7 +3367,7 @@
           "mcqAccuracy": 54.55,
           "mcqPercentage": 21.11,
           "totalPercentage": 21.11,
-          "rank": 7,
+          "rank": 10,
           "responses": {
             "Section1-Q1": "E (C)",
             "Section1-Q2": "NAN",
@@ -3450,7 +3450,7 @@
           "mcqAccuracy": 48.48,
           "mcqPercentage": 26.11,
           "totalPercentage": 26.11,
-          "rank": 4,
+          "rank": 6,
           "responses": {
             "Section1-Q1": "E (C)",
             "Section1-Q2": "D (C)",
@@ -3533,7 +3533,7 @@
           "mcqAccuracy": 40,
           "mcqPercentage": 11.11,
           "totalPercentage": 11.11,
-          "rank": 12,
+          "rank": 15,
           "responses": {
             "Section1-Q1": "NAN",
             "Section1-Q2": "AB (W)",
@@ -3616,7 +3616,7 @@
           "mcqAccuracy": 0,
           "mcqPercentage": 0,
           "totalPercentage": 0,
-          "rank": 15,
+          "rank": 18,
           "responses": {},
           "analytics": {
             "skipStrategy": 0,
@@ -3653,7 +3653,7 @@
           "mcqAccuracy": 0,
           "mcqPercentage": 0,
           "totalPercentage": 0,
-          "rank": 15,
+          "rank": 18,
           "responses": {},
           "analytics": {
             "skipStrategy": 0,
@@ -3690,7 +3690,7 @@
           "mcqAccuracy": 73.91,
           "mcqPercentage": 34.44,
           "totalPercentage": 34.44,
-          "rank": 2,
+          "rank": 3,
           "responses": {
             "Section1-Q1": "E (C)",
             "Section1-Q2": "E (W)",
@@ -3773,7 +3773,7 @@
           "mcqAccuracy": 83.33,
           "mcqPercentage": 63.33,
           "totalPercentage": 63.33,
-          "rank": 0,
+          "rank": 1,
           "responses": {
             "Section1-Q1": "C (W)",
             "Section1-Q2": "D (C)",
@@ -3856,7 +3856,7 @@
           "mcqAccuracy": 0,
           "mcqPercentage": 0,
           "totalPercentage": 0,
-          "rank": 15,
+          "rank": 18,
           "responses": {},
           "analytics": {
             "skipStrategy": 0,
@@ -3893,7 +3893,7 @@
           "mcqAccuracy": 84.21,
           "mcqPercentage": 33.89,
           "totalPercentage": 33.89,
-          "rank": 3,
+          "rank": 4,
           "responses": {
             "Section1-Q1": "E (C)",
             "Section1-Q2": "NAN",
@@ -3976,7 +3976,7 @@
           "mcqAccuracy": 0,
           "mcqPercentage": 0,
           "totalPercentage": 0,
-          "rank": 15,
+          "rank": 18,
           "responses": {},
           "analytics": {
             "skipStrategy": 0,
@@ -4144,7 +4144,7 @@
         }
       },
       "metadata": {
-        "processedAt": "2025-10-10T13:01:19.742Z",
+        "processedAt": "2025-10-14T16:23:54.901Z",
         "sourceFile": "Mathematics CT 2.xlsx",
         "sheets": [
           "Sheet1",
@@ -4156,7 +4156,7 @@
   },
   "metadata": {
     "totalTests": 2,
-    "lastProcessed": "2025-10-10T13:01:20.352Z",
+    "lastProcessed": "2025-10-14T16:23:54.940Z",
     "version": "1.0.0"
   }
 }

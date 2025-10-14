@@ -118,21 +118,43 @@ const Top5LeaderboardTable: React.FC<Top5LeaderboardTableProps> = ({
               <th className="px-4 py-3 text-left text-xs font-semibold text-white uppercase tracking-wider">
                 Rank
               </th>
-              <th className="px-4 py-3 text-left text-xs font-semibold text-white uppercase tracking-wider">
-                {isFullTest ? 'Total Marks' : 'Score'}
-              </th>
-              <th className="px-4 py-3 text-center text-xs font-semibold text-white uppercase tracking-wider">
-                Correct
-              </th>
-              <th className="px-4 py-3 text-center text-xs font-semibold text-white uppercase tracking-wider">
-                Wrong
-              </th>
-              <th className="px-4 py-3 text-center text-xs font-semibold text-white uppercase tracking-wider">
-                Unattempted
-              </th>
-              <th className="px-4 py-3 text-center text-xs font-semibold text-white uppercase tracking-wider">
-                Accuracy
-              </th>
+              {isFullTest ? (
+                <>
+                  <th className="px-4 py-3 text-center text-xs font-semibold text-white uppercase tracking-wider">
+                    Total Marks
+                  </th>
+                  <th className="px-4 py-3 text-center text-xs font-semibold text-white uppercase tracking-wider">
+                    MCQ Marks
+                  </th>
+                  <th className="px-4 py-3 text-center text-xs font-semibold text-white uppercase tracking-wider">
+                    Essay Marks
+                  </th>
+                  <th className="px-4 py-3 text-center text-xs font-semibold text-white uppercase tracking-wider">
+                    MCQ %
+                  </th>
+                  <th className="px-4 py-3 text-center text-xs font-semibold text-white uppercase tracking-wider">
+                    MCQ Accuracy
+                  </th>
+                </>
+              ) : (
+                <>
+                  <th className="px-4 py-3 text-left text-xs font-semibold text-white uppercase tracking-wider">
+                    Score
+                  </th>
+                  <th className="px-4 py-3 text-center text-xs font-semibold text-white uppercase tracking-wider">
+                    Correct
+                  </th>
+                  <th className="px-4 py-3 text-center text-xs font-semibold text-white uppercase tracking-wider">
+                    Wrong
+                  </th>
+                  <th className="px-4 py-3 text-center text-xs font-semibold text-white uppercase tracking-wider">
+                    Unattempted
+                  </th>
+                  <th className="px-4 py-3 text-center text-xs font-semibold text-white uppercase tracking-wider">
+                    Accuracy
+                  </th>
+                </>
+              )}
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-200">
@@ -167,59 +189,124 @@ const Top5LeaderboardTable: React.FC<Top5LeaderboardTableProps> = ({
                     </div>
                   </td>
 
-                  {/* Score/Total Marks */}
-                  <td className="px-4 py-4 whitespace-nowrap">
-                    <div className="text-xl font-bold text-vh-red">
-                      {score}
-                    </div>
-                  </td>
+                  {isFullTest ? (
+                    <>
+                      {/* Total Marks */}
+                      <td className="px-4 py-4 whitespace-nowrap text-center">
+                        <div className="text-xl font-bold text-vh-red">
+                          {result.totalMarks}
+                        </div>
+                        <div className="text-xs text-gray-500 mt-1">
+                          {((result.totalPercentage || 0).toFixed(1))}%
+                        </div>
+                      </td>
 
-                  {/* Correct */}
-                  <td className="px-4 py-4 whitespace-nowrap text-center">
-                    <div className="inline-flex items-center justify-center px-3 py-1 rounded-full bg-green-100 border border-green-200">
-                      <span className="text-sm font-semibold text-green-700">
-                        {correct}
-                      </span>
-                    </div>
-                  </td>
+                      {/* MCQ Marks */}
+                      <td className="px-4 py-4 whitespace-nowrap text-center">
+                        <div className="text-lg font-bold text-blue-600">
+                          {result.mcqMarks || 0}
+                        </div>
+                        <div className="text-xs text-gray-500 mt-1">
+                          {((result.mcqPercentage || 0).toFixed(1))}%
+                        </div>
+                      </td>
 
-                  {/* Wrong */}
-                  <td className="px-4 py-4 whitespace-nowrap text-center">
-                    <div className="inline-flex items-center justify-center px-3 py-1 rounded-full bg-red-100 border border-red-200">
-                      <span className="text-sm font-semibold text-red-700">
-                        {wrong}
-                      </span>
-                    </div>
-                  </td>
+                      {/* Essay Marks */}
+                      <td className="px-4 py-4 whitespace-nowrap text-center">
+                        <div className="text-lg font-bold text-purple-600">
+                          {result.essayMarks || 0}
+                        </div>
+                        {result.maxEssayMarks && result.maxEssayMarks > 0 && (
+                          <div className="text-xs text-gray-500 mt-1">
+                            of {result.maxEssayMarks}
+                          </div>
+                        )}
+                      </td>
 
-                  {/* Unattempted */}
-                  <td className="px-4 py-4 whitespace-nowrap text-center">
-                    <div className="inline-flex items-center justify-center px-3 py-1 rounded-full bg-gray-100 border border-gray-200">
-                      <span className="text-sm font-semibold text-gray-700">
-                        {unattempted}
-                      </span>
-                    </div>
-                  </td>
+                      {/* MCQ % */}
+                      <td className="px-4 py-4 whitespace-nowrap text-center">
+                        <div className="text-lg font-bold text-gray-800">
+                          {((result.mcqPercentage || 0).toFixed(1))}%
+                        </div>
+                        <div className="w-full max-w-[80px] mx-auto h-2 bg-gray-200 rounded-full overflow-hidden mt-1">
+                          <div
+                            className={`h-full rounded-full transition-all ${
+                              (result.mcqPercentage || 0) >= 80 ? 'bg-green-500' :
+                              (result.mcqPercentage || 0) >= 60 ? 'bg-yellow-500' :
+                              'bg-red-500'
+                            }`}
+                            style={{ width: `${result.mcqPercentage || 0}%` }}
+                          />
+                        </div>
+                      </td>
 
-                  {/* Accuracy */}
-                  <td className="px-4 py-4 whitespace-nowrap text-center">
-                    <div className="flex flex-col items-center">
-                      <div className="text-lg font-bold text-gray-800">
-                        {accuracy.toFixed(1)}%
-                      </div>
-                      {/* Accuracy bar */}
-                      <div className="w-full max-w-[80px] h-2 bg-gray-200 rounded-full overflow-hidden mt-1">
-                        <div
-                          className={`h-full rounded-full transition-all ${
-                            accuracy >= 80 ? 'bg-green-500' :
-                            accuracy >= 60 ? 'bg-yellow-500' :
-                            'bg-red-500'
-                          }`}
-                          style={{ width: `${accuracy}%` }}
-                        />
-                      </div>
-                    </div>
-                  </td>
+                      {/* MCQ Accuracy */}
+                      <td className="px-4 py-4 whitespace-nowrap text-center">
+                        <div className="text-lg font-bold text-green-600">
+                          {((result.mcqAccuracy || 0).toFixed(1))}%
+                        </div>
+                        <div className="text-xs text-gray-500 mt-1">
+                          {result.mcqCorrect || 0}/{(result.mcqCorrect || 0) + (result.mcqWrong || 0)}
+                        </div>
+                      </td>
+                    </>
+                  ) : (
+                    <>
+                      {/* Score */}
+                      <td className="px-4 py-4 whitespace-nowrap">
+                        <div className="text-xl font-bold text-vh-red">
+                          {score}
+                        </div>
+                      </td>
+
+                      {/* Correct */}
+                      <td className="px-4 py-4 whitespace-nowrap text-center">
+                        <div className="inline-flex items-center justify-center px-3 py-1 rounded-full bg-green-100 border border-green-200">
+                          <span className="text-sm font-semibold text-green-700">
+                            {correct}
+                          </span>
+                        </div>
+                      </td>
+
+                      {/* Wrong */}
+                      <td className="px-4 py-4 whitespace-nowrap text-center">
+                        <div className="inline-flex items-center justify-center px-3 py-1 rounded-full bg-red-100 border border-red-200">
+                          <span className="text-sm font-semibold text-red-700">
+                            {wrong}
+                          </span>
+                        </div>
+                      </td>
+
+                      {/* Unattempted */}
+                      <td className="px-4 py-4 whitespace-nowrap text-center">
+                        <div className="inline-flex items-center justify-center px-3 py-1 rounded-full bg-gray-100 border border-gray-200">
+                          <span className="text-sm font-semibold text-gray-700">
+                            {unattempted}
+                          </span>
+                        </div>
+                      </td>
+
+                      {/* Accuracy */}
+                      <td className="px-4 py-4 whitespace-nowrap text-center">
+                        <div className="flex flex-col items-center">
+                          <div className="text-lg font-bold text-gray-800">
+                            {accuracy.toFixed(1)}%
+                          </div>
+                          {/* Accuracy bar */}
+                          <div className="w-full max-w-[80px] h-2 bg-gray-200 rounded-full overflow-hidden mt-1">
+                            <div
+                              className={`h-full rounded-full transition-all ${
+                                accuracy >= 80 ? 'bg-green-500' :
+                                accuracy >= 60 ? 'bg-yellow-500' :
+                                'bg-red-500'
+                              }`}
+                              style={{ width: `${accuracy}%` }}
+                            />
+                          </div>
+                        </div>
+                      </td>
+                    </>
+                  )}
                 </tr>
               );
             })}
