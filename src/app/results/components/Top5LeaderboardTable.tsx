@@ -93,6 +93,11 @@ const Top5LeaderboardTable: React.FC<Top5LeaderboardTableProps> = ({
     );
   }
 
+  // Check if any result has essay marks
+  const hasEssayMarks = isFullTest && top5Results.some((result: any) =>
+    (result.essayMarks && result.essayMarks > 0) || (result.maxEssayMarks && result.maxEssayMarks > 0)
+  );
+
   // Medal icons for top 3
   const getMedalIcon = (rank: number) => {
     switch (rank) {
@@ -126,9 +131,11 @@ const Top5LeaderboardTable: React.FC<Top5LeaderboardTableProps> = ({
                   <th className="px-4 py-3 text-center text-xs font-semibold text-white uppercase tracking-wider">
                     MCQ Marks
                   </th>
-                  <th className="px-4 py-3 text-center text-xs font-semibold text-white uppercase tracking-wider">
-                    Essay Marks
-                  </th>
+                  {hasEssayMarks && (
+                    <th className="px-4 py-3 text-center text-xs font-semibold text-white uppercase tracking-wider">
+                      Essay Marks
+                    </th>
+                  )}
                   <th className="px-4 py-3 text-center text-xs font-semibold text-white uppercase tracking-wider">
                     MCQ %
                   </th>
@@ -212,16 +219,18 @@ const Top5LeaderboardTable: React.FC<Top5LeaderboardTableProps> = ({
                       </td>
 
                       {/* Essay Marks */}
-                      <td className="px-4 py-4 whitespace-nowrap text-center">
-                        <div className="text-lg font-bold text-purple-600">
-                          {result.essayMarks || 0}
-                        </div>
-                        {result.maxEssayMarks && result.maxEssayMarks > 0 && (
-                          <div className="text-xs text-gray-500 mt-1">
-                            of {result.maxEssayMarks}
+                      {hasEssayMarks && (
+                        <td className="px-4 py-4 whitespace-nowrap text-center">
+                          <div className="text-lg font-bold text-purple-600">
+                            {result.essayMarks || 0}
                           </div>
-                        )}
-                      </td>
+                          {result.maxEssayMarks && result.maxEssayMarks > 0 && (
+                            <div className="text-xs text-gray-500 mt-1">
+                              of {result.maxEssayMarks}
+                            </div>
+                          )}
+                        </td>
+                      )}
 
                       {/* MCQ % */}
                       <td className="px-4 py-4 whitespace-nowrap text-center">
