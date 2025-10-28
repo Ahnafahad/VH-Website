@@ -7,21 +7,27 @@ Complete progression tracking system with 4 mock tests showing student improveme
 
 ### Test Performance Progression
 
-| Test # | Test Name | Rank | Score | Total Marks | Improvement |
-|--------|-----------|------|-------|-------------|-------------|
-| 1 | IBA Mock Test 1 | 12/21 | 27/70 | 23.0 | Baseline |
-| 2 | IBA Mock Test 2 | 7/21 | 30/70 | 26.5 | +5 ranks ⬆️ |
-| 3 | IBA Mock Test 3 | 4/21 | 32/70 | 28.5 | +3 ranks ⬆️ |
-| 4 | IBA Mock Test 4 | 1/21 | 35/70 | 32.0 | +3 ranks ⬆️ |
+| Test # | Test Name | Rank | MCQ Score | Essay Score | Total Marks | Improvement |
+|--------|-----------|------|-----------|-------------|-------------|-------------|
+| 1 | IBA Mock Test 1 | 12/21 | 27/70 (23.0) | 19.5/30 | 42.5/100 | Baseline |
+| 2 | IBA Mock Test 2 | 7/21 | 30/70 (26.5) | 21.0/30 | 47.5/100 | +5 ranks ⬆️ |
+| 3 | IBA Mock Test 3 | 4/21 | 32/70 (28.5) | 22.0/30 | 50.5/100 | +3 ranks ⬆️ |
+| 4 | IBA Mock Test 4 | 1/21 | 35/70 (32.0) | 23.5/30 | 55.5/100 | +3 ranks ⬆️ |
 
 **Achievement:** 🏆 Climbed from Rank 12 to Rank 1 (Top performer!)
 
-### Score Progression Graph
+**Total Marks Structure:**
+- **MCQ:** 70 marks (3 sections)
+- **Essays:** 30 marks (3 essays × 10 marks each)
+- **Total:** 100 marks
+
+### Score Progression Graph (out of 100)
 ```
-35 |                         ●  (Mock 4)
-32 |                    ●        (Mock 3)
-30 |              ●              (Mock 2)
-27 |       ●                     (Mock 1)
+60 |
+55 |                         ●  (Mock 4: 55.5)
+50 |                    ●        (Mock 3: 50.5)
+47 |              ●              (Mock 2: 47.5)
+42 |       ●                     (Mock 1: 42.5)
    |________________________________
       Test 1   Test 2   Test 3   Test 4
 ```
@@ -71,6 +77,26 @@ Rank 12 |       ●                     (Mock 1)
 
 **Improvement:** +2 correct answers, +13.9% accuracy
 
+## 📝 Essay Performance
+
+### Essay Scores by Test
+
+| Test | Essay 1 | Essay 2 | Essay 3 | Total Essays |
+|------|---------|---------|---------|--------------|
+| Mock 1 | 6.5/10 | 6.0/10 | 7.0/10 | 19.5/30 |
+| Mock 2 | 7.0/10 | 6.5/10 | 7.5/10 | 21.0/30 |
+| Mock 3 | 7.5/10 | 7.0/10 | 7.5/10 | 22.0/30 |
+| Mock 4 | 8.0/10 | 7.5/10 | 8.0/10 | 23.5/30 |
+
+**Essay Improvement:** 19.5 → 23.5 (+4 marks, +20.5%)
+
+### Essay Progression
+- **Essay 1:** 6.5 → 8.0 (+1.5 marks)
+- **Essay 2:** 6.0 → 7.5 (+1.5 marks)
+- **Essay 3:** 7.0 → 8.0 (+1.0 marks)
+
+Shows consistent improvement in writing quality across all 4 tests!
+
 ## 🎯 Key Insights
 
 ### Strengths
@@ -86,8 +112,10 @@ Rank 12 |       ●                     (Mock 1)
 
 ### Performance Metrics
 - **Overall Accuracy:** 64.5% → 74.5% (+10%)
-- **Total Improvement:** +8 questions correct
-- **Consistency:** Improved in all 3 sections
+- **Total Improvement:** +8 questions correct (MCQ)
+- **Essay Improvement:** +4 marks (+20.5%)
+- **Total Score:** 42.5% → 55.5% (+13 marks)
+- **Consistency:** Improved in all 3 MCQ sections + all 3 essays
 - **Strategic Skills:** Better skip strategy (60 → 72 score)
 
 ## 🔧 Question Analysis Fixed
@@ -167,15 +195,18 @@ All 4 mock tests are accessible:
 - **Total Tests in System:** 6
   - English Test 2
   - Mathematics CT 2
-  - IBA Mock Test 1 (NEW)
-  - IBA Mock Test 2 (NEW)
-  - IBA Mock Test 3 (NEW)
-  - IBA Mock Test 4 (UPDATED)
+  - IBA Mock Test 1 (with essays)
+  - IBA Mock Test 2 (with essays)
+  - IBA Mock Test 3 (with essays)
+  - IBA Mock Test 4 (with essays)
 
 - **Students per Mock Test:** 21
-- **Total Questions:** 70 (30 English + 25 Math + 15 Analytical)
-- **Question Format:** Multiple choice with negative marking
-- **Marking Scheme:** +1 for correct, -0.25 for wrong
+- **Total Questions:** 70 MCQ (30 English + 25 Math + 15 Analytical) + 3 Essays
+- **Question Format:** Multiple choice with negative marking + Written essays
+- **Marking Scheme:**
+  - MCQ: +1 for correct, -0.25 for wrong (70 marks)
+  - Essays: 10 marks each (30 marks total)
+  - **Total: 100 marks**
 
 ## 🎓 Student Profile
 
@@ -184,13 +215,19 @@ All 4 mock tests are accessible:
 **Email:** mahmud.rahman.sample@example.com
 
 **Final Achievement:**
-- Started at Rank 12 (Mock 1)
-- Finished at Rank 1 (Mock 4)
+- Started at Rank 12 (Mock 1) - 42.5/100
+- Finished at Rank 1 (Mock 4) - 55.5/100
+- Improvement: +13 marks (+30.6%)
 - Top performer in the class! 🏆
+
+**Score Breakdown (Mock 4):**
+- MCQ: 32.0/70 (45.7%)
+- Essays: 23.5/30 (78.3%)
+- Overall: 55.5/100 (55.5%)
 
 ---
 
 **Generated:** January 2025
 **Last Updated:** Latest commit
 **Status:** ✅ Deployed and functional
-**Commit:** 8f788e2
+**Commit:** e2b8ec4
