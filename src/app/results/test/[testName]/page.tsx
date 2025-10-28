@@ -5,6 +5,8 @@ import { useSession } from 'next-auth/react';
 import { useParams, useRouter } from 'next/navigation';
 import { ArrowLeft, Award, Target, TrendingUp, Eye, CheckCircle, XCircle, Clock, Minus, Users } from 'lucide-react';
 import ProtectedRoute from '@/components/ProtectedRoute';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
 import { SimpleTestsData, FullTestsData, StudentsData, SimpleTest, FullTest, SimpleTestResult, FullTestResult } from '@/types/results';
 import SeriesProgressChart from '../../components/SeriesProgressChart';
 import PerformanceBarChart from '../../components/PerformanceBarChart';
@@ -16,6 +18,9 @@ const TestDetailPage = () => {
   const params = useParams();
   const router = useRouter();
   const testName = decodeURIComponent(params.testName as string);
+
+  // Check if this is a public demo test (IBA Mock tests)
+  const isPublicDemo = testName.includes('IBA Mock Test');
 
   const [simpleTests, setSimpleTests] = useState<SimpleTestsData | null>(null);
   const [fullTests, setFullTests] = useState<FullTestsData | null>(null);
@@ -36,12 +41,22 @@ const TestDetailPage = () => {
         setLoading(true);
         setError(null);
 
-        const [simpleResponse, fullResponse, studentsResponse, adminCheckResponse] = await Promise.all([
+        // Fetch admin check only if not a public demo
+        const fetchPromises = [
           fetch('/data/simple-tests.json').then(res => res.json()),
           fetch('/data/full-tests.json').then(res => res.json()),
           fetch('/data/students.json').then(res => res.json()),
-          fetch('/api/auth/check-admin').then(res => res.json())
-        ]);
+        ];
+
+        if (!isPublicDemo) {
+          fetchPromises.push(fetch('/api/auth/check-admin').then(res => res.json()));
+        }
+
+        const responses = await Promise.all(fetchPromises);
+        const simpleResponse = responses[0];
+        const fullResponse = responses[1];
+        const studentsResponse = responses[2];
+        const adminCheckResponse = isPublicDemo ? { isAdmin: false } : responses[3];
 
         setSimpleTests(simpleResponse);
         setFullTests(fullResponse);
@@ -65,8 +80,16 @@ const TestDetailPage = () => {
         setCurrentTest(test);
         setIsFullTest(isFullTestType);
 
-        // Find user result based on admin status
-        if (session?.user?.email) {
+        // Find user result based on demo status or admin status
+        if (isPublicDemo) {
+          // Public demo: always show Mahmud Rahman (ID: 166388)
+          const demoStudentId = '166388';
+          if (test.results && test.results[demoStudentId]) {
+            setUserResult(test.results[demoStudentId]);
+            setSelectedStudentId(demoStudentId);
+            setSelectedStudentName('Mahmud Rahman');
+          }
+        } else if (session?.user?.email) {
           if (adminCheckResponse.isAdmin) {
             // Admin: don't show their own results initially
             setUserResult(null);
@@ -111,8 +134,14 @@ const TestDetailPage = () => {
     }
   };
 
-  // Get the email to use for charts (selected student for admin, own email for students)
+  // Get the email to use for charts (selected student for admin, own email for students, or demo email)
   const getChartUserEmail = (): string | undefined => {
+    // For public demo, use Mahmud Rahman's email
+    if (isPublicDemo && selectedStudentId && students) {
+      const demoStudent = Object.values(students.students).find((s: any) => s.id === selectedStudentId) as any;
+      return demoStudent?.email;
+    }
+
     if (!session?.user?.email) return undefined;
 
     if (isAdmin && selectedStudentId && students) {
@@ -293,7 +322,8 @@ const TestDetailPage = () => {
 
   if (loading) {
     return (
-      <ProtectedRoute>
+      <>
+        {isPublicDemo && <Header />}
         <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-vh-beige/5 font-['Inter'] antialiased">
           <div className="max-w-6xl mx-auto px-6 py-12">
             <div className="flex items-center justify-center min-h-[400px]">
@@ -305,13 +335,15 @@ const TestDetailPage = () => {
             </div>
           </div>
         </div>
-      </ProtectedRoute>
+        {isPublicDemo && <Footer />}
+      </>
     );
   }
 
   if (error || !currentTest) {
     return (
-      <ProtectedRoute>
+      <>
+        {isPublicDemo && <Header />}
         <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-vh-beige/5 font-['Inter'] antialiased">
           <div className="max-w-6xl mx-auto px-6 py-12">
             <button
@@ -332,12 +364,14 @@ const TestDetailPage = () => {
             </div>
           </div>
         </div>
-      </ProtectedRoute>
+        {isPublicDemo && <Footer />}
+      </>
     );
   }
 
   return (
-    <ProtectedRoute>
+    <>
+      {isPublicDemo && <Header />}
       <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-vh-beige/5 font-['Inter'] antialiased">
         <div className="max-w-6xl mx-auto px-6 py-12">
 
@@ -1047,8 +1081,28 @@ const TestDetailPage = () => {
           )}
         </div>
       </div>
+      {isPublicDemo && <Footer />}
+    </>
+  );
+};
+
+// Wrapper component that conditionally applies ProtectedRoute
+const TestDetailPageWrapper = () => {
+  const params = useParams();
+  const testName = decodeURIComponent(params.testName as string);
+  const isPublicDemo = testName.includes('IBA Mock Test');
+
+  if (isPublicDemo) {
+    // Public demo - no authentication required
+    return <TestDetailPage />;
+  }
+
+  // Regular tests - require authentication
+  return (
+    <ProtectedRoute>
+      <TestDetailPage />
     </ProtectedRoute>
   );
 };
 
-export default TestDetailPage;
+export default TestDetailPageWrapper;
