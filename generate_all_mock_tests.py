@@ -1,0 +1,331 @@
+import json
+import random
+from datetime import datetime, timedelta
+
+# Mahmud Rahman's progression across 4 mock tests
+mahmud_progression = [
+    {
+        "testName": "IBA Mock Test 1",
+        "testNumber": 1,
+        "rank": 5,
+        "sections": {
+            "1": {"correct": 10, "wrong": 9, "skipped": 11, "total": 30},  # English - 52.6% accuracy
+            "2": {"correct": 11, "wrong": 5, "skipped": 9, "total": 25},   # Math - 68.8% accuracy
+            "3": {"correct": 6, "wrong": 2, "skipped": 7, "total": 15}     # Analytical - 75% accuracy
+        },
+        "totalCorrect": 27,
+        "date": (datetime.now() - timedelta(days=45)).isoformat()
+    },
+    {
+        "testName": "IBA Mock Test 2",
+        "testNumber": 2,
+        "rank": 4,
+        "sections": {
+            "1": {"correct": 11, "wrong": 8, "skipped": 11, "total": 30},  # English - 57.9% accuracy
+            "2": {"correct": 12, "wrong": 5, "skipped": 8, "total": 25},   # Math - 70.6% accuracy
+            "3": {"correct": 7, "wrong": 1, "skipped": 7, "total": 15}     # Analytical - 87.5% accuracy
+        },
+        "totalCorrect": 30,
+        "date": (datetime.now() - timedelta(days=30)).isoformat()
+    },
+    {
+        "testName": "IBA Mock Test 3",
+        "testNumber": 3,
+        "rank": 3,
+        "sections": {
+            "1": {"correct": 12, "wrong": 8, "skipped": 10, "total": 30},  # English - 60% accuracy
+            "2": {"correct": 13, "wrong": 4, "skipped": 8, "total": 25},   # Math - 76.5% accuracy
+            "3": {"correct": 7, "wrong": 2, "skipped": 6, "total": 15}     # Analytical - 77.8% accuracy
+        },
+        "totalCorrect": 32,
+        "date": (datetime.now() - timedelta(days=15)).isoformat()
+    },
+    {
+        "testName": "IBA Mock Test 4",
+        "testNumber": 4,
+        "rank": 3,
+        "sections": {
+            "1": {"correct": 13, "wrong": 7, "skipped": 10, "total": 30},  # English - 65% accuracy
+            "2": {"correct": 14, "wrong": 4, "skipped": 7, "total": 25},   # Math - 77.8% accuracy
+            "3": {"correct": 8, "wrong": 1, "skipped": 6, "total": 15}     # Analytical - 88.9% accuracy
+        },
+        "totalCorrect": 35,
+        "date": datetime.now().isoformat()
+    }
+]
+
+# Generate responses for a student
+def generate_responses(sections_data):
+    responses = {}
+    answer_options = ['A', 'B', 'C', 'D', 'E']
+
+    for section_num, data in sections_data.items():
+        correct_count = data['correct']
+        wrong_count = data['wrong']
+        total_questions = data['total']
+        skipped_count = data.get('skipped', total_questions - correct_count - wrong_count)
+
+        # Create response list
+        response_list = ['C'] * correct_count + ['W'] * wrong_count + ['NAN'] * skipped_count
+        random.shuffle(response_list)
+
+        for q_num in range(1, total_questions + 1):
+            q_id = f"Section{section_num}-Q{q_num}"
+            result = response_list[q_num - 1]
+
+            if result == 'NAN':
+                responses[q_id] = 'NAN'
+            else:
+                answer = random.choice(answer_options)
+                responses[q_id] = f"{answer} ({result})"
+
+    return responses
+
+# Calculate section data
+def calculate_section_data(section_info, section_num):
+    correct = section_info['correct']
+    wrong = section_info['wrong']
+    total = section_info['total']
+    skipped = section_info.get('skipped', total - correct - wrong)
+
+    marks = correct * 1.0 - wrong * 0.25
+    attempted = correct + wrong
+    accuracy = (correct / attempted * 100) if attempted > 0 else 0
+    percentage = (marks / total * 100) if total > 0 else 0
+    attempt_rate = (attempted / total * 100) if total > 0 else 0
+
+    return {
+        "correct": correct,
+        "wrong": wrong,
+        "marks": round(marks, 2),
+        "percentage": round(percentage, 2),
+        "totalQuestions": total
+    }, {
+        "accuracy": round(accuracy, 2),
+        "attemptRate": round(attempt_rate, 2),
+        "attempted": attempted,
+        "unattempted": skipped,
+        "efficiency": round((correct / total * 100), 2)
+    }
+
+# Generate mock students for a test (varying performance based on test number)
+def generate_mock_students(test_number, mahmud_data):
+    students = []
+
+    # Difficulty increases with test number
+    difficulty_factor = 1 - (test_number * 0.05)  # Tests get 5% harder each time
+
+    # Top performers (ranks 1-2)
+    for i in range(2):
+        base_correct = int((40 - i) * difficulty_factor)
+        students.append({
+            "id": f"99999{i+1}",
+            "name": f"Sample Student {i+1}",
+            "email": f"sample{i+1}@example.com",
+            "totalCorrect": base_correct,
+            "sections": {
+                "1": {"correct": int(base_correct * 0.42), "wrong": random.randint(3, 6), "total": 30},
+                "2": {"correct": int(base_correct * 0.40), "wrong": random.randint(2, 4), "total": 25},
+                "3": {"correct": int(base_correct * 0.18), "wrong": random.randint(0, 2), "total": 15}
+            }
+        })
+
+    # Mahmud Rahman at his rank
+    mahmud_rank = mahmud_data['rank']
+
+    # Add students before Mahmud
+    for i in range(2, mahmud_rank):
+        base_correct = int((40 - i) * difficulty_factor)
+        students.append({
+            "id": f"88888{i}",
+            "name": f"Sample Student {i}",
+            "email": f"sample{i}@example.com",
+            "totalCorrect": base_correct,
+            "sections": {
+                "1": {"correct": int(base_correct * 0.40), "wrong": random.randint(4, 8), "total": 30},
+                "2": {"correct": int(base_correct * 0.38), "wrong": random.randint(3, 6), "total": 25},
+                "3": {"correct": int(base_correct * 0.22), "wrong": random.randint(1, 4), "total": 15}
+            }
+        })
+
+    # Add Mahmud Rahman
+    students.append({
+        "id": "166388",
+        "name": "Mahmud Rahman",
+        "email": "mahmud.rahman.sample@example.com",
+        "totalCorrect": mahmud_data['totalCorrect'],
+        "sections": mahmud_data['sections']
+    })
+
+    # Add students after Mahmud
+    for i in range(mahmud_rank, 20):
+        base_correct = int((40 - i) * difficulty_factor)
+        base_correct = max(15, base_correct)  # Minimum 15 correct
+        students.append({
+            "id": f"77777{i}",
+            "name": f"Sample Student {i}",
+            "email": f"sample{i}@example.com",
+            "totalCorrect": base_correct,
+            "sections": {
+                "1": {"correct": int(base_correct * 0.38), "wrong": random.randint(5, 10), "total": 30},
+                "2": {"correct": int(base_correct * 0.35), "wrong": random.randint(4, 8), "total": 25},
+                "3": {"correct": int(base_correct * 0.27), "wrong": random.randint(2, 5), "total": 15}
+            }
+        })
+
+    return students
+
+# Generate top questions with unique questions per section
+def generate_top_questions():
+    top_questions = {}
+
+    for section_num in ['1', '2', '3']:
+        total_qs = 30 if section_num == '1' else (25 if section_num == '2' else 15)
+
+        # Most correct (easiest) - first 10 questions
+        most_correct = []
+        for i in range(1, min(11, total_qs + 1)):
+            q_id = f"Section{section_num}-Q{i}"
+            most_correct.append({"questionId": q_id, "count": random.randint(15, 19)})
+
+        # Most wrong (hardest) - last 10 questions
+        most_wrong = []
+        start_idx = max(1, total_qs - 9)
+        for i in range(start_idx, total_qs + 1):
+            q_id = f"Section{section_num}-Q{i}"
+            most_wrong.append({"questionId": q_id, "count": random.randint(12, 17)})
+
+        # Most skipped - middle questions
+        most_skipped = []
+        start_skip = max(11, int(total_qs * 0.4))
+        for i in range(start_skip, min(start_skip + 10, total_qs)):
+            q_id = f"Section{section_num}-Q{i}"
+            most_skipped.append({"questionId": q_id, "count": random.randint(8, 14)})
+
+        top_questions[section_num] = {
+            "mostCorrect": most_correct,
+            "mostWrong": most_wrong,
+            "mostSkipped": most_skipped
+        }
+
+    return top_questions
+
+# Create a test
+def create_test(mahmud_test_data):
+    students_list = generate_mock_students(mahmud_test_data['testNumber'], mahmud_test_data)
+
+    # Sort by total correct for ranking
+    students_list.sort(key=lambda x: x['totalCorrect'], reverse=True)
+
+    # Build results dictionary
+    results = {}
+    all_scores = []
+
+    for rank, student in enumerate(students_list, 1):
+        sections_result = {}
+        section_analytics = {}
+        mcq_correct = 0
+        mcq_wrong = 0
+        total_marks = 0
+
+        for section_num, section_info in student['sections'].items():
+            section_data, section_perf = calculate_section_data(section_info, section_num)
+            sections_result[section_num] = section_data
+            section_analytics[section_num] = section_perf
+
+            mcq_correct += section_info['correct']
+            mcq_wrong += section_info['wrong']
+            total_marks += section_data['marks']
+
+        mcq_attempted = mcq_correct + mcq_wrong
+        mcq_accuracy = (mcq_correct / mcq_attempted * 100) if mcq_attempted > 0 else 0
+        total_questions = 70
+        mcq_percentage = (total_marks / total_questions * 100)
+
+        # Generate responses
+        responses = generate_responses(student['sections'])
+
+        # Analytics scores
+        skip_strategy = random.randint(60, 95)
+        question_choice = random.randint(65, 90)
+        recovery_score = random.randint(50, 85)
+
+        results[student['id']] = {
+            "studentId": student['id'],
+            "studentName": student['name'],
+            "sections": sections_result,
+            "totalMarks": round(total_marks, 2),
+            "mcqMarks": round(total_marks, 2),
+            "essayMarks": 0,
+            "mcqCorrect": mcq_correct,
+            "mcqWrong": mcq_wrong,
+            "mcqAccuracy": round(mcq_accuracy, 2),
+            "mcqPercentage": round(mcq_percentage, 2),
+            "totalPercentage": round(mcq_percentage, 2),
+            "rank": rank,
+            "maxEssayMarks": 0,
+            "responses": responses,
+            "analytics": {
+                "skipStrategy": skip_strategy,
+                "questionChoiceStrategy": question_choice,
+                "recoveryScore": recovery_score,
+                "sectionPerformance": section_analytics
+            }
+        }
+
+        all_scores.append(total_marks)
+
+    # Calculate class stats
+    average_score = sum(all_scores) / len(all_scores)
+    top_5_scores = sorted(all_scores, reverse=True)[:5]
+    top_5_average = sum(top_5_scores) / len(top_5_scores)
+    threshold = average_score * 0.6
+    pass_count = sum(1 for score in all_scores if score >= threshold)
+    pass_rate = (pass_count / len(all_scores)) * 100
+
+    # Build test object
+    test_obj = {
+        "testName": mahmud_test_data['testName'],
+        "testType": "full",
+        "sections": ["1", "2", "3"],
+        "results": results,
+        "classStats": {
+            "averageScore": round(average_score, 2),
+            "top5Average": round(top_5_average, 2),
+            "threshold": round(threshold, 2),
+            "totalStudents": len(students_list),
+            "passRate": round(pass_rate, 2)
+        },
+        "topQuestions": generate_top_questions(),
+        "metadata": {
+            "processedAt": mahmud_test_data['date'],
+            "sourceFile": f"OMR_Results {mahmud_test_data['testName']}.xlsx",
+            "sheets": ["Sheet1"]
+        }
+    }
+
+    return test_obj
+
+# Read existing full-tests.json
+with open('public/data/full-tests.json', 'r', encoding='utf-8') as f:
+    full_tests_data = json.load(f)
+
+# Generate all 4 mock tests
+print("Generating IBA Mock Tests 1-4...")
+for test_data in mahmud_progression:
+    test_obj = create_test(test_data)
+    full_tests_data['tests'][test_data['testName']] = test_obj
+    print(f"[OK] Created {test_data['testName']} - Mahmud Rahman Rank {test_data['rank']}, Score: {test_data['totalCorrect']}/70")
+
+# Update metadata
+full_tests_data['metadata']['totalTests'] = len(full_tests_data['tests'])
+full_tests_data['metadata']['lastProcessed'] = datetime.now().isoformat()
+
+# Write updated full-tests.json
+with open('public/data/full-tests.json', 'w', encoding='utf-8') as f:
+    json.dump(full_tests_data, f, indent=2, ensure_ascii=False)
+
+print(f"\n[SUCCESS] Generated all 4 IBA Mock Tests")
+print(f"[INFO] Mahmud Rahman progression: Rank 5 -> 4 -> 3 -> 3")
+print(f"[INFO] Score progression: 27 -> 30 -> 32 -> 35")
+print(f"[INFO] Total tests in file: {len(full_tests_data['tests'])}")

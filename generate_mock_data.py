@@ -201,28 +201,31 @@ threshold = average_score * 0.6
 pass_count = sum(1 for score in all_scores if score >= threshold)
 pass_rate = (pass_count / len(all_scores)) * 100
 
-# Generate top questions data
+# Generate top questions data with unique questions per section
 def generate_top_questions():
     top_questions = {}
 
     for section_num in ['1', '2', '3']:
         total_qs = 30 if section_num == '1' else (25 if section_num == '2' else 15)
 
-        # Generate most correct questions (easiest)
+        # Generate most correct questions (easiest) - first 10 questions
         most_correct = []
-        for i in range(1, 11):
+        for i in range(1, min(11, total_qs + 1)):
             q_id = f"Section{section_num}-Q{i}"
             most_correct.append({"questionId": q_id, "count": random.randint(15, 19)})
 
-        # Generate most wrong questions (hardest)
+        # Generate most wrong questions (hardest) - last 10 questions
         most_wrong = []
-        for i in range(total_qs - 9, total_qs + 1):
+        start_idx = max(1, total_qs - 9)
+        for i in range(start_idx, total_qs + 1):
             q_id = f"Section{section_num}-Q{i}"
             most_wrong.append({"questionId": q_id, "count": random.randint(12, 17)})
 
-        # Generate most skipped questions
+        # Generate most skipped questions - middle questions
         most_skipped = []
-        for i in range(int(total_qs * 0.6), int(total_qs * 0.6) + 10):
+        start_skip = max(11, int(total_qs * 0.4))
+        end_skip = min(start_skip + 10, total_qs - 10)
+        for i in range(start_skip, min(start_skip + 10, total_qs)):
             q_id = f"Section{section_num}-Q{i}"
             most_skipped.append({"questionId": q_id, "count": random.randint(8, 14)})
 
