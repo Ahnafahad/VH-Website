@@ -172,13 +172,19 @@ const TestDetailPage = () => {
   };
 
   const analyzePersonalTopQuestionsPerformance = () => {
-    if (!isFullTest || !currentTest || !userResult || !session?.user?.email) {
+    // For public demos, we don't need session - we already have userResult
+    if (!isFullTest || !currentTest || !userResult) {
       console.log('DEBUG: Early return - missing data', {
         isFullTest,
         hasCurrentTest: !!currentTest,
         hasUserResult: !!userResult,
-        hasEmail: !!session?.user?.email
+        isPublicDemo
       });
+      return null;
+    }
+
+    // For non-demo pages, require authentication
+    if (!isPublicDemo && !session?.user?.email) {
       return null;
     }
 
@@ -305,7 +311,9 @@ const TestDetailPage = () => {
 
   // Helper function to get user's performance indicator for a specific question
   const getUserQuestionStatus = (questionId: string): React.ReactNode => {
-    if (!isFullTest || !userResult || !session?.user?.email) return null;
+    if (!isFullTest || !userResult) return null;
+    // For non-demo pages, require authentication
+    if (!isPublicDemo && !session?.user?.email) return null;
 
     const result = userResult as FullTestResult;
     const userResponse = result.responses?.[questionId];
@@ -933,12 +941,17 @@ const TestDetailPage = () => {
               {/* Personal Performance vs Top Questions */}
               {isFullTest && (currentTest as FullTest).topQuestions && userResult && (
                 <div className="bg-gradient-to-br from-white to-vh-beige/5 rounded-xl shadow-lg border border-vh-beige/30 hover:shadow-xl transition-all duration-300 p-6 mb-8">
-                  <h3 className="text-lg font-semibold text-gray-800 mb-4">Your Performance vs Class Top Questions</h3>
-                  <p className="text-sm text-gray-600 mb-6">See how you performed on the questions that were easiest, hardest, and most skipped by the class</p>
+                  <h3 className="text-lg font-semibold text-gray-800 mb-4">
+                    {isPublicDemo ? "Mahmud Rahman's" : "Your"} Performance vs Class Top Questions
+                  </h3>
+                  <p className="text-sm text-gray-600 mb-6">See how {isPublicDemo ? "Mahmud" : "you"} performed on the questions that were easiest, hardest, and most skipped by the class</p>
 
                   {(() => {
                     const personalAnalysis = analyzePersonalTopQuestionsPerformance();
-                    if (!personalAnalysis) return null;
+                    if (!personalAnalysis) {
+                      console.log('DEBUG: No personal analysis data');
+                      return <div className="text-center text-gray-500 py-8">No question analysis data available</div>;
+                    }
 
                     return Object.entries(personalAnalysis).map(([sectionNum, analysis]: [string, any]) => (
                       <div key={sectionNum} className="mb-8">
