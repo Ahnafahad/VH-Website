@@ -13,6 +13,11 @@ mahmud_progression = [
             "2": {"correct": 11, "wrong": 5, "skipped": 9, "total": 25},   # Math - 68.8% accuracy
             "3": {"correct": 6, "wrong": 2, "skipped": 7, "total": 15}     # Analytical - 75% accuracy
         },
+        "essays": {
+            "1": 6.5,  # Essay 1: 6.5/10
+            "2": 6.0,  # Essay 2: 6.0/10
+            "3": 7.0   # Essay 3: 7.0/10
+        },
         "totalCorrect": 27,
         "date": (datetime.now() - timedelta(days=45)).isoformat()
     },
@@ -24,6 +29,11 @@ mahmud_progression = [
             "1": {"correct": 11, "wrong": 8, "skipped": 11, "total": 30},  # English - 57.9% accuracy
             "2": {"correct": 12, "wrong": 5, "skipped": 8, "total": 25},   # Math - 70.6% accuracy
             "3": {"correct": 7, "wrong": 1, "skipped": 7, "total": 15}     # Analytical - 87.5% accuracy
+        },
+        "essays": {
+            "1": 7.0,  # Essay 1: 7.0/10
+            "2": 6.5,  # Essay 2: 6.5/10
+            "3": 7.5   # Essay 3: 7.5/10
         },
         "totalCorrect": 30,
         "date": (datetime.now() - timedelta(days=30)).isoformat()
@@ -37,6 +47,11 @@ mahmud_progression = [
             "2": {"correct": 13, "wrong": 4, "skipped": 8, "total": 25},   # Math - 76.5% accuracy
             "3": {"correct": 7, "wrong": 2, "skipped": 6, "total": 15}     # Analytical - 77.8% accuracy
         },
+        "essays": {
+            "1": 7.5,  # Essay 1: 7.5/10
+            "2": 7.0,  # Essay 2: 7.0/10
+            "3": 7.5   # Essay 3: 7.5/10
+        },
         "totalCorrect": 32,
         "date": (datetime.now() - timedelta(days=15)).isoformat()
     },
@@ -48,6 +63,11 @@ mahmud_progression = [
             "1": {"correct": 13, "wrong": 7, "skipped": 10, "total": 30},  # English - 65% accuracy
             "2": {"correct": 14, "wrong": 4, "skipped": 7, "total": 25},   # Math - 77.8% accuracy
             "3": {"correct": 8, "wrong": 1, "skipped": 6, "total": 15}     # Analytical - 88.9% accuracy
+        },
+        "essays": {
+            "1": 8.0,  # Essay 1: 8.0/10
+            "2": 7.5,  # Essay 2: 7.5/10
+            "3": 8.0   # Essay 3: 8.0/10
         },
         "totalCorrect": 35,
         "date": datetime.now().isoformat()
@@ -127,6 +147,11 @@ def generate_mock_students(test_number, mahmud_data):
                 "1": {"correct": int(base_correct * 0.42), "wrong": random.randint(3, 6), "total": 30},
                 "2": {"correct": int(base_correct * 0.40), "wrong": random.randint(2, 4), "total": 25},
                 "3": {"correct": int(base_correct * 0.18), "wrong": random.randint(0, 2), "total": 15}
+            },
+            "essays": {
+                "1": round(random.uniform(7.5, 9.0), 1),
+                "2": round(random.uniform(7.5, 9.0), 1),
+                "3": round(random.uniform(7.5, 9.0), 1)
             }
         })
 
@@ -145,6 +170,11 @@ def generate_mock_students(test_number, mahmud_data):
                 "1": {"correct": int(base_correct * 0.40), "wrong": random.randint(4, 8), "total": 30},
                 "2": {"correct": int(base_correct * 0.38), "wrong": random.randint(3, 6), "total": 25},
                 "3": {"correct": int(base_correct * 0.22), "wrong": random.randint(1, 4), "total": 15}
+            },
+            "essays": {
+                "1": round(random.uniform(7.0, 8.5), 1),
+                "2": round(random.uniform(7.0, 8.5), 1),
+                "3": round(random.uniform(7.0, 8.5), 1)
             }
         })
 
@@ -154,7 +184,8 @@ def generate_mock_students(test_number, mahmud_data):
         "name": "Mahmud Rahman",
         "email": "mahmud.rahman.sample@example.com",
         "totalCorrect": mahmud_data['totalCorrect'],
-        "sections": mahmud_data['sections']
+        "sections": mahmud_data['sections'],
+        "essays": mahmud_data['essays']
     })
 
     # Add students after Mahmud
@@ -170,6 +201,11 @@ def generate_mock_students(test_number, mahmud_data):
                 "1": {"correct": int(base_correct * 0.38), "wrong": random.randint(5, 10), "total": 30},
                 "2": {"correct": int(base_correct * 0.35), "wrong": random.randint(4, 8), "total": 25},
                 "3": {"correct": int(base_correct * 0.27), "wrong": random.randint(2, 5), "total": 15}
+            },
+            "essays": {
+                "1": round(random.uniform(6.0, 7.5), 1),
+                "2": round(random.uniform(6.0, 7.5), 1),
+                "3": round(random.uniform(6.0, 7.5), 1)
             }
         })
 
@@ -226,7 +262,7 @@ def create_test(mahmud_test_data):
         section_analytics = {}
         mcq_correct = 0
         mcq_wrong = 0
-        total_marks = 0
+        mcq_marks = 0
 
         for section_num, section_info in student['sections'].items():
             section_data, section_perf = calculate_section_data(section_info, section_num)
@@ -235,12 +271,19 @@ def create_test(mahmud_test_data):
 
             mcq_correct += section_info['correct']
             mcq_wrong += section_info['wrong']
-            total_marks += section_data['marks']
+            mcq_marks += section_data['marks']
+
+        # Calculate essay marks
+        essay_marks = sum(student['essays'].values())
+
+        # Total marks = MCQ marks + Essay marks (out of 100)
+        total_marks = mcq_marks + essay_marks
 
         mcq_attempted = mcq_correct + mcq_wrong
         mcq_accuracy = (mcq_correct / mcq_attempted * 100) if mcq_attempted > 0 else 0
         total_questions = 70
-        mcq_percentage = (total_marks / total_questions * 100)
+        mcq_percentage = (mcq_marks / total_questions * 100)
+        total_percentage = (total_marks / 100 * 100)  # Out of 100 total
 
         # Generate responses
         responses = generate_responses(student['sections'])
@@ -255,15 +298,16 @@ def create_test(mahmud_test_data):
             "studentName": student['name'],
             "sections": sections_result,
             "totalMarks": round(total_marks, 2),
-            "mcqMarks": round(total_marks, 2),
-            "essayMarks": 0,
+            "mcqMarks": round(mcq_marks, 2),
+            "essayMarks": round(essay_marks, 2),
             "mcqCorrect": mcq_correct,
             "mcqWrong": mcq_wrong,
             "mcqAccuracy": round(mcq_accuracy, 2),
             "mcqPercentage": round(mcq_percentage, 2),
-            "totalPercentage": round(mcq_percentage, 2),
+            "totalPercentage": round(total_percentage, 2),
             "rank": rank,
-            "maxEssayMarks": 0,
+            "maxEssayMarks": 30,
+            "essays": student['essays'],
             "responses": responses,
             "analytics": {
                 "skipStrategy": skip_strategy,
