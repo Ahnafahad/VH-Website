@@ -51,6 +51,7 @@ export default function RegistrationPage() {
     let discountRate = 0;
     if (count >= 4) discountRate = 0.25;
     else if (count === 3) discountRate = 0.15;
+    else if (count === 2) discountRate = 0.05;
 
     const discount = subtotal * discountRate;
     const finalPrice = subtotal - discount;
@@ -630,7 +631,7 @@ export default function RegistrationPage() {
                           </div>
                           {discount > 0 && (
                             <div className="flex justify-between text-yellow-300">
-                              <span>Discount ({selectedMocks.length >= 4 ? '25' : '15'}%):</span>
+                              <span>Discount ({selectedMocks.length >= 4 ? '25' : selectedMocks.length === 3 ? '15' : '5'}%):</span>
                               <span className="font-bold">- Tk {discount.toLocaleString()}</span>
                             </div>
                           )}
@@ -640,7 +641,7 @@ export default function RegistrationPage() {
                             <span className="font-black">Tk {finalPrice.toLocaleString()}</span>
                           </div>
                         </div>
-                        {selectedMocks.length >= 3 && (
+                        {selectedMocks.length >= 2 && (
                           <div className="bg-white/20 rounded-lg p-3 text-sm">
                             🎉 You're saving Tk {discount.toLocaleString()} with our multi-program discount!
                           </div>
@@ -896,7 +897,7 @@ export default function RegistrationPage() {
                           </div>
                           {discount > 0 && (
                             <div className="flex justify-between items-center mb-2">
-                              <span className="text-green-700">Discount ({selectedMocks.length >= 4 ? '25' : '15'}%):</span>
+                              <span className="text-green-700">Discount ({selectedMocks.length >= 4 ? '25' : selectedMocks.length === 3 ? '15' : '5'}%):</span>
                               <span className="font-bold text-green-700">- Tk {discount.toLocaleString()}</span>
                             </div>
                           )}

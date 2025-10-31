@@ -1,9 +1,9 @@
 ﻿'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Menu, X, ChevronDown, Gamepad2, BarChart3, Calendar } from 'lucide-react';
+import { Menu, X, ChevronDown, Gamepad2, BarChart3, Calendar, ClipboardList } from 'lucide-react';
 import LoginButton from './LoginButton';
 import { useSession } from 'next-auth/react';
 
@@ -11,6 +11,27 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isGamesDropdownOpen, setIsGamesDropdownOpen] = useState(false);
   const { data: session } = useSession();
+  const [isAdmin, setIsAdmin] = useState(false);
+
+  // Check if user is admin
+  useEffect(() => {
+    const checkAdminStatus = async () => {
+      if (!session?.user?.email) {
+        setIsAdmin(false);
+        return;
+      }
+
+      try {
+        const response = await fetch('/api/auth/check-admin');
+        const data = await response.json();
+        setIsAdmin(data.isAdmin);
+      } catch (error) {
+        setIsAdmin(false);
+      }
+    };
+
+    checkAdminStatus();
+  }, [session]);
 
   return (
     <header className="bg-white shadow-lg border-b border-vh-beige/30 sticky top-0 z-50 backdrop-blur-sm bg-white/95">
@@ -79,6 +100,16 @@ const Header = () => {
                   Results
                   <span className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-vh-red transition-all duration-300 group-hover:w-full group-hover:left-0"></span>
                 </Link>
+                {isAdmin && (
+                  <Link
+                    href="/results/admin"
+                    className="relative px-4 py-3 text-gray-800 hover:text-vh-red font-semibold transition-all duration-300 group flex items-center gap-1 min-h-[44px]"
+                  >
+                    <ClipboardList size={16} />
+                    Registrations
+                    <span className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-vh-red transition-all duration-300 group-hover:w-full group-hover:left-0"></span>
+                  </Link>
+                )}
                 <div className="relative">
                   <button
                     onClick={() => setIsGamesDropdownOpen(!isGamesDropdownOpen)}
@@ -171,6 +202,16 @@ const Header = () => {
                     <BarChart3 size={16} />
                     Results
                   </Link>
+                  {isAdmin && (
+                    <Link
+                      href="/results/admin"
+                      className="block px-4 py-3 text-gray-800 hover:text-vh-red hover:bg-vh-beige/10 font-semibold rounded-xl transition-all duration-300 flex items-center gap-2"
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      <ClipboardList size={16} />
+                      Registrations
+                    </Link>
+                  )}
                   <div>
                     <div className="px-4 py-3 text-gray-800 font-semibold flex items-center gap-2">
                       <Gamepad2 size={16} />
