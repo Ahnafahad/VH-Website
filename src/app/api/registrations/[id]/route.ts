@@ -7,7 +7,7 @@ import { isAdminEmail } from '@/lib/generated-access-control';
 // PATCH - Update registration status or notes (admin only)
 export async function PATCH(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     // Validate admin authentication
@@ -21,6 +21,7 @@ export async function PATCH(
 
     const data = await request.json();
     const { status, notes } = data;
+    const { id } = await params;
 
     // Validate status if provided
     if (status && !['pending', 'contacted', 'enrolled', 'cancelled'].includes(status)) {
@@ -39,7 +40,7 @@ export async function PATCH(
     if (notes !== undefined) updateFields.notes = notes;
 
     const updatedRegistration = await Registration.findByIdAndUpdate(
-      params.id,
+      id,
       updateFields,
       { new: true, runValidators: true }
     );
@@ -61,7 +62,7 @@ export async function PATCH(
 // GET - Fetch single registration (admin only)
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     // Validate admin authentication
@@ -73,7 +74,8 @@ export async function GET(
 
     await connectToDatabase();
 
-    const registration = await Registration.findById(params.id).lean();
+    const { id } = await params;
+    const registration = await Registration.findById(id).lean();
 
     if (!registration) {
       throw new ApiException('Registration not found', 404, 'NOT_FOUND');

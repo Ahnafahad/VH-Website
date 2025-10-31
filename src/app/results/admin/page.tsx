@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
-import { Shield, Users, BarChart3, TrendingUp, Award, Clock, Eye, Download, ArrowLeft, UserPlus, Phone, Mail, Calendar as CalendarIcon, CheckCircle, XCircle, AlertCircle, FileText } from 'lucide-react';
+import { Shield, Users, BarChart3, TrendingUp, Award, Clock, Eye, Download, ArrowLeft, UserPlus, Phone, Mail, CheckCircle, XCircle, AlertCircle } from 'lucide-react';
 import ProtectedRoute from '@/components/ProtectedRoute';
 import { SimpleTestsData, FullTestsData, StudentsData, SystemMetadata } from '@/types/results';
 import ClassDistributionChart from '../components/ClassDistributionChart';
