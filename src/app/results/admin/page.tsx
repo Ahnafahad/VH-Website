@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
-import { Shield, Users, BarChart3, TrendingUp, Award, Clock, Eye, Download, ArrowLeft } from 'lucide-react';
+import { Shield, Users, BarChart3, TrendingUp, Award, Clock, Eye, Download, ArrowLeft, UserPlus, Phone, Mail, Calendar as CalendarIcon, CheckCircle, XCircle, AlertCircle, FileText } from 'lucide-react';
 import ProtectedRoute from '@/components/ProtectedRoute';
 import { SimpleTestsData, FullTestsData, StudentsData, SystemMetadata } from '@/types/results';
 import ClassDistributionChart from '../components/ClassDistributionChart';
@@ -29,6 +29,40 @@ interface StudentSummary {
   lastActivity: string;
 }
 
+interface Registration {
+  _id: string;
+  name: string;
+  email: string;
+  phone: string;
+  educationType: 'hsc' | 'alevels';
+  years: {
+    hscYear?: string;
+    sscYear?: string;
+    aLevelYear?: string;
+    oLevelYear?: string;
+  };
+  programMode: 'mocks' | 'full';
+  selectedMocks?: string[];
+  mockIntent?: 'trial' | 'full';
+  pricing?: {
+    subtotal: number;
+    discount: number;
+    finalPrice: number;
+  };
+  selectedFullCourses?: string[];
+  status: 'pending' | 'contacted' | 'enrolled' | 'cancelled';
+  notes?: string;
+  createdAt: string;
+  updatedAt: string;
+}
+
+interface RegistrationCounts {
+  pending: number;
+  contacted: number;
+  enrolled: number;
+  cancelled: number;
+}
+
 const AdminDashboard = () => {
   const { data: session } = useSession();
   const router = useRouter();
@@ -43,6 +77,18 @@ const AdminDashboard = () => {
   const [classStats, setClassStats] = useState<ClassStats | null>(null);
   const [studentSummaries, setStudentSummaries] = useState<StudentSummary[]>([]);
   const [selectedTest, setSelectedTest] = useState<string>('');
+
+  // Registrations state
+  const [registrations, setRegistrations] = useState<Registration[]>([]);
+  const [registrationCounts, setRegistrationCounts] = useState<RegistrationCounts>({
+    pending: 0,
+    contacted: 0,
+    enrolled: 0,
+    cancelled: 0
+  });
+  const [registrationFilter, setRegistrationFilter] = useState<string>('all');
+  const [selectedRegistration, setSelectedRegistration] = useState<Registration | null>(null);
+  const [showRegistrationModal, setShowRegistrationModal] = useState(false);
 
   useEffect(() => {
     // Check if user is admin
@@ -76,17 +122,24 @@ const AdminDashboard = () => {
         setLoading(true);
         setError(null);
 
-        const [simpleResponse, fullResponse, studentsResponse, metadataResponse] = await Promise.all([
+        const [simpleResponse, fullResponse, studentsResponse, metadataResponse, registrationsResponse] = await Promise.all([
           fetch('/data/simple-tests.json').then(res => res.json()),
           fetch('/data/full-tests.json').then(res => res.json()),
           fetch('/data/students.json').then(res => res.json()),
-          fetch('/data/metadata.json').then(res => res.json())
+          fetch('/data/metadata.json').then(res => res.json()),
+          fetch('/api/registrations').then(res => res.json()).catch(() => ({ registrations: [], counts: { pending: 0, contacted: 0, enrolled: 0, cancelled: 0 } }))
         ]);
 
         setSimpleTests(simpleResponse);
         setFullTests(fullResponse);
         setStudents(studentsResponse);
         setMetadata(metadataResponse);
+
+        // Set registrations data
+        if (registrationsResponse.success) {
+          setRegistrations(registrationsResponse.registrations || []);
+          setRegistrationCounts(registrationsResponse.counts || { pending: 0, contacted: 0, enrolled: 0, cancelled: 0 });
+        }
 
         // Calculate class statistics
         calculateClassStats(simpleResponse, fullResponse, studentsResponse);
@@ -227,6 +280,37 @@ const AdminDashboard = () => {
       console.error('Error exporting data:', err);
     }
   };
+
+  const updateRegistrationStatus = async (registrationId: string, newStatus: string, notes?: string) => {
+    try {
+      const response = await fetch(`/api/registrations/${registrationId}`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ status: newStatus, notes })
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to update registration');
+      }
+
+      // Refresh registrations
+      const registrationsResponse = await fetch('/api/registrations').then(res => res.json());
+      if (registrationsResponse.success) {
+        setRegistrations(registrationsResponse.registrations || []);
+        setRegistrationCounts(registrationsResponse.counts || { pending: 0, contacted: 0, enrolled: 0, cancelled: 0 });
+      }
+
+      setShowRegistrationModal(false);
+      setSelectedRegistration(null);
+    } catch (err) {
+      console.error('Error updating registration:', err);
+      alert('Failed to update registration status');
+    }
+  };
+
+  const filteredRegistrations = registrationFilter === 'all'
+    ? registrations
+    : registrations.filter(r => r.status === registrationFilter);
 
   const getTestAnalytics = () => {
     if (!simpleTests || !fullTests || !selectedTest) return null;
@@ -728,6 +812,343 @@ const AdminDashboard = () => {
                         })()}
                       </div>
                     </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* Registrations Section */}
+          <div className="mb-8">
+            <div className="bg-gradient-to-br from-white to-blue-50/30 rounded-xl shadow-lg border border-blue-200/50 p-6">
+              <div className="flex items-center justify-between mb-6">
+                <div className="flex items-center gap-3">
+                  <UserPlus className="text-blue-600" size={28} />
+                  <div>
+                    <h3 className="text-xl font-bold text-gray-800">Program Registrations</h3>
+                    <p className="text-sm text-gray-600">Track and manage student enrollments</p>
+                  </div>
+                </div>
+                <div className="text-right">
+                  <p className="text-3xl font-black text-blue-600">{registrations.length}</p>
+                  <p className="text-xs text-gray-500 uppercase font-semibold">Total</p>
+                </div>
+              </div>
+
+              {/* Status Filter Cards */}
+              <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-6">
+                <button
+                  onClick={() => setRegistrationFilter('all')}
+                  className={`p-4 rounded-lg border-2 transition-all ${
+                    registrationFilter === 'all'
+                      ? 'border-blue-500 bg-blue-50 shadow-md'
+                      : 'border-gray-200 hover:border-blue-300'
+                  }`}
+                >
+                  <p className="text-sm font-semibold text-gray-600">All</p>
+                  <p className="text-2xl font-bold text-gray-800">{registrations.length}</p>
+                </button>
+
+                <button
+                  onClick={() => setRegistrationFilter('pending')}
+                  className={`p-4 rounded-lg border-2 transition-all ${
+                    registrationFilter === 'pending'
+                      ? 'border-yellow-500 bg-yellow-50 shadow-md'
+                      : 'border-gray-200 hover:border-yellow-300'
+                  }`}
+                >
+                  <div className="flex items-center gap-2 mb-1">
+                    <AlertCircle size={16} className="text-yellow-600" />
+                    <p className="text-sm font-semibold text-gray-600">Pending</p>
+                  </div>
+                  <p className="text-2xl font-bold text-yellow-600">{registrationCounts.pending}</p>
+                </button>
+
+                <button
+                  onClick={() => setRegistrationFilter('contacted')}
+                  className={`p-4 rounded-lg border-2 transition-all ${
+                    registrationFilter === 'contacted'
+                      ? 'border-blue-500 bg-blue-50 shadow-md'
+                      : 'border-gray-200 hover:border-blue-300'
+                  }`}
+                >
+                  <div className="flex items-center gap-2 mb-1">
+                    <Phone size={16} className="text-blue-600" />
+                    <p className="text-sm font-semibold text-gray-600">Contacted</p>
+                  </div>
+                  <p className="text-2xl font-bold text-blue-600">{registrationCounts.contacted}</p>
+                </button>
+
+                <button
+                  onClick={() => setRegistrationFilter('enrolled')}
+                  className={`p-4 rounded-lg border-2 transition-all ${
+                    registrationFilter === 'enrolled'
+                      ? 'border-green-500 bg-green-50 shadow-md'
+                      : 'border-gray-200 hover:border-green-300'
+                  }`}
+                >
+                  <div className="flex items-center gap-2 mb-1">
+                    <CheckCircle size={16} className="text-green-600" />
+                    <p className="text-sm font-semibold text-gray-600">Enrolled</p>
+                  </div>
+                  <p className="text-2xl font-bold text-green-600">{registrationCounts.enrolled}</p>
+                </button>
+
+                <button
+                  onClick={() => setRegistrationFilter('cancelled')}
+                  className={`p-4 rounded-lg border-2 transition-all ${
+                    registrationFilter === 'cancelled'
+                      ? 'border-red-500 bg-red-50 shadow-md'
+                      : 'border-gray-200 hover:border-red-300'
+                  }`}
+                >
+                  <div className="flex items-center gap-2 mb-1">
+                    <XCircle size={16} className="text-red-600" />
+                    <p className="text-sm font-semibold text-gray-600">Cancelled</p>
+                  </div>
+                  <p className="text-2xl font-bold text-red-600">{registrationCounts.cancelled}</p>
+                </button>
+              </div>
+
+              {/* Registrations Table */}
+              <div className="bg-white rounded-lg border border-gray-200 overflow-hidden">
+                <div className="overflow-x-auto max-h-[600px] overflow-y-auto">
+                  <table className="w-full">
+                    <thead className="bg-gray-50 sticky top-0">
+                      <tr>
+                        <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Date</th>
+                        <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Name</th>
+                        <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Contact</th>
+                        <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Program</th>
+                        <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Type</th>
+                        <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Status</th>
+                        <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-gray-200">
+                      {filteredRegistrations.length === 0 ? (
+                        <tr>
+                          <td colSpan={7} className="px-4 py-8 text-center text-gray-500">
+                            No registrations found
+                          </td>
+                        </tr>
+                      ) : (
+                        filteredRegistrations.map((registration) => (
+                          <tr key={registration._id} className="hover:bg-gray-50">
+                            <td className="px-4 py-3 text-sm text-gray-600">
+                              {new Date(registration.createdAt).toLocaleDateString()}
+                            </td>
+                            <td className="px-4 py-3">
+                              <div className="text-sm font-medium text-gray-900">{registration.name}</div>
+                              <div className="text-xs text-gray-500">{registration.educationType.toUpperCase()}</div>
+                            </td>
+                            <td className="px-4 py-3">
+                              <div className="flex flex-col gap-1">
+                                <a href={`mailto:${registration.email}`} className="text-xs text-blue-600 hover:underline flex items-center gap-1">
+                                  <Mail size={12} />
+                                  {registration.email}
+                                </a>
+                                <a href={`tel:${registration.phone}`} className="text-xs text-green-600 hover:underline flex items-center gap-1">
+                                  <Phone size={12} />
+                                  {registration.phone}
+                                </a>
+                              </div>
+                            </td>
+                            <td className="px-4 py-3 text-sm">
+                              {registration.programMode === 'mocks' ? (
+                                <div className="space-y-1">
+                                  {registration.selectedMocks?.map(mock => (
+                                    <div key={mock} className="text-xs bg-blue-50 text-blue-700 px-2 py-1 rounded">
+                                      {mock.replace('-', ' ').toUpperCase()}
+                                    </div>
+                                  ))}
+                                  {registration.pricing && (
+                                    <div className="text-xs font-semibold text-gray-900">
+                                      Tk {registration.pricing.finalPrice.toLocaleString()}
+                                    </div>
+                                  )}
+                                </div>
+                              ) : (
+                                <div className="space-y-1">
+                                  {registration.selectedFullCourses?.map(course => (
+                                    <div key={course} className="text-xs bg-purple-50 text-purple-700 px-2 py-1 rounded">
+                                      {course.replace('-', ' ').toUpperCase()}
+                                    </div>
+                                  ))}
+                                </div>
+                              )}
+                            </td>
+                            <td className="px-4 py-3">
+                              <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${
+                                registration.programMode === 'mocks'
+                                  ? 'bg-blue-100 text-blue-800'
+                                  : 'bg-purple-100 text-purple-800'
+                              }`}>
+                                {registration.programMode === 'mocks' ? 'Mock Tests' : 'Full Course'}
+                              </span>
+                              {registration.mockIntent && (
+                                <div className="text-xs text-gray-500 mt-1">
+                                  {registration.mockIntent === 'trial' ? 'Trial First' : 'Full Access'}
+                                </div>
+                              )}
+                            </td>
+                            <td className="px-4 py-3">
+                              <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${
+                                registration.status === 'pending' ? 'bg-yellow-100 text-yellow-800' :
+                                registration.status === 'contacted' ? 'bg-blue-100 text-blue-800' :
+                                registration.status === 'enrolled' ? 'bg-green-100 text-green-800' :
+                                'bg-red-100 text-red-800'
+                              }`}>
+                                {registration.status.charAt(0).toUpperCase() + registration.status.slice(1)}
+                              </span>
+                            </td>
+                            <td className="px-4 py-3">
+                              <button
+                                onClick={() => {
+                                  setSelectedRegistration(registration);
+                                  setShowRegistrationModal(true);
+                                }}
+                                className="text-vh-red hover:text-vh-red/80 text-sm font-medium flex items-center gap-1"
+                              >
+                                <Eye size={14} />
+                                View
+                              </button>
+                            </td>
+                          </tr>
+                        ))
+                      )}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Registration Details Modal */}
+          {showRegistrationModal && selectedRegistration && (
+            <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+              <div className="bg-white rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+                <div className="p-6 border-b border-gray-200">
+                  <div className="flex items-center justify-between">
+                    <h3 className="text-xl font-bold text-gray-900">Registration Details</h3>
+                    <button
+                      onClick={() => {
+                        setShowRegistrationModal(false);
+                        setSelectedRegistration(null);
+                      }}
+                      className="text-gray-400 hover:text-gray-600"
+                    >
+                      <XCircle size={24} />
+                    </button>
+                  </div>
+                </div>
+
+                <div className="p-6 space-y-6">
+                  {/* Personal Info */}
+                  <div>
+                    <h4 className="text-sm font-bold text-gray-500 uppercase mb-3">Personal Information</h4>
+                    <div className="space-y-2">
+                      <p className="text-gray-900"><span className="font-semibold">Name:</span> {selectedRegistration.name}</p>
+                      <p className="text-gray-900"><span className="font-semibold">Email:</span> {selectedRegistration.email}</p>
+                      <p className="text-gray-900"><span className="font-semibold">Phone:</span> {selectedRegistration.phone}</p>
+                      <p className="text-gray-900"><span className="font-semibold">Education:</span> {selectedRegistration.educationType.toUpperCase()}</p>
+                      {selectedRegistration.educationType === 'hsc' && (
+                        <p className="text-gray-900 text-sm">HSC: {selectedRegistration.years.hscYear}, SSC: {selectedRegistration.years.sscYear}</p>
+                      )}
+                      {selectedRegistration.educationType === 'alevels' && (
+                        <p className="text-gray-900 text-sm">A Level: {selectedRegistration.years.aLevelYear}, O Level: {selectedRegistration.years.oLevelYear}</p>
+                      )}
+                    </div>
+                  </div>
+
+                  {/* Program Info */}
+                  <div>
+                    <h4 className="text-sm font-bold text-gray-500 uppercase mb-3">Program Selection</h4>
+                    {selectedRegistration.programMode === 'mocks' ? (
+                      <div className="space-y-2">
+                        <p className="font-semibold text-gray-900">Mock Test Programs:</p>
+                        <ul className="list-disc list-inside space-y-1 text-gray-700">
+                          {selectedRegistration.selectedMocks?.map(mock => (
+                            <li key={mock}>{mock.replace('-', ' ').toUpperCase()}</li>
+                          ))}
+                        </ul>
+                        {selectedRegistration.pricing && (
+                          <div className="bg-blue-50 rounded-lg p-4 mt-3">
+                            <div className="flex justify-between mb-2">
+                              <span>Subtotal:</span>
+                              <span className="font-bold">Tk {selectedRegistration.pricing.subtotal.toLocaleString()}</span>
+                            </div>
+                            {selectedRegistration.pricing.discount > 0 && (
+                              <div className="flex justify-between text-green-700 mb-2">
+                                <span>Discount:</span>
+                                <span className="font-bold">- Tk {selectedRegistration.pricing.discount.toLocaleString()}</span>
+                              </div>
+                            )}
+                            <div className="border-t border-gray-300 pt-2 flex justify-between">
+                              <span className="text-lg font-bold">Total:</span>
+                              <span className="text-xl font-black text-blue-600">Tk {selectedRegistration.pricing.finalPrice.toLocaleString()}</span>
+                            </div>
+                          </div>
+                        )}
+                        <p className="text-sm text-gray-600 mt-2">
+                          <span className="font-semibold">Intent:</span> {selectedRegistration.mockIntent === 'trial' ? 'Try first, decide later' : 'Full program enrollment'}
+                        </p>
+                      </div>
+                    ) : (
+                      <div className="space-y-2">
+                        <p className="font-semibold text-gray-900">Full Courses:</p>
+                        <ul className="list-disc list-inside space-y-1 text-gray-700">
+                          {selectedRegistration.selectedFullCourses?.map(course => (
+                            <li key={course}>{course.replace('-', ' ').toUpperCase()}</li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Status Update */}
+                  <div>
+                    <h4 className="text-sm font-bold text-gray-500 uppercase mb-3">Update Status</h4>
+                    <div className="flex gap-2 flex-wrap">
+                      <button
+                        onClick={() => updateRegistrationStatus(selectedRegistration._id, 'pending')}
+                        className="px-4 py-2 bg-yellow-500 text-white rounded-lg hover:bg-yellow-600 transition-colors"
+                      >
+                        Pending
+                      </button>
+                      <button
+                        onClick={() => updateRegistrationStatus(selectedRegistration._id, 'contacted')}
+                        className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
+                      >
+                        Contacted
+                      </button>
+                      <button
+                        onClick={() => updateRegistrationStatus(selectedRegistration._id, 'enrolled')}
+                        className="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors"
+                      >
+                        Enrolled
+                      </button>
+                      <button
+                        onClick={() => updateRegistrationStatus(selectedRegistration._id, 'cancelled')}
+                        className="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors"
+                      >
+                        Cancelled
+                      </button>
+                    </div>
+                  </div>
+
+                  {/* Notes */}
+                  {selectedRegistration.notes && (
+                    <div>
+                      <h4 className="text-sm font-bold text-gray-500 uppercase mb-2">Notes</h4>
+                      <p className="text-gray-700 text-sm">{selectedRegistration.notes}</p>
+                    </div>
+                  )}
+
+                  {/* Timestamps */}
+                  <div className="text-xs text-gray-500 border-t pt-4">
+                    <p>Created: {new Date(selectedRegistration.createdAt).toLocaleString()}</p>
+                    <p>Updated: {new Date(selectedRegistration.updatedAt).toLocaleString()}</p>
                   </div>
                 </div>
               </div>
