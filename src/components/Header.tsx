@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import React, { useState } from 'react';
 import Image from 'next/image';
@@ -70,8 +70,7 @@ const Header = () => {
               Mock Exams
               <span className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-vh-red transition-all duration-300 group-hover:w-full group-hover:left-0"></span>
             </Link>
-            {session && (
-              <>
+            {session && (<>
                 <Link
                   href="/results"
                   className="relative px-4 py-3 text-gray-800 hover:text-vh-red font-semibold transition-all duration-300 group flex items-center gap-1 min-h-[44px]"
@@ -115,12 +114,7 @@ const Header = () => {
               <LoginButton />
               {!session && (
                 <a
-                  href="https://forms.fillout.com/t/iCXMk5dbQsus"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-gradient-to-r from-vh-red to-vh-dark-red text-white px-8 py-3 rounded-full font-bold text-sm uppercase tracking-wide hover:shadow-lg hover:shadow-vh-red/25 transform hover:-translate-y-1 transition-all duration-300"
-                >
-                  Register Now
+                  href="/registration" className="block mx-2 bg-gradient-to-r from-vh-red to-vh-dark-red text-white px-6 py-4 rounded-2xl font-bold text-center uppercase tracking-wide hover:shadow-lg transition-all duration-300">Register Now
                 </a>
               )}
             </div>
@@ -168,8 +162,7 @@ const Header = () => {
                 <Calendar size={16} />
                 Mock Exams
               </Link>
-              {session && (
-                <>
+              {session && (<>
                   <Link
                     href="/results"
                     className="block px-4 py-3 text-gray-800 hover:text-vh-red hover:bg-vh-beige/10 font-semibold rounded-xl transition-all duration-300 flex items-center gap-2"
@@ -206,13 +199,7 @@ const Header = () => {
                 </div>
                 {!session && (
                   <a
-                    href="https://forms.fillout.com/t/iCXMk5dbQsus"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block mx-2 bg-gradient-to-r from-vh-red to-vh-dark-red text-white px-6 py-4 rounded-2xl font-bold text-center uppercase tracking-wide hover:shadow-lg transition-all duration-300"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    Register Now
+                    href="/registration" className="block mx-2 bg-gradient-to-r from-vh-red to-vh-dark-red text-white px-6 py-4 rounded-2xl font-bold text-center uppercase tracking-wide hover:shadow-lg transition-all duration-300">Register Now
                   </a>
                 )}
               </div>
@@ -225,3 +212,8 @@ const Header = () => {
 };
 
 export default Header;
+
+
+
+
+
