@@ -70,24 +70,31 @@ export default function EligibilityCheckerPage() {
           <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-vh-beige/5 to-transparent rounded-full blur-3xl"></div>
           <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-l from-white/5 to-transparent rounded-full blur-3xl"></div>
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full">
-            <div className="grid grid-cols-12 gap-4 opacity-5 transform rotate-12">
+            {/* Mobile: Fewer elements for better performance */}
+            <div className="grid lg:hidden grid-cols-6 gap-8 opacity-5 transform rotate-12">
+              {Array.from({ length: 36 }).map((_, i) => (
+                <div key={i} className="h-1 bg-white rounded animate-pulse motion-reduce:animate-none" style={{ animationDelay: `${i * 100}ms` }}></div>
+              ))}
+            </div>
+            {/* Desktop: Full decorative grid */}
+            <div className="hidden lg:grid grid-cols-12 gap-4 opacity-5 transform rotate-12">
               {Array.from({ length: 144 }).map((_, i) => (
-                <div key={i} className="h-1 bg-white rounded animate-pulse" style={{ animationDelay: `${i * 100}ms` }}></div>
+                <div key={i} className="h-1 bg-white rounded animate-pulse motion-reduce:animate-none" style={{ animationDelay: `${i * 100}ms` }}></div>
               ))}
             </div>
           </div>
         </div>
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <div className="relative max-w-7xl 2xl:max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-8 py-20">
           <div className="text-center">
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-black leading-tight mb-8">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl font-black leading-tight mb-8">
               Eligibility Checker
-              <span className="block text-4xl md:text-5xl lg:text-6xl bg-gradient-to-r from-vh-beige via-white to-vh-beige bg-clip-text text-transparent mt-4">
+              <span className="block text-3xl sm:text-4xl md:text-5xl lg:text-6xl 2xl:text-7xl bg-gradient-to-r from-vh-beige via-white to-vh-beige bg-clip-text text-transparent mt-4">
                 2025 Admissions
               </span>
             </h1>
-            
-            <p className="text-2xl md:text-3xl mb-6 text-white/90 font-light">
+
+            <p className="text-2xl md:text-3xl lg:text-4xl 2xl:text-5xl mb-6 text-white/90 font-light">
               Check Your University Eligibility
             </p>
             
@@ -99,12 +106,12 @@ export default function EligibilityCheckerPage() {
       </section>
 
       {/* Eligibility Checker Component */}
-      <section className="py-32 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
+      <section className="py-12 md:py-20 lg:py-28 xl:py-32 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
         <div className="absolute inset-0">
           <div className="absolute top-20 right-20 w-72 h-72 bg-vh-beige/5 rounded-full blur-3xl"></div>
           <div className="absolute bottom-20 left-20 w-96 h-96 bg-vh-red/3 rounded-full blur-3xl"></div>
         </div>
-        
+
         <div className="relative">
           <EligibilityChecker onEligibilityUpdate={handleEligibilityUpdate} />
         </div>
@@ -112,7 +119,7 @@ export default function EligibilityCheckerPage() {
 
       {/* Conditional CTA Section */}
       {shouldShowCTA && recommendedPage && (
-        <section className="py-16 bg-gray-50 relative overflow-hidden">
+        <section className="py-8 md:py-12 lg:py-16 bg-gray-50 relative overflow-hidden">
           <div className="absolute inset-0">
             <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full opacity-5">
               <div className="grid grid-cols-8 gap-8">
@@ -126,8 +133,8 @@ export default function EligibilityCheckerPage() {
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="group relative">
               <div className="absolute inset-0 bg-gradient-to-br from-vh-red/10 to-transparent rounded-3xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
-              <div className="relative bg-white rounded-2xl p-8 shadow-lg border border-gray-200 group-hover:shadow-xl group-hover:border-vh-red/20 transition-all duration-300 text-center">
-                <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
+              <div className="relative bg-white rounded-2xl p-6 md:p-8 shadow-lg border border-gray-200 group-hover:shadow-xl group-hover:border-vh-red/20 transition-all duration-300 text-center">
+                <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-4 md:mb-6">
                   You're eligible for <span className="text-vh-red">{eligibilityResults.activeTab}</span>
                 </h2>
                 <p className="text-lg text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
@@ -150,10 +157,10 @@ export default function EligibilityCheckerPage() {
       )}
       
       {/* General Information Section - Always visible */}
-      <section className="py-16 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
+      <section className="py-8 md:py-12 lg:py-16 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h3 className="text-2xl font-bold text-gray-900 mb-4">Questions About Eligibility?</h3>
+            <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-4">Questions About Eligibility?</h3>
             <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
               Our admission counselors are available to help clarify eligibility requirements and guide you through the application process.
             </p>

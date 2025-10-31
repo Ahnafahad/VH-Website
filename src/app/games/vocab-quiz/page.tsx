@@ -594,13 +594,13 @@ Respond with JSON:
                 <button
                   key={section}
                   onClick={() => {
-                    setSelectedSections(prev => 
+                    setSelectedSections(prev =>
                       prev.includes(parseInt(section))
                         ? prev.filter(s => s !== parseInt(section))
                         : [...prev, parseInt(section)]
                     );
                   }}
-                  className={`p-3 rounded-lg border-2 transition-all ${
+                  className={`p-4 rounded-lg border-2 transition-all min-h-[44px] flex items-center justify-center font-medium ${
                     selectedSections.includes(parseInt(section))
                       ? 'bg-vh-red text-white border-vh-red shadow-lg transform scale-105'
                       : 'bg-gray-50 text-gray-700 border-gray-200 hover:border-vh-red/50 hover:bg-vh-beige/20'

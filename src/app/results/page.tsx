@@ -303,16 +303,16 @@ const ResultsDashboard = () => {
 
           {/* Performance Analytics Charts */}
           {stats && simpleTests && (
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 mb-12 md:mb-16">
               {/* Series Progress Chart */}
-              <div className="bg-white rounded-2xl shadow-sm border border-gray-100 hover:shadow-lg transition-all duration-500 p-8">
-                <div className="flex items-center gap-3 mb-6">
+              <div className="bg-white rounded-2xl shadow-sm border border-gray-100 hover:shadow-lg transition-all duration-500 p-4 md:p-6 lg:p-8">
+                <div className="flex items-center gap-2 md:gap-3 mb-4 md:mb-6">
                   <div className="w-3 h-3 bg-gradient-to-r from-vh-red to-vh-dark-red rounded-full"></div>
-                  <h3 className="text-xl font-bold text-gray-900">
+                  <h3 className="text-lg md:text-xl font-bold text-gray-900">
                     {isAdmin && selectedStudentName ? `${selectedStudentName}'s Progress Over Time` : 'Progress Over Time'}
                   </h3>
                 </div>
-                <div className="h-80 mb-4">
+                <div className="h-64 md:h-80 mb-4">
                   <SeriesProgressChart
                     simpleTests={simpleTests}
                     fullTests={fullTests}
@@ -323,14 +323,14 @@ const ResultsDashboard = () => {
               </div>
 
               {/* Performance Bar Chart */}
-              <div className="bg-white rounded-2xl shadow-sm border border-gray-100 hover:shadow-lg transition-all duration-500 p-8">
-                <div className="flex items-center gap-3 mb-6">
+              <div className="bg-white rounded-2xl shadow-sm border border-gray-100 hover:shadow-lg transition-all duration-500 p-4 md:p-6 lg:p-8">
+                <div className="flex items-center gap-2 md:gap-3 mb-4 md:mb-6">
                   <div className="w-3 h-3 bg-gradient-to-r from-vh-red to-vh-dark-red rounded-full"></div>
-                  <h3 className="text-xl font-bold text-gray-900">
+                  <h3 className="text-lg md:text-xl font-bold text-gray-900">
                     {isAdmin && selectedStudentName ? `${selectedStudentName}'s Performance Breakdown` : 'Performance Breakdown'}
                   </h3>
                 </div>
-                <div className="h-80 mb-4">
+                <div className="h-64 md:h-80 mb-4">
                   <PerformanceBarChart
                     simpleTests={simpleTests}
                     fullTests={fullTests}
@@ -344,10 +344,10 @@ const ResultsDashboard = () => {
           )}
 
           {/* Test Categories */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 mb-8">
 
             {/* Simple Tests */}
-            <div className="bg-white rounded-2xl shadow-sm border border-gray-100 hover:shadow-lg transition-all duration-500 p-8">
+            <div className="bg-white rounded-2xl shadow-sm border border-gray-100 hover:shadow-lg transition-all duration-500 p-4 md:p-6 lg:p-8">
               <div className="flex items-center gap-3 mb-2">
                 <div className="w-3 h-3 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full"></div>
                 <h2 className="text-2xl font-bold text-gray-900">Simple Tests</h2>
@@ -399,7 +399,7 @@ const ResultsDashboard = () => {
             </div>
 
             {/* Full Tests */}
-            <div className="bg-white rounded-2xl shadow-sm border border-gray-100 hover:shadow-lg transition-all duration-500 p-8">
+            <div className="bg-white rounded-2xl shadow-sm border border-gray-100 hover:shadow-lg transition-all duration-500 p-4 md:p-6 lg:p-8">
               <div className="flex items-center gap-3 mb-2">
                 <div className="w-3 h-3 bg-gradient-to-r from-purple-500 to-purple-600 rounded-full"></div>
                 <h2 className="text-2xl font-bold text-gray-900">Full Tests</h2>

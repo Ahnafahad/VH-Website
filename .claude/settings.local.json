@@ -39,7 +39,18 @@
       "Bash(dir)",
       "Bash(dir publicdata)",
       "Bash(dir:*)",
-      "Bash(timeout:*)"
+      "Bash(timeout:*)",
+      "Bash(del:*)",
+      "Bash(findstr:*)",
+      "Bash(python:*)",
+      "Bash(git reset:*)",
+      "Bash(git restore:*)",
+      "Bash(git fetch:*)",
+      "Bash(git ls-tree:*)",
+      "Bash(test:*)",
+      "Bash(cat:*)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "WebFetch(domain:github.com)"
     ],
     "deny": [],
     "ask": []

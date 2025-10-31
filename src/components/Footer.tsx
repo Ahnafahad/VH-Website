@@ -14,8 +14,8 @@ const Footer = () => {
         <div className="absolute bottom-32 right-10 w-24 h-24 border border-white/20 rounded-full"></div>
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-8">
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-12 mb-12">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 md:pt-12 lg:pt-16 pb-6 md:pb-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10 lg:gap-12 mb-8 md:mb-10 lg:mb-12">
           
           {/* Company Info Section */}
           <div className="lg:col-span-2">
@@ -43,28 +43,28 @@ const Footer = () => {
             
             <div className="space-y-4">
               <div className="flex items-center space-x-3 group">
-                <div className="p-2 bg-white/10 rounded-lg group-hover:bg-white/20 transition-all duration-300">
+                <div className="p-3 bg-white/10 rounded-lg group-hover:bg-white/20 transition-all duration-300 min-w-[44px] min-h-[44px] flex items-center justify-center">
                   <Mail size={20} />
                 </div>
                 <div>
                   <div className="text-sm text-white/70">Email Us</div>
-                  <a 
-                    href="mailto:ahnafahad@vh-beyondthehorizons.org" 
+                  <a
+                    href="mailto:ahnafahad@vh-beyondthehorizons.org"
                     className="font-semibold hover:text-vh-beige transition-colors"
                   >
                     ahnafahad@vh-beyondthehorizons.org
                   </a>
                 </div>
               </div>
-              
+
               <div className="flex items-center space-x-3 group">
-                <div className="p-2 bg-white/10 rounded-lg group-hover:bg-white/20 transition-all duration-300">
+                <div className="p-3 bg-white/10 rounded-lg group-hover:bg-white/20 transition-all duration-300 min-w-[44px] min-h-[44px] flex items-center justify-center">
                   <Phone size={20} />
                 </div>
                 <div>
                   <div className="text-sm text-white/70">Contact</div>
-                  <a 
-                    href="tel:+8801915424939" 
+                  <a
+                    href="tel:+8801915424939"
                     className="font-semibold hover:text-vh-beige transition-colors"
                   >
                     +880 1915424939
@@ -127,19 +127,21 @@ const Footer = () => {
             <div className="mt-8">
               <h5 className="font-semibold mb-4">Follow Us</h5>
               <div className="flex space-x-3">
-                <a 
-                  href="https://www.facebook.com/verticalhorizon.edu" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="p-3 bg-white/10 rounded-lg hover:bg-white/20 transition-all duration-300 group"
+                <a
+                  href="https://www.facebook.com/verticalhorizon.edu"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-4 bg-white/10 rounded-lg hover:bg-white/20 transition-all duration-300 group min-w-[44px] min-h-[44px] flex items-center justify-center"
+                  aria-label="Visit our Facebook page"
                 >
                   <Facebook size={20} className="group-hover:scale-110 transition-transform" />
                 </a>
-                <a 
-                  href="https://www.instagram.com/vhforlife/?hl=en" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="p-3 bg-white/10 rounded-lg hover:bg-white/20 transition-all duration-300 group"
+                <a
+                  href="https://www.instagram.com/vhforlife/?hl=en"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-4 bg-white/10 rounded-lg hover:bg-white/20 transition-all duration-300 group min-w-[44px] min-h-[44px] flex items-center justify-center"
+                  aria-label="Visit our Instagram page"
                 >
                   <Instagram size={20} className="group-hover:scale-110 transition-transform" />
                 </a>

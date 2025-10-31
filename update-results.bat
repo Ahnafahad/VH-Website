@@ -18,37 +18,13 @@ if errorlevel 1 (
     exit /b 1
 )
 
-:: Check for changes in Results folder
-echo [1/5] Checking for changes in Results folder...
-git status Results/ --porcelain >nul 2>&1
-if errorlevel 1 (
-    echo [ERROR] Git status check failed!
-    pause
-    exit /b 1
-)
-
-:: Capture git status output
-for /f "delims=" %%i in ('git status Results/ --porcelain') do set CHANGES=%%i
-
-if "%CHANGES%"=="" (
-    echo.
-    echo [INFO] No changes detected in Results folder.
-    echo Everything is up to date!
-    echo.
-    pause
-    exit /b 0
-)
-
-echo [FOUND] Changes detected in Results folder!
-echo.
-
-:: Show what changed
-echo Changes found:
+:: Show Results folder status
+echo [1/5] Checking Results folder status...
 git status Results/ --short
 echo.
 
 :: Ask for confirmation
-set /p CONFIRM="Do you want to process these changes and push to remote? (Y/N): "
+set /p CONFIRM="Do you want to process the Results folder and push to remote? (Y/N): "
 if /i not "%CONFIRM%"=="Y" (
     echo.
     echo [CANCELLED] Update cancelled by user.

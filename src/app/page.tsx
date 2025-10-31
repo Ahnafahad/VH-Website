@@ -12,26 +12,33 @@ export default function Home() {
           <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-vh-beige/5 to-transparent rounded-full blur-3xl"></div>
           <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-l from-white/5 to-transparent rounded-full blur-3xl"></div>
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full">
-            <div className="grid grid-cols-12 gap-4 opacity-5 transform rotate-12">
+            {/* Mobile: Fewer elements for better performance */}
+            <div className="grid lg:hidden grid-cols-6 gap-8 opacity-5 transform rotate-12">
+              {Array.from({ length: 36 }).map((_, i) => (
+                <div key={i} className="h-1 bg-white rounded animate-pulse motion-reduce:animate-none" style={{ animationDelay: `${i * 100}ms` }}></div>
+              ))}
+            </div>
+            {/* Desktop: Full decorative grid */}
+            <div className="hidden lg:grid grid-cols-12 gap-4 opacity-5 transform rotate-12">
               {Array.from({ length: 144 }).map((_, i) => (
-                <div key={i} className="h-1 bg-white rounded animate-pulse" style={{ animationDelay: `${i * 100}ms` }}></div>
+                <div key={i} className="h-1 bg-white rounded animate-pulse motion-reduce:animate-none" style={{ animationDelay: `${i * 100}ms` }}></div>
               ))}
             </div>
           </div>
         </div>
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <div className="relative max-w-7xl 2xl:max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-8 py-20">
           <div className="text-center">
             {/* Main Headline */}
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-black leading-tight mb-8">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl font-black leading-tight mb-8">
               <span className="block">Beyond the</span>
               <span className="block bg-gradient-to-r from-vh-beige via-white to-vh-beige bg-clip-text text-transparent">
                 Horizons
               </span>
             </h1>
-            
+
             {/* Subtitle */}
-            <p className="text-2xl md:text-3xl mb-6 text-white/90 font-light">
+            <p className="text-2xl md:text-3xl lg:text-4xl 2xl:text-5xl mb-6 text-white/90 font-light">
               IBA/BUP Admission Program 2026
             </p>
             
@@ -65,10 +72,10 @@ export default function Home() {
             </div>
 
             {/* Key Statistics */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-3 gap-6 md:gap-8 2xl:gap-10 max-w-6xl 2xl:max-w-7xl mx-auto">
               <div className="relative group">
                 <div className="absolute inset-0 bg-gradient-to-r from-vh-beige/10 to-transparent rounded-3xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
-                <div className="relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-8 text-center hover:bg-white/10 transition-all duration-500">
+                <div className="relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-6 md:p-8 text-center hover:bg-white/10 transition-all duration-500">
                   <div className="text-5xl font-black mb-4 bg-gradient-to-r from-vh-beige to-white bg-clip-text text-transparent">1.2%</div>
                   <div className="text-lg font-semibold mb-2">IBA Acceptance Rate</div>
                   <div className="text-sm text-white/60">More selective than Harvard at 3.5%</div>
@@ -77,7 +84,7 @@ export default function Home() {
 
               <div className="relative group">
                 <div className="absolute inset-0 bg-gradient-to-r from-vh-beige/10 to-transparent rounded-3xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
-                <div className="relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-8 text-center hover:bg-white/10 transition-all duration-500">
+                <div className="relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-6 md:p-8 text-center hover:bg-white/10 transition-all duration-500">
                   <div className="text-5xl font-black mb-4 bg-gradient-to-r from-vh-beige to-white bg-clip-text text-transparent">46.7%</div>
                   <div className="text-lg font-semibold mb-2">Our Success Rate</div>
                   <div className="text-sm text-white/60">14 out of 30 students got into top universities</div>
@@ -86,7 +93,7 @@ export default function Home() {
 
               <div className="relative group">
                 <div className="absolute inset-0 bg-gradient-to-r from-vh-beige/10 to-transparent rounded-3xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
-                <div className="relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-8 text-center hover:bg-white/10 transition-all duration-500">
+                <div className="relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-6 md:p-8 text-center hover:bg-white/10 transition-all duration-500">
                   <div className="text-5xl font-black mb-4 bg-gradient-to-r from-vh-beige to-white bg-clip-text text-transparent">4-5</div>
                   <div className="text-lg font-semibold mb-2">Months Duration</div>
                   <div className="text-sm text-white/60">Intensive program</div>
@@ -98,15 +105,15 @@ export default function Home() {
       </section>
 
       {/* About Universities Section */}
-      <section className="py-32 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
+      <section className="py-12 md:py-20 lg:py-28 xl:py-32 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
         <div className="absolute inset-0">
           <div className="absolute top-20 right-20 w-72 h-72 bg-vh-beige/5 rounded-full blur-3xl"></div>
           <div className="absolute bottom-20 left-20 w-96 h-96 bg-vh-red/3 rounded-full blur-3xl"></div>
         </div>
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-20">
-            <h2 className="text-6xl lg:text-7xl font-black text-gray-900 mb-8">
+          <div className="text-center mb-12 md:mb-16 lg:mb-20">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-black text-gray-900 mb-6 md:mb-8">
               About the <span className="bg-gradient-to-r from-vh-red to-vh-dark-red bg-clip-text text-transparent">Universities</span>
             </h2>
             <p className="text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
@@ -114,11 +121,11 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 lg:gap-16">
             {/* IBA Card */}
             <div className="group relative">
               <div className="absolute inset-0 bg-gradient-to-br from-vh-red/20 to-vh-dark-red/20 rounded-3xl blur-2xl group-hover:blur-3xl opacity-0 group-hover:opacity-100 transition-all duration-700"></div>
-              <div className="relative bg-white rounded-3xl p-12 shadow-2xl border border-gray-100 group-hover:shadow-4xl group-hover:border-vh-red/20 transition-all duration-700">
+              <div className="relative bg-white rounded-3xl p-6 md:p-8 lg:p-10 xl:p-12 shadow-2xl border border-gray-100 group-hover:shadow-4xl group-hover:border-vh-red/20 transition-all duration-700">
                 <div className="flex items-center mb-8">
                   <div className="w-20 h-20 bg-gradient-to-br from-vh-red to-vh-dark-red rounded-2xl flex items-center justify-center mr-6 shadow-xl">
                     <Trophy className="w-10 h-10 text-white" />
@@ -153,7 +160,7 @@ export default function Home() {
             {/* BUP Card */}
             <div className="group relative">
               <div className="absolute inset-0 bg-gradient-to-br from-vh-dark-beige/20 to-vh-beige/20 rounded-3xl blur-2xl group-hover:blur-3xl opacity-0 group-hover:opacity-100 transition-all duration-700"></div>
-              <div className="relative bg-white rounded-3xl p-12 shadow-2xl border border-gray-100 group-hover:shadow-4xl group-hover:border-vh-dark-beige/20 transition-all duration-700">
+              <div className="relative bg-white rounded-3xl p-6 md:p-8 lg:p-10 xl:p-12 shadow-2xl border border-gray-100 group-hover:shadow-4xl group-hover:border-vh-dark-beige/20 transition-all duration-700">
                 <div className="flex items-center mb-8">
                   <div className="w-20 h-20 bg-gradient-to-br from-vh-dark-beige to-vh-beige rounded-2xl flex items-center justify-center mr-6 shadow-xl">
                     <Award className="w-10 h-10 text-white" />
@@ -189,7 +196,7 @@ export default function Home() {
       </section>
 
       {/* Course Details Section */}
-      <section className="py-32 bg-white relative overflow-hidden">
+      <section className="py-12 md:py-20 lg:py-28 xl:py-32 bg-white relative overflow-hidden">
         <div className="absolute inset-0">
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full opacity-5">
             <div className="grid grid-cols-8 gap-8">
@@ -201,20 +208,20 @@ export default function Home() {
         </div>
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-20">
-            <h2 className="text-6xl lg:text-7xl font-black text-gray-900 mb-8">
+          <div className="text-center mb-12 md:mb-16 lg:mb-20">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-black text-gray-900 mb-6 md:mb-8">
               Course <span className="bg-gradient-to-r from-vh-red to-vh-dark-red bg-clip-text text-transparent">Details</span>
             </h2>
-            <p className="text-2xl text-gray-600 max-w-4xl mx-auto">
+            <p className="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto">
               4-5 months intensive program covering all aspects of admission preparation.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-8 md:gap-10 lg:gap-12">
             {/* Schedule */}
             <div className="group relative">
               <div className="absolute inset-0 bg-gradient-to-br from-vh-red/10 to-transparent rounded-3xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
-              <div className="relative bg-gray-50 rounded-3xl p-10 border border-gray-200 group-hover:bg-white group-hover:shadow-2xl transition-all duration-500">
+              <div className="relative bg-gray-50 rounded-3xl p-6 md:p-8 lg:p-10 border border-gray-200 group-hover:bg-white group-hover:shadow-2xl transition-all duration-500">
                 <div className="w-16 h-16 bg-gradient-to-br from-vh-red to-vh-dark-red rounded-2xl flex items-center justify-center mb-8 mx-auto shadow-xl">
                   <Clock className="w-8 h-8 text-white" />
                 </div>
@@ -237,7 +244,7 @@ export default function Home() {
             {/* What's Included */}
             <div className="group relative">
               <div className="absolute inset-0 bg-gradient-to-br from-vh-dark-beige/10 to-transparent rounded-3xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
-              <div className="relative bg-gray-50 rounded-3xl p-10 border border-gray-200 group-hover:bg-white group-hover:shadow-2xl transition-all duration-500">
+              <div className="relative bg-gray-50 rounded-3xl p-6 md:p-8 lg:p-10 border border-gray-200 group-hover:bg-white group-hover:shadow-2xl transition-all duration-500">
                 <div className="w-16 h-16 bg-gradient-to-br from-vh-dark-beige to-vh-beige rounded-2xl flex items-center justify-center mb-8 mx-auto shadow-xl">
                   <BookOpen className="w-8 h-8 text-white" />
                 </div>
@@ -264,7 +271,7 @@ export default function Home() {
             {/* Test Structure */}
             <div className="group relative">
               <div className="absolute inset-0 bg-gradient-to-br from-vh-beige/10 to-transparent rounded-3xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
-              <div className="relative bg-gray-50 rounded-3xl p-10 border border-gray-200 group-hover:bg-white group-hover:shadow-2xl transition-all duration-500">
+              <div className="relative bg-gray-50 rounded-3xl p-6 md:p-8 lg:p-10 border border-gray-200 group-hover:bg-white group-hover:shadow-2xl transition-all duration-500">
                 <div className="w-16 h-16 bg-gradient-to-br from-vh-beige to-vh-dark-beige rounded-2xl flex items-center justify-center mb-8 mx-auto shadow-xl">
                   <Target className="w-8 h-8 text-white" />
                 </div>
@@ -290,27 +297,27 @@ export default function Home() {
       </section>
 
       {/* Instructor Profiles */}
-      <section className="py-32 bg-gradient-to-br from-gray-50 to-gray-100 relative overflow-hidden">
+      <section className="py-12 md:py-20 lg:py-28 xl:py-32 bg-gradient-to-br from-gray-50 to-gray-100 relative overflow-hidden">
         <div className="absolute inset-0">
           <div className="absolute top-20 left-20 w-96 h-96 bg-vh-red/5 rounded-full blur-3xl"></div>
           <div className="absolute bottom-20 right-20 w-80 h-80 bg-vh-beige/10 rounded-full blur-3xl"></div>
         </div>
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-20">
-            <h2 className="text-6xl lg:text-7xl font-black text-gray-900 mb-8">
+          <div className="text-center mb-12 md:mb-16 lg:mb-20">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-black text-gray-900 mb-6 md:mb-8">
               Instructor <span className="bg-gradient-to-r from-vh-red to-vh-dark-red bg-clip-text text-transparent">Profiles</span>
             </h2>
-            <p className="text-2xl text-gray-600 max-w-4xl mx-auto">
+            <p className="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto">
               Learn from top achievers with proven track records and expert instruction methods.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 lg:gap-16">
             {/* Instructor 1 */}
             <div className="group relative">
               <div className="absolute inset-0 bg-gradient-to-br from-vh-red/20 to-transparent rounded-3xl blur-2xl group-hover:blur-3xl opacity-0 group-hover:opacity-100 transition-all duration-700"></div>
-              <div className="relative bg-white rounded-3xl p-12 shadow-2xl border border-gray-200 group-hover:shadow-4xl group-hover:border-vh-red/20 transition-all duration-700">
+              <div className="relative bg-white rounded-3xl p-6 md:p-8 lg:p-10 xl:p-12 shadow-2xl border border-gray-200 group-hover:shadow-4xl group-hover:border-vh-red/20 transition-all duration-700">
                 <div className="flex items-center mb-8">
                   <div className="w-24 h-24 bg-gradient-to-br from-vh-red to-vh-dark-red rounded-3xl flex items-center justify-center text-white text-3xl font-black mr-8 shadow-2xl">
                     MH
@@ -342,7 +349,7 @@ export default function Home() {
             {/* Instructor 2 */}
             <div className="group relative">
               <div className="absolute inset-0 bg-gradient-to-br from-vh-dark-beige/20 to-transparent rounded-3xl blur-2xl group-hover:blur-3xl opacity-0 group-hover:opacity-100 transition-all duration-700"></div>
-              <div className="relative bg-white rounded-3xl p-12 shadow-2xl border border-gray-200 group-hover:shadow-4xl group-hover:border-vh-dark-beige/20 transition-all duration-700">
+              <div className="relative bg-white rounded-3xl p-6 md:p-8 lg:p-10 xl:p-12 shadow-2xl border border-gray-200 group-hover:shadow-4xl group-hover:border-vh-dark-beige/20 transition-all duration-700">
                 <div className="flex items-center mb-8">
                   <div className="w-24 h-24 bg-gradient-to-br from-vh-dark-beige to-vh-beige rounded-3xl flex items-center justify-center text-white text-3xl font-black mr-8 shadow-2xl">
                     AA
@@ -375,7 +382,7 @@ export default function Home() {
       </section>
 
       {/* Success Stories Section */}
-      <section className="py-32 bg-white relative overflow-hidden">
+      <section className="py-12 md:py-20 lg:py-28 xl:py-32 bg-white relative overflow-hidden">
         <div className="absolute inset-0">
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full opacity-5">
             <div className="grid grid-cols-6 gap-12">
@@ -387,20 +394,20 @@ export default function Home() {
         </div>
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-20">
-            <h2 className="text-6xl lg:text-7xl font-black text-gray-900 mb-8">
+          <div className="text-center mb-12 md:mb-16 lg:mb-20">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-black text-gray-900 mb-6 md:mb-8">
               Success <span className="bg-gradient-to-r from-vh-red to-vh-dark-red bg-clip-text text-transparent">Stories</span>
             </h2>
-            <p className="text-2xl text-gray-600 max-w-4xl mx-auto">
+            <p className="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto">
               Last batch results: 30 students total with outstanding achievements.
             </p>
           </div>
 
           {/* Main Success Rate */}
-          <div className="mb-20">
+          <div className="mb-12 md:mb-16 lg:mb-20">
             <div className="relative group">
               <div className="absolute inset-0 bg-gradient-to-r from-vh-red/20 to-vh-dark-red/20 rounded-3xl blur-2xl group-hover:blur-3xl transition-all duration-700"></div>
-              <div className="relative bg-gradient-to-br from-gray-50 to-white rounded-3xl p-16 border border-gray-200 shadow-2xl text-center">
+              <div className="relative bg-gradient-to-br from-gray-50 to-white rounded-3xl p-8 md:p-12 lg:p-14 xl:p-16 border border-gray-200 shadow-2xl text-center">
                 <div className="flex items-center justify-center mb-8">
                   <TrendingUp className="w-16 h-16 text-vh-red mr-6" />
                   <div>
@@ -416,15 +423,15 @@ export default function Home() {
           </div>
 
           {/* Individual Results */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-8 md:gap-10 lg:gap-12">
             {[
               { number: "2", title: "IBA Admissions", subtitle: "Students got into IBA" },
               { number: "5", title: "BUP Admissions", subtitle: "Students got into BUP" },
               { number: "7", title: "DU FBS Admissions", subtitle: "Students got into DU FBS" }
             ].map((item, index) => (
               <div key={index} className="group relative">
-                <div className="absolute inset-0 bg-gradient-to-br from-vh-red/10 to-transparent rounded-3xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
-                <div className="relative bg-gray-50 rounded-3xl p-10 border border-gray-200 group-hover:bg-white group-hover:shadow-2xl transition-all duration-500 text-center">
+                <div className="absolute inset-0 bg-gradient-to-br from-vh-red/10 to-transparent rounded-3xl blur-xl group-hover:blur-2xl transition-all duration-500 motion-reduce:transition-none"></div>
+                <div className="relative bg-gray-50 rounded-3xl p-6 md:p-8 lg:p-10 border border-gray-200 group-hover:bg-white group-hover:shadow-2xl transition-all duration-500 text-center">
                   <div className="w-20 h-20 bg-gradient-to-br from-vh-red to-vh-dark-red rounded-full flex items-center justify-center text-white text-4xl font-black mx-auto mb-6 shadow-xl">
                     {item.number}
                   </div>
@@ -439,14 +446,14 @@ export default function Home() {
 
 
       {/* Call-to-Action Section */}
-      <section className="py-32 bg-gradient-to-br from-gray-900 via-black to-vh-dark-red text-white relative overflow-hidden">
+      <section className="py-12 md:py-20 lg:py-28 xl:py-32 bg-gradient-to-br from-gray-900 via-black to-vh-dark-red text-white relative overflow-hidden">
         <div className="absolute inset-0">
           <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-vh-red/20 to-transparent rounded-full blur-3xl"></div>
           <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-l from-vh-beige/10 to-transparent rounded-full blur-3xl"></div>
         </div>
 
         <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-6xl lg:text-7xl font-black mb-8">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-black mb-6 md:mb-8">
             Ready to <span className="bg-gradient-to-r from-vh-beige to-white bg-clip-text text-transparent">Begin?</span>
           </h2>
           <p className="text-2xl text-gray-300 mb-16 max-w-4xl mx-auto leading-relaxed">

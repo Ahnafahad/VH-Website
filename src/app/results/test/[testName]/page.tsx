@@ -3,7 +3,8 @@
 import React, { useState, useEffect } from 'react';
 import { useSession } from 'next-auth/react';
 import { useParams, useRouter } from 'next/navigation';
-import { ArrowLeft, Award, Target, TrendingUp, Eye, CheckCircle, XCircle, Clock, Minus, Users } from 'lucide-react';
+import Link from 'next/link';
+import { ArrowLeft, Award, Target, TrendingUp, Eye, CheckCircle, XCircle, Clock, Minus, Users, ArrowRight, Sparkles } from 'lucide-react';
 import ProtectedRoute from '@/components/ProtectedRoute';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -386,11 +387,11 @@ const TestDetailPage = () => {
           {/* Header */}
           <div className="mb-8">
             <button
-              onClick={() => router.back()}
-              className="flex items-center gap-2 text-vh-red hover:text-vh-red/80 mb-4"
+              onClick={() => isPublicDemo ? router.push('/mock-exams') : router.back()}
+              className="flex items-center gap-2 text-vh-red hover:text-vh-red/80 mb-4 min-h-[44px]"
             >
               <ArrowLeft size={20} />
-              Back to Results
+              {isPublicDemo ? 'Back to Mock Exams' : 'Back to Results'}
             </button>
 
             <div className="flex items-start justify-between">
@@ -1093,6 +1094,71 @@ const TestDetailPage = () => {
             </div>
           )}
         </div>
+
+        {/* Public Demo CTA Section */}
+        {isPublicDemo && (
+          <div className="bg-gradient-to-br from-vh-red via-vh-dark-red to-gray-900 text-white py-16 px-6">
+            <div className="max-w-4xl mx-auto text-center">
+              <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-xl px-4 py-2 rounded-full border border-white/20 mb-6">
+                <Sparkles className="w-5 h-5 text-yellow-400" />
+                <span className="text-white/90 font-medium">Experience Our Premium Analytics</span>
+              </div>
+
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-black mb-6">
+                This is Just a Glimpse!
+              </h2>
+
+              <p className="text-xl md:text-2xl text-white/80 mb-8 max-w-2xl mx-auto">
+                Get access to comprehensive mock tests with advanced analytics, percentile rankings, and performance tracking
+              </p>
+
+              <div className="bg-white/10 backdrop-blur-xl rounded-2xl p-6 mb-8 border border-white/20 max-w-2xl mx-auto">
+                <h3 className="text-xl font-bold mb-4">First Mock Test is 100% FREE!</h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm text-left">
+                  <div className="flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0" />
+                    <span>Try before you commit</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0" />
+                    <span>Full analytics access</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0" />
+                    <span>Expert question patterns</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0" />
+                    <span>Competitive rankings</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <Link
+                  href="/registration"
+                  className="inline-flex items-center gap-3 bg-gradient-to-r from-yellow-400 to-yellow-500 text-gray-900 px-10 py-5 rounded-2xl font-black text-lg hover:shadow-2xl hover:shadow-yellow-500/25 transform hover:-translate-y-1 transition-all duration-300 min-h-[44px]"
+                >
+                  <Target className="w-6 h-6" />
+                  Register for Free Mock
+                  <ArrowRight className="w-6 h-6" />
+                </Link>
+
+                <Link
+                  href="/mock-exams"
+                  className="inline-flex items-center gap-2 border-2 border-white/30 backdrop-blur-xl text-white px-10 py-5 rounded-2xl font-bold text-lg hover:border-white hover:bg-white/10 transition-all duration-300 min-h-[44px]"
+                >
+                  View All Mock Tests
+                  <ArrowRight className="w-6 h-6" />
+                </Link>
+              </div>
+
+              <p className="text-sm text-white/60 mt-6">
+                Program pricing details will be provided upon registration
+              </p>
+            </div>
+          </div>
+        )}
       </div>
       {isPublicDemo && <Footer />}
     </>

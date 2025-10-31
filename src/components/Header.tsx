@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Menu, X, ChevronDown, Gamepad2, BarChart3 } from 'lucide-react';
+import { Menu, X, ChevronDown, Gamepad2, BarChart3, Calendar } from 'lucide-react';
 import LoginButton from './LoginButton';
 import { useSession } from 'next-auth/react';
 
@@ -15,16 +15,16 @@ const Header = () => {
   return (
     <header className="bg-white shadow-lg border-b border-vh-beige/30 sticky top-0 z-50 backdrop-blur-sm bg-white/95">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-20 lg:h-24">
+        <div className="flex justify-between items-center h-16 md:h-20 lg:h-24">
           {/* Logo Section */}
-          <div className="flex items-center space-x-6">
+          <div className="flex items-center space-x-4 md:space-x-6">
             <Link href="/" className="flex-shrink-0 group">
               <Image
                 src="/vh-logo.png"
                 alt="VH Beyond the Horizons"
                 width={160}
                 height={80}
-                className="h-14 lg:h-16 w-auto transition-transform group-hover:scale-105"
+                className="h-12 md:h-14 lg:h-16 w-auto transition-transform group-hover:scale-105"
                 priority
               />
             </Link>
@@ -34,7 +34,7 @@ const Header = () => {
                 alt="VH Parent Company"
                 width={48}
                 height={48}
-                className="h-12 w-12 transition-transform hover:scale-110"
+                className="h-10 md:h-12 w-10 md:w-12 transition-transform hover:scale-110"
               />
             </div>
           </div>
@@ -43,30 +43,38 @@ const Header = () => {
           <nav className="hidden lg:flex items-center space-x-1">
             <Link
               href="/"
-              className="relative px-4 py-2 text-gray-800 hover:text-vh-red font-semibold transition-all duration-300 group"
+              className="relative px-4 py-3 text-gray-800 hover:text-vh-red font-semibold transition-all duration-300 group min-h-[44px] flex items-center"
             >
               Home
               <span className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-vh-red transition-all duration-300 group-hover:w-full group-hover:left-0"></span>
             </Link>
             <Link
               href="/eligibility-checker"
-              className="relative px-4 py-2 text-gray-800 hover:text-vh-red font-semibold transition-all duration-300 group"
+              className="relative px-4 py-3 text-gray-800 hover:text-vh-red font-semibold transition-all duration-300 group min-h-[44px] flex items-center"
             >
               Eligibility Checker
               <span className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-vh-red transition-all duration-300 group-hover:w-full group-hover:left-0"></span>
             </Link>
             <Link
               href="/du-fbs-course"
-              className="relative px-4 py-2 text-gray-800 hover:text-vh-red font-semibold transition-all duration-300 group"
+              className="relative px-4 py-3 text-gray-800 hover:text-vh-red font-semibold transition-all duration-300 group min-h-[44px] flex items-center"
             >
               DU FBS Course
+              <span className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-vh-red transition-all duration-300 group-hover:w-full group-hover:left-0"></span>
+            </Link>
+            <Link
+              href="/mock-exams"
+              className="relative px-4 py-3 text-gray-800 hover:text-vh-red font-semibold transition-all duration-300 group flex items-center gap-1 min-h-[44px]"
+            >
+              <Calendar size={16} />
+              Mock Exams
               <span className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-vh-red transition-all duration-300 group-hover:w-full group-hover:left-0"></span>
             </Link>
             {session && (
               <>
                 <Link
                   href="/results"
-                  className="relative px-4 py-2 text-gray-800 hover:text-vh-red font-semibold transition-all duration-300 group flex items-center gap-1"
+                  className="relative px-4 py-3 text-gray-800 hover:text-vh-red font-semibold transition-all duration-300 group flex items-center gap-1 min-h-[44px]"
                 >
                   <BarChart3 size={16} />
                   Results
@@ -75,7 +83,7 @@ const Header = () => {
                 <div className="relative">
                   <button
                     onClick={() => setIsGamesDropdownOpen(!isGamesDropdownOpen)}
-                    className="relative px-4 py-2 text-gray-800 hover:text-vh-red font-semibold transition-all duration-300 group flex items-center gap-1"
+                    className="relative px-4 py-3 text-gray-800 hover:text-vh-red font-semibold transition-all duration-300 group flex items-center gap-1 min-h-[44px]"
                   >
                     <Gamepad2 size={16} />
                     Games
@@ -86,14 +94,14 @@ const Header = () => {
                     <div className="absolute top-full left-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-vh-beige/30 py-2 z-10">
                       <Link
                         href="/games/vocab-quiz"
-                        className="block px-4 py-2 text-gray-800 hover:text-vh-red hover:bg-vh-beige/20 transition-all duration-300"
+                        className="block px-4 py-3 text-gray-800 hover:text-vh-red hover:bg-vh-beige/20 transition-all duration-300 min-h-[44px] flex items-center"
                         onClick={() => setIsGamesDropdownOpen(false)}
                       >
                         Vocabulary Quiz
                       </Link>
                       <Link
                         href="/games/mental-math"
-                        className="block px-4 py-2 text-gray-800 hover:text-vh-red hover:bg-vh-beige/20 transition-all duration-300"
+                        className="block px-4 py-3 text-gray-800 hover:text-vh-red hover:bg-vh-beige/20 transition-all duration-300 min-h-[44px] flex items-center"
                         onClick={() => setIsGamesDropdownOpen(false)}
                       >
                         Mental Math Trainer
@@ -151,6 +159,14 @@ const Header = () => {
                 onClick={() => setIsMenuOpen(false)}
               >
                 DU FBS Course
+              </Link>
+              <Link
+                href="/mock-exams"
+                className="block px-4 py-3 text-gray-800 hover:text-vh-red hover:bg-vh-beige/10 font-semibold rounded-xl transition-all duration-300 flex items-center gap-2"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                <Calendar size={16} />
+                Mock Exams
               </Link>
               {session && (
                 <>

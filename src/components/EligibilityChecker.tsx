@@ -440,9 +440,9 @@ const UniversityEligibilityChecker = ({ onEligibilityUpdate }: EligibilityChecke
             <div className="flex space-x-1">
               <button
                 onClick={() => handleTabChange('IBA')}
-                className={`px-3 py-3 rounded-lg font-medium text-sm transition-all duration-200 whitespace-nowrap ${
-                  activeTab === 'IBA' 
-                    ? 'bg-vh-red text-white shadow-md' 
+                className={`px-3 py-4 rounded-lg font-medium text-sm transition-all duration-200 whitespace-nowrap min-h-[44px] flex items-center ${
+                  activeTab === 'IBA'
+                    ? 'bg-vh-red text-white shadow-md'
                     : 'text-black hover:text-vh-red hover:bg-gray-50'
                 }`}
               >
@@ -450,9 +450,9 @@ const UniversityEligibilityChecker = ({ onEligibilityUpdate }: EligibilityChecke
               </button>
               <button
                 onClick={() => handleTabChange('BUP')}
-                className={`px-3 py-3 rounded-lg font-medium text-sm transition-all duration-200 whitespace-nowrap ${
-                  activeTab === 'BUP' 
-                    ? 'bg-vh-dark-beige text-white shadow-md' 
+                className={`px-3 py-4 rounded-lg font-medium text-sm transition-all duration-200 whitespace-nowrap min-h-[44px] flex items-center ${
+                  activeTab === 'BUP'
+                    ? 'bg-vh-dark-beige text-white shadow-md'
                     : 'text-black hover:text-vh-red hover:bg-gray-50'
                 }`}
               >
@@ -460,9 +460,9 @@ const UniversityEligibilityChecker = ({ onEligibilityUpdate }: EligibilityChecke
               </button>
               <button
                 onClick={() => handleTabChange('DU Science')}
-                className={`px-3 py-3 rounded-lg font-medium text-sm transition-all duration-200 whitespace-nowrap ${
-                  activeTab === 'DU Science' 
-                    ? 'bg-vh-beige text-vh-dark-red shadow-md' 
+                className={`px-3 py-4 rounded-lg font-medium text-sm transition-all duration-200 whitespace-nowrap min-h-[44px] flex items-center ${
+                  activeTab === 'DU Science'
+                    ? 'bg-vh-beige text-vh-dark-red shadow-md'
                     : 'text-black hover:text-vh-red hover:bg-gray-50'
                 }`}
               >
@@ -470,9 +470,9 @@ const UniversityEligibilityChecker = ({ onEligibilityUpdate }: EligibilityChecke
               </button>
               <button
                 onClick={() => handleTabChange('DU Business')}
-                className={`px-3 py-3 rounded-lg font-medium text-sm transition-all duration-200 whitespace-nowrap ${
-                  activeTab === 'DU Business' 
-                    ? 'bg-vh-light-red text-white shadow-md' 
+                className={`px-3 py-4 rounded-lg font-medium text-sm transition-all duration-200 whitespace-nowrap min-h-[44px] flex items-center ${
+                  activeTab === 'DU Business'
+                    ? 'bg-vh-light-red text-white shadow-md'
                     : 'text-black hover:text-vh-red hover:bg-gray-50'
                 }`}
               >
@@ -480,9 +480,9 @@ const UniversityEligibilityChecker = ({ onEligibilityUpdate }: EligibilityChecke
               </button>
               <button
                 onClick={() => handleTabChange('BUET')}
-                className={`px-3 py-3 rounded-lg font-medium text-sm transition-all duration-200 whitespace-nowrap ${
-                  activeTab === 'BUET' 
-                    ? 'bg-vh-dark-red text-white shadow-md' 
+                className={`px-3 py-4 rounded-lg font-medium text-sm transition-all duration-200 whitespace-nowrap min-h-[44px] flex items-center ${
+                  activeTab === 'BUET'
+                    ? 'bg-vh-dark-red text-white shadow-md'
                     : 'text-black hover:text-vh-red hover:bg-gray-50'
                 }`}
               >
@@ -551,7 +551,8 @@ const UniversityEligibilityChecker = ({ onEligibilityUpdate }: EligibilityChecke
                     {canRemove && (
                       <button
                         onClick={() => removeOLevelSubject(subject.id)}
-                        className="p-3 text-red-500 hover:bg-red-50 rounded-xl transition-colors touch-manipulation"
+                        className="p-4 text-red-500 hover:bg-red-50 rounded-xl transition-colors touch-manipulation min-w-[44px] min-h-[44px] flex items-center justify-center"
+                        aria-label="Remove subject"
                       >
                         <Trash2 size={16} />
                       </button>
@@ -569,7 +570,7 @@ const UniversityEligibilityChecker = ({ onEligibilityUpdate }: EligibilityChecke
               
               <button
                 onClick={addOLevelSubject}
-                className="flex items-center gap-2 text-vh-red hover:text-vh-dark-red font-medium text-sm py-2 transition-colors touch-manipulation"
+                className="flex items-center gap-2 text-vh-red hover:text-vh-dark-red font-medium text-sm py-3 px-2 transition-colors touch-manipulation min-h-[44px]"
               >
                 <Plus size={16} />
                 Add Subject
@@ -647,7 +648,8 @@ const UniversityEligibilityChecker = ({ onEligibilityUpdate }: EligibilityChecke
                     {canRemove ? (
                       <button
                         onClick={() => removeALevelSubject(subject.id)}
-                        className="p-3 text-red-500 hover:bg-red-50 rounded-xl transition-colors touch-manipulation"
+                        className="p-4 text-red-500 hover:bg-red-50 rounded-xl transition-colors touch-manipulation min-w-[44px] min-h-[44px] flex items-center justify-center"
+                        aria-label="Remove A-Level subject"
                       >
                         <Trash2 size={16} />
                       </button>
@@ -665,7 +667,7 @@ const UniversityEligibilityChecker = ({ onEligibilityUpdate }: EligibilityChecke
               {activeTab !== 'BUET' && (
                 <button
                   onClick={addALevelSubject}
-                  className="flex items-center gap-2 text-vh-dark-beige hover:text-vh-dark-red font-medium text-sm py-2 transition-colors touch-manipulation"
+                  className="flex items-center gap-2 text-vh-dark-beige hover:text-vh-dark-red font-medium text-sm py-3 px-2 transition-colors touch-manipulation min-h-[44px]"
                 >
                   <Plus size={16} />
                   Add Subject

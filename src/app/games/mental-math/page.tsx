@@ -554,7 +554,7 @@ const MentalMathApp = () => {
                   {leaderboard.individual.slice(0, 10).map((entry, index) => (
                     <div key={index} className="group/item flex items-center justify-between p-4 bg-gradient-to-r from-gray-50 to-white rounded-2xl border border-gray-100 hover:border-vh-red/30 hover:shadow-lg transition-all duration-300">
                       <div className="flex items-center gap-3">
-                        <span className={`w-8 h-8 rounded-full flex items-center justify-center text-white font-bold ${
+                        <span className={`w-11 h-11 rounded-full flex items-center justify-center text-white font-bold min-w-[44px] min-h-[44px] ${
                           index === 0 ? 'bg-yellow-500' : index === 1 ? 'bg-gray-400' : index === 2 ? 'bg-amber-600' : 'bg-vh-red'
                         }`}>
                           {index + 1}
@@ -605,7 +605,7 @@ const MentalMathApp = () => {
                   {leaderboard.accumulated.slice(0, 10).map((entry, index) => (
                     <div key={index} className="group/item flex items-center justify-between p-4 bg-gradient-to-r from-gray-50 to-white rounded-2xl border border-gray-100 hover:border-vh-beige/30 hover:shadow-lg transition-all duration-300">
                       <div className="flex items-center gap-3">
-                        <span className={`w-8 h-8 rounded-full flex items-center justify-center text-white font-bold ${
+                        <span className={`w-11 h-11 rounded-full flex items-center justify-center text-white font-bold min-w-[44px] min-h-[44px] ${
                           index === 0 ? 'bg-yellow-500' : index === 1 ? 'bg-gray-400' : index === 2 ? 'bg-amber-600' : 'bg-vh-red'
                         }`}>
                           {index + 1}
@@ -691,7 +691,7 @@ const MentalMathApp = () => {
                     <button
                       key={key}
                       onClick={() => toggleOperation(key)}
-                      className={`p-4 rounded-lg border-2 transition-all font-medium ${
+                      className={`p-4 rounded-lg border-2 transition-all font-medium min-h-[44px] flex items-center justify-center ${
                         selectedOperations.includes(key)
                           ? 'border-vh-red bg-vh-red text-white shadow-lg transform scale-105'
                           : 'border-gray-200 hover:border-vh-red/50 hover:bg-vh-beige/20 text-gray-700'
