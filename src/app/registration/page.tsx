@@ -153,6 +153,7 @@ export default function RegistrationPage() {
           </h1>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
             Begin your journey to excellence with VH Beyond the Horizons
+            <span className="block mt-2 text-vh-red font-semibold">Available in both Online & Offline modes</span>
           </p>
         </div>
 

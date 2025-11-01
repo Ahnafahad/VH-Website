@@ -55,6 +55,9 @@ export default function MockExamsPage() {
 
             <p className="text-xl md:text-2xl lg:text-3xl 2xl:text-4xl mb-8 text-white/90 font-light max-w-4xl mx-auto">
               Complete mock test series for DU IBA, DU FBS, BUP IBA & BUP FBS admissions
+              <span className="block text-lg md:text-xl lg:text-2xl 2xl:text-3xl mt-4 text-vh-beige/90">
+                Available in both Online & Offline modes
+              </span>
             </p>
 
             {/* Free First Mock Highlight */}
@@ -129,6 +132,7 @@ export default function MockExamsPage() {
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               Complete preparation for Dhaka University Institute of Business Administration
+              <span className="block mt-2 text-vh-red font-semibold">Available in both Online & Offline modes</span>
             </p>
           </div>
 
@@ -206,6 +210,7 @@ export default function MockExamsPage() {
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               Complete preparation for Dhaka University Faculty of Business Studies
+              <span className="block mt-2 text-vh-dark-beige font-semibold">Available in both Online & Offline modes</span>
             </p>
           </div>
 
@@ -283,6 +288,7 @@ export default function MockExamsPage() {
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto mb-8">
               Complete preparation for Bangladesh University of Professionals Faculty of Business Studies
+              <span className="block mt-2 text-blue-600 font-semibold">Available in both Online & Offline modes</span>
             </p>
 
             {/* Coming Soon Banner */}
@@ -330,6 +336,7 @@ export default function MockExamsPage() {
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto mb-8">
               Complete preparation for Bangladesh University of Professionals Institute of Business Administration
+              <span className="block mt-2 text-purple-600 font-semibold">Available in both Online & Offline modes</span>
             </p>
 
             {/* Coming Soon Banner */}
