@@ -20,6 +20,11 @@ export interface IRegistration extends mongoose.Document {
     finalPrice: number;
   };
   selectedFullCourses?: string[];
+  referral?: {
+    name: string;
+    institution: string;
+    batch: string;
+  };
   status: 'pending' | 'contacted' | 'enrolled' | 'cancelled';
   notes?: string;
   createdAt: Date;
@@ -77,6 +82,20 @@ const RegistrationSchema = new mongoose.Schema<IRegistration>({
     type: String,
     enum: ['du-iba-full', 'bup-iba-fbs-full']
   }],
+  referral: {
+    name: {
+      type: String,
+      trim: true
+    },
+    institution: {
+      type: String,
+      enum: ['BUP FBS', 'BUP IBA', 'IBA DU', 'DU FBS', 'Beyond the Horizon Alumni', 'Beyond the Horizon Current Student']
+    },
+    batch: {
+      type: String,
+      trim: true
+    }
+  },
   status: {
     type: String,
     required: true,

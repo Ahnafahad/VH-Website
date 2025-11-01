@@ -21,7 +21,8 @@ export async function POST(request: NextRequest) {
       selectedMocks,
       mockIntent,
       pricing,
-      selectedFullCourses
+      selectedFullCourses,
+      referral
     } = data;
 
     const validationErrors: string[] = [];
@@ -79,6 +80,11 @@ export async function POST(request: NextRequest) {
       mockIntent: programMode === 'mocks' ? mockIntent : undefined,
       pricing: programMode === 'mocks' ? pricing : undefined,
       selectedFullCourses: programMode === 'full' ? selectedFullCourses : undefined,
+      referral: (programMode === 'mocks' && referral && referral.name && referral.institution && referral.batch) ? {
+        name: referral.name.trim(),
+        institution: referral.institution,
+        batch: referral.batch.trim()
+      } : undefined,
       status: 'pending',
       createdAt: new Date(),
       updatedAt: new Date()

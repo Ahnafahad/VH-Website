@@ -41,6 +41,11 @@ export default function RegistrationPage() {
   const [selectedFullCourses, setSelectedFullCourses] = useState<FullCourse[]>([]);
   const [mockIntent, setMockIntent] = useState<MockIntent>(null);
 
+  // Referral Information (optional, for mocks only)
+  const [referralName, setReferralName] = useState('');
+  const [referralInstitution, setReferralInstitution] = useState('');
+  const [referralBatch, setReferralBatch] = useState('');
+
   // Calculate pricing
   const { subtotal, discount, finalPrice } = useMemo(() => {
     if (programMode !== 'mocks') return { subtotal: 0, discount: 0, finalPrice: 0 };
@@ -109,7 +114,14 @@ export default function RegistrationPage() {
       ...(programMode === 'mocks' ? {
         selectedMocks,
         mockIntent,
-        pricing: { subtotal, discount, finalPrice }
+        pricing: { subtotal, discount, finalPrice },
+        ...(referralName && referralInstitution && referralBatch ? {
+          referral: {
+            name: referralName,
+            institution: referralInstitution,
+            batch: referralBatch
+          }
+        } : {})
       } : {
         selectedFullCourses
       })
@@ -837,6 +849,93 @@ export default function RegistrationPage() {
                   </div>
                 </div>
 
+                {/* Referral Section - Only for Mock Programs */}
+                {programMode === 'mocks' && (
+                  <div className="bg-gradient-to-br from-purple-50 to-white rounded-2xl border-2 border-purple-200 p-6">
+                    <div className="flex items-center gap-3 mb-4">
+                      <Users className="w-6 h-6 text-purple-600" />
+                      <div>
+                        <h3 className="text-xl font-bold text-gray-900">Referral (Optional)</h3>
+                        <p className="text-sm text-gray-600">
+                          Know someone who referred you? Add their details below
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Eligibility Conditions */}
+                    <div className="bg-purple-100 border border-purple-300 rounded-xl p-4 mb-4">
+                      <p className="text-sm font-semibold text-purple-900 mb-2">
+                        <strong>Eligible Referrals:</strong>
+                      </p>
+                      <ul className="text-xs text-purple-800 space-y-1">
+                        <li>• Current students of BUP FBS, BUP IBA, IBA DU, and DU FBS</li>
+                        <li>• Current or ex-students of Beyond the Horizon Program</li>
+                        <li>• Alumni of Beyond the Horizon Program</li>
+                        <li className="text-purple-900 font-semibold mt-2">⚠ Individuals not belonging to these categories will not be eligible for referrals</li>
+                      </ul>
+                    </div>
+
+                    {/* Referral Form */}
+                    <div className="space-y-4">
+                      <div>
+                        <label className="block text-sm font-semibold text-gray-700 mb-2">
+                          Referral Name
+                        </label>
+                        <input
+                          type="text"
+                          value={referralName}
+                          onChange={(e) => setReferralName(e.target.value)}
+                          placeholder="Enter referral's full name"
+                          className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 outline-none transition-all"
+                        />
+                      </div>
+
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                          <label className="block text-sm font-semibold text-gray-700 mb-2">
+                            Institution
+                          </label>
+                          <select
+                            value={referralInstitution}
+                            onChange={(e) => setReferralInstitution(e.target.value)}
+                            className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 outline-none transition-all bg-white"
+                          >
+                            <option value="">Select institution...</option>
+                            <option value="BUP FBS">BUP FBS</option>
+                            <option value="BUP IBA">BUP IBA</option>
+                            <option value="IBA DU">IBA DU</option>
+                            <option value="DU FBS">DU FBS</option>
+                            <option value="Beyond the Horizon Alumni">Beyond the Horizon Alumni</option>
+                            <option value="Beyond the Horizon Current Student">Beyond the Horizon Current Student</option>
+                          </select>
+                        </div>
+
+                        <div>
+                          <label className="block text-sm font-semibold text-gray-700 mb-2">
+                            Batch
+                          </label>
+                          <input
+                            type="text"
+                            value={referralBatch}
+                            onChange={(e) => setReferralBatch(e.target.value)}
+                            placeholder="e.g., 2024, Spring 2023"
+                            className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 outline-none transition-all"
+                          />
+                        </div>
+                      </div>
+
+                      {referralName && referralInstitution && referralBatch && (
+                        <div className="bg-green-50 border border-green-200 rounded-lg p-3 flex items-center gap-2">
+                          <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0" />
+                          <p className="text-sm text-green-800">
+                            Referral information added successfully!
+                          </p>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                )}
+
                 {/* Summary Card */}
                 <div className="bg-gradient-to-br from-gray-50 to-white rounded-2xl border-2 border-gray-200 p-6 space-y-4">
 
@@ -871,6 +970,29 @@ export default function RegistrationPage() {
                       )}
                     </div>
                   </div>
+
+                  <div className="border-t border-gray-200"></div>
+
+                  {/* Referral Information (if provided) */}
+                  {programMode === 'mocks' && referralName && referralInstitution && referralBatch && (
+                    <>
+                      <div className="border-t border-gray-200"></div>
+                      <div>
+                        <h3 className="text-sm font-bold text-gray-500 uppercase mb-2">Referral Information</h3>
+                        <div className="space-y-1">
+                          <p className="text-gray-900">
+                            <span className="font-semibold">Referred by:</span> {referralName}
+                          </p>
+                          <p className="text-gray-900">
+                            <span className="font-semibold">Institution:</span> {referralInstitution}
+                          </p>
+                          <p className="text-gray-900">
+                            <span className="font-semibold">Batch:</span> {referralBatch}
+                          </p>
+                        </div>
+                      </div>
+                    </>
+                  )}
 
                   <div className="border-t border-gray-200"></div>
 
