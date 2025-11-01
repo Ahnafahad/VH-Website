@@ -20,7 +20,7 @@ export async function PATCH(
     await connectToDatabase();
 
     const data = await request.json();
-    const { status, notes } = data;
+    const { status, notes, name, email, phone } = data;
     const { id } = await params;
 
     // Validate status if provided
@@ -32,12 +32,20 @@ export async function PATCH(
       );
     }
 
+    // Validate email if provided
+    if (email && !email.includes('@')) {
+      throw new ApiException('Invalid email format', 400, 'VALIDATION_ERROR');
+    }
+
     // Update fields
     const updateFields: any = {
       updatedAt: new Date()
     };
     if (status) updateFields.status = status;
     if (notes !== undefined) updateFields.notes = notes;
+    if (name) updateFields.name = name.trim();
+    if (email) updateFields.email = email.trim().toLowerCase();
+    if (phone) updateFields.phone = phone.trim();
 
     const updatedRegistration = await Registration.findByIdAndUpdate(
       id,
