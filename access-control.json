@@ -21,6 +21,15 @@
       "permissions": ["read", "write", "admin"],
       "addedDate": "2025-09-17",
       "active": true
+    },
+    {
+      "id": "admin_003",
+      "name": "Raiyan Fahmid",
+      "email": "raiyanfahmid90@gmail.com",
+      "role": "admin",
+      "permissions": ["read", "write", "admin"],
+      "addedDate": "2025-11-03",
+      "active": true
     }
   ],
   "students": [
