@@ -31,9 +31,10 @@ const MARKS_ROUNDING = 0.25;
  * @param {Array} results - Array of test results
  * @param {Array} sectionIds - Array of section identifiers (e.g., ["1", "2", "3"])
  * @param {boolean} hasEssay - Whether the test has essay component
+ * @param {string} testName - Name of the test (to detect mock tests)
  * @returns {Object} Calculated thresholds and pass/fail data
  */
-function calculateThresholds(results, sectionIds, hasEssay = false) {
+function calculateThresholds(results, sectionIds, hasEssay = false, testName = '') {
   if (!results || results.length === 0) {
     return createDefaultThresholds(sectionIds, hasEssay, results);
   }
@@ -67,12 +68,19 @@ function calculateThresholds(results, sectionIds, hasEssay = false) {
   if (hasEssay) {
     // Get essay total marks
     let essayTotalMarks = 100; // Default
-    if (firstStudent.maxEssayMarks) {
+
+    // For mock tests, essay is always out of 30 marks
+    const isMockTest = testName.toLowerCase().startsWith('mock');
+    if (isMockTest) {
+      essayTotalMarks = 30;
+    } else if (firstStudent.maxEssayMarks) {
       essayTotalMarks = firstStudent.maxEssayMarks;
     } else if (firstStudent.essayMarks !== undefined && firstStudent.essayPercentage !== undefined && firstStudent.essayPercentage > 0) {
       essayTotalMarks = (firstStudent.essayMarks / firstStudent.essayPercentage) * 100;
     }
+
     thresholds['essay'] = (ESSAY_THRESHOLD_PERCENTAGE / 100) * essayTotalMarks;
+    console.log(`  📝 Essay total marks: ${essayTotalMarks}, threshold: ${thresholds['essay'].toFixed(2)} marks (40%)`);
   }
 
   // Step 1: Check how many pass with initial 40% threshold (in marks)
@@ -160,10 +168,13 @@ function adjustThresholds(results, thresholds, sectionIds, hasEssay, minPassCoun
     const maxThresholdMarks = (INITIAL_THRESHOLD_PERCENTAGE / 100) * totalMarks;
 
     // Set threshold to this minimum (but not above 40%)
-    adjustedThresholds[sectionId] = Math.min(maxThresholdMarks, minMarks);
+    // Apply absolute minimum floor of 0.25 marks (cannot be 0)
+    const rawThreshold = Math.min(maxThresholdMarks, minMarks);
+    const minimumFloor = MARKS_ROUNDING; // 0.25 marks minimum
+    adjustedThresholds[sectionId] = Math.max(minimumFloor, rawThreshold);
 
-    const percentage = (minMarks / totalMarks * 100).toFixed(2);
-    console.log(`  Section ${sectionId}: Adjusted to ${minMarks.toFixed(2)} marks (${percentage}%) - will round to 0.25`);
+    const percentage = (adjustedThresholds[sectionId] / totalMarks * 100).toFixed(2);
+    console.log(`  Section ${sectionId}: Adjusted to ${adjustedThresholds[sectionId].toFixed(2)} marks (${percentage}%) - will round to 0.25`);
   });
 
   // Check if essay marks are limiting pass rate

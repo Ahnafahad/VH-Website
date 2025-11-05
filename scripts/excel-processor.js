@@ -232,7 +232,7 @@ class ExcelProcessor {
       const hasEssay = firstStudent.essays && Object.keys(firstStudent.essays).length > 0;
 
       // Calculate thresholds
-      const thresholdData = calculateThresholds(Object.values(results), sectionIds, hasEssay);
+      const thresholdData = calculateThresholds(Object.values(results), sectionIds, hasEssay, testName);
 
       // Apply thresholds to class stats
       classStats.sectionThresholds = thresholdData.thresholds;
@@ -734,7 +734,7 @@ class ExcelProcessor {
       const hasEssay = firstStudent.essayMarks !== undefined && firstStudent.essayMarks > 0;
 
       // Calculate thresholds
-      const thresholdData = calculateThresholds(Object.values(results), sectionIds, hasEssay);
+      const thresholdData = calculateThresholds(Object.values(results), sectionIds, hasEssay, testName);
 
       // Apply thresholds to class stats
       classStats.sectionThresholds = thresholdData.thresholds;

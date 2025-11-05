@@ -103,7 +103,7 @@ const test1Students = [
   }
 ];
 
-const result1 = calculateThresholds(test1Students, ['1', '2', '3'], true);
+const result1 = calculateThresholds(test1Students, ['1', '2', '3'], true, 'Test 1');
 console.log('Thresholds:', result1.thresholds);
 console.log('Adjusted:', result1.adjusted);
 console.log('Pass count:', result1.passData.passCount, '/ 2 required');
@@ -153,7 +153,7 @@ for (let i = 1; i <= 24; i++) {
   });
 }
 
-const result3 = calculateThresholds(test3Students, ['1', '2', '3'], true);
+const result3 = calculateThresholds(test3Students, ['1', '2', '3'], true, 'Test 3');
 console.log('Thresholds:', result3.thresholds);
 console.log('Adjusted:', result3.adjusted);
 console.log('Pass count:', result3.passData.passCount, '/ 5 required');
@@ -181,7 +181,7 @@ for (let i = 1; i <= 10; i++) {
   });
 }
 
-const result4 = calculateThresholds(test4Students, ['1', '2', '3'], true);
+const result4 = calculateThresholds(test4Students, ['1', '2', '3'], true, 'Test 4');
 console.log('Thresholds:', result4.thresholds);
 console.log('Adjusted:', result4.adjusted);
 console.log('Pass count:', result4.passData.passCount, '/ 2 required');
