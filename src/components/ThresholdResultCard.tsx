@@ -91,8 +91,8 @@ const ThresholdResultCard: React.FC<ThresholdResultCardProps> = ({ result, isFul
           {/* MCQ Sections */}
           {result.sections && Object.entries(result.sections).map(([sectionId, section]) => {
             const sectionPassed = section.passed ?? true;
-            const threshold = section.threshold ?? 40;
-            const score = section.percentage ?? section.score ?? 0;
+            const thresholdMarks = section.threshold ?? 0;
+            const studentMarks = section.marks ?? 0;
 
             return (
               <div
@@ -113,15 +113,16 @@ const ThresholdResultCard: React.FC<ThresholdResultCardProps> = ({ result, isFul
                     <div>
                       <div className="font-bold text-gray-800">Section {sectionId}</div>
                       <div className="text-xs text-gray-600">
-                        Threshold: {threshold.toFixed(2)}%
+                        Threshold: {thresholdMarks.toFixed(2)} marks
                       </div>
                     </div>
                   </div>
 
                   <div className="text-right">
                     <div className={`text-2xl font-black ${sectionPassed ? 'text-green-700' : 'text-red-700'}`}>
-                      {score.toFixed(1)}%
+                      {studentMarks.toFixed(2)}
                     </div>
+                    <div className="text-xs text-gray-600">marks</div>
                     <div className={`text-xs font-semibold ${sectionPassed ? 'text-green-600' : 'text-red-600'}`}>
                       {sectionPassed ? 'PASS' : 'FAIL'}
                     </div>
@@ -134,7 +135,7 @@ const ThresholdResultCard: React.FC<ThresholdResultCardProps> = ({ result, isFul
                     className={`h-full transition-all duration-500 ${
                       sectionPassed ? 'bg-gradient-to-r from-green-500 to-emerald-500' : 'bg-gradient-to-r from-red-500 to-rose-500'
                     }`}
-                    style={{ width: `${Math.min(100, (score / Math.max(threshold, score)) * 100)}%` }}
+                    style={{ width: `${Math.min(100, thresholdMarks > 0 ? (studentMarks / thresholdMarks) * 100 : 0)}%` }}
                   />
                 </div>
               </div>
@@ -160,15 +161,16 @@ const ThresholdResultCard: React.FC<ThresholdResultCardProps> = ({ result, isFul
                   <div>
                     <div className="font-bold text-gray-800">Essay</div>
                     <div className="text-xs text-gray-600">
-                      Threshold: {result.essayThreshold.toFixed(2)}% (Fixed)
+                      Threshold: {result.essayThreshold.toFixed(2)} marks (Fixed)
                     </div>
                   </div>
                 </div>
 
                 <div className="text-right">
                   <div className={`text-2xl font-black ${result.essayPassed ? 'text-green-700' : 'text-red-700'}`}>
-                    {(result.essayPercentage ?? 0).toFixed(1)}%
+                    {((result as any).essayMarks ?? 0).toFixed(2)}
                   </div>
+                  <div className="text-xs text-gray-600">marks</div>
                   <div className={`text-xs font-semibold ${result.essayPassed ? 'text-green-600' : 'text-red-600'}`}>
                     {result.essayPassed ? 'PASS' : 'FAIL'}
                   </div>
@@ -181,7 +183,7 @@ const ThresholdResultCard: React.FC<ThresholdResultCardProps> = ({ result, isFul
                   className={`h-full transition-all duration-500 ${
                     result.essayPassed ? 'bg-gradient-to-r from-green-500 to-emerald-500' : 'bg-gradient-to-r from-red-500 to-rose-500'
                   }`}
-                  style={{ width: `${Math.min(100, ((result.essayPercentage ?? 0) / result.essayThreshold) * 100)}%` }}
+                  style={{ width: `${Math.min(100, result.essayThreshold > 0 ? (((result as any).essayMarks ?? 0) / result.essayThreshold) * 100 : 0)}%` }}
                 />
               </div>
             </div>
@@ -195,8 +197,8 @@ const ThresholdResultCard: React.FC<ThresholdResultCardProps> = ({ result, isFul
             <div className="text-sm text-blue-800">
               <p className="font-semibold mb-1">About Thresholds</p>
               <p>
-                Each section has a minimum threshold score you must achieve to pass. The essay threshold is always fixed at 40%,
-                while other section thresholds may be adjusted to ensure at least 20% of students pass overall.
+                Each section has a minimum threshold (in marks) you must achieve to pass. The essay threshold is always fixed at 40% of total essay marks,
+                while other section thresholds may be adjusted to ensure at least 20% of students pass overall. Thresholds are displayed in marks, not percentages.
               </p>
             </div>
           </div>
