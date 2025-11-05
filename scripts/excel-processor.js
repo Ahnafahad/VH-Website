@@ -28,6 +28,7 @@ class ExcelProcessor {
     this.studentsData = {};
     this.simpleTests = {};
     this.fullTests = {};
+    this.mockTests = {};
     this.processedTests = [];
     this.errors = [];
     this.warnings = [];
@@ -396,9 +397,14 @@ class ExcelProcessor {
         sheets: sheets
       };
 
-      this.fullTests[testName] = fullTestData;
-
-      console.log(`    ✅ Processed full test with ${Object.keys(fullTestData.results).length} students`);
+      // Check if this is a mock test (test name starts with "Mock")
+      if (testName.toLowerCase().startsWith('mock')) {
+        this.mockTests[testName] = fullTestData;
+        console.log(`    ✅ Processed mock test with ${Object.keys(fullTestData.results).length} students`);
+      } else {
+        this.fullTests[testName] = fullTestData;
+        console.log(`    ✅ Processed full test with ${Object.keys(fullTestData.results).length} students`);
+      }
 
       return { success: true, testsProcessed: 1, errors: [] };
 
@@ -821,6 +827,18 @@ class ExcelProcessor {
 
       this.writeJSONFile('full-tests.json', fullTestsOutput);
 
+      // Mock tests data
+      const mockTestsOutput = {
+        tests: this.mockTests,
+        metadata: {
+          totalTests: Object.keys(this.mockTests).length,
+          lastProcessed: new Date().toISOString(),
+          version: '1.0.0'
+        }
+      };
+
+      this.writeJSONFile('mock-tests.json', mockTestsOutput);
+
       // System metadata
       const systemMetadata = {
         version: '1.0.0',
@@ -828,6 +846,7 @@ class ExcelProcessor {
         totalStudents: Object.keys(this.studentsData).length,
         totalSimpleTests: Object.keys(this.simpleTests).length,
         totalFullTests: Object.keys(this.fullTests).length,
+        totalMockTests: Object.keys(this.mockTests).length,
         processingStats: {
           successfulTests: this.processedTests.length,
           failedTests: this.errors.length,
@@ -999,6 +1018,7 @@ class ExcelProcessor {
     console.log(`📚 Students loaded: ${Object.keys(this.studentsData).length}`);
     console.log(`📝 Simple tests: ${Object.keys(this.simpleTests).length}`);
     console.log(`📋 Full tests: ${Object.keys(this.fullTests).length}`);
+    console.log(`🎭 Mock tests: ${Object.keys(this.mockTests).length}`);
 
     if (this.warnings.length > 0) {
       console.log(`\n⚠️  Warnings (${this.warnings.length}):`);

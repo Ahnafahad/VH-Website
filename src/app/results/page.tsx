@@ -5,7 +5,7 @@ import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import { BarChart3, BookOpen, Users } from 'lucide-react';
 import ProtectedRoute from '@/components/ProtectedRoute';
-import { SimpleTestsData, FullTestsData, StudentsData, SystemMetadata } from '@/types/results';
+import { SimpleTestsData, FullTestsData, MockTestsData, StudentsData, SystemMetadata } from '@/types/results';
 import SeriesProgressChart from './components/SeriesProgressChart';
 import PerformanceBarChart from './components/PerformanceBarChart';
 
@@ -23,6 +23,7 @@ const ResultsDashboard = () => {
   const router = useRouter();
   const [simpleTests, setSimpleTests] = useState<SimpleTestsData | null>(null);
   const [fullTests, setFullTests] = useState<FullTestsData | null>(null);
+  const [mockTests, setMockTests] = useState<MockTestsData | null>(null);
   const [students, setStudents] = useState<StudentsData | null>(null);
   const [metadata, setMetadata] = useState<SystemMetadata | null>(null);
   const [loading, setLoading] = useState(true);
@@ -39,9 +40,10 @@ const ResultsDashboard = () => {
         setError(null);
 
         // Fetch all data files
-        const [simpleResponse, fullResponse, studentsResponse, metadataResponse, adminCheckResponse] = await Promise.all([
+        const [simpleResponse, fullResponse, mockResponse, studentsResponse, metadataResponse, adminCheckResponse] = await Promise.all([
           fetch('/data/simple-tests.json').then(res => res.json()),
           fetch('/data/full-tests.json').then(res => res.json()),
+          fetch('/data/mock-tests.json').then(res => res.json()),
           fetch('/data/students.json').then(res => res.json()),
           fetch('/data/metadata.json').then(res => res.json()),
           fetch('/api/auth/check-admin').then(res => res.json())
@@ -49,6 +51,7 @@ const ResultsDashboard = () => {
 
         setSimpleTests(simpleResponse);
         setFullTests(fullResponse);
+        setMockTests(mockResponse);
         setStudents(studentsResponse);
         setMetadata(metadataResponse);
         setIsAdmin(adminCheckResponse.isAdmin);
@@ -344,7 +347,7 @@ const ResultsDashboard = () => {
           )}
 
           {/* Test Categories */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 mb-8">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8 mb-8">
 
             {/* Simple Tests */}
             <div className="bg-white rounded-2xl shadow-sm border border-gray-100 hover:shadow-lg transition-all duration-500 p-4 md:p-6 lg:p-8">
@@ -451,6 +454,60 @@ const ResultsDashboard = () => {
                 <p className="text-gray-500 text-center py-8">No full tests available</p>
               )}
             </div>
+
+            {/* Mock Tests */}
+            <div className="bg-white rounded-2xl shadow-sm border border-gray-100 hover:shadow-lg transition-all duration-500 p-4 md:p-6 lg:p-8">
+              <div className="flex items-center gap-3 mb-2">
+                <div className="w-3 h-3 bg-gradient-to-r from-orange-500 to-orange-600 rounded-full"></div>
+                <h2 className="text-2xl font-bold text-gray-900">Mock Tests</h2>
+              </div>
+              <p className="text-gray-600 mb-8 text-lg">Full-length practice examinations</p>
+
+              {mockTests && Object.keys(mockTests.tests).length > 0 ? (
+                <div className="space-y-3">
+                  {Object.entries(mockTests.tests).map(([testName, test]) => {
+                    // Get the correct user based on admin status
+                    let userResult = null;
+                    if (isAdmin && selectedStudentId) {
+                      userResult = Object.values(students?.students || {}).find((s: any) => s.id === selectedStudentId);
+                    } else if (session?.user?.email) {
+                      userResult = Object.values(students?.students || {}).find((s: any) => s.email === session.user?.email);
+                    }
+                    const userId = userResult?.id;
+                    const result = userId && test.results ? test.results[userId] : null;
+
+                    return (
+                      <div
+                        key={testName}
+                        onClick={() => navigateToTest(testName)}
+                        className="group flex items-center justify-between p-6 rounded-xl border border-gray-100 hover:border-orange-200 hover:bg-orange-50/30 cursor-pointer transition-all duration-300 hover:shadow-md"
+                      >
+                        <div className="flex-1">
+                          <h3 className="font-semibold text-gray-900 group-hover:text-orange-700 transition-colors">{testName}</h3>
+                          <p className="text-sm text-gray-500 mt-1">
+                            {test.sections.length} section{test.sections.length !== 1 ? 's' : ''}
+                          </p>
+                        </div>
+                        <div className="text-right">
+                          {result ? (
+                            <div className="bg-orange-50 px-3 py-2 rounded-lg border border-orange-100">
+                              <p className="font-bold text-orange-700 text-lg">{result.totalMarks}</p>
+                              <p className="text-xs text-orange-600">Rank #{result.rank}</p>
+                            </div>
+                          ) : (
+                            <div className="bg-gray-50 px-3 py-2 rounded-lg border border-gray-100">
+                              <p className="text-sm text-gray-500 font-medium">Not taken</p>
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              ) : (
+                <p className="text-gray-500 text-center py-8">No mock tests available</p>
+              )}
+            </div>
           </div>
 
           {/* System Info */}
@@ -471,7 +528,7 @@ const ResultsDashboard = () => {
                     }
                   })()} •
                   {metadata.totalStudents} students •
-                  {metadata.totalSimpleTests + metadata.totalFullTests} total tests
+                  {metadata.totalSimpleTests + metadata.totalFullTests + (metadata.totalMockTests || 0)} total tests
                 </p>
               </div>
             </div>

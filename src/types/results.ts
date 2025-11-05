@@ -208,12 +208,24 @@ export interface FullTestsData {
   };
 }
 
+export interface MockTestsData {
+  tests: {
+    [testName: string]: FullTest;
+  };
+  metadata: {
+    totalTests: number;
+    lastProcessed: string;
+    version: string;
+  };
+}
+
 export interface SystemMetadata {
   version: string;
   lastProcessed: string;
   totalStudents: number;
   totalSimpleTests: number;
   totalFullTests: number;
+  totalMockTests: number;
   processingStats: {
     successfulTests: number;
     failedTests: number;
