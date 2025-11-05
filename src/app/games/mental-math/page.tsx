@@ -672,10 +672,10 @@ const MentalMathApp = () => {
             <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-vh-red to-vh-dark-red rounded-3xl mb-8 shadow-2xl">
               <Target className="text-white" size={40} />
             </div>
-            <h1 className="text-6xl lg:text-7xl font-black text-gray-900 mb-6">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-gray-900 mb-6">
               Mental Math <span className="bg-gradient-to-r from-vh-red to-vh-dark-red bg-clip-text text-transparent">Trainer</span>
             </h1>
-            <p className="text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed">Challenge your mind with lightning-fast calculations and compete for the top scores</p>
+            <p className="text-lg sm:text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed px-4">Challenge your mind with lightning-fast calculations and compete for the top scores</p>
           </div>
 
           <div className="group relative mb-12">
@@ -686,18 +686,18 @@ const MentalMathApp = () => {
                   <label className="block text-lg font-black text-gray-900 mb-6">
                     Choose Operations (Select one or more)
                   </label>
-                <div className="grid grid-cols-2 gap-3">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3">
                   {Object.entries(operationLabels).map(([key, label]) => (
                     <button
                       key={key}
                       onClick={() => toggleOperation(key)}
-                      className={`p-4 rounded-lg border-2 transition-all font-medium min-h-[44px] flex items-center justify-center ${
+                      className={`p-3 sm:p-4 rounded-lg border-2 transition-all font-medium min-h-[48px] sm:min-h-[52px] flex items-center justify-center text-sm sm:text-base ${
                         selectedOperations.includes(key)
                           ? 'border-vh-red bg-vh-red text-white shadow-lg transform scale-105'
                           : 'border-gray-200 hover:border-vh-red/50 hover:bg-vh-beige/20 text-gray-700'
                       }`}
                     >
-                      <div className="text-sm">{label}</div>
+                      <div>{label}</div>
                     </button>
                   ))}
                 </div>
@@ -818,12 +818,12 @@ const MentalMathApp = () => {
 
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 relative z-10">
           {/* Header with stats */}
-          <div className="bg-white/95 backdrop-blur-xl rounded-3xl shadow-2xl p-8 mb-8 border border-white/20">
-            <div className="flex justify-between items-center mb-4">
-              <div className="flex items-center gap-4">
+          <div className="bg-white/95 backdrop-blur-xl rounded-3xl shadow-2xl p-3 sm:p-4 md:p-6 lg:p-8 mb-4 sm:mb-6 md:mb-8 border border-white/20">
+            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 sm:gap-4 mb-3 sm:mb-4">
+              <div className="flex flex-wrap items-center gap-2 sm:gap-3 md:gap-4">
                 <div className="flex items-center gap-2">
-                  <Clock size={24} className="text-vh-red" />
-                  <span className="font-mono text-2xl font-bold text-vh-red">
+                  <Clock size={20} className="text-vh-red sm:w-6 sm:h-6" />
+                  <span className="font-mono text-xl sm:text-2xl font-bold text-vh-red">
                     {formatTime(timeRemaining)}
                   </span>
                 </div>
@@ -852,14 +852,14 @@ const MentalMathApp = () => {
                   </span>
                 </div>
               </div>
-              <div className="flex items-center gap-6">
+              <div className="flex flex-wrap items-center gap-3 sm:gap-4 md:gap-6">
                 <div className="flex items-center gap-2">
-                  <Target size={20} className="text-vh-red" />
-                  <span className="font-bold text-lg">Score: {score}</span>
+                  <Target size={16} className="text-vh-red sm:w-5 sm:h-5" />
+                  <span className="font-bold text-base sm:text-lg">Score: {score}</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Zap size={20} className="text-green-600" />
-                  <span className="font-medium">{questionsAnswered} solved</span>
+                  <Zap size={16} className="text-green-600 sm:w-5 sm:h-5" />
+                  <span className="font-medium text-sm sm:text-base">{questionsAnswered} solved</span>
                 </div>
                 <div className={`flex items-center gap-2 px-3 py-1 rounded-full border ${
                   skipsRemaining > 0
@@ -898,17 +898,17 @@ const MentalMathApp = () => {
                 </span>
               </div>
               {currentQuestion && (
-                <div className="text-6xl lg:text-7xl font-black text-gray-900 mb-10 tracking-tight">
+                <div className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-gray-900 mb-8 sm:mb-10 tracking-tight">
                   {currentQuestion.num1} <span className="text-vh-red">{currentQuestion.symbol}</span> {currentQuestion.num2} = <span className="text-vh-red">?</span>
                 </div>
               )}
-              
+
               <input
                 type="number"
                 value={userAnswer}
                 onChange={(e) => setUserAnswer(e.target.value)}
                 onKeyPress={handleKeyPress}
-                className="text-4xl font-black text-center p-6 border-3 border-gray-200 rounded-2xl focus:ring-4 focus:ring-vh-red/50 focus:border-vh-red bg-gradient-to-r from-gray-50 to-white w-80 shadow-xl transition-all duration-300"
+                className="text-2xl sm:text-3xl md:text-4xl font-black text-center p-4 sm:p-6 border-3 border-gray-200 rounded-2xl focus:ring-4 focus:ring-vh-red/50 focus:border-vh-red bg-gradient-to-r from-gray-50 to-white w-full max-w-xs sm:max-w-sm shadow-xl transition-all duration-300"
                 placeholder="Your answer"
                 autoFocus
               />
@@ -940,13 +940,13 @@ const MentalMathApp = () => {
           )}
 
           {/* Action buttons */}
-          <div className="flex flex-col sm:flex-row gap-4">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
             <button
               onClick={submitAnswer}
               disabled={userAnswer === ''}
-              className="group flex-1 bg-gradient-to-r from-vh-red to-vh-dark-red text-white py-4 px-8 rounded-2xl hover:from-vh-dark-red hover:to-vh-red disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 font-bold text-lg shadow-2xl hover:shadow-vh-red/25 transform hover:-translate-y-1 disabled:transform-none"
+              className="group flex-1 bg-gradient-to-r from-vh-red to-vh-dark-red text-white py-3 sm:py-4 px-6 sm:px-8 rounded-2xl hover:from-vh-dark-red hover:to-vh-red disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 font-bold text-base sm:text-lg shadow-2xl hover:shadow-vh-red/25 transform hover:-translate-y-1 disabled:transform-none min-h-[52px]"
             >
-              <Target className="inline mr-3" size={20} />
+              <Target className="inline mr-2 sm:mr-3" size={18} />
               Submit Answer
             </button>
             <button

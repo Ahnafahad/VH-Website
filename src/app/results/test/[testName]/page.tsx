@@ -13,6 +13,7 @@ import SeriesProgressChart from '../../components/SeriesProgressChart';
 import PerformanceBarChart from '../../components/PerformanceBarChart';
 import PercentileChart from '../../components/PercentileChart';
 import Top5LeaderboardTable from '../../components/Top5LeaderboardTable';
+import ThresholdResultCard from '@/components/ThresholdResultCard';
 
 const TestDetailPage = () => {
   const { data: session } = useSession();
@@ -471,6 +472,9 @@ const TestDetailPage = () => {
           ) : (
             <div className="space-y-8">
 
+              {/* Threshold Pass/Fail Card */}
+              <ThresholdResultCard result={userResult} isFullTest={isFullTest} />
+
               {/* Performance Overview */}
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
 
@@ -493,15 +497,36 @@ const TestDetailPage = () => {
                 </div>
 
                 {/* Rank */}
-                <div className="bg-gradient-to-br from-white to-vh-beige/5 rounded-xl shadow-lg border border-vh-beige/30 hover:shadow-xl transition-all duration-300 p-6">
+                <div className={`rounded-xl shadow-lg border-2 hover:shadow-xl transition-all duration-300 p-6 ${
+                  userResult.rankStatus === 'passed'
+                    ? 'bg-gradient-to-br from-green-50 to-emerald-50 border-green-300'
+                    : userResult.rankStatus === 'failed'
+                    ? 'bg-gradient-to-br from-red-50 to-rose-50 border-red-300'
+                    : 'bg-gradient-to-br from-white to-vh-beige/5 border-vh-beige/30'
+                }`}>
                   <div className="flex items-center justify-between mb-4">
                     <h3 className="text-lg font-semibold text-gray-800">Class Rank</h3>
-                    <Award className="text-vh-red" size={24} />
+                    <Award className={
+                      userResult.rankStatus === 'passed' ? 'text-green-600' :
+                      userResult.rankStatus === 'failed' ? 'text-red-600' :
+                      'text-vh-red'
+                    } size={24} />
                   </div>
-                  <div className="text-3xl font-bold text-vh-red mb-2">#{userResult.rank}</div>
+                  <div className={`text-3xl font-bold mb-2 ${
+                    userResult.rankStatus === 'passed' ? 'text-green-700' :
+                    userResult.rankStatus === 'failed' ? 'text-red-700' :
+                    'text-vh-red'
+                  }`}>#{userResult.rank}</div>
                   <div className="text-sm text-gray-600">
                     out of {Object.keys(currentTest.results).length} students
                   </div>
+                  {userResult.rankStatus && (
+                    <div className={`mt-2 text-xs font-semibold ${
+                      userResult.rankStatus === 'passed' ? 'text-green-600' : 'text-red-600'
+                    }`}>
+                      {userResult.rankStatus === 'passed' ? '✓ Qualified' : '✗ Not Qualified'}
+                    </div>
+                  )}
                 </div>
 
                 {/* Accuracy/Percentage */}

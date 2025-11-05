@@ -16,18 +16,28 @@ export interface SimpleTestResult {
   totalQuestions: number;
   score: number;
   rank: number;
+  rankStatus?: 'passed' | 'failed'; // For color coding: green or red
   threshold: number;
   sections?: {
     [sectionNumber: string]: {
       correct: number;
       wrong: number;
       score: number;
+      percentage?: number;
       totalQuestions: number;
+      threshold?: number; // Section-specific threshold
+      passed?: boolean; // Did student pass this section?
     };
   };
   essays?: {
     [essayNumber: string]: number;
   };
+  essayTotal?: number; // Total essay score
+  essayPercentage?: number; // Essay score as percentage
+  essayThreshold?: number; // Essay threshold (always 40%)
+  essayPassed?: boolean; // Did student pass essay?
+  passedAll?: boolean; // Did student pass all sections?
+  failedSections?: string[]; // List of failed section IDs
   analytics: {
     accuracy: number;
     attemptRate: number;
@@ -46,6 +56,8 @@ export interface FullTestResult {
       marks: number;
       percentage: number;
       totalQuestions: number;
+      threshold?: number; // Section-specific threshold
+      passed?: boolean; // Did student pass this section?
     };
   };
   totalMarks: number;
@@ -57,7 +69,13 @@ export interface FullTestResult {
   mcqPercentage?: number; // MCQ percentage (separate from total)
   totalPercentage: number; // Overall percentage including essays
   maxEssayMarks?: number; // Maximum possible essay marks
+  essayPercentage?: number; // Essay as percentage
+  essayThreshold?: number; // Essay threshold (always 40%)
+  essayPassed?: boolean; // Did student pass essay?
   rank: number;
+  rankStatus?: 'passed' | 'failed'; // For color coding: green or red
+  passedAll?: boolean; // Did student pass all sections?
+  failedSections?: string[]; // List of failed section IDs
   essays?: {
     [essayNumber: string]: number;
   };
@@ -81,8 +99,15 @@ export interface FullTestResult {
 export interface TestClassStats {
   averageScore: number;
   top5Average: number;
-  threshold: number;
+  threshold: number; // Overall threshold (legacy)
+  sectionThresholds?: {
+    [sectionId: string]: number; // Per-section thresholds
+  };
+  essayThreshold?: number; // Essay threshold (always 40%)
+  thresholdsAdjusted?: boolean; // Were thresholds lowered from 40%?
   totalStudents: number;
+  passedStudents?: number; // Students who passed all sections
+  failedStudents?: number; // Students who failed at least one section
   passRate: number;
   questionAnalytics?: {
     [questionId: string]: {

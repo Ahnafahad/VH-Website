@@ -145,30 +145,21 @@ Respond with JSON in this exact format:
 
 DO NOT OUTPUT ANYTHING OTHER THAN VALID JSON.`;
 
-      // const requestBody = {
-      //   model: "deepseek/deepseek-chat-v3.1:free",
-      //   messages: [{ role: "user", content: prompt }],
-      //   max_tokens: 4000,
-      //   temperature: 0.7
-      // };
-      
-      const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent?key=AIzaSyBbzvVwymrwjGqKOkD77dkIgEnRGwbL30c`, {
-        method: "POST",
+      // Call secure backend API route instead of Gemini directly
+      const response = await fetch('/api/generate-questions', {
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json"
+          'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          contents: [{
-            parts: [{
-              text: prompt
-            }]
-          }]
+          prompt: prompt,
+          type: 'questions'
         })
       });
 
       if (!response.ok) {
-        const errorText = await response.text();
-        throw new Error(`Google Gemini API request failed: ${response.status} ${response.statusText}. ${errorText}`);
+        const errorData = await response.json().catch(() => ({ error: 'Unknown error' }));
+        throw new Error(errorData.error || `API request failed: ${response.status}`);
       }
 
       const data = await response.json();
@@ -273,17 +264,15 @@ Respond with JSON:
   ]
 }`;
 
-      const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent?key=AIzaSyBbzvVwymrwjGqKOkD77dkIgEnRGwbL30c`, {
-        method: "POST",
+      // Call secure backend API route for explanations
+      const response = await fetch('/api/generate-questions', {
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json"
+          'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          contents: [{
-            parts: [{
-              text: prompt
-            }]
-          }]
+          prompt: prompt,
+          type: 'explanations'
         })
       });
 
@@ -458,14 +447,14 @@ Respond with JSON:
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10">
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-vh-red to-vh-dark-red rounded-3xl mb-8 shadow-2xl">
-              <Trophy className="text-white" size={40} />
+          <div className="text-center mb-12 sm:mb-16">
+            <div className="inline-flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-vh-red to-vh-dark-red rounded-3xl mb-6 sm:mb-8 shadow-2xl">
+              <Trophy className="text-white" size={32} />
             </div>
-            <h1 className="text-6xl lg:text-7xl font-black text-gray-900 mb-6">
+            <h1 className="text-4xl sm:text-5xl lg:text-7xl font-black text-gray-900 mb-4 sm:mb-6 px-4">
               Vocabulary <span className="bg-gradient-to-r from-vh-red to-vh-dark-red bg-clip-text text-transparent">Champions</span>
             </h1>
-            <p className="text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed">Top performers based on lifetime questions answered</p>
+            <p className="text-lg sm:text-xl lg:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed px-4">Top performers based on lifetime questions answered</p>
           </div>
 
           <div className="group relative mb-16">
@@ -566,10 +555,10 @@ Respond with JSON:
             <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-vh-red to-vh-dark-red rounded-3xl mb-8 shadow-2xl">
               <BookOpen className="text-white" size={40} />
             </div>
-            <h1 className="text-6xl lg:text-7xl font-black text-gray-900 mb-6">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-gray-900 mb-6">
               Vocabulary <span className="bg-gradient-to-r from-vh-red to-vh-dark-red bg-clip-text text-transparent">Quiz</span>
             </h1>
-            <p className="text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed">Master academic vocabulary with AI-powered adaptive questions</p>
+            <p className="text-lg sm:text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed px-4">Master academic vocabulary with AI-powered adaptive questions</p>
             
             <div className="mt-8 group relative max-w-2xl mx-auto">
               <div className="absolute inset-0 bg-gradient-to-r from-vh-red/10 to-vh-beige/10 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
@@ -589,7 +578,7 @@ Respond with JSON:
             <div className="absolute inset-0 bg-gradient-to-br from-vh-red/10 to-transparent rounded-3xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
             <div className="relative bg-white rounded-3xl shadow-2xl p-10 border border-gray-100 group-hover:shadow-4xl transition-all duration-500">
               <h2 className="text-3xl font-black text-gray-900 mb-8">Select Vocabulary Sections</h2>
-            <div className="grid grid-cols-2 md:grid-cols-5 gap-3 mb-6">
+            <div className="grid grid-cols-3 sm:grid-cols-5 md:grid-cols-5 gap-2 sm:gap-3 mb-6">
               {Object.keys(vocabularySections).map(section => (
                 <button
                   key={section}
@@ -600,7 +589,7 @@ Respond with JSON:
                         : [...prev, parseInt(section)]
                     );
                   }}
-                  className={`p-4 rounded-lg border-2 transition-all min-h-[44px] flex items-center justify-center font-medium ${
+                  className={`p-3 sm:p-4 rounded-lg border-2 transition-all min-h-[48px] sm:min-h-[52px] flex items-center justify-center font-medium text-sm sm:text-base ${
                     selectedSections.includes(parseInt(section))
                       ? 'bg-vh-red text-white border-vh-red shadow-lg transform scale-105'
                       : 'bg-gray-50 text-gray-700 border-gray-200 hover:border-vh-red/50 hover:bg-vh-beige/20'
@@ -753,19 +742,19 @@ Respond with JSON:
 
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 relative z-10">
           {/* Header with stats */}
-          <div className="bg-white/95 backdrop-blur-xl rounded-3xl shadow-2xl p-8 mb-8 border border-white/20">
-            <div className="flex justify-between items-center mb-6">
-              <div className="flex items-center gap-6">
-                <span className="text-2xl font-black text-gray-900">
+          <div className="bg-white/95 backdrop-blur-xl rounded-3xl shadow-2xl p-4 sm:p-6 lg:p-8 mb-8 border border-white/20">
+            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 sm:gap-6 mb-6">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-6 w-full sm:w-auto">
+                <span className="text-lg sm:text-xl lg:text-2xl font-black text-gray-900">
                   Question {currentQuestionIndex + 1} of {questions.length}
                 </span>
-                <div className="bg-gradient-to-r from-vh-red to-vh-dark-red text-white px-4 py-2 rounded-2xl text-sm font-bold uppercase tracking-wide shadow-lg">
+                <div className="bg-gradient-to-r from-vh-red to-vh-dark-red text-white px-3 sm:px-4 py-1.5 sm:py-2 rounded-2xl text-xs sm:text-sm font-bold uppercase tracking-wide shadow-lg">
                   {currentQuestion.difficulty}
                 </div>
               </div>
-              
-              <div className="flex items-center gap-3 text-2xl font-black">
-                <Clock className={timeRemaining <= 10 ? 'text-red-500' : 'text-vh-red'} size={28} />
+
+              <div className="flex items-center gap-2 sm:gap-3 text-xl sm:text-2xl font-black self-end sm:self-auto">
+                <Clock className={timeRemaining <= 10 ? 'text-red-500' : 'text-vh-red'} size={24} />
                 <span className={`${timeRemaining <= 10 ? 'text-red-500 animate-pulse' : 'text-vh-red'} font-mono`}>
                   {timeRemaining}s
                 </span>
@@ -783,20 +772,20 @@ Respond with JSON:
           {/* Question */}
           <div className="group relative mb-8">
             <div className="absolute inset-0 bg-gradient-to-br from-vh-red/30 to-vh-dark-red/30 rounded-3xl blur-2xl group-hover:blur-3xl transition-all duration-500"></div>
-            <div className="relative bg-white/95 backdrop-blur-xl rounded-3xl shadow-2xl p-12 border border-white/20">
-              <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 leading-relaxed mb-10 text-center">
+            <div className="relative bg-white/95 backdrop-blur-xl rounded-3xl shadow-2xl p-4 sm:p-6 lg:p-12 border border-white/20">
+              <h2 className="text-lg sm:text-xl md:text-2xl lg:text-4xl font-bold text-gray-900 leading-relaxed mb-6 sm:mb-8 lg:mb-10 text-center px-2">
                 {currentQuestion.sentence}
               </h2>
-              
-              <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+
+              <div className="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-3 lg:gap-4">
                 {currentQuestion.wordBank.map((word, index) => (
                   <button
                     key={index}
                     onClick={() => handleAnswerSelect(word)}
-                    className="group/word relative bg-gradient-to-r from-gray-50 to-white p-4 border-2 border-gray-200 rounded-2xl hover:border-vh-red hover:shadow-xl transition-all duration-300 text-left font-bold hover:bg-gradient-to-r hover:from-vh-beige/20 hover:to-white transform hover:scale-105"
+                    className="group/word relative bg-gradient-to-r from-gray-50 to-white p-3 sm:p-4 border-2 border-gray-200 rounded-xl sm:rounded-2xl hover:border-vh-red hover:shadow-xl transition-all duration-300 text-left font-bold hover:bg-gradient-to-r hover:from-vh-beige/20 hover:to-white transform hover:scale-105 active:scale-95 min-h-[52px] sm:min-h-[56px] flex items-center justify-center text-center"
                   >
-                    <div className="absolute inset-0 bg-gradient-to-r from-vh-red/10 to-vh-beige/10 rounded-2xl opacity-0 group-hover/word:opacity-100 transition-opacity duration-300"></div>
-                    <span className="relative text-gray-800 group-hover/word:text-vh-red transition-colors duration-300">{word}</span>
+                    <div className="absolute inset-0 bg-gradient-to-r from-vh-red/10 to-vh-beige/10 rounded-xl sm:rounded-2xl opacity-0 group-hover/word:opacity-100 transition-opacity duration-300"></div>
+                    <span className="relative text-base sm:text-lg text-gray-800 group-hover/word:text-vh-red transition-colors duration-300">{word}</span>
                   </button>
                 ))}
               </div>
@@ -824,21 +813,21 @@ Respond with JSON:
           </div>
         </div>
 
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10">
-          <div className="group relative mb-16">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-20 relative z-10">
+          <div className="group relative mb-8 sm:mb-12 lg:mb-16">
             <div className="absolute inset-0 bg-gradient-to-br from-vh-red/20 to-green-400/20 rounded-3xl blur-2xl group-hover:blur-3xl transition-all duration-700"></div>
-            <div className="relative bg-white rounded-3xl shadow-2xl p-12 border border-gray-100 group-hover:shadow-4xl transition-all duration-700">
-              <div className="text-center mb-12">
-                <div className="inline-flex items-center justify-center w-24 h-24 bg-gradient-to-br from-green-400 to-vh-red rounded-full mb-8 shadow-2xl">
-                  <Award className="text-white" size={48} />
+            <div className="relative bg-white rounded-3xl shadow-2xl p-6 sm:p-8 lg:p-12 border border-gray-100 group-hover:shadow-4xl transition-all duration-700">
+              <div className="text-center mb-8 sm:mb-10 lg:mb-12">
+                <div className="inline-flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 bg-gradient-to-br from-green-400 to-vh-red rounded-full mb-6 sm:mb-8 shadow-2xl">
+                  <Award className="text-white" size={32} />
                 </div>
-                <h1 className="text-5xl lg:text-6xl font-black text-gray-900 mb-6">
+                <h1 className="text-3xl sm:text-4xl lg:text-6xl font-black text-gray-900 mb-4 sm:mb-6">
                   Quiz <span className="bg-gradient-to-r from-green-400 to-vh-red bg-clip-text text-transparent">Complete!</span>
                 </h1>
-                <div className="text-6xl lg:text-7xl font-black mb-4">
+                <div className="text-4xl sm:text-5xl lg:text-7xl font-black mb-3 sm:mb-4">
                   <span className="bg-gradient-to-r from-vh-red to-green-400 bg-clip-text text-transparent">{quizResults.score.toFixed(1)}</span>
                 </div>
-                <p className="text-xl text-gray-600 mb-8">Final Score</p>
+                <p className="text-lg sm:text-xl text-gray-600 mb-6 sm:mb-8">Final Score</p>
                 
                 <div className="grid md:grid-cols-3 gap-6">
                   <div className="group/stat relative">
