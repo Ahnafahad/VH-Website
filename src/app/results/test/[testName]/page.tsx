@@ -8,7 +8,7 @@ import { ArrowLeft, Award, Target, TrendingUp, Eye, CheckCircle, XCircle, Clock,
 import ProtectedRoute from '@/components/ProtectedRoute';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import { SimpleTestsData, FullTestsData, StudentsData, SimpleTest, FullTest, SimpleTestResult, FullTestResult } from '@/types/results';
+import { SimpleTestsData, FullTestsData, MockTestsData, StudentsData, SimpleTest, FullTest, SimpleTestResult, FullTestResult } from '@/types/results';
 import SeriesProgressChart from '../../components/SeriesProgressChart';
 import PerformanceBarChart from '../../components/PerformanceBarChart';
 import PercentileChart from '../../components/PercentileChart';
@@ -26,6 +26,7 @@ const TestDetailPage = () => {
 
   const [simpleTests, setSimpleTests] = useState<SimpleTestsData | null>(null);
   const [fullTests, setFullTests] = useState<FullTestsData | null>(null);
+  const [mockTests, setMockTests] = useState<MockTestsData | null>(null);
   const [students, setStudents] = useState<StudentsData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -47,6 +48,7 @@ const TestDetailPage = () => {
         const fetchPromises = [
           fetch('/data/simple-tests.json').then(res => res.json()),
           fetch('/data/full-tests.json').then(res => res.json()),
+          fetch('/data/mock-tests.json').then(res => res.json()),
           fetch('/data/students.json').then(res => res.json()),
         ];
 
@@ -57,11 +59,13 @@ const TestDetailPage = () => {
         const responses = await Promise.all(fetchPromises);
         const simpleResponse = responses[0];
         const fullResponse = responses[1];
-        const studentsResponse = responses[2];
-        const adminCheckResponse = isPublicDemo ? { isAdmin: false } : responses[3];
+        const mockResponse = responses[2];
+        const studentsResponse = responses[3];
+        const adminCheckResponse = isPublicDemo ? { isAdmin: false } : responses[4];
 
         setSimpleTests(simpleResponse);
         setFullTests(fullResponse);
+        setMockTests(mockResponse);
         setStudents(studentsResponse);
         setIsAdmin(adminCheckResponse.isAdmin);
 
@@ -71,6 +75,11 @@ const TestDetailPage = () => {
 
         if (!test) {
           test = fullResponse.tests[testName];
+          isFullTestType = true;
+        }
+
+        if (!test) {
+          test = mockResponse.tests[testName];
           isFullTestType = true;
         }
 

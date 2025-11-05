@@ -457,11 +457,11 @@ function createDefaultThresholds(sectionIds, hasEssay, results) {
 
 /**
  * Determine if a test should have threshold logic applied
- * Based on test name starting with: English, Mathematics, Analytical
+ * Based on test name starting with: English, Mathematics, Analytical, Mock
  */
 function shouldApplyThresholds(testName) {
   const testNameLower = testName.toLowerCase();
-  const applicableTests = ['english', 'mathematics', 'analytical', 'maths'];
+  const applicableTests = ['english', 'mathematics', 'analytical', 'maths', 'mock'];
 
   return applicableTests.some(prefix => testNameLower.startsWith(prefix));
 }
