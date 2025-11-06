@@ -19,8 +19,8 @@
               "marks": 5.5,
               "percentage": 18.33,
               "totalQuestions": 0,
-              "threshold": 5.5,
-              "passed": true
+              "threshold": 5.75,
+              "passed": false
             },
             "2": {
               "correct": 3,
@@ -28,7 +28,7 @@
               "marks": 2.5,
               "percentage": 10,
               "totalQuestions": 0,
-              "threshold": 1,
+              "threshold": 2,
               "passed": true
             },
             "3": {
@@ -37,7 +37,7 @@
               "marks": 0.5,
               "percentage": 3.33,
               "totalQuestions": 0,
-              "threshold": 0.25,
+              "threshold": 0.5,
               "passed": true
             }
           },
@@ -150,9 +150,11 @@
               }
             }
           },
-          "rankStatus": "passed",
-          "passedAll": true,
-          "failedSections": []
+          "rankStatus": "failed",
+          "passedAll": false,
+          "failedSections": [
+            "1"
+          ]
         },
         "146014": {
           "studentId": "146014",
@@ -164,7 +166,7 @@
               "marks": 0,
               "percentage": 0,
               "totalQuestions": 0,
-              "threshold": 5.5,
+              "threshold": 5.75,
               "passed": false
             },
             "2": {
@@ -173,7 +175,7 @@
               "marks": 0,
               "percentage": 0,
               "totalQuestions": 0,
-              "threshold": 1,
+              "threshold": 2,
               "passed": false
             },
             "3": {
@@ -182,7 +184,7 @@
               "marks": 0,
               "percentage": 0,
               "totalQuestions": 0,
-              "threshold": 0.25,
+              "threshold": 0.5,
               "passed": false
             }
           },
@@ -242,7 +244,7 @@
               "marks": 0,
               "percentage": 0,
               "totalQuestions": 0,
-              "threshold": 5.5,
+              "threshold": 5.75,
               "passed": false
             },
             "2": {
@@ -251,7 +253,7 @@
               "marks": 0,
               "percentage": 0,
               "totalQuestions": 0,
-              "threshold": 1,
+              "threshold": 2,
               "passed": false
             },
             "3": {
@@ -260,7 +262,7 @@
               "marks": 0,
               "percentage": 0,
               "totalQuestions": 0,
-              "threshold": 0.25,
+              "threshold": 0.5,
               "passed": false
             }
           },
@@ -320,7 +322,7 @@
               "marks": 0,
               "percentage": 0,
               "totalQuestions": 0,
-              "threshold": 5.5,
+              "threshold": 5.75,
               "passed": false
             },
             "2": {
@@ -329,7 +331,7 @@
               "marks": 0,
               "percentage": 0,
               "totalQuestions": 0,
-              "threshold": 1,
+              "threshold": 2,
               "passed": false
             },
             "3": {
@@ -338,7 +340,7 @@
               "marks": 0,
               "percentage": 0,
               "totalQuestions": 0,
-              "threshold": 0.25,
+              "threshold": 0.5,
               "passed": false
             }
           },
@@ -398,7 +400,7 @@
               "marks": 0,
               "percentage": 0,
               "totalQuestions": 0,
-              "threshold": 5.5,
+              "threshold": 5.75,
               "passed": false
             },
             "2": {
@@ -407,7 +409,7 @@
               "marks": 0,
               "percentage": 0,
               "totalQuestions": 0,
-              "threshold": 1,
+              "threshold": 2,
               "passed": false
             },
             "3": {
@@ -416,7 +418,7 @@
               "marks": 0,
               "percentage": 0,
               "totalQuestions": 0,
-              "threshold": 0.25,
+              "threshold": 0.5,
               "passed": false
             }
           },
@@ -476,7 +478,7 @@
               "marks": 0,
               "percentage": 0,
               "totalQuestions": 0,
-              "threshold": 5.5,
+              "threshold": 5.75,
               "passed": false
             },
             "2": {
@@ -485,7 +487,7 @@
               "marks": 0,
               "percentage": 0,
               "totalQuestions": 0,
-              "threshold": 1,
+              "threshold": 2,
               "passed": false
             },
             "3": {
@@ -494,7 +496,7 @@
               "marks": 0,
               "percentage": 0,
               "totalQuestions": 0,
-              "threshold": 0.25,
+              "threshold": 0.5,
               "passed": false
             }
           },
@@ -554,7 +556,7 @@
               "marks": 4.25,
               "percentage": 14.17,
               "totalQuestions": 0,
-              "threshold": 5.5,
+              "threshold": 5.75,
               "passed": false
             },
             "2": {
@@ -563,8 +565,8 @@
               "marks": 1,
               "percentage": 4,
               "totalQuestions": 0,
-              "threshold": 1,
-              "passed": true
+              "threshold": 2,
+              "passed": false
             },
             "3": {
               "correct": 0,
@@ -572,7 +574,7 @@
               "marks": -1,
               "percentage": -6.67,
               "totalQuestions": 0,
-              "threshold": 0.25,
+              "threshold": 0.5,
               "passed": false
             }
           },
@@ -689,6 +691,7 @@
           "passedAll": false,
           "failedSections": [
             "1",
+            "2",
             "3"
           ]
         },
@@ -702,7 +705,7 @@
               "marks": 0,
               "percentage": 0,
               "totalQuestions": 0,
-              "threshold": 5.5,
+              "threshold": 5.75,
               "passed": false
             },
             "2": {
@@ -711,7 +714,7 @@
               "marks": 0,
               "percentage": 0,
               "totalQuestions": 0,
-              "threshold": 1,
+              "threshold": 2,
               "passed": false
             },
             "3": {
@@ -720,7 +723,7 @@
               "marks": 0,
               "percentage": 0,
               "totalQuestions": 0,
-              "threshold": 0.25,
+              "threshold": 0.5,
               "passed": false
             }
           },
@@ -780,7 +783,7 @@
               "marks": 0,
               "percentage": 0,
               "totalQuestions": 0,
-              "threshold": 5.5,
+              "threshold": 5.75,
               "passed": false
             },
             "2": {
@@ -789,7 +792,7 @@
               "marks": 2,
               "percentage": 8,
               "totalQuestions": 0,
-              "threshold": 1,
+              "threshold": 2,
               "passed": true
             },
             "3": {
@@ -798,8 +801,8 @@
               "marks": 0.25,
               "percentage": 1.67,
               "totalQuestions": 0,
-              "threshold": 0.25,
-              "passed": true
+              "threshold": 0.5,
+              "passed": false
             }
           },
           "totalMarks": 2.25,
@@ -914,7 +917,8 @@
           "rankStatus": "failed",
           "passedAll": false,
           "failedSections": [
-            "1"
+            "1",
+            "3"
           ]
         },
         "459889": {
@@ -927,7 +931,7 @@
               "marks": 11.25,
               "percentage": 37.5,
               "totalQuestions": 0,
-              "threshold": 5.5,
+              "threshold": 5.75,
               "passed": true
             },
             "2": {
@@ -936,7 +940,7 @@
               "marks": 4,
               "percentage": 16,
               "totalQuestions": 0,
-              "threshold": 1,
+              "threshold": 2,
               "passed": true
             },
             "3": {
@@ -945,7 +949,7 @@
               "marks": 1.25,
               "percentage": 8.33,
               "totalQuestions": 0,
-              "threshold": 0.25,
+              "threshold": 0.5,
               "passed": true
             }
           },
@@ -1072,7 +1076,7 @@
               "marks": 0,
               "percentage": 0,
               "totalQuestions": 0,
-              "threshold": 5.5,
+              "threshold": 5.75,
               "passed": false
             },
             "2": {
@@ -1081,7 +1085,7 @@
               "marks": 0,
               "percentage": 0,
               "totalQuestions": 0,
-              "threshold": 1,
+              "threshold": 2,
               "passed": false
             },
             "3": {
@@ -1090,7 +1094,7 @@
               "marks": 0,
               "percentage": 0,
               "totalQuestions": 0,
-              "threshold": 0.25,
+              "threshold": 0.5,
               "passed": false
             }
           },
@@ -1150,7 +1154,7 @@
               "marks": 2.25,
               "percentage": 7.5,
               "totalQuestions": 0,
-              "threshold": 5.5,
+              "threshold": 5.75,
               "passed": false
             },
             "2": {
@@ -1159,7 +1163,7 @@
               "marks": 6,
               "percentage": 24,
               "totalQuestions": 0,
-              "threshold": 1,
+              "threshold": 2,
               "passed": true
             },
             "3": {
@@ -1168,7 +1172,7 @@
               "marks": -0.25,
               "percentage": -1.67,
               "totalQuestions": 0,
-              "threshold": 0.25,
+              "threshold": 0.5,
               "passed": false
             }
           },
@@ -1298,7 +1302,7 @@
               "marks": 5.75,
               "percentage": 19.17,
               "totalQuestions": "Total Question 3",
-              "threshold": 5.5,
+              "threshold": 5.75,
               "passed": true
             },
             "2": {
@@ -1307,7 +1311,7 @@
               "marks": -2,
               "percentage": -8,
               "totalQuestions": 0,
-              "threshold": 1,
+              "threshold": 2,
               "passed": false
             },
             "3": {
@@ -1316,7 +1320,7 @@
               "marks": 1.25,
               "percentage": 8.33,
               "totalQuestions": 0,
-              "threshold": 0.25,
+              "threshold": 0.5,
               "passed": true
             }
           },
@@ -1445,7 +1449,7 @@
               "marks": 7.5,
               "percentage": 25,
               "totalQuestions": 0,
-              "threshold": 5.5,
+              "threshold": 5.75,
               "passed": true
             },
             "2": {
@@ -1454,7 +1458,7 @@
               "marks": 0,
               "percentage": 0,
               "totalQuestions": 0,
-              "threshold": 1,
+              "threshold": 2,
               "passed": false
             },
             "3": {
@@ -1463,7 +1467,7 @@
               "marks": 0,
               "percentage": 0,
               "totalQuestions": 0,
-              "threshold": 0.25,
+              "threshold": 0.5,
               "passed": false
             }
           },
@@ -1593,7 +1597,7 @@
               "marks": 8.5,
               "percentage": 28.33,
               "totalQuestions": 0,
-              "threshold": 5.5,
+              "threshold": 5.75,
               "passed": true
             },
             "2": {
@@ -1602,7 +1606,7 @@
               "marks": 3,
               "percentage": 12,
               "totalQuestions": 0,
-              "threshold": 1,
+              "threshold": 2,
               "passed": true
             },
             "3": {
@@ -1611,7 +1615,7 @@
               "marks": 1,
               "percentage": 6.67,
               "totalQuestions": 0,
-              "threshold": 0.25,
+              "threshold": 0.5,
               "passed": true
             }
           },
@@ -1738,7 +1742,7 @@
               "marks": 7.5,
               "percentage": 25,
               "totalQuestions": 0,
-              "threshold": 5.5,
+              "threshold": 5.75,
               "passed": true
             },
             "2": {
@@ -1747,8 +1751,8 @@
               "marks": 1,
               "percentage": 4,
               "totalQuestions": 0,
-              "threshold": 1,
-              "passed": true
+              "threshold": 2,
+              "passed": false
             },
             "3": {
               "correct": 4,
@@ -1756,7 +1760,7 @@
               "marks": 2.5,
               "percentage": 16.67,
               "totalQuestions": 0,
-              "threshold": 0.25,
+              "threshold": 0.5,
               "passed": true
             }
           },
@@ -1768,7 +1772,7 @@
           "mcqAccuracy": 48.39,
           "mcqPercentage": 15.71,
           "totalPercentage": 15.71,
-          "rank": 5,
+          "rank": 6,
           "responses": {
             "Section1-Q1": "A (W)",
             "Section1-Q2": "B (C)",
@@ -1869,9 +1873,11 @@
               }
             }
           },
-          "rankStatus": "passed",
-          "passedAll": true,
-          "failedSections": []
+          "rankStatus": "failed",
+          "passedAll": false,
+          "failedSections": [
+            "2"
+          ]
         },
         "648081": {
           "studentId": "648081",
@@ -1883,7 +1889,7 @@
               "marks": 0,
               "percentage": 0,
               "totalQuestions": 0,
-              "threshold": 5.5,
+              "threshold": 5.75,
               "passed": false
             },
             "2": {
@@ -1892,7 +1898,7 @@
               "marks": 0,
               "percentage": 0,
               "totalQuestions": 0,
-              "threshold": 1,
+              "threshold": 2,
               "passed": false
             },
             "3": {
@@ -1901,7 +1907,7 @@
               "marks": 0,
               "percentage": 0,
               "totalQuestions": 0,
-              "threshold": 0.25,
+              "threshold": 0.5,
               "passed": false
             }
           },
@@ -1961,7 +1967,7 @@
               "marks": 0,
               "percentage": 0,
               "totalQuestions": 0,
-              "threshold": 5.5,
+              "threshold": 5.75,
               "passed": false
             },
             "2": {
@@ -1970,7 +1976,7 @@
               "marks": 0,
               "percentage": 0,
               "totalQuestions": 0,
-              "threshold": 1,
+              "threshold": 2,
               "passed": false
             },
             "3": {
@@ -1979,7 +1985,7 @@
               "marks": 0,
               "percentage": 0,
               "totalQuestions": 0,
-              "threshold": 0.25,
+              "threshold": 0.5,
               "passed": false
             }
           },
@@ -2039,7 +2045,7 @@
               "marks": 0,
               "percentage": 0,
               "totalQuestions": 0,
-              "threshold": 5.5,
+              "threshold": 5.75,
               "passed": false
             },
             "2": {
@@ -2048,7 +2054,7 @@
               "marks": 0,
               "percentage": 0,
               "totalQuestions": 0,
-              "threshold": 1,
+              "threshold": 2,
               "passed": false
             },
             "3": {
@@ -2057,7 +2063,7 @@
               "marks": 0,
               "percentage": 0,
               "totalQuestions": 0,
-              "threshold": 0.25,
+              "threshold": 0.5,
               "passed": false
             }
           },
@@ -2117,7 +2123,7 @@
               "marks": 9.75,
               "percentage": 32.5,
               "totalQuestions": "Total Question 2",
-              "threshold": 5.5,
+              "threshold": 5.75,
               "passed": true
             },
             "2": {
@@ -2126,7 +2132,7 @@
               "marks": 6.75,
               "percentage": 27,
               "totalQuestions": 0,
-              "threshold": 1,
+              "threshold": 2,
               "passed": true
             },
             "3": {
@@ -2135,7 +2141,7 @@
               "marks": 1,
               "percentage": 6.67,
               "totalQuestions": 0,
-              "threshold": 0.25,
+              "threshold": 0.5,
               "passed": true
             }
           },
@@ -2262,7 +2268,7 @@
               "marks": 16,
               "percentage": 53.33,
               "totalQuestions": 0,
-              "threshold": 5.5,
+              "threshold": 5.75,
               "passed": true
             },
             "2": {
@@ -2271,7 +2277,7 @@
               "marks": 6,
               "percentage": 24,
               "totalQuestions": 0,
-              "threshold": 1,
+              "threshold": 2,
               "passed": true
             },
             "3": {
@@ -2280,7 +2286,7 @@
               "marks": 1.5,
               "percentage": 10,
               "totalQuestions": 0,
-              "threshold": 0.25,
+              "threshold": 0.5,
               "passed": true
             }
           },
@@ -2407,7 +2413,7 @@
               "marks": 0,
               "percentage": 0,
               "totalQuestions": 0,
-              "threshold": 5.5,
+              "threshold": 5.75,
               "passed": false
             },
             "2": {
@@ -2416,7 +2422,7 @@
               "marks": 0,
               "percentage": 0,
               "totalQuestions": 0,
-              "threshold": 1,
+              "threshold": 2,
               "passed": false
             },
             "3": {
@@ -2425,7 +2431,7 @@
               "marks": 0,
               "percentage": 0,
               "totalQuestions": 0,
-              "threshold": 0.25,
+              "threshold": 0.5,
               "passed": false
             }
           },
@@ -2485,7 +2491,7 @@
               "marks": 0.75,
               "percentage": 2.5,
               "totalQuestions": 0,
-              "threshold": 5.5,
+              "threshold": 5.75,
               "passed": false
             },
             "2": {
@@ -2494,7 +2500,7 @@
               "marks": 0.75,
               "percentage": 3,
               "totalQuestions": 0,
-              "threshold": 1,
+              "threshold": 2,
               "passed": false
             },
             "3": {
@@ -2503,7 +2509,7 @@
               "marks": -2,
               "percentage": -13.33,
               "totalQuestions": 0,
-              "threshold": 0.25,
+              "threshold": 0.5,
               "passed": false
             }
           },
@@ -2634,7 +2640,7 @@
               "marks": 7.25,
               "percentage": 24.17,
               "totalQuestions": 0,
-              "threshold": 5.5,
+              "threshold": 5.75,
               "passed": true
             },
             "2": {
@@ -2643,7 +2649,7 @@
               "marks": 4,
               "percentage": 16,
               "totalQuestions": 0,
-              "threshold": 1,
+              "threshold": 2,
               "passed": true
             },
             "3": {
@@ -2652,7 +2658,7 @@
               "marks": 0.5,
               "percentage": 3.33,
               "totalQuestions": 0,
-              "threshold": 0.25,
+              "threshold": 0.5,
               "passed": true
             }
           },
@@ -2664,7 +2670,7 @@
           "mcqAccuracy": 48.48,
           "mcqPercentage": 16.79,
           "totalPercentage": 16.79,
-          "rank": 6,
+          "rank": 5,
           "responses": {
             "Section1-Q1": "NAN",
             "Section1-Q2": "B (C)",
@@ -2779,13 +2785,13 @@
         "minScore": -0.5,
         "threshold": 3.19375,
         "sectionThresholds": {
-          "1": 5.5,
-          "2": 1,
-          "3": 0.25
+          "1": 5.75,
+          "2": 2,
+          "3": 0.5
         },
         "thresholdsAdjusted": true,
-        "passedStudents": 7,
-        "failedStudents": 17
+        "passedStudents": 5,
+        "failedStudents": 19
       },
       "topQuestions": {
         "1": {
@@ -3174,7 +3180,7 @@
         }
       },
       "metadata": {
-        "processedAt": "2025-11-06T10:44:06.183Z",
+        "processedAt": "2025-11-06T10:53:28.433Z",
         "sourceFile": "Mock 1.xlsx",
         "sheets": [
           "Sheet1",
@@ -3186,7 +3192,7 @@
   },
   "metadata": {
     "totalTests": 1,
-    "lastProcessed": "2025-11-06T10:44:06.219Z",
+    "lastProcessed": "2025-11-06T10:53:28.625Z",
     "version": "1.0.0"
   }
 }
