@@ -5,7 +5,7 @@ import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import { Shield, Users, BarChart3, TrendingUp, Award, Clock, Eye, Download, ArrowLeft, UserPlus, Phone, Mail, CheckCircle, XCircle, AlertCircle } from 'lucide-react';
 import ProtectedRoute from '@/components/ProtectedRoute';
-import { SimpleTestsData, FullTestsData, StudentsData, SystemMetadata } from '@/types/results';
+import { SimpleTestsData, FullTestsData, MockTestsData, StudentsData, SystemMetadata } from '@/types/results';
 import ClassDistributionChart from '../components/ClassDistributionChart';
 import SeriesProgressChart from '../components/SeriesProgressChart';
 import PerformanceBarChart from '../components/PerformanceBarChart';
@@ -68,6 +68,7 @@ const AdminDashboard = () => {
   const router = useRouter();
   const [simpleTests, setSimpleTests] = useState<SimpleTestsData | null>(null);
   const [fullTests, setFullTests] = useState<FullTestsData | null>(null);
+  const [mockTests, setMockTests] = useState<MockTestsData | null>(null);
   const [students, setStudents] = useState<StudentsData | null>(null);
   const [metadata, setMetadata] = useState<SystemMetadata | null>(null);
   const [loading, setLoading] = useState(true);
@@ -122,9 +123,10 @@ const AdminDashboard = () => {
         setLoading(true);
         setError(null);
 
-        const [simpleResponse, fullResponse, studentsResponse, metadataResponse, registrationsResponse] = await Promise.all([
+        const [simpleResponse, fullResponse, mockResponse, studentsResponse, metadataResponse, registrationsResponse] = await Promise.all([
           fetch('/data/simple-tests.json').then(res => res.json()),
           fetch('/data/full-tests.json').then(res => res.json()),
+          fetch('/data/mock-tests.json').then(res => res.json()),
           fetch('/data/students.json').then(res => res.json()),
           fetch('/data/metadata.json').then(res => res.json()),
           fetch('/api/registrations').then(res => res.json()).catch(() => ({ registrations: [], counts: { pending: 0, contacted: 0, enrolled: 0, cancelled: 0 } }))
@@ -132,6 +134,7 @@ const AdminDashboard = () => {
 
         setSimpleTests(simpleResponse);
         setFullTests(fullResponse);
+        setMockTests(mockResponse);
         setStudents(studentsResponse);
         setMetadata(metadataResponse);
 
@@ -142,8 +145,8 @@ const AdminDashboard = () => {
         }
 
         // Calculate class statistics
-        calculateClassStats(simpleResponse, fullResponse, studentsResponse);
-        generateStudentSummaries(simpleResponse, fullResponse, studentsResponse);
+        calculateClassStats(simpleResponse, fullResponse, mockResponse, studentsResponse);
+        generateStudentSummaries(simpleResponse, fullResponse, mockResponse, studentsResponse);
 
       } catch (err) {
         console.error('Error fetching admin data:', err);
@@ -159,10 +162,11 @@ const AdminDashboard = () => {
   const calculateClassStats = (
     simpleData: SimpleTestsData,
     fullData: FullTestsData,
+    mockData: MockTestsData,
     studentsData: StudentsData
   ) => {
     const totalStudents = Object.keys(studentsData.students).length;
-    const allTests = { ...simpleData.tests, ...fullData.tests };
+    const allTests = { ...simpleData.tests, ...fullData.tests, ...mockData.tests };
     const testsCompleted = Object.keys(allTests).length;
 
     // Calculate average performance across all tests
@@ -204,10 +208,11 @@ const AdminDashboard = () => {
   const generateStudentSummaries = (
     simpleData: SimpleTestsData,
     fullData: FullTestsData,
+    mockData: MockTestsData,
     studentsData: StudentsData
   ) => {
     const summaries: StudentSummary[] = [];
-    const allTests = { ...simpleData.tests, ...fullData.tests };
+    const allTests = { ...simpleData.tests, ...fullData.tests, ...mockData.tests };
 
     Object.entries(studentsData.students).forEach(([studentId, student]) => {
       const studentTests = Object.entries(allTests).filter(([, test]) => test.results && test.results[studentId]);
@@ -313,9 +318,9 @@ const AdminDashboard = () => {
     : registrations.filter(r => r.status === registrationFilter);
 
   const getTestAnalytics = () => {
-    if (!simpleTests || !fullTests || !selectedTest) return null;
+    if (!simpleTests || !fullTests || !mockTests || !selectedTest) return null;
 
-    const test = simpleTests.tests[selectedTest] || fullTests.tests[selectedTest];
+    const test = simpleTests.tests[selectedTest] || fullTests.tests[selectedTest] || mockTests.tests[selectedTest];
     if (!test) return null;
 
     const results = Object.values(test.results || {});
@@ -481,6 +486,7 @@ const AdminDashboard = () => {
                 <ClassDistributionChart
                   simpleTests={simpleTests}
                   fullTests={fullTests}
+                  mockTests={mockTests}
                   students={students}
                 />
               </div>
@@ -491,6 +497,7 @@ const AdminDashboard = () => {
                 <SeriesProgressChart
                   simpleTests={simpleTests}
                   fullTests={fullTests}
+                  mockTests={mockTests}
                   students={students}
                   userEmail=""
                   isClassView={true}
@@ -503,6 +510,7 @@ const AdminDashboard = () => {
                 <PerformanceBarChart
                   simpleTests={simpleTests}
                   fullTests={fullTests}
+                  mockTests={mockTests}
                   students={students}
                   userEmail=""
                   isClassView={true}
@@ -531,6 +539,9 @@ const AdminDashboard = () => {
                   ))}
                   {fullTests && Object.keys(fullTests.tests).map(testName => (
                     <option key={testName} value={testName}>{testName} (Full)</option>
+                  ))}
+                  {mockTests && Object.keys(mockTests.tests).map(testName => (
+                    <option key={testName} value={testName}>{testName} (Mock)</option>
                   ))}
                 </select>
               </div>
@@ -616,7 +627,7 @@ const AdminDashboard = () => {
           </div>
 
           {/* Comprehensive Class Analytics */}
-          {simpleTests && fullTests && classStats && (
+          {simpleTests && fullTests && mockTests && classStats && (
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
               {/* Performance Distribution */}
               <div className="bg-gradient-to-br from-white to-vh-beige/5 rounded-xl shadow-lg border border-vh-beige/30 hover:shadow-xl transition-all duration-300">
@@ -625,7 +636,7 @@ const AdminDashboard = () => {
                   {(() => {
                     // Calculate performance distribution across all tests
                     const allScores: number[] = [];
-                    const allTests = { ...simpleTests.tests, ...fullTests.tests };
+                    const allTests = { ...simpleTests.tests, ...fullTests.tests, ...mockTests.tests };
 
                     Object.values(allTests).forEach((test: any) => {
                       Object.values(test.results || {}).forEach((result: any) => {
@@ -682,7 +693,7 @@ const AdminDashboard = () => {
                 <div className="p-6">
                   <h3 className="text-lg font-semibold text-gray-800 mb-4">Test Difficulty Analysis</h3>
                   {(() => {
-                    const allTests = { ...simpleTests.tests, ...fullTests.tests };
+                    const allTests = { ...simpleTests.tests, ...fullTests.tests, ...mockTests.tests };
                     const testAnalysis = Object.entries(allTests).map(([testName, test]: [string, any]) => {
                       const results = Object.values(test.results || {}) as any[];
                       const scores = results.map(r => 'score' in r ? r.score : r.totalMarks);

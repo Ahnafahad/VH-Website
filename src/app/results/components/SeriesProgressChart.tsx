@@ -22,6 +22,7 @@ interface SeriesDataPoint {
 interface SeriesProgressChartProps {
   simpleTests: any;
   fullTests?: any; // Add full tests to combine with simple tests for series detection
+  mockTests?: any; // Add mock tests to combine with simple and full tests
   students: any;
   userEmail: string;
   highlightTest?: string;
@@ -34,6 +35,7 @@ interface SeriesProgressChartProps {
 const SeriesProgressChart: React.FC<SeriesProgressChartProps> = ({
   simpleTests,
   fullTests,
+  mockTests,
   students,
   userEmail,
   highlightTest,
@@ -86,10 +88,11 @@ const SeriesProgressChart: React.FC<SeriesProgressChartProps> = ({
 
     if (isClassView) {
       // For class view, calculate average progression by series
-      // Combine both simple and full tests for comprehensive series detection
+      // Combine simple, full, and mock tests for comprehensive series detection
       const allTests = {
         ...(simpleTests?.tests || {}),
-        ...(fullTests?.tests || {})
+        ...(fullTests?.tests || {}),
+        ...(mockTests?.tests || {})
       };
       const testEntries = Object.entries(allTests);
 
@@ -140,10 +143,11 @@ const SeriesProgressChart: React.FC<SeriesProgressChartProps> = ({
       if (!user) return [];
 
       const userId = user.id;
-      // Combine simple and full tests for comprehensive series detection
+      // Combine simple, full, and mock tests for comprehensive series detection
       const allTests = {
         ...(simpleTests?.tests || {}),
-        ...(fullTests?.tests || {})
+        ...(fullTests?.tests || {}),
+        ...(mockTests?.tests || {})
       };
 
       const userTests = Object.entries(allTests)

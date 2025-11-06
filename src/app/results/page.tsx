@@ -319,6 +319,7 @@ const ResultsDashboard = () => {
                   <SeriesProgressChart
                     simpleTests={simpleTests}
                     fullTests={fullTests}
+                    mockTests={mockTests}
                     students={students}
                     userEmail={getChartUserEmail() || ''}
                   />
@@ -337,6 +338,7 @@ const ResultsDashboard = () => {
                   <PerformanceBarChart
                     simpleTests={simpleTests}
                     fullTests={fullTests}
+                    mockTests={mockTests}
                     students={students}
                     userEmail={getChartUserEmail() || ''}
                   />

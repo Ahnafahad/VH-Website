@@ -838,6 +838,7 @@ const TestDetailPage = () => {
                       <SeriesProgressChart
                         simpleTests={simpleTests}
                         fullTests={fullTests}
+                        mockTests={mockTests}
                         students={students}
                         userEmail={getChartUserEmail()!}
                         highlightTest={testName}
@@ -856,6 +857,7 @@ const TestDetailPage = () => {
                       <PerformanceBarChart
                         simpleTests={simpleTests}
                         fullTests={fullTests}
+                        mockTests={mockTests}
                         students={students}
                         userEmail={getChartUserEmail()!}
                         testName={testName}

@@ -20,6 +20,7 @@ interface DistributionData {
 interface ClassDistributionChartProps {
   simpleTests?: any;
   fullTests?: any;
+  mockTests?: any;
   students?: any;
   title?: string;
   height?: number;
@@ -29,6 +30,7 @@ interface ClassDistributionChartProps {
 const ClassDistributionChart: React.FC<ClassDistributionChartProps> = ({
   simpleTests,
   fullTests,
+  mockTests,
   students,
   title = "Class Distribution",
   height = 300,
@@ -46,7 +48,7 @@ const ClassDistributionChart: React.FC<ClassDistributionChartProps> = ({
       { name: 'F (0-59)', min: 0, max: 59, count: 0 }
     ];
 
-    const allTests = { ...simpleTests.tests, ...(fullTests?.tests || {}) };
+    const allTests = { ...simpleTests.tests, ...(fullTests?.tests || {}), ...(mockTests?.tests || {}) };
     const allScores: number[] = [];
 
     Object.values(allTests).forEach((test: any) => {
