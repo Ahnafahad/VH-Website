@@ -1,33 +1,32 @@
 /**
  * Threshold Calculator Module
  *
- * Calculates dynamic thresholds for test sections to ensure at least 20% of students pass.
+ * Simple threshold calculation: For each section, find the mark where top 35% of students pass.
  *
  * Rules:
- * - All thresholds start at 40% (maximum)
- * - Thresholds calculated as percentage, then converted to MARKS
- * - Thresholds stored and displayed as MARKS (not percentages)
+ * - For each section independently, sort all students by their marks in that section
+ * - Take the top 35% of students
+ * - The minimum mark from those top 35% becomes the threshold
+ * - Round down to nearest 0.25 marks
  * - Essay thresholds are ALWAYS fixed at 40% of total essay marks (never adjusted)
- * - Non-essay sections can be adjusted down to achieve 20% pass rate
  * - Students must pass ALL sections to pass overall
  * - Passed students are ranked first, failed students cannot outrank them
- * - Round calculated threshold MARKS to nearest 0.25
  *
  * Example:
- * - Section has 45 total marks
- * - Threshold calculated at 28.73%
- * - Convert to marks: 28.73% of 45 = 12.9285 marks
+ * - Section has 24 students
+ * - Top 35% = 9 students (ceil(24 * 0.35))
+ * - 9th student (when sorted by marks) has 12.9285 marks
  * - Round down to 0.25: 12.75 marks
- * - Store and display: 12.75 marks
+ * - Threshold = 12.75 marks
  */
 
 const INITIAL_THRESHOLD_PERCENTAGE = 40;
 const ESSAY_THRESHOLD_PERCENTAGE = 40;
-const MINIMUM_PASS_RATE = 0.2; // 20%
+const SECTION_PASS_RATE = 0.35; // 35% of students should pass each section
 const MARKS_ROUNDING = 0.25;
 
 /**
- * Calculate thresholds for a test to ensure minimum pass rate
+ * Calculate thresholds for a test - Simple 35% pass rate per section
  * @param {Array} results - Array of test results
  * @param {Array} sectionIds - Array of section identifiers (e.g., ["1", "2", "3"])
  * @param {boolean} hasEssay - Whether the test has essay component
@@ -40,9 +39,9 @@ function calculateThresholds(results, sectionIds, hasEssay = false, testName = '
   }
 
   const totalStudents = results.length;
-  const minPassCount = Math.ceil(totalStudents * MINIMUM_PASS_RATE);
+  const targetPassCount = Math.ceil(totalStudents * SECTION_PASS_RATE);
 
-  console.log(`📊 Calculating thresholds for ${totalStudents} students (need ${minPassCount} to pass)`);
+  console.log(`📊 Calculating thresholds for ${totalStudents} students (target: ${targetPassCount} students = 35%)`);
 
   // Get total marks for each section from first student
   const sectionTotalMarks = {};
@@ -58,13 +57,10 @@ function calculateThresholds(results, sectionIds, hasEssay = false, testName = '
     }
   });
 
-  // Initialize thresholds at 40% (converted to marks)
+  // Initialize thresholds object
   let thresholds = {};
-  sectionIds.forEach(sectionId => {
-    const totalMarks = sectionTotalMarks[sectionId];
-    thresholds[sectionId] = (INITIAL_THRESHOLD_PERCENTAGE / 100) * totalMarks;
-  });
 
+  // Set essay threshold (fixed at 40%)
   if (hasEssay) {
     // Get essay total marks
     let essayTotalMarks = 100; // Default
@@ -83,33 +79,11 @@ function calculateThresholds(results, sectionIds, hasEssay = false, testName = '
     console.log(`  📝 Essay total marks: ${essayTotalMarks}, threshold: ${thresholds['essay'].toFixed(2)} marks (40%)`);
   }
 
-  // Step 1: Check how many pass with initial 40% threshold (in marks)
-  let passData = calculatePassStatus(results, thresholds, sectionIds, hasEssay, sectionTotalMarks);
+  // Calculate thresholds for each section (35% pass rate)
+  thresholds = adjustThresholds(results, thresholds, sectionIds, hasEssay, targetPassCount, sectionTotalMarks);
 
-  if (passData.passCount >= minPassCount) {
-    console.log(`✅ ${passData.passCount} students pass at 40% - no adjustment needed`);
-    return {
-      thresholds,
-      passData,
-      adjusted: false,
-      sectionTotalMarks
-    };
-  }
-
-  console.log(`⚙️ Only ${passData.passCount} students pass at 40% - adjusting thresholds...`);
-
-  // Step 2: Adjust thresholds iteratively (works with percentages, then converts to marks)
-  thresholds = adjustThresholds(results, thresholds, sectionIds, hasEssay, minPassCount, sectionTotalMarks);
-
-  // Step 3: Round threshold MARKS to nearest 0.25
-  Object.keys(thresholds).forEach(key => {
-    if (key !== 'essay') { // Essay always stays at 40% (but stored as marks)
-      thresholds[key] = roundMarksToQuarter(thresholds[key]);
-    }
-  });
-
-  // Step 4: Recalculate pass status with final thresholds (in marks)
-  passData = calculatePassStatus(results, thresholds, sectionIds, hasEssay, sectionTotalMarks);
+  // Calculate pass status with final thresholds
+  const passData = calculatePassStatus(results, thresholds, sectionIds, hasEssay, sectionTotalMarks);
 
   // Format thresholds for logging
   const thresholdsFormatted = {};
@@ -127,69 +101,54 @@ function calculateThresholds(results, sectionIds, hasEssay = false, testName = '
 }
 
 /**
- * Adjust thresholds to achieve minimum pass count
+ * Adjust thresholds - Simple approach: find mark where 35% students pass each section
  * @param {Array} results - Test results
  * @param {Object} thresholds - Current thresholds (in marks)
  * @param {Array} sectionIds - Section identifiers
  * @param {boolean} hasEssay - Has essay component
- * @param {number} minPassCount - Minimum students that must pass
+ * @param {number} minPassCount - Minimum students that must pass (not used in new approach)
  * @param {Object} sectionTotalMarks - Total marks for each section
  * @returns {Object} Adjusted thresholds (in marks)
  */
 function adjustThresholds(results, thresholds, sectionIds, hasEssay, minPassCount, sectionTotalMarks) {
   const adjustedThresholds = { ...thresholds };
+  const totalStudents = results.length;
+  const targetPassCount = Math.ceil(totalStudents * SECTION_PASS_RATE);
 
-  // Sort students by total score (descending)
-  const sortedResults = [...results].sort((a, b) => {
-    const scoreA = calculateTotalScore(a, sectionIds, hasEssay);
-    const scoreB = calculateTotalScore(b, sectionIds, hasEssay);
-    return scoreB - scoreA;
-  });
+  console.log(`\n📊 Calculating thresholds for 35% pass rate (${targetPassCount} out of ${totalStudents} students)`);
 
-  // Get students that need to pass (top minPassCount students)
-  const targetStudents = sortedResults.slice(0, minPassCount);
-
-  // For each non-essay section, find the minimum marks to pass target students
+  // For each section, find the mark where top 35% of students pass
   sectionIds.forEach(sectionId => {
-    const totalMarks = sectionTotalMarks[sectionId];
-
-    // Get all MARKS for this section from target students
-    const sectionMarks = targetStudents.map(student => {
+    // Get all marks for this section from all students
+    const sectionMarks = results.map(student => {
       if (student.sections && student.sections[sectionId]) {
         return student.sections[sectionId].marks || 0;
       }
       return 0;
     });
 
-    // Find the minimum marks among target students for this section
-    const minMarks = Math.min(...sectionMarks);
+    // Sort marks in descending order
+    const sortedMarks = [...sectionMarks].sort((a, b) => b - a);
 
-    // Calculate what 40% would be in marks
-    const maxThresholdMarks = (INITIAL_THRESHOLD_PERCENTAGE / 100) * totalMarks;
+    // Get the mark of the student at the 35% position (this is the minimum mark to be in top 35%)
+    const thresholdIndex = Math.min(targetPassCount - 1, sortedMarks.length - 1);
+    const rawThreshold = sortedMarks[thresholdIndex];
 
-    // Set threshold to this minimum (but not above 40%)
-    // Apply absolute minimum floor of 0.25 marks (cannot be 0)
-    const rawThreshold = Math.min(maxThresholdMarks, minMarks);
-    const minimumFloor = MARKS_ROUNDING; // 0.25 marks minimum
-    adjustedThresholds[sectionId] = Math.max(minimumFloor, rawThreshold);
+    // Round down to nearest 0.25
+    const roundedThreshold = Math.floor(rawThreshold / MARKS_ROUNDING) * MARKS_ROUNDING;
 
-    const percentage = (adjustedThresholds[sectionId] / totalMarks * 100).toFixed(2);
-    console.log(`  Section ${sectionId}: Adjusted to ${adjustedThresholds[sectionId].toFixed(2)} marks (${percentage}%) - will round to 0.25`);
+    // Apply minimum floor of 0.25 marks
+    adjustedThresholds[sectionId] = Math.max(MARKS_ROUNDING, roundedThreshold);
+
+    const totalMarks = sectionTotalMarks[sectionId];
+    const percentage = totalMarks > 0 ? (adjustedThresholds[sectionId] / totalMarks * 100).toFixed(2) : 0;
+
+    console.log(`  Section ${sectionId}: ${adjustedThresholds[sectionId].toFixed(2)} marks (${percentage}%) - ${thresholdIndex + 1}th student had ${rawThreshold.toFixed(2)} marks`);
   });
 
-  // Check if essay marks are limiting pass rate
+  // Essay threshold remains fixed at 40%
   if (hasEssay) {
-    const essayMarks = targetStudents.map(student => {
-      return student.essayMarks || 0;
-    });
-
-    const minEssayMarks = Math.min(...essayMarks);
-    const essayThresholdMarks = adjustedThresholds['essay'];
-    console.log(`  Essay: Fixed at ${essayThresholdMarks.toFixed(2)} marks (40%) - min student marks: ${minEssayMarks.toFixed(2)}`);
-
-    if (minEssayMarks < essayThresholdMarks) {
-      console.log(`  ⚠️ Warning: ${targetStudents.length - essayMarks.filter(m => m >= essayThresholdMarks).length} target students fail essay threshold`);
-    }
+    console.log(`  Essay: Fixed at ${adjustedThresholds['essay'].toFixed(2)} marks (40%)`);
   }
 
   return adjustedThresholds;
@@ -483,5 +442,5 @@ module.exports = {
   shouldApplyThresholds,
   INITIAL_THRESHOLD_PERCENTAGE,
   ESSAY_THRESHOLD_PERCENTAGE,
-  MINIMUM_PASS_RATE
+  SECTION_PASS_RATE
 };

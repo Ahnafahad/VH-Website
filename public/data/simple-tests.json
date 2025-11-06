@@ -476,12 +476,12 @@
         "minScore": -8.5,
         "threshold": 7,
         "sectionThresholds": {},
-        "thresholdsAdjusted": false,
+        "thresholdsAdjusted": true,
         "passedStudents": 23,
         "failedStudents": 0
       },
       "metadata": {
-        "processedAt": "2025-11-05T20:04:47.940Z",
+        "processedAt": "2025-11-06T10:44:06.203Z",
         "sourceFile": "Simple Test Data.xlsx",
         "sheetName": "Mathematics CT 1"
       }
@@ -1371,7 +1371,7 @@
         "failedStudents": 23
       },
       "metadata": {
-        "processedAt": "2025-11-05T20:04:47.943Z",
+        "processedAt": "2025-11-06T10:44:06.205Z",
         "sourceFile": "Simple Test Data.xlsx",
         "sheetName": "English Test 1"
       }
@@ -2384,7 +2384,7 @@
         "failedStudents": 24
       },
       "metadata": {
-        "processedAt": "2025-11-05T20:04:47.945Z",
+        "processedAt": "2025-11-06T10:44:06.206Z",
         "sourceFile": "Simple Test Data.xlsx",
         "sheetName": "English Quiz 1"
       }
@@ -3397,7 +3397,7 @@
         "failedStudents": 24
       },
       "metadata": {
-        "processedAt": "2025-11-05T20:04:47.946Z",
+        "processedAt": "2025-11-06T10:44:06.207Z",
         "sourceFile": "Simple Test Data.xlsx",
         "sheetName": "English Quiz 3"
       }
@@ -4193,7 +4193,7 @@
         "failedStudents": 24
       },
       "metadata": {
-        "processedAt": "2025-11-05T20:04:47.947Z",
+        "processedAt": "2025-11-06T10:44:06.208Z",
         "sourceFile": "Simple Test Data.xlsx",
         "sheetName": "English Quiz 2"
       }
@@ -4989,7 +4989,7 @@
         "failedStudents": 24
       },
       "metadata": {
-        "processedAt": "2025-11-05T20:04:47.949Z",
+        "processedAt": "2025-11-06T10:44:06.209Z",
         "sourceFile": "Simple Test Data.xlsx",
         "sheetName": "English Quiz 5"
       }
@@ -5785,7 +5785,7 @@
         "failedStudents": 24
       },
       "metadata": {
-        "processedAt": "2025-11-05T20:04:47.950Z",
+        "processedAt": "2025-11-06T10:44:06.209Z",
         "sourceFile": "Simple Test Data.xlsx",
         "sheetName": "English Quiz 4"
       }
@@ -6581,7 +6581,7 @@
         "failedStudents": 24
       },
       "metadata": {
-        "processedAt": "2025-11-05T20:04:47.953Z",
+        "processedAt": "2025-11-06T10:44:06.210Z",
         "sourceFile": "Simple Test Data.xlsx",
         "sheetName": "English Quiz Total till 5"
       }
@@ -7062,12 +7062,12 @@
         "minScore": 0,
         "threshold": 20,
         "sectionThresholds": {},
-        "thresholdsAdjusted": false,
+        "thresholdsAdjusted": true,
         "passedStudents": 23,
         "failedStudents": 0
       },
       "metadata": {
-        "processedAt": "2025-11-05T20:04:47.954Z",
+        "processedAt": "2025-11-06T10:44:06.211Z",
         "sourceFile": "Simple Test Data.xlsx",
         "sheetName": "Maths Diagnostic Test"
       }
@@ -7863,7 +7863,7 @@
         "failedStudents": 24
       },
       "metadata": {
-        "processedAt": "2025-11-05T20:04:47.955Z",
+        "processedAt": "2025-11-06T10:44:06.211Z",
         "sourceFile": "Simple Test Data.xlsx",
         "sheetName": "English Quiz 6"
       }
@@ -9390,7 +9390,7 @@
   },
   "metadata": {
     "totalTests": 10,
-    "lastProcessed": "2025-11-05T20:04:47.959Z",
+    "lastProcessed": "2025-11-06T10:44:06.213Z",
     "version": "1.0.0"
   }
 }
