@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { connectToDatabase } from '@/lib/db';
 import Registration from '@/lib/models/Registration';
 import { validateAuth, createErrorResponse, ApiException } from '@/lib/api-utils';
+import { sendRegistrationNotification } from '@/lib/email';
 
 // POST - Create new registration (public endpoint)
 export async function POST(request: NextRequest) {
@@ -91,6 +92,23 @@ export async function POST(request: NextRequest) {
     });
 
     const savedRegistration = await registration.save();
+
+    // Send email notification to admins (non-blocking)
+    sendRegistrationNotification({
+      name: data.name,
+      email: data.email,
+      phone: data.phone,
+      educationType: data.educationType,
+      programMode: data.programMode,
+      selectedMocks: data.selectedMocks,
+      selectedFullCourses: data.selectedFullCourses,
+      mockIntent: data.mockIntent,
+      pricing: data.pricing,
+      referral: data.referral
+    }).catch(error => {
+      // Log error but don't fail the registration
+      console.error('Failed to send registration notification email:', error);
+    });
 
     return NextResponse.json({
       success: true,
