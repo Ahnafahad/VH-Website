@@ -9,6 +9,7 @@
     "start": "next start",
     "lint": "next lint",
     "generate:access-control": "node scripts/generate-access-control.js",
+    "migrate:users": "node scripts/migrate-access-control-to-db.js",
     "prebuild": "npm run generate:access-control"
   },
   "dependencies": {
