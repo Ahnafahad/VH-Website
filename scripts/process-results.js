@@ -49,15 +49,17 @@ async function autoCommit() {
     // Add the data files
     execSync('git add public/data/', { stdio: 'inherit' });
 
-    // Commit with timestamp
-    const timestamp = new Date().toISOString().split('T')[0];
+    // Commit with timestamp (date and time)
+    const now = new Date();
+    const timestamp = now.toISOString().replace('T', ' ').substring(0, 19); // Format: YYYY-MM-DD HH:MM:SS
     const commitMessage = `Update test results data - ${timestamp}
 
 🤖 Generated with VH Results Processing System
 
 - Processed Excel files from Results/ folder
 - Generated optimized JSON files for Vercel deployment
-- Updated students, simple tests, and full tests data`;
+- Updated students, simple tests, and full tests data
+- Calculated thresholds and updated ranks`;
 
     execSync(`git commit -m "${commitMessage}"`, { stdio: 'inherit' });
 
