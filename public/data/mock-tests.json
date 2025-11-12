@@ -3180,7 +3180,7 @@
         }
       },
       "metadata": {
-        "processedAt": "2025-11-11T11:15:31.109Z",
+        "processedAt": "2025-11-12T22:22:13.816Z",
         "sourceFile": "Mock 1.xlsx",
         "sheets": [
           "Sheet1",
@@ -3221,24 +3221,24 @@
               "passed": true
             },
             "3": {
-              "correct": 2,
-              "wrong": 5,
-              "marks": 0.75,
-              "percentage": 5,
+              "correct": 4,
+              "wrong": 3,
+              "marks": 3.25,
+              "percentage": 21.67,
               "totalQuestions": 0,
-              "threshold": 0.25,
-              "passed": true
+              "threshold": 3.75,
+              "passed": false
             }
           },
-          "totalMarks": 23.5,
-          "mcqMarks": 9,
+          "totalMarks": 26,
+          "mcqMarks": 11.5,
           "essayMarks": 14.5,
-          "mcqCorrect": 13,
-          "mcqWrong": 16,
-          "mcqAccuracy": 44.83,
-          "mcqPercentage": 12.86,
-          "totalPercentage": 29.38,
-          "rank": 6,
+          "mcqCorrect": 15,
+          "mcqWrong": 14,
+          "mcqAccuracy": 51.72,
+          "mcqPercentage": 16.43,
+          "totalPercentage": 32.5,
+          "rank": 7,
           "essays": {
             "1": 14.5
           },
@@ -3335,18 +3335,19 @@
                 "efficiency": 20
               },
               "3": {
-                "accuracy": 28.57,
+                "accuracy": 57.14,
                 "attemptRate": 46.67,
                 "attempted": 7,
                 "unattempted": 8,
-                "efficiency": 13.33
+                "efficiency": 26.67
               }
             }
           },
           "rankStatus": "failed",
           "passedAll": false,
           "failedSections": [
-            "1"
+            "1",
+            "3"
           ],
           "essayThreshold": 12,
           "essayPassed": true
@@ -3379,7 +3380,7 @@
               "marks": 0,
               "percentage": 0,
               "totalQuestions": 0,
-              "threshold": 0.25,
+              "threshold": 3.75,
               "passed": false
             }
           },
@@ -3460,7 +3461,7 @@
               "marks": 0,
               "percentage": 0,
               "totalQuestions": 0,
-              "threshold": 0.25,
+              "threshold": 3.75,
               "passed": false
             }
           },
@@ -3541,7 +3542,7 @@
               "marks": 0,
               "percentage": 0,
               "totalQuestions": 0,
-              "threshold": 0.25,
+              "threshold": 3.75,
               "passed": false
             }
           },
@@ -3622,7 +3623,7 @@
               "marks": 0,
               "percentage": 0,
               "totalQuestions": 0,
-              "threshold": 0.25,
+              "threshold": 3.75,
               "passed": false
             }
           },
@@ -3778,7 +3779,7 @@
               "marks": 0,
               "percentage": 0,
               "totalQuestions": 0,
-              "threshold": 0.25,
+              "threshold": 3.75,
               "passed": false
             }
           },
@@ -3854,24 +3855,24 @@
               "passed": true
             },
             "3": {
-              "correct": 0,
-              "wrong": 5,
-              "marks": -1.25,
-              "percentage": -8.33,
+              "correct": 4,
+              "wrong": 1,
+              "marks": 3.75,
+              "percentage": 25,
               "totalQuestions": 0,
-              "threshold": 0.25,
-              "passed": false
+              "threshold": 3.75,
+              "passed": true
             }
           },
-          "totalMarks": 20.25,
-          "mcqMarks": 4.75,
+          "totalMarks": 25.25,
+          "mcqMarks": 9.75,
           "essayMarks": 15.5,
-          "mcqCorrect": 8,
-          "mcqWrong": 13,
-          "mcqAccuracy": 38.1,
-          "mcqPercentage": 6.79,
-          "totalPercentage": 25.33,
-          "rank": 7,
+          "mcqCorrect": 12,
+          "mcqWrong": 9,
+          "mcqAccuracy": 57.14,
+          "mcqPercentage": 13.93,
+          "totalPercentage": 31.57,
+          "rank": 6,
           "essays": {
             "1": 15.5
           },
@@ -3968,19 +3969,18 @@
                 "efficiency": 8
               },
               "3": {
-                "accuracy": 0,
+                "accuracy": 80,
                 "attemptRate": 33.33,
                 "attempted": 5,
                 "unattempted": 10,
-                "efficiency": 0
+                "efficiency": 26.66
               }
             }
           },
           "rankStatus": "failed",
           "passedAll": false,
           "failedSections": [
-            "1",
-            "3"
+            "1"
           ],
           "essayThreshold": 12,
           "essayPassed": true
@@ -4008,23 +4008,23 @@
               "passed": false
             },
             "3": {
-              "correct": 2,
-              "wrong": 5,
-              "marks": 0.75,
-              "percentage": 5,
+              "correct": 4,
+              "wrong": 3,
+              "marks": 3.25,
+              "percentage": 21.67,
               "totalQuestions": 0,
-              "threshold": 0.25,
-              "passed": true
+              "threshold": 3.75,
+              "passed": false
             }
           },
-          "totalMarks": 19,
-          "mcqMarks": 7.5,
+          "totalMarks": 21.5,
+          "mcqMarks": 10,
           "essayMarks": 11.5,
-          "mcqCorrect": 12,
-          "mcqWrong": 18,
-          "mcqAccuracy": 40,
-          "mcqPercentage": 10.71,
-          "totalPercentage": 23.74,
+          "mcqCorrect": 14,
+          "mcqWrong": 16,
+          "mcqAccuracy": 46.67,
+          "mcqPercentage": 14.29,
+          "totalPercentage": 26.88,
           "rank": 11,
           "essays": {
             "1": 11.5
@@ -4122,11 +4122,11 @@
                 "efficiency": 8
               },
               "3": {
-                "accuracy": 28.57,
+                "accuracy": 57.14,
                 "attemptRate": 46.67,
                 "attempted": 7,
                 "unattempted": 8,
-                "efficiency": 13.33
+                "efficiency": 26.67
               }
             }
           },
@@ -4134,6 +4134,7 @@
           "passedAll": false,
           "failedSections": [
             "2",
+            "3",
             "essay"
           ],
           "essayThreshold": 12,
@@ -4162,23 +4163,23 @@
               "passed": false
             },
             "3": {
-              "correct": 1,
-              "wrong": 7,
-              "marks": -0.75,
-              "percentage": -5,
+              "correct": 4,
+              "wrong": 4,
+              "marks": 3,
+              "percentage": 20,
               "totalQuestions": 0,
-              "threshold": 0.25,
+              "threshold": 3.75,
               "passed": false
             }
           },
-          "totalMarks": 8,
-          "mcqMarks": -4,
+          "totalMarks": 11.75,
+          "mcqMarks": -0.25,
           "essayMarks": 12,
-          "mcqCorrect": 6,
-          "mcqWrong": 40,
-          "mcqAccuracy": 13.04,
-          "mcqPercentage": -5.71,
-          "totalPercentage": 80,
+          "mcqCorrect": 9,
+          "mcqWrong": 37,
+          "mcqAccuracy": 19.57,
+          "mcqPercentage": -0.36,
+          "totalPercentage": 117.5,
           "rank": 13,
           "essays": {
             "1": 12
@@ -4276,11 +4277,11 @@
                 "efficiency": 0
               },
               "3": {
-                "accuracy": 12.5,
+                "accuracy": 50,
                 "attemptRate": 53.33,
                 "attempted": 8,
                 "unattempted": 7,
-                "efficiency": 6.67
+                "efficiency": 26.67
               }
             }
           },
@@ -4317,23 +4318,23 @@
               "passed": true
             },
             "3": {
-              "correct": 3,
-              "wrong": 5,
-              "marks": 1.75,
-              "percentage": 11.67,
+              "correct": 7,
+              "wrong": 1,
+              "marks": 6.75,
+              "percentage": 45,
               "totalQuestions": 0,
-              "threshold": 0.25,
+              "threshold": 3.75,
               "passed": true
             }
           },
-          "totalMarks": 42.75,
-          "mcqMarks": 20.25,
+          "totalMarks": 47.75,
+          "mcqMarks": 25.25,
           "essayMarks": 22.5,
-          "mcqCorrect": 22,
-          "mcqWrong": 12,
-          "mcqAccuracy": 64.71,
-          "mcqPercentage": 28.93,
-          "totalPercentage": 53.44,
+          "mcqCorrect": 26,
+          "mcqWrong": 8,
+          "mcqAccuracy": 76.47,
+          "mcqPercentage": 36.07,
+          "totalPercentage": 59.69,
           "rank": 1,
           "essays": {
             "1": 22.5
@@ -4431,11 +4432,11 @@
                 "efficiency": 20
               },
               "3": {
-                "accuracy": 37.5,
+                "accuracy": 87.5,
                 "attemptRate": 53.33,
                 "attempted": 8,
                 "unattempted": 7,
-                "efficiency": 20
+                "efficiency": 46.66
               }
             }
           },
@@ -4473,7 +4474,7 @@
               "marks": 0,
               "percentage": 0,
               "totalQuestions": 0,
-              "threshold": 0.25,
+              "threshold": 3.75,
               "passed": false
             }
           },
@@ -4549,23 +4550,23 @@
               "passed": true
             },
             "3": {
-              "correct": 3,
-              "wrong": 7,
-              "marks": 1.25,
-              "percentage": 8.33,
+              "correct": 5,
+              "wrong": 5,
+              "marks": 3.75,
+              "percentage": 25,
               "totalQuestions": 0,
-              "threshold": 0.25,
+              "threshold": 3.75,
               "passed": true
             }
           },
-          "totalMarks": 22.25,
-          "mcqMarks": 12.25,
+          "totalMarks": 24.75,
+          "mcqMarks": 14.75,
           "essayMarks": 10,
-          "mcqCorrect": 15,
-          "mcqWrong": 16,
-          "mcqAccuracy": 48.39,
-          "mcqPercentage": 17.5,
-          "totalPercentage": 27.81,
+          "mcqCorrect": 17,
+          "mcqWrong": 14,
+          "mcqAccuracy": 54.84,
+          "mcqPercentage": 21.07,
+          "totalPercentage": 30.94,
           "rank": 10,
           "essays": {
             "1": 10
@@ -4663,11 +4664,11 @@
                 "efficiency": 16
               },
               "3": {
-                "accuracy": 30,
+                "accuracy": 50,
                 "attemptRate": 66.67,
                 "attempted": 10,
                 "unattempted": 5,
-                "efficiency": 20
+                "efficiency": 33.34
               }
             }
           },
@@ -4702,23 +4703,23 @@
               "passed": false
             },
             "3": {
-              "correct": 4,
-              "wrong": 11,
-              "marks": 1.25,
-              "percentage": 8.33,
+              "correct": 8,
+              "wrong": 7,
+              "marks": 6.25,
+              "percentage": 41.67,
               "totalQuestions": 0,
-              "threshold": 0.25,
+              "threshold": 3.75,
               "passed": true
             }
           },
-          "totalMarks": 19.25,
-          "mcqMarks": 2.25,
+          "totalMarks": 24.25,
+          "mcqMarks": 7.25,
           "essayMarks": 17,
-          "mcqCorrect": 12,
-          "mcqWrong": 39,
-          "mcqAccuracy": 23.53,
-          "mcqPercentage": 3.21,
-          "totalPercentage": 24.03,
+          "mcqCorrect": 16,
+          "mcqWrong": 35,
+          "mcqAccuracy": 31.37,
+          "mcqPercentage": 10.36,
+          "totalPercentage": 30.32,
           "rank": 5,
           "essays": {
             "1": 17
@@ -4816,11 +4817,11 @@
                 "efficiency": 4
               },
               "3": {
-                "accuracy": 26.67,
+                "accuracy": 53.33,
                 "attemptRate": 100,
                 "attempted": 15,
                 "unattempted": 0,
-                "efficiency": 26.67
+                "efficiency": 53.33
               }
             }
           },
@@ -4856,23 +4857,23 @@
               "passed": false
             },
             "3": {
-              "correct": 1,
-              "wrong": 3,
-              "marks": 0.25,
-              "percentage": 1.67,
+              "correct": 2,
+              "wrong": 2,
+              "marks": 1.5,
+              "percentage": 10,
               "totalQuestions": 0,
-              "threshold": 0.25,
-              "passed": true
+              "threshold": 3.75,
+              "passed": false
             }
           },
-          "totalMarks": 16,
-          "mcqMarks": 3,
+          "totalMarks": 17.25,
+          "mcqMarks": 4.25,
           "essayMarks": 13,
-          "mcqCorrect": 6,
-          "mcqWrong": 17,
-          "mcqAccuracy": 26.09,
-          "mcqPercentage": 4.29,
-          "totalPercentage": 20.02,
+          "mcqCorrect": 7,
+          "mcqWrong": 16,
+          "mcqAccuracy": 30.43,
+          "mcqPercentage": 6.07,
+          "totalPercentage": 21.56,
           "rank": 12,
           "essays": {
             "1": 13
@@ -4970,11 +4971,11 @@
                 "efficiency": 0
               },
               "3": {
-                "accuracy": 25,
+                "accuracy": 50,
                 "attemptRate": 26.67,
                 "attempted": 4,
                 "unattempted": 11,
-                "efficiency": 6.67
+                "efficiency": 13.34
               }
             }
           },
@@ -4982,7 +4983,8 @@
           "passedAll": false,
           "failedSections": [
             "1",
-            "2"
+            "2",
+            "3"
           ],
           "essayThreshold": 12,
           "essayPassed": true
@@ -5010,24 +5012,24 @@
               "passed": true
             },
             "3": {
-              "correct": 1,
-              "wrong": 8,
-              "marks": -1,
-              "percentage": -6.67,
+              "correct": 5,
+              "wrong": 4,
+              "marks": 4,
+              "percentage": 26.67,
               "totalQuestions": 0,
-              "threshold": 0.25,
-              "passed": false
+              "threshold": 3.75,
+              "passed": true
             }
           },
-          "totalMarks": 28.75,
-          "mcqMarks": 10.25,
+          "totalMarks": 33.75,
+          "mcqMarks": 15.25,
           "essayMarks": 18.5,
-          "mcqCorrect": 14,
-          "mcqWrong": 19,
-          "mcqAccuracy": 42.42,
-          "mcqPercentage": 14.64,
-          "totalPercentage": 35.93,
-          "rank": 4,
+          "mcqCorrect": 18,
+          "mcqWrong": 15,
+          "mcqAccuracy": 54.55,
+          "mcqPercentage": 21.79,
+          "totalPercentage": 42.19,
+          "rank": 3,
           "essays": {
             "1": 18.5
           },
@@ -5124,19 +5126,17 @@
                 "efficiency": 8
               },
               "3": {
-                "accuracy": 11.11,
+                "accuracy": 55.56,
                 "attemptRate": 60,
                 "attempted": 9,
                 "unattempted": 6,
-                "efficiency": 6.67
+                "efficiency": 33.34
               }
             }
           },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "3"
-          ],
+          "rankStatus": "passed",
+          "passedAll": true,
+          "failedSections": [],
           "essayThreshold": 12,
           "essayPassed": true
         },
@@ -5168,7 +5168,7 @@
               "marks": 0,
               "percentage": 0,
               "totalQuestions": 0,
-              "threshold": 0.25,
+              "threshold": 3.75,
               "passed": false
             }
           },
@@ -5249,7 +5249,7 @@
               "marks": 0,
               "percentage": 0,
               "totalQuestions": 0,
-              "threshold": 0.25,
+              "threshold": 3.75,
               "passed": false
             }
           },
@@ -5400,7 +5400,7 @@
               "marks": 0,
               "percentage": 0,
               "totalQuestions": 0,
-              "threshold": 0.25,
+              "threshold": 3.75,
               "passed": false
             }
           },
@@ -5481,7 +5481,7 @@
               "marks": 0,
               "percentage": 0,
               "totalQuestions": 0,
-              "threshold": 0.25,
+              "threshold": 3.75,
               "passed": false
             }
           },
@@ -5557,24 +5557,24 @@
               "passed": false
             },
             "3": {
-              "correct": 1,
-              "wrong": 4,
-              "marks": 0,
-              "percentage": 0,
+              "correct": 5,
+              "wrong": 0,
+              "marks": 5,
+              "percentage": 33.33,
               "totalQuestions": 0,
-              "threshold": 0.25,
-              "passed": false
+              "threshold": 3.75,
+              "passed": true
             }
           },
-          "totalMarks": 30.25,
-          "mcqMarks": 8.75,
+          "totalMarks": 35.25,
+          "mcqMarks": 13.75,
           "essayMarks": 21.5,
-          "mcqCorrect": 12,
-          "mcqWrong": 13,
-          "mcqAccuracy": 48,
-          "mcqPercentage": 12.5,
-          "totalPercentage": 37.81,
-          "rank": 3,
+          "mcqCorrect": 16,
+          "mcqWrong": 9,
+          "mcqAccuracy": 64,
+          "mcqPercentage": 19.64,
+          "totalPercentage": 44.06,
+          "rank": 4,
           "essays": {
             "1": 21.5
           },
@@ -5671,19 +5671,18 @@
                 "efficiency": 8
               },
               "3": {
-                "accuracy": 20,
+                "accuracy": 100,
                 "attemptRate": 33.33,
                 "attempted": 5,
                 "unattempted": 10,
-                "efficiency": 6.67
+                "efficiency": 33.33
               }
             }
           },
           "rankStatus": "failed",
           "passedAll": false,
           "failedSections": [
-            "2",
-            "3"
+            "2"
           ],
           "essayThreshold": 12,
           "essayPassed": true
@@ -5711,23 +5710,23 @@
               "passed": true
             },
             "3": {
-              "correct": 4,
-              "wrong": 10,
-              "marks": 1.5,
-              "percentage": 10,
+              "correct": 8,
+              "wrong": 6,
+              "marks": 6.5,
+              "percentage": 43.33,
               "totalQuestions": 0,
-              "threshold": 0.25,
+              "threshold": 3.75,
               "passed": true
             }
           },
-          "totalMarks": 45,
-          "mcqMarks": 25,
+          "totalMarks": 50,
+          "mcqMarks": 30,
           "essayMarks": 20,
-          "mcqCorrect": 30,
-          "mcqWrong": 24,
-          "mcqAccuracy": 55.56,
-          "mcqPercentage": 35.71,
-          "totalPercentage": 56.24,
+          "mcqCorrect": 34,
+          "mcqWrong": 20,
+          "mcqAccuracy": 62.96,
+          "mcqPercentage": 42.86,
+          "totalPercentage": 62.5,
           "rank": 2,
           "essays": {
             "1": 20
@@ -5825,11 +5824,11 @@
                 "efficiency": 40
               },
               "3": {
-                "accuracy": 28.57,
+                "accuracy": 57.14,
                 "attemptRate": 93.33,
                 "attempted": 14,
                 "unattempted": 1,
-                "efficiency": 26.66
+                "efficiency": 53.33
               }
             }
           },
@@ -5867,7 +5866,7 @@
               "marks": 0,
               "percentage": 0,
               "totalQuestions": 0,
-              "threshold": 0.25,
+              "threshold": 3.75,
               "passed": false
             }
           },
@@ -5943,23 +5942,23 @@
               "passed": true
             },
             "3": {
-              "correct": 1,
-              "wrong": 6,
-              "marks": -0.5,
-              "percentage": -3.33,
+              "correct": 4,
+              "wrong": 3,
+              "marks": 3.25,
+              "percentage": 21.67,
               "totalQuestions": 0,
-              "threshold": 0.25,
+              "threshold": 3.75,
               "passed": false
             }
           },
-          "totalMarks": 22.25,
-          "mcqMarks": 10.25,
+          "totalMarks": 26,
+          "mcqMarks": 14,
           "essayMarks": 12,
-          "mcqCorrect": 14,
-          "mcqWrong": 15,
-          "mcqAccuracy": 48.28,
-          "mcqPercentage": 14.64,
-          "totalPercentage": 27.81,
+          "mcqCorrect": 17,
+          "mcqWrong": 12,
+          "mcqAccuracy": 58.62,
+          "mcqPercentage": 20,
+          "totalPercentage": 32.5,
           "rank": 9,
           "essays": {
             "1": 12
@@ -6057,11 +6056,11 @@
                 "efficiency": 12
               },
               "3": {
-                "accuracy": 14.29,
+                "accuracy": 57.14,
                 "attemptRate": 46.67,
                 "attempted": 7,
                 "unattempted": 8,
-                "efficiency": 6.67
+                "efficiency": 26.67
               }
             }
           },
@@ -6096,23 +6095,23 @@
               "passed": true
             },
             "3": {
-              "correct": 5,
-              "wrong": 7,
-              "marks": 3.25,
-              "percentage": 21.67,
+              "correct": 9,
+              "wrong": 3,
+              "marks": 8.25,
+              "percentage": 55,
               "totalQuestions": 0,
-              "threshold": 0.25,
+              "threshold": 3.75,
               "passed": true
             }
           },
-          "totalMarks": 23.5,
-          "mcqMarks": 14,
+          "totalMarks": 28.5,
+          "mcqMarks": 19,
           "essayMarks": 9.5,
-          "mcqCorrect": 18,
-          "mcqWrong": 16,
-          "mcqAccuracy": 52.94,
-          "mcqPercentage": 20,
-          "totalPercentage": 29.38,
+          "mcqCorrect": 22,
+          "mcqWrong": 12,
+          "mcqAccuracy": 64.71,
+          "mcqPercentage": 27.14,
+          "totalPercentage": 35.62,
           "rank": 8,
           "essays": {
             "1": 9.5
@@ -6210,11 +6209,11 @@
                 "efficiency": 24
               },
               "3": {
-                "accuracy": 41.67,
+                "accuracy": 75,
                 "attemptRate": 80,
                 "attempted": 12,
                 "unattempted": 3,
-                "efficiency": 33.34
+                "efficiency": 60
               }
             }
           },
@@ -6229,22 +6228,22 @@
         }
       },
       "classStats": {
-        "averageScore": 14.13,
-        "top5Average": 34.05,
+        "averageScore": 16.26,
+        "top5Average": 39.05,
         "totalStudents": 24,
-        "passRate": 58.33,
-        "maxScore": 45,
+        "passRate": 54.17,
+        "maxScore": 50,
         "minScore": 0,
-        "threshold": 8.475,
+        "threshold": 9.75625,
         "sectionThresholds": {
           "1": 6.25,
           "2": 1.5,
-          "3": 0.25,
+          "3": 3.75,
           "essay": 12
         },
         "thresholdsAdjusted": true,
-        "passedStudents": 2,
-        "failedStudents": 22
+        "passedStudents": 3,
+        "failedStudents": 21
       },
       "topQuestions": {
         "1": {
@@ -6633,7 +6632,7 @@
         }
       },
       "metadata": {
-        "processedAt": "2025-11-11T11:15:31.125Z",
+        "processedAt": "2025-11-12T22:22:13.845Z",
         "sourceFile": "Mock 2.xlsx",
         "sheets": [
           "Sheet1",
@@ -6645,7 +6644,7 @@
   },
   "metadata": {
     "totalTests": 2,
-    "lastProcessed": "2025-11-11T11:15:31.153Z",
+    "lastProcessed": "2025-11-12T22:22:13.894Z",
     "version": "1.0.0"
   }
 }
