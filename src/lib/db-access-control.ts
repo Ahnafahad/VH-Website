@@ -1,16 +1,52 @@
 /**
- * Database-based Access Control
+ * Hybrid Access Control System
  *
- * This module provides access control functions using MongoDB instead of JSON files.
- * It replaces the old generated-access-control.ts with database-backed functionality.
+ * Admins: Stored in access-control.json (simple, no bootstrap issues)
+ * Students: Stored in MongoDB (dynamic management via admin panel)
  */
 
 import { connectToDatabase } from '@/lib/db';
 import User from '@/lib/models/User';
+import fs from 'fs';
+import path from 'path';
 
 // Cache for frequently accessed data (with TTL)
 const emailCache: Map<string, { user: any; timestamp: number }> = new Map();
 const CACHE_TTL = 60000; // 1 minute
+
+// Load admins from JSON file
+let adminsFromJson: any[] = [];
+try {
+  const jsonPath = path.join(process.cwd(), 'access-control.json');
+  if (fs.existsSync(jsonPath)) {
+    const jsonData = JSON.parse(fs.readFileSync(jsonPath, 'utf-8'));
+    adminsFromJson = jsonData.admins || [];
+    console.log(`[Access Control] Loaded ${adminsFromJson.length} admins from JSON`);
+  }
+} catch (error) {
+  console.error('[Access Control] Failed to load admins from JSON:', error);
+}
+
+/**
+ * Check if email is an admin (from JSON)
+ */
+function isAdminInJson(email: string): boolean {
+  const normalizedEmail = email.toLowerCase();
+  return adminsFromJson.some(admin =>
+    admin.email.toLowerCase() === normalizedEmail && admin.active !== false
+  );
+}
+
+/**
+ * Get admin from JSON
+ */
+function getAdminFromJson(email: string): any | null {
+  const normalizedEmail = email.toLowerCase();
+  const admin = adminsFromJson.find(admin =>
+    admin.email.toLowerCase() === normalizedEmail && admin.active !== false
+  );
+  return admin || null;
+}
 
 /**
  * Clear the cache (useful after user updates)
@@ -20,7 +56,7 @@ export function clearAccessControlCache() {
 }
 
 /**
- * Get user from cache or database
+ * Get user from cache, JSON (admins), or database (students)
  */
 async function getCachedUser(email: string): Promise<any | null> {
   const normalizedEmail = email.toLowerCase();
@@ -33,8 +69,23 @@ async function getCachedUser(email: string): Promise<any | null> {
     return cached.user;
   }
 
-  // Fetch from database
-  console.log('[getCachedUser] Cache miss, querying database for:', normalizedEmail);
+  // Check JSON for admins first
+  const adminFromJson = getAdminFromJson(normalizedEmail);
+  if (adminFromJson) {
+    console.log('[getCachedUser] Found admin in JSON:', normalizedEmail);
+    const adminUser = {
+      email: adminFromJson.email,
+      name: adminFromJson.name,
+      role: adminFromJson.role,
+      permissions: adminFromJson.permissions || [],
+      active: adminFromJson.active !== false
+    };
+    emailCache.set(normalizedEmail, { user: adminUser, timestamp: Date.now() });
+    return adminUser;
+  }
+
+  // If not admin, check database for students
+  console.log('[getCachedUser] Not in JSON, checking database for student:', normalizedEmail);
   try {
     await connectToDatabase();
     console.log('[getCachedUser] Database connected');
@@ -155,13 +206,22 @@ export async function hasPermission(email: string, permission: string): Promise<
 }
 
 /**
- * Get all authorized emails
+ * Get all authorized emails (admins from JSON + students from DB)
  */
 export async function getAuthorizedEmails(): Promise<string[]> {
   try {
+    // Get admins from JSON
+    const adminEmails = adminsFromJson
+      .filter(admin => admin.active !== false)
+      .map(admin => admin.email.toLowerCase());
+
+    // Get students from database
     await connectToDatabase();
-    const users = await User.find({ active: true }).select('email').lean();
-    return users.map(u => u.email);
+    const students = await User.find({ role: 'student', active: true }).select('email').lean();
+    const studentEmails = students.map(s => s.email);
+
+    // Combine both
+    return [...adminEmails, ...studentEmails];
   } catch (error) {
     console.error('Error getting authorized emails:', error);
     return [];
@@ -169,16 +229,13 @@ export async function getAuthorizedEmails(): Promise<string[]> {
 }
 
 /**
- * Get all admin emails
+ * Get all admin emails (from JSON)
  */
 export async function getAdminEmails(): Promise<string[]> {
   try {
-    await connectToDatabase();
-    const admins = await User.find({
-      role: { $in: ['super_admin', 'admin'] },
-      active: true
-    }).select('email').lean();
-    return admins.map(a => a.email);
+    return adminsFromJson
+      .filter(admin => admin.active !== false)
+      .map(admin => admin.email.toLowerCase());
   } catch (error) {
     console.error('Error getting admin emails:', error);
     return [];

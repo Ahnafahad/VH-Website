@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Initialize Admins</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        button {
+            background: #dc2626;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 20px;
+        }
+        button:hover {
+            background: #b91c1c;
+        }
+        button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 5px;
+            display: none;
+        }
+        .success {
+            background: #d1fae5;
+            color: #065f46;
+            border: 1px solid #6ee7b7;
+        }
+        .error {
+            background: #fee2e2;
+            color: #991b1b;
+            border: 1px solid #fca5a5;
+        }
+        .loading {
+            background: #dbeafe;
+            color: #1e40af;
+            border: 1px solid #93c5fd;
+        }
+        pre {
+            background: #f9fafb;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔐 Initialize Admin Users</h1>
+        <p>This will create the following admin accounts in the database:</p>
+        <ul>
+            <li><strong>ahnaf816@gmail.com</strong> (Super Admin)</li>
+            <li><strong>hasanxsarower@gmail.com</strong> (Admin)</li>
+        </ul>
+        <p><em>Note: This can only be run once. After admins exist, this will fail.</em></p>
+
+        <button id="initButton" onclick="initializeAdmins()">Initialize Admins</button>
+
+        <div id="result" class="result"></div>
+    </div>
+
+    <script>
+        async function initializeAdmins() {
+            const button = document.getElementById('initButton');
+            const resultDiv = document.getElementById('result');
+
+            button.disabled = true;
+            resultDiv.style.display = 'block';
+            resultDiv.className = 'result loading';
+            resultDiv.innerHTML = '⏳ Creating admin accounts...';
+
+            try {
+                const response = await fetch('/api/init-admin', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        secret: 'your-secret-key-change-this'
+                    })
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    resultDiv.className = 'result success';
+                    resultDiv.innerHTML = `
+                        <h3>✅ Success!</h3>
+                        <p>${data.message}</p>
+                        <pre>${JSON.stringify(data.admins, null, 2)}</pre>
+                        <p><strong>Next steps:</strong></p>
+                        <ol>
+                            <li>Sign in with your Google account (ahnaf816@gmail.com or hasanxsarower@gmail.com)</li>
+                            <li>Visit <a href="/admin/registrations">/admin/registrations</a></li>
+                            <li>The 403 error should be gone!</li>
+                        </ol>
+                    `;
+                } else {
+                    resultDiv.className = 'result error';
+                    resultDiv.innerHTML = `
+                        <h3>❌ Error</h3>
+                        <p>${data.error || data.message || 'Unknown error occurred'}</p>
+                        ${data.existingAdmins ? '<p><strong>Existing admins:</strong></p><pre>' + JSON.stringify(data.existingAdmins, null, 2) + '</pre>' : ''}
+                        <p><em>If admins already exist, you can safely ignore this error.</em></p>
+                    `;
+                }
+            } catch (error) {
+                resultDiv.className = 'result error';
+                resultDiv.innerHTML = `
+                    <h3>❌ Network Error</h3>
+                    <p>Failed to connect to the API: ${error.message}</p>
+                    <p>Make sure the site is deployed and accessible.</p>
+                `;
+            } finally {
+                button.disabled = false;
+            }
+        }
+    </script>
+</body>
+</html>

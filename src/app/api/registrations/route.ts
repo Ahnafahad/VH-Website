@@ -128,50 +128,6 @@ export async function GET(request: NextRequest) {
     const user = await validateAuth();
     console.log('[Registrations API] User authenticated:', user.email);
 
-    await connectToDatabase();
-
-    // AUTO-INITIALIZE: If no admins exist, create them automatically
-    const User = (await import('@/lib/models/User')).default;
-    const adminCount = await User.countDocuments({ role: { $in: ['super_admin', 'admin'] } });
-    console.log('[Registrations API] Admin count in database:', adminCount);
-
-    if (adminCount === 0) {
-      console.log('[Registrations API] No admins found - auto-initializing...');
-
-      const adminsToCreate = [
-        {
-          email: 'ahnaf816@gmail.com',
-          name: 'Ahnaf Ahad',
-          role: 'super_admin',
-          adminId: 'admin_001',
-          permissions: ['read', 'write', 'admin', 'manage_users'],
-          active: true,
-          addedDate: new Date('2025-09-17'),
-          accessTypes: { IBA: false, DU: false, FBS: false },
-          mockAccess: { duIba: false, bupIba: false, duFbs: false, bupFbs: false, fbsDetailed: false }
-        },
-        {
-          email: 'hasanxsarower@gmail.com',
-          name: 'Hasan Sarower',
-          role: 'admin',
-          adminId: 'admin_002',
-          permissions: ['read', 'write', 'admin'],
-          active: true,
-          addedDate: new Date('2025-09-17'),
-          accessTypes: { IBA: false, DU: false, FBS: false },
-          mockAccess: { duIba: false, bupIba: false, duFbs: false, bupFbs: false, fbsDetailed: false }
-        }
-      ];
-
-      for (const adminData of adminsToCreate) {
-        const admin = new User(adminData);
-        await admin.save();
-        console.log('[Registrations API] Auto-created admin:', adminData.email);
-      }
-
-      console.log('[Registrations API] Auto-initialization complete!');
-    }
-
     const { isAdminEmail } = await import('@/lib/db-access-control');
     const adminCheck = await isAdminEmail(user.email);
     console.log('[Registrations API] Admin check result:', adminCheck, 'for email:', user.email);
@@ -182,6 +138,8 @@ export async function GET(request: NextRequest) {
     }
 
     console.log('[Registrations API] Admin authorization successful');
+
+    await connectToDatabase();
 
     // Get query parameters
     const searchParams = request.nextUrl.searchParams;
