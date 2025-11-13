@@ -6,10 +6,10 @@
  */
 
 import dbConnect from '@/lib/mongodb';
-import User, { IUser } from '@/lib/models/User';
+import User from '@/lib/models/User';
 
 // Cache for frequently accessed data (with TTL)
-let emailCache: Map<string, { user: any; timestamp: number }> = new Map();
+const emailCache: Map<string, { user: any; timestamp: number }> = new Map();
 const CACHE_TTL = 60000; // 1 minute
 
 /**
