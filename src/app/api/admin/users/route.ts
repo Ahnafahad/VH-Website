@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import dbConnect from '@/lib/mongodb';
+import { connectToDatabase } from '@/lib/db';
 import User from '@/lib/models/User';
 import { validateAuth, createErrorResponse, ApiException } from '@/lib/api-utils';
 
@@ -10,7 +10,7 @@ export async function GET(request: NextRequest) {
     const user = await validateAuth();
 
     // Connect to database
-    await dbConnect();
+    await connectToDatabase();
 
     // Check if user is admin
     const adminUser = await User.findOne({ email: user.email.toLowerCase(), role: { $in: ['super_admin', 'admin'] } });
@@ -65,7 +65,7 @@ export async function POST(request: NextRequest) {
     const user = await validateAuth();
 
     // Connect to database
-    await dbConnect();
+    await connectToDatabase();
 
     // Check if user is admin
     const adminUser = await User.findOne({ email: user.email.toLowerCase(), role: { $in: ['super_admin', 'admin'] } });
@@ -165,7 +165,7 @@ export async function PATCH(request: NextRequest) {
     const user = await validateAuth();
 
     // Connect to database
-    await dbConnect();
+    await connectToDatabase();
 
     // Check if user is admin
     const adminUser = await User.findOne({ email: user.email.toLowerCase(), role: { $in: ['super_admin', 'admin'] } });
@@ -239,7 +239,7 @@ export async function DELETE(request: NextRequest) {
     const user = await validateAuth();
 
     // Connect to database
-    await dbConnect();
+    await connectToDatabase();
 
     // Check if user is super admin (only super admins can delete users)
     const adminUser = await User.findOne({ email: user.email.toLowerCase(), role: 'super_admin' });

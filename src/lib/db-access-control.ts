@@ -5,7 +5,7 @@
  * It replaces the old generated-access-control.ts with database-backed functionality.
  */
 
-import dbConnect from '@/lib/mongodb';
+import { connectToDatabase } from '@/lib/db';
 import User from '@/lib/models/User';
 
 // Cache for frequently accessed data (with TTL)
@@ -32,7 +32,7 @@ async function getCachedUser(email: string): Promise<any | null> {
   }
 
   // Fetch from database
-  await dbConnect();
+  await connectToDatabase();
   const user = await User.findOne({ email: normalizedEmail, active: true }).lean();
 
   // Update cache
@@ -109,7 +109,7 @@ export async function getStudentById(studentId: string): Promise<any | null> {
   if (!studentId) return null;
 
   try {
-    await dbConnect();
+    await connectToDatabase();
     const student = await User.findOne({ studentId, role: 'student', active: true }).lean();
     return student;
   } catch (error) {
@@ -136,7 +136,7 @@ export async function hasPermission(email: string, permission: string): Promise<
  */
 export async function getAuthorizedEmails(): Promise<string[]> {
   try {
-    await dbConnect();
+    await connectToDatabase();
     const users = await User.find({ active: true }).select('email').lean();
     return users.map(u => u.email);
   } catch (error) {
@@ -150,7 +150,7 @@ export async function getAuthorizedEmails(): Promise<string[]> {
  */
 export async function getAdminEmails(): Promise<string[]> {
   try {
-    await dbConnect();
+    await connectToDatabase();
     const admins = await User.find({
       role: { $in: ['super_admin', 'admin'] },
       active: true
@@ -167,7 +167,7 @@ export async function getAdminEmails(): Promise<string[]> {
  */
 export async function getStudentEmails(): Promise<string[]> {
   try {
-    await dbConnect();
+    await connectToDatabase();
     const students = await User.find({ role: 'student', active: true }).select('email').lean();
     return students.map(s => s.email);
   } catch (error) {
@@ -181,7 +181,7 @@ export async function getStudentEmails(): Promise<string[]> {
  */
 export async function getAccessControlStats() {
   try {
-    await dbConnect();
+    await connectToDatabase();
 
     const [totalUsers, activeAdmins, activeStudents, superAdmins, regularAdmins] = await Promise.all([
       User.countDocuments({ active: true }),
@@ -223,7 +223,7 @@ export async function hasMockAccess(email: string, mockName: string): Promise<bo
   if (!email || !mockName) return false;
 
   try {
-    await dbConnect();
+    await connectToDatabase();
     const user = await User.findOne({ email: email.toLowerCase(), active: true });
 
     if (!user) return false;
@@ -263,7 +263,7 @@ export async function hasMockAccess(email: string, mockName: string): Promise<bo
  */
 export async function getComputedMockAccess(email: string): Promise<any> {
   try {
-    await dbConnect();
+    await connectToDatabase();
     const user = await User.findOne({ email: email.toLowerCase(), active: true });
 
     if (!user) {
