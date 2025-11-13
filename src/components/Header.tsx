@@ -102,7 +102,7 @@ const Header = () => {
                 </Link>
                 {isAdmin && (
                   <Link
-                    href="/results/admin"
+                    href="/admin/registrations"
                     className="relative px-4 py-3 text-gray-800 hover:text-vh-red font-semibold transition-all duration-300 group flex items-center gap-1 min-h-[44px]"
                   >
                     <ClipboardList size={16} />
@@ -204,7 +204,7 @@ const Header = () => {
                   </Link>
                   {isAdmin && (
                     <Link
-                      href="/results/admin"
+                      href="/admin/registrations"
                       className="block px-4 py-3 text-gray-800 hover:text-vh-red hover:bg-vh-beige/10 font-semibold rounded-xl transition-all duration-300 flex items-center gap-2"
                       onClick={() => setIsMenuOpen(false)}
                     >
