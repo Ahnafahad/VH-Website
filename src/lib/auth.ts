@@ -1,6 +1,6 @@
 import { NextAuthOptions } from 'next-auth'
 import GoogleProvider from 'next-auth/providers/google'
-import { isEmailAuthorized, getUserByEmail, isAdminEmail } from '@/lib/generated-access-control'
+import { isEmailAuthorized, getUserByEmail, isAdminEmail } from '@/lib/db-access-control'
 
 export const authOptions: NextAuthOptions = {
   providers: [
@@ -13,7 +13,7 @@ export const authOptions: NextAuthOptions = {
     async signIn({ user, account }) {
       if (account?.provider === 'google') {
         const email = user.email?.toLowerCase() || ''
-        const isAuthorized = isEmailAuthorized(email)
+        const isAuthorized = await isEmailAuthorized(email)
 
         if (isAuthorized) {
           console.log(`✅ Sign-in successful for: ${email}`)
@@ -28,10 +28,10 @@ export const authOptions: NextAuthOptions = {
     async session({ session }) {
       // Enhance session with user role and additional info
       if (session.user?.email) {
-        const userInfo = getUserByEmail(session.user.email)
+        const userInfo = await getUserByEmail(session.user.email)
         if (userInfo) {
           session.user.role = userInfo.role
-          session.user.isAdmin = isAdminEmail(session.user.email)
+          session.user.isAdmin = await isAdminEmail(session.user.email)
           session.user.permissions = userInfo.permissions
 
           // Add student-specific info if applicable
@@ -42,8 +42,14 @@ export const authOptions: NextAuthOptions = {
           }
 
           // Add admin-specific info if applicable
-          if ('id' in userInfo) {
-            session.user.adminId = userInfo.id
+          if ('adminId' in userInfo) {
+            session.user.adminId = userInfo.adminId
+          }
+
+          // Add access types and mock access
+          if ('accessTypes' in userInfo) {
+            session.user.accessTypes = userInfo.accessTypes
+            session.user.mockAccess = userInfo.mockAccess
           }
         }
       }
@@ -52,10 +58,10 @@ export const authOptions: NextAuthOptions = {
     async jwt({ token, user }) {
       // Store user info in JWT token for persistence
       if (user?.email) {
-        const userInfo = getUserByEmail(user.email)
+        const userInfo = await getUserByEmail(user.email)
         if (userInfo) {
           token.role = userInfo.role
-          token.isAdmin = isAdminEmail(user.email)
+          token.isAdmin = await isAdminEmail(user.email)
           token.permissions = userInfo.permissions
 
           if ('studentId' in userInfo) {
@@ -64,8 +70,13 @@ export const authOptions: NextAuthOptions = {
             token.batch = userInfo.batch
           }
 
-          if ('id' in userInfo) {
-            token.adminId = userInfo.id
+          if ('adminId' in userInfo) {
+            token.adminId = userInfo.adminId
+          }
+
+          if ('accessTypes' in userInfo) {
+            token.accessTypes = userInfo.accessTypes
+            token.mockAccess = userInfo.mockAccess
           }
         }
       }
