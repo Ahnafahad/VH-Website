@@ -132,7 +132,7 @@ export async function POST(request: NextRequest) {
       studentId: studentId?.trim(),
       class: userClass?.trim(),
       batch: batch?.trim(),
-      accessTypes: accessTypes || { IBA: false, DU: false, FBS: false },
+      accessTypes: accessTypes || { IBA: false, FBS: false },
       mockAccess: mockAccess || {
         duIba: false,
         bupIba: false,

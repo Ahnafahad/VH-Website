@@ -19,7 +19,6 @@ export interface IUser extends mongoose.Document {
   // Access Types - Broad categories that auto-grant specific mock access
   accessTypes: {
     IBA: boolean;  // Auto grants: DU IBA Mocks, BUP IBA Mocks
-    DU: boolean;   // Auto grants: DU IBA Mocks, DU FBS Mocks
     FBS: boolean;  // Auto grants: DU FBS Mocks, BUP FBS Mocks
   };
 
@@ -95,10 +94,6 @@ const UserSchema = new mongoose.Schema<IUser>({
       type: Boolean,
       default: false
     },
-    DU: {
-      type: Boolean,
-      default: false
-    },
     FBS: {
       type: Boolean,
       default: false
@@ -166,9 +161,9 @@ UserSchema.pre('save', function(next) {
 // This combines accessTypes rules with individual mockAccess overrides
 UserSchema.virtual('computedMockAccess').get(function() {
   const computed = {
-    duIba: this.mockAccess.duIba || this.accessTypes.IBA || this.accessTypes.DU,
+    duIba: this.mockAccess.duIba || this.accessTypes.IBA,
     bupIba: this.mockAccess.bupIba || this.accessTypes.IBA,
-    duFbs: this.mockAccess.duFbs || this.accessTypes.FBS || this.accessTypes.DU,
+    duFbs: this.mockAccess.duFbs || this.accessTypes.FBS,
     bupFbs: this.mockAccess.bupFbs || this.accessTypes.FBS,
     fbsDetailed: this.mockAccess.fbsDetailed
   };

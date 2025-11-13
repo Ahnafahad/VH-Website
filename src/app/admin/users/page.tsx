@@ -594,7 +594,7 @@ function UserModal({ user, formData, setFormData, onSave, onClose }: any) {
               <div>
                 <h3 className="text-lg font-bold text-gray-900 mb-2">Access Types</h3>
                 <p className="text-sm text-gray-600 mb-4">Select broad access categories that automatically grant specific mock access</p>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <label className="flex items-start gap-3 p-4 border-2 border-gray-200 rounded-lg cursor-pointer hover:border-vh-red/50 transition-colors bg-blue-50">
                     <input
                       type="checkbox"
@@ -608,21 +608,6 @@ function UserModal({ user, formData, setFormData, onSave, onClose }: any) {
                     <div>
                       <span className="font-bold text-gray-900 block">IBA</span>
                       <span className="text-xs text-gray-600">Auto grants: DU IBA Mocks, BUP IBA Mocks</span>
-                    </div>
-                  </label>
-                  <label className="flex items-start gap-3 p-4 border-2 border-gray-200 rounded-lg cursor-pointer hover:border-vh-red/50 transition-colors bg-green-50">
-                    <input
-                      type="checkbox"
-                      checked={formData.accessTypes?.DU || false}
-                      onChange={(e) => setFormData({
-                        ...formData,
-                        accessTypes: { ...formData.accessTypes, DU: e.target.checked }
-                      })}
-                      className="w-5 h-5 text-vh-red border-gray-300 rounded focus:ring-vh-red mt-1"
-                    />
-                    <div>
-                      <span className="font-bold text-gray-900 block">DU</span>
-                      <span className="text-xs text-gray-600">Auto grants: DU IBA Mocks, DU FBS Mocks</span>
                     </div>
                   </label>
                   <label className="flex items-start gap-3 p-4 border-2 border-gray-200 rounded-lg cursor-pointer hover:border-vh-red/50 transition-colors bg-purple-50">

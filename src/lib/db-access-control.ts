@@ -310,11 +310,11 @@ export async function hasMockAccess(email: string, mockName: string): Promise<bo
 
     switch (normalizedMockName) {
       case 'duiba':
-        return mockAccess.duIba || accessTypes.IBA || accessTypes.DU;
+        return mockAccess.duIba || accessTypes.IBA;
       case 'bupiba':
         return mockAccess.bupIba || accessTypes.IBA;
       case 'dufbs':
-        return mockAccess.duFbs || accessTypes.FBS || accessTypes.DU;
+        return mockAccess.duFbs || accessTypes.FBS;
       case 'bupfbs':
         return mockAccess.bupFbs || accessTypes.FBS;
       case 'fbsdetailed':
@@ -359,9 +359,9 @@ export async function getComputedMockAccess(email: string): Promise<any> {
 
     // For students, combine access types and individual mock access
     return {
-      duIba: user.mockAccess.duIba || user.accessTypes.IBA || user.accessTypes.DU,
+      duIba: user.mockAccess.duIba || user.accessTypes.IBA,
       bupIba: user.mockAccess.bupIba || user.accessTypes.IBA,
-      duFbs: user.mockAccess.duFbs || user.accessTypes.FBS || user.accessTypes.DU,
+      duFbs: user.mockAccess.duFbs || user.accessTypes.FBS,
       bupFbs: user.mockAccess.bupFbs || user.accessTypes.FBS,
       fbsDetailed: user.mockAccess.fbsDetailed
     };

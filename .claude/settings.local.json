@@ -57,7 +57,12 @@
       "Bash(nul)",
       "Bash(.env.local)",
       "Bash(echo:*)",
-      "Bash(tee:*)"
+      "Bash(tee:*)",
+      "Bash(set -a)",
+      "Bash([ -f .env.local ])",
+      "Bash(. .env.local)",
+      "Bash(set:*)",
+      "Bash(temp-students.json)"
     ],
     "deny": [],
     "ask": []

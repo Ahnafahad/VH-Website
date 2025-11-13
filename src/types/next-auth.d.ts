@@ -19,7 +19,6 @@ declare module "next-auth" {
       batch?: string
       accessTypes?: {
         IBA: boolean
-        DU: boolean
         FBS: boolean
       }
       mockAccess?: {

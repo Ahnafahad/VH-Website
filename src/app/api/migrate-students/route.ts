@@ -57,7 +57,6 @@ export async function POST(request: NextRequest) {
       addedDate: new Date(s.addedDate || '2025-09-17'),
       accessTypes: {
         IBA: (s.class || '').toUpperCase().includes('IBA'),
-        DU: (s.class || '').toUpperCase().includes('DU'),
         FBS: (s.class || '').toUpperCase().includes('FBS')
       },
       mockAccess: {
