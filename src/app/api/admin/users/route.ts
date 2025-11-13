@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { connectToDatabase } from '@/lib/db';
 import User from '@/lib/models/User';
 import { validateAuth, createErrorResponse, ApiException } from '@/lib/api-utils';
+import { isAdminEmail, getUserByEmail } from '@/lib/db-access-control';
 
 // GET - Fetch all users with optional filtering
 export async function GET(request: NextRequest) {
@@ -9,14 +10,13 @@ export async function GET(request: NextRequest) {
     // Validate admin authentication
     const user = await validateAuth();
 
-    // Connect to database
-    await connectToDatabase();
-
-    // Check if user is admin
-    const adminUser = await User.findOne({ email: user.email.toLowerCase(), role: { $in: ['super_admin', 'admin'] } });
-    if (!adminUser) {
+    // Check if user is admin (using hybrid access control - admins in JSON)
+    if (!(await isAdminEmail(user.email))) {
       throw new ApiException('Unauthorized', 403, 'UNAUTHORIZED');
     }
+
+    // Connect to database
+    await connectToDatabase();
 
     // Get query parameters for filtering
     const { searchParams } = new URL(request.url);
@@ -64,14 +64,13 @@ export async function POST(request: NextRequest) {
     // Validate admin authentication
     const user = await validateAuth();
 
-    // Connect to database
-    await connectToDatabase();
-
-    // Check if user is admin
-    const adminUser = await User.findOne({ email: user.email.toLowerCase(), role: { $in: ['super_admin', 'admin'] } });
-    if (!adminUser) {
+    // Check if user is admin (using hybrid access control - admins in JSON)
+    if (!(await isAdminEmail(user.email))) {
       throw new ApiException('Unauthorized', 403, 'UNAUTHORIZED');
     }
+
+    // Connect to database
+    await connectToDatabase();
 
     const body = await request.json();
     const {
@@ -164,14 +163,13 @@ export async function PATCH(request: NextRequest) {
     // Validate admin authentication
     const user = await validateAuth();
 
-    // Connect to database
-    await connectToDatabase();
-
-    // Check if user is admin
-    const adminUser = await User.findOne({ email: user.email.toLowerCase(), role: { $in: ['super_admin', 'admin'] } });
-    if (!adminUser) {
+    // Check if user is admin (using hybrid access control - admins in JSON)
+    if (!(await isAdminEmail(user.email))) {
       throw new ApiException('Unauthorized', 403, 'UNAUTHORIZED');
     }
+
+    // Connect to database
+    await connectToDatabase();
 
     const body = await request.json();
     const { userId, ...updates } = body;
@@ -187,7 +185,8 @@ export async function PATCH(request: NextRequest) {
     }
 
     // Prevent non-super-admins from modifying super-admins
-    if (existingUser.role === 'super_admin' && adminUser.role !== 'super_admin') {
+    const adminUser = await getUserByEmail(user.email);
+    if (existingUser.role === 'super_admin' && adminUser?.role !== 'super_admin') {
       throw new ApiException('Only super admins can modify super admin accounts', 403, 'UNAUTHORIZED');
     }
 
@@ -238,14 +237,14 @@ export async function DELETE(request: NextRequest) {
     // Validate admin authentication
     const user = await validateAuth();
 
-    // Connect to database
-    await connectToDatabase();
-
     // Check if user is super admin (only super admins can delete users)
-    const adminUser = await User.findOne({ email: user.email.toLowerCase(), role: 'super_admin' });
-    if (!adminUser) {
+    const adminUser = await getUserByEmail(user.email);
+    if (!adminUser || adminUser.role !== 'super_admin') {
       throw new ApiException('Only super admins can delete users', 403, 'UNAUTHORIZED');
     }
+
+    // Connect to database
+    await connectToDatabase();
 
     const { searchParams } = new URL(request.url);
     const userId = searchParams.get('userId');

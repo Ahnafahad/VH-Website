@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Menu, X, ChevronDown, Gamepad2, BarChart3, Calendar, ClipboardList } from 'lucide-react';
+import { Menu, X, ChevronDown, Gamepad2, BarChart3, Calendar, ClipboardList, Users } from 'lucide-react';
 import LoginButton from './LoginButton';
 import { useSession } from 'next-auth/react';
 
@@ -100,7 +100,7 @@ const Header = () => {
                   Results
                   <span className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-vh-red transition-all duration-300 group-hover:w-full group-hover:left-0"></span>
                 </Link>
-                {isAdmin && (
+                {isAdmin && (<>
                   <Link
                     href="/admin/registrations"
                     className="relative px-4 py-3 text-gray-800 hover:text-vh-red font-semibold transition-all duration-300 group flex items-center gap-1 min-h-[44px]"
@@ -109,7 +109,15 @@ const Header = () => {
                     Registrations
                     <span className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-vh-red transition-all duration-300 group-hover:w-full group-hover:left-0"></span>
                   </Link>
-                )}
+                  <Link
+                    href="/admin/users"
+                    className="relative px-4 py-3 text-gray-800 hover:text-vh-red font-semibold transition-all duration-300 group flex items-center gap-1 min-h-[44px]"
+                  >
+                    <Users size={16} />
+                    Manage Users
+                    <span className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-vh-red transition-all duration-300 group-hover:w-full group-hover:left-0"></span>
+                  </Link>
+                </>)}
                 <div className="relative">
                   <button
                     onClick={() => setIsGamesDropdownOpen(!isGamesDropdownOpen)}
@@ -202,7 +210,7 @@ const Header = () => {
                     <BarChart3 size={16} />
                     Results
                   </Link>
-                  {isAdmin && (
+                  {isAdmin && (<>
                     <Link
                       href="/admin/registrations"
                       className="block px-4 py-3 text-gray-800 hover:text-vh-red hover:bg-vh-beige/10 font-semibold rounded-xl transition-all duration-300 flex items-center gap-2"
@@ -211,7 +219,15 @@ const Header = () => {
                       <ClipboardList size={16} />
                       Registrations
                     </Link>
-                  )}
+                    <Link
+                      href="/admin/users"
+                      className="block px-4 py-3 text-gray-800 hover:text-vh-red hover:bg-vh-beige/10 font-semibold rounded-xl transition-all duration-300 flex items-center gap-2"
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      <Users size={16} />
+                      Manage Users
+                    </Link>
+                  </>)}
                   <div>
                     <div className="px-4 py-3 text-gray-800 font-semibold flex items-center gap-2">
                       <Gamepad2 size={16} />
