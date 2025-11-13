@@ -17,6 +17,18 @@ declare module "next-auth" {
       adminId?: string
       class?: string
       batch?: string
+      accessTypes?: {
+        IBA: boolean
+        DU: boolean
+        FBS: boolean
+      }
+      mockAccess?: {
+        duIba: boolean
+        bupIba: boolean
+        duFbs: boolean
+        bupFbs: boolean
+        fbsDetailed: boolean
+      }
     }
   }
 
@@ -32,6 +44,18 @@ declare module "next-auth" {
     adminId?: string
     class?: string
     batch?: string
+    accessTypes?: {
+      IBA: boolean
+      DU: boolean
+      FBS: boolean
+    }
+    mockAccess?: {
+      duIba: boolean
+      bupIba: boolean
+      duFbs: boolean
+      bupFbs: boolean
+      fbsDetailed: boolean
+    }
   }
 }
 
@@ -44,5 +68,17 @@ declare module "next-auth/jwt" {
     adminId?: string
     class?: string
     batch?: string
+    accessTypes?: {
+      IBA: boolean
+      DU: boolean
+      FBS: boolean
+    }
+    mockAccess?: {
+      duIba: boolean
+      bupIba: boolean
+      duFbs: boolean
+      bupFbs: boolean
+      fbsDetailed: boolean
+    }
   }
 }

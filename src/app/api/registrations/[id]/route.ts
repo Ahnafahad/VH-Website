@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { connectToDatabase } from '@/lib/db';
 import Registration from '@/lib/models/Registration';
 import { validateAuth, createErrorResponse, ApiException } from '@/lib/api-utils';
-import { isAdminEmail } from '@/lib/generated-access-control';
+import { isAdminEmail } from '@/lib/db-access-control';
 
 // PATCH - Update registration status or notes (admin only)
 export async function PATCH(
@@ -13,7 +13,7 @@ export async function PATCH(
     // Validate admin authentication
     const user = await validateAuth();
 
-    if (!isAdminEmail(user.email)) {
+    if (!(await isAdminEmail(user.email))) {
       throw new ApiException('Unauthorized', 403, 'UNAUTHORIZED');
     }
 
@@ -76,7 +76,7 @@ export async function GET(
     // Validate admin authentication
     const user = await validateAuth();
 
-    if (!isAdminEmail(user.email)) {
+    if (!(await isAdminEmail(user.email))) {
       throw new ApiException('Unauthorized', 403, 'UNAUTHORIZED');
     }
 

@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import { connectToDatabase, isConnected } from '@/lib/db';
 import { getServerSession } from 'next-auth/next';
 import { authOptions } from '@/lib/auth';
-import { isEmailAuthorized, isAdminEmail } from '@/lib/generated-access-control';
+import { isEmailAuthorized, isAdminEmail } from '@/lib/db-access-control';
 import mongoose from 'mongoose';
 
 export async function GET() {
@@ -74,8 +74,8 @@ export async function GET() {
     const session = await getServerSession(authOptions);
 
     if (session?.user?.email) {
-      const isAuthorized = isEmailAuthorized(session.user.email.toLowerCase());
-      const isAdmin = isAdminEmail(session.user.email);
+      const isAuthorized = await isEmailAuthorized(session.user.email.toLowerCase());
+      const isAdmin = await isAdminEmail(session.user.email);
 
       healthCheck.checks.authentication.status = 'healthy';
       healthCheck.checks.authentication.details = {

@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import { getServerSession } from 'next-auth/next';
 import { authOptions } from '@/lib/auth';
-import { isEmailAuthorized } from '@/lib/generated-access-control';
+import { isEmailAuthorized } from '@/lib/db-access-control';
 
 export interface ApiError {
   message: string;
@@ -60,7 +60,7 @@ export async function validateAuth(): Promise<{ email: string; name?: string }> 
       throw new ApiException('Authentication required', 401, 'AUTH_REQUIRED');
     }
 
-    const isAuthorized = isEmailAuthorized(session.user.email.toLowerCase());
+    const isAuthorized = await isEmailAuthorized(session.user.email.toLowerCase());
     if (!isAuthorized) {
       throw new ApiException('Access denied', 403, 'ACCESS_DENIED');
     }

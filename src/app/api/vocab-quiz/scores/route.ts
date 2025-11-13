@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { connectToDatabase } from '@/lib/db';
 import VocabScore from '@/lib/models/VocabScore';
-import { isAdminEmail } from '@/lib/generated-access-control';
+import { isAdminEmail } from '@/lib/db-access-control';
 import { validateAuth, createErrorResponse, ApiException } from '@/lib/api-utils';
 
 export async function POST(request: NextRequest) {
@@ -53,7 +53,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Check if user is admin
-    const isAdmin = isAdminEmail(user.email);
+    const isAdmin = await isAdminEmail(user.email);
 
     // Create new vocab score entry
     const vocabScore = new VocabScore({

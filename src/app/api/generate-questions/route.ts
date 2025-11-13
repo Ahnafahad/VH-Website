@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getServerSession } from 'next-auth/next';
 import { authOptions } from '@/lib/auth';
-import { isEmailAuthorized } from '@/lib/generated-access-control';
+import { isEmailAuthorized } from '@/lib/db-access-control';
 
 /**
  * POST /api/generate-questions
@@ -24,7 +24,7 @@ export async function POST(request: NextRequest) {
     }
 
     // 2. Authorization check
-    const isAuthorized = isEmailAuthorized(session.user.email.toLowerCase());
+    const isAuthorized = await isEmailAuthorized(session.user.email.toLowerCase());
     if (!isAuthorized) {
       return NextResponse.json(
         { error: 'Access denied' },
