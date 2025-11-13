@@ -124,12 +124,20 @@ export async function POST(request: NextRequest) {
 export async function GET(request: NextRequest) {
   try {
     // Validate admin authentication
+    console.log('[Registrations API] Starting authentication check...');
     const user = await validateAuth();
-    const { isAdminEmail } = await import('@/lib/db-access-control');
+    console.log('[Registrations API] User authenticated:', user.email);
 
-    if (!(await isAdminEmail(user.email))) {
+    const { isAdminEmail } = await import('@/lib/db-access-control');
+    const adminCheck = await isAdminEmail(user.email);
+    console.log('[Registrations API] Admin check result:', adminCheck, 'for email:', user.email);
+
+    if (!adminCheck) {
+      console.error('[Registrations API] User is not admin:', user.email);
       throw new ApiException('Unauthorized', 403, 'UNAUTHORIZED');
     }
+
+    console.log('[Registrations API] Admin authorization successful');
 
     await connectToDatabase();
 

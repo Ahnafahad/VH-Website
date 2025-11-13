@@ -54,17 +54,27 @@ export function createErrorResponse(error: unknown): NextResponse {
 
 export async function validateAuth(): Promise<{ email: string; name?: string }> {
   try {
+    console.log('[validateAuth] Starting validation...');
     const session = await getServerSession(authOptions);
+    console.log('[validateAuth] Session retrieved:', session?.user?.email || 'No session');
 
     if (!session?.user?.email) {
+      console.error('[validateAuth] No session or email found');
       throw new ApiException('Authentication required', 401, 'AUTH_REQUIRED');
     }
 
-    const isAuthorized = await isEmailAuthorized(session.user.email.toLowerCase());
+    const email = session.user.email.toLowerCase();
+    console.log('[validateAuth] Checking authorization for:', email);
+
+    const isAuthorized = await isEmailAuthorized(email);
+    console.log('[validateAuth] Authorization check result:', isAuthorized);
+
     if (!isAuthorized) {
+      console.error('[validateAuth] User not authorized:', email);
       throw new ApiException('Access denied', 403, 'ACCESS_DENIED');
     }
 
+    console.log('[validateAuth] Validation successful for:', email);
     return {
       email: session.user.email,
       name: session.user.name || undefined
@@ -73,7 +83,7 @@ export async function validateAuth(): Promise<{ email: string; name?: string }> 
     if (error instanceof ApiException) {
       throw error;
     }
-    console.error('Auth validation error:', error);
+    console.error('[validateAuth] Unexpected error:', error);
     throw new ApiException('Authentication failed', 401, 'AUTH_FAILED');
   }
 }

@@ -24,36 +24,53 @@ export function clearAccessControlCache() {
  */
 async function getCachedUser(email: string): Promise<any | null> {
   const normalizedEmail = email.toLowerCase();
+  console.log('[getCachedUser] Looking up:', normalizedEmail);
 
   // Check cache
   const cached = emailCache.get(normalizedEmail);
   if (cached && Date.now() - cached.timestamp < CACHE_TTL) {
+    console.log('[getCachedUser] Cache hit for:', normalizedEmail);
     return cached.user;
   }
 
   // Fetch from database
-  await connectToDatabase();
-  const user = await User.findOne({ email: normalizedEmail, active: true }).lean();
+  console.log('[getCachedUser] Cache miss, querying database for:', normalizedEmail);
+  try {
+    await connectToDatabase();
+    console.log('[getCachedUser] Database connected');
 
-  // Update cache
-  if (user) {
-    emailCache.set(normalizedEmail, { user, timestamp: Date.now() });
+    const user = await User.findOne({ email: normalizedEmail, active: true }).lean();
+    console.log('[getCachedUser] Database query result:', user ? `Found user with role: ${user.role}` : 'No user found');
+
+    // Update cache
+    if (user) {
+      emailCache.set(normalizedEmail, { user, timestamp: Date.now() });
+      console.log('[getCachedUser] User cached');
+    }
+
+    return user;
+  } catch (error) {
+    console.error('[getCachedUser] Database error:', error);
+    throw error;
   }
-
-  return user;
 }
 
 /**
  * Check if an email is authorized (admin or student)
  */
 export async function isEmailAuthorized(email: string): Promise<boolean> {
-  if (!email) return false;
+  console.log('[isEmailAuthorized] Checking email:', email);
+  if (!email) {
+    console.log('[isEmailAuthorized] Empty email provided');
+    return false;
+  }
 
   try {
     const user = await getCachedUser(email);
+    console.log('[isEmailAuthorized] User found:', !!user, user ? `(role: ${user.role})` : '');
     return !!user;
   } catch (error) {
-    console.error('Error checking email authorization:', error);
+    console.error('[isEmailAuthorized] Error checking email authorization:', error);
     return false;
   }
 }
@@ -62,13 +79,19 @@ export async function isEmailAuthorized(email: string): Promise<boolean> {
  * Check if an email belongs to an admin
  */
 export async function isAdminEmail(email: string): Promise<boolean> {
-  if (!email) return false;
+  console.log('[isAdminEmail] Checking email:', email);
+  if (!email) {
+    console.log('[isAdminEmail] Empty email provided');
+    return false;
+  }
 
   try {
     const user = await getCachedUser(email);
-    return user && (user.role === 'super_admin' || user.role === 'admin');
+    const isAdmin = user && (user.role === 'super_admin' || user.role === 'admin');
+    console.log('[isAdminEmail] User found:', !!user, 'Role:', user?.role, 'Is Admin:', isAdmin);
+    return isAdmin;
   } catch (error) {
-    console.error('Error checking admin email:', error);
+    console.error('[isAdminEmail] Error checking admin email:', error);
     return false;
   }
 }
