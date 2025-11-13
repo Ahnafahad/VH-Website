@@ -28,16 +28,6 @@ try {
 }
 
 /**
- * Check if email is an admin (from JSON)
- */
-function isAdminInJson(email: string): boolean {
-  const normalizedEmail = email.toLowerCase();
-  return adminsFromJson.some(admin =>
-    admin.email.toLowerCase() === normalizedEmail && admin.active !== false
-  );
-}
-
-/**
  * Get admin from JSON
  */
 function getAdminFromJson(email: string): any | null {
@@ -91,7 +81,7 @@ async function getCachedUser(email: string): Promise<any | null> {
     console.log('[getCachedUser] Database connected');
 
     const user = await User.findOne({ email: normalizedEmail, active: true }).lean();
-    console.log('[getCachedUser] Database query result:', user ? `Found user with role: ${user.role}` : 'No user found');
+    console.log('[getCachedUser] Database query result:', user ? `Found user with role: ${(user as any).role}` : 'No user found');
 
     // Update cache
     if (user) {
