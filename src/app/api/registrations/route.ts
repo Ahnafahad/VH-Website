@@ -125,9 +125,9 @@ export async function GET(request: NextRequest) {
   try {
     // Validate admin authentication
     const user = await validateAuth();
-    const { isAdminEmail } = await import('@/lib/generated-access-control');
+    const { isAdminEmail } = await import('@/lib/db-access-control');
 
-    if (!isAdminEmail(user.email)) {
+    if (!(await isAdminEmail(user.email))) {
       throw new ApiException('Unauthorized', 403, 'UNAUTHORIZED');
     }
 
