@@ -28,51 +28,80 @@ export async function POST(request: Request) {
 
     await connectToDatabase();
 
-    // Check if any super_admin already exists
-    const existingSuperAdmin = await User.findOne({ role: 'super_admin' });
-    if (existingSuperAdmin) {
+    // Check if any admins already exist
+    const existingAdmins = await User.find({ role: { $in: ['super_admin', 'admin'] } });
+    if (existingAdmins.length > 0) {
       return NextResponse.json(
         {
-          error: 'Super admin already exists',
-          message: 'This endpoint can only be used for initial setup. Use /admin/users to manage users.'
+          error: 'Admins already exist',
+          message: 'This endpoint can only be used for initial setup. Use /admin/users to manage users.',
+          existingAdmins: existingAdmins.map(a => ({ email: a.email, role: a.role }))
         },
         { status: 400 }
       );
     }
 
-    // Create the initial super admin from access-control.json data
-    const adminUser = new User({
-      email: 'ahnaf816@gmail.com',
-      name: 'Ahnaf Ahad',
-      role: 'super_admin',
-      adminId: 'admin_001',
-      permissions: ['read', 'write', 'admin', 'manage_users'],
-      active: true,
-      addedDate: new Date('2025-09-17'),
-      accessTypes: {
-        IBA: false,
-        DU: false,
-        FBS: false
+    // Create both initial admins from access-control.json data
+    const admins = [
+      {
+        email: 'ahnaf816@gmail.com',
+        name: 'Ahnaf Ahad',
+        role: 'super_admin',
+        adminId: 'admin_001',
+        permissions: ['read', 'write', 'admin', 'manage_users'],
+        active: true,
+        addedDate: new Date('2025-09-17'),
+        accessTypes: {
+          IBA: false,
+          DU: false,
+          FBS: false
+        },
+        mockAccess: {
+          duIba: false,
+          bupIba: false,
+          duFbs: false,
+          bupFbs: false,
+          fbsDetailed: false
+        }
       },
-      mockAccess: {
-        duIba: false,
-        bupIba: false,
-        duFbs: false,
-        bupFbs: false,
-        fbsDetailed: false
+      {
+        email: 'hasanxsarower@gmail.com',
+        name: 'Hasan Sarower',
+        role: 'admin',
+        adminId: 'admin_002',
+        permissions: ['read', 'write', 'admin'],
+        active: true,
+        addedDate: new Date('2025-09-17'),
+        accessTypes: {
+          IBA: false,
+          DU: false,
+          FBS: false
+        },
+        mockAccess: {
+          duIba: false,
+          bupIba: false,
+          duFbs: false,
+          bupFbs: false,
+          fbsDetailed: false
+        }
       }
-    });
+    ];
 
-    await adminUser.save();
-
-    return NextResponse.json({
-      success: true,
-      message: 'Initial super admin created successfully',
-      admin: {
+    const createdAdmins = [];
+    for (const adminData of admins) {
+      const adminUser = new User(adminData);
+      await adminUser.save();
+      createdAdmins.push({
         email: adminUser.email,
         name: adminUser.name,
         role: adminUser.role
-      }
+      });
+    }
+
+    return NextResponse.json({
+      success: true,
+      message: 'Initial admins created successfully',
+      admins: createdAdmins
     });
 
   } catch (error) {
