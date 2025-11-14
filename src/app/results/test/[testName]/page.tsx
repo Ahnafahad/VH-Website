@@ -913,54 +913,462 @@ const TestDetailPage = () => {
 
               {/* FBS Mock Details */}
               {isFBSMock && userResult && (
-                <div className="bg-gradient-to-br from-white to-green-50/30 rounded-xl shadow-lg border border-green-100 hover:shadow-xl transition-all duration-300 p-6 mb-8">
-                  <h3 className="text-lg font-semibold text-gray-800 mb-6">Subject-wise Performance</h3>
+                <>
+                  {/* Enhanced MCQ Performance Breakdown */}
+                  <div className="bg-gradient-to-br from-white to-green-50/30 rounded-xl shadow-lg border border-green-100 hover:shadow-xl transition-all duration-300 p-6 mb-8">
+                    <h3 className="text-lg font-semibold text-gray-800 mb-6">MCQ Performance Breakdown</h3>
 
-                  {/* MCQ Sections */}
-                  {userResult.sections && (
-                    <div className="space-y-4 mb-6">
-                      <h4 className="font-semibold text-gray-700">MCQ Sections</h4>
-                      {Object.entries(userResult.sections).map(([subject, section]: [string, any]) => (
-                        <div key={subject} className="p-4 border border-green-200 rounded-lg bg-white">
-                          <div className="flex items-center justify-between mb-3">
-                            <h5 className="font-semibold text-gray-800 capitalize">{subject.replace(/([A-Z])/g, ' $1').trim()}</h5>
-                            <div className="text-lg font-bold text-green-600">{section?.marks?.toFixed(2) || 0} marks</div>
+                    {/* Overall MCQ Stats */}
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+                      <div className="text-center p-4 bg-blue-50 rounded-lg border border-blue-100">
+                        <div className="text-2xl font-bold text-blue-600">{userResult.totalMCQ?.toFixed(2) || 0}</div>
+                        <div className="text-sm text-blue-700 mt-1">Total MCQ Marks</div>
+                        <div className="text-xs text-blue-600 mt-1">out of 60</div>
+                      </div>
+
+                      <div className="text-center p-4 bg-green-50 rounded-lg border border-green-100">
+                        <div className="text-2xl font-bold text-green-600">{userResult.analytics?.accuracy?.toFixed(2) || 0}%</div>
+                        <div className="text-sm text-green-700 mt-1">MCQ Accuracy</div>
+                        <div className="text-xs text-green-600 mt-1">
+                          {userResult.analytics?.totalCorrect || 0}/{userResult.analytics?.totalAttempted || 0} correct
+                        </div>
+                      </div>
+
+                      <div className="text-center p-4 bg-purple-50 rounded-lg border border-purple-100">
+                        <div className="text-2xl font-bold text-purple-600">{userResult.totalWritten?.toFixed(2) || 0}</div>
+                        <div className="text-sm text-purple-700 mt-1">Written Marks</div>
+                        <div className="text-xs text-purple-600 mt-1">out of 40</div>
+                      </div>
+
+                      <div className="text-center p-4 bg-vh-red/10 rounded-lg border border-vh-red/30">
+                        <div className="text-2xl font-bold text-vh-red">{userResult.totalMarks?.toFixed(2) || 0}</div>
+                        <div className="text-sm text-vh-red mt-1">Total Score</div>
+                        <div className="text-xs text-vh-red/80 mt-1">out of 100</div>
+                      </div>
+                    </div>
+
+                    {/* MCQ Sections with Enhanced Analytics */}
+                    {userResult.sections && (
+                      <div className="space-y-4 mb-6">
+                        <h4 className="font-semibold text-gray-700">Subject-wise MCQ Performance</h4>
+                        {Object.entries(userResult.sections).map(([subject, section]: [string, any]) => (
+                          <div key={subject} className="p-4 border border-green-200 rounded-lg bg-white">
+                            <div className="flex items-center justify-between mb-3">
+                              <h5 className="font-semibold text-gray-800 capitalize">{subject.replace(/([A-Z])/g, ' $1').trim()}</h5>
+                              <div className="text-lg font-bold text-green-600">{section?.marks?.toFixed(2) || 0} marks</div>
+                            </div>
+
+                            <div className="grid grid-cols-2 md:grid-cols-5 gap-4 text-sm">
+                              <div className="text-center">
+                                <div className="text-lg font-semibold text-green-600">{section?.correct || 0}</div>
+                                <div className="text-gray-600">Correct</div>
+                              </div>
+                              <div className="text-center">
+                                <div className="text-lg font-semibold text-red-600">{section?.wrong || 0}</div>
+                                <div className="text-gray-600">Wrong</div>
+                              </div>
+                              <div className="text-center">
+                                <div className="text-lg font-semibold text-blue-600">{(section?.percentage || 0).toFixed(1)}%</div>
+                                <div className="text-gray-600">Accuracy</div>
+                              </div>
+                              <div className="text-center">
+                                <div className="text-lg font-semibold text-purple-600">
+                                  {((section?.correct || 0) + (section?.wrong || 0))}
+                                </div>
+                                <div className="text-gray-600">Attempted</div>
+                              </div>
+                              <div className="text-center">
+                                <div className="text-lg font-semibold text-gray-600">
+                                  {(section?.totalQuestions || 0) - ((section?.correct || 0) + (section?.wrong || 0))}
+                                </div>
+                                <div className="text-gray-600">Skipped</div>
+                              </div>
+                            </div>
+
+                            {/* Attempt Rate Progress Bar */}
+                            {section?.totalQuestions && (
+                              <div className="mt-3">
+                                <div className="flex justify-between text-xs text-gray-600 mb-1">
+                                  <span>Attempt Rate</span>
+                                  <span>{(((section.correct + section.wrong) / section.totalQuestions) * 100).toFixed(1)}%</span>
+                                </div>
+                                <div className="w-full bg-gray-200 rounded-full h-2">
+                                  <div
+                                    className="bg-blue-500 h-2 rounded-full"
+                                    style={{ width: `${((section.correct + section.wrong) / section.totalQuestions) * 100}%` }}
+                                  ></div>
+                                </div>
+                              </div>
+                            )}
                           </div>
+                        ))}
+                      </div>
+                    )}
 
-                          <div className="grid grid-cols-3 gap-4 text-sm">
-                            <div className="text-center">
-                              <div className="text-lg font-semibold text-green-600">{section?.correct || 0}</div>
-                              <div className="text-gray-600">Correct</div>
+                    {/* Written Sections */}
+                    {userResult.written && Object.keys(userResult.written).length > 0 && (
+                      <div>
+                        <h4 className="font-semibold text-gray-700 mb-4">Written Sections</h4>
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                          {Object.entries(userResult.written).map(([subject, written]: [string, any]) => (
+                            <div key={subject} className="text-center p-4 bg-gradient-to-br from-purple-50 to-pink-50 rounded-lg border border-purple-200">
+                              <div className="text-2xl font-bold text-purple-600">{written?.marks || 0}<span className="text-sm text-purple-500">/{written?.outOf || 10}</span></div>
+                              <div className="text-sm text-purple-700 mt-1 capitalize">{subject.replace(/([A-Z])/g, ' $1').trim()}</div>
+                              <div className="text-xs text-purple-600 mt-1">{((written?.marks / written?.outOf) * 100).toFixed(1)}%</div>
                             </div>
-                            <div className="text-center">
-                              <div className="text-lg font-semibold text-red-600">{section?.wrong || 0}</div>
-                              <div className="text-gray-600">Wrong</div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Individual Question Responses - FBS */}
+                  {userResult.responses && Object.keys(userResult.responses).length > 0 && (
+                    <div className="bg-gradient-to-br from-white to-vh-beige/5 rounded-xl shadow-lg border border-vh-beige/30 hover:shadow-xl transition-all duration-300 p-6 mb-8">
+                      <h3 className="text-lg font-semibold text-gray-800 mb-6">Question Responses</h3>
+
+                      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 max-h-96 overflow-y-auto">
+                        {Object.entries(userResult.responses).map(([questionId, response]: [string, any]) => (
+                          <div key={questionId} className="flex items-center justify-between p-2 bg-gray-50 rounded text-sm">
+                            <span className="font-mono text-gray-600">{questionId.replace('Section', 'S').replace('-Q', '-')}</span>
+                            <div>{formatResponseText(response as string)}</div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Advanced Analytics - FBS */}
+                  {userResult.analytics && (userResult.analytics.skipStrategy !== undefined || userResult.analytics.sectionPerformance) && (
+                    <div className="bg-gradient-to-br from-white to-vh-beige/5 rounded-xl shadow-lg border border-vh-beige/30 hover:shadow-xl transition-all duration-300 p-6 mb-8">
+                      <h3 className="text-lg font-semibold text-gray-800 mb-6">Advanced Analytics</h3>
+
+                      {/* Strategy Scores */}
+                      {(userResult.analytics.skipStrategy !== undefined || userResult.analytics.questionChoiceStrategy !== undefined) && (
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                          {userResult.analytics.skipStrategy !== undefined && (
+                            <div className="text-center p-4 bg-blue-50 rounded-lg">
+                              <div className="text-2xl font-bold text-blue-600">
+                                {userResult.analytics.skipStrategy}
+                              </div>
+                              <div className="text-sm text-blue-700">Skip Strategy Score</div>
+                              <div className="text-xs text-gray-600 mt-1">How well you skipped difficult questions</div>
                             </div>
-                            <div className="text-center">
-                              <div className="text-lg font-semibold text-blue-600">{(section?.percentage || 0).toFixed(1)}%</div>
-                              <div className="text-gray-600">Accuracy</div>
+                          )}
+
+                          {userResult.analytics.questionChoiceStrategy !== undefined && (
+                            <div className="text-center p-4 bg-green-50 rounded-lg">
+                              <div className="text-2xl font-bold text-green-600">
+                                {userResult.analytics.questionChoiceStrategy}
+                              </div>
+                              <div className="text-sm text-green-700">Question Choice Score</div>
+                              <div className="text-xs text-gray-600 mt-1">Quality of question selection</div>
                             </div>
+                          )}
+
+                          {userResult.analytics.recoveryScore !== undefined && (
+                            <div className="text-center p-4 bg-purple-50 rounded-lg">
+                              <div className="text-2xl font-bold text-purple-600">
+                                {userResult.analytics.recoveryScore}
+                              </div>
+                              <div className="text-sm text-purple-700">Recovery Score</div>
+                              <div className="text-xs text-gray-600 mt-1">How quickly you recovered from mistakes</div>
+                            </div>
+                          )}
+                        </div>
+                      )}
+
+                      {/* Section Performance Analytics */}
+                      {userResult.analytics.sectionPerformance && (
+                        <div>
+                          <h4 className="font-semibold text-gray-700 mb-4">Detailed Section Analytics</h4>
+                          <div className="space-y-3">
+                            {Object.entries(userResult.analytics.sectionPerformance).map(([sectionNum, sectionPerf]: [string, any]) => (
+                              <div key={sectionNum} className="p-4 bg-gray-50 rounded-lg border border-gray-200">
+                                <div className="font-semibold text-gray-800 mb-3">Section {sectionNum}</div>
+                                <div className="grid grid-cols-2 md:grid-cols-5 gap-3 text-sm">
+                                  <div className="text-center">
+                                    <div className="text-lg font-semibold text-blue-600">{sectionPerf.accuracy?.toFixed(1) || 0}%</div>
+                                    <div className="text-gray-600">Accuracy</div>
+                                  </div>
+                                  <div className="text-center">
+                                    <div className="text-lg font-semibold text-green-600">{sectionPerf.attemptRate?.toFixed(1) || 0}%</div>
+                                    <div className="text-gray-600">Attempt Rate</div>
+                                  </div>
+                                  <div className="text-center">
+                                    <div className="text-lg font-semibold text-purple-600">{sectionPerf.attempted || 0}</div>
+                                    <div className="text-gray-600">Attempted</div>
+                                  </div>
+                                  <div className="text-center">
+                                    <div className="text-lg font-semibold text-gray-600">{sectionPerf.unattempted || 0}</div>
+                                    <div className="text-gray-600">Unattempted</div>
+                                  </div>
+                                  <div className="text-center">
+                                    <div className="text-lg font-semibold text-vh-red">{sectionPerf.efficiency?.toFixed(1) || 0}</div>
+                                    <div className="text-gray-600">Efficiency</div>
+                                  </div>
+                                </div>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  )}
+
+                  {/* Question Difficulty Analysis - FBS */}
+                  {(currentTest as any).topQuestions && isFBSMock && (
+                    <div className="bg-gradient-to-br from-white to-vh-beige/5 rounded-xl shadow-lg border border-vh-beige/30 hover:shadow-xl transition-all duration-300 p-8 mb-8 mt-16">
+                      <h3 className="text-lg font-semibold text-gray-800 mb-8">Question Difficulty Analysis</h3>
+                      {userResult && (
+                        <div className="bg-gray-50 border border-gray-100 rounded-lg p-4 mb-6">
+                          <p className="text-sm font-medium text-gray-700 mb-2">Your Performance Legend:</p>
+                          <div className="flex flex-wrap gap-4 text-sm">
+                            <span className="flex items-center gap-2">
+                              <CheckCircle size={14} className="text-green-500" />
+                              <span className="text-gray-600">Correct</span>
+                            </span>
+                            <span className="flex items-center gap-2">
+                              <XCircle size={14} className="text-red-500" />
+                              <span className="text-gray-600">Wrong</span>
+                            </span>
+                            <span className="flex items-center gap-2">
+                              <Minus size={14} className="text-gray-400" />
+                              <span className="text-gray-600">Skipped</span>
+                            </span>
+                          </div>
+                        </div>
+                      )}
+
+                      {Object.entries((currentTest as any).topQuestions)
+                        .filter(([sectionNum, sectionData]: [string, any]) =>
+                          sectionData.mostCorrect?.length > 0 ||
+                          sectionData.mostWrong?.length > 0 ||
+                          sectionData.mostSkipped?.length > 0
+                        )
+                        .map(([sectionNum, sectionData]: [string, any]) => (
+                        <div key={sectionNum} className="mb-8">
+                          <h4 className="font-semibold text-gray-700 mb-4 text-base">Section {sectionNum}</h4>
+
+                          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                            {/* Most Correct Questions */}
+                            {sectionData.mostCorrect?.length > 0 && (
+                              <div className="bg-green-50 p-5 rounded-lg">
+                                <h5 className="font-semibold text-green-800 mb-3 flex items-center gap-2">
+                                  <CheckCircle size={16} />
+                                  Easiest Questions
+                                </h5>
+                                <div className="space-y-1 max-h-64 overflow-y-auto">
+                                  {sectionData.mostCorrect.map((question: any, index: number) => (
+                                    <div key={question.questionId} className="flex justify-between items-center text-sm">
+                                      <div className="flex items-center gap-2">
+                                        <span className="text-green-700">{question.questionId.replace(`Section${sectionNum}-Q`, 'Q')}</span>
+                                        {userResult && getUserQuestionStatus(question.questionId)}
+                                      </div>
+                                      <span className="text-green-600 font-medium">{question.count} correct</span>
+                                    </div>
+                                  ))}
+                                </div>
+                              </div>
+                            )}
+
+                            {/* Most Wrong Questions */}
+                            {sectionData.mostWrong?.length > 0 && (
+                              <div className="bg-red-50 p-5 rounded-lg">
+                                <h5 className="font-semibold text-red-800 mb-3 flex items-center gap-2">
+                                  <XCircle size={16} />
+                                  Hardest Questions
+                                </h5>
+                                <div className="space-y-1 max-h-64 overflow-y-auto">
+                                  {sectionData.mostWrong.map((question: any, index: number) => (
+                                    <div key={question.questionId} className="flex justify-between items-center text-sm">
+                                      <div className="flex items-center gap-2">
+                                        <span className="text-red-700">{question.questionId.replace(`Section${sectionNum}-Q`, 'Q')}</span>
+                                        {userResult && getUserQuestionStatus(question.questionId)}
+                                      </div>
+                                      <span className="text-red-600 font-medium">{question.count} wrong</span>
+                                    </div>
+                                  ))}
+                                </div>
+                              </div>
+                            )}
+
+                            {/* Most Skipped Questions */}
+                            {sectionData.mostSkipped?.length > 0 && (
+                              <div className="bg-gray-50 p-5 rounded-lg">
+                                <h5 className="font-semibold text-gray-800 mb-3 flex items-center gap-2">
+                                  <Clock size={16} />
+                                  Most Skipped
+                                </h5>
+                                <div className="space-y-1 max-h-64 overflow-y-auto">
+                                  {sectionData.mostSkipped.map((question: any, index: number) => (
+                                    <div key={question.questionId} className="flex justify-between items-center text-sm">
+                                      <div className="flex items-center gap-2">
+                                        <span className="text-gray-700">{question.questionId.replace(`Section${sectionNum}-Q`, 'Q')}</span>
+                                        {userResult && getUserQuestionStatus(question.questionId)}
+                                      </div>
+                                      <span className="text-gray-600 font-medium">{question.count} skipped</span>
+                                    </div>
+                                  ))}
+                                </div>
+                              </div>
+                            )}
                           </div>
                         </div>
                       ))}
                     </div>
                   )}
 
-                  {/* Written Sections */}
-                  {userResult.written && Object.keys(userResult.written).length > 0 && (
-                    <div>
-                      <h4 className="font-semibold text-gray-700 mb-4">Written Sections</h4>
-                      <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-                        {Object.entries(userResult.written).map(([subject, written]: [string, any]) => (
-                          <div key={subject} className="text-center p-4 bg-gradient-to-br from-purple-50 to-pink-50 rounded-lg border border-purple-200">
-                            <div className="text-2xl font-bold text-purple-600">{written?.marks || 0}<span className="text-sm text-purple-500">/{written?.outOf || 10}</span></div>
-                            <div className="text-sm text-purple-700 mt-1 capitalize">{subject.replace(/([A-Z])/g, ' $1').trim()}</div>
+                  {/* Personal Performance vs Top Questions - FBS */}
+                  {(currentTest as any).topQuestions && userResult && isFBSMock && (() => {
+                    const personalAnalysis = analyzePersonalTopQuestionsPerformance();
+                    if (!personalAnalysis) return null;
+
+                    return (
+                      <div className="bg-gradient-to-br from-white to-vh-beige/5 rounded-xl shadow-lg border border-vh-beige/30 hover:shadow-xl transition-all duration-300 p-6 mb-8">
+                        <h3 className="text-lg font-semibold text-gray-800 mb-4">
+                          Your Performance vs Class Top Questions
+                        </h3>
+                        <p className="text-sm text-gray-600 mb-6">See how you performed on the questions that were easiest, hardest, and most skipped by the class</p>
+
+                        {Object.entries(personalAnalysis).map(([sectionNum, analysis]: [string, any]) => (
+                          <div key={sectionNum} className="mb-8">
+                            <h4 className="font-semibold text-gray-700 mb-4 text-base">Section {sectionNum}</h4>
+
+                            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
+                              {/* Performance on Easiest Questions */}
+                              {analysis.topRightQuestions?.length > 0 && (
+                              <div className="bg-green-50 border border-green-200 p-4 rounded-lg">
+                                <h5 className="font-semibold text-green-800 mb-3 flex items-center gap-2">
+                                  <CheckCircle size={16} />
+                                  Top Questions Right (Class Easiest)
+                                </h5>
+                                <div className="space-y-2 text-sm">
+                                  <div className="flex justify-between">
+                                    <span className="text-green-700">Got Correct:</span>
+                                    <span className="font-semibold text-green-600">{analysis.topRightCorrect}</span>
+                                  </div>
+                                  <div className="flex justify-between">
+                                    <span className="text-red-700">Got Wrong:</span>
+                                    <span className="font-semibold text-red-600">{analysis.topRightWrong}</span>
+                                  </div>
+                                  <div className="flex justify-between">
+                                    <span className="text-gray-700">Skipped:</span>
+                                    <span className="font-semibold text-gray-600">{analysis.topRightSkipped}</span>
+                                  </div>
+                                  <div className="pt-2 border-t border-green-300">
+                                    <div className="flex justify-between font-semibold">
+                                      <span className="text-green-800">Success Rate:</span>
+                                      <span className="text-green-600">
+                                        {analysis.topRightCorrect + analysis.topRightWrong > 0
+                                          ? Math.round((analysis.topRightCorrect / (analysis.topRightCorrect + analysis.topRightWrong)) * 100)
+                                          : 0}%
+                                      </span>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              )}
+
+                              {/* Performance on Hardest Questions */}
+                              {analysis.topWrongQuestions?.length > 0 && (
+                              <div className="bg-red-50 border border-red-200 p-4 rounded-lg">
+                                <h5 className="font-semibold text-red-800 mb-3 flex items-center gap-2">
+                                  <XCircle size={16} />
+                                  Top Questions Wrong (Class Hardest)
+                                </h5>
+                                <div className="space-y-2 text-sm">
+                                  <div className="flex justify-between">
+                                    <span className="text-green-700">Got Correct:</span>
+                                    <span className="font-semibold text-green-600">{analysis.topWrongCorrect}</span>
+                                  </div>
+                                  <div className="flex justify-between">
+                                    <span className="text-red-700">Got Wrong:</span>
+                                    <span className="font-semibold text-red-600">{analysis.topWrongWrong}</span>
+                                  </div>
+                                  <div className="flex justify-between">
+                                    <span className="text-gray-700">Skipped:</span>
+                                    <span className="font-semibold text-gray-600">{analysis.topWrongSkipped}</span>
+                                  </div>
+                                  <div className="pt-2 border-t border-red-300">
+                                    <div className="flex justify-between font-semibold">
+                                      <span className="text-red-800">Success Rate:</span>
+                                      <span className="text-red-600">
+                                        {analysis.topWrongCorrect + analysis.topWrongWrong > 0
+                                          ? Math.round((analysis.topWrongCorrect / (analysis.topWrongCorrect + analysis.topWrongWrong)) * 100)
+                                          : 0}%
+                                      </span>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              )}
+
+                              {/* Performance on Most Skipped Questions */}
+                              {analysis.topSkippedQuestions?.length > 0 && (
+                              <div className="bg-gray-50 border border-gray-200 p-4 rounded-lg">
+                                <h5 className="font-semibold text-gray-800 mb-3 flex items-center gap-2">
+                                  <Clock size={16} />
+                                  Top Questions Skipped (Class Avoided)
+                                </h5>
+                                <div className="space-y-2 text-sm">
+                                  <div className="flex justify-between">
+                                    <span className="text-green-700">Got Correct:</span>
+                                    <span className="font-semibold text-green-600">{analysis.topSkippedCorrect}</span>
+                                  </div>
+                                  <div className="flex justify-between">
+                                    <span className="text-red-700">Got Wrong:</span>
+                                    <span className="font-semibold text-red-600">{analysis.topSkippedWrong}</span>
+                                  </div>
+                                  <div className="flex justify-between">
+                                    <span className="text-gray-700">Also Skipped:</span>
+                                    <span className="font-semibold text-gray-600">{analysis.topSkippedActuallySkipped}</span>
+                                  </div>
+                                  <div className="pt-2 border-t border-gray-300">
+                                    <div className="flex justify-between font-semibold">
+                                      <span className="text-gray-800">Attempt Rate:</span>
+                                      <span className="text-gray-600">
+                                        {(analysis.topSkippedCorrect + analysis.topSkippedWrong + analysis.topSkippedActuallySkipped) > 0
+                                          ? Math.round(((analysis.topSkippedCorrect + analysis.topSkippedWrong) / (analysis.topSkippedCorrect + analysis.topSkippedWrong + analysis.topSkippedActuallySkipped)) * 100)
+                                          : 0}%
+                                      </span>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              )}
+                            </div>
+
+                            {/* Performance Summary */}
+                            <div className="bg-vh-beige/10 border border-vh-beige/30 p-4 rounded-lg">
+                              <h6 className="font-semibold text-vh-red mb-2">Section {sectionNum} Summary</h6>
+                              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+                                <div className="text-center">
+                                  <div className="text-2xl font-bold text-green-600">
+                                    {analysis.topRightCorrect + analysis.topWrongCorrect + analysis.topSkippedCorrect}
+                                  </div>
+                                  <div className="text-xs text-gray-600">Total Correct on Top Questions</div>
+                                </div>
+                                <div className="text-center">
+                                  <div className="text-2xl font-bold text-red-600">
+                                    {analysis.topRightWrong + analysis.topWrongWrong + analysis.topSkippedWrong}
+                                  </div>
+                                  <div className="text-xs text-gray-600">Total Wrong on Top Questions</div>
+                                </div>
+                                <div className="text-center">
+                                  <div className="text-2xl font-bold text-gray-600">
+                                    {analysis.topRightSkipped + analysis.topWrongSkipped + analysis.topSkippedActuallySkipped}
+                                  </div>
+                                  <div className="text-xs text-gray-600">Total Skipped on Top Questions</div>
+                                </div>
+                              </div>
+                            </div>
                           </div>
                         ))}
                       </div>
-                    </div>
-                  )}
-                </div>
+                    );
+                  })()}
+                </>
               )}
 
               {/* Class Percentile Positioning */}
@@ -995,7 +1403,28 @@ const TestDetailPage = () => {
 
                   <div className="text-center p-6 bg-yellow-50 rounded-lg border border-yellow-200">
                     <div className="text-3xl font-bold text-yellow-700 mb-2">
-                      {currentTest.classStats.top5Average?.toFixed(1) || 'N/A'}
+                      {(() => {
+                        // Calculate Top 5 Average if not available
+                        if (currentTest.classStats.top5Average !== undefined) {
+                          return currentTest.classStats.top5Average.toFixed(1);
+                        }
+
+                        // Calculate for FBS if needed
+                        if (isFBSMock && currentTest.results) {
+                          const scores = Object.values(currentTest.results)
+                            .map((r: any) => r.totalMarks)
+                            .filter((score: number) => score !== undefined && !isNaN(score))
+                            .sort((a: number, b: number) => b - a)
+                            .slice(0, 5);
+
+                          if (scores.length > 0) {
+                            const avg = scores.reduce((sum: number, score: number) => sum + score, 0) / scores.length;
+                            return avg.toFixed(1);
+                          }
+                        }
+
+                        return 'N/A';
+                      })()}
                     </div>
                     <div className="text-sm font-medium text-yellow-800">Top 5 Average</div>
                   </div>
