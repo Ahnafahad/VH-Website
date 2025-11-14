@@ -201,20 +201,20 @@ const Top5LeaderboardTable: React.FC<Top5LeaderboardTableProps> = ({
                       {/* Total Marks */}
                       <td className="px-4 py-4 whitespace-nowrap text-center">
                         <div className="text-xl font-bold text-vh-red">
-                          {result.totalMarks}
+                          {result.totalMarks || 0}
                         </div>
                         <div className="text-xs text-gray-500 mt-1">
-                          {((result.totalPercentage || 0).toFixed(1))}%
+                          {result.totalPercentage ? result.totalPercentage.toFixed(1) : '0.0'}%
                         </div>
                       </td>
 
                       {/* MCQ Marks */}
                       <td className="px-4 py-4 whitespace-nowrap text-center">
                         <div className="text-lg font-bold text-blue-600">
-                          {result.mcqMarks || 0}
+                          {result.mcqMarks || result.totalMCQ || 0}
                         </div>
                         <div className="text-xs text-gray-500 mt-1">
-                          {((result.mcqPercentage || 0).toFixed(1))}%
+                          {result.mcqPercentage ? result.mcqPercentage.toFixed(1) : '0.0'}%
                         </div>
                       </td>
 
@@ -222,9 +222,9 @@ const Top5LeaderboardTable: React.FC<Top5LeaderboardTableProps> = ({
                       {hasEssayMarks && (
                         <td className="px-4 py-4 whitespace-nowrap text-center">
                           <div className="text-lg font-bold text-purple-600">
-                            {result.essayMarks || 0}
+                            {result.essayMarks || result.totalWritten || 0}
                           </div>
-                          {result.maxEssayMarks && result.maxEssayMarks > 0 && (
+                          {(result.maxEssayMarks && result.maxEssayMarks > 0) && (
                             <div className="text-xs text-gray-500 mt-1">
                               of {result.maxEssayMarks}
                             </div>
@@ -235,7 +235,7 @@ const Top5LeaderboardTable: React.FC<Top5LeaderboardTableProps> = ({
                       {/* MCQ % */}
                       <td className="px-4 py-4 whitespace-nowrap text-center">
                         <div className="text-lg font-bold text-gray-800">
-                          {((result.mcqPercentage || 0).toFixed(1))}%
+                          {result.mcqPercentage ? result.mcqPercentage.toFixed(1) : '0.0'}%
                         </div>
                         <div className="w-full max-w-[80px] mx-auto h-2 bg-gray-200 rounded-full overflow-hidden mt-1">
                           <div
@@ -252,10 +252,13 @@ const Top5LeaderboardTable: React.FC<Top5LeaderboardTableProps> = ({
                       {/* MCQ Accuracy */}
                       <td className="px-4 py-4 whitespace-nowrap text-center">
                         <div className="text-lg font-bold text-green-600">
-                          {((result.mcqAccuracy || 0).toFixed(1))}%
+                          {result.mcqAccuracy ? result.mcqAccuracy.toFixed(1) :
+                           (result.analytics?.accuracy ? result.analytics.accuracy.toFixed(1) : '0.0')}%
                         </div>
                         <div className="text-xs text-gray-500 mt-1">
-                          {result.mcqCorrect || 0}/{(result.mcqCorrect || 0) + (result.mcqWrong || 0)}
+                          {result.mcqCorrect || result.analytics?.totalCorrect || 0}/
+                          {(result.mcqCorrect || result.analytics?.totalCorrect || 0) +
+                           (result.mcqWrong || result.analytics?.totalWrong || 0)}
                         </div>
                       </td>
                     </>
