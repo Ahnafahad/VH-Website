@@ -1198,10 +1198,9 @@ const TestDetailPage = () => {
                                 </h5>
                                 <div className="space-y-1 max-h-64 overflow-y-auto">
                                   {sectionData.mostCorrect.map((question: any, index: number) => (
-                                    <div key={question.questionId} className="flex justify-between items-center text-sm">
+                                    <div key={question.questionNumber || index} className="flex justify-between items-center text-sm">
                                       <div className="flex items-center gap-2">
-                                        <span className="text-green-700">{question.questionId.replace(`Section${sectionNum}-Q`, 'Q')}</span>
-                                        {userResult && getUserQuestionStatus(question.questionId)}
+                                        <span className="text-green-700">Q{question.questionNumber}</span>
                                       </div>
                                       <span className="text-green-600 font-medium">{question.count} correct</span>
                                     </div>
@@ -1219,10 +1218,9 @@ const TestDetailPage = () => {
                                 </h5>
                                 <div className="space-y-1 max-h-64 overflow-y-auto">
                                   {sectionData.mostWrong.map((question: any, index: number) => (
-                                    <div key={question.questionId} className="flex justify-between items-center text-sm">
+                                    <div key={question.questionNumber || index} className="flex justify-between items-center text-sm">
                                       <div className="flex items-center gap-2">
-                                        <span className="text-red-700">{question.questionId.replace(`Section${sectionNum}-Q`, 'Q')}</span>
-                                        {userResult && getUserQuestionStatus(question.questionId)}
+                                        <span className="text-red-700">Q{question.questionNumber}</span>
                                       </div>
                                       <span className="text-red-600 font-medium">{question.count} wrong</span>
                                     </div>
@@ -1240,10 +1238,9 @@ const TestDetailPage = () => {
                                 </h5>
                                 <div className="space-y-1 max-h-64 overflow-y-auto">
                                   {sectionData.mostSkipped.map((question: any, index: number) => (
-                                    <div key={question.questionId} className="flex justify-between items-center text-sm">
+                                    <div key={question.questionNumber || index} className="flex justify-between items-center text-sm">
                                       <div className="flex items-center gap-2">
-                                        <span className="text-gray-700">{question.questionId.replace(`Section${sectionNum}-Q`, 'Q')}</span>
-                                        {userResult && getUserQuestionStatus(question.questionId)}
+                                        <span className="text-gray-700">Q{question.questionNumber}</span>
                                       </div>
                                       <span className="text-gray-600 font-medium">{question.count} skipped</span>
                                     </div>
@@ -1577,10 +1574,9 @@ const TestDetailPage = () => {
                           </h5>
                           <div className="space-y-1 max-h-64 overflow-y-auto">
                             {sectionData.mostCorrect.map((question: any, index: number) => (
-                              <div key={question.questionId} className="flex justify-between items-center text-sm">
+                              <div key={question.questionNumber || index} className="flex justify-between items-center text-sm">
                                 <div className="flex items-center gap-2">
-                                  <span className="text-green-700">{question.questionId.replace(`Section${sectionNum}-Q`, 'Q')}</span>
-                                  {userResult && getUserQuestionStatus(question.questionId)}
+                                  <span className="text-green-700">Q{question.questionNumber}</span>
                                 </div>
                                 <span className="text-green-600 font-medium">{question.count} correct</span>
                               </div>
@@ -1599,10 +1595,9 @@ const TestDetailPage = () => {
                           </h5>
                           <div className="space-y-1 max-h-64 overflow-y-auto">
                             {sectionData.mostWrong.map((question: any, index: number) => (
-                              <div key={question.questionId} className="flex justify-between items-center text-sm">
+                              <div key={question.questionNumber || index} className="flex justify-between items-center text-sm">
                                 <div className="flex items-center gap-2">
-                                  <span className="text-red-700">{question.questionId.replace(`Section${sectionNum}-Q`, 'Q')}</span>
-                                  {userResult && getUserQuestionStatus(question.questionId)}
+                                  <span className="text-red-700">Q{question.questionNumber}</span>
                                 </div>
                                 <span className="text-red-600 font-medium">{question.count} wrong</span>
                               </div>
@@ -1621,10 +1616,9 @@ const TestDetailPage = () => {
                           </h5>
                           <div className="space-y-1 max-h-64 overflow-y-auto">
                             {sectionData.mostSkipped.map((question: any, index: number) => (
-                              <div key={question.questionId} className="flex justify-between items-center text-sm">
+                              <div key={question.questionNumber || index} className="flex justify-between items-center text-sm">
                                 <div className="flex items-center gap-2">
-                                  <span className="text-gray-700">{question.questionId.replace(`Section${sectionNum}-Q`, 'Q')}</span>
-                                  {userResult && getUserQuestionStatus(question.questionId)}
+                                  <span className="text-gray-700">Q{question.questionNumber}</span>
                                 </div>
                                 <span className="text-gray-600 font-medium">{question.count} skipped</span>
                               </div>
