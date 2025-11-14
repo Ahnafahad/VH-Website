@@ -57,6 +57,7 @@ const TestDetailPage = () => {
 
         if (!isPublicDemo) {
           fetchPromises.push(fetch('/api/auth/check-admin').then(res => res.json()));
+          fetchPromises.push(fetch('/api/auth/user-access').then(res => res.json()));
         }
 
         const responses = await Promise.all(fetchPromises);
@@ -66,6 +67,7 @@ const TestDetailPage = () => {
         const fbsMockResponse = responses[3];
         const studentsResponse = responses[4];
         const adminCheckResponse = isPublicDemo ? { isAdmin: false } : responses[5];
+        const userAccessResponse = isPublicDemo ? { roleNumbers: [] } : responses[6];
 
         setSimpleTests(simpleResponse);
         setFullTests(fullResponse);
@@ -122,10 +124,28 @@ const TestDetailPage = () => {
           } else {
             // Student: show their own results
             const user = Object.values(studentsResponse.students).find((s: any) => s.email === session.user?.email) as any;
-            if (user && test.results && test.results[user.id]) {
-              setUserResult(test.results[user.id]);
-              setSelectedStudentId(user.id);
-              setSelectedStudentName(user.name);
+
+            if (user && test.results) {
+              // For FBS mocks: Check all roleNumbers (includes FBS ID which is 7 digits)
+              // For other tests: Use students.json ID (IBA ID which is 6 digits)
+              if (isFBSMockType && userAccessResponse?.roleNumbers) {
+                // Search through all role numbers for FBS
+                for (const roleNumber of userAccessResponse.roleNumbers) {
+                  if (test.results[roleNumber]) {
+                    setUserResult(test.results[roleNumber]);
+                    setSelectedStudentId(roleNumber);
+                    setSelectedStudentName(user.name);
+                    break;
+                  }
+                }
+              } else {
+                // Use regular students.json ID for IBA/Simple/Full tests
+                if (test.results[user.id]) {
+                  setUserResult(test.results[user.id]);
+                  setSelectedStudentId(user.id);
+                  setSelectedStudentName(user.name);
+                }
+              }
             }
           }
         }
