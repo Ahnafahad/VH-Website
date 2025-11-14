@@ -57,7 +57,7 @@ const TestDetailPage = () => {
 
         if (!isPublicDemo) {
           fetchPromises.push(fetch('/api/auth/check-admin').then(res => res.json()));
-          fetchPromises.push(fetch('/api/auth/user-access').then(res => res.json()));
+          fetchPromises.push(fetch('/api/user/access').then(res => res.json()));
         }
 
         const responses = await Promise.all(fetchPromises);
