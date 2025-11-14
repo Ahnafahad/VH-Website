@@ -679,55 +679,59 @@ const TestDetailPage = () => {
                 <div className="bg-gradient-to-br from-white to-vh-beige/5 rounded-xl shadow-lg border border-vh-beige/30 hover:shadow-xl transition-all duration-300 p-6">
                   <div className="flex items-center justify-between mb-4">
                     <h3 className="text-lg font-semibold text-gray-800">
-                      {isFullTest ? 'Overall %' : 'Accuracy'}
+                      {isFBSMock ? 'Accuracy' : isFullTest ? 'Overall %' : 'Accuracy'}
                     </h3>
                     <TrendingUp className="text-vh-red" size={24} />
                   </div>
                   <div className="text-3xl font-bold text-vh-red mb-2">
-                    {isFullTest ?
+                    {isFBSMock ?
+                      `${(userResult?.analytics?.accuracy || 0).toFixed(2)}%` :
+                      isFullTest ?
                       `${((userResult as FullTestResult).totalPercentage || 0).toFixed(2)}%` :
-                      `${((userResult as SimpleTestResult).analytics.accuracy).toFixed(2)}%`
+                      `${((userResult as SimpleTestResult).analytics?.accuracy || 0).toFixed(2)}%`
                     }
                   </div>
                   <div className="text-sm text-gray-600">
-                    {isFullTest ?
+                    {isFBSMock ?
+                      `${userResult?.analytics?.totalAttempted || 0} questions attempted` :
+                      isFullTest ?
                       `MCQ: ${((userResult as FullTestResult).mcqPercentage || 0).toFixed(2)}%` :
-                      `${((userResult as SimpleTestResult).analytics.attemptRate).toFixed(2)}% attempted`
+                      `${((userResult as SimpleTestResult).analytics?.attemptRate || 0).toFixed(2)}% attempted`
                     }
                   </div>
                 </div>
               </div>
 
               {/* Simple Test Details */}
-              {!isFullTest && (
+              {!isFullTest && !isFBSMock && (
                 <div className="bg-gradient-to-br from-white to-vh-beige/5 rounded-xl shadow-lg border border-vh-beige/30 hover:shadow-xl transition-all duration-300 p-6 mb-8">
                   <h3 className="text-lg font-semibold text-gray-800 mb-6">Performance Breakdown</h3>
 
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                     <div className="text-center p-4 bg-green-50 rounded-lg">
                       <div className="text-2xl font-bold text-green-600">
-                        {(userResult as SimpleTestResult).correct}
+                        {(userResult as SimpleTestResult)?.correct || 0}
                       </div>
                       <div className="text-sm text-green-700">Correct</div>
                     </div>
 
                     <div className="text-center p-4 bg-red-50 rounded-lg">
                       <div className="text-2xl font-bold text-red-600">
-                        {(userResult as SimpleTestResult).wrong}
+                        {(userResult as SimpleTestResult)?.wrong || 0}
                       </div>
                       <div className="text-sm text-red-700">Wrong</div>
                     </div>
 
                     <div className="text-center p-4 bg-gray-50 rounded-lg">
                       <div className="text-2xl font-bold text-gray-600">
-                        {(userResult as SimpleTestResult).unattempted || 0}
+                        {(userResult as SimpleTestResult)?.unattempted || 0}
                       </div>
                       <div className="text-sm text-gray-700">Unattempted</div>
                     </div>
 
                     <div className="text-center p-4 bg-blue-50 rounded-lg">
                       <div className="text-2xl font-bold text-blue-600">
-                        {(userResult as SimpleTestResult).totalQuestions}
+                        {(userResult as SimpleTestResult)?.totalQuestions || 0}
                       </div>
                       <div className="text-sm text-blue-700">Total Questions</div>
                     </div>
@@ -907,15 +911,67 @@ const TestDetailPage = () => {
                 </div>
               )}
 
+              {/* FBS Mock Details */}
+              {isFBSMock && userResult && (
+                <div className="bg-gradient-to-br from-white to-green-50/30 rounded-xl shadow-lg border border-green-100 hover:shadow-xl transition-all duration-300 p-6 mb-8">
+                  <h3 className="text-lg font-semibold text-gray-800 mb-6">Subject-wise Performance</h3>
+
+                  {/* MCQ Sections */}
+                  {userResult.sections && (
+                    <div className="space-y-4 mb-6">
+                      <h4 className="font-semibold text-gray-700">MCQ Sections</h4>
+                      {Object.entries(userResult.sections).map(([subject, section]: [string, any]) => (
+                        <div key={subject} className="p-4 border border-green-200 rounded-lg bg-white">
+                          <div className="flex items-center justify-between mb-3">
+                            <h5 className="font-semibold text-gray-800 capitalize">{subject.replace(/([A-Z])/g, ' $1').trim()}</h5>
+                            <div className="text-lg font-bold text-green-600">{section?.marks?.toFixed(2) || 0} marks</div>
+                          </div>
+
+                          <div className="grid grid-cols-3 gap-4 text-sm">
+                            <div className="text-center">
+                              <div className="text-lg font-semibold text-green-600">{section?.correct || 0}</div>
+                              <div className="text-gray-600">Correct</div>
+                            </div>
+                            <div className="text-center">
+                              <div className="text-lg font-semibold text-red-600">{section?.wrong || 0}</div>
+                              <div className="text-gray-600">Wrong</div>
+                            </div>
+                            <div className="text-center">
+                              <div className="text-lg font-semibold text-blue-600">{(section?.percentage || 0).toFixed(1)}%</div>
+                              <div className="text-gray-600">Accuracy</div>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+
+                  {/* Written Sections */}
+                  {userResult.written && Object.keys(userResult.written).length > 0 && (
+                    <div>
+                      <h4 className="font-semibold text-gray-700 mb-4">Written Sections</h4>
+                      <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                        {Object.entries(userResult.written).map(([subject, written]: [string, any]) => (
+                          <div key={subject} className="text-center p-4 bg-gradient-to-br from-purple-50 to-pink-50 rounded-lg border border-purple-200">
+                            <div className="text-2xl font-bold text-purple-600">{written?.marks || 0}<span className="text-sm text-purple-500">/{written?.outOf || 10}</span></div>
+                            <div className="text-sm text-purple-700 mt-1 capitalize">{subject.replace(/([A-Z])/g, ' $1').trim()}</div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              )}
+
               {/* Class Percentile Positioning */}
               {userResult && currentTest && (
                 <div className="bg-gradient-to-br from-white to-vh-beige/5 rounded-xl shadow-lg border border-vh-beige/30 hover:shadow-xl transition-all duration-300 mb-8">
                   <div className="p-6 pb-8">
                     <h3 className="text-lg font-semibold text-gray-800 mb-6">Your Position in Class</h3>
                     <PercentileChart
-                      userScore={isFullTest ? (userResult as FullTestResult).totalMarks : (userResult as SimpleTestResult).score}
+                      userScore={isFBSMock ? userResult.totalMarks : isFullTest ? (userResult as FullTestResult).totalMarks : (userResult as SimpleTestResult).score}
                       allScores={Object.values(currentTest.results || {}).map(result =>
-                        isFullTest ? (result as FullTestResult).totalMarks : (result as SimpleTestResult).score
+                        isFBSMock ? result.totalMarks : isFullTest ? (result as FullTestResult).totalMarks : (result as SimpleTestResult).score
                       )}
                       title=""
                       height={280}
@@ -925,32 +981,37 @@ const TestDetailPage = () => {
               )}
 
               {/* Class Comparison */}
+              {currentTest?.classStats && (
               <div className="bg-gradient-to-br from-white to-vh-beige/5 rounded-xl shadow-lg border border-vh-beige/30 hover:shadow-xl transition-all duration-300 p-8 mb-8 mt-16">
                 <h3 className="text-lg font-semibold text-gray-800 mb-8">Class Comparison</h3>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                   <div className="text-center p-6 bg-gray-50 rounded-lg border border-gray-200">
                     <div className="text-3xl font-bold text-gray-700 mb-2">
-                      {currentTest.classStats.averageScore.toFixed(1)}
+                      {(isFBSMock ? currentTest.classStats.average : currentTest.classStats.averageScore)?.toFixed(1) || 'N/A'}
                     </div>
                     <div className="text-sm font-medium text-gray-600">Class Average</div>
                   </div>
 
                   <div className="text-center p-6 bg-yellow-50 rounded-lg border border-yellow-200">
                     <div className="text-3xl font-bold text-yellow-700 mb-2">
-                      {currentTest.classStats.top5Average.toFixed(1)}
+                      {currentTest.classStats.top5Average?.toFixed(1) || 'N/A'}
                     </div>
                     <div className="text-sm font-medium text-yellow-800">Top 5 Average</div>
                   </div>
 
                   <div className="text-center p-6 bg-red-50 rounded-lg border border-red-200">
                     <div className="text-3xl font-bold text-red-700 mb-2">
-                      {Math.round(currentTest.classStats.passRate)}%
+                      {isFBSMock
+                        ? `${currentTest.classStats.passCount || 0}/${currentTest.classStats.totalStudents || 0}`
+                        : `${Math.round(currentTest.classStats.passRate || 0)}%`
+                      }
                     </div>
-                    <div className="text-sm font-medium text-red-800">Pass Rate</div>
+                    <div className="text-sm font-medium text-red-800">{isFBSMock ? 'Passed/Total' : 'Pass Rate'}</div>
                   </div>
                 </div>
               </div>
+              )}
 
               {/* Top 5 Leaderboard */}
               {currentTest && currentTest.results && (
