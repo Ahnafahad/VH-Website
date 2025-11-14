@@ -196,11 +196,17 @@ const TestDetailPage = () => {
     return session.user.email;
   };
 
-  const formatResponseText = (response: string) => {
-    if (response === 'NAN') return 'Not Attempted';
+  const formatResponseText = (response: any) => {
+    // Handle null/undefined
+    if (!response) return 'N/A';
+
+    // Convert to string if not already
+    const responseStr = String(response);
+
+    if (responseStr === 'NAN') return 'Not Attempted';
 
     // Parse response like "E (C)" or "A (W)"
-    const match = response.match(/(.+?)\s*\(([CW])\)/);
+    const match = responseStr.match(/(.+?)\s*\(([CW])\)/);
     if (match) {
       const [, answer, result] = match;
       const isCorrect = result === 'C';
@@ -212,7 +218,7 @@ const TestDetailPage = () => {
       );
     }
 
-    return response;
+    return responseStr;
   };
 
   const analyzePersonalTopQuestionsPerformance = () => {
