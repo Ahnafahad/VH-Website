@@ -3,6 +3,51 @@ import { connectToDatabase } from '@/lib/db';
 import User from '@/lib/models/User';
 import { validateAuth, createErrorResponse, ApiException } from '@/lib/api-utils';
 import { isAdminEmail, getUserByEmail } from '@/lib/db-access-control';
+import fs from 'fs';
+import path from 'path';
+
+/**
+ * Sync a student's data to students.json
+ * This ensures students.json stays in sync with MongoDB changes
+ */
+function syncStudentToJson(user: any) {
+  try {
+    // Only sync students with roleNumbers
+    if (!user.roleNumbers || user.roleNumbers.length === 0) {
+      return;
+    }
+
+    const studentsPath = path.join(process.cwd(), 'public', 'data', 'students.json');
+
+    // Load existing students.json
+    if (!fs.existsSync(studentsPath)) {
+      return; // If file doesn't exist, skip sync
+    }
+
+    const studentsData = JSON.parse(fs.readFileSync(studentsPath, 'utf8'));
+
+    // Update all roleNumbers for this student
+    let updated = false;
+    user.roleNumbers.forEach((roleNumber: string) => {
+      const roleNumberStr = String(roleNumber);
+      if (studentsData.students[roleNumberStr]) {
+        // Update existing student entry
+        studentsData.students[roleNumberStr].email = user.email;
+        studentsData.students[roleNumberStr].name = user.name;
+        updated = true;
+      }
+    });
+
+    // Save if updated
+    if (updated) {
+      studentsData.metadata.lastUpdated = new Date().toISOString();
+      fs.writeFileSync(studentsPath, JSON.stringify(studentsData, null, 2));
+    }
+  } catch (error) {
+    console.error('Error syncing student to JSON:', error);
+    // Don't throw - this is a non-critical operation
+  }
+}
 
 // GET - Fetch all users with optional filtering
 export async function GET(request: NextRequest) {
@@ -147,6 +192,9 @@ export async function POST(request: NextRequest) {
 
     await newUser.save();
 
+    // Sync new student to students.json
+    syncStudentToJson(newUser);
+
     return NextResponse.json({
       success: true,
       message: 'User created successfully',
@@ -220,6 +268,11 @@ export async function PATCH(request: NextRequest) {
     });
 
     await existingUser.save();
+
+    // Sync student data to students.json if email or name changed
+    if (updates.email || updates.name) {
+      syncStudentToJson(existingUser);
+    }
 
     return NextResponse.json({
       success: true,
