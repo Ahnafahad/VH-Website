@@ -56,33 +56,43 @@ class ExcelProcessor {
    * Load students data from Students sheet or existing JSON
    */
   loadStudentsData() {
-    const simpleTestFile = path.join(this.resultsDir, 'Simple Test Data.xlsx');
+    // Try multiple possible locations for Simple Test Data.xlsx
+    const possiblePaths = [
+      path.join(this.resultsDir, 'Simple Test Data.xlsx'),
+      path.join(this.resultsDir, 'IBA', 'Simple Test Data.xlsx'),
+      path.join(this.resultsDir, 'IBA Mock', 'Simple Test Data.xlsx')
+    ];
 
-    if (fs.existsSync(simpleTestFile)) {
-      try {
-        const workbook = XLSX.readFile(simpleTestFile);
-        if (workbook.SheetNames.includes('Students')) {
-          const studentsSheet = workbook.Sheets['Students'];
-          const studentsArray = XLSX.utils.sheet_to_json(studentsSheet);
+    for (const simpleTestFile of possiblePaths) {
+      if (fs.existsSync(simpleTestFile)) {
+        try {
+          const workbook = XLSX.readFile(simpleTestFile);
+          if (workbook.SheetNames.includes('Students')) {
+            const studentsSheet = workbook.Sheets['Students'];
+            const studentsArray = XLSX.utils.sheet_to_json(studentsSheet);
 
-          this.studentsData = {};
-          studentsArray.forEach(student => {
-            const studentId = String(student['Student ID'] || student['student_id'] || student['ID'] || '');
-            if (studentId) {
-              this.studentsData[studentId] = {
-                id: studentId,
-                name: student['Student Name'] || student['student_name'] || student['Name'] || '',
-                email: student['Student Email'] || student['student_email'] || student['Email'] || ''
-              };
-            }
-          });
+            this.studentsData = {};
+            studentsArray.forEach(student => {
+              const studentId = String(student['Student ID'] || student['student_id'] || student['ID'] || '');
+              if (studentId) {
+                this.studentsData[studentId] = {
+                  id: studentId,
+                  name: student['Student Name'] || student['student_name'] || student['Name'] || '',
+                  email: student['Student Email'] || student['student_email'] || student['Email'] || ''
+                };
+              }
+            });
 
-          console.log(`✅ Loaded ${Object.keys(this.studentsData).length} students`);
+            console.log(`✅ Loaded ${Object.keys(this.studentsData).length} students from ${path.relative(this.resultsDir, simpleTestFile)}`);
+            return; // Exit once found
+          }
+        } catch (error) {
+          this.warnings.push(`Failed to load students data from ${simpleTestFile}: ${error.message}`);
         }
-      } catch (error) {
-        this.warnings.push(`Failed to load students data: ${error.message}`);
       }
     }
+
+    console.log('⚠️  No Students sheet found in Simple Test Data.xlsx');
   }
 
   /**
