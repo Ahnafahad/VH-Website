@@ -178,6 +178,9 @@ const AdminDashboard = () => {
     let latestTestName = '';
 
     Object.entries(allTests).forEach(([testName, test]) => {
+      // Skip if test is undefined or null
+      if (!test) return;
+
       Object.entries(test.results || {}).forEach(([studentId, result]) => {
         const score = 'score' in result ? result.score : (result as any).totalMarks;
         totalScores += score;
@@ -190,7 +193,7 @@ const AdminDashboard = () => {
         }
       });
 
-      if (test.metadata.processedAt > latestTestDate) {
+      if (test.metadata?.processedAt && test.metadata.processedAt > latestTestDate) {
         latestTestDate = test.metadata.processedAt;
         latestTestName = testName;
       }
@@ -639,6 +642,9 @@ const AdminDashboard = () => {
                     const allTests = { ...simpleTests.tests, ...fullTests.tests, ...mockTests.tests };
 
                     Object.values(allTests).forEach((test: any) => {
+                      // Skip if test is undefined or null
+                      if (!test) return;
+
                       Object.values(test.results || {}).forEach((result: any) => {
                         const score = 'score' in result ? result.score : result.totalMarks;
                         allScores.push(score);

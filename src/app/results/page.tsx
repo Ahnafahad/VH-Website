@@ -129,7 +129,7 @@ const ResultsDashboard = () => {
     if (!user) return;
 
     const userId = user.id;
-    const userTests = Object.values(simpleData.tests).filter(test => test.results && test.results[userId]);
+    const userTests = Object.values(simpleData.tests).filter(test => test && test.results && test.results[userId]);
 
     if (userTests.length === 0) return;
 

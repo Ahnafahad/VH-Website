@@ -664,7 +664,7 @@ const TestDetailPage = () => {
                     'text-vh-red'
                   }`}>#{userResult.rank}</div>
                   <div className="text-sm text-gray-600">
-                    out of {Object.keys(currentTest.results).length} students
+                    out of {Object.keys(currentTest.results || {}).length} students
                   </div>
                   {userResult.rankStatus && (
                     <div className={`mt-2 text-xs font-semibold ${
@@ -970,7 +970,7 @@ const TestDetailPage = () => {
                     <h3 className="text-lg font-semibold text-gray-800 mb-6">Your Position in Class</h3>
                     <PercentileChart
                       userScore={isFBSMock ? userResult.totalMarks : isFullTest ? (userResult as FullTestResult).totalMarks : (userResult as SimpleTestResult).score}
-                      allScores={Object.values(currentTest.results || {}).map(result =>
+                      allScores={Object.values(currentTest.results || {}).map((result: any) =>
                         isFBSMock ? result.totalMarks : isFullTest ? (result as FullTestResult).totalMarks : (result as SimpleTestResult).score
                       )}
                       title=""
