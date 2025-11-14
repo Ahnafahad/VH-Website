@@ -95,7 +95,20 @@ if errorlevel 1 (
 )
 
 echo.
-echo [4/6] Staging all processed files...
+echo [4/7] Syncing student emails from database...
+echo ----------------------------------------
+
+:: Sync student emails from MongoDB to students.json
+node scripts/sync-student-emails.js
+
+:: Check if sync was successful
+if errorlevel 1 (
+    echo.
+    echo [WARNING] Email sync failed, but continuing...
+)
+
+echo.
+echo [5/7] Staging all processed files...
 echo ----------------------------------------
 echo Staging JSON data files...
 git add public/data/
@@ -103,7 +116,7 @@ echo Staging Results folder (Excel files with changes)...
 git add Results/
 
 echo.
-echo [5/6] Committing changes...
+echo [6/7] Committing changes...
 echo ----------------------------------------
 
 :: Create commit with timestamp
@@ -126,7 +139,7 @@ if errorlevel 1 (
 )
 
 echo.
-echo [6/6] Pushing to remote repository...
+echo [7/7] Pushing to remote repository...
 echo ----------------------------------------
 git push
 

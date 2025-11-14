@@ -431,9 +431,10 @@ function createDefaultThresholds(sectionIds, hasEssay, results) {
  */
 function shouldApplyThresholds(testName) {
   const testNameLower = testName.toLowerCase();
-  const applicableTests = ['english', 'mathematics', 'analytical', 'maths', 'mock'];
+  const applicableTests = ['english', 'mathematics', 'analytical', 'maths'];
 
-  return applicableTests.some(prefix => testNameLower.startsWith(prefix));
+  // Check if test name starts with applicable prefixes OR contains 'mock'
+  return applicableTests.some(prefix => testNameLower.startsWith(prefix)) || testNameLower.includes('mock');
 }
 
 module.exports = {
