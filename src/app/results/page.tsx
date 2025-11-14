@@ -9,6 +9,12 @@ import { SimpleTestsData, FullTestsData, MockTestsData, StudentsData, SystemMeta
 import SeriesProgressChart from './components/SeriesProgressChart';
 import PerformanceBarChart from './components/PerformanceBarChart';
 
+// Utility function to clean test names by removing folder prefixes
+const cleanTestName = (testName: string): string => {
+  // Remove "IBA/", "IBA Mock/", "DU FBS Mocks/", etc. from test names
+  return testName.replace(/^(IBA|IBA Mock|DU FBS Mocks?)\//gi, '');
+};
+
 interface DashboardStats {
   totalTests: number;
   averageScore: number;
@@ -390,7 +396,7 @@ const ResultsDashboard = () => {
                         className="group flex items-center justify-between p-6 rounded-xl border border-gray-100 hover:border-blue-200 hover:bg-blue-50/30 cursor-pointer transition-all duration-300 hover:shadow-md"
                       >
                         <div className="flex-1">
-                          <h3 className="font-semibold text-gray-900 group-hover:text-blue-700 transition-colors">{testName}</h3>
+                          <h3 className="font-semibold text-gray-900 group-hover:text-blue-700 transition-colors">{cleanTestName(testName)}</h3>
                           <p className="text-sm text-gray-500 mt-1">{test.testSeries}</p>
                         </div>
                         <div className="text-right">
@@ -442,7 +448,7 @@ const ResultsDashboard = () => {
                         className="group flex items-center justify-between p-6 rounded-xl border border-gray-100 hover:border-purple-200 hover:bg-purple-50/30 cursor-pointer transition-all duration-300 hover:shadow-md"
                       >
                         <div className="flex-1">
-                          <h3 className="font-semibold text-gray-900 group-hover:text-purple-700 transition-colors">{testName}</h3>
+                          <h3 className="font-semibold text-gray-900 group-hover:text-purple-700 transition-colors">{cleanTestName(testName)}</h3>
                           <p className="text-sm text-gray-500 mt-1">
                             {test.sections.length} section{test.sections.length !== 1 ? 's' : ''}
                           </p>
@@ -497,7 +503,7 @@ const ResultsDashboard = () => {
                         className="group flex items-center justify-between p-6 rounded-xl border border-gray-100 hover:border-orange-200 hover:bg-orange-50/30 cursor-pointer transition-all duration-300 hover:shadow-md"
                       >
                         <div className="flex-1">
-                          <h3 className="font-semibold text-gray-900 group-hover:text-orange-700 transition-colors">{testName}</h3>
+                          <h3 className="font-semibold text-gray-900 group-hover:text-orange-700 transition-colors">{cleanTestName(testName)}</h3>
                           <p className="text-sm text-gray-500 mt-1">
                             {test.sections.length} section{test.sections.length !== 1 ? 's' : ''}
                           </p>
@@ -558,7 +564,7 @@ const ResultsDashboard = () => {
                         className="group flex items-center justify-between p-6 rounded-xl border border-gray-100 hover:border-green-200 hover:bg-green-50/30 cursor-pointer transition-all duration-300 hover:shadow-md"
                       >
                         <div className="flex-1">
-                          <h3 className="font-semibold text-gray-900 group-hover:text-green-700 transition-colors">{testName}</h3>
+                          <h3 className="font-semibold text-gray-900 group-hover:text-green-700 transition-colors">{cleanTestName(testName)}</h3>
                           <p className="text-sm text-gray-500 mt-1">
                             <GraduationCap className="inline w-4 h-4 mr-1" />
                             DU FBS Format
