@@ -61,7 +61,13 @@
             }
           },
           "passedAll": false,
-          "percentile": 0
+          "percentile": 0,
+          "analytics": {
+            "accuracy": 0,
+            "totalCorrect": 0,
+            "totalWrong": 0,
+            "totalAttempted": 0
+          }
         },
         "1217161": {
           "studentId": "1217161",
@@ -145,7 +151,13 @@
             }
           },
           "passedAll": true,
-          "percentile": 29
+          "percentile": 29,
+          "analytics": {
+            "accuracy": 61.7,
+            "totalCorrect": 29,
+            "totalWrong": 18,
+            "totalAttempted": 47
+          }
         },
         "1738204": {
           "studentId": "1738204",
@@ -203,7 +215,13 @@
             }
           },
           "passedAll": false,
-          "percentile": 0
+          "percentile": 0,
+          "analytics": {
+            "accuracy": 0,
+            "totalCorrect": 0,
+            "totalWrong": 0,
+            "totalAttempted": 0
+          }
         },
         "2295618": {
           "studentId": "2295618",
@@ -277,7 +295,13 @@
             }
           },
           "passedAll": true,
-          "percentile": 50
+          "percentile": 50,
+          "analytics": {
+            "accuracy": 82.14,
+            "totalCorrect": 46,
+            "totalWrong": 10,
+            "totalAttempted": 56
+          }
         },
         "2957813": {
           "studentId": "2957813",
@@ -335,7 +359,13 @@
             }
           },
           "passedAll": false,
-          "percentile": 0
+          "percentile": 0,
+          "analytics": {
+            "accuracy": 0,
+            "totalCorrect": 0,
+            "totalWrong": 0,
+            "totalAttempted": 0
+          }
         },
         "3035581": {
           "studentId": "3035581",
@@ -393,7 +423,13 @@
             }
           },
           "passedAll": false,
-          "percentile": 0
+          "percentile": 0,
+          "analytics": {
+            "accuracy": 0,
+            "totalCorrect": 0,
+            "totalWrong": 0,
+            "totalAttempted": 0
+          }
         },
         "3408271": {
           "studentId": "3408271",
@@ -451,7 +487,13 @@
             }
           },
           "passedAll": false,
-          "percentile": 0
+          "percentile": 0,
+          "analytics": {
+            "accuracy": 0,
+            "totalCorrect": 0,
+            "totalWrong": 0,
+            "totalAttempted": 0
+          }
         },
         "4006511": {
           "studentId": "4006511",
@@ -535,7 +577,13 @@
             }
           },
           "passedAll": false,
-          "percentile": 25
+          "percentile": 25,
+          "analytics": {
+            "accuracy": 61.9,
+            "totalCorrect": 26,
+            "totalWrong": 16,
+            "totalAttempted": 42
+          }
         },
         "4176951": {
           "studentId": "4176951",
@@ -619,7 +667,13 @@
             }
           },
           "passedAll": true,
-          "percentile": 54
+          "percentile": 54,
+          "analytics": {
+            "accuracy": 79.55,
+            "totalCorrect": 35,
+            "totalWrong": 9,
+            "totalAttempted": 44
+          }
         },
         "4215271": {
           "studentId": "4215271",
@@ -703,7 +757,13 @@
             }
           },
           "passedAll": true,
-          "percentile": 67
+          "percentile": 67,
+          "analytics": {
+            "accuracy": 72.88,
+            "totalCorrect": 43,
+            "totalWrong": 16,
+            "totalAttempted": 59
+          }
         },
         "4598891": {
           "studentId": "4598891",
@@ -787,7 +847,13 @@
             }
           },
           "passedAll": true,
-          "percentile": 79
+          "percentile": 79,
+          "analytics": {
+            "accuracy": 80,
+            "totalCorrect": 44,
+            "totalWrong": 11,
+            "totalAttempted": 55
+          }
         },
         "4681295": {
           "studentId": "4681295",
@@ -861,7 +927,13 @@
             }
           },
           "passedAll": true,
-          "percentile": 38
+          "percentile": 38,
+          "analytics": {
+            "accuracy": 66.67,
+            "totalCorrect": 32,
+            "totalWrong": 16,
+            "totalAttempted": 48
+          }
         },
         "5074136": {
           "studentId": "5074136",
@@ -919,7 +991,13 @@
             }
           },
           "passedAll": false,
-          "percentile": 0
+          "percentile": 0,
+          "analytics": {
+            "accuracy": 0,
+            "totalCorrect": 0,
+            "totalWrong": 0,
+            "totalAttempted": 0
+          }
         },
         "5421271": {
           "studentId": "5421271",
@@ -1003,7 +1081,13 @@
             }
           },
           "passedAll": true,
-          "percentile": 29
+          "percentile": 29,
+          "analytics": {
+            "accuracy": 70,
+            "totalCorrect": 28,
+            "totalWrong": 12,
+            "totalAttempted": 40
+          }
         },
         "6040571": {
           "studentId": "6040571",
@@ -1087,7 +1171,13 @@
             }
           },
           "passedAll": true,
-          "percentile": 63
+          "percentile": 63,
+          "analytics": {
+            "accuracy": 67.8,
+            "totalCorrect": 40,
+            "totalWrong": 19,
+            "totalAttempted": 59
+          }
         },
         "6197380": {
           "studentId": "6197380",
@@ -1171,7 +1261,13 @@
             }
           },
           "passedAll": true,
-          "percentile": 58
+          "percentile": 58,
+          "analytics": {
+            "accuracy": 76,
+            "totalCorrect": 38,
+            "totalWrong": 12,
+            "totalAttempted": 50
+          }
         },
         "6211721": {
           "studentId": "6211721",
@@ -1255,7 +1351,13 @@
             }
           },
           "passedAll": true,
-          "percentile": 83
+          "percentile": 83,
+          "analytics": {
+            "accuracy": 81.82,
+            "totalCorrect": 45,
+            "totalWrong": 10,
+            "totalAttempted": 55
+          }
         },
         "6246901": {
           "studentId": "6246901",
@@ -1339,7 +1441,13 @@
             }
           },
           "passedAll": true,
-          "percentile": 96
+          "percentile": 96,
+          "analytics": {
+            "accuracy": 83.05,
+            "totalCorrect": 49,
+            "totalWrong": 10,
+            "totalAttempted": 59
+          }
         },
         "6480811": {
           "studentId": "6480811",
@@ -1423,7 +1531,13 @@
             }
           },
           "passedAll": true,
-          "percentile": 42
+          "percentile": 42,
+          "analytics": {
+            "accuracy": 68.18,
+            "totalCorrect": 30,
+            "totalWrong": 14,
+            "totalAttempted": 44
+          }
         },
         "6500041": {
           "studentId": "6500041",
@@ -1507,7 +1621,13 @@
             }
           },
           "passedAll": true,
-          "percentile": 46
+          "percentile": 46,
+          "analytics": {
+            "accuracy": 68.09,
+            "totalCorrect": 32,
+            "totalWrong": 15,
+            "totalAttempted": 47
+          }
         },
         "7842103": {
           "studentId": "7842103",
@@ -1591,7 +1711,13 @@
             }
           },
           "passedAll": true,
-          "percentile": 75
+          "percentile": 75,
+          "analytics": {
+            "accuracy": 78.57,
+            "totalCorrect": 44,
+            "totalWrong": 12,
+            "totalAttempted": 56
+          }
         },
         "8395612": {
           "studentId": "8395612",
@@ -1670,7 +1796,13 @@
             }
           },
           "passedAll": true,
-          "percentile": 88
+          "percentile": 88,
+          "analytics": {
+            "accuracy": 84.48,
+            "totalCorrect": 49,
+            "totalWrong": 9,
+            "totalAttempted": 58
+          }
         },
         "9342451": {
           "studentId": "9342451",
@@ -1754,7 +1886,13 @@
             }
           },
           "passedAll": true,
-          "percentile": 71
+          "percentile": 71,
+          "analytics": {
+            "accuracy": 75.44,
+            "totalCorrect": 43,
+            "totalWrong": 14,
+            "totalAttempted": 57
+          }
         },
         "9625470": {
           "studentId": "9625470",
@@ -1843,7 +1981,13 @@
             }
           },
           "passedAll": true,
-          "percentile": 92
+          "percentile": 92,
+          "analytics": {
+            "accuracy": 76.79,
+            "totalCorrect": 43,
+            "totalWrong": 13,
+            "totalAttempted": 56
+          }
         }
       },
       "classStats": {
@@ -1917,7 +2061,13 @@
             }
           },
           "passedAll": false,
-          "percentile": 0
+          "percentile": 0,
+          "analytics": {
+            "accuracy": 0,
+            "totalCorrect": 0,
+            "totalWrong": 0,
+            "totalAttempted": 0
+          }
         },
         "1217161": {
           "studentId": "1217161",
@@ -2001,7 +2151,13 @@
             }
           },
           "passedAll": true,
-          "percentile": 58
+          "percentile": 58,
+          "analytics": {
+            "accuracy": 70.69,
+            "totalCorrect": 41,
+            "totalWrong": 17,
+            "totalAttempted": 58
+          }
         },
         "1738204": {
           "studentId": "1738204",
@@ -2059,7 +2215,13 @@
             }
           },
           "passedAll": false,
-          "percentile": 0
+          "percentile": 0,
+          "analytics": {
+            "accuracy": 0,
+            "totalCorrect": 0,
+            "totalWrong": 0,
+            "totalAttempted": 0
+          }
         },
         "2295618": {
           "studentId": "2295618",
@@ -2143,7 +2305,13 @@
             }
           },
           "passedAll": true,
-          "percentile": 88
+          "percentile": 88,
+          "analytics": {
+            "accuracy": 86.54,
+            "totalCorrect": 45,
+            "totalWrong": 7,
+            "totalAttempted": 52
+          }
         },
         "2957813": {
           "studentId": "2957813",
@@ -2201,7 +2369,13 @@
             }
           },
           "passedAll": false,
-          "percentile": 0
+          "percentile": 0,
+          "analytics": {
+            "accuracy": 0,
+            "totalCorrect": 0,
+            "totalWrong": 0,
+            "totalAttempted": 0
+          }
         },
         "3035581": {
           "studentId": "3035581",
@@ -2259,7 +2433,13 @@
             }
           },
           "passedAll": false,
-          "percentile": 0
+          "percentile": 0,
+          "analytics": {
+            "accuracy": 0,
+            "totalCorrect": 0,
+            "totalWrong": 0,
+            "totalAttempted": 0
+          }
         },
         "3408271": {
           "studentId": "3408271",
@@ -2317,7 +2497,13 @@
             }
           },
           "passedAll": false,
-          "percentile": 0
+          "percentile": 0,
+          "analytics": {
+            "accuracy": 0,
+            "totalCorrect": 0,
+            "totalWrong": 0,
+            "totalAttempted": 0
+          }
         },
         "4006511": {
           "studentId": "4006511",
@@ -2401,7 +2587,13 @@
             }
           },
           "passedAll": true,
-          "percentile": 42
+          "percentile": 42,
+          "analytics": {
+            "accuracy": 75,
+            "totalCorrect": 33,
+            "totalWrong": 11,
+            "totalAttempted": 44
+          }
         },
         "4176951": {
           "studentId": "4176951",
@@ -2485,7 +2677,13 @@
             }
           },
           "passedAll": true,
-          "percentile": 79
+          "percentile": 79,
+          "analytics": {
+            "accuracy": 88.89,
+            "totalCorrect": 48,
+            "totalWrong": 6,
+            "totalAttempted": 54
+          }
         },
         "4215271": {
           "studentId": "4215271",
@@ -2569,7 +2767,13 @@
             }
           },
           "passedAll": true,
-          "percentile": 46
+          "percentile": 46,
+          "analytics": {
+            "accuracy": 61.67,
+            "totalCorrect": 37,
+            "totalWrong": 23,
+            "totalAttempted": 60
+          }
         },
         "4598891": {
           "studentId": "4598891",
@@ -2653,7 +2857,13 @@
             }
           },
           "passedAll": true,
-          "percentile": 83
+          "percentile": 83,
+          "analytics": {
+            "accuracy": 75.86,
+            "totalCorrect": 44,
+            "totalWrong": 14,
+            "totalAttempted": 58
+          }
         },
         "4681295": {
           "studentId": "4681295",
@@ -2737,7 +2947,13 @@
             }
           },
           "passedAll": true,
-          "percentile": 71
+          "percentile": 71,
+          "analytics": {
+            "accuracy": 75,
+            "totalCorrect": 45,
+            "totalWrong": 15,
+            "totalAttempted": 60
+          }
         },
         "5074136": {
           "studentId": "5074136",
@@ -2795,7 +3011,13 @@
             }
           },
           "passedAll": false,
-          "percentile": 0
+          "percentile": 0,
+          "analytics": {
+            "accuracy": 0,
+            "totalCorrect": 0,
+            "totalWrong": 0,
+            "totalAttempted": 0
+          }
         },
         "5421271": {
           "studentId": "5421271",
@@ -2879,7 +3101,13 @@
             }
           },
           "passedAll": false,
-          "percentile": 38
+          "percentile": 38,
+          "analytics": {
+            "accuracy": 69.23,
+            "totalCorrect": 27,
+            "totalWrong": 12,
+            "totalAttempted": 39
+          }
         },
         "6040571": {
           "studentId": "6040571",
@@ -2963,7 +3191,13 @@
             }
           },
           "passedAll": true,
-          "percentile": 63
+          "percentile": 63,
+          "analytics": {
+            "accuracy": 60,
+            "totalCorrect": 36,
+            "totalWrong": 24,
+            "totalAttempted": 60
+          }
         },
         "6197380": {
           "studentId": "6197380",
@@ -3047,7 +3281,13 @@
             }
           },
           "passedAll": true,
-          "percentile": 50
+          "percentile": 50,
+          "analytics": {
+            "accuracy": 75.51,
+            "totalCorrect": 37,
+            "totalWrong": 12,
+            "totalAttempted": 49
+          }
         },
         "6211721": {
           "studentId": "6211721",
@@ -3131,7 +3371,13 @@
             }
           },
           "passedAll": true,
-          "percentile": 67
+          "percentile": 67,
+          "analytics": {
+            "accuracy": 76.92,
+            "totalCorrect": 40,
+            "totalWrong": 12,
+            "totalAttempted": 52
+          }
         },
         "6246901": {
           "studentId": "6246901",
@@ -3215,7 +3461,13 @@
             }
           },
           "passedAll": true,
-          "percentile": 92
+          "percentile": 92,
+          "analytics": {
+            "accuracy": 77.97,
+            "totalCorrect": 46,
+            "totalWrong": 13,
+            "totalAttempted": 59
+          }
         },
         "6480811": {
           "studentId": "6480811",
@@ -3273,7 +3525,13 @@
             }
           },
           "passedAll": false,
-          "percentile": 0
+          "percentile": 0,
+          "analytics": {
+            "accuracy": 0,
+            "totalCorrect": 0,
+            "totalWrong": 0,
+            "totalAttempted": 0
+          }
         },
         "6500041": {
           "studentId": "6500041",
@@ -3331,7 +3589,13 @@
             }
           },
           "passedAll": false,
-          "percentile": 0
+          "percentile": 0,
+          "analytics": {
+            "accuracy": 0,
+            "totalCorrect": 0,
+            "totalWrong": 0,
+            "totalAttempted": 0
+          }
         },
         "7842103": {
           "studentId": "7842103",
@@ -3399,7 +3663,13 @@
             }
           },
           "passedAll": false,
-          "percentile": 33
+          "percentile": 33,
+          "analytics": {
+            "accuracy": 88.89,
+            "totalCorrect": 8,
+            "totalWrong": 1,
+            "totalAttempted": 9
+          }
         },
         "8395612": {
           "studentId": "8395612",
@@ -3483,7 +3753,13 @@
             }
           },
           "passedAll": true,
-          "percentile": 96
+          "percentile": 96,
+          "analytics": {
+            "accuracy": 100,
+            "totalCorrect": 60,
+            "totalWrong": 0,
+            "totalAttempted": 60
+          }
         },
         "9342451": {
           "studentId": "9342451",
@@ -3567,7 +3843,13 @@
             }
           },
           "passedAll": true,
-          "percentile": 54
+          "percentile": 54,
+          "analytics": {
+            "accuracy": 62.71,
+            "totalCorrect": 37,
+            "totalWrong": 22,
+            "totalAttempted": 59
+          }
         },
         "9625470": {
           "studentId": "9625470",
@@ -3651,7 +3933,13 @@
             }
           },
           "passedAll": true,
-          "percentile": 75
+          "percentile": 75,
+          "analytics": {
+            "accuracy": 81.82,
+            "totalCorrect": 45,
+            "totalWrong": 10,
+            "totalAttempted": 55
+          }
         }
       },
       "classStats": {
@@ -3666,7 +3954,7 @@
     }
   },
   "metadata": {
-    "lastUpdated": "2025-11-14T17:51:15.099Z",
+    "lastUpdated": "2025-11-14T18:03:32.594Z",
     "totalMocks": 2,
     "generatedBy": "FBS Mock Processor"
   }

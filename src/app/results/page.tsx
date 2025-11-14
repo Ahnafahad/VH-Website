@@ -31,7 +31,7 @@ const ResultsDashboard = () => {
   const [error, setError] = useState<string | null>(null);
   const [stats, setStats] = useState<DashboardStats | null>(null);
   const [isAdmin, setIsAdmin] = useState(false);
-  const [userAccess, setUserAccess] = useState<{hasIBA: boolean, hasFBS: boolean}>({hasIBA: false, hasFBS: false});
+  const [userAccess, setUserAccess] = useState<{hasIBA: boolean, hasFBS: boolean, roleNumbers?: string[]}>({hasIBA: false, hasFBS: false, roleNumbers: []});
   const [selectedStudentId, setSelectedStudentId] = useState<string | null>(null);
   const [selectedStudentName, setSelectedStudentName] = useState<string>('');
 
@@ -63,7 +63,8 @@ const ResultsDashboard = () => {
         // Use userAccessResponse which already includes admin check
         setUserAccess({
           hasIBA: userAccessResponse.hasIBA,
-          hasFBS: userAccessResponse.hasFBS
+          hasFBS: userAccessResponse.hasFBS,
+          roleNumbers: userAccessResponse.roleNumbers || []
         });
 
         // Calculate user stats if authenticated
@@ -536,14 +537,19 @@ const ResultsDashboard = () => {
                 <div className="space-y-3">
                   {Object.entries(fbsMockTests.tests).map(([testName, test]: [string, any]) => {
                     // Get the correct user based on admin status
-                    let userResult = null;
+                    let result = null;
                     if (isAdmin && selectedStudentId) {
-                      userResult = Object.values(students?.students || {}).find((s: any) => s.id === selectedStudentId);
-                    } else if (session?.user?.email) {
-                      userResult = Object.values(students?.students || {}).find((s: any) => s.email === session.user?.email);
+                      // Admin viewing a specific student
+                      result = test.results ? test.results[selectedStudentId] : null;
+                    } else if (session?.user?.email && userAccess.roleNumbers) {
+                      // Student viewing their own results - check all their roleNumbers
+                      for (const roleNumber of userAccess.roleNumbers) {
+                        if (test.results && test.results[roleNumber]) {
+                          result = test.results[roleNumber];
+                          break;
+                        }
+                      }
                     }
-                    const userId = userResult?.id;
-                    const result = userId && test.results ? test.results[userId] : null;
 
                     return (
                       <div

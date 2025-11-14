@@ -234,6 +234,16 @@ class FBSMockProcessor {
     const passTotal = totalMarks >= 40;
     const passedAll = passEnglish && passMCQ && passTotal;
 
+    // Calculate analytics for compatibility with results page
+    let totalCorrect = 0;
+    let totalWrong = 0;
+    Object.values(sections).forEach(section => {
+      totalCorrect += section.correct || 0;
+      totalWrong += section.wrong || 0;
+    });
+    const totalAttempted = totalCorrect + totalWrong;
+    const accuracy = totalAttempted > 0 ? (totalCorrect / totalAttempted) * 100 : 0;
+
     return {
       studentId,
       studentName,
@@ -262,7 +272,13 @@ class FBSMockProcessor {
         }
       },
       passedAll,
-      percentile: 0 // Will be calculated later
+      percentile: 0, // Will be calculated later
+      analytics: {
+        accuracy: parseFloat(accuracy.toFixed(2)),
+        totalCorrect,
+        totalWrong,
+        totalAttempted
+      }
     };
   }
 

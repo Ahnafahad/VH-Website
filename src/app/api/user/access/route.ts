@@ -30,7 +30,12 @@ export async function GET() {
     const hasIBA = user.accessTypes?.IBA || false;
     const hasFBS = user.accessTypes?.FBS || false;
 
-    return NextResponse.json({ hasIBA, hasFBS, isAdmin: false });
+    return NextResponse.json({
+      hasIBA,
+      hasFBS,
+      isAdmin: false,
+      roleNumbers: user.roleNumbers || []
+    });
 
   } catch (error) {
     console.error('Error checking user access:', error);
