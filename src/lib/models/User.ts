@@ -13,6 +13,7 @@ export interface IUser extends mongoose.Document {
 
   // For students (optional)
   studentId?: string;
+  roleNumbers?: string[]; // Array of role numbers (6-digit IBA, 7-digit FBS)
   class?: string;
   batch?: string;
 
@@ -79,6 +80,16 @@ const UserSchema = new mongoose.Schema<IUser>({
         return !v || /^[0-9]{6}$/.test(v);
       },
       message: 'Student ID must be exactly 6 digits'
+    }
+  },
+  roleNumbers: {
+    type: [String],
+    default: [],
+    validate: {
+      validator: function(v: string[]) {
+        return !v || v.every(num => /^[0-9]{6,7}$/.test(num));
+      },
+      message: 'Role numbers must be 6 or 7 digits'
     }
   },
   class: {

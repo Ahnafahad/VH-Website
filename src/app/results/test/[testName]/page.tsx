@@ -27,13 +27,15 @@ const TestDetailPage = () => {
   const [simpleTests, setSimpleTests] = useState<SimpleTestsData | null>(null);
   const [fullTests, setFullTests] = useState<FullTestsData | null>(null);
   const [mockTests, setMockTests] = useState<MockTestsData | null>(null);
+  const [fbsMockTests, setFbsMockTests] = useState<any | null>(null);
   const [students, setStudents] = useState<StudentsData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  const [currentTest, setCurrentTest] = useState<SimpleTest | FullTest | null>(null);
-  const [userResult, setUserResult] = useState<SimpleTestResult | FullTestResult | null>(null);
+  const [currentTest, setCurrentTest] = useState<SimpleTest | FullTest | any | null>(null);
+  const [userResult, setUserResult] = useState<SimpleTestResult | FullTestResult | any | null>(null);
   const [isFullTest, setIsFullTest] = useState(false);
+  const [isFBSMock, setIsFBSMock] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
   const [selectedStudentId, setSelectedStudentId] = useState<string | null>(null);
   const [selectedStudentName, setSelectedStudentName] = useState<string>('');
@@ -49,6 +51,7 @@ const TestDetailPage = () => {
           fetch('/data/simple-tests.json').then(res => res.json()),
           fetch('/data/full-tests.json').then(res => res.json()),
           fetch('/data/mock-tests.json').then(res => res.json()),
+          fetch('/data/fbs-mock-tests.json').then(res => res.json()).catch(() => ({tests: {}})),
           fetch('/data/students.json').then(res => res.json()),
         ];
 
@@ -60,18 +63,21 @@ const TestDetailPage = () => {
         const simpleResponse = responses[0];
         const fullResponse = responses[1];
         const mockResponse = responses[2];
-        const studentsResponse = responses[3];
-        const adminCheckResponse = isPublicDemo ? { isAdmin: false } : responses[4];
+        const fbsMockResponse = responses[3];
+        const studentsResponse = responses[4];
+        const adminCheckResponse = isPublicDemo ? { isAdmin: false } : responses[5];
 
         setSimpleTests(simpleResponse);
         setFullTests(fullResponse);
         setMockTests(mockResponse);
+        setFbsMockTests(fbsMockResponse);
         setStudents(studentsResponse);
         setIsAdmin(adminCheckResponse.isAdmin);
 
         // Find the test
         let test = simpleResponse.tests[testName];
         let isFullTestType = false;
+        let isFBSMockType = false;
 
         if (!test) {
           test = fullResponse.tests[testName];
@@ -84,12 +90,19 @@ const TestDetailPage = () => {
         }
 
         if (!test) {
+          test = fbsMockResponse.tests[testName];
+          isFBSMockType = true;
+          isFullTestType = false;
+        }
+
+        if (!test) {
           setError(`Test "${testName}" not found.`);
           return;
         }
 
         setCurrentTest(test);
         setIsFullTest(isFullTestType);
+        setIsFBSMock(isFBSMockType);
 
         // Find user result based on demo status or admin status
         if (isPublicDemo) {
@@ -410,13 +423,16 @@ const TestDetailPage = () => {
                 <div className="flex items-center gap-4 text-sm text-gray-600">
                   <span className="flex items-center gap-1">
                     <Eye size={16} />
-                    {isFullTest ? 'Full Test' : 'Simple Test'}
+                    {isFBSMock ? 'DU FBS Mock' : isFullTest ? 'Full Test' : 'Simple Test'}
                   </span>
-                  {!isFullTest && (currentTest as SimpleTest).testSeries && (
+                  {!isFullTest && !isFBSMock && (currentTest as SimpleTest).testSeries && (
                     <span>Series: {(currentTest as SimpleTest).testSeries}</span>
                   )}
-                  {isFullTest && (currentTest as FullTest).sections && (
+                  {isFullTest && !isFBSMock && (currentTest as FullTest).sections && (
                     <span>{(currentTest as FullTest).sections.length} Sections</span>
+                  )}
+                  {isFBSMock && (
+                    <span className="text-green-600 font-semibold">Faculty of Business Studies</span>
                   )}
                 </div>
               </div>
@@ -481,8 +497,123 @@ const TestDetailPage = () => {
           ) : (
             <div className="space-y-8">
 
-              {/* Threshold Pass/Fail Card */}
-              <ThresholdResultCard result={userResult} isFullTest={isFullTest} />
+              {/* Threshold Pass/Fail Card or FBS Passing Criteria */}
+              {isFBSMock ? (
+                <div className="bg-white rounded-2xl shadow-lg p-8 border border-gray-100">
+                  <div className="flex items-center gap-3 mb-6">
+                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-green-500 to-green-600 flex items-center justify-center">
+                      <Award className="text-white" size={24} />
+                    </div>
+                    <div>
+                      <h2 className="text-2xl font-bold text-gray-900">FBS Passing Criteria</h2>
+                      <p className="text-gray-600">Minimum requirements for DU FBS</p>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    {/* English MCQ */}
+                    <div className={`p-6 rounded-xl border-2 ${
+                      userResult.passingCriteria?.englishMCQ?.passed
+                        ? 'bg-green-50 border-green-200'
+                        : 'bg-red-50 border-red-200'
+                    }`}>
+                      <div className="flex items-center justify-between mb-2">
+                        <span className="text-sm font-semibold text-gray-600">English MCQ</span>
+                        {userResult.passingCriteria?.englishMCQ?.passed ? (
+                          <CheckCircle size={20} className="text-green-600" />
+                        ) : (
+                          <XCircle size={20} className="text-red-600" />
+                        )}
+                      </div>
+                      <div className="text-2xl font-bold text-gray-900 mb-1">
+                        {userResult.passingCriteria?.englishMCQ?.achieved?.toFixed(1) || 0} / {userResult.passingCriteria?.englishMCQ?.required || 5}
+                      </div>
+                      <div className={`text-sm font-semibold ${
+                        userResult.passingCriteria?.englishMCQ?.passed ? 'text-green-600' : 'text-red-600'
+                      }`}>
+                        {userResult.passingCriteria?.englishMCQ?.passed ? 'Passed' : 'Failed'}
+                      </div>
+                    </div>
+
+                    {/* Total MCQ */}
+                    <div className={`p-6 rounded-xl border-2 ${
+                      userResult.passingCriteria?.totalMCQ?.passed
+                        ? 'bg-green-50 border-green-200'
+                        : 'bg-red-50 border-red-200'
+                    }`}>
+                      <div className="flex items-center justify-between mb-2">
+                        <span className="text-sm font-semibold text-gray-600">Total MCQ</span>
+                        {userResult.passingCriteria?.totalMCQ?.passed ? (
+                          <CheckCircle size={20} className="text-green-600" />
+                        ) : (
+                          <XCircle size={20} className="text-red-600" />
+                        )}
+                      </div>
+                      <div className="text-2xl font-bold text-gray-900 mb-1">
+                        {userResult.passingCriteria?.totalMCQ?.achieved?.toFixed(1) || 0} / {userResult.passingCriteria?.totalMCQ?.required || 24}
+                      </div>
+                      <div className={`text-sm font-semibold ${
+                        userResult.passingCriteria?.totalMCQ?.passed ? 'text-green-600' : 'text-red-600'
+                      }`}>
+                        {userResult.passingCriteria?.totalMCQ?.passed ? 'Passed' : 'Failed'}
+                      </div>
+                    </div>
+
+                    {/* Total */}
+                    <div className={`p-6 rounded-xl border-2 ${
+                      userResult.passingCriteria?.total?.passed
+                        ? 'bg-green-50 border-green-200'
+                        : 'bg-red-50 border-red-200'
+                    }`}>
+                      <div className="flex items-center justify-between mb-2">
+                        <span className="text-sm font-semibold text-gray-600">Total (MCQ + Written)</span>
+                        {userResult.passingCriteria?.total?.passed ? (
+                          <CheckCircle size={20} className="text-green-600" />
+                        ) : (
+                          <XCircle size={20} className="text-red-600" />
+                        )}
+                      </div>
+                      <div className="text-2xl font-bold text-gray-900 mb-1">
+                        {userResult.passingCriteria?.total?.achieved?.toFixed(1) || 0} / {userResult.passingCriteria?.total?.required || 40}
+                      </div>
+                      <div className={`text-sm font-semibold ${
+                        userResult.passingCriteria?.total?.passed ? 'text-green-600' : 'text-red-600'
+                      }`}>
+                        {userResult.passingCriteria?.total?.passed ? 'Passed' : 'Failed'}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Overall Status */}
+                  <div className={`mt-6 p-4 rounded-xl ${
+                    userResult.passedAll ? 'bg-green-100 border-2 border-green-300' : 'bg-red-100 border-2 border-red-300'
+                  }`}>
+                    <div className="flex items-center gap-3">
+                      {userResult.passedAll ? (
+                        <CheckCircle size={24} className="text-green-600" />
+                      ) : (
+                        <XCircle size={24} className="text-red-600" />
+                      )}
+                      <div>
+                        <div className={`text-lg font-bold ${
+                          userResult.passedAll ? 'text-green-800' : 'text-red-800'
+                        }`}>
+                          {userResult.passedAll ? 'All Criteria Met!' : 'Criteria Not Met'}
+                        </div>
+                        <div className={`text-sm ${
+                          userResult.passedAll ? 'text-green-700' : 'text-red-700'
+                        }`}>
+                          {userResult.passedAll
+                            ? 'You meet all minimum requirements for DU FBS'
+                            : 'You need to improve to meet DU FBS requirements'}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                <ThresholdResultCard result={userResult} isFullTest={isFullTest} />
+              )}
 
               {/* Performance Overview */}
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
@@ -491,14 +622,20 @@ const TestDetailPage = () => {
                 <div className="bg-gradient-to-br from-white to-vh-beige/5 rounded-xl shadow-lg border border-vh-beige/30 hover:shadow-xl transition-all duration-300 p-6">
                   <div className="flex items-center justify-between mb-4">
                     <h3 className="text-lg font-semibold text-gray-800">
-                      {isFullTest ? 'Total Marks' : 'Score'}
+                      {isFBSMock ? 'Total Marks' : isFullTest ? 'Total Marks' : 'Score'}
                     </h3>
                     <Target className="text-vh-red" size={24} />
                   </div>
                   <div className="text-3xl font-bold text-vh-red mb-2">
-                    {isFullTest ? (userResult as FullTestResult).totalMarks : (userResult as SimpleTestResult).score}
+                    {isFBSMock ? userResult.totalMarks?.toFixed(2) : isFullTest ? (userResult as FullTestResult).totalMarks : (userResult as SimpleTestResult).score}
                   </div>
-                  {!isFullTest && (
+                  {isFBSMock && (
+                    <div className="text-sm text-gray-600 space-y-1">
+                      <div>MCQ: {userResult.totalMCQ?.toFixed(2)}</div>
+                      <div>Written: {userResult.totalWritten?.toFixed(2)}</div>
+                    </div>
+                  )}
+                  {!isFullTest && !isFBSMock && (
                     <div className="text-sm text-gray-600">
                       Threshold: {(userResult as SimpleTestResult).threshold}
                     </div>

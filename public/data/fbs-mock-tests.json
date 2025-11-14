@@ -1,0 +1,3673 @@
+{
+  "tests": {
+    "DU FBS Mock 1": {
+      "testName": "DU FBS Mock 1",
+      "testType": "fbs-mock",
+      "totalStudents": 24,
+      "results": {
+        "1023456": {
+          "studentId": "1023456",
+          "studentName": "Amreen Choudhury",
+          "sections": {
+            "english": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 16,
+              "attempted": true
+            },
+            "advEnglish": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 12,
+              "attempted": true
+            }
+          },
+          "written": {
+            "essay": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            },
+            "errorDetection": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            }
+          },
+          "totalMCQ": 0,
+          "totalWritten": 0,
+          "totalMarks": 0,
+          "rank": 19,
+          "mcqRank": 19,
+          "passingCriteria": {
+            "englishMCQ": {
+              "required": 5,
+              "achieved": 0,
+              "passed": false
+            },
+            "totalMCQ": {
+              "required": 24,
+              "achieved": 0,
+              "passed": false
+            },
+            "total": {
+              "required": 40,
+              "achieved": 0,
+              "passed": false
+            }
+          },
+          "passedAll": false,
+          "percentile": 0
+        },
+        "1217161": {
+          "studentId": "1217161",
+          "studentName": "Ayaz Mohammad Zahir",
+          "sections": {
+            "english": {
+              "correct": 9,
+              "wrong": 6,
+              "marks": 7.5,
+              "percentage": 46.875,
+              "totalQuestions": 16,
+              "attempted": true
+            },
+            "advEnglish": {
+              "correct": 7,
+              "wrong": 1,
+              "marks": 6.75,
+              "percentage": 56.25,
+              "totalQuestions": 12,
+              "attempted": true
+            },
+            "businessstudies": {
+              "correct": 7,
+              "wrong": 6,
+              "marks": 5.5,
+              "percentage": 34.375,
+              "totalQuestions": 16,
+              "attempted": true
+            },
+            "economics": {
+              "correct": 6,
+              "wrong": 5,
+              "marks": 4.75,
+              "percentage": 29.6875,
+              "totalQuestions": 16,
+              "attempted": true
+            }
+          },
+          "written": {
+            "essay": {
+              "marks": 6.5,
+              "outOf": 10,
+              "attempted": true
+            },
+            "errorDetection": {
+              "marks": 9,
+              "outOf": 10,
+              "attempted": true
+            },
+            "businessstudieswritten": {
+              "marks": 1.5,
+              "outOf": 10,
+              "attempted": true
+            },
+            "economicswritten": {
+              "marks": 4,
+              "outOf": 10,
+              "attempted": true
+            }
+          },
+          "totalMCQ": 24.5,
+          "totalWritten": 21,
+          "totalMarks": 45.5,
+          "rank": 16,
+          "mcqRank": 17,
+          "passingCriteria": {
+            "englishMCQ": {
+              "required": 5,
+              "achieved": 7.5,
+              "passed": true
+            },
+            "totalMCQ": {
+              "required": 24,
+              "achieved": 24.5,
+              "passed": true
+            },
+            "total": {
+              "required": 40,
+              "achieved": 45.5,
+              "passed": true
+            }
+          },
+          "passedAll": true,
+          "percentile": 29
+        },
+        "1738204": {
+          "studentId": "1738204",
+          "studentName": "Farhat Mahmud Megha",
+          "sections": {
+            "english": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 16,
+              "attempted": true
+            },
+            "advEnglish": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 12,
+              "attempted": true
+            }
+          },
+          "written": {
+            "essay": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            },
+            "errorDetection": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            }
+          },
+          "totalMCQ": 0,
+          "totalWritten": 0,
+          "totalMarks": 0,
+          "rank": 19,
+          "mcqRank": 19,
+          "passingCriteria": {
+            "englishMCQ": {
+              "required": 5,
+              "achieved": 0,
+              "passed": false
+            },
+            "totalMCQ": {
+              "required": 24,
+              "achieved": 0,
+              "passed": false
+            },
+            "total": {
+              "required": 40,
+              "achieved": 0,
+              "passed": false
+            }
+          },
+          "passedAll": false,
+          "percentile": 0
+        },
+        "2295618": {
+          "studentId": "2295618",
+          "studentName": "Zafnun Binte Zahid",
+          "sections": {
+            "english": {
+              "correct": 14,
+              "wrong": 2,
+              "marks": 13.5,
+              "percentage": 84.375,
+              "totalQuestions": 16,
+              "attempted": true
+            },
+            "advEnglish": {
+              "correct": 10,
+              "wrong": 2,
+              "marks": 9.5,
+              "percentage": 79.16666666666666,
+              "totalQuestions": 12,
+              "attempted": true
+            },
+            "businessstudies": {
+              "correct": 12,
+              "wrong": 2,
+              "marks": 11.5,
+              "percentage": 71.875,
+              "totalQuestions": 16,
+              "attempted": true
+            },
+            "economics": {
+              "correct": 10,
+              "wrong": 4,
+              "marks": 9,
+              "percentage": 56.25,
+              "totalQuestions": 16,
+              "attempted": true
+            }
+          },
+          "written": {
+            "essay": {
+              "marks": 8,
+              "outOf": 10,
+              "attempted": true
+            },
+            "errorDetection": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            }
+          },
+          "totalMCQ": 43.5,
+          "totalWritten": 8,
+          "totalMarks": 51.5,
+          "rank": 12,
+          "mcqRank": 3,
+          "passingCriteria": {
+            "englishMCQ": {
+              "required": 5,
+              "achieved": 13.5,
+              "passed": true
+            },
+            "totalMCQ": {
+              "required": 24,
+              "achieved": 43.5,
+              "passed": true
+            },
+            "total": {
+              "required": 40,
+              "achieved": 51.5,
+              "passed": true
+            }
+          },
+          "passedAll": true,
+          "percentile": 50
+        },
+        "2957813": {
+          "studentId": "2957813",
+          "studentName": "Hasnat Islam",
+          "sections": {
+            "english": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 16,
+              "attempted": true
+            },
+            "advEnglish": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 12,
+              "attempted": true
+            }
+          },
+          "written": {
+            "essay": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            },
+            "errorDetection": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            }
+          },
+          "totalMCQ": 0,
+          "totalWritten": 0,
+          "totalMarks": 0,
+          "rank": 19,
+          "mcqRank": 19,
+          "passingCriteria": {
+            "englishMCQ": {
+              "required": 5,
+              "achieved": 0,
+              "passed": false
+            },
+            "totalMCQ": {
+              "required": 24,
+              "achieved": 0,
+              "passed": false
+            },
+            "total": {
+              "required": 40,
+              "achieved": 0,
+              "passed": false
+            }
+          },
+          "passedAll": false,
+          "percentile": 0
+        },
+        "3035581": {
+          "studentId": "3035581",
+          "studentName": "Nusrat Tasfia",
+          "sections": {
+            "english": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 16,
+              "attempted": true
+            },
+            "advEnglish": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 12,
+              "attempted": true
+            }
+          },
+          "written": {
+            "essay": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            },
+            "errorDetection": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            }
+          },
+          "totalMCQ": 0,
+          "totalWritten": 0,
+          "totalMarks": 0,
+          "rank": 19,
+          "mcqRank": 19,
+          "passingCriteria": {
+            "englishMCQ": {
+              "required": 5,
+              "achieved": 0,
+              "passed": false
+            },
+            "totalMCQ": {
+              "required": 24,
+              "achieved": 0,
+              "passed": false
+            },
+            "total": {
+              "required": 40,
+              "achieved": 0,
+              "passed": false
+            }
+          },
+          "passedAll": false,
+          "percentile": 0
+        },
+        "3408271": {
+          "studentId": "3408271",
+          "studentName": "Jibran Raiyyan",
+          "sections": {
+            "english": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 16,
+              "attempted": true
+            },
+            "advEnglish": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 12,
+              "attempted": true
+            }
+          },
+          "written": {
+            "essay": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            },
+            "errorDetection": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            }
+          },
+          "totalMCQ": 0,
+          "totalWritten": 0,
+          "totalMarks": 0,
+          "rank": 19,
+          "mcqRank": 19,
+          "passingCriteria": {
+            "englishMCQ": {
+              "required": 5,
+              "achieved": 0,
+              "passed": false
+            },
+            "totalMCQ": {
+              "required": 24,
+              "achieved": 0,
+              "passed": false
+            },
+            "total": {
+              "required": 40,
+              "achieved": 0,
+              "passed": false
+            }
+          },
+          "passedAll": false,
+          "percentile": 0
+        },
+        "4006511": {
+          "studentId": "4006511",
+          "studentName": "Mahabub Alam Rafi",
+          "sections": {
+            "english": {
+              "correct": 9,
+              "wrong": 3,
+              "marks": 8.25,
+              "percentage": 51.5625,
+              "totalQuestions": 16,
+              "attempted": true
+            },
+            "advEnglish": {
+              "correct": 8,
+              "wrong": 3,
+              "marks": 7.25,
+              "percentage": 60.416666666666664,
+              "totalQuestions": 12,
+              "attempted": true
+            },
+            "accounting": {
+              "correct": 6,
+              "wrong": 6,
+              "marks": 4.5,
+              "percentage": 28.125,
+              "totalQuestions": 16,
+              "attempted": true
+            },
+            "economics": {
+              "correct": 3,
+              "wrong": 4,
+              "marks": 2,
+              "percentage": 12.5,
+              "totalQuestions": 16,
+              "attempted": true
+            }
+          },
+          "written": {
+            "essay": {
+              "marks": 5.5,
+              "outOf": 10,
+              "attempted": true
+            },
+            "errorDetection": {
+              "marks": 7,
+              "outOf": 10,
+              "attempted": true
+            },
+            "accountingwritten": {
+              "marks": 6.5,
+              "outOf": 10,
+              "attempted": true
+            },
+            "economicswritten": {
+              "marks": 2,
+              "outOf": 10,
+              "attempted": true
+            }
+          },
+          "totalMCQ": 22,
+          "totalWritten": 21,
+          "totalMarks": 43,
+          "rank": 18,
+          "mcqRank": 18,
+          "passingCriteria": {
+            "englishMCQ": {
+              "required": 5,
+              "achieved": 8.25,
+              "passed": true
+            },
+            "totalMCQ": {
+              "required": 24,
+              "achieved": 22,
+              "passed": false
+            },
+            "total": {
+              "required": 40,
+              "achieved": 43,
+              "passed": true
+            }
+          },
+          "passedAll": false,
+          "percentile": 25
+        },
+        "4176951": {
+          "studentId": "4176951",
+          "studentName": "Kashfia Ahmed",
+          "sections": {
+            "english": {
+              "correct": 11,
+              "wrong": 3,
+              "marks": 10.25,
+              "percentage": 64.0625,
+              "totalQuestions": 16,
+              "attempted": true
+            },
+            "advEnglish": {
+              "correct": 8,
+              "wrong": 1,
+              "marks": 7.75,
+              "percentage": 64.58333333333334,
+              "totalQuestions": 12,
+              "attempted": true
+            },
+            "businessstudies": {
+              "correct": 10,
+              "wrong": 1,
+              "marks": 9.75,
+              "percentage": 60.9375,
+              "totalQuestions": 16,
+              "attempted": true
+            },
+            "economics": {
+              "correct": 6,
+              "wrong": 4,
+              "marks": 5,
+              "percentage": 31.25,
+              "totalQuestions": 16,
+              "attempted": true
+            }
+          },
+          "written": {
+            "essay": {
+              "marks": 7,
+              "outOf": 10,
+              "attempted": true
+            },
+            "errorDetection": {
+              "marks": 8,
+              "outOf": 10,
+              "attempted": true
+            },
+            "businessstudieswritten": {
+              "marks": 3,
+              "outOf": 10,
+              "attempted": true
+            },
+            "economicswritten": {
+              "marks": 5,
+              "outOf": 10,
+              "attempted": true
+            }
+          },
+          "totalMCQ": 32.75,
+          "totalWritten": 23,
+          "totalMarks": 55.75,
+          "rank": 11,
+          "mcqRank": 12,
+          "passingCriteria": {
+            "englishMCQ": {
+              "required": 5,
+              "achieved": 10.25,
+              "passed": true
+            },
+            "totalMCQ": {
+              "required": 24,
+              "achieved": 32.75,
+              "passed": true
+            },
+            "total": {
+              "required": 40,
+              "achieved": 55.75,
+              "passed": true
+            }
+          },
+          "passedAll": true,
+          "percentile": 54
+        },
+        "4215271": {
+          "studentId": "4215271",
+          "studentName": "Sharika Sanjana Chowdhury",
+          "sections": {
+            "english": {
+              "correct": 12,
+              "wrong": 4,
+              "marks": 11,
+              "percentage": 68.75,
+              "totalQuestions": 16,
+              "attempted": true
+            },
+            "advEnglish": {
+              "correct": 9,
+              "wrong": 3,
+              "marks": 8.25,
+              "percentage": 68.75,
+              "totalQuestions": 12,
+              "attempted": true
+            },
+            "businessstudies": {
+              "correct": 13,
+              "wrong": 3,
+              "marks": 12.25,
+              "percentage": 76.5625,
+              "totalQuestions": 16,
+              "attempted": true
+            },
+            "economics": {
+              "correct": 9,
+              "wrong": 6,
+              "marks": 7.5,
+              "percentage": 46.875,
+              "totalQuestions": 16,
+              "attempted": true
+            }
+          },
+          "written": {
+            "essay": {
+              "marks": 6,
+              "outOf": 10,
+              "attempted": true
+            },
+            "errorDetection": {
+              "marks": 7.5,
+              "outOf": 10,
+              "attempted": true
+            },
+            "businessstudieswritten": {
+              "marks": 3,
+              "outOf": 10,
+              "attempted": true
+            },
+            "economicswritten": {
+              "marks": 6,
+              "outOf": 10,
+              "attempted": true
+            }
+          },
+          "totalMCQ": 39,
+          "totalWritten": 22.5,
+          "totalMarks": 61.5,
+          "rank": 8,
+          "mcqRank": 9,
+          "passingCriteria": {
+            "englishMCQ": {
+              "required": 5,
+              "achieved": 11,
+              "passed": true
+            },
+            "totalMCQ": {
+              "required": 24,
+              "achieved": 39,
+              "passed": true
+            },
+            "total": {
+              "required": 40,
+              "achieved": 61.5,
+              "passed": true
+            }
+          },
+          "passedAll": true,
+          "percentile": 67
+        },
+        "4598891": {
+          "studentId": "4598891",
+          "studentName": "Zuhayr Adeeb Ahmed",
+          "sections": {
+            "english": {
+              "correct": 15,
+              "wrong": 1,
+              "marks": 14.75,
+              "percentage": 92.1875,
+              "totalQuestions": 16,
+              "attempted": true
+            },
+            "advEnglish": {
+              "correct": 9,
+              "wrong": 2,
+              "marks": 8.5,
+              "percentage": 70.83333333333334,
+              "totalQuestions": 12,
+              "attempted": true
+            },
+            "businessstudies": {
+              "correct": 9,
+              "wrong": 5,
+              "marks": 7.75,
+              "percentage": 48.4375,
+              "totalQuestions": 16,
+              "attempted": true
+            },
+            "economics": {
+              "correct": 11,
+              "wrong": 3,
+              "marks": 10.25,
+              "percentage": 64.0625,
+              "totalQuestions": 16,
+              "attempted": true
+            }
+          },
+          "written": {
+            "essay": {
+              "marks": 7,
+              "outOf": 10,
+              "attempted": true
+            },
+            "errorDetection": {
+              "marks": 8,
+              "outOf": 10,
+              "attempted": true
+            },
+            "businessstudieswritten": {
+              "marks": 5,
+              "outOf": 10,
+              "attempted": true
+            },
+            "economicswritten": {
+              "marks": 4,
+              "outOf": 10,
+              "attempted": true
+            }
+          },
+          "totalMCQ": 41.25,
+          "totalWritten": 24,
+          "totalMarks": 65.25,
+          "rank": 5,
+          "mcqRank": 5,
+          "passingCriteria": {
+            "englishMCQ": {
+              "required": 5,
+              "achieved": 14.75,
+              "passed": true
+            },
+            "totalMCQ": {
+              "required": 24,
+              "achieved": 41.25,
+              "passed": true
+            },
+            "total": {
+              "required": 40,
+              "achieved": 65.25,
+              "passed": true
+            }
+          },
+          "passedAll": true,
+          "percentile": 79
+        },
+        "4681295": {
+          "studentId": "4681295",
+          "studentName": "Ramisa Raida Ali",
+          "sections": {
+            "english": {
+              "correct": 10,
+              "wrong": 4,
+              "marks": 9,
+              "percentage": 56.25,
+              "totalQuestions": 16,
+              "attempted": true
+            },
+            "advEnglish": {
+              "correct": 6,
+              "wrong": 4,
+              "marks": 5,
+              "percentage": 41.66666666666667,
+              "totalQuestions": 12,
+              "attempted": true
+            },
+            "businessstudies": {
+              "correct": 9,
+              "wrong": 3,
+              "marks": 8.25,
+              "percentage": 51.5625,
+              "totalQuestions": 16,
+              "attempted": true
+            },
+            "economics": {
+              "correct": 7,
+              "wrong": 5,
+              "marks": 5.75,
+              "percentage": 35.9375,
+              "totalQuestions": 16,
+              "attempted": true
+            }
+          },
+          "written": {
+            "essay": {
+              "marks": 8,
+              "outOf": 10,
+              "attempted": true
+            },
+            "errorDetection": {
+              "marks": 10,
+              "outOf": 10,
+              "attempted": true
+            }
+          },
+          "totalMCQ": 28,
+          "totalWritten": 18,
+          "totalMarks": 46,
+          "rank": 15,
+          "mcqRank": 14,
+          "passingCriteria": {
+            "englishMCQ": {
+              "required": 5,
+              "achieved": 9,
+              "passed": true
+            },
+            "totalMCQ": {
+              "required": 24,
+              "achieved": 28,
+              "passed": true
+            },
+            "total": {
+              "required": 40,
+              "achieved": 46,
+              "passed": true
+            }
+          },
+          "passedAll": true,
+          "percentile": 38
+        },
+        "5074136": {
+          "studentId": "5074136",
+          "studentName": "Ramisa Rahman",
+          "sections": {
+            "english": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 16,
+              "attempted": true
+            },
+            "advEnglish": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 12,
+              "attempted": true
+            }
+          },
+          "written": {
+            "essay": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            },
+            "errorDetection": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            }
+          },
+          "totalMCQ": 0,
+          "totalWritten": 0,
+          "totalMarks": 0,
+          "rank": 19,
+          "mcqRank": 19,
+          "passingCriteria": {
+            "englishMCQ": {
+              "required": 5,
+              "achieved": 0,
+              "passed": false
+            },
+            "totalMCQ": {
+              "required": 24,
+              "achieved": 0,
+              "passed": false
+            },
+            "total": {
+              "required": 40,
+              "achieved": 0,
+              "passed": false
+            }
+          },
+          "passedAll": false,
+          "percentile": 0
+        },
+        "5421271": {
+          "studentId": "5421271",
+          "studentName": "Mansib Rahman",
+          "sections": {
+            "english": {
+              "correct": 8,
+              "wrong": 4,
+              "marks": 7,
+              "percentage": 43.75,
+              "totalQuestions": 16,
+              "attempted": true
+            },
+            "advEnglish": {
+              "correct": 4,
+              "wrong": 1,
+              "marks": 3.75,
+              "percentage": 31.25,
+              "totalQuestions": 12,
+              "attempted": true
+            },
+            "businessstudies": {
+              "correct": 9,
+              "wrong": 2,
+              "marks": 8.5,
+              "percentage": 53.125,
+              "totalQuestions": 16,
+              "attempted": true
+            },
+            "accounting": {
+              "correct": 7,
+              "wrong": 5,
+              "marks": 5.75,
+              "percentage": 35.9375,
+              "totalQuestions": 16,
+              "attempted": true
+            }
+          },
+          "written": {
+            "essay": {
+              "marks": 6,
+              "outOf": 10,
+              "attempted": true
+            },
+            "errorDetection": {
+              "marks": 5,
+              "outOf": 10,
+              "attempted": true
+            },
+            "businessstudieswritten": {
+              "marks": 4.5,
+              "outOf": 10,
+              "attempted": true
+            },
+            "accountingwritten": {
+              "marks": 5,
+              "outOf": 10,
+              "attempted": true
+            }
+          },
+          "totalMCQ": 25,
+          "totalWritten": 20.5,
+          "totalMarks": 45.5,
+          "rank": 16,
+          "mcqRank": 16,
+          "passingCriteria": {
+            "englishMCQ": {
+              "required": 5,
+              "achieved": 7,
+              "passed": true
+            },
+            "totalMCQ": {
+              "required": 24,
+              "achieved": 25,
+              "passed": true
+            },
+            "total": {
+              "required": 40,
+              "achieved": 45.5,
+              "passed": true
+            }
+          },
+          "passedAll": true,
+          "percentile": 29
+        },
+        "6040571": {
+          "studentId": "6040571",
+          "studentName": "Alex Alamgir",
+          "sections": {
+            "english": {
+              "correct": 10,
+              "wrong": 6,
+              "marks": 8.5,
+              "percentage": 53.125,
+              "totalQuestions": 16,
+              "attempted": true
+            },
+            "advEnglish": {
+              "correct": 7,
+              "wrong": 5,
+              "marks": 5.75,
+              "percentage": 47.91666666666667,
+              "totalQuestions": 12,
+              "attempted": true
+            },
+            "businessstudies": {
+              "correct": 13,
+              "wrong": 3,
+              "marks": 12.25,
+              "percentage": 76.5625,
+              "totalQuestions": 16,
+              "attempted": true
+            },
+            "economics": {
+              "correct": 10,
+              "wrong": 5,
+              "marks": 8.75,
+              "percentage": 54.6875,
+              "totalQuestions": 16,
+              "attempted": true
+            }
+          },
+          "written": {
+            "essay": {
+              "marks": 7,
+              "outOf": 10,
+              "attempted": true
+            },
+            "errorDetection": {
+              "marks": 7.5,
+              "outOf": 10,
+              "attempted": true
+            },
+            "businessstudieswritten": {
+              "marks": 3.5,
+              "outOf": 10,
+              "attempted": true
+            },
+            "economicswritten": {
+              "marks": 6.5,
+              "outOf": 10,
+              "attempted": true
+            }
+          },
+          "totalMCQ": 35.25,
+          "totalWritten": 24.5,
+          "totalMarks": 59.75,
+          "rank": 9,
+          "mcqRank": 10,
+          "passingCriteria": {
+            "englishMCQ": {
+              "required": 5,
+              "achieved": 8.5,
+              "passed": true
+            },
+            "totalMCQ": {
+              "required": 24,
+              "achieved": 35.25,
+              "passed": true
+            },
+            "total": {
+              "required": 40,
+              "achieved": 59.75,
+              "passed": true
+            }
+          },
+          "passedAll": true,
+          "percentile": 63
+        },
+        "6197380": {
+          "studentId": "6197380",
+          "studentName": "Sayaf Bin Abdullah",
+          "sections": {
+            "english": {
+              "correct": 12,
+              "wrong": 2,
+              "marks": 11.5,
+              "percentage": 71.875,
+              "totalQuestions": 16,
+              "attempted": true
+            },
+            "advEnglish": {
+              "correct": 7,
+              "wrong": 2,
+              "marks": 6.5,
+              "percentage": 54.166666666666664,
+              "totalQuestions": 12,
+              "attempted": true
+            },
+            "businessstudies": {
+              "correct": 9,
+              "wrong": 3,
+              "marks": 8.25,
+              "percentage": 51.5625,
+              "totalQuestions": 16,
+              "attempted": true
+            },
+            "economics": {
+              "correct": 10,
+              "wrong": 5,
+              "marks": 8.75,
+              "percentage": 54.6875,
+              "totalQuestions": 16,
+              "attempted": true
+            }
+          },
+          "written": {
+            "essay": {
+              "marks": 7,
+              "outOf": 10,
+              "attempted": true
+            },
+            "errorDetection": {
+              "marks": 10,
+              "outOf": 10,
+              "attempted": true
+            },
+            "businessstudieswritten": {
+              "marks": 3,
+              "outOf": 10,
+              "attempted": true
+            },
+            "economicswritten": {
+              "marks": 4.5,
+              "outOf": 10,
+              "attempted": true
+            }
+          },
+          "totalMCQ": 35,
+          "totalWritten": 24.5,
+          "totalMarks": 59.5,
+          "rank": 10,
+          "mcqRank": 11,
+          "passingCriteria": {
+            "englishMCQ": {
+              "required": 5,
+              "achieved": 11.5,
+              "passed": true
+            },
+            "totalMCQ": {
+              "required": 24,
+              "achieved": 35,
+              "passed": true
+            },
+            "total": {
+              "required": 40,
+              "achieved": 59.5,
+              "passed": true
+            }
+          },
+          "passedAll": true,
+          "percentile": 58
+        },
+        "6211721": {
+          "studentId": "6211721",
+          "studentName": "Zaian Jannat Hussain",
+          "sections": {
+            "english": {
+              "correct": 12,
+              "wrong": 3,
+              "marks": 11.25,
+              "percentage": 70.3125,
+              "totalQuestions": 16,
+              "attempted": true
+            },
+            "advEnglish": {
+              "correct": 9,
+              "wrong": 3,
+              "marks": 8.25,
+              "percentage": 68.75,
+              "totalQuestions": 12,
+              "attempted": true
+            },
+            "businessstudies": {
+              "correct": 14,
+              "wrong": 0,
+              "marks": 14,
+              "percentage": 87.5,
+              "totalQuestions": 16,
+              "attempted": true
+            },
+            "economics": {
+              "correct": 10,
+              "wrong": 4,
+              "marks": 9,
+              "percentage": 56.25,
+              "totalQuestions": 16,
+              "attempted": true
+            }
+          },
+          "written": {
+            "essay": {
+              "marks": 7,
+              "outOf": 10,
+              "attempted": true
+            },
+            "errorDetection": {
+              "marks": 7,
+              "outOf": 10,
+              "attempted": true
+            },
+            "businessstudieswritten": {
+              "marks": 4.5,
+              "outOf": 10,
+              "attempted": true
+            },
+            "economicswritten": {
+              "marks": 5.25,
+              "outOf": 10,
+              "attempted": true
+            }
+          },
+          "totalMCQ": 42.5,
+          "totalWritten": 23.75,
+          "totalMarks": 66.25,
+          "rank": 4,
+          "mcqRank": 4,
+          "passingCriteria": {
+            "englishMCQ": {
+              "required": 5,
+              "achieved": 11.25,
+              "passed": true
+            },
+            "totalMCQ": {
+              "required": 24,
+              "achieved": 42.5,
+              "passed": true
+            },
+            "total": {
+              "required": 40,
+              "achieved": 66.25,
+              "passed": true
+            }
+          },
+          "passedAll": true,
+          "percentile": 83
+        },
+        "6246901": {
+          "studentId": "6246901",
+          "studentName": "Tarannum Rashid",
+          "sections": {
+            "english": {
+              "correct": 14,
+              "wrong": 2,
+              "marks": 13.5,
+              "percentage": 84.375,
+              "totalQuestions": 16,
+              "attempted": true
+            },
+            "advEnglish": {
+              "correct": 10,
+              "wrong": 2,
+              "marks": 9.5,
+              "percentage": 79.16666666666666,
+              "totalQuestions": 12,
+              "attempted": true
+            },
+            "businessstudies": {
+              "correct": 15,
+              "wrong": 1,
+              "marks": 14.75,
+              "percentage": 92.1875,
+              "totalQuestions": 16,
+              "attempted": true
+            },
+            "economics": {
+              "correct": 10,
+              "wrong": 5,
+              "marks": 8.75,
+              "percentage": 54.6875,
+              "totalQuestions": 16,
+              "attempted": true
+            }
+          },
+          "written": {
+            "essay": {
+              "marks": 8,
+              "outOf": 10,
+              "attempted": true
+            },
+            "errorDetection": {
+              "marks": 10,
+              "outOf": 10,
+              "attempted": true
+            },
+            "businessstudieswritten": {
+              "marks": 4.5,
+              "outOf": 10,
+              "attempted": true
+            },
+            "economicswritten": {
+              "marks": 7.5,
+              "outOf": 10,
+              "attempted": true
+            }
+          },
+          "totalMCQ": 46.5,
+          "totalWritten": 30,
+          "totalMarks": 76.5,
+          "rank": 1,
+          "mcqRank": 2,
+          "passingCriteria": {
+            "englishMCQ": {
+              "required": 5,
+              "achieved": 13.5,
+              "passed": true
+            },
+            "totalMCQ": {
+              "required": 24,
+              "achieved": 46.5,
+              "passed": true
+            },
+            "total": {
+              "required": 40,
+              "achieved": 76.5,
+              "passed": true
+            }
+          },
+          "passedAll": true,
+          "percentile": 96
+        },
+        "6480811": {
+          "studentId": "6480811",
+          "studentName": "Ayesha Khaled",
+          "sections": {
+            "english": {
+              "correct": 10,
+              "wrong": 3,
+              "marks": 9.25,
+              "percentage": 57.8125,
+              "totalQuestions": 16,
+              "attempted": true
+            },
+            "advEnglish": {
+              "correct": 6,
+              "wrong": 2,
+              "marks": 5.5,
+              "percentage": 45.83333333333333,
+              "totalQuestions": 12,
+              "attempted": true
+            },
+            "businessstudies": {
+              "correct": 9,
+              "wrong": 3,
+              "marks": 8.25,
+              "percentage": 51.5625,
+              "totalQuestions": 16,
+              "attempted": true
+            },
+            "economics": {
+              "correct": 5,
+              "wrong": 6,
+              "marks": 3.5,
+              "percentage": 21.875,
+              "totalQuestions": 16,
+              "attempted": true
+            }
+          },
+          "written": {
+            "essay": {
+              "marks": 5,
+              "outOf": 10,
+              "attempted": true
+            },
+            "errorDetection": {
+              "marks": 9,
+              "outOf": 10,
+              "attempted": true
+            },
+            "businessstudieswritten": {
+              "marks": 3,
+              "outOf": 10,
+              "attempted": true
+            },
+            "economicswritten": {
+              "marks": 5,
+              "outOf": 10,
+              "attempted": true
+            }
+          },
+          "totalMCQ": 26.5,
+          "totalWritten": 22,
+          "totalMarks": 48.5,
+          "rank": 14,
+          "mcqRank": 15,
+          "passingCriteria": {
+            "englishMCQ": {
+              "required": 5,
+              "achieved": 9.25,
+              "passed": true
+            },
+            "totalMCQ": {
+              "required": 24,
+              "achieved": 26.5,
+              "passed": true
+            },
+            "total": {
+              "required": 40,
+              "achieved": 48.5,
+              "passed": true
+            }
+          },
+          "passedAll": true,
+          "percentile": 42
+        },
+        "6500041": {
+          "studentId": "6500041",
+          "studentName": "Aymaan Zaman",
+          "sections": {
+            "english": {
+              "correct": 9,
+              "wrong": 7,
+              "marks": 7.25,
+              "percentage": 45.3125,
+              "totalQuestions": 16,
+              "attempted": true
+            },
+            "advEnglish": {
+              "correct": 6,
+              "wrong": 2,
+              "marks": 5.5,
+              "percentage": 45.83333333333333,
+              "totalQuestions": 12,
+              "attempted": true
+            },
+            "businessstudies": {
+              "correct": 9,
+              "wrong": 1,
+              "marks": 8.75,
+              "percentage": 54.6875,
+              "totalQuestions": 16,
+              "attempted": true
+            },
+            "economics": {
+              "correct": 8,
+              "wrong": 5,
+              "marks": 6.75,
+              "percentage": 42.1875,
+              "totalQuestions": 16,
+              "attempted": true
+            }
+          },
+          "written": {
+            "essay": {
+              "marks": 5.5,
+              "outOf": 10,
+              "attempted": true
+            },
+            "errorDetection": {
+              "marks": 7,
+              "outOf": 10,
+              "attempted": true
+            },
+            "businessstudieswritten": {
+              "marks": 4,
+              "outOf": 10,
+              "attempted": true
+            },
+            "economicswritten": {
+              "marks": 6.5,
+              "outOf": 10,
+              "attempted": true
+            }
+          },
+          "totalMCQ": 28.25,
+          "totalWritten": 23,
+          "totalMarks": 51.25,
+          "rank": 13,
+          "mcqRank": 13,
+          "passingCriteria": {
+            "englishMCQ": {
+              "required": 5,
+              "achieved": 7.25,
+              "passed": true
+            },
+            "totalMCQ": {
+              "required": 24,
+              "achieved": 28.25,
+              "passed": true
+            },
+            "total": {
+              "required": 40,
+              "achieved": 51.25,
+              "passed": true
+            }
+          },
+          "passedAll": true,
+          "percentile": 46
+        },
+        "7842103": {
+          "studentId": "7842103",
+          "studentName": "Shafqat Nur",
+          "sections": {
+            "english": {
+              "correct": 14,
+              "wrong": 1,
+              "marks": 13.75,
+              "percentage": 85.9375,
+              "totalQuestions": 16,
+              "attempted": true
+            },
+            "advEnglish": {
+              "correct": 10,
+              "wrong": 2,
+              "marks": 9.5,
+              "percentage": 79.16666666666666,
+              "totalQuestions": 12,
+              "attempted": true
+            },
+            "businessstudies": {
+              "correct": 13,
+              "wrong": 2,
+              "marks": 12.5,
+              "percentage": 78.125,
+              "totalQuestions": 16,
+              "attempted": true
+            },
+            "economics": {
+              "correct": 7,
+              "wrong": 7,
+              "marks": 5.25,
+              "percentage": 32.8125,
+              "totalQuestions": 16,
+              "attempted": true
+            }
+          },
+          "written": {
+            "essay": {
+              "marks": 6,
+              "outOf": 10,
+              "attempted": true
+            },
+            "errorDetection": {
+              "marks": 9,
+              "outOf": 10,
+              "attempted": true
+            },
+            "businessstudieswritten": {
+              "marks": 4.5,
+              "outOf": 10,
+              "attempted": true
+            },
+            "economicswritten": {
+              "marks": 3,
+              "outOf": 10,
+              "attempted": true
+            }
+          },
+          "totalMCQ": 41,
+          "totalWritten": 22.5,
+          "totalMarks": 63.5,
+          "rank": 6,
+          "mcqRank": 6,
+          "passingCriteria": {
+            "englishMCQ": {
+              "required": 5,
+              "achieved": 13.75,
+              "passed": true
+            },
+            "totalMCQ": {
+              "required": 24,
+              "achieved": 41,
+              "passed": true
+            },
+            "total": {
+              "required": 40,
+              "achieved": 63.5,
+              "passed": true
+            }
+          },
+          "passedAll": true,
+          "percentile": 75
+        },
+        "8395612": {
+          "studentId": "8395612",
+          "studentName": "Tahi Noor Zaman",
+          "sections": {
+            "english": {
+              "correct": 15,
+              "wrong": 1,
+              "marks": 14.75,
+              "percentage": 92.1875,
+              "totalQuestions": 16,
+              "attempted": true
+            },
+            "advEnglish": {
+              "correct": 12,
+              "wrong": 0,
+              "marks": 12,
+              "percentage": 100,
+              "totalQuestions": 12,
+              "attempted": true
+            },
+            "businessstudies": {
+              "correct": 12,
+              "wrong": 4,
+              "marks": 11,
+              "percentage": 68.75,
+              "totalQuestions": 16,
+              "attempted": true
+            },
+            "economics": {
+              "correct": 10,
+              "wrong": 4,
+              "marks": 9,
+              "percentage": 56.25,
+              "totalQuestions": 16,
+              "attempted": true
+            }
+          },
+          "written": {
+            "essay": {
+              "marks": 7,
+              "outOf": 10,
+              "attempted": true
+            },
+            "errorDetection": {
+              "marks": 9,
+              "outOf": 10,
+              "attempted": true
+            },
+            "businessstudieswritten": {
+              "marks": 4,
+              "outOf": 10,
+              "attempted": true
+            }
+          },
+          "totalMCQ": 46.75,
+          "totalWritten": 20,
+          "totalMarks": 66.75,
+          "rank": 3,
+          "mcqRank": 1,
+          "passingCriteria": {
+            "englishMCQ": {
+              "required": 5,
+              "achieved": 14.75,
+              "passed": true
+            },
+            "totalMCQ": {
+              "required": 24,
+              "achieved": 46.75,
+              "passed": true
+            },
+            "total": {
+              "required": 40,
+              "achieved": 66.75,
+              "passed": true
+            }
+          },
+          "passedAll": true,
+          "percentile": 88
+        },
+        "9342451": {
+          "studentId": "9342451",
+          "studentName": "Aseya Siddiqua Saba",
+          "sections": {
+            "english": {
+              "correct": 14,
+              "wrong": 2,
+              "marks": 13.5,
+              "percentage": 84.375,
+              "totalQuestions": 16,
+              "attempted": true
+            },
+            "advEnglish": {
+              "correct": 8,
+              "wrong": 3,
+              "marks": 7.25,
+              "percentage": 60.416666666666664,
+              "totalQuestions": 12,
+              "attempted": true
+            },
+            "businessstudies": {
+              "correct": 12,
+              "wrong": 3,
+              "marks": 11.25,
+              "percentage": 70.3125,
+              "totalQuestions": 16,
+              "attempted": true
+            },
+            "economics": {
+              "correct": 9,
+              "wrong": 6,
+              "marks": 7.5,
+              "percentage": 46.875,
+              "totalQuestions": 16,
+              "attempted": true
+            }
+          },
+          "written": {
+            "essay": {
+              "marks": 6.5,
+              "outOf": 10,
+              "attempted": true
+            },
+            "errorDetection": {
+              "marks": 7,
+              "outOf": 10,
+              "attempted": true
+            },
+            "businessstudieswritten": {
+              "marks": 4,
+              "outOf": 10,
+              "attempted": true
+            },
+            "economicswritten": {
+              "marks": 6,
+              "outOf": 10,
+              "attempted": true
+            }
+          },
+          "totalMCQ": 39.5,
+          "totalWritten": 23.5,
+          "totalMarks": 63,
+          "rank": 7,
+          "mcqRank": 8,
+          "passingCriteria": {
+            "englishMCQ": {
+              "required": 5,
+              "achieved": 13.5,
+              "passed": true
+            },
+            "totalMCQ": {
+              "required": 24,
+              "achieved": 39.5,
+              "passed": true
+            },
+            "total": {
+              "required": 40,
+              "achieved": 63,
+              "passed": true
+            }
+          },
+          "passedAll": true,
+          "percentile": 71
+        },
+        "9625470": {
+          "studentId": "9625470",
+          "studentName": "Tasnia Taha",
+          "sections": {
+            "english": {
+              "correct": 14,
+              "wrong": 1,
+              "marks": 13.75,
+              "percentage": 85.9375,
+              "totalQuestions": 16,
+              "attempted": true
+            },
+            "advEnglish": {
+              "correct": 8,
+              "wrong": 3,
+              "marks": 7.25,
+              "percentage": 60.416666666666664,
+              "totalQuestions": 12,
+              "attempted": true
+            },
+            "businessstudies": {
+              "correct": 13,
+              "wrong": 3,
+              "marks": 12.25,
+              "percentage": 76.5625,
+              "totalQuestions": 16,
+              "attempted": true
+            },
+            "accounting": {
+              "correct": 8,
+              "wrong": 6,
+              "marks": 6.5,
+              "percentage": 40.625,
+              "totalQuestions": 16,
+              "attempted": true
+            }
+          },
+          "written": {
+            "essay": {
+              "marks": 7,
+              "outOf": 10,
+              "attempted": true
+            },
+            "errorDetection": {
+              "marks": 7,
+              "outOf": 10,
+              "attempted": true
+            },
+            "businessstudieswritten": {
+              "marks": 4.25,
+              "outOf": 10,
+              "attempted": true
+            },
+            "accountingwritten": {
+              "marks": 6,
+              "outOf": 10,
+              "attempted": true
+            },
+            "economicswritten": {
+              "marks": 5.5,
+              "outOf": 10,
+              "attempted": true
+            }
+          },
+          "totalMCQ": 39.75,
+          "totalWritten": 29.75,
+          "totalMarks": 69.5,
+          "rank": 2,
+          "mcqRank": 7,
+          "passingCriteria": {
+            "englishMCQ": {
+              "required": 5,
+              "achieved": 13.75,
+              "passed": true
+            },
+            "totalMCQ": {
+              "required": 24,
+              "achieved": 39.75,
+              "passed": true
+            },
+            "total": {
+              "required": 40,
+              "achieved": 69.5,
+              "passed": true
+            }
+          },
+          "passedAll": true,
+          "percentile": 92
+        }
+      },
+      "classStats": {
+        "average": 43.270833333333336,
+        "median": 51.25,
+        "highest": 76.5,
+        "lowest": 0,
+        "totalStudents": 24,
+        "passCount": 17,
+        "failCount": 7
+      }
+    },
+    "DU FBS Mock 2": {
+      "testName": "DU FBS Mock 2",
+      "testType": "fbs-mock",
+      "totalStudents": 24,
+      "results": {
+        "1023456": {
+          "studentId": "1023456",
+          "studentName": "Amreen Choudhury",
+          "sections": {
+            "english": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 16,
+              "attempted": true
+            },
+            "advEnglish": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 12,
+              "attempted": true
+            }
+          },
+          "written": {
+            "essay": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            },
+            "errorDetection": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            }
+          },
+          "totalMCQ": 0,
+          "totalWritten": 0,
+          "totalMarks": 0,
+          "rank": 17,
+          "mcqRank": 17,
+          "passingCriteria": {
+            "englishMCQ": {
+              "required": 5,
+              "achieved": 0,
+              "passed": false
+            },
+            "totalMCQ": {
+              "required": 24,
+              "achieved": 0,
+              "passed": false
+            },
+            "total": {
+              "required": 40,
+              "achieved": 0,
+              "passed": false
+            }
+          },
+          "passedAll": false,
+          "percentile": 0
+        },
+        "1217161": {
+          "studentId": "1217161",
+          "studentName": "Ayaz Mohammad Zahir",
+          "sections": {
+            "english": {
+              "correct": 14,
+              "wrong": 2,
+              "marks": 13.5,
+              "percentage": 84.375,
+              "totalQuestions": 16,
+              "attempted": true
+            },
+            "advEnglish": {
+              "correct": 10,
+              "wrong": 2,
+              "marks": 9.5,
+              "percentage": 79.16666666666666,
+              "totalQuestions": 12,
+              "attempted": true
+            },
+            "businessstudies": {
+              "correct": 11,
+              "wrong": 5,
+              "marks": 9.75,
+              "percentage": 60.9375,
+              "totalQuestions": 16,
+              "attempted": true
+            },
+            "economics": {
+              "correct": 6,
+              "wrong": 8,
+              "marks": 4,
+              "percentage": 25,
+              "totalQuestions": 16,
+              "attempted": true
+            }
+          },
+          "written": {
+            "essay": {
+              "marks": 5.5,
+              "outOf": 10,
+              "attempted": true
+            },
+            "errorDetection": {
+              "marks": 4,
+              "outOf": 10,
+              "attempted": true
+            },
+            "businessstudieswritten": {
+              "marks": 1.5,
+              "outOf": 10,
+              "attempted": true
+            },
+            "economicswritten": {
+              "marks": 7,
+              "outOf": 10,
+              "attempted": true
+            }
+          },
+          "totalMCQ": 36.75,
+          "totalWritten": 18,
+          "totalMarks": 54.75,
+          "rank": 10,
+          "mcqRank": 9,
+          "passingCriteria": {
+            "englishMCQ": {
+              "required": 5,
+              "achieved": 13.5,
+              "passed": true
+            },
+            "totalMCQ": {
+              "required": 24,
+              "achieved": 36.75,
+              "passed": true
+            },
+            "total": {
+              "required": 40,
+              "achieved": 54.75,
+              "passed": true
+            }
+          },
+          "passedAll": true,
+          "percentile": 58
+        },
+        "1738204": {
+          "studentId": "1738204",
+          "studentName": "Farhat Mahmud Megha",
+          "sections": {
+            "english": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 16,
+              "attempted": true
+            },
+            "advEnglish": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 12,
+              "attempted": true
+            }
+          },
+          "written": {
+            "essay": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            },
+            "errorDetection": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            }
+          },
+          "totalMCQ": 0,
+          "totalWritten": 0,
+          "totalMarks": 0,
+          "rank": 17,
+          "mcqRank": 17,
+          "passingCriteria": {
+            "englishMCQ": {
+              "required": 5,
+              "achieved": 0,
+              "passed": false
+            },
+            "totalMCQ": {
+              "required": 24,
+              "achieved": 0,
+              "passed": false
+            },
+            "total": {
+              "required": 40,
+              "achieved": 0,
+              "passed": false
+            }
+          },
+          "passedAll": false,
+          "percentile": 0
+        },
+        "2295618": {
+          "studentId": "2295618",
+          "studentName": "Zafnun Binte Zahid",
+          "sections": {
+            "english": {
+              "correct": 14,
+              "wrong": 1,
+              "marks": 13.75,
+              "percentage": 85.9375,
+              "totalQuestions": 16,
+              "attempted": true
+            },
+            "advEnglish": {
+              "correct": 9,
+              "wrong": 2,
+              "marks": 8.5,
+              "percentage": 70.83333333333334,
+              "totalQuestions": 12,
+              "attempted": true
+            },
+            "businessstudies": {
+              "correct": 13,
+              "wrong": 0,
+              "marks": 13,
+              "percentage": 81.25,
+              "totalQuestions": 16,
+              "attempted": true
+            },
+            "economics": {
+              "correct": 9,
+              "wrong": 4,
+              "marks": 8,
+              "percentage": 50,
+              "totalQuestions": 16,
+              "attempted": true
+            }
+          },
+          "written": {
+            "essay": {
+              "marks": 8,
+              "outOf": 10,
+              "attempted": true
+            },
+            "errorDetection": {
+              "marks": 6,
+              "outOf": 10,
+              "attempted": true
+            },
+            "businessstudieswritten": {
+              "marks": 5.5,
+              "outOf": 10,
+              "attempted": true
+            },
+            "economicswritten": {
+              "marks": 8.5,
+              "outOf": 10,
+              "attempted": true
+            }
+          },
+          "totalMCQ": 43.25,
+          "totalWritten": 28,
+          "totalMarks": 71.25,
+          "rank": 3,
+          "mcqRank": 3,
+          "passingCriteria": {
+            "englishMCQ": {
+              "required": 5,
+              "achieved": 13.75,
+              "passed": true
+            },
+            "totalMCQ": {
+              "required": 24,
+              "achieved": 43.25,
+              "passed": true
+            },
+            "total": {
+              "required": 40,
+              "achieved": 71.25,
+              "passed": true
+            }
+          },
+          "passedAll": true,
+          "percentile": 88
+        },
+        "2957813": {
+          "studentId": "2957813",
+          "studentName": "Hasnat Islam",
+          "sections": {
+            "english": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 16,
+              "attempted": true
+            },
+            "advEnglish": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 12,
+              "attempted": true
+            }
+          },
+          "written": {
+            "essay": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            },
+            "errorDetection": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            }
+          },
+          "totalMCQ": 0,
+          "totalWritten": 0,
+          "totalMarks": 0,
+          "rank": 17,
+          "mcqRank": 17,
+          "passingCriteria": {
+            "englishMCQ": {
+              "required": 5,
+              "achieved": 0,
+              "passed": false
+            },
+            "totalMCQ": {
+              "required": 24,
+              "achieved": 0,
+              "passed": false
+            },
+            "total": {
+              "required": 40,
+              "achieved": 0,
+              "passed": false
+            }
+          },
+          "passedAll": false,
+          "percentile": 0
+        },
+        "3035581": {
+          "studentId": "3035581",
+          "studentName": "Nusrat Tasfia",
+          "sections": {
+            "english": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 16,
+              "attempted": true
+            },
+            "advEnglish": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 12,
+              "attempted": true
+            }
+          },
+          "written": {
+            "essay": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            },
+            "errorDetection": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            }
+          },
+          "totalMCQ": 0,
+          "totalWritten": 0,
+          "totalMarks": 0,
+          "rank": 17,
+          "mcqRank": 17,
+          "passingCriteria": {
+            "englishMCQ": {
+              "required": 5,
+              "achieved": 0,
+              "passed": false
+            },
+            "totalMCQ": {
+              "required": 24,
+              "achieved": 0,
+              "passed": false
+            },
+            "total": {
+              "required": 40,
+              "achieved": 0,
+              "passed": false
+            }
+          },
+          "passedAll": false,
+          "percentile": 0
+        },
+        "3408271": {
+          "studentId": "3408271",
+          "studentName": "Jibran Raiyyan",
+          "sections": {
+            "english": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 16,
+              "attempted": true
+            },
+            "advEnglish": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 12,
+              "attempted": true
+            }
+          },
+          "written": {
+            "essay": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            },
+            "errorDetection": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            }
+          },
+          "totalMCQ": 0,
+          "totalWritten": 0,
+          "totalMarks": 0,
+          "rank": 17,
+          "mcqRank": 17,
+          "passingCriteria": {
+            "englishMCQ": {
+              "required": 5,
+              "achieved": 0,
+              "passed": false
+            },
+            "totalMCQ": {
+              "required": 24,
+              "achieved": 0,
+              "passed": false
+            },
+            "total": {
+              "required": 40,
+              "achieved": 0,
+              "passed": false
+            }
+          },
+          "passedAll": false,
+          "percentile": 0
+        },
+        "4006511": {
+          "studentId": "4006511",
+          "studentName": "Mahabub Alam Rafi",
+          "sections": {
+            "english": {
+              "correct": 14,
+              "wrong": 2,
+              "marks": 13.5,
+              "percentage": 84.375,
+              "totalQuestions": 16,
+              "attempted": true
+            },
+            "advEnglish": {
+              "correct": 11,
+              "wrong": 0,
+              "marks": 11,
+              "percentage": 91.66666666666666,
+              "totalQuestions": 12,
+              "attempted": true
+            },
+            "accounting": {
+              "correct": 4,
+              "wrong": 5,
+              "marks": 2.75,
+              "percentage": 17.1875,
+              "totalQuestions": 16,
+              "attempted": true
+            },
+            "economics": {
+              "correct": 4,
+              "wrong": 4,
+              "marks": 3,
+              "percentage": 18.75,
+              "totalQuestions": 16,
+              "attempted": true
+            }
+          },
+          "written": {
+            "essay": {
+              "marks": 5.5,
+              "outOf": 10,
+              "attempted": true
+            },
+            "errorDetection": {
+              "marks": 4,
+              "outOf": 10,
+              "attempted": true
+            },
+            "accountingwritten": {
+              "marks": 4,
+              "outOf": 10,
+              "attempted": true
+            },
+            "economicswritten": {
+              "marks": 1,
+              "outOf": 10,
+              "attempted": true
+            }
+          },
+          "totalMCQ": 30.25,
+          "totalWritten": 14.5,
+          "totalMarks": 44.75,
+          "rank": 14,
+          "mcqRank": 13,
+          "passingCriteria": {
+            "englishMCQ": {
+              "required": 5,
+              "achieved": 13.5,
+              "passed": true
+            },
+            "totalMCQ": {
+              "required": 24,
+              "achieved": 30.25,
+              "passed": true
+            },
+            "total": {
+              "required": 40,
+              "achieved": 44.75,
+              "passed": true
+            }
+          },
+          "passedAll": true,
+          "percentile": 42
+        },
+        "4176951": {
+          "studentId": "4176951",
+          "studentName": "Kashfia Ahmed",
+          "sections": {
+            "english": {
+              "correct": 15,
+              "wrong": 1,
+              "marks": 14.75,
+              "percentage": 92.1875,
+              "totalQuestions": 16,
+              "attempted": true
+            },
+            "advEnglish": {
+              "correct": 9,
+              "wrong": 3,
+              "marks": 8.25,
+              "percentage": 68.75,
+              "totalQuestions": 12,
+              "attempted": true
+            },
+            "businessstudies": {
+              "correct": 13,
+              "wrong": 1,
+              "marks": 12.75,
+              "percentage": 79.6875,
+              "totalQuestions": 16,
+              "attempted": true
+            },
+            "economics": {
+              "correct": 11,
+              "wrong": 1,
+              "marks": 10.75,
+              "percentage": 67.1875,
+              "totalQuestions": 16,
+              "attempted": true
+            }
+          },
+          "written": {
+            "essay": {
+              "marks": 7,
+              "outOf": 10,
+              "attempted": true
+            },
+            "errorDetection": {
+              "marks": 6,
+              "outOf": 10,
+              "attempted": true
+            },
+            "businessstudieswritten": {
+              "marks": 6,
+              "outOf": 10,
+              "attempted": true
+            },
+            "economicswritten": {
+              "marks": 4.5,
+              "outOf": 10,
+              "attempted": true
+            }
+          },
+          "totalMCQ": 46.5,
+          "totalWritten": 23.5,
+          "totalMarks": 70,
+          "rank": 5,
+          "mcqRank": 2,
+          "passingCriteria": {
+            "englishMCQ": {
+              "required": 5,
+              "achieved": 14.75,
+              "passed": true
+            },
+            "totalMCQ": {
+              "required": 24,
+              "achieved": 46.5,
+              "passed": true
+            },
+            "total": {
+              "required": 40,
+              "achieved": 70,
+              "passed": true
+            }
+          },
+          "passedAll": true,
+          "percentile": 79
+        },
+        "4215271": {
+          "studentId": "4215271",
+          "studentName": "Sharika Sanjana Chowdhury",
+          "sections": {
+            "english": {
+              "correct": 12,
+              "wrong": 4,
+              "marks": 11,
+              "percentage": 68.75,
+              "totalQuestions": 16,
+              "attempted": true
+            },
+            "advEnglish": {
+              "correct": 10,
+              "wrong": 2,
+              "marks": 9.5,
+              "percentage": 79.16666666666666,
+              "totalQuestions": 12,
+              "attempted": true
+            },
+            "businessstudies": {
+              "correct": 9,
+              "wrong": 7,
+              "marks": 7.25,
+              "percentage": 45.3125,
+              "totalQuestions": 16,
+              "attempted": true
+            },
+            "economics": {
+              "correct": 6,
+              "wrong": 10,
+              "marks": 3.5,
+              "percentage": 21.875,
+              "totalQuestions": 16,
+              "attempted": true
+            }
+          },
+          "written": {
+            "essay": {
+              "marks": 6,
+              "outOf": 10,
+              "attempted": true
+            },
+            "errorDetection": {
+              "marks": 2.5,
+              "outOf": 10,
+              "attempted": true
+            },
+            "businessstudieswritten": {
+              "marks": 4.5,
+              "outOf": 10,
+              "attempted": true
+            },
+            "economicswritten": {
+              "marks": 6,
+              "outOf": 10,
+              "attempted": true
+            }
+          },
+          "totalMCQ": 31.25,
+          "totalWritten": 19,
+          "totalMarks": 50.25,
+          "rank": 13,
+          "mcqRank": 12,
+          "passingCriteria": {
+            "englishMCQ": {
+              "required": 5,
+              "achieved": 11,
+              "passed": true
+            },
+            "totalMCQ": {
+              "required": 24,
+              "achieved": 31.25,
+              "passed": true
+            },
+            "total": {
+              "required": 40,
+              "achieved": 50.25,
+              "passed": true
+            }
+          },
+          "passedAll": true,
+          "percentile": 46
+        },
+        "4598891": {
+          "studentId": "4598891",
+          "studentName": "Zuhayr Adeeb Ahmed",
+          "sections": {
+            "english": {
+              "correct": 16,
+              "wrong": 0,
+              "marks": 16,
+              "percentage": 100,
+              "totalQuestions": 16,
+              "attempted": true
+            },
+            "advEnglish": {
+              "correct": 10,
+              "wrong": 2,
+              "marks": 9.5,
+              "percentage": 79.16666666666666,
+              "totalQuestions": 12,
+              "attempted": true
+            },
+            "businessstudies": {
+              "correct": 9,
+              "wrong": 5,
+              "marks": 7.75,
+              "percentage": 48.4375,
+              "totalQuestions": 16,
+              "attempted": true
+            },
+            "economics": {
+              "correct": 9,
+              "wrong": 7,
+              "marks": 7.25,
+              "percentage": 45.3125,
+              "totalQuestions": 16,
+              "attempted": true
+            }
+          },
+          "written": {
+            "essay": {
+              "marks": 7.5,
+              "outOf": 10,
+              "attempted": true
+            },
+            "errorDetection": {
+              "marks": 9,
+              "outOf": 10,
+              "attempted": true
+            },
+            "businessstudieswritten": {
+              "marks": 6.5,
+              "outOf": 10,
+              "attempted": true
+            },
+            "economicswritten": {
+              "marks": 7,
+              "outOf": 10,
+              "attempted": true
+            }
+          },
+          "totalMCQ": 40.5,
+          "totalWritten": 30,
+          "totalMarks": 70.5,
+          "rank": 4,
+          "mcqRank": 7,
+          "passingCriteria": {
+            "englishMCQ": {
+              "required": 5,
+              "achieved": 16,
+              "passed": true
+            },
+            "totalMCQ": {
+              "required": 24,
+              "achieved": 40.5,
+              "passed": true
+            },
+            "total": {
+              "required": 40,
+              "achieved": 70.5,
+              "passed": true
+            }
+          },
+          "passedAll": true,
+          "percentile": 83
+        },
+        "4681295": {
+          "studentId": "4681295",
+          "studentName": "Ramisa Raida Ali",
+          "sections": {
+            "english": {
+              "correct": 14,
+              "wrong": 2,
+              "marks": 13.5,
+              "percentage": 84.375,
+              "totalQuestions": 16,
+              "attempted": true
+            },
+            "advEnglish": {
+              "correct": 9,
+              "wrong": 3,
+              "marks": 8.25,
+              "percentage": 68.75,
+              "totalQuestions": 12,
+              "attempted": true
+            },
+            "businessstudies": {
+              "correct": 12,
+              "wrong": 4,
+              "marks": 11,
+              "percentage": 68.75,
+              "totalQuestions": 16,
+              "attempted": true
+            },
+            "economics": {
+              "correct": 10,
+              "wrong": 6,
+              "marks": 8.5,
+              "percentage": 53.125,
+              "totalQuestions": 16,
+              "attempted": true
+            }
+          },
+          "written": {
+            "essay": {
+              "marks": 7.5,
+              "outOf": 10,
+              "attempted": true
+            },
+            "errorDetection": {
+              "marks": 3.5,
+              "outOf": 10,
+              "attempted": true
+            },
+            "businessstudieswritten": {
+              "marks": 2.5,
+              "outOf": 10,
+              "attempted": true
+            },
+            "economicswritten": {
+              "marks": 6.5,
+              "outOf": 10,
+              "attempted": true
+            }
+          },
+          "totalMCQ": 41.25,
+          "totalWritten": 20,
+          "totalMarks": 61.25,
+          "rank": 7,
+          "mcqRank": 6,
+          "passingCriteria": {
+            "englishMCQ": {
+              "required": 5,
+              "achieved": 13.5,
+              "passed": true
+            },
+            "totalMCQ": {
+              "required": 24,
+              "achieved": 41.25,
+              "passed": true
+            },
+            "total": {
+              "required": 40,
+              "achieved": 61.25,
+              "passed": true
+            }
+          },
+          "passedAll": true,
+          "percentile": 71
+        },
+        "5074136": {
+          "studentId": "5074136",
+          "studentName": "Ramisa Rahman",
+          "sections": {
+            "english": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 16,
+              "attempted": true
+            },
+            "advEnglish": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 12,
+              "attempted": true
+            }
+          },
+          "written": {
+            "essay": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            },
+            "errorDetection": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            }
+          },
+          "totalMCQ": 0,
+          "totalWritten": 0,
+          "totalMarks": 0,
+          "rank": 17,
+          "mcqRank": 17,
+          "passingCriteria": {
+            "englishMCQ": {
+              "required": 5,
+              "achieved": 0,
+              "passed": false
+            },
+            "totalMCQ": {
+              "required": 24,
+              "achieved": 0,
+              "passed": false
+            },
+            "total": {
+              "required": 40,
+              "achieved": 0,
+              "passed": false
+            }
+          },
+          "passedAll": false,
+          "percentile": 0
+        },
+        "5421271": {
+          "studentId": "5421271",
+          "studentName": "Mansib Rahman",
+          "sections": {
+            "english": {
+              "correct": 9,
+              "wrong": 2,
+              "marks": 8.5,
+              "percentage": 53.125,
+              "totalQuestions": 16,
+              "attempted": true
+            },
+            "advEnglish": {
+              "correct": 6,
+              "wrong": 2,
+              "marks": 5.5,
+              "percentage": 45.83333333333333,
+              "totalQuestions": 12,
+              "attempted": true
+            },
+            "businessstudies": {
+              "correct": 8,
+              "wrong": 5,
+              "marks": 6.75,
+              "percentage": 42.1875,
+              "totalQuestions": 16,
+              "attempted": true
+            },
+            "accounting": {
+              "correct": 4,
+              "wrong": 3,
+              "marks": 3.25,
+              "percentage": 20.3125,
+              "totalQuestions": 16,
+              "attempted": true
+            }
+          },
+          "written": {
+            "essay": {
+              "marks": 5,
+              "outOf": 10,
+              "attempted": true
+            },
+            "errorDetection": {
+              "marks": 2.5,
+              "outOf": 10,
+              "attempted": true
+            },
+            "businessstudieswritten": {
+              "marks": 5,
+              "outOf": 10,
+              "attempted": true
+            },
+            "accountingwritten": {
+              "marks": 0.5,
+              "outOf": 10,
+              "attempted": true
+            }
+          },
+          "totalMCQ": 24,
+          "totalWritten": 13,
+          "totalMarks": 37,
+          "rank": 15,
+          "mcqRank": 15,
+          "passingCriteria": {
+            "englishMCQ": {
+              "required": 5,
+              "achieved": 8.5,
+              "passed": true
+            },
+            "totalMCQ": {
+              "required": 24,
+              "achieved": 24,
+              "passed": true
+            },
+            "total": {
+              "required": 40,
+              "achieved": 37,
+              "passed": false
+            }
+          },
+          "passedAll": false,
+          "percentile": 38
+        },
+        "6040571": {
+          "studentId": "6040571",
+          "studentName": "Alex Alamgir",
+          "sections": {
+            "english": {
+              "correct": 14,
+              "wrong": 2,
+              "marks": 13.5,
+              "percentage": 84.375,
+              "totalQuestions": 16,
+              "attempted": true
+            },
+            "advEnglish": {
+              "correct": 7,
+              "wrong": 5,
+              "marks": 5.75,
+              "percentage": 47.91666666666667,
+              "totalQuestions": 12,
+              "attempted": true
+            },
+            "accounting": {
+              "correct": 5,
+              "wrong": 11,
+              "marks": 2.25,
+              "percentage": 14.0625,
+              "totalQuestions": 16,
+              "attempted": true
+            },
+            "economics": {
+              "correct": 10,
+              "wrong": 6,
+              "marks": 8.5,
+              "percentage": 53.125,
+              "totalQuestions": 16,
+              "attempted": true
+            }
+          },
+          "written": {
+            "essay": {
+              "marks": 6,
+              "outOf": 10,
+              "attempted": true
+            },
+            "errorDetection": {
+              "marks": 2.5,
+              "outOf": 10,
+              "attempted": true
+            },
+            "accountingwritten": {
+              "marks": 7.5,
+              "outOf": 10,
+              "attempted": true
+            },
+            "economicswritten": {
+              "marks": 9,
+              "outOf": 10,
+              "attempted": true
+            }
+          },
+          "totalMCQ": 30,
+          "totalWritten": 25,
+          "totalMarks": 55,
+          "rank": 9,
+          "mcqRank": 14,
+          "passingCriteria": {
+            "englishMCQ": {
+              "required": 5,
+              "achieved": 13.5,
+              "passed": true
+            },
+            "totalMCQ": {
+              "required": 24,
+              "achieved": 30,
+              "passed": true
+            },
+            "total": {
+              "required": 40,
+              "achieved": 55,
+              "passed": true
+            }
+          },
+          "passedAll": true,
+          "percentile": 63
+        },
+        "6197380": {
+          "studentId": "6197380",
+          "studentName": "Sayaf Bin Abdullah",
+          "sections": {
+            "english": {
+              "correct": 13,
+              "wrong": 1,
+              "marks": 12.75,
+              "percentage": 79.6875,
+              "totalQuestions": 16,
+              "attempted": true
+            },
+            "advEnglish": {
+              "correct": 6,
+              "wrong": 4,
+              "marks": 5,
+              "percentage": 41.66666666666667,
+              "totalQuestions": 12,
+              "attempted": true
+            },
+            "businessstudies": {
+              "correct": 9,
+              "wrong": 4,
+              "marks": 8,
+              "percentage": 50,
+              "totalQuestions": 16,
+              "attempted": true
+            },
+            "economics": {
+              "correct": 9,
+              "wrong": 3,
+              "marks": 8.25,
+              "percentage": 51.5625,
+              "totalQuestions": 16,
+              "attempted": true
+            }
+          },
+          "written": {
+            "essay": {
+              "marks": 6.5,
+              "outOf": 10,
+              "attempted": true
+            },
+            "errorDetection": {
+              "marks": 4,
+              "outOf": 10,
+              "attempted": true
+            },
+            "businessstudieswritten": {
+              "marks": 1.5,
+              "outOf": 10,
+              "attempted": true
+            },
+            "economicswritten": {
+              "marks": 6.25,
+              "outOf": 10,
+              "attempted": true
+            }
+          },
+          "totalMCQ": 34,
+          "totalWritten": 18.25,
+          "totalMarks": 52.25,
+          "rank": 12,
+          "mcqRank": 10,
+          "passingCriteria": {
+            "englishMCQ": {
+              "required": 5,
+              "achieved": 12.75,
+              "passed": true
+            },
+            "totalMCQ": {
+              "required": 24,
+              "achieved": 34,
+              "passed": true
+            },
+            "total": {
+              "required": 40,
+              "achieved": 52.25,
+              "passed": true
+            }
+          },
+          "passedAll": true,
+          "percentile": 50
+        },
+        "6211721": {
+          "studentId": "6211721",
+          "studentName": "Zaian Jannat Hussain",
+          "sections": {
+            "english": {
+              "correct": 15,
+              "wrong": 0,
+              "marks": 15,
+              "percentage": 93.75,
+              "totalQuestions": 16,
+              "attempted": true
+            },
+            "advEnglish": {
+              "correct": 10,
+              "wrong": 2,
+              "marks": 9.5,
+              "percentage": 79.16666666666666,
+              "totalQuestions": 12,
+              "attempted": true
+            },
+            "businessstudies": {
+              "correct": 9,
+              "wrong": 3,
+              "marks": 8.25,
+              "percentage": 51.5625,
+              "totalQuestions": 16,
+              "attempted": true
+            },
+            "economics": {
+              "correct": 6,
+              "wrong": 7,
+              "marks": 4.25,
+              "percentage": 26.5625,
+              "totalQuestions": 16,
+              "attempted": true
+            }
+          },
+          "written": {
+            "essay": {
+              "marks": 6,
+              "outOf": 10,
+              "attempted": true
+            },
+            "errorDetection": {
+              "marks": 3,
+              "outOf": 10,
+              "attempted": true
+            },
+            "businessstudieswritten": {
+              "marks": 5.5,
+              "outOf": 10,
+              "attempted": true
+            },
+            "economicswritten": {
+              "marks": 5.5,
+              "outOf": 10,
+              "attempted": true
+            }
+          },
+          "totalMCQ": 37,
+          "totalWritten": 20,
+          "totalMarks": 57,
+          "rank": 8,
+          "mcqRank": 8,
+          "passingCriteria": {
+            "englishMCQ": {
+              "required": 5,
+              "achieved": 15,
+              "passed": true
+            },
+            "totalMCQ": {
+              "required": 24,
+              "achieved": 37,
+              "passed": true
+            },
+            "total": {
+              "required": 40,
+              "achieved": 57,
+              "passed": true
+            }
+          },
+          "passedAll": true,
+          "percentile": 67
+        },
+        "6246901": {
+          "studentId": "6246901",
+          "studentName": "Tarannum Rashid",
+          "sections": {
+            "english": {
+              "correct": 15,
+              "wrong": 1,
+              "marks": 14.75,
+              "percentage": 92.1875,
+              "totalQuestions": 16,
+              "attempted": true
+            },
+            "advEnglish": {
+              "correct": 8,
+              "wrong": 3,
+              "marks": 7.25,
+              "percentage": 60.416666666666664,
+              "totalQuestions": 12,
+              "attempted": true
+            },
+            "businessstudies": {
+              "correct": 12,
+              "wrong": 4,
+              "marks": 11,
+              "percentage": 68.75,
+              "totalQuestions": 16,
+              "attempted": true
+            },
+            "economics": {
+              "correct": 11,
+              "wrong": 5,
+              "marks": 9.75,
+              "percentage": 60.9375,
+              "totalQuestions": 16,
+              "attempted": true
+            }
+          },
+          "written": {
+            "essay": {
+              "marks": 8,
+              "outOf": 10,
+              "attempted": true
+            },
+            "errorDetection": {
+              "marks": 5,
+              "outOf": 10,
+              "attempted": true
+            },
+            "businessstudieswritten": {
+              "marks": 8,
+              "outOf": 10,
+              "attempted": true
+            },
+            "economicswritten": {
+              "marks": 9.5,
+              "outOf": 10,
+              "attempted": true
+            }
+          },
+          "totalMCQ": 42.75,
+          "totalWritten": 30.5,
+          "totalMarks": 73.25,
+          "rank": 2,
+          "mcqRank": 4,
+          "passingCriteria": {
+            "englishMCQ": {
+              "required": 5,
+              "achieved": 14.75,
+              "passed": true
+            },
+            "totalMCQ": {
+              "required": 24,
+              "achieved": 42.75,
+              "passed": true
+            },
+            "total": {
+              "required": 40,
+              "achieved": 73.25,
+              "passed": true
+            }
+          },
+          "passedAll": true,
+          "percentile": 92
+        },
+        "6480811": {
+          "studentId": "6480811",
+          "studentName": "Ayesha Khaled",
+          "sections": {
+            "english": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 16,
+              "attempted": true
+            },
+            "advEnglish": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 12,
+              "attempted": true
+            }
+          },
+          "written": {
+            "essay": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            },
+            "errorDetection": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            }
+          },
+          "totalMCQ": 0,
+          "totalWritten": 0,
+          "totalMarks": 0,
+          "rank": 17,
+          "mcqRank": 17,
+          "passingCriteria": {
+            "englishMCQ": {
+              "required": 5,
+              "achieved": 0,
+              "passed": false
+            },
+            "totalMCQ": {
+              "required": 24,
+              "achieved": 0,
+              "passed": false
+            },
+            "total": {
+              "required": 40,
+              "achieved": 0,
+              "passed": false
+            }
+          },
+          "passedAll": false,
+          "percentile": 0
+        },
+        "6500041": {
+          "studentId": "6500041",
+          "studentName": "Aymaan Zaman",
+          "sections": {
+            "english": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 16,
+              "attempted": true
+            },
+            "advEnglish": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 12,
+              "attempted": true
+            }
+          },
+          "written": {
+            "essay": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            },
+            "errorDetection": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            }
+          },
+          "totalMCQ": 0,
+          "totalWritten": 0,
+          "totalMarks": 0,
+          "rank": 17,
+          "mcqRank": 17,
+          "passingCriteria": {
+            "englishMCQ": {
+              "required": 5,
+              "achieved": 0,
+              "passed": false
+            },
+            "totalMCQ": {
+              "required": 24,
+              "achieved": 0,
+              "passed": false
+            },
+            "total": {
+              "required": 40,
+              "achieved": 0,
+              "passed": false
+            }
+          },
+          "passedAll": false,
+          "percentile": 0
+        },
+        "7842103": {
+          "studentId": "7842103",
+          "studentName": "Shafqat Nur",
+          "sections": {
+            "english": {
+              "correct": 8,
+              "wrong": 1,
+              "marks": 7.75,
+              "percentage": 48.4375,
+              "totalQuestions": 16,
+              "attempted": true
+            },
+            "advEnglish": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 12,
+              "attempted": true
+            }
+          },
+          "written": {
+            "essay": {
+              "marks": 7,
+              "outOf": 10,
+              "attempted": true
+            },
+            "errorDetection": {
+              "marks": 4.5,
+              "outOf": 10,
+              "attempted": true
+            },
+            "businessstudieswritten": {
+              "marks": 4.5,
+              "outOf": 10,
+              "attempted": true
+            },
+            "economicswritten": {
+              "marks": 8.5,
+              "outOf": 10,
+              "attempted": true
+            }
+          },
+          "totalMCQ": 7.75,
+          "totalWritten": 24.5,
+          "totalMarks": 32.25,
+          "rank": 16,
+          "mcqRank": 16,
+          "passingCriteria": {
+            "englishMCQ": {
+              "required": 5,
+              "achieved": 7.75,
+              "passed": true
+            },
+            "totalMCQ": {
+              "required": 24,
+              "achieved": 7.75,
+              "passed": false
+            },
+            "total": {
+              "required": 40,
+              "achieved": 32.25,
+              "passed": false
+            }
+          },
+          "passedAll": false,
+          "percentile": 33
+        },
+        "8395612": {
+          "studentId": "8395612",
+          "studentName": "Tahi Noor Zaman",
+          "sections": {
+            "english": {
+              "correct": 16,
+              "wrong": 0,
+              "marks": 16,
+              "percentage": 100,
+              "totalQuestions": 16,
+              "attempted": true
+            },
+            "advEnglish": {
+              "correct": 12,
+              "wrong": 0,
+              "marks": 12,
+              "percentage": 100,
+              "totalQuestions": 12,
+              "attempted": true
+            },
+            "businessstudies": {
+              "correct": 16,
+              "wrong": 0,
+              "marks": 16,
+              "percentage": 100,
+              "totalQuestions": 16,
+              "attempted": true
+            },
+            "economics": {
+              "correct": 16,
+              "wrong": 0,
+              "marks": 16,
+              "percentage": 100,
+              "totalQuestions": 16,
+              "attempted": true
+            }
+          },
+          "written": {
+            "essay": {
+              "marks": 5.5,
+              "outOf": 10,
+              "attempted": true
+            },
+            "errorDetection": {
+              "marks": 9,
+              "outOf": 10,
+              "attempted": true
+            },
+            "businessstudieswritten": {
+              "marks": 9,
+              "outOf": 10,
+              "attempted": true
+            },
+            "economicswritten": {
+              "marks": 9,
+              "outOf": 10,
+              "attempted": true
+            }
+          },
+          "totalMCQ": 60,
+          "totalWritten": 32.5,
+          "totalMarks": 92.5,
+          "rank": 1,
+          "mcqRank": 1,
+          "passingCriteria": {
+            "englishMCQ": {
+              "required": 5,
+              "achieved": 16,
+              "passed": true
+            },
+            "totalMCQ": {
+              "required": 24,
+              "achieved": 60,
+              "passed": true
+            },
+            "total": {
+              "required": 40,
+              "achieved": 92.5,
+              "passed": true
+            }
+          },
+          "passedAll": true,
+          "percentile": 96
+        },
+        "9342451": {
+          "studentId": "9342451",
+          "studentName": "Aseya Siddiqua Saba",
+          "sections": {
+            "english": {
+              "correct": 13,
+              "wrong": 3,
+              "marks": 12.25,
+              "percentage": 76.5625,
+              "totalQuestions": 16,
+              "attempted": true
+            },
+            "advEnglish": {
+              "correct": 7,
+              "wrong": 5,
+              "marks": 5.75,
+              "percentage": 47.91666666666667,
+              "totalQuestions": 12,
+              "attempted": true
+            },
+            "businessstudies": {
+              "correct": 8,
+              "wrong": 8,
+              "marks": 6,
+              "percentage": 37.5,
+              "totalQuestions": 16,
+              "attempted": true
+            },
+            "economics": {
+              "correct": 9,
+              "wrong": 6,
+              "marks": 7.5,
+              "percentage": 46.875,
+              "totalQuestions": 16,
+              "attempted": true
+            }
+          },
+          "written": {
+            "essay": {
+              "marks": 7,
+              "outOf": 10,
+              "attempted": true
+            },
+            "errorDetection": {
+              "marks": 2,
+              "outOf": 10,
+              "attempted": true
+            },
+            "businessstudieswritten": {
+              "marks": 5.5,
+              "outOf": 10,
+              "attempted": true
+            },
+            "economicswritten": {
+              "marks": 6.5,
+              "outOf": 10,
+              "attempted": true
+            }
+          },
+          "totalMCQ": 31.5,
+          "totalWritten": 21,
+          "totalMarks": 52.5,
+          "rank": 11,
+          "mcqRank": 11,
+          "passingCriteria": {
+            "englishMCQ": {
+              "required": 5,
+              "achieved": 12.25,
+              "passed": true
+            },
+            "totalMCQ": {
+              "required": 24,
+              "achieved": 31.5,
+              "passed": true
+            },
+            "total": {
+              "required": 40,
+              "achieved": 52.5,
+              "passed": true
+            }
+          },
+          "passedAll": true,
+          "percentile": 54
+        },
+        "9625470": {
+          "studentId": "9625470",
+          "studentName": "Tasnia Taha",
+          "sections": {
+            "english": {
+              "correct": 15,
+              "wrong": 0,
+              "marks": 15,
+              "percentage": 93.75,
+              "totalQuestions": 16,
+              "attempted": true
+            },
+            "advEnglish": {
+              "correct": 8,
+              "wrong": 2,
+              "marks": 7.5,
+              "percentage": 62.5,
+              "totalQuestions": 12,
+              "attempted": true
+            },
+            "businessstudies": {
+              "correct": 15,
+              "wrong": 1,
+              "marks": 14.75,
+              "percentage": 92.1875,
+              "totalQuestions": 16,
+              "attempted": true
+            },
+            "accounting": {
+              "correct": 7,
+              "wrong": 7,
+              "marks": 5.25,
+              "percentage": 32.8125,
+              "totalQuestions": 16,
+              "attempted": true
+            }
+          },
+          "written": {
+            "essay": {
+              "marks": 7,
+              "outOf": 10,
+              "attempted": true
+            },
+            "errorDetection": {
+              "marks": 3.5,
+              "outOf": 10,
+              "attempted": true
+            },
+            "businessstudieswritten": {
+              "marks": 5.5,
+              "outOf": 10,
+              "attempted": true
+            },
+            "accountingwritten": {
+              "marks": 4.5,
+              "outOf": 10,
+              "attempted": true
+            }
+          },
+          "totalMCQ": 42.5,
+          "totalWritten": 20.5,
+          "totalMarks": 63,
+          "rank": 6,
+          "mcqRank": 5,
+          "passingCriteria": {
+            "englishMCQ": {
+              "required": 5,
+              "achieved": 15,
+              "passed": true
+            },
+            "totalMCQ": {
+              "required": 24,
+              "achieved": 42.5,
+              "passed": true
+            },
+            "total": {
+              "required": 40,
+              "achieved": 63,
+              "passed": true
+            }
+          },
+          "passedAll": true,
+          "percentile": 75
+        }
+      },
+      "classStats": {
+        "average": 39.0625,
+        "median": 50.25,
+        "highest": 92.5,
+        "lowest": 0,
+        "totalStudents": 24,
+        "passCount": 14,
+        "failCount": 10
+      }
+    }
+  },
+  "metadata": {
+    "lastUpdated": "2025-11-14T14:04:29.858Z",
+    "totalMocks": 2,
+    "generatedBy": "FBS Mock Processor"
+  }
+}

@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
-import { BarChart3, BookOpen, Users } from 'lucide-react';
+import { BarChart3, BookOpen, Users, GraduationCap } from 'lucide-react';
 import ProtectedRoute from '@/components/ProtectedRoute';
 import { SimpleTestsData, FullTestsData, MockTestsData, StudentsData, SystemMetadata } from '@/types/results';
 import SeriesProgressChart from './components/SeriesProgressChart';
@@ -24,12 +24,14 @@ const ResultsDashboard = () => {
   const [simpleTests, setSimpleTests] = useState<SimpleTestsData | null>(null);
   const [fullTests, setFullTests] = useState<FullTestsData | null>(null);
   const [mockTests, setMockTests] = useState<MockTestsData | null>(null);
+  const [fbsMockTests, setFbsMockTests] = useState<any | null>(null);
   const [students, setStudents] = useState<StudentsData | null>(null);
   const [metadata, setMetadata] = useState<SystemMetadata | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [stats, setStats] = useState<DashboardStats | null>(null);
   const [isAdmin, setIsAdmin] = useState(false);
+  const [userAccess, setUserAccess] = useState<{hasIBA: boolean, hasFBS: boolean}>({hasIBA: false, hasFBS: false});
   const [selectedStudentId, setSelectedStudentId] = useState<string | null>(null);
   const [selectedStudentName, setSelectedStudentName] = useState<string>('');
 
@@ -40,21 +42,29 @@ const ResultsDashboard = () => {
         setError(null);
 
         // Fetch all data files
-        const [simpleResponse, fullResponse, mockResponse, studentsResponse, metadataResponse, adminCheckResponse] = await Promise.all([
+        const [simpleResponse, fullResponse, mockResponse, fbsMockResponse, studentsResponse, metadataResponse, adminCheckResponse, userAccessResponse] = await Promise.all([
           fetch('/data/simple-tests.json').then(res => res.json()),
           fetch('/data/full-tests.json').then(res => res.json()),
           fetch('/data/mock-tests.json').then(res => res.json()),
+          fetch('/data/fbs-mock-tests.json').then(res => res.json()).catch(() => ({tests: {}})),
           fetch('/data/students.json').then(res => res.json()),
           fetch('/data/metadata.json').then(res => res.json()),
-          fetch('/api/auth/check-admin').then(res => res.json())
+          fetch('/api/auth/check-admin').then(res => res.json()),
+          fetch('/api/user/access').then(res => res.json()).catch(() => ({hasIBA: true, hasFBS: true, isAdmin: false}))
         ]);
 
         setSimpleTests(simpleResponse);
         setFullTests(fullResponse);
         setMockTests(mockResponse);
+        setFbsMockTests(fbsMockResponse);
         setStudents(studentsResponse);
         setMetadata(metadataResponse);
-        setIsAdmin(adminCheckResponse.isAdmin);
+        setIsAdmin(adminCheckResponse.isAdmin || userAccessResponse.isAdmin);
+        // Use userAccessResponse which already includes admin check
+        setUserAccess({
+          hasIBA: userAccessResponse.hasIBA,
+          hasFBS: userAccessResponse.hasFBS
+        });
 
         // Calculate user stats if authenticated
         if (session?.user?.email) {
@@ -349,7 +359,7 @@ const ResultsDashboard = () => {
           )}
 
           {/* Test Categories */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8 mb-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6 md:gap-8 mb-8">
 
             {/* Simple Tests */}
             <div className="bg-white rounded-2xl shadow-sm border border-gray-100 hover:shadow-lg transition-all duration-500 p-4 md:p-6 lg:p-8">
@@ -457,13 +467,14 @@ const ResultsDashboard = () => {
               )}
             </div>
 
-            {/* Mock Tests */}
+            {/* Mock Tests (IBA) */}
+            {userAccess.hasIBA && (
             <div className="bg-white rounded-2xl shadow-sm border border-gray-100 hover:shadow-lg transition-all duration-500 p-4 md:p-6 lg:p-8">
               <div className="flex items-center gap-3 mb-2">
                 <div className="w-3 h-3 bg-gradient-to-r from-orange-500 to-orange-600 rounded-full"></div>
-                <h2 className="text-2xl font-bold text-gray-900">Mock Tests</h2>
+                <h2 className="text-2xl font-bold text-gray-900">IBA Mock Tests</h2>
               </div>
-              <p className="text-gray-600 mb-8 text-lg">Full-length practice examinations</p>
+              <p className="text-gray-600 mb-8 text-lg">DU IBA mock examinations</p>
 
               {mockTests && Object.keys(mockTests.tests).length > 0 ? (
                 <div className="space-y-3">
@@ -510,6 +521,64 @@ const ResultsDashboard = () => {
                 <p className="text-gray-500 text-center py-8">No mock tests available</p>
               )}
             </div>
+            )}
+
+            {/* FBS Mock Tests */}
+            {userAccess.hasFBS && (
+            <div className="bg-white rounded-2xl shadow-sm border border-gray-100 hover:shadow-lg transition-all duration-500 p-4 md:p-6 lg:p-8">
+              <div className="flex items-center gap-3 mb-2">
+                <div className="w-3 h-3 bg-gradient-to-r from-green-500 to-green-600 rounded-full"></div>
+                <h2 className="text-2xl font-bold text-gray-900">DU FBS Mocks</h2>
+              </div>
+              <p className="text-gray-600 mb-8 text-lg">DU FBS mock examinations</p>
+
+              {fbsMockTests && Object.keys(fbsMockTests.tests).length > 0 ? (
+                <div className="space-y-3">
+                  {Object.entries(fbsMockTests.tests).map(([testName, test]: [string, any]) => {
+                    // Get the correct user based on admin status
+                    let userResult = null;
+                    if (isAdmin && selectedStudentId) {
+                      userResult = Object.values(students?.students || {}).find((s: any) => s.id === selectedStudentId);
+                    } else if (session?.user?.email) {
+                      userResult = Object.values(students?.students || {}).find((s: any) => s.email === session.user?.email);
+                    }
+                    const userId = userResult?.id;
+                    const result = userId && test.results ? test.results[userId] : null;
+
+                    return (
+                      <div
+                        key={testName}
+                        onClick={() => navigateToTest(testName)}
+                        className="group flex items-center justify-between p-6 rounded-xl border border-gray-100 hover:border-green-200 hover:bg-green-50/30 cursor-pointer transition-all duration-300 hover:shadow-md"
+                      >
+                        <div className="flex-1">
+                          <h3 className="font-semibold text-gray-900 group-hover:text-green-700 transition-colors">{testName}</h3>
+                          <p className="text-sm text-gray-500 mt-1">
+                            <GraduationCap className="inline w-4 h-4 mr-1" />
+                            DU FBS Format
+                          </p>
+                        </div>
+                        <div className="text-right">
+                          {result ? (
+                            <div className="bg-green-50 px-3 py-2 rounded-lg border border-green-100">
+                              <p className="font-bold text-green-700 text-lg">{result.totalMarks?.toFixed(2)}</p>
+                              <p className="text-xs text-green-600">Rank #{result.rank}</p>
+                            </div>
+                          ) : (
+                            <div className="bg-gray-50 px-3 py-2 rounded-lg border border-gray-100">
+                              <p className="text-sm text-gray-500 font-medium">Not taken</p>
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              ) : (
+                <p className="text-gray-500 text-center py-8">No FBS mock tests available</p>
+              )}
+            </div>
+            )}
           </div>
 
           {/* System Info */}

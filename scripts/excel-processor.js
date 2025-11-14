@@ -397,8 +397,10 @@ class ExcelProcessor {
         sheets: sheets
       };
 
-      // Check if this is a mock test (test name starts with "Mock")
-      if (testName.toLowerCase().startsWith('mock')) {
+      // Check if this is a mock test (filename or path contains "Mock")
+      const isMockTest = filename.toLowerCase().includes('mock') || testName.toLowerCase().includes('mock');
+
+      if (isMockTest) {
         this.mockTests[testName] = fullTestData;
         console.log(`    ✅ Processed mock test with ${Object.keys(fullTestData.results).length} students`);
       } else {
@@ -938,26 +940,45 @@ class ExcelProcessor {
    * @returns {Array} - List of Excel filenames to process
    */
   scanResultsDirectory() {
-    console.log('📂 Scanning Results directory for Excel files...');
+    console.log('📂 Scanning Results directory for Excel files (including subdirectories)...');
 
     if (!fs.existsSync(this.resultsDir)) {
       console.error(`❌ Results directory not found: ${this.resultsDir}`);
       return [];
     }
 
-    const allFiles = fs.readdirSync(this.resultsDir);
-    const excelFiles = allFiles.filter(file => {
-      // Include only .xlsx files
-      if (!file.endsWith('.xlsx')) return false;
+    const excelFiles = [];
+    const excludePatterns = ['template', '~$', '.tmp', 'DU FBS Mocks'];
 
-      // Exclude template files and temporary files
-      const excludePatterns = ['template', '~$', '.tmp'];
-      const shouldExclude = excludePatterns.some(pattern =>
-        file.toLowerCase().includes(pattern.toLowerCase())
-      );
+    // Recursively scan for Excel files
+    const scanDir = (dir) => {
+      const items = fs.readdirSync(dir);
 
-      return !shouldExclude;
-    });
+      items.forEach(item => {
+        const fullPath = path.join(dir, item);
+        const stat = fs.statSync(fullPath);
+
+        if (stat.isDirectory()) {
+          // Skip DU FBS Mocks directory (processed separately)
+          if (!excludePatterns.some(pattern => item.toLowerCase().includes(pattern.toLowerCase()))) {
+            scanDir(fullPath);
+          }
+        } else if (stat.isFile() && item.endsWith('.xlsx')) {
+          // Check if file should be excluded
+          const shouldExclude = excludePatterns.some(pattern =>
+            item.toLowerCase().includes(pattern.toLowerCase())
+          );
+
+          if (!shouldExclude) {
+            // Store relative path from Results directory
+            const relativePath = path.relative(this.resultsDir, fullPath);
+            excelFiles.push(relativePath);
+          }
+        }
+      });
+    };
+
+    scanDir(this.resultsDir);
 
     console.log(`✅ Found ${excelFiles.length} Excel file(s) to process:`);
     excelFiles.forEach(file => console.log(`   - ${file}`));
