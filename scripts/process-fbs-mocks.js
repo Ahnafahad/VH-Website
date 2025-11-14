@@ -58,6 +58,252 @@ class FBSMockProcessor {
   }
 
   /**
+   * Process Sheet2 to extract top questions data
+   */
+  processSheet2TopQuestions(workbook, testName) {
+    try {
+      const sheet2 = workbook.Sheets['Sheet2'];
+      if (!sheet2) {
+        console.log(`   ⚠️  Sheet2 not found in ${testName}`);
+        return null;
+      }
+
+      const data = XLSX.utils.sheet_to_json(sheet2, { header: 1, defval: '' });
+      const topQuestions = {};
+
+      // Section mappings for FBS
+      const sections = [
+        { name: 'English', start: 1, end: 16 },
+        { name: 'Adv English', start: 17, end: 28 },
+        { name: 'Business Studies', start: 29, end: 44 },
+        { name: 'Accounting', start: 45, end: 60 },
+        { name: 'Economics', start: 61, end: 76 }
+      ];
+
+      sections.forEach(section => {
+        const sectionData = {
+          mostCorrect: [],
+          mostWrong: [],
+          mostSkipped: []
+        };
+
+        // Find columns for this section
+        const correctColPrefix = `${section.name} Top 10 Correct`;
+        const wrongColPrefix = `${section.name} Top 10 Wrong`;
+        const skippedColPrefix = `${section.name} Top 10 Skipped`;
+
+        // Extract top 10 for each category
+        for (let i = 1; i < data.length && i <= 10; i++) {
+          const row = data[i];
+
+          // Most Correct
+          const correctIdx = data[0].findIndex(h => String(h).includes(correctColPrefix));
+          const correctCountIdx = data[0].findIndex(h => String(h).toLowerCase().includes('no. of correct'));
+          if (correctIdx !== -1 && row[correctIdx]) {
+            const qNum = parseInt(String(row[correctIdx]).replace(/\D/g, ''));
+            if (qNum >= section.start && qNum <= section.end) {
+              sectionData.mostCorrect.push({
+                questionNumber: qNum,
+                count: row[correctCountIdx] || 0
+              });
+            }
+          }
+
+          // Most Wrong
+          const wrongIdx = data[0].findIndex(h => String(h).includes(wrongColPrefix));
+          const wrongCountIdx = data[0].findIndex(h => String(h).toLowerCase().includes('no. of wrong'));
+          if (wrongIdx !== -1 && row[wrongIdx]) {
+            const qNum = parseInt(String(row[wrongIdx]).replace(/\D/g, ''));
+            if (qNum >= section.start && qNum <= section.end) {
+              sectionData.mostWrong.push({
+                questionNumber: qNum,
+                count: row[wrongCountIdx] || 0
+              });
+            }
+          }
+
+          // Most Skipped
+          const skippedIdx = data[0].findIndex(h => String(h).includes(skippedColPrefix));
+          const skippedCountIdx = data[0].findIndex(h => String(h).toLowerCase().includes('no. of skipped'));
+          if (skippedIdx !== -1 && row[skippedIdx]) {
+            const qNum = parseInt(String(row[skippedIdx]).replace(/\D/g, ''));
+            if (qNum >= section.start && qNum <= section.end) {
+              sectionData.mostSkipped.push({
+                questionNumber: qNum,
+                count: row[skippedCountIdx] || 0
+              });
+            }
+          }
+        }
+
+        topQuestions[section.name.toLowerCase().replace(/\s+/g, '')] = sectionData;
+      });
+
+      return topQuestions;
+    } catch (error) {
+      console.log(`   ⚠️  Error processing Sheet2: ${error.message}`);
+      return null;
+    }
+  }
+
+  /**
+   * Process Sheet3 to extract individual student responses
+   */
+  processSheet3Responses(workbook, testName) {
+    try {
+      const sheet3 = workbook.Sheets['Sheet3'];
+      if (!sheet3) {
+        console.log(`   ⚠️  Sheet3 not found in ${testName}`);
+        return {};
+      }
+
+      const data = XLSX.utils.sheet_to_json(sheet3, { header: 1, defval: '' });
+      const headers = data[0];
+      const responses = {};
+
+      // Find Roll/ID column
+      const idColIdx = headers.findIndex(h =>
+        String(h).toLowerCase() === 'roll' ||
+        String(h).toLowerCase() === 'id'
+      );
+
+      if (idColIdx === -1) {
+        console.log(`   ⚠️  Roll/ID column not found in Sheet3`);
+        return {};
+      }
+
+      // Process each student row
+      for (let i = 1; i < data.length; i++) {
+        const row = data[i];
+        const studentId = String(row[idColIdx] || '').trim();
+
+        if (!studentId) continue;
+
+        const studentResponses = {};
+
+        // Extract responses for q1-q76
+        for (let q = 1; q <= 76; q++) {
+          const qColIdx = headers.findIndex(h => String(h).toLowerCase() === `q${q}`);
+
+          if (qColIdx !== -1) {
+            const response = String(row[qColIdx] || '').trim();
+
+            if (response && response !== 'NAN') {
+              // Parse format: "A (C)" -> {answer: "A", status: "correct"}
+              const match = response.match(/^([A-D])\s*\(([CW])\)$/i);
+              if (match) {
+                studentResponses[`q${q}`] = {
+                  answer: match[1].toUpperCase(),
+                  status: match[2].toUpperCase() === 'C' ? 'correct' : 'wrong'
+                };
+              }
+            } else {
+              // Question was skipped
+              studentResponses[`q${q}`] = {
+                answer: null,
+                status: 'skipped'
+              };
+            }
+          }
+        }
+
+        responses[studentId] = studentResponses;
+      }
+
+      console.log(`   📝 Extracted responses for ${Object.keys(responses).length} students`);
+      return responses;
+    } catch (error) {
+      console.log(`   ⚠️  Error processing Sheet3: ${error.message}`);
+      return {};
+    }
+  }
+
+  /**
+   * Calculate advanced analytics from student responses
+   */
+  calculateAdvancedAnalytics(responses, sections) {
+    if (!responses || Object.keys(responses).length === 0) {
+      return {
+        skipStrategy: 0,
+        questionChoiceStrategy: 0,
+        recoveryScore: 0,
+        sectionPerformance: {}
+      };
+    }
+
+    // Skip Strategy: % of questions skipped vs attempted wrong
+    const totalSkipped = Object.values(responses).filter(r => r.status === 'skipped').length;
+    const totalWrong = Object.values(responses).filter(r => r.status === 'wrong').length;
+    const totalAttempted = Object.values(responses).length - totalSkipped;
+    const skipStrategy = totalAttempted > 0 ? (totalSkipped / (totalSkipped + totalWrong)) * 100 : 0;
+
+    // Question Choice Strategy: Success rate when attempting
+    const totalCorrect = Object.values(responses).filter(r => r.status === 'correct').length;
+    const questionChoiceStrategy = totalAttempted > 0 ? (totalCorrect / totalAttempted) * 100 : 0;
+
+    // Recovery Score: How well they did after wrong answers (streaks analysis)
+    let recoveryScore = 0;
+    const responseArray = Object.entries(responses).sort(([a], [b]) => {
+      const numA = parseInt(a.replace('q', ''));
+      const numB = parseInt(b.replace('q', ''));
+      return numA - numB;
+    });
+
+    let recoveries = 0;
+    let opportunities = 0;
+    for (let i = 0; i < responseArray.length - 1; i++) {
+      if (responseArray[i][1].status === 'wrong') {
+        opportunities++;
+        if (responseArray[i + 1][1].status === 'correct') {
+          recoveries++;
+        }
+      }
+    }
+    recoveryScore = opportunities > 0 ? (recoveries / opportunities) * 100 : 0;
+
+    // Section Performance Analytics
+    const sectionPerformance = {};
+    const sectionRanges = {
+      english: { start: 1, end: 16 },
+      advEnglish: { start: 17, end: 28 },
+      businessstudies: { start: 29, end: 44 },
+      accounting: { start: 45, end: 60 },
+      economics: { start: 61, end: 76 }
+    };
+
+    Object.entries(sectionRanges).forEach(([sectionKey, range]) => {
+      const sectionResponses = Object.entries(responses).filter(([qKey]) => {
+        const qNum = parseInt(qKey.replace('q', ''));
+        return qNum >= range.start && qNum <= range.end;
+      });
+
+      const sectionCorrect = sectionResponses.filter(([, r]) => r.status === 'correct').length;
+      const sectionWrong = sectionResponses.filter(([, r]) => r.status === 'wrong').length;
+      const sectionSkipped = sectionResponses.filter(([, r]) => r.status === 'skipped').length;
+      const sectionAttempted = sectionCorrect + sectionWrong;
+      const sectionTotal = range.end - range.start + 1;
+      const sectionUnattempted = sectionTotal - sectionAttempted;
+
+      if (sectionAttempted > 0 || sections[sectionKey]) {
+        sectionPerformance[sectionKey] = {
+          accuracy: sectionAttempted > 0 ? (sectionCorrect / sectionAttempted) * 100 : 0,
+          attemptRate: (sectionAttempted / sectionTotal) * 100,
+          attempted: sectionAttempted,
+          unattempted: sectionUnattempted,
+          efficiency: sectionAttempted > 0 ? (sectionCorrect / sectionTotal) * 100 : 0
+        };
+      }
+    });
+
+    return {
+      skipStrategy: parseFloat(skipStrategy.toFixed(2)),
+      questionChoiceStrategy: parseFloat(questionChoiceStrategy.toFixed(2)),
+      recoveryScore: parseFloat(recoveryScore.toFixed(2)),
+      sectionPerformance
+    };
+  }
+
+  /**
    * Process a single FBS mock Excel file
    */
   processFBSMock(filename) {
@@ -79,13 +325,19 @@ class FBSMockProcessor {
       // Extract test name (e.g., "DU FBS Mock 1" -> "DU FBS Mock 1")
       const testName = filename.replace('.xlsx', '');
 
+      // Process Sheet2 for top questions
+      const topQuestions = this.processSheet2TopQuestions(workbook, testName);
+
+      // Process Sheet3 for individual responses
+      const allResponses = this.processSheet3Responses(workbook, testName);
+
       // Process each student
       const results = {};
       const allScores = [];
 
       dataRows.forEach((row, index) => {
         try {
-          const studentResult = this.processStudent(row, headers);
+          const studentResult = this.processStudent(row, headers, allResponses);
           if (studentResult) {
             results[studentResult.studentId] = studentResult;
             allScores.push(studentResult.totalMarks);
@@ -109,11 +361,17 @@ class FBSMockProcessor {
         testType: 'fbs-mock',
         totalStudents: Object.keys(results).length,
         results,
-        classStats
+        classStats,
+        topQuestions,
+        metadata: {
+          processedAt: new Date().toISOString(),
+          sourceFile: filename
+        }
       };
 
       console.log(`   ✅ Processed ${Object.keys(results).length} students`);
-      console.log(`   📊 Average: ${classStats.average.toFixed(2)}, Highest: ${classStats.highest}\n`);
+      console.log(`   📊 Average: ${classStats.average.toFixed(2)}, Highest: ${classStats.highest}`);
+      console.log(`   📈 Extracted top questions and individual responses\n`);
 
     } catch (error) {
       console.error(`   ❌ Error: ${error.message}\n`);
@@ -124,7 +382,7 @@ class FBSMockProcessor {
   /**
    * Process a single student's data
    */
-  processStudent(row, headers) {
+  processStudent(row, headers, allResponses = {}) {
     const getColValue = (name) => {
       const index = headers.findIndex(h =>
         String(h).trim().toLowerCase() === name.toLowerCase() ||
@@ -244,6 +502,10 @@ class FBSMockProcessor {
     const totalAttempted = totalCorrect + totalWrong;
     const accuracy = totalAttempted > 0 ? (totalCorrect / totalAttempted) * 100 : 0;
 
+    // Get individual responses and calculate advanced analytics
+    const studentResponses = allResponses[studentId] || {};
+    const advancedAnalytics = this.calculateAdvancedAnalytics(studentResponses, sections);
+
     return {
       studentId,
       studentName,
@@ -277,8 +539,10 @@ class FBSMockProcessor {
         accuracy: parseFloat(accuracy.toFixed(2)),
         totalCorrect,
         totalWrong,
-        totalAttempted
-      }
+        totalAttempted,
+        ...advancedAnalytics
+      },
+      responses: studentResponses
     };
   }
 

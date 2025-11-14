@@ -197,28 +197,40 @@ const TestDetailPage = () => {
   };
 
   const formatResponseText = (response: any) => {
-    // Handle null/undefined
-    if (!response) return 'N/A';
-
-    // Convert to string if not already
-    const responseStr = String(response);
-
-    if (responseStr === 'NAN') return 'Not Attempted';
-
-    // Parse response like "E (C)" or "A (W)"
-    const match = responseStr.match(/(.+?)\s*\(([CW])\)/);
-    if (match) {
-      const [, answer, result] = match;
-      const isCorrect = result === 'C';
+    // Handle new object format: {answer: "A", status: "correct"}
+    if (typeof response === 'object' && response !== null) {
+      if (response.status === 'skipped' || !response.answer) {
+        return 'Not Attempted';
+      }
+      const isCorrect = response.status === 'correct';
       return (
         <span className={`flex items-center gap-1 ${isCorrect ? 'text-green-600' : 'text-red-600'}`}>
-          <span className="font-mono">{answer}</span>
+          <span className="font-mono">{response.answer}</span>
           {isCorrect ? <CheckCircle size={14} /> : <XCircle size={14} />}
         </span>
       );
     }
 
-    return responseStr;
+    // Handle old string format: "A (C)" or "A (W)"
+    if (typeof response === 'string') {
+      if (response === 'NAN') return 'Not Attempted';
+
+      const match = response.match(/(.+?)\s*\(([CW])\)/);
+      if (match) {
+        const [, answer, result] = match;
+        const isCorrect = result === 'C';
+        return (
+          <span className={`flex items-center gap-1 ${isCorrect ? 'text-green-600' : 'text-red-600'}`}>
+            <span className="font-mono">{answer}</span>
+            {isCorrect ? <CheckCircle size={14} /> : <XCircle size={14} />}
+          </span>
+        );
+      }
+
+      return response;
+    }
+
+    return 'N/A';
   };
 
   const analyzePersonalTopQuestionsPerformance = () => {
