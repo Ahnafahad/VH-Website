@@ -98,13 +98,21 @@ echo.
 echo [4/7] Syncing student emails from database...
 echo ----------------------------------------
 
-:: Sync student emails from MongoDB to students.json
-node scripts/sync-student-emails.js
+:: Load MONGODB_URI from .env.local if it exists
+set MONGODB_URI=
+if exist .env.local (
+    for /f "tokens=2 delims==" %%a in ('findstr /i "MONGODB_URI" .env.local') do set MONGODB_URI=%%a
+)
 
-:: Check if sync was successful
-if errorlevel 1 (
-    echo.
-    echo [WARNING] Email sync failed, but continuing...
+:: Sync student emails from MongoDB to students.json
+if defined MONGODB_URI (
+    node scripts/sync-student-emails.js
+    if errorlevel 1 (
+        echo.
+        echo [WARNING] Email sync failed, but continuing...
+    )
+) else (
+    echo [WARNING] MONGODB_URI not found in .env.local, skipping email sync...
 )
 
 echo.

@@ -7,7 +7,30 @@ const fs = require('fs');
 const path = require('path');
 const { MongoClient } = require('mongodb');
 
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb+srv://vh_admin:admin123@cluster0.afk76jy.mongodb.net/vh-website?retryWrites=true&w=majority&appName=Cluster0';
+// Try to load from .env.local first
+const envPath = path.join(__dirname, '..', '.env.local');
+if (fs.existsSync(envPath) && !process.env.MONGODB_URI) {
+  const envContent = fs.readFileSync(envPath, 'utf8');
+  const lines = envContent.split('\n');
+
+  lines.forEach(line => {
+    const trimmed = line.trim();
+    if (trimmed && !trimmed.startsWith('#')) {
+      const [key, ...valueParts] = trimmed.split('=');
+      const value = valueParts.join('=');
+      process.env[key] = value;
+    }
+  });
+}
+
+// Load from environment variables (set in .env.local or pass via command line)
+const MONGODB_URI = process.env.MONGODB_URI;
+
+if (!MONGODB_URI) {
+  console.error('❌ ERROR: MONGODB_URI environment variable is not set!');
+  console.error('Please set it in .env.local or pass it as an environment variable.');
+  process.exit(1);
+}
 
 async function syncStudentEmails() {
   console.log('\n📧 Syncing Student Emails from Database...\n');

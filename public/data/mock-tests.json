@@ -41,15 +41,19 @@
               "passed": true
             }
           },
-          "totalMarks": 8.5,
+          "totalMarks": 20.5,
           "mcqMarks": 8.5,
-          "essayMarks": 0,
+          "essayMarks": 12,
           "mcqCorrect": 12,
           "mcqWrong": 14,
           "mcqAccuracy": 46.15,
           "mcqPercentage": 12.14,
-          "totalPercentage": 12.14,
-          "rank": 7,
+          "totalPercentage": 25.62,
+          "rank": 8,
+          "essays": {
+            "1": 12
+          },
+          "maxEssayMarks": 10,
           "responses": {
             "Section1-Q1": "B (C)",
             "Section1-Q2": "NAN",
@@ -154,167 +158,13 @@
           "passedAll": false,
           "failedSections": [
             "1"
-          ]
+          ],
+          "essayThreshold": 4,
+          "essayPassed": true
         },
         "146014": {
           "studentId": "146014",
           "studentName": "Sadia Islam Sneha",
-          "sections": {
-            "1": {
-              "correct": 0,
-              "wrong": 0,
-              "marks": 0,
-              "percentage": 0,
-              "totalQuestions": 0,
-              "threshold": 5.75,
-              "passed": false
-            },
-            "2": {
-              "correct": 0,
-              "wrong": 0,
-              "marks": 0,
-              "percentage": 0,
-              "totalQuestions": 0,
-              "threshold": 2,
-              "passed": false
-            },
-            "3": {
-              "correct": 0,
-              "wrong": 0,
-              "marks": 0,
-              "percentage": 0,
-              "totalQuestions": 0,
-              "threshold": 0.5,
-              "passed": false
-            }
-          },
-          "totalMarks": 0,
-          "mcqMarks": 0,
-          "essayMarks": 0,
-          "mcqCorrect": 0,
-          "mcqWrong": 0,
-          "mcqAccuracy": 0,
-          "mcqPercentage": 0,
-          "totalPercentage": 0,
-          "rank": 13,
-          "responses": {},
-          "analytics": {
-            "skipStrategy": 0,
-            "questionChoiceStrategy": 0,
-            "recoveryScore": 0,
-            "sectionPerformance": {
-              "1": {
-                "accuracy": 0,
-                "attemptRate": 0,
-                "attempted": 0,
-                "unattempted": 0,
-                "efficiency": 0
-              },
-              "2": {
-                "accuracy": 0,
-                "attemptRate": 0,
-                "attempted": 0,
-                "unattempted": 0,
-                "efficiency": 0
-              },
-              "3": {
-                "accuracy": 0,
-                "attemptRate": 0,
-                "attempted": 0,
-                "unattempted": 0,
-                "efficiency": 0
-              }
-            }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1",
-            "2",
-            "3"
-          ]
-        },
-        "158296": {
-          "studentId": "158296",
-          "studentName": "Tahiyat Abdullah",
-          "sections": {
-            "1": {
-              "correct": 0,
-              "wrong": 0,
-              "marks": 0,
-              "percentage": 0,
-              "totalQuestions": 0,
-              "threshold": 5.75,
-              "passed": false
-            },
-            "2": {
-              "correct": 0,
-              "wrong": 0,
-              "marks": 0,
-              "percentage": 0,
-              "totalQuestions": 0,
-              "threshold": 2,
-              "passed": false
-            },
-            "3": {
-              "correct": 0,
-              "wrong": 0,
-              "marks": 0,
-              "percentage": 0,
-              "totalQuestions": 0,
-              "threshold": 0.5,
-              "passed": false
-            }
-          },
-          "totalMarks": 0,
-          "mcqMarks": 0,
-          "essayMarks": 0,
-          "mcqCorrect": 0,
-          "mcqWrong": 0,
-          "mcqAccuracy": 0,
-          "mcqPercentage": 0,
-          "totalPercentage": 0,
-          "rank": 14,
-          "responses": {},
-          "analytics": {
-            "skipStrategy": 0,
-            "questionChoiceStrategy": 0,
-            "recoveryScore": 0,
-            "sectionPerformance": {
-              "1": {
-                "accuracy": 0,
-                "attemptRate": 0,
-                "attempted": 0,
-                "unattempted": 0,
-                "efficiency": 0
-              },
-              "2": {
-                "accuracy": 0,
-                "attemptRate": 0,
-                "attempted": 0,
-                "unattempted": 0,
-                "efficiency": 0
-              },
-              "3": {
-                "accuracy": 0,
-                "attemptRate": 0,
-                "attempted": 0,
-                "unattempted": 0,
-                "efficiency": 0
-              }
-            }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1",
-            "2",
-            "3"
-          ]
-        },
-        "196303": {
-          "studentId": "196303",
-          "studentName": "RAMISA MALIAT",
           "sections": {
             "1": {
               "correct": 0,
@@ -387,12 +237,99 @@
           "failedSections": [
             "1",
             "2",
-            "3"
-          ]
+            "3",
+            "essay"
+          ],
+          "essayThreshold": 4,
+          "essayPassed": false
         },
-        "303558": {
-          "studentId": "303558",
-          "studentName": "Nusrat Tasfia",
+        "158296": {
+          "studentId": "158296",
+          "studentName": "Tahiyat Abdullah",
+          "sections": {
+            "1": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 0,
+              "threshold": 5.75,
+              "passed": false
+            },
+            "2": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 0,
+              "threshold": 2,
+              "passed": false
+            },
+            "3": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 0,
+              "threshold": 0.5,
+              "passed": false
+            }
+          },
+          "totalMarks": 7.5,
+          "mcqMarks": 0,
+          "essayMarks": 7.5,
+          "mcqCorrect": 0,
+          "mcqWrong": 0,
+          "mcqAccuracy": 0,
+          "mcqPercentage": 0,
+          "totalPercentage": 75,
+          "rank": 14,
+          "essays": {
+            "1": 7.5
+          },
+          "maxEssayMarks": 10,
+          "responses": {},
+          "analytics": {
+            "skipStrategy": 0,
+            "questionChoiceStrategy": 0,
+            "recoveryScore": 0,
+            "sectionPerformance": {
+              "1": {
+                "accuracy": 0,
+                "attemptRate": 0,
+                "attempted": 0,
+                "unattempted": 0,
+                "efficiency": 0
+              },
+              "2": {
+                "accuracy": 0,
+                "attemptRate": 0,
+                "attempted": 0,
+                "unattempted": 0,
+                "efficiency": 0
+              },
+              "3": {
+                "accuracy": 0,
+                "attemptRate": 0,
+                "attempted": 0,
+                "unattempted": 0,
+                "efficiency": 0
+              }
+            }
+          },
+          "rankStatus": "failed",
+          "passedAll": false,
+          "failedSections": [
+            "1",
+            "2",
+            "3"
+          ],
+          "essayThreshold": 4,
+          "essayPassed": true
+        },
+        "196303": {
+          "studentId": "196303",
+          "studentName": "RAMISA MALIAT",
           "sections": {
             "1": {
               "correct": 0,
@@ -465,12 +402,15 @@
           "failedSections": [
             "1",
             "2",
-            "3"
-          ]
+            "3",
+            "essay"
+          ],
+          "essayThreshold": 4,
+          "essayPassed": false
         },
-        "399043": {
-          "studentId": "399043",
-          "studentName": "Sara Iftekhar",
+        "303558": {
+          "studentId": "303558",
+          "studentName": "Nusrat Tasfia",
           "sections": {
             "1": {
               "correct": 0,
@@ -543,8 +483,92 @@
           "failedSections": [
             "1",
             "2",
-            "3"
-          ]
+            "3",
+            "essay"
+          ],
+          "essayThreshold": 4,
+          "essayPassed": false
+        },
+        "399043": {
+          "studentId": "399043",
+          "studentName": "Sara Iftekhar",
+          "sections": {
+            "1": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 0,
+              "threshold": 5.75,
+              "passed": false
+            },
+            "2": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 0,
+              "threshold": 2,
+              "passed": false
+            },
+            "3": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 0,
+              "threshold": 0.5,
+              "passed": false
+            }
+          },
+          "totalMarks": 0,
+          "mcqMarks": 0,
+          "essayMarks": 0,
+          "mcqCorrect": 0,
+          "mcqWrong": 0,
+          "mcqAccuracy": 0,
+          "mcqPercentage": 0,
+          "totalPercentage": 0,
+          "rank": 18,
+          "responses": {},
+          "analytics": {
+            "skipStrategy": 0,
+            "questionChoiceStrategy": 0,
+            "recoveryScore": 0,
+            "sectionPerformance": {
+              "1": {
+                "accuracy": 0,
+                "attemptRate": 0,
+                "attempted": 0,
+                "unattempted": 0,
+                "efficiency": 0
+              },
+              "2": {
+                "accuracy": 0,
+                "attemptRate": 0,
+                "attempted": 0,
+                "unattempted": 0,
+                "efficiency": 0
+              },
+              "3": {
+                "accuracy": 0,
+                "attemptRate": 0,
+                "attempted": 0,
+                "unattempted": 0,
+                "efficiency": 0
+              }
+            }
+          },
+          "rankStatus": "failed",
+          "passedAll": false,
+          "failedSections": [
+            "1",
+            "2",
+            "3",
+            "essay"
+          ],
+          "essayThreshold": 4,
+          "essayPassed": false
         },
         "400651": {
           "studentId": "400651",
@@ -578,15 +602,19 @@
               "passed": false
             }
           },
-          "totalMarks": 4.25,
+          "totalMarks": 14.25,
           "mcqMarks": 4.25,
-          "essayMarks": 0,
+          "essayMarks": 10,
           "mcqCorrect": 7,
           "mcqWrong": 11,
           "mcqAccuracy": 38.89,
           "mcqPercentage": 6.07,
-          "totalPercentage": 6.07,
+          "totalPercentage": 17.81,
           "rank": 11,
+          "essays": {
+            "1": 10
+          },
+          "maxEssayMarks": 10,
           "responses": {
             "Section1-Q1": "B (C)",
             "Section1-Q2": "NAN",
@@ -693,7 +721,9 @@
             "1",
             "2",
             "3"
-          ]
+          ],
+          "essayThreshold": 4,
+          "essayPassed": true
         },
         "417695": {
           "studentId": "417695",
@@ -735,7 +765,7 @@
           "mcqAccuracy": 0,
           "mcqPercentage": 0,
           "totalPercentage": 0,
-          "rank": 18,
+          "rank": 19,
           "responses": {},
           "analytics": {
             "skipStrategy": 0,
@@ -770,8 +800,11 @@
           "failedSections": [
             "1",
             "2",
-            "3"
-          ]
+            "3",
+            "essay"
+          ],
+          "essayThreshold": 4,
+          "essayPassed": false
         },
         "421527": {
           "studentId": "421527",
@@ -805,15 +838,19 @@
               "passed": false
             }
           },
-          "totalMarks": 2.25,
+          "totalMarks": 14.75,
           "mcqMarks": 2.25,
-          "essayMarks": 0,
+          "essayMarks": 12.5,
           "mcqCorrect": 12,
           "mcqWrong": 39,
           "mcqAccuracy": 23.53,
           "mcqPercentage": 3.21,
-          "totalPercentage": 3.21,
-          "rank": 12,
+          "totalPercentage": 18.42,
+          "rank": 10,
+          "essays": {
+            "1": 12.5
+          },
+          "maxEssayMarks": 10,
           "responses": {
             "Section1-Q1": "B (C)",
             "Section1-Q2": "E (W)",
@@ -919,7 +956,9 @@
           "failedSections": [
             "1",
             "3"
-          ]
+          ],
+          "essayThreshold": 4,
+          "essayPassed": true
         },
         "459889": {
           "studentId": "459889",
@@ -953,15 +992,19 @@
               "passed": true
             }
           },
-          "totalMarks": 16.5,
+          "totalMarks": 30.5,
           "mcqMarks": 16.5,
-          "essayMarks": 0,
+          "essayMarks": 14,
           "mcqCorrect": 18,
           "mcqWrong": 8,
           "mcqAccuracy": 69.23,
           "mcqPercentage": 23.57,
-          "totalPercentage": 23.57,
-          "rank": 3,
+          "totalPercentage": 38.12,
+          "rank": 4,
+          "essays": {
+            "1": 14
+          },
+          "maxEssayMarks": 10,
           "responses": {
             "Section1-Q1": "B (C)",
             "Section1-Q2": "B (C)",
@@ -1064,7 +1107,9 @@
           },
           "rankStatus": "passed",
           "passedAll": true,
-          "failedSections": []
+          "failedSections": [],
+          "essayThreshold": 4,
+          "essayPassed": true
         },
         "542127": {
           "studentId": "542127",
@@ -1106,7 +1151,7 @@
           "mcqAccuracy": 0,
           "mcqPercentage": 0,
           "totalPercentage": 0,
-          "rank": 19,
+          "rank": 20,
           "responses": {},
           "analytics": {
             "skipStrategy": 0,
@@ -1141,8 +1186,11 @@
           "failedSections": [
             "1",
             "2",
-            "3"
-          ]
+            "3",
+            "essay"
+          ],
+          "essayThreshold": 4,
+          "essayPassed": false
         },
         "575752": {
           "studentId": "575752",
@@ -1176,15 +1224,19 @@
               "passed": false
             }
           },
-          "totalMarks": 8,
+          "totalMarks": 19.5,
           "mcqMarks": 8,
-          "essayMarks": 0,
+          "essayMarks": 11.5,
           "mcqCorrect": 11,
           "mcqWrong": 13,
           "mcqAccuracy": 45.83,
           "mcqPercentage": 11.43,
-          "totalPercentage": 11.43,
-          "rank": 8,
+          "totalPercentage": 24.38,
+          "rank": 9,
+          "essays": {
+            "1": 11.5
+          },
+          "maxEssayMarks": 10,
           "responses": {
             "Section1-Q1": "NAN",
             "Section1-Q2": "NAN",
@@ -1290,7 +1342,9 @@
           "failedSections": [
             "1",
             "3"
-          ]
+          ],
+          "essayThreshold": 4,
+          "essayPassed": true
         },
         "604057": {
           "studentId": "604057",
@@ -1324,15 +1378,19 @@
               "passed": true
             }
           },
-          "totalMarks": 5,
+          "totalMarks": 14,
           "mcqMarks": 5,
-          "essayMarks": 0,
+          "essayMarks": 9,
           "mcqCorrect": 13,
           "mcqWrong": 32,
           "mcqAccuracy": 28.89,
           "mcqPercentage": 7.14,
-          "totalPercentage": 7.14,
-          "rank": 10,
+          "totalPercentage": 17.49,
+          "rank": 12,
+          "essays": {
+            "1": 9
+          },
+          "maxEssayMarks": 10,
           "responses": {
             "Section1-Q1": "D (W)",
             "Section1-Q2": "B (C)",
@@ -1437,7 +1495,9 @@
           "passedAll": false,
           "failedSections": [
             "2"
-          ]
+          ],
+          "essayThreshold": 4,
+          "essayPassed": true
         },
         "621172": {
           "studentId": "621172",
@@ -1471,15 +1531,19 @@
               "passed": false
             }
           },
-          "totalMarks": 7.5,
+          "totalMarks": 22,
           "mcqMarks": 7.5,
-          "essayMarks": 0,
+          "essayMarks": 14.5,
           "mcqCorrect": 10,
           "mcqWrong": 18,
           "mcqAccuracy": 35.71,
           "mcqPercentage": 10.71,
-          "totalPercentage": 10.71,
-          "rank": 9,
+          "totalPercentage": 27.49,
+          "rank": 6,
+          "essays": {
+            "1": 14.5
+          },
+          "maxEssayMarks": 10,
           "responses": {
             "Section1-Q1": "NAN",
             "Section1-Q2": "B (C)",
@@ -1585,7 +1649,9 @@
           "failedSections": [
             "2",
             "3"
-          ]
+          ],
+          "essayThreshold": 4,
+          "essayPassed": true
         },
         "624690": {
           "studentId": "624690",
@@ -1619,15 +1685,19 @@
               "passed": true
             }
           },
-          "totalMarks": 12.5,
+          "totalMarks": 32.5,
           "mcqMarks": 12.5,
-          "essayMarks": 0,
+          "essayMarks": 20,
           "mcqCorrect": 16,
           "mcqWrong": 17,
           "mcqAccuracy": 48.48,
           "mcqPercentage": 17.86,
-          "totalPercentage": 17.86,
-          "rank": 4,
+          "totalPercentage": 40.63,
+          "rank": 1,
+          "essays": {
+            "1": 20
+          },
+          "maxEssayMarks": 10,
           "responses": {
             "Section1-Q1": "B (C)",
             "Section1-Q2": "A (W)",
@@ -1730,7 +1800,9 @@
           },
           "rankStatus": "passed",
           "passedAll": true,
-          "failedSections": []
+          "failedSections": [],
+          "essayThreshold": 4,
+          "essayPassed": true
         },
         "643388": {
           "studentId": "643388",
@@ -1764,15 +1836,19 @@
               "passed": true
             }
           },
-          "totalMarks": 11,
+          "totalMarks": 22,
           "mcqMarks": 11,
-          "essayMarks": 0,
+          "essayMarks": 11,
           "mcqCorrect": 15,
           "mcqWrong": 16,
           "mcqAccuracy": 48.39,
           "mcqPercentage": 15.71,
-          "totalPercentage": 15.71,
-          "rank": 6,
+          "totalPercentage": 27.49,
+          "rank": 7,
+          "essays": {
+            "1": 11
+          },
+          "maxEssayMarks": 10,
           "responses": {
             "Section1-Q1": "A (W)",
             "Section1-Q2": "B (C)",
@@ -1877,89 +1953,13 @@
           "passedAll": false,
           "failedSections": [
             "2"
-          ]
+          ],
+          "essayThreshold": 4,
+          "essayPassed": true
         },
         "648081": {
           "studentId": "648081",
           "studentName": "Ayesha Khaled",
-          "sections": {
-            "1": {
-              "correct": 0,
-              "wrong": 0,
-              "marks": 0,
-              "percentage": 0,
-              "totalQuestions": 0,
-              "threshold": 5.75,
-              "passed": false
-            },
-            "2": {
-              "correct": 0,
-              "wrong": 0,
-              "marks": 0,
-              "percentage": 0,
-              "totalQuestions": 0,
-              "threshold": 2,
-              "passed": false
-            },
-            "3": {
-              "correct": 0,
-              "wrong": 0,
-              "marks": 0,
-              "percentage": 0,
-              "totalQuestions": 0,
-              "threshold": 0.5,
-              "passed": false
-            }
-          },
-          "totalMarks": 0,
-          "mcqMarks": 0,
-          "essayMarks": 0,
-          "mcqCorrect": 0,
-          "mcqWrong": 0,
-          "mcqAccuracy": 0,
-          "mcqPercentage": 0,
-          "totalPercentage": 0,
-          "rank": 20,
-          "responses": {},
-          "analytics": {
-            "skipStrategy": 0,
-            "questionChoiceStrategy": 0,
-            "recoveryScore": 0,
-            "sectionPerformance": {
-              "1": {
-                "accuracy": 0,
-                "attemptRate": 0,
-                "attempted": 0,
-                "unattempted": 0,
-                "efficiency": 0
-              },
-              "2": {
-                "accuracy": 0,
-                "attemptRate": 0,
-                "attempted": 0,
-                "unattempted": 0,
-                "efficiency": 0
-              },
-              "3": {
-                "accuracy": 0,
-                "attemptRate": 0,
-                "attempted": 0,
-                "unattempted": 0,
-                "efficiency": 0
-              }
-            }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1",
-            "2",
-            "3"
-          ]
-        },
-        "650004": {
-          "studentId": "650004",
-          "studentName": "Aymaan Zaman",
           "sections": {
             "1": {
               "correct": 0,
@@ -2032,12 +2032,15 @@
           "failedSections": [
             "1",
             "2",
-            "3"
-          ]
+            "3",
+            "essay"
+          ],
+          "essayThreshold": 4,
+          "essayPassed": false
         },
-        "678535": {
-          "studentId": "678535",
-          "studentName": "Nazeef Rahman",
+        "650004": {
+          "studentId": "650004",
+          "studentName": "Aymaan Zaman",
           "sections": {
             "1": {
               "correct": 0,
@@ -2110,8 +2113,92 @@
           "failedSections": [
             "1",
             "2",
-            "3"
-          ]
+            "3",
+            "essay"
+          ],
+          "essayThreshold": 4,
+          "essayPassed": false
+        },
+        "678535": {
+          "studentId": "678535",
+          "studentName": "Nazeef Rahman",
+          "sections": {
+            "1": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 0,
+              "threshold": 5.75,
+              "passed": false
+            },
+            "2": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 0,
+              "threshold": 2,
+              "passed": false
+            },
+            "3": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 0,
+              "threshold": 0.5,
+              "passed": false
+            }
+          },
+          "totalMarks": 0,
+          "mcqMarks": 0,
+          "essayMarks": 0,
+          "mcqCorrect": 0,
+          "mcqWrong": 0,
+          "mcqAccuracy": 0,
+          "mcqPercentage": 0,
+          "totalPercentage": 0,
+          "rank": 23,
+          "responses": {},
+          "analytics": {
+            "skipStrategy": 0,
+            "questionChoiceStrategy": 0,
+            "recoveryScore": 0,
+            "sectionPerformance": {
+              "1": {
+                "accuracy": 0,
+                "attemptRate": 0,
+                "attempted": 0,
+                "unattempted": 0,
+                "efficiency": 0
+              },
+              "2": {
+                "accuracy": 0,
+                "attemptRate": 0,
+                "attempted": 0,
+                "unattempted": 0,
+                "efficiency": 0
+              },
+              "3": {
+                "accuracy": 0,
+                "attemptRate": 0,
+                "attempted": 0,
+                "unattempted": 0,
+                "efficiency": 0
+              }
+            }
+          },
+          "rankStatus": "failed",
+          "passedAll": false,
+          "failedSections": [
+            "1",
+            "2",
+            "3",
+            "essay"
+          ],
+          "essayThreshold": 4,
+          "essayPassed": false
         },
         "757516": {
           "studentId": "757516",
@@ -2145,15 +2232,19 @@
               "passed": true
             }
           },
-          "totalMarks": 17.5,
+          "totalMarks": 35.5,
           "mcqMarks": 17.5,
-          "essayMarks": 0,
+          "essayMarks": 18,
           "mcqCorrect": 19,
           "mcqWrong": 6,
           "mcqAccuracy": 76,
           "mcqPercentage": 25,
-          "totalPercentage": 25,
+          "totalPercentage": 44.38,
           "rank": 2,
+          "essays": {
+            "1": 18
+          },
+          "maxEssayMarks": 10,
           "responses": {
             "Section1-Q1": "B (C)",
             "Section1-Q2": "B (C)",
@@ -2256,7 +2347,9 @@
           },
           "rankStatus": "passed",
           "passedAll": true,
-          "failedSections": []
+          "failedSections": [],
+          "essayThreshold": 4,
+          "essayPassed": true
         },
         "764305": {
           "studentId": "764305",
@@ -2290,15 +2383,19 @@
               "passed": true
             }
           },
-          "totalMarks": 23.5,
+          "totalMarks": 39,
           "mcqMarks": 23.5,
-          "essayMarks": 0,
+          "essayMarks": 15.5,
           "mcqCorrect": 26,
           "mcqWrong": 14,
           "mcqAccuracy": 65,
           "mcqPercentage": 33.57,
-          "totalPercentage": 33.57,
-          "rank": 1,
+          "totalPercentage": 48.75,
+          "rank": 3,
+          "essays": {
+            "1": 15.5
+          },
+          "maxEssayMarks": 10,
           "responses": {
             "Section1-Q1": "A (W)",
             "Section1-Q2": "B (C)",
@@ -2401,7 +2498,9 @@
           },
           "rankStatus": "passed",
           "passedAll": true,
-          "failedSections": []
+          "failedSections": [],
+          "essayThreshold": 4,
+          "essayPassed": true
         },
         "907183": {
           "studentId": "907183",
@@ -2443,7 +2542,7 @@
           "mcqAccuracy": 0,
           "mcqPercentage": 0,
           "totalPercentage": 0,
-          "rank": 23,
+          "rank": 24,
           "responses": {},
           "analytics": {
             "skipStrategy": 0,
@@ -2478,8 +2577,11 @@
           "failedSections": [
             "1",
             "2",
-            "3"
-          ]
+            "3",
+            "essay"
+          ],
+          "essayThreshold": 4,
+          "essayPassed": false
         },
         "934245": {
           "studentId": "934245",
@@ -2513,15 +2615,19 @@
               "passed": false
             }
           },
-          "totalMarks": -0.5,
+          "totalMarks": 9.5,
           "mcqMarks": -0.5,
-          "essayMarks": 0,
+          "essayMarks": 10,
           "mcqCorrect": 5,
           "mcqWrong": 22,
           "mcqAccuracy": 18.52,
           "mcqPercentage": -0.71,
-          "totalPercentage": 0,
-          "rank": 24,
+          "totalPercentage": 95,
+          "rank": 13,
+          "essays": {
+            "1": 10
+          },
+          "maxEssayMarks": 10,
           "responses": {
             "Section1-Q1": "A (W)",
             "Section1-Q2": "NAN",
@@ -2628,7 +2734,9 @@
             "1",
             "2",
             "3"
-          ]
+          ],
+          "essayThreshold": 4,
+          "essayPassed": true
         },
         "979212": {
           "studentId": "979212",
@@ -2662,15 +2770,19 @@
               "passed": true
             }
           },
-          "totalMarks": 11.75,
+          "totalMarks": 23.25,
           "mcqMarks": 11.75,
-          "essayMarks": 0,
+          "essayMarks": 11.5,
           "mcqCorrect": 16,
           "mcqWrong": 17,
           "mcqAccuracy": 48.48,
           "mcqPercentage": 16.79,
-          "totalPercentage": 16.79,
+          "totalPercentage": 29.07,
           "rank": 5,
+          "essays": {
+            "1": 11.5
+          },
+          "maxEssayMarks": 10,
           "responses": {
             "Section1-Q1": "NAN",
             "Section1-Q2": "B (C)",
@@ -2773,21 +2885,24 @@
           },
           "rankStatus": "passed",
           "passedAll": true,
-          "failedSections": []
+          "failedSections": [],
+          "essayThreshold": 4,
+          "essayPassed": true
         }
       },
       "classStats": {
-        "averageScore": 5.32,
-        "top5Average": 16.35,
+        "averageScore": 12.7,
+        "top5Average": 32.15,
         "totalStudents": 24,
-        "passRate": 45.83,
-        "maxScore": 23.5,
-        "minScore": -0.5,
-        "threshold": 3.19375,
+        "passRate": 54.17,
+        "maxScore": 39,
+        "minScore": 0,
+        "threshold": 7.6187499999999995,
         "sectionThresholds": {
           "1": 5.75,
           "2": 2,
-          "3": 0.5
+          "3": 0.5,
+          "essay": 4
         },
         "thresholdsAdjusted": true,
         "passedStudents": 5,
@@ -3180,7 +3295,7 @@
         }
       },
       "metadata": {
-        "processedAt": "2025-11-14T17:32:30.847Z",
+        "processedAt": "2025-11-14T17:44:52.668Z",
         "sourceFile": "IBA Mock\\Mock 1.xlsx",
         "sheets": [
           "Sheet1",
@@ -6627,7 +6742,7 @@
         }
       },
       "metadata": {
-        "processedAt": "2025-11-14T17:32:30.980Z",
+        "processedAt": "2025-11-14T17:44:52.686Z",
         "sourceFile": "IBA Mock\\Mock 2.xlsx",
         "sheets": [
           "Sheet1",
@@ -10007,7 +10122,7 @@
         }
       },
       "metadata": {
-        "processedAt": "2025-11-14T17:32:31.136Z",
+        "processedAt": "2025-11-14T17:44:52.709Z",
         "sourceFile": "IBA Mock\\Mock 3.xlsx",
         "sheets": [
           "Sheet1",
@@ -13240,7 +13355,7 @@
         }
       },
       "metadata": {
-        "processedAt": "2025-11-14T17:32:31.388Z",
+        "processedAt": "2025-11-14T17:44:52.729Z",
         "sourceFile": "IBA Mock\\Mock 4.xlsx",
         "sheets": [
           "Sheet1",
@@ -13252,7 +13367,7 @@
   },
   "metadata": {
     "totalTests": 4,
-    "lastProcessed": "2025-11-14T17:32:31.452Z",
+    "lastProcessed": "2025-11-14T17:44:52.732Z",
     "version": "1.0.0"
   }
 }

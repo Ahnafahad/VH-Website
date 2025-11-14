@@ -318,6 +318,58 @@ class FBSMockProcessor {
 
     fs.writeFileSync(outputPath, JSON.stringify(data, null, 2));
     console.log(`✅ Saved to: ${outputPath}`);
+
+    // Also update students.json with FBS students
+    this.updateStudentsJson();
+  }
+
+  /**
+   * Update students.json with FBS student data
+   */
+  updateStudentsJson() {
+    const studentsPath = path.join(this.outputDir, 'students.json');
+
+    // Load existing students.json
+    let studentsData = { students: {}, metadata: {} };
+    if (fs.existsSync(studentsPath)) {
+      studentsData = JSON.parse(fs.readFileSync(studentsPath, 'utf-8'));
+    }
+
+    // Collect all unique FBS students from all mocks
+    const fbsStudents = {};
+    Object.values(this.fbsMocks).forEach(mock => {
+      Object.values(mock.results).forEach(student => {
+        if (!fbsStudents[student.studentId]) {
+          fbsStudents[student.studentId] = {
+            id: student.studentId,
+            name: student.studentName,
+            email: '' // Email will be synced from database later
+          };
+        }
+      });
+    });
+
+    // Merge FBS students into existing students data
+    let addedCount = 0;
+    Object.entries(fbsStudents).forEach(([id, student]) => {
+      if (!studentsData.students[id]) {
+        studentsData.students[id] = student;
+        addedCount++;
+      }
+    });
+
+    // Update metadata
+    studentsData.metadata = {
+      totalStudents: Object.keys(studentsData.students).length,
+      lastUpdated: new Date().toISOString()
+    };
+
+    // Save updated students.json
+    fs.writeFileSync(studentsPath, JSON.stringify(studentsData, null, 2));
+
+    if (addedCount > 0) {
+      console.log(`✅ Added ${addedCount} FBS students to students.json`);
+    }
   }
 
   /**
