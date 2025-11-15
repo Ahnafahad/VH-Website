@@ -95,7 +95,7 @@ const Top5LeaderboardTable: React.FC<Top5LeaderboardTableProps> = ({
 
   // Check if any result has essay marks
   const hasEssayMarks = isFullTest && top5Results.some((result: any) =>
-    (result.essayMarks && result.essayMarks > 0) || (result.maxEssayMarks && result.maxEssayMarks > 0)
+    result.essayMarks !== undefined && result.essayMarks > 0
   );
 
   // Medal icons for top 3
@@ -224,11 +224,9 @@ const Top5LeaderboardTable: React.FC<Top5LeaderboardTableProps> = ({
                           <div className="text-lg font-bold text-purple-600">
                             {result.essayMarks || result.totalWritten || 0}
                           </div>
-                          {(result.maxEssayMarks && result.maxEssayMarks > 0) && (
-                            <div className="text-xs text-gray-500 mt-1">
-                              of {result.maxEssayMarks}
-                            </div>
-                          )}
+                          <div className="text-xs text-gray-500 mt-1">
+                            of 30
+                          </div>
                         </td>
                       )}
 

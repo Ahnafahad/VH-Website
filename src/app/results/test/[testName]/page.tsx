@@ -921,7 +921,7 @@ const TestDetailPage = () => {
                             <div className="text-center p-4 bg-purple-50 rounded-lg border border-purple-100">
                               <div className="text-2xl font-bold text-purple-600">{(userResult as FullTestResult).essayMarks}</div>
                               <div className="text-sm text-purple-700 mt-1">Essay Marks</div>
-                              <div className="text-xs text-purple-600 mt-1">out of {(userResult as FullTestResult).maxEssayMarks || 0}</div>
+                              <div className="text-xs text-purple-600 mt-1">out of 30</div>
                             </div>
                           </>
                         )}
