@@ -52,6 +52,9 @@ const ClassDistributionChart: React.FC<ClassDistributionChartProps> = ({
     const allScores: number[] = [];
 
     Object.values(allTests).forEach((test: any) => {
+      // Skip if test is undefined or null
+      if (!test) return;
+
       Object.values(test.results || {}).forEach((result: any) => {
         const score = 'score' in result ? result.score : result.totalMarks;
         allScores.push(score);
