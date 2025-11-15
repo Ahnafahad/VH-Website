@@ -1594,7 +1594,7 @@ const TestDetailPage = () => {
               )}
 
               {/* Question Performance Analytics (Sheet 2 Data) */}
-              {isFullTest && (currentTest as FullTest).topQuestions && (
+              {isFullTest && !isFBSMock && (currentTest as FullTest).topQuestions && (
                 <div className="bg-gradient-to-br from-white to-vh-beige/5 rounded-xl shadow-lg border border-vh-beige/30 hover:shadow-xl transition-all duration-300 p-8 mb-8 mt-16">
                   <h3 className="text-lg font-semibold text-gray-800 mb-8">Question Difficulty Analysis</h3>
                   {userResult && (
@@ -1700,7 +1700,7 @@ const TestDetailPage = () => {
               )}
 
               {/* Personal Performance vs Top Questions */}
-              {isFullTest && (currentTest as FullTest).topQuestions && userResult && (
+              {isFullTest && !isFBSMock && (currentTest as FullTest).topQuestions && userResult && (
                 <div className="bg-gradient-to-br from-white to-vh-beige/5 rounded-xl shadow-lg border border-vh-beige/30 hover:shadow-xl transition-all duration-300 p-6 mb-8">
                   <h3 className="text-lg font-semibold text-gray-800 mb-4">
                     {isPublicDemo ? "Mahmud Rahman's" : "Your"} Performance vs Class Top Questions
