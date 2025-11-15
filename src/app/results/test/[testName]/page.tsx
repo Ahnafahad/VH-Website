@@ -423,38 +423,49 @@ const TestDetailPage = () => {
     return null;
   };
 
-  // Helper function to get user's performance indicator by question number (for FBS analytics)
-  const getUserQuestionStatusByNumber = (questionNumber: number, sectionNumber?: string): React.ReactNode => {
+  // Helper function to get user's performance indicator for question (supports all test types)
+  const getUserQuestionStatusByNumber = (question: any): React.ReactNode => {
     if (!userResult) return null;
     // For non-demo pages, require authentication
     if (!isPublicDemo && !session?.user?.email) return null;
 
     const result = userResult as any;
 
-    // Try FBS mock format first: q1, q2, etc. with object responses
-    const fbsKey = `q${questionNumber}`;
-    const fbsResponse = result.responses?.[fbsKey];
+    // Determine the response key based on question data structure
+    let responseKey: string;
 
-    if (fbsResponse && typeof fbsResponse === 'object' && fbsResponse.status) {
-      if (fbsResponse.status === 'skipped') {
+    if (question.questionId) {
+      // Full tests and IBA mocks have questionId property (e.g., "s1q1", "Section1-Q1")
+      responseKey = question.questionId;
+    } else if (question.questionNumber) {
+      // FBS mocks use questionNumber with q{number} format
+      responseKey = `q${question.questionNumber}`;
+    } else {
+      return null;
+    }
+
+    const userResponse = result.responses?.[responseKey];
+
+    if (!userResponse) return null;
+
+    // Handle FBS mock format: {answer: "A", status: "correct"}
+    if (typeof userResponse === 'object' && userResponse.status) {
+      if (userResponse.status === 'skipped') {
         return <Minus size={14} className="text-gray-400" />;
-      } else if (fbsResponse.status === 'correct') {
+      } else if (userResponse.status === 'correct') {
         return <CheckCircle size={14} className="text-green-500" />;
-      } else if (fbsResponse.status === 'wrong') {
+      } else if (userResponse.status === 'wrong') {
         return <XCircle size={14} className="text-red-500" />;
       }
     }
 
-    // For Full tests and IBA mocks: use s{section}q{number} format with string responses
-    if (sectionNumber) {
-      const fullTestKey = `s${sectionNumber}q${questionNumber}`;
-      const fullTestResponse = result.responses?.[fullTestKey];
-
-      if (!fullTestResponse || fullTestResponse === 'NAN') {
+    // Handle Full test/IBA mock format: "A (C)", "B (W)", or "NAN"
+    if (typeof userResponse === 'string') {
+      if (userResponse === 'NAN' || userResponse.trim() === '') {
         return <Minus size={14} className="text-gray-400" />;
-      } else if (fullTestResponse.includes('(C)')) {
+      } else if (userResponse.includes('(C)')) {
         return <CheckCircle size={14} className="text-green-500" />;
-      } else if (fullTestResponse.includes('(W)')) {
+      } else if (userResponse.includes('(W)')) {
         return <XCircle size={14} className="text-red-500" />;
       }
     }
@@ -1273,7 +1284,7 @@ const TestDetailPage = () => {
                                     <div key={question.questionNumber || index} className="flex justify-between items-center text-sm">
                                       <div className="flex items-center gap-2">
                                         <span className="text-green-700">Q{question.questionNumber}</span>
-                                        {getUserQuestionStatusByNumber(question.questionNumber)}
+                                        {getUserQuestionStatusByNumber(question)}
                                       </div>
                                       <span className="text-green-600 font-medium">{question.count} correct</span>
                                     </div>
@@ -1294,7 +1305,7 @@ const TestDetailPage = () => {
                                     <div key={question.questionNumber || index} className="flex justify-between items-center text-sm">
                                       <div className="flex items-center gap-2">
                                         <span className="text-red-700">Q{question.questionNumber}</span>
-                                        {getUserQuestionStatusByNumber(question.questionNumber)}
+                                        {getUserQuestionStatusByNumber(question)}
                                       </div>
                                       <span className="text-red-600 font-medium">{question.count} wrong</span>
                                     </div>
@@ -1315,7 +1326,7 @@ const TestDetailPage = () => {
                                     <div key={question.questionNumber || index} className="flex justify-between items-center text-sm">
                                       <div className="flex items-center gap-2">
                                         <span className="text-gray-700">Q{question.questionNumber}</span>
-                                        {getUserQuestionStatusByNumber(question.questionNumber)}
+                                        {getUserQuestionStatusByNumber(question)}
                                       </div>
                                       <span className="text-gray-600 font-medium">{question.count} skipped</span>
                                     </div>
@@ -1654,7 +1665,7 @@ const TestDetailPage = () => {
                               <div key={question.questionNumber || index} className="flex justify-between items-center text-sm">
                                 <div className="flex items-center gap-2">
                                   <span className="text-green-700">Q{question.questionNumber}</span>
-                                  {getUserQuestionStatusByNumber(question.questionNumber, sectionNum)}
+                                  {getUserQuestionStatusByNumber(question)}
                                 </div>
                                 <span className="text-green-600 font-medium">{question.count} correct</span>
                               </div>
@@ -1676,7 +1687,7 @@ const TestDetailPage = () => {
                               <div key={question.questionNumber || index} className="flex justify-between items-center text-sm">
                                 <div className="flex items-center gap-2">
                                   <span className="text-red-700">Q{question.questionNumber}</span>
-                                  {getUserQuestionStatusByNumber(question.questionNumber, sectionNum)}
+                                  {getUserQuestionStatusByNumber(question)}
                                 </div>
                                 <span className="text-red-600 font-medium">{question.count} wrong</span>
                               </div>
@@ -1698,7 +1709,7 @@ const TestDetailPage = () => {
                               <div key={question.questionNumber || index} className="flex justify-between items-center text-sm">
                                 <div className="flex items-center gap-2">
                                   <span className="text-gray-700">Q{question.questionNumber}</span>
-                                  {getUserQuestionStatusByNumber(question.questionNumber, sectionNum)}
+                                  {getUserQuestionStatusByNumber(question)}
                                 </div>
                                 <span className="text-gray-600 font-medium">{question.count} skipped</span>
                               </div>
