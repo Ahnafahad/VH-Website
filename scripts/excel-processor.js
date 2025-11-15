@@ -232,53 +232,6 @@ class ExcelProcessor {
       studentResult.analytics.percentile = calculatePercentile(studentResult.score, allScores);
     });
 
-    // Apply threshold logic if applicable
-    if (shouldApplyThresholds(testName)) {
-      console.log(`    🎯 Applying threshold logic to ${testName}`);
-
-      // Get section IDs from first student
-      const firstStudent = Object.values(results)[0];
-      const sectionIds = firstStudent.sections ? Object.keys(firstStudent.sections) : [];
-      const hasEssay = firstStudent.essays && Object.keys(firstStudent.essays).length > 0;
-
-      // Calculate thresholds
-      const thresholdData = calculateThresholds(Object.values(results), sectionIds, hasEssay, testName);
-
-      // Apply thresholds to class stats
-      classStats.sectionThresholds = thresholdData.thresholds;
-      classStats.thresholdsAdjusted = thresholdData.adjusted;
-      classStats.passedStudents = thresholdData.passData.passCount;
-      classStats.failedStudents = thresholdData.passData.failCount;
-
-      // Update student results with threshold data
-      thresholdData.passData.students.forEach(studentData => {
-        if (results[studentData.studentId]) {
-          results[studentData.studentId].rank = studentData.rank;
-          results[studentData.studentId].rankStatus = studentData.rankStatus;
-          results[studentData.studentId].passedAll = studentData.passedAll;
-          results[studentData.studentId].failedSections = studentData.failedSections;
-
-          // Update section thresholds and pass status
-          if (results[studentData.studentId].sections) {
-            Object.keys(results[studentData.studentId].sections).forEach(sectionId => {
-              if (studentData.sectionResults[sectionId]) {
-                results[studentData.studentId].sections[sectionId].threshold = studentData.sectionResults[sectionId].threshold;
-                results[studentData.studentId].sections[sectionId].passed = studentData.sectionResults[sectionId].passed;
-              }
-            });
-          }
-
-          // Update essay threshold and pass status
-          if (hasEssay && studentData.sectionResults['essay']) {
-            results[studentData.studentId].essayThreshold = studentData.sectionResults['essay'].threshold;
-            results[studentData.studentId].essayPassed = studentData.sectionResults['essay'].passed;
-          }
-        }
-      });
-
-      console.log(`    ✅ Thresholds: ${JSON.stringify(thresholdData.thresholds)} | ${thresholdData.passData.passCount} passed, ${thresholdData.passData.failCount} failed`);
-    }
-
     return {
       testName,
       testSeries,

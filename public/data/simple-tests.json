@@ -14,17 +14,14 @@
           "unattempted": 0,
           "totalQuestions": 50,
           "score": 6.25,
-          "rank": 1,
+          "rank": 12,
           "threshold": 7,
           "analytics": {
             "accuracy": 30,
             "attemptRate": 100,
             "passStatus": false,
             "percentile": 47.83
-          },
-          "rankStatus": "passed",
-          "passedAll": true,
-          "failedSections": []
+          }
         },
         "146014": {
           "studentId": "146014",
@@ -34,17 +31,14 @@
           "unattempted": 50,
           "totalQuestions": 50,
           "score": 0,
-          "rank": 2,
+          "rank": 19,
           "threshold": 7,
           "analytics": {
             "accuracy": 0,
             "attemptRate": 0,
             "passStatus": false,
             "percentile": 8.7
-          },
-          "rankStatus": "passed",
-          "passedAll": true,
-          "failedSections": []
+          }
         },
         "158296": {
           "studentId": "158296",
@@ -54,17 +48,14 @@
           "unattempted": 30,
           "totalQuestions": 50,
           "score": 5,
-          "rank": 3,
+          "rank": 13,
           "threshold": 7,
           "analytics": {
             "accuracy": 40,
             "attemptRate": 40,
             "passStatus": false,
             "percentile": 43.48
-          },
-          "rankStatus": "passed",
-          "passedAll": true,
-          "failedSections": []
+          }
         },
         "196303": {
           "studentId": "196303",
@@ -74,17 +65,14 @@
           "unattempted": 18,
           "totalQuestions": 50,
           "score": 13.25,
-          "rank": 4,
+          "rank": 6,
           "threshold": 7,
           "analytics": {
             "accuracy": 53.13,
             "attemptRate": 64,
             "passStatus": true,
             "percentile": 73.91
-          },
-          "rankStatus": "passed",
-          "passedAll": true,
-          "failedSections": []
+          }
         },
         "303558": {
           "studentId": "303558",
@@ -94,17 +82,14 @@
           "unattempted": 30,
           "totalQuestions": 50,
           "score": 2.5,
-          "rank": 5,
+          "rank": 16,
           "threshold": 7,
           "analytics": {
             "accuracy": 30,
             "attemptRate": 40,
             "passStatus": false,
             "percentile": 26.09
-          },
-          "rankStatus": "passed",
-          "passedAll": true,
-          "failedSections": []
+          }
         },
         "399043": {
           "studentId": "399043",
@@ -114,17 +99,14 @@
           "unattempted": 50,
           "totalQuestions": 50,
           "score": 0,
-          "rank": 6,
+          "rank": 19,
           "threshold": 7,
           "analytics": {
             "accuracy": 0,
             "attemptRate": 0,
             "passStatus": false,
             "percentile": 8.7
-          },
-          "rankStatus": "passed",
-          "passedAll": true,
-          "failedSections": []
+          }
         },
         "400651": {
           "studentId": "400651",
@@ -134,17 +116,14 @@
           "unattempted": 33,
           "totalQuestions": 50,
           "score": 9.5,
-          "rank": 7,
+          "rank": 10,
           "threshold": 7,
           "analytics": {
             "accuracy": 64.71,
             "attemptRate": 34,
             "passStatus": true,
             "percentile": 56.52
-          },
-          "rankStatus": "passed",
-          "passedAll": true,
-          "failedSections": []
+          }
         },
         "417695": {
           "studentId": "417695",
@@ -161,10 +140,7 @@
             "attemptRate": 34,
             "passStatus": true,
             "percentile": 60.87
-          },
-          "rankStatus": "passed",
-          "passedAll": true,
-          "failedSections": []
+          }
         },
         "421527": {
           "studentId": "421527",
@@ -174,17 +150,14 @@
           "unattempted": 10,
           "totalQuestions": 50,
           "score": 2.5,
-          "rank": 9,
+          "rank": 16,
           "threshold": 7,
           "analytics": {
             "accuracy": 25,
             "attemptRate": 80,
             "passStatus": false,
             "percentile": 26.09
-          },
-          "rankStatus": "passed",
-          "passedAll": true,
-          "failedSections": []
+          }
         },
         "459889": {
           "studentId": "459889",
@@ -194,17 +167,14 @@
           "unattempted": 22,
           "totalQuestions": 50,
           "score": 16.75,
-          "rank": 10,
+          "rank": 2,
           "threshold": 7,
           "analytics": {
             "accuracy": 67.86,
             "attemptRate": 56,
             "passStatus": true,
             "percentile": 91.3
-          },
-          "rankStatus": "passed",
-          "passedAll": true,
-          "failedSections": []
+          }
         },
         "542127": {
           "studentId": "542127",
@@ -214,17 +184,14 @@
           "unattempted": 23,
           "totalQuestions": 50,
           "score": -4.25,
-          "rank": 11,
+          "rank": 22,
           "threshold": 7,
           "analytics": {
             "accuracy": 7.41,
             "attemptRate": 54,
             "passStatus": false,
             "percentile": 4.35
-          },
-          "rankStatus": "passed",
-          "passedAll": true,
-          "failedSections": []
+          }
         },
         "575752": {
           "studentId": "575752",
@@ -234,17 +201,14 @@
           "unattempted": 24,
           "totalQuestions": 50,
           "score": 13.5,
-          "rank": 12,
+          "rank": 5,
           "threshold": 7,
           "analytics": {
             "accuracy": 61.54,
             "attemptRate": 52,
             "passStatus": true,
             "percentile": 78.26
-          },
-          "rankStatus": "passed",
-          "passedAll": true,
-          "failedSections": []
+          }
         },
         "604057": {
           "studentId": "604057",
@@ -254,17 +218,14 @@
           "unattempted": 6,
           "totalQuestions": 50,
           "score": -8.5,
-          "rank": 13,
+          "rank": 23,
           "threshold": 7,
           "analytics": {
             "accuracy": 4.55,
             "attemptRate": 88,
             "passStatus": false,
             "percentile": 0
-          },
-          "rankStatus": "passed",
-          "passedAll": true,
-          "failedSections": []
+          }
         },
         "621172": {
           "studentId": "621172",
@@ -274,17 +235,14 @@
           "unattempted": 23,
           "totalQuestions": 50,
           "score": 10.75,
-          "rank": 14,
+          "rank": 8,
           "threshold": 7,
           "analytics": {
             "accuracy": 51.85,
             "attemptRate": 54,
             "passStatus": true,
             "percentile": 60.87
-          },
-          "rankStatus": "passed",
-          "passedAll": true,
-          "failedSections": []
+          }
         },
         "624690": {
           "studentId": "624690",
@@ -294,17 +252,14 @@
           "unattempted": 28,
           "totalQuestions": 50,
           "score": 17,
-          "rank": 15,
+          "rank": 1,
           "threshold": 7,
           "analytics": {
             "accuracy": 81.82,
             "attemptRate": 44,
             "passStatus": true,
             "percentile": 95.65
-          },
-          "rankStatus": "passed",
-          "passedAll": true,
-          "failedSections": []
+          }
         },
         "643388": {
           "studentId": "643388",
@@ -314,17 +269,14 @@
           "unattempted": 3,
           "totalQuestions": 50,
           "score": 12,
-          "rank": 16,
+          "rank": 7,
           "threshold": 7,
           "analytics": {
             "accuracy": 40.43,
             "attemptRate": 94,
             "passStatus": true,
             "percentile": 69.57
-          },
-          "rankStatus": "passed",
-          "passedAll": true,
-          "failedSections": []
+          }
         },
         "648081": {
           "studentId": "648081",
@@ -334,17 +286,14 @@
           "unattempted": 29,
           "totalQuestions": 50,
           "score": 2.25,
-          "rank": 17,
+          "rank": 18,
           "threshold": 7,
           "analytics": {
             "accuracy": 28.57,
             "attemptRate": 42,
             "passStatus": false,
             "percentile": 21.74
-          },
-          "rankStatus": "passed",
-          "passedAll": true,
-          "failedSections": []
+          }
         },
         "650004": {
           "studentId": "650004",
@@ -354,17 +303,14 @@
           "unattempted": 28,
           "totalQuestions": 50,
           "score": 3.25,
-          "rank": 18,
+          "rank": 15,
           "threshold": 7,
           "analytics": {
             "accuracy": 31.82,
             "attemptRate": 44,
             "passStatus": false,
             "percentile": 34.78
-          },
-          "rankStatus": "passed",
-          "passedAll": true,
-          "failedSections": []
+          }
         },
         "678535": {
           "studentId": "678535",
@@ -381,10 +327,7 @@
             "attemptRate": 0,
             "passStatus": false,
             "percentile": 8.7
-          },
-          "rankStatus": "passed",
-          "passedAll": true,
-          "failedSections": []
+          }
         },
         "757516": {
           "studentId": "757516",
@@ -394,17 +337,14 @@
           "unattempted": 23,
           "totalQuestions": 50,
           "score": 15.75,
-          "rank": 20,
+          "rank": 3,
           "threshold": 7,
           "analytics": {
             "accuracy": 66.67,
             "attemptRate": 54,
             "passStatus": true,
             "percentile": 86.96
-          },
-          "rankStatus": "passed",
-          "passedAll": true,
-          "failedSections": []
+          }
         },
         "907183": {
           "studentId": "907183",
@@ -414,17 +354,14 @@
           "unattempted": 31,
           "totalQuestions": 50,
           "score": 4,
-          "rank": 21,
+          "rank": 14,
           "threshold": 7,
           "analytics": {
             "accuracy": 36.84,
             "attemptRate": 38,
             "passStatus": false,
             "percentile": 39.13
-          },
-          "rankStatus": "passed",
-          "passedAll": true,
-          "failedSections": []
+          }
         },
         "934245": {
           "studentId": "934245",
@@ -434,17 +371,14 @@
           "unattempted": 24,
           "totalQuestions": 50,
           "score": 8.5,
-          "rank": 22,
+          "rank": 11,
           "threshold": 7,
           "analytics": {
             "accuracy": 46.15,
             "attemptRate": 52,
             "passStatus": true,
             "percentile": 52.17
-          },
-          "rankStatus": "passed",
-          "passedAll": true,
-          "failedSections": []
+          }
         },
         "979212": {
           "studentId": "979212",
@@ -454,17 +388,14 @@
           "unattempted": 15,
           "totalQuestions": 50,
           "score": 15,
-          "rank": 23,
+          "rank": 4,
           "threshold": 7,
           "analytics": {
             "accuracy": 54.29,
             "attemptRate": 70,
             "passStatus": true,
             "percentile": 82.61
-          },
-          "rankStatus": "passed",
-          "passedAll": true,
-          "failedSections": []
+          }
         }
       },
       "classStats": {
@@ -474,14 +405,10 @@
         "passRate": 47.83,
         "maxScore": 17,
         "minScore": -8.5,
-        "threshold": 7,
-        "sectionThresholds": {},
-        "thresholdsAdjusted": true,
-        "passedStudents": 23,
-        "failedStudents": 0
+        "threshold": 7
       },
       "metadata": {
-        "processedAt": "2025-11-15T05:45:20.133Z",
+        "processedAt": "2025-11-15T07:15:44.914Z",
         "sourceFile": "IBA\\Simple Test Data.xlsx",
         "sheetName": "Mathematics CT 1"
       }
@@ -513,23 +440,13 @@
               "correct": 25,
               "wrong": 37,
               "score": 15.75,
-              "totalQuestions": 70,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 70
             }
           },
           "essays": {
             "1": 4,
             "2": 7.5
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1",
-            "essay"
-          ],
-          "essayThreshold": 40,
-          "essayPassed": false
+          }
         },
         "146014": {
           "studentId": "146014",
@@ -539,7 +456,7 @@
           "unattempted": 0,
           "totalQuestions": 0,
           "score": 0,
-          "rank": 15,
+          "rank": 0,
           "threshold": 0,
           "analytics": {
             "accuracy": 0,
@@ -552,19 +469,9 @@
               "correct": 0,
               "wrong": 0,
               "score": 0,
-              "totalQuestions": 0,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 0
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1",
-            "essay"
-          ],
-          "essayThreshold": 40,
-          "essayPassed": false
+          }
         },
         "158296": {
           "studentId": "158296",
@@ -587,23 +494,13 @@
               "correct": 34,
               "wrong": 23,
               "score": 28.25,
-              "totalQuestions": 70,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 70
             }
           },
           "essays": {
             "1": 4,
             "2": 1
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1",
-            "essay"
-          ],
-          "essayThreshold": 40,
-          "essayPassed": false
+          }
         },
         "196303": {
           "studentId": "196303",
@@ -626,23 +523,13 @@
               "correct": 40,
               "wrong": 9,
               "score": 37.75,
-              "totalQuestions": 70,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 70
             }
           },
           "essays": {
             "1": 0,
             "2": 5
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1",
-            "essay"
-          ],
-          "essayThreshold": 40,
-          "essayPassed": false
+          }
         },
         "303558": {
           "studentId": "303558",
@@ -652,7 +539,7 @@
           "unattempted": 32,
           "totalQuestions": 90,
           "score": 26.75,
-          "rank": 7,
+          "rank": 8,
           "threshold": 45,
           "analytics": {
             "accuracy": 56.9,
@@ -665,23 +552,13 @@
               "correct": 33,
               "wrong": 25,
               "score": 26.75,
-              "totalQuestions": 70,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 70
             }
           },
           "essays": {
             "1": 0,
             "2": 5
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1",
-            "essay"
-          ],
-          "essayThreshold": 40,
-          "essayPassed": false
+          }
         },
         "399043": {
           "studentId": "399043",
@@ -691,7 +568,7 @@
           "unattempted": 90,
           "totalQuestions": 90,
           "score": 0,
-          "rank": 16,
+          "rank": 0,
           "threshold": 45,
           "analytics": {
             "accuracy": 0,
@@ -704,19 +581,9 @@
               "correct": 0,
               "wrong": 0,
               "score": 0,
-              "totalQuestions": 70,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 70
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1",
-            "essay"
-          ],
-          "essayThreshold": 40,
-          "essayPassed": false
+          }
         },
         "400651": {
           "studentId": "400651",
@@ -739,23 +606,13 @@
               "correct": 9,
               "wrong": 12,
               "score": 6,
-              "totalQuestions": 70,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 70
             }
           },
           "essays": {
             "1": 2,
             "2": 6
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1",
-            "essay"
-          ],
-          "essayThreshold": 40,
-          "essayPassed": false
+          }
         },
         "417695": {
           "studentId": "417695",
@@ -765,7 +622,7 @@
           "unattempted": 47,
           "totalQuestions": 90,
           "score": 24.25,
-          "rank": 8,
+          "rank": 9,
           "threshold": 45,
           "analytics": {
             "accuracy": 65.12,
@@ -778,23 +635,13 @@
               "correct": 28,
               "wrong": 15,
               "score": 24.25,
-              "totalQuestions": 70,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 70
             }
           },
           "essays": {
             "1": 0,
             "2": 7
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1",
-            "essay"
-          ],
-          "essayThreshold": 40,
-          "essayPassed": false
+          }
         },
         "421527": {
           "studentId": "421527",
@@ -817,23 +664,13 @@
               "correct": 14,
               "wrong": 44,
               "score": 3,
-              "totalQuestions": 70,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 70
             }
           },
           "essays": {
             "1": 0,
             "2": 7
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1",
-            "essay"
-          ],
-          "essayThreshold": 40,
-          "essayPassed": false
+          }
         },
         "459889": {
           "studentId": "459889",
@@ -856,23 +693,13 @@
               "correct": 52,
               "wrong": 12,
               "score": 49,
-              "totalQuestions": 70,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 70
             }
           },
           "essays": {
             "1": 6.5,
             "2": 6.5
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1",
-            "essay"
-          ],
-          "essayThreshold": 40,
-          "essayPassed": false
+          }
         },
         "542127": {
           "studentId": "542127",
@@ -882,7 +709,7 @@
           "unattempted": 0,
           "totalQuestions": 0,
           "score": 0,
-          "rank": 17,
+          "rank": 0,
           "threshold": 0,
           "analytics": {
             "accuracy": 0,
@@ -895,19 +722,9 @@
               "correct": 0,
               "wrong": 0,
               "score": 0,
-              "totalQuestions": 0,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 0
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1",
-            "essay"
-          ],
-          "essayThreshold": 40,
-          "essayPassed": false
+          }
         },
         "575752": {
           "studentId": "575752",
@@ -917,7 +734,7 @@
           "unattempted": 0,
           "totalQuestions": 0,
           "score": 0,
-          "rank": 18,
+          "rank": 0,
           "threshold": 0,
           "analytics": {
             "accuracy": 0,
@@ -930,19 +747,9 @@
               "correct": 0,
               "wrong": 0,
               "score": 0,
-              "totalQuestions": 0,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 0
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1",
-            "essay"
-          ],
-          "essayThreshold": 40,
-          "essayPassed": false
+          }
         },
         "604057": {
           "studentId": "604057",
@@ -965,23 +772,13 @@
               "correct": 18,
               "wrong": 52,
               "score": 5,
-              "totalQuestions": 70,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 70
             }
           },
           "essays": {
             "1": 3,
             "2": 5
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1",
-            "essay"
-          ],
-          "essayThreshold": 40,
-          "essayPassed": false
+          }
         },
         "621172": {
           "studentId": "621172",
@@ -991,7 +788,7 @@
           "unattempted": 0,
           "totalQuestions": 0,
           "score": 0,
-          "rank": 19,
+          "rank": 0,
           "threshold": 0,
           "analytics": {
             "accuracy": 0,
@@ -1004,19 +801,9 @@
               "correct": 0,
               "wrong": 0,
               "score": 0,
-              "totalQuestions": 0,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 0
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1",
-            "essay"
-          ],
-          "essayThreshold": 40,
-          "essayPassed": false
+          }
         },
         "624690": {
           "studentId": "624690",
@@ -1039,23 +826,13 @@
               "correct": 47,
               "wrong": 10,
               "score": 44.5,
-              "totalQuestions": 70,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 70
             }
           },
           "essays": {
             "1": 0,
             "2": 8
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1",
-            "essay"
-          ],
-          "essayThreshold": 40,
-          "essayPassed": false
+          }
         },
         "643388": {
           "studentId": "643388",
@@ -1078,23 +855,13 @@
               "correct": 32,
               "wrong": 24,
               "score": 26,
-              "totalQuestions": 70,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 70
             }
           },
           "essays": {
             "1": 6.5,
             "2": 4
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1",
-            "essay"
-          ],
-          "essayThreshold": 40,
-          "essayPassed": false
+          }
         },
         "648081": {
           "studentId": "648081",
@@ -1104,7 +871,7 @@
           "unattempted": 0,
           "totalQuestions": 0,
           "score": 0,
-          "rank": 20,
+          "rank": 0,
           "threshold": 0,
           "analytics": {
             "accuracy": 0,
@@ -1117,19 +884,9 @@
               "correct": 0,
               "wrong": 0,
               "score": 0,
-              "totalQuestions": 0,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 0
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1",
-            "essay"
-          ],
-          "essayThreshold": 40,
-          "essayPassed": false
+          }
         },
         "650004": {
           "studentId": "650004",
@@ -1139,7 +896,7 @@
           "unattempted": 0,
           "totalQuestions": 0,
           "score": 0,
-          "rank": 21,
+          "rank": 0,
           "threshold": 0,
           "analytics": {
             "accuracy": 0,
@@ -1152,19 +909,9 @@
               "correct": 0,
               "wrong": 0,
               "score": 0,
-              "totalQuestions": 0,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 0
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1",
-            "essay"
-          ],
-          "essayThreshold": 40,
-          "essayPassed": false
+          }
         },
         "678535": {
           "studentId": "678535",
@@ -1174,7 +921,7 @@
           "unattempted": 0,
           "totalQuestions": 0,
           "score": 0,
-          "rank": 22,
+          "rank": 0,
           "threshold": 0,
           "analytics": {
             "accuracy": 0,
@@ -1187,19 +934,9 @@
               "correct": 0,
               "wrong": 0,
               "score": 0,
-              "totalQuestions": 0,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 0
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1",
-            "essay"
-          ],
-          "essayThreshold": 40,
-          "essayPassed": false
+          }
         },
         "757516": {
           "studentId": "757516",
@@ -1222,23 +959,13 @@
               "correct": 42,
               "wrong": 13,
               "score": 38.75,
-              "totalQuestions": 70,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 70
             }
           },
           "essays": {
             "1": 6,
             "2": 7
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1",
-            "essay"
-          ],
-          "essayThreshold": 40,
-          "essayPassed": false
+          }
         },
         "907183": {
           "studentId": "907183",
@@ -1261,23 +988,13 @@
               "correct": 9,
               "wrong": 37,
               "score": -0.25,
-              "totalQuestions": 70,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 70
             }
           },
           "essays": {
             "1": 3,
             "2": 6
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1",
-            "essay"
-          ],
-          "essayThreshold": 40,
-          "essayPassed": false
+          }
         },
         "934245": {
           "studentId": "934245",
@@ -1287,7 +1004,7 @@
           "unattempted": 43,
           "totalQuestions": 90,
           "score": 20.75,
-          "rank": 9,
+          "rank": 7,
           "threshold": 45,
           "analytics": {
             "accuracy": 55.32,
@@ -1300,23 +1017,13 @@
               "correct": 26,
               "wrong": 21,
               "score": 20.75,
-              "totalQuestions": 70,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 70
             }
           },
           "essays": {
             "1": 6,
             "2": 6
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1",
-            "essay"
-          ],
-          "essayThreshold": 40,
-          "essayPassed": false
+          }
         },
         "979212": {
           "studentId": "979212",
@@ -1326,7 +1033,7 @@
           "unattempted": 0,
           "totalQuestions": 0,
           "score": 0,
-          "rank": 23,
+          "rank": 0,
           "threshold": 0,
           "analytics": {
             "accuracy": 0,
@@ -1339,19 +1046,9 @@
               "correct": 0,
               "wrong": 0,
               "score": 0,
-              "totalQuestions": 0,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 0
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1",
-            "essay"
-          ],
-          "essayThreshold": 40,
-          "essayPassed": false
+          }
         }
       },
       "classStats": {
@@ -1361,17 +1058,10 @@
         "passRate": 4.35,
         "maxScore": 49,
         "minScore": -0.25,
-        "threshold": 45,
-        "sectionThresholds": {
-          "1": 0.25,
-          "essay": 40
-        },
-        "thresholdsAdjusted": true,
-        "passedStudents": 0,
-        "failedStudents": 23
+        "threshold": 45
       },
       "metadata": {
-        "processedAt": "2025-11-15T05:45:20.136Z",
+        "processedAt": "2025-11-15T07:15:44.916Z",
         "sourceFile": "IBA\\Simple Test Data.xlsx",
         "sheetName": "English Test 1"
       }
@@ -1403,25 +1093,15 @@
               "correct": 3,
               "wrong": 7,
               "score": 3,
-              "totalQuestions": 10,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 10
             },
             "2": {
               "correct": 13,
               "wrong": 7,
               "score": 13,
-              "totalQuestions": 20,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 20
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1",
-            "2"
-          ]
+          }
         },
         "146014": {
           "studentId": "146014",
@@ -1444,25 +1124,15 @@
               "correct": 0,
               "wrong": 3,
               "score": 0,
-              "totalQuestions": 10,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 10
             },
             "2": {
               "correct": 10,
               "wrong": 6,
               "score": 10,
-              "totalQuestions": 20,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 20
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1",
-            "2"
-          ]
+          }
         },
         "158296": {
           "studentId": "158296",
@@ -1485,25 +1155,15 @@
               "correct": 5,
               "wrong": 2,
               "score": 5,
-              "totalQuestions": 10,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 10
             },
             "2": {
               "correct": 10,
               "wrong": 4,
               "score": 10,
-              "totalQuestions": 20,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 20
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1",
-            "2"
-          ]
+          }
         },
         "196303": {
           "studentId": "196303",
@@ -1526,25 +1186,15 @@
               "correct": 9,
               "wrong": 1,
               "score": 9,
-              "totalQuestions": 10,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 10
             },
             "2": {
               "correct": 18,
               "wrong": 1,
               "score": 18,
-              "totalQuestions": 20,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 20
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1",
-            "2"
-          ]
+          }
         },
         "303558": {
           "studentId": "303558",
@@ -1554,7 +1204,7 @@
           "unattempted": -9,
           "totalQuestions": 20,
           "score": 27,
-          "rank": 2,
+          "rank": 1,
           "threshold": 12,
           "analytics": {
             "accuracy": 93.1,
@@ -1567,25 +1217,15 @@
               "correct": 9,
               "wrong": 1,
               "score": 9,
-              "totalQuestions": 10,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 10
             },
             "2": {
               "correct": 18,
               "wrong": 1,
               "score": 18,
-              "totalQuestions": 20,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 20
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1",
-            "2"
-          ]
+          }
         },
         "399043": {
           "studentId": "399043",
@@ -1595,7 +1235,7 @@
           "unattempted": -10,
           "totalQuestions": 20,
           "score": 16,
-          "rank": 13,
+          "rank": 12,
           "threshold": 12,
           "analytics": {
             "accuracy": 53.33,
@@ -1608,25 +1248,15 @@
               "correct": 4,
               "wrong": 6,
               "score": 4,
-              "totalQuestions": 10,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 10
             },
             "2": {
               "correct": 12,
               "wrong": 8,
               "score": 12,
-              "totalQuestions": 20,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 20
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1",
-            "2"
-          ]
+          }
         },
         "400651": {
           "studentId": "400651",
@@ -1649,25 +1279,15 @@
               "correct": 8,
               "wrong": 0,
               "score": 8,
-              "totalQuestions": 10,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 10
             },
             "2": {
               "correct": 0,
               "wrong": 0,
               "score": 0,
-              "totalQuestions": 20,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 20
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1",
-            "2"
-          ]
+          }
         },
         "417695": {
           "studentId": "417695",
@@ -1690,25 +1310,15 @@
               "correct": 4,
               "wrong": 3,
               "score": 4,
-              "totalQuestions": 10,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 10
             },
             "2": {
               "correct": 17,
               "wrong": 2,
               "score": 17,
-              "totalQuestions": 20,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 20
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1",
-            "2"
-          ]
+          }
         },
         "421527": {
           "studentId": "421527",
@@ -1731,25 +1341,15 @@
               "correct": 3,
               "wrong": 9,
               "score": 3,
-              "totalQuestions": 10,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 10
             },
             "2": {
               "correct": 6,
               "wrong": 1,
               "score": 6,
-              "totalQuestions": 20,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 20
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1",
-            "2"
-          ]
+          }
         },
         "459889": {
           "studentId": "459889",
@@ -1759,7 +1359,7 @@
           "unattempted": -14,
           "totalQuestions": 20,
           "score": 27,
-          "rank": 3,
+          "rank": 1,
           "threshold": 12,
           "analytics": {
             "accuracy": 79.41,
@@ -1772,25 +1372,15 @@
               "correct": 7,
               "wrong": 3,
               "score": 7,
-              "totalQuestions": 10,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 10
             },
             "2": {
               "correct": 20,
               "wrong": 4,
               "score": 20,
-              "totalQuestions": 20,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 20
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1",
-            "2"
-          ]
+          }
         },
         "542127": {
           "studentId": "542127",
@@ -1800,7 +1390,7 @@
           "unattempted": 5,
           "totalQuestions": 20,
           "score": 15,
-          "rank": 15,
+          "rank": 14,
           "threshold": 12,
           "analytics": {
             "accuracy": 100,
@@ -1813,25 +1403,15 @@
               "correct": 5,
               "wrong": 0,
               "score": 5,
-              "totalQuestions": 10,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 10
             },
             "2": {
               "correct": 10,
               "wrong": 0,
               "score": 10,
-              "totalQuestions": 20,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 20
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1",
-            "2"
-          ]
+          }
         },
         "575752": {
           "studentId": "575752",
@@ -1854,25 +1434,15 @@
               "correct": 6,
               "wrong": 7,
               "score": 6,
-              "totalQuestions": 10,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 10
             },
             "2": {
               "correct": 12,
               "wrong": 13,
               "score": 12,
-              "totalQuestions": 20,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 20
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1",
-            "2"
-          ]
+          }
         },
         "604057": {
           "studentId": "604057",
@@ -1895,25 +1465,15 @@
               "correct": 1,
               "wrong": 4,
               "score": 1,
-              "totalQuestions": 10,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 10
             },
             "2": {
               "correct": 6,
               "wrong": 14,
               "score": 6,
-              "totalQuestions": 20,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 20
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1",
-            "2"
-          ]
+          }
         },
         "621172": {
           "studentId": "621172",
@@ -1936,25 +1496,15 @@
               "correct": 4,
               "wrong": 2,
               "score": 4,
-              "totalQuestions": 10,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 10
             },
             "2": {
               "correct": 8,
               "wrong": 2,
               "score": 8,
-              "totalQuestions": 20,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 20
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1",
-            "2"
-          ]
+          }
         },
         "624690": {
           "studentId": "624690",
@@ -1964,7 +1514,7 @@
           "unattempted": -9,
           "totalQuestions": 20,
           "score": 27,
-          "rank": 4,
+          "rank": 1,
           "threshold": 12,
           "analytics": {
             "accuracy": 93.1,
@@ -1977,25 +1527,15 @@
               "correct": 9,
               "wrong": 1,
               "score": 9,
-              "totalQuestions": 10,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 10
             },
             "2": {
               "correct": 18,
               "wrong": 1,
               "score": 18,
-              "totalQuestions": 20,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 20
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1",
-            "2"
-          ]
+          }
         },
         "643388": {
           "studentId": "643388",
@@ -2005,7 +1545,7 @@
           "unattempted": -7,
           "totalQuestions": 20,
           "score": 27,
-          "rank": 5,
+          "rank": 1,
           "threshold": 12,
           "analytics": {
             "accuracy": 100,
@@ -2018,25 +1558,15 @@
               "correct": 9,
               "wrong": 0,
               "score": 9,
-              "totalQuestions": 10,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 10
             },
             "2": {
               "correct": 18,
               "wrong": 0,
               "score": 18,
-              "totalQuestions": 20,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 20
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1",
-            "2"
-          ]
+          }
         },
         "648081": {
           "studentId": "648081",
@@ -2059,25 +1589,15 @@
               "correct": 8,
               "wrong": 7,
               "score": 8,
-              "totalQuestions": 10,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 10
             },
             "2": {
               "correct": 16,
               "wrong": 8,
               "score": 16,
-              "totalQuestions": 20,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 20
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1",
-            "2"
-          ]
+          }
         },
         "650004": {
           "studentId": "650004",
@@ -2087,7 +1607,7 @@
           "unattempted": 2,
           "totalQuestions": 20,
           "score": 8,
-          "rank": 21,
+          "rank": 20,
           "threshold": 12,
           "analytics": {
             "accuracy": 44.44,
@@ -2100,25 +1620,15 @@
               "correct": 1,
               "wrong": 4,
               "score": 1,
-              "totalQuestions": 10,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 10
             },
             "2": {
               "correct": 7,
               "wrong": 6,
               "score": 7,
-              "totalQuestions": 20,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 20
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1",
-            "2"
-          ]
+          }
         },
         "678535": {
           "studentId": "678535",
@@ -2141,25 +1651,15 @@
               "correct": 3,
               "wrong": 7,
               "score": 3,
-              "totalQuestions": 10,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 10
             },
             "2": {
               "correct": 8,
               "wrong": 6,
               "score": 8,
-              "totalQuestions": 20,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 20
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1",
-            "2"
-          ]
+          }
         },
         "757516": {
           "studentId": "757516",
@@ -2169,7 +1669,7 @@
           "unattempted": -10,
           "totalQuestions": 20,
           "score": 27,
-          "rank": 6,
+          "rank": 1,
           "threshold": 12,
           "analytics": {
             "accuracy": 90,
@@ -2182,25 +1682,15 @@
               "correct": 7,
               "wrong": 3,
               "score": 7,
-              "totalQuestions": 10,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 10
             },
             "2": {
               "correct": 20,
               "wrong": 0,
               "score": 20,
-              "totalQuestions": 20,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 20
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1",
-            "2"
-          ]
+          }
         },
         "764305": {
           "studentId": "764305",
@@ -2223,25 +1713,15 @@
               "correct": 0,
               "wrong": 2,
               "score": 0,
-              "totalQuestions": 10,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 10
             },
             "2": {
               "correct": 0,
               "wrong": 0,
               "score": 0,
-              "totalQuestions": 20,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 20
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1",
-            "2"
-          ]
+          }
         },
         "907183": {
           "studentId": "907183",
@@ -2264,25 +1744,15 @@
               "correct": 1,
               "wrong": 9,
               "score": 1,
-              "totalQuestions": 10,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 10
             },
             "2": {
               "correct": 4,
               "wrong": 16,
               "score": 4,
-              "totalQuestions": 20,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 20
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1",
-            "2"
-          ]
+          }
         },
         "934245": {
           "studentId": "934245",
@@ -2292,7 +1762,7 @@
           "unattempted": -7,
           "totalQuestions": 20,
           "score": 21,
-          "rank": 9,
+          "rank": 8,
           "threshold": 12,
           "analytics": {
             "accuracy": 77.78,
@@ -2305,25 +1775,15 @@
               "correct": 7,
               "wrong": 2,
               "score": 7,
-              "totalQuestions": 10,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 10
             },
             "2": {
               "correct": 14,
               "wrong": 4,
               "score": 14,
-              "totalQuestions": 20,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 20
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1",
-            "2"
-          ]
+          }
         },
         "979212": {
           "studentId": "979212",
@@ -2333,7 +1793,7 @@
           "unattempted": -10,
           "totalQuestions": 20,
           "score": 21,
-          "rank": 10,
+          "rank": 8,
           "threshold": 12,
           "analytics": {
             "accuracy": 70,
@@ -2346,25 +1806,15 @@
               "correct": 2,
               "wrong": 8,
               "score": 2,
-              "totalQuestions": 10,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 10
             },
             "2": {
               "correct": 19,
               "wrong": 1,
               "score": 19,
-              "totalQuestions": 20,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 20
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1",
-            "2"
-          ]
+          }
         }
       },
       "classStats": {
@@ -2374,17 +1824,10 @@
         "passRate": 66.67,
         "maxScore": 27,
         "minScore": 0,
-        "threshold": 12,
-        "sectionThresholds": {
-          "1": 0.25,
-          "2": 0.25
-        },
-        "thresholdsAdjusted": true,
-        "passedStudents": 0,
-        "failedStudents": 24
+        "threshold": 12
       },
       "metadata": {
-        "processedAt": "2025-11-15T05:45:20.137Z",
+        "processedAt": "2025-11-15T07:15:44.918Z",
         "sourceFile": "IBA\\Simple Test Data.xlsx",
         "sheetName": "English Quiz 1"
       }
@@ -2403,7 +1846,7 @@
           "unattempted": -10,
           "totalQuestions": 15,
           "score": 6,
-          "rank": 12,
+          "rank": 14,
           "threshold": 12,
           "analytics": {
             "accuracy": 24,
@@ -2416,25 +1859,15 @@
               "correct": 2,
               "wrong": 8,
               "score": 2,
-              "totalQuestions": 10,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 10
             },
             "2": {
               "correct": 4,
               "wrong": 11,
               "score": 4,
-              "totalQuestions": 15,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 15
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1",
-            "2"
-          ]
+          }
         },
         "146014": {
           "studentId": "146014",
@@ -2457,25 +1890,15 @@
               "correct": 0,
               "wrong": 10,
               "score": 0,
-              "totalQuestions": 10,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 10
             },
             "2": {
               "correct": 0,
               "wrong": 15,
               "score": 0,
-              "totalQuestions": 15,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 15
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1",
-            "2"
-          ]
+          }
         },
         "158296": {
           "studentId": "158296",
@@ -2485,7 +1908,7 @@
           "unattempted": -10,
           "totalQuestions": 15,
           "score": 7,
-          "rank": 11,
+          "rank": 13,
           "threshold": 12,
           "analytics": {
             "accuracy": 28,
@@ -2498,25 +1921,15 @@
               "correct": 4,
               "wrong": 6,
               "score": 4,
-              "totalQuestions": 10,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 10
             },
             "2": {
               "correct": 3,
               "wrong": 12,
               "score": 3,
-              "totalQuestions": 15,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 15
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1",
-            "2"
-          ]
+          }
         },
         "196303": {
           "studentId": "196303",
@@ -2526,7 +1939,7 @@
           "unattempted": -10,
           "totalQuestions": 15,
           "score": 18,
-          "rank": 3,
+          "rank": 2,
           "threshold": 12,
           "analytics": {
             "accuracy": 72,
@@ -2539,25 +1952,15 @@
               "correct": 9,
               "wrong": 1,
               "score": 9,
-              "totalQuestions": 10,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 10
             },
             "2": {
               "correct": 9,
               "wrong": 6,
               "score": 9,
-              "totalQuestions": 15,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 15
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1",
-            "2"
-          ]
+          }
         },
         "303558": {
           "studentId": "303558",
@@ -2567,7 +1970,7 @@
           "unattempted": -10,
           "totalQuestions": 15,
           "score": 0,
-          "rank": 17,
+          "rank": 16,
           "threshold": 12,
           "analytics": {
             "accuracy": 0,
@@ -2580,25 +1983,15 @@
               "correct": 0,
               "wrong": 10,
               "score": 0,
-              "totalQuestions": 10,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 10
             },
             "2": {
               "correct": 0,
               "wrong": 15,
               "score": 0,
-              "totalQuestions": 15,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 15
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1",
-            "2"
-          ]
+          }
         },
         "399043": {
           "studentId": "399043",
@@ -2608,7 +2001,7 @@
           "unattempted": -10,
           "totalQuestions": 15,
           "score": 0,
-          "rank": 18,
+          "rank": 16,
           "threshold": 12,
           "analytics": {
             "accuracy": 0,
@@ -2621,25 +2014,15 @@
               "correct": 0,
               "wrong": 10,
               "score": 0,
-              "totalQuestions": 10,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 10
             },
             "2": {
               "correct": 0,
               "wrong": 15,
               "score": 0,
-              "totalQuestions": 15,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 15
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1",
-            "2"
-          ]
+          }
         },
         "400651": {
           "studentId": "400651",
@@ -2649,7 +2032,7 @@
           "unattempted": -10,
           "totalQuestions": 15,
           "score": 12,
-          "rank": 5,
+          "rank": 8,
           "threshold": 12,
           "analytics": {
             "accuracy": 48,
@@ -2662,25 +2045,15 @@
               "correct": 6,
               "wrong": 4,
               "score": 6,
-              "totalQuestions": 10,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 10
             },
             "2": {
               "correct": 6,
               "wrong": 9,
               "score": 6,
-              "totalQuestions": 15,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 15
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1",
-            "2"
-          ]
+          }
         },
         "417695": {
           "studentId": "417695",
@@ -2690,7 +2063,7 @@
           "unattempted": -10,
           "totalQuestions": 15,
           "score": 12,
-          "rank": 6,
+          "rank": 9,
           "threshold": 12,
           "analytics": {
             "accuracy": 48,
@@ -2703,25 +2076,15 @@
               "correct": 5,
               "wrong": 5,
               "score": 5,
-              "totalQuestions": 10,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 10
             },
             "2": {
               "correct": 7,
               "wrong": 8,
               "score": 7,
-              "totalQuestions": 15,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 15
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1",
-            "2"
-          ]
+          }
         },
         "421527": {
           "studentId": "421527",
@@ -2744,25 +2107,15 @@
               "correct": 1,
               "wrong": 9,
               "score": 1,
-              "totalQuestions": 10,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 10
             },
             "2": {
               "correct": 1,
               "wrong": 14,
               "score": 1,
-              "totalQuestions": 15,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 15
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1",
-            "2"
-          ]
+          }
         },
         "459889": {
           "studentId": "459889",
@@ -2785,25 +2138,15 @@
               "correct": 10,
               "wrong": 0,
               "score": 10,
-              "totalQuestions": 10,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 10
             },
             "2": {
               "correct": 14,
               "wrong": 1,
               "score": 14,
-              "totalQuestions": 15,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 15
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1",
-            "2"
-          ]
+          }
         },
         "542127": {
           "studentId": "542127",
@@ -2813,7 +2156,7 @@
           "unattempted": 0,
           "totalQuestions": 15,
           "score": 3,
-          "rank": 14,
+          "rank": 12,
           "threshold": 12,
           "analytics": {
             "accuracy": 20,
@@ -2826,25 +2169,15 @@
               "correct": 3,
               "wrong": -3,
               "score": 3,
-              "totalQuestions": 0,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 0
             },
             "2": {
               "correct": 0,
               "wrong": 15,
               "score": 0,
-              "totalQuestions": 15,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 15
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1",
-            "2"
-          ]
+          }
         },
         "575752": {
           "studentId": "575752",
@@ -2854,7 +2187,7 @@
           "unattempted": -10,
           "totalQuestions": 15,
           "score": 0,
-          "rank": 19,
+          "rank": 16,
           "threshold": 12,
           "analytics": {
             "accuracy": 0,
@@ -2867,25 +2200,15 @@
               "correct": 0,
               "wrong": 10,
               "score": 0,
-              "totalQuestions": 10,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 10
             },
             "2": {
               "correct": 0,
               "wrong": 15,
               "score": 0,
-              "totalQuestions": 15,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 15
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1",
-            "2"
-          ]
+          }
         },
         "604057": {
           "studentId": "604057",
@@ -2895,7 +2218,7 @@
           "unattempted": -10,
           "totalQuestions": 15,
           "score": 6,
-          "rank": 13,
+          "rank": 11,
           "threshold": 12,
           "analytics": {
             "accuracy": 24,
@@ -2908,25 +2231,15 @@
               "correct": 4,
               "wrong": 6,
               "score": 4,
-              "totalQuestions": 10,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 10
             },
             "2": {
               "correct": 2,
               "wrong": 13,
               "score": 2,
-              "totalQuestions": 15,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 15
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1",
-            "2"
-          ]
+          }
         },
         "621172": {
           "studentId": "621172",
@@ -2936,7 +2249,7 @@
           "unattempted": -10,
           "totalQuestions": 15,
           "score": 16,
-          "rank": 4,
+          "rank": 5,
           "threshold": 12,
           "analytics": {
             "accuracy": 64,
@@ -2949,25 +2262,15 @@
               "correct": 8,
               "wrong": 2,
               "score": 8,
-              "totalQuestions": 10,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 10
             },
             "2": {
               "correct": 8,
               "wrong": 7,
               "score": 8,
-              "totalQuestions": 15,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 15
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1",
-            "2"
-          ]
+          }
         },
         "624690": {
           "studentId": "624690",
@@ -2977,7 +2280,7 @@
           "unattempted": -10,
           "totalQuestions": 15,
           "score": 9,
-          "rank": 9,
+          "rank": 2,
           "threshold": 12,
           "analytics": {
             "accuracy": 84,
@@ -2990,25 +2293,15 @@
               "correct": 9,
               "wrong": 1,
               "score": 9,
-              "totalQuestions": 10,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 10
             },
             "2": {
               "correct": 12,
               "wrong": 3,
               "score": 0,
-              "totalQuestions": 15,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 15
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1",
-            "2"
-          ]
+          }
         },
         "643388": {
           "studentId": "643388",
@@ -3018,7 +2311,7 @@
           "unattempted": 0,
           "totalQuestions": 15,
           "score": 9,
-          "rank": 10,
+          "rank": 2,
           "threshold": 12,
           "analytics": {
             "accuracy": 60,
@@ -3031,25 +2324,15 @@
               "correct": 9,
               "wrong": -9,
               "score": 9,
-              "totalQuestions": 0,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 0
             },
             "2": {
               "correct": 0,
               "wrong": 15,
               "score": 0,
-              "totalQuestions": 15,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 15
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1",
-            "2"
-          ]
+          }
         },
         "648081": {
           "studentId": "648081",
@@ -3059,7 +2342,7 @@
           "unattempted": -10,
           "totalQuestions": 15,
           "score": 12,
-          "rank": 7,
+          "rank": 9,
           "threshold": 12,
           "analytics": {
             "accuracy": 48,
@@ -3072,25 +2355,15 @@
               "correct": 4,
               "wrong": 6,
               "score": 4,
-              "totalQuestions": 10,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 10
             },
             "2": {
               "correct": 8,
               "wrong": 7,
               "score": 8,
-              "totalQuestions": 15,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 15
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1",
-            "2"
-          ]
+          }
         },
         "650004": {
           "studentId": "650004",
@@ -3100,7 +2373,7 @@
           "unattempted": -10,
           "totalQuestions": 15,
           "score": 0,
-          "rank": 20,
+          "rank": 16,
           "threshold": 12,
           "analytics": {
             "accuracy": 0,
@@ -3113,25 +2386,15 @@
               "correct": 0,
               "wrong": 10,
               "score": 0,
-              "totalQuestions": 10,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 10
             },
             "2": {
               "correct": 0,
               "wrong": 15,
               "score": 0,
-              "totalQuestions": 15,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 15
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1",
-            "2"
-          ]
+          }
         },
         "678535": {
           "studentId": "678535",
@@ -3141,7 +2404,7 @@
           "unattempted": -10,
           "totalQuestions": 15,
           "score": 0,
-          "rank": 21,
+          "rank": 16,
           "threshold": 12,
           "analytics": {
             "accuracy": 0,
@@ -3154,25 +2417,15 @@
               "correct": 0,
               "wrong": 10,
               "score": 0,
-              "totalQuestions": 10,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 10
             },
             "2": {
               "correct": 0,
               "wrong": 15,
               "score": 0,
-              "totalQuestions": 15,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 15
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1",
-            "2"
-          ]
+          }
         },
         "757516": {
           "studentId": "757516",
@@ -3182,7 +2435,7 @@
           "unattempted": -10,
           "totalQuestions": 15,
           "score": 20,
-          "rank": 2,
+          "rank": 5,
           "threshold": 12,
           "analytics": {
             "accuracy": 80,
@@ -3195,25 +2448,15 @@
               "correct": 8,
               "wrong": 2,
               "score": 8,
-              "totalQuestions": 10,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 10
             },
             "2": {
               "correct": 12,
               "wrong": 3,
               "score": 12,
-              "totalQuestions": 15,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 15
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1",
-            "2"
-          ]
+          }
         },
         "764305": {
           "studentId": "764305",
@@ -3223,7 +2466,7 @@
           "unattempted": -10,
           "totalQuestions": 15,
           "score": 0,
-          "rank": 22,
+          "rank": 16,
           "threshold": 13,
           "analytics": {
             "accuracy": 0,
@@ -3236,25 +2479,15 @@
               "correct": 0,
               "wrong": 10,
               "score": 0,
-              "totalQuestions": 10,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 10
             },
             "2": {
               "correct": 0,
               "wrong": 15,
               "score": 0,
-              "totalQuestions": 15,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 15
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1",
-            "2"
-          ]
+          }
         },
         "907183": {
           "studentId": "907183",
@@ -3264,7 +2497,7 @@
           "unattempted": -10,
           "totalQuestions": 15,
           "score": 0,
-          "rank": 23,
+          "rank": 16,
           "threshold": 12,
           "analytics": {
             "accuracy": 0,
@@ -3277,25 +2510,15 @@
               "correct": 0,
               "wrong": 10,
               "score": 0,
-              "totalQuestions": 10,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 10
             },
             "2": {
               "correct": 0,
               "wrong": 15,
               "score": 0,
-              "totalQuestions": 15,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 15
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1",
-            "2"
-          ]
+          }
         },
         "934245": {
           "studentId": "934245",
@@ -3305,7 +2528,7 @@
           "unattempted": -10,
           "totalQuestions": 15,
           "score": 12,
-          "rank": 8,
+          "rank": 5,
           "threshold": 12,
           "analytics": {
             "accuracy": 48,
@@ -3318,25 +2541,15 @@
               "correct": 8,
               "wrong": 2,
               "score": 8,
-              "totalQuestions": 10,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 10
             },
             "2": {
               "correct": 4,
               "wrong": 11,
               "score": 4,
-              "totalQuestions": 15,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 15
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1",
-            "2"
-          ]
+          }
         },
         "979212": {
           "studentId": "979212",
@@ -3346,7 +2559,7 @@
           "unattempted": -10,
           "totalQuestions": 15,
           "score": 0,
-          "rank": 24,
+          "rank": 16,
           "threshold": 12,
           "analytics": {
             "accuracy": 0,
@@ -3359,25 +2572,15 @@
               "correct": 0,
               "wrong": 10,
               "score": 0,
-              "totalQuestions": 10,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 10
             },
             "2": {
               "correct": 0,
               "wrong": 15,
               "score": 0,
-              "totalQuestions": 15,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 15
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1",
-            "2"
-          ]
+          }
         }
       },
       "classStats": {
@@ -3387,17 +2590,10 @@
         "passRate": 33.33,
         "maxScore": 24,
         "minScore": 0,
-        "threshold": 12,
-        "sectionThresholds": {
-          "1": 0.25,
-          "2": 0.25
-        },
-        "thresholdsAdjusted": true,
-        "passedStudents": 0,
-        "failedStudents": 24
+        "threshold": 12
       },
       "metadata": {
-        "processedAt": "2025-11-15T05:45:20.137Z",
+        "processedAt": "2025-11-15T07:15:44.919Z",
         "sourceFile": "IBA\\Simple Test Data.xlsx",
         "sheetName": "English Quiz 3"
       }
@@ -3429,16 +2625,9 @@
               "correct": 11,
               "wrong": 9,
               "score": 11,
-              "totalQuestions": 20,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 20
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1"
-          ]
+          }
         },
         "146014": {
           "studentId": "146014",
@@ -3461,16 +2650,9 @@
               "correct": 2,
               "wrong": 18,
               "score": 2,
-              "totalQuestions": 20,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 20
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1"
-          ]
+          }
         },
         "158296": {
           "studentId": "158296",
@@ -3493,16 +2675,9 @@
               "correct": 12,
               "wrong": 8,
               "score": 12,
-              "totalQuestions": 20,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 20
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1"
-          ]
+          }
         },
         "196303": {
           "studentId": "196303",
@@ -3525,16 +2700,9 @@
               "correct": 18,
               "wrong": 2,
               "score": 18,
-              "totalQuestions": 20,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 20
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1"
-          ]
+          }
         },
         "303558": {
           "studentId": "303558",
@@ -3557,16 +2725,9 @@
               "correct": 1,
               "wrong": 19,
               "score": 1,
-              "totalQuestions": 20,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 20
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1"
-          ]
+          }
         },
         "399043": {
           "studentId": "399043",
@@ -3576,7 +2737,7 @@
           "unattempted": 0,
           "totalQuestions": 20,
           "score": 1,
-          "rank": 20,
+          "rank": 19,
           "threshold": 9,
           "analytics": {
             "accuracy": 5,
@@ -3589,16 +2750,9 @@
               "correct": 1,
               "wrong": 19,
               "score": 1,
-              "totalQuestions": 20,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 20
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1"
-          ]
+          }
         },
         "400651": {
           "studentId": "400651",
@@ -3621,16 +2775,9 @@
               "correct": 7,
               "wrong": 13,
               "score": 7,
-              "totalQuestions": 20,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 20
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1"
-          ]
+          }
         },
         "417695": {
           "studentId": "417695",
@@ -3653,16 +2800,9 @@
               "correct": 14,
               "wrong": 6,
               "score": 14,
-              "totalQuestions": 20,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 20
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1"
-          ]
+          }
         },
         "421527": {
           "studentId": "421527",
@@ -3685,16 +2825,9 @@
               "correct": 6,
               "wrong": 14,
               "score": 6,
-              "totalQuestions": 20,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 20
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1"
-          ]
+          }
         },
         "459889": {
           "studentId": "459889",
@@ -3717,16 +2850,9 @@
               "correct": 20,
               "wrong": 0,
               "score": 20,
-              "totalQuestions": 20,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 20
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1"
-          ]
+          }
         },
         "542127": {
           "studentId": "542127",
@@ -3736,7 +2862,7 @@
           "unattempted": 0,
           "totalQuestions": 20,
           "score": 6,
-          "rank": 15,
+          "rank": 14,
           "threshold": 9,
           "analytics": {
             "accuracy": 30,
@@ -3749,16 +2875,9 @@
               "correct": 6,
               "wrong": 14,
               "score": 6,
-              "totalQuestions": 20,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 20
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1"
-          ]
+          }
         },
         "575752": {
           "studentId": "575752",
@@ -3768,7 +2887,7 @@
           "unattempted": 0,
           "totalQuestions": 20,
           "score": 12,
-          "rank": 9,
+          "rank": 8,
           "threshold": 9,
           "analytics": {
             "accuracy": 60,
@@ -3781,16 +2900,9 @@
               "correct": 12,
               "wrong": 8,
               "score": 12,
-              "totalQuestions": 20,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 20
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1"
-          ]
+          }
         },
         "604057": {
           "studentId": "604057",
@@ -3800,7 +2912,7 @@
           "unattempted": 0,
           "totalQuestions": 20,
           "score": 6,
-          "rank": 16,
+          "rank": 14,
           "threshold": 9,
           "analytics": {
             "accuracy": 30,
@@ -3813,16 +2925,9 @@
               "correct": 6,
               "wrong": 14,
               "score": 6,
-              "totalQuestions": 20,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 20
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1"
-          ]
+          }
         },
         "621172": {
           "studentId": "621172",
@@ -3845,16 +2950,9 @@
               "correct": 10,
               "wrong": 10,
               "score": 10,
-              "totalQuestions": 20,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 20
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1"
-          ]
+          }
         },
         "624690": {
           "studentId": "624690",
@@ -3877,16 +2975,9 @@
               "correct": 19,
               "wrong": 1,
               "score": 19,
-              "totalQuestions": 20,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 20
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1"
-          ]
+          }
         },
         "643388": {
           "studentId": "643388",
@@ -3896,7 +2987,7 @@
           "unattempted": 0,
           "totalQuestions": 20,
           "score": 14,
-          "rank": 7,
+          "rank": 6,
           "threshold": 9,
           "analytics": {
             "accuracy": 70,
@@ -3909,16 +3000,9 @@
               "correct": 14,
               "wrong": 6,
               "score": 14,
-              "totalQuestions": 20,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 20
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1"
-          ]
+          }
         },
         "648081": {
           "studentId": "648081",
@@ -3928,7 +3012,7 @@
           "unattempted": 0,
           "totalQuestions": 20,
           "score": 7,
-          "rank": 13,
+          "rank": 12,
           "threshold": 9,
           "analytics": {
             "accuracy": 35,
@@ -3941,16 +3025,9 @@
               "correct": 7,
               "wrong": 13,
               "score": 7,
-              "totalQuestions": 20,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 20
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1"
-          ]
+          }
         },
         "650004": {
           "studentId": "650004",
@@ -3960,7 +3037,7 @@
           "unattempted": 0,
           "totalQuestions": 20,
           "score": 6,
-          "rank": 17,
+          "rank": 14,
           "threshold": 9,
           "analytics": {
             "accuracy": 30,
@@ -3973,16 +3050,9 @@
               "correct": 6,
               "wrong": 14,
               "score": 6,
-              "totalQuestions": 20,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 20
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1"
-          ]
+          }
         },
         "678535": {
           "studentId": "678535",
@@ -3992,7 +3062,7 @@
           "unattempted": 0,
           "totalQuestions": 20,
           "score": 1,
-          "rank": 21,
+          "rank": 19,
           "threshold": 9,
           "analytics": {
             "accuracy": 5,
@@ -4005,16 +3075,9 @@
               "correct": 1,
               "wrong": 19,
               "score": 1,
-              "totalQuestions": 20,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 20
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1"
-          ]
+          }
         },
         "757516": {
           "studentId": "757516",
@@ -4024,7 +3087,7 @@
           "unattempted": 0,
           "totalQuestions": 20,
           "score": 19,
-          "rank": 3,
+          "rank": 2,
           "threshold": 9,
           "analytics": {
             "accuracy": 95,
@@ -4037,16 +3100,9 @@
               "correct": 19,
               "wrong": 1,
               "score": 19,
-              "totalQuestions": 20,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 20
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1"
-          ]
+          }
         },
         "764305": {
           "studentId": "764305",
@@ -4069,16 +3125,9 @@
               "correct": 0,
               "wrong": 20,
               "score": 0,
-              "totalQuestions": 20,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 20
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1"
-          ]
+          }
         },
         "907183": {
           "studentId": "907183",
@@ -4088,7 +3137,7 @@
           "unattempted": 0,
           "totalQuestions": 20,
           "score": 1,
-          "rank": 22,
+          "rank": 19,
           "threshold": 9,
           "analytics": {
             "accuracy": 5,
@@ -4101,16 +3150,9 @@
               "correct": 1,
               "wrong": 19,
               "score": 1,
-              "totalQuestions": 20,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 20
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1"
-          ]
+          }
         },
         "934245": {
           "studentId": "934245",
@@ -4120,7 +3162,7 @@
           "unattempted": 0,
           "totalQuestions": 20,
           "score": 18,
-          "rank": 5,
+          "rank": 4,
           "threshold": 9,
           "analytics": {
             "accuracy": 90,
@@ -4133,16 +3175,9 @@
               "correct": 18,
               "wrong": 2,
               "score": 18,
-              "totalQuestions": 20,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 20
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1"
-          ]
+          }
         },
         "979212": {
           "studentId": "979212",
@@ -4152,7 +3187,7 @@
           "unattempted": 0,
           "totalQuestions": 20,
           "score": 1,
-          "rank": 23,
+          "rank": 19,
           "threshold": 9,
           "analytics": {
             "accuracy": 5,
@@ -4165,16 +3200,9 @@
               "correct": 1,
               "wrong": 19,
               "score": 1,
-              "totalQuestions": 20,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 20
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1"
-          ]
+          }
         }
       },
       "classStats": {
@@ -4184,16 +3212,10 @@
         "passRate": 45.83,
         "maxScore": 20,
         "minScore": 0,
-        "threshold": 9,
-        "sectionThresholds": {
-          "1": 0.25
-        },
-        "thresholdsAdjusted": true,
-        "passedStudents": 0,
-        "failedStudents": 24
+        "threshold": 9
       },
       "metadata": {
-        "processedAt": "2025-11-15T05:45:20.138Z",
+        "processedAt": "2025-11-15T07:15:44.920Z",
         "sourceFile": "IBA\\Simple Test Data.xlsx",
         "sheetName": "English Quiz 2"
       }
@@ -4225,16 +3247,9 @@
               "correct": 4,
               "wrong": 6,
               "score": 4,
-              "totalQuestions": 10,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 10
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1"
-          ]
+          }
         },
         "146014": {
           "studentId": "146014",
@@ -4257,16 +3272,9 @@
               "correct": 0,
               "wrong": 10,
               "score": 0,
-              "totalQuestions": 10,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 10
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1"
-          ]
+          }
         },
         "158296": {
           "studentId": "158296",
@@ -4289,16 +3297,9 @@
               "correct": 3,
               "wrong": 7,
               "score": 3,
-              "totalQuestions": 10,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 10
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1"
-          ]
+          }
         },
         "196303": {
           "studentId": "196303",
@@ -4321,16 +3322,9 @@
               "correct": 10,
               "wrong": 0,
               "score": 10,
-              "totalQuestions": 10,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 10
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1"
-          ]
+          }
         },
         "303558": {
           "studentId": "303558",
@@ -4353,16 +3347,9 @@
               "correct": 6,
               "wrong": 4,
               "score": 6,
-              "totalQuestions": 10,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 10
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1"
-          ]
+          }
         },
         "399043": {
           "studentId": "399043",
@@ -4372,7 +3359,7 @@
           "unattempted": 0,
           "totalQuestions": 10,
           "score": 0,
-          "rank": 20,
+          "rank": 19,
           "threshold": 6,
           "analytics": {
             "accuracy": 0,
@@ -4385,16 +3372,9 @@
               "correct": 0,
               "wrong": 10,
               "score": 0,
-              "totalQuestions": 10,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 10
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1"
-          ]
+          }
         },
         "400651": {
           "studentId": "400651",
@@ -4404,7 +3384,7 @@
           "unattempted": 0,
           "totalQuestions": 10,
           "score": 4,
-          "rank": 13,
+          "rank": 12,
           "threshold": 6,
           "analytics": {
             "accuracy": 40,
@@ -4417,16 +3397,9 @@
               "correct": 4,
               "wrong": 6,
               "score": 4,
-              "totalQuestions": 10,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 10
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1"
-          ]
+          }
         },
         "417695": {
           "studentId": "417695",
@@ -4449,16 +3422,9 @@
               "correct": 9,
               "wrong": 1,
               "score": 9,
-              "totalQuestions": 10,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 10
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1"
-          ]
+          }
         },
         "421527": {
           "studentId": "421527",
@@ -4468,7 +3434,7 @@
           "unattempted": 0,
           "totalQuestions": 10,
           "score": 4,
-          "rank": 14,
+          "rank": 12,
           "threshold": 6,
           "analytics": {
             "accuracy": 40,
@@ -4481,16 +3447,9 @@
               "correct": 4,
               "wrong": 6,
               "score": 4,
-              "totalQuestions": 10,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 10
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1"
-          ]
+          }
         },
         "459889": {
           "studentId": "459889",
@@ -4500,7 +3459,7 @@
           "unattempted": 0,
           "totalQuestions": 10,
           "score": 10,
-          "rank": 2,
+          "rank": 1,
           "threshold": 6,
           "analytics": {
             "accuracy": 100,
@@ -4513,16 +3472,9 @@
               "correct": 10,
               "wrong": 0,
               "score": 10,
-              "totalQuestions": 10,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 10
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1"
-          ]
+          }
         },
         "542127": {
           "studentId": "542127",
@@ -4545,16 +3497,9 @@
               "correct": 1,
               "wrong": 9,
               "score": 1,
-              "totalQuestions": 10,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 10
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1"
-          ]
+          }
         },
         "575752": {
           "studentId": "575752",
@@ -4564,7 +3509,7 @@
           "unattempted": 0,
           "totalQuestions": 10,
           "score": 6,
-          "rank": 7,
+          "rank": 6,
           "threshold": 6,
           "analytics": {
             "accuracy": 60,
@@ -4577,16 +3522,9 @@
               "correct": 6,
               "wrong": 4,
               "score": 6,
-              "totalQuestions": 10,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 10
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1"
-          ]
+          }
         },
         "604057": {
           "studentId": "604057",
@@ -4596,7 +3534,7 @@
           "unattempted": 0,
           "totalQuestions": 10,
           "score": 4,
-          "rank": 15,
+          "rank": 12,
           "threshold": 6,
           "analytics": {
             "accuracy": 40,
@@ -4609,16 +3547,9 @@
               "correct": 4,
               "wrong": 6,
               "score": 4,
-              "totalQuestions": 10,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 10
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1"
-          ]
+          }
         },
         "621172": {
           "studentId": "621172",
@@ -4628,7 +3559,7 @@
           "unattempted": 0,
           "totalQuestions": 10,
           "score": 6,
-          "rank": 8,
+          "rank": 6,
           "threshold": 6,
           "analytics": {
             "accuracy": 60,
@@ -4641,16 +3572,9 @@
               "correct": 6,
               "wrong": 4,
               "score": 6,
-              "totalQuestions": 10,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 10
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1"
-          ]
+          }
         },
         "624690": {
           "studentId": "624690",
@@ -4660,7 +3584,7 @@
           "unattempted": 0,
           "totalQuestions": 10,
           "score": 10,
-          "rank": 3,
+          "rank": 1,
           "threshold": 6,
           "analytics": {
             "accuracy": 100,
@@ -4673,16 +3597,9 @@
               "correct": 10,
               "wrong": 0,
               "score": 10,
-              "totalQuestions": 10,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 10
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1"
-          ]
+          }
         },
         "643388": {
           "studentId": "643388",
@@ -4705,16 +3622,9 @@
               "correct": 5,
               "wrong": 5,
               "score": 5,
-              "totalQuestions": 10,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 10
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1"
-          ]
+          }
         },
         "648081": {
           "studentId": "648081",
@@ -4724,7 +3634,7 @@
           "unattempted": 0,
           "totalQuestions": 10,
           "score": 6,
-          "rank": 9,
+          "rank": 6,
           "threshold": 6,
           "analytics": {
             "accuracy": 60,
@@ -4737,16 +3647,9 @@
               "correct": 6,
               "wrong": 4,
               "score": 6,
-              "totalQuestions": 10,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 10
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1"
-          ]
+          }
         },
         "650004": {
           "studentId": "650004",
@@ -4756,7 +3659,7 @@
           "unattempted": 0,
           "totalQuestions": 10,
           "score": 0,
-          "rank": 21,
+          "rank": 19,
           "threshold": 6,
           "analytics": {
             "accuracy": 0,
@@ -4769,16 +3672,9 @@
               "correct": 0,
               "wrong": 10,
               "score": 0,
-              "totalQuestions": 10,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 10
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1"
-          ]
+          }
         },
         "678535": {
           "studentId": "678535",
@@ -4788,7 +3684,7 @@
           "unattempted": 0,
           "totalQuestions": 10,
           "score": 0,
-          "rank": 22,
+          "rank": 19,
           "threshold": 6,
           "analytics": {
             "accuracy": 0,
@@ -4801,16 +3697,9 @@
               "correct": 0,
               "wrong": 10,
               "score": 0,
-              "totalQuestions": 10,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 10
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1"
-          ]
+          }
         },
         "757516": {
           "studentId": "757516",
@@ -4820,7 +3709,7 @@
           "unattempted": 0,
           "totalQuestions": 10,
           "score": 9,
-          "rank": 5,
+          "rank": 4,
           "threshold": 6,
           "analytics": {
             "accuracy": 90,
@@ -4833,16 +3722,9 @@
               "correct": 9,
               "wrong": 1,
               "score": 9,
-              "totalQuestions": 10,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 10
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1"
-          ]
+          }
         },
         "764305": {
           "studentId": "764305",
@@ -4852,7 +3734,7 @@
           "unattempted": 0,
           "totalQuestions": 10,
           "score": 3,
-          "rank": 17,
+          "rank": 16,
           "threshold": 6,
           "analytics": {
             "accuracy": 30,
@@ -4865,16 +3747,9 @@
               "correct": 3,
               "wrong": 7,
               "score": 3,
-              "totalQuestions": 10,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 10
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1"
-          ]
+          }
         },
         "907183": {
           "studentId": "907183",
@@ -4884,7 +3759,7 @@
           "unattempted": 0,
           "totalQuestions": 10,
           "score": 0,
-          "rank": 23,
+          "rank": 19,
           "threshold": 6,
           "analytics": {
             "accuracy": 0,
@@ -4897,16 +3772,9 @@
               "correct": 0,
               "wrong": 10,
               "score": 0,
-              "totalQuestions": 10,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 10
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1"
-          ]
+          }
         },
         "934245": {
           "studentId": "934245",
@@ -4916,7 +3784,7 @@
           "unattempted": 0,
           "totalQuestions": 10,
           "score": 6,
-          "rank": 10,
+          "rank": 6,
           "threshold": 6,
           "analytics": {
             "accuracy": 60,
@@ -4929,16 +3797,9 @@
               "correct": 6,
               "wrong": 4,
               "score": 6,
-              "totalQuestions": 10,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 10
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1"
-          ]
+          }
         },
         "979212": {
           "studentId": "979212",
@@ -4948,7 +3809,7 @@
           "unattempted": 0,
           "totalQuestions": 10,
           "score": 0,
-          "rank": 24,
+          "rank": 19,
           "threshold": 6,
           "analytics": {
             "accuracy": 0,
@@ -4961,16 +3822,9 @@
               "correct": 0,
               "wrong": 10,
               "score": 0,
-              "totalQuestions": 10,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 10
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1"
-          ]
+          }
         }
       },
       "classStats": {
@@ -4980,16 +3834,10 @@
         "passRate": 41.67,
         "maxScore": 10,
         "minScore": 0,
-        "threshold": 6,
-        "sectionThresholds": {
-          "1": 0.25
-        },
-        "thresholdsAdjusted": true,
-        "passedStudents": 0,
-        "failedStudents": 24
+        "threshold": 6
       },
       "metadata": {
-        "processedAt": "2025-11-15T05:45:20.139Z",
+        "processedAt": "2025-11-15T07:15:44.921Z",
         "sourceFile": "IBA\\Simple Test Data.xlsx",
         "sheetName": "English Quiz 5"
       }
@@ -5021,16 +3869,9 @@
               "correct": 1,
               "wrong": 9,
               "score": 1,
-              "totalQuestions": 10,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 10
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1"
-          ]
+          }
         },
         "146014": {
           "studentId": "146014",
@@ -5053,16 +3894,9 @@
               "correct": 0,
               "wrong": 10,
               "score": 0,
-              "totalQuestions": 10,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 10
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1"
-          ]
+          }
         },
         "158296": {
           "studentId": "158296",
@@ -5085,16 +3919,9 @@
               "correct": 3,
               "wrong": 7,
               "score": 3,
-              "totalQuestions": 10,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 10
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1"
-          ]
+          }
         },
         "196303": {
           "studentId": "196303",
@@ -5117,16 +3944,9 @@
               "correct": 7,
               "wrong": 3,
               "score": 7,
-              "totalQuestions": 10,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 10
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1"
-          ]
+          }
         },
         "303558": {
           "studentId": "303558",
@@ -5149,16 +3969,9 @@
               "correct": 4,
               "wrong": 6,
               "score": 4,
-              "totalQuestions": 10,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 10
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1"
-          ]
+          }
         },
         "399043": {
           "studentId": "399043",
@@ -5168,7 +3981,7 @@
           "unattempted": 0,
           "totalQuestions": 10,
           "score": 0,
-          "rank": 19,
+          "rank": 18,
           "threshold": 6,
           "analytics": {
             "accuracy": 0,
@@ -5181,16 +3994,9 @@
               "correct": 0,
               "wrong": 10,
               "score": 0,
-              "totalQuestions": 10,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 10
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1"
-          ]
+          }
         },
         "400651": {
           "studentId": "400651",
@@ -5213,16 +4019,9 @@
               "correct": 6,
               "wrong": 4,
               "score": 6,
-              "totalQuestions": 10,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 10
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1"
-          ]
+          }
         },
         "417695": {
           "studentId": "417695",
@@ -5232,7 +4031,7 @@
           "unattempted": 0,
           "totalQuestions": 10,
           "score": 6,
-          "rank": 4,
+          "rank": 3,
           "threshold": 6,
           "analytics": {
             "accuracy": 60,
@@ -5245,16 +4044,9 @@
               "correct": 6,
               "wrong": 4,
               "score": 6,
-              "totalQuestions": 10,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 10
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1"
-          ]
+          }
         },
         "421527": {
           "studentId": "421527",
@@ -5277,16 +4069,9 @@
               "correct": 2,
               "wrong": 8,
               "score": 2,
-              "totalQuestions": 10,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 10
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1"
-          ]
+          }
         },
         "459889": {
           "studentId": "459889",
@@ -5309,16 +4094,9 @@
               "correct": 10,
               "wrong": 0,
               "score": 10,
-              "totalQuestions": 10,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 10
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1"
-          ]
+          }
         },
         "542127": {
           "studentId": "542127",
@@ -5328,7 +4106,7 @@
           "unattempted": 0,
           "totalQuestions": 10,
           "score": 0,
-          "rank": 20,
+          "rank": 18,
           "threshold": 6,
           "analytics": {
             "accuracy": 0,
@@ -5341,16 +4119,9 @@
               "correct": 0,
               "wrong": 10,
               "score": 0,
-              "totalQuestions": 10,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 10
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1"
-          ]
+          }
         },
         "575752": {
           "studentId": "575752",
@@ -5360,7 +4131,7 @@
           "unattempted": 0,
           "totalQuestions": 10,
           "score": 3,
-          "rank": 12,
+          "rank": 11,
           "threshold": 6,
           "analytics": {
             "accuracy": 30,
@@ -5373,16 +4144,9 @@
               "correct": 3,
               "wrong": 7,
               "score": 3,
-              "totalQuestions": 10,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 10
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1"
-          ]
+          }
         },
         "604057": {
           "studentId": "604057",
@@ -5392,7 +4156,7 @@
           "unattempted": 0,
           "totalQuestions": 10,
           "score": 2,
-          "rank": 15,
+          "rank": 14,
           "threshold": 6,
           "analytics": {
             "accuracy": 20,
@@ -5405,16 +4169,9 @@
               "correct": 2,
               "wrong": 8,
               "score": 2,
-              "totalQuestions": 10,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 10
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1"
-          ]
+          }
         },
         "621172": {
           "studentId": "621172",
@@ -5424,7 +4181,7 @@
           "unattempted": 0,
           "totalQuestions": 10,
           "score": 4,
-          "rank": 10,
+          "rank": 9,
           "threshold": 6,
           "analytics": {
             "accuracy": 40,
@@ -5437,16 +4194,9 @@
               "correct": 4,
               "wrong": 6,
               "score": 4,
-              "totalQuestions": 10,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 10
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1"
-          ]
+          }
         },
         "624690": {
           "studentId": "624690",
@@ -5469,16 +4219,9 @@
               "correct": 5,
               "wrong": 5,
               "score": 5,
-              "totalQuestions": 10,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 10
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1"
-          ]
+          }
         },
         "643388": {
           "studentId": "643388",
@@ -5488,7 +4231,7 @@
           "unattempted": 0,
           "totalQuestions": 10,
           "score": 6,
-          "rank": 5,
+          "rank": 3,
           "threshold": 6,
           "analytics": {
             "accuracy": 60,
@@ -5501,16 +4244,9 @@
               "correct": 6,
               "wrong": 4,
               "score": 6,
-              "totalQuestions": 10,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 10
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1"
-          ]
+          }
         },
         "648081": {
           "studentId": "648081",
@@ -5520,7 +4256,7 @@
           "unattempted": 0,
           "totalQuestions": 10,
           "score": 2,
-          "rank": 16,
+          "rank": 14,
           "threshold": 6,
           "analytics": {
             "accuracy": 20,
@@ -5533,16 +4269,9 @@
               "correct": 2,
               "wrong": 8,
               "score": 2,
-              "totalQuestions": 10,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 10
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1"
-          ]
+          }
         },
         "650004": {
           "studentId": "650004",
@@ -5552,7 +4281,7 @@
           "unattempted": 0,
           "totalQuestions": 10,
           "score": 0,
-          "rank": 21,
+          "rank": 18,
           "threshold": 6,
           "analytics": {
             "accuracy": 0,
@@ -5565,16 +4294,9 @@
               "correct": 0,
               "wrong": 10,
               "score": 0,
-              "totalQuestions": 10,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 10
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1"
-          ]
+          }
         },
         "678535": {
           "studentId": "678535",
@@ -5584,7 +4306,7 @@
           "unattempted": 0,
           "totalQuestions": 10,
           "score": 0,
-          "rank": 22,
+          "rank": 18,
           "threshold": 6,
           "analytics": {
             "accuracy": 0,
@@ -5597,16 +4319,9 @@
               "correct": 0,
               "wrong": 10,
               "score": 0,
-              "totalQuestions": 10,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 10
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1"
-          ]
+          }
         },
         "757516": {
           "studentId": "757516",
@@ -5616,7 +4331,7 @@
           "unattempted": 0,
           "totalQuestions": 10,
           "score": 6,
-          "rank": 6,
+          "rank": 3,
           "threshold": 6,
           "analytics": {
             "accuracy": 60,
@@ -5629,16 +4344,9 @@
               "correct": 6,
               "wrong": 4,
               "score": 6,
-              "totalQuestions": 10,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 10
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1"
-          ]
+          }
         },
         "764305": {
           "studentId": "764305",
@@ -5648,7 +4356,7 @@
           "unattempted": 0,
           "totalQuestions": 10,
           "score": 3,
-          "rank": 13,
+          "rank": 11,
           "threshold": 6,
           "analytics": {
             "accuracy": 30,
@@ -5661,16 +4369,9 @@
               "correct": 3,
               "wrong": 7,
               "score": 3,
-              "totalQuestions": 10,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 10
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1"
-          ]
+          }
         },
         "907183": {
           "studentId": "907183",
@@ -5680,7 +4381,7 @@
           "unattempted": 0,
           "totalQuestions": 10,
           "score": 0,
-          "rank": 23,
+          "rank": 18,
           "threshold": 6,
           "analytics": {
             "accuracy": 0,
@@ -5693,16 +4394,9 @@
               "correct": 0,
               "wrong": 10,
               "score": 0,
-              "totalQuestions": 10,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 10
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1"
-          ]
+          }
         },
         "934245": {
           "studentId": "934245",
@@ -5712,7 +4406,7 @@
           "unattempted": 0,
           "totalQuestions": 10,
           "score": 6,
-          "rank": 7,
+          "rank": 3,
           "threshold": 6,
           "analytics": {
             "accuracy": 60,
@@ -5725,16 +4419,9 @@
               "correct": 6,
               "wrong": 4,
               "score": 6,
-              "totalQuestions": 10,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 10
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1"
-          ]
+          }
         },
         "979212": {
           "studentId": "979212",
@@ -5744,7 +4431,7 @@
           "unattempted": 0,
           "totalQuestions": 10,
           "score": 0,
-          "rank": 24,
+          "rank": 18,
           "threshold": 6,
           "analytics": {
             "accuracy": 0,
@@ -5757,16 +4444,9 @@
               "correct": 0,
               "wrong": 10,
               "score": 0,
-              "totalQuestions": 10,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 10
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1"
-          ]
+          }
         }
       },
       "classStats": {
@@ -5776,16 +4456,10 @@
         "passRate": 29.17,
         "maxScore": 10,
         "minScore": 0,
-        "threshold": 6,
-        "sectionThresholds": {
-          "1": 0.25
-        },
-        "thresholdsAdjusted": true,
-        "passedStudents": 0,
-        "failedStudents": 24
+        "threshold": 6
       },
       "metadata": {
-        "processedAt": "2025-11-15T05:45:20.139Z",
+        "processedAt": "2025-11-15T07:15:44.922Z",
         "sourceFile": "IBA\\Simple Test Data.xlsx",
         "sheetName": "English Quiz 4"
       }
@@ -5817,16 +4491,9 @@
               "correct": 18.233333333333334,
               "wrong": 31.766666666666666,
               "score": 18.233333333333334,
-              "totalQuestions": 50,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 50
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1"
-          ]
+          }
         },
         "146014": {
           "studentId": "146014",
@@ -5849,16 +4516,9 @@
               "correct": 4.333333333333334,
               "wrong": 45.666666666666664,
               "score": 4.333333333333334,
-              "totalQuestions": 50,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 50
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1"
-          ]
+          }
         },
         "158296": {
           "studentId": "158296",
@@ -5881,16 +4541,9 @@
               "correct": 19.8,
               "wrong": 30.2,
               "score": 19.8,
-              "totalQuestions": 50,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 50
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1"
-          ]
+          }
         },
         "196303": {
           "studentId": "196303",
@@ -5913,16 +4566,9 @@
               "correct": 44,
               "wrong": 6,
               "score": 44,
-              "totalQuestions": 50,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 50
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1"
-          ]
+          }
         },
         "303558": {
           "studentId": "303558",
@@ -5945,16 +4591,9 @@
               "correct": 19.5,
               "wrong": 30.5,
               "score": 19.5,
-              "totalQuestions": 50,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 50
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1"
-          ]
+          }
         },
         "399043": {
           "studentId": "399043",
@@ -5977,16 +4616,9 @@
               "correct": 5.833333333333333,
               "wrong": 44.166666666666664,
               "score": 5.833333333333333,
-              "totalQuestions": 50,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 50
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1"
-          ]
+          }
         },
         "400651": {
           "studentId": "400651",
@@ -6009,16 +4641,9 @@
               "correct": 22.166666666666664,
               "wrong": 27.833333333333336,
               "score": 22.166666666666664,
-              "totalQuestions": 50,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 50
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1"
-          ]
+          }
         },
         "417695": {
           "studentId": "417695",
@@ -6041,16 +4666,9 @@
               "correct": 33.8,
               "wrong": 16.200000000000003,
               "score": 33.8,
-              "totalQuestions": 50,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 50
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1"
-          ]
+          }
         },
         "421527": {
           "studentId": "421527",
@@ -6073,16 +4691,9 @@
               "correct": 13,
               "wrong": 37,
               "score": 13,
-              "totalQuestions": 50,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 50
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1"
-          ]
+          }
         },
         "459889": {
           "studentId": "459889",
@@ -6105,16 +4716,9 @@
               "correct": 48.6,
               "wrong": 1.3999999999999986,
               "score": 48.6,
-              "totalQuestions": 50,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 50
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1"
-          ]
+          }
         },
         "542127": {
           "studentId": "542127",
@@ -6137,16 +4741,9 @@
               "correct": 12,
               "wrong": 38,
               "score": 12,
-              "totalQuestions": 50,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 50
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1"
-          ]
+          }
         },
         "575752": {
           "studentId": "575752",
@@ -6169,16 +4766,9 @@
               "correct": 21,
               "wrong": 29,
               "score": 21,
-              "totalQuestions": 50,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 50
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1"
-          ]
+          }
         },
         "604057": {
           "studentId": "604057",
@@ -6201,16 +4791,9 @@
               "correct": 15.333333333333334,
               "wrong": 34.666666666666664,
               "score": 15.333333333333334,
-              "totalQuestions": 50,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 50
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1"
-          ]
+          }
         },
         "621172": {
           "studentId": "621172",
@@ -6233,16 +4816,9 @@
               "correct": 24,
               "wrong": 26,
               "score": 24,
-              "totalQuestions": 50,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 50
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1"
-          ]
+          }
         },
         "624690": {
           "studentId": "624690",
@@ -6265,16 +4841,9 @@
               "correct": 42.5,
               "wrong": 7.5,
               "score": 42.5,
-              "totalQuestions": 50,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 50
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1"
-          ]
+          }
         },
         "643388": {
           "studentId": "643388",
@@ -6297,16 +4866,9 @@
               "correct": 36,
               "wrong": 14,
               "score": 36,
-              "totalQuestions": 50,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 50
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1"
-          ]
+          }
         },
         "648081": {
           "studentId": "648081",
@@ -6329,16 +4891,9 @@
               "correct": 24.3,
               "wrong": 25.7,
               "score": 24.3,
-              "totalQuestions": 50,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 50
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1"
-          ]
+          }
         },
         "650004": {
           "studentId": "650004",
@@ -6361,16 +4916,9 @@
               "correct": 5.666666666666666,
               "wrong": 44.333333333333336,
               "score": 5.666666666666666,
-              "totalQuestions": 50,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 50
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1"
-          ]
+          }
         },
         "678535": {
           "studentId": "678535",
@@ -6393,16 +4941,9 @@
               "correct": 4.166666666666666,
               "wrong": 45.833333333333336,
               "score": 4.166666666666666,
-              "totalQuestions": 50,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 50
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1"
-          ]
+          }
         },
         "757516": {
           "studentId": "757516",
@@ -6425,16 +4966,9 @@
               "correct": 41.5,
               "wrong": 8.5,
               "score": 41.5,
-              "totalQuestions": 50,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 50
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1"
-          ]
+          }
         },
         "764305": {
           "studentId": "764305",
@@ -6457,16 +4991,9 @@
               "correct": 9,
               "wrong": 41,
               "score": 9,
-              "totalQuestions": 50,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 50
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1"
-          ]
+          }
         },
         "907183": {
           "studentId": "907183",
@@ -6489,16 +5016,9 @@
               "correct": 2.166666666666667,
               "wrong": 47.833333333333336,
               "score": 2.166666666666667,
-              "totalQuestions": 50,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 50
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1"
-          ]
+          }
         },
         "934245": {
           "studentId": "934245",
@@ -6508,7 +5028,7 @@
           "unattempted": 0,
           "totalQuestions": 50,
           "score": 36,
-          "rank": 6,
+          "rank": 5,
           "threshold": 30,
           "analytics": {
             "accuracy": 72,
@@ -6521,16 +5041,9 @@
               "correct": 36,
               "wrong": 14,
               "score": 36,
-              "totalQuestions": 50,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 50
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1"
-          ]
+          }
         },
         "979212": {
           "studentId": "979212",
@@ -6553,16 +5066,9 @@
               "correct": 7.5,
               "wrong": 42.5,
               "score": 7.5,
-              "totalQuestions": 50,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 50
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1"
-          ]
+          }
         }
       },
       "classStats": {
@@ -6572,16 +5078,10 @@
         "passRate": 29.17,
         "maxScore": 48.6,
         "minScore": 2.166666666666667,
-        "threshold": 30,
-        "sectionThresholds": {
-          "1": 0.25
-        },
-        "thresholdsAdjusted": true,
-        "passedStudents": 0,
-        "failedStudents": 24
+        "threshold": 30
       },
       "metadata": {
-        "processedAt": "2025-11-15T05:45:20.141Z",
+        "processedAt": "2025-11-15T07:15:44.923Z",
         "sourceFile": "IBA\\Simple Test Data.xlsx",
         "sheetName": "English Quiz Total till 5"
       }
@@ -6600,17 +5100,14 @@
           "unattempted": 0,
           "totalQuestions": 50,
           "score": 37,
-          "rank": 1,
+          "rank": 3,
           "threshold": 20,
           "analytics": {
             "accuracy": 74,
             "attemptRate": 100,
             "passStatus": true,
             "percentile": 73.91
-          },
-          "rankStatus": "passed",
-          "passedAll": true,
-          "failedSections": []
+          }
         },
         "146014": {
           "studentId": "146014",
@@ -6620,17 +5117,14 @@
           "unattempted": 0,
           "totalQuestions": 50,
           "score": 17,
-          "rank": 2,
+          "rank": 17,
           "threshold": 20,
           "analytics": {
             "accuracy": 34,
             "attemptRate": 100,
             "passStatus": false,
             "percentile": 26.09
-          },
-          "rankStatus": "passed",
-          "passedAll": true,
-          "failedSections": []
+          }
         },
         "158296": {
           "studentId": "158296",
@@ -6640,17 +5134,14 @@
           "unattempted": 0,
           "totalQuestions": 50,
           "score": 25,
-          "rank": 3,
+          "rank": 12,
           "threshold": 20,
           "analytics": {
             "accuracy": 50,
             "attemptRate": 100,
             "passStatus": true,
             "percentile": 47.83
-          },
-          "rankStatus": "passed",
-          "passedAll": true,
-          "failedSections": []
+          }
         },
         "196303": {
           "studentId": "196303",
@@ -6660,17 +5151,14 @@
           "unattempted": 0,
           "totalQuestions": 0,
           "score": 0,
-          "rank": 4,
+          "rank": 0,
           "threshold": 20,
           "analytics": {
             "accuracy": 0,
             "attemptRate": 0,
             "passStatus": false,
             "percentile": 0
-          },
-          "rankStatus": "passed",
-          "passedAll": true,
-          "failedSections": []
+          }
         },
         "303558": {
           "studentId": "303558",
@@ -6680,17 +5168,14 @@
           "unattempted": 0,
           "totalQuestions": 50,
           "score": 27,
-          "rank": 5,
+          "rank": 10,
           "threshold": 20,
           "analytics": {
             "accuracy": 54,
             "attemptRate": 100,
             "passStatus": true,
             "percentile": 52.17
-          },
-          "rankStatus": "passed",
-          "passedAll": true,
-          "failedSections": []
+          }
         },
         "399043": {
           "studentId": "399043",
@@ -6700,17 +5185,14 @@
           "unattempted": 0,
           "totalQuestions": 0,
           "score": 0,
-          "rank": 6,
+          "rank": 0,
           "threshold": 20,
           "analytics": {
             "accuracy": 0,
             "attemptRate": 0,
             "passStatus": false,
             "percentile": 0
-          },
-          "rankStatus": "passed",
-          "passedAll": true,
-          "failedSections": []
+          }
         },
         "400651": {
           "studentId": "400651",
@@ -6720,17 +5202,14 @@
           "unattempted": 0,
           "totalQuestions": 50,
           "score": 24,
-          "rank": 7,
+          "rank": 13,
           "threshold": 20,
           "analytics": {
             "accuracy": 48,
             "attemptRate": 100,
             "passStatus": true,
             "percentile": 39.13
-          },
-          "rankStatus": "passed",
-          "passedAll": true,
-          "failedSections": []
+          }
         },
         "417695": {
           "studentId": "417695",
@@ -6740,17 +5219,14 @@
           "unattempted": 0,
           "totalQuestions": 50,
           "score": 38,
-          "rank": 8,
+          "rank": 2,
           "threshold": 20,
           "analytics": {
             "accuracy": 76,
             "attemptRate": 100,
             "passStatus": true,
             "percentile": 91.3
-          },
-          "rankStatus": "passed",
-          "passedAll": true,
-          "failedSections": []
+          }
         },
         "421527": {
           "studentId": "421527",
@@ -6760,17 +5236,14 @@
           "unattempted": 0,
           "totalQuestions": 50,
           "score": 35,
-          "rank": 9,
+          "rank": 8,
           "threshold": 20,
           "analytics": {
             "accuracy": 70,
             "attemptRate": 100,
             "passStatus": true,
             "percentile": 65.22
-          },
-          "rankStatus": "passed",
-          "passedAll": true,
-          "failedSections": []
+          }
         },
         "459889": {
           "studentId": "459889",
@@ -6780,17 +5253,14 @@
           "unattempted": 0,
           "totalQuestions": 50,
           "score": 40,
-          "rank": 10,
+          "rank": 1,
           "threshold": 20,
           "analytics": {
             "accuracy": 80,
             "attemptRate": 100,
             "passStatus": true,
             "percentile": 95.65
-          },
-          "rankStatus": "passed",
-          "passedAll": true,
-          "failedSections": []
+          }
         },
         "542127": {
           "studentId": "542127",
@@ -6800,17 +5270,14 @@
           "unattempted": 0,
           "totalQuestions": 50,
           "score": 12,
-          "rank": 11,
+          "rank": 19,
           "threshold": 20,
           "analytics": {
             "accuracy": 24,
             "attemptRate": 100,
             "passStatus": false,
             "percentile": 17.39
-          },
-          "rankStatus": "passed",
-          "passedAll": true,
-          "failedSections": []
+          }
         },
         "575752": {
           "studentId": "575752",
@@ -6820,17 +5287,14 @@
           "unattempted": 0,
           "totalQuestions": 50,
           "score": 37,
-          "rank": 12,
+          "rank": 3,
           "threshold": 20,
           "analytics": {
             "accuracy": 74,
             "attemptRate": 100,
             "passStatus": true,
             "percentile": 73.91
-          },
-          "rankStatus": "passed",
-          "passedAll": true,
-          "failedSections": []
+          }
         },
         "604057": {
           "studentId": "604057",
@@ -6840,17 +5304,14 @@
           "unattempted": 0,
           "totalQuestions": 0,
           "score": 0,
-          "rank": 13,
+          "rank": 0,
           "threshold": 20,
           "analytics": {
             "accuracy": 0,
             "attemptRate": 0,
             "passStatus": false,
             "percentile": 0
-          },
-          "rankStatus": "passed",
-          "passedAll": true,
-          "failedSections": []
+          }
         },
         "621172": {
           "studentId": "621172",
@@ -6860,17 +5321,14 @@
           "unattempted": 0,
           "totalQuestions": 50,
           "score": 16,
-          "rank": 14,
+          "rank": 18,
           "threshold": 20,
           "analytics": {
             "accuracy": 32,
             "attemptRate": 100,
             "passStatus": false,
             "percentile": 21.74
-          },
-          "rankStatus": "passed",
-          "passedAll": true,
-          "failedSections": []
+          }
         },
         "624690": {
           "studentId": "624690",
@@ -6880,17 +5338,14 @@
           "unattempted": 0,
           "totalQuestions": 50,
           "score": 27,
-          "rank": 15,
+          "rank": 10,
           "threshold": 20,
           "analytics": {
             "accuracy": 54,
             "attemptRate": 100,
             "passStatus": true,
             "percentile": 52.17
-          },
-          "rankStatus": "passed",
-          "passedAll": true,
-          "failedSections": []
+          }
         },
         "643388": {
           "studentId": "643388",
@@ -6900,17 +5355,14 @@
           "unattempted": 0,
           "totalQuestions": 50,
           "score": 37,
-          "rank": 16,
+          "rank": 3,
           "threshold": 20,
           "analytics": {
             "accuracy": 74,
             "attemptRate": 100,
             "passStatus": true,
             "percentile": 73.91
-          },
-          "rankStatus": "passed",
-          "passedAll": true,
-          "failedSections": []
+          }
         },
         "648081": {
           "studentId": "648081",
@@ -6920,17 +5372,14 @@
           "unattempted": 0,
           "totalQuestions": 50,
           "score": 24,
-          "rank": 17,
+          "rank": 13,
           "threshold": 20,
           "analytics": {
             "accuracy": 48,
             "attemptRate": 100,
             "passStatus": true,
             "percentile": 39.13
-          },
-          "rankStatus": "passed",
-          "passedAll": true,
-          "failedSections": []
+          }
         },
         "650004": {
           "studentId": "650004",
@@ -6940,17 +5389,14 @@
           "unattempted": 0,
           "totalQuestions": 50,
           "score": 21,
-          "rank": 18,
+          "rank": 16,
           "threshold": 20,
           "analytics": {
             "accuracy": 42,
             "attemptRate": 100,
             "passStatus": true,
             "percentile": 30.43
-          },
-          "rankStatus": "passed",
-          "passedAll": true,
-          "failedSections": []
+          }
         },
         "678535": {
           "studentId": "678535",
@@ -6960,17 +5406,14 @@
           "unattempted": 0,
           "totalQuestions": 0,
           "score": 0,
-          "rank": 19,
+          "rank": 0,
           "threshold": 20,
           "analytics": {
             "accuracy": 0,
             "attemptRate": 0,
             "passStatus": false,
             "percentile": 0
-          },
-          "rankStatus": "passed",
-          "passedAll": true,
-          "failedSections": []
+          }
         },
         "757516": {
           "studentId": "757516",
@@ -6980,17 +5423,14 @@
           "unattempted": 0,
           "totalQuestions": 50,
           "score": 34,
-          "rank": 20,
+          "rank": 9,
           "threshold": 20,
           "analytics": {
             "accuracy": 68,
             "attemptRate": 100,
             "passStatus": true,
             "percentile": 60.87
-          },
-          "rankStatus": "passed",
-          "passedAll": true,
-          "failedSections": []
+          }
         },
         "907183": {
           "studentId": "907183",
@@ -7000,17 +5440,14 @@
           "unattempted": 0,
           "totalQuestions": 50,
           "score": 23,
-          "rank": 21,
+          "rank": 15,
           "threshold": 20,
           "analytics": {
             "accuracy": 46,
             "attemptRate": 100,
             "passStatus": true,
             "percentile": 34.78
-          },
-          "rankStatus": "passed",
-          "passedAll": true,
-          "failedSections": []
+          }
         },
         "934245": {
           "studentId": "934245",
@@ -7020,17 +5457,14 @@
           "unattempted": 0,
           "totalQuestions": 50,
           "score": 37,
-          "rank": 22,
+          "rank": 3,
           "threshold": 20,
           "analytics": {
             "accuracy": 74,
             "attemptRate": 100,
             "passStatus": true,
             "percentile": 73.91
-          },
-          "rankStatus": "passed",
-          "passedAll": true,
-          "failedSections": []
+          }
         },
         "979212": {
           "studentId": "979212",
@@ -7040,17 +5474,14 @@
           "unattempted": 0,
           "totalQuestions": 50,
           "score": 36,
-          "rank": 23,
+          "rank": 7,
           "threshold": 20,
           "analytics": {
             "accuracy": 72,
             "attemptRate": 100,
             "passStatus": true,
             "percentile": 69.57
-          },
-          "rankStatus": "passed",
-          "passedAll": true,
-          "failedSections": []
+          }
         }
       },
       "classStats": {
@@ -7060,14 +5491,10 @@
         "passRate": 69.57,
         "maxScore": 40,
         "minScore": 0,
-        "threshold": 20,
-        "sectionThresholds": {},
-        "thresholdsAdjusted": true,
-        "passedStudents": 23,
-        "failedStudents": 0
+        "threshold": 20
       },
       "metadata": {
-        "processedAt": "2025-11-15T05:45:20.142Z",
+        "processedAt": "2025-11-15T07:15:44.924Z",
         "sourceFile": "IBA\\Simple Test Data.xlsx",
         "sheetName": "Maths Diagnostic Test"
       }
@@ -7099,16 +5526,9 @@
               "correct": 7,
               "wrong": 3,
               "score": 7,
-              "totalQuestions": 10,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 10
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1"
-          ]
+          }
         },
         "146014": {
           "studentId": "146014",
@@ -7131,16 +5551,9 @@
               "correct": 0,
               "wrong": 10,
               "score": 0,
-              "totalQuestions": 10,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 10
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1"
-          ]
+          }
         },
         "158296": {
           "studentId": "158296",
@@ -7163,16 +5576,9 @@
               "correct": 2,
               "wrong": 8,
               "score": 2,
-              "totalQuestions": 10,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 10
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1"
-          ]
+          }
         },
         "196303": {
           "studentId": "196303",
@@ -7182,7 +5588,7 @@
           "unattempted": 0,
           "totalQuestions": 10,
           "score": 7,
-          "rank": 3,
+          "rank": 2,
           "threshold": 6,
           "analytics": {
             "accuracy": 70,
@@ -7195,16 +5601,9 @@
               "correct": 7,
               "wrong": 3,
               "score": 7,
-              "totalQuestions": 10,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 10
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1"
-          ]
+          }
         },
         "303558": {
           "studentId": "303558",
@@ -7227,16 +5626,9 @@
               "correct": 3,
               "wrong": 7,
               "score": 3,
-              "totalQuestions": 10,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 10
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1"
-          ]
+          }
         },
         "399043": {
           "studentId": "399043",
@@ -7246,7 +5638,7 @@
           "unattempted": 0,
           "totalQuestions": 10,
           "score": 0,
-          "rank": 16,
+          "rank": 15,
           "threshold": 6,
           "analytics": {
             "accuracy": 0,
@@ -7259,16 +5651,9 @@
               "correct": 0,
               "wrong": 10,
               "score": 0,
-              "totalQuestions": 10,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 10
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1"
-          ]
+          }
         },
         "400651": {
           "studentId": "400651",
@@ -7291,16 +5676,9 @@
               "correct": 4,
               "wrong": 6,
               "score": 4,
-              "totalQuestions": 10,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 10
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1"
-          ]
+          }
         },
         "417695": {
           "studentId": "417695",
@@ -7323,16 +5701,9 @@
               "correct": 6,
               "wrong": 4,
               "score": 6,
-              "totalQuestions": 10,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 10
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1"
-          ]
+          }
         },
         "421527": {
           "studentId": "421527",
@@ -7342,7 +5713,7 @@
           "unattempted": 0,
           "totalQuestions": 10,
           "score": 0,
-          "rank": 17,
+          "rank": 15,
           "threshold": 6,
           "analytics": {
             "accuracy": 0,
@@ -7355,16 +5726,9 @@
               "correct": 0,
               "wrong": 10,
               "score": 0,
-              "totalQuestions": 10,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 10
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1"
-          ]
+          }
         },
         "459889": {
           "studentId": "459889",
@@ -7387,16 +5751,9 @@
               "correct": 5,
               "wrong": 5,
               "score": 5,
-              "totalQuestions": 10,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 10
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1"
-          ]
+          }
         },
         "542127": {
           "studentId": "542127",
@@ -7419,16 +5776,9 @@
               "correct": 1,
               "wrong": 9,
               "score": 1,
-              "totalQuestions": 10,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 10
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1"
-          ]
+          }
         },
         "575752": {
           "studentId": "575752",
@@ -7438,7 +5788,7 @@
           "unattempted": 0,
           "totalQuestions": 10,
           "score": 0,
-          "rank": 18,
+          "rank": 15,
           "threshold": 6,
           "analytics": {
             "accuracy": 0,
@@ -7451,16 +5801,9 @@
               "correct": 0,
               "wrong": 10,
               "score": 0,
-              "totalQuestions": 10,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 10
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1"
-          ]
+          }
         },
         "604057": {
           "studentId": "604057",
@@ -7470,7 +5813,7 @@
           "unattempted": 0,
           "totalQuestions": 10,
           "score": 3,
-          "rank": 12,
+          "rank": 11,
           "threshold": 6,
           "analytics": {
             "accuracy": 30,
@@ -7483,16 +5826,9 @@
               "correct": 3,
               "wrong": 7,
               "score": 3,
-              "totalQuestions": 10,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 10
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1"
-          ]
+          }
         },
         "621172": {
           "studentId": "621172",
@@ -7502,7 +5838,7 @@
           "unattempted": 0,
           "totalQuestions": 10,
           "score": 7,
-          "rank": 4,
+          "rank": 2,
           "threshold": 6,
           "analytics": {
             "accuracy": 70,
@@ -7515,16 +5851,9 @@
               "correct": 7,
               "wrong": 3,
               "score": 7,
-              "totalQuestions": 10,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 10
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1"
-          ]
+          }
         },
         "624690": {
           "studentId": "624690",
@@ -7547,16 +5876,9 @@
               "correct": 8,
               "wrong": 2,
               "score": 8,
-              "totalQuestions": 10,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 10
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1"
-          ]
+          }
         },
         "643388": {
           "studentId": "643388",
@@ -7566,7 +5888,7 @@
           "unattempted": 0,
           "totalQuestions": 10,
           "score": 0,
-          "rank": 19,
+          "rank": 15,
           "threshold": 6,
           "analytics": {
             "accuracy": 0,
@@ -7579,16 +5901,9 @@
               "correct": 0,
               "wrong": 10,
               "score": 0,
-              "totalQuestions": 10,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 10
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1"
-          ]
+          }
         },
         "648081": {
           "studentId": "648081",
@@ -7598,7 +5913,7 @@
           "unattempted": 0,
           "totalQuestions": 10,
           "score": 4,
-          "rank": 10,
+          "rank": 9,
           "threshold": 6,
           "analytics": {
             "accuracy": 40,
@@ -7611,16 +5926,9 @@
               "correct": 4,
               "wrong": 6,
               "score": 4,
-              "totalQuestions": 10,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 10
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1"
-          ]
+          }
         },
         "650004": {
           "studentId": "650004",
@@ -7630,7 +5938,7 @@
           "unattempted": 0,
           "totalQuestions": 10,
           "score": 0,
-          "rank": 20,
+          "rank": 15,
           "threshold": 6,
           "analytics": {
             "accuracy": 0,
@@ -7643,16 +5951,9 @@
               "correct": 0,
               "wrong": 10,
               "score": 0,
-              "totalQuestions": 10,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 10
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1"
-          ]
+          }
         },
         "678535": {
           "studentId": "678535",
@@ -7662,7 +5963,7 @@
           "unattempted": 0,
           "totalQuestions": 10,
           "score": 0,
-          "rank": 21,
+          "rank": 15,
           "threshold": 6,
           "analytics": {
             "accuracy": 0,
@@ -7675,16 +5976,9 @@
               "correct": 0,
               "wrong": 10,
               "score": 0,
-              "totalQuestions": 10,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 10
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1"
-          ]
+          }
         },
         "757516": {
           "studentId": "757516",
@@ -7694,7 +5988,7 @@
           "unattempted": 0,
           "totalQuestions": 10,
           "score": 7,
-          "rank": 5,
+          "rank": 2,
           "threshold": 6,
           "analytics": {
             "accuracy": 70,
@@ -7707,16 +6001,9 @@
               "correct": 7,
               "wrong": 3,
               "score": 7,
-              "totalQuestions": 10,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 10
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1"
-          ]
+          }
         },
         "764305": {
           "studentId": "764305",
@@ -7726,7 +6013,7 @@
           "unattempted": 0,
           "totalQuestions": 10,
           "score": 0,
-          "rank": 22,
+          "rank": 15,
           "threshold": 6,
           "analytics": {
             "accuracy": 0,
@@ -7739,16 +6026,9 @@
               "correct": 0,
               "wrong": 10,
               "score": 0,
-              "totalQuestions": 10,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 10
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1"
-          ]
+          }
         },
         "907183": {
           "studentId": "907183",
@@ -7758,7 +6038,7 @@
           "unattempted": 0,
           "totalQuestions": 10,
           "score": 0,
-          "rank": 23,
+          "rank": 15,
           "threshold": 6,
           "analytics": {
             "accuracy": 0,
@@ -7771,16 +6051,9 @@
               "correct": 0,
               "wrong": 10,
               "score": 0,
-              "totalQuestions": 10,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 10
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1"
-          ]
+          }
         },
         "934245": {
           "studentId": "934245",
@@ -7790,7 +6063,7 @@
           "unattempted": 0,
           "totalQuestions": 10,
           "score": 6,
-          "rank": 7,
+          "rank": 6,
           "threshold": 6,
           "analytics": {
             "accuracy": 60,
@@ -7803,16 +6076,9 @@
               "correct": 6,
               "wrong": 4,
               "score": 6,
-              "totalQuestions": 10,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 10
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1"
-          ]
+          }
         },
         "979212": {
           "studentId": "979212",
@@ -7822,7 +6088,7 @@
           "unattempted": 0,
           "totalQuestions": 10,
           "score": 0,
-          "rank": 24,
+          "rank": 15,
           "threshold": 6,
           "analytics": {
             "accuracy": 0,
@@ -7835,16 +6101,9 @@
               "correct": 0,
               "wrong": 10,
               "score": 0,
-              "totalQuestions": 10,
-              "threshold": 0.25,
-              "passed": false
+              "totalQuestions": 10
             }
-          },
-          "rankStatus": "failed",
-          "passedAll": false,
-          "failedSections": [
-            "1"
-          ]
+          }
         }
       },
       "classStats": {
@@ -7854,16 +6113,10 @@
         "passRate": 29.17,
         "maxScore": 8,
         "minScore": 0,
-        "threshold": 6,
-        "sectionThresholds": {
-          "1": 0.25
-        },
-        "thresholdsAdjusted": true,
-        "passedStudents": 0,
-        "failedStudents": 24
+        "threshold": 6
       },
       "metadata": {
-        "processedAt": "2025-11-15T05:45:20.143Z",
+        "processedAt": "2025-11-15T07:15:44.927Z",
         "sourceFile": "IBA\\Simple Test Data.xlsx",
         "sheetName": "English Quiz 6"
       }
@@ -7881,43 +6134,43 @@
           "studentPerformance": {
             "121716": {
               "score": 6.25,
-              "rank": 1,
+              "rank": 12,
               "accuracy": 30,
               "improvement": 0
             },
             "146014": {
               "score": 0,
-              "rank": 2,
+              "rank": 19,
               "accuracy": 0,
               "improvement": 0
             },
             "158296": {
               "score": 5,
-              "rank": 3,
+              "rank": 13,
               "accuracy": 40,
               "improvement": 0
             },
             "196303": {
               "score": 13.25,
-              "rank": 4,
+              "rank": 6,
               "accuracy": 53.13,
               "improvement": 0
             },
             "303558": {
               "score": 2.5,
-              "rank": 5,
+              "rank": 16,
               "accuracy": 30,
               "improvement": 0
             },
             "399043": {
               "score": 0,
-              "rank": 6,
+              "rank": 19,
               "accuracy": 0,
               "improvement": 0
             },
             "400651": {
               "score": 9.5,
-              "rank": 7,
+              "rank": 10,
               "accuracy": 64.71,
               "improvement": 0
             },
@@ -7929,61 +6182,61 @@
             },
             "421527": {
               "score": 2.5,
-              "rank": 9,
+              "rank": 16,
               "accuracy": 25,
               "improvement": 0
             },
             "459889": {
               "score": 16.75,
-              "rank": 10,
+              "rank": 2,
               "accuracy": 67.86,
               "improvement": 0
             },
             "542127": {
               "score": -4.25,
-              "rank": 11,
+              "rank": 22,
               "accuracy": 7.41,
               "improvement": 0
             },
             "575752": {
               "score": 13.5,
-              "rank": 12,
+              "rank": 5,
               "accuracy": 61.54,
               "improvement": 0
             },
             "604057": {
               "score": -8.5,
-              "rank": 13,
+              "rank": 23,
               "accuracy": 4.55,
               "improvement": 0
             },
             "621172": {
               "score": 10.75,
-              "rank": 14,
+              "rank": 8,
               "accuracy": 51.85,
               "improvement": 0
             },
             "624690": {
               "score": 17,
-              "rank": 15,
+              "rank": 1,
               "accuracy": 81.82,
               "improvement": 0
             },
             "643388": {
               "score": 12,
-              "rank": 16,
+              "rank": 7,
               "accuracy": 40.43,
               "improvement": 0
             },
             "648081": {
               "score": 2.25,
-              "rank": 17,
+              "rank": 18,
               "accuracy": 28.57,
               "improvement": 0
             },
             "650004": {
               "score": 3.25,
-              "rank": 18,
+              "rank": 15,
               "accuracy": 31.82,
               "improvement": 0
             },
@@ -7995,25 +6248,25 @@
             },
             "757516": {
               "score": 15.75,
-              "rank": 20,
+              "rank": 3,
               "accuracy": 66.67,
               "improvement": 0
             },
             "907183": {
               "score": 4,
-              "rank": 21,
+              "rank": 14,
               "accuracy": 36.84,
               "improvement": 0
             },
             "934245": {
               "score": 8.5,
-              "rank": 22,
+              "rank": 11,
               "accuracy": 46.15,
               "improvement": 0
             },
             "979212": {
               "score": 15,
-              "rank": 23,
+              "rank": 4,
               "accuracy": 54.29,
               "improvement": 0
             }
@@ -8038,7 +6291,7 @@
             },
             "146014": {
               "score": 0,
-              "rank": 15,
+              "rank": 0,
               "accuracy": 0,
               "improvement": 0
             },
@@ -8056,13 +6309,13 @@
             },
             "303558": {
               "score": 26.75,
-              "rank": 7,
+              "rank": 8,
               "accuracy": 56.9,
               "improvement": 0
             },
             "399043": {
               "score": 0,
-              "rank": 16,
+              "rank": 0,
               "accuracy": 0,
               "improvement": 0
             },
@@ -8074,7 +6327,7 @@
             },
             "417695": {
               "score": 24.25,
-              "rank": 8,
+              "rank": 9,
               "accuracy": 65.12,
               "improvement": 0
             },
@@ -8092,13 +6345,13 @@
             },
             "542127": {
               "score": 0,
-              "rank": 17,
+              "rank": 0,
               "accuracy": 0,
               "improvement": 0
             },
             "575752": {
               "score": 0,
-              "rank": 18,
+              "rank": 0,
               "accuracy": 0,
               "improvement": 0
             },
@@ -8110,7 +6363,7 @@
             },
             "621172": {
               "score": 0,
-              "rank": 19,
+              "rank": 0,
               "accuracy": 0,
               "improvement": 0
             },
@@ -8128,19 +6381,19 @@
             },
             "648081": {
               "score": 0,
-              "rank": 20,
+              "rank": 0,
               "accuracy": 0,
               "improvement": 0
             },
             "650004": {
               "score": 0,
-              "rank": 21,
+              "rank": 0,
               "accuracy": 0,
               "improvement": 0
             },
             "678535": {
               "score": 0,
-              "rank": 22,
+              "rank": 0,
               "accuracy": 0,
               "improvement": 0
             },
@@ -8158,13 +6411,13 @@
             },
             "934245": {
               "score": 20.75,
-              "rank": 9,
+              "rank": 7,
               "accuracy": 55.32,
               "improvement": 0
             },
             "979212": {
               "score": 0,
-              "rank": 23,
+              "rank": 0,
               "accuracy": 0,
               "improvement": 0
             }
@@ -8212,13 +6465,13 @@
             },
             "303558": {
               "score": 27,
-              "rank": 2,
+              "rank": 1,
               "accuracy": 93.1,
               "improvement": 0
             },
             "399043": {
               "score": 16,
-              "rank": 13,
+              "rank": 12,
               "accuracy": 53.33,
               "improvement": 0
             },
@@ -8242,13 +6495,13 @@
             },
             "459889": {
               "score": 27,
-              "rank": 3,
+              "rank": 1,
               "accuracy": 79.41,
               "improvement": 0
             },
             "542127": {
               "score": 15,
-              "rank": 15,
+              "rank": 14,
               "accuracy": 100,
               "improvement": 0
             },
@@ -8272,13 +6525,13 @@
             },
             "624690": {
               "score": 27,
-              "rank": 4,
+              "rank": 1,
               "accuracy": 93.1,
               "improvement": 0
             },
             "643388": {
               "score": 27,
-              "rank": 5,
+              "rank": 1,
               "accuracy": 100,
               "improvement": 0
             },
@@ -8290,7 +6543,7 @@
             },
             "650004": {
               "score": 8,
-              "rank": 21,
+              "rank": 20,
               "accuracy": 44.44,
               "improvement": 0
             },
@@ -8302,7 +6555,7 @@
             },
             "757516": {
               "score": 27,
-              "rank": 6,
+              "rank": 1,
               "accuracy": 90,
               "improvement": 0
             },
@@ -8320,13 +6573,13 @@
             },
             "934245": {
               "score": 21,
-              "rank": 9,
+              "rank": 8,
               "accuracy": 77.78,
               "improvement": 0
             },
             "979212": {
               "score": 21,
-              "rank": 10,
+              "rank": 8,
               "accuracy": 70,
               "improvement": 0
             }
@@ -8367,7 +6620,7 @@
             },
             "399043": {
               "score": 1,
-              "rank": 20,
+              "rank": 19,
               "accuracy": 5,
               "improvement": -15
             },
@@ -8397,19 +6650,19 @@
             },
             "542127": {
               "score": 6,
-              "rank": 15,
+              "rank": 14,
               "accuracy": 30,
               "improvement": -9
             },
             "575752": {
               "score": 12,
-              "rank": 9,
+              "rank": 8,
               "accuracy": 60,
               "improvement": -6
             },
             "604057": {
               "score": 6,
-              "rank": 16,
+              "rank": 14,
               "accuracy": 30,
               "improvement": -1
             },
@@ -8427,31 +6680,31 @@
             },
             "643388": {
               "score": 14,
-              "rank": 7,
+              "rank": 6,
               "accuracy": 70,
               "improvement": -13
             },
             "648081": {
               "score": 7,
-              "rank": 13,
+              "rank": 12,
               "accuracy": 35,
               "improvement": -17
             },
             "650004": {
               "score": 6,
-              "rank": 17,
+              "rank": 14,
               "accuracy": 30,
               "improvement": -2
             },
             "678535": {
               "score": 1,
-              "rank": 21,
+              "rank": 19,
               "accuracy": 5,
               "improvement": -10
             },
             "757516": {
               "score": 19,
-              "rank": 3,
+              "rank": 2,
               "accuracy": 95,
               "improvement": -8
             },
@@ -8463,19 +6716,19 @@
             },
             "907183": {
               "score": 1,
-              "rank": 22,
+              "rank": 19,
               "accuracy": 5,
               "improvement": -4
             },
             "934245": {
               "score": 18,
-              "rank": 5,
+              "rank": 4,
               "accuracy": 90,
               "improvement": -3
             },
             "979212": {
               "score": 1,
-              "rank": 23,
+              "rank": 19,
               "accuracy": 5,
               "improvement": -20
             }
@@ -8486,7 +6739,7 @@
           "studentPerformance": {
             "121716": {
               "score": 6,
-              "rank": 12,
+              "rank": 14,
               "accuracy": 24,
               "improvement": -5
             },
@@ -8498,37 +6751,37 @@
             },
             "158296": {
               "score": 7,
-              "rank": 11,
+              "rank": 13,
               "accuracy": 28,
               "improvement": -5
             },
             "196303": {
               "score": 18,
-              "rank": 3,
+              "rank": 2,
               "accuracy": 72,
               "improvement": 0
             },
             "303558": {
               "score": 0,
-              "rank": 17,
+              "rank": 16,
               "accuracy": 0,
               "improvement": -1
             },
             "399043": {
               "score": 0,
-              "rank": 18,
+              "rank": 16,
               "accuracy": 0,
               "improvement": -1
             },
             "400651": {
               "score": 12,
-              "rank": 5,
+              "rank": 8,
               "accuracy": 48,
               "improvement": 5
             },
             "417695": {
               "score": 12,
-              "rank": 6,
+              "rank": 9,
               "accuracy": 48,
               "improvement": -2
             },
@@ -8546,85 +6799,85 @@
             },
             "542127": {
               "score": 3,
-              "rank": 14,
+              "rank": 12,
               "accuracy": 20,
               "improvement": -3
             },
             "575752": {
               "score": 0,
-              "rank": 19,
+              "rank": 16,
               "accuracy": 0,
               "improvement": -12
             },
             "604057": {
               "score": 6,
-              "rank": 13,
+              "rank": 11,
               "accuracy": 24,
               "improvement": 0
             },
             "621172": {
               "score": 16,
-              "rank": 4,
+              "rank": 5,
               "accuracy": 64,
               "improvement": 6
             },
             "624690": {
               "score": 9,
-              "rank": 9,
+              "rank": 2,
               "accuracy": 84,
               "improvement": -10
             },
             "643388": {
               "score": 9,
-              "rank": 10,
+              "rank": 2,
               "accuracy": 60,
               "improvement": -5
             },
             "648081": {
               "score": 12,
-              "rank": 7,
+              "rank": 9,
               "accuracy": 48,
               "improvement": 5
             },
             "650004": {
               "score": 0,
-              "rank": 20,
+              "rank": 16,
               "accuracy": 0,
               "improvement": -6
             },
             "678535": {
               "score": 0,
-              "rank": 21,
+              "rank": 16,
               "accuracy": 0,
               "improvement": -1
             },
             "757516": {
               "score": 20,
-              "rank": 2,
+              "rank": 5,
               "accuracy": 80,
               "improvement": 1
             },
             "764305": {
               "score": 0,
-              "rank": 22,
+              "rank": 16,
               "accuracy": 0,
               "improvement": 0
             },
             "907183": {
               "score": 0,
-              "rank": 23,
+              "rank": 16,
               "accuracy": 0,
               "improvement": -1
             },
             "934245": {
               "score": 12,
-              "rank": 8,
+              "rank": 5,
               "accuracy": 48,
               "improvement": -6
             },
             "979212": {
               "score": 0,
-              "rank": 24,
+              "rank": 16,
               "accuracy": 0,
               "improvement": -1
             }
@@ -8665,7 +6918,7 @@
             },
             "399043": {
               "score": 0,
-              "rank": 19,
+              "rank": 18,
               "accuracy": 0,
               "improvement": 0
             },
@@ -8677,7 +6930,7 @@
             },
             "417695": {
               "score": 6,
-              "rank": 4,
+              "rank": 3,
               "accuracy": 60,
               "improvement": -6
             },
@@ -8695,25 +6948,25 @@
             },
             "542127": {
               "score": 0,
-              "rank": 20,
+              "rank": 18,
               "accuracy": 0,
               "improvement": -3
             },
             "575752": {
               "score": 3,
-              "rank": 12,
+              "rank": 11,
               "accuracy": 30,
               "improvement": 3
             },
             "604057": {
               "score": 2,
-              "rank": 15,
+              "rank": 14,
               "accuracy": 20,
               "improvement": -4
             },
             "621172": {
               "score": 4,
-              "rank": 10,
+              "rank": 9,
               "accuracy": 40,
               "improvement": -12
             },
@@ -8725,55 +6978,55 @@
             },
             "643388": {
               "score": 6,
-              "rank": 5,
+              "rank": 3,
               "accuracy": 60,
               "improvement": -3
             },
             "648081": {
               "score": 2,
-              "rank": 16,
+              "rank": 14,
               "accuracy": 20,
               "improvement": -10
             },
             "650004": {
               "score": 0,
-              "rank": 21,
+              "rank": 18,
               "accuracy": 0,
               "improvement": 0
             },
             "678535": {
               "score": 0,
-              "rank": 22,
+              "rank": 18,
               "accuracy": 0,
               "improvement": 0
             },
             "757516": {
               "score": 6,
-              "rank": 6,
+              "rank": 3,
               "accuracy": 60,
               "improvement": -14
             },
             "764305": {
               "score": 3,
-              "rank": 13,
+              "rank": 11,
               "accuracy": 30,
               "improvement": 3
             },
             "907183": {
               "score": 0,
-              "rank": 23,
+              "rank": 18,
               "accuracy": 0,
               "improvement": 0
             },
             "934245": {
               "score": 6,
-              "rank": 7,
+              "rank": 3,
               "accuracy": 60,
               "improvement": -6
             },
             "979212": {
               "score": 0,
-              "rank": 24,
+              "rank": 18,
               "accuracy": 0,
               "improvement": 0
             }
@@ -8814,13 +7067,13 @@
             },
             "399043": {
               "score": 0,
-              "rank": 20,
+              "rank": 19,
               "accuracy": 0,
               "improvement": 0
             },
             "400651": {
               "score": 4,
-              "rank": 13,
+              "rank": 12,
               "accuracy": 40,
               "improvement": -2
             },
@@ -8832,13 +7085,13 @@
             },
             "421527": {
               "score": 4,
-              "rank": 14,
+              "rank": 12,
               "accuracy": 40,
               "improvement": 2
             },
             "459889": {
               "score": 10,
-              "rank": 2,
+              "rank": 1,
               "accuracy": 100,
               "improvement": 0
             },
@@ -8850,25 +7103,25 @@
             },
             "575752": {
               "score": 6,
-              "rank": 7,
+              "rank": 6,
               "accuracy": 60,
               "improvement": 3
             },
             "604057": {
               "score": 4,
-              "rank": 15,
+              "rank": 12,
               "accuracy": 40,
               "improvement": 2
             },
             "621172": {
               "score": 6,
-              "rank": 8,
+              "rank": 6,
               "accuracy": 60,
               "improvement": 2
             },
             "624690": {
               "score": 10,
-              "rank": 3,
+              "rank": 1,
               "accuracy": 100,
               "improvement": 5
             },
@@ -8880,49 +7133,49 @@
             },
             "648081": {
               "score": 6,
-              "rank": 9,
+              "rank": 6,
               "accuracy": 60,
               "improvement": 4
             },
             "650004": {
               "score": 0,
-              "rank": 21,
+              "rank": 19,
               "accuracy": 0,
               "improvement": 0
             },
             "678535": {
               "score": 0,
-              "rank": 22,
+              "rank": 19,
               "accuracy": 0,
               "improvement": 0
             },
             "757516": {
               "score": 9,
-              "rank": 5,
+              "rank": 4,
               "accuracy": 90,
               "improvement": 3
             },
             "764305": {
               "score": 3,
-              "rank": 17,
+              "rank": 16,
               "accuracy": 30,
               "improvement": 0
             },
             "907183": {
               "score": 0,
-              "rank": 23,
+              "rank": 19,
               "accuracy": 0,
               "improvement": 0
             },
             "934245": {
               "score": 6,
-              "rank": 10,
+              "rank": 6,
               "accuracy": 60,
               "improvement": 0
             },
             "979212": {
               "score": 0,
-              "rank": 24,
+              "rank": 19,
               "accuracy": 0,
               "improvement": 0
             }
@@ -8951,7 +7204,7 @@
             },
             "196303": {
               "score": 7,
-              "rank": 3,
+              "rank": 2,
               "accuracy": 70,
               "improvement": -3
             },
@@ -8963,7 +7216,7 @@
             },
             "399043": {
               "score": 0,
-              "rank": 16,
+              "rank": 15,
               "accuracy": 0,
               "improvement": 0
             },
@@ -8981,7 +7234,7 @@
             },
             "421527": {
               "score": 0,
-              "rank": 17,
+              "rank": 15,
               "accuracy": 0,
               "improvement": -4
             },
@@ -8999,19 +7252,19 @@
             },
             "575752": {
               "score": 0,
-              "rank": 18,
+              "rank": 15,
               "accuracy": 0,
               "improvement": -6
             },
             "604057": {
               "score": 3,
-              "rank": 12,
+              "rank": 11,
               "accuracy": 30,
               "improvement": -1
             },
             "621172": {
               "score": 7,
-              "rank": 4,
+              "rank": 2,
               "accuracy": 70,
               "improvement": 1
             },
@@ -9023,55 +7276,55 @@
             },
             "643388": {
               "score": 0,
-              "rank": 19,
+              "rank": 15,
               "accuracy": 0,
               "improvement": -5
             },
             "648081": {
               "score": 4,
-              "rank": 10,
+              "rank": 9,
               "accuracy": 40,
               "improvement": -2
             },
             "650004": {
               "score": 0,
-              "rank": 20,
+              "rank": 15,
               "accuracy": 0,
               "improvement": 0
             },
             "678535": {
               "score": 0,
-              "rank": 21,
+              "rank": 15,
               "accuracy": 0,
               "improvement": 0
             },
             "757516": {
               "score": 7,
-              "rank": 5,
+              "rank": 2,
               "accuracy": 70,
               "improvement": -2
             },
             "764305": {
               "score": 0,
-              "rank": 22,
+              "rank": 15,
               "accuracy": 0,
               "improvement": -3
             },
             "907183": {
               "score": 0,
-              "rank": 23,
+              "rank": 15,
               "accuracy": 0,
               "improvement": 0
             },
             "934245": {
               "score": 6,
-              "rank": 7,
+              "rank": 6,
               "accuracy": 60,
               "improvement": 0
             },
             "979212": {
               "score": 0,
-              "rank": 24,
+              "rank": 15,
               "accuracy": 0,
               "improvement": 0
             }
@@ -9222,7 +7475,7 @@
             },
             "934245": {
               "score": 36,
-              "rank": 6,
+              "rank": 5,
               "accuracy": 72,
               "improvement": 0
             },
@@ -9247,139 +7500,139 @@
           "studentPerformance": {
             "121716": {
               "score": 37,
-              "rank": 1,
+              "rank": 3,
               "accuracy": 74,
               "improvement": 0
             },
             "146014": {
               "score": 17,
-              "rank": 2,
+              "rank": 17,
               "accuracy": 34,
               "improvement": 0
             },
             "158296": {
               "score": 25,
-              "rank": 3,
+              "rank": 12,
               "accuracy": 50,
               "improvement": 0
             },
             "196303": {
               "score": 0,
-              "rank": 4,
+              "rank": 0,
               "accuracy": 0,
               "improvement": 0
             },
             "303558": {
               "score": 27,
-              "rank": 5,
+              "rank": 10,
               "accuracy": 54,
               "improvement": 0
             },
             "399043": {
               "score": 0,
-              "rank": 6,
+              "rank": 0,
               "accuracy": 0,
               "improvement": 0
             },
             "400651": {
               "score": 24,
-              "rank": 7,
+              "rank": 13,
               "accuracy": 48,
               "improvement": 0
             },
             "417695": {
               "score": 38,
-              "rank": 8,
+              "rank": 2,
               "accuracy": 76,
               "improvement": 0
             },
             "421527": {
               "score": 35,
-              "rank": 9,
+              "rank": 8,
               "accuracy": 70,
               "improvement": 0
             },
             "459889": {
               "score": 40,
-              "rank": 10,
+              "rank": 1,
               "accuracy": 80,
               "improvement": 0
             },
             "542127": {
               "score": 12,
-              "rank": 11,
+              "rank": 19,
               "accuracy": 24,
               "improvement": 0
             },
             "575752": {
               "score": 37,
-              "rank": 12,
+              "rank": 3,
               "accuracy": 74,
               "improvement": 0
             },
             "604057": {
               "score": 0,
-              "rank": 13,
+              "rank": 0,
               "accuracy": 0,
               "improvement": 0
             },
             "621172": {
               "score": 16,
-              "rank": 14,
+              "rank": 18,
               "accuracy": 32,
               "improvement": 0
             },
             "624690": {
               "score": 27,
-              "rank": 15,
+              "rank": 10,
               "accuracy": 54,
               "improvement": 0
             },
             "643388": {
               "score": 37,
-              "rank": 16,
+              "rank": 3,
               "accuracy": 74,
               "improvement": 0
             },
             "648081": {
               "score": 24,
-              "rank": 17,
+              "rank": 13,
               "accuracy": 48,
               "improvement": 0
             },
             "650004": {
               "score": 21,
-              "rank": 18,
+              "rank": 16,
               "accuracy": 42,
               "improvement": 0
             },
             "678535": {
               "score": 0,
-              "rank": 19,
+              "rank": 0,
               "accuracy": 0,
               "improvement": 0
             },
             "757516": {
               "score": 34,
-              "rank": 20,
+              "rank": 9,
               "accuracy": 68,
               "improvement": 0
             },
             "907183": {
               "score": 23,
-              "rank": 21,
+              "rank": 15,
               "accuracy": 46,
               "improvement": 0
             },
             "934245": {
               "score": 37,
-              "rank": 22,
+              "rank": 3,
               "accuracy": 74,
               "improvement": 0
             },
             "979212": {
               "score": 36,
-              "rank": 23,
+              "rank": 7,
               "accuracy": 72,
               "improvement": 0
             }
@@ -9390,7 +7643,7 @@
   },
   "metadata": {
     "totalTests": 10,
-    "lastProcessed": "2025-11-15T05:45:20.210Z",
+    "lastProcessed": "2025-11-15T07:15:45.082Z",
     "version": "1.0.0"
   }
 }
