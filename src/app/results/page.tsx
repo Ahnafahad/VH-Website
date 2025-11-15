@@ -252,13 +252,24 @@ const ResultsDashboard = () => {
                   className="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-lg"
                 >
                   <option value="">Select a student to view their complete performance...</option>
-                  {Object.values(students.students)
-                    .sort((a: any, b: any) => a.name.localeCompare(b.name))
-                    .map((student: any) => (
-                      <option key={student.id} value={student.id}>
-                        {student.name} (ID: {student.id})
-                      </option>
-                    ))}
+                  {(() => {
+                    // Filter out duplicate students by keeping only unique IDs
+                    const uniqueStudents = new Map();
+                    Object.entries(students.students).forEach(([key, student]: [string, any]) => {
+                      // Only add if we haven't seen this student ID yet
+                      if (!uniqueStudents.has(student.id)) {
+                        uniqueStudents.set(student.id, { ...student, key });
+                      }
+                    });
+
+                    return Array.from(uniqueStudents.values())
+                      .sort((a: any, b: any) => a.name.localeCompare(b.name))
+                      .map((student: any) => (
+                        <option key={student.key} value={student.id}>
+                          {student.name} (ID: {student.id})
+                        </option>
+                      ));
+                  })()}
                 </select>
                 {selectedStudentName && (
                   <div className="mt-3 text-sm text-blue-700">
@@ -558,7 +569,27 @@ const ResultsDashboard = () => {
                     let result = null;
                     if (isAdmin && selectedStudentId) {
                       // Admin viewing a specific student
-                      result = test.results ? test.results[selectedStudentId] : null;
+                      // FBS mocks use 7-digit IDs, so try both the selected ID and potential 7-digit variants
+                      if (test.results) {
+                        // Try the selected ID first
+                        result = test.results[selectedStudentId];
+
+                        // If not found, try to find by matching student in students.students
+                        if (!result && students) {
+                          // Get all IDs for this student (both 6-digit and 7-digit)
+                          const studentIds = Object.keys(students.students).filter(
+                            key => students.students[key].id === selectedStudentId || key === selectedStudentId
+                          );
+
+                          // Try each ID until we find a result
+                          for (const id of studentIds) {
+                            if (test.results[id]) {
+                              result = test.results[id];
+                              break;
+                            }
+                          }
+                        }
+                      }
                     } else if (session?.user?.email && userAccess.roleNumbers) {
                       // Student viewing their own results - check all their roleNumbers
                       for (const roleNumber of userAccess.roleNumbers) {
