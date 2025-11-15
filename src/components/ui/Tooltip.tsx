@@ -63,7 +63,7 @@ const Tooltip: React.FC<TooltipProps> = ({
     }
   }, [isVisible]);
 
-  const clonedChild = React.cloneElement(children, {
+  const clonedChild = React.cloneElement(children as React.ReactElement<any>, {
     ref: triggerRef,
     onMouseEnter: () => setIsVisible(true),
     onMouseLeave: () => setIsVisible(false),
