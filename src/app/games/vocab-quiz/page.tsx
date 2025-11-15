@@ -116,6 +116,21 @@ const VocabularyQuizApp = () => {
   const [showLeaderboard, setShowLeaderboard] = useState(false);
   const [isLoadingLeaderboard, setIsLoadingLeaderboard] = useState(false);
 
+  // Refs for scroll animations
+  const headerRef = useRef(null);
+  const leaderboardRef = useRef(null);
+  const headerInView = useInView(headerRef, { once: true });
+  const leaderboardInView = useInView(leaderboardRef, { once: true, margin: "-100px" });
+  const setupHeaderRef = useRef(null);
+  const sectionsRef = useRef(null);
+  const configRef = useRef(null);
+  const setupHeaderInView = useInView(setupHeaderRef, { once: true });
+  const sectionsInView = useInView(sectionsRef, { once: true, margin: "-100px" });
+  const configInView = useInView(configRef, { once: true, margin: "-100px" });
+  const resultsHeaderRef = useRef(null);
+  const resultsStatsRef = useRef(null);
+  const resultsHeaderInView = useInView(resultsHeaderRef, { once: true });
+  const resultsStatsInView = useInView(resultsStatsRef, { once: true, margin: "-100px" });
 
   // Helper function to clean response
   const cleanResponse = (response: string) => {
@@ -475,11 +490,6 @@ Respond with JSON:
 
   // Leaderboard Screen
   if (showLeaderboard) {
-    const headerRef = useRef(null);
-    const leaderboardRef = useRef(null);
-    const headerInView = useInView(headerRef, { once: true });
-    const leaderboardInView = useInView(leaderboardRef, { once: true, margin: "-100px" });
-
     return (
       <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
         {/* Animated Background Elements */}
@@ -637,13 +647,6 @@ Respond with JSON:
 
   // Section Selection Screen
   if (currentScreen === 'setup') {
-    const setupHeaderRef = useRef(null);
-    const sectionsRef = useRef(null);
-    const configRef = useRef(null);
-    const setupHeaderInView = useInView(setupHeaderRef, { once: true });
-    const sectionsInView = useInView(sectionsRef, { once: true, margin: "-100px" });
-    const configInView = useInView(configRef, { once: true, margin: "-100px" });
-
     return (
       <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
         {/* Animated Background Elements */}
@@ -802,11 +805,6 @@ Respond with JSON:
 
   // Results Screen
   if (currentScreen === 'results' && quizResults) {
-    const resultsHeaderRef = useRef(null);
-    const resultsStatsRef = useRef(null);
-    const resultsHeaderInView = useInView(resultsHeaderRef, { once: true });
-    const resultsStatsInView = useInView(resultsStatsRef, { once: true, margin: "-100px" });
-
     return (
       <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
         {/* Animated Celebration Background */}

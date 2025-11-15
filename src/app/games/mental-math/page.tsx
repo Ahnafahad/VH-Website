@@ -105,6 +105,14 @@ const MentalMathApp = () => {
   const [leaderboard, setLeaderboard] = useState<{ individual: LeaderboardEntry[], accumulated: AccumulatedScore[] }>({ individual: [], accumulated: [] });
   const [isLoading, setIsLoading] = useState(false);
 
+  // Refs for scroll animations
+  const leaderboardHeaderRef = useRef(null);
+  const leaderboardHeaderInView = useInView(leaderboardHeaderRef, { once: true });
+  const setupHeaderRef = useRef(null);
+  const configRef = useRef(null);
+  const setupHeaderInView = useInView(setupHeaderRef, { once: true });
+  const configInView = useInView(configRef, { once: true, margin: "-100px" });
+
   // Anti-cheat system state
   const [questionStartTime, setQuestionStartTime] = useState<number | null>(null);
   const [questionTimeRemaining, setQuestionTimeRemaining] = useState(0);
@@ -549,9 +557,6 @@ const MentalMathApp = () => {
   const accuracy = questionsAnswered > 0 ? Math.round((questionsCorrect / questionsAnswered) * 100) : 0;
 
   if (gameState === 'leaderboard') {
-    const leaderboardHeaderRef = useRef(null);
-    const leaderboardHeaderInView = useInView(leaderboardHeaderRef, { once: true });
-
     return (
       <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
         {/* Animated Background Elements */}
@@ -737,11 +742,6 @@ const MentalMathApp = () => {
   }
 
   if (gameState === 'setup') {
-    const setupHeaderRef = useRef(null);
-    const configRef = useRef(null);
-    const setupHeaderInView = useInView(setupHeaderRef, { once: true });
-    const configInView = useInView(configRef, { once: true, margin: "-100px" });
-
     return (
       <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
         {/* Animated Background Elements */}

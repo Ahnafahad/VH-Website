@@ -88,10 +88,9 @@ function AuthErrorContent() {
           <div className="text-center mb-8">
             <motion.div
               className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-error-500 to-error-700 rounded-3xl mb-6 shadow-2xl"
-              variants={scaleIn}
-              initial="hidden"
-              animate="visible"
+              initial={{ opacity: 0, scale: 0.95 }}
               animate={{
+                opacity: 1,
                 scale: [1, 1.05, 1],
               }}
               transition={{
