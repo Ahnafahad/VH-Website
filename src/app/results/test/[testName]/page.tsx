@@ -424,26 +424,37 @@ const TestDetailPage = () => {
   };
 
   // Helper function to get user's performance indicator by question number (for FBS analytics)
-  const getUserQuestionStatusByNumber = (questionNumber: number): React.ReactNode => {
+  const getUserQuestionStatusByNumber = (questionNumber: number, sectionNumber?: string): React.ReactNode => {
     if (!userResult) return null;
     // For non-demo pages, require authentication
     if (!isPublicDemo && !session?.user?.email) return null;
 
     const result = userResult as any;
 
-    // FBS mocks use q1, q2, etc. format with object responses
-    const qKey = `q${questionNumber}`;
-    const userResponse = result.responses?.[qKey];
+    // Try FBS mock format first: q1, q2, etc. with object responses
+    const fbsKey = `q${questionNumber}`;
+    const fbsResponse = result.responses?.[fbsKey];
 
-    if (!userResponse) return null;
-
-    // Handle object format: {answer: "A", status: "correct"}
-    if (typeof userResponse === 'object' && userResponse.status) {
-      if (userResponse.status === 'skipped') {
+    if (fbsResponse && typeof fbsResponse === 'object' && fbsResponse.status) {
+      if (fbsResponse.status === 'skipped') {
         return <Minus size={14} className="text-gray-400" />;
-      } else if (userResponse.status === 'correct') {
+      } else if (fbsResponse.status === 'correct') {
         return <CheckCircle size={14} className="text-green-500" />;
-      } else if (userResponse.status === 'wrong') {
+      } else if (fbsResponse.status === 'wrong') {
+        return <XCircle size={14} className="text-red-500" />;
+      }
+    }
+
+    // For Full tests and IBA mocks: use s{section}q{number} format with string responses
+    if (sectionNumber) {
+      const fullTestKey = `s${sectionNumber}q${questionNumber}`;
+      const fullTestResponse = result.responses?.[fullTestKey];
+
+      if (!fullTestResponse || fullTestResponse === 'NAN') {
+        return <Minus size={14} className="text-gray-400" />;
+      } else if (fullTestResponse.includes('(C)')) {
+        return <CheckCircle size={14} className="text-green-500" />;
+      } else if (fullTestResponse.includes('(W)')) {
         return <XCircle size={14} className="text-red-500" />;
       }
     }
@@ -1643,7 +1654,7 @@ const TestDetailPage = () => {
                               <div key={question.questionNumber || index} className="flex justify-between items-center text-sm">
                                 <div className="flex items-center gap-2">
                                   <span className="text-green-700">Q{question.questionNumber}</span>
-                                  {getUserQuestionStatusByNumber(question.questionNumber)}
+                                  {getUserQuestionStatusByNumber(question.questionNumber, sectionNum)}
                                 </div>
                                 <span className="text-green-600 font-medium">{question.count} correct</span>
                               </div>
@@ -1665,7 +1676,7 @@ const TestDetailPage = () => {
                               <div key={question.questionNumber || index} className="flex justify-between items-center text-sm">
                                 <div className="flex items-center gap-2">
                                   <span className="text-red-700">Q{question.questionNumber}</span>
-                                  {getUserQuestionStatusByNumber(question.questionNumber)}
+                                  {getUserQuestionStatusByNumber(question.questionNumber, sectionNum)}
                                 </div>
                                 <span className="text-red-600 font-medium">{question.count} wrong</span>
                               </div>
@@ -1687,7 +1698,7 @@ const TestDetailPage = () => {
                               <div key={question.questionNumber || index} className="flex justify-between items-center text-sm">
                                 <div className="flex items-center gap-2">
                                   <span className="text-gray-700">Q{question.questionNumber}</span>
-                                  {getUserQuestionStatusByNumber(question.questionNumber)}
+                                  {getUserQuestionStatusByNumber(question.questionNumber, sectionNum)}
                                 </div>
                                 <span className="text-gray-600 font-medium">{question.count} skipped</span>
                               </div>
