@@ -115,7 +115,7 @@ class ExcelProcessor {
       const workbook = XLSX.readFile(filePath);
       console.log(`📋 Sheets found: ${workbook.SheetNames.join(', ')}`);
 
-      if (filename === 'Simple Test Data.xlsx') {
+      if (filename.includes('Simple Test Data.xlsx')) {
         return this.processSimpleTestFile(workbook, filename);
       } else {
         return this.processFullTestFile(workbook, filename);
