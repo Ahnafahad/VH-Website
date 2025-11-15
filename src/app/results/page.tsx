@@ -8,6 +8,40 @@ import ProtectedRoute from '@/components/ProtectedRoute';
 import { SimpleTestsData, FullTestsData, MockTestsData, StudentsData, SystemMetadata } from '@/types/results';
 import SeriesProgressChart from './components/SeriesProgressChart';
 import PerformanceBarChart from './components/PerformanceBarChart';
+import Card from '@/components/ui/Card';
+import Button from '@/components/ui/Button';
+import Badge from '@/components/ui/Badge';
+import { motion, useInView } from 'framer-motion';
+import { useRef } from 'react';
+
+// Animation variants
+const fadeInUp = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6 }
+  }
+};
+
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15
+    }
+  }
+};
+
+const scaleIn = {
+  hidden: { opacity: 0, scale: 0.95 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: { duration: 0.5 }
+  }
+};
 
 // Utility function to clean test names by removing folder prefixes
 const cleanTestName = (testName: string): string => {
@@ -40,6 +74,15 @@ const ResultsDashboard = () => {
   const [userAccess, setUserAccess] = useState<{hasIBA: boolean, hasFBS: boolean, roleNumbers?: string[]}>({hasIBA: false, hasFBS: false, roleNumbers: []});
   const [selectedStudentId, setSelectedStudentId] = useState<string | null>(null);
   const [selectedStudentName, setSelectedStudentName] = useState<string>('');
+
+  // Animation refs
+  const headerRef = useRef(null);
+  const statsRef = useRef(null);
+  const chartsRef = useRef(null);
+
+  const headerInView = useInView(headerRef, { once: true });
+  const statsInView = useInView(statsRef, { once: true, margin: "-100px" });
+  const chartsInView = useInView(chartsRef, { once: true, margin: "-100px" });
 
   useEffect(() => {
     const fetchData = async () => {
@@ -179,13 +222,18 @@ const ResultsDashboard = () => {
         <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-vh-beige/5 font-['Inter'] antialiased">
           <div className="max-w-6xl mx-auto px-6 py-12">
             <div className="flex items-center justify-center min-h-[400px]">
-              <div className="text-center">
+              <motion.div
+                className="text-center"
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5 }}
+              >
                 <div className="relative">
                   <div className="w-16 h-16 border-4 border-vh-red/20 border-t-vh-red rounded-full animate-spin mx-auto mb-6"></div>
                 </div>
                 <h2 className="text-2xl font-bold text-gray-900 mb-2">Loading Dashboard</h2>
                 <p className="text-gray-600">Preparing your analytics...</p>
-              </div>
+              </motion.div>
             </div>
           </div>
         </div>
@@ -199,19 +247,28 @@ const ResultsDashboard = () => {
         <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-vh-beige/5 font-['Inter'] antialiased">
           <div className="max-w-6xl mx-auto px-6 py-12">
             <div className="flex items-center justify-center min-h-[400px]">
-              <div className="text-center">
-                <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <div className="text-red-500 text-2xl">⚠️</div>
-                </div>
-                <h2 className="text-2xl font-bold text-gray-900 mb-3">Unable to Load Results</h2>
-                <p className="text-gray-600 mb-6">{error}</p>
-                <button
-                  onClick={() => window.location.reload()}
-                  className="bg-gradient-to-r from-vh-red to-vh-dark-red text-white px-6 py-3 rounded-xl hover:shadow-lg transition-all duration-300 font-semibold"
-                >
-                  Try Again
-                </button>
-              </div>
+              <motion.div
+                className="text-center max-w-md"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+              >
+                <Card variant="filled" padding="xl" className="bg-gradient-to-br from-error-50 to-white border-error-200">
+                  <div className="w-16 h-16 bg-error-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <div className="text-error-500 text-2xl">⚠️</div>
+                  </div>
+                  <h2 className="text-2xl font-bold text-gray-900 mb-3">Unable to Load Results</h2>
+                  <p className="text-gray-600 mb-6">{error}</p>
+                  <Button
+                    variant="solid"
+                    colorScheme="primary"
+                    size="lg"
+                    onClick={() => window.location.reload()}
+                  >
+                    Try Again
+                  </Button>
+                </Card>
+              </motion.div>
             </div>
           </div>
         </div>
@@ -225,11 +282,22 @@ const ResultsDashboard = () => {
         <div className="max-w-6xl mx-auto px-6 py-12">
 
           {/* Header */}
-          <div className="mb-12">
+          <motion.div
+            ref={headerRef}
+            className="mb-12"
+            variants={fadeInUp}
+            initial="hidden"
+            animate={headerInView ? "visible" : "hidden"}
+          >
             <div className="text-center max-w-3xl mx-auto">
-              <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-vh-red to-vh-dark-red mb-6 shadow-lg">
+              <motion.div
+                className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-vh-red to-vh-dark-red mb-6 shadow-lg"
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+              >
                 <BarChart3 className="text-white" size={28} />
-              </div>
+              </motion.div>
               <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 tracking-tight">
                 Test Results
                 <span className="bg-gradient-to-r from-vh-red to-vh-dark-red bg-clip-text text-transparent"> Dashboard</span>
@@ -241,112 +309,137 @@ const ResultsDashboard = () => {
 
             {/* Admin Student Selector */}
             {isAdmin && students && (
-              <div className="mt-8 p-6 bg-blue-50 border border-blue-200 rounded-xl max-w-2xl mx-auto">
-                <div className="flex items-center gap-3 mb-4">
-                  <Users size={24} className="text-blue-600" />
-                  <h3 className="text-xl font-semibold text-blue-800">Admin: Select Student to View</h3>
-                </div>
-                <select
-                  value={selectedStudentId || ''}
-                  onChange={(e) => handleStudentSelection(e.target.value)}
-                  className="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-lg"
-                >
-                  <option value="">Select a student to view their complete performance...</option>
-                  {Object.values(students.students)
-                    .sort((a: any, b: any) => a.name.localeCompare(b.name))
-                    .map((student: any) => (
-                      <option key={student.id} value={student.id}>
-                        {student.name} (ID: {student.id})
-                      </option>
-                    ))}
-                </select>
-                {selectedStudentName && (
-                  <div className="mt-3 text-sm text-blue-700">
-                    <strong>Viewing:</strong> {selectedStudentName}'s complete test performance across all tests
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4 }}
+              >
+                <Card variant="filled" padding="lg" className="mt-8 max-w-2xl mx-auto bg-gradient-to-br from-blue-50 to-white border-blue-200">
+                  <div className="flex items-center gap-3 mb-4">
+                    <Users size={24} className="text-blue-600" />
+                    <h3 className="text-xl font-semibold text-blue-800">Admin: Select Student to View</h3>
                   </div>
-                )}
-              </div>
+                  <select
+                    value={selectedStudentId || ''}
+                    onChange={(e) => handleStudentSelection(e.target.value)}
+                    className="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-lg"
+                  >
+                    <option value="">Select a student to view their complete performance...</option>
+                    {Object.values(students.students)
+                      .sort((a: any, b: any) => a.name.localeCompare(b.name))
+                      .map((student: any) => (
+                        <option key={student.id} value={student.id}>
+                          {student.name} (ID: {student.id})
+                        </option>
+                      ))}
+                  </select>
+                  {selectedStudentName && (
+                    <div className="mt-3 text-sm text-blue-700">
+                      <strong>Viewing:</strong> {selectedStudentName}'s complete test performance across all tests
+                    </div>
+                  )}
+                </Card>
+              </motion.div>
             )}
-          </div>
+          </motion.div>
 
           {/* Stats Overview */}
           {stats && (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            <motion.div
+              ref={statsRef}
+              className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8"
+              variants={staggerContainer}
+              initial="hidden"
+              animate={statsInView ? "visible" : "hidden"}
+            >
 
               {/* Total Tests */}
-              <div className="group relative bg-white rounded-2xl shadow-sm border border-gray-100 hover:shadow-xl hover:border-vh-red/20 transition-all duration-500 p-8">
-                <div className="flex items-start justify-between">
-                  <div className="space-y-2">
-                    <div className="flex items-center gap-2">
-                      <div className="w-2 h-2 bg-vh-red rounded-full"></div>
-                      <p className="text-sm font-semibold text-gray-500 uppercase tracking-wider">Total Tests</p>
+              <motion.div variants={scaleIn}>
+                <Card variant="elevated" padding="lg" className="group hover:shadow-xl hover:border-vh-red/20 transition-all duration-500 h-full">
+                  <div className="flex items-start justify-between">
+                    <div className="space-y-2">
+                      <div className="flex items-center gap-2">
+                        <div className="w-2 h-2 bg-vh-red rounded-full"></div>
+                        <p className="text-sm font-semibold text-gray-500 uppercase tracking-wider">Total Tests</p>
+                      </div>
+                      <p className="text-3xl font-bold text-gray-900">{stats.totalTests}</p>
+                      <p className="text-sm text-gray-600">Assessments completed</p>
                     </div>
-                    <p className="text-3xl font-bold text-gray-900">{stats.totalTests}</p>
-                    <p className="text-sm text-gray-600">Assessments completed</p>
+                    <div className="p-3 rounded-xl bg-gradient-to-br from-vh-red/10 to-vh-dark-red/10 group-hover:from-vh-red/20 group-hover:to-vh-dark-red/20 transition-all duration-300">
+                      <BookOpen className="text-vh-red" size={24} />
+                    </div>
                   </div>
-                  <div className="p-3 rounded-xl bg-gradient-to-br from-vh-red/10 to-vh-dark-red/10 group-hover:from-vh-red/20 group-hover:to-vh-dark-red/20 transition-all duration-300">
-                    <BookOpen className="text-vh-red" size={24} />
-                  </div>
-                </div>
-              </div>
+                </Card>
+              </motion.div>
 
 
 
               {/* Quick Actions */}
-              <div className="relative overflow-hidden bg-gradient-to-br from-vh-red via-vh-red to-vh-dark-red rounded-2xl shadow-lg p-8 text-white">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -translate-y-16 translate-x-16"></div>
-                <div className="relative z-10">
-                  <div className="flex items-center gap-2 mb-6">
-                    <div className="w-2 h-2 bg-white rounded-full"></div>
-                    <h3 className="font-bold text-lg">Quick Actions</h3>
+              <motion.div variants={scaleIn}>
+                <Card variant="filled" padding="lg" className="relative overflow-hidden bg-gradient-to-br from-vh-red via-vh-red to-vh-dark-red text-white h-full">
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -translate-y-16 translate-x-16"></div>
+                  <div className="relative z-10">
+                    <div className="flex items-center gap-2 mb-6">
+                      <div className="w-2 h-2 bg-white rounded-full"></div>
+                      <h3 className="font-bold text-lg">Quick Actions</h3>
+                    </div>
+                    <div className="space-y-3">
+                      <button
+                        onClick={() => router.push('/results/admin')}
+                        className="w-full text-left py-4 px-5 rounded-xl bg-white/15 backdrop-blur-sm hover:bg-white/25 transition-all duration-300 border border-white/20 hover:border-white/30"
+                      >
+                        <div className="font-semibold">Class Analytics</div>
+                        <div className="text-sm text-white/80">View comprehensive insights</div>
+                      </button>
+                      <button
+                        onClick={() => window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' })}
+                        className="w-full text-left py-4 px-5 rounded-xl bg-white/15 backdrop-blur-sm hover:bg-white/25 transition-all duration-300 border border-white/20 hover:border-white/30"
+                      >
+                        <div className="font-semibold">Browse Tests</div>
+                        <div className="text-sm text-white/80">Explore all assessments</div>
+                      </button>
+                    </div>
                   </div>
-                  <div className="space-y-3">
-                    <button
-                      onClick={() => router.push('/results/admin')}
-                      className="w-full text-left py-4 px-5 rounded-xl bg-white/15 backdrop-blur-sm hover:bg-white/25 transition-all duration-300 border border-white/20 hover:border-white/30"
-                    >
-                      <div className="font-semibold">Class Analytics</div>
-                      <div className="text-sm text-white/80">View comprehensive insights</div>
-                    </button>
-                    <button
-                      onClick={() => window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' })}
-                      className="w-full text-left py-4 px-5 rounded-xl bg-white/15 backdrop-blur-sm hover:bg-white/25 transition-all duration-300 border border-white/20 hover:border-white/30"
-                    >
-                      <div className="font-semibold">Browse Tests</div>
-                      <div className="text-sm text-white/80">Explore all assessments</div>
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
+                </Card>
+              </motion.div>
+            </motion.div>
           )}
 
           {/* Performance Analytics Charts */}
           {stats && simpleTests && (
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 mb-12 md:mb-16">
+            <motion.div
+              ref={chartsRef}
+              className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 mb-12 md:mb-16"
+              variants={staggerContainer}
+              initial="hidden"
+              animate={chartsInView ? "visible" : "hidden"}
+            >
               {/* Series Progress Chart */}
-              <div className="bg-white rounded-2xl shadow-sm border border-gray-100 hover:shadow-lg transition-all duration-500 p-4 md:p-6 lg:p-8">
-                <div className="flex items-center gap-2 md:gap-3 mb-4 md:mb-6">
-                  <div className="w-3 h-3 bg-gradient-to-r from-vh-red to-vh-dark-red rounded-full"></div>
-                  <h3 className="text-lg md:text-xl font-bold text-gray-900">
-                    {isAdmin && selectedStudentName ? `${selectedStudentName}'s Progress Over Time` : 'Progress Over Time'}
-                  </h3>
-                </div>
-                <div className="h-64 md:h-80 mb-4">
-                  <SeriesProgressChart
-                    simpleTests={simpleTests}
-                    fullTests={fullTests}
-                    mockTests={mockTests}
-                    students={students}
-                    userEmail={getChartUserEmail() || ''}
-                  />
-                </div>
-              </div>
+              <motion.div variants={scaleIn}>
+                <Card variant="elevated" padding="lg" className="hover:shadow-lg transition-all duration-500 h-full">
+                  <div className="flex items-center gap-2 md:gap-3 mb-4 md:mb-6">
+                    <div className="w-3 h-3 bg-gradient-to-r from-vh-red to-vh-dark-red rounded-full"></div>
+                    <h3 className="text-lg md:text-xl font-bold text-gray-900">
+                      {isAdmin && selectedStudentName ? `${selectedStudentName}'s Progress Over Time` : 'Progress Over Time'}
+                    </h3>
+                  </div>
+                  <div className="h-64 md:h-80 mb-4">
+                    <SeriesProgressChart
+                      simpleTests={simpleTests}
+                      fullTests={fullTests}
+                      mockTests={mockTests}
+                      students={students}
+                      userEmail={getChartUserEmail() || ''}
+                    />
+                  </div>
+                </Card>
+              </motion.div>
 
               {/* Performance Bar Chart */}
-              <div className="bg-white rounded-2xl shadow-sm border border-gray-100 hover:shadow-lg transition-all duration-500 p-4 md:p-6 lg:p-8">
-                <div className="flex items-center gap-2 md:gap-3 mb-4 md:mb-6">
-                  <div className="w-3 h-3 bg-gradient-to-r from-vh-red to-vh-dark-red rounded-full"></div>
+              <motion.div variants={scaleIn}>
+                <Card variant="elevated" padding="lg" className="hover:shadow-lg transition-all duration-500 h-full">
+                  <div className="flex items-center gap-2 md:gap-3 mb-4 md:mb-6">
+                    <div className="w-3 h-3 bg-gradient-to-r from-vh-red to-vh-dark-red rounded-full"></div>
                   <h3 className="text-lg md:text-xl font-bold text-gray-900">
                     {isAdmin && selectedStudentName ? `${selectedStudentName}'s Performance Breakdown` : 'Performance Breakdown'}
                   </h3>
@@ -360,9 +453,10 @@ const ResultsDashboard = () => {
                     userEmail={getChartUserEmail() || ''}
                   />
                 </div>
-              </div>
+                </Card>
+              </motion.div>
 
-            </div>
+            </motion.div>
           )}
 
           {/* Test Categories */}
