@@ -317,16 +317,23 @@ const TestDetailPage = () => {
       // Analyze performance on questions most students got RIGHT (easiest)
       if (sectionData.mostCorrect?.length > 0) {
         sectionData.mostCorrect.forEach((question: any) => {
-          const userResponse = result.responses[question.questionId];
+          // FBS mocks use questionNumber and q1, q2 format for responses
+          const questionKey = isFBSMock ? `q${question.questionNumber}` : question.questionId;
+          const userResponse = result.responses[questionKey];
           personalAnalysis[sectionNum].topRightQuestions.push({
-            questionId: question.questionId,
+            questionId: question.questionNumber || question.questionId,
             userResponse,
             classCorrect: question.count
           });
 
-          if (userResponse === 'NAN') {
+          // Handle both object format {status: "skipped"} and string format "NAN"
+          if (!userResponse || userResponse === 'NAN' ||
+              (typeof userResponse === 'object' && userResponse.status === 'skipped')) {
             personalAnalysis[sectionNum].topRightSkipped++;
-          } else if (userResponse?.includes('(C)')) {
+          } else if (
+            (typeof userResponse === 'object' && userResponse.status === 'correct') ||
+            (typeof userResponse === 'string' && userResponse.includes('(C)'))
+          ) {
             personalAnalysis[sectionNum].topRightCorrect++;
           } else {
             personalAnalysis[sectionNum].topRightWrong++;
@@ -337,16 +344,23 @@ const TestDetailPage = () => {
       // Analyze performance on questions most students got WRONG (hardest)
       if (sectionData.mostWrong?.length > 0) {
         sectionData.mostWrong.forEach((question: any) => {
-          const userResponse = result.responses[question.questionId];
+          // FBS mocks use questionNumber and q1, q2 format for responses
+          const questionKey = isFBSMock ? `q${question.questionNumber}` : question.questionId;
+          const userResponse = result.responses[questionKey];
           personalAnalysis[sectionNum].topWrongQuestions.push({
-            questionId: question.questionId,
+            questionId: question.questionNumber || question.questionId,
             userResponse,
             classWrong: question.count
           });
 
-          if (userResponse === 'NAN') {
+          // Handle both object format {status: "skipped"} and string format "NAN"
+          if (!userResponse || userResponse === 'NAN' ||
+              (typeof userResponse === 'object' && userResponse.status === 'skipped')) {
             personalAnalysis[sectionNum].topWrongSkipped++;
-          } else if (userResponse?.includes('(C)')) {
+          } else if (
+            (typeof userResponse === 'object' && userResponse.status === 'correct') ||
+            (typeof userResponse === 'string' && userResponse.includes('(C)'))
+          ) {
             personalAnalysis[sectionNum].topWrongCorrect++;
           } else {
             personalAnalysis[sectionNum].topWrongWrong++;
@@ -357,16 +371,23 @@ const TestDetailPage = () => {
       // Analyze performance on questions most students SKIPPED
       if (sectionData.mostSkipped?.length > 0) {
         sectionData.mostSkipped.forEach((question: any) => {
-          const userResponse = result.responses[question.questionId];
+          // FBS mocks use questionNumber and q1, q2 format for responses
+          const questionKey = isFBSMock ? `q${question.questionNumber}` : question.questionId;
+          const userResponse = result.responses[questionKey];
           personalAnalysis[sectionNum].topSkippedQuestions.push({
-            questionId: question.questionId,
+            questionId: question.questionNumber || question.questionId,
             userResponse,
             classSkipped: question.count
           });
 
-          if (userResponse === 'NAN') {
+          // Handle both object format {status: "skipped"} and string format "NAN"
+          if (!userResponse || userResponse === 'NAN' ||
+              (typeof userResponse === 'object' && userResponse.status === 'skipped')) {
             personalAnalysis[sectionNum].topSkippedActuallySkipped++;
-          } else if (userResponse?.includes('(C)')) {
+          } else if (
+            (typeof userResponse === 'object' && userResponse.status === 'correct') ||
+            (typeof userResponse === 'string' && userResponse.includes('(C)'))
+          ) {
             personalAnalysis[sectionNum].topSkippedCorrect++;
           } else {
             personalAnalysis[sectionNum].topSkippedWrong++;
