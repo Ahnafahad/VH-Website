@@ -94,7 +94,7 @@ const TestDetailPage = () => {
         if (!test) {
           test = fbsMockResponse.tests[testName];
           isFBSMockType = true;
-          isFullTestType = false;
+          isFullTestType = true; // FBS mocks have sections and should be treated as full tests
         }
 
         if (!test) {
