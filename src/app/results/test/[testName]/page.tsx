@@ -328,10 +328,10 @@ const TestDetailPage = () => {
 
           // Handle both object format {status: "skipped"} and string format "NAN"
           if (!userResponse || userResponse === 'NAN' ||
-              (typeof userResponse === 'object' && userResponse.status === 'skipped')) {
+              (typeof userResponse === 'object' && userResponse !== null && 'status' in userResponse && userResponse.status === 'skipped')) {
             personalAnalysis[sectionNum].topRightSkipped++;
           } else if (
-            (typeof userResponse === 'object' && userResponse.status === 'correct') ||
+            (typeof userResponse === 'object' && userResponse !== null && 'status' in userResponse && userResponse.status === 'correct') ||
             (typeof userResponse === 'string' && userResponse.includes('(C)'))
           ) {
             personalAnalysis[sectionNum].topRightCorrect++;
@@ -355,10 +355,10 @@ const TestDetailPage = () => {
 
           // Handle both object format {status: "skipped"} and string format "NAN"
           if (!userResponse || userResponse === 'NAN' ||
-              (typeof userResponse === 'object' && userResponse.status === 'skipped')) {
+              (typeof userResponse === 'object' && userResponse !== null && 'status' in userResponse && userResponse.status === 'skipped')) {
             personalAnalysis[sectionNum].topWrongSkipped++;
           } else if (
-            (typeof userResponse === 'object' && userResponse.status === 'correct') ||
+            (typeof userResponse === 'object' && userResponse !== null && 'status' in userResponse && userResponse.status === 'correct') ||
             (typeof userResponse === 'string' && userResponse.includes('(C)'))
           ) {
             personalAnalysis[sectionNum].topWrongCorrect++;
@@ -382,10 +382,10 @@ const TestDetailPage = () => {
 
           // Handle both object format {status: "skipped"} and string format "NAN"
           if (!userResponse || userResponse === 'NAN' ||
-              (typeof userResponse === 'object' && userResponse.status === 'skipped')) {
+              (typeof userResponse === 'object' && userResponse !== null && 'status' in userResponse && userResponse.status === 'skipped')) {
             personalAnalysis[sectionNum].topSkippedActuallySkipped++;
           } else if (
-            (typeof userResponse === 'object' && userResponse.status === 'correct') ||
+            (typeof userResponse === 'object' && userResponse !== null && 'status' in userResponse && userResponse.status === 'correct') ||
             (typeof userResponse === 'string' && userResponse.includes('(C)'))
           ) {
             personalAnalysis[sectionNum].topSkippedCorrect++;
