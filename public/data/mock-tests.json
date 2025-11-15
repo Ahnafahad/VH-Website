@@ -3180,7 +3180,7 @@
         }
       },
       "metadata": {
-        "processedAt": "2025-11-15T07:15:44.963Z",
+        "processedAt": "2025-11-15T07:33:00.593Z",
         "sourceFile": "IBA Mock\\Mock 1.xlsx",
         "sheets": [
           "Sheet1",
@@ -3238,7 +3238,7 @@
           "mcqAccuracy": 51.72,
           "mcqPercentage": 16.43,
           "totalPercentage": 32.5,
-          "rank": 8,
+          "rank": 7,
           "essays": {
             "1": 14.5
           },
@@ -3349,7 +3349,7 @@
             "1",
             "3"
           ],
-          "essayThreshold": 4,
+          "essayThreshold": 12,
           "essayPassed": true
         },
         "146014": {
@@ -3430,7 +3430,7 @@
             "3",
             "essay"
           ],
-          "essayThreshold": 4,
+          "essayThreshold": 12,
           "essayPassed": false
         },
         "158296": {
@@ -3511,7 +3511,7 @@
             "3",
             "essay"
           ],
-          "essayThreshold": 4,
+          "essayThreshold": 12,
           "essayPassed": false
         },
         "196303": {
@@ -3592,7 +3592,7 @@
             "3",
             "essay"
           ],
-          "essayThreshold": 4,
+          "essayThreshold": 12,
           "essayPassed": false
         },
         "303558": {
@@ -3745,10 +3745,11 @@
           "failedSections": [
             "1",
             "2",
-            "3"
+            "3",
+            "essay"
           ],
-          "essayThreshold": 4,
-          "essayPassed": true
+          "essayThreshold": 12,
+          "essayPassed": false
         },
         "399043": {
           "studentId": "399043",
@@ -3828,7 +3829,7 @@
             "3",
             "essay"
           ],
-          "essayThreshold": 4,
+          "essayThreshold": 12,
           "essayPassed": false
         },
         "400651": {
@@ -3871,7 +3872,7 @@
           "mcqAccuracy": 57.14,
           "mcqPercentage": 13.93,
           "totalPercentage": 31.57,
-          "rank": 7,
+          "rank": 6,
           "essays": {
             "1": 15.5
           },
@@ -3981,7 +3982,7 @@
           "failedSections": [
             "1"
           ],
-          "essayThreshold": 4,
+          "essayThreshold": 12,
           "essayPassed": true
         },
         "417695": {
@@ -4133,10 +4134,11 @@
           "passedAll": false,
           "failedSections": [
             "2",
-            "3"
+            "3",
+            "essay"
           ],
-          "essayThreshold": 4,
-          "essayPassed": true
+          "essayThreshold": 12,
+          "essayPassed": false
         },
         "421527": {
           "studentId": "421527",
@@ -4290,7 +4292,7 @@
             "2",
             "3"
           ],
-          "essayThreshold": 4,
+          "essayThreshold": 12,
           "essayPassed": true
         },
         "459889": {
@@ -4441,7 +4443,7 @@
           "rankStatus": "passed",
           "passedAll": true,
           "failedSections": [],
-          "essayThreshold": 4,
+          "essayThreshold": 12,
           "essayPassed": true
         },
         "542127": {
@@ -4522,7 +4524,7 @@
             "3",
             "essay"
           ],
-          "essayThreshold": 4,
+          "essayThreshold": 12,
           "essayPassed": false
         },
         "575752": {
@@ -4565,7 +4567,7 @@
           "mcqAccuracy": 54.84,
           "mcqPercentage": 21.07,
           "totalPercentage": 30.94,
-          "rank": 4,
+          "rank": 10,
           "essays": {
             "1": 10
           },
@@ -4670,11 +4672,13 @@
               }
             }
           },
-          "rankStatus": "passed",
-          "passedAll": true,
-          "failedSections": [],
-          "essayThreshold": 4,
-          "essayPassed": true
+          "rankStatus": "failed",
+          "passedAll": false,
+          "failedSections": [
+            "essay"
+          ],
+          "essayThreshold": 12,
+          "essayPassed": false
         },
         "604057": {
           "studentId": "604057",
@@ -4716,7 +4720,7 @@
           "mcqAccuracy": 31.37,
           "mcqPercentage": 10.36,
           "totalPercentage": 30.32,
-          "rank": 6,
+          "rank": 5,
           "essays": {
             "1": 17
           },
@@ -4827,7 +4831,7 @@
             "1",
             "2"
           ],
-          "essayThreshold": 4,
+          "essayThreshold": 12,
           "essayPassed": true
         },
         "621172": {
@@ -4982,7 +4986,7 @@
             "2",
             "3"
           ],
-          "essayThreshold": 4,
+          "essayThreshold": 12,
           "essayPassed": true
         },
         "624690": {
@@ -5133,7 +5137,7 @@
           "rankStatus": "passed",
           "passedAll": true,
           "failedSections": [],
-          "essayThreshold": 4,
+          "essayThreshold": 12,
           "essayPassed": true
         },
         "643388": {
@@ -5214,7 +5218,7 @@
             "3",
             "essay"
           ],
-          "essayThreshold": 4,
+          "essayThreshold": 12,
           "essayPassed": false
         },
         "648081": {
@@ -5365,7 +5369,7 @@
             "3",
             "essay"
           ],
-          "essayThreshold": 4,
+          "essayThreshold": 12,
           "essayPassed": false
         },
         "650004": {
@@ -5446,7 +5450,7 @@
             "3",
             "essay"
           ],
-          "essayThreshold": 4,
+          "essayThreshold": 12,
           "essayPassed": false
         },
         "678535": {
@@ -5527,7 +5531,7 @@
             "3",
             "essay"
           ],
-          "essayThreshold": 4,
+          "essayThreshold": 12,
           "essayPassed": false
         },
         "757516": {
@@ -5570,7 +5574,7 @@
           "mcqAccuracy": 64,
           "mcqPercentage": 19.64,
           "totalPercentage": 44.06,
-          "rank": 5,
+          "rank": 4,
           "essays": {
             "1": 21.5
           },
@@ -5680,7 +5684,7 @@
           "failedSections": [
             "2"
           ],
-          "essayThreshold": 4,
+          "essayThreshold": 12,
           "essayPassed": true
         },
         "764305": {
@@ -5831,7 +5835,7 @@
           "rankStatus": "passed",
           "passedAll": true,
           "failedSections": [],
-          "essayThreshold": 4,
+          "essayThreshold": 12,
           "essayPassed": true
         },
         "907183": {
@@ -5912,7 +5916,7 @@
             "3",
             "essay"
           ],
-          "essayThreshold": 4,
+          "essayThreshold": 12,
           "essayPassed": false
         },
         "934245": {
@@ -5955,7 +5959,7 @@
           "mcqAccuracy": 58.62,
           "mcqPercentage": 20,
           "totalPercentage": 32.5,
-          "rank": 10,
+          "rank": 9,
           "essays": {
             "1": 12
           },
@@ -6065,7 +6069,7 @@
           "failedSections": [
             "3"
           ],
-          "essayThreshold": 4,
+          "essayThreshold": 12,
           "essayPassed": true
         },
         "979212": {
@@ -6108,7 +6112,7 @@
           "mcqAccuracy": 64.71,
           "mcqPercentage": 27.14,
           "totalPercentage": 35.62,
-          "rank": 9,
+          "rank": 8,
           "essays": {
             "1": 9.5
           },
@@ -6216,10 +6220,11 @@
           "rankStatus": "failed",
           "passedAll": false,
           "failedSections": [
-            "1"
+            "1",
+            "essay"
           ],
-          "essayThreshold": 4,
-          "essayPassed": true
+          "essayThreshold": 12,
+          "essayPassed": false
         }
       },
       "classStats": {
@@ -6234,11 +6239,11 @@
           "1": 6.25,
           "2": 1.5,
           "3": 3.75,
-          "essay": 4
+          "essay": 12
         },
         "thresholdsAdjusted": true,
-        "passedStudents": 4,
-        "failedStudents": 20
+        "passedStudents": 3,
+        "failedStudents": 21
       },
       "topQuestions": {
         "1": {
@@ -6627,7 +6632,7 @@
         }
       },
       "metadata": {
-        "processedAt": "2025-11-15T07:15:44.995Z",
+        "processedAt": "2025-11-15T07:33:00.609Z",
         "sourceFile": "IBA Mock\\Mock 2.xlsx",
         "sheets": [
           "Sheet1",
@@ -6795,7 +6800,7 @@
           "failedSections": [
             "3"
           ],
-          "essayThreshold": 4,
+          "essayThreshold": 12,
           "essayPassed": true
         },
         "146014": {
@@ -6876,7 +6881,7 @@
             "3",
             "essay"
           ],
-          "essayThreshold": 4,
+          "essayThreshold": 12,
           "essayPassed": false
         },
         "158296": {
@@ -6957,7 +6962,7 @@
             "3",
             "essay"
           ],
-          "essayThreshold": 4,
+          "essayThreshold": 12,
           "essayPassed": false
         },
         "196303": {
@@ -7038,7 +7043,7 @@
             "3",
             "essay"
           ],
-          "essayThreshold": 4,
+          "essayThreshold": 12,
           "essayPassed": false
         },
         "303558": {
@@ -7120,10 +7125,11 @@
           "failedSections": [
             "1",
             "2",
-            "3"
+            "3",
+            "essay"
           ],
-          "essayThreshold": 4,
-          "essayPassed": true
+          "essayThreshold": 12,
+          "essayPassed": false
         },
         "399043": {
           "studentId": "399043",
@@ -7203,7 +7209,7 @@
             "3",
             "essay"
           ],
-          "essayThreshold": 4,
+          "essayThreshold": 12,
           "essayPassed": false
         },
         "400651": {
@@ -7356,10 +7362,11 @@
           "failedSections": [
             "1",
             "2",
-            "3"
+            "3",
+            "essay"
           ],
-          "essayThreshold": 4,
-          "essayPassed": true
+          "essayThreshold": 12,
+          "essayPassed": false
         },
         "417695": {
           "studentId": "417695",
@@ -7511,7 +7518,7 @@
           "failedSections": [
             "3"
           ],
-          "essayThreshold": 4,
+          "essayThreshold": 12,
           "essayPassed": true
         },
         "421527": {
@@ -7664,10 +7671,11 @@
           "failedSections": [
             "1",
             "2",
-            "3"
+            "3",
+            "essay"
           ],
-          "essayThreshold": 4,
-          "essayPassed": true
+          "essayThreshold": 12,
+          "essayPassed": false
         },
         "459889": {
           "studentId": "459889",
@@ -7817,7 +7825,7 @@
           "rankStatus": "passed",
           "passedAll": true,
           "failedSections": [],
-          "essayThreshold": 4,
+          "essayThreshold": 12,
           "essayPassed": true
         },
         "542127": {
@@ -7898,7 +7906,7 @@
             "3",
             "essay"
           ],
-          "essayThreshold": 4,
+          "essayThreshold": 12,
           "essayPassed": false
         },
         "575752": {
@@ -8049,10 +8057,11 @@
           "rankStatus": "failed",
           "passedAll": false,
           "failedSections": [
-            "1"
+            "1",
+            "essay"
           ],
-          "essayThreshold": 4,
-          "essayPassed": true
+          "essayThreshold": 12,
+          "essayPassed": false
         },
         "604057": {
           "studentId": "604057",
@@ -8203,10 +8212,11 @@
           "passedAll": false,
           "failedSections": [
             "1",
-            "2"
+            "2",
+            "essay"
           ],
-          "essayThreshold": 4,
-          "essayPassed": true
+          "essayThreshold": 12,
+          "essayPassed": false
         },
         "621172": {
           "studentId": "621172",
@@ -8356,10 +8366,11 @@
           "rankStatus": "failed",
           "passedAll": false,
           "failedSections": [
-            "1"
+            "1",
+            "essay"
           ],
-          "essayThreshold": 4,
-          "essayPassed": true
+          "essayThreshold": 12,
+          "essayPassed": false
         },
         "624690": {
           "studentId": "624690",
@@ -8511,7 +8522,7 @@
           "failedSections": [
             "2"
           ],
-          "essayThreshold": 4,
+          "essayThreshold": 12,
           "essayPassed": true
         },
         "643388": {
@@ -8665,7 +8676,7 @@
             "2",
             "3"
           ],
-          "essayThreshold": 4,
+          "essayThreshold": 12,
           "essayPassed": true
         },
         "648081": {
@@ -8746,7 +8757,7 @@
             "3",
             "essay"
           ],
-          "essayThreshold": 4,
+          "essayThreshold": 12,
           "essayPassed": false
         },
         "650004": {
@@ -8827,7 +8838,7 @@
             "3",
             "essay"
           ],
-          "essayThreshold": 4,
+          "essayThreshold": 12,
           "essayPassed": false
         },
         "678535": {
@@ -8908,7 +8919,7 @@
             "3",
             "essay"
           ],
-          "essayThreshold": 4,
+          "essayThreshold": 12,
           "essayPassed": false
         },
         "757516": {
@@ -8951,7 +8962,7 @@
           "mcqAccuracy": 88.89,
           "mcqPercentage": 33.21,
           "totalPercentage": 45.93,
-          "rank": 4,
+          "rank": 3,
           "essays": {
             "1": 13.5
           },
@@ -9061,7 +9072,7 @@
           "failedSections": [
             "3"
           ],
-          "essayThreshold": 4,
+          "essayThreshold": 12,
           "essayPassed": true
         },
         "764305": {
@@ -9104,7 +9115,7 @@
           "mcqAccuracy": 68.18,
           "mcqPercentage": 40.36,
           "totalPercentage": 47.82,
-          "rank": 2,
+          "rank": 4,
           "essays": {
             "1": 10
           },
@@ -9209,11 +9220,13 @@
               }
             }
           },
-          "rankStatus": "passed",
-          "passedAll": true,
-          "failedSections": [],
-          "essayThreshold": 4,
-          "essayPassed": true
+          "rankStatus": "failed",
+          "passedAll": false,
+          "failedSections": [
+            "essay"
+          ],
+          "essayThreshold": 12,
+          "essayPassed": false
         },
         "907183": {
           "studentId": "907183",
@@ -9293,7 +9306,7 @@
             "3",
             "essay"
           ],
-          "essayThreshold": 4,
+          "essayThreshold": 12,
           "essayPassed": false
         },
         "934245": {
@@ -9336,7 +9349,7 @@
           "mcqAccuracy": 60,
           "mcqPercentage": 25,
           "totalPercentage": 36.88,
-          "rank": 3,
+          "rank": 2,
           "essays": {
             "1": 12
           },
@@ -9444,7 +9457,7 @@
           "rankStatus": "passed",
           "passedAll": true,
           "failedSections": [],
-          "essayThreshold": 4,
+          "essayThreshold": 12,
           "essayPassed": true
         },
         "979212": {
@@ -9596,10 +9609,11 @@
           "passedAll": false,
           "failedSections": [
             "1",
-            "2"
+            "2",
+            "essay"
           ],
-          "essayThreshold": 4,
-          "essayPassed": true
+          "essayThreshold": 12,
+          "essayPassed": false
         }
       },
       "classStats": {
@@ -9614,11 +9628,11 @@
           "1": 8.25,
           "2": 2.5,
           "3": 4.25,
-          "essay": 4
+          "essay": 12
         },
         "thresholdsAdjusted": true,
-        "passedStudents": 3,
-        "failedStudents": 21
+        "passedStudents": 2,
+        "failedStudents": 22
       },
       "topQuestions": {
         "1": {
@@ -10007,7 +10021,7 @@
         }
       },
       "metadata": {
-        "processedAt": "2025-11-15T07:15:45.035Z",
+        "processedAt": "2025-11-15T07:33:00.624Z",
         "sourceFile": "IBA Mock\\Mock 3.xlsx",
         "sheets": [
           "Sheet1",
@@ -10176,7 +10190,7 @@
             "2",
             "3"
           ],
-          "essayThreshold": 4,
+          "essayThreshold": 12,
           "essayPassed": true
         },
         "146014": {
@@ -10257,7 +10271,7 @@
             "3",
             "essay"
           ],
-          "essayThreshold": 4,
+          "essayThreshold": 12,
           "essayPassed": false
         },
         "158296": {
@@ -10339,10 +10353,11 @@
           "failedSections": [
             "1",
             "2",
-            "3"
+            "3",
+            "essay"
           ],
-          "essayThreshold": 4,
-          "essayPassed": true
+          "essayThreshold": 12,
+          "essayPassed": false
         },
         "196303": {
           "studentId": "196303",
@@ -10492,10 +10507,11 @@
           "rankStatus": "failed",
           "passedAll": false,
           "failedSections": [
-            "3"
+            "3",
+            "essay"
           ],
-          "essayThreshold": 4,
-          "essayPassed": true
+          "essayThreshold": 12,
+          "essayPassed": false
         },
         "303558": {
           "studentId": "303558",
@@ -10576,10 +10592,11 @@
           "failedSections": [
             "1",
             "2",
-            "3"
+            "3",
+            "essay"
           ],
-          "essayThreshold": 4,
-          "essayPassed": true
+          "essayThreshold": 12,
+          "essayPassed": false
         },
         "399043": {
           "studentId": "399043",
@@ -10659,7 +10676,7 @@
             "3",
             "essay"
           ],
-          "essayThreshold": 4,
+          "essayThreshold": 12,
           "essayPassed": false
         },
         "400651": {
@@ -10740,7 +10757,7 @@
             "3",
             "essay"
           ],
-          "essayThreshold": 4,
+          "essayThreshold": 12,
           "essayPassed": false
         },
         "417695": {
@@ -10821,7 +10838,7 @@
             "3",
             "essay"
           ],
-          "essayThreshold": 4,
+          "essayThreshold": 12,
           "essayPassed": false
         },
         "421527": {
@@ -10975,7 +10992,7 @@
             "1",
             "3"
           ],
-          "essayThreshold": 4,
+          "essayThreshold": 12,
           "essayPassed": true
         },
         "459889": {
@@ -11126,7 +11143,7 @@
           "rankStatus": "passed",
           "passedAll": true,
           "failedSections": [],
-          "essayThreshold": 4,
+          "essayThreshold": 12,
           "essayPassed": true
         },
         "542127": {
@@ -11207,7 +11224,7 @@
             "3",
             "essay"
           ],
-          "essayThreshold": 4,
+          "essayThreshold": 12,
           "essayPassed": false
         },
         "575752": {
@@ -11360,7 +11377,7 @@
           "failedSections": [
             "1"
           ],
-          "essayThreshold": 4,
+          "essayThreshold": 12,
           "essayPassed": true
         },
         "604057": {
@@ -11515,7 +11532,7 @@
             "2",
             "3"
           ],
-          "essayThreshold": 4,
+          "essayThreshold": 12,
           "essayPassed": true
         },
         "621172": {
@@ -11668,7 +11685,7 @@
           "failedSections": [
             "2"
           ],
-          "essayThreshold": 4,
+          "essayThreshold": 12,
           "essayPassed": true
         },
         "624690": {
@@ -11819,7 +11836,7 @@
           "rankStatus": "passed",
           "passedAll": true,
           "failedSections": [],
-          "essayThreshold": 4,
+          "essayThreshold": 12,
           "essayPassed": true
         },
         "643388": {
@@ -11900,7 +11917,7 @@
             "3",
             "essay"
           ],
-          "essayThreshold": 4,
+          "essayThreshold": 12,
           "essayPassed": false
         },
         "648081": {
@@ -11981,7 +11998,7 @@
             "3",
             "essay"
           ],
-          "essayThreshold": 4,
+          "essayThreshold": 12,
           "essayPassed": false
         },
         "650004": {
@@ -12062,7 +12079,7 @@
             "3",
             "essay"
           ],
-          "essayThreshold": 4,
+          "essayThreshold": 12,
           "essayPassed": false
         },
         "678535": {
@@ -12143,7 +12160,7 @@
             "3",
             "essay"
           ],
-          "essayThreshold": 4,
+          "essayThreshold": 12,
           "essayPassed": false
         },
         "757516": {
@@ -12294,7 +12311,7 @@
           "rankStatus": "passed",
           "passedAll": true,
           "failedSections": [],
-          "essayThreshold": 4,
+          "essayThreshold": 12,
           "essayPassed": true
         },
         "764305": {
@@ -12445,7 +12462,7 @@
           "rankStatus": "passed",
           "passedAll": true,
           "failedSections": [],
-          "essayThreshold": 4,
+          "essayThreshold": 12,
           "essayPassed": true
         },
         "907183": {
@@ -12526,7 +12543,7 @@
             "3",
             "essay"
           ],
-          "essayThreshold": 4,
+          "essayThreshold": 12,
           "essayPassed": false
         },
         "934245": {
@@ -12680,7 +12697,7 @@
             "1",
             "2"
           ],
-          "essayThreshold": 4,
+          "essayThreshold": 12,
           "essayPassed": true
         },
         "979212": {
@@ -12831,7 +12848,7 @@
           "rankStatus": "passed",
           "passedAll": true,
           "failedSections": [],
-          "essayThreshold": 4,
+          "essayThreshold": 12,
           "essayPassed": true
         }
       },
@@ -12847,7 +12864,7 @@
           "1": 6,
           "2": 1.25,
           "3": 5.75,
-          "essay": 4
+          "essay": 12
         },
         "thresholdsAdjusted": true,
         "passedStudents": 5,
@@ -13240,7 +13257,7 @@
         }
       },
       "metadata": {
-        "processedAt": "2025-11-15T07:15:45.077Z",
+        "processedAt": "2025-11-15T07:33:00.637Z",
         "sourceFile": "IBA Mock\\Mock 4.xlsx",
         "sheets": [
           "Sheet1",
@@ -13252,7 +13269,7 @@
   },
   "metadata": {
     "totalTests": 4,
-    "lastProcessed": "2025-11-15T07:15:45.087Z",
+    "lastProcessed": "2025-11-15T07:33:00.642Z",
     "version": "1.0.0"
   }
 }

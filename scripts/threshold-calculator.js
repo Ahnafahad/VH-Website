@@ -8,7 +8,7 @@
  * - Take the top 30% of students
  * - The minimum mark from those top 30% becomes the threshold
  * - Round down to nearest 0.25 marks
- * - Essay thresholds are ALWAYS fixed at 40% of total essay marks (never adjusted)
+ * - Essay thresholds are ALWAYS fixed at 40% of 30 marks = 12 marks (never adjusted)
  * - Students must pass ALL sections to pass overall
  * - Passed students are ranked first, failed students cannot outrank them
  *
@@ -60,20 +60,10 @@ function calculateThresholds(results, sectionIds, hasEssay = false, testName = '
   // Initialize thresholds object
   let thresholds = {};
 
-  // Set essay threshold (fixed at 40%)
+  // Set essay threshold (fixed at 40% of 30 marks = 12 marks)
   if (hasEssay) {
-    // Get essay total marks
-    let essayTotalMarks = 100; // Default
-
-    // For mock tests, essay is always out of 30 marks
-    const isMockTest = testName.toLowerCase().startsWith('mock');
-    if (isMockTest) {
-      essayTotalMarks = 30;
-    } else if (firstStudent.maxEssayMarks) {
-      essayTotalMarks = firstStudent.maxEssayMarks;
-    } else if (firstStudent.essayMarks !== undefined && firstStudent.essayPercentage !== undefined && firstStudent.essayPercentage > 0) {
-      essayTotalMarks = (firstStudent.essayMarks / firstStudent.essayPercentage) * 100;
-    }
+    // Essay total marks is always 30 (whether 1, 2, or 3 essays combined)
+    const essayTotalMarks = 30;
 
     thresholds['essay'] = (ESSAY_THRESHOLD_PERCENTAGE / 100) * essayTotalMarks;
     console.log(`  📝 Essay total marks: ${essayTotalMarks}, threshold: ${thresholds['essay'].toFixed(2)} marks (40%)`);
@@ -400,10 +390,8 @@ function createDefaultThresholds(sectionIds, hasEssay, results) {
     });
 
     if (hasEssay) {
-      let essayTotalMarks = 100;
-      if (firstStudent.maxEssayMarks) {
-        essayTotalMarks = firstStudent.maxEssayMarks;
-      }
+      // Essay total marks is always 30 (whether 1, 2, or 3 essays combined)
+      const essayTotalMarks = 30;
       thresholds['essay'] = (ESSAY_THRESHOLD_PERCENTAGE / 100) * essayTotalMarks;
     }
   } else {
@@ -413,7 +401,8 @@ function createDefaultThresholds(sectionIds, hasEssay, results) {
       thresholds[sectionId] = 40; // 40% of 100
     });
     if (hasEssay) {
-      thresholds['essay'] = 40;
+      // Essay total marks is always 30, threshold is 40% = 12 marks
+      thresholds['essay'] = 12;
     }
   }
 
