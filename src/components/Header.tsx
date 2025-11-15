@@ -3,12 +3,13 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Menu, X, ChevronDown, Gamepad2, BarChart3, Calendar, ClipboardList, Users } from 'lucide-react';
+import { Menu, ChevronDown, Gamepad2, BarChart3, Calendar, ClipboardList, Users } from 'lucide-react';
 import LoginButton from './LoginButton';
+import Drawer from './ui/Drawer';
 import { useSession } from 'next-auth/react';
 
 const Header = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isGamesDropdownOpen, setIsGamesDropdownOpen] = useState(false);
   const { data: session } = useSession();
   const [isAdmin, setIsAdmin] = useState(false);
@@ -33,8 +34,28 @@ const Header = () => {
     checkAdminStatus();
   }, [session]);
 
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = () => {
+      if (isGamesDropdownOpen) setIsGamesDropdownOpen(false);
+    };
+    document.addEventListener('click', handleClickOutside);
+    return () => document.removeEventListener('click', handleClickOutside);
+  }, [isGamesDropdownOpen]);
+
+  const NavLink: React.FC<{ href: string; icon?: React.ReactNode; children: React.ReactNode }> = ({ href, icon, children }) => (
+    <Link
+      href={href}
+      className="relative px-4 py-3 text-gray-800 hover:text-vh-red font-semibold transition-all duration-300 group min-h-[44px] flex items-center gap-2"
+    >
+      {icon}
+      {children}
+      <span className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-vh-red transition-all duration-300 group-hover:w-full group-hover:left-0"></span>
+    </Link>
+  );
+
   return (
-    <header className="bg-white shadow-lg border-b border-vh-beige/30 sticky top-0 z-50 backdrop-blur-sm bg-white/95">
+    <header className="bg-white shadow-lg border-b border-gray-200 sticky top-0 z-[1020] backdrop-blur-lg bg-white/95">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16 md:h-20 lg:h-24">
           {/* Logo Section */}
@@ -62,84 +83,52 @@ const Header = () => {
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-1">
-            <Link
-              href="/"
-              className="relative px-4 py-3 text-gray-800 hover:text-vh-red font-semibold transition-all duration-300 group min-h-[44px] flex items-center"
-            >
-              Home
-              <span className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-vh-red transition-all duration-300 group-hover:w-full group-hover:left-0"></span>
-            </Link>
-            <Link
-              href="/eligibility-checker"
-              className="relative px-4 py-3 text-gray-800 hover:text-vh-red font-semibold transition-all duration-300 group min-h-[44px] flex items-center"
-            >
-              Eligibility Checker
-              <span className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-vh-red transition-all duration-300 group-hover:w-full group-hover:left-0"></span>
-            </Link>
-            <Link
-              href="/du-fbs-course"
-              className="relative px-4 py-3 text-gray-800 hover:text-vh-red font-semibold transition-all duration-300 group min-h-[44px] flex items-center"
-            >
-              DU FBS Course
-              <span className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-vh-red transition-all duration-300 group-hover:w-full group-hover:left-0"></span>
-            </Link>
-            <Link
-              href="/mock-exams"
-              className="relative px-4 py-3 text-gray-800 hover:text-vh-red font-semibold transition-all duration-300 group flex items-center gap-1 min-h-[44px]"
-            >
-              <Calendar size={16} />
-              Mock Exams
-              <span className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-vh-red transition-all duration-300 group-hover:w-full group-hover:left-0"></span>
-            </Link>
-            {session && (<>
-                <Link
-                  href="/results"
-                  className="relative px-4 py-3 text-gray-800 hover:text-vh-red font-semibold transition-all duration-300 group flex items-center gap-1 min-h-[44px]"
-                >
-                  <BarChart3 size={16} />
-                  Results
-                  <span className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-vh-red transition-all duration-300 group-hover:w-full group-hover:left-0"></span>
-                </Link>
-                {isAdmin && (<>
-                  <Link
-                    href="/admin/registrations"
-                    className="relative px-4 py-3 text-gray-800 hover:text-vh-red font-semibold transition-all duration-300 group flex items-center gap-1 min-h-[44px]"
-                  >
-                    <ClipboardList size={16} />
-                    Registrations
-                    <span className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-vh-red transition-all duration-300 group-hover:w-full group-hover:left-0"></span>
-                  </Link>
-                  <Link
-                    href="/admin/users"
-                    className="relative px-4 py-3 text-gray-800 hover:text-vh-red font-semibold transition-all duration-300 group flex items-center gap-1 min-h-[44px]"
-                  >
-                    <Users size={16} />
-                    Manage Users
-                    <span className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-vh-red transition-all duration-300 group-hover:w-full group-hover:left-0"></span>
-                  </Link>
-                </>)}
+            <NavLink href="/">Home</NavLink>
+            <NavLink href="/eligibility-checker">Eligibility Checker</NavLink>
+            <NavLink href="/du-fbs-course">DU FBS Course</NavLink>
+            <NavLink href="/mock-exams" icon={<Calendar size={16} />}>Mock Exams</NavLink>
+
+            {session && (
+              <>
+                <NavLink href="/results" icon={<BarChart3 size={16} />}>Results</NavLink>
+
+                {isAdmin && (
+                  <>
+                    <NavLink href="/admin/registrations" icon={<ClipboardList size={16} />}>
+                      Registrations
+                    </NavLink>
+                    <NavLink href="/admin/users" icon={<Users size={16} />}>
+                      Manage Users
+                    </NavLink>
+                  </>
+                )}
+
                 <div className="relative">
                   <button
-                    onClick={() => setIsGamesDropdownOpen(!isGamesDropdownOpen)}
-                    className="relative px-4 py-3 text-gray-800 hover:text-vh-red font-semibold transition-all duration-300 group flex items-center gap-1 min-h-[44px]"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setIsGamesDropdownOpen(!isGamesDropdownOpen);
+                    }}
+                    className="relative px-4 py-3 text-gray-800 hover:text-vh-red font-semibold transition-all duration-300 group flex items-center gap-2 min-h-[44px]"
                   >
                     <Gamepad2 size={16} />
                     Games
-                    <ChevronDown size={16} className={`transition-transform ${isGamesDropdownOpen ? 'rotate-180' : ''}`} />
+                    <ChevronDown size={16} className={`transition-transform duration-200 ${isGamesDropdownOpen ? 'rotate-180' : ''}`} />
                     <span className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-vh-red transition-all duration-300 group-hover:w-full group-hover:left-0"></span>
                   </button>
+
                   {isGamesDropdownOpen && (
-                    <div className="absolute top-full left-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-vh-beige/30 py-2 z-10">
+                    <div className="absolute top-full left-0 mt-2 w-56 bg-white rounded-xl shadow-xl border border-gray-200 py-2 z-[1000] animate-in fade-in slide-in-from-top-2 duration-200">
                       <Link
                         href="/games/vocab-quiz"
-                        className="block px-4 py-3 text-gray-800 hover:text-vh-red hover:bg-vh-beige/20 transition-all duration-300 min-h-[44px] flex items-center"
+                        className="block px-4 py-3 text-gray-700 hover:text-vh-red hover:bg-vh-red/5 transition-all duration-200 min-h-[44px] flex items-center font-medium"
                         onClick={() => setIsGamesDropdownOpen(false)}
                       >
                         Vocabulary Quiz
                       </Link>
                       <Link
                         href="/games/mental-math"
-                        className="block px-4 py-3 text-gray-800 hover:text-vh-red hover:bg-vh-beige/20 transition-all duration-300 min-h-[44px] flex items-center"
+                        className="block px-4 py-3 text-gray-700 hover:text-vh-red hover:bg-vh-red/5 transition-all duration-200 min-h-[44px] flex items-center font-medium"
                         onClick={() => setIsGamesDropdownOpen(false)}
                       >
                         Mental Math Trainer
@@ -149,128 +138,140 @@ const Header = () => {
                 </div>
               </>
             )}
-            <div className="ml-4 flex items-center space-x-4">
+
+            <div className="ml-4 flex items-center space-x-3">
               <LoginButton />
               {!session && (
-                <a
-                  href="/registration" className="block mx-2 bg-gradient-to-r from-vh-red to-vh-dark-red text-white px-6 py-4 rounded-2xl font-bold text-center uppercase tracking-wide hover:shadow-lg transition-all duration-300">Register Now
-                </a>
+                <Link
+                  href="/registration"
+                  className="inline-flex items-center justify-center font-semibold rounded-xl transition-all duration-200 focus:outline-none focus:ring-4 focus:ring-offset-2 focus:ring-vh-red/30 px-6 py-3 text-base gap-2 min-h-[44px] bg-vh-red text-white hover:bg-vh-light-red active:bg-vh-dark-red shadow-sm hover:shadow-md"
+                >
+                  Register Now
+                </Link>
               )}
             </div>
           </nav>
 
           {/* Mobile menu button */}
           <button
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="lg:hidden p-3 rounded-xl text-gray-800 hover:text-vh-red hover:bg-vh-beige/20 transition-all duration-300"
+            onClick={() => setIsMobileMenuOpen(true)}
+            className="lg:hidden p-3 rounded-xl text-gray-800 hover:text-vh-red hover:bg-gray-100 transition-all duration-200 min-w-[44px] min-h-[44px] flex items-center justify-center"
+            aria-label="Open menu"
           >
-            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            <Menu size={24} />
           </button>
         </div>
+      </div>
 
-        {/* Mobile Navigation */}
-        {isMenuOpen && (
-          <div className="lg:hidden">
-            <div className="px-2 pt-4 pb-6 space-y-2 bg-white border-t border-vh-beige/30 shadow-lg rounded-b-2xl">
+      {/* Mobile Navigation Drawer */}
+      <Drawer
+        isOpen={isMobileMenuOpen}
+        onClose={() => setIsMobileMenuOpen(false)}
+        position="right"
+        size="md"
+        title="Menu"
+      >
+        <nav className="flex flex-col gap-2">
+          <Link
+            href="/"
+            className="block px-4 py-3 text-gray-800 hover:text-vh-red hover:bg-gray-50 font-semibold rounded-xl transition-all duration-200"
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            Home
+          </Link>
+          <Link
+            href="/eligibility-checker"
+            className="block px-4 py-3 text-gray-800 hover:text-vh-red hover:bg-gray-50 font-semibold rounded-xl transition-all duration-200"
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            Eligibility Checker
+          </Link>
+          <Link
+            href="/du-fbs-course"
+            className="block px-4 py-3 text-gray-800 hover:text-vh-red hover:bg-gray-50 font-semibold rounded-xl transition-all duration-200"
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            DU FBS Course
+          </Link>
+          <Link
+            href="/mock-exams"
+            className="block px-4 py-3 text-gray-800 hover:text-vh-red hover:bg-gray-50 font-semibold rounded-xl transition-all duration-200 flex items-center gap-2"
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            <Calendar size={16} />
+            Mock Exams
+          </Link>
+
+          {session && (
+            <>
               <Link
-                href="/"
-                className="block px-4 py-3 text-gray-800 hover:text-vh-red hover:bg-vh-beige/10 font-semibold rounded-xl transition-all duration-300"
-                onClick={() => setIsMenuOpen(false)}
+                href="/results"
+                className="block px-4 py-3 text-gray-800 hover:text-vh-red hover:bg-gray-50 font-semibold rounded-xl transition-all duration-200 flex items-center gap-2"
+                onClick={() => setIsMobileMenuOpen(false)}
               >
-                Home
+                <BarChart3 size={16} />
+                Results
               </Link>
-              <Link
-                href="/eligibility-checker"
-                className="block px-4 py-3 text-gray-800 hover:text-vh-red hover:bg-vh-beige/10 font-semibold rounded-xl transition-all duration-300"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Eligibility Checker
-              </Link>
-              <Link
-                href="/du-fbs-course"
-                className="block px-4 py-3 text-gray-800 hover:text-vh-red hover:bg-vh-beige/10 font-semibold rounded-xl transition-all duration-300"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                DU FBS Course
-              </Link>
-              <Link
-                href="/mock-exams"
-                className="block px-4 py-3 text-gray-800 hover:text-vh-red hover:bg-vh-beige/10 font-semibold rounded-xl transition-all duration-300 flex items-center gap-2"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                <Calendar size={16} />
-                Mock Exams
-              </Link>
-              {session && (<>
+
+              {isAdmin && (
+                <>
                   <Link
-                    href="/results"
-                    className="block px-4 py-3 text-gray-800 hover:text-vh-red hover:bg-vh-beige/10 font-semibold rounded-xl transition-all duration-300 flex items-center gap-2"
-                    onClick={() => setIsMenuOpen(false)}
+                    href="/admin/registrations"
+                    className="block px-4 py-3 text-gray-800 hover:text-vh-red hover:bg-gray-50 font-semibold rounded-xl transition-all duration-200 flex items-center gap-2"
+                    onClick={() => setIsMobileMenuOpen(false)}
                   >
-                    <BarChart3 size={16} />
-                    Results
+                    <ClipboardList size={16} />
+                    Registrations
                   </Link>
-                  {isAdmin && (<>
-                    <Link
-                      href="/admin/registrations"
-                      className="block px-4 py-3 text-gray-800 hover:text-vh-red hover:bg-vh-beige/10 font-semibold rounded-xl transition-all duration-300 flex items-center gap-2"
-                      onClick={() => setIsMenuOpen(false)}
-                    >
-                      <ClipboardList size={16} />
-                      Registrations
-                    </Link>
-                    <Link
-                      href="/admin/users"
-                      className="block px-4 py-3 text-gray-800 hover:text-vh-red hover:bg-vh-beige/10 font-semibold rounded-xl transition-all duration-300 flex items-center gap-2"
-                      onClick={() => setIsMenuOpen(false)}
-                    >
-                      <Users size={16} />
-                      Manage Users
-                    </Link>
-                  </>)}
-                  <div>
-                    <div className="px-4 py-3 text-gray-800 font-semibold flex items-center gap-2">
-                      <Gamepad2 size={16} />
-                      Games
-                    </div>
-                    <Link
-                      href="/games/vocab-quiz"
-                      className="block px-8 py-2 text-gray-600 hover:text-vh-red hover:bg-vh-beige/10 rounded-xl transition-all duration-300 ml-4"
-                      onClick={() => setIsMenuOpen(false)}
-                    >
-                      Vocabulary Quiz
-                    </Link>
-                    <Link
-                      href="/games/mental-math"
-                      className="block px-8 py-2 text-gray-600 hover:text-vh-red hover:bg-vh-beige/10 rounded-xl transition-all duration-300 ml-4"
-                      onClick={() => setIsMenuOpen(false)}
-                    >
-                      Mental Math Trainer
-                    </Link>
-                  </div>
+                  <Link
+                    href="/admin/users"
+                    className="block px-4 py-3 text-gray-800 hover:text-vh-red hover:bg-gray-50 font-semibold rounded-xl transition-all duration-200 flex items-center gap-2"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    <Users size={16} />
+                    Manage Users
+                  </Link>
                 </>
               )}
-              <div className="pt-4 space-y-3">
-                <div className="mx-2">
-                  <LoginButton />
+
+              <div className="mt-2 border-t border-gray-200 pt-4">
+                <div className="px-4 py-2 text-gray-600 font-semibold flex items-center gap-2 text-sm">
+                  <Gamepad2 size={16} />
+                  Games
                 </div>
-                {!session && (
-                  <a
-                    href="/registration" className="block mx-2 bg-gradient-to-r from-vh-red to-vh-dark-red text-white px-6 py-4 rounded-2xl font-bold text-center uppercase tracking-wide hover:shadow-lg transition-all duration-300">Register Now
-                  </a>
-                )}
+                <Link
+                  href="/games/vocab-quiz"
+                  className="block px-8 py-2 text-gray-700 hover:text-vh-red hover:bg-gray-50 rounded-xl transition-all duration-200 ml-4"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  Vocabulary Quiz
+                </Link>
+                <Link
+                  href="/games/mental-math"
+                  className="block px-8 py-2 text-gray-700 hover:text-vh-red hover:bg-gray-50 rounded-xl transition-all duration-200 ml-4"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  Mental Math Trainer
+                </Link>
               </div>
-            </div>
+            </>
+          )}
+
+          <div className="mt-6 pt-6 border-t border-gray-200 space-y-3">
+            <LoginButton />
+            {!session && (
+              <Link
+                href="/registration"
+                className="w-full inline-flex items-center justify-center font-semibold rounded-xl transition-all duration-200 focus:outline-none focus:ring-4 focus:ring-offset-2 focus:ring-vh-red/30 px-8 py-4 text-lg gap-3 min-h-[52px] bg-vh-red text-white hover:bg-vh-light-red active:bg-vh-dark-red shadow-sm hover:shadow-md"
+              >
+                Register Now
+              </Link>
+            )}
           </div>
-        )}
-      </div>
+        </nav>
+      </Drawer>
     </header>
   );
 };
 
 export default Header;
-
-
-
-
-
