@@ -1,8 +1,12 @@
 'use client';
 
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { Play, SkipForward, RotateCcw, Clock, Target, Zap, Trophy, Award } from 'lucide-react';
+import { motion, useScroll, useTransform, useInView, AnimatePresence } from 'framer-motion';
 import ProtectedRoute from '@/components/ProtectedRoute';
+import Card from '@/components/ui/Card';
+import Button from '@/components/ui/Button';
+import Badge from '@/components/ui/Badge';
 
 interface Question {
   num1: number;
@@ -44,7 +48,47 @@ interface AccumulatedScore {
   overallAccuracy: number;
 }
 
+// Animation variants
+const fadeInUp = {
+  hidden: { opacity: 0, y: 40 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] }
+  }
+};
+
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.2
+    }
+  }
+};
+
+const scaleIn = {
+  hidden: { opacity: 0, scale: 0.95 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] }
+  }
+};
+
+const slideInLeft = {
+  hidden: { opacity: 0, x: -60 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] }
+  }
+};
+
 const MentalMathApp = () => {
+  const { scrollY } = useScroll();
   const [gameState, setGameState] = useState<'setup' | 'playing' | 'finished' | 'leaderboard'>('setup');
   const [selectedOperations, setSelectedOperations] = useState<string[]>(['addition']);
   const [difficulty, setDifficulty] = useState<'easy' | 'medium' | 'hard' | 'extreme'>('easy');
@@ -505,37 +549,71 @@ const MentalMathApp = () => {
   const accuracy = questionsAnswered > 0 ? Math.round((questionsCorrect / questionsAnswered) * 100) : 0;
 
   if (gameState === 'leaderboard') {
+    const leaderboardHeaderRef = useRef(null);
+    const leaderboardHeaderInView = useInView(leaderboardHeaderRef, { once: true });
+
     return (
       <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
-        {/* Professional Background Elements */}
+        {/* Animated Background Elements */}
         <div className="absolute inset-0">
-          <div className="absolute top-20 right-20 w-72 h-72 bg-vh-red/5 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-20 left-20 w-96 h-96 bg-vh-beige/10 rounded-full blur-3xl"></div>
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full opacity-3">
-            <div className="grid grid-cols-12 gap-4 transform rotate-12">
-              {Array.from({ length: 144 }).map((_, i) => (
-                <div key={i} className="h-1 bg-gradient-to-r from-vh-red/10 to-transparent rounded animate-pulse" style={{ animationDelay: `${i * 100}ms` }}></div>
-              ))}
-            </div>
-          </div>
+          <motion.div
+            className="absolute top-20 right-20 w-72 h-72 bg-vh-red/5 rounded-full blur-3xl"
+            animate={{
+              scale: [1, 1.2, 1],
+              opacity: [0.3, 0.5, 0.3],
+            }}
+            transition={{
+              duration: 8,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          />
+          <motion.div
+            className="absolute bottom-20 left-20 w-96 h-96 bg-vh-beige/10 rounded-full blur-3xl"
+            animate={{
+              scale: [1, 1.3, 1],
+              opacity: [0.2, 0.4, 0.2],
+            }}
+            transition={{
+              duration: 10,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 1
+            }}
+          />
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10">
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-vh-red to-vh-dark-red rounded-3xl mb-8 shadow-2xl">
+          <motion.div
+            ref={leaderboardHeaderRef}
+            className="text-center mb-16"
+            variants={fadeInUp}
+            initial="hidden"
+            animate={leaderboardHeaderInView ? "visible" : "hidden"}
+          >
+            <motion.div
+              className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-vh-red-600 to-vh-red-800 rounded-3xl mb-8 shadow-2xl"
+              whileHover={{ scale: 1.05, rotate: 5 }}
+              transition={{ type: "spring", stiffness: 300 }}
+            >
               <Trophy className="text-white" size={40} />
-            </div>
+            </motion.div>
             <h1 className="text-6xl lg:text-7xl font-black text-gray-900 mb-6">
-              Mental Math <span className="bg-gradient-to-r from-vh-red to-vh-dark-red bg-clip-text text-transparent">Leaderboard</span>
+              Mental Math <span className="bg-gradient-to-r from-vh-red-600 to-vh-red-800 bg-clip-text text-transparent">Leaderboard</span>
             </h1>
             <p className="text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed">Top performers in our intensive mental math challenges</p>
-          </div>
+          </motion.div>
 
-          <div className="grid lg:grid-cols-2 gap-12 mb-16">
+          <motion.div
+            className="grid lg:grid-cols-2 gap-12 mb-16"
+            variants={staggerContainer}
+            initial="hidden"
+            animate="visible"
+          >
             {/* Individual Game Scores */}
-            <div className="group relative">
-              <div className="absolute inset-0 bg-gradient-to-br from-vh-red/20 to-transparent rounded-3xl blur-2xl group-hover:blur-3xl opacity-0 group-hover:opacity-100 transition-all duration-700"></div>
-              <div className="relative bg-white rounded-3xl shadow-2xl p-10 border border-gray-100 group-hover:shadow-4xl group-hover:border-vh-red/20 transition-all duration-700">
+            <motion.div variants={scaleIn} className="group relative">
+              <div className="absolute inset-0 bg-gradient-to-br from-vh-red-600/20 to-transparent rounded-3xl blur-2xl group-hover:blur-3xl opacity-0 group-hover:opacity-100 transition-all duration-700"></div>
+              <Card variant="elevated" padding="xl" className="relative group-hover:shadow-4xl transition-all duration-700">
                 <div className="flex items-center mb-8">
                   <div className="w-16 h-16 bg-gradient-to-br from-vh-red to-vh-dark-red rounded-2xl flex items-center justify-center mr-6 shadow-xl">
                     <Trophy className="text-white" size={32} />
@@ -584,9 +662,9 @@ const MentalMathApp = () => {
             </div>
 
             {/* Accumulated Scores */}
-            <div className="group relative">
-              <div className="absolute inset-0 bg-gradient-to-br from-vh-beige/20 to-transparent rounded-3xl blur-2xl group-hover:blur-3xl opacity-0 group-hover:opacity-100 transition-all duration-700"></div>
-              <div className="relative bg-white rounded-3xl shadow-2xl p-10 border border-gray-100 group-hover:shadow-4xl group-hover:border-vh-beige/20 transition-all duration-700">
+            <motion.div variants={scaleIn} className="group relative">
+              <div className="absolute inset-0 bg-gradient-to-br from-vh-beige-500/20 to-transparent rounded-3xl blur-2xl group-hover:blur-3xl opacity-0 group-hover:opacity-100 transition-all duration-700"></div>
+              <Card variant="elevated" padding="xl" className="relative group-hover:shadow-4xl transition-all duration-700">
                 <div className="flex items-center mb-8">
                   <div className="w-16 h-16 bg-gradient-to-br from-vh-beige to-vh-dark-beige rounded-2xl flex items-center justify-center mr-6 shadow-xl">
                     <Zap className="text-white" size={32} />
@@ -632,55 +710,98 @@ const MentalMathApp = () => {
                   ))}
                 </div>
               )}
-            </div>
-          </div>
-        </div>
+              </Card>
+            </motion.div>
+          </motion.div>
 
-        <div className="text-center">
-            <button 
+          <motion.div
+            className="text-center"
+            variants={fadeInUp}
+            initial="hidden"
+            animate="visible"
+          >
+            <Button
+              variant="primary"
+              size="lg"
               onClick={() => setGameState('setup')}
-              className="group bg-gradient-to-r from-vh-red to-vh-dark-red text-white px-12 py-4 rounded-2xl font-bold text-lg hover:from-vh-dark-red hover:to-vh-red transition-all duration-300 shadow-2xl hover:shadow-vh-red/25 transform hover:-translate-y-1"
+              className="group"
             >
               <Target className="inline mr-3" size={20} />
               Back to Game
-            </button>
-          </div>
+            </Button>
+          </motion.div>
         </div>
       </div>
-    </div>
     );
   }
 
   if (gameState === 'setup') {
+    const setupHeaderRef = useRef(null);
+    const configRef = useRef(null);
+    const setupHeaderInView = useInView(setupHeaderRef, { once: true });
+    const configInView = useInView(configRef, { once: true, margin: "-100px" });
+
     return (
       <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
-        {/* Professional Background Elements */}
+        {/* Animated Background Elements */}
         <div className="absolute inset-0">
-          <div className="absolute top-20 right-20 w-72 h-72 bg-vh-red/5 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-20 left-20 w-96 h-96 bg-vh-beige/10 rounded-full blur-3xl"></div>
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full opacity-3">
-            <div className="grid grid-cols-12 gap-4 transform rotate-12">
-              {Array.from({ length: 144 }).map((_, i) => (
-                <div key={i} className="h-1 bg-gradient-to-r from-vh-red/10 to-transparent rounded animate-pulse" style={{ animationDelay: `${i * 100}ms` }}></div>
-              ))}
-            </div>
-          </div>
+          <motion.div
+            className="absolute top-20 right-20 w-72 h-72 bg-vh-red/5 rounded-full blur-3xl"
+            animate={{
+              scale: [1, 1.2, 1],
+              opacity: [0.3, 0.5, 0.3],
+            }}
+            transition={{
+              duration: 8,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          />
+          <motion.div
+            className="absolute bottom-20 left-20 w-96 h-96 bg-vh-beige/10 rounded-full blur-3xl"
+            animate={{
+              scale: [1, 1.3, 1],
+              opacity: [0.2, 0.4, 0.2],
+            }}
+            transition={{
+              duration: 10,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 1
+            }}
+          />
         </div>
 
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10">
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-vh-red to-vh-dark-red rounded-3xl mb-8 shadow-2xl">
+          <motion.div
+            ref={setupHeaderRef}
+            className="text-center mb-16"
+            variants={fadeInUp}
+            initial="hidden"
+            animate={setupHeaderInView ? "visible" : "hidden"}
+          >
+            <motion.div
+              className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-vh-red-600 to-vh-red-800 rounded-3xl mb-8 shadow-2xl"
+              whileHover={{ scale: 1.05, rotate: 5 }}
+              transition={{ type: "spring", stiffness: 300 }}
+            >
               <Target className="text-white" size={40} />
-            </div>
+            </motion.div>
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-gray-900 mb-6">
-              Mental Math <span className="bg-gradient-to-r from-vh-red to-vh-dark-red bg-clip-text text-transparent">Trainer</span>
+              Mental Math <span className="bg-gradient-to-r from-vh-red-600 to-vh-red-800 bg-clip-text text-transparent">Trainer</span>
             </h1>
             <p className="text-lg sm:text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed px-4">Challenge your mind with lightning-fast calculations and compete for the top scores</p>
-          </div>
+          </motion.div>
 
-          <div className="group relative mb-12">
-            <div className="absolute inset-0 bg-gradient-to-br from-vh-red/10 to-transparent rounded-3xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
-            <div className="relative bg-white rounded-3xl shadow-2xl p-12 border border-gray-100 group-hover:shadow-4xl transition-all duration-500">
+          <motion.div
+            ref={configRef}
+            className="group relative mb-12"
+            variants={scaleIn}
+            initial="hidden"
+            animate={configInView ? "visible" : "hidden"}
+          >
+            <div className="absolute inset-0 bg-gradient-to-br from-vh-red-600/10 to-transparent rounded-3xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
+            <Card variant="elevated" padding="xl" className="relative group-hover:shadow-4xl transition-all duration-500">
               <div className="space-y-8">
                 <div>
                   <label className="block text-lg font-black text-gray-900 mb-6">
@@ -750,57 +871,57 @@ const MentalMathApp = () => {
                 </select>
               </div>
             </div>
-          </div>
+            </Card>
+          </motion.div>
 
-          <div className="flex flex-col sm:flex-row gap-6 justify-center">
+          <motion.div
+            className="flex flex-col sm:flex-row gap-6 justify-center"
+            variants={fadeInUp}
+            initial="hidden"
+            animate="visible"
+          >
             {/* Start Challenge Button */}
-            <div className="relative">
-              <button 
-                type="button"
-                onClick={(e) => {
-                  e.preventDefault();
-                  e.stopPropagation();
-                  console.log('Start Challenge button clicked');
-                  try {
-                    startGame();
-                  } catch (error) {
-                    console.error('Error in startGame:', error);
-                  }
-                }}
-                disabled={selectedOperations.length === 0}
-                className={`group px-12 py-4 rounded-2xl font-bold text-lg transition-all duration-300 flex items-center justify-center gap-3 shadow-2xl ${
-                  selectedOperations.length === 0 
-                    ? 'bg-gray-400 text-gray-200 cursor-not-allowed'
-                    : 'bg-gradient-to-r from-vh-red to-vh-dark-red text-white hover:from-vh-dark-red hover:to-vh-red hover:shadow-vh-red/25 transform hover:-translate-y-1 active:scale-95'
-                }`}
-              >
-                <Play size={24} />
-                Start Challenge
-              </button>
-            </div>
-            
+            <Button
+              variant="primary"
+              size="lg"
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                console.log('Start Challenge button clicked');
+                try {
+                  startGame();
+                } catch (error) {
+                  console.error('Error in startGame:', error);
+                }
+              }}
+              disabled={selectedOperations.length === 0}
+              className="group flex items-center justify-center gap-3"
+            >
+              <Play size={24} />
+              Start Challenge
+            </Button>
+
             {/* View Leaderboard Button */}
-            <div className="relative">
-              <button 
-                type="button"
-                onClick={(e) => {
-                  e.preventDefault();
-                  e.stopPropagation();
-                  console.log('View Leaderboard button clicked');
-                  try {
-                    fetchLeaderboard();
-                    setGameState('leaderboard');
-                  } catch (error) {
-                    console.error('Error in fetchLeaderboard:', error);
-                  }
-                }}
-                className="group border-2 border-vh-red text-vh-red px-12 py-4 rounded-2xl font-bold text-lg hover:bg-vh-red hover:text-white transition-all duration-300 flex items-center justify-center gap-3 shadow-lg active:scale-95"
-              >
-                <Trophy size={24} />
-                View Leaderboard
-              </button>
-            </div>
-          </div>
+            <Button
+              variant="outline"
+              size="lg"
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                console.log('View Leaderboard button clicked');
+                try {
+                  fetchLeaderboard();
+                  setGameState('leaderboard');
+                } catch (error) {
+                  console.error('Error in fetchLeaderboard:', error);
+                }
+              }}
+              className="group flex items-center justify-center gap-3"
+            >
+              <Trophy size={24} />
+              View Leaderboard
+            </Button>
+          </motion.div>
         </div>
       </div>
     </div>
