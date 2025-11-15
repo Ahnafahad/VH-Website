@@ -27,7 +27,6 @@ const TestDetailPage = () => {
   const [simpleTests, setSimpleTests] = useState<SimpleTestsData | null>(null);
   const [fullTests, setFullTests] = useState<FullTestsData | null>(null);
   const [mockTests, setMockTests] = useState<MockTestsData | null>(null);
-  const [fbsMockTests, setFbsMockTests] = useState<any | null>(null);
   const [students, setStudents] = useState<StudentsData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -70,7 +69,6 @@ const TestDetailPage = () => {
         setSimpleTests(simpleResponse);
         setFullTests(fullResponse);
         setMockTests(mockResponse);
-        setFbsMockTests(fbsMockResponse);
         setStudents(studentsResponse);
         setIsAdmin(adminCheckResponse.isAdmin);
 
@@ -970,7 +968,7 @@ const TestDetailPage = () => {
                     <h3 className="text-lg font-semibold text-gray-800 mb-6">Your Position in Class</h3>
                     <PercentileChart
                       userScore={isFBSMock ? userResult.totalMarks : isFullTest ? (userResult as FullTestResult).totalMarks : (userResult as SimpleTestResult).score}
-                      allScores={Object.values(currentTest.results || {}).map(result =>
+                      allScores={Object.values(currentTest.results || {}).map((result: any) =>
                         isFBSMock ? result.totalMarks : isFullTest ? (result as FullTestResult).totalMarks : (result as SimpleTestResult).score
                       )}
                       title=""
