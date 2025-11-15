@@ -1,12 +1,15 @@
 import Link from 'next/link';
 import { ArrowRight, CheckCircle, Trophy, Star, Clock, Target, BookOpen, Award, TrendingUp, ChevronRight } from 'lucide-react';
+import Card from '@/components/ui/Card';
+import Button from '@/components/ui/Button';
+import Badge from '@/components/ui/Badge';
 
 export default function Home() {
   return (
     <div className="min-h-screen bg-white">
       
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-vh-red via-vh-dark-red to-black text-white overflow-hidden">
+      <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-vh-red-600 via-vh-red-800 to-gray-950 text-white overflow-hidden">
         {/* Sophisticated Background Elements */}
         <div className="absolute inset-0">
           <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-vh-beige/5 to-transparent rounded-full blur-3xl"></div>
@@ -74,30 +77,30 @@ export default function Home() {
             {/* Key Statistics */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-3 gap-6 md:gap-8 2xl:gap-10 max-w-6xl 2xl:max-w-7xl mx-auto">
               <div className="relative group">
-                <div className="absolute inset-0 bg-gradient-to-r from-vh-beige/10 to-transparent rounded-3xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
-                <div className="relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-6 md:p-8 text-center hover:bg-white/10 transition-all duration-500">
-                  <div className="text-5xl font-black mb-4 bg-gradient-to-r from-vh-beige to-white bg-clip-text text-transparent">1.2%</div>
-                  <div className="text-lg font-semibold mb-2">IBA Acceptance Rate</div>
+                <div className="absolute inset-0 bg-gradient-to-r from-vh-beige-400/10 to-transparent rounded-3xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
+                <Card variant="filled" padding="lg" className="relative bg-white/5 backdrop-blur-xl border-white/10 text-center hover:bg-white/10 transition-all duration-500">
+                  <div className="text-5xl font-black mb-4 bg-gradient-to-r from-vh-beige-300 to-white bg-clip-text text-transparent">1.2%</div>
+                  <div className="text-lg font-semibold mb-2 text-white">IBA Acceptance Rate</div>
                   <div className="text-sm text-white/60">More selective than Harvard at 3.5%</div>
-                </div>
+                </Card>
               </div>
 
               <div className="relative group">
-                <div className="absolute inset-0 bg-gradient-to-r from-vh-beige/10 to-transparent rounded-3xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
-                <div className="relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-6 md:p-8 text-center hover:bg-white/10 transition-all duration-500">
-                  <div className="text-5xl font-black mb-4 bg-gradient-to-r from-vh-beige to-white bg-clip-text text-transparent">46.7%</div>
-                  <div className="text-lg font-semibold mb-2">Our Success Rate</div>
+                <div className="absolute inset-0 bg-gradient-to-r from-vh-beige-400/10 to-transparent rounded-3xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
+                <Card variant="filled" padding="lg" className="relative bg-white/5 backdrop-blur-xl border-white/10 text-center hover:bg-white/10 transition-all duration-500">
+                  <div className="text-5xl font-black mb-4 bg-gradient-to-r from-vh-beige-300 to-white bg-clip-text text-transparent">46.7%</div>
+                  <div className="text-lg font-semibold mb-2 text-white">Our Success Rate</div>
                   <div className="text-sm text-white/60">14 out of 30 students got into top universities</div>
-                </div>
+                </Card>
               </div>
 
               <div className="relative group">
-                <div className="absolute inset-0 bg-gradient-to-r from-vh-beige/10 to-transparent rounded-3xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
-                <div className="relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-6 md:p-8 text-center hover:bg-white/10 transition-all duration-500">
-                  <div className="text-5xl font-black mb-4 bg-gradient-to-r from-vh-beige to-white bg-clip-text text-transparent">4-5</div>
-                  <div className="text-lg font-semibold mb-2">Months Duration</div>
+                <div className="absolute inset-0 bg-gradient-to-r from-vh-beige-400/10 to-transparent rounded-3xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
+                <Card variant="filled" padding="lg" className="relative bg-white/5 backdrop-blur-xl border-white/10 text-center hover:bg-white/10 transition-all duration-500">
+                  <div className="text-5xl font-black mb-4 bg-gradient-to-r from-vh-beige-300 to-white bg-clip-text text-transparent">4-5</div>
+                  <div className="text-lg font-semibold mb-2 text-white">Months Duration</div>
                   <div className="text-sm text-white/60">Intensive program</div>
-                </div>
+                </Card>
               </div>
             </div>
           </div>
@@ -124,22 +127,22 @@ export default function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 lg:gap-16">
             {/* IBA Card */}
             <div className="group relative">
-              <div className="absolute inset-0 bg-gradient-to-br from-vh-red/20 to-vh-dark-red/20 rounded-3xl blur-2xl group-hover:blur-3xl opacity-0 group-hover:opacity-100 transition-all duration-700"></div>
-              <div className="relative bg-white rounded-3xl p-6 md:p-8 lg:p-10 xl:p-12 shadow-2xl border border-gray-100 group-hover:shadow-4xl group-hover:border-vh-red/20 transition-all duration-700">
+              <div className="absolute inset-0 bg-gradient-to-br from-vh-red-600/20 to-vh-red-800/20 rounded-3xl blur-2xl group-hover:blur-3xl opacity-0 group-hover:opacity-100 transition-all duration-700"></div>
+              <Card variant="elevated" padding="xl" className="relative group-hover:shadow-4xl group-hover:border-vh-red-200 transition-all duration-700">
                 <div className="flex items-center mb-8">
-                  <div className="w-20 h-20 bg-gradient-to-br from-vh-red to-vh-dark-red rounded-2xl flex items-center justify-center mr-6 shadow-xl">
+                  <div className="w-20 h-20 bg-gradient-to-br from-vh-red-600 to-vh-red-800 rounded-2xl flex items-center justify-center mr-6 shadow-xl">
                     <Trophy className="w-10 h-10 text-white" />
                   </div>
                   <div>
                     <h3 className="text-3xl font-black text-gray-900">IBA, Dhaka University</h3>
-                    <p className="text-vh-red font-bold text-lg">Institute of Business Administration</p>
+                    <Badge variant="solid" colorScheme="primary" size="md" className="mt-2">Institute of Business Administration</Badge>
                   </div>
                 </div>
-                
+
                 <p className="text-gray-700 mb-8 text-lg leading-relaxed">
                   Top business school producing Financial Analysts, Management Consultants, and future CEOs with notable alumni in leadership positions at major companies.
                 </p>
-                
+
                 <div className="space-y-4">
                   {[
                     "Financial Analyst career opportunities",
@@ -147,34 +150,34 @@ export default function Home() {
                     "CEO and leadership roles preparation"
                   ].map((item, index) => (
                     <div key={index} className="flex items-center group/item">
-                      <div className="w-6 h-6 bg-vh-red rounded-full flex items-center justify-center mr-4 group-hover/item:scale-110 transition-transform duration-300">
+                      <div className="w-6 h-6 bg-vh-red-600 rounded-full flex items-center justify-center mr-4 group-hover/item:scale-110 transition-transform duration-300">
                         <CheckCircle className="w-4 h-4 text-white" />
                       </div>
                       <span className="text-gray-700 font-medium">{item}</span>
                     </div>
                   ))}
                 </div>
-              </div>
+              </Card>
             </div>
 
             {/* BUP Card */}
             <div className="group relative">
-              <div className="absolute inset-0 bg-gradient-to-br from-vh-dark-beige/20 to-vh-beige/20 rounded-3xl blur-2xl group-hover:blur-3xl opacity-0 group-hover:opacity-100 transition-all duration-700"></div>
-              <div className="relative bg-white rounded-3xl p-6 md:p-8 lg:p-10 xl:p-12 shadow-2xl border border-gray-100 group-hover:shadow-4xl group-hover:border-vh-dark-beige/20 transition-all duration-700">
+              <div className="absolute inset-0 bg-gradient-to-br from-vh-beige-700/20 to-vh-beige-400/20 rounded-3xl blur-2xl group-hover:blur-3xl opacity-0 group-hover:opacity-100 transition-all duration-700"></div>
+              <Card variant="elevated" padding="xl" className="relative group-hover:shadow-4xl group-hover:border-vh-beige-300 transition-all duration-700">
                 <div className="flex items-center mb-8">
-                  <div className="w-20 h-20 bg-gradient-to-br from-vh-dark-beige to-vh-beige rounded-2xl flex items-center justify-center mr-6 shadow-xl">
+                  <div className="w-20 h-20 bg-gradient-to-br from-vh-beige-700 to-vh-beige-500 rounded-2xl flex items-center justify-center mr-6 shadow-xl">
                     <Award className="w-10 h-10 text-white" />
                   </div>
                   <div>
                     <h3 className="text-3xl font-black text-gray-900">BUP</h3>
-                    <p className="text-vh-red font-bold text-lg">Bangladesh University of Professionals</p>
+                    <Badge variant="solid" colorScheme="secondary" size="md" className="mt-2">Bangladesh University of Professionals</Badge>
                   </div>
                 </div>
-                
+
                 <p className="text-gray-700 mb-8 text-lg leading-relaxed">
                   Premier business education with career opportunities in management, consulting, and executive positions across major corporations.
                 </p>
-                
+
                 <div className="space-y-4">
                   {[
                     "Management career pathways",
@@ -182,14 +185,14 @@ export default function Home() {
                     "Business consulting opportunities"
                   ].map((item, index) => (
                     <div key={index} className="flex items-center group/item">
-                      <div className="w-6 h-6 bg-vh-dark-beige rounded-full flex items-center justify-center mr-4 group-hover/item:scale-110 transition-transform duration-300">
+                      <div className="w-6 h-6 bg-vh-beige-700 rounded-full flex items-center justify-center mr-4 group-hover/item:scale-110 transition-transform duration-300">
                         <CheckCircle className="w-4 h-4 text-white" />
                       </div>
                       <span className="text-gray-700 font-medium">{item}</span>
                     </div>
                   ))}
                 </div>
-              </div>
+              </Card>
             </div>
           </div>
         </div>
@@ -220,9 +223,9 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-8 md:gap-10 lg:gap-12">
             {/* Schedule */}
             <div className="group relative">
-              <div className="absolute inset-0 bg-gradient-to-br from-vh-red/10 to-transparent rounded-3xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
-              <div className="relative bg-gray-50 rounded-3xl p-6 md:p-8 lg:p-10 border border-gray-200 group-hover:bg-white group-hover:shadow-2xl transition-all duration-500">
-                <div className="w-16 h-16 bg-gradient-to-br from-vh-red to-vh-dark-red rounded-2xl flex items-center justify-center mb-8 mx-auto shadow-xl">
+              <div className="absolute inset-0 bg-gradient-to-br from-vh-red-600/10 to-transparent rounded-3xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
+              <Card variant="filled" padding="lg" className="relative bg-gray-50 group-hover:bg-white group-hover:shadow-2xl transition-all duration-500">
+                <div className="w-16 h-16 bg-gradient-to-br from-vh-red-600 to-vh-red-800 rounded-2xl flex items-center justify-center mb-8 mx-auto shadow-xl">
                   <Clock className="w-8 h-8 text-white" />
                 </div>
                 <h3 className="text-2xl font-black text-gray-900 mb-8 text-center">Class Schedule</h3>
@@ -232,20 +235,20 @@ export default function Home() {
                     { day: "Monday", time: "3:00 PM - 5:00 PM" },
                     { day: "Thursday", time: "2:00 PM - 4:00 PM" }
                   ].map((item, index) => (
-                    <div key={index} className="flex justify-between items-center p-4 bg-white rounded-xl border border-gray-100 group-hover:border-vh-red/20 transition-all duration-300">
+                    <div key={index} className="flex justify-between items-center p-4 bg-white rounded-xl border border-gray-100 group-hover:border-vh-red-200 transition-all duration-300">
                       <span className="font-bold text-gray-900">{item.day}</span>
                       <span className="text-gray-600 font-medium">{item.time}</span>
                     </div>
                   ))}
                 </div>
-              </div>
+              </Card>
             </div>
 
             {/* What's Included */}
             <div className="group relative">
-              <div className="absolute inset-0 bg-gradient-to-br from-vh-dark-beige/10 to-transparent rounded-3xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
-              <div className="relative bg-gray-50 rounded-3xl p-6 md:p-8 lg:p-10 border border-gray-200 group-hover:bg-white group-hover:shadow-2xl transition-all duration-500">
-                <div className="w-16 h-16 bg-gradient-to-br from-vh-dark-beige to-vh-beige rounded-2xl flex items-center justify-center mb-8 mx-auto shadow-xl">
+              <div className="absolute inset-0 bg-gradient-to-br from-vh-beige-700/10 to-transparent rounded-3xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
+              <Card variant="filled" padding="lg" className="relative bg-gray-50 group-hover:bg-white group-hover:shadow-2xl transition-all duration-500">
+                <div className="w-16 h-16 bg-gradient-to-br from-vh-beige-700 to-vh-beige-500 rounded-2xl flex items-center justify-center mb-8 mx-auto shadow-xl">
                   <BookOpen className="w-8 h-8 text-white" />
                 </div>
                 <h3 className="text-2xl font-black text-gray-900 mb-8 text-center">What's Included</h3>
@@ -258,39 +261,39 @@ export default function Home() {
                     "Expert instruction in Math, English, and Analytical reasoning"
                   ].map((item, index) => (
                     <div key={index} className="flex items-center">
-                      <div className="w-6 h-6 bg-vh-red rounded-full flex items-center justify-center mr-4">
+                      <div className="w-6 h-6 bg-vh-red-600 rounded-full flex items-center justify-center mr-4">
                         <CheckCircle className="w-4 h-4 text-white" />
                       </div>
                       <span className="text-gray-700 font-medium">{item}</span>
                     </div>
                   ))}
                 </div>
-              </div>
+              </Card>
             </div>
 
             {/* Test Structure */}
             <div className="group relative">
-              <div className="absolute inset-0 bg-gradient-to-br from-vh-beige/10 to-transparent rounded-3xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
-              <div className="relative bg-gray-50 rounded-3xl p-6 md:p-8 lg:p-10 border border-gray-200 group-hover:bg-white group-hover:shadow-2xl transition-all duration-500">
-                <div className="w-16 h-16 bg-gradient-to-br from-vh-beige to-vh-dark-beige rounded-2xl flex items-center justify-center mb-8 mx-auto shadow-xl">
+              <div className="absolute inset-0 bg-gradient-to-br from-vh-beige-400/10 to-transparent rounded-3xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
+              <Card variant="filled" padding="lg" className="relative bg-gray-50 group-hover:bg-white group-hover:shadow-2xl transition-all duration-500">
+                <div className="w-16 h-16 bg-gradient-to-br from-vh-beige-500 to-vh-beige-700 rounded-2xl flex items-center justify-center mb-8 mx-auto shadow-xl">
                   <Target className="w-8 h-8 text-white" />
                 </div>
                 <h3 className="text-2xl font-black text-gray-900 mb-8 text-center">Test Structure</h3>
                 <div className="space-y-4">
-                  <div className="p-4 bg-white rounded-xl border border-gray-100 group-hover:border-vh-red/20 transition-all duration-300">
+                  <div className="p-4 bg-white rounded-xl border border-gray-100 group-hover:border-vh-red-200 transition-all duration-300">
                     <div className="font-bold text-gray-900">1.5 hours MCQ + 30 minutes written</div>
                     <div className="text-gray-600 text-sm">+1 correct, -0.25 wrong answers</div>
                   </div>
-                  <div className="p-4 bg-white rounded-xl border border-gray-100 group-hover:border-vh-red/20 transition-all duration-300">
+                  <div className="p-4 bg-white rounded-xl border border-gray-100 group-hover:border-vh-red-200 transition-all duration-300">
                     <div className="font-bold text-gray-900">Mathematics: 25 questions (need 10)</div>
                     <div className="text-gray-600 text-sm">English: 30 questions (need 12)</div>
                   </div>
-                  <div className="p-4 bg-white rounded-xl border border-gray-100 group-hover:border-vh-red/20 transition-all duration-300">
+                  <div className="p-4 bg-white rounded-xl border border-gray-100 group-hover:border-vh-red-200 transition-all duration-300">
                     <div className="font-bold text-gray-900">Analytical: 15 questions (need 6)</div>
                     <div className="text-gray-600 text-sm">Written: 30 marks (need 12), Interview: 20 marks (need 12)</div>
                   </div>
                 </div>
-              </div>
+              </Card>
             </div>
           </div>
         </div>
@@ -316,18 +319,18 @@ export default function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 lg:gap-16">
             {/* Instructor 1 */}
             <div className="group relative">
-              <div className="absolute inset-0 bg-gradient-to-br from-vh-red/20 to-transparent rounded-3xl blur-2xl group-hover:blur-3xl opacity-0 group-hover:opacity-100 transition-all duration-700"></div>
-              <div className="relative bg-white rounded-3xl p-6 md:p-8 lg:p-10 xl:p-12 shadow-2xl border border-gray-200 group-hover:shadow-4xl group-hover:border-vh-red/20 transition-all duration-700">
+              <div className="absolute inset-0 bg-gradient-to-br from-vh-red-600/20 to-transparent rounded-3xl blur-2xl group-hover:blur-3xl opacity-0 group-hover:opacity-100 transition-all duration-700"></div>
+              <Card variant="elevated" padding="xl" className="relative group-hover:shadow-4xl group-hover:border-vh-red-200 transition-all duration-700">
                 <div className="flex items-center mb-8">
-                  <div className="w-24 h-24 bg-gradient-to-br from-vh-red to-vh-dark-red rounded-3xl flex items-center justify-center text-white text-3xl font-black mr-8 shadow-2xl">
+                  <div className="w-24 h-24 bg-gradient-to-br from-vh-red-600 to-vh-red-800 rounded-3xl flex items-center justify-center text-white text-3xl font-black mr-8 shadow-2xl">
                     MH
                   </div>
                   <div>
                     <h3 className="text-3xl font-black text-gray-900">Md Hasan Sarower</h3>
-                    <p className="text-vh-red font-bold text-lg">Mathematics + Analytical</p>
+                    <Badge variant="solid" colorScheme="primary" size="md" className="mt-2">Mathematics + Analytical</Badge>
                   </div>
                 </div>
-                
+
                 <div className="space-y-4">
                   {[
                     { icon: <Star className="w-5 h-5" />, text: "From Mastermind School" },
@@ -336,30 +339,30 @@ export default function Home() {
                     { icon: <CheckCircle className="w-5 h-5" />, text: "Valedictorian and highest A* achiever in South Asia 2022" }
                   ].map((item, index) => (
                     <div key={index} className="flex items-center group/item">
-                      <div className="w-10 h-10 bg-vh-beige/20 rounded-xl flex items-center justify-center text-vh-red mr-4 group-hover/item:bg-vh-red group-hover/item:text-white transition-all duration-300">
+                      <div className="w-10 h-10 bg-vh-beige-100 rounded-xl flex items-center justify-center text-vh-red-600 mr-4 group-hover/item:bg-vh-red-600 group-hover/item:text-white transition-all duration-300">
                         {item.icon}
                       </div>
                       <span className="text-gray-700 font-medium">{item.text}</span>
                     </div>
                   ))}
                 </div>
-              </div>
+              </Card>
             </div>
 
             {/* Instructor 2 */}
             <div className="group relative">
-              <div className="absolute inset-0 bg-gradient-to-br from-vh-dark-beige/20 to-transparent rounded-3xl blur-2xl group-hover:blur-3xl opacity-0 group-hover:opacity-100 transition-all duration-700"></div>
-              <div className="relative bg-white rounded-3xl p-6 md:p-8 lg:p-10 xl:p-12 shadow-2xl border border-gray-200 group-hover:shadow-4xl group-hover:border-vh-dark-beige/20 transition-all duration-700">
+              <div className="absolute inset-0 bg-gradient-to-br from-vh-beige-700/20 to-transparent rounded-3xl blur-2xl group-hover:blur-3xl opacity-0 group-hover:opacity-100 transition-all duration-700"></div>
+              <Card variant="elevated" padding="xl" className="relative group-hover:shadow-4xl group-hover:border-vh-beige-300 transition-all duration-700">
                 <div className="flex items-center mb-8">
-                  <div className="w-24 h-24 bg-gradient-to-br from-vh-dark-beige to-vh-beige rounded-3xl flex items-center justify-center text-white text-3xl font-black mr-8 shadow-2xl">
+                  <div className="w-24 h-24 bg-gradient-to-br from-vh-beige-700 to-vh-beige-500 rounded-3xl flex items-center justify-center text-white text-3xl font-black mr-8 shadow-2xl">
                     AA
                   </div>
                   <div>
                     <h3 className="text-3xl font-black text-gray-900">Ahnaf Ahad</h3>
-                    <p className="text-vh-red font-bold text-lg">English + Analytical</p>
+                    <Badge variant="solid" colorScheme="secondary" size="md" className="mt-2">English + Analytical</Badge>
                   </div>
                 </div>
-                
+
                 <div className="space-y-4">
                   {[
                     { icon: <Star className="w-5 h-5" />, text: "From South Breeze School" },
@@ -368,14 +371,14 @@ export default function Home() {
                     { icon: <CheckCircle className="w-5 h-5" />, text: "Expert in English and Analytical reasoning" }
                   ].map((item, index) => (
                     <div key={index} className="flex items-center group/item">
-                      <div className="w-10 h-10 bg-vh-beige/20 rounded-xl flex items-center justify-center text-vh-dark-beige mr-4 group-hover/item:bg-vh-dark-beige group-hover/item:text-white transition-all duration-300">
+                      <div className="w-10 h-10 bg-vh-beige-100 rounded-xl flex items-center justify-center text-vh-beige-700 mr-4 group-hover/item:bg-vh-beige-700 group-hover/item:text-white transition-all duration-300">
                         {item.icon}
                       </div>
                       <span className="text-gray-700 font-medium">{item.text}</span>
                     </div>
                   ))}
                 </div>
-              </div>
+              </Card>
             </div>
           </div>
         </div>
@@ -446,7 +449,7 @@ export default function Home() {
 
 
       {/* Call-to-Action Section */}
-      <section className="py-12 md:py-20 lg:py-28 xl:py-32 bg-gradient-to-br from-gray-900 via-black to-vh-dark-red text-white relative overflow-hidden">
+      <section className="py-12 md:py-20 lg:py-28 xl:py-32 bg-gradient-to-br from-gray-900 via-gray-950 to-vh-red-800 text-white relative overflow-hidden">
         <div className="absolute inset-0">
           <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-vh-red/20 to-transparent rounded-full blur-3xl"></div>
           <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-l from-vh-beige/10 to-transparent rounded-full blur-3xl"></div>
@@ -461,29 +464,43 @@ export default function Home() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
-            <Link
-              href="/eligibility-checker"
-              className="group bg-vh-red hover:bg-vh-dark-red text-white px-12 py-4 rounded-2xl font-bold text-lg transition-all duration-300 inline-flex items-center justify-center"
-            >
-              <Target className="mr-3 w-6 h-6" />
-              Check Eligibility
-              <ArrowRight className="ml-3 w-6 h-6 group-hover:translate-x-1 transition-transform" />
+            <Link href="/eligibility-checker">
+              <Button
+                variant="solid"
+                colorScheme="primary"
+                size="lg"
+                leftIcon={<Target className="w-6 h-6" />}
+                rightIcon={<ArrowRight className="w-6 h-6" />}
+                className="group w-full sm:w-auto text-lg px-12"
+              >
+                Check Eligibility
+              </Button>
             </Link>
-            <Link
-              href="/du-fbs-course"
-              className="border-2 border-white text-white hover:bg-white hover:text-gray-900 px-12 py-4 rounded-2xl font-bold text-lg transition-all duration-300 inline-flex items-center justify-center"
-            >
-              <BookOpen className="mr-3 w-6 h-6" />
-              DU FBS Course
+            <Link href="/du-fbs-course">
+              <Button
+                variant="outline"
+                colorScheme="gray"
+                size="lg"
+                leftIcon={<BookOpen className="w-6 h-6" />}
+                className="w-full sm:w-auto text-lg px-12 border-white text-white hover:bg-white hover:text-gray-900"
+              >
+                DU FBS Course
+              </Button>
             </Link>
             <a
               href="https://forms.fillout.com/t/iCXMk5dbQsus"
               target="_blank"
               rel="noopener noreferrer"
-              className="group bg-gradient-to-r from-vh-beige to-vh-dark-beige text-white px-12 py-4 rounded-2xl font-bold text-lg hover:shadow-2xl hover:shadow-vh-beige/25 transform hover:-translate-y-1 transition-all duration-300 inline-flex items-center justify-center"
             >
-              <ChevronRight className="mr-3 w-6 h-6" />
-              Register Now
+              <Button
+                variant="solid"
+                colorScheme="secondary"
+                size="lg"
+                leftIcon={<ChevronRight className="w-6 h-6" />}
+                className="group w-full sm:w-auto text-lg px-12 bg-gradient-to-r from-vh-beige-500 to-vh-beige-700 hover:shadow-2xl hover:shadow-vh-beige-300/25 transform hover:-translate-y-1"
+              >
+                Register Now
+              </Button>
             </a>
           </div>
         </div>
