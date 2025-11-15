@@ -5,7 +5,7 @@ import { Mail, Phone, ExternalLink, Facebook, Instagram } from 'lucide-react';
 
 const Footer = () => {
   return (
-    <footer className="bg-gradient-to-br from-vh-dark-red via-vh-red to-vh-light-red text-white relative overflow-hidden">
+    <footer className="bg-gradient-to-br from-vh-red-800 via-vh-red to-vh-red-500 text-white relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-10 left-10 w-20 h-20 border border-white/20 rounded-full"></div>
@@ -14,9 +14,9 @@ const Footer = () => {
         <div className="absolute bottom-32 right-10 w-24 h-24 border border-white/20 rounded-full"></div>
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 md:pt-12 lg:pt-16 pb-6 md:pb-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10 lg:gap-12 mb-8 md:mb-10 lg:mb-12">
-          
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 md:pt-16 lg:pt-20 pb-8 md:pb-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10 lg:gap-12 mb-10 md:mb-12 lg:mb-16">
+
           {/* Company Info Section */}
           <div className="lg:col-span-2">
             <div className="flex items-center space-x-6 mb-8">
@@ -25,32 +25,32 @@ const Footer = () => {
                 alt="VH Beyond the Horizons"
                 width={140}
                 height={70}
-                className="h-14 w-auto"
+                className="h-14 w-auto transition-transform hover:scale-105 duration-200"
               />
               <Image
                 src="/vh-parent-logo.png"
                 alt="VH Parent Company"
                 width={48}
                 height={48}
-                className="h-12 w-12"
+                className="h-12 w-12 transition-transform hover:scale-110 duration-200"
               />
             </div>
-            
+
             <h3 className="text-2xl font-bold mb-4">Beyond the Horizons</h3>
-            <p className="text-white/90 mb-6 text-lg leading-relaxed max-w-md">
+            <p className="text-white/90 mb-8 text-base md:text-lg leading-relaxed max-w-md">
               Your gateway to prestigious business schools. Expert preparation for IBA, BUP, and DU FBS admissions with proven results and exceptional success rates.
             </p>
-            
+
             <div className="space-y-4">
               <div className="flex items-center space-x-3 group">
-                <div className="p-3 bg-white/10 rounded-lg group-hover:bg-white/20 transition-all duration-300 min-w-[44px] min-h-[44px] flex items-center justify-center">
+                <div className="p-3 bg-white/10 rounded-xl group-hover:bg-white/20 transition-all duration-200 min-w-[44px] min-h-[44px] flex items-center justify-center">
                   <Mail size={20} />
                 </div>
                 <div>
-                  <div className="text-sm text-white/70">Email Us</div>
+                  <div className="text-sm text-white/70 mb-0.5">Email Us</div>
                   <a
                     href="mailto:ahnafahad@vh-beyondthehorizons.org"
-                    className="font-semibold hover:text-vh-beige transition-colors"
+                    className="font-semibold hover:text-vh-beige-200 transition-colors duration-200 text-sm md:text-base"
                   >
                     ahnafahad@vh-beyondthehorizons.org
                   </a>
@@ -58,14 +58,14 @@ const Footer = () => {
               </div>
 
               <div className="flex items-center space-x-3 group">
-                <div className="p-3 bg-white/10 rounded-lg group-hover:bg-white/20 transition-all duration-300 min-w-[44px] min-h-[44px] flex items-center justify-center">
+                <div className="p-3 bg-white/10 rounded-xl group-hover:bg-white/20 transition-all duration-200 min-w-[44px] min-h-[44px] flex items-center justify-center">
                   <Phone size={20} />
                 </div>
                 <div>
-                  <div className="text-sm text-white/70">Contact</div>
+                  <div className="text-sm text-white/70 mb-0.5">Contact</div>
                   <a
                     href="tel:+8801915424939"
-                    className="font-semibold hover:text-vh-beige transition-colors"
+                    className="font-semibold hover:text-vh-beige-200 transition-colors duration-200 text-sm md:text-base"
                   >
                     +880 1915424939
                   </a>
@@ -82,15 +82,16 @@ const Footer = () => {
                 { href: '/', label: 'Home' },
                 { href: '/eligibility-checker', label: 'Eligibility Checker' },
                 { href: '/du-fbs-course', label: 'DU FBS Course' },
+                { href: '/mock-exams', label: 'Mock Exams' },
                 { href: '/registration', label: 'Registration' }
               ].map((link) => (
                 <li key={link.href}>
-                  <Link 
-                    href={link.href} 
-                    className="flex items-center group text-white/90 hover:text-white transition-all duration-300"
+                  <Link
+                    href={link.href}
+                    className="flex items-center group text-white/90 hover:text-white transition-all duration-200 min-h-[32px]"
                   >
-                    <ExternalLink size={16} className="mr-2 opacity-0 group-hover:opacity-100 transform translate-x-2 group-hover:translate-x-0 transition-all duration-300" />
-                    <span className="group-hover:translate-x-2 transition-transform duration-300">{link.label}</span>
+                    <ExternalLink size={14} className="mr-2 opacity-0 group-hover:opacity-100 -translate-x-1 group-hover:translate-x-0 transition-all duration-200" />
+                    <span className="group-hover:translate-x-1 transition-transform duration-200">{link.label}</span>
                   </Link>
                 </li>
               ))}
@@ -100,50 +101,42 @@ const Footer = () => {
           {/* Programs & Services */}
           <div>
             <h4 className="text-xl font-bold mb-6">Our Programs</h4>
-            <ul className="space-y-3 text-white/90">
-              <li className="flex items-start">
-                <div className="w-2 h-2 bg-vh-beige rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                <span>IBA DU Preparation</span>
-              </li>
-              <li className="flex items-start">
-                <div className="w-2 h-2 bg-vh-beige rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                <span>BUP Admission Course</span>
-              </li>
-              <li className="flex items-start">
-                <div className="w-2 h-2 bg-vh-beige rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                <span>DU FBS Program</span>
-              </li>
-              <li className="flex items-start">
-                <div className="w-2 h-2 bg-vh-beige rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                <span>Mock Examinations</span>
-              </li>
-              <li className="flex items-start">
-                <div className="w-2 h-2 bg-vh-beige rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                <span>Expert Instruction</span>
-              </li>
+            <ul className="space-y-3 text-white/90 text-sm md:text-base">
+              {[
+                'IBA DU Preparation',
+                'BUP Admission Course',
+                'DU FBS Program',
+                'Mock Examinations',
+                'Expert Instruction'
+              ].map((program, index) => (
+                <li key={index} className="flex items-start">
+                  <div className="w-1.5 h-1.5 bg-vh-beige-300 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                  <span>{program}</span>
+                </li>
+              ))}
             </ul>
 
             {/* Social Media */}
             <div className="mt-8">
-              <h5 className="font-semibold mb-4">Follow Us</h5>
-              <div className="flex space-x-3">
+              <h5 className="font-semibold mb-4 text-base">Follow Us</h5>
+              <div className="flex gap-3">
                 <a
                   href="https://www.facebook.com/verticalhorizon.edu"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-4 bg-white/10 rounded-lg hover:bg-white/20 transition-all duration-300 group min-w-[44px] min-h-[44px] flex items-center justify-center"
+                  className="p-3 bg-white/10 rounded-xl hover:bg-white/20 hover:scale-110 transition-all duration-200 group min-w-[44px] min-h-[44px] flex items-center justify-center"
                   aria-label="Visit our Facebook page"
                 >
-                  <Facebook size={20} className="group-hover:scale-110 transition-transform" />
+                  <Facebook size={20} />
                 </a>
                 <a
                   href="https://www.instagram.com/vhforlife/?hl=en"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-4 bg-white/10 rounded-lg hover:bg-white/20 transition-all duration-300 group min-w-[44px] min-h-[44px] flex items-center justify-center"
+                  className="p-3 bg-white/10 rounded-xl hover:bg-white/20 hover:scale-110 transition-all duration-200 group min-w-[44px] min-h-[44px] flex items-center justify-center"
                   aria-label="Visit our Instagram page"
                 >
-                  <Instagram size={20} className="group-hover:scale-110 transition-transform" />
+                  <Instagram size={20} />
                 </a>
               </div>
             </div>
@@ -151,21 +144,38 @@ const Footer = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-white/20 pt-8 mt-8">
-          <div className="flex flex-col lg:flex-row justify-between items-center space-y-4 lg:space-y-0">
+        <div className="border-t border-white/20 pt-8">
+          <div className="flex flex-col lg:flex-row justify-between items-center gap-4">
             <div className="text-center lg:text-left">
-              <p className="text-white/80">
+              <p className="text-white/90 font-medium">
                 © 2025 VH Beyond the Horizons. All rights reserved.
               </p>
-              <p className="text-white/60 text-sm mt-1">
+              <p className="text-white/70 text-sm mt-1">
                 Preparing students for excellence in business education since 2024.
               </p>
             </div>
-            
-            <div className="flex items-center space-x-6 text-sm text-white/70">
-              <a href="mailto:ahnafahad@vh-beyondthehorizons.org" className="hover:text-white transition-colors">Contact Us</a>
-              <a href="tel:+8801915424939" className="hover:text-white transition-colors">Call Us</a>
-              <a href="https://forms.fillout.com/t/iCXMk5dbQsus" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Register</a>
+
+            <div className="flex items-center gap-6 text-sm">
+              <a
+                href="mailto:ahnafahad@vh-beyondthehorizons.org"
+                className="text-white/80 hover:text-white transition-colors duration-200 font-medium min-h-[32px] flex items-center"
+              >
+                Contact Us
+              </a>
+              <a
+                href="tel:+8801915424939"
+                className="text-white/80 hover:text-white transition-colors duration-200 font-medium min-h-[32px] flex items-center"
+              >
+                Call Us
+              </a>
+              <a
+                href="https://forms.fillout.com/t/iCXMk5dbQsus"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white/80 hover:text-white transition-colors duration-200 font-medium min-h-[32px] flex items-center"
+              >
+                Register
+              </a>
             </div>
           </div>
         </div>

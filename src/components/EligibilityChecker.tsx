@@ -3,6 +3,11 @@
 // @ts-nocheck
 import React, { useState, useCallback, useEffect, useMemo } from 'react';
 import { Plus, Trash2, Check, X } from 'lucide-react';
+import { Tabs, TabsList, TabsTrigger, TabsContent } from './ui/Tabs';
+import Input from './ui/Input';
+import Select from './ui/Select';
+import Button from './ui/Button';
+import Card from './ui/Card';
 
 interface EligibilityCheckerProps {
   onEligibilityUpdate?: (activeTab: string, results: any) => void;
@@ -428,77 +433,31 @@ const UniversityEligibilityChecker = ({ onEligibilityUpdate }: EligibilityChecke
     <div className="min-h-screen bg-gray-50">
       <div className="max-w-4xl mx-auto px-4 py-6 sm:px-6 lg:px-8">
         <div className="text-center mb-8">
-          <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-vh-red to-vh-dark-beige rounded-2xl flex items-center justify-center transform rotate-12">
+          <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-vh-red-600 to-vh-beige-700 rounded-2xl flex items-center justify-center transform rotate-12">
             <div className="w-8 h-8 bg-white rounded-lg transform -rotate-12"></div>
           </div>
-          <h1 className="text-2xl sm:text-3xl font-bold text-black mb-2">University Eligibility</h1>
-          <p className="text-black text-sm sm:text-base">Check your eligibility for IBA DU, BUP, DU Science, DU Business, and BUET</p>
+          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">University Eligibility</h1>
+          <p className="text-gray-700 text-sm sm:text-base">Check your eligibility for IBA DU, BUP, DU Science, DU Business, and BUET</p>
         </div>
 
-        <div className="flex justify-center mb-8">
-          <div className="bg-white rounded-xl p-1 shadow-sm border border-gray-700 overflow-x-auto">
-            <div className="flex space-x-1">
-              <button
-                onClick={() => handleTabChange('IBA')}
-                className={`px-3 py-4 rounded-lg font-medium text-sm transition-all duration-200 whitespace-nowrap min-h-[44px] flex items-center ${
-                  activeTab === 'IBA'
-                    ? 'bg-vh-red text-white shadow-md'
-                    : 'text-black hover:text-vh-red hover:bg-gray-50'
-                }`}
-              >
-                IBA (DU)
-              </button>
-              <button
-                onClick={() => handleTabChange('BUP')}
-                className={`px-3 py-4 rounded-lg font-medium text-sm transition-all duration-200 whitespace-nowrap min-h-[44px] flex items-center ${
-                  activeTab === 'BUP'
-                    ? 'bg-vh-dark-beige text-white shadow-md'
-                    : 'text-black hover:text-vh-red hover:bg-gray-50'
-                }`}
-              >
-                BUP
-              </button>
-              <button
-                onClick={() => handleTabChange('DU Science')}
-                className={`px-3 py-4 rounded-lg font-medium text-sm transition-all duration-200 whitespace-nowrap min-h-[44px] flex items-center ${
-                  activeTab === 'DU Science'
-                    ? 'bg-vh-beige text-vh-dark-red shadow-md'
-                    : 'text-black hover:text-vh-red hover:bg-gray-50'
-                }`}
-              >
-                DU Science
-              </button>
-              <button
-                onClick={() => handleTabChange('DU Business')}
-                className={`px-3 py-4 rounded-lg font-medium text-sm transition-all duration-200 whitespace-nowrap min-h-[44px] flex items-center ${
-                  activeTab === 'DU Business'
-                    ? 'bg-vh-light-red text-white shadow-md'
-                    : 'text-black hover:text-vh-red hover:bg-gray-50'
-                }`}
-              >
-                DU FBS
-              </button>
-              <button
-                onClick={() => handleTabChange('BUET')}
-                className={`px-3 py-4 rounded-lg font-medium text-sm transition-all duration-200 whitespace-nowrap min-h-[44px] flex items-center ${
-                  activeTab === 'BUET'
-                    ? 'bg-vh-dark-red text-white shadow-md'
-                    : 'text-black hover:text-vh-red hover:bg-gray-50'
-                }`}
-              >
-                BUET
-              </button>
-            </div>
+        <Tabs defaultValue="IBA" value={activeTab} onValueChange={handleTabChange} className="mb-8">
+          <div className="flex justify-center mb-8">
+            <TabsList className="bg-white shadow-sm border border-gray-200 overflow-x-auto">
+              <TabsTrigger value="IBA">IBA (DU)</TabsTrigger>
+              <TabsTrigger value="BUP">BUP</TabsTrigger>
+              <TabsTrigger value="DU Science">DU Science</TabsTrigger>
+              <TabsTrigger value="DU Business">DU FBS</TabsTrigger>
+              <TabsTrigger value="BUET">BUET</TabsTrigger>
+            </TabsList>
           </div>
-        </div>
 
         <div className="space-y-6">
-          <div className="bg-white rounded-2xl shadow-sm border border-gray-700 overflow-hidden">
-            <div className="bg-gradient-to-r from-vh-beige/20 to-vh-dark-beige/20 px-6 py-4 border-b border-gray-700">
-              <h2 className="text-lg font-semibold text-black">O-Level Subjects</h2>
-              <p className="text-sm text-black mt-1">
-                {activeTab === 'IBA' 
-                  ? 'Mathematics mandatory. Best 5 subjects counted.' 
+          <Card variant="elevated" padding="none">
+            <div className="bg-gradient-to-r from-vh-beige-50 to-vh-beige-100 px-6 py-4 border-b border-gray-200">
+              <h2 className="text-lg font-semibold text-gray-900">O-Level Subjects</h2>
+              <p className="text-sm text-gray-700 mt-1">
+                {activeTab === 'IBA'
+                  ? 'Mathematics mandatory. Best 5 subjects counted.'
                   : activeTab === 'BUP'
                   ? 'Best 5 subjects counted. No mandatory subjects.'
                   : activeTab === 'DU Science'
@@ -508,7 +467,7 @@ const UniversityEligibilityChecker = ({ onEligibilityUpdate }: EligibilityChecke
                   : 'Minimum 5 subjects required including Math, Physics, Chemistry, English (all minimum grade B).'}
               </p>
             </div>
-            
+
             <div className="p-6 space-y-3">
               {oLevelSubjects.map((subject) => {
                 const buetRequiredIds = ['buet_math', 'buet_physics', 'buet_chemistry', 'buet_english'];
@@ -520,7 +479,7 @@ const UniversityEligibilityChecker = ({ onEligibilityUpdate }: EligibilityChecke
                 return (
                   <div key={subject.id} className="flex gap-3 items-center">
                     <div className="flex-1">
-                      <input
+                      <Input
                         type="text"
                         placeholder={
                           subject.id === 'math' ? 'Mathematics' :
@@ -533,33 +492,34 @@ const UniversityEligibilityChecker = ({ onEligibilityUpdate }: EligibilityChecke
                         value={subject.name}
                         onChange={(e) => updateOLevelSubject(subject.id, 'name', e.target.value)}
                         disabled={isDisabled}
-                        className="w-full px-4 py-3 border border-gray-700 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-vh-red focus:border-transparent disabled:bg-gray-700 disabled:text-black transition-all"
                       />
                     </div>
-                    <div className="w-20">
-                      <select
+                    <div className="w-24">
+                      <Select
                         value={subject.grade}
                         onChange={(e) => updateOLevelSubject(subject.id, 'grade', e.target.value)}
-                        className="w-full px-3 py-3 border border-gray-700 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-vh-red focus:border-transparent bg-white transition-all"
                       >
                         <option value="">Grade</option>
                         {(activeTab === 'DU Science' ? duScienceGrades : grades).map(grade => (
                           <option key={grade} value={grade}>{grade}</option>
                         ))}
-                      </select>
+                      </Select>
                     </div>
                     {canRemove && (
-                      <button
+                      <Button
+                        variant="ghost"
+                        colorScheme="error"
+                        size="sm"
                         onClick={() => removeOLevelSubject(subject.id)}
-                        className="p-4 text-red-500 hover:bg-red-50 rounded-xl transition-colors touch-manipulation min-w-[44px] min-h-[44px] flex items-center justify-center"
                         aria-label="Remove subject"
+                        className="flex-shrink-0"
                       >
                         <Trash2 size={16} />
-                      </button>
+                      </Button>
                     )}
                     {!canRemove && (
-                      <div className="p-3 w-12 flex items-center justify-center">
-                        <div className="w-4 h-4 bg-gray-700 rounded text-xs flex items-center justify-center text-black">
+                      <div className="p-3 w-12 flex items-center justify-center flex-shrink-0">
+                        <div className="w-5 h-5 bg-success-100 rounded-full text-xs flex items-center justify-center text-success-700">
                           ✓
                         </div>
                       </div>
@@ -567,27 +527,30 @@ const UniversityEligibilityChecker = ({ onEligibilityUpdate }: EligibilityChecke
                   </div>
                 );
               })}
-              
-              <button
+
+              <Button
+                variant="ghost"
+                colorScheme="primary"
+                size="sm"
+                leftIcon={<Plus size={16} />}
                 onClick={addOLevelSubject}
-                className="flex items-center gap-2 text-vh-red hover:text-vh-dark-red font-medium text-sm py-3 px-2 transition-colors touch-manipulation min-h-[44px]"
+                className="mt-2"
               >
-                <Plus size={16} />
                 Add Subject
-              </button>
-              
+              </Button>
+
               {activeTab === 'BUET' && (
-                <div className="text-sm text-black italic">
+                <div className="text-sm text-gray-700 italic mt-4 p-3 bg-info-50 rounded-lg border border-info-200">
                   Required subjects (Math, Physics, Chemistry, English) are pre-filled. You need minimum 5 O-Level subjects total.
                 </div>
               )}
             </div>
-          </div>
+          </Card>
 
-          <div className="bg-white rounded-2xl shadow-sm border border-gray-700 overflow-hidden">
-            <div className="bg-gradient-to-r from-vh-beige/30 to-vh-dark-beige/30 px-6 py-4 border-b border-gray-700">
-              <h2 className="text-lg font-semibold text-black">A-Level Subjects</h2>
-              <p className="text-sm text-black mt-1">
+          <Card variant="elevated" padding="none">
+            <div className="bg-gradient-to-r from-vh-beige-100 to-vh-beige-200 px-6 py-4 border-b border-gray-200">
+              <h2 className="text-lg font-semibold text-gray-900">A-Level Subjects</h2>
+              <p className="text-sm text-gray-700 mt-1">
                 {activeTab === 'DU Business'
                   ? 'Minimum 2 subjects required. Any subjects allowed. Business Studies / Accounting / Economics / Mathematics / Statistics - any one of these subjects must be taken.'
                   : activeTab === 'BUET'
@@ -595,30 +558,29 @@ const UniversityEligibilityChecker = ({ onEligibilityUpdate }: EligibilityChecke
                   : 'Minimum 2 subjects required. Best 2 subjects counted.'}
               </p>
             </div>
-            
+
             <div className="p-6 space-y-3">
               {aLevelSubjects.map((subject) => {
                 const isFirstDUBusiness = activeTab === 'DU Business' && subject.id === 'du_business_required';
                 const buetRequiredALevelIds = ['buet_a_math', 'buet_a_physics', 'buet_a_chemistry'];
                 const isBuetRequired = buetRequiredALevelIds.includes(subject.id) && activeTab === 'BUET';
                 const canRemove = !(activeTab === 'DU Business' && subject.id === 'du_business_required') && !(activeTab === 'BUET' && isBuetRequired);
-                
+
                 return (
                   <div key={subject.id} className="flex gap-3 items-center">
                     <div className="flex-1">
                       {isFirstDUBusiness ? (
-                        <select
+                        <Select
                           value={subject.name}
                           onChange={(e) => updateALevelSubject(subject.id, 'name', e.target.value)}
-                          className="w-full px-4 py-3 border border-gray-700 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-vh-dark-beige focus:border-transparent bg-white transition-all"
                         >
                           <option value="">Select business subject</option>
                           {businessSubjects.map(bizSubject => (
                             <option key={bizSubject} value={bizSubject}>{bizSubject}</option>
                           ))}
-                        </select>
+                        </Select>
                       ) : (
-                        <input
+                        <Input
                           type="text"
                           placeholder={
                             subject.id === 'buet_a_math' ? 'Mathematics' :
@@ -629,33 +591,34 @@ const UniversityEligibilityChecker = ({ onEligibilityUpdate }: EligibilityChecke
                           value={subject.name}
                           onChange={(e) => updateALevelSubject(subject.id, 'name', e.target.value)}
                           disabled={isBuetRequired}
-                          className="w-full px-4 py-3 border border-gray-700 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-vh-dark-beige focus:border-transparent transition-all disabled:bg-gray-700 disabled:text-black"
                         />
                       )}
                     </div>
-                    <div className="w-20">
-                      <select
+                    <div className="w-24">
+                      <Select
                         value={subject.grade}
                         onChange={(e) => updateALevelSubject(subject.id, 'grade', e.target.value)}
-                        className="w-full px-3 py-3 border border-gray-700 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-vh-dark-beige focus:border-transparent bg-white transition-all"
                       >
                         <option value="">Grade</option>
                         {(activeTab === 'DU Science' ? duScienceGrades : grades).map(grade => (
                           <option key={grade} value={grade}>{grade}</option>
                         ))}
-                      </select>
+                      </Select>
                     </div>
                     {canRemove ? (
-                      <button
+                      <Button
+                        variant="ghost"
+                        colorScheme="error"
+                        size="sm"
                         onClick={() => removeALevelSubject(subject.id)}
-                        className="p-4 text-red-500 hover:bg-red-50 rounded-xl transition-colors touch-manipulation min-w-[44px] min-h-[44px] flex items-center justify-center"
                         aria-label="Remove A-Level subject"
+                        className="flex-shrink-0"
                       >
                         <Trash2 size={16} />
-                      </button>
+                      </Button>
                     ) : (
-                      <div className="p-3 w-12 flex items-center justify-center">
-                        <div className="w-4 h-4 bg-gray-700 rounded text-xs flex items-center justify-center text-black">
+                      <div className="p-3 w-12 flex items-center justify-center flex-shrink-0">
+                        <div className="w-5 h-5 bg-success-100 rounded-full text-xs flex items-center justify-center text-success-700">
                           ✓
                         </div>
                       </div>
@@ -663,127 +626,130 @@ const UniversityEligibilityChecker = ({ onEligibilityUpdate }: EligibilityChecke
                   </div>
                 );
               })}
-              
+
               {activeTab !== 'BUET' && (
-                <button
+                <Button
+                  variant="ghost"
+                  colorScheme="primary"
+                  size="sm"
+                  leftIcon={<Plus size={16} />}
                   onClick={addALevelSubject}
-                  className="flex items-center gap-2 text-vh-dark-beige hover:text-vh-dark-red font-medium text-sm py-3 px-2 transition-colors touch-manipulation min-h-[44px]"
+                  className="mt-2"
                 >
-                  <Plus size={16} />
                   Add Subject
-                </button>
+                </Button>
               )}
-              
+
               {activeTab === 'BUET' && (
-                <div className="text-sm text-black italic">
+                <div className="text-sm text-gray-700 italic mt-4 p-3 bg-info-50 rounded-lg border border-info-200">
                   All required A-Level subjects are pre-filled. Additional subjects can be entered but won't affect eligibility.
                 </div>
               )}
             </div>
-          </div>
+          </Card>
 
-          <div className="bg-white rounded-2xl shadow-sm border border-gray-700 overflow-hidden">
-            <div className="bg-gradient-to-r from-purple-50 to-pink-50 px-6 py-4 border-b border-gray-700">
-              <h2 className="text-lg font-semibold text-black">{activeTab} Eligibility Results</h2>
+          <Card variant="elevated" padding="none">
+            <div className="bg-gradient-to-r from-info-50 to-success-50 px-6 py-4 border-b border-gray-200">
+              <h2 className="text-lg font-semibold text-gray-900">{activeTab} Eligibility Results</h2>
             </div>
-            
+
             <div className="p-6">
               <div className="grid gap-6 lg:grid-cols-2">
                 <div className="space-y-4">
-                  <h3 className="font-semibold text-black">Requirements Check</h3>
+                  <h3 className="font-semibold text-gray-900">Requirements Check</h3>
                   <div className="space-y-3">
                     {activeTab === 'IBA' ? (
                       <>
-                        <div className="flex items-center gap-3 p-3 rounded-xl bg-gray-50">
-                          {results.oLevelPass ? 
-                            <div className="w-6 h-6 bg-vh-red rounded-full flex items-center justify-center">
+                        <div className="flex items-center gap-3 p-3 rounded-xl bg-gray-50 border border-gray-200">
+                          {results.oLevelPass ?
+                            <div className="w-6 h-6 bg-success-600 rounded-full flex items-center justify-center">
                               <Check size={14} className="text-white" />
-                            </div> : 
-                            <div className="w-6 h-6 bg-red-500 rounded-full flex items-center justify-center">
+                            </div> :
+                            <div className="w-6 h-6 bg-error-500 rounded-full flex items-center justify-center">
                               <X size={14} className="text-white" />
                             </div>
                           }
-                          <span className="text-sm font-medium">O-Level CGPA ≥ 3.5: {(results as any).oLevelCGPA || 'N/A'}</span>
+                          <span className="text-sm font-medium text-gray-900">O-Level CGPA ≥ 3.5: {(results as any).oLevelCGPA || 'N/A'}</span>
                         </div>
-                        <div className="flex items-center gap-3 p-3 rounded-xl bg-gray-50">
-                          {(results as any).aLevelPass ? 
-                            <div className="w-6 h-6 bg-vh-red rounded-full flex items-center justify-center">
+                        <div className="flex items-center gap-3 p-3 rounded-xl bg-gray-50 border border-gray-200">
+                          {(results as any).aLevelPass ?
+                            <div className="w-6 h-6 bg-success-600 rounded-full flex items-center justify-center">
                               <Check size={14} className="text-white" />
-                            </div> : 
-                            <div className="w-6 h-6 bg-red-500 rounded-full flex items-center justify-center">
+                            </div> :
+                            <div className="w-6 h-6 bg-error-500 rounded-full flex items-center justify-center">
                               <X size={14} className="text-white" />
                             </div>
                           }
-                          <span className="text-sm font-medium">A-Level CGPA ≥ 3.5: {(results as any).aLevelCGPA || 'N/A'}</span>
+                          <span className="text-sm font-medium text-gray-900">A-Level CGPA ≥ 3.5: {(results as any).aLevelCGPA || 'N/A'}</span>
                         </div>
-                        <div className="flex items-center gap-3 p-3 rounded-xl bg-gray-50">
-                          {(results as any).minAGrades ? 
-                            <div className="w-6 h-6 bg-vh-red rounded-full flex items-center justify-center">
+                        <div className="flex items-center gap-3 p-3 rounded-xl bg-gray-50 border border-gray-200">
+                          {(results as any).minAGrades ?
+                            <div className="w-6 h-6 bg-success-600 rounded-full flex items-center justify-center">
                               <Check size={14} className="text-white" />
-                            </div> : 
-                            <div className="w-6 h-6 bg-red-500 rounded-full flex items-center justify-center">
+                            </div> :
+                            <div className="w-6 h-6 bg-error-500 rounded-full flex items-center justify-center">
                               <X size={14} className="text-white" />
                             </div>
                           }
-                          <span className="text-sm font-medium">Minimum 2 A grades: {(results as any).aGradesCount || 0} A's</span>
+                          <span className="text-sm font-medium text-gray-900">Minimum 2 A grades: {(results as any).aGradesCount || 0} A's</span>
                         </div>
                       </>
                     ) : activeTab === 'BUP' ? (
                       <>
-                        <div className="flex items-center gap-3 p-3 rounded-xl bg-gray-50">
-                          {results.eligible ? 
-                            <div className="w-6 h-6 bg-vh-red rounded-full flex items-center justify-center">
+                        <div className="flex items-center gap-3 p-3 rounded-xl bg-gray-50 border border-gray-200">
+                          {results.eligible ?
+                            <div className="w-6 h-6 bg-success-600 rounded-full flex items-center justify-center">
                               <Check size={14} className="text-white" />
-                            </div> : 
-                            <div className="w-6 h-6 bg-red-500 rounded-full flex items-center justify-center">
+                            </div> :
+                            <div className="w-6 h-6 bg-error-500 rounded-full flex items-center justify-center">
                               <X size={14} className="text-white" />
                             </div>
                           }
-                          <span className="text-sm font-medium">Total Points ≥ 26.5: {(results as any).totalPoints || 'N/A'}</span>
+                          <span className="text-sm font-medium text-gray-900">Total Points ≥ 26.5: {(results as any).totalPoints || 'N/A'}</span>
                         </div>
-                        <div className="p-3 rounded-xl bg-gray-50 text-sm text-black space-y-1">
+                        <div className="p-3 rounded-xl bg-gray-50 border border-gray-200 text-sm text-gray-700 space-y-1">
                           <div>Best 5 O-Level: {(results as any).best5OLevel?.join(', ') || 'N/A'} points</div>
                           <div>Best 2 A-Level: {(results as any).best2ALevel?.join(', ') || 'N/A'} points</div>
                         </div>
                       </>
                     ) : activeTab === 'DU Science' ? (
                       <>
-                        <div className="flex items-center gap-3 p-3 rounded-xl bg-gray-50">
-                          {(results as any).minAGrades ? 
-                            <div className="w-6 h-6 bg-vh-red rounded-full flex items-center justify-center">
+                        <div className="flex items-center gap-3 p-3 rounded-xl bg-gray-50 border border-gray-200">
+                          {(results as any).minAGrades ?
+                            <div className="w-6 h-6 bg-success-600 rounded-full flex items-center justify-center">
                               <Check size={14} className="text-white" />
-                            </div> : 
-                            <div className="w-6 h-6 bg-red-500 rounded-full flex items-center justify-center">
+                            </div> :
+                            <div className="w-6 h-6 bg-error-500 rounded-full flex items-center justify-center">
                               <X size={14} className="text-white" />
                             </div>
                           }
-                          <span className="text-sm font-medium">Minimum 3 A grades: {(results as any).gradeCount?.A || 0} A's</span>
+                          <span className="text-sm font-medium text-gray-900">Minimum 3 A grades: {(results as any).gradeCount?.A || 0} A's</span>
                         </div>
-                        <div className="flex items-center gap-3 p-3 rounded-xl bg-gray-50">
-                          {(results as any).minBGrades ? 
-                            <div className="w-6 h-6 bg-vh-red rounded-full flex items-center justify-center">
+                        <div className="flex items-center gap-3 p-3 rounded-xl bg-gray-50 border border-gray-200">
+                          {(results as any).minBGrades ?
+                            <div className="w-6 h-6 bg-success-600 rounded-full flex items-center justify-center">
                               <Check size={14} className="text-white" />
-                            </div> : 
-                            <div className="w-6 h-6 bg-red-500 rounded-full flex items-center justify-center">
+                            </div> :
+                            <div className="w-6 h-6 bg-error-500 rounded-full flex items-center justify-center">
                               <X size={14} className="text-white" />
                             </div>
                           }
-                          <span className="text-sm font-medium">Minimum 2 B grades: {(results as any).gradeCount?.B || 0} B's</span>
+                          <span className="text-sm font-medium text-gray-900">Minimum 2 B grades: {(results as any).gradeCount?.B || 0} B's</span>
                         </div>
-                        <div className="flex items-center gap-3 p-3 rounded-xl bg-gray-50">
-                          {(results as any).minCGrades ? 
-                            <div className="w-6 h-6 bg-vh-red rounded-full flex items-center justify-center">
+                        <div className="flex items-center gap-3 p-3 rounded-xl bg-gray-50 border border-gray-200">
+                          {(results as any).minCGrades ?
+                            <div className="w-6 h-6 bg-success-600 rounded-full flex items-center justify-center">
                               <Check size={14} className="text-white" />
-                            </div> : 
-                            <div className="w-6 h-6 bg-red-500 rounded-full flex items-center justify-center">
+                            </div> :
+                            <div className="w-6 h-6 bg-error-500 rounded-full flex items-center justify-center">
                               <X size={14} className="text-white" />
                             </div>
                           }
-                          <span className="text-sm font-medium">Minimum 2 C grades: {(results as any).gradeCount?.C || 0} C's</span>
+                          <span className="text-sm font-medium text-gray-900">Minimum 2 C grades: {(results as any).gradeCount?.C || 0} C's</span>
                         </div>
                         {(results as any).best7Subjects && (results as any).best7Subjects.length > 0 && (
-                          <div className="p-3 rounded-xl bg-gray-50 text-sm text-black">
-                            <div className="font-medium mb-1">Best 7 subjects:</div>
+                          <div className="p-3 rounded-xl bg-gray-50 border border-gray-200 text-sm text-gray-700">
+                            <div className="font-medium mb-1 text-gray-900">Best 7 subjects:</div>
                             <div className="space-y-1">
                               {(results as any).best7Subjects.map((subject: any, index: number) => (
                                 <div key={index} className="flex justify-between">
@@ -797,52 +763,52 @@ const UniversityEligibilityChecker = ({ onEligibilityUpdate }: EligibilityChecke
                       </>
                     ) : activeTab === 'DU Business' ? (
                       <>
-                        <div className="flex items-center gap-3 p-3 rounded-xl bg-gray-50">
-                          {(results as any).oLevelPass ? 
-                            <div className="w-6 h-6 bg-vh-red rounded-full flex items-center justify-center">
+                        <div className="flex items-center gap-3 p-3 rounded-xl bg-gray-50 border border-gray-200">
+                          {(results as any).oLevelPass ?
+                            <div className="w-6 h-6 bg-success-600 rounded-full flex items-center justify-center">
                               <Check size={14} className="text-white" />
-                            </div> : 
-                            <div className="w-6 h-6 bg-red-500 rounded-full flex items-center justify-center">
+                            </div> :
+                            <div className="w-6 h-6 bg-error-500 rounded-full flex items-center justify-center">
                               <X size={14} className="text-white" />
                             </div>
                           }
-                          <span className="text-sm font-medium">O-Level GPA ≥ 3.0: {(results as any).oLevelGPA || 'N/A'}</span>
+                          <span className="text-sm font-medium text-gray-900">O-Level GPA ≥ 3.0: {(results as any).oLevelGPA || 'N/A'}</span>
                         </div>
-                        <div className="flex items-center gap-3 p-3 rounded-xl bg-gray-50">
-                          {(results as any).aLevelPass ? 
-                            <div className="w-6 h-6 bg-vh-red rounded-full flex items-center justify-center">
+                        <div className="flex items-center gap-3 p-3 rounded-xl bg-gray-50 border border-gray-200">
+                          {(results as any).aLevelPass ?
+                            <div className="w-6 h-6 bg-success-600 rounded-full flex items-center justify-center">
                               <Check size={14} className="text-white" />
-                            </div> : 
-                            <div className="w-6 h-6 bg-red-500 rounded-full flex items-center justify-center">
+                            </div> :
+                            <div className="w-6 h-6 bg-error-500 rounded-full flex items-center justify-center">
                               <X size={14} className="text-white" />
                             </div>
                           }
-                          <span className="text-sm font-medium">A-Level GPA ≥ 3.0: {(results as any).aLevelGPA || 'N/A'}</span>
+                          <span className="text-sm font-medium text-gray-900">A-Level GPA ≥ 3.0: {(results as any).aLevelGPA || 'N/A'}</span>
                         </div>
-                        <div className="flex items-center gap-3 p-3 rounded-xl bg-gray-50">
-                          {(results as any).minBGrades ? 
-                            <div className="w-6 h-6 bg-vh-red rounded-full flex items-center justify-center">
+                        <div className="flex items-center gap-3 p-3 rounded-xl bg-gray-50 border border-gray-200">
+                          {(results as any).minBGrades ?
+                            <div className="w-6 h-6 bg-success-600 rounded-full flex items-center justify-center">
                               <Check size={14} className="text-white" />
-                            </div> : 
-                            <div className="w-6 h-6 bg-red-500 rounded-full flex items-center justify-center">
+                            </div> :
+                            <div className="w-6 h-6 bg-error-500 rounded-full flex items-center justify-center">
                               <X size={14} className="text-white" />
                             </div>
                           }
-                          <span className="text-sm font-medium">Minimum 3 subjects with B+: {results.bPlusCount || 0} subjects</span>
+                          <span className="text-sm font-medium text-gray-900">Minimum 3 subjects with B+: {results.bPlusCount || 0} subjects</span>
                         </div>
-                        <div className="flex items-center gap-3 p-3 rounded-xl bg-gray-50">
-                          {(results as any).minCGrades ? 
-                            <div className="w-6 h-6 bg-vh-red rounded-full flex items-center justify-center">
+                        <div className="flex items-center gap-3 p-3 rounded-xl bg-gray-50 border border-gray-200">
+                          {(results as any).minCGrades ?
+                            <div className="w-6 h-6 bg-success-600 rounded-full flex items-center justify-center">
                               <Check size={14} className="text-white" />
-                            </div> : 
-                            <div className="w-6 h-6 bg-red-500 rounded-full flex items-center justify-center">
+                            </div> :
+                            <div className="w-6 h-6 bg-error-500 rounded-full flex items-center justify-center">
                               <X size={14} className="text-white" />
                             </div>
                           }
-                          <span className="text-sm font-medium">Minimum 3 subjects with C+: {results.cPlusCount || 0} subjects</span>
+                          <span className="text-sm font-medium text-gray-900">Minimum 3 subjects with C+: {results.cPlusCount || 0} subjects</span>
                         </div>
-                        <div className="p-3 rounded-xl bg-gray-50 text-sm text-black">
-                          <div className="font-medium mb-1">Grade Distribution (All 7 subjects):</div>
+                        <div className="p-3 rounded-xl bg-gray-50 border border-gray-200 text-sm text-gray-700">
+                          <div className="font-medium mb-1 text-gray-900">Grade Distribution (All 7 subjects):</div>
                           <div className="grid grid-cols-2 gap-2">
                             <div>A: {results.gradeCount?.A || 0}</div>
                             <div>B: {results.gradeCount?.B || 0}</div>
@@ -853,42 +819,42 @@ const UniversityEligibilityChecker = ({ onEligibilityUpdate }: EligibilityChecke
                       </>
                     ) : (
                       <>
-                        <div className="flex items-center gap-3 p-3 rounded-xl bg-gray-50">
-                          {!results.missingOLevelSubjects?.length && !results.lowGradeOLevelSubjects?.length ? 
-                            <div className="w-6 h-6 bg-vh-red rounded-full flex items-center justify-center">
+                        <div className="flex items-center gap-3 p-3 rounded-xl bg-gray-50 border border-gray-200">
+                          {!results.missingOLevelSubjects?.length && !results.lowGradeOLevelSubjects?.length ?
+                            <div className="w-6 h-6 bg-success-600 rounded-full flex items-center justify-center">
                               <Check size={14} className="text-white" />
-                            </div> : 
-                            <div className="w-6 h-6 bg-red-500 rounded-full flex items-center justify-center">
+                            </div> :
+                            <div className="w-6 h-6 bg-error-500 rounded-full flex items-center justify-center">
                               <X size={14} className="text-white" />
                             </div>
                           }
-                          <span className="text-sm font-medium">O-Level: Minimum 5 subjects including Math, Physics, Chemistry, English (min. grade B)</span>
+                          <span className="text-sm font-medium text-gray-900">O-Level: Minimum 5 subjects including Math, Physics, Chemistry, English (min. grade B)</span>
                         </div>
-                        <div className="flex items-center gap-3 p-3 rounded-xl bg-gray-50">
-                          {results.aGradeCount >= 2 ? 
-                            <div className="w-6 h-6 bg-vh-red rounded-full flex items-center justify-center">
+                        <div className="flex items-center gap-3 p-3 rounded-xl bg-gray-50 border border-gray-200">
+                          {results.aGradeCount >= 2 ?
+                            <div className="w-6 h-6 bg-success-600 rounded-full flex items-center justify-center">
                               <Check size={14} className="text-white" />
-                            </div> : 
-                            <div className="w-6 h-6 bg-red-500 rounded-full flex items-center justify-center">
+                            </div> :
+                            <div className="w-6 h-6 bg-error-500 rounded-full flex items-center justify-center">
                               <X size={14} className="text-white" />
                             </div>
                           }
-                          <span className="text-sm font-medium">A-Level: All 3 subjects required (Math/Physics/Chemistry) with 2 A grades: {results.aGradeCount || 0}/2</span>
+                          <span className="text-sm font-medium text-gray-900">A-Level: All 3 subjects required (Math/Physics/Chemistry) with 2 A grades: {results.aGradeCount || 0}/2</span>
                         </div>
-                        <div className="flex items-center gap-3 p-3 rounded-xl bg-gray-50">
-                          {results.bOrBetterCount >= 3 ? 
-                            <div className="w-6 h-6 bg-vh-red rounded-full flex items-center justify-center">
+                        <div className="flex items-center gap-3 p-3 rounded-xl bg-gray-50 border border-gray-200">
+                          {results.bOrBetterCount >= 3 ?
+                            <div className="w-6 h-6 bg-success-600 rounded-full flex items-center justify-center">
                               <Check size={14} className="text-white" />
-                            </div> : 
-                            <div className="w-6 h-6 bg-red-500 rounded-full flex items-center justify-center">
+                            </div> :
+                            <div className="w-6 h-6 bg-error-500 rounded-full flex items-center justify-center">
                               <X size={14} className="text-white" />
                             </div>
                           }
-                          <span className="text-sm font-medium">All 3 subjects minimum grade B (2A + 1B): {results.bOrBetterCount || 0}/3</span>
+                          <span className="text-sm font-medium text-gray-900">All 3 subjects minimum grade B (2A + 1B): {results.bOrBetterCount || 0}/3</span>
                         </div>
                         {results.aLevelScience && results.aLevelScience.length > 0 && (
-                          <div className="p-3 rounded-xl bg-gray-50 text-sm text-black">
-                            <div className="font-medium mb-1">A-Level Science Subjects:</div>
+                          <div className="p-3 rounded-xl bg-gray-50 border border-gray-200 text-sm text-gray-700">
+                            <div className="font-medium mb-1 text-gray-900">A-Level Science Subjects:</div>
                             <div className="space-y-1">
                               {results.aLevelScience.map((subject: any, index: number) => (
                                 <div key={index} className="flex justify-between">
@@ -899,7 +865,7 @@ const UniversityEligibilityChecker = ({ onEligibilityUpdate }: EligibilityChecke
                             </div>
                           </div>
                         )}
-                        <div className="p-3 rounded-xl bg-red-50 border border-red-200 text-sm text-red-700">
+                        <div className="p-3 rounded-xl bg-warning-50 border border-warning-200 text-sm text-warning-800">
                           <div className="font-medium mb-1">⚠️ Important Selection Process:</div>
                           <div>Meeting minimum eligibility only qualifies you for ranking. Final selection is based on ranking top 400 candidates using converted A-Level Math/Physics/Chemistry grades.</div>
                         </div>
@@ -907,40 +873,42 @@ const UniversityEligibilityChecker = ({ onEligibilityUpdate }: EligibilityChecke
                     )}
                   </div>
                 </div>
-                
+
+
                 <div className="space-y-4">
-                  <h3 className="font-semibold text-black">Grade Points ({activeTab})</h3>
+                  <h3 className="font-semibold text-gray-900">Grade Points ({activeTab})</h3>
                   <div className="grid grid-cols-2 gap-3 text-sm">
-                    <div className="p-3 rounded-xl bg-gray-50 text-center">
-                      <div className="font-semibold">A</div>
-                      <div className="text-black">5.0</div>
+                    <div className="p-3 rounded-xl bg-gray-50 border border-gray-200 text-center">
+                      <div className="font-semibold text-gray-900">A</div>
+                      <div className="text-gray-700">5.0</div>
                     </div>
-                    <div className="p-3 rounded-xl bg-gray-50 text-center">
-                      <div className="font-semibold">B</div>
-                      <div className="text-black">4.0</div>
+                    <div className="p-3 rounded-xl bg-gray-50 border border-gray-200 text-center">
+                      <div className="font-semibold text-gray-900">B</div>
+                      <div className="text-gray-700">4.0</div>
                     </div>
-                    <div className="p-3 rounded-xl bg-gray-50 text-center">
-                      <div className="font-semibold">C</div>
-                      <div className="text-black">{activeTab === 'IBA' ? '3.0' : '3.5'}</div>
+                    <div className="p-3 rounded-xl bg-gray-50 border border-gray-200 text-center">
+                      <div className="font-semibold text-gray-900">C</div>
+                      <div className="text-gray-700">{activeTab === 'IBA' ? '3.0' : '3.5'}</div>
                     </div>
                     {activeTab !== 'DU Science' && (
-                      <div className="p-3 rounded-xl bg-gray-50 text-center">
-                        <div className="font-semibold">D</div>
-                        <div className="text-black">{activeTab === 'IBA' ? '0.0' : activeTab === 'DU Business' ? '0.1' : activeTab === 'BUET' ? 'Allowed' : '3.0'}</div>
+                      <div className="p-3 rounded-xl bg-gray-50 border border-gray-200 text-center">
+                        <div className="font-semibold text-gray-900">D</div>
+                        <div className="text-gray-700">{activeTab === 'IBA' ? '0.0' : activeTab === 'DU Business' ? '0.1' : activeTab === 'BUET' ? 'Allowed' : '3.0'}</div>
                       </div>
                     )}
                     {activeTab === 'DU Science' && (
-                      <div className="p-3 rounded-xl bg-red-50 border border-red-200 text-center">
-                        <div className="font-semibold text-red-600">D</div>
-                        <div className="text-red-600 text-xs">Not Allowed</div>
+                      <div className="p-3 rounded-xl bg-error-50 border border-error-200 text-center">
+                        <div className="font-semibold text-error-700">D</div>
+                        <div className="text-error-700 text-xs">Not Allowed</div>
                       </div>
                     )}
                   </div>
-                  
+
+
                   {activeTab === 'DU Science' && (
-                    <div className="mt-4 p-3 rounded-xl bg-vh-beige/20 border border-vh-beige">
-                      <h4 className="font-semibold text-vh-dark-red text-sm mb-2">Additional Requirements</h4>
-                      <div className="text-xs text-vh-red space-y-1">
+                    <div className="mt-4 p-3 rounded-xl bg-vh-beige-50 border border-vh-beige-300">
+                      <h4 className="font-semibold text-vh-red-700 text-sm mb-2">Additional Requirements</h4>
+                      <div className="text-xs text-vh-red-600 space-y-1">
                         <div>• Best 7 subjects from O+A Level combined</div>
                         <div>• Science/Humanities/Business stream</div>
                         <div>• Grade distribution: 3 A's, 2 B's, 2 C's minimum</div>
@@ -948,11 +916,11 @@ const UniversityEligibilityChecker = ({ onEligibilityUpdate }: EligibilityChecke
                       </div>
                     </div>
                   )}
-                  
+
                   {activeTab === 'DU Business' && (
-                    <div className="mt-4 p-3 rounded-xl bg-vh-beige/30 border border-vh-dark-beige">
-                      <h4 className="font-semibold text-vh-dark-red text-sm mb-2">DU FBS Requirements</h4>
-                      <div className="text-xs text-vh-red space-y-1">
+                    <div className="mt-4 p-3 rounded-xl bg-vh-beige-100 border border-vh-beige-300">
+                      <h4 className="font-semibold text-vh-red-700 text-sm mb-2">DU FBS Requirements</h4>
+                      <div className="text-xs text-vh-red-600 space-y-1">
                         <div>• O-Level GPA ≥ 3.0 (best 5 subjects)</div>
                         <div>• A-Level GPA ≥ 3.0 (best 2 subjects)</div>
                         <div>• 3 subjects minimum with B+ grades (A or B)</div>
@@ -961,11 +929,11 @@ const UniversityEligibilityChecker = ({ onEligibilityUpdate }: EligibilityChecke
                       </div>
                     </div>
                   )}
-                  
+
                   {activeTab === 'BUET' && (
-                    <div className="mt-4 p-3 rounded-xl bg-red-50 border border-red-200">
-                      <h4 className="font-semibold text-red-900 text-sm mb-2">BUET Engineering Requirements</h4>
-                      <div className="text-xs text-red-700 space-y-1">
+                    <div className="mt-4 p-3 rounded-xl bg-error-50 border border-error-200">
+                      <h4 className="font-semibold text-error-900 text-sm mb-2">BUET Engineering Requirements</h4>
+                      <div className="text-xs text-error-700 space-y-1">
                         <div>• O-Level: Minimum 5 subjects including Math, Physics, Chemistry, English</div>
                         <div>• All required O-Level subjects minimum grade B</div>
                         <div>• A-Level: All 3 subjects required (Math/Physics/Chemistry)</div>
@@ -977,27 +945,28 @@ const UniversityEligibilityChecker = ({ onEligibilityUpdate }: EligibilityChecke
                 </div>
               </div>
 
-              <div className={`mt-6 p-6 rounded-2xl ${results.eligible ? 'bg-vh-beige/20 border border-vh-beige' : 'bg-red-50 border border-red-200'}`}>
+              <div className={`mt-6 p-6 rounded-2xl border-2 ${results.eligible ? 'bg-success-50 border-success-300' : 'bg-error-50 border-error-300'}`}>
                 <div className="flex items-center gap-3 mb-3">
-                  {results.eligible ? 
-                    <div className="w-8 h-8 bg-vh-red rounded-full flex items-center justify-center">
+                  {results.eligible ?
+                    <div className="w-8 h-8 bg-success-600 rounded-full flex items-center justify-center shadow-sm">
                       <Check size={18} className="text-white" />
-                    </div> : 
-                    <div className="w-8 h-8 bg-red-500 rounded-full flex items-center justify-center">
+                    </div> :
+                    <div className="w-8 h-8 bg-error-600 rounded-full flex items-center justify-center shadow-sm">
                       <X size={18} className="text-white" />
                     </div>
                   }
-                  <span className={`font-bold text-lg ${results.eligible ? 'text-vh-dark-red' : 'text-red-800'}`}>
+                  <span className={`font-bold text-lg ${results.eligible ? 'text-success-800' : 'text-error-800'}`}>
                     {results.eligible ? `ELIGIBLE FOR ${activeTab}` : `NOT ELIGIBLE FOR ${activeTab}`}
                   </span>
                 </div>
-                <p className={`text-sm ${results.eligible ? 'text-vh-red' : 'text-red-700'}`}>
+                <p className={`text-sm ${results.eligible ? 'text-success-700' : 'text-error-700'}`}>
                   {results.reason}
                 </p>
               </div>
             </div>
-          </div>
+          </Card>
         </div>
+        </Tabs>
       </div>
     </div>
   );

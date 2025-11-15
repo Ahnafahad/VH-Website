@@ -1,36 +1,45 @@
-'use client'
+'use client';
 
-import { useSession, signIn, signOut } from 'next-auth/react'
+import { useSession, signIn, signOut } from 'next-auth/react';
+import { LogIn, LogOut } from 'lucide-react';
+import Button from './ui/Button';
+import Skeleton from './ui/Skeleton';
 
 export default function LoginButton() {
-  const { data: session, status } = useSession()
+  const { data: session, status } = useSession();
 
   if (status === 'loading') {
-    return <div className="animate-pulse bg-gray-200 h-8 w-20 rounded"></div>
+    return <Skeleton variant="rounded" width="120px" height="44px" />;
   }
 
   if (session) {
     return (
-      <div className="flex items-center space-x-4">
-        <span className="text-sm text-gray-700">
-          Welcome, {session.user?.name || session.user?.email}
+      <div className="flex items-center gap-3">
+        <span className="hidden sm:inline text-sm font-medium text-gray-700 max-w-[150px] truncate">
+          {session.user?.name || session.user?.email}
         </span>
-        <button
+        <Button
+          variant="outline"
+          colorScheme="error"
+          size="md"
+          leftIcon={<LogOut size={16} />}
           onClick={() => signOut()}
-          className="bg-red-600 hover:bg-red-700 text-white px-4 py-3 rounded-md text-sm font-medium transition-colors min-h-[44px] flex items-center"
         >
           Sign Out
-        </button>
+        </Button>
       </div>
-    )
+    );
   }
 
   return (
-    <button
+    <Button
+      variant="solid"
+      colorScheme="info"
+      size="md"
+      leftIcon={<LogIn size={16} />}
       onClick={() => signIn('google')}
-      className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-3 rounded-md text-sm font-medium transition-colors min-h-[44px] flex items-center"
     >
       Sign In
-    </button>
-  )
+    </Button>
+  );
 }
