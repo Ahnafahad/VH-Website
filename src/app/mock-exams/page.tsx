@@ -2,8 +2,50 @@
 
 import { Calendar, Clock, TrendingUp, Award, ArrowRight, CheckCircle, Sparkles, Target, Users, BarChart3 } from 'lucide-react';
 import Link from 'next/link';
+import Card from '@/components/ui/Card';
+import Button from '@/components/ui/Button';
+import Badge from '@/components/ui/Badge';
+import { motion, useScroll, useTransform, useInView } from 'framer-motion';
+import { useRef } from 'react';
+
+// Animation variants
+const fadeInUp = {
+  hidden: { opacity: 0, y: 40 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6 }
+  }
+};
+
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1
+    }
+  }
+};
+
+const scaleIn = {
+  hidden: { opacity: 0, scale: 0.9 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: { duration: 0.5 }
+  }
+};
 
 export default function MockExamsPage() {
+  const { scrollY } = useScroll();
+  const featuresRef = useRef(null);
+  const duIbaRef = useRef(null);
+  const duFbsRef = useRef(null);
+
+  const featuresInView = useInView(featuresRef, { once: true, margin: "-100px" });
+  const duIbaInView = useInView(duIbaRef, { once: true, margin: "-100px" });
+  const duFbsInView = useInView(duFbsRef, { once: true, margin: "-100px" });
   const duIbaMocks = [
     { no: 1, date: 'Nov 3, 2025', day: 'Monday', time: '12:00 PM – 2:00 PM', isFree: true },
     { no: 2, date: 'Nov 6, 2025', day: 'Thursday', time: '11:00 AM – 1:00 PM' },
@@ -28,105 +70,180 @@ export default function MockExamsPage() {
     { no: 8, date: 'Dec 4, 2025', day: 'Thursday', time: '2:00 PM – 4:00 PM' },
   ];
 
+  const heroY = useTransform(scrollY, [0, 500], [0, 150]);
+  const heroOpacity = useTransform(scrollY, [0, 300], [1, 0]);
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-vh-beige/5">
 
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-vh-red via-vh-dark-red to-vh-dark-red overflow-hidden py-20 md:py-28 lg:py-32">
+      <section className="relative bg-gradient-to-br from-vh-red-600 via-vh-red-800 to-vh-red-900 overflow-hidden py-20 md:py-28 lg:py-32">
         {/* Animated Background */}
         <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-0 left-0 w-96 h-96 bg-white rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-0 right-0 w-96 h-96 bg-vh-beige rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+          <motion.div
+            className="absolute top-0 left-0 w-96 h-96 bg-white rounded-full blur-3xl"
+            animate={{
+              scale: [1, 1.2, 1],
+              opacity: [0.3, 0.5, 0.3],
+            }}
+            transition={{
+              duration: 8,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          />
+          <motion.div
+            className="absolute bottom-0 right-0 w-96 h-96 bg-vh-beige rounded-full blur-3xl"
+            animate={{
+              scale: [1, 1.2, 1],
+              opacity: [0.3, 0.5, 0.3],
+            }}
+            transition={{
+              duration: 8,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 1
+            }}
+          />
         </div>
 
-        <div className="relative max-w-7xl 2xl:max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div
+          className="relative max-w-7xl 2xl:max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-8"
+          style={{ y: heroY, opacity: heroOpacity }}
+        >
           <div className="text-center">
-            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-xl px-4 py-2 rounded-full border border-white/20 mb-8">
+            <motion.div
+              className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-xl px-4 py-2 rounded-full border border-white/20 mb-8"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+            >
               <Sparkles className="w-5 h-5 text-vh-beige" />
               <span className="text-white/90 font-medium">Premium Mock Test Series 2025</span>
-            </div>
+            </motion.div>
 
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl font-black leading-tight mb-8 text-white">
+            <motion.h1
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl font-black leading-tight mb-8 text-white"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
               VH Mock Exams
               <span className="block text-3xl sm:text-4xl md:text-5xl lg:text-6xl 2xl:text-7xl bg-gradient-to-r from-vh-beige via-white to-vh-beige bg-clip-text text-transparent mt-4">
                 Your Path to Success
               </span>
-            </h1>
+            </motion.h1>
 
-            <p className="text-xl md:text-2xl lg:text-3xl 2xl:text-4xl mb-8 text-white/90 font-light max-w-4xl mx-auto">
+            <motion.p
+              className="text-xl md:text-2xl lg:text-3xl 2xl:text-4xl mb-8 text-white/90 font-light max-w-4xl mx-auto"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+            >
               Complete mock test series for DU IBA, DU FBS, BUP IBA & BUP FBS admissions
               <span className="block text-lg md:text-xl lg:text-2xl 2xl:text-3xl mt-4 text-vh-beige/90">
                 Available in both Online & Offline modes
               </span>
-            </p>
+            </motion.p>
 
             {/* Free First Mock Highlight */}
-            <div className="inline-block bg-gradient-to-r from-yellow-400 to-yellow-500 text-gray-900 px-8 py-4 rounded-2xl font-black text-xl md:text-2xl mb-12 shadow-2xl transform hover:scale-105 transition-all duration-300">
+            <motion.div
+              className="inline-block bg-gradient-to-r from-yellow-400 to-yellow-500 text-gray-900 px-8 py-4 rounded-2xl font-black text-xl md:text-2xl mb-12 shadow-2xl"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, delay: 0.6 }}
+              whileHover={{ scale: 1.05 }}
+            >
               🎉 First Mock is 100% FREE!
-            </div>
+            </motion.div>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <Link
-                href="/mock-exams#register"
-                className="group bg-white text-vh-red px-10 py-5 rounded-2xl font-bold text-lg hover:bg-vh-beige hover:text-white hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 inline-flex items-center justify-center min-h-[44px]"
-              >
-                <Target className="mr-3 w-6 h-6" />
-                Register for Free Mock
-                <ArrowRight className="ml-3 w-6 h-6 group-hover:translate-x-2 transition-transform" />
-              </Link>
+            <motion.div
+              className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.8 }}
+            >
+              <motion.div whileHover={{ y: -4 }} whileTap={{ scale: 0.98 }}>
+                <Link
+                  href="/mock-exams#register"
+                  className="group bg-white text-vh-red px-10 py-5 rounded-2xl font-bold text-lg hover:bg-vh-beige hover:text-white hover:shadow-2xl transition-all duration-300 inline-flex items-center justify-center min-h-[44px]"
+                >
+                  <Target className="mr-3 w-6 h-6" />
+                  Register for Free Mock
+                  <ArrowRight className="ml-3 w-6 h-6 group-hover:translate-x-2 transition-transform" />
+                </Link>
+              </motion.div>
 
-              <Link
-                href="/mocksample"
-                className="group border-2 border-white/30 backdrop-blur-xl text-white px-10 py-5 rounded-2xl font-bold text-lg hover:border-white hover:bg-white/10 transition-all duration-300 inline-flex items-center justify-center min-h-[44px]"
-              >
-                <BarChart3 className="mr-3 w-6 h-6" />
-                View Sample Analytics
-              </Link>
-            </div>
+              <motion.div whileHover={{ y: -4 }} whileTap={{ scale: 0.98 }}>
+                <Link
+                  href="/mocksample"
+                  className="group border-2 border-white/30 backdrop-blur-xl text-white px-10 py-5 rounded-2xl font-bold text-lg hover:border-white hover:bg-white/10 transition-all duration-300 inline-flex items-center justify-center min-h-[44px]"
+                >
+                  <BarChart3 className="mr-3 w-6 h-6" />
+                  View Sample Analytics
+                </Link>
+              </motion.div>
+            </motion.div>
           </div>
-        </div>
+        </motion.div>
       </section>
 
       {/* Features Section */}
-      <section className="py-12 md:py-16 bg-white">
+      <section ref={featuresRef} className="py-12 md:py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="text-center p-6 bg-gradient-to-br from-vh-red/5 to-transparent rounded-2xl border border-vh-red/10">
-              <div className="w-16 h-16 bg-gradient-to-br from-vh-red to-vh-dark-red rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <TrendingUp className="w-8 h-8 text-white" />
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">Advanced Analytics</h3>
-              <p className="text-gray-600">Detailed performance insights, percentile rankings, and improvement tracking</p>
-            </div>
+          <motion.div
+            className="grid grid-cols-1 md:grid-cols-3 gap-8"
+            variants={staggerContainer}
+            initial="hidden"
+            animate={featuresInView ? "visible" : "hidden"}
+          >
+            <motion.div variants={scaleIn}>
+              <Card variant="filled" padding="lg" className="text-center bg-gradient-to-br from-vh-red-50 to-transparent border-vh-red-100 h-full">
+                <div className="w-16 h-16 bg-gradient-to-br from-vh-red-600 to-vh-red-800 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                  <TrendingUp className="w-8 h-8 text-white" />
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-2">Advanced Analytics</h3>
+                <p className="text-gray-600">Detailed performance insights, percentile rankings, and improvement tracking</p>
+              </Card>
+            </motion.div>
 
-            <div className="text-center p-6 bg-gradient-to-br from-vh-beige/20 to-transparent rounded-2xl border border-vh-beige/30">
-              <div className="w-16 h-16 bg-gradient-to-br from-vh-beige to-vh-dark-beige rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <Award className="w-8 h-8 text-white" />
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">Real Exam Format</h3>
-              <p className="text-gray-600">Authentic question patterns matching actual university admission tests</p>
-            </div>
+            <motion.div variants={scaleIn}>
+              <Card variant="filled" padding="lg" className="text-center bg-gradient-to-br from-vh-beige-100 to-transparent border-vh-beige-300 h-full">
+                <div className="w-16 h-16 bg-gradient-to-br from-vh-beige-600 to-vh-beige-800 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                  <Award className="w-8 h-8 text-white" />
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-2">Real Exam Format</h3>
+                <p className="text-gray-600">Authentic question patterns matching actual university admission tests</p>
+              </Card>
+            </motion.div>
 
-            <div className="text-center p-6 bg-gradient-to-br from-green-50 to-transparent rounded-2xl border border-green-100">
-              <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-green-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <Users className="w-8 h-8 text-white" />
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">Class Rankings</h3>
-              <p className="text-gray-600">Compare your performance with peers and top scorers</p>
-            </div>
-          </div>
+            <motion.div variants={scaleIn}>
+              <Card variant="filled" padding="lg" className="text-center bg-gradient-to-br from-success-50 to-transparent border-success-200 h-full">
+                <div className="w-16 h-16 bg-gradient-to-br from-success-500 to-success-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                  <Users className="w-8 h-8 text-white" />
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-2">Class Rankings</h3>
+                <p className="text-gray-600">Compare your performance with peers and top scorers</p>
+              </Card>
+            </motion.div>
+          </motion.div>
         </div>
       </section>
 
       {/* DU IBA Mock Section */}
-      <section className="py-16 md:py-24 bg-gradient-to-br from-gray-50 to-white" id="du-iba">
+      <section ref={duIbaRef} className="py-16 md:py-24 bg-gradient-to-br from-gray-50 to-white" id="du-iba">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-2 bg-vh-red/10 px-4 py-2 rounded-full border border-vh-red/20 mb-4">
-              <Calendar className="w-5 h-5 text-vh-red" />
-              <span className="text-vh-red font-semibold">10 Mock Tests</span>
-            </div>
+          <motion.div
+            className="text-center mb-12"
+            variants={fadeInUp}
+            initial="hidden"
+            animate={duIbaInView ? "visible" : "hidden"}
+          >
+            <Badge variant="outline" colorScheme="primary" size="lg" className="mb-4">
+              <Calendar className="w-5 h-5 mr-2" />
+              10 Mock Tests
+            </Badge>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-gray-900 mb-4">
               DU IBA Mock Test Series
             </h2>
@@ -134,24 +251,35 @@ export default function MockExamsPage() {
               Complete preparation for Dhaka University Institute of Business Administration
               <span className="block mt-2 text-vh-red font-semibold">Available in both Online & Offline modes</span>
             </p>
-          </div>
+          </motion.div>
 
           {/* Mock Schedule Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {duIbaMocks.map((mock) => (
-              <div
+          <motion.div
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+            variants={staggerContainer}
+            initial="hidden"
+            animate={duIbaInView ? "visible" : "hidden"}
+          >
+            {duIbaMocks.map((mock, index) => (
+              <motion.div
                 key={mock.no}
-                className={`relative group bg-white rounded-2xl p-6 border-2 transition-all duration-300 hover:shadow-xl ${
+                variants={scaleIn}
+                whileHover={{ y: -8, transition: { duration: 0.3 } }}
+              >
+                <Card
+                variant="outlined"
+                padding="lg"
+                className={`relative group transition-all duration-300 hover:shadow-xl h-full ${
                   mock.isFree
-                    ? 'border-yellow-400 bg-gradient-to-br from-yellow-50 to-white'
-                    : 'border-gray-200 hover:border-vh-red/30'
+                    ? 'border-warning-400 bg-gradient-to-br from-warning-50 to-white'
+                    : 'border-gray-200 hover:border-vh-red-200'
                 }`}
               >
                 {mock.isFree && (
                   <div className="absolute -top-3 -right-3">
-                    <div className="bg-gradient-to-r from-yellow-400 to-yellow-500 text-gray-900 px-3 py-1 rounded-full text-sm font-black shadow-lg">
+                    <Badge variant="solid" colorScheme="warning" size="sm" className="shadow-lg font-black">
                       FREE
-                    </div>
+                    </Badge>
                   </div>
                 )}
 
@@ -180,9 +308,10 @@ export default function MockExamsPage() {
                     Register Now - FREE
                   </Link>
                 )}
-              </div>
+              </Card>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
 
           <div className="text-center mt-12">
             <Link
@@ -198,54 +327,70 @@ export default function MockExamsPage() {
       </section>
 
       {/* DU FBS Mock Section */}
-      <section className="py-16 md:py-24 bg-white" id="du-fbs">
+      <section ref={duFbsRef} className="py-16 md:py-24 bg-white" id="du-fbs">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-2 bg-vh-beige/20 px-4 py-2 rounded-full border border-vh-beige/30 mb-4">
-              <Calendar className="w-5 h-5 text-vh-dark-beige" />
-              <span className="text-vh-dark-beige font-semibold">8 Mock Tests</span>
-            </div>
+          <motion.div
+            className="text-center mb-12"
+            variants={fadeInUp}
+            initial="hidden"
+            animate={duFbsInView ? "visible" : "hidden"}
+          >
+            <Badge variant="outline" colorScheme="secondary" size="lg" className="mb-4 border-vh-beige-500 text-vh-beige-800">
+              <Calendar className="w-5 h-5 mr-2" />
+              8 Mock Tests
+            </Badge>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-gray-900 mb-4">
               DU FBS Mock Test Series
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               Complete preparation for Dhaka University Faculty of Business Studies
-              <span className="block mt-2 text-vh-dark-beige font-semibold">Available in both Online & Offline modes</span>
+              <span className="block mt-2 text-vh-beige-800 font-semibold">Available in both Online & Offline modes</span>
             </p>
-          </div>
+          </motion.div>
 
           {/* Mock Schedule Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {duFbsMocks.map((mock) => (
-              <div
+          <motion.div
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+            variants={staggerContainer}
+            initial="hidden"
+            animate={duFbsInView ? "visible" : "hidden"}
+          >
+            {duFbsMocks.map((mock, index) => (
+              <motion.div
                 key={mock.no}
-                className={`relative group bg-white rounded-2xl p-6 border-2 transition-all duration-300 hover:shadow-xl ${
+                variants={scaleIn}
+                whileHover={{ y: -8, transition: { duration: 0.3 } }}
+              >
+                <Card
+                variant="outlined"
+                padding="lg"
+                className={`relative group transition-all duration-300 hover:shadow-xl h-full ${
                   mock.isFree
-                    ? 'border-yellow-400 bg-gradient-to-br from-yellow-50 to-white'
-                    : 'border-gray-200 hover:border-vh-beige/50'
+                    ? 'border-warning-400 bg-gradient-to-br from-warning-50 to-white'
+                    : 'border-gray-200 hover:border-vh-beige-300'
                 }`}
               >
                 {mock.isFree && (
                   <div className="absolute -top-3 -right-3">
-                    <div className="bg-gradient-to-r from-yellow-400 to-yellow-500 text-gray-900 px-3 py-1 rounded-full text-sm font-black shadow-lg">
+                    <Badge variant="solid" colorScheme="warning" size="sm" className="shadow-lg font-black">
                       FREE
-                    </div>
+                    </Badge>
                   </div>
                 )}
 
                 <div className="flex items-center justify-between mb-4">
-                  <div className="text-4xl font-black text-vh-dark-beige">#{mock.no}</div>
+                  <div className="text-4xl font-black text-vh-beige-800">#{mock.no}</div>
                   <CheckCircle className={`w-6 h-6 ${mock.isFree ? 'text-yellow-500' : 'text-gray-300'}`} />
                 </div>
 
                 <div className="space-y-2 mb-4">
                   <div className="flex items-center gap-2 text-gray-700">
-                    <Calendar className="w-4 h-4 text-vh-dark-beige" />
+                    <Calendar className="w-4 h-4 text-vh-beige-800" />
                     <span className="font-semibold">{mock.date}</span>
                   </div>
                   <div className="text-sm text-gray-600">{mock.day}</div>
                   <div className="flex items-center gap-2 text-gray-700">
-                    <Clock className="w-4 h-4 text-vh-dark-beige" />
+                    <Clock className="w-4 h-4 text-vh-beige-800" />
                     <span className="text-sm">{mock.time}</span>
                   </div>
                 </div>
@@ -258,9 +403,10 @@ export default function MockExamsPage() {
                     Register Now - FREE
                   </Link>
                 )}
-              </div>
+              </Card>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
 
           <div className="text-center mt-12">
             <Link
