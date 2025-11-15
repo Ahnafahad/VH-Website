@@ -196,6 +196,18 @@ const TestDetailPage = () => {
     return session.user.email;
   };
 
+  // Utility function to format FBS section names
+  const formatFBSSectionName = (sectionKey: string): string => {
+    const sectionMap: { [key: string]: string } = {
+      'english': 'English',
+      'advenglish': 'Advanced English',
+      'businessstudies': 'Business Studies',
+      'accounting': 'Accounting',
+      'economics': 'Economics'
+    };
+    return sectionMap[sectionKey.toLowerCase()] || sectionKey;
+  };
+
   const formatResponseText = (response: any) => {
     // Handle new object format: {answer: "A", status: "correct"}
     if (typeof response === 'object' && response !== null) {
@@ -927,7 +939,7 @@ const TestDetailPage = () => {
                   </div>
 
                   {/* Individual Responses */}
-                  {(userResult as FullTestResult).responses && (
+                  {(userResult as FullTestResult).responses && !isFBSMock && (
                     <div className="bg-gradient-to-br from-white to-vh-beige/5 rounded-xl shadow-lg border border-vh-beige/30 hover:shadow-xl transition-all duration-300 p-6">
                       <h3 className="text-lg font-semibold text-gray-800 mb-6">Question Responses</h3>
 
@@ -943,7 +955,7 @@ const TestDetailPage = () => {
                   )}
 
                   {/* Advanced Analytics */}
-                  {(userResult as FullTestResult).analytics && (
+                  {(userResult as FullTestResult).analytics && !isFBSMock && (
                     <div className="bg-gradient-to-br from-white to-vh-beige/5 rounded-xl shadow-lg border border-vh-beige/30 hover:shadow-xl transition-all duration-300 p-6">
                       <h3 className="text-lg font-semibold text-gray-800 mb-6">Advanced Analytics</h3>
 
@@ -1214,7 +1226,7 @@ const TestDetailPage = () => {
                         )
                         .map(([sectionNum, sectionData]: [string, any]) => (
                         <div key={sectionNum} className="mb-8">
-                          <h4 className="font-semibold text-gray-700 mb-4 text-base">Section {sectionNum}</h4>
+                          <h4 className="font-semibold text-gray-700 mb-4 text-base">{formatFBSSectionName(sectionNum)}</h4>
 
                           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
                             {/* Most Correct Questions */}
@@ -1299,7 +1311,7 @@ const TestDetailPage = () => {
 
                         {Object.entries(personalAnalysis).map(([sectionNum, analysis]: [string, any]) => (
                           <div key={sectionNum} className="mb-8">
-                            <h4 className="font-semibold text-gray-700 mb-4 text-base">Section {sectionNum}</h4>
+                            <h4 className="font-semibold text-gray-700 mb-4 text-base">{formatFBSSectionName(sectionNum)}</h4>
 
                             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
                               {/* Performance on Easiest Questions */}
