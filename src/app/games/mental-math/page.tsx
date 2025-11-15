@@ -925,7 +925,6 @@ const MentalMathApp = () => {
           </motion.div>
         </div>
       </div>
-    </div>
     );
   }
 

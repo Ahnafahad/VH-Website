@@ -996,39 +996,43 @@ Respond with JSON:
             </Card>
           )}
 
-            <div className="flex flex-col sm:flex-row gap-6 justify-center">
-              <Button
-                variant="primary"
-                size="lg"
-                onClick={generateQuestions}
-                disabled={selectedSections.length === 0 || isLoading}
-                className="group flex items-center justify-center gap-3"
-              >
-                {isLoading ? (
-                  <>
-                    <RefreshCw className="animate-spin" size={24} />
-                    Generating Questions...
-                  </>
-                ) : (
-                  <>
-                    <Target size={24} />
-                    Start Quiz
-                  </>
-                )}
-              </Button>
-              <Button
-                variant="outline"
-                size="lg"
-                onClick={() => {
-                  fetchLeaderboard();
-                  setShowLeaderboard(true);
-                }}
-                className="group flex items-center justify-center gap-3"
-              >
-                <Trophy size={24} />
-                View Champions
-              </Button>
-            </div>
+          <motion.div
+            className="flex flex-col sm:flex-row gap-6 justify-center"
+            variants={fadeInUp}
+            initial="hidden"
+            animate="visible"
+          >
+            <Button
+              variant="primary"
+              size="lg"
+              onClick={generateQuestions}
+              disabled={selectedSections.length === 0 || isLoading}
+              className="group flex items-center justify-center gap-3"
+            >
+              {isLoading ? (
+                <>
+                  <RefreshCw className="animate-spin" size={24} />
+                  Generating Questions...
+                </>
+              ) : (
+                <>
+                  <Target size={24} />
+                  Start Quiz
+                </>
+              )}
+            </Button>
+            <Button
+              variant="outline"
+              size="lg"
+              onClick={() => {
+                fetchLeaderboard();
+                setShowLeaderboard(true);
+              }}
+              className="group flex items-center justify-center gap-3"
+            >
+              <Trophy size={24} />
+              View Champions
+            </Button>
           </motion.div>
         </div>
       </div>
