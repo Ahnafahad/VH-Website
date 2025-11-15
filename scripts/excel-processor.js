@@ -54,15 +54,20 @@ class ExcelProcessor {
 
   /**
    * Load students data from Students sheet or existing JSON
+   * Merges both 6-digit IDs (from IBA tests) and 7-digit IDs (from DU FBS Mocks)
    */
   loadStudentsData() {
-    // Try multiple possible locations for Simple Test Data.xlsx
+    this.studentsData = {};
+    const studentsByName = new Map(); // Track students by name to merge IDs
+
+    // STEP 1: Load students from Simple Test Data.xlsx (6-digit IDs)
     const possiblePaths = [
       path.join(this.resultsDir, 'Simple Test Data.xlsx'),
       path.join(this.resultsDir, 'IBA', 'Simple Test Data.xlsx'),
       path.join(this.resultsDir, 'IBA Mock', 'Simple Test Data.xlsx')
     ];
 
+    let simpleTestLoaded = false;
     for (const simpleTestFile of possiblePaths) {
       if (fs.existsSync(simpleTestFile)) {
         try {
@@ -71,20 +76,28 @@ class ExcelProcessor {
             const studentsSheet = workbook.Sheets['Students'];
             const studentsArray = XLSX.utils.sheet_to_json(studentsSheet);
 
-            this.studentsData = {};
             studentsArray.forEach(student => {
               const studentId = String(student['Student ID'] || student['student_id'] || student['ID'] || '');
-              if (studentId) {
+              const studentName = student['Student Name'] || student['student_name'] || student['Name'] || '';
+              const studentEmail = student['Student Email'] || student['student_email'] || student['Email'] || '';
+
+              if (studentId && studentName) {
                 this.studentsData[studentId] = {
                   id: studentId,
-                  name: student['Student Name'] || student['student_name'] || student['Name'] || '',
-                  email: student['Student Email'] || student['student_email'] || student['Email'] || ''
+                  name: studentName,
+                  email: studentEmail
                 };
+                studentsByName.set(studentName, {
+                  id: studentId,
+                  name: studentName,
+                  email: studentEmail
+                });
               }
             });
 
-            console.log(`✅ Loaded ${Object.keys(this.studentsData).length} students from ${path.relative(this.resultsDir, simpleTestFile)}`);
-            return; // Exit once found
+            console.log(`✅ Loaded ${Object.keys(this.studentsData).length} students (6-digit IDs) from ${path.relative(this.resultsDir, simpleTestFile)}`);
+            simpleTestLoaded = true;
+            break;
           }
         } catch (error) {
           this.warnings.push(`Failed to load students data from ${simpleTestFile}: ${error.message}`);
@@ -92,7 +105,54 @@ class ExcelProcessor {
       }
     }
 
-    console.log('⚠️  No Students sheet found in Simple Test Data.xlsx');
+    if (!simpleTestLoaded) {
+      console.log('⚠️  No Students sheet found in Simple Test Data.xlsx');
+    }
+
+    // STEP 2: Load students from DU FBS Mock files (7-digit IDs)
+    const fbsMockDir = path.join(this.resultsDir, 'DU FBS Mocks');
+    if (fs.existsSync(fbsMockDir)) {
+      const fbsMockFiles = fs.readdirSync(fbsMockDir).filter(f => f.endsWith('.xlsx'));
+
+      fbsMockFiles.forEach(fbsFile => {
+        try {
+          const workbook = XLSX.readFile(path.join(fbsMockDir, fbsFile));
+          if (workbook.SheetNames.includes('Sheet1')) {
+            const sheet = workbook.Sheets['Sheet1'];
+            const data = XLSX.utils.sheet_to_json(sheet);
+
+            data.forEach(row => {
+              const studentId = String(row.ID || '');
+              const studentName = row.Name || '';
+
+              if (studentId && studentName && studentId !== 'undefined') {
+                // Check if this student already exists (by name)
+                const existingStudent = studentsByName.get(studentName);
+
+                if (existingStudent) {
+                  // Student exists with 6-digit ID, add the 7-digit ID pointing to same data
+                  this.studentsData[studentId] = existingStudent;
+                } else {
+                  // New student only in FBS mocks
+                  const studentData = {
+                    id: studentId,
+                    name: studentName,
+                    email: '' // FBS mock files don't have email
+                  };
+                  this.studentsData[studentId] = studentData;
+                  studentsByName.set(studentName, studentData);
+                }
+              }
+            });
+          }
+        } catch (error) {
+          this.warnings.push(`Failed to load students from ${fbsFile}: ${error.message}`);
+        }
+      });
+
+      console.log(`✅ Total students after merging FBS IDs: ${Object.keys(this.studentsData).length} entries`);
+      console.log(`   Unique students: ${studentsByName.size}`);
+    }
   }
 
   /**
