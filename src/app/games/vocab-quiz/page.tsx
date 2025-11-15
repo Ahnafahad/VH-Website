@@ -1,8 +1,12 @@
 'use client';
 
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { Clock, BookOpen, Target, Award, RefreshCw, Trophy, RotateCcw } from 'lucide-react';
+import { motion, useScroll, useTransform, useInView, AnimatePresence } from 'framer-motion';
 import ProtectedRoute from '@/components/ProtectedRoute';
+import Card from '@/components/ui/Card';
+import Button from '@/components/ui/Button';
+import Badge from '@/components/ui/Badge';
 
 interface Question {
   sentence: string;
@@ -38,7 +42,47 @@ interface Explanation {
   explanation: string;
 }
 
+// Animation variants
+const fadeInUp = {
+  hidden: { opacity: 0, y: 40 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] }
+  }
+};
+
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.2
+    }
+  }
+};
+
+const scaleIn = {
+  hidden: { opacity: 0, scale: 0.95 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] }
+  }
+};
+
+const slideInLeft = {
+  hidden: { opacity: 0, x: -60 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] }
+  }
+};
+
 const VocabularyQuizApp = () => {
+  const { scrollY } = useScroll();
   // Vocabulary sections from the provided list
   const vocabularySections: { [key: number]: string[] } = {
     1: ["abash", "abate", "abdicate", "aberration", "abhor", "abject", "abnegate", "abortive", "abridge", "absolute", "absolve", "abstinent", "abstract", "abstruse", "abysmal", "accolade", "accost", "acerbic", "acquiesce", "acrid", "acrimonious", "acumen", "acute", "adamant", "address", "adherent", "admonish", "adroit", "adulation", "adulterate", "adverse", "aesthetic", "affable", "affectation", "affinity", "affluent", "agenda", "aggregate", "agnostic", "agrarian", "alacrity", "allege", "alleviate", "allocate", "alloy", "allusion", "aloof", "altruism", "ambience", "ambiguous", "ambivalent", "ameliorate", "amenable", "amenity", "amiable", "amnesty", "amoral", "amoralism", "amorous", "amorphous", "anachronism", "analogy", "anarchy", "anecdote", "anguish", "animosity", "anomaly", "antecedent", "antipathy", "antithesis", "apartheid"],
@@ -431,35 +475,72 @@ Respond with JSON:
 
   // Leaderboard Screen
   if (showLeaderboard) {
+    const headerRef = useRef(null);
+    const leaderboardRef = useRef(null);
+    const headerInView = useInView(headerRef, { once: true });
+    const leaderboardInView = useInView(leaderboardRef, { once: true, margin: "-100px" });
+
     return (
       <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
-        {/* Professional Background Elements */}
+        {/* Animated Background Elements */}
         <div className="absolute inset-0">
-          <div className="absolute top-20 right-20 w-72 h-72 bg-vh-red/5 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-20 left-20 w-96 h-96 bg-vh-beige/10 rounded-full blur-3xl"></div>
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full opacity-3">
-            <div className="grid grid-cols-12 gap-4 transform rotate-12">
-              {Array.from({ length: 144 }).map((_, i) => (
-                <div key={i} className="h-1 bg-gradient-to-r from-vh-red/10 to-transparent rounded animate-pulse" style={{ animationDelay: `${i * 100}ms` }}></div>
-              ))}
-            </div>
-          </div>
+          <motion.div
+            className="absolute top-20 right-20 w-72 h-72 bg-vh-red/5 rounded-full blur-3xl"
+            animate={{
+              scale: [1, 1.2, 1],
+              opacity: [0.3, 0.5, 0.3],
+            }}
+            transition={{
+              duration: 8,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          />
+          <motion.div
+            className="absolute bottom-20 left-20 w-96 h-96 bg-vh-beige/10 rounded-full blur-3xl"
+            animate={{
+              scale: [1, 1.3, 1],
+              opacity: [0.2, 0.4, 0.2],
+            }}
+            transition={{
+              duration: 10,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 1
+            }}
+          />
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10">
-          <div className="text-center mb-12 sm:mb-16">
-            <div className="inline-flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-vh-red to-vh-dark-red rounded-3xl mb-6 sm:mb-8 shadow-2xl">
+          <motion.div
+            ref={headerRef}
+            className="text-center mb-12 sm:mb-16"
+            variants={fadeInUp}
+            initial="hidden"
+            animate={headerInView ? "visible" : "hidden"}
+          >
+            <motion.div
+              className="inline-flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-vh-red-600 to-vh-red-800 rounded-3xl mb-6 sm:mb-8 shadow-2xl"
+              whileHover={{ scale: 1.05, rotate: 5 }}
+              transition={{ type: "spring", stiffness: 300 }}
+            >
               <Trophy className="text-white" size={32} />
-            </div>
+            </motion.div>
             <h1 className="text-4xl sm:text-5xl lg:text-7xl font-black text-gray-900 mb-4 sm:mb-6 px-4">
-              Vocabulary <span className="bg-gradient-to-r from-vh-red to-vh-dark-red bg-clip-text text-transparent">Champions</span>
+              Vocabulary <span className="bg-gradient-to-r from-vh-red-600 to-vh-red-800 bg-clip-text text-transparent">Champions</span>
             </h1>
             <p className="text-lg sm:text-xl lg:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed px-4">Top performers based on lifetime questions answered</p>
-          </div>
+          </motion.div>
 
-          <div className="group relative mb-16">
-            <div className="absolute inset-0 bg-gradient-to-br from-vh-red/20 to-transparent rounded-3xl blur-2xl group-hover:blur-3xl opacity-0 group-hover:opacity-100 transition-all duration-700"></div>
-            <div className="relative bg-white rounded-3xl shadow-2xl p-10 border border-gray-100 group-hover:shadow-4xl group-hover:border-vh-red/20 transition-all duration-700">
+          <motion.div
+            ref={leaderboardRef}
+            className="group relative mb-16"
+            variants={scaleIn}
+            initial="hidden"
+            animate={leaderboardInView ? "visible" : "hidden"}
+          >
+            <div className="absolute inset-0 bg-gradient-to-br from-vh-red-600/20 to-transparent rounded-3xl blur-2xl group-hover:blur-3xl opacity-0 group-hover:opacity-100 transition-all duration-700"></div>
+            <Card variant="elevated" padding="xl" className="relative group-hover:shadow-4xl transition-all duration-700">
               <div className="flex items-center mb-8">
                 <div className="w-16 h-16 bg-gradient-to-br from-vh-red to-vh-dark-red rounded-2xl flex items-center justify-center mr-6 shadow-xl">
                   <BookOpen className="text-white" size={32} />
@@ -489,18 +570,32 @@ Respond with JSON:
                   </button>
                 </div>
               ) : (
-                <div className="space-y-4">
+                <motion.div
+                  className="space-y-4"
+                  variants={staggerContainer}
+                  initial="hidden"
+                  animate="visible"
+                >
                   {leaderboard.slice(0, 20).map((entry, index) => (
-                    <div key={index} className="group/item flex items-center justify-between p-4 bg-gradient-to-r from-gray-50 to-white rounded-2xl border border-gray-100 hover:border-vh-red/30 hover:shadow-lg transition-all duration-300">
+                    <motion.div
+                      key={index}
+                      variants={scaleIn}
+                      whileHover={{ x: 8, scale: 1.02 }}
+                      className="group/item flex items-center justify-between p-4 bg-gradient-to-r from-gray-50 to-white rounded-2xl border border-gray-100 hover:border-vh-red-600/30 hover:shadow-lg transition-all duration-300"
+                    >
                       <div className="flex items-center gap-4">
-                        <span className={`w-12 h-12 rounded-2xl flex items-center justify-center text-white font-bold text-lg shadow-lg ${
-                          index === 0 ? 'bg-gradient-to-r from-yellow-400 to-yellow-600' : 
-                          index === 1 ? 'bg-gradient-to-r from-gray-400 to-gray-600' : 
-                          index === 2 ? 'bg-gradient-to-r from-amber-600 to-amber-800' : 
-                          'bg-gradient-to-r from-vh-red to-vh-dark-red'
-                        }`}>
+                        <motion.span
+                          className={`w-12 h-12 rounded-2xl flex items-center justify-center text-white font-bold text-lg shadow-lg ${
+                            index === 0 ? 'bg-gradient-to-r from-yellow-400 to-yellow-600' :
+                            index === 1 ? 'bg-gradient-to-r from-gray-400 to-gray-600' :
+                            index === 2 ? 'bg-gradient-to-r from-amber-600 to-amber-800' :
+                            'bg-gradient-to-r from-vh-red-600 to-vh-red-800'
+                          }`}
+                          whileHover={{ rotate: 360 }}
+                          transition={{ duration: 0.6 }}
+                        >
                           {index + 1}
-                        </span>
+                        </motion.span>
                         <div>
                           <div className="font-black text-gray-900 text-lg">{entry.playerName || 'Anonymous'}</div>
                           <div className="text-sm text-gray-600">
@@ -509,25 +604,32 @@ Respond with JSON:
                         </div>
                       </div>
                       <div className="text-right">
-                        <div className="font-black text-vh-red text-2xl">{entry.totalQuestionsAnswered}</div>
+                        <div className="font-black text-vh-red-600 text-2xl">{entry.totalQuestionsAnswered}</div>
                         <div className="text-xs text-gray-500 font-medium">Questions Answered</div>
                       </div>
-                    </div>
+                    </motion.div>
                   ))}
-                </div>
+                </motion.div>
               )}
-            </div>
-          </div>
+            </Card>
+          </motion.div>
 
-          <div className="text-center">
-            <button 
+          <motion.div
+            className="text-center"
+            variants={fadeInUp}
+            initial="hidden"
+            animate="visible"
+          >
+            <Button
+              variant="primary"
+              size="lg"
               onClick={() => setShowLeaderboard(false)}
-              className="group bg-gradient-to-r from-vh-red to-vh-dark-red text-white px-12 py-4 rounded-2xl font-bold text-lg hover:from-vh-dark-red hover:to-vh-red transition-all duration-300 shadow-2xl hover:shadow-vh-red/25 transform hover:-translate-y-1"
+              className="group"
             >
               <Target className="inline mr-3" size={20} />
               Back to Quiz
-            </button>
-          </div>
+            </Button>
+          </motion.div>
         </div>
       </div>
     );
@@ -535,48 +637,91 @@ Respond with JSON:
 
   // Section Selection Screen
   if (currentScreen === 'setup') {
+    const setupHeaderRef = useRef(null);
+    const sectionsRef = useRef(null);
+    const configRef = useRef(null);
+    const setupHeaderInView = useInView(setupHeaderRef, { once: true });
+    const sectionsInView = useInView(sectionsRef, { once: true, margin: "-100px" });
+    const configInView = useInView(configRef, { once: true, margin: "-100px" });
+
     return (
       <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
-        {/* Professional Background Elements */}
+        {/* Animated Background Elements */}
         <div className="absolute inset-0">
-          <div className="absolute top-20 right-20 w-72 h-72 bg-vh-red/5 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-20 left-20 w-96 h-96 bg-vh-beige/10 rounded-full blur-3xl"></div>
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full opacity-3">
-            <div className="grid grid-cols-12 gap-4 transform rotate-12">
-              {Array.from({ length: 144 }).map((_, i) => (
-                <div key={i} className="h-1 bg-gradient-to-r from-vh-red/10 to-transparent rounded animate-pulse" style={{ animationDelay: `${i * 100}ms` }}></div>
-              ))}
-            </div>
-          </div>
+          <motion.div
+            className="absolute top-20 right-20 w-72 h-72 bg-vh-red/5 rounded-full blur-3xl"
+            animate={{
+              scale: [1, 1.2, 1],
+              opacity: [0.3, 0.5, 0.3],
+            }}
+            transition={{
+              duration: 8,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          />
+          <motion.div
+            className="absolute bottom-20 left-20 w-96 h-96 bg-vh-beige/10 rounded-full blur-3xl"
+            animate={{
+              scale: [1, 1.3, 1],
+              opacity: [0.2, 0.4, 0.2],
+            }}
+            transition={{
+              duration: 10,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 1
+            }}
+          />
         </div>
 
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10">
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-vh-red to-vh-dark-red rounded-3xl mb-8 shadow-2xl">
+          <motion.div
+            ref={setupHeaderRef}
+            className="text-center mb-16"
+            variants={fadeInUp}
+            initial="hidden"
+            animate={setupHeaderInView ? "visible" : "hidden"}
+          >
+            <motion.div
+              className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-vh-red-600 to-vh-red-800 rounded-3xl mb-8 shadow-2xl"
+              whileHover={{ scale: 1.05, rotate: 5 }}
+              transition={{ type: "spring", stiffness: 300 }}
+            >
               <BookOpen className="text-white" size={40} />
-            </div>
+            </motion.div>
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-gray-900 mb-6">
-              Vocabulary <span className="bg-gradient-to-r from-vh-red to-vh-dark-red bg-clip-text text-transparent">Quiz</span>
+              Vocabulary <span className="bg-gradient-to-r from-vh-red-600 to-vh-red-800 bg-clip-text text-transparent">Quiz</span>
             </h1>
             <p className="text-lg sm:text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed px-4">Master academic vocabulary with AI-powered adaptive questions</p>
             
-            <div className="mt-8 group relative max-w-2xl mx-auto">
-              <div className="absolute inset-0 bg-gradient-to-r from-vh-red/10 to-vh-beige/10 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
-              <div className="relative bg-white/80 backdrop-blur-sm rounded-2xl p-6 border border-gray-200 shadow-lg">
-                <p className="text-lg font-bold text-vh-red mb-2 flex items-center justify-center gap-2">
+            <motion.div
+              className="mt-8 group relative max-w-2xl mx-auto"
+              whileHover={{ scale: 1.02 }}
+              transition={{ type: "spring", stiffness: 300 }}
+            >
+              <div className="absolute inset-0 bg-gradient-to-r from-vh-red-600/10 to-vh-beige-500/10 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
+              <Card variant="elevated" padding="lg" className="relative">
+                <p className="text-lg font-bold text-vh-red-600 mb-2 flex items-center justify-center gap-2">
                   <span className="text-2xl">🚀</span>
                   Powered by Advanced AI
                 </p>
                 <p className="text-gray-700">
                   Custom questions generated in real-time, tailored to your selected vocabulary sections
                 </p>
-              </div>
-            </div>
-          </div>
+              </Card>
+            </motion.div>
+          </motion.div>
 
-          <div className="group relative mb-12">
-            <div className="absolute inset-0 bg-gradient-to-br from-vh-red/10 to-transparent rounded-3xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
-            <div className="relative bg-white rounded-3xl shadow-2xl p-10 border border-gray-100 group-hover:shadow-4xl transition-all duration-500">
+          <motion.div
+            ref={sectionsRef}
+            className="group relative mb-12"
+            variants={scaleIn}
+            initial="hidden"
+            animate={sectionsInView ? "visible" : "hidden"}
+          >
+            <div className="absolute inset-0 bg-gradient-to-br from-vh-red-600/10 to-transparent rounded-3xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
+            <Card variant="elevated" padding="xl" className="relative group-hover:shadow-4xl transition-all duration-500">
               <h2 className="text-3xl font-black text-gray-900 mb-8">Select Vocabulary Sections</h2>
             <div className="grid grid-cols-3 sm:grid-cols-5 md:grid-cols-5 gap-2 sm:gap-3 mb-6">
               {Object.keys(vocabularySections).map(section => (
@@ -606,12 +751,18 @@ Respond with JSON:
                 ({selectedSections.reduce((acc, s) => acc + vocabularySections[s].length, 0)} words total)
               </div>
             )}
-          </div>
-        </div>
+            </Card>
+          </motion.div>
 
-        <div className="group relative mb-12">
-            <div className="absolute inset-0 bg-gradient-to-br from-vh-beige/10 to-transparent rounded-3xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
-            <div className="relative bg-white rounded-3xl shadow-2xl p-10 border border-gray-100 group-hover:shadow-4xl transition-all duration-500">
+          <motion.div
+            ref={configRef}
+            className="group relative mb-12"
+            variants={scaleIn}
+            initial="hidden"
+            animate={configInView ? "visible" : "hidden"}
+          >
+            <div className="absolute inset-0 bg-gradient-to-br from-vh-beige-500/10 to-transparent rounded-3xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
+            <Card variant="elevated" padding="xl" className="relative group-hover:shadow-4xl transition-all duration-500">
               <h2 className="text-3xl font-black text-gray-900 mb-8">Quiz Configuration</h2>
             
             <div className="grid md:grid-cols-2 gap-6">
@@ -641,11 +792,161 @@ Respond with JSON:
                 </select>
               </div>
             </div>
-          </div>
+            </Card>
+          </motion.div>
+
+          {/* Question */}
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={currentQuestionIndex}
+              className="group relative mb-8"
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              transition={{ duration: 0.3 }}
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-vh-red-600/30 to-vh-red-800/30 rounded-3xl blur-2xl group-hover:blur-3xl transition-all duration-500"></div>
+              <Card variant="elevated" padding="xl" className="relative bg-white/95 backdrop-blur-xl shadow-2xl border border-white/20">
+                <motion.h2
+                  className="text-lg sm:text-xl md:text-2xl lg:text-4xl font-bold text-gray-900 leading-relaxed mb-6 sm:mb-8 lg:mb-10 text-center px-2"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.2 }}
+                >
+                  {currentQuestion.sentence}
+                </motion.h2>
+
+                <motion.div
+                  className="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-3 lg:gap-4"
+                  variants={staggerContainer}
+                  initial="hidden"
+                  animate="visible"
+                >
+                  {currentQuestion.wordBank.map((word, index) => (
+                    <motion.button
+                      key={index}
+                      variants={scaleIn}
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      onClick={() => handleAnswerSelect(word)}
+                      className="group/word relative bg-gradient-to-r from-gray-50 to-white p-3 sm:p-4 border-2 border-gray-200 rounded-xl sm:rounded-2xl hover:border-vh-red-600 hover:shadow-xl transition-all duration-300 text-left font-bold hover:bg-gradient-to-r hover:from-vh-beige-300/20 hover:to-white min-h-[52px] sm:min-h-[56px] flex items-center justify-center text-center"
+                    >
+                      <div className="absolute inset-0 bg-gradient-to-r from-vh-red-600/10 to-vh-beige-500/10 rounded-xl sm:rounded-2xl opacity-0 group-hover/word:opacity-100 transition-opacity duration-300"></div>
+                      <span className="relative text-base sm:text-lg text-gray-800 group-hover/word:text-vh-red-600 transition-colors duration-300">{word}</span>
+                    </motion.button>
+                  ))}
+                </motion.div>
+              </Card>
+            </motion.div>
+          </AnimatePresence>
+        </div>
+      </div>
+    );
+  }
+
+  // Results Screen
+  if (currentScreen === 'results' && quizResults) {
+    const resultsHeaderRef = useRef(null);
+    const resultsStatsRef = useRef(null);
+    const resultsHeaderInView = useInView(resultsHeaderRef, { once: true });
+    const resultsStatsInView = useInView(resultsStatsRef, { once: true, margin: "-100px" });
+
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
+        {/* Animated Celebration Background */}
+        <div className="absolute inset-0">
+          <motion.div
+            className="absolute top-20 right-20 w-72 h-72 bg-gradient-to-r from-success-400/10 to-vh-red-600/10 rounded-full blur-3xl"
+            animate={{
+              scale: [1, 1.2, 1],
+              opacity: [0.3, 0.5, 0.3],
+            }}
+            transition={{
+              duration: 8,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          />
+          <motion.div
+            className="absolute bottom-20 left-20 w-96 h-96 bg-gradient-to-l from-vh-beige-500/20 to-success-400/10 rounded-full blur-3xl"
+            animate={{
+              scale: [1, 1.3, 1],
+              opacity: [0.2, 0.4, 0.2],
+            }}
+            transition={{
+              duration: 10,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 1
+            }}
+          />
         </div>
 
-        <div className="text-center">
-            {error && (
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-20 relative z-10">
+          <motion.div
+            ref={resultsHeaderRef}
+            className="group relative mb-8 sm:mb-12 lg:mb-16"
+            variants={scaleIn}
+            initial="hidden"
+            animate={resultsHeaderInView ? "visible" : "hidden"}
+          >
+            <div className="absolute inset-0 bg-gradient-to-br from-vh-red-600/20 to-success-400/20 rounded-3xl blur-2xl group-hover:blur-3xl transition-all duration-700"></div>
+            <Card variant="elevated" padding="xl" className="relative group-hover:shadow-4xl transition-all duration-700">
+              <div className="text-center mb-8 sm:mb-10 lg:mb-12">
+                <motion.div
+                  className="inline-flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 bg-gradient-to-br from-success-400 to-vh-red-600 rounded-full mb-6 sm:mb-8 shadow-2xl"
+                  whileHover={{ scale: 1.1, rotate: 360 }}
+                  transition={{ duration: 0.6 }}
+                >
+                  <Award className="text-white" size={32} />
+                </motion.div>
+                <h1 className="text-3xl sm:text-4xl lg:text-6xl font-black text-gray-900 mb-4 sm:mb-6">
+                  Quiz <span className="bg-gradient-to-r from-success-400 to-vh-red-600 bg-clip-text text-transparent">Complete!</span>
+                </h1>
+                <motion.div
+                  className="text-4xl sm:text-5xl lg:text-7xl font-black mb-3 sm:mb-4"
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  transition={{ type: "spring", stiffness: 200, delay: 0.3 }}
+                >
+                  <span className="bg-gradient-to-r from-vh-red-600 to-success-400 bg-clip-text text-transparent">{quizResults.score.toFixed(1)}</span>
+                </motion.div>
+                <p className="text-lg sm:text-xl text-gray-600 mb-6 sm:mb-8">Final Score</p>
+
+                <motion.div
+                  ref={resultsStatsRef}
+                  className="grid md:grid-cols-3 gap-6"
+                  variants={staggerContainer}
+                  initial="hidden"
+                  animate={resultsStatsInView ? "visible" : "hidden"}
+                >
+                  <motion.div variants={scaleIn} className="group/stat relative">
+                    <div className="absolute inset-0 bg-gradient-to-br from-success-400/20 to-transparent rounded-2xl blur-xl group-hover/stat:blur-2xl transition-all duration-500"></div>
+                    <Card variant="elevated" padding="lg" className="relative bg-gradient-to-br from-success-50 to-success-100 border-success-200 text-center">
+                      <div className="text-4xl font-black text-success-600 mb-2">{quizResults.correctAnswers}</div>
+                      <div className="text-success-700 font-bold">Correct</div>
+                    </Card>
+                  </motion.div>
+                  <motion.div variants={scaleIn} className="group/stat relative">
+                    <div className="absolute inset-0 bg-gradient-to-br from-error-400/20 to-transparent rounded-2xl blur-xl group-hover/stat:blur-2xl transition-all duration-500"></div>
+                    <Card variant="elevated" padding="lg" className="relative bg-gradient-to-br from-error-50 to-error-100 border-error-200 text-center">
+                      <div className="text-4xl font-black text-error-600 mb-2">{quizResults.wrongAnswers}</div>
+                      <div className="text-error-700 font-bold">Wrong</div>
+                    </Card>
+                  </motion.div>
+                  <motion.div variants={scaleIn} className="group/stat relative">
+                    <div className="absolute inset-0 bg-gradient-to-br from-gray-400/20 to-transparent rounded-2xl blur-xl group-hover/stat:blur-2xl transition-all duration-500"></div>
+                    <Card variant="elevated" padding="lg" className="relative bg-gradient-to-br from-gray-50 to-gray-100 border-gray-200 text-center">
+                      <div className="text-4xl font-black text-gray-600 mb-2">{quizResults.totalQuestions}</div>
+                      <div className="text-gray-700 font-bold">Total</div>
+                    </Card>
+                  </motion.div>
+                </motion.div>
+              </div>
+            </Card>
+          </motion.div>
+
+          <Card variant="elevated" padding="lg" className="mb-6 border-t-4 border-vh-red-600">
               <div className="bg-red-50 border border-red-200 rounded-lg p-4 mb-4 shadow-md">
                 <div className="flex items-start gap-3">
                   <div className="flex-shrink-0 w-6 h-6 bg-red-100 rounded-full flex items-center justify-center mt-0.5">
@@ -692,12 +993,14 @@ Respond with JSON:
                 </div>
               </div>
             )}
-            
+
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
-              <button
+              <Button
+                variant="primary"
+                size="lg"
                 onClick={generateQuestions}
                 disabled={selectedSections.length === 0 || isLoading}
-                className="group bg-gradient-to-r from-vh-red to-vh-dark-red text-white px-12 py-4 rounded-2xl font-bold text-lg hover:from-vh-dark-red hover:to-vh-red disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 flex items-center justify-center gap-3 shadow-2xl hover:shadow-vh-red/25 transform hover:-translate-y-1 disabled:transform-none"
+                className="group flex items-center justify-center gap-3"
               >
                 {isLoading ? (
                   <>
@@ -710,19 +1013,21 @@ Respond with JSON:
                     Start Quiz
                   </>
                 )}
-              </button>
-              <button 
+              </Button>
+              <Button
+                variant="outline"
+                size="lg"
                 onClick={() => {
                   fetchLeaderboard();
                   setShowLeaderboard(true);
                 }}
-                className="group border-2 border-vh-red text-vh-red px-12 py-4 rounded-2xl font-bold text-lg hover:bg-vh-red hover:text-white transition-all duration-300 flex items-center justify-center gap-3 shadow-lg"
+                className="group flex items-center justify-center gap-3"
               >
                 <Trophy size={24} />
                 View Champions
-              </button>
+              </Button>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     );
@@ -731,40 +1036,73 @@ Respond with JSON:
   // Quiz Screen
   if (currentScreen === 'quiz' && questions.length > 0) {
     const currentQuestion = questions[currentQuestionIndex];
-    
+
     return (
-      <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-vh-dark-red relative overflow-hidden">
-        {/* Dynamic Background Elements */}
+      <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-vh-red-900 relative overflow-hidden">
+        {/* Animated Background Elements */}
         <div className="absolute inset-0">
-          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-vh-red/20 to-transparent rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-l from-vh-beige/10 to-transparent rounded-full blur-3xl animate-pulse" style={{animationDelay: '1s'}}></div>
+          <motion.div
+            className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-vh-red-600/20 to-transparent rounded-full blur-3xl"
+            animate={{
+              scale: [1, 1.2, 1],
+              opacity: [0.3, 0.5, 0.3],
+            }}
+            transition={{
+              duration: 6,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          />
+          <motion.div
+            className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-l from-vh-beige-500/10 to-transparent rounded-full blur-3xl"
+            animate={{
+              scale: [1, 1.3, 1],
+              opacity: [0.2, 0.4, 0.2],
+            }}
+            transition={{
+              duration: 8,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 1
+            }}
+          />
         </div>
 
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 relative z-10">
           {/* Header with stats */}
-          <div className="bg-white/95 backdrop-blur-xl rounded-3xl shadow-2xl p-4 sm:p-6 lg:p-8 mb-8 border border-white/20">
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <Card variant="elevated" padding="lg" className="bg-white/95 backdrop-blur-xl shadow-2xl mb-8 border border-white/20">
             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 sm:gap-6 mb-6">
               <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-6 w-full sm:w-auto">
                 <span className="text-lg sm:text-xl lg:text-2xl font-black text-gray-900">
                   Question {currentQuestionIndex + 1} of {questions.length}
                 </span>
-                <div className="bg-gradient-to-r from-vh-red to-vh-dark-red text-white px-3 sm:px-4 py-1.5 sm:py-2 rounded-2xl text-xs sm:text-sm font-bold uppercase tracking-wide shadow-lg">
+                <Badge
+                  variant="primary"
+                  className="uppercase tracking-wide shadow-lg"
+                >
                   {currentQuestion.difficulty}
-                </div>
+                </Badge>
               </div>
 
               <div className="flex items-center gap-2 sm:gap-3 text-xl sm:text-2xl font-black self-end sm:self-auto">
-                <Clock className={timeRemaining <= 10 ? 'text-red-500' : 'text-vh-red'} size={24} />
-                <span className={`${timeRemaining <= 10 ? 'text-red-500 animate-pulse' : 'text-vh-red'} font-mono`}>
+                <Clock className={timeRemaining <= 10 ? 'text-error-600' : 'text-vh-red-600'} size={24} />
+                <span className={`${timeRemaining <= 10 ? 'text-error-600 animate-pulse' : 'text-vh-red-600'} font-mono`}>
                   {timeRemaining}s
                 </span>
               </div>
             </div>
-            
+
             <div className="bg-gray-200 rounded-full h-3 overflow-hidden">
-              <div 
-                className="bg-gradient-to-r from-vh-red to-vh-dark-red h-3 rounded-full transition-all duration-500 shadow-lg"
-                style={{ width: `${((currentQuestionIndex + 1) / questions.length) * 100}%` }}
+              <motion.div
+                className="bg-gradient-to-r from-vh-red-600 to-vh-red-800 h-3 rounded-full shadow-lg"
+                initial={{ width: 0 }}
+                animate={{ width: `${((currentQuestionIndex + 1) / questions.length) * 100}%` }}
+                transition={{ duration: 0.5, ease: "easeOut" }}
               />
             </div>
           </div>
@@ -921,25 +1259,34 @@ Respond with JSON:
             </div>
           </div>
 
-          <div className="flex flex-col sm:flex-row gap-6 justify-center">
-            <button
+          <motion.div
+            className="flex flex-col sm:flex-row gap-6 justify-center"
+            variants={fadeInUp}
+            initial="hidden"
+            animate="visible"
+          >
+            <Button
+              variant="primary"
+              size="lg"
               onClick={resetQuiz}
-              className="group bg-gradient-to-r from-vh-red to-vh-dark-red text-white px-12 py-4 rounded-2xl font-bold text-lg hover:from-vh-dark-red hover:to-vh-red transition-all duration-300 flex items-center justify-center gap-3 shadow-2xl hover:shadow-vh-red/25 transform hover:-translate-y-1"
+              className="group flex items-center justify-center gap-3"
             >
               <RotateCcw size={24} />
               Take Another Quiz
-            </button>
-            <button 
+            </Button>
+            <Button
+              variant="outline"
+              size="lg"
               onClick={() => {
                 fetchLeaderboard();
                 setShowLeaderboard(true);
               }}
-              className="group border-2 border-vh-red text-vh-red px-12 py-4 rounded-2xl font-bold text-lg hover:bg-vh-red hover:text-white transition-all duration-300 flex items-center justify-center gap-3 shadow-lg"
+              className="group flex items-center justify-center gap-3"
             >
               <Trophy size={24} />
               View Champions
-            </button>
-          </div>
+            </Button>
+          </motion.div>
         </div>
       </div>
     );
