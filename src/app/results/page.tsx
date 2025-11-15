@@ -129,7 +129,7 @@ const ResultsDashboard = () => {
     if (!user) return;
 
     const userId = user.id;
-    const userTests = Object.values(simpleData.tests).filter(test => test.results && test.results[userId]);
+    const userTests = Object.values(simpleData.tests).filter(test => test && test.results && test.results[userId]);
 
     if (userTests.length === 0) return;
 
@@ -373,6 +373,9 @@ const ResultsDashboard = () => {
               {simpleTests && Object.keys(simpleTests.tests).length > 0 ? (
                 <div className="space-y-3">
                   {Object.entries(simpleTests.tests).map(([testName, test]) => {
+                    // Skip if test is undefined
+                    if (!test) return null;
+
                     // Get the correct user based on admin status
                     let userResult = null;
                     if (isAdmin && selectedStudentId) {
@@ -425,6 +428,9 @@ const ResultsDashboard = () => {
               {fullTests && Object.keys(fullTests.tests).length > 0 ? (
                 <div className="space-y-3">
                   {Object.entries(fullTests.tests).map(([testName, test]) => {
+                    // Skip if test is undefined
+                    if (!test) return null;
+
                     // Get the correct user based on admin status
                     let userResult = null;
                     if (isAdmin && selectedStudentId) {
@@ -480,6 +486,9 @@ const ResultsDashboard = () => {
               {mockTests && Object.keys(mockTests.tests).length > 0 ? (
                 <div className="space-y-3">
                   {Object.entries(mockTests.tests).map(([testName, test]) => {
+                    // Skip if test is undefined
+                    if (!test) return null;
+
                     // Get the correct user based on admin status
                     let userResult = null;
                     if (isAdmin && selectedStudentId) {
@@ -536,6 +545,9 @@ const ResultsDashboard = () => {
               {fbsMockTests && Object.keys(fbsMockTests.tests).length > 0 ? (
                 <div className="space-y-3">
                   {Object.entries(fbsMockTests.tests).map(([testName, test]: [string, any]) => {
+                    // Skip if test is undefined
+                    if (!test) return null;
+
                     // Get the correct user based on admin status
                     let result = null;
                     if (isAdmin && selectedStudentId) {
