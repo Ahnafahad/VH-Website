@@ -3180,7 +3180,7 @@
         }
       },
       "metadata": {
-        "processedAt": "2025-11-15T09:14:18.075Z",
+        "processedAt": "2025-11-15T15:45:09.105Z",
         "sourceFile": "IBA Mock\\Mock 1.xlsx",
         "sheets": [
           "Sheet1",
@@ -3237,12 +3237,12 @@
           "mcqWrong": 14,
           "mcqAccuracy": 51.72,
           "mcqPercentage": 16.43,
-          "totalPercentage": 32.5,
+          "totalPercentage": 26,
           "rank": 7,
           "essays": {
             "1": 14.5
           },
-          "maxEssayMarks": 10,
+          "maxEssayMarks": 30,
           "responses": {
             "Section1-Q1": "NAN",
             "Section1-Q2": "E (C)",
@@ -3634,12 +3634,12 @@
           "mcqWrong": 12,
           "mcqAccuracy": 20,
           "mcqPercentage": 0,
-          "totalPercentage": 90,
-          "rank": 14,
+          "totalPercentage": 30,
+          "rank": 15,
           "essays": {
             "1": 9
           },
-          "maxEssayMarks": 10,
+          "maxEssayMarks": 30,
           "responses": {
             "Section1-Q1": "NAN",
             "Section1-Q2": "NAN",
@@ -3871,12 +3871,12 @@
           "mcqWrong": 9,
           "mcqAccuracy": 57.14,
           "mcqPercentage": 13.93,
-          "totalPercentage": 31.57,
-          "rank": 6,
+          "totalPercentage": 25.25,
+          "rank": 9,
           "essays": {
             "1": 15.5
           },
-          "maxEssayMarks": 10,
+          "maxEssayMarks": 30,
           "responses": {
             "Section1-Q1": "C (C)",
             "Section1-Q2": "E (C)",
@@ -4024,12 +4024,12 @@
           "mcqWrong": 16,
           "mcqAccuracy": 46.67,
           "mcqPercentage": 14.29,
-          "totalPercentage": 26.88,
+          "totalPercentage": 21.5,
           "rank": 11,
           "essays": {
             "1": 11.5
           },
-          "maxEssayMarks": 10,
+          "maxEssayMarks": 30,
           "responses": {
             "Section1-Q1": "C (C)",
             "Section1-Q2": "E (C)",
@@ -4179,12 +4179,12 @@
           "mcqWrong": 37,
           "mcqAccuracy": 19.57,
           "mcqPercentage": -0.36,
-          "totalPercentage": 117.5,
+          "totalPercentage": 39.17,
           "rank": 13,
           "essays": {
             "1": 12
           },
-          "maxEssayMarks": 10,
+          "maxEssayMarks": 30,
           "responses": {
             "Section1-Q1": "A (W)",
             "Section1-Q2": "E (C)",
@@ -4334,12 +4334,12 @@
           "mcqWrong": 8,
           "mcqAccuracy": 76.47,
           "mcqPercentage": 36.07,
-          "totalPercentage": 59.69,
-          "rank": 1,
+          "totalPercentage": 47.75,
+          "rank": 2,
           "essays": {
             "1": 22.5
           },
-          "maxEssayMarks": 10,
+          "maxEssayMarks": 30,
           "responses": {
             "Section1-Q1": "C (C)",
             "Section1-Q2": "E (C)",
@@ -4566,12 +4566,12 @@
           "mcqWrong": 14,
           "mcqAccuracy": 54.84,
           "mcqPercentage": 21.07,
-          "totalPercentage": 30.94,
+          "totalPercentage": 24.75,
           "rank": 10,
           "essays": {
             "1": 10
           },
-          "maxEssayMarks": 10,
+          "maxEssayMarks": 30,
           "responses": {
             "Section1-Q1": "NAN",
             "Section1-Q2": "NAN",
@@ -4719,12 +4719,12 @@
           "mcqWrong": 35,
           "mcqAccuracy": 31.37,
           "mcqPercentage": 10.36,
-          "totalPercentage": 30.32,
-          "rank": 5,
+          "totalPercentage": 24.25,
+          "rank": 6,
           "essays": {
             "1": 17
           },
-          "maxEssayMarks": 10,
+          "maxEssayMarks": 30,
           "responses": {
             "Section1-Q1": "C (C)",
             "Section1-Q2": "A (W)",
@@ -4873,12 +4873,12 @@
           "mcqWrong": 16,
           "mcqAccuracy": 30.43,
           "mcqPercentage": 6.07,
-          "totalPercentage": 21.56,
+          "totalPercentage": 17.25,
           "rank": 12,
           "essays": {
             "1": 13
           },
-          "maxEssayMarks": 10,
+          "maxEssayMarks": 30,
           "responses": {
             "Section1-Q1": "NAN",
             "Section1-Q2": "NAN",
@@ -5028,12 +5028,12 @@
           "mcqWrong": 15,
           "mcqAccuracy": 54.55,
           "mcqPercentage": 21.79,
-          "totalPercentage": 42.19,
+          "totalPercentage": 33.75,
           "rank": 3,
           "essays": {
             "1": 18.5
           },
-          "maxEssayMarks": 10,
+          "maxEssayMarks": 30,
           "responses": {
             "Section1-Q1": "C (C)",
             "Section1-Q2": "E (C)",
@@ -5261,7 +5261,7 @@
           "mcqAccuracy": 42.42,
           "mcqPercentage": 13.21,
           "totalPercentage": 13.21,
-          "rank": 15,
+          "rank": 14,
           "responses": {
             "Section1-Q1": "NAN",
             "Section1-Q2": "A (W)",
@@ -5573,12 +5573,12 @@
           "mcqWrong": 9,
           "mcqAccuracy": 64,
           "mcqPercentage": 19.64,
-          "totalPercentage": 44.06,
+          "totalPercentage": 35.25,
           "rank": 4,
           "essays": {
             "1": 21.5
           },
-          "maxEssayMarks": 10,
+          "maxEssayMarks": 30,
           "responses": {
             "Section1-Q1": "C (C)",
             "Section1-Q2": "E (C)",
@@ -5726,12 +5726,12 @@
           "mcqWrong": 20,
           "mcqAccuracy": 62.96,
           "mcqPercentage": 42.86,
-          "totalPercentage": 62.5,
-          "rank": 2,
+          "totalPercentage": 50,
+          "rank": 1,
           "essays": {
             "1": 20
           },
-          "maxEssayMarks": 10,
+          "maxEssayMarks": 30,
           "responses": {
             "Section1-Q1": "C (C)",
             "Section1-Q2": "E (C)",
@@ -5958,12 +5958,12 @@
           "mcqWrong": 12,
           "mcqAccuracy": 58.62,
           "mcqPercentage": 20,
-          "totalPercentage": 32.5,
-          "rank": 9,
+          "totalPercentage": 26,
+          "rank": 8,
           "essays": {
             "1": 12
           },
-          "maxEssayMarks": 10,
+          "maxEssayMarks": 30,
           "responses": {
             "Section1-Q1": "C (C)",
             "Section1-Q2": "C (W)",
@@ -6111,12 +6111,12 @@
           "mcqWrong": 12,
           "mcqAccuracy": 64.71,
           "mcqPercentage": 27.14,
-          "totalPercentage": 35.62,
-          "rank": 8,
+          "totalPercentage": 28.5,
+          "rank": 5,
           "essays": {
             "1": 9.5
           },
-          "maxEssayMarks": 10,
+          "maxEssayMarks": 30,
           "responses": {
             "Section1-Q1": "NAN",
             "Section1-Q2": "D (W)",
@@ -6632,7 +6632,7 @@
         }
       },
       "metadata": {
-        "processedAt": "2025-11-15T09:14:18.097Z",
+        "processedAt": "2025-11-15T15:45:09.117Z",
         "sourceFile": "IBA Mock\\Mock 2.xlsx",
         "sheets": [
           "Sheet1",
@@ -6689,12 +6689,12 @@
           "mcqWrong": 14,
           "mcqAccuracy": 56.25,
           "mcqPercentage": 20.71,
-          "totalPercentage": 35.62,
-          "rank": 6,
+          "totalPercentage": 28.5,
+          "rank": 7,
           "essays": {
             "1": 14
           },
-          "maxEssayMarks": 10,
+          "maxEssayMarks": 30,
           "responses": {
             "Section1-Q1": "C (W)",
             "Section1-Q2": "A (C)",
@@ -7085,12 +7085,12 @@
           "mcqWrong": 0,
           "mcqAccuracy": 0,
           "mcqPercentage": 0,
-          "totalPercentage": 50,
+          "totalPercentage": 16.67,
           "rank": 15,
           "essays": {
             "1": 5
           },
-          "maxEssayMarks": 10,
+          "maxEssayMarks": 30,
           "responses": {},
           "analytics": {
             "skipStrategy": 0,
@@ -7251,12 +7251,12 @@
           "mcqWrong": 14,
           "mcqAccuracy": 44,
           "mcqPercentage": 10.71,
-          "totalPercentage": 19.37,
+          "totalPercentage": 15.5,
           "rank": 12,
           "essays": {
             "1": 8
           },
-          "maxEssayMarks": 10,
+          "maxEssayMarks": 30,
           "responses": {
             "Section1-Q1": "A (W)",
             "Section1-Q2": "NAN",
@@ -7407,12 +7407,12 @@
           "mcqWrong": 10,
           "mcqAccuracy": 66.67,
           "mcqPercentage": 25,
-          "totalPercentage": 40,
+          "totalPercentage": 32,
           "rank": 5,
           "essays": {
             "1": 14.5
           },
-          "maxEssayMarks": 10,
+          "maxEssayMarks": 30,
           "responses": {
             "Section1-Q1": "C (W)",
             "Section1-Q2": "A (C)",
@@ -7560,12 +7560,12 @@
           "mcqWrong": 30,
           "mcqAccuracy": 30.23,
           "mcqPercentage": 7.86,
-          "totalPercentage": 14.38,
+          "totalPercentage": 11.5,
           "rank": 14,
           "essays": {
             "1": 6
           },
-          "maxEssayMarks": 10,
+          "maxEssayMarks": 30,
           "responses": {
             "Section1-Q1": "C (W)",
             "Section1-Q2": "D (W)",
@@ -7716,12 +7716,12 @@
           "mcqWrong": 7,
           "mcqAccuracy": 78.79,
           "mcqPercentage": 35.36,
-          "totalPercentage": 50.32,
+          "totalPercentage": 40.25,
           "rank": 1,
           "essays": {
             "1": 15.5
           },
-          "maxEssayMarks": 10,
+          "maxEssayMarks": 30,
           "responses": {
             "Section1-Q1": "C (W)",
             "Section1-Q2": "A (C)",
@@ -7948,12 +7948,12 @@
           "mcqWrong": 10,
           "mcqAccuracy": 58.33,
           "mcqPercentage": 17.86,
-          "totalPercentage": 28.75,
-          "rank": 11,
+          "totalPercentage": 23,
+          "rank": 10,
           "essays": {
             "1": 10.5
           },
-          "maxEssayMarks": 10,
+          "maxEssayMarks": 30,
           "responses": {
             "Section1-Q1": "A (W)",
             "Section1-Q2": "A (C)",
@@ -8102,12 +8102,12 @@
           "mcqWrong": 36,
           "mcqAccuracy": 34.55,
           "mcqPercentage": 14.29,
-          "totalPercentage": 17.5,
+          "totalPercentage": 14,
           "rank": 13,
           "essays": {
             "1": 4
           },
-          "maxEssayMarks": 10,
+          "maxEssayMarks": 30,
           "responses": {
             "Section1-Q1": "A (W)",
             "Section1-Q2": "B (W)",
@@ -8257,12 +8257,12 @@
           "mcqWrong": 19,
           "mcqAccuracy": 48.65,
           "mcqPercentage": 21.43,
-          "totalPercentage": 30.63,
-          "rank": 10,
+          "totalPercentage": 24.5,
+          "rank": 9,
           "essays": {
             "1": 9.5
           },
-          "maxEssayMarks": 10,
+          "maxEssayMarks": 30,
           "responses": {
             "Section1-Q1": "A (W)",
             "Section1-Q2": "NAN",
@@ -8411,12 +8411,12 @@
           "mcqWrong": 14,
           "mcqAccuracy": 60,
           "mcqPercentage": 27.14,
-          "totalPercentage": 38.75,
-          "rank": 7,
+          "totalPercentage": 31,
+          "rank": 6,
           "essays": {
             "1": 12
           },
-          "maxEssayMarks": 10,
+          "maxEssayMarks": 30,
           "responses": {
             "Section1-Q1": "C (W)",
             "Section1-Q2": "A (C)",
@@ -8564,12 +8564,12 @@
           "mcqWrong": 17,
           "mcqAccuracy": 48.48,
           "mcqPercentage": 16.79,
-          "totalPercentage": 30.32,
-          "rank": 8,
+          "totalPercentage": 24.25,
+          "rank": 11,
           "essays": {
             "1": 12.5
           },
-          "maxEssayMarks": 10,
+          "maxEssayMarks": 30,
           "responses": {
             "Section1-Q1": "C (W)",
             "Section1-Q2": "A (C)",
@@ -8961,12 +8961,12 @@
           "mcqWrong": 3,
           "mcqAccuracy": 88.89,
           "mcqPercentage": 33.21,
-          "totalPercentage": 45.93,
-          "rank": 3,
+          "totalPercentage": 36.75,
+          "rank": 4,
           "essays": {
             "1": 13.5
           },
-          "maxEssayMarks": 10,
+          "maxEssayMarks": 30,
           "responses": {
             "Section1-Q1": "C (W)",
             "Section1-Q2": "D (W)",
@@ -9114,12 +9114,12 @@
           "mcqWrong": 14,
           "mcqAccuracy": 68.18,
           "mcqPercentage": 40.36,
-          "totalPercentage": 47.82,
-          "rank": 4,
+          "totalPercentage": 38.25,
+          "rank": 3,
           "essays": {
             "1": 10
           },
-          "maxEssayMarks": 10,
+          "maxEssayMarks": 30,
           "responses": {
             "Section1-Q1": "C (W)",
             "Section1-Q2": "A (C)",
@@ -9348,12 +9348,12 @@
           "mcqWrong": 14,
           "mcqAccuracy": 60,
           "mcqPercentage": 25,
-          "totalPercentage": 36.88,
+          "totalPercentage": 29.5,
           "rank": 2,
           "essays": {
             "1": 12
           },
-          "maxEssayMarks": 10,
+          "maxEssayMarks": 30,
           "responses": {
             "Section1-Q1": "C (W)",
             "Section1-Q2": "E (W)",
@@ -9499,12 +9499,12 @@
           "mcqWrong": 13,
           "mcqAccuracy": 58.06,
           "mcqPercentage": 21.07,
-          "totalPercentage": 30.31,
-          "rank": 9,
+          "totalPercentage": 24.25,
+          "rank": 8,
           "essays": {
             "1": 9.5
           },
-          "maxEssayMarks": 10,
+          "maxEssayMarks": 30,
           "responses": {
             "Section1-Q1": "A (W)",
             "Section1-Q2": "D (W)",
@@ -10021,7 +10021,7 @@
         }
       },
       "metadata": {
-        "processedAt": "2025-11-15T09:14:18.125Z",
+        "processedAt": "2025-11-15T15:45:09.133Z",
         "sourceFile": "IBA Mock\\Mock 3.xlsx",
         "sheets": [
           "Sheet1",
@@ -10078,12 +10078,12 @@
           "mcqWrong": 15,
           "mcqAccuracy": 53.13,
           "mcqPercentage": 18.93,
-          "totalPercentage": 39.69,
-          "rank": 6,
+          "totalPercentage": 31.75,
+          "rank": 8,
           "essays": {
             "1": 18.5
           },
-          "maxEssayMarks": 10,
+          "maxEssayMarks": 30,
           "responses": {
             "Section1-Q1": "D (C)",
             "Section1-Q2": "C (C)",
@@ -10313,12 +10313,12 @@
           "mcqWrong": 0,
           "mcqAccuracy": 0,
           "mcqPercentage": 0,
-          "totalPercentage": 105,
+          "totalPercentage": 35,
           "rank": 13,
           "essays": {
             "1": 10.5
           },
-          "maxEssayMarks": 10,
+          "maxEssayMarks": 30,
           "responses": {},
           "analytics": {
             "skipStrategy": 0,
@@ -10398,12 +10398,12 @@
           "mcqWrong": 7,
           "mcqAccuracy": 66.67,
           "mcqPercentage": 17.5,
-          "totalPercentage": 29.69,
-          "rank": 12,
+          "totalPercentage": 23.75,
+          "rank": 11,
           "essays": {
             "1": 11.5
           },
-          "maxEssayMarks": 10,
+          "maxEssayMarks": 30,
           "responses": {
             "Section1-Q1": "D (C)",
             "Section1-Q2": "C (C)",
@@ -10552,12 +10552,12 @@
           "mcqWrong": 0,
           "mcqAccuracy": 0,
           "mcqPercentage": 0,
-          "totalPercentage": 95,
+          "totalPercentage": 31.67,
           "rank": 14,
           "essays": {
             "1": 9.5
           },
-          "maxEssayMarks": 10,
+          "maxEssayMarks": 30,
           "responses": {},
           "analytics": {
             "skipStrategy": 0,
@@ -10880,12 +10880,12 @@
           "mcqWrong": 28,
           "mcqAccuracy": 36.36,
           "mcqPercentage": 12.86,
-          "totalPercentage": 28.13,
-          "rank": 11,
+          "totalPercentage": 22.5,
+          "rank": 10,
           "essays": {
             "1": 13.5
           },
-          "maxEssayMarks": 10,
+          "maxEssayMarks": 30,
           "responses": {
             "Section1-Q1": "D (C)",
             "Section1-Q2": "E (W)",
@@ -11034,12 +11034,12 @@
           "mcqWrong": 2,
           "mcqAccuracy": 94.12,
           "mcqPercentage": 45,
-          "totalPercentage": 66.88,
+          "totalPercentage": 53.5,
           "rank": 2,
           "essays": {
             "1": 22
           },
-          "maxEssayMarks": 10,
+          "maxEssayMarks": 30,
           "responses": {
             "Section1-Q1": "D (C)",
             "Section1-Q2": "C (C)",
@@ -11266,12 +11266,12 @@
           "mcqWrong": 3,
           "mcqAccuracy": 85,
           "mcqPercentage": 23.57,
-          "totalPercentage": 38.12,
-          "rank": 8,
+          "totalPercentage": 30.5,
+          "rank": 6,
           "essays": {
             "1": 14
           },
-          "maxEssayMarks": 10,
+          "maxEssayMarks": 30,
           "responses": {
             "Section1-Q1": "NAN",
             "Section1-Q2": "NAN",
@@ -11419,12 +11419,12 @@
           "mcqWrong": 30,
           "mcqAccuracy": 31.82,
           "mcqPercentage": 9.29,
-          "totalPercentage": 26.26,
-          "rank": 10,
+          "totalPercentage": 21.01,
+          "rank": 12,
           "essays": {
             "1": 14.5
           },
-          "maxEssayMarks": 10,
+          "maxEssayMarks": 30,
           "responses": {
             "Section1-Q1": "D (C)",
             "Section1-Q2": "E (W)",
@@ -11574,12 +11574,12 @@
           "mcqWrong": 10,
           "mcqAccuracy": 62.96,
           "mcqPercentage": 22.86,
-          "totalPercentage": 40,
+          "totalPercentage": 32,
           "rank": 7,
           "essays": {
             "1": 16
           },
-          "maxEssayMarks": 10,
+          "maxEssayMarks": 30,
           "responses": {
             "Section1-Q1": "D (C)",
             "Section1-Q2": "NAN",
@@ -11727,12 +11727,12 @@
           "mcqWrong": 13,
           "mcqAccuracy": 56.67,
           "mcqPercentage": 20.71,
-          "totalPercentage": 46.87,
-          "rank": 3,
+          "totalPercentage": 37.49,
+          "rank": 4,
           "essays": {
             "1": 23
           },
-          "maxEssayMarks": 10,
+          "maxEssayMarks": 30,
           "responses": {
             "Section1-Q1": "D (C)",
             "Section1-Q2": "C (C)",
@@ -12202,12 +12202,12 @@
           "mcqWrong": 6,
           "mcqAccuracy": 78.57,
           "mcqPercentage": 29.29,
-          "totalPercentage": 50.63,
-          "rank": 4,
+          "totalPercentage": 40.5,
+          "rank": 3,
           "essays": {
             "1": 20
           },
-          "maxEssayMarks": 10,
+          "maxEssayMarks": 30,
           "responses": {
             "Section1-Q1": "D (C)",
             "Section1-Q2": "C (C)",
@@ -12353,12 +12353,12 @@
           "mcqWrong": 10,
           "mcqAccuracy": 79.59,
           "mcqPercentage": 52.5,
-          "totalPercentage": 70.94,
+          "totalPercentage": 56.75,
           "rank": 1,
           "essays": {
             "1": 20
           },
-          "maxEssayMarks": 10,
+          "maxEssayMarks": 30,
           "responses": {
             "Section1-Q1": "NAN",
             "Section1-Q2": "C (C)",
@@ -12585,12 +12585,12 @@
           "mcqWrong": 15,
           "mcqAccuracy": 48.28,
           "mcqPercentage": 14.64,
-          "totalPercentage": 33.43,
+          "totalPercentage": 26.75,
           "rank": 9,
           "essays": {
             "1": 16.5
           },
-          "maxEssayMarks": 10,
+          "maxEssayMarks": 30,
           "responses": {
             "Section1-Q1": "NAN",
             "Section1-Q2": "E (W)",
@@ -12739,12 +12739,12 @@
           "mcqWrong": 11,
           "mcqAccuracy": 62.07,
           "mcqPercentage": 21.79,
-          "totalPercentage": 40.94,
+          "totalPercentage": 32.75,
           "rank": 5,
           "essays": {
             "1": 17.5
           },
-          "maxEssayMarks": 10,
+          "maxEssayMarks": 30,
           "responses": {
             "Section1-Q1": "NAN",
             "Section1-Q2": "C (C)",
@@ -13257,7 +13257,7 @@
         }
       },
       "metadata": {
-        "processedAt": "2025-11-15T09:14:18.147Z",
+        "processedAt": "2025-11-15T15:45:09.145Z",
         "sourceFile": "IBA Mock\\Mock 4.xlsx",
         "sheets": [
           "Sheet1",
@@ -13269,7 +13269,7 @@
   },
   "metadata": {
     "totalTests": 4,
-    "lastProcessed": "2025-11-15T09:14:18.158Z",
+    "lastProcessed": "2025-11-15T15:45:09.150Z",
     "version": "1.0.0"
   }
 }

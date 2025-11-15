@@ -539,8 +539,9 @@ class ExcelProcessor {
     // MCQ percentage is already in basic.percentage or can be calculated
     const mcqPercentage = Math.round((basic.percentage || 0) * 100) / 100;
 
-    // Total possible marks = MCQ marks (from file) + essays (10 marks each)
-    const maxEssayMarks = essayCount * 10;
+    // Total possible marks = MCQ marks (from file) + essays (always 30 total for IBA)
+    // Essay section is always out of 30, whether there's 1, 2, or 3 essays
+    const maxEssayMarks = essayCount > 0 ? 30 : 0;
     const maxTotalMarks = (mcqPercentage > 0 ? (mcqMarks / mcqPercentage) * 100 : 0) + maxEssayMarks;
     const totalPercentage = maxTotalMarks > 0 ? (totalMarks / maxTotalMarks) * 100 : 0;
 
