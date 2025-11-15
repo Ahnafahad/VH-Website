@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
+import { motion } from 'framer-motion';
 import {
   Users,
   CheckCircle,
@@ -17,6 +18,9 @@ import {
   Search,
   Filter
 } from 'lucide-react';
+import Card from '@/components/ui/Card';
+import Button from '@/components/ui/Button';
+import Badge from '@/components/ui/Badge';
 
 type Registration = {
   _id: string;
@@ -44,6 +48,36 @@ type Student = {
   active: boolean;
   class?: string;
   batch?: string;
+};
+
+// Animation variants
+const fadeInUp = {
+  hidden: { opacity: 0, y: 40 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] }
+  }
+};
+
+const scaleIn = {
+  hidden: { opacity: 0, scale: 0.95 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] }
+  }
+};
+
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.2
+    }
+  }
 };
 
 export default function AdminRegistrationsPage() {
@@ -220,122 +254,203 @@ export default function AdminRegistrationsPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-50 to-white flex items-center justify-center">
-        <div className="text-center">
-          <RefreshCw className="w-12 h-12 text-vh-red animate-spin mx-auto mb-4" />
-          <p className="text-gray-600">Loading admin panel...</p>
-        </div>
+      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-vh-beige/5 flex items-center justify-center">
+        <motion.div
+          className="text-center"
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5 }}
+        >
+          <motion.div
+            animate={{ rotate: 360 }}
+            transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+            className="w-16 h-16 border-4 border-vh-red-600 border-t-transparent rounded-full mx-auto mb-4"
+          />
+          <h2 className="text-2xl font-bold text-gray-900">Loading admin panel...</h2>
+        </motion.div>
       </div>
     );
   }
 
   if (error) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-50 to-white flex items-center justify-center">
-        <div className="text-center bg-white rounded-2xl shadow-xl p-8 max-w-md">
-          <XCircle className="w-16 h-16 text-red-500 mx-auto mb-4" />
-          <h2 className="text-2xl font-bold text-gray-900 mb-2">Error</h2>
-          <p className="text-red-600">{error}</p>
-          <button
-            onClick={loadData}
-            className="mt-4 px-6 py-2 bg-vh-red text-white rounded-lg hover:bg-vh-dark-red transition-colors"
-          >
-            Retry
-          </button>
-        </div>
+      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-vh-beige/5 flex items-center justify-center p-4">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5 }}
+        >
+          <Card variant="elevated" padding="xl" className="max-w-md">
+            <div className="text-center">
+              <motion.div
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ type: "spring", stiffness: 200, delay: 0.2 }}
+              >
+                <XCircle className="w-16 h-16 text-error-600 mx-auto mb-4" />
+              </motion.div>
+              <h2 className="text-2xl font-bold text-gray-900 mb-2">Error</h2>
+              <p className="text-error-600 mb-6">{error}</p>
+              <Button
+                variant="solid"
+                colorScheme="primary"
+                size="lg"
+                onClick={loadData}
+                className="w-full"
+              >
+                <RefreshCw className="w-5 h-5 mr-2" />
+                Retry
+              </Button>
+            </div>
+          </Card>
+        </motion.div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-vh-beige/5">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-vh-beige/5 relative overflow-hidden">
+      {/* Animated Background Elements */}
+      <div className="absolute inset-0">
+        <motion.div
+          className="absolute top-20 right-20 w-72 h-72 bg-vh-red/5 rounded-full blur-3xl"
+          animate={{
+            scale: [1, 1.2, 1],
+            opacity: [0.3, 0.5, 0.3],
+          }}
+          transition={{
+            duration: 8,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
+        <motion.div
+          className="absolute bottom-20 left-20 w-96 h-96 bg-vh-beige/10 rounded-full blur-3xl"
+          animate={{
+            scale: [1, 1.3, 1],
+            opacity: [0.2, 0.4, 0.2],
+          }}
+          transition={{
+            duration: 10,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 1
+          }}
+        />
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 relative z-10">
 
         {/* Header */}
-        <div className="mb-8">
+        <motion.div
+          className="mb-8"
+          variants={fadeInUp}
+          initial="hidden"
+          animate="visible"
+        >
           <div className="flex items-center justify-between mb-4">
             <div>
               <h1 className="text-4xl font-black text-gray-900 mb-2">Admin Panel</h1>
               <p className="text-gray-600">Manage registrations and student access</p>
             </div>
-            <button
+            <Button
+              variant="outline"
+              size="md"
               onClick={loadData}
-              className="flex items-center gap-2 px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors"
             >
-              <RefreshCw className="w-4 h-4" />
+              <RefreshCw className="w-4 h-4 mr-2" />
               Refresh
-            </button>
+            </Button>
           </div>
 
           {/* Stats Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
-            <div className="bg-yellow-50 border-2 border-yellow-200 rounded-xl p-4">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-yellow-600 text-sm font-semibold">Pending</p>
-                  <p className="text-3xl font-black text-yellow-700">{counts.pending}</p>
+          <motion.div
+            className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6"
+            variants={staggerContainer}
+            initial="hidden"
+            animate="visible"
+          >
+            <motion.div variants={scaleIn}>
+              <Card variant="outline" padding="lg" className="bg-gradient-to-br from-warning-50 to-white border-2 border-warning-200 hover:shadow-lg transition-all duration-300">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="text-warning-600 text-sm font-semibold">Pending</p>
+                    <p className="text-3xl font-black text-warning-700">{counts.pending}</p>
+                  </div>
+                  <Clock className="w-10 h-10 text-warning-500" />
                 </div>
-                <Clock className="w-10 h-10 text-yellow-500" />
-              </div>
-            </div>
-            <div className="bg-blue-50 border-2 border-blue-200 rounded-xl p-4">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-blue-600 text-sm font-semibold">Contacted</p>
-                  <p className="text-3xl font-black text-blue-700">{counts.contacted}</p>
+              </Card>
+            </motion.div>
+            <motion.div variants={scaleIn}>
+              <Card variant="outline" padding="lg" className="bg-gradient-to-br from-blue-50 to-white border-2 border-blue-200 hover:shadow-lg transition-all duration-300">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="text-blue-600 text-sm font-semibold">Contacted</p>
+                    <p className="text-3xl font-black text-blue-700">{counts.contacted}</p>
+                  </div>
+                  <Users className="w-10 h-10 text-blue-500" />
                 </div>
-                <Users className="w-10 h-10 text-blue-500" />
-              </div>
-            </div>
-            <div className="bg-green-50 border-2 border-green-200 rounded-xl p-4">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-green-600 text-sm font-semibold">Enrolled</p>
-                  <p className="text-3xl font-black text-green-700">{counts.enrolled}</p>
+              </Card>
+            </motion.div>
+            <motion.div variants={scaleIn}>
+              <Card variant="outline" padding="lg" className="bg-gradient-to-br from-success-50 to-white border-2 border-success-200 hover:shadow-lg transition-all duration-300">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="text-success-600 text-sm font-semibold">Enrolled</p>
+                    <p className="text-3xl font-black text-success-700">{counts.enrolled}</p>
+                  </div>
+                  <CheckCircle className="w-10 h-10 text-success-500" />
                 </div>
-                <CheckCircle className="w-10 h-10 text-green-500" />
-              </div>
-            </div>
-            <div className="bg-purple-50 border-2 border-purple-200 rounded-xl p-4">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-purple-600 text-sm font-semibold">Active Students</p>
-                  <p className="text-3xl font-black text-purple-700">{students.length}</p>
+              </Card>
+            </motion.div>
+            <motion.div variants={scaleIn}>
+              <Card variant="outline" padding="lg" className="bg-gradient-to-br from-purple-50 to-white border-2 border-purple-200 hover:shadow-lg transition-all duration-300">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="text-purple-600 text-sm font-semibold">Active Students</p>
+                    <p className="text-3xl font-black text-purple-700">{students.length}</p>
+                  </div>
+                  <Shield className="w-10 h-10 text-purple-500" />
                 </div>
-                <Shield className="w-10 h-10 text-purple-500" />
-              </div>
-            </div>
-          </div>
-        </div>
+              </Card>
+            </motion.div>
+          </motion.div>
+        </motion.div>
 
         {/* Tabs */}
-        <div className="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden">
-          <div className="border-b border-gray-200">
-            <div className="flex">
-              <button
-                onClick={() => setActiveTab('registrations')}
-                className={`flex-1 px-6 py-4 font-bold text-lg transition-colors ${
-                  activeTab === 'registrations'
-                    ? 'bg-vh-red text-white'
-                    : 'text-gray-600 hover:bg-gray-50'
-                }`}
-              >
-                <Users className="w-5 h-5 inline-block mr-2" />
-                Registrations ({registrations.length})
-              </button>
-              <button
-                onClick={() => setActiveTab('students')}
-                className={`flex-1 px-6 py-4 font-bold text-lg transition-colors ${
-                  activeTab === 'students'
-                    ? 'bg-vh-red text-white'
-                    : 'text-gray-600 hover:bg-gray-50'
-                }`}
-              >
-                <Shield className="w-5 h-5 inline-block mr-2" />
-                Active Students ({students.length})
-              </button>
+        <motion.div
+          variants={scaleIn}
+          initial="hidden"
+          animate="visible"
+          transition={{ delay: 0.3 }}
+        >
+          <Card variant="elevated" padding="none" className="overflow-hidden">
+            <div className="border-b border-gray-200">
+              <div className="flex">
+                <button
+                  onClick={() => setActiveTab('registrations')}
+                  className={`flex-1 px-6 py-4 font-bold text-lg transition-all duration-300 ${
+                    activeTab === 'registrations'
+                      ? 'bg-gradient-to-r from-vh-red-600 to-vh-red-800 text-white shadow-lg'
+                      : 'text-gray-600 hover:bg-gray-50'
+                  }`}
+                >
+                  <Users className="w-5 h-5 inline-block mr-2" />
+                  Registrations ({registrations.length})
+                </button>
+                <button
+                  onClick={() => setActiveTab('students')}
+                  className={`flex-1 px-6 py-4 font-bold text-lg transition-all duration-300 ${
+                    activeTab === 'students'
+                      ? 'bg-gradient-to-r from-vh-red-600 to-vh-red-800 text-white shadow-lg'
+                      : 'text-gray-600 hover:bg-gray-50'
+                  }`}
+                >
+                  <Shield className="w-5 h-5 inline-block mr-2" />
+                  Active Students ({students.length})
+                </button>
+              </div>
             </div>
-          </div>
 
           {/* Filters */}
           <div className="p-6 bg-gray-50 border-b border-gray-200">
@@ -372,50 +487,63 @@ export default function AdminRegistrationsPage() {
           {/* Content */}
           <div className="p-6">
             {activeTab === 'registrations' ? (
-              <div className="space-y-4">
+              <motion.div
+                className="space-y-4"
+                variants={staggerContainer}
+                initial="hidden"
+                animate="visible"
+              >
                 {filteredRegistrations.length === 0 ? (
-                  <div className="text-center py-12 text-gray-500">
+                  <motion.div variants={scaleIn} className="text-center py-12 text-gray-500">
                     <Users className="w-16 h-16 mx-auto mb-4 text-gray-300" />
                     <p>No registrations found</p>
-                  </div>
+                  </motion.div>
                 ) : (
                   filteredRegistrations.map((reg) => (
-                    <RegistrationCard
-                      key={reg._id}
-                      registration={reg}
-                      editingId={editingId}
-                      editData={editData}
-                      onStartEdit={startEditing}
-                      onSaveEdit={saveEdit}
-                      onCancelEdit={cancelEdit}
-                      onUpdateStatus={updateRegistrationStatus}
-                      onGrantAccess={openGrantAccessModal}
-                      setEditData={setEditData}
-                    />
+                    <motion.div key={reg._id} variants={scaleIn}>
+                      <RegistrationCard
+                        registration={reg}
+                        editingId={editingId}
+                        editData={editData}
+                        onStartEdit={startEditing}
+                        onSaveEdit={saveEdit}
+                        onCancelEdit={cancelEdit}
+                        onUpdateStatus={updateRegistrationStatus}
+                        onGrantAccess={openGrantAccessModal}
+                        setEditData={setEditData}
+                      />
+                    </motion.div>
                   ))
                 )}
-              </div>
+              </motion.div>
             ) : (
               // Students Tab
-              <div className="space-y-4">
+              <motion.div
+                className="space-y-4"
+                variants={staggerContainer}
+                initial="hidden"
+                animate="visible"
+              >
                 {filteredStudents.length === 0 ? (
-                  <div className="text-center py-12 text-gray-500">
+                  <motion.div variants={scaleIn} className="text-center py-12 text-gray-500">
                     <Shield className="w-16 h-16 mx-auto mb-4 text-gray-300" />
                     <p>No active students found</p>
-                  </div>
+                  </motion.div>
                 ) : (
                   filteredStudents.map((student) => (
-                    <StudentCard
-                      key={student.studentId}
-                      student={student}
-                      onUpdate={updateStudent}
-                    />
+                    <motion.div key={student.studentId} variants={scaleIn}>
+                      <StudentCard
+                        student={student}
+                        onUpdate={updateStudent}
+                      />
+                    </motion.div>
                   ))
                 )}
-              </div>
+              </motion.div>
             )}
           </div>
-        </div>
+          </Card>
+        </motion.div>
       </div>
 
       {/* Grant Access Modal */}
@@ -438,25 +566,28 @@ function RegistrationCard({ registration, editingId, editData, onStartEdit, onSa
 
   if (isEditing) {
     return (
-      <div className="bg-gradient-to-br from-white to-gray-50 rounded-xl border-2 border-gray-200 p-6">
+      <Card variant="elevated" padding="lg" className="bg-gradient-to-br from-white to-gray-50">
         <div className="space-y-4">
           <div className="flex items-center justify-between mb-4">
             <h3 className="text-xl font-bold text-gray-900">Edit Registration</h3>
             <div className="flex gap-2">
-              <button
+              <Button
+                variant="solid"
+                colorScheme="success"
+                size="md"
                 onClick={onSaveEdit}
-                className="flex items-center gap-2 px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors"
               >
-                <Save className="w-4 h-4" />
+                <Save className="w-4 h-4 mr-2" />
                 Save
-              </button>
-              <button
+              </Button>
+              <Button
+                variant="outline"
+                size="md"
                 onClick={onCancelEdit}
-                className="flex items-center gap-2 px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition-colors"
               >
-                <X className="w-4 h-4" />
+                <X className="w-4 h-4 mr-2" />
                 Cancel
-              </button>
+              </Button>
             </div>
           </div>
 
@@ -503,24 +634,28 @@ function RegistrationCard({ registration, editingId, editData, onStartEdit, onSa
             </div>
           </div>
         </div>
-      </div>
+      </Card>
     );
   }
 
   return (
-    <div className="bg-gradient-to-br from-white to-gray-50 rounded-xl border-2 border-gray-200 p-6 hover:border-vh-red/30 transition-all">
+    <Card variant="elevated" padding="lg" className="hover:shadow-xl transition-all duration-300 group">
       <div className="flex items-start justify-between mb-4">
         <div className="flex-1">
-          <div className="flex items-center gap-3 mb-2">
+          <div className="flex items-center gap-3 mb-2 flex-wrap">
             <h3 className="text-xl font-bold text-gray-900">{reg.name}</h3>
-            <span className={`px-3 py-1 rounded-full text-xs font-bold ${
-              reg.status === 'pending' ? 'bg-yellow-100 text-yellow-700' :
-              reg.status === 'contacted' ? 'bg-blue-100 text-blue-700' :
-              reg.status === 'enrolled' ? 'bg-green-100 text-green-700' :
-              'bg-gray-100 text-gray-700'
-            }`}>
+            <Badge
+              variant="solid"
+              colorScheme={
+                reg.status === 'pending' ? 'warning' :
+                reg.status === 'contacted' ? 'primary' :
+                reg.status === 'enrolled' ? 'success' :
+                'neutral'
+              }
+              size="sm"
+            >
               {reg.status.toUpperCase()}
-            </span>
+            </Badge>
           </div>
           <p className="text-gray-600">{reg.email} • {reg.phone}</p>
           <p className="text-sm text-gray-500 mt-1">
@@ -534,13 +669,14 @@ function RegistrationCard({ registration, editingId, editData, onStartEdit, onSa
           </p>
         </div>
         <div className="flex gap-2">
-          <button
+          <Button
+            variant="ghost"
+            size="sm"
             onClick={() => onStartEdit(reg._id, reg)}
-            className="p-2 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
-            title="Edit"
+            className="text-blue-600 hover:text-blue-800 hover:bg-blue-50"
           >
             <Edit2 className="w-5 h-5" />
-          </button>
+          </Button>
         </div>
       </div>
 
@@ -618,55 +754,65 @@ function RegistrationCard({ registration, editingId, editData, onStartEdit, onSa
 
       {/* Actions */}
       <div className="flex flex-wrap gap-2 pt-4 border-t border-gray-200">
-        <button
+        <Button
+          variant="solid"
+          colorScheme="primary"
+          size="sm"
           onClick={() => onUpdateStatus(reg._id, 'contacted')}
           disabled={reg.status === 'contacted'}
-          className="flex items-center gap-2 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
         >
-          <Users className="w-4 h-4" />
+          <Users className="w-4 h-4 mr-2" />
           Mark Contacted
-        </button>
-        <button
+        </Button>
+        <Button
+          variant="solid"
+          colorScheme="success"
+          size="sm"
           onClick={() => onUpdateStatus(reg._id, 'enrolled')}
           disabled={reg.status === 'enrolled'}
-          className="flex items-center gap-2 px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
         >
-          <CheckCircle className="w-4 h-4" />
+          <CheckCircle className="w-4 h-4 mr-2" />
           Mark Enrolled
-        </button>
-        <button
+        </Button>
+        <Button
+          variant="solid"
+          colorScheme="warning"
+          size="sm"
           onClick={() => onGrantAccess(reg)}
-          className="flex items-center gap-2 px-4 py-2 bg-purple-500 text-white rounded-lg hover:bg-purple-600 transition-colors"
         >
-          <UserPlus className="w-4 h-4" />
+          <UserPlus className="w-4 h-4 mr-2" />
           Grant System Access
-        </button>
-        <button
+        </Button>
+        <Button
+          variant="solid"
+          colorScheme="error"
+          size="sm"
           onClick={() => onUpdateStatus(reg._id, 'cancelled')}
           disabled={reg.status === 'cancelled'}
-          className="flex items-center gap-2 px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
         >
-          <XCircle className="w-4 h-4" />
+          <XCircle className="w-4 h-4 mr-2" />
           Cancel
-        </button>
+        </Button>
       </div>
-    </div>
+    </Card>
   );
 }
 
 // Component for student card
 function StudentCard({ student, onUpdate }: any) {
   return (
-    <div className="bg-gradient-to-br from-white to-purple-50 rounded-xl border-2 border-purple-200 p-6">
+    <Card variant="elevated" padding="lg" className="bg-gradient-to-br from-white to-purple-50 border-purple-200 hover:shadow-xl transition-all duration-300">
       <div className="flex items-start justify-between mb-4">
         <div className="flex-1">
-          <div className="flex items-center gap-3 mb-2">
+          <div className="flex items-center gap-3 mb-2 flex-wrap">
             <h3 className="text-xl font-bold text-gray-900">{student.name}</h3>
-            <span className={`px-3 py-1 rounded-full text-xs font-bold ${
-              student.active ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'
-            }`}>
+            <Badge
+              variant="solid"
+              colorScheme={student.active ? 'success' : 'error'}
+              size="sm"
+            >
               {student.active ? 'ACTIVE' : 'INACTIVE'}
-            </span>
+            </Badge>
           </div>
           <p className="text-gray-600">{student.email}</p>
           <p className="text-sm text-gray-500 mt-1">
@@ -742,24 +888,39 @@ function StudentCard({ student, onUpdate }: any) {
           ))}
         </div>
       </div>
-    </div>
+    </Card>
   );
 }
 
 // Component for grant access modal
 function GrantAccessModal({ data, onClose, onGrant, setData }: any) {
   return (
-    <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
-      <div className="bg-white rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+    <motion.div
+      className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      onClick={onClose}
+    >
+      <motion.div
+        className="bg-white rounded-3xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto"
+        initial={{ opacity: 0, scale: 0.95, y: 20 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        exit={{ opacity: 0, scale: 0.95, y: 20 }}
+        transition={{ type: "spring", stiffness: 300, damping: 30 }}
+        onClick={(e) => e.stopPropagation()}
+      >
         <div className="p-6 border-b border-gray-200">
           <div className="flex items-center justify-between">
             <h2 className="text-2xl font-bold text-gray-900">Grant System Access</h2>
-            <button
+            <Button
+              variant="ghost"
+              size="sm"
               onClick={onClose}
-              className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
+              className="hover:bg-gray-100"
             >
               <X className="w-6 h-6" />
-            </button>
+            </Button>
           </div>
         </div>
 
@@ -850,21 +1011,24 @@ function GrantAccessModal({ data, onClose, onGrant, setData }: any) {
         </div>
 
         <div className="p-6 border-t border-gray-200 flex justify-end gap-3">
-          <button
+          <Button
+            variant="outline"
+            size="lg"
             onClick={onClose}
-            className="px-6 py-2 border-2 border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors font-semibold"
           >
             Cancel
-          </button>
-          <button
+          </Button>
+          <Button
+            variant="solid"
+            colorScheme="primary"
+            size="lg"
             onClick={onGrant}
             disabled={!data.name || !data.email || !data.studentId || !data.class || !data.batch}
-            className="px-6 py-2 bg-vh-red text-white rounded-lg hover:bg-vh-dark-red transition-colors font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
           >
             Grant Access
-          </button>
+          </Button>
         </div>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 }
