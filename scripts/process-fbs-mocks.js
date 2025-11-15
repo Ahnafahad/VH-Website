@@ -98,39 +98,70 @@ class FBSMockProcessor {
 
           // Most Correct
           const correctIdx = data[0].findIndex(h => String(h).includes(correctColPrefix));
-          const correctCountIdx = data[0].findIndex(h => String(h).toLowerCase().includes('no. of correct'));
+          // Find the count column right after the question column (usually the next column)
+          let correctCountIdx = -1;
+          if (correctIdx !== -1) {
+            // Search for count column near the question column (within next 3 columns)
+            for (let j = correctIdx + 1; j < Math.min(correctIdx + 4, data[0].length); j++) {
+              if (String(data[0][j]).toLowerCase().includes('correct') ||
+                  String(data[0][j]).toLowerCase().includes('count')) {
+                correctCountIdx = j;
+                break;
+              }
+            }
+          }
           if (correctIdx !== -1 && row[correctIdx]) {
             const qNum = parseInt(String(row[correctIdx]).replace(/\D/g, ''));
             if (qNum >= section.start && qNum <= section.end) {
               sectionData.mostCorrect.push({
                 questionNumber: qNum,
-                count: row[correctCountIdx] || 0
+                count: correctCountIdx !== -1 ? (row[correctCountIdx] || 0) : 0
               });
             }
           }
 
           // Most Wrong
           const wrongIdx = data[0].findIndex(h => String(h).includes(wrongColPrefix));
-          const wrongCountIdx = data[0].findIndex(h => String(h).toLowerCase().includes('no. of wrong'));
+          let wrongCountIdx = -1;
+          if (wrongIdx !== -1) {
+            // Search for count column near the question column (within next 3 columns)
+            for (let j = wrongIdx + 1; j < Math.min(wrongIdx + 4, data[0].length); j++) {
+              if (String(data[0][j]).toLowerCase().includes('wrong') ||
+                  String(data[0][j]).toLowerCase().includes('count')) {
+                wrongCountIdx = j;
+                break;
+              }
+            }
+          }
           if (wrongIdx !== -1 && row[wrongIdx]) {
             const qNum = parseInt(String(row[wrongIdx]).replace(/\D/g, ''));
             if (qNum >= section.start && qNum <= section.end) {
               sectionData.mostWrong.push({
                 questionNumber: qNum,
-                count: row[wrongCountIdx] || 0
+                count: wrongCountIdx !== -1 ? (row[wrongCountIdx] || 0) : 0
               });
             }
           }
 
           // Most Skipped
           const skippedIdx = data[0].findIndex(h => String(h).includes(skippedColPrefix));
-          const skippedCountIdx = data[0].findIndex(h => String(h).toLowerCase().includes('no. of skipped'));
+          let skippedCountIdx = -1;
+          if (skippedIdx !== -1) {
+            // Search for count column near the question column (within next 3 columns)
+            for (let j = skippedIdx + 1; j < Math.min(skippedIdx + 4, data[0].length); j++) {
+              if (String(data[0][j]).toLowerCase().includes('skip') ||
+                  String(data[0][j]).toLowerCase().includes('count')) {
+                skippedCountIdx = j;
+                break;
+              }
+            }
+          }
           if (skippedIdx !== -1 && row[skippedIdx]) {
             const qNum = parseInt(String(row[skippedIdx]).replace(/\D/g, ''));
             if (qNum >= section.start && qNum <= section.end) {
               sectionData.mostSkipped.push({
                 questionNumber: qNum,
-                count: row[skippedCountIdx] || 0
+                count: skippedCountIdx !== -1 ? (row[skippedCountIdx] || 0) : 0
               });
             }
           }
