@@ -1553,7 +1553,7 @@ const TestDetailPage = () => {
               )}
 
               {/* Performance Analytics Charts */}
-              {(simpleTests || fullTests) && students && getChartUserEmail() && (
+              {(simpleTests || fullTests || mockTests || fbsMockTests) && students && getChartUserEmail() && (
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8 items-stretch">
                   {/* Progress Trend Chart */}
                   <div className="bg-gradient-to-br from-white to-vh-beige/5 rounded-xl shadow-lg border border-vh-beige/30 hover:shadow-xl transition-all duration-300 p-6 flex flex-col">
