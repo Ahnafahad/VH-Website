@@ -3,12 +3,42 @@
 import { useState, useMemo } from 'react';
 import Link from 'next/link';
 import { ArrowRight, ArrowLeft, CheckCircle, Sparkles, GraduationCap, Calendar, Target, Users, Home } from 'lucide-react';
+import Card from '@/components/ui/Card';
+import Button from '@/components/ui/Button';
+import Badge from '@/components/ui/Badge';
+import Input from '@/components/ui/Input';
+import { motion, AnimatePresence } from 'framer-motion';
 
 type EducationType = 'hsc' | 'alevels' | null;
 type ProgramMode = 'mocks' | 'full' | null;
 type MockProgram = 'du-iba' | 'bup-iba' | 'du-fbs' | 'bup-fbs' | 'fbs-detailed';
 type FullCourse = 'du-iba-full' | 'bup-iba-fbs-full';
 type MockIntent = 'trial' | 'full' | null;
+
+// Animation variants
+const fadeInUp = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5 }
+  },
+  exit: {
+    opacity: 0,
+    y: -20,
+    transition: { duration: 0.3 }
+  }
+};
+
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1
+    }
+  }
+};
 
 // Mock program prices - defined outside component to avoid re-creation
 const MOCK_PRICES: Record<MockProgram, number> = {
@@ -153,9 +183,14 @@ export default function RegistrationPage() {
   if (submitted) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-green-50 via-white to-vh-beige/5 flex items-center justify-center px-4">
-        <div className="max-w-2xl w-full">
+        <motion.div
+          className="max-w-2xl w-full"
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5 }}
+        >
           {/* Success Card */}
-          <div className="bg-white rounded-3xl shadow-2xl border border-gray-100 overflow-hidden">
+          <Card variant="elevated" padding="none" className="overflow-hidden">
             {/* Header with gradient */}
             <div className="bg-gradient-to-r from-green-500 to-green-600 px-8 py-12 text-center">
               <div className="inline-flex items-center justify-center w-24 h-24 bg-white rounded-full mb-6 shadow-lg">
@@ -274,31 +309,48 @@ export default function RegistrationPage() {
                 </div>
 
                 {/* Action Buttons */}
-                <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                  <Link
-                    href="/"
-                    className="flex-1 inline-flex items-center justify-center gap-2 bg-gradient-to-r from-vh-red to-vh-dark-red text-white px-8 py-4 rounded-xl font-bold text-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300"
-                  >
-                    <Home className="w-5 h-5" />
-                    Return to Home
+                <motion.div
+                  className="flex flex-col sm:flex-row gap-4 pt-4"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.6 }}
+                >
+                  <Link href="/" className="flex-1">
+                    <Button
+                      variant="solid"
+                      colorScheme="primary"
+                      size="lg"
+                      leftIcon={<Home className="w-5 h-5" />}
+                      className="w-full"
+                    >
+                      Return to Home
+                    </Button>
                   </Link>
-                  <button
+                  <Button
+                    variant="outline"
+                    size="lg"
+                    leftIcon={<GraduationCap className="w-5 h-5" />}
                     onClick={() => {
                       setSubmitted(false);
                       setCurrentStep(1);
                     }}
-                    className="flex-1 inline-flex items-center justify-center gap-2 border-2 border-gray-300 text-gray-700 px-8 py-4 rounded-xl font-bold text-lg hover:bg-gray-50 transition-all duration-300"
+                    className="flex-1"
                   >
-                    <GraduationCap className="w-5 h-5" />
                     New Registration
-                  </button>
-                </div>
+                  </Button>
+                </motion.div>
               </div>
             </div>
-          </div>
+            </Card>
+          </motion.div>
 
           {/* Decorative Elements */}
-          <div className="text-center mt-8 space-y-2">
+          <motion.div
+            className="text-center mt-8 space-y-2"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.8 }}
+          >
             <div className="flex items-center justify-center gap-2 text-green-600">
               <Sparkles className="w-5 h-5" />
               <span className="font-semibold">Your journey to excellence starts here</span>
@@ -307,9 +359,8 @@ export default function RegistrationPage() {
             <p className="text-gray-500 text-sm">
               VH Beyond the Horizons - Empowering Future Leaders
             </p>
-          </div>
+          </motion.div>
         </div>
-      </div>
     );
   }
 
@@ -318,11 +369,16 @@ export default function RegistrationPage() {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
 
         {/* Header */}
-        <div className="text-center mb-8">
-          <div className="inline-flex items-center gap-2 bg-vh-red/10 px-4 py-2 rounded-full border border-vh-red/20 mb-4">
-            <Sparkles className="w-5 h-5 text-vh-red" />
-            <span className="text-vh-red font-semibold">Premium Admission Preparation</span>
-          </div>
+        <motion.div
+          className="text-center mb-8"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          <Badge variant="outline" colorScheme="primary" size="lg" className="mb-4">
+            <Sparkles className="w-5 h-5 mr-2" />
+            Premium Admission Preparation
+          </Badge>
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-black text-gray-900 mb-4">
             Program Registration
           </h1>
@@ -330,22 +386,32 @@ export default function RegistrationPage() {
             Begin your journey to excellence with VH Beyond the Horizons
             <span className="block mt-2 text-vh-red font-semibold">Available in both Online & Offline modes</span>
           </p>
-        </div>
+        </motion.div>
 
         {/* Progress Indicator */}
-        <div className="mb-8">
+        <motion.div
+          className="mb-8"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.3 }}
+        >
           <div className="flex items-center justify-between max-w-2xl mx-auto">
             {[1, 2, 3, 4].map((step) => (
               <div key={step} className="flex items-center flex-1">
-                <div
+                <motion.div
                   className={`w-10 h-10 rounded-full flex items-center justify-center font-bold transition-all duration-300 ${
                     currentStep >= step
                       ? 'bg-vh-red text-white shadow-lg'
                       : 'bg-gray-200 text-gray-500'
                   }`}
+                  initial={false}
+                  animate={{
+                    scale: currentStep === step ? [1, 1.1, 1] : 1
+                  }}
+                  transition={{ duration: 0.3 }}
                 >
                   {currentStep > step ? <CheckCircle className="w-5 h-5" /> : step}
-                </div>
+                </motion.div>
                 {step < 4 && (
                   <div
                     className={`flex-1 h-1 mx-2 transition-all duration-300 ${
@@ -359,15 +425,23 @@ export default function RegistrationPage() {
           <div className="text-center mt-4 text-sm text-gray-600">
             Step {currentStep} of 4
           </div>
-        </div>
+        </motion.div>
 
         {/* Form Card */}
-        <div className="bg-white rounded-3xl shadow-2xl border border-gray-100 overflow-hidden">
+        <Card variant="elevated" padding="none" className="overflow-hidden">
           <div className="p-8 md:p-12">
 
+            <AnimatePresence mode="wait">
             {/* Step 1: Personal Information */}
             {currentStep === 1 && (
-              <div className="space-y-6">
+              <motion.div
+                key="step1"
+                variants={fadeInUp}
+                initial="hidden"
+                animate="visible"
+                exit="exit"
+                className="space-y-6"
+              >
                 <div className="flex items-center gap-3 mb-6">
                   <div className="w-12 h-12 bg-gradient-to-br from-vh-red to-vh-dark-red rounded-2xl flex items-center justify-center">
                     <Users className="w-6 h-6 text-white" />
@@ -420,21 +494,30 @@ export default function RegistrationPage() {
                 </div>
 
                 <div className="flex justify-end pt-4">
-                  <button
+                  <Button
+                    variant="solid"
+                    colorScheme="primary"
+                    size="lg"
+                    rightIcon={<ArrowRight className="w-5 h-5" />}
                     onClick={() => setCurrentStep(2)}
                     disabled={!canProceedStep1}
-                    className="inline-flex items-center gap-2 bg-gradient-to-r from-vh-red to-vh-dark-red text-white px-8 py-4 rounded-xl font-bold text-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none min-h-[44px]"
                   >
                     Continue
-                    <ArrowRight className="w-5 h-5" />
-                  </button>
+                  </Button>
                 </div>
-              </div>
+              </motion.div>
             )}
 
             {/* Step 2: Educational Background */}
             {currentStep === 2 && (
-              <div className="space-y-6">
+              <motion.div
+                key="step2"
+                variants={fadeInUp}
+                initial="hidden"
+                animate="visible"
+                exit="exit"
+                className="space-y-6"
+              >
                 <div className="flex items-center gap-3 mb-6">
                   <div className="w-12 h-12 bg-gradient-to-br from-vh-beige to-vh-dark-beige rounded-2xl flex items-center justify-center">
                     <GraduationCap className="w-6 h-6 text-white" />
@@ -559,28 +642,38 @@ export default function RegistrationPage() {
                 )}
 
                 <div className="flex justify-between pt-4">
-                  <button
+                  <Button
+                    variant="outline"
+                    size="lg"
+                    leftIcon={<ArrowLeft className="w-5 h-5" />}
                     onClick={() => setCurrentStep(1)}
-                    className="inline-flex items-center gap-2 border-2 border-gray-300 text-gray-700 px-8 py-4 rounded-xl font-bold text-lg hover:bg-gray-50 transition-all duration-300 min-h-[44px]"
                   >
-                    <ArrowLeft className="w-5 h-5" />
                     Back
-                  </button>
-                  <button
+                  </Button>
+                  <Button
+                    variant="solid"
+                    colorScheme="primary"
+                    size="lg"
+                    rightIcon={<ArrowRight className="w-5 h-5" />}
                     onClick={() => setCurrentStep(3)}
                     disabled={!canProceedStep2}
-                    className="inline-flex items-center gap-2 bg-gradient-to-r from-vh-red to-vh-dark-red text-white px-8 py-4 rounded-xl font-bold text-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none min-h-[44px]"
                   >
                     Continue
-                    <ArrowRight className="w-5 h-5" />
-                  </button>
+                  </Button>
                 </div>
-              </div>
+              </motion.div>
             )}
 
             {/* Step 3: Program Selection */}
             {currentStep === 3 && (
-              <div className="space-y-6">
+              <motion.div
+                key="step3"
+                variants={fadeInUp}
+                initial="hidden"
+                animate="visible"
+                exit="exit"
+                className="space-y-6"
+              >
                 <div className="flex items-center gap-3 mb-6">
                   <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center">
                     <Target className="w-6 h-6 text-white" />
@@ -980,28 +1073,38 @@ export default function RegistrationPage() {
                 )}
 
                 <div className="flex justify-between pt-4">
-                  <button
+                  <Button
+                    variant="outline"
+                    size="lg"
+                    leftIcon={<ArrowLeft className="w-5 h-5" />}
                     onClick={() => setCurrentStep(2)}
-                    className="inline-flex items-center gap-2 border-2 border-gray-300 text-gray-700 px-8 py-4 rounded-xl font-bold text-lg hover:bg-gray-50 transition-all duration-300 min-h-[44px]"
                   >
-                    <ArrowLeft className="w-5 h-5" />
                     Back
-                  </button>
-                  <button
+                  </Button>
+                  <Button
+                    variant="solid"
+                    colorScheme="primary"
+                    size="lg"
+                    rightIcon={<ArrowRight className="w-5 h-5" />}
                     onClick={() => setCurrentStep(4)}
                     disabled={!canProceedStep3}
-                    className="inline-flex items-center gap-2 bg-gradient-to-r from-vh-red to-vh-dark-red text-white px-8 py-4 rounded-xl font-bold text-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none min-h-[44px]"
                   >
                     Review & Submit
-                    <ArrowRight className="w-5 h-5" />
-                  </button>
+                  </Button>
                 </div>
-              </div>
+              </motion.div>
             )}
 
             {/* Step 4: Summary & Confirmation */}
             {currentStep === 4 && (
-              <div className="space-y-6">
+              <motion.div
+                key="step4"
+                variants={fadeInUp}
+                initial="hidden"
+                animate="visible"
+                exit="exit"
+                className="space-y-6"
+              >
                 <div className="flex items-center gap-3 mb-6">
                   <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-green-600 rounded-2xl flex items-center justify-center">
                     <CheckCircle className="w-6 h-6 text-white" />
@@ -1294,35 +1397,42 @@ export default function RegistrationPage() {
 
                 {/* Action Buttons */}
                 <div className="flex flex-col sm:flex-row justify-between gap-4 pt-4">
-                  <button
+                  <Button
+                    variant="outline"
+                    size="lg"
+                    leftIcon={<ArrowLeft className="w-5 h-5" />}
                     onClick={() => setCurrentStep(3)}
-                    className="inline-flex items-center justify-center gap-2 border-2 border-gray-300 text-gray-700 px-8 py-4 rounded-xl font-bold text-lg hover:bg-gray-50 transition-all duration-300 min-h-[44px]"
                   >
-                    <ArrowLeft className="w-5 h-5" />
                     Back
-                  </button>
+                  </Button>
                   <div className="flex flex-col sm:flex-row gap-3">
-                    <Link
-                      href="/"
-                      className="inline-flex items-center justify-center gap-2 border-2 border-gray-300 text-gray-700 px-8 py-4 rounded-xl font-bold text-lg hover:bg-gray-50 transition-all duration-300 min-h-[44px]"
-                    >
-                      <Home className="w-5 h-5" />
-                      Home
+                    <Link href="/">
+                      <Button
+                        variant="outline"
+                        size="lg"
+                        leftIcon={<Home className="w-5 h-5" />}
+                      >
+                        Home
+                      </Button>
                     </Link>
-                    <button
+                    <Button
+                      variant="solid"
+                      colorScheme="success"
+                      size="lg"
+                      leftIcon={<CheckCircle className="w-5 h-5" />}
                       onClick={handleSubmit}
-                      className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-green-500 to-green-600 text-white px-8 py-4 rounded-xl font-bold text-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 min-h-[44px]"
                     >
-                      <CheckCircle className="w-5 h-5" />
                       Submit Registration
-                    </button>
+                    </Button>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             )}
 
+            </AnimatePresence>
+
           </div>
-        </div>
+        </Card>
 
         {/* Help Text */}
         <div className="text-center mt-8 text-sm text-gray-600">
