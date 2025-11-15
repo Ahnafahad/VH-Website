@@ -24,6 +24,7 @@ interface PerformanceBarChartProps {
   simpleTests?: any;
   fullTests?: any;
   mockTests?: any;
+  fbsMockTests?: any;
   students?: any;
   userEmail?: string;
   testName?: string;
@@ -37,6 +38,7 @@ const PerformanceBarChart: React.FC<PerformanceBarChartProps> = ({
   simpleTests,
   fullTests,
   mockTests,
+  fbsMockTests,
   students,
   userEmail,
   testName,
@@ -89,7 +91,8 @@ const PerformanceBarChart: React.FC<PerformanceBarChartProps> = ({
     const allTests = {
       ...(simpleTests?.tests || {}),
       ...(fullTests?.tests || {}),
-      ...(mockTests?.tests || {})
+      ...(mockTests?.tests || {}),
+      ...(fbsMockTests?.tests || {})
     };
 
     const testsToProcess = testName ?

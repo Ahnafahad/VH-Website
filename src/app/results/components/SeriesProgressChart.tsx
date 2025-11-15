@@ -23,6 +23,7 @@ interface SeriesProgressChartProps {
   simpleTests: any;
   fullTests?: any; // Add full tests to combine with simple tests for series detection
   mockTests?: any; // Add mock tests to combine with simple and full tests
+  fbsMockTests?: any; // Add FBS mock tests
   students: any;
   userEmail: string;
   highlightTest?: string;
@@ -36,6 +37,7 @@ const SeriesProgressChart: React.FC<SeriesProgressChartProps> = ({
   simpleTests,
   fullTests,
   mockTests,
+  fbsMockTests,
   students,
   userEmail,
   highlightTest,
@@ -92,7 +94,8 @@ const SeriesProgressChart: React.FC<SeriesProgressChartProps> = ({
       const allTests = {
         ...(simpleTests?.tests || {}),
         ...(fullTests?.tests || {}),
-        ...(mockTests?.tests || {})
+        ...(mockTests?.tests || {}),
+        ...(fbsMockTests?.tests || {})
       };
       const testEntries = Object.entries(allTests);
 
@@ -147,7 +150,8 @@ const SeriesProgressChart: React.FC<SeriesProgressChartProps> = ({
       const allTests = {
         ...(simpleTests?.tests || {}),
         ...(fullTests?.tests || {}),
-        ...(mockTests?.tests || {})
+        ...(mockTests?.tests || {}),
+        ...(fbsMockTests?.tests || {})
       };
 
       const userTests = Object.entries(allTests)

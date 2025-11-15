@@ -27,6 +27,7 @@ const TestDetailPage = () => {
   const [simpleTests, setSimpleTests] = useState<SimpleTestsData | null>(null);
   const [fullTests, setFullTests] = useState<FullTestsData | null>(null);
   const [mockTests, setMockTests] = useState<MockTestsData | null>(null);
+  const [fbsMockTests, setFbsMockTests] = useState<any | null>(null);
   const [students, setStudents] = useState<StudentsData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -71,6 +72,7 @@ const TestDetailPage = () => {
         setSimpleTests(simpleResponse);
         setFullTests(fullResponse);
         setMockTests(mockResponse);
+        setFbsMockTests(fbsMockResponse);
         setStudents(studentsResponse);
         setIsAdmin(adminCheckResponse.isAdmin);
 
@@ -1563,6 +1565,7 @@ const TestDetailPage = () => {
                         simpleTests={simpleTests}
                         fullTests={fullTests}
                         mockTests={mockTests}
+                        fbsMockTests={fbsMockTests}
                         students={students}
                         userEmail={getChartUserEmail()!}
                         highlightTest={testName}
@@ -1582,6 +1585,7 @@ const TestDetailPage = () => {
                         simpleTests={simpleTests}
                         fullTests={fullTests}
                         mockTests={mockTests}
+                        fbsMockTests={fbsMockTests}
                         students={students}
                         userEmail={getChartUserEmail()!}
                         testName={testName}
