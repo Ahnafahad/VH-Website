@@ -722,7 +722,7 @@ const MentalMathApp = () => {
             animate="visible"
           >
             <Button
-              variant="primary"
+              variant="solid"
               size="lg"
               onClick={() => setGameState('setup')}
               className="group"
@@ -883,7 +883,7 @@ const MentalMathApp = () => {
           >
             {/* Start Challenge Button */}
             <Button
-              variant="primary"
+              variant="solid"
               size="lg"
               onClick={(e) => {
                 e.preventDefault();

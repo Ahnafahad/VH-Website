@@ -371,7 +371,7 @@ export default function AdminRegistrationsPage() {
             animate="visible"
           >
             <motion.div variants={scaleIn}>
-              <Card variant="outline" padding="lg" className="bg-gradient-to-br from-warning-50 to-white border-2 border-warning-200 hover:shadow-lg transition-all duration-300">
+              <Card variant="outlined" padding="lg" className="bg-gradient-to-br from-warning-50 to-white border-2 border-warning-200 hover:shadow-lg transition-all duration-300">
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="text-warning-600 text-sm font-semibold">Pending</p>
@@ -382,7 +382,7 @@ export default function AdminRegistrationsPage() {
               </Card>
             </motion.div>
             <motion.div variants={scaleIn}>
-              <Card variant="outline" padding="lg" className="bg-gradient-to-br from-blue-50 to-white border-2 border-blue-200 hover:shadow-lg transition-all duration-300">
+              <Card variant="outlined" padding="lg" className="bg-gradient-to-br from-blue-50 to-white border-2 border-blue-200 hover:shadow-lg transition-all duration-300">
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="text-blue-600 text-sm font-semibold">Contacted</p>
@@ -393,7 +393,7 @@ export default function AdminRegistrationsPage() {
               </Card>
             </motion.div>
             <motion.div variants={scaleIn}>
-              <Card variant="outline" padding="lg" className="bg-gradient-to-br from-success-50 to-white border-2 border-success-200 hover:shadow-lg transition-all duration-300">
+              <Card variant="outlined" padding="lg" className="bg-gradient-to-br from-success-50 to-white border-2 border-success-200 hover:shadow-lg transition-all duration-300">
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="text-success-600 text-sm font-semibold">Enrolled</p>
@@ -404,7 +404,7 @@ export default function AdminRegistrationsPage() {
               </Card>
             </motion.div>
             <motion.div variants={scaleIn}>
-              <Card variant="outline" padding="lg" className="bg-gradient-to-br from-purple-50 to-white border-2 border-purple-200 hover:shadow-lg transition-all duration-300">
+              <Card variant="outlined" padding="lg" className="bg-gradient-to-br from-purple-50 to-white border-2 border-purple-200 hover:shadow-lg transition-all duration-300">
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="text-purple-600 text-sm font-semibold">Active Students</p>
@@ -650,7 +650,7 @@ function RegistrationCard({ registration, editingId, editData, onStartEdit, onSa
                 reg.status === 'pending' ? 'warning' :
                 reg.status === 'contacted' ? 'primary' :
                 reg.status === 'enrolled' ? 'success' :
-                'neutral'
+                'gray'
               }
               size="sm"
             >

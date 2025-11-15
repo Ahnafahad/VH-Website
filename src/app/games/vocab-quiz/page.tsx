@@ -621,7 +621,7 @@ Respond with JSON:
             animate="visible"
           >
             <Button
-              variant="primary"
+              variant="solid"
               size="lg"
               onClick={() => setShowLeaderboard(false)}
               className="group"
@@ -795,50 +795,6 @@ Respond with JSON:
             </Card>
           </motion.div>
 
-          {/* Question */}
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={currentQuestionIndex}
-              className="group relative mb-8"
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.95 }}
-              transition={{ duration: 0.3 }}
-            >
-              <div className="absolute inset-0 bg-gradient-to-br from-vh-red-600/30 to-vh-red-800/30 rounded-3xl blur-2xl group-hover:blur-3xl transition-all duration-500"></div>
-              <Card variant="elevated" padding="xl" className="relative bg-white/95 backdrop-blur-xl shadow-2xl border border-white/20">
-                <motion.h2
-                  className="text-lg sm:text-xl md:text-2xl lg:text-4xl font-bold text-gray-900 leading-relaxed mb-6 sm:mb-8 lg:mb-10 text-center px-2"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.2 }}
-                >
-                  {currentQuestion.sentence}
-                </motion.h2>
-
-                <motion.div
-                  className="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-3 lg:gap-4"
-                  variants={staggerContainer}
-                  initial="hidden"
-                  animate="visible"
-                >
-                  {currentQuestion.wordBank.map((word, index) => (
-                    <motion.button
-                      key={index}
-                      variants={scaleIn}
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      onClick={() => handleAnswerSelect(word)}
-                      className="group/word relative bg-gradient-to-r from-gray-50 to-white p-3 sm:p-4 border-2 border-gray-200 rounded-xl sm:rounded-2xl hover:border-vh-red-600 hover:shadow-xl transition-all duration-300 text-left font-bold hover:bg-gradient-to-r hover:from-vh-beige-300/20 hover:to-white min-h-[52px] sm:min-h-[56px] flex items-center justify-center text-center"
-                    >
-                      <div className="absolute inset-0 bg-gradient-to-r from-vh-red-600/10 to-vh-beige-500/10 rounded-xl sm:rounded-2xl opacity-0 group-hover/word:opacity-100 transition-opacity duration-300"></div>
-                      <span className="relative text-base sm:text-lg text-gray-800 group-hover/word:text-vh-red-600 transition-colors duration-300">{word}</span>
-                    </motion.button>
-                  ))}
-                </motion.div>
-              </Card>
-            </motion.div>
-          </AnimatePresence>
         </div>
       </div>
     );
@@ -1003,7 +959,7 @@ Respond with JSON:
             animate="visible"
           >
             <Button
-              variant="primary"
+              variant="solid"
               size="lg"
               onClick={generateQuestions}
               disabled={selectedSections.length === 0 || isLoading}
@@ -1088,7 +1044,7 @@ Respond with JSON:
                   Question {currentQuestionIndex + 1} of {questions.length}
                 </span>
                 <Badge
-                  variant="primary"
+                  variant="solid"
                   className="uppercase tracking-wide shadow-lg"
                 >
                   {currentQuestion.difficulty}
@@ -1111,7 +1067,8 @@ Respond with JSON:
                 transition={{ duration: 0.5, ease: "easeOut" }}
               />
             </div>
-          </div>
+          </Card>
+          </motion.div>
 
           {/* Question */}
           <div className="group relative mb-8">
@@ -1272,7 +1229,7 @@ Respond with JSON:
             animate="visible"
           >
             <Button
-              variant="primary"
+              variant="solid"
               size="lg"
               onClick={resetQuiz}
               className="group flex items-center justify-center gap-3"
