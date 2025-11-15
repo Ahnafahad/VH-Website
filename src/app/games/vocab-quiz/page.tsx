@@ -946,7 +946,8 @@ Respond with JSON:
             </Card>
           </motion.div>
 
-          <Card variant="elevated" padding="lg" className="mb-6 border-t-4 border-vh-red-600">
+          {error && (
+            <Card variant="elevated" padding="lg" className="mb-6 border-t-4 border-vh-red-600">
               <div className="bg-red-50 border border-red-200 rounded-lg p-4 mb-4 shadow-md">
                 <div className="flex items-start gap-3">
                   <div className="flex-shrink-0 w-6 h-6 bg-red-100 rounded-full flex items-center justify-center mt-0.5">
@@ -992,7 +993,8 @@ Respond with JSON:
                   </div>
                 </div>
               </div>
-            )}
+            </Card>
+          )}
 
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
               <Button

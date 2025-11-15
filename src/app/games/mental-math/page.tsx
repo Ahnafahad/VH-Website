@@ -659,7 +659,8 @@ const MentalMathApp = () => {
                   ))}
                 </div>
               )}
-            </div>
+              </Card>
+            </motion.div>
 
             {/* Accumulated Scores */}
             <motion.div variants={scaleIn} className="group relative">
