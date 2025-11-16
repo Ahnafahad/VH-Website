@@ -395,18 +395,14 @@ const ResultsDashboard = () => {
                     // Skip if test is undefined
                     if (!test) return null;
 
-                    // Get the correct user based on admin status
-                    let userResult = null;
-                    if (isAdmin && selectedStudentId && students) {
-                      // Admin: directly access by selected ID (works for both 6-digit and 7-digit)
-                      userResult = students.students[selectedStudentId];
-                    } else if (session?.user?.email) {
-                      // Student: find by email
-                      userResult = Object.values(students?.students || {}).find((s: any) => s.email === session.user?.email);
-                    }
-                    // Use the 6-digit ID from the student object to access test results
-                    const userId = userResult?.id;
-                    const result = userId && test.results ? test.results[userId] : null;
+                    // Use robust matching with multiple fallback methods
+                    const { result } = findStudentResult(
+                      test.results,
+                      students?.students || {},
+                      session?.user?.email || undefined,
+                      isAdmin ? selectedStudentId || undefined : undefined,
+                      userAccess.roleNumbers
+                    );
 
                     return (
                       <div
@@ -453,18 +449,14 @@ const ResultsDashboard = () => {
                     // Skip if test is undefined
                     if (!test) return null;
 
-                    // Get the correct user based on admin status
-                    let userResult = null;
-                    if (isAdmin && selectedStudentId && students) {
-                      // Admin: directly access by selected ID (works for both 6-digit and 7-digit)
-                      userResult = students.students[selectedStudentId];
-                    } else if (session?.user?.email) {
-                      // Student: find by email
-                      userResult = Object.values(students?.students || {}).find((s: any) => s.email === session.user?.email);
-                    }
-                    // Use the 6-digit ID from the student object to access test results
-                    const userId = userResult?.id;
-                    const result = userId && test.results ? test.results[userId] : null;
+                    // Use robust matching with multiple fallback methods
+                    const { result } = findStudentResult(
+                      test.results,
+                      students?.students || {},
+                      session?.user?.email || undefined,
+                      isAdmin ? selectedStudentId || undefined : undefined,
+                      userAccess.roleNumbers
+                    );
 
                     return (
                       <div
@@ -514,18 +506,14 @@ const ResultsDashboard = () => {
                     // Skip if test is undefined
                     if (!test) return null;
 
-                    // Get the correct user based on admin status
-                    let userResult = null;
-                    if (isAdmin && selectedStudentId && students) {
-                      // Admin: directly access by selected ID (works for both 6-digit and 7-digit)
-                      userResult = students.students[selectedStudentId];
-                    } else if (session?.user?.email) {
-                      // Student: find by email
-                      userResult = Object.values(students?.students || {}).find((s: any) => s.email === session.user?.email);
-                    }
-                    // Use the 6-digit ID from the student object to access test results
-                    const userId = userResult?.id;
-                    const result = userId && test.results ? test.results[userId] : null;
+                    // Use robust matching with multiple fallback methods
+                    const { result } = findStudentResult(
+                      test.results,
+                      students?.students || {},
+                      session?.user?.email || undefined,
+                      isAdmin ? selectedStudentId || undefined : undefined,
+                      userAccess.roleNumbers
+                    );
 
                     return (
                       <div
