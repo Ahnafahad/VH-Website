@@ -18,13 +18,21 @@ const CACHE_TTL = 60000; // 1 minute
 let adminsFromJson: any[] = [];
 try {
   const jsonPath = path.join(process.cwd(), 'access-control.json');
+  console.log('[Access Control] Attempting to load admins from:', jsonPath);
+
   if (fs.existsSync(jsonPath)) {
     const jsonData = JSON.parse(fs.readFileSync(jsonPath, 'utf-8'));
     adminsFromJson = jsonData.admins || [];
-    console.log(`[Access Control] Loaded ${adminsFromJson.length} admins from JSON`);
+    console.log(`[Access Control] Successfully loaded ${adminsFromJson.length} admins from JSON`);
+  } else {
+    console.warn('[Access Control] access-control.json not found at:', jsonPath);
+    console.warn('[Access Control] Current working directory:', process.cwd());
+    console.warn('[Access Control] Continuing without JSON admins - all admins must be in database');
   }
 } catch (error) {
   console.error('[Access Control] Failed to load admins from JSON:', error);
+  console.error('[Access Control] Error details:', error instanceof Error ? error.message : String(error));
+  // Continue execution - admins can exist in database
 }
 
 /**

@@ -52,16 +52,27 @@ function syncStudentToJson(user: any) {
 // GET - Fetch all users with optional filtering
 export async function GET(request: NextRequest) {
   try {
+    console.log('[GET /api/admin/users] Request received');
+
     // Validate admin authentication
+    console.log('[GET /api/admin/users] Validating auth...');
     const user = await validateAuth();
+    console.log('[GET /api/admin/users] Auth validated for:', user.email);
 
     // Check if user is admin (using hybrid access control - admins in JSON)
-    if (!(await isAdminEmail(user.email))) {
+    console.log('[GET /api/admin/users] Checking admin status...');
+    const adminCheck = await isAdminEmail(user.email);
+    console.log('[GET /api/admin/users] Admin check result:', adminCheck);
+
+    if (!adminCheck) {
+      console.error('[GET /api/admin/users] User is not admin:', user.email);
       throw new ApiException('Unauthorized', 403, 'UNAUTHORIZED');
     }
 
     // Connect to database
+    console.log('[GET /api/admin/users] Connecting to database...');
     await connectToDatabase();
+    console.log('[GET /api/admin/users] Database connected');
 
     // Get query parameters for filtering
     const { searchParams } = new URL(request.url);
@@ -93,12 +104,14 @@ export async function GET(request: NextRequest) {
       .sort({ createdAt: -1 })
       .lean();
 
+    console.log('[GET /api/admin/users] Returning', users.length, 'users');
     return NextResponse.json({
       success: true,
       users: users,
       count: users.length
     });
   } catch (error) {
+    console.error('[GET /api/admin/users] Error occurred:', error);
     return createErrorResponse(error);
   }
 }
@@ -208,18 +221,27 @@ export async function POST(request: NextRequest) {
 // PATCH - Update a user
 export async function PATCH(request: NextRequest) {
   try {
+    console.log('[PATCH /api/admin/users] Request received');
+
     // Validate admin authentication
+    console.log('[PATCH /api/admin/users] Validating auth...');
     const user = await validateAuth();
+    console.log('[PATCH /api/admin/users] Auth validated for:', user.email);
 
     // Check if user is admin (using hybrid access control - admins in JSON)
+    console.log('[PATCH /api/admin/users] Checking admin status...');
     if (!(await isAdminEmail(user.email))) {
+      console.error('[PATCH /api/admin/users] User is not admin:', user.email);
       throw new ApiException('Unauthorized', 403, 'UNAUTHORIZED');
     }
 
     // Connect to database
+    console.log('[PATCH /api/admin/users] Connecting to database...');
     await connectToDatabase();
+    console.log('[PATCH /api/admin/users] Database connected');
 
     const body = await request.json();
+    console.log('[PATCH /api/admin/users] Request body:', JSON.stringify(body, null, 2));
     const { userId, ...updates } = body;
 
     if (!userId) {
@@ -274,12 +296,14 @@ export async function PATCH(request: NextRequest) {
       syncStudentToJson(existingUser);
     }
 
+    console.log('[PATCH /api/admin/users] User updated successfully:', userId);
     return NextResponse.json({
       success: true,
       message: 'User updated successfully',
       user: existingUser
     });
   } catch (error) {
+    console.error('[PATCH /api/admin/users] Error occurred:', error);
     return createErrorResponse(error);
   }
 }
