@@ -102,8 +102,8 @@ const ResultsDashboard = () => {
 
     setSelectedStudentId(studentId);
 
-    // Find student name and email
-    const student = Object.values(students.students).find((s: any) => s.id === studentId) as any;
+    // Find student name and email by directly accessing the key (works for both 6-digit and 7-digit IDs)
+    const student = students.students[studentId];
     setSelectedStudentName(student?.name || '');
 
     // Calculate stats for selected student
@@ -117,7 +117,7 @@ const ResultsDashboard = () => {
     if (!session?.user?.email) return undefined;
 
     if (isAdmin && selectedStudentId && students) {
-      const selectedStudent = Object.values(students.students).find((s: any) => s.id === selectedStudentId) as any;
+      const selectedStudent = students.students[selectedStudentId];
       return selectedStudent?.email;
     }
 
@@ -396,11 +396,14 @@ const ResultsDashboard = () => {
 
                     // Get the correct user based on admin status
                     let userResult = null;
-                    if (isAdmin && selectedStudentId) {
-                      userResult = Object.values(students?.students || {}).find((s: any) => s.id === selectedStudentId);
+                    if (isAdmin && selectedStudentId && students) {
+                      // Admin: directly access by selected ID (works for both 6-digit and 7-digit)
+                      userResult = students.students[selectedStudentId];
                     } else if (session?.user?.email) {
+                      // Student: find by email
                       userResult = Object.values(students?.students || {}).find((s: any) => s.email === session.user?.email);
                     }
+                    // Use the 6-digit ID from the student object to access test results
                     const userId = userResult?.id;
                     const result = userId && test.results ? test.results[userId] : null;
 
@@ -451,11 +454,14 @@ const ResultsDashboard = () => {
 
                     // Get the correct user based on admin status
                     let userResult = null;
-                    if (isAdmin && selectedStudentId) {
-                      userResult = Object.values(students?.students || {}).find((s: any) => s.id === selectedStudentId);
+                    if (isAdmin && selectedStudentId && students) {
+                      // Admin: directly access by selected ID (works for both 6-digit and 7-digit)
+                      userResult = students.students[selectedStudentId];
                     } else if (session?.user?.email) {
+                      // Student: find by email
                       userResult = Object.values(students?.students || {}).find((s: any) => s.email === session.user?.email);
                     }
+                    // Use the 6-digit ID from the student object to access test results
                     const userId = userResult?.id;
                     const result = userId && test.results ? test.results[userId] : null;
 
@@ -509,11 +515,14 @@ const ResultsDashboard = () => {
 
                     // Get the correct user based on admin status
                     let userResult = null;
-                    if (isAdmin && selectedStudentId) {
-                      userResult = Object.values(students?.students || {}).find((s: any) => s.id === selectedStudentId);
+                    if (isAdmin && selectedStudentId && students) {
+                      // Admin: directly access by selected ID (works for both 6-digit and 7-digit)
+                      userResult = students.students[selectedStudentId];
                     } else if (session?.user?.email) {
+                      // Student: find by email
                       userResult = Object.values(students?.students || {}).find((s: any) => s.email === session.user?.email);
                     }
+                    // Use the 6-digit ID from the student object to access test results
                     const userId = userResult?.id;
                     const result = userId && test.results ? test.results[userId] : null;
 
