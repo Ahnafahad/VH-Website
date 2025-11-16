@@ -14,7 +14,7 @@ import path from 'path';
  * The issue: FBS mock results use 7-digit IDs as keys, but users might not have
  * these IDs in their roleNumbers array in MongoDB.
  */
-export async function POST(request: NextRequest) {
+export async function POST() {
   try {
     // Check authentication
     const session = await getServerSession(authOptions);
@@ -41,7 +41,7 @@ export async function POST(request: NextRequest) {
     console.log('[Sync Role Numbers] Connected to MongoDB');
 
     let updated = 0;
-    let created = 0;
+    const created = 0;
     let skipped = 0;
     let errors = 0;
     const results: any[] = [];
