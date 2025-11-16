@@ -60,7 +60,11 @@ export async function GET(request: NextRequest) {
       database: {
         userFound: !!userFromDb,
         userRole: userFromDb?.role || null,
-        isAdmin
+        isAdmin,
+        studentId: userFromDb?.studentId || null,
+        roleNumbers: userFromDb?.roleNumbers || [],
+        accessTypes: userFromDb?.accessTypes || null,
+        mockAccess: userFromDb?.mockAccess || null
       },
       cwd: process.cwd(),
       nodeEnv: process.env.NODE_ENV
