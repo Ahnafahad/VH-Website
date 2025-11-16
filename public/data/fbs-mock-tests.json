@@ -10694,7 +10694,7 @@
         }
       },
       "metadata": {
-        "processedAt": "2025-11-16T04:51:52.492Z",
+        "processedAt": "2025-11-16T04:57:35.317Z",
         "sourceFile": "DU FBS Mock 1.xlsx"
       }
     },
@@ -19051,37 +19051,37 @@
             "totalCorrect": 42,
             "totalWrong": 17,
             "totalAttempted": 59,
-            "skipStrategy": 98.53,
-            "questionChoiceStrategy": 88.89,
-            "recoveryScore": 100,
+            "skipStrategy": 50,
+            "questionChoiceStrategy": 71.19,
+            "recoveryScore": 64.71,
             "sectionPerformance": {
               "english": {
-                "accuracy": 88.88888888888889,
-                "attemptRate": 56.25,
-                "attempted": 9,
-                "unattempted": 7,
-                "efficiency": 50
+                "accuracy": 93.75,
+                "attemptRate": 100,
+                "attempted": 16,
+                "unattempted": 0,
+                "efficiency": 93.75
               },
               "advEnglish": {
-                "accuracy": 0,
-                "attemptRate": 0,
-                "attempted": 0,
-                "unattempted": 12,
-                "efficiency": 0
+                "accuracy": 83.33333333333334,
+                "attemptRate": 100,
+                "attempted": 12,
+                "unattempted": 0,
+                "efficiency": 83.33333333333334
               },
               "businessstudies": {
-                "accuracy": 0,
-                "attemptRate": 0,
-                "attempted": 0,
-                "unattempted": 16,
-                "efficiency": 0
+                "accuracy": 50,
+                "attemptRate": 100,
+                "attempted": 16,
+                "unattempted": 0,
+                "efficiency": 50
               },
               "economics": {
-                "accuracy": 0,
-                "attemptRate": 0,
-                "attempted": 0,
-                "unattempted": 16,
-                "efficiency": 0
+                "accuracy": 60,
+                "attemptRate": 93.75,
+                "attempted": 15,
+                "unattempted": 1,
+                "efficiency": 56.25
               }
             }
           },
@@ -19123,144 +19123,144 @@
               "status": "correct"
             },
             "q10": {
-              "answer": null,
-              "status": "skipped"
+              "answer": "D",
+              "status": "correct"
             },
             "q11": {
-              "answer": null,
-              "status": "skipped"
+              "answer": "B",
+              "status": "correct"
             },
             "q12": {
-              "answer": null,
-              "status": "skipped"
+              "answer": "C",
+              "status": "correct"
             },
             "q13": {
-              "answer": null,
-              "status": "skipped"
+              "answer": "D",
+              "status": "correct"
             },
             "q14": {
-              "answer": null,
-              "status": "skipped"
+              "answer": "C",
+              "status": "correct"
             },
             "q15": {
-              "answer": null,
-              "status": "skipped"
+              "answer": "D",
+              "status": "correct"
             },
             "q16": {
-              "answer": null,
-              "status": "skipped"
+              "answer": "B",
+              "status": "correct"
             },
             "q17": {
-              "answer": null,
-              "status": "skipped"
+              "answer": "C",
+              "status": "correct"
             },
             "q18": {
-              "answer": null,
-              "status": "skipped"
+              "answer": "C",
+              "status": "correct"
             },
             "q19": {
-              "answer": null,
-              "status": "skipped"
+              "answer": "B",
+              "status": "correct"
             },
             "q20": {
-              "answer": null,
-              "status": "skipped"
+              "answer": "C",
+              "status": "correct"
             },
             "q21": {
-              "answer": null,
-              "status": "skipped"
+              "answer": "C",
+              "status": "correct"
             },
             "q22": {
-              "answer": null,
-              "status": "skipped"
+              "answer": "A",
+              "status": "correct"
             },
             "q23": {
-              "answer": null,
-              "status": "skipped"
+              "answer": "B",
+              "status": "correct"
             },
             "q24": {
-              "answer": null,
-              "status": "skipped"
+              "answer": "A",
+              "status": "correct"
             },
             "q25": {
-              "answer": null,
-              "status": "skipped"
+              "answer": "C",
+              "status": "wrong"
             },
             "q26": {
-              "answer": null,
-              "status": "skipped"
+              "answer": "B",
+              "status": "correct"
             },
             "q27": {
-              "answer": null,
-              "status": "skipped"
+              "answer": "A",
+              "status": "wrong"
             },
             "q28": {
-              "answer": null,
-              "status": "skipped"
+              "answer": "B",
+              "status": "correct"
             },
             "q29": {
-              "answer": null,
-              "status": "skipped"
+              "answer": "C",
+              "status": "correct"
             },
             "q30": {
-              "answer": null,
-              "status": "skipped"
+              "answer": "C",
+              "status": "correct"
             },
             "q31": {
-              "answer": null,
-              "status": "skipped"
+              "answer": "C",
+              "status": "correct"
             },
             "q32": {
-              "answer": null,
-              "status": "skipped"
+              "answer": "B",
+              "status": "wrong"
             },
             "q33": {
-              "answer": null,
-              "status": "skipped"
+              "answer": "D",
+              "status": "wrong"
             },
             "q34": {
-              "answer": null,
-              "status": "skipped"
+              "answer": "B",
+              "status": "wrong"
             },
             "q35": {
-              "answer": null,
-              "status": "skipped"
+              "answer": "B",
+              "status": "wrong"
             },
             "q36": {
-              "answer": null,
-              "status": "skipped"
+              "answer": "B",
+              "status": "correct"
             },
             "q37": {
-              "answer": null,
-              "status": "skipped"
+              "answer": "D",
+              "status": "correct"
             },
             "q38": {
-              "answer": null,
-              "status": "skipped"
+              "answer": "A",
+              "status": "wrong"
             },
             "q39": {
-              "answer": null,
-              "status": "skipped"
+              "answer": "A",
+              "status": "correct"
             },
             "q40": {
-              "answer": null,
-              "status": "skipped"
+              "answer": "A",
+              "status": "wrong"
             },
             "q41": {
-              "answer": null,
-              "status": "skipped"
+              "answer": "A",
+              "status": "wrong"
             },
             "q42": {
-              "answer": null,
-              "status": "skipped"
+              "answer": "B",
+              "status": "correct"
             },
             "q43": {
-              "answer": null,
-              "status": "skipped"
+              "answer": "A",
+              "status": "correct"
             },
             "q44": {
-              "answer": null,
-              "status": "skipped"
+              "answer": "B",
+              "status": "wrong"
             },
             "q45": {
               "answer": null,
@@ -19327,68 +19327,68 @@
               "status": "skipped"
             },
             "q61": {
-              "answer": null,
-              "status": "skipped"
+              "answer": "C",
+              "status": "wrong"
             },
             "q62": {
-              "answer": null,
-              "status": "skipped"
+              "answer": "B",
+              "status": "wrong"
             },
             "q63": {
-              "answer": null,
-              "status": "skipped"
+              "answer": "C",
+              "status": "correct"
             },
             "q64": {
-              "answer": null,
-              "status": "skipped"
+              "answer": "C",
+              "status": "wrong"
             },
             "q65": {
-              "answer": null,
-              "status": "skipped"
+              "answer": "C",
+              "status": "correct"
             },
             "q66": {
-              "answer": null,
-              "status": "skipped"
+              "answer": "D",
+              "status": "wrong"
             },
             "q67": {
-              "answer": null,
-              "status": "skipped"
+              "answer": "C",
+              "status": "correct"
             },
             "q68": {
-              "answer": null,
-              "status": "skipped"
+              "answer": "D",
+              "status": "correct"
             },
             "q69": {
-              "answer": null,
-              "status": "skipped"
+              "answer": "B",
+              "status": "correct"
             },
             "q70": {
-              "answer": null,
-              "status": "skipped"
+              "answer": "B",
+              "status": "wrong"
             },
             "q71": {
-              "answer": null,
-              "status": "skipped"
+              "answer": "B",
+              "status": "correct"
             },
             "q72": {
               "answer": null,
               "status": "skipped"
             },
             "q73": {
-              "answer": null,
-              "status": "skipped"
+              "answer": "C",
+              "status": "wrong"
             },
             "q74": {
-              "answer": null,
-              "status": "skipped"
+              "answer": "C",
+              "status": "correct"
             },
             "q75": {
-              "answer": null,
-              "status": "skipped"
+              "answer": "C",
+              "status": "correct"
             },
             "q76": {
-              "answer": null,
-              "status": "skipped"
+              "answer": "B",
+              "status": "correct"
             }
           }
         },
@@ -21332,13 +21332,13 @@
         }
       },
       "metadata": {
-        "processedAt": "2025-11-16T04:51:52.550Z",
+        "processedAt": "2025-11-16T04:57:35.421Z",
         "sourceFile": "DU FBS Mock 2.xlsx"
       }
     }
   },
   "metadata": {
-    "lastUpdated": "2025-11-16T04:51:52.551Z",
+    "lastUpdated": "2025-11-16T04:57:35.494Z",
     "totalMocks": 2,
     "generatedBy": "FBS Mock Processor"
   }
