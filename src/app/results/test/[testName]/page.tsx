@@ -14,6 +14,7 @@ import PerformanceBarChart from '../../components/PerformanceBarChart';
 import PercentileChart from '../../components/PercentileChart';
 import Top5LeaderboardTable from '../../components/Top5LeaderboardTable';
 import ThresholdResultCard from '@/components/ThresholdResultCard';
+import { findStudentResult } from '@/utils/student-matcher';
 
 const TestDetailPage = () => {
   const { data: session } = useSession();
@@ -122,30 +123,23 @@ const TestDetailPage = () => {
             setSelectedStudentId(null);
             setSelectedStudentName('');
           } else {
-            // Student: show their own results
-            const user = Object.values(studentsResponse.students).find((s: any) => s.email === session.user?.email) as any;
+            // Student: show their own results using robust matching
+            const { result, matchedId } = findStudentResult(
+              test.results,
+              studentsResponse.students,
+              session.user?.email,
+              undefined,
+              userAccessResponse?.roleNumbers
+            );
 
-            if (user && test.results) {
-              // For FBS mocks: Check all roleNumbers (includes FBS ID which is 7 digits)
-              // For other tests: Use students.json ID (IBA ID which is 6 digits)
-              if (isFBSMockType && userAccessResponse?.roleNumbers) {
-                // Search through all role numbers for FBS
-                for (const roleNumber of userAccessResponse.roleNumbers) {
-                  if (test.results[roleNumber]) {
-                    setUserResult(test.results[roleNumber]);
-                    setSelectedStudentId(roleNumber);
-                    setSelectedStudentName(user.name);
-                    break;
-                  }
-                }
-              } else {
-                // Use regular students.json ID for IBA/Simple/Full tests
-                if (test.results[user.id]) {
-                  setUserResult(test.results[user.id]);
-                  setSelectedStudentId(user.id);
-                  setSelectedStudentName(user.name);
-                }
-              }
+            if (result && matchedId) {
+              const user = Object.values(studentsResponse.students).find(
+                (s: any) => s.email === session.user?.email
+              ) as any;
+
+              setUserResult(result);
+              setSelectedStudentId(matchedId);
+              setSelectedStudentName(user?.name || '');
             }
           }
         }
@@ -170,12 +164,16 @@ const TestDetailPage = () => {
     const student = students.students[studentId];
     setSelectedStudentName(student?.name || '');
 
-    // Find student result
-    if (currentTest.results && currentTest.results[studentId]) {
-      setUserResult(currentTest.results[studentId]);
-    } else {
-      setUserResult(null);
-    }
+    // Use robust matching for student results
+    const { result } = findStudentResult(
+      currentTest.results,
+      students.students,
+      student?.email,
+      studentId,
+      undefined // Admin doesn't use roleNumbers, but matcher will find via email
+    );
+
+    setUserResult(result);
   };
 
   // Get the email to use for charts (selected student for admin, own email for students, or demo email)

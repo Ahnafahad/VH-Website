@@ -8,6 +8,7 @@ import ProtectedRoute from '@/components/ProtectedRoute';
 import { SimpleTestsData, FullTestsData, MockTestsData, StudentsData, SystemMetadata } from '@/types/results';
 import SeriesProgressChart from './components/SeriesProgressChart';
 import PerformanceBarChart from './components/PerformanceBarChart';
+import { findStudentResult, getStudentIds } from '@/utils/student-matcher';
 
 // Utility function to clean test names by removing folder prefixes
 const cleanTestName = (testName: string): string => {
@@ -575,40 +576,14 @@ const ResultsDashboard = () => {
                     // Skip if test is undefined
                     if (!test) return null;
 
-                    // Get the correct user based on admin status
-                    let result = null;
-                    if (isAdmin && selectedStudentId) {
-                      // Admin viewing a specific student
-                      // FBS mocks use 7-digit IDs, so try both the selected ID and potential 7-digit variants
-                      if (test.results) {
-                        // Try the selected ID first
-                        result = test.results[selectedStudentId];
-
-                        // If not found, try to find by matching student in students.students
-                        if (!result && students) {
-                          // Get all IDs for this student (both 6-digit and 7-digit)
-                          const studentIds = Object.keys(students.students).filter(
-                            key => students.students[key].id === selectedStudentId || key === selectedStudentId
-                          );
-
-                          // Try each ID until we find a result
-                          for (const id of studentIds) {
-                            if (test.results[id]) {
-                              result = test.results[id];
-                              break;
-                            }
-                          }
-                        }
-                      }
-                    } else if (session?.user?.email && userAccess.roleNumbers) {
-                      // Student viewing their own results - check all their roleNumbers
-                      for (const roleNumber of userAccess.roleNumbers) {
-                        if (test.results && test.results[roleNumber]) {
-                          result = test.results[roleNumber];
-                          break;
-                        }
-                      }
-                    }
+                    // Use robust matching with multiple fallback methods
+                    const { result } = findStudentResult(
+                      test.results,
+                      students?.students || {},
+                      session?.user?.email,
+                      isAdmin ? selectedStudentId : undefined,
+                      userAccess.roleNumbers
+                    );
 
                     return (
                       <div

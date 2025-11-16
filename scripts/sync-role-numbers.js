@@ -1,41 +1,29 @@
 /**
  * Sync roleNumbers from students.json to MongoDB
- * This ensures database has both 6-digit and 7-digit IDs for students who have FBS mocks
+ * This ensures FBS students can access their mock test results
  */
 
 const fs = require('fs');
 const path = require('path');
 const { MongoClient } = require('mongodb');
 
-// Try to load from .env.local first, then .env.production
-const envPaths = [
-  path.join(__dirname, '..', '.env.local'),
-  path.join(__dirname, '..', '.env.production')
-];
+// Try to load from .env.local first
+const envPath = path.join(__dirname, '..', '.env.local');
+if (fs.existsSync(envPath) && !process.env.MONGODB_URI) {
+  const envContent = fs.readFileSync(envPath, 'utf8');
+  const lines = envContent.split('\n');
 
-for (const envPath of envPaths) {
-  if (fs.existsSync(envPath) && !process.env.MONGODB_URI) {
-    const envContent = fs.readFileSync(envPath, 'utf8');
-    const lines = envContent.split('\n');
-
-    lines.forEach(line => {
-      const trimmed = line.trim();
-      if (trimmed && !trimmed.startsWith('#')) {
-        const [key, ...valueParts] = trimmed.split('=');
-        const value = valueParts.join('=');
-        if (!process.env[key]) {
-          process.env[key] = value;
-        }
-      }
-    });
-
-    if (process.env.MONGODB_URI) {
-      console.log(`📁 Loaded environment from ${path.basename(envPath)}`);
-      break;
+  lines.forEach(line => {
+    const trimmed = line.trim();
+    if (trimmed && !trimmed.startsWith('#')) {
+      const [key, ...valueParts] = trimmed.split('=');
+      const value = valueParts.join('=');
+      process.env[key] = value;
     }
-  }
+  });
 }
 
+// Load from environment variables (set in .env.local or pass via command line)
 const MONGODB_URI = process.env.MONGODB_URI;
 
 if (!MONGODB_URI) {
@@ -45,7 +33,7 @@ if (!MONGODB_URI) {
 }
 
 async function syncRoleNumbers() {
-  console.log('\n🔢 Syncing Role Numbers from students.json to Database...\n');
+  console.log('\n🔄 Syncing roleNumbers to Database...\n');
 
   const client = new MongoClient(MONGODB_URI);
 
@@ -58,74 +46,74 @@ async function syncRoleNumbers() {
     const studentsPath = path.join(process.cwd(), 'public', 'data', 'students.json');
     const studentsData = JSON.parse(fs.readFileSync(studentsPath, 'utf8'));
 
-    // Group student entries by unique student ID
-    const studentGroups = new Map();
+    // Build email to IDs mapping
+    const emailToIds = new Map();
 
     Object.entries(studentsData.students).forEach(([key, student]) => {
-      const uniqueId = student.id; // The actual student ID (e.g., "934245")
-
-      if (!studentGroups.has(uniqueId)) {
-        studentGroups.set(uniqueId, {
-          name: student.name,
-          email: student.email,
-          keys: []
-        });
+      const email = student.email?.toLowerCase()?.trim();
+      if (email) {
+        if (!emailToIds.has(email)) {
+          emailToIds.set(email, new Set());
+        }
+        // Add both the key (actual ID) and the id field
+        emailToIds.get(email).add(key);
+        if (student.id && student.id !== key) {
+          emailToIds.get(email).add(student.id);
+        }
       }
-
-      studentGroups.get(uniqueId).keys.push(key);
     });
 
-    console.log(`Found ${studentGroups.size} unique students with multiple ID formats\n`);
+    console.log(`📊 Found ${emailToIds.size} unique emails in students.json\n`);
 
     let updated = 0;
+    let skipped = 0;
     let notFound = 0;
 
-    // For each unique student
-    for (const [uniqueId, studentInfo] of studentGroups.entries()) {
-      const allRoleNumbers = studentInfo.keys.map(k => String(k));
+    // Update each user
+    for (const [email, ids] of emailToIds.entries()) {
+      const roleNumbersArray = Array.from(ids);
 
-      // Find user in database by any of their role numbers or by email
-      const dbUser = await users.findOne({
-        $or: [
-          { roleNumbers: { $in: allRoleNumbers } },
-          { email: studentInfo.email }
-        ],
-        role: 'student'
-      });
+      const user = await users.findOne({ email, role: 'student' });
 
-      if (dbUser) {
-        // Check if database roleNumbers matches our complete list
-        const dbRoleNumbers = (dbUser.roleNumbers || []).map(r => String(r));
-        const missing = allRoleNumbers.filter(rn => !dbRoleNumbers.includes(rn));
+      if (user) {
+        const currentRoleNumbers = user.roleNumbers || [];
 
-        if (missing.length > 0) {
-          console.log(`  ✏️  Updating roleNumbers for ${studentInfo.name}`);
-          console.log(`     Current: [${dbRoleNumbers.join(', ')}]`);
-          console.log(`     Adding: [${missing.join(', ')}]`);
-          console.log(`     New: [${allRoleNumbers.join(', ')}]`);
+        // Check if update needed
+        const needsUpdate = roleNumbersArray.some(id => !currentRoleNumbers.includes(id)) ||
+                           currentRoleNumbers.some(id => !roleNumbersArray.includes(id));
 
-          await users.updateOne(
-            { _id: dbUser._id },
-            { $set: { roleNumbers: allRoleNumbers } }
-          );
+        if (needsUpdate) {
+          // Find 6-digit ID for studentId
+          const sixDigitId = roleNumbersArray.find(id => id.length === 6);
 
+          const updateDoc = {
+            $set: {
+              roleNumbers: roleNumbersArray
+            }
+          };
+
+          // Also set studentId if not present
+          if (sixDigitId && !user.studentId) {
+            updateDoc.$set.studentId = sixDigitId;
+          }
+
+          await users.updateOne({ email }, updateDoc);
+          console.log(`  ✅ Updated ${email}: [${roleNumbersArray.join(', ')}]`);
           updated++;
+        } else {
+          console.log(`  ⏭️  Skipped ${email}: already correct`);
+          skipped++;
         }
       } else {
-        console.log(`  ⚠️  ${studentInfo.name} (${uniqueId}) not found in database`);
+        console.log(`  ⚠️  Not found: ${email}`);
         notFound++;
       }
     }
 
-    if (updated > 0) {
-      console.log(`\n✅ Updated roleNumbers for ${updated} students`);
-    } else {
-      console.log('\n✅ All roleNumbers are up to date');
-    }
-
-    if (notFound > 0) {
-      console.log(`⚠️  ${notFound} students not found in database`);
-    }
+    console.log('\n📈 Summary:');
+    console.log(`  ✅ Updated: ${updated}`);
+    console.log(`  ⏭️  Skipped: ${skipped}`);
+    console.log(`  ⚠️  Not Found: ${notFound}`);
 
   } catch (error) {
     console.error('❌ Error:', error.message);

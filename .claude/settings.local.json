@@ -62,7 +62,11 @@
       "Bash([ -f .env.local ])",
       "Bash(. .env.local)",
       "Bash(set:*)",
-      "Bash(temp-students.json)"
+      "Bash(temp-students.json)",
+      "Bash(npx tsx:*)",
+      "Bash(vercel:*)",
+      "Bash(students-to-update.json)",
+      "Bash(git check-ignore:*)"
     ],
     "deny": [],
     "ask": []

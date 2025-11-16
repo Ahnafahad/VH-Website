@@ -151,8 +151,16 @@ if defined MONGODB_URI (
     if errorlevel 1 (
         echo [WARNING] Email sync failed, but continuing...
     )
+
+    echo.
+    echo Syncing roleNumbers to database...
+    echo ----------------------------------------
+    node scripts/sync-role-numbers.js
+    if errorlevel 1 (
+        echo [WARNING] roleNumbers sync failed, but continuing...
+    )
 ) else (
-    echo [WARNING] MONGODB_URI not found in .env.local, skipping email sync...
+    echo [WARNING] MONGODB_URI not found in .env.local, skipping email and roleNumbers sync...
 )
 
 echo.
@@ -170,7 +178,7 @@ echo ----------------------------------------
 for /f "tokens=2-4 delims=/ " %%a in ('date /t') do (set mydate=%%c-%%a-%%b)
 for /f "tokens=1-2 delims=/:" %%a in ('time /t') do (set mytime=%%a:%%b)
 
-git commit -m "Update test results data - %mydate% %mytime%" -m "" -m "Generated with VH Results Processing System" -m "" -m "Processing completed:" -m "- Processed IBA tests (Simple and Full)" -m "- Processed FBS mock tests" -m "- Generated optimized JSON files for Vercel deployment" -m "- Updated students database" -m "- Synced student emails from MongoDB"
+git commit -m "Update test results data - %mydate% %mytime%" -m "" -m "Generated with VH Results Processing System" -m "" -m "Processing completed:" -m "- Processed IBA tests (Simple and Full)" -m "- Processed FBS mock tests" -m "- Generated optimized JSON files for Vercel deployment" -m "- Updated students database" -m "- Synced student emails from MongoDB" -m "- Synced roleNumbers to MongoDB for FBS access"
 
 :: Check if commit was successful
 if errorlevel 1 (
@@ -218,6 +226,7 @@ echo Data Generation:
 echo   - JSON files: Generated in public/data/
 echo   - Student database: Updated with merged IDs
 echo   - Emails: Synced from MongoDB
+echo   - Role Numbers: Synced to MongoDB for FBS access
 echo   - Analytics: Calculated
 echo.
 echo Git Operations:
