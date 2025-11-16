@@ -166,8 +166,8 @@ const TestDetailPage = () => {
 
     setSelectedStudentId(studentId);
 
-    // Find student name
-    const student = Object.values(students.students).find((s: any) => s.id === studentId) as any;
+    // Find student by directly accessing the key (works for both 6-digit and 7-digit IDs)
+    const student = students.students[studentId];
     setSelectedStudentName(student?.name || '');
 
     // Find student result
@@ -182,14 +182,14 @@ const TestDetailPage = () => {
   const getChartUserEmail = (): string | undefined => {
     // For public demo, use Mahmud Rahman's email
     if (isPublicDemo && selectedStudentId && students) {
-      const demoStudent = Object.values(students.students).find((s: any) => s.id === selectedStudentId) as any;
+      const demoStudent = students.students[selectedStudentId];
       return demoStudent?.email;
     }
 
     if (!session?.user?.email) return undefined;
 
     if (isAdmin && selectedStudentId && students) {
-      const selectedStudent = Object.values(students.students).find((s: any) => s.id === selectedStudentId) as any;
+      const selectedStudent = students.students[selectedStudentId];
       return selectedStudent?.email;
     }
 
@@ -586,12 +586,12 @@ const TestDetailPage = () => {
                   className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                 >
                   <option value="">Select a student...</option>
-                  {Object.values(students.students)
-                    .filter((student: any) => currentTest.results && currentTest.results[student.id])
-                    .sort((a: any, b: any) => a.name.localeCompare(b.name))
-                    .map((student: any) => (
-                      <option key={student.id} value={student.id}>
-                        {student.name} (ID: {student.id})
+                  {Object.entries(students.students)
+                    .filter(([key, student]: [string, any]) => currentTest.results && currentTest.results[key])
+                    .sort((a: any, b: any) => a[1].name.localeCompare(b[1].name))
+                    .map(([key, student]: [string, any]) => (
+                      <option key={key} value={key}>
+                        {student.name} (ID: {key})
                       </option>
                     ))}
                 </select>
