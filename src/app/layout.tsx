@@ -20,21 +20,6 @@ export const metadata: Metadata = {
   title: "VH Beyond the Horizons - IBA/BUP Admission Program 2026",
   description: "Expert preparation for IBA DU, BUP, and DU FBS admissions with proven 46.7% success rate. Join our intensive 4-5 months program with top-ranked instructors.",
   keywords: "IBA admission, BUP admission, DU FBS, university preparation, Bangladesh, business school",
-  icons: {
-    icon: '/icon.png',
-    apple: '/icon.png',
-  },
-  openGraph: {
-    title: "VH Beyond the Horizons - IBA/BUP Admission Program 2026",
-    description: "Expert preparation for IBA DU, BUP, and DU FBS admissions with proven 46.7% success rate.",
-    images: ['/icon.png'],
-  },
-  twitter: {
-    card: 'summary',
-    title: "VH Beyond the Horizons - IBA/BUP Admission Program 2026",
-    description: "Expert preparation for IBA DU, BUP, and DU FBS admissions with proven 46.7% success rate.",
-    images: ['/icon.png'],
-  },
 };
 
 export default function RootLayout({
