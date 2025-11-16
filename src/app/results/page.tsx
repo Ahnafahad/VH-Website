@@ -253,20 +253,21 @@ const ResultsDashboard = () => {
                 >
                   <option value="">Select a student to view their complete performance...</option>
                   {(() => {
-                    // Filter out duplicate students by keeping only unique IDs
+                    // Include all student IDs (both 6-digit IBA and 7-digit FBS IDs)
                     const uniqueStudents = new Map();
                     Object.entries(students.students).forEach(([key, student]: [string, any]) => {
-                      // Only add if we haven't seen this student ID yet
-                      if (!uniqueStudents.has(student.id)) {
-                        uniqueStudents.set(student.id, { ...student, key });
+                      // Use the KEY (actual ID from JSON) instead of student.id field
+                      // This ensures both IBA (6-digit) and FBS (7-digit) IDs appear in dropdown
+                      if (!uniqueStudents.has(key)) {
+                        uniqueStudents.set(key, { ...student, key, actualId: key });
                       }
                     });
 
                     return Array.from(uniqueStudents.values())
                       .sort((a: any, b: any) => a.name.localeCompare(b.name))
                       .map((student: any) => (
-                        <option key={student.key} value={student.id}>
-                          {student.name} (ID: {student.id})
+                        <option key={student.key} value={student.actualId}>
+                          {student.name} (ID: {student.actualId})
                         </option>
                       ));
                   })()}
