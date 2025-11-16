@@ -222,7 +222,8 @@ export async function POST(request: NextRequest) {
     await newUser.save();
 
     // Sync new student to students.json
-    syncStudentToJson(newUser);
+    // DISABLED: File system is read-only in production (Vercel)
+    // syncStudentToJson(newUser);
 
     return NextResponse.json({
       success: true,
@@ -308,9 +309,10 @@ export async function PATCH(request: NextRequest) {
     await existingUser.save();
 
     // Sync student data to students.json if email or name changed
-    if (updates.email || updates.name) {
-      syncStudentToJson(existingUser);
-    }
+    // DISABLED: File system is read-only in production (Vercel)
+    // if (updates.email || updates.name) {
+    //   syncStudentToJson(existingUser);
+    // }
 
     console.log('[PATCH /api/admin/users] User updated successfully:', userId);
     return NextResponse.json({
