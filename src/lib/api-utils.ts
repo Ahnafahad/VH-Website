@@ -23,6 +23,8 @@ export class ApiException extends Error {
 
 export function createErrorResponse(error: unknown): NextResponse {
   console.error('API Error:', error);
+  console.error('Error type:', error?.constructor?.name);
+  console.error('Error details:', JSON.stringify(error, Object.getOwnPropertyNames(error)));
 
   if (error instanceof ApiException) {
     return NextResponse.json(
@@ -35,19 +37,32 @@ export function createErrorResponse(error: unknown): NextResponse {
   }
 
   if (error instanceof Error) {
-    // Don't expose internal errors in production
-    const isDev = process.env.NODE_ENV === 'development';
+    // Always expose detailed errors to help debug
+    console.error('Full error stack:', error.stack);
+
     return NextResponse.json(
       {
-        error: isDev ? error.message : 'Internal server error',
-        details: isDev ? { stack: error.stack } : undefined
+        error: error.message,
+        errorName: error.name,
+        details: {
+          stack: error.stack,
+          // Include all error properties
+          ...Object.getOwnPropertyNames(error).reduce((acc, key) => {
+            acc[key] = (error as any)[key];
+            return acc;
+          }, {} as any)
+        }
       },
       { status: 500 }
     );
   }
 
   return NextResponse.json(
-    { error: 'An unexpected error occurred' },
+    {
+      error: 'An unexpected error occurred',
+      errorType: typeof error,
+      errorValue: String(error)
+    },
     { status: 500 }
   );
 }

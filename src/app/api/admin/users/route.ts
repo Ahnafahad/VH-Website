@@ -306,7 +306,15 @@ export async function PATCH(request: NextRequest) {
       }
     });
 
-    await existingUser.save();
+    console.log('[PATCH /api/admin/users] Saving user to database...');
+    try {
+      await existingUser.save();
+      console.log('[PATCH /api/admin/users] User saved successfully');
+    } catch (saveError) {
+      console.error('[PATCH /api/admin/users] Error saving user:', saveError);
+      console.error('[PATCH /api/admin/users] Save error details:', JSON.stringify(saveError, Object.getOwnPropertyNames(saveError)));
+      throw saveError;
+    }
 
     // Sync student data to students.json if email or name changed
     // DISABLED: File system is read-only in production (Vercel)

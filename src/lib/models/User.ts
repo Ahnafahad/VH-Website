@@ -77,9 +77,10 @@ const UserSchema = new mongoose.Schema<IUser>({
     trim: true,
     validate: {
       validator: function(v: string) {
-        return !v || /^[0-9]{6}$/.test(v);
+        // Accept 6-digit IBA IDs or 7-digit FBS IDs
+        return !v || /^[0-9]{6,7}$/.test(v);
       },
-      message: 'Student ID must be exactly 6 digits'
+      message: 'Student ID must be 6 or 7 digits'
     }
   },
   roleNumbers: {
