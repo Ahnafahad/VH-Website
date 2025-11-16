@@ -10694,7 +10694,7 @@
         }
       },
       "metadata": {
-        "processedAt": "2025-11-15T00:11:16.810Z",
+        "processedAt": "2025-11-16T04:51:52.492Z",
         "sourceFile": "DU FBS Mock 1.xlsx"
       }
     },
@@ -11154,8 +11154,8 @@
           "totalMCQ": 36.75,
           "totalWritten": 18,
           "totalMarks": 54.75,
-          "rank": 10,
-          "mcqRank": 9,
+          "rank": 11,
+          "mcqRank": 10,
           "passingCriteria": {
             "englishMCQ": {
               "required": 5,
@@ -11174,7 +11174,7 @@
             }
           },
           "passedAll": true,
-          "percentile": 58,
+          "percentile": 54,
           "analytics": {
             "accuracy": 70.69,
             "totalCorrect": 41,
@@ -13568,8 +13568,8 @@
           "totalMCQ": 30.25,
           "totalWritten": 14.5,
           "totalMarks": 44.75,
-          "rank": 14,
-          "mcqRank": 13,
+          "rank": 15,
+          "mcqRank": 14,
           "passingCriteria": {
             "englishMCQ": {
               "required": 5,
@@ -13588,7 +13588,7 @@
             }
           },
           "passedAll": true,
-          "percentile": 42,
+          "percentile": 38,
           "analytics": {
             "accuracy": 75,
             "totalCorrect": 33,
@@ -14426,8 +14426,8 @@
           "totalMCQ": 31.25,
           "totalWritten": 19,
           "totalMarks": 50.25,
-          "rank": 13,
-          "mcqRank": 12,
+          "rank": 14,
+          "mcqRank": 13,
           "passingCriteria": {
             "englishMCQ": {
               "required": 5,
@@ -14446,7 +14446,7 @@
             }
           },
           "passedAll": true,
-          "percentile": 46,
+          "percentile": 42,
           "analytics": {
             "accuracy": 61.67,
             "totalCorrect": 37,
@@ -15284,7 +15284,7 @@
           "totalMCQ": 41.25,
           "totalWritten": 20,
           "totalMarks": 61.25,
-          "rank": 7,
+          "rank": 8,
           "mcqRank": 6,
           "passingCriteria": {
             "englishMCQ": {
@@ -15304,7 +15304,7 @@
             }
           },
           "passedAll": true,
-          "percentile": 71,
+          "percentile": 67,
           "analytics": {
             "accuracy": 75,
             "totalCorrect": 45,
@@ -16102,8 +16102,8 @@
           "totalMCQ": 24,
           "totalWritten": 13,
           "totalMarks": 37,
-          "rank": 15,
-          "mcqRank": 15,
+          "rank": 16,
+          "mcqRank": 16,
           "passingCriteria": {
             "englishMCQ": {
               "required": 5,
@@ -16122,7 +16122,7 @@
             }
           },
           "passedAll": false,
-          "percentile": 38,
+          "percentile": 33,
           "analytics": {
             "accuracy": 69.23,
             "totalCorrect": 27,
@@ -16531,8 +16531,8 @@
           "totalMCQ": 30,
           "totalWritten": 25,
           "totalMarks": 55,
-          "rank": 9,
-          "mcqRank": 14,
+          "rank": 10,
+          "mcqRank": 15,
           "passingCriteria": {
             "englishMCQ": {
               "required": 5,
@@ -16551,7 +16551,7 @@
             }
           },
           "passedAll": true,
-          "percentile": 63,
+          "percentile": 58,
           "analytics": {
             "accuracy": 60,
             "totalCorrect": 36,
@@ -16960,8 +16960,8 @@
           "totalMCQ": 34,
           "totalWritten": 18.25,
           "totalMarks": 52.25,
-          "rank": 12,
-          "mcqRank": 10,
+          "rank": 13,
+          "mcqRank": 11,
           "passingCriteria": {
             "englishMCQ": {
               "required": 5,
@@ -16980,7 +16980,7 @@
             }
           },
           "passedAll": true,
-          "percentile": 50,
+          "percentile": 46,
           "analytics": {
             "accuracy": 75.51,
             "totalCorrect": 37,
@@ -17389,8 +17389,8 @@
           "totalMCQ": 37,
           "totalWritten": 20,
           "totalMarks": 57,
-          "rank": 8,
-          "mcqRank": 8,
+          "rank": 9,
+          "mcqRank": 9,
           "passingCriteria": {
             "englishMCQ": {
               "required": 5,
@@ -17409,7 +17409,7 @@
             }
           },
           "passedAll": true,
-          "percentile": 67,
+          "percentile": 63,
           "analytics": {
             "accuracy": 76.92,
             "totalCorrect": 40,
@@ -18968,19 +18968,35 @@
           "studentName": "Shafqat Nur",
           "sections": {
             "english": {
-              "correct": 8,
+              "correct": 15,
               "wrong": 1,
-              "marks": 7.75,
-              "percentage": 48.4375,
+              "marks": 14.75,
+              "percentage": 92.1875,
               "totalQuestions": 16,
               "attempted": true
             },
             "advEnglish": {
-              "correct": 0,
-              "wrong": 0,
-              "marks": 0,
-              "percentage": 0,
+              "correct": 10,
+              "wrong": 2,
+              "marks": 9.5,
+              "percentage": 79.16666666666666,
               "totalQuestions": 12,
+              "attempted": true
+            },
+            "businessstudies": {
+              "correct": 8,
+              "wrong": 8,
+              "marks": 6,
+              "percentage": 37.5,
+              "totalQuestions": 16,
+              "attempted": true
+            },
+            "economics": {
+              "correct": 9,
+              "wrong": 6,
+              "marks": 7.5,
+              "percentage": 46.875,
+              "totalQuestions": 16,
               "attempted": true
             }
           },
@@ -19006,35 +19022,35 @@
               "attempted": true
             }
           },
-          "totalMCQ": 7.75,
+          "totalMCQ": 37.75,
           "totalWritten": 24.5,
-          "totalMarks": 32.25,
-          "rank": 16,
-          "mcqRank": 16,
+          "totalMarks": 62.25,
+          "rank": 7,
+          "mcqRank": 8,
           "passingCriteria": {
             "englishMCQ": {
               "required": 5,
-              "achieved": 7.75,
+              "achieved": 14.75,
               "passed": true
             },
             "totalMCQ": {
               "required": 24,
-              "achieved": 7.75,
-              "passed": false
+              "achieved": 37.75,
+              "passed": true
             },
             "total": {
               "required": 40,
-              "achieved": 32.25,
-              "passed": false
+              "achieved": 62.25,
+              "passed": true
             }
           },
-          "passedAll": false,
-          "percentile": 33,
+          "passedAll": true,
+          "percentile": 71,
           "analytics": {
-            "accuracy": 88.89,
-            "totalCorrect": 8,
-            "totalWrong": 1,
-            "totalAttempted": 9,
+            "accuracy": 71.19,
+            "totalCorrect": 42,
+            "totalWrong": 17,
+            "totalAttempted": 59,
             "skipStrategy": 98.53,
             "questionChoiceStrategy": 88.89,
             "recoveryScore": 100,
@@ -19051,6 +19067,20 @@
                 "attemptRate": 0,
                 "attempted": 0,
                 "unattempted": 12,
+                "efficiency": 0
+              },
+              "businessstudies": {
+                "accuracy": 0,
+                "attemptRate": 0,
+                "attempted": 0,
+                "unattempted": 16,
+                "efficiency": 0
+              },
+              "economics": {
+                "accuracy": 0,
+                "attemptRate": 0,
+                "attempted": 0,
+                "unattempted": 16,
                 "efficiency": 0
               }
             }
@@ -19853,8 +19883,8 @@
           "totalMCQ": 31.5,
           "totalWritten": 21,
           "totalMarks": 52.5,
-          "rank": 11,
-          "mcqRank": 11,
+          "rank": 12,
+          "mcqRank": 12,
           "passingCriteria": {
             "englishMCQ": {
               "required": 5,
@@ -19873,7 +19903,7 @@
             }
           },
           "passedAll": true,
-          "percentile": 54,
+          "percentile": 50,
           "analytics": {
             "accuracy": 62.71,
             "totalCorrect": 37,
@@ -20651,13 +20681,13 @@
         }
       },
       "classStats": {
-        "average": 39.0625,
-        "median": 50.25,
+        "average": 40.3125,
+        "median": 52.25,
         "highest": 92.5,
         "lowest": 0,
         "totalStudents": 24,
-        "passCount": 14,
-        "failCount": 10
+        "passCount": 15,
+        "failCount": 9
       },
       "topQuestions": {
         "english": {
@@ -21302,13 +21332,13 @@
         }
       },
       "metadata": {
-        "processedAt": "2025-11-15T00:11:16.844Z",
+        "processedAt": "2025-11-16T04:51:52.550Z",
         "sourceFile": "DU FBS Mock 2.xlsx"
       }
     }
   },
   "metadata": {
-    "lastUpdated": "2025-11-15T00:11:16.844Z",
+    "lastUpdated": "2025-11-16T04:51:52.551Z",
     "totalMocks": 2,
     "generatedBy": "FBS Mock Processor"
   }
