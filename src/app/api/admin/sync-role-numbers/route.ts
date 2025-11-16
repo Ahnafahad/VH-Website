@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
 import { getServerSession } from 'next-auth/next';
 import { authOptions } from '@/lib/auth';
 import { isAdminEmail } from '@/lib/db-access-control';
@@ -75,14 +75,14 @@ export async function POST() {
           const currentRoleNumbers = user.roleNumbers || [];
 
           // Check if update is needed
-          const needsUpdate = roleNumbersArray.some(id => !currentRoleNumbers.includes(id)) ||
-                             currentRoleNumbers.some(id => !roleNumbersArray.includes(id));
+          const needsUpdate = roleNumbersArray.some((id: string) => !currentRoleNumbers.includes(id)) ||
+                             currentRoleNumbers.some((id: string) => !roleNumbersArray.includes(id));
 
           if (needsUpdate) {
             user.roleNumbers = roleNumbersArray;
 
             // Also set studentId to the 6-digit ID if present
-            const sixDigitId = roleNumbersArray.find(id => id.length === 6);
+            const sixDigitId = roleNumbersArray.find((id: string) => id.length === 6);
             if (sixDigitId && !user.studentId) {
               user.studentId = sixDigitId;
             }
