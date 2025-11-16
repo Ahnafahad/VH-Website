@@ -9,11 +9,21 @@ import path from 'path';
 /**
  * Sync a student's data to students.json
  * This ensures students.json stays in sync with MongoDB changes
+ *
+ * NOTE: In production (Vercel), the file system is read-only.
+ * This function will gracefully fail without affecting the API response.
  */
 function syncStudentToJson(user: any) {
+  // Skip file sync in production environments (Vercel has read-only file system)
+  if (process.env.NODE_ENV === 'production') {
+    console.log('[syncStudentToJson] Skipping file sync in production (read-only file system)');
+    return;
+  }
+
   try {
     // Only sync students with roleNumbers
     if (!user.roleNumbers || user.roleNumbers.length === 0) {
+      console.log('[syncStudentToJson] No roleNumbers to sync');
       return;
     }
 
@@ -21,7 +31,8 @@ function syncStudentToJson(user: any) {
 
     // Load existing students.json
     if (!fs.existsSync(studentsPath)) {
-      return; // If file doesn't exist, skip sync
+      console.warn('[syncStudentToJson] students.json not found at:', studentsPath);
+      return;
     }
 
     const studentsData = JSON.parse(fs.readFileSync(studentsPath, 'utf8'));
@@ -35,6 +46,7 @@ function syncStudentToJson(user: any) {
         studentsData.students[roleNumberStr].email = user.email;
         studentsData.students[roleNumberStr].name = user.name;
         updated = true;
+        console.log(`[syncStudentToJson] Updated roleNumber ${roleNumberStr}`);
       }
     });
 
@@ -42,9 +54,13 @@ function syncStudentToJson(user: any) {
     if (updated) {
       studentsData.metadata.lastUpdated = new Date().toISOString();
       fs.writeFileSync(studentsPath, JSON.stringify(studentsData, null, 2));
+      console.log('[syncStudentToJson] Successfully wrote to students.json');
+    } else {
+      console.log('[syncStudentToJson] No updates needed');
     }
   } catch (error) {
-    console.error('Error syncing student to JSON:', error);
+    console.error('[syncStudentToJson] Error syncing student to JSON:', error);
+    console.error('[syncStudentToJson] Error details:', error instanceof Error ? error.message : String(error));
     // Don't throw - this is a non-critical operation
   }
 }
