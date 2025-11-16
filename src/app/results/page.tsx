@@ -395,25 +395,21 @@ const ResultsDashboard = () => {
                     // Skip if test is undefined
                     if (!test) return null;
 
-                    // Debug logging for first test
-                    if (testName === Object.keys(simpleTests.tests)[0]) {
-                      console.log('[Results Dashboard] Debug Info:', {
-                        testName,
-                        userEmail: session?.user?.email,
-                        isAdmin,
-                        selectedStudentId,
-                        roleNumbers: userAccess.roleNumbers,
-                        availableResultIds: Object.keys(test.results || {}).slice(0, 10)
-                      });
-                    }
+                    // For admin: get selected student's email, for student: use their own email
+                    const studentEmail = isAdmin && selectedStudentId && students?.students[selectedStudentId]
+                      ? students.students[selectedStudentId].email
+                      : session?.user?.email;
+
+                    // For admin: use undefined roleNumbers (let matcher find all IDs), for student: use their roleNumbers
+                    const studentRoleNumbers = isAdmin ? undefined : userAccess.roleNumbers;
 
                     // Use robust matching with multiple fallback methods
                     const { result } = findStudentResult(
                       test.results,
                       students?.students || {},
-                      session?.user?.email || undefined,
+                      studentEmail || undefined,
                       isAdmin ? selectedStudentId || undefined : undefined,
-                      userAccess.roleNumbers
+                      studentRoleNumbers
                     );
 
                     return (
@@ -461,13 +457,21 @@ const ResultsDashboard = () => {
                     // Skip if test is undefined
                     if (!test) return null;
 
+                    // For admin: get selected student's email, for student: use their own email
+                    const studentEmail = isAdmin && selectedStudentId && students?.students[selectedStudentId]
+                      ? students.students[selectedStudentId].email
+                      : session?.user?.email;
+
+                    // For admin: use undefined roleNumbers (let matcher find all IDs), for student: use their roleNumbers
+                    const studentRoleNumbers = isAdmin ? undefined : userAccess.roleNumbers;
+
                     // Use robust matching with multiple fallback methods
                     const { result } = findStudentResult(
                       test.results,
                       students?.students || {},
-                      session?.user?.email || undefined,
+                      studentEmail || undefined,
                       isAdmin ? selectedStudentId || undefined : undefined,
-                      userAccess.roleNumbers
+                      studentRoleNumbers
                     );
 
                     return (
@@ -518,13 +522,21 @@ const ResultsDashboard = () => {
                     // Skip if test is undefined
                     if (!test) return null;
 
+                    // For admin: get selected student's email, for student: use their own email
+                    const studentEmail = isAdmin && selectedStudentId && students?.students[selectedStudentId]
+                      ? students.students[selectedStudentId].email
+                      : session?.user?.email;
+
+                    // For admin: use undefined roleNumbers (let matcher find all IDs), for student: use their roleNumbers
+                    const studentRoleNumbers = isAdmin ? undefined : userAccess.roleNumbers;
+
                     // Use robust matching with multiple fallback methods
                     const { result } = findStudentResult(
                       test.results,
                       students?.students || {},
-                      session?.user?.email || undefined,
+                      studentEmail || undefined,
                       isAdmin ? selectedStudentId || undefined : undefined,
-                      userAccess.roleNumbers
+                      studentRoleNumbers
                     );
 
                     return (
@@ -576,13 +588,21 @@ const ResultsDashboard = () => {
                     // Skip if test is undefined
                     if (!test) return null;
 
+                    // For admin: get selected student's email, for student: use their own email
+                    const studentEmail = isAdmin && selectedStudentId && students?.students[selectedStudentId]
+                      ? students.students[selectedStudentId].email
+                      : session?.user?.email;
+
+                    // For admin: use undefined roleNumbers (let matcher find all IDs), for student: use their roleNumbers
+                    const studentRoleNumbers = isAdmin ? undefined : userAccess.roleNumbers;
+
                     // Use robust matching with multiple fallback methods
                     const { result } = findStudentResult(
                       test.results,
                       students?.students || {},
-                      session?.user?.email || undefined,
+                      studentEmail || undefined,
                       isAdmin ? selectedStudentId || undefined : undefined,
-                      userAccess.roleNumbers
+                      studentRoleNumbers
                     );
 
                     return (
