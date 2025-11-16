@@ -395,6 +395,18 @@ const ResultsDashboard = () => {
                     // Skip if test is undefined
                     if (!test) return null;
 
+                    // Debug logging for first test
+                    if (testName === Object.keys(simpleTests.tests)[0]) {
+                      console.log('[Results Dashboard] Debug Info:', {
+                        testName,
+                        userEmail: session?.user?.email,
+                        isAdmin,
+                        selectedStudentId,
+                        roleNumbers: userAccess.roleNumbers,
+                        availableResultIds: Object.keys(test.results || {}).slice(0, 10)
+                      });
+                    }
+
                     // Use robust matching with multiple fallback methods
                     const { result } = findStudentResult(
                       test.results,
