@@ -55,7 +55,7 @@ export function findStudentResult(
   // Strategy 3: Find student by email, then try their IDs
   if (userEmail) {
     const student = Object.entries(studentsData).find(
-      ([_, s]) => s.email?.toLowerCase() === userEmail.toLowerCase()
+      ([, s]) => s.email?.toLowerCase() === userEmail.toLowerCase()
     );
 
     if (student) {

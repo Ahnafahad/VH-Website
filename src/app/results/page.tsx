@@ -8,7 +8,7 @@ import ProtectedRoute from '@/components/ProtectedRoute';
 import { SimpleTestsData, FullTestsData, MockTestsData, StudentsData, SystemMetadata } from '@/types/results';
 import SeriesProgressChart from './components/SeriesProgressChart';
 import PerformanceBarChart from './components/PerformanceBarChart';
-import { findStudentResult, getStudentIds } from '@/utils/student-matcher';
+import { findStudentResult } from '@/utils/student-matcher';
 
 // Utility function to clean test names by removing folder prefixes
 const cleanTestName = (testName: string): string => {
@@ -580,8 +580,8 @@ const ResultsDashboard = () => {
                     const { result } = findStudentResult(
                       test.results,
                       students?.students || {},
-                      session?.user?.email,
-                      isAdmin ? selectedStudentId : undefined,
+                      session?.user?.email || undefined,
+                      isAdmin ? selectedStudentId || undefined : undefined,
                       userAccess.roleNumbers
                     );
 
