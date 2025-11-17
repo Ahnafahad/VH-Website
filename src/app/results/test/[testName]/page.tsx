@@ -585,7 +585,6 @@ const TestDetailPage = () => {
                 >
                   <option value="">Select a student...</option>
                   {Object.entries(students.students)
-                    .filter(([key, student]: [string, any]) => currentTest.results && currentTest.results[key])
                     .sort((a: any, b: any) => a[1].name.localeCompare(b[1].name))
                     .map(([key, student]: [string, any]) => (
                       <option key={key} value={key}>
