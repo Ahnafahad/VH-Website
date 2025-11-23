@@ -345,17 +345,23 @@ function getEssayScore(student) {
 }
 
 /**
- * Helper function to calculate total score
+ * Helper function to calculate total score for ranking
+ * Uses totalMarks directly to ensure ranks match actual marks earned
  */
 function calculateTotalScore(student, sectionIds, hasEssay) {
-  let total = 0;
+  // Use totalMarks directly if available (preferred for accurate ranking)
+  if (student.totalMarks !== undefined) {
+    return student.totalMarks;
+  }
 
+  // Fallback: sum section marks + essay marks
+  let total = 0;
   sectionIds.forEach(sectionId => {
-    total += getSectionScore(student, sectionId);
+    total += getSectionMarks(student, sectionId);
   });
 
   if (hasEssay) {
-    total += getEssayScore(student);
+    total += getEssayMarks(student);
   }
 
   return total;
