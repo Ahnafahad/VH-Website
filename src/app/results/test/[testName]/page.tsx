@@ -206,6 +206,21 @@ const TestDetailPage = () => {
     return sectionMap[sectionKey.toLowerCase()] || sectionKey;
   };
 
+  // Extract question number from either questionNumber or questionId (e.g., "Section1-Q6" -> "6")
+  const getQuestionDisplayNumber = (question: any): string => {
+    if (question.questionNumber !== undefined) {
+      return String(question.questionNumber);
+    }
+    if (question.questionId) {
+      // Extract number from formats like "Section1-Q6" or "s1q6"
+      const match = question.questionId.match(/Q(\d+)$/i);
+      if (match) {
+        return match[1];
+      }
+    }
+    return '?';
+  };
+
   const formatResponseText = (response: any) => {
     // Handle new object format: {answer: "A", status: "correct"}
     if (typeof response === 'object' && response !== null) {
@@ -1278,9 +1293,9 @@ const TestDetailPage = () => {
                                 </h5>
                                 <div className="space-y-1 max-h-64 overflow-y-auto">
                                   {sectionData.mostCorrect.map((question: any, index: number) => (
-                                    <div key={question.questionNumber || index} className="flex justify-between items-center text-sm">
+                                    <div key={question.questionNumber || question.questionId || index} className="flex justify-between items-center text-sm">
                                       <div className="flex items-center gap-2">
-                                        <span className="text-green-700">Q{question.questionNumber}</span>
+                                        <span className="text-green-700">Q{getQuestionDisplayNumber(question)}</span>
                                         {getUserQuestionStatusByNumber(question)}
                                       </div>
                                       <span className="text-green-600 font-medium">{question.count} correct</span>
@@ -1299,9 +1314,9 @@ const TestDetailPage = () => {
                                 </h5>
                                 <div className="space-y-1 max-h-64 overflow-y-auto">
                                   {sectionData.mostWrong.map((question: any, index: number) => (
-                                    <div key={question.questionNumber || index} className="flex justify-between items-center text-sm">
+                                    <div key={question.questionNumber || question.questionId || index} className="flex justify-between items-center text-sm">
                                       <div className="flex items-center gap-2">
-                                        <span className="text-red-700">Q{question.questionNumber}</span>
+                                        <span className="text-red-700">Q{getQuestionDisplayNumber(question)}</span>
                                         {getUserQuestionStatusByNumber(question)}
                                       </div>
                                       <span className="text-red-600 font-medium">{question.count} wrong</span>
@@ -1320,9 +1335,9 @@ const TestDetailPage = () => {
                                 </h5>
                                 <div className="space-y-1 max-h-64 overflow-y-auto">
                                   {sectionData.mostSkipped.map((question: any, index: number) => (
-                                    <div key={question.questionNumber || index} className="flex justify-between items-center text-sm">
+                                    <div key={question.questionNumber || question.questionId || index} className="flex justify-between items-center text-sm">
                                       <div className="flex items-center gap-2">
-                                        <span className="text-gray-700">Q{question.questionNumber}</span>
+                                        <span className="text-gray-700">Q{getQuestionDisplayNumber(question)}</span>
                                         {getUserQuestionStatusByNumber(question)}
                                       </div>
                                       <span className="text-gray-600 font-medium">{question.count} skipped</span>
@@ -1659,9 +1674,9 @@ const TestDetailPage = () => {
                           </h5>
                           <div className="space-y-1 max-h-64 overflow-y-auto">
                             {sectionData.mostCorrect.map((question: any, index: number) => (
-                              <div key={question.questionNumber || index} className="flex justify-between items-center text-sm">
+                              <div key={question.questionNumber || question.questionId || index} className="flex justify-between items-center text-sm">
                                 <div className="flex items-center gap-2">
-                                  <span className="text-green-700">Q{question.questionNumber}</span>
+                                  <span className="text-green-700">Q{getQuestionDisplayNumber(question)}</span>
                                   {getUserQuestionStatusByNumber(question)}
                                 </div>
                                 <span className="text-green-600 font-medium">{question.count} correct</span>
@@ -1681,9 +1696,9 @@ const TestDetailPage = () => {
                           </h5>
                           <div className="space-y-1 max-h-64 overflow-y-auto">
                             {sectionData.mostWrong.map((question: any, index: number) => (
-                              <div key={question.questionNumber || index} className="flex justify-between items-center text-sm">
+                              <div key={question.questionNumber || question.questionId || index} className="flex justify-between items-center text-sm">
                                 <div className="flex items-center gap-2">
-                                  <span className="text-red-700">Q{question.questionNumber}</span>
+                                  <span className="text-red-700">Q{getQuestionDisplayNumber(question)}</span>
                                   {getUserQuestionStatusByNumber(question)}
                                 </div>
                                 <span className="text-red-600 font-medium">{question.count} wrong</span>
@@ -1703,9 +1718,9 @@ const TestDetailPage = () => {
                           </h5>
                           <div className="space-y-1 max-h-64 overflow-y-auto">
                             {sectionData.mostSkipped.map((question: any, index: number) => (
-                              <div key={question.questionNumber || index} className="flex justify-between items-center text-sm">
+                              <div key={question.questionNumber || question.questionId || index} className="flex justify-between items-center text-sm">
                                 <div className="flex items-center gap-2">
-                                  <span className="text-gray-700">Q{question.questionNumber}</span>
+                                  <span className="text-gray-700">Q{getQuestionDisplayNumber(question)}</span>
                                   {getUserQuestionStatusByNumber(question)}
                                 </div>
                                 <span className="text-gray-600 font-medium">{question.count} skipped</span>
