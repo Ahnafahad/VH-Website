@@ -3180,7 +3180,7 @@
         }
       },
       "metadata": {
-        "processedAt": "2025-11-23T01:04:42.747Z",
+        "processedAt": "2025-11-23T09:47:53.083Z",
         "sourceFile": "IBA Mock\\Mock 1.xlsx",
         "sheets": [
           "Sheet1",
@@ -3238,7 +3238,7 @@
           "mcqAccuracy": 51.72,
           "mcqPercentage": 16.43,
           "totalPercentage": 26,
-          "rank": 7,
+          "rank": 6,
           "essays": {
             "1": 14.5
           },
@@ -3872,7 +3872,7 @@
           "mcqAccuracy": 57.14,
           "mcqPercentage": 13.93,
           "totalPercentage": 25.25,
-          "rank": 9,
+          "rank": 8,
           "essays": {
             "1": 15.5
           },
@@ -4567,7 +4567,7 @@
           "mcqAccuracy": 54.84,
           "mcqPercentage": 21.07,
           "totalPercentage": 24.75,
-          "rank": 10,
+          "rank": 9,
           "essays": {
             "1": 10
           },
@@ -4720,7 +4720,7 @@
           "mcqAccuracy": 31.37,
           "mcqPercentage": 10.36,
           "totalPercentage": 24.25,
-          "rank": 6,
+          "rank": 10,
           "essays": {
             "1": 17
           },
@@ -5959,7 +5959,7 @@
           "mcqAccuracy": 58.62,
           "mcqPercentage": 20,
           "totalPercentage": 26,
-          "rank": 8,
+          "rank": 7,
           "essays": {
             "1": 12
           },
@@ -6632,7 +6632,7 @@
         }
       },
       "metadata": {
-        "processedAt": "2025-11-23T01:04:42.770Z",
+        "processedAt": "2025-11-23T09:47:53.099Z",
         "sourceFile": "IBA Mock\\Mock 2.xlsx",
         "sheets": [
           "Sheet1",
@@ -7949,7 +7949,7 @@
           "mcqAccuracy": 58.33,
           "mcqPercentage": 17.86,
           "totalPercentage": 23,
-          "rank": 10,
+          "rank": 11,
           "essays": {
             "1": 10.5
           },
@@ -8258,7 +8258,7 @@
           "mcqAccuracy": 48.65,
           "mcqPercentage": 21.43,
           "totalPercentage": 24.5,
-          "rank": 9,
+          "rank": 8,
           "essays": {
             "1": 9.5
           },
@@ -8565,7 +8565,7 @@
           "mcqAccuracy": 48.48,
           "mcqPercentage": 16.79,
           "totalPercentage": 24.25,
-          "rank": 11,
+          "rank": 9,
           "essays": {
             "1": 12.5
           },
@@ -9500,7 +9500,7 @@
           "mcqAccuracy": 58.06,
           "mcqPercentage": 21.07,
           "totalPercentage": 24.25,
-          "rank": 8,
+          "rank": 10,
           "essays": {
             "1": 9.5
           },
@@ -10021,7 +10021,7 @@
         }
       },
       "metadata": {
-        "processedAt": "2025-11-23T01:04:42.808Z",
+        "processedAt": "2025-11-23T09:47:53.117Z",
         "sourceFile": "IBA Mock\\Mock 3.xlsx",
         "sheets": [
           "Sheet1",
@@ -10079,7 +10079,7 @@
           "mcqAccuracy": 53.13,
           "mcqPercentage": 18.93,
           "totalPercentage": 31.75,
-          "rank": 8,
+          "rank": 7,
           "essays": {
             "1": 18.5
           },
@@ -10399,7 +10399,7 @@
           "mcqAccuracy": 66.67,
           "mcqPercentage": 17.5,
           "totalPercentage": 23.75,
-          "rank": 11,
+          "rank": 10,
           "essays": {
             "1": 11.5
           },
@@ -10881,7 +10881,7 @@
           "mcqAccuracy": 36.36,
           "mcqPercentage": 12.86,
           "totalPercentage": 22.5,
-          "rank": 10,
+          "rank": 11,
           "essays": {
             "1": 13.5
           },
@@ -11267,7 +11267,7 @@
           "mcqAccuracy": 85,
           "mcqPercentage": 23.57,
           "totalPercentage": 30.5,
-          "rank": 6,
+          "rank": 8,
           "essays": {
             "1": 14
           },
@@ -11575,7 +11575,7 @@
           "mcqAccuracy": 62.96,
           "mcqPercentage": 22.86,
           "totalPercentage": 32,
-          "rank": 7,
+          "rank": 6,
           "essays": {
             "1": 16
           },
@@ -13257,7 +13257,7 @@
         }
       },
       "metadata": {
-        "processedAt": "2025-11-23T01:04:42.828Z",
+        "processedAt": "2025-11-23T09:47:53.137Z",
         "sourceFile": "IBA Mock\\Mock 4.xlsx",
         "sheets": [
           "Sheet1",
@@ -13315,7 +13315,7 @@
           "mcqAccuracy": 61.54,
           "mcqPercentage": 28.93,
           "totalPercentage": 38.25,
-          "rank": 3,
+          "rank": 2,
           "essays": {
             "1": 9,
             "2": 9
@@ -14886,7 +14886,7 @@
           "mcqAccuracy": 63.33,
           "mcqPercentage": 25.36,
           "totalPercentage": 37.25,
-          "rank": 4,
+          "rank": 3,
           "essays": {
             "1": 10,
             "2": 9.5
@@ -15439,7 +15439,7 @@
           "mcqAccuracy": 81.25,
           "mcqPercentage": 35,
           "totalPercentage": 37,
-          "rank": 2,
+          "rank": 4,
           "essays": {
             "1": 6.5,
             "2": 6
@@ -16425,7 +16425,7 @@
         }
       },
       "metadata": {
-        "processedAt": "2025-11-23T01:04:42.843Z",
+        "processedAt": "2025-11-23T09:47:53.162Z",
         "sourceFile": "IBA Mock\\Mock 5.xlsx",
         "sheets": [
           "Sheet1",
@@ -16437,7 +16437,7 @@
   },
   "metadata": {
     "totalTests": 5,
-    "lastProcessed": "2025-11-23T01:04:42.849Z",
+    "lastProcessed": "2025-11-23T09:47:53.173Z",
     "version": "1.0.0"
   }
 }
