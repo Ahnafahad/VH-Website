@@ -3180,7 +3180,7 @@
         }
       },
       "metadata": {
-        "processedAt": "2025-11-24T01:22:59.522Z",
+        "processedAt": "2025-11-25T00:07:10.520Z",
         "sourceFile": "IBA Mock\\Mock 1.xlsx",
         "sheets": [
           "Sheet1",
@@ -6632,7 +6632,7 @@
         }
       },
       "metadata": {
-        "processedAt": "2025-11-24T01:22:59.539Z",
+        "processedAt": "2025-11-25T00:07:10.537Z",
         "sourceFile": "IBA Mock\\Mock 2.xlsx",
         "sheets": [
           "Sheet1",
@@ -10021,7 +10021,7 @@
         }
       },
       "metadata": {
-        "processedAt": "2025-11-24T01:22:59.557Z",
+        "processedAt": "2025-11-25T00:07:10.555Z",
         "sourceFile": "IBA Mock\\Mock 3.xlsx",
         "sheets": [
           "Sheet1",
@@ -13257,7 +13257,7 @@
         }
       },
       "metadata": {
-        "processedAt": "2025-11-24T01:22:59.573Z",
+        "processedAt": "2025-11-25T00:07:10.572Z",
         "sourceFile": "IBA Mock\\Mock 4.xlsx",
         "sheets": [
           "Sheet1",
@@ -16425,7 +16425,7 @@
         }
       },
       "metadata": {
-        "processedAt": "2025-11-24T01:22:59.588Z",
+        "processedAt": "2025-11-25T00:07:10.591Z",
         "sourceFile": "IBA Mock\\Mock 5.xlsx",
         "sheets": [
           "Sheet1",
@@ -19527,8 +19527,3261 @@
         }
       },
       "metadata": {
-        "processedAt": "2025-11-24T01:22:59.602Z",
+        "processedAt": "2025-11-25T00:07:10.606Z",
         "sourceFile": "IBA Mock\\Mock 6.xlsx",
+        "sheets": [
+          "Sheet1",
+          "Sheet2",
+          "Sheet3"
+        ]
+      }
+    },
+    "IBA Mock\\Mock 7": {
+      "testName": "IBA Mock\\Mock 7",
+      "testType": "full",
+      "sections": [
+        "1",
+        "2",
+        "3"
+      ],
+      "results": {
+        "121716": {
+          "studentId": "121716",
+          "studentName": "Ayaz Mohammad Zahir",
+          "sections": {
+            "1": {
+              "correct": 8,
+              "wrong": 4,
+              "marks": 7,
+              "percentage": 23.33,
+              "totalQuestions": 0,
+              "threshold": 9.5,
+              "passed": false
+            },
+            "2": {
+              "correct": 4,
+              "wrong": 5,
+              "marks": 2.75,
+              "percentage": 11,
+              "totalQuestions": 0,
+              "threshold": 2.25,
+              "passed": true
+            },
+            "3": {
+              "correct": 6,
+              "wrong": 3,
+              "marks": 5.25,
+              "percentage": 35,
+              "totalQuestions": 0,
+              "threshold": 5.25,
+              "passed": true
+            }
+          },
+          "totalMarks": 26,
+          "mcqMarks": 15,
+          "essayMarks": 11,
+          "mcqCorrect": 18,
+          "mcqWrong": 12,
+          "mcqAccuracy": 60,
+          "mcqPercentage": 21.43,
+          "totalPercentage": 26,
+          "rank": 9,
+          "essays": {
+            "1": 0,
+            "2": 2.5,
+            "3": 8.5
+          },
+          "maxEssayMarks": 30,
+          "responses": {
+            "Section1-Q1": "NAN",
+            "Section1-Q2": "NAN",
+            "Section1-Q3": "NAN",
+            "Section1-Q4": "NAN",
+            "Section1-Q5": "D (C)",
+            "Section1-Q6": "D (C)",
+            "Section1-Q7": "C (C)",
+            "Section1-Q8": "B (C)",
+            "Section1-Q9": "C (C)",
+            "Section1-Q10": "C (C)",
+            "Section1-Q11": "NAN",
+            "Section1-Q12": "NAN",
+            "Section1-Q13": "A (C)",
+            "Section1-Q14": "A (C)",
+            "Section1-Q15": "E (W)",
+            "Section1-Q16": "B (W)",
+            "Section1-Q17": "NAN",
+            "Section1-Q18": "NAN",
+            "Section1-Q19": "A (W)",
+            "Section1-Q20": "NAN",
+            "Section1-Q21": "NAN",
+            "Section1-Q22": "NAN",
+            "Section1-Q23": "NAN",
+            "Section1-Q24": "B (W)",
+            "Section1-Q25": "NAN",
+            "Section1-Q26": "NAN",
+            "Section1-Q27": "NAN",
+            "Section1-Q28": "NAN",
+            "Section1-Q29": "NAN",
+            "Section1-Q30": "NAN",
+            "Section2-Q1": "D (C)",
+            "Section2-Q2": "NAN",
+            "Section2-Q3": "D (W)",
+            "Section2-Q4": "NAN",
+            "Section2-Q5": "NAN",
+            "Section2-Q6": "C (C)",
+            "Section2-Q7": "NAN",
+            "Section2-Q8": "C (C)",
+            "Section2-Q9": "NAN",
+            "Section2-Q10": "B (W)",
+            "Section2-Q11": "A (W)",
+            "Section2-Q12": "NAN",
+            "Section2-Q13": "D (W)",
+            "Section2-Q14": "D (C)",
+            "Section2-Q15": "NAN",
+            "Section2-Q16": "NAN",
+            "Section2-Q17": "C (W)",
+            "Section2-Q18": "NAN",
+            "Section2-Q19": "NAN",
+            "Section2-Q20": "NAN",
+            "Section2-Q21": "NAN",
+            "Section2-Q22": "NAN",
+            "Section2-Q23": "NAN",
+            "Section2-Q24": "NAN",
+            "Section2-Q25": "NAN",
+            "Section3-Q1": "E (W)",
+            "Section3-Q2": "A (W)",
+            "Section3-Q3": "B (C)",
+            "Section3-Q4": "A (C)",
+            "Section3-Q5": "A (W)",
+            "Section3-Q6": "D (C)",
+            "Section3-Q7": "C (C)",
+            "Section3-Q8": "E (C)",
+            "Section3-Q9": "E (C)",
+            "Section3-Q10": "NAN",
+            "Section3-Q11": "NAN",
+            "Section3-Q12": "NAN",
+            "Section3-Q13": "NAN",
+            "Section3-Q14": "NAN",
+            "Section3-Q15": "NAN"
+          },
+          "analytics": {
+            "skipStrategy": 71,
+            "questionChoiceStrategy": 73,
+            "recoveryScore": 60,
+            "sectionPerformance": {
+              "1": {
+                "accuracy": 66.67,
+                "attemptRate": 40,
+                "attempted": 12,
+                "unattempted": 18,
+                "efficiency": 26.67
+              },
+              "2": {
+                "accuracy": 44.44,
+                "attemptRate": 36,
+                "attempted": 9,
+                "unattempted": 16,
+                "efficiency": 16
+              },
+              "3": {
+                "accuracy": 66.67,
+                "attemptRate": 60,
+                "attempted": 9,
+                "unattempted": 6,
+                "efficiency": 40
+              }
+            }
+          },
+          "rankStatus": "failed",
+          "passedAll": false,
+          "failedSections": [
+            "1",
+            "essay"
+          ],
+          "essayThreshold": 12,
+          "essayPassed": false
+        },
+        "146014": {
+          "studentId": "146014",
+          "studentName": "Sadia Islam Sneha",
+          "sections": {
+            "1": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 0,
+              "threshold": 9.5,
+              "passed": false
+            },
+            "2": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 0,
+              "threshold": 2.25,
+              "passed": false
+            },
+            "3": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 0,
+              "threshold": 5.25,
+              "passed": false
+            }
+          },
+          "totalMarks": 0,
+          "mcqMarks": 0,
+          "essayMarks": 0,
+          "mcqCorrect": 0,
+          "mcqWrong": 0,
+          "mcqAccuracy": 0,
+          "mcqPercentage": 0,
+          "totalPercentage": 0,
+          "rank": 13,
+          "responses": {},
+          "analytics": {
+            "skipStrategy": 0,
+            "questionChoiceStrategy": 0,
+            "recoveryScore": 0,
+            "sectionPerformance": {
+              "1": {
+                "accuracy": 0,
+                "attemptRate": 0,
+                "attempted": 0,
+                "unattempted": 0,
+                "efficiency": 0
+              },
+              "2": {
+                "accuracy": 0,
+                "attemptRate": 0,
+                "attempted": 0,
+                "unattempted": 0,
+                "efficiency": 0
+              },
+              "3": {
+                "accuracy": 0,
+                "attemptRate": 0,
+                "attempted": 0,
+                "unattempted": 0,
+                "efficiency": 0
+              }
+            }
+          },
+          "rankStatus": "failed",
+          "passedAll": false,
+          "failedSections": [
+            "1",
+            "2",
+            "3",
+            "essay"
+          ],
+          "essayThreshold": 12,
+          "essayPassed": false
+        },
+        "158296": {
+          "studentId": "158296",
+          "studentName": "Tahiyat Abdullah",
+          "sections": {
+            "1": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 0,
+              "threshold": 9.5,
+              "passed": false
+            },
+            "2": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 0,
+              "threshold": 2.25,
+              "passed": false
+            },
+            "3": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 0,
+              "threshold": 5.25,
+              "passed": false
+            }
+          },
+          "totalMarks": 0,
+          "mcqMarks": 0,
+          "essayMarks": 0,
+          "mcqCorrect": 0,
+          "mcqWrong": 0,
+          "mcqAccuracy": 0,
+          "mcqPercentage": 0,
+          "totalPercentage": 0,
+          "rank": 14,
+          "responses": {},
+          "analytics": {
+            "skipStrategy": 0,
+            "questionChoiceStrategy": 0,
+            "recoveryScore": 0,
+            "sectionPerformance": {
+              "1": {
+                "accuracy": 0,
+                "attemptRate": 0,
+                "attempted": 0,
+                "unattempted": 0,
+                "efficiency": 0
+              },
+              "2": {
+                "accuracy": 0,
+                "attemptRate": 0,
+                "attempted": 0,
+                "unattempted": 0,
+                "efficiency": 0
+              },
+              "3": {
+                "accuracy": 0,
+                "attemptRate": 0,
+                "attempted": 0,
+                "unattempted": 0,
+                "efficiency": 0
+              }
+            }
+          },
+          "rankStatus": "failed",
+          "passedAll": false,
+          "failedSections": [
+            "1",
+            "2",
+            "3",
+            "essay"
+          ],
+          "essayThreshold": 12,
+          "essayPassed": false
+        },
+        "196303": {
+          "studentId": "196303",
+          "studentName": "RAMISA MALIAT",
+          "sections": {
+            "1": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 0,
+              "threshold": 9.5,
+              "passed": false
+            },
+            "2": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 0,
+              "threshold": 2.25,
+              "passed": false
+            },
+            "3": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 0,
+              "threshold": 5.25,
+              "passed": false
+            }
+          },
+          "totalMarks": 0,
+          "mcqMarks": 0,
+          "essayMarks": 0,
+          "mcqCorrect": 0,
+          "mcqWrong": 0,
+          "mcqAccuracy": 0,
+          "mcqPercentage": 0,
+          "totalPercentage": 0,
+          "rank": 15,
+          "responses": {},
+          "analytics": {
+            "skipStrategy": 0,
+            "questionChoiceStrategy": 0,
+            "recoveryScore": 0,
+            "sectionPerformance": {
+              "1": {
+                "accuracy": 0,
+                "attemptRate": 0,
+                "attempted": 0,
+                "unattempted": 0,
+                "efficiency": 0
+              },
+              "2": {
+                "accuracy": 0,
+                "attemptRate": 0,
+                "attempted": 0,
+                "unattempted": 0,
+                "efficiency": 0
+              },
+              "3": {
+                "accuracy": 0,
+                "attemptRate": 0,
+                "attempted": 0,
+                "unattempted": 0,
+                "efficiency": 0
+              }
+            }
+          },
+          "rankStatus": "failed",
+          "passedAll": false,
+          "failedSections": [
+            "1",
+            "2",
+            "3",
+            "essay"
+          ],
+          "essayThreshold": 12,
+          "essayPassed": false
+        },
+        "303558": {
+          "studentId": "303558",
+          "studentName": "Nusrat Tasfia",
+          "sections": {
+            "1": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 0,
+              "threshold": 9.5,
+              "passed": false
+            },
+            "2": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 0,
+              "threshold": 2.25,
+              "passed": false
+            },
+            "3": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 0,
+              "threshold": 5.25,
+              "passed": false
+            }
+          },
+          "totalMarks": 0,
+          "mcqMarks": 0,
+          "essayMarks": 0,
+          "mcqCorrect": 0,
+          "mcqWrong": 0,
+          "mcqAccuracy": 0,
+          "mcqPercentage": 0,
+          "totalPercentage": 0,
+          "rank": 16,
+          "responses": {},
+          "analytics": {
+            "skipStrategy": 0,
+            "questionChoiceStrategy": 0,
+            "recoveryScore": 0,
+            "sectionPerformance": {
+              "1": {
+                "accuracy": 0,
+                "attemptRate": 0,
+                "attempted": 0,
+                "unattempted": 0,
+                "efficiency": 0
+              },
+              "2": {
+                "accuracy": 0,
+                "attemptRate": 0,
+                "attempted": 0,
+                "unattempted": 0,
+                "efficiency": 0
+              },
+              "3": {
+                "accuracy": 0,
+                "attemptRate": 0,
+                "attempted": 0,
+                "unattempted": 0,
+                "efficiency": 0
+              }
+            }
+          },
+          "rankStatus": "failed",
+          "passedAll": false,
+          "failedSections": [
+            "1",
+            "2",
+            "3",
+            "essay"
+          ],
+          "essayThreshold": 12,
+          "essayPassed": false
+        },
+        "399043": {
+          "studentId": "399043",
+          "studentName": "Sara Iftekhar",
+          "sections": {
+            "1": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 0,
+              "threshold": 9.5,
+              "passed": false
+            },
+            "2": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 0,
+              "threshold": 2.25,
+              "passed": false
+            },
+            "3": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 0,
+              "threshold": 5.25,
+              "passed": false
+            }
+          },
+          "totalMarks": 0,
+          "mcqMarks": 0,
+          "essayMarks": 0,
+          "mcqCorrect": 0,
+          "mcqWrong": 0,
+          "mcqAccuracy": 0,
+          "mcqPercentage": 0,
+          "totalPercentage": 0,
+          "rank": 17,
+          "responses": {},
+          "analytics": {
+            "skipStrategy": 0,
+            "questionChoiceStrategy": 0,
+            "recoveryScore": 0,
+            "sectionPerformance": {
+              "1": {
+                "accuracy": 0,
+                "attemptRate": 0,
+                "attempted": 0,
+                "unattempted": 0,
+                "efficiency": 0
+              },
+              "2": {
+                "accuracy": 0,
+                "attemptRate": 0,
+                "attempted": 0,
+                "unattempted": 0,
+                "efficiency": 0
+              },
+              "3": {
+                "accuracy": 0,
+                "attemptRate": 0,
+                "attempted": 0,
+                "unattempted": 0,
+                "efficiency": 0
+              }
+            }
+          },
+          "rankStatus": "failed",
+          "passedAll": false,
+          "failedSections": [
+            "1",
+            "2",
+            "3",
+            "essay"
+          ],
+          "essayThreshold": 12,
+          "essayPassed": false
+        },
+        "400651": {
+          "studentId": "400651",
+          "studentName": "Mahabub Alam Rafi",
+          "sections": {
+            "1": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 0,
+              "threshold": 9.5,
+              "passed": false
+            },
+            "2": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 0,
+              "threshold": 2.25,
+              "passed": false
+            },
+            "3": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 0,
+              "threshold": 5.25,
+              "passed": false
+            }
+          },
+          "totalMarks": 0,
+          "mcqMarks": 0,
+          "essayMarks": 0,
+          "mcqCorrect": 0,
+          "mcqWrong": 0,
+          "mcqAccuracy": 0,
+          "mcqPercentage": 0,
+          "totalPercentage": 0,
+          "rank": 18,
+          "responses": {},
+          "analytics": {
+            "skipStrategy": 0,
+            "questionChoiceStrategy": 0,
+            "recoveryScore": 0,
+            "sectionPerformance": {
+              "1": {
+                "accuracy": 0,
+                "attemptRate": 0,
+                "attempted": 0,
+                "unattempted": 0,
+                "efficiency": 0
+              },
+              "2": {
+                "accuracy": 0,
+                "attemptRate": 0,
+                "attempted": 0,
+                "unattempted": 0,
+                "efficiency": 0
+              },
+              "3": {
+                "accuracy": 0,
+                "attemptRate": 0,
+                "attempted": 0,
+                "unattempted": 0,
+                "efficiency": 0
+              }
+            }
+          },
+          "rankStatus": "failed",
+          "passedAll": false,
+          "failedSections": [
+            "1",
+            "2",
+            "3",
+            "essay"
+          ],
+          "essayThreshold": 12,
+          "essayPassed": false
+        },
+        "417695": {
+          "studentId": "417695",
+          "studentName": "Kashfia Ahmed",
+          "sections": {
+            "1": {
+              "correct": 9,
+              "wrong": 4,
+              "marks": 8,
+              "percentage": 26.67,
+              "totalQuestions": 0,
+              "threshold": 9.5,
+              "passed": false
+            },
+            "2": {
+              "correct": 3,
+              "wrong": 2,
+              "marks": 2.5,
+              "percentage": 10,
+              "totalQuestions": 0,
+              "threshold": 2.25,
+              "passed": true
+            },
+            "3": {
+              "correct": 8,
+              "wrong": 2,
+              "marks": 7.5,
+              "percentage": 50,
+              "totalQuestions": 0,
+              "threshold": 5.25,
+              "passed": true
+            }
+          },
+          "totalMarks": 31,
+          "mcqMarks": 18,
+          "essayMarks": 13,
+          "mcqCorrect": 20,
+          "mcqWrong": 8,
+          "mcqAccuracy": 71.43,
+          "mcqPercentage": 25.71,
+          "totalPercentage": 31,
+          "rank": 8,
+          "essays": {
+            "1": 4,
+            "2": 3,
+            "3": 6
+          },
+          "maxEssayMarks": 30,
+          "responses": {
+            "Section1-Q1": "NAN",
+            "Section1-Q2": "NAN",
+            "Section1-Q3": "NAN",
+            "Section1-Q4": "NAN",
+            "Section1-Q5": "NAN",
+            "Section1-Q6": "NAN",
+            "Section1-Q7": "NAN",
+            "Section1-Q8": "NAN",
+            "Section1-Q9": "NAN",
+            "Section1-Q10": "NAN",
+            "Section1-Q11": "C (C)",
+            "Section1-Q12": "NAN",
+            "Section1-Q13": "A (C)",
+            "Section1-Q14": "A (C)",
+            "Section1-Q15": "E (W)",
+            "Section1-Q16": "D (W)",
+            "Section1-Q17": "A (C)",
+            "Section1-Q18": "B (W)",
+            "Section1-Q19": "NAN",
+            "Section1-Q20": "NAN",
+            "Section1-Q21": "NAN",
+            "Section1-Q22": "C (C)",
+            "Section1-Q23": "D (W)",
+            "Section1-Q24": "C (C)",
+            "Section1-Q25": "B (C)",
+            "Section1-Q26": "A (C)",
+            "Section1-Q27": "D (C)",
+            "Section1-Q28": "NAN",
+            "Section1-Q29": "NAN",
+            "Section1-Q30": "NAN",
+            "Section2-Q1": "D (C)",
+            "Section2-Q2": "NAN",
+            "Section2-Q3": "NAN",
+            "Section2-Q4": "NAN",
+            "Section2-Q5": "NAN",
+            "Section2-Q6": "D (W)",
+            "Section2-Q7": "NAN",
+            "Section2-Q8": "NAN",
+            "Section2-Q9": "NAN",
+            "Section2-Q10": "NAN",
+            "Section2-Q11": "NAN",
+            "Section2-Q12": "NAN",
+            "Section2-Q13": "NAN",
+            "Section2-Q14": "NAN",
+            "Section2-Q15": "NAN",
+            "Section2-Q16": "B (C)",
+            "Section2-Q17": "E (W)",
+            "Section2-Q18": "NAN",
+            "Section2-Q19": "NAN",
+            "Section2-Q20": "NAN",
+            "Section2-Q21": "NAN",
+            "Section2-Q22": "E (C)",
+            "Section2-Q23": "NAN",
+            "Section2-Q24": "NAN",
+            "Section2-Q25": "NAN",
+            "Section3-Q1": "D (C)",
+            "Section3-Q2": "E (C)",
+            "Section3-Q3": "B (C)",
+            "Section3-Q4": "NAN",
+            "Section3-Q5": "B (C)",
+            "Section3-Q6": "A (W)",
+            "Section3-Q7": "C (C)",
+            "Section3-Q8": "E (C)",
+            "Section3-Q9": "E (C)",
+            "Section3-Q10": "C (W)",
+            "Section3-Q11": "B (C)",
+            "Section3-Q12": "NAN",
+            "Section3-Q13": "NAN",
+            "Section3-Q14": "NAN",
+            "Section3-Q15": "NAN"
+          },
+          "analytics": {
+            "skipStrategy": 71,
+            "questionChoiceStrategy": 74,
+            "recoveryScore": 75,
+            "sectionPerformance": {
+              "1": {
+                "accuracy": 69.23,
+                "attemptRate": 43.33,
+                "attempted": 13,
+                "unattempted": 17,
+                "efficiency": 30
+              },
+              "2": {
+                "accuracy": 60,
+                "attemptRate": 20,
+                "attempted": 5,
+                "unattempted": 20,
+                "efficiency": 12
+              },
+              "3": {
+                "accuracy": 80,
+                "attemptRate": 66.67,
+                "attempted": 10,
+                "unattempted": 5,
+                "efficiency": 53.34
+              }
+            }
+          },
+          "rankStatus": "failed",
+          "passedAll": false,
+          "failedSections": [
+            "1"
+          ],
+          "essayThreshold": 12,
+          "essayPassed": true
+        },
+        "421527": {
+          "studentId": "421527",
+          "studentName": "Sharika Sanjana Chowdhury",
+          "sections": {
+            "1": {
+              "correct": 10,
+              "wrong": 14,
+              "marks": 6.5,
+              "percentage": 21.67,
+              "totalQuestions": 0,
+              "threshold": 9.5,
+              "passed": false
+            },
+            "2": {
+              "correct": 2,
+              "wrong": 12,
+              "marks": -1,
+              "percentage": -4,
+              "totalQuestions": 0,
+              "threshold": 2.25,
+              "passed": false
+            },
+            "3": {
+              "correct": 6,
+              "wrong": 3,
+              "marks": 5.25,
+              "percentage": 35,
+              "totalQuestions": 0,
+              "threshold": 5.25,
+              "passed": true
+            }
+          },
+          "totalMarks": 19.75,
+          "mcqMarks": 10.75,
+          "essayMarks": 9,
+          "mcqCorrect": 18,
+          "mcqWrong": 29,
+          "mcqAccuracy": 38.3,
+          "mcqPercentage": 15.36,
+          "totalPercentage": 19.75,
+          "rank": 11,
+          "essays": {
+            "1": 0,
+            "2": 2,
+            "3": 7
+          },
+          "maxEssayMarks": 30,
+          "responses": {
+            "Section1-Q1": "C (W)",
+            "Section1-Q2": "D (W)",
+            "Section1-Q3": "B (W)",
+            "Section1-Q4": "B (W)",
+            "Section1-Q5": "E (W)",
+            "Section1-Q6": "D (C)",
+            "Section1-Q7": "C (C)",
+            "Section1-Q8": "E (W)",
+            "Section1-Q9": "E (W)",
+            "Section1-Q10": "C (C)",
+            "Section1-Q11": "C (C)",
+            "Section1-Q12": "A (C)",
+            "Section1-Q13": "A (C)",
+            "Section1-Q14": "E (W)",
+            "Section1-Q15": "C (W)",
+            "Section1-Q16": "B (W)",
+            "Section1-Q17": "A (C)",
+            "Section1-Q18": "C (C)",
+            "Section1-Q19": "NAN",
+            "Section1-Q20": "NAN",
+            "Section1-Q21": "NAN",
+            "Section1-Q22": "B (W)",
+            "Section1-Q23": "A (W)",
+            "Section1-Q24": "B (W)",
+            "Section1-Q25": "D (W)",
+            "Section1-Q26": "A (C)",
+            "Section1-Q27": "D (C)",
+            "Section1-Q28": "NAN",
+            "Section1-Q29": "NAN",
+            "Section1-Q30": "NAN",
+            "Section2-Q1": "A (W)",
+            "Section2-Q2": "C (W)",
+            "Section2-Q3": "D (W)",
+            "Section2-Q4": "NAN",
+            "Section2-Q5": "NAN",
+            "Section2-Q6": "D (W)",
+            "Section2-Q7": "D (W)",
+            "Section2-Q8": "NAN",
+            "Section2-Q9": "E (W)",
+            "Section2-Q10": "NAN",
+            "Section2-Q11": "C (C)",
+            "Section2-Q12": "NAN",
+            "Section2-Q13": "A (W)",
+            "Section2-Q14": "NAN",
+            "Section2-Q15": "NAN",
+            "Section2-Q16": "E (W)",
+            "Section2-Q17": "E (W)",
+            "Section2-Q18": "A (W)",
+            "Section2-Q19": "D (W)",
+            "Section2-Q20": "B (W)",
+            "Section2-Q21": "E (C)",
+            "Section2-Q22": "NAN",
+            "Section2-Q23": "NAN",
+            "Section2-Q24": "NAN",
+            "Section2-Q25": "NAN",
+            "Section3-Q1": "D (C)",
+            "Section3-Q2": "A (W)",
+            "Section3-Q3": "D (W)",
+            "Section3-Q4": "E (W)",
+            "Section3-Q5": "B (C)",
+            "Section3-Q6": "D (C)",
+            "Section3-Q7": "C (C)",
+            "Section3-Q8": "E (C)",
+            "Section3-Q9": "E (C)",
+            "Section3-Q10": "NAN",
+            "Section3-Q11": "NAN",
+            "Section3-Q12": "NAN",
+            "Section3-Q13": "NAN",
+            "Section3-Q14": "NAN",
+            "Section3-Q15": "NAN"
+          },
+          "analytics": {
+            "skipStrategy": 72,
+            "questionChoiceStrategy": 72,
+            "recoveryScore": 42,
+            "sectionPerformance": {
+              "1": {
+                "accuracy": 41.67,
+                "attemptRate": 80,
+                "attempted": 24,
+                "unattempted": 6,
+                "efficiency": 33.34
+              },
+              "2": {
+                "accuracy": 14.29,
+                "attemptRate": 56,
+                "attempted": 14,
+                "unattempted": 11,
+                "efficiency": 8
+              },
+              "3": {
+                "accuracy": 66.67,
+                "attemptRate": 60,
+                "attempted": 9,
+                "unattempted": 6,
+                "efficiency": 40
+              }
+            }
+          },
+          "rankStatus": "failed",
+          "passedAll": false,
+          "failedSections": [
+            "1",
+            "2",
+            "essay"
+          ],
+          "essayThreshold": 12,
+          "essayPassed": false
+        },
+        "459889": {
+          "studentId": "459889",
+          "studentName": "Zuhayr Adeeb Ahmed",
+          "sections": {
+            "1": {
+              "correct": 18,
+              "wrong": 2,
+              "marks": 17.5,
+              "percentage": 58.33,
+              "totalQuestions": 0,
+              "threshold": 9.5,
+              "passed": true
+            },
+            "2": {
+              "correct": 9,
+              "wrong": 3,
+              "marks": 8.25,
+              "percentage": 33,
+              "totalQuestions": 0,
+              "threshold": 2.25,
+              "passed": true
+            },
+            "3": {
+              "correct": 11,
+              "wrong": 1,
+              "marks": 10.75,
+              "percentage": 71.67,
+              "totalQuestions": 0,
+              "threshold": 5.25,
+              "passed": true
+            }
+          },
+          "totalMarks": 52,
+          "mcqMarks": 36.5,
+          "essayMarks": 15.5,
+          "mcqCorrect": 38,
+          "mcqWrong": 6,
+          "mcqAccuracy": 86.36,
+          "mcqPercentage": 52.14,
+          "totalPercentage": 52,
+          "rank": 1,
+          "essays": {
+            "1": 5.5,
+            "2": 2.5,
+            "3": 7.5
+          },
+          "maxEssayMarks": 30,
+          "responses": {
+            "Section1-Q1": "D (C)",
+            "Section1-Q2": "NAN",
+            "Section1-Q3": "E (C)",
+            "Section1-Q4": "NAN",
+            "Section1-Q5": "D (C)",
+            "Section1-Q6": "D (C)",
+            "Section1-Q7": "C (C)",
+            "Section1-Q8": "B (C)",
+            "Section1-Q9": "NAN",
+            "Section1-Q10": "C (C)",
+            "Section1-Q11": "C (C)",
+            "Section1-Q12": "A (C)",
+            "Section1-Q13": "A (C)",
+            "Section1-Q14": "A (C)",
+            "Section1-Q15": "A (C)",
+            "Section1-Q16": "A (C)",
+            "Section1-Q17": "A (C)",
+            "Section1-Q18": "NAN",
+            "Section1-Q19": "NAN",
+            "Section1-Q20": "NAN",
+            "Section1-Q21": "NAN",
+            "Section1-Q22": "B (W)",
+            "Section1-Q23": "B (C)",
+            "Section1-Q24": "B (W)",
+            "Section1-Q25": "B (C)",
+            "Section1-Q26": "A (C)",
+            "Section1-Q27": "D (C)",
+            "Section1-Q28": "NAN",
+            "Section1-Q29": "NAN",
+            "Section1-Q30": "NAN",
+            "Section2-Q1": "D (C)",
+            "Section2-Q2": "C (W)",
+            "Section2-Q3": "NAN",
+            "Section2-Q4": "NAN",
+            "Section2-Q5": "NAN",
+            "Section2-Q6": "D (W)",
+            "Section2-Q7": "NAN",
+            "Section2-Q8": "C (C)",
+            "Section2-Q9": "NAN",
+            "Section2-Q10": "D (C)",
+            "Section2-Q11": "C (C)",
+            "Section2-Q12": "A (C)",
+            "Section2-Q13": "NAN",
+            "Section2-Q14": "NAN",
+            "Section2-Q15": "B (C)",
+            "Section2-Q16": "B (C)",
+            "Section2-Q17": "D (C)",
+            "Section2-Q18": "NAN",
+            "Section2-Q19": "NAN",
+            "Section2-Q20": "NAN",
+            "Section2-Q21": "NAN",
+            "Section2-Q22": "NAN",
+            "Section2-Q23": "E (W)",
+            "Section2-Q24": "NAN",
+            "Section2-Q25": "D (C)",
+            "Section3-Q1": "D (C)",
+            "Section3-Q2": "E (C)",
+            "Section3-Q3": "B (C)",
+            "Section3-Q4": "A (C)",
+            "Section3-Q5": "B (C)",
+            "Section3-Q6": "D (C)",
+            "Section3-Q7": "C (C)",
+            "Section3-Q8": "E (C)",
+            "Section3-Q9": "E (C)",
+            "Section3-Q10": "E (C)",
+            "Section3-Q11": "B (C)",
+            "Section3-Q12": "D (W)",
+            "Section3-Q13": "NAN",
+            "Section3-Q14": "NAN",
+            "Section3-Q15": "NAN"
+          },
+          "analytics": {
+            "skipStrategy": 87,
+            "questionChoiceStrategy": 85,
+            "recoveryScore": 73,
+            "sectionPerformance": {
+              "1": {
+                "accuracy": 90,
+                "attemptRate": 66.67,
+                "attempted": 20,
+                "unattempted": 10,
+                "efficiency": 60
+              },
+              "2": {
+                "accuracy": 75,
+                "attemptRate": 48,
+                "attempted": 12,
+                "unattempted": 13,
+                "efficiency": 36
+              },
+              "3": {
+                "accuracy": 91.67,
+                "attemptRate": 80,
+                "attempted": 12,
+                "unattempted": 3,
+                "efficiency": 73.34
+              }
+            }
+          },
+          "rankStatus": "passed",
+          "passedAll": true,
+          "failedSections": [],
+          "essayThreshold": 12,
+          "essayPassed": true
+        },
+        "542127": {
+          "studentId": "542127",
+          "studentName": "Mansib Rahman",
+          "sections": {
+            "1": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 0,
+              "threshold": 9.5,
+              "passed": false
+            },
+            "2": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 0,
+              "threshold": 2.25,
+              "passed": false
+            },
+            "3": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 0,
+              "threshold": 5.25,
+              "passed": false
+            }
+          },
+          "totalMarks": 0,
+          "mcqMarks": 0,
+          "essayMarks": 0,
+          "mcqCorrect": 0,
+          "mcqWrong": 0,
+          "mcqAccuracy": 0,
+          "mcqPercentage": 0,
+          "totalPercentage": 0,
+          "rank": 19,
+          "responses": {},
+          "analytics": {
+            "skipStrategy": 0,
+            "questionChoiceStrategy": 0,
+            "recoveryScore": 0,
+            "sectionPerformance": {
+              "1": {
+                "accuracy": 0,
+                "attemptRate": 0,
+                "attempted": 0,
+                "unattempted": 0,
+                "efficiency": 0
+              },
+              "2": {
+                "accuracy": 0,
+                "attemptRate": 0,
+                "attempted": 0,
+                "unattempted": 0,
+                "efficiency": 0
+              },
+              "3": {
+                "accuracy": 0,
+                "attemptRate": 0,
+                "attempted": 0,
+                "unattempted": 0,
+                "efficiency": 0
+              }
+            }
+          },
+          "rankStatus": "failed",
+          "passedAll": false,
+          "failedSections": [
+            "1",
+            "2",
+            "3",
+            "essay"
+          ],
+          "essayThreshold": 12,
+          "essayPassed": false
+        },
+        "575752": {
+          "studentId": "575752",
+          "studentName": "Wazeed Mahmud",
+          "sections": {
+            "1": {
+              "correct": 1,
+              "wrong": 0,
+              "marks": 1,
+              "percentage": 3.33,
+              "totalQuestions": 0,
+              "threshold": 9.5,
+              "passed": false
+            },
+            "2": {
+              "correct": 3,
+              "wrong": 3,
+              "marks": 2.25,
+              "percentage": 9,
+              "totalQuestions": 0,
+              "threshold": 2.25,
+              "passed": true
+            },
+            "3": {
+              "correct": 3,
+              "wrong": 2,
+              "marks": 2.5,
+              "percentage": 16.67,
+              "totalQuestions": 0,
+              "threshold": 5.25,
+              "passed": false
+            }
+          },
+          "totalMarks": 15.75,
+          "mcqMarks": 5.75,
+          "essayMarks": 10,
+          "mcqCorrect": 7,
+          "mcqWrong": 5,
+          "mcqAccuracy": 58.33,
+          "mcqPercentage": 8.21,
+          "totalPercentage": 15.74,
+          "rank": 12,
+          "essays": {
+            "1": 0,
+            "2": 3,
+            "3": 7
+          },
+          "maxEssayMarks": 30,
+          "responses": {
+            "Section1-Q1": "NAN",
+            "Section1-Q2": "E (C)",
+            "Section1-Q3": "NAN",
+            "Section1-Q4": "NAN",
+            "Section1-Q5": "NAN",
+            "Section1-Q6": "NAN",
+            "Section1-Q7": "NAN",
+            "Section1-Q8": "NAN",
+            "Section1-Q9": "NAN",
+            "Section1-Q10": "NAN",
+            "Section1-Q11": "NAN",
+            "Section1-Q12": "NAN",
+            "Section1-Q13": "NAN",
+            "Section1-Q14": "NAN",
+            "Section1-Q15": "NAN",
+            "Section1-Q16": "NAN",
+            "Section1-Q17": "NAN",
+            "Section1-Q18": "NAN",
+            "Section1-Q19": "NAN",
+            "Section1-Q20": "NAN",
+            "Section1-Q21": "NAN",
+            "Section1-Q22": "NAN",
+            "Section1-Q23": "NAN",
+            "Section1-Q24": "NAN",
+            "Section1-Q25": "NAN",
+            "Section1-Q26": "NAN",
+            "Section1-Q27": "NAN",
+            "Section1-Q28": "NAN",
+            "Section1-Q29": "NAN",
+            "Section1-Q30": "NAN",
+            "Section2-Q1": "NAN",
+            "Section2-Q2": "C (W)",
+            "Section2-Q3": "NAN",
+            "Section2-Q4": "NAN",
+            "Section2-Q5": "NAN",
+            "Section2-Q6": "C (C)",
+            "Section2-Q7": "NAN",
+            "Section2-Q8": "A (W)",
+            "Section2-Q9": "NAN",
+            "Section2-Q10": "NAN",
+            "Section2-Q11": "C (C)",
+            "Section2-Q12": "A (C)",
+            "Section2-Q13": "NAN",
+            "Section2-Q14": "NAN",
+            "Section2-Q15": "NAN",
+            "Section2-Q16": "E (W)",
+            "Section2-Q17": "NAN",
+            "Section2-Q18": "NAN",
+            "Section2-Q19": "NAN",
+            "Section2-Q20": "NAN",
+            "Section2-Q21": "NAN",
+            "Section2-Q22": "NAN",
+            "Section2-Q23": "NAN",
+            "Section2-Q24": "NAN",
+            "Section2-Q25": "NAN",
+            "Section3-Q1": "D (C)",
+            "Section3-Q2": "A (W)",
+            "Section3-Q3": "B (C)",
+            "Section3-Q4": "A (C)",
+            "Section3-Q5": "E (W)",
+            "Section3-Q6": "NAN",
+            "Section3-Q7": "NAN",
+            "Section3-Q8": "NAN",
+            "Section3-Q9": "NAN",
+            "Section3-Q10": "NAN",
+            "Section3-Q11": "NAN",
+            "Section3-Q12": "NAN",
+            "Section3-Q13": "NAN",
+            "Section3-Q14": "NAN",
+            "Section3-Q15": "NAN"
+          },
+          "analytics": {
+            "skipStrategy": 58,
+            "questionChoiceStrategy": 65,
+            "recoveryScore": 68,
+            "sectionPerformance": {
+              "1": {
+                "accuracy": 100,
+                "attemptRate": 3.33,
+                "attempted": 1,
+                "unattempted": 29,
+                "efficiency": 3.33
+              },
+              "2": {
+                "accuracy": 50,
+                "attemptRate": 24,
+                "attempted": 6,
+                "unattempted": 19,
+                "efficiency": 12
+              },
+              "3": {
+                "accuracy": 60,
+                "attemptRate": 33.33,
+                "attempted": 5,
+                "unattempted": 10,
+                "efficiency": 20
+              }
+            }
+          },
+          "rankStatus": "failed",
+          "passedAll": false,
+          "failedSections": [
+            "1",
+            "3",
+            "essay"
+          ],
+          "essayThreshold": 12,
+          "essayPassed": false
+        },
+        "604057": {
+          "studentId": "604057",
+          "studentName": "Alex Alamgir",
+          "sections": {
+            "1": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": "Total Question 3",
+              "threshold": 9.5,
+              "passed": false
+            },
+            "2": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 0,
+              "threshold": 2.25,
+              "passed": false
+            },
+            "3": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 0,
+              "threshold": 5.25,
+              "passed": false
+            }
+          },
+          "totalMarks": 0,
+          "mcqMarks": 0,
+          "essayMarks": 0,
+          "mcqCorrect": 0,
+          "mcqWrong": 0,
+          "mcqAccuracy": 0,
+          "mcqPercentage": 0,
+          "totalPercentage": 0,
+          "rank": 20,
+          "responses": {},
+          "analytics": {
+            "skipStrategy": 0,
+            "questionChoiceStrategy": 0,
+            "recoveryScore": 0,
+            "sectionPerformance": {
+              "1": {
+                "accuracy": 0,
+                "attemptRate": 0,
+                "attempted": 0,
+                "unattempted": null,
+                "efficiency": 0
+              },
+              "2": {
+                "accuracy": 0,
+                "attemptRate": 0,
+                "attempted": 0,
+                "unattempted": 0,
+                "efficiency": 0
+              },
+              "3": {
+                "accuracy": 0,
+                "attemptRate": 0,
+                "attempted": 0,
+                "unattempted": 0,
+                "efficiency": 0
+              }
+            }
+          },
+          "rankStatus": "failed",
+          "passedAll": false,
+          "failedSections": [
+            "1",
+            "2",
+            "3",
+            "essay"
+          ],
+          "essayThreshold": 12,
+          "essayPassed": false
+        },
+        "621172": {
+          "studentId": "621172",
+          "studentName": "Zaian Jannat Hussain",
+          "sections": {
+            "1": {
+              "correct": 16,
+              "wrong": 5,
+              "marks": 14.75,
+              "percentage": 49.17,
+              "totalQuestions": 0,
+              "threshold": 9.5,
+              "passed": true
+            },
+            "2": {
+              "correct": 2,
+              "wrong": 6,
+              "marks": 0.5,
+              "percentage": 2,
+              "totalQuestions": 0,
+              "threshold": 2.25,
+              "passed": false
+            },
+            "3": {
+              "correct": 7,
+              "wrong": 2,
+              "marks": 6.5,
+              "percentage": 43.33,
+              "totalQuestions": 0,
+              "threshold": 5.25,
+              "passed": true
+            }
+          },
+          "totalMarks": 34.25,
+          "mcqMarks": 21.75,
+          "essayMarks": 12.5,
+          "mcqCorrect": 25,
+          "mcqWrong": 13,
+          "mcqAccuracy": 65.79,
+          "mcqPercentage": 31.07,
+          "totalPercentage": 34.25,
+          "rank": 7,
+          "essays": {
+            "1": 0,
+            "2": 3.5,
+            "3": 9
+          },
+          "maxEssayMarks": 30,
+          "responses": {
+            "Section1-Q1": "D (C)",
+            "Section1-Q2": "NAN",
+            "Section1-Q3": "NAN",
+            "Section1-Q4": "NAN",
+            "Section1-Q5": "D (C)",
+            "Section1-Q6": "D (C)",
+            "Section1-Q7": "C (C)",
+            "Section1-Q8": "B (C)",
+            "Section1-Q9": "C (C)",
+            "Section1-Q10": "C (C)",
+            "Section1-Q11": "A (W)",
+            "Section1-Q12": "A (C)",
+            "Section1-Q13": "A (C)",
+            "Section1-Q14": "A (C)",
+            "Section1-Q15": "D (W)",
+            "Section1-Q16": "B (W)",
+            "Section1-Q17": "NAN",
+            "Section1-Q18": "NAN",
+            "Section1-Q19": "C (C)",
+            "Section1-Q20": "C (W)",
+            "Section1-Q21": "E (W)",
+            "Section1-Q22": "C (C)",
+            "Section1-Q23": "B (C)",
+            "Section1-Q24": "NAN",
+            "Section1-Q25": "B (C)",
+            "Section1-Q26": "A (C)",
+            "Section1-Q27": "D (C)",
+            "Section1-Q28": "NAN",
+            "Section1-Q29": "NAN",
+            "Section1-Q30": "NAN",
+            "Section2-Q1": "A (W)",
+            "Section2-Q2": "D (C)",
+            "Section2-Q3": "E (W)",
+            "Section2-Q4": "NAN",
+            "Section2-Q5": "NAN",
+            "Section2-Q6": "NAN",
+            "Section2-Q7": "NAN",
+            "Section2-Q8": "NAN",
+            "Section2-Q9": "NAN",
+            "Section2-Q10": "E (W)",
+            "Section2-Q11": "NAN",
+            "Section2-Q12": "C (W)",
+            "Section2-Q13": "A (W)",
+            "Section2-Q14": "NAN",
+            "Section2-Q15": "NAN",
+            "Section2-Q16": "NAN",
+            "Section2-Q17": "E (W)",
+            "Section2-Q18": "NAN",
+            "Section2-Q19": "NAN",
+            "Section2-Q20": "NAN",
+            "Section2-Q21": "NAN",
+            "Section2-Q22": "NAN",
+            "Section2-Q23": "D (C)",
+            "Section2-Q24": "NAN",
+            "Section2-Q25": "NAN",
+            "Section3-Q1": "D (C)",
+            "Section3-Q2": "A (W)",
+            "Section3-Q3": "B (C)",
+            "Section3-Q4": "E (W)",
+            "Section3-Q5": "B (C)",
+            "Section3-Q6": "D (C)",
+            "Section3-Q7": "C (C)",
+            "Section3-Q8": "E (C)",
+            "Section3-Q9": "E (C)",
+            "Section3-Q10": "NAN",
+            "Section3-Q11": "NAN",
+            "Section3-Q12": "NAN",
+            "Section3-Q13": "NAN",
+            "Section3-Q14": "NAN",
+            "Section3-Q15": "NAN"
+          },
+          "analytics": {
+            "skipStrategy": 76,
+            "questionChoiceStrategy": 77,
+            "recoveryScore": 66,
+            "sectionPerformance": {
+              "1": {
+                "accuracy": 76.19,
+                "attemptRate": 70,
+                "attempted": 21,
+                "unattempted": 9,
+                "efficiency": 53.33
+              },
+              "2": {
+                "accuracy": 25,
+                "attemptRate": 32,
+                "attempted": 8,
+                "unattempted": 17,
+                "efficiency": 8
+              },
+              "3": {
+                "accuracy": 77.78,
+                "attemptRate": 60,
+                "attempted": 9,
+                "unattempted": 6,
+                "efficiency": 46.67
+              }
+            }
+          },
+          "rankStatus": "failed",
+          "passedAll": false,
+          "failedSections": [
+            "2"
+          ],
+          "essayThreshold": 12,
+          "essayPassed": true
+        },
+        "624690": {
+          "studentId": "624690",
+          "studentName": "Tarannum Rashid",
+          "sections": {
+            "1": {
+              "correct": 17,
+              "wrong": 2,
+              "marks": 16.5,
+              "percentage": 55,
+              "totalQuestions": 0,
+              "threshold": 9.5,
+              "passed": true
+            },
+            "2": {
+              "correct": 1,
+              "wrong": 5,
+              "marks": -0.25,
+              "percentage": -1,
+              "totalQuestions": 0,
+              "threshold": 2.25,
+              "passed": false
+            },
+            "3": {
+              "correct": 7,
+              "wrong": 2,
+              "marks": 6.5,
+              "percentage": 43.33,
+              "totalQuestions": 0,
+              "threshold": 5.25,
+              "passed": true
+            }
+          },
+          "totalMarks": 43.25,
+          "mcqMarks": 22.75,
+          "essayMarks": 20.5,
+          "mcqCorrect": 25,
+          "mcqWrong": 9,
+          "mcqAccuracy": 73.53,
+          "mcqPercentage": 32.5,
+          "totalPercentage": 43.25,
+          "rank": 5,
+          "essays": {
+            "1": 6,
+            "2": 4,
+            "3": 10.5
+          },
+          "maxEssayMarks": 30,
+          "responses": {
+            "Section1-Q1": "NAN",
+            "Section1-Q2": "NAN",
+            "Section1-Q3": "NAN",
+            "Section1-Q4": "NAN",
+            "Section1-Q5": "E (W)",
+            "Section1-Q6": "D (C)",
+            "Section1-Q7": "C (C)",
+            "Section1-Q8": "B (C)",
+            "Section1-Q9": "C (C)",
+            "Section1-Q10": "C (C)",
+            "Section1-Q11": "C (C)",
+            "Section1-Q12": "NAN",
+            "Section1-Q13": "A (C)",
+            "Section1-Q14": "A (C)",
+            "Section1-Q15": "A (C)",
+            "Section1-Q16": "A (C)",
+            "Section1-Q17": "A (C)",
+            "Section1-Q18": "C (C)",
+            "Section1-Q19": "NAN",
+            "Section1-Q20": "NAN",
+            "Section1-Q21": "NAN",
+            "Section1-Q22": "C (C)",
+            "Section1-Q23": "A (W)",
+            "Section1-Q24": "C (C)",
+            "Section1-Q25": "B (C)",
+            "Section1-Q26": "A (C)",
+            "Section1-Q27": "D (C)",
+            "Section1-Q28": "NAN",
+            "Section1-Q29": "NAN",
+            "Section1-Q30": "NAN",
+            "Section2-Q1": "NAN",
+            "Section2-Q2": "NAN",
+            "Section2-Q3": "B (W)",
+            "Section2-Q4": "NAN",
+            "Section2-Q5": "NAN",
+            "Section2-Q6": "NAN",
+            "Section2-Q7": "NAN",
+            "Section2-Q8": "NAN",
+            "Section2-Q9": "NAN",
+            "Section2-Q10": "C (W)",
+            "Section2-Q11": "NAN",
+            "Section2-Q12": "NAN",
+            "Section2-Q13": "A (W)",
+            "Section2-Q14": "D (C)",
+            "Section2-Q15": "NAN",
+            "Section2-Q16": "E (W)",
+            "Section2-Q17": "NAN",
+            "Section2-Q18": "NAN",
+            "Section2-Q19": "NAN",
+            "Section2-Q20": "NAN",
+            "Section2-Q21": "NAN",
+            "Section2-Q22": "NAN",
+            "Section2-Q23": "E (W)",
+            "Section2-Q24": "NAN",
+            "Section2-Q25": "NAN",
+            "Section3-Q1": "D (C)",
+            "Section3-Q2": "B (W)",
+            "Section3-Q3": "B (C)",
+            "Section3-Q4": "C (W)",
+            "Section3-Q5": "B (C)",
+            "Section3-Q6": "D (C)",
+            "Section3-Q7": "C (C)",
+            "Section3-Q8": "E (C)",
+            "Section3-Q9": "E (C)",
+            "Section3-Q10": "NAN",
+            "Section3-Q11": "NAN",
+            "Section3-Q12": "NAN",
+            "Section3-Q13": "NAN",
+            "Section3-Q14": "NAN",
+            "Section3-Q15": "NAN"
+          },
+          "analytics": {
+            "skipStrategy": 81,
+            "questionChoiceStrategy": 78,
+            "recoveryScore": 82,
+            "sectionPerformance": {
+              "1": {
+                "accuracy": 89.47,
+                "attemptRate": 63.33,
+                "attempted": 19,
+                "unattempted": 11,
+                "efficiency": 56.66
+              },
+              "2": {
+                "accuracy": 16.67,
+                "attemptRate": 24,
+                "attempted": 6,
+                "unattempted": 19,
+                "efficiency": 4
+              },
+              "3": {
+                "accuracy": 77.78,
+                "attemptRate": 60,
+                "attempted": 9,
+                "unattempted": 6,
+                "efficiency": 46.67
+              }
+            }
+          },
+          "rankStatus": "failed",
+          "passedAll": false,
+          "failedSections": [
+            "2"
+          ],
+          "essayThreshold": 12,
+          "essayPassed": true
+        },
+        "643388": {
+          "studentId": "643388",
+          "studentName": "Sharaf Alam",
+          "sections": {
+            "1": {
+              "correct": 11,
+              "wrong": 6,
+              "marks": 9.5,
+              "percentage": 31.67,
+              "totalQuestions": 0,
+              "threshold": 9.5,
+              "passed": true
+            },
+            "2": {
+              "correct": 4,
+              "wrong": 3,
+              "marks": 3.25,
+              "percentage": 13,
+              "totalQuestions": 0,
+              "threshold": 2.25,
+              "passed": true
+            },
+            "3": {
+              "correct": 6,
+              "wrong": 3,
+              "marks": 5.25,
+              "percentage": 35,
+              "totalQuestions": 0,
+              "threshold": 5.25,
+              "passed": true
+            }
+          },
+          "totalMarks": 37,
+          "mcqMarks": 18,
+          "essayMarks": 19,
+          "mcqCorrect": 21,
+          "mcqWrong": 12,
+          "mcqAccuracy": 63.64,
+          "mcqPercentage": 25.71,
+          "totalPercentage": 37,
+          "rank": 4,
+          "essays": {
+            "1": 6,
+            "2": 3.5,
+            "3": 9.5
+          },
+          "maxEssayMarks": 30,
+          "responses": {
+            "Section1-Q1": "E (W)",
+            "Section1-Q2": "B (W)",
+            "Section1-Q3": "NAN",
+            "Section1-Q4": "NAN",
+            "Section1-Q5": "NAN",
+            "Section1-Q6": "NAN",
+            "Section1-Q7": "C (C)",
+            "Section1-Q8": "E (W)",
+            "Section1-Q9": "NAN",
+            "Section1-Q10": "NAN",
+            "Section1-Q11": "C (C)",
+            "Section1-Q12": "NAN",
+            "Section1-Q13": "A (C)",
+            "Section1-Q14": "A (C)",
+            "Section1-Q15": "NAN",
+            "Section1-Q16": "NAN",
+            "Section1-Q17": "NAN",
+            "Section1-Q18": "NAN",
+            "Section1-Q19": "C (C)",
+            "Section1-Q20": "C (W)",
+            "Section1-Q21": "A (C)",
+            "Section1-Q22": "B (W)",
+            "Section1-Q23": "B (C)",
+            "Section1-Q24": "C (C)",
+            "Section1-Q25": "B (C)",
+            "Section1-Q26": "A (C)",
+            "Section1-Q27": "D (C)",
+            "Section1-Q28": "NAN",
+            "Section1-Q29": "E (W)",
+            "Section1-Q30": "NAN",
+            "Section2-Q1": "C (W)",
+            "Section2-Q2": "NAN",
+            "Section2-Q3": "NAN",
+            "Section2-Q4": "NAN",
+            "Section2-Q5": "NAN",
+            "Section2-Q6": "B (W)",
+            "Section2-Q7": "NAN",
+            "Section2-Q8": "NAN",
+            "Section2-Q9": "NAN",
+            "Section2-Q10": "D (C)",
+            "Section2-Q11": "C (C)",
+            "Section2-Q12": "NAN",
+            "Section2-Q13": "NAN",
+            "Section2-Q14": "D (C)",
+            "Section2-Q15": "NAN",
+            "Section2-Q16": "NAN",
+            "Section2-Q17": "NAN",
+            "Section2-Q18": "NAN",
+            "Section2-Q19": "NAN",
+            "Section2-Q20": "NAN",
+            "Section2-Q21": "NAN",
+            "Section2-Q22": "C (W)",
+            "Section2-Q23": "NAN",
+            "Section2-Q24": "NAN",
+            "Section2-Q25": "D (C)",
+            "Section3-Q1": "D (C)",
+            "Section3-Q2": "A (W)",
+            "Section3-Q3": "NAN",
+            "Section3-Q4": "NAN",
+            "Section3-Q5": "B (C)",
+            "Section3-Q6": "D (C)",
+            "Section3-Q7": "C (C)",
+            "Section3-Q8": "E (C)",
+            "Section3-Q9": "E (C)",
+            "Section3-Q10": "D (W)",
+            "Section3-Q11": "A (W)",
+            "Section3-Q12": "NAN",
+            "Section3-Q13": "NAN",
+            "Section3-Q14": "NAN",
+            "Section3-Q15": "NAN"
+          },
+          "analytics": {
+            "skipStrategy": 74,
+            "questionChoiceStrategy": 75,
+            "recoveryScore": 60,
+            "sectionPerformance": {
+              "1": {
+                "accuracy": 64.71,
+                "attemptRate": 56.67,
+                "attempted": 17,
+                "unattempted": 13,
+                "efficiency": 36.67
+              },
+              "2": {
+                "accuracy": 57.14,
+                "attemptRate": 28,
+                "attempted": 7,
+                "unattempted": 18,
+                "efficiency": 16
+              },
+              "3": {
+                "accuracy": 66.67,
+                "attemptRate": 60,
+                "attempted": 9,
+                "unattempted": 6,
+                "efficiency": 40
+              }
+            }
+          },
+          "rankStatus": "passed",
+          "passedAll": true,
+          "failedSections": [],
+          "essayThreshold": 12,
+          "essayPassed": true
+        },
+        "648081": {
+          "studentId": "648081",
+          "studentName": "Ayesha Khaled",
+          "sections": {
+            "1": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 0,
+              "threshold": 9.5,
+              "passed": false
+            },
+            "2": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 0,
+              "threshold": 2.25,
+              "passed": false
+            },
+            "3": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 0,
+              "threshold": 5.25,
+              "passed": false
+            }
+          },
+          "totalMarks": 0,
+          "mcqMarks": 0,
+          "essayMarks": 0,
+          "mcqCorrect": 0,
+          "mcqWrong": 0,
+          "mcqAccuracy": 0,
+          "mcqPercentage": 0,
+          "totalPercentage": 0,
+          "rank": 21,
+          "responses": {},
+          "analytics": {
+            "skipStrategy": 0,
+            "questionChoiceStrategy": 0,
+            "recoveryScore": 0,
+            "sectionPerformance": {
+              "1": {
+                "accuracy": 0,
+                "attemptRate": 0,
+                "attempted": 0,
+                "unattempted": 0,
+                "efficiency": 0
+              },
+              "2": {
+                "accuracy": 0,
+                "attemptRate": 0,
+                "attempted": 0,
+                "unattempted": 0,
+                "efficiency": 0
+              },
+              "3": {
+                "accuracy": 0,
+                "attemptRate": 0,
+                "attempted": 0,
+                "unattempted": 0,
+                "efficiency": 0
+              }
+            }
+          },
+          "rankStatus": "failed",
+          "passedAll": false,
+          "failedSections": [
+            "1",
+            "2",
+            "3",
+            "essay"
+          ],
+          "essayThreshold": 12,
+          "essayPassed": false
+        },
+        "650004": {
+          "studentId": "650004",
+          "studentName": "Aymaan Zaman",
+          "sections": {
+            "1": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 0,
+              "threshold": 9.5,
+              "passed": false
+            },
+            "2": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 0,
+              "threshold": 2.25,
+              "passed": false
+            },
+            "3": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 0,
+              "threshold": 5.25,
+              "passed": false
+            }
+          },
+          "totalMarks": 0,
+          "mcqMarks": 0,
+          "essayMarks": 0,
+          "mcqCorrect": 0,
+          "mcqWrong": 0,
+          "mcqAccuracy": 0,
+          "mcqPercentage": 0,
+          "totalPercentage": 0,
+          "rank": 22,
+          "responses": {},
+          "analytics": {
+            "skipStrategy": 0,
+            "questionChoiceStrategy": 0,
+            "recoveryScore": 0,
+            "sectionPerformance": {
+              "1": {
+                "accuracy": 0,
+                "attemptRate": 0,
+                "attempted": 0,
+                "unattempted": 0,
+                "efficiency": 0
+              },
+              "2": {
+                "accuracy": 0,
+                "attemptRate": 0,
+                "attempted": 0,
+                "unattempted": 0,
+                "efficiency": 0
+              },
+              "3": {
+                "accuracy": 0,
+                "attemptRate": 0,
+                "attempted": 0,
+                "unattempted": 0,
+                "efficiency": 0
+              }
+            }
+          },
+          "rankStatus": "failed",
+          "passedAll": false,
+          "failedSections": [
+            "1",
+            "2",
+            "3",
+            "essay"
+          ],
+          "essayThreshold": 12,
+          "essayPassed": false
+        },
+        "678535": {
+          "studentId": "678535",
+          "studentName": "Nazeef Rahman",
+          "sections": {
+            "1": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 0,
+              "threshold": 9.5,
+              "passed": false
+            },
+            "2": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 0,
+              "threshold": 2.25,
+              "passed": false
+            },
+            "3": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 0,
+              "threshold": 5.25,
+              "passed": false
+            }
+          },
+          "totalMarks": 0,
+          "mcqMarks": 0,
+          "essayMarks": 0,
+          "mcqCorrect": 0,
+          "mcqWrong": 0,
+          "mcqAccuracy": 0,
+          "mcqPercentage": 0,
+          "totalPercentage": 0,
+          "rank": 23,
+          "responses": {},
+          "analytics": {
+            "skipStrategy": 0,
+            "questionChoiceStrategy": 0,
+            "recoveryScore": 0,
+            "sectionPerformance": {
+              "1": {
+                "accuracy": 0,
+                "attemptRate": 0,
+                "attempted": 0,
+                "unattempted": 0,
+                "efficiency": 0
+              },
+              "2": {
+                "accuracy": 0,
+                "attemptRate": 0,
+                "attempted": 0,
+                "unattempted": 0,
+                "efficiency": 0
+              },
+              "3": {
+                "accuracy": 0,
+                "attemptRate": 0,
+                "attempted": 0,
+                "unattempted": 0,
+                "efficiency": 0
+              }
+            }
+          },
+          "rankStatus": "failed",
+          "passedAll": false,
+          "failedSections": [
+            "1",
+            "2",
+            "3",
+            "essay"
+          ],
+          "essayThreshold": 12,
+          "essayPassed": false
+        },
+        "757516": {
+          "studentId": "757516",
+          "studentName": "Abrar Bin Masud",
+          "sections": {
+            "1": {
+              "correct": 15,
+              "wrong": 3,
+              "marks": 14.25,
+              "percentage": 47.5,
+              "totalQuestions": "Total Question 2",
+              "threshold": 9.5,
+              "passed": true
+            },
+            "2": {
+              "correct": 8,
+              "wrong": 2,
+              "marks": 7.5,
+              "percentage": 30,
+              "totalQuestions": 0,
+              "threshold": 2.25,
+              "passed": true
+            },
+            "3": {
+              "correct": 8,
+              "wrong": 1,
+              "marks": 7.75,
+              "percentage": 51.67,
+              "totalQuestions": 0,
+              "threshold": 5.25,
+              "passed": true
+            }
+          },
+          "totalMarks": 45.5,
+          "mcqMarks": 29.5,
+          "essayMarks": 16,
+          "mcqCorrect": 31,
+          "mcqWrong": 6,
+          "mcqAccuracy": 83.78,
+          "mcqPercentage": 42.14,
+          "totalPercentage": 45.5,
+          "rank": 3,
+          "essays": {
+            "1": 4,
+            "2": 3,
+            "3": 9
+          },
+          "maxEssayMarks": 30,
+          "responses": {
+            "Section1-Q1": "NAN",
+            "Section1-Q2": "NAN",
+            "Section1-Q3": "NAN",
+            "Section1-Q4": "NAN",
+            "Section1-Q5": "D (C)",
+            "Section1-Q6": "D (C)",
+            "Section1-Q7": "C (C)",
+            "Section1-Q8": "B (C)",
+            "Section1-Q9": "C (C)",
+            "Section1-Q10": "C (C)",
+            "Section1-Q11": "C (C)",
+            "Section1-Q12": "A (C)",
+            "Section1-Q13": "A (C)",
+            "Section1-Q14": "A (C)",
+            "Section1-Q15": "NAN",
+            "Section1-Q16": "A (C)",
+            "Section1-Q17": "A (C)",
+            "Section1-Q18": "NAN",
+            "Section1-Q19": "NAN",
+            "Section1-Q20": "NAN",
+            "Section1-Q21": "NAN",
+            "Section1-Q22": "B (W)",
+            "Section1-Q23": "D (W)",
+            "Section1-Q24": "B (W)",
+            "Section1-Q25": "B (C)",
+            "Section1-Q26": "A (C)",
+            "Section1-Q27": "D (C)",
+            "Section1-Q28": "NAN",
+            "Section1-Q29": "NAN",
+            "Section1-Q30": "NAN",
+            "Section2-Q1": "E (W)",
+            "Section2-Q2": "NAN",
+            "Section2-Q3": "C (C)",
+            "Section2-Q4": "NAN",
+            "Section2-Q5": "NAN",
+            "Section2-Q6": "D (W)",
+            "Section2-Q7": "NAN",
+            "Section2-Q8": "C (C)",
+            "Section2-Q9": "NAN",
+            "Section2-Q10": "NAN",
+            "Section2-Q11": "C (C)",
+            "Section2-Q12": "NAN",
+            "Section2-Q13": "NAN",
+            "Section2-Q14": "NAN",
+            "Section2-Q15": "B (C)",
+            "Section2-Q16": "B (C)",
+            "Section2-Q17": "D (C)",
+            "Section2-Q18": "NAN",
+            "Section2-Q19": "NAN",
+            "Section2-Q20": "NAN",
+            "Section2-Q21": "NAN",
+            "Section2-Q22": "NAN",
+            "Section2-Q23": "NAN",
+            "Section2-Q24": "B (C)",
+            "Section2-Q25": "D (C)",
+            "Section3-Q1": "D (C)",
+            "Section3-Q2": "E (C)",
+            "Section3-Q3": "B (C)",
+            "Section3-Q4": "NAN",
+            "Section3-Q5": "B (C)",
+            "Section3-Q6": "D (C)",
+            "Section3-Q7": "C (C)",
+            "Section3-Q8": "E (C)",
+            "Section3-Q9": "E (C)",
+            "Section3-Q10": "C (W)",
+            "Section3-Q11": "NAN",
+            "Section3-Q12": "NAN",
+            "Section3-Q13": "NAN",
+            "Section3-Q14": "NAN",
+            "Section3-Q15": "NAN"
+          },
+          "analytics": {
+            "skipStrategy": 85,
+            "questionChoiceStrategy": 82,
+            "recoveryScore": 53,
+            "sectionPerformance": {
+              "1": {
+                "accuracy": 83.33,
+                "attemptRate": 0,
+                "attempted": 18,
+                "unattempted": null,
+                "efficiency": 0
+              },
+              "2": {
+                "accuracy": 80,
+                "attemptRate": 40,
+                "attempted": 10,
+                "unattempted": 15,
+                "efficiency": 32
+              },
+              "3": {
+                "accuracy": 88.89,
+                "attemptRate": 60,
+                "attempted": 9,
+                "unattempted": 6,
+                "efficiency": 53.33
+              }
+            }
+          },
+          "rankStatus": "passed",
+          "passedAll": true,
+          "failedSections": [],
+          "essayThreshold": 12,
+          "essayPassed": true
+        },
+        "764305": {
+          "studentId": "764305",
+          "studentName": "Zayan Rahman",
+          "sections": {
+            "1": {
+              "correct": 18,
+              "wrong": 5,
+              "marks": 16.75,
+              "percentage": 55.83,
+              "totalQuestions": 0,
+              "threshold": 9.5,
+              "passed": true
+            },
+            "2": {
+              "correct": 8,
+              "wrong": 5,
+              "marks": 6.75,
+              "percentage": 27,
+              "totalQuestions": 0,
+              "threshold": 2.25,
+              "passed": true
+            },
+            "3": {
+              "correct": 11,
+              "wrong": 1,
+              "marks": 10.75,
+              "percentage": 71.67,
+              "totalQuestions": 0,
+              "threshold": 5.25,
+              "passed": true
+            }
+          },
+          "totalMarks": 49.25,
+          "mcqMarks": 34.25,
+          "essayMarks": 15,
+          "mcqCorrect": 37,
+          "mcqWrong": 11,
+          "mcqAccuracy": 77.08,
+          "mcqPercentage": 48.93,
+          "totalPercentage": 49.25,
+          "rank": 2,
+          "essays": {
+            "1": 5,
+            "2": 2.5,
+            "3": 7.5
+          },
+          "maxEssayMarks": 30,
+          "responses": {
+            "Section1-Q1": "E (W)",
+            "Section1-Q2": "B (W)",
+            "Section1-Q3": "E (C)",
+            "Section1-Q4": "C (C)",
+            "Section1-Q5": "D (C)",
+            "Section1-Q6": "D (C)",
+            "Section1-Q7": "C (C)",
+            "Section1-Q8": "B (C)",
+            "Section1-Q9": "B (W)",
+            "Section1-Q10": "C (C)",
+            "Section1-Q11": "C (C)",
+            "Section1-Q12": "A (C)",
+            "Section1-Q13": "A (C)",
+            "Section1-Q14": "A (C)",
+            "Section1-Q15": "A (C)",
+            "Section1-Q16": "D (W)",
+            "Section1-Q17": "A (C)",
+            "Section1-Q18": "C (C)",
+            "Section1-Q19": "NAN",
+            "Section1-Q20": "NAN",
+            "Section1-Q21": "NAN",
+            "Section1-Q22": "D (W)",
+            "Section1-Q23": "B (C)",
+            "Section1-Q24": "C (C)",
+            "Section1-Q25": "B (C)",
+            "Section1-Q26": "NAN",
+            "Section1-Q27": "D (C)",
+            "Section1-Q28": "NAN",
+            "Section1-Q29": "NAN",
+            "Section1-Q30": "NAN",
+            "Section2-Q1": "C (W)",
+            "Section2-Q2": "NAN",
+            "Section2-Q3": "C (C)",
+            "Section2-Q4": "C (C)",
+            "Section2-Q5": "NAN",
+            "Section2-Q6": "NAN",
+            "Section2-Q7": "D (W)",
+            "Section2-Q8": "A (W)",
+            "Section2-Q9": "C (W)",
+            "Section2-Q10": "NAN",
+            "Section2-Q11": "C (C)",
+            "Section2-Q12": "NAN",
+            "Section2-Q13": "NAN",
+            "Section2-Q14": "NAN",
+            "Section2-Q15": "B (C)",
+            "Section2-Q16": "B (C)",
+            "Section2-Q17": "NAN",
+            "Section2-Q18": "NAN",
+            "Section2-Q19": "B (C)",
+            "Section2-Q20": "D (C)",
+            "Section2-Q21": "NAN",
+            "Section2-Q22": "NAN",
+            "Section2-Q23": "NAN",
+            "Section2-Q24": "B (C)",
+            "Section2-Q25": "E (W)",
+            "Section3-Q1": "D (C)",
+            "Section3-Q2": "E (C)",
+            "Section3-Q3": "B (C)",
+            "Section3-Q4": "A (C)",
+            "Section3-Q5": "B (C)",
+            "Section3-Q6": "D (C)",
+            "Section3-Q7": "C (C)",
+            "Section3-Q8": "E (C)",
+            "Section3-Q9": "E (C)",
+            "Section3-Q10": "NAN",
+            "Section3-Q11": "NAN",
+            "Section3-Q12": "NAN",
+            "Section3-Q13": "D (W)",
+            "Section3-Q14": "D (C)",
+            "Section3-Q15": "C (C)"
+          },
+          "analytics": {
+            "skipStrategy": 89,
+            "questionChoiceStrategy": 85,
+            "recoveryScore": 71,
+            "sectionPerformance": {
+              "1": {
+                "accuracy": 78.26,
+                "attemptRate": 76.67,
+                "attempted": 23,
+                "unattempted": 7,
+                "efficiency": 60
+              },
+              "2": {
+                "accuracy": 61.54,
+                "attemptRate": 52,
+                "attempted": 13,
+                "unattempted": 12,
+                "efficiency": 32
+              },
+              "3": {
+                "accuracy": 91.67,
+                "attemptRate": 80,
+                "attempted": 12,
+                "unattempted": 3,
+                "efficiency": 73.34
+              }
+            }
+          },
+          "rankStatus": "passed",
+          "passedAll": true,
+          "failedSections": [],
+          "essayThreshold": 12,
+          "essayPassed": true
+        },
+        "907183": {
+          "studentId": "907183",
+          "studentName": "Sajid Shahrier Khan",
+          "sections": {
+            "1": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 0,
+              "threshold": 9.5,
+              "passed": false
+            },
+            "2": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 0,
+              "threshold": 2.25,
+              "passed": false
+            },
+            "3": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 0,
+              "threshold": 5.25,
+              "passed": false
+            }
+          },
+          "totalMarks": 0,
+          "mcqMarks": 0,
+          "essayMarks": 0,
+          "mcqCorrect": 0,
+          "mcqWrong": 0,
+          "mcqAccuracy": 0,
+          "mcqPercentage": 0,
+          "totalPercentage": 0,
+          "rank": 24,
+          "responses": {},
+          "analytics": {
+            "skipStrategy": 0,
+            "questionChoiceStrategy": 0,
+            "recoveryScore": 0,
+            "sectionPerformance": {
+              "1": {
+                "accuracy": 0,
+                "attemptRate": 0,
+                "attempted": 0,
+                "unattempted": 0,
+                "efficiency": 0
+              },
+              "2": {
+                "accuracy": 0,
+                "attemptRate": 0,
+                "attempted": 0,
+                "unattempted": 0,
+                "efficiency": 0
+              },
+              "3": {
+                "accuracy": 0,
+                "attemptRate": 0,
+                "attempted": 0,
+                "unattempted": 0,
+                "efficiency": 0
+              }
+            }
+          },
+          "rankStatus": "failed",
+          "passedAll": false,
+          "failedSections": [
+            "1",
+            "2",
+            "3",
+            "essay"
+          ],
+          "essayThreshold": 12,
+          "essayPassed": false
+        },
+        "934245": {
+          "studentId": "934245",
+          "studentName": "Aseya Siddiqua Saba",
+          "sections": {
+            "1": {
+              "correct": 15,
+              "wrong": 4,
+              "marks": 14,
+              "percentage": 46.67,
+              "totalQuestions": 0,
+              "threshold": 9.5,
+              "passed": true
+            },
+            "2": {
+              "correct": 3,
+              "wrong": 4,
+              "marks": 2,
+              "percentage": 8,
+              "totalQuestions": 0,
+              "threshold": 2.25,
+              "passed": false
+            },
+            "3": {
+              "correct": 6,
+              "wrong": 2,
+              "marks": 5.5,
+              "percentage": 36.67,
+              "totalQuestions": 0,
+              "threshold": 5.25,
+              "passed": true
+            }
+          },
+          "totalMarks": 37,
+          "mcqMarks": 21.5,
+          "essayMarks": 15.5,
+          "mcqCorrect": 24,
+          "mcqWrong": 10,
+          "mcqAccuracy": 70.59,
+          "mcqPercentage": 30.71,
+          "totalPercentage": 37,
+          "rank": 6,
+          "essays": {
+            "1": 4,
+            "2": 3.5,
+            "3": 8
+          },
+          "maxEssayMarks": 30,
+          "responses": {
+            "Section1-Q1": "D (C)",
+            "Section1-Q2": "E (C)",
+            "Section1-Q3": "E (C)",
+            "Section1-Q4": "NAN",
+            "Section1-Q5": "E (W)",
+            "Section1-Q6": "D (C)",
+            "Section1-Q7": "B (W)",
+            "Section1-Q8": "NAN",
+            "Section1-Q9": "C (C)",
+            "Section1-Q10": "C (C)",
+            "Section1-Q11": "C (C)",
+            "Section1-Q12": "A (C)",
+            "Section1-Q13": "A (C)",
+            "Section1-Q14": "A (C)",
+            "Section1-Q15": "E (W)",
+            "Section1-Q16": "NAN",
+            "Section1-Q17": "NAN",
+            "Section1-Q18": "NAN",
+            "Section1-Q19": "NAN",
+            "Section1-Q20": "NAN",
+            "Section1-Q21": "NAN",
+            "Section1-Q22": "C (C)",
+            "Section1-Q23": "B (C)",
+            "Section1-Q24": "C (C)",
+            "Section1-Q25": "B (C)",
+            "Section1-Q26": "B (W)",
+            "Section1-Q27": "D (C)",
+            "Section1-Q28": "NAN",
+            "Section1-Q29": "NAN",
+            "Section1-Q30": "NAN",
+            "Section2-Q1": "C (W)",
+            "Section2-Q2": "NAN",
+            "Section2-Q3": "NAN",
+            "Section2-Q4": "NAN",
+            "Section2-Q5": "NAN",
+            "Section2-Q6": "C (C)",
+            "Section2-Q7": "NAN",
+            "Section2-Q8": "C (C)",
+            "Section2-Q9": "NAN",
+            "Section2-Q10": "B (W)",
+            "Section2-Q11": "NAN",
+            "Section2-Q12": "NAN",
+            "Section2-Q13": "C (C)",
+            "Section2-Q14": "NAN",
+            "Section2-Q15": "NAN",
+            "Section2-Q16": "E (W)",
+            "Section2-Q17": "E (W)",
+            "Section2-Q18": "NAN",
+            "Section2-Q19": "NAN",
+            "Section2-Q20": "NAN",
+            "Section2-Q21": "NAN",
+            "Section2-Q22": "NAN",
+            "Section2-Q23": "NAN",
+            "Section2-Q24": "NAN",
+            "Section2-Q25": "NAN",
+            "Section3-Q1": "A (W)",
+            "Section3-Q2": "NAN",
+            "Section3-Q3": "B (C)",
+            "Section3-Q4": "A (C)",
+            "Section3-Q5": "A (W)",
+            "Section3-Q6": "D (C)",
+            "Section3-Q7": "C (C)",
+            "Section3-Q8": "E (C)",
+            "Section3-Q9": "E (C)",
+            "Section3-Q10": "NAN",
+            "Section3-Q11": "NAN",
+            "Section3-Q12": "NAN",
+            "Section3-Q13": "NAN",
+            "Section3-Q14": "NAN",
+            "Section3-Q15": "NAN"
+          },
+          "analytics": {
+            "skipStrategy": 76,
+            "questionChoiceStrategy": 77,
+            "recoveryScore": 68,
+            "sectionPerformance": {
+              "1": {
+                "accuracy": 78.95,
+                "attemptRate": 63.33,
+                "attempted": 19,
+                "unattempted": 11,
+                "efficiency": 50
+              },
+              "2": {
+                "accuracy": 42.86,
+                "attemptRate": 28,
+                "attempted": 7,
+                "unattempted": 18,
+                "efficiency": 12
+              },
+              "3": {
+                "accuracy": 75,
+                "attemptRate": 53.33,
+                "attempted": 8,
+                "unattempted": 7,
+                "efficiency": 40
+              }
+            }
+          },
+          "rankStatus": "failed",
+          "passedAll": false,
+          "failedSections": [
+            "2"
+          ],
+          "essayThreshold": 12,
+          "essayPassed": true
+        },
+        "979212": {
+          "studentId": "979212",
+          "studentName": "Mahira Akhtar",
+          "sections": {
+            "1": {
+              "correct": 12,
+              "wrong": 3,
+              "marks": 11.25,
+              "percentage": 37.5,
+              "totalQuestions": 0,
+              "threshold": 9.5,
+              "passed": true
+            },
+            "2": {
+              "correct": 4,
+              "wrong": 5,
+              "marks": 2.75,
+              "percentage": 11,
+              "totalQuestions": 0,
+              "threshold": 2.25,
+              "passed": true
+            },
+            "3": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 0,
+              "threshold": 5.25,
+              "passed": false
+            }
+          },
+          "totalMarks": 24,
+          "mcqMarks": 14,
+          "essayMarks": 10,
+          "mcqCorrect": 16,
+          "mcqWrong": 8,
+          "mcqAccuracy": 66.67,
+          "mcqPercentage": 20,
+          "totalPercentage": 24,
+          "rank": 10,
+          "essays": {
+            "2": 2.5,
+            "3": 7.5
+          },
+          "maxEssayMarks": 30,
+          "responses": {
+            "Section1-Q1": "NAN",
+            "Section1-Q2": "E (C)",
+            "Section1-Q3": "B (W)",
+            "Section1-Q4": "C (C)",
+            "Section1-Q5": "E (W)",
+            "Section1-Q6": "D (C)",
+            "Section1-Q7": "C (C)",
+            "Section1-Q8": "B (C)",
+            "Section1-Q9": "E (W)",
+            "Section1-Q10": "C (C)",
+            "Section1-Q11": "NAN",
+            "Section1-Q12": "NAN",
+            "Section1-Q13": "A (C)",
+            "Section1-Q14": "NAN",
+            "Section1-Q15": "NAN",
+            "Section1-Q16": "NAN",
+            "Section1-Q17": "A (C)",
+            "Section1-Q18": "C (C)",
+            "Section1-Q19": "NAN",
+            "Section1-Q20": "NAN",
+            "Section1-Q21": "NAN",
+            "Section1-Q22": "C (C)",
+            "Section1-Q23": "NAN",
+            "Section1-Q24": "NAN",
+            "Section1-Q25": "B (C)",
+            "Section1-Q26": "NAN",
+            "Section1-Q27": "D (C)",
+            "Section1-Q28": "NAN",
+            "Section1-Q29": "NAN",
+            "Section1-Q30": "NAN",
+            "Section2-Q1": "NAN",
+            "Section2-Q2": "NAN",
+            "Section2-Q3": "NAN",
+            "Section2-Q4": "NAN",
+            "Section2-Q5": "NAN",
+            "Section2-Q6": "NAN",
+            "Section2-Q7": "NAN",
+            "Section2-Q8": "NAN",
+            "Section2-Q9": "NAN",
+            "Section2-Q10": "D (C)",
+            "Section2-Q11": "C (C)",
+            "Section2-Q12": "NAN",
+            "Section2-Q13": "NAN",
+            "Section2-Q14": "NAN",
+            "Section2-Q15": "NAN",
+            "Section2-Q16": "NAN",
+            "Section2-Q17": "D (C)",
+            "Section2-Q18": "NAN",
+            "Section2-Q19": "NAN",
+            "Section2-Q20": "C (W)",
+            "Section2-Q21": "C (W)",
+            "Section2-Q22": "E (C)",
+            "Section2-Q23": "B (W)",
+            "Section2-Q24": "A (W)",
+            "Section2-Q25": "B (W)",
+            "Section3-Q1": "NAN",
+            "Section3-Q2": "NAN",
+            "Section3-Q3": "NAN",
+            "Section3-Q4": "NAN",
+            "Section3-Q5": "NAN",
+            "Section3-Q6": "NAN",
+            "Section3-Q7": "NAN",
+            "Section3-Q8": "NAN",
+            "Section3-Q9": "NAN",
+            "Section3-Q10": "NAN",
+            "Section3-Q11": "NAN",
+            "Section3-Q12": "NAN",
+            "Section3-Q13": "NAN",
+            "Section3-Q14": "NAN",
+            "Section3-Q15": "NAN"
+          },
+          "analytics": {
+            "skipStrategy": 67,
+            "questionChoiceStrategy": 71,
+            "recoveryScore": 65,
+            "sectionPerformance": {
+              "1": {
+                "accuracy": 80,
+                "attemptRate": 50,
+                "attempted": 15,
+                "unattempted": 15,
+                "efficiency": 40
+              },
+              "2": {
+                "accuracy": 44.44,
+                "attemptRate": 36,
+                "attempted": 9,
+                "unattempted": 16,
+                "efficiency": 16
+              },
+              "3": {
+                "accuracy": 0,
+                "attemptRate": 0,
+                "attempted": 0,
+                "unattempted": 15,
+                "efficiency": 0
+              }
+            }
+          },
+          "rankStatus": "failed",
+          "passedAll": false,
+          "failedSections": [
+            "3",
+            "essay"
+          ],
+          "essayThreshold": 12,
+          "essayPassed": false
+        }
+      },
+      "classStats": {
+        "averageScore": 17.28,
+        "top5Average": 45.4,
+        "totalStudents": 24,
+        "passRate": 50,
+        "maxScore": 52,
+        "minScore": 0,
+        "threshold": 10.36875,
+        "sectionThresholds": {
+          "1": 9.5,
+          "2": 2.25,
+          "3": 5.25,
+          "essay": 12
+        },
+        "thresholdsAdjusted": true,
+        "passedStudents": 4,
+        "failedStudents": 20
+      },
+      "topQuestions": {
+        "1": {
+          "mostCorrect": [
+            {
+              "questionId": "Section1-Q13",
+              "count": 11
+            },
+            {
+              "questionId": "Section1-Q27",
+              "count": 10
+            },
+            {
+              "questionId": "Section1-Q10",
+              "count": 9
+            },
+            {
+              "questionId": "Section1-Q14",
+              "count": 9
+            },
+            {
+              "questionId": "Section1-Q25",
+              "count": 9
+            },
+            {
+              "questionId": "Section1-Q6",
+              "count": 9
+            },
+            {
+              "questionId": "Section1-Q7",
+              "count": 9
+            },
+            {
+              "questionId": "Section1-Q11",
+              "count": 8
+            },
+            {
+              "questionId": "Section1-Q17",
+              "count": 7
+            },
+            {
+              "questionId": "Section1-Q26",
+              "count": 7
+            }
+          ],
+          "mostSkipped": [
+            {
+              "questionId": "Section1-Q28",
+              "count": 12
+            },
+            {
+              "questionId": "Section1-Q30",
+              "count": 12
+            },
+            {
+              "questionId": "Section1-Q29",
+              "count": 11
+            },
+            {
+              "questionId": "Section1-Q20",
+              "count": 10
+            },
+            {
+              "questionId": "Section1-Q21",
+              "count": 10
+            },
+            {
+              "questionId": "Section1-Q19",
+              "count": 9
+            },
+            {
+              "questionId": "Section1-Q4",
+              "count": 9
+            },
+            {
+              "questionId": "Section1-Q18",
+              "count": 7
+            },
+            {
+              "questionId": "Section1-Q3",
+              "count": 7
+            },
+            {
+              "questionId": "Section1-Q1",
+              "count": 6
+            }
+          ],
+          "mostWrong": [
+            {
+              "questionId": "Section1-Q15",
+              "count": 5
+            },
+            {
+              "questionId": "Section1-Q16",
+              "count": 5
+            },
+            {
+              "questionId": "Section1-Q22",
+              "count": 5
+            },
+            {
+              "questionId": "Section1-Q23",
+              "count": 4
+            },
+            {
+              "questionId": "Section1-Q24",
+              "count": 4
+            },
+            {
+              "questionId": "Section1-Q5",
+              "count": 4
+            },
+            {
+              "questionId": "Section1-Q1",
+              "count": 3
+            },
+            {
+              "questionId": "Section1-Q2",
+              "count": 3
+            },
+            {
+              "questionId": "Section1-Q9",
+              "count": 3
+            },
+            {
+              "questionId": "Section1-Q20",
+              "count": 2
+            }
+          ]
+        },
+        "2": {
+          "mostCorrect": [
+            {
+              "questionId": "Section2-Q11",
+              "count": 7
+            },
+            {
+              "questionId": "Section2-Q16",
+              "count": 4
+            },
+            {
+              "questionId": "Section2-Q8",
+              "count": 4
+            },
+            {
+              "questionId": "Section2-Q1",
+              "count": 3
+            },
+            {
+              "questionId": "Section2-Q10",
+              "count": 3
+            },
+            {
+              "questionId": "Section2-Q14",
+              "count": 3
+            },
+            {
+              "questionId": "Section2-Q15",
+              "count": 3
+            },
+            {
+              "questionId": "Section2-Q17",
+              "count": 3
+            },
+            {
+              "questionId": "Section2-Q25",
+              "count": 3
+            },
+            {
+              "questionId": "Section2-Q6",
+              "count": 3
+            }
+          ],
+          "mostSkipped": [
+            {
+              "questionId": "Section2-Q5",
+              "count": 12
+            },
+            {
+              "questionId": "Section2-Q18",
+              "count": 11
+            },
+            {
+              "questionId": "Section2-Q4",
+              "count": 11
+            },
+            {
+              "questionId": "Section2-Q19",
+              "count": 10
+            },
+            {
+              "questionId": "Section2-Q21",
+              "count": 10
+            },
+            {
+              "questionId": "Section2-Q7",
+              "count": 10
+            },
+            {
+              "questionId": "Section2-Q9",
+              "count": 10
+            },
+            {
+              "questionId": "Section2-Q12",
+              "count": 9
+            },
+            {
+              "questionId": "Section2-Q14",
+              "count": 9
+            },
+            {
+              "questionId": "Section2-Q15",
+              "count": 9
+            }
+          ],
+          "mostWrong": [
+            {
+              "questionId": "Section2-Q1",
+              "count": 6
+            },
+            {
+              "questionId": "Section2-Q17",
+              "count": 5
+            },
+            {
+              "questionId": "Section2-Q6",
+              "count": 5
+            },
+            {
+              "questionId": "Section2-Q10",
+              "count": 4
+            },
+            {
+              "questionId": "Section2-Q13",
+              "count": 4
+            },
+            {
+              "questionId": "Section2-Q16",
+              "count": 4
+            },
+            {
+              "questionId": "Section2-Q3",
+              "count": 4
+            },
+            {
+              "questionId": "Section2-Q2",
+              "count": 3
+            },
+            {
+              "questionId": "Section2-Q23",
+              "count": 3
+            },
+            {
+              "questionId": "Section2-Q20",
+              "count": 2
+            }
+          ]
+        },
+        "3": {
+          "mostCorrect": [
+            {
+              "questionId": "Section3-Q7",
+              "count": 10
+            },
+            {
+              "questionId": "Section3-Q8",
+              "count": 10
+            },
+            {
+              "questionId": "Section3-Q9",
+              "count": 10
+            },
+            {
+              "questionId": "Section3-Q1",
+              "count": 9
+            },
+            {
+              "questionId": "Section3-Q3",
+              "count": 9
+            },
+            {
+              "questionId": "Section3-Q6",
+              "count": 9
+            },
+            {
+              "questionId": "Section3-Q5",
+              "count": 8
+            },
+            {
+              "questionId": "Section3-Q4",
+              "count": 5
+            },
+            {
+              "questionId": "Section3-Q2",
+              "count": 4
+            },
+            {
+              "questionId": "Section3-Q11",
+              "count": 2
+            }
+          ],
+          "mostSkipped": [
+            {
+              "questionId": "Section3-Q12",
+              "count": 11
+            },
+            {
+              "questionId": "Section3-Q13",
+              "count": 11
+            },
+            {
+              "questionId": "Section3-Q14",
+              "count": 11
+            },
+            {
+              "questionId": "Section3-Q15",
+              "count": 11
+            },
+            {
+              "questionId": "Section3-Q11",
+              "count": 9
+            },
+            {
+              "questionId": "Section3-Q10",
+              "count": 8
+            },
+            {
+              "questionId": "Section3-Q4",
+              "count": 4
+            },
+            {
+              "questionId": "Section3-Q2",
+              "count": 2
+            },
+            {
+              "questionId": "Section3-Q3",
+              "count": 2
+            },
+            {
+              "questionId": "Section3-Q6",
+              "count": 2
+            }
+          ],
+          "mostWrong": [
+            {
+              "questionId": "Section3-Q2",
+              "count": 6
+            },
+            {
+              "questionId": "Section3-Q10",
+              "count": 3
+            },
+            {
+              "questionId": "Section3-Q4",
+              "count": 3
+            },
+            {
+              "questionId": "Section3-Q5",
+              "count": 3
+            },
+            {
+              "questionId": "Section3-Q1",
+              "count": 2
+            },
+            {
+              "questionId": "Section3-Q11",
+              "count": 1
+            },
+            {
+              "questionId": "Section3-Q12",
+              "count": 1
+            },
+            {
+              "questionId": "Section3-Q13",
+              "count": 1
+            },
+            {
+              "questionId": "Section3-Q3",
+              "count": 1
+            },
+            {
+              "questionId": "Section3-Q6",
+              "count": 1
+            }
+          ]
+        }
+      },
+      "metadata": {
+        "processedAt": "2025-11-25T00:07:10.621Z",
+        "sourceFile": "IBA Mock\\Mock 7.xlsx",
         "sheets": [
           "Sheet1",
           "Sheet2",
@@ -19538,8 +22791,8 @@
     }
   },
   "metadata": {
-    "totalTests": 6,
-    "lastProcessed": "2025-11-24T01:22:59.608Z",
+    "totalTests": 7,
+    "lastProcessed": "2025-11-25T00:07:10.627Z",
     "version": "1.0.0"
   }
 }
