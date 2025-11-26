@@ -39,7 +39,13 @@ function calculateClassStats(allResults, scoreField = 'score') {
     };
   }
 
-  const scores = allResults.map(result => result[scoreField] || 0);
+  // Filter out absent students (those with 0 marks or marked as absent)
+  const activeResults = allResults.filter(result => {
+    const score = result[scoreField] || 0;
+    return score > 0 && !result.isAbsent;
+  });
+
+  const scores = activeResults.map(result => result[scoreField] || 0);
   const validScores = scores.filter(score => !isNaN(score));
 
   if (validScores.length === 0) {
@@ -69,7 +75,7 @@ function calculateClassStats(allResults, scoreField = 'score') {
   return {
     averageScore: Math.round(averageScore * 100) / 100,
     top5Average: Math.round(top5Average * 100) / 100,
-    totalStudents: allResults.length,
+    totalStudents: activeResults.length, // Only count active (non-absent) students
     passRate: Math.round(passRate * 100) / 100,
     maxScore: Math.max(...validScores),
     minScore: Math.min(...validScores),
@@ -315,10 +321,16 @@ function calculateQuestionDifficulty(questionId, allStudentResponses) {
 function generateQuestionAnalytics(allResults) {
   const questionStats = {};
 
-  // Collect all responses by question
+  // Filter out absent students before analyzing questions
+  const activeResults = Object.values(allResults).filter(result => {
+    const totalMarks = result.totalMarks || result.score || 0;
+    return totalMarks > 0 && !result.isAbsent;
+  });
+
+  // Collect all responses by question (only from active students)
   const responsesByQuestion = {};
 
-  Object.values(allResults).forEach(studentResult => {
+  activeResults.forEach(studentResult => {
     if (studentResult.responses) {
       Object.entries(studentResult.responses).forEach(([questionId, response]) => {
         if (!responsesByQuestion[questionId]) {

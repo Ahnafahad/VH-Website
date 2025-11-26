@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { CheckCircle, XCircle, AlertCircle, TrendingUp, Award } from 'lucide-react';
+import { CheckCircle, XCircle, AlertCircle, TrendingUp, Award, UserX } from 'lucide-react';
 import { SimpleTestResult, FullTestResult } from '@/types/results';
 
 interface ThresholdResultCardProps {
@@ -11,7 +11,7 @@ interface ThresholdResultCardProps {
 
 /**
  * Displays threshold-based pass/fail status with section breakdown
- * Shows green for passed sections, red for failed sections
+ * Shows green for passed sections, red for failed sections, gray for absent
  */
 const ThresholdResultCard: React.FC<ThresholdResultCardProps> = ({ result, isFullTest = false }) => {
   // Check if this result has threshold data
@@ -19,6 +19,34 @@ const ThresholdResultCard: React.FC<ThresholdResultCardProps> = ({ result, isFul
 
   if (!hasThresholdData) {
     return null; // Don't show if no threshold data
+  }
+
+  // Check if student is absent (0 total marks)
+  const isAbsent = result.isAbsent || result.rankStatus === 'absent';
+
+  if (isAbsent) {
+    return (
+      <div className="bg-gradient-to-br from-white to-gray-50 rounded-2xl shadow-lg border-2 border-gray-300 overflow-hidden">
+        <div className="p-6 bg-gradient-to-r from-gray-100 to-slate-100 border-b-2 border-gray-300">
+          <div className="flex items-center justify-center gap-3">
+            <div className="p-3 bg-gray-500 rounded-full">
+              <UserX size={28} className="text-white" />
+            </div>
+            <div className="text-center">
+              <h3 className="text-2xl font-black text-gray-800">ABSENT</h3>
+              <p className="text-sm text-gray-600">Student did not attend this test</p>
+            </div>
+          </div>
+        </div>
+        <div className="p-6">
+          <div className="p-4 bg-gray-50 rounded-lg border border-gray-200 text-center">
+            <p className="text-sm text-gray-700">
+              No marks recorded for this test. Students with 0 total marks are marked as absent and are not ranked.
+            </p>
+          </div>
+        </div>
+      </div>
+    );
   }
 
   const passedAll = result.passedAll ?? true;
@@ -53,18 +81,20 @@ const ThresholdResultCard: React.FC<ThresholdResultCardProps> = ({ result, isFul
           </div>
 
           {/* Rank with color coding */}
-          <div className={`text-right p-4 rounded-xl ${passedAll ? 'bg-green-100 border-2 border-green-300' : 'bg-red-100 border-2 border-red-300'}`}>
-            <div className="flex items-center gap-2 justify-end mb-1">
-              <Award size={20} className={passedAll ? 'text-green-600' : 'text-red-600'} />
-              <span className="text-xs font-semibold text-gray-600">RANK</span>
+          {result.rank !== null && result.rank !== undefined && (
+            <div className={`text-right p-4 rounded-xl ${passedAll ? 'bg-green-100 border-2 border-green-300' : 'bg-red-100 border-2 border-red-300'}`}>
+              <div className="flex items-center gap-2 justify-end mb-1">
+                <Award size={20} className={passedAll ? 'text-green-600' : 'text-red-600'} />
+                <span className="text-xs font-semibold text-gray-600">RANK</span>
+              </div>
+              <div className={`text-3xl font-black ${passedAll ? 'text-green-700' : 'text-red-700'}`}>
+                #{result.rank}
+              </div>
+              <div className={`text-xs mt-1 ${passedAll ? 'text-green-600' : 'text-red-600'}`}>
+                {passedAll ? 'Qualified' : 'Not Qualified'}
+              </div>
             </div>
-            <div className={`text-3xl font-black ${passedAll ? 'text-green-700' : 'text-red-700'}`}>
-              #{result.rank}
-            </div>
-            <div className={`text-xs mt-1 ${passedAll ? 'text-green-600' : 'text-red-600'}`}>
-              {passedAll ? 'Qualified' : 'Not Qualified'}
-            </div>
-          </div>
+          )}
         </div>
 
         {/* Note about passing requirement */}

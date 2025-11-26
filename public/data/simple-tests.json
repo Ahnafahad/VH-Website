@@ -399,16 +399,16 @@
         }
       },
       "classStats": {
-        "averageScore": 6.77,
+        "averageScore": 9.36,
         "top5Average": 15.6,
-        "totalStudents": 23,
-        "passRate": 47.83,
+        "totalStudents": 18,
+        "passRate": 61.11,
         "maxScore": 17,
-        "minScore": -8.5,
+        "minScore": 2.25,
         "threshold": 7
       },
       "metadata": {
-        "processedAt": "2025-11-26T04:35:15.370Z",
+        "processedAt": "2025-11-26T17:39:12.283Z",
         "sourceFile": "IBA\\Simple Test Data.xlsx",
         "sheetName": "Mathematics CT 1"
       }
@@ -1052,16 +1052,16 @@
         }
       },
       "classStats": {
-        "averageScore": 14.15,
+        "averageScore": 25.06,
         "top5Average": 39.65,
-        "totalStudents": 23,
-        "passRate": 4.35,
+        "totalStudents": 13,
+        "passRate": 7.69,
         "maxScore": 49,
-        "minScore": -0.25,
+        "minScore": 3,
         "threshold": 45
       },
       "metadata": {
-        "processedAt": "2025-11-26T04:35:15.371Z",
+        "processedAt": "2025-11-26T17:39:12.284Z",
         "sourceFile": "IBA\\Simple Test Data.xlsx",
         "sheetName": "English Test 1"
       }
@@ -1818,16 +1818,16 @@
         }
       },
       "classStats": {
-        "averageScore": 16.63,
+        "averageScore": 17.35,
         "top5Average": 27,
-        "totalStudents": 24,
-        "passRate": 66.67,
+        "totalStudents": 23,
+        "passRate": 69.57,
         "maxScore": 27,
-        "minScore": 0,
+        "minScore": 5,
         "threshold": 12
       },
       "metadata": {
-        "processedAt": "2025-11-26T04:35:15.372Z",
+        "processedAt": "2025-11-26T17:39:12.284Z",
         "sourceFile": "IBA\\Simple Test Data.xlsx",
         "sheetName": "English Quiz 1"
       }
@@ -2584,16 +2584,16 @@
         }
       },
       "classStats": {
-        "averageScore": 7,
+        "averageScore": 11.2,
         "top5Average": 18,
-        "totalStudents": 24,
-        "passRate": 33.33,
+        "totalStudents": 15,
+        "passRate": 53.33,
         "maxScore": 24,
-        "minScore": 0,
+        "minScore": 2,
         "threshold": 12
       },
       "metadata": {
-        "processedAt": "2025-11-26T04:35:15.373Z",
+        "processedAt": "2025-11-26T17:39:12.285Z",
         "sourceFile": "IBA\\Simple Test Data.xlsx",
         "sheetName": "English Quiz 3"
       }
@@ -3206,16 +3206,16 @@
         }
       },
       "classStats": {
-        "averageScore": 8.83,
+        "averageScore": 9.22,
         "top5Average": 18.8,
-        "totalStudents": 24,
-        "passRate": 45.83,
+        "totalStudents": 23,
+        "passRate": 47.83,
         "maxScore": 20,
-        "minScore": 0,
+        "minScore": 1,
         "threshold": 9
       },
       "metadata": {
-        "processedAt": "2025-11-26T04:35:15.374Z",
+        "processedAt": "2025-11-26T17:39:12.285Z",
         "sourceFile": "IBA\\Simple Test Data.xlsx",
         "sheetName": "English Quiz 2"
       }
@@ -3828,16 +3828,16 @@
         }
       },
       "classStats": {
-        "averageScore": 4.42,
+        "averageScore": 5.89,
         "top5Average": 9.6,
-        "totalStudents": 24,
-        "passRate": 41.67,
+        "totalStudents": 18,
+        "passRate": 55.56,
         "maxScore": 10,
-        "minScore": 0,
+        "minScore": 1,
         "threshold": 6
       },
       "metadata": {
-        "processedAt": "2025-11-26T04:35:15.376Z",
+        "processedAt": "2025-11-26T17:39:12.286Z",
         "sourceFile": "IBA\\Simple Test Data.xlsx",
         "sheetName": "English Quiz 5"
       }
@@ -4450,16 +4450,16 @@
         }
       },
       "classStats": {
-        "averageScore": 3.17,
+        "averageScore": 4.47,
         "top5Average": 7,
-        "totalStudents": 24,
-        "passRate": 29.17,
+        "totalStudents": 17,
+        "passRate": 41.18,
         "maxScore": 10,
-        "minScore": 0,
+        "minScore": 1,
         "threshold": 6
       },
       "metadata": {
-        "processedAt": "2025-11-26T04:35:15.377Z",
+        "processedAt": "2025-11-26T17:39:12.286Z",
         "sourceFile": "IBA\\Simple Test Data.xlsx",
         "sheetName": "English Quiz 4"
       }
@@ -5081,7 +5081,7 @@
         "threshold": 30
       },
       "metadata": {
-        "processedAt": "2025-11-26T04:35:15.378Z",
+        "processedAt": "2025-11-26T17:39:12.287Z",
         "sourceFile": "IBA\\Simple Test Data.xlsx",
         "sheetName": "English Quiz Total till 5"
       }
@@ -5485,16 +5485,16 @@
         }
       },
       "classStats": {
-        "averageScore": 23.78,
+        "averageScore": 28.79,
         "top5Average": 37.8,
-        "totalStudents": 23,
-        "passRate": 69.57,
+        "totalStudents": 19,
+        "passRate": 84.21,
         "maxScore": 40,
-        "minScore": 0,
+        "minScore": 12,
         "threshold": 20
       },
       "metadata": {
-        "processedAt": "2025-11-26T04:35:15.379Z",
+        "processedAt": "2025-11-26T17:39:12.287Z",
         "sourceFile": "IBA\\Simple Test Data.xlsx",
         "sheetName": "Maths Diagnostic Test"
       }
@@ -6107,16 +6107,16 @@
         }
       },
       "classStats": {
-        "averageScore": 2.92,
+        "averageScore": 5,
         "top5Average": 7.2,
-        "totalStudents": 24,
-        "passRate": 29.17,
+        "totalStudents": 14,
+        "passRate": 50,
         "maxScore": 8,
-        "minScore": 0,
+        "minScore": 1,
         "threshold": 6
       },
       "metadata": {
-        "processedAt": "2025-11-26T04:35:15.381Z",
+        "processedAt": "2025-11-26T17:39:12.288Z",
         "sourceFile": "IBA\\Simple Test Data.xlsx",
         "sheetName": "English Quiz 6"
       }
@@ -7643,7 +7643,7 @@
   },
   "metadata": {
     "totalTests": 10,
-    "lastProcessed": "2025-11-26T04:35:15.529Z",
+    "lastProcessed": "2025-11-26T17:39:12.397Z",
     "version": "1.0.0"
   }
 }

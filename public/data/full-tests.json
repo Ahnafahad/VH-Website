@@ -127,8 +127,8 @@
             "Section1-Q90": "E (C)"
           },
           "analytics": {
-            "skipStrategy": 72,
-            "questionChoiceStrategy": 76,
+            "skipStrategy": 0,
+            "questionChoiceStrategy": 0,
             "recoveryScore": 55,
             "sectionPerformance": {
               "1": {
@@ -298,8 +298,8 @@
             "Section1-Q90": "NAN"
           },
           "analytics": {
-            "skipStrategy": 55,
-            "questionChoiceStrategy": 66,
+            "skipStrategy": 0,
+            "questionChoiceStrategy": 0,
             "recoveryScore": 65,
             "sectionPerformance": {
               "1": {
@@ -432,8 +432,8 @@
             "Section1-Q90": "B (W)"
           },
           "analytics": {
-            "skipStrategy": 87,
-            "questionChoiceStrategy": 89,
+            "skipStrategy": 0,
+            "questionChoiceStrategy": 0,
             "recoveryScore": 100,
             "sectionPerformance": {
               "1": {
@@ -677,8 +677,8 @@
             "Section1-Q90": "B (W)"
           },
           "analytics": {
-            "skipStrategy": 74,
-            "questionChoiceStrategy": 78,
+            "skipStrategy": 0,
+            "questionChoiceStrategy": 0,
             "recoveryScore": 66,
             "sectionPerformance": {
               "1": {
@@ -848,8 +848,8 @@
             "Section1-Q90": "E (C)"
           },
           "analytics": {
-            "skipStrategy": 86,
-            "questionChoiceStrategy": 89,
+            "skipStrategy": 0,
+            "questionChoiceStrategy": 0,
             "recoveryScore": 77,
             "sectionPerformance": {
               "1": {
@@ -1019,8 +1019,8 @@
             "Section1-Q90": "E (C)"
           },
           "analytics": {
-            "skipStrategy": 71,
-            "questionChoiceStrategy": 76,
+            "skipStrategy": 0,
+            "questionChoiceStrategy": 0,
             "recoveryScore": 71,
             "sectionPerformance": {
               "1": {
@@ -1153,8 +1153,8 @@
             "Section1-Q90": "NAN"
           },
           "analytics": {
-            "skipStrategy": 41,
-            "questionChoiceStrategy": 57,
+            "skipStrategy": 0,
+            "questionChoiceStrategy": 0,
             "recoveryScore": 64,
             "sectionPerformance": {
               "1": {
@@ -1287,8 +1287,8 @@
             "Section1-Q90": "A (W)"
           },
           "analytics": {
-            "skipStrategy": 69,
-            "questionChoiceStrategy": 75,
+            "skipStrategy": 0,
+            "questionChoiceStrategy": 0,
             "recoveryScore": 70,
             "sectionPerformance": {
               "1": {
@@ -1421,8 +1421,8 @@
             "Section1-Q90": "E (C)"
           },
           "analytics": {
-            "skipStrategy": 85,
-            "questionChoiceStrategy": 87,
+            "skipStrategy": 0,
+            "questionChoiceStrategy": 0,
             "recoveryScore": 96,
             "sectionPerformance": {
               "1": {
@@ -1555,8 +1555,8 @@
             "Section1-Q90": "A (W)"
           },
           "analytics": {
-            "skipStrategy": 82,
-            "questionChoiceStrategy": 83,
+            "skipStrategy": 0,
+            "questionChoiceStrategy": 0,
             "recoveryScore": 70,
             "sectionPerformance": {
               "1": {
@@ -1800,8 +1800,8 @@
             "Section1-Q90": "A (W)"
           },
           "analytics": {
-            "skipStrategy": 84,
-            "questionChoiceStrategy": 85,
+            "skipStrategy": 0,
+            "questionChoiceStrategy": 0,
             "recoveryScore": 73,
             "sectionPerformance": {
               "1": {
@@ -1934,8 +1934,8 @@
             "Section1-Q90": "E (C)"
           },
           "analytics": {
-            "skipStrategy": 82,
-            "questionChoiceStrategy": 84,
+            "skipStrategy": 0,
+            "questionChoiceStrategy": 0,
             "recoveryScore": 75,
             "sectionPerformance": {
               "1": {
@@ -2105,8 +2105,8 @@
             "Section1-Q90": "E (C)"
           },
           "analytics": {
-            "skipStrategy": 81,
-            "questionChoiceStrategy": 83,
+            "skipStrategy": 0,
+            "questionChoiceStrategy": 0,
             "recoveryScore": 80,
             "sectionPerformance": {
               "1": {
@@ -2158,13 +2158,13 @@
         }
       },
       "classStats": {
-        "averageScore": 32.06,
+        "averageScore": 59.19,
         "top5Average": 77.8,
-        "totalStudents": 24,
-        "passRate": 54.17,
+        "totalStudents": 13,
+        "passRate": 84.62,
         "maxScore": 85.25,
-        "minScore": 0,
-        "threshold": 19.2375
+        "minScore": 22.5,
+        "threshold": 35.51538461538461
       },
       "topQuestions": {
         "1": {
@@ -2307,7 +2307,7 @@
         }
       },
       "metadata": {
-        "processedAt": "2025-11-26T04:35:15.336Z",
+        "processedAt": "2025-11-26T17:39:12.253Z",
         "sourceFile": "IBA\\English Test 2.xlsx",
         "sheets": [
           "Sheet1",
@@ -2392,8 +2392,8 @@
             "Section1-Q45": "C (C)"
           },
           "analytics": {
-            "skipStrategy": 70,
-            "questionChoiceStrategy": 71,
+            "skipStrategy": 0,
+            "questionChoiceStrategy": 0,
             "recoveryScore": 51,
             "sectionPerformance": {
               "1": {
@@ -2512,8 +2512,8 @@
             "Section1-Q45": "C (C)"
           },
           "analytics": {
-            "skipStrategy": 76,
-            "questionChoiceStrategy": 74,
+            "skipStrategy": 0,
+            "questionChoiceStrategy": 0,
             "recoveryScore": 52,
             "sectionPerformance": {
               "1": {
@@ -2595,8 +2595,8 @@
             "Section1-Q45": "NAN"
           },
           "analytics": {
-            "skipStrategy": 85,
-            "questionChoiceStrategy": 83,
+            "skipStrategy": 0,
+            "questionChoiceStrategy": 0,
             "recoveryScore": 71,
             "sectionPerformance": {
               "1": {
@@ -2678,8 +2678,8 @@
             "Section1-Q45": "C (C)"
           },
           "analytics": {
-            "skipStrategy": 69,
-            "questionChoiceStrategy": 71,
+            "skipStrategy": 0,
+            "questionChoiceStrategy": 0,
             "recoveryScore": 65,
             "sectionPerformance": {
               "1": {
@@ -2798,8 +2798,8 @@
             "Section1-Q45": "C (C)"
           },
           "analytics": {
-            "skipStrategy": 73,
-            "questionChoiceStrategy": 75,
+            "skipStrategy": 0,
+            "questionChoiceStrategy": 0,
             "recoveryScore": 90,
             "sectionPerformance": {
               "1": {
@@ -2881,8 +2881,8 @@
             "Section1-Q45": "NAN"
           },
           "analytics": {
-            "skipStrategy": 79,
-            "questionChoiceStrategy": 77,
+            "skipStrategy": 0,
+            "questionChoiceStrategy": 0,
             "recoveryScore": 56,
             "sectionPerformance": {
               "1": {
@@ -2964,8 +2964,8 @@
             "Section1-Q45": "C (C)"
           },
           "analytics": {
-            "skipStrategy": 75,
-            "questionChoiceStrategy": 75,
+            "skipStrategy": 0,
+            "questionChoiceStrategy": 0,
             "recoveryScore": 63,
             "sectionPerformance": {
               "1": {
@@ -3047,8 +3047,8 @@
             "Section1-Q45": "C (C)"
           },
           "analytics": {
-            "skipStrategy": 74,
-            "questionChoiceStrategy": 75,
+            "skipStrategy": 0,
+            "questionChoiceStrategy": 0,
             "recoveryScore": 60,
             "sectionPerformance": {
               "1": {
@@ -3167,8 +3167,8 @@
             "Section1-Q45": "NAN"
           },
           "analytics": {
-            "skipStrategy": 72,
-            "questionChoiceStrategy": 73,
+            "skipStrategy": 0,
+            "questionChoiceStrategy": 0,
             "recoveryScore": 60,
             "sectionPerformance": {
               "1": {
@@ -3250,8 +3250,8 @@
             "Section1-Q45": "C (C)"
           },
           "analytics": {
-            "skipStrategy": 70,
-            "questionChoiceStrategy": 72,
+            "skipStrategy": 0,
+            "questionChoiceStrategy": 0,
             "recoveryScore": 46,
             "sectionPerformance": {
               "1": {
@@ -3333,8 +3333,8 @@
             "Section1-Q45": "C (C)"
           },
           "analytics": {
-            "skipStrategy": 78,
-            "questionChoiceStrategy": 78,
+            "skipStrategy": 0,
+            "questionChoiceStrategy": 0,
             "recoveryScore": 70,
             "sectionPerformance": {
               "1": {
@@ -3416,8 +3416,8 @@
             "Section1-Q45": "C (C)"
           },
           "analytics": {
-            "skipStrategy": 74,
-            "questionChoiceStrategy": 75,
+            "skipStrategy": 0,
+            "questionChoiceStrategy": 0,
             "recoveryScore": 64,
             "sectionPerformance": {
               "1": {
@@ -3499,8 +3499,8 @@
             "Section1-Q45": "C (C)"
           },
           "analytics": {
-            "skipStrategy": 76,
-            "questionChoiceStrategy": 76,
+            "skipStrategy": 0,
+            "questionChoiceStrategy": 0,
             "recoveryScore": 60,
             "sectionPerformance": {
               "1": {
@@ -3582,8 +3582,8 @@
             "Section1-Q45": "C (C)"
           },
           "analytics": {
-            "skipStrategy": 71,
-            "questionChoiceStrategy": 72,
+            "skipStrategy": 0,
+            "questionChoiceStrategy": 0,
             "recoveryScore": 57,
             "sectionPerformance": {
               "1": {
@@ -3739,8 +3739,8 @@
             "Section1-Q45": "C (C)"
           },
           "analytics": {
-            "skipStrategy": 76,
-            "questionChoiceStrategy": 78,
+            "skipStrategy": 0,
+            "questionChoiceStrategy": 0,
             "recoveryScore": 80,
             "sectionPerformance": {
               "1": {
@@ -3822,8 +3822,8 @@
             "Section1-Q45": "C (C)"
           },
           "analytics": {
-            "skipStrategy": 93,
-            "questionChoiceStrategy": 90,
+            "skipStrategy": 0,
+            "questionChoiceStrategy": 0,
             "recoveryScore": 80,
             "sectionPerformance": {
               "1": {
@@ -3942,8 +3942,8 @@
             "Section1-Q45": "C (C)"
           },
           "analytics": {
-            "skipStrategy": 75,
-            "questionChoiceStrategy": 78,
+            "skipStrategy": 0,
+            "questionChoiceStrategy": 0,
             "recoveryScore": 87,
             "sectionPerformance": {
               "1": {
@@ -3995,13 +3995,13 @@
         }
       },
       "classStats": {
-        "averageScore": 7.89,
+        "averageScore": 11.13,
         "top5Average": 18.3,
-        "totalStudents": 24,
-        "passRate": 66.67,
+        "totalStudents": 17,
+        "passRate": 76.47,
         "maxScore": 28.5,
-        "minScore": 0,
-        "threshold": 4.73125
+        "minScore": 4.5,
+        "threshold": 6.679411764705883
       },
       "topQuestions": {
         "1": {
@@ -4144,7 +4144,7 @@
         }
       },
       "metadata": {
-        "processedAt": "2025-11-26T04:35:15.354Z",
+        "processedAt": "2025-11-26T17:39:12.267Z",
         "sourceFile": "IBA\\Mathematics CT 2.xlsx",
         "sheets": [
           "Sheet1",
@@ -4156,7 +4156,7 @@
   },
   "metadata": {
     "totalTests": 2,
-    "lastProcessed": "2025-11-26T04:35:15.532Z",
+    "lastProcessed": "2025-11-26T17:39:12.398Z",
     "version": "1.0.0"
   }
 }

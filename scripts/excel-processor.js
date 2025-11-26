@@ -767,6 +767,7 @@ class ExcelProcessor {
       classStats.thresholdsAdjusted = thresholdData.adjusted;
       classStats.passedStudents = thresholdData.passData.passCount;
       classStats.failedStudents = thresholdData.passData.failCount;
+      classStats.absentStudents = thresholdData.passData.absentCount || 0;
 
       // Update student results with threshold data
       thresholdData.passData.students.forEach(studentData => {
@@ -775,6 +776,7 @@ class ExcelProcessor {
           results[studentData.studentId].rankStatus = studentData.rankStatus;
           results[studentData.studentId].passedAll = studentData.passedAll;
           results[studentData.studentId].failedSections = studentData.failedSections;
+          results[studentData.studentId].isAbsent = studentData.isAbsent || false;
 
           // Update section thresholds and pass status
           if (results[studentData.studentId].sections) {
@@ -797,7 +799,8 @@ class ExcelProcessor {
         }
       });
 
-      console.log(`    ✅ Thresholds: ${JSON.stringify(thresholdData.thresholds)} | ${thresholdData.passData.passCount} passed, ${thresholdData.passData.failCount} failed`);
+      const absentMsg = thresholdData.passData.absentCount > 0 ? `, ${thresholdData.passData.absentCount} absent` : '';
+      console.log(`    ✅ Thresholds: ${JSON.stringify(thresholdData.thresholds)} | ${thresholdData.passData.passCount} passed, ${thresholdData.passData.failCount} failed${absentMsg}`);
     }
 
     return {

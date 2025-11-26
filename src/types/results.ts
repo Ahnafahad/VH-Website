@@ -15,8 +15,9 @@ export interface SimpleTestResult {
   unattempted?: number;
   totalQuestions: number;
   score: number;
-  rank: number;
-  rankStatus?: 'passed' | 'failed'; // For color coding: green or red
+  rank: number | null;
+  rankStatus?: 'passed' | 'failed' | 'absent'; // For color coding: green, red, or gray
+  isAbsent?: boolean; // Student had 0 total marks (not attended)
   threshold: number;
   sections?: {
     [sectionNumber: string]: {
@@ -72,8 +73,9 @@ export interface FullTestResult {
   essayPercentage?: number; // Essay as percentage
   essayThreshold?: number; // Essay threshold (always 40%)
   essayPassed?: boolean; // Did student pass essay?
-  rank: number;
-  rankStatus?: 'passed' | 'failed'; // For color coding: green or red
+  rank: number | null;
+  rankStatus?: 'passed' | 'failed' | 'absent'; // For color coding: green, red, or gray
+  isAbsent?: boolean; // Student had 0 total marks (not attended)
   passedAll?: boolean; // Did student pass all sections?
   failedSections?: string[]; // List of failed section IDs
   essays?: {
@@ -108,6 +110,7 @@ export interface TestClassStats {
   totalStudents: number;
   passedStudents?: number; // Students who passed all sections
   failedStudents?: number; // Students who failed at least one section
+  absentStudents?: number; // Students with 0 total marks (not attended)
   passRate: number;
   questionAnalytics?: {
     [questionId: string]: {

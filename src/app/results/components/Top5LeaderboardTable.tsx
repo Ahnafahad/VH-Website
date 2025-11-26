@@ -80,8 +80,9 @@ const Top5LeaderboardTable: React.FC<Top5LeaderboardTableProps> = ({
     };
   };
 
-  // Sort and get top 5
+  // Sort and get top 5 (exclude absent students)
   const top5Results = Object.values(testResults || {})
+    .filter((result: any) => !result.isAbsent && result.rankStatus !== 'absent' && result.rank !== null)
     .sort((a: any, b: any) => (a.rank || 999) - (b.rank || 999))
     .slice(0, 5);
 

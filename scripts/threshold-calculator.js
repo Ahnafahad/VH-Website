@@ -38,14 +38,34 @@ function calculateThresholds(results, sectionIds, hasEssay = false, testName = '
     return createDefaultThresholds(sectionIds, hasEssay, results);
   }
 
-  const totalStudents = results.length;
+  // Filter out absent students (totalMarks === 0) before calculating thresholds
+  const activeStudents = results.filter(student => {
+    const totalMarks = student.totalMarks !== undefined ? student.totalMarks : 0;
+    return totalMarks > 0;
+  });
+
+  const absentCount = results.length - activeStudents.length;
+  if (absentCount > 0) {
+    console.log(`🚫 ${absentCount} student(s) marked as absent (0 total marks) - excluded from threshold calculations`);
+  }
+
+  // Use activeStudents (non-absent) for threshold calculation
+  if (activeStudents.length === 0) {
+    console.log('⚠️ All students are absent. Using default thresholds.');
+    return createDefaultThresholds(sectionIds, hasEssay, results);
+  }
+
+  const totalStudents = activeStudents.length;
   const targetPassCount = Math.ceil(totalStudents * SECTION_PASS_RATE);
 
-  console.log(`📊 Calculating thresholds for ${totalStudents} students (target: ${targetPassCount} students = 30%)`);
+  console.log(`📊 Calculating thresholds for ${totalStudents} active students (target: ${targetPassCount} students = 30%)`);
+  if (absentCount > 0) {
+    console.log(`   (${absentCount} absent student(s) excluded)`);
+  }
 
-  // Get total marks for each section from first student
+  // Get total marks for each section from first active student
   const sectionTotalMarks = {};
-  const firstStudent = results[0];
+  const firstStudent = activeStudents[0];
 
   sectionIds.forEach(sectionId => {
     const section = firstStudent.sections?.[sectionId];
@@ -69,10 +89,10 @@ function calculateThresholds(results, sectionIds, hasEssay = false, testName = '
     console.log(`  📝 Essay total marks: ${essayTotalMarks}, threshold: ${thresholds['essay'].toFixed(2)} marks (40%)`);
   }
 
-  // Calculate thresholds for each section (30% pass rate)
-  thresholds = adjustThresholds(results, thresholds, sectionIds, hasEssay, targetPassCount, sectionTotalMarks);
+  // Calculate thresholds for each section (30% pass rate) using only active students
+  thresholds = adjustThresholds(activeStudents, thresholds, sectionIds, hasEssay, targetPassCount, sectionTotalMarks);
 
-  // Calculate pass status with final thresholds
+  // Calculate pass status with final thresholds (for ALL students including absent)
   const passData = calculatePassStatus(results, thresholds, sectionIds, hasEssay, sectionTotalMarks);
 
   // Format thresholds for logging
@@ -157,18 +177,32 @@ function calculatePassStatus(results, thresholds, sectionIds, hasEssay, sectionT
   const passData = {
     passCount: 0,
     failCount: 0,
+    absentCount: 0,
     students: []
   };
 
   results.forEach(student => {
+    const totalScore = calculateTotalScore(student, sectionIds, hasEssay);
+
     const studentData = {
       studentId: student.studentId,
       studentName: student.studentName,
-      totalScore: calculateTotalScore(student, sectionIds, hasEssay),
+      totalScore: totalScore,
       sectionResults: {},
       passedAll: true,
-      failedSections: []
+      failedSections: [],
+      isAbsent: totalScore === 0 // Mark as absent if total marks is 0
     };
+
+    // If student is absent, skip threshold checks and mark accordingly
+    if (studentData.isAbsent) {
+      passData.absentCount++;
+      studentData.passedAll = false;
+      studentData.rankStatus = 'absent';
+      studentData.rank = null;
+      passData.students.push(studentData);
+      return; // Skip rest of processing for absent students
+    }
 
     // Check each section (compare MARKS vs MARKS)
     sectionIds.forEach(sectionId => {
@@ -225,11 +259,13 @@ function calculatePassStatus(results, thresholds, sectionIds, hasEssay, sectionT
 /**
  * Calculate rankings with pass/fail logic
  * Passed students are ranked first, failed students cannot outrank passed students
+ * Absent students (0 marks) are excluded from ranking
  */
 function calculateRankings(students) {
-  // Separate passed and failed students
-  const passedStudents = students.filter(s => s.passedAll);
-  const failedStudents = students.filter(s => !s.passedAll);
+  // Separate passed, failed, and absent students
+  const passedStudents = students.filter(s => s.passedAll && !s.isAbsent);
+  const failedStudents = students.filter(s => !s.passedAll && !s.isAbsent);
+  const absentStudents = students.filter(s => s.isAbsent);
 
   // Sort passed students by total score (descending)
   passedStudents.sort((a, b) => b.totalScore - a.totalScore);
@@ -237,7 +273,7 @@ function calculateRankings(students) {
   // Sort failed students by total score (descending)
   failedStudents.sort((a, b) => b.totalScore - a.totalScore);
 
-  // Assign ranks
+  // Assign ranks (only to non-absent students)
   let rank = 1;
   passedStudents.forEach(student => {
     student.rank = rank++;
@@ -250,7 +286,13 @@ function calculateRankings(students) {
     student.rankStatus = 'failed'; // Red
   });
 
-  return [...passedStudents, ...failedStudents];
+  // Absent students get null rank and 'absent' status (already set in calculatePassStatus)
+  absentStudents.forEach(student => {
+    student.rank = null;
+    student.rankStatus = 'absent'; // Gray
+  });
+
+  return [...passedStudents, ...failedStudents, ...absentStudents];
 }
 
 /**
