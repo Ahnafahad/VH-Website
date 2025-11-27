@@ -30,6 +30,15 @@
       "permissions": ["read", "write", "admin"],
       "addedDate": "2025-11-03",
       "active": true
+    },
+    {
+      "id": "admin_004",
+      "name": "Rahmita Tasnim",
+      "email": "rahmitasnim2342@gmail.com",
+      "role": "admin",
+      "permissions": ["read", "write", "admin"],
+      "addedDate": "2025-11-14",
+      "active": true
     }
   ],
   "students": [
