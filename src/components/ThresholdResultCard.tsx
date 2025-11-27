@@ -228,7 +228,7 @@ const ThresholdResultCard: React.FC<ThresholdResultCardProps> = ({ result, isFul
               <p className="font-semibold mb-1">About Thresholds</p>
               <p>
                 Each section has a minimum threshold (in marks) you must achieve to pass. The essay threshold is always fixed at 40% of total essay marks,
-                while other section thresholds may be adjusted to ensure at least 20% of students pass overall. Thresholds are displayed in marks, not percentages.
+                while other section thresholds are adjusted to ensure the top 40% of students pass each section. Thresholds are displayed in marks, not percentages.
               </p>
             </div>
           </div>
