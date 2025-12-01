@@ -66,7 +66,7 @@ const AccountingProgressSchema = new Schema<IAccountingProgress>(
   {
     timestamps: true,
     toJSON: {
-      transform: function (doc, ret) {
+      transform: function (doc, ret: any) {
         // Convert Set to Array for JSON serialization
         if (ret.masteredQuestions instanceof Set) {
           ret.masteredQuestions = Array.from(ret.masteredQuestions);
@@ -74,7 +74,7 @@ const AccountingProgressSchema = new Schema<IAccountingProgress>(
         // Convert Map to Object for JSON serialization
         if (ret.lectureProgress instanceof Map) {
           const obj: any = {};
-          ret.lectureProgress.forEach((value, key) => {
+          ret.lectureProgress.forEach((value: any, key: any) => {
             obj[key] = value;
           });
           ret.lectureProgress = obj;
