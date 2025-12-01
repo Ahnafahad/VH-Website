@@ -153,6 +153,17 @@
       "batch": "2025"
     },
     {
+      "studentId": "5938472",
+      "name": "Miftau Rahman",
+      "email": "miftaurahman6729@gmail.com",
+      "role": "student",
+      "permissions": ["read"],
+      "addedDate": "2025-01-12",
+      "active": true,
+      "class": "DU-FBS",
+      "batch": "2025"
+    },
+    {
       "studentId": "678535",
       "name": "Nazeef Rahman",
       "email": "nazeefrahman.1208@gmail.com",
@@ -316,7 +327,7 @@
   },
   "validation": {
     "emailRegex": "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$",
-    "studentIdFormat": "^[0-9]{6}$",
+    "studentIdFormat": "^[0-9]{6,7}$",
     "allowedEmailDomains": ["gmail.com", "outlook.com", "yahoo.com"],
     "requiredFields": ["email", "name", "role"]
   }
