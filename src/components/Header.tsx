@@ -3,13 +3,15 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Menu, X, ChevronDown, Gamepad2, BarChart3, Calendar, ClipboardList, Users } from 'lucide-react';
+import { Menu, X, ChevronDown, ChevronRight, Gamepad2, BarChart3, Calendar, ClipboardList, Users, Calculator } from 'lucide-react';
 import LoginButton from './LoginButton';
 import { useSession } from 'next-auth/react';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isGamesDropdownOpen, setIsGamesDropdownOpen] = useState(false);
+  const [isFBSDropdownOpen, setIsFBSDropdownOpen] = useState(false);
+  const [isMobileFBSOpen, setIsMobileFBSOpen] = useState(false);
   const { data: session } = useSession();
   const [isAdmin, setIsAdmin] = useState(false);
 
@@ -129,21 +131,61 @@ const Header = () => {
                     <span className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-vh-red transition-all duration-300 group-hover:w-full group-hover:left-0"></span>
                   </button>
                   {isGamesDropdownOpen && (
-                    <div className="absolute top-full left-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-vh-beige/30 py-2 z-10">
+                    <div className="absolute top-full left-0 mt-2 w-56 bg-white rounded-xl shadow-2xl border border-vh-beige/30 py-2 z-10">
                       <Link
                         href="/games/vocab-quiz"
                         className="block px-4 py-3 text-gray-800 hover:text-vh-red hover:bg-vh-beige/20 transition-all duration-300 min-h-[44px] flex items-center"
-                        onClick={() => setIsGamesDropdownOpen(false)}
+                        onClick={() => {
+                          setIsGamesDropdownOpen(false);
+                          setIsFBSDropdownOpen(false);
+                        }}
                       >
                         Vocabulary Quiz
                       </Link>
                       <Link
                         href="/games/mental-math"
                         className="block px-4 py-3 text-gray-800 hover:text-vh-red hover:bg-vh-beige/20 transition-all duration-300 min-h-[44px] flex items-center"
-                        onClick={() => setIsGamesDropdownOpen(false)}
+                        onClick={() => {
+                          setIsGamesDropdownOpen(false);
+                          setIsFBSDropdownOpen(false);
+                        }}
                       >
                         Mental Math Trainer
                       </Link>
+
+                      {/* Nested FBS Games Dropdown */}
+                      <div className="border-t border-vh-beige/30 mt-2 pt-2">
+                        <div
+                          className="relative group"
+                          onMouseEnter={() => setIsFBSDropdownOpen(true)}
+                          onMouseLeave={() => setIsFBSDropdownOpen(false)}
+                        >
+                          <div className="px-4 py-3 text-gray-800 hover:text-vh-red hover:bg-vh-beige/20 transition-all duration-300 min-h-[44px] flex items-center justify-between cursor-pointer font-semibold">
+                            <span className="flex items-center gap-2">
+                              <Calculator size={16} />
+                              FBS Games
+                            </span>
+                            <ChevronRight size={16} className="text-gray-400" />
+                          </div>
+
+                          {/* FBS Submenu */}
+                          {isFBSDropdownOpen && (
+                            <div className="absolute left-full top-0 ml-1 w-48 bg-white rounded-xl shadow-2xl border border-vh-beige/30 py-2">
+                              <Link
+                                href="/games/fbs-accounting"
+                                className="block px-4 py-3 text-gray-800 hover:text-vh-red hover:bg-vh-beige/20 transition-all duration-300 min-h-[44px] flex items-center gap-2"
+                                onClick={() => {
+                                  setIsGamesDropdownOpen(false);
+                                  setIsFBSDropdownOpen(false);
+                                }}
+                              >
+                                <Calculator size={14} />
+                                Accounting Game
+                              </Link>
+                            </div>
+                          )}
+                        </div>
+                      </div>
                     </div>
                   )}
                 </div>
@@ -247,6 +289,36 @@ const Header = () => {
                     >
                       Mental Math Trainer
                     </Link>
+
+                    {/* Mobile FBS Games Nested Section */}
+                    <div className="ml-4 mt-2">
+                      <button
+                        onClick={() => setIsMobileFBSOpen(!isMobileFBSOpen)}
+                        className="w-full flex items-center justify-between px-4 py-2 text-gray-700 hover:text-vh-red hover:bg-vh-beige/10 rounded-xl transition-all duration-300 font-medium"
+                      >
+                        <span className="flex items-center gap-2">
+                          <Calculator size={16} />
+                          FBS Games
+                        </span>
+                        <ChevronDown size={16} className={`transition-transform ${isMobileFBSOpen ? 'rotate-180' : ''}`} />
+                      </button>
+
+                      {isMobileFBSOpen && (
+                        <div className="ml-4 mt-1 space-y-1">
+                          <Link
+                            href="/games/fbs-accounting"
+                            className="block px-6 py-2 text-gray-600 hover:text-vh-red hover:bg-vh-beige/10 rounded-xl transition-all duration-300 flex items-center gap-2"
+                            onClick={() => {
+                              setIsMenuOpen(false);
+                              setIsMobileFBSOpen(false);
+                            }}
+                          >
+                            <Calculator size={14} />
+                            Accounting Game
+                          </Link>
+                        </div>
+                      )}
+                    </div>
                   </div>
                 </>
               )}
