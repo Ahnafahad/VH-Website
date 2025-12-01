@@ -168,8 +168,12 @@ function parseMarkdownFile(filePath, lectureNumber) {
         return;
       }
 
-      // Extract explanation
-      const explanationMatch = block.match(/\*\*Explanation:\*\*\s+(.+?)(?=\n---|\n###|$)/s);
+      // Extract explanation - handle both "Explanation:" and "Explanation" formats
+      let explanationMatch = block.match(/\*\*Explanation:\*\*\s+(.+?)(?=\n---|\n###?|$)/s);
+      if (!explanationMatch) {
+        // Try without colon
+        explanationMatch = block.match(/\*\*Explanation\*\*\s+(.+?)(?=\n---|\n###?|$)/s);
+      }
       const explanation = explanationMatch
         ? explanationMatch[1].trim().replace(/\s+/g, ' ')
         : '';

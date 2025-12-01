@@ -13,9 +13,12 @@ export async function POST(request: NextRequest) {
     // 2. Connect to database
     await connectToDatabase();
 
-    // 3. Check FBS access
+    // 3. Check if user is admin first (admins have access to everything)
+    const isAdmin = await isAdminEmail(user.email);
+
+    // 4. Check FBS access for non-admin users
     const dbUser = await User.findOne({ email: user.email.toLowerCase() });
-    if (!dbUser?.accessTypes?.FBS) {
+    if (!isAdmin && !dbUser?.accessTypes?.FBS) {
       throw new ApiException(
         'This game is only available to FBS students',
         403,
@@ -23,7 +26,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // 4. Parse and validate request body
+    // 5. Parse and validate request body
     const data = await request.json();
 
     const {
@@ -40,7 +43,7 @@ export async function POST(request: NextRequest) {
       timeTaken
     } = data;
 
-    // 5. Validation
+    // 6. Validation
     const validationErrors: string[] = [];
 
     if (typeof simpleScore !== 'number') {
@@ -104,9 +107,6 @@ export async function POST(request: NextRequest) {
         'VALIDATION_ERROR'
       );
     }
-
-    // 6. Check if user is admin
-    const isAdmin = await isAdminEmail(user.email);
 
     // 7. Don't save admin scores to database
     if (isAdmin) {
