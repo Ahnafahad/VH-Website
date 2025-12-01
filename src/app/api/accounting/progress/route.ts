@@ -1,14 +1,13 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
 import { connectToDatabase } from '@/lib/db';
 import AccountingProgress from '@/lib/models/AccountingProgress';
 import User from '@/lib/models/User';
 import { isAdminEmail } from '@/lib/db-access-control';
 import { validateAuth, createErrorResponse, ApiException } from '@/lib/api-utils';
-import { getShortTitle } from '@/lib/accounting-utils';
 import fs from 'fs';
 import path from 'path';
 
-export async function GET(request: NextRequest) {
+export async function GET() {
   try {
     // 1. Validate authentication
     const user = await validateAuth();
@@ -30,7 +29,7 @@ export async function GET(request: NextRequest) {
     }
 
     // 5. Fetch user's progress document
-    let progress = await AccountingProgress.findOne({
+    const progress = await AccountingProgress.findOne({
       playerEmail: user.email.toLowerCase()
     });
 

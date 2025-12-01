@@ -22,7 +22,6 @@ import {
   GameState,
   LectureData,
   AccountingQuestion,
-  QuestionResult,
   GameResults,
   SingularLeaderboardEntry,
   CumulativeLeaderboardEntry
@@ -32,13 +31,10 @@ import {
   getQuestionsByLectures,
   calculateSimpleScore,
   calculateDynamicScore,
-  calculateSpeedBonus,
   generateQuestionResults,
   getShortTitle,
   formatTime,
-  getTotalAvailableQuestions,
   isLectureAvailable,
-  saveScore,
   fetchLeaderboard
 } from '@/lib/accounting-utils';
 
@@ -422,8 +418,6 @@ function FBSAccountingGame() {
   // STATE 1: SETUP SCREEN
   // =========================
   if (gameState === 'setup') {
-    const totalAvailable = getTotalAvailableQuestions(allLectures, selectedLectures);
-
     return (
       <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white py-12 px-4">
         <div className="max-w-4xl mx-auto">
