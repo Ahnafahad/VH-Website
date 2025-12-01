@@ -77,6 +77,11 @@ function FBSAccountingGame() {
   const [activeLeaderboardTab, setActiveLeaderboardTab] = useState<'singular' | 'cumulative'>('singular');
   const [isLoadingLeaderboard, setIsLoadingLeaderboard] = useState(false);
 
+  // Progress tracking state
+  const [userProgress, setUserProgress] = useState<any | null>(null);
+  const [isLoadingProgress, setIsLoadingProgress] = useState(true);
+  const [masteryFeedback, setMasteryFeedback] = useState<any | null>(null);
+
   // Check FBS access on mount
   useEffect(() => {
     const checkFBSAccess = async () => {
@@ -120,6 +125,36 @@ function FBSAccountingGame() {
     loadLectures();
   }, []);
 
+  // Load user progress
+  useEffect(() => {
+    const loadProgress = async () => {
+      if (!session?.user?.email || hasFBSAccess === false) {
+        setIsLoadingProgress(false);
+        return;
+      }
+
+      if (hasFBSAccess === true) {
+        try {
+          const response = await fetch('/api/accounting/progress');
+          if (response.ok) {
+            const data = await response.json();
+            setUserProgress(data.progress);
+          } else {
+            console.error('Failed to load progress');
+            setUserProgress(null);
+          }
+        } catch (error) {
+          console.error('Error loading progress:', error);
+          setUserProgress(null);
+        } finally {
+          setIsLoadingProgress(false);
+        }
+      }
+    };
+
+    loadProgress();
+  }, [session, hasFBSAccess]);
+
   // Live timer for current question (updates every second during play)
   const [currentQuestionElapsed, setCurrentQuestionElapsed] = useState(0);
 
@@ -155,9 +190,11 @@ function FBSAccountingGame() {
     }
 
     try {
+      const masteredQuestionIds = userProgress?.masteredQuestionIds || [];
       const quizQuestions = getQuestionsByLectures(
         allLectures,
-        selectedLectures
+        selectedLectures,
+        masteredQuestionIds
       );
 
       setQuestions(quizQuestions);
@@ -249,12 +286,59 @@ function FBSAccountingGame() {
     setGameResults(results);
     setGameState('finished');
 
-    // Auto-save score
+    // Auto-save score with question results for mastery tracking
     if (results.questionsAnswered > 0) {
       setIsSavingScore(true);
-      saveScore(results)
-        .then(() => {
-          console.log('Score saved successfully');
+
+      // Send question results to API for mastery tracking
+      const questionResultsForAPI = questionResults.map(r => ({
+        questionId: r.question.id,
+        lecture: r.question.lecture,
+        isCorrect: r.isCorrect,
+        isSkipped: r.isSkipped,
+        timeTaken: r.timeTaken,
+        speedBonus: r.speedBonus
+      }));
+
+      fetch('/api/accounting/scores', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          simpleScore: results.simpleScore,
+          dynamicScore: results.dynamicScore,
+          totalSpeedBonus: results.totalSpeedBonus,
+          lectureCoverageBonus: results.lectureCoverageBonus,
+          questionsAnswered: results.questionsAnswered,
+          correctAnswers: results.correctAnswers,
+          wrongAnswers: results.wrongAnswers,
+          skippedAnswers: results.skippedAnswers,
+          accuracy: results.accuracy,
+          selectedLectures: results.selectedLectures,
+          timeTaken: results.timeTaken,
+          questionResults: questionResultsForAPI
+        })
+      })
+        .then(async response => {
+          if (response.ok) {
+            const data = await response.json();
+            console.log('Score saved successfully');
+
+            // Store mastery feedback
+            if (data.mastery) {
+              setMasteryFeedback(data.mastery);
+            }
+
+            // Reload progress
+            const progressResponse = await fetch('/api/accounting/progress');
+            if (progressResponse.ok) {
+              const progressData = await progressResponse.json();
+              setUserProgress(progressData.progress);
+            }
+          } else {
+            console.error('Failed to save score');
+          }
         })
         .catch(error => {
           console.error('Error saving score:', error);
@@ -286,6 +370,7 @@ function FBSAccountingGame() {
     setCurrentQuestionIndex(0);
     setUserAnswers([]);
     setGameResults(null);
+    setMasteryFeedback(null);
   };
 
   // Access denied screen
@@ -355,6 +440,37 @@ function FBSAccountingGame() {
             </p>
           </div>
 
+          {/* Overall Progress Card */}
+          {!isLoadingProgress && userProgress && userProgress.totalMastered > 0 && (
+            <div className="bg-gradient-to-br from-purple-50 to-pink-50 border-2 border-purple-200 rounded-3xl shadow-xl p-6 mb-8">
+              <div className="flex items-center justify-between mb-4">
+                <div className="font-bold text-gray-900 text-lg flex items-center gap-2">
+                  <span className="text-2xl">📊</span>
+                  Your Progress
+                </div>
+                <div className="text-sm text-gray-600">
+                  {userProgress.totalMastered}/{userProgress.totalQuestions} questions mastered
+                </div>
+              </div>
+
+              <div className="w-full bg-gray-200 rounded-full h-4 overflow-hidden shadow-inner mb-3">
+                <div
+                  className="h-4 bg-gradient-to-r from-purple-500 via-pink-500 to-purple-600 rounded-full transition-all duration-500 shadow-lg"
+                  style={{ width: `${userProgress.overallPercentage}%` }}
+                />
+              </div>
+
+              <div className="flex items-center justify-between">
+                <div className="text-2xl font-black text-purple-600">
+                  {userProgress.overallPercentage.toFixed(1)}%
+                </div>
+                <div className="text-sm text-gray-600">
+                  {userProgress.lectureProgress.filter((l: any) => l.isCompleted).length} of 12 lectures completed
+                </div>
+              </div>
+            </div>
+          )}
+
           {/* Lecture Selection */}
           <div className="bg-white rounded-3xl shadow-2xl p-8 mb-8">
             <h2 className="text-2xl font-black text-gray-900 mb-6">
@@ -366,6 +482,15 @@ function FBSAccountingGame() {
                 const isSelected = selectedLectures.includes(lecture.lectureNumber);
                 const isAvailable = isLectureAvailable(lecture);
 
+                // Get lecture progress data
+                const lectureProgress = userProgress?.lectureProgress?.find(
+                  (p: any) => p.lectureNumber === lecture.lectureNumber
+                );
+                const isCompleted = lectureProgress?.isCompleted || false;
+                const masteredCount = lectureProgress?.masteredCount || 0;
+                const percentage = lectureProgress?.percentage || 0;
+                const completionCount = lectureProgress?.completionCount || 0;
+
                 return (
                   <div key={lecture.lectureNumber} className="relative group">
                     {/* Checkbox Card */}
@@ -375,6 +500,8 @@ function FBSAccountingGame() {
                         transition-all duration-300
                         ${isSelected
                           ? 'border-vh-red bg-vh-red/5'
+                          : isCompleted
+                          ? 'border-green-500 bg-green-50 hover:border-green-600'
                           : 'border-gray-200 hover:border-vh-red/50'
                         }
                         ${!isAvailable ? 'opacity-50 cursor-not-allowed' : ''}
@@ -392,6 +519,11 @@ function FBSAccountingGame() {
                         <div className="font-bold text-gray-900 flex items-center gap-2">
                           <BookOpen size={16} className="text-vh-red" />
                           Lecture {lecture.lectureNumber}: {getShortTitle(lecture.topics)}
+                          {completionCount > 0 && (
+                            <span className="text-xs bg-green-600 text-white px-2 py-0.5 rounded-full font-bold">
+                              ✓ {completionCount}x
+                            </span>
+                          )}
                         </div>
                         <div className="text-sm text-gray-600">
                           {lecture.questionCount} questions
@@ -401,6 +533,26 @@ function FBSAccountingGame() {
                             </span>
                           )}
                         </div>
+
+                        {/* Progress Bar */}
+                        {isAvailable && !isLoadingProgress && (
+                          <div className="mt-2">
+                            <div className="w-full bg-gray-200 rounded-full h-1.5 overflow-hidden">
+                              <div
+                                className={`h-1.5 rounded-full transition-all duration-500 ${
+                                  isCompleted ? 'bg-green-500' : 'bg-vh-red'
+                                }`}
+                                style={{ width: `${percentage}%` }}
+                              />
+                            </div>
+                            <div className="text-xs text-gray-500 mt-1 flex justify-between items-center">
+                              <span>{masteredCount}/{lecture.questionCount} mastered</span>
+                              <span className={`font-semibold ${isCompleted ? 'text-green-600' : 'text-gray-600'}`}>
+                                {percentage.toFixed(0)}%
+                              </span>
+                            </div>
+                          </div>
+                        )}
                       </div>
                     </label>
 
@@ -763,6 +915,53 @@ function FBSAccountingGame() {
               </div>
             </div>
           </div>
+
+          {/* Mastery Progress Card */}
+          {masteryFeedback && (
+            <div className="bg-gradient-to-br from-purple-50 via-pink-50 to-purple-50 border-2 border-purple-300 rounded-2xl p-6 mb-8">
+              <div className="font-bold text-gray-900 mb-4 flex items-center gap-2">
+                <span className="text-lg">📚</span>
+                Question Mastery Progress
+              </div>
+              <div className="grid md:grid-cols-3 gap-4">
+                <div className="bg-white rounded-xl p-4 shadow-sm text-center">
+                  <div className="text-3xl font-black text-purple-600 mb-1">
+                    {masteryFeedback.newlyMastered > 0 ? `+${masteryFeedback.newlyMastered}` : '0'}
+                  </div>
+                  <div className="text-sm font-medium text-gray-700">New Questions Mastered</div>
+                  <div className="text-xs text-gray-500 mt-1">This session</div>
+                </div>
+                <div className="bg-white rounded-xl p-4 shadow-sm text-center">
+                  <div className="text-3xl font-black text-green-600 mb-1">
+                    {masteryFeedback.totalMastered}
+                  </div>
+                  <div className="text-sm font-medium text-gray-700">Total Mastered</div>
+                  <div className="text-xs text-gray-500 mt-1">
+                    {((masteryFeedback.totalMastered / masteryFeedback.totalQuestions) * 100).toFixed(1)}% complete
+                  </div>
+                </div>
+                <div className="bg-white rounded-xl p-4 shadow-sm text-center">
+                  <div className="text-3xl font-black text-blue-600 mb-1">
+                    {masteryFeedback.lecturesCompleted.length}
+                  </div>
+                  <div className="text-sm font-medium text-gray-700">Lectures Completed</div>
+                  <div className="text-xs text-gray-500 mt-1">
+                    {masteryFeedback.lecturesCompleted.length > 0
+                      ? `Lecture ${masteryFeedback.lecturesCompleted.join(', ')}`
+                      : 'Keep going!'}
+                  </div>
+                </div>
+              </div>
+              {masteryFeedback.lecturesCompleted.length > 0 && (
+                <div className="mt-4 p-4 bg-gradient-to-r from-green-500 to-green-600 text-white rounded-xl text-center">
+                  <div className="font-bold text-lg mb-1">🎉 Congratulations!</div>
+                  <div className="text-sm">
+                    You've completed {masteryFeedback.lecturesCompleted.length} lecture{masteryFeedback.lecturesCompleted.length > 1 ? 's' : ''}!
+                  </div>
+                </div>
+              )}
+            </div>
+          )}
 
           {/* Detailed Results */}
           <div className="bg-white rounded-3xl shadow-2xl p-8 mb-8">

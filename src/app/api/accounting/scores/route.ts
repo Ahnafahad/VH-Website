@@ -40,7 +40,8 @@ export async function POST(request: NextRequest) {
       skippedAnswers,
       accuracy,
       selectedLectures,
-      timeTaken
+      timeTaken,
+      questionResults
     } = data;
 
     // 6. Validation
@@ -100,6 +101,11 @@ export async function POST(request: NextRequest) {
       validationErrors.push('dynamicScore cannot be less than simpleScore');
     }
 
+    // Validate questionResults if provided
+    if (questionResults && !Array.isArray(questionResults)) {
+      validationErrors.push('questionResults must be an array');
+    }
+
     if (validationErrors.length > 0) {
       throw new ApiException(
         `Validation failed: ${validationErrors.join(', ')}`,
@@ -108,7 +114,25 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // 7. Don't save admin scores to database
+    // 7. Update question mastery for non-admin users
+    let masteryFeedback = null;
+    if (!isAdmin && questionResults && questionResults.length > 0) {
+      try {
+        const { updateQuestionMastery, getAccountingQuestions } = await import('@/lib/accounting-utils');
+        const allLectures = await getAccountingQuestions();
+
+        masteryFeedback = await updateQuestionMastery(
+          user.email,
+          questionResults,
+          allLectures
+        );
+      } catch (error) {
+        console.error('Error updating question mastery:', error);
+        // Don't fail the entire request if mastery update fails
+      }
+    }
+
+    // 8. Don't save admin scores to database
     if (isAdmin) {
       return NextResponse.json({
         success: true,
@@ -116,7 +140,13 @@ export async function POST(request: NextRequest) {
         isAdmin: true,
         scoreId: 'admin-not-saved',
         simpleScore,
-        dynamicScore
+        dynamicScore,
+        mastery: masteryFeedback ? {
+          newlyMastered: masteryFeedback.newlyMastered.length,
+          lecturesCompleted: masteryFeedback.lecturesCompleted,
+          totalMastered: masteryFeedback.totalMastered,
+          totalQuestions: 281
+        } : null
       });
     }
 
@@ -141,14 +171,20 @@ export async function POST(request: NextRequest) {
 
     const savedScore = await accountingScore.save();
 
-    // 9. Return success
+    // 9. Return success with mastery feedback
     return NextResponse.json({
       success: true,
       message: 'Accounting game score saved successfully',
       isAdmin: false,
       scoreId: savedScore._id,
       simpleScore: savedScore.simpleScore,
-      dynamicScore: savedScore.dynamicScore
+      dynamicScore: savedScore.dynamicScore,
+      mastery: masteryFeedback ? {
+        newlyMastered: masteryFeedback.newlyMastered.length,
+        lecturesCompleted: masteryFeedback.lecturesCompleted,
+        totalMastered: masteryFeedback.totalMastered,
+        totalQuestions: 281
+      } : null
     });
 
   } catch (error) {

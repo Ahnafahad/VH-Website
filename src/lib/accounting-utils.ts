@@ -32,34 +32,55 @@ export async function getAccountingQuestions(): Promise<LectureData[]> {
 }
 
 /**
- * Get questions from selected lectures (always returns exactly 16 questions)
+ * Get questions from selected lectures with mastery awareness
+ * Prioritizes unmastered questions over mastered ones
  */
 export function getQuestionsByLectures(
   allLectures: LectureData[],
-  selectedLectures: number[]
+  selectedLectures: number[],
+  masteredQuestionIds: string[] = []
 ): AccountingQuestion[] {
   const QUESTION_LIMIT = 16;
 
   // Collect all questions from selected lectures
-  const questions: AccountingQuestion[] = [];
+  const allQuestions: AccountingQuestion[] = [];
 
   selectedLectures.forEach(lectureNum => {
     const lecture = allLectures.find(l => l.lectureNumber === lectureNum);
     if (lecture && lecture.questions.length > 0) {
-      questions.push(...lecture.questions);
+      allQuestions.push(...lecture.questions);
     }
   });
 
-  if (questions.length === 0) {
+  if (allQuestions.length === 0) {
     throw new Error('No questions found for selected lectures');
   }
 
-  // Shuffle questions using Fisher-Yates algorithm
-  const shuffled = shuffleArray([...questions]);
+  // Separate questions by mastery status
+  const masteredSet = new Set(masteredQuestionIds);
+  const unmastered = allQuestions.filter(q => !masteredSet.has(q.id));
+  const mastered = allQuestions.filter(q => masteredSet.has(q.id));
 
-  // Always return exactly 16 questions (or all if less than 16 available)
-  const finalLimit = Math.min(QUESTION_LIMIT, shuffled.length);
-  return shuffled.slice(0, finalLimit);
+  // Shuffle both groups independently
+  const shuffledUnmastered = shuffleArray(unmastered);
+  const shuffledMastered = shuffleArray(mastered);
+
+  // Fill 16-question pool: prioritize unmastered, backfill with mastered
+  let selected: AccountingQuestion[] = [];
+
+  if (unmastered.length >= QUESTION_LIMIT) {
+    // Case 1: Enough unmastered questions (ideal learning state)
+    selected = shuffledUnmastered.slice(0, QUESTION_LIMIT);
+  } else {
+    // Case 2: Mix unmastered + mastered
+    selected = [
+      ...shuffledUnmastered,
+      ...shuffledMastered.slice(0, QUESTION_LIMIT - shuffledUnmastered.length)
+    ];
+  }
+
+  // Final shuffle for unpredictability while maintaining mastery weighting
+  return shuffleArray(selected);
 }
 
 /**
@@ -310,4 +331,105 @@ export async function fetchLeaderboard() {
     console.error('Error fetching leaderboard:', error);
     throw error;
   }
+}
+
+/**
+ * Update question mastery for a user after game completion
+ * This is called server-side from the API route
+ */
+export async function updateQuestionMastery(
+  playerEmail: string,
+  questionResults: QuestionResult[],
+  allLectures: LectureData[]
+): Promise<{
+  newlyMastered: string[];
+  lecturesCompleted: number[];
+  totalMastered: number;
+}> {
+  // Import model dynamically (server-side only)
+  const AccountingProgress = (await import('@/lib/models/AccountingProgress')).default;
+
+  // 1. Get or create progress document
+  let progress = await AccountingProgress.findOne({
+    playerEmail: playerEmail.toLowerCase()
+  });
+
+  if (!progress) {
+    progress = new AccountingProgress({
+      playerEmail: playerEmail.toLowerCase(),
+      masteredQuestions: new Set<string>(),
+      lectureProgress: new Map(),
+      totalMastered: 0,
+      totalQuestions: 281,
+      createdAt: new Date()
+    });
+  }
+
+  // 2. Extract correctly answered question IDs
+  const correctQuestionIds = questionResults
+    .filter(r => r.isCorrect)
+    .map(r => r.question.id);
+
+  // 3. Track newly mastered questions
+  const previouslyMastered = new Set(progress.masteredQuestions);
+  const newlyMastered = correctQuestionIds.filter(
+    id => !previouslyMastered.has(id)
+  );
+
+  // 4. Update mastered questions Set
+  correctQuestionIds.forEach(id => {
+    progress.masteredQuestions.add(id);
+  });
+
+  // 5. Update per-lecture progress
+  const lecturesInGame = new Set(
+    questionResults.map(r => r.question.lecture)
+  );
+
+  const lecturesCompleted: number[] = [];
+
+  for (const lectureNum of lecturesInGame) {
+    // Get lecture data
+    const lectureData = allLectures.find(l => l.lectureNumber === lectureNum);
+    if (!lectureData) continue;
+
+    const totalQuestionsInLecture = lectureData.questionCount;
+
+    // Count mastered questions in this lecture
+    const masteredInLecture = Array.from(progress.masteredQuestions)
+      .filter(id => id.startsWith(`lecture${lectureNum}_`))
+      .length;
+
+    // Check if lecture was previously completed
+    const prevProgress = progress.lectureProgress.get(lectureNum);
+    const wasCompleted = prevProgress?.masteredCount === totalQuestionsInLecture;
+    const isNowCompleted = masteredInLecture === totalQuestionsInLecture;
+
+    // Update lecture progress
+    progress.lectureProgress.set(lectureNum, {
+      totalQuestions: totalQuestionsInLecture,
+      masteredCount: masteredInLecture,
+      completionCount: (prevProgress?.completionCount || 0) +
+                       (isNowCompleted && !wasCompleted ? 1 : 0),
+      lastPlayed: new Date()
+    });
+
+    // Track newly completed lectures
+    if (isNowCompleted && !wasCompleted) {
+      lecturesCompleted.push(lectureNum);
+    }
+  }
+
+  // 6. Update totals
+  progress.totalMastered = progress.masteredQuestions.size;
+  progress.lastUpdated = new Date();
+
+  // 7. Save to database
+  await progress.save();
+
+  return {
+    newlyMastered,
+    lecturesCompleted,
+    totalMastered: progress.totalMastered
+  };
 }
