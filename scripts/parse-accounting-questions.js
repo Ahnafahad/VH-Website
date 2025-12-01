@@ -24,17 +24,30 @@ function parseMarkdownFile(filePath, lectureNumber) {
 
   // Extract title and topics from header
   const titleMatch = content.match(/# (.+)/);
-  const topicsMatch = content.match(/Topics?:\s*(.+)/i);
+
+  // Extract topics - handle both inline and list formats
+  let topics = '';
+  const topicsHeaderMatch = content.match(/Topics?(?:\s+covered\s+in\s+this\s+lecture)?:\s*\n((?:[-•*]\s*\*\*.+?\*\*\s*\n?)+)/i);
+  if (topicsHeaderMatch) {
+    // List format with bullets
+    const topicList = topicsHeaderMatch[1].match(/\*\*(.+?)\*\*/g);
+    if (topicList) {
+      topics = topicList.map(t => t.replace(/\*\*/g, '')).join(', ');
+    }
+  } else {
+    // Inline format
+    const inlineMatch = content.match(/Topics?(?:\s+covered\s+in\s+this\s+lecture)?:\s*(.+)/i);
+    topics = inlineMatch ? inlineMatch[1].trim() : '';
+  }
 
   const title = titleMatch ? titleMatch[1].trim() : `Lecture ${lectureNumber}`;
-  const topics = topicsMatch ? topicsMatch[1].trim() : '';
 
   // Find all sections
   const sectionMatches = content.matchAll(/## Section \d+:\s*(.+)/g);
   const sections = Array.from(sectionMatches, m => m[1].trim());
 
-  // Split by question markers
-  const questionRegex = /### Question \d+/g;
+  // Split by question markers (supports both ## and ### formats)
+  const questionRegex = /###? Question \d+/g;
   const questionBlocks = content.split(questionRegex);
   questionBlocks.shift(); // Remove header section
 
@@ -44,13 +57,21 @@ function parseMarkdownFile(filePath, lectureNumber) {
   questionBlocks.forEach((block, index) => {
     try {
       // Try to find which section this question belongs to
-      const beforeQuestion = content.substring(0, content.indexOf(`### Question ${index + 1}`));
-      const lastSectionMatch = beforeQuestion.match(/## Section \d+:\s*(.+)/g);
-      if (lastSectionMatch && lastSectionMatch.length > 0) {
-        const lastSection = lastSectionMatch[lastSectionMatch.length - 1];
-        const sectionNameMatch = lastSection.match(/## Section \d+:\s*(.+)/);
-        if (sectionNameMatch) {
-          currentSection = sectionNameMatch[1].trim();
+      // Look for both ## and ### question formats
+      let questionPos = content.indexOf(`### Question ${index + 1}`);
+      if (questionPos === -1) {
+        questionPos = content.indexOf(`## Question ${index + 1}`);
+      }
+
+      if (questionPos !== -1) {
+        const beforeQuestion = content.substring(0, questionPos);
+        const lastSectionMatch = beforeQuestion.match(/## Section \d+:\s*(.+)/g);
+        if (lastSectionMatch && lastSectionMatch.length > 0) {
+          const lastSection = lastSectionMatch[lastSectionMatch.length - 1];
+          const sectionNameMatch = lastSection.match(/## Section \d+:\s*(.+)/);
+          if (sectionNameMatch) {
+            currentSection = sectionNameMatch[1].trim();
+          }
         }
       }
 
@@ -73,6 +94,15 @@ function parseMarkdownFile(filePath, lectureNumber) {
         console.log(`    ⚠️  Warning: Could not extract question text for Q${index + 1}`);
         return;
       }
+
+      // Clean markdown formatting from question text
+      questionText = questionText
+        .replace(/\*\*Options?\*\*/gi, '') // Remove "**Options**"
+        .replace(/\*\*(.+?)\*\*/g, '$1')   // Convert **bold** to plain text
+        .replace(/\*(.+?)\*/g, '$1')       // Convert *italic* to plain text
+        .replace(/\s+/g, ' ')              // Normalize whitespace
+        .replace(/[-–—]\s*$/, '')          // Remove trailing dashes
+        .trim();
 
       // Extract options - handle multiple formats
       const options = {};
@@ -99,7 +129,10 @@ function parseMarkdownFile(filePath, lectureNumber) {
           match = optionsText.match(new RegExp(`[-•]\\s*${letter}[.)]\\s*(.+?)(?=\\s*[-•]\\s*[A-E][.)]|$)`, 's'));
         }
         if (match) {
-          options[letter] = match[1].trim().replace(/\n/g, ' ').replace(/\s+/g, ' ');
+          let optionText = match[1].trim().replace(/\n/g, ' ').replace(/\s+/g, ' ');
+          // Remove trailing dashes and normalize
+          optionText = optionText.replace(/[-–—]\s*$/, '').trim();
+          options[letter] = optionText;
         }
       });
 
