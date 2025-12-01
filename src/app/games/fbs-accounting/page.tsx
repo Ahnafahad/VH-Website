@@ -89,7 +89,7 @@ function FBSAccountingGame() {
         const response = await fetch('/api/user/access');
         if (response.ok) {
           const data = await response.json();
-          setHasFBSAccess(data.accessTypes?.FBS === true);
+          setHasFBSAccess(data.hasFBS === true || data.accessTypes?.FBS === true);
         } else {
           setHasFBSAccess(false);
         }
