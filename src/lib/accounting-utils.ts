@@ -396,7 +396,7 @@ export async function updateQuestionMastery(
     const totalQuestionsInLecture = lectureData.questionCount;
 
     // Count mastered questions in this lecture
-    const masteredInLecture = Array.from(progress.masteredQuestions)
+    const masteredInLecture = Array.from(progress.masteredQuestions as Set<string>)
       .filter(id => id.startsWith(`lecture${lectureNum}_`))
       .length;
 
