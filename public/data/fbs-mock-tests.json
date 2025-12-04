@@ -10694,7 +10694,7 @@
         }
       },
       "metadata": {
-        "processedAt": "2025-12-04T11:32:50.265Z",
+        "processedAt": "2025-12-04T11:57:37.983Z",
         "sourceFile": "DU FBS Mock 1.xlsx"
       }
     },
@@ -21332,7 +21332,7 @@
         }
       },
       "metadata": {
-        "processedAt": "2025-12-04T11:32:50.394Z",
+        "processedAt": "2025-12-04T11:57:38.025Z",
         "sourceFile": "DU FBS Mock 2.xlsx"
       }
     },
@@ -32338,7 +32338,7 @@
         }
       },
       "metadata": {
-        "processedAt": "2025-12-04T11:32:50.434Z",
+        "processedAt": "2025-12-04T11:57:38.057Z",
         "sourceFile": "DU FBS Mock 3.xlsx"
       }
     },
@@ -42886,7 +42886,7 @@
         }
       },
       "metadata": {
-        "processedAt": "2025-12-04T11:32:50.780Z",
+        "processedAt": "2025-12-04T11:57:38.087Z",
         "sourceFile": "DU FBS Mock 4.xlsx"
       }
     },
@@ -53953,7 +53953,7 @@
         }
       },
       "metadata": {
-        "processedAt": "2025-12-04T11:32:50.958Z",
+        "processedAt": "2025-12-04T11:57:38.121Z",
         "sourceFile": "DU FBS Mock 5.xlsx"
       }
     },
@@ -54413,7 +54413,7 @@
           "totalMCQ": 39.5,
           "totalWritten": 32,
           "totalMarks": 71.5,
-          "rank": 4,
+          "rank": 5,
           "mcqRank": 11,
           "passingCriteria": {
             "englishMCQ": {
@@ -54433,7 +54433,7 @@
             }
           },
           "passedAll": true,
-          "percentile": 84,
+          "percentile": 80,
           "analytics": {
             "accuracy": 75.44,
             "totalCorrect": 43,
@@ -55231,7 +55231,7 @@
           "totalMCQ": 45.75,
           "totalWritten": 33.5,
           "totalMarks": 79.25,
-          "rank": 2,
+          "rank": 3,
           "mcqRank": 4,
           "passingCriteria": {
             "englishMCQ": {
@@ -55251,7 +55251,7 @@
             }
           },
           "passedAll": true,
-          "percentile": 92,
+          "percentile": 88,
           "analytics": {
             "accuracy": 84.21,
             "totalCorrect": 48,
@@ -58114,7 +58114,7 @@
           "totalMCQ": 46.25,
           "totalWritten": 28,
           "totalMarks": 74.25,
-          "rank": 3,
+          "rank": 4,
           "mcqRank": 3,
           "passingCriteria": {
             "englishMCQ": {
@@ -58134,7 +58134,7 @@
             }
           },
           "passedAll": true,
-          "percentile": 88,
+          "percentile": 84,
           "analytics": {
             "accuracy": 87.27,
             "totalCorrect": 48,
@@ -58972,7 +58972,7 @@
           "totalMCQ": 42,
           "totalWritten": 26.5,
           "totalMarks": 68.5,
-          "rank": 5,
+          "rank": 6,
           "mcqRank": 7,
           "passingCriteria": {
             "englishMCQ": {
@@ -58992,7 +58992,7 @@
             }
           },
           "passedAll": true,
-          "percentile": 80,
+          "percentile": 76,
           "analytics": {
             "accuracy": 84.62,
             "totalCorrect": 44,
@@ -61471,12 +61471,12 @@
           },
           "written": {
             "essay": {
-              "marks": 0,
+              "marks": 6,
               "outOf": 10,
               "attempted": true
             },
             "errorDetection": {
-              "marks": 0,
+              "marks": 7.5,
               "outOf": 10,
               "attempted": true
             },
@@ -61492,9 +61492,9 @@
             }
           },
           "totalMCQ": 53.25,
-          "totalWritten": 15,
-          "totalMarks": 68.25,
-          "rank": 6,
+          "totalWritten": 28.5,
+          "totalMarks": 81.75,
+          "rank": 2,
           "mcqRank": 2,
           "passingCriteria": {
             "englishMCQ": {
@@ -61509,12 +61509,12 @@
             },
             "total": {
               "required": 40,
-              "achieved": 68.25,
+              "achieved": 81.75,
               "passed": true
             }
           },
           "passedAll": true,
-          "percentile": 76,
+          "percentile": 92,
           "analytics": {
             "accuracy": 94.74,
             "totalCorrect": 54,
@@ -64423,7 +64423,7 @@
         }
       },
       "classStats": {
-        "average": 49.41,
+        "average": 49.95,
         "median": 62.25,
         "highest": 88.5,
         "lowest": 0,
@@ -65074,7 +65074,7 @@
         }
       },
       "metadata": {
-        "processedAt": "2025-12-04T11:32:51.001Z",
+        "processedAt": "2025-12-04T11:57:38.152Z",
         "sourceFile": "DU FBS Mock 6.xlsx"
       }
     },
@@ -76186,7 +76186,7 @@
         }
       },
       "metadata": {
-        "processedAt": "2025-12-04T11:32:51.049Z",
+        "processedAt": "2025-12-04T11:57:38.179Z",
         "sourceFile": "DU FBS Mock 7.xlsx"
       }
     },
@@ -87248,13 +87248,13 @@
         }
       },
       "metadata": {
-        "processedAt": "2025-12-04T11:32:51.103Z",
+        "processedAt": "2025-12-04T11:57:38.204Z",
         "sourceFile": "DU FBS Mock 8.xlsx"
       }
     }
   },
   "metadata": {
-    "lastUpdated": "2025-12-04T11:32:51.104Z",
+    "lastUpdated": "2025-12-04T11:57:38.205Z",
     "totalMocks": 8,
     "generatedBy": "FBS Mock Processor"
   }
