@@ -10694,7 +10694,7 @@
         }
       },
       "metadata": {
-        "processedAt": "2025-12-04T12:05:20.293Z",
+        "processedAt": "2025-12-05T12:22:44.320Z",
         "sourceFile": "DU FBS Mock 1.xlsx"
       }
     },
@@ -21332,7 +21332,7 @@
         }
       },
       "metadata": {
-        "processedAt": "2025-12-04T12:05:20.326Z",
+        "processedAt": "2025-12-05T12:22:44.356Z",
         "sourceFile": "DU FBS Mock 2.xlsx"
       }
     },
@@ -32338,7 +32338,7 @@
         }
       },
       "metadata": {
-        "processedAt": "2025-12-04T12:05:20.356Z",
+        "processedAt": "2025-12-05T12:22:44.389Z",
         "sourceFile": "DU FBS Mock 3.xlsx"
       }
     },
@@ -42886,7 +42886,7 @@
         }
       },
       "metadata": {
-        "processedAt": "2025-12-04T12:05:20.386Z",
+        "processedAt": "2025-12-05T12:22:44.419Z",
         "sourceFile": "DU FBS Mock 4.xlsx"
       }
     },
@@ -53953,7 +53953,7 @@
         }
       },
       "metadata": {
-        "processedAt": "2025-12-04T12:05:20.418Z",
+        "processedAt": "2025-12-05T12:22:44.450Z",
         "sourceFile": "DU FBS Mock 5.xlsx"
       }
     },
@@ -65074,7 +65074,7 @@
         }
       },
       "metadata": {
-        "processedAt": "2025-12-04T12:05:20.454Z",
+        "processedAt": "2025-12-05T12:22:44.478Z",
         "sourceFile": "DU FBS Mock 6.xlsx"
       }
     },
@@ -76186,7 +76186,7 @@
         }
       },
       "metadata": {
-        "processedAt": "2025-12-04T12:05:20.484Z",
+        "processedAt": "2025-12-05T12:22:44.503Z",
         "sourceFile": "DU FBS Mock 7.xlsx"
       }
     },
@@ -79878,7 +79878,7 @@
           "totalMCQ": 36.25,
           "totalWritten": 23,
           "totalMarks": 59.25,
-          "rank": 12,
+          "rank": 13,
           "mcqRank": 13,
           "passingCriteria": {
             "englishMCQ": {
@@ -79898,7 +79898,7 @@
             }
           },
           "passedAll": true,
-          "percentile": 52,
+          "percentile": 48,
           "analytics": {
             "accuracy": 68.33,
             "totalCorrect": 41,
@@ -81165,7 +81165,7 @@
           "totalMCQ": 37,
           "totalWritten": 23,
           "totalMarks": 60,
-          "rank": 11,
+          "rank": 12,
           "mcqRank": 12,
           "passingCriteria": {
             "englishMCQ": {
@@ -81185,7 +81185,7 @@
             }
           },
           "passedAll": true,
-          "percentile": 56,
+          "percentile": 52,
           "analytics": {
             "accuracy": 82.98,
             "totalCorrect": 39,
@@ -84507,12 +84507,17 @@
               "marks": 5.5,
               "outOf": 10,
               "attempted": true
+            },
+            "economicswritten": {
+              "marks": 6,
+              "outOf": 10,
+              "attempted": true
             }
           },
           "totalMCQ": 42,
-          "totalWritten": 15.5,
-          "totalMarks": 57.5,
-          "rank": 13,
+          "totalWritten": 21.5,
+          "totalMarks": 63.5,
+          "rank": 11,
           "mcqRank": 7,
           "passingCriteria": {
             "englishMCQ": {
@@ -84527,12 +84532,12 @@
             },
             "total": {
               "required": 40,
-              "achieved": 57.5,
+              "achieved": 63.5,
               "passed": true
             }
           },
           "passedAll": true,
-          "percentile": 48,
+          "percentile": 56,
           "analytics": {
             "accuracy": 84.62,
             "totalCorrect": 44,
@@ -86597,8 +86602,8 @@
         }
       },
       "classStats": {
-        "average": 43.67,
-        "median": 57.5,
+        "average": 43.91,
+        "median": 59.25,
         "highest": 83.25,
         "lowest": 0,
         "totalStudents": 25,
@@ -87248,13 +87253,13 @@
         }
       },
       "metadata": {
-        "processedAt": "2025-12-04T12:05:20.529Z",
+        "processedAt": "2025-12-05T12:22:44.525Z",
         "sourceFile": "DU FBS Mock 8.xlsx"
       }
     }
   },
   "metadata": {
-    "lastUpdated": "2025-12-04T12:05:20.531Z",
+    "lastUpdated": "2025-12-05T12:22:44.526Z",
     "totalMocks": 8,
     "generatedBy": "FBS Mock Processor"
   }
