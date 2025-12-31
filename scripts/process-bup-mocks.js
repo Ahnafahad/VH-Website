@@ -379,6 +379,18 @@ class BUPMockProcessor {
       // Calculate class statistics
       const classStats = this.calculateClassStats(Object.values(results), allScores);
 
+      // Calculate ranks based on totalMarks (highest score = rank 1)
+      const sortedByTotal = Object.values(results).sort((a, b) => b.totalMarks - a.totalMarks);
+      sortedByTotal.forEach((student, index) => {
+        student.rank = index + 1;
+      });
+
+      // Calculate MCQ ranks based on totalMCQ
+      const sortedByMCQ = Object.values(results).sort((a, b) => b.totalMCQ - a.totalMCQ);
+      sortedByMCQ.forEach((student, index) => {
+        student.mcqRank = index + 1;
+      });
+
       // Calculate percentiles
       Object.values(results).forEach(student => {
         student.percentile = this.calculatePercentile(student.totalMarks, allScores);
@@ -428,28 +440,41 @@ class BUPMockProcessor {
     }
 
     // MCQ Sections (3 sections)
+    // Calculate marks from correct answers (assuming 1 mark per correct answer)
+    const section1Correct = Number(getColValue('1 Correct')) || 0;
+    const section1Wrong = Number(getColValue('1 Wrong')) || 0;
+    const section1Marks = Number(getColValue('1 Marks')) || section1Correct; // 1 mark per correct
+
+    const section2Correct = Number(getColValue('2 Correct')) || 0;
+    const section2Wrong = Number(getColValue('2 Wrong')) || 0;
+    const section2Marks = Number(getColValue('2 Marks')) || section2Correct; // 1 mark per correct
+
+    const section3Correct = Number(getColValue('3 Correct')) || 0;
+    const section3Wrong = Number(getColValue('3 Wrong')) || 0;
+    const section3Marks = Number(getColValue('3 Marks')) || section3Correct; // 1 mark per correct
+
     const sections = {
       section1: {
-        correct: Number(getColValue('1 Correct')) || 0,
-        wrong: Number(getColValue('1 Wrong')) || 0,
-        marks: Number(getColValue('1 Marks')) || 0,
-        percentage: Number(getColValue('1 Percentage')) || 0,
+        correct: section1Correct,
+        wrong: section1Wrong,
+        marks: section1Marks,
+        percentage: Number(getColValue('1 Percentage')) || (section1Marks / 25 * 100),
         totalQuestions: 25,
         attempted: true
       },
       section2: {
-        correct: Number(getColValue('2 Correct')) || 0,
-        wrong: Number(getColValue('2 Wrong')) || 0,
-        marks: Number(getColValue('2 Marks')) || 0,
-        percentage: Number(getColValue('2 Percentage')) || 0,
+        correct: section2Correct,
+        wrong: section2Wrong,
+        marks: section2Marks,
+        percentage: Number(getColValue('2 Percentage')) || (section2Marks / 40 * 100),
         totalQuestions: 40,
         attempted: true
       },
       section3: {
-        correct: Number(getColValue('3 Correct')) || 0,
-        wrong: Number(getColValue('3 Wrong')) || 0,
-        marks: Number(getColValue('3 Marks')) || 0,
-        percentage: Number(getColValue('3 Percentage')) || 0,
+        correct: section3Correct,
+        wrong: section3Wrong,
+        marks: section3Marks,
+        percentage: Number(getColValue('3 Percentage')) || (section3Marks / 10 * 100),
         totalQuestions: 10,
         attempted: true
       }
@@ -479,17 +504,28 @@ class BUPMockProcessor {
       }
     };
 
-    // Totals
-    const totalMCQ = Number(getColValue('Total Marks in MCQ')) || 0;
-    const mcqRank = Number(getColValue('Rank in MCQ')) || 0;
-    const totalMarks = Number(getColValue('Total Marks')) || 0;
-    const rank = Number(getColValue('Rank')) || 0;
+    // Totals - Calculate from section data since Excel columns may be empty
+    // Calculate totalMCQ from section marks
+    let calculatedTotalMCQ = 0;
+    Object.values(sections).forEach(section => {
+      calculatedTotalMCQ += section.marks || 0;
+    });
+
+    const totalMCQ = Number(getColValue('Total Marks in MCQ')) || calculatedTotalMCQ;
 
     // Calculate total written marks
     let totalWritten = 0;
     Object.values(written).forEach(w => {
       if (w.attempted) totalWritten += w.marks;
     });
+
+    // Calculate total marks from MCQ + Written
+    const calculatedTotalMarks = totalMCQ + totalWritten;
+    const totalMarks = Number(getColValue('Total Marks')) || calculatedTotalMarks;
+
+    // Ranks will be calculated after all students are processed
+    const mcqRank = 0; // Will be calculated later
+    const rank = 0; // Will be calculated later
 
     // Calculate analytics for compatibility with results page
     let totalCorrect = 0;
