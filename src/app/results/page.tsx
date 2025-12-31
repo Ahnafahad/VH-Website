@@ -32,6 +32,7 @@ const ResultsDashboard = () => {
   const [fullTests, setFullTests] = useState<FullTestsData | null>(null);
   const [mockTests, setMockTests] = useState<MockTestsData | null>(null);
   const [fbsMockTests, setFbsMockTests] = useState<any | null>(null);
+  const [bupMockTests, setBupMockTests] = useState<any | null>(null);
   const [students, setStudents] = useState<StudentsData | null>(null);
   const [metadata, setMetadata] = useState<SystemMetadata | null>(null);
   const [loading, setLoading] = useState(true);
@@ -49,11 +50,12 @@ const ResultsDashboard = () => {
         setError(null);
 
         // Fetch all data files
-        const [simpleResponse, fullResponse, mockResponse, fbsMockResponse, studentsResponse, metadataResponse, adminCheckResponse, userAccessResponse] = await Promise.all([
+        const [simpleResponse, fullResponse, mockResponse, fbsMockResponse, bupMockResponse, studentsResponse, metadataResponse, adminCheckResponse, userAccessResponse] = await Promise.all([
           fetch('/data/simple-tests.json').then(res => res.json()),
           fetch('/data/full-tests.json').then(res => res.json()),
           fetch('/data/mock-tests.json').then(res => res.json()),
           fetch('/data/fbs-mock-tests.json').then(res => res.json()).catch(() => ({tests: {}})),
+          fetch('/data/bup-mock-tests.json').then(res => res.json()).catch(() => ({tests: {}})),
           fetch('/data/students.json').then(res => res.json()),
           fetch('/data/metadata.json').then(res => res.json()),
           fetch('/api/auth/check-admin').then(res => res.json()),
@@ -64,6 +66,7 @@ const ResultsDashboard = () => {
         setFullTests(fullResponse);
         setMockTests(mockResponse);
         setFbsMockTests(fbsMockResponse);
+        setBupMockTests(bupMockResponse);
         setStudents(studentsResponse);
         setMetadata(metadataResponse);
         setIsAdmin(adminCheckResponse.isAdmin || userAccessResponse.isAdmin);
@@ -636,6 +639,73 @@ const ResultsDashboard = () => {
                 </div>
               ) : (
                 <p className="text-gray-500 text-center py-8">No FBS mock tests available</p>
+              )}
+            </div>
+            )}
+
+            {/* BUP Mock Tests */}
+            {(userAccess.hasFBS || isAdmin) && (
+            <div className="bg-white rounded-2xl shadow-sm border border-gray-100 hover:shadow-lg transition-all duration-500 p-4 md:p-6 lg:p-8">
+              <div className="flex items-center gap-3 mb-2">
+                <div className="w-3 h-3 bg-gradient-to-r from-teal-500 to-teal-600 rounded-full"></div>
+                <h2 className="text-2xl font-bold text-gray-900">BUP Mocks</h2>
+              </div>
+              <p className="text-gray-600 mb-8 text-lg">BUP mock examinations</p>
+
+              {bupMockTests && Object.keys(bupMockTests.tests).length > 0 ? (
+                <div className="space-y-3">
+                  {Object.entries(bupMockTests.tests).map(([testName, test]: [string, any]) => {
+                    // Skip if test is undefined
+                    if (!test) return null;
+
+                    // For admin: get selected student's email, for student: use their own email
+                    const studentEmail = isAdmin && selectedStudentId && students?.students[selectedStudentId]
+                      ? students.students[selectedStudentId].email
+                      : session?.user?.email;
+
+                    // For admin: use undefined roleNumbers (let matcher find all IDs), for student: use their roleNumbers
+                    const studentRoleNumbers = isAdmin ? undefined : userAccess.roleNumbers;
+
+                    // Use robust matching with multiple fallback methods
+                    const { result } = findStudentResult(
+                      test.results,
+                      students?.students || {},
+                      studentEmail || undefined,
+                      isAdmin ? selectedStudentId || undefined : undefined,
+                      studentRoleNumbers
+                    );
+
+                    return (
+                      <div
+                        key={testName}
+                        onClick={() => navigateToTest(testName)}
+                        className="group flex items-center justify-between p-6 rounded-xl border border-gray-100 hover:border-teal-200 hover:bg-teal-50/30 cursor-pointer transition-all duration-300 hover:shadow-md"
+                      >
+                        <div className="flex-1">
+                          <h3 className="font-semibold text-gray-900 group-hover:text-teal-700 transition-colors">{cleanTestName(testName)}</h3>
+                          <p className="text-sm text-gray-500 mt-1">
+                            <GraduationCap className="inline w-4 h-4 mr-1" />
+                            BUP Format
+                          </p>
+                        </div>
+                        <div className="text-right">
+                          {result ? (
+                            <div className="bg-teal-50 px-3 py-2 rounded-lg border border-teal-100">
+                              <p className="font-bold text-teal-700 text-lg">{result.totalMarks?.toFixed(2) || result.totalMarks}</p>
+                              <p className="text-xs text-teal-600">Rank #{result.rank}</p>
+                            </div>
+                          ) : (
+                            <div className="bg-gray-50 px-3 py-2 rounded-lg border border-gray-100">
+                              <p className="text-sm text-gray-500 font-medium">Not taken</p>
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              ) : (
+                <p className="text-gray-500 text-center py-8">No BUP mock tests available</p>
               )}
             </div>
             )}
