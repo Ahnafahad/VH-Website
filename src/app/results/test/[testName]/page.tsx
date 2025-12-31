@@ -1178,7 +1178,7 @@ const TestDetailPage = () => {
                         {Object.entries(userResult.responses).map(([questionId, response]: [string, any]) => (
                           <div key={questionId} className="flex items-center justify-between p-2 bg-gray-50 rounded text-sm">
                             <span className="font-mono text-gray-600">{questionId.replace('Section', 'S').replace('-Q', '-')}</span>
-                            <div>{formatResponseText(response as string)}</div>
+                            <div>{formatResponseText(response)}</div>
                           </div>
                         ))}
                       </div>
