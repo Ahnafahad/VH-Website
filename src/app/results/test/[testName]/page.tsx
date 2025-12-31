@@ -29,6 +29,7 @@ const TestDetailPage = () => {
   const [fullTests, setFullTests] = useState<FullTestsData | null>(null);
   const [mockTests, setMockTests] = useState<MockTestsData | null>(null);
   const [fbsMockTests, setFbsMockTests] = useState<any | null>(null);
+  const [bupMockTests, setBupMockTests] = useState<any | null>(null);
   const [students, setStudents] = useState<StudentsData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -53,6 +54,7 @@ const TestDetailPage = () => {
           fetch('/data/full-tests.json').then(res => res.json()),
           fetch('/data/mock-tests.json').then(res => res.json()),
           fetch('/data/fbs-mock-tests.json').then(res => res.json()).catch(() => ({tests: {}})),
+          fetch('/data/bup-mock-tests.json').then(res => res.json()).catch(() => ({tests: {}})),
           fetch('/data/students.json').then(res => res.json()),
         ];
 
@@ -66,14 +68,16 @@ const TestDetailPage = () => {
         const fullResponse = responses[1];
         const mockResponse = responses[2];
         const fbsMockResponse = responses[3];
-        const studentsResponse = responses[4];
-        const adminCheckResponse = isPublicDemo ? { isAdmin: false } : responses[5];
-        const userAccessResponse = isPublicDemo ? { roleNumbers: [] } : responses[6];
+        const bupMockResponse = responses[4];
+        const studentsResponse = responses[5];
+        const adminCheckResponse = isPublicDemo ? { isAdmin: false } : responses[6];
+        const userAccessResponse = isPublicDemo ? { roleNumbers: [] } : responses[7];
 
         setSimpleTests(simpleResponse);
         setFullTests(fullResponse);
         setMockTests(mockResponse);
         setFbsMockTests(fbsMockResponse);
+        setBupMockTests(bupMockResponse);
         setStudents(studentsResponse);
         setIsAdmin(adminCheckResponse.isAdmin);
 
@@ -96,6 +100,12 @@ const TestDetailPage = () => {
           test = fbsMockResponse.tests[testName];
           isFBSMockType = true;
           isFullTestType = true; // FBS mocks have sections and should be treated as full tests
+        }
+
+        if (!test) {
+          test = bupMockResponse.tests[testName];
+          isFBSMockType = true; // BUP mocks have similar structure to FBS mocks
+          isFullTestType = true; // BUP mocks have sections and should be treated as full tests
         }
 
         if (!test) {
