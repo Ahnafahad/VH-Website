@@ -153,6 +153,51 @@ class ExcelProcessor {
       console.log(`✅ Total students after merging FBS IDs: ${Object.keys(this.studentsData).length} entries`);
       console.log(`   Unique students: ${studentsByName.size}`);
     }
+
+    // STEP 3: Load students from BUP Mock files
+    const bupMockDir = path.join(this.resultsDir, 'BUP Mock');
+    if (fs.existsSync(bupMockDir)) {
+      const bupMockFiles = fs.readdirSync(bupMockDir).filter(f => f.endsWith('.xlsx'));
+
+      bupMockFiles.forEach(bupFile => {
+        try {
+          const workbook = XLSX.readFile(path.join(bupMockDir, bupFile));
+          if (workbook.SheetNames.includes('Sheet1')) {
+            const sheet = workbook.Sheets['Sheet1'];
+            const data = XLSX.utils.sheet_to_json(sheet);
+
+            data.forEach(row => {
+              const studentId = String(row.ID || '');
+              const studentName = row.Name || '';
+
+              if (studentId && studentName && studentId !== 'undefined') {
+                // Check if this student already exists (by name)
+                const existingStudent = studentsByName.get(studentName);
+
+                if (existingStudent) {
+                  // Student exists with another ID, add this ID pointing to same data
+                  this.studentsData[studentId] = existingStudent;
+                } else {
+                  // New student only in BUP mocks
+                  const studentData = {
+                    id: studentId,
+                    name: studentName,
+                    email: '' // BUP mock files don't have email
+                  };
+                  this.studentsData[studentId] = studentData;
+                  studentsByName.set(studentName, studentData);
+                }
+              }
+            });
+          }
+        } catch (error) {
+          this.warnings.push(`Failed to load students from ${bupFile}: ${error.message}`);
+        }
+      });
+
+      console.log(`✅ Total students after merging BUP IDs: ${Object.keys(this.studentsData).length} entries`);
+      console.log(`   Unique students: ${studentsByName.size}`);
+    }
   }
 
   /**
@@ -975,7 +1020,7 @@ class ExcelProcessor {
     }
 
     const excelFiles = [];
-    const excludePatterns = ['template', '~$', '.tmp', 'DU FBS Mocks'];
+    const excludePatterns = ['template', '~$', '.tmp', 'DU FBS Mocks', 'BUP Mock'];
 
     // Recursively scan for Excel files
     const scanDir = (dir) => {
@@ -986,7 +1031,7 @@ class ExcelProcessor {
         const stat = fs.statSync(fullPath);
 
         if (stat.isDirectory()) {
-          // Skip DU FBS Mocks directory (processed separately)
+          // Skip DU FBS Mocks and BUP Mock directories (processed separately)
           if (!excludePatterns.some(pattern => item.toLowerCase().includes(pattern.toLowerCase()))) {
             scanDir(fullPath);
           }

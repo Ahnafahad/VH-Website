@@ -4,17 +4,32 @@
 // Processes Excel files and generates JSON for Vercel deployment
 
 const ExcelProcessor = require('./excel-processor');
+const FBSMockProcessor = require('./process-fbs-mocks');
+const BUPMockProcessor = require('./process-bup-mocks');
 
 async function main() {
   console.log('🎯 VH Results Processing System');
   console.log('===============================\n');
 
   const processor = new ExcelProcessor();
+  const fbsProcessor = new FBSMockProcessor();
+  const bupProcessor = new BUPMockProcessor();
 
   try {
+    // Process main Excel files
     const result = await processor.run();
 
-    if (result.success) {
+    // Process FBS Mock tests
+    console.log('\n📚 Processing DU FBS Mock Tests...\n');
+    const fbsResult = await fbsProcessor.run();
+
+    // Process BUP Mock tests
+    console.log('\n📚 Processing BUP Mock Tests...\n');
+    const bupResult = await bupProcessor.run();
+
+    const allSuccess = result.success && fbsResult.success && bupResult.success;
+
+    if (allSuccess) {
       console.log('\n🎉 Processing completed successfully!');
       console.log('📁 JSON files are ready for deployment in public/data/');
 
