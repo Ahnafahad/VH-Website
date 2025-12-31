@@ -641,7 +641,7 @@ const TestDetailPage = () => {
             <div className="space-y-8">
 
               {/* Threshold Pass/Fail Card or FBS Passing Criteria */}
-              {isFBSMock ? (
+              {isFBSMock && currentTest?.testType === 'fbs-mock' ? (
                 <div className="bg-white rounded-2xl shadow-lg p-8 border border-gray-100">
                   <div className="flex items-center gap-3 mb-6">
                     <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-green-500 to-green-600 flex items-center justify-center">
@@ -775,7 +775,9 @@ const TestDetailPage = () => {
                   {isFBSMock && (
                     <div className="text-sm text-gray-600 space-y-1">
                       <div>MCQ: {userResult.totalMCQ?.toFixed(2)}</div>
-                      <div>Written: {userResult.totalWritten?.toFixed(2)}</div>
+                      {currentTest?.testType !== 'bup-mock' && (
+                        <div>Written: {userResult.totalWritten?.toFixed(2)}</div>
+                      )}
                     </div>
                   )}
                   {!isFullTest && !isFBSMock && (
@@ -1077,11 +1079,13 @@ const TestDetailPage = () => {
                         </div>
                       </div>
 
-                      <div className="text-center p-4 bg-purple-50 rounded-lg border border-purple-100">
-                        <div className="text-2xl font-bold text-purple-600">{userResult.totalWritten?.toFixed(2) || 0}</div>
-                        <div className="text-sm text-purple-700 mt-1">Written Marks</div>
-                        <div className="text-xs text-purple-600 mt-1">out of 40</div>
-                      </div>
+                      {currentTest?.testType !== 'bup-mock' && (
+                        <div className="text-center p-4 bg-purple-50 rounded-lg border border-purple-100">
+                          <div className="text-2xl font-bold text-purple-600">{userResult.totalWritten?.toFixed(2) || 0}</div>
+                          <div className="text-sm text-purple-700 mt-1">Written Marks</div>
+                          <div className="text-xs text-purple-600 mt-1">out of 40</div>
+                        </div>
+                      )}
 
                       <div className="text-center p-4 bg-vh-red/10 rounded-lg border border-vh-red/30">
                         <div className="text-2xl font-bold text-vh-red">{userResult.totalMarks?.toFixed(2) || 0}</div>
@@ -1148,8 +1152,8 @@ const TestDetailPage = () => {
                       </div>
                     )}
 
-                    {/* Written Sections */}
-                    {userResult.written && Object.keys(userResult.written).length > 0 && (
+                    {/* Written Sections - Hide for BUP Mocks */}
+                    {currentTest?.testType !== 'bup-mock' && userResult.written && Object.keys(userResult.written).length > 0 && (
                       <div>
                         <h4 className="font-semibold text-gray-700 mb-4">Written Sections</h4>
                         <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
