@@ -38,6 +38,7 @@ yarn-error.log*
 .env.development.local
 .env.test.local
 .env.production.local
+.env.vercel-production
 
 # vercel
 .vercel
@@ -48,3 +49,6 @@ next-env.d.ts
 
 # auto-generated files
 /src/lib/generated-access-control.ts
+
+# documentation with sensitive data
+docs/claude-docs/
