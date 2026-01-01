@@ -447,7 +447,7 @@ const TestDetailPage = () => {
   };
 
   // Helper function to get user's performance indicator for question (supports all test types)
-  const getUserQuestionStatusByNumber = (question: any): React.ReactNode => {
+  const getUserQuestionStatusByNumber = (question: any, sectionNum?: string): React.ReactNode => {
     if (!userResult) return null;
     // For non-demo pages, require authentication
     if (!isPublicDemo && !session?.user?.email) return null;
@@ -461,8 +461,14 @@ const TestDetailPage = () => {
       // Full tests and IBA mocks have questionId property (e.g., "s1q1", "Section1-Q1")
       responseKey = question.questionId;
     } else if (question.questionNumber) {
-      // FBS mocks use questionNumber with q{number} format
-      responseKey = `q${question.questionNumber}`;
+      // Check if this is a BUP Mock (has testType 'bup-mock')
+      if (currentTest?.testType === 'bup-mock' && sectionNum) {
+        // BUP mocks use section{num}_q{number} format (e.g., "section1_q5")
+        responseKey = `section${sectionNum}_q${question.questionNumber}`;
+      } else {
+        // FBS mocks use questionNumber with q{number} format
+        responseKey = `q${question.questionNumber}`;
+      }
     } else {
       return null;
     }
@@ -1310,7 +1316,7 @@ const TestDetailPage = () => {
                                     <div key={question.questionNumber || question.questionId || index} className="flex justify-between items-center text-sm">
                                       <div className="flex items-center gap-2">
                                         <span className="text-green-700">Q{getQuestionDisplayNumber(question)}</span>
-                                        {getUserQuestionStatusByNumber(question)}
+                                        {getUserQuestionStatusByNumber(question, sectionNum)}
                                       </div>
                                       <span className="text-green-600 font-medium">{question.count} correct</span>
                                     </div>
@@ -1331,7 +1337,7 @@ const TestDetailPage = () => {
                                     <div key={question.questionNumber || question.questionId || index} className="flex justify-between items-center text-sm">
                                       <div className="flex items-center gap-2">
                                         <span className="text-red-700">Q{getQuestionDisplayNumber(question)}</span>
-                                        {getUserQuestionStatusByNumber(question)}
+                                        {getUserQuestionStatusByNumber(question, sectionNum)}
                                       </div>
                                       <span className="text-red-600 font-medium">{question.count} wrong</span>
                                     </div>
@@ -1352,7 +1358,7 @@ const TestDetailPage = () => {
                                     <div key={question.questionNumber || question.questionId || index} className="flex justify-between items-center text-sm">
                                       <div className="flex items-center gap-2">
                                         <span className="text-gray-700">Q{getQuestionDisplayNumber(question)}</span>
-                                        {getUserQuestionStatusByNumber(question)}
+                                        {getUserQuestionStatusByNumber(question, sectionNum)}
                                       </div>
                                       <span className="text-gray-600 font-medium">{question.count} skipped</span>
                                     </div>
@@ -1691,7 +1697,7 @@ const TestDetailPage = () => {
                               <div key={question.questionNumber || question.questionId || index} className="flex justify-between items-center text-sm">
                                 <div className="flex items-center gap-2">
                                   <span className="text-green-700">Q{getQuestionDisplayNumber(question)}</span>
-                                  {getUserQuestionStatusByNumber(question)}
+                                  {getUserQuestionStatusByNumber(question, sectionNum)}
                                 </div>
                                 <span className="text-green-600 font-medium">{question.count} correct</span>
                               </div>
@@ -1713,7 +1719,7 @@ const TestDetailPage = () => {
                               <div key={question.questionNumber || question.questionId || index} className="flex justify-between items-center text-sm">
                                 <div className="flex items-center gap-2">
                                   <span className="text-red-700">Q{getQuestionDisplayNumber(question)}</span>
-                                  {getUserQuestionStatusByNumber(question)}
+                                  {getUserQuestionStatusByNumber(question, sectionNum)}
                                 </div>
                                 <span className="text-red-600 font-medium">{question.count} wrong</span>
                               </div>
@@ -1735,7 +1741,7 @@ const TestDetailPage = () => {
                               <div key={question.questionNumber || question.questionId || index} className="flex justify-between items-center text-sm">
                                 <div className="flex items-center gap-2">
                                   <span className="text-gray-700">Q{getQuestionDisplayNumber(question)}</span>
-                                  {getUserQuestionStatusByNumber(question)}
+                                  {getUserQuestionStatusByNumber(question, sectionNum)}
                                 </div>
                                 <span className="text-gray-600 font-medium">{question.count} skipped</span>
                               </div>
