@@ -1,7 +1,7 @@
 {
   "tests": {
-    "BUP Mock2 Results": {
-      "testName": "BUP Mock2 Results",
+    "BUP Mock1 Results": {
+      "testName": "BUP Mock1 Results",
       "testType": "bup-mock",
       "totalStudents": 24,
       "results": {
@@ -11,23 +11,2277 @@
           "sections": {
             "section1": {
               "correct": 11,
-              "wrong": 9,
-              "marks": 11,
-              "percentage": 44,
+              "wrong": 3,
+              "marks": 9.5,
+              "percentage": 38,
               "totalQuestions": 25,
               "attempted": true
             },
             "section2": {
-              "correct": 8,
-              "wrong": 14,
+              "correct": 12,
+              "wrong": 8,
               "marks": 8,
               "percentage": 20,
               "totalQuestions": 40,
               "attempted": true
             },
             "section3": {
-              "correct": 4,
+              "correct": 2,
+              "wrong": 4,
+              "marks": 2,
+              "percentage": 20,
+              "totalQuestions": 10,
+              "attempted": true
+            }
+          },
+          "written": {
+            "essay1": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            },
+            "essay2": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            },
+            "essay3": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            },
+            "essay4": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            }
+          },
+          "totalMCQ": 17.5,
+          "totalWritten": 0,
+          "totalMarks": 17.5,
+          "rank": 8,
+          "mcqRank": 8,
+          "percentile": 67,
+          "analytics": {
+            "accuracy": 62.5,
+            "totalCorrect": 25,
+            "totalWrong": 15,
+            "totalAttempted": 40,
+            "skipStrategy": 71.15,
+            "questionChoiceStrategy": 60.53,
+            "recoveryScore": 53.33,
+            "sectionPerformance": {
+              "section1": {
+                "accuracy": 78.57142857142857,
+                "attemptRate": 56.00000000000001,
+                "attempted": 14,
+                "unattempted": 11,
+                "efficiency": 44
+              },
+              "section2": {
+                "accuracy": 55.55555555555556,
+                "attemptRate": 45,
+                "attempted": 18,
+                "unattempted": 22,
+                "efficiency": 25
+              },
+              "section3": {
+                "accuracy": 33.33333333333333,
+                "attemptRate": 60,
+                "attempted": 6,
+                "unattempted": 4,
+                "efficiency": 20
+              }
+            }
+          },
+          "responses": {
+            "section1_q1": {
+              "answer": "A",
+              "status": "wrong"
+            },
+            "section1_q2": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section1_q3": {
+              "answer": "A",
+              "status": "wrong"
+            },
+            "section1_q4": {
+              "answer": "B",
+              "status": "correct"
+            },
+            "section1_q5": {
+              "answer": "A",
+              "status": "wrong"
+            },
+            "section1_q6": {
+              "answer": "D",
+              "status": "correct"
+            },
+            "section1_q7": {
+              "answer": "A",
+              "status": "correct"
+            },
+            "section1_q8": {
+              "answer": "B",
+              "status": "correct"
+            },
+            "section1_q9": {
+              "answer": "B",
+              "status": "correct"
+            },
+            "section1_q10": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section1_q11": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section1_q12": {
+              "answer": "C",
+              "status": "correct"
+            },
+            "section1_q13": {
+              "answer": "B",
+              "status": "correct"
+            },
+            "section1_q14": {
+              "answer": "B",
+              "status": "correct"
+            },
+            "section1_q15": {
+              "answer": "D",
+              "status": "correct"
+            },
+            "section1_q16": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section1_q17": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section1_q18": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section1_q19": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section1_q20": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section1_q21": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section1_q22": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section1_q23": {
+              "answer": "D",
+              "status": "correct"
+            },
+            "section1_q24": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section1_q25": {
+              "answer": "C",
+              "status": "correct"
+            },
+            "section2_q1": {
+              "answer": "A",
+              "status": "correct"
+            },
+            "section2_q2": {
+              "answer": "B",
+              "status": "wrong"
+            },
+            "section2_q3": {
+              "answer": "A",
+              "status": "correct"
+            },
+            "section2_q4": {
+              "answer": "D",
+              "status": "correct"
+            },
+            "section2_q5": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q6": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q7": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q8": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q9": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q10": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q11": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q12": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q13": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q14": {
+              "answer": "B",
+              "status": "wrong"
+            },
+            "section2_q15": {
+              "answer": "C",
+              "status": "wrong"
+            },
+            "section2_q16": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q17": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q18": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q19": {
+              "answer": "C",
+              "status": "wrong"
+            },
+            "section2_q20": {
+              "answer": "A",
+              "status": "correct"
+            },
+            "section2_q21": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q22": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q23": {
+              "answer": "B",
+              "status": "wrong"
+            },
+            "section2_q24": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q25": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q26": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q27": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q28": {
+              "answer": "D",
+              "status": "correct"
+            },
+            "section2_q29": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q30": {
+              "answer": "D",
+              "status": "correct"
+            },
+            "section2_q31": {
+              "answer": "B",
+              "status": "wrong"
+            },
+            "section2_q32": {
+              "answer": "A",
+              "status": "correct"
+            },
+            "section2_q33": {
+              "answer": "B",
+              "status": "correct"
+            },
+            "section2_q34": {
+              "answer": "D",
+              "status": "wrong"
+            },
+            "section2_q35": {
+              "answer": "D",
+              "status": "wrong"
+            },
+            "section2_q36": {
+              "answer": "A",
+              "status": "correct"
+            },
+            "section2_q37": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q38": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q39": {
+              "answer": "A",
+              "status": "correct"
+            },
+            "section2_q40": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section3_q1": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section3_q2": {
+              "answer": "D",
+              "status": "wrong"
+            },
+            "section3_q3": {
+              "answer": "A",
+              "status": "wrong"
+            },
+            "section3_q4": {
+              "answer": "B",
+              "status": "correct"
+            },
+            "section3_q5": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section3_q6": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section3_q7": {
+              "answer": "D",
+              "status": "wrong"
+            },
+            "section3_q8": {
+              "answer": "C",
+              "status": "wrong"
+            },
+            "section3_q9": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section3_q10": {
+              "answer": "C",
+              "status": "correct"
+            }
+          }
+        },
+        "146014": {
+          "studentId": "146014",
+          "studentName": "Sadia Islam Sneha",
+          "sections": {
+            "section1": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 25,
+              "attempted": true
+            },
+            "section2": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 40,
+              "attempted": true
+            },
+            "section3": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 10,
+              "attempted": true
+            }
+          },
+          "written": {
+            "essay1": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            },
+            "essay2": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            },
+            "essay3": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            },
+            "essay4": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            }
+          },
+          "totalMCQ": 0,
+          "totalWritten": 0,
+          "totalMarks": 0,
+          "rank": 9,
+          "mcqRank": 9,
+          "percentile": 0,
+          "analytics": {
+            "accuracy": 0,
+            "totalCorrect": 0,
+            "totalWrong": 0,
+            "totalAttempted": 0,
+            "skipStrategy": 0,
+            "questionChoiceStrategy": 0,
+            "recoveryScore": 0,
+            "sectionPerformance": {}
+          },
+          "responses": {}
+        },
+        "158296": {
+          "studentId": "158296",
+          "studentName": "Tahiyat Abdullah",
+          "sections": {
+            "section1": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 25,
+              "attempted": true
+            },
+            "section2": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 40,
+              "attempted": true
+            },
+            "section3": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 10,
+              "attempted": true
+            }
+          },
+          "written": {
+            "essay1": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            },
+            "essay2": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            },
+            "essay3": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            },
+            "essay4": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            }
+          },
+          "totalMCQ": 0,
+          "totalWritten": 0,
+          "totalMarks": 0,
+          "rank": 10,
+          "mcqRank": 10,
+          "percentile": 0,
+          "analytics": {
+            "accuracy": 0,
+            "totalCorrect": 0,
+            "totalWrong": 0,
+            "totalAttempted": 0,
+            "skipStrategy": 0,
+            "questionChoiceStrategy": 0,
+            "recoveryScore": 0,
+            "sectionPerformance": {}
+          },
+          "responses": {}
+        },
+        "196303": {
+          "studentId": "196303",
+          "studentName": "RAMISA MALIAT",
+          "sections": {
+            "section1": {
+              "correct": 17,
+              "wrong": 4,
+              "marks": 15,
+              "percentage": 60,
+              "totalQuestions": 25,
+              "attempted": true
+            },
+            "section2": {
+              "correct": 8,
+              "wrong": 4,
+              "marks": 6,
+              "percentage": 15,
+              "totalQuestions": 40,
+              "attempted": true
+            },
+            "section3": {
+              "correct": 1,
+              "wrong": 0,
+              "marks": 1,
+              "percentage": 10,
+              "totalQuestions": 10,
+              "attempted": true
+            }
+          },
+          "written": {
+            "essay1": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            },
+            "essay2": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            },
+            "essay3": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            },
+            "essay4": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            }
+          },
+          "totalMCQ": 22,
+          "totalWritten": 0,
+          "totalMarks": 22,
+          "rank": 5,
+          "mcqRank": 5,
+          "percentile": 79,
+          "analytics": {
+            "accuracy": 76.47,
+            "totalCorrect": 26,
+            "totalWrong": 8,
+            "totalAttempted": 34,
+            "skipStrategy": 84.31,
+            "questionChoiceStrategy": 74.19,
+            "recoveryScore": 62.5,
+            "sectionPerformance": {
+              "section1": {
+                "accuracy": 80.95238095238095,
+                "attemptRate": 84,
+                "attempted": 21,
+                "unattempted": 4,
+                "efficiency": 68
+              },
+              "section2": {
+                "accuracy": 55.55555555555556,
+                "attemptRate": 22.5,
+                "attempted": 9,
+                "unattempted": 31,
+                "efficiency": 12.5
+              },
+              "section3": {
+                "accuracy": 100,
+                "attemptRate": 10,
+                "attempted": 1,
+                "unattempted": 9,
+                "efficiency": 10
+              }
+            }
+          },
+          "responses": {
+            "section1_q1": {
+              "answer": "C",
+              "status": "wrong"
+            },
+            "section1_q2": {
+              "answer": "B",
+              "status": "correct"
+            },
+            "section1_q3": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section1_q4": {
+              "answer": "B",
+              "status": "correct"
+            },
+            "section1_q5": {
+              "answer": "B",
+              "status": "correct"
+            },
+            "section1_q6": {
+              "answer": "C",
+              "status": "wrong"
+            },
+            "section1_q7": {
+              "answer": "A",
+              "status": "correct"
+            },
+            "section1_q8": {
+              "answer": "B",
+              "status": "correct"
+            },
+            "section1_q9": {
+              "answer": "A",
+              "status": "correct"
+            },
+            "section1_q10": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section1_q11": {
+              "answer": "A",
+              "status": "correct"
+            },
+            "section1_q12": {
+              "answer": "C",
+              "status": "correct"
+            },
+            "section1_q13": {
+              "answer": "B",
+              "status": "correct"
+            },
+            "section1_q14": {
+              "answer": "B",
+              "status": "correct"
+            },
+            "section1_q15": {
+              "answer": "D",
+              "status": "correct"
+            },
+            "section1_q16": {
+              "answer": "D",
+              "status": "correct"
+            },
+            "section1_q17": {
+              "answer": "C",
+              "status": "correct"
+            },
+            "section1_q18": {
+              "answer": "A",
+              "status": "wrong"
+            },
+            "section1_q19": {
+              "answer": "A",
+              "status": "wrong"
+            },
+            "section1_q20": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section1_q21": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section1_q22": {
+              "answer": "D",
+              "status": "correct"
+            },
+            "section1_q23": {
+              "answer": "D",
+              "status": "correct"
+            },
+            "section1_q24": {
+              "answer": "D",
+              "status": "correct"
+            },
+            "section1_q25": {
+              "answer": "C",
+              "status": "correct"
+            },
+            "section2_q1": {
+              "answer": "A",
+              "status": "correct"
+            },
+            "section2_q2": {
+              "answer": "A",
+              "status": "wrong"
+            },
+            "section2_q3": {
+              "answer": "A",
+              "status": "correct"
+            },
+            "section2_q5": {
+              "answer": "C",
+              "status": "correct"
+            },
+            "section2_q6": {
+              "answer": "B",
+              "status": "correct"
+            },
+            "section2_q7": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q8": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q9": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q10": {
+              "answer": "C",
+              "status": "wrong"
+            },
+            "section2_q11": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q12": {
+              "answer": "C",
+              "status": "wrong"
+            },
+            "section2_q13": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q14": {
+              "answer": "B",
+              "status": "wrong"
+            },
+            "section2_q15": {
+              "answer": "B",
+              "status": "correct"
+            },
+            "section2_q16": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q17": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q18": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q19": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q20": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q21": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q22": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q23": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q24": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q25": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q26": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q27": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q28": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q29": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q30": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q31": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q32": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q33": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q34": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q35": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q36": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q37": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q38": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q39": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q40": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section3_q1": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section3_q2": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section3_q3": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section3_q4": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section3_q5": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section3_q6": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section3_q7": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section3_q8": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section3_q9": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section3_q10": {
+              "answer": "C",
+              "status": "correct"
+            }
+          }
+        },
+        "303558": {
+          "studentId": "303558",
+          "studentName": "Nusrat Tasfia",
+          "sections": {
+            "section1": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 25,
+              "attempted": true
+            },
+            "section2": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 40,
+              "attempted": true
+            },
+            "section3": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 10,
+              "attempted": true
+            }
+          },
+          "written": {
+            "essay1": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            },
+            "essay2": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            },
+            "essay3": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            },
+            "essay4": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            }
+          },
+          "totalMCQ": 0,
+          "totalWritten": 0,
+          "totalMarks": 0,
+          "rank": 11,
+          "mcqRank": 11,
+          "percentile": 0,
+          "analytics": {
+            "accuracy": 0,
+            "totalCorrect": 0,
+            "totalWrong": 0,
+            "totalAttempted": 0,
+            "skipStrategy": 0,
+            "questionChoiceStrategy": 0,
+            "recoveryScore": 0,
+            "sectionPerformance": {}
+          },
+          "responses": {}
+        },
+        "399043": {
+          "studentId": "399043",
+          "studentName": "Sara Iftekhar",
+          "sections": {
+            "section1": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 25,
+              "attempted": true
+            },
+            "section2": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 40,
+              "attempted": true
+            },
+            "section3": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 10,
+              "attempted": true
+            }
+          },
+          "written": {
+            "essay1": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            },
+            "essay2": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            },
+            "essay3": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            },
+            "essay4": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            }
+          },
+          "totalMCQ": 0,
+          "totalWritten": 0,
+          "totalMarks": 0,
+          "rank": 12,
+          "mcqRank": 12,
+          "percentile": 0,
+          "analytics": {
+            "accuracy": 0,
+            "totalCorrect": 0,
+            "totalWrong": 0,
+            "totalAttempted": 0,
+            "skipStrategy": 0,
+            "questionChoiceStrategy": 0,
+            "recoveryScore": 0,
+            "sectionPerformance": {}
+          },
+          "responses": {}
+        },
+        "400651": {
+          "studentId": "400651",
+          "studentName": "Mahabub Alam Rafi",
+          "sections": {
+            "section1": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 25,
+              "attempted": true
+            },
+            "section2": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 40,
+              "attempted": true
+            },
+            "section3": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 10,
+              "attempted": true
+            }
+          },
+          "written": {
+            "essay1": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            },
+            "essay2": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            },
+            "essay3": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            },
+            "essay4": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            }
+          },
+          "totalMCQ": 0,
+          "totalWritten": 0,
+          "totalMarks": 0,
+          "rank": 13,
+          "mcqRank": 13,
+          "percentile": 0,
+          "analytics": {
+            "accuracy": 0,
+            "totalCorrect": 0,
+            "totalWrong": 0,
+            "totalAttempted": 0,
+            "skipStrategy": 0,
+            "questionChoiceStrategy": 0,
+            "recoveryScore": 0,
+            "sectionPerformance": {}
+          },
+          "responses": {}
+        },
+        "417695": {
+          "studentId": "417695",
+          "studentName": "Kashfia Ahmed",
+          "sections": {
+            "section1": {
+              "correct": 11,
+              "wrong": 4,
+              "marks": 9,
+              "percentage": 36,
+              "totalQuestions": 25,
+              "attempted": true
+            },
+            "section2": {
+              "correct": 12,
+              "wrong": 2,
+              "marks": 11,
+              "percentage": 27.500000000000004,
+              "totalQuestions": 40,
+              "attempted": true
+            },
+            "section3": {
+              "correct": 2,
+              "wrong": 2,
+              "marks": 1,
+              "percentage": 10,
+              "totalQuestions": 10,
+              "attempted": true
+            }
+          },
+          "written": {
+            "essay1": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            },
+            "essay2": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            },
+            "essay3": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            },
+            "essay4": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            }
+          },
+          "totalMCQ": 21,
+          "totalWritten": 0,
+          "totalMarks": 21,
+          "rank": 6,
+          "mcqRank": 6,
+          "percentile": 71,
+          "analytics": {
+            "accuracy": 75.76,
+            "totalCorrect": 25,
+            "totalWrong": 8,
+            "totalAttempted": 33,
+            "skipStrategy": 85.19,
+            "questionChoiceStrategy": 72.41,
+            "recoveryScore": 25,
+            "sectionPerformance": {
+              "section1": {
+                "accuracy": 71.42857142857143,
+                "attemptRate": 56.00000000000001,
+                "attempted": 14,
+                "unattempted": 11,
+                "efficiency": 40
+              },
+              "section2": {
+                "accuracy": 81.81818181818183,
+                "attemptRate": 27.500000000000004,
+                "attempted": 11,
+                "unattempted": 29,
+                "efficiency": 22.5
+              },
+              "section3": {
+                "accuracy": 50,
+                "attemptRate": 40,
+                "attempted": 4,
+                "unattempted": 6,
+                "efficiency": 20
+              }
+            }
+          },
+          "responses": {
+            "section1_q1": {
+              "answer": "C",
+              "status": "wrong"
+            },
+            "section1_q2": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section1_q3": {
+              "answer": "A",
+              "status": "wrong"
+            },
+            "section1_q4": {
+              "answer": "B",
+              "status": "correct"
+            },
+            "section1_q5": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section1_q6": {
+              "answer": "C",
+              "status": "wrong"
+            },
+            "section1_q7": {
+              "answer": "B",
+              "status": "correct"
+            },
+            "section1_q8": {
+              "answer": "B",
+              "status": "correct"
+            },
+            "section1_q9": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section1_q10": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section1_q11": {
+              "answer": "A",
+              "status": "correct"
+            },
+            "section1_q12": {
+              "answer": "C",
+              "status": "correct"
+            },
+            "section1_q13": {
+              "answer": "B",
+              "status": "correct"
+            },
+            "section1_q14": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section1_q15": {
+              "answer": "B",
+              "status": "wrong"
+            },
+            "section1_q16": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section1_q17": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section1_q18": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section1_q19": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section1_q20": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section1_q21": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section1_q22": {
+              "answer": "D",
+              "status": "correct"
+            },
+            "section1_q23": {
+              "answer": "D",
+              "status": "correct"
+            },
+            "section1_q24": {
+              "answer": "D",
+              "status": "correct"
+            },
+            "section1_q25": {
+              "answer": "C",
+              "status": "correct"
+            },
+            "section2_q1": {
+              "answer": "A",
+              "status": "correct"
+            },
+            "section2_q2": {
+              "answer": "A",
+              "status": "wrong"
+            },
+            "section2_q3": {
+              "answer": "A",
+              "status": "correct"
+            },
+            "section2_q4": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q5": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q6": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q7": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q8": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q9": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q10": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q11": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q12": {
+              "answer": "D",
+              "status": "correct"
+            },
+            "section2_q13": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q14": {
+              "answer": "B",
+              "status": "wrong"
+            },
+            "section2_q15": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q16": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q17": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q18": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q19": {
+              "answer": "A",
+              "status": "correct"
+            },
+            "section2_q20": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q21": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q22": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q23": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q24": {
+              "answer": "D",
+              "status": "correct"
+            },
+            "section2_q25": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q26": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q27": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q28": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q29": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q30": {
+              "answer": "D",
+              "status": "correct"
+            },
+            "section2_q31": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q32": {
+              "answer": "A",
+              "status": "correct"
+            },
+            "section2_q33": {
+              "answer": "B",
+              "status": "correct"
+            },
+            "section2_q34": {
+              "answer": "C",
+              "status": "correct"
+            },
+            "section2_q35": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q36": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q37": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q38": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q39": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q40": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section3_q1": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section3_q2": {
+              "answer": "D",
+              "status": "wrong"
+            },
+            "section3_q3": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section3_q4": {
+              "answer": "D",
+              "status": "wrong"
+            },
+            "section3_q5": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section3_q6": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section3_q7": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section3_q8": {
+              "answer": "B",
+              "status": "correct"
+            },
+            "section3_q9": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section3_q10": {
+              "answer": "C",
+              "status": "correct"
+            }
+          }
+        },
+        "421527": {
+          "studentId": "421527",
+          "studentName": "Sharika Sanjana Chowdhury",
+          "sections": {
+            "section1": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 25,
+              "attempted": true
+            },
+            "section2": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 40,
+              "attempted": true
+            },
+            "section3": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 10,
+              "attempted": true
+            }
+          },
+          "written": {
+            "essay1": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            },
+            "essay2": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            },
+            "essay3": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            },
+            "essay4": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            }
+          },
+          "totalMCQ": 0,
+          "totalWritten": 0,
+          "totalMarks": 0,
+          "rank": 14,
+          "mcqRank": 14,
+          "percentile": 0,
+          "analytics": {
+            "accuracy": 0,
+            "totalCorrect": 0,
+            "totalWrong": 0,
+            "totalAttempted": 0,
+            "skipStrategy": 0,
+            "questionChoiceStrategy": 0,
+            "recoveryScore": 0,
+            "sectionPerformance": {}
+          },
+          "responses": {}
+        },
+        "459889": {
+          "studentId": "459889",
+          "studentName": "Zuhayr Adeeb Ahmed",
+          "sections": {
+            "section1": {
+              "correct": 17,
+              "wrong": 1,
+              "marks": 16.75,
+              "percentage": 67,
+              "totalQuestions": 25,
+              "attempted": true
+            },
+            "section2": {
+              "correct": 15,
               "wrong": 3,
+              "marks": 13.5,
+              "percentage": 33.75,
+              "totalQuestions": 40,
+              "attempted": true
+            },
+            "section3": {
+              "correct": 1,
+              "wrong": 1,
+              "marks": 0.75,
+              "percentage": 7.5,
+              "totalQuestions": 10,
+              "attempted": true
+            }
+          },
+          "written": {
+            "essay1": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            },
+            "essay2": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            },
+            "essay3": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            },
+            "essay4": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            }
+          },
+          "totalMCQ": 31,
+          "totalWritten": 0,
+          "totalMarks": 31,
+          "rank": 2,
+          "mcqRank": 2,
+          "percentile": 92,
+          "analytics": {
+            "accuracy": 86.84,
+            "totalCorrect": 33,
+            "totalWrong": 5,
+            "totalAttempted": 38,
+            "skipStrategy": 89.13,
+            "questionChoiceStrategy": 85.29,
+            "recoveryScore": 40,
+            "sectionPerformance": {
+              "section1": {
+                "accuracy": 94.11764705882352,
+                "attemptRate": 68,
+                "attempted": 17,
+                "unattempted": 8,
+                "efficiency": 64
+              },
+              "section2": {
+                "accuracy": 80,
+                "attemptRate": 37.5,
+                "attempted": 15,
+                "unattempted": 25,
+                "efficiency": 30
+              },
+              "section3": {
+                "accuracy": 50,
+                "attemptRate": 20,
+                "attempted": 2,
+                "unattempted": 8,
+                "efficiency": 10
+              }
+            }
+          },
+          "responses": {
+            "section1_q1": {
+              "answer": "C",
+              "status": "wrong"
+            },
+            "section1_q2": {
+              "answer": "B",
+              "status": "correct"
+            },
+            "section1_q3": {
+              "answer": "B",
+              "status": "correct"
+            },
+            "section1_q4": {
+              "answer": "B",
+              "status": "correct"
+            },
+            "section1_q5": {
+              "answer": "B",
+              "status": "correct"
+            },
+            "section1_q6": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section1_q7": {
+              "answer": "A",
+              "status": "correct"
+            },
+            "section1_q8": {
+              "answer": "B",
+              "status": "correct"
+            },
+            "section1_q9": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section1_q10": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section1_q11": {
+              "answer": "A",
+              "status": "correct"
+            },
+            "section1_q12": {
+              "answer": "C",
+              "status": "correct"
+            },
+            "section1_q13": {
+              "answer": "B",
+              "status": "correct"
+            },
+            "section1_q14": {
+              "answer": "B",
+              "status": "correct"
+            },
+            "section1_q15": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section1_q16": {
+              "answer": "D",
+              "status": "correct"
+            },
+            "section1_q17": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section1_q18": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section1_q19": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section1_q20": {
+              "answer": "D",
+              "status": "correct"
+            },
+            "section1_q21": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section1_q22": {
+              "answer": "D",
+              "status": "correct"
+            },
+            "section1_q23": {
+              "answer": "D",
+              "status": "correct"
+            },
+            "section1_q24": {
+              "answer": "D",
+              "status": "correct"
+            },
+            "section1_q25": {
+              "answer": "C",
+              "status": "correct"
+            },
+            "section2_q1": {
+              "answer": "A",
+              "status": "correct"
+            },
+            "section2_q2": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q3": {
+              "answer": "D",
+              "status": "wrong"
+            },
+            "section2_q4": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q5": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q6": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q7": {
+              "answer": "C",
+              "status": "correct"
+            },
+            "section2_q8": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q9": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q10": {
+              "answer": "C",
+              "status": "wrong"
+            },
+            "section2_q11": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q12": {
+              "answer": "D",
+              "status": "correct"
+            },
+            "section2_q13": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q14": {
+              "answer": "B",
+              "status": "wrong"
+            },
+            "section2_q15": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q16": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q17": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q18": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q19": {
+              "answer": "A",
+              "status": "correct"
+            },
+            "section2_q20": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q21": {
+              "answer": "A",
+              "status": "correct"
+            },
+            "section2_q22": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q23": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q24": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q25": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q26": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q27": {
+              "answer": "C",
+              "status": "correct"
+            },
+            "section2_q28": {
+              "answer": "D",
+              "status": "correct"
+            },
+            "section2_q29": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q30": {
+              "answer": "D",
+              "status": "correct"
+            },
+            "section2_q31": {
+              "answer": "D",
+              "status": "correct"
+            },
+            "section2_q32": {
+              "answer": "A",
+              "status": "correct"
+            },
+            "section2_q33": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q34": {
+              "answer": "C",
+              "status": "correct"
+            },
+            "section2_q35": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q36": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q37": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q38": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q39": {
+              "answer": "A",
+              "status": "correct"
+            },
+            "section2_q40": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section3_q1": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section3_q2": {
+              "answer": "D",
+              "status": "wrong"
+            },
+            "section3_q3": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section3_q4": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section3_q5": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section3_q6": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section3_q7": {
+              "answer": "C",
+              "status": "correct"
+            },
+            "section3_q8": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section3_q9": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section3_q10": {
+              "answer": null,
+              "status": "skipped"
+            }
+          }
+        },
+        "542127": {
+          "studentId": "542127",
+          "studentName": "Mansib Rahman",
+          "sections": {
+            "section1": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 25,
+              "attempted": true
+            },
+            "section2": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 40,
+              "attempted": true
+            },
+            "section3": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 10,
+              "attempted": true
+            }
+          },
+          "written": {
+            "essay1": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            },
+            "essay2": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            },
+            "essay3": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            },
+            "essay4": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            }
+          },
+          "totalMCQ": 0,
+          "totalWritten": 0,
+          "totalMarks": 0,
+          "rank": 15,
+          "mcqRank": 15,
+          "percentile": 0,
+          "analytics": {
+            "accuracy": 0,
+            "totalCorrect": 0,
+            "totalWrong": 0,
+            "totalAttempted": 0,
+            "skipStrategy": 0,
+            "questionChoiceStrategy": 0,
+            "recoveryScore": 0,
+            "sectionPerformance": {}
+          },
+          "responses": {}
+        },
+        "575752": {
+          "studentId": "575752",
+          "studentName": "Wazeed Mahmud",
+          "sections": {
+            "section1": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 25,
+              "attempted": true
+            },
+            "section2": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 40,
+              "attempted": true
+            },
+            "section3": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 10,
+              "attempted": true
+            }
+          },
+          "written": {
+            "essay1": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            },
+            "essay2": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            },
+            "essay3": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            },
+            "essay4": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            }
+          },
+          "totalMCQ": 0,
+          "totalWritten": 0,
+          "totalMarks": 0,
+          "rank": 16,
+          "mcqRank": 16,
+          "percentile": 0,
+          "analytics": {
+            "accuracy": 0,
+            "totalCorrect": 0,
+            "totalWrong": 0,
+            "totalAttempted": 0,
+            "skipStrategy": 0,
+            "questionChoiceStrategy": 0,
+            "recoveryScore": 0,
+            "sectionPerformance": {}
+          },
+          "responses": {}
+        },
+        "604057": {
+          "studentId": "604057",
+          "studentName": "Alex Alamgir",
+          "sections": {
+            "section1": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 25,
+              "attempted": true
+            },
+            "section2": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 40,
+              "attempted": true
+            },
+            "section3": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 10,
+              "attempted": true
+            }
+          },
+          "written": {
+            "essay1": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            },
+            "essay2": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            },
+            "essay3": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            },
+            "essay4": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            }
+          },
+          "totalMCQ": 0,
+          "totalWritten": 0,
+          "totalMarks": 0,
+          "rank": 17,
+          "mcqRank": 17,
+          "percentile": 0,
+          "analytics": {
+            "accuracy": 0,
+            "totalCorrect": 0,
+            "totalWrong": 0,
+            "totalAttempted": 0,
+            "skipStrategy": 0,
+            "questionChoiceStrategy": 0,
+            "recoveryScore": 0,
+            "sectionPerformance": {}
+          },
+          "responses": {}
+        },
+        "621172": {
+          "studentId": "621172",
+          "studentName": "Zaian Jannat Hussain",
+          "sections": {
+            "section1": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 25,
+              "attempted": true
+            },
+            "section2": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 40,
+              "attempted": true
+            },
+            "section3": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 10,
+              "attempted": true
+            }
+          },
+          "written": {
+            "essay1": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            },
+            "essay2": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            },
+            "essay3": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            },
+            "essay4": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            }
+          },
+          "totalMCQ": 0,
+          "totalWritten": 0,
+          "totalMarks": 0,
+          "rank": 18,
+          "mcqRank": 18,
+          "percentile": 0,
+          "analytics": {
+            "accuracy": 0,
+            "totalCorrect": 0,
+            "totalWrong": 0,
+            "totalAttempted": 0,
+            "skipStrategy": 0,
+            "questionChoiceStrategy": 0,
+            "recoveryScore": 0,
+            "sectionPerformance": {}
+          },
+          "responses": {}
+        },
+        "624690": {
+          "studentId": "624690",
+          "studentName": "Tarannum Rashid",
+          "sections": {
+            "section1": {
+              "correct": 13,
+              "wrong": 2,
+              "marks": 12.5,
+              "percentage": 50,
+              "totalQuestions": 25,
+              "attempted": true
+            },
+            "section2": {
+              "correct": 11,
+              "wrong": 3,
+              "marks": 9.5,
+              "percentage": 23.75,
+              "totalQuestions": 40,
+              "attempted": true
+            },
+            "section3": {
+              "correct": 4,
+              "wrong": 0,
               "marks": 4,
               "percentage": 40,
               "totalQuestions": 10,
@@ -56,12 +2310,2390 @@
               "attempted": true
             }
           },
-          "totalMCQ": 23,
+          "totalMCQ": 26,
           "totalWritten": 0,
-          "totalMarks": 23,
-          "rank": 6,
-          "mcqRank": 6,
-          "percentile": 75,
+          "totalMarks": 26,
+          "rank": 3,
+          "mcqRank": 3,
+          "percentile": 88,
+          "analytics": {
+            "accuracy": 84.85,
+            "totalCorrect": 28,
+            "totalWrong": 5,
+            "totalAttempted": 33,
+            "skipStrategy": 89.8,
+            "questionChoiceStrategy": 83.33,
+            "recoveryScore": 20,
+            "sectionPerformance": {
+              "section1": {
+                "accuracy": 86.66666666666667,
+                "attemptRate": 60,
+                "attempted": 15,
+                "unattempted": 10,
+                "efficiency": 52
+              },
+              "section2": {
+                "accuracy": 72.72727272727273,
+                "attemptRate": 27.500000000000004,
+                "attempted": 11,
+                "unattempted": 29,
+                "efficiency": 20
+              },
+              "section3": {
+                "accuracy": 100,
+                "attemptRate": 40,
+                "attempted": 4,
+                "unattempted": 6,
+                "efficiency": 40
+              }
+            }
+          },
+          "responses": {
+            "section1_q1": {
+              "answer": "D",
+              "status": "correct"
+            },
+            "section1_q2": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section1_q3": {
+              "answer": "B",
+              "status": "correct"
+            },
+            "section1_q4": {
+              "answer": "B",
+              "status": "correct"
+            },
+            "section1_q5": {
+              "answer": "B",
+              "status": "correct"
+            },
+            "section1_q6": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section1_q7": {
+              "answer": "A",
+              "status": "correct"
+            },
+            "section1_q8": {
+              "answer": "B",
+              "status": "correct"
+            },
+            "section1_q9": {
+              "answer": "C",
+              "status": "correct"
+            },
+            "section1_q10": {
+              "answer": "D",
+              "status": "wrong"
+            },
+            "section1_q11": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section1_q12": {
+              "answer": "C",
+              "status": "correct"
+            },
+            "section1_q13": {
+              "answer": "B",
+              "status": "correct"
+            },
+            "section1_q14": {
+              "answer": "B",
+              "status": "correct"
+            },
+            "section1_q15": {
+              "answer": "B",
+              "status": "wrong"
+            },
+            "section1_q16": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section1_q17": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section1_q18": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section1_q19": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section1_q20": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section1_q21": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section1_q22": {
+              "answer": "D",
+              "status": "correct"
+            },
+            "section1_q23": {
+              "answer": "D",
+              "status": "correct"
+            },
+            "section1_q24": {
+              "answer": "D",
+              "status": "correct"
+            },
+            "section1_q25": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q1": {
+              "answer": "A",
+              "status": "correct"
+            },
+            "section2_q2": {
+              "answer": "D",
+              "status": "correct"
+            },
+            "section2_q3": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q5": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q6": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q7": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q8": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q9": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q10": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q11": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q12": {
+              "answer": "D",
+              "status": "correct"
+            },
+            "section2_q13": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q14": {
+              "answer": "B",
+              "status": "wrong"
+            },
+            "section2_q15": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q16": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q17": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q18": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q19": {
+              "answer": "A",
+              "status": "correct"
+            },
+            "section2_q20": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q21": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q22": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q23": {
+              "answer": "D",
+              "status": "wrong"
+            },
+            "section2_q24": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q25": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q26": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q27": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q28": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q29": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q30": {
+              "answer": "D",
+              "status": "correct"
+            },
+            "section2_q31": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q32": {
+              "answer": "A",
+              "status": "correct"
+            },
+            "section2_q33": {
+              "answer": "B",
+              "status": "correct"
+            },
+            "section2_q34": {
+              "answer": "C",
+              "status": "correct"
+            },
+            "section2_q35": {
+              "answer": "B",
+              "status": "wrong"
+            },
+            "section2_q36": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q37": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q38": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q39": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q40": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section3_q1": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section3_q2": {
+              "answer": "B",
+              "status": "correct"
+            },
+            "section3_q3": {
+              "answer": "B",
+              "status": "correct"
+            },
+            "section3_q4": {
+              "answer": "B",
+              "status": "correct"
+            },
+            "section3_q5": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section3_q6": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section3_q7": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section3_q8": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section3_q9": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section3_q10": {
+              "answer": "C",
+              "status": "correct"
+            }
+          }
+        },
+        "643388": {
+          "studentId": "643388",
+          "studentName": "Sharaf Alam",
+          "sections": {
+            "section1": {
+              "correct": 11,
+              "wrong": 5,
+              "marks": 8.5,
+              "percentage": 34,
+              "totalQuestions": 25,
+              "attempted": true
+            },
+            "section2": {
+              "correct": 19,
+              "wrong": 4,
+              "marks": 17,
+              "percentage": 42.5,
+              "totalQuestions": 40,
+              "attempted": true
+            },
+            "section3": {
+              "correct": 0,
+              "wrong": 1,
+              "marks": -0.5,
+              "percentage": -5,
+              "totalQuestions": 10,
+              "attempted": true
+            }
+          },
+          "written": {
+            "essay1": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            },
+            "essay2": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            },
+            "essay3": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            },
+            "essay4": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            }
+          },
+          "totalMCQ": 25,
+          "totalWritten": 0,
+          "totalMarks": 25,
+          "rank": 4,
+          "mcqRank": 4,
+          "percentile": 83,
+          "analytics": {
+            "accuracy": 75,
+            "totalCorrect": 30,
+            "totalWrong": 10,
+            "totalAttempted": 40,
+            "skipStrategy": 79.17,
+            "questionChoiceStrategy": 72.97,
+            "recoveryScore": 50,
+            "sectionPerformance": {
+              "section1": {
+                "accuracy": 68.75,
+                "attemptRate": 64,
+                "attempted": 16,
+                "unattempted": 9,
+                "efficiency": 44
+              },
+              "section2": {
+                "accuracy": 80,
+                "attemptRate": 50,
+                "attempted": 20,
+                "unattempted": 20,
+                "efficiency": 40
+              },
+              "section3": {
+                "accuracy": 0,
+                "attemptRate": 10,
+                "attempted": 1,
+                "unattempted": 9,
+                "efficiency": 0
+              }
+            }
+          },
+          "responses": {
+            "section1_q1": {
+              "answer": "C",
+              "status": "wrong"
+            },
+            "section1_q2": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section1_q3": {
+              "answer": "B",
+              "status": "correct"
+            },
+            "section1_q4": {
+              "answer": "B",
+              "status": "correct"
+            },
+            "section1_q5": {
+              "answer": "B",
+              "status": "correct"
+            },
+            "section1_q6": {
+              "answer": "C",
+              "status": "wrong"
+            },
+            "section1_q7": {
+              "answer": "A",
+              "status": "correct"
+            },
+            "section1_q8": {
+              "answer": "B",
+              "status": "correct"
+            },
+            "section1_q9": {
+              "answer": "D",
+              "status": "correct"
+            },
+            "section1_q10": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section1_q11": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section1_q12": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section1_q13": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section1_q14": {
+              "answer": "D",
+              "status": "wrong"
+            },
+            "section1_q15": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section1_q16": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section1_q17": {
+              "answer": "A",
+              "status": "wrong"
+            },
+            "section1_q18": {
+              "answer": "D",
+              "status": "correct"
+            },
+            "section1_q19": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section1_q20": {
+              "answer": "D",
+              "status": "correct"
+            },
+            "section1_q21": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section1_q22": {
+              "answer": "A",
+              "status": "wrong"
+            },
+            "section1_q23": {
+              "answer": "D",
+              "status": "correct"
+            },
+            "section1_q24": {
+              "answer": "D",
+              "status": "correct"
+            },
+            "section1_q25": {
+              "answer": "C",
+              "status": "correct"
+            },
+            "section2_q1": {
+              "answer": "A",
+              "status": "correct"
+            },
+            "section2_q2": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q3": {
+              "answer": "A",
+              "status": "correct"
+            },
+            "section2_q4": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q5": {
+              "answer": "C",
+              "status": "correct"
+            },
+            "section2_q6": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q7": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q8": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q9": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q10": {
+              "answer": "D",
+              "status": "correct"
+            },
+            "section2_q11": {
+              "answer": "C",
+              "status": "correct"
+            },
+            "section2_q12": {
+              "answer": "D",
+              "status": "correct"
+            },
+            "section2_q13": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q14": {
+              "answer": "D",
+              "status": "correct"
+            },
+            "section2_q15": {
+              "answer": "B",
+              "status": "correct"
+            },
+            "section2_q16": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q17": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q18": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q19": {
+              "answer": "A",
+              "status": "correct"
+            },
+            "section2_q20": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q21": {
+              "answer": "A",
+              "status": "correct"
+            },
+            "section2_q22": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q23": {
+              "answer": "B",
+              "status": "wrong"
+            },
+            "section2_q24": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q25": {
+              "answer": "B",
+              "status": "wrong"
+            },
+            "section2_q26": {
+              "answer": "A",
+              "status": "correct"
+            },
+            "section2_q27": {
+              "answer": "C",
+              "status": "correct"
+            },
+            "section2_q28": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q29": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q30": {
+              "answer": "D",
+              "status": "correct"
+            },
+            "section2_q31": {
+              "answer": "D",
+              "status": "correct"
+            },
+            "section2_q32": {
+              "answer": "A",
+              "status": "correct"
+            },
+            "section2_q33": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q34": {
+              "answer": "D",
+              "status": "wrong"
+            },
+            "section2_q35": {
+              "answer": "D",
+              "status": "wrong"
+            },
+            "section2_q36": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q37": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q38": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q39": {
+              "answer": "A",
+              "status": "correct"
+            },
+            "section2_q40": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section3_q1": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section3_q2": {
+              "answer": "D",
+              "status": "wrong"
+            },
+            "section3_q3": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section3_q4": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section3_q5": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section3_q6": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section3_q7": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section3_q8": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section3_q9": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section3_q10": {
+              "answer": null,
+              "status": "skipped"
+            }
+          }
+        },
+        "648081": {
+          "studentId": "648081",
+          "studentName": "Ayesha Khaled",
+          "sections": {
+            "section1": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 25,
+              "attempted": true
+            },
+            "section2": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 40,
+              "attempted": true
+            },
+            "section3": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 10,
+              "attempted": true
+            }
+          },
+          "written": {
+            "essay1": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            },
+            "essay2": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            },
+            "essay3": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            },
+            "essay4": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            }
+          },
+          "totalMCQ": 0,
+          "totalWritten": 0,
+          "totalMarks": 0,
+          "rank": 19,
+          "mcqRank": 19,
+          "percentile": 0,
+          "analytics": {
+            "accuracy": 0,
+            "totalCorrect": 0,
+            "totalWrong": 0,
+            "totalAttempted": 0,
+            "skipStrategy": 0,
+            "questionChoiceStrategy": 0,
+            "recoveryScore": 0,
+            "sectionPerformance": {}
+          },
+          "responses": {}
+        },
+        "650004": {
+          "studentId": "650004",
+          "studentName": "Aymaan Zaman",
+          "sections": {
+            "section1": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 25,
+              "attempted": true
+            },
+            "section2": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 40,
+              "attempted": true
+            },
+            "section3": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 10,
+              "attempted": true
+            }
+          },
+          "written": {
+            "essay1": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            },
+            "essay2": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            },
+            "essay3": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            },
+            "essay4": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            }
+          },
+          "totalMCQ": 0,
+          "totalWritten": 0,
+          "totalMarks": 0,
+          "rank": 20,
+          "mcqRank": 20,
+          "percentile": 0,
+          "analytics": {
+            "accuracy": 0,
+            "totalCorrect": 0,
+            "totalWrong": 0,
+            "totalAttempted": 0,
+            "skipStrategy": 0,
+            "questionChoiceStrategy": 0,
+            "recoveryScore": 0,
+            "sectionPerformance": {}
+          },
+          "responses": {}
+        },
+        "678535": {
+          "studentId": "678535",
+          "studentName": "Nazeef Rahman",
+          "sections": {
+            "section1": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 25,
+              "attempted": true
+            },
+            "section2": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 40,
+              "attempted": true
+            },
+            "section3": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 10,
+              "attempted": true
+            }
+          },
+          "written": {
+            "essay1": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            },
+            "essay2": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            },
+            "essay3": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            },
+            "essay4": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            }
+          },
+          "totalMCQ": 0,
+          "totalWritten": 0,
+          "totalMarks": 0,
+          "rank": 21,
+          "mcqRank": 21,
+          "percentile": 0,
+          "analytics": {
+            "accuracy": 0,
+            "totalCorrect": 0,
+            "totalWrong": 0,
+            "totalAttempted": 0,
+            "skipStrategy": 0,
+            "questionChoiceStrategy": 0,
+            "recoveryScore": 0,
+            "sectionPerformance": {}
+          },
+          "responses": {}
+        },
+        "757516": {
+          "studentId": "757516",
+          "studentName": "Abrar Bin Masud",
+          "sections": {
+            "section1": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 25,
+              "attempted": true
+            },
+            "section2": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 40,
+              "attempted": true
+            },
+            "section3": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 10,
+              "attempted": true
+            }
+          },
+          "written": {
+            "essay1": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            },
+            "essay2": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            },
+            "essay3": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            },
+            "essay4": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            }
+          },
+          "totalMCQ": 0,
+          "totalWritten": 0,
+          "totalMarks": 0,
+          "rank": 22,
+          "mcqRank": 22,
+          "percentile": 0,
+          "analytics": {
+            "accuracy": 0,
+            "totalCorrect": 0,
+            "totalWrong": 0,
+            "totalAttempted": 0,
+            "skipStrategy": 0,
+            "questionChoiceStrategy": 0,
+            "recoveryScore": 0,
+            "sectionPerformance": {}
+          },
+          "responses": {}
+        },
+        "764305": {
+          "studentId": "764305",
+          "studentName": "Zayan Rahman",
+          "sections": {
+            "section1": {
+              "correct": 14,
+              "wrong": 4,
+              "marks": 13,
+              "percentage": 52,
+              "totalQuestions": 25,
+              "attempted": true
+            },
+            "section2": {
+              "correct": 22,
+              "wrong": 4,
+              "marks": 20,
+              "percentage": 50,
+              "totalQuestions": 40,
+              "attempted": true
+            },
+            "section3": {
+              "correct": 2,
+              "wrong": 2,
+              "marks": 1.5,
+              "percentage": 15,
+              "totalQuestions": 10,
+              "attempted": true
+            }
+          },
+          "written": {
+            "essay1": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            },
+            "essay2": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            },
+            "essay3": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            },
+            "essay4": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            }
+          },
+          "totalMCQ": 34.5,
+          "totalWritten": 0,
+          "totalMarks": 34.5,
+          "rank": 1,
+          "mcqRank": 1,
+          "percentile": 96,
+          "analytics": {
+            "accuracy": 79.17,
+            "totalCorrect": 38,
+            "totalWrong": 10,
+            "totalAttempted": 48,
+            "skipStrategy": 74.36,
+            "questionChoiceStrategy": 78.26,
+            "recoveryScore": 70,
+            "sectionPerformance": {
+              "section1": {
+                "accuracy": 77.77777777777779,
+                "attemptRate": 72,
+                "attempted": 18,
+                "unattempted": 7,
+                "efficiency": 56.00000000000001
+              },
+              "section2": {
+                "accuracy": 83.33333333333334,
+                "attemptRate": 60,
+                "attempted": 24,
+                "unattempted": 16,
+                "efficiency": 50
+              },
+              "section3": {
+                "accuracy": 50,
+                "attemptRate": 40,
+                "attempted": 4,
+                "unattempted": 6,
+                "efficiency": 20
+              }
+            }
+          },
+          "responses": {
+            "section1_q1": {
+              "answer": "C",
+              "status": "wrong"
+            },
+            "section1_q2": {
+              "answer": "B",
+              "status": "correct"
+            },
+            "section1_q3": {
+              "answer": "B",
+              "status": "correct"
+            },
+            "section1_q4": {
+              "answer": "B",
+              "status": "correct"
+            },
+            "section1_q5": {
+              "answer": "A",
+              "status": "wrong"
+            },
+            "section1_q6": {
+              "answer": "D",
+              "status": "correct"
+            },
+            "section1_q7": {
+              "answer": "A",
+              "status": "correct"
+            },
+            "section1_q8": {
+              "answer": "B",
+              "status": "correct"
+            },
+            "section1_q9": {
+              "answer": "C",
+              "status": "correct"
+            },
+            "section1_q10": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section1_q11": {
+              "answer": "A",
+              "status": "correct"
+            },
+            "section1_q12": {
+              "answer": "C",
+              "status": "correct"
+            },
+            "section1_q13": {
+              "answer": "B",
+              "status": "correct"
+            },
+            "section1_q14": {
+              "answer": "D",
+              "status": "wrong"
+            },
+            "section1_q15": {
+              "answer": "B",
+              "status": "wrong"
+            },
+            "section1_q16": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section1_q17": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section1_q18": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section1_q19": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section1_q20": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section1_q21": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section1_q22": {
+              "answer": "D",
+              "status": "correct"
+            },
+            "section1_q23": {
+              "answer": "D",
+              "status": "correct"
+            },
+            "section1_q24": {
+              "answer": "D",
+              "status": "correct"
+            },
+            "section1_q25": {
+              "answer": "C",
+              "status": "correct"
+            },
+            "section2_q1": {
+              "answer": "A",
+              "status": "correct"
+            },
+            "section2_q2": {
+              "answer": "B",
+              "status": "wrong"
+            },
+            "section2_q3": {
+              "answer": "A",
+              "status": "correct"
+            },
+            "section2_q4": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q5": {
+              "answer": "C",
+              "status": "correct"
+            },
+            "section2_q6": {
+              "answer": "B",
+              "status": "correct"
+            },
+            "section2_q7": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q8": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q9": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q10": {
+              "answer": "D",
+              "status": "correct"
+            },
+            "section2_q11": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q12": {
+              "answer": "D",
+              "status": "correct"
+            },
+            "section2_q13": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q14": {
+              "answer": "D",
+              "status": "correct"
+            },
+            "section2_q15": {
+              "answer": "B",
+              "status": "correct"
+            },
+            "section2_q16": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q17": {
+              "answer": "D",
+              "status": "correct"
+            },
+            "section2_q18": {
+              "answer": "B",
+              "status": "correct"
+            },
+            "section2_q19": {
+              "answer": "C",
+              "status": "wrong"
+            },
+            "section2_q20": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q21": {
+              "answer": "A",
+              "status": "correct"
+            },
+            "section2_q22": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q23": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q24": {
+              "answer": "D",
+              "status": "correct"
+            },
+            "section2_q25": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q26": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q27": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q28": {
+              "answer": "D",
+              "status": "correct"
+            },
+            "section2_q29": {
+              "answer": "A",
+              "status": "correct"
+            },
+            "section2_q30": {
+              "answer": "A",
+              "status": "wrong"
+            },
+            "section2_q31": {
+              "answer": "C",
+              "status": "wrong"
+            },
+            "section2_q32": {
+              "answer": "A",
+              "status": "correct"
+            },
+            "section2_q33": {
+              "answer": "B",
+              "status": "correct"
+            },
+            "section2_q34": {
+              "answer": "C",
+              "status": "correct"
+            },
+            "section2_q35": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q36": {
+              "answer": "A",
+              "status": "correct"
+            },
+            "section2_q37": {
+              "answer": "B",
+              "status": "correct"
+            },
+            "section2_q38": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q39": {
+              "answer": "A",
+              "status": "correct"
+            },
+            "section2_q40": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section3_q1": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section3_q2": {
+              "answer": "D",
+              "status": "wrong"
+            },
+            "section3_q3": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section3_q4": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section3_q5": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section3_q6": {
+              "answer": "C",
+              "status": "wrong"
+            },
+            "section3_q7": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section3_q8": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section3_q9": {
+              "answer": "C",
+              "status": "correct"
+            },
+            "section3_q10": {
+              "answer": "C",
+              "status": "correct"
+            }
+          }
+        },
+        "907183": {
+          "studentId": "907183",
+          "studentName": "Sajid Shahrier Khan",
+          "sections": {
+            "section1": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 25,
+              "attempted": true
+            },
+            "section2": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 40,
+              "attempted": true
+            },
+            "section3": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 10,
+              "attempted": true
+            }
+          },
+          "written": {
+            "essay1": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            },
+            "essay2": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            },
+            "essay3": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            },
+            "essay4": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            }
+          },
+          "totalMCQ": 0,
+          "totalWritten": 0,
+          "totalMarks": 0,
+          "rank": 23,
+          "mcqRank": 23,
+          "percentile": 0,
+          "analytics": {
+            "accuracy": 0,
+            "totalCorrect": 0,
+            "totalWrong": 0,
+            "totalAttempted": 0,
+            "skipStrategy": 0,
+            "questionChoiceStrategy": 0,
+            "recoveryScore": 0,
+            "sectionPerformance": {}
+          },
+          "responses": {}
+        },
+        "934245": {
+          "studentId": "934245",
+          "studentName": "Aseya Siddiqua Saba",
+          "sections": {
+            "section1": {
+              "correct": 11,
+              "wrong": 2,
+              "marks": 10,
+              "percentage": 40,
+              "totalQuestions": 25,
+              "attempted": true
+            },
+            "section2": {
+              "correct": 12,
+              "wrong": 4,
+              "marks": 10,
+              "percentage": 25,
+              "totalQuestions": 40,
+              "attempted": true
+            },
+            "section3": {
+              "correct": 2,
+              "wrong": 2,
+              "marks": 1,
+              "percentage": 10,
+              "totalQuestions": 10,
+              "attempted": true
+            }
+          },
+          "written": {
+            "essay1": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            },
+            "essay2": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            },
+            "essay3": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            },
+            "essay4": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            }
+          },
+          "totalMCQ": 21,
+          "totalWritten": 0,
+          "totalMarks": 21,
+          "rank": 7,
+          "mcqRank": 7,
+          "percentile": 71,
+          "analytics": {
+            "accuracy": 75.76,
+            "totalCorrect": 25,
+            "totalWrong": 8,
+            "totalAttempted": 33,
+            "skipStrategy": 84.62,
+            "questionChoiceStrategy": 73.33,
+            "recoveryScore": 50,
+            "sectionPerformance": {
+              "section1": {
+                "accuracy": 84.61538461538461,
+                "attemptRate": 52,
+                "attempted": 13,
+                "unattempted": 12,
+                "efficiency": 44
+              },
+              "section2": {
+                "accuracy": 69.23076923076923,
+                "attemptRate": 32.5,
+                "attempted": 13,
+                "unattempted": 27,
+                "efficiency": 22.5
+              },
+              "section3": {
+                "accuracy": 50,
+                "attemptRate": 40,
+                "attempted": 4,
+                "unattempted": 6,
+                "efficiency": 20
+              }
+            }
+          },
+          "responses": {
+            "section1_q1": {
+              "answer": "D",
+              "status": "correct"
+            },
+            "section1_q2": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section1_q3": {
+              "answer": "B",
+              "status": "correct"
+            },
+            "section1_q4": {
+              "answer": "B",
+              "status": "correct"
+            },
+            "section1_q5": {
+              "answer": "B",
+              "status": "correct"
+            },
+            "section1_q6": {
+              "answer": "C",
+              "status": "wrong"
+            },
+            "section1_q7": {
+              "answer": "A",
+              "status": "correct"
+            },
+            "section1_q8": {
+              "answer": "B",
+              "status": "correct"
+            },
+            "section1_q9": {
+              "answer": "C",
+              "status": "correct"
+            },
+            "section1_q10": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section1_q11": {
+              "answer": "A",
+              "status": "correct"
+            },
+            "section1_q12": {
+              "answer": "B",
+              "status": "wrong"
+            },
+            "section1_q13": {
+              "answer": "B",
+              "status": "correct"
+            },
+            "section1_q14": {
+              "answer": "B",
+              "status": "correct"
+            },
+            "section1_q15": {
+              "answer": "D",
+              "status": "correct"
+            },
+            "section1_q16": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section1_q17": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section1_q18": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section1_q19": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section1_q20": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section1_q21": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section1_q22": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section1_q23": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section1_q24": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section1_q25": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q1": {
+              "answer": "A",
+              "status": "correct"
+            },
+            "section2_q2": {
+              "answer": "A",
+              "status": "wrong"
+            },
+            "section2_q3": {
+              "answer": "A",
+              "status": "correct"
+            },
+            "section2_q5": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q6": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q7": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q8": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q9": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q10": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q11": {
+              "answer": "C",
+              "status": "correct"
+            },
+            "section2_q12": {
+              "answer": "D",
+              "status": "correct"
+            },
+            "section2_q13": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q14": {
+              "answer": "B",
+              "status": "wrong"
+            },
+            "section2_q15": {
+              "answer": "B",
+              "status": "correct"
+            },
+            "section2_q16": {
+              "answer": "B",
+              "status": "wrong"
+            },
+            "section2_q17": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q18": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q19": {
+              "answer": "C",
+              "status": "wrong"
+            },
+            "section2_q20": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q21": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q22": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q23": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q24": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q25": {
+              "answer": "A",
+              "status": "correct"
+            },
+            "section2_q26": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q27": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q28": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q29": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q30": {
+              "answer": "D",
+              "status": "correct"
+            },
+            "section2_q31": {
+              "answer": "D",
+              "status": "correct"
+            },
+            "section2_q32": {
+              "answer": "A",
+              "status": "correct"
+            },
+            "section2_q33": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q34": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q35": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q36": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q37": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q38": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q39": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section2_q40": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section3_q1": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section3_q2": {
+              "answer": "D",
+              "status": "wrong"
+            },
+            "section3_q3": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section3_q4": {
+              "answer": "B",
+              "status": "correct"
+            },
+            "section3_q5": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section3_q6": {
+              "answer": "C",
+              "status": "wrong"
+            },
+            "section3_q7": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section3_q8": {
+              "answer": null,
+              "status": "skipped"
+            },
+            "section3_q9": {
+              "answer": "C",
+              "status": "correct"
+            },
+            "section3_q10": {
+              "answer": null,
+              "status": "skipped"
+            }
+          }
+        },
+        "979212": {
+          "studentId": "979212",
+          "studentName": "Mahira Akhtar",
+          "sections": {
+            "section1": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 25,
+              "attempted": true
+            },
+            "section2": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 40,
+              "attempted": true
+            },
+            "section3": {
+              "correct": 0,
+              "wrong": 0,
+              "marks": 0,
+              "percentage": 0,
+              "totalQuestions": 10,
+              "attempted": true
+            }
+          },
+          "written": {
+            "essay1": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            },
+            "essay2": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            },
+            "essay3": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            },
+            "essay4": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            }
+          },
+          "totalMCQ": 0,
+          "totalWritten": 0,
+          "totalMarks": 0,
+          "rank": 24,
+          "mcqRank": 24,
+          "percentile": 0,
+          "analytics": {
+            "accuracy": 0,
+            "totalCorrect": 0,
+            "totalWrong": 0,
+            "totalAttempted": 0,
+            "skipStrategy": 0,
+            "questionChoiceStrategy": 0,
+            "recoveryScore": 0,
+            "sectionPerformance": {}
+          },
+          "responses": {}
+        }
+      },
+      "classStats": {
+        "average": 8.25,
+        "median": 0,
+        "highest": 34.5,
+        "lowest": 0,
+        "totalStudents": 24
+      },
+      "topQuestions": {
+        "section1": {
+          "mostCorrect": [
+            {
+              "questionNumber": 4,
+              "count": 8
+            },
+            {
+              "questionNumber": 7,
+              "count": 8
+            },
+            {
+              "questionNumber": 8,
+              "count": 8
+            },
+            {
+              "questionNumber": 9,
+              "count": 8
+            },
+            {
+              "questionNumber": 13,
+              "count": 7
+            },
+            {
+              "questionNumber": 23,
+              "count": 7
+            },
+            {
+              "questionNumber": 12,
+              "count": 6
+            },
+            {
+              "questionNumber": 24,
+              "count": 6
+            },
+            {
+              "questionNumber": 25,
+              "count": 6
+            },
+            {
+              "questionNumber": 11,
+              "count": 5
+            }
+          ],
+          "mostWrong": [
+            {
+              "questionNumber": 1,
+              "count": 6
+            },
+            {
+              "questionNumber": 6,
+              "count": 4
+            },
+            {
+              "questionNumber": 15,
+              "count": 3
+            },
+            {
+              "questionNumber": 14,
+              "count": 2
+            },
+            {
+              "questionNumber": 3,
+              "count": 2
+            },
+            {
+              "questionNumber": 5,
+              "count": 2
+            },
+            {
+              "questionNumber": 10,
+              "count": 1
+            },
+            {
+              "questionNumber": 12,
+              "count": 1
+            },
+            {
+              "questionNumber": 17,
+              "count": 1
+            },
+            {
+              "questionNumber": 18,
+              "count": 1
+            }
+          ],
+          "mostSkipped": [
+            {
+              "questionNumber": 21,
+              "count": 8
+            },
+            {
+              "questionNumber": 10,
+              "count": 7
+            },
+            {
+              "questionNumber": 19,
+              "count": 7
+            },
+            {
+              "questionNumber": 16,
+              "count": 6
+            },
+            {
+              "questionNumber": 17,
+              "count": 6
+            },
+            {
+              "questionNumber": 18,
+              "count": 6
+            },
+            {
+              "questionNumber": 20,
+              "count": 6
+            },
+            {
+              "questionNumber": 2,
+              "count": 5
+            },
+            {
+              "questionNumber": 11,
+              "count": 3
+            },
+            {
+              "questionNumber": 15,
+              "count": 2
+            }
+          ]
+        },
+        "section2": {
+          "mostCorrect": [
+            {
+              "questionNumber": 1,
+              "count": 8
+            },
+            {
+              "questionNumber": 13,
+              "count": 8
+            },
+            {
+              "questionNumber": 29,
+              "count": 8
+            },
+            {
+              "questionNumber": 4,
+              "count": 8
+            },
+            {
+              "questionNumber": 32,
+              "count": 7
+            },
+            {
+              "questionNumber": 12,
+              "count": 6
+            },
+            {
+              "questionNumber": 3,
+              "count": 6
+            },
+            {
+              "questionNumber": 30,
+              "count": 6
+            },
+            {
+              "questionNumber": 15,
+              "count": 4
+            },
+            {
+              "questionNumber": 19,
+              "count": 4
+            }
+          ],
+          "mostWrong": [
+            {
+              "questionNumber": 14,
+              "count": 6
+            },
+            {
+              "questionNumber": 2,
+              "count": 5
+            },
+            {
+              "questionNumber": 19,
+              "count": 3
+            },
+            {
+              "questionNumber": 23,
+              "count": 3
+            },
+            {
+              "questionNumber": 35,
+              "count": 3
+            },
+            {
+              "questionNumber": 10,
+              "count": 2
+            },
+            {
+              "questionNumber": 31,
+              "count": 2
+            },
+            {
+              "questionNumber": 34,
+              "count": 2
+            },
+            {
+              "questionNumber": 12,
+              "count": 1
+            },
+            {
+              "questionNumber": 15,
+              "count": 1
+            }
+          ],
+          "mostSkipped": [
+            {
+              "questionNumber": 22,
+              "count": 8
+            },
+            {
+              "questionNumber": 38,
+              "count": 8
+            },
+            {
+              "questionNumber": 40,
+              "count": 8
+            },
+            {
+              "questionNumber": 8,
+              "count": 8
+            },
+            {
+              "questionNumber": 9,
+              "count": 8
+            },
+            {
+              "questionNumber": 16,
+              "count": 7
+            },
+            {
+              "questionNumber": 17,
+              "count": 7
+            },
+            {
+              "questionNumber": 18,
+              "count": 7
+            },
+            {
+              "questionNumber": 20,
+              "count": 7
+            },
+            {
+              "questionNumber": 26,
+              "count": 7
+            }
+          ]
+        },
+        "section3": {
+          "mostCorrect": [
+            {
+              "questionNumber": 10,
+              "count": 5
+            },
+            {
+              "questionNumber": 4,
+              "count": 3
+            },
+            {
+              "questionNumber": 9,
+              "count": 2
+            },
+            {
+              "questionNumber": 2,
+              "count": 1
+            },
+            {
+              "questionNumber": 3,
+              "count": 1
+            },
+            {
+              "questionNumber": 7,
+              "count": 1
+            },
+            {
+              "questionNumber": 8,
+              "count": 1
+            },
+            {
+              "questionNumber": 1,
+              "count": 0
+            },
+            {
+              "questionNumber": 5,
+              "count": 0
+            },
+            {
+              "questionNumber": 6,
+              "count": 0
+            }
+          ],
+          "mostWrong": [
+            {
+              "questionNumber": 2,
+              "count": 6
+            },
+            {
+              "questionNumber": 6,
+              "count": 2
+            },
+            {
+              "questionNumber": 3,
+              "count": 1
+            },
+            {
+              "questionNumber": 4,
+              "count": 1
+            },
+            {
+              "questionNumber": 7,
+              "count": 1
+            },
+            {
+              "questionNumber": 8,
+              "count": 1
+            },
+            {
+              "questionNumber": 1,
+              "count": 0
+            },
+            {
+              "questionNumber": 10,
+              "count": 0
+            },
+            {
+              "questionNumber": 5,
+              "count": 0
+            },
+            {
+              "questionNumber": 9,
+              "count": 0
+            }
+          ],
+          "mostSkipped": [
+            {
+              "questionNumber": 1,
+              "count": 8
+            },
+            {
+              "questionNumber": 5,
+              "count": 8
+            },
+            {
+              "questionNumber": 3,
+              "count": 6
+            },
+            {
+              "questionNumber": 6,
+              "count": 6
+            },
+            {
+              "questionNumber": 7,
+              "count": 6
+            },
+            {
+              "questionNumber": 8,
+              "count": 6
+            },
+            {
+              "questionNumber": 9,
+              "count": 6
+            },
+            {
+              "questionNumber": 4,
+              "count": 4
+            },
+            {
+              "questionNumber": 10,
+              "count": 3
+            },
+            {
+              "questionNumber": 2,
+              "count": 1
+            }
+          ]
+        }
+      },
+      "metadata": {
+        "processedAt": "2026-01-02T23:43:59.634Z",
+        "sourceFile": "BUP_Mock1_Results.xlsx"
+      }
+    },
+    "BUP Mock2 Results": {
+      "testName": "BUP Mock2 Results",
+      "testType": "bup-mock",
+      "totalStudents": 24,
+      "results": {
+        "121716": {
+          "studentId": "121716",
+          "studentName": "Ayaz Mohammad Zahir",
+          "sections": {
+            "section1": {
+              "correct": 11,
+              "wrong": 9,
+              "marks": 6.5,
+              "percentage": 26,
+              "totalQuestions": 25,
+              "attempted": true
+            },
+            "section2": {
+              "correct": 8,
+              "wrong": 14,
+              "marks": 1,
+              "percentage": 2.5,
+              "totalQuestions": 40,
+              "attempted": true
+            },
+            "section3": {
+              "correct": 4,
+              "wrong": 3,
+              "marks": 2.5,
+              "percentage": 25,
+              "totalQuestions": 10,
+              "attempted": true
+            }
+          },
+          "written": {
+            "essay1": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            },
+            "essay2": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            },
+            "essay3": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            },
+            "essay4": {
+              "marks": 0,
+              "outOf": 10,
+              "attempted": true
+            }
+          },
+          "totalMCQ": 10,
+          "totalWritten": 0,
+          "totalMarks": 10,
+          "rank": 8,
+          "mcqRank": 8,
+          "percentile": 67,
           "analytics": {
             "accuracy": 46.94,
             "totalCorrect": 23,
@@ -542,24 +5174,24 @@
             "section1": {
               "correct": 20,
               "wrong": 3,
-              "marks": 20,
-              "percentage": 80,
+              "marks": 18.5,
+              "percentage": 74,
               "totalQuestions": 25,
               "attempted": true
             },
             "section2": {
               "correct": 15,
               "wrong": 11,
-              "marks": 15,
-              "percentage": 37.5,
+              "marks": 9.5,
+              "percentage": 23.75,
               "totalQuestions": 40,
               "attempted": true
             },
             "section3": {
               "correct": 2,
               "wrong": 1,
-              "marks": 2,
-              "percentage": 20,
+              "marks": 1.5,
+              "percentage": 15,
               "totalQuestions": 10,
               "attempted": true
             }
@@ -586,12 +5218,12 @@
               "attempted": true
             }
           },
-          "totalMCQ": 37,
+          "totalMCQ": 29.5,
           "totalWritten": 0,
-          "totalMarks": 37,
-          "rank": 1,
-          "mcqRank": 1,
-          "percentile": 96,
+          "totalMarks": 29.5,
+          "rank": 2,
+          "mcqRank": 2,
+          "percentile": 92,
           "analytics": {
             "accuracy": 71.15,
             "totalCorrect": 37,
@@ -1210,24 +5842,24 @@
             "section1": {
               "correct": 13,
               "wrong": 5,
-              "marks": 13,
-              "percentage": 52,
+              "marks": 10.5,
+              "percentage": 42,
               "totalQuestions": 25,
               "attempted": true
             },
             "section2": {
               "correct": 7,
               "wrong": 13,
-              "marks": 7,
-              "percentage": 17.5,
+              "marks": 0.5,
+              "percentage": 1.25,
               "totalQuestions": 40,
               "attempted": true
             },
             "section3": {
               "correct": 5,
               "wrong": 5,
-              "marks": 5,
-              "percentage": 50,
+              "marks": 2.5,
+              "percentage": 25,
               "totalQuestions": 10,
               "attempted": true
             }
@@ -1254,11 +5886,11 @@
               "attempted": true
             }
           },
-          "totalMCQ": 25,
+          "totalMCQ": 13.5,
           "totalWritten": 0,
-          "totalMarks": 25,
-          "rank": 4,
-          "mcqRank": 4,
+          "totalMarks": 13.5,
+          "rank": 5,
+          "mcqRank": 5,
           "percentile": 79,
           "analytics": {
             "accuracy": 52.08,
@@ -1602,16 +6234,16 @@
             "section1": {
               "correct": 15,
               "wrong": 6,
-              "marks": 15,
-              "percentage": 60,
+              "marks": 13.5,
+              "percentage": 54,
               "totalQuestions": 25,
               "attempted": true
             },
             "section2": {
               "correct": 17,
               "wrong": 7,
-              "marks": 17,
-              "percentage": 42.5,
+              "marks": 13.5,
+              "percentage": 33.75,
               "totalQuestions": 40,
               "attempted": true
             },
@@ -1646,12 +6278,12 @@
               "attempted": true
             }
           },
-          "totalMCQ": 36,
+          "totalMCQ": 31,
           "totalWritten": 0,
-          "totalMarks": 36,
-          "rank": 2,
-          "mcqRank": 2,
-          "percentile": 92,
+          "totalMarks": 31,
+          "rank": 1,
+          "mcqRank": 1,
+          "percentile": 96,
           "analytics": {
             "accuracy": 73.47,
             "totalCorrect": 36,
@@ -2201,24 +6833,24 @@
             "section1": {
               "correct": 13,
               "wrong": 6,
-              "marks": 13,
-              "percentage": 52,
+              "marks": 11.5,
+              "percentage": 46,
               "totalQuestions": 25,
               "attempted": true
             },
             "section2": {
               "correct": 3,
               "wrong": 8,
-              "marks": 3,
-              "percentage": 7.5,
+              "marks": -1,
+              "percentage": -2.5,
               "totalQuestions": 40,
               "attempted": true
             },
             "section3": {
               "correct": 2,
               "wrong": 4,
-              "marks": 2,
-              "percentage": 20,
+              "marks": 1,
+              "percentage": 10,
               "totalQuestions": 10,
               "attempted": true
             }
@@ -2245,12 +6877,12 @@
               "attempted": true
             }
           },
-          "totalMCQ": 18,
+          "totalMCQ": 11.5,
           "totalWritten": 0,
-          "totalMarks": 18,
-          "rank": 8,
-          "mcqRank": 8,
-          "percentile": 67,
+          "totalMarks": 11.5,
+          "rank": 7,
+          "mcqRank": 7,
+          "percentile": 71,
           "analytics": {
             "accuracy": 50,
             "totalCorrect": 18,
@@ -2593,24 +7225,24 @@
             "section1": {
               "correct": 13,
               "wrong": 4,
-              "marks": 13,
-              "percentage": 52,
+              "marks": 12,
+              "percentage": 48,
               "totalQuestions": 25,
               "attempted": true
             },
             "section2": {
               "correct": 7,
               "wrong": 7,
-              "marks": 7,
-              "percentage": 17.5,
+              "marks": 3.5,
+              "percentage": 8.75,
               "totalQuestions": 40,
               "attempted": true
             },
             "section3": {
               "correct": 5,
               "wrong": 2,
-              "marks": 5,
-              "percentage": 50,
+              "marks": 4.5,
+              "percentage": 45,
               "totalQuestions": 10,
               "attempted": true
             }
@@ -2637,12 +7269,12 @@
               "attempted": true
             }
           },
-          "totalMCQ": 25,
+          "totalMCQ": 20,
           "totalWritten": 0,
-          "totalMarks": 25,
-          "rank": 5,
-          "mcqRank": 5,
-          "percentile": 79,
+          "totalMarks": 20,
+          "rank": 4,
+          "mcqRank": 4,
+          "percentile": 83,
           "analytics": {
             "accuracy": 65.79,
             "totalCorrect": 25,
@@ -2985,24 +7617,24 @@
             "section1": {
               "correct": 13,
               "wrong": 3,
-              "marks": 13,
-              "percentage": 52,
+              "marks": 11.5,
+              "percentage": 46,
               "totalQuestions": 25,
               "attempted": true
             },
             "section2": {
               "correct": 12,
               "wrong": 8,
-              "marks": 12,
-              "percentage": 30,
+              "marks": 8,
+              "percentage": 20,
               "totalQuestions": 40,
               "attempted": true
             },
             "section3": {
               "correct": 4,
               "wrong": 2,
-              "marks": 4,
-              "percentage": 40,
+              "marks": 3,
+              "percentage": 30,
               "totalQuestions": 10,
               "attempted": true
             }
@@ -3029,9 +7661,9 @@
               "attempted": true
             }
           },
-          "totalMCQ": 29,
+          "totalMCQ": 22.5,
           "totalWritten": 0,
-          "totalMarks": 29,
+          "totalMarks": 22.5,
           "rank": 3,
           "mcqRank": 3,
           "percentile": 88,
@@ -3791,24 +8423,24 @@
             "section1": {
               "correct": 12,
               "wrong": 4,
-              "marks": 12,
-              "percentage": 48,
+              "marks": 10,
+              "percentage": 40,
               "totalQuestions": 25,
               "attempted": true
             },
             "section2": {
               "correct": 5,
               "wrong": 6,
-              "marks": 5,
-              "percentage": 12.5,
+              "marks": 2,
+              "percentage": 5,
               "totalQuestions": 40,
               "attempted": true
             },
             "section3": {
               "correct": 3,
               "wrong": 4,
-              "marks": 3,
-              "percentage": 30,
+              "marks": 1,
+              "percentage": 10,
               "totalQuestions": 10,
               "attempted": true
             }
@@ -3835,12 +8467,12 @@
               "attempted": true
             }
           },
-          "totalMCQ": 20,
+          "totalMCQ": 13,
           "totalWritten": 0,
-          "totalMarks": 20,
-          "rank": 7,
-          "mcqRank": 7,
-          "percentile": 71,
+          "totalMarks": 13,
+          "rank": 6,
+          "mcqRank": 6,
+          "percentile": 75,
           "analytics": {
             "accuracy": 58.82,
             "totalCorrect": 20,
@@ -4247,9 +8879,9 @@
         }
       },
       "classStats": {
-        "average": 8.875,
+        "average": 6.291666666666667,
         "median": 0,
-        "highest": 37,
+        "highest": 31,
         "lowest": 0,
         "totalStudents": 24
       },
@@ -4640,7 +9272,7 @@
         }
       },
       "metadata": {
-        "processedAt": "2025-12-31T13:33:38.394Z",
+        "processedAt": "2026-01-02T23:43:59.654Z",
         "sourceFile": "BUP_Mock2_Results.xlsx"
       }
     },
@@ -4932,24 +9564,24 @@
             "section1": {
               "correct": 7,
               "wrong": 3,
-              "marks": 7,
-              "percentage": 28.000000000000004,
+              "marks": 5.5,
+              "percentage": 22,
               "totalQuestions": 25,
               "attempted": true
             },
             "section2": {
               "correct": 1,
               "wrong": 4,
-              "marks": 1,
-              "percentage": 2.5,
+              "marks": -1,
+              "percentage": -2.5,
               "totalQuestions": 40,
               "attempted": true
             },
             "section3": {
               "correct": 3,
               "wrong": 1,
-              "marks": 3,
-              "percentage": 30,
+              "marks": 2.5,
+              "percentage": 25,
               "totalQuestions": 10,
               "attempted": true
             }
@@ -4976,12 +9608,12 @@
               "attempted": true
             }
           },
-          "totalMCQ": 11,
+          "totalMCQ": 7,
           "totalWritten": 0,
-          "totalMarks": 11,
-          "rank": 8,
-          "mcqRank": 8,
-          "percentile": 67,
+          "totalMarks": 7,
+          "rank": 7,
+          "mcqRank": 7,
+          "percentile": 71,
           "analytics": {
             "accuracy": 57.89,
             "totalCorrect": 11,
@@ -5462,24 +10094,24 @@
             "section1": {
               "correct": 13,
               "wrong": 1,
-              "marks": 13,
-              "percentage": 52,
+              "marks": 12.5,
+              "percentage": 50,
               "totalQuestions": 25,
               "attempted": true
             },
             "section2": {
               "correct": 7,
               "wrong": 1,
-              "marks": 7,
-              "percentage": 17.5,
+              "marks": 6.5,
+              "percentage": 16.25,
               "totalQuestions": 40,
               "attempted": true
             },
             "section3": {
               "correct": 3,
               "wrong": 2,
-              "marks": 3,
-              "percentage": 30,
+              "marks": 2,
+              "percentage": 20,
               "totalQuestions": 10,
               "attempted": true
             }
@@ -5506,12 +10138,12 @@
               "attempted": true
             }
           },
-          "totalMCQ": 23,
+          "totalMCQ": 21,
           "totalWritten": 0,
-          "totalMarks": 23,
+          "totalMarks": 21,
           "rank": 4,
           "mcqRank": 4,
-          "percentile": 79,
+          "percentile": 83,
           "analytics": {
             "accuracy": 85.19,
             "totalCorrect": 23,
@@ -5854,8 +10486,8 @@
             "section1": {
               "correct": 10,
               "wrong": 10,
-              "marks": 10,
-              "percentage": 40,
+              "marks": 5,
+              "percentage": 20,
               "totalQuestions": 25,
               "attempted": true
             },
@@ -5870,8 +10502,8 @@
             "section3": {
               "correct": 4,
               "wrong": 6,
-              "marks": 4,
-              "percentage": 40,
+              "marks": 1,
+              "percentage": 10,
               "totalQuestions": 10,
               "attempted": true
             }
@@ -5898,12 +10530,12 @@
               "attempted": true
             }
           },
-          "totalMCQ": 20,
+          "totalMCQ": 6,
           "totalWritten": 0,
-          "totalMarks": 20,
-          "rank": 6,
-          "mcqRank": 6,
-          "percentile": 75,
+          "totalMarks": 6,
+          "rank": 8,
+          "mcqRank": 8,
+          "percentile": 67,
           "analytics": {
             "accuracy": 41.67,
             "totalCorrect": 20,
@@ -6246,16 +10878,16 @@
             "section1": {
               "correct": 20,
               "wrong": 3,
-              "marks": 20,
-              "percentage": 80,
+              "marks": 19.25,
+              "percentage": 77,
               "totalQuestions": 25,
               "attempted": true
             },
             "section2": {
               "correct": 9,
               "wrong": 11,
-              "marks": 9,
-              "percentage": 22.5,
+              "marks": 3.5,
+              "percentage": 8.75,
               "totalQuestions": 40,
               "attempted": true
             },
@@ -6290,9 +10922,9 @@
               "attempted": true
             }
           },
-          "totalMCQ": 34,
+          "totalMCQ": 27.75,
           "totalWritten": 0,
-          "totalMarks": 34,
+          "totalMarks": 27.75,
           "rank": 1,
           "mcqRank": 1,
           "percentile": 96,
@@ -6914,24 +11546,24 @@
             "section1": {
               "correct": 15,
               "wrong": 3,
-              "marks": 15,
-              "percentage": 60,
+              "marks": 14.25,
+              "percentage": 56.99999999999999,
               "totalQuestions": 25,
               "attempted": true
             },
             "section2": {
               "correct": 7,
               "wrong": 7,
-              "marks": 7,
-              "percentage": 17.5,
+              "marks": 3.5,
+              "percentage": 8.75,
               "totalQuestions": 40,
               "attempted": true
             },
             "section3": {
               "correct": 4,
               "wrong": 1,
-              "marks": 4,
-              "percentage": 40,
+              "marks": 3.75,
+              "percentage": 37.5,
               "totalQuestions": 10,
               "attempted": true
             }
@@ -6958,9 +11590,9 @@
               "attempted": true
             }
           },
-          "totalMCQ": 26,
+          "totalMCQ": 21.5,
           "totalWritten": 0,
-          "totalMarks": 26,
+          "totalMarks": 21.5,
           "rank": 3,
           "mcqRank": 3,
           "percentile": 88,
@@ -7306,24 +11938,24 @@
             "section1": {
               "correct": 20,
               "wrong": 1,
-              "marks": 20,
-              "percentage": 80,
+              "marks": 19.5,
+              "percentage": 78,
               "totalQuestions": 25,
               "attempted": true
             },
             "section2": {
               "correct": 7,
               "wrong": 9,
-              "marks": 7,
-              "percentage": 17.5,
+              "marks": 2.5,
+              "percentage": 6.25,
               "totalQuestions": 40,
               "attempted": true
             },
             "section3": {
               "correct": 5,
               "wrong": 3,
-              "marks": 5,
-              "percentage": 50,
+              "marks": 3.5,
+              "percentage": 35,
               "totalQuestions": 10,
               "attempted": true
             }
@@ -7350,9 +11982,9 @@
               "attempted": true
             }
           },
-          "totalMCQ": 32,
+          "totalMCQ": 25.5,
           "totalWritten": 0,
-          "totalMarks": 32,
+          "totalMarks": 25.5,
           "rank": 2,
           "mcqRank": 2,
           "percentile": 92,
@@ -7698,24 +12330,24 @@
             "section1": {
               "correct": 11,
               "wrong": 6,
-              "marks": 11,
-              "percentage": 44,
+              "marks": 8,
+              "percentage": 32,
               "totalQuestions": 25,
               "attempted": true
             },
             "section2": {
               "correct": 2,
               "wrong": 8,
-              "marks": 2,
-              "percentage": 5,
+              "marks": -2,
+              "percentage": -5,
               "totalQuestions": 40,
               "attempted": true
             },
             "section3": {
               "correct": 3,
               "wrong": 3,
-              "marks": 3,
-              "percentage": 30,
+              "marks": 1.5,
+              "percentage": 15,
               "totalQuestions": 10,
               "attempted": true
             }
@@ -7742,12 +12374,12 @@
               "attempted": true
             }
           },
-          "totalMCQ": 16,
+          "totalMCQ": 7.5,
           "totalWritten": 0,
-          "totalMarks": 16,
-          "rank": 7,
-          "mcqRank": 7,
-          "percentile": 71,
+          "totalMarks": 7.5,
+          "rank": 6,
+          "mcqRank": 6,
+          "percentile": 75,
           "analytics": {
             "accuracy": 48.48,
             "totalCorrect": 16,
@@ -8435,16 +13067,16 @@
             "section1": {
               "correct": 12,
               "wrong": 4,
-              "marks": 12,
-              "percentage": 48,
+              "marks": 10,
+              "percentage": 40,
               "totalQuestions": 25,
               "attempted": true
             },
             "section2": {
               "correct": 8,
               "wrong": 8,
-              "marks": 8,
-              "percentage": 20,
+              "marks": 4,
+              "percentage": 10,
               "totalQuestions": 40,
               "attempted": true
             },
@@ -8479,9 +13111,9 @@
               "attempted": true
             }
           },
-          "totalMCQ": 23,
+          "totalMCQ": 17,
           "totalWritten": 0,
-          "totalMarks": 23,
+          "totalMarks": 17,
           "rank": 5,
           "mcqRank": 5,
           "percentile": 79,
@@ -8891,9 +13523,9 @@
         }
       },
       "classStats": {
-        "average": 7.708333333333333,
+        "average": 5.552083333333333,
         "median": 0,
-        "highest": 34,
+        "highest": 27.75,
         "lowest": 0,
         "totalStudents": 24
       },
@@ -9284,14 +13916,14 @@
         }
       },
       "metadata": {
-        "processedAt": "2025-12-31T13:33:38.412Z",
+        "processedAt": "2026-01-02T23:43:59.670Z",
         "sourceFile": "BUP_Mock3_Results.xlsx"
       }
     }
   },
   "metadata": {
-    "lastUpdated": "2025-12-31T13:33:38.413Z",
-    "totalMocks": 2,
+    "lastUpdated": "2026-01-02T23:43:59.670Z",
+    "totalMocks": 3,
     "generatedBy": "BUP Mock Processor"
   }
 }
