@@ -38,6 +38,7 @@ const TestDetailPage = () => {
   const [userResult, setUserResult] = useState<SimpleTestResult | FullTestResult | any | null>(null);
   const [isFullTest, setIsFullTest] = useState(false);
   const [isFBSMock, setIsFBSMock] = useState(false);
+  const [isBUPMock, setIsBUPMock] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
   const [selectedStudentId, setSelectedStudentId] = useState<string | null>(null);
   const [selectedStudentName, setSelectedStudentName] = useState<string>('');
@@ -85,6 +86,7 @@ const TestDetailPage = () => {
         let test = simpleResponse.tests[testName];
         let isFullTestType = false;
         let isFBSMockType = false;
+        let isBUPMockType = false;
 
         if (!test) {
           test = fullResponse.tests[testName];
@@ -104,7 +106,7 @@ const TestDetailPage = () => {
 
         if (!test) {
           test = bupMockResponse.tests[testName];
-          isFBSMockType = true; // BUP mocks have similar structure to FBS mocks
+          isBUPMockType = true; // BUP mocks use section{num}_q{number} format
           isFullTestType = true; // BUP mocks have sections and should be treated as full tests
         }
 
@@ -116,6 +118,7 @@ const TestDetailPage = () => {
         setCurrentTest(test);
         setIsFullTest(isFullTestType);
         setIsFBSMock(isFBSMockType);
+        setIsBUPMock(isBUPMockType);
 
         // Find user result based on demo status or admin status
         if (isPublicDemo) {
@@ -340,8 +343,12 @@ const TestDetailPage = () => {
       // Analyze performance on questions most students got RIGHT (easiest)
       if (sectionData.mostCorrect?.length > 0) {
         sectionData.mostCorrect.forEach((question: any) => {
-          // FBS mocks use questionNumber and q1, q2 format for responses
-          const questionKey = isFBSMock ? `q${question.questionNumber}` : question.questionId;
+          // FBS mocks use q{number} format, BUP mocks use section{num}_q{number} format
+          const questionKey = isFBSMock
+            ? `q${question.questionNumber}`
+            : isBUPMock
+              ? `${sectionNum}_q${question.questionNumber}`
+              : question.questionId;
           const userResponse = result.responses[questionKey];
           personalAnalysis[sectionNum].topRightQuestions.push({
             questionId: question.questionNumber || question.questionId,
@@ -367,8 +374,12 @@ const TestDetailPage = () => {
       // Analyze performance on questions most students got WRONG (hardest)
       if (sectionData.mostWrong?.length > 0) {
         sectionData.mostWrong.forEach((question: any) => {
-          // FBS mocks use questionNumber and q1, q2 format for responses
-          const questionKey = isFBSMock ? `q${question.questionNumber}` : question.questionId;
+          // FBS mocks use q{number} format, BUP mocks use section{num}_q{number} format
+          const questionKey = isFBSMock
+            ? `q${question.questionNumber}`
+            : isBUPMock
+              ? `${sectionNum}_q${question.questionNumber}`
+              : question.questionId;
           const userResponse = result.responses[questionKey];
           personalAnalysis[sectionNum].topWrongQuestions.push({
             questionId: question.questionNumber || question.questionId,
@@ -394,8 +405,12 @@ const TestDetailPage = () => {
       // Analyze performance on questions most students SKIPPED
       if (sectionData.mostSkipped?.length > 0) {
         sectionData.mostSkipped.forEach((question: any) => {
-          // FBS mocks use questionNumber and q1, q2 format for responses
-          const questionKey = isFBSMock ? `q${question.questionNumber}` : question.questionId;
+          // FBS mocks use q{number} format, BUP mocks use section{num}_q{number} format
+          const questionKey = isFBSMock
+            ? `q${question.questionNumber}`
+            : isBUPMock
+              ? `${sectionNum}_q${question.questionNumber}`
+              : question.questionId;
           const userResponse = result.responses[questionKey];
           personalAnalysis[sectionNum].topSkippedQuestions.push({
             questionId: question.questionNumber || question.questionId,
@@ -464,7 +479,8 @@ const TestDetailPage = () => {
       // Check if this is a BUP Mock (has testType 'bup-mock')
       if (currentTest?.testType === 'bup-mock' && sectionNum) {
         // BUP mocks use section{num}_q{number} format (e.g., "section1_q5")
-        responseKey = `section${sectionNum}_q${question.questionNumber}`;
+        // sectionNum is already in format "section1", "section2", etc.
+        responseKey = `${sectionNum}_q${question.questionNumber}`;
       } else {
         // FBS mocks use questionNumber with q{number} format
         responseKey = `q${question.questionNumber}`;
