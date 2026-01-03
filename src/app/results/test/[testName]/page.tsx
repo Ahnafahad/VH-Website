@@ -1773,8 +1773,8 @@ const TestDetailPage = () => {
                 </div>
               )}
 
-              {/* Personal Performance vs Top Questions */}
-              {isFullTest && !isFBSMock && (currentTest as FullTest).topQuestions && userResult && (
+              {/* Personal Performance vs Top Questions - IBA and BUP Mocks */}
+              {isFullTest && !isFBSMock && !isBUPMock && (currentTest as FullTest).topQuestions && userResult && (
                 <div className="bg-gradient-to-br from-white to-vh-beige/5 rounded-xl shadow-lg border border-vh-beige/30 hover:shadow-xl transition-all duration-300 p-6 mb-8">
                   <h3 className="text-lg font-semibold text-gray-800 mb-4">
                     {isPublicDemo ? "Mahmud Rahman's" : "Your"} Performance vs Class Top Questions
@@ -1899,6 +1899,159 @@ const TestDetailPage = () => {
                         {/* Performance Summary */}
                         <div className="bg-vh-beige/10 border border-vh-beige/30 p-4 rounded-lg">
                           <h6 className="font-semibold text-vh-red mb-2">Section {sectionNum} Summary</h6>
+                          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+                            <div className="text-center">
+                              <div className="text-2xl font-bold text-green-600">
+                                {analysis.topRightCorrect + analysis.topWrongCorrect + analysis.topSkippedCorrect}
+                              </div>
+                              <div className="text-xs text-gray-600">Total Correct on Top Questions</div>
+                            </div>
+                            <div className="text-center">
+                              <div className="text-2xl font-bold text-red-600">
+                                {analysis.topRightWrong + analysis.topWrongWrong + analysis.topSkippedWrong}
+                              </div>
+                              <div className="text-xs text-gray-600">Total Wrong on Top Questions</div>
+                            </div>
+                            <div className="text-center">
+                              <div className="text-2xl font-bold text-gray-600">
+                                {analysis.topRightSkipped + analysis.topWrongSkipped + analysis.topSkippedActuallySkipped}
+                              </div>
+                              <div className="text-xs text-gray-600">Total Skipped on Top Questions</div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    ));
+                  })()}
+                </div>
+              )}
+
+              {/* Personal Performance vs Top Questions - BUP Mocks */}
+              {isBUPMock && (currentTest as any).topQuestions && userResult && (
+                <div className="bg-gradient-to-br from-white to-vh-beige/5 rounded-xl shadow-lg border border-vh-beige/30 hover:shadow-xl transition-all duration-300 p-6 mb-8">
+                  <h3 className="text-lg font-semibold text-gray-800 mb-4">
+                    {isPublicDemo ? "Mahmud Rahman's" : "Your"} Performance vs Class Top Questions
+                  </h3>
+                  <p className="text-sm text-gray-600 mb-6">See how {isPublicDemo ? "Mahmud" : "you"} performed on the questions that were easiest, hardest, and most skipped by the class</p>
+
+                  {(() => {
+                    const personalAnalysis = analyzePersonalTopQuestionsPerformance();
+                    if (!personalAnalysis) {
+                      console.log('DEBUG: No personal analysis data for BUP Mock');
+                      return <div className="text-center text-gray-500 py-8">No question analysis data available</div>;
+                    }
+
+                    return Object.entries(personalAnalysis).map(([sectionNum, analysis]: [string, any]) => (
+                      <div key={sectionNum} className="mb-8">
+                        <h4 className="font-semibold text-gray-700 mb-4 text-base capitalize">{sectionNum.replace('section', 'Section ')}</h4>
+
+                        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
+                          {/* Performance on Easiest Questions */}
+                          {analysis.topRightQuestions?.length > 0 && (
+                          <div className="bg-green-50 border border-green-200 p-4 rounded-lg">
+                            <h5 className="font-semibold text-green-800 mb-3 flex items-center gap-2">
+                              <CheckCircle size={16} />
+                              Top Questions Right (Class Easiest)
+                            </h5>
+                            <div className="space-y-2 text-sm">
+                              <div className="flex justify-between">
+                                <span className="text-green-700">Got Correct:</span>
+                                <span className="font-semibold text-green-600">{analysis.topRightCorrect}</span>
+                              </div>
+                              <div className="flex justify-between">
+                                <span className="text-red-700">Got Wrong:</span>
+                                <span className="font-semibold text-red-600">{analysis.topRightWrong}</span>
+                              </div>
+                              <div className="flex justify-between">
+                                <span className="text-gray-700">Skipped:</span>
+                                <span className="font-semibold text-gray-600">{analysis.topRightSkipped}</span>
+                              </div>
+                              <div className="pt-2 border-t border-green-300">
+                                <div className="flex justify-between font-semibold">
+                                  <span className="text-green-800">Success Rate:</span>
+                                  <span className="text-green-600">
+                                    {analysis.topRightCorrect + analysis.topRightWrong > 0
+                                      ? Math.round((analysis.topRightCorrect / (analysis.topRightCorrect + analysis.topRightWrong)) * 100)
+                                      : 0}%
+                                  </span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          )}
+
+                          {/* Performance on Hardest Questions */}
+                          {analysis.topWrongQuestions?.length > 0 && (
+                          <div className="bg-red-50 border border-red-200 p-4 rounded-lg">
+                            <h5 className="font-semibold text-red-800 mb-3 flex items-center gap-2">
+                              <XCircle size={16} />
+                              Top Questions Wrong (Class Hardest)
+                            </h5>
+                            <div className="space-y-2 text-sm">
+                              <div className="flex justify-between">
+                                <span className="text-green-700">Got Correct:</span>
+                                <span className="font-semibold text-green-600">{analysis.topWrongCorrect}</span>
+                              </div>
+                              <div className="flex justify-between">
+                                <span className="text-red-700">Got Wrong:</span>
+                                <span className="font-semibold text-red-600">{analysis.topWrongWrong}</span>
+                              </div>
+                              <div className="flex justify-between">
+                                <span className="text-gray-700">Skipped:</span>
+                                <span className="font-semibold text-gray-600">{analysis.topWrongSkipped}</span>
+                              </div>
+                              <div className="pt-2 border-t border-red-300">
+                                <div className="flex justify-between font-semibold">
+                                  <span className="text-red-800">Success Rate:</span>
+                                  <span className="text-red-600">
+                                    {analysis.topWrongCorrect + analysis.topWrongWrong > 0
+                                      ? Math.round((analysis.topWrongCorrect / (analysis.topWrongCorrect + analysis.topWrongWrong)) * 100)
+                                      : 0}%
+                                  </span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          )}
+
+                          {/* Performance on Most Skipped Questions */}
+                          {analysis.topSkippedQuestions?.length > 0 && (
+                          <div className="bg-gray-50 border border-gray-200 p-4 rounded-lg">
+                            <h5 className="font-semibold text-gray-800 mb-3 flex items-center gap-2">
+                              <Clock size={16} />
+                              Top Questions Skipped (Class Most Avoided)
+                            </h5>
+                            <div className="space-y-2 text-sm">
+                              <div className="flex justify-between">
+                                <span className="text-green-700">Got Correct:</span>
+                                <span className="font-semibold text-green-600">{analysis.topSkippedCorrect}</span>
+                              </div>
+                              <div className="flex justify-between">
+                                <span className="text-red-700">Got Wrong:</span>
+                                <span className="font-semibold text-red-600">{analysis.topSkippedWrong}</span>
+                              </div>
+                              <div className="flex justify-between">
+                                <span className="text-gray-700">Also Skipped:</span>
+                                <span className="font-semibold text-gray-600">{analysis.topSkippedActuallySkipped}</span>
+                              </div>
+                              <div className="pt-2 border-t border-gray-300">
+                                <div className="flex justify-between font-semibold">
+                                  <span className="text-gray-800">Attempt Rate:</span>
+                                  <span className="text-gray-600">
+                                    {analysis.topSkippedQuestions.length > 0
+                                      ? Math.round(((analysis.topSkippedCorrect + analysis.topSkippedWrong) / analysis.topSkippedQuestions.length) * 100)
+                                      : 0}%
+                                  </span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          )}
+                        </div>
+
+                        {/* Section Summary */}
+                        <div className="bg-vh-beige/10 border border-vh-beige/30 p-4 rounded-lg">
+                          <h6 className="font-semibold text-vh-red mb-2 capitalize">{sectionNum.replace('section', 'Section ')} Summary</h6>
                           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
                             <div className="text-center">
                               <div className="text-2xl font-bold text-green-600">
