@@ -40,10 +40,13 @@ interface QuizOption {
 }
 
 interface QuizQuestion {
-  id:           string;
-  type:         'fill_blank' | 'analogy' | 'correct_usage';
-  questionText: string;
-  options:      QuizOption[];
+  id:            string;
+  type:          'fill_blank' | 'analogy' | 'correct_usage';
+  questionText:  string;
+  options:       QuizOption[];
+  correctLetter: string;
+  correctWordId: number;
+  explanation:   string;
 }
 
 interface AnswerResult {
@@ -57,9 +60,6 @@ interface AnswerResult {
 }
 
 interface SummaryQuestion extends QuizQuestion {
-  correctLetter:  string;
-  correctWordId:  number;
-  explanation:    string;
   userAnswer?: {
     selectedWordId: number | null;
     selectedWord:   string | null;
@@ -950,52 +950,66 @@ export default function QuizScreen({ themeId, themeIds, letterWordIds, sessionTy
     void runConfirm();
   }, [timeLeft]); // eslint-disable-line react-hooks/exhaustive-deps
 
-  // Confirm answer
-  const handleConfirm = useCallback(async () => {
+  // Confirm answer — instant result from client data, API records in background
+  const handleConfirm = useCallback(() => {
     if (!sessionId || !current || !selectedId || submitting || answerPhase !== 'selected') return;
 
-    // Stop the timer immediately — the user is no longer responsible for the elapsed time
+    // Stop the timer immediately
     if (timerRef.current) { clearInterval(timerRef.current); timerRef.current = null; }
 
     setSubmitting(true);
 
-    try {
-      const res = await fetch('/api/vocab/quiz/answer', {
-        method:  'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body:    JSON.stringify({ sessionId, questionId: current.id, selectedWordId: selectedId }),
-      });
+    // Show correct/wrong instantly — no network wait
+    const immediateResult: AnswerResult = {
+      isCorrect:       selectedId === current.correctWordId,
+      correctLetter:   current.correctLetter,
+      correctWordId:   current.correctWordId,
+      explanation:     current.explanation,
+      pointsEarned:    0,
+      masteryDelta:    0,
+      newMasteryLevel: '',
+    };
+    setResult(immediateResult);
+    setAnswerPhase('revealed');
 
-      const data = await res.json() as AnswerResult;
-      setResult(data);
-      setAnswerPhase('revealed');
-      if (data.pointsEarned) setTotalEarned(p => p + data.pointsEarned);
+    // Record answer in background; update points/mastery delta when it resolves
+    const isLastQuestion = currentIdx === questions.length - 1;
+    const apiPromise = fetch('/api/vocab/quiz/answer', {
+      method:  'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body:    JSON.stringify({ sessionId, questionId: current.id, selectedWordId: selectedId }),
+    })
+      .then(r => r.json() as Promise<AnswerResult>)
+      .then(data => {
+        if (data.pointsEarned) setTotalEarned(p => p + data.pointsEarned);
+        setResult(prev => prev ? { ...prev, pointsEarned: data.pointsEarned, masteryDelta: data.masteryDelta, newMasteryLevel: data.newMasteryLevel } : prev);
+        return data;
+      })
+      .catch(() => null);
 
-      // Auto-advance after 1.4s
-      setTimeout(async () => {
-        if (currentIdx === questions.length - 1) {
-          // Fetch summary
-          try {
-            const sumRes = await fetch(`/api/vocab/quiz/summary/${sessionId}`);
-            const sumData = await sumRes.json() as SummaryData;
-            if (sumData.earnedBadges?.length) push(sumData.earnedBadges);
-            setSummary(sumData);
-            setPhase('summary');
-          } catch {
-            setPhase('error');
-          }
-        } else {
-          setDirection(1);
-          setCurrentIdx(i => i + 1);
-          setAnswerPhase('idle');
-          setSelectedId(null);
-          setResult(null);
+    // Auto-advance after 1.4s
+    setTimeout(async () => {
+      if (isLastQuestion) {
+        // Wait for last answer to be recorded before fetching summary
+        try {
+          await apiPromise;
+          const sumRes  = await fetch(`/api/vocab/quiz/summary/${sessionId}`);
+          const sumData = await sumRes.json() as SummaryData;
+          if (sumData.earnedBadges?.length) push(sumData.earnedBadges);
+          setSummary(sumData);
+          setPhase('summary');
+        } catch {
+          setPhase('error');
         }
-        setSubmitting(false);
-      }, 1400);
-    } catch {
+      } else {
+        setDirection(1);
+        setCurrentIdx(i => i + 1);
+        setAnswerPhase('idle');
+        setSelectedId(null);
+        setResult(null);
+      }
       setSubmitting(false);
-    }
+    }, 1400);
   }, [sessionId, current, selectedId, submitting, answerPhase, currentIdx, questions.length]);
 
   // ── Render ─────────────────────────────────────────────────────────────────

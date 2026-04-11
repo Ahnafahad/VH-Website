@@ -368,13 +368,15 @@ async function buildSession({
     })
     .returning({ id: vocabQuizSessions.id });
 
-  // Return questions WITHOUT correctLetter (security)
+  // Return questions with correctLetter for instant client-side checking
   const safeQuestions = generated.map(q => ({
-    id:           q.id,
-    type:         q.type,
-    questionText: q.questionText,
-    options:      q.options,
-    // correctLetter intentionally omitted
+    id:            q.id,
+    type:          q.type,
+    questionText:  q.questionText,
+    options:       q.options,
+    correctLetter: q.correctLetter,
+    correctWordId: q.correctWordId,
+    explanation:   q.explanation,
   }));
 
   return {
