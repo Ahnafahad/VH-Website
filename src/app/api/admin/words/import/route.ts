@@ -30,8 +30,8 @@ const wordImportRowSchema = z.object({
   antonyms:         z.string().optional(),
   example_sentence: z.string().optional(),
   part_of_speech:   z.string().optional(),
-  unit_id:          z.number({ required_error: '"unit_id" is required' }),
-  theme_id:         z.number({ required_error: '"theme_id" is required' }),
+  unit_id:          z.number({ message: '"unit_id" is required' }),
+  theme_id:         z.number({ message: '"theme_id" is required' }),
   difficulty_base:  z.number().min(1).max(5).optional(),
 });
 
