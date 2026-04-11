@@ -222,8 +222,6 @@ export default function ReviewScreen({ words, dueCount }: Props) {
   const [submitting, setSubmitting] = useState(false);
   const [direction, setDirection]   = useState(1);
 
-  if (words.length === 0) return <NoReviews onBack={() => router.back()} />;
-
   const current  = words[idx];
   const progress = ((idx) / words.length) * 100;
 
@@ -253,6 +251,8 @@ export default function ReviewScreen({ words, dueCount }: Props) {
       setFlipped(false);
     }
   }, [current, idx, words.length, submitting]);
+
+  if (words.length === 0) return <NoReviews onBack={() => router.back()} />;
 
   if (done) {
     return (

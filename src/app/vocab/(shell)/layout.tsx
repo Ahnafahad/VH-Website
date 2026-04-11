@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import Link from 'next/link';
 import BottomNav from '@/components/vocab/BottomNav';
 import DesktopSidebar from '@/components/vocab/DesktopSidebar';
 import PageTransition from '@/components/vocab/PageTransition';
@@ -81,7 +82,7 @@ function VocabShellInner({ children }: { children: React.ReactNode }) {
         </main>
 
         {/* Back to main site — mobile only, floats above BottomNav */}
-        <a
+        <Link
           href="/"
           className="md:hidden"
           style={{
@@ -111,7 +112,7 @@ function VocabShellInner({ children }: { children: React.ReactNode }) {
             <path d="M7 1L2 5l5 4" />
           </svg>
           VH Website
-        </a>
+        </Link>
 
         {/* Bottom nav — fixed, centered, mobile only */}
         <BottomNav />

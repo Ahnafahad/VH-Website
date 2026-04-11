@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { Home, BookOpen, Zap, Trophy, User } from 'lucide-react';
 import { useSession } from 'next-auth/react';
@@ -157,7 +158,7 @@ export default function DesktopSidebar() {
       </nav>
 
       {/* Back to main site */}
-      <a
+      <Link
         href="/"
         style={{
           display:       'flex',
@@ -180,7 +181,7 @@ export default function DesktopSidebar() {
           <path d="M8 1L3 6l5 5" />
         </svg>
         VH Website
-      </a>
+      </Link>
 
       {/* User footer */}
       {userName && (
