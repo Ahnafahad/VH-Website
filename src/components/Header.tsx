@@ -133,14 +133,14 @@ const Header = () => {
                   {isGamesDropdownOpen && (
                     <div className="absolute top-full left-0 mt-2 w-56 bg-white rounded-xl shadow-2xl border border-vh-beige/30 py-2 z-10">
                       <Link
-                        href="/games/vocab-quiz"
+                        href="/vocab"
                         className="block px-4 py-3 text-gray-800 hover:text-vh-red hover:bg-vh-beige/20 transition-all duration-300 min-h-[44px] flex items-center"
                         onClick={() => {
                           setIsGamesDropdownOpen(false);
                           setIsFBSDropdownOpen(false);
                         }}
                       >
-                        Vocabulary Quiz
+                        LexiCore
                       </Link>
                       <Link
                         href="/games/mental-math"
@@ -276,11 +276,11 @@ const Header = () => {
                       Games
                     </div>
                     <Link
-                      href="/games/vocab-quiz"
+                      href="/vocab"
                       className="block px-8 py-2 text-gray-600 hover:text-vh-red hover:bg-vh-beige/10 rounded-xl transition-all duration-300 ml-4"
                       onClick={() => setIsMenuOpen(false)}
                     >
-                      Vocabulary Quiz
+                      LexiCore
                     </Link>
                     <Link
                       href="/games/mental-math"
