@@ -171,6 +171,9 @@ export default function UIPreviewPage() {
               units:         mockUnits,
               phase:         1,
               resumeThemeId: 3,
+              totalPoints:   1240,
+              masteredWords: 42,
+              totalWords:    200,
             }}
           />
         </Section>
