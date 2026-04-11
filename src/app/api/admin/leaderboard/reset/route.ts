@@ -37,7 +37,7 @@ export async function POST(req: NextRequest) {
     const body   = await req.json();
     const parsed = bodySchema.safeParse(body);
     if (!parsed.success) {
-      throw new ApiException(parsed.error.errors[0]?.message ?? 'Invalid body', 400);
+      throw new ApiException(parsed.error.issues[0]?.message ?? 'Invalid body', 400);
     }
 
     const { sessionLabel } = parsed.data;
