@@ -175,6 +175,7 @@ export default function UIPreviewPage() {
               masteredWords: 42,
               totalWords:    200,
             }}
+            letterIndex={[]}
           />
         </Section>
 
