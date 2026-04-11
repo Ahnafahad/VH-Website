@@ -14,6 +14,7 @@
 
 import { NextRequest } from 'next/server';
 import { eq, and, sql } from 'drizzle-orm';
+import { revalidateTag } from 'next/cache';
 import { db } from '@/lib/db';
 import {
   users,
@@ -25,6 +26,7 @@ import {
   vocabWords,
 } from '@/lib/db/schema';
 import { safeApiHandler, validateAuth, ApiException } from '@/lib/api-utils';
+import { VocabCacheTag } from '@/lib/vocab/cache-keys';
 import { nextSrsState, isLongGap }  from '@/lib/vocab/srs/engine';
 import { quizDelta, masteryLevel }  from '@/lib/vocab/mastery-score';
 import type { GeneratedQuestion }   from '@/lib/vocab/quiz-generator';
@@ -267,6 +269,9 @@ export async function POST(req: NextRequest) {
         .set({ correctAnswers: sql`correct_answers + 1` })
         .where(eq(vocabQuizSessions.id, sessionId));
     }
+
+    revalidateTag(VocabCacheTag.home(email));
+    revalidateTag(VocabCacheTag.study(email));
 
     return {
       isCorrect,

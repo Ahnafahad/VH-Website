@@ -1,4 +1,4 @@
-import { integer, real, sqliteTable, text, unique } from 'drizzle-orm/sqlite-core';
+import { integer, real, sqliteTable, text, unique, index } from 'drizzle-orm/sqlite-core';
 import { sql } from 'drizzle-orm';
 
 // ─── Users ────────────────────────────────────────────────────────────────────
@@ -181,7 +181,9 @@ export const vocabWords = sqliteTable('vocab_words', {
   difficultyBase:  integer('difficulty_base').notNull().default(3), // 1–5
   createdAt:       integer('created_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
   updatedAt:       integer('updated_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
-});
+}, (t) => [
+  index('idx_vocab_words_theme_id').on(t.themeId),
+]);
 
 // ─── User Progress ────────────────────────────────────────────────────────────
 // One row per user — overall stats, streak, points, deadline, phase.
@@ -243,7 +245,11 @@ export const vocabUserWordRecords = sqliteTable('vocab_user_word_records', {
   longGapCorrect:        integer('long_gap_correct', { mode: 'boolean' }).notNull().default(false),
   createdAt:             integer('created_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
   updatedAt:             integer('updated_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
-}, (t) => [unique().on(t.userId, t.wordId)]);
+}, (t) => [
+  unique().on(t.userId, t.wordId),
+  index('idx_uwr_srs_due').on(t.userId, t.inSrsPool, t.srsNextReviewDate),
+  index('idx_uwr_mastery').on(t.userId, t.masteryLevel),
+]);
 
 // ─── Confusion Pairs ──────────────────────────────────────────────────────────
 // Tracks which words a user confuses with which other words.
@@ -301,7 +307,9 @@ export const vocabQuizSessions = sqliteTable('vocab_quiz_sessions', {
   letterGroup:      text('letter_group'),
   startedAt:      integer('started_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
   completedAt:    integer('completed_at', { mode: 'timestamp' }),
-});
+}, (t) => [
+  index('idx_quiz_sessions_user_status').on(t.userId, t.status, t.sessionType),
+]);
 
 // ─── Quiz Answers ─────────────────────────────────────────────────────────────
 

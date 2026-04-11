@@ -11,12 +11,14 @@
 
 import { NextRequest, NextResponse } from 'next/server';
 import { eq, sql } from 'drizzle-orm';
+import { revalidateTag } from 'next/cache';
 import { db, users, vocabUserProgress } from '@/lib/db';
 import { safeApiHandler, validateAuth, ApiException } from '@/lib/api-utils';
 import { checkBadges } from '@/lib/vocab/badges/checker';
 import { rateLimit } from '@/lib/rate-limit';
 import { getServerSession } from 'next-auth/next';
 import { authOptions } from '@/lib/auth';
+import { VocabCacheTag } from '@/lib/vocab/cache-keys';
 
 const DAILY_LOGIN_POINTS = 5;
 
@@ -78,6 +80,8 @@ async function handleDailyLogin() {
     streakDays:    newStreakDays,
     longestStreak: newLongestStreak,
   }).catch(() => []);
+
+  revalidateTag(VocabCacheTag.home(email));
 
   return {
     awarded:      true,

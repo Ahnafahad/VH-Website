@@ -3,6 +3,8 @@ import {
   vocabFlashcardSessions, vocabThemes, vocabQuizSessions, vocabWords,
 } from '@/lib/db';
 import { eq, and, lte, count, sql, inArray } from 'drizzle-orm';
+import { unstable_cache } from 'next/cache';
+import { VocabCacheTag } from './cache-keys';
 
 export interface MasteryBreakdown {
   new:      number;
@@ -34,7 +36,7 @@ export interface HomeData {
   masteryBreakdown: MasteryBreakdown;
 }
 
-export async function getHomeData(email: string): Promise<HomeData | null> {
+async function _getHomeData(email: string): Promise<HomeData | null> {
   const [user] = await db
     .select({ id: users.id, name: users.name })
     .from(users)
@@ -208,4 +210,12 @@ export async function getHomeData(email: string): Promise<HomeData | null> {
     sessions,
     masteryBreakdown: breakdown,
   };
+}
+
+export function getHomeData(email: string) {
+  return unstable_cache(
+    () => _getHomeData(email),
+    ['vocab-home', email],
+    { revalidate: 300, tags: [VocabCacheTag.home(email)] },
+  )();
 }

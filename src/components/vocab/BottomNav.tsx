@@ -1,7 +1,8 @@
 'use client';
 
+import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 import { Home, BookOpen, Zap, Trophy, User } from 'lucide-react';
 
 const TABS = [
@@ -14,7 +15,6 @@ const TABS = [
 
 export default function BottomNav() {
   const pathname = usePathname();
-  const router   = useRouter();
 
   const active = TABS.find(t => pathname.startsWith(t.href))?.id ?? 'home';
 
@@ -36,9 +36,10 @@ export default function BottomNav() {
           const isActive = active === tab.id;
 
           return (
-            <button
+            <Link
               key={tab.id}
-              onClick={() => router.push(tab.href)}
+              href={tab.href}
+              prefetch={true}
               aria-label={tab.label}
               aria-current={isActive ? 'page' : undefined}
               className="relative flex flex-col items-center justify-end gap-1 min-w-[44px] min-h-[52px] px-3 pb-1"
@@ -97,7 +98,7 @@ export default function BottomNav() {
               >
                 {tab.label}
               </motion.span>
-            </button>
+            </Link>
           );
         })}
       </div>

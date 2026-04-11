@@ -1,7 +1,9 @@
 import { getServerSession }            from 'next-auth';
 import { NextRequest, NextResponse }   from 'next/server';
 import { z }                           from 'zod';
+import { revalidateTag }               from 'next/cache';
 import { authOptions }                 from '@/lib/auth';
+import { VocabCacheTag }               from '@/lib/vocab/cache-keys';
 import {
   db, users, vocabFlashcardSessions, vocabUserWordRecords,
   vocabUserProgress, vocabWords,
@@ -205,6 +207,10 @@ export async function POST(
   if (isLast && result.sessWasIncomplete) {
     earnedBadges = await checkBadges(user.id, 'flashcard_complete').catch((err) => { console.error('[badge-check:flashcard]', err); return []; });
   }
+
+  revalidateTag(VocabCacheTag.home(session.user.email!));
+  revalidateTag(VocabCacheTag.study(session.user.email!));
+  revalidateTag(VocabCacheTag.flashcard(session.user.email!, themeId));
 
   return NextResponse.json({ ok: true, pointsEarned: result.pointsEarned, earnedBadges });
 }

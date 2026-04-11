@@ -2,7 +2,9 @@ import {
   db, users, vocabThemes, vocabWords, vocabUnits,
   vocabFlashcardSessions, vocabUserWordRecords, vocabUserProgress,
 } from '@/lib/db';
-import { eq, and } from 'drizzle-orm';
+import { eq, and, inArray } from 'drizzle-orm';
+import { unstable_cache } from 'next/cache';
+import { VocabCacheTag } from './cache-keys';
 
 function safeParseArray(json: string | null): string[] {
   if (!json) return [];
@@ -34,7 +36,7 @@ export interface FlashcardSessionData {
   letterGroup?:  string;
 }
 
-export async function getFlashcardSession(
+async function _getFlashcardSession(
   email: string,
   themeId: number,
 ): Promise<FlashcardSessionData | null> {
@@ -43,53 +45,59 @@ export async function getFlashcardSession(
     .from(users).where(eq(users.email, email)).limit(1);
   if (!user) return null;
 
-  // Get theme + unit name (joined from vocabUnits)
-  const [theme] = await db
-    .select({
-      id:       vocabThemes.id,
-      name:     vocabThemes.name,
-      unitId:   vocabThemes.unitId,
-      unitName: vocabUnits.name,
-    })
-    .from(vocabThemes)
-    .innerJoin(vocabUnits, eq(vocabThemes.unitId, vocabUnits.id))
-    .where(eq(vocabThemes.id, themeId))
-    .limit(1);
+  // Parallelize: theme metadata and words simultaneously
+  const [[theme], rawWords] = await Promise.all([
+    db
+      .select({
+        id:       vocabThemes.id,
+        name:     vocabThemes.name,
+        unitId:   vocabThemes.unitId,
+        unitName: vocabUnits.name,
+      })
+      .from(vocabThemes)
+      .innerJoin(vocabUnits, eq(vocabThemes.unitId, vocabUnits.id))
+      .where(eq(vocabThemes.id, themeId))
+      .limit(1),
+    db
+      .select()
+      .from(vocabWords)
+      .where(eq(vocabWords.themeId, themeId))
+      .orderBy(vocabWords.id),
+  ]);
   if (!theme) return null;
-
-  // Get words for this theme
-  const rawWords = await db
-    .select()
-    .from(vocabWords)
-    .where(eq(vocabWords.themeId, themeId))
-    .orderBy(vocabWords.id);
-
   if (rawWords.length === 0) return null;
 
-  // Get word records for mastery
   const wordIds = rawWords.map(w => w.id);
-  const records = await db
-    .select({
-      wordId:       vocabUserWordRecords.wordId,
-      masteryLevel: vocabUserWordRecords.masteryLevel,
-      exposureCount:vocabUserWordRecords.exposureCount,
-    })
-    .from(vocabUserWordRecords)
-    .where(eq(vocabUserWordRecords.userId, user.id));
 
-  const recordMap = new Map(records.map(r => [r.wordId, r]));
-
-  // Get or create flashcard session
-  const [existing] = await db
-    .select()
-    .from(vocabFlashcardSessions)
-    .where(
-      and(
+  // Parallelize: word records (filtered to theme's words), session, and progress
+  const [records, [existing], [progress]] = await Promise.all([
+    db
+      .select({
+        wordId:        vocabUserWordRecords.wordId,
+        masteryLevel:  vocabUserWordRecords.masteryLevel,
+        exposureCount: vocabUserWordRecords.exposureCount,
+      })
+      .from(vocabUserWordRecords)
+      .where(and(
+        eq(vocabUserWordRecords.userId, user.id),
+        inArray(vocabUserWordRecords.wordId, wordIds),
+      )),
+    db
+      .select()
+      .from(vocabFlashcardSessions)
+      .where(and(
         eq(vocabFlashcardSessions.userId, user.id),
         eq(vocabFlashcardSessions.themeId, themeId),
-      )
-    )
-    .limit(1);
+      ))
+      .limit(1),
+    db
+      .select({ totalPoints: vocabUserProgress.totalPoints })
+      .from(vocabUserProgress)
+      .where(eq(vocabUserProgress.userId, user.id))
+      .limit(1),
+  ]);
+
+  const recordMap = new Map(records.map(r => [r.wordId, r]));
 
   let sessionId: number | null = null;
   let currentIndex = 0;
@@ -132,13 +140,6 @@ export async function getFlashcardSession(
     sessionId = inserted?.id ?? null;
   }
 
-  // Get user's total points
-  const [progress] = await db
-    .select({ totalPoints: vocabUserProgress.totalPoints })
-    .from(vocabUserProgress)
-    .where(eq(vocabUserProgress.userId, user.id))
-    .limit(1);
-
   const words: FlashcardWord[] = rawWords.map(w => {
     const rec = recordMap.get(w.id);
     return {
@@ -164,4 +165,12 @@ export async function getFlashcardSession(
     sessionId,
     totalPoints: progress?.totalPoints ?? 0,
   };
+}
+
+export function getFlashcardSession(email: string, themeId: number) {
+  return unstable_cache(
+    () => _getFlashcardSession(email, themeId),
+    ['vocab-flashcard', email, String(themeId)],
+    { revalidate: 120, tags: [VocabCacheTag.flashcard(email, themeId)] },
+  )();
 }

@@ -1,7 +1,9 @@
 import { getServerSession }            from 'next-auth';
 import { NextRequest, NextResponse }   from 'next/server';
 import { z }                           from 'zod';
+import { revalidateTag }               from 'next/cache';
 import { authOptions }                 from '@/lib/auth';
+import { VocabCacheTag }               from '@/lib/vocab/cache-keys';
 import {
   db, users, vocabUserWordRecords, vocabUserProgress,
 } from '@/lib/db';
@@ -100,6 +102,9 @@ export async function POST(req: NextRequest) {
       })
       .where(eq(vocabUserProgress.userId, user.id));
   }
+
+  revalidateTag(VocabCacheTag.home(session.user.email!));
+  revalidateTag(VocabCacheTag.practiceUi(session.user.email!));
 
   return NextResponse.json({ ok: true, pointsEarned });
 }

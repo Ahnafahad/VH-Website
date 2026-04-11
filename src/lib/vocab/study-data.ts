@@ -2,7 +2,9 @@ import {
   db, users, vocabUnits, vocabThemes, vocabWords, vocabUserWordRecords,
   vocabFlashcardSessions, vocabQuizSessions, vocabUserProgress,
 } from '@/lib/db';
-import { eq, and, sql, count } from 'drizzle-orm';
+import { eq, and, sql } from 'drizzle-orm';
+import { unstable_cache } from 'next/cache';
+import { VocabCacheTag } from './cache-keys';
 
 export type ThemeStatus = 'not_started' | 'flashcards_done' | 'quiz_pending' | 'complete';
 
@@ -26,7 +28,7 @@ export interface UnitWithThemes {
 // Units 9+ are locked for phase-2 users
 const PHASE1_MAX_UNIT_ORDER = 8;
 
-export async function getStudyData(email: string): Promise<{
+async function _getStudyData(email: string): Promise<{
   units:          UnitWithThemes[];
   phase:          number;
   resumeThemeId:  number | null;
@@ -41,55 +43,54 @@ export async function getStudyData(email: string): Promise<{
     .limit(1);
   if (!user) return null;
 
-  const [progress] = await db
-    .select({
-      phase:       vocabUserProgress.phase,
-      totalPoints: vocabUserProgress.totalPoints,
-    })
-    .from(vocabUserProgress)
-    .where(eq(vocabUserProgress.userId, user.id))
-    .limit(1);
+  // Parallelize all queries — progress, units, themes, sessions, quizzes
+  const [[progress], units, themes, flashcardSessions, completedQuizzes] = await Promise.all([
+    db
+      .select({
+        phase:       vocabUserProgress.phase,
+        totalPoints: vocabUserProgress.totalPoints,
+      })
+      .from(vocabUserProgress)
+      .where(eq(vocabUserProgress.userId, user.id))
+      .limit(1),
+
+    db
+      .select()
+      .from(vocabUnits)
+      .orderBy(vocabUnits.order),
+
+    db
+      .select({
+        id:        vocabThemes.id,
+        unitId:    vocabThemes.unitId,
+        name:      vocabThemes.name,
+        order:     vocabThemes.order,
+        wordCount: sql<number>`count(${vocabWords.id})`.as('word_count'),
+      })
+      .from(vocabThemes)
+      .leftJoin(vocabWords, eq(vocabWords.themeId, vocabThemes.id))
+      .groupBy(vocabThemes.id)
+      .orderBy(vocabThemes.order),
+
+    db
+      .select({ themeId: vocabFlashcardSessions.themeId, status: vocabFlashcardSessions.status })
+      .from(vocabFlashcardSessions)
+      .where(eq(vocabFlashcardSessions.userId, user.id)),
+
+    db
+      .select({ themeId: vocabQuizSessions.themeId })
+      .from(vocabQuizSessions)
+      .where(
+        and(
+          eq(vocabQuizSessions.userId, user.id),
+          eq(vocabQuizSessions.status, 'complete'),
+          eq(vocabQuizSessions.sessionType, 'study'),
+        )
+      ),
+  ]);
 
   const phase       = progress?.phase       ?? 2;
   const totalPoints = progress?.totalPoints ?? 0;
-
-  // Load all units
-  const units = await db
-    .select()
-    .from(vocabUnits)
-    .orderBy(vocabUnits.order);
-
-  // Load all themes with word counts (LEFT JOIN to count words per theme)
-  const themes = await db
-    .select({
-      id:        vocabThemes.id,
-      unitId:    vocabThemes.unitId,
-      name:      vocabThemes.name,
-      order:     vocabThemes.order,
-      wordCount: sql<number>`count(${vocabWords.id})`.as('word_count'),
-    })
-    .from(vocabThemes)
-    .leftJoin(vocabWords, eq(vocabWords.themeId, vocabThemes.id))
-    .groupBy(vocabThemes.id)
-    .orderBy(vocabThemes.order);
-
-  // Load user's flashcard sessions (to determine status)
-  const flashcardSessions = await db
-    .select({ themeId: vocabFlashcardSessions.themeId, status: vocabFlashcardSessions.status })
-    .from(vocabFlashcardSessions)
-    .where(eq(vocabFlashcardSessions.userId, user.id));
-
-  // Load completed quiz sessions per theme
-  const completedQuizzes = await db
-    .select({ themeId: vocabQuizSessions.themeId })
-    .from(vocabQuizSessions)
-    .where(
-      and(
-        eq(vocabQuizSessions.userId, user.id),
-        eq(vocabQuizSessions.status, 'complete'),
-        eq(vocabQuizSessions.sessionType, 'study'),
-      )
-    );
 
   const flashcardMap  = new Map(flashcardSessions.map(s => [s.themeId, s.status]));
   const quizDoneSet   = new Set(completedQuizzes.map(q => q.themeId));
@@ -131,4 +132,12 @@ export async function getStudyData(email: string): Promise<{
     .reduce((acc, t) => acc + t.wordCount, 0);
 
   return { units: result, phase, resumeThemeId, totalPoints, masteredWords, totalWords };
+}
+
+export function getStudyData(email: string) {
+  return unstable_cache(
+    () => _getStudyData(email),
+    ['vocab-study', email],
+    { revalidate: 300, tags: [VocabCacheTag.study(email)] },
+  )();
 }

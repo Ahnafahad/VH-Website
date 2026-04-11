@@ -1,9 +1,15 @@
 import { getServerSession } from 'next-auth';
 import { NextResponse } from 'next/server';
+import { after } from 'next/server';
+import { revalidateTag } from 'next/cache';
 import { authOptions } from '@/lib/auth';
 import { db, users, vocabUserProgress } from '@/lib/db';
 import { eq } from 'drizzle-orm';
 import { z } from 'zod';
+import { VocabCacheTag } from '@/lib/vocab/cache-keys';
+import { getHomeData } from '@/lib/vocab/home-data';
+import { getStudyData } from '@/lib/vocab/study-data';
+import { getPracticePageData } from '@/lib/vocab/practice-data';
 
 const schema = z.object({
   deadline:    z.string().datetime().optional(),
@@ -62,6 +68,22 @@ export async function POST(req: Request) {
         updatedAt:          new Date(),
       },
     });
+
+  const email = session.user.email;
+
+  // Invalidate any stale cache entries for this user
+  revalidateTag(VocabCacheTag.home(email));
+  revalidateTag(VocabCacheTag.study(email));
+  revalidateTag(VocabCacheTag.practiceUi(email));
+
+  // After response is sent, warm all three caches so first navigation is instant
+  after(async () => {
+    await Promise.all([
+      getHomeData(email).catch(() => null),
+      getStudyData(email).catch(() => null),
+      getPracticePageData(email).catch(() => null),
+    ]);
+  });
 
   return NextResponse.json({ ok: true });
 }
