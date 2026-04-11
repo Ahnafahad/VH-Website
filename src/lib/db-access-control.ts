@@ -1,386 +1,140 @@
 /**
- * Hybrid Access Control System
- *
- * Admins: Stored in access-control.json (simple, no bootstrap issues)
- * Students: Stored in MongoDB (dynamic management via admin panel)
+ * Access control layer — backed by Turso (libSQL).
+ * Single source of truth: users + user_access tables.
+ * 60-second per-email cache to reduce DB round-trips.
  */
+import { db } from '@/lib/db';
+import { users, userAccess } from '@/lib/db/schema';
+import { eq, and } from 'drizzle-orm';
+import type { UserWithProducts, UserProduct } from '@/lib/db/schema';
 
-import { connectToDatabase } from '@/lib/db';
-import User from '@/lib/models/User';
-import fs from 'fs';
-import path from 'path';
+// ─── Cache ────────────────────────────────────────────────────────────────────
 
-// Cache for frequently accessed data (with TTL)
-const emailCache: Map<string, { user: any; timestamp: number }> = new Map();
-const CACHE_TTL = 60000; // 1 minute
+interface CacheEntry {
+  user: UserWithProducts | null;
+  expiresAt: number;
+}
 
-// Load admins from JSON file
-let adminsFromJson: any[] = [];
-try {
-  const jsonPath = path.join(process.cwd(), 'access-control.json');
-  console.log('[Access Control] Attempting to load admins from:', jsonPath);
+const cache = new Map<string, CacheEntry>();
+const CACHE_TTL_MS = 60_000;
 
-  if (fs.existsSync(jsonPath)) {
-    const jsonData = JSON.parse(fs.readFileSync(jsonPath, 'utf-8'));
-    adminsFromJson = jsonData.admins || [];
-    console.log(`[Access Control] Successfully loaded ${adminsFromJson.length} admins from JSON`);
+export function clearAccessControlCache(email?: string) {
+  if (email) {
+    cache.delete(email.toLowerCase());
   } else {
-    console.warn('[Access Control] access-control.json not found at:', jsonPath);
-    console.warn('[Access Control] Current working directory:', process.cwd());
-    console.warn('[Access Control] Continuing without JSON admins - all admins must be in database');
-  }
-} catch (error) {
-  console.error('[Access Control] Failed to load admins from JSON:', error);
-  console.error('[Access Control] Error details:', error instanceof Error ? error.message : String(error));
-  // Continue execution - admins can exist in database
-}
-
-/**
- * Get admin from JSON
- */
-function getAdminFromJson(email: string): any | null {
-  const normalizedEmail = email.toLowerCase();
-  const admin = adminsFromJson.find(admin =>
-    admin.email.toLowerCase() === normalizedEmail && admin.active !== false
-  );
-  return admin || null;
-}
-
-/**
- * Clear the cache (useful after user updates)
- */
-export function clearAccessControlCache() {
-  emailCache.clear();
-}
-
-/**
- * Get user from cache, JSON (admins), or database (students)
- */
-async function getCachedUser(email: string): Promise<any | null> {
-  const normalizedEmail = email.toLowerCase();
-  console.log('[getCachedUser] Looking up:', normalizedEmail);
-
-  // Check cache
-  const cached = emailCache.get(normalizedEmail);
-  if (cached && Date.now() - cached.timestamp < CACHE_TTL) {
-    console.log('[getCachedUser] Cache hit for:', normalizedEmail);
-    return cached.user;
-  }
-
-  // Check JSON for admins first
-  const adminFromJson = getAdminFromJson(normalizedEmail);
-  if (adminFromJson) {
-    console.log('[getCachedUser] Found admin in JSON:', normalizedEmail);
-    const adminUser = {
-      email: adminFromJson.email,
-      name: adminFromJson.name,
-      role: adminFromJson.role,
-      permissions: adminFromJson.permissions || [],
-      active: adminFromJson.active !== false
-    };
-    emailCache.set(normalizedEmail, { user: adminUser, timestamp: Date.now() });
-    return adminUser;
-  }
-
-  // If not admin, check database for students
-  console.log('[getCachedUser] Not in JSON, checking database for student:', normalizedEmail);
-  try {
-    await connectToDatabase();
-    console.log('[getCachedUser] Database connected');
-
-    const user = await User.findOne({ email: normalizedEmail, active: true }).lean();
-    console.log('[getCachedUser] Database query result:', user ? `Found user with role: ${(user as any).role}` : 'No user found');
-
-    // Update cache
-    if (user) {
-      emailCache.set(normalizedEmail, { user, timestamp: Date.now() });
-      console.log('[getCachedUser] User cached');
-    }
-
-    return user;
-  } catch (error) {
-    console.error('[getCachedUser] Database error:', error);
-    throw error;
+    cache.clear();
   }
 }
 
-/**
- * Check if an email is authorized (admin or student)
- */
+// ─── Core lookup ─────────────────────────────────────────────────────────────
+
+export async function getCachedUser(email: string): Promise<UserWithProducts | null> {
+  const key = email.toLowerCase();
+  const now = Date.now();
+  const cached = cache.get(key);
+  if (cached && cached.expiresAt > now) return cached.user;
+
+  const user = await fetchUserWithProducts(key);
+  cache.set(key, { user, expiresAt: now + CACHE_TTL_MS });
+  return user;
+}
+
+async function fetchUserWithProducts(email: string): Promise<UserWithProducts | null> {
+  const row = await db
+    .select()
+    .from(users)
+    .where(and(eq(users.email, email), eq(users.status, 'active')))
+    .get();
+
+  if (!row) return null;
+
+  const access = await db
+    .select({ product: userAccess.product })
+    .from(userAccess)
+    .where(and(eq(userAccess.userId, row.id), eq(userAccess.active, true)));
+
+  return {
+    ...row,
+    products: access.map(a => a.product as UserProduct),
+  };
+}
+
+// ─── Access checks ────────────────────────────────────────────────────────────
+
 export async function isEmailAuthorized(email: string): Promise<boolean> {
-  console.log('[isEmailAuthorized] Checking email:', email);
-  if (!email) {
-    console.log('[isEmailAuthorized] Empty email provided');
-    return false;
-  }
-
-  try {
-    const user = await getCachedUser(email);
-    console.log('[isEmailAuthorized] User found:', !!user, user ? `(role: ${user.role})` : '');
-    return !!user;
-  } catch (error) {
-    console.error('[isEmailAuthorized] Error checking email authorization:', error);
-    return false;
-  }
+  const user = await getCachedUser(email.toLowerCase());
+  return user !== null;
 }
 
-/**
- * Check if an email belongs to an admin
- */
 export async function isAdminEmail(email: string): Promise<boolean> {
-  console.log('[isAdminEmail] Checking email:', email);
-  if (!email) {
-    console.log('[isAdminEmail] Empty email provided');
-    return false;
-  }
-
-  try {
-    const user = await getCachedUser(email);
-    const isAdmin = user && (user.role === 'super_admin' || user.role === 'admin');
-    console.log('[isAdminEmail] User found:', !!user, 'Role:', user?.role, 'Is Admin:', isAdmin);
-    return isAdmin;
-  } catch (error) {
-    console.error('[isAdminEmail] Error checking admin email:', error);
-    return false;
-  }
+  const user = await getCachedUser(email.toLowerCase());
+  return user?.role === 'admin' || user?.role === 'super_admin';
 }
 
-/**
- * Check if an email belongs to a student
- */
-export async function isStudentEmail(email: string): Promise<boolean> {
-  if (!email) return false;
-
-  try {
-    const user = await getCachedUser(email);
-    return user && user.role === 'student';
-  } catch (error) {
-    console.error('Error checking student email:', error);
-    return false;
-  }
+export async function isSuperAdminEmail(email: string): Promise<boolean> {
+  const user = await getCachedUser(email.toLowerCase());
+  return user?.role === 'super_admin';
 }
 
-/**
- * Get user information by email
- */
-export async function getUserByEmail(email: string): Promise<any | null> {
-  if (!email) return null;
-
-  try {
-    return await getCachedUser(email);
-  } catch (error) {
-    console.error('Error getting user by email:', error);
-    return null;
-  }
+export async function getUserByEmail(email: string): Promise<UserWithProducts | null> {
+  return getCachedUser(email.toLowerCase());
 }
 
-/**
- * Get student by student ID
- */
-export async function getStudentById(studentId: string): Promise<any | null> {
-  if (!studentId) return null;
-
-  try {
-    await connectToDatabase();
-    const student = await User.findOne({ studentId, role: 'student', active: true }).lean();
-    return student;
-  } catch (error) {
-    console.error('Error getting student by ID:', error);
-    return null;
-  }
+export async function getUserById(id: number): Promise<UserWithProducts | null> {
+  const row = await db.select().from(users).where(eq(users.id, id)).get();
+  if (!row) return null;
+  const access = await db
+    .select({ product: userAccess.product })
+    .from(userAccess)
+    .where(and(eq(userAccess.userId, row.id), eq(userAccess.active, true)));
+  return { ...row, products: access.map(a => a.product as UserProduct) };
 }
 
-/**
- * Check if user has specific permission
- */
-export async function hasPermission(email: string, permission: string): Promise<boolean> {
-  try {
-    const user = await getCachedUser(email);
-    return user ? user.permissions.includes(permission) : false;
-  } catch (error) {
-    console.error('Error checking permission:', error);
-    return false;
-  }
+// ─── Product/access helpers ───────────────────────────────────────────────────
+
+/** Derive legacy accessTypes + mockAccess from the products array */
+export function computeAccessFromProducts(user: UserWithProducts) {
+  const isAdmin = user.role === 'admin' || user.role === 'super_admin';
+  const p = user.products;
+  return {
+    accessTypes: {
+      IBA: isAdmin || p.includes('iba'),
+      FBS: isAdmin || p.includes('fbs'),
+    },
+    mockAccess: {
+      duIba:       isAdmin || p.includes('iba'),
+      bupIba:      isAdmin || p.includes('iba'),
+      duFbs:       isAdmin || p.includes('fbs'),
+      bupFbs:      isAdmin || p.includes('fbs'),
+      fbsDetailed: isAdmin || p.includes('fbs_detailed'),
+    },
+  };
 }
 
-/**
- * Get all authorized emails (admins from JSON + students from DB)
- */
-export async function getAuthorizedEmails(): Promise<string[]> {
-  try {
-    // Get admins from JSON
-    const adminEmails = adminsFromJson
-      .filter(admin => admin.active !== false)
-      .map(admin => admin.email.toLowerCase());
-
-    // Get students from database
-    await connectToDatabase();
-    const students = await User.find({ role: 'student', active: true }).select('email').lean();
-    const studentEmails = students.map(s => s.email);
-
-    // Combine both
-    return [...adminEmails, ...studentEmails];
-  } catch (error) {
-    console.error('Error getting authorized emails:', error);
-    return [];
-  }
+export async function hasProduct(email: string, product: UserProduct): Promise<boolean> {
+  const user = await getCachedUser(email.toLowerCase());
+  if (!user) return false;
+  if (user.role === 'admin' || user.role === 'super_admin') return true;
+  return user.products.includes(product);
 }
 
-/**
- * Get all admin emails (from JSON)
- */
-export async function getAdminEmails(): Promise<string[]> {
-  try {
-    return adminsFromJson
-      .filter(admin => admin.active !== false)
-      .map(admin => admin.email.toLowerCase());
-  } catch (error) {
-    console.error('Error getting admin emails:', error);
-    return [];
-  }
+// ─── Admin product-grant helpers ──────────────────────────────────────────────
+
+export async function grantProduct(userId: number, product: UserProduct, grantedBy?: number) {
+  await db
+    .insert(userAccess)
+    .values({ userId, product, active: true, grantedBy })
+    .onConflictDoUpdate({
+      target: [userAccess.userId, userAccess.product],
+      set: { active: true, grantedBy },
+    });
+  clearAccessControlCache();
 }
 
-/**
- * Get all student emails
- */
-export async function getStudentEmails(): Promise<string[]> {
-  try {
-    await connectToDatabase();
-    const students = await User.find({ role: 'student', active: true }).select('email').lean();
-    return students.map(s => s.email);
-  } catch (error) {
-    console.error('Error getting student emails:', error);
-    return [];
-  }
-}
-
-/**
- * Get access control statistics
- */
-export async function getAccessControlStats() {
-  try {
-    await connectToDatabase();
-
-    const [totalUsers, activeAdmins, activeStudents, superAdmins, regularAdmins] = await Promise.all([
-      User.countDocuments({ active: true }),
-      User.countDocuments({ role: { $in: ['super_admin', 'admin'] }, active: true }),
-      User.countDocuments({ role: 'student', active: true }),
-      User.countDocuments({ role: 'super_admin', active: true }),
-      User.countDocuments({ role: 'admin', active: true })
-    ]);
-
-    return {
-      totalUsers,
-      activeAdmins,
-      activeStudents,
-      superAdmins,
-      regularAdmins,
-      lastUpdated: new Date().toISOString(),
-      version: '2.0.0-database',
-      source: 'mongodb'
-    };
-  } catch (error) {
-    console.error('Error getting access control stats:', error);
-    return {
-      totalUsers: 0,
-      activeAdmins: 0,
-      activeStudents: 0,
-      superAdmins: 0,
-      regularAdmins: 0,
-      lastUpdated: new Date().toISOString(),
-      version: '2.0.0-database',
-      source: 'mongodb'
-    };
-  }
-}
-
-/**
- * Check if user has access to a specific mock
- */
-export async function hasMockAccess(email: string, mockName: string): Promise<boolean> {
-  if (!email || !mockName) return false;
-
-  try {
-    await connectToDatabase();
-    const user = await User.findOne({ email: email.toLowerCase(), active: true });
-
-    if (!user) return false;
-
-    // Admins have access to all mocks
-    if (user.role === 'super_admin' || user.role === 'admin') {
-      return true;
-    }
-
-    // For students, check access types and individual mock access
-    const normalizedMockName = mockName.toLowerCase().replace(/[- ]/g, '');
-    const mockAccess = user.mockAccess;
-    const accessTypes = user.accessTypes;
-
-    switch (normalizedMockName) {
-      case 'duiba':
-        return mockAccess.duIba || accessTypes.IBA;
-      case 'bupiba':
-        return mockAccess.bupIba || accessTypes.IBA;
-      case 'dufbs':
-        return mockAccess.duFbs || accessTypes.FBS;
-      case 'bupfbs':
-        return mockAccess.bupFbs || accessTypes.FBS;
-      case 'fbsdetailed':
-        return mockAccess.fbsDetailed;
-      default:
-        return false;
-    }
-  } catch (error) {
-    console.error('Error checking mock access:', error);
-    return false;
-  }
-}
-
-/**
- * Get computed mock access for a user
- */
-export async function getComputedMockAccess(email: string): Promise<any> {
-  try {
-    await connectToDatabase();
-    const user = await User.findOne({ email: email.toLowerCase(), active: true });
-
-    if (!user) {
-      return {
-        duIba: false,
-        bupIba: false,
-        duFbs: false,
-        bupFbs: false,
-        fbsDetailed: false
-      };
-    }
-
-    // Admins have access to all mocks
-    if (user.role === 'super_admin' || user.role === 'admin') {
-      return {
-        duIba: true,
-        bupIba: true,
-        duFbs: true,
-        bupFbs: true,
-        fbsDetailed: true
-      };
-    }
-
-    // For students, combine access types and individual mock access
-    return {
-      duIba: user.mockAccess.duIba || user.accessTypes.IBA,
-      bupIba: user.mockAccess.bupIba || user.accessTypes.IBA,
-      duFbs: user.mockAccess.duFbs || user.accessTypes.FBS,
-      bupFbs: user.mockAccess.bupFbs || user.accessTypes.FBS,
-      fbsDetailed: user.mockAccess.fbsDetailed
-    };
-  } catch (error) {
-    console.error('Error getting computed mock access:', error);
-    return {
-      duIba: false,
-      bupIba: false,
-      duFbs: false,
-      bupFbs: false,
-      fbsDetailed: false
-    };
-  }
+export async function revokeProduct(userId: number, product: UserProduct) {
+  await db
+    .update(userAccess)
+    .set({ active: false })
+    .where(and(eq(userAccess.userId, userId), eq(userAccess.product, product)));
+  clearAccessControlCache();
 }

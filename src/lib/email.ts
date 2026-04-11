@@ -189,3 +189,299 @@ Please log in to the admin panel to view and manage registrations.
     return { success: false, error: error instanceof Error ? error.message : 'Unknown error' };
   }
 }
+
+// ---------------------------------------------------------------------------
+// LexiCore Email Templates
+// ---------------------------------------------------------------------------
+
+interface WeeklySummaryData {
+  name: string;
+  wordsReviewed: number;
+  pointsEarned: number;
+  leaderboardRank: number | null;
+  streakDays: number;
+  weekOf: string;
+}
+
+/**
+ * Send a weekly summary email to a LexiCore user.
+ */
+export async function sendWeeklySummary(
+  to: string,
+  data: WeeklySummaryData
+): Promise<{ success: number; failed: number; total: number }> {
+  try {
+    if (!process.env.RESEND_API_KEY) {
+      console.warn('RESEND_API_KEY not configured. Skipping sendWeeklySummary.');
+      return { success: 0, failed: 1, total: 1 };
+    }
+
+    const rankDisplay = data.leaderboardRank !== null ? `#${data.leaderboardRank}` : 'Unranked';
+
+    const htmlContent = `<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LexiCore Weekly Report</title>
+  </head>
+  <body style="margin:0;padding:0;background:#0F0F0F;font-family:-apple-system,Helvetica,Arial,sans-serif;color:#E8E4DC;">
+    <div style="max-width:600px;margin:0 auto;background:#0F0F0F;">
+
+      <!-- Header -->
+      <div style="background:#D62B38;padding:28px 32px;">
+        <p style="margin:0 0 4px 0;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.7);">VH LexiCore</p>
+        <h1 style="margin:0;font-family:Georgia,serif;font-size:26px;font-weight:400;color:#FFFFFF;letter-spacing:0.5px;">Weekly Report</h1>
+        <p style="margin:8px 0 0 0;font-size:13px;color:rgba(255,255,255,0.8);">${data.weekOf}</p>
+      </div>
+
+      <!-- Greeting -->
+      <div style="padding:32px 32px 0 32px;">
+        <p style="margin:0;font-size:16px;color:#E8E4DC;">Hi ${data.name},</p>
+        <p style="margin:12px 0 0 0;font-size:14px;color:#9E9A93;line-height:1.7;">Here is how your vocabulary study went this week.</p>
+      </div>
+
+      <!-- Stats Grid -->
+      <div style="padding:28px 32px;">
+        <table width="100%" cellpadding="0" cellspacing="0" style="border-collapse:separate;border-spacing:8px;">
+          <tr>
+            <td width="50%" style="background:#1A1A1A;padding:20px;vertical-align:top;">
+              <p style="margin:0 0 6px 0;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#9E9A93;">Words Reviewed</p>
+              <p style="margin:0;font-family:Georgia,serif;font-size:36px;font-weight:400;color:#C9A84C;">${data.wordsReviewed}</p>
+            </td>
+            <td width="50%" style="background:#1A1A1A;padding:20px;vertical-align:top;">
+              <p style="margin:0 0 6px 0;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#9E9A93;">Points Earned</p>
+              <p style="margin:0;font-family:Georgia,serif;font-size:36px;font-weight:400;color:#C9A84C;">${data.pointsEarned}</p>
+            </td>
+          </tr>
+          <tr>
+            <td width="50%" style="background:#1A1A1A;padding:20px;vertical-align:top;">
+              <p style="margin:0 0 6px 0;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#9E9A93;">Leaderboard Rank</p>
+              <p style="margin:0;font-family:Georgia,serif;font-size:36px;font-weight:400;color:#C9A84C;">${rankDisplay}</p>
+            </td>
+            <td width="50%" style="background:#1A1A1A;padding:20px;vertical-align:top;">
+              <p style="margin:0 0 6px 0;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#9E9A93;">Streak</p>
+              <p style="margin:0;font-family:Georgia,serif;font-size:36px;font-weight:400;color:#C9A84C;">${data.streakDays} <span style="font-size:16px;color:#9E9A93;">days</span></p>
+            </td>
+          </tr>
+        </table>
+      </div>
+
+      <!-- Divider -->
+      <div style="padding:0 32px;">
+        <div style="height:1px;background:#2A2A2A;"></div>
+      </div>
+
+      <!-- Footer -->
+      <div style="padding:24px 32px 32px 32px;">
+        <p style="margin:0;font-size:12px;color:#5A5750;line-height:1.7;">
+          You are receiving this because you enabled weekly summaries.
+          To unsubscribe, visit your LexiCore settings.
+        </p>
+      </div>
+
+    </div>
+  </body>
+</html>`;
+
+    const result = await resend.emails.send({
+      from: 'LexiCore <onboarding@resend.dev>',
+      to,
+      subject: `Your LexiCore Week — ${data.weekOf}`,
+      html: htmlContent,
+    });
+
+    if (result.error) {
+      console.error('sendWeeklySummary failed:', result.error);
+      return { success: 0, failed: 1, total: 1 };
+    }
+
+    return { success: 1, failed: 0, total: 1 };
+  } catch (error) {
+    console.error('sendWeeklySummary error:', error);
+    return { success: 0, failed: 1, total: 1 };
+  }
+}
+
+/**
+ * Notify a LexiCore user that their streak has been lost.
+ */
+export async function sendStreakLost(
+  to: string,
+  data: { name: string; streakDays: number }
+): Promise<{ success: number; failed: number; total: number }> {
+  try {
+    if (!process.env.RESEND_API_KEY) {
+      console.warn('RESEND_API_KEY not configured. Skipping sendStreakLost.');
+      return { success: 0, failed: 1, total: 1 };
+    }
+
+    const vocabUrl =
+      (process.env.NEXTAUTH_URL ?? 'https://vh-website.vercel.app') + '/vocab';
+
+    const htmlContent = `<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Your streak — LexiCore</title>
+  </head>
+  <body style="margin:0;padding:0;background:#0F0F0F;font-family:-apple-system,Helvetica,Arial,sans-serif;color:#E8E4DC;">
+    <div style="max-width:600px;margin:0 auto;background:#0F0F0F;">
+
+      <!-- Header -->
+      <div style="background:#D62B38;padding:28px 32px;">
+        <p style="margin:0 0 4px 0;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.7);">VH LexiCore</p>
+        <h1 style="margin:0;font-family:Georgia,serif;font-size:26px;font-weight:400;color:#FFFFFF;letter-spacing:0.5px;">Your Streak</h1>
+      </div>
+
+      <!-- Body -->
+      <div style="padding:36px 32px 0 32px;">
+        <p style="margin:0;font-size:16px;color:#E8E4DC;">Hi ${data.name},</p>
+
+        <!-- Streak callout -->
+        <div style="margin:28px 0;padding:24px;background:#1A1A1A;">
+          <p style="margin:0 0 8px 0;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#9E9A93;">Your streak</p>
+          <p style="margin:0;font-family:Georgia,serif;font-size:48px;font-weight:400;color:#C9A84C;">${data.streakDays} <span style="font-size:20px;color:#9E9A93;">days</span></p>
+          <p style="margin:12px 0 0 0;font-size:13px;color:#9E9A93;">has ended.</p>
+        </div>
+
+        <p style="margin:0 0 12px 0;font-size:15px;color:#E8E4DC;line-height:1.8;">
+          It happens. What matters is getting back.
+        </p>
+        <p style="margin:0 0 32px 0;font-size:14px;color:#9E9A93;line-height:1.7;">
+          Every expert was once a beginner who kept showing up. Your next streak starts with a single session today.
+        </p>
+
+        <!-- CTA -->
+        <a href="${vocabUrl}"
+           style="display:inline-block;background:#D62B38;color:#FFFFFF;text-decoration:none;padding:14px 32px;font-size:13px;letter-spacing:2px;text-transform:uppercase;font-family:-apple-system,Helvetica,Arial,sans-serif;">
+          Get Back on Track
+        </a>
+      </div>
+
+      <!-- Divider -->
+      <div style="padding:36px 32px 0 32px;">
+        <div style="height:1px;background:#2A2A2A;"></div>
+      </div>
+
+      <!-- Footer -->
+      <div style="padding:24px 32px 32px 32px;">
+        <p style="margin:0;font-size:12px;color:#5A5750;line-height:1.7;">
+          You are receiving this because you enabled streak notifications.
+          To unsubscribe, visit your LexiCore settings.
+        </p>
+      </div>
+
+    </div>
+  </body>
+</html>`;
+
+    const result = await resend.emails.send({
+      from: 'LexiCore <onboarding@resend.dev>',
+      to,
+      subject: `Your ${data.streakDays}-day streak — LexiCore`,
+      html: htmlContent,
+    });
+
+    if (result.error) {
+      console.error('sendStreakLost failed:', result.error);
+      return { success: 0, failed: 1, total: 1 };
+    }
+
+    return { success: 1, failed: 0, total: 1 };
+  } catch (error) {
+    console.error('sendStreakLost error:', error);
+    return { success: 0, failed: 1, total: 1 };
+  }
+}
+
+/**
+ * Broadcast an admin announcement to a list of LexiCore users.
+ */
+export async function sendAdminAnnouncement(
+  to: string[],
+  data: { subject: string; body: string; adminName: string }
+): Promise<{ success: number; failed: number; total: number }> {
+  try {
+    if (!process.env.RESEND_API_KEY) {
+      console.warn('RESEND_API_KEY not configured. Skipping sendAdminAnnouncement.');
+      return { success: 0, failed: to.length, total: to.length };
+    }
+
+    // Sanitize body: strip script, iframe and javascript: protocol (case-insensitive)
+    const sanitizedBody = data.body
+      .replace(/<script/gi, '&lt;script')
+      .replace(/<\/script>/gi, '&lt;/script&gt;')
+      .replace(/<iframe/gi, '&lt;iframe')
+      .replace(/<\/iframe>/gi, '&lt;/iframe&gt;')
+      .replace(/javascript:/gi, 'javascript&#58;');
+
+    const htmlContent = `<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>${data.subject}</title>
+  </head>
+  <body style="margin:0;padding:0;background:#0F0F0F;font-family:-apple-system,Helvetica,Arial,sans-serif;color:#E8E4DC;">
+    <div style="max-width:600px;margin:0 auto;background:#0F0F0F;">
+
+      <!-- Header -->
+      <div style="background:#D62B38;padding:28px 32px;">
+        <p style="margin:0 0 4px 0;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.7);">VH LexiCore — Announcement</p>
+        <h1 style="margin:0;font-family:Georgia,serif;font-size:24px;font-weight:400;color:#FFFFFF;letter-spacing:0.5px;">${data.subject}</h1>
+      </div>
+
+      <!-- Body content -->
+      <div style="padding:36px 32px;font-size:15px;line-height:1.8;color:#E8E4DC;">
+        ${sanitizedBody}
+      </div>
+
+      <!-- Divider -->
+      <div style="padding:0 32px;">
+        <div style="height:1px;background:#2A2A2A;"></div>
+      </div>
+
+      <!-- Footer -->
+      <div style="padding:24px 32px 32px 32px;">
+        <p style="margin:0;font-size:12px;color:#5A5750;line-height:1.7;">
+          Sent by ${data.adminName} via VH LexiCore Admin
+        </p>
+      </div>
+
+    </div>
+  </body>
+</html>`;
+
+    const results = await Promise.allSettled(
+      to.map(recipient =>
+        resend.emails.send({
+          from: 'LexiCore <onboarding@resend.dev>',
+          to: recipient,
+          subject: `[VH LexiCore] ${data.subject}`,
+          html: htmlContent,
+        })
+      )
+    );
+
+    const successful = results.filter(r => r.status === 'fulfilled').length;
+    const failed = results.filter(r => r.status === 'rejected').length;
+
+    console.log(`sendAdminAnnouncement: ${successful} sent, ${failed} failed out of ${to.length}`);
+
+    if (failed > 0) {
+      console.error(
+        'sendAdminAnnouncement — failed recipients:',
+        results
+          .filter(r => r.status === 'rejected')
+          .map(r => (r as PromiseRejectedResult).reason)
+      );
+    }
+
+    return { success: successful, failed, total: to.length };
+  } catch (error) {
+    console.error('sendAdminAnnouncement error:', error);
+    return { success: 0, failed: to.length, total: to.length };
+  }
+}

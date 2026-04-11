@@ -1,129 +1,62 @@
 import { NextResponse } from 'next/server';
-import { connectToDatabase } from '@/lib/db';
-import MathScore from '@/lib/models/MathScore';
+import { db } from '@/lib/db';
 import { validateAuth, createErrorResponse } from '@/lib/api-utils';
 
 export async function GET() {
-  console.log('Mental Math Leaderboard API called');
   try {
-    // Validate authentication and authorization
-    const user = await validateAuth();
-    console.log('User authenticated:', user.email);
+    await validateAuth();
 
-    // Connect to database with error handling
-    console.log('Connecting to MongoDB...');
-    await connectToDatabase();
-    console.log('MongoDB connected successfully');
+    // Individual: top 3 scores per player → globally top 10
+    const indResult = await db.$client.execute(`
+      WITH ranked AS (
+        SELECT player_name, player_email, score, questions_correct, questions_answered,
+               accuracy, difficulty, operations, played_at, time_limit,
+               ROW_NUMBER() OVER (PARTITION BY player_email ORDER BY score DESC, played_at DESC) AS rn
+        FROM math_scores WHERE is_admin = 0
+      )
+      SELECT player_name, score, questions_correct, questions_answered,
+             accuracy, difficulty, operations, played_at, time_limit
+      FROM ranked WHERE rn <= 3
+      ORDER BY score DESC, played_at DESC LIMIT 10
+    `);
 
-    // Get top 3 individual scores per player (excluding admin scores)
-    console.log('Querying individual scores with max 3 per player...');
-    const individualScores = await MathScore.aggregate([
-      {
-        $match: { isAdmin: { $ne: true } }
-      },
-      {
-        $sort: { score: -1, playedAt: -1 }
-      },
-      {
-        $group: {
-          _id: '$playerEmail',
-          playerName: { $first: '$playerName' },
-          topScores: {
-            $push: {
-              score: '$score',
-              questionsCorrect: '$questionsCorrect',
-              questionsAnswered: '$questionsAnswered',
-              accuracy: '$accuracy',
-              difficulty: '$difficulty',
-              operations: '$operations',
-              playedAt: '$playedAt',
-              timeLimit: '$timeLimit',
-              isSuspicious: '$isSuspicious'
-            }
-          }
-        }
-      },
-      {
-        $project: {
-          _id: 0,
-          playerName: 1,
-          topScores: { $slice: ['$topScores', 3] } // Limit to top 3 scores per player
-        }
-      },
-      {
-        $unwind: '$topScores'
-      },
-      {
-        $replaceRoot: {
-          newRoot: {
-            $mergeObjects: ['$topScores', { playerName: '$playerName' }]
-          }
-        }
-      },
-      {
-        $sort: { score: -1, playedAt: -1 }
-      },
-      {
-        $limit: 10 // Show top 10 individual games total
-      }
-    ]);
-    console.log('Individual scores found:', individualScores.length);
+    // Accumulated: sum per player
+    const accResult = await db.$client.execute(`
+      SELECT player_name AS playerName,
+             SUM(score) AS totalScore, COUNT(*) AS gamesPlayed,
+             ROUND(AVG(score)) AS averageScore, MAX(score) AS bestScore,
+             ROUND(CAST(SUM(questions_correct) AS REAL) / SUM(questions_answered) * 100, 1) AS overallAccuracy
+      FROM math_scores WHERE is_admin = 0
+      GROUP BY player_email ORDER BY totalScore DESC LIMIT 20
+    `);
 
-    // Get accumulated scores by player (excluding admin scores)
-    console.log('Running aggregation for accumulated scores...');
-    const accumulatedScores = await MathScore.aggregate([
-      {
-        $match: { isAdmin: { $ne: true } }
-      },
-      {
-        $group: {
-          _id: '$playerEmail',
-          playerName: { $first: '$playerName' },
-          totalScore: { $sum: '$score' },
-          gamesPlayed: { $sum: 1 },
-          averageScore: { $avg: '$score' },
-          bestScore: { $max: '$score' },
-          totalCorrect: { $sum: '$questionsCorrect' },
-          totalAnswered: { $sum: '$questionsAnswered' }
-        }
-      },
-      {
-        $sort: { totalScore: -1 }
-      },
-      {
-        $limit: 20
-      },
-      {
-        $project: {
-          _id: 0,
-          playerName: 1,
-          totalScore: 1,
-          gamesPlayed: 1,
-          averageScore: { $round: ['$averageScore', 0] },
-          bestScore: 1,
-          overallAccuracy: {
-            $round: [
-              { $multiply: [{ $divide: ['$totalCorrect', '$totalAnswered'] }, 100] },
-              1
-            ]
-          }
-        }
-      }
-    ]);
-    console.log('Accumulated scores found:', accumulatedScores.length);
+    const individual = indResult.rows.map((r: Record<string, unknown>) => ({
+      playerName:        r.player_name,
+      score:             r.score,
+      questionsCorrect:  r.questions_correct,
+      questionsAnswered: r.questions_answered,
+      accuracy:          r.accuracy,
+      difficulty:        r.difficulty,
+      operations:        r.operations ? JSON.parse(r.operations as string) : [],
+      playedAt:          r.played_at,
+      timeLimit:         r.time_limit,
+    }));
 
-    console.log('Preparing response...');
-    const response = {
-      individual: individualScores || [],
-      accumulated: accumulatedScores || [],
-      isEmpty: (individualScores.length === 0 && accumulatedScores.length === 0),
-      message: (individualScores.length === 0 && accumulatedScores.length === 0) ?
-        'No math scores yet. Be the first to play!' :
-        `${Math.max(individualScores.length, accumulatedScores.length)} players competing`
-    };
+    const accumulated = accResult.rows.map((r: Record<string, unknown>) => ({
+      playerName:      r.playerName,
+      totalScore:      r.totalScore,
+      gamesPlayed:     r.gamesPlayed,
+      averageScore:    r.averageScore,
+      bestScore:       r.bestScore,
+      overallAccuracy: r.overallAccuracy,
+    }));
 
-    console.log('Returning successful response:', response.isEmpty ? 'Empty leaderboard' : 'With data');
-    return NextResponse.json(response);
+    return NextResponse.json({
+      individual,
+      accumulated,
+      isEmpty:  individual.length === 0 && accumulated.length === 0,
+      message:  individual.length === 0 ? 'No scores yet. Be the first to play!' : `${accumulated.length} players competing`,
+    });
   } catch (error) {
     return createErrorResponse(error);
   }

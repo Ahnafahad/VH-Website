@@ -1,75 +1,36 @@
 import { NextResponse } from 'next/server';
-import { connectToDatabase } from '@/lib/db';
-import VocabScore from '@/lib/models/VocabScore';
+import { db } from '@/lib/db';
 import { validateAuth, createErrorResponse } from '@/lib/api-utils';
 
 export async function GET() {
-  console.log('Vocab Quiz Leaderboard API called');
   try {
-    // Validate authentication and authorization
-    const user = await validateAuth();
-    console.log('User authenticated:', user.email);
+    await validateAuth();
 
-    // Connect to database with error handling
-    console.log('Connecting to MongoDB...');
-    await connectToDatabase();
-    console.log('MongoDB connected successfully');
+    const result = await db.$client.execute(`
+      SELECT player_name AS playerName,
+             SUM(questions_answered) AS totalQuestionsAnswered,
+             SUM(questions_correct)  AS totalQuestionsCorrect,
+             COUNT(*) AS gamesPlayed,
+             ROUND(CAST(SUM(questions_correct) AS REAL) / SUM(questions_answered) * 100, 1) AS averageAccuracy,
+             MAX(played_at) AS lastPlayed
+      FROM vocab_scores WHERE is_admin = 0
+      GROUP BY player_email ORDER BY totalQuestionsAnswered DESC LIMIT 10
+    `);
 
-    // Get accumulated total questions answered by player (excluding admin scores)
-    console.log('Running vocab leaderboard aggregation...');
-    const leaderboard = await VocabScore.aggregate([
-      {
-        $match: { isAdmin: { $ne: true } }
-      },
-      {
-        $group: {
-          _id: '$playerEmail',
-          playerName: { $first: '$playerName' },
-          totalQuestionsAnswered: { $sum: '$questionsAnswered' },
-          totalQuestionsCorrect: { $sum: '$questionsCorrect' },
-          gamesPlayed: { $sum: 1 },
-          averageAccuracy: { 
-            $avg: { 
-              $multiply: [
-                { $divide: ['$questionsCorrect', '$questionsAnswered'] }, 
-                100
-              ]
-            }
-          },
-          lastPlayed: { $max: '$playedAt' },
-          uniqueSectionsPlayed: { $addToSet: '$selectedSections' }
-        }
-      },
-      {
-        $sort: { totalQuestionsAnswered: -1 }
-      },
-      {
-        $limit: 10
-      },
-      {
-        $project: {
-          _id: 0,
-          playerName: 1,
-          totalQuestionsAnswered: 1,
-          totalQuestionsCorrect: 1,
-          gamesPlayed: 1,
-          averageAccuracy: { $round: ['$averageAccuracy', 1] },
-          lastPlayed: 1,
-          uniqueSectionsCount: { $size: '$uniqueSectionsPlayed' }
-        }
-      }
-    ]);
-    console.log('Vocab leaderboard aggregation complete, found:', leaderboard.length, 'entries');
+    const leaderboard = result.rows.map((r: Record<string, unknown>) => ({
+      playerName:             r.playerName,
+      totalQuestionsAnswered: r.totalQuestionsAnswered,
+      totalQuestionsCorrect:  r.totalQuestionsCorrect,
+      gamesPlayed:            r.gamesPlayed,
+      averageAccuracy:        r.averageAccuracy,
+      lastPlayed:             r.lastPlayed,
+    }));
 
-    console.log('Preparing vocab response...');
-    const response = {
-      leaderboard: leaderboard || [],
+    return NextResponse.json({
+      leaderboard,
       isEmpty: leaderboard.length === 0,
-      message: leaderboard.length === 0 ? 'No quiz scores yet. Be the first to take a quiz!' : `${leaderboard.length} players on leaderboard`
-    };
-
-    console.log('Returning vocab response:', response.isEmpty ? 'Empty leaderboard' : 'With data');
-    return NextResponse.json(response);
+      message: leaderboard.length === 0 ? 'No scores yet. Be the first!' : `${leaderboard.length} players on leaderboard`,
+    });
   } catch (error) {
     return createErrorResponse(error);
   }

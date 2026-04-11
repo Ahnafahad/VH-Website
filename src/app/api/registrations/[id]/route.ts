@@ -1,98 +1,57 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { connectToDatabase } from '@/lib/db';
-import Registration from '@/lib/models/Registration';
+import { db, registrations } from '@/lib/db';
+import { eq } from 'drizzle-orm';
 import { validateAuth, createErrorResponse, ApiException } from '@/lib/api-utils';
 import { isAdminEmail } from '@/lib/db-access-control';
 
-// PATCH - Update registration status or notes (admin only)
 export async function PATCH(
   request: NextRequest,
   { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    // Validate admin authentication
-    const user = await validateAuth();
-
-    if (!(await isAdminEmail(user.email))) {
-      throw new ApiException('Unauthorized', 403, 'UNAUTHORIZED');
-    }
-
-    await connectToDatabase();
+    const auth = await validateAuth();
+    if (!(await isAdminEmail(auth.email))) throw new ApiException('Unauthorized', 403);
 
     const data = await request.json();
     const { status, notes, name, email, phone } = data;
     const { id } = await params;
+    const numId = parseInt(id);
+    if (!numId) throw new ApiException('Invalid id', 400);
 
-    // Validate status if provided
     if (status && !['pending', 'contacted', 'enrolled', 'cancelled'].includes(status)) {
-      throw new ApiException(
-        'Invalid status. Must be one of: pending, contacted, enrolled, cancelled',
-        400,
-        'VALIDATION_ERROR'
-      );
+      throw new ApiException('Invalid status', 400);
     }
+    if (email && !email.includes('@')) throw new ApiException('Invalid email', 400);
 
-    // Validate email if provided
-    if (email && !email.includes('@')) {
-      throw new ApiException('Invalid email format', 400, 'VALIDATION_ERROR');
-    }
+    const updateSet: Record<string, unknown> = { updatedAt: new Date() };
+    if (status !== undefined) updateSet.status = status;
+    if (notes  !== undefined) updateSet.notes  = notes;
+    if (name)                 updateSet.name   = name.trim();
+    if (email)                updateSet.email  = email.trim().toLowerCase();
+    if (phone)                updateSet.phone  = phone.trim();
 
-    // Update fields
-    const updateFields: any = {
-      updatedAt: new Date()
-    };
-    if (status) updateFields.status = status;
-    if (notes !== undefined) updateFields.notes = notes;
-    if (name) updateFields.name = name.trim();
-    if (email) updateFields.email = email.trim().toLowerCase();
-    if (phone) updateFields.phone = phone.trim();
+    const [updated] = await db.update(registrations).set(updateSet).where(eq(registrations.id, numId)).returning();
+    if (!updated) throw new ApiException('Registration not found', 404);
 
-    const updatedRegistration = await Registration.findByIdAndUpdate(
-      id,
-      updateFields,
-      { new: true, runValidators: true }
-    );
-
-    if (!updatedRegistration) {
-      throw new ApiException('Registration not found', 404, 'NOT_FOUND');
-    }
-
-    return NextResponse.json({
-      success: true,
-      message: 'Registration updated successfully',
-      registration: updatedRegistration
-    });
+    return NextResponse.json({ success: true, registration: updated });
   } catch (error) {
     return createErrorResponse(error);
   }
 }
 
-// GET - Fetch single registration (admin only)
 export async function GET(
   request: NextRequest,
   { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    // Validate admin authentication
-    const user = await validateAuth();
-
-    if (!(await isAdminEmail(user.email))) {
-      throw new ApiException('Unauthorized', 403, 'UNAUTHORIZED');
-    }
-
-    await connectToDatabase();
+    const auth = await validateAuth();
+    if (!(await isAdminEmail(auth.email))) throw new ApiException('Unauthorized', 403);
 
     const { id } = await params;
-    const registration = await Registration.findById(id).lean();
+    const row = await db.select().from(registrations).where(eq(registrations.id, parseInt(id))).get();
+    if (!row) throw new ApiException('Registration not found', 404);
 
-    if (!registration) {
-      throw new ApiException('Registration not found', 404, 'NOT_FOUND');
-    }
-
-    return NextResponse.json({
-      success: true,
-      registration
-    });
+    return NextResponse.json({ success: true, registration: row });
   } catch (error) {
     return createErrorResponse(error);
   }

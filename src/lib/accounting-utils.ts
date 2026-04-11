@@ -334,8 +334,7 @@ export async function fetchLeaderboard() {
 }
 
 /**
- * Update question mastery for a user after game completion
- * This is called server-side from the API route
+ * Update question mastery for a user after game completion (Turso/Drizzle)
  */
 export async function updateQuestionMastery(
   playerEmail: string,
@@ -346,90 +345,79 @@ export async function updateQuestionMastery(
   lecturesCompleted: number[];
   totalMastered: number;
 }> {
-  // Import model dynamically (server-side only)
-  const AccountingProgress = (await import('@/lib/models/AccountingProgress')).default;
+  const { db } = await import('@/lib/db');
+  const { accountingProgress } = await import('@/lib/db/schema');
+  const { eq } = await import('drizzle-orm');
 
-  // 1. Get or create progress document
-  let progress = await AccountingProgress.findOne({
-    playerEmail: playerEmail.toLowerCase()
-  });
+  const email = playerEmail.toLowerCase();
 
-  if (!progress) {
-    progress = new AccountingProgress({
-      playerEmail: playerEmail.toLowerCase(),
-      masteredQuestions: new Set<string>(),
-      lectureProgress: new Map(),
-      totalMastered: 0,
-      totalQuestions: 281,
-      createdAt: new Date()
-    });
-  }
+  // 1. Get existing progress or initialise empty
+  const existing = await db.select().from(accountingProgress).where(eq(accountingProgress.playerEmail, email)).get();
 
-  // 2. Extract correctly answered question IDs
-  const correctQuestionIds = questionResults
-    .filter(r => r.isCorrect)
-    .map(r => r.question.id);
+  const masteredSet: Set<string> = existing
+    ? new Set(JSON.parse(existing.masteredQuestions) as string[])
+    : new Set();
 
-  // 3. Track newly mastered questions
-  const previouslyMastered = new Set(progress.masteredQuestions);
-  const newlyMastered = correctQuestionIds.filter(
-    id => !previouslyMastered.has(id)
-  );
+  const lectureProgressMap: Record<string, {
+    totalQuestions: number;
+    masteredCount: number;
+    completionCount: number;
+    lastPlayed: number;
+  }> = existing ? JSON.parse(existing.lectureProgress) : {};
 
-  // 4. Update mastered questions Set
-  correctQuestionIds.forEach(id => {
-    progress.masteredQuestions.add(id);
-  });
+  // 2. Extract correctly answered IDs
+  const correctIds = questionResults.filter(r => r.isCorrect).map(r => r.question.id);
+  const newlyMastered = correctIds.filter(id => !masteredSet.has(id));
+  correctIds.forEach(id => masteredSet.add(id));
 
-  // 5. Update per-lecture progress
-  const lecturesInGame = new Set(
-    questionResults.map(r => r.question.lecture)
-  );
-
+  // 3. Update per-lecture progress
+  const lecturesInGame = new Set(questionResults.map(r => r.question.lecture));
   const lecturesCompleted: number[] = [];
 
   for (const lectureNum of lecturesInGame) {
-    // Get lecture data
     const lectureData = allLectures.find(l => l.lectureNumber === lectureNum);
     if (!lectureData) continue;
 
-    const totalQuestionsInLecture = lectureData.questionCount;
+    const total = lectureData.questionCount;
+    const masteredInLecture = Array.from(masteredSet).filter(id => id.startsWith(`lecture${lectureNum}_`)).length;
+    const prev = lectureProgressMap[lectureNum];
+    const wasCompleted = prev?.masteredCount === total;
+    const isNowCompleted = masteredInLecture === total;
 
-    // Count mastered questions in this lecture
-    const masteredInLecture = Array.from(progress.masteredQuestions as Set<string>)
-      .filter(id => id.startsWith(`lecture${lectureNum}_`))
-      .length;
+    lectureProgressMap[lectureNum] = {
+      totalQuestions:  total,
+      masteredCount:   masteredInLecture,
+      completionCount: (prev?.completionCount || 0) + (isNowCompleted && !wasCompleted ? 1 : 0),
+      lastPlayed:      Math.floor(Date.now() / 1000),
+    };
 
-    // Check if lecture was previously completed
-    const prevProgress = progress.lectureProgress.get(lectureNum);
-    const wasCompleted = prevProgress?.masteredCount === totalQuestionsInLecture;
-    const isNowCompleted = masteredInLecture === totalQuestionsInLecture;
-
-    // Update lecture progress
-    progress.lectureProgress.set(lectureNum, {
-      totalQuestions: totalQuestionsInLecture,
-      masteredCount: masteredInLecture,
-      completionCount: (prevProgress?.completionCount || 0) +
-                       (isNowCompleted && !wasCompleted ? 1 : 0),
-      lastPlayed: new Date()
-    });
-
-    // Track newly completed lectures
-    if (isNowCompleted && !wasCompleted) {
-      lecturesCompleted.push(lectureNum);
-    }
+    if (isNowCompleted && !wasCompleted) lecturesCompleted.push(lectureNum);
   }
 
-  // 6. Update totals
-  progress.totalMastered = progress.masteredQuestions.size;
-  progress.lastUpdated = new Date();
+  const totalMastered = masteredSet.size;
+  const now = new Date();
 
-  // 7. Save to database
-  await progress.save();
+  // 4. Upsert progress row
+  if (!existing) {
+    await db.insert(accountingProgress).values({
+      playerEmail:       email,
+      masteredQuestions: JSON.stringify(Array.from(masteredSet)),
+      lectureProgress:   JSON.stringify(lectureProgressMap),
+      totalMastered,
+      totalQuestions:    281,
+      lastUpdated:       now,
+      createdAt:         now,
+      updatedAt:         now,
+    });
+  } else {
+    await db.update(accountingProgress).set({
+      masteredQuestions: JSON.stringify(Array.from(masteredSet)),
+      lectureProgress:   JSON.stringify(lectureProgressMap),
+      totalMastered,
+      lastUpdated:       now,
+      updatedAt:         now,
+    }).where(eq(accountingProgress.playerEmail, email));
+  }
 
-  return {
-    newlyMastered,
-    lecturesCompleted,
-    totalMastered: progress.totalMastered
-  };
+  return { newlyMastered, lecturesCompleted, totalMastered };
 }

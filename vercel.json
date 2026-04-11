@@ -3,5 +3,19 @@
   "devCommand": "npm run dev",
   "installCommand": "npm install",
   "framework": "nextjs",
-  "outputDirectory": ".next"
+  "outputDirectory": ".next",
+  "crons": [
+    {
+      "path": "/api/vocab/cron/weekly-reset",
+      "schedule": "0 0 * * 0"
+    },
+    {
+      "path": "/api/cron/weekly-summary",
+      "schedule": "0 6 * * 0"
+    },
+    {
+      "path": "/api/cron/check-streaks",
+      "schedule": "0 0 * * *"
+    }
+  ]
 }

@@ -1,379 +1,186 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { connectToDatabase } from '@/lib/db';
-import User from '@/lib/models/User';
+import { db, users, userAccess } from '@/lib/db';
+import { eq, and, or, like, desc, ne, inArray } from 'drizzle-orm';
 import { validateAuth, createErrorResponse, ApiException } from '@/lib/api-utils';
-import { isAdminEmail, getUserByEmail } from '@/lib/db-access-control';
-import fs from 'fs';
-import path from 'path';
+import { isAdminEmail, isSuperAdminEmail, getUserByEmail, clearAccessControlCache, grantProduct, revokeProduct } from '@/lib/db-access-control';
+import type { UserProduct } from '@/lib/db/schema';
 
-/**
- * Sync a student's data to students.json
- * This ensures students.json stays in sync with MongoDB changes
- *
- * NOTE: In production (Vercel), the file system is read-only.
- * This function will gracefully fail without affecting the API response.
- */
-function syncStudentToJson(user: any) {
-  // Skip file sync in production environments (Vercel has read-only file system)
-  if (process.env.NODE_ENV === 'production') {
-    console.log('[syncStudentToJson] Skipping file sync in production (read-only file system)');
-    return;
-  }
-
-  try {
-    // Only sync students with roleNumbers
-    if (!user.roleNumbers || user.roleNumbers.length === 0) {
-      console.log('[syncStudentToJson] No roleNumbers to sync');
-      return;
-    }
-
-    const studentsPath = path.join(process.cwd(), 'public', 'data', 'students.json');
-
-    // Load existing students.json
-    if (!fs.existsSync(studentsPath)) {
-      console.warn('[syncStudentToJson] students.json not found at:', studentsPath);
-      return;
-    }
-
-    const studentsData = JSON.parse(fs.readFileSync(studentsPath, 'utf8'));
-
-    // Update all roleNumbers for this student
-    let updated = false;
-    user.roleNumbers.forEach((roleNumber: string) => {
-      const roleNumberStr = String(roleNumber);
-      if (studentsData.students[roleNumberStr]) {
-        // Update existing student entry
-        studentsData.students[roleNumberStr].email = user.email;
-        studentsData.students[roleNumberStr].name = user.name;
-        updated = true;
-        console.log(`[syncStudentToJson] Updated roleNumber ${roleNumberStr}`);
-      }
-    });
-
-    // Save if updated
-    if (updated) {
-      studentsData.metadata.lastUpdated = new Date().toISOString();
-      fs.writeFileSync(studentsPath, JSON.stringify(studentsData, null, 2));
-      console.log('[syncStudentToJson] Successfully wrote to students.json');
-    } else {
-      console.log('[syncStudentToJson] No updates needed');
-    }
-  } catch (error) {
-    console.error('[syncStudentToJson] Error syncing student to JSON:', error);
-    console.error('[syncStudentToJson] Error details:', error instanceof Error ? error.message : String(error));
-    // Don't throw - this is a non-critical operation
-  }
-}
-
-// GET - Fetch all users with optional filtering
+// GET — list users
 export async function GET(request: NextRequest) {
   try {
-    console.log('[GET /api/admin/users] Request received');
+    const auth = await validateAuth();
+    if (!(await isAdminEmail(auth.email))) throw new ApiException('Unauthorized', 403);
 
-    // Validate admin authentication
-    console.log('[GET /api/admin/users] Validating auth...');
-    const user = await validateAuth();
-    console.log('[GET /api/admin/users] Auth validated for:', user.email);
-
-    // Check if user is admin (using hybrid access control - admins in JSON)
-    console.log('[GET /api/admin/users] Checking admin status...');
-    const adminCheck = await isAdminEmail(user.email);
-    console.log('[GET /api/admin/users] Admin check result:', adminCheck);
-
-    if (!adminCheck) {
-      console.error('[GET /api/admin/users] User is not admin:', user.email);
-      throw new ApiException('Unauthorized', 403, 'UNAUTHORIZED');
-    }
-
-    // Connect to database
-    console.log('[GET /api/admin/users] Connecting to database...');
-    await connectToDatabase();
-    console.log('[GET /api/admin/users] Database connected');
-
-    // Get query parameters for filtering
     const { searchParams } = new URL(request.url);
-    const role = searchParams.get('role');
-    const active = searchParams.get('active');
+    const role   = searchParams.get('role');
+    const status = searchParams.get('status');
     const search = searchParams.get('search');
 
-    // Build query
-    const query: any = {};
-
-    if (role) {
-      query.role = role;
-    }
-
-    if (active !== null && active !== undefined) {
-      query.active = active === 'true';
-    }
-
+    const conditions = [];
+    if (role)   conditions.push(eq(users.role, role));
+    if (status) conditions.push(eq(users.status, status));
     if (search) {
-      query.$or = [
-        { name: { $regex: search, $options: 'i' } },
-        { email: { $regex: search, $options: 'i' } },
-        { studentId: { $regex: search, $options: 'i' } }
-      ];
+      conditions.push(or(
+        like(users.name,  `%${search}%`),
+        like(users.email, `%${search}%`),
+        like(users.studentId ?? '', `%${search}%`),
+      )!);
     }
 
-    // Fetch users
-    const users = await User.find(query)
-      .sort({ createdAt: -1 })
-      .lean();
+    const rows = await db
+      .select()
+      .from(users)
+      .where(conditions.length ? and(...conditions) : undefined)
+      .orderBy(desc(users.createdAt));
 
-    console.log('[GET /api/admin/users] Returning', users.length, 'users');
-    return NextResponse.json({
-      success: true,
-      users: users,
-      count: users.length
-    });
+    // Attach products to each user
+    const ids = rows.map(u => u.id);
+    const accessRows = ids.length
+      ? await db.select().from(userAccess).where(and(inArray(userAccess.userId, ids), eq(userAccess.active, true)))
+      : [];
+
+    const productMap = new Map<number, string[]>();
+    for (const a of accessRows) {
+      if (!productMap.has(a.userId)) productMap.set(a.userId, []);
+      productMap.get(a.userId)!.push(a.product);
+    }
+
+    const result = rows.map(u => ({ ...u, products: productMap.get(u.id) || [] }));
+
+    return NextResponse.json({ success: true, users: result, count: result.length });
   } catch (error) {
-    console.error('[GET /api/admin/users] Error occurred:', error);
     return createErrorResponse(error);
   }
 }
 
-// POST - Create a new user
+// POST — create user
 export async function POST(request: NextRequest) {
   try {
-    // Validate admin authentication
-    const user = await validateAuth();
-
-    // Check if user is admin (using hybrid access control - admins in JSON)
-    if (!(await isAdminEmail(user.email))) {
-      throw new ApiException('Unauthorized', 403, 'UNAUTHORIZED');
-    }
-
-    // Connect to database
-    await connectToDatabase();
+    const auth = await validateAuth();
+    if (!(await isAdminEmail(auth.email))) throw new ApiException('Unauthorized', 403);
 
     const body = await request.json();
-    const {
-      email,
-      name,
-      role,
-      adminId,
-      studentId,
-      class: userClass,
-      batch,
-      accessTypes,
-      mockAccess,
-      permissions,
-      active
-    } = body;
+    const { email, name, role, studentId, class: userClass, batch, products, notes } = body;
 
-    // Validation
-    if (!email || !name || !role) {
-      throw new ApiException(
-        'Missing required fields: email, name, role',
-        400,
-        'VALIDATION_ERROR'
-      );
+    if (!email || !name || !role) throw new ApiException('email, name, role are required', 400);
+    if (!email.includes('@'))     throw new ApiException('Invalid email', 400);
+
+    const normalEmail = email.toLowerCase().trim();
+
+    const existing = await db.select({ id: users.id }).from(users).where(eq(users.email, normalEmail)).get();
+    if (existing) throw new ApiException('Email already exists', 409);
+
+    if (studentId) {
+      const sidExists = await db.select({ id: users.id }).from(users).where(eq(users.studentId, studentId)).get();
+      if (sidExists) throw new ApiException('Student ID already in use', 409);
     }
 
-    // Validate email format
-    if (!email.includes('@')) {
-      throw new ApiException('Invalid email format', 400, 'VALIDATION_ERROR');
+    const [newUser] = await db
+      .insert(users)
+      .values({
+        email: normalEmail,
+        name:      name.trim(),
+        role,
+        status:    'active',
+        studentId: studentId?.trim() || null,
+        class:     userClass?.trim() || null,
+        batch:     batch?.trim()     || null,
+        notes:     notes             || null,
+      })
+      .returning();
+
+    if (products && Array.isArray(products) && products.length > 0) {
+      for (const product of products) {
+        await grantProduct(newUser.id, product as UserProduct);
+      }
     }
 
-    // Validate student ID format if provided
-    if (studentId && !/^[0-9]{6}$/.test(studentId)) {
-      throw new ApiException('Student ID must be exactly 6 digits', 400, 'VALIDATION_ERROR');
-    }
-
-    // Check if user already exists
-    const existingUser = await User.findOne({
-      $or: [
-        { email: email.toLowerCase() },
-        ...(studentId ? [{ studentId }] : []),
-        ...(adminId ? [{ adminId }] : [])
-      ]
-    });
-
-    if (existingUser) {
-      throw new ApiException(
-        'User with this email, student ID, or admin ID already exists',
-        409,
-        'CONFLICT'
-      );
-    }
-
-    // Create new user
-    const newUser = new User({
-      email: email.toLowerCase(),
-      name: name.trim(),
-      role,
-      adminId: adminId?.trim(),
-      studentId: studentId?.trim(),
-      class: userClass?.trim(),
-      batch: batch?.trim(),
-      accessTypes: accessTypes || { IBA: false, FBS: false },
-      mockAccess: mockAccess || {
-        duIba: false,
-        bupIba: false,
-        duFbs: false,
-        bupFbs: false,
-        fbsDetailed: false
-      },
-      permissions: permissions || ['read'],
-      active: active !== undefined ? active : true,
-      addedDate: new Date()
-    });
-
-    await newUser.save();
-
-    // Sync new student to students.json
-    // DISABLED: File system is read-only in production (Vercel)
-    // syncStudentToJson(newUser);
-
-    return NextResponse.json({
-      success: true,
-      message: 'User created successfully',
-      user: newUser
-    }, { status: 201 });
+    clearAccessControlCache(normalEmail);
+    return NextResponse.json({ success: true, user: { ...newUser, products: products || [] } }, { status: 201 });
   } catch (error) {
     return createErrorResponse(error);
   }
 }
 
-// PATCH - Update a user
+// PATCH — update user
 export async function PATCH(request: NextRequest) {
   try {
-    console.log('[PATCH /api/admin/users] Request received');
-
-    // Validate admin authentication
-    console.log('[PATCH /api/admin/users] Validating auth...');
-    const user = await validateAuth();
-    console.log('[PATCH /api/admin/users] Auth validated for:', user.email);
-
-    // Check if user is admin (using hybrid access control - admins in JSON)
-    console.log('[PATCH /api/admin/users] Checking admin status...');
-    if (!(await isAdminEmail(user.email))) {
-      console.error('[PATCH /api/admin/users] User is not admin:', user.email);
-      throw new ApiException('Unauthorized', 403, 'UNAUTHORIZED');
-    }
-
-    // Connect to database
-    console.log('[PATCH /api/admin/users] Connecting to database...');
-    await connectToDatabase();
-    console.log('[PATCH /api/admin/users] Database connected');
+    const auth = await validateAuth();
+    if (!(await isAdminEmail(auth.email))) throw new ApiException('Unauthorized', 403);
 
     const body = await request.json();
-    console.log('[PATCH /api/admin/users] Request body:', JSON.stringify(body, null, 2));
-    const { userId, ...updates } = body;
+    const { userId, products: newProducts, ...updates } = body;
 
-    if (!userId) {
-      throw new ApiException('User ID is required', 400, 'VALIDATION_ERROR');
+    if (!userId) throw new ApiException('userId required', 400);
+
+    const existing = await db.select().from(users).where(eq(users.id, userId)).get();
+    if (!existing) throw new ApiException('User not found', 404);
+
+    const adminUser = await getUserByEmail(auth.email);
+    if (existing.role === 'super_admin' && adminUser?.role !== 'super_admin') {
+      throw new ApiException('Only super admins can modify super admin accounts', 403);
     }
 
-    // Find the user
-    const existingUser = await User.findById(userId);
-    if (!existingUser) {
-      throw new ApiException('User not found', 404, 'NOT_FOUND');
+    // Build update set (only defined fields)
+    const updateSet: Record<string, unknown> = { updatedAt: new Date() };
+    const allowed = ['name', 'role', 'status', 'studentId', 'class', 'batch', 'notes'];
+    for (const key of allowed) {
+      if (updates[key] !== undefined) {
+        updateSet[key] = updates[key];
+      }
+    }
+    if (updates.email) {
+      const normalEmail = updates.email.toLowerCase().trim();
+      const dup = await db.select({ id: users.id }).from(users)
+        .where(and(eq(users.email, normalEmail), ne(users.id, userId))).get();
+      if (dup) throw new ApiException('Email already in use', 409);
+      updateSet.email = normalEmail;
     }
 
-    // Prevent non-super-admins from modifying super-admins
-    const adminUser = await getUserByEmail(user.email);
-    if (existingUser.role === 'super_admin' && adminUser?.role !== 'super_admin') {
-      throw new ApiException('Only super admins can modify super admin accounts', 403, 'UNAUTHORIZED');
-    }
+    const [updated] = await db.update(users).set(updateSet).where(eq(users.id, userId)).returning();
 
-    // If email is being updated, check for duplicates
-    if (updates.email && updates.email.toLowerCase() !== existingUser.email) {
-      const emailExists = await User.findOne({ email: updates.email.toLowerCase() });
-      if (emailExists) {
-        throw new ApiException('Email already in use', 409, 'CONFLICT');
+    // Sync products if provided
+    if (newProducts !== undefined && Array.isArray(newProducts)) {
+      const current = await db
+        .select({ product: userAccess.product })
+        .from(userAccess)
+        .where(and(eq(userAccess.userId, userId), eq(userAccess.active, true)));
+      const currentSet = new Set<UserProduct>(current.map(r => r.product as UserProduct));
+      const newSet     = new Set<UserProduct>((newProducts as UserProduct[]));
+
+      for (const p of newProducts as UserProduct[]) {
+        if (!currentSet.has(p)) await grantProduct(userId, p);
+      }
+      for (const p of currentSet) {
+        if (!newSet.has(p)) await revokeProduct(userId, p);
       }
     }
 
-    // If studentId is being updated, check for duplicates
-    if (updates.studentId && updates.studentId !== existingUser.studentId) {
-      const studentIdExists = await User.findOne({ studentId: updates.studentId });
-      if (studentIdExists) {
-        throw new ApiException('Student ID already in use', 409, 'CONFLICT');
-      }
-    }
-
-    // Update user fields
-    Object.keys(updates).forEach(key => {
-      if (key === 'email') {
-        existingUser.email = updates.email.toLowerCase();
-      } else if (key === 'accessTypes') {
-        existingUser.accessTypes = { ...existingUser.accessTypes, ...updates.accessTypes };
-      } else if (key === 'mockAccess') {
-        existingUser.mockAccess = { ...existingUser.mockAccess, ...updates.mockAccess };
-      } else {
-        (existingUser as any)[key] = updates[key];
-      }
-    });
-
-    console.log('[PATCH /api/admin/users] Saving user to database...');
-    try {
-      await existingUser.save();
-      console.log('[PATCH /api/admin/users] User saved successfully');
-    } catch (saveError) {
-      console.error('[PATCH /api/admin/users] Error saving user:', saveError);
-      console.error('[PATCH /api/admin/users] Save error details:', JSON.stringify(saveError, Object.getOwnPropertyNames(saveError)));
-      throw saveError;
-    }
-
-    // Sync student data to students.json if email or name changed
-    // DISABLED: File system is read-only in production (Vercel)
-    // if (updates.email || updates.name) {
-    //   syncStudentToJson(existingUser);
-    // }
-
-    console.log('[PATCH /api/admin/users] User updated successfully:', userId);
-    return NextResponse.json({
-      success: true,
-      message: 'User updated successfully',
-      user: existingUser
-    });
+    clearAccessControlCache(updated.email);
+    return NextResponse.json({ success: true, user: updated });
   } catch (error) {
-    console.error('[PATCH /api/admin/users] Error occurred:', error);
     return createErrorResponse(error);
   }
 }
 
-// DELETE - Delete a user
+// DELETE — delete user (super_admin only)
 export async function DELETE(request: NextRequest) {
   try {
-    // Validate admin authentication
-    const user = await validateAuth();
-
-    // Check if user is super admin (only super admins can delete users)
-    const adminUser = await getUserByEmail(user.email);
-    if (!adminUser || adminUser.role !== 'super_admin') {
-      throw new ApiException('Only super admins can delete users', 403, 'UNAUTHORIZED');
-    }
-
-    // Connect to database
-    await connectToDatabase();
+    const auth = await validateAuth();
+    if (!(await isSuperAdminEmail(auth.email))) throw new ApiException('Only super admins can delete users', 403);
 
     const { searchParams } = new URL(request.url);
-    const userId = searchParams.get('userId');
+    const userId = parseInt(searchParams.get('userId') || '');
+    if (!userId) throw new ApiException('userId required', 400);
 
-    if (!userId) {
-      throw new ApiException('User ID is required', 400, 'VALIDATION_ERROR');
-    }
+    const existing = await db.select().from(users).where(eq(users.id, userId)).get();
+    if (!existing) throw new ApiException('User not found', 404);
+    if (existing.role === 'super_admin') throw new ApiException('Cannot delete super admin accounts', 403);
 
-    // Find the user
-    const existingUser = await User.findById(userId);
-    if (!existingUser) {
-      throw new ApiException('User not found', 404, 'NOT_FOUND');
-    }
+    await db.delete(users).where(eq(users.id, userId));
+    clearAccessControlCache(existing.email);
 
-    // Prevent deletion of super admin accounts
-    if (existingUser.role === 'super_admin') {
-      throw new ApiException('Cannot delete super admin accounts', 403, 'UNAUTHORIZED');
-    }
-
-    // Delete the user
-    await User.findByIdAndDelete(userId);
-
-    return NextResponse.json({
-      success: true,
-      message: 'User deleted successfully'
-    });
+    return NextResponse.json({ success: true, message: 'User deleted' });
   } catch (error) {
     return createErrorResponse(error);
   }

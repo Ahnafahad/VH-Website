@@ -5,7 +5,7 @@ import { isEmailAuthorized } from '@/lib/db-access-control';
 
 /**
  * POST /api/generate-questions
- * Securely generates vocabulary quiz questions using Google Gemini API
+ * Securely generates vocabulary quiz questions using DeepSeek (Gemini fallback)
  *
  * Security features:
  * - API key stored server-side only
@@ -43,50 +43,67 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // 4. Validate API key exists
-    const apiKey = process.env.GOOGLE_GEMINI_API_KEY;
-    if (!apiKey) {
-      console.error('GOOGLE_GEMINI_API_KEY is not configured');
+    // 4. Call DeepSeek (primary) with Gemini fallback
+    let data: unknown;
+
+    const deepSeekKey = process.env.DEEPSEEK_API_KEY;
+    const geminiKey   = process.env.GOOGLE_GEMINI_API_KEY;
+
+    if (!deepSeekKey && !geminiKey) {
+      console.error('No AI API keys configured');
       return NextResponse.json(
         { error: 'API configuration error. Please contact administrator.' },
         { status: 500 }
       );
     }
 
-    // 5. Call Gemini API (server-side, key is protected)
-    const geminiResponse = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent?key=${apiKey}`,
-      {
+    if (deepSeekKey) {
+      const dsRes = await fetch('https://api.deepseek.com/v1/chat/completions', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type':  'application/json',
+          'Authorization': `Bearer ${deepSeekKey}`,
         },
         body: JSON.stringify({
-          contents: [{
-            parts: [{
-              text: prompt
-            }]
-          }]
-        })
+          model:    'deepseek-chat',
+          messages: [{ role: 'user', content: prompt }],
+          temperature: 0.7,
+          max_tokens:  2048,
+        }),
+      });
+
+      if (dsRes.ok) {
+        data = await dsRes.json();
+      } else {
+        console.warn('DeepSeek failed:', dsRes.status, await dsRes.text());
       }
-    );
-
-    // 6. Handle API errors
-    if (!geminiResponse.ok) {
-      const errorText = await geminiResponse.text();
-      console.error('Gemini API error:', geminiResponse.status, errorText);
-
-      return NextResponse.json(
-        {
-          error: 'Failed to generate questions',
-          details: `API returned status ${geminiResponse.status}`
-        },
-        { status: geminiResponse.status }
-      );
     }
 
-    // 7. Parse and return response
-    const data = await geminiResponse.json();
+    if (!data && geminiKey) {
+      const gmRes = await fetch(
+        `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent?key=${geminiKey}`,
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] }),
+        }
+      );
+
+      if (!gmRes.ok) {
+        const errorText = await gmRes.text();
+        console.error('Gemini fallback error:', gmRes.status, errorText);
+        return NextResponse.json(
+          { error: 'Failed to generate questions', details: `API returned status ${gmRes.status}` },
+          { status: gmRes.status }
+        );
+      }
+
+      data = await gmRes.json();
+    }
+
+    if (!data) {
+      return NextResponse.json({ error: 'All AI providers failed' }, { status: 502 });
+    }
 
     // Log successful request (without sensitive data)
     console.log('Question generation successful:', {

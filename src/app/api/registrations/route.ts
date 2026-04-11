@@ -1,190 +1,95 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { connectToDatabase } from '@/lib/db';
-import Registration from '@/lib/models/Registration';
+import { db, registrations } from '@/lib/db';
+import { eq, desc } from 'drizzle-orm';
 import { validateAuth, createErrorResponse, ApiException } from '@/lib/api-utils';
+import { isAdminEmail } from '@/lib/db-access-control';
 import { sendRegistrationNotification } from '@/lib/email';
 
-// POST - Create new registration (public endpoint)
+// POST — public registration form submission
 export async function POST(request: NextRequest) {
   try {
-    await connectToDatabase();
-
     const data = await request.json();
+    const { name, email, phone, educationType, years, programMode, selectedMocks, mockIntent, pricing, selectedFullCourses, referral } = data;
 
-    // Validate required fields
-    const {
-      name,
-      email,
-      phone,
-      educationType,
-      years,
-      programMode,
-      selectedMocks,
-      mockIntent,
-      pricing,
-      selectedFullCourses,
-      referral
-    } = data;
-
-    const validationErrors: string[] = [];
-
-    if (!name || typeof name !== 'string' || name.trim().length === 0) {
-      validationErrors.push('name is required');
-    }
-    if (!email || typeof email !== 'string' || !email.includes('@')) {
-      validationErrors.push('valid email is required');
-    }
-    if (!phone || typeof phone !== 'string' || phone.trim().length === 0) {
-      validationErrors.push('phone is required');
-    }
-    if (!educationType || !['hsc', 'alevels'].includes(educationType)) {
-      validationErrors.push('educationType must be either hsc or alevels');
-    }
-    if (!years || typeof years !== 'object') {
-      validationErrors.push('years information is required');
-    }
-    if (!programMode || !['mocks', 'full'].includes(programMode)) {
-      validationErrors.push('programMode must be either mocks or full');
-    }
-
-    // Validate program-specific fields
+    const errors: string[] = [];
+    if (!name?.trim())                                     errors.push('name is required');
+    if (!email?.includes('@'))                             errors.push('valid email is required');
+    if (!phone?.trim())                                    errors.push('phone is required');
+    if (!['hsc', 'alevels'].includes(educationType))       errors.push('educationType must be hsc or alevels');
+    if (!years || typeof years !== 'object')               errors.push('years is required');
+    if (!['mocks', 'full'].includes(programMode))          errors.push('programMode must be mocks or full');
     if (programMode === 'mocks') {
-      if (!Array.isArray(selectedMocks) || selectedMocks.length === 0) {
-        validationErrors.push('at least one mock program must be selected');
-      }
-      if (!mockIntent || !['trial', 'full'].includes(mockIntent)) {
-        validationErrors.push('mockIntent must be either trial or full');
-      }
-    } else if (programMode === 'full') {
-      if (!Array.isArray(selectedFullCourses) || selectedFullCourses.length === 0) {
-        validationErrors.push('at least one full course must be selected');
-      }
+      if (!Array.isArray(selectedMocks) || !selectedMocks.length) errors.push('at least one mock must be selected');
+      if (!['trial', 'full'].includes(mockIntent))                errors.push('mockIntent must be trial or full');
     }
-
-    if (validationErrors.length > 0) {
-      throw new ApiException(
-        `Validation failed: ${validationErrors.join(', ')}`,
-        400,
-        'VALIDATION_ERROR'
-      );
+    if (programMode === 'full') {
+      if (!Array.isArray(selectedFullCourses) || !selectedFullCourses.length) errors.push('at least one full course must be selected');
     }
+    if (errors.length) throw new ApiException(`Validation failed: ${errors.join(', ')}`, 400);
 
-    // Create new registration
-    const registration = new Registration({
-      name: name.trim(),
-      email: email.trim().toLowerCase(),
-      phone: phone.trim(),
+    const [saved] = await db.insert(registrations).values({
+      name:                name.trim(),
+      email:               email.trim().toLowerCase(),
+      phone:               phone.trim(),
       educationType,
-      years,
+      hscYear:             years.hscYear    || null,
+      sscYear:             years.sscYear    || null,
+      aLevelYear:          years.aLevelYear || null,
+      oLevelYear:          years.oLevelYear || null,
       programMode,
-      selectedMocks: programMode === 'mocks' ? selectedMocks : undefined,
-      mockIntent: programMode === 'mocks' ? mockIntent : undefined,
-      pricing: programMode === 'mocks' ? pricing : undefined,
-      selectedFullCourses: programMode === 'full' ? selectedFullCourses : undefined,
-      referral: (programMode === 'mocks' && referral && referral.name && referral.institution && referral.batch) ? {
-        name: referral.name.trim(),
-        institution: referral.institution,
-        batch: referral.batch.trim()
-      } : undefined,
-      status: 'pending',
-      createdAt: new Date(),
-      updatedAt: new Date()
-    });
+      selectedMocks:       programMode === 'mocks' ? JSON.stringify(selectedMocks) : null,
+      mockIntent:          programMode === 'mocks' ? mockIntent : null,
+      pricingSubtotal:     pricing?.subtotal   ?? null,
+      pricingDiscount:     pricing?.discount   ?? null,
+      pricingFinalPrice:   pricing?.finalPrice ?? null,
+      selectedFullCourses: programMode === 'full' ? JSON.stringify(selectedFullCourses) : null,
+      referralName:        referral?.name        || null,
+      referralInstitution: referral?.institution || null,
+      referralBatch:       referral?.batch       || null,
+      status:              'pending',
+    }).returning({ id: registrations.id });
 
-    const savedRegistration = await registration.save();
+    // Non-blocking email notification
+    sendRegistrationNotification({ name, email, phone, educationType, programMode, selectedMocks, selectedFullCourses, mockIntent, pricing, referral })
+      .catch(e => console.error('Email notification failed:', e));
 
-    // Send email notification to admins (non-blocking)
-    sendRegistrationNotification({
-      name: data.name,
-      email: data.email,
-      phone: data.phone,
-      educationType: data.educationType,
-      programMode: data.programMode,
-      selectedMocks: data.selectedMocks,
-      selectedFullCourses: data.selectedFullCourses,
-      mockIntent: data.mockIntent,
-      pricing: data.pricing,
-      referral: data.referral
-    }).catch(error => {
-      // Log error but don't fail the registration
-      console.error('Failed to send registration notification email:', error);
-    });
-
-    return NextResponse.json({
-      success: true,
-      message: 'Registration submitted successfully',
-      registrationId: savedRegistration._id
-    }, { status: 201 });
+    return NextResponse.json({ success: true, registrationId: saved.id }, { status: 201 });
   } catch (error) {
     return createErrorResponse(error);
   }
 }
 
-// GET - Fetch registrations (admin only)
+// GET — admin: list registrations
 export async function GET(request: NextRequest) {
   try {
-    // Validate admin authentication
-    console.log('[Registrations API] Starting authentication check...');
-    const user = await validateAuth();
-    console.log('[Registrations API] User authenticated:', user.email);
+    const auth = await validateAuth();
+    if (!(await isAdminEmail(auth.email))) throw new ApiException('Unauthorized', 403);
 
-    const { isAdminEmail } = await import('@/lib/db-access-control');
-    const adminCheck = await isAdminEmail(user.email);
-    console.log('[Registrations API] Admin check result:', adminCheck, 'for email:', user.email);
+    const { searchParams } = new URL(request.url);
+    const status      = searchParams.get('status');
+    const programMode = searchParams.get('programMode');
+    const limit       = Math.min(parseInt(searchParams.get('limit') || '50'), 200);
 
-    if (!adminCheck) {
-      console.error('[Registrations API] User is not admin:', user.email);
-      throw new ApiException('Unauthorized', 403, 'UNAUTHORIZED');
+    const conditions = [];
+    if (status)      conditions.push(eq(registrations.status, status));
+    if (programMode) conditions.push(eq(registrations.programMode, programMode));
+
+    const { and: andOp } = await import('drizzle-orm');
+    const rows = await db
+      .select()
+      .from(registrations)
+      .where(conditions.length ? andOp(...conditions) : undefined)
+      .orderBy(desc(registrations.createdAt))
+      .limit(limit);
+
+    // Status counts
+    const countRows = await db.$client.execute('SELECT status, COUNT(*) as count FROM registrations GROUP BY status');
+    const counts: Record<string, number> = { pending: 0, contacted: 0, enrolled: 0, cancelled: 0 };
+    for (const r of countRows.rows as Array<Record<string, unknown>>) {
+      counts[r.status as string] = Number(r.count);
     }
 
-    console.log('[Registrations API] Admin authorization successful');
-
-    await connectToDatabase();
-
-    // Get query parameters
-    const searchParams = request.nextUrl.searchParams;
-    const status = searchParams.get('status');
-    const programMode = searchParams.get('programMode');
-    const limit = parseInt(searchParams.get('limit') || '50');
-
-    // Build query
-    const query: any = {};
-    if (status) query.status = status;
-    if (programMode) query.programMode = programMode;
-
-    // Fetch registrations
-    const registrations = await Registration.find(query)
-      .sort({ createdAt: -1 })
-      .limit(limit)
-      .lean();
-
-    // Get counts by status
-    const statusCounts = await Registration.aggregate([
-      {
-        $group: {
-          _id: '$status',
-          count: { $sum: 1 }
-        }
-      }
-    ]);
-
-    const counts = {
-      pending: 0,
-      contacted: 0,
-      enrolled: 0,
-      cancelled: 0
-    };
-
-    statusCounts.forEach((item: any) => {
-      counts[item._id as keyof typeof counts] = item.count;
-    });
-
-    return NextResponse.json({
-      success: true,
-      registrations,
-      counts,
-      total: registrations.length
-    });
+    return NextResponse.json({ success: true, registrations: rows, counts, total: rows.length });
   } catch (error) {
     return createErrorResponse(error);
   }

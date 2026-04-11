@@ -14,7 +14,6 @@ declare module "next-auth" {
       isAdmin?: boolean
       permissions?: string[]
       studentId?: string
-      adminId?: string
       class?: string
       batch?: string
       accessTypes?: {
@@ -30,32 +29,6 @@ declare module "next-auth" {
       }
     }
   }
-
-  interface User {
-    id?: string
-    name?: string | null
-    email?: string | null
-    image?: string | null
-    role?: 'super_admin' | 'admin' | 'student'
-    isAdmin?: boolean
-    permissions?: string[]
-    studentId?: string
-    adminId?: string
-    class?: string
-    batch?: string
-    accessTypes?: {
-      IBA: boolean
-      DU: boolean
-      FBS: boolean
-    }
-    mockAccess?: {
-      duIba: boolean
-      bupIba: boolean
-      duFbs: boolean
-      bupFbs: boolean
-      fbsDetailed: boolean
-    }
-  }
 }
 
 declare module "next-auth/jwt" {
@@ -64,12 +37,10 @@ declare module "next-auth/jwt" {
     isAdmin?: boolean
     permissions?: string[]
     studentId?: string
-    adminId?: string
     class?: string
     batch?: string
     accessTypes?: {
       IBA: boolean
-      DU: boolean
       FBS: boolean
     }
     mockAccess?: {

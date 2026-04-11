@@ -1,0 +1,877 @@
+\documentclass[11pt, a4paper]{article}
+
+% ---------- packages ----------
+\usepackage[a4paper, top=2cm, bottom=2cm, left=2.2cm, right=2.2cm]{geometry}
+\usepackage{fontenc}
+\usepackage{inputenc}
+\usepackage[english]{babel}
+\usepackage{microtype}
+\usepackage{parskip}
+\usepackage{xcolor}
+\usepackage{mdframed}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{booktabs}
+\usepackage{array}
+
+% ---------- colours ----------
+\definecolor{unitblue}{RGB}{25, 70, 130}
+\definecolor{posgray}{RGB}{100, 100, 100}
+\definecolor{exampletan}{RGB}{248, 245, 238}
+\definecolor{noteborder}{RGB}{180, 150, 80}
+\definecolor{notebg}{RGB}{255, 251, 235}
+
+% ---------- section styling ----------
+\titleformat{\section}[block]
+  {\large\bfseries\color{unitblue}}
+  {}{0em}{}[\vspace{0.3em}\titlerule\vspace{0.5em}]
+
+% ---------- custom commands ----------
+
+% \wordentry{WORD}{part of speech}
+\newcommand{\wordentry}[2]{%
+  \vspace{0.9em}%
+  {\large\bfseries #1}%
+  \quad{\itshape\color{posgray}(#2)}%
+  \par\vspace{0.15em}%
+}
+
+% \posblock{part of speech} — used when a second POS block starts
+\newcommand{\posblock}[1]{%
+  \vspace{0.4em}%
+  {\itshape\color{posgray}(#1)}%
+  \par\vspace{0.1em}%
+}
+
+% \definition{text}
+\newcommand{\definition}[1]{%
+  \textbf{Definition:} #1\par%
+}
+
+% \definitionnumbered{number}{text}
+\newcommand{\definitionnumbered}[2]{%
+  \textbf{Definition #1:} #2\par%
+}
+
+% \examplesentence{text}
+\newcommand{\examplesentence}[1]{%
+  \begin{mdframed}[
+    backgroundcolor=exampletan,
+    linewidth=0pt,
+    innerleftmargin=8pt,
+    innerrightmargin=8pt,
+    innertopmargin=5pt,
+    innerbottommargin=5pt,
+    skipabove=3pt,
+    skipbelow=3pt
+  ]
+  \small\itshape #1
+  \end{mdframed}%
+}
+
+% \examplenumbered{number}{text}
+\newcommand{\examplenumbered}[2]{%
+  \begin{mdframed}[
+    backgroundcolor=exampletan,
+    linewidth=0pt,
+    innerleftmargin=8pt,
+    innerrightmargin=8pt,
+    innertopmargin=5pt,
+    innerbottommargin=5pt,
+    skipabove=3pt,
+    skipbelow=3pt
+  ]
+  \small\itshape\textbf{#1.}\ #2
+  \end{mdframed}%
+}
+
+% \synantline{synonyms}{antonym}
+\newcommand{\synantline}[2]{%
+  \vspace{0.2em}%
+  \textbf{Synonyms:} #1\quad|\quad\textbf{Antonym:} #2\par%
+}
+
+% \synantlinemulti{text} — for multi-POS words with labelled synonyms
+\newcommand{\synantlinemulti}[1]{%
+  \vspace{0.2em}%
+  \textbf{Synonyms / Antonym:} #1\par%
+}
+
+% \usagenote{text}
+\newcommand{\usagenote}[1]{%
+  \begin{mdframed}[
+    backgroundcolor=notebg,
+    linecolor=noteborder,
+    linewidth=1pt,
+    innerleftmargin=8pt,
+    innerrightmargin=8pt,
+    innertopmargin=5pt,
+    innerbottommargin=5pt,
+    skipabove=4pt,
+    skipbelow=4pt
+  ]
+  \small\textbf{Usage note:} #1
+  \end{mdframed}%
+}
+
+% \entryrule — thin separator between entries
+\newcommand{\entryrule}{%
+  \vspace{0.3em}%
+  {\color{posgray}\hrule height 0.3pt}%
+  \vspace{0.3em}%
+}
+
+% ---------- document ----------
+\begin{document}
+
+\begin{center}
+  {\LARGE\bfseries\color{unitblue} WordSmart Vocabulary}\\[0.4em]
+  {\large Thematic Edition}\\[0.2em]
+  {\small\color{posgray} Intermediate Level}
+\end{center}
+
+\vspace{1em}
+
+% ============================================================
+% UNIT 1 — Authoritarian Rule & Coercion
+% ============================================================
+\section*{Unit 1 \textnormal{---} Authoritarian Rule \& Coercion}
+
+% ----- WORD 1 -----
+\wordentry{AUTOCRATIC}{adjective}
+\definition{Ruling or behaving as if one holds complete power and no one else's opinion matters---unwilling to share control or be questioned by anyone.}
+\examplesentence{The general ran the country as an autocratic ruler---he dissolved the courts, banned all opposition parties, and jailed anyone who publicly disagreed with him.}
+\synantline{dictatorial, despotic}{democratic}
+\entryrule
+
+% ----- WORD 2 -----
+\wordentry{COERCE}{verb}
+\definition{To force someone to do something by threatening them with punishment, violence, or serious harm if they refuse---they comply not by choice but out of fear.}
+\examplesentence{Soldiers went door to door, coercing families into handing over their weapons by threatening to arrest the men of the house.}
+\synantline{compel, intimidate}{persuade}
+\entryrule
+
+% ----- WORD 3 -----
+\wordentry{DESPOT}{noun}
+\definition{A ruler who holds absolute, unchecked power and uses it harshly---without elections, legal limits, or accountability to anyone.}
+\examplesentence{The despot had ruled the country for thirty years; no election had ever been held, and no critic had ever spoken in public without facing arrest.}
+\synantline{tyrant, dictator}{democrat}
+\entryrule
+
+% ----- WORD 4 -----
+\wordentry{HEGEMONY}{noun}
+\definition{The dominance of one country, group, or institution over others---exercised not always by direct force, but through political pressure, economic power, or cultural influence.}
+\examplesentence{After the war, the victorious nation extended its hegemony across the region, shaping the trade rules, military alliances, and governments of its smaller neighbors.}
+\synantline{dominance, supremacy}{subordination}
+\entryrule
+
+% ----- WORD 5 -----
+\wordentry{IMPERIAL}{adjective}
+\definitionnumbered{1}{Relating to an empire or its ruler---describing laws, authority, or ambitions that belong to or come from an empire.}
+\examplenumbered{1}{The colonial administration issued imperial decrees that overrode all local law---the empire's word was final and no appeal was possible.}
+\definitionnumbered{2}{Describing an attitude or manner that expects total obedience, as if one were above being questioned or refused.}
+\examplenumbered{2}{She swept into the meeting with an imperial air, cutting off every question and announcing her decision as though the discussion were already over.}
+\synantline{sovereign, commanding}{subordinate}
+\entryrule
+
+% ----- WORD 6 -----
+\wordentry{MARTIAL}{adjective}
+\definition{Relating to war, soldiers, or the military---used for anything connected with armed force, combat, or military authority.}
+\examplesentence{The president declared martial law after the riots, placing soldiers on every street corner and suspending the civilian courts until further notice.}
+\synantline{military, warlike}{civilian}
+\entryrule
+
+% ----- WORD 7 -----
+\wordentry{PACIFY}{verb}
+\definitionnumbered{1}{To calm someone who is angry, upset, or difficult---to bring them to a quieter, more manageable state.}
+\examplenumbered{1}{The officer tried to pacify the angry crowd by promising to relay their demands to the mayor within the hour.}
+\definitionnumbered{2}{To bring peace or order to a region or group that is fighting or resisting---sometimes by using force to crush that resistance.}
+\examplenumbered{2}{The army spent three years trying to pacify the northern territories, where armed resistance continued despite heavy losses on both sides.}
+\synantline{appease, calm}{provoke}
+\entryrule
+
+% ----- WORD 8 -----
+\wordentry{PREVAIL}{verb}
+\definitionnumbered{1}{To succeed or win, especially against difficulty or strong opposition.}
+\examplenumbered{1}{Despite being outgunned and outnumbered, the resistance forces prevailed---the occupying army withdrew within a month.}
+\definitionnumbered{2}{To be the most widespread or common condition in a particular place or time.}
+\examplenumbered{2}{A mood of quiet fear prevailed across the capital; people spoke in whispers and avoided gathering in public.}
+\synantline{triumph, dominate}{fail}
+\entryrule
+
+% ----- WORD 9 -----
+\wordentry{PROSCRIBE}{verb}
+\definition{To officially ban something---to declare it forbidden by law or authority so that no one is permitted to do or use it.}
+\examplesentence{The new regime proscribed all political parties except its own, making any form of organized opposition a criminal offence.}
+\synantline{prohibit, ban}{permit}
+\entryrule
+
+% ----- WORD 10 -----
+\wordentry{SUBJUGATE}{verb}
+\definition{To bring a people, nation, or group under complete control by force---to defeat them so thoroughly that they have no choice but to obey.}
+\examplesentence{The empire subjugated dozens of peoples over two centuries, replacing local rulers with governors who answered only to the capital.}
+\synantline{dominate, conquer}{liberate}
+
+\usagenote{\textit{Coerce} means forcing a specific person or group to perform a particular act through threats---the pressure is targeted and the act is specific. \textit{Subjugate} means conquering an entire people or territory and placing them under lasting, total control. Use \textit{subjugate} when the sentence describes military defeat or the long-term domination of a whole population---not a single forced action.}
+\entryrule
+
+% ----- WORD 11 -----
+\wordentry{USURP}{verb}
+\definition{To take power, a position, or a right that belongs to someone else---usually by force or deception, and without any legal right to do so.}
+\examplesentence{The general usurped the presidency in a midnight coup, declaring himself head of state before the elected government could mount any response.}
+\synantline{seize, overthrow}{relinquish}
+
+\newpage
+
+% ============================================================
+% UNIT 2 — Social Hierarchy & Class Distinction
+% ============================================================
+\section*{Unit 2 \textnormal{---} Social Hierarchy \& Class Distinction}
+
+% ----- WORD 1 -----
+\wordentry{ARISTOCRATIC}{adjective}
+\definitionnumbered{1}{Belonging to the highest social class---the nobility---by birth or family title.}
+\examplenumbered{1}{The estate had been in the family for four centuries; its aristocratic owners had held a dukedom since the reign of Henry VIII.}
+\definitionnumbered{2}{Having the refined manner or appearance associated with the upper class---elegant, poised, and somewhat distant.}
+\examplenumbered{2}{She carried herself with an aristocratic ease that made others in the room feel underdressed and slightly clumsy.}
+\synantline{noble, patrician}{common}
+\entryrule
+
+% ----- WORD 2 -----
+\wordentry{BOURGEOIS}{adjective / noun}
+\definition{(adjective) Relating to the middle class, especially in a way that suggests conventional thinking, comfort-seeking, and material values. (noun) A member of the middle class, particularly one seen as overly focused on property and social respectability.}
+\examplesentence{The revolutionary pamphlet attacked what it called the bourgeois obsession with home ownership and status---caring more about appearances than about justice.}
+\synantline{middle-class, conventional}{proletarian}
+\entryrule
+
+% ----- WORD 3 -----
+\wordentry{CONDESCEND}{verb}
+\definitionnumbered{1}{To speak or behave as though you are better than the person you are dealing with---treating them as less intelligent or less important.}
+\examplenumbered{1}{The senior partner condescended to the new associates, explaining even simple procedures as though they had never entered a courtroom before.}
+\definitionnumbered{2}{To agree to do something that you consider beneath your usual status---to lower yourself to a task.}
+\examplenumbered{2}{The mayor condescended to answer questions from the student press, though he made clear he found the exercise beneath him.}
+\synantline{patronize, belittle}{respect}
+\entryrule
+
+% ----- WORD 4 -----
+\wordentry{DENIZEN}{noun}
+\definition{A person, animal, or plant that lives in or regularly occupies a particular place---used to describe any established inhabitant of a specific environment.}
+\examplesentence{The bar had its regular denizens---old men who arrived at opening time and left only when the lights were turned off.}
+\synantline{inhabitant, resident}{outsider}
+\entryrule
+
+% ----- WORD 5 -----
+\wordentry{GENTEEL}{adjective}
+\definition{Polite and refined in a way that suggests good social standing; sometimes used with a hint of mockery---suggesting someone is trying too hard to appear respectable.}
+\examplesentence{The neighbourhood had a genteel, slightly faded quality---clean lace curtains in every window and no one speaking above a murmur.}
+\synantline{refined, polished}{coarse}
+\entryrule
+
+% ----- WORD 6 -----
+\wordentry{HIERARCHY}{noun}
+\definition{A system in which people, groups, or things are ranked one above another according to power, status, or importance---with the most powerful at the top and the least powerful at the bottom.}
+\examplesentence{The company had a strict hierarchy: junior staff reported to managers, managers reported to directors, and directors reported only to the CEO.}
+\synantline{pecking order, ranking}{equality}
+\entryrule
+
+% ----- WORD 7 -----
+\wordentry{INDIGENOUS}{adjective}
+\definition{Originating naturally in a particular place and having lived or existed there since before others arrived---native to a region, not brought in from outside.}
+\examplesentence{The government passed a law to protect the land rights of indigenous communities, whose families had farmed the same valleys for more than a thousand years.}
+\synantline{native, aboriginal}{foreign}
+\entryrule
+
+% ----- WORD 8 -----
+\wordentry{PATRICIAN}{adjective / noun}
+\definition{(adjective) Belonging to or typical of the upper class---refined, cultured, and accustomed to privilege. (noun) A member of the highest social class; historically, a member of the Roman nobility.}
+\examplesentence{His patrician accent and tailored suits announced his background before he had said a word---he was the product of old money and older schools.}
+\synantline{aristocratic, noble}{plebeian}
+\entryrule
+
+% ----- WORD 9 -----
+\wordentry{PATRONIZE}{verb}
+\definitionnumbered{1}{To speak to or treat someone as though they are less intelligent or capable than they are---often without realizing you are doing it.}
+\examplenumbered{1}{The doctor patronized his elderly patient by explaining everything twice in a loud, slow voice, as though she were a child.}
+\definitionnumbered{2}{To regularly use or visit a particular shop, restaurant, or service.}
+\examplenumbered{2}{She had patronized the same bookshop every Saturday for fifteen years---the owner knew her name and set aside new arrivals for her.}
+\synantline{condescend, belittle}{respect}
+
+\usagenote{\textit{Condescend} emphasises the gap in status---the speaker lowers themselves to engage with someone they consider beneath them. \textit{Patronize} focuses on how the other person is treated---as though they lack intelligence or need things explained carefully. Use \textit{patronize} when a sentence shows someone speaking down to another person in a way that undermines their competence; use \textit{condescend} when the emphasis is on one person considering themselves socially or intellectually superior.}
+\entryrule
+
+% ----- WORD 10 -----
+\wordentry{PLEBEIAN}{adjective / noun}
+\definition{(adjective) Relating to ordinary people rather than the upper class; sometimes used to suggest a lack of culture or refinement. (noun) A common person---in ancient Rome, any citizen who was not a patrician; more broadly, someone from the lower social orders.}
+\examplesentence{The critics dismissed the film as plebeian entertainment---loud, simple, and designed for people who did not want to think.}
+\synantline{common, lowborn}{patrician}
+\entryrule
+
+% ----- WORD 11 -----
+\wordentry{PROLETARIAT}{noun}
+\definition{The working class---those who earn wages by their labour, typically in manual or industrial work, and who own no significant property or capital.}
+\examplesentence{The party claimed to speak for the proletariat, but its leaders were lawyers and academics who had never worked a factory shift in their lives.}
+\synantline{working class, labourers}{bourgeoisie}
+\entryrule
+
+% ----- WORD 12 -----
+\wordentry{STRATUM}{noun}
+\definition{A distinct layer or level within a larger structure---in social terms, a recognisable class or group defined by income, education, or status.}
+\examplesentence{The study found that children born into the lowest economic stratum had less than a one-in-ten chance of reaching the highest by the time they were forty.}
+\synantline{layer, tier}{whole}
+
+\newpage
+
+% ============================================================
+% UNIT 3 — Seizing & Legitimizing Power
+% ============================================================
+\section*{Unit 3 \textnormal{---} Seizing \& Legitimizing Power}
+
+% ----- WORD 1 -----
+\wordentry{ABDICATE}{verb}
+\definitionnumbered{1}{To give up a throne or the highest position of power---to step down formally from a role of supreme authority.}
+\examplenumbered{1}{The king abdicated in favour of his son after thirty years on the throne, citing poor health and the need for younger leadership.}
+\definitionnumbered{2}{To fail to carry out a duty or responsibility that was expected of you---to walk away from an obligation.}
+\examplenumbered{2}{Critics argued that the minister had abdicated her responsibility by leaving the department without a plan during the worst crisis in a decade.}
+\synantline{resign, relinquish}{assume}
+\entryrule
+
+% ----- WORD 2 -----
+\wordentry{ASCENDANCY}{noun}
+\definition{A position of growing or established dominance over others---the state of having power or influence that is clearly rising or firmly held.}
+\examplesentence{By the third year of the war, the rebel forces had achieved ascendancy in the north, controlling every major road and supply route.}
+\synantline{dominance, supremacy}{decline}
+\entryrule
+
+% ----- WORD 3 -----
+\wordentry{CONSECRATE}{verb}
+\definitionnumbered{1}{To officially declare something sacred or holy through a religious ceremony---setting it apart for divine use.}
+\examplenumbered{1}{The bishop consecrated the new cathedral in a three-hour ceremony attended by hundreds of clergy from across the country.}
+\definitionnumbered{2}{To dedicate something entirely to a purpose or person---to commit it fully and formally.}
+\examplenumbered{2}{She consecrated the rest of her career to improving conditions for workers in the poorest factories.}
+\synantline{sanctify, dedicate}{desecrate}
+\entryrule
+
+% ----- WORD 4 -----
+\wordentry{COUP}{noun}
+\definition{A sudden seizure of power from a government---usually carried out by a small group such as the military, and often without warning or a popular vote.}
+\examplesentence{At three in the morning, tanks surrounded the parliament building; by dawn, the generals had announced a coup and placed the elected president under arrest.}
+\synantline{takeover, overthrow}{election}
+\entryrule
+
+% ----- WORD 5 -----
+\wordentry{CULMINATE}{verb}
+\definition{To reach the highest or final point after a process of building or development---to end in a particular outcome after a long lead-up.}
+\examplesentence{Years of tension between the two factions culminated in an open split at the party conference, with each side walking out and forming its own organisation.}
+\synantline{climax, conclude}{begin}
+\entryrule
+
+% ----- WORD 6 -----
+\wordentry{INAUGURATE}{verb}
+\definitionnumbered{1}{To formally install someone in a position of authority through an official ceremony.}
+\examplenumbered{1}{The new president was inaugurated on the steps of the capitol, taking the oath of office before a crowd of thousands in freezing January rain.}
+\definitionnumbered{2}{To mark the official beginning of something new---an era, a building, or a programme---with a formal event.}
+\examplenumbered{2}{The prime minister inaugurated the high-speed rail line by boarding the first train herself and riding it the full length of the route.}
+\synantline{install, launch}{dissolve}
+
+\usagenote{\textit{Inaugurate} describes a formal civic or institutional beginning---installing a leader, opening a building, launching a programme. \textit{Consecrate} describes a religious or deeply solemn act of dedication---making something holy or setting it apart for a sacred purpose. If the sentence involves a ceremony with a spiritual or religious dimension, use \textit{consecrate}; if it is a civic or official opening, use \textit{inaugurate}.}
+\entryrule
+
+% ----- WORD 7 -----
+\wordentry{LEGACY}{noun}
+\definition{Something handed down from a person, era, or event---whether money, property, ideas, or lasting consequences---that continues to shape the present long after its source is gone.}
+\examplesentence{The dictator had been dead for twenty years, but his legacy persisted: a generation raised to distrust strangers and a press that still practised self-censorship.}
+\synantline{inheritance, bequest}{none}
+\entryrule
+
+% ----- WORD 8 -----
+\wordentry{MANDATE}{noun / verb}
+\definitionnumbered{1}{(noun) The authority given by voters or a higher body to a leader or government to act on their behalf and carry out a particular programme.}
+\examplenumbered{1}{The party won the election by a large margin and claimed a clear mandate to reform the tax system---a policy at the centre of its campaign.}
+\definitionnumbered{2}{(noun) An official order or instruction requiring that something be done.}
+\examplenumbered{2}{The court issued a mandate requiring the company to release all internal communications within fourteen days.}
+
+\posblock{verb}
+\definition{To officially require or order that something be done.}
+\examplesentence{The new law mandated that all public buildings install wheelchair-accessible entrances within two years.}
+\synantlinemulti{(noun) authority, directive \quad/\quad (verb) require, order \quad|\quad Antonym: none}
+\entryrule
+
+% ----- WORD 9 -----
+\wordentry{MARSHAL}{verb / noun}
+\definition{(verb) To organise people, facts, or resources carefully and deliberately---especially in preparation for an effort or argument. (noun) A high-ranking military officer or a law-enforcement official with senior authority.}
+\examplesentence{The lawyer spent the weekend marshalling every piece of evidence---arranging the documents, preparing the witnesses, and rehearsing every line of her argument.}
+\synantline{organise, mobilise}{scatter}
+\entryrule
+
+% ----- WORD 10 -----
+\wordentry{PREEMINENT}{adjective}
+\definition{Better than all others in a particular field or area---the most respected, distinguished, or important of its kind.}
+\examplesentence{She was the preeminent authority on medieval trade routes; no serious historian published on the subject without citing her work.}
+\synantline{foremost, supreme}{obscure}
+\entryrule
+
+% ----- WORD 11 -----
+\wordentry{PREEMPT}{verb}
+\definition{To act before someone else can, in order to prevent what they were planning to do---or to replace something before it happens by doing something first.}
+\examplesentence{The government preempted the strike by announcing a wage increase the night before the union was due to hold its vote.}
+\synantline{forestall, prevent}{allow}
+\entryrule
+
+% ----- WORD 12 -----
+\wordentry{PROMULGATE}{verb}
+\definition{To make a new law, rule, or official decision publicly known and formally put into effect---to announce it as binding authority.}
+\examplesentence{The council promulgated a new set of building regulations and gave contractors sixty days to comply before inspections would begin.}
+\synantline{decree, enact}{repeal}
+
+\newpage
+
+% ============================================================
+% UNIT 4 — Rebellion, Subversion & Sedition
+% ============================================================
+\section*{Unit 4 \textnormal{---} Rebellion, Subversion \& Sedition}
+
+% ----- WORD 1 -----
+\wordentry{ANARCHY}{noun}
+\definition{A state in which there is no working government or law---where normal social order has broken down and no authority is in control. More broadly, any situation of complete disorder and confusion.}
+\examplesentence{After the president fled and the army dissolved, the country descended into anarchy---armed groups seized neighbourhoods and no court or police force remained to stop them.}
+\synantline{chaos, disorder}{order}
+\entryrule
+
+% ----- WORD 2 -----
+\wordentry{BASTION}{noun}
+\definition{A place, person, or institution that strongly defends a particular belief, way of life, or set of values---a last strong point of resistance against change or attack.}
+\examplesentence{The old university was a bastion of free speech---it had refused government pressure to dismiss controversial professors for over a century.}
+\synantline{stronghold, fortress}{weakness}
+\entryrule
+
+% ----- WORD 3 -----
+\wordentry{CHASM}{noun}
+\definition{A deep, wide gap between two things---used literally for a physical gap in the earth, and figuratively for a large and serious division between people, groups, or ideas.}
+\examplesentence{The negotiations collapsed because the chasm between the two sides was simply too wide---one demanded full independence, the other refused to discuss it.}
+\synantline{gulf, divide}{bridge}
+\entryrule
+
+% ----- WORD 4 -----
+\wordentry{FACTION}{noun}
+\definition{A small, organised group within a larger organisation---one that has its own goals and often pushes against the main group's leadership or direction.}
+\examplesentence{A powerful faction within the party had been quietly working to replace the leader for months, holding private meetings and counting votes behind closed doors.}
+\synantline{splinter group, bloc}{whole}
+\entryrule
+
+% ----- WORD 5 -----
+\wordentry{FOMENT}{verb}
+\definition{To stir up or encourage the development of something dangerous or violent---especially trouble, rebellion, or unrest---by feeding people's anger or dissatisfaction.}
+\examplesentence{The government accused foreign broadcasters of fomenting unrest by broadcasting exaggerated reports designed to inflame public anger against the state.}
+\synantline{incite, instigate}{suppress}
+\entryrule
+
+% ----- WORD 6 -----
+\wordentry{INSURGENT}{noun / adjective}
+\definition{(noun) A person who takes up arms or organises resistance against their own government or an occupying force---not yet recognised as a formal army. (adjective) Describing such a person or the movement they belong to.}
+\examplesentence{The insurgents had no uniforms and no base---they operated in small cells, disappeared into the civilian population, and struck only when the advantage was theirs.}
+\synantline{rebel, revolutionary}{loyalist}
+\entryrule
+
+% ----- WORD 7 -----
+\wordentry{MARTYR}{noun}
+\definition{A person who suffers greatly or dies for a belief, cause, or religion---and whose suffering makes them a symbol that inspires others to continue the same fight.}
+\examplesentence{The regime's decision to execute the protest leader was a catastrophic mistake---it turned a local activist into a national martyr whose face appeared on walls across the country.}
+\synantline{sacrifice, hero}{traitor}
+\entryrule
+
+% ----- WORD 8 -----
+\wordentry{POLARIZE}{verb}
+\definition{To divide people or opinion into two sharply opposed and hostile camps, with very little middle ground left between them.}
+\examplesentence{The referendum polarized the country almost perfectly in half---families stopped speaking at dinner tables and colleagues avoided the topic entirely at work.}
+\synantline{divide, split}{unite}
+\entryrule
+
+% ----- WORD 9 -----
+\wordentry{PROTAGONIST}{noun}
+\definitionnumbered{1}{The main character in a story, film, or play---the central figure whose actions drive the plot.}
+\examplenumbered{1}{The novel's protagonist is a young schoolteacher who slowly discovers that the peaceful village she has moved to is hiding a violent past.}
+\definitionnumbered{2}{A leading or active supporter of a cause or movement.}
+\examplenumbered{2}{She was one of the earliest protagonists of land reform---speaking at rallies, writing pamphlets, and lobbying parliament for over a decade before the law finally changed.}
+\synantline{hero, champion}{antagonist}
+\entryrule
+
+% ----- WORD 10 -----
+\wordentry{RECALCITRANT}{adjective}
+\definition{Stubbornly refusing to obey, cooperate, or change---resisting authority or instruction even when direct pressure is applied.}
+\examplesentence{The recalcitrant prisoner refused to follow any instruction from the guards---sitting silently through every session, answering no questions, signing nothing.}
+\synantline{defiant, obstinate}{compliant}
+\entryrule
+
+% ----- WORD 11 -----
+\wordentry{SEDITION}{noun}
+\definition{Speech, writing, or action intended to encourage people to rebel against or disobey the authority of the state---not yet open revolt, but deliberate effort to undermine the government's power.}
+\examplesentence{The pamphlets called on citizens to refuse all taxes and ignore all government orders---the authorities charged the printer with sedition and closed the press.}
+\synantline{incitement, subversion}{loyalty}
+
+\usagenote{\textit{Sedition} refers to the act itself---the words or deeds that incite rebellion, usually a legal charge. \textit{Subversive} is an adjective (or noun) describing a person or material whose aim is to undermine authority from within, often more gradually and covertly. Use \textit{sedition} when a sentence involves a formal accusation or a specific inflammatory act; use \textit{subversive} when describing the nature or intent of a person, organisation, or piece of writing.}
+\entryrule
+
+% ----- WORD 12 -----
+\wordentry{SUBVERSIVE}{adjective / noun}
+\definition{(adjective) Intended to secretly weaken or destroy an established system, government, or set of values---working against authority from the inside rather than through open confrontation. (noun) A person who works in this way.}
+\examplesentence{The security service kept a file on the lecturer, whose courses were considered subversive---he taught students to question institutions that the state preferred they simply accepted.}
+\synantline{seditious, disruptive}{loyal}
+
+\newpage
+
+% ============================================================
+% UNIT 5 — Ideology & Political Doctrine
+% ============================================================
+\section*{Unit 5 \textnormal{---} Ideology \& Political Doctrine}
+
+% ----- WORD 1 -----
+\wordentry{CAPITALISM}{noun}
+\definition{An economic system in which businesses, factories, and property are owned by private individuals rather than the state---and in which profit, competition, and market prices determine what is produced and how wealth is distributed.}
+\examplesentence{After the wall fell, the country moved quickly toward capitalism---state industries were sold off, prices were freed from government control, and foreign companies began to invest.}
+\synantline{free market, private enterprise}{socialism}
+\entryrule
+
+% ----- WORD 2 -----
+\wordentry{DOCTRINAIRE}{adjective}
+\definition{Rigidly committed to a set of ideas or principles, and unwilling to adjust them to fit reality---applying a doctrine even when the facts clearly argue against it.}
+\examplesentence{The minister was too doctrinaire to adapt---he kept cutting public spending even as unemployment rose and the evidence against austerity mounted week by week.}
+\synantline{dogmatic, inflexible}{pragmatic}
+\entryrule
+
+% ----- WORD 3 -----
+\wordentry{DOGMATIC}{adjective}
+\definition{Stating beliefs as though they are absolute facts that cannot be questioned or doubted---refusing to consider any other view or any evidence to the contrary.}
+\examplesentence{He was dogmatic about the diet, insisting it was the only healthy way to eat and dismissing every study that pointed to a different conclusion.}
+\synantline{doctrinaire, rigid}{open-minded}
+
+\usagenote{\textit{Dogmatic} describes a general attitude---a person who treats their own beliefs as unquestionable truth. \textit{Doctrinaire} is more specific: it refers to rigid, mechanical application of a formal doctrine or system, especially in politics or economics, regardless of practical results. A dogmatic person refuses to be challenged; a doctrinaire person follows a blueprint even when it fails.}
+\entryrule
+
+% ----- WORD 4 -----
+\wordentry{EGALITARIAN}{adjective / noun}
+\definition{(adjective) Believing in or promoting the principle that all people are equal and deserve equal rights, opportunities, and treatment. (noun) A person who holds this belief.}
+\examplesentence{The founders wrote an egalitarian constitution that guaranteed every citizen the same rights regardless of birth, religion, or wealth---a radical promise for its time.}
+\synantline{equal, democratic}{elitist}
+\entryrule
+
+% ----- WORD 5 -----
+\wordentry{ESPOUSE}{verb}
+\definition{To publicly adopt, support, and promote a belief, cause, or set of ideas---to commit yourself to it openly and speak up for it.}
+\examplesentence{She had espoused pacifism since her student days, refusing to support any military action regardless of the justification offered by those in power.}
+\synantline{advocate, champion}{oppose}
+\entryrule
+
+% ----- WORD 6 -----
+\wordentry{IDEOLOGY}{noun}
+\definition{A complete set of ideas and beliefs---about how society should be organised, who should hold power, and what is just---that forms the basis of a political movement or system.}
+\examplesentence{The two parties shared almost no common ground because their ideologies were fundamentally opposed: one believed the market should govern everything, the other believed the state should.}
+\synantline{doctrine, creed}{none}
+\entryrule
+
+% ----- WORD 7 -----
+\wordentry{MANIFESTO}{noun}
+\definition{A public declaration in which a person, party, or movement sets out its goals, beliefs, and plans---especially before an election or at the start of a campaign.}
+\examplesentence{The party published its manifesto six weeks before the election, promising tax reform, free healthcare, and a complete withdrawal from all foreign military engagements.}
+\synantline{platform, declaration}{none}
+\entryrule
+
+% ----- WORD 8 -----
+\wordentry{ORTHODOX}{adjective}
+\definition{Conforming to the accepted, established, or traditional beliefs of a religion, field, or group---not questioning or departing from the standard view.}
+\examplesentence{His approach to monetary policy was entirely orthodox---he followed the standard textbook methods and was deeply suspicious of any economist who suggested something different.}
+\synantline{conventional, traditional}{unorthodox}
+\entryrule
+
+% ----- WORD 9 -----
+\wordentry{PARTISAN}{adjective / noun}
+\definition{(adjective) Strongly supporting one side or party in a dispute, with little interest in fairness to the other side. (noun) A committed supporter of a cause or party; also, a member of an armed resistance group fighting against an occupying force.}
+\examplesentence{The report was dismissed by opposition leaders as a partisan exercise---its findings happened to support every single position the ruling party had taken over the past year.}
+\synantline{biased, one-sided}{impartial}
+\entryrule
+
+% ----- WORD 10 -----
+\wordentry{POLEMIC}{noun / adjective}
+\definition{(noun) A forceful, aggressive piece of writing or speech that attacks an opposing view, person, or institution---not trying to be fair, but trying to win the argument and discredit the other side. (adjective) Describing such writing or speech.}
+\examplesentence{The pamphlet was an unapologetic polemic---it named individuals by name, attributed the worst motives to all of them, and demanded the entire leadership resign at once.}
+\synantline{diatribe, tirade}{balanced account}
+\entryrule
+
+% ----- WORD 11 -----
+\wordentry{PROPONENT}{noun}
+\definition{A person who actively supports and argues in favour of a particular idea, plan, or cause---someone who promotes it and tries to convince others.}
+\examplesentence{She was one of the most vocal proponents of the new curriculum, arguing at every school board meeting that the changes would benefit students across all income levels.}
+\synantline{advocate, champion}{opponent}
+\entryrule
+
+% ----- WORD 12 -----
+\wordentry{TENET}{noun}
+\definition{A core belief or principle that forms part of a larger set of ideas---one of the fundamental points that a religion, movement, or system is built on.}
+\examplesentence{A central tenet of the movement was that land could not be privately owned---it belonged to the community as a whole and had to be managed for everyone's benefit.}
+\synantline{principle, doctrine}{none}
+
+\newpage
+
+% ============================================================
+% UNIT 6 — Secrecy, Conspiracy & Hidden Agendas
+% ============================================================
+\section*{Unit 6 \textnormal{---} Secrecy, Conspiracy \& Hidden Agendas}
+
+% ----- WORD 1 -----
+\wordentry{AGENDA}{noun}
+\definitionnumbered{1}{A list of items to be discussed or dealt with at a meeting or during a period of activity.}
+\examplenumbered{1}{The chairperson circulated the agenda two days before the meeting so that all members could prepare their responses in advance.}
+\definitionnumbered{2}{A hidden set of personal goals or motives that someone is quietly pursuing while appearing to act for other reasons.}
+\examplenumbered{2}{Several colleagues suspected the consultant had his own agenda---his recommendations always seemed to benefit the firm he had worked for before joining the team.}
+\synantline{plan, programme}{none}
+\entryrule
+
+% ----- WORD 2 -----
+\wordentry{ARTIFICE}{noun}
+\definition{Clever trickery or deliberate deception used to gain an advantage---skill applied not to make something but to fool someone.}
+\examplesentence{The negotiator was a master of artifice---she let the other side believe they were winning the argument right up to the moment she closed the deal entirely on her own terms.}
+\synantline{deception, cunning}{sincerity}
+\entryrule
+
+% ----- WORD 3 -----
+\wordentry{CLIQUE}{noun}
+\definition{A small, tight group of people who socialise mostly with each other and deliberately exclude others---giving outsiders the impression they are not welcome.}
+\examplesentence{A clique of senior partners controlled every major decision at the firm; new associates quickly learned that promotion depended on being invited into that circle.}
+\synantline{coterie, faction}{none}
+\entryrule
+
+% ----- WORD 4 -----
+\wordentry{COLLUSION}{noun}
+\definition{Secret cooperation between two or more parties to achieve something dishonest or illegal---especially when they are supposed to be acting independently or against each other.}
+\examplesentence{The investigation found evidence of collusion between three rival companies: they had been secretly agreeing on prices while pretending to compete in the open market.}
+\synantline{conspiracy, cooperation}{opposition}
+
+\usagenote{\textit{Collusion} describes secret, illegal cooperation between parties who are supposed to be independent---it always implies wrongdoing and is often used in legal and business contexts. \textit{Complicity} means knowingly helping or participating in someone else's wrongdoing, even if you are not the main actor. Use \textit{collusion} when two or more parties are secretly working together; use \textit{complicity} when one party is an accessory to another's crime or wrongdoing.}
+\entryrule
+
+% ----- WORD 5 -----
+\wordentry{COMPLICITY}{noun}
+\definition{Involvement in or shared responsibility for a wrongdoing---knowing that something bad is happening and helping it along, even if you are not the one doing it directly.}
+\examplesentence{The bank was later found guilty of complicity in the fraud---its officers had processed the suspicious transactions without asking a single question.}
+\synantline{involvement, participation}{innocence}
+\entryrule
+
+% ----- WORD 6 -----
+\wordentry{COVERT}{adjective}
+\definition{Done in secret and deliberately hidden from public view---especially used for official or organised activities that are kept concealed.}
+\examplesentence{The agency ran a covert operation for two years, placing undercover officers inside the organisation without the knowledge of anyone outside the senior command.}
+\synantline{secret, clandestine}{overt}
+\entryrule
+
+% ----- WORD 7 -----
+\wordentry{FURTIVE}{adjective}
+\definition{Done quickly and quietly to avoid being noticed---behaving as though you have something to hide, with nervous, secretive movements or glances.}
+\examplesentence{He cast furtive glances at the envelope on his colleague's desk, clearly desperate to read it but unwilling to be caught looking.}
+\synantline{secretive, stealthy}{open}
+\entryrule
+
+% ----- WORD 8 -----
+\wordentry{INSIDIOUS}{adjective}
+\definition{Spreading or developing slowly and harmfully in a way that is hard to notice until serious damage has already been done---dangerous precisely because it does not look dangerous at first.}
+\examplesentence{The corruption was insidious---it had started with small gifts and minor favours, and by the time anyone noticed, it had worked its way into every department.}
+\synantline{subtle, stealthy}{obvious}
+\entryrule
+
+% ----- WORD 9 -----
+\wordentry{MACHINATION}{noun}
+\definition{A secret and clever scheme to achieve a goal, usually by manipulating people or events behind the scenes---always implies dishonest or self-serving intent. Often used in the plural.}
+\examplesentence{Through years of quiet machinations, she had positioned her allies in every key role in the organisation long before anyone realised what she had been doing.}
+\synantline{scheme, conspiracy}{none}
+\entryrule
+
+% ----- WORD 10 -----
+\wordentry{PROPRIETARY}{adjective}
+\definitionnumbered{1}{Owned by a specific company or person and protected by law---not available for others to use, copy, or sell without permission.}
+\examplenumbered{1}{The formula was proprietary; the company had guarded it as a trade secret for decades and taken legal action against every attempt to replicate it.}
+\definitionnumbered{2}{Relating to or characteristic of an owner---behaving as though something belongs to you.}
+\examplenumbered{2}{He had a proprietary attitude toward the project, refusing to let anyone else present the findings even though three other researchers had contributed equally.}
+\synantline{private, exclusive}{public}
+\entryrule
+
+% ----- WORD 11 -----
+\wordentry{SURREPTITIOUS}{adjective}
+\definition{Done in a way that is kept carefully hidden, especially because it would not be approved of if seen---acting in secret to avoid detection.}
+\examplesentence{She made a surreptitious note of the passcode as her colleague typed it in, glancing around first to make sure no one was watching.}
+\synantline{furtive, covert}{open}
+
+\newpage
+
+% ============================================================
+% UNIT 7 — Stripped of Honors Before the Nation
+% ============================================================
+\section*{Unit 7 \textnormal{---} Stripped of Honors Before the Nation}
+
+% ----- WORD 1 -----
+\wordentry{ACRIMONIOUS}{adjective}
+\definition{Full of anger, bitterness, and hostility---used to describe an argument, relationship, or split in which deep resentment is openly expressed.}
+\examplesentence{The divorce was acrimonious---both sides hired aggressive lawyers, made accusations in open court, and ensured every detail reached the press.}
+\synantline{bitter, hostile}{amicable}
+\entryrule
+
+% ----- WORD 2 -----
+\wordentry{BLATANT}{adjective}
+\definition{So obvious and openly done that it cannot be missed or denied---said of something bad that the person doing it does not even try to hide.}
+\examplesentence{It was a blatant lie---he claimed to have been out of the country on the day in question, but his own phone records placed him at the scene.}
+\synantline{flagrant, brazen}{subtle}
+\entryrule
+
+% ----- WORD 3 -----
+\wordentry{CASTIGATE}{verb}
+\definition{To criticise someone very severely and harshly---usually in public and using strong language that makes clear how seriously they have failed or wronged others.}
+\examplesentence{The judge castigated the company in her ruling, describing its safety failures as reckless and stating that the deaths could have been prevented by the most basic precautions.}
+\synantline{condemn, rebuke}{praise}
+\entryrule
+
+% ----- WORD 4 -----
+\wordentry{CULPABLE}{adjective}
+\definition{Deserving blame for something wrong or harmful---responsible for a fault or failure, whether through direct action or through negligence.}
+\examplesentence{The inquiry found all three managers culpable---they had known about the safety risk for months and chosen to do nothing rather than halt production.}
+\synantline{blameworthy, guilty}{innocent}
+\entryrule
+
+% ----- WORD 5 -----
+\wordentry{EXONERATE}{verb}
+\definition{To officially clear someone of blame or a criminal charge---to formally state that they are not responsible for what they were accused of.}
+\examplesentence{New DNA evidence exonerated the man after he had spent eleven years in prison---the court quashed his conviction and issued a public apology.}
+\synantline{acquit, clear}{convict}
+\entryrule
+
+% ----- WORD 6 -----
+\wordentry{FLAGRANT}{adjective}
+\definition{Shockingly obvious and done without any attempt at concealment---used for wrongs so open and bold that they show complete disregard for rules or decency.}
+\examplesentence{The foul was flagrant---the player kicked his opponent from behind in full view of three officials, and the crowd fell silent before the whistle had even sounded.}
+\synantline{blatant, brazen}{subtle}
+
+\usagenote{\textit{Blatant} stresses how obvious the offence is---something that cannot be missed or denied. \textit{Flagrant} stresses how shocking and shameless the offence is---not just obvious but also outrageous, showing contempt for rules or decency. Use \textit{flagrant} when the sentence emphasises the boldness or moral gravity of the wrong, not just the fact that it was visible.}
+\entryrule
+
+% ----- WORD 7 -----
+\wordentry{IGNOMINY}{noun}
+\definition{Deep public shame and disgrace---the humiliation of having your reputation destroyed in front of others, especially after a serious failure or moral wrongdoing.}
+\examplesentence{He had entered the hearing as the country's most decorated general; he left it in ignominy, stripped of his rank and facing a criminal investigation.}
+\synantline{disgrace, humiliation}{honour}
+\entryrule
+
+% ----- WORD 8 -----
+\wordentry{INFAMOUS}{adjective}
+\definition{Well known for something bad, criminal, or morally shocking---famous in a negative sense, where the reputation is built entirely on wrongdoing or scandal.}
+\examplesentence{The prison was infamous for its brutal conditions---a single mention of its name was enough to silence a room full of hardened lawyers.}
+\synantline{notorious, disreputable}{celebrated}
+\entryrule
+
+% ----- WORD 9 -----
+\wordentry{NOTORIOUS}{adjective}
+\definition{Widely known and talked about because of something bad---having a reputation that is established and recognised far beyond the original offence or scandal.}
+\examplesentence{The neighbourhood had become notorious for gang violence---journalists arrived from other cities to report on it, and residents stopped walking to the shops after dark.}
+\synantline{infamous, disreputable}{unknown}
+
+\usagenote{\textit{Infamous} tends to stress moral shock---something that provokes outrage or disgust. \textit{Notorious} stresses how widely the bad reputation has spread---it focuses on how well known the person or thing has become for the wrong reason. A serial fraudster might be both, but \textit{notorious} fits better when the sentence emphasises how far the reputation has travelled; \textit{infamous} fits better when the emphasis is on the horror or shame of what was done.}
+\entryrule
+
+% ----- WORD 10 -----
+\wordentry{REPREHENSIBLE}{adjective}
+\definition{Deserving very strong moral criticism---so wrong that it cannot be excused or defended, and any decent person should condemn it.}
+\examplesentence{The committee called the treatment of the prisoners reprehensible and demanded an immediate independent inquiry into how the abuse had been allowed to continue for so long.}
+\synantline{deplorable, inexcusable}{admirable}
+\entryrule
+
+% ----- WORD 11 -----
+\wordentry{STIGMATIZE}{verb}
+\definition{To mark or treat a person or group as shameful, inferior, or unacceptable---in a way that becomes a lasting social label that follows them in public life.}
+\examplesentence{For decades, the illness was stigmatized---patients hid their diagnosis from employers and family members rather than face the loss of work and relationships that disclosure often brought.}
+\synantline{shame, brand}{rehabilitate}
+\entryrule
+
+% ----- WORD 12 -----
+\wordentry{TURPITUDE}{noun}
+\definition{Behaviour that is deeply immoral, wicked, or corrupt---used especially in legal and formal contexts to describe conduct so dishonest or depraved that it disqualifies a person from holding a position of trust.}
+\examplesentence{The visa application was rejected on grounds of moral turpitude---the applicant had two convictions for fraud and one for bribery of a public official.}
+\synantline{depravity, wickedness}{virtue}
+
+\newpage
+
+% ============================================================
+% UNIT 8 — Sycophancy, Flattery & Servility
+% ============================================================
+\section*{Unit 8 \textnormal{---} Sycophancy, Flattery \& Servility}
+
+% ----- WORD 1 -----
+\wordentry{ADHERENT}{noun}
+\definition{A person who supports and follows a particular leader, belief, movement, or set of ideas---committed enough to identify themselves with it publicly.}
+\examplesentence{The movement had grown from a handful of students into thousands of adherents across three continents, all following the same set of founding principles.}
+\synantline{follower, supporter}{opponent}
+\entryrule
+
+% ----- WORD 2 -----
+\wordentry{CAJOLE}{verb}
+\definition{To persuade someone to do something by using flattery, gentle pressure, or repeated coaxing---not by force, but by wearing down resistance with persistent charm.}
+\examplesentence{She spent twenty minutes cajoling her reluctant colleague into presenting the findings, praising his communication skills until he finally agreed.}
+\synantline{coax, wheedle}{force}
+\entryrule
+
+% ----- WORD 3 -----
+\wordentry{DEFERENCE}{noun}
+\definition{Respectful submission to the wishes, judgment, or authority of another---choosing to follow their lead rather than assert your own view, out of respect for their position or expertise.}
+\examplesentence{Junior doctors showed deference to the consultant by waiting for her to speak first in ward rounds and deferring all final decisions to her judgment.}
+\synantline{submission, respect}{defiance}
+\entryrule
+
+% ----- WORD 4 -----
+\wordentry{DOCILE}{adjective}
+\definition{Quiet, obedient, and easy to manage or control---willing to follow instructions without resistance or complaint.}
+\examplesentence{The new intake of recruits was unusually docile---they followed every order without question and never pushed back, even during the most exhausting drills.}
+\synantline{obedient, compliant}{defiant}
+\entryrule
+
+% ----- WORD 5 -----
+\wordentry{NOMINAL}{adjective}
+\definitionnumbered{1}{In name only---holding a title or position without the real power, authority, or substance that the title suggests.}
+\examplenumbered{1}{The queen was the nominal head of state, but every real decision was made by the prime minister and the cabinet without her involvement.}
+\definitionnumbered{2}{Very small or token in size or amount---far less than one would reasonably expect.}
+\examplenumbered{2}{The charity asked only a nominal fee for entry---just enough to cover printing costs, nothing more.}
+\synantline{token, titular}{actual}
+\entryrule
+
+% ----- WORD 6 -----
+\wordentry{OBSEQUIOUS}{adjective}
+\definition{Excessively eager to please or obey someone in authority---flattering and submissive to the point where it becomes obvious and unpleasant to watch.}
+\examplesentence{The new assistant was obsequious to an uncomfortable degree---laughing at every one of the director's jokes, agreeing with every opinion, and volunteering for every task no one else wanted.}
+\synantline{servile, fawning}{assertive}
+\entryrule
+
+% ----- WORD 7 -----
+\wordentry{OFFICIOUS}{adjective}
+\definition{Annoyingly eager to give orders, enforce rules, or interfere in other people's affairs---especially when you have no real authority to do so.}
+\examplesentence{The officious security guard stopped every visitor for a full identity check, demanded to inspect every bag, and refused to let anyone through without completing a form.}
+\synantline{meddlesome, interfering}{restrained}
+\entryrule
+
+% ----- WORD 8 -----
+\wordentry{REPROVE}{verb}
+\definition{To express disapproval of someone's behaviour, usually in a mild or calm way---not a harsh punishment, but a clear signal that what they did was wrong.}
+\examplesentence{The teacher reproved the students for arriving late, reminding them that the session began at nine and asking them to be more considerate next time.}
+\synantline{rebuke, admonish}{praise}
+\entryrule
+
+% ----- WORD 9 -----
+\wordentry{SERVILE}{adjective}
+\definition{Excessively eager to serve or obey others---behaving as though your only purpose is to please those above you, with no independent will or self-respect.}
+\examplesentence{His servile manner during the interview was off-putting---he agreed with everything the interviewer said, even when she was clearly testing him with a wrong statement.}
+\synantline{submissive, obsequious}{assertive}
+
+\usagenote{\textit{Servile} describes a general manner or attitude---deeply submissive with no independent will. \textit{Obsequious} describes specific behaviour aimed at pleasing someone in authority---excessive flattery and agreement that is noticeable and uncomfortable. A person can be servile without being obsequious (simply meek and passive), but an obsequious person is always performing their submission for an audience above them.}
+\entryrule
+
+% ----- WORD 10 -----
+\wordentry{SYCOPHANT}{noun}
+\definition{A person who flatters and agrees with someone powerful in order to gain favour---saying what that person wants to hear rather than what is true or useful.}
+\examplesentence{The CEO was surrounded by sycophants who applauded every idea he had, which meant he went ahead with several expensive projects that any honest adviser would have stopped.}
+\synantline{flatterer, yes-man}{critic}
+
+\newpage
+
+\end{document}

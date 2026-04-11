@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="en" data-mode="dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>LexiCore — Color Palette</title>
+<style>
+  /* ── Reset & Base ── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg:       #0F0F0F;
+    --surface:  #1A1A1A;
+    --elevated: #242424;
+    --border:   #2A2A2A;
+    --txt1:     #F5F5F5;
+    --txt2:     #9A9A9A;
+    --txt3:     #555555;
+    --red:      #E63946;
+    --gold:     #F4A828;
+    --silver:   #A8A8A8;
+    --bronze:   #CD7F32;
+    --success:  #2ECC71;
+    --warning:  #F39C12;
+    --radius:   10px;
+  }
+
+  [data-mode="light"] {
+    --bg:       #F7F7F8;
+    --surface:  #FFFFFF;
+    --elevated: #EFEFEF;
+    --border:   #E0E0E0;
+    --txt1:     #111111;
+    --txt2:     #555555;
+    --txt3:     #AAAAAA;
+    --red:      #D62B38;
+    --gold:     #D4920A;
+    --silver:   #7A7A7A;
+    --bronze:   #A0622A;
+    --success:  #1EA85A;
+    --warning:  #D4840A;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--txt1);
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    min-height: 100vh;
+    padding: 40px 24px 80px;
+  }
+
+  /* ── Layout ── */
+  .page { max-width: 1100px; margin: 0 auto; }
+
+  /* ── Header ── */
+  .header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 48px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--border);
+  }
+  .header-left h1 {
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    color: var(--txt1);
+  }
+  .header-left h1 span { color: var(--red); }
+  .header-left p { color: var(--txt2); margin-top: 4px; font-size: 13px; }
+
+  /* ── Mode toggle ── */
+  .toggle {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    user-select: none;
+    color: var(--txt2);
+    font-size: 13px;
+    font-weight: 500;
+  }
+  .toggle-track {
+    width: 44px; height: 24px;
+    background: var(--elevated);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    position: relative;
+    transition: background 0.2s;
+  }
+  [data-mode="light"] .toggle-track { background: var(--red); border-color: var(--red); }
+  .toggle-thumb {
+    position: absolute;
+    top: 3px; left: 3px;
+    width: 16px; height: 16px;
+    border-radius: 50%;
+    background: var(--txt1);
+    transition: transform 0.2s;
+  }
+  [data-mode="light"] .toggle-thumb { transform: translateX(20px); }
+
+  /* ── Section ── */
+  .section { margin-bottom: 56px; }
+  .section-title {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--txt3);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  /* ── Grid ── */
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(310px, 1fr)); gap: 12px; }
+
+  /* ── Color card ── */
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    transition: border-color 0.15s;
+  }
+  .card:hover { border-color: var(--txt3); }
+
+  .swatch {
+    height: 80px;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    padding: 10px 12px;
+  }
+  .swatch-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    padding: 3px 7px;
+    border-radius: 4px;
+    backdrop-filter: blur(6px);
+  }
+  .swatch-label.dark-label  { background: rgba(0,0,0,0.45); color: #fff; }
+  .swatch-label.light-label { background: rgba(255,255,255,0.55); color: #000; }
+
+  .card-body { padding: 14px 14px 16px; }
+
+  .token-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+  }
+  .token-name {
+    font-family: 'Cascadia Code', 'Fira Code', 'Courier New', monospace;
+    font-size: 11.5px;
+    color: var(--red);
+    font-weight: 600;
+  }
+  .hex-badge {
+    font-family: 'Cascadia Code', 'Fira Code', 'Courier New', monospace;
+    font-size: 11px;
+    color: var(--txt2);
+    background: var(--elevated);
+    border: 1px solid var(--border);
+    padding: 2px 7px;
+    border-radius: 4px;
+    letter-spacing: 0.5px;
+  }
+
+  .usage-tag {
+    display: inline-block;
+    font-size: 11px;
+    color: var(--txt2);
+    background: var(--elevated);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 2px 7px;
+    margin: 2px 2px 2px 0;
+    line-height: 1.6;
+  }
+  .usage-tags { margin-bottom: 10px; }
+
+  .code-block {
+    background: var(--elevated);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 9px 11px;
+    font-family: 'Cascadia Code', 'Fira Code', 'Courier New', monospace;
+    font-size: 11px;
+    color: var(--txt2);
+    white-space: pre;
+    overflow-x: auto;
+    line-height: 1.6;
+  }
+  .code-block .prop { color: var(--silver); }
+  .code-block .val  { color: var(--gold); }
+  .code-block .comment { color: var(--txt3); }
+
+  /* ── Dual hex (dark + light) ── */
+  .dual-hex {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+  }
+  .dual-badge {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-family: 'Cascadia Code', 'Fira Code', monospace;
+    font-size: 11px;
+    color: var(--txt2);
+    background: var(--elevated);
+    border: 1px solid var(--border);
+    padding: 3px 8px;
+    border-radius: 4px;
+  }
+  .dual-badge .dot {
+    width: 9px; height: 9px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+  .dual-badge .mode-label { color: var(--txt3); font-size: 10px; margin-right: 2px; }
+
+  /* ── Glow card ── */
+  .glow-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; }
+  .glow-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 16px;
+  }
+  .glow-demo {
+    height: 56px;
+    border-radius: 8px;
+    background: var(--elevated);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+  .glow-token {
+    font-family: 'Cascadia Code', 'Fira Code', monospace;
+    font-size: 11px;
+    color: var(--red);
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+
+  /* ── Separator ── */
+  .sep { height: 1px; background: var(--border); margin: 8px 0; }
+
+  /* ── Note ── */
+  .note {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--gold);
+    border-radius: var(--radius);
+    padding: 14px 16px;
+    font-size: 13px;
+    color: var(--txt2);
+    margin-bottom: 32px;
+    line-height: 1.7;
+  }
+  .note strong { color: var(--txt1); }
+
+  /* ── Copy button ── */
+  .copy-btn {
+    display: inline-block;
+    cursor: pointer;
+    color: var(--txt3);
+    font-size: 10px;
+    letter-spacing: 0.5px;
+    margin-top: 6px;
+    user-select: none;
+    transition: color 0.15s;
+  }
+  .copy-btn:hover { color: var(--txt2); }
+  .copy-btn.copied { color: var(--success); }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="header-left">
+      <h1>Lexi<span>Core</span> Color System</h1>
+      <p>All design tokens · dark &amp; light values · usage context · CSS code</p>
+    </div>
+    <label class="toggle" onclick="toggleMode()">
+      <div class="toggle-track"><div class="toggle-thumb"></div></div>
+      <span id="mode-label">Dark</span>
+    </label>
+  </div>
+
+  <!-- Note -->
+  <div class="note">
+    <strong>How tokens work:</strong> All colors are CSS custom properties defined in <code>globals.css</code> inside <code>@theme inline { }</code>. Dark mode values are the defaults. Light mode overrides live in <code>.lx-light { }</code> applied to the vocab layout root. Use tokens via Tailwind: <code>bg-[var(--color-lx-surface)]</code> or inline style: <code>style={{ color: 'var(--color-lx-accent-red)' }}</code>.
+  </div>
+
+  <!-- BRAND COLORS -->
+  <div class="section">
+    <div class="section-title">VH Brand Colors <span style="font-size:10px;color:var(--txt3);letter-spacing:0;text-transform:none;font-weight:400;">— parent brand, not LexiCore-specific</span></div>
+    <div class="note" style="margin-bottom:16px;">
+      These are the <strong>VH Beyond the Horizon</strong> identity colors defined in <code>globals.css → @theme inline</code>. They appear on the main marketing site (headers, CTAs, footers). LexiCore does <strong>not</strong> use these directly — it uses its own <code>--color-lx-*</code> tokens — but <code>lx-accent-red</code> is a brighter derivative of the same crimson family.
+    </div>
+    <div class="grid">
+
+      <div class="card">
+        <div class="swatch" style="background:#760F13;">
+          <span class="swatch-label dark-label">vh-red</span>
+        </div>
+        <div class="card-body">
+          <div class="token-row">
+            <span class="token-name">--color-vh-red</span>
+            <span class="hex-badge">#760F13</span>
+          </div>
+          <div class="usage-tags">
+            <span class="usage-tag">main site primary</span>
+            <span class="usage-tag">hero section bg</span>
+            <span class="usage-tag">nav accent</span>
+            <span class="usage-tag">brand identity core</span>
+          </div>
+          <div class="code-block"><span class="prop">color</span>: <span class="val">var(--color-vh-red)</span>;
+<span class="prop">background</span>: <span class="val">var(--color-vh-red)</span>;</div>
+          <span class="copy-btn" onclick="copyCode(this, 'var(--color-vh-red)')">⎘ copy token</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="swatch" style="background:#9A1B20;">
+          <span class="swatch-label dark-label">vh-light-red</span>
+        </div>
+        <div class="card-body">
+          <div class="token-row">
+            <span class="token-name">--color-vh-light-red</span>
+            <span class="hex-badge">#9A1B20</span>
+          </div>
+          <div class="usage-tags">
+            <span class="usage-tag">hover state of vh-red</span>
+            <span class="usage-tag">button active</span>
+            <span class="usage-tag">lighter brand variant</span>
+          </div>
+          <div class="code-block"><span class="prop">color</span>: <span class="val">var(--color-vh-light-red)</span>;
+<span class="comment">/* lighter variant of brand red */</span></div>
+          <span class="copy-btn" onclick="copyCode(this, 'var(--color-vh-light-red)')">⎘ copy token</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="swatch" style="background:#5A0B0F;">
+          <span class="swatch-label dark-label">vh-dark-red</span>
+        </div>
+        <div class="card-body">
+          <div class="token-row">
+            <span class="token-name">--color-vh-dark-red</span>
+            <span class="hex-badge">#5A0B0F</span>
+          </div>
+          <div class="usage-tags">
+            <span class="usage-tag">pressed / depth state</span>
+            <span class="usage-tag">dark overlay tint</span>
+            <span class="usage-tag">shadow color</span>
+          </div>
+          <div class="code-block"><span class="prop">color</span>: <span class="val">var(--color-vh-dark-red)</span>;
+<span class="comment">/* darkest brand red variant */</span></div>
+          <span class="copy-btn" onclick="copyCode(this, 'var(--color-vh-dark-red)')">⎘ copy token</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="swatch" style="background:#D4B094;">
+          <span class="swatch-label dark-label">vh-beige</span>
+        </div>
+        <div class="card-body">
+          <div class="token-row">
+            <span class="token-name">--color-vh-beige</span>
+            <span class="hex-badge">#D4B094</span>
+          </div>
+          <div class="usage-tags">
+            <span class="usage-tag">main site text on red</span>
+            <span class="usage-tag">decorative accents</span>
+            <span class="usage-tag">warm neutral</span>
+          </div>
+          <div class="code-block"><span class="prop">color</span>: <span class="val">var(--color-vh-beige)</span>;
+<span class="comment">/* warm neutral, pairs with vh-red */</span></div>
+          <span class="copy-btn" onclick="copyCode(this, 'var(--color-vh-beige)')">⎘ copy token</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="swatch" style="background:#A86E58;">
+          <span class="swatch-label dark-label">vh-dark-beige</span>
+        </div>
+        <div class="card-body">
+          <div class="token-row">
+            <span class="token-name">--color-vh-dark-beige</span>
+            <span class="hex-badge">#A86E58</span>
+          </div>
+          <div class="usage-tags">
+            <span class="usage-tag">muted warm tone</span>
+            <span class="usage-tag">secondary text on red</span>
+            <span class="usage-tag">border on warm surfaces</span>
+          </div>
+          <div class="code-block"><span class="prop">color</span>: <span class="val">var(--color-vh-dark-beige)</span>;
+<span class="comment">/* darker warm neutral */</span></div>
+          <span class="copy-btn" onclick="copyCode(this, 'var(--color-vh-dark-beige)')">⎘ copy token</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- BACKGROUNDS -->
+  <div class="section">
+    <div class="section-title">Backgrounds &amp; Surfaces</div>
+    <div class="grid">
+
+      <div class="card">
+        <div class="swatch" style="background:#0F0F0F; border-bottom: 1px solid #2A2A2A;">
+          <span class="swatch-label dark-label">lx-base</span>
+        </div>
+        <div class="card-body">
+          <div class="token-row">
+            <span class="token-name">--color-lx-base</span>
+          </div>
+          <div class="dual-hex">
+            <div class="dual-badge"><div class="dot" style="background:#0F0F0F"></div><span class="mode-label">dark</span>#0F0F0F</div>
+            <div class="dual-badge"><div class="dot" style="background:#F7F7F8; border-color:#ccc"></div><span class="mode-label">light</span>#F7F7F8</div>
+          </div>
+          <div class="usage-tags">
+            <span class="usage-tag">page background</span>
+            <span class="usage-tag">vocab layout root</span>
+            <span class="usage-tag">bottom nav backdrop</span>
+          </div>
+          <div class="code-block"><span class="prop">background</span>: <span class="val">var(--color-lx-base)</span>;
+<span class="comment">/* Tailwind: bg-[var(--color-lx-base)] */</span></div>
+          <span class="copy-btn" onclick="copyCode(this, 'var(--color-lx-base)')">⎘ copy token</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="swatch" style="background:#1A1A1A; border-bottom: 1px solid #2A2A2A;">
+          <span class="swatch-label dark-label">lx-surface</span>
+        </div>
+        <div class="card-body">
+          <div class="token-row">
+            <span class="token-name">--color-lx-surface</span>
+          </div>
+          <div class="dual-hex">
+            <div class="dual-badge"><div class="dot" style="background:#1A1A1A"></div><span class="mode-label">dark</span>#1A1A1A</div>
+            <div class="dual-badge"><div class="dot" style="background:#FFFFFF; border-color:#ccc"></div><span class="mode-label">light</span>#FFFFFF</div>
+          </div>
+          <div class="usage-tags">
+            <span class="usage-tag">flashcard front/back</span>
+            <span class="usage-tag">leaderboard rows</span>
+            <span class="usage-tag">word list items</span>
+            <span class="usage-tag">quiz option tiles</span>
+          </div>
+          <div class="code-block"><span class="prop">background</span>: <span class="val">var(--color-lx-surface)</span>;
+<span class="prop">border</span>: 1px solid <span class="val">var(--color-lx-border)</span>;</div>
+          <span class="copy-btn" onclick="copyCode(this, 'var(--color-lx-surface)')">⎘ copy token</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="swatch" style="background:#242424; border-bottom: 1px solid #2A2A2A;">
+          <span class="swatch-label dark-label">lx-elevated</span>
+        </div>
+        <div class="card-body">
+          <div class="token-row">
+            <span class="token-name">--color-lx-elevated</span>
+          </div>
+          <div class="dual-hex">
+            <div class="dual-badge"><div class="dot" style="background:#242424"></div><span class="mode-label">dark</span>#242424</div>
+            <div class="dual-badge"><div class="dot" style="background:#EFEFEF; border-color:#ccc"></div><span class="mode-label">light</span>#EFEFEF</div>
+          </div>
+          <div class="usage-tags">
+            <span class="usage-tag">modals &amp; bottom sheets</span>
+            <span class="usage-tag">selected state bg</span>
+            <span class="usage-tag">code blocks</span>
+            <span class="usage-tag">hover tint on rows</span>
+          </div>
+          <div class="code-block"><span class="prop">background</span>: <span class="val">var(--color-lx-elevated)</span>;
+<span class="comment">/* sits one layer above surface */</span></div>
+          <span class="copy-btn" onclick="copyCode(this, 'var(--color-lx-elevated)')">⎘ copy token</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="swatch" style="background:#0F0F0F; display:flex; align-items:center; padding:0 14px; gap:10px; border-bottom:1px solid #2A2A2A;">
+          <div style="height:1px;flex:1;background:#2A2A2A;"></div>
+          <span style="color:#555;font-size:11px;">border</span>
+          <div style="height:1px;flex:1;background:#2A2A2A;"></div>
+        </div>
+        <div class="card-body">
+          <div class="token-row">
+            <span class="token-name">--color-lx-border</span>
+          </div>
+          <div class="dual-hex">
+            <div class="dual-badge"><div class="dot" style="background:#2A2A2A"></div><span class="mode-label">dark</span>#2A2A2A</div>
+            <div class="dual-badge"><div class="dot" style="background:#E0E0E0; border-color:#ccc"></div><span class="mode-label">light</span>#E0E0E0</div>
+          </div>
+          <div class="usage-tags">
+            <span class="usage-tag">card borders</span>
+            <span class="usage-tag">dividers</span>
+            <span class="usage-tag">input outlines</span>
+            <span class="usage-tag">section separators</span>
+          </div>
+          <div class="code-block"><span class="prop">border</span>: 1px solid <span class="val">var(--color-lx-border)</span>;
+<span class="prop">border-bottom</span>: 1px solid <span class="val">var(--color-lx-border)</span>;</div>
+          <span class="copy-btn" onclick="copyCode(this, 'var(--color-lx-border)')">⎘ copy token</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ACCENTS -->
+  <div class="section">
+    <div class="section-title">Accent Colors</div>
+    <div class="grid">
+
+      <div class="card">
+        <div class="swatch" style="background:#E63946;">
+          <span class="swatch-label dark-label">lx-accent-red</span>
+        </div>
+        <div class="card-body">
+          <div class="token-row">
+            <span class="token-name">--color-lx-accent-red</span>
+          </div>
+          <div class="dual-hex">
+            <div class="dual-badge"><div class="dot" style="background:#E63946"></div><span class="mode-label">dark</span>#E63946</div>
+            <div class="dual-badge"><div class="dot" style="background:#D62B38"></div><span class="mode-label">light</span>#D62B38</div>
+          </div>
+          <div class="usage-tags">
+            <span class="usage-tag">primary CTA buttons</span>
+            <span class="usage-tag">bottom nav active</span>
+            <span class="usage-tag">tab underline</span>
+            <span class="usage-tag">progress ring fill</span>
+            <span class="usage-tag">deadline urgency</span>
+            <span class="usage-tag">danger = same token</span>
+          </div>
+          <div class="code-block"><span class="prop">color</span>: <span class="val">var(--color-lx-accent-red)</span>;
+<span class="prop">background</span>: <span class="val">var(--color-lx-accent-red)</span>;
+<span class="comment">/* glow util: .lx-glow-red */</span>
+<span class="prop">box-shadow</span>: 0 0 16px <span class="val">rgba(230,57,70,0.4)</span>;</div>
+          <span class="copy-btn" onclick="copyCode(this, 'var(--color-lx-accent-red)')">⎘ copy token</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="swatch" style="background:#F4A828;">
+          <span class="swatch-label dark-label">lx-accent-gold</span>
+        </div>
+        <div class="card-body">
+          <div class="token-row">
+            <span class="token-name">--color-lx-accent-gold</span>
+          </div>
+          <div class="dual-hex">
+            <div class="dual-badge"><div class="dot" style="background:#F4A828"></div><span class="mode-label">dark</span>#F4A828</div>
+            <div class="dual-badge"><div class="dot" style="background:#D4920A"></div><span class="mode-label">light</span>#D4920A</div>
+          </div>
+          <div class="usage-tags">
+            <span class="usage-tag">rank #1 / 1st place</span>
+            <span class="usage-tag">streak fire icon</span>
+            <span class="usage-tag">badge earn overlay</span>
+            <span class="usage-tag">Trophy icon color</span>
+            <span class="usage-tag">warning = same tone</span>
+          </div>
+          <div class="code-block"><span class="prop">color</span>: <span class="val">var(--color-lx-accent-gold)</span>;
+<span class="comment">/* glow util: .lx-glow-gold */</span>
+<span class="prop">box-shadow</span>: 0 0 14px <span class="val">rgba(244,168,40,0.45)</span>;</div>
+          <span class="copy-btn" onclick="copyCode(this, 'var(--color-lx-accent-gold)')">⎘ copy token</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="swatch" style="background:#A8A8A8;">
+          <span class="swatch-label dark-label">lx-accent-silver</span>
+        </div>
+        <div class="card-body">
+          <div class="token-row">
+            <span class="token-name">--color-lx-accent-silver</span>
+          </div>
+          <div class="dual-hex">
+            <div class="dual-badge"><div class="dot" style="background:#A8A8A8"></div><span class="mode-label">dark</span>#A8A8A8</div>
+            <div class="dual-badge"><div class="dot" style="background:#7A7A7A"></div><span class="mode-label">light</span>#7A7A7A</div>
+          </div>
+          <div class="usage-tags">
+            <span class="usage-tag">rank #2 / 2nd place</span>
+            <span class="usage-tag">Silver badge tier</span>
+            <span class="usage-tag">secondary highlight</span>
+          </div>
+          <div class="code-block"><span class="prop">color</span>: <span class="val">var(--color-lx-accent-silver)</span>;
+<span class="comment">/* glow util: .lx-glow-silver */</span>
+<span class="prop">box-shadow</span>: 0 0 12px <span class="val">rgba(168,168,168,0.35)</span>;</div>
+          <span class="copy-btn" onclick="copyCode(this, 'var(--color-lx-accent-silver)')">⎘ copy token</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="swatch" style="background:#CD7F32;">
+          <span class="swatch-label dark-label">lx-accent-bronze</span>
+        </div>
+        <div class="card-body">
+          <div class="token-row">
+            <span class="token-name">--color-lx-accent-bronze</span>
+          </div>
+          <div class="dual-hex">
+            <div class="dual-badge"><div class="dot" style="background:#CD7F32"></div><span class="mode-label">dark</span>#CD7F32</div>
+            <div class="dual-badge"><div class="dot" style="background:#A0622A"></div><span class="mode-label">light</span>#A0622A</div>
+          </div>
+          <div class="usage-tags">
+            <span class="usage-tag">rank #3 / 3rd place</span>
+            <span class="usage-tag">Bronze badge tier</span>
+            <span class="usage-tag">tertiary highlight</span>
+          </div>
+          <div class="code-block"><span class="prop">color</span>: <span class="val">var(--color-lx-accent-bronze)</span>;
+<span class="comment">/* glow util: .lx-glow-bronze */</span>
+<span class="prop">box-shadow</span>: 0 0 12px <span class="val">rgba(205,127,50,0.35)</span>;</div>
+          <span class="copy-btn" onclick="copyCode(this, 'var(--color-lx-accent-bronze)')">⎘ copy token</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- TEXT -->
+  <div class="section">
+    <div class="section-title">Typography</div>
+    <div class="grid">
+
+      <div class="card">
+        <div class="swatch" style="background:#1A1A1A; display:flex; align-items:center; padding: 0 18px;">
+          <span style="color:#F5F5F5; font-size:22px; font-weight:700; letter-spacing:-0.3px;">The quick brown fox</span>
+        </div>
+        <div class="card-body">
+          <div class="token-row">
+            <span class="token-name">--color-lx-text-primary</span>
+          </div>
+          <div class="dual-hex">
+            <div class="dual-badge"><div class="dot" style="background:#F5F5F5"></div><span class="mode-label">dark</span>#F5F5F5</div>
+            <div class="dual-badge"><div class="dot" style="background:#111111; border-color:#ccc"></div><span class="mode-label">light</span>#111111</div>
+          </div>
+          <div class="usage-tags">
+            <span class="usage-tag">headings</span>
+            <span class="usage-tag">word display (serif)</span>
+            <span class="usage-tag">question text</span>
+            <span class="usage-tag">definition text</span>
+            <span class="usage-tag">nav labels active</span>
+          </div>
+          <div class="code-block"><span class="prop">color</span>: <span class="val">var(--color-lx-text-primary)</span>;</div>
+          <span class="copy-btn" onclick="copyCode(this, 'var(--color-lx-text-primary)')">⎘ copy token</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="swatch" style="background:#1A1A1A; display:flex; align-items:center; padding: 0 18px;">
+          <span style="color:#9A9A9A; font-size:15px;">Part of speech · Theme name · Labels</span>
+        </div>
+        <div class="card-body">
+          <div class="token-row">
+            <span class="token-name">--color-lx-text-secondary</span>
+          </div>
+          <div class="dual-hex">
+            <div class="dual-badge"><div class="dot" style="background:#9A9A9A"></div><span class="mode-label">dark</span>#9A9A9A</div>
+            <div class="dual-badge"><div class="dot" style="background:#555555"></div><span class="mode-label">light</span>#555555</div>
+          </div>
+          <div class="usage-tags">
+            <span class="usage-tag">part-of-speech pill</span>
+            <span class="usage-tag">theme subtitle</span>
+            <span class="usage-tag">stat captions</span>
+            <span class="usage-tag">nav labels inactive</span>
+          </div>
+          <div class="code-block"><span class="prop">color</span>: <span class="val">var(--color-lx-text-secondary)</span>;</div>
+          <span class="copy-btn" onclick="copyCode(this, 'var(--color-lx-text-secondary)')">⎘ copy token</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="swatch" style="background:#1A1A1A; display:flex; align-items:center; padding: 0 18px;">
+          <span style="color:#555555; font-size:13px;">Placeholder · Disabled · Timestamps</span>
+        </div>
+        <div class="card-body">
+          <div class="token-row">
+            <span class="token-name">--color-lx-text-muted</span>
+          </div>
+          <div class="dual-hex">
+            <div class="dual-badge"><div class="dot" style="background:#555555"></div><span class="mode-label">dark</span>#555555</div>
+            <div class="dual-badge"><div class="dot" style="background:#AAAAAA"></div><span class="mode-label">light</span>#AAAAAA</div>
+          </div>
+          <div class="usage-tags">
+            <span class="usage-tag">placeholder text</span>
+            <span class="usage-tag">disabled states</span>
+            <span class="usage-tag">timestamps</span>
+            <span class="usage-tag">section-title text</span>
+          </div>
+          <div class="code-block"><span class="prop">color</span>: <span class="val">var(--color-lx-text-muted)</span>;</div>
+          <span class="copy-btn" onclick="copyCode(this, 'var(--color-lx-text-muted)')">⎘ copy token</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SEMANTIC -->
+  <div class="section">
+    <div class="section-title">Semantic / Feedback</div>
+    <div class="grid">
+
+      <div class="card">
+        <div class="swatch" style="background:#2ECC71; display:flex; align-items:center; justify-content:center;">
+          <span style="color:#0F0F0F; font-size:15px; font-weight:700;">✓ Got it</span>
+        </div>
+        <div class="card-body">
+          <div class="token-row">
+            <span class="token-name">--color-lx-success</span>
+          </div>
+          <div class="dual-hex">
+            <div class="dual-badge"><div class="dot" style="background:#2ECC71"></div><span class="mode-label">dark</span>#2ECC71</div>
+            <div class="dual-badge"><div class="dot" style="background:#1EA85A"></div><span class="mode-label">light</span>#1EA85A</div>
+          </div>
+          <div class="usage-tags">
+            <span class="usage-tag">"Got it" flashcard btn</span>
+            <span class="usage-tag">correct answer flash</span>
+            <span class="usage-tag">mastery = learned</span>
+            <span class="usage-tag">streak active dot</span>
+          </div>
+          <div class="code-block"><span class="prop">color</span>: <span class="val">var(--color-lx-success)</span>;
+<span class="comment">/* glow util: .lx-glow-success */</span>
+<span class="prop">box-shadow</span>: 0 0 12px <span class="val">rgba(46,204,113,0.35)</span>;</div>
+          <span class="copy-btn" onclick="copyCode(this, 'var(--color-lx-success)')">⎘ copy token</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="swatch" style="background:#F39C12; display:flex; align-items:center; justify-content:center;">
+          <span style="color:#0F0F0F; font-size:15px; font-weight:700;">~ Unsure</span>
+        </div>
+        <div class="card-body">
+          <div class="token-row">
+            <span class="token-name">--color-lx-warning</span>
+          </div>
+          <div class="dual-hex">
+            <div class="dual-badge"><div class="dot" style="background:#F39C12"></div><span class="mode-label">dark</span>#F39C12</div>
+            <div class="dual-badge"><div class="dot" style="background:#D4840A"></div><span class="mode-label">light</span>#D4840A</div>
+          </div>
+          <div class="usage-tags">
+            <span class="usage-tag">"Unsure" flashcard btn</span>
+            <span class="usage-tag">partial mastery</span>
+            <span class="usage-tag">deadline caution</span>
+            <span class="usage-tag">daily target near</span>
+          </div>
+          <div class="code-block"><span class="prop">color</span>: <span class="val">var(--color-lx-warning)</span>;
+<span class="prop">background</span>: <span class="val">var(--color-lx-warning)</span>;</div>
+          <span class="copy-btn" onclick="copyCode(this, 'var(--color-lx-warning)')">⎘ copy token</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="swatch" style="background:#E63946; display:flex; align-items:center; justify-content:center;">
+          <span style="color:#fff; font-size:15px; font-weight:700;">✕ Missed it</span>
+        </div>
+        <div class="card-body">
+          <div class="token-row">
+            <span class="token-name">--color-lx-danger</span>
+          </div>
+          <div class="dual-hex">
+            <div class="dual-badge"><div class="dot" style="background:#E63946"></div><span class="mode-label">dark</span>#E63946</div>
+            <div class="dual-badge"><div class="dot" style="background:#D62B38"></div><span class="mode-label">light</span>#D62B38</div>
+          </div>
+          <div class="usage-tags">
+            <span class="usage-tag">"Missed it" btn</span>
+            <span class="usage-tag">wrong answer flash</span>
+            <span class="usage-tag">sign-out / destructive</span>
+            <span class="usage-tag">= accent-red (same)</span>
+          </div>
+          <div class="code-block"><span class="prop">color</span>: <span class="val">var(--color-lx-danger)</span>;
+<span class="comment">/* alias of accent-red */</span>
+<span class="comment">/* use danger for feedback context */</span></div>
+          <span class="copy-btn" onclick="copyCode(this, 'var(--color-lx-danger)')">⎘ copy token</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- GLOW UTILITIES -->
+  <div class="section">
+    <div class="section-title">Glow &amp; Shadow Utilities</div>
+    <div class="glow-grid">
+
+      <div class="glow-card">
+        <div class="glow-demo" style="box-shadow: 0 0 16px rgba(230,57,70,0.4); border: 1px solid rgba(230,57,70,0.3); color: #E63946;">lx-glow-red</div>
+        <div class="glow-token">.lx-glow-red</div>
+        <div class="code-block" style="font-size:10.5px;"><span class="prop">box-shadow</span>:
+  0 0 16px <span class="val">rgba(230,57,70,0.4)</span>;</div>
+        <span class="copy-btn" onclick="copyCode(this, '.lx-glow-red')">⎘ copy class</span>
+      </div>
+
+      <div class="glow-card">
+        <div class="glow-demo" style="box-shadow: 0 0 14px rgba(244,168,40,0.45); border: 1px solid rgba(244,168,40,0.3); color: #F4A828;">lx-glow-gold</div>
+        <div class="glow-token">.lx-glow-gold</div>
+        <div class="code-block" style="font-size:10.5px;"><span class="prop">box-shadow</span>:
+  0 0 14px <span class="val">rgba(244,168,40,0.45)</span>;</div>
+        <span class="copy-btn" onclick="copyCode(this, '.lx-glow-gold')">⎘ copy class</span>
+      </div>
+
+      <div class="glow-card">
+        <div class="glow-demo" style="box-shadow: 0 0 12px rgba(168,168,168,0.35); border: 1px solid rgba(168,168,168,0.25); color: #A8A8A8;">lx-glow-silver</div>
+        <div class="glow-token">.lx-glow-silver</div>
+        <div class="code-block" style="font-size:10.5px;"><span class="prop">box-shadow</span>:
+  0 0 12px <span class="val">rgba(168,168,168,0.35)</span>;</div>
+        <span class="copy-btn" onclick="copyCode(this, '.lx-glow-silver')">⎘ copy class</span>
+      </div>
+
+      <div class="glow-card">
+        <div class="glow-demo" style="box-shadow: 0 0 12px rgba(205,127,50,0.35); border: 1px solid rgba(205,127,50,0.25); color: #CD7F32;">lx-glow-bronze</div>
+        <div class="glow-token">.lx-glow-bronze</div>
+        <div class="code-block" style="font-size:10.5px;"><span class="prop">box-shadow</span>:
+  0 0 12px <span class="val">rgba(205,127,50,0.35)</span>;</div>
+        <span class="copy-btn" onclick="copyCode(this, '.lx-glow-bronze')">⎘ copy class</span>
+      </div>
+
+      <div class="glow-card">
+        <div class="glow-demo" style="box-shadow: 0 0 12px rgba(46,204,113,0.35); border: 1px solid rgba(46,204,113,0.25); color: #2ECC71;">lx-glow-success</div>
+        <div class="glow-token">.lx-glow-success</div>
+        <div class="code-block" style="font-size:10.5px;"><span class="prop">box-shadow</span>:
+  0 0 12px <span class="val">rgba(46,204,113,0.35)</span>;</div>
+        <span class="copy-btn" onclick="copyCode(this, '.lx-glow-success')">⎘ copy class</span>
+      </div>
+
+      <div class="glow-card">
+        <div class="glow-demo" style="box-shadow: 0 4px 24px rgba(0,0,0,0.5); border: 1px solid #2A2A2A; color: #9A9A9A;">lx-card-shadow</div>
+        <div class="glow-token">.lx-card-shadow</div>
+        <div class="code-block" style="font-size:10.5px;"><span class="prop">box-shadow</span>:
+  0 4px 24px <span class="val">rgba(0,0,0,0.5)</span>;</div>
+        <span class="copy-btn" onclick="copyCode(this, '.lx-card-shadow')">⎘ copy class</span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FORM TOKENS -->
+  <div class="section">
+    <div class="section-title">Form Tokens <span style="font-size:10px;color:var(--txt3);letter-spacing:0;text-transform:none;font-weight:400;">— separate from layout tokens for structural clarity</span></div>
+    <div class="note" style="margin-bottom:16px;">
+      Use these instead of raw <code>--color-lx-*</code> tokens inside any <strong>input, textarea, label, or form container</strong>. They are stronger than general card borders, give inputs a clear field-background layer, and route focus state through the brand red — keeping semantic precision between interactive and informational UI.
+    </div>
+    <div class="grid">
+
+      <div class="card">
+        <div class="swatch" style="background:var(--bg); display:flex; align-items:center; padding:12px 16px; gap:10px; flex-direction:column; justify-content:center;">
+          <div style="width:100%; background:#242424; border:1px solid #3A3A3A; border-radius:8px; padding:10px 12px; font-family:monospace; font-size:12px; color:#F5F5F5;">Input field</div>
+          <div style="width:100%; background:#1A1A1A; border:1px solid #3A3A3A; border-radius:8px; padding:10px 12px; font-family:monospace; font-size:12px; color:#7A7A7A;">Placeholder text</div>
+        </div>
+        <div class="card-body">
+          <div class="token-row"><span class="token-name">--form-field-bg</span></div>
+          <div class="dual-hex">
+            <div class="dual-badge"><div class="dot" style="background:#242424"></div><span class="mode-label">dark</span>#242424</div>
+            <div class="dual-badge"><div class="dot" style="background:#FAFAFA; border-color:#ccc"></div><span class="mode-label">light</span>#FAFAFA</div>
+          </div>
+          <div class="usage-tags"><span class="usage-tag">input background</span><span class="usage-tag">textarea background</span><span class="usage-tag">date picker</span></div>
+          <div class="code-block"><span class="prop">background</span>: <span class="val">var(--form-field-bg)</span>;
+<span class="prop">border</span>: 1px solid <span class="val">var(--form-border)</span>;</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="swatch" style="background:var(--bg); display:flex; align-items:center; padding:12px 16px; gap:8px; flex-direction:column; justify-content:center;">
+          <div style="width:100%; height:1px; background:#3A3A3A;"></div>
+          <div style="display:flex;gap:6px;width:100%;">
+            <div style="flex:1;height:2px;background:#4A4A4A;border-radius:1px;"></div>
+            <div style="flex:1;height:2px;background:#E63946;border-radius:1px;"></div>
+          </div>
+          <div style="font-size:11px;color:var(--txt3);text-align:center;">default → hover → focus</div>
+        </div>
+        <div class="card-body">
+          <div class="token-row"><span class="token-name">--form-border*</span></div>
+          <div class="dual-hex" style="flex-wrap:wrap;gap:4px;">
+            <div class="dual-badge"><div class="dot" style="background:#3A3A3A"></div>default #3A3A3A</div>
+            <div class="dual-badge"><div class="dot" style="background:#4A4A4A"></div>hover #4A4A4A</div>
+            <div class="dual-badge"><div class="dot" style="background:#E63946"></div>focus #E63946</div>
+          </div>
+          <div class="usage-tags"><span class="usage-tag">replaces --color-lx-border in forms</span><span class="usage-tag">structurally stronger</span></div>
+          <div class="code-block"><span class="comment">/* default */</span>
+<span class="prop">border</span>: 1px solid <span class="val">var(--form-border)</span>;
+<span class="comment">/* focus */</span>
+<span class="prop">border-color</span>: <span class="val">var(--form-focus)</span>;
+<span class="prop">box-shadow</span>: 0 0 0 3px <span class="val">var(--form-focus-ring)</span>;</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="swatch" style="background:var(--bg); display:flex; align-items:center; padding:12px 18px; gap:8px; flex-direction:column;">
+          <div style="display:flex;align-items:center;gap:8px;width:100%;">
+            <div style="font-size:11px;font-weight:700;letter-spacing:0.1em;color:#F5F5F5;text-transform:uppercase;">Label</div>
+            <div style="font-size:11px;color:#9A9A9A;">Helper / description text</div>
+          </div>
+          <div style="display:flex;align-items:center;gap:8px;width:100%;">
+            <div style="font-size:13px;color:#7A7A7A;font-style:italic;">Placeholder...</div>
+            <div style="font-size:12px;color:#5E5E5E;">Disabled</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="token-row"><span class="token-name">Text role tokens</span></div>
+          <div class="code-block"><span class="prop">--form-label</span>:         <span class="val">#F5F5F5</span> <span class="comment">/ #111111</span>
+<span class="prop">--form-helper</span>:        <span class="val">#9A9A9A</span> <span class="comment">/ #555555</span>
+<span class="prop">--form-placeholder</span>:   <span class="val">#7A7A7A</span> <span class="comment">/ #7A7A7A</span>
+<span class="prop">--form-input-text</span>:    <span class="val">#F5F5F5</span> <span class="comment">/ #111111</span>
+<span class="prop">--form-disabled</span>:      <span class="val">#5E5E5E</span> <span class="comment">/ #B8B8B8</span></div>
+          <div class="usage-tags">
+            <span class="usage-tag">label → form-label (not text-muted)</span>
+            <span class="usage-tag">helper → form-helper</span>
+            <span class="usage-tag">placeholder → CSS ::placeholder</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- QUICK REFERENCE -->
+  <div class="section">
+    <div class="section-title">Quick Reference — All Tokens</div>
+    <div class="card" style="padding: 20px 22px;">
+      <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 0 32px;">
+        <div>
+          <div style="font-size:11px;font-weight:700;letter-spacing:1px;color:var(--txt3);text-transform:uppercase;margin-bottom:12px;">VH Brand</div>
+          <table style="width:100%;border-collapse:collapse;font-family:'Cascadia Code','Fira Code',monospace;font-size:11.5px;">
+            <tr style="border-bottom:1px solid var(--border)"><td style="padding:7px 0;color:var(--red)">--color-vh-red</td><td style="color:var(--txt3);text-align:right">#760F13</td></tr>
+            <tr style="border-bottom:1px solid var(--border)"><td style="padding:7px 0;color:var(--red)">--color-vh-light-red</td><td style="color:var(--txt3);text-align:right">#9A1B20</td></tr>
+            <tr style="border-bottom:1px solid var(--border)"><td style="padding:7px 0;color:var(--red)">--color-vh-dark-red</td><td style="color:var(--txt3);text-align:right">#5A0B0F</td></tr>
+            <tr style="border-bottom:1px solid var(--border)"><td style="padding:7px 0;color:var(--red)">--color-vh-beige</td><td style="color:var(--txt3);text-align:right">#D4B094</td></tr>
+            <tr><td style="padding:7px 0;color:var(--red)">--color-vh-dark-beige</td><td style="color:var(--txt3);text-align:right">#A86E58</td></tr>
+          </table>
+          <div style="font-size:11px;font-weight:700;letter-spacing:1px;color:var(--txt3);text-transform:uppercase;margin:20px 0 12px;">Form Tokens (dark / light)</div>
+          <table style="width:100%;border-collapse:collapse;font-family:'Cascadia Code','Fira Code',monospace;font-size:11.5px;">
+            <tr style="border-bottom:1px solid var(--border)"><td style="padding:7px 0;color:var(--red)">--form-field-bg</td><td style="color:var(--txt3);text-align:right">#242424 / #FAFAFA</td></tr>
+            <tr style="border-bottom:1px solid var(--border)"><td style="padding:7px 0;color:var(--red)">--form-border</td><td style="color:var(--txt3);text-align:right">#3A3A3A / #D0D0D0</td></tr>
+            <tr style="border-bottom:1px solid var(--border)"><td style="padding:7px 0;color:var(--red)">--form-border-hover</td><td style="color:var(--txt3);text-align:right">#4A4A4A / #BDBDBD</td></tr>
+            <tr style="border-bottom:1px solid var(--border)"><td style="padding:7px 0;color:var(--red)">--form-focus</td><td style="color:var(--txt3);text-align:right">#E63946 / #D62B38</td></tr>
+            <tr style="border-bottom:1px solid var(--border)"><td style="padding:7px 0;color:var(--red)">--form-label</td><td style="color:var(--txt3);text-align:right">#F5F5F5 / #111111</td></tr>
+            <tr style="border-bottom:1px solid var(--border)"><td style="padding:7px 0;color:var(--red)">--form-placeholder</td><td style="color:var(--txt3);text-align:right">#7A7A7A / #7A7A7A</td></tr>
+            <tr style="border-bottom:1px solid var(--border)"><td style="padding:7px 0;color:var(--red)">--form-helper</td><td style="color:var(--txt3);text-align:right">#9A9A9A / #555555</td></tr>
+            <tr><td style="padding:7px 0;color:var(--red)">--form-disabled</td><td style="color:var(--txt3);text-align:right">#5E5E5E / #B8B8B8</td></tr>
+          </table>
+          <div style="font-size:11px;font-weight:700;letter-spacing:1px;color:var(--txt3);text-transform:uppercase;margin:20px 0 12px;">Backgrounds</div>
+          <table style="width:100%;border-collapse:collapse;font-family:'Cascadia Code','Fira Code',monospace;font-size:11.5px;">
+            <tr style="border-bottom:1px solid var(--border)"><td style="padding:7px 0;color:var(--red)">--color-lx-base</td><td style="color:var(--txt3);text-align:right">#0F0F0F / #F7F7F8</td></tr>
+            <tr style="border-bottom:1px solid var(--border)"><td style="padding:7px 0;color:var(--red)">--color-lx-surface</td><td style="color:var(--txt3);text-align:right">#1A1A1A / #FFFFFF</td></tr>
+            <tr style="border-bottom:1px solid var(--border)"><td style="padding:7px 0;color:var(--red)">--color-lx-elevated</td><td style="color:var(--txt3);text-align:right">#242424 / #EFEFEF</td></tr>
+            <tr><td style="padding:7px 0;color:var(--red)">--color-lx-border</td><td style="color:var(--txt3);text-align:right">#2A2A2A / #E0E0E0</td></tr>
+          </table>
+          <div style="font-size:11px;font-weight:700;letter-spacing:1px;color:var(--txt3);text-transform:uppercase;margin:20px 0 12px;">Semantic</div>
+          <table style="width:100%;border-collapse:collapse;font-family:'Cascadia Code','Fira Code',monospace;font-size:11.5px;">
+            <tr style="border-bottom:1px solid var(--border)"><td style="padding:7px 0;color:var(--red)">--color-lx-success</td><td style="color:var(--txt3);text-align:right">#2ECC71 / #1EA85A</td></tr>
+            <tr style="border-bottom:1px solid var(--border)"><td style="padding:7px 0;color:var(--red)">--color-lx-warning</td><td style="color:var(--txt3);text-align:right">#F39C12 / #D4840A</td></tr>
+            <tr><td style="padding:7px 0;color:var(--red)">--color-lx-danger</td><td style="color:var(--txt3);text-align:right">#E63946 / #D62B38</td></tr>
+          </table>
+        </div>
+        <div>
+          <div style="font-size:11px;font-weight:700;letter-spacing:1px;color:var(--txt3);text-transform:uppercase;margin-bottom:12px;">Accents</div>
+          <table style="width:100%;border-collapse:collapse;font-family:'Cascadia Code','Fira Code',monospace;font-size:11.5px;">
+            <tr style="border-bottom:1px solid var(--border)"><td style="padding:7px 0;color:var(--red)">--color-lx-accent-red</td><td style="color:var(--txt3);text-align:right">#E63946 / #D62B38</td></tr>
+            <tr style="border-bottom:1px solid var(--border)"><td style="padding:7px 0;color:var(--red)">--color-lx-accent-gold</td><td style="color:var(--txt3);text-align:right">#F4A828 / #D4920A</td></tr>
+            <tr style="border-bottom:1px solid var(--border)"><td style="padding:7px 0;color:var(--red)">--color-lx-accent-silver</td><td style="color:var(--txt3);text-align:right">#A8A8A8 / #7A7A7A</td></tr>
+            <tr><td style="padding:7px 0;color:var(--red)">--color-lx-accent-bronze</td><td style="color:var(--txt3);text-align:right">#CD7F32 / #A0622A</td></tr>
+          </table>
+          <div style="font-size:11px;font-weight:700;letter-spacing:1px;color:var(--txt3);text-transform:uppercase;margin:20px 0 12px;">Typography</div>
+          <table style="width:100%;border-collapse:collapse;font-family:'Cascadia Code','Fira Code',monospace;font-size:11.5px;">
+            <tr style="border-bottom:1px solid var(--border)"><td style="padding:7px 0;color:var(--red)">--color-lx-text-primary</td><td style="color:var(--txt3);text-align:right">#F5F5F5 / #111111</td></tr>
+            <tr style="border-bottom:1px solid var(--border)"><td style="padding:7px 0;color:var(--red)">--color-lx-text-secondary</td><td style="color:var(--txt3);text-align:right">#9A9A9A / #555555</td></tr>
+            <tr><td style="padding:7px 0;color:var(--red)">--color-lx-text-muted</td><td style="color:var(--txt3);text-align:right">#555555 / #AAAAAA</td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /page -->
+
+<script>
+function toggleMode() {
+  const html = document.documentElement;
+  const isDark = html.getAttribute('data-mode') === 'dark';
+  html.setAttribute('data-mode', isDark ? 'light' : 'dark');
+  document.getElementById('mode-label').textContent = isDark ? 'Light' : 'Dark';
+}
+
+function copyCode(btn, text) {
+  navigator.clipboard.writeText(text).then(() => {
+    btn.textContent = '✓ copied';
+    btn.classList.add('copied');
+    setTimeout(() => {
+      btn.textContent = '⎘ copy token';
+      btn.classList.remove('copied');
+    }, 1800);
+  });
+}
+</script>
+</body>
+</html>

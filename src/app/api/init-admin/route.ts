@@ -1,117 +1,81 @@
-import { NextResponse } from 'next/server';
-import { connectToDatabase } from '@/lib/db';
-import User from '@/lib/models/User';
-
 /**
- * ONE-TIME INITIALIZATION ENDPOINT
- * This endpoint creates the initial super admin user if none exists.
+ * POST /api/init-admin
  *
- * Security: This endpoint will only work if NO super_admin exists in the database yet.
- * After the first super admin is created, this endpoint will refuse to work.
+ * One-time bootstrap: creates the first super_admin account.
  *
- * To use: Send a POST request with { "secret": "INIT_SECRET_FROM_ENV" }
+ * SECURITY (RISK_009):
+ *  1. Disabled entirely unless INIT_ADMIN_SECRET is set in env.
+ *  2. Returns 403 if any admin/super_admin already exists in the DB.
+ *
+ * Body: { email: string; name: string; secret: string }
  */
-export async function POST(request: Request) {
-  try {
-    // Check for secret key to prevent unauthorized access
-    const body = await request.json();
-    const { secret } = body;
 
-    // Verify secret (must be set in environment variables)
-    const expectedSecret = process.env.INIT_ADMIN_SECRET || 'your-secret-key-change-this';
-    if (secret !== expectedSecret) {
-      return NextResponse.json(
-        { error: 'Invalid secret key' },
-        { status: 403 }
-      );
-    }
+import { NextRequest, NextResponse } from 'next/server';
+import { eq, or } from 'drizzle-orm';
+import { db, users } from '@/lib/db';
 
-    await connectToDatabase();
-
-    // Check if any admins already exist
-    const existingAdmins = await User.find({ role: { $in: ['super_admin', 'admin'] } });
-    if (existingAdmins.length > 0) {
-      return NextResponse.json(
-        {
-          error: 'Admins already exist',
-          message: 'This endpoint can only be used for initial setup. Use /admin/users to manage users.',
-          existingAdmins: existingAdmins.map(a => ({ email: a.email, role: a.role }))
-        },
-        { status: 400 }
-      );
-    }
-
-    // Create both initial admins from access-control.json data
-    const admins = [
-      {
-        email: 'ahnaf816@gmail.com',
-        name: 'Ahnaf Ahad',
-        role: 'super_admin',
-        adminId: 'admin_001',
-        permissions: ['read', 'write', 'admin', 'manage_users'],
-        active: true,
-        addedDate: new Date('2025-09-17'),
-        accessTypes: {
-          IBA: false,
-          DU: false,
-          FBS: false
-        },
-        mockAccess: {
-          duIba: false,
-          bupIba: false,
-          duFbs: false,
-          bupFbs: false,
-          fbsDetailed: false
-        }
-      },
-      {
-        email: 'hasanxsarower@gmail.com',
-        name: 'Hasan Sarower',
-        role: 'admin',
-        adminId: 'admin_002',
-        permissions: ['read', 'write', 'admin'],
-        active: true,
-        addedDate: new Date('2025-09-17'),
-        accessTypes: {
-          IBA: false,
-          DU: false,
-          FBS: false
-        },
-        mockAccess: {
-          duIba: false,
-          bupIba: false,
-          duFbs: false,
-          bupFbs: false,
-          fbsDetailed: false
-        }
-      }
-    ];
-
-    const createdAdmins = [];
-    for (const adminData of admins) {
-      const adminUser = new User(adminData);
-      await adminUser.save();
-      createdAdmins.push({
-        email: adminUser.email,
-        name: adminUser.name,
-        role: adminUser.role
-      });
-    }
-
-    return NextResponse.json({
-      success: true,
-      message: 'Initial admins created successfully',
-      admins: createdAdmins
-    });
-
-  } catch (error) {
-    console.error('Init admin error:', error);
-    return NextResponse.json(
-      {
-        error: 'Failed to initialize admin',
-        details: error instanceof Error ? error.message : 'Unknown error'
-      },
-      { status: 500 }
-    );
+export async function POST(req: NextRequest) {
+  // ── Guard 1: feature must be explicitly enabled via env var ────────────────
+  const initSecret = process.env.INIT_ADMIN_SECRET;
+  if (!initSecret) {
+    return NextResponse.json({ error: 'Disabled' }, { status: 404 });
   }
+
+  // ── Guard 2: refuse if any admin already exists ────────────────────────────
+  const existingAdmin = await db
+    .select({ id: users.id })
+    .from(users)
+    .where(or(eq(users.role, 'admin'), eq(users.role, 'super_admin')))
+    .get();
+
+  if (existingAdmin) {
+    return NextResponse.json({ error: 'Already initialized' }, { status: 403 });
+  }
+
+  // ── Parse and validate body ────────────────────────────────────────────────
+  let body: { email?: string; name?: string; secret?: string };
+  try {
+    body = await req.json();
+  } catch {
+    return NextResponse.json({ error: 'Invalid JSON body' }, { status: 400 });
+  }
+
+  const { email, name, secret } = body;
+
+  if (!secret || secret !== initSecret) {
+    return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
+  }
+
+  if (!email?.trim() || !email.includes('@')) {
+    return NextResponse.json({ error: 'Valid email is required' }, { status: 400 });
+  }
+  if (!name?.trim()) {
+    return NextResponse.json({ error: 'name is required' }, { status: 400 });
+  }
+
+  // ── Create super_admin ─────────────────────────────────────────────────────
+  const normalEmail = email.toLowerCase().trim();
+
+  const existing = await db
+    .select({ id: users.id })
+    .from(users)
+    .where(eq(users.email, normalEmail))
+    .get();
+
+  if (existing) {
+    // User exists — upgrade to super_admin
+    await db
+      .update(users)
+      .set({ role: 'super_admin', status: 'active', updatedAt: new Date() })
+      .where(eq(users.id, existing.id));
+  } else {
+    await db.insert(users).values({
+      email:  normalEmail,
+      name:   name.trim(),
+      role:   'super_admin',
+      status: 'active',
+    });
+  }
+
+  return NextResponse.json({ ok: true, message: 'Super admin created' });
 }

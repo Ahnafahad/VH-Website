@@ -16,6 +16,38 @@
   --color-vh-dark-beige: #A86E58;
   --color-vh-light-red: #9A1B20;
   --color-vh-dark-red: #5A0B0F;
+
+  /* LexiCore Design Tokens */
+  --color-lx-base:              #0F0F0F;
+  --color-lx-surface:           #1A1A1A;
+  --color-lx-elevated:          #242424;
+  --color-lx-accent-red:        #E63946;
+  --color-lx-accent-gold:       #F4A828;
+  --color-lx-accent-silver:     #A8A8A8;
+  --color-lx-accent-bronze:     #CD7F32;
+  --color-lx-text-primary:      #F5F5F5;
+  --color-lx-text-secondary:    #9A9A9A;
+  --color-lx-text-muted:        #555555;
+  --color-lx-text-placeholder:  #7A7A7A;
+  --color-lx-text-disabled:     #5E5E5E;
+  --color-lx-success:           #2ECC71;
+  --color-lx-warning:           #F39C12;
+  --color-lx-danger:            #E63946;
+  --color-lx-border:            #2A2A2A;
+
+  /* LexiCore Form Tokens — dark mode */
+  --form-surface:       #1A1A1A;
+  --form-field-bg:      #242424;
+  --form-border:        #3A3A3A;
+  --form-border-hover:  #4A4A4A;
+  --form-label:         #F5F5F5;
+  --form-input-text:    #F5F5F5;
+  --form-helper:        #9A9A9A;
+  --form-placeholder:   #7A7A7A;
+  --form-disabled:      #5E5E5E;
+  --form-focus:         #E63946;
+  --form-focus-ring:    rgba(230, 57, 70, 0.28);
+
   --font-heading: var(--font-sans);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
@@ -53,6 +85,27 @@
   --radius-2xl: calc(var(--radius) * 1.8);
   --radius-3xl: calc(var(--radius) * 2.2);
   --radius-4xl: calc(var(--radius) * 2.6);
+  --animate-shimmer-slide: shimmer-slide var(--speed) ease-in-out infinite alternate;
+  --animate-spin-around: spin-around calc(var(--speed) * 2) infinite linear;
+  @keyframes shimmer-slide {
+  to {
+    transform: translate(calc(100cqw - 100%), 0);
+    }
+  }
+  @keyframes spin-around {
+  0% {
+    transform: translateZ(0) rotate(0);
+    }
+  15%, 35% {
+    transform: translateZ(0) rotate(90deg);
+    }
+  65%, 85% {
+    transform: translateZ(0) rotate(270deg);
+    }
+  100% {
+    transform: translateZ(0) rotate(360deg);
+    }
+  }
 }
 
 :root {
@@ -134,4 +187,56 @@
   html {
     @apply font-sans;
   }
+}
+
+/* LexiCore light mode override — applied via .lx-light on the vocab layout root */
+.lx-light {
+  --color-lx-base:              #F7F7F8;
+  --color-lx-surface:           #FFFFFF;
+  --color-lx-elevated:          #EFEFEF;
+  --color-lx-accent-red:        #D62B38;
+  --color-lx-accent-gold:       #D4920A;
+  --color-lx-accent-silver:     #7A7A7A;
+  --color-lx-accent-bronze:     #A0622A;
+  --color-lx-text-primary:      #111111;
+  --color-lx-text-secondary:    #555555;
+  --color-lx-text-muted:        #AAAAAA;
+  --color-lx-text-placeholder:  #7A7A7A;
+  --color-lx-text-disabled:     #B8B8B8;
+  --color-lx-success:           #1EA85A;
+  --color-lx-warning:           #D4840A;
+  --color-lx-danger:            #D62B38;
+  --color-lx-border:            #E0E0E0;
+
+  /* LexiCore Form Tokens — light mode */
+  --form-surface:       #FFFFFF;
+  --form-field-bg:      #FAFAFA;
+  --form-border:        #D0D0D0;
+  --form-border-hover:  #BDBDBD;
+  --form-label:         #111111;
+  --form-input-text:    #111111;
+  --form-helper:        #555555;
+  --form-placeholder:   #7A7A7A;
+  --form-disabled:      #B8B8B8;
+  --form-focus:         #D62B38;
+  --form-focus-ring:    rgba(214, 43, 56, 0.18);
+}
+
+/* LexiCore placeholder styling */
+input::placeholder,
+textarea::placeholder {
+  color: var(--form-placeholder);
+  opacity: 1;
+}
+
+/* LexiCore utility classes */
+@layer utilities {
+  .lx-glow-red    { box-shadow: 0 0 16px rgba(230, 57, 70, 0.4); }
+  .lx-glow-gold   { box-shadow: 0 0 14px rgba(244, 168, 40, 0.45); }
+  .lx-glow-silver { box-shadow: 0 0 12px rgba(168, 168, 168, 0.35); }
+  .lx-glow-bronze { box-shadow: 0 0 12px rgba(205, 127, 50, 0.35); }
+  .lx-glow-success { box-shadow: 0 0 12px rgba(46, 204, 113, 0.35); }
+  .lx-card-shadow  { box-shadow: 0 4px 24px rgba(0, 0, 0, 0.5); }
+  .preserve-3d    { transform-style: preserve-3d; }
+  .backface-hidden { backface-visibility: hidden; }
 }
