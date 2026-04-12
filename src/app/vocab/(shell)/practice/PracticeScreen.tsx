@@ -56,28 +56,36 @@ interface LetterCardProps {
 }
 
 function LetterCard({ summary, selected, onToggle }: LetterCardProps) {
-  const masteryPct = summary.wordCount > 0 ? summary.familiarPlusCount / summary.wordCount : 0;
-  const r = 18, circ = 2 * Math.PI * r;
+  const masteryPct    = summary.wordCount > 0 ? summary.familiarPlusCount / summary.wordCount : 0;
+  const masteryPctInt = Math.round(masteryPct * 100);
+  const barColor = masteryPct >= 0.8
+    ? 'var(--color-lx-accent-gold)'
+    : masteryPct >= 0.4
+      ? '#f97316'
+      : 'var(--color-lx-accent-red)';
 
   return (
     <motion.button
-      initial={{ opacity: 0, y: 10 }}
-      animate={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0, scale: 0.92 }}
+      animate={{ opacity: 1, scale: 1 }}
       whileTap={{ scale: 0.94 }}
-      whileHover={{ scale: 1.03 }}
+      whileHover={{ scale: 1.02 }}
       transition={{ type: 'spring', stiffness: 380, damping: 28 }}
       onClick={onToggle}
       style={{
         background: selected ? 'rgba(230,57,70,0.08)' : 'var(--color-lx-surface)',
         border: selected ? '1.5px solid rgba(230,57,70,0.5)' : '1px solid var(--color-lx-border)',
-        borderRadius: 16, padding: '1rem 0.875rem',
+        borderRadius: 16,
+        padding: '0.875rem 0.75rem 0.75rem',
         cursor: 'pointer',
-        display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.5rem',
+        display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.4rem',
         boxShadow: selected ? '0 0 0 1px rgba(230,57,70,0.2) inset' : 'none',
         transition: 'background 0.18s, border-color 0.18s, box-shadow 0.18s',
         position: 'relative',
+        width: '100%',
       }}
     >
+      {/* Selection indicator */}
       {selected && (
         <motion.div
           initial={{ scale: 0, opacity: 0 }}
@@ -98,9 +106,10 @@ function LetterCard({ summary, selected, onToggle }: LetterCardProps) {
         </motion.div>
       )}
 
+      {/* Letter */}
       <span style={{
         fontFamily: "'Cormorant Garamond', Georgia, serif",
-        fontSize: '2.2rem', fontWeight: 700,
+        fontSize: '2rem', fontWeight: 700,
         color: selected ? 'var(--color-lx-accent-red)' : 'var(--color-lx-text-primary)',
         lineHeight: 1,
         transition: 'color 0.18s',
@@ -108,25 +117,38 @@ function LetterCard({ summary, selected, onToggle }: LetterCardProps) {
         {summary.letter}
       </span>
 
-      <svg width={44} height={44} style={{ transform: 'rotate(-90deg)' }}>
-        <circle cx={22} cy={22} r={r} fill="none" strokeWidth={3.5} stroke="var(--color-lx-elevated)" />
-        <motion.circle
-          cx={22} cy={22} r={r}
-          fill="none" strokeWidth={3.5}
-          stroke="#e63946" strokeLinecap="round"
-          strokeDasharray={circ}
-          initial={{ strokeDashoffset: circ }}
-          animate={{ strokeDashoffset: circ * (1 - masteryPct) }}
-          transition={{ duration: 0.8, ease: 'easeOut', delay: 0.1 }}
-        />
-      </svg>
-
+      {/* Mastered / Total */}
       <span style={{
         fontFamily: "'Sora', sans-serif",
-        fontSize: '0.65rem', fontWeight: 500,
-        color: 'var(--color-lx-text-muted)',
+        fontSize: '0.6rem', fontWeight: 600,
+        color: 'var(--color-lx-text-secondary)',
+        lineHeight: 1,
       }}>
-        {summary.wordCount}
+        {summary.familiarPlusCount}/{summary.wordCount}
+      </span>
+
+      {/* Progress bar */}
+      <div style={{
+        width: '100%', height: 3,
+        background: 'var(--color-lx-elevated)',
+        borderRadius: 2, overflow: 'hidden',
+      }}>
+        <motion.div
+          initial={{ width: 0 }}
+          animate={{ width: `${masteryPctInt}%` }}
+          transition={{ duration: 0.7, ease: 'easeOut', delay: 0.1 }}
+          style={{ height: '100%', background: barColor, borderRadius: 2 }}
+        />
+      </div>
+
+      {/* Mastery % */}
+      <span style={{
+        fontFamily: "'Sora', sans-serif",
+        fontSize: '0.55rem', fontWeight: 500,
+        color: masteryPctInt > 0 ? barColor : 'var(--color-lx-text-muted)',
+        lineHeight: 1,
+      }}>
+        {masteryPctInt}%
       </span>
     </motion.button>
   );
@@ -462,7 +484,7 @@ export default function PracticeScreen({ data }: { data: PracticePageData }) {
             ) : (
               <div style={{
                 display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fill, minmax(72px, 1fr))',
+                gridTemplateColumns: 'repeat(auto-fill, minmax(80px, 1fr))',
                 gap: 10,
               }}>
                 {data.letters.map((summary, i) => (

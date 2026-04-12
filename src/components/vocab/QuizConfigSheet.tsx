@@ -228,7 +228,7 @@ export default function QuizConfigSheet({ onStart, onCancel }: Props) {
           borderTopRightRadius: 24,
           border: `1px solid ${C.border}`,
           borderBottom: 'none',
-          padding: '1.5rem 1.5rem 2rem',
+          padding: `1.5rem 1.5rem calc(80px + env(safe-area-inset-bottom, 0px))`,
           display: 'flex', flexDirection: 'column', gap: 0,
         }}
       >

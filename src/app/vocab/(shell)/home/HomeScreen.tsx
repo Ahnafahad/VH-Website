@@ -3,10 +3,13 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
+import { HelpCircle, Lock } from 'lucide-react';
 import type { HomeData, MasteryBreakdown, SessionsData } from '@/lib/vocab/home-data';
 import ProgressRing from '@/components/vocab/ProgressRing';
 import AnimatedNumber from '@/components/vocab/AnimatedNumber';
 import DeadlineBanner from '@/components/vocab/DeadlineBanner';
+import UpgradeModal from '@/components/vocab/UpgradeModal';
 
 function greeting(): string {
   const h = new Date().getHours();
@@ -415,6 +418,7 @@ export default function HomeScreen({ data }: { data: HomeData }) {
   const firstName   = data.userName.split(' ')[0];
   const deadlinePassed = data.deadline ? new Date(data.deadline) < new Date() : false;
   const sessionRows = buildSessions(data.sessions, router);
+  const [showUpgrade, setShowUpgrade] = useState(false);
 
   return (
     <div
@@ -427,7 +431,7 @@ export default function HomeScreen({ data }: { data: HomeData }) {
       }}
       className="max-w-[660px] md:max-w-none lg:max-w-[940px] md:px-8 md:pt-10"
     >
-      {/* ── Header ────────────────────────────────────────────── */}
+      {/* ── Top bar: VH link + greeting/points + help icon ──── */}
       <motion.div
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
@@ -439,18 +443,30 @@ export default function HomeScreen({ data }: { data: HomeData }) {
           marginBottom:   '1.125rem',
         }}
       >
+        {/* Left: VH back link + greeting */}
         <div>
-          <p style={{
-            fontFamily:    "'Sora', sans-serif",
-            fontSize:      '0.62rem',
-            fontWeight:    500,
-            letterSpacing: '0.15em',
-            textTransform: 'uppercase',
-            color:         'var(--color-lx-text-muted)',
-            marginBottom:  5,
-          }}>
-            {greeting()}
-          </p>
+          <Link
+            href="/"
+            style={{
+              display:       'inline-flex',
+              alignItems:    'center',
+              gap:           4,
+              fontFamily:    "'Sora', sans-serif",
+              fontSize:      '0.58rem',
+              fontWeight:    500,
+              letterSpacing: '0.08em',
+              textTransform: 'uppercase',
+              color:         'var(--color-lx-text-muted)',
+              textDecoration:'none',
+              marginBottom:  6,
+              opacity:       0.7,
+            }}
+          >
+            <svg width="8" height="8" viewBox="0 0 10 10" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M7 1L2 5l5 4" />
+            </svg>
+            VH Website
+          </Link>
           <h1 style={{
             fontFamily:    "'Cormorant Garamond', Georgia, serif",
             fontSize:      'clamp(2rem, 5vw, 2.75rem)',
@@ -459,57 +475,154 @@ export default function HomeScreen({ data }: { data: HomeData }) {
             fontStyle:     'italic',
             color:         'var(--color-lx-text-primary)',
             letterSpacing: '-0.01em',
+            margin:        0,
           }}>
             {firstName}
           </h1>
         </div>
 
-        {/* Points — typographic, no pill */}
+        {/* Right: points + help icon */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.2 }}
           style={{
-            display:        'flex',
-            flexDirection:  'column',
-            alignItems:     'flex-end',
-            gap:            3,
-            paddingBottom:  2,
+            display:       'flex',
+            flexDirection: 'column',
+            alignItems:    'flex-end',
+            gap:           8,
+            paddingBottom: 2,
           }}
         >
-          <span style={{
-            fontFamily:    "'Sora', sans-serif",
-            fontSize:      '0.56rem',
-            letterSpacing: '0.15em',
-            textTransform: 'uppercase',
-            color:         'var(--color-lx-text-muted)',
-          }}>
-            Total pts
-          </span>
-          <div style={{ display: 'flex', alignItems: 'baseline', gap: 3 }}>
+          {/* Help icon */}
+          <Link
+            href="/vocab/help"
+            aria-label="Help"
+            style={{
+              display:        'flex',
+              alignItems:     'center',
+              justifyContent: 'center',
+              width:          28,
+              height:         28,
+              borderRadius:   '50%',
+              background:     'var(--color-lx-elevated)',
+              border:         '1px solid var(--color-lx-border)',
+              color:          'var(--color-lx-text-muted)',
+              textDecoration: 'none',
+            }}
+          >
+            <HelpCircle size={13} />
+          </Link>
+
+          {/* Points */}
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: 3 }}>
             <span style={{
-              fontFamily: "'Cormorant Garamond', serif",
-              fontSize:   '1.75rem',
-              lineHeight: 1,
-              fontWeight: 700,
-              color:      'var(--color-lx-accent-gold)',
+              fontFamily:    "'Sora', sans-serif",
+              fontSize:      '0.56rem',
+              letterSpacing: '0.15em',
+              textTransform: 'uppercase',
+              color:         'var(--color-lx-text-muted)',
             }}>
-              <AnimatedNumber value={data.totalPoints} />
+              Total pts
             </span>
-            <span style={{
-              fontFamily: "'Sora', sans-serif",
-              fontSize:   '0.58rem',
-              color:      'var(--color-lx-accent-gold)',
-              opacity:    0.65,
-              paddingBottom: 2,
-            }}>
-              pts
-            </span>
+            <div style={{ display: 'flex', alignItems: 'baseline', gap: 3 }}>
+              <span style={{
+                fontFamily: "'Cormorant Garamond', serif",
+                fontSize:   '1.75rem',
+                lineHeight: 1,
+                fontWeight: 700,
+                color:      'var(--color-lx-accent-gold)',
+              }}>
+                <AnimatedNumber value={data.totalPoints} />
+              </span>
+              <span style={{
+                fontFamily: "'Sora', sans-serif",
+                fontSize:   '0.58rem',
+                color:      'var(--color-lx-accent-gold)',
+                opacity:    0.65,
+                paddingBottom: 2,
+              }}>
+                pts
+              </span>
+            </div>
           </div>
         </motion.div>
       </motion.div>
 
       <Rule delay={0.08} />
+
+      {/* ── Upgrade CTA (free users only) ────────────────────── */}
+      {!data.hasPaidAccess && (
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.18, type: 'spring' as const, stiffness: 300, damping: 26 }}
+          style={{ marginTop: '1rem' }}
+        >
+          <div
+            style={{
+              display:      'flex',
+              alignItems:   'center',
+              justifyContent: 'space-between',
+              padding:      '12px 14px',
+              background:   'linear-gradient(135deg, rgba(244,168,40,0.06) 0%, rgba(230,57,70,0.04) 100%)',
+              border:       '1px solid rgba(244,168,40,0.2)',
+              borderRadius: 10,
+              gap:          12,
+            }}
+          >
+            <div style={{ display: 'flex', alignItems: 'center', gap: 10, flex: 1, minWidth: 0 }}>
+              <Lock size={13} style={{ color: 'var(--color-lx-accent-gold)', flexShrink: 0 }} />
+              <div>
+                <p style={{
+                  fontFamily: "'Sora', sans-serif",
+                  fontSize:   '0.72rem',
+                  fontWeight: 600,
+                  color:      'var(--color-lx-text-primary)',
+                  margin:     0,
+                  lineHeight: 1.3,
+                }}>
+                  You&apos;ve unlocked 100 words
+                </p>
+                <p style={{
+                  fontFamily:    "'Sora', sans-serif",
+                  fontSize:      '0.62rem',
+                  color:         'var(--color-lx-text-muted)',
+                  margin:        '2px 0 0',
+                  letterSpacing: '0.02em',
+                }}>
+                  800 more await
+                </p>
+              </div>
+            </div>
+            <motion.button
+              whileTap={{ scale: 0.95 }}
+              onClick={() => setShowUpgrade(true)}
+              style={{
+                display:       'flex',
+                alignItems:    'center',
+                gap:           4,
+                padding:       '6px 12px',
+                background:    'rgba(244,168,40,0.12)',
+                border:        '1px solid rgba(244,168,40,0.3)',
+                borderRadius:  6,
+                fontFamily:    "'Sora', sans-serif",
+                fontSize:      '0.68rem',
+                fontWeight:    600,
+                color:         'var(--color-lx-accent-gold)',
+                cursor:        'pointer',
+                flexShrink:    0,
+                whiteSpace:    'nowrap',
+              }}
+            >
+              Unlock
+              <svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M2 5h6M6 2l3 3-3 3" />
+              </svg>
+            </motion.button>
+          </div>
+        </motion.div>
+      )}
 
       {/* ── Deadline banner ──────────────────────────────────── */}
       {deadlinePassed && (
@@ -774,6 +887,11 @@ export default function HomeScreen({ data }: { data: HomeData }) {
         </div>{/* end right column */}
 
       </div>{/* end grid */}
+
+      {/* ── Upgrade modal ──────────────────────────────────────── */}
+      <AnimatePresence>
+        {showUpgrade && <UpgradeModal onClose={() => setShowUpgrade(false)} />}
+      </AnimatePresence>
     </div>
   );
 }

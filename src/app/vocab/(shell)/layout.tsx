@@ -1,10 +1,10 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import Link from 'next/link';
 import BottomNav from '@/components/vocab/BottomNav';
 import DesktopSidebar from '@/components/vocab/DesktopSidebar';
 import PageTransition from '@/components/vocab/PageTransition';
+import InstallPrompt from '@/components/vocab/InstallPrompt';
 import { BadgeQueueProvider, useBadgeQueue } from '@/lib/vocab/badges/queue';
 import type { EarnedBadge } from '@/lib/vocab/badges/checker';
 
@@ -81,38 +81,8 @@ function VocabShellInner({ children }: { children: React.ReactNode }) {
           </div>
         </main>
 
-        {/* Back to main site — mobile only, floats above BottomNav */}
-        <Link
-          href="/"
-          className="md:hidden"
-          style={{
-            position:       'fixed',
-            bottom:         'calc(72px + env(safe-area-inset-bottom) + 10px)',
-            right:          14,
-            zIndex:         49,
-            display:        'flex',
-            alignItems:     'center',
-            gap:            5,
-            padding:        '6px 11px',
-            borderRadius:   20,
-            background:     'var(--color-lx-surface)',
-            border:         '1px solid var(--color-lx-border)',
-            fontFamily:     "'Sora', sans-serif",
-            fontSize:       '0.65rem',
-            fontWeight:     500,
-            letterSpacing:  '0.04em',
-            color:          'var(--color-lx-text-muted)',
-            textDecoration: 'none',
-            backdropFilter: 'blur(12px)',
-            WebkitBackdropFilter: 'blur(12px)',
-            boxShadow:      '0 2px 12px rgba(0,0,0,0.25)',
-          }}
-        >
-          <svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M7 1L2 5l5 4" />
-          </svg>
-          VH Website
-        </Link>
+        {/* Install prompt — PWA add-to-home-screen nudge */}
+        <InstallPrompt />
 
         {/* Bottom nav — fixed, centered, mobile only */}
         <BottomNav />

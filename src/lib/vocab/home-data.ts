@@ -1,5 +1,5 @@
 import {
-  db, users, vocabUserProgress, vocabUserWordRecords,
+  db, users, userAccess, vocabUserProgress, vocabUserWordRecords,
   vocabFlashcardSessions, vocabThemes, vocabQuizSessions, vocabWords,
 } from '@/lib/db';
 import { eq, and, lte, count, sql, inArray } from 'drizzle-orm';
@@ -34,11 +34,12 @@ export interface HomeData {
   phase:            number;
   sessions:         SessionsData;
   masteryBreakdown: MasteryBreakdown;
+  hasPaidAccess:    boolean;       // true if user has any active product or is admin
 }
 
 async function _getHomeData(email: string): Promise<HomeData | null> {
   const [user] = await db
-    .select({ id: users.id, name: users.name })
+    .select({ id: users.id, name: users.name, role: users.role })
     .from(users)
     .where(eq(users.email, email))
     .limit(1);
@@ -66,6 +67,7 @@ async function _getHomeData(email: string): Promise<HomeData | null> {
     flashcardSessions,
     completedQuizzes,
     allThemes,
+    accessRows,
   ] = await Promise.all([
     // SRS due count
     db.select({ value: count() })
@@ -140,6 +142,12 @@ async function _getHomeData(email: string): Promise<HomeData | null> {
       .leftJoin(vocabWords, eq(vocabWords.themeId, vocabThemes.id))
       .groupBy(vocabThemes.id)
       .orderBy(vocabThemes.order),
+
+    // User paid access
+    db.select({ id: userAccess.id })
+      .from(userAccess)
+      .where(and(eq(userAccess.userId, user.id), eq(userAccess.active, true)))
+      .limit(1),
   ]);
 
   // ── Compute basics ────────────────────────────────────────────────────────
@@ -196,6 +204,9 @@ async function _getHomeData(email: string): Promise<HomeData | null> {
     practice: practiceSession,
   };
 
+  const isAdmin     = user.role === 'admin' || user.role === 'super_admin';
+  const hasPaidAccess = isAdmin || accessRows.length > 0;
+
   return {
     userName:         user.name,
     streakDays:       progress.streakDays,
@@ -209,6 +220,7 @@ async function _getHomeData(email: string): Promise<HomeData | null> {
     phase:            progress.phase,
     sessions,
     masteryBreakdown: breakdown,
+    hasPaidAccess,
   };
 }
 

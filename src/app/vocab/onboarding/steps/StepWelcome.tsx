@@ -130,6 +130,16 @@ export default function StepWelcome({ userName, onNext }: Props) {
         >
           Master 800+ words through adaptive flashcards, AI-powered quizzes, and daily streaks — built for IBA, BUP&nbsp;&amp; DU admissions.
         </p>
+        <p
+          className="text-xs"
+          style={{
+            color:      'var(--color-lx-text-muted)',
+            fontFamily: "'Sora', sans-serif",
+            maxWidth:   '22rem',
+          }}
+        >
+          100 words, completely free — upgrade anytime to unlock all 800.
+        </p>
       </motion.div>
 
       {/* ── CTA ───────────────────────────────────────────────── */}

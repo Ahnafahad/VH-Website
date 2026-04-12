@@ -1461,6 +1461,48 @@ export default function ProfileScreen({
                 </SettingRow>
               </motion.div>
 
+              {/* ══ LINKS ══════════════════════════════════════════════════ */}
+              <motion.div variants={settingItem} style={{ marginBottom: 24 }}>
+                <SectionLabel>Links</SectionLabel>
+                <GoldRule />
+                <div style={{ marginTop: 12, display: 'flex', flexDirection: 'column', gap: 2 }}>
+                  {[
+                    { href: '/', label: '← VH Website', sublabel: 'Return to main site' },
+                    { href: '/vocab/help', label: '? Help', sublabel: 'Guides, SRS, badges & more' },
+                  ].map(link => (
+                    <a
+                      key={link.href}
+                      href={link.href}
+                      style={{
+                        display:        'flex',
+                        flexDirection:  'column',
+                        gap:            2,
+                        padding:        '10px 0',
+                        borderBottom:   '1px solid rgba(255,255,255,0.05)',
+                        textDecoration: 'none',
+                      }}
+                    >
+                      <span style={{
+                        fontFamily: "'Sora', sans-serif",
+                        fontSize:   12,
+                        fontWeight: 500,
+                        color:      'var(--color-lx-text-secondary)',
+                        letterSpacing: '0.02em',
+                      }}>
+                        {link.label}
+                      </span>
+                      <span style={{
+                        fontFamily: "'Sora', sans-serif",
+                        fontSize:   10,
+                        color:      'var(--color-lx-text-muted)',
+                      }}>
+                        {link.sublabel}
+                      </span>
+                    </a>
+                  ))}
+                </div>
+              </motion.div>
+
               {/* ══ SECTION 5: Danger Zone ═════════════════════════════════ */}
               <motion.div variants={settingItem} style={{ marginTop: 16 }}>
                 <SectionLabel>Danger Zone</SectionLabel>

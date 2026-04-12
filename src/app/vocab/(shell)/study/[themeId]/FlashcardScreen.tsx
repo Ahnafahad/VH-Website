@@ -170,7 +170,7 @@ function SessionComplete({
 function FlipCard({ word, isFlipped, onFlip }: { word: FlashcardWord; isFlipped: boolean; onFlip: () => void }) {
   return (
     <div
-      className="relative w-full cursor-pointer"
+      className="relative w-full"
       style={{ perspective: '2000px', minHeight: 300 }}
       onClick={!isFlipped ? onFlip : undefined}
     >
@@ -238,9 +238,11 @@ function FlipCard({ word, isFlipped, onFlip }: { word: FlashcardWord; isFlipped:
             background: 'var(--color-lx-surface)',
             border: '1px solid rgba(230,57,70,0.25)',
             transform: 'rotateY(180deg)',
-            display: 'flex', flexDirection: 'column', justifyContent: 'space-between',
+            display: 'flex', flexDirection: 'column', justifyContent: 'flex-start',
+            gap: '0.75rem',
             padding: '1.5rem',
             minHeight: 300,
+            overflowY: 'auto',
           }}
         >
           {/* Word again (small) */}
@@ -298,7 +300,11 @@ function RatingButtons({ onRate, disabled }: { onRate: (r: Rating) => void; disa
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: 8 }}
       transition={{ type: 'spring', stiffness: 340, damping: 28 }}
-      className="flex gap-3"
+      className="fixed left-0 right-0 md:left-[220px] flex gap-3 px-4"
+      style={{
+        bottom: 'calc(72px + env(safe-area-inset-bottom) + 8px)',
+        zIndex: 30,
+      }}
     >
       {btns.map(b => (
         <motion.button
@@ -313,6 +319,8 @@ function RatingButtons({ onRate, disabled }: { onRate: (r: Rating) => void; disa
             color:      b.color,
             opacity:    disabled ? 0.5 : 1,
             fontFamily: "'Sora', sans-serif",
+            backdropFilter: 'blur(12px)',
+            WebkitBackdropFilter: 'blur(12px)',
           }}
         >
           {b.icon}
@@ -406,7 +414,13 @@ export default function FlashcardScreen({ data }: { data: FlashcardSessionData }
   const progress = ((index) / data.words.length) * 100;
 
   return (
-    <div className="flex flex-col px-4 pt-4 pb-6 gap-5 md:px-8 md:pt-6 md:max-w-2xl md:mx-auto md:w-full" style={{ minHeight: 'calc(100dvh - 72px)' }}>
+    <div
+      className="flex flex-col px-4 pt-4 gap-5 md:px-8 md:pt-6 md:max-w-2xl md:mx-auto md:w-full"
+      style={{
+        minHeight: 'calc(100dvh - 72px)',
+        paddingBottom: flipped ? 'calc(96px + 72px + env(safe-area-inset-bottom))' : '1.5rem',
+      }}
+    >
 
       {/* ── Header ──────────────────────────────────────── */}
       <div className="flex items-center justify-between">
@@ -445,7 +459,7 @@ export default function FlashcardScreen({ data }: { data: FlashcardSessionData }
       </div>
 
       {/* ── Card area ───────────────────────────────────── */}
-      <div className="flex flex-1 flex-col justify-center gap-5">
+      <div className="flex flex-1 flex-col gap-5">
         <AnimatePresence mode="wait" initial={false}>
           <motion.div
             key={word.id}
@@ -458,13 +472,6 @@ export default function FlashcardScreen({ data }: { data: FlashcardSessionData }
           </motion.div>
         </AnimatePresence>
 
-        {/* ── Rating buttons (shown only after flip) ──── */}
-        <AnimatePresence>
-          {flipped && (
-            <RatingButtons onRate={handleRate} disabled={false} />
-          )}
-        </AnimatePresence>
-
         {/* Flip prompt if not yet flipped */}
         {!flipped && (
           <motion.p
@@ -473,10 +480,17 @@ export default function FlashcardScreen({ data }: { data: FlashcardSessionData }
             className="text-center text-xs"
             style={{ color: 'var(--color-lx-text-muted)', fontFamily: "'Sora', sans-serif" }}
           >
-            Rate yourself after reviewing the definition
+            Tap the card to reveal — then rate yourself
           </motion.p>
         )}
       </div>
+
+      {/* ── Rating buttons — fixed above BottomNav ────── */}
+      <AnimatePresence>
+        {flipped && (
+          <RatingButtons onRate={handleRate} disabled={false} />
+        )}
+      </AnimatePresence>
     </div>
   );
 }

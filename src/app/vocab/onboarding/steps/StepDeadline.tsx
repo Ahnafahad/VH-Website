@@ -88,6 +88,9 @@ export default function StepDeadline({ onNext }: Props) {
         <p className="mt-1 text-sm" style={{ color: 'var(--color-lx-text-secondary)' }}>
           words to review per day
         </p>
+        <p className="mt-2 text-xs" style={{ color: 'var(--color-lx-text-muted)' }}>
+          800 words total · first 100 are free
+        </p>
       </motion.div>
 
       <motion.button
