@@ -373,6 +373,17 @@ export const vocabAdminSettings = sqliteTable('vocab_admin_settings', {
   updatedAt: integer('updated_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
 });
 
+// ─── Upgrade Interest (WTP) ───────────────────────────────────────────────────
+// Non-VH-students expressing willingness-to-pay for full access.
+
+export const vocabUpgradeRequests = sqliteTable('vocab_upgrade_requests', {
+  id:             integer('id').primaryKey({ autoIncrement: true }),
+  userId:         integer('user_id').notNull().references(() => users.id, { onDelete: 'cascade' }),
+  // 'tutor' | 'printing' | 'notebook' | 'nothing'
+  selectedOption: text('selected_option').notNull(),
+  submittedAt:    integer('submitted_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
+}, (t) => [unique().on(t.userId)]);
+
 // ─── Access Requests ──────────────────────────────────────────────────────────
 // Phase-2 users requesting full (phase-1) access.
 
