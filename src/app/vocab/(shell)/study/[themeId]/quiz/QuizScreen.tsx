@@ -1015,9 +1015,9 @@ export default function QuizScreen({ themeId, themeIds, letterWordIds, sessionTy
   // ── Render ─────────────────────────────────────────────────────────────────
 
   if (phase === 'generating') return <QuizLoading words={hintWords} />;
-  if (phase === 'error')      return <QuizError onBack={() => router.back()} />;
+  if (phase === 'error')      return <div className="lx-page-enter"><QuizError onBack={() => router.back()} /></div>;
   if (phase === 'summary' && summary) {
-    return <QuizSummary summary={summary} onContinue={() => router.push('/vocab/study')} />;
+    return <div className="lx-page-enter"><QuizSummary summary={summary} onContinue={() => router.push('/vocab/study')} /></div>;
   }
   if (!current) return null;
 

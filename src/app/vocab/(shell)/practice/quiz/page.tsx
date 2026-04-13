@@ -44,7 +44,7 @@ export default function PracticeQuizPage() {
 
   return (
     <>
-      <AnimatePresence>
+      <AnimatePresence initial={false}>
         {!config && (
           <QuizConfigSheet
             onStart={setConfig}
