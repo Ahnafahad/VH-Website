@@ -415,8 +415,8 @@ function OptionCard({ opt, phase, selectedId, result, index, onSelect }: OptionC
         y:       { delay: index * 0.055, type: 'spring', stiffness: 400, damping: 30 },
         scale:   isRevealed && isCorrect ? { duration: 0.4, times: [0, 0.5, 1] } : {},
       }}
-      whileTap={phase === 'idle' ? { scale: 0.975 } : {}}
-      onClick={() => phase === 'idle' && onSelect(opt.wordId)}
+      whileTap={phase !== 'revealed' ? { scale: 0.975 } : {}}
+      onClick={() => phase !== 'revealed' && onSelect(opt.wordId)}
       disabled={phase === 'revealed'}
       style={{
         display: 'flex', alignItems: 'center', gap: '0.75rem',
