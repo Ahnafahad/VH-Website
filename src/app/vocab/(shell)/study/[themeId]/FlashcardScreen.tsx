@@ -171,13 +171,13 @@ function FlipCard({ word, isFlipped, onFlip }: { word: FlashcardWord; isFlipped:
   return (
     <div
       className="relative w-full"
-      style={{ perspective: '2000px', minHeight: 300 }}
+      style={{ perspective: '2000px', minHeight: 300, flex: 1 }}
       onClick={!isFlipped ? onFlip : undefined}
     >
       <motion.div
         animate={{ rotateY: isFlipped ? 180 : 0 }}
         transition={{ duration: 0.65, ease: [0.4, 0, 0.2, 1] }}
-        style={{ transformStyle: 'preserve-3d', position: 'relative', width: '100%', minHeight: 300 }}
+        style={{ transformStyle: 'preserve-3d', position: 'relative', width: '100%', height: '100%', minHeight: 300 }}
       >
         {/* ── FRONT ─────────────────────────────────── */}
         <div
@@ -415,10 +415,10 @@ export default function FlashcardScreen({ data }: { data: FlashcardSessionData }
 
   return (
     <div
-      className="flex flex-col px-4 pt-4 gap-5 md:px-8 md:pt-6 md:max-w-2xl md:mx-auto md:w-full"
+      className="flex flex-col px-4 pt-4 gap-3 md:px-8 md:pt-6 md:max-w-2xl md:mx-auto md:w-full"
       style={{
         minHeight: 'calc(100dvh - 72px)',
-        paddingBottom: flipped ? 'calc(96px + 72px + env(safe-area-inset-bottom))' : '1.5rem',
+        paddingBottom: flipped ? 'calc(88px + 72px + env(safe-area-inset-bottom))' : '1.5rem',
       }}
     >
 
@@ -459,7 +459,7 @@ export default function FlashcardScreen({ data }: { data: FlashcardSessionData }
       </div>
 
       {/* ── Card area ───────────────────────────────────── */}
-      <div className="flex flex-1 flex-col gap-5">
+      <div className="flex flex-1 flex-col gap-2 min-h-0">
         <AnimatePresence mode="wait" initial={false}>
           <motion.div
             key={word.id}
@@ -467,6 +467,7 @@ export default function FlashcardScreen({ data }: { data: FlashcardSessionData }
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -direction * 30 }}
             transition={{ duration: 0.25, ease: 'easeOut' }}
+            style={{ flex: 1, display: 'flex', flexDirection: 'column', minHeight: 0 }}
           >
             <FlipCard word={word} isFlipped={flipped} onFlip={() => setFlipped(true)} />
           </motion.div>
