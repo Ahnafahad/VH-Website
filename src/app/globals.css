@@ -241,15 +241,33 @@ textarea::placeholder {
   .backface-hidden { backface-visibility: hidden; }
 }
 
-/* Page transition — CSS-only so it runs on the compositor thread and cannot
-   be blocked by JS main-thread work (unlike Framer Motion RAF-based animations). */
+/* Page transition — opacity-only so the animation never creates a CSS
+   containing block (transform would break position:fixed children). */
 @keyframes lx-page-in {
-  from { opacity: 0; transform: translateX(10px); }
-  to   { opacity: 1; transform: none; }
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }
 .lx-page-enter {
   animation: lx-page-in 0.22s ease-out both;
 }
 @media (prefers-reduced-motion: reduce) {
   .lx-page-enter { animation: none; }
+}
+
+/* Start Practice / floating CTA button — responsive fixed positioning.
+   Mobile: sits above the 72px BottomNav. Desktop: sits near screen bottom. */
+.lx-practice-cta {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0 1.25rem calc(80px + env(safe-area-inset-bottom, 0px));
+  z-index: 40;
+  pointer-events: none; /* toggled per-element via inline style */
+}
+@media (min-width: 768px) {
+  .lx-practice-cta {
+    left: 220px;
+    padding: 0 2rem 1.25rem;
+  }
 }

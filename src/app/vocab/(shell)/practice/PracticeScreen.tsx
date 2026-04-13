@@ -508,58 +508,36 @@ export default function PracticeScreen({ data }: { data: PracticePageData }) {
       </AnimatePresence>
 
       {/* ── Floating Start Practice button ── */}
-      <AnimatePresence>
-        {((activeTab === 'theme' && selected.size > 0) || (activeTab === 'letter' && selectedLetters.size > 0)) && (
-          <motion.div
-            initial={{ y: 80, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            exit={{ y: 80, opacity: 0 }}
-            transition={{ type: 'spring' as const, stiffness: 380, damping: 30 }}
-            className="fixed bottom-0 left-0 right-0 md:left-[220px] px-5 md:px-8 pb-safe"
-            style={{
-              paddingBottom: 'max(env(safe-area-inset-bottom, 0px) + 88px, 88px)',
-              zIndex: 40,
-            }}
+      {/* CSS-only show/hide — Framer Motion y:80 initial gets stuck on mobile,
+          and transform-based animations break position:fixed children. */}
+      {(() => {
+        const show = (activeTab === 'theme' && selected.size > 0) || (activeTab === 'letter' && selectedLetters.size > 0);
+        return (
+          <div
+            className="lx-practice-cta"
+            style={{ opacity: show ? 1 : 0, pointerEvents: show ? 'auto' : 'none', transition: 'opacity 0.22s ease' }}
           >
             <motion.button
               onClick={handleStart}
               whileTap={{ scale: 0.97 }}
               className="w-full md:max-w-2xl md:mx-auto rounded-2xl py-4 flex items-center justify-between px-6"
-              style={{
-                background:  'var(--color-lx-accent-red)',
-                boxShadow:   '0 4px 24px rgba(230,57,70,0.4)',
-                fontFamily:  "'Sora', sans-serif",
-              }}
+              style={{ background: 'var(--color-lx-accent-red)', boxShadow: '0 4px 24px rgba(230,57,70,0.4)', fontFamily: "'Sora', sans-serif" }}
             >
               <div className="flex flex-col items-start">
-                <span className="text-base font-bold text-white leading-tight">
-                  Start Practice
-                </span>
+                <span className="text-base font-bold text-white leading-tight">Start Practice</span>
                 <span className="text-xs text-white/70 mt-0.5">
                   {activeTab === 'theme'
                     ? `${selected.size} theme${selected.size !== 1 ? 's' : ''} · up to ${Math.min(totalSelectedWords, 20)} questions`
-                    : `${selectedLetters.size} letter${selectedLetters.size !== 1 ? 's' : ''} · up to ${Math.min(totalLetterWords, 20)} questions`
-                  }
+                    : `${selectedLetters.size} letter${selectedLetters.size !== 1 ? 's' : ''} · up to ${Math.min(totalLetterWords, 20)} questions`}
                 </span>
               </div>
-
-              {/* Arrow icon */}
-              <svg
-                width="22" height="22" viewBox="0 0 22 22" fill="none"
-                aria-hidden="true"
-              >
-                <path
-                  d="M4 11h14M13 6l5 5-5 5"
-                  stroke="white"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
+              <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
+                <path d="M4 11h14M13 6l5 5-5 5" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </motion.button>
-          </motion.div>
-        )}
-      </AnimatePresence>
+          </div>
+        );
+      })()}
     </div>
   );
 }
