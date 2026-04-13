@@ -216,95 +216,60 @@ function QuizLoading({ words }: { words: HintWord[] }) {
             />
           ))}
 
-          {/* ── Vocabulary hint card — inside the box once word data is ready ── */}
+          {/* ── Vocabulary hint — replaces nothing, just appears below skeleton bars ── */}
           {hasWords && hint && (
-            <div style={{ width: '100%', display: 'flex', flexDirection: 'column', gap: '0.75rem', marginTop: '0.5rem' }}>
-              {/* Section label */}
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                <div style={{ flex: 1, height: 1, background: C.border }} />
-                <span style={{
-                  fontFamily: SANS, fontSize: '0.6rem', fontWeight: 700,
-                  letterSpacing: '0.12em', textTransform: 'uppercase',
-                  color: C.textMuted,
-                }}>
-                  Word of the moment
-                </span>
-                <div style={{ flex: 1, height: 1, background: C.border }} />
-              </div>
-
-              {/* Cycling hint */}
-              <div style={{ position: 'relative', minHeight: 88, width: '100%' }}>
-                <AnimatePresence mode="wait">
-                  {showing && (
-                    <motion.div
-                      key={hintIdx}
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -8 }}
-                      transition={{ duration: 0.32, ease: 'easeOut' }}
-                      style={{
-                        position: 'absolute', inset: 0,
-                        display: 'flex', flexDirection: 'column', gap: '0.35rem',
-                        padding: '0.875rem 1rem',
-                        background: C.elevated,
-                        border: `1px solid ${C.border}`,
-                        borderLeft: `3px solid ${C.red}`,
-                        borderRadius: 14,
-                      }}
-                    >
-                      {/* Word + pos */}
-                      <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.5rem' }}>
-                        <span style={{
-                          fontFamily: SERIF,
-                          fontSize: 'clamp(1.25rem, 5vw, 1.5rem)',
-                          fontWeight: 700,
-                          fontStyle: 'italic',
-                          color: C.textPrim,
-                          lineHeight: 1.1,
-                        }}>
-                          {hint.word}
-                        </span>
-                        <span style={{
-                          fontFamily: SANS,
-                          fontSize: '0.65rem',
-                          color: C.red,
-                          fontStyle: 'italic',
-                          letterSpacing: '0.04em',
-                        }}>
-                          {hint.pos}
-                        </span>
-                      </div>
-
-                      {/* Definition */}
-                      <p style={{
-                        fontFamily: SERIF,
-                        fontSize: '0.9rem',
-                        color: C.textSec,
-                        lineHeight: 1.55,
-                        margin: 0,
-                      }}>
-                        {hint.definition}
-                      </p>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
-
-              {/* Dot indicators */}
-              <div style={{ display: 'flex', justifyContent: 'center', gap: 5 }}>
-                {words.map((_, i) => (
-                  <div
-                    key={i}
+            <div style={{ position: 'relative', minHeight: 88, width: '100%', marginTop: '0.25rem' }}>
+              <AnimatePresence mode="wait">
+                {showing && (
+                  <motion.div
+                    key={hintIdx}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -8 }}
+                    transition={{ duration: 0.32, ease: 'easeOut' }}
                     style={{
-                      width: i === hintIdx ? 14 : 4,
-                      height: 4,
-                      borderRadius: 2,
-                      background: i === hintIdx ? C.red : C.elevated,
-                      transition: 'width 0.35s ease, background 0.35s ease',
+                      position: 'absolute', inset: 0,
+                      display: 'flex', flexDirection: 'column', gap: '0.35rem',
+                      padding: '0.875rem 1rem',
+                      background: C.elevated,
+                      border: `1px solid ${C.border}`,
+                      borderLeft: `3px solid ${C.red}`,
+                      borderRadius: 14,
                     }}
-                  />
-                ))}
-              </div>
+                  >
+                    <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.5rem' }}>
+                      <span style={{
+                        fontFamily: SERIF,
+                        fontSize: 'clamp(1.25rem, 5vw, 1.5rem)',
+                        fontWeight: 700,
+                        fontStyle: 'italic',
+                        color: C.textPrim,
+                        lineHeight: 1.1,
+                      }}>
+                        {hint.word}
+                      </span>
+                      <span style={{
+                        fontFamily: SANS,
+                        fontSize: '0.65rem',
+                        color: C.red,
+                        fontStyle: 'italic',
+                        letterSpacing: '0.04em',
+                      }}>
+                        {hint.pos}
+                      </span>
+                    </div>
+                    <p style={{
+                      fontFamily: SERIF,
+                      fontSize: '0.9rem',
+                      color: C.textSec,
+                      lineHeight: 1.55,
+                      margin: 0,
+                    }}>
+                      {hint.definition}
+                    </p>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
           )}
         </div>
