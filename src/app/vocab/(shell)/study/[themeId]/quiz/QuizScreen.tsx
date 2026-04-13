@@ -202,21 +202,7 @@ function QuizLoading({ words }: { words: HintWord[] }) {
           <p style={{ fontFamily: SANS, fontSize: '0.8125rem', color: C.textSec, marginBottom: '0.25rem', letterSpacing: '0.04em' }}>
             Generating your quiz…
           </p>
-          {/* Shimmer skeleton bars */}
-          {[1, 0.88, 0.95, 0.82].map((w, i) => (
-            <motion.div
-              key={i}
-              animate={{ opacity: [0.25, 0.55, 0.25] }}
-              transition={{ repeat: Infinity, duration: 1.6, delay: i * 0.18, ease: 'easeInOut' }}
-              style={{
-                width: `${w * 100}%`, height: 44,
-                borderRadius: 12,
-                background: C.elevated,
-              }}
-            />
-          ))}
-
-          {/* ── Vocabulary hint — replaces nothing, just appears below skeleton bars ── */}
+          {/* ── Vocabulary hint — shown while generating ── */}
           {hasWords && hint && (
             <div style={{ position: 'relative', minHeight: 88, width: '100%', marginTop: '0.25rem' }}>
               <AnimatePresence mode="wait">
