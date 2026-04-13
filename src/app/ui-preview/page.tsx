@@ -176,6 +176,7 @@ export default function UIPreviewPage() {
               totalWords:    200,
             }}
             letterIndex={[]}
+            reviewData={{ dueWords: [], weakWords: [] }}
           />
         </Section>
 

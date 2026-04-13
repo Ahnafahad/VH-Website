@@ -6,8 +6,10 @@ import { useRouter } from 'next/navigation';
 import { ChevronDown, Lock, CheckCircle, Clock, BookOpen, Circle } from 'lucide-react';
 import type { UnitWithThemes, ThemeWithStatus, ThemeStatus } from '@/lib/vocab/study-data';
 import type { LetterSummary } from '@/lib/vocab/letter-data';
+import type { ReviewData } from '@/lib/vocab/review-data';
 import AllWordsReviewedScreen from '@/components/vocab/AllWordsReviewedScreen';
 import LockedUnitOverlay from '@/components/vocab/LockedUnitOverlay';
+import ReviewTab from './ReviewTab';
 
 interface Props {
   data: {
@@ -19,6 +21,7 @@ interface Props {
     totalWords:    number;
   };
   letterIndex: LetterSummary[];
+  reviewData:  ReviewData;
 }
 
 // ─── Letter grid card ─────────────────────────────────────────────────────────
@@ -111,9 +114,21 @@ function LetterCard({ summary }: { summary: LetterSummary }) {
 
 // ─── Tab switcher ─────────────────────────────────────────────────────────────
 
-type StudyTab = 'theme' | 'letter';
+type StudyTab = 'theme' | 'letter' | 'review';
 
-function TabSwitcher({ active, onChange }: { active: StudyTab; onChange: (t: StudyTab) => void }) {
+function TabSwitcher({
+  active, onChange, reviewCount,
+}: {
+  active: StudyTab;
+  onChange: (t: StudyTab) => void;
+  reviewCount: number;
+}) {
+  const tabs: { id: StudyTab; label: string }[] = [
+    { id: 'theme',  label: 'By Theme' },
+    { id: 'letter', label: 'By Letter' },
+    { id: 'review', label: 'Review' },
+  ];
+
   return (
     <div style={{
       display: 'flex',
@@ -122,21 +137,38 @@ function TabSwitcher({ active, onChange }: { active: StudyTab; onChange: (t: Stu
       marginBottom: '1rem',
       position: 'relative',
     }}>
-      {(['theme', 'letter'] as StudyTab[]).map(tab => (
+      {tabs.map(({ id, label }) => (
         <button
-          key={tab}
-          onClick={() => onChange(tab)}
+          key={id}
+          onClick={() => onChange(id)}
           style={{
             padding: '0.5rem 1.25rem',
             background: 'none', border: 'none', cursor: 'pointer',
             fontFamily: "'Sora', sans-serif",
             fontSize: '0.8125rem', fontWeight: 600,
-            color: active === tab ? 'var(--color-lx-text-primary)' : 'var(--color-lx-text-muted)',
+            color: active === id ? 'var(--color-lx-text-primary)' : 'var(--color-lx-text-muted)',
             position: 'relative',
+            display: 'flex', alignItems: 'center', gap: '0.35rem',
           }}
         >
-          {tab === 'theme' ? 'By Theme' : 'By Letter'}
-          {active === tab && (
+          {label}
+          {/* Count badge on Review tab */}
+          {id === 'review' && reviewCount > 0 && (
+            <span style={{
+              fontFamily: "'Sora', sans-serif",
+              fontSize: '0.55rem', fontWeight: 700,
+              background: 'var(--color-lx-accent-red)',
+              color: '#fff',
+              padding: '0.1rem 0.35rem',
+              borderRadius: 99,
+              lineHeight: 1.6,
+              minWidth: 16,
+              textAlign: 'center',
+            }}>
+              {reviewCount}
+            </span>
+          )}
+          {active === id && (
             <motion.div
               layoutId="study-tab-indicator"
               transition={{ type: 'spring', stiffness: 400, damping: 30 }}
@@ -153,11 +185,13 @@ function TabSwitcher({ active, onChange }: { active: StudyTab; onChange: (t: Stu
   );
 }
 
-export default function StudyScreen({ data, letterIndex }: Props) {
+export default function StudyScreen({ data, letterIndex, reviewData }: Props) {
   const [openUnitId, setOpenUnitId] = useState<number | null>(
     data.units[0]?.id ?? null,
   );
   const [activeTab, setActiveTab] = useState<StudyTab>('theme');
+
+  const reviewCount = reviewData.dueWords.length + reviewData.weakWords.length;
 
   // Check if all unlocked themes across all units are complete
   const allUnlockedThemes = data.units.flatMap(u => u.themes).filter(t => !t.locked);
@@ -200,11 +234,22 @@ export default function StudyScreen({ data, letterIndex }: Props) {
 
       {/* Tab switcher */}
       <div className="md:max-w-2xl md:w-full md:mx-auto">
-        <TabSwitcher active={activeTab} onChange={setActiveTab} />
+        <TabSwitcher active={activeTab} onChange={setActiveTab} reviewCount={reviewCount} />
       </div>
 
       <AnimatePresence mode="wait">
-        {activeTab === 'theme' ? (
+        {activeTab === 'review' ? (
+          <motion.div
+            key="review-tab"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.18 }}
+            className="md:max-w-2xl md:w-full md:mx-auto"
+          >
+            <ReviewTab reviewData={reviewData} />
+          </motion.div>
+        ) : activeTab === 'theme' ? (
           <motion.div
             key="theme-tab"
             initial={{ opacity: 0 }}

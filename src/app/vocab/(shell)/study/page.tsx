@@ -3,6 +3,7 @@ import { redirect }         from 'next/navigation';
 import { authOptions }      from '@/lib/auth';
 import { getStudyData }     from '@/lib/vocab/study-data';
 import { getLetterIndex }   from '@/lib/vocab/letter-data';
+import { getReviewData }    from '@/lib/vocab/review-data';
 import { db, users }        from '@/lib/db';
 import { eq }               from 'drizzle-orm';
 import StudyScreen          from './StudyScreen';
@@ -16,7 +17,7 @@ export default async function StudyPage() {
   const t1 = performance.now();
   if (!data) redirect('/vocab/onboarding');
 
-  // Fetch userId for letter index
+  // Fetch userId for letter index + review data
   const [user] = await db
     .select({ id: users.id })
     .from(users)
@@ -24,15 +25,18 @@ export default async function StudyPage() {
     .limit(1);
   const t2 = performance.now();
 
-  const letterIndex = user ? await getLetterIndex(user.id) : [];
+  const [letterIndex, reviewData] = await Promise.all([
+    user ? getLetterIndex(user.id)  : Promise.resolve([]),
+    user ? getReviewData(user.id)   : Promise.resolve({ dueWords: [], weakWords: [] }),
+  ]);
   const t3 = performance.now();
 
   console.log(
     `[DIAG study] studyData=${(t1 - t0).toFixed(0)}ms` +
     ` userLookup=${(t2 - t1).toFixed(0)}ms` +
-    ` letterIndex=${(t3 - t2).toFixed(0)}ms` +
+    ` letterIndex+review=${(t3 - t2).toFixed(0)}ms` +
     ` total=${(t3 - t0).toFixed(0)}ms`
   );
 
-  return <StudyScreen data={data} letterIndex={letterIndex} />;
+  return <StudyScreen data={data} letterIndex={letterIndex} reviewData={reviewData} />;
 }
