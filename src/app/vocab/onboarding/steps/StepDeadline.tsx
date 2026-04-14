@@ -3,11 +3,11 @@
 import { useState, useCallback } from 'react';
 import { motion } from 'framer-motion';
 
-const TOTAL_WORDS = 800;
+const TOTAL_WORDS = 100;
 
 function defaultDeadline(): Date {
   const d = new Date();
-  d.setMonth(d.getMonth() + 3);
+  d.setMonth(d.getMonth() + 1);
   return d;
 }
 
@@ -43,10 +43,10 @@ export default function StepDeadline({ onNext }: Props) {
     <div className="flex flex-col gap-8">
       <div className="flex flex-col gap-2">
         <h2 className="text-xl font-bold" style={{ color: 'var(--color-lx-text-primary)' }}>
-          When do you want to be done?
+          When do you want to finish your first 100 words?
         </h2>
         <p className="text-sm" style={{ color: 'var(--color-lx-text-secondary)' }}>
-          We'll build a daily study plan around your target date.
+          We&apos;ll build a daily study plan around your target date for these 100 words.
         </p>
       </div>
 
@@ -89,7 +89,7 @@ export default function StepDeadline({ onNext }: Props) {
           words to review per day
         </p>
         <p className="mt-2 text-xs" style={{ color: 'var(--color-lx-text-muted)' }}>
-          800 words total · first 100 are free
+          100 words in your free plan · upgrade anytime for 800+
         </p>
       </motion.div>
 

@@ -239,6 +239,8 @@ textarea::placeholder {
   .lx-card-shadow  { box-shadow: 0 4px 24px rgba(0, 0, 0, 0.5); }
   .preserve-3d    { transform-style: preserve-3d; }
   .backface-hidden { backface-visibility: hidden; }
+  .hide-scrollbar { scrollbar-width: none; -ms-overflow-style: none; }
+  .hide-scrollbar::-webkit-scrollbar { display: none; }
 }
 
 /* Page transition — opacity-only so the animation never creates a CSS

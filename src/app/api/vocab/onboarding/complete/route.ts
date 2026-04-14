@@ -43,9 +43,9 @@ export async function POST(req: Request) {
     ? Math.max(1, Math.ceil((deadline.getTime() - Date.now()) / 86400000))
     : 30; // sensible default when no deadline provided
   // wordsPerDay, if provided by the client, caps/floors the server-computed target
-  const computedTarget = Math.ceil(800 / daysUntil);
+  const computedTarget = Math.ceil(100 / daysUntil);
   const dailyTarget    = parsed.data.wordsPerDay
-    ? Math.max(1, Math.min(parsed.data.wordsPerDay, 800))
+    ? Math.max(1, Math.min(parsed.data.wordsPerDay, 100))
     : computedTarget;
 
   // Determine phase based on cut-off date setting

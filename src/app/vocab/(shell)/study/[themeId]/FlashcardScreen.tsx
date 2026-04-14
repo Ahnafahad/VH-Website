@@ -243,7 +243,10 @@ function FlipCard({ word, isFlipped, onFlip }: { word: FlashcardWord; isFlipped:
             padding: '1.5rem',
             minHeight: 300,
             overflowY: 'auto',
+            scrollbarWidth: 'none',
+            msOverflowStyle: 'none',
           }}
+          className="hide-scrollbar"
         >
           {/* Word again (small) */}
           <div className="flex items-center justify-between">

@@ -108,7 +108,7 @@ export default function StepWelcome({ userName, onNext }: Props) {
             maxWidth:   '22rem',
           }}
         >
-          Master 800+ words through adaptive flashcards, AI-powered quizzes, and daily streaks — built for IBA, BUP&nbsp;&amp; DU admissions.
+          Master your first 100 words through adaptive flashcards, AI-powered quizzes, and daily streaks — built for IBA, BUP&nbsp;&amp; DU admissions.
         </p>
         <p
           className="text-xs"
@@ -118,7 +118,7 @@ export default function StepWelcome({ userName, onNext }: Props) {
             maxWidth:   '22rem',
           }}
         >
-          100 words, completely free — upgrade anytime to unlock all 800.
+          Start with 100 words, completely free — upgrade anytime for the full 800+ library.
         </p>
       </motion.div>
 
