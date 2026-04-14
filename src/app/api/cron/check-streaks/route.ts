@@ -30,8 +30,12 @@ function getYesterdayStartUTC(): Date {
 
 export async function GET(req: NextRequest) {
   // Validate cron secret
+  if (!CRON_SECRET) {
+    console.error('[check-streaks] CRON_SECRET is not configured');
+    return NextResponse.json({ error: 'Server misconfiguration' }, { status: 500 });
+  }
   const authHeader = req.headers.get('authorization');
-  if (CRON_SECRET && authHeader !== `Bearer ${CRON_SECRET}`) {
+  if (authHeader !== `Bearer ${CRON_SECRET}`) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
 

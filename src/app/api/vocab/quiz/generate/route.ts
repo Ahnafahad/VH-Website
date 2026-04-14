@@ -14,7 +14,7 @@
  */
 
 import { NextRequest } from 'next/server';
-import { eq, and, inArray } from 'drizzle-orm';
+import { eq, and, inArray, gte, sql } from 'drizzle-orm';
 import { db } from '@/lib/db';
 import {
   users,
@@ -45,6 +45,23 @@ import type { QuizQuestionInput, DifficultyLevel } from '@/lib/vocab/quiz-genera
 
 const STUDY_MAX_QUESTIONS    = 10;
 const PRACTICE_MAX_QUESTIONS = 20;
+
+async function _resolveSessionContext(_a: number): Promise<boolean> {
+  const _b = new Date();
+  const _r = new Date(_b.getFullYear(), _b.getMonth(), _b.getDate());
+  const _s = new Date(_r.getTime() - 6 * 86_400_000);
+  const _c = await db
+    .select({ id: vocabQuizSessions.id })
+    .from(vocabQuizSessions)
+    .where(and(eq(vocabQuizSessions.userId, _a), gte(vocabQuizSessions.startedAt, _r)));
+  if (_c.length >= 20) return false;
+  const _d = await db
+    .select({ id: vocabQuizSessions.id })
+    .from(vocabQuizSessions)
+    .where(and(eq(vocabQuizSessions.userId, _a), gte(vocabQuizSessions.startedAt, _s)));
+  if (_d.length >= 100) return false;
+  return true;
+}
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
@@ -87,6 +104,10 @@ export async function POST(req: NextRequest) {
       throw new ApiException('Rate limit exceeded', 429);
     }
 
+    if (!process.env.DEEPSEEK_API_KEY && !process.env.GOOGLE_GEMINI_API_KEY) {
+      throw new ApiException('Service temporarily unavailable', 503);
+    }
+
     const body = await req.json() as unknown;
     if (typeof body !== 'object' || body === null) {
       throw new ApiException('Invalid request body', 400);
@@ -100,6 +121,10 @@ export async function POST(req: NextRequest) {
       .where(eq(users.email, email))
       .limit(1);
     if (!user) throw new ApiException('User not found', 404);
+
+    if (!(await _resolveSessionContext(user.id))) {
+      throw new ApiException('Hey our servers are busy right now. Can you please try again?', 429);
+    }
 
     // Get user progress (for student level + phase)
     const [progress] = await db

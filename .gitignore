@@ -33,12 +33,27 @@ yarn-error.log*
 # Environment files - NEVER commit these!
 # Contains sensitive API keys and secrets
 .env
+.env.*
+*.env
 .env*.local
 .env.local
 .env.development.local
 .env.test.local
 .env.production.local
 .env.vercel-production
+!.env.example
+
+# Database files
+*.db
+*.db-journal
+*.sqlite
+*.sqlite3
+
+# IDE settings
+.idea/
+.vscode/
+*.swp
+*.swo
 
 # vercel
 .vercel
