@@ -7,7 +7,7 @@ export const users = sqliteTable('users', {
   id:        integer('id').primaryKey({ autoIncrement: true }),
   email:     text('email').notNull().unique(),
   name:      text('name').notNull(),
-  // 'super_admin' | 'admin' | 'student'
+  // 'super_admin' | 'admin' | 'instructor' | 'student'
   role:      text('role').notNull().default('student'),
   // 'active' | 'inactive' | 'pending'
   status:    text('status').notNull().default('active'),
@@ -139,7 +139,7 @@ export type UserAccess   = typeof userAccess.$inferSelect;
 export type Registration = typeof registrations.$inferSelect;
 
 export type UserProduct = 'iba' | 'fbs' | 'fbs_detailed';
-export type UserRole    = 'super_admin' | 'admin' | 'student';
+export type UserRole    = 'super_admin' | 'admin' | 'instructor' | 'student';
 export type UserStatus  = 'active' | 'inactive' | 'pending';
 
 export interface UserWithProducts extends User {

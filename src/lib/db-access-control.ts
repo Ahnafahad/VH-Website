@@ -68,7 +68,7 @@ export async function isEmailAuthorized(email: string): Promise<boolean> {
 
 export async function isAdminEmail(email: string): Promise<boolean> {
   const user = await getCachedUser(email.toLowerCase());
-  return user?.role === 'admin' || user?.role === 'super_admin';
+  return user?.role === 'admin' || user?.role === 'super_admin' || user?.role === 'instructor';
 }
 
 export async function isSuperAdminEmail(email: string): Promise<boolean> {
@@ -94,7 +94,7 @@ export async function getUserById(id: number): Promise<UserWithProducts | null> 
 
 /** Derive legacy accessTypes + mockAccess from the products array */
 export function computeAccessFromProducts(user: UserWithProducts) {
-  const isAdmin = user.role === 'admin' || user.role === 'super_admin';
+  const isAdmin = user.role === 'admin' || user.role === 'super_admin' || user.role === 'instructor';
   const p = user.products;
   return {
     accessTypes: {
@@ -114,7 +114,7 @@ export function computeAccessFromProducts(user: UserWithProducts) {
 export async function hasProduct(email: string, product: UserProduct): Promise<boolean> {
   const user = await getCachedUser(email.toLowerCase());
   if (!user) return false;
-  if (user.role === 'admin' || user.role === 'super_admin') return true;
+  if (user.role === 'admin' || user.role === 'super_admin' || user.role === 'instructor') return true;
   return user.products.includes(product);
 }
 

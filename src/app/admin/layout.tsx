@@ -17,7 +17,7 @@ export default async function AdminLayout({
   }
 
   const role = session.user.role;
-  if (role !== 'admin' && role !== 'super_admin') {
+  if (role !== 'admin' && role !== 'super_admin' && role !== 'instructor') {
     redirect('/vocab');
   }
 

@@ -34,7 +34,7 @@ export const authOptions: NextAuthOptions = {
         const userInfo = await getUserByEmail(session.user.email)
         if (userInfo) {
           const access = computeAccessFromProducts(userInfo)
-          session.user.role        = userInfo.role as 'super_admin' | 'admin' | 'student'
+          session.user.role        = userInfo.role as 'super_admin' | 'admin' | 'instructor' | 'student'
           session.user.isAdmin     = await isAdminEmail(session.user.email)
           session.user.permissions = ['read']
           session.user.studentId   = userInfo.studentId ?? undefined
@@ -52,7 +52,7 @@ export const authOptions: NextAuthOptions = {
         const userInfo = await getUserByEmail(user.email)
         if (userInfo) {
           const access    = computeAccessFromProducts(userInfo)
-          token.role        = userInfo.role as 'super_admin' | 'admin' | 'student'
+          token.role        = userInfo.role as 'super_admin' | 'admin' | 'instructor' | 'student'
           token.isAdmin     = await isAdminEmail(user.email)
           token.permissions = ['read']
           token.studentId   = userInfo.studentId ?? undefined
