@@ -3,7 +3,8 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useRouter } from 'next/navigation';
-import { ChevronLeft, ChevronDown } from 'lucide-react';
+import { ChevronLeft, ChevronDown, GraduationCap } from 'lucide-react';
+import DemoModal from './DemoModal';
 
 // ─── Section data ─────────────────────────────────────────────────────────────
 
@@ -193,6 +194,7 @@ function Section({ title, content, index }: { title: string; content: string; in
 
 export default function HelpScreen() {
   const router = useRouter();
+  const [tourOpen, setTourOpen] = useState(false);
 
   return (
     <div className="px-5 pt-10 pb-16 md:px-8 md:pt-12 md:max-w-2xl md:mx-auto md:w-full">
@@ -270,6 +272,70 @@ export default function HelpScreen() {
         transition={{ delay: 0.12, duration: 0.45, ease: [0.25, 0, 0, 1] }}
         style={{ height: 1, background: 'var(--color-lx-border)', marginBottom: '0.5rem' }}
       />
+
+      {/* Tour hero */}
+      <motion.div
+        initial={{ opacity: 0, y: 8 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.15, duration: 0.4 }}
+        className="mb-6 flex items-center gap-4 rounded-2xl p-5"
+        style={{
+          background: 'linear-gradient(145deg, rgba(230,57,70,0.06) 0%, var(--color-lx-surface) 100%)',
+          border: '1px solid var(--color-lx-border)',
+        }}
+      >
+        <div
+          className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full"
+          style={{
+            background: 'rgba(230,57,70,0.12)',
+            color: 'var(--color-lx-accent-red)',
+          }}
+        >
+          <GraduationCap size={20} />
+        </div>
+        <div className="flex flex-1 flex-col gap-1">
+          <span
+            style={{
+              fontFamily: "'Cormorant Garamond', Georgia, serif",
+              fontSize: '1.05rem',
+              fontWeight: 600,
+              fontStyle: 'italic',
+              color: 'var(--color-lx-text-primary)',
+            }}
+          >
+            Want a guided tour?
+          </span>
+          <span
+            style={{
+              fontFamily: "'Sora', sans-serif",
+              fontSize: '0.68rem',
+              color: 'var(--color-lx-text-muted)',
+            }}
+          >
+            Revisit the app walkthrough
+          </span>
+        </div>
+        <motion.button
+          whileTap={{ scale: 0.95 }}
+          onClick={() => setTourOpen(true)}
+          className="flex-shrink-0 rounded-lg px-4 py-2"
+          style={{
+            background: 'linear-gradient(135deg, var(--color-lx-accent-red) 0%, #c42d39 100%)',
+            fontFamily: "'Sora', sans-serif",
+            fontSize: '0.72rem',
+            fontWeight: 600,
+            color: '#fff',
+            border: 'none',
+            cursor: 'pointer',
+            boxShadow: '0 2px 12px rgba(230,57,70,0.3)',
+          }}
+        >
+          Take the Tour
+        </motion.button>
+      </motion.div>
+
+      {/* Demo modal */}
+      <DemoModal open={tourOpen} onClose={() => setTourOpen(false)} />
 
       {/* Accordion */}
       <div>

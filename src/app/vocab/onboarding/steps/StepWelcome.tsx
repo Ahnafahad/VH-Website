@@ -146,7 +146,7 @@ export default function StepWelcome({ userName, onNext }: Props) {
             fontFamily: "'Sora', sans-serif",
           }}
         >
-          Let's Begin
+          Let&apos;s show you around
         </motion.button>
       </motion.div>
 

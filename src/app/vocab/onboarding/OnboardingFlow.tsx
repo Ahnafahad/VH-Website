@@ -5,21 +5,30 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 import StepWelcome from './steps/StepWelcome';
 import StepDeadline from './steps/StepDeadline';
-import StepTutorial from './steps/StepTutorial';
+import StepReady from './steps/StepReady';
+import DemoSlides from './demo/DemoSlides';
 
 interface Props {
   userId: number;
   userName: string;
 }
 
+/**
+ * 11-slide onboarding flow:
+ * 0 = Welcome
+ * 1 = Deadline picker
+ * 2 = Demo slides (8 interactive feature slides handled internally)
+ * 3 = Ready! (save + redirect)
+ */
 export default function OnboardingFlow({ userId, userName }: Props) {
-  const [step, setStep]       = useState(0);
+  const [step, setStep]         = useState(0);
   const [deadline, setDeadline] = useState<Date | null>(null);
-  const [saving, setSaving]   = useState(false);
-  const router                = useRouter();
+  const [saving, setSaving]     = useState(false);
+  const router                  = useRouter();
 
-  async function finish(chosenDeadline: Date) {
+  async function finish() {
     setSaving(true);
+    const chosenDeadline = deadline ?? defaultDeadline();
     await fetch('/api/vocab/onboarding/complete', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -33,17 +42,6 @@ export default function OnboardingFlow({ userId, userName }: Props) {
       className="relative flex min-h-dvh flex-col items-center justify-center overflow-hidden px-5"
       style={{ background: 'var(--color-lx-base)' }}
     >
-      {/* Skip button — always visible on step 2 */}
-      {step === 2 && (
-        <button
-          onClick={() => finish(deadline ?? defaultDeadline())}
-          className="absolute right-5 top-5 text-sm"
-          style={{ color: 'var(--color-lx-text-secondary)' }}
-        >
-          Skip
-        </button>
-      )}
-
       <AnimatePresence mode="wait">
         {step === 0 && (
           <motion.div
@@ -75,37 +73,46 @@ export default function OnboardingFlow({ userId, userName }: Props) {
 
         {step === 2 && (
           <motion.div
-            key="tutorial"
+            key="demo"
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -30 }}
             transition={{ duration: 0.3 }}
             className="w-full max-w-sm"
           >
-            <StepTutorial
-              saving={saving}
-              onFinish={() => finish(deadline ?? defaultDeadline())}
+            <DemoSlides
+              mode="onboarding"
+              onComplete={() => setStep(3)}
             />
+          </motion.div>
+        )}
+
+        {step === 3 && (
+          <motion.div
+            key="ready"
+            initial={{ opacity: 0, x: 30 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -30 }}
+            transition={{ duration: 0.3 }}
+            className="w-full max-w-sm"
+          >
+            <StepReady saving={saving} onFinish={finish} />
           </motion.div>
         )}
       </AnimatePresence>
 
-      {/* Step dots */}
-      <div className="absolute bottom-10 flex gap-2">
-        {[0, 1, 2].map(i => (
-          <motion.div
-            key={i}
-            animate={{ scale: step === i ? 1.3 : 1 }}
-            transition={{ duration: 0.15 }}
-            className="h-2 w-2 rounded-full"
-            style={{
-              background: step === i
-                ? 'var(--color-lx-accent-red)'
-                : 'var(--color-lx-text-muted)',
-            }}
-          />
-        ))}
-      </div>
+      {/* Grain overlay */}
+      <svg
+        aria-hidden
+        className="pointer-events-none absolute inset-0 h-full w-full"
+        style={{ opacity: 0.015 }}
+      >
+        <filter id="grain-onboarding">
+          <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch" />
+          <feColorMatrix type="saturate" values="0" />
+        </filter>
+        <rect width="100%" height="100%" filter="url(#grain-onboarding)" />
+      </svg>
     </div>
   );
 }

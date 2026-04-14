@@ -7,7 +7,7 @@
 
 import { useState } from 'react';
 import StepWelcome      from '@/app/vocab/onboarding/steps/StepWelcome';
-import StepTutorial     from '@/app/vocab/onboarding/steps/StepTutorial';
+import DemoSlides       from '@/app/vocab/onboarding/demo/DemoSlides';
 import ProgressRing     from '@/components/vocab/ProgressRing';
 import StudyScreen      from '@/app/vocab/(shell)/study/StudyScreen';
 import LeaderboardScreen from '@/app/vocab/(shell)/leaderboard/LeaderboardScreen';
@@ -139,16 +139,17 @@ export default function UIPreviewPage() {
           </div>
         </Section>
 
-        {/* 2 — StepTutorial */}
-        <Section label="Onboarding — Tutorial">
-          <div className="p-6">
-            <StepTutorial
-              saving={false}
-              onFinish={() => setTutorialDone(d => !d)}
+        {/* 2 — Demo Slides (onboarding walkthrough) */}
+        <Section label="Onboarding — Demo Slides">
+          <div className="p-4">
+            <DemoSlides
+              mode="replay"
+              onComplete={() => setTutorialDone(d => !d)}
+              onClose={() => {}}
             />
             {tutorialDone && (
               <p className="mt-3 text-center text-xs" style={{ color: 'var(--color-lx-success)' }}>
-                onFinish() fired — would navigate to app
+                onComplete() fired — would navigate to app
               </p>
             )}
           </div>
