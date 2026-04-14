@@ -50,37 +50,75 @@ export default function DesktopSidebar() {
       {/* Wordmark */}
       <div
         style={{
-          padding:      '28px 20px 24px',
+          padding:      '24px 20px 22px',
           borderBottom: '1px solid var(--color-lx-border)',
+          display:      'flex',
+          alignItems:   'center',
+          gap:          '0.625rem',
         }}
       >
-        <span
-          className="lx-word"
-          style={{
-            fontFamily: "'Cormorant Garamond', Georgia, serif",
-            fontSize:   '1.6rem',
-            fontWeight: 700,
-            fontStyle:  'italic',
-            color:      'var(--color-lx-text-primary)',
-            letterSpacing: '-0.01em',
-          }}
-        >
-          LexiCore
-        </span>
-        <span
-          style={{
-            display:    'block',
-            fontFamily: "'Sora', sans-serif",
-            fontSize:   '0.65rem',
-            fontWeight: 500,
-            color:      'var(--color-lx-text-muted)',
-            letterSpacing: '0.14em',
-            textTransform: 'uppercase',
-            marginTop:  2,
-          }}
-        >
-          Vocabulary Engine
-        </span>
+        {/* Logo mark — transparent PNG on dark, crimson glow */}
+        <div style={{
+          position: 'relative',
+          width: 38, height: 38,
+          flexShrink: 0,
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+        }}>
+          {/* Radial glow halo */}
+          <div style={{
+            position: 'absolute',
+            inset: '-6px',
+            borderRadius: '50%',
+            background: 'radial-gradient(circle, rgba(230,57,70,0.28) 0%, transparent 68%)',
+            pointerEvents: 'none',
+          }} />
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/lexicore-logo.png"
+            alt="LexiCore"
+            style={{
+              width: 36, height: 36,
+              objectFit: 'contain',
+              position: 'relative',
+              zIndex: 1,
+              filter: 'drop-shadow(0 1px 6px rgba(230,57,70,0.35))',
+            }}
+          />
+        </div>
+
+        {/* Text stack */}
+        <div>
+          <span
+            className="lx-word"
+            style={{
+              fontFamily:    "'Cormorant Garamond', Georgia, serif",
+              fontSize:      '1.5rem',
+              fontWeight:    700,
+              fontStyle:     'italic',
+              color:         'var(--color-lx-text-primary)',
+              letterSpacing: '-0.01em',
+              display:       'block',
+              lineHeight:    1.1,
+            }}
+          >
+            LexiCore
+          </span>
+          <span
+            style={{
+              display:       'block',
+              fontFamily:    "'Sora', sans-serif",
+              fontSize:      '0.6rem',
+              fontWeight:    500,
+              color:         'var(--color-lx-text-muted)',
+              letterSpacing: '0.08em',
+              textTransform: 'uppercase',
+              marginTop:     3,
+              whiteSpace:    'nowrap',
+            }}
+          >
+            Vocabulary Engine
+          </span>
+        </div>
       </div>
 
       {/* Nav items */}

@@ -52,40 +52,20 @@ export default function StepWelcome({ userName, onNext }: Props) {
           transition={{ duration: 3.2, repeat: Infinity, ease: 'easeInOut' }}
         />
 
-        {/* Icon container */}
-        <div
-          className="relative flex h-24 w-24 items-center justify-center rounded-3xl"
-          style={{
-            background: 'linear-gradient(135deg, rgba(230,57,70,0.18) 0%, rgba(230,57,70,0.04) 100%)',
-            border:     '1px solid rgba(230,57,70,0.35)',
-          }}
-        >
-          <svg width="54" height="54" viewBox="0 0 54 54" fill="none" aria-label="LexiCore logo">
-            {/* L stroke */}
-            <motion.path
-              d="M10 9 L10 45 L31 45"
-              stroke="var(--color-lx-accent-red)"
-              strokeWidth="3.8"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              fill="none"
-              initial={{ pathLength: 0, opacity: 0 }}
-              animate={{ pathLength: 1, opacity: 1 }}
-              transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1], delay: 0.35 }}
-            />
-            {/* x stroke */}
-            <motion.path
-              d="M33 25 L47 45 M47 25 L33 45"
-              stroke="var(--color-lx-accent-gold)"
-              strokeWidth="3.8"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              fill="none"
-              initial={{ pathLength: 0, opacity: 0 }}
-              animate={{ pathLength: 1, opacity: 1 }}
-              transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1], delay: 0.85 }}
-            />
-          </svg>
+        {/* Logo mark — transparent on dark with animated glow */}
+        <div className="relative flex h-24 w-24 items-center justify-center">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/lexicore-logo.png"
+            alt="LexiCore"
+            style={{
+              width: 80, height: 80,
+              objectFit: 'contain',
+              position: 'relative',
+              zIndex: 1,
+              filter: 'drop-shadow(0 2px 16px rgba(230,57,70,0.55)) drop-shadow(0 0 32px rgba(230,57,70,0.25))',
+            }}
+          />
         </div>
 
         {/* Brand wordmark */}
