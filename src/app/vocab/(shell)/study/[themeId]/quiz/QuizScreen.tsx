@@ -404,6 +404,7 @@ function OptionCard({ opt, phase, selectedId, result, index, onSelect }: OptionC
         lineHeight: 1.25,
         flex: 1,
         transition: 'color 0.22s',
+        textTransform: 'capitalize',
       }}>
         {opt.word}
       </span>
