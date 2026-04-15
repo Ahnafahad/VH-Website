@@ -177,7 +177,7 @@ function FlipCard({ word, isFlipped, onFlip }: { word: FlashcardWord; isFlipped:
       <motion.div
         animate={{ rotateY: isFlipped ? 180 : 0 }}
         transition={{ duration: 0.65, ease: [0.4, 0, 0.2, 1] }}
-        style={{ transformStyle: 'preserve-3d', position: 'relative', width: '100%', height: '100%' }}
+        style={{ transformStyle: 'preserve-3d', position: 'absolute', inset: 0 }}
       >
         {/* ── FRONT ─────────────────────────────────── */}
         <div
@@ -418,8 +418,9 @@ export default function FlashcardScreen({ data }: { data: FlashcardSessionData }
     <div
       className="flex flex-col px-4 pt-3 gap-2 md:px-8 md:pt-5 md:max-w-2xl md:mx-auto md:w-full"
       style={{
-        minHeight: 'calc(100dvh - 72px)',
+        height: 'calc(100dvh - 72px)',
         paddingBottom: flipped ? 'calc(80px + 72px + env(safe-area-inset-bottom))' : '1rem',
+        overflow: 'hidden',
       }}
     >
 
