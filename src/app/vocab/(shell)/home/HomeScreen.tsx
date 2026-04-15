@@ -457,7 +457,7 @@ function DailyMessage() {
         borderLeft: '2px solid rgba(244,168,40,0.15)',
       }}>
         <div style={{
-          width: 28, height: 28, borderRadius: '50%',
+          width: 48, height: 48, borderRadius: '50%',
           background: 'rgba(230,57,70,0.08)', flexShrink: 0,
         }} />
         <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 6, paddingTop: 2 }}>
@@ -504,11 +504,11 @@ function DailyMessage() {
             src="/lexicore-logo.png"
             alt="LexiCore"
             style={{
-              width:     28,
-              height:    28,
+              width:     48,
+              height:    48,
               objectFit: 'contain',
               flexShrink: 0,
-              filter:    'drop-shadow(0 1px 6px rgba(230,57,70,0.35))',
+              filter:    'drop-shadow(0 2px 10px rgba(230,57,70,0.4))',
             }}
           />
 
