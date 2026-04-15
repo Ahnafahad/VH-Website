@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { GalleryVerticalEnd } from 'lucide-react';
 import DemoSlideLayout from '../DemoSlideLayout';
 import PulseRing from '../PulseRing';
+import DemoInstruction from '../DemoInstruction';
 
 const RATINGS = [
   { label: 'Got It',    color: 'var(--color-lx-success)', points: '+10' },
@@ -39,6 +40,13 @@ export default function SlideFlashcards({ onNext, stepLabel }: Props) {
       stepLabel={stepLabel}
     >
       <div className="flex w-full flex-col items-center gap-3">
+        {/* Top instruction bar */}
+        <DemoInstruction
+          activeText={!flipped ? 'Tap the card to see the meaning' : 'Rate how well you knew this word'}
+          doneText="Honest self-rating is the key to long-term retention"
+          done={unlocked}
+        />
+
         {/* Flashcard */}
         <AnimatePresence mode="wait">
           {!dismissed ? (
@@ -214,22 +222,6 @@ export default function SlideFlashcards({ onNext, stepLabel }: Props) {
             ))}
           </motion.div>
         )}
-
-        <p
-          style={{
-            fontFamily: "'Sora', sans-serif",
-            fontSize: '0.72rem',
-            fontWeight: 500,
-            color: 'var(--color-lx-text-secondary)',
-            textAlign: 'center',
-          }}
-        >
-          {!flipped
-            ? 'Tap the card to see the meaning'
-            : rated === null
-              ? 'Rate how well you knew this word'
-              : 'Honest self-rating is the key to long-term retention'}
-        </p>
       </div>
     </DemoSlideLayout>
   );

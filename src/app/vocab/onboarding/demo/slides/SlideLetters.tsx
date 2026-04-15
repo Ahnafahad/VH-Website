@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { CaseSensitive } from 'lucide-react';
 import DemoSlideLayout from '../DemoSlideLayout';
 import PulseRing from '../PulseRing';
+import DemoInstruction from '../DemoInstruction';
 
 const LETTERS = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'M'];
 const SAMPLE_WORDS = [
@@ -34,6 +35,13 @@ export default function SlideLetters({ onNext, stepLabel }: Props) {
       stepLabel={stepLabel}
     >
       <div className="flex w-full flex-col items-center gap-3">
+        {/* Top instruction bar */}
+        <DemoInstruction
+          activeText="Tap the highlighted letter M"
+          doneText="Quick lookup — perfect for last-minute review"
+          done={unlocked}
+        />
+
         <AnimatePresence mode="wait">
           {!selectedLetter ? (
             <motion.div
@@ -153,18 +161,6 @@ export default function SlideLetters({ onNext, stepLabel }: Props) {
             </motion.div>
           )}
         </AnimatePresence>
-
-        <p
-          style={{
-            fontFamily: "'Sora', sans-serif",
-            fontSize: '0.72rem',
-            fontWeight: 500,
-            color: 'var(--color-lx-text-secondary)',
-            textAlign: 'center',
-          }}
-        >
-          {unlocked ? 'Quick lookup — perfect for last-minute review' : 'Tap the highlighted letter M'}
-        </p>
       </div>
     </DemoSlideLayout>
   );

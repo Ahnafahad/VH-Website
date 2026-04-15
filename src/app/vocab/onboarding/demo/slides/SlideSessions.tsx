@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Signpost } from 'lucide-react';
 import DemoSlideLayout from '../DemoSlideLayout';
 import PulseRing from '../PulseRing';
+import DemoInstruction from '../DemoInstruction';
 
 const SESSIONS = [
   {
@@ -47,6 +48,13 @@ export default function SlideSessions({ onNext, stepLabel }: Props) {
       stepLabel={stepLabel}
     >
       <div className="flex w-full flex-col gap-2">
+        {/* Top instruction bar */}
+        <DemoInstruction
+          activeText="Tap any session card"
+          doneText="Your study path is always ready"
+          done={unlocked}
+        />
+
         {SESSIONS.map((s) => (
           <div key={s.id} className="relative">
             <PulseRing active={tapped === null} shape="0.75rem" />
@@ -120,19 +128,6 @@ export default function SlideSessions({ onNext, stepLabel }: Props) {
             </motion.button>
           </div>
         ))}
-
-        <p
-          style={{
-            fontFamily: "'Sora', sans-serif",
-            fontSize: '0.72rem',
-            fontWeight: 500,
-            color: 'var(--color-lx-text-secondary)',
-            textAlign: 'center',
-            marginTop: 8,
-          }}
-        >
-          {unlocked ? 'Your study path is always ready' : 'Tap any session card to see what it does'}
-        </p>
       </div>
     </DemoSlideLayout>
   );

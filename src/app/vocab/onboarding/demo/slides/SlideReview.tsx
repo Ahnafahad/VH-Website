@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import { BrainCircuit } from 'lucide-react';
 import DemoSlideLayout from '../DemoSlideLayout';
 import PulseRing from '../PulseRing';
+import DemoInstruction from '../DemoInstruction';
 
 const DUE_WORDS = [
   { word: 'pragmatic',   tag: '2d overdue' },
@@ -40,7 +41,15 @@ export default function SlideReview({ onNext, stepLabel }: Props) {
       onCta={onNext}
       stepLabel={stepLabel}
     >
-      <div className="flex w-full gap-3">
+      {/* Top instruction bar */}
+      <DemoInstruction
+        activeText="Tap both highlighted sections"
+        doneText="Your safety net — no word gets left behind"
+        done={unlocked}
+        progress={`${tappedSections.size} of 2 explored`}
+      />
+
+      <div className="flex w-full gap-3 mt-2">
         {/* Due for Review */}
         <div className="relative flex-1">
           <PulseRing active={!tappedSections.has('due')} shape="0.75rem" />
@@ -208,19 +217,6 @@ export default function SlideReview({ onNext, stepLabel }: Props) {
           </div>
         ))}
       </div>
-
-      <p
-        style={{
-          fontFamily: "'Sora', sans-serif",
-          fontSize: '0.72rem',
-          fontWeight: 500,
-          color: 'var(--color-lx-text-secondary)',
-          textAlign: 'center',
-          marginTop: 4,
-        }}
-      >
-        {unlocked ? 'Your safety net — no word gets left behind' : `Tap both highlighted sections (${tappedSections.size}/2)`}
-      </p>
     </DemoSlideLayout>
   );
 }

@@ -5,14 +5,13 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { LayoutDashboard } from 'lucide-react';
 import DemoSlideLayout from '../DemoSlideLayout';
 import PulseRing from '../PulseRing';
+import DemoInstruction from '../DemoInstruction';
 
 const ZONES = [
   { id: 'points',  label: 'Your total points',           x: 'left'   as const },
   { id: 'streak',  label: 'Days studied in a row',       x: 'center' as const },
   { id: 'session', label: 'Your next study session',     x: 'right'  as const },
 ] as const;
-
-const spring = { type: 'spring' as const, stiffness: 360, damping: 28 };
 
 interface Props { onNext: () => void; stepLabel: string }
 
@@ -38,6 +37,14 @@ export default function SlideHome({ onNext, stepLabel }: Props) {
     >
       {/* Mini home screen mockup */}
       <div className="flex w-full flex-col gap-3">
+        {/* Top instruction bar */}
+        <DemoInstruction
+          activeText="Tap each highlighted zone"
+          doneText="Your daily HQ — check it every morning"
+          done={allTapped}
+          progress={`${tapped.size} of 3 explored`}
+        />
+
         {/* Stats row */}
         <div className="flex items-center justify-between gap-2">
           {/* Points badge */}
@@ -117,20 +124,6 @@ export default function SlideHome({ onNext, stepLabel }: Props) {
             </div>
           </div>
         </ZoneTap>
-
-        {/* Instruction hint */}
-        <p
-          style={{
-            fontFamily: "'Sora', sans-serif",
-            fontSize: '0.72rem',
-            fontWeight: 500,
-            color: 'var(--color-lx-text-secondary)',
-            textAlign: 'center',
-            marginTop: 2,
-          }}
-        >
-          {allTapped ? 'Your daily HQ — check it every morning' : `Tap each highlighted zone above (${tapped.size}/3)`}
-        </p>
       </div>
     </DemoSlideLayout>
   );

@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Network } from 'lucide-react';
 import DemoSlideLayout from '../DemoSlideLayout';
 import PulseRing from '../PulseRing';
+import DemoInstruction from '../DemoInstruction';
 
 const WORDS = ['hegemony', 'belligerent', 'antagonist'];
 
@@ -29,6 +30,13 @@ export default function SlideThemes({ onNext, stepLabel }: Props) {
       stepLabel={stepLabel}
     >
       <div className="flex w-full flex-col items-center gap-3">
+        {/* Top instruction bar */}
+        <DemoInstruction
+          activeText="Tap the unit card to reveal its words"
+          doneText="Themed learning — the fastest path to exam vocabulary"
+          done={unlocked}
+        />
+
         {/* Unit card */}
         <div className="relative w-full">
           <PulseRing active={!expanded} shape="0.75rem" />
@@ -129,18 +137,6 @@ export default function SlideThemes({ onNext, stepLabel }: Props) {
             </motion.div>
           )}
         </AnimatePresence>
-
-        <p
-          style={{
-            fontFamily: "'Sora', sans-serif",
-            fontSize: '0.72rem',
-            fontWeight: 500,
-            color: 'var(--color-lx-text-secondary)',
-            textAlign: 'center',
-          }}
-        >
-          {expanded ? 'Themed learning — the fastest path to exam vocabulary' : 'Tap the unit card to reveal its words'}
-        </p>
       </div>
     </DemoSlideLayout>
   );

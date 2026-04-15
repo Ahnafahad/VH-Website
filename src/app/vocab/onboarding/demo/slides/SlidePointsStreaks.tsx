@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Sparkles } from 'lucide-react';
 import DemoSlideLayout from '../DemoSlideLayout';
+import DemoInstruction from '../DemoInstruction';
 
 const POINT_STEPS = [
   { label: 'Daily login',  delta: 5,  color: 'var(--color-lx-accent-gold)' },
@@ -47,6 +48,13 @@ export default function SlidePointsStreaks({ onNext, stepLabel }: Props) {
       stepLabel={stepLabel}
     >
       <div className="flex w-full flex-col items-center gap-5">
+        {/* Top instruction bar */}
+        <DemoInstruction
+          activeText="Watch how points and streaks build"
+          doneText="Every action counts toward your goal"
+          done={done}
+        />
+
         {/* Points counter */}
         <div className="flex flex-col items-center gap-2">
           <motion.span

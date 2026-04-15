@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { CircleDashed } from 'lucide-react';
 import DemoSlideLayout from '../DemoSlideLayout';
 import PulseRing from '../PulseRing';
+import DemoInstruction from '../DemoInstruction';
 
 const STEPS = [
   { label: 'Flashcards', color: '#3B82F6' },
@@ -37,6 +38,14 @@ export default function SlideCompletion({ onNext, stepLabel }: Props) {
       stepLabel={stepLabel}
     >
       <div className="flex w-full flex-col items-center gap-4">
+        {/* Top instruction bar */}
+        <DemoInstruction
+          activeText="Tap the next circle to advance"
+          doneText="Theme by theme, you'll cover the entire word bank"
+          done={allDone}
+          progress={`Step ${completedStep + 2} of 3`}
+        />
+
         {/* Progress steps */}
         <div className="flex items-center gap-0">
           {STEPS.map((step, i) => (
@@ -167,18 +176,6 @@ export default function SlideCompletion({ onNext, stepLabel }: Props) {
             </motion.div>
           )}
         </AnimatePresence>
-
-        <p
-          style={{
-            fontFamily: "'Sora', sans-serif",
-            fontSize: '0.72rem',
-            fontWeight: 500,
-            color: 'var(--color-lx-text-secondary)',
-            textAlign: 'center',
-          }}
-        >
-          {allDone ? 'Theme by theme, you\'ll cover the entire word bank' : `Tap the next circle to advance`}
-        </p>
       </div>
     </DemoSlideLayout>
   );

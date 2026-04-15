@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Trophy } from 'lucide-react';
 import DemoSlideLayout from '../DemoSlideLayout';
 import PulseRing from '../PulseRing';
+import DemoInstruction from '../DemoInstruction';
 
 const POINT_ROWS = [
   { label: 'Daily Login', pts: '+5' },
@@ -50,6 +51,14 @@ export default function SlideScoring({ onNext, stepLabel }: Props) {
       stepLabel={stepLabel}
     >
       <div className="flex w-full flex-col gap-3">
+        {/* Top instruction bar */}
+        <DemoInstruction
+          activeText="Tap each highlighted section"
+          doneText="Your progress is tracked, rewarded, and visible"
+          done={allTapped}
+          progress={`${tapped.size} of 3 explored`}
+        />
+
         {/* Points breakdown */}
         <div className="relative">
           <PulseRing active={!tapped.has('points')} shape="0.75rem" />
@@ -232,20 +241,6 @@ export default function SlideScoring({ onNext, stepLabel }: Props) {
             </div>
           </motion.button>
         </div>
-
-        {/* Instruction hint */}
-        <p style={{
-          fontFamily: "'Sora', sans-serif",
-          fontSize: '0.72rem',
-          fontWeight: 500,
-          color: 'var(--color-lx-text-secondary)',
-          textAlign: 'center',
-          marginTop: 2,
-        }}>
-          {allTapped
-            ? 'Your progress is tracked, rewarded, and visible'
-            : `Tap each highlighted section (${tapped.size}/3)`}
-        </p>
       </div>
     </DemoSlideLayout>
   );
