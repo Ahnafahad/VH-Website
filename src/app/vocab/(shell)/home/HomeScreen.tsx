@@ -457,8 +457,8 @@ function DailyMessage() {
         borderLeft: '2px solid rgba(244,168,40,0.15)',
       }}>
         <div style={{
-          width: 28, height: 28, borderRadius: 6,
-          background: 'rgba(244,168,40,0.06)', flexShrink: 0,
+          width: 28, height: 28, borderRadius: '50%',
+          background: 'rgba(230,57,70,0.08)', flexShrink: 0,
         }} />
         <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 6, paddingTop: 2 }}>
           <div style={{
@@ -498,26 +498,19 @@ function DailyMessage() {
             position:   'relative',
           }}
         >
-          {/* L monogram */}
-          <div style={{
-            width: 28, height: 28, borderRadius: 6, flexShrink: 0,
-            background:     'linear-gradient(135deg, rgba(244,168,40,0.12) 0%, rgba(244,168,40,0.04) 100%)',
-            border:         '1px solid rgba(244,168,40,0.15)',
-            display:        'flex',
-            alignItems:     'center',
-            justifyContent: 'center',
-          }}>
-            <span style={{
-              fontFamily: "'Cormorant Garamond', Georgia, serif",
-              fontSize:   '1rem',
-              fontWeight: 700,
-              fontStyle:  'italic',
-              color:      'rgba(244,168,40,0.65)',
-              lineHeight: 1,
-            }}>
-              L
-            </span>
-          </div>
+          {/* LexiCore logo */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/lexicore-logo.png"
+            alt="LexiCore"
+            style={{
+              width:     28,
+              height:    28,
+              objectFit: 'contain',
+              flexShrink: 0,
+              filter:    'drop-shadow(0 1px 6px rgba(230,57,70,0.35))',
+            }}
+          />
 
           {/* Message text */}
           <p style={{
