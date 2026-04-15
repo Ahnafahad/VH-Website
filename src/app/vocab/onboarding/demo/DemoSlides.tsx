@@ -6,6 +6,7 @@ import { X } from 'lucide-react';
 import DemoProgress from './DemoProgress';
 import SlideHome from './slides/SlideHome';
 import SlidePointsStreaks from './slides/SlidePointsStreaks';
+import SlideScoring from './slides/SlideScoring';
 import SlideSessions from './slides/SlideSessions';
 import SlideThemes from './slides/SlideThemes';
 import SlideFlashcards from './slides/SlideFlashcards';
@@ -13,7 +14,7 @@ import SlideCompletion from './slides/SlideCompletion';
 import SlideLetters from './slides/SlideLetters';
 import SlideReview from './slides/SlideReview';
 
-const TOTAL_SLIDES = 8;
+const TOTAL_SLIDES = 9;
 
 const slideTransition = { duration: 0.3, ease: [0.16, 1, 0.3, 1] as const };
 
@@ -67,12 +68,13 @@ export default function DemoSlides({ mode, onComplete, onClose }: DemoSlidesProp
     switch (activeSlide) {
       case 0: return <SlideHome onNext={goNext} stepLabel={stepLabel} />;
       case 1: return <SlidePointsStreaks onNext={goNext} stepLabel={stepLabel} />;
-      case 2: return <SlideSessions onNext={goNext} stepLabel={stepLabel} />;
-      case 3: return <SlideThemes onNext={goNext} stepLabel={stepLabel} />;
-      case 4: return <SlideFlashcards onNext={goNext} stepLabel={stepLabel} />;
-      case 5: return <SlideCompletion onNext={goNext} stepLabel={stepLabel} />;
-      case 6: return <SlideLetters onNext={goNext} stepLabel={stepLabel} />;
-      case 7: return <SlideReview onNext={activeSlide === TOTAL_SLIDES - 1 ? onComplete : goNext} stepLabel={stepLabel} />;
+      case 2: return <SlideScoring onNext={goNext} stepLabel={stepLabel} />;
+      case 3: return <SlideSessions onNext={goNext} stepLabel={stepLabel} />;
+      case 4: return <SlideThemes onNext={goNext} stepLabel={stepLabel} />;
+      case 5: return <SlideFlashcards onNext={goNext} stepLabel={stepLabel} />;
+      case 6: return <SlideCompletion onNext={goNext} stepLabel={stepLabel} />;
+      case 7: return <SlideLetters onNext={goNext} stepLabel={stepLabel} />;
+      case 8: return <SlideReview onNext={onComplete} stepLabel={stepLabel} />;
       default: return null;
     }
   };

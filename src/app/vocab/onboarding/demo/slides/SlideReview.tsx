@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { BrainCircuit } from 'lucide-react';
 import DemoSlideLayout from '../DemoSlideLayout';
+import PulseRing from '../PulseRing';
 
 const DUE_WORDS = [
   { word: 'pragmatic',   tag: '2d overdue' },
@@ -32,8 +33,8 @@ export default function SlideReview({ onNext, stepLabel }: Props) {
       icon={<BrainCircuit size={22} />}
       label="Memory"
       title="Your Review Guardian"
-      description="Spaced repetition ensures you never forget. Words due for review and words you struggle with appear here automatically."
-      subtext="Two sections — overdue words from your spaced repetition schedule, and words where your accuracy is low."
+      description="The app tracks every word's forgetting curve. Overdue words and low-accuracy words surface here automatically — nothing slips through."
+      subtext="Spaced repetition retains 90% of learned words after 30 days. Without it, you forget 80% within a week."
       ctaLabel="Next"
       ctaDisabled={!unlocked}
       onCta={onNext}
@@ -41,132 +42,138 @@ export default function SlideReview({ onNext, stepLabel }: Props) {
     >
       <div className="flex w-full gap-3">
         {/* Due for Review */}
-        <motion.button
-          whileTap={{ scale: 0.97 }}
-          onClick={() => tapSection('due')}
-          className="flex flex-1 flex-col gap-2 rounded-xl p-3 text-left"
-          style={{
-            background: tappedSections.has('due')
-              ? 'rgba(244,168,40,0.06)'
-              : 'var(--color-lx-elevated)',
-            border: `1px solid ${
-              tappedSections.has('due')
-                ? 'rgba(244,168,40,0.3)'
-                : 'var(--color-lx-border)'
-            }`,
-            cursor: 'pointer',
-            transition: 'background 0.2s, border-color 0.2s',
-          }}
-        >
-          <span
+        <div className="relative flex-1">
+          <PulseRing active={!tappedSections.has('due')} shape="0.75rem" />
+          <motion.button
+            whileTap={{ scale: 0.97 }}
+            onClick={() => tapSection('due')}
+            className="flex w-full flex-col gap-2 rounded-xl p-3 text-left"
             style={{
-              fontFamily: "'Sora', sans-serif",
-              fontSize: '0.55rem',
-              fontWeight: 600,
-              textTransform: 'uppercase',
-              letterSpacing: '0.08em',
-              color: 'var(--color-lx-accent-gold)',
+              background: tappedSections.has('due')
+                ? 'rgba(244,168,40,0.06)'
+                : 'var(--color-lx-elevated)',
+              border: `1px solid ${
+                tappedSections.has('due')
+                  ? 'rgba(244,168,40,0.3)'
+                  : 'var(--color-lx-border)'
+              }`,
+              cursor: 'pointer',
+              transition: 'background 0.2s, border-color 0.2s',
             }}
           >
-            Due for Review
-          </span>
-          {DUE_WORDS.map((w, i) => (
-            <motion.div
-              key={w.word}
-              initial={{ opacity: 0.5 }}
-              animate={{
-                opacity: tappedSections.has('due') ? 1 : 0.5,
+            <span
+              style={{
+                fontFamily: "'Sora', sans-serif",
+                fontSize: '0.55rem',
+                fontWeight: 600,
+                textTransform: 'uppercase',
+                letterSpacing: '0.08em',
+                color: 'var(--color-lx-accent-gold)',
               }}
-              transition={{ delay: tappedSections.has('due') ? i * 0.1 : 0, ...spring }}
-              className="flex flex-col gap-0.5"
             >
-              <span
-                className="lx-word"
-                style={{
-                  fontFamily: "'Cormorant Garamond', Georgia, serif",
-                  fontSize: '0.82rem',
-                  fontStyle: 'italic',
-                  color: 'var(--color-lx-text-primary)',
+              Due for Review
+            </span>
+            {DUE_WORDS.map((w, i) => (
+              <motion.div
+                key={w.word}
+                initial={{ opacity: 0.5 }}
+                animate={{
+                  opacity: tappedSections.has('due') ? 1 : 0.5,
                 }}
+                transition={{ delay: tappedSections.has('due') ? i * 0.1 : 0, ...spring }}
+                className="flex flex-col gap-0.5"
               >
-                {w.word}
-              </span>
-              <span
-                style={{
-                  fontFamily: "'Sora', sans-serif",
-                  fontSize: '0.5rem',
-                  color: 'var(--color-lx-accent-gold)',
-                }}
-              >
-                {w.tag}
-              </span>
-            </motion.div>
-          ))}
-        </motion.button>
+                <span
+                  className="lx-word"
+                  style={{
+                    fontFamily: "'Cormorant Garamond', Georgia, serif",
+                    fontSize: '0.82rem',
+                    fontStyle: 'italic',
+                    color: 'var(--color-lx-text-primary)',
+                  }}
+                >
+                  {w.word}
+                </span>
+                <span
+                  style={{
+                    fontFamily: "'Sora', sans-serif",
+                    fontSize: '0.5rem',
+                    color: 'var(--color-lx-accent-gold)',
+                  }}
+                >
+                  {w.tag}
+                </span>
+              </motion.div>
+            ))}
+          </motion.button>
+        </div>
 
         {/* Struggling */}
-        <motion.button
-          whileTap={{ scale: 0.97 }}
-          onClick={() => tapSection('struggling')}
-          className="flex flex-1 flex-col gap-2 rounded-xl p-3 text-left"
-          style={{
-            background: tappedSections.has('struggling')
-              ? 'rgba(230,57,70,0.06)'
-              : 'var(--color-lx-elevated)',
-            border: `1px solid ${
-              tappedSections.has('struggling')
-                ? 'rgba(230,57,70,0.3)'
-                : 'var(--color-lx-border)'
-            }`,
-            cursor: 'pointer',
-            transition: 'background 0.2s, border-color 0.2s',
-          }}
-        >
-          <span
+        <div className="relative flex-1">
+          <PulseRing active={!tappedSections.has('struggling')} shape="0.75rem" />
+          <motion.button
+            whileTap={{ scale: 0.97 }}
+            onClick={() => tapSection('struggling')}
+            className="flex w-full flex-col gap-2 rounded-xl p-3 text-left"
             style={{
-              fontFamily: "'Sora', sans-serif",
-              fontSize: '0.55rem',
-              fontWeight: 600,
-              textTransform: 'uppercase',
-              letterSpacing: '0.08em',
-              color: 'var(--color-lx-accent-red)',
+              background: tappedSections.has('struggling')
+                ? 'rgba(230,57,70,0.06)'
+                : 'var(--color-lx-elevated)',
+              border: `1px solid ${
+                tappedSections.has('struggling')
+                  ? 'rgba(230,57,70,0.3)'
+                  : 'var(--color-lx-border)'
+              }`,
+              cursor: 'pointer',
+              transition: 'background 0.2s, border-color 0.2s',
             }}
           >
-            Struggling
-          </span>
-          {STRUGGLING_WORDS.map((w, i) => (
-            <motion.div
-              key={w.word}
-              initial={{ opacity: 0.5 }}
-              animate={{
-                opacity: tappedSections.has('struggling') ? 1 : 0.5,
+            <span
+              style={{
+                fontFamily: "'Sora', sans-serif",
+                fontSize: '0.55rem',
+                fontWeight: 600,
+                textTransform: 'uppercase',
+                letterSpacing: '0.08em',
+                color: 'var(--color-lx-accent-red)',
               }}
-              transition={{ delay: tappedSections.has('struggling') ? i * 0.1 : 0, ...spring }}
-              className="flex flex-col gap-0.5"
             >
-              <span
-                className="lx-word"
-                style={{
-                  fontFamily: "'Cormorant Garamond', Georgia, serif",
-                  fontSize: '0.82rem',
-                  fontStyle: 'italic',
-                  color: 'var(--color-lx-text-primary)',
+              Struggling
+            </span>
+            {STRUGGLING_WORDS.map((w, i) => (
+              <motion.div
+                key={w.word}
+                initial={{ opacity: 0.5 }}
+                animate={{
+                  opacity: tappedSections.has('struggling') ? 1 : 0.5,
                 }}
+                transition={{ delay: tappedSections.has('struggling') ? i * 0.1 : 0, ...spring }}
+                className="flex flex-col gap-0.5"
               >
-                {w.word}
-              </span>
-              <span
-                style={{
-                  fontFamily: "'Sora', sans-serif",
-                  fontSize: '0.5rem',
-                  color: 'var(--color-lx-accent-red)',
-                }}
-              >
-                {w.tag}
-              </span>
-            </motion.div>
-          ))}
-        </motion.button>
+                <span
+                  className="lx-word"
+                  style={{
+                    fontFamily: "'Cormorant Garamond', Georgia, serif",
+                    fontSize: '0.82rem',
+                    fontStyle: 'italic',
+                    color: 'var(--color-lx-text-primary)',
+                  }}
+                >
+                  {w.word}
+                </span>
+                <span
+                  style={{
+                    fontFamily: "'Sora', sans-serif",
+                    fontSize: '0.5rem',
+                    color: 'var(--color-lx-accent-red)',
+                  }}
+                >
+                  {w.tag}
+                </span>
+              </motion.div>
+            ))}
+          </motion.button>
+        </div>
       </div>
 
       {/* Timeline hint */}
@@ -205,13 +212,14 @@ export default function SlideReview({ onNext, stepLabel }: Props) {
       <p
         style={{
           fontFamily: "'Sora', sans-serif",
-          fontSize: '0.65rem',
-          color: 'var(--color-lx-text-muted)',
+          fontSize: '0.72rem',
+          fontWeight: 500,
+          color: 'var(--color-lx-text-secondary)',
           textAlign: 'center',
           marginTop: 4,
         }}
       >
-        {unlocked ? 'Both sections explored!' : `Tap both sections to continue (${tappedSections.size}/2)`}
+        {unlocked ? 'Your safety net — no word gets left behind' : `Tap both highlighted sections (${tappedSections.size}/2)`}
       </p>
     </DemoSlideLayout>
   );

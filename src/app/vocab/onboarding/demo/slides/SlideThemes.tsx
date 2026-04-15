@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Network } from 'lucide-react';
 import DemoSlideLayout from '../DemoSlideLayout';
+import PulseRing from '../PulseRing';
 
 const WORDS = ['hegemony', 'belligerent', 'antagonist'];
 
@@ -20,8 +21,8 @@ export default function SlideThemes({ onNext, stepLabel }: Props) {
       icon={<Network size={22} />}
       label="Study Structure"
       title="Study by Theme"
-      description="Words grouped by theme stick 3x better than random lists. Each theme is a focused learning unit."
-      subtext="Thematic grouping creates stronger neural pathways — context-based learning is how your brain naturally works."
+      description="Words grouped by meaning — Anger, Power, Deception — stick 3x better than random lists. Each theme is a focused unit of 10-15 exam-relevant words."
+      subtext="Thematic grouping creates stronger neural pathways. When you see 'magnanimous' on the exam, your brain recalls the full Power cluster."
       ctaLabel="Next"
       ctaDisabled={!unlocked}
       onCta={onNext}
@@ -29,54 +30,57 @@ export default function SlideThemes({ onNext, stepLabel }: Props) {
     >
       <div className="flex w-full flex-col items-center gap-3">
         {/* Unit card */}
-        <motion.button
-          whileTap={{ scale: 0.97 }}
-          onClick={() => setExpanded(e => !e)}
-          className="w-full rounded-xl px-4 py-3 text-left"
-          style={{
-            background: expanded ? 'rgba(230,57,70,0.06)' : 'var(--color-lx-elevated)',
-            border: `1px solid ${expanded ? 'rgba(230,57,70,0.3)' : 'var(--color-lx-border)'}`,
-            cursor: 'pointer',
-            transition: 'background 0.2s, border-color 0.2s',
-          }}
-        >
-          <div className="flex items-center justify-between">
-            <div className="flex flex-col">
-              <span
-                style={{
-                  fontFamily: "'Sora', sans-serif",
-                  fontSize: '0.6rem',
-                  fontWeight: 500,
-                  textTransform: 'uppercase',
-                  letterSpacing: '0.08em',
-                  color: 'var(--color-lx-text-muted)',
-                }}
+        <div className="relative w-full">
+          <PulseRing active={!expanded} shape="0.75rem" />
+          <motion.button
+            whileTap={{ scale: 0.97 }}
+            onClick={() => setExpanded(e => !e)}
+            className="w-full rounded-xl px-4 py-3 text-left"
+            style={{
+              background: expanded ? 'rgba(230,57,70,0.06)' : 'var(--color-lx-elevated)',
+              border: `1px solid ${expanded ? 'rgba(230,57,70,0.3)' : 'var(--color-lx-border)'}`,
+              cursor: 'pointer',
+              transition: 'background 0.2s, border-color 0.2s',
+            }}
+          >
+            <div className="flex items-center justify-between">
+              <div className="flex flex-col">
+                <span
+                  style={{
+                    fontFamily: "'Sora', sans-serif",
+                    fontSize: '0.6rem',
+                    fontWeight: 500,
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.08em',
+                    color: 'var(--color-lx-text-muted)',
+                  }}
+                >
+                  Unit 3
+                </span>
+                <span
+                  style={{
+                    fontFamily: "'Cormorant Garamond', Georgia, serif",
+                    fontSize: '1.1rem',
+                    fontWeight: 600,
+                    fontStyle: 'italic',
+                    color: 'var(--color-lx-text-primary)',
+                  }}
+                >
+                  Anger &amp; Conflict
+                </span>
+              </div>
+              <motion.div
+                animate={{ rotate: expanded ? 90 : 0 }}
+                transition={spring}
+                style={{ color: 'var(--color-lx-text-muted)' }}
               >
-                Unit 3
-              </span>
-              <span
-                style={{
-                  fontFamily: "'Cormorant Garamond', Georgia, serif",
-                  fontSize: '1.1rem',
-                  fontWeight: 600,
-                  fontStyle: 'italic',
-                  color: 'var(--color-lx-text-primary)',
-                }}
-              >
-                Anger &amp; Conflict
-              </span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <polyline points="9 18 15 12 9 6"/>
+                </svg>
+              </motion.div>
             </div>
-            <motion.div
-              animate={{ rotate: expanded ? 90 : 0 }}
-              transition={spring}
-              style={{ color: 'var(--color-lx-text-muted)' }}
-            >
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <polyline points="9 18 15 12 9 6"/>
-              </svg>
-            </motion.div>
-          </div>
-        </motion.button>
+          </motion.button>
+        </div>
 
         {/* Expanded content: theme → words */}
         <AnimatePresence>
@@ -129,12 +133,13 @@ export default function SlideThemes({ onNext, stepLabel }: Props) {
         <p
           style={{
             fontFamily: "'Sora', sans-serif",
-            fontSize: '0.65rem',
-            color: 'var(--color-lx-text-muted)',
+            fontSize: '0.72rem',
+            fontWeight: 500,
+            color: 'var(--color-lx-text-secondary)',
             textAlign: 'center',
           }}
         >
-          {expanded ? 'Theme expanded!' : 'Tap the unit card to see inside'}
+          {expanded ? 'Themed learning — the fastest path to exam vocabulary' : 'Tap the unit card to reveal its words'}
         </p>
       </div>
     </DemoSlideLayout>

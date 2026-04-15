@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { CaseSensitive } from 'lucide-react';
 import DemoSlideLayout from '../DemoSlideLayout';
+import PulseRing from '../PulseRing';
 
 const LETTERS = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'M'];
 const SAMPLE_WORDS = [
@@ -25,7 +26,8 @@ export default function SlideLetters({ onNext, stepLabel }: Props) {
       icon={<CaseSensitive size={22} />}
       label="Alphabetical"
       title="Study by Letter"
-      description="Browse and study words by their starting letter. The letter view is perfect for targeted review before exams."
+      description="Need to quickly find a word from a practice test? Browse alphabetically. Each word shows its mastery level — new, learning, or strong."
+      subtext="Perfect for last-minute review before exam day. Filter to 'learning' words to target your weak spots."
       ctaLabel="Next"
       ctaDisabled={!unlocked}
       onCta={onNext}
@@ -41,30 +43,32 @@ export default function SlideLetters({ onNext, stepLabel }: Props) {
               className="grid grid-cols-3 gap-2"
             >
               {LETTERS.map((letter, i) => (
-                <motion.button
-                  key={letter}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: i * 0.03, ...spring }}
-                  whileTap={{ scale: 0.92 }}
-                  onClick={() => setSelectedLetter(letter)}
-                  className="flex h-11 w-11 items-center justify-center rounded-lg"
-                  style={{
-                    background: letter === 'M'
-                      ? 'rgba(230,57,70,0.1)'
-                      : 'var(--color-lx-elevated)',
-                    border: `1px solid ${letter === 'M' ? 'rgba(230,57,70,0.3)' : 'var(--color-lx-border)'}`,
-                    cursor: 'pointer',
-                    fontFamily: "'Cormorant Garamond', Georgia, serif",
-                    fontSize: '1.1rem',
-                    fontWeight: 600,
-                    color: letter === 'M'
-                      ? 'var(--color-lx-accent-red)'
-                      : 'var(--color-lx-text-secondary)',
-                  }}
-                >
-                  {letter}
-                </motion.button>
+                <div key={letter} className="relative">
+                  {letter === 'M' && <PulseRing active={!unlocked} shape="0.5rem" />}
+                  <motion.button
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: i * 0.03, ...spring }}
+                    whileTap={{ scale: 0.92 }}
+                    onClick={() => setSelectedLetter(letter)}
+                    className="flex h-11 w-11 items-center justify-center rounded-lg"
+                    style={{
+                      background: letter === 'M'
+                        ? 'rgba(230,57,70,0.1)'
+                        : 'var(--color-lx-elevated)',
+                      border: `1px solid ${letter === 'M' ? 'rgba(230,57,70,0.3)' : 'var(--color-lx-border)'}`,
+                      cursor: 'pointer',
+                      fontFamily: "'Cormorant Garamond', Georgia, serif",
+                      fontSize: '1.1rem',
+                      fontWeight: 600,
+                      color: letter === 'M'
+                        ? 'var(--color-lx-accent-red)'
+                        : 'var(--color-lx-text-secondary)',
+                    }}
+                  >
+                    {letter}
+                  </motion.button>
+                </div>
               ))}
             </motion.div>
           ) : (
@@ -153,12 +157,13 @@ export default function SlideLetters({ onNext, stepLabel }: Props) {
         <p
           style={{
             fontFamily: "'Sora', sans-serif",
-            fontSize: '0.65rem',
-            color: 'var(--color-lx-text-muted)',
+            fontSize: '0.72rem',
+            fontWeight: 500,
+            color: 'var(--color-lx-text-secondary)',
             textAlign: 'center',
           }}
         >
-          {unlocked ? 'Letter selected!' : 'Tap a letter to explore'}
+          {unlocked ? 'Quick lookup — perfect for last-minute review' : 'Tap the highlighted letter M'}
         </p>
       </div>
     </DemoSlideLayout>

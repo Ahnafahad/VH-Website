@@ -39,7 +39,8 @@ export default function SlidePointsStreaks({ onNext, stepLabel }: Props) {
       icon={<Sparkles size={22} />}
       label="Rewards"
       title="Points & Streaks"
-      description="Earn points every time you study. Log in daily to build your streak — consistency is everything."
+      description="Every study action earns points — flashcards, quizzes, even just logging in. Your streak tracks consecutive days. Miss a day, it resets."
+      subtext="7-day streaks correlate with 90%+ word retention on exam day. The streak is your most important number."
       ctaLabel="Next"
       ctaDisabled={!done}
       onCta={onNext}

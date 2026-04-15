@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { CircleDashed } from 'lucide-react';
 import DemoSlideLayout from '../DemoSlideLayout';
+import PulseRing from '../PulseRing';
 
 const STEPS = [
   { label: 'Flashcards', color: '#3B82F6' },
@@ -28,7 +29,8 @@ export default function SlideCompletion({ onNext, stepLabel }: Props) {
       icon={<CircleDashed size={22} />}
       label="Progression"
       title="The Learning Cycle"
-      description="Finish flashcards, pass the quiz — theme complete. Each completed theme unlocks the next."
+      description="Each theme follows a clear path: study the flashcards, pass the quiz, theme complete. Completing themes unlocks the next unit."
+      subtext="Students who complete themes in order retain 40% more than those who skip around randomly."
       ctaLabel="Next"
       ctaDisabled={!allDone}
       onCta={onNext}
@@ -51,47 +53,51 @@ export default function SlideCompletion({ onNext, stepLabel }: Props) {
                   padding: '0 4px',
                 }}
               >
-                <motion.div
-                  animate={{
-                    background: i <= completedStep ? step.color : 'var(--color-lx-elevated)',
-                    borderColor: i <= completedStep ? step.color : 'var(--color-lx-border)',
-                    scale: i === completedStep + 1 ? [1, 1.08, 1] : 1,
-                  }}
-                  transition={{
-                    ...spring,
-                    scale: i === completedStep + 1
-                      ? { duration: 1.2, repeat: Infinity, ease: 'easeInOut' }
-                      : spring,
-                  }}
-                  className="flex h-10 w-10 items-center justify-center rounded-full border-2"
-                >
-                  <AnimatePresence mode="wait">
-                    {i <= completedStep ? (
-                      <motion.div
-                        key="check"
-                        initial={{ scale: 0 }}
-                        animate={{ scale: 1 }}
-                        transition={spring}
-                      >
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                          <polyline points="20 6 9 17 4 12"/>
-                        </svg>
-                      </motion.div>
-                    ) : (
-                      <motion.span
-                        key="num"
-                        style={{
-                          fontFamily: "'Sora', sans-serif",
-                          fontSize: '0.7rem',
-                          fontWeight: 600,
-                          color: 'var(--color-lx-text-muted)',
-                        }}
-                      >
-                        {i + 1}
-                      </motion.span>
-                    )}
-                  </AnimatePresence>
-                </motion.div>
+                {/* PulseRing on the next step circle */}
+                <div className="relative">
+                  <PulseRing active={i === completedStep + 1} shape="9999px" />
+                  <motion.div
+                    animate={{
+                      background: i <= completedStep ? step.color : 'var(--color-lx-elevated)',
+                      borderColor: i <= completedStep ? step.color : 'var(--color-lx-border)',
+                      scale: i === completedStep + 1 ? [1, 1.08, 1] : 1,
+                    }}
+                    transition={{
+                      ...spring,
+                      scale: i === completedStep + 1
+                        ? { duration: 1.2, repeat: Infinity, ease: 'easeInOut' }
+                        : spring,
+                    }}
+                    className="flex h-10 w-10 items-center justify-center rounded-full border-2"
+                  >
+                    <AnimatePresence mode="wait">
+                      {i <= completedStep ? (
+                        <motion.div
+                          key="check"
+                          initial={{ scale: 0 }}
+                          animate={{ scale: 1 }}
+                          transition={spring}
+                        >
+                          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                            <polyline points="20 6 9 17 4 12"/>
+                          </svg>
+                        </motion.div>
+                      ) : (
+                        <motion.span
+                          key="num"
+                          style={{
+                            fontFamily: "'Sora', sans-serif",
+                            fontSize: '0.7rem',
+                            fontWeight: 600,
+                            color: 'var(--color-lx-text-muted)',
+                          }}
+                        >
+                          {i + 1}
+                        </motion.span>
+                      )}
+                    </AnimatePresence>
+                  </motion.div>
+                </div>
 
                 <span
                   style={{
@@ -165,12 +171,13 @@ export default function SlideCompletion({ onNext, stepLabel }: Props) {
         <p
           style={{
             fontFamily: "'Sora', sans-serif",
-            fontSize: '0.65rem',
-            color: 'var(--color-lx-text-muted)',
+            fontSize: '0.72rem',
+            fontWeight: 500,
+            color: 'var(--color-lx-text-secondary)',
             textAlign: 'center',
           }}
         >
-          {allDone ? 'All steps done!' : `Tap step ${completedStep + 2} to advance`}
+          {allDone ? 'Theme by theme, you\'ll cover the entire word bank' : `Tap the next circle to advance`}
         </p>
       </div>
     </DemoSlideLayout>

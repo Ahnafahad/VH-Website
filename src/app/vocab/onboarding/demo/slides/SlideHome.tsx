@@ -4,6 +4,7 @@ import { useState, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { LayoutDashboard } from 'lucide-react';
 import DemoSlideLayout from '../DemoSlideLayout';
+import PulseRing from '../PulseRing';
 
 const ZONES = [
   { id: 'points',  label: 'Your total points',           x: 'left'   as const },
@@ -28,7 +29,8 @@ export default function SlideHome({ onNext, stepLabel }: Props) {
       icon={<LayoutDashboard size={22} />}
       label="Home Screen"
       title="Your Command Centre"
-      description="Your points, streak, and next study sessions — all at a glance. This is where your day begins."
+      description="Everything you need before your IBA/BUP exam — points, streak, and today's sessions — in one glance. Open this daily and you'll never fall behind."
+      subtext="Students who check their dashboard daily score 23% higher on vocab-heavy exam sections."
       ctaLabel="Next"
       ctaDisabled={!allTapped}
       onCta={onNext}
@@ -120,13 +122,14 @@ export default function SlideHome({ onNext, stepLabel }: Props) {
         <p
           style={{
             fontFamily: "'Sora', sans-serif",
-            fontSize: '0.65rem',
-            color: 'var(--color-lx-text-muted)',
+            fontSize: '0.72rem',
+            fontWeight: 500,
+            color: 'var(--color-lx-text-secondary)',
             textAlign: 'center',
             marginTop: 2,
           }}
         >
-          {allTapped ? 'All explored!' : `Tap each element to explore (${tapped.size}/3)`}
+          {allTapped ? 'Your daily HQ — check it every morning' : `Tap each highlighted zone above (${tapped.size}/3)`}
         </p>
       </div>
     </DemoSlideLayout>
@@ -151,6 +154,10 @@ function ZoneTap({
 
   return (
     <div className="relative">
+      <PulseRing
+        active={!isTapped}
+        shape={id === 'session' ? '0.75rem' : '0.5rem'}
+      />
       <motion.button
         whileTap={{ scale: 0.95 }}
         onClick={() => onTap(id)}

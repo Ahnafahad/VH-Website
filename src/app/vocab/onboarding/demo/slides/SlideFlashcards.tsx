@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { GalleryVerticalEnd } from 'lucide-react';
 import DemoSlideLayout from '../DemoSlideLayout';
+import PulseRing from '../PulseRing';
 
 const RATINGS = [
   { label: 'Got It',    color: 'var(--color-lx-success)', points: '+10' },
@@ -30,7 +31,8 @@ export default function SlideFlashcards({ onNext, stepLabel }: Props) {
       icon={<GalleryVerticalEnd size={22} />}
       label="Flashcards"
       title="Flip & Rate"
-      description="Flip to reveal, then rate yourself honestly. The app adapts — words you miss come back sooner."
+      description="Flip the card, recall the meaning, then rate yourself honestly. Your rating controls when you see this word again."
+      subtext="Words you mark 'Missed It' reappear within 24 hours. Words you nail get spaced out — this is how you cover 500+ words without burnout."
       ctaLabel="Next"
       ctaDisabled={!unlocked}
       onCta={onNext}
@@ -46,6 +48,8 @@ export default function SlideFlashcards({ onNext, stepLabel }: Props) {
               transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
               className="relative"
             >
+              {/* Phase 1 PulseRing: on the card before flip */}
+              <PulseRing active={!flipped} shape="1rem" />
               <motion.div
                 className="preserve-3d relative h-32 w-56 cursor-pointer"
                 animate={{ rotateY: flipped ? 180 : 0 }}
@@ -176,7 +180,7 @@ export default function SlideFlashcards({ onNext, stepLabel }: Props) {
           )}
         </AnimatePresence>
 
-        {/* Rating buttons */}
+        {/* Rating buttons — Phase 2 PulseRing */}
         {flipped && !dismissed && (
           <motion.div
             initial={{ opacity: 0, y: 10 }}
@@ -185,26 +189,28 @@ export default function SlideFlashcards({ onNext, stepLabel }: Props) {
             className="flex gap-2"
           >
             {RATINGS.map((r, i) => (
-              <motion.button
-                key={r.label}
-                whileTap={{ scale: 0.95 }}
-                onClick={() => handleRate(i)}
-                className="rounded-lg px-3 py-2"
-                style={{
-                  background: rated === i
-                    ? `${r.color}20`
-                    : 'var(--color-lx-elevated)',
-                  border: `1px solid ${rated === i ? r.color : 'var(--color-lx-border)'}`,
-                  fontFamily: "'Sora', sans-serif",
-                  fontSize: '0.65rem',
-                  fontWeight: 600,
-                  color: rated === i ? r.color : 'var(--color-lx-text-secondary)',
-                  cursor: rated !== null ? 'default' : 'pointer',
-                  transition: 'background 0.2s, border-color 0.2s, color 0.2s',
-                }}
-              >
-                {r.label}
-              </motion.button>
+              <div key={r.label} className="relative">
+                <PulseRing active={rated === null} shape="0.5rem" />
+                <motion.button
+                  whileTap={{ scale: 0.95 }}
+                  onClick={() => handleRate(i)}
+                  className="rounded-lg px-3 py-2"
+                  style={{
+                    background: rated === i
+                      ? `${r.color}20`
+                      : 'var(--color-lx-elevated)',
+                    border: `1px solid ${rated === i ? r.color : 'var(--color-lx-border)'}`,
+                    fontFamily: "'Sora', sans-serif",
+                    fontSize: '0.65rem',
+                    fontWeight: 600,
+                    color: rated === i ? r.color : 'var(--color-lx-text-secondary)',
+                    cursor: rated !== null ? 'default' : 'pointer',
+                    transition: 'background 0.2s, border-color 0.2s, color 0.2s',
+                  }}
+                >
+                  {r.label}
+                </motion.button>
+              </div>
             ))}
           </motion.div>
         )}
@@ -212,12 +218,17 @@ export default function SlideFlashcards({ onNext, stepLabel }: Props) {
         <p
           style={{
             fontFamily: "'Sora', sans-serif",
-            fontSize: '0.65rem',
-            color: 'var(--color-lx-text-muted)',
+            fontSize: '0.72rem',
+            fontWeight: 500,
+            color: 'var(--color-lx-text-secondary)',
             textAlign: 'center',
           }}
         >
-          {!flipped ? 'Tap the card to flip it' : rated === null ? 'Now rate yourself' : 'Well done!'}
+          {!flipped
+            ? 'Tap the card to see the meaning'
+            : rated === null
+              ? 'Rate how well you knew this word'
+              : 'Honest self-rating is the key to long-term retention'}
         </p>
       </div>
     </DemoSlideLayout>
