@@ -171,13 +171,13 @@ function FlipCard({ word, isFlipped, onFlip }: { word: FlashcardWord; isFlipped:
   return (
     <div
       className="relative w-full"
-      style={{ perspective: '2000px', minHeight: 260, flex: 1 }}
+      style={{ perspective: '2000px', flex: 1 }}
       onClick={!isFlipped ? onFlip : undefined}
     >
       <motion.div
         animate={{ rotateY: isFlipped ? 180 : 0 }}
         transition={{ duration: 0.65, ease: [0.4, 0, 0.2, 1] }}
-        style={{ transformStyle: 'preserve-3d', position: 'relative', width: '100%', height: '100%', minHeight: 260 }}
+        style={{ transformStyle: 'preserve-3d', position: 'relative', width: '100%', height: '100%' }}
       >
         {/* ── FRONT ─────────────────────────────────── */}
         <div
@@ -188,8 +188,7 @@ function FlipCard({ word, isFlipped, onFlip }: { word: FlashcardWord; isFlipped:
             background: 'var(--color-lx-surface)',
             border: '1px solid var(--color-lx-border)',
             display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
-            padding: '1.5rem',
-            minHeight: 260,
+            padding: '2rem',
           }}
         >
           {/* Ambient glow */}
@@ -239,9 +238,8 @@ function FlipCard({ word, isFlipped, onFlip }: { word: FlashcardWord; isFlipped:
             border: '1px solid rgba(230,57,70,0.25)',
             transform: 'rotateY(180deg)',
             display: 'flex', flexDirection: 'column', justifyContent: 'flex-start',
-            gap: '0.5rem',
-            padding: '1rem 1.15rem',
-            minHeight: 260,
+            gap: '0.75rem',
+            padding: '1.5rem',
             overflowY: 'auto',
             scrollbarWidth: 'none',
             msOverflowStyle: 'none',
@@ -259,14 +257,14 @@ function FlipCard({ word, isFlipped, onFlip }: { word: FlashcardWord; isFlipped:
           </div>
 
           {/* Definition */}
-          <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '1.15rem', lineHeight: 1.45, color: 'var(--color-lx-text-primary)', fontWeight: 400 }}>
+          <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '1.3rem', lineHeight: 1.55, color: 'var(--color-lx-text-primary)', fontWeight: 400 }}>
             {word.definition}
           </p>
 
           {/* Example sentence */}
           {word.exampleSentence && (
-            <div className="rounded-lg px-2.5 py-2" style={{ background: 'var(--color-lx-elevated)' }}>
-              <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '0.92rem', fontStyle: 'italic', color: 'var(--color-lx-text-secondary)', lineHeight: 1.45 }}>
+            <div className="rounded-xl px-3 py-2.5" style={{ background: 'var(--color-lx-elevated)' }}>
+              <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '1rem', fontStyle: 'italic', color: 'var(--color-lx-text-secondary)', lineHeight: 1.5 }}>
                 "{word.exampleSentence}"
               </p>
             </div>
@@ -274,10 +272,10 @@ function FlipCard({ word, isFlipped, onFlip }: { word: FlashcardWord; isFlipped:
 
           {/* Synonyms */}
           {word.synonyms.length > 0 && (
-            <div className="flex flex-wrap gap-1">
+            <div className="flex flex-wrap gap-1.5">
               {word.synonyms.slice(0, 4).map(s => (
-                <span key={s} className="rounded-full px-2 py-0.5"
-                      style={{ fontSize: '0.68rem', background: 'rgba(230,57,70,0.1)', color: 'var(--color-lx-accent-red)', border: '1px solid rgba(230,57,70,0.2)', fontFamily: "'Sora', sans-serif" }}>
+                <span key={s} className="rounded-full px-2.5 py-1 text-xs"
+                      style={{ background: 'rgba(230,57,70,0.1)', color: 'var(--color-lx-accent-red)', border: '1px solid rgba(230,57,70,0.2)', fontFamily: "'Sora', sans-serif" }}>
                   {s}
                 </span>
               ))}
