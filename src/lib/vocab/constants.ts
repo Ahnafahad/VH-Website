@@ -49,6 +49,14 @@ export const LEVEL_INTERMEDIATE_THRESHOLD = 0.40;
 /** Theme completion % to reach advanced */
 export const LEVEL_ADVANCED_THRESHOLD = 0.70;
 
+// ─── Word Pools ─────────────────────────────────────────────────────────────
+
+/** Total words available to free users */
+export const FREE_WORD_POOL = 100;
+
+/** Total words available to paid users */
+export const PAID_WORD_POOL = 800;
+
 // ─── Limits ──────────────────────────────────────────────────────────────────
 
 /** Max words shown in a review session */

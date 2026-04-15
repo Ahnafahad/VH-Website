@@ -1,15 +1,16 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { HelpCircle, Lock } from 'lucide-react';
+import { HelpCircle, Lock, X } from 'lucide-react';
 import type { HomeData, MasteryBreakdown, SessionsData } from '@/lib/vocab/home-data';
 import ProgressRing from '@/components/vocab/ProgressRing';
 import AnimatedNumber from '@/components/vocab/AnimatedNumber';
 import DeadlineBanner from '@/components/vocab/DeadlineBanner';
 import UpgradeModal from '@/components/vocab/UpgradeModal';
+import { FREE_WORD_POOL, PAID_WORD_POOL } from '@/lib/vocab/constants';
 
 function greeting(): string {
   const h = new Date().getHours();
@@ -411,6 +412,315 @@ function Rule({ delay = 0, color = 'var(--color-lx-border)' }: { delay?: number;
   );
 }
 
+// ─── Daily AI Message ────────────────────────────────────────────────────────
+
+function DailyMessage() {
+  const [message, setMessage] = useState<string | null>(null);
+  const [loaded,  setLoaded]  = useState(false);
+  const [visible, setVisible] = useState(true);
+
+  useEffect(() => {
+    const today = new Date().toISOString().slice(0, 10);
+    // Already dismissed this session
+    if (sessionStorage.getItem(`lx-msg-${today}`) === '1') {
+      setVisible(false);
+      setLoaded(true);
+      return;
+    }
+    let cancelled = false;
+    fetch('/api/vocab/daily-message')
+      .then(r => r.ok ? r.json() : null)
+      .then((data: { message: string } | null) => {
+        if (!cancelled) {
+          if (data?.message) setMessage(data.message);
+          setLoaded(true);
+        }
+      })
+      .catch(() => { if (!cancelled) setLoaded(true); });
+    return () => { cancelled = true; };
+  }, []);
+
+  const dismiss = () => {
+    const today = new Date().toISOString().slice(0, 10);
+    sessionStorage.setItem(`lx-msg-${today}`, '1');
+    setVisible(false);
+  };
+
+  // Skeleton while fetching
+  if (!loaded && visible) {
+    return (
+      <div style={{
+        display:    'flex',
+        alignItems: 'flex-start',
+        gap:        14,
+        padding:    '14px 16px',
+        borderLeft: '2px solid rgba(244,168,40,0.15)',
+      }}>
+        <div style={{
+          width: 28, height: 28, borderRadius: 6,
+          background: 'rgba(244,168,40,0.06)', flexShrink: 0,
+        }} />
+        <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 6, paddingTop: 2 }}>
+          <div style={{
+            height: 10, width: '85%', borderRadius: 3,
+            background: 'linear-gradient(90deg, var(--color-lx-elevated) 30%, rgba(244,168,40,0.06) 50%, var(--color-lx-elevated) 70%)',
+            backgroundSize: '200% 100%',
+            animation: 'shimmer 1.8s ease infinite',
+          }} />
+          <div style={{
+            height: 10, width: '55%', borderRadius: 3,
+            background: 'linear-gradient(90deg, var(--color-lx-elevated) 30%, rgba(244,168,40,0.06) 50%, var(--color-lx-elevated) 70%)',
+            backgroundSize: '200% 100%',
+            animation: 'shimmer 1.8s ease infinite',
+            animationDelay: '0.2s',
+          }} />
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <AnimatePresence>
+      {visible && message && (
+        <motion.div
+          key="daily-msg"
+          initial={{ opacity: 0, y: 10, scale: 0.97, filter: 'blur(4px)' }}
+          animate={{ opacity: 1, y: 0, scale: 1,    filter: 'blur(0px)' }}
+          exit={{    opacity: 0, y: -8, scale: 0.97, filter: 'blur(4px)' }}
+          transition={{ type: 'spring' as const, stiffness: 220, damping: 26, delay: 0.05 }}
+          style={{
+            display:    'flex',
+            alignItems: 'flex-start',
+            gap:        14,
+            padding:    '14px 16px 14px 16px',
+            borderLeft: '2px solid rgba(244,168,40,0.35)',
+            background: 'linear-gradient(90deg, rgba(244,168,40,0.03) 0%, transparent 40%)',
+            position:   'relative',
+          }}
+        >
+          {/* L monogram */}
+          <div style={{
+            width: 28, height: 28, borderRadius: 6, flexShrink: 0,
+            background:     'linear-gradient(135deg, rgba(244,168,40,0.12) 0%, rgba(244,168,40,0.04) 100%)',
+            border:         '1px solid rgba(244,168,40,0.15)',
+            display:        'flex',
+            alignItems:     'center',
+            justifyContent: 'center',
+          }}>
+            <span style={{
+              fontFamily: "'Cormorant Garamond', Georgia, serif",
+              fontSize:   '1rem',
+              fontWeight: 700,
+              fontStyle:  'italic',
+              color:      'rgba(244,168,40,0.65)',
+              lineHeight: 1,
+            }}>
+              L
+            </span>
+          </div>
+
+          {/* Message text */}
+          <p style={{
+            fontFamily: "'Cormorant Garamond', Georgia, serif",
+            fontSize:   '0.95rem',
+            fontWeight: 500,
+            fontStyle:  'italic',
+            lineHeight: 1.5,
+            color:      'var(--color-lx-text-secondary)',
+            margin:     0,
+            paddingTop: 2,
+            flex:       1,
+            paddingRight: 8,
+          }}>
+            {message}
+          </p>
+
+          {/* Dismiss button */}
+          <motion.button
+            onClick={dismiss}
+            whileHover={{ scale: 1.15 }}
+            whileTap={{ scale: 0.9 }}
+            transition={{ type: 'spring' as const, stiffness: 500, damping: 30 }}
+            aria-label="Dismiss"
+            style={{
+              display:        'flex',
+              alignItems:     'center',
+              justifyContent: 'center',
+              width:          20,
+              height:         20,
+              borderRadius:   4,
+              background:     'transparent',
+              border:         'none',
+              cursor:         'pointer',
+              color:          'var(--color-lx-text-muted)',
+              flexShrink:     0,
+              padding:        0,
+              marginTop:      2,
+              opacity:        0.5,
+              transition:     'opacity 0.15s ease, color 0.15s ease',
+            }}
+            onMouseEnter={e => {
+              (e.currentTarget as HTMLButtonElement).style.opacity = '1';
+              (e.currentTarget as HTMLButtonElement).style.color = 'var(--color-lx-text-primary)';
+            }}
+            onMouseLeave={e => {
+              (e.currentTarget as HTMLButtonElement).style.opacity = '0.5';
+              (e.currentTarget as HTMLButtonElement).style.color = 'var(--color-lx-text-muted)';
+            }}
+          >
+            <X size={11} strokeWidth={2} />
+          </motion.button>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
+}
+
+// ─── Progress Section ────────────────────────────────────────────────────────
+
+const PROGRESS_SEGMENTS = [
+  { key: 'mastered', label: 'Mastered', color: '#E63946' },
+  { key: 'strong',   label: 'Strong',   color: '#2ECC71' },
+  { key: 'familiar', label: 'Familiar', color: '#60a5fa' },
+  { key: 'learning', label: 'Learning', color: '#F4A828' },
+  { key: 'new',      label: 'New',      color: '#4B5563' },
+] as const;
+
+function ProgressSection({
+  breakdown,
+  hasPaidAccess,
+}: {
+  breakdown: MasteryBreakdown;
+  hasPaidAccess: boolean;
+}) {
+  const pool = hasPaidAccess ? PAID_WORD_POOL : FREE_WORD_POOL;
+  const total = Object.values(breakdown).reduce((s, n) => s + n, 0);
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 10 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ type: 'spring' as const, stiffness: 260, damping: 26, delay: 0.35 }}
+    >
+      {/* Header row */}
+      <div style={{
+        display:        'flex',
+        alignItems:     'baseline',
+        justifyContent: 'space-between',
+        marginBottom:   10,
+      }}>
+        <p style={{
+          fontFamily:    "'Sora', sans-serif",
+          fontSize:      '0.58rem',
+          fontWeight:    600,
+          letterSpacing: '0.16em',
+          textTransform: 'uppercase',
+          color:         'var(--color-lx-text-muted)',
+          margin:        0,
+        }}>
+          Word Mastery
+        </p>
+        <div style={{ display: 'flex', alignItems: 'baseline', gap: 4 }}>
+          <span style={{
+            fontFamily: "'Cormorant Garamond', serif",
+            fontSize:   '1.1rem',
+            fontWeight: 700,
+            color:      'var(--color-lx-text-primary)',
+            lineHeight: 1,
+          }}>
+            {total}
+          </span>
+          <span style={{
+            fontFamily: "'Sora', sans-serif",
+            fontSize:   '0.58rem',
+            color:      'var(--color-lx-text-muted)',
+          }}>
+            / {pool}
+          </span>
+        </div>
+      </div>
+
+      {/* Segmented bar */}
+      <div style={{
+        display:      'flex',
+        height:       8,
+        borderRadius: 4,
+        overflow:     'hidden',
+        background:   'var(--color-lx-elevated)',
+        gap:          1,
+        boxShadow:    'inset 0 1px 2px rgba(0,0,0,0.25)',
+      }}>
+        {PROGRESS_SEGMENTS.map((seg, i) => {
+          const value = breakdown[seg.key];
+          if (value === 0) return null;
+          const pct = (value / pool) * 100;
+          return (
+            <motion.div
+              key={seg.key}
+              initial={{ width: 0 }}
+              animate={{ width: `${pct}%` }}
+              transition={{
+                type: 'spring' as const,
+                stiffness: 180,
+                damping: 22,
+                delay: 0.4 + i * 0.06,
+              }}
+              style={{
+                background: seg.color,
+                minWidth:   value > 0 ? 3 : 0,
+                position:   'relative',
+                overflow:   'hidden',
+              }}
+            >
+              {/* Shine sweep on load */}
+              <motion.div
+                initial={{ x: '-100%' }}
+                animate={{ x: '200%' }}
+                transition={{ duration: 0.8, delay: 0.8 + i * 0.06, ease: 'easeOut' }}
+                style={{
+                  position:   'absolute',
+                  inset:      0,
+                  background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent)',
+                  pointerEvents: 'none',
+                }}
+              />
+            </motion.div>
+          );
+        })}
+      </div>
+
+      {/* Legend */}
+      <div style={{
+        display:    'flex',
+        flexWrap:   'wrap',
+        gap:        '6px 14px',
+        marginTop:  10,
+      }}>
+        {PROGRESS_SEGMENTS.map(seg => {
+          const value = breakdown[seg.key];
+          if (value === 0) return null;
+          return (
+            <div key={seg.key} style={{ display: 'flex', alignItems: 'center', gap: 5 }}>
+              <div style={{
+                width: 6, height: 6, borderRadius: '50%',
+                background: seg.color, flexShrink: 0,
+              }} />
+              <span style={{
+                fontFamily:    "'Sora', sans-serif",
+                fontSize:      '0.56rem',
+                color:         'var(--color-lx-text-muted)',
+                letterSpacing: '0.02em',
+              }}>
+                {seg.label} · {value}
+              </span>
+            </div>
+          );
+        })}
+      </div>
+    </motion.div>
+  );
+}
+
 // ─── Main HomeScreen ──────────────────────────────────────────────────────────
 
 export default function HomeScreen({ data }: { data: HomeData }) {
@@ -550,6 +860,11 @@ export default function HomeScreen({ data }: { data: HomeData }) {
       </motion.div>
 
       <Rule delay={0.08} />
+
+      {/* ── Daily AI message ───────────────────────────────────── */}
+      <div style={{ marginTop: '1rem' }}>
+        <DailyMessage />
+      </div>
 
       {/* ── Upgrade CTA (free users only) ────────────────────── */}
       {!data.hasPaidAccess && (
@@ -887,6 +1202,14 @@ export default function HomeScreen({ data }: { data: HomeData }) {
         </div>{/* end right column */}
 
       </div>{/* end grid */}
+
+      {/* ── Progress section ───────────────────────────────────── */}
+      <div style={{ marginTop: '2rem' }}>
+        <ProgressSection
+          breakdown={data.masteryBreakdown}
+          hasPaidAccess={data.hasPaidAccess}
+        />
+      </div>
 
       {/* ── Upgrade modal ──────────────────────────────────────── */}
       <AnimatePresence>

@@ -3,6 +3,7 @@ import {
   vocabFlashcardSessions, vocabThemes, vocabQuizSessions, vocabWords,
 } from '@/lib/db';
 import { eq, and, lte, count, sql, inArray } from 'drizzle-orm';
+import { FREE_WORD_POOL, PAID_WORD_POOL } from './constants';
 import { unstable_cache } from 'next/cache';
 import { VocabCacheTag } from './cache-keys';
 
@@ -153,8 +154,6 @@ async function _getHomeData(email: string): Promise<HomeData | null> {
   // ── Compute basics ────────────────────────────────────────────────────────
 
   const reviewedCount = reviewedToday[0]?.value ?? 0;
-  const dailyTarget   = progress.dailyTarget ?? 10;
-  const goalProgress  = Math.min(100, Math.round((reviewedCount / dailyTarget) * 100));
   const dueWordsCount = dueResult[0]?.value ?? 0;
 
   // ── Mastery breakdown ─────────────────────────────────────────────────────
@@ -207,13 +206,32 @@ async function _getHomeData(email: string): Promise<HomeData | null> {
   const isAdmin     = user.role === 'admin' || user.role === 'super_admin';
   const hasPaidAccess = isAdmin || accessRows.length > 0;
 
+  // ── Dynamic daily target ───────────────────────────────────────────────────
+  // Recalculate from deadline + remaining words so stale onboarding values
+  // auto-correct after a long absence (e.g. skip a month → pace increases).
+
+  const pool         = hasPaidAccess ? PAID_WORD_POOL : FREE_WORD_POOL;
+  const masteredWords = breakdown.mastered + breakdown.strong;
+  const remainingWords = Math.max(0, pool - masteredWords);
+
+  let dynamicDailyTarget = progress.dailyTarget ?? 10;
+  if (progress.deadline) {
+    const msLeft   = progress.deadline.getTime() - Date.now();
+    const daysLeft = Math.ceil(msLeft / 86_400_000);
+    if (daysLeft > 0) {
+      dynamicDailyTarget = Math.max(1, Math.ceil(remainingWords / daysLeft));
+    }
+  }
+
+  const goalProgress = Math.min(100, Math.round((reviewedCount / dynamicDailyTarget) * 100));
+
   return {
     userName:         user.name,
     streakDays:       progress.streakDays,
     totalPoints:      progress.totalPoints,
     weeklyPoints:     progress.weeklyPoints,
     dueWordsCount,
-    dailyTarget,
+    dailyTarget:      dynamicDailyTarget,
     goalProgress,
     deadline:         progress.deadline ? progress.deadline.toISOString() : null,
     lastStudyUnit:    lastSession[0]?.themeName ?? null,

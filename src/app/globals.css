@@ -243,6 +243,12 @@ textarea::placeholder {
   .hide-scrollbar::-webkit-scrollbar { display: none; }
 }
 
+/* Daily message skeleton shimmer */
+@keyframes shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
 /* Page transition — opacity-only so the animation never creates a CSS
    containing block (transform would break position:fixed children). */
 @keyframes lx-page-in {

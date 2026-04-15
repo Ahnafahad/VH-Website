@@ -204,6 +204,8 @@ export const vocabUserProgress = sqliteTable('vocab_user_progress', {
   notificationsEnabled: integer('notifications_enabled', { mode: 'boolean' }).notNull().default(false),
   emailSummaryEnabled:  integer('email_summary_enabled', { mode: 'boolean' }).notNull().default(true),
   pushSubscription:     text('push_subscription'), // JSON string of PushSubscriptionJSON
+  dailyMessage:         text('daily_message'),
+  dailyMessageDate:     text('daily_message_date'),  // ISO date string "2026-04-15"
   createdAt:            integer('created_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
   updatedAt:            integer('updated_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
 });
