@@ -3,10 +3,9 @@
 import { useState, useMemo } from 'react';
 import { motion, AnimatePresence, Variants } from 'framer-motion';
 import { useRouter } from 'next/navigation';
-import type { PracticePageData } from '@/lib/vocab/practice-data';
-import type { LetterSummary } from '@/lib/vocab/letter-data';
+import type { PracticePageData, PracticeUnitItem } from '@/lib/vocab/practice-data';
 
-type PracticeTab = 'theme' | 'letter';
+type PracticeTab = 'unit' | 'letter';
 
 // ─── Tab switcher ─────────────────────────────────────────────────────────────
 
@@ -17,7 +16,7 @@ function TabSwitcher({ active, onChange }: { active: PracticeTab; onChange: (t: 
       borderBottom: '1px solid var(--color-lx-border)',
       marginBottom: '1rem', position: 'relative',
     }}>
-      {(['theme', 'letter'] as PracticeTab[]).map(tab => (
+      {(['unit', 'letter'] as PracticeTab[]).map(tab => (
         <button
           key={tab}
           onClick={() => onChange(tab)}
@@ -30,7 +29,7 @@ function TabSwitcher({ active, onChange }: { active: PracticeTab; onChange: (t: 
             position: 'relative',
           }}
         >
-          {tab === 'theme' ? 'By Theme' : 'By Letter'}
+          {tab === 'unit' ? 'By Unit' : 'By Letter'}
           {active === tab && (
             <motion.div
               layoutId="practice-tab-indicator"
@@ -50,7 +49,7 @@ function TabSwitcher({ active, onChange }: { active: PracticeTab; onChange: (t: 
 // ─── Letter grid card ─────────────────────────────────────────────────────────
 
 interface LetterCardProps {
-  summary:  LetterSummary;
+  summary:  import('@/lib/vocab/letter-data').LetterSummary;
   selected: boolean;
   onToggle: () => void;
 }
@@ -85,7 +84,6 @@ function LetterCard({ summary, selected, onToggle }: LetterCardProps) {
         width: '100%',
       }}
     >
-      {/* Selection indicator */}
       {selected && (
         <motion.div
           initial={{ scale: 0, opacity: 0 }}
@@ -105,34 +103,22 @@ function LetterCard({ summary, selected, onToggle }: LetterCardProps) {
           </svg>
         </motion.div>
       )}
-
-      {/* Letter */}
       <span style={{
         fontFamily: "'Cormorant Garamond', Georgia, serif",
         fontSize: '2rem', fontWeight: 700,
         color: selected ? 'var(--color-lx-accent-red)' : 'var(--color-lx-text-primary)',
-        lineHeight: 1,
-        transition: 'color 0.18s',
+        lineHeight: 1, transition: 'color 0.18s',
       }}>
         {summary.letter}
       </span>
-
-      {/* Mastered / Total */}
       <span style={{
         fontFamily: "'Sora', sans-serif",
         fontSize: '0.6rem', fontWeight: 600,
-        color: 'var(--color-lx-text-secondary)',
-        lineHeight: 1,
+        color: 'var(--color-lx-text-secondary)', lineHeight: 1,
       }}>
         {summary.familiarPlusCount}/{summary.wordCount}
       </span>
-
-      {/* Progress bar */}
-      <div style={{
-        width: '100%', height: 3,
-        background: 'var(--color-lx-elevated)',
-        borderRadius: 2, overflow: 'hidden',
-      }}>
+      <div style={{ width: '100%', height: 3, background: 'var(--color-lx-elevated)', borderRadius: 2, overflow: 'hidden' }}>
         <motion.div
           initial={{ width: 0 }}
           animate={{ width: `${masteryPctInt}%` }}
@@ -140,13 +126,10 @@ function LetterCard({ summary, selected, onToggle }: LetterCardProps) {
           style={{ height: '100%', background: barColor, borderRadius: 2 }}
         />
       </div>
-
-      {/* Mastery % */}
       <span style={{
         fontFamily: "'Sora', sans-serif",
         fontSize: '0.55rem', fontWeight: 500,
-        color: masteryPctInt > 0 ? barColor : 'var(--color-lx-text-muted)',
-        lineHeight: 1,
+        color: masteryPctInt > 0 ? barColor : 'var(--color-lx-text-muted)', lineHeight: 1,
       }}>
         {masteryPctInt}%
       </span>
@@ -154,7 +137,7 @@ function LetterCard({ summary, selected, onToggle }: LetterCardProps) {
   );
 }
 
-// ─── Animated SVG checkbox ────────────────────────────────────────────────────
+// ─── Animated checkbox ────────────────────────────────────────────────────────
 
 function AnimatedCheck({ checked }: { checked: boolean }) {
   return (
@@ -177,24 +160,61 @@ function AnimatedCheck({ checked }: { checked: boolean }) {
         strokeLinejoin="round"
         fill="none"
         initial={{ pathLength: 0, opacity: 0 }}
-        animate={{
-          pathLength: checked ? 1 : 0,
-          opacity:    checked ? 1 : 0,
-        }}
+        animate={{ pathLength: checked ? 1 : 0, opacity: checked ? 1 : 0 }}
         transition={{ duration: 0.28, ease: 'easeOut' }}
       />
     </svg>
   );
 }
 
-// ─── Unit card ────────────────────────────────────────────────────────────────
+// ─── Tri-state unit checkbox (none / partial / all) ───────────────────────────
 
-const cardVariants: Variants = {
-  hidden: { opacity: 0, y: 14 },
-  show:   { opacity: 1, y: 0, transition: { type: 'spring' as const, stiffness: 340, damping: 28 } },
-};
+function UnitCheckbox({ state }: { state: 'none' | 'partial' | 'all' }) {
+  return (
+    <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
+      <motion.rect
+        x="1" y="1" width="20" height="20" rx="5"
+        stroke="var(--color-lx-accent-gold)"
+        strokeWidth="1.5"
+        animate={{
+          strokeOpacity: state === 'none' ? 0.3 : 1,
+          fill: state === 'all'
+            ? 'rgba(212,175,55,0.2)'
+            : state === 'partial'
+              ? 'rgba(212,175,55,0.08)'
+              : 'transparent',
+        }}
+        transition={{ duration: 0.18 }}
+      />
+      {/* Partial: dash */}
+      <motion.line
+        x1="6.5" y1="11" x2="15.5" y2="11"
+        stroke="var(--color-lx-accent-gold)"
+        strokeWidth="2"
+        strokeLinecap="round"
+        initial={false}
+        animate={{ opacity: state === 'partial' ? 1 : 0, scaleX: state === 'partial' ? 1 : 0 }}
+        transition={{ duration: 0.2 }}
+      />
+      {/* All: checkmark */}
+      <motion.path
+        d="M6 11.5l3.5 3.5 6.5-7"
+        stroke="var(--color-lx-accent-gold)"
+        strokeWidth="1.75"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        fill="none"
+        initial={false}
+        animate={{ pathLength: state === 'all' ? 1 : 0, opacity: state === 'all' ? 1 : 0 }}
+        transition={{ duration: 0.28, ease: 'easeOut' }}
+      />
+    </svg>
+  );
+}
 
-interface ThemeCardProps {
+// ─── Theme row (inside accordion) ────────────────────────────────────────────
+
+interface ThemeRowProps {
   name:          string;
   wordCount:     number;
   masteredCount: number;
@@ -202,76 +222,78 @@ interface ThemeCardProps {
   onToggle:      () => void;
 }
 
-function ThemeCard({ name, wordCount, masteredCount, selected, onToggle }: ThemeCardProps) {
+function ThemeRow({ name, wordCount, masteredCount, selected, onToggle }: ThemeRowProps) {
   const masteredPct = wordCount > 0 ? Math.round((masteredCount / wordCount) * 100) : 0;
 
   return (
     <motion.button
-      variants={cardVariants}
       onClick={onToggle}
-      whileTap={{ scale: 0.975 }}
+      whileTap={{ scale: 0.98 }}
       className="w-full text-left"
       style={{ cursor: 'pointer' }}
     >
       <motion.div
         animate={{
-          borderColor: selected ? 'rgba(230,57,70,0.45)' : 'var(--color-lx-border)',
-          background:  selected ? 'rgba(230,57,70,0.05)' : 'var(--color-lx-surface)',
-          boxShadow:   selected ? '0 0 0 1px rgba(230,57,70,0.25) inset' : 'none',
+          borderColor: selected ? 'rgba(230,57,70,0.35)' : 'var(--color-lx-border)',
+          background:  selected ? 'rgba(230,57,70,0.05)' : 'transparent',
         }}
-        transition={{ duration: 0.2 }}
-        className="flex items-center gap-4 rounded-2xl px-4 py-4"
-        style={{ border: '1px solid var(--color-lx-border)' }}
+        transition={{ duration: 0.18 }}
+        style={{
+          display: 'flex', alignItems: 'center', gap: 12,
+          border: '1px solid var(--color-lx-border)',
+          borderRadius: 14, padding: '0.75rem 1rem',
+          marginLeft: 4,
+        }}
       >
-        {/* Left: name + meta */}
-        <div className="flex flex-1 flex-col gap-1.5 min-w-0">
-          <span
-            className="truncate font-semibold"
-            style={{
-              fontFamily: "'Sora', sans-serif",
-              fontSize:   '0.95rem',
-              color:      'var(--color-lx-text-primary)',
-            }}
-          >
+        {/* Left bar accent when selected */}
+        <motion.div
+          animate={{ opacity: selected ? 1 : 0, scaleY: selected ? 1 : 0.4 }}
+          transition={{ duration: 0.2 }}
+          style={{
+            width: 2, height: 28, borderRadius: 1, flexShrink: 0,
+            background: 'var(--color-lx-accent-red)',
+            transformOrigin: 'center',
+          }}
+        />
+
+        <div style={{ flex: 1, minWidth: 0, display: 'flex', flexDirection: 'column', gap: 4 }}>
+          <span style={{
+            fontFamily: "'Sora', sans-serif",
+            fontSize: '0.875rem', fontWeight: 600,
+            color: 'var(--color-lx-text-primary)',
+            display: 'block', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap',
+          }}>
             {name}
           </span>
-
-          <div className="flex items-center gap-3">
-            <span
-              className="text-xs"
-              style={{ color: 'var(--color-lx-text-muted)', fontFamily: "'Sora', sans-serif" }}
-            >
+          <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+            <span style={{
+              fontFamily: "'Sora', sans-serif",
+              fontSize: '0.7rem', color: 'var(--color-lx-text-muted)',
+            }}>
               {wordCount} words
             </span>
             {masteredCount > 0 && (
-              <span
-                className="text-xs"
-                style={{ color: 'var(--color-lx-success)', fontFamily: "'Sora', sans-serif" }}
-              >
+              <span style={{
+                fontFamily: "'Sora', sans-serif",
+                fontSize: '0.7rem', color: 'var(--color-lx-success)',
+              }}>
                 {masteredPct}% mastered
               </span>
             )}
           </div>
-
-          {/* Micro progress bar */}
           {wordCount > 0 && (
-            <div
-              className="overflow-hidden rounded-full"
-              style={{ height: 2, background: 'var(--color-lx-elevated)', width: '100%' }}
-            >
+            <div style={{ height: 2, background: 'var(--color-lx-elevated)', borderRadius: 1, overflow: 'hidden', width: '100%' }}>
               <motion.div
-                className="h-full rounded-full"
-                style={{ background: 'var(--color-lx-success)' }}
+                style={{ height: '100%', background: 'var(--color-lx-success)', borderRadius: 1 }}
                 initial={{ width: 0 }}
                 animate={{ width: `${masteredPct}%` }}
-                transition={{ duration: 0.6, ease: 'easeOut', delay: 0.1 }}
+                transition={{ duration: 0.55, ease: 'easeOut', delay: 0.05 }}
               />
             </div>
           )}
         </div>
 
-        {/* Right: animated checkbox */}
-        <div className="shrink-0">
+        <div style={{ flexShrink: 0 }}>
           <AnimatedCheck checked={selected} />
         </div>
       </motion.div>
@@ -279,24 +301,227 @@ function ThemeCard({ name, wordCount, masteredCount, selected, onToggle }: Theme
   );
 }
 
-// ─── Main component ───────────────────────────────────────────────────────────
+// ─── Unit accordion card ──────────────────────────────────────────────────────
 
-const containerVariants: Variants = {
-  hidden: {},
-  show:   { transition: { staggerChildren: 0.055 } },
+const accordionBodyVariants: Variants = {
+  collapsed: { height: 0, opacity: 0 },
+  expanded:  { height: 'auto', opacity: 1, transition: { height: { type: 'spring' as const, stiffness: 380, damping: 36 }, opacity: { duration: 0.2 } } },
 };
+
+interface UnitAccordionCardProps {
+  unit:           PracticeUnitItem;
+  expanded:       boolean;
+  onToggleExpand: () => void;
+  selected:       Set<number>;
+  onToggleTheme:  (id: number) => void;
+  onSelectAll:    () => void;
+  index:          number;
+}
+
+function UnitAccordionCard({ unit, expanded, onToggleExpand, selected, onToggleTheme, onSelectAll, index }: UnitAccordionCardProps) {
+  const selectedCount = unit.themes.filter(t => selected.has(t.id)).length;
+  const selectionState: 'none' | 'partial' | 'all' =
+    selectedCount === 0 ? 'none' :
+    selectedCount === unit.themes.length ? 'all' : 'partial';
+
+  const masteredPct = unit.totalWords > 0 ? Math.round((unit.totalMastered / unit.totalWords) * 100) : 0;
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 12 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ type: 'spring' as const, stiffness: 320, damping: 28, delay: index * 0.04 }}
+      style={{
+        border: selectionState !== 'none'
+          ? '1px solid rgba(212,175,55,0.35)'
+          : '1px solid var(--color-lx-border)',
+        borderRadius: 18,
+        overflow: 'hidden',
+        background: selectionState !== 'none'
+          ? 'rgba(212,175,55,0.03)'
+          : 'var(--color-lx-surface)',
+        transition: 'border-color 0.2s, background 0.2s',
+      }}
+    >
+      {/* ── Unit header ── */}
+      <div style={{ display: 'flex', alignItems: 'stretch' }}>
+        {/* Expand toggle — takes up most of the row */}
+        <button
+          onClick={onToggleExpand}
+          style={{
+            flex: 1, display: 'flex', alignItems: 'center', gap: 12,
+            padding: '1rem 0.75rem 1rem 1rem',
+            background: 'none', border: 'none', cursor: 'pointer', textAlign: 'left',
+          }}
+        >
+          {/* Chevron */}
+          <motion.svg
+            width="16" height="16" viewBox="0 0 16 16" fill="none"
+            animate={{ rotate: expanded ? 90 : 0 }}
+            transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+            style={{ flexShrink: 0, color: 'var(--color-lx-text-muted)' }}
+          >
+            <path d="M6 4l4 4-4 4" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" />
+          </motion.svg>
+
+          {/* Name + stats */}
+          <div style={{ flex: 1, minWidth: 0 }}>
+            <div style={{ display: 'flex', alignItems: 'baseline', gap: 8, flexWrap: 'wrap' }}>
+              <span style={{
+                fontFamily: "'Cormorant Garamond', serif",
+                fontSize: '1.05rem', fontWeight: 700, fontStyle: 'italic',
+                color: 'var(--color-lx-text-primary)', lineHeight: 1.2,
+              }}>
+                {unit.name}
+              </span>
+              {selectedCount > 0 && (
+                <motion.span
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.8 }}
+                  style={{
+                    fontFamily: "'Sora', sans-serif",
+                    fontSize: '0.65rem', fontWeight: 700,
+                    color: 'var(--color-lx-accent-gold)',
+                    background: 'rgba(212,175,55,0.15)',
+                    border: '1px solid rgba(212,175,55,0.3)',
+                    borderRadius: 6, padding: '1px 6px',
+                    letterSpacing: '0.02em',
+                  }}
+                >
+                  {selectedCount}/{unit.themes.length}
+                </motion.span>
+              )}
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginTop: 3 }}>
+              <span style={{
+                fontFamily: "'Sora', sans-serif",
+                fontSize: '0.7rem', color: 'var(--color-lx-text-muted)',
+              }}>
+                {unit.totalWords} words
+              </span>
+              {unit.totalMastered > 0 && (
+                <span style={{
+                  fontFamily: "'Sora', sans-serif",
+                  fontSize: '0.7rem', color: 'var(--color-lx-success)',
+                }}>
+                  {masteredPct}% mastered
+                </span>
+              )}
+              <span style={{
+                fontFamily: "'Sora', sans-serif",
+                fontSize: '0.7rem', color: 'var(--color-lx-text-muted)',
+              }}>
+                · {unit.themes.length} {unit.themes.length === 1 ? 'theme' : 'themes'}
+              </span>
+            </div>
+          </div>
+        </button>
+
+        {/* Tri-state unit select-all button */}
+        <button
+          onClick={(e) => { e.stopPropagation(); onSelectAll(); }}
+          style={{
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            padding: '1rem 1rem',
+            background: 'none', border: 'none', cursor: 'pointer',
+            borderLeft: '1px solid var(--color-lx-border)',
+          }}
+          title={selectionState === 'all' ? 'Deselect all themes in this unit' : 'Select all themes in this unit'}
+        >
+          <UnitCheckbox state={selectionState} />
+        </button>
+      </div>
+
+      {/* ── Progress micro-bar ── */}
+      {unit.totalWords > 0 && (
+        <div style={{ height: 2, background: 'var(--color-lx-elevated)', margin: '0 1rem' }}>
+          <motion.div
+            style={{ height: '100%', background: 'var(--color-lx-success)' }}
+            initial={{ width: 0 }}
+            animate={{ width: `${masteredPct}%` }}
+            transition={{ duration: 0.7, ease: 'easeOut', delay: index * 0.04 + 0.2 }}
+          />
+        </div>
+      )}
+
+      {/* ── Accordion body: themes ── */}
+      <AnimatePresence initial={false}>
+        {expanded && (
+          <motion.div
+            key="body"
+            variants={accordionBodyVariants}
+            initial="collapsed"
+            animate="expanded"
+            exit="collapsed"
+            style={{ overflow: 'hidden' }}
+          >
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 6, padding: '0.75rem 0.75rem 0.875rem' }}>
+              {unit.themes.map(theme => (
+                <ThemeRow
+                  key={theme.id}
+                  name={theme.name}
+                  wordCount={theme.wordCount}
+                  masteredCount={theme.masteredCount}
+                  selected={selected.has(theme.id)}
+                  onToggle={() => onToggleTheme(theme.id)}
+                />
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.div>
+  );
+}
+
+// ─── Main component ───────────────────────────────────────────────────────────
 
 export default function PracticeScreen({ data }: { data: PracticePageData }) {
   const router = useRouter();
-  const [activeTab, setActiveTab] = useState<PracticeTab>('theme');
-  const [selected, setSelected] = useState<Set<number>>(new Set());
+  const [activeTab, setActiveTab]         = useState<PracticeTab>('unit');
+  const [selected, setSelected]           = useState<Set<number>>(new Set());
   const [selectedLetters, setSelectedLetters] = useState<Set<string>>(new Set());
+  const [expandedUnits, setExpandedUnits] = useState<Set<number>>(new Set());
 
-  const toggle = (id: number) => {
+  // Flat list of all themes across all units
+  const allThemes = useMemo(
+    () => data.units.flatMap(u => u.themes),
+    [data.units],
+  );
+  const allThemeIds = useMemo(
+    () => allThemes.map(t => t.id),
+    [allThemes],
+  );
+
+  const toggleTheme = (id: number) => {
     setSelected(prev => {
       const next = new Set(prev);
       if (next.has(id)) next.delete(id);
       else next.add(id);
+      return next;
+    });
+  };
+
+  const toggleUnitExpand = (unitId: number) => {
+    setExpandedUnits(prev => {
+      const next = new Set(prev);
+      if (next.has(unitId)) next.delete(unitId);
+      else next.add(unitId);
+      return next;
+    });
+  };
+
+  const selectAllInUnit = (unit: PracticeUnitItem) => {
+    const unitThemeIds = unit.themes.map(t => t.id);
+    const allSelected  = unitThemeIds.every(id => selected.has(id));
+    setSelected(prev => {
+      const next = new Set(prev);
+      if (allSelected) {
+        unitThemeIds.forEach(id => next.delete(id));
+      } else {
+        unitThemeIds.forEach(id => next.add(id));
+      }
       return next;
     });
   };
@@ -310,39 +535,30 @@ export default function PracticeScreen({ data }: { data: PracticePageData }) {
     });
   };
 
-  const selectedThemes = useMemo(
-    () => data.themes.filter(t => selected.has(t.id)),
-    [data.themes, selected],
-  );
-
   const totalSelectedWords = useMemo(
-    () => selectedThemes.reduce((s, t) => s + t.wordCount, 0),
-    [selectedThemes],
+    () => allThemes.filter(t => selected.has(t.id)).reduce((s, t) => s + t.wordCount, 0),
+    [allThemes, selected],
   );
 
-  const totalLetterWords = useMemo(() => {
-    return data.letters
-      .filter(l => selectedLetters.has(l.letter))
-      .reduce((s, l) => s + l.wordCount, 0);
-  }, [data.letters, selectedLetters]);
+  const totalLetterWords = useMemo(
+    () => data.letters.filter(l => selectedLetters.has(l.letter)).reduce((s, l) => s + l.wordCount, 0),
+    [data.letters, selectedLetters],
+  );
 
   const handleStart = () => {
-    if (activeTab === 'theme') {
+    if (activeTab === 'unit') {
       if (selected.size === 0) return;
-      const param = Array.from(selected).join(',');
-      router.push(`/vocab/practice/quiz?themes=${param}`);
+      router.push(`/vocab/practice/quiz?themes=${Array.from(selected).join(',')}`);
     } else {
       if (selectedLetters.size === 0) return;
-      const wordIds = data.letters
-        .filter(l => selectedLetters.has(l.letter))
-        .flatMap(l => l.wordIds);
+      const wordIds = data.letters.filter(l => selectedLetters.has(l.letter)).flatMap(l => l.wordIds);
       if (wordIds.length === 0) return;
       router.push(`/vocab/practice/quiz?wordIds=${wordIds.join(',')}`);
     }
   };
 
-  /* ── Empty state: no themes ── */
-  if (data.themes.length === 0) {
+  /* ── Empty state ── */
+  if (data.units.length === 0) {
     return (
       <div className="flex flex-col items-center justify-center gap-5 px-6 pt-24 text-center">
         <motion.div
@@ -350,32 +566,27 @@ export default function PracticeScreen({ data }: { data: PracticePageData }) {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ type: 'spring' as const, stiffness: 280, damping: 20 }}
         >
-          <p
-            style={{
-              fontFamily: "'Cormorant Garamond', serif",
-              fontSize:   '1.8rem',
-              fontWeight: 700,
-              fontStyle:  'italic',
-              color:      'var(--color-lx-text-primary)',
-            }}
-          >
+          <p style={{
+            fontFamily: "'Cormorant Garamond', serif",
+            fontSize: '1.8rem', fontWeight: 700, fontStyle: 'italic',
+            color: 'var(--color-lx-text-primary)',
+          }}>
             No units yet
           </p>
-          <p
-            className="mt-2 text-sm"
-            style={{ color: 'var(--color-lx-text-muted)', fontFamily: "'Sora', sans-serif" }}
-          >
-            Themes will appear here once the word bank is loaded.
+          <p className="mt-2 text-sm" style={{ color: 'var(--color-lx-text-muted)', fontFamily: "'Sora', sans-serif" }}>
+            Units will appear here once the word bank is loaded.
           </p>
         </motion.div>
       </div>
     );
   }
 
+  const showCta = (activeTab === 'unit' && selected.size > 0) || (activeTab === 'letter' && selectedLetters.size > 0);
+
   return (
     <div
       className="flex flex-col md:max-w-2xl md:mx-auto md:w-full"
-      style={{ minHeight: 'calc(100dvh - 72px)', paddingBottom: (activeTab === 'theme' && selected.size > 0) || (activeTab === 'letter' && selectedLetters.size > 0) ? 112 : 32 }}
+      style={{ minHeight: 'calc(100dvh - 72px)', paddingBottom: showCta ? 112 : 32 }}
     >
       {/* ── Header ── */}
       <div className="px-5 pt-10 pb-6 md:px-8 md:pt-12">
@@ -394,14 +605,11 @@ export default function PracticeScreen({ data }: { data: PracticePageData }) {
           transition={{ duration: 0.35, delay: 0.05 }}
           style={{
             fontFamily: "'Cormorant Garamond', serif",
-            fontSize:   'clamp(2rem, 8vw, 2.5rem)',
-            fontWeight: 700,
-            fontStyle:  'italic',
-            lineHeight: 1.05,
-            color:      'var(--color-lx-text-primary)',
+            fontSize: 'clamp(2rem, 8vw, 2.5rem)', fontWeight: 700, fontStyle: 'italic',
+            lineHeight: 1.05, color: 'var(--color-lx-text-primary)',
           }}
         >
-          {activeTab === 'theme' ? 'Select Themes' : 'Select Letters'}
+          {activeTab === 'unit' ? 'Select Units' : 'Select Letters'}
         </motion.h1>
         <motion.p
           initial={{ opacity: 0 }}
@@ -410,63 +618,65 @@ export default function PracticeScreen({ data }: { data: PracticePageData }) {
           className="mt-2 text-sm"
           style={{ color: 'var(--color-lx-text-secondary)', fontFamily: "'Sora', sans-serif" }}
         >
-          {activeTab === 'theme' ? 'Choose which themes to include in your practice quiz' : 'Tap letters to include in your practice quiz'}
+          {activeTab === 'unit'
+            ? 'Select a whole unit or pick individual themes to include'
+            : 'Tap letters to include in your practice quiz'}
         </motion.p>
       </div>
 
       {/* ── Tab switcher ── */}
       <div className="px-5 md:px-8">
-        <TabSwitcher active={activeTab} onChange={(t) => { setActiveTab(t); setSelected(new Set()); setSelectedLetters(new Set()); }} />
+        <TabSwitcher
+          active={activeTab}
+          onChange={(t) => { setActiveTab(t); setSelected(new Set()); setSelectedLetters(new Set()); }}
+        />
       </div>
 
       <AnimatePresence mode="wait">
-        {activeTab === 'theme' ? (
+        {activeTab === 'unit' ? (
           <motion.div
-            key="theme-tab"
+            key="unit-tab"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.15 }}
           >
-            {/* ── Select all / deselect all ── */}
+            {/* ── Global select all / deselect all ── */}
             <div className="px-5 mb-3 flex items-center justify-between md:px-8">
               <span
                 className="text-xs uppercase tracking-widest font-medium"
                 style={{ color: 'var(--color-lx-text-muted)', fontFamily: "'Sora', sans-serif" }}
               >
-                {data.themes.length} themes
+                {data.units.length} units · {allThemes.length} themes
               </span>
               <motion.button
                 whileTap={{ scale: 0.94 }}
                 onClick={() => {
-                  if (selected.size === data.themes.length) setSelected(new Set());
-                  else setSelected(new Set(data.themes.map(t => t.id)));
+                  if (selected.size === allThemeIds.length) setSelected(new Set());
+                  else setSelected(new Set(allThemeIds));
                 }}
                 className="text-xs font-semibold"
                 style={{ color: 'var(--color-lx-accent-red)', fontFamily: "'Sora', sans-serif" }}
               >
-                {selected.size === data.themes.length ? 'Deselect all' : 'Select all'}
+                {selected.size === allThemeIds.length ? 'Deselect all' : 'Select all'}
               </motion.button>
             </div>
 
-            {/* ── Theme list ── */}
-            <motion.div
-              variants={containerVariants}
-              initial="hidden"
-              animate="show"
-              className="flex flex-col gap-2.5 px-5 md:px-8"
-            >
-              {data.themes.map(theme => (
-                <ThemeCard
-                  key={theme.id}
-                  name={theme.name}
-                  wordCount={theme.wordCount}
-                  masteredCount={theme.masteredCount}
-                  selected={selected.has(theme.id)}
-                  onToggle={() => toggle(theme.id)}
+            {/* ── Unit accordion list ── */}
+            <div className="flex flex-col gap-2.5 px-5 md:px-8 pb-4">
+              {data.units.map((unit, i) => (
+                <UnitAccordionCard
+                  key={unit.id}
+                  unit={unit}
+                  index={i}
+                  expanded={expandedUnits.has(unit.id)}
+                  onToggleExpand={() => toggleUnitExpand(unit.id)}
+                  selected={selected}
+                  onToggleTheme={toggleTheme}
+                  onSelectAll={() => selectAllInUnit(unit)}
                 />
               ))}
-            </motion.div>
+            </div>
           </motion.div>
         ) : (
           <motion.div
@@ -482,11 +692,7 @@ export default function PracticeScreen({ data }: { data: PracticePageData }) {
                 No words in the library yet.
               </p>
             ) : (
-              <div style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fill, minmax(80px, 1fr))',
-                gap: 10,
-              }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(80px, 1fr))', gap: 10 }}>
                 {data.letters.map((summary, i) => (
                   <motion.div
                     key={summary.letter}
@@ -508,36 +714,29 @@ export default function PracticeScreen({ data }: { data: PracticePageData }) {
       </AnimatePresence>
 
       {/* ── Floating Start Practice button ── */}
-      {/* CSS-only show/hide — Framer Motion y:80 initial gets stuck on mobile,
-          and transform-based animations break position:fixed children. */}
-      {(() => {
-        const show = (activeTab === 'theme' && selected.size > 0) || (activeTab === 'letter' && selectedLetters.size > 0);
-        return (
-          <div
-            className="lx-practice-cta"
-            style={{ opacity: show ? 1 : 0, pointerEvents: show ? 'auto' : 'none', transition: 'opacity 0.22s ease' }}
-          >
-            <motion.button
-              onClick={handleStart}
-              whileTap={{ scale: 0.97 }}
-              className="w-full md:max-w-2xl md:mx-auto rounded-2xl py-4 flex items-center justify-between px-6"
-              style={{ background: 'var(--color-lx-accent-red)', boxShadow: '0 4px 24px rgba(230,57,70,0.4)', fontFamily: "'Sora', sans-serif" }}
-            >
-              <div className="flex flex-col items-start">
-                <span className="text-base font-bold text-white leading-tight">Start Practice</span>
-                <span className="text-xs text-white/70 mt-0.5">
-                  {activeTab === 'theme'
-                    ? `${selected.size} theme${selected.size !== 1 ? 's' : ''} · up to ${Math.min(totalSelectedWords, 20)} questions`
-                    : `${selectedLetters.size} letter${selectedLetters.size !== 1 ? 's' : ''} · up to ${Math.min(totalLetterWords, 20)} questions`}
-                </span>
-              </div>
-              <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
-                <path d="M4 11h14M13 6l5 5-5 5" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </motion.button>
+      <div
+        className="lx-practice-cta"
+        style={{ opacity: showCta ? 1 : 0, pointerEvents: showCta ? 'auto' : 'none', transition: 'opacity 0.22s ease' }}
+      >
+        <motion.button
+          onClick={handleStart}
+          whileTap={{ scale: 0.97 }}
+          className="w-full md:max-w-2xl md:mx-auto rounded-2xl py-4 flex items-center justify-between px-6"
+          style={{ background: 'var(--color-lx-accent-red)', boxShadow: '0 4px 24px rgba(230,57,70,0.4)', fontFamily: "'Sora', sans-serif" }}
+        >
+          <div className="flex flex-col items-start">
+            <span className="text-base font-bold text-white leading-tight">Start Practice</span>
+            <span className="text-xs text-white/70 mt-0.5">
+              {activeTab === 'unit'
+                ? `${selected.size} theme${selected.size !== 1 ? 's' : ''} selected · up to ${Math.min(totalSelectedWords, 20)} questions`
+                : `${selectedLetters.size} letter${selectedLetters.size !== 1 ? 's' : ''} · up to ${Math.min(totalLetterWords, 20)} questions`}
+            </span>
           </div>
-        );
-      })()}
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
+            <path d="M4 11h14M13 6l5 5-5 5" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </motion.button>
+      </div>
     </div>
   );
 }

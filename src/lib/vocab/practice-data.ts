@@ -1,4 +1,4 @@
-import { db, users, vocabThemes, vocabUserWordRecords, vocabWords, vocabUserProgress } from '@/lib/db';
+import { db, users, vocabUnits, vocabThemes, vocabUserWordRecords, vocabWords, vocabUserProgress } from '@/lib/db';
 import { eq, and, lte, sql, inArray } from 'drizzle-orm';
 import { getLetterIndex, type LetterSummary } from '@/lib/vocab/letter-data';
 import { unstable_cache } from 'next/cache';
@@ -9,7 +9,7 @@ function safeParseArray(json: string | null): string[] {
   try { return JSON.parse(json); } catch { return []; }
 }
 
-// ─── Practice page data (theme + letter selection UI) ─────────────────────────
+// ─── Practice page data (unit + letter selection UI) ──────────────────────────
 
 export interface PracticeThemeItem {
   id:            number;
@@ -18,8 +18,17 @@ export interface PracticeThemeItem {
   masteredCount: number;
 }
 
+export interface PracticeUnitItem {
+  id:            number;
+  name:          string;
+  order:         number;
+  totalWords:    number;
+  totalMastered: number;
+  themes:        PracticeThemeItem[];
+}
+
 export interface PracticePageData {
-  themes:      PracticeThemeItem[];
+  units:       PracticeUnitItem[];
   letters:     LetterSummary[];
   totalPoints: number;
   streakDays:  number;
@@ -34,11 +43,16 @@ async function _getPracticePageData(email: string): Promise<PracticePageData | n
   if (!user) return null;
 
   // Parallelize all queries after user lookup
-  const [themes, wordCountRows, masteredRows, [progress], letters] = await Promise.all([
+  const [units, themes, wordCountRows, masteredRows, [progress], letters] = await Promise.all([
     db
-      .select({ id: vocabThemes.id, name: vocabThemes.name })
+      .select({ id: vocabUnits.id, name: vocabUnits.name, order: vocabUnits.order })
+      .from(vocabUnits)
+      .orderBy(vocabUnits.order),
+
+    db
+      .select({ id: vocabThemes.id, name: vocabThemes.name, unitId: vocabThemes.unitId })
       .from(vocabThemes)
-      .orderBy(vocabThemes.id),
+      .orderBy(vocabThemes.order),
 
     db
       .select({ themeId: vocabWords.themeId, count: sql<number>`count(*)`.as('count') })
@@ -69,15 +83,33 @@ async function _getPracticePageData(email: string): Promise<PracticePageData | n
   const wordCountMap = new Map(wordCountRows.map(r => [r.themeId, r.count]));
   const masteredMap  = new Map(masteredRows.map(r => [r.themeId, r.count]));
 
-  const themeItems: PracticeThemeItem[] = themes.map(t => ({
-    id:            t.id,
-    name:          t.name,
-    wordCount:     wordCountMap.get(t.id) ?? 0,
-    masteredCount: masteredMap.get(t.id) ?? 0,
-  }));
+  // Group themes under their parent unit (only include themes that have words)
+  const themesByUnit = new Map<number, PracticeThemeItem[]>();
+  for (const t of themes) {
+    const wordCount = wordCountMap.get(t.id) ?? 0;
+    if (wordCount === 0) continue;
+    const item: PracticeThemeItem = {
+      id:            t.id,
+      name:          t.name,
+      wordCount,
+      masteredCount: masteredMap.get(t.id) ?? 0,
+    };
+    const arr = themesByUnit.get(t.unitId) ?? [];
+    arr.push(item);
+    themesByUnit.set(t.unitId, arr);
+  }
+
+  const unitItems: PracticeUnitItem[] = units
+    .map(u => {
+      const unitThemes    = themesByUnit.get(u.id) ?? [];
+      const totalWords    = unitThemes.reduce((s, t) => s + t.wordCount, 0);
+      const totalMastered = unitThemes.reduce((s, t) => s + t.masteredCount, 0);
+      return { id: u.id, name: u.name, order: u.order, totalWords, totalMastered, themes: unitThemes };
+    })
+    .filter(u => u.themes.length > 0);
 
   return {
-    themes:      themeItems,
+    units:       unitItems,
     letters,
     totalPoints: progress?.totalPoints ?? 0,
     streakDays:  progress?.streakDays  ?? 0,
