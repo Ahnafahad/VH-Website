@@ -3,6 +3,7 @@ import { eq, and, lte, sql, inArray } from 'drizzle-orm';
 import { getLetterIndex, type LetterSummary } from '@/lib/vocab/letter-data';
 import { unstable_cache } from 'next/cache';
 import { VocabCacheTag } from './cache-keys';
+import { PHASE1_MAX_UNIT_ORDER } from './constants';
 
 function safeParseArray(json: string | null): string[] {
   if (!json) return [];
@@ -72,13 +73,24 @@ async function _getPracticePageData(email: string): Promise<PracticePageData | n
       .groupBy(vocabWords.themeId),
 
     db
-      .select({ totalPoints: vocabUserProgress.totalPoints, streakDays: vocabUserProgress.streakDays })
+      .select({
+        totalPoints: vocabUserProgress.totalPoints,
+        streakDays:  vocabUserProgress.streakDays,
+        phase:       vocabUserProgress.phase,
+      })
       .from(vocabUserProgress)
       .where(eq(vocabUserProgress.userId, user.id))
       .limit(1),
 
-    getLetterIndex(user.id),
+    // Defer letter index — needs phase info (resolved below)
+    Promise.resolve(null as LetterSummary[] | null),
   ]);
+
+  const phase = progress?.phase ?? 2;
+  const maxUnitOrder = phase === 2 ? PHASE1_MAX_UNIT_ORDER : undefined;
+
+  // Now fetch letter index with phase filtering
+  const filteredLetters = await getLetterIndex(user.id, maxUnitOrder);
 
   const wordCountMap = new Map(wordCountRows.map(r => [r.themeId, r.count]));
   const masteredMap  = new Map(masteredRows.map(r => [r.themeId, r.count]));
@@ -100,6 +112,7 @@ async function _getPracticePageData(email: string): Promise<PracticePageData | n
   }
 
   const unitItems: PracticeUnitItem[] = units
+    .filter(u => maxUnitOrder === undefined || u.order <= maxUnitOrder)
     .map(u => {
       const unitThemes    = themesByUnit.get(u.id) ?? [];
       const totalWords    = unitThemes.reduce((s, t) => s + t.wordCount, 0);
@@ -110,7 +123,7 @@ async function _getPracticePageData(email: string): Promise<PracticePageData | n
 
   return {
     units:       unitItems,
-    letters,
+    letters:     filteredLetters,
     totalPoints: progress?.totalPoints ?? 0,
     streakDays:  progress?.streakDays  ?? 0,
   };

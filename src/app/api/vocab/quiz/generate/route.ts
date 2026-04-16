@@ -37,6 +37,7 @@ import {
   rankByPriority,
   weightedSample,
 } from '@/lib/vocab/priority-score';
+import { filterAccessibleWordIds, canAccessTheme } from '@/lib/vocab/access-check';
 import type { WordForDistractor } from '@/lib/vocab/distractor-selector';
 import type { VocabQuestionType } from '@/lib/db/schema';
 import type { QuizQuestionInput, DifficultyLevel } from '@/lib/vocab/quiz-generator';
@@ -140,6 +141,11 @@ export async function POST(req: NextRequest) {
         throw new ApiException('themeId must be a number', 400);
       }
 
+      // Phase gate: phase-2 users cannot quiz locked themes
+      if (!(await canAccessTheme(user.id, themeId))) {
+        throw new ApiException('Theme is locked for your tier', 403);
+      }
+
       // Fetch all words in the theme
       const rawWords = await db
         .select()
@@ -179,6 +185,14 @@ export async function POST(req: NextRequest) {
       const { themeIds } = body as { themeIds: unknown };
       if (!Array.isArray(themeIds) || themeIds.length === 0) {
         throw new ApiException('themeIds must be a non-empty array', 400);
+      }
+
+      // Phase gate: reject the whole request if any theme is locked for the user
+      const accessChecks = await Promise.all(
+        (themeIds as number[]).map(id => canAccessTheme(user.id, id)),
+      );
+      if (accessChecks.some(ok => !ok)) {
+        throw new ApiException('One or more themes are locked for your tier', 403);
       }
 
       // Fetch all words in selected themes
@@ -250,10 +264,16 @@ export async function POST(req: NextRequest) {
         throw new ApiException('wordIds must be a non-empty array', 400);
       }
 
+      // Phase gate: strip out wordIds the user cannot access
+      const allowedIds = await filterAccessibleWordIds(user.id, wordIds as number[]);
+      if (allowedIds.length === 0) {
+        throw new ApiException('No accessible words in the provided wordIds for your tier', 403);
+      }
+
       const rawWords = await db
         .select()
         .from(vocabWords)
-        .where(inArray(vocabWords.id, wordIds as number[]));
+        .where(inArray(vocabWords.id, allowedIds));
 
       if (rawWords.length === 0) {
         throw new ApiException('No words found for the provided wordIds', 404);

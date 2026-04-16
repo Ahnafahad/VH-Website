@@ -30,6 +30,7 @@ import { VocabCacheTag } from '@/lib/vocab/cache-keys';
 import { nextSrsState, isLongGap }  from '@/lib/vocab/srs/engine';
 import { quizDelta, masteryLevel }  from '@/lib/vocab/mastery-score';
 import type { GeneratedQuestion }   from '@/lib/vocab/quiz-generator';
+import { canAccessWord }            from '@/lib/vocab/access-check';
 
 // ─── Point values (PRD Module 10) ────────────────────────────────────────────
 
@@ -80,6 +81,12 @@ export async function POST(req: NextRequest) {
     const questions = JSON.parse(session.questions) as GeneratedQuestion[];
     const question  = questions.find(q => q.id === questionId);
     if (!question) throw new ApiException('Question not found in session', 404);
+
+    // Phase gate: phase-2 users cannot answer questions about locked words.
+    // (The quiz/generate endpoint already filters these out, but defence-in-depth.)
+    if (!(await canAccessWord(user.id, question.correctWordId))) {
+      throw new ApiException('Word is locked for your tier', 403);
+    }
 
     // Check if already answered (no-repeat rule)
     const [existing] = await db

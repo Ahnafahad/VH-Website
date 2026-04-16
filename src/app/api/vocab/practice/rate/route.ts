@@ -12,6 +12,7 @@ import { nextSrsState, isLongGap }    from '@/lib/vocab/srs/engine';
 import type { SrsRating }              from '@/lib/vocab/srs/engine';
 import { flashcardDelta }              from '@/lib/vocab/mastery-score';
 import { rateLimit }                   from '@/lib/rate-limit';
+import { canAccessWord }               from '@/lib/vocab/access-check';
 
 const bodySchema = z.object({
   wordId: z.number().int().positive(),
@@ -35,6 +36,11 @@ export async function POST(req: NextRequest) {
   const [user] = await db.select({ id: users.id })
     .from(users).where(eq(users.email, session.user.email)).limit(1);
   if (!user) return NextResponse.json({ error: 'User not found' }, { status: 404 });
+
+  // Phase gate: phase-2 users cannot rate locked words.
+  if (!(await canAccessWord(user.id, wordId))) {
+    return NextResponse.json({ error: 'Word is locked for your tier' }, { status: 403 });
+  }
 
   const [existing] = await db
     .select()

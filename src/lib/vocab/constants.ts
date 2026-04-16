@@ -49,6 +49,11 @@ export const LEVEL_INTERMEDIATE_THRESHOLD = 0.40;
 /** Theme completion % to reach advanced */
 export const LEVEL_ADVANCED_THRESHOLD = 0.70;
 
+// ─── Phase / Access ─────────────────────────────────────────────────────────
+
+/** Maximum unit order accessible to phase-2 (free) users. Units 1–8. */
+export const PHASE1_MAX_UNIT_ORDER = 8;
+
 // ─── Word Pools ─────────────────────────────────────────────────────────────
 
 /** Total words available to free users */

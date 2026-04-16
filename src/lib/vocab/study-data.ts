@@ -5,6 +5,7 @@ import {
 import { eq, and, sql } from 'drizzle-orm';
 import { unstable_cache } from 'next/cache';
 import { VocabCacheTag } from './cache-keys';
+import { PHASE1_MAX_UNIT_ORDER } from './constants';
 
 export type ThemeStatus = 'not_started' | 'flashcards_done' | 'quiz_pending' | 'complete';
 
@@ -24,9 +25,6 @@ export interface UnitWithThemes {
   themes:      ThemeWithStatus[];
   completePct: number;  // 0–100
 }
-
-// Units 9+ are locked for phase-2 users
-const PHASE1_MAX_UNIT_ORDER = 8;
 
 async function _getStudyData(email: string): Promise<{
   units:          UnitWithThemes[];

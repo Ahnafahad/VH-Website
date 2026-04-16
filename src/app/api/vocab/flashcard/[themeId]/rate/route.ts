@@ -14,6 +14,7 @@ import type { SrsRating }              from '@/lib/vocab/srs/engine';
 import { flashcardDelta } from '@/lib/vocab/mastery-score';
 import { checkBadges }                 from '@/lib/vocab/badges/checker';
 import { rateLimit }                   from '@/lib/rate-limit';
+import { canAccessTheme, canAccessWord } from '@/lib/vocab/access-check';
 
 const bodySchema = z.object({
   wordId:  z.number().int().positive(),
@@ -44,6 +45,16 @@ export async function POST(
   const [user] = await db.select({ id: users.id })
     .from(users).where(eq(users.email, session.user.email)).limit(1);
   if (!user) return NextResponse.json({ error: 'User not found' }, { status: 404 });
+
+  // Phase gate: phase-2 users cannot rate words in locked themes.
+  // Check theme access, plus the word itself (guards against themeId mismatch).
+  const [themeOk, wordOk] = await Promise.all([
+    canAccessTheme(user.id, themeId),
+    canAccessWord(user.id, wordId),
+  ]);
+  if (!themeOk || !wordOk) {
+    return NextResponse.json({ error: 'Word is locked for your tier' }, { status: 403 });
+  }
 
   // Wrap all DB writes in a transaction for data consistency
   const result = await db.transaction(async (tx) => {

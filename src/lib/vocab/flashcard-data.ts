@@ -5,6 +5,7 @@ import {
 import { eq, and, inArray } from 'drizzle-orm';
 import { unstable_cache } from 'next/cache';
 import { VocabCacheTag } from './cache-keys';
+import { PHASE1_MAX_UNIT_ORDER } from './constants';
 
 function safeParseArray(json: string | null): string[] {
   if (!json) return [];
@@ -45,14 +46,16 @@ async function _getFlashcardSession(
     .from(users).where(eq(users.email, email)).limit(1);
   if (!user) return null;
 
-  // Parallelize: theme metadata and words simultaneously
-  const [[theme], rawWords] = await Promise.all([
+  // Parallelize: theme metadata (with unit order for phase check),
+  // words, and user progress (for phase)
+  const [[theme], rawWords, [progressForPhase]] = await Promise.all([
     db
       .select({
-        id:       vocabThemes.id,
-        name:     vocabThemes.name,
-        unitId:   vocabThemes.unitId,
-        unitName: vocabUnits.name,
+        id:        vocabThemes.id,
+        name:      vocabThemes.name,
+        unitId:    vocabThemes.unitId,
+        unitName:  vocabUnits.name,
+        unitOrder: vocabUnits.order,
       })
       .from(vocabThemes)
       .innerJoin(vocabUnits, eq(vocabThemes.unitId, vocabUnits.id))
@@ -63,9 +66,18 @@ async function _getFlashcardSession(
       .from(vocabWords)
       .where(eq(vocabWords.themeId, themeId))
       .orderBy(vocabWords.id),
+    db
+      .select({ phase: vocabUserProgress.phase })
+      .from(vocabUserProgress)
+      .where(eq(vocabUserProgress.userId, user.id))
+      .limit(1),
   ]);
   if (!theme) return null;
   if (rawWords.length === 0) return null;
+
+  // Phase-2 (free) users cannot access themes beyond the free unit cap.
+  const phase = progressForPhase?.phase ?? 2;
+  if (phase === 2 && theme.unitOrder > PHASE1_MAX_UNIT_ORDER) return null;
 
   const wordIds = rawWords.map(w => w.id);
 
