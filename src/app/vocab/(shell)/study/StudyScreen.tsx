@@ -33,18 +33,17 @@ const MASTERY_SEGMENT_COLORS = {
 };
 
 function LetterCard({ summary }: { summary: LetterSummary }) {
-  const router    = useRouter();
-  const masteryPct = summary.wordCount > 0
-    ? summary.familiarPlusCount / summary.wordCount
-    : 0;
-  const masteryPctInt = Math.round(masteryPct * 100);
+  const router     = useRouter();
+  const studiedPct = summary.wordCount > 0 ? summary.studiedCount     / summary.wordCount : 0;
+  const masteryPct = summary.wordCount > 0 ? summary.familiarPlusCount / summary.wordCount : 0;
 
-  // Progress bar color: red → gold based on completion
-  const barColor = masteryPct >= 0.8
+  // Mastered segment colour (red → gold). Studied segment is a muted slate.
+  const masteryBarColor = masteryPct >= 0.8
     ? 'var(--color-lx-accent-gold)'
     : masteryPct >= 0.4
       ? '#f97316'
       : 'var(--color-lx-accent-red)';
+  const studiedBarColor = 'var(--color-lx-text-muted)';
 
   return (
     <motion.button
@@ -58,9 +57,9 @@ function LetterCard({ summary }: { summary: LetterSummary }) {
         background: 'var(--color-lx-surface)',
         border: '1px solid var(--color-lx-border)',
         borderRadius: 16,
-        padding: '0.875rem 0.75rem 0.75rem',
+        padding: '0.875rem 0.625rem 0.75rem',
         cursor: 'pointer',
-        display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.4rem',
+        display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.45rem',
         position: 'relative',
         width: '100%',
       }}
@@ -75,38 +74,62 @@ function LetterCard({ summary }: { summary: LetterSummary }) {
         {summary.letter}
       </span>
 
-      {/* Mastered / Total */}
-      <span style={{
-        fontFamily: "'Sora', sans-serif",
-        fontSize: '0.6rem', fontWeight: 600,
-        color: 'var(--color-lx-text-secondary)',
-        lineHeight: 1,
-      }}>
-        {summary.familiarPlusCount}/{summary.wordCount}
-      </span>
-
-      {/* Progress bar */}
+      {/* Dual-layer progress bar: studied (bg fill) + mastered (foreground fill) */}
       <div style={{
-        width: '100%', height: 3,
+        width: '100%', height: 4,
         background: 'var(--color-lx-elevated)',
         borderRadius: 2, overflow: 'hidden',
+        position: 'relative',
       }}>
         <motion.div
           initial={{ width: 0 }}
-          animate={{ width: `${masteryPctInt}%` }}
+          animate={{ width: `${Math.round(studiedPct * 100)}%` }}
           transition={{ duration: 0.7, ease: 'easeOut', delay: 0.1 }}
-          style={{ height: '100%', background: barColor, borderRadius: 2 }}
+          style={{
+            height: '100%',
+            background: studiedBarColor,
+            opacity: 0.35,
+            borderRadius: 2,
+            position: 'absolute', left: 0, top: 0,
+          }}
+        />
+        <motion.div
+          initial={{ width: 0 }}
+          animate={{ width: `${Math.round(masteryPct * 100)}%` }}
+          transition={{ duration: 0.7, ease: 'easeOut', delay: 0.2 }}
+          style={{
+            height: '100%',
+            background: masteryBarColor,
+            borderRadius: 2,
+            position: 'absolute', left: 0, top: 0,
+          }}
         />
       </div>
 
-      {/* Mastery % */}
+      {/* Two counts: studied (slate) · mastered (accent) */}
+      <div style={{
+        display: 'flex', alignItems: 'center', gap: '0.35rem',
+        fontFamily: "'Sora', sans-serif", fontSize: '0.58rem', fontWeight: 600,
+        lineHeight: 1, whiteSpace: 'nowrap',
+      }}>
+        <span style={{ color: summary.studiedCount > 0 ? 'var(--color-lx-text-secondary)' : 'var(--color-lx-text-muted)' }}>
+          {summary.studiedCount} studied
+        </span>
+        <span style={{ color: 'var(--color-lx-text-muted)' }}>·</span>
+        <span style={{ color: summary.familiarPlusCount > 0 ? masteryBarColor : 'var(--color-lx-text-muted)' }}>
+          {summary.familiarPlusCount} mastered
+        </span>
+      </div>
+
+      {/* Total words — faint footer */}
       <span style={{
         fontFamily: "'Sora', sans-serif",
-        fontSize: '0.55rem', fontWeight: 500,
-        color: masteryPctInt > 0 ? barColor : 'var(--color-lx-text-muted)',
+        fontSize: '0.52rem', fontWeight: 500,
+        color: 'var(--color-lx-text-muted)',
         lineHeight: 1,
+        letterSpacing: '0.04em',
       }}>
-        {masteryPctInt}%
+        of {summary.wordCount}
       </span>
     </motion.button>
   );

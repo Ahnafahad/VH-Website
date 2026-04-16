@@ -55,9 +55,9 @@ interface LetterCardProps {
 }
 
 function LetterCard({ summary, selected, onToggle }: LetterCardProps) {
-  const masteryPct    = summary.wordCount > 0 ? summary.familiarPlusCount / summary.wordCount : 0;
-  const masteryPctInt = Math.round(masteryPct * 100);
-  const barColor = masteryPct >= 0.8
+  const studiedPct = summary.wordCount > 0 ? summary.studiedCount      / summary.wordCount : 0;
+  const masteryPct = summary.wordCount > 0 ? summary.familiarPlusCount / summary.wordCount : 0;
+  const masteryBarColor = masteryPct >= 0.8
     ? 'var(--color-lx-accent-gold)'
     : masteryPct >= 0.4
       ? '#f97316'
@@ -75,9 +75,9 @@ function LetterCard({ summary, selected, onToggle }: LetterCardProps) {
         background: selected ? 'rgba(230,57,70,0.08)' : 'var(--color-lx-surface)',
         border: selected ? '1.5px solid rgba(230,57,70,0.5)' : '1px solid var(--color-lx-border)',
         borderRadius: 16,
-        padding: '0.875rem 0.75rem 0.75rem',
+        padding: '0.875rem 0.625rem 0.75rem',
         cursor: 'pointer',
-        display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.4rem',
+        display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.45rem',
         boxShadow: selected ? '0 0 0 1px rgba(230,57,70,0.2) inset' : 'none',
         transition: 'background 0.18s, border-color 0.18s, box-shadow 0.18s',
         position: 'relative',
@@ -111,27 +111,61 @@ function LetterCard({ summary, selected, onToggle }: LetterCardProps) {
       }}>
         {summary.letter}
       </span>
-      <span style={{
-        fontFamily: "'Sora', sans-serif",
-        fontSize: '0.6rem', fontWeight: 600,
-        color: 'var(--color-lx-text-secondary)', lineHeight: 1,
+
+      {/* Dual-layer progress bar: studied (muted) + mastered (accent) */}
+      <div style={{
+        width: '100%', height: 4,
+        background: 'var(--color-lx-elevated)',
+        borderRadius: 2, overflow: 'hidden',
+        position: 'relative',
       }}>
-        {summary.familiarPlusCount}/{summary.wordCount}
-      </span>
-      <div style={{ width: '100%', height: 3, background: 'var(--color-lx-elevated)', borderRadius: 2, overflow: 'hidden' }}>
         <motion.div
           initial={{ width: 0 }}
-          animate={{ width: `${masteryPctInt}%` }}
+          animate={{ width: `${Math.round(studiedPct * 100)}%` }}
           transition={{ duration: 0.7, ease: 'easeOut', delay: 0.1 }}
-          style={{ height: '100%', background: barColor, borderRadius: 2 }}
+          style={{
+            height: '100%',
+            background: 'var(--color-lx-text-muted)',
+            opacity: 0.35,
+            borderRadius: 2,
+            position: 'absolute', left: 0, top: 0,
+          }}
+        />
+        <motion.div
+          initial={{ width: 0 }}
+          animate={{ width: `${Math.round(masteryPct * 100)}%` }}
+          transition={{ duration: 0.7, ease: 'easeOut', delay: 0.2 }}
+          style={{
+            height: '100%',
+            background: masteryBarColor,
+            borderRadius: 2,
+            position: 'absolute', left: 0, top: 0,
+          }}
         />
       </div>
+
+      {/* Two counts: studied · mastered */}
+      <div style={{
+        display: 'flex', alignItems: 'center', gap: '0.35rem',
+        fontFamily: "'Sora', sans-serif", fontSize: '0.58rem', fontWeight: 600,
+        lineHeight: 1, whiteSpace: 'nowrap',
+      }}>
+        <span style={{ color: summary.studiedCount > 0 ? 'var(--color-lx-text-secondary)' : 'var(--color-lx-text-muted)' }}>
+          {summary.studiedCount} studied
+        </span>
+        <span style={{ color: 'var(--color-lx-text-muted)' }}>·</span>
+        <span style={{ color: summary.familiarPlusCount > 0 ? masteryBarColor : 'var(--color-lx-text-muted)' }}>
+          {summary.familiarPlusCount} mastered
+        </span>
+      </div>
+
       <span style={{
         fontFamily: "'Sora', sans-serif",
-        fontSize: '0.55rem', fontWeight: 500,
-        color: masteryPctInt > 0 ? barColor : 'var(--color-lx-text-muted)', lineHeight: 1,
+        fontSize: '0.52rem', fontWeight: 500,
+        color: 'var(--color-lx-text-muted)',
+        lineHeight: 1, letterSpacing: '0.04em',
       }}>
-        {masteryPctInt}%
+        of {summary.wordCount}
       </span>
     </motion.button>
   );

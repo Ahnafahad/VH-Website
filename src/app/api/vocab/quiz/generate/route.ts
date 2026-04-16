@@ -284,7 +284,16 @@ export async function POST(req: NextRequest) {
         ? rawQCount : STUDY_MAX_QUESTIONS;
       const questionCount = Math.min(requestedCount, rawWords.length, STUDY_MAX_QUESTIONS);
 
-      const allWords    = await db.select().from(vocabWords);
+      // Letter-scoped quiz: every correct word starts with the same letter,
+      // so the distractor pool MUST be same-letter words too — otherwise the
+      // answer is trivially "the only option starting with that letter".
+      const letter = rawWords[0]?.word?.charAt(0)?.toUpperCase() ?? '';
+      const allWords = letter
+        ? await db
+            .select()
+            .from(vocabWords)
+            .where(sql`UPPER(SUBSTR(${vocabWords.word}, 1, 1)) = ${letter}`)
+        : await db.select().from(vocabWords);
       const correctWords = shuffle(rawWords).slice(0, questionCount).map(toWordForDistractor);
       const pool         = allWords.map(toWordForDistractor);
 
