@@ -15,6 +15,9 @@ export const users = sqliteTable('users', {
   batch:     text('batch'),
   class:     text('class'),
   notes:     text('notes'),
+  whatsapp:          text('whatsapp'),
+  onboardingSkips:   integer('onboarding_skips').notNull().default(0),
+  onboardedAt:       integer('onboarded_at', { mode: 'timestamp' }),
   createdAt: integer('created_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
   updatedAt: integer('updated_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
 });
@@ -131,12 +134,27 @@ export const registrations = sqliteTable('registrations', {
   updatedAt:            integer('updated_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
 });
 
+// ─── Free Signups ─────────────────────────────────────────────────────────────
+// Path A registrations — users who want free games/resources access only.
+// Row in `users` is created simultaneously; this table stores the WhatsApp contact.
+
+export const freeSignups = sqliteTable('free_signups', {
+  id:        integer('id').primaryKey({ autoIncrement: true }),
+  userId:    integer('user_id').references(() => users.id, { onDelete: 'cascade' }),
+  name:      text('name').notNull(),
+  email:     text('email').notNull().unique(),
+  whatsapp:  text('whatsapp').notNull(),
+  createdAt: integer('created_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
+});
+
 // ─── Type exports ─────────────────────────────────────────────────────────────
 
 export type User         = typeof users.$inferSelect;
 export type NewUser      = typeof users.$inferInsert;
 export type UserAccess   = typeof userAccess.$inferSelect;
 export type Registration = typeof registrations.$inferSelect;
+export type FreeSignup   = typeof freeSignups.$inferSelect;
+export type NewFreeSignup = typeof freeSignups.$inferInsert;
 
 export type UserProduct = 'iba' | 'fbs' | 'fbs_detailed';
 export type UserRole    = 'super_admin' | 'admin' | 'instructor' | 'student';

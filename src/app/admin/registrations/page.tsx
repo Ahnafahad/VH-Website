@@ -15,7 +15,9 @@ import {
   Shield,
   RefreshCw,
   Search,
-  Filter
+  Filter,
+  MessageCircle,
+  Sparkles
 } from 'lucide-react';
 
 type Registration = {
@@ -46,14 +48,24 @@ type Student = {
   batch?: string;
 };
 
+type FreeSignup = {
+  id: number;
+  userId: number | null;
+  name: string;
+  email: string;
+  whatsapp: string;
+  createdAt: string | number;
+};
+
 export default function AdminRegistrationsPage() {
   const { data: session, status } = useSession();
   const router = useRouter();
 
-  const [activeTab, setActiveTab] = useState<'registrations' | 'students'>('registrations');
+  const [activeTab, setActiveTab] = useState<'registrations' | 'students' | 'freeSignups'>('registrations');
   const [loading, setLoading] = useState(true);
   const [registrations, setRegistrations] = useState<Registration[]>([]);
   const [students, setStudents] = useState<Student[]>([]);
+  const [freeSignups, setFreeSignups] = useState<FreeSignup[]>([]);
   const [counts, setCounts] = useState({ pending: 0, contacted: 0, enrolled: 0, cancelled: 0 });
   const [error, setError] = useState<string | null>(null);
 
@@ -96,6 +108,13 @@ export default function AdminRegistrationsPage() {
       if (studentsRes.ok) {
         const studentsData = await studentsRes.json();
         setStudents(studentsData.students || []);
+      }
+
+      // Load free signups
+      const freeRes = await fetch('/api/registrations/games');
+      if (freeRes.ok) {
+        const freeData = await freeRes.json();
+        setFreeSignups(freeData.freeSignups || []);
       }
 
       setError(null);
@@ -218,6 +237,12 @@ export default function AdminRegistrationsPage() {
     student.email.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
+  const filteredFreeSignups = freeSignups.filter(s =>
+    s.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    s.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    s.whatsapp.includes(searchTerm)
+  );
+
   if (loading) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-slate-50 to-white flex items-center justify-center">
@@ -324,6 +349,17 @@ export default function AdminRegistrationsPage() {
                 Registrations ({registrations.length})
               </button>
               <button
+                onClick={() => setActiveTab('freeSignups')}
+                className={`flex-1 px-6 py-4 font-bold text-lg transition-colors ${
+                  activeTab === 'freeSignups'
+                    ? 'bg-vh-red text-white'
+                    : 'text-gray-600 hover:bg-gray-50'
+                }`}
+              >
+                <Sparkles className="w-5 h-5 inline-block mr-2" />
+                Free Signups ({freeSignups.length})
+              </button>
+              <button
                 onClick={() => setActiveTab('students')}
                 className={`flex-1 px-6 py-4 font-bold text-lg transition-colors ${
                   activeTab === 'students'
@@ -371,7 +407,7 @@ export default function AdminRegistrationsPage() {
 
           {/* Content */}
           <div className="p-6">
-            {activeTab === 'registrations' ? (
+            {activeTab === 'registrations' && (
               <div className="space-y-4">
                 {filteredRegistrations.length === 0 ? (
                   <div className="text-center py-12 text-gray-500">
@@ -395,8 +431,24 @@ export default function AdminRegistrationsPage() {
                   ))
                 )}
               </div>
-            ) : (
-              // Students Tab
+            )}
+
+            {activeTab === 'freeSignups' && (
+              <div className="space-y-4">
+                {filteredFreeSignups.length === 0 ? (
+                  <div className="text-center py-12 text-gray-500">
+                    <Sparkles className="w-16 h-16 mx-auto mb-4 text-gray-300" />
+                    <p>No free signups yet</p>
+                  </div>
+                ) : (
+                  filteredFreeSignups.map((s) => (
+                    <FreeSignupCard key={s.id} signup={s} />
+                  ))
+                )}
+              </div>
+            )}
+
+            {activeTab === 'students' && (
               <div className="space-y-4">
                 {filteredStudents.length === 0 ? (
                   <div className="text-center py-12 text-gray-500">
@@ -863,6 +915,57 @@ function GrantAccessModal({ data, onClose, onGrant, setData }: any) {
           >
             Grant Access
           </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function FreeSignupCard({ signup }: { signup: FreeSignup }) {
+  const waDigits = signup.whatsapp.replace(/[^\d]/g, '');
+  const waUrl = waDigits ? `https://wa.me/${waDigits}` : null;
+  const created = typeof signup.createdAt === 'number'
+    ? new Date(signup.createdAt * 1000)
+    : new Date(signup.createdAt);
+  const createdLabel = isNaN(created.getTime())
+    ? '—'
+    : created.toLocaleString('en-US', { dateStyle: 'medium', timeStyle: 'short' });
+
+  return (
+    <div className="bg-gradient-to-br from-white to-amber-50 rounded-xl border-2 border-amber-200 p-6">
+      <div className="flex items-start justify-between gap-4 mb-4">
+        <div className="flex-1">
+          <div className="flex items-center gap-3 mb-2">
+            <h3 className="text-xl font-bold text-gray-900">{signup.name}</h3>
+            <span className="px-3 py-1 rounded-full text-xs font-bold bg-amber-100 text-amber-800 inline-flex items-center gap-1.5">
+              <Sparkles className="w-3 h-3" />
+              FREE
+            </span>
+          </div>
+          <p className="text-gray-600 break-all">{signup.email}</p>
+          <p className="text-sm text-gray-500 mt-1">Signed up {createdLabel}</p>
+        </div>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="bg-white rounded-lg p-3 border border-gray-200">
+          <p className="text-xs font-semibold text-gray-500 mb-1">WhatsApp</p>
+          <p className="text-sm font-medium text-gray-900 break-all">{signup.whatsapp}</p>
+        </div>
+        <div className="flex items-center">
+          {waUrl ? (
+            <a
+              href={waUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors font-semibold text-sm inline-flex items-center justify-center gap-2"
+            >
+              <MessageCircle className="w-4 h-4" />
+              Contact on WhatsApp
+            </a>
+          ) : (
+            <span className="text-sm text-gray-400">No valid number</span>
+          )}
         </div>
       </div>
     </div>

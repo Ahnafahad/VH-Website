@@ -1,24 +1,29 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Fraunces, Geist } from "next/font/google";
 import "./globals.css";
 import MainSiteShell from "@/components/MainSiteShell";
 import AuthProvider from "@/components/AuthProvider";
+import OnboardingGate from "@/components/onboarding/OnboardingGate";
 import { Analytics } from "@vercel/analytics/react";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const fraunces = Fraunces({
+  variable: "--font-heading",
   subsets: ["latin"],
+  display: "swap",
+  axes: ["SOFT", "opsz"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const geist = Geist({
+  variable: "--font-sans",
   subsets: ["latin"],
+  display: "swap",
+  weight: ["300", "400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
-  title: "VH Beyond the Horizons - IBA/BUP Admission Program 2026",
-  description: "Expert preparation for IBA DU, BUP, and DU FBS admissions with proven 46.7% success rate. Join our intensive 4-5 months program with top-ranked instructors.",
-  keywords: "IBA admission, BUP admission, DU FBS, university preparation, Bangladesh, business school",
+  title: "Beyond the Horizons — The Only EM-Specific Admission Program in Bangladesh",
+  description: "The only university admission program in Bangladesh built specifically for English-medium students. Expert preparation for IBA DU, BUP, and DU FBS with a 46.7% success rate.",
+  keywords: "IBA admission, BUP admission, DU FBS, English medium, university preparation, Bangladesh, business school, A-levels",
 };
 
 export default function RootLayout({
@@ -29,12 +34,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${fraunces.variable} ${geist.variable} antialiased`}
       >
         <AuthProvider>
           <MainSiteShell>
             {children}
           </MainSiteShell>
+          <OnboardingGate />
         </AuthProvider>
         <Analytics />
       </body>

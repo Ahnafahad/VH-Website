@@ -191,6 +191,87 @@ Please log in to the admin panel to view and manage registrations.
 }
 
 // ---------------------------------------------------------------------------
+// Free Signup Notification (Path A)
+// ---------------------------------------------------------------------------
+
+interface FreeSignupEmailData {
+  name: string;
+  email: string;
+  whatsapp: string;
+}
+
+/**
+ * Notify admins when someone signs up for free games/resources access.
+ */
+export async function sendFreeSignupNotification(data: FreeSignupEmailData) {
+  try {
+    if (!process.env.RESEND_API_KEY) {
+      console.warn('RESEND_API_KEY not configured. Skipping free signup notification.');
+      return { success: false, error: 'API key not configured' };
+    }
+
+    const subject = `New Free Signup: ${data.name}`;
+    const waLink = `https://wa.me/${data.whatsapp.replace(/[^0-9]/g, '')}`;
+
+    const htmlContent = `<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body style="margin:0;padding:0;background:#FAF5EF;font-family:-apple-system,Helvetica,Arial,sans-serif;color:#1A0507;">
+    <div style="max-width:600px;margin:0 auto;background:#FAF5EF;">
+      <div style="background:#1A0507;padding:28px 32px;">
+        <p style="margin:0 0 4px 0;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#D4B094;">VH Beyond the Horizons</p>
+        <h1 style="margin:0;font-family:Georgia,serif;font-size:26px;font-weight:400;color:#FAF5EF;">New Free Signup</h1>
+      </div>
+
+      <div style="padding:32px;">
+        <p style="margin:0 0 20px 0;font-size:14px;color:#760F13;line-height:1.7;">
+          Someone just signed up for free games and resources access. Their account has been auto-created and they can sign in with Google.
+        </p>
+
+        <div style="background:#FFFFFF;padding:20px;border-left:3px solid #D4B094;margin:24px 0;">
+          <p style="margin:0 0 8px 0;"><strong style="color:#760F13;">Name:</strong> ${data.name}</p>
+          <p style="margin:0 0 8px 0;"><strong style="color:#760F13;">Email:</strong> ${data.email}</p>
+          <p style="margin:0;"><strong style="color:#760F13;">WhatsApp:</strong> <a href="${waLink}" style="color:#760F13;">${data.whatsapp}</a></p>
+        </div>
+
+        <p style="margin:24px 0 0 0;font-size:13px;color:#A86E58;line-height:1.7;">
+          View the full list of free signups in the admin panel under Registrations → Free Signups.
+        </p>
+      </div>
+    </div>
+  </body>
+</html>`;
+
+    const textContent = `New Free Signup\n\nName: ${data.name}\nEmail: ${data.email}\nWhatsApp: ${data.whatsapp}\n\nAccount auto-created. User can sign in with Google.`;
+
+    const results = await Promise.allSettled(
+      ADMIN_EMAILS.map(adminEmail =>
+        resend.emails.send({
+          from: 'VH Registration System <onboarding@resend.dev>',
+          to: adminEmail,
+          subject,
+          html: htmlContent,
+          text: textContent,
+        })
+      )
+    );
+
+    const successful = results.filter(r => r.status === 'fulfilled').length;
+    const failed = results.filter(r => r.status === 'rejected').length;
+
+    console.log(`Free signup notification sent: ${successful} successful, ${failed} failed`);
+
+    return { success: successful > 0, successful, failed, total: ADMIN_EMAILS.length };
+  } catch (error) {
+    console.error('Error sending free signup notification:', error);
+    return { success: false, error: error instanceof Error ? error.message : 'Unknown error' };
+  }
+}
+
+// ---------------------------------------------------------------------------
 // LexiCore Email Templates
 // ---------------------------------------------------------------------------
 

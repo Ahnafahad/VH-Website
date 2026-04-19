@@ -5,7 +5,9 @@ import {
   getUserByEmail,
   isAdminEmail,
   computeAccessFromProducts,
+  clearAccessControlCache,
 } from '@/lib/db-access-control'
+import { db, users } from '@/lib/db'
 
 export const authOptions: NextAuthOptions = {
   providers: [
@@ -16,17 +18,31 @@ export const authOptions: NextAuthOptions = {
   ],
   callbacks: {
     async signIn({ user, account }) {
-      if (account?.provider === 'google') {
-        const email = user.email?.toLowerCase() || ''
-        const isAuthorized = await isEmailAuthorized(email)
-        if (isAuthorized) {
-          console.log(`Sign-in OK: ${email}`)
-        } else {
-          console.log(`Sign-in rejected: ${email}`)
-        }
-        return isAuthorized
+      if (account?.provider !== 'google') return false
+      const email = user.email?.toLowerCase() || ''
+      if (!email.endsWith('@gmail.com')) {
+        console.log(`Sign-in rejected (non-gmail): ${email}`)
+        return false
       }
-      return false
+      if (await isEmailAuthorized(email)) {
+        console.log(`Sign-in OK: ${email}`)
+        return true
+      }
+      // Auto-provision new gmail user as free-tier student
+      try {
+        await db.insert(users).values({
+          email,
+          name: user.name || email.split('@')[0],
+          role: 'student',
+          status: 'active',
+        })
+        clearAccessControlCache(email)
+        console.log(`Sign-in auto-provisioned: ${email}`)
+        return true
+      } catch (e) {
+        console.error(`Auto-provision failed for ${email}:`, e)
+        return false
+      }
     },
 
     async session({ session }) {
