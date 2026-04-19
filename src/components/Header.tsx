@@ -14,6 +14,7 @@ import {
   Users,
   Target,
   Gamepad2,
+  BookOpen,
   ArrowUpRight,
 } from 'lucide-react';
 import {
@@ -96,6 +97,7 @@ const Header = () => {
       : []),
     { label: 'Mental Math', href: '/games/mental-math', icon: Gamepad2 },
     { label: 'FBS Accounting', href: '/games/fbs-accounting', icon: Calculator },
+    { label: 'Vocab Quiz', href: '/games/vocab-quiz', icon: BookOpen },
     ...(isAdmin
       ? [
           { label: 'Registrations', href: '/admin/registrations', icon: Users },

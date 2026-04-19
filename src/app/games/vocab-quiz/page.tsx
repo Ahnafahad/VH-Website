@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect, useCallback } from 'react';
 import { Clock, BookOpen, Target, Award, RefreshCw, Trophy, RotateCcw } from 'lucide-react';
-import ProtectedRoute from '@/components/ProtectedRoute';
 
 interface Question {
   sentence: string;
@@ -956,9 +955,5 @@ Respond with JSON:
 };
 
 export default function VocabQuizPage() {
-  return (
-    <ProtectedRoute>
-      <VocabularyQuizApp />
-    </ProtectedRoute>
-  );
+  return <VocabularyQuizApp />;
 }
