@@ -13,7 +13,7 @@ type Props = {
   initialSkips: number;
 };
 
-const BLACKLIST_PREFIXES = ['/admin', '/registration', '/auth', '/api', '/onboarding'];
+const BLACKLIST_PREFIXES = ['/admin', '/registration', '/auth', '/api', '/onboarding', '/vocab'];
 const WHATSAPP_GROUP_URL = 'https://chat.whatsapp.com/LBdtaxyUP6w1S7npTrFli6';
 
 export default function OnboardingModal({
