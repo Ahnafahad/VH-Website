@@ -236,7 +236,7 @@ function SegmentDot({
   const end = (i + 1) / N;
 
   const fillScale = useTransform(progress, [start, end], [0, 1]);
-  const isActive = useTransform(activeIndex, (v) => (v === i ? 1 : 0));
+  const isActive = useTransform(activeIndex, (v) => (v === i ? 1 : 0)) as MotionValue<number>;
   const width = useTransform(isActive, [0, 1], [28, 56]);
   const opacity = useTransform(isActive, [0, 1], [0.45, 1]);
 
