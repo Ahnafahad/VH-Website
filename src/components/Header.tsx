@@ -94,7 +94,8 @@ const Header = () => {
     ...(session
       ? [{ label: 'Results', href: '/results', icon: BarChart3 }]
       : []),
-    { label: 'Games', href: '/games/mental-math', icon: Gamepad2 },
+    { label: 'Mental Math', href: '/games/mental-math', icon: Gamepad2 },
+    { label: 'FBS Accounting', href: '/games/fbs-accounting', icon: Calculator },
     ...(isAdmin
       ? [
           { label: 'Registrations', href: '/admin/registrations', icon: Users },

@@ -3,7 +3,6 @@
 import { useState, useEffect } from 'react';
 import { useSession } from 'next-auth/react';
 import Link from 'next/link';
-import ProtectedRoute from '@/components/ProtectedRoute';
 import {
   Play,
   Trophy,
@@ -1312,9 +1311,5 @@ function FBSAccountingGame() {
 }
 
 export default function AccountingGamePage() {
-  return (
-    <ProtectedRoute>
-      <FBSAccountingGame />
-    </ProtectedRoute>
-  );
+  return <FBSAccountingGame />;
 }

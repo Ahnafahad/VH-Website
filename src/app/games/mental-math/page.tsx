@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect, useCallback } from 'react';
 import { SkipForward, RotateCcw, ArrowRight, Check } from 'lucide-react';
-import ProtectedRoute from '@/components/ProtectedRoute';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -718,10 +717,6 @@ function CornerBrackets({ accent }: { accent: string }) {
 
 // ─── Page wrapper ─────────────────────────────────────────────────────────────
 
-const MentalMathPage = () => (
-  <ProtectedRoute>
-    <MentalMathApp />
-  </ProtectedRoute>
-);
+const MentalMathPage = () => <MentalMathApp />;
 
 export default MentalMathPage;
