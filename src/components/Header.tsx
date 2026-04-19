@@ -13,7 +13,6 @@ import {
   ClipboardList,
   Users,
   Target,
-  BookOpen,
   Gamepad2,
   ArrowUpRight,
 } from 'lucide-react';
@@ -28,7 +27,7 @@ import { useSession } from 'next-auth/react';
 
 const mainLinks = [
   { label: 'Home', href: '/' },
-  { label: 'Programs', href: '/#programs' },
+  { label: 'Programs', href: '/program' },
   { label: 'About', href: '/#about' },
   { label: 'Register', href: '/registration' },
 ];
@@ -91,7 +90,6 @@ const Header = () => {
 
   const moreLinks = [
     { label: 'Eligibility Checker', href: '/eligibility-checker', icon: Target },
-    { label: 'Programs', href: '/program', icon: BookOpen },
     { label: 'Mock Exams', href: '/mock-exams', icon: ClipboardList },
     ...(session
       ? [{ label: 'Results', href: '/results', icon: BarChart3 }]
