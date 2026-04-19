@@ -9,7 +9,7 @@ import HomeScreen           from './HomeScreen';
 
 export default async function HomePage() {
   const session = await getServerSession(authOptions);
-  if (!session?.user?.email) redirect('/auth/signin?callbackUrl=/vocab');
+  if (!session?.user?.email) redirect('/registration/games?next=/vocab/home');
 
   const data = await getHomeData(session.user.email);
   if (!data) redirect('/vocab/onboarding');
