@@ -1,1006 +1,508 @@
 'use client';
 
-// @ts-nocheck
-import React, { useState, useCallback, useEffect, useMemo } from 'react';
-import { Plus, Trash2, Check, X } from 'lucide-react';
+import React, { useState, useCallback, useMemo } from 'react';
+import { Plus, Trash2, Check, X, ChevronDown, ChevronUp } from 'lucide-react';
 
-interface EligibilityCheckerProps {
-  onEligibilityUpdate?: (activeTab: string, results: any) => void;
+// --- Grade point tables ---
+const ibaGradePoints: Record<string, number>  = { A: 5.0, B: 4.0, C: 3.5, D: 0.0 };
+const bupGradePoints: Record<string, number>  = { A: 5.0, B: 4.0, C: 3.5, D: 3.0 };
+const duSciGradePoints: Record<string, number> = { A: 5.0, B: 4.0, C: 3.5 };
+const bizSubjects = ['business studies', 'business', 'accounting', 'economics', 'mathematics', 'statistics'];
+const grades     = ['A', 'B', 'C', 'D'] as const;
+const sciGrades  = ['A', 'B', 'C'] as const;
+
+interface Subject { id: string; name: string; grade: string; }
+
+// ─── Calculators ──────────────────────────────────────────────────────────────
+
+function calcIBA(oLevels: Subject[], aLevels: Subject[]) {
+  const ol = oLevels.filter(s => s.name.trim() && s.grade);
+  const al = aLevels.filter(s => s.name.trim() && s.grade);
+  const math = oLevels.find(s => s.name.toLowerCase().trim() === 'mathematics' && s.grade);
+
+  if (!math)          return { eligible: false, reason: 'Mathematics required in O-Level.' };
+  if (ol.length < 5)  return { eligible: false, reason: 'Min 5 O-Level subjects required.' };
+  if (al.length < 2)  return { eligible: false, reason: 'Min 2 A-Level subjects required.' };
+
+  // best 5 O-Level (math + best 4 others)
+  const mathPts    = ibaGradePoints[math.grade];
+  const otherOlPts = ol.filter(s => s.id !== math.id).map(s => ibaGradePoints[s.grade]).sort((a, b) => b - a);
+  const best5ol    = [mathPts, ...otherOlPts.slice(0, 4)];
+  const olCGPA     = best5ol.reduce((s, p) => s + p, 0) / 5;
+
+  // best 2 A-Level
+  const alPts  = al.map(s => ibaGradePoints[s.grade]).sort((a, b) => b - a);
+  const best2al = alPts.slice(0, 2);
+  const alCGPA  = best2al.reduce((s, p) => s + p, 0) / 2;
+
+  const allSubjects    = [...ol, ...al];
+  const aCount         = allSubjects.filter(s => s.grade === 'A').length;
+  const olPass         = olCGPA >= 3.5;
+  const alPass         = alCGPA >= 3.5;
+  const minA           = aCount >= 2;
+  const eligible       = olPass && alPass && minA;
+
+  return {
+    eligible, olCGPA: olCGPA.toFixed(2), alCGPA: alCGPA.toFixed(2),
+    aCount, olPass, alPass, minA,
+    reason: eligible ? 'Meets all IBA DU requirements.' : 'Requirements not met.',
+    checks: [
+      { label: `O-Level avg ≥ 3.5  (A=5, B=4, C=3.5, D=0)`, value: `${olCGPA.toFixed(2)}`, pass: olPass },
+      { label: `A-Level avg ≥ 3.5`, value: `${alCGPA.toFixed(2)}`, pass: alPass },
+      { label: `Min 2 A grades (combined)`, value: `${aCount} A's`, pass: minA },
+    ],
+    info: [
+      'Min 5 O-Levels incl. Mathematics',
+      'Min 2 A-Levels (final result ≥ 1 subject published 2025)',
+      'A=5.0  B=4.0  C=3.5  D=0.0',
+      'Min 2 A grades across all 7 counted subjects',
+    ],
+  };
 }
 
-// Grade point mappings (moved outside component to avoid recreation on each render)
-const ibaGradePoints: Record<string, number> = { 'A': 5.0, 'B': 4.0, 'C': 3.0, 'D': 0.0 };
-const bupGradePoints: Record<string, number> = { 'A': 5.0, 'B': 4.0, 'C': 3.5, 'D': 3.0 };
-const duScienceGradePoints: Record<string, number> = { 'A': 5.0, 'B': 4.0, 'C': 3.5 };
-const businessSubjects = ['business studies', 'accounting', 'economics', 'mathematics', 'statistics'];
-const buetRequiredALevel = ['mathematics', 'physics', 'chemistry'];
-const grades = ['A', 'B', 'C', 'D'];
-const duScienceGrades = ['A', 'B', 'C'];
+function calcBUP(oLevels: Subject[], aLevels: Subject[]) {
+  const ol = oLevels.filter(s => s.name.trim() && s.grade);
+  const al = aLevels.filter(s => s.name.trim() && s.grade);
 
-const UniversityEligibilityChecker = ({ onEligibilityUpdate }: EligibilityCheckerProps) => {
-  const [activeTab, setActiveTab] = useState('IBA');
-  const [oLevelSubjects, setOLevelSubjects] = useState([
-    { id: 'math', name: 'Mathematics', grade: '' }
-  ]);
-  const [aLevelSubjects, setALevelSubjects] = useState([
-    { id: 'a1', name: '', grade: '' }
-  ]);
+  if (ol.length < 5) return { eligible: false, reason: 'Min 5 O-Level subjects required.' };
+  if (al.length < 2) return { eligible: false, reason: 'Min 2 A-Level subjects required.' };
 
-  const updateOLevelSubject = useCallback((id: string, field: string, value: string) => {
-    setOLevelSubjects(prev => prev.map(subject => 
-      subject.id === id ? { ...subject, [field]: value } : subject
-    ));
-  }, []);
+  const olPts  = ol.map(s => bupGradePoints[s.grade]).sort((a, b) => b - a).slice(0, 5);
+  const alPts  = al.map(s => bupGradePoints[s.grade]).sort((a, b) => b - a).slice(0, 2);
+  const total  = [...olPts, ...alPts].reduce((s, p) => s + p, 0);
+  const eligible = total >= 26.5;
 
-  const updateALevelSubject = useCallback((id: string, field: string, value: string) => {
-    setALevelSubjects(prev => prev.map(subject => 
-      subject.id === id ? { ...subject, [field]: value } : subject
-    ));
-  }, []);
+  return {
+    eligible, total: total.toFixed(1),
+    olPts, alPts,
+    reason: eligible ? 'Meets all BUP requirements.' : `Need ${(26.5 - total).toFixed(1)} more points.`,
+    checks: [
+      { label: 'Combined points ≥ 26.5  (best 5 O + best 2 A)', value: `${total.toFixed(1)}`, pass: eligible },
+    ],
+    info: [
+      'Min 5 O-Levels + 2 A-Levels',
+      'A/A*/9/8 = 5.0  |  7 = 4.5  |  B/6 = 4.0  |  C/5 = 3.5  |  D/4 = 3.0',
+      'Grades below D not counted',
+      'Applies to both IBA & FBS programmes',
+    ],
+  };
+}
 
-  const addOLevelSubject = () => {
-    const newId = `ol${Date.now()}`;
-    setOLevelSubjects(prev => [...prev, { id: newId, name: '', grade: '' }]);
+function calcDUScience(oLevels: Subject[], aLevels: Subject[]) {
+  const ol = oLevels.filter(s => s.name.trim() && s.grade);
+  const al = aLevels.filter(s => s.name.trim() && s.grade);
+
+  if (ol.length < 5) return { eligible: false, reason: 'Min 5 O-Level subjects required.' };
+  if (al.length < 2) return { eligible: false, reason: 'Min 2 A-Level subjects required.' };
+
+  const combined = [...ol, ...al];
+  if (combined.some(s => s.grade === 'D')) return { eligible: false, reason: 'D grades not allowed for DU Science.' };
+
+  const withPts = combined
+    .map(s => ({ ...s, pts: duSciGradePoints[s.grade] ?? 0 }))
+    .sort((a, b) => b.pts - a.pts)
+    .slice(0, 7);
+
+  const gc = { A: 0, B: 0, C: 0 };
+  withPts.forEach(s => { if (s.grade in gc) gc[s.grade as keyof typeof gc]++; });
+
+  const minA = gc.A >= 3;
+  const minB = (gc.A + gc.B) >= 5;
+  const minC = (gc.A + gc.B + gc.C) >= 7;
+  const has7  = withPts.length >= 7;
+  const eligible = minA && minB && minC && has7;
+
+  return {
+    eligible, gc, withPts,
+    reason: eligible ? 'Meets all DU Science requirements.' : 'Grade distribution not met.',
+    checks: [
+      { label: 'Min 3 A grades (best 7 subjects)', value: `${gc.A} A's`, pass: minA },
+      { label: 'Min 5 subjects with B or above', value: `${gc.A + gc.B}`, pass: minB },
+      { label: '7 subjects with C or above', value: `${gc.A + gc.B + gc.C}`, pass: minC },
+      { label: 'No D grades', value: '', pass: !combined.some(s => s.grade === 'D') },
+    ],
+    info: [
+      'Best 7 subjects counted from combined O+A Level',
+      'Grade distribution: 3A + 2B + 2C minimum',
+      'No D grades allowed',
+      'A=5.0  B=4.0  C=3.5',
+    ],
+  };
+}
+
+function calcDUBusiness(oLevels: Subject[], aLevels: Subject[]) {
+  const ol = oLevels.filter(s => s.name.trim() && s.grade);
+  const al = aLevels.filter(s => s.name.trim() && s.grade);
+
+  if (ol.length < 5) return { eligible: false, reason: 'Min 5 O-Level subjects required.' };
+  if (al.length < 2) return { eligible: false, reason: 'Min 2 A-Level subjects required.' };
+
+  const hasBiz = al.some(s => bizSubjects.some(b => s.name.toLowerCase().trim() === b));
+  if (!hasBiz) return {
+    eligible: false,
+    reason: 'Must take Business Studies, Accounting, Economics, Mathematics, or Statistics at A-Level.',
+    checks: [{ label: 'Business subject in A-Level', value: 'Missing', pass: false }],
+    info: ['English-medium: one of Business/Economics/Accounting/Maths/Statistics required at A-Level'],
   };
 
-  const addALevelSubject = () => {
-    const newId = `al${Date.now()}`;
-    setALevelSubjects(prev => [...prev, { id: newId, name: '', grade: '' }]);
+  const olPts   = ol.map(s => ibaGradePoints[s.grade]).sort((a, b) => b - a).slice(0, 5);
+  const alPts   = al.map(s => ibaGradePoints[s.grade]).sort((a, b) => b - a).slice(0, 2);
+  const olGPA   = olPts.reduce((s, p) => s + p, 0) / 5;
+  const alGPA   = alPts.reduce((s, p) => s + p, 0) / 2;
+  const olPass  = olGPA >= 3.0;
+  const alPass  = alGPA >= 3.0;
+  const eligible = olPass && alPass;
+
+  return {
+    eligible, olGPA: olGPA.toFixed(2), alGPA: alGPA.toFixed(2), olPass, alPass, hasBiz,
+    reason: eligible ? 'Meets DU FBS requirements.' : 'GPA requirements not met.',
+    checks: [
+      { label: 'Business subject in A-Level', value: 'Present', pass: true },
+      { label: 'O-Level avg ≥ 3.0 (best 5)', value: olGPA.toFixed(2), pass: olPass },
+      { label: 'A-Level avg ≥ 3.0 (best 2)', value: alGPA.toFixed(2), pass: alPass },
+    ],
+    info: [
+      'Commerce / IGCSE+A-Level: combined GPA ≥ 7.5 (min 3.0 each)',
+      'Science background: combined GPA ≥ 8.0 (min 3.5 each)',
+      'Humanities: combined GPA ≥ 7.5 (min 3.0 each)',
+      'English-medium must include one business/econ/accounting/maths/stats subject',
+    ],
   };
+}
 
-  const removeOLevelSubject = (id: string) => {
-    // Don't allow removal of mandatory subjects
-    const buetRequiredIds = ['buet_math', 'buet_physics', 'buet_chemistry', 'buet_english'];
-    const isMandatory = (id === 'math' && activeTab === 'IBA') || (buetRequiredIds.includes(id) && activeTab === 'BUET');
-    
-    if (!isMandatory) {
-      setOLevelSubjects(prev => prev.filter(subject => subject.id !== id));
-    }
+function calcBUET(oLevels: Subject[], aLevels: Subject[]) {
+  const ol = oLevels.filter(s => s.name.trim() && s.grade);
+  const al = aLevels.filter(s => s.name.trim() && s.grade);
+
+  if (ol.length < 5) return { eligible: false, reason: 'Min 5 O-Level subjects required.' };
+
+  const findOl = (name: string) => ol.find(s => s.name.toLowerCase().includes(name));
+  const buetOlReq = ['mathematics', 'physics', 'chemistry', 'english'];
+  const missingOl: string[] = [];
+  const lowOl:     string[] = [];
+
+  buetOlReq.forEach(n => {
+    const s = findOl(n);
+    if (!s) { missingOl.push(n); return; }
+    if (s.grade === 'C' || s.grade === 'D') lowOl.push(`${n} (${s.grade})`);
+  });
+
+  if (missingOl.length) return { eligible: false, reason: `Missing O-Level: ${missingOl.join(', ')}.` };
+  if (lowOl.length)     return { eligible: false, reason: `Need min B in: ${lowOl.join(', ')}.` };
+
+  const sciAl = al.filter(s => ['mathematics','physics','chemistry'].some(n => s.name.toLowerCase().includes(n)));
+  if (sciAl.length < 3) return { eligible: false, reason: 'Must take Maths, Physics, Chemistry at A-Level.' };
+
+  const aCount        = sciAl.filter(s => s.grade === 'A').length;
+  const bPlusCount    = sciAl.filter(s => s.grade === 'A' || s.grade === 'B').length;
+  const twoA          = aCount >= 2;
+  const allBPlus      = bPlusCount >= 3;
+  const eligible      = twoA && allBPlus;
+
+  return {
+    eligible, sciAl, aCount, bPlusCount, twoA, allBPlus,
+    reason: eligible
+      ? 'Meets BUET minimum. Final ranking: top 400 by A-Level Maths/Physics/Chemistry.'
+      : 'A-Level grade requirements not met.',
+    checks: [
+      { label: 'O-Level: Maths/Physics/Chemistry/English all ≥ B', value: '', pass: !missingOl.length && !lowOl.length },
+      { label: 'A-Level: 2 A grades from Maths/Physics/Chemistry', value: `${aCount}/2`, pass: twoA },
+      { label: 'All 3 science subjects ≥ B', value: `${bPlusCount}/3`, pass: allBPlus },
+    ],
+    info: [
+      'O-Level: min 5 subjects incl. Maths, Physics, Chemistry, English (all min B)',
+      'A-Level: all 3 science subjects required (Maths, Physics, Chemistry)',
+      'Need 2 A grades + 1 B grade minimum at A-Level',
+      'Final selection: top 400 ranked by converted A-Level grades',
+    ],
   };
+}
 
-  const removeALevelSubject = (id: string) => {
-    setALevelSubjects(prev => prev.filter(subject => subject.id !== id));
+// ─── University config ────────────────────────────────────────────────────────
+
+const UNIVERSITIES = [
+  { id: 'IBA',    label: 'IBA (DU)',    full: 'IBA, University of Dhaka' },
+  { id: 'BUP',    label: 'BUP',         full: 'Bangladesh University of Professionals' },
+  { id: 'DUFBS',  label: 'DU FBS',      full: 'Faculty of Business Studies, University of Dhaka' },
+  { id: 'DUSci',  label: 'DU Science',  full: 'Science Unit, University of Dhaka' },
+  { id: 'BUET',   label: 'BUET',        full: 'Bangladesh University of Engineering & Technology' },
+] as const;
+
+type UniId = typeof UNIVERSITIES[number]['id'];
+
+// ─── Main component ───────────────────────────────────────────────────────────
+
+export default function EligibilityChecker() {
+  const [oLevels, setOLevels] = useState<Subject[]>([{ id: 'ol0', name: '', grade: '' }]);
+  const [aLevels, setALevels] = useState<Subject[]>([{ id: 'al0', name: '', grade: '' }]);
+  const [showResults, setShowResults] = useState(false);
+  const [expanded, setExpanded] = useState<UniId | null>(null);
+
+  // Subjects helpers
+  const addOL = () => setOLevels(p => [...p, { id: `ol${Date.now()}`, name: '', grade: '' }]);
+  const addAL = () => setALevels(p => [...p, { id: `al${Date.now()}`, name: '', grade: '' }]);
+  const removeOL = (id: string) => setOLevels(p => p.filter(s => s.id !== id));
+  const removeAL = (id: string) => setALevels(p => p.filter(s => s.id !== id));
+  const updateOL = useCallback((id: string, field: string, val: string) =>
+    setOLevels(p => p.map(s => s.id === id ? { ...s, [field]: val } : s)), []);
+  const updateAL = useCallback((id: string, field: string, val: string) =>
+    setALevels(p => p.map(s => s.id === id ? { ...s, [field]: val } : s)), []);
+
+  // Compute all results
+  const results = useMemo(() => ({
+    IBA:    calcIBA(oLevels, aLevels),
+    BUP:    calcBUP(oLevels, aLevels),
+    DUFBS:  calcDUBusiness(oLevels, aLevels),
+    DUSci:  calcDUScience(oLevels, aLevels),
+    BUET:   calcBUET(oLevels, aLevels),
+  }), [oLevels, aLevels]);
+
+  const eligibleCount = Object.values(results).filter(r => r.eligible).length;
+
+  const handleCheck = () => {
+    setShowResults(true);
+    setExpanded(null);
   };
-
-  const handleTabChange = (tab: string) => {
-    setActiveTab(tab);
-    if (tab === 'IBA' && !oLevelSubjects.find(s => s.id === 'math')) {
-      setOLevelSubjects(prev => [{ id: 'math', name: 'Mathematics', grade: '' }, ...prev]);
-    }
-    if (tab === 'BUET') {
-      // Set required BUET O-Level subjects
-      setOLevelSubjects([
-        { id: 'buet_math', name: 'Mathematics', grade: '' },
-        { id: 'buet_physics', name: 'Physics', grade: '' },
-        { id: 'buet_chemistry', name: 'Chemistry', grade: '' },
-        { id: 'buet_english', name: 'English', grade: '' }
-      ]);
-      // Set required BUET A-Level subjects
-      setALevelSubjects([
-        { id: 'buet_a_math', name: 'Mathematics', grade: '' },
-        { id: 'buet_a_physics', name: 'Physics', grade: '' },
-        { id: 'buet_a_chemistry', name: 'Chemistry', grade: '' }
-      ]);
-    }
-    if (tab === 'DU Business') {
-      // Set required DU Business A-Level subject with business subject dropdown
-      setALevelSubjects([
-        { id: 'du_business_required', name: 'Business Studies', grade: '' },
-        { id: 'a2', name: '', grade: '' }
-      ]);
-    }
-    if ((tab === 'DU Science' || tab === 'DU Business') && oLevelSubjects.find(s => s.id === 'math' && !s.name.trim() && !s.grade)) {
-      setOLevelSubjects(prev => prev.filter(s => s.id !== 'math' || s.name.trim() || s.grade));
-    }
-  };
-
-  const calculateIBAResults = useCallback(() => {
-    const validOLevels = oLevelSubjects.filter(s => s.name.trim() && s.grade);
-    const validALevels = aLevelSubjects.filter(s => s.name.trim() && s.grade);
-
-    const mathSubject = oLevelSubjects.find(s => s.id === 'math');
-    const hasMathWithGrade = mathSubject && mathSubject.grade;
-
-    if (!hasMathWithGrade) {
-      return { eligible: false, reason: 'Mathematics is mandatory for O-Levels and must have a grade.' };
-    }
-
-    if (validOLevels.length < 5) {
-      return { eligible: false, reason: 'Minimum 5 O-Level subjects required.' };
-    }
-
-    if (validALevels.length < 2) {
-      return { eligible: false, reason: 'Minimum 2 A-Level subjects required.' };
-    }
-
-    const oLevelPoints = validOLevels.map(s => ibaGradePoints[s.grade]);
-    const mathPoints = ibaGradePoints[mathSubject.grade];
-    const otherOLevelPoints = oLevelPoints.filter((_, index) => validOLevels[index].id !== 'math');
-    otherOLevelPoints.sort((a, b) => b - a);
-    const best4OthersOLevel = otherOLevelPoints.slice(0, 4);
-    const best5OLevel = [mathPoints, ...best4OthersOLevel];
-    const oLevelCGPA = best5OLevel.reduce((sum, point) => sum + point, 0) / 5;
-
-    const aLevelPoints = validALevels.map(s => ibaGradePoints[s.grade]);
-    aLevelPoints.sort((a, b) => b - a);
-    const best2ALevel = aLevelPoints.slice(0, 2);
-    const aLevelCGPA = best2ALevel.reduce((sum, point) => sum + point, 0) / 2;
-
-    const allSubjects = [...validOLevels, ...validALevels];
-    const aGradesCount = allSubjects.filter(s => s.grade === 'A').length;
-
-    const oLevelPass = oLevelCGPA >= 3.5;
-    const aLevelPass = aLevelCGPA >= 3.5;
-    const minAGrades = aGradesCount >= 2;
-
-    const eligible = oLevelPass && aLevelPass && minAGrades;
-
-    return {
-      eligible,
-      oLevelCGPA: oLevelCGPA.toFixed(2),
-      aLevelCGPA: aLevelCGPA.toFixed(2),
-      aGradesCount,
-      oLevelPass,
-      aLevelPass,
-      minAGrades,
-      reason: eligible ? 'You meet all IBA eligibility requirements!' : 'Requirements not met.'
-    };
-  }, [oLevelSubjects, aLevelSubjects]);
-
-  const calculateBUPResults = useCallback(() => {
-    const validOLevels = oLevelSubjects.filter(s => s.name.trim() && s.grade);
-    const validALevels = aLevelSubjects.filter(s => s.name.trim() && s.grade);
-
-    if (validOLevels.length < 5) {
-      return { eligible: false, reason: 'Minimum 5 O-Level subjects required.' };
-    }
-
-    if (validALevels.length < 2) {
-      return { eligible: false, reason: 'Minimum 2 A-Level subjects required.' };
-    }
-
-    const oLevelPoints = validOLevels.map(s => bupGradePoints[s.grade]);
-    const aLevelPoints = validALevels.map(s => bupGradePoints[s.grade]);
-
-    oLevelPoints.sort((a, b) => b - a);
-    aLevelPoints.sort((a, b) => b - a);
-
-    const best5OLevel = oLevelPoints.slice(0, 5);
-    const best2ALevel = aLevelPoints.slice(0, 2);
-
-    const totalPoints = [...best5OLevel, ...best2ALevel].reduce((sum, point) => sum + point, 0);
-    const eligible = totalPoints >= 26.5;
-
-    return {
-      eligible,
-      totalPoints: totalPoints.toFixed(1),
-      best5OLevel,
-      best2ALevel,
-      reason: eligible ? 'You meet all BUP eligibility requirements!' : `Need ${(26.5 - totalPoints).toFixed(1)} more points to qualify.`
-    };
-  }, [oLevelSubjects, aLevelSubjects]);
-
-  const calculateDUScienceResults = useCallback(() => {
-    const validOLevels = oLevelSubjects.filter(s => s.name.trim() && s.grade);
-    const validALevels = aLevelSubjects.filter(s => s.name.trim() && s.grade);
-
-    if (validOLevels.length < 5) {
-      return { eligible: false, reason: 'Minimum 5 O-Level subjects required.' };
-    }
-
-    if (validALevels.length < 2) {
-      return { eligible: false, reason: 'Minimum 2 A-Level subjects required.' };
-    }
-
-    const allSubjects = [...validOLevels, ...validALevels];
-    const hasDGrades = allSubjects.some(s => s.grade === 'D');
-    if (hasDGrades) {
-      return { eligible: false, reason: 'No D grades are acceptable for DU Science Unit.' };
-    }
-
-    const allSubjectsWithPoints = allSubjects.map(s => ({
-      ...s,
-      points: duScienceGradePoints[s.grade]
-    }));
-    allSubjectsWithPoints.sort((a, b) => b.points - a.points);
-    
-    const best7Subjects = allSubjectsWithPoints.slice(0, 7);
-    
-    const gradeCount: Record<string, number> = { A: 0, B: 0, C: 0 };
-    best7Subjects.forEach(s => {
-      if (gradeCount[s.grade] !== undefined) {
-        gradeCount[s.grade]++;
-      }
-    });
-
-    const minAGrades = gradeCount.A >= 3;
-    const minBGrades = (gradeCount.A + gradeCount.B) >= 5;  // Need at least 5 subjects with B or better (A counts as B+)
-    const minCGrades = (gradeCount.A + gradeCount.B + gradeCount.C) >= 7;  // Need at least 7 subjects with C or better (all subjects)
-    const totalSubjects = best7Subjects.length >= 7;
-
-    const eligible = minAGrades && minBGrades && minCGrades && totalSubjects;
-
-    return {
-      eligible,
-      gradeCount,
-      best7Subjects,
-      minAGrades,
-      minBGrades,
-      minCGrades,
-      totalSubjects,
-      reason: eligible ? 'You meet all DU Science Unit eligibility requirements!' : 'Grade distribution requirements not met.'
-    };
-  }, [oLevelSubjects, aLevelSubjects]);
-
-  const calculateDUBusinessResults = useCallback(() => {
-    const validOLevels = oLevelSubjects.filter(s => s.name.trim() && s.grade);
-    const validALevels = aLevelSubjects.filter(s => s.name.trim() && s.grade);
-
-    if (validOLevels.length < 5) {
-      return { eligible: false, reason: 'Minimum 5 O-Level subjects required.' };
-    }
-
-    if (validALevels.length < 2) {
-      return { eligible: false, reason: 'Minimum 2 A-Level subjects required.' };
-    }
-
-    // Check if a business subject is taken
-    const businessSubjectTaken = validALevels.some(s => 
-      businessSubjects.some(bizSubject => 
-        s.name.toLowerCase().trim() === bizSubject.toLowerCase()
-      )
-    );
-
-    if (!businessSubjectTaken) {
-      return { 
-        eligible: false, 
-        reason: 'Must take at least one business subject: Business Studies, Accounting, Economics, Mathematics, or Statistics.' 
-      };
-    }
-
-    // Calculate O-Level and A-Level GPAs (using IBA grade points)
-    const oLevelPoints = validOLevels.map(s => ibaGradePoints[s.grade]);
-    const aLevelPoints = validALevels.map(s => ibaGradePoints[s.grade]);
-
-    oLevelPoints.sort((a, b) => b - a);
-    aLevelPoints.sort((a, b) => b - a);
-
-    const best5OLevel = oLevelPoints.slice(0, 5);
-    const best2ALevel = aLevelPoints.slice(0, 2);
-
-    const oLevelGPA = best5OLevel.reduce((sum, point) => sum + point, 0) / 5;
-    const aLevelGPA = best2ALevel.reduce((sum, point) => sum + point, 0) / 2;
-
-    const oLevelPass = oLevelGPA >= 3.0;
-    const aLevelPass = aLevelGPA >= 3.0;
-
-    const allSubjects = [...validOLevels, ...validALevels];
-    
-    const gradeCount: Record<string, number> = { A: 0, B: 0, C: 0, D: 0 };
-    allSubjects.forEach(s => {
-      if (gradeCount[s.grade] !== undefined) {
-        gradeCount[s.grade]++;
-      }
-    });
-
-    const bPlusCount = gradeCount.A + gradeCount.B;
-    const cPlusCount = gradeCount.A + gradeCount.B + gradeCount.C;
-
-    const minBGrades = bPlusCount >= 3;
-    const minCGrades = cPlusCount >= 3;
-
-    const eligible = minBGrades && minCGrades && oLevelPass && aLevelPass;
-
-    let reason = '';
-    if (!eligible) {
-      if (!oLevelPass) reason = `O-Level GPA too low: ${oLevelGPA.toFixed(2)} (need ≥ 3.0)`;
-      else if (!aLevelPass) reason = `A-Level GPA too low: ${aLevelGPA.toFixed(2)} (need ≥ 3.0)`;
-      else reason = 'Grade distribution requirements not met.';
-    } else {
-      reason = 'You meet all DU FBS (Business Studies) eligibility requirements!';
-    }
-
-    return {
-      eligible,
-      gradeCount,
-      bPlusCount,
-      cPlusCount,
-      minBGrades,
-      minCGrades,
-      oLevelGPA: oLevelGPA.toFixed(2),
-      aLevelGPA: aLevelGPA.toFixed(2),
-      oLevelPass,
-      aLevelPass,
-      allSubjects,
-      businessSubjectTaken,
-      reason
-    };
-  }, [oLevelSubjects, aLevelSubjects]);
-
-  const calculateBUETResults = useCallback(() => {
-    const validOLevels = oLevelSubjects.filter(s => s.name.trim() && s.grade);
-    const validALevels = aLevelSubjects.filter(s => s.name.trim() && s.grade);
-
-    // Must have at least 5 O-Level subjects
-    if (validOLevels.length < 5) {
-      return { eligible: false, reason: 'Minimum 5 O-Level subjects required including Mathematics, Physics, Chemistry, and English.' };
-    }
-
-    // Check BUET required O-Level subjects (Mathematics, Physics, Chemistry, English) with minimum grade B
-    const buetRequiredOLevelSubjects = [
-      { id: 'buet_math', name: 'Mathematics' },
-      { id: 'buet_physics', name: 'Physics' },
-      { id: 'buet_chemistry', name: 'Chemistry' },
-      { id: 'buet_english', name: 'English' }
-    ];
-
-    const missingOLevelSubjects: string[] = [];
-    const lowGradeOLevelSubjects: string[] = [];
-
-    buetRequiredOLevelSubjects.forEach(required => {
-      const foundSubject = oLevelSubjects.find(s => s.id === required.id);
-      
-      if (!foundSubject || !foundSubject.grade) {
-        missingOLevelSubjects.push(required.name);
-      } else if (foundSubject.grade === 'C' || foundSubject.grade === 'D') {
-        lowGradeOLevelSubjects.push(`${required.name} (${foundSubject.grade})`);
-      }
-    });
-
-    if (missingOLevelSubjects.length > 0) {
-      return { 
-        eligible: false, 
-        reason: `Missing grades for required O-Level subjects: ${missingOLevelSubjects.join(', ')}.`
-      };
-    }
-
-    if (lowGradeOLevelSubjects.length > 0) {
-      return { 
-        eligible: false, 
-        reason: `O-Level subjects need minimum grade B: ${lowGradeOLevelSubjects.join(', ')}.`
-      };
-    }
-
-    // Check A-Level requirements: all 3 subjects (Math/Physics/Chemistry) required - 2 with grade A, 1 with grade B minimum
-    const aLevelScience = validALevels.filter(s => {
-      const name = s.name.toLowerCase().trim();
-      return buetRequiredALevel.some(req => name.includes(req.toLowerCase()));
-    });
-
-    // Must have all 3 required A-Level subjects
-    if (aLevelScience.length < 3) {
-      return { 
-        eligible: false, 
-        reason: 'Must take all 3 A-Level subjects: Mathematics, Physics, Chemistry.'
-      };
-    }
-
-    const aGradeCount = aLevelScience.filter(s => s.grade === 'A').length;
-    const bOrBetterCount = aLevelScience.filter(s => s.grade === 'A' || s.grade === 'B').length;
-
-    // Need minimum 2 A grades from the 3 science subjects
-    if (aGradeCount < 2) {
-      return { 
-        eligible: false, 
-        reason: 'Need minimum 2 A grades from the 3 required subjects (Mathematics, Physics, Chemistry).'
-      };
-    }
-
-    // All 3 subjects must be at least grade B (2 A grades + 1 B grade minimum)
-    if (bOrBetterCount < 3) {
-      return { 
-        eligible: false, 
-        reason: 'All 3 A-Level subjects must have minimum grade B (2 A grades + 1 B grade minimum).'
-      };
-    }
-
-    const eligible = true;
-
-    return {
-      eligible,
-      aLevelScience,
-      aGradeCount,
-      bOrBetterCount,
-      missingOLevelSubjects,
-      lowGradeOLevelSubjects,
-      reason: eligible ? 
-        'You meet BUET minimum eligibility criteria! Final selection: Top 400 candidates ranked by A-Level Mathematics, Physics, Chemistry grades.' : 
-        'Requirements not met.'
-    };
-  }, [oLevelSubjects, aLevelSubjects]);
-
-  const results: any = useMemo(() => {
-    return activeTab === 'IBA' ? calculateIBAResults() : 
-           activeTab === 'BUP' ? calculateBUPResults() : 
-           activeTab === 'DU Science' ? calculateDUScienceResults() :
-           activeTab === 'DU Business' ? calculateDUBusinessResults() :
-           calculateBUETResults();
-  }, [activeTab, calculateBUETResults, calculateBUPResults, calculateDUBusinessResults, calculateDUScienceResults, calculateIBAResults]);
-
-  // Call the callback whenever results change
-  useEffect(() => {
-    if (onEligibilityUpdate) {
-      onEligibilityUpdate(activeTab, results);
-    }
-  }, [activeTab, results, onEligibilityUpdate]);
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <div className="max-w-4xl mx-auto px-4 py-6 sm:px-6 lg:px-8">
-        <div className="text-center mb-8">
-          <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-vh-red to-vh-dark-beige rounded-2xl flex items-center justify-center transform rotate-12">
-            <div className="w-8 h-8 bg-white rounded-lg transform -rotate-12"></div>
+    <div className="min-h-screen bg-[#1A0507] text-[#FAF5EF]">
+      {/* ── Input form ── */}
+      {!showResults && (
+        <div className="max-w-3xl mx-auto px-6 py-16">
+          <div className="mb-12 text-center">
+            <p className="text-xs tracking-[0.3em] uppercase text-[#D4B094]/60 mb-4">O/A Level Results</p>
+            <h2 className="text-3xl sm:text-4xl font-light text-[#FAF5EF] leading-tight">
+              Enter your grades once,<br />
+              <span className="italic text-[#D4B094]">see every university.</span>
+            </h2>
           </div>
-          <h1 className="text-2xl sm:text-3xl font-bold text-black mb-2">University Eligibility</h1>
-          <p className="text-black text-sm sm:text-base">Check your eligibility for IBA DU, BUP, DU Science, DU Business, and BUET</p>
-        </div>
 
-        <div className="flex justify-center mb-8">
-          <div className="bg-white rounded-xl p-1 shadow-sm border border-gray-700 overflow-x-auto">
-            <div className="flex space-x-1">
-              <button
-                onClick={() => handleTabChange('IBA')}
-                className={`px-3 py-4 rounded-lg font-medium text-sm transition-all duration-200 whitespace-nowrap min-h-[44px] flex items-center ${
-                  activeTab === 'IBA'
-                    ? 'bg-vh-red text-white shadow-md'
-                    : 'text-black hover:text-vh-red hover:bg-gray-50'
-                }`}
-              >
-                IBA (DU)
-              </button>
-              <button
-                onClick={() => handleTabChange('BUP')}
-                className={`px-3 py-4 rounded-lg font-medium text-sm transition-all duration-200 whitespace-nowrap min-h-[44px] flex items-center ${
-                  activeTab === 'BUP'
-                    ? 'bg-vh-dark-beige text-white shadow-md'
-                    : 'text-black hover:text-vh-red hover:bg-gray-50'
-                }`}
-              >
-                BUP
-              </button>
-              <button
-                onClick={() => handleTabChange('DU Science')}
-                className={`px-3 py-4 rounded-lg font-medium text-sm transition-all duration-200 whitespace-nowrap min-h-[44px] flex items-center ${
-                  activeTab === 'DU Science'
-                    ? 'bg-vh-beige text-vh-dark-red shadow-md'
-                    : 'text-black hover:text-vh-red hover:bg-gray-50'
-                }`}
-              >
-                DU Science
-              </button>
-              <button
-                onClick={() => handleTabChange('DU Business')}
-                className={`px-3 py-4 rounded-lg font-medium text-sm transition-all duration-200 whitespace-nowrap min-h-[44px] flex items-center ${
-                  activeTab === 'DU Business'
-                    ? 'bg-vh-light-red text-white shadow-md'
-                    : 'text-black hover:text-vh-red hover:bg-gray-50'
-                }`}
-              >
-                DU FBS
-              </button>
-              <button
-                onClick={() => handleTabChange('BUET')}
-                className={`px-3 py-4 rounded-lg font-medium text-sm transition-all duration-200 whitespace-nowrap min-h-[44px] flex items-center ${
-                  activeTab === 'BUET'
-                    ? 'bg-vh-dark-red text-white shadow-md'
-                    : 'text-black hover:text-vh-red hover:bg-gray-50'
-                }`}
-              >
-                BUET
-              </button>
-            </div>
+          {/* O-Level subjects */}
+          <SubjectSection
+            title="O-Level Subjects"
+            subtitle="Enter all your O-Level subjects"
+            subjects={oLevels}
+            grades={[...grades]}
+            onAdd={addOL}
+            onRemove={removeOL}
+            onUpdate={updateOL}
+          />
+
+          {/* A-Level subjects */}
+          <SubjectSection
+            title="A-Level Subjects"
+            subtitle="Enter all your A-Level subjects"
+            subjects={aLevels}
+            grades={[...grades]}
+            onAdd={addAL}
+            onRemove={removeAL}
+            onUpdate={updateAL}
+          />
+
+          <div className="mt-10 flex justify-center">
+            <button
+              onClick={handleCheck}
+              className="group relative inline-flex items-center gap-3 rounded-full border border-[#D4B094]/40 bg-[#FAF5EF] text-[#1A0507] px-10 py-4 font-sans text-base font-medium tracking-wide transition-all duration-500 hover:bg-[#D4B094] hover:shadow-[0_12px_40px_-12px_rgba(212,176,148,0.55)]"
+            >
+              Check Eligibility
+            </button>
           </div>
         </div>
+      )}
 
-        <div className="space-y-6">
-          <div className="bg-white rounded-2xl shadow-sm border border-gray-700 overflow-hidden">
-            <div className="bg-gradient-to-r from-vh-beige/20 to-vh-dark-beige/20 px-6 py-4 border-b border-gray-700">
-              <h2 className="text-lg font-semibold text-black">O-Level Subjects</h2>
-              <p className="text-sm text-black mt-1">
-                {activeTab === 'IBA' 
-                  ? 'Mathematics mandatory. Best 5 subjects counted.' 
-                  : activeTab === 'BUP'
-                  ? 'Best 5 subjects counted. No mandatory subjects.'
-                  : activeTab === 'DU Science'
-                  ? 'Minimum 5 subjects required. Best 7 total subjects counted (O+A Level combined).'
-                  : activeTab === 'DU Business'
-                  ? 'Minimum 5 subjects required.'
-                  : 'Minimum 5 subjects required including Math, Physics, Chemistry, English (all minimum grade B).'}
-              </p>
-            </div>
-            
-            <div className="p-6 space-y-3">
-              {oLevelSubjects.map((subject) => {
-                const buetRequiredIds = ['buet_math', 'buet_physics', 'buet_chemistry', 'buet_english'];
-                const isBuetRequired = buetRequiredIds.includes(subject.id) && activeTab === 'BUET';
-                const isIbaRequired = subject.id === 'math' && activeTab === 'IBA';
-                const isDisabled = isBuetRequired || isIbaRequired;
-                const canRemove = !isDisabled;
-
-                return (
-                  <div key={subject.id} className="flex gap-3 items-center">
-                    <div className="flex-1">
-                      <input
-                        type="text"
-                        placeholder={
-                          subject.id === 'math' ? 'Mathematics' :
-                          subject.id === 'buet_math' ? 'Mathematics' :
-                          subject.id === 'buet_physics' ? 'Physics' :
-                          subject.id === 'buet_chemistry' ? 'Chemistry' :
-                          subject.id === 'buet_english' ? 'English' :
-                          'Subject name'
-                        }
-                        value={subject.name}
-                        onChange={(e) => updateOLevelSubject(subject.id, 'name', e.target.value)}
-                        disabled={isDisabled}
-                        className="w-full px-4 py-3 border border-gray-700 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-vh-red focus:border-transparent disabled:bg-gray-700 disabled:text-black transition-all"
-                      />
-                    </div>
-                    <div className="w-20">
-                      <select
-                        value={subject.grade}
-                        onChange={(e) => updateOLevelSubject(subject.id, 'grade', e.target.value)}
-                        className="w-full px-3 py-3 border border-gray-700 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-vh-red focus:border-transparent bg-white transition-all"
-                      >
-                        <option value="">Grade</option>
-                        {(activeTab === 'DU Science' ? duScienceGrades : grades).map(grade => (
-                          <option key={grade} value={grade}>{grade}</option>
-                        ))}
-                      </select>
-                    </div>
-                    {canRemove && (
-                      <button
-                        onClick={() => removeOLevelSubject(subject.id)}
-                        className="p-4 text-red-500 hover:bg-red-50 rounded-xl transition-colors touch-manipulation min-w-[44px] min-h-[44px] flex items-center justify-center"
-                        aria-label="Remove subject"
-                      >
-                        <Trash2 size={16} />
-                      </button>
-                    )}
-                    {!canRemove && (
-                      <div className="p-3 w-12 flex items-center justify-center">
-                        <div className="w-4 h-4 bg-gray-700 rounded text-xs flex items-center justify-center text-black">
-                          ✓
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                );
-              })}
-              
-              <button
-                onClick={addOLevelSubject}
-                className="flex items-center gap-2 text-vh-red hover:text-vh-dark-red font-medium text-sm py-3 px-2 transition-colors touch-manipulation min-h-[44px]"
-              >
-                <Plus size={16} />
-                Add Subject
-              </button>
-              
-              {activeTab === 'BUET' && (
-                <div className="text-sm text-black italic">
-                  Required subjects (Math, Physics, Chemistry, English) are pre-filled. You need minimum 5 O-Level subjects total.
-                </div>
-              )}
-            </div>
+      {/* ── Results ── */}
+      {showResults && (
+        <div className="max-w-4xl mx-auto px-6 py-16">
+          {/* Header */}
+          <div className="mb-12 text-center">
+            <p className="text-xs tracking-[0.3em] uppercase text-[#D4B094]/60 mb-4">Results</p>
+            <h2 className="text-3xl sm:text-4xl font-light text-[#FAF5EF] leading-tight mb-4">
+              {eligibleCount === 0
+                ? 'No universities eligible yet.'
+                : eligibleCount === UNIVERSITIES.length
+                  ? 'Eligible for all universities!'
+                  : <>Eligible for <span className="text-[#D4B094] italic">{eligibleCount} of {UNIVERSITIES.length}</span> universities.</>
+              }
+            </h2>
+            <button
+              onClick={() => setShowResults(false)}
+              className="text-sm text-[#D4B094]/70 hover:text-[#D4B094] transition-colors underline underline-offset-4"
+            >
+              Edit grades
+            </button>
           </div>
 
-          <div className="bg-white rounded-2xl shadow-sm border border-gray-700 overflow-hidden">
-            <div className="bg-gradient-to-r from-vh-beige/30 to-vh-dark-beige/30 px-6 py-4 border-b border-gray-700">
-              <h2 className="text-lg font-semibold text-black">A-Level Subjects</h2>
-              <p className="text-sm text-black mt-1">
-                {activeTab === 'DU Business'
-                  ? 'Minimum 2 subjects required. Any subjects allowed. Business Studies / Accounting / Economics / Mathematics / Statistics - any one of these subjects must be taken.'
-                  : activeTab === 'BUET'
-                  ? 'Must take all 3 subjects: Math, Physics, Chemistry. Need 2 A grades + 1 B grade minimum.'
-                  : 'Minimum 2 subjects required. Best 2 subjects counted.'}
-              </p>
-            </div>
-            
-            <div className="p-6 space-y-3">
-              {aLevelSubjects.map((subject) => {
-                const isFirstDUBusiness = activeTab === 'DU Business' && subject.id === 'du_business_required';
-                const buetRequiredALevelIds = ['buet_a_math', 'buet_a_physics', 'buet_a_chemistry'];
-                const isBuetRequired = buetRequiredALevelIds.includes(subject.id) && activeTab === 'BUET';
-                const canRemove = !(activeTab === 'DU Business' && subject.id === 'du_business_required') && !(activeTab === 'BUET' && isBuetRequired);
-                
-                return (
-                  <div key={subject.id} className="flex gap-3 items-center">
-                    <div className="flex-1">
-                      {isFirstDUBusiness ? (
-                        <select
-                          value={subject.name}
-                          onChange={(e) => updateALevelSubject(subject.id, 'name', e.target.value)}
-                          className="w-full px-4 py-3 border border-gray-700 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-vh-dark-beige focus:border-transparent bg-white transition-all"
-                        >
-                          <option value="">Select business subject</option>
-                          {businessSubjects.map(bizSubject => (
-                            <option key={bizSubject} value={bizSubject}>{bizSubject}</option>
-                          ))}
-                        </select>
-                      ) : (
-                        <input
-                          type="text"
-                          placeholder={
-                            subject.id === 'buet_a_math' ? 'Mathematics' :
-                            subject.id === 'buet_a_physics' ? 'Physics' :
-                            subject.id === 'buet_a_chemistry' ? 'Chemistry' :
-                            'Subject name'
-                          }
-                          value={subject.name}
-                          onChange={(e) => updateALevelSubject(subject.id, 'name', e.target.value)}
-                          disabled={isBuetRequired}
-                          className="w-full px-4 py-3 border border-gray-700 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-vh-dark-beige focus:border-transparent transition-all disabled:bg-gray-700 disabled:text-black"
-                        />
-                      )}
-                    </div>
-                    <div className="w-20">
-                      <select
-                        value={subject.grade}
-                        onChange={(e) => updateALevelSubject(subject.id, 'grade', e.target.value)}
-                        className="w-full px-3 py-3 border border-gray-700 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-vh-dark-beige focus:border-transparent bg-white transition-all"
-                      >
-                        <option value="">Grade</option>
-                        {(activeTab === 'DU Science' ? duScienceGrades : grades).map(grade => (
-                          <option key={grade} value={grade}>{grade}</option>
-                        ))}
-                      </select>
-                    </div>
-                    {canRemove ? (
-                      <button
-                        onClick={() => removeALevelSubject(subject.id)}
-                        className="p-4 text-red-500 hover:bg-red-50 rounded-xl transition-colors touch-manipulation min-w-[44px] min-h-[44px] flex items-center justify-center"
-                        aria-label="Remove A-Level subject"
-                      >
-                        <Trash2 size={16} />
-                      </button>
-                    ) : (
-                      <div className="p-3 w-12 flex items-center justify-center">
-                        <div className="w-4 h-4 bg-gray-700 rounded text-xs flex items-center justify-center text-black">
-                          ✓
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                );
-              })}
-              
-              {activeTab !== 'BUET' && (
-                <button
-                  onClick={addALevelSubject}
-                  className="flex items-center gap-2 text-vh-dark-beige hover:text-vh-dark-red font-medium text-sm py-3 px-2 transition-colors touch-manipulation min-h-[44px]"
+          {/* University cards */}
+          <div className="space-y-3">
+            {UNIVERSITIES.map(uni => {
+              const r = results[uni.id];
+              const isOpen = expanded === uni.id;
+
+              return (
+                <div
+                  key={uni.id}
+                  className={`rounded-2xl border transition-all duration-300 overflow-hidden ${
+                    r.eligible
+                      ? 'border-[#D4B094]/30 bg-[#D4B094]/[0.06]'
+                      : 'border-white/[0.07] bg-white/[0.03]'
+                  }`}
                 >
-                  <Plus size={16} />
-                  Add Subject
-                </button>
-              )}
-              
-              {activeTab === 'BUET' && (
-                <div className="text-sm text-black italic">
-                  All required A-Level subjects are pre-filled. Additional subjects can be entered but won't affect eligibility.
+                  {/* Card header — always visible, clickable */}
+                  <button
+                    onClick={() => setExpanded(isOpen ? null : uni.id)}
+                    className="w-full flex items-center justify-between px-6 py-5 text-left"
+                  >
+                    <div className="flex items-center gap-4">
+                      {/* Eligible dot */}
+                      <div className={`w-2.5 h-2.5 rounded-full flex-shrink-0 ${
+                        r.eligible ? 'bg-[#D4B094]' : 'bg-white/20'
+                      }`} />
+                      <div>
+                        <span className={`font-medium text-base ${r.eligible ? 'text-[#FAF5EF]' : 'text-[#FAF5EF]/50'}`}>
+                          {uni.label}
+                        </span>
+                        <span className={`ml-3 text-xs ${r.eligible ? 'text-[#D4B094]' : 'text-[#FAF5EF]/30'}`}>
+                          {uni.full}
+                        </span>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-4 flex-shrink-0">
+                      <span className={`text-xs font-medium tracking-wide uppercase ${
+                        r.eligible ? 'text-[#D4B094]' : 'text-[#FAF5EF]/30'
+                      }`}>
+                        {r.eligible ? 'Eligible' : 'Not eligible'}
+                      </span>
+                      {isOpen
+                        ? <ChevronUp size={16} className="text-[#D4B094]/60" />
+                        : <ChevronDown size={16} className="text-[#FAF5EF]/30" />
+                      }
+                    </div>
+                  </button>
+
+                  {/* Expanded detail */}
+                  {isOpen && (
+                    <div className="px-6 pb-6 border-t border-white/[0.06]">
+                      <div className="pt-5 grid sm:grid-cols-2 gap-6">
+                        {/* Checks */}
+                        <div>
+                          <p className="text-xs tracking-[0.2em] uppercase text-[#D4B094]/50 mb-3">Your results</p>
+                          <div className="space-y-2">
+                            {(r as any).checks?.map((c: any, i: number) => (
+                              <div key={i} className="flex items-start gap-3">
+                                <div className={`mt-0.5 w-5 h-5 rounded-full flex-shrink-0 flex items-center justify-center ${
+                                  c.pass ? 'bg-[#D4B094]/20 text-[#D4B094]' : 'bg-red-900/30 text-red-400'
+                                }`}>
+                                  {c.pass ? <Check size={11} /> : <X size={11} />}
+                                </div>
+                                <div className="flex-1 min-w-0">
+                                  <span className="text-sm text-[#FAF5EF]/70">{c.label}</span>
+                                  {c.value && (
+                                    <span className={`ml-2 text-sm font-medium ${c.pass ? 'text-[#D4B094]' : 'text-red-400'}`}>
+                                      {c.value}
+                                    </span>
+                                  )}
+                                </div>
+                              </div>
+                            ))}
+                          </div>
+
+                          {/* Verdict */}
+                          <div className={`mt-4 px-4 py-3 rounded-xl text-sm ${
+                            r.eligible
+                              ? 'bg-[#D4B094]/10 text-[#D4B094]'
+                              : 'bg-red-950/40 text-red-400'
+                          }`}>
+                            {r.reason}
+                          </div>
+                        </div>
+
+                        {/* Requirements info */}
+                        <div>
+                          <p className="text-xs tracking-[0.2em] uppercase text-[#D4B094]/50 mb-3">Requirements</p>
+                          <ul className="space-y-2">
+                            {(r as any).info?.map((line: string, i: number) => (
+                              <li key={i} className="flex items-start gap-2 text-sm text-[#FAF5EF]/50">
+                                <span className="mt-1.5 w-1 h-1 rounded-full bg-[#D4B094]/40 flex-shrink-0" />
+                                {line}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  )}
                 </div>
-              )}
-            </div>
+              );
+            })}
           </div>
 
-          <div className="bg-white rounded-2xl shadow-sm border border-gray-700 overflow-hidden">
-            <div className="bg-gradient-to-r from-purple-50 to-pink-50 px-6 py-4 border-b border-gray-700">
-              <h2 className="text-lg font-semibold text-black">{activeTab} Eligibility Results</h2>
-            </div>
-            
-            <div className="p-6">
-              <div className="grid gap-6 lg:grid-cols-2">
-                <div className="space-y-4">
-                  <h3 className="font-semibold text-black">Requirements Check</h3>
-                  <div className="space-y-3">
-                    {activeTab === 'IBA' ? (
-                      <>
-                        <div className="flex items-center gap-3 p-3 rounded-xl bg-gray-50">
-                          {results.oLevelPass ? 
-                            <div className="w-6 h-6 bg-vh-red rounded-full flex items-center justify-center">
-                              <Check size={14} className="text-white" />
-                            </div> : 
-                            <div className="w-6 h-6 bg-red-500 rounded-full flex items-center justify-center">
-                              <X size={14} className="text-white" />
-                            </div>
-                          }
-                          <span className="text-sm font-medium">O-Level CGPA ≥ 3.5: {(results as any).oLevelCGPA || 'N/A'}</span>
-                        </div>
-                        <div className="flex items-center gap-3 p-3 rounded-xl bg-gray-50">
-                          {(results as any).aLevelPass ? 
-                            <div className="w-6 h-6 bg-vh-red rounded-full flex items-center justify-center">
-                              <Check size={14} className="text-white" />
-                            </div> : 
-                            <div className="w-6 h-6 bg-red-500 rounded-full flex items-center justify-center">
-                              <X size={14} className="text-white" />
-                            </div>
-                          }
-                          <span className="text-sm font-medium">A-Level CGPA ≥ 3.5: {(results as any).aLevelCGPA || 'N/A'}</span>
-                        </div>
-                        <div className="flex items-center gap-3 p-3 rounded-xl bg-gray-50">
-                          {(results as any).minAGrades ? 
-                            <div className="w-6 h-6 bg-vh-red rounded-full flex items-center justify-center">
-                              <Check size={14} className="text-white" />
-                            </div> : 
-                            <div className="w-6 h-6 bg-red-500 rounded-full flex items-center justify-center">
-                              <X size={14} className="text-white" />
-                            </div>
-                          }
-                          <span className="text-sm font-medium">Minimum 2 A grades: {(results as any).aGradesCount || 0} A's</span>
-                        </div>
-                      </>
-                    ) : activeTab === 'BUP' ? (
-                      <>
-                        <div className="flex items-center gap-3 p-3 rounded-xl bg-gray-50">
-                          {results.eligible ? 
-                            <div className="w-6 h-6 bg-vh-red rounded-full flex items-center justify-center">
-                              <Check size={14} className="text-white" />
-                            </div> : 
-                            <div className="w-6 h-6 bg-red-500 rounded-full flex items-center justify-center">
-                              <X size={14} className="text-white" />
-                            </div>
-                          }
-                          <span className="text-sm font-medium">Total Points ≥ 26.5: {(results as any).totalPoints || 'N/A'}</span>
-                        </div>
-                        <div className="p-3 rounded-xl bg-gray-50 text-sm text-black space-y-1">
-                          <div>Best 5 O-Level: {(results as any).best5OLevel?.join(', ') || 'N/A'} points</div>
-                          <div>Best 2 A-Level: {(results as any).best2ALevel?.join(', ') || 'N/A'} points</div>
-                        </div>
-                      </>
-                    ) : activeTab === 'DU Science' ? (
-                      <>
-                        <div className="flex items-center gap-3 p-3 rounded-xl bg-gray-50">
-                          {(results as any).minAGrades ? 
-                            <div className="w-6 h-6 bg-vh-red rounded-full flex items-center justify-center">
-                              <Check size={14} className="text-white" />
-                            </div> : 
-                            <div className="w-6 h-6 bg-red-500 rounded-full flex items-center justify-center">
-                              <X size={14} className="text-white" />
-                            </div>
-                          }
-                          <span className="text-sm font-medium">Minimum 3 A grades: {(results as any).gradeCount?.A || 0} A's</span>
-                        </div>
-                        <div className="flex items-center gap-3 p-3 rounded-xl bg-gray-50">
-                          {(results as any).minBGrades ? 
-                            <div className="w-6 h-6 bg-vh-red rounded-full flex items-center justify-center">
-                              <Check size={14} className="text-white" />
-                            </div> : 
-                            <div className="w-6 h-6 bg-red-500 rounded-full flex items-center justify-center">
-                              <X size={14} className="text-white" />
-                            </div>
-                          }
-                          <span className="text-sm font-medium">Minimum 2 B grades: {(results as any).gradeCount?.B || 0} B's</span>
-                        </div>
-                        <div className="flex items-center gap-3 p-3 rounded-xl bg-gray-50">
-                          {(results as any).minCGrades ? 
-                            <div className="w-6 h-6 bg-vh-red rounded-full flex items-center justify-center">
-                              <Check size={14} className="text-white" />
-                            </div> : 
-                            <div className="w-6 h-6 bg-red-500 rounded-full flex items-center justify-center">
-                              <X size={14} className="text-white" />
-                            </div>
-                          }
-                          <span className="text-sm font-medium">Minimum 2 C grades: {(results as any).gradeCount?.C || 0} C's</span>
-                        </div>
-                        {(results as any).best7Subjects && (results as any).best7Subjects.length > 0 && (
-                          <div className="p-3 rounded-xl bg-gray-50 text-sm text-black">
-                            <div className="font-medium mb-1">Best 7 subjects:</div>
-                            <div className="space-y-1">
-                              {(results as any).best7Subjects.map((subject: any, index: number) => (
-                                <div key={index} className="flex justify-between">
-                                  <span>{subject.name}</span>
-                                  <span className="font-medium">{subject.grade} ({subject.points})</span>
-                                </div>
-                              ))}
-                            </div>
-                          </div>
-                        )}
-                      </>
-                    ) : activeTab === 'DU Business' ? (
-                      <>
-                        <div className="flex items-center gap-3 p-3 rounded-xl bg-gray-50">
-                          {(results as any).oLevelPass ? 
-                            <div className="w-6 h-6 bg-vh-red rounded-full flex items-center justify-center">
-                              <Check size={14} className="text-white" />
-                            </div> : 
-                            <div className="w-6 h-6 bg-red-500 rounded-full flex items-center justify-center">
-                              <X size={14} className="text-white" />
-                            </div>
-                          }
-                          <span className="text-sm font-medium">O-Level GPA ≥ 3.0: {(results as any).oLevelGPA || 'N/A'}</span>
-                        </div>
-                        <div className="flex items-center gap-3 p-3 rounded-xl bg-gray-50">
-                          {(results as any).aLevelPass ? 
-                            <div className="w-6 h-6 bg-vh-red rounded-full flex items-center justify-center">
-                              <Check size={14} className="text-white" />
-                            </div> : 
-                            <div className="w-6 h-6 bg-red-500 rounded-full flex items-center justify-center">
-                              <X size={14} className="text-white" />
-                            </div>
-                          }
-                          <span className="text-sm font-medium">A-Level GPA ≥ 3.0: {(results as any).aLevelGPA || 'N/A'}</span>
-                        </div>
-                        <div className="flex items-center gap-3 p-3 rounded-xl bg-gray-50">
-                          {(results as any).minBGrades ? 
-                            <div className="w-6 h-6 bg-vh-red rounded-full flex items-center justify-center">
-                              <Check size={14} className="text-white" />
-                            </div> : 
-                            <div className="w-6 h-6 bg-red-500 rounded-full flex items-center justify-center">
-                              <X size={14} className="text-white" />
-                            </div>
-                          }
-                          <span className="text-sm font-medium">Minimum 3 subjects with B+: {results.bPlusCount || 0} subjects</span>
-                        </div>
-                        <div className="flex items-center gap-3 p-3 rounded-xl bg-gray-50">
-                          {(results as any).minCGrades ? 
-                            <div className="w-6 h-6 bg-vh-red rounded-full flex items-center justify-center">
-                              <Check size={14} className="text-white" />
-                            </div> : 
-                            <div className="w-6 h-6 bg-red-500 rounded-full flex items-center justify-center">
-                              <X size={14} className="text-white" />
-                            </div>
-                          }
-                          <span className="text-sm font-medium">Minimum 3 subjects with C+: {results.cPlusCount || 0} subjects</span>
-                        </div>
-                        <div className="p-3 rounded-xl bg-gray-50 text-sm text-black">
-                          <div className="font-medium mb-1">Grade Distribution (All 7 subjects):</div>
-                          <div className="grid grid-cols-2 gap-2">
-                            <div>A: {results.gradeCount?.A || 0}</div>
-                            <div>B: {results.gradeCount?.B || 0}</div>
-                            <div>C: {results.gradeCount?.C || 0}</div>
-                            <div>D: {results.gradeCount?.D || 0}</div>
-                          </div>
-                        </div>
-                      </>
-                    ) : (
-                      <>
-                        <div className="flex items-center gap-3 p-3 rounded-xl bg-gray-50">
-                          {!results.missingOLevelSubjects?.length && !results.lowGradeOLevelSubjects?.length ? 
-                            <div className="w-6 h-6 bg-vh-red rounded-full flex items-center justify-center">
-                              <Check size={14} className="text-white" />
-                            </div> : 
-                            <div className="w-6 h-6 bg-red-500 rounded-full flex items-center justify-center">
-                              <X size={14} className="text-white" />
-                            </div>
-                          }
-                          <span className="text-sm font-medium">O-Level: Minimum 5 subjects including Math, Physics, Chemistry, English (min. grade B)</span>
-                        </div>
-                        <div className="flex items-center gap-3 p-3 rounded-xl bg-gray-50">
-                          {results.aGradeCount >= 2 ? 
-                            <div className="w-6 h-6 bg-vh-red rounded-full flex items-center justify-center">
-                              <Check size={14} className="text-white" />
-                            </div> : 
-                            <div className="w-6 h-6 bg-red-500 rounded-full flex items-center justify-center">
-                              <X size={14} className="text-white" />
-                            </div>
-                          }
-                          <span className="text-sm font-medium">A-Level: All 3 subjects required (Math/Physics/Chemistry) with 2 A grades: {results.aGradeCount || 0}/2</span>
-                        </div>
-                        <div className="flex items-center gap-3 p-3 rounded-xl bg-gray-50">
-                          {results.bOrBetterCount >= 3 ? 
-                            <div className="w-6 h-6 bg-vh-red rounded-full flex items-center justify-center">
-                              <Check size={14} className="text-white" />
-                            </div> : 
-                            <div className="w-6 h-6 bg-red-500 rounded-full flex items-center justify-center">
-                              <X size={14} className="text-white" />
-                            </div>
-                          }
-                          <span className="text-sm font-medium">All 3 subjects minimum grade B (2A + 1B): {results.bOrBetterCount || 0}/3</span>
-                        </div>
-                        {results.aLevelScience && results.aLevelScience.length > 0 && (
-                          <div className="p-3 rounded-xl bg-gray-50 text-sm text-black">
-                            <div className="font-medium mb-1">A-Level Science Subjects:</div>
-                            <div className="space-y-1">
-                              {results.aLevelScience.map((subject: any, index: number) => (
-                                <div key={index} className="flex justify-between">
-                                  <span>{subject.name}</span>
-                                  <span className="font-medium">{subject.grade}</span>
-                                </div>
-                              ))}
-                            </div>
-                          </div>
-                        )}
-                        <div className="p-3 rounded-xl bg-red-50 border border-red-200 text-sm text-red-700">
-                          <div className="font-medium mb-1">⚠️ Important Selection Process:</div>
-                          <div>Meeting minimum eligibility only qualifies you for ranking. Final selection is based on ranking top 400 candidates using converted A-Level Math/Physics/Chemistry grades.</div>
-                        </div>
-                      </>
-                    )}
-                  </div>
-                </div>
-                
-                <div className="space-y-4">
-                  <h3 className="font-semibold text-black">Grade Points ({activeTab})</h3>
-                  <div className="grid grid-cols-2 gap-3 text-sm">
-                    <div className="p-3 rounded-xl bg-gray-50 text-center">
-                      <div className="font-semibold">A</div>
-                      <div className="text-black">5.0</div>
-                    </div>
-                    <div className="p-3 rounded-xl bg-gray-50 text-center">
-                      <div className="font-semibold">B</div>
-                      <div className="text-black">4.0</div>
-                    </div>
-                    <div className="p-3 rounded-xl bg-gray-50 text-center">
-                      <div className="font-semibold">C</div>
-                      <div className="text-black">{activeTab === 'IBA' ? '3.0' : '3.5'}</div>
-                    </div>
-                    {activeTab !== 'DU Science' && (
-                      <div className="p-3 rounded-xl bg-gray-50 text-center">
-                        <div className="font-semibold">D</div>
-                        <div className="text-black">{activeTab === 'IBA' ? '0.0' : activeTab === 'DU Business' ? '0.1' : activeTab === 'BUET' ? 'Allowed' : '3.0'}</div>
-                      </div>
-                    )}
-                    {activeTab === 'DU Science' && (
-                      <div className="p-3 rounded-xl bg-red-50 border border-red-200 text-center">
-                        <div className="font-semibold text-red-600">D</div>
-                        <div className="text-red-600 text-xs">Not Allowed</div>
-                      </div>
-                    )}
-                  </div>
-                  
-                  {activeTab === 'DU Science' && (
-                    <div className="mt-4 p-3 rounded-xl bg-vh-beige/20 border border-vh-beige">
-                      <h4 className="font-semibold text-vh-dark-red text-sm mb-2">Additional Requirements</h4>
-                      <div className="text-xs text-vh-red space-y-1">
-                        <div>• Best 7 subjects from O+A Level combined</div>
-                        <div>• Science/Humanities/Business stream</div>
-                        <div>• Grade distribution: 3 A's, 2 B's, 2 C's minimum</div>
-                        <div>• No D grades allowed</div>
-                      </div>
-                    </div>
-                  )}
-                  
-                  {activeTab === 'DU Business' && (
-                    <div className="mt-4 p-3 rounded-xl bg-vh-beige/30 border border-vh-dark-beige">
-                      <h4 className="font-semibold text-vh-dark-red text-sm mb-2">DU FBS Requirements</h4>
-                      <div className="text-xs text-vh-red space-y-1">
-                        <div>• O-Level GPA ≥ 3.0 (best 5 subjects)</div>
-                        <div>• A-Level GPA ≥ 3.0 (best 2 subjects)</div>
-                        <div>• 3 subjects minimum with B+ grades (A or B)</div>
-                        <div>• 3 subjects minimum with C+ grades (A, B, or C)</div>
-                        <div>• Business subject required (Business Studies, Accounting, Economics, Mathematics, or Statistics)</div>
-                      </div>
-                    </div>
-                  )}
-                  
-                  {activeTab === 'BUET' && (
-                    <div className="mt-4 p-3 rounded-xl bg-red-50 border border-red-200">
-                      <h4 className="font-semibold text-red-900 text-sm mb-2">BUET Engineering Requirements</h4>
-                      <div className="text-xs text-red-700 space-y-1">
-                        <div>• O-Level: Minimum 5 subjects including Math, Physics, Chemistry, English</div>
-                        <div>• All required O-Level subjects minimum grade B</div>
-                        <div>• A-Level: All 3 subjects required (Math/Physics/Chemistry)</div>
-                        <div>• A-Level grades: 2 A grades + 1 B grade minimum</div>
-                        <div>• Final selection: Top 400 candidates ranked by A-Level Math/Physics/Chemistry grades</div>
-                      </div>
-                    </div>
-                  )}
-                </div>
-              </div>
-
-              <div className={`mt-6 p-6 rounded-2xl ${results.eligible ? 'bg-vh-beige/20 border border-vh-beige' : 'bg-red-50 border border-red-200'}`}>
-                <div className="flex items-center gap-3 mb-3">
-                  {results.eligible ? 
-                    <div className="w-8 h-8 bg-vh-red rounded-full flex items-center justify-center">
-                      <Check size={18} className="text-white" />
-                    </div> : 
-                    <div className="w-8 h-8 bg-red-500 rounded-full flex items-center justify-center">
-                      <X size={18} className="text-white" />
-                    </div>
-                  }
-                  <span className={`font-bold text-lg ${results.eligible ? 'text-vh-dark-red' : 'text-red-800'}`}>
-                    {results.eligible ? `ELIGIBLE FOR ${activeTab}` : `NOT ELIGIBLE FOR ${activeTab}`}
-                  </span>
-                </div>
-                <p className={`text-sm ${results.eligible ? 'text-vh-red' : 'text-red-700'}`}>
-                  {results.reason}
-                </p>
-              </div>
-            </div>
-          </div>
+          {/* Footer note */}
+          <p className="mt-10 text-center text-xs text-[#FAF5EF]/25 max-w-lg mx-auto leading-relaxed">
+            Results based on official eligibility criteria. Always verify with university admission offices.
+            More universities to be added.
+          </p>
         </div>
-      </div>
+      )}
     </div>
   );
-};
+}
 
-export default UniversityEligibilityChecker;
+// ─── Subject row section ──────────────────────────────────────────────────────
+
+function SubjectSection({
+  title, subtitle, subjects, grades, onAdd, onRemove, onUpdate,
+}: {
+  title: string;
+  subtitle: string;
+  subjects: Subject[];
+  grades: string[];
+  onAdd: () => void;
+  onRemove: (id: string) => void;
+  onUpdate: (id: string, field: string, val: string) => void;
+}) {
+  return (
+    <div className="mb-8">
+      <div className="mb-4">
+        <h3 className="text-base font-medium text-[#FAF5EF]">{title}</h3>
+        <p className="text-xs text-[#FAF5EF]/40 mt-0.5">{subtitle}</p>
+      </div>
+      <div className="space-y-2.5">
+        {subjects.map((s, idx) => (
+          <div key={s.id} className="flex gap-3 items-center">
+            <div className="w-6 text-center text-xs text-[#FAF5EF]/20 flex-shrink-0">{idx + 1}</div>
+            <input
+              type="text"
+              placeholder="Subject name"
+              value={s.name}
+              onChange={e => onUpdate(s.id, 'name', e.target.value)}
+              className="flex-1 px-4 py-3 rounded-xl bg-white/[0.04] border border-white/[0.08] text-sm text-[#FAF5EF] placeholder-[#FAF5EF]/20 focus:outline-none focus:border-[#D4B094]/40 focus:bg-white/[0.06] transition-all"
+            />
+            <select
+              value={s.grade}
+              onChange={e => onUpdate(s.id, 'grade', e.target.value)}
+              className="w-20 px-3 py-3 rounded-xl bg-white/[0.04] border border-white/[0.08] text-sm text-[#FAF5EF] focus:outline-none focus:border-[#D4B094]/40 transition-all appearance-none text-center"
+            >
+              <option value="" className="bg-[#1A0507]">—</option>
+              {grades.map(g => <option key={g} value={g} className="bg-[#1A0507]">{g}</option>)}
+            </select>
+            {subjects.length > 1 && (
+              <button
+                onClick={() => onRemove(s.id)}
+                className="p-2 text-[#FAF5EF]/20 hover:text-red-400 transition-colors"
+                aria-label="Remove"
+              >
+                <Trash2 size={15} />
+              </button>
+            )}
+          </div>
+        ))}
+      </div>
+      <button
+        onClick={onAdd}
+        className="mt-3 flex items-center gap-2 text-xs text-[#D4B094]/50 hover:text-[#D4B094] transition-colors"
+      >
+        <Plus size={14} /> Add subject
+      </button>
+    </div>
+  );
+}

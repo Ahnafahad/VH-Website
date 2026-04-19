@@ -1,1108 +1,727 @@
 'use client';
 
 import React, { useState, useEffect, useCallback } from 'react';
-import { Play, SkipForward, RotateCcw, Clock, Target, Zap, Trophy, Award } from 'lucide-react';
+import { SkipForward, RotateCcw, ArrowRight, Check } from 'lucide-react';
 import ProtectedRoute from '@/components/ProtectedRoute';
 
+// ─── Types ────────────────────────────────────────────────────────────────────
+
 interface Question {
-  num1: number;
-  num2: number;
-  answer: number;
-  symbol: string;
-  operation: string;
+  num1: number; num2: number; answer: number; symbol: string; operation: string;
 }
-
 interface GameResult {
-  score: number;
-  questionsCorrect: number;
-  questionsAnswered: number;
-  accuracy: number;
-  difficulty: string;
-  operations: string[];
-  timeLimit: number;
-  playerName?: string;
-  playedAt: Date;
+  score: number; questionsCorrect: number; questionsAnswered: number;
+  accuracy: number; difficulty: string; operations: string[];
+  timeLimit: number; playerName?: string; playedAt: Date;
 }
-
 interface LeaderboardEntry {
-  playerName: string;
-  score: number;
-  questionsCorrect: number;
-  questionsAnswered: number;
-  accuracy: number;
-  difficulty: string;
-  operations?: string[];
-  playedAt: Date;
+  playerName: string; score: number; questionsCorrect: number;
+  questionsAnswered: number; accuracy: number; difficulty: string;
+  operations?: string[]; playedAt: Date;
+}
+interface AccumulatedScore {
+  playerName: string; totalScore: number; gamesPlayed: number;
+  averageScore: number; bestScore: number; overallAccuracy: number;
 }
 
-interface AccumulatedScore {
-  playerName: string;
-  totalScore: number;
-  gamesPlayed: number;
-  averageScore: number;
-  bestScore: number;
-  overallAccuracy: number;
-}
+// ─── Constants ────────────────────────────────────────────────────────────────
+
+const OP_LABELS: Record<string, string> = {
+  addition: 'Addition (+)', subtraction: 'Subtraction (−)',
+  multiplication: 'Multiplication (×)', division: 'Division (÷)',
+};
+const TIME_OPTIONS = [
+  { value: 0.5, label: '30 seconds' }, { value: 1, label: '1 minute' },
+  { value: 1.5, label: '1.5 minutes' }, { value: 2, label: '2 minutes' },
+  { value: 3, label: '3 minutes' }, { value: 5, label: '5 minutes' },
+];
+const RANK_LABEL = (i: number) => i === 0 ? '01' : i === 1 ? '02' : i === 2 ? '03' : String(i + 1).padStart(2, '0');
+
+// ─── Main App ─────────────────────────────────────────────────────────────────
 
 const MentalMathApp = () => {
   const [gameState, setGameState] = useState<'setup' | 'playing' | 'finished' | 'leaderboard'>('setup');
-  const [selectedOperations, setSelectedOperations] = useState<string[]>(['addition']);
-  const [difficulty, setDifficulty] = useState<'easy' | 'medium' | 'hard' | 'extreme'>('easy');
-  const [timeLimit, setTimeLimit] = useState(2); // minutes
-  const [currentQuestion, setCurrentQuestion] = useState<Question | null>(null);
-  const [userAnswer, setUserAnswer] = useState('');
-  const [score, setScore] = useState(0);
-  const [questionsAnswered, setQuestionsAnswered] = useState(0);
-  const [questionsCorrect, setQuestionsCorrect] = useState(0);
-  const [questionsSkipped, setQuestionsSkipped] = useState(0);
+  const [selectedOps, setSelectedOps]   = useState<string[]>(['addition']);
+  const [difficulty, setDifficulty]     = useState<'easy' | 'medium' | 'hard' | 'extreme'>('easy');
+  const [timeLimit, setTimeLimit]       = useState(2);
+  const [currentQ, setCurrentQ]         = useState<Question | null>(null);
+  const [userAnswer, setUserAnswer]     = useState('');
+  const [score, setScore]               = useState(0);
+  const [answered, setAnswered]         = useState(0);
+  const [correct, setCorrect]           = useState(0);
+  const [skipped, setSkipped]           = useState(0);
   const [timeRemaining, setTimeRemaining] = useState(0);
   const [gameStartTime, setGameStartTime] = useState<number | null>(null);
-  const [previousQuestions, setPreviousQuestions] = useState<Question[]>([]);
-  const [leaderboard, setLeaderboard] = useState<{ individual: LeaderboardEntry[], accumulated: AccumulatedScore[] }>({ individual: [], accumulated: [] });
-  const [isLoading, setIsLoading] = useState(false);
+  const [prevQuestions, setPrevQuestions] = useState<Question[]>([]);
+  const [leaderboard, setLeaderboard]   = useState<{ individual: LeaderboardEntry[]; accumulated: AccumulatedScore[] }>({ individual: [], accumulated: [] });
+  const [isLoading, setIsLoading]       = useState(false);
+  const [qStartTime, setQStartTime]     = useState<number | null>(null);
+  const [qTimeRemaining, setQTimeRemaining] = useState(0);
+  const [responseTimes, setResponseTimes]   = useState<number[]>([]);
+  const [suspicious, setSuspicious]         = useState<boolean[]>([]);
+  const [skipsLeft, setSkipsLeft]           = useState(3);
+  const [timePenalty, setTimePenalty]       = useState(0);
 
-  // Anti-cheat system state
-  const [questionStartTime, setQuestionStartTime] = useState<number | null>(null);
-  const [questionTimeRemaining, setQuestionTimeRemaining] = useState(0);
-  const [responseTimes, setResponseTimes] = useState<number[]>([]);
-  const [suspiciousResponses, setSuspiciousResponses] = useState<boolean[]>([]);
-
-  // Skip limit system
-  const [skipsRemaining, setSkipsRemaining] = useState(3);
-  const [timePenalty, setTimePenalty] = useState(0); // Additional seconds added to question timers
-
-  const operationLabels: { [key: string]: string } = {
-    addition: 'Addition (+)',
-    subtraction: 'Subtraction (−)',
-    multiplication: 'Multiplication (×)',
-    division: 'Division (÷)'
-  };
-
-  const timeOptions = [
-    { value: 0.5, label: '30 seconds' },
-    { value: 1, label: '1 minute' },
-    { value: 1.5, label: '1.5 minutes' },
-    { value: 2, label: '2 minutes' },
-    { value: 3, label: '3 minutes' },
-    { value: 5, label: '5 minutes' }
-  ];
-
-  // Calculate dynamic time per question based on operation and difficulty
-  const getQuestionTimeLimit = useCallback((operation: string, difficulty: string): number => {
-    const baseTimes = {
-      addition: { easy: 5, medium: 8, hard: 12, extreme: 18 },
-      subtraction: { easy: 6, medium: 10, hard: 15, extreme: 20 },
-      multiplication: { easy: 8, medium: 12, hard: 20, extreme: 25 },
-      division: { easy: 10, medium: 15, hard: 25, extreme: 30 }
+  const getQTimeLimit = useCallback((op: string, diff: string): number => {
+    const base = {
+      addition:       { easy: 5,  medium: 8,  hard: 12, extreme: 18 },
+      subtraction:    { easy: 6,  medium: 10, hard: 15, extreme: 20 },
+      multiplication: { easy: 8,  medium: 12, hard: 20, extreme: 25 },
+      division:       { easy: 10, medium: 15, hard: 25, extreme: 30 },
     };
-
-    const baseTime = baseTimes[operation as keyof typeof baseTimes]?.[difficulty as keyof typeof baseTimes.addition] || 15;
-    return baseTime + timePenalty; // Add progressive time penalty for excessive skips
+    return (base[op as keyof typeof base]?.[diff as keyof typeof base.addition] ?? 15) + timePenalty;
   }, [timePenalty]);
 
-  // Calculator detection algorithm
-  const detectCalculatorUse = (responseTime: number, operation: string, difficulty: string): boolean => {
-    const expectedTime = getQuestionTimeLimit(operation, difficulty);
-    const minHumanTime = Math.max(2, expectedTime * 0.1); // Minimum human response time
-
-    // Suspicious if too fast (likely calculator) or consistently at exact intervals
-    if (responseTime < minHumanTime) return true;
-
-    // Check for pattern in response times (calculator users often have consistent timing)
+  const detectCalc = (rt: number, op: string, diff: string): boolean => {
+    const expected = getQTimeLimit(op, diff);
+    const minHuman = Math.max(2, expected * 0.1);
+    if (rt < minHuman) return true;
     if (responseTimes.length >= 3) {
-      const recentTimes = responseTimes.slice(-3);
-      const avgTime = recentTimes.reduce((a, b) => a + b, 0) / recentTimes.length;
-      const variance = recentTimes.reduce((acc, time) => acc + Math.pow(time - avgTime, 2), 0) / recentTimes.length;
-
-      // Very low variance in response times is suspicious
-      if (variance < 0.5 && responseTime < expectedTime * 0.3) return true;
+      const recent = responseTimes.slice(-3);
+      const avg = recent.reduce((a, b) => a + b, 0) / recent.length;
+      const variance = recent.reduce((acc, t) => acc + Math.pow(t - avg, 2), 0) / recent.length;
+      if (variance < 0.5 && rt < expected * 0.3) return true;
     }
-
     return false;
   };
 
-  // Handle operation selection (multiple)
-  const toggleOperation = (operation: string) => {
-    setSelectedOperations(prev => {
-      if (prev.includes(operation)) {
-        // Don't allow removing if it's the only one selected
-        if (prev.length === 1) return prev;
-        return prev.filter(op => op !== operation);
-      } else {
-        return [...prev, operation];
-      }
-    });
-  };
+  const toggleOp = (op: string) => setSelectedOps(prev =>
+    prev.includes(op) ? (prev.length === 1 ? prev : prev.filter(o => o !== op)) : [...prev, op]
+  );
 
-  // Generate random numbers based on operation and difficulty
-  const generateNumbers = useCallback((operation: string) => {
-    let num1, num2;
-    
-    switch (operation) {
+  const genNumbers = useCallback((op: string) => {
+    let n1: number, n2: number;
+    switch (op) {
       case 'addition':
-        if (difficulty === 'easy') {
-          num1 = Math.floor(Math.random() * 9) + 1; // 1-9
-          num2 = Math.floor(Math.random() * 9) + 1; // 1-9
-        } else if (difficulty === 'medium') {
-          num1 = Math.floor(Math.random() * 90) + 10; // 10-99
-          num2 = Math.floor(Math.random() * 9) + 1; // 1-9
-        } else if (difficulty === 'hard') {
-          num1 = Math.floor(Math.random() * 90) + 10; // 10-99
-          num2 = Math.floor(Math.random() * 90) + 10; // 10-99
-        } else { // extreme
-          num1 = Math.floor(Math.random() * 150) + 50; // 50-199
-          num2 = Math.floor(Math.random() * 150) + 50; // 50-199
-          // Ensure sum doesn't exceed 200
-          if (num1 + num2 > 200) {
-            num2 = 200 - num1;
-          }
-        }
-        return { num1, num2, answer: num1 + num2, symbol: '+', operation };
-        
+        if (difficulty === 'easy')    { n1 = Math.floor(Math.random()*9)+1; n2 = Math.floor(Math.random()*9)+1; }
+        else if (difficulty === 'medium') { n1 = Math.floor(Math.random()*90)+10; n2 = Math.floor(Math.random()*9)+1; }
+        else if (difficulty === 'hard')   { n1 = Math.floor(Math.random()*90)+10; n2 = Math.floor(Math.random()*90)+10; }
+        else { n1 = Math.floor(Math.random()*150)+50; n2 = Math.floor(Math.random()*150)+50; if (n1+n2>200) n2=200-n1; }
+        return { num1: n1, num2: n2, answer: n1+n2, symbol: '+', operation: op };
       case 'subtraction':
-        if (difficulty === 'easy') {
-          num2 = Math.floor(Math.random() * 9) + 1; // 1-9
-          num1 = num2 + Math.floor(Math.random() * 9) + 1; // Ensure positive result
-        } else if (difficulty === 'medium') {
-          num2 = Math.floor(Math.random() * 9) + 1; // 1-9
-          num1 = Math.floor(Math.random() * 90) + 10; // 10-99
-        } else if (difficulty === 'hard') {
-          num2 = Math.floor(Math.random() * 90) + 10; // 10-99
-          num1 = num2 + Math.floor(Math.random() * 90) + 10; // Ensure positive result
-        } else { // extreme
-          num2 = Math.floor(Math.random() * 100) + 50; // 50-149
-          num1 = Math.floor(Math.random() * 100) + 100; // 100-199
-          // Ensure num1 > num2 for positive result and num1 <= 200
-          if (num1 <= num2) {
-            num1 = num2 + Math.floor(Math.random() * 50) + 10;
-          }
-          if (num1 > 200) {
-            num1 = 200;
-          }
-        }
-        return { num1, num2, answer: num1 - num2, symbol: '−', operation };
-        
+        if (difficulty === 'easy')    { n2=Math.floor(Math.random()*9)+1; n1=n2+Math.floor(Math.random()*9)+1; }
+        else if (difficulty === 'medium') { n2=Math.floor(Math.random()*9)+1; n1=Math.floor(Math.random()*90)+10; }
+        else if (difficulty === 'hard')   { n2=Math.floor(Math.random()*90)+10; n1=n2+Math.floor(Math.random()*90)+10; }
+        else { n2=Math.floor(Math.random()*100)+50; n1=Math.floor(Math.random()*100)+100; if(n1<=n2) n1=n2+Math.floor(Math.random()*50)+10; if(n1>200) n1=200; }
+        return { num1: n1, num2: n2, answer: n1-n2, symbol: '−', operation: op };
       case 'multiplication':
-        if (difficulty === 'easy') {
-          num1 = Math.floor(Math.random() * 9) + 1; // 1-9
-          num2 = Math.floor(Math.random() * 9) + 1; // 1-9
-        } else if (difficulty === 'medium') {
-          num1 = Math.floor(Math.random() * 9) + 1; // 1-9
-          num2 = Math.floor(Math.random() * 16) + 10; // 10-25
-        } else if (difficulty === 'hard') {
-          num1 = Math.floor(Math.random() * 16) + 10; // 10-25
-          num2 = Math.floor(Math.random() * 16) + 10; // 10-25
-        } else { // extreme
-          num1 = Math.floor(Math.random() * 21) + 10; // 10-30
-          num2 = Math.floor(Math.random() * 21) + 10; // 10-30
-        }
-        return { num1, num2, answer: num1 * num2, symbol: '×', operation };
-        
-      case 'division':
-        if (difficulty === 'easy') {
-          num2 = Math.floor(Math.random() * 9) + 1; // 1-9
-          const quotient = Math.floor(Math.random() * 9) + 1; // 1-9
-          num1 = num2 * quotient;
-        } else if (difficulty === 'medium') {
-          num2 = Math.floor(Math.random() * 9) + 1; // 1-9
-          const quotient = Math.floor(Math.random() * 16) + 10; // 10-25
-          num1 = num2 * quotient;
-        } else if (difficulty === 'hard') {
-          num2 = Math.floor(Math.random() * 16) + 10; // 10-25
-          const quotient = Math.floor(Math.random() * 16) + 10; // 10-25
-          num1 = num2 * quotient;
-        } else { // extreme
-          num2 = Math.floor(Math.random() * 21) + 10; // 10-30
-          const quotient = Math.floor(Math.random() * 21) + 10; // 10-30
-          num1 = num2 * quotient;
-        }
-        return { num1, num2, answer: num1 / num2, symbol: '÷', operation };
-        
-      default:
-        return null;
+        if (difficulty === 'easy')    { n1=Math.floor(Math.random()*9)+1; n2=Math.floor(Math.random()*9)+1; }
+        else if (difficulty === 'medium') { n1=Math.floor(Math.random()*9)+1; n2=Math.floor(Math.random()*16)+10; }
+        else if (difficulty === 'hard')   { n1=Math.floor(Math.random()*16)+10; n2=Math.floor(Math.random()*16)+10; }
+        else { n1=Math.floor(Math.random()*21)+10; n2=Math.floor(Math.random()*21)+10; }
+        return { num1: n1, num2: n2, answer: n1*n2, symbol: '×', operation: op };
+      case 'division': {
+        let q: number;
+        if (difficulty === 'easy')    { n2=Math.floor(Math.random()*9)+1; q=Math.floor(Math.random()*9)+1; }
+        else if (difficulty === 'medium') { n2=Math.floor(Math.random()*9)+1; q=Math.floor(Math.random()*16)+10; }
+        else if (difficulty === 'hard')   { n2=Math.floor(Math.random()*16)+10; q=Math.floor(Math.random()*16)+10; }
+        else { n2=Math.floor(Math.random()*21)+10; q=Math.floor(Math.random()*21)+10; }
+        n1 = n2 * q;
+        return { num1: n1, num2: n2, answer: n1/n2, symbol: '÷', operation: op };
+      }
+      default: return null;
     }
   }, [difficulty]);
 
-  // Calculate points based on various factors including time penalties
-  const calculatePoints = useCallback((isCorrect: boolean, isSkipped = false, questionOperation: string, timeOverage = 0) => {
-    const basePoints = {
-      easy: 10,
-      medium: 15,
-      hard: 25,
-      extreme: 40
-    };
-
-    const difficultyMultiplier = {
-      easy: 1,
-      medium: 1.5,
-      hard: 2,
-      extreme: 3
-    };
-
-    const operationBonus: { [key: string]: number } = {
-      addition: 1,
-      subtraction: 1.2,
-      multiplication: 1.5,
-      division: 1.8
-    };
-
-    // Multi-operation bonus
-    const multiOpBonus = selectedOperations.length > 1 ? 1.3 : 1;
-
-    if (isSkipped) {
-      return -Math.floor(basePoints[difficulty] * 0.3); // 30% penalty for skipping
-    }
-
+  const calcPoints = useCallback((isCorrect: boolean, isSkip = false, op: string, overage = 0) => {
+    const base = { easy: 10, medium: 15, hard: 25, extreme: 40 };
+    const diffMult = { easy: 1, medium: 1.5, hard: 2, extreme: 3 };
+    const opBonus: Record<string, number> = { addition: 1, subtraction: 1.2, multiplication: 1.5, division: 1.8 };
+    const multiBonus = selectedOps.length > 1 ? 1.3 : 1;
+    if (isSkip) return -Math.floor(base[difficulty] * 0.3);
     if (isCorrect) {
-      let points = basePoints[difficulty];
-      points *= difficultyMultiplier[difficulty];
-      points *= operationBonus[questionOperation];
-      points *= multiOpBonus;
-
-      // Time bonus for fast answers (within allocated time)
-      if (timeOverage <= 0) {
-        const timeSpent = Date.now() - (gameStartTime || Date.now());
-        const avgTimePerQuestion = timeSpent / (questionsAnswered + 1);
-        if (avgTimePerQuestion < 3000) { // Less than 3 seconds
-          points *= 1.5;
-        } else if (avgTimePerQuestion < 5000) { // Less than 5 seconds
-          points *= 1.2;
-        }
+      let pts = base[difficulty] * diffMult[difficulty] * opBonus[op] * multiBonus;
+      if (overage <= 0) {
+        const spent = Date.now() - (gameStartTime || Date.now());
+        const avg = spent / (answered + 1);
+        if (avg < 3000) pts *= 1.5; else if (avg < 5000) pts *= 1.2;
       }
-
-      // Exponential time penalty for overtime
-      if (timeOverage > 0) {
-        const allocatedTime = getQuestionTimeLimit(questionOperation, difficulty);
-        // Penalty factor increases exponentially - shorter questions penalize more severely
-        const penaltyRate = Math.max(0.1, 1 / Math.sqrt(allocatedTime)); // Inverse square root for exponential effect
-        const penaltyMultiplier = Math.pow(0.5, timeOverage * penaltyRate);
-        points *= Math.max(0.1, penaltyMultiplier); // Minimum 10% of original points
+      if (overage > 0) {
+        const allocated = getQTimeLimit(op, difficulty);
+        const rate = Math.max(0.1, 1 / Math.sqrt(allocated));
+        pts *= Math.max(0.1, Math.pow(0.5, overage * rate));
       }
-
-      return Math.floor(points);
-    } else {
-      return -Math.floor(basePoints[difficulty] * 0.5); // 50% penalty for wrong answer
+      return Math.floor(pts);
     }
-  }, [difficulty, selectedOperations.length, questionsAnswered, gameStartTime, getQuestionTimeLimit]);
+    return -Math.floor(base[difficulty] * 0.5);
+  }, [difficulty, selectedOps.length, answered, gameStartTime, getQTimeLimit]);
 
-  // Generate new question
-  const generateNewQuestion = useCallback(() => {
-    // Check if question is unique
-    const isQuestionUnique = (newQuestion: Question) => {
-      return !previousQuestions.some(prev =>
-        prev.num1 === newQuestion.num1 &&
-        prev.num2 === newQuestion.num2 &&
-        prev.operation === newQuestion.operation
-      );
-    };
-
-    let attempts = 0;
-    let question;
-
+  const genNewQuestion = useCallback(() => {
+    const isUnique = (q: Question) => !prevQuestions.some(p => p.num1===q.num1 && p.num2===q.num2 && p.operation===q.operation);
+    let q: Question | null = null, attempts = 0;
     do {
-      // Randomly select from chosen operations
-      const randomOperation = selectedOperations[Math.floor(Math.random() * selectedOperations.length)];
-      question = generateNumbers(randomOperation);
+      const op = selectedOps[Math.floor(Math.random() * selectedOps.length)];
+      q = genNumbers(op);
       attempts++;
-    } while (question && !isQuestionUnique(question) && attempts < 50); // Prevent infinite loop
-
-    if (question) {
-      setCurrentQuestion(question);
-      setPreviousQuestions(prev => [...prev.slice(-20), question]); // Keep last 20 questions
-
-      // Set dynamic timer for this specific question
-      const timeLimit = getQuestionTimeLimit(question.operation, difficulty);
-      setQuestionTimeRemaining(timeLimit);
-      setQuestionStartTime(Date.now());
+    } while (q && !isUnique(q) && attempts < 50);
+    if (q) {
+      setCurrentQ(q);
+      setPrevQuestions(prev => [...prev.slice(-20), q!]);
+      setQTimeRemaining(getQTimeLimit(q.operation, difficulty));
+      setQStartTime(Date.now());
     }
     setUserAnswer('');
-  }, [generateNumbers, selectedOperations, previousQuestions, difficulty, getQuestionTimeLimit]);
+  }, [genNumbers, selectedOps, prevQuestions, difficulty, getQTimeLimit]);
 
-  // Start the game
   const startGame = () => {
     setGameState('playing');
-    setScore(0);
-    setQuestionsAnswered(0);
-    setQuestionsCorrect(0);
-    setQuestionsSkipped(0);
-    setTimeRemaining(timeLimit * 60); // Convert minutes to seconds
+    setScore(0); setAnswered(0); setCorrect(0); setSkipped(0);
+    setTimeRemaining(timeLimit * 60);
     setGameStartTime(Date.now());
-    setPreviousQuestions([]);
-
-    // Reset anti-cheat tracking
-    setResponseTimes([]);
-    setSuspiciousResponses([]);
-
-    // Reset skip system
-    setSkipsRemaining(3);
-    setTimePenalty(0);
-
-    generateNewQuestion();
+    setPrevQuestions([]);
+    setResponseTimes([]); setSuspicious([]);
+    setSkipsLeft(3); setTimePenalty(0);
+    genNewQuestion();
   };
 
-  // Fetch leaderboard data
   const fetchLeaderboard = useCallback(async () => {
     setIsLoading(true);
     try {
-      const response = await fetch('/api/mental-math/leaderboard');
-      if (response.ok) {
-        const data = await response.json();
-        setLeaderboard({
-          individual: data.individual || [],
-          accumulated: data.accumulated || []
-        });
-      } else {
-        console.error('Failed to fetch leaderboard:', response.status, response.statusText);
-        setLeaderboard({ individual: [], accumulated: [] }); // Set empty arrays on error
-      }
-    } catch (error) {
-      console.error('Error fetching leaderboard:', error);
-      setLeaderboard({ individual: [], accumulated: [] }); // Set empty arrays on error
-    } finally {
-      setIsLoading(false);
-    }
+      const res = await fetch('/api/mental-math/leaderboard');
+      const data = res.ok ? await res.json() : {};
+      setLeaderboard({ individual: data.individual || [], accumulated: data.accumulated || [] });
+    } catch { setLeaderboard({ individual: [], accumulated: [] }); }
+    finally { setIsLoading(false); }
   }, []);
 
-  // Save game result to database
-  const saveGameResult = useCallback(async (result: GameResult) => {
+  const saveResult = useCallback(async (result: GameResult) => {
     try {
-      const response = await fetch('/api/mental-math/scores', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+      const res = await fetch('/api/mental-math/scores', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(result),
       });
-      
-      if (response.ok) {
-        const responseData = await response.json();
-        console.log('Math score saved successfully:', responseData);
-        // Refresh leaderboard after saving
-        fetchLeaderboard();
-      } else {
-        const errorData = await response.json().catch(() => ({ error: 'Unknown error' }));
-        console.error('Failed to save score:', errorData);
-      }
-    } catch (error) {
-      console.error('Error saving game result:', error);
-    }
+      if (res.ok) fetchLeaderboard();
+    } catch { /* silent */ }
   }, [fetchLeaderboard]);
 
-  // Handle answer submission
   const submitAnswer = () => {
-    if (userAnswer === '' || !currentQuestion || !questionStartTime) return;
-
-    const responseTime = (Date.now() - questionStartTime) / 1000; // Convert to seconds
-    const isCorrect = parseInt(userAnswer) === currentQuestion.answer;
-
-    // Calculate time overage (negative questionTimeRemaining means overtime)
-    const allocatedTime = getQuestionTimeLimit(currentQuestion.operation, difficulty);
-    const timeOverage = Math.max(0, allocatedTime - questionTimeRemaining);
-
-    // Run calculator detection
-    const isSuspicious = detectCalculatorUse(responseTime, currentQuestion.operation, difficulty);
-
-    // Update tracking arrays
-    setResponseTimes(prev => [...prev, responseTime]);
-    setSuspiciousResponses(prev => [...prev, isSuspicious]);
-
-    const points = calculatePoints(isCorrect, false, currentQuestion.operation, timeOverage);
-
-    setScore(prev => prev + points);
-    setQuestionsAnswered(prev => prev + 1);
-    if (isCorrect) {
-      setQuestionsCorrect(prev => prev + 1);
-    }
-
-    generateNewQuestion();
+    if (userAnswer === '' || !currentQ || !qStartTime) return;
+    const rt = (Date.now() - qStartTime) / 1000;
+    const isCorrect = parseInt(userAnswer) === currentQ.answer;
+    const allocated = getQTimeLimit(currentQ.operation, difficulty);
+    const overage = Math.max(0, allocated - qTimeRemaining);
+    const isSusp = detectCalc(rt, currentQ.operation, difficulty);
+    setResponseTimes(prev => [...prev, rt]);
+    setSuspicious(prev => [...prev, isSusp]);
+    const pts = calcPoints(isCorrect, false, currentQ.operation, overage);
+    setScore(prev => prev + pts);
+    setAnswered(prev => prev + 1);
+    if (isCorrect) setCorrect(prev => prev + 1);
+    genNewQuestion();
   };
 
-  // Skip question
   const skipQuestion = useCallback(() => {
-    if (!currentQuestion || !questionStartTime) return;
+    if (!currentQ || !qStartTime) return;
+    const rt = (Date.now() - qStartTime) / 1000;
+    setResponseTimes(prev => [...prev, rt]);
+    setSuspicious(prev => [...prev, false]);
+    setScore(prev => prev + calcPoints(false, true, currentQ.operation, 0));
+    setAnswered(prev => prev + 1);
+    setSkipped(prev => prev + 1);
+    if (skipsLeft > 0) setSkipsLeft(prev => prev - 1);
+    else setTimePenalty(prev => prev + 60);
+    genNewQuestion();
+  }, [currentQ, qStartTime, calcPoints, genNewQuestion, skipsLeft]);
 
-    const responseTime = (Date.now() - questionStartTime) / 1000;
-
-    // Mark skipped questions as not suspicious (user chose to skip rather than cheat)
-    setResponseTimes(prev => [...prev, responseTime]);
-    setSuspiciousResponses(prev => [...prev, false]);
-
-    const points = calculatePoints(false, true, currentQuestion.operation, 0); // No time overage for skips
-    setScore(prev => prev + points);
-    setQuestionsAnswered(prev => prev + 1);
-    setQuestionsSkipped(prev => prev + 1);
-
-    // Handle skip limit and progressive penalties
-    if (skipsRemaining > 0) {
-      setSkipsRemaining(prev => prev - 1);
-    } else {
-      // Progressive time penalty: +60 seconds for each skip beyond the limit
-      setTimePenalty(prev => prev + 60);
-    }
-
-    generateNewQuestion();
-  }, [currentQuestion, questionStartTime, calculatePoints, generateNewQuestion, skipsRemaining]);
-
-  // Handle enter key press
-  const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === 'Enter' && userAnswer !== '') {
-      submitAnswer();
-    }
+  const handleKey = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter' && userAnswer !== '') submitAnswer();
   };
 
-  // Main game timer effect
   useEffect(() => {
     if (gameState === 'playing' && timeRemaining > 0) {
-      const timer = setTimeout(() => {
-        setTimeRemaining(prev => prev - 1);
-      }, 1000);
-      return () => clearTimeout(timer);
-    } else if (gameState === 'playing' && timeRemaining === 0) {
-      setGameState('finished');
-    }
+      const t = setTimeout(() => setTimeRemaining(p => p - 1), 1000);
+      return () => clearTimeout(t);
+    } else if (gameState === 'playing' && timeRemaining === 0) setGameState('finished');
   }, [gameState, timeRemaining]);
 
-  // Per-question timer effect
   useEffect(() => {
     if (gameState === 'playing') {
-      const timer = setTimeout(() => {
-        setQuestionTimeRemaining(prev => prev - 1);
-      }, 1000);
-      return () => clearTimeout(timer);
+      const t = setTimeout(() => setQTimeRemaining(p => p - 1), 1000);
+      return () => clearTimeout(t);
     }
-  }, [gameState, questionTimeRemaining]);
+  }, [gameState, qTimeRemaining]);
 
-  // Save game when finished
   useEffect(() => {
-    if (gameState === 'finished' && questionsAnswered > 0) {
-      const accuracy = Math.round((questionsCorrect / questionsAnswered) * 100);
-      const suspiciousCount = suspiciousResponses.filter(Boolean).length;
-      const suspiciousPercentage = (suspiciousCount / questionsAnswered) * 100;
-
-      const gameResult: GameResult & { isSuspicious?: boolean } = {
-        score,
-        questionsCorrect,
-        questionsAnswered,
-        accuracy,
-        difficulty,
-        operations: selectedOperations,
-        timeLimit,
-        playedAt: new Date(),
-        isSuspicious: suspiciousPercentage > 30 // Mark as suspicious if >30% of responses were flagged
-      };
-      saveGameResult(gameResult);
+    if (gameState === 'finished' && answered > 0) {
+      const acc = Math.round((correct / answered) * 100);
+      const suspCount = suspicious.filter(Boolean).length;
+      saveResult({
+        score, questionsCorrect: correct, questionsAnswered: answered,
+        accuracy: acc, difficulty, operations: selectedOps,
+        timeLimit, playedAt: new Date(),
+        ...(suspCount / answered > 0.3 ? { isSuspicious: true } as any : {}),
+      });
     }
-  }, [gameState, score, questionsCorrect, questionsAnswered, difficulty, selectedOperations, timeLimit, suspiciousResponses, saveGameResult]);
+  }, [gameState]); // eslint-disable-line
 
-  // Format time display
-  const formatTime = (seconds: number) => {
-    const mins = Math.floor(seconds / 60);
-    const secs = seconds % 60;
-    return `${mins}:${secs.toString().padStart(2, '0')}`;
-  };
+  const fmtTime = (s: number) => `${Math.floor(s/60)}:${(s%60).toString().padStart(2,'0')}`;
+  const accuracy = answered > 0 ? Math.round((correct / answered) * 100) : 0;
 
-  // Calculate accuracy
-  const accuracy = questionsAnswered > 0 ? Math.round((questionsCorrect / questionsAnswered) * 100) : 0;
+  // ── Leaderboard ─────────────────────────────────────────────────────────────
+  if (gameState === 'leaderboard') return (
+    <div className="min-h-screen bg-[#1A0507] text-[#FAF5EF] relative overflow-hidden">
+      <GrainOverlay />
+      <CursorSpotlight />
 
-  if (gameState === 'leaderboard') {
-    return (
-      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
-        {/* Professional Background Elements */}
-        <div className="absolute inset-0">
-          <div className="absolute top-20 right-20 w-72 h-72 bg-vh-red/5 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-20 left-20 w-96 h-96 bg-vh-beige/10 rounded-full blur-3xl"></div>
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full opacity-3">
-            <div className="grid grid-cols-12 gap-4 transform rotate-12">
-              {Array.from({ length: 144 }).map((_, i) => (
-                <div key={i} className="h-1 bg-gradient-to-r from-vh-red/10 to-transparent rounded animate-pulse" style={{ animationDelay: `${i * 100}ms` }}></div>
-              ))}
-            </div>
-          </div>
+      <div className="relative max-w-[1400px] mx-auto px-6 sm:px-10 lg:px-16 pt-20 pb-28">
+        <SectionMark chapter="Chapter Two" title="Champions" />
+
+        <div className="mt-10 grid grid-cols-1 lg:grid-cols-12 gap-6 items-end mb-20">
+          <h1 className="lg:col-span-8 font-heading text-[clamp(2.5rem,7vw,6rem)] leading-[0.92] tracking-[-0.02em] font-light">
+            The leaderboard.
+            <em className="block font-extralight text-[#D4B094]">who's fastest?</em>
+          </h1>
+          <button
+            onClick={() => setGameState('setup')}
+            className="lg:col-span-4 lg:justify-self-end group inline-flex items-center gap-3 rounded-full border border-[#D4B094]/40 bg-transparent text-[#D4B094] px-7 py-3.5 font-sans text-sm font-medium tracking-wide transition-all duration-500 hover:bg-[#D4B094] hover:text-[#1A0507]"
+          >
+            <span>Back to game</span>
+            <ArrowRight size={16} />
+          </button>
         </div>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10">
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-vh-red to-vh-dark-red rounded-3xl mb-8 shadow-2xl">
-              <Trophy className="text-white" size={40} />
-            </div>
-            <h1 className="text-6xl lg:text-7xl font-black text-gray-900 mb-6">
-              Mental Math <span className="bg-gradient-to-r from-vh-red to-vh-dark-red bg-clip-text text-transparent">Leaderboard</span>
-            </h1>
-            <p className="text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed">Top performers in our intensive mental math challenges</p>
-          </div>
-
-          <div className="grid lg:grid-cols-2 gap-12 mb-16">
-            {/* Individual Game Scores */}
-            <div className="group relative">
-              <div className="absolute inset-0 bg-gradient-to-br from-vh-red/20 to-transparent rounded-3xl blur-2xl group-hover:blur-3xl opacity-0 group-hover:opacity-100 transition-all duration-700"></div>
-              <div className="relative bg-white rounded-3xl shadow-2xl p-10 border border-gray-100 group-hover:shadow-4xl group-hover:border-vh-red/20 transition-all duration-700">
-                <div className="flex items-center mb-8">
-                  <div className="w-16 h-16 bg-gradient-to-br from-vh-red to-vh-dark-red rounded-2xl flex items-center justify-center mr-6 shadow-xl">
-                    <Trophy className="text-white" size={32} />
-                  </div>
-                  <h2 className="text-3xl font-black text-gray-900">Top Individual Scores</h2>
-                </div>
-              {isLoading ? (
-                <div className="text-center py-8">Loading...</div>
-              ) : leaderboard.individual.length === 0 ? (
-                <div className="text-center py-8">
-                  <Target className="w-16 h-16 mx-auto mb-4 text-vh-red/40" />
-                  <p className="text-gray-600 text-lg">No individual scores yet. Be the first to play!</p>
-                </div>
-              ) : (
-                <div className="space-y-3">
-                  {leaderboard.individual.slice(0, 10).map((entry, index) => (
-                    <div key={index} className="group/item flex items-center justify-between p-4 bg-gradient-to-r from-gray-50 to-white rounded-2xl border border-gray-100 hover:border-vh-red/30 hover:shadow-lg transition-all duration-300">
-                      <div className="flex items-center gap-3">
-                        <span className={`w-11 h-11 rounded-full flex items-center justify-center text-white font-bold min-w-[44px] min-h-[44px] ${
-                          index === 0 ? 'bg-yellow-500' : index === 1 ? 'bg-gray-400' : index === 2 ? 'bg-amber-600' : 'bg-vh-red'
-                        }`}>
-                          {index + 1}
-                        </span>
-                        <div className="flex-1">
-                          <div className="flex items-center gap-2">
-                            <span className="font-semibold text-gray-800">{entry.playerName || 'Anonymous'}</span>
-                            {(entry as any).isSuspicious && (
-                              <span className="bg-red-500 text-white text-xs px-2 py-1 rounded-full font-bold flex items-center gap-1" title="Suspicious calculator usage detected">
-                                C
-                              </span>
-                            )}
-                          </div>
-                          <div className="text-sm text-gray-600">
-                            {entry.difficulty} • {entry.operations?.join(', ')} • {entry.accuracy}% accuracy • {(entry as any).timeLimit}min game
-                          </div>
+        <div className="grid lg:grid-cols-2 gap-10">
+          {/* Individual scores */}
+          <div className="relative rounded-2xl border border-[#D4B094]/20 bg-[#D4B094]/[0.04] p-8 sm:p-10 overflow-hidden">
+            <CornerBrackets accent="#D4B094" />
+            <div className="font-sans text-[10px] tracking-[0.3em] uppercase text-[#D4B094] mb-6">Top individual scores</div>
+            {isLoading ? (
+              <p className="font-sans text-sm text-[#FAF5EF]/40">Loading…</p>
+            ) : leaderboard.individual.length === 0 ? (
+              <p className="font-sans text-sm text-[#FAF5EF]/40">No scores yet. Be the first to play.</p>
+            ) : (
+              <div className="space-y-2">
+                {leaderboard.individual.slice(0, 10).map((e, i) => (
+                  <div key={i} className="flex items-center justify-between py-3 border-b border-white/[0.06] last:border-0">
+                    <div className="flex items-center gap-4">
+                      <span className={`font-heading italic text-sm ${i < 3 ? 'text-[#D4B094]' : 'text-[#FAF5EF]/30'}`}>
+                        {RANK_LABEL(i)}
+                      </span>
+                      <div>
+                        <div className="flex items-center gap-2">
+                          <span className="font-sans text-sm text-[#FAF5EF]">{e.playerName || 'Anonymous'}</span>
+                          {(e as any).isSuspicious && (
+                            <span className="font-sans text-[9px] tracking-widest uppercase text-red-400 border border-red-400/40 px-1.5 py-0.5 rounded">calc</span>
+                          )}
+                        </div>
+                        <div className="font-sans text-[11px] text-[#FAF5EF]/35 mt-0.5">
+                          {e.difficulty} · {e.accuracy}% acc · {(e as any).timeLimit}min
                         </div>
                       </div>
-                      <div className="text-right">
-                        <div className="font-bold text-vh-red text-lg">{entry.score}</div>
-                        <div className="text-xs text-gray-500">{entry.questionsCorrect}/{entry.questionsAnswered}</div>
-                      </div>
                     </div>
-                  ))}
-                </div>
-              )}
-            </div>
-
-            {/* Accumulated Scores */}
-            <div className="group relative">
-              <div className="absolute inset-0 bg-gradient-to-br from-vh-beige/20 to-transparent rounded-3xl blur-2xl group-hover:blur-3xl opacity-0 group-hover:opacity-100 transition-all duration-700"></div>
-              <div className="relative bg-white rounded-3xl shadow-2xl p-10 border border-gray-100 group-hover:shadow-4xl group-hover:border-vh-beige/20 transition-all duration-700">
-                <div className="flex items-center mb-8">
-                  <div className="w-16 h-16 bg-gradient-to-br from-vh-beige to-vh-dark-beige rounded-2xl flex items-center justify-center mr-6 shadow-xl">
-                    <Zap className="text-white" size={32} />
+                    <div className="text-right">
+                      <div className="font-heading text-xl font-light text-[#D4B094]">{e.score}</div>
+                      <div className="font-sans text-[10px] text-[#FAF5EF]/30">{e.questionsCorrect}/{e.questionsAnswered}</div>
+                    </div>
                   </div>
-                  <h2 className="text-3xl font-black text-gray-900">Accumulated Champions</h2>
-                </div>
-              {isLoading ? (
-                <div className="text-center py-8">Loading...</div>
-              ) : leaderboard.accumulated.length === 0 ? (
-                <div className="text-center py-8">
-                  <Zap className="w-16 h-16 mx-auto mb-4 text-vh-beige/60" />
-                  <p className="text-gray-600 text-lg">No accumulated scores yet. Start your math journey!</p>
-                </div>
-              ) : (
-                <div className="space-y-3">
-                  {leaderboard.accumulated.slice(0, 10).map((entry, index) => (
-                    <div key={index} className="group/item flex items-center justify-between p-4 bg-gradient-to-r from-gray-50 to-white rounded-2xl border border-gray-100 hover:border-vh-beige/30 hover:shadow-lg transition-all duration-300">
-                      <div className="flex items-center gap-3">
-                        <span className={`w-11 h-11 rounded-full flex items-center justify-center text-white font-bold min-w-[44px] min-h-[44px] ${
-                          index === 0 ? 'bg-yellow-500' : index === 1 ? 'bg-gray-400' : index === 2 ? 'bg-amber-600' : 'bg-vh-red'
-                        }`}>
-                          {index + 1}
-                        </span>
-                        <div className="flex-1">
-                          <div className="flex items-center gap-2">
-                            <span className="font-semibold text-gray-800">{entry.playerName || 'Anonymous'}</span>
-                            {(entry as any).hasSuspiciousGames && (
-                              <span className="bg-red-500 text-white text-xs px-2 py-1 rounded-full font-bold flex items-center gap-1" title="Has suspicious games with calculator usage">
-                                C
-                              </span>
-                            )}
-                          </div>
-                          <div className="text-sm text-gray-600">
-                            {entry.gamesPlayed} games • Avg: {Math.round(entry.averageScore)}
-                          </div>
+                ))}
+              </div>
+            )}
+          </div>
+
+          {/* Accumulated scores */}
+          <div className="relative rounded-2xl border border-[#D4B094]/20 bg-[#D4B094]/[0.04] p-8 sm:p-10 overflow-hidden">
+            <CornerBrackets accent="#D4B094" />
+            <div className="font-sans text-[10px] tracking-[0.3em] uppercase text-[#D4B094] mb-6">Accumulated champions</div>
+            {isLoading ? (
+              <p className="font-sans text-sm text-[#FAF5EF]/40">Loading…</p>
+            ) : leaderboard.accumulated.length === 0 ? (
+              <p className="font-sans text-sm text-[#FAF5EF]/40">No accumulated scores yet.</p>
+            ) : (
+              <div className="space-y-2">
+                {leaderboard.accumulated.slice(0, 10).map((e, i) => (
+                  <div key={i} className="flex items-center justify-between py-3 border-b border-white/[0.06] last:border-0">
+                    <div className="flex items-center gap-4">
+                      <span className={`font-heading italic text-sm ${i < 3 ? 'text-[#D4B094]' : 'text-[#FAF5EF]/30'}`}>
+                        {RANK_LABEL(i)}
+                      </span>
+                      <div>
+                        <div className="flex items-center gap-2">
+                          <span className="font-sans text-sm text-[#FAF5EF]">{e.playerName || 'Anonymous'}</span>
+                          {(e as any).hasSuspiciousGames && (
+                            <span className="font-sans text-[9px] tracking-widest uppercase text-red-400 border border-red-400/40 px-1.5 py-0.5 rounded">calc</span>
+                          )}
+                        </div>
+                        <div className="font-sans text-[11px] text-[#FAF5EF]/35 mt-0.5">
+                          {e.gamesPlayed} games · avg {Math.round(e.averageScore)}
                         </div>
                       </div>
-                      <div className="text-right">
-                        <div className="font-bold text-vh-red text-lg">{entry.totalScore}</div>
-                        <div className="text-xs text-gray-500">Total Points</div>
-                      </div>
                     </div>
-                  ))}
-                </div>
-              )}
-            </div>
-          </div>
-        </div>
-
-        <div className="text-center">
-            <button 
-              onClick={() => setGameState('setup')}
-              className="group bg-gradient-to-r from-vh-red to-vh-dark-red text-white px-12 py-4 rounded-2xl font-bold text-lg hover:from-vh-dark-red hover:to-vh-red transition-all duration-300 shadow-2xl hover:shadow-vh-red/25 transform hover:-translate-y-1"
-            >
-              <Target className="inline mr-3" size={20} />
-              Back to Game
-            </button>
+                    <div className="text-right">
+                      <div className="font-heading text-xl font-light text-[#D4B094]">{e.totalScore}</div>
+                      <div className="font-sans text-[10px] text-[#FAF5EF]/30">total pts</div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
         </div>
       </div>
     </div>
-    );
-  }
-
-  if (gameState === 'setup') {
-    return (
-      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
-        {/* Professional Background Elements */}
-        <div className="absolute inset-0">
-          <div className="absolute top-20 right-20 w-72 h-72 bg-vh-red/5 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-20 left-20 w-96 h-96 bg-vh-beige/10 rounded-full blur-3xl"></div>
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full opacity-3">
-            <div className="grid grid-cols-12 gap-4 transform rotate-12">
-              {Array.from({ length: 144 }).map((_, i) => (
-                <div key={i} className="h-1 bg-gradient-to-r from-vh-red/10 to-transparent rounded animate-pulse" style={{ animationDelay: `${i * 100}ms` }}></div>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10">
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-vh-red to-vh-dark-red rounded-3xl mb-8 shadow-2xl">
-              <Target className="text-white" size={40} />
-            </div>
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-gray-900 mb-6">
-              Mental Math <span className="bg-gradient-to-r from-vh-red to-vh-dark-red bg-clip-text text-transparent">Trainer</span>
-            </h1>
-            <p className="text-lg sm:text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed px-4">Challenge your mind with lightning-fast calculations and compete for the top scores</p>
-          </div>
-
-          <div className="group relative mb-12">
-            <div className="absolute inset-0 bg-gradient-to-br from-vh-red/10 to-transparent rounded-3xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
-            <div className="relative bg-white rounded-3xl shadow-2xl p-12 border border-gray-100 group-hover:shadow-4xl transition-all duration-500">
-              <div className="space-y-8">
-                <div>
-                  <label className="block text-lg font-black text-gray-900 mb-6">
-                    Choose Operations (Select one or more)
-                  </label>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3">
-                  {Object.entries(operationLabels).map(([key, label]) => (
-                    <button
-                      key={key}
-                      onClick={() => toggleOperation(key)}
-                      className={`p-3 sm:p-4 rounded-lg border-2 transition-all font-medium min-h-[48px] sm:min-h-[52px] flex items-center justify-center text-sm sm:text-base ${
-                        selectedOperations.includes(key)
-                          ? 'border-vh-red bg-vh-red text-white shadow-lg transform scale-105'
-                          : 'border-gray-200 hover:border-vh-red/50 hover:bg-vh-beige/20 text-gray-700'
-                      }`}
-                    >
-                      <div>{label}</div>
-                    </button>
-                  ))}
-                </div>
-                {selectedOperations.length > 1 && (
-                  <div className="mt-3 p-3 bg-green-50 border border-green-200 rounded-lg">
-                    <p className="text-sm text-green-800 font-medium flex items-center gap-2">
-                      🎉 Multi-operation bonus: +30% points!
-                    </p>
-                  </div>
-                )}
-              </div>
-              
-                <div>
-                  <label className="block text-lg font-black text-gray-900 mb-4">
-                    Difficulty Level
-                  </label>
-                  <select 
-                    value={difficulty} 
-                    onChange={(e) => setDifficulty(e.target.value as 'easy' | 'medium' | 'hard' | 'extreme')}
-                    className="w-full p-4 border-2 border-gray-200 rounded-2xl focus:ring-2 focus:ring-vh-red focus:border-vh-red font-medium text-lg bg-gradient-to-r from-gray-50 to-white"
-                  >
-                  <option value="easy">Easy - Single Digits</option>
-                  <option value="medium">Medium - Mixed Difficulty</option>
-                  <option value="hard">Hard - Double Digits</option>
-                  <option value="extreme">Extreme 🔥 - Challenge Mode</option>
-                </select>
-                {difficulty === 'extreme' && (
-                  <div className="mt-2 p-3 bg-red-50 border border-red-200 rounded-lg">
-                    <div className="text-sm text-red-800">
-                      <strong>Extreme Mode:</strong> Addition/Subtraction up to 200, Multiplication/Division up to 30×30
-                    </div>
-                  </div>
-                )}
-              </div>
-              
-                <div>
-                  <label className="block text-lg font-black text-gray-900 mb-4">
-                    Time Limit
-                  </label>
-                  <select 
-                    value={timeLimit} 
-                    onChange={(e) => setTimeLimit(parseFloat(e.target.value))}
-                    className="w-full p-4 border-2 border-gray-200 rounded-2xl focus:ring-2 focus:ring-vh-red focus:border-vh-red font-medium text-lg bg-gradient-to-r from-gray-50 to-white"
-                  >
-                  {timeOptions.map(option => (
-                    <option key={option.value} value={option.value}>
-                      {option.label}
-                    </option>
-                  ))}
-                </select>
-              </div>
-            </div>
-          </div>
-
-          <div className="flex flex-col sm:flex-row gap-6 justify-center">
-            {/* Start Challenge Button */}
-            <div className="relative">
-              <button 
-                type="button"
-                onClick={(e) => {
-                  e.preventDefault();
-                  e.stopPropagation();
-                  console.log('Start Challenge button clicked');
-                  try {
-                    startGame();
-                  } catch (error) {
-                    console.error('Error in startGame:', error);
-                  }
-                }}
-                disabled={selectedOperations.length === 0}
-                className={`group px-12 py-4 rounded-2xl font-bold text-lg transition-all duration-300 flex items-center justify-center gap-3 shadow-2xl ${
-                  selectedOperations.length === 0 
-                    ? 'bg-gray-400 text-gray-200 cursor-not-allowed'
-                    : 'bg-gradient-to-r from-vh-red to-vh-dark-red text-white hover:from-vh-dark-red hover:to-vh-red hover:shadow-vh-red/25 transform hover:-translate-y-1 active:scale-95'
-                }`}
-              >
-                <Play size={24} />
-                Start Challenge
-              </button>
-            </div>
-            
-            {/* View Leaderboard Button */}
-            <div className="relative">
-              <button 
-                type="button"
-                onClick={(e) => {
-                  e.preventDefault();
-                  e.stopPropagation();
-                  console.log('View Leaderboard button clicked');
-                  try {
-                    fetchLeaderboard();
-                    setGameState('leaderboard');
-                  } catch (error) {
-                    console.error('Error in fetchLeaderboard:', error);
-                  }
-                }}
-                className="group border-2 border-vh-red text-vh-red px-12 py-4 rounded-2xl font-bold text-lg hover:bg-vh-red hover:text-white transition-all duration-300 flex items-center justify-center gap-3 shadow-lg active:scale-95"
-              >
-                <Trophy size={24} />
-                View Leaderboard
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    );
-  }
-
-  if (gameState === 'playing') {
-    return (
-      <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-vh-dark-red relative overflow-hidden">
-        {/* Dynamic Background Elements */}
-        <div className="absolute inset-0">
-          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-vh-red/20 to-transparent rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-l from-vh-beige/10 to-transparent rounded-full blur-3xl animate-pulse" style={{animationDelay: '1s'}}></div>
-        </div>
-
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 relative z-10">
-          {/* Header with stats */}
-          <div className="bg-white/95 backdrop-blur-xl rounded-3xl shadow-2xl p-3 sm:p-4 md:p-6 lg:p-8 mb-4 sm:mb-6 md:mb-8 border border-white/20">
-            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 sm:gap-4 mb-3 sm:mb-4">
-              <div className="flex flex-wrap items-center gap-2 sm:gap-3 md:gap-4">
-                <div className="flex items-center gap-2">
-                  <Clock size={20} className="text-vh-red sm:w-6 sm:h-6" />
-                  <span className="font-mono text-xl sm:text-2xl font-bold text-vh-red">
-                    {formatTime(timeRemaining)}
-                  </span>
-                </div>
-                <div className={`flex items-center gap-2 px-3 py-1 rounded-full border ${
-                  questionTimeRemaining < 0
-                    ? 'bg-red-100 border-red-300'
-                    : questionTimeRemaining <= 3
-                      ? 'bg-yellow-100 border-yellow-300'
-                      : 'bg-orange-100 border-orange-300'
-                }`}>
-                  <Clock size={16} className={
-                    questionTimeRemaining < 0
-                      ? 'text-red-600'
-                      : questionTimeRemaining <= 3
-                        ? 'text-yellow-600'
-                        : 'text-orange-600'
-                  } />
-                  <span className={`font-mono text-lg font-bold ${
-                    questionTimeRemaining < 0
-                      ? 'text-red-600 animate-pulse'
-                      : questionTimeRemaining <= 3
-                        ? 'text-yellow-600 animate-pulse'
-                        : 'text-orange-600'
-                  }`}>
-                    {questionTimeRemaining < 0 ? `+${Math.abs(questionTimeRemaining)}s` : `${questionTimeRemaining}s`}
-                  </span>
-                </div>
-              </div>
-              <div className="flex flex-wrap items-center gap-3 sm:gap-4 md:gap-6">
-                <div className="flex items-center gap-2">
-                  <Target size={16} className="text-vh-red sm:w-5 sm:h-5" />
-                  <span className="font-bold text-base sm:text-lg">Score: {score}</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Zap size={16} className="text-green-600 sm:w-5 sm:h-5" />
-                  <span className="font-medium text-sm sm:text-base">{questionsAnswered} solved</span>
-                </div>
-                <div className={`flex items-center gap-2 px-3 py-1 rounded-full border ${
-                  skipsRemaining > 0
-                    ? 'bg-blue-100 border-blue-300 text-blue-700'
-                    : 'bg-red-100 border-red-300 text-red-700'
-                }`}>
-                  <SkipForward size={16} />
-                  <span className="font-bold text-sm">
-                    {skipsRemaining > 0 ? `${skipsRemaining} skips left` : `+${timePenalty}s penalty`}
-                  </span>
-                </div>
-              </div>
-            </div>
-            
-            {/* Active operations indicator */}
-            <div className="flex flex-wrap gap-2">
-              {selectedOperations.map(op => (
-                <span 
-                  key={op} 
-                  className="px-3 py-1 bg-vh-beige text-vh-red rounded-full text-sm font-medium border border-vh-red/20"
-                >
-                  {operationLabels[op]}
-                </span>
-              ))}
-            </div>
-          </div>
-
-          {/* Question */}
-          <div className="group relative mb-8">
-            <div className="absolute inset-0 bg-gradient-to-br from-vh-red/30 to-vh-dark-red/30 rounded-3xl blur-2xl group-hover:blur-3xl transition-all duration-500"></div>
-            <div className="relative bg-white/95 backdrop-blur-xl rounded-3xl shadow-2xl p-12 border border-white/20 text-center">
-              <div className="mb-6">
-                <span className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-vh-red to-vh-dark-red text-white rounded-full text-sm font-bold uppercase tracking-wide shadow-lg">
-                  {currentQuestion?.operation} • {difficulty}
-                  {difficulty === 'extreme' && <span className="ml-2 text-lg">🔥</span>}
-                </span>
-              </div>
-              {currentQuestion && (
-                <div className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-gray-900 mb-8 sm:mb-10 tracking-tight">
-                  {currentQuestion.num1} <span className="text-vh-red">{currentQuestion.symbol}</span> {currentQuestion.num2} = <span className="text-vh-red">?</span>
-                </div>
-              )}
-
-              <input
-                type="number"
-                value={userAnswer}
-                onChange={(e) => setUserAnswer(e.target.value)}
-                onKeyPress={handleKeyPress}
-                className="text-2xl sm:text-3xl md:text-4xl font-black text-center p-4 sm:p-6 border-3 border-gray-200 rounded-2xl focus:ring-4 focus:ring-vh-red/50 focus:border-vh-red bg-gradient-to-r from-gray-50 to-white w-full max-w-xs sm:max-w-sm shadow-xl transition-all duration-300"
-                placeholder="Your answer"
-                autoFocus
-              />
-            </div>
-          </div>
-
-          {/* Overtime warning */}
-          {questionTimeRemaining < 0 && (
-            <div className="bg-red-50 border border-red-200 rounded-2xl p-4 mb-6 text-center">
-              <div className="text-red-800 font-bold mb-2">⏱️ Time Over!</div>
-              <div className="text-red-700 text-sm">
-                You've exceeded the allocated time by <span className="font-bold">{Math.abs(questionTimeRemaining)} seconds</span>
-                <br />
-                Your points for this question will be reduced exponentially based on overtime.
-              </div>
-            </div>
-          )}
-
-          {/* Skip warning */}
-          {skipsRemaining === 0 && timePenalty > 0 && (
-            <div className="bg-red-50 border border-red-200 rounded-2xl p-4 mb-6 text-center">
-              <div className="text-red-800 font-bold mb-2">⚠️ No Free Skips Remaining</div>
-              <div className="text-red-700 text-sm">
-                Each skip now adds +60 seconds to all future questions in this game.
-                <br />
-                Current penalty: <span className="font-bold">+{timePenalty} seconds</span>
-              </div>
-            </div>
-          )}
-
-          {/* Action buttons */}
-          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
-            <button
-              onClick={submitAnswer}
-              disabled={userAnswer === ''}
-              className="group flex-1 bg-gradient-to-r from-vh-red to-vh-dark-red text-white py-3 sm:py-4 px-6 sm:px-8 rounded-2xl hover:from-vh-dark-red hover:to-vh-red disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 font-bold text-base sm:text-lg shadow-2xl hover:shadow-vh-red/25 transform hover:-translate-y-1 disabled:transform-none min-h-[52px]"
-            >
-              <Target className="inline mr-2 sm:mr-3" size={18} />
-              Submit Answer
-            </button>
-            <button
-              onClick={skipQuestion}
-              className={`group py-4 px-8 rounded-2xl transition-all duration-300 flex items-center justify-center gap-3 font-bold text-lg shadow-xl transform hover:-translate-y-1 ${
-                skipsRemaining > 0
-                  ? 'bg-gradient-to-r from-orange-500 to-red-500 text-white hover:from-orange-600 hover:to-red-600 hover:shadow-orange-500/25'
-                  : 'bg-gradient-to-r from-red-600 to-red-700 text-white hover:from-red-700 hover:to-red-800 hover:shadow-red-600/25'
-              }`}
-              title={
-                skipsRemaining > 0
-                  ? `${skipsRemaining} free skips remaining`
-                  : `Skip will add +60s penalty to all future questions`
-              }
-            >
-              <SkipForward size={20} />
-              {skipsRemaining > 0
-                ? `Skip (${skipsRemaining} left)`
-                : 'Skip (+60s penalty)'
-              }
-            </button>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  if (gameState === 'finished') {
-    return (
-      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
-        {/* Celebration Background */}
-        <div className="absolute inset-0">
-          <div className="absolute top-20 right-20 w-72 h-72 bg-gradient-to-r from-green-400/10 to-vh-red/10 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-20 left-20 w-96 h-96 bg-gradient-to-l from-vh-beige/20 to-green-400/10 rounded-full blur-3xl animate-pulse" style={{animationDelay: '1s'}}></div>
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full opacity-5">
-            <div className="grid grid-cols-8 gap-8">
-              {Array.from({ length: 64 }).map((_, i) => (
-                <div key={i} className="aspect-square border border-vh-red/20 rounded-full animate-pulse" style={{animationDelay: `${i * 50}ms`}}></div>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10">
-          <div className="group relative">
-            <div className="absolute inset-0 bg-gradient-to-br from-vh-red/20 to-green-400/20 rounded-3xl blur-2xl group-hover:blur-3xl transition-all duration-700"></div>
-            <div className="relative bg-white rounded-3xl shadow-2xl p-12 border border-gray-100 group-hover:shadow-4xl transition-all duration-700">
-              <div className="text-center mb-12">
-                <div className="inline-flex items-center justify-center w-24 h-24 bg-gradient-to-br from-green-400 to-vh-red rounded-full mb-8 shadow-2xl">
-                  <Award className="text-white" size={48} />
-                </div>
-                <h1 className="text-5xl lg:text-6xl font-black text-gray-900 mb-4">
-                  Challenge <span className="bg-gradient-to-r from-green-400 to-vh-red bg-clip-text text-transparent">Complete!</span>
-                </h1>
-                <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">Outstanding performance! You've completed the mental math challenge.</p>
-              </div>
-            
-              <div className="mb-12">
-                <div className="relative group/score">
-                  <div className="absolute inset-0 bg-gradient-to-r from-vh-red/20 to-green-400/20 rounded-3xl blur-xl group-hover/score:blur-2xl transition-all duration-500"></div>
-                  <div className="relative bg-gradient-to-br from-gray-50 to-white rounded-3xl p-10 border border-gray-200 shadow-xl text-center">
-                    <div className="text-6xl lg:text-7xl font-black mb-4">
-                      <span className="bg-gradient-to-r from-vh-red to-green-400 bg-clip-text text-transparent">{score}</span>
-                    </div>
-                    <div className="text-2xl font-bold text-gray-600 mb-2">Final Score</div>
-                    <div className="text-lg text-gray-500">
-                      {score > 0 ? 'Exceptional performance!' : 'Keep practicing to reach new heights!'}
-                    </div>
-                  </div>
-                </div>
-              </div>
-              
-              <div className="grid md:grid-cols-4 gap-6 mb-12">
-                <div className="group relative">
-                  <div className="absolute inset-0 bg-gradient-to-br from-green-400/20 to-transparent rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
-                  <div className="relative bg-gradient-to-br from-green-50 to-green-100 rounded-2xl p-6 text-center border border-green-200 shadow-lg">
-                    <div className="text-3xl font-black text-green-600 mb-2">{questionsCorrect}</div>
-                    <div className="text-green-700 font-bold">Correct</div>
-                  </div>
-                </div>
-                <div className="group relative">
-                  <div className="absolute inset-0 bg-gradient-to-br from-red-400/20 to-transparent rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
-                  <div className="relative bg-gradient-to-br from-red-50 to-red-100 rounded-2xl p-6 text-center border border-red-200 shadow-lg">
-                    <div className="text-3xl font-black text-red-600 mb-2">{questionsAnswered - questionsCorrect}</div>
-                    <div className="text-red-700 font-bold">Incorrect</div>
-                  </div>
-                </div>
-                <div className="group relative">
-                  <div className="absolute inset-0 bg-gradient-to-br from-blue-400/20 to-transparent rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
-                  <div className="relative bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl p-6 text-center border border-blue-200 shadow-lg">
-                    <div className="text-3xl font-black text-blue-600 mb-2">{accuracy}%</div>
-                    <div className="text-blue-700 font-bold">Accuracy</div>
-                  </div>
-                </div>
-                <div className="group relative">
-                  <div className="absolute inset-0 bg-gradient-to-br from-orange-400/20 to-transparent rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
-                  <div className="relative bg-gradient-to-br from-orange-50 to-orange-100 rounded-2xl p-6 text-center border border-orange-200 shadow-lg">
-                    <div className="text-3xl font-black text-orange-600 mb-2">{questionsSkipped}</div>
-                    <div className="text-orange-700 font-bold">Skipped</div>
-                  </div>
-                </div>
-              </div>
-              
-              <div className="grid grid-cols-2 gap-4">
-                <div className="bg-blue-50 p-4 rounded-lg text-center border border-blue-200">
-                  <div className="text-2xl font-bold text-blue-600">{accuracy}%</div>
-                  <div className="text-sm text-blue-700 font-medium">Accuracy</div>
-                </div>
-                <div className="bg-orange-50 p-4 rounded-lg text-center border border-orange-200">
-                  <div className="text-2xl font-bold text-orange-600">{questionsSkipped}</div>
-                  <div className="text-sm text-orange-700 font-medium">Skipped</div>
-                </div>
-              </div>
-
-              {/* Game summary */}
-              <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
-                <div className="text-sm text-gray-700 text-center space-y-1">
-                  <div><strong>Operations:</strong> {selectedOperations.map(op => operationLabels[op]).join(', ')}</div>
-                  <div><strong>Difficulty:</strong> {difficulty.charAt(0).toUpperCase() + difficulty.slice(1)}{difficulty === 'extreme' ? ' 🔥' : ''}</div>
-                  <div><strong>Duration:</strong> {timeOptions.find(t => t.value === timeLimit)?.label}</div>
-                </div>
-              </div>
-            </div>
-          </div>
-            
-          <div className="flex flex-col sm:flex-row gap-6 justify-center">
-                <button 
-                  onClick={() => setGameState('setup')}
-                  className="group bg-gradient-to-r from-vh-red to-vh-dark-red text-white px-12 py-4 rounded-2xl font-bold text-lg hover:from-vh-dark-red hover:to-vh-red transition-all duration-300 flex items-center justify-center gap-3 shadow-2xl hover:shadow-vh-red/25 transform hover:-translate-y-1"
-                >
-                  <RotateCcw size={24} />
-                  Play Again
-                </button>
-                <button 
-                  onClick={() => {
-                    fetchLeaderboard();
-                    setGameState('leaderboard');
-                  }}
-                  className="group border-2 border-vh-red text-vh-red px-12 py-4 rounded-2xl font-bold text-lg hover:bg-vh-red hover:text-white transition-all duration-300 flex items-center justify-center gap-3 shadow-lg"
-                >
-                  <Trophy size={24} />
-                  View Leaderboard
-                </button>
-              </div>
-        </div>
-      </div>
-    );
-  }
-};
-
-const MentalMathPage = () => {
-  return (
-    <ProtectedRoute>
-      <MentalMathApp />
-    </ProtectedRoute>
   );
+
+  // ── Setup ────────────────────────────────────────────────────────────────────
+  if (gameState === 'setup') return (
+    <div className="min-h-screen bg-[#FAF5EF] text-[#1A0507] relative overflow-hidden">
+      <LedgerOverlay />
+      <WarmGlow />
+
+      <div className="relative max-w-[900px] mx-auto px-6 sm:px-10 lg:px-16 pt-20 pb-28 sm:pt-28">
+        <SectionMark chapter="Chapter Zero" title="Mental Math" light />
+
+        <h1 className="mt-10 font-heading text-[clamp(2.5rem,7vw,5.5rem)] leading-[0.92] tracking-[-0.02em] font-light">
+          Train your mind.
+          <em className="block font-extralight text-[#760F13]">beat the clock.</em>
+        </h1>
+
+        <p className="mt-6 font-sans text-base text-[#1A0507]/60 max-w-md leading-relaxed">
+          Select your operations, pick a difficulty, and go. The leaderboard tracks the sharpest minds.
+        </p>
+
+        {/* Settings card */}
+        <div className="mt-12 relative rounded-2xl border border-[#D4B094]/40 bg-white/70 backdrop-blur-sm p-8 sm:p-12 overflow-hidden">
+          <CornerBrackets accent="#A86E58" />
+          <span aria-hidden className="absolute -top-4 -right-2 font-heading italic text-[#D4B094]/18 text-[7rem] font-extralight leading-none pointer-events-none select-none">00</span>
+
+          <div className="relative space-y-10">
+            {/* Operations */}
+            <div>
+              <div className="font-sans text-[10px] tracking-[0.3em] uppercase text-[#A86E58] mb-4">Operations</div>
+              <div className="grid grid-cols-2 gap-3">
+                {Object.entries(OP_LABELS).map(([key, label]) => (
+                  <button
+                    key={key}
+                    onClick={() => toggleOp(key)}
+                    className={[
+                      'relative text-left rounded-xl border px-5 py-4 transition-all duration-300 overflow-hidden',
+                      selectedOps.includes(key)
+                        ? 'bg-[#1A0507] border-[#1A0507] text-[#FAF5EF]'
+                        : 'border-[#D4B094]/40 hover:border-[#A86E58]/60',
+                    ].join(' ')}
+                  >
+                    {selectedOps.includes(key) && <CornerBrackets accent="#D4B094" />}
+                    <div className={`font-sans text-sm font-medium ${selectedOps.includes(key) ? 'text-[#FAF5EF]' : 'text-[#1A0507]'}`}>{label}</div>
+                    {selectedOps.includes(key) && (
+                      <span className="absolute top-3 right-3 w-4 h-4 rounded-full bg-[#D4B094] flex items-center justify-center">
+                        <Check size={9} className="text-[#1A0507]" strokeWidth={3} />
+                      </span>
+                    )}
+                  </button>
+                ))}
+              </div>
+              {selectedOps.length > 1 && (
+                <p className="mt-3 font-sans text-xs text-[#A86E58]">Multi-operation bonus active — +30% points</p>
+              )}
+            </div>
+
+            {/* Difficulty */}
+            <div>
+              <div className="font-sans text-[10px] tracking-[0.3em] uppercase text-[#A86E58] mb-2">Difficulty</div>
+              <select
+                value={difficulty}
+                onChange={e => setDifficulty(e.target.value as typeof difficulty)}
+                className="w-full bg-transparent border-0 border-b border-[#1A0507]/20 py-3 px-0 font-heading text-xl text-[#1A0507] focus:outline-none focus:border-[#760F13] transition-colors appearance-none"
+              >
+                <option value="easy">Easy — Single Digits</option>
+                <option value="medium">Medium — Mixed</option>
+                <option value="hard">Hard — Double Digits</option>
+                <option value="extreme">Extreme — Challenge Mode</option>
+              </select>
+              {difficulty === 'extreme' && (
+                <p className="mt-2 font-sans text-xs text-[#760F13]">
+                  Addition/Subtraction up to 200 · Multiplication/Division up to 30×30
+                </p>
+              )}
+            </div>
+
+            {/* Time limit */}
+            <div>
+              <div className="font-sans text-[10px] tracking-[0.3em] uppercase text-[#A86E58] mb-2">Time limit</div>
+              <select
+                value={timeLimit}
+                onChange={e => setTimeLimit(parseFloat(e.target.value))}
+                className="w-full bg-transparent border-0 border-b border-[#1A0507]/20 py-3 px-0 font-heading text-xl text-[#1A0507] focus:outline-none focus:border-[#760F13] transition-colors appearance-none"
+              >
+                {TIME_OPTIONS.map(o => <option key={o.value} value={o.value}>{o.label}</option>)}
+              </select>
+            </div>
+          </div>
+        </div>
+
+        {/* Action buttons */}
+        <div className="mt-10 flex flex-col sm:flex-row items-start sm:items-center gap-4">
+          <button
+            onClick={startGame}
+            disabled={selectedOps.length === 0}
+            className="group/cta relative inline-flex items-center gap-3 rounded-full bg-[#1A0507] text-[#FAF5EF] px-9 py-4 font-sans text-sm font-medium tracking-wide transition-all duration-500 disabled:opacity-30 hover:bg-[#760F13] hover:shadow-[0_12px_40px_-12px_rgba(90,11,15,0.5)]"
+          >
+            <span className="relative overflow-hidden">
+              <span className="block transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover/cta:-translate-y-full">Start challenge</span>
+              <span className="absolute inset-0 translate-y-full transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover/cta:translate-y-0">Start challenge</span>
+            </span>
+            <ArrowRight size={16} className="transition-transform group-hover/cta:translate-x-0.5" />
+          </button>
+
+          <button
+            onClick={() => { fetchLeaderboard(); setGameState('leaderboard'); }}
+            className="group inline-flex items-center gap-3 font-sans text-sm text-[#A86E58] hover:text-[#1A0507] transition-colors"
+          >
+            <span className="w-6 h-px bg-current transition-all duration-300 group-hover:w-10" />
+            View leaderboard
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+
+  // ── Playing ──────────────────────────────────────────────────────────────────
+  if (gameState === 'playing') return (
+    <div className="min-h-screen bg-[#1A0507] text-[#FAF5EF] relative overflow-hidden flex flex-col">
+      <GrainOverlay />
+
+      {/* Top bar */}
+      <div className="relative z-10 border-b border-white/[0.06] px-6 sm:px-10 py-4 flex items-center justify-between gap-4">
+        {/* Game clock */}
+        <div className="flex items-center gap-2">
+          <span className="font-sans text-[10px] tracking-[0.3em] uppercase text-[#D4B094]/50">Time</span>
+          <span className={`font-heading text-2xl font-light tabular-nums ${timeRemaining <= 10 ? 'text-red-400' : 'text-[#FAF5EF]'}`}>
+            {fmtTime(timeRemaining)}
+          </span>
+        </div>
+
+        {/* Score */}
+        <div className="flex items-center gap-2">
+          <span className="font-sans text-[10px] tracking-[0.3em] uppercase text-[#D4B094]/50">Score</span>
+          <span className="font-heading text-2xl font-light text-[#D4B094]">{score}</span>
+        </div>
+
+        {/* Question timer */}
+        <div className={`flex items-center gap-2 px-3 py-1 rounded-full border transition-colors ${
+          qTimeRemaining < 0 ? 'border-red-400/40 text-red-400' :
+          qTimeRemaining <= 3 ? 'border-[#D4B094]/40 text-[#D4B094]' : 'border-white/10 text-[#FAF5EF]/50'
+        }`}>
+          <span className="font-heading text-lg tabular-nums">
+            {qTimeRemaining < 0 ? `+${Math.abs(qTimeRemaining)}s` : `${qTimeRemaining}s`}
+          </span>
+        </div>
+
+        {/* Skips */}
+        <div className="hidden sm:flex items-center gap-2">
+          <span className="font-sans text-[10px] tracking-[0.3em] uppercase text-[#D4B094]/50">
+            {skipsLeft > 0 ? `${skipsLeft} skips` : `+${timePenalty}s penalty`}
+          </span>
+        </div>
+      </div>
+
+      {/* Active operations */}
+      <div className="relative z-10 px-6 sm:px-10 py-3 flex flex-wrap gap-2 border-b border-white/[0.04]">
+        {selectedOps.map(op => (
+          <span key={op} className="font-sans text-[10px] tracking-[0.2em] uppercase text-[#D4B094]/60 border border-[#D4B094]/20 px-3 py-1 rounded-full">
+            {OP_LABELS[op]}
+          </span>
+        ))}
+      </div>
+
+      {/* Question area */}
+      <div className="relative z-10 flex-1 flex flex-col items-center justify-center px-6 py-12">
+        {/* Operation + difficulty badge */}
+        <div className="font-sans text-[10px] tracking-[0.35em] uppercase text-[#D4B094]/50 mb-8">
+          {currentQ?.operation} · {difficulty}
+        </div>
+
+        {/* Equation */}
+        {currentQ && (
+          <div className="font-heading text-[clamp(3rem,14vw,9rem)] leading-none font-light tracking-[-0.02em] text-center mb-12 text-[#FAF5EF]">
+            {currentQ.num1}{' '}
+            <span className="text-[#D4B094]">{currentQ.symbol}</span>{' '}
+            {currentQ.num2}{' '}
+            <span className="text-[#FAF5EF]/30">=</span>{' '}
+            <span className="text-[#D4B094]/50">?</span>
+          </div>
+        )}
+
+        {/* Answer input */}
+        <input
+          type="number"
+          value={userAnswer}
+          onChange={e => setUserAnswer(e.target.value)}
+          onKeyPress={handleKey}
+          placeholder="—"
+          autoFocus
+          className="w-full max-w-xs bg-transparent border-0 border-b-2 border-[#FAF5EF]/20 pb-4 text-center font-heading text-[clamp(2rem,8vw,4rem)] font-light text-[#FAF5EF] placeholder-[#FAF5EF]/15 focus:outline-none focus:border-[#D4B094] transition-colors"
+        />
+
+        {/* Overtime warning */}
+        {qTimeRemaining < 0 && (
+          <p className="mt-6 font-sans text-xs text-red-400/80 text-center">
+            {Math.abs(qTimeRemaining)}s over time · points reduced
+          </p>
+        )}
+        {skipsLeft === 0 && timePenalty > 0 && (
+          <p className="mt-3 font-sans text-xs text-[#D4B094]/60 text-center">
+            No free skips · each skip adds +60s penalty
+          </p>
+        )}
+
+        {/* Buttons */}
+        <div className="mt-12 flex flex-col sm:flex-row gap-4 w-full max-w-sm">
+          <button
+            onClick={submitAnswer}
+            disabled={userAnswer === ''}
+            className="flex-1 group/cta relative inline-flex items-center justify-center gap-3 rounded-full bg-[#FAF5EF] text-[#1A0507] px-8 py-4 font-sans text-sm font-medium tracking-wide transition-all duration-500 disabled:opacity-20 hover:bg-[#D4B094] hover:shadow-[0_12px_40px_-12px_rgba(212,176,148,0.4)]"
+          >
+            Submit
+            <ArrowRight size={16} />
+          </button>
+          <button
+            onClick={skipQuestion}
+            className={`inline-flex items-center justify-center gap-2 rounded-full border px-6 py-4 font-sans text-sm tracking-wide transition-all duration-300 ${
+              skipsLeft > 0
+                ? 'border-[#D4B094]/30 text-[#D4B094]/60 hover:border-[#D4B094]/60 hover:text-[#D4B094]'
+                : 'border-red-400/30 text-red-400/60 hover:border-red-400/60 hover:text-red-400'
+            }`}
+          >
+            <SkipForward size={14} />
+            {skipsLeft > 0 ? `Skip (${skipsLeft})` : 'Skip (+60s)'}
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+
+  // ── Finished ─────────────────────────────────────────────────────────────────
+  if (gameState === 'finished') return (
+    <div className="min-h-screen bg-[#FAF5EF] text-[#1A0507] relative overflow-hidden">
+      <LedgerOverlay />
+      <WarmGlow />
+
+      <div className="relative max-w-3xl mx-auto px-6 sm:px-10 pt-20 pb-28">
+        <SectionMark chapter="Chapter End" title="Results" light />
+
+        <h1 className="mt-10 font-heading text-[clamp(2.5rem,7vw,5.5rem)] leading-[0.92] tracking-[-0.02em] font-light">
+          Challenge{' '}
+          <em className="font-extralight text-[#760F13]">complete.</em>
+        </h1>
+
+        {/* Score */}
+        <div className="mt-12 relative rounded-2xl border border-[#D4B094]/40 bg-white/70 backdrop-blur-sm p-8 sm:p-12 overflow-hidden text-center">
+          <CornerBrackets accent="#A86E58" />
+          <span aria-hidden className="absolute -top-4 -right-2 font-heading italic text-[#D4B094]/18 text-[7rem] font-extralight leading-none pointer-events-none select-none">∑</span>
+          <div className="font-sans text-[10px] tracking-[0.3em] uppercase text-[#A86E58] mb-4">Final score</div>
+          <div className="font-heading text-[clamp(4rem,14vw,8rem)] leading-none font-light tracking-[-0.03em] text-[#1A0507]">
+            {score}
+          </div>
+          <p className="mt-4 font-heading italic text-[#760F13]/70 text-lg font-extralight">
+            {score > 0 ? 'Exceptional performance.' : 'Keep practicing to reach new heights.'}
+          </p>
+        </div>
+
+        {/* Stats */}
+        <div className="mt-6 border-t border-[#D4B094]/30 pt-6 space-y-3">
+          {[
+            { label: 'Correct',    value: String(correct) },
+            { label: 'Incorrect',  value: String(answered - correct) },
+            { label: 'Skipped',    value: String(skipped) },
+            { label: 'Accuracy',   value: `${accuracy}%` },
+            { label: 'Operations', value: selectedOps.map(o => OP_LABELS[o]).join(' · ') },
+            { label: 'Difficulty', value: difficulty.charAt(0).toUpperCase() + difficulty.slice(1) },
+            { label: 'Duration',   value: TIME_OPTIONS.find(t => t.value === timeLimit)?.label ?? '' },
+          ].map(({ label, value }) => (
+            <div key={label} className="flex items-baseline gap-4">
+              <span className="font-sans text-[10px] tracking-[0.3em] uppercase text-[#A86E58] w-28 shrink-0">{label}</span>
+              <span className="font-heading text-lg font-light text-[#1A0507]">{value}</span>
+            </div>
+          ))}
+        </div>
+
+        {/* Buttons */}
+        <div className="mt-12 flex flex-col sm:flex-row items-start sm:items-center gap-4">
+          <button
+            onClick={startGame}
+            className="group/cta relative inline-flex items-center gap-3 rounded-full bg-[#1A0507] text-[#FAF5EF] px-9 py-4 font-sans text-sm font-medium tracking-wide transition-all duration-500 hover:bg-[#760F13] hover:shadow-[0_12px_40px_-12px_rgba(90,11,15,0.5)]"
+          >
+            <RotateCcw size={15} />
+            <span className="relative overflow-hidden">
+              <span className="block transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover/cta:-translate-y-full">Play again</span>
+              <span className="absolute inset-0 translate-y-full transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover/cta:translate-y-0">Play again</span>
+            </span>
+          </button>
+          <button
+            onClick={() => { fetchLeaderboard(); setGameState('leaderboard'); }}
+            className="group inline-flex items-center gap-3 font-sans text-sm text-[#A86E58] hover:text-[#1A0507] transition-colors"
+          >
+            <span className="w-6 h-px bg-current transition-all duration-300 group-hover:w-10" />
+            View leaderboard
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+
+  return null;
 };
+
+// ─── Shared primitives ────────────────────────────────────────────────────────
+
+function GrainOverlay() {
+  return (
+    <div
+      className="absolute inset-0 opacity-[0.06] mix-blend-overlay pointer-events-none"
+      style={{ backgroundImage: "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'><filter id='n'><feTurbulence baseFrequency='0.9'/></filter><rect width='300' height='300' filter='url(%23n)'/></svg>\")" }}
+    />
+  );
+}
+
+function LedgerOverlay() {
+  return (
+    <>
+      <div aria-hidden className="absolute inset-0 opacity-[0.04] pointer-events-none" style={{ backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 39px, #1A0507 39px, #1A0507 40px)' }} />
+    </>
+  );
+}
+
+function WarmGlow() {
+  return (
+    <div aria-hidden className="absolute inset-0 opacity-60 pointer-events-none" style={{ background: 'radial-gradient(ellipse 70% 50% at 50% 0%, rgba(212,176,148,0.22), transparent 60%)' }} />
+  );
+}
+
+function CursorSpotlight() {
+  return (
+    <div
+      className="pointer-events-none absolute inset-0"
+      style={{ background: 'radial-gradient(600px circle at 30% 40%, rgba(212,176,148,0.07), transparent 50%)' }}
+    />
+  );
+}
+
+function SectionMark({ chapter, title, light }: { chapter: string; title: string; light?: boolean }) {
+  return (
+    <div className={`font-sans text-[11px] tracking-[0.3em] uppercase flex items-center gap-3 ${light ? 'text-[#A86E58]' : 'text-[#D4B094]/60'}`}>
+      <span className={`w-8 h-px ${light ? 'bg-[#A86E58]' : 'bg-[#D4B094]/60'}`} />
+      {chapter} / {title}
+    </div>
+  );
+}
+
+function CornerBrackets({ accent }: { accent: string }) {
+  return (
+    <>
+      <span className="absolute top-5 left-5 w-4 h-px" style={{ backgroundColor: `${accent}80` }} />
+      <span className="absolute top-5 left-5 w-px h-4" style={{ backgroundColor: `${accent}80` }} />
+      <span className="absolute bottom-5 right-5 w-4 h-px" style={{ backgroundColor: `${accent}80` }} />
+      <span className="absolute bottom-5 right-5 w-px h-4 -translate-y-4" style={{ backgroundColor: `${accent}80` }} />
+    </>
+  );
+}
+
+// ─── Page wrapper ─────────────────────────────────────────────────────────────
+
+const MentalMathPage = () => (
+  <ProtectedRoute>
+    <MentalMathApp />
+  </ProtectedRoute>
+);
 
 export default MentalMathPage;
