@@ -1,13 +1,26 @@
 'use client';
 
-import { useState, type FormEvent } from 'react';
+import { useState, type FormEvent, Suspense } from 'react';
 import Link from 'next/link';
+import { useSearchParams } from 'next/navigation';
 import { motion, AnimatePresence } from 'motion/react';
 import { ArrowRight, ArrowUpRight, Check, Loader2 } from 'lucide-react';
 
 type Status = 'idle' | 'submitting' | 'success' | 'error';
 
 export default function FreeSignupPage() {
+  return (
+    <Suspense>
+      <FreeSignupForm />
+    </Suspense>
+  );
+}
+
+function FreeSignupForm() {
+  const searchParams = useSearchParams();
+  const next = searchParams.get('next') ?? '/vocab/home';
+  const signinUrl = `/auth/signin?callbackUrl=${encodeURIComponent(next)}`;
+
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [whatsapp, setWhatsapp] = useState('');
@@ -257,7 +270,7 @@ export default function FreeSignupPage() {
                       </p>
 
                       <Link
-                        href="/api/auth/signin"
+                        href={signinUrl}
                         className="group/cta relative inline-flex items-center gap-3 rounded-full bg-[#1A0507] text-[#FAF5EF] px-7 py-3.5 font-sans text-sm font-medium tracking-wide transition-all duration-500 hover:bg-[#760F13] hover:shadow-[0_10px_40px_-10px_rgba(90,11,15,0.4)]"
                       >
                         Sign in with Google
