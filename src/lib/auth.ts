@@ -7,6 +7,7 @@ import {
   computeAccessFromProducts,
   clearAccessControlCache,
 } from '@/lib/db-access-control'
+import { getUserByEmail as getConfigUser } from '@/lib/generated-access-control'
 import { db, users } from '@/lib/db'
 
 export const authOptions: NextAuthOptions = {
@@ -28,16 +29,19 @@ export const authOptions: NextAuthOptions = {
         console.log(`Sign-in OK: ${email}`)
         return true
       }
-      // Auto-provision new gmail user as free-tier student
+      // Auto-provision new gmail user. If access-control.json lists them as an
+      // admin/super_admin, honor that role; otherwise default to free-tier student.
+      const configRole = getConfigUser(email)?.role ?? 'student'
+      const configName = getConfigUser(email)?.name
       try {
         await db.insert(users).values({
           email,
-          name: user.name || email.split('@')[0],
-          role: 'student',
+          name: configName || user.name || email.split('@')[0],
+          role: configRole,
           status: 'active',
         })
         clearAccessControlCache(email)
-        console.log(`Sign-in auto-provisioned: ${email}`)
+        console.log(`Sign-in auto-provisioned: ${email} (${configRole})`)
         return true
       } catch (e) {
         console.error(`Auto-provision failed for ${email}:`, e)
