@@ -28,6 +28,7 @@ import {
 import { safeApiHandler, validateAuth, ApiException } from '@/lib/api-utils';
 import { VocabCacheTag } from '@/lib/vocab/cache-keys';
 import { nextSrsState, isLongGap }  from '@/lib/vocab/srs/engine';
+import { maxIntervalForDeadline }   from '@/lib/vocab/srs/deadline-cap';
 import { quizDelta, masteryLevel }  from '@/lib/vocab/mastery-score';
 import type { GeneratedQuestion }   from '@/lib/vocab/quiz-generator';
 import { canAccessWord }            from '@/lib/vocab/access-check';
@@ -123,6 +124,14 @@ export async function POST(req: NextRequest) {
       ? quizDelta({ kind: 'correct', isLongGap: longGap }, currentScore)
       : quizDelta({ kind: 'wrong_word_a' }, currentScore);
 
+    // Deadline-capped SRS interval
+    const [progress] = await db
+      .select({ deadline: vocabUserProgress.deadline })
+      .from(vocabUserProgress)
+      .where(eq(vocabUserProgress.userId, user.id))
+      .limit(1);
+    const intervalCap = maxIntervalForDeadline(progress?.deadline ?? null, now);
+
     const newSrs = wordARecord
       ? nextSrsState(
           {
@@ -132,6 +141,7 @@ export async function POST(req: NextRequest) {
             nextReviewDate: wordARecord.srsNextReviewDate ?? new Date(),
           },
           isCorrect ? 'got_it' : 'missed_it',
+          intervalCap,
         )
       : null;
 

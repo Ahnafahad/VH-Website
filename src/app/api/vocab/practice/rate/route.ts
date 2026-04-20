@@ -9,6 +9,7 @@ import {
 } from '@/lib/db';
 import { eq, and, sql }                from 'drizzle-orm';
 import { nextSrsState, isLongGap }    from '@/lib/vocab/srs/engine';
+import { maxIntervalForDeadline }     from '@/lib/vocab/srs/deadline-cap';
 import type { SrsRating }              from '@/lib/vocab/srs/engine';
 import { flashcardDelta }              from '@/lib/vocab/mastery-score';
 import { rateLimit }                   from '@/lib/rate-limit';
@@ -55,7 +56,17 @@ export async function POST(req: NextRequest) {
 
   const now        = new Date();
   const wasCorrect = rating === 'got_it';
+  const wasWrong   = rating === 'missed_it';
+  const isUnsure   = rating === 'unsure';
   const longGap    = isLongGap(existing.lastCorrectAt ?? null);
+
+  // Deadline-capped SRS interval
+  const [progress] = await db
+    .select({ deadline: vocabUserProgress.deadline })
+    .from(vocabUserProgress)
+    .where(eq(vocabUserProgress.userId, user.id))
+    .limit(1);
+  const intervalCap = maxIntervalForDeadline(progress?.deadline ?? null, now);
 
   const srsState = nextSrsState(
     {
@@ -65,14 +76,26 @@ export async function POST(req: NextRequest) {
       nextReviewDate: existing.srsNextReviewDate ?? now,
     },
     rating as SrsRating,
+    intervalCap,
   );
 
-  const newConsecCorr  = wasCorrect ? (existing.consecutiveCorrect ?? 0) + 1 : 0;
+  // "unsure" is neutral — does not count as an attempt and does not touch streaks.
+  const prevTotal    = existing.totalAttempts    ?? 0;
+  const prevCorrect  = existing.correctAttempts  ?? 0;
+  const prevConsecC  = existing.consecutiveCorrect ?? 0;
+  const prevConsecW  = existing.consecutiveWrong   ?? 0;
+
+  const newTotal       = isUnsure ? prevTotal   : prevTotal + 1;
+  const newCorrect     = wasCorrect ? prevCorrect + 1 : prevCorrect;
+  const newConsecCorr  = wasCorrect ? prevConsecC + 1 : (wasWrong ? 0 : prevConsecC);
+  const newConsecWrong = wasWrong   ? prevConsecW + 1 : (wasCorrect ? 0 : prevConsecW);
+  const newAccuracy    = newTotal > 0 ? newCorrect / newTotal : 0;
+
   const mastDelta      = flashcardDelta(rating, existing.masteryScore ?? 0);
   const newMastery     = (existing.masteryScore ?? 0) + mastDelta.scoreDelta;
   // SECURITY: pointsEarned is computed entirely server-side from the rating enum.
   // No client-supplied numeric value (points/score) is accepted or used here.
-  const pointsEarned   = wasCorrect ? 10 + (longGap ? 5 : 0) : 2;
+  const pointsEarned   = wasCorrect ? 10 + (longGap ? 5 : 0) : (wasWrong ? 2 : 0);
 
   await db.update(vocabUserWordRecords)
     .set({
@@ -82,10 +105,11 @@ export async function POST(req: NextRequest) {
       srsEaseFactor:      srsState.easeFactor,
       srsRepetitions:     srsState.repetitions,
       srsNextReviewDate:  srsState.nextReviewDate,
-      totalAttempts:      (existing.totalAttempts ?? 0) + 1,
-      correctAttempts:    wasCorrect ? (existing.correctAttempts ?? 0) + 1 : (existing.correctAttempts ?? 0),
+      totalAttempts:      newTotal,
+      correctAttempts:    newCorrect,
+      accuracyRate:       newAccuracy,
       consecutiveCorrect: newConsecCorr,
-      consecutiveWrong:   wasCorrect ? 0 : (existing.consecutiveWrong ?? 0) + 1,
+      consecutiveWrong:   newConsecWrong,
       lastInteractionAt:  now,
       lastSeenAt:         now,
       lastCorrectAt:      wasCorrect ? now : existing.lastCorrectAt,

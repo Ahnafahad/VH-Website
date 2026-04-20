@@ -70,7 +70,11 @@ export async function getReviewData(userId: number): Promise<ReviewData> {
       .orderBy(vocabUserWordRecords.srsNextReviewDate)
       .limit(50),
 
-    // 2. Struggling: totalAttempts>=3 AND (accuracyRate<0.6 OR consecutiveWrong>=2)
+    // 2. Struggling: totalAttempts>=3 AND recent-failure signal
+    //    - consecutiveWrong>=2 (currently failing), OR
+    //    - accuracyRate<0.6 AND consecutiveCorrect<3 (low rate, not yet recovered)
+    //    3-in-a-row correct streak clears a word from Struggling even if lifetime
+    //    accuracy is still below 60%.
     db
       .select(selectCols)
       .from(vocabUserWordRecords)
@@ -80,8 +84,11 @@ export async function getReviewData(userId: number): Promise<ReviewData> {
           eq(vocabUserWordRecords.userId, userId),
           gte(vocabUserWordRecords.totalAttempts, 3),
           or(
-            sql`${vocabUserWordRecords.accuracyRate} < 0.6`,
             gte(vocabUserWordRecords.consecutiveWrong, 2),
+            and(
+              sql`${vocabUserWordRecords.accuracyRate} < 0.6`,
+              sql`${vocabUserWordRecords.consecutiveCorrect} < 3`,
+            ),
           ),
         ),
       )

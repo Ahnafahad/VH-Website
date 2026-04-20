@@ -10,7 +10,7 @@ import {
 } from '@/lib/db';
 import { eq, and, sql }                from 'drizzle-orm';
 import { nextSrsState, initialSrsState, isLongGap } from '@/lib/vocab/srs/engine';
-import type { SrsRating }              from '@/lib/vocab/srs/engine';
+import { maxIntervalForDeadline }     from '@/lib/vocab/srs/deadline-cap';
 import { flashcardDelta } from '@/lib/vocab/mastery-score';
 import { checkBadges }                 from '@/lib/vocab/badges/checker';
 import { rateLimit }                   from '@/lib/rate-limit';
@@ -73,8 +73,16 @@ export async function POST(
     // No client-supplied numeric value (points/score) is accepted or used here.
     let pointsEarned = 0;
 
+    // Fetch user's deadline once for SRS interval cap
+    const [progress] = await tx
+      .select({ deadline: vocabUserProgress.deadline })
+      .from(vocabUserProgress)
+      .where(eq(vocabUserProgress.userId, user.id))
+      .limit(1);
+    const intervalCap = maxIntervalForDeadline(progress?.deadline ?? null, now);
+
     if (existing) {
-      // Update SRS state
+      // Update SRS state (capped by deadline)
       const srsState = nextSrsState(
         {
           intervalDays:   existing.srsIntervalDays   ?? 1,
@@ -83,18 +91,32 @@ export async function POST(
           nextReviewDate: existing.srsNextReviewDate ?? now,
         },
         rating,
+        intervalCap,
       );
 
-      const wasCorrect   = rating === 'got_it';
+      // "unsure" is neutral — does not count as an attempt and does not touch streaks.
+      const wasCorrect  = rating === 'got_it';
+      const wasWrong    = rating === 'missed_it';
+      const isUnsure    = rating === 'unsure';
+
       const longGap      = isLongGap(existing.lastCorrectAt ?? null);
-      const newConsecCorr = wasCorrect ? (existing.consecutiveCorrect ?? 0) + 1 : 0;
-      const newConsecWrong= !wasCorrect ? (existing.consecutiveWrong ?? 0) + 1 : 0;
+      const prevTotal    = existing.totalAttempts    ?? 0;
+      const prevCorrect  = existing.correctAttempts  ?? 0;
+      const prevConsecC  = existing.consecutiveCorrect ?? 0;
+      const prevConsecW  = existing.consecutiveWrong   ?? 0;
+
+      const newTotal        = isUnsure ? prevTotal   : prevTotal + 1;
+      const newCorrect      = wasCorrect ? prevCorrect + 1 : prevCorrect;
+      const newConsecCorr   = wasCorrect ? prevConsecC + 1 : (wasWrong ? 0 : prevConsecC);
+      const newConsecWrong  = wasWrong   ? prevConsecW + 1 : (wasCorrect ? 0 : prevConsecW);
+      const newAccuracy     = newTotal > 0 ? newCorrect / newTotal : 0;
+
       const delta        = flashcardDelta(rating, existing.masteryScore ?? 0);
       const newMastery   = (existing.masteryScore ?? 0) + delta.scoreDelta;
       const newLevel     = delta.newLevel;
       const newExposure  = Math.min(10, (existing.exposureCount ?? 0) + 1);
       const newExpPoints = newExposure - (existing.exposureCount ?? 0); // 0 or 1
-      pointsEarned       = wasCorrect ? 10 + (longGap ? 5 : 0) : 2;
+      pointsEarned       = wasCorrect ? 10 + (longGap ? 5 : 0) : (wasWrong ? 2 : 0);
       pointsEarned      += newExpPoints; // exposure bonus
 
       await tx.update(vocabUserWordRecords)
@@ -106,8 +128,9 @@ export async function POST(
           srsRepetitions:    srsState.repetitions,
           srsNextReviewDate: srsState.nextReviewDate,
           inSrsPool:         true,
-          totalAttempts:     (existing.totalAttempts ?? 0) + 1,
-          correctAttempts:   wasCorrect ? (existing.correctAttempts ?? 0) + 1 : (existing.correctAttempts ?? 0),
+          totalAttempts:     newTotal,
+          correctAttempts:   newCorrect,
+          accuracyRate:      newAccuracy,
           consecutiveCorrect: newConsecCorr,
           consecutiveWrong:   newConsecWrong,
           exposureCount:      newExposure,
@@ -127,9 +150,11 @@ export async function POST(
         ));
     } else {
       // Create new record
-      const srsState = initialSrsState();
+      const srsState   = initialSrsState();
       const wasCorrect = rating === 'got_it';
-      pointsEarned = wasCorrect ? 10 : 2;
+      const wasWrong   = rating === 'missed_it';
+      const isUnsure   = rating === 'unsure';
+      pointsEarned = wasCorrect ? 10 : (wasWrong ? 2 : 0);
       pointsEarned += 1; // first exposure bonus
 
       const initDelta = flashcardDelta(rating, 0);
@@ -143,10 +168,10 @@ export async function POST(
         srsRepetitions:     srsState.repetitions,
         srsNextReviewDate:  srsState.nextReviewDate,
         inSrsPool:          true,
-        totalAttempts:      1,
+        totalAttempts:      isUnsure ? 0 : 1,
         correctAttempts:    wasCorrect ? 1 : 0,
         consecutiveCorrect: wasCorrect ? 1 : 0,
-        consecutiveWrong:   wasCorrect ? 0 : 1,
+        consecutiveWrong:   wasWrong   ? 1 : 0,
         exposureCount:      1,
         exposurePoints:     1,
         flashcardGotItCount:  rating === 'got_it'    ? 1 : 0,

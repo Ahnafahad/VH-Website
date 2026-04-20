@@ -17,8 +17,17 @@ const DEFAULT_EASE  = 2.5;
 
 /**
  * Calculate next SRS state after a self-assessment rating.
+ *
+ * @param maxIntervalDays  Optional ceiling so the next review never lands
+ *                         past the user's deadline. Callers compute this via
+ *                         `maxIntervalForDeadline` (deadline-cap.ts). If omitted
+ *                         or <=0 the interval is uncapped.
  */
-export function nextSrsState(current: SrsState, rating: SrsRating): SrsState {
+export function nextSrsState(
+  current: SrsState,
+  rating: SrsRating,
+  maxIntervalDays?: number,
+): SrsState {
   let { intervalDays, easeFactor, repetitions } = current;
 
   switch (rating) {
@@ -38,6 +47,10 @@ export function nextSrsState(current: SrsState, rating: SrsRating): SrsState {
       repetitions  = 0;
       intervalDays = 1;
       break;
+  }
+
+  if (maxIntervalDays && maxIntervalDays > 0) {
+    intervalDays = Math.min(intervalDays, maxIntervalDays);
   }
 
   const nextReviewDate = new Date();
