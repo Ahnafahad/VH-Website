@@ -172,7 +172,7 @@ export default function OnboardingModal({
 
                     <p className="mt-4 max-w-md font-sans text-sm leading-relaxed text-[#1A0507]/65 sm:text-base">
                       You&rsquo;re in — use the games and resources freely. Leave your WhatsApp
-                      so we can tell you when the 2026 cohort opens, and you can lock in the
+                      so we can keep you posted on the {new Date().getFullYear()} cohort and you can lock in the
                       Early-bird advantage.
                     </p>
 

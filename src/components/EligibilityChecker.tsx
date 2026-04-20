@@ -53,7 +53,7 @@ function calcIBA(oLevels: Subject[], aLevels: Subject[]) {
     ],
     info: [
       'Min 5 O-Levels incl. Mathematics',
-      'Min 2 A-Levels (final result ≥ 1 subject published 2025)',
+      `Min 2 A-Levels (final result ≥ 1 subject published ${new Date().getFullYear()})`,
       'A=5.0  B=4.0  C=3.5  D=0.0',
       'Min 2 A grades across all 7 counted subjects',
     ],

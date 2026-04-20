@@ -5,38 +5,52 @@ import { motion } from 'motion/react';
 import { ArrowUpRight } from 'lucide-react';
 import { BorderBeam } from '@/components/ui/border-beam';
 
-const cards = [
-  {
-    index: '01',
-    kicker: 'No commitment',
-    title: 'Just the games',
-    subtitle: 'Free forever. 30 seconds to sign up.',
-    description:
-      'Play mental math drills. Work through LexiCore vocabulary. Use every free resource we publish. No calls, no fees.',
-    bullets: ['Gmail + WhatsApp', 'Instant access after Google sign-in', 'Nothing else, ever'],
-    href: '/registration/games',
-    cta: 'Create free access',
-    tone: 'quiet',
-  },
-  {
-    index: '02',
-    kicker: 'Early-bird advantage',
-    title: 'The full program',
-    subtitle: 'Register your interest. Lock in current rates.',
-    description:
-      'The 2026 cohort starts in July. Register now to secure a seat, unlock Early-bird rates, and get notified first when the cohort opens.',
-    bullets: [
-      'Full program interest form',
-      'Early-bird advantage locked in',
-      'Invitation to the cohort WhatsApp group',
-    ],
-    href: '/registration/courses',
-    cta: 'Register interest',
-    tone: 'loud',
-  },
-] as const;
+type Card = {
+  index: string;
+  kicker: string;
+  title: string;
+  subtitle: string;
+  description: string;
+  bullets: readonly string[];
+  href: string;
+  cta: string;
+  tone: 'quiet' | 'loud';
+};
 
 export default function RegistrationChooserPage() {
+  const year = new Date().getFullYear();
+
+  const cards: readonly Card[] = [
+    {
+      index: '01',
+      kicker: 'No commitment',
+      title: 'Just the games',
+      subtitle: 'Free forever. 30 seconds to sign up.',
+      description:
+        'Play mental math drills. Work through LexiCore vocabulary. Use every free resource we publish. No calls, no fees.',
+      bullets: ['Gmail + WhatsApp', 'Instant access after Google sign-in', 'Nothing else, ever'],
+      href: '/registration/games',
+      cta: 'Create free access',
+      tone: 'quiet',
+    },
+    {
+      index: '02',
+      kicker: 'Early-bird advantage',
+      title: 'The full program',
+      subtitle: 'Register your interest. Lock in current rates.',
+      description:
+        `The ${year} cohort starts in July. Register now to secure a seat, unlock Early-bird rates, and get notified first when the cohort opens.`,
+      bullets: [
+        'Full program interest form',
+        'Early-bird advantage locked in',
+        'Invitation to the cohort WhatsApp group',
+      ],
+      href: '/registration/courses',
+      cta: 'Register interest',
+      tone: 'loud',
+    },
+  ];
+
   return (
     <div className="relative min-h-screen bg-[#FAF5EF] text-[#1A0507] overflow-hidden">
       <div
@@ -84,7 +98,7 @@ export default function RegistrationChooserPage() {
           transition={{ duration: 0.9, delay: 0.2 }}
           className="mt-8 font-sans text-base sm:text-lg text-[#1A0507]/60 leading-relaxed max-w-xl"
         >
-          Two doors. One opens to the free games and resources. The other to the full 2026 cohort.
+          Two doors. One opens to the free games and resources. The other to the full {year} cohort.
           Pick the one that matches where you are today.
         </motion.p>
 
@@ -115,7 +129,7 @@ function ChooserCard({
   card,
   i,
 }: {
-  card: (typeof cards)[number];
+  card: Card;
   i: number;
 }) {
   const isLoud = card.tone === 'loud';

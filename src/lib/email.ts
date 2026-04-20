@@ -41,10 +41,28 @@ export async function sendRegistrationNotification(data: RegistrationEmailData) 
       return { success: false, error: 'API key not configured' };
     }
 
+    const MOCK_NAMES: Record<string, string> = {
+      'du-iba':  'DU IBA',
+      'bup-iba': 'BUP IBA',
+      'du-fbs':  'DU FBS',
+      'bup-fbs': 'BUP FBS',
+      // legacy
+      'fbs-detailed': 'FBS Detailed Guidance',
+    };
+    const FULL_NAMES: Record<string, string> = {
+      'iba-combined': 'DU IBA & BUP IBA',
+      'du-fbs-full':  'DU FBS',
+      'bup-fbs-full': 'BUP FBS',
+      // legacy
+      'du-iba-full':      'DU IBA Complete',
+      'bup-iba-fbs-full': 'BUP IBA & FBS Complete',
+    };
+    const pretty = (k: string, map: Record<string, string>) => map[k] ?? k;
+
     const programType = data.programMode === 'mocks' ? 'Mock Test Program' : 'Full Course';
     const programDetails = data.programMode === 'mocks'
-      ? data.selectedMocks?.join(', ') || 'None'
-      : data.selectedFullCourses?.join(', ') || 'None';
+      ? data.selectedMocks?.map(k => pretty(k, MOCK_NAMES)).join(', ') || 'None'
+      : data.selectedFullCourses?.map(k => pretty(k, FULL_NAMES)).join(', ') || 'None';
 
     // Create email subject
     const subject = `New Registration: ${data.name} - ${programType}`;

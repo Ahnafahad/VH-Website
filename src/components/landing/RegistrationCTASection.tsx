@@ -29,6 +29,8 @@ const bullets = [
 ];
 
 export function RegistrationCTASection() {
+  const year = new Date().getFullYear();
+
   return (
     <section className="relative bg-[#1A0507] text-[#FAF5EF] overflow-hidden">
       {/* Particle field */}
@@ -85,7 +87,7 @@ export function RegistrationCTASection() {
               transition={{ duration: 0.9, delay: 0.2 }}
               className="mt-10 font-sans text-[#FAF5EF]/60 text-base sm:text-lg leading-relaxed max-w-xl"
             >
-              Registration for the 2026 cohort is open. Three sessions a week, July through
+              Registration for the {year} cohort is open. Three sessions a week, July through
               admissions season. Every instructor sat the exams you&rsquo;re about to write.
             </motion.p>
           </div>
@@ -121,10 +123,10 @@ export function RegistrationCTASection() {
               >
                 <span className="relative overflow-hidden">
                   <span className="block transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover/cta:-translate-y-full">
-                    Register for 2026
+                    Register for {year}
                   </span>
                   <span className="absolute inset-0 translate-y-full transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover/cta:translate-y-0">
-                    Register for 2026
+                    Register for {year}
                   </span>
                 </span>
                 <span className="relative w-5 h-5 overflow-hidden">

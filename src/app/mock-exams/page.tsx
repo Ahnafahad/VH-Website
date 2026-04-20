@@ -4,29 +4,7 @@ import { Calendar, Clock, TrendingUp, Award, ArrowRight, CheckCircle, Sparkles, 
 import Link from 'next/link';
 
 export default function MockExamsPage() {
-  const duIbaMocks = [
-    { no: 1, date: 'Nov 3, 2025', day: 'Monday', time: '12:00 PM – 2:00 PM', isFree: true },
-    { no: 2, date: 'Nov 6, 2025', day: 'Thursday', time: '11:00 AM – 1:00 PM' },
-    { no: 3, date: 'Nov 7, 2025', day: 'Friday', time: '11:00 AM – 1:00 PM' },
-    { no: 4, date: 'Nov 10, 2025', day: 'Monday', time: '12:00 PM – 2:00 PM' },
-    { no: 5, date: 'Nov 13, 2025', day: 'Thursday', time: '11:00 AM – 1:00 PM' },
-    { no: 6, date: 'Nov 14, 2025', day: 'Friday', time: '11:00 AM – 1:00 PM' },
-    { no: 7, date: 'Nov 17, 2025', day: 'Monday', time: '12:00 PM – 2:00 PM' },
-    { no: 8, date: 'Nov 20, 2025', day: 'Thursday', time: '11:00 AM – 1:00 PM' },
-    { no: 9, date: 'Nov 21, 2025', day: 'Friday', time: '11:00 AM – 1:00 PM' },
-    { no: 10, date: 'Nov 24, 2025', day: 'Monday', time: '12:00 PM – 2:00 PM' },
-  ];
-
-  const duFbsMocks = [
-    { no: 1, date: 'Nov 9, 2025', day: 'Sunday', time: '11:00 AM – 1:00 PM', isFree: true },
-    { no: 2, date: 'Nov 11, 2025', day: 'Tuesday', time: '1:00 PM – 3:00 PM' },
-    { no: 3, date: 'Nov 16, 2025', day: 'Sunday', time: '11:00 AM – 1:00 PM' },
-    { no: 4, date: 'Nov 18, 2025', day: 'Tuesday', time: '1:00 PM – 3:00 PM' },
-    { no: 5, date: 'Nov 23, 2025', day: 'Sunday', time: '11:00 AM – 1:00 PM' },
-    { no: 6, date: 'Nov 30, 2025', day: 'Sunday', time: '11:00 AM – 1:00 PM' },
-    { no: 7, date: 'Dec 2, 2025', day: 'Tuesday', time: '1:00 PM – 3:00 PM' },
-    { no: 8, date: 'Dec 4, 2025', day: 'Thursday', time: '2:00 PM – 4:00 PM' },
-  ];
+  const year = new Date().getFullYear();
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-vh-beige/5">
@@ -43,7 +21,7 @@ export default function MockExamsPage() {
           <div className="text-center">
             <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-xl px-4 py-2 rounded-full border border-white/20 mb-8">
               <Sparkles className="w-5 h-5 text-vh-beige" />
-              <span className="text-white/90 font-medium">Premium Mock Test Series 2025</span>
+              <span className="text-white/90 font-medium">Premium Mock Test Series {year}</span>
             </div>
 
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl font-black leading-tight mb-8 text-white">
@@ -136,64 +114,8 @@ export default function MockExamsPage() {
             </p>
           </div>
 
-          {/* Mock Schedule Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {duIbaMocks.map((mock) => (
-              <div
-                key={mock.no}
-                className={`relative group bg-white rounded-2xl p-6 border-2 transition-all duration-300 hover:shadow-xl ${
-                  mock.isFree
-                    ? 'border-yellow-400 bg-gradient-to-br from-yellow-50 to-white'
-                    : 'border-gray-200 hover:border-vh-red/30'
-                }`}
-              >
-                {mock.isFree && (
-                  <div className="absolute -top-3 -right-3">
-                    <div className="bg-gradient-to-r from-yellow-400 to-yellow-500 text-gray-900 px-3 py-1 rounded-full text-sm font-black shadow-lg">
-                      FREE
-                    </div>
-                  </div>
-                )}
-
-                <div className="flex items-center justify-between mb-4">
-                  <div className="text-4xl font-black text-vh-red">#{mock.no}</div>
-                  <CheckCircle className={`w-6 h-6 ${mock.isFree ? 'text-yellow-500' : 'text-gray-300'}`} />
-                </div>
-
-                <div className="space-y-2 mb-4">
-                  <div className="flex items-center gap-2 text-gray-700">
-                    <Calendar className="w-4 h-4 text-vh-red" />
-                    <span className="font-semibold">{mock.date}</span>
-                  </div>
-                  <div className="text-sm text-gray-600">{mock.day}</div>
-                  <div className="flex items-center gap-2 text-gray-700">
-                    <Clock className="w-4 h-4 text-vh-red" />
-                    <span className="text-sm">{mock.time}</span>
-                  </div>
-                </div>
-
-                {mock.isFree && (
-                  <Link
-                    href="/mock-exams#register"
-                    className="block w-full bg-gradient-to-r from-yellow-400 to-yellow-500 text-gray-900 text-center py-3 rounded-xl font-bold hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300"
-                  >
-                    Register Now - FREE
-                  </Link>
-                )}
-              </div>
-            ))}
-          </div>
-
-          <div className="text-center mt-12">
-            <Link
-              href="/mock-exams#register"
-              className="inline-flex items-center gap-2 bg-gradient-to-r from-vh-red to-vh-dark-red text-white px-8 py-4 rounded-2xl font-bold text-lg hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 min-h-[44px]"
-            >
-              <Target className="w-6 h-6" />
-              Register for DU IBA Mocks
-              <ArrowRight className="w-6 h-6" />
-            </Link>
-          </div>
+          {/* Schedule TBC */}
+          <ScheduleTBC accent="red" cta="Register for DU IBA Mocks" />
         </div>
       </section>
 
@@ -214,64 +136,8 @@ export default function MockExamsPage() {
             </p>
           </div>
 
-          {/* Mock Schedule Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {duFbsMocks.map((mock) => (
-              <div
-                key={mock.no}
-                className={`relative group bg-white rounded-2xl p-6 border-2 transition-all duration-300 hover:shadow-xl ${
-                  mock.isFree
-                    ? 'border-yellow-400 bg-gradient-to-br from-yellow-50 to-white'
-                    : 'border-gray-200 hover:border-vh-beige/50'
-                }`}
-              >
-                {mock.isFree && (
-                  <div className="absolute -top-3 -right-3">
-                    <div className="bg-gradient-to-r from-yellow-400 to-yellow-500 text-gray-900 px-3 py-1 rounded-full text-sm font-black shadow-lg">
-                      FREE
-                    </div>
-                  </div>
-                )}
-
-                <div className="flex items-center justify-between mb-4">
-                  <div className="text-4xl font-black text-vh-dark-beige">#{mock.no}</div>
-                  <CheckCircle className={`w-6 h-6 ${mock.isFree ? 'text-yellow-500' : 'text-gray-300'}`} />
-                </div>
-
-                <div className="space-y-2 mb-4">
-                  <div className="flex items-center gap-2 text-gray-700">
-                    <Calendar className="w-4 h-4 text-vh-dark-beige" />
-                    <span className="font-semibold">{mock.date}</span>
-                  </div>
-                  <div className="text-sm text-gray-600">{mock.day}</div>
-                  <div className="flex items-center gap-2 text-gray-700">
-                    <Clock className="w-4 h-4 text-vh-dark-beige" />
-                    <span className="text-sm">{mock.time}</span>
-                  </div>
-                </div>
-
-                {mock.isFree && (
-                  <Link
-                    href="/mock-exams#register"
-                    className="block w-full bg-gradient-to-r from-yellow-400 to-yellow-500 text-gray-900 text-center py-3 rounded-xl font-bold hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300"
-                  >
-                    Register Now - FREE
-                  </Link>
-                )}
-              </div>
-            ))}
-          </div>
-
-          <div className="text-center mt-12">
-            <Link
-              href="/mock-exams#register"
-              className="inline-flex items-center gap-2 bg-gradient-to-r from-vh-beige to-vh-dark-beige text-white px-8 py-4 rounded-2xl font-bold text-lg hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 min-h-[44px]"
-            >
-              <Target className="w-6 h-6" />
-              Register for DU FBS Mocks
-              <ArrowRight className="w-6 h-6" />
-            </Link>
-          </div>
+          {/* Schedule TBC */}
+          <ScheduleTBC accent="beige" cta="Register for DU FBS Mocks" />
         </div>
       </section>
 
@@ -501,6 +367,40 @@ export default function MockExamsPage() {
         </div>
       </section>
 
+    </div>
+  );
+}
+
+function ScheduleTBC({ accent, cta }: { accent: 'red' | 'beige'; cta: string }) {
+  const pill      = accent === 'red' ? 'bg-vh-red/10'       : 'bg-vh-beige/20';
+  const iconColor = accent === 'red' ? 'text-vh-red'        : 'text-vh-dark-beige';
+  const gradient  = accent === 'red' ? 'from-vh-red to-vh-dark-red' : 'from-vh-beige to-vh-dark-beige';
+
+  return (
+    <div className="max-w-3xl mx-auto">
+      <div className="relative overflow-hidden rounded-3xl border-2 border-dashed border-gray-200 bg-gradient-to-br from-gray-50 to-white p-10 md:p-14 text-center">
+        <div className={`inline-flex items-center gap-2 rounded-full ${pill} px-4 py-1.5 mb-6`}>
+          <Calendar className={`w-4 h-4 ${iconColor}`} />
+          <span className={`${iconColor} font-semibold text-sm tracking-wide uppercase`}>
+            Schedule — TBC
+          </span>
+        </div>
+        <h3 className="text-2xl md:text-3xl font-black text-gray-900 mb-3">
+          Dates to be announced
+        </h3>
+        <p className="text-gray-600 max-w-xl mx-auto mb-8 leading-relaxed">
+          The full mock schedule is being finalised. Register your interest and we&rsquo;ll
+          notify you as soon as the dates are confirmed.
+        </p>
+        <Link
+          href="/mock-exams#register"
+          className={`inline-flex items-center gap-2 bg-gradient-to-r ${gradient} text-white px-8 py-4 rounded-2xl font-bold text-lg hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 min-h-[44px]`}
+        >
+          <Target className="w-5 h-5" />
+          {cta}
+          <ArrowRight className="w-5 h-5" />
+        </Link>
+      </div>
     </div>
   );
 }

@@ -29,7 +29,7 @@ export default function EligibilityCheckerPage() {
       {/* Hero */}
       <div className="max-w-3xl mx-auto px-6 pt-20 pb-4 text-center">
         <p className="text-xs tracking-[0.35em] uppercase text-[#D4B094]/50 mb-5">
-          2025 Admissions
+          {new Date().getFullYear()} Admissions
         </p>
         <h1 className="text-4xl sm:text-5xl md:text-6xl font-light text-[#FAF5EF] leading-[1.05] tracking-[-0.02em]">
           Are you eligible?

@@ -48,6 +48,13 @@ const Header = () => {
     setScrolled(latest > 60);
   });
 
+  // Pages with light/cream bg from top — nav needs dark text even when unscrolled
+  const isLightPage =
+    pathname?.startsWith('/registration') ||
+    pathname?.startsWith('/games/mental-math') ||
+    false;
+  const onLight = scrolled || isLightPage;
+
   // Admin check
   useEffect(() => {
     const checkAdminStatus = async () => {
@@ -157,7 +164,7 @@ const Header = () => {
           >
             {mainLinks.map((link, i) => {
               const active = isActive(link.href);
-              const baseColor = scrolled
+              const baseColor = onLight
                 ? active
                   ? '#5A0B0F'
                   : 'rgba(90,11,15,0.7)'
@@ -188,7 +195,7 @@ const Header = () => {
                     {active && (
                       <span
                         className="w-1 h-1 rounded-full"
-                        style={{ background: scrolled ? '#760F13' : '#D4B094' }}
+                        style={{ background: onLight ? '#760F13' : '#D4B094' }}
                       />
                     )}
                   </span>
@@ -203,7 +210,7 @@ const Header = () => {
                 onClick={() => setIsMoreOpen((v) => !v)}
                 className="relative flex items-center gap-1.5 px-4 py-2 text-sm font-medium rounded-full transition-colors duration-300 cursor-pointer"
                 style={{
-                  color: scrolled ? 'rgba(90,11,15,0.7)' : 'rgba(250,245,239,0.75)',
+                  color: onLight ? 'rgba(90,11,15,0.7)' : 'rgba(250,245,239,0.75)',
                 }}
               >
                 {hoveredIndex === mainLinks.length && (
@@ -282,7 +289,7 @@ const Header = () => {
           <div
             className="hidden lg:block ml-3 pl-3 border-l transition-colors duration-300"
             style={{
-              borderColor: scrolled
+              borderColor: onLight
                 ? 'rgba(90,11,15,0.1)'
                 : 'rgba(212,176,148,0.25)',
             }}
@@ -295,7 +302,7 @@ const Header = () => {
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             className="lg:hidden ml-2 p-2 rounded-full hover:bg-[#D4B094]/15 transition-colors cursor-pointer"
             style={{
-              color: scrolled ? 'rgba(90,11,15,0.8)' : 'rgba(250,245,239,0.85)',
+              color: onLight ? 'rgba(90,11,15,0.8)' : 'rgba(250,245,239,0.85)',
             }}
             aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
           >
