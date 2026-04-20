@@ -203,8 +203,8 @@ async function _getHomeData(email: string): Promise<HomeData | null> {
     practice: practiceSession,
   };
 
-  const isAdmin     = user.role === 'admin' || user.role === 'super_admin';
-  const hasPaidAccess = isAdmin || accessRows.length > 0;
+  const isStaff     = user.role === 'admin' || user.role === 'super_admin' || user.role === 'instructor';
+  const hasPaidAccess = isStaff || accessRows.length > 0;
 
   // ── Dynamic daily target ───────────────────────────────────────────────────
   // Recalculate from deadline + remaining words so stale onboarding values

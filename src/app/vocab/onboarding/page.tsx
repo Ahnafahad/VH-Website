@@ -10,7 +10,7 @@ export default async function OnboardingPage() {
   if (!session?.user?.email) redirect('/auth/signin?callbackUrl=/vocab');
 
   const [user] = await db
-    .select({ id: users.id, name: users.name })
+    .select({ id: users.id, name: users.name, role: users.role })
     .from(users)
     .where(eq(users.email, session.user.email))
     .limit(1);
@@ -24,6 +24,25 @@ export default async function OnboardingPage() {
     .limit(1);
 
   if (progress?.onboardingComplete) redirect('/vocab/home');
+
+  // Staff skip the onboarding flow entirely — auto-complete + redirect to home.
+  const isStaff = user.role === 'admin' || user.role === 'super_admin' || user.role === 'instructor';
+  if (isStaff) {
+    await db
+      .insert(vocabUserProgress)
+      .values({
+        userId:             user.id,
+        phase:              2,
+        deadline:           null,
+        dailyTarget:        5,
+        onboardingComplete: true,
+      })
+      .onConflictDoUpdate({
+        target: vocabUserProgress.userId,
+        set:    { onboardingComplete: true, updatedAt: new Date() },
+      });
+    redirect('/vocab/home');
+  }
 
   return <OnboardingFlow userId={user.id} userName={user.name} />;
 }
