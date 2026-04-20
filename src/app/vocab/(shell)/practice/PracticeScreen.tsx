@@ -55,13 +55,40 @@ interface LetterCardProps {
 }
 
 function LetterCard({ summary, selected, onToggle }: LetterCardProps) {
-  const studiedPct = summary.wordCount > 0 ? summary.studiedCount      / summary.wordCount : 0;
-  const masteryPct = summary.wordCount > 0 ? summary.familiarPlusCount / summary.wordCount : 0;
-  const masteryBarColor = masteryPct >= 0.8
-    ? 'var(--color-lx-accent-gold)'
-    : masteryPct >= 0.4
-      ? '#f97316'
-      : 'var(--color-lx-accent-red)';
+  const masteryPct = summary.wordCount > 0
+    ? summary.familiarPlusCount / summary.wordCount
+    : 0;
+
+  const masteryColor =
+    masteryPct >= 0.8
+      ? 'var(--color-lx-accent-gold)'
+      : masteryPct >= 0.4
+        ? '#f97316'
+        : 'var(--color-lx-accent-red)';
+
+  const Chip = ({
+    n, label, color,
+  }: { n: number; label: string; color: string }) => (
+    <div style={{
+      display: 'flex', alignItems: 'baseline', gap: 5,
+      fontFamily: "'Sora', sans-serif", lineHeight: 1,
+    }}>
+      <span style={{
+        minWidth: '1.6ch', textAlign: 'right',
+        fontSize: 12, fontWeight: 700, color,
+        fontVariantNumeric: 'tabular-nums',
+      }}>
+        {n}
+      </span>
+      <span style={{
+        fontSize: 9, fontWeight: 600,
+        color: 'var(--color-lx-text-secondary)',
+        textTransform: 'uppercase', letterSpacing: '0.12em',
+      }}>
+        {label}
+      </span>
+    </div>
+  );
 
   return (
     <motion.button
@@ -72,101 +99,76 @@ function LetterCard({ summary, selected, onToggle }: LetterCardProps) {
       transition={{ type: 'spring', stiffness: 380, damping: 28 }}
       onClick={onToggle}
       style={{
-        background: selected ? 'rgba(230,57,70,0.08)' : 'var(--color-lx-surface)',
-        border: selected ? '1.5px solid rgba(230,57,70,0.5)' : '1px solid var(--color-lx-border)',
+        background: selected ? 'rgba(230,57,70,0.1)' : 'var(--color-lx-surface)',
+        border: selected ? '1.5px solid rgba(230,57,70,0.55)' : '1px solid #333',
         borderRadius: 16,
-        padding: '0.875rem 0.625rem 0.75rem',
+        padding: '0.625rem 0.5rem',
         cursor: 'pointer',
-        display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.45rem',
-        boxShadow: selected ? '0 0 0 1px rgba(230,57,70,0.2) inset' : 'none',
+        display: 'flex', flexDirection: 'column', alignItems: 'center',
+        gap: '0.4rem',
+        boxShadow: selected
+          ? 'inset 0 0 0 1px rgba(230,57,70,0.25), 0 1px 8px rgba(230,57,70,0.12)'
+          : 'none',
         transition: 'background 0.18s, border-color 0.18s, box-shadow 0.18s',
         position: 'relative',
         width: '100%',
       }}
     >
-      {selected && (
-        <motion.div
-          initial={{ scale: 0, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          exit={{ scale: 0, opacity: 0 }}
-          transition={{ type: 'spring', stiffness: 480, damping: 26 }}
-          style={{
-            position: 'absolute', top: 5, right: 5,
-            width: 14, height: 14,
-            borderRadius: '50%',
-            background: 'var(--color-lx-accent-red)',
-            display: 'flex', alignItems: 'center', justifyContent: 'center',
-          }}
-        >
-          <svg width="8" height="8" viewBox="0 0 8 8" fill="none">
-            <path d="M1.5 4l2 2 3-3" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-        </motion.div>
-      )}
+      <AnimatePresence>
+        {selected && (
+          <motion.div
+            initial={{ scale: 0, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0, opacity: 0 }}
+            transition={{ type: 'spring', stiffness: 480, damping: 26 }}
+            style={{
+              position: 'absolute', top: 5, right: 5,
+              width: 14, height: 14,
+              borderRadius: '50%',
+              background: 'var(--color-lx-accent-red)',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+            }}
+          >
+            <svg width="8" height="8" viewBox="0 0 8 8" fill="none">
+              <path d="M1.5 4l2 2 3-3" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       <span style={{
         fontFamily: "'Cormorant Garamond', Georgia, serif",
-        fontSize: '2rem', fontWeight: 700,
+        fontSize: '1.75rem', fontWeight: 700,
         color: selected ? 'var(--color-lx-accent-red)' : 'var(--color-lx-text-primary)',
         lineHeight: 1, transition: 'color 0.18s',
       }}>
         {summary.letter}
       </span>
 
-      {/* Dual-layer progress bar: studied (muted) + mastered (accent) */}
       <div style={{
-        width: '100%', height: 4,
-        background: 'var(--color-lx-elevated)',
-        borderRadius: 2, overflow: 'hidden',
-        position: 'relative',
+        display: 'flex', flexDirection: 'column',
+        alignItems: 'flex-start', gap: 3,
       }}>
-        <motion.div
-          initial={{ width: 0 }}
-          animate={{ width: `${Math.round(studiedPct * 100)}%` }}
-          transition={{ duration: 0.7, ease: 'easeOut', delay: 0.1 }}
-          style={{
-            height: '100%',
-            background: 'var(--color-lx-text-muted)',
-            opacity: 0.35,
-            borderRadius: 2,
-            position: 'absolute', left: 0, top: 0,
-          }}
+        <Chip
+          n={summary.studiedCount}
+          label="STD"
+          color={summary.studiedCount > 0
+            ? 'var(--color-lx-text-primary)'
+            : 'var(--color-lx-text-disabled)'}
         />
-        <motion.div
-          initial={{ width: 0 }}
-          animate={{ width: `${Math.round(masteryPct * 100)}%` }}
-          transition={{ duration: 0.7, ease: 'easeOut', delay: 0.2 }}
-          style={{
-            height: '100%',
-            background: masteryBarColor,
-            borderRadius: 2,
-            position: 'absolute', left: 0, top: 0,
-          }}
+        <Chip
+          n={summary.familiarPlusCount}
+          label="MSTR"
+          color={summary.familiarPlusCount > 0
+            ? masteryColor
+            : 'var(--color-lx-text-disabled)'}
+        />
+        <Chip
+          n={summary.wordCount}
+          label="TOT"
+          color="var(--color-lx-text-secondary)"
         />
       </div>
-
-      {/* Two counts: studied · mastered */}
-      <div style={{
-        display: 'flex', alignItems: 'center', gap: '0.35rem',
-        fontFamily: "'Sora', sans-serif", fontSize: '0.58rem', fontWeight: 600,
-        lineHeight: 1, whiteSpace: 'nowrap',
-      }}>
-        <span style={{ color: summary.studiedCount > 0 ? 'var(--color-lx-text-secondary)' : 'var(--color-lx-text-muted)' }}>
-          {summary.studiedCount} studied
-        </span>
-        <span style={{ color: 'var(--color-lx-text-muted)' }}>·</span>
-        <span style={{ color: summary.familiarPlusCount > 0 ? masteryBarColor : 'var(--color-lx-text-muted)' }}>
-          {summary.familiarPlusCount} mastered
-        </span>
-      </div>
-
-      <span style={{
-        fontFamily: "'Sora', sans-serif",
-        fontSize: '0.52rem', fontWeight: 500,
-        color: 'var(--color-lx-text-muted)',
-        lineHeight: 1, letterSpacing: '0.04em',
-      }}>
-        of {summary.wordCount}
-      </span>
     </motion.button>
   );
 }

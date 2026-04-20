@@ -39,23 +39,24 @@ function LetterCard({ summary }: { summary: LetterSummary }) {
         ? '#f97316'
         : 'var(--color-lx-accent-red)';
 
-  const Pill = ({
+  const Chip = ({
     n, label, color,
   }: { n: number; label: string; color: string }) => (
     <div style={{
-      display: 'flex', alignItems: 'baseline', gap: 4,
+      display: 'flex', alignItems: 'baseline', gap: 5,
       fontFamily: "'Sora', sans-serif", lineHeight: 1,
     }}>
       <span style={{
-        fontSize: 11, fontWeight: 700, color,
+        minWidth: '1.6ch', textAlign: 'right',
+        fontSize: 12, fontWeight: 700, color,
         fontVariantNumeric: 'tabular-nums',
       }}>
         {n}
       </span>
       <span style={{
-        fontSize: 7.5, fontWeight: 500,
-        color: 'var(--color-lx-text-muted)',
-        textTransform: 'uppercase', letterSpacing: '0.1em',
+        fontSize: 9, fontWeight: 600,
+        color: 'var(--color-lx-text-secondary)',
+        textTransform: 'uppercase', letterSpacing: '0.12em',
       }}>
         {label}
       </span>
@@ -72,7 +73,7 @@ function LetterCard({ summary }: { summary: LetterSummary }) {
       onClick={() => router.push(`/vocab/study/letter/${summary.letter}`)}
       style={{
         background: 'var(--color-lx-surface)',
-        border: '1px solid var(--color-lx-border)',
+        border: '1px solid #333',
         borderRadius: 16,
         padding: '0.625rem 0.5rem',
         cursor: 'pointer',
@@ -95,23 +96,23 @@ function LetterCard({ summary }: { summary: LetterSummary }) {
         display: 'flex', flexDirection: 'column',
         alignItems: 'flex-start', gap: 3,
       }}>
-        <Pill
+        <Chip
           n={summary.studiedCount}
-          label="std"
+          label="STD"
           color={summary.studiedCount > 0
             ? 'var(--color-lx-text-primary)'
-            : 'var(--color-lx-text-muted)'}
+            : 'var(--color-lx-text-disabled)'}
         />
-        <Pill
+        <Chip
           n={summary.familiarPlusCount}
-          label="mastr"
+          label="MSTR"
           color={summary.familiarPlusCount > 0
             ? masteryColor
-            : 'var(--color-lx-text-muted)'}
+            : 'var(--color-lx-text-disabled)'}
         />
-        <Pill
+        <Chip
           n={summary.wordCount}
-          label="total"
+          label="TOT"
           color="var(--color-lx-text-secondary)"
         />
       </div>
