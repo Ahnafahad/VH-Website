@@ -576,11 +576,11 @@ const TestDetailPage = () => {
           {/* Header */}
           <div className="mb-8">
             <button
-              onClick={() => isPublicDemo ? router.push('/mock-exams') : router.back()}
+              onClick={() => isPublicDemo ? router.push('/registration') : router.back()}
               className="flex items-center gap-2 text-vh-red hover:text-vh-red/80 mb-4 min-h-[44px]"
             >
               <ArrowLeft size={20} />
-              {isPublicDemo ? 'Back to Mock Exams' : 'Back to Results'}
+              {isPublicDemo ? 'Back to Registration' : 'Back to Results'}
             </button>
 
             <div className="flex items-start justify-between">
@@ -2128,14 +2128,6 @@ const TestDetailPage = () => {
                 >
                   <Target className="w-6 h-6" />
                   Register for Free Mock
-                  <ArrowRight className="w-6 h-6" />
-                </Link>
-
-                <Link
-                  href="/mock-exams"
-                  className="inline-flex items-center gap-2 border-2 border-white/30 backdrop-blur-xl text-white px-10 py-5 rounded-2xl font-bold text-lg hover:border-white hover:bg-white/10 transition-all duration-300 min-h-[44px]"
-                >
-                  View All Mock Tests
                   <ArrowRight className="w-6 h-6" />
                 </Link>
               </div>

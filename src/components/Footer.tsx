@@ -10,7 +10,6 @@ const quickLinks = [
   { label: 'Programs', href: '/program' },
   { label: 'Eligibility Checker', href: '/eligibility-checker' },
   { label: 'Registration', href: '/registration' },
-  { label: 'Mock Exams', href: '/mock-exams' },
 ];
 
 const programLinks = [

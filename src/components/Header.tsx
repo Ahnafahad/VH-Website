@@ -10,7 +10,6 @@ import {
   ChevronDown,
   BarChart3,
   Calculator,
-  ClipboardList,
   Users,
   Target,
   Gamepad2,
@@ -98,7 +97,6 @@ const Header = () => {
 
   const moreLinks = [
     { label: 'Eligibility Checker', href: '/eligibility-checker', icon: Target },
-    { label: 'Mock Exams', href: '/mock-exams', icon: ClipboardList },
     ...(session
       ? [{ label: 'Results', href: '/results', icon: BarChart3 }]
       : []),
