@@ -26,24 +26,41 @@ interface Props {
 
 // ─── Letter grid card ─────────────────────────────────────────────────────────
 
-const MASTERY_SEGMENT_COLORS = {
-  familiar: '#38bdf8',
-  strong:   '#2ecc71',
-  mastered: '#e63946',
-};
-
 function LetterCard({ summary }: { summary: LetterSummary }) {
   const router     = useRouter();
-  const studiedPct = summary.wordCount > 0 ? summary.studiedCount     / summary.wordCount : 0;
-  const masteryPct = summary.wordCount > 0 ? summary.familiarPlusCount / summary.wordCount : 0;
+  const masteryPct = summary.wordCount > 0
+    ? summary.familiarPlusCount / summary.wordCount
+    : 0;
 
-  // Mastered segment colour (red → gold). Studied segment is a muted slate.
-  const masteryBarColor = masteryPct >= 0.8
-    ? 'var(--color-lx-accent-gold)'
-    : masteryPct >= 0.4
-      ? '#f97316'
-      : 'var(--color-lx-accent-red)';
-  const studiedBarColor = 'var(--color-lx-text-muted)';
+  const masteryColor =
+    masteryPct >= 0.8
+      ? 'var(--color-lx-accent-gold)'
+      : masteryPct >= 0.4
+        ? '#f97316'
+        : 'var(--color-lx-accent-red)';
+
+  const Pill = ({
+    n, label, color,
+  }: { n: number; label: string; color: string }) => (
+    <div style={{
+      display: 'flex', alignItems: 'baseline', gap: 4,
+      fontFamily: "'Sora', sans-serif", lineHeight: 1,
+    }}>
+      <span style={{
+        fontSize: 11, fontWeight: 700, color,
+        fontVariantNumeric: 'tabular-nums',
+      }}>
+        {n}
+      </span>
+      <span style={{
+        fontSize: 7.5, fontWeight: 500,
+        color: 'var(--color-lx-text-muted)',
+        textTransform: 'uppercase', letterSpacing: '0.1em',
+      }}>
+        {label}
+      </span>
+    </div>
+  );
 
   return (
     <motion.button
@@ -57,80 +74,47 @@ function LetterCard({ summary }: { summary: LetterSummary }) {
         background: 'var(--color-lx-surface)',
         border: '1px solid var(--color-lx-border)',
         borderRadius: 16,
-        padding: '0.875rem 0.625rem 0.75rem',
+        padding: '0.625rem 0.5rem',
         cursor: 'pointer',
-        display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.45rem',
+        display: 'flex', flexDirection: 'column', alignItems: 'center',
+        gap: '0.4rem',
         position: 'relative',
         width: '100%',
       }}
     >
-      {/* Letter */}
       <span style={{
         fontFamily: "'Cormorant Garamond', Georgia, serif",
-        fontSize: '2rem', fontWeight: 700,
+        fontSize: '1.75rem', fontWeight: 700,
         color: 'var(--color-lx-text-primary)',
         lineHeight: 1,
       }}>
         {summary.letter}
       </span>
 
-      {/* Dual-layer progress bar: studied (bg fill) + mastered (foreground fill) */}
       <div style={{
-        width: '100%', height: 4,
-        background: 'var(--color-lx-elevated)',
-        borderRadius: 2, overflow: 'hidden',
-        position: 'relative',
+        display: 'flex', flexDirection: 'column',
+        alignItems: 'flex-start', gap: 3,
       }}>
-        <motion.div
-          initial={{ width: 0 }}
-          animate={{ width: `${Math.round(studiedPct * 100)}%` }}
-          transition={{ duration: 0.7, ease: 'easeOut', delay: 0.1 }}
-          style={{
-            height: '100%',
-            background: studiedBarColor,
-            opacity: 0.35,
-            borderRadius: 2,
-            position: 'absolute', left: 0, top: 0,
-          }}
+        <Pill
+          n={summary.studiedCount}
+          label="std"
+          color={summary.studiedCount > 0
+            ? 'var(--color-lx-text-primary)'
+            : 'var(--color-lx-text-muted)'}
         />
-        <motion.div
-          initial={{ width: 0 }}
-          animate={{ width: `${Math.round(masteryPct * 100)}%` }}
-          transition={{ duration: 0.7, ease: 'easeOut', delay: 0.2 }}
-          style={{
-            height: '100%',
-            background: masteryBarColor,
-            borderRadius: 2,
-            position: 'absolute', left: 0, top: 0,
-          }}
+        <Pill
+          n={summary.familiarPlusCount}
+          label="mastr"
+          color={summary.familiarPlusCount > 0
+            ? masteryColor
+            : 'var(--color-lx-text-muted)'}
+        />
+        <Pill
+          n={summary.wordCount}
+          label="total"
+          color="var(--color-lx-text-secondary)"
         />
       </div>
-
-      {/* Two counts: studied (slate) · mastered (accent) */}
-      <div style={{
-        display: 'flex', alignItems: 'center', gap: '0.35rem',
-        fontFamily: "'Sora', sans-serif", fontSize: '0.58rem', fontWeight: 600,
-        lineHeight: 1, whiteSpace: 'nowrap',
-      }}>
-        <span style={{ color: summary.studiedCount > 0 ? 'var(--color-lx-text-secondary)' : 'var(--color-lx-text-muted)' }}>
-          {summary.studiedCount} studied
-        </span>
-        <span style={{ color: 'var(--color-lx-text-muted)' }}>·</span>
-        <span style={{ color: summary.familiarPlusCount > 0 ? masteryBarColor : 'var(--color-lx-text-muted)' }}>
-          {summary.familiarPlusCount} mastered
-        </span>
-      </div>
-
-      {/* Total words — faint footer */}
-      <span style={{
-        fontFamily: "'Sora', sans-serif",
-        fontSize: '0.52rem', fontWeight: 500,
-        color: 'var(--color-lx-text-muted)',
-        lineHeight: 1,
-        letterSpacing: '0.04em',
-      }}>
-        of {summary.wordCount}
-      </span>
     </motion.button>
   );
 }
