@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { db, accountingScores } from '@/lib/db';
-import { isAdminEmail, hasProduct } from '@/lib/db-access-control';
+import { isAdminEmail } from '@/lib/db-access-control';
 import { validateAuth, createErrorResponse, ApiException } from '@/lib/api-utils';
 
 export async function POST(request: NextRequest) {
@@ -8,8 +8,8 @@ export async function POST(request: NextRequest) {
     const user = await validateAuth();
     const isAdmin = await isAdminEmail(user.email);
 
-    if (!isAdmin && !(await hasProduct(user.email, 'fbs'))) {
-      throw new ApiException('This game is only available to FBS students', 403, 'FBS_ACCESS_REQUIRED');
+    if (!isAdmin) {
+      throw new ApiException('This game is only available to staff right now', 403, 'FBS_ACCESS_REQUIRED');
     }
 
     const data = await request.json();

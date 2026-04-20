@@ -103,7 +103,6 @@ const Header = () => {
       ? [{ label: 'Results', href: '/results', icon: BarChart3 }]
       : []),
     { label: 'Mental Math', href: '/games/mental-math', icon: Gamepad2 },
-    { label: 'FBS Accounting', href: '/games/fbs-accounting', icon: Calculator },
     { label: 'Vocab', href: '/vocab/home', icon: BookOpen },
     ...(isAdmin
       ? [

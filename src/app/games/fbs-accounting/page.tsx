@@ -89,7 +89,8 @@ function FBSAccountingGame() {
         const response = await fetch('/api/user/access');
         if (response.ok) {
           const data = await response.json();
-          setHasFBSAccess(data.hasFBS === true || data.accessTypes?.FBS === true);
+          // Restricted to staff (admin / super_admin / instructor) for now.
+          setHasFBSAccess(data.isAdmin === true);
         } else {
           setHasFBSAccess(false);
         }

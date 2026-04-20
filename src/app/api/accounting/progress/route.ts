@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import { db, accountingProgress } from '@/lib/db';
 import { eq } from 'drizzle-orm';
-import { isAdminEmail, hasProduct } from '@/lib/db-access-control';
+import { isAdminEmail } from '@/lib/db-access-control';
 import { validateAuth, createErrorResponse, ApiException } from '@/lib/api-utils';
 import fs from 'fs';
 import path from 'path';
@@ -11,8 +11,8 @@ export async function GET() {
     const user = await validateAuth();
     const isAdmin = await isAdminEmail(user.email);
 
-    if (!isAdmin && !(await hasProduct(user.email, 'fbs'))) {
-      throw new ApiException('This game is only available to FBS students', 403, 'FBS_ACCESS_REQUIRED');
+    if (!isAdmin) {
+      throw new ApiException('This game is only available to staff right now', 403, 'FBS_ACCESS_REQUIRED');
     }
 
     // Load lecture metadata
