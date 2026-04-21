@@ -1,10 +1,11 @@
 'use client';
 
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { motion, AnimatePresence, type Variants } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 import { ArrowLeft, ChevronDown } from 'lucide-react';
 import QuizConfigSheet, { type QuizConfig } from '@/components/vocab/QuizConfigSheet';
+import UnlockAllWordsBanner from '@/components/vocab/UnlockAllWordsBanner';
 import FlashcardScreen from '../../[themeId]/FlashcardScreen';
 import QuizScreen from '../../[themeId]/quiz/QuizScreen';
 import type { FlashcardSessionData, FlashcardWord } from '@/lib/vocab/flashcard-data';
@@ -132,6 +133,60 @@ function WordRow({ w, index }: { w: LetterWordData; index: number }) {
   );
 }
 
+// ─── Locked word row (blurred preview, non-interactive) ─────────────────────
+
+function LockedWordRow({ w, index }: { w: LetterWordData; index: number }) {
+  return (
+    <motion.div
+      custom={index}
+      variants={rowVariant}
+      initial="hidden"
+      animate="show"
+      aria-hidden
+      style={{
+        background: C.surface,
+        border: `1px solid ${C.border}`,
+        borderRadius: 14,
+        overflow: 'hidden',
+        position: 'relative',
+        userSelect: 'none',
+      }}
+    >
+      <div
+        style={{
+          width: '100%', display: 'flex', alignItems: 'center',
+          padding: '0.875rem 1rem', gap: '0.75rem',
+          textAlign: 'left',
+          filter: 'blur(5px)',
+          opacity: 0.7,
+          pointerEvents: 'none',
+        }}
+      >
+        <span style={{
+          fontFamily: SANS, fontSize: '0.6rem', fontWeight: 700,
+          letterSpacing: '0.08em', textTransform: 'uppercase',
+          padding: '0.2rem 0.5rem', borderRadius: 8, flexShrink: 0,
+          background: LEVEL_BG.new,
+          color:      LEVEL_TEXT.new,
+        }}>
+          {w.masteryLevel}
+        </span>
+
+        <div style={{ flex: 1, minWidth: 0 }}>
+          <p style={{ fontFamily: SERIF, fontSize: '1.05rem', fontWeight: 600, color: C.textPrim, lineHeight: 1.2 }}>
+            {w.word}
+          </p>
+          <p style={{ fontFamily: SANS, fontSize: '0.7rem', color: C.textMuted, marginTop: 1 }}>
+            {w.partOfSpeech}
+          </p>
+        </div>
+
+        <ChevronDown size={14} color={C.textMuted} />
+      </div>
+    </motion.div>
+  );
+}
+
 // ─── Main ─────────────────────────────────────────────────────────────────────
 
 type ScreenPhase = 'list' | 'flashcard' | 'config' | 'quiz';
@@ -141,14 +196,20 @@ export default function LetterStudyScreen({ letter, words, totalPoints }: Props)
   const [phase, setPhase]   = useState<ScreenPhase>('list');
   const [config, setConfig] = useState<QuizConfig | null>(null);
 
-  const learnedCount = words.filter(w => ['familiar', 'strong', 'mastered'].includes(w.masteryLevel)).length;
-  const completePct  = words.length > 0 ? Math.round((learnedCount / words.length) * 100) : 0;
+  // Split into what the user can actually interact with vs. blurred preview
+  const { unlockedWords, lockedWords } = useMemo(() => ({
+    unlockedWords: words.filter(w => !w.locked),
+    lockedWords:   words.filter(w =>  w.locked),
+  }), [words]);
 
-  const wordIds = words.map(w => w.wordId);
+  const learnedCount = unlockedWords.filter(w => ['familiar', 'strong', 'mastered'].includes(w.masteryLevel)).length;
+  const completePct  = unlockedWords.length > 0 ? Math.round((learnedCount / unlockedWords.length) * 100) : 0;
+
+  const unlockedWordIds = unlockedWords.map(w => w.wordId);
 
   // ── Flashcard phase — uses the real FlashcardScreen ──────────────────────────
   if (phase === 'flashcard') {
-    const flashcardWords: FlashcardWord[] = words.map(w => ({
+    const flashcardWords: FlashcardWord[] = unlockedWords.map(w => ({
       id:              w.wordId,
       word:            w.word,
       definition:      w.definition,
@@ -177,14 +238,14 @@ export default function LetterStudyScreen({ letter, words, totalPoints }: Props)
 
   // ── Quiz phase ───────────────────────────────────────────────────────────────
   if (phase === 'quiz' && config) {
-    const hintWords = words.map(w => ({
+    const hintWords = unlockedWords.map(w => ({
       word:       w.word,
       pos:        w.partOfSpeech || null,
       definition: w.definition,
     }));
     return (
       <QuizScreen
-        letterWordIds={wordIds}
+        letterWordIds={unlockedWordIds}
         sessionType="letter"
         quizConfig={config}
         hintWords={hintWords}
@@ -226,8 +287,8 @@ export default function LetterStudyScreen({ letter, words, totalPoints }: Props)
           </span>
         </div>
 
-        {/* Progress bar — same style as unit accordion */}
-        {words.length > 0 && (
+        {/* Progress bar — tracks mastery within the unlocked pool */}
+        {unlockedWords.length > 0 && (
           <div>
             <div
               style={{
@@ -249,14 +310,14 @@ export default function LetterStudyScreen({ letter, words, totalPoints }: Props)
               />
             </div>
             <span style={{ fontFamily: SANS, fontSize: '0.68rem', color: C.textMuted }}>
-              {completePct}% complete · {learnedCount} of {words.length} learned
+              {completePct}% complete · {learnedCount} of {unlockedWords.length} learned
             </span>
           </div>
         )}
       </div>
 
-      {/* Actions */}
-      {words.length > 0 && (
+      {/* Actions — only enabled if the user has any unlocked words to work with */}
+      {unlockedWords.length > 0 && (
         <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
           <motion.button
             whileTap={{ scale: 0.97 }}
@@ -287,14 +348,27 @@ export default function LetterStudyScreen({ letter, words, totalPoints }: Props)
         </div>
       )}
 
-      {/* Word list */}
+      {/* Unlock banner — shown when any words in this letter are gated */}
+      {lockedWords.length > 0 && (
+        <UnlockAllWordsBanner
+          lockedCount={lockedWords.length}
+          unlockedCount={unlockedWords.length}
+        />
+      )}
+
+      {/* Word list — unlocked first, then blurred locked */}
       {words.length === 0 ? (
         <p style={{ fontFamily: SANS, fontSize: '0.875rem', color: C.textSec }}>
           No words starting with &ldquo;{letter}&rdquo; in the library.
         </p>
       ) : (
         <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-          {words.map((w, i) => <WordRow key={w.wordId} w={w} index={i} />)}
+          {unlockedWords.map((w, i) => (
+            <WordRow key={w.wordId} w={w} index={i} />
+          ))}
+          {lockedWords.map((w, i) => (
+            <LockedWordRow key={w.wordId} w={w} index={unlockedWords.length + i} />
+          ))}
         </div>
       )}
 

@@ -25,6 +25,7 @@ export interface LetterWordData {
   masteryLevel:    string;
   masteryScore:    number;
   exposureCount:   number;
+  locked:          boolean;
 }
 
 /**
@@ -103,15 +104,11 @@ export async function getLetterIndex(userId: number, maxUnitOrder?: number): Pro
 
 /**
  * Get all words starting with a specific letter + user mastery records.
- * @param maxUnitOrder — if provided, only include words from units with order <= this value
+ * @param maxUnitOrder — if provided, words in units with order > maxUnitOrder are marked `locked: true`
+ *                      (they are still returned, so the UI can render them blurred + preview).
  */
 export async function getLetterWords(userId: number, letter: string, maxUnitOrder?: number): Promise<LetterWordData[]> {
   const upperLetter = letter.toUpperCase();
-
-  const conditions = [sql`UPPER(SUBSTR(${vocabWords.word}, 1, 1)) = ${upperLetter}`];
-  if (maxUnitOrder !== undefined) {
-    conditions.push(lte(vocabUnits.order, maxUnitOrder));
-  }
 
   const rows = await db
     .select({
@@ -122,6 +119,7 @@ export async function getLetterWords(userId: number, letter: string, maxUnitOrde
       partOfSpeech:    vocabWords.partOfSpeech,
       synonyms:        vocabWords.synonyms,
       antonyms:        vocabWords.antonyms,
+      unitOrder:       vocabUnits.order,
       masteryLevel:    vocabUserWordRecords.masteryLevel,
       masteryScore:    vocabUserWordRecords.masteryScore,
       exposureCount:   vocabUserWordRecords.exposureCount,
@@ -135,7 +133,7 @@ export async function getLetterWords(userId: number, letter: string, maxUnitOrde
         eq(vocabUserWordRecords.userId, userId),
       )
     )
-    .where(and(...conditions))
+    .where(sql`UPPER(SUBSTR(${vocabWords.word}, 1, 1)) = ${upperLetter}`)
     .orderBy(vocabWords.word);
 
   return rows.map(r => ({
@@ -149,5 +147,6 @@ export async function getLetterWords(userId: number, letter: string, maxUnitOrde
     masteryLevel:    r.masteryLevel ?? 'new',
     masteryScore:    r.masteryScore ?? 0,
     exposureCount:   r.exposureCount ?? 0,
+    locked:          maxUnitOrder !== undefined && r.unitOrder > maxUnitOrder,
   }));
 }

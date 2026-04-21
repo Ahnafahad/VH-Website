@@ -173,5 +173,6 @@ export async function getReviewWords(userId: number, wordIds: number[]): Promise
     masteryLevel:    r.masteryLevel ?? 'new',
     masteryScore:    r.masteryScore ?? 0,
     exposureCount:   r.exposureCount ?? 0,
+    locked:          false,
   }));
 }

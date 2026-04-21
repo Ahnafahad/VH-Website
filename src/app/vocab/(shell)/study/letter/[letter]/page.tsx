@@ -37,6 +37,8 @@ export default async function LetterStudyPage({ params }: Props) {
   const phase = progressRow?.phase ?? 2;
   const maxUnitOrder = phase === 2 ? PHASE1_MAX_UNIT_ORDER : undefined;
 
+  // Pass maxUnitOrder so words beyond the free-tier cap come back with `locked: true`
+  // instead of being filtered out — the UI renders them blurred alongside a CTA.
   const words = await getLetterWords(user.id, upperLetter, maxUnitOrder);
 
   return (

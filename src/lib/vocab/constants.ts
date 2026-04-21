@@ -51,16 +51,16 @@ export const LEVEL_ADVANCED_THRESHOLD = 0.70;
 
 // ─── Phase / Access ─────────────────────────────────────────────────────────
 
-/** Maximum unit order accessible to phase-2 (free) users. Units 1–8. */
-export const PHASE1_MAX_UNIT_ORDER = 8;
+/** Maximum unit order accessible to phase-2 (free) users. Units 1–3 = 104 words. */
+export const PHASE1_MAX_UNIT_ORDER = 3;
 
 // ─── Word Pools ─────────────────────────────────────────────────────────────
 
 /** Total words available to free users */
-export const FREE_WORD_POOL = 100;
+export const FREE_WORD_POOL = 104;
 
 /** Total words available to paid users */
-export const PAID_WORD_POOL = 800;
+export const PAID_WORD_POOL = 805;
 
 // ─── Limits ──────────────────────────────────────────────────────────────────
 
