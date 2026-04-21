@@ -1,0 +1,1229 @@
+{
+  "slug": "ratio-and-percentages",
+  "part": "mathematics",
+  "chapterNumber": 1,
+  "title": "Ratio & Percentages",
+  "estimatedMinutes": 20,
+  "sections": [
+    {
+      "id": "part-a-ratios",
+      "title": "Part A: Ratios"
+    },
+    {
+      "id": "1-understanding-ratios",
+      "title": "1. Understanding Ratios"
+    },
+    {
+      "id": "2-combining-ratios",
+      "title": "2. Combining Ratios"
+    },
+    {
+      "id": "3-direct-and-inverse-proportion",
+      "title": "3. Direct and Inverse Proportion"
+    },
+    {
+      "id": "solved-examples",
+      "title": "Solved Examples"
+    },
+    {
+      "id": "part-b-percentages",
+      "title": "Part B: Percentages"
+    },
+    {
+      "id": "4-percentage-basics-and-conversions",
+      "title": "4. Percentage Basics and Conversions"
+    },
+    {
+      "id": "5-percentage-increase-and-decrease",
+      "title": "5. Percentage Increase and Decrease"
+    },
+    {
+      "id": "6-successive-percentage-changes",
+      "title": "6. Successive Percentage Changes"
+    },
+    {
+      "id": "7-the-two-factor-model-reverse-percentage",
+      "title": "7. The Two Factor Model (Reverse Percentage)"
+    },
+    {
+      "id": "solved-examples",
+      "title": "Solved Examples"
+    },
+    {
+      "id": "practice-exercises",
+      "title": "Practice Exercises"
+    },
+    {
+      "id": "do-you-think-you-can-solve-these",
+      "title": "Do You Think You Can Solve These?"
+    }
+  ],
+  "blocks": [
+    {
+      "id": "b0",
+      "type": "prose",
+      "content": "These two topics might seem like they belong to different worlds, but they are really two dialects of the same language: comparison. A ratio tells you how two quantities relate to each other; a percentage tells you how a quantity relates to a hundred. Once you see that connection clearly, the two topics stop feeling like separate things to memorise and start feeling like one coherent idea. That shift in perspective is worth more on exam day than any individual formula."
+    },
+    {
+      "id": "b1",
+      "type": "subsection",
+      "content": "Part A: Ratios",
+      "anchor": "part-a-ratios"
+    },
+    {
+      "id": "b2",
+      "type": "subsection",
+      "content": "1. Understanding Ratios",
+      "anchor": "1-understanding-ratios"
+    },
+    {
+      "id": "b3",
+      "type": "definition",
+      "content": "**Ratio**: A ratio expresses the relationship between two quantities, indicating how many times one contains the other. It can be written in three equivalent ways:\n$$a \\text{ to } b    a : b    \\frac{a}{b}$$\n\n**Key properties**:\n\\begin{itemize}\n    \\item Ratios compare quantities of the same type and unit.\n    \\item Order matters: the ratio $a:b$ is different from $b:a$.\n    \\item Ratios can be simplified exactly like fractions: $6:9 = 2:3$.\n    \\item Multiplying or dividing both terms by the same non-zero constant produces an equivalent ratio: $2:3 = 6:9 = 20:30$.\n\\end{itemize}"
+    },
+    {
+      "id": "b4",
+      "type": "subsubsection",
+      "content": "Part-to-Part vs. Part-to-Whole",
+      "anchor": "part-to-part-vs-part-to-whole"
+    },
+    {
+      "id": "b5",
+      "type": "prose",
+      "content": "This distinction is one of the most reliable sources of errors on the IBA exam. A question will give you a ratio and then ask a question that requires the other type. Knowing which one you are working with before you start saves you from a clean, confident answer that is completely wrong."
+    },
+    {
+      "id": "b6",
+      "type": "definition",
+      "content": "**Part-to-Part ratio**: Compares one portion of a whole to another portion of the same whole.\n\n**Part-to-Whole ratio**: Compares one portion of a whole to the entire whole.\n\n\n\n**Example**: In a class of 30 students, 18 are boys and 12 are girls.\n\\begin{itemize}\n    \\item Part-to-part: boys to girls $= 18:12 = 3:2$\n    \\item Part-to-whole: boys to total $= 18:30 = 3:5$\n    \\item Part-to-whole: girls to total $= 12:30 = 2:5$\n\\end{itemize}\n\nNotice that the part-to-whole ratios of all parts must sum to 1 when expressed as fractions: $\\dfrac{3}{5} + \\dfrac{2}{5} = 1$."
+    },
+    {
+      "id": "b7",
+      "type": "subsubsection",
+      "content": "Finding a Quantity from a Ratio and a Total",
+      "anchor": "finding-a-quantity-from-a-ratio-and-a-total"
+    },
+    {
+      "id": "b8",
+      "type": "definition",
+      "content": "If two quantities are in the ratio $a:b$ and their combined total is $T$, then:\n\\begin{align*}\n\\text{First quantity} &= \\frac{a}{a+b} \\times T \\\\[4pt]\n\\text{Second quantity} &= \\frac{b}{a+b} \\times T\n\\end{align*}\n\nThis extends naturally to three or more parts: for a ratio $a:b:c$ with total $T$, each part is its share of $(a+b+c)$ multiplied by $T$."
+    },
+    {
+      "id": "b9",
+      "type": "note",
+      "content": "**Exam habit**: Before calculating anything, always identify whether the ratio given is part-to-part or part-to-whole. If it is part-to-part, the denominator for each fraction is the sum of all ratio terms. If it is already part-to-whole, the denominator is simply 100 or 1. Confusing these two is the single most common ratio mistake on this paper."
+    },
+    {
+      "id": "b10",
+      "type": "subsection",
+      "content": "2. Combining Ratios",
+      "anchor": "2-combining-ratios"
+    },
+    {
+      "id": "b11",
+      "type": "definition",
+      "content": "**Combining two ratios with a shared term**: Given $a:b$ and $b:c$, to find $a:b:c$, make the value of $b$ the same in both ratios by scaling each ratio so that the $b$ terms match (find the LCM of the two $b$ values, then scale accordingly).\n\n\n\n**Example**: Given $a:b = 3:4$ and $b:c = 6:5$.\n\nThe $b$ values are 4 and 6. Their LCM is 12. Scale the first ratio by 3 and the second by 2:\n$$a:b = 9:12    b:c = 12:10$$\nTherefore $a:b:c = 9:12:10$."
+    },
+    {
+      "id": "b12",
+      "type": "prose",
+      "content": "This technique matters because IBA problems frequently give you two pairwise ratios and ask for the combined ratio or a direct comparison between the non-shared terms. The instinct to just read off $a:c = 3:5$ from the original ratios is wrong, and the exam knows you will be tempted by it. Scaling through the shared term is the only reliable method."
+    },
+    {
+      "id": "b13",
+      "type": "note",
+      "content": "**Compound ratio**: When two ratios are multiplied together, the result is a compound ratio.\n$$a:b \\text{ compounded with } c:d = ac:bd$$\nThis is useful when a quantity is affected by two successive ratio-based changes, for instance when a price is adjusted by two different factors."
+    },
+    {
+      "id": "b14",
+      "type": "subsection",
+      "content": "3. Direct and Inverse Proportion",
+      "anchor": "3-direct-and-inverse-proportion"
+    },
+    {
+      "id": "b15",
+      "type": "definition",
+      "content": "**Direct Proportion**: Two quantities $x$ and $y$ are directly proportional if they increase and decrease together at the same rate. Their ratio remains constant.\n$$\\frac{x_1}{y_1} = \\frac{x_2}{y_2}    \\text{equivalently,}    x_1 y_2 = x_2 y_1$$\n\n**Inverse Proportion**: Two quantities $x$ and $y$ are inversely proportional if one increases as the other decreases, such that their product remains constant.\n$$x_1 \\times y_1 = x_2 \\times y_2    \\text{equivalently,}    \\frac{x_1}{x_2} = \\frac{y_2}{y_1}$$"
+    },
+    {
+      "id": "b16",
+      "type": "prose",
+      "content": "The intuition is straightforward. Direct proportion describes situations like speed and distance when time is fixed: double the speed, double the distance. Inverse proportion describes situations like speed and time when distance is fixed: double the speed, halve the time. Identifying which type of relationship a problem describes is the first and most important step."
+    },
+    {
+      "id": "b17",
+      "type": "note",
+      "content": "**How to tell them apart**: In direct proportion, the ratio of the two quantities is constant. In inverse proportion, the product of the two quantities is constant. If you are ever unsure, pick two pairs of values from the problem and check both. Only one will hold."
+    },
+    {
+      "id": "b18",
+      "type": "subsection",
+      "content": "Solved Examples",
+      "anchor": "solved-examples"
+    },
+    {
+      "id": "b19",
+      "type": "mcq",
+      "question": "A sum of Tk. 4,800 is to be divided among Rafiq, Shirin, and Nabil in the ratio $3:5:4$. How much does Shirin receive?",
+      "questionType": "solved",
+      "options": [
+        {
+          "label": "A",
+          "text": "Tk. 1,200"
+        },
+        {
+          "label": "B",
+          "text": "Tk. 1,400"
+        },
+        {
+          "label": "C",
+          "text": "Tk. 1,600"
+        },
+        {
+          "label": "D",
+          "text": "Tk. 2,000"
+        },
+        {
+          "label": "E",
+          "text": "Tk. 2,400"
+        }
+      ],
+      "correctLabel": "D",
+      "solutionHint": "**Solution:** Total ratio parts $= 3+5+4 = 12$. Shirin's share (ratio 5) $= \\dfrac{5}{12} \\times 4800 = \\textbf{Tk. 2{,}000}$."
+    },
+    {
+      "id": "b20",
+      "type": "mcq",
+      "question": "Given $p:q = 5:2$ and $q:r = 3:4$, find the ratio $p:q:r$.",
+      "questionType": "solved",
+      "options": [
+        {
+          "label": "A",
+          "text": "$5:2:4$"
+        },
+        {
+          "label": "B",
+          "text": "$15:6:8$"
+        },
+        {
+          "label": "C",
+          "text": "$5:3:4$"
+        },
+        {
+          "label": "D",
+          "text": "$10:4:3$"
+        },
+        {
+          "label": "E",
+          "text": "$15:2:4$"
+        }
+      ],
+      "correctLabel": "B",
+      "solutionHint": "**Solution:** LCM of the $q$ values (2 and 3) is 6. Scale $p:q = 5:2$ by 3 $\\Rightarrow$ $15:6$. Scale $q:r = 3:4$ by 2 $\\Rightarrow$ $6:8$. Combined: $p:q:r = \\mathbf{15:6:8}$."
+    },
+    {
+      "id": "b21",
+      "type": "mcq",
+      "question": "If 8 workers can complete a task in 15 days, how many days will 12 workers take to complete the same task?",
+      "questionType": "solved",
+      "options": [
+        {
+          "label": "A",
+          "text": "8 days"
+        },
+        {
+          "label": "B",
+          "text": "10 days"
+        },
+        {
+          "label": "C",
+          "text": "12 days"
+        },
+        {
+          "label": "D",
+          "text": "14 days"
+        },
+        {
+          "label": "E",
+          "text": "18 days"
+        }
+      ],
+      "correctLabel": "B",
+      "solutionHint": "**Solution:** Workers and days are inversely proportional (more workers, fewer days). $8 \\times 15 = 12 \\times d \\Rightarrow d = \\dfrac{120}{12} = \\mathbf{10}$ days."
+    },
+    {
+      "id": "b22",
+      "type": "subsection",
+      "content": "Part B: Percentages",
+      "anchor": "part-b-percentages"
+    },
+    {
+      "id": "b23",
+      "type": "subsection",
+      "content": "4. Percentage Basics and Conversions",
+      "anchor": "4-percentage-basics-and-conversions"
+    },
+    {
+      "id": "b24",
+      "type": "definition",
+      "content": "**Percentage**: A percentage is a ratio expressed as a fraction of 100. “Per cent” literally means “per hundred.”\n\\begin{align*}\n\\text{Percentage} &= \\frac{\\text{Part}}{\\text{Whole}} \\times 100% \\\\[4pt]\n\\text{Part} &= \\frac{\\text{Percentage}}{100} \\times \\text{Whole}\n\\end{align*}\n\n**Converting between forms**:\n\\begin{itemize}\n    \\item Percent to decimal: divide by 100.   e.g.\\ $37% = 0.37$\n    \\item Decimal to percent: multiply by 100.   e.g.\\ $0.625 = 62.5%$\n    \\item Fraction to percent: divide numerator by denominator, then multiply by 100.\n\\end{itemize}"
+    },
+    {
+      "id": "b25",
+      "type": "subsubsection",
+      "content": "Common Fraction-Decimal-Percentage Conversions",
+      "anchor": "common-fraction-decimal-percentage-conversions"
+    },
+    {
+      "id": "b26",
+      "type": "prose",
+      "content": "Memorising the entries in this table is not optional; it is one of the highest-return investments you can make before this exam. Problems that would take 30 seconds with long division take 3 seconds when you recognise $\\frac{2}{3} = 66.67%$ on sight."
+    },
+    {
+      "id": "b27",
+      "type": "table",
+      "content": "\\renewcommand{\\arraystretch}{1.3}\n\\setlength{\\tabcolsep}{4pt}\n\\small\n\\begin{tabular}{|c|c|c||c|c|c|}\n\\hline\n\\textbf{Fraction} & \\textbf{Decimal} & \\textbf{Percent} & \\textbf{Fraction} & \\textbf{Decimal} & \\textbf{Percent} \\\\\n\\hline\n$\\dfrac{1}{2}$ & 0.5 & 50\\% & $\\dfrac{1}{8}$ & 0.125 & 12.5\\% \\\\[4pt]\n\\hline\n$\\dfrac{1}{3}$ & $0.\\overline{3}$ & $33.\\overline{3}$\\% & $\\dfrac{3}{8}$ & 0.375 & 37.5\\% \\\\[4pt]\n\\hline\n$\\dfrac{2}{3}$ & $0.\\overline{6}$ & $66.\\overline{6}$\\% & $\\dfrac{5}{8}$ & 0.625 & 62.5\\% \\\\[4pt]\n\\hline\n$\\dfrac{1}{4}$ & 0.25 & 25\\% & $\\dfrac{7}{8}$ & 0.875 & 87.5\\% \\\\[4pt]\n\\hline\n$\\dfrac{3}{4}$ & 0.75 & 75\\% & $\\dfrac{1}{6}$ & $0.1\\overline{6}$ & $16.\\overline{6}$\\% \\\\[4pt]\n\\hline\n$\\dfrac{1}{5}$ & 0.2 & 20\\% & $\\dfrac{5}{6}$ & $0.8\\overline{3}$ & $83.\\overline{3}$\\% \\\\[4pt]\n\\hline\n$\\dfrac{2}{5}$ & 0.4 & 40\\% & $\\dfrac{1}{9}$ & $0.\\overline{1}$ & $11.\\overline{1}$\\% \\\\[4pt]\n\\hline\n$\\dfrac{3}{5}$ & 0.6 & 60\\% & $\\dfrac{1}{10}$ & 0.1 & 10\\% \\\\[4pt]\n\\hline\n$\\dfrac{4}{5}$ & 0.8 & 80\\% & $\\dfrac{1}{12}$ & $0.08\\overline{3}$ & $8.\\overline{3}$\\% \\\\[4pt]\n\\hline\n\\end{tabular}\n\\normalsize\n\\setlength{\\tabcolsep}{6pt}"
+    },
+    {
+      "id": "b28",
+      "type": "subsection",
+      "content": "5. Percentage Increase and Decrease",
+      "anchor": "5-percentage-increase-and-decrease"
+    },
+    {
+      "id": "b29",
+      "type": "definition",
+      "content": "**Percentage Change**:\n$$%\\text{ Change} = \\frac{\\text{New Value} - \\text{Old Value}}{\\text{Old Value}} \\times 100%$$\n\nA positive result is a percentage increase; a negative result is a percentage decrease. Both cases use the same formula; the sign takes care of itself.\n\n\n\n**Multiplier method** (faster for calculations):\n\\begin{itemize}\n    \\item An increase of $r%$ is equivalent to multiplying by $\\left(1 + \\dfrac{r}{100}\\right)$.\n    \\item A decrease of $r%$ is equivalent to multiplying by $\\left(1 - \\dfrac{r}{100}\\right)$.\n\\end{itemize}"
+    },
+    {
+      "id": "b30",
+      "type": "prose",
+      "content": "The multiplier method is worth adopting as your default. Instead of increasing 240 by 15% as $240 + (240 \\times 0.15)$, you just compute $240 \\times 1.15$ in one step. Under exam pressure, fewer steps mean fewer errors. Every percentage problem on this paper can be solved using multipliers, and the habit compounds well when successive changes enter the picture."
+    },
+    {
+      "id": "b31",
+      "type": "note",
+      "content": "**The base trap**: Percentage increase and decrease are always calculated relative to the original value, not the new one. A 20% increase followed by a 20% decrease does not return you to the original value; it leaves you at $1.20 \\times 0.80 = 0.96$, which is a net decrease of 4%. This asymmetry is one of the IBA exam's favourite setups."
+    },
+    {
+      "id": "b32",
+      "type": "subsection",
+      "content": "6. Successive Percentage Changes",
+      "anchor": "6-successive-percentage-changes"
+    },
+    {
+      "id": "b33",
+      "type": "definition",
+      "content": "**Successive Percentage Changes**: When two percentage changes $A%$ and $B%$ are applied one after the other, the net percentage change $R$ is:\n$$R = A + B + \\frac{AB}{100}$$\n\nwhere $A$ and $B$ are positive for increases and negative for decreases.\n\n\n\n**Why this works**: Applying $A%$ then $B%$ means multiplying by $\\left(1+\\dfrac{A}{100}\\right)\\left(1+\\dfrac{B}{100}\\right)$. Expanding this product and converting back to a percentage change gives exactly the formula above. The $\\dfrac{AB}{100}$ term is the “interest on the interest”, the extra compounding effect that a simple addition of $A+B$ would miss."
+    },
+    {
+      "id": "b34",
+      "type": "note",
+      "content": "**When to use which**: For a quick net result, the formula is fast. For a chain of three or more changes, the multiplier method is more reliable: multiply out all the multipliers, then convert the final product to a percentage change. Applying the two-variable formula repeatedly for three changes is error-prone under time pressure."
+    },
+    {
+      "id": "b35",
+      "type": "subsection",
+      "content": "7. The Two Factor Model (Reverse Percentage)",
+      "anchor": "7-the-two-factor-model-reverse-percentage"
+    },
+    {
+      "id": "b36",
+      "type": "prose",
+      "content": "A class of question that appears with high regularity asks: “after a percentage increase, by what percentage must the new value be decreased to return to the original?” or the reverse. The Two Factor Model answers this cleanly."
+    },
+    {
+      "id": "b37",
+      "type": "definition",
+      "content": "**The Two Factor Model**:\n\nIf a value is **increased** by $\\dfrac{X}{Y}$ (as a fraction), it must be **decreased** by $\\dfrac{X}{X+Y}$ to return to the original.\n\n\n\nIf a value is **decreased** by $\\dfrac{X}{Y}$ (as a fraction), it must be **increased** by $\\dfrac{X}{Y-X}$ to return to the original.\n\n\n\n**Percentage form**: If a value is increased by $r%$, the percentage decrease needed to return to the original is:\n$$\\text{Required decrease} = \\frac{r}{100 + r} \\times 100%$$\n\nIf a value is decreased by $r%$, the percentage increase needed to return to the original is:\n$$\\text{Required increase} = \\frac{r}{100 - r} \\times 100%$$"
+    },
+    {
+      "id": "b38",
+      "type": "prose",
+      "content": "The reasoning is simple. If the original value is 1 and it increases by $r%$ to become $1 + \\frac{r}{100}$, you need to bring it back down to 1. The decrease as a fraction of the new value is $\\frac{r/100}{1 + r/100}$, which simplifies to $\\frac{r}{100+r}$. The formula is not something to memorise blindly; it is something to understand once, and then it is yours for life."
+    },
+    {
+      "id": "b39",
+      "type": "note",
+      "content": "**Quick check**: After a 25% increase, the required decrease is $\\dfrac{25}{125} \\times 100 = 20%$. After a 20% decrease, the required increase is $\\dfrac{20}{80} \\times 100 = 25%$. Notice that these two are mirror images of each other; an insight that makes this class of question much faster to handle."
+    },
+    {
+      "id": "b40",
+      "type": "subsection",
+      "content": "Solved Examples",
+      "anchor": "solved-examples"
+    },
+    {
+      "id": "b41",
+      "type": "mcq",
+      "question": "If 15% of a number is 45, what is 80% of that number?",
+      "questionType": "solved",
+      "options": [
+        {
+          "label": "A",
+          "text": "200"
+        },
+        {
+          "label": "B",
+          "text": "220"
+        },
+        {
+          "label": "C",
+          "text": "240"
+        },
+        {
+          "label": "D",
+          "text": "260"
+        },
+        {
+          "label": "E",
+          "text": "280"
+        }
+      ],
+      "correctLabel": "C",
+      "solutionHint": "**Solution:** $15%$ of $N = 45 \\Rightarrow N = \\dfrac{45}{0.15} = 300$. Then $80%$ of $300 = 0.8 \\times 300 = \\mathbf{240}$."
+    },
+    {
+      "id": "b42",
+      "type": "mcq",
+      "question": "A shop increases the price of a jacket by 40%. After the season, it wants to restore the original price. By what percentage must it reduce the new price?",
+      "questionType": "solved",
+      "options": [
+        {
+          "label": "A",
+          "text": "25%"
+        },
+        {
+          "label": "B",
+          "text": "$28.\\overline{57}$%"
+        },
+        {
+          "label": "C",
+          "text": "30%"
+        },
+        {
+          "label": "D",
+          "text": "35%"
+        },
+        {
+          "label": "E",
+          "text": "40%"
+        }
+      ],
+      "correctLabel": "B",
+      "solutionHint": "**Solution:** Using the Two Factor Model: required decrease $= \\dfrac{r}{100+r} \\times 100 = \\dfrac{40}{140} \\times 100 = 28.\\overline{57}%$."
+    },
+    {
+      "id": "b43",
+      "type": "mcq",
+      "question": "A company's revenue increased by 20% in Year 1 and decreased by 15% in Year 2. What is the overall net percentage change?",
+      "questionType": "solved",
+      "options": [
+        {
+          "label": "A",
+          "text": "2% increase"
+        },
+        {
+          "label": "B",
+          "text": "5% increase"
+        },
+        {
+          "label": "C",
+          "text": "3% decrease"
+        },
+        {
+          "label": "D",
+          "text": "2% decrease"
+        },
+        {
+          "label": "E",
+          "text": "No change"
+        }
+      ],
+      "correctLabel": "A",
+      "solutionHint": "**Solution:** Net $% = A + B + \\dfrac{AB}{100} = 20 + (-15) + \\dfrac{20 \\times (-15)}{100} = 5 - 3 = \\mathbf{2%}$ increase."
+    },
+    {
+      "id": "b44",
+      "type": "mcq",
+      "question": "Vicky's salary is 75% more than Anshu's. Vicky gets a 40% raise; Anshu gets a 25% raise. By what percentage is Vicky's new salary greater than Anshu's?",
+      "questionType": "solved",
+      "options": [
+        {
+          "label": "A",
+          "text": "75%"
+        },
+        {
+          "label": "B",
+          "text": "90%"
+        },
+        {
+          "label": "C",
+          "text": "96%"
+        },
+        {
+          "label": "D",
+          "text": "100%"
+        },
+        {
+          "label": "E",
+          "text": "105%"
+        }
+      ],
+      "correctLabel": "C",
+      "solutionHint": "**Solution:** Let Anshu $= 100$, so Vicky $= 175$. After raises: Vicky $= 175 \\times 1.4 = 245$; Anshu $= 100 \\times 1.25 = 125$. Percentage more $= \\dfrac{245-125}{125} \\times 100 = \\dfrac{120}{125} \\times 100 = \\mathbf{96%}$."
+    },
+    {
+      "id": "b45",
+      "type": "section",
+      "content": "Practice Exercises",
+      "anchor": "practice-exercises"
+    },
+    {
+      "id": "b46",
+      "type": "prose",
+      "content": "_Questions increase in difficulty from start to finish._"
+    },
+    {
+      "id": "b47",
+      "type": "mcq",
+      "question": "A bag contains red and blue marbles in the ratio $3:5$. If there are 15 blue marbles, how many red marbles are there?",
+      "questionType": "practice",
+      "options": [
+        {
+          "label": "A",
+          "text": "9"
+        },
+        {
+          "label": "B",
+          "text": "12"
+        },
+        {
+          "label": "C",
+          "text": "15"
+        },
+        {
+          "label": "D",
+          "text": "18"
+        },
+        {
+          "label": "E",
+          "text": "24"
+        }
+      ],
+      "correctLabel": null
+    },
+    {
+      "id": "b48",
+      "type": "mcq",
+      "question": "What is 35% of 240?",
+      "questionType": "practice",
+      "options": [
+        {
+          "label": "A",
+          "text": "72"
+        },
+        {
+          "label": "B",
+          "text": "80"
+        },
+        {
+          "label": "C",
+          "text": "84"
+        },
+        {
+          "label": "D",
+          "text": "90"
+        },
+        {
+          "label": "E",
+          "text": "96"
+        }
+      ],
+      "correctLabel": null
+    },
+    {
+      "id": "b49",
+      "type": "mcq",
+      "question": "In a class of 50 students, the ratio of boys to girls is $2:3$. How many girls are there?",
+      "questionType": "practice",
+      "options": [
+        {
+          "label": "A",
+          "text": "20"
+        },
+        {
+          "label": "B",
+          "text": "25"
+        },
+        {
+          "label": "C",
+          "text": "28"
+        },
+        {
+          "label": "D",
+          "text": "30"
+        },
+        {
+          "label": "E",
+          "text": "35"
+        }
+      ],
+      "correctLabel": null
+    },
+    {
+      "id": "b50",
+      "type": "mcq",
+      "question": "Express $\\dfrac{5}{8}$ as a percentage.",
+      "questionType": "practice",
+      "options": [
+        {
+          "label": "A",
+          "text": "55%"
+        },
+        {
+          "label": "B",
+          "text": "60%"
+        },
+        {
+          "label": "C",
+          "text": "62.5%"
+        },
+        {
+          "label": "D",
+          "text": "65%"
+        },
+        {
+          "label": "E",
+          "text": "68%"
+        }
+      ],
+      "correctLabel": null
+    },
+    {
+      "id": "b51",
+      "type": "mcq",
+      "question": "A price increases from Tk. 400 to Tk. 500. What is the percentage increase?",
+      "questionType": "practice",
+      "options": [
+        {
+          "label": "A",
+          "text": "20%"
+        },
+        {
+          "label": "B",
+          "text": "22%"
+        },
+        {
+          "label": "C",
+          "text": "25%"
+        },
+        {
+          "label": "D",
+          "text": "28%"
+        },
+        {
+          "label": "E",
+          "text": "30%"
+        }
+      ],
+      "correctLabel": null
+    },
+    {
+      "id": "b52",
+      "type": "mcq",
+      "question": "If $a:b = 4:7$ and the total of $a$ and $b$ is 99, what is the value of $b$?",
+      "questionType": "practice",
+      "options": [
+        {
+          "label": "A",
+          "text": "36"
+        },
+        {
+          "label": "B",
+          "text": "42"
+        },
+        {
+          "label": "C",
+          "text": "56"
+        },
+        {
+          "label": "D",
+          "text": "63"
+        },
+        {
+          "label": "E",
+          "text": "70"
+        }
+      ],
+      "correctLabel": null
+    },
+    {
+      "id": "b53",
+      "type": "mcq",
+      "question": "6 taps can fill a tank in 8 hours. How long will 4 taps take to fill the same tank?",
+      "questionType": "practice",
+      "options": [
+        {
+          "label": "A",
+          "text": "10 hours"
+        },
+        {
+          "label": "B",
+          "text": "12 hours"
+        },
+        {
+          "label": "C",
+          "text": "14 hours"
+        },
+        {
+          "label": "D",
+          "text": "16 hours"
+        },
+        {
+          "label": "E",
+          "text": "18 hours"
+        }
+      ],
+      "correctLabel": null
+    },
+    {
+      "id": "b54",
+      "type": "mcq",
+      "question": "A salary is decreased by 10%. What percentage increase is needed to restore it to the original?",
+      "questionType": "practice",
+      "options": [
+        {
+          "label": "A",
+          "text": "10%"
+        },
+        {
+          "label": "B",
+          "text": "$11.\\overline{1}$%"
+        },
+        {
+          "label": "C",
+          "text": "12%"
+        },
+        {
+          "label": "D",
+          "text": "15%"
+        },
+        {
+          "label": "E",
+          "text": "$9.\\overline{09}$%"
+        }
+      ],
+      "correctLabel": null
+    },
+    {
+      "id": "b55",
+      "type": "mcq",
+      "question": "Given $x:y = 2:5$ and $y:z = 3:4$, find $x:z$.",
+      "questionType": "practice",
+      "options": [
+        {
+          "label": "A",
+          "text": "$2:4$"
+        },
+        {
+          "label": "B",
+          "text": "$3:10$"
+        },
+        {
+          "label": "C",
+          "text": "$6:25$"
+        },
+        {
+          "label": "D",
+          "text": "$3:4$"
+        },
+        {
+          "label": "E",
+          "text": "$6:10$"
+        }
+      ],
+      "correctLabel": null
+    },
+    {
+      "id": "b56",
+      "type": "mcq",
+      "question": "A number is increased by 20% and then decreased by 20%. What is the net percentage change?",
+      "questionType": "practice",
+      "options": [
+        {
+          "label": "A",
+          "text": "0%"
+        },
+        {
+          "label": "B",
+          "text": "2% decrease"
+        },
+        {
+          "label": "C",
+          "text": "4% decrease"
+        },
+        {
+          "label": "D",
+          "text": "4% increase"
+        },
+        {
+          "label": "E",
+          "text": "2% increase"
+        }
+      ],
+      "correctLabel": null
+    },
+    {
+      "id": "b57",
+      "type": "mcq",
+      "question": "In a school, $40%$ of students play football and $30%$ play cricket. If $15%$ play both, what percentage play neither?",
+      "questionType": "practice",
+      "options": [
+        {
+          "label": "A",
+          "text": "30%"
+        },
+        {
+          "label": "B",
+          "text": "40%"
+        },
+        {
+          "label": "C",
+          "text": "45%"
+        },
+        {
+          "label": "D",
+          "text": "50%"
+        },
+        {
+          "label": "E",
+          "text": "55%"
+        }
+      ],
+      "correctLabel": null
+    },
+    {
+      "id": "b58",
+      "type": "mcq",
+      "question": "The ratio of the ages of Arif and Bashir is $4:3$. After 6 years, the ratio will be $6:5$. What is Arif's current age?",
+      "questionType": "practice",
+      "options": [
+        {
+          "label": "A",
+          "text": "12"
+        },
+        {
+          "label": "B",
+          "text": "15"
+        },
+        {
+          "label": "C",
+          "text": "18"
+        },
+        {
+          "label": "D",
+          "text": "24"
+        },
+        {
+          "label": "E",
+          "text": "30"
+        }
+      ],
+      "correctLabel": null
+    },
+    {
+      "id": "b59",
+      "type": "mcq",
+      "question": "A jacket is sold at a 30% discount. If the discounted price is Tk. 2,100, what was the original price?",
+      "questionType": "practice",
+      "options": [
+        {
+          "label": "A",
+          "text": "Tk. 2,700"
+        },
+        {
+          "label": "B",
+          "text": "Tk. 2,800"
+        },
+        {
+          "label": "C",
+          "text": "Tk. 3,000"
+        },
+        {
+          "label": "D",
+          "text": "Tk. 3,200"
+        },
+        {
+          "label": "E",
+          "text": "Tk. 3,500"
+        }
+      ],
+      "correctLabel": null
+    },
+    {
+      "id": "b60",
+      "type": "mcq",
+      "question": "A shopkeeper applies successive discounts of 20% and 10%. What is the effective overall discount?",
+      "questionType": "practice",
+      "options": [
+        {
+          "label": "A",
+          "text": "25%"
+        },
+        {
+          "label": "B",
+          "text": "27%"
+        },
+        {
+          "label": "C",
+          "text": "28%"
+        },
+        {
+          "label": "D",
+          "text": "30%"
+        },
+        {
+          "label": "E",
+          "text": "32%"
+        }
+      ],
+      "correctLabel": null
+    },
+    {
+      "id": "b61",
+      "type": "mcq",
+      "question": "$p:q = 3:4$ and $q:r = 8:9$. Find $p:r$.",
+      "questionType": "practice",
+      "options": [
+        {
+          "label": "A",
+          "text": "$1:3$"
+        },
+        {
+          "label": "B",
+          "text": "$2:3$"
+        },
+        {
+          "label": "C",
+          "text": "$3:9$"
+        },
+        {
+          "label": "D",
+          "text": "$8:12$"
+        },
+        {
+          "label": "E",
+          "text": "$2:6$"
+        }
+      ],
+      "correctLabel": null
+    },
+    {
+      "id": "b62",
+      "type": "mcq",
+      "question": "In a mixture, milk and water are in the ratio $7:3$. If 10 litres of water is added, the ratio becomes $7:4$. How many litres of milk are in the mixture?",
+      "questionType": "practice",
+      "options": [
+        {
+          "label": "A",
+          "text": "35"
+        },
+        {
+          "label": "B",
+          "text": "49"
+        },
+        {
+          "label": "C",
+          "text": "56"
+        },
+        {
+          "label": "D",
+          "text": "63"
+        },
+        {
+          "label": "E",
+          "text": "70"
+        }
+      ],
+      "correctLabel": null
+    },
+    {
+      "id": "b63",
+      "type": "mcq",
+      "question": "A value is first increased by 25% and then decreased by $x%$ to return to its original value. What is $x$?",
+      "questionType": "practice",
+      "options": [
+        {
+          "label": "A",
+          "text": "20"
+        },
+        {
+          "label": "B",
+          "text": "22"
+        },
+        {
+          "label": "C",
+          "text": "25"
+        },
+        {
+          "label": "D",
+          "text": "28"
+        },
+        {
+          "label": "E",
+          "text": "30"
+        }
+      ],
+      "correctLabel": null
+    },
+    {
+      "id": "b64",
+      "type": "mcq",
+      "question": "Nadia's income is 20% more than Tania's, and Tania's income is 25% less than Riya's. By what percentage is Nadia's income less or more than Riya's?",
+      "questionType": "practice",
+      "options": [
+        {
+          "label": "A",
+          "text": "5% less"
+        },
+        {
+          "label": "B",
+          "text": "5% more"
+        },
+        {
+          "label": "C",
+          "text": "10% less"
+        },
+        {
+          "label": "D",
+          "text": "10% more"
+        },
+        {
+          "label": "E",
+          "text": "Equal"
+        }
+      ],
+      "correctLabel": null
+    },
+    {
+      "id": "b65",
+      "type": "mcq",
+      "question": "A solution of acid and water is mixed in the ratio $2:5$. How much acid must be added to 28 litres of the solution to make the ratio $1:2$?",
+      "questionType": "practice",
+      "options": [
+        {
+          "label": "A",
+          "text": "2 litres"
+        },
+        {
+          "label": "B",
+          "text": "3 litres"
+        },
+        {
+          "label": "C",
+          "text": "4 litres"
+        },
+        {
+          "label": "D",
+          "text": "5 litres"
+        },
+        {
+          "label": "E",
+          "text": "6 litres"
+        }
+      ],
+      "correctLabel": null
+    },
+    {
+      "id": "b66",
+      "type": "mcq",
+      "question": "Two successive percentage increases of $a%$ and $b%$ result in an overall increase of 44%. If $a = b$, what is $a$?",
+      "questionType": "practice",
+      "options": [
+        {
+          "label": "A",
+          "text": "18"
+        },
+        {
+          "label": "B",
+          "text": "20"
+        },
+        {
+          "label": "C",
+          "text": "22"
+        },
+        {
+          "label": "D",
+          "text": "24"
+        },
+        {
+          "label": "E",
+          "text": "25"
+        }
+      ],
+      "correctLabel": null
+    },
+    {
+      "id": "b67",
+      "type": "section",
+      "content": "Do You Think You Can Solve These?",
+      "anchor": "do-you-think-you-can-solve-these"
+    },
+    {
+      "id": "b68",
+      "type": "prose",
+      "content": "_These are genuinely hard. They are not designed to trick you; they are designed to test whether you have truly internalised the concepts above, not just skimmed them. Take your time._"
+    },
+    {
+      "id": "b69",
+      "type": "mcq",
+      "question": "The ratio of boys to girls in School A is $3:2$ and in School B is $2:3$. If the two schools merge and the total number of students is 900, with School A having 400 students, what is the ratio of boys to girls in the merged school?",
+      "questionType": "practice",
+      "options": [
+        {
+          "label": "A",
+          "text": "$22:23$"
+        },
+        {
+          "label": "B",
+          "text": "$3:2$"
+        },
+        {
+          "label": "C",
+          "text": "$31:19$"
+        },
+        {
+          "label": "D",
+          "text": "$7:9$"
+        },
+        {
+          "label": "E",
+          "text": "$23:22$"
+        }
+      ],
+      "correctLabel": null
+    },
+    {
+      "id": "b70",
+      "type": "mcq",
+      "question": "A retailer marks up a product by 40% above cost price and then offers a 15% discount on the marked price. What is the net profit or loss percentage on the cost price?",
+      "questionType": "practice",
+      "options": [
+        {
+          "label": "A",
+          "text": "15% profit"
+        },
+        {
+          "label": "B",
+          "text": "19% profit"
+        },
+        {
+          "label": "C",
+          "text": "25% profit"
+        },
+        {
+          "label": "D",
+          "text": "15% loss"
+        },
+        {
+          "label": "E",
+          "text": "19% loss"
+        }
+      ],
+      "correctLabel": null
+    },
+    {
+      "id": "b71",
+      "type": "mcq",
+      "question": "$a:b = 2:3$, $b:c = 4:5$, and $c:d = 3:1$. Find $a:d$.",
+      "questionType": "practice",
+      "options": [
+        {
+          "label": "A",
+          "text": "$6:5$"
+        },
+        {
+          "label": "B",
+          "text": "$8:5$"
+        },
+        {
+          "label": "C",
+          "text": "$8:15$"
+        },
+        {
+          "label": "D",
+          "text": "$24:25$"
+        },
+        {
+          "label": "E",
+          "text": "$8:7$"
+        }
+      ],
+      "correctLabel": null
+    },
+    {
+      "id": "b72",
+      "type": "mcq",
+      "question": "A shopkeeper marks a product at 60% above cost price. He offers an $x%$ discount and still makes a 20% profit. What is $x$?",
+      "questionType": "practice",
+      "options": [
+        {
+          "label": "A",
+          "text": "20"
+        },
+        {
+          "label": "B",
+          "text": "22"
+        },
+        {
+          "label": "C",
+          "text": "25"
+        },
+        {
+          "label": "D",
+          "text": "28"
+        },
+        {
+          "label": "E",
+          "text": "30"
+        }
+      ],
+      "correctLabel": null
+    },
+    {
+      "id": "b73",
+      "type": "mcq",
+      "question": "Three friends Junaid, Kabir, and Limon share a profit in the ratio $4:3:2$. Junaid invests an additional amount and the ratio becomes $5:3:2$. If the total profit is now Tk. 30,000 and was previously Tk. 27,000, by what percentage did Junaid's share change?",
+      "questionType": "practice",
+      "options": [
+        {
+          "label": "A",
+          "text": "25%"
+        },
+        {
+          "label": "B",
+          "text": "$38.\\overline{8}$%"
+        },
+        {
+          "label": "C",
+          "text": "40%"
+        },
+        {
+          "label": "D",
+          "text": "$41.\\overline{6}$%"
+        },
+        {
+          "label": "E",
+          "text": "50%"
+        }
+      ],
+      "correctLabel": null
+    },
+    {
+      "id": "b74",
+      "type": "note",
+      "content": "**Full solutions available.**\nDetailed step-by-step solutions for every practice question and challenge problem in this chapter are available in the WhatsApp group. Scan the code below to access them.\n\n\n\\begin{center}\n\\includegraphics[width=1.3in]{qr_whatsapp}\\[6pt]\n{WhatsApp Group}\n\\end{center}"
+    }
+  ]
+}

@@ -418,6 +418,52 @@ export const vocabAccessRequests = sqliteTable('vocab_access_requests', {
   updatedAt: integer('updated_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
 });
 
+// ─── Workbook Tables ──────────────────────────────────────────────────────────
+
+export const workbookChapterProgress = sqliteTable('workbook_chapter_progress', {
+  id:          integer('id').primaryKey({ autoIncrement: true }),
+  userId:      integer('user_id').notNull().references(() => users.id, { onDelete: 'cascade' }),
+  chapterSlug: text('chapter_slug').notNull(),
+  // 'not_started' | 'in_progress' | 'completed'
+  status:      text('status').notNull().default('not_started'),
+  lastAnchor:  text('last_anchor'),
+  percentRead: integer('percent_read').notNull().default(0),
+  createdAt:   integer('created_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
+  updatedAt:   integer('updated_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
+  completedAt: integer('completed_at', { mode: 'timestamp' }),
+}, (t) => [
+  unique().on(t.userId, t.chapterSlug),
+  index('idx_wcp_user_id').on(t.userId),
+]);
+
+export const workbookBookmarks = sqliteTable('workbook_bookmarks', {
+  id:          integer('id').primaryKey({ autoIncrement: true }),
+  userId:      integer('user_id').notNull().references(() => users.id, { onDelete: 'cascade' }),
+  chapterSlug: text('chapter_slug').notNull(),
+  anchor:      text('anchor').notNull(),
+  label:       text('label'),
+  createdAt:   integer('created_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
+}, (t) => [
+  index('idx_wb_user_chapter').on(t.userId, t.chapterSlug),
+]);
+
+export const workbookMcqAttempts = sqliteTable('workbook_mcq_attempts', {
+  id:             integer('id').primaryKey({ autoIncrement: true }),
+  userId:         integer('user_id').notNull().references(() => users.id, { onDelete: 'cascade' }),
+  chapterSlug:    text('chapter_slug').notNull(),
+  questionId:     text('question_id').notNull(),
+  selectedOption: text('selected_option').notNull(),
+  isCorrect:      integer('is_correct', { mode: 'boolean' }).notNull(),
+  attemptedAt:    integer('attempted_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
+}, (t) => [
+  index('idx_wma_user_chapter').on(t.userId, t.chapterSlug),
+]);
+
+export type WorkbookChapterProgress = typeof workbookChapterProgress.$inferSelect;
+export type WorkbookBookmark        = typeof workbookBookmarks.$inferSelect;
+export type WorkbookMcqAttempt      = typeof workbookMcqAttempts.$inferSelect;
+export type WorkbookProgressStatus  = 'not_started' | 'in_progress' | 'completed';
+
 // ─── LexiCore Type Exports ────────────────────────────────────────────────────
 
 export type VocabUnit             = typeof vocabUnits.$inferSelect;
