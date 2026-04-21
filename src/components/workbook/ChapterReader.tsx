@@ -71,8 +71,12 @@ export default function ChapterReader({
     <div ref={containerRef} className="wb-reader">
       {/* Chapter header */}
       <div className="wb-chapter-header">
+        {/* Ghost chapter number — decorative, sits behind the title */}
+        <span className="wb-chapter-ghost-num" aria-hidden>
+          {String(chapter.chapterNumber).padStart(2, '0')}
+        </span>
         <div className="wb-chapter-meta">
-          <Clock size={14} />
+          <Clock size={13} />
           <span>{chapter.estimatedMinutes} min read</span>
         </div>
         <h1 className="wb-chapter-title">

@@ -64,8 +64,8 @@ export default function WorkbookSidebar({ progressMap, onClose }: SidebarProps) 
                         >
                           <span className="wb-sidebar-chapter-icon">
                             {status === 'completed'
-                              ? <CheckCircle size={14} className="text-green-600" />
-                              : <Circle size={14} className={status === 'in_progress' ? 'text-amber-500' : 'text-stone-300'} />
+                              ? <CheckCircle size={13} style={{ color: '#4ADE80' }} />
+                              : <Circle size={13} style={{ color: status === 'in_progress' ? '#FCD34D' : 'rgba(212,176,148,0.3)' }} />
                             }
                           </span>
                           <span className="wb-sidebar-chapter-title">{ch.title}</span>

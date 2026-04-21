@@ -129,17 +129,18 @@ interface BoxCardProps {
   icon?: React.ReactNode;
   label?: string;
   labelColor?: string;
+  /** Pass extra className to wb-box for special variants */
+  className?: string;
 }
 
-function BoxCard({ block, bg, border, borderLeft, icon, label, labelColor }: BoxCardProps) {
+function BoxCard({ block, bg, border, borderLeft, icon, label, labelColor, className }: BoxCardProps) {
   return (
     <div
-      className="wb-box"
+      className={`wb-box${className ? ` ${className}` : ''}`}
       style={{
         background: bg,
         border,
         borderLeft: borderLeft ?? undefined,
-        borderRadius: '10px',
       }}
     >
       {label && (
@@ -159,10 +160,10 @@ export function DefinitionCard({ block }: { block: WorkbookBlock }) {
   return (
     <BoxCard
       block={block}
-      bg="rgba(118,15,19,0.04)"
-      border="1px solid rgba(118,15,19,0.15)"
-      borderLeft="3px solid #760F13"
-      icon={<BookOpen size={13} />}
+      bg="rgba(118,15,19,0.035)"
+      border="1px solid rgba(118,15,19,0.14)"
+      borderLeft="4px solid #760F13"
+      icon={<BookOpen size={12} />}
       label="Definition"
       labelColor="#760F13"
     />
@@ -173,10 +174,10 @@ export function NoteCard({ block }: { block: WorkbookBlock }) {
   return (
     <BoxCard
       block={block}
-      bg="rgba(212,176,148,0.12)"
-      border="1px solid rgba(212,176,148,0.4)"
-      borderLeft="3px solid #D4B094"
-      icon={<Lightbulb size={13} />}
+      bg="rgba(212,176,148,0.1)"
+      border="1px solid rgba(212,176,148,0.38)"
+      borderLeft="4px solid #D4B094"
+      icon={<Lightbulb size={12} />}
       label="Exam Note"
       labelColor="#9A7060"
     />
@@ -187,11 +188,12 @@ export function RuleCard({ block }: { block: WorkbookBlock }) {
   return (
     <BoxCard
       block={block}
-      bg="rgba(26,5,7,0.04)"
-      border="1px solid rgba(26,5,7,0.18)"
-      icon={<AlertCircle size={13} />}
+      bg="rgba(26,5,7,0.035)"
+      border="1.5px solid rgba(26,5,7,0.16)"
+      borderLeft="4px solid #1A0507"
+      icon={<AlertCircle size={12} />}
       label="Rule"
-      labelColor="#3D1A10"
+      labelColor="#1A0507"
     />
   );
 }
@@ -208,9 +210,9 @@ export function UsageNoteCard({ block }: { block: WorkbookBlock }) {
   return (
     <BoxCard
       block={block}
-      bg="rgba(212,176,148,0.07)"
-      border="1px solid rgba(212,176,148,0.35)"
-      borderLeft="3px solid rgba(212,176,148,0.6)"
+      bg="rgba(212,176,148,0.065)"
+      border="1px solid rgba(212,176,148,0.32)"
+      borderLeft="3px solid rgba(212,176,148,0.55)"
       labelColor="#9A7060"
     />
   );
@@ -220,9 +222,10 @@ export function ChallengeCard({ block }: { block: WorkbookBlock }) {
   return (
     <BoxCard
       block={block}
-      bg="rgba(180,83,9,0.05)"
-      border="1px solid rgba(180,83,9,0.2)"
-      icon={<Zap size={13} />}
+      bg="rgba(180,83,9,0.045)"
+      border="1px solid rgba(180,83,9,0.22)"
+      borderLeft="4px solid rgba(180,83,9,0.7)"
+      icon={<Zap size={12} />}
       label="Challenge"
       labelColor="#B45309"
     />
