@@ -6,13 +6,6 @@ import { eq } from 'drizzle-orm';
 import { users } from '@/lib/db';
 import WorkbookShellClient from './WorkbookShellClient';
 import type { WorkbookProgressStatus } from '@/lib/workbook/types';
-import { Lora } from 'next/font/google';
-
-const lora = Lora({
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-wb-body',
-});
 
 // TODO: Remove email gate when workbook is ready for public launch.
 const SUPER_ADMIN_EMAIL = 'ahnaf816@gmail.com';
@@ -46,7 +39,7 @@ export default async function WorkbookShellLayout({ children }: { children: Reac
   }
 
   return (
-    <div className={`${lora.variable} wb-shell`}>
+    <div className="wb-shell">
       <WorkbookShellClient initialProgress={progressMap}>
         {children}
       </WorkbookShellClient>
