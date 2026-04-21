@@ -79,7 +79,7 @@
     {
       "id": "b3",
       "type": "definition",
-      "content": "**Ratio**: A ratio expresses the relationship between two quantities, indicating how many times one contains the other. It can be written in three equivalent ways:\n$$a \\text{ to } b    a : b    \\frac{a}{b}$$\n\n**Key properties**:\n\\begin{itemize}\n    \\item Ratios compare quantities of the same type and unit.\n    \\item Order matters: the ratio $a:b$ is different from $b:a$.\n    \\item Ratios can be simplified exactly like fractions: $6:9 = 2:3$.\n    \\item Multiplying or dividing both terms by the same non-zero constant produces an equivalent ratio: $2:3 = 6:9 = 20:30$.\n\\end{itemize}"
+      "content": "**Ratio**: A ratio expresses the relationship between two quantities, indicating how many times one contains the other. It can be written in three equivalent ways:\n$$a \\text{ to } b \\qquad a : b \\qquad \\dfrac{a}{b}$$\n\n**Key properties**:\n\n• Ratios compare quantities of the same type and unit.\n• Order matters: the ratio $a:b$ is different from $b:a$.\n• Ratios can be simplified exactly like fractions: $6:9 = 2:3$.\n• Multiplying or dividing both terms by the same non-zero constant produces an equivalent ratio: $2:3 = 6:9 = 20:30$."
     },
     {
       "id": "b4",
@@ -95,7 +95,7 @@
     {
       "id": "b6",
       "type": "definition",
-      "content": "**Part-to-Part ratio**: Compares one portion of a whole to another portion of the same whole.\n\n**Part-to-Whole ratio**: Compares one portion of a whole to the entire whole.\n\n\n\n**Example**: In a class of 30 students, 18 are boys and 12 are girls.\n\\begin{itemize}\n    \\item Part-to-part: boys to girls $= 18:12 = 3:2$\n    \\item Part-to-whole: boys to total $= 18:30 = 3:5$\n    \\item Part-to-whole: girls to total $= 12:30 = 2:5$\n\\end{itemize}\n\nNotice that the part-to-whole ratios of all parts must sum to 1 when expressed as fractions: $\\dfrac{3}{5} + \\dfrac{2}{5} = 1$."
+      "content": "**Part-to-Part ratio**: Compares one portion of a whole to another portion of the same whole.\n\n**Part-to-Whole ratio**: Compares one portion of a whole to the entire whole.\n\n**Example**: In a class of 30 students, 18 are boys and 12 are girls.\n\n• Part-to-part: boys to girls $= 18:12 = 3:2$\n• Part-to-whole: boys to total $= 18:30 = 3:5$\n• Part-to-whole: girls to total $= 12:30 = 2:5$\n\nNotice that the part-to-whole ratios of all parts must sum to 1 when expressed as fractions: $\\dfrac{3}{5} + \\dfrac{2}{5} = 1$."
     },
     {
       "id": "b7",
@@ -106,7 +106,7 @@
     {
       "id": "b8",
       "type": "definition",
-      "content": "If two quantities are in the ratio $a:b$ and their combined total is $T$, then:\n\\begin{align*}\n\\text{First quantity} &= \\frac{a}{a+b} \\times T \\\\[4pt]\n\\text{Second quantity} &= \\frac{b}{a+b} \\times T\n\\end{align*}\n\nThis extends naturally to three or more parts: for a ratio $a:b:c$ with total $T$, each part is its share of $(a+b+c)$ multiplied by $T$."
+      "content": "If two quantities are in the ratio $a:b$ and their combined total is $T$, then:\n$$\\begin{aligned}\n\\text{First quantity} &= \\frac{a}{a+b} \\times T \\\\\n\\text{Second quantity} &= \\frac{b}{a+b} \\times T\n\\end{aligned}$$\n\nThis extends naturally to three or more parts: for a ratio $a:b:c$ with total $T$, each part is its share of $(a+b+c)$ multiplied by $T$."
     },
     {
       "id": "b9",
@@ -122,7 +122,7 @@
     {
       "id": "b11",
       "type": "definition",
-      "content": "**Combining two ratios with a shared term**: Given $a:b$ and $b:c$, to find $a:b:c$, make the value of $b$ the same in both ratios by scaling each ratio so that the $b$ terms match (find the LCM of the two $b$ values, then scale accordingly).\n\n\n\n**Example**: Given $a:b = 3:4$ and $b:c = 6:5$.\n\nThe $b$ values are 4 and 6. Their LCM is 12. Scale the first ratio by 3 and the second by 2:\n$$a:b = 9:12    b:c = 12:10$$\nTherefore $a:b:c = 9:12:10$."
+      "content": "**Combining two ratios with a shared term**: Given $a:b$ and $b:c$, to find $a:b:c$, make the value of $b$ the same in both ratios by scaling each ratio so that the $b$ terms match (find the LCM of the two $b$ values, then scale accordingly).\n\n**Example**: Given $a:b = 3:4$ and $b:c = 6:5$.\n\nThe $b$ values are 4 and 6. Their LCM is 12. Scale the first ratio by 3 and the second by 2:\n$$a:b = 9:12 \\qquad b:c = 12:10$$\nTherefore $a:b:c = 9:12:10$."
     },
     {
       "id": "b12",
@@ -143,7 +143,7 @@
     {
       "id": "b15",
       "type": "definition",
-      "content": "**Direct Proportion**: Two quantities $x$ and $y$ are directly proportional if they increase and decrease together at the same rate. Their ratio remains constant.\n$$\\frac{x_1}{y_1} = \\frac{x_2}{y_2}    \\text{equivalently,}    x_1 y_2 = x_2 y_1$$\n\n**Inverse Proportion**: Two quantities $x$ and $y$ are inversely proportional if one increases as the other decreases, such that their product remains constant.\n$$x_1 \\times y_1 = x_2 \\times y_2    \\text{equivalently,}    \\frac{x_1}{x_2} = \\frac{y_2}{y_1}$$"
+      "content": "**Direct Proportion**: Two quantities $x$ and $y$ are directly proportional if they increase and decrease together at the same rate. Their ratio remains constant.\n$$\\frac{x_1}{y_1} = \\frac{x_2}{y_2} \\qquad \\text{equivalently,} \\qquad x_1 y_2 = x_2 y_1$$\n\n**Inverse Proportion**: Two quantities $x$ and $y$ are inversely proportional if one increases as the other decreases, such that their product remains constant.\n$$x_1 \\times y_1 = x_2 \\times y_2 \\qquad \\text{equivalently,} \\qquad \\frac{x_1}{x_2} = \\frac{y_2}{y_1}$$"
     },
     {
       "id": "b16",
@@ -266,7 +266,7 @@
     {
       "id": "b24",
       "type": "definition",
-      "content": "**Percentage**: A percentage is a ratio expressed as a fraction of 100. “Per cent” literally means “per hundred.”\n\\begin{align*}\n\\text{Percentage} &= \\frac{\\text{Part}}{\\text{Whole}} \\times 100% \\\\[4pt]\n\\text{Part} &= \\frac{\\text{Percentage}}{100} \\times \\text{Whole}\n\\end{align*}\n\n**Converting between forms**:\n\\begin{itemize}\n    \\item Percent to decimal: divide by 100.   e.g.\\ $37% = 0.37$\n    \\item Decimal to percent: multiply by 100.   e.g.\\ $0.625 = 62.5%$\n    \\item Fraction to percent: divide numerator by denominator, then multiply by 100.\n\\end{itemize}"
+      "content": "“Per cent” means “per hundred” — a percentage is simply a ratio out of 100.\n\n$$\\begin{aligned}\n\\text{Percentage} &= \\frac{\\text{Part}}{\\text{Whole}} \\times 100\\% \\\\\n\\text{Part} &= \\frac{\\text{Percentage}}{100} \\times \\text{Whole}\n\\end{aligned}$$\n\n**Converting between forms**:\n\n• Percent to decimal: divide by 100. e.g. $37\\% = 0.37$\n• Decimal to percent: multiply by 100. e.g. $0.625 = 62.5\\%$\n• Fraction to percent: divide numerator by denominator, then multiply by 100."
     },
     {
       "id": "b25",
@@ -293,7 +293,7 @@
     {
       "id": "b29",
       "type": "definition",
-      "content": "**Percentage Change**:\n$$%\\text{ Change} = \\frac{\\text{New Value} - \\text{Old Value}}{\\text{Old Value}} \\times 100%$$\n\nA positive result is a percentage increase; a negative result is a percentage decrease. Both cases use the same formula; the sign takes care of itself.\n\n\n\n**Multiplier method** (faster for calculations):\n\\begin{itemize}\n    \\item An increase of $r%$ is equivalent to multiplying by $\\left(1 + \\dfrac{r}{100}\\right)$.\n    \\item A decrease of $r%$ is equivalent to multiplying by $\\left(1 - \\dfrac{r}{100}\\right)$.\n\\end{itemize}"
+      "content": "**Percentage Change**:\n$$\\%\\,\\text{Change} = \\frac{\\text{New Value} - \\text{Old Value}}{\\text{Old Value}} \\times 100\\%$$\n\nA positive result is a percentage increase; a negative result is a percentage decrease. Both cases use the same formula; the sign takes care of itself.\n\n**Multiplier method** (faster for calculations):\n\n• An increase of $r\\%$ is equivalent to multiplying by $\\left(1 + \\dfrac{r}{100}\\right)$.\n• A decrease of $r\\%$ is equivalent to multiplying by $\\left(1 - \\dfrac{r}{100}\\right)$."
     },
     {
       "id": "b30",
@@ -314,7 +314,7 @@
     {
       "id": "b33",
       "type": "definition",
-      "content": "**Successive Percentage Changes**: When two percentage changes $A%$ and $B%$ are applied one after the other, the net percentage change $R$ is:\n$$R = A + B + \\frac{AB}{100}$$\n\nwhere $A$ and $B$ are positive for increases and negative for decreases.\n\n\n\n**Why this works**: Applying $A%$ then $B%$ means multiplying by $\\left(1+\\dfrac{A}{100}\\right)\\left(1+\\dfrac{B}{100}\\right)$. Expanding this product and converting back to a percentage change gives exactly the formula above. The $\\dfrac{AB}{100}$ term is the “interest on the interest”, the extra compounding effect that a simple addition of $A+B$ would miss."
+      "content": "**Successive Percentage Changes**: When two percentage changes $A\\%$ and $B\\%$ are applied one after the other, the net percentage change $R$ is:\n$$R = A + B + \\frac{AB}{100}$$\n\nwhere $A$ and $B$ are positive for increases and negative for decreases.\n\n**Why this works**: Applying $A\\%$ then $B\\%$ means multiplying by $\\left(1+\\dfrac{A}{100}\\right)\\left(1+\\dfrac{B}{100}\\right)$. Expanding this product and converting back to a percentage change gives exactly the formula above. The $\\dfrac{AB}{100}$ term is the \"interest on the interest\", the extra compounding effect that a simple addition of $A+B$ would miss."
     },
     {
       "id": "b34",
@@ -335,17 +335,17 @@
     {
       "id": "b37",
       "type": "definition",
-      "content": "**The Two Factor Model**:\n\nIf a value is **increased** by $\\dfrac{X}{Y}$ (as a fraction), it must be **decreased** by $\\dfrac{X}{X+Y}$ to return to the original.\n\n\n\nIf a value is **decreased** by $\\dfrac{X}{Y}$ (as a fraction), it must be **increased** by $\\dfrac{X}{Y-X}$ to return to the original.\n\n\n\n**Percentage form**: If a value is increased by $r%$, the percentage decrease needed to return to the original is:\n$$\\text{Required decrease} = \\frac{r}{100 + r} \\times 100%$$\n\nIf a value is decreased by $r%$, the percentage increase needed to return to the original is:\n$$\\text{Required increase} = \\frac{r}{100 - r} \\times 100%$$"
+      "content": "**The Two Factor Model**:\n\nIf a value is **increased** by $\\dfrac{X}{Y}$ (as a fraction), it must be **decreased** by $\\dfrac{X}{X+Y}$ to return to the original.\n\nIf a value is **decreased** by $\\dfrac{X}{Y}$ (as a fraction), it must be **increased** by $\\dfrac{X}{Y-X}$ to return to the original.\n\n**Percentage form**: If a value is increased by $r\\%$, the percentage decrease needed to return to the original is:\n$$\\text{Required decrease} = \\frac{r}{100 + r} \\times 100\\%$$\n\nIf a value is decreased by $r\\%$, the percentage increase needed to return to the original is:\n$$\\text{Required increase} = \\frac{r}{100 - r} \\times 100\\%$$"
     },
     {
       "id": "b38",
       "type": "prose",
-      "content": "The reasoning is simple. If the original value is 1 and it increases by $r%$ to become $1 + \\frac{r}{100}$, you need to bring it back down to 1. The decrease as a fraction of the new value is $\\frac{r/100}{1 + r/100}$, which simplifies to $\\frac{r}{100+r}$. The formula is not something to memorise blindly; it is something to understand once, and then it is yours for life."
+      "content": "The reasoning is simple. If the original value is 1 and it increases by $r\\%$ to become $1 + \\frac{r}{100}$, you need to bring it back down to 1. The decrease as a fraction of the new value is $\\frac{r/100}{1 + r/100}$, which simplifies to $\\frac{r}{100+r}$. The formula is not something to memorise blindly; it is something to understand once, and then it is yours for life."
     },
     {
       "id": "b39",
       "type": "note",
-      "content": "**Quick check**: After a 25% increase, the required decrease is $\\dfrac{25}{125} \\times 100 = 20%$. After a 20% decrease, the required increase is $\\dfrac{20}{80} \\times 100 = 25%$. Notice that these two are mirror images of each other; an insight that makes this class of question much faster to handle."
+      "content": "**Quick check**: After a 25% increase, the required decrease is $\\dfrac{25}{125} \\times 100 = 20\\%$. After a 20% decrease, the required increase is $\\dfrac{20}{80} \\times 100 = 25\\%$. Notice that these two are mirror images of each other; an insight that makes this class of question much faster to handle."
     },
     {
       "id": "b40",
@@ -381,7 +381,7 @@
         }
       ],
       "correctLabel": "C",
-      "solutionHint": "**Solution:** $15%$ of $N = 45 \\Rightarrow N = \\dfrac{45}{0.15} = 300$. Then $80%$ of $300 = 0.8 \\times 300 = \\mathbf{240}$."
+      "solutionHint": "**Solution:** $15\\%$ of $N = 45 \\Rightarrow N = \\dfrac{45}{0.15} = 300$. Then $80\\%$ of $300 = 0.8 \\times 300 = \\mathbf{240}$."
     },
     {
       "id": "b42",
@@ -411,7 +411,7 @@
         }
       ],
       "correctLabel": "B",
-      "solutionHint": "**Solution:** Using the Two Factor Model: required decrease $= \\dfrac{r}{100+r} \\times 100 = \\dfrac{40}{140} \\times 100 = 28.\\overline{57}%$."
+      "solutionHint": "**Solution:** Using the Two Factor Model: required decrease $= \\dfrac{r}{100+r} \\times 100 = \\dfrac{40}{140} \\times 100 = 28.\\overline{57}\\%$."
     },
     {
       "id": "b43",
@@ -441,7 +441,7 @@
         }
       ],
       "correctLabel": "A",
-      "solutionHint": "**Solution:** Net $% = A + B + \\dfrac{AB}{100} = 20 + (-15) + \\dfrac{20 \\times (-15)}{100} = 5 - 3 = \\mathbf{2%}$ increase."
+      "solutionHint": "**Solution:** Net $\\% = A + B + \\dfrac{AB}{100} = 20 + (-15) + \\dfrac{20 \\times (-15)}{100} = 5 - 3 = \\mathbf{2\\%}$ increase."
     },
     {
       "id": "b44",
@@ -471,7 +471,7 @@
         }
       ],
       "correctLabel": "C",
-      "solutionHint": "**Solution:** Let Anshu $= 100$, so Vicky $= 175$. After raises: Vicky $= 175 \\times 1.4 = 245$; Anshu $= 100 \\times 1.25 = 125$. Percentage more $= \\dfrac{245-125}{125} \\times 100 = \\dfrac{120}{125} \\times 100 = \\mathbf{96%}$."
+      "solutionHint": "**Solution:** Let Anshu $= 100$, so Vicky $= 175$. After raises: Vicky $= 175 \\times 1.4 = 245$; Anshu $= 100 \\times 1.25 = 125$. Percentage more $= \\dfrac{245-125}{125} \\times 100 = \\dfrac{120}{125} \\times 100 = \\mathbf{96\\%}$."
     },
     {
       "id": "b45",
@@ -951,7 +951,7 @@
     {
       "id": "b63",
       "type": "mcq",
-      "question": "A value is first increased by 25% and then decreased by $x%$ to return to its original value. What is $x$?",
+      "question": "A value is first increased by 25% and then decreased by $x\\%$ to return to its original value. What is $x$?",
       "questionType": "practice",
       "options": [
         {
@@ -1038,7 +1038,7 @@
     {
       "id": "b66",
       "type": "mcq",
-      "question": "Two successive percentage increases of $a%$ and $b%$ result in an overall increase of 44%. If $a = b$, what is $a$?",
+      "question": "Two successive percentage increases of $a\\%$ and $b\\%$ result in an overall increase of 44%. If $a = b$, what is $a$?",
       "questionType": "practice",
       "options": [
         {
@@ -1223,7 +1223,7 @@
     {
       "id": "b74",
       "type": "note",
-      "content": "**Full solutions available.**\nDetailed step-by-step solutions for every practice question and challenge problem in this chapter are available in the WhatsApp group. Scan the code below to access them.\n\n\n\\begin{center}\n\\includegraphics[width=1.3in]{qr_whatsapp}\\[6pt]\n{WhatsApp Group}\n\\end{center}"
+      "content": "**Full solutions available.**\nDetailed step-by-step solutions for every practice question and challenge problem in this chapter are discussed in the Beyond the Horizons WhatsApp group. Join to access them."
     }
   ]
 }
