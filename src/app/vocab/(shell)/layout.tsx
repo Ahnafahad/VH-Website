@@ -5,29 +5,55 @@ import BottomNav from '@/components/vocab/BottomNav';
 import DesktopSidebar from '@/components/vocab/DesktopSidebar';
 import PageTransition from '@/components/vocab/PageTransition';
 import InstallPrompt from '@/components/vocab/InstallPrompt';
+import { DailyDossier } from '@/components/vocab/DailyDossier';
 import { BadgeQueueProvider, useBadgeQueue } from '@/lib/vocab/badges/queue';
 import type { EarnedBadge } from '@/lib/vocab/badges/checker';
+
+function todayKey(): string {
+  return new Date().toISOString().slice(0, 10);
+}
 
 // Inner component — must be inside BadgeQueueProvider to call useBadgeQueue.
 function VocabShellInner({ children }: { children: React.ReactNode }) {
   const { push }          = useBadgeQueue();
   const dailyLoginFired   = useRef(false);
   const [theme, setTheme] = useState<'dark' | 'light'>('dark');
+  const [dossierMessage, setDossierMessage] = useState<string | null>(null);
 
   useEffect(() => {
     const saved = localStorage.getItem('lx-theme') as 'dark' | 'light' | null;
     if (saved) setTheme(saved);
   }, []);
 
-  // Daily login badge check — runs once per mount, guarded by ref to prevent double-fire.
+  // Daily login — first authenticated action of the day triggers:
+  //  1. badge check (streak badges)
+  //  2. L's dossier overlay (once per calendar day)
   useEffect(() => {
     if (dailyLoginFired.current) return;
     dailyLoginFired.current = true;
 
     fetch('/api/vocab/daily-login')
       .then(res => res.ok ? res.json() : null)
-      .then((data: { earnedBadges?: EarnedBadge[] } | null) => {
+      .then(async (data: { awarded?: boolean; earnedBadges?: EarnedBadge[] } | null) => {
         if (data?.earnedBadges?.length) push(data.earnedBadges);
+
+        if (!data?.awarded) return;
+
+        // Day-gate the dossier so a refresh doesn't re-trigger it.
+        const key = `lx-dossier-${todayKey()}`;
+        if (localStorage.getItem(key) === '1') return;
+
+        try {
+          const res = await fetch('/api/vocab/daily-message');
+          if (!res.ok) return;
+          const msg = (await res.json()) as { message?: string };
+          if (msg?.message) {
+            setDossierMessage(msg.message);
+            localStorage.setItem(key, '1');
+          }
+        } catch {
+          // Non-critical — silently swallow.
+        }
       })
       .catch(() => {
         // Non-critical — silently swallow errors.
@@ -86,6 +112,14 @@ function VocabShellInner({ children }: { children: React.ReactNode }) {
 
         {/* Bottom nav — fixed, centered, mobile only */}
         <BottomNav />
+
+        {/* L's daily dossier — fullscreen, first authenticated action of the day */}
+        {dossierMessage && (
+          <DailyDossier
+            message={dossierMessage}
+            onDismiss={() => setDossierMessage(null)}
+          />
+        )}
       </div>
     </>
   );
