@@ -1,34 +1,24 @@
 import { NextResponse } from 'next/server';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
-import { readFileSync, existsSync } from 'fs';
-import { join } from 'path';
+import { isAdminEmail, isSuperAdminEmail } from '@/lib/db-access-control';
 
 export async function GET() {
   try {
     const session = await getServerSession(authOptions);
-
     if (!session?.user?.email) {
-      return NextResponse.json({ isAdmin: false }, { status: 401 });
+      return NextResponse.json({ isAdmin: false, isSuperAdmin: false }, { status: 401 });
     }
 
-    // Check if user is in access control file
-    const accessControlPath = join(process.cwd(), 'access-control.json');
+    const email = session.user.email;
+    const [isAdmin, isSuperAdmin] = await Promise.all([
+      isAdminEmail(email),
+      isSuperAdminEmail(email),
+    ]);
 
-    if (!existsSync(accessControlPath)) {
-      return NextResponse.json({ isAdmin: false }, { status: 404 });
-    }
-
-    const accessControlData = JSON.parse(readFileSync(accessControlPath, 'utf8'));
-    const userEmail = session.user.email.toLowerCase();
-
-    // Check if user is admin
-    const isAdmin = accessControlData.admins?.some((admin: any) => admin.email.toLowerCase() === userEmail) || false;
-
-    return NextResponse.json({ isAdmin });
-
+    return NextResponse.json({ isAdmin, isSuperAdmin });
   } catch (error) {
     console.error('Error checking admin status:', error);
-    return NextResponse.json({ isAdmin: false }, { status: 500 });
+    return NextResponse.json({ isAdmin: false, isSuperAdmin: false }, { status: 500 });
   }
 }

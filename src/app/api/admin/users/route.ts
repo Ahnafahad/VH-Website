@@ -3,6 +3,7 @@ import { db, users, userAccess } from '@/lib/db';
 import { eq, and, or, like, desc, ne, inArray } from 'drizzle-orm';
 import { validateAuth, createErrorResponse, ApiException } from '@/lib/api-utils';
 import { isAdminEmail, isSuperAdminEmail, getUserByEmail, clearAccessControlCache, grantProduct, revokeProduct } from '@/lib/db-access-control';
+import { assertRoleAssignable } from '@/lib/admin/role-guards';
 import type { UserProduct } from '@/lib/db/schema';
 
 // GET — list users
@@ -65,6 +66,9 @@ export async function POST(request: NextRequest) {
     if (!email || !name || !role) throw new ApiException('email, name, role are required', 400);
     if (!email.includes('@'))     throw new ApiException('Invalid email', 400);
 
+    const adminUser = await getUserByEmail(auth.email);
+    assertRoleAssignable(role, adminUser?.role);
+
     const normalEmail = email.toLowerCase().trim();
 
     const existing = await db.select({ id: users.id }).from(users).where(eq(users.email, normalEmail)).get();
@@ -119,6 +123,13 @@ export async function PATCH(request: NextRequest) {
     const adminUser = await getUserByEmail(auth.email);
     if (existing.role === 'super_admin' && adminUser?.role !== 'super_admin') {
       throw new ApiException('Only super admins can modify super admin accounts', 403);
+    }
+
+    if (updates.role !== undefined) {
+      if (existing.id === adminUser?.id) {
+        throw new ApiException('You cannot change your own role', 403);
+      }
+      assertRoleAssignable(updates.role, adminUser?.role);
     }
 
     // Build update set (only defined fields)

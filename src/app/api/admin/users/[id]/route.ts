@@ -9,6 +9,7 @@ import {
   grantProduct,
   revokeProduct,
 } from '@/lib/db-access-control';
+import { assertRoleAssignable } from '@/lib/admin/role-guards';
 import { getServerSession } from 'next-auth/next';
 import { authOptions } from '@/lib/auth';
 import type { UserProduct } from '@/lib/db/schema';
@@ -98,6 +99,13 @@ export async function PATCH(
     const adminUser = await getUserByEmail(adminEmail);
     if (existing.role === 'super_admin' && adminUser?.role !== 'super_admin') {
       throw new ApiException('Only super admins can modify super admin accounts', 403);
+    }
+
+    if (updates['role'] !== undefined) {
+      if (existing.id === adminUser?.id) {
+        throw new ApiException('You cannot change your own role', 403);
+      }
+      assertRoleAssignable(updates['role'], adminUser?.role);
     }
 
     // Build safe update set

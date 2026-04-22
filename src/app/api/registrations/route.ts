@@ -4,12 +4,18 @@ import { eq, desc } from 'drizzle-orm';
 import { validateAuth, createErrorResponse, ApiException } from '@/lib/api-utils';
 import { isAdminEmail } from '@/lib/db-access-control';
 import { sendRegistrationNotification } from '@/lib/email';
+import {
+  calculateMocksPricing,
+  isFullCourse,
+  isMockProgram,
+  type MockProgram,
+} from '@/lib/registration/pricing';
 
 // POST — public registration form submission
 export async function POST(request: NextRequest) {
   try {
     const data = await request.json();
-    const { name, email, phone, educationType, years, programMode, selectedMocks, mockIntent, pricing, selectedFullCourses, referral } = data;
+    const { name, email, phone, educationType, years, programMode, selectedMocks, mockIntent, selectedFullCourses, referral } = data;
 
     const errors: string[] = [];
     if (!name?.trim())                                     errors.push('name is required');
@@ -20,12 +26,18 @@ export async function POST(request: NextRequest) {
     if (!['mocks', 'full'].includes(programMode))          errors.push('programMode must be mocks or full');
     if (programMode === 'mocks') {
       if (!Array.isArray(selectedMocks) || !selectedMocks.length) errors.push('at least one mock must be selected');
+      else if (!selectedMocks.every(isMockProgram))               errors.push('selectedMocks contains invalid tokens');
       if (!['trial', 'full'].includes(mockIntent))                errors.push('mockIntent must be trial or full');
     }
     if (programMode === 'full') {
       if (!Array.isArray(selectedFullCourses) || !selectedFullCourses.length) errors.push('at least one full course must be selected');
+      else if (!selectedFullCourses.every(isFullCourse))                      errors.push('selectedFullCourses contains invalid tokens');
     }
     if (errors.length) throw new ApiException(`Validation failed: ${errors.join(', ')}`, 400);
+
+    const srvPricing = programMode === 'mocks'
+      ? calculateMocksPricing(selectedMocks as MockProgram[])
+      : { subtotal: 0, discount: 0, finalPrice: 0 };
 
     const [saved] = await db.insert(registrations).values({
       name:                name.trim(),
@@ -39,9 +51,9 @@ export async function POST(request: NextRequest) {
       programMode,
       selectedMocks:       programMode === 'mocks' ? JSON.stringify(selectedMocks) : null,
       mockIntent:          programMode === 'mocks' ? mockIntent : null,
-      pricingSubtotal:     pricing?.subtotal   ?? null,
-      pricingDiscount:     pricing?.discount   ?? null,
-      pricingFinalPrice:   pricing?.finalPrice ?? null,
+      pricingSubtotal:     srvPricing.subtotal,
+      pricingDiscount:     srvPricing.discount,
+      pricingFinalPrice:   srvPricing.finalPrice,
       selectedFullCourses: programMode === 'full' ? JSON.stringify(selectedFullCourses) : null,
       referralName:        referral?.name        || null,
       referralInstitution: referral?.institution || null,
@@ -50,7 +62,7 @@ export async function POST(request: NextRequest) {
     }).returning({ id: registrations.id });
 
     // Non-blocking email notification
-    sendRegistrationNotification({ name, email, phone, educationType, programMode, selectedMocks, selectedFullCourses, mockIntent, pricing, referral })
+    sendRegistrationNotification({ name, email, phone, educationType, programMode, selectedMocks, selectedFullCourses, mockIntent, pricing: srvPricing, referral })
       .catch(e => console.error('Email notification failed:', e));
 
     return NextResponse.json({ success: true, registrationId: saved.id }, { status: 201 });

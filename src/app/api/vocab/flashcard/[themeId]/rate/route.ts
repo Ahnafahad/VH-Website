@@ -15,6 +15,8 @@ import { flashcardDelta } from '@/lib/vocab/mastery-score';
 import { checkBadges }                 from '@/lib/vocab/badges/checker';
 import { rateLimit }                   from '@/lib/rate-limit';
 import { canAccessTheme, canAccessWord } from '@/lib/vocab/access-check';
+import { ApiException, createErrorResponse } from '@/lib/api-utils';
+import { ensureDailyLoginAwarded }     from '@/lib/vocab/daily-login';
 
 const bodySchema = z.object({
   wordId:  z.number().int().positive(),
@@ -56,8 +58,49 @@ export async function POST(
     return NextResponse.json({ error: 'Word is locked for your tier' }, { status: 403 });
   }
 
+  try {
   // Wrap all DB writes in a transaction for data consistency
   const result = await db.transaction(async (tx) => {
+    const now = new Date();
+
+    // Word ∈ theme binding: prevents a client from rating a word from a
+    // different theme via this endpoint (and point-farming through themes
+    // they haven't even opened).
+    const [wordRow] = await tx
+      .select({ themeId: vocabWords.themeId })
+      .from(vocabWords)
+      .where(eq(vocabWords.id, wordId))
+      .limit(1);
+    if (!wordRow || wordRow.themeId !== themeId) {
+      throw new ApiException('wordId does not belong to theme', 400);
+    }
+
+    // Hoist session lookup so we can short-circuit on duplicate ratings.
+    const [sess] = await tx
+      .select()
+      .from(vocabFlashcardSessions)
+      .where(and(
+        eq(vocabFlashcardSessions.userId, user.id),
+        eq(vocabFlashcardSessions.themeId, themeId),
+      ))
+      .limit(1);
+
+    let ratings: Record<string, string> = {};
+    if (sess) {
+      try { ratings = JSON.parse(sess.ratings ?? '{}'); } catch { ratings = {}; }
+      if (Object.prototype.hasOwnProperty.call(ratings, String(wordId))) {
+        // Already rated in this session — idempotent no-op. No point delta,
+        // no SRS advance, no session bump. Compliant clients never re-rate.
+        return {
+          pointsEarned: 0,
+          sessWasIncomplete: false,
+          dailyAwarded: false,
+          streakDays: 0,
+          longestStreak: 0,
+        };
+      }
+    }
+
     // Load existing word record
     const [existing] = await tx
       .select()
@@ -68,7 +111,6 @@ export async function POST(
       ))
       .limit(1);
 
-    const now = new Date();
     // SECURITY: pointsEarned is computed entirely server-side from the rating enum.
     // No client-supplied numeric value (points/score) is accepted or used here.
     let pointsEarned = 0;
@@ -188,21 +230,10 @@ export async function POST(
       });
     }
 
-    // Update flashcard session ratings + index
-    const [sess] = await tx
-      .select()
-      .from(vocabFlashcardSessions)
-      .where(and(
-        eq(vocabFlashcardSessions.userId, user.id),
-        eq(vocabFlashcardSessions.themeId, themeId),
-      ))
-      .limit(1);
-
+    // Update flashcard session ratings + index (uses hoisted `sess` + `ratings`).
     let sessWasIncomplete = false;
     if (sess) {
       const wasAlreadyComplete = sess.status === 'complete';
-      let ratings: Record<string, string>;
-      try { ratings = JSON.parse(sess.ratings ?? '{}'); } catch { ratings = {}; }
       ratings[wordId] = rating;
       const newIndex   = (sess.currentCardIndex ?? 0) + 1;
       const newStatus  = isLast ? 'complete' : 'in_progress';
@@ -223,25 +254,39 @@ export async function POST(
       }
     }
 
-    // Award points
+    // Award points (daily-login helper owns lastStudyDate — don't write it here).
     if (pointsEarned > 0) {
       await tx.update(vocabUserProgress)
         .set({
           totalPoints:  sql`${vocabUserProgress.totalPoints} + ${pointsEarned}`,
           weeklyPoints: sql`${vocabUserProgress.weeklyPoints} + ${pointsEarned}`,
-          lastStudyDate: now,
           updatedAt:    now,
         })
         .where(eq(vocabUserProgress.userId, user.id));
     }
 
-    return { pointsEarned, sessWasIncomplete };
+    const daily = await ensureDailyLoginAwarded(user.id, now, tx);
+
+    return {
+      pointsEarned,
+      sessWasIncomplete,
+      dailyAwarded:  daily.awarded,
+      streakDays:    daily.streakDays,
+      longestStreak: daily.longestStreak,
+    };
   });
 
   // Check flashcard-related badges OUTSIDE the transaction (fire-and-forget style).
-  let earnedBadges: { id: string; name: string; description: string }[] = [];
+  let earnedBadges: { id: string; name: string; description: string; category?: string }[] = [];
   if (isLast && result.sessWasIncomplete) {
     earnedBadges = await checkBadges(user.id, 'flashcard_complete').catch((err) => { console.error('[badge-check:flashcard]', err); return []; });
+  }
+  if (result.dailyAwarded) {
+    const streakBadges = await checkBadges(user.id, 'streak_update', {
+      streakDays:    result.streakDays,
+      longestStreak: result.longestStreak,
+    }).catch((err) => { console.error('[badge-check:streak]', err); return []; });
+    earnedBadges = earnedBadges.concat(streakBadges);
   }
 
   revalidateTag(VocabCacheTag.home(session.user.email!));
@@ -249,4 +294,7 @@ export async function POST(
   revalidateTag(VocabCacheTag.flashcard(session.user.email!, themeId));
 
   return NextResponse.json({ ok: true, pointsEarned: result.pointsEarned, earnedBadges });
+  } catch (error) {
+    return createErrorResponse(error);
+  }
 }

@@ -4,19 +4,11 @@ import { useState, useMemo } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'motion/react';
 import { ArrowRight, ArrowLeft, ArrowUpRight, Check, Loader2 } from 'lucide-react';
+import { MOCK_PRICES, calculateMocksPricing, type MockProgram, type FullCourse } from '@/lib/registration/pricing';
 
 type EducationType = 'hsc' | 'alevels' | null;
 type ProgramMode   = 'mocks' | 'full' | null;
-type MockProgram   = 'du-iba' | 'bup-iba' | 'du-fbs' | 'bup-fbs';
-type FullCourse    = 'iba-combined' | 'du-fbs-full' | 'bup-fbs-full';
 type MockIntent    = 'trial' | 'full' | null;
-
-const MOCK_PRICES: Record<MockProgram, number> = {
-  'du-iba':  3000,
-  'bup-iba': 2200,
-  'du-fbs':  2500,
-  'bup-fbs': 2000,
-};
 
 const MOCK_LABELS: Record<MockProgram, { title: string; short: string; detail: string }> = {
   'du-iba':  {
@@ -97,13 +89,10 @@ export default function CoursesRegistrationPage() {
   const [refBatch,setRefBatch]= useState('');
   const [submitting, setSubmitting] = useState(false);
 
-  // Pricing
+  // Pricing (shared with server — see src/lib/registration/pricing.ts)
   const { subtotal, discount, finalPrice } = useMemo(() => {
     if (mode !== 'mocks') return { subtotal: 0, discount: 0, finalPrice: 0 };
-    const sub = mocks.reduce((s, p) => s + MOCK_PRICES[p], 0);
-    const rate = mocks.length >= 4 ? 0.25 : mocks.length === 3 ? 0.15 : mocks.length === 2 ? 0.05 : 0;
-    const disc = sub * rate;
-    return { subtotal: sub, discount: disc, finalPrice: sub - disc };
+    return calculateMocksPricing(mocks);
   }, [mocks, mode]);
 
   // Validation

@@ -8,12 +8,13 @@ import {
   db, users, vocabUserWordRecords, vocabUserProgress,
 } from '@/lib/db';
 import { eq, and, sql }                from 'drizzle-orm';
-import { nextSrsState, isLongGap }    from '@/lib/vocab/srs/engine';
+import { nextSrsState, initialSrsState, isLongGap } from '@/lib/vocab/srs/engine';
 import { maxIntervalForDeadline }     from '@/lib/vocab/srs/deadline-cap';
 import type { SrsRating }              from '@/lib/vocab/srs/engine';
 import { flashcardDelta }              from '@/lib/vocab/mastery-score';
 import { rateLimit }                   from '@/lib/rate-limit';
 import { canAccessWord }               from '@/lib/vocab/access-check';
+import { ensureDailyLoginAwarded }     from '@/lib/vocab/daily-login';
 
 const bodySchema = z.object({
   wordId: z.number().int().positive(),
@@ -52,9 +53,69 @@ export async function POST(req: NextRequest) {
     ))
     .limit(1);
 
-  if (!existing) return NextResponse.json({ ok: true }); // no record to update
+  const now = new Date();
 
-  const now        = new Date();
+  // First exposure (letter-study flow or any untouched word): seed a full record
+  // with SRS state and award first-exposure + rating points.
+  if (!existing) {
+    const srsState   = initialSrsState();
+    const wasCorrect = rating === 'got_it';
+    const wasWrong   = rating === 'missed_it';
+    const isUnsure   = rating === 'unsure';
+    const pointsEarned = (wasCorrect ? 10 : wasWrong ? 2 : 0) + 1; // + first-exposure
+
+    const initDelta = flashcardDelta(rating, 0);
+
+    await db.insert(vocabUserWordRecords).values({
+      userId:             user.id,
+      wordId,
+      masteryScore:       initDelta.scoreDelta,
+      masteryLevel:       initDelta.newLevel,
+      srsIntervalDays:    srsState.intervalDays,
+      srsEaseFactor:      srsState.easeFactor,
+      srsRepetitions:     srsState.repetitions,
+      srsNextReviewDate:  srsState.nextReviewDate,
+      inSrsPool:          true,
+      totalAttempts:      isUnsure ? 0 : 1,
+      correctAttempts:    wasCorrect ? 1 : 0,
+      accuracyRate:       wasCorrect ? 1 : 0,
+      consecutiveCorrect: wasCorrect ? 1 : 0,
+      consecutiveWrong:   wasWrong   ? 1 : 0,
+      exposureCount:      1,
+      exposurePoints:     1,
+      flashcardGotItCount:  rating === 'got_it'    ? 1 : 0,
+      flashcardUnsureCount: rating === 'unsure'    ? 1 : 0,
+      flashcardMissedCount: rating === 'missed_it' ? 1 : 0,
+      lastInteractionAt:  now,
+      lastSeenAt:         now,
+      lastCorrectAt:      wasCorrect ? now : null,
+      longGapCorrect:     false,
+      timesAsDistractor:  0,
+    });
+
+    if (pointsEarned > 0) {
+      await db.update(vocabUserProgress)
+        .set({
+          totalPoints:  sql`${vocabUserProgress.totalPoints}  + ${pointsEarned}`,
+          weeklyPoints: sql`${vocabUserProgress.weeklyPoints} + ${pointsEarned}`,
+          updatedAt:    now,
+        })
+        .where(eq(vocabUserProgress.userId, user.id));
+      await ensureDailyLoginAwarded(user.id, now);
+    }
+
+    revalidateTag(VocabCacheTag.home(session.user.email!));
+    revalidateTag(VocabCacheTag.practiceUi(session.user.email!));
+    return NextResponse.json({ ok: true, pointsEarned });
+  }
+
+  // Due-date gate: prevents re-rating already-reviewed words for point farming.
+  // UI only surfaces due words via getPracticeData; this is the server-side
+  // enforcement. Silent success so compliant clients never see an error.
+  if (existing.inSrsPool && existing.srsNextReviewDate && existing.srsNextReviewDate > now) {
+    return NextResponse.json({ ok: true, pointsEarned: 0, notDue: true });
+  }
+
   const wasCorrect = rating === 'got_it';
   const wasWrong   = rating === 'missed_it';
   const isUnsure   = rating === 'unsure';
@@ -121,16 +182,15 @@ export async function POST(req: NextRequest) {
       eq(vocabUserWordRecords.wordId, wordId),
     ));
 
-  // Update points
   if (pointsEarned > 0) {
     await db.update(vocabUserProgress)
       .set({
-        totalPoints:   sql`${vocabUserProgress.totalPoints} + ${pointsEarned}`,
-        weeklyPoints:  sql`${vocabUserProgress.weeklyPoints} + ${pointsEarned}`,
-        lastStudyDate: now,
-        updatedAt:     now,
+        totalPoints:  sql`${vocabUserProgress.totalPoints}  + ${pointsEarned}`,
+        weeklyPoints: sql`${vocabUserProgress.weeklyPoints} + ${pointsEarned}`,
+        updatedAt:    now,
       })
       .where(eq(vocabUserProgress.userId, user.id));
+    await ensureDailyLoginAwarded(user.id, now);
   }
 
   revalidateTag(VocabCacheTag.home(session.user.email!));

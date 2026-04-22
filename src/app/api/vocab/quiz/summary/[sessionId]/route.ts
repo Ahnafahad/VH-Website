@@ -107,8 +107,11 @@ export async function GET(
         })
         .where(eq(vocabQuizSessions.id, sessionId));
 
-      // Unit complete bonus (+50) — study sessions only, when all themes in the
-      // unit now have at least one completed study quiz.
+      // Unit complete bonus (+50) — study sessions only. Awarded exactly once per
+      // (user, unit): fires on the session that tipped the *last* theme from
+      // "not yet completed" to "completed". Idempotent across retakes because a
+      // theme's first completion has the smallest row id; retakes produce larger
+      // ids and can never become MIN(id) for that theme.
       if (session.sessionType === 'study' && session.themeId) {
         const [theme] = await db
           .select({ unitId: vocabThemes.unitId })
@@ -125,9 +128,11 @@ export async function GET(
           const allThemeIds = allUnitThemes.map(t => t.id);
 
           if (allThemeIds.length > 0) {
-            // Count distinct themes with ≥1 completed study quiz in this unit
-            const doneRows = await db
-              .select({ themeId: vocabQuizSessions.themeId })
+            const firstCompletes = await db
+              .select({
+                themeId: vocabQuizSessions.themeId,
+                firstId: sql<number>`MIN(${vocabQuizSessions.id})`,
+              })
               .from(vocabQuizSessions)
               .where(
                 and(
@@ -139,8 +144,9 @@ export async function GET(
               )
               .groupBy(vocabQuizSessions.themeId);
 
-            if (doneRows.length === allThemeIds.length) {
-              unitBonus = 50;
+            if (firstCompletes.length === allThemeIds.length) {
+              const maxFirstId = Math.max(...firstCompletes.map(r => Number(r.firstId)));
+              if (maxFirstId === sessionId) unitBonus = 50;
             }
           }
         }
