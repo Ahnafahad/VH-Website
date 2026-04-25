@@ -6,7 +6,7 @@ import { authOptions }                 from '@/lib/auth';
 import { VocabCacheTag }               from '@/lib/vocab/cache-keys';
 import {
   db, users, vocabFlashcardSessions, vocabUserWordRecords,
-  vocabUserProgress, vocabWords,
+  vocabUserProgress, vocabWords, vocabSrsEvents,
 } from '@/lib/db';
 import { eq, and, sql }                from 'drizzle-orm';
 import { nextSrsState, initialSrsState, isLongGap } from '@/lib/vocab/srs/engine';
@@ -227,6 +227,34 @@ export async function POST(
         timesAsDistractor:  0,
         createdAt:          now,
         updatedAt:          now,
+      });
+    }
+
+    // Log SRS event for audit trail (validates interval growth over time).
+    {
+      const intervalBefore   = existing ? (existing.srsIntervalDays ?? 1) : 0;
+      const repsBefore       = existing ? (existing.srsRepetitions ?? 0)  : 0;
+      const srsState = existing
+        ? nextSrsState(
+            { intervalDays: existing.srsIntervalDays ?? 1, easeFactor: existing.srsEaseFactor ?? 2.5,
+              repetitions: existing.srsRepetitions ?? 0, nextReviewDate: existing.srsNextReviewDate ?? now },
+            rating, intervalCap,
+          )
+        : initialSrsState();
+      await tx.insert(vocabSrsEvents).values({
+        userId:            user.id,
+        wordId,
+        eventType:         'flashcard',
+        rating,
+        masteryBefore:     existing?.masteryScore ?? 0,
+        masteryAfter:      (existing?.masteryScore ?? 0) + flashcardDelta(rating, existing?.masteryScore ?? 0).scoreDelta,
+        intervalBefore,
+        intervalAfter:     srsState.intervalDays,
+        repetitionsBefore: repsBefore,
+        repetitionsAfter:  srsState.repetitions,
+        nextReviewBefore:  existing?.srsNextReviewDate ?? null,
+        nextReviewAfter:   srsState.nextReviewDate,
+        createdAt:         now,
       });
     }
 

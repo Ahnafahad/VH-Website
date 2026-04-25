@@ -55,6 +55,75 @@ export const mathScores = sqliteTable('math_scores', {
   playedAt:          integer('played_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
 });
 
+// ─── Math Sessions ────────────────────────────────────────────────────────────
+// One row per started game. Replaces math_scores for new flow but math_scores
+// is still dual-written for legacy leaderboard compatibility.
+
+export const mathSessions = sqliteTable('math_sessions', {
+  id:                integer('id').primaryKey({ autoIncrement: true }),
+  userId:            integer('user_id').notNull().references(() => users.id, { onDelete: 'cascade' }),
+  operations:        text('operations').notNull(),      // JSON string[]
+  startDifficulty:   real('start_difficulty').notNull(),
+  adaptive:          integer('adaptive', { mode: 'boolean' }).notNull().default(false),
+  timeLimit:         real('time_limit').notNull(),      // minutes
+  totalScore:        integer('total_score').notNull().default(0),
+  questionsAnswered: integer('questions_answered').notNull().default(0),
+  questionsCorrect:  integer('questions_correct').notNull().default(0),
+  endingSkill:       text('ending_skill'),              // JSON { addition: 2.8, ... }
+  // 'in_progress' | 'complete' | 'abandoned'
+  status:            text('status').notNull().default('in_progress'),
+  startedAt:         integer('started_at',  { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
+  finishedAt:        integer('finished_at', { mode: 'timestamp' }),
+}, (t) => [
+  index('idx_math_sessions_user_started').on(t.userId, t.startedAt),
+]);
+
+// ─── Math Question Attempts ───────────────────────────────────────────────────
+// One row per question answered/skipped within a session.
+
+export const mathQuestionAttempts = sqliteTable('math_question_attempts', {
+  id:             integer('id').primaryKey({ autoIncrement: true }),
+  sessionId:      integer('session_id').notNull().references(() => mathSessions.id, { onDelete: 'cascade' }),
+  userId:         integer('user_id').notNull().references(() => users.id, { onDelete: 'cascade' }),
+  operation:      text('operation').notNull(),
+  difficulty:     real('difficulty').notNull(),
+  num1:           integer('num1').notNull(),
+  num2:           integer('num2').notNull(),
+  correctAnswer:  integer('correct_answer').notNull(),
+  userAnswer:     integer('user_answer'),
+  isCorrect:      integer('is_correct',   { mode: 'boolean' }).notNull(),
+  wasSkipped:     integer('was_skipped',  { mode: 'boolean' }).notNull().default(false),
+  responseTimeMs: integer('response_time_ms').notNull(),
+  wasSuspicious:  integer('was_suspicious', { mode: 'boolean' }).notNull().default(false),
+  pointsEarned:   integer('points_earned').notNull().default(0),
+  answeredAt:     integer('answered_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
+}, (t) => [
+  index('idx_mqa_user_op_time').on(t.userId, t.operation, t.answeredAt),
+  index('idx_mqa_session').on(t.sessionId),
+]);
+
+// ─── Math User Progress ───────────────────────────────────────────────────────
+// Per-user rollup: totals, adaptive skill state, settings.
+
+export const mathUserProgress = sqliteTable('math_user_progress', {
+  id:                  integer('id').primaryKey({ autoIncrement: true }),
+  userId:              integer('user_id').notNull().unique().references(() => users.id, { onDelete: 'cascade' }),
+  totalGames:          integer('total_games').notNull().default(0),
+  totalQuestions:      integer('total_questions').notNull().default(0),
+  totalCorrect:        integer('total_correct').notNull().default(0),
+  overallAccuracy:     real('overall_accuracy').notNull().default(0),
+  bestScore:           integer('best_score').notNull().default(0),
+  skillAddition:       real('skill_addition').notNull().default(2.5),
+  skillSubtraction:    real('skill_subtraction').notNull().default(2.5),
+  skillMultiplication: real('skill_multiplication').notNull().default(2.5),
+  skillDivision:       real('skill_division').notNull().default(2.5),
+  preferredDifficulty: real('preferred_difficulty').notNull().default(2.5),
+  soundEnabled:        integer('sound_enabled',   { mode: 'boolean' }).notNull().default(true),
+  hapticsEnabled:      integer('haptics_enabled', { mode: 'boolean' }).notNull().default(true),
+  createdAt:           integer('created_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
+  updatedAt:           integer('updated_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
+});
+
 // ─── Vocab Scores ─────────────────────────────────────────────────────────────
 
 export const vocabScores = sqliteTable('vocab_scores', {
@@ -159,6 +228,15 @@ export type NewFreeSignup = typeof freeSignups.$inferInsert;
 export type UserProduct = 'iba' | 'fbs' | 'fbs_detailed';
 export type UserRole    = 'super_admin' | 'admin' | 'instructor' | 'student';
 export type UserStatus  = 'active' | 'inactive' | 'pending';
+
+export type MathSession         = typeof mathSessions.$inferSelect;
+export type NewMathSession      = typeof mathSessions.$inferInsert;
+export type MathQuestionAttempt = typeof mathQuestionAttempts.$inferSelect;
+export type NewMathAttempt      = typeof mathQuestionAttempts.$inferInsert;
+export type MathUserProgress    = typeof mathUserProgress.$inferSelect;
+export type NewMathUserProgress = typeof mathUserProgress.$inferInsert;
+export type MathOperation       = 'addition' | 'subtraction' | 'multiplication' | 'division';
+export type MathSessionStatus   = 'in_progress' | 'complete' | 'abandoned';
 
 export interface UserWithProducts extends User {
   products: UserProduct[];
@@ -346,6 +424,33 @@ export const vocabQuizAnswers = sqliteTable('vocab_quiz_answers', {
   answeredAt:     integer('answered_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
 });
 
+// ─── SRS Events (audit trail) ────────────────────────────────────────────────
+// One row per flashcard rating or quiz answer. Lets us trace how each word's
+// SRS interval and mastery evolve over time — essential for validating the
+// spaced-repetition engine against real user data.
+
+export const vocabSrsEvents = sqliteTable('vocab_srs_events', {
+  id:               integer('id').primaryKey({ autoIncrement: true }),
+  userId:           integer('user_id').notNull().references(() => users.id, { onDelete: 'cascade' }),
+  wordId:           integer('word_id').notNull().references(() => vocabWords.id, { onDelete: 'cascade' }),
+  // 'flashcard' | 'quiz'
+  eventType:        text('event_type').notNull(),
+  // flashcard: 'got_it' | 'unsure' | 'missed_it'  /  quiz: 'correct' | 'wrong'
+  rating:           text('rating').notNull(),
+  masteryBefore:    real('mastery_before').notNull(),
+  masteryAfter:     real('mastery_after').notNull(),
+  intervalBefore:   real('interval_before').notNull(),   // srs_interval_days before
+  intervalAfter:    real('interval_after').notNull(),    // srs_interval_days after
+  repetitionsBefore: integer('repetitions_before').notNull(),
+  repetitionsAfter:  integer('repetitions_after').notNull(),
+  nextReviewBefore: integer('next_review_before', { mode: 'timestamp' }),
+  nextReviewAfter:  integer('next_review_after',  { mode: 'timestamp' }),
+  createdAt:        integer('created_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
+}, (t) => [
+  index('idx_srs_events_user_word').on(t.userId, t.wordId),
+  index('idx_srs_events_user_time').on(t.userId, t.createdAt),
+]);
+
 // ─── Badges ───────────────────────────────────────────────────────────────────
 // One row per (user × badge) — tracks progress and earned status.
 
@@ -474,6 +579,7 @@ export type VocabUserWordRecord   = typeof vocabUserWordRecords.$inferSelect;
 export type VocabFlashcardSession = typeof vocabFlashcardSessions.$inferSelect;
 export type VocabQuizSession      = typeof vocabQuizSessions.$inferSelect;
 export type VocabQuizAnswer       = typeof vocabQuizAnswers.$inferSelect;
+export type VocabSrsEvent         = typeof vocabSrsEvents.$inferSelect;
 export type VocabUserBadge        = typeof vocabUserBadges.$inferSelect;
 
 export type VocabMasteryLevel = 'new' | 'learning' | 'familiar' | 'strong' | 'mastered';

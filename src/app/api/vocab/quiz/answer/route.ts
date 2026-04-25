@@ -24,6 +24,7 @@ import {
   vocabConfusionPairs,
   vocabUserProgress,
   vocabWords,
+  vocabSrsEvents,
 } from '@/lib/db/schema';
 import { safeApiHandler, validateAuth, ApiException } from '@/lib/api-utils';
 import { VocabCacheTag } from '@/lib/vocab/cache-keys';
@@ -192,6 +193,23 @@ export async function POST(req: NextRequest) {
           updatedAt:          now,
         },
       });
+
+    // Log SRS event for audit trail.
+    await db.insert(vocabSrsEvents).values({
+      userId:            user.id,
+      wordId:            question.correctWordId,
+      eventType:         'quiz',
+      rating:            isCorrect ? 'correct' : 'wrong',
+      masteryBefore:     currentScore,
+      masteryAfter:      newScore,
+      intervalBefore:    wordARecord?.srsIntervalDays ?? 0,
+      intervalAfter:     newSrs?.intervalDays ?? (wordARecord?.srsIntervalDays ?? 1),
+      repetitionsBefore: wordARecord?.srsRepetitions ?? 0,
+      repetitionsAfter:  newSrs?.repetitions ?? (wordARecord?.srsRepetitions ?? 0),
+      nextReviewBefore:  wordARecord?.srsNextReviewDate ?? null,
+      nextReviewAfter:   newSrs?.nextReviewDate ?? now,
+      createdAt:         now,
+    });
 
     // ── Update Word B (wrongly selected word) — confusion penalty ─────────────
     let wordBUpdated = false;
