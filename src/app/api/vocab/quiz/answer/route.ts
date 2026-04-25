@@ -194,8 +194,8 @@ export async function POST(req: NextRequest) {
         },
       });
 
-    // Log SRS event for audit trail.
-    await db.insert(vocabSrsEvents).values({
+    // Log SRS event for beta-tester audit trail (Habib only).
+    if (user.id === 10) await db.insert(vocabSrsEvents).values({
       userId:            user.id,
       wordId:            question.correctWordId,
       eventType:         'quiz',
