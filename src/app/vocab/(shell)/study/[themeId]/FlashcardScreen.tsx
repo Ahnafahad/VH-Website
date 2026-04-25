@@ -167,7 +167,7 @@ function SessionComplete({
 }
 
 /* ─── Flip card ─────────────────────────────────────────── */
-function FlipCard({ word, isFlipped, onFlip }: { word: FlashcardWord; isFlipped: boolean; onFlip: () => void }) {
+function FlipCard({ word, isFlipped, onFlip, onFlipBack }: { word: FlashcardWord; isFlipped: boolean; onFlip: () => void; onFlipBack: () => void }) {
   return (
     <div
       className="relative w-full"
@@ -251,9 +251,26 @@ function FlipCard({ word, isFlipped, onFlip }: { word: FlashcardWord; isFlipped:
             <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '1.1rem', fontStyle: 'italic', color: 'var(--color-lx-accent-red)', fontWeight: 600 }}>
               {word.word}
             </span>
-            {word.partOfSpeech && (
-              <span className="text-xs" style={{ color: 'var(--color-lx-text-muted)' }}>{word.partOfSpeech}</span>
-            )}
+            <div className="flex items-center gap-2">
+              {word.partOfSpeech && (
+                <span className="text-xs" style={{ color: 'var(--color-lx-text-muted)' }}>{word.partOfSpeech}</span>
+              )}
+              <motion.button
+                onClick={onFlipBack}
+                whileTap={{ scale: 0.88 }}
+                style={{
+                  width: 26, height: 26, flexShrink: 0,
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  borderRadius: '50%',
+                  background: 'var(--color-lx-elevated)',
+                  border: '1px solid var(--color-lx-border)',
+                  color: 'var(--color-lx-text-muted)',
+                }}
+                aria-label="Flip back"
+              >
+                <RotateCcw size={12} />
+              </motion.button>
+            </div>
           </div>
 
           {/* Definition */}
@@ -471,7 +488,7 @@ export default function FlashcardScreen({ data }: { data: FlashcardSessionData }
             transition={{ duration: 0.25, ease: 'easeOut' }}
             style={{ flex: 1, display: 'flex', flexDirection: 'column', minHeight: 0 }}
           >
-            <FlipCard word={word} isFlipped={flipped} onFlip={() => setFlipped(true)} />
+            <FlipCard word={word} isFlipped={flipped} onFlip={() => setFlipped(true)} onFlipBack={() => setFlipped(false)} />
           </motion.div>
         </AnimatePresence>
 
