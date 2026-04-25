@@ -20,7 +20,7 @@ const principles = [
     index: 'III.',
     title: 'A schedule built around your A-levels',
     body:
-      'Three sessions a week starting July. Online or offline in Dhanmondi. Built to run alongside your exam season, not fight it.',
+      'Three sessions a week starting July. Offline classes in Dhanmondi, or online. Built to run alongside your exam season, not fight it.',
   },
 ];
 

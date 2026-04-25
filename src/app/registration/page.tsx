@@ -99,7 +99,7 @@ export default function RegistrationChooserPage() {
           className="mt-8 font-sans text-base sm:text-lg text-[#1A0507]/60 leading-relaxed max-w-xl"
         >
           Two doors. One opens to the free games and resources. The other to the full {year} cohort.
-          Pick the one that matches where you are today.
+          You know which one.
         </motion.p>
 
         <div className="mt-16 lg:mt-20 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10">

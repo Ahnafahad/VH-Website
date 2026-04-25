@@ -8,15 +8,14 @@ import { Mail, Phone } from 'lucide-react';
 const quickLinks = [
   { label: 'Home', href: '/' },
   { label: 'Programs', href: '/program' },
-  { label: 'Eligibility Checker', href: '/eligibility-checker' },
+  { label: 'About', href: '/#about' },
   { label: 'Registration', href: '/registration' },
+  { label: 'Eligibility Checker', href: '/eligibility-checker' },
 ];
 
 const programLinks = [
   { label: 'IBA DU', href: '/program#iba' },
-  { label: 'BUP IBA / BBA', href: '/program#iba' },
   { label: 'DU FBS (C-Unit)', href: '/program#fbs' },
-  { label: 'BUP FBS', href: '/program#fbs' },
 ];
 
 const Footer = () => {
@@ -45,14 +44,13 @@ const Footer = () => {
 
       <div className="relative max-w-[1400px] mx-auto px-6 sm:px-10 lg:px-16 pt-24 pb-10">
         {/* Columns */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-16 mb-20">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16 mb-16">
           {/* Quick links */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.9, delay: 0.1 }}
-            className="md:col-span-4"
           >
             <h4 className="font-sans text-[10px] tracking-[0.3em] uppercase text-[#A86E58] mb-5">
               Sections
@@ -72,7 +70,6 @@ const Footer = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.9, delay: 0.15 }}
-            className="md:col-span-4"
           >
             <h4 className="font-sans text-[10px] tracking-[0.3em] uppercase text-[#A86E58] mb-5">
               Programs
@@ -92,7 +89,6 @@ const Footer = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.9, delay: 0.2 }}
-            className="md:col-span-4"
           >
             <h4 className="font-sans text-[10px] tracking-[0.3em] uppercase text-[#A86E58] mb-5">
               Correspondence
@@ -100,26 +96,26 @@ const Footer = () => {
             <div className="space-y-4">
               <a
                 href="mailto:ahnafahad@vh-beyondthehorizons.org"
-                className="group flex items-start gap-3 text-sm text-[#FAF5EF]/60 hover:text-[#FAF5EF] transition-colors"
+                className="group flex items-center gap-3 text-sm text-[#FAF5EF]/60 hover:text-[#FAF5EF] transition-colors"
               >
                 <Mail
-                  className="w-4 h-4 mt-0.5 text-[#D4B094]/70 group-hover:text-[#D4B094] flex-shrink-0 transition-colors"
+                  className="w-4 h-4 text-[#D4B094]/70 group-hover:text-[#D4B094] flex-shrink-0 transition-colors"
                   strokeWidth={1.5}
                 />
-                <span className="break-all">ahnafahad@vh-beyondthehorizons.org</span>
+                <span className="break-all min-w-0">ahnafahad@vh-beyondthehorizons.org</span>
               </a>
               <a
                 href="tel:+8801234567890"
                 className="group flex items-center gap-3 text-sm text-[#FAF5EF]/60 hover:text-[#FAF5EF] transition-colors"
               >
                 <Phone
-                  className="w-4 h-4 text-[#D4B094]/70 group-hover:text-[#D4B094] transition-colors"
+                  className="w-4 h-4 text-[#D4B094]/70 group-hover:text-[#D4B094] flex-shrink-0 transition-colors"
                   strokeWidth={1.5}
                 />
                 +880 1234 567 890
               </a>
               <div className="flex items-start gap-3 text-sm text-[#FAF5EF]/40 leading-relaxed">
-                <span className="w-4 h-px bg-[#D4B094]/40 mt-2.5 flex-shrink-0" />
+                <span className="w-4 h-px bg-[#D4B094]/40 mt-[0.6em] flex-shrink-0" />
                 <span>
                   House 31/A, Road 6
                   <br />
@@ -128,6 +124,27 @@ const Footer = () => {
               </div>
             </div>
           </motion.div>
+        </div>
+
+        {/* Bottom bar */}
+        <div className="border-t border-[#D4B094]/10 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="font-sans text-[11px] tracking-wide text-[#FAF5EF]/25">
+            © 2025 Beyond the Horizons. All rights reserved.
+          </p>
+          <div className="flex items-center gap-6">
+            <Link
+              href="/privacy"
+              className="font-sans text-[11px] text-[#FAF5EF]/25 hover:text-[#FAF5EF]/55 transition-colors duration-300"
+            >
+              Privacy Policy
+            </Link>
+            <Link
+              href="/terms"
+              className="font-sans text-[11px] text-[#FAF5EF]/25 hover:text-[#FAF5EF]/55 transition-colors duration-300"
+            >
+              Terms of Service
+            </Link>
+          </div>
         </div>
       </div>
     </footer>

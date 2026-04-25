@@ -88,7 +88,7 @@ export function RegistrationCTASection() {
               className="mt-10 font-sans text-[#FAF5EF]/60 text-base sm:text-lg leading-relaxed max-w-xl"
             >
               Registration for the {year} cohort is open. Three sessions a week, July through
-              admissions season. Every instructor sat the exams you&rsquo;re about to write.
+              admissions season. Every instructor has sat these exams — not just taught them.
             </motion.p>
           </div>
 

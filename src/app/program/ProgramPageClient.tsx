@@ -27,7 +27,7 @@ type Program = {
   subjects: { name: string; detail: string }[];
   stats: StatItem[];
   mocks: { title: string; count: number; detail: string }[];
-  outcome: string;
+  outcome?: string;
   tone: 'light' | 'dark';
 };
 
@@ -64,7 +64,7 @@ const iba: Program = {
     {
       title: 'DU IBA format',
       count: 10,
-      detail: 'Cut from past papers. Tight timing, full-length, weekly review.',
+      detail: 'Cut from past papers. Full-length. Reviewed in class.',
     },
     {
       title: 'BUP IBA format',
@@ -117,7 +117,6 @@ const fbs: Program = {
       detail: 'BUP-specific pattern. Same prep, targeted calibration.',
     },
   ],
-  outcome: 'The accounting-heavy paper deserves an accounting-heavy program.',
   tone: 'dark',
 };
 
@@ -643,26 +642,28 @@ function ProgramSection({ program, index }: { program: Program; index: number })
         </div>
 
         {/* Outcome quote */}
-        <motion.blockquote
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 1 }}
-          className="relative max-w-3xl mx-auto text-center mt-12"
-        >
-          <span
-            className="font-heading italic text-5xl absolute -top-4 left-1/2 -translate-x-1/2 opacity-40"
-            style={{ color: accent }}
+        {program.outcome && (
+          <motion.blockquote
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1 }}
+            className="relative max-w-3xl mx-auto text-center mt-12"
           >
-            &ldquo;
-          </span>
-          <p
-            className="font-heading italic font-light text-2xl sm:text-3xl lg:text-4xl leading-[1.3] tracking-[-0.01em] pt-8"
-            style={{ color: fg }}
-          >
-            {program.outcome}
-          </p>
-        </motion.blockquote>
+            <span
+              className="font-heading italic text-5xl absolute -top-4 left-1/2 -translate-x-1/2 opacity-40"
+              style={{ color: accent }}
+            >
+              &ldquo;
+            </span>
+            <p
+              className="font-heading italic font-light text-2xl sm:text-3xl lg:text-4xl leading-[1.3] tracking-[-0.01em] pt-8"
+              style={{ color: fg }}
+            >
+              {program.outcome}
+            </p>
+          </motion.blockquote>
+        )}
       </div>
     </section>
   );
