@@ -3,7 +3,7 @@ import { db, registrations } from '@/lib/db';
 import { eq, desc } from 'drizzle-orm';
 import { validateAuth, createErrorResponse, ApiException } from '@/lib/api-utils';
 import { isAdminEmail } from '@/lib/db-access-control';
-import { sendRegistrationNotification } from '@/lib/email';
+import { sendRegistrationNotification, sendStudentConfirmationEmail } from '@/lib/email';
 import {
   calculateMocksPricing,
   isFullCourse,
@@ -61,9 +61,11 @@ export async function POST(request: NextRequest) {
       status:              'pending',
     }).returning({ id: registrations.id });
 
-    // Non-blocking email notification
+    // Non-blocking emails — admin notification + student confirmation
     sendRegistrationNotification({ name, email, phone, educationType, programMode, selectedMocks, selectedFullCourses, mockIntent, pricing: srvPricing, referral })
-      .catch(e => console.error('Email notification failed:', e));
+      .catch(e => console.error('Admin email notification failed:', e));
+    sendStudentConfirmationEmail({ name, email, programMode, selectedMocks, selectedFullCourses })
+      .catch(e => console.error('Student confirmation email failed:', e));
 
     return NextResponse.json({ success: true, registrationId: saved.id }, { status: 201 });
   } catch (error) {

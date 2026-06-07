@@ -174,7 +174,7 @@ Please log in to the admin panel to view and manage registrations.
     const results = await Promise.allSettled(
       ADMIN_EMAILS.map(adminEmail =>
         resend.emails.send({
-          from: 'VH Registration System <onboarding@resend.dev>', // Update this with your verified domain
+          from: 'VH Beyond the Horizons <noreply@vh-beyondthehorizons.org>',
           to: adminEmail,
           subject: subject,
           html: htmlContent,
@@ -268,7 +268,7 @@ export async function sendFreeSignupNotification(data: FreeSignupEmailData) {
     const results = await Promise.allSettled(
       ADMIN_EMAILS.map(adminEmail =>
         resend.emails.send({
-          from: 'VH Registration System <onboarding@resend.dev>',
+          from: 'VH Beyond the Horizons <noreply@vh-beyondthehorizons.org>',
           to: adminEmail,
           subject,
           html: htmlContent,
@@ -285,6 +285,273 @@ export async function sendFreeSignupNotification(data: FreeSignupEmailData) {
     return { success: successful > 0, successful, failed, total: ADMIN_EMAILS.length };
   } catch (error) {
     console.error('Error sending free signup notification:', error);
+    return { success: false, error: error instanceof Error ? error.message : 'Unknown error' };
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Student Registration Confirmation
+// ---------------------------------------------------------------------------
+
+interface StudentConfirmationData {
+  name: string;
+  email: string;
+  programMode: 'mocks' | 'full';
+  selectedMocks?: string[];
+  selectedFullCourses?: string[];
+}
+
+/**
+ * Send a confirmation email to the student immediately after they register.
+ * Course start date and early bird discount are read from environment variables
+ * so you can update them without touching code:
+ *   COURSE_START_DATE=e.g. "15 August 2025"
+ *   EARLY_BIRD_DISCOUNT=e.g. "25% off — saves up to 2,500 BDT"
+ */
+export async function sendStudentConfirmationEmail(data: StudentConfirmationData) {
+  try {
+    if (!process.env.RESEND_API_KEY) {
+      console.warn('RESEND_API_KEY not configured. Skipping student confirmation email.');
+      return { success: false, error: 'API key not configured' };
+    }
+
+    const MOCK_NAMES: Record<string, string> = {
+      'du-iba':  'DU IBA Mock',
+      'bup-iba': 'BUP IBA Mock',
+      'du-fbs':  'DU FBS Mock',
+      'bup-fbs': 'BUP FBS Mock',
+    };
+    const FULL_NAMES: Record<string, string> = {
+      'iba-combined': 'DU IBA & BUP IBA Full Course',
+      'du-fbs-full':  'DU FBS Full Course',
+      'bup-fbs-full': 'BUP FBS Full Course',
+    };
+    const pretty = (k: string, map: Record<string, string>) => map[k] ?? k;
+
+    const programLines = data.programMode === 'mocks'
+      ? (data.selectedMocks ?? []).map(k => pretty(k, MOCK_NAMES))
+      : (data.selectedFullCourses ?? []).map(k => pretty(k, FULL_NAMES));
+
+    const programListHtml = programLines
+      .map(p => `<li style="margin:0 0 4px 0;font-size:13px;color:#3D1A0E;">${p}</li>`)
+      .join('');
+
+    const courseStartDate = process.env.COURSE_START_DATE ?? 'To be announced — we'll notify you';
+    const earlyBirdDiscount = process.env.EARLY_BIRD_DISCOUNT ?? 'Early bird discount — details coming soon';
+    const baseUrl = (process.env.NEXTAUTH_URL ?? 'https://vhbeyondthehorizons.com').replace(/\/$/, '');
+
+    const htmlContent = `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>You're registered — VH Beyond the Horizons</title>
+  <style>
+    @media only screen and (max-width: 600px) {
+      .outer-pad { padding: 0 !important; }
+      .content-pad { padding: 28px 20px !important; }
+      .header-pad { padding: 28px 20px 24px 20px !important; }
+      .footer-pad { padding: 20px !important; }
+      .ebird-inner { padding: 20px !important; }
+      .stats-row td { display: block !important; width: 100% !important; padding-right: 0 !important; }
+      .stats-row td + td { border-top: 1px solid #EDE9E3 !important; }
+      h1.headline { font-size: 26px !important; }
+    }
+  </style>
+</head>
+<body style="margin:0;padding:0;background:#EDE9E3;font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',Arial,sans-serif;color:#1A0507;">
+
+  <table width="100%" cellpadding="0" cellspacing="0" role="presentation" style="background:#EDE9E3;">
+    <tr>
+      <td align="center" class="outer-pad" style="padding:40px 16px;">
+
+        <table width="100%" cellpadding="0" cellspacing="0" role="presentation" style="max-width:600px;">
+
+          <!-- ═══ HEADER ═══ -->
+          <tr>
+            <td class="header-pad" style="background:#1A0507;padding:36px 40px 30px 40px;">
+              <p style="margin:0 0 10px 0;font-size:10px;letter-spacing:4px;text-transform:uppercase;color:#D4B094;font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',Arial,sans-serif;">VH Beyond the Horizons</p>
+              <h1 class="headline" style="margin:0;font-family:Georgia,'Times New Roman',Times,serif;font-size:30px;font-weight:400;color:#FAF5EF;line-height:1.25;letter-spacing:0.2px;">Thank you for<br/>registering.</h1>
+            </td>
+          </tr>
+
+          <!-- ═══ BODY ═══ -->
+          <tr>
+            <td class="content-pad" style="background:#FAF5EF;padding:36px 40px;">
+
+              <!-- Greeting -->
+              <p style="margin:0 0 16px 0;font-size:16px;color:#1A0507;line-height:1.75;">Hi ${data.name},</p>
+              <p style="margin:0 0 14px 0;font-size:15px;color:#3D1A0E;line-height:1.85;">
+                Welcome. Really glad you're here.
+              </p>
+              <p style="margin:0 0 14px 0;font-size:15px;color:#3D1A0E;line-height:1.85;">
+                We're still finalising some of the course details, so this isn't the full picture yet. But you registered early, and that's exactly why we're writing now. It means you're already locked in for early bird pricing, and you'll hear everything from us before anyone else does.
+              </p>
+              <p style="margin:0 0 32px 0;font-size:15px;color:#3D1A0E;line-height:1.85;">
+                Within the next week, you'll have the course start date and your discount in your inbox. No chasing required.
+              </p>
+
+              <!-- Divider -->
+              <div style="height:1px;background:linear-gradient(to right,#D4B094,transparent);margin-bottom:32px;"></div>
+
+              <!-- ── EARLY BIRD CALLOUT ── -->
+              <table width="100%" cellpadding="0" cellspacing="0" role="presentation" style="background:#FFFFFF;border-left:4px solid #D4B094;margin-bottom:32px;">
+                <tr>
+                  <td class="ebird-inner" style="padding:26px 28px;">
+
+                    <p style="margin:0 0 4px 0;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#D4B094;">Already Confirmed</p>
+                    <p style="margin:0 0 16px 0;font-family:Georgia,'Times New Roman',Times,serif;font-size:22px;font-weight:400;color:#760F13;line-height:1.3;">You are getting<br/>early bird pricing.</p>
+
+                    <div style="border-top:1px solid #EDE9E3;padding-top:16px;">
+                      <p style="margin:0 0 10px 0;font-size:14px;color:#3D1A0E;line-height:1.8;">
+                        The exact start date and discount amount are being finalised. You will have both within the next week. Because you registered early, you get a better price than anyone who signs up later. That is already set.
+                      </p>
+                    </div>
+
+                    ${programLines.length > 0 ? `
+                    <div style="margin-top:16px;padding-top:16px;border-top:1px solid #EDE9E3;">
+                      <p style="margin:0 0 8px 0;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#A86E58;">Your Selected Programme</p>
+                      <ul style="margin:0;padding:0 0 0 16px;">
+                        ${programListHtml}
+                      </ul>
+                    </div>` : ''}
+
+                  </td>
+                </tr>
+              </table>
+
+              <!-- Divider -->
+              <div style="height:1px;background:linear-gradient(to right,#D4B094,transparent);margin-bottom:32px;"></div>
+
+              <!-- ── EXPLORE SECTION ── -->
+              <p style="margin:0 0 5px 0;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#D4B094;">While You Wait</p>
+              <p style="margin:0 0 14px 0;font-family:Georgia,'Times New Roman',Times,serif;font-size:22px;color:#1A0507;font-weight:400;line-height:1.3;">The site is live. Go explore.</p>
+              <p style="margin:0 0 24px 0;font-size:14px;color:#3D1A0E;line-height:1.9;">
+                We have already built quite a bit. Here is where to start, depending on where you are right now:
+              </p>
+
+              <!-- Card 1 — Eligibility Checker -->
+              <table width="100%" cellpadding="0" cellspacing="0" role="presentation" style="background:#FFFFFF;margin-bottom:10px;">
+                <tr>
+                  <td style="padding:20px 24px 20px 20px;border-left:3px solid #760F13;">
+                    <p style="margin:0 0 8px 0;font-size:15px;font-family:Georgia,'Times New Roman',Times,serif;color:#1A0507;font-weight:400;">If you want to know which universities you qualify for</p>
+                    <p style="margin:0 0 14px 0;font-size:13px;color:#6B4032;line-height:1.7;">Whether you are on the HSC track or doing A-Levels, put in your results and it will show you exactly where you stand: IBA DU, BUP, FBS, and more.</p>
+                    <a href="${baseUrl}/eligibility-checker" style="display:inline-block;font-size:11px;color:#760F13;text-decoration:none;letter-spacing:2px;text-transform:uppercase;border-bottom:1px solid #D4B094;padding-bottom:2px;">Go to Eligibility Checker</a>
+                  </td>
+                </tr>
+              </table>
+
+              <!-- Card 2 — Free Games -->
+              <table width="100%" cellpadding="0" cellspacing="0" role="presentation" style="background:#FFFFFF;margin-bottom:10px;">
+                <tr>
+                  <td style="padding:20px 24px 20px 20px;border-left:3px solid #760F13;">
+                    <p style="margin:0 0 8px 0;font-size:15px;font-family:Georgia,'Times New Roman',Times,serif;color:#1A0507;font-weight:400;">If you want to start practising right now, for free</p>
+                    <p style="margin:0 0 14px 0;font-size:13px;color:#6B4032;line-height:1.7;">Vocab training, mental math, and an accounting game. All free. All built around what actually shows up in these exams.</p>
+                    <a href="${baseUrl}/registration/games" style="display:inline-block;font-size:11px;color:#760F13;text-decoration:none;letter-spacing:2px;text-transform:uppercase;border-bottom:1px solid #D4B094;padding-bottom:2px;">Get Free Access</a>
+                  </td>
+                </tr>
+              </table>
+
+              <!-- Card 3 — Programme Details -->
+              <table width="100%" cellpadding="0" cellspacing="0" role="presentation" style="background:#FFFFFF;margin-bottom:32px;">
+                <tr>
+                  <td style="padding:20px 24px 20px 20px;border-left:3px solid #760F13;">
+                    <p style="margin:0 0 8px 0;font-size:15px;font-family:Georgia,'Times New Roman',Times,serif;color:#1A0507;font-weight:400;">If you want to read up on what the course actually covers</p>
+                    <p style="margin:0 0 14px 0;font-size:13px;color:#6B4032;line-height:1.7;">The programme page has the structure, what is included, and how it is different from everything else out there.</p>
+                    <a href="${baseUrl}/program" style="display:inline-block;font-size:11px;color:#760F13;text-decoration:none;letter-spacing:2px;text-transform:uppercase;border-bottom:1px solid #D4B094;padding-bottom:2px;">View the Programme</a>
+                  </td>
+                </tr>
+              </table>
+
+              <!-- Divider -->
+              <div style="height:1px;background:linear-gradient(to right,#D4B094,transparent);margin-bottom:32px;"></div>
+
+              <!-- Closing -->
+              <p style="margin:0 0 14px 0;font-size:15px;color:#3D1A0E;line-height:1.85;">
+                You will hear from us within the week. If anything comes up before then, just reply to this email.
+              </p>
+              <p style="margin:0 0 28px 0;font-size:15px;color:#3D1A0E;line-height:1.85;">
+                Glad to have you.
+              </p>
+              <div style="margin-top:8px;padding-top:20px;border-top:1px solid #D4B094;display:inline-block;">
+                <p style="margin:0 0 2px 0;font-family:'Brush Script MT','Segoe Script','Apple Chancery',cursive;font-size:36px;color:#1A0507;line-height:1;letter-spacing:1px;">Ahnaf</p>
+                <p style="margin:6px 0 0 0;font-size:10px;color:#A86E58;letter-spacing:2.5px;text-transform:uppercase;font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',Arial,sans-serif;">VH Beyond the Horizons</p>
+              </div>
+
+            </td>
+          </tr>
+
+          <!-- ═══ FOOTER ═══ -->
+          <tr>
+            <td class="footer-pad" style="background:#1A0507;padding:24px 40px;">
+              <p style="margin:0 0 10px 0;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#D4B094;">VH Beyond the Horizons</p>
+              <p style="margin:0;font-size:11px;color:rgba(250,245,239,0.45);line-height:1.75;">
+                You're receiving this because you registered your interest at
+                <a href="${baseUrl}" style="color:#D4B094;text-decoration:none;">${baseUrl.replace('https://', '').replace('http://', '')}</a>.
+                This is a confirmation. No action needed from you right now.
+              </p>
+            </td>
+          </tr>
+
+        </table>
+      </td>
+    </tr>
+  </table>
+
+</body>
+</html>`;
+
+    const textContent = `Thank you for registering | VH Beyond the Horizons
+
+Hi ${data.name},
+
+Welcome. Really glad you're here.
+
+We're still finalising some of the course details, so this isn't the full picture yet. But you registered early, which means you're already locked in for early bird pricing. Within the next week, you will have the course start date and your discount amount in your inbox. No chasing required.
+
+─────────────────────────────────────
+ALREADY CONFIRMED: EARLY BIRD PRICING
+─────────────────────────────────────
+The exact start date and discount are being finalised. You will have both within the next week. Because you registered early, you get a better price than anyone who signs up later. That is already set.
+${programLines.length > 0 ? `\nYour Selected Programme:\n${programLines.map(p => `  - ${p}`).join('\n')}` : ''}
+
+─────────────────────────────────────
+THE SITE IS LIVE. GO EXPLORE.
+─────────────────────────────────────
+If you want to know which universities you qualify for (HSC or A-Levels, both work):
+${baseUrl}/eligibility-checker
+
+If you want to start practising right now, for free:
+${baseUrl}/registration/games
+
+If you want to read up on what the course covers:
+${baseUrl}/program
+
+─────────────────────────────────────
+
+You will hear from me within the week. If anything comes up before then, just reply to this email.
+
+Ahnaf
+VH Beyond the Horizons
+${baseUrl}`.trim();
+
+    const result = await resend.emails.send({
+      from: 'Ahnaf Ahad (VH) <ahnaf@vh-beyondthehorizons.org>',
+      to: data.email,
+      subject: `You're registered. Early bird pricing is yours.`,
+      html: htmlContent,
+      text: textContent,
+    });
+
+    if (result.error) {
+      console.error('sendStudentConfirmationEmail failed:', result.error);
+      return { success: false, error: result.error };
+    }
+
+    console.log('Student confirmation email sent to:', data.email);
+    return { success: true };
+  } catch (error) {
+    console.error('sendStudentConfirmationEmail error:', error);
     return { success: false, error: error instanceof Error ? error.message : 'Unknown error' };
   }
 }
@@ -556,7 +823,7 @@ export async function sendAdminAnnouncement(
     const results = await Promise.allSettled(
       to.map(recipient =>
         resend.emails.send({
-          from: 'LexiCore <onboarding@resend.dev>',
+          from: 'LexiCore <noreply@vh-beyondthehorizons.org>',
           to: recipient,
           subject: `[VH LexiCore] ${data.subject}`,
           html: htmlContent,
