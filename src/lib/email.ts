@@ -336,9 +336,9 @@ export async function sendStudentConfirmationEmail(data: StudentConfirmationData
       .map(p => `<li style="margin:0 0 4px 0;font-size:13px;color:#3D1A0E;">${p}</li>`)
       .join('');
 
-    const courseStartDate = process.env.COURSE_START_DATE ?? 'To be announced — we'll notify you';
-    const earlyBirdDiscount = process.env.EARLY_BIRD_DISCOUNT ?? 'Early bird discount — details coming soon';
-    const baseUrl = (process.env.NEXTAUTH_URL ?? 'https://vhbeyondthehorizons.com').replace(/\/$/, '');
+    const courseStartDate = process.env.COURSE_START_DATE ?? "To be announced. We will notify you.";
+    const earlyBirdDiscount = process.env.EARLY_BIRD_DISCOUNT ?? "Early bird discount. Details coming soon.";
+    const baseUrl = (process.env.NEXTAUTH_URL ?? 'https://vh-beyondthehorizons.org').replace(/\/$/, '');
 
     const htmlContent = `<!DOCTYPE html>
 <html lang="en">
