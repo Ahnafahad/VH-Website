@@ -61,11 +61,35 @@ export async function POST(request: NextRequest) {
       status:              'pending',
     }).returning({ id: registrations.id });
 
-    // Non-blocking emails — admin notification + student confirmation
-    sendRegistrationNotification({ name, email, phone, educationType, programMode, selectedMocks, selectedFullCourses, mockIntent, pricing: srvPricing, referral })
-      .catch(e => console.error('Admin email notification failed:', e));
+    // Fire both emails in the background — response returns immediately so the user isn't blocked.
+    // Each promise resolves/rejects independently and writes the outcome back to the DB row.
+    const regId = saved.id;
+
     sendStudentConfirmationEmail({ name, email, programMode, selectedMocks, selectedFullCourses })
-      .catch(e => console.error('Student confirmation email failed:', e));
+      .then(async (result) => {
+        await db.update(registrations)
+          .set({ studentEmailStatus: result.success ? 'sent' : 'failed' })
+          .where(eq(registrations.id, regId));
+      })
+      .catch(async (e) => {
+        console.error('Student confirmation email failed:', e);
+        await db.update(registrations)
+          .set({ studentEmailStatus: 'failed' })
+          .where(eq(registrations.id, regId));
+      });
+
+    sendRegistrationNotification({ name, email, phone, educationType, programMode, selectedMocks, selectedFullCourses, mockIntent, pricing: srvPricing, referral })
+      .then(async (result) => {
+        await db.update(registrations)
+          .set({ adminEmailStatus: result.success ? 'sent' : 'failed' })
+          .where(eq(registrations.id, regId));
+      })
+      .catch(async (e) => {
+        console.error('Admin email notification failed:', e);
+        await db.update(registrations)
+          .set({ adminEmailStatus: 'failed' })
+          .where(eq(registrations.id, regId));
+      });
 
     return NextResponse.json({ success: true, registrationId: saved.id }, { status: 201 });
   } catch (error) {

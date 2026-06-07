@@ -199,6 +199,9 @@ export const registrations = sqliteTable('registrations', {
   // 'pending' | 'contacted' | 'enrolled' | 'cancelled'
   status:               text('status').notNull().default('pending'),
   notes:                text('notes'),
+  // Email delivery tracking — 'sent' | 'failed' | null (null = not attempted yet)
+  studentEmailStatus:   text('student_email_status'),
+  adminEmailStatus:     text('admin_email_status'),
   createdAt:            integer('created_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
   updatedAt:            integer('updated_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
 });

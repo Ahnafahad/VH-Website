@@ -17,23 +17,35 @@ import {
   Search,
   Filter,
   MessageCircle,
-  Sparkles
+  Sparkles,
+  Mail,
+  AlertCircle
 } from 'lucide-react';
 
 type Registration = {
-  _id: string;
+  id: number;
   name: string;
   email: string;
   phone: string;
   educationType: 'hsc' | 'alevels';
-  years: any;
+  // flat year columns from Drizzle (snake_case → camelCase)
+  hscYear?: number | null;
+  sscYear?: number | null;
+  aLevelYear?: number | null;
+  oLevelYear?: number | null;
   programMode: 'mocks' | 'full';
-  selectedMocks?: string[];
-  selectedFullCourses?: string[];
-  mockIntent?: 'trial' | 'full';
-  pricing?: { subtotal: number; discount: number; finalPrice: number };
-  referral?: { name: string; institution: string; batch: string };
+  selectedMocks?: string | null;       // JSON string in DB
+  selectedFullCourses?: string | null; // JSON string in DB
+  mockIntent?: 'trial' | 'full' | null;
+  pricingSubtotal?: number;
+  pricingDiscount?: number;
+  pricingFinalPrice?: number;
+  referralName?: string | null;
+  referralInstitution?: string | null;
+  referralBatch?: string | null;
   status: 'pending' | 'contacted' | 'enrolled' | 'cancelled';
+  studentEmailStatus?: 'sent' | 'failed' | null;
+  adminEmailStatus?: 'sent' | 'failed' | null;
   createdAt: string;
 };
 
@@ -175,7 +187,7 @@ export default function AdminRegistrationsPage() {
 
   const openGrantAccessModal = (registration: Registration) => {
     setGrantAccessData({
-      registrationId: registration._id,
+      registrationId: registration.id,
       name: registration.name,
       email: registration.email,
       studentId: '',
@@ -417,7 +429,7 @@ export default function AdminRegistrationsPage() {
                 ) : (
                   filteredRegistrations.map((reg) => (
                     <RegistrationCard
-                      key={reg._id}
+                      key={reg.id}
                       registration={reg}
                       editingId={editingId}
                       editData={editData}
@@ -484,9 +496,34 @@ export default function AdminRegistrationsPage() {
 }
 
 // Component for registration card
+function EmailStatusBadge({ label, status }: { label: string; status?: 'sent' | 'failed' | null }) {
+  if (status === 'sent') {
+    return (
+      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-semibold bg-green-100 text-green-700 border border-green-200">
+        <CheckCircle className="w-3 h-3" />
+        {label}: Sent
+      </span>
+    );
+  }
+  if (status === 'failed') {
+    return (
+      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-semibold bg-red-100 text-red-700 border border-red-200">
+        <AlertCircle className="w-3 h-3" />
+        {label}: Failed
+      </span>
+    );
+  }
+  return (
+    <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-semibold bg-gray-100 text-gray-500 border border-gray-200">
+      <Clock className="w-3 h-3" />
+      {label}: Pending
+    </span>
+  );
+}
+
 function RegistrationCard({ registration, editingId, editData, onStartEdit, onSaveEdit, onCancelEdit, onUpdateStatus, onGrantAccess, setEditData }: any) {
   const reg = registration;
-  const isEditing = editingId === reg._id;
+  const isEditing = editingId === reg.id;
 
   if (isEditing) {
     return (
@@ -587,13 +624,21 @@ function RegistrationCard({ registration, editingId, editData, onStartEdit, onSa
         </div>
         <div className="flex gap-2">
           <button
-            onClick={() => onStartEdit(reg._id, reg)}
+            onClick={() => onStartEdit(reg.id, reg)}
             className="p-2 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
             title="Edit"
           >
             <Edit2 className="w-5 h-5" />
           </button>
         </div>
+      </div>
+
+      {/* Email Log */}
+      <div className="flex flex-wrap items-center gap-2 mb-4 p-3 bg-slate-50 rounded-lg border border-slate-200">
+        <Mail className="w-3.5 h-3.5 text-slate-400 shrink-0" />
+        <span className="text-xs font-semibold text-slate-500 uppercase tracking-wide mr-1">Email log</span>
+        <EmailStatusBadge label="Student" status={reg.studentEmailStatus} />
+        <EmailStatusBadge label="Admin" status={reg.adminEmailStatus} />
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
@@ -604,11 +649,11 @@ function RegistrationCard({ registration, editingId, editData, onStartEdit, onSa
           </p>
           {reg.educationType === 'hsc' ? (
             <p className="text-sm text-gray-600 mt-1">
-              SSC: {reg.years?.sscYear}, HSC: {reg.years?.hscYear}
+              SSC: {reg.sscYear ?? '—'}, HSC: {reg.hscYear ?? '—'}
             </p>
           ) : (
             <p className="text-sm text-gray-600 mt-1">
-              O Level: {reg.years?.oLevelYear}, A Level: {reg.years?.aLevelYear}
+              O Level: {reg.oLevelYear ?? '—'}, A Level: {reg.aLevelYear ?? '—'}
             </p>
           )}
         </div>
@@ -627,29 +672,31 @@ function RegistrationCard({ registration, editingId, editData, onStartEdit, onSa
       </div>
 
       {/* Program Details */}
-      {reg.programMode === 'mocks' && reg.selectedMocks && reg.selectedMocks.length > 0 && (
+      {reg.programMode === 'mocks' && reg.selectedMocks && (
         <div className="bg-blue-50 rounded-lg p-4 border border-blue-200 mb-4">
           <p className="text-sm font-semibold text-blue-900 mb-2">Selected Mock Programs:</p>
           <ul className="list-disc list-inside space-y-1 text-sm text-blue-800">
-            {reg.selectedMocks.map((mock: string, idx: number) => (
+            {(() => {
+              try { return JSON.parse(reg.selectedMocks as string); } catch { return []; }
+            })().map((mock: string, idx: number) => (
               <li key={idx}>{mock.replace(/-/g, ' ').toUpperCase()}</li>
             ))}
           </ul>
-          {reg.pricing && (
+          {reg.pricingSubtotal != null && (
             <div className="mt-3 pt-3 border-t border-blue-300">
               <div className="flex justify-between text-sm">
                 <span className="text-blue-700">Subtotal:</span>
-                <span className="font-bold text-blue-900">Tk {reg.pricing.subtotal.toLocaleString()}</span>
+                <span className="font-bold text-blue-900">Tk {(reg.pricingSubtotal ?? 0).toLocaleString()}</span>
               </div>
-              {reg.pricing.discount > 0 && (
+              {(reg.pricingDiscount ?? 0) > 0 && (
                 <div className="flex justify-between text-sm">
                   <span className="text-blue-700">Discount:</span>
-                  <span className="font-bold text-green-600">- Tk {reg.pricing.discount.toLocaleString()}</span>
+                  <span className="font-bold text-green-600">- Tk {(reg.pricingDiscount ?? 0).toLocaleString()}</span>
                 </div>
               )}
               <div className="flex justify-between text-base mt-1 pt-1 border-t border-blue-300">
                 <span className="font-bold text-blue-900">Total:</span>
-                <span className="font-black text-blue-900">Tk {reg.pricing.finalPrice.toLocaleString()}</span>
+                <span className="font-black text-blue-900">Tk {(reg.pricingFinalPrice ?? 0).toLocaleString()}</span>
               </div>
             </div>
           )}
@@ -657,13 +704,13 @@ function RegistrationCard({ registration, editingId, editData, onStartEdit, onSa
       )}
 
       {/* Referral Information */}
-      {reg.referral && (
+      {reg.referralName && (
         <div className="bg-purple-50 rounded-lg p-4 border border-purple-200 mb-4">
           <p className="text-sm font-semibold text-purple-900 mb-2">Referred By:</p>
           <div className="text-sm text-purple-800 space-y-1">
-            <p><strong>Name:</strong> {reg.referral.name}</p>
-            <p><strong>Institution:</strong> {reg.referral.institution}</p>
-            <p><strong>Batch:</strong> {reg.referral.batch}</p>
+            <p><strong>Name:</strong> {reg.referralName}</p>
+            <p><strong>Institution:</strong> {reg.referralInstitution}</p>
+            <p><strong>Batch:</strong> {reg.referralBatch}</p>
           </div>
         </div>
       )}
@@ -671,7 +718,7 @@ function RegistrationCard({ registration, editingId, editData, onStartEdit, onSa
       {/* Actions */}
       <div className="flex flex-wrap gap-2 pt-4 border-t border-gray-200">
         <button
-          onClick={() => onUpdateStatus(reg._id, 'contacted')}
+          onClick={() => onUpdateStatus(reg.id, 'contacted')}
           disabled={reg.status === 'contacted'}
           className="flex items-center gap-2 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
         >
@@ -679,7 +726,7 @@ function RegistrationCard({ registration, editingId, editData, onStartEdit, onSa
           Mark Contacted
         </button>
         <button
-          onClick={() => onUpdateStatus(reg._id, 'enrolled')}
+          onClick={() => onUpdateStatus(reg.id, 'enrolled')}
           disabled={reg.status === 'enrolled'}
           className="flex items-center gap-2 px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
         >
@@ -694,7 +741,7 @@ function RegistrationCard({ registration, editingId, editData, onStartEdit, onSa
           Grant System Access
         </button>
         <button
-          onClick={() => onUpdateStatus(reg._id, 'cancelled')}
+          onClick={() => onUpdateStatus(reg.id, 'cancelled')}
           disabled={reg.status === 'cancelled'}
           className="flex items-center gap-2 px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
         >
