@@ -178,7 +178,7 @@ export default function CoursesRegistrationPage() {
             </div>
             <p className="font-heading text-xl sm:text-2xl leading-snug text-[#1A0507] font-light">
               You&rsquo;ve locked in current rates and first access to the {year} cohort.
-              Expect a call on <strong className="font-medium">{phone}</strong> within 24 hours.
+              We will be in touch on <strong className="font-medium">{phone}</strong> within the week.
             </p>
           </div>
 
