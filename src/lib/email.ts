@@ -501,33 +501,25 @@ export async function sendStudentConfirmationEmail(data: StudentConfirmationData
 </body>
 </html>`;
 
-    const textContent = `Thank you for registering | VH Beyond the Horizons
+    const textContent = `Registration confirmed — VH Beyond the Horizons
 
 Hi ${data.name},
 
 Welcome. Really glad you're here.
 
-We're still finalising some of the course details, so this isn't the full picture yet. But you registered early, which means you're already locked in for early bird pricing. Within the next week, you will have the course start date and your discount amount in your inbox. No chasing required.
+We're still finalising some of the course details, so this isn't the full picture yet. You registered before the course opened, so you'll hear everything from us before anyone else does. Within the next week, you'll have the course start date and your confirmed rate in your inbox.
+${programLines.length > 0 ? `\nYour registration:\n${programLines.map(p => `  - ${p}`).join('\n')}` : ''}
 
-─────────────────────────────────────
-ALREADY CONFIRMED: EARLY BIRD PRICING
-─────────────────────────────────────
-The exact start date and discount are being finalised. You will have both within the next week. Because you registered early, you get a better price than anyone who signs up later. That is already set.
-${programLines.length > 0 ? `\nYour Selected Programme:\n${programLines.map(p => `  - ${p}`).join('\n')}` : ''}
+In the meantime, the site is live. A few things worth looking at:
 
-─────────────────────────────────────
-THE SITE IS LIVE. GO EXPLORE.
-─────────────────────────────────────
-If you want to know which universities you qualify for (HSC or A-Levels, both work):
+Eligibility checker (HSC and A-Levels both supported):
 ${baseUrl}/eligibility-checker
 
-If you want to start practising right now, for free:
+Free practice tools:
 ${baseUrl}/registration/games
 
-If you want to read up on what the course covers:
+Programme details:
 ${baseUrl}/program
-
-─────────────────────────────────────
 
 You will hear from me within the week. If anything comes up before then, just reply to this email.
 
@@ -542,6 +534,9 @@ ${baseUrl}`.trim();
       subject: `Registration confirmed — VH Beyond the Horizons`,
       html: htmlContent,
       text: textContent,
+      headers: {
+        'X-Entity-Ref-ID': `${data.email}-${Date.now()}`,
+      },
     });
 
     if (result.error) {
