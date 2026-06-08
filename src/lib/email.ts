@@ -538,7 +538,8 @@ ${baseUrl}`.trim();
     const result = await resend.emails.send({
       from: 'Ahnaf Ahad (VH) <ahnaf@vh-beyondthehorizons.org>',
       to: data.email,
-      subject: `You're registered. Early bird pricing is yours.`,
+      replyTo: 'ahnaf@vh-beyondthehorizons.org',
+      subject: `Registration confirmed — VH Beyond the Horizons`,
       html: htmlContent,
       text: textContent,
     });
