@@ -43,7 +43,33 @@ const Footer = () => {
       {/* Top horizon rule */}
       <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#D4B094]/40 to-transparent" />
 
-      <div className="relative max-w-[1400px] mx-auto px-6 sm:px-10 lg:px-16 pt-24 pb-10">
+      <div className="relative max-w-[1400px] mx-auto px-6 sm:px-10 lg:px-16 pt-16 pb-10">
+
+        {/* Brand header — primary stacked logo prominently above the links */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+          className="mb-14"
+        >
+          <Link href="/" className="inline-block group">
+            <Image
+              src="/bth_primary_stacked.png"
+              alt="Beyond the Horizons by Vertical Horizon"
+              width={220}
+              height={148}
+              className="h-36 w-auto opacity-90 transition-opacity duration-300 group-hover:opacity-100"
+            />
+          </Link>
+          <p className="mt-4 font-heading italic font-extralight text-[#FAF5EF]/40 text-sm max-w-sm leading-relaxed">
+            The only admission program in Bangladesh built by English-medium students, for English-medium students.
+          </p>
+        </motion.div>
+
+        {/* Divider */}
+        <div className="h-px bg-gradient-to-r from-[#D4B094]/20 via-[#D4B094]/10 to-transparent mb-14" />
+
         {/* Columns */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16 mb-16">
           {/* Quick links */}
@@ -129,18 +155,9 @@ const Footer = () => {
 
         {/* Bottom bar */}
         <div className="border-t border-[#D4B094]/10 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-4">
-            <Image
-              src="/bth_compact_square.png"
-              alt="Beyond the Horizons"
-              width={36}
-              height={36}
-              className="h-9 w-auto opacity-70"
-            />
-            <p className="font-sans text-[11px] tracking-wide text-[#FAF5EF]/25">
-              © 2025 Beyond the Horizons. All rights reserved.
-            </p>
-          </div>
+          <p className="font-sans text-[11px] tracking-wide text-[#FAF5EF]/25">
+            © 2025 Beyond the Horizons. All rights reserved.
+          </p>
           <div className="flex items-center gap-6">
             <Link
               href="/privacy"

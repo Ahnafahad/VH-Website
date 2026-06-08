@@ -71,9 +71,9 @@ function SignInForm() {
           <Image
             src="/bth_primary_stacked.png"
             alt="Beyond the Horizons by Vertical Horizon"
-            width={160}
-            height={100}
-            className="h-20 w-auto opacity-90"
+            width={220}
+            height={148}
+            className="h-32 w-auto opacity-95"
             priority
           />
         </motion.div>
