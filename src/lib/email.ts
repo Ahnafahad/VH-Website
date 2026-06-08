@@ -6,7 +6,6 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 const ADMIN_EMAILS = [
   'ahnaf816@gmail.com',
   'hasanxsarower@gmail.com',
-  'ahnafahad16@gmail.com'
 ];
 
 interface RegistrationEmailData {
