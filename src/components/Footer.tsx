@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion } from 'motion/react';
 import { Mail, Phone } from 'lucide-react';
 
@@ -128,9 +129,18 @@ const Footer = () => {
 
         {/* Bottom bar */}
         <div className="border-t border-[#D4B094]/10 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="font-sans text-[11px] tracking-wide text-[#FAF5EF]/25">
-            © 2025 Beyond the Horizons. All rights reserved.
-          </p>
+          <div className="flex items-center gap-4">
+            <Image
+              src="/bth_compact_square.png"
+              alt="Beyond the Horizons"
+              width={36}
+              height={36}
+              className="h-9 w-auto opacity-70"
+            />
+            <p className="font-sans text-[11px] tracking-wide text-[#FAF5EF]/25">
+              © 2025 Beyond the Horizons. All rights reserved.
+            </p>
+          </div>
           <div className="flex items-center gap-6">
             <Link
               href="/privacy"

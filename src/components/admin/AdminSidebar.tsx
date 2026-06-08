@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { signOut } from 'next-auth/react';
 import { motion, Variants } from 'framer-motion';
@@ -107,25 +108,14 @@ export default function AdminSidebar({ adminName, adminEmail }: AdminSidebarProp
           gap:            10,
         }}
       >
-        {/* VH badge */}
-        <span
-          style={{
-            display:         'inline-flex',
-            alignItems:      'center',
-            justifyContent:  'center',
-            background:      '#D62B38',
-            color:           '#FFFFFF',
-            fontSize:        10,
-            fontWeight:      700,
-            letterSpacing:   '0.08em',
-            borderRadius:    5,
-            padding:         '2px 6px',
-            lineHeight:      1,
-            flexShrink:      0,
-          }}
-        >
-          VH
-        </span>
+        {/* BTH logo */}
+        <Image
+          src="/bth_compact_square.png"
+          alt="Beyond the Horizons"
+          width={32}
+          height={32}
+          style={{ flexShrink: 0, width: 32, height: 32, objectFit: 'contain' }}
+        />
 
         <span
           style={{

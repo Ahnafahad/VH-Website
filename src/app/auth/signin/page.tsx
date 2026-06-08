@@ -69,11 +69,11 @@ function SignInForm() {
           className="flex justify-center mb-12"
         >
           <Image
-            src="/vh-logo-transparent.png"
-            alt="VH Beyond the Horizons"
-            width={140}
-            height={46}
-            className="h-10 w-auto opacity-90"
+            src="/bth_primary_stacked.png"
+            alt="Beyond the Horizons by Vertical Horizon"
+            width={160}
+            height={100}
+            className="h-20 w-auto opacity-90"
             priority
           />
         </motion.div>

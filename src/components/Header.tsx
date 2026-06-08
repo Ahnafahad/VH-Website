@@ -37,6 +37,7 @@ const Header = () => {
   const [isMoreOpen, setIsMoreOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [logoHovered, setLogoHovered] = useState(false);
   const moreRef = useRef<HTMLDivElement>(null);
   const { data: session } = useSession();
   const [isAdmin, setIsAdmin] = useState(false);
@@ -139,19 +140,51 @@ const Header = () => {
           }}
           transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
         >
-          {/* Logo */}
+          {/* Logo — compact by default, expands to horizontal lockup on hover */}
           <Link
             href="/"
-            className="flex-shrink-0 mr-3 flex items-center gap-2 group"
+            className="flex-shrink-0 mr-3 flex items-center"
+            onMouseEnter={() => setLogoHovered(true)}
+            onMouseLeave={() => setLogoHovered(false)}
           >
-            <Image
-              src="/vh-logo-transparent.png"
-              alt="VH Beyond the Horizons"
-              width={120}
-              height={40}
-              className="h-9 w-auto transition-transform duration-500 group-hover:scale-[1.03]"
-              priority
-            />
+            <motion.div
+              className="relative flex items-center rounded-md overflow-hidden"
+              animate={{ width: logoHovered ? 162 : 36 }}
+              transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+              style={{ height: 36 }}
+            >
+              {/* Compact square — default */}
+              <motion.div
+                animate={{ opacity: logoHovered ? 0 : 1 }}
+                transition={{ duration: 0.15 }}
+                className="absolute inset-0"
+              >
+                <Image
+                  src="/bth_compact_square.png"
+                  alt="Beyond the Horizons"
+                  width={36}
+                  height={36}
+                  className="h-full w-full object-cover"
+                  priority
+                />
+              </motion.div>
+
+              {/* Horizontal lockup — revealed on hover */}
+              <motion.div
+                animate={{ opacity: logoHovered ? 1 : 0 }}
+                transition={{ duration: 0.2, delay: logoHovered ? 0.08 : 0 }}
+                style={{ position: 'absolute', left: 0, top: 0, width: 162, height: 36 }}
+              >
+                <Image
+                  src="/bth_horizontal_lockup.png"
+                  alt="Beyond the Horizons by Vertical Horizon"
+                  width={162}
+                  height={36}
+                  className="h-full w-full object-contain object-left"
+                  priority
+                />
+              </motion.div>
+            </motion.div>
           </Link>
 
           {/* Desktop nav — magnetic layoutId hover indicator */}
