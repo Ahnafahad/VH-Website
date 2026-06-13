@@ -13,8 +13,10 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { motion, type Variants } from 'framer-motion';
+import { motion, useReducedMotion, type Variants } from 'framer-motion';
 import type { EarnedBadge } from '@/lib/vocab/badges/checker';
+import Celebration from '@/components/vocab/Celebration';
+import { useVocabFeedback } from '@/lib/vocab/use-vocab-feedback';
 import {
   Star,
   Flame,
@@ -142,8 +144,11 @@ interface Props {
 }
 
 export default function BadgeCelebration({ badge, onDismiss }: Props) {
-  const [mounted, setMounted] = useState(false);
-  const medallionRef          = useRef<HTMLDivElement>(null);
+  const [mounted, setMounted]   = useState(false);
+  const medallionRef            = useRef<HTMLDivElement>(null);
+  const feedbackFiredRef        = useRef(false);
+  const reducedMotion           = useReducedMotion();
+  const fb                      = useVocabFeedback();
 
   const ultimate   = badge.category === 'ultimate';
   const accent     = accentFor(badge.category);
@@ -163,62 +168,39 @@ export default function BadgeCelebration({ badge, onDismiss }: Props) {
     return () => window.removeEventListener('keydown', handleKey);
   }, [mounted, onDismiss]);
 
-  // ── Confetti + auto-dismiss ────────────────────────────────────────────────
+  // ── Sound/haptic cue + auto-dismiss ────────────────────────────────────────
   useEffect(() => {
     if (!mounted) return;
 
-    // Fire confetti after medallion pop (matches spring animation landing ~600ms)
-    const confettiTimer = setTimeout(async () => {
-      try {
-        const el   = medallionRef.current;
-        const rect = el?.getBoundingClientRect();
-        const cx   = rect ? (rect.left + rect.width  / 2) / window.innerWidth  : 0.5;
-        const cy   = rect ? (rect.top  + rect.height / 2) / window.innerHeight : 0.38;
-
-        const { default: confetti } = await import('canvas-confetti');
-
-        const colors = ultimate
-          ? ['#F4A828', '#FFD700', '#FFF8DC', '#E63946', '#ffffff']
-          : ['#E63946', '#FF6B6B', '#F4A828', '#ffffff', '#FFDDE1'];
-
-        confetti({
-          particleCount: ultimate ? 170 : 90,
-          spread:        ultimate ? 85  : 65,
-          origin:        { x: cx, y: cy },
-          colors,
-          gravity:       0.75,
-          scalar:        ultimate ? 1.45 : 1.1,
-          ticks:         230,
-          startVelocity: ultimate ? 32  : 24,
-        });
-
-        // Second burst for ultimates
-        if (ultimate) {
-          setTimeout(() => {
-            confetti({
-              particleCount: 80,
-              spread:        120,
-              origin:        { x: cx, y: cy },
-              colors,
-              gravity:       0.6,
-              scalar:        1.2,
-              ticks:         200,
-              startVelocity: 18,
-            });
-          }, 250);
-        }
-      } catch {
-        // confetti failure is non-critical — silently ignore
+    // Fire feedback cue after medallion pop (~580ms); fires once via ref guard.
+    const feedbackTimer = setTimeout(() => {
+      if (!feedbackFiredRef.current) {
+        feedbackFiredRef.current = true;
+        fb.play('badge');
       }
     }, 580);
 
     const dismissTimer = setTimeout(onDismiss, dismissMs);
 
     return () => {
-      clearTimeout(confettiTimer);
+      clearTimeout(feedbackTimer);
       clearTimeout(dismissTimer);
     };
-  }, [mounted, dismissMs, onDismiss, ultimate]);
+  }, [mounted, dismissMs, onDismiss]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  // ── Anchor Celebration to medallion center ─────────────────────────────────
+  const [anchor, setAnchor] = useState<{ x: number; y: number } | undefined>(undefined);
+  useEffect(() => {
+    if (!mounted) return;
+    const el   = medallionRef.current;
+    const rect = el?.getBoundingClientRect();
+    if (rect) {
+      setAnchor({
+        x: (rect.left + rect.width  / 2) / window.innerWidth,
+        y: (rect.top  + rect.height / 2) / window.innerHeight,
+      });
+    }
+  }, [mounted]);
 
   if (!mounted) return null;
 
@@ -247,6 +229,9 @@ export default function BadgeCelebration({ badge, onDismiss }: Props) {
         cursor:          'pointer',
       }}
     >
+      {/* ── Premium celebration overlay ─────────────────────────────── */}
+      {mounted && <Celebration active intensity="full" anchor={anchor} />}
+
       {/* ── Radial glow bloom ───────────────────────────────────────── */}
       <motion.div
         variants={bloomV}
@@ -352,8 +337,8 @@ export default function BadgeCelebration({ badge, onDismiss }: Props) {
         >
           {/* Rotating conic-gradient ring */}
           <motion.div
-            animate={{ rotate: 360 }}
-            transition={{
+            animate={reducedMotion ? {} : { rotate: 360 }}
+            transition={reducedMotion ? {} : {
               duration: ultimate ? 3.5 : 5.5,
               repeat:   Infinity,
               ease:     'linear',
@@ -403,7 +388,7 @@ export default function BadgeCelebration({ badge, onDismiss }: Props) {
           </div>
 
           {/* Ultimate pulse ring */}
-          {ultimate && (
+          {ultimate && !reducedMotion && (
             <motion.div
               animate={{ scale: [1, 1.18, 1], opacity: [0.6, 0, 0.6] }}
               transition={{ duration: 2.2, repeat: Infinity, ease: 'easeInOut' }}

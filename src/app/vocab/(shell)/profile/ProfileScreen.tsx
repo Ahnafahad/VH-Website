@@ -29,7 +29,7 @@ import {
   useRef,
   useState,
 } from 'react';
-import { motion, AnimatePresence, type Variants } from 'framer-motion';
+import { motion, AnimatePresence, useReducedMotion, type Variants } from 'framer-motion';
 import { useVirtualizer }  from '@tanstack/react-virtual';
 import { useRouter }       from 'next/navigation';
 import { signOut }         from 'next-auth/react';
@@ -40,8 +40,10 @@ import {
   Trophy, Award, CheckCircle2, Crown, Cpu, Sparkles,
   Infinity as InfinityIcon,
   Bell, BellOff, Mail, MailOpen, Sun, Moon, CalendarDays,
+  Volume2, Vibrate,
   type LucideIcon,
 } from 'lucide-react';
+import { useVocabFeedback } from '@/lib/vocab/use-vocab-feedback';
 import AnimatedNumber from '@/components/vocab/AnimatedNumber';
 import { usePushNotifications } from '@/hooks/usePushNotifications';
 import type { ProfileData, BadgeRow, WordRow } from './page';
@@ -66,11 +68,11 @@ const BADGE_ICONS: Record<string, LucideIcon> = {
 // ─── Colour helpers ───────────────────────────────────────────────────────────
 
 const LEVEL_COLORS: Record<string, string> = {
-  new:      '#64748b',
-  learning: '#f97316',
-  familiar: '#eab308',
-  strong:   '#3b82f6',
-  mastered: '#22c55e',
+  new:      'var(--color-lx-text-muted)',
+  learning: 'var(--color-lx-mastery-learning)',
+  familiar: 'var(--color-lx-mastery-familiar)',
+  strong:   'var(--color-lx-mastery-strong)',
+  mastered: 'var(--color-lx-success)',
 };
 
 const CATEGORY_ACCENT: Record<string, string> = {
@@ -150,12 +152,13 @@ function daysUntil(iso: string): number {
 
 /** Hexagonal SVG clip-path avatar with rotating accent ring */
 function HexAvatar({ initials: init }: { initials: string }) {
+  const prefersReducedMotion = useReducedMotion();
   return (
     <div style={{ position: 'relative', width: 72, height: 72, flexShrink: 0 }}>
-      {/* Rotating ring */}
+      {/* Rotating ring — static when reduced motion is preferred */}
       <motion.div
-        animate={{ rotate: 360 }}
-        transition={{ duration: 10, repeat: Infinity, ease: 'linear' }}
+        animate={prefersReducedMotion ? undefined : { rotate: 360 }}
+        transition={prefersReducedMotion ? undefined : { duration: 10, repeat: Infinity, ease: 'linear' }}
         style={{
           position:     'absolute',
           inset:        -3,
@@ -311,7 +314,7 @@ function SettingRow({
           fontFamily: "'Sora', sans-serif",
           fontSize:   13,
           fontWeight: 500,
-          color:      '#F0EEE9',
+          color:      'var(--color-lx-text-primary)',
           lineHeight: 1.3,
         }}>
           {label}
@@ -344,6 +347,9 @@ export default function ProfileScreen({
   initialTab?:  'profile' | 'settings';
 }) {
   const router = useRouter();
+
+  // ── Sound / haptic feedback ────────────────────────────────────────────────
+  const fb = useVocabFeedback();
 
   // ── Tab state ─────────────────────────────────────────────────────────────
   const [activeTab, setActiveTab] = useState<'profile' | 'settings'>(initialTab);
@@ -541,20 +547,25 @@ export default function ProfileScreen({
         position:      'sticky',
         top:           0,
         zIndex:        30,
-        background:    'rgba(15,15,15,0.96)',
+        background:    'color-mix(in srgb, var(--color-lx-base) 96%, transparent)',
         backdropFilter:'blur(12px)',
         borderBottom:  '1px solid rgba(255,255,255,0.06)',
         paddingTop:    8,
       }}>
-        <div style={{
-          display:    'flex',
-          maxWidth:   760,
-          margin:     '0 auto',
-          padding:    '0 20px',
-        }}>
+        <div
+          role="tablist"
+          style={{
+            display:    'flex',
+            maxWidth:   760,
+            margin:     '0 auto',
+            padding:    '0 20px',
+          }}
+        >
           {(['profile', 'settings'] as const).map(tab => (
             <button
               key={tab}
+              role="tab"
+              aria-selected={activeTab === tab}
               onClick={() => switchTab(tab)}
               style={{
                 position:      'relative',
@@ -639,7 +650,7 @@ export default function ProfileScreen({
                             fontSize:     26,
                             fontStyle:    'italic',
                             fontWeight:   600,
-                            color:        '#F0EEE9',
+                            color:        'var(--color-lx-text-primary)',
                             background:   'transparent',
                             border:       'none',
                             borderBottom: '1.5px solid #E63946',
@@ -679,7 +690,7 @@ export default function ProfileScreen({
                         fontSize:   26,
                         fontStyle:  'italic',
                         fontWeight: 600,
-                        color:      '#F0EEE9',
+                        color:      'var(--color-lx-text-primary)',
                         margin:     0,
                         lineHeight: 1.1,
                       }}>
@@ -750,7 +761,7 @@ export default function ProfileScreen({
                           fontSize:   38,
                           fontWeight: 600,
                           lineHeight: 1,
-                          color:      '#F0EEE9',
+                          color:      'var(--color-lx-text-primary)',
                         }}>
                           <AnimatedNumber value={stat.value} />
                         </span>
@@ -836,7 +847,7 @@ export default function ProfileScreen({
                         fontFamily: "'Cormorant Garamond', Georgia, serif",
                         fontSize:   14,
                         fontStyle:  'italic',
-                        color:      '#F0EEE9',
+                        color:      'var(--color-lx-text-primary)',
                       }}>
                         {cnt}
                       </span>
@@ -998,7 +1009,7 @@ export default function ProfileScreen({
                         fontFamily:    "'Sora', sans-serif",
                         fontSize:      10,
                         textTransform: 'capitalize',
-                        color:         levelFilter === f ? '#F0EEE9' : 'var(--color-lx-text-muted)',
+                        color:         levelFilter === f ? 'var(--color-lx-text-primary)' : 'var(--color-lx-text-muted)',
                         fontWeight:    levelFilter === f ? 600 : 400,
                       }}>
                         {f}
@@ -1068,7 +1079,7 @@ export default function ProfileScreen({
                                 fontFamily: "'Cormorant Garamond', Georgia, serif",
                                 fontSize:   17,
                                 fontStyle:  'italic',
-                                color:      '#F0EEE9',
+                                color:      'var(--color-lx-text-primary)',
                                 lineHeight: 1.2,
                               }}>
                                 {w.word}
@@ -1125,7 +1136,7 @@ export default function ProfileScreen({
                   fontSize:   32,
                   fontStyle:  'italic',
                   fontWeight: 600,
-                  color:      '#F0EEE9',
+                  color:      'var(--color-lx-text-primary)',
                   margin:     '0 0 4px',
                   lineHeight: 1.1,
                 }}>
@@ -1162,7 +1173,7 @@ export default function ProfileScreen({
                         fontSize:   36,
                         fontWeight: 600,
                         fontStyle:  'italic',
-                        color:      '#F0EEE9',
+                        color:      'var(--color-lx-text-primary)',
                         lineHeight: 1.05,
                         marginBottom: 6,
                       }}>
@@ -1441,6 +1452,30 @@ export default function ProfileScreen({
                     To enable, open your browser&apos;s site settings and allow notifications for this domain.
                   </motion.p>
                 )}
+
+                <SettingRow
+                  icon={Volume2}
+                  label="Sound Effects"
+                  sublabel="Subtle audio cues during study sessions"
+                >
+                  <LuxToggle
+                    on={fb.soundEnabled}
+                    onChange={(next) => { fb.setSoundEnabled(next); if (next) fb.play('tap'); }}
+                    accent="#D62B38"
+                  />
+                </SettingRow>
+
+                <SettingRow
+                  icon={Vibrate}
+                  label="Haptic Feedback"
+                  sublabel="Vibration on answers and milestones"
+                >
+                  <LuxToggle
+                    on={fb.hapticsEnabled}
+                    onChange={(next) => { fb.setHapticsEnabled(next); fb.play('tap'); }}
+                    accent="#D62B38"
+                  />
+                </SettingRow>
               </motion.div>
 
               {/* ══ SECTION 4: Email Summary ═══════════════════════════════ */}
@@ -1620,7 +1655,7 @@ export default function ProfileScreen({
                     <h2 style={{
                       fontFamily: "'Cormorant Garamond', Georgia, serif",
                       fontSize:   26, fontStyle: 'italic', fontWeight: 600,
-                      color:      '#F0EEE9', margin: '0 0 10px',
+                      color:      'var(--color-lx-text-primary)', margin: '0 0 10px',
                     }}>
                       {b.name}
                     </h2>
@@ -1714,7 +1749,7 @@ export default function ProfileScreen({
               <p style={{
                 fontFamily: "'Cormorant Garamond', Georgia, serif",
                 fontSize:   24, fontStyle: 'italic',
-                color:      '#F0EEE9', textAlign: 'center', margin: '0 0 6px',
+                color:      'var(--color-lx-text-primary)', textAlign: 'center', margin: '0 0 6px',
               }}>
                 Sign out?
               </p>
@@ -1728,7 +1763,7 @@ export default function ProfileScreen({
               <div style={{ display: 'flex', gap: 10 }}>
                 <button
                   onClick={() => setSignOutConfirm(false)}
-                  style={{ ...sheetBtn, background: 'rgba(255,255,255,0.06)', color: '#F0EEE9', flex: 1 }}
+                  style={{ ...sheetBtn, background: 'rgba(255,255,255,0.06)', color: 'var(--color-lx-text-primary)', flex: 1 }}
                 >
                   Stay
                 </button>
@@ -1783,7 +1818,7 @@ export default function ProfileScreen({
                 <h3 style={{
                   fontFamily: "'Cormorant Garamond', Georgia, serif",
                   fontSize:   26, fontStyle: 'italic', fontWeight: 600,
-                  color:      '#F0EEE9', margin: '0 0 4px',
+                  color:      'var(--color-lx-text-primary)', margin: '0 0 4px',
                 }}>
                   Set Study Deadline
                 </h3>
@@ -1879,7 +1914,7 @@ export default function ProfileScreen({
               <div style={{ display: 'flex', gap: 10 }}>
                 <button
                   onClick={() => setDeadlineSheet(false)}
-                  style={{ ...sheetBtn, background: 'rgba(255,255,255,0.06)', color: '#F0EEE9', flex: 1 }}
+                  style={{ ...sheetBtn, background: 'rgba(255,255,255,0.06)', color: 'var(--color-lx-text-primary)', flex: 1 }}
                 >
                   Cancel
                 </button>

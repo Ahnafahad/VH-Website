@@ -21,7 +21,8 @@ function formatDate(d: Date): string {
 }
 
 interface Props {
-  onNext: (deadline: Date) => void;
+  /** Receives the chosen deadline AND the computed words-per-day for the Projection step */
+  onNext: (deadline: Date, wordsPerDay: number) => void;
 }
 
 export default function StepDeadline({ onNext }: Props) {
@@ -42,11 +43,29 @@ export default function StepDeadline({ onNext }: Props) {
   return (
     <div className="flex flex-col gap-8">
       <div className="flex flex-col gap-2">
-        <h2 className="text-xl font-bold" style={{ color: 'var(--color-lx-text-primary)' }}>
-          When do you want to finish your first 100 words?
+        {/* FIX: was using Tailwind font classes (text-xl font-bold) — now uses the canonical serif */}
+        <h2
+          style={{
+            fontFamily: "'Cormorant Garamond', Georgia, serif",
+            fontSize:   '1.75rem',
+            fontWeight: 700,
+            fontStyle:  'italic',
+            lineHeight: 1.15,
+            color:      'var(--color-lx-text-primary)',
+            margin:     0,
+          }}
+        >
+          When is your exam?
         </h2>
-        <p className="text-sm" style={{ color: 'var(--color-lx-text-secondary)' }}>
-          We&apos;ll build a daily study plan around your target date for these 100 words.
+        <p
+          style={{
+            fontFamily: "'Sora', sans-serif",
+            fontSize:   '0.84rem',
+            color:      'var(--color-lx-text-secondary)',
+            lineHeight: 1.5,
+          }}
+        >
+          Set your target date and we&apos;ll build a daily plan so you master all 100 words before exam day — not the night before.
         </p>
       </div>
 
@@ -54,7 +73,7 @@ export default function StepDeadline({ onNext }: Props) {
       <div className="flex flex-col items-center gap-4">
         <div
           className="rounded-full px-6 py-3 text-base font-semibold"
-          style={{ background: 'var(--color-lx-accent-red)', color: '#fff' }}
+          style={{ background: 'var(--color-lx-accent-red)', color: '#fff', fontFamily: "'Sora', sans-serif" }}
         >
           {formatDate(deadline)}
         </div>
@@ -70,6 +89,7 @@ export default function StepDeadline({ onNext }: Props) {
             borderColor: 'var(--form-border)',
             color:       'var(--form-input-text)',
             colorScheme: 'dark',
+            fontFamily:  "'Sora', sans-serif",
           }}
         />
       </div>
@@ -82,24 +102,50 @@ export default function StepDeadline({ onNext }: Props) {
         className="rounded-xl p-4 text-center"
         style={{ background: 'var(--color-lx-surface)', border: '1px solid var(--color-lx-border)' }}
       >
-        <span className="text-3xl font-bold" style={{ color: 'var(--color-lx-accent-red)' }}>
+        <span
+          style={{
+            fontFamily: "'Cormorant Garamond', Georgia, serif",
+            fontSize:   '2.8rem',
+            fontWeight: 700,
+            lineHeight: 1,
+            color:      'var(--color-lx-accent-red)',
+          }}
+        >
           ~{wpd}
         </span>
-        <p className="mt-1 text-sm" style={{ color: 'var(--color-lx-text-secondary)' }}>
+        <p
+          style={{
+            fontFamily: "'Sora', sans-serif",
+            fontSize:   '0.8rem',
+            color:      'var(--color-lx-text-secondary)',
+            marginTop:  4,
+          }}
+        >
           words to review per day
         </p>
-        <p className="mt-2 text-xs" style={{ color: 'var(--color-lx-text-muted)' }}>
+        <p
+          style={{
+            fontFamily: "'Sora', sans-serif",
+            fontSize:   '0.7rem',
+            color:      'var(--color-lx-text-muted)',
+            marginTop:  6,
+          }}
+        >
           100 words in your free plan · upgrade anytime for 800+
         </p>
       </motion.div>
 
       <motion.button
         whileTap={{ scale: 0.97 }}
-        onClick={() => onNext(deadline)}
+        onClick={() => onNext(deadline, wpd)}
         className="w-full rounded-[10px] py-4 text-lg font-semibold text-white"
-        style={{ background: 'var(--color-lx-accent-red)' }}
+        style={{
+          background: 'linear-gradient(135deg, var(--color-lx-accent-red) 0%, #c42d39 100%)',
+          fontFamily: "'Sora', sans-serif",
+          boxShadow:  '0 4px 20px rgba(230,57,70,0.35)',
+        }}
       >
-        Confirm Deadline
+        Lock in my target date
       </motion.button>
     </div>
   );

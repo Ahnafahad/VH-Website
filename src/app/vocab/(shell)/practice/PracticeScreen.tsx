@@ -4,24 +4,32 @@ import { useState, useMemo } from 'react';
 import { motion, AnimatePresence, Variants } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 import type { PracticePageData, PracticeUnitItem } from '@/lib/vocab/practice-data';
+import { useVocabFeedback } from '@/lib/vocab/use-vocab-feedback';
 
 type PracticeTab = 'unit' | 'letter';
 
 // ─── Tab switcher ─────────────────────────────────────────────────────────────
 
 function TabSwitcher({ active, onChange }: { active: PracticeTab; onChange: (t: PracticeTab) => void }) {
+  const fb = useVocabFeedback();
   return (
-    <div style={{
-      display: 'flex', gap: 0,
-      borderBottom: '1px solid var(--color-lx-border)',
-      marginBottom: '1rem', position: 'relative',
-    }}>
+    <div
+      role="tablist"
+      style={{
+        display: 'flex', gap: 0,
+        borderBottom: '1px solid var(--color-lx-border)',
+        marginBottom: '1rem', position: 'relative',
+      }}
+    >
       {(['unit', 'letter'] as PracticeTab[]).map(tab => (
         <button
           key={tab}
-          onClick={() => onChange(tab)}
+          role="tab"
+          aria-selected={active === tab}
+          onClick={() => { fb.play('select'); onChange(tab); }}
           style={{
             padding: '0.5rem 1.25rem',
+            minHeight: 44,
             background: 'none', border: 'none', cursor: 'pointer',
             fontFamily: "'Sora', sans-serif",
             fontSize: '0.8125rem', fontWeight: 600,
@@ -55,6 +63,7 @@ interface LetterCardProps {
 }
 
 function LetterCard({ summary, selected, onToggle }: LetterCardProps) {
+  const fb         = useVocabFeedback();
   const masteryPct = summary.wordCount > 0
     ? summary.familiarPlusCount / summary.wordCount
     : 0;
@@ -97,10 +106,10 @@ function LetterCard({ summary, selected, onToggle }: LetterCardProps) {
       whileTap={{ scale: 0.94 }}
       whileHover={{ scale: 1.02 }}
       transition={{ type: 'spring', stiffness: 380, damping: 28 }}
-      onClick={onToggle}
+      onClick={() => { fb.play('select'); onToggle(); }}
       style={{
         background: selected ? 'rgba(230,57,70,0.1)' : 'var(--color-lx-surface)',
-        border: selected ? '1.5px solid rgba(230,57,70,0.55)' : '1px solid #333',
+        border: selected ? '1.5px solid rgba(230,57,70,0.55)' : '1px solid var(--color-lx-border)',
         borderRadius: 16,
         padding: '0.625rem 0.5rem',
         cursor: 'pointer',
@@ -260,10 +269,11 @@ interface ThemeRowProps {
 
 function ThemeRow({ name, wordCount, masteredCount, selected, onToggle }: ThemeRowProps) {
   const masteredPct = wordCount > 0 ? Math.round((masteredCount / wordCount) * 100) : 0;
+  const fb          = useVocabFeedback();
 
   return (
     <motion.button
-      onClick={onToggle}
+      onClick={() => { fb.play('select'); onToggle(); }}
       whileTap={{ scale: 0.98 }}
       className="w-full text-left"
       style={{ cursor: 'pointer' }}
@@ -355,6 +365,7 @@ interface UnitAccordionCardProps {
 }
 
 function UnitAccordionCard({ unit, expanded, onToggleExpand, selected, onToggleTheme, onSelectAll, index }: UnitAccordionCardProps) {
+  const fb            = useVocabFeedback();
   const selectedCount = unit.themes.filter(t => selected.has(t.id)).length;
   const selectionState: 'none' | 'partial' | 'all' =
     selectedCount === 0 ? 'none' :
@@ -456,7 +467,7 @@ function UnitAccordionCard({ unit, expanded, onToggleExpand, selected, onToggleT
 
         {/* Tri-state unit select-all button */}
         <button
-          onClick={(e) => { e.stopPropagation(); onSelectAll(); }}
+          onClick={(e) => { e.stopPropagation(); fb.play('select'); onSelectAll(); }}
           style={{
             display: 'flex', alignItems: 'center', justifyContent: 'center',
             padding: '1rem 1rem',
@@ -508,6 +519,81 @@ function UnitAccordionCard({ unit, expanded, onToggleExpand, selected, onToggleT
         )}
       </AnimatePresence>
     </motion.div>
+  );
+}
+
+// ─── Exam Mode entry card (IBA-style, unlocked at Advanced) ──────────────────
+
+function ExamModeCard({ unlocked, onStart }: { unlocked: boolean; onStart: () => void }) {
+  return (
+    <motion.button
+      initial={{ opacity: 0, y: 10 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ type: 'spring' as const, stiffness: 340, damping: 28 }}
+      whileTap={unlocked ? { scale: 0.98 } : {}}
+      onClick={() => unlocked && onStart()}
+      style={{
+        width: '100%', textAlign: 'left',
+        display: 'flex', alignItems: 'center', gap: '0.875rem',
+        padding: '1rem 1.125rem',
+        background: unlocked
+          ? 'linear-gradient(135deg, rgba(244,168,40,0.10) 0%, var(--color-lx-surface) 60%)'
+          : 'var(--color-lx-surface)',
+        border: unlocked ? '1px solid rgba(244,168,40,0.4)' : '1px solid var(--color-lx-border)',
+        borderRadius: 16,
+        cursor: unlocked ? 'pointer' : 'default',
+        opacity: unlocked ? 1 : 0.65,
+      }}
+    >
+      <div style={{
+        width: 40, height: 40, borderRadius: 12, flexShrink: 0,
+        background: unlocked ? 'rgba(244,168,40,0.14)' : 'var(--color-lx-elevated)',
+        display: 'flex', alignItems: 'center', justifyContent: 'center',
+      }}>
+        {unlocked ? (
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-lx-accent-gold)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <path d="M22 10v6M2 10l10-5 10 5-10 5z" /><path d="M6 12v5c3 3 9 3 12 0v-5" />
+          </svg>
+        ) : (
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-lx-text-muted)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <rect x="3" y="11" width="18" height="11" rx="2" /><path d="M7 11V7a5 5 0 0 1 10 0v4" />
+          </svg>
+        )}
+      </div>
+      <div style={{ flex: 1, minWidth: 0 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+          <span style={{
+            fontFamily: "'Cormorant Garamond', serif",
+            fontSize: '1.2rem', fontWeight: 700, fontStyle: 'italic',
+            color: unlocked ? 'var(--color-lx-accent-gold)' : 'var(--color-lx-text-primary)',
+          }}>
+            Exam Mode
+          </span>
+          <span style={{
+            fontFamily: "'Sora', sans-serif", fontSize: '0.55rem', fontWeight: 700,
+            letterSpacing: '0.1em', textTransform: 'uppercase',
+            padding: '0.15rem 0.45rem', borderRadius: 6,
+            background: unlocked ? 'rgba(244,168,40,0.15)' : 'var(--color-lx-elevated)',
+            color: unlocked ? 'var(--color-lx-accent-gold)' : 'var(--color-lx-text-muted)',
+          }}>
+            IBA Style
+          </span>
+        </div>
+        <p style={{
+          fontFamily: "'Sora', sans-serif", fontSize: '0.75rem',
+          color: 'var(--color-lx-text-secondary)', marginTop: 2, lineHeight: 1.45,
+        }}>
+          {unlocked
+            ? 'Synonyms, antonyms, analogies & sentence completion — real test format'
+            : 'Unlocks at Advanced level — complete 70% of all themes to qualify'}
+        </p>
+      </div>
+      {unlocked && (
+        <svg width="18" height="18" viewBox="0 0 22 22" fill="none" aria-hidden="true" style={{ flexShrink: 0 }}>
+          <path d="M4 11h14M13 6l5 5-5 5" stroke="var(--color-lx-accent-gold)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      )}
+    </motion.button>
   );
 }
 
@@ -658,6 +744,14 @@ export default function PracticeScreen({ data }: { data: PracticePageData }) {
             ? 'Select a whole unit or pick individual themes to include'
             : 'Tap letters to include in your practice quiz'}
         </motion.p>
+      </div>
+
+      {/* ── Exam Mode (IBA-style) entry ── */}
+      <div className="px-5 md:px-8 mb-4">
+        <ExamModeCard
+          unlocked={data.studentLevel === 'advanced'}
+          onStart={() => router.push('/vocab/practice/quiz?mode=exam')}
+        />
       </div>
 
       {/* ── Tab switcher ── */}

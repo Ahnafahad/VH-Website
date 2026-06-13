@@ -8,6 +8,7 @@ import InstallPrompt from '@/components/vocab/InstallPrompt';
 import { DailyDossier } from '@/components/vocab/DailyDossier';
 import { BadgeQueueProvider, useBadgeQueue } from '@/lib/vocab/badges/queue';
 import type { EarnedBadge } from '@/lib/vocab/badges/checker';
+import { unlockAudio } from '@/lib/vocab/sound';
 
 function todayKey(): string {
   return new Date().toISOString().slice(0, 10);
@@ -23,6 +24,26 @@ function VocabShellInner({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     const saved = localStorage.getItem('lx-theme') as 'dark' | 'light' | null;
     if (saved) setTheme(saved);
+  }, []);
+
+  // One-time audio context unlock on first user gesture so Web Audio works
+  // once the user enables sound. Self-removing and SSR-safe (typeof window check).
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const handler = () => {
+      unlockAudio();
+      window.removeEventListener('pointerdown', handler);
+      window.removeEventListener('touchstart', handler);
+      window.removeEventListener('keydown',    handler);
+    };
+    window.addEventListener('pointerdown', handler, { once: true, passive: true });
+    window.addEventListener('touchstart',  handler, { once: true, passive: true });
+    window.addEventListener('keydown',     handler, { once: true });
+    return () => {
+      window.removeEventListener('pointerdown', handler);
+      window.removeEventListener('touchstart',  handler);
+      window.removeEventListener('keydown',     handler);
+    };
   }, []);
 
   // Daily login — first authenticated action of the day triggers:

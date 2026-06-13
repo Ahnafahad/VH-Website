@@ -184,7 +184,7 @@ export default function VocabAdminPage() {
       (status === 'authenticated' && !session?.user?.isAdmin)) {
     return (
       <div style={styles.centerPage}>
-        <Loader2 size={28} style={{ animation: 'spin 1s linear infinite', color: '#6366f1' }} />
+        <Loader2 size={28} style={{ animation: 'spin 1s linear infinite', color: 'var(--color-lx-accent-red)' }} />
         <style>{`@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }`}</style>
       </div>
     );
@@ -237,8 +237,8 @@ export default function VocabAdminPage() {
         {/* ── Ultimate Achievements ─────────────────────────────────── */}
         <section style={styles.card}>
           <div style={styles.cardHeader}>
-            <div style={{ ...styles.iconBadge, background: ultimateOn ? '#fef3c7' : '#f1f5f9' }}>
-              <Trophy size={18} color={ultimateOn ? '#d97706' : '#64748b'} />
+            <div style={{ ...styles.iconBadge, background: ultimateOn ? 'rgba(244,168,40,0.12)' : 'var(--color-lx-elevated)' }}>
+              <Trophy size={18} color={ultimateOn ? 'var(--color-lx-accent-gold)' : 'var(--color-lx-text-secondary)'} />
             </div>
             <div style={{ flex: 1 }}>
               <h2 style={styles.cardTitle}>Ultimate Achievements</h2>
@@ -255,7 +255,7 @@ export default function VocabAdminPage() {
               aria-pressed={ultimateOn}
               style={{
                 ...styles.toggle,
-                background:   ultimateOn ? '#4f46e5' : '#e2e8f0',
+                background:   ultimateOn ? 'var(--color-lx-accent-red)' : 'var(--color-lx-elevated)',
                 cursor:       ultimateLoading ? 'wait' : 'pointer',
                 opacity:      ultimateLoading ? 0.7 : 1,
               }}
@@ -269,7 +269,7 @@ export default function VocabAdminPage() {
                 {ultimateLoading && (
                   <Loader2
                     size={10}
-                    style={{ animation: 'spin 1s linear infinite', color: '#64748b' }}
+                    style={{ animation: 'spin 1s linear infinite', color: 'var(--color-lx-text-muted)' }}
                   />
                 )}
               </span>
@@ -278,8 +278,8 @@ export default function VocabAdminPage() {
 
           {ultimateOn && (
             <div style={styles.warningBox}>
-              <AlertTriangle size={13} color='#b45309' />
-              <span style={{ fontSize: 12, color: '#92400e' }}>
+              <AlertTriangle size={13} color='var(--color-lx-warning)' />
+              <span style={{ fontSize: 12, fontFamily: "'Sora', sans-serif", color: 'var(--color-lx-warning)' }}>
                 Disabling will hide these badges from the UI but will not revoke already-awarded badges.
               </span>
             </div>
@@ -289,8 +289,8 @@ export default function VocabAdminPage() {
         {/* ── Quiz Pass Threshold ───────────────────────────────────── */}
         <section style={styles.card}>
           <div style={styles.cardHeader}>
-            <div style={{ ...styles.iconBadge, background: '#f0fdf4' }}>
-              <CheckCircle size={18} color='#16a34a' />
+            <div style={{ ...styles.iconBadge, background: 'rgba(46,204,113,0.12)' }}>
+              <CheckCircle size={18} color='var(--color-lx-success)' />
             </div>
             <div style={{ flex: 1 }}>
               <h2 style={styles.cardTitle}>Quiz Pass Threshold</h2>
@@ -325,8 +325,8 @@ export default function VocabAdminPage() {
         {/* ── Phase Cut-off Date ────────────────────────────────────── */}
         <section style={styles.card}>
           <div style={styles.cardHeader}>
-            <div style={{ ...styles.iconBadge, background: '#fdf4ff' }}>
-              <Calendar size={18} color='#9333ea' />
+            <div style={{ ...styles.iconBadge, background: 'rgba(230,57,70,0.12)' }}>
+              <Calendar size={18} color='var(--color-lx-accent-red)' />
             </div>
             <div style={{ flex: 1 }}>
               <h2 style={styles.cardTitle}>Phase 1 Cut-off Date</h2>
@@ -363,14 +363,33 @@ export default function VocabAdminPage() {
   );
 }
 
+// ─── LexiCore design tokens (mirrors QuizScreen.tsx pattern) ─────────────────
+
+const C = {
+  base:       'var(--color-lx-base)',
+  surface:    'var(--color-lx-surface)',
+  elevated:   'var(--color-lx-elevated)',
+  border:     'var(--color-lx-border)',
+  red:        'var(--color-lx-accent-red)',
+  gold:       'var(--color-lx-accent-gold)',
+  success:    'var(--color-lx-success)',
+  warning:    'var(--color-lx-warning)',
+  textPrim:   'var(--color-lx-text-primary)',
+  textSec:    'var(--color-lx-text-secondary)',
+  textMuted:  'var(--color-lx-text-muted)',
+} as const;
+
+const SERIF = "'Cormorant Garamond', Georgia, serif";
+const SANS  = "'Sora', sans-serif";
+
 // ─── Styles ───────────────────────────────────────────────────────────────────
 
 const styles = {
   page: {
     minHeight:       '100vh',
-    background:      '#f8fafc',
-    color:           '#0f172a',
-    fontFamily:      'system-ui, -apple-system, sans-serif',
+    background:      C.base,
+    color:           C.textPrim,
+    fontFamily:      SANS,
     padding:         '24px 16px 48px',
     maxWidth:        '680px',
     margin:          '0 auto',
@@ -381,7 +400,7 @@ const styles = {
     display:         'flex',
     alignItems:      'center',
     justifyContent:  'center',
-    background:      '#f8fafc',
+    background:      C.base,
   } as React.CSSProperties,
 
   toast: {
@@ -396,16 +415,29 @@ const styles = {
     padding:       '10px 18px',
     borderRadius:  8,
     fontSize:      13,
+    fontFamily:    SANS,
     fontWeight:    500,
-    boxShadow:     '0 4px 16px rgba(0,0,0,0.12)',
+    boxShadow:     '0 4px 16px rgba(0,0,0,0.48)',
     maxWidth:      480,
     whiteSpace:    'nowrap' as const,
   } as React.CSSProperties,
 
   toastVariant: {
-    success: { background: '#f0fdf4', color: '#166534', border: '1px solid #bbf7d0' },
-    error:   { background: '#fef2f2', color: '#991b1b', border: '1px solid #fecaca' },
-    info:    { background: '#eff6ff', color: '#1e40af', border: '1px solid #bfdbfe' },
+    success: {
+      background: 'rgba(46,204,113,0.12)',
+      color:      'var(--color-lx-success)',
+      border:     '1px solid rgba(46,204,113,0.30)',
+    },
+    error: {
+      background: 'rgba(230,57,70,0.12)',
+      color:      'var(--color-lx-accent-red)',
+      border:     '1px solid rgba(230,57,70,0.30)',
+    },
+    info: {
+      background: 'var(--color-lx-elevated)',
+      color:      'var(--color-lx-text-secondary)',
+      border:     '1px solid var(--color-lx-border)',
+    },
   },
 
   header: {
@@ -421,28 +453,32 @@ const styles = {
     alignItems:   'center',
     gap:          4,
     background:   'transparent',
-    border:       '1px solid #e2e8f0',
+    border:       `1px solid ${C.border}`,
     borderRadius: 6,
     padding:      '6px 10px',
     fontSize:     13,
-    color:        '#64748b',
+    fontFamily:   SANS,
+    color:        C.textSec,
     cursor:       'pointer',
     whiteSpace:   'nowrap' as const,
     marginTop:    4,
+    minHeight:    40,
   } as React.CSSProperties,
 
   title: {
-    margin:      0,
-    fontSize:    22,
-    fontWeight:  700,
-    color:       '#0f172a',
-    letterSpacing: '-0.02em',
+    margin:        0,
+    fontSize:      22,
+    fontWeight:    700,
+    fontFamily:    SERIF,
+    color:         C.textPrim,
+    letterSpacing: '-0.01em',
   } as React.CSSProperties,
 
   subtitle: {
-    margin:    '2px 0 0',
-    fontSize:  13,
-    color:     '#64748b',
+    margin:     '2px 0 0',
+    fontSize:   13,
+    fontFamily: SANS,
+    color:      C.textSec,
     fontWeight: 400,
   } as React.CSSProperties,
 
@@ -450,13 +486,16 @@ const styles = {
     marginLeft:   'auto',
     marginTop:    6,
     background:   'transparent',
-    border:       '1px solid #e2e8f0',
+    border:       `1px solid ${C.border}`,
     borderRadius: 6,
     padding:      8,
     cursor:       'pointer',
-    color:        '#64748b',
+    color:        C.textSec,
     display:      'flex',
     alignItems:   'center',
+    minWidth:     40,
+    minHeight:    40,
+    justifyContent: 'center',
   } as React.CSSProperties,
 
   cards: {
@@ -466,8 +505,8 @@ const styles = {
   } as React.CSSProperties,
 
   card: {
-    background:   '#ffffff',
-    border:       '1px solid #e2e8f0',
+    background:   C.surface,
+    border:       `1px solid ${C.border}`,
     borderRadius: 12,
     padding:      20,
   } as React.CSSProperties,
@@ -480,26 +519,28 @@ const styles = {
   } as React.CSSProperties,
 
   iconBadge: {
-    width:        38,
-    height:       38,
-    borderRadius: 8,
-    display:      'flex',
-    alignItems:   'center',
+    width:          38,
+    height:         38,
+    borderRadius:   8,
+    display:        'flex',
+    alignItems:     'center',
     justifyContent: 'center',
-    flexShrink:   0,
+    flexShrink:     0,
   } as React.CSSProperties,
 
   cardTitle: {
     margin:     0,
     fontSize:   15,
     fontWeight: 600,
-    color:      '#0f172a',
+    fontFamily: SANS,
+    color:      C.textPrim,
   } as React.CSSProperties,
 
   cardDesc: {
-    margin:    '3px 0 0',
-    fontSize:  12.5,
-    color:     '#64748b',
+    margin:     '3px 0 0',
+    fontSize:   12.5,
+    fontFamily: SANS,
+    color:      C.textSec,
     lineHeight: 1.5,
   } as React.CSSProperties,
 
@@ -513,26 +554,28 @@ const styles = {
     transition:   'background 0.2s',
     display:      'flex',
     alignItems:   'center',
+    minHeight:    40,
+    cursor:       'pointer',
   } as React.CSSProperties,
 
   toggleKnob: {
-    position:     'absolute' as const,
-    width:        20,
-    height:       20,
-    borderRadius: '50%',
-    background:   '#ffffff',
-    boxShadow:    '0 1px 3px rgba(0,0,0,0.2)',
-    transition:   'transform 0.2s',
-    display:      'flex',
-    alignItems:   'center',
+    position:       'absolute' as const,
+    width:          20,
+    height:         20,
+    borderRadius:   '50%',
+    background:     '#ffffff',
+    boxShadow:      '0 1px 3px rgba(0,0,0,0.4)',
+    transition:     'transform 0.2s',
+    display:        'flex',
+    alignItems:     'center',
     justifyContent: 'center',
   } as React.CSSProperties,
 
   warningBox: {
     marginTop:    12,
     padding:      '8px 12px',
-    background:   '#fffbeb',
-    border:       '1px solid #fde68a',
+    background:   'rgba(243,156,18,0.10)',
+    border:       '1px solid rgba(243,156,18,0.30)',
     borderRadius: 6,
     display:      'flex',
     alignItems:   'flex-start',
@@ -554,36 +597,39 @@ const styles = {
 
   input: {
     padding:      '8px 12px',
-    border:       '1px solid #e2e8f0',
+    border:       '1px solid var(--form-border)',
     borderRadius: 6,
     fontSize:     14,
-    color:        '#0f172a',
-    background:   '#f8fafc',
+    fontFamily:   SANS,
+    color:        C.textPrim,
+    background:   'var(--form-field-bg)',
     outline:      'none',
     width:        80,
   } as React.CSSProperties,
 
   inputSuffix: {
-    position:   'absolute' as const,
-    right:      10,
-    fontSize:   13,
-    color:      '#94a3b8',
+    position:      'absolute' as const,
+    right:         10,
+    fontSize:      13,
+    color:         C.textMuted,
     pointerEvents: 'none' as const,
   } as React.CSSProperties,
 
   saveBtn: {
-    padding:      '8px 18px',
-    background:   '#4f46e5',
-    color:        '#ffffff',
-    border:       'none',
-    borderRadius: 6,
-    fontSize:     13,
-    fontWeight:   600,
-    cursor:       'pointer',
-    display:      'flex',
-    alignItems:   'center',
-    gap:          6,
-    minWidth:     64,
+    padding:        '8px 18px',
+    background:     C.red,
+    color:          '#ffffff',
+    border:         'none',
+    borderRadius:   6,
+    fontSize:       13,
+    fontFamily:     SANS,
+    fontWeight:     600,
+    cursor:         'pointer',
+    display:        'flex',
+    alignItems:     'center',
+    gap:            6,
+    minWidth:       64,
+    minHeight:      40,
     justifyContent: 'center',
   } as React.CSSProperties,
 } as const;

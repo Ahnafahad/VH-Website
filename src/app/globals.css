@@ -42,6 +42,12 @@
   --color-lx-danger:            #E63946;
   --color-lx-border:            #2A2A2A;
 
+  /* Mastery stage + study accents */
+  --color-lx-mastery-learning:  #F97316;
+  --color-lx-mastery-familiar:  #5BA3F5;
+  --color-lx-mastery-strong:    #2DD4BF;
+  --color-lx-study:             #5BA3F5;
+
   /* Mental Math — deep indigo + aged brass sub-brand */
   --color-math-base:             #0A0B1A;
   --color-math-surface:          #12152B;
@@ -251,6 +257,12 @@
   --color-lx-danger:            #D62B38;
   --color-lx-border:            #E0E0E0;
 
+  /* Mastery stage + study accents — light mode (darker/more saturated for white surfaces) */
+  --color-lx-mastery-learning:  #EA6A0A;
+  --color-lx-mastery-familiar:  #2563EB;
+  --color-lx-mastery-strong:    #0D9488;
+  --color-lx-study:             #2563EB;
+
   /* LexiCore Form Tokens — light mode */
   --form-surface:       #FFFFFF;
   --form-field-bg:      #FAFAFA;
@@ -263,6 +275,21 @@
   --form-disabled:      #B8B8B8;
   --form-focus:         #D62B38;
   --form-focus-ring:    rgba(214, 43, 56, 0.18);
+}
+
+/* Mastery mapping: new→lx-text-muted, learning→lx-mastery-learning, familiar→lx-mastery-familiar, strong→lx-mastery-strong, mastered→lx-success */
+
+/* LexiCore focus-visible ring — scoped to .lx-root so it never leaks to the
+   marketing site or workbook. .lx-root is the vocab shell wrapper (see
+   src/app/vocab/(shell)/layout.tsx line 74). */
+.lx-root button:focus-visible,
+.lx-root a:focus-visible,
+.lx-root [role="button"]:focus-visible,
+.lx-root input:focus-visible,
+.lx-root [tabindex]:focus-visible {
+  outline: 2px solid var(--color-lx-accent-red);
+  outline-offset: 2px;
+  border-radius: inherit;
 }
 
 /* LexiCore placeholder styling */

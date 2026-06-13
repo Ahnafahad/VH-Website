@@ -1,9 +1,11 @@
 'use client';
 
 import { useState, useCallback } from 'react';
-import { motion, AnimatePresence, type Variants } from 'framer-motion';
+import { motion, AnimatePresence, useReducedMotion, type Variants } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 import { CheckCircle2, HelpCircle, XCircle, Zap, ArrowLeft } from 'lucide-react';
+import { useVocabFeedback } from '@/lib/vocab/use-vocab-feedback';
+import Celebration from '@/components/vocab/Celebration';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -47,16 +49,16 @@ const SANS  = "'Sora', sans-serif";
 
 const LEVEL_COLORS: Record<string, string> = {
   new:      'rgba(180,180,180,0.2)',
-  learning: 'rgba(244,168,40,0.2)',
-  familiar: 'rgba(56,189,248,0.2)',
-  strong:   'rgba(46,204,113,0.2)',
+  learning: 'var(--color-lx-mastery-learning)',
+  familiar: 'color-mix(in srgb, var(--color-lx-mastery-familiar) 20%, transparent)',
+  strong:   'color-mix(in srgb, var(--color-lx-mastery-strong) 20%, transparent)',
   mastered: 'rgba(230,57,70,0.2)',
 };
 const LEVEL_TEXT: Record<string, string> = {
   new:      'rgba(180,180,180,0.9)',
   learning: 'var(--color-lx-accent-gold)',
-  familiar: 'rgb(56,189,248)',
-  strong:   'var(--color-lx-success)',
+  familiar: 'var(--color-lx-mastery-familiar)',
+  strong:   'var(--color-lx-mastery-strong)',
   mastered: 'var(--color-lx-accent-red)',
 };
 
@@ -66,6 +68,16 @@ function ReviewComplete({
   total, gotCount, missedCount, onDone,
 }: { total: number; gotCount: number; missedCount: number; onDone: () => void }) {
   const router = useRouter();
+  const fb     = useVocabFeedback();
+  const [celebrated, setCelebrated] = useState(false);
+
+  // Fire complete feedback once on mount
+  const onMounted = useCallback((node: HTMLDivElement | null) => {
+    if (node && !celebrated) {
+      fb.play('complete');
+      setCelebrated(true);
+    }
+  }, [celebrated, fb]);
 
   const completedCard: Variants = {
     hidden: { opacity: 0, y: 20 },
@@ -74,6 +86,7 @@ function ReviewComplete({
 
   return (
     <motion.div
+      ref={onMounted}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       style={{
@@ -83,6 +96,8 @@ function ReviewComplete({
         padding: '2rem 1.5rem', gap: '1.5rem', textAlign: 'center',
       }}
     >
+      <Celebration active intensity="full" />
+
       {/* Zap icon */}
       <motion.div
         initial={{ scale: 0.6, opacity: 0 }}
@@ -214,8 +229,14 @@ function NoReviews({ onBack }: { onBack: () => void }) {
 // ─── Main ReviewScreen ────────────────────────────────────────────────────────
 
 export default function ReviewScreen({ words, dueCount }: Props) {
-  const router        = useRouter();
-  const [idx, setIdx] = useState(0);
+  const router          = useRouter();
+  const fb              = useVocabFeedback();
+  // Gate animated transitions for users who prefer reduced motion.
+  // No repeat:Infinity loops exist here currently; the flag is used to
+  // shorten transition durations for card slide/flip animations.
+  const prefersReduced  = useReducedMotion() ?? false;
+  const motionDuration  = prefersReduced ? 0.01 : 0.22;
+  const [idx, setIdx]   = useState(0);
   const [flipped, setFlipped]   = useState(false);
   const [ratings, setRatings]   = useState<Record<number, Rating>>({});
   const [done, setDone]         = useState(false);
@@ -228,10 +249,21 @@ export default function ReviewScreen({ words, dueCount }: Props) {
   const gotCount    = Object.values(ratings).filter(r => r === 'got_it').length;
   const missedCount = Object.values(ratings).filter(r => r === 'missed_it').length;
 
+  const handleFlip = useCallback(() => {
+    setFlipped(f => {
+      if (!f) fb.play('flip');
+      return !f;
+    });
+  }, [fb]);
+
   const handleRate = useCallback(async (rating: Rating) => {
     if (submitting) return;
     setSubmitting(true);
     setRatings(r => ({ ...r, [current.wordId]: rating }));
+
+    if (rating === 'got_it')    fb.play('gotIt');
+    else if (rating === 'unsure') fb.play('unsure');
+    else                          fb.play('missed');
 
     try {
       await fetch('/api/vocab/practice/rate', {
@@ -310,15 +342,19 @@ export default function ReviewScreen({ words, dueCount }: Props) {
       <AnimatePresence mode="wait" initial={false}>
         <motion.div
           key={current.wordId}
-          initial={{ opacity: 0, x: direction * 30 }}
+          initial={{ opacity: 0, x: prefersReduced ? 0 : direction * 30 }}
           animate={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0, x: -direction * 22 }}
-          transition={{ duration: 0.22, ease: 'easeOut' }}
+          exit={{ opacity: 0, x: prefersReduced ? 0 : -direction * 22 }}
+          transition={{ duration: motionDuration, ease: 'easeOut' }}
           style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '0.875rem' }}
         >
           {/* Front: word + POS + level */}
           <div
-            onClick={() => setFlipped(f => !f)}
+            onClick={handleFlip}
+            role="button"
+            tabIndex={0}
+            onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handleFlip(); } }}
+            aria-label={flipped ? 'Card revealed' : 'Tap to reveal definition'}
             style={{
               background: C.surface, border: `1px solid ${C.border}`,
               borderRadius: 20, padding: '1.75rem 1.5rem',
@@ -422,12 +458,13 @@ export default function ReviewScreen({ words, dueCount }: Props) {
               whileTap={{ scale: 0.94 }}
               onClick={() => handleRate('missed_it')}
               disabled={submitting}
+              aria-label="Missed it"
               style={{
-                flex: 1, padding: '0.875rem 0.5rem',
+                flex: 1, padding: '0.875rem 0.5rem', minHeight: 44,
                 background: 'rgba(230,57,70,0.08)',
                 border: '1.5px solid rgba(230,57,70,0.25)',
                 borderRadius: 14, cursor: 'pointer',
-                display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 4,
+                display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 4,
               }}
             >
               <XCircle size={20} color={C.red} />
@@ -441,12 +478,13 @@ export default function ReviewScreen({ words, dueCount }: Props) {
               whileTap={{ scale: 0.94 }}
               onClick={() => handleRate('unsure')}
               disabled={submitting}
+              aria-label="Unsure"
               style={{
-                flex: 1, padding: '0.875rem 0.5rem',
+                flex: 1, padding: '0.875rem 0.5rem', minHeight: 44,
                 background: 'rgba(244,168,40,0.08)',
                 border: '1.5px solid rgba(244,168,40,0.25)',
                 borderRadius: 14, cursor: 'pointer',
-                display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 4,
+                display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 4,
               }}
             >
               <HelpCircle size={20} color={C.gold} />
@@ -460,12 +498,13 @@ export default function ReviewScreen({ words, dueCount }: Props) {
               whileTap={{ scale: 0.94 }}
               onClick={() => handleRate('got_it')}
               disabled={submitting}
+              aria-label="Got it"
               style={{
-                flex: 1.4, padding: '0.875rem 0.5rem',
+                flex: 1.4, padding: '0.875rem 0.5rem', minHeight: 44,
                 background: 'rgba(46,204,113,0.08)',
                 border: '1.5px solid rgba(46,204,113,0.25)',
                 borderRadius: 14, cursor: 'pointer',
-                display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 4,
+                display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 4,
               }}
             >
               <CheckCircle2 size={20} color={C.success} />

@@ -1,7 +1,9 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import { useEffect, useId, useState } from 'react';
+import { motion, useReducedMotion } from 'framer-motion';
+import { useEffect, useId, useRef } from 'react';
+import AnimatedNumber from '@/components/vocab/AnimatedNumber';
+import { useVocabFeedback } from '@/lib/vocab/use-vocab-feedback';
 
 interface Props {
   percentage:  number;   // 0–100
@@ -14,20 +16,48 @@ export default function ProgressRing({ percentage, size, strokeWidth, label }: P
   const uid           = useId().replace(/:/g, '');
   const radius        = (size - strokeWidth) / 2;
   const circumference = 2 * Math.PI * radius;
-  const [offset, setOffset] = useState(circumference);
+  const offset        = circumference - (percentage / 100) * circumference;
+
+  const shouldReduceMotion = useReducedMotion();
+  const fb                 = useVocabFeedback();
+
+  // Guard: fire levelUp feedback only on first 0→100 transition, not every render.
+  const prevPercentageRef = useRef<number | null>(null);
+  const celebrationFiredRef = useRef(false);
 
   useEffect(() => {
-    const target = circumference - (percentage / 100) * circumference;
-    const t = setTimeout(() => setOffset(target), 50);
-    return () => clearTimeout(t);
-  }, [percentage, circumference]);
+    const prev = prevPercentageRef.current;
+    if (percentage === 100 && prev !== null && prev < 100 && !celebrationFiredRef.current) {
+      celebrationFiredRef.current = true;
+      fb.play('levelUp');
+    }
+    if (percentage < 100) {
+      celebrationFiredRef.current = false;
+    }
+    prevPercentageRef.current = percentage;
+  }, [percentage, fb]);
 
   const gradId   = `lx-grad-${uid}`;
   const glowId   = `lx-glow-${uid}`;
   const fontSize = size > 100 ? '2rem' : '1.4rem';
+  const is100    = percentage >= 100;
 
   return (
     <div className="relative" style={{ width: size, height: size }}>
+      {/* 100% celebration: gold pulse ring expanding outward — gated by reduced-motion */}
+      {is100 && !shouldReduceMotion && (
+        <motion.span
+          className="absolute inset-0 rounded-full pointer-events-none"
+          style={{
+            borderRadius: '50%',
+            border: '2px solid rgba(255, 197, 66, 0.6)',
+          }}
+          initial={{ scale: 1, opacity: 0.6 }}
+          animate={{ scale: 1.4, opacity: 0 }}
+          transition={{ duration: 0.7, ease: 'easeOut' }}
+        />
+      )}
+
       <svg width={size} height={size} style={{ transform: 'rotate(-90deg)' }}>
         <defs>
           {/* Red → gold gradient along arc */}
@@ -56,7 +86,7 @@ export default function ProgressRing({ percentage, size, strokeWidth, label }: P
           stroke="var(--color-lx-elevated)"
         />
 
-        {/* Gradient arc with glow */}
+        {/* Gradient arc with glow — Framer initial/animate handles mount animation cleanly */}
         <motion.circle
           cx={size / 2}
           cy={size / 2}
@@ -68,8 +98,12 @@ export default function ProgressRing({ percentage, size, strokeWidth, label }: P
           strokeDasharray={circumference}
           initial={{ strokeDashoffset: circumference }}
           animate={{ strokeDashoffset: offset }}
-          transition={{ duration: 0.9, ease: 'easeOut' }}
-          filter={`url(#${glowId})`}
+          transition={
+            shouldReduceMotion
+              ? { duration: 0 }
+              : { duration: 0.9, ease: 'easeOut' }
+          }
+          filter={!shouldReduceMotion ? `url(#${glowId})` : undefined}
         />
       </svg>
 
@@ -84,7 +118,8 @@ export default function ProgressRing({ percentage, size, strokeWidth, label }: P
             color:      'var(--color-lx-text-primary)',
           }}
         >
-          {percentage}%
+          {/* AnimatedNumber spring-counts in sync with the ring */}
+          <AnimatedNumber value={percentage} />%
         </span>
         {label && (
           <span

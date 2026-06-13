@@ -1,37 +1,22 @@
 'use client';
 
-import { useState, useCallback, useRef } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useState, useCallback, useRef, useEffect } from 'react';
+import {
+  motion,
+  AnimatePresence,
+  useReducedMotion,
+  useMotionValue,
+  useTransform,
+  type PanInfo,
+} from 'framer-motion';
 import { useRouter } from 'next/navigation';
-import { ChevronLeft, RotateCcw, CheckCircle2, HelpCircle, XCircle, Volume2, Trophy } from 'lucide-react';
+import { ChevronLeft, RotateCcw, CheckCircle2, HelpCircle, XCircle, Trophy } from 'lucide-react';
 import type { FlashcardSessionData, FlashcardWord } from '@/lib/vocab/flashcard-data';
 import { useBadgeQueue } from '@/lib/vocab/badges/queue';
+import { useVocabFeedback } from '@/lib/vocab/use-vocab-feedback';
+import Celebration from '@/components/vocab/Celebration';
 
 type Rating = 'got_it' | 'unsure' | 'missed_it';
-
-/* ─── Confetti particle ─────────────────────────────────── */
-function Confetti() {
-  const particles = Array.from({ length: 36 }, (_, i) => ({
-    id:    i,
-    x:     Math.random() * 100,
-    color: ['#E63946','#F4A828','#2ECC71','#F5F5F5'][i % 4],
-    delay: Math.random() * 0.6,
-    size:  Math.random() * 6 + 4,
-  }));
-  return (
-    <div aria-hidden className="pointer-events-none fixed inset-0 z-50 overflow-hidden">
-      {particles.map(p => (
-        <motion.div
-          key={p.id}
-          initial={{ x: `${p.x}vw`, y: '-5vh', opacity: 1, rotate: 0 }}
-          animate={{ y: '110vh', opacity: [1, 1, 0], rotate: 360 * (Math.random() > 0.5 ? 1 : -1) }}
-          transition={{ duration: 2.2 + Math.random(), delay: p.delay, ease: 'easeIn' }}
-          style={{ position: 'absolute', width: p.size, height: p.size, borderRadius: 2, background: p.color }}
-        />
-      ))}
-    </div>
-  );
-}
 
 /* ─── Session complete screen ───────────────────────────── */
 function SessionComplete({
@@ -52,9 +37,18 @@ function SessionComplete({
   const missed  = Object.values(ratings).filter(r => r === 'missed_it').length;
   const pct     = Math.round((gotIt / words.length) * 100);
 
+  const [celebActive, setCelebActive] = useState(true);
+  const fb = useVocabFeedback();
+
+  // Fire complete feedback once on mount
+  useEffect(() => {
+    fb.play('complete');
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <>
-      <Confetti />
+      <Celebration active={celebActive} intensity="full" onDone={() => setCelebActive(false)} />
       <div className="flex flex-col items-center gap-6 px-6 pt-16 pb-8 text-center md:max-w-xl md:mx-auto md:w-full">
         {/* Trophy */}
         <motion.div
@@ -166,139 +160,265 @@ function SessionComplete({
   );
 }
 
-/* ─── Flip card ─────────────────────────────────────────── */
-function FlipCard({ word, isFlipped, onFlip, onFlipBack }: { word: FlashcardWord; isFlipped: boolean; onFlip: () => void; onFlipBack: () => void }) {
+/* ─── Swipeable flip card ───────────────────────────────── */
+function FlipCard({
+  word,
+  isFlipped,
+  onFlip,
+  onFlipBack,
+  onSwipeRate,
+  reduce,
+}: {
+  word: FlashcardWord;
+  isFlipped: boolean;
+  onFlip: () => void;
+  onFlipBack: () => void;
+  onSwipeRate: (r: 'got_it' | 'missed_it') => void;
+  reduce: boolean;
+}) {
+  const dragX        = useMotionValue(0);
+  const THRESHOLD    = 120;
+
+  // Live tint overlays driven by drag position
+  const gotItOpacity   = useTransform(dragX, [0, THRESHOLD],      [0, 0.55]);
+  const missedOpacity  = useTransform(dragX, [-THRESHOLD, 0],     [0.55, 0]);
+
+  function handleDragEnd(_: unknown, info: PanInfo) {
+    const offset = info.offset.x;
+    const velocity = info.velocity.x;
+
+    if (offset > THRESHOLD || velocity > 500) {
+      onSwipeRate('got_it');
+    } else if (offset < -THRESHOLD || velocity < -500) {
+      onSwipeRate('missed_it');
+    }
+    // below threshold — motion's dragSnapToOrigin snaps back automatically
+  }
+
+  const flipDuration = reduce ? 0.12 : 0.65;
+
   return (
     <div
       className="relative w-full"
       style={{ perspective: '2000px', flex: 1 }}
-      onClick={!isFlipped ? onFlip : undefined}
     >
+      {/* Swipe drag wrapper — only active once flipped */}
       <motion.div
-        animate={{ rotateY: isFlipped ? 180 : 0 }}
-        transition={{ duration: 0.65, ease: [0.4, 0, 0.2, 1] }}
-        style={{ transformStyle: 'preserve-3d', position: 'absolute', inset: 0 }}
+        drag={isFlipped ? 'x' : false}
+        dragSnapToOrigin
+        dragElastic={0.5}
+        style={{ x: dragX, flex: 1, height: '100%', position: 'relative' }}
+        onDragEnd={isFlipped ? handleDragEnd : undefined}
       >
-        {/* ── FRONT ─────────────────────────────────── */}
-        <div
+        {/* GOT IT hint overlay */}
+        <motion.div
+          aria-hidden
           style={{
-            backfaceVisibility: 'hidden',
-            position: 'absolute', inset: 0,
-            borderRadius: 20,
-            background: 'var(--color-lx-surface)',
-            border: '1px solid var(--color-lx-border)',
-            display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
-            padding: '2rem',
+            opacity: gotItOpacity,
+            position: 'absolute', inset: 0, zIndex: 10,
+            borderRadius: 20, pointerEvents: 'none',
+            background: 'rgba(46,204,113,0.18)',
+            border: '2px solid rgba(46,204,113,0.5)',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
           }}
         >
-          {/* Ambient glow */}
-          <div aria-hidden style={{
-            position: 'absolute', inset: 0, borderRadius: 20, overflow: 'hidden', pointerEvents: 'none',
-          }}>
-            <div style={{
-              position: 'absolute', top: '-30%', left: '50%', transform: 'translateX(-50%)',
-              width: '80%', height: '80%', borderRadius: '50%',
-              background: 'radial-gradient(circle, rgba(230,57,70,0.08) 0%, transparent 70%)',
-              filter: 'blur(20px)',
-            }} />
-          </div>
+          <span style={{ fontFamily: "'Sora', sans-serif", fontWeight: 700, fontSize: '1.2rem', color: 'var(--color-lx-success)', letterSpacing: '0.08em' }}>
+            GOT IT
+          </span>
+        </motion.div>
 
-          {/* Part of speech */}
-          {word.partOfSpeech && (
-            <span className="mb-4 rounded-full px-3 py-1 text-xs font-medium tracking-widest uppercase"
-                  style={{ background: 'var(--color-lx-elevated)', color: 'var(--color-lx-text-muted)', border: '1px solid var(--color-lx-border)' }}>
-              {word.partOfSpeech}
-            </span>
-          )}
+        {/* MISSED hint overlay */}
+        <motion.div
+          aria-hidden
+          style={{
+            opacity: missedOpacity,
+            position: 'absolute', inset: 0, zIndex: 10,
+            borderRadius: 20, pointerEvents: 'none',
+            background: 'rgba(230,57,70,0.18)',
+            border: '2px solid rgba(230,57,70,0.5)',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+          }}
+        >
+          <span style={{ fontFamily: "'Sora', sans-serif", fontWeight: 700, fontSize: '1.2rem', color: 'var(--color-lx-accent-red)', letterSpacing: '0.08em' }}>
+            MISSED
+          </span>
+        </motion.div>
 
-          {/* The word */}
-          <h2 className="lx-word text-center"
-              style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 'clamp(2.5rem, 10vw, 3.5rem)', fontWeight: 700, lineHeight: 1.05, color: 'var(--color-lx-text-primary)', letterSpacing: '-0.02em' }}>
-            {word.word}
-          </h2>
-
-          {/* Tap hint */}
-          <motion.p
-            animate={{ opacity: [0.5, 0.8, 0.5] }}
-            transition={{ repeat: Infinity, duration: 2.5 }}
-            className="mt-8 text-xs"
-            style={{ color: 'var(--color-lx-text-muted)', fontFamily: "'Sora', sans-serif" }}
+        {/* 3D flip inner */}
+        <motion.div
+          animate={{ rotateY: isFlipped ? 180 : 0 }}
+          transition={{ duration: flipDuration, ease: [0.4, 0, 0.2, 1] }}
+          style={{ transformStyle: 'preserve-3d', position: 'absolute', inset: 0 }}
+        >
+          {/* ── FRONT ─────────────────────────────────── */}
+          <div
+            role="button"
+            tabIndex={0}
+            aria-label="Reveal definition"
+            onClick={!isFlipped ? onFlip : undefined}
+            onKeyDown={!isFlipped ? (e) => {
+              if (e.key === ' ' || e.key === 'Enter') {
+                e.preventDefault();
+                onFlip();
+              }
+            } : undefined}
+            style={{
+              backfaceVisibility: 'hidden',
+              position: 'absolute', inset: 0,
+              borderRadius: 20,
+              background: 'var(--color-lx-surface)',
+              border: '1px solid var(--color-lx-border)',
+              display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
+              padding: '2rem',
+              cursor: !isFlipped ? 'pointer' : 'default',
+              outline: 'none',
+              overflow: 'hidden',
+            }}
           >
-            tap to reveal
-          </motion.p>
-        </div>
-
-        {/* ── BACK ──────────────────────────────────── */}
-        <div
-          style={{
-            backfaceVisibility: 'hidden',
-            position: 'absolute', inset: 0,
-            borderRadius: 20,
-            background: 'var(--color-lx-surface)',
-            border: '1px solid rgba(230,57,70,0.25)',
-            transform: 'rotateY(180deg)',
-            display: 'flex', flexDirection: 'column', justifyContent: 'flex-start',
-            gap: '0.75rem',
-            padding: '1.5rem',
-            overflowY: 'auto',
-            scrollbarWidth: 'none',
-            msOverflowStyle: 'none',
-          }}
-          className="hide-scrollbar"
-        >
-          {/* Word again (small) */}
-          <div className="flex items-center justify-between">
-            <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '1.1rem', fontStyle: 'italic', color: 'var(--color-lx-accent-red)', fontWeight: 600 }}>
-              {word.word}
-            </span>
-            <div className="flex items-center gap-2">
-              {word.partOfSpeech && (
-                <span className="text-xs" style={{ color: 'var(--color-lx-text-muted)' }}>{word.partOfSpeech}</span>
-              )}
-              <motion.button
-                onClick={onFlipBack}
-                whileTap={{ scale: 0.88 }}
-                style={{
-                  width: 26, height: 26, flexShrink: 0,
-                  display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  borderRadius: '50%',
-                  background: 'var(--color-lx-elevated)',
-                  border: '1px solid var(--color-lx-border)',
-                  color: 'var(--color-lx-text-muted)',
-                }}
-                aria-label="Flip back"
-              >
-                <RotateCcw size={12} />
-              </motion.button>
+            {/* Ambient glow */}
+            <div aria-hidden style={{
+              position: 'absolute', inset: 0, borderRadius: 20, overflow: 'hidden', pointerEvents: 'none',
+            }}>
+              <div style={{
+                position: 'absolute', top: '-30%', left: '50%', transform: 'translateX(-50%)',
+                width: '80%', height: '80%', borderRadius: '50%',
+                background: 'radial-gradient(circle, rgba(230,57,70,0.08) 0%, transparent 70%)',
+                filter: 'blur(20px)',
+              }} />
             </div>
+
+            {/* Light-catch sheen — sweeps once on appear, gated by reduced-motion */}
+            {!reduce && (
+              <motion.div
+                aria-hidden
+                key={word.id}
+                initial={{ x: '-120%', opacity: 0 }}
+                animate={{ x: ['−120%', '120%'], opacity: [0, 0.22, 0] }}
+                transition={{ duration: 0.9, ease: 'easeInOut', delay: 0.25 }}
+                style={{
+                  position: 'absolute',
+                  inset: 0,
+                  borderRadius: 20,
+                  pointerEvents: 'none',
+                  background: 'linear-gradient(105deg, transparent 30%, rgba(255,255,255,0.18) 47%, rgba(244,168,40,0.12) 50%, rgba(255,255,255,0.18) 53%, transparent 70%)',
+                  zIndex: 2,
+                }}
+              />
+            )}
+
+            {/* Part of speech */}
+            {word.partOfSpeech && (
+              <span className="mb-4 rounded-full px-3 py-1 text-xs font-medium tracking-widest uppercase"
+                    style={{ background: 'var(--color-lx-elevated)', color: 'var(--color-lx-text-muted)', border: '1px solid var(--color-lx-border)', position: 'relative', zIndex: 3 }}>
+                {word.partOfSpeech}
+              </span>
+            )}
+
+            {/* The word */}
+            <h2 className="lx-word text-center"
+                style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 'clamp(2.5rem, 10vw, 3.5rem)', fontWeight: 700, lineHeight: 1.05, color: 'var(--color-lx-text-primary)', letterSpacing: '-0.02em', position: 'relative', zIndex: 3 }}>
+              {word.word}
+            </h2>
+
+            {/* Tap hint — infinite pulse, gated by reduced-motion */}
+            {reduce ? (
+              <p
+                className="mt-8 text-xs"
+                style={{ color: 'var(--color-lx-text-muted)', fontFamily: "'Sora', sans-serif" }}
+              >
+                tap to reveal
+              </p>
+            ) : (
+              <motion.p
+                animate={{ opacity: [0.5, 0.8, 0.5] }}
+                transition={{ repeat: Infinity, duration: 2.5 }}
+                className="mt-8 text-xs"
+                style={{ color: 'var(--color-lx-text-muted)', fontFamily: "'Sora', sans-serif" }}
+              >
+                tap to reveal
+              </motion.p>
+            )}
           </div>
 
-          {/* Definition */}
-          <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '1.3rem', lineHeight: 1.55, color: 'var(--color-lx-text-primary)', fontWeight: 400 }}>
-            {word.definition}
-          </p>
-
-          {/* Example sentence */}
-          {word.exampleSentence && (
-            <div className="rounded-xl px-3 py-2.5" style={{ background: 'var(--color-lx-elevated)' }}>
-              <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '1rem', fontStyle: 'italic', color: 'var(--color-lx-text-secondary)', lineHeight: 1.5 }}>
-                "{word.exampleSentence}"
-              </p>
+          {/* ── BACK ──────────────────────────────────── */}
+          <div
+            aria-label="Definition revealed"
+            style={{
+              backfaceVisibility: 'hidden',
+              position: 'absolute', inset: 0,
+              borderRadius: 20,
+              background: 'var(--color-lx-surface)',
+              border: '1px solid rgba(230,57,70,0.25)',
+              transform: 'rotateY(180deg)',
+              display: 'flex', flexDirection: 'column', justifyContent: 'flex-start',
+              gap: '0.75rem',
+              padding: '1.5rem',
+              overflowY: 'auto',
+              scrollbarWidth: 'none',
+              msOverflowStyle: 'none',
+            }}
+            className="hide-scrollbar"
+          >
+            {/* Word again (small) */}
+            <div className="flex items-center justify-between">
+              <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '1.1rem', fontStyle: 'italic', color: 'var(--color-lx-accent-red)', fontWeight: 600 }}>
+                {word.word}
+              </span>
+              <div className="flex items-center gap-2">
+                {word.partOfSpeech && (
+                  <span className="text-xs" style={{ color: 'var(--color-lx-text-muted)' }}>{word.partOfSpeech}</span>
+                )}
+                {/* Flip-back button — enlarged to ≥44px touch target */}
+                <motion.button
+                  onClick={onFlipBack}
+                  whileTap={{ scale: 0.88 }}
+                  style={{
+                    width: 44, height: 44, flexShrink: 0,
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    borderRadius: '50%',
+                    background: 'var(--color-lx-elevated)',
+                    border: '1px solid var(--color-lx-border)',
+                    color: 'var(--color-lx-text-muted)',
+                  }}
+                  aria-label="Flip back"
+                >
+                  <RotateCcw size={12} />
+                </motion.button>
+              </div>
             </div>
-          )}
 
-          {/* Synonyms */}
-          {word.synonyms.length > 0 && (
-            <div className="flex flex-wrap gap-1.5">
-              {word.synonyms.slice(0, 4).map(s => (
-                <span key={s} className="rounded-full px-2.5 py-1 text-xs"
-                      style={{ background: 'rgba(230,57,70,0.1)', color: 'var(--color-lx-accent-red)', border: '1px solid rgba(230,57,70,0.2)', fontFamily: "'Sora', sans-serif" }}>
-                  {s}
-                </span>
-              ))}
-            </div>
-          )}
-        </div>
+            {/* Definition */}
+            <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '1.3rem', lineHeight: 1.55, color: 'var(--color-lx-text-primary)', fontWeight: 400 }}>
+              {word.definition}
+            </p>
+
+            {/* Example sentence */}
+            {word.exampleSentence && (
+              <div className="rounded-xl px-3 py-2.5" style={{ background: 'var(--color-lx-elevated)' }}>
+                <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '1rem', fontStyle: 'italic', color: 'var(--color-lx-text-secondary)', lineHeight: 1.5 }}>
+                  &ldquo;{word.exampleSentence}&rdquo;
+                </p>
+              </div>
+            )}
+
+            {/* Synonyms */}
+            {word.synonyms.length > 0 && (
+              <div className="flex flex-wrap gap-1.5">
+                {word.synonyms.slice(0, 4).map(s => (
+                  <span key={s} className="rounded-full px-2.5 py-1 text-xs"
+                        style={{ background: 'rgba(230,57,70,0.1)', color: 'var(--color-lx-accent-red)', border: '1px solid rgba(230,57,70,0.2)', fontFamily: "'Sora', sans-serif" }}>
+                    {s}
+                  </span>
+                ))}
+              </div>
+            )}
+
+            {/* Swipe hint */}
+            <p className="mt-auto pt-2 text-center text-xs" style={{ color: 'var(--color-lx-text-muted)', fontFamily: "'Sora', sans-serif" }}>
+              swipe right → Got It &nbsp;·&nbsp; swipe left → Missed
+            </p>
+          </div>
+        </motion.div>
       </motion.div>
     </div>
   );
@@ -353,33 +473,100 @@ function RatingButtons({ onRate, disabled }: { onRate: (r: Rating) => void; disa
 export default function FlashcardScreen({ data }: { data: FlashcardSessionData }) {
   const router      = useRouter();
   const { push }    = useBadgeQueue();
+  const fb          = useVocabFeedback();
+  const reduce      = useReducedMotion() ?? false;
+
   const [index,     setIndex]     = useState(data.currentIndex);
   const [ratings,   setRatings]   = useState<Record<number, Rating>>(data.ratings as Record<number, Rating>);
   const [flipped,   setFlipped]   = useState(false);
   const [complete,  setComplete]  = useState(data.currentIndex >= data.words.length);
   const [direction, setDirection] = useState(1);
-  const submitting                = useRef(false);
+
+  // Race fix: use a ref for the in-flight guard and a ref for the advance timer
+  const submitting  = useRef(false);
+  const advanceRef  = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const word = data.words[index];
+
+  // Cleanup advance timer on unmount
+  useEffect(() => {
+    return () => {
+      if (advanceRef.current) clearTimeout(advanceRef.current);
+    };
+  }, []);
+
+  // Document-level keyboard shortcuts
+  useEffect(() => {
+    if (complete || !word) return;
+
+    function handleKeyDown(e: KeyboardEvent) {
+      // Don't fire when typing in an input
+      if ((e.target as HTMLElement).tagName === 'INPUT' || (e.target as HTMLElement).tagName === 'TEXTAREA') return;
+
+      if (!flipped) {
+        if (e.key === ' ' || e.key === 'Enter') {
+          e.preventDefault();
+          handleFlip();
+        }
+      } else {
+        switch (e.key) {
+          case '1':
+            e.preventDefault();
+            handleRate('missed_it');
+            break;
+          case '2':
+            e.preventDefault();
+            handleRate('unsure');
+            break;
+          case '3':
+            e.preventDefault();
+            handleRate('got_it');
+            break;
+        }
+      }
+    }
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [flipped, complete, word]);
+
+  const handleFlip = useCallback(() => {
+    setFlipped(true);
+    fb.play('flip');
+  }, [fb]);
+
+  const handleFlipBack = useCallback(() => {
+    setFlipped(false);
+    fb.play('back');
+  }, [fb]);
 
   const handleRate = useCallback((rating: Rating) => {
     if (!word || submitting.current) return;
     submitting.current = true;
 
+    // Play the appropriate feedback sound
+    if (rating === 'got_it')    fb.play('gotIt');
+    else if (rating === 'unsure') fb.play('unsure');
+    else                          fb.play('missed');
+
     const isLast     = index === data.words.length - 1;
     const newRatings = { ...ratings, [word.id]: rating };
     setRatings(newRatings);
 
-    // Advance the card immediately — don't wait for the server
+    // State-driven advance: flip back first, then advance after a short delay
+    // stored in a cancellable ref to prevent double-fire on unmount
     if (isLast) {
       setComplete(true);
       submitting.current = false;
     } else {
       setDirection(1);
       setFlipped(false);
-      setTimeout(() => {
+      if (advanceRef.current) clearTimeout(advanceRef.current);
+      advanceRef.current = setTimeout(() => {
         setIndex(i => i + 1);
         submitting.current = false;
+        advanceRef.current = null;
       }, 120);
     }
 
@@ -402,7 +589,11 @@ export default function FlashcardScreen({ data }: { data: FlashcardSessionData }
         }
       }).catch(() => {});
     }
-  }, [word, index, data.words.length, data.themeId, data.letterGroup, ratings, push]);
+  }, [word, index, data.words.length, data.themeId, data.letterGroup, ratings, push, fb]);
+
+  const handleSwipeRate = useCallback((rating: 'got_it' | 'missed_it') => {
+    handleRate(rating);
+  }, [handleRate]);
 
   const handleReview = () => {
     setIndex(0);
@@ -485,10 +676,17 @@ export default function FlashcardScreen({ data }: { data: FlashcardSessionData }
             initial={{ opacity: 0, x: direction * 40 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -direction * 30 }}
-            transition={{ duration: 0.25, ease: 'easeOut' }}
+            transition={{ duration: reduce ? 0.1 : 0.25, ease: 'easeOut' }}
             style={{ flex: 1, display: 'flex', flexDirection: 'column', minHeight: 0 }}
           >
-            <FlipCard word={word} isFlipped={flipped} onFlip={() => setFlipped(true)} onFlipBack={() => setFlipped(false)} />
+            <FlipCard
+              word={word}
+              isFlipped={flipped}
+              onFlip={handleFlip}
+              onFlipBack={handleFlipBack}
+              onSwipeRate={handleSwipeRate}
+              reduce={reduce}
+            />
           </motion.div>
         </AnimatePresence>
 
@@ -508,7 +706,7 @@ export default function FlashcardScreen({ data }: { data: FlashcardSessionData }
       {/* ── Rating buttons — fixed above BottomNav ────── */}
       <AnimatePresence>
         {flipped && (
-          <RatingButtons onRate={handleRate} disabled={false} />
+          <RatingButtons onRate={handleRate} disabled={submitting.current} />
         )}
       </AnimatePresence>
     </div>

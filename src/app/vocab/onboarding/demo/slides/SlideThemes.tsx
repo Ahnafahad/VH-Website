@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Network } from 'lucide-react';
+import { Layers } from 'lucide-react';
 import DemoSlideLayout from '../DemoSlideLayout';
 import PulseRing from '../PulseRing';
 import DemoInstruction from '../DemoInstruction';
@@ -19,7 +19,7 @@ export default function SlideThemes({ onNext, stepLabel }: Props) {
 
   return (
     <DemoSlideLayout
-      icon={<Network size={22} />}
+      icon={<Layers size={22} />}
       label="Study Structure"
       title="Study by Theme"
       description="Words grouped by meaning — Anger, Power, Deception — stick 3x better than random lists. Each theme is a focused unit of 10-15 exam-relevant words."

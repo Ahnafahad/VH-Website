@@ -2,13 +2,13 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { CircleDashed } from 'lucide-react';
+import { CheckCircle2 } from 'lucide-react';
 import DemoSlideLayout from '../DemoSlideLayout';
 import PulseRing from '../PulseRing';
 import DemoInstruction from '../DemoInstruction';
 
 const STEPS = [
-  { label: 'Flashcards', color: '#3B82F6' },
+  { label: 'Flashcards', color: 'var(--color-lx-study)' },
   { label: 'Quiz',       color: 'var(--color-lx-accent-gold)' },
   { label: 'Complete',   color: 'var(--color-lx-success)' },
 ];
@@ -27,7 +27,7 @@ export default function SlideCompletion({ onNext, stepLabel }: Props) {
 
   return (
     <DemoSlideLayout
-      icon={<CircleDashed size={22} />}
+      icon={<CheckCircle2 size={22} />}
       label="Progression"
       title="The Learning Cycle"
       description="Each theme follows a clear path: study the flashcards, pass the quiz, theme complete. Completing themes unlocks the next unit."
