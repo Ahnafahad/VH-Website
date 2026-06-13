@@ -5,18 +5,25 @@
  * Presents a real flashcard flip before the feature tour begins.
  * Uses the same flip mechanic as SlideFlashcards so the gesture is learned early.
  *
- * TODO: wire a real Unit-1 word when an endpoint is available that returns
- * starter words without requiring a themeId known at onboarding time.
- * Currently uses a representative hardcoded word from the free word bank.
+ * Fetches the first word of Unit 1 / Theme 1 from /api/vocab/onboarding/starter-word.
+ * Falls back to the hardcoded word if the fetch fails or returns empty so onboarding
+ * never breaks.
  */
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import { useVocabFeedback } from '@/lib/vocab/use-vocab-feedback';
 import PulseRing from '../demo/PulseRing';
 
-// Hardcoded representative first word — same word shown in SlideFlashcards so it feels deliberate.
-const FIRST_WORD = {
+interface WordData {
+  word:            string;
+  pos:             string;
+  definition:      string;
+  example:         string;
+}
+
+// Fallback word used if the API is unreachable or returns no data.
+const FALLBACK_WORD: WordData = {
   word:       'MAGNANIMOUS',
   pos:        'adjective',
   definition: 'Generous in forgiving; showing noble and courageous spirit.',
@@ -33,11 +40,39 @@ export default function StepFirstWord({ onNext }: Props) {
   const [flipped,   setFlipped]   = useState(false);
   const [rated,     setRated]     = useState<'gotIt' | 'unsure' | 'missed' | null>(null);
   const [dismissed, setDismissed] = useState(false);
+  const [wordData,  setWordData]  = useState<WordData | null>(null);
+  const [loading,   setLoading]   = useState(true);
   const shouldReduceMotion        = useReducedMotion();
   const fb                        = useVocabFeedback();
 
+  // Fetch the real starter word on mount; fall back silently on any error.
+  useEffect(() => {
+    let cancelled = false;
+    fetch('/api/vocab/onboarding/starter-word')
+      .then(res => res.ok ? res.json() : null)
+      .then((data: { word: { word: string; pos: string; definition: string; exampleSentence: string } | null } | null) => {
+        if (cancelled) return;
+        if (data?.word?.word && data.word.definition) {
+          setWordData({
+            word:       data.word.word.toUpperCase(),
+            pos:        data.word.pos,
+            definition: data.word.definition,
+            example:    data.word.exampleSentence
+              ? `"${data.word.exampleSentence}"`
+              : '',
+          });
+        }
+      })
+      .catch(() => { /* fall through to fallback */ })
+      .finally(() => { if (!cancelled) setLoading(false); });
+    return () => { cancelled = true; };
+  }, []);
+
+  // While loading, show the fallback so layout doesn't shift — just dim the word.
+  const FIRST_WORD: WordData = wordData ?? FALLBACK_WORD;
+
   const handleFlip = () => {
-    if (flipped) return;
+    if (flipped || loading) return;
     setFlipped(true);
     fb.play('flip');
   };
@@ -161,30 +196,59 @@ export default function StepFirstWord({ onNext }: Props) {
                     border:     '1px solid var(--color-lx-border)',
                   }}
                 >
-                  <span
-                    style={{
-                      fontFamily:    "'Sora', sans-serif",
-                      fontSize:      '0.55rem',
-                      textTransform: 'uppercase',
-                      letterSpacing: '0.1em',
-                      color:         'var(--color-lx-text-muted)',
-                      marginBottom:  6,
-                    }}
-                  >
-                    {FIRST_WORD.pos}
-                  </span>
-                  <span
-                    className="lx-word"
-                    style={{
-                      fontFamily: "'Cormorant Garamond', Georgia, serif",
-                      fontSize:   '1.5rem',
-                      fontWeight: 700,
-                      fontStyle:  'italic',
-                      color:      'var(--color-lx-text-primary)',
-                    }}
-                  >
-                    {FIRST_WORD.word}
-                  </span>
+                  {loading ? (
+                    /* Skeleton / loading state — preserves card layout */
+                    <>
+                      <span
+                        style={{
+                          display:      'block',
+                          width:        48,
+                          height:       10,
+                          borderRadius: 4,
+                          background:   'var(--color-lx-border)',
+                          marginBottom: 10,
+                          opacity:      0.6,
+                        }}
+                      />
+                      <span
+                        style={{
+                          display:      'block',
+                          width:        120,
+                          height:       22,
+                          borderRadius: 6,
+                          background:   'var(--color-lx-border)',
+                          opacity:      0.5,
+                        }}
+                      />
+                    </>
+                  ) : (
+                    <>
+                      <span
+                        style={{
+                          fontFamily:    "'Sora', sans-serif",
+                          fontSize:      '0.55rem',
+                          textTransform: 'uppercase',
+                          letterSpacing: '0.1em',
+                          color:         'var(--color-lx-text-muted)',
+                          marginBottom:  6,
+                        }}
+                      >
+                        {FIRST_WORD.pos}
+                      </span>
+                      <span
+                        className="lx-word"
+                        style={{
+                          fontFamily: "'Cormorant Garamond', Georgia, serif",
+                          fontSize:   '1.5rem',
+                          fontWeight: 700,
+                          fontStyle:  'italic',
+                          color:      'var(--color-lx-text-primary)',
+                        }}
+                      >
+                        {FIRST_WORD.word}
+                      </span>
+                    </>
+                  )}
                   <span
                     style={{
                       fontFamily: "'Sora', sans-serif",
@@ -193,7 +257,7 @@ export default function StepFirstWord({ onNext }: Props) {
                       marginTop:  8,
                     }}
                   >
-                    tap to flip
+                    {loading ? '' : 'tap to flip'}
                   </span>
                 </div>
 
