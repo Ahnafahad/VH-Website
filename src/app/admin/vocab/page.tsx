@@ -418,8 +418,9 @@ const styles = {
     fontFamily:    SANS,
     fontWeight:    500,
     boxShadow:     '0 4px 16px rgba(0,0,0,0.48)',
-    maxWidth:      480,
-    whiteSpace:    'nowrap' as const,
+    maxWidth:      'min(480px, calc(100vw - 32px))',
+    whiteSpace:    'normal',
+    wordBreak:     'break-word',
   } as React.CSSProperties,
 
   toastVariant: {

@@ -93,11 +93,15 @@ export default function StepProjection({ deadline, wordsPerDay, onNext }: Props)
           >
             <span
               style={{
-                fontFamily: "'Cormorant Garamond', Georgia, serif",
-                fontSize:   '1.55rem',
-                fontWeight: 700,
-                lineHeight: 1,
-                color:      s.color,
+                fontFamily:   "'Cormorant Garamond', Georgia, serif",
+                fontSize:     'clamp(1.05rem, 4.2vw, 1.55rem)',
+                fontWeight:   700,
+                lineHeight:   1,
+                color:        s.color,
+                whiteSpace:   'nowrap',
+                overflow:     'hidden',
+                textOverflow: 'ellipsis',
+                maxWidth:     '100%',
               }}
             >
               {s.value}

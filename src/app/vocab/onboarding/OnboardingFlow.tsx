@@ -56,7 +56,7 @@ export default function OnboardingFlow({ userId: _userId, userName }: Props) {
 
   return (
     <div
-      className="lx-root relative flex min-h-dvh flex-col items-center justify-center overflow-hidden px-5"
+      className="lx-root relative flex min-h-dvh flex-col items-center justify-center overflow-x-hidden overflow-y-auto px-5"
       style={{ background: 'var(--color-lx-base)' }}
     >
       {/* ── Outer progress pager (steps 0-3) ─────────────────────────── */}
