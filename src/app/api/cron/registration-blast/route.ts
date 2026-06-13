@@ -22,30 +22,81 @@ function buildEmailHtml(firstName: string): string {
 </head>
 <body style="margin:0;padding:0;background:#FAF5EF;font-family:-apple-system,Helvetica,Arial,sans-serif;color:#1A0507;">
 <div style="max-width:600px;margin:0 auto;background:#FAF5EF;">
+
   <div style="background:#1A0507;padding:28px 32px;">
     <p style="margin:0 0 4px;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#D4B094;">VH Beyond the Horizons</p>
     <h1 style="margin:0;font-family:Georgia,serif;font-size:24px;font-weight:400;color:#FAF5EF;">Your spot is reserved. Here is how to secure it.</h1>
   </div>
+
   <div style="padding:32px;">
     <p style="margin:0 0 20px;font-size:15px;color:#1A0507;line-height:1.75;">Hi ${name},</p>
-    <p style="margin:0 0 20px;font-size:15px;color:#1A0507;line-height:1.75;">Thank you for registering for the IBA and BUP Admissions Programme (Batch 2026-27). Your spot is reserved. To confirm it, complete your first payment in person at VH Premises.</p>
-    <div style="background:#1A0507;border-radius:6px;padding:20px 24px;margin:24px 0;">
+    <p style="margin:0 0 24px;font-size:15px;color:#1A0507;line-height:1.75;">Thank you for registering for the IBA and BUP Admissions Programme (Batch 2026-27). Your spot is reserved. To confirm it, complete your first payment in person at our premises.</p>
+
+    <div style="background:#1A0507;border-radius:6px;padding:20px 24px;margin:0 0 24px;">
       <p style="margin:0 0 6px;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#D4B094;">Early bird offer</p>
-      <p style="margin:0 0 4px;font-family:Georgia,serif;font-size:22px;color:#FAF5EF;">Pay before <span style="color:#D4B094;">20th June</span> and save 30%</p>
-      <p style="margin:8px 0 0;font-size:14px;color:#D4B094;line-height:1.6;">First installment: <strong style="color:#FAF5EF;">7,000 BDT</strong> <span style="color:#5a3a2a;text-decoration:line-through;">10,000 BDT</span></p>
+      <p style="margin:0 0 8px;font-family:Georgia,serif;font-size:22px;color:#FAF5EF;">Pay before <span style="color:#D4B094;">20th June</span> and save 30%</p>
+      <p style="margin:0 0 4px;font-size:14px;color:#D4B094;line-height:1.6;">First installment: <strong style="color:#FAF5EF;">7,000 BDT</strong> <span style="color:#5a3a2a;font-size:12px;text-decoration:line-through;">10,000 BDT</span></p>
+      <p style="margin:6px 0 0;font-size:13px;color:#D4B094;line-height:1.6;">+ Complimentary copy of <em style="color:#FAF5EF;">The Early Edge</em> <span style="color:#7a5a4a;font-size:12px;">— Introductory Book for IBA</span></p>
     </div>
-    <p style="margin:24px 0 12px;font-size:13px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:#760F13;">Payment plan</p>
-    <div style="border-left:3px solid #D4B094;padding-left:16px;margin:0 0 24px;">
-      <div style="margin-bottom:16px;"><span style="font-size:13px;color:#8a6a5a;display:inline-block;min-width:110px;">Before 20 June</span><span style="font-size:15px;color:#1A0507;font-weight:500;">7,000 BDT <span style="font-size:13px;font-weight:400;color:#760F13;">(early bird)</span></span></div>
-      <div style="margin-bottom:16px;"><span style="font-size:13px;color:#8a6a5a;display:inline-block;min-width:110px;">End of July</span><span style="font-size:15px;color:#1A0507;font-weight:500;">Second installment</span></div>
-      <div><span style="font-size:13px;color:#8a6a5a;display:inline-block;min-width:110px;">End of August</span><span style="font-size:15px;color:#1A0507;font-weight:500;">Final installment, fully paid</span></div>
+
+    <p style="margin:0 0 6px;font-size:13px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:#760F13;">Course fees</p>
+    <p style="margin:0 0 14px;font-size:13px;color:#8a6a5a;font-style:italic;">Two installments. That is all. No further payments ever.</p>
+
+    <div style="border:1px solid #e8d5c4;border-radius:6px;overflow:hidden;margin:0 0 10px;">
+      <div style="background:#1A0507;padding:10px 16px;">
+        <span style="font-family:Georgia,serif;font-size:15px;color:#FAF5EF;">Offline</span>
+        <span style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#D4B094;border:0.4pt solid #D4B094;padding:2px 6px;border-radius:2px;margin-left:10px;">In-Person + Hybrid</span>
+      </div>
+      <div style="background:#fff;padding:0 16px;">
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid #f0e8dc;">
+          <div>
+            <div style="font-size:13px;font-weight:500;color:#1A0507;">1st Installment</div>
+            <div style="font-size:11px;color:#8a6a5a;margin-top:2px;">Due at registration &nbsp;|&nbsp; <span style="color:#760F13;font-weight:600;">Early bird: 7,000 BDT</span></div>
+          </div>
+          <div style="font-family:Georgia,serif;font-size:18px;font-weight:600;color:#1A0507;white-space:nowrap;">10,000 <span style="font-size:11px;font-weight:400;color:#8a6a5a;">BDT</span></div>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:12px 0;">
+          <div>
+            <div style="font-size:13px;font-weight:500;color:#1A0507;">2nd Installment</div>
+            <div style="font-size:11px;color:#8a6a5a;margin-top:2px;">Due at start of 2nd month</div>
+          </div>
+          <div style="font-family:Georgia,serif;font-size:18px;font-weight:600;color:#1A0507;white-space:nowrap;">8,500 <span style="font-size:11px;font-weight:400;color:#8a6a5a;">BDT</span></div>
+        </div>
+      </div>
     </div>
-    <div style="background:#fff;border:1px solid #e8d5c4;border-radius:6px;padding:18px 20px;margin:0 0 24px;">
-      <p style="margin:0 0 6px;font-size:13px;font-weight:500;color:#760F13;">Where to pay</p>
-      <p style="margin:0;font-size:14px;color:#1A0507;line-height:1.65;">Walk in to <strong>VH Premises, Room 201</strong>. Bring this email or your registration confirmation. Our team will be there to receive you.</p>
+
+    <div style="border:1px solid #e8d5c4;border-radius:6px;overflow:hidden;margin:0 0 24px;">
+      <div style="background:#1A0507;padding:10px 16px;">
+        <span style="font-family:Georgia,serif;font-size:15px;color:#FAF5EF;">Online</span>
+        <span style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#D4B094;border:0.4pt solid #D4B094;padding:2px 6px;border-radius:2px;margin-left:10px;">Remote</span>
+      </div>
+      <div style="background:#fff;padding:0 16px;">
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid #f0e8dc;">
+          <div>
+            <div style="font-size:13px;font-weight:500;color:#1A0507;">1st Installment</div>
+            <div style="font-size:11px;color:#8a6a5a;margin-top:2px;">Due at registration &nbsp;|&nbsp; <span style="color:#760F13;font-weight:600;">Early bird: 7,000 BDT</span></div>
+          </div>
+          <div style="font-family:Georgia,serif;font-size:18px;font-weight:600;color:#1A0507;white-space:nowrap;">10,000 <span style="font-size:11px;font-weight:400;color:#8a6a5a;">BDT</span></div>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:12px 0;">
+          <div>
+            <div style="font-size:13px;font-weight:500;color:#1A0507;">2nd Installment</div>
+            <div style="font-size:11px;color:#8a6a5a;margin-top:2px;">Due at start of 2nd month</div>
+          </div>
+          <div style="font-family:Georgia,serif;font-size:18px;font-weight:600;color:#1A0507;white-space:nowrap;">5,000 <span style="font-size:11px;font-weight:400;color:#8a6a5a;">BDT</span></div>
+        </div>
+      </div>
     </div>
+
+    <div style="background:#fff;border:1px solid #e8d5c4;border-radius:6px;padding:16px 20px;margin:0 0 24px;">
+      <p style="margin:0 0 8px;font-size:13px;font-weight:500;color:#760F13;">Where to pay</p>
+      <p style="margin:0 0 6px;font-size:14px;color:#1A0507;line-height:1.7;">Walk in with this email or your registration confirmation and our team will receive you.</p>
+      <p style="margin:0 0 2px;font-size:13px;color:#1A0507;font-weight:500;">House 31/A, Road 6, Dhanmondi R/A, Dhaka 1205</p>
+      <p style="margin:4px 0 0;font-size:13px;color:#8a6a5a;">Questions? <a href="tel:+8801835200626" style="color:#760F13;text-decoration:none;">+880 1835 200 626</a> (WhatsApp or call)</p>
+    </div>
+
     <div style="background:#f0ece6;border-radius:6px;padding:18px 20px;margin:0 0 28px;">
-      <p style="margin:0 0 12px;font-size:14px;color:#1A0507;line-height:1.7;">If you have already paid, you are all set. Start exploring right now:</p>
+      <p style="margin:0 0 12px;font-size:14px;color:#1A0507;line-height:1.7;">If you have already paid, you have access to the entire system right now. Start exploring:</p>
       <table width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
         <td width="48%" style="padding-right:8px;">
           <a href="https://vh-beyondthehorizons.org/vocab/home" style="display:block;background:#fff;border:1px solid #e8d5c4;border-radius:5px;padding:10px 14px;text-decoration:none;">
@@ -61,12 +112,16 @@ function buildEmailHtml(firstName: string): string {
         </td>
       </tr></table>
     </div>
+
     <p style="margin:0 0 20px;font-size:15px;color:#1A0507;line-height:1.75;">If you have any questions before coming in, just reply to this email.</p>
     <p style="margin:0;font-size:15px;color:#1A0507;line-height:1.75;">See you soon,<br><span style="font-family:'Dancing Script',cursive;font-size:28px;color:#1A0507;line-height:2;">Ahnaf</span><br><span style="font-size:13px;color:#8a6a5a;">VH Beyond the Horizons</span></p>
   </div>
+
   <div style="background:#1A0507;padding:18px 32px;text-align:center;">
-    <p style="margin:0;font-size:11px;color:#8a6a5a;letter-spacing:1px;">vh-beyondthehorizons.org · VH Premises, Room 201</p>
+    <p style="margin:0 0 3px;font-size:11px;color:#8a6a5a;letter-spacing:1px;">vh-beyondthehorizons.org</p>
+    <p style="margin:0;font-size:11px;color:#5a3a2a;">House 31/A, Road 6, Dhanmondi R/A, Dhaka 1205 &nbsp;·&nbsp; +880 1835 200 626</p>
   </div>
+
 </div>
 </body>
 </html>`;
