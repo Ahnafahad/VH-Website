@@ -49,7 +49,7 @@ function SessionComplete({
   return (
     <>
       <Celebration active={celebActive} intensity="full" onDone={() => setCelebActive(false)} />
-      <div className="flex flex-col items-center gap-6 px-6 pt-16 pb-8 text-center md:max-w-xl md:mx-auto md:w-full">
+      <div className="flex flex-col items-center gap-6 px-6 pt-16 pb-8 text-center md:max-w-xl md:mx-auto md:w-full" style={{ paddingBottom: 'calc(72px + env(safe-area-inset-bottom) + 1.5rem)' }}>
         {/* Trophy */}
         <motion.div
           initial={{ scale: 0, rotate: -20 }}
@@ -316,7 +316,7 @@ function FlipCard({
 
             {/* The word */}
             <h2 className="lx-word text-center"
-                style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 'clamp(2.5rem, 10vw, 3.5rem)', fontWeight: 700, lineHeight: 1.05, color: 'var(--color-lx-text-primary)', letterSpacing: '-0.02em', position: 'relative', zIndex: 3 }}>
+                style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 'clamp(1.9rem, 9vw, 3.5rem)', fontWeight: 700, lineHeight: 1.05, color: 'var(--color-lx-text-primary)', letterSpacing: '-0.02em', position: 'relative', zIndex: 3, overflowWrap: 'break-word', wordBreak: 'break-word', maxWidth: '100%' }}>
               {word.word}
             </h2>
 
@@ -361,7 +361,7 @@ function FlipCard({
           >
             {/* Word again (small) */}
             <div className="flex items-center justify-between">
-              <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '1.1rem', fontStyle: 'italic', color: 'var(--color-lx-accent-red)', fontWeight: 600 }}>
+              <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '1.1rem', fontStyle: 'italic', color: 'var(--color-lx-accent-red)', fontWeight: 600, overflowWrap: 'break-word', maxWidth: '100%' }}>
                 {word.word}
               </span>
               <div className="flex items-center gap-2">

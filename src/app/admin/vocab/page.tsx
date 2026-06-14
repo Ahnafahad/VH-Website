@@ -597,7 +597,7 @@ const styles = {
   } as React.CSSProperties,
 
   input: {
-    padding:      '8px 12px',
+    padding:      '11px 12px',
     border:       '1px solid var(--form-border)',
     borderRadius: 6,
     fontSize:     14,
@@ -617,7 +617,7 @@ const styles = {
   } as React.CSSProperties,
 
   saveBtn: {
-    padding:        '8px 18px',
+    padding:        '11px 18px',
     background:     C.red,
     color:          '#ffffff',
     border:         'none',
@@ -630,7 +630,7 @@ const styles = {
     alignItems:     'center',
     gap:            6,
     minWidth:       64,
-    minHeight:      40,
+    minHeight:      44,
     justifyContent: 'center',
   } as React.CSSProperties,
 } as const;

@@ -733,6 +733,7 @@ export default function ProfileScreen({
                       key={stat.label}
                       style={{
                         flex:         1,
+                        minWidth:     0,
                         padding:      '14px 12px',
                         borderRight:  i < 2 ? '1px solid rgba(255,255,255,0.06)' : 'none',
                         display:      'flex',
@@ -750,7 +751,7 @@ export default function ProfileScreen({
                       }}>
                         {stat.label}
                       </span>
-                      <div style={{ display: 'flex', alignItems: 'baseline', gap: 4 }}>
+                      <div style={{ display: 'flex', alignItems: 'baseline', gap: 4, minWidth: 0 }}>
                         {stat.flame && stat.value > 0 && (
                           <svg width="13" height="13" viewBox="0 0 24 24" fill="#F4A828" style={{ marginBottom: 2 }}>
                             <path d="M12 2C6 10 9 13 9 16c0 1.7 1.3 3 3 3s3-1.3 3-3c0-1.8-1.5-3.5-1.5-6.5 0 0 2 2 2 4.5 1.1-.8 2-2.3 2-4 0-3.5-3-6-5.5-8z"/>
@@ -758,10 +759,14 @@ export default function ProfileScreen({
                         )}
                         <span style={{
                           fontFamily: "'Cormorant Garamond', Georgia, serif",
-                          fontSize:   38,
+                          fontSize:   'clamp(1.4rem, 5.5vw, 2.375rem)',
                           fontWeight: 600,
                           lineHeight: 1,
                           color:      'var(--color-lx-text-primary)',
+                          whiteSpace:    'nowrap',
+                          overflow:      'hidden',
+                          textOverflow:  'ellipsis',
+                          maxWidth:      '100%',
                         }}>
                           <AnimatedNumber value={stat.value} />
                         </span>
@@ -785,7 +790,7 @@ export default function ProfileScreen({
                 <div style={{ display: 'flex', alignItems: 'baseline', gap: 6, marginBottom: 8 }}>
                   <span style={{
                     fontFamily: "'Cormorant Garamond', Georgia, serif",
-                    fontSize:   46,
+                    fontSize:   'clamp(2rem, 9vw, 2.875rem)',
                     fontWeight: 600,
                     color:      '#E63946',
                     lineHeight: 1,
@@ -862,7 +867,7 @@ export default function ProfileScreen({
 
                 <div style={{
                   display:             'grid',
-                  gridTemplateColumns: 'repeat(4, 1fr)',
+                  gridTemplateColumns: 'repeat(auto-fill, minmax(76px, 1fr))',
                   gap:                 1,
                   background:          'rgba(255,255,255,0.05)',
                 }}>
@@ -1170,12 +1175,13 @@ export default function ProfileScreen({
                     <>
                       <div style={{
                         fontFamily: "'Cormorant Garamond', Georgia, serif",
-                        fontSize:   36,
+                        fontSize:   'clamp(1.25rem, 6vw, 2.25rem)',
                         fontWeight: 600,
                         fontStyle:  'italic',
                         color:      'var(--color-lx-text-primary)',
                         lineHeight: 1.05,
                         marginBottom: 6,
+                        overflowWrap: 'break-word',
                       }}>
                         {fmtDeadline(deadline)}
                       </div>
@@ -1624,7 +1630,7 @@ export default function ProfileScreen({
                 zIndex:      101,
                 background:  'var(--color-lx-surface)',
                 borderRadius:'16px 16px 0 0',
-                padding:     '0 24px 40px',
+                padding:     '0 24px calc(40px + env(safe-area-inset-bottom))',
                 touchAction: 'none',
               }}
             >
@@ -1725,7 +1731,7 @@ export default function ProfileScreen({
                 zIndex:      101,
                 background:  'var(--color-lx-surface)',
                 borderRadius:'16px 16px 0 0',
-                padding:     '14px 24px 40px',
+                padding:     '14px 24px calc(40px + env(safe-area-inset-bottom))',
                 touchAction: 'none',
               }}
             >
@@ -1804,7 +1810,7 @@ export default function ProfileScreen({
                 zIndex:      101,
                 background:  'var(--color-lx-surface)',
                 borderRadius:'16px 16px 0 0',
-                padding:     '14px 24px 48px',
+                padding:     '14px 24px calc(48px + env(safe-area-inset-bottom))',
                 touchAction: 'none',
               }}
             >

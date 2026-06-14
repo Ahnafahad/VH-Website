@@ -56,9 +56,14 @@ function MasteryHistogram({ breakdown }: { breakdown: MasteryBreakdown }) {
         return (
           <div
             key={lvl}
+            role="button"
+            tabIndex={0}
+            aria-label={`${MASTERY_FULL[lvl]}: ${count}`}
             onMouseEnter={() => setActive(lvl)}
             onMouseLeave={() => setActive(null)}
-            style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 4, cursor: 'default', position: 'relative' }}
+            onClick={() => setActive(isOn ? null : lvl)}
+            onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setActive(isOn ? null : lvl); } }}
+            style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 4, cursor: 'pointer', position: 'relative' }}
           >
             <AnimatePresence>
               {isOn && (
@@ -146,6 +151,7 @@ function StatCol({ label, value, unit, color, pulse, delay = 0, onClick }: StatC
         flexDirection:  'column',
         alignItems:     'center',
         gap:            4,
+        minWidth:       0,
         cursor:         onClick ? 'pointer' : 'default',
       }}
     >
@@ -167,9 +173,10 @@ function StatCol({ label, value, unit, color, pulse, delay = 0, onClick }: StatC
             transition={{ repeat: Infinity, duration: 2.6, ease: 'easeInOut' }}
             style={{
               fontFamily: "'Cormorant Garamond', Georgia, serif",
-              fontSize:   '2.15rem',
+              fontSize:   'clamp(1.5rem, 6vw, 2.15rem)',
               lineHeight: 1,
               fontWeight: 700,
+              whiteSpace: 'nowrap',
               color:      color ?? 'var(--color-lx-text-primary)',
             }}
           >
@@ -976,7 +983,7 @@ export default function HomeScreen({ data }: { data: HomeData }) {
               color={data.streakDays > 0 ? 'var(--color-lx-accent-red)' : undefined}
               delay={0.15}
             />
-            <div style={{ width: 1, height: 40, background: 'var(--color-lx-border)', margin: '0 1.5rem' }} />
+            <div style={{ width: 1, height: 40, background: 'var(--color-lx-border)', margin: '0 0.75rem', flexShrink: 0 }} />
             <StatCol
               label="Due"
               value={data.dueWordsCount}
@@ -986,7 +993,7 @@ export default function HomeScreen({ data }: { data: HomeData }) {
               delay={0.2}
               onClick={data.dueWordsCount > 0 ? () => router.push('/vocab/review') : undefined}
             />
-            <div style={{ width: 1, height: 40, background: 'var(--color-lx-border)', margin: '0 1.5rem' }} />
+            <div style={{ width: 1, height: 40, background: 'var(--color-lx-border)', margin: '0 0.75rem', flexShrink: 0 }} />
             <StatCol
               label="This week"
               value={data.weeklyPoints}
