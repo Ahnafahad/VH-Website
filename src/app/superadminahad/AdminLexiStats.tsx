@@ -17,6 +17,7 @@ import {
   Hash,
   Activity,
   MessageSquare,
+  RotateCcw,
 } from 'lucide-react';
 import type { UserAdminRow, AdminGlobalStats, UserMastery } from './page';
 
@@ -190,7 +191,15 @@ function WtpLabel({ choice }: { choice: string | null }) {
 
 // ─── Expanded row detail ──────────────────────────────────────────────────────
 
-function ExpandedRow({ row }: { row: UserAdminRow }) {
+function ExpandedRow({
+  row,
+  onResetOnboarding,
+  resetState,
+}: {
+  row:                UserAdminRow;
+  onResetOnboarding:  () => void;
+  resetState:         'idle' | 'loading' | 'done' | 'error';
+}) {
   const masteryLevels = (
     ['mastered', 'strong', 'familiar', 'learning', 'new'] as (keyof Omit<UserMastery, 'total'>)[]
   );
@@ -282,25 +291,49 @@ function ExpandedRow({ row }: { row: UserAdminRow }) {
           Metadata
         </div>
         {([
-          ['Joined',    fmtDate(row.joinedAt)],
-          ['Deadline',  fmtDate(row.deadline)],
-          ['Badges',    `${row.badgesEarned}/${row.badgesTotal}`],
-          ['Onboarded', row.onboardingDone ? 'Yes' : 'No'],
+          ['Joined',   fmtDate(row.joinedAt)],
+          ['Deadline', fmtDate(row.deadline)],
+          ['Badges',   `${row.badgesEarned}/${row.badgesTotal}`],
         ] as [string, string][]).map(([k, v]) => (
           <div key={k} className="flex justify-between">
             <span style={{ color: 'rgba(255,255,255,0.28)' }}>{k}</span>
-            <span
-              className="tabular-nums"
-              style={{
-                color: k === 'Onboarded'
-                  ? (row.onboardingDone ? '#4caf7d' : 'rgba(255,255,255,0.28)')
-                  : 'rgba(255,255,255,0.55)',
-              }}
-            >
-              {v}
-            </span>
+            <span className="tabular-nums" style={{ color: 'rgba(255,255,255,0.55)' }}>{v}</span>
           </div>
         ))}
+
+        {/* Onboarding row with reset action */}
+        <div className="flex items-center justify-between">
+          <span style={{ color: 'rgba(255,255,255,0.28)' }}>Onboarded</span>
+          <div className="flex items-center gap-1.5">
+            <span
+              className="tabular-nums text-xs"
+              style={{ color: (row.onboardingDone && resetState !== 'done') ? '#4caf7d' : 'rgba(255,255,255,0.28)' }}
+            >
+              {resetState === 'done' ? 'No' : (row.onboardingDone ? 'Yes' : 'No')}
+            </span>
+            {(row.onboardingDone || resetState === 'error') && resetState !== 'done' && (
+              <button
+                onClick={onResetOnboarding}
+                disabled={resetState === 'loading'}
+                title="Reset onboarding — user will see it again on next visit; progress kept"
+                className="flex items-center gap-1 px-1.5 py-0.5 rounded text-[10px] transition-opacity"
+                style={{
+                  background:  'rgba(198,42,47,0.1)',
+                  border:      '1px solid rgba(198,42,47,0.3)',
+                  color:       resetState === 'error' ? '#c62a2f' : 'rgba(255,120,120,0.7)',
+                  opacity:     resetState === 'loading' ? 0.5 : 1,
+                  cursor:      resetState === 'loading' ? 'not-allowed' : 'pointer',
+                }}
+              >
+                <RotateCcw size={9} className={resetState === 'loading' ? 'animate-spin' : ''} />
+                {resetState === 'error' ? 'Error' : 'Reset'}
+              </button>
+            )}
+            {resetState === 'done' && (
+              <span className="text-[10px]" style={{ color: '#4caf7d' }}>Reset ✓</span>
+            )}
+          </div>
+        </div>
         {row.wtpChoice && (
           <div className="flex justify-between">
             <span style={{ color: 'rgba(255,255,255,0.28)' }}>WTP</span>
@@ -334,6 +367,22 @@ export default function AdminLexiStats({ rows, globalStats }: AdminLexiStatsProp
   const [sortDir,       setSortDir]       = useState<SortDir>('desc');
   const [expandedId,    setExpandedId]    = useState<number | null>(null);
   const [showFilters,   setShowFilters]   = useState(false);
+  const [resetMap,      setResetMap]      = useState<Record<number, 'loading' | 'done' | 'error'>>({});
+
+  const handleResetOnboarding = useCallback(async (userId: number) => {
+    setResetMap(m => ({ ...m, [userId]: 'loading' }));
+    try {
+      const res = await fetch('/api/admin/vocab/reset-onboarding', {
+        method:  'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body:    JSON.stringify({ userId }),
+      });
+      if (!res.ok) throw new Error('Failed');
+      setResetMap(m => ({ ...m, [userId]: 'done' }));
+    } catch {
+      setResetMap(m => ({ ...m, [userId]: 'error' }));
+    }
+  }, []);
 
   const toggleSort = useCallback((key: SortKey) => {
     setSortKey(prev => {
@@ -730,7 +779,11 @@ export default function AdminLexiStats({ rows, globalStats }: AdminLexiStatsProp
                           transition={{ type: 'spring' as const, stiffness: 380, damping: 40 }}
                           className="overflow-hidden"
                         >
-                          <ExpandedRow row={u} />
+                          <ExpandedRow
+                            row={u}
+                            onResetOnboarding={() => handleResetOnboarding(u.id)}
+                            resetState={resetMap[u.id] ?? 'idle'}
+                          />
                         </motion.div>
                       )}
                     </AnimatePresence>
