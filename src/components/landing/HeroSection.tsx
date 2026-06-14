@@ -101,7 +101,10 @@ export function HeroSection() {
         </motion.div>
 
         {/* Oversized display headline — asymmetric */}
-        <h1 className="font-heading text-[#FAF5EF] leading-[0.88] tracking-[-0.03em] font-light">
+        <h1
+          aria-label="Beyond the horizons, your next chapter."
+          className="font-heading text-[#FAF5EF] leading-[0.88] tracking-[-0.03em] font-light"
+        >
           <AnimatedHeading />
         </h1>
 
