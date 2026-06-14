@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 
 interface Props {
   userName: string;
@@ -8,62 +8,64 @@ interface Props {
 }
 
 export default function StepWelcome({ userName, onNext }: Props) {
-  const firstName = userName.split(' ')[0];
+  const firstName          = userName.split(' ')[0];
+  const shouldReduceMotion = useReducedMotion();
 
   return (
     <div className="relative flex flex-col items-center gap-10 overflow-hidden py-4 text-center">
 
-      {/* ── Ambient blobs ─────────────────────────────────────── */}
+      {/* ── Ambient blobs (static when reduced-motion) ─────────────── */}
       <motion.div
         aria-hidden
         className="pointer-events-none absolute -top-20 -left-24 h-72 w-72 rounded-full blur-3xl"
         style={{ background: 'radial-gradient(circle, rgba(230,57,70,0.18) 0%, transparent 70%)' }}
-        animate={{ x: [0, 14, -8, 0], y: [0, -12, 7, 0], scale: [1, 1.08, 0.95, 1] }}
+        animate={shouldReduceMotion ? {} : { x: [0, 14, -8, 0], y: [0, -12, 7, 0], scale: [1, 1.08, 0.95, 1] }}
         transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
       />
       <motion.div
         aria-hidden
         className="pointer-events-none absolute -bottom-24 -right-20 h-80 w-80 rounded-full blur-3xl"
         style={{ background: 'radial-gradient(circle, rgba(230,57,70,0.12) 0%, transparent 70%)' }}
-        animate={{ x: [0, -16, 10, 0], y: [0, 10, -14, 0], scale: [1, 0.91, 1.07, 1] }}
+        animate={shouldReduceMotion ? {} : { x: [0, -16, 10, 0], y: [0, 10, -14, 0], scale: [1, 0.91, 1.07, 1] }}
         transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut', delay: 1.5 }}
       />
       <motion.div
         aria-hidden
         className="pointer-events-none absolute top-1/2 left-1/2 h-52 w-52 -translate-x-1/2 -translate-y-1/2 rounded-full blur-3xl"
         style={{ background: 'radial-gradient(circle, rgba(244,168,40,0.07) 0%, transparent 70%)' }}
-        animate={{ scale: [1, 1.18, 1], opacity: [0.4, 0.75, 0.4] }}
+        animate={shouldReduceMotion ? {} : { scale: [1, 1.18, 1], opacity: [0.4, 0.75, 0.4] }}
         transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut', delay: 0.5 }}
       />
 
-      {/* ── Logo mark ─────────────────────────────────────────── */}
+      {/* ── Logo mark ─────────────────────────────────────────────── */}
       <motion.div
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         className="relative flex flex-col items-center gap-3"
       >
-        {/* Glow halo */}
+        {/* Glow halo (static when reduced-motion) */}
         <motion.div
           aria-hidden
           className="absolute inset-0 rounded-full blur-2xl"
           style={{ background: 'rgba(230,57,70,0.28)' }}
-          animate={{ scale: [1, 1.22, 1], opacity: [0.5, 0.9, 0.5] }}
+          animate={shouldReduceMotion ? { opacity: 0.5 } : { scale: [1, 1.22, 1], opacity: [0.5, 0.9, 0.5] }}
           transition={{ duration: 3.2, repeat: Infinity, ease: 'easeInOut' }}
         />
 
-        {/* Logo mark — transparent on dark with animated glow */}
+        {/* Logo mark */}
         <div className="relative flex h-24 w-24 items-center justify-center">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src="/lexicore-logo.png"
             alt="LexiCore"
             style={{
-              width: 80, height: 80,
+              width:     80,
+              height:    80,
               objectFit: 'contain',
-              position: 'relative',
-              zIndex: 1,
-              filter: 'drop-shadow(0 2px 16px rgba(230,57,70,0.55)) drop-shadow(0 0 32px rgba(230,57,70,0.25))',
+              position:  'relative',
+              zIndex:    1,
+              filter:    'drop-shadow(0 2px 16px rgba(230,57,70,0.55)) drop-shadow(0 0 32px rgba(230,57,70,0.25))',
             }}
           />
         </div>
@@ -80,7 +82,7 @@ export default function StepWelcome({ userName, onNext }: Props) {
         </motion.span>
       </motion.div>
 
-      {/* ── Greeting ──────────────────────────────────────────── */}
+      {/* ── Greeting ──────────────────────────────────────────────── */}
       <motion.div
         initial={{ opacity: 0, y: 18 }}
         animate={{ opacity: 1, y: 0 }}
@@ -97,24 +99,25 @@ export default function StepWelcome({ userName, onNext }: Props) {
             color:      'var(--color-lx-text-primary)',
           }}
         >
-          Welcome,<br />
-          <span style={{ color: 'var(--color-lx-accent-red)' }}>{firstName}.</span>
+          {firstName},<br />
+          <span style={{ color: 'var(--color-lx-accent-red)' }}>exam day is coming.</span>
         </h1>
         <p
-          className="text-sm leading-relaxed"
           style={{
             color:      'var(--color-lx-text-secondary)',
             fontFamily: "'Sora', sans-serif",
+            fontSize:   '0.875rem',
+            lineHeight: 1.6,
             maxWidth:   '22rem',
           }}
         >
-          Master your first 100 words through adaptive flashcards, AI-powered quizzes, and daily streaks — built for IBA, BUP&nbsp;&amp; DU admissions.
+          LexiCore helps you master the words that decide your IBA, BUP and DU admission — before the pressure peaks. One smart session a day, and you&apos;ll walk in ready.
         </p>
         <p
-          className="text-xs"
           style={{
             color:      'var(--color-lx-text-muted)',
             fontFamily: "'Sora', sans-serif",
+            fontSize:   '0.75rem',
             maxWidth:   '22rem',
           }}
         >
@@ -122,19 +125,19 @@ export default function StepWelcome({ userName, onNext }: Props) {
         </p>
       </motion.div>
 
-      {/* ── CTA ───────────────────────────────────────────────── */}
+      {/* ── CTA ───────────────────────────────────────────────────── */}
       <motion.div
         initial={{ opacity: 0, y: 14 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1.95, duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
         className="relative w-full"
       >
-        {/* Pulsing glow */}
+        {/* Pulsing glow (static when reduced-motion) */}
         <motion.div
           aria-hidden
           className="pointer-events-none absolute inset-0 rounded-[10px] blur-xl"
           style={{ background: 'rgba(230,57,70,0.45)' }}
-          animate={{ opacity: [0.55, 1, 0.55] }}
+          animate={shouldReduceMotion ? { opacity: 0.55 } : { opacity: [0.55, 1, 0.55] }}
           transition={{ duration: 2.6, repeat: Infinity, ease: 'easeInOut' }}
         />
         <motion.button
@@ -144,13 +147,14 @@ export default function StepWelcome({ userName, onNext }: Props) {
           style={{
             background: 'linear-gradient(135deg, var(--color-lx-accent-red) 0%, #c42d39 100%)',
             fontFamily: "'Sora', sans-serif",
+            minHeight:  56,
           }}
         >
-          Let&apos;s show you around
+          Let&apos;s get started
         </motion.button>
       </motion.div>
 
-      {/* ── Grain overlay ─────────────────────────────────────── */}
+      {/* ── Grain overlay ─────────────────────────────────────────── */}
       <svg
         aria-hidden
         className="pointer-events-none absolute inset-0 h-full w-full"

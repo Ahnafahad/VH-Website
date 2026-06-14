@@ -1,7 +1,7 @@
 'use client';
 
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useState, useRef, useEffect } from 'react';
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 import { ChevronDown, Lock, CheckCircle, Clock, BookOpen, Circle } from 'lucide-react';
 import type { UnitWithThemes, ThemeWithStatus, ThemeStatus } from '@/lib/vocab/study-data';
@@ -10,6 +10,7 @@ import type { ReviewData } from '@/lib/vocab/review-data';
 import AllWordsReviewedScreen from '@/components/vocab/AllWordsReviewedScreen';
 import LockedUnitOverlay from '@/components/vocab/LockedUnitOverlay';
 import ReviewTab from './ReviewTab';
+import { useVocabFeedback } from '@/lib/vocab/use-vocab-feedback';
 
 interface Props {
   data: {
@@ -28,6 +29,7 @@ interface Props {
 
 function LetterCard({ summary }: { summary: LetterSummary }) {
   const router     = useRouter();
+  const fb         = useVocabFeedback();
   const masteryPct = summary.wordCount > 0
     ? summary.familiarPlusCount / summary.wordCount
     : 0;
@@ -70,10 +72,10 @@ function LetterCard({ summary }: { summary: LetterSummary }) {
       whileTap={{ scale: 0.95 }}
       whileHover={{ scale: 1.02 }}
       transition={{ type: 'spring', stiffness: 380, damping: 28 }}
-      onClick={() => router.push(`/vocab/study/letter/${summary.letter}`)}
+      onClick={() => { fb.play('tap'); router.push(`/vocab/study/letter/${summary.letter}`); }}
       style={{
         background: 'var(--color-lx-surface)',
-        border: '1px solid #333',
+        border: '1px solid var(--color-lx-border)',
         borderRadius: 16,
         padding: '0.625rem 0.5rem',
         cursor: 'pointer',
@@ -138,19 +140,25 @@ function TabSwitcher({
   ];
 
   return (
-    <div style={{
-      display: 'flex',
-      gap: 0,
-      borderBottom: '1px solid var(--color-lx-border)',
-      marginBottom: '1rem',
-      position: 'relative',
-    }}>
+    <div
+      role="tablist"
+      style={{
+        display: 'flex',
+        gap: 0,
+        borderBottom: '1px solid var(--color-lx-border)',
+        marginBottom: '1rem',
+        position: 'relative',
+      }}
+    >
       {tabs.map(({ id, label }) => (
         <button
           key={id}
+          role="tab"
+          aria-selected={active === id}
           onClick={() => onChange(id)}
           style={{
             padding: '0.5rem 1.25rem',
+            minHeight: 44,
             background: 'none', border: 'none', cursor: 'pointer',
             fontFamily: "'Sora', sans-serif",
             fontSize: '0.8125rem', fontWeight: 600,
@@ -449,12 +457,26 @@ function ThemeCard({
   isResume: boolean;
   onTap:    () => void;
 }) {
-  const cfg = STATUS_CONFIG[theme.status];
+  const cfg           = STATUS_CONFIG[theme.status];
+  const shouldReduce  = useReducedMotion();
+  const fb            = useVocabFeedback();
+  const celebratedRef = useRef(false);
+  const isComplete    = theme.status === 'complete';
+
+  // Fire a once-per-mount celebration when a theme first renders as complete.
+  // Guard via ref so it only plays once even in StrictMode double-invoke.
+  useEffect(() => {
+    if (isComplete && !celebratedRef.current) {
+      celebratedRef.current = true;
+      fb.play('gotIt');
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <motion.button
       whileTap={theme.locked ? {} : { scale: 0.97 }}
-      onClick={onTap}
+      onClick={() => { if (!theme.locked) { fb.play('tap'); onTap(); } }}
       className="relative flex items-center justify-between overflow-hidden rounded-xl p-3 text-left"
       style={{
         background: isResume
@@ -489,18 +511,22 @@ function ThemeCard({
       </div>
 
       <div className="flex items-center gap-2">
-        {/* Status chip — bg + color only, no border */}
-        <span
+        {/* Status chip — brief pop + green glow on first complete render */}
+        <motion.span
           className="flex items-center gap-1 rounded-full px-2.5 py-1 text-xs font-medium"
           style={{
             color:      cfg.color,
             background: cfg.bg,
             fontFamily: "'Sora', sans-serif",
           }}
+          {...(isComplete && !shouldReduce ? {
+            animate: { scale: [1, 1.1, 1], boxShadow: ['0 0 0px rgba(46,204,113,0)', '0 0 8px rgba(46,204,113,0.55)', '0 0 0px rgba(46,204,113,0)'] },
+            transition: { duration: 0.55, ease: 'easeOut' },
+          } : {})}
         >
           {cfg.icon}
           {cfg.label}
-        </span>
+        </motion.span>
 
         {theme.locked && (
           <Lock size={13} style={{ color: 'var(--color-lx-text-muted)' }} />

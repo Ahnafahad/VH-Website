@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useCallback, useRef } from 'react';
 import type { QuizConfig } from '@/components/vocab/QuizConfigSheet';
-import { motion, AnimatePresence, type Variants } from 'framer-motion';
+import { motion, AnimatePresence, useReducedMotion, type Variants } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 import {
   MoveRight, BadgeCheck, OctagonX,
@@ -10,6 +10,9 @@ import {
 } from 'lucide-react';
 import { useBadgeQueue } from '@/lib/vocab/badges/queue';
 import { consumePrefetch } from '@/lib/vocab/quiz-prefetch';
+import { useVocabFeedback } from '@/lib/vocab/use-vocab-feedback';
+import Celebration from '@/components/vocab/Celebration';
+import AnimatedNumber from '@/components/vocab/AnimatedNumber';
 
 // ─── Inline SVG micro-icons (no generic defaults) ────────────────────────────
 function IconClose() {
@@ -39,14 +42,26 @@ interface QuizOption {
   word:    string;
 }
 
+type QuizQuestionType =
+  | 'fill_blank' | 'analogy' | 'correct_usage'
+  | 'synonym' | 'antonym'
+  | 'type_word' | 'type_cloze';
+
 interface QuizQuestion {
   id:            string;
-  type:          'fill_blank' | 'analogy' | 'correct_usage';
+  type:          QuizQuestionType;
   questionText:  string;
   options:       QuizOption[];
-  correctLetter: string;
-  correctWordId: number;
-  explanation:   string;
+  /** 'choice' (MCQ, default) or 'typed' (student types the answer). */
+  inputMode?:    'choice' | 'typed';
+  /** 'word' (options are pool words) or 'string' (syn/ant — answer by letter). */
+  optionKind?:   'word' | 'string';
+  /** Typed questions only. */
+  typedHint?:    { firstLetter: string; length: number };
+  // Withheld by the server for typed questions (revealed by the answer API):
+  correctLetter?: string;
+  correctWordId?: number;
+  explanation?:   string;
 }
 
 interface AnswerResult {
@@ -54,6 +69,8 @@ interface AnswerResult {
   correctLetter:  string;
   correctWordId:  number;
   explanation:    string;
+  /** Typed questions only — the expected word, revealed after answering. */
+  correctWord?:   string;
   pointsEarned:   number;
   masteryDelta:   number;
   newMasteryLevel: string;
@@ -110,45 +127,11 @@ const C = {
 const SERIF = "'Cormorant Garamond', Georgia, serif";
 const SANS  = "'Sora', sans-serif";
 
-// ─── Particle burst on correct answer ────────────────────────────────────────
-function CorrectBurst({ active }: { active: boolean }) {
-  const particles = Array.from({ length: 10 }, (_, i) => ({
-    angle: (i / 10) * 360,
-    dist:  36 + Math.random() * 18,
-    color: ['#E63946','#F4A828','#2ECC71','#F5F5F5'][i % 4],
-    size:  3 + Math.random() * 3,
-  }));
-  return (
-    <AnimatePresence>
-      {active && (
-        <div aria-hidden style={{ position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 10 }}>
-          {particles.map((p, i) => (
-            <motion.div
-              key={i}
-              initial={{ x: 0, y: 0, opacity: 1, scale: 1 }}
-              animate={{
-                x: Math.cos((p.angle * Math.PI) / 180) * p.dist,
-                y: Math.sin((p.angle * Math.PI) / 180) * p.dist,
-                opacity: 0, scale: 0.4,
-              }}
-              transition={{ duration: 0.55, ease: 'easeOut' }}
-              style={{
-                position: 'absolute', top: '50%', left: '50%',
-                width: p.size, height: p.size,
-                borderRadius: '50%', background: p.color,
-              }}
-            />
-          ))}
-        </div>
-      )}
-    </AnimatePresence>
-  );
-}
-
 // ─── Loading screen with cycling vocabulary hints ─────────────────────────────
 
 function QuizLoading({ words }: { words: HintWord[] }) {
-  const hasWords = words.length > 0;
+  const hasWords     = words.length > 0;
+  const reduceMotion = useReducedMotion();
   const [hintIdx, setHintIdx]   = useState(0);
   const [showing, setShowing]   = useState(true);
 
@@ -185,8 +168,8 @@ function QuizLoading({ words }: { words: HintWord[] }) {
       {/* Spinning gradient border container */}
       <div style={{ position: 'relative', width: '100%', padding: 2, borderRadius: 20 }}>
         <motion.div
-          animate={{ rotate: 360 }}
-          transition={{ repeat: Infinity, duration: 2.5, ease: 'linear' }}
+          animate={reduceMotion ? {} : { rotate: 360 }}
+          transition={reduceMotion ? {} : { repeat: Infinity, duration: 2.5, ease: 'linear' }}
           style={{
             position: 'absolute', inset: 0, borderRadius: 20,
             background: 'conic-gradient(from 0deg, #E63946 0%, transparent 35%, transparent 65%, #E63946 100%)',
@@ -310,18 +293,18 @@ function QuizError({ onBack }: { onBack: () => void }) {
 // ─── Option card ──────────────────────────────────────────────────────────────
 
 interface OptionCardProps {
-  opt:          QuizOption;
-  phase:        AnswerPhase;
-  selectedId:   number | null;
-  result:       AnswerResult | null;
-  index:        number;
-  onSelect:     (id: number) => void;
+  opt:            QuizOption;
+  phase:          AnswerPhase;
+  selectedLetter: string | null;
+  result:         AnswerResult | null;
+  index:          number;
+  onSelect:       (opt: QuizOption) => void;
 }
 
-function OptionCard({ opt, phase, selectedId, result, index, onSelect }: OptionCardProps) {
-  const isSelected = selectedId === opt.wordId;
+function OptionCard({ opt, phase, selectedLetter, result, index, onSelect }: OptionCardProps) {
+  const isSelected = selectedLetter === opt.letter;
   const isRevealed = phase === 'revealed';
-  const isCorrect  = result?.correctWordId === opt.wordId;
+  const isCorrect  = result?.correctLetter === opt.letter;
   const isWrong    = isRevealed && isSelected && !isCorrect;
   const isDimmed   = (phase === 'selected' && !isSelected) ||
                      (isRevealed && !isCorrect && !isSelected);
@@ -358,8 +341,6 @@ function OptionCard({ opt, phase, selectedId, result, index, onSelect }: OptionC
   }
 
   return (
-    <div style={{ position: 'relative' }}>
-      <CorrectBurst active={isRevealed && isCorrect} />
     <motion.button
       initial={{ opacity: 0, y: 14 }}
       animate={{ opacity: isDimmed ? 0.35 : 1, y: 0, scale: isRevealed && isCorrect ? [1, 1.025, 1] : 1 }}
@@ -369,7 +350,7 @@ function OptionCard({ opt, phase, selectedId, result, index, onSelect }: OptionC
         scale:   isRevealed && isCorrect ? { duration: 0.4, times: [0, 0.5, 1] } : {},
       }}
       whileTap={phase !== 'revealed' ? { scale: 0.975 } : {}}
-      onClick={() => phase !== 'revealed' && onSelect(opt.wordId)}
+      onClick={() => phase !== 'revealed' && onSelect(opt)}
       disabled={phase === 'revealed'}
       style={{
         display: 'flex', alignItems: 'center', gap: '0.75rem',
@@ -413,7 +394,6 @@ function OptionCard({ opt, phase, selectedId, result, index, onSelect }: OptionC
       {isRevealed && isCorrect && <BadgeCheck size={16} color={C.success} style={{ flexShrink: 0 }} />}
       {isRevealed && isWrong   && <OctagonX   size={16} color={C.red}     style={{ flexShrink: 0 }} />}
     </motion.button>
-    </div>
   );
 }
 
@@ -476,13 +456,16 @@ function QuizSummary({ summary, onContinue }: { summary: SummaryData; onContinue
             display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
           }}>
             <span style={{ fontFamily: SERIF, fontSize: '2.1rem', fontWeight: 700, lineHeight: 1, color: C.textPrim }}>
-              {scorePct}%
+              <AnimatedNumber value={scorePct} />%
             </span>
             <span style={{ fontFamily: SANS, fontSize: '0.65rem', color: C.textMuted, marginTop: 2, letterSpacing: '0.06em' }}>
               SCORE
             </span>
           </div>
         </div>
+
+        {/* Premium celebration — passed quizzes only */}
+        {passed && <Celebration active intensity="full" anchor={{ x: 0.5, y: 0.32 }} />}
 
         {/* Verdict */}
         <div style={{ textAlign: 'center' }}>
@@ -762,7 +745,7 @@ interface Props {
   themeId?:        number;
   themeIds?:       number[];
   letterWordIds?:  number[];
-  sessionType:     'study' | 'practice' | 'letter';
+  sessionType:     'study' | 'practice' | 'letter' | 'exam';
   quizConfig?:     QuizConfig;
   /** Pre-loaded hint words (pass from parent if already available, e.g. letter mode) */
   hintWords?:      HintWord[];
@@ -771,6 +754,8 @@ interface Props {
 export default function QuizScreen({ themeId, themeIds, letterWordIds, sessionType, quizConfig, hintWords: hintWordsProp }: Props) {
   const router       = useRouter();
   const { push }     = useBadgeQueue();
+  const fb           = useVocabFeedback();
+  const reduceMotion = useReducedMotion();
 
   // Hint words for loading screen
   const [hintWords, setHintWords] = useState<HintWord[]>(hintWordsProp ?? []);
@@ -781,7 +766,9 @@ export default function QuizScreen({ themeId, themeIds, letterWordIds, sessionTy
   const [questions,   setQuestions]   = useState<QuizQuestion[]>([]);
   const [currentIdx,  setCurrentIdx]  = useState(0);
   const [answerPhase, setAnswerPhase] = useState<AnswerPhase>('idle');
-  const [selectedId,  setSelectedId]  = useState<number | null>(null);
+  const [selectedId,     setSelectedId]     = useState<number | null>(null);
+  const [selectedLetter, setSelectedLetter] = useState<string | null>(null);
+  const [typedValue,     setTypedValue]     = useState('');
   const [result,      setResult]      = useState<AnswerResult | null>(null);
   const [submitting,  setSubmitting]  = useState(false);
   const [summary,     setSummary]     = useState<SummaryData | null>(null);
@@ -792,7 +779,18 @@ export default function QuizScreen({ themeId, themeIds, letterWordIds, sessionTy
   const timedMode  = quizConfig?.timed ?? false;
   const secsPerQ   = quizConfig?.secondsPerQuestion ?? 30;
   const [timeLeft, setTimeLeft] = useState<number>(secsPerQ);
-  const timerRef   = useRef<ReturnType<typeof setInterval> | null>(null);
+  const timerRef        = useRef<ReturnType<typeof setInterval> | null>(null);
+  // Advance-after-reveal timeout refs — cleared on unmount to prevent stale callbacks
+  const advanceTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const timedAdvanceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  // Clear advance timers on unmount
+  useEffect(() => {
+    return () => {
+      if (advanceTimerRef.current) clearTimeout(advanceTimerRef.current);
+      if (timedAdvanceRef.current) clearTimeout(timedAdvanceRef.current);
+    };
+  }, []);
 
   // Generate on mount — also fetch word hints in parallel if not pre-supplied
   useEffect(() => {
@@ -818,7 +816,9 @@ export default function QuizScreen({ themeId, themeIds, letterWordIds, sessionTy
           ? { type: 'study', themeId, questionCount: quizConfig?.questionCount ?? 10 }
           : sessionType === 'letter'
             ? { type: 'letter', wordIds: letterWordIds, questionCount: quizConfig?.questionCount ?? 10 }
-            : { type: 'practice', themeIds, questionCount: quizConfig?.questionCount ?? 20 };
+            : sessionType === 'exam'
+              ? { type: 'exam', questionCount: quizConfig?.questionCount ?? 15 }
+              : { type: 'practice', themeIds, questionCount: quizConfig?.questionCount ?? 20 };
 
         const prefetched = consumePrefetch(body as Parameters<typeof consumePrefetch>[0]);
         let data: { sessionId: number; questions: QuizQuestion[] };
@@ -862,32 +862,51 @@ export default function QuizScreen({ themeId, themeIds, letterWordIds, sessionTy
     return () => { if (timerRef.current) clearInterval(timerRef.current); };
   }, [currentIdx, phase, timedMode, secsPerQ]); // eslint-disable-line react-hooks/exhaustive-deps
 
-  // When timer hits 0 and still idle/selected — force submit the first option as wrong
+  // When timer hits 0 and still idle/selected — force submit whatever the
+  // student has (typed text, selection, or the first option) as the answer.
   useEffect(() => {
     if (!timedMode || timeLeft !== 0 || phase !== 'quiz' || answerPhase === 'revealed' || submitting) return;
-    // Pick first option if nothing selected, then submit
-    const wordId = selectedId ?? current?.options?.[0]?.wordId ?? null;
-    if (!wordId || !sessionId || !current) return;
+    if (!sessionId || !current) return;
+
+    const isTyped       = current.inputMode === 'typed';
+    const isStringOpts  = current.optionKind === 'string';
+
+    let answerBody: Record<string, unknown>;
+    if (isTyped) {
+      answerBody = { typedAnswer: typedValue };
+    } else {
+      const opt = (selectedLetter
+        ? current.options.find(o => o.letter === selectedLetter)
+        : current.options[0]) ?? null;
+      if (!opt) return;
+      setSelectedLetter(opt.letter);
+      setSelectedId(opt.wordId);
+      answerBody = isStringOpts
+        ? { selectedLetter: opt.letter }
+        : { selectedWordId: opt.wordId };
+    }
+
     const runConfirm = async () => {
-      setSelectedId(wordId);
       setAnswerPhase('selected');
       setSubmitting(true);
       try {
         const res  = await fetch('/api/vocab/quiz/answer', {
           method: 'POST', headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ sessionId, questionId: current.id, selectedWordId: wordId }),
+          body: JSON.stringify({ sessionId, questionId: current.id, ...answerBody }),
         });
         const data = await res.json() as AnswerResult;
         setResult(data);
         setAnswerPhase('revealed');
+        fb.play(data.isCorrect ? 'correct' : 'incorrect');
         if (data.pointsEarned) setTotalEarned(p => p + data.pointsEarned);
-        setTimeout(async () => {
+        timedAdvanceRef.current = setTimeout(async () => {
           if (currentIdx === questions.length - 1) {
             try {
               const sumRes  = await fetch(`/api/vocab/quiz/summary/${sessionId}`);
               const sumData = await sumRes.json() as SummaryData;
               if (sumData.earnedBadges?.length) push(sumData.earnedBadges);
               setSummary(sumData);
+              fb.play('complete');
               setPhase('summary');
             } catch { setPhase('error'); }
           } else {
@@ -895,6 +914,8 @@ export default function QuizScreen({ themeId, themeIds, letterWordIds, sessionTy
             setCurrentIdx(i => i + 1);
             setAnswerPhase('idle');
             setSelectedId(null);
+            setSelectedLetter(null);
+            setTypedValue('');
             setResult(null);
           }
           setSubmitting(false);
@@ -904,53 +925,20 @@ export default function QuizScreen({ themeId, themeIds, letterWordIds, sessionTy
     void runConfirm();
   }, [timeLeft]); // eslint-disable-line react-hooks/exhaustive-deps
 
-  // Confirm answer — instant result from client data, API records in background
-  const handleConfirm = useCallback(() => {
-    if (!sessionId || !current || !selectedId || submitting || answerPhase !== 'selected') return;
-
-    // Stop the timer immediately
-    if (timerRef.current) { clearInterval(timerRef.current); timerRef.current = null; }
-
-    setSubmitting(true);
-
-    // Show correct/wrong instantly — no network wait
-    const immediateResult: AnswerResult = {
-      isCorrect:       selectedId === current.correctWordId,
-      correctLetter:   current.correctLetter,
-      correctWordId:   current.correctWordId,
-      explanation:     current.explanation,
-      pointsEarned:    0,
-      masteryDelta:    0,
-      newMasteryLevel: '',
-    };
-    setResult(immediateResult);
-    setAnswerPhase('revealed');
-
-    // Record answer in background; update points/mastery delta when it resolves
+  // Shared auto-advance after the reveal pause
+  const advanceAfterReveal = useCallback((apiPromise: Promise<unknown> | null) => {
     const isLastQuestion = currentIdx === questions.length - 1;
-    const apiPromise = fetch('/api/vocab/quiz/answer', {
-      method:  'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body:    JSON.stringify({ sessionId, questionId: current.id, selectedWordId: selectedId }),
-    })
-      .then(r => r.json() as Promise<AnswerResult>)
-      .then(data => {
-        if (data.pointsEarned) setTotalEarned(p => p + data.pointsEarned);
-        setResult(prev => prev ? { ...prev, pointsEarned: data.pointsEarned, masteryDelta: data.masteryDelta, newMasteryLevel: data.newMasteryLevel } : prev);
-        return data;
-      })
-      .catch(() => null);
-
-    // Auto-advance after 1.4s
-    setTimeout(async () => {
+    if (advanceTimerRef.current) clearTimeout(advanceTimerRef.current);
+    advanceTimerRef.current = setTimeout(async () => {
       if (isLastQuestion) {
-        // Wait for last answer to be recorded before fetching summary
+        // Wait for the last answer to be recorded before fetching summary
         try {
-          await apiPromise;
+          if (apiPromise) await apiPromise;
           const sumRes  = await fetch(`/api/vocab/quiz/summary/${sessionId}`);
           const sumData = await sumRes.json() as SummaryData;
           if (sumData.earnedBadges?.length) push(sumData.earnedBadges);
           setSummary(sumData);
+          fb.play('complete');
           setPhase('summary');
         } catch {
           setPhase('error');
@@ -960,11 +948,83 @@ export default function QuizScreen({ themeId, themeIds, letterWordIds, sessionTy
         setCurrentIdx(i => i + 1);
         setAnswerPhase('idle');
         setSelectedId(null);
+        setSelectedLetter(null);
+        setTypedValue('');
         setResult(null);
       }
       setSubmitting(false);
     }, 1400);
-  }, [sessionId, current, selectedId, submitting, answerPhase, currentIdx, questions.length]);
+  }, [currentIdx, questions.length, sessionId, push, fb]);
+
+  // Confirm answer (MCQ) — instant result from client data, API records in background
+  const handleConfirm = useCallback(() => {
+    if (!sessionId || !current || !selectedLetter || submitting || answerPhase !== 'selected') return;
+
+    // Stop the timer immediately
+    if (timerRef.current) { clearInterval(timerRef.current); timerRef.current = null; }
+
+    setSubmitting(true);
+
+    // Show correct/wrong instantly — no network wait
+    const immediateResult: AnswerResult = {
+      isCorrect:       selectedLetter === current.correctLetter,
+      correctLetter:   current.correctLetter ?? '',
+      correctWordId:   current.correctWordId ?? 0,
+      explanation:     current.explanation ?? '',
+      pointsEarned:    0,
+      masteryDelta:    0,
+      newMasteryLevel: '',
+    };
+    setResult(immediateResult);
+    setAnswerPhase('revealed');
+    fb.play(immediateResult.isCorrect ? 'correct' : 'incorrect');
+
+    // Record answer in background; update points/mastery delta when it resolves
+    const answerBody = current.optionKind === 'string'
+      ? { selectedLetter }
+      : { selectedWordId: selectedId };
+    const apiPromise = fetch('/api/vocab/quiz/answer', {
+      method:  'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body:    JSON.stringify({ sessionId, questionId: current.id, ...answerBody }),
+    })
+      .then(r => r.json() as Promise<AnswerResult>)
+      .then(data => {
+        if (data.pointsEarned) setTotalEarned(p => p + data.pointsEarned);
+        setResult(prev => prev ? { ...prev, pointsEarned: data.pointsEarned, masteryDelta: data.masteryDelta, newMasteryLevel: data.newMasteryLevel } : prev);
+        return data;
+      })
+      .catch(() => null);
+
+    advanceAfterReveal(apiPromise);
+  }, [sessionId, current, selectedId, selectedLetter, submitting, answerPhase, advanceAfterReveal, fb]);
+
+  // Confirm answer (typed production recall) — the server holds the answer,
+  // so the reveal waits for the API response.
+  const handleTypedSubmit = useCallback(async () => {
+    if (!sessionId || !current || submitting || answerPhase === 'revealed') return;
+    if (typedValue.trim().length === 0) return;
+
+    if (timerRef.current) { clearInterval(timerRef.current); timerRef.current = null; }
+    setSubmitting(true);
+
+    try {
+      const res = await fetch('/api/vocab/quiz/answer', {
+        method:  'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body:    JSON.stringify({ sessionId, questionId: current.id, typedAnswer: typedValue }),
+      });
+      if (!res.ok) throw new Error('answer failed');
+      const data = await res.json() as AnswerResult;
+      setResult(data);
+      setAnswerPhase('revealed');
+      fb.play(data.isCorrect ? 'correct' : 'incorrect');
+      if (data.pointsEarned) setTotalEarned(p => p + data.pointsEarned);
+      advanceAfterReveal(null);
+    } catch {
+      setSubmitting(false);
+    }
+  }, [sessionId, current, submitting, answerPhase, typedValue, advanceAfterReveal, fb]);
 
   // ── Render ─────────────────────────────────────────────────────────────────
 
@@ -976,7 +1036,16 @@ export default function QuizScreen({ themeId, themeIds, letterWordIds, sessionTy
   if (!current) return null;
 
   const progress      = (currentIdx / questions.length) * 100;
-  const typeLabel     = { fill_blank: 'Fill in the blank', analogy: 'Analogy', correct_usage: 'Correct usage' }[current.type];
+  const typeLabel     = {
+    fill_blank:    'Fill in the blank',
+    analogy:       'Analogy',
+    correct_usage: 'Correct usage',
+    synonym:       'Synonym',
+    antonym:       'Antonym',
+    type_word:     'Type the word',
+    type_cloze:    'Type the missing word',
+  }[current.type];
+  const isTypedQ      = current.inputMode === 'typed';
 
   return (
     <div style={{
@@ -995,14 +1064,22 @@ export default function QuizScreen({ themeId, themeIds, letterWordIds, sessionTy
           whileTap={{ scale: 0.88 }}
           onClick={() => router.back()}
           style={{
-            width: 38, height: 38, borderRadius: '50%',
-            background: C.elevated, border: 'none',
+            width: 44, height: 44, borderRadius: '50%',
+            background: 'transparent', border: 'none',
             display: 'flex', alignItems: 'center', justifyContent: 'center',
             cursor: 'pointer',
+            padding: 3,
           }}
           aria-label="Exit quiz"
         >
-          <span style={{ color: C.textSec }}><IconClose /></span>
+          <span style={{
+            width: 38, height: 38, borderRadius: '50%',
+            background: C.elevated,
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            color: C.textSec,
+          }}>
+            <IconClose />
+          </span>
         </motion.button>
 
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 2 }}>
@@ -1029,7 +1106,7 @@ export default function QuizScreen({ themeId, themeIds, letterWordIds, sessionTy
         >
           <Gem size={11} color={C.gold} />
           <span style={{ fontFamily: SANS, fontSize: '0.75rem', fontWeight: 600, color: C.gold }}>
-            +{totalEarned}
+            +<AnimatedNumber value={totalEarned} />
           </span>
         </motion.div>
       </div>
@@ -1052,6 +1129,12 @@ export default function QuizScreen({ themeId, themeIds, letterWordIds, sessionTy
         <TimerBar secondsLeft={timeLeft} totalSeconds={secsPerQ} />
       )}
 
+      {/* ── Per-correct-answer subtle bloom (screen-level, not per-option) ── */}
+      <Celebration
+        active={answerPhase === 'revealed' && result?.isCorrect === true}
+        intensity="subtle"
+      />
+
       {/* ── Question + Options ──────────────────────────────────────────── */}
       <AnimatePresence mode="wait" initial={false}>
         <motion.div
@@ -1073,8 +1156,8 @@ export default function QuizScreen({ themeId, themeIds, letterWordIds, sessionTy
             {/* Rotating radial gradient — premium depth effect */}
             <motion.div
               aria-hidden
-              animate={{ rotate: 360 }}
-              transition={{ repeat: Infinity, duration: 18, ease: 'linear' }}
+              animate={reduceMotion ? {} : { rotate: 360 }}
+              transition={reduceMotion ? {} : { repeat: Infinity, duration: 18, ease: 'linear' }}
               style={{
                 position: 'absolute', top: '-60%', left: '-20%',
                 width: '140%', height: '140%',
@@ -1094,23 +1177,86 @@ export default function QuizScreen({ themeId, themeIds, letterWordIds, sessionTy
             </p>
           </div>
 
-          {/* Options list */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.55rem' }}>
-            {current.options.map((opt, i) => (
-              <OptionCard
-                key={opt.wordId}
-                opt={opt}
-                phase={answerPhase}
-                selectedId={selectedId}
-                result={result}
-                index={i}
-                onSelect={(id) => {
-                  setSelectedId(id);
-                  setAnswerPhase('selected');
+          {/* Options list (MCQ) or typed-answer input (production recall) */}
+          {isTypedQ ? (
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+              {current.typedHint && (
+                <p style={{ fontFamily: SANS, fontSize: '0.75rem', color: C.textMuted, letterSpacing: '0.04em' }}>
+                  Hint: starts with{' '}
+                  <span style={{ color: C.gold, fontWeight: 700 }}>{current.typedHint.firstLetter}</span>
+                  {' '}· {current.typedHint.length} letters
+                </p>
+              )}
+              <input
+                type="text"
+                value={typedValue}
+                onChange={(e) => setTypedValue(e.target.value)}
+                onKeyDown={(e) => { if (e.key === 'Enter') void handleTypedSubmit(); }}
+                disabled={answerPhase === 'revealed' || submitting}
+                placeholder="Type your answer…"
+                autoCapitalize="none"
+                autoCorrect="off"
+                spellCheck={false}
+                style={{
+                  width: '100%',
+                  padding: '1rem 1.125rem',
+                  background: C.surface,
+                  border: answerPhase === 'revealed'
+                    ? `1.5px solid ${result?.isCorrect ? C.success : C.red}`
+                    : `1.5px solid ${C.border}`,
+                  borderRadius: 14,
+                  fontFamily: SERIF,
+                  fontSize: '1.15rem',
+                  fontWeight: 600,
+                  color: answerPhase === 'revealed'
+                    ? (result?.isCorrect ? C.success : C.red)
+                    : C.textPrim,
+                  outline: 'none',
+                  letterSpacing: '0.02em',
                 }}
               />
-            ))}
-          </div>
+              {/* Reveal: show the expected word when the typed answer was wrong */}
+              {answerPhase === 'revealed' && result && !result.isCorrect && result.correctWord && (
+                <motion.div
+                  initial={{ opacity: 0, y: 6 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  style={{
+                    display: 'flex', alignItems: 'baseline', gap: '0.5rem',
+                    padding: '0.75rem 1rem',
+                    background: 'rgba(46,204,113,0.07)',
+                    border: '1px solid rgba(46,204,113,0.22)',
+                    borderRadius: 12,
+                  }}
+                >
+                  <span style={{ fontFamily: SANS, fontSize: '0.7rem', fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', color: C.success }}>
+                    Answer
+                  </span>
+                  <span style={{ fontFamily: SERIF, fontSize: '1.2rem', fontWeight: 700, fontStyle: 'italic', color: C.success, textTransform: 'capitalize' }}>
+                    {result.correctWord}
+                  </span>
+                </motion.div>
+              )}
+            </div>
+          ) : (
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.55rem' }}>
+              {current.options.map((opt, i) => (
+                <OptionCard
+                  key={opt.letter}
+                  opt={opt}
+                  phase={answerPhase}
+                  selectedLetter={selectedLetter}
+                  result={result}
+                  index={i}
+                  onSelect={(o) => {
+                    setSelectedId(o.wordId);
+                    setSelectedLetter(o.letter);
+                    setAnswerPhase('selected');
+                    fb.play('select');
+                  }}
+                />
+              ))}
+            </div>
+          )}
 
           {/* Explanation reveal */}
           <AnimatePresence>
@@ -1136,9 +1282,35 @@ export default function QuizScreen({ themeId, themeIds, letterWordIds, sessionTy
         </motion.div>
       </AnimatePresence>
 
+      {/* ── Typed-answer submit button ───────────────────────────────────── */}
+      {isTypedQ && answerPhase !== 'revealed' && (
+        <motion.button
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: typedValue.trim().length > 0 ? 1 : 0.45, y: 0 }}
+          whileTap={typedValue.trim().length > 0 ? { scale: 0.975 } : {}}
+          onClick={() => void handleTypedSubmit()}
+          disabled={submitting || typedValue.trim().length === 0}
+          style={{
+            marginTop: '0.875rem',
+            width: '100%', padding: '1rem',
+            background: C.red,
+            color: '#fff',
+            border: 'none', borderRadius: 16,
+            fontFamily: SANS, fontSize: '0.9375rem', fontWeight: 600,
+            cursor: submitting || typedValue.trim().length === 0 ? 'default' : 'pointer',
+            display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
+            boxShadow: '0 4px 16px rgba(230,57,70,0.3)',
+            flexShrink: 0,
+          }}
+        >
+          {submitting ? 'Checking…' : 'Submit Answer'}
+          {!submitting && <IconConfirm />}
+        </motion.button>
+      )}
+
       {/* ── Confirm button (springs up on selection) ─────────────────────── */}
       <AnimatePresence>
-        {answerPhase === 'selected' && (
+        {answerPhase === 'selected' && !isTypedQ && (
           <motion.button
             initial={{ y: 22, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}

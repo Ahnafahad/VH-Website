@@ -3,16 +3,24 @@
 import { motion } from 'framer-motion';
 
 interface Props {
-  total: number;
+  total:   number;
   current: number;
 }
 
 export default function DemoProgress({ total, current }: Props) {
   return (
-    <div className="flex items-center justify-center gap-1.5">
+    <div
+      className="flex items-center justify-center gap-1.5"
+      role="group"
+      aria-label={`Onboarding progress, step ${current + 1} of ${total}`}
+    >
+      <span className="sr-only" aria-live="polite" aria-atomic="true">
+        Slide {current + 1} of {total}
+      </span>
       {Array.from({ length: total }).map((_, i) => (
         <motion.div
           key={i}
+          aria-hidden
           animate={{
             width:      i === current ? 18 : 6,
             background: i === current

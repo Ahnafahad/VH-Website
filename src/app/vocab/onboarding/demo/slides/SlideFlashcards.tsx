@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { GalleryVerticalEnd } from 'lucide-react';
+import { Layers } from 'lucide-react';
 import DemoSlideLayout from '../DemoSlideLayout';
 import PulseRing from '../PulseRing';
 import DemoInstruction from '../DemoInstruction';
@@ -29,7 +29,7 @@ export default function SlideFlashcards({ onNext, stepLabel }: Props) {
 
   return (
     <DemoSlideLayout
-      icon={<GalleryVerticalEnd size={22} />}
+      icon={<Layers size={22} />}
       label="Flashcards"
       title="Flip & Rate"
       description="Flip the card, recall the meaning, then rate yourself honestly. Your rating controls when you see this word again."
@@ -202,8 +202,9 @@ export default function SlideFlashcards({ onNext, stepLabel }: Props) {
                 <motion.button
                   whileTap={{ scale: 0.95 }}
                   onClick={() => handleRate(i)}
-                  className="rounded-lg px-3 py-2"
+                  className="rounded-lg px-3"
                   style={{
+                    minHeight: 44,
                     background: rated === i
                       ? `${r.color}20`
                       : 'var(--color-lx-elevated)',

@@ -1,9 +1,10 @@
-import { db, users, vocabUnits, vocabThemes, vocabUserWordRecords, vocabWords, vocabUserProgress } from '@/lib/db';
+import { db, users, vocabUnits, vocabThemes, vocabUserWordRecords, vocabWords, vocabUserProgress, vocabQuizSessions } from '@/lib/db';
 import { eq, and, lte, sql, inArray } from 'drizzle-orm';
 import { getLetterIndex, type LetterSummary } from '@/lib/vocab/letter-data';
 import { unstable_cache } from 'next/cache';
 import { VocabCacheTag } from './cache-keys';
 import { PHASE1_MAX_UNIT_ORDER } from './constants';
+import { resolveStudentLevel, type StudentLevel } from './quiz-generator';
 
 function safeParseArray(json: string | null): string[] {
   if (!json) return [];
@@ -29,10 +30,12 @@ export interface PracticeUnitItem {
 }
 
 export interface PracticePageData {
-  units:       PracticeUnitItem[];
-  letters:     LetterSummary[];
-  totalPoints: number;
-  streakDays:  number;
+  units:        PracticeUnitItem[];
+  letters:      LetterSummary[];
+  totalPoints:  number;
+  streakDays:   number;
+  /** Gates Exam Mode — unlocked at 'advanced' (70% of themes completed). */
+  studentLevel: StudentLevel;
 }
 
 async function _getPracticePageData(email: string): Promise<PracticePageData | null> {
@@ -44,7 +47,7 @@ async function _getPracticePageData(email: string): Promise<PracticePageData | n
   if (!user) return null;
 
   // Parallelize all queries after user lookup
-  const [units, themes, wordCountRows, masteredRows, [progress], letters] = await Promise.all([
+  const [units, themes, wordCountRows, masteredRows, [progress], letters, completedSessions] = await Promise.all([
     db
       .select({ id: vocabUnits.id, name: vocabUnits.name, order: vocabUnits.order })
       .from(vocabUnits)
@@ -84,6 +87,17 @@ async function _getPracticePageData(email: string): Promise<PracticePageData | n
 
     // Defer letter index — needs phase info (resolved below)
     Promise.resolve(null as LetterSummary[] | null),
+
+    // Completed study quizzes → distinct themes → student level (exam gate)
+    db
+      .select({ themeId: vocabQuizSessions.themeId })
+      .from(vocabQuizSessions)
+      .where(
+        and(
+          eq(vocabQuizSessions.userId, user.id),
+          eq(vocabQuizSessions.status, 'complete'),
+        )
+      ),
   ]);
 
   const phase = progress?.phase ?? 2;
@@ -121,11 +135,17 @@ async function _getPracticePageData(email: string): Promise<PracticePageData | n
     })
     .filter(u => u.themes.length > 0);
 
+  const completedThemes = new Set(
+    completedSessions.map(s => s.themeId).filter((id): id is number => id !== null)
+  ).size;
+  const studentLevel = resolveStudentLevel(completedThemes, themes.length);
+
   return {
     units:       unitItems,
     letters:     filteredLetters,
     totalPoints: progress?.totalPoints ?? 0,
     streakDays:  progress?.streakDays  ?? 0,
+    studentLevel,
   };
 }
 

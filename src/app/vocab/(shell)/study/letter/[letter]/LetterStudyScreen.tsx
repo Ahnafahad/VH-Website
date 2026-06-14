@@ -3,6 +3,7 @@
 import { useMemo, useState } from 'react';
 import { motion, AnimatePresence, type Variants } from 'framer-motion';
 import { useRouter } from 'next/navigation';
+import { useVocabFeedback } from '@/lib/vocab/use-vocab-feedback';
 import { ArrowLeft, ChevronDown } from 'lucide-react';
 import QuizConfigSheet, { type QuizConfig } from '@/components/vocab/QuizConfigSheet';
 import UnlockAllWordsBanner from '@/components/vocab/UnlockAllWordsBanner';
@@ -42,11 +43,11 @@ const LEVEL_BG: Record<string, string> = {
   mastered: 'rgba(230,57,70,0.15)',
 };
 const LEVEL_TEXT: Record<string, string> = {
-  new:      'rgba(160,160,160,0.9)',
-  learning: 'var(--color-lx-accent-gold)',
-  familiar: '#38bdf8',
-  strong:   'var(--color-lx-success)',
-  mastered: 'var(--color-lx-accent-red)',
+  new:      'var(--color-lx-text-muted)',
+  learning: 'var(--color-lx-mastery-learning)',
+  familiar: 'var(--color-lx-mastery-familiar)',
+  strong:   'var(--color-lx-mastery-strong)',
+  mastered: 'var(--color-lx-success)',
 };
 
 // ─── Word row ─────────────────────────────────────────────────────────────────
@@ -58,6 +59,7 @@ const rowVariant: Variants = {
 
 function WordRow({ w, index }: { w: LetterWordData; index: number }) {
   const [expanded, setExpanded] = useState(false);
+  const fb = useVocabFeedback();
 
   return (
     <motion.div
@@ -68,7 +70,7 @@ function WordRow({ w, index }: { w: LetterWordData; index: number }) {
       style={{ background: C.surface, border: `1px solid ${C.border}`, borderRadius: 14, overflow: 'hidden' }}
     >
       <button
-        onClick={() => setExpanded(e => !e)}
+        onClick={() => { fb.play('flip'); setExpanded(e => !e); }}
         style={{
           width: '100%', display: 'flex', alignItems: 'center',
           padding: '0.875rem 1rem', gap: '0.75rem',
@@ -193,6 +195,7 @@ type ScreenPhase = 'list' | 'flashcard' | 'config' | 'quiz';
 
 export default function LetterStudyScreen({ letter, words, totalPoints }: Props) {
   const router = useRouter();
+  const fb     = useVocabFeedback();
   const [phase, setPhase]   = useState<ScreenPhase>('list');
   const [config, setConfig] = useState<QuizConfig | null>(null);
 
@@ -268,8 +271,8 @@ export default function LetterStudyScreen({ letter, words, totalPoints }: Props)
       <div>
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.75rem' }}>
           <button
-            onClick={() => router.back()}
-            style={{ background: 'none', border: 'none', cursor: 'pointer', color: C.textSec, display: 'flex' }}
+            onClick={() => { fb.play('back'); router.back(); }}
+            style={{ background: 'none', border: 'none', cursor: 'pointer', color: C.textSec, display: 'flex', minWidth: 44, minHeight: 44, alignItems: 'center', justifyContent: 'center' }}
           >
             <ArrowLeft size={20} />
           </button>
@@ -321,7 +324,7 @@ export default function LetterStudyScreen({ letter, words, totalPoints }: Props)
         <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
           <motion.button
             whileTap={{ scale: 0.97 }}
-            onClick={() => setPhase('flashcard')}
+            onClick={() => { fb.play('tap'); setPhase('flashcard'); }}
             style={{
               width: '100%', padding: '0.875rem',
               background: C.red, color: '#fff',
@@ -335,7 +338,7 @@ export default function LetterStudyScreen({ letter, words, totalPoints }: Props)
 
           <motion.button
             whileTap={{ scale: 0.97 }}
-            onClick={() => setPhase('config')}
+            onClick={() => { fb.play('tap'); setPhase('config'); }}
             style={{
               width: '100%', padding: '0.8rem',
               background: 'transparent', color: C.textSec,

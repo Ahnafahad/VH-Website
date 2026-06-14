@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { HelpCircle, Lock, X } from 'lucide-react';
@@ -11,6 +11,7 @@ import AnimatedNumber from '@/components/vocab/AnimatedNumber';
 import DeadlineBanner from '@/components/vocab/DeadlineBanner';
 import UpgradeModal from '@/components/vocab/UpgradeModal';
 import { FREE_WORD_POOL, PAID_WORD_POOL } from '@/lib/vocab/constants';
+import { useVocabFeedback } from '@/lib/vocab/use-vocab-feedback';
 
 function greeting(): string {
   const h = new Date().getHours();
@@ -23,11 +24,11 @@ function greeting(): string {
 // ─── Mastery histogram ────────────────────────────────────────────────────────
 
 const MASTERY_COLORS = {
-  new:      '#4B5563',
-  learning: '#F4A828',
-  familiar: '#60a5fa',
-  strong:   '#2ECC71',
-  mastered: '#E63946',
+  new:      'var(--color-lx-text-muted)',
+  learning: 'var(--color-lx-mastery-learning)',
+  familiar: 'var(--color-lx-mastery-familiar)',
+  strong:   'var(--color-lx-mastery-strong)',
+  mastered: 'var(--color-lx-success)',
 };
 
 const MASTERY_FULL: Record<string, string> = {
@@ -55,9 +56,14 @@ function MasteryHistogram({ breakdown }: { breakdown: MasteryBreakdown }) {
         return (
           <div
             key={lvl}
+            role="button"
+            tabIndex={0}
+            aria-label={`${MASTERY_FULL[lvl]}: ${count}`}
             onMouseEnter={() => setActive(lvl)}
             onMouseLeave={() => setActive(null)}
-            style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 4, cursor: 'default', position: 'relative' }}
+            onClick={() => setActive(isOn ? null : lvl)}
+            onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setActive(isOn ? null : lvl); } }}
+            style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 4, cursor: 'pointer', position: 'relative' }}
           >
             <AnimatePresence>
               {isOn && (
@@ -132,6 +138,7 @@ interface StatColProps {
 }
 
 function StatCol({ label, value, unit, color, pulse, delay = 0, onClick }: StatColProps) {
+  const prefersReducedMotion = useReducedMotion();
   return (
     <motion.div
       initial={{ opacity: 0, y: 10 }}
@@ -144,6 +151,7 @@ function StatCol({ label, value, unit, color, pulse, delay = 0, onClick }: StatC
         flexDirection:  'column',
         alignItems:     'center',
         gap:            4,
+        minWidth:       0,
         cursor:         onClick ? 'pointer' : 'default',
       }}
     >
@@ -159,15 +167,16 @@ function StatCol({ label, value, unit, color, pulse, delay = 0, onClick }: StatC
       </span>
 
       <div style={{ display: 'flex', alignItems: 'baseline', gap: 3 }}>
-        {pulse && value > 0 ? (
+        {pulse && value > 0 && !prefersReducedMotion ? (
           <motion.span
             animate={{ opacity: [1, 0.55, 1] }}
             transition={{ repeat: Infinity, duration: 2.6, ease: 'easeInOut' }}
             style={{
               fontFamily: "'Cormorant Garamond', Georgia, serif",
-              fontSize:   '2.15rem',
+              fontSize:   'clamp(1.5rem, 6vw, 2.15rem)',
               lineHeight: 1,
               fontWeight: 700,
+              whiteSpace: 'nowrap',
               color:      color ?? 'var(--color-lx-text-primary)',
             }}
           >
@@ -217,6 +226,8 @@ interface SessionRowProps {
 
 function SessionRow({ title, subtitle, color, pulse, delay, onClick }: SessionRowProps) {
   const [hovered, setHovered] = useState(false);
+  const prefersReducedMotion  = useReducedMotion();
+  const fb = useVocabFeedback();
 
   return (
     <motion.div
@@ -225,8 +236,8 @@ function SessionRow({ title, subtitle, color, pulse, delay, onClick }: SessionRo
       transition={{ type: 'spring' as const, stiffness: 340, damping: 28, delay }}
       style={{ position: 'relative' }}
     >
-      {/* SRS urgency sweep */}
-      {pulse && (
+      {/* SRS urgency sweep — suppressed when reduced motion is preferred */}
+      {pulse && !prefersReducedMotion && (
         <motion.div
           animate={{ opacity: [0, 0.5, 0] }}
           transition={{ repeat: Infinity, duration: 3.5, ease: 'easeInOut' }}
@@ -241,7 +252,7 @@ function SessionRow({ title, subtitle, color, pulse, delay, onClick }: SessionRo
       )}
 
       <button
-        onClick={onClick}
+        onClick={(e) => { fb.play('tap'); onClick(); }}
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
         style={{
@@ -354,7 +365,7 @@ function buildSessions(
       type:     'review_quiz',
       title:    `Quiz — ${sessions.review.count} due word${sessions.review.count !== 1 ? 's' : ''}`,
       subtitle: 'SRS overdue — test yourself',
-      color:    '#F97316',
+      color:    'var(--color-lx-mastery-learning)',
       delay:    0.06,
       onClick:  () => router.push('/vocab/review/quiz'),
     });
@@ -379,7 +390,7 @@ function buildSessions(
       type:     'learn',
       title:    sessions.learn.name,
       subtitle: sub,
-      color:    '#60a5fa',
+      color:    'var(--color-lx-mastery-familiar)',
       delay:    0.18,
       onClick:  () => router.push(`/vocab/study/${sessions.learn!.themeId}`),
     });
@@ -528,10 +539,10 @@ function DailyMessage() {
             {message}
           </p>
 
-          {/* Dismiss button */}
+          {/* Dismiss button — 44×44 tap target, 11px visual icon */}
           <motion.button
             onClick={dismiss}
-            whileHover={{ scale: 1.15 }}
+            whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
             transition={{ type: 'spring' as const, stiffness: 500, damping: 30 }}
             aria-label="Dismiss"
@@ -539,16 +550,17 @@ function DailyMessage() {
               display:        'flex',
               alignItems:     'center',
               justifyContent: 'center',
-              width:          20,
-              height:         20,
-              borderRadius:   4,
+              width:          44,
+              height:         44,
+              borderRadius:   8,
               background:     'transparent',
               border:         'none',
               cursor:         'pointer',
               color:          'var(--color-lx-text-muted)',
               flexShrink:     0,
               padding:        0,
-              marginTop:      2,
+              marginTop:      -12,
+              marginRight:    -12,
               opacity:        0.5,
               transition:     'opacity 0.15s ease, color 0.15s ease',
             }}
@@ -572,11 +584,11 @@ function DailyMessage() {
 // ─── Progress Section ────────────────────────────────────────────────────────
 
 const PROGRESS_SEGMENTS = [
-  { key: 'mastered', label: 'Mastered', color: '#E63946' },
-  { key: 'strong',   label: 'Strong',   color: '#2ECC71' },
-  { key: 'familiar', label: 'Familiar', color: '#60a5fa' },
-  { key: 'learning', label: 'Learning', color: '#F4A828' },
-  { key: 'new',      label: 'New',      color: '#4B5563' },
+  { key: 'mastered', label: 'Mastered', color: 'var(--color-lx-success)' },
+  { key: 'strong',   label: 'Strong',   color: 'var(--color-lx-mastery-strong)' },
+  { key: 'familiar', label: 'Familiar', color: 'var(--color-lx-mastery-familiar)' },
+  { key: 'learning', label: 'Learning', color: 'var(--color-lx-mastery-learning)' },
+  { key: 'new',      label: 'New',      color: 'var(--color-lx-text-muted)' },
 ] as const;
 
 function ProgressSection({
@@ -717,11 +729,13 @@ function ProgressSection({
 // ─── Main HomeScreen ──────────────────────────────────────────────────────────
 
 export default function HomeScreen({ data }: { data: HomeData }) {
-  const router      = useRouter();
-  const firstName   = data.userName.split(' ')[0];
-  const deadlinePassed = data.deadline ? new Date(data.deadline) < new Date() : false;
-  const sessionRows = buildSessions(data.sessions, router);
+  const router                 = useRouter();
+  const firstName              = data.userName.split(' ')[0];
+  const deadlinePassed         = data.deadline ? new Date(data.deadline) < new Date() : false;
+  const sessionRows            = buildSessions(data.sessions, router);
   const [showUpgrade, setShowUpgrade] = useState(false);
+  const prefersReducedMotion   = useReducedMotion();
+  const fb                     = useVocabFeedback();
 
   return (
     <div
@@ -797,11 +811,24 @@ export default function HomeScreen({ data }: { data: HomeData }) {
             paddingBottom: 2,
           }}
         >
-          {/* Help icon */}
+          {/* Help icon — 44×44 tap target wrapping 28px visual circle */}
           <Link
             href="/vocab/help"
             aria-label="Help"
             style={{
+              display:        'flex',
+              alignItems:     'center',
+              justifyContent: 'center',
+              width:          44,
+              height:         44,
+              borderRadius:   '50%',
+              background:     'transparent',
+              color:          'var(--color-lx-text-muted)',
+              textDecoration: 'none',
+              marginRight:    -8,
+            }}
+          >
+            <span style={{
               display:        'flex',
               alignItems:     'center',
               justifyContent: 'center',
@@ -810,11 +837,9 @@ export default function HomeScreen({ data }: { data: HomeData }) {
               borderRadius:   '50%',
               background:     'var(--color-lx-elevated)',
               border:         '1px solid var(--color-lx-border)',
-              color:          'var(--color-lx-text-muted)',
-              textDecoration: 'none',
-            }}
-          >
-            <HelpCircle size={13} />
+            }}>
+              <HelpCircle size={13} />
+            </span>
           </Link>
 
           {/* Points */}
@@ -905,7 +930,7 @@ export default function HomeScreen({ data }: { data: HomeData }) {
             </div>
             <motion.button
               whileTap={{ scale: 0.95 }}
-              onClick={() => setShowUpgrade(true)}
+              onClick={() => { fb.play('tap'); setShowUpgrade(true); }}
               style={{
                 display:       'flex',
                 alignItems:    'center',
@@ -958,7 +983,7 @@ export default function HomeScreen({ data }: { data: HomeData }) {
               color={data.streakDays > 0 ? 'var(--color-lx-accent-red)' : undefined}
               delay={0.15}
             />
-            <div style={{ width: 1, height: 40, background: 'var(--color-lx-border)', margin: '0 1.5rem' }} />
+            <div style={{ width: 1, height: 40, background: 'var(--color-lx-border)', margin: '0 0.75rem', flexShrink: 0 }} />
             <StatCol
               label="Due"
               value={data.dueWordsCount}
@@ -968,7 +993,7 @@ export default function HomeScreen({ data }: { data: HomeData }) {
               delay={0.2}
               onClick={data.dueWordsCount > 0 ? () => router.push('/vocab/review') : undefined}
             />
-            <div style={{ width: 1, height: 40, background: 'var(--color-lx-border)', margin: '0 1.5rem' }} />
+            <div style={{ width: 1, height: 40, background: 'var(--color-lx-border)', margin: '0 0.75rem', flexShrink: 0 }} />
             <StatCol
               label="This week"
               value={data.weeklyPoints}
@@ -992,6 +1017,26 @@ export default function HomeScreen({ data }: { data: HomeData }) {
               overflow:     'hidden',
             }}
           >
+            {/* One-time diagonal sheen sweep on mount */}
+            {!prefersReducedMotion && (
+              <motion.div
+                aria-hidden
+                initial={{ x: '-110%', skewX: -12 }}
+                animate={{ x: '210%' }}
+                transition={{ duration: 1.1, delay: 0.55, ease: [0.25, 0, 0.15, 1] }}
+                style={{
+                  position:      'absolute',
+                  top:           0,
+                  left:          0,
+                  width:         '45%',
+                  height:        '100%',
+                  background:    'linear-gradient(105deg, transparent 0%, rgba(255,255,255,0.055) 45%, rgba(244,168,40,0.04) 55%, transparent 100%)',
+                  pointerEvents: 'none',
+                  zIndex:        2,
+                }}
+              />
+            )}
+
             {/* Ambient glow behind ring */}
             <div aria-hidden style={{
               position:      'absolute',

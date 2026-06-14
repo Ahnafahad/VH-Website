@@ -12,7 +12,7 @@ const SESSIONS = [
     id: 'learn',
     title: 'Learn · Unit 3',
     sub: 'Start a new flashcard session',
-    barColor: '#3B82F6',
+    barColor: 'var(--color-lx-study)',
   },
   {
     id: 'review',

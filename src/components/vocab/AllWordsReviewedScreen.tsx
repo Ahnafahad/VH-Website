@@ -6,15 +6,17 @@
  * Fullscreen celebration state shown when every theme in the visible units
  * has status === 'complete' (all words reviewed).
  *
- * Design: ceremonial, editorial. Gold-dominant. canvas-confetti on mount.
+ * Design: ceremonial, editorial. Gold-dominant. Premium Celebration on mount.
  * CTAs: Practice Mode → /vocab/practice  |  View Profile → /vocab/profile
  * Framer Motion: staggered entrance, scale 0.9 → 1, spring.
  */
 
 import { useEffect, useRef } from 'react';
-import { motion, type Variants } from 'framer-motion';
+import { motion, useReducedMotion, type Variants } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 import { CheckCircle2, Zap, Star, ArrowRight } from 'lucide-react';
+import Celebration from '@/components/vocab/Celebration';
+import { useVocabFeedback } from '@/lib/vocab/use-vocab-feedback';
 
 // ─── Variants ─────────────────────────────────────────────────────────────────
 
@@ -53,63 +55,19 @@ interface Props {
 // ─── Component ────────────────────────────────────────────────────────────────
 
 export default function AllWordsReviewedScreen({ totalWords, masteredWords, totalPoints }: Props) {
-  const router    = useRouter();
-  const firedRef  = useRef(false);
+  const router          = useRouter();
+  const firedRef        = useRef(false);
+  const reducedMotion   = useReducedMotion();
+  const fb              = useVocabFeedback();
 
-  // ── Confetti burst on mount ────────────────────────────────────────────────
+  // ── Sound/haptic cue on mount (fires once) ─────────────────────────────────
   useEffect(() => {
     if (firedRef.current) return;
     firedRef.current = true;
 
-    const fire = async () => {
-      try {
-        const { default: confetti } = await import('canvas-confetti');
-
-        const colors = ['#C9A84C', '#F4A828', '#FFD700', '#E63946', '#F5F5F5'];
-
-        // Centre burst
-        confetti({
-          particleCount: 120,
-          spread:        80,
-          origin:        { x: 0.5, y: 0.42 },
-          colors,
-          gravity:       0.7,
-          scalar:        1.25,
-          ticks:         260,
-          startVelocity: 28,
-        });
-
-        // Bilateral edge bursts
-        setTimeout(() => {
-          confetti({
-            particleCount: 60,
-            angle:         60,
-            spread:        55,
-            origin:        { x: 0, y: 0.55 },
-            colors,
-            gravity:       0.65,
-            scalar:        1.1,
-            ticks:         220,
-          });
-          confetti({
-            particleCount: 60,
-            angle:         120,
-            spread:        55,
-            origin:        { x: 1, y: 0.55 },
-            colors,
-            gravity:       0.65,
-            scalar:        1.1,
-            ticks:         220,
-          });
-        }, 260);
-      } catch {
-        // Non-critical — silently swallow confetti errors.
-      }
-    };
-
-    const t = setTimeout(fire, 400);
+    const t = setTimeout(() => { fb.play('complete'); }, 400);
     return () => clearTimeout(t);
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <div
@@ -124,6 +82,8 @@ export default function AllWordsReviewedScreen({ totalWords, masteredWords, tota
         overflow:       'hidden',
       }}
     >
+      {/* ── Premium celebration overlay ─────────────────────────────────────── */}
+      <Celebration active intensity="full" />
       {/* ── Background ambient glow ─────────────────────────────────────────── */}
       <motion.div
         variants={glowV}
@@ -203,21 +163,21 @@ export default function AllWordsReviewedScreen({ totalWords, masteredWords, tota
         >
           {/* Rotating outer ring */}
           <motion.div
-            animate={{ rotate: 360 }}
-            transition={{ duration: 8, repeat: Infinity, ease: 'linear' }}
+            animate={reducedMotion ? {} : { rotate: 360 }}
+            transition={reducedMotion ? {} : { duration: 8, repeat: Infinity, ease: 'linear' }}
             aria-hidden
             style={{
               position:     'absolute',
               inset:        '-3px',
               borderRadius: '50%',
-              background:   'conic-gradient(from 0deg, #C9A84C, #F4A828, rgba(201,168,76,0.15) 45%, transparent 55%, rgba(201,168,76,0.15) 65%, #C9A84C)',
+              background:   'conic-gradient(from 0deg, var(--color-lx-accent-gold), #F4A828, rgba(201,168,76,0.15) 45%, transparent 55%, rgba(201,168,76,0.15) 65%, var(--color-lx-accent-gold))',
             }}
           />
 
           {/* Pulse ring */}
           <motion.div
-            animate={{ scale: [1, 1.2, 1], opacity: [0.5, 0, 0.5] }}
-            transition={{ duration: 2.8, repeat: Infinity, ease: 'easeInOut' }}
+            animate={reducedMotion ? {} : { scale: [1, 1.2, 1], opacity: [0.5, 0, 0.5] }}
+            transition={reducedMotion ? {} : { duration: 2.8, repeat: Infinity, ease: 'easeInOut' }}
             aria-hidden
             style={{
               position:     'absolute',
@@ -247,7 +207,7 @@ export default function AllWordsReviewedScreen({ totalWords, masteredWords, tota
               size={34}
               strokeWidth={1.4}
               style={{
-                color:  '#C9A84C',
+                color:  'var(--color-lx-accent-gold)',
                 filter: 'drop-shadow(0 0 8px rgba(201,168,76,0.7))',
               }}
             />
@@ -263,7 +223,7 @@ export default function AllWordsReviewedScreen({ totalWords, masteredWords, tota
             fontWeight:    600,
             letterSpacing: '0.3em',
             textTransform: 'uppercase',
-            color:         'rgba(201,168,76,0.7)',
+            color:         'color-mix(in srgb, var(--color-lx-accent-gold) 70%, transparent)',
             marginBottom:  '12px',
             display:       'block',
           }}
@@ -343,7 +303,7 @@ export default function AllWordsReviewedScreen({ totalWords, masteredWords, tota
             <Star
               size={14}
               strokeWidth={1.8}
-              style={{ color: '#C9A84C' }}
+              style={{ color: 'var(--color-lx-accent-gold)' }}
               fill="currentColor"
             />
             <span
@@ -352,7 +312,7 @@ export default function AllWordsReviewedScreen({ totalWords, masteredWords, tota
                 fontSize:   '2rem',
                 fontWeight: 700,
                 lineHeight: 1,
-                color:      '#C9A84C',
+                color:      'var(--color-lx-accent-gold)',
               }}
             >
               {masteredWords}
@@ -478,7 +438,7 @@ export default function AllWordsReviewedScreen({ totalWords, masteredWords, tota
             fontFamily:    "'Sora', sans-serif",
             fontSize:      '14px',
             fontWeight:    600,
-            color:         '#C9A84C',
+            color:         'var(--color-lx-accent-gold)',
             cursor:        'pointer',
             marginBottom:  '12px',
             letterSpacing: '0.02em',

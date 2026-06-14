@@ -9,8 +9,8 @@ import DemoInstruction from '../DemoInstruction';
 
 const LETTERS = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'M'];
 const SAMPLE_WORDS = [
-  { word: 'magnate',    mastery: 'strong',   color: '#3B82F6' },
-  { word: 'mercenary',  mastery: 'learning', color: 'var(--color-lx-accent-gold)' },
+  { word: 'magnate',    mastery: 'strong',   color: 'var(--color-lx-mastery-familiar)' },
+  { word: 'mercenary',  mastery: 'learning', color: 'var(--color-lx-mastery-learning)' },
   { word: 'munificent', mastery: 'new',      color: 'var(--color-lx-text-muted)' },
 ];
 

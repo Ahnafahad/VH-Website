@@ -1,8 +1,9 @@
 'use client';
 
 import { useState, useRef, useEffect, useMemo } from 'react';
-import { motion, AnimatePresence, Variants, useInView } from 'framer-motion';
+import { motion, AnimatePresence, Variants, useInView, useReducedMotion } from 'framer-motion';
 import type { LeaderboardData, LeaderEntry, AllTimeEntry, HallEntry } from '@/lib/vocab/leaderboard-data';
+import { useVocabFeedback } from '@/lib/vocab/use-vocab-feedback';
 
 // ─── Medal colours ────────────────────────────────────────────────────────────
 
@@ -467,7 +468,9 @@ function MyBanner({ rank, points, label }: MyBannerProps) {
 // ─── Main ─────────────────────────────────────────────────────────────────────
 
 export default function LeaderboardScreen({ data }: { data: LeaderboardData }) {
-  const [tab, setTab] = useState<Tab>('weekly');
+  const [tab, setTab]     = useState<Tab>('weekly');
+  const fb                = useVocabFeedback();
+  const prefersReduced    = useReducedMotion() ?? false;
   const myWeeklyRef  = useRef<HTMLDivElement | null>(null);
   const myAllTimeRef = useRef<HTMLDivElement | null>(null);
 
@@ -534,17 +537,26 @@ export default function LeaderboardScreen({ data }: { data: LeaderboardData }) {
       {/* Tabs */}
       <div className="relative px-5 mb-4 md:px-8">
         <div
+          role="tablist"
+          aria-label="Leaderboard views"
           className="flex gap-0 rounded-xl p-1 md:max-w-sm"
           style={{ background: 'var(--color-lx-elevated)' }}
         >
           {TABS.map(t => (
             <button
               key={t.id}
-              onClick={() => setTab(t.id)}
-              className="relative flex-1 py-2.5 text-xs font-semibold transition-colors"
+              role="tab"
+              aria-selected={tab === t.id}
+              aria-controls={`lx-tabpanel-${t.id}`}
+              id={`lx-tab-${t.id}`}
+              onClick={() => { if (tab !== t.id) { fb.play('tap'); setTab(t.id); } }}
+              className="relative flex-1 text-xs font-semibold transition-colors"
               style={{
                 fontFamily: "'Sora', sans-serif",
                 color: tab === t.id ? 'var(--color-lx-text-primary)' : 'var(--color-lx-text-muted)',
+                minHeight: 44,
+                paddingTop: '0.625rem',
+                paddingBottom: '0.625rem',
               }}
             >
               {tab === t.id && (
@@ -576,6 +588,9 @@ export default function LeaderboardScreen({ data }: { data: LeaderboardData }) {
       <AnimatePresence mode="wait" initial={false}>
         <motion.div
           key={tab}
+          role="tabpanel"
+          id={`lx-tabpanel-${tab}`}
+          aria-labelledby={`lx-tab-${tab}`}
           initial={{ opacity: 0, x: tab === 'weekly' ? -16 : 16 }}
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: tab === 'weekly' ? 16 : -16 }}
@@ -602,22 +617,71 @@ export default function LeaderboardScreen({ data }: { data: LeaderboardData }) {
           {tab === 'hall' && (
             <div className="flex flex-col gap-4">
               {hallGroups.length === 0 ? (
-                <div className="flex flex-col items-center gap-4 py-12 text-center">
-                  <svg width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true">
-                    <path
-                      d="M20 4L24.5 13.8H35L26.8 19.8L30 30L20 24.2L10 30L13.2 19.8L5 13.8H15.5L20 4Z"
-                      fill="var(--color-lx-elevated)"
-                      stroke="var(--color-lx-border)"
-                      strokeWidth="1.5"
-                    />
-                  </svg>
-                  <p
-                    className="text-sm"
-                    style={{ color: 'var(--color-lx-text-muted)', fontFamily: "'Sora', sans-serif" }}
+                /* ── Hall of Fame empty state ─────────────────────────── */
+                <div className="flex flex-col items-center gap-5 py-14 text-center">
+                  {/* TODO: drop-in illustration hook */}
+
+                  {/* Animated star — floats and glows when motion is allowed */}
+                  <motion.div
+                    aria-hidden
+                    animate={prefersReduced ? {} : {
+                      y: [0, -8, 0],
+                      filter: [
+                        'drop-shadow(0 0 0px rgba(244,168,40,0))',
+                        'drop-shadow(0 0 12px rgba(244,168,40,0.65))',
+                        'drop-shadow(0 0 0px rgba(244,168,40,0))',
+                      ],
+                    }}
+                    transition={{
+                      duration: 3.2,
+                      ease: 'easeInOut',
+                      repeat: Infinity,
+                      repeatType: 'loop',
+                    }}
+                  >
+                    <svg width="52" height="52" viewBox="0 0 52 52" fill="none" aria-hidden="true">
+                      <path
+                        d="M26 5L31.8 18H46L34.8 26.2L39 40L26 32L13 40L17.2 26.2L6 18H20.2L26 5Z"
+                        fill="var(--color-lx-elevated)"
+                        stroke="var(--color-lx-accent-gold)"
+                        strokeWidth="1.8"
+                        strokeLinejoin="round"
+                      />
+                      {/* Inner highlight */}
+                      <path
+                        d="M26 12L29.8 20.5H39L31.6 25.8L34.2 34.5L26 29.5L17.8 34.5L20.4 25.8L13 20.5H22.2L26 12Z"
+                        fill="rgba(244,168,40,0.13)"
+                      />
+                    </svg>
+                  </motion.div>
+
+                  {/* Title — staggered fade in */}
+                  <motion.h2
+                    initial={{ opacity: 0, y: 6 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.12, duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                    style={{
+                      fontFamily: "'Cormorant Garamond', Georgia, serif",
+                      fontSize: '1.6rem',
+                      fontWeight: 700,
+                      fontStyle: 'italic',
+                      color: 'var(--color-lx-text-primary)',
+                      lineHeight: 1.15,
+                    }}
                   >
                     No champions yet.
-                    <br />Complete a week to make history.
-                  </p>
+                  </motion.h2>
+
+                  {/* Subtitle */}
+                  <motion.p
+                    initial={{ opacity: 0, y: 6 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.24, duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                    className="text-sm"
+                    style={{ color: 'var(--color-lx-text-muted)', fontFamily: "'Sora', sans-serif", maxWidth: 220 }}
+                  >
+                    Complete a full week to claim your place in history.
+                  </motion.p>
                 </div>
               ) : (
                 hallGroups.map(g => (
