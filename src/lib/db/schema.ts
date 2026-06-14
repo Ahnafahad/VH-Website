@@ -588,5 +588,79 @@ export type VocabUserBadge        = typeof vocabUserBadges.$inferSelect;
 export type VocabMasteryLevel = 'new' | 'learning' | 'familiar' | 'strong' | 'mastered';
 export type VocabPhase        = 1 | 2;
 export type VocabSessionType  = 'study' | 'practice';
-export type VocabQuestionType = 'fill_blank' | 'analogy' | 'correct_usage';
+// Recognition (MCQ): fill_blank, analogy, correct_usage, synonym, antonym.
+// Production (typed recall): type_word (definition → type the word),
+// type_cloze (sentence with blank → type the word).
+export type VocabQuestionType =
+  | 'fill_blank' | 'analogy' | 'correct_usage'
+  | 'synonym' | 'antonym'
+  | 'type_word' | 'type_cloze';
 export type VocabRating       = 'got_it' | 'unsure' | 'missed_it';
+
+// ══════════════════════════════════════════════════════════════════════════════
+// ANALYTICS — Behavioral / clickstream tracking (anonymous + logged-in)
+// ══════════════════════════════════════════════════════════════════════════════
+
+// ─── Analytics Sessions ───────────────────────────────────────────────────────
+// One row per visit. A "session" is a continuous period of activity from one
+// device/tab group. anonId is a stable per-browser id (localStorage); userId is
+// attached once the visitor authenticates (may stay null for anonymous visits).
+
+export const analyticsSessions = sqliteTable('analytics_sessions', {
+  id:              text('id').primaryKey(),                 // client-generated uuid
+  anonId:          text('anon_id').notNull(),               // stable per-browser id
+  userId:          integer('user_id').references(() => users.id, { onDelete: 'set null' }),
+  isAuthenticated: integer('is_authenticated', { mode: 'boolean' }).notNull().default(false),
+  entryPath:       text('entry_path'),
+  exitPath:        text('exit_path'),
+  referrer:        text('referrer'),
+  utmSource:       text('utm_source'),
+  utmMedium:       text('utm_medium'),
+  utmCampaign:     text('utm_campaign'),
+  device:          text('device'),                          // 'mobile' | 'tablet' | 'desktop'
+  userAgent:       text('user_agent'),
+  pageCount:       integer('page_count').notNull().default(0),
+  eventCount:      integer('event_count').notNull().default(0),
+  durationMs:      integer('duration_ms').notNull().default(0),
+  startedAt:       integer('started_at',  { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
+  lastSeenAt:      integer('last_seen_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
+}, (t) => [
+  index('idx_an_sessions_started').on(t.startedAt),
+  index('idx_an_sessions_user').on(t.userId, t.startedAt),
+  index('idx_an_sessions_anon').on(t.anonId),
+]);
+
+// ─── Analytics Events ─────────────────────────────────────────────────────────
+// One row per tracked event. Pageviews, page-exits (carry time-on-page in
+// durationMs), feature clicks, and arbitrary custom events.
+
+export const analyticsEvents = sqliteTable('analytics_events', {
+  id:         integer('id').primaryKey({ autoIncrement: true }),
+  sessionId:  text('session_id').notNull(),
+  anonId:     text('anon_id').notNull(),
+  userId:     integer('user_id').references(() => users.id, { onDelete: 'set null' }),
+  // 'pageview' | 'page_exit' | 'feature' | 'click' | 'custom'
+  type:       text('type').notNull(),
+  // 'site' | 'vocab' | 'math' | 'accounting' | 'workbook' | 'auth' | 'admin'
+  module:     text('module'),
+  path:       text('path'),
+  name:       text('name'),                                 // feature/event name
+  props:      text('props'),                                // JSON blob
+  durationMs: integer('duration_ms'),                       // time-on-page for page_exit
+  createdAt:  integer('created_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
+}, (t) => [
+  index('idx_an_events_created').on(t.createdAt),
+  index('idx_an_events_type_created').on(t.type, t.createdAt),
+  index('idx_an_events_module_created').on(t.module, t.createdAt),
+  index('idx_an_events_user_created').on(t.userId, t.createdAt),
+  index('idx_an_events_session').on(t.sessionId),
+  index('idx_an_events_name').on(t.name),
+]);
+
+export type AnalyticsSession    = typeof analyticsSessions.$inferSelect;
+export type NewAnalyticsSession = typeof analyticsSessions.$inferInsert;
+export type AnalyticsEvent      = typeof analyticsEvents.$inferSelect;
+export type NewAnalyticsEvent   = typeof analyticsEvents.$inferInsert;
+
+export type AnalyticsEventType = 'pageview' | 'page_exit' | 'feature' | 'click' | 'custom';
+export type AnalyticsModule    = 'site' | 'vocab' | 'math' | 'accounting' | 'workbook' | 'auth' | 'admin';

@@ -13,6 +13,7 @@ import {
   Megaphone,
   LogOut,
   Database,
+  BarChart3,
 } from 'lucide-react';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
@@ -32,6 +33,7 @@ interface AdminSidebarProps {
 
 const NAV_ITEMS: NavItem[] = [
   { href: '/admin',              label: 'Overview',      icon: LayoutDashboard },
+  { href: '/admin/analytics',    label: 'Analytics',     icon: BarChart3       },
   { href: '/admin/vocab',        label: 'Vocabulary',    icon: BookOpen        },
   { href: '/admin/words',        label: 'Word Bank',     icon: Database        },
   { href: '/admin/users',        label: 'Users',         icon: Users           },

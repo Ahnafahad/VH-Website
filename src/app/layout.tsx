@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
-import { Fraunces, Geist } from "next/font/google";
+import { Fraunces, Geist, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import MainSiteShell from "@/components/MainSiteShell";
 import AuthProvider from "@/components/AuthProvider";
 import OnboardingGate from "@/components/onboarding/OnboardingGate";
+import AnalyticsTracker from "@/components/AnalyticsTracker";
 import { Analytics } from "@vercel/analytics/react";
 
 const fraunces = Fraunces({
@@ -20,6 +21,13 @@ const geist = Geist({
   weight: ["300", "400", "500", "600", "700"],
 });
 
+const jetbrainsMono = JetBrains_Mono({
+  variable: "--font-math-mono",
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["300", "400", "500", "700"],
+});
+
 export const metadata: Metadata = {
   title: "Beyond the Horizons — The Only EM-Specific Admission Program in Bangladesh",
   description: "The only university admission program in Bangladesh built specifically for English-medium students. Expert preparation for IBA DU, BUP, and DU FBS with a 46.7% success rate.",
@@ -34,13 +42,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${fraunces.variable} ${geist.variable} antialiased`}
+        className={`${fraunces.variable} ${geist.variable} ${jetbrainsMono.variable} antialiased`}
       >
         <AuthProvider>
           <MainSiteShell>
             {children}
           </MainSiteShell>
           <OnboardingGate />
+          <AnalyticsTracker />
         </AuthProvider>
         <Analytics />
       </body>

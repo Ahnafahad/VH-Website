@@ -6,6 +6,7 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import { Suspense } from 'react';
 import Image from 'next/image';
 import { motion } from 'motion/react';
+import { trackFeature } from '@/lib/analytics/tracker';
 
 function SignInForm() {
   const [loading, setLoading] = useState(false);
@@ -21,6 +22,7 @@ function SignInForm() {
 
   const handleGoogleSignIn = async () => {
     setLoading(true);
+    trackFeature('signin_submit', 'auth');
     try {
       await signIn('google', { callbackUrl });
     } catch {

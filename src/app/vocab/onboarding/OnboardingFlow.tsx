@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 import StepWelcome    from './steps/StepWelcome';
@@ -9,6 +9,7 @@ import StepProjection from './steps/StepProjection';
 import StepFirstWord  from './steps/StepFirstWord';
 import StepReady      from './steps/StepReady';
 import DemoSlides     from './demo/DemoSlides';
+import { trackFeature } from '@/lib/analytics/tracker';
 
 interface Props {
   userId: number;
@@ -41,8 +42,12 @@ export default function OnboardingFlow({ userId: _userId, userName }: Props) {
   const [saving,      setSaving]      = useState(false);
   const router                        = useRouter();
 
+  // Track onboarding start once on mount
+  useEffect(() => { trackFeature('onboarding_start', 'vocab'); }, []);
+
   async function finish() {
     setSaving(true);
+    trackFeature('onboarding_complete', 'vocab');
     const chosenDeadline = deadline ?? defaultDeadline();
     await fetch('/api/vocab/onboarding/complete', {
       method:  'POST',
@@ -186,7 +191,7 @@ export default function OnboardingFlow({ userId: _userId, userName }: Props) {
             <DemoSlides
               mode="onboarding"
               onComplete={() => setStep(5)}
-              onSkip={() => setStep(5)}
+              onSkip={() => { trackFeature('onboarding_skip', 'vocab'); setStep(5); }}
             />
           </motion.div>
         )}

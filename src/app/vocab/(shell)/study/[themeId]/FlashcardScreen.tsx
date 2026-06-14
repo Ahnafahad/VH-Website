@@ -15,6 +15,7 @@ import type { FlashcardSessionData, FlashcardWord } from '@/lib/vocab/flashcard-
 import { useBadgeQueue } from '@/lib/vocab/badges/queue';
 import { useVocabFeedback } from '@/lib/vocab/use-vocab-feedback';
 import Celebration from '@/components/vocab/Celebration';
+import { trackFeature } from '@/lib/analytics/tracker';
 
 type Rating = 'got_it' | 'unsure' | 'missed_it';
 
@@ -487,6 +488,12 @@ export default function FlashcardScreen({ data }: { data: FlashcardSessionData }
   const advanceRef  = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const word = data.words[index];
+
+  // Track flashcard session start once on mount
+  useEffect(() => {
+    trackFeature('flashcard_start', 'vocab', { themeId: data.themeId });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   // Cleanup advance timer on unmount
   useEffect(() => {

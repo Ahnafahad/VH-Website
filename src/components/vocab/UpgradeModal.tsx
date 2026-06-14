@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence, type Variants } from 'framer-motion';
 import { X } from 'lucide-react';
+import { trackFeature } from '@/lib/analytics/tracker';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -302,6 +303,7 @@ function WtpPath({ onBack }: { onBack: () => void }) {
   const handleSubmit = async () => {
     if (!selected || loading) return;
     setLoading(true);
+    trackFeature('upgrade_interest_submit', 'vocab', { option: selected });
     try {
       await fetch('/api/vocab/upgrade-interest', {
         method:  'POST',

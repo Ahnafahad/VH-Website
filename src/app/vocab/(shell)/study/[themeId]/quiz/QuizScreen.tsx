@@ -13,6 +13,7 @@ import { consumePrefetch } from '@/lib/vocab/quiz-prefetch';
 import { useVocabFeedback } from '@/lib/vocab/use-vocab-feedback';
 import Celebration from '@/components/vocab/Celebration';
 import AnimatedNumber from '@/components/vocab/AnimatedNumber';
+import { trackFeature } from '@/lib/analytics/tracker';
 
 // ─── Inline SVG micro-icons (no generic defaults) ────────────────────────────
 function IconClose() {
@@ -810,6 +811,13 @@ export default function QuizScreen({ themeId, themeIds, letterWordIds, sessionTy
     }
 
     // ── Main quiz generation (slow, Gemini AI) ─────────────────────────────
+    // Track quiz start event
+    if (sessionType === 'study') {
+      trackFeature('quiz_start', 'vocab', { type: 'study' });
+    } else if (sessionType === 'practice' || sessionType === 'letter') {
+      trackFeature('quiz_start', 'vocab', { type: 'practice' });
+    }
+
     (async () => {
       try {
         const body = sessionType === 'study'

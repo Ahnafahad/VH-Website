@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence, type Variants } from 'framer-motion';
 import { X, Send, CheckCircle2 } from 'lucide-react';
+import { trackFeature } from '@/lib/analytics/tracker';
 
 const sheetBackdropV: Variants = {
   hidden: { opacity: 0 },
@@ -55,6 +56,7 @@ export default function AccessRequestSheet({ title, subtitle, onClose }: Props) 
     }
     setErrorMsg('');
     setState('submitting');
+    trackFeature('access_request_submit', 'vocab');
 
     try {
       const res = await fetch('/api/vocab/access-request', {

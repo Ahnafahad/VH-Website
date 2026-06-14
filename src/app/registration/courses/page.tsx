@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { motion, AnimatePresence } from 'motion/react';
 import { ArrowRight, ArrowLeft, ArrowUpRight, Check, Loader2 } from 'lucide-react';
 import { MOCK_PRICES, calculateMocksPricing, type MockProgram, type FullCourse } from '@/lib/registration/pricing';
+import { trackFeature } from '@/lib/analytics/tracker';
 
 type EducationType = 'hsc' | 'alevels' | null;
 type ProgramMode   = 'mocks' | 'full' | null;
@@ -114,6 +115,7 @@ export default function CoursesRegistrationPage() {
 
   const handleSubmit = async () => {
     setSubmitting(true);
+    trackFeature('registration_submit', 'auth', { programMode: mode ?? undefined });
     try {
       const payload = {
         name, email, phone, educationType: eduType,

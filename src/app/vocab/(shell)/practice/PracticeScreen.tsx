@@ -5,6 +5,7 @@ import { motion, AnimatePresence, Variants } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 import type { PracticePageData, PracticeUnitItem } from '@/lib/vocab/practice-data';
 import { useVocabFeedback } from '@/lib/vocab/use-vocab-feedback';
+import { trackFeature } from '@/lib/analytics/tracker';
 
 type PracticeTab = 'unit' | 'letter';
 
@@ -670,11 +671,13 @@ export default function PracticeScreen({ data }: { data: PracticePageData }) {
   const handleStart = () => {
     if (activeTab === 'unit') {
       if (selected.size === 0) return;
+      trackFeature('practice_start', 'vocab');
       router.push(`/vocab/practice/quiz?themes=${Array.from(selected).join(',')}`);
     } else {
       if (selectedLetters.size === 0) return;
       const wordIds = data.letters.filter(l => selectedLetters.has(l.letter)).flatMap(l => l.wordIds);
       if (wordIds.length === 0) return;
+      trackFeature('practice_start', 'vocab');
       router.push(`/vocab/practice/quiz?wordIds=${wordIds.join(',')}`);
     }
   };

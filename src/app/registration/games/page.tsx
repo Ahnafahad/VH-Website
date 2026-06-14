@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { motion, AnimatePresence } from 'motion/react';
 import { ArrowRight, ArrowUpRight, Check, Loader2 } from 'lucide-react';
+import { trackFeature } from '@/lib/analytics/tracker';
 
 type Status = 'idle' | 'submitting' | 'success' | 'error';
 
@@ -39,6 +40,7 @@ function FreeSignupForm() {
     if (!canSubmit) return;
     setStatus('submitting');
     setErrorMsg('');
+    trackFeature('free_signup_submit', 'auth');
 
     try {
       const res = await fetch('/api/registrations/games', {
