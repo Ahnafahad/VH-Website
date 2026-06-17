@@ -32,7 +32,10 @@ import {
   generateQuizQuestions,
   resolveStudentLevel,
   pickQuestionTypes,
+  injectProductionTypes,
+  buildLexicalQuestion,
 } from '@/lib/vocab/quiz-generator';
+import type { GeneratedQuestion } from '@/lib/vocab/quiz-generator';
 import {
   rankByPriority,
   weightedSample,
@@ -308,7 +311,112 @@ export async function POST(req: NextRequest) {
       });
     }
 
-    throw new ApiException('type must be "study", "practice", or "letter"', 400);
+    // ── Exam quiz (IBA-style) — Advanced students only ────────────────────────
+    if (type === 'exam') {
+      const studentLevel = await getStudentLevel(user.id);
+      if (studentLevel !== 'advanced') {
+        throw new ApiException('Exam Mode unlocks at Advanced level', 403);
+      }
+
+      const rawQCount = (body as Record<string, unknown>).questionCount;
+      const examCount = typeof rawQCount === 'number' && [10, 15, 20].includes(rawQCount)
+        ? rawQCount : 15;
+
+      // Whole accessible word bank (exam draws across all units)
+      const allWords   = await db.select().from(vocabWords);
+      const allowedIds = await filterAccessibleWordIds(user.id, allWords.map(w => w.id));
+      const allowedSet = new Set(allowedIds);
+      const accessible = allWords.filter(w => allowedSet.has(w.id));
+      if (accessible.length < 10) {
+        throw new ApiException('Not enough accessible words for an exam session', 400);
+      }
+
+      // Priority-weighted selection, same engine as practice
+      const records = await db
+        .select()
+        .from(vocabUserWordRecords)
+        .where(eq(vocabUserWordRecords.userId, user.id));
+      const recordMap = new Map(records.map(r => [r.wordId, r]));
+
+      const priorityInputs = accessible.map(w => {
+        const rec = recordMap.get(w.id);
+        return {
+          wordId:            w.id,
+          masteryLevel:      (rec?.masteryLevel ?? 'new') as import('@/lib/db/schema').VocabMasteryLevel,
+          masteryScore:      rec?.masteryScore ?? 0,
+          accuracyRate:      rec?.accuracyRate ?? 0,
+          lastSeenAt:        rec?.lastSeenAt ?? null,
+          srsNextReviewDate: rec?.srsNextReviewDate ?? null,
+          exposureCount:     rec?.exposureCount ?? 0,
+        };
+      });
+
+      const selected = weightedSample(rankByPriority(priorityInputs), examCount);
+      const correctWords = selected.map(s => {
+        const raw = accessible.find(w => w.id === s.wordId);
+        if (!raw) throw new ApiException(`Word ${s.wordId} not found in pool`, 500);
+        return toWordForDistractor(raw);
+      });
+      const pool = accessible.map(toWordForDistractor);
+
+      return buildExamSession({
+        userId:    user.id,
+        correctWords,
+        pool,
+        progress,
+      });
+    }
+
+    throw new ApiException('type must be "study", "practice", "letter", or "exam"', 400);
+  });
+}
+
+// ─── Student level (shared by exam gate and buildSession) ────────────────────
+
+async function getStudentLevel(userId: number) {
+  const completedSessions = await db
+    .select({ themeId: vocabQuizSessions.themeId })
+    .from(vocabQuizSessions)
+    .where(
+      and(
+        eq(vocabQuizSessions.userId, userId),
+        eq(vocabQuizSessions.status, 'complete'),
+      )
+    );
+  const completedThemes = new Set(
+    completedSessions.map(s => s.themeId).filter((id): id is number => id !== null)
+  ).size;
+
+  const allThemesCount = (
+    await db.select({ id: vocabThemes.id }).from(vocabThemes)
+  ).length;
+
+  return resolveStudentLevel(completedThemes, allThemesCount);
+}
+
+// ─── Client payload shaping ───────────────────────────────────────────────────
+// Typed (production) questions must not reveal the answer: correctLetter,
+// correctWordId, correctWord, and explanation are withheld — the answer API
+// returns them after the student submits.
+
+function toClientQuestions(generated: GeneratedQuestion[]) {
+  return generated.map(q => {
+    const typed = q.inputMode === 'typed';
+    return {
+      id:           q.id,
+      type:         q.type,
+      questionText: q.questionText,
+      options:      q.options,
+      inputMode:    q.inputMode  ?? 'choice',
+      optionKind:   q.optionKind ?? 'word',
+      ...(typed
+        ? { typedHint: q.typedHint }
+        : {
+            correctLetter: q.correctLetter,
+            correctWordId: q.correctWordId,
+            explanation:   q.explanation,
+          }),
+    };
   });
 }
 
@@ -355,39 +463,27 @@ async function buildSession({
     confusionByWord.set(row.wordAId, existing);
   }
 
-  // Get total quiz answers for personalisation
-  // (approximate: sum of total_attempts across all word records)
+  // Get total quiz answers for personalisation + per-word mastery for
+  // production-question injection.
   const recordsAgg = await db
-    .select({ totalAttempts: vocabUserWordRecords.totalAttempts })
+    .select({
+      wordId:        vocabUserWordRecords.wordId,
+      totalAttempts: vocabUserWordRecords.totalAttempts,
+      masteryScore:  vocabUserWordRecords.masteryScore,
+    })
     .from(vocabUserWordRecords)
     .where(eq(vocabUserWordRecords.userId, userId));
-  const totalAnswers = recordsAgg.reduce((s, r) => s + (r.totalAttempts ?? 0), 0);
+  const totalAnswers    = recordsAgg.reduce((s, r) => s + (r.totalAttempts ?? 0), 0);
+  const masteryByWordId = new Map(recordsAgg.map(r => [r.wordId, r.masteryScore ?? 0]));
 
-  // Resolve student level
-  // Count completed themes by checking quiz sessions with status 'complete'
-  const completedSessions = await db
-    .select({ themeId: vocabQuizSessions.themeId })
-    .from(vocabQuizSessions)
-    .where(
-      and(
-        eq(vocabQuizSessions.userId, userId),
-        eq(vocabQuizSessions.status, 'complete'),
-      )
-    );
-  // Filter out null themeIds — practice sessions have themeId = null
-  const completedThemes = new Set(
-    completedSessions.map(s => s.themeId).filter((id): id is number => id !== null)
-  ).size;
+  const studentLevel = await getStudentLevel(userId);
 
-  // Count total themes directly from vocabThemes (efficient)
-  const allThemesCount = (
-    await db.select({ id: vocabThemes.id }).from(vocabThemes)
-  ).length;
-
-  const studentLevel = resolveStudentLevel(completedThemes, allThemesCount);
-
-  // Build quiz inputs
-  const questionTypes = pickQuestionTypes(correctWords.length, studentLevel);
+  // Build quiz inputs — well-known words get upgraded to typed production recall
+  const questionTypes = injectProductionTypes(
+    pickQuestionTypes(correctWords.length, studentLevel),
+    correctWords.map(w => w.id),
+    masteryByWordId,
+  );
   const initialDifficulty: DifficultyLevel = 'easy';
 
   const inputs: QuizQuestionInput[] = correctWords.map((correct, i) => {
@@ -422,21 +518,115 @@ async function buildSession({
     })
     .returning({ id: vocabQuizSessions.id });
 
-  // Return questions with correctLetter for instant client-side checking
-  const safeQuestions = generated.map(q => ({
-    id:            q.id,
-    type:          q.type,
-    questionText:  q.questionText,
-    options:       q.options,
-    correctLetter: q.correctLetter,
-    correctWordId: q.correctWordId,
-    explanation:   q.explanation,
-  }));
+  return {
+    sessionId:    session.id,
+    questions:    toClientQuestions(generated),
+    studentLevel,
+    totalPoints:  progress?.totalPoints ?? 0,
+  };
+}
+
+// ─── Exam session builder (IBA-style, Advanced gate already passed) ──────────
+// Mix per 5 questions: synonym, sentence completion, analogy, antonym,
+// sentence completion. Synonym/antonym are built locally (no AI); analogy and
+// sentence completion go through the AI pipeline at 'hard' difficulty.
+
+interface BuildExamSessionParams {
+  userId:       number;
+  correctWords: WordForDistractor[];
+  pool:         WordForDistractor[];
+  progress:     { totalPoints: number; streakDays: number } | undefined;
+}
+
+async function buildExamSession({
+  userId,
+  correctWords,
+  pool,
+  progress,
+}: BuildExamSessionParams) {
+  const correctIds = correctWords.map(w => w.id);
+
+  const confusionRows = correctIds.length > 0
+    ? await db
+        .select()
+        .from(vocabConfusionPairs)
+        .where(
+          and(
+            eq(vocabConfusionPairs.userId, userId),
+            inArray(vocabConfusionPairs.wordAId, correctIds),
+          )
+        )
+    : [];
+  const confusionByWord = new Map<number, { wordBId: number; count: number }[]>();
+  for (const row of confusionRows) {
+    const existing = confusionByWord.get(row.wordAId) ?? [];
+    existing.push({ wordBId: row.wordBId, count: row.count });
+    confusionByWord.set(row.wordAId, existing);
+  }
+
+  const recordsAgg = await db
+    .select({ totalAttempts: vocabUserWordRecords.totalAttempts })
+    .from(vocabUserWordRecords)
+    .where(eq(vocabUserWordRecords.userId, userId));
+  const totalAnswers = recordsAgg.reduce((s, r) => s + (r.totalAttempts ?? 0), 0);
+
+  const EXAM_CYCLE: VocabQuestionType[] = ['synonym', 'fill_blank', 'analogy', 'antonym', 'fill_blank'];
+
+  const finalQuestions: (GeneratedQuestion | null)[] = new Array(correctWords.length).fill(null);
+  const aiInputs:  QuizQuestionInput[] = [];
+  const aiSlots:   number[] = [];
+
+  correctWords.forEach((correct, i) => {
+    const confusionPairs = confusionByWord.get(correct.id) ?? [];
+    const selection = selectDistractors(correct, pool, confusionPairs, totalAnswers);
+    const desired   = EXAM_CYCLE[i % EXAM_CYCLE.length];
+
+    if (desired === 'synonym' || desired === 'antonym') {
+      const q = buildLexicalQuestion(correct, selection, desired);
+      if (q) {
+        finalQuestions[i] = q;
+        return;
+      }
+      // Word lacks synonym/antonym data — fall back to AI sentence completion.
+    }
+
+    aiSlots.push(i);
+    aiInputs.push({
+      correct,
+      selection,
+      type:       desired === 'analogy' ? 'analogy' : 'fill_blank',
+      difficulty: 'hard',
+    });
+  });
+
+  if (aiInputs.length > 0) {
+    const aiGenerated = await generateQuizQuestions(aiInputs, 'advanced');
+    aiSlots.forEach((slot, k) => { finalQuestions[slot] = aiGenerated[k]; });
+  }
+
+  const generated = finalQuestions.filter((q): q is GeneratedQuestion => q !== null);
+
+  const [session] = await db
+    .insert(vocabQuizSessions)
+    .values({
+      userId,
+      themeId:         null,
+      sessionType:     'practice',   // reuses practice plumbing (summary, badges)
+      letterGroup:     'exam',       // marks the session as Exam Mode
+      questions:       JSON.stringify(generated),
+      status:          'in_progress',
+      totalQuestions:  generated.length,
+      correctAnswers:  0,
+      difficultyLevel: 'advanced',
+      startedAt:       new Date(),
+    })
+    .returning({ id: vocabQuizSessions.id });
 
   return {
     sessionId:    session.id,
-    questions:    safeQuestions,
-    studentLevel,
+    questions:    toClientQuestions(generated),
+    studentLevel: 'advanced' as const,
+    examMode:     true,
     totalPoints:  progress?.totalPoints ?? 0,
   };
 }

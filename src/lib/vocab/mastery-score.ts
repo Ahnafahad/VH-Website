@@ -53,7 +53,8 @@ export interface MasteryDelta {
 export type QuizOutcome =
   | { kind: 'correct'; isLongGap: boolean }
   | { kind: 'wrong_word_a' }   // user got this question wrong (it was the correct answer)
-  | { kind: 'wrong_word_b' };  // user selected this word incorrectly (confusion penalty)
+  | { kind: 'wrong_word_b' }   // user selected this word incorrectly (confusion penalty)
+  | { kind: 'wrong_simple' };  // wrong with no distractor word involved (typed / string options)
 
 // ─── Level calculation ────────────────────────────────────────────────────────
 
@@ -86,6 +87,9 @@ export function quizDelta(
       break;
     case 'wrong_word_b':
       delta = CONFUSION_WORD_B; // -2
+      break;
+    case 'wrong_simple':
+      delta = WRONG_QUIZ; // -4, no confusion component
       break;
   }
 

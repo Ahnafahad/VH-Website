@@ -25,11 +25,22 @@ describe('nextSrsState', () => {
     expect(result.intervalDays).toBe(1);
   });
 
-  it('decreases ease on unsure, keeps interval', () => {
+  it('decreases ease on unsure and halves the interval', () => {
     const state = makeState({ intervalDays: 5, easeFactor: 2.5 });
     const result = nextSrsState(state, 'unsure');
     expect(result.easeFactor).toBeCloseTo(2.35, 2);
-    expect(result.intervalDays).toBe(5); // unchanged
+    expect(result.intervalDays).toBe(3); // ceil(5 / 2)
+  });
+
+  it('unsure never drops the interval below 1 day', () => {
+    const result = nextSrsState(makeState({ intervalDays: 1 }), 'unsure');
+    expect(result.intervalDays).toBe(1);
+  });
+
+  it('ease factor never exceeds 3.0', () => {
+    const state = makeState({ easeFactor: 3.0, repetitions: 2, intervalDays: 4 });
+    const result = nextSrsState(state, 'got_it');
+    expect(result.easeFactor).toBe(3.0);
   });
 
   it('resets on missed_it', () => {

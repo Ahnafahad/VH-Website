@@ -63,9 +63,10 @@ export interface GeneratedQuestion {
   id:            string;
   type:          VocabQuestionType;
   questionText:  string;
-  /** All 5 options in A–E order. */
+  /** All 5 options in A–E order. Empty for typed (production) questions. */
   options: {
     letter:  'A' | 'B' | 'C' | 'D' | 'E';
+    /** Real pool word id, or 0 for plain-string options (synonym/antonym). */
     wordId:  number;
     word:    string;
   }[];
@@ -73,6 +74,25 @@ export interface GeneratedQuestion {
   correctWordId: number;
   /** Shown to student after they answer. */
   explanation:   string;
+  /** 'choice' (default) — MCQ; 'typed' — student types the answer. */
+  inputMode?:    'choice' | 'typed';
+  /**
+   * Typed questions only: the expected answer. Server-side — must be
+   * stripped before the question is sent to the client.
+   */
+  correctWord?:  string;
+  /** Typed questions only: hint shown to the student. */
+  typedHint?:    { firstLetter: string; length: number };
+  /**
+   * 'word' (default) — options are real pool words, answered by wordId.
+   * 'string' — options are plain strings (synonym/antonym), answered by letter.
+   */
+  optionKind?:   'word' | 'string';
+}
+
+/** True when the question expects a typed (production-recall) answer. */
+export function isTypedQuestion(q: Pick<GeneratedQuestion, 'type'>): boolean {
+  return q.type === 'type_word' || q.type === 'type_cloze';
 }
 
 // AI response shape we parse
@@ -103,6 +123,11 @@ function buildPrompt(
       fill_blank: `Write a fill-in-the-blank sentence where the blank clearly fits only the correct word. The sentence should use context (NOT the definition verbatim or the example sentence). Difficulty: ${difficulty}.`,
       analogy: `Write an analogy question in the format "Word A : Word B :: ${correct.word} : ___". Choose Word A and Word B so the relationship mirrors how ${correct.word} relates to its correct answer. The blank must be filled by the correct answer word. Difficulty: ${difficulty}.`,
       correct_usage: `Write 3 short sentences. Exactly ONE uses "${correct.word}" correctly in context. The other two use it incorrectly or in a misleading way. The question prompt should ask: "Which sentence uses the word correctly?" Do NOT mention the word in your questionText — embed it naturally in the sentences. Difficulty: ${difficulty}.`,
+      type_word: `The student must TYPE the word "${correct.word}" from memory — no options are shown. Write a prompt that paraphrases the word's meaning in your own words (do NOT quote the definition verbatim and do NOT mention the word or any of its close derivatives). End the prompt with: "Type the word." Difficulty: ${difficulty}.`,
+      type_cloze: `The student must TYPE the missing word "${correct.word}" from memory — no options are shown. Write a fill-in-the-blank sentence using ___ where the context points clearly and uniquely to the correct word (NOT the definition verbatim or the example sentence). Difficulty: ${difficulty}.`,
+      // synonym/antonym questions are built locally without AI — never sent in prompts.
+      synonym: '',
+      antonym: '',
     };
 
     return `--- QUESTION ${i + 1} ---
@@ -261,7 +286,8 @@ export async function generateQuizQuestions(
     return inputs.map((q, i) => {
       const { correct, selection }      = q;
       const { questionText, explanation } = results[i];
-      const options = selection.allOptions.map((w, idx) => ({
+      const typed = isTypedQuestion(q);
+      const options = typed ? [] : selection.allOptions.map((w, idx) => ({
         letter:  LETTERS[idx],
         wordId:  w.id,
         word:    w.word,
@@ -274,6 +300,14 @@ export async function generateQuizQuestions(
         correctLetter: selection.correctLetter,
         correctWordId: correct.id,
         explanation,
+        ...(typed ? {
+          inputMode:   'typed' as const,
+          correctWord: correct.word,
+          typedHint:   {
+            firstLetter: correct.word.charAt(0).toUpperCase(),
+            length:      correct.word.length,
+          },
+        } : { inputMode: 'choice' as const }),
       };
     });
   }
@@ -341,6 +375,112 @@ export function pickQuestionTypes(
   }
 
   return pool;
+}
+
+/**
+ * Upgrade recognition questions to production (typed) questions for words the
+ * user already knows well. Recognition (MCQ) is easier than production —
+ * once a word is 'familiar'+ (mastery score > 60), ~half of its questions
+ * become typed recall, alternating between definition→word and cloze.
+ */
+export function injectProductionTypes(
+  types:           VocabQuestionType[],
+  correctWordIds:  number[],
+  masteryByWordId: Map<number, number>,
+): VocabQuestionType[] {
+  let toggle = 0;
+  return types.map((t, i) => {
+    const score = masteryByWordId.get(correctWordIds[i]) ?? 0;
+    if (score > 60 && Math.random() < 0.5) {
+      return toggle++ % 2 === 0 ? 'type_word' : 'type_cloze';
+    }
+    return t;
+  });
+}
+
+// ─── Exam mode (IBA-style) — locally built lexical questions ─────────────────
+// IBA DU English vocabulary formats: synonym MCQ, antonym MCQ, analogies,
+// sentence completion. Synonym/antonym questions need no AI: the stem is the
+// target word and the options are plain strings drawn from the word bank's
+// synonym/antonym lists.
+
+const OPTION_LETTERS = ['A', 'B', 'C', 'D', 'E'] as const;
+
+function pickRandom<T>(arr: T[]): T {
+  return arr[Math.floor(Math.random() * arr.length)];
+}
+
+/**
+ * Build a synonym or antonym MCQ for `correct` without calling the AI.
+ * Options are plain strings (optionKind 'string', wordId 0) — the answer is
+ * checked by letter, not by wordId.
+ *
+ * Returns null when the word lacks the required synonym/antonym data or when
+ * not enough clean distractor strings can be assembled.
+ */
+export function buildLexicalQuestion(
+  correct:   WordForDistractor,
+  selection: DistractorSelection,
+  kind:      'synonym' | 'antonym',
+): GeneratedQuestion | null {
+  const answerPool = kind === 'synonym' ? correct.synonyms : correct.antonyms;
+  if (answerPool.length === 0) return null;
+
+  const correctOption = pickRandom(answerPool);
+
+  // Strings that must never appear as distractors: the word itself and every
+  // member of the answer pool (any of them would also be a right answer).
+  const banned = new Set(
+    [correct.word, ...answerPool].map(s => s.toLowerCase().trim()),
+  );
+
+  const distractorStrings: string[] = [];
+  const seen = new Set<string>([correctOption.toLowerCase().trim()]);
+  const push = (s: string | undefined) => {
+    if (!s) return;
+    const key = s.toLowerCase().trim();
+    if (seen.has(key) || banned.has(key)) return;
+    seen.add(key);
+    distractorStrings.push(s);
+  };
+
+  // Classic exam trap: the opposite relation as one of the wrong options.
+  const trapPool = kind === 'synonym' ? correct.antonyms : correct.synonyms;
+  if (trapPool.length > 0) push(pickRandom(trapPool));
+
+  // Fill the rest from the distractor words' own synonym lists (same register
+  // as the correct option), falling back to the distractor word itself.
+  for (const d of selection.distractors) {
+    if (distractorStrings.length >= 4) break;
+    push(d.synonyms.length > 0 ? pickRandom(d.synonyms) : d.word);
+  }
+  for (const d of selection.allOptions) {
+    if (distractorStrings.length >= 4) break;
+    push(d.word);
+  }
+  if (distractorStrings.length < 4) return null;
+
+  // Place the correct option at a random position among 5.
+  const correctIndex = Math.floor(Math.random() * 5);
+  const optionStrings = [...distractorStrings.slice(0, 4)];
+  optionStrings.splice(correctIndex, 0, correctOption);
+
+  const relation = kind === 'synonym' ? 'most nearly SIMILAR' : 'most nearly OPPOSITE';
+  return {
+    id:            randomUUID(),
+    type:          kind,
+    questionText:  `Choose the word ${relation} in meaning to "${correct.word}".`,
+    options:       optionStrings.map((word, idx) => ({
+      letter: OPTION_LETTERS[idx],
+      wordId: 0,
+      word,
+    })),
+    correctLetter: OPTION_LETTERS[correctIndex],
+    correctWordId: correct.id,
+    explanation:   `"${correct.word}" means: ${correct.definition} — "${correctOption}" is ${kind === 'synonym' ? 'a synonym' : 'an antonym'}.`,
+    inputMode:     'choice',
+    optionKind:    'string',
+  };
 }
 
 /**

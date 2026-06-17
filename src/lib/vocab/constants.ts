@@ -19,9 +19,6 @@ export const POINTS_FLASHCARD_WRONG = 2;
 /** Bonus points for completing a flashcard session */
 export const POINTS_SESSION_COMPLETE = 10;
 
-/** Maximum points awardable in a single /points/award call */
-export const POINTS_AWARD_MAX = 1000;
-
 // ─── Quiz ────────────────────────────────────────────────────────────────────
 
 /** Number of questions in a study quiz */

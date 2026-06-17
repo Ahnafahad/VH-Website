@@ -19,10 +19,12 @@ export default function PracticeQuizPage() {
   const letterWordIds = wordIdsParam.split(',').map(Number).filter(n => !isNaN(n) && n > 0);
 
   const isLetterMode = letterWordIds.length > 0;
+  const isExamMode   = searchParams.get('mode') === 'exam';
 
   // Fire prefetch immediately — user is reading the config sheet (3–30s dead time).
   // Must be before the early return to satisfy rules of hooks.
   useEffect(() => {
+    if (isExamMode) return; // exam sessions are generated on demand
     if (!isLetterMode && themeIds.length === 0) return;
     let questionCount = 10;
     try {
@@ -37,7 +39,7 @@ export default function PracticeQuizPage() {
     }
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-  if (!isLetterMode && themeIds.length === 0) {
+  if (!isExamMode && !isLetterMode && themeIds.length === 0) {
     router.replace('/vocab/practice');
     return null;
   }
@@ -54,7 +56,12 @@ export default function PracticeQuizPage() {
       </AnimatePresence>
 
       {config && (
-        isLetterMode ? (
+        isExamMode ? (
+          <QuizScreen
+            sessionType="exam"
+            quizConfig={config}
+          />
+        ) : isLetterMode ? (
           <QuizScreen
             letterWordIds={letterWordIds}
             sessionType="letter"

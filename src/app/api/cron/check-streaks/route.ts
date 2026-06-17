@@ -1,10 +1,10 @@
 /**
  * GET /api/cron/check-streaks
  *
- * Runs daily at midnight UTC (configured in vercel.json).
+ * Runs daily just after midnight Dhaka time (configured in vercel.json).
  * Finds users whose streaks have been broken (lastStudyDate is not
- * today or yesterday), resets their streakDays to 0, and sends a
- * streak-lost notification email.
+ * today or yesterday in Asia/Dhaka), resets their streakDays to 0, and
+ * sends a streak-lost notification email.
  *
  * Protected by CRON_SECRET header.
  */
@@ -13,20 +13,9 @@ import { NextRequest, NextResponse } from 'next/server';
 import { eq, and, gt, lt, ne } from 'drizzle-orm';
 import { db, users, vocabUserProgress } from '@/lib/db';
 import { sendStreakLost } from '@/lib/email';
+import { dhakaYesterdayStart } from '@/lib/vocab/dhaka-time';
 
 const CRON_SECRET = process.env.CRON_SECRET;
-
-/** Returns the start of today in UTC (midnight). */
-function getTodayStartUTC(): Date {
-  const now = new Date();
-  return new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate()));
-}
-
-/** Returns the start of yesterday in UTC (midnight). */
-function getYesterdayStartUTC(): Date {
-  const todayStart = getTodayStartUTC();
-  return new Date(todayStart.getTime() - 86_400_000);
-}
 
 export async function GET(req: NextRequest) {
   // Validate cron secret
@@ -40,12 +29,12 @@ export async function GET(req: NextRequest) {
   }
 
   try {
-    const todayStart     = getTodayStartUTC();
-    const yesterdayStart = getYesterdayStartUTC();
+    const yesterdayStart = dhakaYesterdayStart();
 
     // Find users with an active streak whose lastStudyDate predates yesterday
-    // (i.e., they haven't studied today or yesterday — streak is broken).
-    // lastStudyDate < yesterdayStart means the last study was before yesterday's midnight.
+    // in Dhaka time (i.e., they haven't studied today or yesterday — streak is
+    // broken). lastStudyDate < yesterdayStart means the last study was before
+    // yesterday's midnight in Dhaka.
     const brokenStreakRows = await db
       .select({
         userId:        vocabUserProgress.userId,

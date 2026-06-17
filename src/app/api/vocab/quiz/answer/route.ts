@@ -31,15 +31,21 @@ import { VocabCacheTag } from '@/lib/vocab/cache-keys';
 import { nextSrsState, isLongGap }  from '@/lib/vocab/srs/engine';
 import { maxIntervalForDeadline }   from '@/lib/vocab/srs/deadline-cap';
 import { quizDelta, masteryLevel }  from '@/lib/vocab/mastery-score';
+import { isTypedAnswerCorrect }     from '@/lib/vocab/typed-answer';
 import type { GeneratedQuestion }   from '@/lib/vocab/quiz-generator';
 import { canAccessWord }            from '@/lib/vocab/access-check';
 
 // ─── Point values (PRD Module 10) ────────────────────────────────────────────
+// Production (typed) recall is the hardest — it pays the most.
 
 const POINTS: Record<string, number> = {
   fill_blank:    5,
   analogy:       10,
   correct_usage: 15,
+  synonym:       10,
+  antonym:       10,
+  type_cloze:    15,
+  type_word:     20,
 };
 
 export async function POST(req: NextRequest) {
@@ -50,10 +56,16 @@ export async function POST(req: NextRequest) {
     if (typeof body !== 'object' || body === null) {
       throw new ApiException('Invalid request body', 400);
     }
-    const { sessionId, questionId, selectedWordId } = body as Record<string, unknown>;
+    const { sessionId, questionId, selectedWordId, typedAnswer, selectedLetter } = body as Record<string, unknown>;
 
-    if (typeof sessionId !== 'number' || typeof questionId !== 'string' || typeof selectedWordId !== 'number') {
-      throw new ApiException('sessionId (number), questionId (string), selectedWordId (number) are required', 400);
+    if (typeof sessionId !== 'number' || typeof questionId !== 'string') {
+      throw new ApiException('sessionId (number) and questionId (string) are required', 400);
+    }
+    const hasWordAnswer   = typeof selectedWordId === 'number';
+    const hasTypedAnswer  = typeof typedAnswer === 'string';
+    const hasLetterAnswer = typeof selectedLetter === 'string' && /^[A-E]$/.test(selectedLetter);
+    if (!hasWordAnswer && !hasTypedAnswer && !hasLetterAnswer) {
+      throw new ApiException('One of selectedWordId (number), typedAnswer (string), or selectedLetter (A–E) is required', 400);
     }
 
     // Resolve user
@@ -103,7 +115,25 @@ export async function POST(req: NextRequest) {
       .limit(1);
     if (existing) throw new ApiException('This word has already been answered in this session', 409);
 
-    const isCorrect = selectedWordId === question.correctWordId;
+    // Determine correctness per question shape:
+    //   typed (production)        → compare typed string with the target word
+    //   string options (syn/ant)  → compare selected letter
+    //   word options (default)    → compare selected word id
+    const isTyped         = question.inputMode === 'typed';
+    const isStringOptions = question.optionKind === 'string';
+    const selWordId       = hasWordAnswer ? (selectedWordId as number) : null;
+
+    let isCorrect: boolean;
+    if (isTyped) {
+      if (!hasTypedAnswer) throw new ApiException('This question expects typedAnswer', 400);
+      isCorrect = isTypedAnswerCorrect(typedAnswer as string, question.correctWord ?? '');
+    } else if (isStringOptions) {
+      if (!hasLetterAnswer) throw new ApiException('This question expects selectedLetter', 400);
+      isCorrect = selectedLetter === question.correctLetter;
+    } else {
+      if (!hasWordAnswer) throw new ApiException('This question expects selectedWordId', 400);
+      isCorrect = selWordId === question.correctWordId;
+    }
 
     // ── Update Word A (correct answer word) ───────────────────────────────────
     const [wordARecord] = await db
@@ -123,7 +153,11 @@ export async function POST(req: NextRequest) {
 
     const delta = isCorrect
       ? quizDelta({ kind: 'correct', isLongGap: longGap }, currentScore)
-      : quizDelta({ kind: 'wrong_word_a' }, currentScore);
+      : quizDelta(
+          // No distractor word involved for typed / string-option questions
+          { kind: isTyped || isStringOptions ? 'wrong_simple' : 'wrong_word_a' },
+          currentScore,
+        );
 
     // Deadline-capped SRS interval
     const [progress] = await db
@@ -212,15 +246,17 @@ export async function POST(req: NextRequest) {
     });
 
     // ── Update Word B (wrongly selected word) — confusion penalty ─────────────
+    // Only applies when the wrong answer was a real pool word (MCQ with word
+    // options). Typed and string-option questions have no Word B.
     let wordBUpdated = false;
-    if (!isCorrect && selectedWordId !== question.correctWordId) {
+    if (!isCorrect && selWordId !== null && selWordId !== question.correctWordId) {
       const [wordBRecord] = await db
         .select({ masteryScore: vocabUserWordRecords.masteryScore })
         .from(vocabUserWordRecords)
         .where(
           and(
             eq(vocabUserWordRecords.userId, user.id),
-            eq(vocabUserWordRecords.wordId, selectedWordId),
+            eq(vocabUserWordRecords.wordId, selWordId),
           )
         )
         .limit(1);
@@ -233,7 +269,7 @@ export async function POST(req: NextRequest) {
         .insert(vocabUserWordRecords)
         .values({
           userId:            user.id,
-          wordId:            selectedWordId,
+          wordId:            selWordId,
           masteryScore:      newWordBScore,
           masteryLevel:      wordBDelta.newLevel,
           timesAsDistractor: 1,
@@ -256,7 +292,7 @@ export async function POST(req: NextRequest) {
         .values({
           userId:   user.id,
           wordAId:  question.correctWordId,
-          wordBId:  selectedWordId,
+          wordBId:  selWordId,
           count:    1,
           updatedAt: now,
         })
@@ -290,7 +326,7 @@ export async function POST(req: NextRequest) {
       sessionId,
       userId:         user.id,
       wordId:         question.correctWordId,
-      selectedWordId: selectedWordId,
+      selectedWordId: selWordId,
       isCorrect,
       pointsEarned,
       questionType:   question.type,
@@ -313,6 +349,8 @@ export async function POST(req: NextRequest) {
       correctLetter:  question.correctLetter,
       correctWordId:  question.correctWordId,
       explanation:    question.explanation,
+      // Typed questions withhold the answer at generate time — reveal it now.
+      ...(isTyped ? { correctWord: question.correctWord } : {}),
       pointsEarned,
       masteryDelta:   delta.scoreDelta,
       newMasteryLevel: delta.newLevel,

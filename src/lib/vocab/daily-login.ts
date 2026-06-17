@@ -1,5 +1,6 @@
 import { eq, sql } from 'drizzle-orm';
 import { db, vocabUserProgress } from '@/lib/db';
+import { dhakaDayString } from '@/lib/vocab/dhaka-time';
 
 export const DAILY_LOGIN_POINTS = 5;
 
@@ -41,8 +42,9 @@ export async function ensureDailyLoginAwarded(
     return { awarded: false, streakDays: 0, longestStreak: 0, totalPointsAfter: 0 };
   }
 
-  const todayStr = now.toDateString();
-  const lastStr  = progress.lastStudyDate?.toDateString();
+  // Day boundaries are anchored to Asia/Dhaka, where the students are.
+  const todayStr = dhakaDayString(now);
+  const lastStr  = progress.lastStudyDate ? dhakaDayString(progress.lastStudyDate) : undefined;
   if (lastStr === todayStr) {
     return {
       awarded:          false,
@@ -52,9 +54,8 @@ export async function ensureDailyLoginAwarded(
     };
   }
 
-  const yesterday = new Date(now);
-  yesterday.setDate(yesterday.getDate() - 1);
-  const isConsecutive = lastStr === yesterday.toDateString();
+  const yesterday = new Date(now.getTime() - 86_400_000);
+  const isConsecutive = lastStr === dhakaDayString(yesterday);
   const streakDays    = isConsecutive ? (progress.streakDays ?? 0) + 1 : 1;
   const longestStreak = Math.max(progress.longestStreak ?? 0, streakDays);
 

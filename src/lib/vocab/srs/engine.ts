@@ -13,6 +13,7 @@ export interface SrsState {
 }
 
 const MIN_EASE      = 1.3;
+const MAX_EASE      = 3.0;
 const DEFAULT_EASE  = 2.5;
 
 /**
@@ -32,14 +33,15 @@ export function nextSrsState(
 
   switch (rating) {
     case 'got_it':
-      easeFactor    = Math.max(MIN_EASE, easeFactor + 0.1);
+      easeFactor    = Math.min(MAX_EASE, easeFactor + 0.1);
       repetitions  += 1;
       intervalDays  = repetitions === 1 ? 1 : Math.ceil(intervalDays * easeFactor);
       break;
 
     case 'unsure':
-      // Interval unchanged, ease drops slightly
+      // Shaky recall: bring the review closer (halve the interval) and drop ease.
       easeFactor   = Math.max(MIN_EASE, easeFactor - 0.15);
+      intervalDays = Math.max(1, Math.ceil(intervalDays / 2));
       break;
 
     case 'missed_it':

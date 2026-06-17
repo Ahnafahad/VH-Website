@@ -99,6 +99,18 @@ describe('ensureDailyLoginAwarded', () => {
     expect(res.longestStreak).toBe(5);
   });
 
+  it('treats the day boundary as midnight Dhaka, not midnight UTC', async () => {
+    // 19:00 UTC Apr 21 is already 01:00 Apr 22 in Dhaka — same Dhaka day as
+    // 12:00 UTC Apr 22 (18:00 Dhaka), so no second award.
+    const { runner } = makeFakeDb({
+      lastStudyDate: new Date('2026-04-21T19:00:00Z'),
+      totalPoints: 100, streakDays: 3, longestStreak: 5,
+    });
+    const res = await ensureDailyLoginAwarded(userId, new Date('2026-04-22T12:00:00Z'), runner);
+    expect(res.awarded).toBe(false);
+    expect(res.streakDays).toBe(3);
+  });
+
   it('advances streak +1 when last study was yesterday', async () => {
     const now = new Date('2026-04-22T12:00:00Z');
     const yesterday = new Date(now);
