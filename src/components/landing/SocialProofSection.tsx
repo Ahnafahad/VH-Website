@@ -11,23 +11,23 @@ const stats = [
     suffix: '%',
     label: 'IBA acceptance rate',
     context: 'More selective than Harvard (3.5%)',
-    year: '2024',
+    year: '2025',
   },
   {
     value: 46.7,
     decimals: 1,
     suffix: '%',
     label: 'Our success rate',
-    context: '14 of 30 students placed',
-    year: '2024',
+    context: '29 students placed across two cohorts',
+    year: '2025',
   },
   {
-    value: 14,
+    value: 29,
     decimals: 0,
     suffix: '',
     label: 'Students placed',
     context: 'Across IBA DU, BUP, and DU FBS',
-    year: '2024',
+    year: '2023–2025',
   },
 ];
 
@@ -77,7 +77,7 @@ export function SocialProofSection() {
             className="font-sans text-xs tracking-[0.2em] uppercase text-[#A86E58] text-right"
           >
             <div>Placements</div>
-            <div className="text-[#1A0507]/40">2024 Cycle</div>
+            <div className="text-[#1A0507]/40">2024–2025 Cycles</div>
           </motion.div>
         </motion.div>
 
@@ -160,7 +160,7 @@ export function SocialProofSection() {
           </p>
           <p>
             <span className="font-heading italic text-[#760F13] mr-1">{'\u00a7'}</span>
-            Across four target programs, 2024 cohort of 30 students.
+            Across four target programs, 2024–2025 cohorts combined.
           </p>
         </motion.div>
       </div>

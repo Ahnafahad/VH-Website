@@ -77,7 +77,7 @@ export function RegistrationCTASection() {
               transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
               className="font-heading text-[clamp(2.8rem,8vw,7rem)] leading-[0.9] tracking-[-0.03em] font-light"
             >
-              Your seat at the <em className="font-extralight text-[#D4B094]">same table</em> we once sat.
+              You will sit at the <em className="font-extralight text-[#D4B094]">same table</em> we once sat.
             </motion.h2>
 
             <motion.p
