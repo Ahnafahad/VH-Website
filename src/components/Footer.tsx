@@ -17,6 +17,7 @@ const quickLinks = [
 const programLinks = [
   { label: 'IBA DU', href: '/program#iba' },
   { label: 'DU FBS (C-Unit)', href: '/program#fbs' },
+  { label: 'BUP FBS', href: '/program#fbs' },
 ];
 
 const Footer = () => {
@@ -132,14 +133,14 @@ const Footer = () => {
                 <span className="break-all min-w-0">ahnafahad@vh-beyondthehorizons.org</span>
               </a>
               <a
-                href="tel:+8801234567890"
+                href="tel:+8801915424939"
                 className="group flex items-center gap-3 text-sm text-[#FAF5EF]/60 hover:text-[#FAF5EF] transition-colors"
               >
                 <Phone
                   className="w-4 h-4 text-[#D4B094]/70 group-hover:text-[#D4B094] flex-shrink-0 transition-colors"
                   strokeWidth={1.5}
                 />
-                +880 1234 567 890
+                +880 1915 424939
               </a>
               <div className="flex items-start gap-3 text-sm text-[#FAF5EF]/40 leading-relaxed">
                 <span className="w-4 h-px bg-[#D4B094]/40 mt-[0.6em] flex-shrink-0" />

@@ -56,7 +56,7 @@ const iba: Program = {
     },
   ],
   stats: [
-    { count: 60, label: 'Topic-wise classes' },
+    { count: 50, label: 'Topic-wise classes' },
     { count: 10, label: 'In-house tests' },
     { count: 14, label: 'Mock exams' },
   ],
@@ -72,7 +72,7 @@ const iba: Program = {
       detail: 'Separate paper structure. Same prep, targeted calibration.',
     },
   ],
-  outcome: 'Two exams, one curriculum. Nothing wasted.',
+  outcome: 'Strategy over struggle. Every mark, deliberate.',
   tone: 'light',
 };
 
@@ -101,7 +101,7 @@ const fbs: Program = {
     },
   ],
   stats: [
-    { count: 48, label: 'Subject classes', suffix: '±' },
+    { count: 40, label: 'Subject classes' },
     { count: 3, label: 'Monthly subject tests' },
     { count: 15, label: 'Mock exams' },
   ],
@@ -602,7 +602,7 @@ function ProgramSection({ program, index }: { program: Program; index: number })
                   {/* Big numeral */}
                   <div className="relative flex items-end gap-5 mb-6">
                     <span
-                      className="font-heading font-extralight text-[clamp(5rem,11vw,9rem)] leading-[0.8] tracking-[-0.04em]"
+                      className="font-heading font-extralight text-[clamp(5rem,11vw,9rem)] leading-[1.1] tracking-[-0.04em]"
                       style={{ color: accent }}
                     >
                       <NumberTicker
@@ -700,7 +700,7 @@ function TestFormatSection() {
               className="flex items-center gap-3 font-sans text-[11px] tracking-[0.3em] uppercase mb-6 text-[#A86E58]"
             >
               <span className="w-8 h-px bg-[#A86E58]" />
-              Chapter Three / The Test
+              IBA · Chapter Three / The Test
             </motion.div>
 
             <motion.h2

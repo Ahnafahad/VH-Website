@@ -76,7 +76,7 @@ export function HeroSection() {
 
       {/* Edge credits — folio markers, docked to bottom corners */}
       <div className="hidden md:block absolute bottom-6 left-6 sm:left-10 z-10 font-sans text-[10px] tracking-[0.3em] uppercase text-[#D4B094]/55 pointer-events-none">
-        <div>Est. 2021</div>
+        <div>Est. 2023</div>
         <div className="mt-1">Dhanmondi · Dhaka</div>
       </div>
       <div className="hidden md:block absolute bottom-6 right-6 sm:right-10 z-10 font-sans text-[10px] tracking-[0.3em] uppercase text-[#D4B094]/55 pointer-events-none text-right">
@@ -148,7 +148,7 @@ export function HeroSection() {
               style={{ transformOrigin: 'left' }}
               className="flex-1 h-px bg-[#D4B094]/25"
             />
-            <span className="text-[#D4B094]/50 hidden sm:inline">Est. 2021</span>
+            <span className="text-[#D4B094]/50 hidden sm:inline">Est. 2023</span>
           </motion.div>
 
           {/* The statement — generous clamp, spans wider, multi-line rhythm */}

@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { motion, useScroll, useTransform } from 'motion/react';
 import { useRef } from 'react';
@@ -11,15 +11,23 @@ const stats = [
     suffix: '%',
     label: 'IBA acceptance rate',
     context: 'More selective than Harvard (3.5%)',
-    year: '2025',
+    year: '2023–2025',
+  },
+  {
+    value: 3,
+    decimals: 0,
+    suffix: '%',
+    label: 'DU FBS acceptance rate',
+    context: 'Among the most selective business faculties',
+    year: '2023–2025',
   },
   {
     value: 46.7,
     decimals: 1,
     suffix: '%',
     label: 'Our success rate',
-    context: '29 students placed across two cohorts',
-    year: '2025',
+    context: 'Offers received at a target institution',
+    year: '2023–2025',
   },
   {
     value: 29,
@@ -77,21 +85,13 @@ export function SocialProofSection() {
             className="font-sans text-xs tracking-[0.2em] uppercase text-[#A86E58] text-right"
           >
             <div>Placements</div>
-            <div className="text-[#1A0507]/40">2024–2025 Cycles</div>
+            <div className="text-[#1A0507]/40">2023–2025 Cycles</div>
           </motion.div>
         </motion.div>
 
-        {/* Stats grid — asymmetric */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-y-20 md:gap-y-24 md:gap-x-8">
+        {/* Stats grid — uniform 2×2 */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-20 gap-x-12 lg:gap-x-20">
           {stats.map((s, i) => {
-            // Asymmetric positions: 1st col spans 5, 2nd 4 offset 1, 3rd 5 offset 1
-            const colClass =
-              i === 0
-                ? 'md:col-span-5'
-                : i === 1
-                ? 'md:col-span-4 md:col-start-6 md:mt-16'
-                : 'md:col-span-6 md:col-start-4 md:mt-8';
-
             return (
               <motion.article
                 key={s.label}
@@ -99,7 +99,7 @@ export function SocialProofSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-10%' }}
                 transition={{ duration: 1, delay: i * 0.15, ease: [0.22, 1, 0.36, 1] }}
-                className={`relative ${colClass}`}
+                className="relative"
               >
                 {/* Index + year row */}
                 <div className="flex items-center gap-4 mb-5">
@@ -135,7 +135,7 @@ export function SocialProofSection() {
 
                 {/* Footnote mark */}
                 <span className="absolute -top-2 -right-2 font-heading italic text-[#D4B094] text-sm">
-                  {['\u2020', '\u2021', '\u00a7'][i]}
+                  {['\u2020', '\u2021', '\u00a7', '\u00b6'][i]}
                 </span>
               </motion.article>
             );
@@ -148,19 +148,23 @@ export function SocialProofSection() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true, margin: '-10%' }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="mt-24 pt-8 border-t border-[#1A0507]/10 grid grid-cols-1 sm:grid-cols-3 gap-4 font-sans text-[11px] text-[#1A0507]/50 leading-relaxed"
+          className="mt-24 pt-8 border-t border-[#1A0507]/10 grid grid-cols-1 sm:grid-cols-2 gap-4 font-sans text-[11px] text-[#1A0507]/50 leading-relaxed"
         >
           <p>
             <span className="font-heading italic text-[#760F13] mr-1">{'\u2020'}</span>
-            IBA acceptance based on ~3,200 applicants annually for 120 seats.
+            IBA acceptance based on ~10,000 applicants annually for 120 seats.
           </p>
           <p>
             <span className="font-heading italic text-[#760F13] mr-1">{'\u2021'}</span>
-            Success = admission offer received at any target institution.
+            DU FBS acceptance based on published intake and applicant figures.
           </p>
           <p>
             <span className="font-heading italic text-[#760F13] mr-1">{'\u00a7'}</span>
-            Across four target programs, 2024–2025 cohorts combined.
+            Success = admission offer received at any target institution.
+          </p>
+          <p>
+            <span className="font-heading italic text-[#760F13] mr-1">{'\u00b6'}</span>
+            Across four target programs, 2023–2025 cohorts combined.
           </p>
         </motion.div>
       </div>

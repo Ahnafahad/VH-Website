@@ -190,7 +190,7 @@ function StackCard({
         {/* Ghost index numeral */}
         <span
           aria-hidden
-          className="absolute -top-8 -right-4 font-heading italic text-[#D4B094]/15 text-[10rem] sm:text-[14rem] leading-none font-extralight pointer-events-none select-none"
+          className="absolute -top-8 -right-4 font-heading italic text-[#D4B094]/25 text-[10rem] sm:text-[14rem] leading-none font-extralight pointer-events-none select-none"
         >
           {point.index}
         </span>

@@ -32,10 +32,39 @@ const mainLinks = [
   { label: 'Register', href: '/registration' },
 ];
 
+/**
+ * Sample the actual section background sitting behind the floating nav and
+ * decide whether it's dark. Samples the far-left and far-right of the header
+ * band (the nav pill is centred and `pointer-events-none` lets the wrapper be
+ * ignored), walks up to the first opaque background, and returns true when its
+ * perceived luminance is dark. Returns null when nothing could be sampled.
+ */
+function sampleNavDark(): boolean | null {
+  if (typeof document === 'undefined') return null;
+  const y = 30;
+  const lumAt = (x: number): number | null => {
+    let node = document.elementFromPoint(x, y) as HTMLElement | null;
+    while (node) {
+      const m = getComputedStyle(node).backgroundColor.match(/rgba?\(([^)]+)\)/);
+      if (m) {
+        const [r, g, b, a] = m[1].split(',').map((v) => parseFloat(v.trim()));
+        if (a === undefined || a > 0.2) {
+          return (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+        }
+      }
+      node = node.parentElement;
+    }
+    return null;
+  };
+  const lum = lumAt(20) ?? lumAt(window.innerWidth - 20);
+  return lum == null ? null : lum < 0.5;
+}
+
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isMoreOpen, setIsMoreOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [navDark, setNavDark] = useState(true);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [logoHovered, setLogoHovered] = useState(false);
   const moreRef = useRef<HTMLDivElement>(null);
@@ -46,14 +75,36 @@ const Header = () => {
 
   useMotionValueEvent(scrollY, 'change', (latest) => {
     setScrolled(latest > 60);
+    const dark = sampleNavDark();
+    if (dark !== null) setNavDark(dark);
   });
 
-  // Pages with light/cream bg from top — nav needs dark text even when unscrolled
+  // Pages with light/cream bg from top — used only as the initial guess
+  // before the first background sample runs.
   const isLightPage =
     pathname?.startsWith('/registration') ||
     pathname?.startsWith('/games/mental-math') ||
     false;
-  const onLight = scrolled || isLightPage;
+
+  // Background-aware nav theme: on route change, reset to a sensible guess for
+  // the page's hero, then sample the real section background after paint. The
+  // per-scroll updates are handled in the useMotionValueEvent above; a resize
+  // listener keeps the sample correct when the layout reflows.
+  useEffect(() => {
+    setNavDark(!isLightPage);
+    const sample = () => {
+      const dark = sampleNavDark();
+      if (dark !== null) setNavDark(dark);
+    };
+    const raf = requestAnimationFrame(sample);
+    window.addEventListener('resize', sample);
+    return () => {
+      cancelAnimationFrame(raf);
+      window.removeEventListener('resize', sample);
+    };
+  }, [pathname, isLightPage]);
+
+  const onLight = !navDark;
 
   // Admin check
   useEffect(() => {
@@ -122,20 +173,24 @@ const Header = () => {
     <>
       {/* Main floating nav */}
       <motion.header
-        className="fixed top-0 left-0 right-0 z-50 flex justify-center px-4 pt-6 lg:pt-10"
+        className="fixed top-0 left-0 right-0 z-50 flex justify-center px-4 pt-6 lg:pt-10 pointer-events-none"
         initial={false}
         animate={{ paddingTop: scrolled ? 14 : 40 }}
         transition={{ duration: 0.3, ease: 'easeOut' }}
       >
         <motion.nav
-          className="relative flex items-center gap-1 rounded-full pl-3 pr-3 py-2.5 transition-shadow"
+          className="relative flex items-center gap-1 rounded-full pl-3 pr-3 py-2.5 transition-shadow pointer-events-auto"
           animate={{
             backgroundColor: scrolled
-              ? 'rgba(250, 245, 239, 0.88)'
+              ? navDark
+                ? 'rgba(26, 5, 7, 0.72)'
+                : 'rgba(250, 245, 239, 0.88)'
               : 'rgba(250, 245, 239, 0.0)',
             backdropFilter: scrolled ? 'blur(24px)' : 'blur(0px)',
             boxShadow: scrolled
-              ? '0 8px 40px rgba(26,5,7,0.12), inset 0 0 0 1px rgba(212,176,148,0.25)'
+              ? navDark
+                ? '0 8px 40px rgba(0,0,0,0.35), inset 0 0 0 1px rgba(212,176,148,0.18)'
+                : '0 8px 40px rgba(26,5,7,0.12), inset 0 0 0 1px rgba(212,176,148,0.25)'
               : 'inset 0 0 0 1px rgba(212,176,148,0)',
           }}
           transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
@@ -160,7 +215,7 @@ const Header = () => {
                 className="absolute inset-0"
               >
                 <Image
-                  src="/bth_compact_square.png"
+                  src={onLight ? '/bth_compact_square.png' : '/bth_compact_square_maroon.png'}
                   alt="Beyond the Horizons"
                   width={36}
                   height={36}
@@ -176,7 +231,7 @@ const Header = () => {
                 style={{ position: 'absolute', left: 0, top: 0, width: 162, height: 36 }}
               >
                 <Image
-                  src="/bth_horizontal_lockup.png"
+                  src={onLight ? '/bth_horizontal_lockup.png' : '/bth_horizontal_lockup_maroon.png'}
                   alt="Beyond the Horizons by Vertical Horizon"
                   width={162}
                   height={36}

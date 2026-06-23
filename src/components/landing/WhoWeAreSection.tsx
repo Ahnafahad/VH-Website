@@ -107,9 +107,6 @@ export function WhoWeAreSection() {
                 <span className="font-heading italic text-[#D4B094] text-xl">
                   {p.index}
                 </span>
-                <span className="font-sans text-[10px] tracking-[0.3em] uppercase text-[#FAF5EF]/40">
-                  Principle
-                </span>
               </div>
               <h3 className="font-heading text-[#FAF5EF] text-2xl lg:text-[1.75rem] font-light leading-[1.15] tracking-[-0.01em]">
                 {p.title}

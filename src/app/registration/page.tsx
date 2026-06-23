@@ -176,7 +176,7 @@ function ChooserCard({
 
           <span
             aria-hidden
-            className={`absolute -top-6 -right-2 font-heading italic text-[7rem] sm:text-[9rem] leading-none font-extralight pointer-events-none select-none ${isLoud ? 'text-[#D4B094]/15' : 'text-[#D4B094]/30'}`}
+            className={`absolute top-4 right-4 font-heading italic text-[6rem] sm:text-[8rem] leading-none font-extralight pointer-events-none select-none ${isLoud ? 'text-[#D4B094]/15' : 'text-[#D4B094]/30'}`}
           >
             {card.index}
           </span>

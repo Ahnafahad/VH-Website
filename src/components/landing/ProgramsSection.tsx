@@ -82,7 +82,7 @@ export function ProgramsSection() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.9, delay: 0.2 }}
-            className="lg:col-span-4 font-sans text-[#1A0507]/60 text-sm sm:text-base leading-relaxed max-w-sm lg:justify-self-end"
+            className="lg:col-span-4 font-sans text-[#1A0507]/60 text-sm sm:text-base leading-relaxed max-w-sm"
           >
             We don&rsquo;t believe in generic prep. Each program is built around a single
             exam family. No filler, no optional modules.
@@ -98,7 +98,7 @@ export function ProgramsSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-10%' }}
               transition={{ duration: 1, delay: i * 0.15, ease: [0.22, 1, 0.36, 1] }}
-              className={i === 0 ? 'lg:col-span-7' : 'lg:col-span-5 lg:mt-24'}
+              className="lg:col-span-6"
             >
               <TiltCard
                 className={`group relative ${p.bgClass} border border-[#1A0507]/10 rounded-2xl p-8 sm:p-10 lg:p-12 h-full overflow-hidden`}
