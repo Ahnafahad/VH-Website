@@ -145,9 +145,9 @@ const Footer = () => {
               <div className="flex items-start gap-3 text-sm text-[#FAF5EF]/40 leading-relaxed">
                 <span className="w-4 h-px bg-[#D4B094]/40 mt-[0.6em] flex-shrink-0" />
                 <span>
-                  House 31/A, Road 6
+                  House 31/A, Road No 6
                   <br />
-                  Dhanmondi R/A, Dhaka
+                  Dhaka 1205
                 </span>
               </div>
             </div>
