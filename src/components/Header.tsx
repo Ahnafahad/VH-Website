@@ -14,6 +14,7 @@ import {
   Target,
   Gamepad2,
   BookOpen,
+  ClipboardList,
   ArrowUpRight,
 } from 'lucide-react';
 import {
@@ -154,6 +155,9 @@ const Header = () => {
       : []),
     { label: 'Mental Math', href: '/games/mental-math', icon: Gamepad2 },
     { label: 'Vocab', href: '/vocab/home', icon: BookOpen },
+    ...(session
+      ? [{ label: 'Tests', href: '/tests', icon: ClipboardList }]
+      : []),
     ...(isAdmin
       ? [
           { label: 'Registrations', href: '/admin/registrations', icon: Users },
