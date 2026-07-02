@@ -664,3 +664,188 @@ export type NewAnalyticsEvent   = typeof analyticsEvents.$inferInsert;
 
 export type AnalyticsEventType = 'pageview' | 'page_exit' | 'feature' | 'click' | 'custom';
 export type AnalyticsModule    = 'site' | 'vocab' | 'math' | 'accounting' | 'workbook' | 'auth' | 'admin';
+
+// ══════════════════════════════════════════════════════════════════════════════
+// ONLINE TESTS — Reusable MCQ test templates, timed windows, attempts, results
+// ══════════════════════════════════════════════════════════════════════════════
+
+// ─── Tests ────────────────────────────────────────────────────────────────────
+// One row per reusable test template (imported from LaTeX via the test-import
+// skill). Access: allowedProducts NULL → every logged-in user; later set a JSON
+// array of products (e.g. ["iba"]) to restrict per course without migration.
+
+export const tests = sqliteTable('tests', {
+  id:              integer('id').primaryKey({ autoIncrement: true }),
+  slug:            text('slug').notNull().unique(),
+  title:           text('title').notNull(),
+  // 'iba' | 'du_fbs'
+  bucket:          text('bucket').notNull(),
+  description:     text('description'),
+  // 'draft' | 'published' | 'archived'
+  status:          text('status').notNull().default('draft'),
+  allowedProducts: text('allowed_products'),                 // JSON string[] | null = everyone
+  totalQuestions:  integer('total_questions').notNull().default(0),
+  totalMarks:      real('total_marks').notNull().default(0),
+  // Set to force-publish results before every window has closed (admin override)
+  resultsPublishedAt: integer('results_published_at', { mode: 'timestamp' }),
+  sourceFile:      text('source_file'),                      // original .tex filename
+  createdBy:       integer('created_by').references(() => users.id),
+  createdAt:       integer('created_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
+  updatedAt:       integer('updated_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
+}, (t) => [
+  index('idx_tests_bucket_status').on(t.bucket, t.status),
+]);
+
+// ─── Test Sections ────────────────────────────────────────────────────────────
+// Scoring is per section: IBA defaults +1 / −0.25; DU FBS configurable later.
+
+export const testSections = sqliteTable('test_sections', {
+  id:               integer('id').primaryKey({ autoIncrement: true }),
+  testId:           integer('test_id').notNull().references(() => tests.id, { onDelete: 'cascade' }),
+  order:            integer('order').notNull(),
+  title:            text('title').notNull(),
+  totalQuestions:   integer('total_questions').notNull().default(0),
+  totalMarks:       real('total_marks').notNull().default(0),
+  marksPerCorrect:  real('marks_per_correct').notNull().default(1),
+  penaltyPerWrong:  real('penalty_per_wrong').notNull().default(0.25),
+  thresholdPercent: real('threshold_percent'),               // section pass mark, nullable
+}, (t) => [
+  index('idx_test_sections_test').on(t.testId, t.order),
+]);
+
+// ─── Test Question Groups ─────────────────────────────────────────────────────
+// Shared context rendered above the questions that reference it: reading
+// passages, analytical scenarios, instruction blocks, or shared option sets
+// (e.g. data-sufficiency A–E).
+
+export const testQuestionGroups = sqliteTable('test_question_groups', {
+  id:            integer('id').primaryKey({ autoIncrement: true }),
+  sectionId:     integer('section_id').notNull().references(() => testSections.id, { onDelete: 'cascade' }),
+  order:         integer('order').notNull(),
+  // 'instruction' | 'passage' | 'scenario' | 'shared_options'
+  kind:          text('kind').notNull(),
+  title:         text('title'),
+  content:       text('content').notNull(),                  // HTML (KaTeX for math)
+  sharedOptions: text('shared_options'),                     // JSON [{key,text}] | null
+});
+
+// ─── Test Questions ───────────────────────────────────────────────────────────
+
+export const testQuestions = sqliteTable('test_questions', {
+  id:          integer('id').primaryKey({ autoIncrement: true }),
+  sectionId:   integer('section_id').notNull().references(() => testSections.id, { onDelete: 'cascade' }),
+  groupId:     integer('group_id').references(() => testQuestionGroups.id, { onDelete: 'set null' }),
+  order:       integer('order').notNull(),                   // position within section
+  number:      integer('number').notNull(),                  // displayed question number
+  // 'mcq' for now; schema extensible to other types later
+  type:        text('type').notNull().default('mcq'),
+  stem:        text('stem').notNull(),                       // HTML (KaTeX for math)
+  options:     text('options').notNull(),                    // JSON [{key:'A',text:string}]
+  correctKey:  text('correct_key'),                          // nullable until key is loaded
+  imageUrl:    text('image_url'),                            // diagram under /tests/{slug}/
+  explanation: text('explanation'),
+}, (t) => [
+  index('idx_test_questions_section').on(t.sectionId, t.order),
+]);
+
+// ─── Test Windows ─────────────────────────────────────────────────────────────
+// A scheduled sitting of a test in one mode. Online: window + durationMinutes
+// (e.g. 3:00–5:00, 90 min). Offline: the window itself is the answer-entry
+// slot (e.g. 3:40–3:50), durationMinutes null.
+// Effective state: 'closed' status always wins; 'open' forces open until
+// closesAt; 'scheduled' follows opensAt/closesAt automatically.
+
+export const testWindows = sqliteTable('test_windows', {
+  id:              integer('id').primaryKey({ autoIncrement: true }),
+  testId:          integer('test_id').notNull().references(() => tests.id, { onDelete: 'cascade' }),
+  // 'online' | 'offline'
+  mode:            text('mode').notNull(),
+  opensAt:         integer('opens_at',  { mode: 'timestamp' }).notNull(),
+  closesAt:        integer('closes_at', { mode: 'timestamp' }).notNull(),
+  durationMinutes: integer('duration_minutes'),
+  // 'scheduled' | 'open' | 'closed'
+  status:          text('status').notNull().default('scheduled'),
+  createdBy:       integer('created_by').references(() => users.id),
+  createdAt:       integer('created_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
+}, (t) => [
+  index('idx_test_windows_test').on(t.testId, t.opensAt),
+]);
+
+// ─── Test Attempts ────────────────────────────────────────────────────────────
+// One attempt per student per test (unique). Reset (2nd tab-leave) wipes
+// answers and bumps resetCount but keeps the row. Score fields are computed at
+// submit; rank/percentile are computed on demand once results are visible.
+
+export const testAttempts = sqliteTable('test_attempts', {
+  id:               integer('id').primaryKey({ autoIncrement: true }),
+  testId:           integer('test_id').notNull().references(() => tests.id, { onDelete: 'cascade' }),
+  userId:           integer('user_id').notNull().references(() => users.id, { onDelete: 'cascade' }),
+  windowId:         integer('window_id').notNull().references(() => testWindows.id),
+  // 'online' | 'offline'
+  mode:             text('mode').notNull(),
+  // 'in_progress' | 'submitted' | 'banned'
+  status:           text('status').notNull().default('in_progress'),
+  startedAt:        integer('started_at',   { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
+  submittedAt:      integer('submitted_at', { mode: 'timestamp' }),
+  bannedAt:         integer('banned_at',    { mode: 'timestamp' }),
+  tabLeaveCount:    integer('tab_leave_count').notNull().default(0),
+  resetCount:       integer('reset_count').notNull().default(0),
+  totalScore:       real('total_score'),
+  totalCorrect:     integer('total_correct'),
+  totalWrong:       integer('total_wrong'),
+  totalUnattempted: integer('total_unattempted'),
+  sectionScores:    text('section_scores'),                  // JSON per-section breakdown
+}, (t) => [
+  unique().on(t.testId, t.userId),
+  index('idx_test_attempts_user').on(t.userId),
+  index('idx_test_attempts_test_status').on(t.testId, t.status),
+]);
+
+// ─── Test Answers ─────────────────────────────────────────────────────────────
+
+export const testAnswers = sqliteTable('test_answers', {
+  id:          integer('id').primaryKey({ autoIncrement: true }),
+  attemptId:   integer('attempt_id').notNull().references(() => testAttempts.id, { onDelete: 'cascade' }),
+  questionId:  integer('question_id').notNull().references(() => testQuestions.id, { onDelete: 'cascade' }),
+  selectedKey: text('selected_key'),                         // null = cleared
+  flagged:     integer('flagged', { mode: 'boolean' }).notNull().default(false),
+  answeredAt:  integer('answered_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
+}, (t) => [
+  unique().on(t.attemptId, t.questionId),
+  index('idx_test_answers_question').on(t.questionId),
+]);
+
+// ─── Test Violations ──────────────────────────────────────────────────────────
+// Audit log of anti-cheat events; the escalation ladder (warn → reset → ban)
+// is enforced server-side from testAttempts.tabLeaveCount.
+
+export const testViolations = sqliteTable('test_violations', {
+  id:        integer('id').primaryKey({ autoIncrement: true }),
+  attemptId: integer('attempt_id').notNull().references(() => testAttempts.id, { onDelete: 'cascade' }),
+  // 'tab_leave'
+  type:      text('type').notNull().default('tab_leave'),
+  // 'warning' | 'reset' | 'ban'
+  action:    text('action').notNull(),
+  createdAt: integer('created_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
+}, (t) => [
+  index('idx_test_violations_attempt').on(t.attemptId),
+]);
+
+// ─── Online Tests Type Exports ────────────────────────────────────────────────
+
+export type Test              = typeof tests.$inferSelect;
+export type TestSection       = typeof testSections.$inferSelect;
+export type TestQuestionGroup = typeof testQuestionGroups.$inferSelect;
+export type TestQuestion      = typeof testQuestions.$inferSelect;
+export type TestWindow        = typeof testWindows.$inferSelect;
+export type TestAttempt       = typeof testAttempts.$inferSelect;
+export type TestAnswer        = typeof testAnswers.$inferSelect;
+export type TestViolation     = typeof testViolations.$inferSelect;
+
+export type TestBucket        = 'iba' | 'du_fbs';
+export type TestMode          = 'online' | 'offline';
+export type TestStatus        = 'draft' | 'published' | 'archived';
+export type TestWindowStatus  = 'scheduled' | 'open' | 'closed';
+export type TestAttemptStatus = 'in_progress' | 'submitted' | 'banned';
+export type TestGroupKind     = 'instruction' | 'passage' | 'scenario' | 'shared_options';
+export type TestOption        = { key: string; text: string };

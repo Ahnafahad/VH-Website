@@ -65,6 +65,29 @@
   --color-math-glow-violet:      rgba(107, 95, 212, 0.28);
   --font-math-mono:              var(--font-math-mono, 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace);
 
+  /* Online Tests — examination hall: ink-on-parchment, brand maroon + gold seal */
+  --color-exam-base:          #14100E;   /* deep near-black brown */
+  --color-exam-surface:       #1E1815;   /* card */
+  --color-exam-elevated:      #2A221E;   /* raised panel */
+  --color-exam-paper:         #FAF5EF;   /* offline OMR sheet / light surfaces */
+  --color-exam-maroon:        #760F13;   /* brand red */
+  --color-exam-maroon-bright: #9A1B20;
+  --color-exam-gold:          #C8A24B;   /* seal / accents */
+  --color-exam-gold-bright:   #E4C169;
+  --color-exam-ink:           #F3ECE2;   /* primary text on dark */
+  --color-exam-ink-muted:     #B7A99A;
+  --color-exam-ink-faint:     #7C6E60;
+  --color-exam-border:        #3A2F29;
+  --color-exam-success:       #4CB882;
+  --color-exam-danger:        #D4625A;
+  --color-exam-warning:       #E4A93C;
+  /* navigator question states */
+  --color-exam-q-answered:    #4CB882;
+  --color-exam-q-flagged:     #C8A24B;
+  --color-exam-q-current:     #9A1B20;
+  --color-exam-q-blank:       #3A2F29;
+  --color-exam-glow-gold:     rgba(200, 162, 75, 0.30);
+
   /* LexiCore Form Tokens — dark mode */
   --form-surface:       #1A1A1A;
   --form-field-bg:      #242424;

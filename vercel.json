@@ -33,6 +33,10 @@
     {
       "path": "/api/cron/registration-blast",
       "schedule": "0 4 14 6 *"
+    },
+    {
+      "path": "/api/cron/orientation-blast",
+      "schedule": "0 2 24 6 *"
     }
   ]
 }

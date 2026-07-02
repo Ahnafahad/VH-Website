@@ -14,6 +14,7 @@ import {
   LogOut,
   Database,
   BarChart3,
+  ClipboardList,
 } from 'lucide-react';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
@@ -36,6 +37,7 @@ const NAV_ITEMS: NavItem[] = [
   { href: '/admin/analytics',    label: 'Analytics',     icon: BarChart3       },
   { href: '/admin/vocab',        label: 'Vocabulary',    icon: BookOpen        },
   { href: '/admin/words',        label: 'Word Bank',     icon: Database        },
+  { href: '/admin/tests',        label: 'Tests',         icon: ClipboardList   },
   { href: '/admin/users',        label: 'Users',         icon: Users           },
   { href: '/admin/leaderboard',  label: 'Leaderboard',   icon: Trophy          },
   { href: '/admin/announcements',label: 'Announcements', icon: Megaphone       },

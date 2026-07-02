@@ -1,0 +1,1000 @@
+{
+  "slug": "iba-maths-diagnostic",
+  "title": "IBA Mathematics Diagnostic Test",
+  "bucket": "iba",
+  "description": "65-question quantitative reasoning diagnostic for IBA admission preparation. 65 marks, 40 minutes. No calculator.",
+  "sections": [
+    {
+      "order": 1,
+      "title": "Quantitative Reasoning",
+      "marksPerCorrect": 1,
+      "penaltyPerWrong": 0.25,
+      "thresholdPercent": null,
+      "groups": [
+        {
+          "ref": "s1-instructions",
+          "kind": "instruction",
+          "title": null,
+          "content": "**Instructions.** Choose the single best answer for each question. Every answer is exact — some may be fractions, ratios, or expressions rather than whole numbers. Figures illustrate the setup and are not necessarily drawn to scale. No calculators.\n\n**Read this first.** This is a diagnostic, not an admission test. Its only job is to show you the chapters ahead and where you're starting from. Attempt what you can, skip what you can't, and don't stress the hard ones — by the end of the course they'll feel routine."
+        }
+      ],
+      "questions": [
+        {
+          "number": 1,
+          "group": "s1-instructions",
+          "stem": "45 is divided in the ratio $2:3$. What is the larger part?",
+          "options": [
+            {"key": "A", "text": "$18$"},
+            {"key": "B", "text": "$24$"},
+            {"key": "C", "text": "$15$"},
+            {"key": "D", "text": "$27$"},
+            {"key": "E", "text": "$30$"}
+          ],
+          "correctKey": "D",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 2,
+          "group": null,
+          "stem": "What is the volume of a cube with edge $4$?",
+          "options": [
+            {"key": "A", "text": "$64$"},
+            {"key": "B", "text": "$24$"},
+            {"key": "C", "text": "$48$"},
+            {"key": "D", "text": "$12$"},
+            {"key": "E", "text": "$16$"}
+          ],
+          "correctKey": "A",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 3,
+          "group": null,
+          "stem": "A price is increased by 25% and then decreased by 20%. What is the net change?",
+          "options": [
+            {"key": "A", "text": "Up 4%"},
+            {"key": "B", "text": "Up 5%"},
+            {"key": "C", "text": "Down 4%"},
+            {"key": "D", "text": "Down 5%"},
+            {"key": "E", "text": "No change"}
+          ],
+          "correctKey": "E",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 4,
+          "group": null,
+          "stem": "Two positive integers have a product of $2160$ and a GCD of $12$. How many such unordered pairs exist?",
+          "options": [
+            {"key": "A", "text": "$4$"},
+            {"key": "B", "text": "$3$"},
+            {"key": "C", "text": "$1$"},
+            {"key": "D", "text": "$2$"},
+            {"key": "E", "text": "$6$"}
+          ],
+          "correctKey": "D",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 5,
+          "group": null,
+          "stem": "Three numbers are in ratio $3:4:5$ and sum to $180$. What is (largest $-$ smallest)?",
+          "options": [
+            {"key": "A", "text": "$60$"},
+            {"key": "B", "text": "$90$"},
+            {"key": "C", "text": "$45$"},
+            {"key": "D", "text": "$15$"},
+            {"key": "E", "text": "$30$"}
+          ],
+          "correctKey": "E",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 6,
+          "group": null,
+          "stem": "What is the units digit of $7^{83}$?",
+          "options": [
+            {"key": "A", "text": "$9$"},
+            {"key": "B", "text": "$3$"},
+            {"key": "C", "text": "$1$"},
+            {"key": "D", "text": "$7$"},
+            {"key": "E", "text": "$5$"}
+          ],
+          "correctKey": "B",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 7,
+          "group": null,
+          "stem": "A price rises from $40$ to $50$. By what percent did it increase?",
+          "options": [
+            {"key": "A", "text": "25%"},
+            {"key": "B", "text": "10%"},
+            {"key": "C", "text": "20%"},
+            {"key": "D", "text": "30%"},
+            {"key": "E", "text": "15%"}
+          ],
+          "correctKey": "A",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 8,
+          "group": null,
+          "stem": "A cyclist rides 60 miles at 30 mph, then 60 miles at 20 mph. What is the average speed for the whole ride (mph)?",
+          "options": [
+            {"key": "A", "text": "$25$"},
+            {"key": "B", "text": "$22$"},
+            {"key": "C", "text": "$26$"},
+            {"key": "D", "text": "$20$"},
+            {"key": "E", "text": "$24$"}
+          ],
+          "correctKey": "E",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 9,
+          "group": null,
+          "stem": "A wholesaler sells to a shop at 20% profit; the shop sells to a customer at 25% profit. The customer pays $180. What did the wholesaler pay (cost)?",
+          "options": [
+            {"key": "A", "text": "$100"},
+            {"key": "B", "text": "$120"},
+            {"key": "C", "text": "$150"},
+            {"key": "D", "text": "$90"},
+            {"key": "E", "text": "$144"}
+          ],
+          "correctKey": "B",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 10,
+          "group": null,
+          "stem": "Find the next term: $3,\\ 7,\\ 11,\\ 15,\\ \\_\\_$",
+          "options": [
+            {"key": "A", "text": "$20$"},
+            {"key": "B", "text": "$19$"},
+            {"key": "C", "text": "$21$"},
+            {"key": "D", "text": "$17$"},
+            {"key": "E", "text": "$18$"}
+          ],
+          "correctKey": "B",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 11,
+          "group": null,
+          "stem": "A circle has radius $7$. What is its area?",
+          "options": [
+            {"key": "A", "text": "$7\\pi$"},
+            {"key": "B", "text": "$14\\pi$"},
+            {"key": "C", "text": "$196\\pi$"},
+            {"key": "D", "text": "$49\\pi$"},
+            {"key": "E", "text": "$98\\pi$"}
+          ],
+          "correctKey": "D",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 12,
+          "group": null,
+          "stem": "In how many ways can 6 people stand in a row if two particular people must stand together?",
+          "options": [
+            {"key": "A", "text": "$720$"},
+            {"key": "B", "text": "$120$"},
+            {"key": "C", "text": "$480$"},
+            {"key": "D", "text": "$1440$"},
+            {"key": "E", "text": "$240$"}
+          ],
+          "correctKey": "E",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 13,
+          "group": null,
+          "stem": "A fair die is rolled once. What is the probability of an even number?",
+          "options": [
+            {"key": "A", "text": "$\\frac{1}{2}$"},
+            {"key": "B", "text": "$\\frac{1}{6}$"},
+            {"key": "C", "text": "$\\frac{1}{3}$"},
+            {"key": "D", "text": "$\\frac{2}{3}$"},
+            {"key": "E", "text": "$\\frac{1}{4}$"}
+          ],
+          "correctKey": "A",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 14,
+          "group": null,
+          "stem": "In a club the ratio of boys to girls is $5:4$. After 12 more girls join, the ratio becomes $5:7$. How many boys are in the club?",
+          "options": [
+            {"key": "A", "text": "$16$"},
+            {"key": "B", "text": "$24$"},
+            {"key": "C", "text": "$20$"},
+            {"key": "D", "text": "$32$"},
+            {"key": "E", "text": "$28$"}
+          ],
+          "correctKey": "C",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 15,
+          "group": null,
+          "stem": "A vessel holds 50 L of pure milk. 10 L is drawn out and replaced with water; this is done a second time. How many litres of milk remain?",
+          "options": [
+            {"key": "A", "text": "$34$"},
+            {"key": "B", "text": "$30$"},
+            {"key": "C", "text": "$36$"},
+            {"key": "D", "text": "$40$"},
+            {"key": "E", "text": "$32$"}
+          ],
+          "correctKey": "E",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 16,
+          "group": null,
+          "stem": "What is $|-9| + |-4|$?",
+          "options": [
+            {"key": "A", "text": "$5$"},
+            {"key": "B", "text": "$-13$"},
+            {"key": "C", "text": "$36$"},
+            {"key": "D", "text": "$13$"},
+            {"key": "E", "text": "$-5$"}
+          ],
+          "correctKey": "D",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 17,
+          "group": null,
+          "stem": "Solve the proportion: $\\dfrac{3}{4} = \\dfrac{x}{20}$.",
+          "options": [
+            {"key": "A", "text": "$15$"},
+            {"key": "B", "text": "$16$"},
+            {"key": "C", "text": "$18$"},
+            {"key": "D", "text": "$14$"},
+            {"key": "E", "text": "$12$"}
+          ],
+          "correctKey": "A",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 18,
+          "group": null,
+          "stem": "Of 40 students, 22 play football, 25 play cricket, and 5 play neither. How many play both?",
+          "options": [
+            {"key": "A", "text": "$12$"},
+            {"key": "B", "text": "$8$"},
+            {"key": "C", "text": "$15$"},
+            {"key": "D", "text": "$10$"},
+            {"key": "E", "text": "$13$"}
+          ],
+          "correctKey": "A",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 19,
+          "group": null,
+          "stem": "Solve for $x$: $2(x+4) = 22$.",
+          "options": [
+            {"key": "A", "text": "$8$"},
+            {"key": "B", "text": "$5$"},
+            {"key": "C", "text": "$9$"},
+            {"key": "D", "text": "$6$"},
+            {"key": "E", "text": "$7$"}
+          ],
+          "correctKey": "E",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 20,
+          "group": null,
+          "stem": "What is the LCM of $6$ and $8$?",
+          "options": [
+            {"key": "A", "text": "$16$"},
+            {"key": "B", "text": "$14$"},
+            {"key": "C", "text": "$24$"},
+            {"key": "D", "text": "$12$"},
+            {"key": "E", "text": "$48$"}
+          ],
+          "correctKey": "C",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 21,
+          "group": null,
+          "stem": "8,000 dollars is borrowed at 10% compounded annually. 3,000 dollars is repaid at the end of year 1 and again at the end of year 2. What single payment at the end of year 3 clears the debt?",
+          "options": [
+            {"key": "A", "text": "$3,618"},
+            {"key": "B", "text": "$3,718"},
+            {"key": "C", "text": "$3,720"},
+            {"key": "D", "text": "$3,800"},
+            {"key": "E", "text": "$3,700"}
+          ],
+          "correctKey": "B",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 22,
+          "group": null,
+          "stem": "What is $\\sqrt{169}$?",
+          "options": [
+            {"key": "A", "text": "$12$"},
+            {"key": "B", "text": "$17$"},
+            {"key": "C", "text": "$14$"},
+            {"key": "D", "text": "$11$"},
+            {"key": "E", "text": "$13$"}
+          ],
+          "correctKey": "E",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 23,
+          "group": null,
+          "stem": "Solve for $x$: $2^{x-1} = 32$.",
+          "options": [
+            {"key": "A", "text": "$7$"},
+            {"key": "B", "text": "$4$"},
+            {"key": "C", "text": "$5$"},
+            {"key": "D", "text": "$6$"},
+            {"key": "E", "text": "$16$"}
+          ],
+          "correctKey": "D",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 24,
+          "group": null,
+          "stem": "What fraction is 6 out of 24?",
+          "options": [
+            {"key": "A", "text": "$\\frac{1}{6}$"},
+            {"key": "B", "text": "$\\frac{1}{3}$"},
+            {"key": "C", "text": "$\\frac{2}{7}$"},
+            {"key": "D", "text": "$\\frac{1}{5}$"},
+            {"key": "E", "text": "$\\frac{1}{4}$"}
+          ],
+          "correctKey": "E",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 25,
+          "group": null,
+          "stem": "A trip to work at 40 mph and back along the same road at 60 mph takes 5 hours total. What is the one-way distance (miles)?",
+          "options": [
+            {"key": "A", "text": "$120$"},
+            {"key": "B", "text": "$150$"},
+            {"key": "C", "text": "$90$"},
+            {"key": "D", "text": "$100$"},
+            {"key": "E", "text": "$110$"}
+          ],
+          "correctKey": "A",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 26,
+          "group": null,
+          "stem": "What is the area of the triangle with base $12$ and height $5$?",
+          "options": [
+            {"key": "A", "text": "$60$"},
+            {"key": "B", "text": "$25$"},
+            {"key": "C", "text": "$17$"},
+            {"key": "D", "text": "$30$"},
+            {"key": "E", "text": "$34$"}
+          ],
+          "correctKey": "D",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 27,
+          "group": null,
+          "stem": "A bag has 5 red and 3 blue balls. Two are drawn without replacement. What is the probability that at least one is blue?",
+          "options": [
+            {"key": "A", "text": "$\\frac{3}{8}$"},
+            {"key": "B", "text": "$\\frac{1}{2}$"},
+            {"key": "C", "text": "$\\frac{5}{14}$"},
+            {"key": "D", "text": "$\\frac{9}{14}$"},
+            {"key": "E", "text": "$\\frac{15}{28}$"}
+          ],
+          "correctKey": "D",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 28,
+          "group": null,
+          "stem": "What is the largest integer $k$ such that $3^k$ divides $20!$?",
+          "options": [
+            {"key": "A", "text": "$9$"},
+            {"key": "B", "text": "$7$"},
+            {"key": "C", "text": "$6$"},
+            {"key": "D", "text": "$10$"},
+            {"key": "E", "text": "$8$"}
+          ],
+          "correctKey": "E",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 29,
+          "group": null,
+          "stem": "From 80 L of a 25% syrup solution, some is removed and replaced with an equal amount of water, leaving 20% syrup. How many litres were removed?",
+          "options": [
+            {"key": "A", "text": "$20$"},
+            {"key": "B", "text": "$24$"},
+            {"key": "C", "text": "$16$"},
+            {"key": "D", "text": "$18$"},
+            {"key": "E", "text": "$12$"}
+          ],
+          "correctKey": "C",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 30,
+          "group": null,
+          "stem": "The sum of the first $n$ positive integers is 300. What is $n$?",
+          "options": [
+            {"key": "A", "text": "$24$"},
+            {"key": "B", "text": "$25$"},
+            {"key": "C", "text": "$23$"},
+            {"key": "D", "text": "$20$"},
+            {"key": "E", "text": "$30$"}
+          ],
+          "correctKey": "A",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 31,
+          "group": null,
+          "stem": "What is the remainder when $3^{50}$ is divided by $7$?",
+          "options": [
+            {"key": "A", "text": "$5$"},
+            {"key": "B", "text": "$2$"},
+            {"key": "C", "text": "$1$"},
+            {"key": "D", "text": "$6$"},
+            {"key": "E", "text": "$4$"}
+          ],
+          "correctKey": "B",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 32,
+          "group": null,
+          "stem": "How many positive integers less than 200 are divisible by 4 or 6 but not both?",
+          "options": [
+            {"key": "A", "text": "$66$"},
+            {"key": "B", "text": "$50$"},
+            {"key": "C", "text": "$82$"},
+            {"key": "D", "text": "$16$"},
+            {"key": "E", "text": "$33$"}
+          ],
+          "correctKey": "B",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 33,
+          "group": null,
+          "stem": "If $x = 8$ and $y = 5$, what is $x^2 - y^2$?",
+          "options": [
+            {"key": "A", "text": "$3$"},
+            {"key": "B", "text": "$89$"},
+            {"key": "C", "text": "$39$"},
+            {"key": "D", "text": "$13$"},
+            {"key": "E", "text": "$9$"}
+          ],
+          "correctKey": "C",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 34,
+          "group": null,
+          "stem": "Solve for $x$: $\\dfrac{x}{5} = 7$.",
+          "options": [
+            {"key": "A", "text": "$2$"},
+            {"key": "B", "text": "$30$"},
+            {"key": "C", "text": "$35$"},
+            {"key": "D", "text": "$40$"},
+            {"key": "E", "text": "$12$"}
+          ],
+          "correctKey": "C",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 35,
+          "group": null,
+          "stem": "The roots of $x^2 - 6x + 8 = 0$ are $a$ and $b$. What is $a^3 + b^3$?",
+          "options": [
+            {"key": "A", "text": "$96$"},
+            {"key": "B", "text": "$56$"},
+            {"key": "C", "text": "$80$"},
+            {"key": "D", "text": "$72$"},
+            {"key": "E", "text": "$64$"}
+          ],
+          "correctKey": "D",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 36,
+          "group": null,
+          "stem": "Express $\\frac{7}{20}$ as a percent.",
+          "options": [
+            {"key": "A", "text": "35%"},
+            {"key": "B", "text": "30%"},
+            {"key": "C", "text": "25%"},
+            {"key": "D", "text": "40%"},
+            {"key": "E", "text": "45%"}
+          ],
+          "correctKey": "A",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 37,
+          "group": null,
+          "stem": "Two angles of a triangle are $50°$ and $60°$. What is the third angle?",
+          "options": [
+            {"key": "A", "text": "$80°$"},
+            {"key": "B", "text": "$60°$"},
+            {"key": "C", "text": "$70°$"},
+            {"key": "D", "text": "$110°$"},
+            {"key": "E", "text": "$90°$"}
+          ],
+          "correctKey": "C",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 38,
+          "group": null,
+          "stem": "For what value of $k$ does $x^2 - 8x + k = 0$ have two equal roots?",
+          "options": [
+            {"key": "A", "text": "$32$"},
+            {"key": "B", "text": "$16$"},
+            {"key": "C", "text": "$4$"},
+            {"key": "D", "text": "$8$"},
+            {"key": "E", "text": "$64$"}
+          ],
+          "correctKey": "B",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 39,
+          "group": null,
+          "stem": "A two-digit number has digit sum 12. Reversing its digits gives a number 18 larger. What is the original number?",
+          "options": [
+            {"key": "A", "text": "$57$"},
+            {"key": "B", "text": "$48$"},
+            {"key": "C", "text": "$84$"},
+            {"key": "D", "text": "$39$"},
+            {"key": "E", "text": "$75$"}
+          ],
+          "correctKey": "A",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 40,
+          "group": null,
+          "stem": "$2000 is invested at 10% compounded annually. What is the amount after 2 years?",
+          "options": [
+            {"key": "A", "text": "$2,440"},
+            {"key": "B", "text": "$2,400"},
+            {"key": "C", "text": "$2,420"},
+            {"key": "D", "text": "$2,200"},
+            {"key": "E", "text": "$2,410"}
+          ],
+          "correctKey": "C",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 41,
+          "group": null,
+          "stem": "A car travels 150 miles in 3 hours. What is its speed (mph)?",
+          "options": [
+            {"key": "A", "text": "$75$"},
+            {"key": "B", "text": "$45$"},
+            {"key": "C", "text": "$50$"},
+            {"key": "D", "text": "$30$"},
+            {"key": "E", "text": "$60$"}
+          ],
+          "correctKey": "C",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 42,
+          "group": null,
+          "stem": "A rectangle has area 54 and length 9. What is its width?",
+          "options": [
+            {"key": "A", "text": "$9$"},
+            {"key": "B", "text": "$7$"},
+            {"key": "C", "text": "$5$"},
+            {"key": "D", "text": "$6$"},
+            {"key": "E", "text": "$8$"}
+          ],
+          "correctKey": "D",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 43,
+          "group": null,
+          "stem": "Two numbers sum to 70. The larger is 10 more than twice the smaller. What is the larger number?",
+          "options": [
+            {"key": "A", "text": "$40$"},
+            {"key": "B", "text": "$45$"},
+            {"key": "C", "text": "$55$"},
+            {"key": "D", "text": "$50$"},
+            {"key": "E", "text": "$20$"}
+          ],
+          "correctKey": "D",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 44,
+          "group": null,
+          "stem": "What is the area of the trapezoid with parallel bases $20$ and $12$, and height $6$?",
+          "options": [
+            {"key": "A", "text": "$96$"},
+            {"key": "B", "text": "$192$"},
+            {"key": "C", "text": "$88$"},
+            {"key": "D", "text": "$120$"},
+            {"key": "E", "text": "$104$"}
+          ],
+          "correctKey": "A",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 45,
+          "group": null,
+          "stem": "If 3 kg of rice costs $15, how much do 8 kg cost?",
+          "options": [
+            {"key": "A", "text": "$40"},
+            {"key": "B", "text": "$30"},
+            {"key": "C", "text": "$45"},
+            {"key": "D", "text": "$24"},
+            {"key": "E", "text": "$35"}
+          ],
+          "correctKey": "A",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 46,
+          "group": null,
+          "stem": "Reduce $\\frac{45}{60}$ to lowest terms.",
+          "options": [
+            {"key": "A", "text": "$\\frac{5}{6}$"},
+            {"key": "B", "text": "$\\frac{2}{3}$"},
+            {"key": "C", "text": "$\\frac{3}{4}$"},
+            {"key": "D", "text": "$\\frac{4}{5}$"},
+            {"key": "E", "text": "$\\frac{9}{12}$"}
+          ],
+          "correctKey": "C",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 47,
+          "group": null,
+          "stem": "What is the area of the triangle with vertices $(1,1)$, $(5,3)$, and $(3,7)$?",
+          "options": [
+            {"key": "A", "text": "$8$"},
+            {"key": "B", "text": "$12$"},
+            {"key": "C", "text": "$14$"},
+            {"key": "D", "text": "$20$"},
+            {"key": "E", "text": "$10$"}
+          ],
+          "correctKey": "E",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 48,
+          "group": null,
+          "stem": "What is the GCD of 24 and 36?",
+          "options": [
+            {"key": "A", "text": "$8$"},
+            {"key": "B", "text": "$12$"},
+            {"key": "C", "text": "$6$"},
+            {"key": "D", "text": "$4$"},
+            {"key": "E", "text": "$18$"}
+          ],
+          "correctKey": "B",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 49,
+          "group": null,
+          "stem": "Solve for $x$: $5x - 7 = 33$.",
+          "options": [
+            {"key": "A", "text": "$9$"},
+            {"key": "B", "text": "$8$"},
+            {"key": "C", "text": "$6$"},
+            {"key": "D", "text": "$5$"},
+            {"key": "E", "text": "$7$"}
+          ],
+          "correctKey": "B",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 50,
+          "group": null,
+          "stem": "A 40% copper alloy and a 70% copper alloy are mixed in the ratio $1:2$ by weight. What percent copper is the result?",
+          "options": [
+            {"key": "A", "text": "50%"},
+            {"key": "B", "text": "65%"},
+            {"key": "C", "text": "60%"},
+            {"key": "D", "text": "58%"},
+            {"key": "E", "text": "55%"}
+          ],
+          "correctKey": "C",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 51,
+          "group": null,
+          "stem": "What is the median of $8, 3, 11, 6, 2$?",
+          "options": [
+            {"key": "A", "text": "$11$"},
+            {"key": "B", "text": "$3$"},
+            {"key": "C", "text": "$5$"},
+            {"key": "D", "text": "$8$"},
+            {"key": "E", "text": "$6$"}
+          ],
+          "correctKey": "E",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 52,
+          "group": null,
+          "stem": "If $p, q$ are the roots of $x^2 - 7x + 10 = 0$, what is $p^2 + q^2$?",
+          "options": [
+            {"key": "A", "text": "$19$"},
+            {"key": "B", "text": "$29$"},
+            {"key": "C", "text": "$49$"},
+            {"key": "D", "text": "$39$"},
+            {"key": "E", "text": "$9$"}
+          ],
+          "correctKey": "B",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 53,
+          "group": null,
+          "stem": "Two pipes can fill a tank in 4 h and 6 h; a drain empties it in 12 h. With all three open, how long to fill the tank (hours)?",
+          "options": [
+            {"key": "A", "text": "$3$"},
+            {"key": "B", "text": "$6$"},
+            {"key": "C", "text": "$2$"},
+            {"key": "D", "text": "$5$"},
+            {"key": "E", "text": "$4$"}
+          ],
+          "correctKey": "A",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 54,
+          "group": null,
+          "stem": "What is the average of $6, 10, 14, 18$?",
+          "options": [
+            {"key": "A", "text": "$13$"},
+            {"key": "B", "text": "$14$"},
+            {"key": "C", "text": "$11$"},
+            {"key": "D", "text": "$12$"},
+            {"key": "E", "text": "$10$"}
+          ],
+          "correctKey": "D",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 55,
+          "group": null,
+          "stem": "Pipe A fills a tank in 12 h, Pipe B in 6 h. Together, how many hours to fill it?",
+          "options": [
+            {"key": "A", "text": "$8$"},
+            {"key": "B", "text": "$9$"},
+            {"key": "C", "text": "$4$"},
+            {"key": "D", "text": "$3$"},
+            {"key": "E", "text": "$6$"}
+          ],
+          "correctKey": "C",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 56,
+          "group": null,
+          "stem": "A boat covers 36 km downstream in 3 hours and 24 km upstream in 3 hours. What is the speed of the stream (km/h)?",
+          "options": [
+            {"key": "A", "text": "$2$"},
+            {"key": "B", "text": "$4$"},
+            {"key": "C", "text": "$1$"},
+            {"key": "D", "text": "$10$"},
+            {"key": "E", "text": "$3$"}
+          ],
+          "correctKey": "A",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 57,
+          "group": null,
+          "stem": "What is the perimeter of the square with side length $9$?",
+          "options": [
+            {"key": "A", "text": "$45$"},
+            {"key": "B", "text": "$36$"},
+            {"key": "C", "text": "$81$"},
+            {"key": "D", "text": "$27$"},
+            {"key": "E", "text": "$18$"}
+          ],
+          "correctKey": "B",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 58,
+          "group": null,
+          "stem": "What is 25% of 160?",
+          "options": [
+            {"key": "A", "text": "$32$"},
+            {"key": "B", "text": "$45$"},
+            {"key": "C", "text": "$35$"},
+            {"key": "D", "text": "$40$"},
+            {"key": "E", "text": "$48$"}
+          ],
+          "correctKey": "D",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 59,
+          "group": null,
+          "stem": "How many positive divisors does 72 have?",
+          "options": [
+            {"key": "A", "text": "$8$"},
+            {"key": "B", "text": "$9$"},
+            {"key": "C", "text": "$6$"},
+            {"key": "D", "text": "$10$"},
+            {"key": "E", "text": "$12$"}
+          ],
+          "correctKey": "E",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 60,
+          "group": null,
+          "stem": "What is the value of $4!$ (four factorial)?",
+          "options": [
+            {"key": "A", "text": "$120$"},
+            {"key": "B", "text": "$16$"},
+            {"key": "C", "text": "$12$"},
+            {"key": "D", "text": "$24$"},
+            {"key": "E", "text": "$20$"}
+          ],
+          "correctKey": "D",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 61,
+          "group": null,
+          "stem": "30% of a number is 18. What is the number?",
+          "options": [
+            {"key": "A", "text": "$48$"},
+            {"key": "B", "text": "$60$"},
+            {"key": "C", "text": "$54$"},
+            {"key": "D", "text": "$50$"},
+            {"key": "E", "text": "$6$"}
+          ],
+          "correctKey": "B",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 62,
+          "group": null,
+          "stem": "Two ages are in ratio $7:3$. In 4 years the ratio becomes $2:1$. What is the older age now?",
+          "options": [
+            {"key": "A", "text": "$21$"},
+            {"key": "B", "text": "$35$"},
+            {"key": "C", "text": "$28$"},
+            {"key": "D", "text": "$24$"},
+            {"key": "E", "text": "$30$"}
+          ],
+          "correctKey": "C",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 63,
+          "group": null,
+          "stem": "A set of 8 numbers has mean 15. If the value 10 is replaced by 26, what is the new mean?",
+          "options": [
+            {"key": "A", "text": "$18$"},
+            {"key": "B", "text": "$19$"},
+            {"key": "C", "text": "$17$"},
+            {"key": "D", "text": "$16$"},
+            {"key": "E", "text": "$15$"}
+          ],
+          "correctKey": "C",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 64,
+          "group": null,
+          "stem": "What is $2^6$?",
+          "options": [
+            {"key": "A", "text": "$32$"},
+            {"key": "B", "text": "$64$"},
+            {"key": "C", "text": "$128$"},
+            {"key": "D", "text": "$48$"},
+            {"key": "E", "text": "$36$"}
+          ],
+          "correctKey": "B",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 65,
+          "group": null,
+          "stem": "An arithmetic sequence has first term 5 and common difference 4. What is the 20th term?",
+          "options": [
+            {"key": "A", "text": "$80$"},
+            {"key": "B", "text": "$85$"},
+            {"key": "C", "text": "$77$"},
+            {"key": "D", "text": "$76$"},
+            {"key": "E", "text": "$81$"}
+          ],
+          "correctKey": "E",
+          "imageUrl": null,
+          "explanation": null
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1151 @@
+{
+  "slug": "iba-mock-4",
+  "title": "IBA Mock Test 4",
+  "bucket": "iba",
+  "description": "Full-length IBA mock — 70 questions, 70 marks.",
+  "sections": [
+    {
+      "order": 1,
+      "title": "Language and Communication",
+      "marksPerCorrect": 1,
+      "penaltyPerWrong": 0.25,
+      "thresholdPercent": null,
+      "groups": [
+        {
+          "ref": "s1-instr-1",
+          "kind": "instruction",
+          "title": null,
+          "content": "Each of the following sentences contains two blanks. From the options lettered A through E, select the set of words that best fits the meaning of the sentence as a whole."
+        },
+        {
+          "ref": "s1-passage-sloth",
+          "kind": "passage",
+          "title": null,
+          "content": "The sloth bear, an insect-eating animal native to Nepal, exhibits only one behavior that is truly distinct from that of other bear species: the females carry their cubs (at least part-time) until the cubs are about nine months old, even though the cubs can walk on their own at six months. Cub-carrying also occurs among some other myrmecophagous (ant-eating) mammals; therefore, one explanation is that cub-carrying is necessitated by myrmecophagy, since myrmecophagy entails a low metabolic rate and high energy expenditure in walking between food patches. However, although polar bears' locomotion is similarly inefficient, polar bear cubs walk along with their mother. **Furthermore, the daily movements of sloth bears and American black bears—which are similar in size to sloth bears and have similar-sized home ranges—reveal similar travel rates and distances, suggesting that if black bear cubs are able to keep up with their mother, so too should sloth bear cubs.** An alternative explanation is defense from predation. Black bear cubs use trees for defense, whereas brown bears and polar bears, which regularly inhabit treeless environments, rely on aggression to protect their cubs. Like brown bears and polar bears (and unlike other myrmecophagous mammals, which are noted for their passivity), sloth bears are easily provoked to aggression. Sloth bears also have relatively large canine teeth, which appear to be more functional for fighting than for foraging. Like brown bears and polar bears, sloth bears may have evolved in an environment with few trees. They are especially attracted to food-rich grasslands; although few grasslands persist today on the Indian subcontinent, this type of habitat was once wide-spread there. Grasslands support high densities of tigers, which fight and sometimes kill sloth bears; sloth bears also coexist with and have been killed by tree-climbing leopards, and are often confronted and chased by **rhinoceroses and elephants**, which can topple trees. Collectively these factors probably selected against tree-climbing as a defensive strategy for sloth bear cubs. Because sloth bears are smaller than brown and polar bears and are under greater threat from dangerous animals, they may have adopted the extra precaution of carrying their cubs. Although cub-carrying may also be adoptive for myrmecophagous foraging, the behavior of sloth bear cubs, which climb on their mother's back at the first sign of danger, suggests that predation was a key stimulus."
+        },
+        {
+          "ref": "s1-instr-2",
+          "kind": "instruction",
+          "title": null,
+          "content": "In each set below, four options are near-synonyms clustered around a single semantic pole; one option, however, is the semantic inverse (antonym) of that cluster. Identify the unique antonym—the item that stands in systematic opposition to the shared sense of the other four."
+        },
+        {
+          "ref": "s1-instr-3",
+          "kind": "instruction",
+          "title": null,
+          "content": "A related pair of words in capital letters is followed by five pairs of words. Select the pair of words that best **expresses a relationship similar to** that expressed in the original pair of words."
+        },
+        {
+          "ref": "s1-instr-4",
+          "kind": "instruction",
+          "title": null,
+          "content": "Read the following sentences and select the option that corrects the **underlined** sections. If the underlined sections are correct as written, choose option A."
+        },
+        {
+          "ref": "s1-passage-mgmt",
+          "kind": "passage",
+          "title": null,
+          "content": "As technological change continues at an unprecedented rate, we frequently find ourselves adrift amidst resultant discontinuous change. There is often no time to plan for change. Rather, as Stephen Hawking states, “change is”. As a result, twenty-first-century management cannot be guided by a set of concrete principles but must instead embrace new ways of being and thinking in order to keep pace with changing conditions and thrive amidst the unknown. However, as we start to move away from old ways of thinking, some familiar ideas seem difficult to give up. One such concept is the rational view of causality in which the future is understood to be predetermined. Rationalism frames the organization as progressing toward goals preselected by the organization. (The rise and popularity of strategic planning in the twentieth century is a classic expression of rationalist thinking.) From a transformative point of view, on the other hand, the future is under perpetual construction. In other words, human interaction in the here and now, or the living present, perpetually modifies and shapes the future. Rather than thinking of causality in a traditional, rational way (moving toward a mature state or pre-selected goal), focusing on the living present allows us to conceptualize causality in a transformative way. In this alternative view, our movement toward the future is movement toward an unfinished whole rather than a finished state. Another outmoded organizational lens is systems thinking. Whether systems are viewed as machines or living systems, systems thinking shows an undesirable objectifying bias because the observer of the system necessarily views herself as external to that system. Although the role of 'detached observer' is easy and comfortable for those accustomed to organizational leadership tools developed in the twentieth century, detached views of organizational life fail to address the crux of leadership today, as twenty-first-century organizational life is highly complex and relational."
+        }
+      ],
+      "questions": [
+        {
+          "number": 1,
+          "group": "s1-instr-1",
+          "stem": "The professor's ______ demeanor and ______ outlook influenced the team.",
+          "options": [
+            { "key": "A", "text": "reticent, mundane" },
+            { "key": "B", "text": "austere, laconic" },
+            { "key": "C", "text": "petulant, morose" },
+            { "key": "D", "text": "affable, sanguine" },
+            { "key": "E", "text": "querulous, dubious" }
+          ],
+          "correctKey": null,
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 2,
+          "group": "s1-instr-1",
+          "stem": "The speaker's ______ presentation offered ______ perspectives.",
+          "options": [
+            { "key": "A", "text": "rambling, trite" },
+            { "key": "B", "text": "diffuse, implicit" },
+            { "key": "C", "text": "articulate, novel" },
+            { "key": "D", "text": "ponderous, banal" },
+            { "key": "E", "text": "gregarious, archaic" }
+          ],
+          "correctKey": null,
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 3,
+          "group": "s1-instr-1",
+          "stem": "The civilization's ______ decline and ______ transformation stunned scholars.",
+          "options": [
+            { "key": "A", "text": "antecedent, apocalyptic" },
+            { "key": "B", "text": "perpetual, metamorphic" },
+            { "key": "C", "text": "imminent, catastrophic" },
+            { "key": "D", "text": "inexorable, cataclysmic" },
+            { "key": "E", "text": "incipient, paradigmatic" }
+          ],
+          "correctKey": null,
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 4,
+          "group": "s1-instr-1",
+          "stem": "The manuscript's ______ content and ______ meaning intrigued critics.",
+          "options": [
+            { "key": "A", "text": "cryptic, apocalyptic" },
+            { "key": "B", "text": "arcane, prophetic" },
+            { "key": "C", "text": "esoteric, allegorical" },
+            { "key": "D", "text": "enigmatic, heretical" },
+            { "key": "E", "text": "recondite, symbolic" }
+          ],
+          "correctKey": null,
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 5,
+          "group": "s1-instr-1",
+          "stem": "The critic's ______ commentary and ______ assessment sparked controversy.",
+          "options": [
+            { "key": "A", "text": "garrulous, inflammatory" },
+            { "key": "B", "text": "grandiloquent, derogatory" },
+            { "key": "C", "text": "loquacious, defamatory" },
+            { "key": "D", "text": "vitriolic, pejorative" },
+            { "key": "E", "text": "vociferous, laudatory" }
+          ],
+          "correctKey": null,
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 6,
+          "group": "s1-passage-sloth",
+          "stem": "The author mentions rhinoceroses and elephants primarily in order to:",
+          "options": [
+            { "key": "A", "text": "explain why sloth bears are not successful foragers in grassland habitats" },
+            { "key": "B", "text": "identify the predators that have had the most influence on the behavior of sloth bears" },
+            { "key": "C", "text": "suggest a possible reason that sloth bear cubs do not use tree-climbing as a defense" },
+            { "key": "D", "text": "provide examples of predators that were once widespread across the Indian subcontinent" },
+            { "key": "E", "text": "defend the assertion that sloth bears are under greater threat from dangerous animals than are other bear species" }
+          ],
+          "correctKey": null,
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 7,
+          "group": "s1-passage-sloth",
+          "stem": "Which of the following, if true, would most weaken the author's argument in the highlighted text?",
+          "options": [
+            { "key": "A", "text": "Cub-carrying behavior has been observed in many non-myrmecophagous mammals" },
+            { "key": "B", "text": "Many of the largest myrmecophagous mammals do not typically exhibit cub-carrying behavior" },
+            { "key": "C", "text": "Some sloth bears have home ranges that are smaller in size than the average home ranges of black bears" },
+            { "key": "D", "text": "The locomotion of black bears is significantly more efficient than the locomotion of sloth bears" },
+            { "key": "E", "text": "The habitat of black bears consists of terrain that is significantly more varied than that of the habitat of sloth bears" }
+          ],
+          "correctKey": null,
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 8,
+          "group": "s1-passage-sloth",
+          "stem": "Which of the following is mentioned in the passage as a way in which brown bears and sloth bears are similar?",
+          "options": [
+            { "key": "A", "text": "They tend to become aggressive when provoked" },
+            { "key": "B", "text": "They live almost exclusively in treeless environments" },
+            { "key": "C", "text": "They are preyed upon by animals that can climb or topple trees" },
+            { "key": "D", "text": "They are inefficient in their locomotion" },
+            { "key": "E", "text": "They have relatively large canine teeth" }
+          ],
+          "correctKey": null,
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 9,
+          "group": "s1-passage-sloth",
+          "stem": "The primary purpose of the passage is to:",
+          "options": [
+            { "key": "A", "text": "trace the development of a particular behavioral characteristic of the sloth bear" },
+            { "key": "B", "text": "explore possible explanations for a particular behavioral characteristic of the sloth bear" },
+            { "key": "C", "text": "compare the defensive strategies of sloth bear cubs to the defensive strategies of cubs of other bear species" },
+            { "key": "D", "text": "describe how certain behavioral characteristics of the sloth bear differ from those of other myrmecophagous mammals" },
+            { "key": "E", "text": "provide an alternative to a generally accepted explanation of a particular behavioral characteristic of myrmecophagous mammals" }
+          ],
+          "correctKey": null,
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 10,
+          "group": "s1-passage-sloth",
+          "stem": "The author mentions which of the following as evidence for the view that cub-carrying behavior among sloth bears functions primarily as a defense from predation?",
+          "options": [
+            { "key": "A", "text": "The relative passivity of sloth bears in comparison with other species of bears" },
+            { "key": "B", "text": "The age at which sloth bear cubs can defend themselves from predators" },
+            { "key": "C", "text": "The unsuitability of cub-carrying for myrmecophagous foraging" },
+            { "key": "D", "text": "The behavior of sloth bear cubs when they first perceive danger" },
+            { "key": "E", "text": "The inefficient locomotion of sloth bears and other myrmecophagous animals" }
+          ],
+          "correctKey": null,
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 11,
+          "group": "s1-instr-2",
+          "stem": "Within a lexeme set that overwhelmingly encodes laudatory endorsement and celebratory approbation, isolate the sole item that instead encodes formal disapprobation or reproach.",
+          "options": [
+            { "key": "A", "text": "extol" },
+            { "key": "B", "text": "acclaim" },
+            { "key": "C", "text": "censure" },
+            { "key": "D", "text": "laud" },
+            { "key": "E", "text": "praise" }
+          ],
+          "correctKey": null,
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 12,
+          "group": "s1-instr-2",
+          "stem": "Among terms that predominantly denote high variance, fickleness, or rapid state-transition, select the outlier that signifies equilibrium and persistence rather than volatility.",
+          "options": [
+            { "key": "A", "text": "volatile" },
+            { "key": "B", "text": "capricious" },
+            { "key": "C", "text": "mutable" },
+            { "key": "D", "text": "mercurial" },
+            { "key": "E", "text": "stable" }
+          ],
+          "correctKey": null,
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 13,
+          "group": "s1-instr-2",
+          "stem": "From a field of items that semantically converge on debilitation—i.e., reduction of strength, efficacy, or vital force—choose the single contrary that encodes augmentation of vigor.",
+          "options": [
+            { "key": "A", "text": "debilitate" },
+            { "key": "B", "text": "invigorate" },
+            { "key": "C", "text": "enervate" },
+            { "key": "D", "text": "enfeeble" },
+            { "key": "E", "text": "attenuate" }
+          ],
+          "correctKey": null,
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 14,
+          "group": "s1-instr-2",
+          "stem": "Given a cluster whose members characterize rigidity, fixity, and resistance to change, identify the antonym that instead denotes multiform adaptability and ready mutability.",
+          "options": [
+            { "key": "A", "text": "immutable" },
+            { "key": "B", "text": "adamantine" },
+            { "key": "C", "text": "ossified" },
+            { "key": "D", "text": "inexorable" },
+            { "key": "E", "text": "protean" }
+          ],
+          "correctKey": null,
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 15,
+          "group": "s1-instr-2",
+          "stem": "Within a family of superlatives marking culmination or maximal elevation along a vertical or scalar axis, select the diametrical opposite that designates the nadiral extreme.",
+          "options": [
+            { "key": "A", "text": "apogee" },
+            { "key": "B", "text": "zenith" },
+            { "key": "C", "text": "nadir" },
+            { "key": "D", "text": "acme" },
+            { "key": "E", "text": "apotheosis" }
+          ],
+          "correctKey": null,
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 16,
+          "group": "s1-instr-3",
+          "stem": "STYGIAN :: DARK",
+          "options": [
+            { "key": "A", "text": "abysmal : low" },
+            { "key": "B", "text": "cogent : contentious" },
+            { "key": "C", "text": "fortuitous : accidental" },
+            { "key": "D", "text": "reckless : threatening" },
+            { "key": "E", "text": "cataclysmic : doomed" }
+          ],
+          "correctKey": null,
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 17,
+          "group": "s1-instr-3",
+          "stem": "WORSHIP :: SACRIFICE",
+          "options": [
+            { "key": "A", "text": "generation : pyre" },
+            { "key": "B", "text": "burial : mortuary" },
+            { "key": "C", "text": "weapon : centurion" },
+            { "key": "D", "text": "massacre : invasion" },
+            { "key": "E", "text": "prediction : augury" }
+          ],
+          "correctKey": null,
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 18,
+          "group": "s1-instr-3",
+          "stem": "EVANESCENT :: DISAPPEAR",
+          "options": [
+            { "key": "A", "text": "transparent : penetrate" },
+            { "key": "B", "text": "onerous : struggle" },
+            { "key": "C", "text": "feckless : succeed" },
+            { "key": "D", "text": "illusory : exist" },
+            { "key": "E", "text": "pliant : yield" }
+          ],
+          "correctKey": null,
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 19,
+          "group": "s1-instr-3",
+          "stem": "UPBRAID :: REPROACH",
+          "options": [
+            { "key": "A", "text": "dote : like" },
+            { "key": "B", "text": "lag : stray" },
+            { "key": "C", "text": "vex : please" },
+            { "key": "D", "text": "earn : desire" },
+            { "key": "E", "text": "recast : explain" }
+          ],
+          "correctKey": null,
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 20,
+          "group": "s1-instr-3",
+          "stem": "FRAGILE :: BREAK",
+          "options": [
+            { "key": "A", "text": "invisible : see" },
+            { "key": "B", "text": "erratic : control" },
+            { "key": "C", "text": "flammable : burn" },
+            { "key": "D", "text": "noxious : escape" },
+            { "key": "E", "text": "industrial : manufacture" }
+          ],
+          "correctKey": null,
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 21,
+          "group": "s1-instr-4",
+          "stem": "The controversial restructuring plan for the county school district, **if it is approved by the governor, would make there be fewer teachers** in schools throughout the county.",
+          "options": [
+            { "key": "A", "text": "if it is approved by the governor, would make there be fewer teachers" },
+            { "key": "B", "text": "if the governor approves it, would result in the amount of teachers going down" },
+            { "key": "C", "text": "if the governor approves it, would have the result of decreasing the number of teachers" },
+            { "key": "D", "text": "if approved by the governor, would result in a reduction of the number of teachers" },
+            { "key": "E", "text": "if approved by the governor, would decrease teachers" }
+          ],
+          "correctKey": null,
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 22,
+          "group": "s1-instr-4",
+          "stem": "Perennially the world's leader in tea production, **China's fascination in tea has deep historical roots, as exemplified with** the tea ceremony, which has analogs in Japan and Korea.",
+          "options": [
+            { "key": "A", "text": "Perennially the world's leader in tea production, China's fascination in tea has deep historical roots, as exemplified with" },
+            { "key": "B", "text": "China perennially has been the world's leader in tea production, and its fascination with tea has deep historical roots, as exemplified by" },
+            { "key": "C", "text": "Fascinating with deep historical roots, China's tea production perennially leads the world, thereby exemplifying" },
+            { "key": "D", "text": "Perennially the tea producing leader of the world, China has a deep historical fascination with tea, as an example of" },
+            { "key": "E", "text": "China, perennially the world's leader in tea production, and their fascination with tea has deep historical roots, as exemplified in" }
+          ],
+          "correctKey": null,
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 23,
+          "group": "s1-instr-4",
+          "stem": "**Walter Mondale had a long difficult struggle leading up to the 1984 Democratic Presidential Primary, though he consolidated his lead for the nomination, but he won only** 13 electoral votes in the general election.",
+          "options": [
+            { "key": "A", "text": "Walter Mondale had a long difficult struggle leading up to the 1984 Democratic Presidential Primary, though he consolidated his lead for the nomination, but he won only" },
+            { "key": "B", "text": "Having had a long difficult struggle leading up to the 1984 Democratic Presidential Primary, Walter Mondale still consolidated the nomination lead, only winning" },
+            { "key": "C", "text": "After a long difficult struggle leading up to the 1984 Democratic Presidential Primary, Walter Mondale consolidated his lead for the nomination, but he won only" },
+            { "key": "D", "text": "A long difficult struggle leading up to the 1984 Democratic Presidential Primary, Walter Mondale, consolidating his lead for the nomination, but he won only" },
+            { "key": "E", "text": "Walter Mondale had a long difficult struggle leading up to the 1984 Democratic Presidential Primary, consolidated his lead for the nomination, and only won" }
+          ],
+          "correctKey": null,
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 24,
+          "group": "s1-instr-4",
+          "stem": "Whereas both Europe and China use standard railroad gauge (1435 mm), Russia deliberately chose the wider \"Russian gauge\" (1520 mm) that gives greater side-to-side stability in railways cars and, more importantly, **acts as a national defense, so that it would block** a foreign army's supply line and preventing these bordering powers from invading by train.",
+          "options": [
+            { "key": "A", "text": "acts as a national defense, so that it would block" },
+            { "key": "B", "text": "acts like a national defense, so as to block" },
+            { "key": "C", "text": "acts as a national defense, blocking" },
+            { "key": "D", "text": "acting as a national defense, blocking" },
+            { "key": "E", "text": "acting like a national defense, would block" }
+          ],
+          "correctKey": null,
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 25,
+          "group": "s1-instr-4",
+          "stem": "Even-toed ungulates, **including pigs, cattle, goats, and sheep, and odd-toed ungulates, such as horses and donkeys, account for** all the mammals domesticated for agricultural purposes.",
+          "options": [
+            { "key": "A", "text": "including pigs, cattle, goats, and sheep, and odd-toed ungulates, such as horses and donkeys, account for" },
+            { "key": "B", "text": "including pigs, cattle, goats, and sheep, and odd-toed ungulates, including horses and donkeys, accounting for" },
+            { "key": "C", "text": "included among pigs, cattle, goats, and sheep, and odd-toed ungulates, such as horses and donkeys, account for" },
+            { "key": "D", "text": "included among pigs, cattle, goats, and sheep, and odd-toed ungulates, like horses and donkeys, are accounted for by" },
+            { "key": "E", "text": "like pigs, cattle, goats, and sheep, and odd-toed ungulates, like horses and donkeys, are accounted for by" }
+          ],
+          "correctKey": null,
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 26,
+          "group": "s1-passage-mgmt",
+          "stem": "The primary purpose of the passage is to:",
+          "options": [
+            { "key": "A", "text": "Demonstrate that \"change is\"" },
+            { "key": "B", "text": "Defend a particular definition of change" },
+            { "key": "C", "text": "Advocate a new way of viewing change" },
+            { "key": "D", "text": "Identify a set of concrete principles for managing change" },
+            { "key": "E", "text": "Explain a technique for reducing uncertainty in a rapidly changing environment" }
+          ],
+          "correctKey": null,
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 27,
+          "group": "s1-passage-mgmt",
+          "stem": "The author would likely agree with all of the following assertions EXCEPT:",
+          "options": [
+            { "key": "A", "text": "It is appropriate to think of the future as something that is continuously being re-shaped by decisions made here and now" },
+            { "key": "B", "text": "The rationalist account of the concept of causality is fundamentally flawed" },
+            { "key": "C", "text": "Successful leadership today depends largely on creating a realistic plan to achieve a set of predetermined goals" },
+            { "key": "D", "text": "People today often experience change as a sudden disruption of familiar ways of thinking and behaving" },
+            { "key": "E", "text": "Managers should view the unknown not as something to be eliminated but as an opportunity to thrive through continual adaptation" }
+          ],
+          "correctKey": null,
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 28,
+          "group": "s1-passage-mgmt",
+          "stem": "According to the passage, a detached observer of a twenty-first-century organization:",
+          "options": [
+            { "key": "A", "text": "Is not aware of the importance of organizational change" },
+            { "key": "B", "text": "Is in the best position to offer unbiased advice to leaders of the organization" },
+            { "key": "C", "text": "Is not likely to achieve an adequate understanding of organizational leadership" },
+            { "key": "D", "text": "Is more likely to view the organization as a machine rather than as a living system" },
+            { "key": "E", "text": "Is more likely to view the organization as a living system rather than a machine" }
+          ],
+          "correctKey": null,
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 29,
+          "group": "s1-passage-mgmt",
+          "stem": "The passage mentions strategic planning in order to:",
+          "options": [
+            { "key": "A", "text": "Discuss a new understanding of this concept" },
+            { "key": "B", "text": "Give an example of a certain view of causation" },
+            { "key": "C", "text": "Show that transformative thinking is impossible without effective long-range planning" },
+            { "key": "D", "text": "Correct a deficiency in systems thinking" },
+            { "key": "E", "text": "Refute the claim that \"there is often no time to plan for change\"" }
+          ],
+          "correctKey": null,
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 30,
+          "group": "s1-passage-mgmt",
+          "stem": "Which of the following management practices best exemplifies the new ways of thinking and being mentioned in the passage?",
+          "options": [
+            { "key": "A", "text": "Adopting a consistent, objective approach to performance management" },
+            { "key": "B", "text": "Having a clear vision of what the team needs to achieve" },
+            { "key": "C", "text": "Keeping the team focused on progressing toward fixed goals" },
+            { "key": "D", "text": "Encouraging two-way communication with team members even in times of turmoil" },
+            { "key": "E", "text": "Acquiring relevant technical skills to be able to advise team members who encounter problems" }
+          ],
+          "correctKey": null,
+          "imageUrl": null,
+          "explanation": null
+        }
+      ]
+    },
+    {
+      "order": 2,
+      "title": "Mathematics",
+      "marksPerCorrect": 1,
+      "penaltyPerWrong": 0.25,
+      "thresholdPercent": null,
+      "groups": [],
+      "questions": [
+        {
+          "number": 1,
+          "group": null,
+          "stem": "In a numerical table with 10 rows and 10 columns, each entry is either a 9 or a 10. If the number of 9s in the nth row is $n - 1$ for each n from 1 to 10, what is the average (arithmetic mean) of all the numbers in the table?",
+          "options": [
+            { "key": "A", "text": "9.45" },
+            { "key": "B", "text": "9.50" },
+            { "key": "C", "text": "9.55" },
+            { "key": "D", "text": "9.65" },
+            { "key": "E", "text": "9.70" }
+          ],
+          "correctKey": null,
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 2,
+          "group": null,
+          "stem": "A monkey ascends a greased pole 12 meters high. He ascends 2 meters in the first minute and then slips down 1 meter in the alternate minute. If this pattern continues until he climbs the pole, in how many minutes would he reach at the top of the pole?",
+          "options": [
+            { "key": "A", "text": "10th minute" },
+            { "key": "B", "text": "21st minute" },
+            { "key": "C", "text": "12th minute" },
+            { "key": "D", "text": "22nd minute" },
+            { "key": "E", "text": "13th minute" }
+          ],
+          "correctKey": null,
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 3,
+          "group": null,
+          "stem": "Suhit borrowed a sum of $6300 from Vikas at the rate of 14% for 3 yr. He then added some more money to the borrowed sum and lent it to Mohit at the rate of 16% simple interest for the same time. If Suhit gained $618 in the whole transaction, then what sum did he lend to Mohit?",
+          "options": [
+            { "key": "A", "text": "$6000" },
+            { "key": "B", "text": "$6800" },
+            { "key": "C", "text": "$7200" },
+            { "key": "D", "text": "$7500" },
+            { "key": "E", "text": "$7800" }
+          ],
+          "correctKey": null,
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 4,
+          "group": null,
+          "stem": "If $|x| < x^2$, which of the following must be true?",
+          "options": [
+            { "key": "A", "text": "$x > 0$" },
+            { "key": "B", "text": "$x < 0$" },
+            { "key": "C", "text": "$x > 1$" },
+            { "key": "D", "text": "$-1 < x < 1$" },
+            { "key": "E", "text": "$x^2 > 1$" }
+          ],
+          "correctKey": null,
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 5,
+          "group": null,
+          "stem": "Machine A can complete a certain job in x hours. Machine B can complete the same job in y hours. If A and B work together at their respective rates to complete the job, which of the following represents the fraction of the job that B will not have to complete because of A's help?",
+          "options": [
+            { "key": "A", "text": "$(x - y)/(x + y)$" },
+            { "key": "B", "text": "$x/(y - x)$" },
+            { "key": "C", "text": "$(x + y)/xy$" },
+            { "key": "D", "text": "$y/(x - y)$" },
+            { "key": "E", "text": "$y/(x + y)$" }
+          ],
+          "correctKey": null,
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 6,
+          "group": null,
+          "stem": "If x and y are the tens digit and the units digit, respectively, of the product 725,278 × 67,066, what is the value of x + y?",
+          "options": [
+            { "key": "A", "text": "12" },
+            { "key": "B", "text": "10" },
+            { "key": "C", "text": "8" },
+            { "key": "D", "text": "6" },
+            { "key": "E", "text": "4" }
+          ],
+          "correctKey": null,
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 7,
+          "group": null,
+          "stem": "Two dogsled teams raced across a 300-mile course in Wyoming. Team A finished the course in 3 fewer hours than team B. If team A's average speed was 5 mph greater than team B's, what was team B's average mph?",
+          "options": [
+            { "key": "A", "text": "12" },
+            { "key": "B", "text": "15" },
+            { "key": "C", "text": "18" },
+            { "key": "D", "text": "20" },
+            { "key": "E", "text": "25" }
+          ],
+          "correctKey": null,
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 8,
+          "group": null,
+          "stem": "For a display, identical cubic boxes are stacked in square layers. Each layer consists of cubic boxes arranged in rows that form a square, and each layer has 1 fewer row and 1 fewer box in each remaining row than the layer directly below it. If the bottom of the layer has 81 boxes and the top of the layer has only 1 box, how many boxes are in display?",
+          "options": [
+            { "key": "A", "text": "236" },
+            { "key": "B", "text": "260" },
+            { "key": "C", "text": "269" },
+            { "key": "D", "text": "276" },
+            { "key": "E", "text": "285" }
+          ],
+          "correctKey": null,
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 9,
+          "group": null,
+          "stem": "A 3-digit positive integer consists of non zero digits. If exactly two of the digits are the same, how many such integers are possible?",
+          "options": [
+            { "key": "A", "text": "72" },
+            { "key": "B", "text": "144" },
+            { "key": "C", "text": "216" },
+            { "key": "D", "text": "283" },
+            { "key": "E", "text": "300" }
+          ],
+          "correctKey": null,
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 10,
+          "group": null,
+          "stem": "Which of the following equations has $1 + \\sqrt{2}$ as one of its roots?",
+          "options": [
+            { "key": "A", "text": "$x^2 + 2x - 1 = 0$" },
+            { "key": "B", "text": "$x^2 - 2x + 1 = 0$" },
+            { "key": "C", "text": "$x^2 + 2x + 1 = 0$" },
+            { "key": "D", "text": "$x^2 - 2x - 1 = 0$" },
+            { "key": "E", "text": "$x^2 - x - 1 = 0$" }
+          ],
+          "correctKey": null,
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 11,
+          "group": null,
+          "stem": "A milkman mixes 20 litres of water with 80 litres of milk. After selling one-fourth of this mixture, he adds water to replenish the quantity that he had sold. What is the current proportion of water to milk?",
+          "options": [
+            { "key": "A", "text": "2:3" },
+            { "key": "B", "text": "1:2" },
+            { "key": "C", "text": "1:3" },
+            { "key": "D", "text": "3:4" },
+            { "key": "E", "text": "1:1" }
+          ],
+          "correctKey": null,
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 12,
+          "group": null,
+          "stem": "A certain rectangular wall is 12 feet high and 8 feet long. It will be tiled with nonoverlapping square tiles that have sides of length 16 inches. The entire wall will be covered with tile and no tiles will be cut. Each tile consists of 16 smaller squares, each with sides of length 4 inches in the pattern shown in the diagram above. How many small blue squares will be on the wall? (1 ft = 12 in)",
+          "options": [
+            { "key": "A", "text": "24" },
+            { "key": "B", "text": "216" },
+            { "key": "C", "text": "288" },
+            { "key": "D", "text": "864" },
+            { "key": "E", "text": "1,152" }
+          ],
+          "correctKey": null,
+          "imageUrl": "/tests/iba-mock-4/q12.png",
+          "explanation": null
+        },
+        {
+          "number": 13,
+          "group": null,
+          "stem": "If 4 people are selected from a group of 6 married couples, what is the probability that none of them would be married to each other?",
+          "options": [
+            { "key": "A", "text": "1/33" },
+            { "key": "B", "text": "2/33" },
+            { "key": "C", "text": "1/3" },
+            { "key": "D", "text": "16/33" },
+            { "key": "E", "text": "11/12" }
+          ],
+          "correctKey": null,
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 14,
+          "group": null,
+          "stem": "If $|x + 1| \\leq 5$ and $|y - 1| \\leq 5$, what is the least possible value of the product xy?",
+          "options": [
+            { "key": "A", "text": "-36" },
+            { "key": "B", "text": "-24" },
+            { "key": "C", "text": "-16" },
+            { "key": "D", "text": "8" },
+            { "key": "E", "text": "0" }
+          ],
+          "correctKey": null,
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 15,
+          "group": null,
+          "stem": "How many integers $x$ are there so that $|x - 3.5| < 2$?",
+          "options": [
+            { "key": "A", "text": "2" },
+            { "key": "B", "text": "3" },
+            { "key": "C", "text": "4" },
+            { "key": "D", "text": "5" },
+            { "key": "E", "text": "6" }
+          ],
+          "correctKey": null,
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 16,
+          "group": null,
+          "stem": "The population of a bacteria culture doubles every 2 minutes. Approximately how many minutes will it take for the population to grow from 1,000 to 500,000 bacteria?",
+          "options": [
+            { "key": "A", "text": "10" },
+            { "key": "B", "text": "12" },
+            { "key": "C", "text": "14" },
+            { "key": "D", "text": "16" },
+            { "key": "E", "text": "18" }
+          ],
+          "correctKey": null,
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 17,
+          "group": null,
+          "stem": "How many two-digit whole numbers yield a remainder of 1 when divided by 10 and also yield a remainder of 1 when divided by 6?",
+          "options": [
+            { "key": "A", "text": "None" },
+            { "key": "B", "text": "One" },
+            { "key": "C", "text": "Two" },
+            { "key": "D", "text": "Three" },
+            { "key": "E", "text": "Four" }
+          ],
+          "correctKey": null,
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 18,
+          "group": null,
+          "stem": "A positive integer is divisible by 9 if and only if the sum of its digits is divisible by 9. If n is a positive integer, for which of the following values of k is $25 \\times 10^n + k \\times 10^{2n}$ divisible by 9?",
+          "options": [
+            { "key": "A", "text": "9" },
+            { "key": "B", "text": "16" },
+            { "key": "C", "text": "23" },
+            { "key": "D", "text": "35" },
+            { "key": "E", "text": "47" }
+          ],
+          "correctKey": null,
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 19,
+          "group": null,
+          "stem": "What is the value of $A = \\frac{1}{1 \\times 2} + \\frac{1}{2 \\times 3} + \\frac{1}{3 \\times 4} + \\cdots + \\frac{1}{99 \\times 100}$?",
+          "options": [
+            { "key": "A", "text": "$\\frac{98}{99}$" },
+            { "key": "B", "text": "$\\frac{99}{100}$" },
+            { "key": "C", "text": "$\\frac{100}{101}$" },
+            { "key": "D", "text": "$\\frac{98}{101}$" },
+            { "key": "E", "text": "$\\frac{99}{101}$" }
+          ],
+          "correctKey": null,
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 20,
+          "group": null,
+          "stem": "Circular gears P and Q start rotation at the same time at constant speeds. Gear P makes 10 revolutions per minute and Gear Q makes 40 revolutions per minute. How many seconds after the gears start rotating will gear Q have made exactly 6 more revolutions than gear P?",
+          "options": [
+            { "key": "A", "text": "6" },
+            { "key": "B", "text": "8" },
+            { "key": "C", "text": "10" },
+            { "key": "D", "text": "12" },
+            { "key": "E", "text": "15" }
+          ],
+          "correctKey": null,
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 21,
+          "group": null,
+          "stem": "Two oil cans, X and Y, are right circular cylinders, and the height and the radius of Y are each twice those of X. If the oil in can X, which is filled to capacity, sells for $2, then at the same rate, how much does the oil in can Y sell for if Y is filled to only half its capacity?",
+          "options": [
+            { "key": "A", "text": "$1" },
+            { "key": "B", "text": "$2" },
+            { "key": "C", "text": "$3" },
+            { "key": "D", "text": "$4" },
+            { "key": "E", "text": "$8" }
+          ],
+          "correctKey": null,
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 22,
+          "group": null,
+          "stem": "The probability that event A occurs is 0.4, and the probability that events A and B both occur is 0.25. If the probability that either event A or event B occurs is 0.6, what is the probability that event B will occur?",
+          "options": [
+            { "key": "A", "text": "0.05" },
+            { "key": "B", "text": "0.15" },
+            { "key": "C", "text": "0.45" },
+            { "key": "D", "text": "0.50" },
+            { "key": "E", "text": "0.55" }
+          ],
+          "correctKey": null,
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 23,
+          "group": null,
+          "stem": "Some part of a 50% solution of acid was replaced with an equal amount of 30% solution of acid. If, as a result, 40% solution of acid was obtained, what part of the original solution was replaced?",
+          "options": [
+            { "key": "A", "text": "$\\frac{1}{4}$" },
+            { "key": "B", "text": "$\\frac{1}{3}$" },
+            { "key": "C", "text": "$\\frac{1}{2}$" },
+            { "key": "D", "text": "$\\frac{2}{3}$" },
+            { "key": "E", "text": "$\\frac{4}{5}$" }
+          ],
+          "correctKey": null,
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 24,
+          "group": null,
+          "stem": "Machine A can process 6000 envelopes in 3 hours. Machines B and C working together but independently can process the same number of envelopes in 2.5 hours. If Machines A and C independently process 3000 envelopes in 1 hour, then how many hours would it take Machine B to process 12000 envelopes?",
+          "options": [
+            { "key": "A", "text": "2" },
+            { "key": "B", "text": "3" },
+            { "key": "C", "text": "4" },
+            { "key": "D", "text": "6" },
+            { "key": "E", "text": "$\\frac{60}{7}$" }
+          ],
+          "correctKey": null,
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 25,
+          "group": null,
+          "stem": "If the product of all the unique positive divisors of n, a positive integer which is not a perfect cube, is $n^2$, then the product of all the unique positive divisors of $n^2$ is",
+          "options": [
+            { "key": "A", "text": "$n^3$" },
+            { "key": "B", "text": "$n^4$" },
+            { "key": "C", "text": "$n^6$" },
+            { "key": "D", "text": "$n^8$" },
+            { "key": "E", "text": "$n^9$" }
+          ],
+          "correctKey": null,
+          "imageUrl": null,
+          "explanation": null
+        }
+      ]
+    },
+    {
+      "order": 3,
+      "title": "Analytical",
+      "marksPerCorrect": 1,
+      "penaltyPerWrong": 0.25,
+      "thresholdPercent": null,
+      "groups": [
+        {
+          "ref": "s3-scenario-furniture",
+          "kind": "scenario",
+          "title": "Questions 1 to 6",
+          "content": "A room is one of several in which all the furniture is to be repainted. The room contains exactly four pieces of furniture—a Table, two Beds, and a Chair—and no furniture are to be moved into or out of that room. The repainting specifications are as follows:\n\n- On completion of repainting, any piece of furniture in a room must be uniformly blue, gray, purple, or white.\n- On completion of repainting, at least one of the pieces of furniture in a room must be gray, and the Chair must be either blue or white.\n- If, prior to repainting, a piece of furniture is either orange or yellow, that piece must be white on completion of repainting.\n- If, prior to repainting, a piece of furniture is purple, that piece must remain purple on completion of repainting.\n\nAll of the specifications above can and must be met in each room scheduled for repainting."
+        },
+        {
+          "ref": "s3-scenario-spelling",
+          "kind": "scenario",
+          "title": "Questions 7 to 9",
+          "content": "Seven boys—Faheem, Jamshaid, Kashif, Muneer, Rizwan, Shahid, and Tuqeer—are eligible to enter a spelling contest. From these seven, two groups must be formed, a blue group and a yellow group, each group consisting of exactly three of the boys. No boy can be selected for more than one group. Group selection is subject to the following restrictions:\n\n- If Muneer is on the blue group, Kashif must be selected for the yellow group.\n- If Faheem is on the blue group, Rizwan, if selected, must be on the yellow group.\n- Rizwan cannot be on the same group as Shahid.\n- Jamshaid cannot be on the same group as Kashif."
+        },
+        {
+          "ref": "s3-ds-group",
+          "kind": "shared_options",
+          "title": "Questions 10 to 13",
+          "content": "Each problem consists of two statements. Decide whether the data in the statements are sufficient to answer the question.",
+          "sharedOptions": [
+            { "key": "A", "text": "Statement (1) ALONE is sufficient, but statement (2) alone is not sufficient." },
+            { "key": "B", "text": "Statement (2) ALONE is sufficient, but statement (1) alone is not sufficient." },
+            { "key": "C", "text": "BOTH statements TOGETHER are sufficient, but NEITHER statement ALONE is sufficient." },
+            { "key": "D", "text": "EACH statement ALONE is sufficient." },
+            { "key": "E", "text": "Statements (1) and (2) TOGETHER are NOT sufficient." }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "number": 1,
+          "group": "s3-scenario-furniture",
+          "stem": "Which of the following could be the furniture colors in the room on completion of repainting?",
+          "options": [
+            { "key": "A", "text": "Yellow Table, Blue Bed, White Bed, Purple Chair" },
+            { "key": "B", "text": "White Table, Gray Bed, Gray Bed, Blue Chair" },
+            { "key": "C", "text": "Gray Table, White Bed, Orange Bed, Blue Chair" },
+            { "key": "D", "text": "Blue Table, Purple Bed, White Bed, Purple Chair" },
+            { "key": "E", "text": "Purple Table, White Bed, Blue Bed, Gray Chair" }
+          ],
+          "correctKey": null,
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 2,
+          "group": "s3-scenario-furniture",
+          "stem": "If, prior to repainting, one bed in the room is orange and the other bed is purple, which of the following must be true of the furniture in the room on completion of repainting?",
+          "options": [
+            { "key": "A", "text": "The Table is gray" },
+            { "key": "B", "text": "Exactly one of the beds is blue" },
+            { "key": "C", "text": "Exactly one of the beds is orange" },
+            { "key": "D", "text": "Both of the beds are white" },
+            { "key": "E", "text": "The Chair is purple" }
+          ],
+          "correctKey": null,
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 3,
+          "group": "s3-scenario-furniture",
+          "stem": "If, prior to repainting, the Chair in the room is gray and the other three pieces of furniture are white, then of these four pieces of furniture there must be how many that are painted a color that differs from its color prior to repainting?",
+          "options": [
+            { "key": "A", "text": "Four" },
+            { "key": "B", "text": "Three" },
+            { "key": "C", "text": "Two" },
+            { "key": "D", "text": "One" },
+            { "key": "E", "text": "None" }
+          ],
+          "correctKey": null,
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 4,
+          "group": "s3-scenario-furniture",
+          "stem": "Prior to repainting, and given the repainting specifications, the Chair in the room could have been any of the following colors EXCEPT",
+          "options": [
+            { "key": "A", "text": "Blue" },
+            { "key": "B", "text": "Gray" },
+            { "key": "C", "text": "Purple" },
+            { "key": "D", "text": "White" },
+            { "key": "E", "text": "Yellow" }
+          ],
+          "correctKey": null,
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 5,
+          "group": "s3-scenario-furniture",
+          "stem": "If, prior to repainting, the Table is white, one bed is orange, one bed is purple, and the Chair is gray, which of the following must be true of the furniture in the room on completion of repainting?",
+          "options": [
+            { "key": "A", "text": "At least one piece of furniture is blue" },
+            { "key": "B", "text": "Only one piece of furniture is gray" },
+            { "key": "C", "text": "Only one piece of furniture is purple" },
+            { "key": "D", "text": "Exactly two pieces of furniture are white" },
+            { "key": "E", "text": "Exactly two pieces of furniture are changed in color as a result of repainting" }
+          ],
+          "correctKey": null,
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 6,
+          "group": "s3-scenario-furniture",
+          "stem": "Which of the following could be true of the furniture in the room prior to repainting if, also prior to repainting, three of the pieces of furniture in the room are purple?",
+          "options": [
+            { "key": "A", "text": "The Chair is blue" },
+            { "key": "B", "text": "The Chair is gray" },
+            { "key": "C", "text": "One piece of furniture is white" },
+            { "key": "D", "text": "One piece of furniture is yellow" },
+            { "key": "E", "text": "The fourth piece of furniture also is purple" }
+          ],
+          "correctKey": null,
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 7,
+          "group": "s3-scenario-spelling",
+          "stem": "Which of the following can be the three members of the blue group?",
+          "options": [
+            { "key": "A", "text": "Faheem, Jamshaid, and Kashif" },
+            { "key": "B", "text": "Faheem, Rizwan, and Tuqeer" },
+            { "key": "C", "text": "Jamshaid, Kashif, and Tuqeer" },
+            { "key": "D", "text": "Kashif, Muneer, and Rizwan" },
+            { "key": "E", "text": "Muneer, Rizwan, and Tuqeer" }
+          ],
+          "correctKey": null,
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 8,
+          "group": "s3-scenario-spelling",
+          "stem": "If Muneer and Faheem are both on the blue group, the yellow group can consist of which of the following?",
+          "options": [
+            { "key": "A", "text": "Jamshaid, Kashif, and Rizwan" },
+            { "key": "B", "text": "Jamshaid, Shahid, and Tuqeer" },
+            { "key": "C", "text": "Kashif, Rizwan, and Shahid" },
+            { "key": "D", "text": "Kashif, Rizwan, and Tuqeer" },
+            { "key": "E", "text": "Rizwan, Shahid, and Tuqeer" }
+          ],
+          "correctKey": null,
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 9,
+          "group": "s3-scenario-spelling",
+          "stem": "If Muneer is on the blue group, which of the following if selected, must also be on the blue group?",
+          "options": [
+            { "key": "A", "text": "Faheem" },
+            { "key": "B", "text": "Jamshaid" },
+            { "key": "C", "text": "Rizwan" },
+            { "key": "D", "text": "Shahid" },
+            { "key": "E", "text": "Tuqeer" }
+          ],
+          "correctKey": null,
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 10,
+          "group": "s3-ds-group",
+          "stem": "A certain one-day seminar consisted of a morning session and an afternoon session. If each of the 128 people attending the seminar attended at least one of the two sessions, how many of the people attended the morning session only?\n\n(1) $\\frac{3}{4}$ of the people attended both sessions.\n(2) $\\frac{7}{8}$ of the people attended the afternoon session.",
+          "options": [
+            { "key": "A", "text": "Statement (1) ALONE is sufficient, but statement (2) alone is not sufficient." },
+            { "key": "B", "text": "Statement (2) ALONE is sufficient, but statement (1) alone is not sufficient." },
+            { "key": "C", "text": "BOTH statements TOGETHER are sufficient, but NEITHER statement ALONE is sufficient." },
+            { "key": "D", "text": "EACH statement ALONE is sufficient." },
+            { "key": "E", "text": "Statements (1) and (2) TOGETHER are NOT sufficient." }
+          ],
+          "correctKey": null,
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 11,
+          "group": "s3-ds-group",
+          "stem": "If a certain charity collected a total of 360 books, videos, and board games, how many videos did the charity collect?\n\n(1) The number of books that the charity collected was 40 percent of the total number of books, videos, and board games that the charity collected.\n(2) The number of books that charity collected was $66\\frac{2}{3}$ percent of the total number of videos and board games that charity collected.",
+          "options": [
+            { "key": "A", "text": "Statement (1) ALONE is sufficient, but statement (2) alone is not sufficient." },
+            { "key": "B", "text": "Statement (2) ALONE is sufficient, but statement (1) alone is not sufficient." },
+            { "key": "C", "text": "BOTH statements TOGETHER are sufficient, but NEITHER statement ALONE is sufficient." },
+            { "key": "D", "text": "EACH statement ALONE is sufficient." },
+            { "key": "E", "text": "Statements (1) and (2) TOGETHER are NOT sufficient." }
+          ],
+          "correctKey": null,
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 12,
+          "group": "s3-ds-group",
+          "stem": "Of the 800 sweaters at a certain store, 150 are red. How many of the red sweaters at the store are made of pure wool?\n\n(1) 320 of the sweaters at the store are neither red nor made of pure wool.\n(2) 100 of the red sweaters at the store are not made of pure wool.",
+          "options": [
+            { "key": "A", "text": "Statement (1) ALONE is sufficient, but statement (2) alone is not sufficient." },
+            { "key": "B", "text": "Statement (2) ALONE is sufficient, but statement (1) alone is not sufficient." },
+            { "key": "C", "text": "BOTH statements TOGETHER are sufficient, but NEITHER statement ALONE is sufficient." },
+            { "key": "D", "text": "EACH statement ALONE is sufficient." },
+            { "key": "E", "text": "Statements (1) and (2) TOGETHER are NOT sufficient." }
+          ],
+          "correctKey": null,
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 13,
+          "group": "s3-ds-group",
+          "stem": "At least 100 students at a certain high school study Japanese. If 4 percent of the students at the school who study French also study Japanese, do more students at the school study French than Japanese?\n\n(1) 16 students at the school study both French and Japanese.\n(2) 10 percent of the students at the school who study Japanese also study French.",
+          "options": [
+            { "key": "A", "text": "Statement (1) ALONE is sufficient, but statement (2) alone is not sufficient." },
+            { "key": "B", "text": "Statement (2) ALONE is sufficient, but statement (1) alone is not sufficient." },
+            { "key": "C", "text": "BOTH statements TOGETHER are sufficient, but NEITHER statement ALONE is sufficient." },
+            { "key": "D", "text": "EACH statement ALONE is sufficient." },
+            { "key": "E", "text": "Statements (1) and (2) TOGETHER are NOT sufficient." }
+          ],
+          "correctKey": null,
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 14,
+          "group": null,
+          "stem": "Mesa College has a long reputation of progressive arts education. It relies heavily on donations from its alumni for scholarships and campus improvements. Mesa College has never had an athletic program, and many current students and alumni say that they think this has led the college to put more focus and financial resources into developing first-class arts programs. This year, Mesa College instituted a football program, over the objections of many students and alumni.\n\nBased on this passage, which of the following is likely to occur?",
+          "options": [
+            { "key": "A", "text": "Alumni donations to Mesa College will increase." },
+            { "key": "B", "text": "Alumni will become very involved with boosting the football program at Mesa College." },
+            { "key": "C", "text": "Alumni donations to Mesa College will decrease." },
+            { "key": "D", "text": "The college will start offering more athletic scholarships than art scholarships." },
+            { "key": "E", "text": "The football program will fail." }
+          ],
+          "correctKey": null,
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 15,
+          "group": null,
+          "stem": "From last few years since 1972, pollution levels in Lake X have dropped considerably, primarily because of a state program to clean the lake water by means of a water refinery. Ironically, during this same period, the once-abundant population of sunfish in the lake has dwindled.\n\nWhich of the following, if true, would best explain why the sunfish population of Lake X has dwindled at the same time that the lake water has become cleaner?",
+          "options": [
+            { "key": "A", "text": "The life spans of sunfish are not diminished by high pollution levels, but the number of offspring they create during their lifetime is diminished." },
+            { "key": "B", "text": "Several artificial chemicals are introduced into the lake as a result of the refinement process, but these chemicals are known to have a benign effect on fish." },
+            { "key": "C", "text": "The water refinement process creates an environment extremely favorable to pike, a predator fish feeding on all types of fishes." },
+            { "key": "D", "text": "The heaviest concentrations of sunfish population in the lake are at its northern and northeastern shores, many miles away from the water refinery." },
+            { "key": "E", "text": "Ever since 1972, a strictly enforced state regulation has prevented anglers from over-fishing Lake Thomas." }
+          ],
+          "correctKey": null,
+          "imageUrl": null,
+          "explanation": null
+        }
+      ]
+    }
+  ]
+}
