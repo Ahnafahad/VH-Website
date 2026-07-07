@@ -16,6 +16,7 @@ import {
   BookOpen,
   ClipboardList,
   ArrowUpRight,
+  LayoutDashboard,
 } from 'lucide-react';
 import {
   motion,
@@ -26,11 +27,18 @@ import {
 import LoginButton from './LoginButton';
 import { useSession } from 'next-auth/react';
 
-const mainLinks = [
+const BASE_MAIN_LINKS = [
   { label: 'Home', href: '/' },
   { label: 'Programs', href: '/program' },
   { label: 'About', href: '/#about' },
   { label: 'Register', href: '/registration' },
+];
+
+const LOGGED_IN_MAIN_LINKS = [
+  { label: 'Dashboard', href: '/dashboard' },
+  { label: 'Vocab', href: '/vocab/home' },
+  { label: 'Tests', href: '/tests' },
+  { label: 'Results', href: '/results' },
 ];
 
 /**
@@ -148,24 +156,30 @@ const Header = () => {
     };
   }, [isMenuOpen]);
 
-  const moreLinks = [
-    { label: 'Eligibility Checker', href: '/eligibility-checker', icon: Target },
-    ...(session
-      ? [{ label: 'Results', href: '/results', icon: BarChart3 }]
-      : []),
-    { label: 'Mental Math', href: '/games/mental-math', icon: Gamepad2 },
-    { label: 'Vocab', href: '/vocab/home', icon: BookOpen },
-    ...(session
-      ? [{ label: 'Tests', href: '/tests', icon: ClipboardList }]
-      : []),
-    ...(isAdmin
-      ? [
-          { label: 'Registrations', href: '/admin/registrations', icon: Users },
-          { label: 'Manage Users', href: '/admin/users', icon: Users },
-          { label: 'FBS Accounting', href: '/games/fbs-accounting', icon: Calculator },
-        ]
-      : []),
-  ];
+  // Top-level links differ by auth state
+  const mainLinks = session ? LOGGED_IN_MAIN_LINKS : BASE_MAIN_LINKS;
+
+  // "More" dropdown: contents differ by auth state
+  const moreLinks = session
+    ? [
+        { label: 'Home', href: '/', icon: LayoutDashboard },
+        { label: 'Programs', href: '/program', icon: BookOpen },
+        { label: 'Eligibility Checker', href: '/eligibility-checker', icon: Target },
+        { label: 'Mental Math', href: '/games/mental-math', icon: Gamepad2 },
+        { label: 'Register', href: '/registration', icon: ClipboardList },
+        ...(isAdmin
+          ? [
+              { label: 'Registrations', href: '/admin/registrations', icon: Users },
+              { label: 'Manage Users', href: '/admin/users', icon: Users },
+              { label: 'FBS Accounting', href: '/games/fbs-accounting', icon: Calculator },
+            ]
+          : []),
+      ]
+    : [
+        { label: 'Eligibility Checker', href: '/eligibility-checker', icon: Target },
+        { label: 'Mental Math', href: '/games/mental-math', icon: Gamepad2 },
+        { label: 'Vocab', href: '/vocab/home', icon: BookOpen },
+      ];
 
   const isActive = (href: string) => {
     if (href === '/') return pathname === '/';
@@ -342,7 +356,7 @@ const Header = () => {
                     <span className="absolute top-3 left-3 w-px h-3 bg-[#D4B094]/60" />
 
                     <div className="px-3 pt-2 pb-2 font-sans text-[9px] tracking-[0.3em] uppercase text-[#A86E58]">
-                      Archive
+                      More
                     </div>
                     {moreLinks.map((link, i) => (
                       <motion.div
@@ -491,11 +505,11 @@ const Header = () => {
                 ))}
               </nav>
 
-              {/* Archive */}
+              {/* More */}
               <div className="mt-10">
                 <div className="font-sans text-[10px] tracking-[0.3em] uppercase text-[#D4B094]/50 mb-4 flex items-center gap-3">
                   <span className="w-6 h-px bg-[#D4B094]/40" />
-                  Archive
+                  More
                 </div>
                 <div className="grid grid-cols-2 gap-x-4 gap-y-2">
                   {moreLinks.map((link, i) => (

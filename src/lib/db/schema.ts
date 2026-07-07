@@ -689,6 +689,7 @@ export const tests = sqliteTable('tests', {
   // Set to force-publish results before every window has closed (admin override)
   resultsPublishedAt: integer('results_published_at', { mode: 'timestamp' }),
   sourceFile:      text('source_file'),                      // original .tex filename
+  syllabus:        text('syllabus'),                         // LMS: topics covered by this test
   createdBy:       integer('created_by').references(() => users.id),
   createdAt:       integer('created_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
   updatedAt:       integer('updated_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
@@ -849,3 +850,336 @@ export type TestWindowStatus  = 'scheduled' | 'open' | 'closed';
 export type TestAttemptStatus = 'in_progress' | 'submitted' | 'banned';
 export type TestGroupKind     = 'instruction' | 'passage' | 'scenario' | 'shared_options';
 export type TestOption        = { key: string; text: string };
+
+// ══════════════════════════════════════════════════════════════════════════════
+// LMS — Live Classes, Recordings, Materials, Homework, Booking
+// ══════════════════════════════════════════════════════════════════════════════
+
+// ─── Class Schedules ─────────────────────────────────────────────────────────
+// Recurring rules: generator materialises class_sessions 14 days ahead.
+// subject: 'english' | 'math' | 'analytical'
+// dayOfWeek: 0 = Sunday … 6 = Saturday (Dhaka local)
+// timeOfDay: 'HH:mm' Dhaka local
+
+export const classSchedules = sqliteTable('class_schedules', {
+  id:              integer('id').primaryKey({ autoIncrement: true }),
+  titleTemplate:   text('title_template').notNull(),
+  subject:         text('subject').notNull(),
+  product:         text('product').notNull().default('iba'),
+  batch:           text('batch'),                             // null = all batches
+  dayOfWeek:       integer('day_of_week').notNull(),          // 0=Sun..6=Sat
+  timeOfDay:       text('time_of_day').notNull(),             // 'HH:mm' Dhaka
+  durationMinutes: integer('duration_minutes').notNull(),
+  active:          integer('active', { mode: 'boolean' }).notNull().default(true),
+  createdBy:       integer('created_by').notNull().references(() => users.id),
+  createdAt:       integer('created_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
+});
+
+// ─── Class Sessions ───────────────────────────────────────────────────────────
+// One row per live class (either from generator or created manually).
+// status: 'draft' | 'scheduled' | 'live' | 'completed' | 'cancelled'
+
+export const classSessions = sqliteTable('class_sessions', {
+  id:              integer('id').primaryKey({ autoIncrement: true }),
+  scheduleId:      integer('schedule_id').references(() => classSchedules.id, { onDelete: 'set null' }),
+  title:           text('title').notNull(),
+  description:     text('description'),
+  subject:         text('subject').notNull(),
+  product:         text('product').notNull().default('iba'),
+  batch:           text('batch'),                             // null = all batches
+  scheduledAt:     integer('scheduled_at', { mode: 'timestamp' }).notNull(),
+  durationMinutes: integer('duration_minutes').notNull(),
+  // 'draft' | 'scheduled' | 'live' | 'completed' | 'cancelled'
+  status:          text('status').notNull().default('scheduled'),
+  meetLink:        text('meet_link'),
+  googleEventId:   text('google_event_id'),
+  recallBotId:     text('recall_bot_id'),
+  createdBy:       integer('created_by').notNull().references(() => users.id),
+  createdAt:       integer('created_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
+}, (t) => [
+  index('idx_class_sessions_scheduled_at').on(t.scheduledAt),
+  index('idx_class_sessions_status').on(t.status, t.scheduledAt),
+  index('idx_class_sessions_product_batch').on(t.product, t.batch),
+]);
+
+// ─── Class Attendance ─────────────────────────────────────────────────────────
+// One row per (session × user) — inserted on first Join click.
+
+export const classAttendance = sqliteTable('class_attendance', {
+  id:        integer('id').primaryKey({ autoIncrement: true }),
+  sessionId: integer('session_id').notNull().references(() => classSessions.id, { onDelete: 'cascade' }),
+  userId:    integer('user_id').notNull().references(() => users.id, { onDelete: 'cascade' }),
+  joinedAt:  integer('joined_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
+}, (t) => [
+  unique().on(t.sessionId, t.userId),
+]);
+
+// ─── Recordings ───────────────────────────────────────────────────────────────
+// One row per session. status: 'pending' | 'processing' | 'available' | 'failed' | 'expired'
+
+export const recordings = sqliteTable('recordings', {
+  id:               integer('id').primaryKey({ autoIncrement: true }),
+  classSessionId:   integer('class_session_id').notNull().references(() => classSessions.id, { onDelete: 'cascade' }),
+  r2Key:            text('r2_key').notNull(),
+  fileSize:         integer('file_size'),
+  durationSeconds:  integer('duration_seconds'),
+  // 'pending' | 'processing' | 'available' | 'failed' | 'expired'
+  status:           text('status').notNull().default('pending'),
+  source:           text('source').notNull().default('recall'),
+  errorMessage:     text('error_message'),
+  createdAt:        integer('created_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
+}, (t) => [
+  unique().on(t.classSessionId),
+  index('idx_recordings_status').on(t.status),
+]);
+
+// ─── Recording Access Grants ──────────────────────────────────────────────────
+// Extension mechanism: userId null = whole batch.
+
+export const recordingAccessGrants = sqliteTable('recording_access_grants', {
+  id:          integer('id').primaryKey({ autoIncrement: true }),
+  recordingId: integer('recording_id').notNull().references(() => recordings.id, { onDelete: 'cascade' }),
+  userId:      integer('user_id').references(() => users.id, { onDelete: 'cascade' }),
+  expiresAt:   integer('expires_at', { mode: 'timestamp' }).notNull(),
+  grantedBy:   integer('granted_by').notNull().references(() => users.id),
+  createdAt:   integer('created_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
+}, (t) => [
+  index('idx_rag_recording_user').on(t.recordingId, t.userId),
+]);
+
+// ─── Recording Watch Progress ─────────────────────────────────────────────────
+// 30s heartbeat upsert from the player. UNIQUE(recordingId, userId).
+
+export const recordingWatchProgress = sqliteTable('recording_watch_progress', {
+  id:                   integer('id').primaryKey({ autoIncrement: true }),
+  recordingId:          integer('recording_id').notNull().references(() => recordings.id, { onDelete: 'cascade' }),
+  userId:               integer('user_id').notNull().references(() => users.id, { onDelete: 'cascade' }),
+  secondsWatched:       integer('seconds_watched').notNull().default(0),
+  lastPositionSeconds:  integer('last_position_seconds').notNull().default(0),
+  completedPercent:     integer('completed_percent').notNull().default(0),
+  updatedAt:            integer('updated_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
+}, (t) => [
+  unique().on(t.recordingId, t.userId),
+]);
+
+// ─── Materials ────────────────────────────────────────────────────────────────
+// PDFs (Vercel Blob) or links, scoped to subject/product/batch.
+// type: 'pdf' | 'link'
+
+export const materials = sqliteTable('materials', {
+  id:             integer('id').primaryKey({ autoIncrement: true }),
+  title:          text('title').notNull(),
+  // 'pdf' | 'link'
+  type:           text('type').notNull(),
+  blobUrl:        text('blob_url').notNull(),
+  fileName:       text('file_name'),
+  fileSize:       integer('file_size'),
+  subject:        text('subject').notNull(),
+  product:        text('product').notNull().default('iba'),
+  batch:          text('batch'),
+  classSessionId: integer('class_session_id').references(() => classSessions.id, { onDelete: 'set null' }),
+  uploadedBy:     integer('uploaded_by').notNull().references(() => users.id),
+  createdAt:      integer('created_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
+}, (t) => [
+  index('idx_materials_session').on(t.classSessionId),
+  index('idx_materials_product_batch').on(t.product, t.batch),
+]);
+
+// ─── Material Highlights ──────────────────────────────────────────────────────
+// Private per-user highlights + notes on PDF materials.
+
+export const materialHighlights = sqliteTable('material_highlights', {
+  id:           integer('id').primaryKey({ autoIncrement: true }),
+  userId:       integer('user_id').notNull().references(() => users.id, { onDelete: 'cascade' }),
+  materialId:   integer('material_id').notNull().references(() => materials.id, { onDelete: 'cascade' }),
+  pageNumber:   integer('page_number').notNull(),
+  position:     text('position').notNull(),                   // JSON from react-pdf-highlighter
+  selectedText: text('selected_text').notNull(),
+  note:         text('note'),
+  color:        text('color').notNull().default('yellow'),
+  updatedAt:    integer('updated_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
+}, (t) => [
+  index('idx_mh_user_material').on(t.userId, t.materialId),
+]);
+
+// ─── Assignments ──────────────────────────────────────────────────────────────
+// Homework tasks scoped to subject/product/batch.
+
+export const assignments = sqliteTable('assignments', {
+  id:             integer('id').primaryKey({ autoIncrement: true }),
+  title:          text('title').notNull(),
+  description:    text('description').notNull(),
+  attachmentUrl:  text('attachment_url'),
+  subject:        text('subject').notNull(),
+  product:        text('product').notNull().default('iba'),
+  batch:          text('batch'),
+  classSessionId: integer('class_session_id').references(() => classSessions.id, { onDelete: 'set null' }),
+  dueAt:          integer('due_at', { mode: 'timestamp' }).notNull(),
+  createdBy:      integer('created_by').notNull().references(() => users.id),
+  createdAt:      integer('created_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
+}, (t) => [
+  index('idx_assignments_due').on(t.dueAt),
+  index('idx_assignments_product_batch').on(t.product, t.batch),
+]);
+
+// ─── Assignment Submissions ───────────────────────────────────────────────────
+// UNIQUE(assignmentId, userId). "pending" = no row exists.
+// status: 'submitted' | 'reviewed'
+
+export const assignmentSubmissions = sqliteTable('assignment_submissions', {
+  id:                integer('id').primaryKey({ autoIncrement: true }),
+  assignmentId:      integer('assignment_id').notNull().references(() => assignments.id, { onDelete: 'cascade' }),
+  userId:            integer('user_id').notNull().references(() => users.id, { onDelete: 'cascade' }),
+  // 'submitted' | 'reviewed'
+  status:            text('status').notNull().default('submitted'),
+  fileUrl:           text('file_url'),
+  note:              text('note'),
+  instructorComment: text('instructor_comment'),
+  submittedAt:       integer('submitted_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
+  reviewedAt:        integer('reviewed_at', { mode: 'timestamp' }),
+}, (t) => [
+  unique().on(t.assignmentId, t.userId),
+  index('idx_asub_assignment_status').on(t.assignmentId, t.status),
+]);
+
+// ─── Class Questions ──────────────────────────────────────────────────────────
+// Per-class Q&A thread. parentId != null ⇒ an answer.
+
+export const classQuestions = sqliteTable('class_questions', {
+  id:        integer('id').primaryKey({ autoIncrement: true }),
+  sessionId: integer('session_id').notNull().references(() => classSessions.id, { onDelete: 'cascade' }),
+  userId:    integer('user_id').notNull().references(() => users.id, { onDelete: 'cascade' }),
+  // parentId != null ⇒ this row is an answer to that question
+  parentId:  integer('parent_id'),
+  body:      text('body').notNull(),
+  createdAt: integer('created_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
+}, (t) => [
+  index('idx_cq_session').on(t.sessionId),
+  index('idx_cq_parent').on(t.parentId),
+]);
+
+// ─── Booking Slots ────────────────────────────────────────────────────────────
+// Instructor-published 1-on-1 slots.
+// mode: 'online' | 'offline'   status: 'open' | 'booked' | 'cancelled'
+
+export const bookingSlots = sqliteTable('booking_slots', {
+  id:             integer('id').primaryKey({ autoIncrement: true }),
+  instructorId:   integer('instructor_id').notNull().references(() => users.id),
+  subject:        text('subject').notNull(),
+  product:        text('product').notNull().default('iba'),
+  batch:          text('batch'),
+  startAt:        integer('start_at', { mode: 'timestamp' }).notNull(),
+  endAt:          integer('end_at',   { mode: 'timestamp' }).notNull(),
+  // 'online' | 'offline'
+  mode:           text('mode').notNull(),
+  topic:          text('topic'),
+  // 'open' | 'booked' | 'cancelled'
+  status:         text('status').notNull().default('open'),
+  meetLink:       text('meet_link'),
+  googleEventId:  text('google_event_id'),
+  bookedByUserId: integer('booked_by_user_id').references(() => users.id, { onDelete: 'set null' }),
+  bookedAt:       integer('booked_at', { mode: 'timestamp' }),
+  createdAt:      integer('created_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
+}, (t) => [
+  index('idx_bslots_start').on(t.startAt, t.status),
+]);
+
+// ─── Session Requests ─────────────────────────────────────────────────────────
+// Student-initiated requests for a 1-on-1 session.
+// status: 'pending' | 'approved' | 'declined' | 'scheduled'
+
+export const sessionRequests = sqliteTable('session_requests', {
+  id:              integer('id').primaryKey({ autoIncrement: true }),
+  userId:          integer('user_id').notNull().references(() => users.id, { onDelete: 'cascade' }),
+  subject:         text('subject').notNull(),
+  product:         text('product').notNull().default('iba'),
+  batch:           text('batch'),
+  topic:           text('topic').notNull(),
+  // 'online' | 'offline' | 'either'
+  preferredMode:   text('preferred_mode').notNull(),
+  durationMinutes: integer('duration_minutes').notNull(),
+  notes:           text('notes'),
+  // 'pending' | 'approved' | 'declined' | 'scheduled'
+  status:          text('status').notNull().default('pending'),
+  resolvedSlotId:  integer('resolved_slot_id').references(() => bookingSlots.id, { onDelete: 'set null' }),
+  staffNote:       text('staff_note'),
+  createdAt:       integer('created_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
+}, (t) => [
+  index('idx_sreq_user_status').on(t.userId, t.status),
+]);
+
+// ─── LMS Announcements ────────────────────────────────────────────────────────
+// Name avoids clash with existing email-announcements feature.
+
+export const lmsAnnouncements = sqliteTable('lms_announcements', {
+  id:        integer('id').primaryKey({ autoIncrement: true }),
+  title:     text('title').notNull(),
+  body:      text('body').notNull(),
+  subject:   text('subject').notNull(),
+  product:   text('product').notNull().default('iba'),
+  batch:     text('batch'),
+  pinned:    integer('pinned', { mode: 'boolean' }).notNull().default(false),
+  createdBy: integer('created_by').notNull().references(() => users.id),
+  createdAt: integer('created_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
+}, (t) => [
+  index('idx_lms_ann_product_batch').on(t.product, t.batch),
+]);
+
+// ─── Google Credentials ───────────────────────────────────────────────────────
+// Exactly one row in practice (the host). Separate from NextAuth OAuth tokens.
+
+export const googleCredentials = sqliteTable('google_credentials', {
+  id:           integer('id').primaryKey({ autoIncrement: true }),
+  userId:       integer('user_id').notNull().unique().references(() => users.id, { onDelete: 'cascade' }),
+  accessToken:  text('access_token').notNull(),
+  refreshToken: text('refresh_token').notNull(),
+  expiresAt:    integer('expires_at', { mode: 'timestamp' }).notNull(),
+  scope:        text('scope').notNull(),
+  updatedAt:    integer('updated_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
+});
+
+// ─── LMS Settings ─────────────────────────────────────────────────────────────
+// Generic key-value store for LMS feature flags and configuration.
+// key: string PK (e.g. 'meet_auto_create')
+// value: text (e.g. 'true' | 'false' | JSON)
+
+export const lmsSettings = sqliteTable('lms_settings', {
+  key:       text('key').primaryKey(),
+  value:     text('value').notNull(),
+  updatedAt: integer('updated_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
+});
+
+export type LmsSettingsRow = typeof lmsSettings.$inferSelect;
+
+// ─── LMS Type Exports ─────────────────────────────────────────────────────────
+
+export type ClassSchedule            = typeof classSchedules.$inferSelect;
+export type NewClassSchedule         = typeof classSchedules.$inferInsert;
+export type ClassSession             = typeof classSessions.$inferSelect;
+export type NewClassSession          = typeof classSessions.$inferInsert;
+export type ClassAttendance          = typeof classAttendance.$inferSelect;
+export type Recording                = typeof recordings.$inferSelect;
+export type NewRecording             = typeof recordings.$inferInsert;
+export type RecordingAccessGrant     = typeof recordingAccessGrants.$inferSelect;
+export type RecordingWatchProgress   = typeof recordingWatchProgress.$inferSelect;
+export type Material                 = typeof materials.$inferSelect;
+export type NewMaterial              = typeof materials.$inferInsert;
+export type MaterialHighlight        = typeof materialHighlights.$inferSelect;
+export type Assignment               = typeof assignments.$inferSelect;
+export type NewAssignment            = typeof assignments.$inferInsert;
+export type AssignmentSubmission     = typeof assignmentSubmissions.$inferSelect;
+export type ClassQuestion            = typeof classQuestions.$inferSelect;
+export type BookingSlot              = typeof bookingSlots.$inferSelect;
+export type SessionRequest           = typeof sessionRequests.$inferSelect;
+export type LmsAnnouncement          = typeof lmsAnnouncements.$inferSelect;
+export type GoogleCredential         = typeof googleCredentials.$inferSelect;
+
+export type LmsSubject               = 'english' | 'math' | 'analytical';
+export type ClassSessionStatus       = 'draft' | 'scheduled' | 'live' | 'completed' | 'cancelled';
+export type RecordingStatus          = 'pending' | 'processing' | 'available' | 'failed' | 'expired';
+export type MaterialType             = 'pdf' | 'link';
+export type AssignmentSubmissionStatus = 'submitted' | 'reviewed';
+export type BookingSlotStatus        = 'open' | 'booked' | 'cancelled';
+export type SessionRequestStatus     = 'pending' | 'approved' | 'declined' | 'scheduled';
+export type BookingMode              = 'online' | 'offline';
+export type SessionPreferredMode     = 'online' | 'offline' | 'either';

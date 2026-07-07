@@ -42,6 +42,7 @@ export async function GET() {
         totalMarks: t.totalMarks,
         allowedProducts: t.allowedProducts ? JSON.parse(t.allowedProducts) : null,
         resultsPublishedAt: t.resultsPublishedAt?.getTime() ?? null,
+        syllabus: t.syllabus ?? null,
         createdAt: t.createdAt.getTime(),
         windows: windows
           .filter(w => w.testId === t.id)

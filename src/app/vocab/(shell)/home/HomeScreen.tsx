@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { HelpCircle, Lock, X } from 'lucide-react';
 import type { HomeData, MasteryBreakdown, SessionsData } from '@/lib/vocab/home-data';
+import { useSafeNavigate } from '@/hooks/useSafeNavigate';
 import ProgressRing from '@/components/vocab/ProgressRing';
 import AnimatedNumber from '@/components/vocab/AnimatedNumber';
 import DeadlineBanner from '@/components/vocab/DeadlineBanner';
@@ -730,6 +731,7 @@ function ProgressSection({
 
 export default function HomeScreen({ data }: { data: HomeData }) {
   const router                 = useRouter();
+  const { navigate }           = useSafeNavigate();
   const firstName              = data.userName.split(' ')[0];
   const deadlinePassed         = data.deadline ? new Date(data.deadline) < new Date() : false;
   const sessionRows            = buildSessions(data.sessions, router);
@@ -1190,7 +1192,9 @@ export default function HomeScreen({ data }: { data: HomeData }) {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.34, type: 'spring' as const, stiffness: 300, damping: 26 }}
                 whileTap={{ scale: 0.98 }}
-                onClick={() => router.push('/vocab/study')}
+                // navigate() = router.push + watchdog: hard-navigates if the
+                // soft navigation stalls on a hung RSC fetch.
+                onClick={() => navigate('/vocab/study')}
                 style={{
                   display:        'flex',
                   alignItems:     'center',

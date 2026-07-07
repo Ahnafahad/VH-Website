@@ -46,6 +46,29 @@ function VocabShellInner({ children }: { children: React.ReactNode }) {
     };
   }, []);
 
+  // Self-heal for stale service workers: when a new SW takes control of this
+  // tab (controllerchange), reload once so the page runs against the fresh SW
+  // instead of a broken pre-fix one. Guards:
+  //  - only reload if the tab was ALREADY controlled (skips first-ever install)
+  //  - `reloaded` flag prevents reload loops if the event fires repeatedly
+  useEffect(() => {
+    if (typeof window === 'undefined' || !('serviceWorker' in navigator)) return;
+
+    const hadController = Boolean(navigator.serviceWorker.controller);
+    let reloaded = false;
+
+    const onControllerChange = () => {
+      if (!hadController || reloaded) return;
+      reloaded = true;
+      window.location.reload();
+    };
+
+    navigator.serviceWorker.addEventListener('controllerchange', onControllerChange);
+    return () => {
+      navigator.serviceWorker.removeEventListener('controllerchange', onControllerChange);
+    };
+  }, []);
+
   // Daily login — first authenticated action of the day triggers:
   //  1. badge check (streak badges)
   //  2. L's dossier overlay (once per calendar day)

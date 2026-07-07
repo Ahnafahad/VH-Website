@@ -37,24 +37,57 @@ const pwaConfig = withPWA({
   disable: process.env.NODE_ENV === "development" || process.env.DISABLE_SW === "1",
   register: true,
   skipWaiting: true,
+  // Drop caches left behind by older Workbox precache versions so users with
+  // a stale pre-fix service worker don't keep serving broken responses.
+  // (This is next-pwa's default, but we depend on it — keep it explicit.)
+  cleanupOutdatedCaches: true,
   // Never let the SW cache Next.js RSC payloads or API responses.
   // Stale RSC cache causes 2-minute blank screens on mobile navigation.
+  //
+  // networkTimeoutSeconds: without it, a stalled fetch (flaky mobile network,
+  // backgrounded PWA) never resolves and App Router soft navigation hangs on
+  // loading.tsx forever. With it, the strategy rejects after N seconds, the
+  // fetch fails fast, and Next can surface an error / retry instead of hanging.
+  //
+  // Why NetworkFirst and not NetworkOnly: workbox-build's generateSW template
+  // only allows networkTimeoutSeconds with NetworkFirst (it rejects it on
+  // NetworkOnly at build time, even though the runtime strategy supports it).
+  // So we use NetworkFirst with a cache that is NEVER populated:
+  // cacheableResponse.statuses [0] means only opaque responses (cross-origin
+  // no-cors) are cacheable — same-origin 200s are never stored. The cache
+  // stays empty, so on timeout/failure there is no stale fallback and the
+  // strategy rejects — identical behavior to NetworkOnly, plus the timeout.
   runtimeCaching: [
     // RSC fetch requests (Next.js App Router internal fetches — ?_rsc=xxx)
     {
       urlPattern: /_rsc=/,
-      handler: "NetworkOnly",
+      handler: "NetworkFirst",
+      options: {
+        cacheName: "rsc-network-only",
+        networkTimeoutSeconds: 10,
+        cacheableResponse: { statuses: [0] },
+      },
     },
     // API routes — always fresh
     {
       urlPattern: /^\/api\//,
-      handler: "NetworkOnly",
+      handler: "NetworkFirst",
+      options: {
+        cacheName: "api-network-only",
+        networkTimeoutSeconds: 10,
+        cacheableResponse: { statuses: [0] },
+      },
     },
     // Page navigations (HTML documents) — always fresh
     {
       urlPattern: ({ request }: { request: Request }) =>
         request.mode === "navigate",
-      handler: "NetworkOnly",
+      handler: "NetworkFirst",
+      options: {
+        cacheName: "pages-network-only",
+        networkTimeoutSeconds: 10,
+        cacheableResponse: { statuses: [0] },
+      },
     },
     // Next.js build artifacts — safe to cache forever
     {

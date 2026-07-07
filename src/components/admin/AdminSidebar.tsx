@@ -15,6 +15,14 @@ import {
   Database,
   BarChart3,
   ClipboardList,
+  CalendarDays,
+  FileText,
+  BookMarked,
+  Rss,
+  CalendarCheck,
+  Settings,
+  CalendarClock,
+  UserCheck,
 } from 'lucide-react';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
@@ -25,22 +33,60 @@ interface NavItem {
   icon:  React.ElementType;
 }
 
+interface NavSection {
+  label: string | null; // null = no section header (top-level)
+  items: NavItem[];
+}
+
 interface AdminSidebarProps {
   adminName:  string;
   adminEmail: string;
 }
 
-// ─── Nav items ────────────────────────────────────────────────────────────────
+// ─── Nav sections ─────────────────────────────────────────────────────────────
 
-const NAV_ITEMS: NavItem[] = [
-  { href: '/admin',              label: 'Overview',      icon: LayoutDashboard },
-  { href: '/admin/analytics',    label: 'Analytics',     icon: BarChart3       },
-  { href: '/admin/vocab',        label: 'Vocabulary',    icon: BookOpen        },
-  { href: '/admin/words',        label: 'Word Bank',     icon: Database        },
-  { href: '/admin/tests',        label: 'Tests',         icon: ClipboardList   },
-  { href: '/admin/users',        label: 'Users',         icon: Users           },
-  { href: '/admin/leaderboard',  label: 'Leaderboard',   icon: Trophy          },
-  { href: '/admin/announcements',label: 'Announcements', icon: Megaphone       },
+const NAV_SECTIONS: NavSection[] = [
+  {
+    label: null,
+    items: [
+      { href: '/admin', label: 'Overview', icon: LayoutDashboard },
+    ],
+  },
+  {
+    label: 'CLASSROOM',
+    items: [
+      { href: '/admin/today',              label: 'Today',    icon: CalendarCheck },
+      { href: '/admin/classes',            label: 'Classes',  icon: CalendarDays  },
+      { href: '/admin/materials',          label: 'Materials',icon: FileText      },
+      { href: '/admin/homework',           label: 'Homework', icon: BookMarked    },
+      { href: '/admin/bookings',           label: 'Bookings', icon: CalendarClock },
+      { href: '/admin/announcements-feed', label: 'Feed',     icon: Rss           },
+    ],
+  },
+  {
+    label: 'TESTS & GAMES',
+    items: [
+      { href: '/admin/tests',       label: 'Tests',       icon: ClipboardList },
+      { href: '/admin/vocab',       label: 'Vocabulary',  icon: BookOpen      },
+      { href: '/admin/words',       label: 'Word Bank',   icon: Database      },
+      { href: '/admin/leaderboard', label: 'Leaderboard', icon: Trophy        },
+    ],
+  },
+  {
+    label: 'PEOPLE',
+    items: [
+      { href: '/admin/users',         label: 'Users',          icon: Users     },
+      { href: '/admin/registrations', label: 'Registrations',  icon: UserCheck },
+      { href: '/admin/announcements', label: 'Announcements',  icon: Megaphone },
+    ],
+  },
+  {
+    label: 'SYSTEM',
+    items: [
+      { href: '/admin/analytics',       label: 'Analytics',       icon: BarChart3 },
+      { href: '/admin/settings/google', label: 'Google Calendar', icon: Settings  },
+    ],
+  },
 ];
 
 // ─── Motion variants ─────────────────────────────────────────────────────────
@@ -139,82 +185,101 @@ export default function AdminSidebar({ adminName, adminEmail }: AdminSidebarProp
         style={{ flex: 1, padding: '10px 8px', overflowY: 'auto' }}
         aria-label="Admin navigation"
       >
-        {NAV_ITEMS.map((item) => {
-          const active = isActive(item.href, pathname);
-          const Icon   = item.icon;
+        {NAV_SECTIONS.map((section, si) => (
+          <div key={section.label ?? '__top__'} style={{ marginBottom: section.label ? 6 : 0 }}>
+            {/* Section header */}
+            {section.label && (
+              <p
+                style={{
+                  margin:        si === 0 ? '8px 12px 4px' : '12px 12px 4px',
+                  fontSize:      10,
+                  fontWeight:    600,
+                  color:         '#9CA3AF',
+                  letterSpacing: '0.1em',
+                  textTransform: 'uppercase',
+                  lineHeight:    1,
+                }}
+              >
+                {section.label}
+              </p>
+            )}
 
-          return (
-            <motion.div
-              key={item.href}
-              variants={navItemVariants}
-            >
-              <Link href={item.href} style={{ textDecoration: 'none' }}>
+            {section.items.map((item) => {
+              const active = isActive(item.href, pathname);
+              const Icon   = item.icon;
+
+              return (
                 <motion.div
-                  whileHover={active ? {} : {
-                    x: 2,
-                    backgroundColor: 'rgba(0,0,0,0.03)',
-                    transition: { type: 'spring' as const, stiffness: 400, damping: 30 },
-                  }}
-                  style={{
-                    position:     'relative',
-                    display:      'flex',
-                    alignItems:   'center',
-                    gap:          10,
-                    padding:      '9px 12px',
-                    borderRadius: 0,
-                    cursor:       'pointer',
-                    marginBottom: 1,
-                    // Active left border via box-shadow on left side (avoids layout shift)
-                    borderLeft:   active ? '3px solid #D62B38' : '3px solid transparent',
-                    backgroundColor: active ? 'rgba(214,43,56,0.04)' : 'transparent',
-                    transition:   'border-color 0.15s, background-color 0.15s',
-                  }}
+                  key={item.href}
+                  variants={navItemVariants}
                 >
-                  {/* Animated active bg indicator */}
-                  {active && (
-                    <motion.span
-                      layoutId="admin-nav-active"
-                      style={{
-                        position:        'absolute',
-                        inset:           0,
-                        background:      'rgba(214,43,56,0.04)',
-                        pointerEvents:   'none',
-                        zIndex:          0,
+                  <Link href={item.href} style={{ textDecoration: 'none' }}>
+                    <motion.div
+                      whileHover={active ? {} : {
+                        x: 2,
+                        backgroundColor: 'rgba(0,0,0,0.03)',
+                        transition: { type: 'spring' as const, stiffness: 400, damping: 30 },
                       }}
-                      transition={{ type: 'spring' as const, stiffness: 380, damping: 30 }}
-                    />
-                  )}
+                      style={{
+                        position:        'relative',
+                        display:         'flex',
+                        alignItems:      'center',
+                        gap:             10,
+                        padding:         '9px 12px',
+                        cursor:          'pointer',
+                        marginBottom:    1,
+                        borderLeft:      active ? '3px solid #D62B38' : '3px solid transparent',
+                        backgroundColor: active ? 'rgba(214,43,56,0.04)' : 'transparent',
+                        transition:      'border-color 0.15s, background-color 0.15s',
+                      }}
+                    >
+                      {/* Animated active bg indicator */}
+                      {active && (
+                        <motion.span
+                          layoutId="admin-nav-active"
+                          style={{
+                            position:      'absolute',
+                            inset:         0,
+                            background:    'rgba(214,43,56,0.04)',
+                            pointerEvents: 'none',
+                            zIndex:        0,
+                          }}
+                          transition={{ type: 'spring' as const, stiffness: 380, damping: 30 }}
+                        />
+                      )}
 
-                  <Icon
-                    size={16}
-                    style={{
-                      flexShrink: 0,
-                      color:      active ? '#D62B38' : '#6B7280',
-                      position:   'relative',
-                      zIndex:     1,
-                      transition: 'color 0.15s',
-                    }}
-                    aria-hidden
-                  />
+                      <Icon
+                        size={16}
+                        style={{
+                          flexShrink: 0,
+                          color:      active ? '#D62B38' : '#6B7280',
+                          position:   'relative',
+                          zIndex:     1,
+                          transition: 'color 0.15s',
+                        }}
+                        aria-hidden
+                      />
 
-                  <span
-                    style={{
-                      fontSize:   13,
-                      fontWeight:  active ? 600 : 400,
-                      color:       active ? '#D62B38' : '#6B7280',
-                      letterSpacing: '-0.01em',
-                      position:   'relative',
-                      zIndex:     1,
-                      transition: 'color 0.15s, font-weight 0.15s',
-                    }}
-                  >
-                    {item.label}
-                  </span>
+                      <span
+                        style={{
+                          fontSize:      13,
+                          fontWeight:    active ? 600 : 400,
+                          color:         active ? '#D62B38' : '#6B7280',
+                          letterSpacing: '-0.01em',
+                          position:      'relative',
+                          zIndex:        1,
+                          transition:    'color 0.15s, font-weight 0.15s',
+                        }}
+                      >
+                        {item.label}
+                      </span>
+                    </motion.div>
+                  </Link>
                 </motion.div>
-              </Link>
-            </motion.div>
-          );
-        })}
+              );
+            })}
+          </div>
+        ))}
       </nav>
 
       {/* ── Bottom: admin info + sign out ─────────────────────────────────── */}

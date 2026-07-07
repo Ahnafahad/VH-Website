@@ -174,6 +174,12 @@ export default function TestDetailPage({ params }: PageProps) {
             <span>·</span>
             <span>{test.totalMarks} marks</span>
           </div>
+          {test.syllabus && (
+            <div className="mt-5 bg-exam-elevated border border-exam-border rounded-xl px-5 py-4">
+              <p className="text-exam-ink-faint text-xs uppercase tracking-widest mb-2">Syllabus</p>
+              <p className="text-exam-ink-muted text-sm leading-relaxed whitespace-pre-wrap">{test.syllabus}</p>
+            </div>
+          )}
         </div>
       </div>
 

@@ -90,6 +90,7 @@ interface AdminTest {
   totalMarks: number;
   allowedProducts: string[] | null;
   resultsPublishedAt: number | null;
+  syllabus: string | null;
   createdAt: number;
   windows: AdminWindow[];
   attemptCounts: { inProgress: number; submitted: number; banned: number };
@@ -348,6 +349,7 @@ function TestSettings({
   const [selectedProducts, setSelectedProducts] = useState<Product[]>(
     (test.allowedProducts as Product[] | null) ?? []
   );
+  const [syllabus, setSyllabus] = useState(test.syllabus ?? '');
 
   async function patch(body: Record<string, unknown>) {
     setSaving(true);
@@ -475,6 +477,35 @@ function TestSettings({
             Warning: no products selected — no student will see this test.
           </p>
         )}
+      </div>
+
+      {/* Syllabus */}
+      <div>
+        <div style={{ fontSize: 13, fontWeight: 600, color: C.text, fontFamily: SANS, marginBottom: 6 }}>
+          Syllabus
+        </div>
+        <textarea
+          value={syllabus}
+          onChange={e => setSyllabus(e.target.value)}
+          placeholder="Topics covered — shown to students on their dashboard before the test"
+          rows={4}
+          style={{
+            width: '100%', padding: '8px 10px', borderRadius: 6,
+            border: `1px solid ${C.border}`, fontSize: 13, fontFamily: SANS,
+            color: C.text, resize: 'vertical', minHeight: 80,
+            boxSizing: 'border-box', background: '#fff',
+          }}
+        />
+        <div style={{ marginTop: 8 }}>
+          <Btn
+            size="sm"
+            onClick={() => patch({ syllabus: syllabus.trim() || null })}
+            disabled={saving || (syllabus.trim() || null) === (test.syllabus ?? null)}
+          >
+            {saving ? <Spinner size={12} /> : null}
+            Save Syllabus
+          </Btn>
+        </div>
       </div>
     </div>
   );

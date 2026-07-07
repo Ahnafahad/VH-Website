@@ -757,6 +757,349 @@ export async function sendStreakLost(
   }
 }
 
+// ---------------------------------------------------------------------------
+// LMS — Recording Failed Alert
+// ---------------------------------------------------------------------------
+
+interface RecordingFailedAlertData {
+  sessionTitle: string;
+  sessionId: number;
+  botId: string;
+  errorMessage: string;
+}
+
+/**
+ * Alert admins when a Recall.ai recording pipeline fails.
+ * Fire-and-forget: caller should .catch() the returned promise.
+ */
+export async function sendRecordingFailedAlert(
+  data: RecordingFailedAlertData,
+): Promise<void> {
+  if (!process.env.RESEND_API_KEY) {
+    console.warn('[email] RESEND_API_KEY not set — skipping sendRecordingFailedAlert');
+    return;
+  }
+
+  const subject = `[VH LMS] Recording failed — ${data.sessionTitle}`;
+
+  const htmlContent = `<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body style="margin:0;padding:0;background:#FAF5EF;font-family:-apple-system,Helvetica,Arial,sans-serif;color:#1A0507;">
+    <div style="max-width:600px;margin:0 auto;">
+      <div style="background:#5A0B0F;padding:24px 32px;">
+        <p style="margin:0 0 4px 0;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#D4B094;">VH LMS — Alert</p>
+        <h1 style="margin:0;font-family:Georgia,serif;font-size:22px;font-weight:400;color:#FAF5EF;">Recording Failed</h1>
+      </div>
+      <div style="padding:28px 32px;background:#FAF5EF;">
+        <div style="background:#fff;padding:18px 20px;border-left:3px solid #D62B38;margin-bottom:20px;">
+          <p style="margin:0 0 8px 0;"><strong style="color:#5A0B0F;">Session:</strong> ${data.sessionTitle} (ID: ${data.sessionId})</p>
+          <p style="margin:0 0 8px 0;"><strong style="color:#5A0B0F;">Bot ID:</strong> ${data.botId}</p>
+          <p style="margin:0;"><strong style="color:#5A0B0F;">Error:</strong> ${data.errorMessage}</p>
+        </div>
+        <p style="margin:0;font-size:13px;color:#A86E58;line-height:1.7;">
+          Check the Recall.ai dashboard and the admin panel for details. The student recording for this class will not be available.
+        </p>
+      </div>
+    </div>
+  </body>
+</html>`;
+
+  const textContent = `[VH LMS] Recording Failed
+
+Session: ${data.sessionTitle} (ID: ${data.sessionId})
+Bot ID: ${data.botId}
+Error: ${data.errorMessage}
+
+Check the Recall.ai dashboard and admin panel for details.`;
+
+  await Promise.allSettled(
+    ADMIN_EMAILS.map((adminEmail) =>
+      resend.emails.send({
+        from: 'VH LMS <noreply@vh-beyondthehorizons.org>',
+        to: adminEmail,
+        subject,
+        html: htmlContent,
+        text: textContent,
+      }),
+    ),
+  );
+}
+
+// ---------------------------------------------------------------------------
+// LMS — Notification Templates
+// ---------------------------------------------------------------------------
+
+interface LmsClassSoonData {
+  name: string;
+  sessionTitle: string;
+  scheduledAt: Date;
+  subject: string;
+  dashboardUrl: string;
+}
+
+/**
+ * Notify a student that their class is starting soon (~30 min).
+ */
+export async function sendLmsClassSoon(
+  to: string,
+  data: LmsClassSoonData,
+): Promise<{ success: number; failed: number; total: number }> {
+  if (!process.env.RESEND_API_KEY) {
+    console.warn('[email] RESEND_API_KEY not set — skipping sendLmsClassSoon');
+    return { success: 0, failed: 1, total: 1 };
+  }
+
+  const timeStr = new Intl.DateTimeFormat('en-BD', {
+    timeStyle: 'short',
+    dateStyle: 'medium',
+    timeZone: 'Asia/Dhaka',
+  }).format(data.scheduledAt);
+
+  const subjectChip = data.subject.charAt(0).toUpperCase() + data.subject.slice(1);
+
+  const htmlContent = `<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body style="margin:0;padding:0;background:#FAF5EF;font-family:-apple-system,Helvetica,Arial,sans-serif;color:#1A0507;">
+    <div style="max-width:600px;margin:0 auto;">
+      <div style="background:#1A0507;padding:24px 32px;">
+        <p style="margin:0 0 4px 0;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#D4B094;">VH LMS</p>
+        <h1 style="margin:0;font-family:Georgia,serif;font-size:22px;font-weight:400;color:#FAF5EF;">Class Starting Soon</h1>
+      </div>
+      <div style="padding:28px 32px;background:#FAF5EF;">
+        <p style="margin:0 0 16px 0;font-size:16px;color:#1A0507;">Hi ${data.name},</p>
+        <div style="background:#fff;padding:18px 20px;border-left:3px solid #D4B094;margin-bottom:20px;">
+          <p style="margin:0 0 6px 0;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#A86E58;">${subjectChip}</p>
+          <p style="margin:0 0 8px 0;font-family:Georgia,serif;font-size:18px;color:#1A0507;">${data.sessionTitle}</p>
+          <p style="margin:0;font-size:14px;color:#3D1A0E;">${timeStr} (Dhaka)</p>
+        </div>
+        <p style="margin:0 0 20px 0;font-size:14px;color:#3D1A0E;line-height:1.7;">
+          Your class starts in about 30 minutes. Head to the dashboard to join.
+        </p>
+        <a href="${data.dashboardUrl}"
+           style="display:inline-block;background:#1A0507;color:#FAF5EF;text-decoration:none;padding:12px 28px;font-size:12px;letter-spacing:2px;text-transform:uppercase;">
+          Go to Dashboard
+        </a>
+      </div>
+    </div>
+  </body>
+</html>`;
+
+  const result = await resend.emails.send({
+    from: 'VH LMS <noreply@vh-beyondthehorizons.org>',
+    to,
+    subject: `Class starting soon: ${data.sessionTitle}`,
+    html: htmlContent,
+  });
+
+  if (result.error) {
+    console.error('sendLmsClassSoon failed:', result.error);
+    return { success: 0, failed: 1, total: 1 };
+  }
+  return { success: 1, failed: 0, total: 1 };
+}
+
+interface LmsHomeworkDueData {
+  name: string;
+  assignmentTitle: string;
+  dueAt: Date;
+  assignmentUrl: string;
+}
+
+/**
+ * Remind a student that a homework assignment is due within 24 hours.
+ */
+export async function sendLmsHomeworkDue(
+  to: string,
+  data: LmsHomeworkDueData,
+): Promise<{ success: number; failed: number; total: number }> {
+  if (!process.env.RESEND_API_KEY) {
+    console.warn('[email] RESEND_API_KEY not set — skipping sendLmsHomeworkDue');
+    return { success: 0, failed: 1, total: 1 };
+  }
+
+  const dueStr = new Intl.DateTimeFormat('en-BD', {
+    timeStyle: 'short',
+    dateStyle: 'medium',
+    timeZone: 'Asia/Dhaka',
+  }).format(data.dueAt);
+
+  const htmlContent = `<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body style="margin:0;padding:0;background:#FAF5EF;font-family:-apple-system,Helvetica,Arial,sans-serif;color:#1A0507;">
+    <div style="max-width:600px;margin:0 auto;">
+      <div style="background:#1A0507;padding:24px 32px;">
+        <p style="margin:0 0 4px 0;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#D4B094;">VH LMS</p>
+        <h1 style="margin:0;font-family:Georgia,serif;font-size:22px;font-weight:400;color:#FAF5EF;">Homework Due Tomorrow</h1>
+      </div>
+      <div style="padding:28px 32px;background:#FAF5EF;">
+        <p style="margin:0 0 16px 0;font-size:16px;color:#1A0507;">Hi ${data.name},</p>
+        <div style="background:#fff;padding:18px 20px;border-left:3px solid #760F13;margin-bottom:20px;">
+          <p style="margin:0 0 8px 0;font-family:Georgia,serif;font-size:18px;color:#1A0507;">${data.assignmentTitle}</p>
+          <p style="margin:0;font-size:14px;color:#760F13;">Due: ${dueStr} (Dhaka)</p>
+        </div>
+        <p style="margin:0 0 20px 0;font-size:14px;color:#3D1A0E;line-height:1.7;">
+          This homework is due in less than 24 hours and you haven't submitted yet.
+        </p>
+        <a href="${data.assignmentUrl}"
+           style="display:inline-block;background:#1A0507;color:#FAF5EF;text-decoration:none;padding:12px 28px;font-size:12px;letter-spacing:2px;text-transform:uppercase;">
+          Submit Now
+        </a>
+      </div>
+    </div>
+  </body>
+</html>`;
+
+  const result = await resend.emails.send({
+    from: 'VH LMS <noreply@vh-beyondthehorizons.org>',
+    to,
+    subject: `Homework due tomorrow: ${data.assignmentTitle}`,
+    html: htmlContent,
+  });
+
+  if (result.error) {
+    console.error('sendLmsHomeworkDue failed:', result.error);
+    return { success: 0, failed: 1, total: 1 };
+  }
+  return { success: 1, failed: 0, total: 1 };
+}
+
+interface LmsRecordingPublishedData {
+  name: string;
+  sessionTitle: string;
+  sessionId: number;
+  recordingUrl: string;
+}
+
+/**
+ * Notify a student that a class recording is now available.
+ */
+export async function sendLmsRecordingPublished(
+  to: string,
+  data: LmsRecordingPublishedData,
+): Promise<{ success: number; failed: number; total: number }> {
+  if (!process.env.RESEND_API_KEY) {
+    console.warn('[email] RESEND_API_KEY not set — skipping sendLmsRecordingPublished');
+    return { success: 0, failed: 1, total: 1 };
+  }
+
+  const htmlContent = `<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body style="margin:0;padding:0;background:#FAF5EF;font-family:-apple-system,Helvetica,Arial,sans-serif;color:#1A0507;">
+    <div style="max-width:600px;margin:0 auto;">
+      <div style="background:#1A0507;padding:24px 32px;">
+        <p style="margin:0 0 4px 0;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#D4B094;">VH LMS</p>
+        <h1 style="margin:0;font-family:Georgia,serif;font-size:22px;font-weight:400;color:#FAF5EF;">Recording Available</h1>
+      </div>
+      <div style="padding:28px 32px;background:#FAF5EF;">
+        <p style="margin:0 0 16px 0;font-size:16px;color:#1A0507;">Hi ${data.name},</p>
+        <div style="background:#fff;padding:18px 20px;border-left:3px solid #D4B094;margin-bottom:20px;">
+          <p style="margin:0 0 4px 0;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#A86E58;">Class Recording</p>
+          <p style="margin:0;font-family:Georgia,serif;font-size:18px;color:#1A0507;">${data.sessionTitle}</p>
+        </div>
+        <p style="margin:0 0 20px 0;font-size:14px;color:#3D1A0E;line-height:1.7;">
+          The recording for this class is now available. Watch it before it expires.
+        </p>
+        <a href="${data.recordingUrl}"
+           style="display:inline-block;background:#1A0507;color:#FAF5EF;text-decoration:none;padding:12px 28px;font-size:12px;letter-spacing:2px;text-transform:uppercase;">
+          Watch Recording
+        </a>
+      </div>
+    </div>
+  </body>
+</html>`;
+
+  const result = await resend.emails.send({
+    from: 'VH LMS <noreply@vh-beyondthehorizons.org>',
+    to,
+    subject: `Class recording available: ${data.sessionTitle}`,
+    html: htmlContent,
+  });
+
+  if (result.error) {
+    console.error('sendLmsRecordingPublished failed:', result.error);
+    return { success: 0, failed: 1, total: 1 };
+  }
+  return { success: 1, failed: 0, total: 1 };
+}
+
+interface LmsRecordingExpiringData {
+  name: string;
+  sessionTitle: string;
+  recordingUrl: string;
+}
+
+/**
+ * Warn a student that a recording is about to expire after the next class.
+ */
+export async function sendLmsRecordingExpiring(
+  to: string,
+  data: LmsRecordingExpiringData,
+): Promise<{ success: number; failed: number; total: number }> {
+  if (!process.env.RESEND_API_KEY) {
+    console.warn('[email] RESEND_API_KEY not set — skipping sendLmsRecordingExpiring');
+    return { success: 0, failed: 1, total: 1 };
+  }
+
+  const htmlContent = `<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body style="margin:0;padding:0;background:#FAF5EF;font-family:-apple-system,Helvetica,Arial,sans-serif;color:#1A0507;">
+    <div style="max-width:600px;margin:0 auto;">
+      <div style="background:#5A0B0F;padding:24px 32px;">
+        <p style="margin:0 0 4px 0;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#D4B094;">VH LMS</p>
+        <h1 style="margin:0;font-family:Georgia,serif;font-size:22px;font-weight:400;color:#FAF5EF;">Last Chance to Watch</h1>
+      </div>
+      <div style="padding:28px 32px;background:#FAF5EF;">
+        <p style="margin:0 0 16px 0;font-size:16px;color:#1A0507;">Hi ${data.name},</p>
+        <div style="background:#fff;padding:18px 20px;border-left:3px solid #760F13;margin-bottom:20px;">
+          <p style="margin:0 0 4px 0;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#760F13;">Expiring Soon</p>
+          <p style="margin:0;font-family:Georgia,serif;font-size:18px;color:#1A0507;">${data.sessionTitle}</p>
+        </div>
+        <p style="margin:0 0 20px 0;font-size:14px;color:#3D1A0E;line-height:1.7;">
+          This recording will expire after the next class completes. Watch it now before it's gone.
+        </p>
+        <a href="${data.recordingUrl}"
+           style="display:inline-block;background:#5A0B0F;color:#FAF5EF;text-decoration:none;padding:12px 28px;font-size:12px;letter-spacing:2px;text-transform:uppercase;">
+          Watch Before It Expires
+        </a>
+      </div>
+    </div>
+  </body>
+</html>`;
+
+  const result = await resend.emails.send({
+    from: 'VH LMS <noreply@vh-beyondthehorizons.org>',
+    to,
+    subject: `Last chance: recording expires after next class — ${data.sessionTitle}`,
+    html: htmlContent,
+  });
+
+  if (result.error) {
+    console.error('sendLmsRecordingExpiring failed:', result.error);
+    return { success: 0, failed: 1, total: 1 };
+  }
+  return { success: 1, failed: 0, total: 1 };
+}
+
 /**
  * Broadcast an admin announcement to a list of LexiCore users.
  */

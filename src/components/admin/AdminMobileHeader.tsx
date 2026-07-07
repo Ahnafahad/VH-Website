@@ -14,6 +14,17 @@ import {
   Trophy,
   Megaphone,
   LogOut,
+  Database,
+  BarChart3,
+  ClipboardList,
+  CalendarDays,
+  FileText,
+  BookMarked,
+  Rss,
+  CalendarCheck,
+  Settings,
+  CalendarClock,
+  UserCheck,
 } from 'lucide-react';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
@@ -24,19 +35,60 @@ interface NavItem {
   icon:  React.ElementType;
 }
 
+interface NavSection {
+  label: string | null;
+  items: NavItem[];
+}
+
 interface AdminMobileHeaderProps {
   adminName:  string;
   adminEmail: string;
 }
 
-// ─── Nav items (mirrored from AdminSidebar) ───────────────────────────────────
+// ─── Nav sections (mirrored from AdminSidebar — keep in sync) ────────────────
 
-const NAV_ITEMS: NavItem[] = [
-  { href: '/admin',              label: 'Overview',      icon: LayoutDashboard },
-  { href: '/admin/vocab',        label: 'Vocabulary',    icon: BookOpen        },
-  { href: '/admin/users',        label: 'Users',         icon: Users           },
-  { href: '/admin/leaderboard',  label: 'Leaderboard',   icon: Trophy          },
-  { href: '/admin/announcements',label: 'Announcements', icon: Megaphone       },
+const NAV_SECTIONS: NavSection[] = [
+  {
+    label: null,
+    items: [
+      { href: '/admin', label: 'Overview', icon: LayoutDashboard },
+    ],
+  },
+  {
+    label: 'CLASSROOM',
+    items: [
+      { href: '/admin/today',              label: 'Today',    icon: CalendarCheck },
+      { href: '/admin/classes',            label: 'Classes',  icon: CalendarDays  },
+      { href: '/admin/materials',          label: 'Materials',icon: FileText      },
+      { href: '/admin/homework',           label: 'Homework', icon: BookMarked    },
+      { href: '/admin/bookings',           label: 'Bookings', icon: CalendarClock },
+      { href: '/admin/announcements-feed', label: 'Feed',     icon: Rss           },
+    ],
+  },
+  {
+    label: 'TESTS & GAMES',
+    items: [
+      { href: '/admin/tests',       label: 'Tests',       icon: ClipboardList },
+      { href: '/admin/vocab',       label: 'Vocabulary',  icon: BookOpen      },
+      { href: '/admin/words',       label: 'Word Bank',   icon: Database      },
+      { href: '/admin/leaderboard', label: 'Leaderboard', icon: Trophy        },
+    ],
+  },
+  {
+    label: 'PEOPLE',
+    items: [
+      { href: '/admin/users',         label: 'Users',         icon: Users     },
+      { href: '/admin/registrations', label: 'Registrations', icon: UserCheck },
+      { href: '/admin/announcements', label: 'Announcements', icon: Megaphone },
+    ],
+  },
+  {
+    label: 'SYSTEM',
+    items: [
+      { href: '/admin/analytics',       label: 'Analytics',       icon: BarChart3 },
+      { href: '/admin/settings/google', label: 'Google Calendar', icon: Settings  },
+    ],
+  },
 ];
 
 // ─── Motion variants ─────────────────────────────────────────────────────────
@@ -290,60 +342,85 @@ export default function AdminMobileHeader({ adminName, adminEmail }: AdminMobile
                 style={{ flex: 1, padding: '8px 8px', overflowY: 'auto' }}
                 aria-label="Admin navigation"
               >
-                {NAV_ITEMS.map((item, i) => {
-                  const active = isActive(item.href, pathname);
-                  const Icon   = item.icon;
-
-                  return (
-                    <motion.div
-                      key={item.href}
-                      custom={i}
-                      variants={drawerItemVariants}
-                      initial="hidden"
-                      animate="visible"
-                    >
-                      <Link
-                        href={item.href}
-                        style={{ textDecoration: 'none' }}
-                        onClick={() => setOpen(false)}
-                      >
-                        <div
+                {(() => {
+                  let itemIndex = 0;
+                  return NAV_SECTIONS.map((section) => (
+                    <div key={section.label ?? '__top__'} style={{ marginBottom: section.label ? 4 : 0 }}>
+                      {/* Section header */}
+                      {section.label && (
+                        <p
                           style={{
-                            position:        'relative',
-                            display:         'flex',
-                            alignItems:      'center',
-                            gap:             10,
-                            padding:         '10px 12px',
-                            borderLeft:      active ? '3px solid #D62B38' : '3px solid transparent',
-                            backgroundColor: active ? 'rgba(214,43,56,0.04)' : 'transparent',
-                            marginBottom:    2,
-                            cursor:          'pointer',
-                            transition:      'background-color 0.12s, border-color 0.12s',
+                            margin:        '10px 12px 4px',
+                            fontSize:      10,
+                            fontWeight:    600,
+                            color:         '#9CA3AF',
+                            letterSpacing: '0.1em',
+                            textTransform: 'uppercase',
+                            lineHeight:    1,
                           }}
                         >
-                          <Icon
-                            size={16}
-                            style={{
-                              flexShrink: 0,
-                              color:      active ? '#D62B38' : '#6B7280',
-                            }}
-                            aria-hidden
-                          />
-                          <span
-                            style={{
-                              fontSize:   13,
-                              fontWeight:  active ? 600 : 400,
-                              color:       active ? '#D62B38' : '#374151',
-                              letterSpacing: '-0.01em',
-                            }}
+                          {section.label}
+                        </p>
+                      )}
+
+                      {section.items.map((item) => {
+                        const i      = itemIndex++;
+                        const active = isActive(item.href, pathname);
+                        const Icon   = item.icon;
+
+                        return (
+                          <motion.div
+                            key={item.href}
+                            custom={i}
+                            variants={drawerItemVariants}
+                            initial="hidden"
+                            animate="visible"
                           >
-                            {item.label}
-                          </span>
-                        </div>
-                      </Link>
-                    </motion.div>
-                  );
-                })}
+                            <Link
+                              href={item.href}
+                              style={{ textDecoration: 'none' }}
+                              onClick={() => setOpen(false)}
+                            >
+                              <div
+                                style={{
+                                  position:        'relative',
+                                  display:         'flex',
+                                  alignItems:      'center',
+                                  gap:             10,
+                                  padding:         '10px 12px',
+                                  borderLeft:      active ? '3px solid #D62B38' : '3px solid transparent',
+                                  backgroundColor: active ? 'rgba(214,43,56,0.04)' : 'transparent',
+                                  marginBottom:    2,
+                                  cursor:          'pointer',
+                                  transition:      'background-color 0.12s, border-color 0.12s',
+                                }}
+                              >
+                                <Icon
+                                  size={16}
+                                  style={{
+                                    flexShrink: 0,
+                                    color:      active ? '#D62B38' : '#6B7280',
+                                  }}
+                                  aria-hidden
+                                />
+                                <span
+                                  style={{
+                                    fontSize:      13,
+                                    fontWeight:    active ? 600 : 400,
+                                    color:         active ? '#D62B38' : '#374151',
+                                    letterSpacing: '-0.01em',
+                                  }}
+                                >
+                                  {item.label}
+                                </span>
+                              </div>
+                            </Link>
+                          </motion.div>
+                        );
+                      })}
+                    </div>
+                  ));
+                })()}
               </nav>
 
               {/* Drawer footer: admin info + sign out */}

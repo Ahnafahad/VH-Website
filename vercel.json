@@ -37,6 +37,18 @@
     {
       "path": "/api/cron/orientation-blast",
       "schedule": "0 2 24 6 *"
+    },
+    {
+      "path": "/api/cron/lms-generate-sessions",
+      "schedule": "30 0 * * *"
+    },
+    {
+      "path": "/api/cron/recordings-cleanup",
+      "schedule": "0 1 * * *"
+    },
+    {
+      "path": "/api/cron/lms-reminders",
+      "schedule": "*/30 * * * *"
     }
   ]
 }

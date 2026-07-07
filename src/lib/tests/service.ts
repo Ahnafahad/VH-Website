@@ -21,6 +21,7 @@ export interface TestListEntry {
   title: string;
   bucket: string;
   description: string | null;
+  syllabus: string | null;
   totalQuestions: number;
   totalMarks: number;
   windows: Array<{
@@ -62,6 +63,7 @@ export async function getTestListForUser(userId: number): Promise<TestListEntry[
       title: t.title,
       bucket: t.bucket,
       description: t.description,
+      syllabus: t.syllabus,
       totalQuestions: t.totalQuestions,
       totalMarks: t.totalMarks,
       windows: tWindows

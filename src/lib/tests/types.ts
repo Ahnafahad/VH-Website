@@ -32,6 +32,7 @@ export interface TestListEntry {
   title: string;
   bucket: TestBucket;
   description: string | null;
+  syllabus: string | null;
   totalQuestions: number;
   totalMarks: number;
   windows: TestListWindow[];

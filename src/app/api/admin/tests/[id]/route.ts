@@ -17,6 +17,7 @@ const bodySchema = z.object({
   status: z.enum(['draft', 'published', 'archived']).optional(),
   allowedProducts: z.array(z.string()).nullable().optional(),
   publishResults: z.boolean().optional(),
+  syllabus: z.string().nullable().optional(),
 });
 
 export async function PATCH(
@@ -32,7 +33,7 @@ export async function PATCH(
     const id = parseInt((await params).id, 10);
     const parsed = bodySchema.safeParse(await req.json());
     if (!parsed.success) throw new ApiException('Invalid body', 400);
-    const { status, allowedProducts, publishResults } = parsed.data;
+    const { status, allowedProducts, publishResults, syllabus } = parsed.data;
 
     const test = await db.select().from(tests).where(eq(tests.id, id)).get();
     if (!test) throw new ApiException('Test not found', 404);
@@ -45,6 +46,7 @@ export async function PATCH(
       ...(publishResults !== undefined
         ? { resultsPublishedAt: publishResults ? new Date() : null }
         : {}),
+      ...(syllabus !== undefined ? { syllabus } : {}),
       updatedAt: new Date(),
     }).where(eq(tests.id, id));
 
