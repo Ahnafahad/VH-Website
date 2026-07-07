@@ -12,7 +12,6 @@ import {
   Calculator,
   Users,
   Target,
-  Gamepad2,
   BookOpen,
   ClipboardList,
   ArrowUpRight,
@@ -31,14 +30,20 @@ const BASE_MAIN_LINKS = [
   { label: 'Home', href: '/' },
   { label: 'Programs', href: '/program' },
   { label: 'About', href: '/#about' },
-  { label: 'Register', href: '/registration' },
 ];
 
-const LOGGED_IN_MAIN_LINKS = [
+const STUDENT_MAIN_LINKS = [
   { label: 'Dashboard', href: '/dashboard' },
   { label: 'Vocab', href: '/vocab/home' },
   { label: 'Tests', href: '/tests' },
-  { label: 'Results', href: '/results' },
+  { label: 'Mental Math', href: '/games/mental-math' },
+];
+
+const ADMIN_MAIN_LINKS = [
+  { label: 'Dashboard', href: '/dashboard' },
+  { label: 'Admin', href: '/admin' },
+  { label: 'Vocab', href: '/vocab/home' },
+  { label: 'Tests', href: '/tests' },
 ];
 
 /**
@@ -78,7 +83,6 @@ const Header = () => {
   const [logoHovered, setLogoHovered] = useState(false);
   const moreRef = useRef<HTMLDivElement>(null);
   const { data: session } = useSession();
-  const [isAdmin, setIsAdmin] = useState(false);
   const { scrollY } = useScroll();
   const pathname = usePathname();
 
@@ -115,24 +119,6 @@ const Header = () => {
 
   const onLight = !navDark;
 
-  // Admin check
-  useEffect(() => {
-    const checkAdminStatus = async () => {
-      if (!session?.user?.email) {
-        setIsAdmin(false);
-        return;
-      }
-      try {
-        const response = await fetch('/api/auth/check-admin');
-        const data = await response.json();
-        setIsAdmin(data.isAdmin);
-      } catch {
-        setIsAdmin(false);
-      }
-    };
-    checkAdminStatus();
-  }, [session]);
-
   // Outside click dismiss
   useEffect(() => {
     const handleClick = (e: MouseEvent) => {
@@ -156,29 +142,40 @@ const Header = () => {
     };
   }, [isMenuOpen]);
 
-  // Top-level links differ by auth state
-  const mainLinks = session ? LOGGED_IN_MAIN_LINKS : BASE_MAIN_LINKS;
+  // Derive admin status directly from the session role (already set server-side)
+  const role = session?.user?.role;
+  const isAdmin = role === 'admin' || role === 'super_admin' || role === 'instructor';
+  const isStaff = role === 'admin' || role === 'super_admin';
 
-  // "More" dropdown: contents differ by auth state
+  // Top-level links differ by auth state and role
+  const mainLinks = session
+    ? isAdmin
+      ? ADMIN_MAIN_LINKS
+      : STUDENT_MAIN_LINKS
+    : BASE_MAIN_LINKS;
+
+  // "More" dropdown: contents differ by auth state and role
   const moreLinks = session
-    ? [
-        { label: 'Home', href: '/', icon: LayoutDashboard },
-        { label: 'Programs', href: '/program', icon: BookOpen },
-        { label: 'Eligibility Checker', href: '/eligibility-checker', icon: Target },
-        { label: 'Mental Math', href: '/games/mental-math', icon: Gamepad2 },
-        { label: 'Register', href: '/registration', icon: ClipboardList },
-        ...(isAdmin
-          ? [
-              { label: 'Registrations', href: '/admin/registrations', icon: Users },
-              { label: 'Manage Users', href: '/admin/users', icon: Users },
-              { label: 'FBS Accounting', href: '/games/fbs-accounting', icon: Calculator },
-            ]
-          : []),
-      ]
+    ? isAdmin
+      ? [
+          { label: 'Mental Math', href: '/games/mental-math', icon: Calculator },
+          { label: 'Results', href: '/results', icon: BarChart3 },
+          { label: 'Registrations', href: '/admin/registrations', icon: Users },
+          { label: 'Manage Users', href: '/admin/users', icon: Users },
+          { label: 'Programs', href: '/program', icon: BookOpen },
+          { label: 'About', href: '/#about', icon: Target },
+        ]
+      : [
+          { label: 'Results', href: '/results', icon: BarChart3 },
+          { label: 'Programs', href: '/program', icon: BookOpen },
+          { label: 'About', href: '/#about', icon: Target },
+          { label: 'Eligibility Checker', href: '/eligibility-checker', icon: Target },
+        ]
     : [
         { label: 'Eligibility Checker', href: '/eligibility-checker', icon: Target },
-        { label: 'Mental Math', href: '/games/mental-math', icon: Gamepad2 },
+        { label: 'Mental Math', href: '/games/mental-math', icon: Calculator },
         { label: 'Vocab', href: '/vocab/home', icon: BookOpen },
+        { label: 'Register', href: '/registration', icon: ClipboardList },
       ];
 
   const isActive = (href: string) => {

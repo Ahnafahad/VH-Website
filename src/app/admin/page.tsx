@@ -50,6 +50,8 @@ async function fetchStats() {
   const todayStartUtc = new Date(dhakaMidnightMs - DHAKA_OFFSET_MS);
   const todayEndUtc   = new Date(todayStartUtc.getTime() + 24 * 60 * 60 * 1000);
 
+  // Run all queries independently so a missing LMS table (pre-migration) doesn't
+  // crash the whole dashboard — those counts just fall back to 0.
   const [
     activeStudentsResult,
     todaySessionsResult,
@@ -61,7 +63,8 @@ async function fetchStats() {
       .select({ count: sql<number>`count(*)` })
       .from(users)
       .where(and(eq(users.role, 'student'), eq(users.status, 'active')))
-      .get(),
+      .get()
+      .catch(() => null),
 
     // Today's class sessions (Dhaka-local midnight → next midnight)
     db
@@ -73,21 +76,24 @@ async function fetchStats() {
           lt(classSessions.scheduledAt, todayEndUtc),
         ),
       )
-      .get(),
+      .get()
+      .catch(() => null),
 
     // Pending session requests
     db
       .select({ count: sql<number>`count(*)` })
       .from(sessionRequests)
       .where(eq(sessionRequests.status, 'pending'))
-      .get(),
+      .get()
+      .catch(() => null),
 
     // Pending registrations
     db
       .select({ count: sql<number>`count(*)` })
       .from(registrations)
       .where(eq(registrations.status, 'pending'))
-      .get(),
+      .get()
+      .catch(() => null),
   ]);
 
   return {
