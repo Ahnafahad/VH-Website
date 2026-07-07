@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import { usePathname } from 'next/navigation';
 import { Home, BookOpen, Zap, Trophy, User } from 'lucide-react';
 import { useVocabFeedback } from '@/lib/vocab/use-vocab-feedback';
+import { useSafeNavigate } from '@/hooks/useSafeNavigate';
 
 const TABS = [
   { id: 'home',        href: '/vocab/home',        icon: Home,     label: 'Home' },
@@ -15,8 +16,9 @@ const TABS = [
 ] as const;
 
 export default function BottomNav() {
-  const pathname = usePathname();
-  const fb       = useVocabFeedback();
+  const pathname  = usePathname();
+  const fb        = useVocabFeedback();
+  const { watch } = useSafeNavigate();
 
   const active = TABS.find(t => pathname.startsWith(t.href))?.id ?? 'home';
 
@@ -46,7 +48,12 @@ export default function BottomNav() {
               aria-current={isActive ? 'page' : undefined}
               // min-w-[44px] min-h-[52px] satisfies the ≥44px tap-target requirement
               className="relative flex flex-col items-center justify-end gap-1 min-w-[44px] min-h-[52px] px-3 pb-1"
-              onClick={() => fb.play('tap')}
+              onClick={() => {
+                fb.play('tap');
+                // Watchdog: if the soft navigation stalls (hung RSC fetch),
+                // fall back to a hard navigation after a few seconds.
+                watch(tab.href);
+              }}
             >
               {/* Limelight spotlight: slides under active icon */}
               {isActive && (

@@ -2,9 +2,10 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 import { Home, BookOpen, Zap, Trophy, User } from 'lucide-react';
 import { useSession } from 'next-auth/react';
+import { useSafeNavigate } from '@/hooks/useSafeNavigate';
 
 const TABS = [
   { id: 'home',        href: '/vocab/home',        icon: Home,     label: 'Home'       },
@@ -24,8 +25,8 @@ function initials(name: string): string {
 }
 
 export default function DesktopSidebar() {
-  const pathname = usePathname();
-  const router   = useRouter();
+  const pathname     = usePathname();
+  const { navigate } = useSafeNavigate();
   const { data: session } = useSession();
 
   const active = TABS.find(t => pathname.startsWith(t.href))?.id ?? 'home';
@@ -133,7 +134,9 @@ export default function DesktopSidebar() {
           return (
             <motion.button
               key={tab.id}
-              onClick={() => router.push(tab.href)}
+              // navigate() = router.push + watchdog: hard-navigates if the
+              // soft navigation stalls on a hung RSC fetch.
+              onClick={() => navigate(tab.href)}
               whileTap={{ scale: 0.97 }}
               aria-label={tab.label}
               aria-current={isActive ? 'page' : undefined}
