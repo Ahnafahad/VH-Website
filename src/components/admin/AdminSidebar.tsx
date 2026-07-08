@@ -41,9 +41,35 @@ interface NavSection {
 interface AdminSidebarProps {
   adminName:  string;
   adminEmail: string;
+  role:       'super_admin' | 'admin' | 'instructor';
 }
 
 // ─── Nav sections ─────────────────────────────────────────────────────────────
+
+const INSTRUCTOR_NAV_SECTIONS: NavSection[] = [
+  {
+    label: null,
+    items: [
+      { href: '/admin/today', label: 'Today', icon: CalendarCheck },
+    ],
+  },
+  {
+    label: 'CLASSROOM',
+    items: [
+      { href: '/admin/classes',            label: 'Classes',   icon: CalendarDays  },
+      { href: '/admin/materials',          label: 'Materials', icon: FileText      },
+      { href: '/admin/homework',           label: 'Homework',  icon: BookMarked    },
+      { href: '/admin/bookings',           label: 'Bookings',  icon: CalendarClock },
+      { href: '/admin/announcements-feed', label: 'Feed',      icon: Rss           },
+    ],
+  },
+  {
+    label: 'SETTINGS',
+    items: [
+      { href: '/admin/settings/google', label: 'Google Calendar', icon: Settings },
+    ],
+  },
+];
 
 const NAV_SECTIONS: NavSection[] = [
   {
@@ -133,9 +159,228 @@ function getInitials(name: string): string {
 
 // ─── Component ────────────────────────────────────────────────────────────────
 
-export default function AdminSidebar({ adminName, adminEmail }: AdminSidebarProps) {
+export default function AdminSidebar({ adminName, adminEmail, role }: AdminSidebarProps) {
   const pathname = usePathname();
 
+  // ── Instructor shell (dark themed, classroom-scoped) ──────────────────────
+  if (role === 'instructor') {
+    const ink     = '#FAF5EF';
+    const inkMid  = 'rgba(250,245,239,0.65)';
+    const inkDim  = 'rgba(250,245,239,0.35)';
+    const gold    = '#D4B094';
+    const goldBg  = 'rgba(212,176,148,0.12)';
+    const hoverBg = 'rgba(250,245,239,0.06)';
+
+    return (
+      <motion.aside
+        variants={sidebarVariants}
+        initial="hidden"
+        animate="visible"
+        className="hidden md:flex flex-col fixed left-0 top-0 h-full w-60 z-40"
+        style={{
+          background:  '#1A0507',
+          borderRight: '1px solid rgba(212,176,148,0.15)',
+        }}
+      >
+        {/* Logo */}
+        <div
+          style={{
+            padding:      '20px 20px 18px',
+            borderBottom: '1px solid rgba(212,176,148,0.15)',
+            display:      'flex',
+            alignItems:   'center',
+          }}
+        >
+          <Image
+            src="/lexicore-logo.png"
+            alt="LexiCore"
+            height={30}
+            width={0}
+            sizes="100vw"
+            style={{ height: 30, width: 'auto', filter: 'brightness(0) invert(1) opacity(0.85)' }}
+          />
+        </div>
+
+        {/* Nav */}
+        <nav style={{ flex: 1, padding: '10px 8px', overflowY: 'auto' }} aria-label="Instructor navigation">
+          {INSTRUCTOR_NAV_SECTIONS.map((section, si) => (
+            <div key={section.label ?? '__top__'} style={{ marginBottom: section.label ? 6 : 0 }}>
+              {section.label && (
+                <p
+                  style={{
+                    margin:        si === 0 ? '8px 12px 4px' : '12px 12px 4px',
+                    fontSize:      10,
+                    fontWeight:    600,
+                    color:         inkDim,
+                    letterSpacing: '0.1em',
+                    textTransform: 'uppercase',
+                    lineHeight:    1,
+                  }}
+                >
+                  {section.label}
+                </p>
+              )}
+
+              {section.items.map((item) => {
+                const active = isActive(item.href, pathname);
+                const Icon   = item.icon;
+
+                return (
+                  <motion.div key={item.href} variants={navItemVariants}>
+                    <Link href={item.href} style={{ textDecoration: 'none' }}>
+                      <motion.div
+                        whileHover={active ? {} : {
+                          x: 2,
+                          backgroundColor: hoverBg,
+                          transition: { type: 'spring' as const, stiffness: 400, damping: 30 },
+                        }}
+                        style={{
+                          position:        'relative',
+                          display:         'flex',
+                          alignItems:      'center',
+                          gap:             10,
+                          padding:         '9px 12px',
+                          cursor:          'pointer',
+                          marginBottom:    1,
+                          borderLeft:      active ? `3px solid ${gold}` : '3px solid transparent',
+                          backgroundColor: active ? goldBg : 'transparent',
+                          transition:      'border-color 0.15s, background-color 0.15s',
+                        }}
+                      >
+                        {active && (
+                          <motion.span
+                            layoutId="instructor-nav-active"
+                            style={{
+                              position:      'absolute',
+                              inset:         0,
+                              background:    goldBg,
+                              pointerEvents: 'none',
+                              zIndex:        0,
+                            }}
+                            transition={{ type: 'spring' as const, stiffness: 380, damping: 30 }}
+                          />
+                        )}
+
+                        <Icon
+                          size={16}
+                          style={{
+                            flexShrink: 0,
+                            color:      active ? gold : inkMid,
+                            position:   'relative',
+                            zIndex:     1,
+                            transition: 'color 0.15s',
+                          }}
+                          aria-hidden
+                        />
+
+                        <span
+                          style={{
+                            fontSize:      13,
+                            fontWeight:    active ? 600 : 400,
+                            color:         active ? gold : inkMid,
+                            letterSpacing: '-0.01em',
+                            position:      'relative',
+                            zIndex:        1,
+                            transition:    'color 0.15s',
+                          }}
+                        >
+                          {item.label}
+                        </span>
+                      </motion.div>
+                    </Link>
+                  </motion.div>
+                );
+              })}
+            </div>
+          ))}
+        </nav>
+
+        {/* Footer */}
+        <div style={{ padding: '14px 16px', borderTop: '1px solid rgba(212,176,148,0.15)' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 10 }}>
+            <div
+              style={{
+                width:          32,
+                height:         32,
+                borderRadius:   '50%',
+                background:     gold,
+                color:          '#1A0507',
+                fontSize:       11,
+                fontWeight:     700,
+                display:        'flex',
+                alignItems:     'center',
+                justifyContent: 'center',
+                flexShrink:     0,
+                letterSpacing:  '0.04em',
+              }}
+              aria-hidden
+            >
+              {getInitials(adminName || 'I')}
+            </div>
+
+            <div style={{ minWidth: 0 }}>
+              <p
+                style={{
+                  margin:       0,
+                  fontSize:     12,
+                  fontWeight:   600,
+                  color:        ink,
+                  letterSpacing:'-0.01em',
+                  overflow:     'hidden',
+                  textOverflow: 'ellipsis',
+                  whiteSpace:   'nowrap',
+                }}
+              >
+                {adminName || 'Instructor'}
+              </p>
+              <p
+                style={{
+                  margin:       0,
+                  fontSize:     11,
+                  color:        inkDim,
+                  overflow:     'hidden',
+                  textOverflow: 'ellipsis',
+                  whiteSpace:   'nowrap',
+                }}
+              >
+                {adminEmail}
+              </p>
+            </div>
+          </div>
+
+          <motion.button
+            onClick={() => signOut({ callbackUrl: '/auth/signin' })}
+            whileHover={{
+              backgroundColor: hoverBg,
+              transition: { type: 'spring' as const, stiffness: 400, damping: 30 },
+            }}
+            whileTap={{ scale: 0.97 }}
+            style={{
+              width:         '100%',
+              display:       'flex',
+              alignItems:    'center',
+              gap:           8,
+              padding:       '8px 10px',
+              background:    'transparent',
+              border:        '1px solid rgba(250,245,239,0.15)',
+              borderRadius:  7,
+              cursor:        'pointer',
+              color:         inkMid,
+              fontSize:      12,
+              fontWeight:    500,
+              letterSpacing: '-0.01em',
+            }}
+            aria-label="Sign out"
+          >
+            <LogOut size={13} aria-hidden />
+            Sign out
+          </motion.button>
+        </div>
+      </motion.aside>
+    );
+  }
+
+  // ── Admin / Super-admin shell (existing white theme) ──────────────────────
   return (
     <motion.aside
       variants={sidebarVariants}

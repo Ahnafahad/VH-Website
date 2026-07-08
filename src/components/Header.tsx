@@ -46,6 +46,13 @@ const ADMIN_MAIN_LINKS = [
   { label: 'Tests', href: '/tests' },
 ];
 
+const INSTRUCTOR_MAIN_LINKS = [
+  { label: 'Dashboard', href: '/dashboard' },
+  { label: 'Instructor', href: '/admin/today' },
+  { label: 'Vocab', href: '/vocab/home' },
+  { label: 'Tests', href: '/tests' },
+];
+
 /**
  * Sample the actual section background sitting behind the floating nav and
  * decide whether it's dark. Samples the far-left and far-right of the header
@@ -150,7 +157,7 @@ const Header = () => {
   // Top-level links differ by auth state and role
   const mainLinks = session
     ? isAdmin
-      ? ADMIN_MAIN_LINKS
+      ? role === 'instructor' ? INSTRUCTOR_MAIN_LINKS : ADMIN_MAIN_LINKS
       : STUDENT_MAIN_LINKS
     : BASE_MAIN_LINKS;
 
@@ -160,8 +167,10 @@ const Header = () => {
       ? [
           { label: 'Mental Math', href: '/games/mental-math', icon: Calculator },
           { label: 'Results', href: '/results', icon: BarChart3 },
-          { label: 'Registrations', href: '/admin/registrations', icon: Users },
-          { label: 'Manage Users', href: '/admin/users', icon: Users },
+          ...(isStaff ? [
+            { label: 'Registrations', href: '/admin/registrations', icon: Users },
+            { label: 'Manage Users', href: '/admin/users', icon: Users },
+          ] : []),
           { label: 'Programs', href: '/program', icon: BookOpen },
           { label: 'About', href: '/#about', icon: Target },
         ]

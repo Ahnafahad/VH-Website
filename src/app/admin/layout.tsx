@@ -23,6 +23,7 @@ export default async function AdminLayout({
 
   const adminName  = session.user.name  ?? 'Admin';
   const adminEmail = session.user.email ?? '';
+  const staffRole  = role as 'super_admin' | 'admin' | 'instructor';
 
   // ── Render ─────────────────────────────────────────────────────────────────
   return (
@@ -35,10 +36,10 @@ export default async function AdminLayout({
       }}
     >
       {/* Fixed left sidebar — desktop only */}
-      <AdminSidebar adminName={adminName} adminEmail={adminEmail} />
+      <AdminSidebar adminName={adminName} adminEmail={adminEmail} role={staffRole} />
 
       {/* Fixed top bar — mobile only */}
-      <AdminMobileHeader adminName={adminName} adminEmail={adminEmail} />
+      <AdminMobileHeader adminName={adminName} adminEmail={adminEmail} role={staffRole} />
 
       {/* Main content area */}
       {/*

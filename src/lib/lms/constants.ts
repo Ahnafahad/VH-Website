@@ -1,6 +1,6 @@
 // ─── LMS Constants ────────────────────────────────────────────────────────────
 
-export const LMS_SUBJECTS = ['english', 'math', 'analytical'] as const;
+export const LMS_SUBJECTS = ['english', 'math', 'analytical', 'tbd'] as const;
 
 /** Minutes before scheduledAt when the Join button becomes active */
 export const JOIN_WINDOW_EARLY_MINUTES = 15;
