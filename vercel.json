@@ -48,7 +48,7 @@
     },
     {
       "path": "/api/cron/lms-reminders",
-      "schedule": "*/30 * * * *"
+      "schedule": "0 8 * * *"
     }
   ]
 }
