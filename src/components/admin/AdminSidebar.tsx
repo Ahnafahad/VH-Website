@@ -158,26 +158,15 @@ export default function AdminSidebar({ adminName, adminEmail }: AdminSidebarProp
           gap:            10,
         }}
       >
-        {/* BTH logo */}
+        {/* LexiCore logo */}
         <Image
-          src="/bth_compact_square.png"
-          alt="Beyond the Horizons"
-          width={32}
-          height={32}
-          style={{ flexShrink: 0, width: 32, height: 32, objectFit: 'contain' }}
+          src="/lexicore-logo.png"
+          alt="LexiCore"
+          height={30}
+          width={0}
+          sizes="100vw"
+          style={{ height: 30, width: 'auto' }}
         />
-
-        <span
-          style={{
-            fontSize:      14,
-            fontWeight:    700,
-            color:         '#0F172A',
-            letterSpacing: '-0.025em',
-            lineHeight:    1,
-          }}
-        >
-          LexiCore Admin
-        </span>
       </div>
 
       {/* ── Navigation ────────────────────────────────────────────────────── */}

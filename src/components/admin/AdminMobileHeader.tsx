@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { signOut } from 'next-auth/react';
 import { useState } from 'react';
@@ -155,9 +156,19 @@ export default function AdminMobileHeader({ adminName, adminEmail }: AdminMobile
 
   return (
     <>
-      {/* ── Fixed top bar ─────────────────────────────────────────────────── */}
+      {/* ── Fixed top bar — visible below md (768px), hidden at md+ ─────── */}
+      {/*
+        We use an inline <style> media query rather than relying solely on
+        Tailwind `md:hidden` to guarantee the bar disappears at the exact
+        breakpoint where the sidebar appears (768 px), regardless of Tailwind
+        CSS extraction order or build configuration.
+      */}
+      <style>{`
+        #admin-mobile-header { display: flex; }
+        @media (min-width: 768px) { #admin-mobile-header { display: none !important; } }
+      `}</style>
       <header
-        className="md:hidden"
+        id="admin-mobile-header"
         style={{
           position:    'fixed',
           top:         0,
@@ -167,7 +178,6 @@ export default function AdminMobileHeader({ adminName, adminEmail }: AdminMobile
           background:  '#FFFFFF',
           borderBottom:'1px solid #E5E7EB',
           zIndex:      50,
-          display:     'flex',
           alignItems:  'center',
           padding:     '0 16px',
           colorScheme: 'light',
@@ -192,21 +202,25 @@ export default function AdminMobileHeader({ adminName, adminEmail }: AdminMobile
           <Menu size={20} aria-hidden />
         </motion.button>
 
-        {/* Title */}
-        <span
+        {/* Logo */}
+        <div
           style={{
-            position:    'absolute',
-            left:        '50%',
-            transform:   'translateX(-50%)',
-            fontSize:    13,
-            fontWeight:  600,
-            color:       '#111827',
-            letterSpacing: '-0.02em',
-            whiteSpace:  'nowrap',
+            position:  'absolute',
+            left:      '50%',
+            transform: 'translateX(-50%)',
+            display:   'flex',
+            alignItems:'center',
           }}
         >
-          LexiCore Admin
-        </span>
+          <Image
+            src="/lexicore-logo.png"
+            alt="LexiCore"
+            height={28}
+            width={0}
+            sizes="100vw"
+            style={{ height: 28, width: 'auto' }}
+          />
+        </div>
 
         {/* Admin initials avatar */}
         <div
@@ -288,33 +302,14 @@ export default function AdminMobileHeader({ adminName, adminEmail }: AdminMobile
                 }}
               >
                 <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                  <span
-                    style={{
-                      display:        'inline-flex',
-                      alignItems:     'center',
-                      justifyContent: 'center',
-                      background:     '#D62B38',
-                      color:          '#FFFFFF',
-                      fontSize:       10,
-                      fontWeight:     700,
-                      letterSpacing:  '0.08em',
-                      borderRadius:   5,
-                      padding:        '2px 6px',
-                      lineHeight:     1,
-                    }}
-                  >
-                    VH
-                  </span>
-                  <span
-                    style={{
-                      fontSize:      13,
-                      fontWeight:    700,
-                      color:         '#0F172A',
-                      letterSpacing: '-0.025em',
-                    }}
-                  >
-                    LexiCore Admin
-                  </span>
+                  <Image
+                    src="/lexicore-logo.png"
+                    alt="LexiCore"
+                    height={28}
+                    width={0}
+                    sizes="100vw"
+                    style={{ height: 28, width: 'auto' }}
+                  />
                 </div>
 
                 {/* Close button */}

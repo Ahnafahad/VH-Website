@@ -41,15 +41,24 @@ export default async function AdminLayout({
       <AdminMobileHeader adminName={adminName} adminEmail={adminEmail} />
 
       {/* Main content area */}
+      {/*
+        Responsive offsets are declared via an inline <style> block so they are
+        guaranteed to be in the HTML, regardless of Tailwind CSS extraction.
+
+        Mobile (< 768 px): fixed top bar is 56 px tall → paddingTop: 56px
+        Desktop (≥ 768 px): sidebar is 240 px wide → marginLeft: 240px, no top padding
+      */}
+      <style>{`
+        #admin-main { margin-left: 0; padding-top: 56px; }
+        @media (min-width: 768px) { #admin-main { margin-left: 240px; padding-top: 0; } }
+      `}</style>
       <main
+        id="admin-main"
         style={{
           flex:       1,
           minHeight:  '100dvh',
           background: '#FFFFFF',
-          // Desktop: offset for sidebar; mobile: offset for top bar
-          // Using inline style so we avoid Tailwind's md: prefix requirement
         }}
-        className="md:ml-60 pt-14 md:pt-0"
       >
         <div
           style={{

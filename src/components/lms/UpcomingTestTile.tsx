@@ -31,10 +31,10 @@ export default function UpcomingTestTile({ upcomingTests }: Props) {
         variants={tileVariants}
         initial="rest"
         whileHover="hover"
-        className="rounded-2xl border border-[#E8DDD5] bg-[#FAF5EF] p-5 flex flex-col items-center justify-center gap-2 min-h-[140px]"
+        className="rounded-2xl border border-[#E8DDD5] bg-[#FAF5EF] p-4 flex flex-col items-center justify-center gap-2 min-h-[80px]"
       >
-        <FlaskConical className="w-8 h-8 text-[#D4B094]" strokeWidth={1.25} />
-        <p className="text-sm text-[#A86E58]/70">No upcoming tests right now.</p>
+        <FlaskConical className="w-6 h-6 text-[#D4B094]" strokeWidth={1.25} />
+        <p className="text-xs text-[#7A4A35]">No upcoming tests right now.</p>
       </motion.div>
     );
   }

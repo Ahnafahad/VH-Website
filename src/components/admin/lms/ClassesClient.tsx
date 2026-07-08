@@ -1,10 +1,11 @@
 'use client';
 
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useRef } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   Plus, Edit2, Trash2, Calendar, Zap, RefreshCw, ChevronRight, ExternalLink,
+  CheckCircle, FileText, Upload, X as XIcon, Paperclip, BookMarked,
 } from 'lucide-react';
 import {
   SubjectBadge, StatusBadge, Toast, ConfirmDialog, Modal, TabBar, Toggle,
@@ -13,6 +14,7 @@ import {
   fmtDhaka, dhakaLocalToISO, epochToDhakaLocal,
   SPIN_CSS, RED, SLATE, BORDER, MUTED, BG, rowV,
 } from './lms-shared';
+import { uploadToR2 } from '@/lib/lms/upload-client';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -308,19 +310,505 @@ function ScheduleModal({
   );
 }
 
+// ─── Completed class form ─────────────────────────────────────────────────────
+
+interface PendingFile {
+  file: File;
+  title: string;
+  progress: number; // 0–100, -1 = error
+  done: boolean;
+}
+
+interface CompletedClassForm {
+  title: string;
+  description: string;
+  subject: string;
+  product: string;
+  batch: string;
+  scheduledAt: string; // Dhaka datetime-local
+  durationMinutes: string;
+}
+
+const defaultCompletedForm: CompletedClassForm = {
+  title: '',
+  description: '',
+  subject: 'english',
+  product: 'iba',
+  batch: '',
+  scheduledAt: '',
+  durationMinutes: '90',
+};
+
+function CompletedClassModal({
+  open, onClose, onSaved,
+}: {
+  open: boolean;
+  onClose: () => void;
+  onSaved: (s: ClassSession) => void;
+}) {
+  const [step, setStep]       = useState<'details' | 'upload'>('details');
+  const [form, setForm]       = useState<CompletedClassForm>(defaultCompletedForm);
+  const [saving, setSaving]   = useState(false);
+  const [error, setError]     = useState('');
+  const [createdSession, setCreatedSession] = useState<ClassSession | null>(null);
+
+  // Upload state
+  const [files, setFiles]     = useState<PendingFile[]>([]);
+  const [uploading, setUploading] = useState(false);
+  const [uploadDone, setUploadDone] = useState(false);
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
+  const f = (k: keyof CompletedClassForm, v: string) =>
+    setForm(p => ({ ...p, [k]: v }));
+
+  // Reset when modal opens/closes
+  React.useEffect(() => {
+    if (!open) {
+      setTimeout(() => {
+        setStep('details');
+        setForm(defaultCompletedForm);
+        setSaving(false);
+        setError('');
+        setCreatedSession(null);
+        setFiles([]);
+        setUploading(false);
+        setUploadDone(false);
+      }, 200);
+    }
+  }, [open]);
+
+  // Step 1: create the session
+  const handleCreateSession = async () => {
+    if (!form.title.trim() || !form.scheduledAt || !form.durationMinutes) {
+      setError('Title, date/time and duration are required'); return;
+    }
+    // Validate that the date is in the past (Dhaka local → check against now)
+    const scheduledMs = new Date(dhakaLocalToISO(form.scheduledAt)).getTime();
+    if (scheduledMs >= Date.now()) {
+      setError('For a completed class the date must be in the past'); return;
+    }
+    setSaving(true); setError('');
+    try {
+      const payload = {
+        title:           form.title.trim(),
+        description:     form.description.trim() || null,
+        subject:         form.subject,
+        product:         form.product,
+        batch:           form.batch.trim() || null,
+        scheduledAt:     dhakaLocalToISO(form.scheduledAt),
+        durationMinutes: Number(form.durationMinutes),
+        meetLink:        null,
+        status:          'completed',
+      };
+      const res = await fetch('/api/lms/admin/classes', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      if (!res.ok) {
+        const e = await res.json() as { error?: string };
+        throw new Error(e.error ?? 'Failed to create session');
+      }
+      const created = await res.json() as ClassSession;
+      setCreatedSession(created);
+      setStep('upload');
+    } catch (e) {
+      setError(e instanceof Error ? e.message : 'Failed');
+    } finally {
+      setSaving(false);
+    }
+  };
+
+  // File picker
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const picked = Array.from(e.target.files ?? []).filter(f => f.type === 'application/pdf');
+    if (picked.length === 0) return;
+    setFiles(prev => [
+      ...prev,
+      ...picked.map(file => ({
+        file,
+        title: file.name.replace(/\.pdf$/i, '').replace(/[_-]/g, ' '),
+        progress: 0,
+        done: false,
+      })),
+    ]);
+    // Reset input so the same file can be added again if needed
+    e.target.value = '';
+  };
+
+  const removeFile = (idx: number) =>
+    setFiles(prev => prev.filter((_, i) => i !== idx));
+
+  const setFileTitle = (idx: number, title: string) =>
+    setFiles(prev => prev.map((f, i) => i === idx ? { ...f, title } : f));
+
+  // Step 2: upload all PDFs and create material rows
+  const handleUpload = async () => {
+    if (!createdSession) return;
+    if (files.length === 0) {
+      // No PDFs — just finish
+      onSaved(createdSession);
+      onClose();
+      return;
+    }
+    setUploading(true); setError('');
+    try {
+      for (let i = 0; i < files.length; i++) {
+        const pf = files[i];
+        if (pf.done) continue;
+
+        // Presign + upload
+        const { key } = await uploadToR2({
+          file: pf.file,
+          endpoint: '/api/lms/admin/materials/upload',
+          onProgress: (pct) => {
+            setFiles(prev => prev.map((f, idx) =>
+              idx === i ? { ...f, progress: pct } : f,
+            ));
+          },
+        });
+
+        // Create material metadata row
+        const matRes = await fetch('/api/lms/admin/materials', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            title:          pf.title.trim() || pf.file.name,
+            type:           'pdf',
+            blobUrl:        key,
+            fileName:       pf.file.name,
+            fileSize:       pf.file.size,
+            subject:        createdSession.subject,
+            product:        createdSession.product,
+            batch:          createdSession.batch ?? null,
+            classSessionId: createdSession.id,
+          }),
+        });
+        if (!matRes.ok) {
+          const e = await matRes.json() as { error?: string };
+          throw new Error(`Material save failed: ${e.error ?? 'unknown'}`);
+        }
+
+        setFiles(prev => prev.map((f, idx) =>
+          idx === i ? { ...f, progress: 100, done: true } : f,
+        ));
+      }
+      setUploadDone(true);
+    } catch (e) {
+      setError(e instanceof Error ? e.message : 'Upload failed');
+      // Mark failed files
+      setFiles(prev => prev.map(f => f.done ? f : { ...f, progress: -1 }));
+    } finally {
+      setUploading(false);
+    }
+  };
+
+  const handleFinish = () => {
+    if (createdSession) onSaved(createdSession);
+    onClose();
+  };
+
+  // Max date for the datetime-local input (now in Dhaka time)
+  const dhakaMaxNow = (() => {
+    const DHAKA_OFFSET_MS = 6 * 60 * 60 * 1000;
+    const dhakaMs = Date.now() + DHAKA_OFFSET_MS;
+    const d = new Date(dhakaMs);
+    const pad = (n: number) => String(n).padStart(2, '0');
+    return `${d.getUTCFullYear()}-${pad(d.getUTCMonth() + 1)}-${pad(d.getUTCDate())}T${pad(d.getUTCHours())}:${pad(d.getUTCMinutes())}`;
+  })();
+
+  return (
+    <Modal
+      open={open}
+      onClose={onClose}
+      title={step === 'details' ? 'Log Completed Class' : 'Attach Lecture Sheets'}
+      width={560}
+    >
+      {step === 'details' ? (
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
+          {/* Step indicator */}
+          <div style={{
+            display: 'flex', alignItems: 'center', gap: 8,
+            padding: '8px 12px', borderRadius: 8,
+            background: 'rgba(16,185,129,0.06)', border: '1px solid rgba(16,185,129,0.18)',
+          }}>
+            <CheckCircle size={14} style={{ color: '#10B981', flexShrink: 0 }} aria-hidden />
+            <span style={{ fontSize: 12, color: '#065F46', fontWeight: 500 }}>
+              Step 1 of 2 — Class details. You can attach PDFs in the next step.
+            </span>
+          </div>
+
+          <div>
+            <FieldLabel>Title *</FieldLabel>
+            <FieldInput
+              value={form.title}
+              onChange={e => f('title', e.target.value)}
+              placeholder="e.g. English Class – Week 4"
+            />
+          </div>
+
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
+            <div>
+              <FieldLabel>Subject *</FieldLabel>
+              <FieldSelect value={form.subject} onChange={e => f('subject', e.target.value)}>
+                {SUBJECTS.map(s => (
+                  <option key={s} value={s}>{s.charAt(0).toUpperCase() + s.slice(1)}</option>
+                ))}
+              </FieldSelect>
+            </div>
+            <div>
+              <FieldLabel>Product *</FieldLabel>
+              <FieldSelect value={form.product} onChange={e => f('product', e.target.value)}>
+                <option value="iba">IBA</option>
+                <option value="fbs">FBS</option>
+                <option value="fbs_detailed">FBS Detailed</option>
+              </FieldSelect>
+            </div>
+          </div>
+
+          <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: 12 }}>
+            <div>
+              <FieldLabel>Date & Time (Dhaka) — must be past *</FieldLabel>
+              <FieldInput
+                type="datetime-local"
+                value={form.scheduledAt}
+                onChange={e => f('scheduledAt', e.target.value)}
+                max={dhakaMaxNow}
+              />
+            </div>
+            <div>
+              <FieldLabel>Duration (min) *</FieldLabel>
+              <FieldInput
+                type="number"
+                min="15"
+                value={form.durationMinutes}
+                onChange={e => f('durationMinutes', e.target.value)}
+              />
+            </div>
+          </div>
+
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
+            <div>
+              <FieldLabel>Batch (blank = all)</FieldLabel>
+              <FieldInput
+                value={form.batch}
+                onChange={e => f('batch', e.target.value)}
+                placeholder="e.g. 2025"
+              />
+            </div>
+          </div>
+
+          <div>
+            <FieldLabel>Description (optional)</FieldLabel>
+            <FieldTextarea
+              value={form.description}
+              onChange={e => f('description', e.target.value)}
+              placeholder="Topics covered, notes…"
+              rows={3}
+            />
+          </div>
+
+          {error && <p style={{ fontSize: 12, color: RED, margin: 0 }}>{error}</p>}
+
+          <div style={{ display: 'flex', gap: 8, justifyContent: 'flex-end' }}>
+            <GhostBtn onClick={onClose} small>Cancel</GhostBtn>
+            <PrimaryBtn onClick={handleCreateSession} loading={saving} small>
+              Next: Attach PDFs
+            </PrimaryBtn>
+          </div>
+        </div>
+      ) : (
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+          {/* Step indicator */}
+          <div style={{
+            display: 'flex', alignItems: 'center', gap: 8,
+            padding: '8px 12px', borderRadius: 8,
+            background: 'rgba(16,185,129,0.06)', border: '1px solid rgba(16,185,129,0.18)',
+          }}>
+            <CheckCircle size={14} style={{ color: '#10B981', flexShrink: 0 }} aria-hidden />
+            <span style={{ fontSize: 12, color: '#065F46', fontWeight: 500 }}>
+              Step 2 of 2 — Class saved. Attach lecture-sheet PDFs (optional).
+            </span>
+          </div>
+
+          {/* Session summary */}
+          {createdSession && (
+            <div style={{
+              padding: '10px 14px', borderRadius: 8,
+              background: BG, border: `1px solid ${BORDER}`,
+              display: 'flex', alignItems: 'center', gap: 8,
+            }}>
+              <BookMarked size={14} style={{ color: MUTED, flexShrink: 0 }} aria-hidden />
+              <div style={{ minWidth: 0 }}>
+                <p style={{ margin: 0, fontSize: 13, fontWeight: 600, color: SLATE, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                  {createdSession.title}
+                </p>
+                <p style={{ margin: '2px 0 0', fontSize: 11, color: MUTED }}>
+                  {fmtDhaka(createdSession.scheduledAt)} · {createdSession.durationMinutes} min · completed
+                </p>
+              </div>
+            </div>
+          )}
+
+          {/* File drop zone */}
+          {!uploadDone && (
+            <>
+              <div>
+                <button
+                  type="button"
+                  onClick={() => fileInputRef.current?.click()}
+                  disabled={uploading}
+                  style={{
+                    width: '100%', padding: '20px', borderRadius: 10,
+                    border: `2px dashed ${BORDER}`, background: BG,
+                    cursor: uploading ? 'not-allowed' : 'pointer',
+                    display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8,
+                    opacity: uploading ? 0.6 : 1,
+                  }}
+                >
+                  <Upload size={22} style={{ color: MUTED }} aria-hidden />
+                  <span style={{ fontSize: 13, color: '#374151', fontWeight: 500 }}>
+                    Click to select PDF files
+                  </span>
+                  <span style={{ fontSize: 11, color: MUTED }}>
+                    PDF only · multiple files allowed
+                  </span>
+                </button>
+                <input
+                  ref={fileInputRef}
+                  type="file"
+                  accept="application/pdf"
+                  multiple
+                  style={{ display: 'none' }}
+                  onChange={handleFileChange}
+                />
+              </div>
+
+              {/* File list */}
+              {files.length > 0 && (
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+                  {files.map((pf, idx) => (
+                    <div
+                      key={idx}
+                      style={{
+                        padding: '10px 12px', borderRadius: 8,
+                        border: `1px solid ${pf.progress === -1 ? 'rgba(214,43,56,0.3)' : BORDER}`,
+                        background: pf.progress === -1 ? 'rgba(214,43,56,0.04)' : '#FFFFFF',
+                        display: 'flex', flexDirection: 'column', gap: 6,
+                      }}
+                    >
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                        <FileText size={13} style={{ color: MUTED, flexShrink: 0 }} aria-hidden />
+                        <input
+                          value={pf.title}
+                          onChange={e => setFileTitle(idx, e.target.value)}
+                          disabled={uploading || pf.done}
+                          placeholder="Material title"
+                          style={{
+                            flex: 1, border: 'none', outline: 'none',
+                            fontSize: 12, fontWeight: 500, color: SLATE,
+                            background: 'transparent',
+                          }}
+                        />
+                        {!uploading && !pf.done && (
+                          <button
+                            type="button"
+                            onClick={() => removeFile(idx)}
+                            style={{
+                              background: 'none', border: 'none', cursor: 'pointer',
+                              color: MUTED, padding: 2, display: 'flex', alignItems: 'center',
+                            }}
+                            aria-label="Remove file"
+                          >
+                            <XIcon size={13} aria-hidden />
+                          </button>
+                        )}
+                        {pf.done && (
+                          <CheckCircle size={13} style={{ color: '#10B981', flexShrink: 0 }} aria-hidden />
+                        )}
+                      </div>
+                      <p style={{ margin: 0, fontSize: 11, color: MUTED }}>
+                        {pf.file.name} · {(pf.file.size / 1024).toFixed(0)} KB
+                      </p>
+                      {pf.progress > 0 && !pf.done && pf.progress !== -1 && (
+                        <div style={{ height: 3, background: '#E5E7EB', borderRadius: 2 }}>
+                          <div style={{
+                            height: '100%', borderRadius: 2,
+                            background: RED,
+                            width: `${pf.progress}%`,
+                            transition: 'width 0.1s',
+                          }} />
+                        </div>
+                      )}
+                      {pf.progress === -1 && (
+                        <p style={{ margin: 0, fontSize: 11, color: RED }}>Upload failed</p>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              )}
+            </>
+          )}
+
+          {uploadDone && (
+            <div style={{
+              display: 'flex', alignItems: 'center', gap: 10,
+              padding: '14px 16px', borderRadius: 8,
+              background: 'rgba(16,185,129,0.06)', border: '1px solid rgba(16,185,129,0.18)',
+            }}>
+              <CheckCircle size={18} style={{ color: '#10B981', flexShrink: 0 }} aria-hidden />
+              <div>
+                <p style={{ margin: 0, fontSize: 13, fontWeight: 600, color: '#065F46' }}>
+                  {files.length} PDF{files.length !== 1 ? 's' : ''} uploaded successfully
+                </p>
+                <p style={{ margin: '2px 0 0', fontSize: 11, color: '#059669' }}>
+                  Lecture sheets are now attached to this class.
+                </p>
+              </div>
+            </div>
+          )}
+
+          {error && <p style={{ fontSize: 12, color: RED, margin: 0 }}>{error}</p>}
+
+          <div style={{ display: 'flex', gap: 8, justifyContent: 'flex-end' }}>
+            {!uploadDone ? (
+              <>
+                <GhostBtn onClick={handleFinish} small disabled={uploading}>
+                  Skip — finish without PDFs
+                </GhostBtn>
+                {files.length > 0 && (
+                  <PrimaryBtn onClick={handleUpload} loading={uploading} small>
+                    <Upload size={12} aria-hidden />
+                    Upload {files.length} PDF{files.length !== 1 ? 's' : ''}
+                  </PrimaryBtn>
+                )}
+              </>
+            ) : (
+              <PrimaryBtn onClick={handleFinish} small>
+                Done
+              </PrimaryBtn>
+            )}
+          </div>
+        </div>
+      )}
+    </Modal>
+  );
+}
+
 // ─── Sessions tab ─────────────────────────────────────────────────────────────
 
 function SessionsTab({ sessions, onRefresh }: {
   sessions: ClassSession[]; onRefresh: () => void;
 }) {
-  const [modalOpen,   setModalOpen]   = useState(false);
-  const [editing,     setEditing]     = useState<ClassSession | null>(null);
-  const [deleteId,    setDeleteId]    = useState<number | null>(null);
-  const [deleting,    setDeleting]    = useState(false);
-  const [toast,       setToast]       = useState<string | null>(null);
-  const [statusFilter, setStatusFilter] = useState('all');
-  const [subjectFilter, setSubjectFilter] = useState('all');
-  const [localSessions, setLocalSessions] = useState(sessions);
+  const [modalOpen,         setModalOpen]         = useState(false);
+  const [completedOpen,     setCompletedOpen]     = useState(false);
+  const [editing,           setEditing]           = useState<ClassSession | null>(null);
+  const [deleteId,          setDeleteId]          = useState<number | null>(null);
+  const [deleting,          setDeleting]          = useState(false);
+  const [toast,             setToast]             = useState<string | null>(null);
+  const [statusFilter,      setStatusFilter]      = useState('all');
+  const [subjectFilter,     setSubjectFilter]     = useState('all');
+  const [localSessions,     setLocalSessions]     = useState(sessions);
 
   const showToast = (m: string) => { setToast(m); setTimeout(() => setToast(null), 3000); };
 
@@ -386,10 +874,16 @@ function SessionsTab({ sessions, onRefresh }: {
             {SUBJECTS.map(s => <option key={s} value={s}>{s.charAt(0).toUpperCase() + s.slice(1)}</option>)}
           </select>
         </div>
-        <PrimaryBtn onClick={() => { setEditing(null); setModalOpen(true); }} small>
-          <Plus size={13} aria-hidden />
-          New Session
-        </PrimaryBtn>
+        <div style={{ display: 'flex', gap: 8, flexShrink: 0, flexWrap: 'wrap' }}>
+          <GhostBtn onClick={() => setCompletedOpen(true)} small>
+            <CheckCircle size={13} aria-hidden />
+            Log Completed Class
+          </GhostBtn>
+          <PrimaryBtn onClick={() => { setEditing(null); setModalOpen(true); }} small>
+            <Plus size={13} aria-hidden />
+            New Session
+          </PrimaryBtn>
+        </div>
       </div>
 
       {/* List */}
@@ -446,6 +940,14 @@ function SessionsTab({ sessions, onRefresh }: {
         editing={editing}
         onClose={() => { setModalOpen(false); setEditing(null); }}
         onSaved={handleSaved}
+      />
+      <CompletedClassModal
+        open={completedOpen}
+        onClose={() => setCompletedOpen(false)}
+        onSaved={(saved) => {
+          setLocalSessions(prev => [saved, ...prev]);
+          showToast('Completed class logged');
+        }}
       />
       <ConfirmDialog
         open={!!deleteId} title="Delete this session?"

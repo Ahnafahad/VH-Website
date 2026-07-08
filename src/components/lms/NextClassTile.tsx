@@ -129,11 +129,11 @@ export default function NextClassTile({ nextClass, serverJoinOpen }: Props) {
         variants={tileVariants}
         initial="rest"
         whileHover="hover"
-        className="relative rounded-2xl border border-[#E8DDD5] bg-[#FAF5EF] p-6 flex flex-col items-center justify-center gap-3 min-h-[220px]"
+        className="relative rounded-2xl border border-[#E8DDD5] bg-[#FAF5EF] p-5 flex flex-col items-center justify-center gap-2 min-h-[120px]"
       >
-        <CalendarClock className="w-10 h-10 text-[#D4B094]" strokeWidth={1.25} />
-        <p className="font-heading text-xl text-[#5A0B0F]/60 font-light">No upcoming class</p>
-        <p className="text-sm text-[#A86E58]/70">Check back soon — your schedule will appear here.</p>
+        <CalendarClock className="w-7 h-7 text-[#D4B094]" strokeWidth={1.25} />
+        <p className="font-heading text-base text-[#5A0B0F]/60 font-light">No upcoming class</p>
+        <p className="text-xs text-[#7A4A35]">Check back soon — your schedule will appear here.</p>
       </motion.div>
     );
   }
