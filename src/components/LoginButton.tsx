@@ -1,8 +1,9 @@
 'use client';
 
-import { useSession, signIn, signOut } from 'next-auth/react';
+import { useSession, signOut } from 'next-auth/react';
 import { LogOut, LogIn } from 'lucide-react';
 import { motion } from 'motion/react';
+import { googleSignIn } from '@/lib/native-google-signin';
 
 export default function LoginButton() {
   const { data: session, status } = useSession();
@@ -45,7 +46,7 @@ export default function LoginButton() {
 
   return (
     <button
-      onClick={() => signIn('google')}
+      onClick={() => googleSignIn('/')}
       className="group flex items-center gap-2 px-4 py-2 rounded-full bg-[#5A0B0F] text-[#FAF5EF] text-xs sm:text-sm font-medium tracking-wide transition-all duration-300 hover:bg-[#760F13] hover:gap-3"
     >
       <LogIn

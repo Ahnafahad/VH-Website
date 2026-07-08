@@ -1,5 +1,7 @@
 import { NextAuthOptions } from 'next-auth'
 import GoogleProvider from 'next-auth/providers/google'
+import CredentialsProvider from 'next-auth/providers/credentials'
+import { OAuth2Client } from 'google-auth-library'
 import {
   isEmailAuthorized,
   getUserByEmail,
@@ -16,10 +18,39 @@ export const authOptions: NextAuthOptions = {
       clientId:     process.env.GOOGLE_CLIENT_ID!,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
     }),
+    CredentialsProvider({
+      id: 'google-native',
+      name: 'Google (Native)',
+      credentials: {
+        idToken: { label: 'ID Token', type: 'text' },
+      },
+      async authorize(credentials) {
+        if (!credentials?.idToken) return null
+        try {
+          const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID)
+          const ticket = await client.verifyIdToken({
+            idToken: credentials.idToken,
+            audience: process.env.GOOGLE_CLIENT_ID,
+          })
+          const payload = ticket.getPayload()
+          if (!payload || !payload.email) return null
+          return {
+            id:    payload.sub,
+            name:  payload.name  ?? payload.email.split('@')[0],
+            email: payload.email,
+            image: payload.picture ?? null,
+          }
+        } catch (e) {
+          console.error('google-native idToken verification failed:', e)
+          return null
+        }
+      },
+    }),
   ],
   callbacks: {
     async signIn({ user, account }) {
-      if (account?.provider !== 'google') return false
+      // Allow both the web Google OAuth flow and the native Capacitor token exchange
+      if (account?.provider !== 'google' && account?.provider !== 'google-native') return false
       const email = user.email?.toLowerCase() || ''
       if (!email.endsWith('@gmail.com')) {
         console.log(`Sign-in rejected (non-gmail): ${email}`)

@@ -1,6 +1,7 @@
 'use client';
 
-import { signIn, getSession } from 'next-auth/react';
+import { getSession } from 'next-auth/react';
+import { googleSignIn } from '@/lib/native-google-signin';
 import { useEffect, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { Suspense } from 'react';
@@ -24,7 +25,7 @@ function SignInForm() {
     setLoading(true);
     trackFeature('signin_submit', 'auth');
     try {
-      await signIn('google', { callbackUrl });
+      await googleSignIn(callbackUrl);
     } catch {
       setLoading(false);
     }

@@ -25,6 +25,7 @@
     "@capacitor/core": "^8.4.1",
     "@capacitor/splash-screen": "^8.0.1",
     "@capacitor/status-bar": "^8.0.2",
+    "@capgo/capacitor-social-login": "^8.3.35",
     "@emailjs/browser": "^4.4.1",
     "@google-cloud/local-auth": "^3.0.1",
     "@libsql/client": "^0.17.2",
