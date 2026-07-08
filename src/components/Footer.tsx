@@ -56,11 +56,11 @@ const Footer = () => {
         >
           <Link href="/" className="inline-block group">
             <Image
-              src="/bth_primary_stacked.png"
+              src="/bth_horizontal_lockup_maroon.png"
               alt="Beyond the Horizons by Vertical Horizon"
-              width={220}
-              height={148}
-              className="h-36 w-auto opacity-90 transition-opacity duration-300 group-hover:opacity-100"
+              width={320}
+              height={228}
+              className="h-24 w-auto opacity-90 transition-opacity duration-300 group-hover:opacity-100"
             />
           </Link>
           <p className="mt-4 font-heading italic font-extralight text-[#FAF5EF]/40 text-sm max-w-sm leading-relaxed">

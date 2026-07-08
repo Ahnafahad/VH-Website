@@ -1,6 +1,5 @@
 'use client';
 
-import Image from 'next/image';
 import { useReducedMotion, motion, Variants } from 'motion/react';
 import type { DashboardData } from '@/lib/lms/dashboard-data';
 import NextClassTile from './NextClassTile';
@@ -51,17 +50,6 @@ export default function DashboardScreen({ data, userName }: Props) {
       {/* Masthead — pt-24 sm:pt-28 clears the fixed floating nav (~80px mobile / ~96px desktop + breathing room) */}
       <div className="border-b border-[#E8DDD5] bg-white pt-24 sm:pt-28">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 pb-8 sm:pb-10">
-          {/* Brand mark — LexiCore logo as identity anchor for the learning space */}
-          <div className="mb-4">
-            <Image
-              src="/lexicore-logo.png"
-              alt="LexiCore"
-              width={140}
-              height={40}
-              style={{ height: '36px', width: 'auto' }}
-              priority
-            />
-          </div>
           <p className="text-[10px] font-sans uppercase tracking-widest text-[#A86E58] mb-2">
             Student Dashboard
           </p>
