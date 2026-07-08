@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Beyond the Horizons</string>
+    <string name="title_activity_main">Beyond the Horizons</string>
+    <string name="package_name">org.beyondthehorizons.vhapp</string>
+    <string name="custom_url_scheme">org.beyondthehorizons.vhapp</string>
+</resources>

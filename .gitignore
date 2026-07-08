@@ -68,3 +68,11 @@ next-env.d.ts
 # documentation with sensitive data
 docs/claude-docs/
 win-roots.pem
+
+# Capacitor / Android build outputs (keep android/ source, ignore build artifacts)
+android/.gradle/
+android/app/build/
+android/build/
+android/local.properties
+*.keystore
+*.jks
