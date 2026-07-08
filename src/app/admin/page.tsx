@@ -210,6 +210,15 @@ export default async function AdminOverviewPage() {
   return (
     <div style={{ maxWidth: 900 }}>
 
+      {/* Hover styles — this is a Server Component, so interactivity must be pure
+          CSS (event handlers can't be passed to client props from the server). */}
+      <style>{`
+        .vh-stat-card { transition: box-shadow 0.15s, transform 0.15s; }
+        .vh-stat-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.08); transform: translateY(-1px); }
+        .vh-quick-card { transition: border-color 0.12s, background-color 0.12s; }
+        .vh-quick-card:hover { border-color: #D1D5DB; background-color: #F9FAFB; }
+      `}</style>
+
       {/* ── Greeting ────────────────────────────────────────────────────────── */}
       <div style={{ marginBottom: 28 }}>
         <h1
@@ -247,6 +256,7 @@ export default async function AdminOverviewPage() {
               style={{ textDecoration: 'none' }}
             >
               <div
+                className="vh-stat-card"
                 style={{
                   border:       `1px solid ${card.borderColor}`,
                   borderRadius: 14,
@@ -256,15 +266,6 @@ export default async function AdminOverviewPage() {
                   flexDirection:'column',
                   gap:          10,
                   cursor:       'pointer',
-                  transition:   'box-shadow 0.15s, transform 0.15s',
-                }}
-                onMouseEnter={(e) => {
-                  (e.currentTarget as HTMLDivElement).style.boxShadow = '0 4px 16px rgba(0,0,0,0.08)';
-                  (e.currentTarget as HTMLDivElement).style.transform  = 'translateY(-1px)';
-                }}
-                onMouseLeave={(e) => {
-                  (e.currentTarget as HTMLDivElement).style.boxShadow = 'none';
-                  (e.currentTarget as HTMLDivElement).style.transform  = 'translateY(0)';
                 }}
               >
                 <div
@@ -351,6 +352,7 @@ export default async function AdminOverviewPage() {
                       style={{ textDecoration: 'none' }}
                     >
                       <div
+                        className="vh-quick-card"
                         style={{
                           border:       '1px solid #E5E7EB',
                           borderRadius: 10,
@@ -360,15 +362,6 @@ export default async function AdminOverviewPage() {
                           alignItems:   'center',
                           gap:          11,
                           cursor:       'pointer',
-                          transition:   'border-color 0.12s, background-color 0.12s',
-                        }}
-                        onMouseEnter={(e) => {
-                          (e.currentTarget as HTMLDivElement).style.borderColor      = '#D1D5DB';
-                          (e.currentTarget as HTMLDivElement).style.backgroundColor  = '#F9FAFB';
-                        }}
-                        onMouseLeave={(e) => {
-                          (e.currentTarget as HTMLDivElement).style.borderColor      = '#E5E7EB';
-                          (e.currentTarget as HTMLDivElement).style.backgroundColor  = '#FFFFFF';
                         }}
                       >
                         <div
