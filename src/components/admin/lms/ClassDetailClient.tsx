@@ -20,8 +20,13 @@ import {
   Plus,
   MessageSquare,
   Send,
+  FileText,
+  Upload,
+  Link2,
+  X as XIcon,
 } from 'lucide-react';
 import { formatDhaka } from '@/lib/lms/time';
+import { uploadToR2 } from '@/lib/lms/upload-client';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -90,6 +95,16 @@ interface QuestionThread {
   answers: AnswerRow[];
 }
 
+interface MaterialInfo {
+  id: number;
+  title: string;
+  type: string;
+  fileName: string | null;
+  fileSize: number | null;
+  subject: string;
+  createdAt: number;
+}
+
 interface Props {
   classSession: ClassSessionInfo;
   recording: RecordingInfo | null;
@@ -98,6 +113,7 @@ interface Props {
   allUsers: UserOption[];
   initialThreads: QuestionThread[];
   currentUserId: number;
+  initialMaterials: MaterialInfo[];
 }
 
 // ─── Helpers ─────────────────────────────────────────────────────────────────
@@ -146,8 +162,22 @@ export default function ClassDetailClient({
   allUsers,
   initialThreads,
   currentUserId,
+  initialMaterials,
 }: Props) {
   const [grants, setGrants] = useState<GrantRow[]>(initialGrants);
+
+  // Materials state
+  const [sessionMats, setSessionMats] = useState<MaterialInfo[]>(initialMaterials);
+  const [showAttachPicker, setShowAttachPicker] = useState(false);
+  const [allMaterials, setAllMaterials] = useState<MaterialInfo[]>([]);
+  const [loadingAllMats, setLoadingAllMats] = useState(false);
+  const [attachingId, setAttachingId] = useState<number | null>(null);
+  const [detachingId, setDetachingId] = useState<number | null>(null);
+  const [matUploadFile, setMatUploadFile] = useState<File | null>(null);
+  const [matUploadTitle, setMatUploadTitle] = useState('');
+  const [matUploading, setMatUploading] = useState(false);
+  const [matUploadProgress, setMatUploadProgress] = useState(0);
+  const [matError, setMatError] = useState<string | null>(null);
   const [grantUserId, setGrantUserId] = useState<string>('');     // '' = batch-wide
   const [grantExpiry, setGrantExpiry] = useState<string>('');
   const [grantError, setGrantError] = useState<string | null>(null);
@@ -160,6 +190,93 @@ export default function ClassDetailClient({
   const [deletingId, setDeletingId] = useState<number | null>(null);
 
   const scheduledDate = new Date(classSession.scheduledAt);
+
+  // ── Materials: load all for picker ────────────────────────────────────────
+  async function openAttachPicker() {
+    setShowAttachPicker(true);
+    if (allMaterials.length > 0) return;
+    setLoadingAllMats(true);
+    try {
+      const res = await fetch('/api/lms/admin/materials');
+      if (res.ok) setAllMaterials(await res.json() as MaterialInfo[]);
+    } finally {
+      setLoadingAllMats(false);
+    }
+  }
+
+  async function handleAttach(materialId: number) {
+    setAttachingId(materialId);
+    try {
+      const res = await fetch(`/api/lms/admin/classes/${classSession.id}/materials`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ materialId }),
+      });
+      if (!res.ok) throw new Error('Failed to attach');
+      const mat = allMaterials.find((m) => m.id === materialId);
+      if (mat && !sessionMats.find((m) => m.id === materialId)) {
+        setSessionMats((prev) => [...prev, mat]);
+      }
+      setShowAttachPicker(false);
+    } catch {
+      setMatError('Failed to attach material');
+    } finally {
+      setAttachingId(null);
+    }
+  }
+
+  async function handleDetach(materialId: number) {
+    setDetachingId(materialId);
+    try {
+      const res = await fetch(
+        `/api/lms/admin/classes/${classSession.id}/materials?materialId=${materialId}`,
+        { method: 'DELETE' },
+      );
+      if (!res.ok) throw new Error('Failed to detach');
+      setSessionMats((prev) => prev.filter((m) => m.id !== materialId));
+    } catch {
+      setMatError('Failed to detach material');
+    } finally {
+      setDetachingId(null);
+    }
+  }
+
+  async function handleUploadMaterial() {
+    if (!matUploadFile) return;
+    setMatUploading(true); setMatError(null);
+    try {
+      const { key } = await uploadToR2({
+        file: matUploadFile,
+        endpoint: '/api/lms/admin/materials/upload',
+        onProgress: setMatUploadProgress,
+      });
+      const matRes = await fetch('/api/lms/admin/materials', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          title: matUploadTitle.trim() || matUploadFile.name,
+          type: 'pdf',
+          blobUrl: key,
+          fileName: matUploadFile.name,
+          fileSize: matUploadFile.size,
+          subject: classSession.subject,
+          product: classSession.product,
+          batch: classSession.batch ?? null,
+          classSessionId: classSession.id,
+        }),
+      });
+      if (!matRes.ok) throw new Error('Material save failed');
+      const newMat = await matRes.json() as MaterialInfo;
+      setSessionMats((prev) => [...prev, newMat]);
+      setMatUploadFile(null);
+      setMatUploadTitle('');
+      setMatUploadProgress(0);
+    } catch (e) {
+      setMatError(e instanceof Error ? e.message : 'Upload failed');
+    } finally {
+      setMatUploading(false);
+    }
+  }
 
   // ── Grant submission ────────────────────────────────────────────────────────
   async function handleGrant(e: React.FormEvent) {
@@ -465,6 +582,148 @@ export default function ClassDetailClient({
               </div>
             </div>
           )}
+        </section>
+
+        {/* ── Materials ────────────────────────────────────────────────────── */}
+        <section className="bg-white rounded-xl border border-gray-200 p-5">
+          <div className="flex items-center justify-between mb-3">
+            <div className="flex items-center gap-2">
+              <FileText className="w-4 h-4 text-gray-400" strokeWidth={1.5} />
+              <h2 className="text-xs uppercase tracking-widest text-gray-400 font-semibold">
+                Lecture Materials ({sessionMats.length})
+              </h2>
+            </div>
+            <div className="flex items-center gap-2">
+              <button
+                onClick={() => void openAttachPicker()}
+                className="flex items-center gap-1 text-xs text-blue-600 hover:text-blue-700 font-medium"
+              >
+                <Link2 className="w-3.5 h-3.5" strokeWidth={2} />
+                Attach existing
+              </button>
+            </div>
+          </div>
+
+          {matError && (
+            <p className="text-xs text-red-600 mb-2">{matError}</p>
+          )}
+
+          {/* Attached materials list */}
+          {sessionMats.length === 0 ? (
+            <p className="text-sm text-gray-400 mb-3">No PDFs attached yet.</p>
+          ) : (
+            <ul className="space-y-1.5 mb-3">
+              {sessionMats.map((m) => (
+                <li key={m.id} className="flex items-center gap-2 text-xs bg-gray-50 rounded-lg px-3 py-2">
+                  <FileText className="w-3.5 h-3.5 text-gray-400 flex-shrink-0" strokeWidth={1.5} />
+                  <span className="flex-1 font-medium text-gray-800 truncate">{m.title}</span>
+                  {m.fileSize && (
+                    <span className="text-gray-400 flex-shrink-0">
+                      {(m.fileSize / 1_000_000).toFixed(1)} MB
+                    </span>
+                  )}
+                  <button
+                    onClick={() => void handleDetach(m.id)}
+                    disabled={detachingId === m.id}
+                    className="flex-shrink-0 text-gray-300 hover:text-red-500 transition-colors disabled:opacity-40"
+                    aria-label="Detach"
+                  >
+                    {detachingId === m.id
+                      ? <Loader2 className="w-3.5 h-3.5 animate-spin" strokeWidth={1.5} />
+                      : <XIcon className="w-3.5 h-3.5" strokeWidth={1.5} />
+                    }
+                  </button>
+                </li>
+              ))}
+            </ul>
+          )}
+
+          {/* Attach existing picker */}
+          {showAttachPicker && (
+            <div className="border border-gray-200 rounded-lg p-3 mb-3 bg-gray-50">
+              <p className="text-xs font-semibold text-gray-700 mb-2">Pick an existing PDF</p>
+              {loadingAllMats ? (
+                <p className="text-xs text-gray-400 flex items-center gap-1">
+                  <Loader2 className="w-3 h-3 animate-spin" /> Loading…
+                </p>
+              ) : (
+                <div className="space-y-1 max-h-48 overflow-y-auto">
+                  {allMaterials.filter((m) => !sessionMats.find((s) => s.id === m.id)).length === 0 ? (
+                    <p className="text-xs text-gray-400">No other PDFs available.</p>
+                  ) : (
+                    allMaterials
+                      .filter((m) => !sessionMats.find((s) => s.id === m.id))
+                      .map((m) => (
+                        <button
+                          key={m.id}
+                          onClick={() => void handleAttach(m.id)}
+                          disabled={attachingId === m.id}
+                          className="w-full text-left flex items-center gap-2 text-xs px-2.5 py-2 rounded-lg hover:bg-white border border-transparent hover:border-gray-200 transition-colors disabled:opacity-60"
+                        >
+                          <FileText className="w-3.5 h-3.5 text-gray-400 flex-shrink-0" strokeWidth={1.5} />
+                          <span className="flex-1 font-medium text-gray-700 truncate">{m.title}</span>
+                          {attachingId === m.id && <Loader2 className="w-3 h-3 animate-spin text-gray-400" />}
+                        </button>
+                      ))
+                  )}
+                </div>
+              )}
+              <button
+                onClick={() => setShowAttachPicker(false)}
+                className="mt-2 text-xs text-gray-400 hover:text-gray-600"
+              >
+                Cancel
+              </button>
+            </div>
+          )}
+
+          {/* Upload new PDF */}
+          <div className="border-t border-gray-100 pt-3">
+            <p className="text-xs font-semibold text-gray-700 mb-2 flex items-center gap-1">
+              <Upload className="w-3.5 h-3.5" strokeWidth={2} /> Upload new PDF
+            </p>
+            <div className="space-y-2">
+              <input
+                type="text"
+                placeholder="PDF title (optional)"
+                value={matUploadTitle}
+                onChange={(e) => setMatUploadTitle(e.target.value)}
+                className="w-full text-xs border border-gray-200 rounded-lg px-2.5 py-1.5 text-gray-700 bg-white focus:outline-none focus:ring-2 focus:ring-[#D62B38]/30"
+              />
+              <div className="flex items-center gap-2">
+                <label className="flex-1 flex items-center gap-2 text-xs border border-dashed border-gray-300 rounded-lg px-3 py-2 cursor-pointer hover:border-gray-400 transition-colors">
+                  <FileText className="w-3.5 h-3.5 text-gray-400" strokeWidth={1.5} />
+                  <span className="text-gray-500 truncate">
+                    {matUploadFile ? matUploadFile.name : 'Choose PDF file…'}
+                  </span>
+                  <input
+                    type="file"
+                    accept=".pdf"
+                    className="sr-only"
+                    onChange={(e) => setMatUploadFile(e.target.files?.[0] ?? null)}
+                  />
+                </label>
+                <motion.button
+                  onClick={() => void handleUploadMaterial()}
+                  disabled={!matUploadFile || matUploading}
+                  whileTap={{ scale: 0.97 }}
+                  className="flex items-center gap-1 text-xs font-medium bg-[#D62B38] text-white px-3 py-1.5 rounded-lg disabled:opacity-50 whitespace-nowrap"
+                >
+                  {matUploading ? (
+                    <>
+                      <Loader2 className="w-3 h-3 animate-spin" />
+                      {matUploadProgress < 100 ? `${matUploadProgress}%` : 'Saving…'}
+                    </>
+                  ) : (
+                    <>
+                      <Upload className="w-3 h-3" strokeWidth={2} />
+                      Upload
+                    </>
+                  )}
+                </motion.button>
+              </div>
+            </div>
+          </div>
         </section>
 
         {/* ── Attendance ────────────────────────────────────────────────────── */}

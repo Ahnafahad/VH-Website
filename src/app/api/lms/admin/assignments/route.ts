@@ -27,7 +27,7 @@ export async function POST(req: NextRequest) {
     const staff = await requireStaff();
     const body = await req.json();
 
-    const { title, description, attachmentUrl, subject, product, batch, classSessionId, dueAt } = body;
+    const { title, description, attachmentUrl, materialId, subject, product, batch, classSessionId, dueAt } = body;
 
     if (!title || typeof title !== 'string') throw new ApiException('title is required', 400);
     if (!description || typeof description !== 'string') throw new ApiException('description is required', 400);
@@ -45,6 +45,7 @@ export async function POST(req: NextRequest) {
         title,
         description,
         attachmentUrl: attachmentUrl ?? null,
+        materialId: materialId ? Number(materialId) : null,
         subject,
         product,
         batch: batch ?? null,
@@ -64,6 +65,7 @@ function serializeAssignment(a: typeof assignments.$inferSelect) {
     title: a.title,
     description: a.description,
     attachmentUrl: a.attachmentUrl,
+    materialId: a.materialId ?? null,
     subject: a.subject,
     product: a.product,
     batch: a.batch,

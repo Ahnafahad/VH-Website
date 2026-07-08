@@ -1010,6 +1010,7 @@ export const assignments = sqliteTable('assignments', {
   title:          text('title').notNull(),
   description:    text('description').notNull(),
   attachmentUrl:  text('attachment_url'),
+  materialId:     integer('material_id'),                           // soft FK → materials.id (nullable)
   subject:        text('subject').notNull(),
   product:        text('product').notNull().default('iba'),
   batch:          text('batch'),
@@ -1138,6 +1139,21 @@ export const googleCredentials = sqliteTable('google_credentials', {
   updatedAt:    integer('updated_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
 });
 
+// ─── Session Materials (junction) ─────────────────────────────────────────────
+// Many-to-many: one material can be linked to multiple sessions,
+// one session can have multiple materials.
+
+export const sessionMaterials = sqliteTable('session_materials', {
+  id:         integer('id').primaryKey({ autoIncrement: true }),
+  sessionId:  integer('session_id').notNull().references(() => classSessions.id, { onDelete: 'cascade' }),
+  materialId: integer('material_id').notNull().references(() => materials.id, { onDelete: 'cascade' }),
+  addedAt:    integer('added_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
+}, (t) => [
+  unique().on(t.sessionId, t.materialId),
+  index('idx_sm_session').on(t.sessionId),
+  index('idx_sm_material').on(t.materialId),
+]);
+
 // ─── LMS Settings ─────────────────────────────────────────────────────────────
 // Generic key-value store for LMS feature flags and configuration.
 // key: string PK (e.g. 'meet_auto_create')
@@ -1173,6 +1189,8 @@ export type BookingSlot              = typeof bookingSlots.$inferSelect;
 export type SessionRequest           = typeof sessionRequests.$inferSelect;
 export type LmsAnnouncement          = typeof lmsAnnouncements.$inferSelect;
 export type GoogleCredential         = typeof googleCredentials.$inferSelect;
+export type SessionMaterial          = typeof sessionMaterials.$inferSelect;
+export type NewSessionMaterial       = typeof sessionMaterials.$inferInsert;
 
 export type LmsSubject               = 'english' | 'math' | 'analytical';
 export type ClassSessionStatus       = 'draft' | 'scheduled' | 'live' | 'completed' | 'cancelled';

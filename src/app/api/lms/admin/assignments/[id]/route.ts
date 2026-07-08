@@ -40,6 +40,7 @@ export async function PATCH(
       updates.description = body.description;
     }
     if (body.attachmentUrl !== undefined) updates.attachmentUrl = body.attachmentUrl ?? null;
+    if (body.materialId !== undefined) updates.materialId = body.materialId ? Number(body.materialId) : null;
     if (body.subject !== undefined) {
       if (!(LMS_SUBJECTS as readonly string[]).includes(body.subject)) {
         throw new ApiException(`subject must be one of: ${LMS_SUBJECTS.join(', ')}`, 400);
@@ -68,6 +69,7 @@ export async function PATCH(
       title: updated.title,
       description: updated.description,
       attachmentUrl: updated.attachmentUrl,
+      materialId: updated.materialId ?? null,
       subject: updated.subject,
       product: updated.product,
       batch: updated.batch,

@@ -1,8 +1,9 @@
 'use client';
 
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { BookOpen, Trash2, Edit2, Plus, AlertCircle, Clock, ChevronDown, ChevronUp, FileText, CheckCircle, Send, Loader2 } from 'lucide-react';
+import { BookOpen, Trash2, Edit2, Plus, AlertCircle, Clock, ChevronDown, ChevronUp, FileText, CheckCircle, Send, Loader2, Upload, Link2, X as XIcon } from 'lucide-react';
+import { uploadToR2 } from '@/lib/lms/upload-client';
 import {
   SubjectBadge, Toast, ConfirmDialog, Modal,
   FieldLabel, FieldInput, FieldTextarea, FieldSelect, PrimaryBtn, GhostBtn,
@@ -19,6 +20,7 @@ export interface Assignment {
   title: string;
   description: string;
   attachmentUrl: string | null;
+  materialId: number | null;
   subject: string;
   product: string;
   batch: string | null;
@@ -28,9 +30,20 @@ export interface Assignment {
   createdAt: number;
 }
 
+export interface MaterialOption {
+  id: number;
+  title: string;
+  type: string;
+  fileName: string | null;
+  fileSize: number | null;
+  subject: string;
+  createdAt: number;
+}
+
 interface Props {
   initialAssignments: Assignment[];
   sessions: ClassSession[];
+  allMaterials: MaterialOption[];
 }
 
 const SUBJECTS = ['english', 'math', 'analytical'];
@@ -74,19 +87,21 @@ function DueChip({ epochMs }: { epochMs: number }) {
 
 interface AssignmentForm {
   title: string; description: string; subject: string; product: string;
-  batch: string; classSessionId: string; dueAt: string; attachmentUrl: string;
+  batch: string; classSessionId: string; dueAt: string;
+  materialId: string; // '' = none, or numeric string
 }
 
 const defaultForm: AssignmentForm = {
   title: '', description: '', subject: 'english', product: 'iba',
-  batch: '', classSessionId: '', dueAt: '', attachmentUrl: '',
+  batch: '', classSessionId: '', dueAt: '', materialId: '',
 };
 
 function AssignmentModal({
-  open, editing, sessions, onClose, onSaved,
+  open, editing, sessions, allMaterials, onClose, onSaved,
 }: {
   open: boolean; editing: Assignment | null;
   sessions: ClassSession[];
+  allMaterials: MaterialOption[];
   onClose: () => void; onSaved: (a: Assignment) => void;
 }) {
   const [form, setForm] = useState<AssignmentForm>(() => editing ? {
@@ -97,12 +112,53 @@ function AssignmentModal({
     batch: editing.batch ?? '',
     classSessionId: editing.classSessionId ? String(editing.classSessionId) : '',
     dueAt: epochToDhakaLocal(editing.dueAt),
-    attachmentUrl: editing.attachmentUrl ?? '',
+    materialId: editing.materialId ? String(editing.materialId) : '',
   } : defaultForm);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState('');
+  const [uploadFile, setUploadFile] = useState<File | null>(null);
+  const [uploading, setUploading] = useState(false);
+  const [uploadProgress, setUploadProgress] = useState(0);
+  const fileRef = useRef<HTMLInputElement>(null);
 
   const f = (k: keyof AssignmentForm, v: string) => setForm(p => ({ ...p, [k]: v }));
+
+  const handleUploadPdf = async () => {
+    if (!uploadFile) return;
+    setUploading(true); setError('');
+    try {
+      const { key } = await uploadToR2({
+        file: uploadFile,
+        endpoint: '/api/lms/admin/materials/upload',
+        onProgress: setUploadProgress,
+      });
+      const matRes = await fetch('/api/lms/admin/materials', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          title: uploadFile.name.replace(/\.pdf$/i, ''),
+          type: 'pdf',
+          blobUrl: key,
+          fileName: uploadFile.name,
+          fileSize: uploadFile.size,
+          subject: form.subject,
+          product: form.product,
+          batch: form.batch.trim() || null,
+        }),
+      });
+      if (!matRes.ok) throw new Error('Material save failed');
+      const newMat = await matRes.json() as MaterialOption;
+      allMaterials.push(newMat); // mutate for this session
+      setForm(p => ({ ...p, materialId: String(newMat.id) }));
+      setUploadFile(null);
+      setUploadProgress(0);
+      if (fileRef.current) fileRef.current.value = '';
+    } catch (e) {
+      setError(e instanceof Error ? e.message : 'Upload failed');
+    } finally {
+      setUploading(false);
+    }
+  };
 
   const handleSave = async () => {
     if (!form.title.trim() || !form.description.trim() || !form.dueAt) {
@@ -118,7 +174,7 @@ function AssignmentModal({
         batch: form.batch.trim() || null,
         classSessionId: form.classSessionId ? Number(form.classSessionId) : null,
         dueAt: dhakaLocalToISO(form.dueAt),
-        attachmentUrl: form.attachmentUrl.trim() || null,
+        materialId: form.materialId ? Number(form.materialId) : null,
       };
       const url    = editing ? `/api/lms/admin/assignments/${editing.id}` : '/api/lms/admin/assignments';
       const method = editing ? 'PATCH' : 'POST';
@@ -185,13 +241,67 @@ function AssignmentModal({
           <FieldInput type="datetime-local" value={form.dueAt} onChange={e => f('dueAt', e.target.value)} />
         </div>
         <div>
-          <FieldLabel>Attachment URL (optional)</FieldLabel>
-          <FieldInput
-            value={form.attachmentUrl}
-            onChange={e => f('attachmentUrl', e.target.value)}
-            type="url"
-            placeholder="https://…"
-          />
+          <FieldLabel>PDF Attachment (optional)</FieldLabel>
+          {/* Pick existing */}
+          <FieldSelect value={form.materialId} onChange={e => f('materialId', e.target.value)}>
+            <option value="">— none —</option>
+            {allMaterials.map(m => (
+              <option key={m.id} value={String(m.id)}>
+                {m.title}{m.fileSize ? ` (${(m.fileSize / 1_000_000).toFixed(1)} MB)` : ''}
+              </option>
+            ))}
+          </FieldSelect>
+          {/* Or upload new */}
+          <div style={{ marginTop: 8, display: 'flex', gap: 8, alignItems: 'center' }}>
+            <label style={{
+              flex: 1, display: 'flex', alignItems: 'center', gap: 6,
+              fontSize: 12, color: MUTED, border: `1px dashed ${BORDER}`,
+              borderRadius: 8, padding: '6px 10px', cursor: 'pointer',
+            }}>
+              <FileText size={13} />
+              <span style={{ flex: 1, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                {uploadFile ? uploadFile.name : 'Upload new PDF…'}
+              </span>
+              <input
+                ref={fileRef}
+                type="file"
+                accept=".pdf"
+                style={{ display: 'none' }}
+                onChange={e => setUploadFile(e.target.files?.[0] ?? null)}
+              />
+            </label>
+            {uploadFile && (
+              <button
+                type="button"
+                onClick={() => void handleUploadPdf()}
+                disabled={uploading}
+                style={{
+                  fontSize: 12, fontWeight: 600, padding: '6px 12px', borderRadius: 8,
+                  background: '#D62B38', color: '#fff', border: 'none', cursor: uploading ? 'not-allowed' : 'pointer',
+                  opacity: uploading ? 0.7 : 1, display: 'flex', alignItems: 'center', gap: 4,
+                }}
+              >
+                {uploading ? (
+                  <><Loader2 size={12} className="animate-spin" />  {uploadProgress < 100 ? `${uploadProgress}%` : 'Saving…'}</>
+                ) : (
+                  <><Upload size={12} /> Upload</>
+                )}
+              </button>
+            )}
+          </div>
+          {form.materialId && (
+            <p style={{ fontSize: 11, color: '#059669', marginTop: 4, display: 'flex', alignItems: 'center', gap: 4 }}>
+              <CheckCircle size={11} /> PDF attached: {allMaterials.find(m => String(m.id) === form.materialId)?.title ?? `Material #${form.materialId}`}
+              <button
+                type="button"
+                onClick={() => f('materialId', '')}
+                style={{ marginLeft: 4, background: 'none', border: 'none', cursor: 'pointer', color: MUTED, padding: 0 }}
+                aria-label="Clear attachment"
+              >
+                <XIcon size={11} />
+              </button>
+            </p>
+          )}
         </div>
         {error && <p style={{ fontSize: 12, color: RED, margin: 0 }}>{error}</p>}
         <div style={{ display: 'flex', gap: 8, justifyContent: 'flex-end' }}>
@@ -400,7 +510,7 @@ function SubmissionsPanel({ assignmentId, onClose }: { assignmentId: number; onC
 
 // ─── Main component ───────────────────────────────────────────────────────────
 
-export default function HomeworkClient({ initialAssignments, sessions }: Props) {
+export default function HomeworkClient({ initialAssignments, sessions, allMaterials }: Props) {
   const [assignments, setAssignments] = useState(initialAssignments);
   const [modalOpen, setModalOpen] = useState(false);
   const [editing, setEditing] = useState<Assignment | null>(null);
@@ -537,6 +647,7 @@ export default function HomeworkClient({ initialAssignments, sessions }: Props) 
         open={modalOpen}
         editing={editing}
         sessions={sessions}
+        allMaterials={allMaterials}
         onClose={() => { setModalOpen(false); setEditing(null); }}
         onSaved={handleSaved}
       />

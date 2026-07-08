@@ -118,10 +118,13 @@ export default async function MaterialViewerPage({ params }: PageProps) {
     fileSize: material.fileSize,
   };
 
+  const isAdmin = user.role === 'admin' || user.role === 'super_admin' || user.role === 'instructor';
+
   return (
     <MaterialViewer
       material={serializedMaterial}
       initialHighlights={highlights}
+      isAdmin={isAdmin}
     />
   );
 }

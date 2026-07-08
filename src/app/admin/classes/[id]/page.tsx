@@ -18,9 +18,12 @@ import {
   recordingWatchProgress,
   users,
   classQuestions,
+  materials,
+  sessionMaterials,
 } from '@/lib/db/schema';
 import ClassDetailClient from '@/components/admin/lms/ClassDetailClient';
 import { getUserByEmail } from '@/lib/db-access-control';
+import { inArray } from 'drizzle-orm';
 
 export const dynamic = 'force-dynamic';
 
@@ -63,6 +66,30 @@ export default async function ClassDetailPage({
     .where(eq(classSessions.id, sessionId))
     .get();
   if (!classSession) redirect('/admin/classes');
+
+  // Load materials for this session (junction + legacy classSessionId)
+  const [junctionMaterials, legacyMaterials] = await Promise.all([
+    db
+      .select({ materialId: sessionMaterials.materialId })
+      .from(sessionMaterials)
+      .where(eq(sessionMaterials.sessionId, sessionId))
+      .catch(() => [] as { materialId: number }[]),
+    db
+      .select({ id: materials.id })
+      .from(materials)
+      .where(eq(materials.classSessionId, sessionId))
+      .catch(() => [] as { id: number }[]),
+  ]);
+  const materialIdSet = new Set<number>([
+    ...junctionMaterials.map((r) => r.materialId),
+    ...legacyMaterials.map((r) => r.id),
+  ]);
+  const sessionMaterialRows = materialIdSet.size > 0
+    ? await db
+        .select()
+        .from(materials)
+        .where(inArray(materials.id, [...materialIdSet]))
+    : [];
 
   // Load recording (nullable)
   const recording = await db
@@ -209,6 +236,15 @@ export default async function ClassDetailPage({
       allUsers={allUsers}
       initialThreads={threads}
       currentUserId={adminUser.id}
+      initialMaterials={sessionMaterialRows.map((m) => ({
+        id: m.id,
+        title: m.title,
+        type: m.type,
+        fileName: m.fileName,
+        fileSize: m.fileSize,
+        subject: m.subject,
+        createdAt: m.createdAt.getTime(),
+      }))}
     />
   );
 }

@@ -1,12 +1,15 @@
 /**
  * GET  /api/lms/admin/materials — list all materials
  * POST /api/lms/admin/materials — create metadata row (after client upload)
+ *
+ * When classSessionId is provided, the new material is also inserted into
+ * session_materials so it shows up in the many-to-many class↔material view.
  */
 
 import { NextRequest } from 'next/server';
 import { desc } from 'drizzle-orm';
 import { db } from '@/lib/db';
-import { materials } from '@/lib/db/schema';
+import { materials, sessionMaterials } from '@/lib/db/schema';
 import { safeApiHandler, ApiException } from '@/lib/api-utils';
 import { requireStaff } from '@/lib/tests/route-helpers';
 import { LMS_SUBJECTS } from '@/lib/lms/constants';
@@ -38,6 +41,8 @@ export async function POST(req: NextRequest) {
     }
     if (!product || typeof product !== 'string') throw new ApiException('product is required', 400);
 
+    const sessionId: number | null = classSessionId ? Number(classSessionId) : null;
+
     const [created] = await db
       .insert(materials)
       .values({
@@ -49,10 +54,18 @@ export async function POST(req: NextRequest) {
         subject,
         product,
         batch: batch ?? null,
-        classSessionId: classSessionId ?? null,
+        classSessionId: sessionId,
         uploadedBy: staff.id,
       })
       .returning();
+
+    // Also insert into session_materials junction for many-to-many support
+    if (sessionId) {
+      await db
+        .insert(sessionMaterials)
+        .values({ sessionId, materialId: created.id })
+        .onConflictDoNothing();
+    }
 
     return await serializeMaterial(created);
   });
