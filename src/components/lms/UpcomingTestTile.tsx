@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { motion, AnimatePresence, Variants } from 'motion/react';
+import { motion, AnimatePresence, useReducedMotion } from 'motion/react';
 import { FlaskConical, ChevronDown, ArrowRight, CheckCircle2 } from 'lucide-react';
 import Link from 'next/link';
 import type { DashboardUpcomingTest } from '@/lib/lms/dashboard-data';
@@ -11,79 +11,105 @@ interface Props {
   upcomingTests: DashboardUpcomingTest[];
 }
 
-const tileVariants: Variants = {
-  rest: { scale: 1 },
-  hover: { scale: 1.005, transition: { type: 'spring' as const, stiffness: 300, damping: 28 } },
-};
-
-const STATE_STYLES: Record<string, { label: string; color: string }> = {
-  upcoming:  { label: 'Opens soon', color: 'text-amber-700 bg-amber-50 border-amber-200' },
-  open:      { label: 'Open now',   color: 'text-emerald-700 bg-emerald-50 border-emerald-200' },
-  closed:    { label: 'Closed',     color: 'text-stone-500 bg-stone-50 border-stone-200' },
-};
-
-export default function UpcomingTestTile({ upcomingTests }: Props) {
-  const [expandedId, setExpandedId] = useState<number | null>(null);
-
-  if (upcomingTests.length === 0) {
+function WindowStateLabel({ state, opensAt }: { state: string; opensAt: number }) {
+  if (state === 'open') {
     return (
-      <motion.div
-        variants={tileVariants}
-        initial="rest"
-        whileHover="hover"
-        className="rounded-2xl border border-[#E8DDD5] bg-[#FAF5EF] p-4 flex flex-col items-center justify-center gap-2 min-h-[80px]"
-      >
-        <FlaskConical className="w-6 h-6 text-[#D4B094]" strokeWidth={1.25} />
-        <p className="text-xs text-[#7A4A35]">No upcoming tests right now.</p>
-      </motion.div>
+      <span className="flex items-center gap-1 text-xs" style={{ color: '#7DDFA3' }}>
+        <span
+          className="inline-block w-1.5 h-1.5 rounded-full flex-shrink-0"
+          style={{ backgroundColor: '#7DDFA3' }}
+        />
+        open now
+      </span>
     );
   }
+  if (state === 'upcoming') {
+    return (
+      <span
+        className="text-xs"
+        style={{
+          color: 'rgba(250,245,239,0.64)',
+          fontFamily: 'var(--font-math-mono)',
+          fontVariantNumeric: 'tabular-nums',
+        }}
+      >
+        opens {formatDhaka(new Date(opensAt), 'date')}
+      </span>
+    );
+  }
+  return (
+    <span className="text-xs lowercase" style={{ color: 'rgba(250,245,239,0.40)' }}>
+      closed
+    </span>
+  );
+}
+
+export default function UpcomingTestTile({ upcomingTests }: Props) {
+  const prefersReduced = useReducedMotion();
+  const [expandedId, setExpandedId] = useState<number | null>(null);
 
   return (
-    <motion.div
-      variants={tileVariants}
-      initial="rest"
-      whileHover="hover"
-      className="rounded-2xl border border-[#E8DDD5] bg-white overflow-hidden"
-      style={{ boxShadow: '0 1px 3px rgba(90,11,15,0.06), 0 4px 16px rgba(90,11,15,0.03)' }}
-    >
-      <div className="p-5 flex flex-col gap-3">
-        <div className="flex items-center gap-2">
-          <FlaskConical className="w-4 h-4 text-[#760F13]" strokeWidth={1.5} />
-          <p className="text-[10px] font-sans uppercase tracking-widest text-[#A86E58]">Upcoming tests</p>
-        </div>
+    <div id="tests">
+      {/* Section marker */}
+      <div className="flex items-center gap-3 mb-5">
+        <span
+          className="font-heading italic text-sm flex-shrink-0"
+          style={{ color: '#D4B094' }}
+        >
+          upcoming tests
+        </span>
+        <div className="flex-1 h-px" style={{ backgroundColor: 'rgba(212,176,148,0.16)' }} />
+      </div>
 
-        <div className="flex flex-col gap-2">
-          {upcomingTests.map((t, i) => {
+      {upcomingTests.length === 0 ? (
+        <div className="flex flex-col items-start gap-2 py-4">
+          <FlaskConical
+            className="w-6 h-6"
+            style={{ color: 'rgba(250,245,239,0.40)' }}
+            strokeWidth={1.25}
+          />
+          <p className="text-base" style={{ color: 'rgba(250,245,239,0.64)' }}>
+            No upcoming tests right now.
+          </p>
+        </div>
+      ) : (
+        <div className="flex flex-col">
+          {upcomingTests.map((t) => {
             const isExpanded = expandedId === t.id;
             const firstWindow = t.windows[0];
             const windowState = firstWindow?.state ?? 'closed';
-            const stateStyle = STATE_STYLES[windowState] ?? STATE_STYLES.closed;
             const attempted = t.myAttempt !== null;
 
             return (
-              <div key={t.id} className="border border-[#F0E8E0] rounded-xl overflow-hidden">
-                <motion.button
+              <div
+                key={t.id}
+                style={{ borderBottom: '1px solid rgba(212,176,148,0.16)' }}
+              >
+                <button
                   onClick={() => setExpandedId(isExpanded ? null : t.id)}
-                  initial={{ opacity: 0, y: 4 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: i * 0.04, type: 'spring' as const, stiffness: 300, damping: 26 }}
-                  className="w-full flex items-center gap-3 p-3 hover:bg-[#FAF5EF] transition-colors text-left"
+                  className="w-full flex items-center gap-3 py-3 min-h-[44px] text-left transition-opacity hover:opacity-80"
                 >
                   <div className="flex-1 min-w-0">
-                    <p className="text-sm font-medium text-[#1A0507] line-clamp-1">{t.title}</p>
-                    <div className="flex items-center gap-1.5 mt-1 flex-wrap">
-                      <span className={`text-[10px] font-medium px-2 py-0.5 rounded-full border ${stateStyle.color}`}>
-                        {stateStyle.label}
-                      </span>
+                    <p
+                      className="text-sm truncate mb-1"
+                      style={{ color: '#FAF5EF' }}
+                    >
+                      {t.title}
+                    </p>
+                    <div className="flex items-center gap-3 flex-wrap">
                       {firstWindow && (
-                        <span className="text-[10px] text-[#A86E58]">
-                          {formatDhaka(new Date(firstWindow.opensAt), 'date')}
-                        </span>
+                        <WindowStateLabel state={windowState} opensAt={firstWindow.opensAt} />
                       )}
                       {attempted && (
-                        <span className="flex items-center gap-0.5 text-[10px] text-emerald-600">
-                          <CheckCircle2 className="w-3 h-3" strokeWidth={2} />
+                        <span
+                          className="flex items-center gap-1 text-xs"
+                          style={{ color: 'rgba(250,245,239,0.64)' }}
+                        >
+                          <CheckCircle2
+                            className="w-3 h-3"
+                            style={{ color: '#7DDFA3' }}
+                            strokeWidth={2}
+                          />
                           {t.myAttempt?.status}
                         </span>
                       )}
@@ -91,11 +117,20 @@ export default function UpcomingTestTile({ upcomingTests }: Props) {
                   </div>
                   <motion.span
                     animate={{ rotate: isExpanded ? 180 : 0 }}
-                    transition={{ type: 'spring' as const, stiffness: 300, damping: 28 }}
+                    transition={
+                      prefersReduced
+                        ? { duration: 0 }
+                        : { type: 'spring' as const, stiffness: 300, damping: 28 }
+                    }
+                    className="flex-shrink-0"
                   >
-                    <ChevronDown className="w-4 h-4 text-[#D4B094]" strokeWidth={1.5} />
+                    <ChevronDown
+                      className="w-4 h-4"
+                      style={{ color: 'rgba(212,176,148,0.40)' }}
+                      strokeWidth={1.5}
+                    />
                   </motion.span>
-                </motion.button>
+                </button>
 
                 <AnimatePresence initial={false}>
                   {isExpanded && (
@@ -103,18 +138,36 @@ export default function UpcomingTestTile({ upcomingTests }: Props) {
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: 'auto', opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
-                      transition={{ type: 'spring' as const, stiffness: 300, damping: 30, opacity: { duration: 0.2 } }}
+                      transition={
+                        prefersReduced
+                          ? { duration: 0 }
+                          : {
+                              type: 'spring' as const,
+                              stiffness: 300,
+                              damping: 30,
+                              opacity: { duration: 0.2 },
+                            }
+                      }
                       className="overflow-hidden"
                     >
-                      <div className="px-3 pb-3 border-t border-[#F0E8E0] pt-2 flex flex-col gap-2">
+                      <div
+                        className="pb-3 flex flex-col gap-2"
+                        style={{ borderTop: '1px solid rgba(212,176,148,0.16)', paddingTop: '0.5rem' }}
+                      >
                         {t.syllabus && (
-                          <div className="text-xs text-[#5A0B0F]/70 leading-relaxed whitespace-pre-line line-clamp-4">
+                          <p
+                            className="text-sm leading-relaxed whitespace-pre-line line-clamp-4"
+                            style={{ color: 'rgba(250,245,239,0.64)' }}
+                          >
                             {t.syllabus}
-                          </div>
+                          </p>
                         )}
                         <Link
                           href={`/tests/${t.bucket}/${t.slug}`}
-                          className="flex items-center gap-1.5 text-xs font-medium text-[#760F13] hover:text-[#5A0B0F] transition-colors w-fit"
+                          className="flex items-center gap-1.5 text-sm w-fit transition-all"
+                          style={{ color: '#D4B094' }}
+                          onMouseEnter={(e) => (e.currentTarget.style.textDecoration = 'underline')}
+                          onMouseLeave={(e) => (e.currentTarget.style.textDecoration = 'none')}
                         >
                           {attempted ? 'View results' : 'Start test'}
                           <ArrowRight className="w-3 h-3" strokeWidth={2} />
@@ -127,7 +180,7 @@ export default function UpcomingTestTile({ upcomingTests }: Props) {
             );
           })}
         </div>
-      </div>
-    </motion.div>
+      )}
+    </div>
   );
 }

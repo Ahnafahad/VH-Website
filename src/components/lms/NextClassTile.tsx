@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState, useRef, useCallback } from 'react';
-import { motion, Variants } from 'motion/react';
+import { motion, useReducedMotion } from 'motion/react';
 import { Video, Clock, ExternalLink, CalendarClock, Loader2 } from 'lucide-react';
 import type { DashboardNextClass } from '@/lib/lms/dashboard-data';
 import { formatDhaka } from '@/lib/lms/time';
@@ -11,12 +11,6 @@ interface Props {
   nextClass: DashboardNextClass | null;
   serverJoinOpen: boolean;
 }
-
-const SUBJECT_COLORS: Record<string, { bg: string; text: string; border: string }> = {
-  english:    { bg: 'bg-sky-50',    text: 'text-sky-700',    border: 'border-sky-200' },
-  math:       { bg: 'bg-violet-50', text: 'text-violet-700', border: 'border-violet-200' },
-  analytical: { bg: 'bg-amber-50',  text: 'text-amber-700',  border: 'border-amber-200' },
-};
 
 function getCountdown(ms: number): { d: number; h: number; m: number; s: number } {
   if (ms <= 0) return { d: 0, h: 0, m: 0, s: 0 };
@@ -35,38 +29,65 @@ function isJoinOpenClient(scheduledAt: number, durationMinutes: number): boolean
   return now >= windowStart && now <= windowEnd;
 }
 
-const tileVariants: Variants = {
-  rest: { scale: 1 },
-  hover: { scale: 1.005, transition: { type: 'spring' as const, stiffness: 300, damping: 28 } },
-};
-
-const digitVariants: Variants = {
+const digitVariants = {
   initial: { y: -8, opacity: 0 },
-  animate: { y: 0, opacity: 1, transition: { type: 'spring' as const, stiffness: 400, damping: 30 } },
+  animate: {
+    y: 0,
+    opacity: 1,
+    transition: { type: 'spring' as const, stiffness: 400, damping: 30 },
+  },
 };
 
-function CountdownUnit({ value, label }: { value: number; label: string }) {
+const digitVariantsReduced = {
+  initial: { y: 0, opacity: 1 },
+  animate: { y: 0, opacity: 1 },
+};
+
+function CountdownUnit({
+  value,
+  label,
+  prefersReduced,
+}: {
+  value: number;
+  label: string;
+  prefersReduced: boolean | null;
+}) {
   const prev = useRef(value);
   const changed = prev.current !== value;
-  useEffect(() => { prev.current = value; }, [value]);
+  useEffect(() => {
+    prev.current = value;
+  }, [value]);
+
+  const variants = prefersReduced ? digitVariantsReduced : digitVariants;
 
   return (
-    <div className="flex flex-col items-center min-w-[3.5rem]">
+    <div className="flex flex-col items-center min-w-[3rem]">
       <motion.span
         key={value}
-        variants={digitVariants}
-        initial={changed ? 'initial' : 'animate'}
+        variants={variants}
+        initial={changed && !prefersReduced ? 'initial' : 'animate'}
         animate="animate"
-        className="text-3xl sm:text-4xl font-heading font-semibold tabular-nums text-[#5A0B0F] leading-none"
+        className="text-4xl sm:text-5xl leading-none"
+        style={{
+          fontFamily: 'var(--font-math-mono)',
+          fontVariantNumeric: 'tabular-nums',
+          color: '#FAF5EF',
+        }}
       >
         {String(value).padStart(2, '0')}
       </motion.span>
-      <span className="text-[10px] font-sans uppercase tracking-widest text-[#A86E58] mt-1">{label}</span>
+      <span
+        className="text-xs mt-1 lowercase"
+        style={{ color: 'rgba(250,245,239,0.40)' }}
+      >
+        {label}
+      </span>
     </div>
   );
 }
 
 export default function NextClassTile({ nextClass, serverJoinOpen }: Props) {
+  const prefersReduced = useReducedMotion();
   const [joinOpen, setJoinOpen] = useState(serverJoinOpen);
   const [countdown, setCountdown] = useState(
     nextClass ? getCountdown(nextClass.scheduledAt - Date.now()) : null,
@@ -119,117 +140,146 @@ export default function NextClassTile({ nextClass, serverJoinOpen }: Props) {
     }
   }, [nextClass, joining]);
 
-  const subjectStyle = nextClass
-    ? (SUBJECT_COLORS[nextClass.subject] ?? { bg: 'bg-stone-50', text: 'text-stone-600', border: 'border-stone-200' })
-    : null;
-
   if (!nextClass || !countdown) {
     return (
-      <motion.div
-        variants={tileVariants}
-        initial="rest"
-        whileHover="hover"
-        className="relative rounded-2xl border border-[#E8DDD5] bg-[#FAF5EF] p-5 flex flex-col items-center justify-center gap-2 min-h-[120px]"
-      >
-        <CalendarClock className="w-7 h-7 text-[#D4B094]" strokeWidth={1.25} />
-        <p className="font-heading text-base text-[#5A0B0F]/60 font-light">No upcoming class</p>
-        <p className="text-xs text-[#7A4A35]">Check back soon — your schedule will appear here.</p>
-      </motion.div>
+      <div className="flex flex-col items-start gap-2 py-4">
+        <CalendarClock
+          className="w-6 h-6"
+          style={{ color: 'rgba(250,245,239,0.40)' }}
+          strokeWidth={1.25}
+        />
+        <p className="text-base" style={{ color: 'rgba(250,245,239,0.64)' }}>
+          No upcoming class scheduled.
+        </p>
+      </div>
     );
   }
 
   const scheduledDate = new Date(nextClass.scheduledAt);
 
   return (
-    <motion.div
-      variants={tileVariants}
-      initial="rest"
-      whileHover="hover"
-      className="relative rounded-2xl border border-[#E8DDD5] bg-white overflow-hidden flex flex-col"
-      style={{ boxShadow: '0 1px 3px rgba(90,11,15,0.06), 0 8px 24px rgba(90,11,15,0.04)' }}
+    <div
+      className="rounded-xl p-6 flex flex-col gap-5"
+      style={{
+        backgroundColor: 'rgba(250,245,239,0.04)',
+        border: '1px solid rgba(212,176,148,0.16)',
+      }}
     >
-      {/* Top accent stripe */}
-      <div className="h-1 bg-gradient-to-r from-[#760F13] to-[#9A1B20]" />
-
-      {/* Live indicator when join is open */}
-      {joinOpen && (
-        <div className="absolute top-4 right-4 flex items-center gap-1.5">
-          <span className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500" />
+      {/* Header */}
+      <div className="flex items-start justify-between gap-3">
+        <div className="flex-1 min-w-0">
+          {/* Subject label */}
+          <span
+            className="text-xs lowercase mb-1 block"
+            style={{ color: '#D4B094' }}
+          >
+            {nextClass.subject}
           </span>
-          <span className="text-[10px] font-sans font-semibold uppercase tracking-widest text-green-600">Live</span>
+          <h2
+            className="font-heading font-medium text-2xl leading-tight"
+            style={{ color: '#FAF5EF', letterSpacing: '-0.01em' }}
+          >
+            {nextClass.title}
+          </h2>
+          {!joinOpen && (
+            <p
+              className="text-sm mt-1"
+              style={{
+                fontFamily: 'var(--font-math-mono)',
+                fontVariantNumeric: 'tabular-nums',
+                color: 'rgba(250,245,239,0.64)',
+              }}
+            >
+              {formatDhaka(scheduledDate, 'datetime')}
+            </p>
+          )}
+        </div>
+
+        {/* Live indicator */}
+        {joinOpen && (
+          <div className="flex items-center gap-1.5 flex-shrink-0">
+            <motion.span
+              animate={prefersReduced ? {} : { opacity: [1, 0.4, 1] }}
+              transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+              className="inline-flex w-2 h-2 rounded-full flex-shrink-0"
+              style={{ backgroundColor: '#7DDFA3' }}
+            />
+            <span className="text-sm" style={{ color: '#7DDFA3' }}>
+              Live now
+            </span>
+          </div>
+        )}
+      </div>
+
+      {/* Countdown */}
+      <div className="flex items-center gap-2 sm:gap-3">
+        <CountdownUnit value={countdown.d} label="days" prefersReduced={prefersReduced} />
+        <span
+          className="text-3xl -mt-4"
+          style={{ color: 'rgba(212,176,148,0.40)' }}
+        >
+          :
+        </span>
+        <CountdownUnit value={countdown.h} label="hrs" prefersReduced={prefersReduced} />
+        <span
+          className="text-3xl -mt-4"
+          style={{ color: 'rgba(212,176,148,0.40)' }}
+        >
+          :
+        </span>
+        <CountdownUnit value={countdown.m} label="min" prefersReduced={prefersReduced} />
+        <span
+          className="text-3xl -mt-4"
+          style={{ color: 'rgba(212,176,148,0.40)' }}
+        >
+          :
+        </span>
+        <CountdownUnit value={countdown.s} label="sec" prefersReduced={prefersReduced} />
+      </div>
+
+      {/* Join button — the ONE gold filled CTA */}
+      {joinOpen ? (
+        <div>
+          <motion.button
+            onClick={handleJoin}
+            disabled={joining}
+            whileTap={prefersReduced || joining ? {} : { scale: 0.97 }}
+            transition={{ type: 'spring' as const, stiffness: 400, damping: 28 }}
+            className="flex items-center justify-center gap-2 w-full font-medium rounded-md transition-opacity disabled:opacity-70 disabled:cursor-not-allowed"
+            style={{
+              minHeight: '44px',
+              backgroundColor: '#D4B094',
+              color: '#1A0507',
+              padding: '0 1.5rem',
+            }}
+            onMouseEnter={(e) => { if (!joining) (e.currentTarget as HTMLElement).style.backgroundColor = '#c9a07e'; }}
+            onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.backgroundColor = '#D4B094'; }}
+          >
+            {joining ? (
+              <Loader2 className="w-4 h-4 animate-spin" strokeWidth={2} />
+            ) : (
+              <Video className="w-4 h-4" strokeWidth={2} />
+            )}
+            {joining ? 'Joining…' : 'Join Class'}
+            {!joining && <ExternalLink className="w-3.5 h-3.5 opacity-60" strokeWidth={2} />}
+          </motion.button>
+          {joinError && (
+            <p
+              className="mt-2 text-xs text-center leading-snug"
+              style={{ color: '#FF8A8F' }}
+            >
+              {joinError}
+            </p>
+          )}
+        </div>
+      ) : (
+        <div className="flex items-center gap-2" style={{ color: 'rgba(250,245,239,0.40)' }}>
+          <Clock className="w-4 h-4 flex-shrink-0" strokeWidth={1.5} />
+          <span className="text-sm">
+            Opens {JOIN_WINDOW_EARLY_MINUTES} min before class
+          </span>
         </div>
       )}
-
-      <div className="p-5 sm:p-6 flex flex-col gap-4 flex-1">
-        {/* Header */}
-        <div className="flex items-start gap-3">
-          <div className="w-9 h-9 rounded-xl bg-[#F5EDE3] flex items-center justify-center flex-shrink-0">
-            <Video className="w-4.5 h-4.5 text-[#760F13]" strokeWidth={1.5} />
-          </div>
-          <div className="flex-1 min-w-0">
-            <p className="text-[10px] font-sans uppercase tracking-widest text-[#A86E58] mb-0.5">Next class</p>
-            <h2 className="font-heading text-lg sm:text-xl font-semibold text-[#1A0507] leading-tight line-clamp-2">
-              {nextClass.title}
-            </h2>
-          </div>
-        </div>
-
-        {/* Subject + time */}
-        <div className="flex flex-wrap items-center gap-2">
-          {subjectStyle && (
-            <span className={`inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium border ${subjectStyle.bg} ${subjectStyle.text} ${subjectStyle.border}`}>
-              {nextClass.subject.charAt(0).toUpperCase() + nextClass.subject.slice(1)}
-            </span>
-          )}
-          <span className="flex items-center gap-1.5 text-xs text-[#A86E58]">
-            <Clock className="w-3.5 h-3.5" strokeWidth={1.5} />
-            {formatDhaka(scheduledDate, 'datetime')}
-          </span>
-        </div>
-
-        {/* Countdown */}
-        <div className="flex items-center gap-3 sm:gap-4 py-3 border-y border-[#F0E8E0]">
-          <CountdownUnit value={countdown.d} label="days" />
-          <span className="text-2xl text-[#D4B094] font-light -mt-3">:</span>
-          <CountdownUnit value={countdown.h} label="hrs" />
-          <span className="text-2xl text-[#D4B094] font-light -mt-3">:</span>
-          <CountdownUnit value={countdown.m} label="min" />
-          <span className="text-2xl text-[#D4B094] font-light -mt-3">:</span>
-          <CountdownUnit value={countdown.s} label="sec" />
-        </div>
-
-        {/* Join button */}
-        <div className="mt-auto">
-          {joinOpen ? (
-            <motion.button
-              onClick={handleJoin}
-              disabled={joining}
-              whileTap={joining ? {} : { scale: 0.97 }}
-              className="flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-[#760F13] text-white text-sm font-semibold hover:bg-[#5A0B0F] transition-colors duration-200 disabled:opacity-70 disabled:cursor-not-allowed"
-            >
-              {joining ? (
-                <Loader2 className="w-4 h-4 animate-spin" strokeWidth={2} />
-              ) : (
-                <Video className="w-4 h-4" strokeWidth={2} />
-              )}
-              {joining ? 'Joining…' : 'Join Class'}
-              {!joining && <ExternalLink className="w-3.5 h-3.5 opacity-60" strokeWidth={2} />}
-            </motion.button>
-          ) : (
-            <div className="flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-[#F5EDE3] text-[#A86E58] text-sm font-medium cursor-not-allowed select-none">
-              <Clock className="w-4 h-4" strokeWidth={1.5} />
-              {`Opens ${JOIN_WINDOW_EARLY_MINUTES} min before`}
-            </div>
-          )}
-
-          {/* Inline error message */}
-          {joinError && (
-            <p className="mt-2 text-xs text-red-600 text-center leading-snug">{joinError}</p>
-          )}
-        </div>
-      </div>
-    </motion.div>
+    </div>
   );
 }
