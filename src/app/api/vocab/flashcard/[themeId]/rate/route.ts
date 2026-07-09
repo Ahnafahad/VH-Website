@@ -320,6 +320,7 @@ export async function POST(
   revalidateTag(VocabCacheTag.home(session.user.email!));
   revalidateTag(VocabCacheTag.study(session.user.email!));
   revalidateTag(VocabCacheTag.flashcard(session.user.email!, themeId));
+  revalidateTag(VocabCacheTag.letters(user.id));
 
   return NextResponse.json({ ok: true, pointsEarned: result.pointsEarned, earnedBadges });
   } catch (error) {

@@ -201,7 +201,17 @@ function parseAIResponse(rawText: string, provider: string): AIQuestionResult[] 
   });
 }
 
-async function callDeepSeek(prompt: string): Promise<AIQuestionResult[]> {
+/**
+ * Scale the output token budget with the number of questions in the batch —
+ * each question needs ~250 tokens for questionText+explanation. A fixed
+ * budget truncates large batches (up to 20 questions) mid-JSON, breaking
+ * parsing and triggering slow retries.
+ */
+function computeMaxTokens(questionCount: number): number {
+  return Math.min(8192, 300 * questionCount + 512);
+}
+
+async function callDeepSeek(prompt: string, maxTokens: number): Promise<AIQuestionResult[]> {
   const apiKey = process.env.DEEPSEEK_API_KEY;
   if (!apiKey) throw new Error('DEEPSEEK_API_KEY is not configured');
 
@@ -215,7 +225,7 @@ async function callDeepSeek(prompt: string): Promise<AIQuestionResult[]> {
       model:       'deepseek-chat',
       messages:    [{ role: 'user', content: prompt }],
       temperature: 0.87,
-      max_tokens:  2048,
+      max_tokens:  maxTokens,
     }),
   });
 
@@ -231,7 +241,7 @@ async function callDeepSeek(prompt: string): Promise<AIQuestionResult[]> {
   return parseAIResponse(data?.choices?.[0]?.message?.content ?? '', 'DeepSeek');
 }
 
-async function callGemini(prompt: string): Promise<AIQuestionResult[]> {
+async function callGemini(prompt: string, maxTokens: number): Promise<AIQuestionResult[]> {
   const apiKey = process.env.GOOGLE_GEMINI_API_KEY;
   if (!apiKey) throw new Error('GOOGLE_GEMINI_API_KEY is not configured');
 
@@ -242,7 +252,7 @@ async function callGemini(prompt: string): Promise<AIQuestionResult[]> {
       headers: { 'Content-Type': 'application/json', 'x-goog-api-key': apiKey },
       body: JSON.stringify({
         contents: [{ parts: [{ text: prompt }] }],
-        generationConfig: { temperature: 0.87, maxOutputTokens: 2048 },
+        generationConfig: { temperature: 0.87, maxOutputTokens: maxTokens },
       }),
     },
   );
@@ -276,8 +286,9 @@ export async function generateQuizQuestions(
   inputs:       QuizQuestionInput[],
   studentLevel: StudentLevel,
 ): Promise<GeneratedQuestion[]> {
-  const LETTERS = ['A', 'B', 'C', 'D', 'E'] as const;
-  const prompt  = buildPrompt(inputs, studentLevel);
+  const LETTERS  = ['A', 'B', 'C', 'D', 'E'] as const;
+  const prompt   = buildPrompt(inputs, studentLevel);
+  const maxTokens = computeMaxTokens(inputs.length);
 
   function assembleResults(results: AIQuestionResult[]): GeneratedQuestion[] {
     if (results.length !== inputs.length) {
@@ -316,7 +327,7 @@ export async function generateQuizQuestions(
   let deepSeekError: unknown;
   for (let attempt = 0; attempt <= MAX_RETRIES; attempt++) {
     try {
-      return assembleResults(await callDeepSeek(prompt));
+      return assembleResults(await callDeepSeek(prompt, maxTokens));
     } catch (err) {
       deepSeekError = err;
       if (attempt < MAX_RETRIES) {
@@ -328,7 +339,7 @@ export async function generateQuizQuestions(
   // ── Fallback: Gemini (one attempt) ────────────────────────────────────
   console.warn('DeepSeek failed, falling back to Gemini:', deepSeekError);
   try {
-    return assembleResults(await callGemini(prompt));
+    return assembleResults(await callGemini(prompt, maxTokens));
   } catch (geminiErr) {
     throw new Error(
       `All AI providers failed. DeepSeek: ${deepSeekError} | Gemini: ${geminiErr}`,

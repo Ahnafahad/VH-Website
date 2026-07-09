@@ -2,7 +2,7 @@
 
 import { useState, useMemo } from 'react';
 import { motion, AnimatePresence, Variants } from 'framer-motion';
-import { useRouter } from 'next/navigation';
+import { useSafeNavigate } from '@/hooks/useSafeNavigate';
 import type { PracticePageData, PracticeUnitItem } from '@/lib/vocab/practice-data';
 import { useVocabFeedback } from '@/lib/vocab/use-vocab-feedback';
 import { trackFeature } from '@/lib/analytics/tracker';
@@ -601,7 +601,7 @@ function ExamModeCard({ unlocked, onStart }: { unlocked: boolean; onStart: () =>
 // ─── Main component ───────────────────────────────────────────────────────────
 
 export default function PracticeScreen({ data }: { data: PracticePageData }) {
-  const router = useRouter();
+  const { navigate } = useSafeNavigate();
   const [activeTab, setActiveTab]         = useState<PracticeTab>('unit');
   const [selected, setSelected]           = useState<Set<number>>(new Set());
   const [selectedLetters, setSelectedLetters] = useState<Set<string>>(new Set());
@@ -672,13 +672,13 @@ export default function PracticeScreen({ data }: { data: PracticePageData }) {
     if (activeTab === 'unit') {
       if (selected.size === 0) return;
       trackFeature('practice_start', 'vocab');
-      router.push(`/vocab/practice/quiz?themes=${Array.from(selected).join(',')}`);
+      navigate(`/vocab/practice/quiz?themes=${Array.from(selected).join(',')}`);
     } else {
       if (selectedLetters.size === 0) return;
       const wordIds = data.letters.filter(l => selectedLetters.has(l.letter)).flatMap(l => l.wordIds);
       if (wordIds.length === 0) return;
       trackFeature('practice_start', 'vocab');
-      router.push(`/vocab/practice/quiz?wordIds=${wordIds.join(',')}`);
+      navigate(`/vocab/practice/quiz?wordIds=${wordIds.join(',')}`);
     }
   };
 
@@ -753,7 +753,7 @@ export default function PracticeScreen({ data }: { data: PracticePageData }) {
       <div className="px-5 md:px-8 mb-4">
         <ExamModeCard
           unlocked={data.studentLevel === 'advanced'}
-          onStart={() => router.push('/vocab/practice/quiz?mode=exam')}
+          onStart={() => navigate('/vocab/practice/quiz?mode=exam')}
         />
       </div>
 

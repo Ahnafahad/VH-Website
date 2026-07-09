@@ -3,11 +3,13 @@
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import { usePathname } from 'next/navigation';
 
-// IMPORTANT: This wrapper intentionally uses ONLY opacity + filter (blur) animations.
-// DO NOT add transform/x/y/scale here. A CSS transform on a wrapper creates a new
-// CSS containing block, which breaks position:fixed descendants (BottomNav, rating
-// bars, DailyDossier, etc.). Opacity and filter are composited without creating a
-// containing block and are therefore safe.
+// IMPORTANT: This wrapper intentionally uses ONLY opacity animations.
+// DO NOT add transform/x/y/scale OR filter (even blur(0px)) here. Both transform
+// and any non-none filter create a CSS containing block, which breaks
+// position:fixed descendants (QuizConfigSheet, BottomNav, rating bars,
+// DailyDossier, etc.) — framer-motion leaves the final inline value in place,
+// so `filter: blur(0px)` permanently re-parented fixed children and rendered
+// the quiz config sheet off-screen. Opacity alone is safe.
 
 export default function PageTransition({ children }: { children: React.ReactNode }) {
   const pathname           = usePathname();
@@ -20,13 +22,13 @@ export default function PageTransition({ children }: { children: React.ReactNode
         initial={
           shouldReduceMotion
             ? { opacity: 1 }
-            : { opacity: 0, filter: 'blur(4px)' }
+            : { opacity: 0 }
         }
-        animate={{ opacity: 1, filter: 'blur(0px)' }}
+        animate={{ opacity: 1 }}
         exit={
           shouldReduceMotion
             ? { opacity: 1 }
-            : { opacity: 0, filter: 'blur(4px)' }
+            : { opacity: 0 }
         }
         transition={
           shouldReduceMotion

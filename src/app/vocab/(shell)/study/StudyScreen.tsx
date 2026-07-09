@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
-import { useRouter } from 'next/navigation';
+import { useSafeNavigate } from '@/hooks/useSafeNavigate';
 import { ChevronDown, Lock, CheckCircle, Clock, BookOpen, Circle } from 'lucide-react';
 import type { UnitWithThemes, ThemeWithStatus, ThemeStatus } from '@/lib/vocab/study-data';
 import type { LetterSummary } from '@/lib/vocab/letter-data';
@@ -28,7 +28,7 @@ interface Props {
 // ─── Letter grid card ─────────────────────────────────────────────────────────
 
 function LetterCard({ summary }: { summary: LetterSummary }) {
-  const router     = useRouter();
+  const { navigate } = useSafeNavigate();
   const fb         = useVocabFeedback();
   const masteryPct = summary.wordCount > 0
     ? summary.familiarPlusCount / summary.wordCount
@@ -72,7 +72,7 @@ function LetterCard({ summary }: { summary: LetterSummary }) {
       whileTap={{ scale: 0.95 }}
       whileHover={{ scale: 1.02 }}
       transition={{ type: 'spring', stiffness: 380, damping: 28 }}
-      onClick={() => { fb.play('tap'); router.push(`/vocab/study/letter/${summary.letter}`); }}
+      onClick={() => { fb.play('tap'); navigate(`/vocab/study/letter/${summary.letter}`); }}
       style={{
         background: 'var(--color-lx-surface)',
         border: '1px solid var(--color-lx-border)',
@@ -345,11 +345,11 @@ function UnitAccordion({
   onToggle:      () => void;
   resumeThemeId: number | null;
 }) {
-  const router = useRouter();
+  const { navigate } = useSafeNavigate();
 
   function handleThemeTap(theme: ThemeWithStatus) {
     if (theme.locked) return;
-    router.push(`/vocab/study/${theme.id}`);
+    navigate(`/vocab/study/${theme.id}`);
   }
 
   // Check if the entire unit is locked (all themes are locked)

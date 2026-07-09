@@ -1,5 +1,7 @@
 import { db, users, vocabUserWordRecords, vocabWords, vocabThemes, vocabUnits } from '@/lib/db';
 import { eq, and, sql, count, inArray, lte } from 'drizzle-orm';
+import { unstable_cache } from 'next/cache';
+import { VocabCacheTag } from './cache-keys';
 
 function safeParseArray(json: string | null): string[] {
   if (!json) return [];
@@ -32,7 +34,15 @@ export interface LetterWordData {
  * Get summary of all letters (A–Z) with word counts and mastery stats.
  * @param maxUnitOrder — if provided, only include words from units with order <= this value
  */
-export async function getLetterIndex(userId: number, maxUnitOrder?: number): Promise<LetterSummary[]> {
+export function getLetterIndex(userId: number, maxUnitOrder?: number): Promise<LetterSummary[]> {
+  return unstable_cache(
+    () => _getLetterIndex(userId, maxUnitOrder),
+    ['vocab-letters', String(userId), String(maxUnitOrder ?? 'all')],
+    { revalidate: 120, tags: [VocabCacheTag.letters(userId)] },
+  )();
+}
+
+async function _getLetterIndex(userId: number, maxUnitOrder?: number): Promise<LetterSummary[]> {
   // Phase filtering: join through units to restrict by unit order when set.
   // We build two shapes since Drizzle's fluent builder types tighten after each step.
   const wordRows = maxUnitOrder !== undefined

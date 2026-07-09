@@ -41,6 +41,10 @@ const pwaConfig = withPWA({
   // a stale pre-fix service worker don't keep serving broken responses.
   // (This is next-pwa's default, but we depend on it — keep it explicit.)
   cleanupOutdatedCaches: true,
+  // Don't precache the large mock-test/accounting JSON blobs (several MB) —
+  // they'd all download on first SW install, which made the app's first
+  // launch crawl. They're fetched on demand by the pages that need them.
+  publicExcludes: ["!data/**/*", "!migrate-students.html", "!tests/**/*"],
   // Never let the SW cache Next.js RSC payloads or API responses.
   // Stale RSC cache causes 2-minute blank screens on mobile navigation.
   //
@@ -68,9 +72,12 @@ const pwaConfig = withPWA({
         cacheableResponse: { statuses: [0] },
       },
     },
-    // API routes — always fresh
+    // API routes — always fresh. NB: workbox matches regexes against the FULL
+    // request href (https://host/api/...), so a ^\/api\/ regex never matched —
+    // use a same-origin pathname callback instead.
     {
-      urlPattern: /^\/api\//,
+      urlPattern: ({ url, sameOrigin }: { url: URL; sameOrigin: boolean }) =>
+        sameOrigin && url.pathname.startsWith("/api/"),
       handler: "NetworkFirst",
       options: {
         cacheName: "api-network-only",

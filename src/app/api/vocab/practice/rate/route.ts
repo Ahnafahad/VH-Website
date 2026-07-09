@@ -106,6 +106,7 @@ export async function POST(req: NextRequest) {
 
     revalidateTag(VocabCacheTag.home(session.user.email!));
     revalidateTag(VocabCacheTag.practiceUi(session.user.email!));
+    revalidateTag(VocabCacheTag.letters(user.id));
     return NextResponse.json({ ok: true, pointsEarned });
   }
 
@@ -195,6 +196,7 @@ export async function POST(req: NextRequest) {
 
   revalidateTag(VocabCacheTag.home(session.user.email!));
   revalidateTag(VocabCacheTag.practiceUi(session.user.email!));
+  revalidateTag(VocabCacheTag.letters(user.id));
 
   return NextResponse.json({ ok: true, pointsEarned });
 }

@@ -18,6 +18,8 @@ import { getServerSession } from 'next-auth/next';
 import { and, eq, sql } from 'drizzle-orm';
 import { z } from 'zod';
 import { authOptions } from '@/lib/auth';
+import { revalidateTag } from 'next/cache';
+import { WORD_BANK_TAG } from '@/lib/vocab/word-bank';
 import { db, vocabWords } from '@/lib/db';
 import { safeApiHandler, ApiException } from '@/lib/api-utils';
 
@@ -175,6 +177,7 @@ export async function POST(req: NextRequest) {
       }
     }
 
+    if (imported > 0 || updated > 0) revalidateTag(WORD_BANK_TAG);
     return { imported, updated, errors };
   });
 }

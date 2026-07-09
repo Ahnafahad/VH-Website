@@ -343,6 +343,7 @@ export async function POST(req: NextRequest) {
 
     revalidateTag(VocabCacheTag.home(email));
     revalidateTag(VocabCacheTag.study(email));
+    revalidateTag(VocabCacheTag.letters(user.id));
 
     return {
       isCorrect,

@@ -38,6 +38,7 @@ export function prefetchQuiz(body: QuizBody): void {
     method:  'POST',
     headers: { 'Content-Type': 'application/json' },
     body:    JSON.stringify(body),
+    signal:  AbortSignal.timeout(45000),
   }).then(r => {
     if (!r.ok) throw new Error('generation failed');
     return r.json();

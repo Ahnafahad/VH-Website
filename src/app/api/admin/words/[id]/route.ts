@@ -11,6 +11,8 @@ import { eq } from 'drizzle-orm';
 import { authOptions } from '@/lib/auth';
 import { db, vocabWords } from '@/lib/db';
 import { safeApiHandler, ApiException } from '@/lib/api-utils';
+import { revalidateTag } from 'next/cache';
+import { WORD_BANK_TAG } from '@/lib/vocab/word-bank';
 
 async function requireAdmin(): Promise<void> {
   const session = await getServerSession(authOptions);
@@ -87,6 +89,7 @@ export async function PATCH(req: NextRequest, { params }: Params) {
       .where(eq(vocabWords.id, wordId))
       .returning();
 
+    revalidateTag(WORD_BANK_TAG);
     return { word: updated };
   });
 }
@@ -108,6 +111,7 @@ export async function DELETE(_req: NextRequest, { params }: Params) {
 
     await db.delete(vocabWords).where(eq(vocabWords.id, wordId));
 
+    revalidateTag(WORD_BANK_TAG);
     return { ok: true };
   });
 }

@@ -3,7 +3,7 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 import type { QuizConfig } from '@/components/vocab/QuizConfigSheet';
 import { motion, AnimatePresence, useReducedMotion, type Variants } from 'framer-motion';
-import { useRouter } from 'next/navigation';
+import { useSafeNavigate } from '@/hooks/useSafeNavigate';
 import {
   MoveRight, BadgeCheck, OctagonX,
   Gem, RefreshCcwDot, Crown, ChevronDown,
@@ -404,7 +404,7 @@ const CIRCUMFERENCE = 2 * Math.PI * 54;
 
 function QuizSummary({ summary, onContinue }: { summary: SummaryData; onContinue: () => void }) {
   const { scorePct, passed, passThreshold, correctAnswers, totalQuestions, bonusPoints, questions } = summary;
-  const router = useRouter();
+  const { navigate } = useSafeNavigate();
   const [expandedId, setExpandedId] = useState<string | null>(null);
 
   const ringColor = passed ? C.success : scorePct >= 40 ? C.warning : C.red;
@@ -523,7 +523,7 @@ function QuizSummary({ summary, onContinue }: { summary: SummaryData; onContinue
 
         {wrongOnly.length > 0 && (
           <button
-            onClick={() => router.push('/vocab/practice')}
+            onClick={() => navigate('/vocab/practice')}
             style={{
               width: '100%', padding: '0.875rem',
               background: 'transparent',
@@ -753,7 +753,10 @@ interface Props {
 }
 
 export default function QuizScreen({ themeId, themeIds, letterWordIds, sessionType, quizConfig, hintWords: hintWordsProp }: Props) {
-  const router       = useRouter();
+  const { navigate } = useSafeNavigate();
+  // Known exit target per session type — router.back() can't be watchdogged
+  // (unknown destination), so exit/error routes go to the launching hub.
+  const exitHref     = sessionType === 'practice' || sessionType === 'exam' ? '/vocab/practice' : '/vocab/study';
   const { push }     = useBadgeQueue();
   const fb           = useVocabFeedback();
   const reduceMotion = useReducedMotion();
@@ -837,6 +840,7 @@ export default function QuizScreen({ themeId, themeIds, letterWordIds, sessionTy
             method:  'POST',
             headers: { 'Content-Type': 'application/json' },
             body:    JSON.stringify(body),
+            signal:  AbortSignal.timeout(45000),
           });
           if (!res.ok) throw new Error('generation failed');
           data = await res.json() as { sessionId: number; questions: QuizQuestion[] };
@@ -846,6 +850,8 @@ export default function QuizScreen({ themeId, themeIds, letterWordIds, sessionTy
         setQuestions(data.questions);
         setPhase('quiz');
       } catch {
+        // Covers network errors, non-OK responses, and AbortError (45s timeout) —
+        // all fall through to the same error phase with retry.
         setPhase('error');
       }
     })();
@@ -1037,9 +1043,9 @@ export default function QuizScreen({ themeId, themeIds, letterWordIds, sessionTy
   // ── Render ─────────────────────────────────────────────────────────────────
 
   if (phase === 'generating') return <QuizLoading words={hintWords} />;
-  if (phase === 'error')      return <div className="lx-page-enter"><QuizError onBack={() => router.back()} /></div>;
+  if (phase === 'error')      return <div className="lx-page-enter"><QuizError onBack={() => navigate(exitHref)} /></div>;
   if (phase === 'summary' && summary) {
-    return <div className="lx-page-enter"><QuizSummary summary={summary} onContinue={() => router.push('/vocab/study')} /></div>;
+    return <div className="lx-page-enter"><QuizSummary summary={summary} onContinue={() => navigate('/vocab/study')} /></div>;
   }
   if (!current) return null;
 
@@ -1070,7 +1076,7 @@ export default function QuizScreen({ themeId, themeIds, letterWordIds, sessionTy
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.75rem' }}>
         <motion.button
           whileTap={{ scale: 0.88 }}
-          onClick={() => router.back()}
+          onClick={() => navigate(exitHref)}
           style={{
             width: 44, height: 44, borderRadius: '50%',
             background: 'transparent', border: 'none',

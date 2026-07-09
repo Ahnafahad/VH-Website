@@ -14,7 +14,7 @@
  */
 
 import { NextRequest } from 'next/server';
-import { eq, and, inArray, gte, sql } from 'drizzle-orm';
+import { eq, and, inArray, gte } from 'drizzle-orm';
 import { db } from '@/lib/db';
 import {
   users,
@@ -41,6 +41,7 @@ import {
   weightedSample,
 } from '@/lib/vocab/priority-score';
 import { filterAccessibleWordIds, canAccessTheme } from '@/lib/vocab/access-check';
+import { getAllWordsCached } from '@/lib/vocab/word-bank';
 import type { WordForDistractor } from '@/lib/vocab/distractor-selector';
 import type { VocabQuestionType } from '@/lib/db/schema';
 import type { QuizQuestionInput, DifficultyLevel } from '@/lib/vocab/quiz-generator';
@@ -167,7 +168,7 @@ export async function POST(req: NextRequest) {
       const questionCount = Math.min(requestedCount, rawWords.length, STUDY_MAX_QUESTIONS);
 
       // For the full pool (distractors come from all DB words, not just this theme)
-      const allWords = await db.select().from(vocabWords);
+      const allWords = await getAllWordsCached();
       // Shuffle so every quiz picks a different subset when theme > STUDY_MAX_QUESTIONS
       const correctWords = shuffle(rawWords).slice(0, questionCount).map(toWordForDistractor);
       const pool        = allWords.map(toWordForDistractor);
@@ -291,12 +292,10 @@ export async function POST(req: NextRequest) {
       // so the distractor pool MUST be same-letter words too — otherwise the
       // answer is trivially "the only option starting with that letter".
       const letter = rawWords[0]?.word?.charAt(0)?.toUpperCase() ?? '';
+      const bank = await getAllWordsCached();
       const allWords = letter
-        ? await db
-            .select()
-            .from(vocabWords)
-            .where(sql`UPPER(SUBSTR(${vocabWords.word}, 1, 1)) = ${letter}`)
-        : await db.select().from(vocabWords);
+        ? bank.filter(w => w.word.charAt(0).toUpperCase() === letter)
+        : bank;
       const correctWords = shuffle(rawWords).slice(0, questionCount).map(toWordForDistractor);
       const pool         = allWords.map(toWordForDistractor);
 
@@ -323,7 +322,7 @@ export async function POST(req: NextRequest) {
         ? rawQCount : 15;
 
       // Whole accessible word bank (exam draws across all units)
-      const allWords   = await db.select().from(vocabWords);
+      const allWords   = await getAllWordsCached();
       const allowedIds = await filterAccessibleWordIds(user.id, allWords.map(w => w.id));
       const allowedSet = new Set(allowedIds);
       const accessible = allWords.filter(w => allowedSet.has(w.id));
