@@ -243,11 +243,11 @@ export function Modal({
           <motion.div
             key="modal-panel"
             variants={modalV} initial="hidden" animate="visible" exit="exit"
+            transformTemplate={(_, generated) => `translate(-50%, -50%) ${generated}`}
             style={{
               position: 'fixed', top: '50%', left: '50%',
-              transform: 'translate(-50%,-50%)',
               zIndex: 201, background: '#FFFFFF', borderRadius: 14,
-              width, maxWidth: '96vw', maxHeight: '90vh',
+              width, maxWidth: 'calc(100vw - 32px)', maxHeight: '90vh',
               display: 'flex', flexDirection: 'column',
               boxShadow: '0 24px 80px rgba(0,0,0,0.14)',
               border: `1px solid ${BORDER}`,
@@ -258,6 +258,7 @@ export function Modal({
               display: 'flex', alignItems: 'center', justifyContent: 'space-between',
               padding: '16px 20px', borderBottom: `1px solid ${BORDER}`,
               position: 'sticky', top: 0, background: '#FFFFFF', borderRadius: '14px 14px 0 0',
+              flexShrink: 0,
             }}>
               <span style={{ fontSize: 14, fontWeight: 700, color: SLATE, letterSpacing: '-0.02em' }}>
                 {title}
@@ -276,7 +277,7 @@ export function Modal({
               </motion.button>
             </div>
             {/* Body */}
-            <div style={{ flex: 1, overflowY: 'auto', padding: '20px' }}>
+            <div style={{ flex: 1, overflowY: 'auto', padding: '20px', minHeight: 0 }}>
               {children}
             </div>
           </motion.div>

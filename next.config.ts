@@ -22,7 +22,7 @@ const nextConfig: NextConfig = {
               "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
               "font-src 'self' https://fonts.gstatic.com",
               "img-src 'self' data: blob: https://*.googleusercontent.com https://lh3.googleusercontent.com",
-              "connect-src 'self' https://accounts.google.com",
+              "connect-src 'self' https://accounts.google.com https://*.r2.cloudflarestorage.com",
               "frame-src 'self' https://accounts.google.com",
             ].join("; "),
           },
