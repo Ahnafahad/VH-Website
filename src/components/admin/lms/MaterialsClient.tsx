@@ -270,9 +270,9 @@ function AddLinkTab({
 // ─── Materials list ───────────────────────────────────────────────────────────
 
 function MaterialsList({
-  materials, sessions, onDeleted,
+  materials, sessions, onDeleted, onUpload,
 }: {
-  materials: Material[]; sessions: ClassSession[]; onDeleted: (id: number) => void;
+  materials: Material[]; sessions: ClassSession[]; onDeleted: (id: number) => void; onUpload: () => void;
 }) {
   const [deleteId, setDeleteId] = useState<number | null>(null);
   const [deleting, setDeleting] = useState(false);
@@ -298,7 +298,16 @@ function MaterialsList({
   const sessionMap = new Map(sessions.map(s => [s.id, s]));
 
   if (materials.length === 0) return (
-    <EmptyState icon={FileText} message="No materials yet. Upload a PDF or add a link." />
+    <EmptyState
+      icon={FileText}
+      message="No materials yet. Upload a PDF or add a link."
+      action={
+        <PrimaryBtn onClick={onUpload} small>
+          <Upload size={13} aria-hidden />
+          Upload PDF
+        </PrimaryBtn>
+      }
+    />
   );
 
   return (
@@ -376,6 +385,18 @@ export default function MaterialsClient({ initialMaterials, sessions }: Props) {
       <PageHeader
         title="Materials"
         subtitle={`${materials.length} material${materials.length !== 1 ? 's' : ''} — PDFs and links for students`}
+        action={
+          <div style={{ display: 'flex', gap: 8 }}>
+            <PrimaryBtn onClick={() => setTab('upload')} disabled={tab === 'upload'}>
+              <Upload size={14} aria-hidden />
+              Upload PDF
+            </PrimaryBtn>
+            <GhostBtn onClick={() => setTab('link')} disabled={tab === 'link'}>
+              <Plus size={14} aria-hidden />
+              Add Link
+            </GhostBtn>
+          </div>
+        }
       />
       <TabBar
         tabs={[
@@ -387,7 +408,7 @@ export default function MaterialsClient({ initialMaterials, sessions }: Props) {
         onChange={(id) => setTab(id as 'list' | 'upload' | 'link')}
       />
       <AnimatePresence mode="wait">
-        {tab === 'list'   && <MaterialsList key="list" materials={materials} sessions={sessions} onDeleted={handleDeleted} />}
+        {tab === 'list'   && <MaterialsList key="list" materials={materials} sessions={sessions} onDeleted={handleDeleted} onUpload={() => setTab('upload')} />}
         {tab === 'upload' && <UploadPdfTab key="upload" sessions={sessions} onUploaded={handleAdded} />}
         {tab === 'link'   && <AddLinkTab   key="link"   sessions={sessions} onAdded={handleAdded} />}
       </AnimatePresence>
