@@ -502,10 +502,13 @@ export function fmtDhaka(epochMs: number, opts: Intl.DateTimeFormatOptions = {
 
 /** Convert a datetime-local value (Dhaka) to ISO string for the API */
 export function dhakaLocalToISO(value: string): string {
-  // datetime-local gives 'YYYY-MM-DDTHH:mm' in Dhaka local
-  const localMs = new Date(value).getTime(); // JS treats as local, but we need UTC
-  // value is Dhaka, so subtract offset to get UTC
-  const utcMs = localMs - DHAKA_OFFSET_MS;
+  // value is 'YYYY-MM-DDTHH:mm' representing Dhaka wall-clock time.
+  // Parse the components explicitly so the result does not depend on the
+  // browser's own timezone, then convert that Dhaka wall-clock to a UTC epoch.
+  const [datePart, timePart = '00:00'] = value.split('T');
+  const [y, mo, d] = datePart.split('-').map(Number);
+  const [h, mi] = timePart.split(':').map(Number);
+  const utcMs = Date.UTC(y, mo - 1, d, h, mi) - DHAKA_OFFSET_MS;
   return new Date(utcMs).toISOString();
 }
 

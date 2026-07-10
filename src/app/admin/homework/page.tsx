@@ -4,6 +4,7 @@ import { redirect } from 'next/navigation';
 import HomeworkClient from '@/components/admin/lms/HomeworkClient';
 import type { Assignment, MaterialOption } from '@/components/admin/lms/HomeworkClient';
 import type { ClassSession } from '@/components/admin/lms/ClassesClient';
+import { adminApiFetch } from '@/lib/lms/admin-fetch';
 
 export const dynamic = 'force-dynamic';
 export const metadata = { title: 'Homework | Admin' };
@@ -12,12 +13,10 @@ export default async function HomeworkPage() {
   const session = await getServerSession(authOptions);
   if (!session?.user?.email) redirect('/auth/signin');
 
-  const base = process.env.NEXTAUTH_URL ?? 'http://localhost:6960';
-
   const [assignRes, sessRes, matsRes] = await Promise.all([
-    fetch(`${base}/api/lms/admin/assignments`, { cache: 'no-store' }),
-    fetch(`${base}/api/lms/admin/classes`,     { cache: 'no-store' }),
-    fetch(`${base}/api/lms/admin/materials`,   { cache: 'no-store' }),
+    adminApiFetch('/api/lms/admin/assignments'),
+    adminApiFetch('/api/lms/admin/classes'),
+    adminApiFetch('/api/lms/admin/materials'),
   ]);
 
   const initialAssignments: Assignment[] = assignRes.ok ? await assignRes.json() as Assignment[] : [];

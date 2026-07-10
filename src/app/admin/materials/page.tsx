@@ -4,6 +4,7 @@ import { redirect } from 'next/navigation';
 import MaterialsClient from '@/components/admin/lms/MaterialsClient';
 import type { Material } from '@/components/admin/lms/MaterialsClient';
 import type { ClassSession } from '@/components/admin/lms/ClassesClient';
+import { adminApiFetch } from '@/lib/lms/admin-fetch';
 
 export const dynamic = 'force-dynamic';
 export const metadata = { title: 'Materials | Admin' };
@@ -12,11 +13,9 @@ export default async function MaterialsPage() {
   const session = await getServerSession(authOptions);
   if (!session?.user?.email) redirect('/auth/signin');
 
-  const base = process.env.NEXTAUTH_URL ?? 'http://localhost:6960';
-
   const [matRes, sessRes] = await Promise.all([
-    fetch(`${base}/api/lms/admin/materials`,  { cache: 'no-store' }),
-    fetch(`${base}/api/lms/admin/classes`,    { cache: 'no-store' }),
+    adminApiFetch('/api/lms/admin/materials'),
+    adminApiFetch('/api/lms/admin/classes'),
   ]);
 
   const initialMaterials: Material[]    = matRes.ok  ? await matRes.json()  as Material[]    : [];
