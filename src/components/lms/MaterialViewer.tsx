@@ -703,7 +703,7 @@ export default function MaterialViewer({ material, initialHighlights, isAdmin = 
                 utilsRef={(utils) => {
                   highlighterUtilsRef.current = utils;
                 }}
-                style={{ height: '100%', position: 'relative' }}
+                style={{ height: '100%' }}
               >
                 <HighlightContainerInner
                   editHighlight={handleEditHighlight}

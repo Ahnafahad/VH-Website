@@ -6,7 +6,7 @@
  */
 
 import { useState } from 'react';
-import { motion, AnimatePresence, Variants } from 'motion/react';
+import { motion, AnimatePresence, useReducedMotion, Variants } from 'motion/react';
 import {
   ArrowLeft,
   FileText,
@@ -77,19 +77,53 @@ interface Props {
   currentUserId: number;
 }
 
-// ─── Helpers ─────────────────────────────────────────────────────────────────
+// ─── Design tokens (shared with DashboardScreen / NextClassTile / etc.) ───────
 
-const STATUS_BADGE: Record<string, string> = {
-  scheduled: 'bg-blue-50 text-blue-700',
-  live:      'bg-emerald-50 text-emerald-700',
-  completed: 'bg-stone-100 text-stone-600',
-};
+const INK       = '#FAF5EF';
+const INK_64    = 'rgba(250,245,239,0.64)';
+const INK_40    = 'rgba(250,245,239,0.40)';
+const TAN       = '#D4B094';
+const TAN_HOVER = '#c9a07e';
+const HAIRLINE  = 'rgba(212,176,148,0.16)';
+const SURFACE   = 'rgba(250,245,239,0.04)';
+const GREEN     = '#7DDFA3';
+const RED       = '#FF8A8F';
 
-const SUBJECT_BADGE: Record<string, string> = {
-  english:    'bg-blue-50 text-blue-700',
-  math:       'bg-emerald-50 text-emerald-700',
-  analytical: 'bg-amber-50 text-amber-700',
-};
+// ─── Status / subject labels — text-only, no filled pills ─────────────────────
+
+function StatusLabel({ status }: { status: string }) {
+  const prefersReduced = useReducedMotion();
+  if (status === 'live') {
+    return (
+      <div className="flex items-center gap-1.5 flex-shrink-0">
+        <motion.span
+          animate={prefersReduced ? {} : { opacity: [1, 0.4, 1] }}
+          transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+          className="inline-flex w-1.5 h-1.5 rounded-full flex-shrink-0"
+          style={{ backgroundColor: GREEN }}
+        />
+        <span className="text-xs lowercase" style={{ color: GREEN }}>live now</span>
+      </div>
+    );
+  }
+  if (status === 'completed') {
+    return <span className="text-xs lowercase flex-shrink-0" style={{ color: INK_40 }}>completed</span>;
+  }
+  return <span className="text-xs lowercase flex-shrink-0" style={{ color: TAN }}>scheduled</span>;
+}
+
+// ─── Section marker (matches HomeworkTile / ClassHistoryTile / NextClassTile) ─
+
+function SectionMarker({ label }: { label: string }) {
+  return (
+    <div className="flex items-center gap-3 mb-5">
+      <span className="font-heading italic text-sm flex-shrink-0" style={{ color: TAN }}>
+        {label}
+      </span>
+      <div className="flex-1 h-px" style={{ backgroundColor: HAIRLINE }} />
+    </div>
+  );
+}
 
 const cardV: Variants = {
   hidden:  { opacity: 0, y: 10 },
@@ -171,95 +205,109 @@ export default function ClassDetailStudentClient({
   };
 
   return (
-    <div className="min-h-screen bg-[#FAF5EF] pb-16">
+    <div className="min-h-screen pb-16" style={{ backgroundColor: '#1A0507' }}>
       {/* ── Header ─────────────────────────────────────────────────────────── */}
-      <div className="bg-white border-b border-[#E8DDD5] px-4 py-4 flex items-center gap-3 sticky top-0 z-10">
-        <Link
-          href="/dashboard"
-          className="flex items-center justify-center w-8 h-8 rounded-full hover:bg-[#F5EDE3] transition-colors"
-          aria-label="Back to dashboard"
-        >
-          <ArrowLeft className="w-4 h-4 text-[#5A0B0F]" strokeWidth={2} />
-        </Link>
-        <div className="min-w-0 flex-1">
-          <h1 className="text-sm font-semibold text-[#1A0507] truncate">{classSession.title}</h1>
-          <p className="text-xs text-[#A86E58] capitalize">{classSession.subject}</p>
+      <div
+        className="sticky top-0 z-10 backdrop-blur-sm"
+        style={{ backgroundColor: 'rgba(26,5,7,0.92)', borderBottom: `1px solid ${HAIRLINE}` }}
+      >
+        <div className="max-w-xl mx-auto px-4 py-4 flex items-center gap-3">
+          <Link
+            href="/dashboard"
+            className="flex items-center justify-center w-8 h-8 rounded-full transition-opacity hover:opacity-70 flex-shrink-0"
+            aria-label="Back to dashboard"
+          >
+            <ArrowLeft className="w-4 h-4" style={{ color: TAN }} strokeWidth={2} />
+          </Link>
+          <div className="min-w-0 flex-1">
+            <h1 className="font-heading font-medium text-base leading-tight truncate" style={{ color: INK }}>
+              {classSession.title}
+            </h1>
+            <p className="text-xs lowercase mt-0.5" style={{ color: TAN }}>{classSession.subject}</p>
+          </div>
+          <StatusLabel status={classSession.status} />
         </div>
-        <span className={`inline-block text-[10px] uppercase tracking-wider font-semibold px-2 py-0.5 rounded-full ${STATUS_BADGE[classSession.status] ?? 'bg-stone-100 text-stone-600'}`}>
-          {classSession.status}
-        </span>
       </div>
 
-      <div className="max-w-xl mx-auto px-4 pt-5 space-y-4">
+      <div className="max-w-xl mx-auto px-4 pt-6 space-y-8">
         {/* ── Class info ────────────────────────────────────────────────────── */}
-        <motion.section
-          custom={0} variants={cardV} initial="hidden" animate="visible"
-          className="bg-white rounded-2xl border border-[#E8DDD5] p-5 space-y-3"
-          style={{ boxShadow: '0 1px 3px rgba(90,11,15,0.06)' }}
-        >
-          <div className="flex flex-wrap gap-2">
-            <span className={`inline-block text-[10px] font-semibold uppercase tracking-wider px-2.5 py-0.5 rounded-full ${SUBJECT_BADGE[classSession.subject] ?? 'bg-stone-50 text-stone-600'}`}>
-              {classSession.subject}
-            </span>
-            {classSession.batch && (
-              <span className="inline-block text-[10px] font-semibold px-2.5 py-0.5 rounded-full bg-[#F5EDE3] text-[#A86E58]">
-                Batch {classSession.batch}
+        <motion.section custom={0} variants={cardV} initial="hidden" animate="visible">
+          <SectionMarker label="class details" />
+          <div className="flex flex-col">
+            <div className="flex items-center justify-between py-2.5" style={{ borderBottom: `1px solid ${HAIRLINE}` }}>
+              <span className="text-sm" style={{ color: INK_64 }}>scheduled</span>
+              <span
+                className="text-sm"
+                style={{ color: INK, fontFamily: 'var(--font-math-mono)', fontVariantNumeric: 'tabular-nums' }}
+              >
+                {formatDhaka(scheduledDate, 'datetime')}
               </span>
+            </div>
+            <div className="flex items-center justify-between py-2.5" style={{ borderBottom: `1px solid ${HAIRLINE}` }}>
+              <span className="text-sm" style={{ color: INK_64 }}>duration</span>
+              <span
+                className="text-sm"
+                style={{ color: INK, fontFamily: 'var(--font-math-mono)', fontVariantNumeric: 'tabular-nums' }}
+              >
+                {classSession.durationMinutes} min
+              </span>
+            </div>
+            {classSession.batch && (
+              <div className="flex items-center justify-between py-2.5">
+                <span className="text-sm" style={{ color: INK_64 }}>batch</span>
+                <span
+                  className="text-sm"
+                  style={{ color: INK, fontFamily: 'var(--font-math-mono)', fontVariantNumeric: 'tabular-nums' }}
+                >
+                  {classSession.batch}
+                </span>
+              </div>
             )}
           </div>
-          <dl className="grid grid-cols-2 gap-x-4 gap-y-1.5 text-sm">
-            <dt className="text-[#A86E58] text-xs">Scheduled</dt>
-            <dd className="text-[#1A0507] text-xs font-medium">
-              {formatDhaka(scheduledDate, 'datetime')}
-            </dd>
-            <dt className="text-[#A86E58] text-xs">Duration</dt>
-            <dd className="text-[#1A0507] text-xs font-medium">{classSession.durationMinutes} min</dd>
-          </dl>
         </motion.section>
 
         {/* ── Materials ─────────────────────────────────────────────────────── */}
         {materials.length > 0 && (
-          <motion.section
-            custom={1} variants={cardV} initial="hidden" animate="visible"
-            className="bg-white rounded-2xl border border-[#E8DDD5] p-5 space-y-2"
-            style={{ boxShadow: '0 1px 3px rgba(90,11,15,0.06)' }}
-          >
-            <p className="text-[10px] uppercase tracking-widest text-[#A86E58] font-semibold mb-2">
-              Materials
-            </p>
-            {materials.map((mat) => (
-              <motion.a
-                key={mat.id}
-                href={mat.type === 'pdf' ? `/dashboard/materials/${mat.id}` : mat.blobUrl}
-                target={mat.type === 'pdf' ? undefined : '_blank'}
-                rel={mat.type === 'pdf' ? undefined : 'noopener noreferrer'}
-                whileHover={{ x: 2 }}
-                transition={{ type: 'spring' as const, stiffness: 400, damping: 30 }}
-                className="flex items-center gap-2 text-sm text-[#5A0B0F] hover:text-[#760F13] transition-colors group"
-              >
-                {mat.type === 'pdf' ? (
-                  <FileText className="w-3.5 h-3.5 text-[#D4B094] flex-shrink-0" strokeWidth={1.5} />
-                ) : (
-                  <Link2 className="w-3.5 h-3.5 text-[#D4B094] flex-shrink-0" strokeWidth={1.5} />
-                )}
-                <span className="text-xs truncate group-hover:underline underline-offset-2">
-                  {mat.fileName ?? mat.title}
-                </span>
-              </motion.a>
-            ))}
+          <motion.section custom={1} variants={cardV} initial="hidden" animate="visible">
+            <SectionMarker label="materials" />
+            <div className="flex flex-col">
+              {materials.map((mat) => (
+                <Link
+                  key={mat.id}
+                  href={mat.type === 'pdf' ? `/dashboard/materials/${mat.id}` : mat.blobUrl}
+                  target={mat.type === 'pdf' ? undefined : '_blank'}
+                  rel={mat.type === 'pdf' ? undefined : 'noopener noreferrer'}
+                  className="flex items-center gap-2.5 py-3 min-h-[44px] transition-opacity hover:opacity-80"
+                  style={{ borderBottom: `1px solid ${HAIRLINE}` }}
+                >
+                  {mat.type === 'pdf' ? (
+                    <FileText className="w-3.5 h-3.5 flex-shrink-0" style={{ color: INK_40 }} strokeWidth={1.5} />
+                  ) : (
+                    <Link2 className="w-3.5 h-3.5 flex-shrink-0" style={{ color: INK_40 }} strokeWidth={1.5} />
+                  )}
+                  <span className="text-sm truncate flex-1" style={{ color: INK }}>
+                    {mat.fileName ?? mat.title}
+                  </span>
+                  <span className="text-xs flex-shrink-0" style={{ color: TAN }}>
+                    {mat.type === 'pdf' ? 'Open PDF' : 'Open link'}
+                  </span>
+                </Link>
+              ))}
+            </div>
           </motion.section>
         )}
 
         {/* ── Recording link ────────────────────────────────────────────────── */}
         {recording?.status === 'available' && (
-          <motion.section
-            custom={2} variants={cardV} initial="hidden" animate="visible"
-          >
+          <motion.section custom={2} variants={cardV} initial="hidden" animate="visible">
             <Link
               href={`/dashboard/classes/${classSession.id}/recording`}
-              className="flex items-center gap-2 text-sm text-emerald-700 font-medium bg-emerald-50 border border-emerald-200 rounded-2xl px-4 py-3 hover:bg-emerald-100 transition-colors"
+              className="flex items-center justify-center gap-2 w-full font-medium rounded-md transition-opacity hover:opacity-90"
+              style={{ minHeight: '44px', backgroundColor: TAN, color: '#1A0507', padding: '0 1.5rem' }}
+              onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.backgroundColor = TAN_HOVER; }}
+              onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.backgroundColor = TAN; }}
             >
-              <PlayCircle className="w-4 h-4" strokeWidth={1.5} />
+              <PlayCircle className="w-4 h-4" strokeWidth={2} />
               Watch class recording
             </Link>
           </motion.section>
@@ -268,114 +316,128 @@ export default function ClassDetailStudentClient({
         {/* ── Q&A section ───────────────────────────────────────────────────── */}
         <motion.section
           custom={3} variants={cardV} initial="hidden" animate="visible"
-          className="bg-white rounded-2xl border border-[#E8DDD5] overflow-hidden"
-          style={{ boxShadow: '0 1px 3px rgba(90,11,15,0.06)' }}
+          className="rounded-xl overflow-hidden"
+          style={{ backgroundColor: SURFACE, border: `1px solid ${HAIRLINE}` }}
         >
-          <div className="px-5 py-4 border-b border-[#F0E8E0] flex items-center gap-2">
-            <MessageSquare className="w-4 h-4 text-[#760F13]" strokeWidth={1.5} />
-            <p className="text-[10px] uppercase tracking-widest text-[#A86E58] font-semibold">
-              Questions & Answers
-            </p>
+          <div className="px-5 py-4 flex items-center gap-2" style={{ borderBottom: `1px solid ${HAIRLINE}` }}>
+            <MessageSquare className="w-4 h-4" style={{ color: TAN }} strokeWidth={1.5} />
+            <span className="font-heading italic text-sm" style={{ color: TAN }}>
+              questions &amp; answers
+            </span>
             {threads.length > 0 && (
-              <span className="ml-auto text-xs font-medium text-[#760F13] bg-[#F5EDE3] px-2 py-0.5 rounded-full">
+              <span
+                className="ml-auto text-xs"
+                style={{ color: INK_64, fontFamily: 'var(--font-math-mono)', fontVariantNumeric: 'tabular-nums' }}
+              >
                 {threads.length}
               </span>
             )}
           </div>
 
           {/* Threads */}
-          <div className="divide-y divide-[#F0E8E0]">
-            <AnimatePresence initial={false}>
-              {threads.length === 0 ? (
-                <div className="px-5 py-6 flex flex-col items-center gap-2">
-                  <BookOpen className="w-6 h-6 text-[#D4B094]" strokeWidth={1.25} />
-                  <p className="text-xs text-[#A86E58]/70">No questions yet. Be the first to ask!</p>
-                </div>
-              ) : (
-                threads.map((thread, i) => (
-                  <motion.div
-                    key={thread.id}
-                    initial={{ opacity: 0, y: 6 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, height: 0 }}
-                    transition={{ delay: i * 0.04, type: 'spring' as const, stiffness: 300, damping: 28 }}
-                    className="px-5 py-4 space-y-2"
-                  >
-                    {/* Question */}
-                    <div className="flex items-start gap-2">
-                      <div className="flex-1 min-w-0">
-                        <div className="flex items-center gap-1.5 mb-1 flex-wrap">
-                          <span className="text-xs font-semibold text-[#1A0507]">{thread.userName}</span>
-                          {thread.isStaff && (
-                            <span className="text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full bg-[#760F13] text-white">
-                              Instructor
-                            </span>
-                          )}
-                          <span className="text-[10px] text-[#A86E58] ml-auto">
-                            {formatDhaka(new Date(thread.createdAt), 'time')}
+          <AnimatePresence initial={false}>
+            {threads.length === 0 ? (
+              <div className="px-5 py-8 flex flex-col items-center gap-2">
+                <BookOpen className="w-6 h-6" style={{ color: INK_40 }} strokeWidth={1.25} />
+                <p className="text-sm" style={{ color: INK_64 }}>No questions yet. Be the first to ask!</p>
+              </div>
+            ) : (
+              threads.map((thread, i) => (
+                <motion.div
+                  key={thread.id}
+                  initial={{ opacity: 0, y: 6 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, height: 0 }}
+                  transition={{ delay: i * 0.04, type: 'spring' as const, stiffness: 300, damping: 28 }}
+                  className="px-5 py-4 space-y-2"
+                  style={{ borderBottom: `1px solid ${HAIRLINE}` }}
+                >
+                  {/* Question */}
+                  <div className="flex items-start gap-2">
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center gap-1.5 mb-1 flex-wrap">
+                        <span className="text-xs font-medium" style={{ color: INK }}>{thread.userName}</span>
+                        {thread.isStaff && (
+                          <span className="text-[10px] uppercase tracking-wide" style={{ color: TAN }}>
+                            instructor
                           </span>
-                        </div>
-                        <p className="text-sm text-[#3D1517] leading-relaxed">{thread.body}</p>
-                      </div>
-                      {thread.isOwn && (
-                        <button
-                          onClick={() => void handleDelete(thread.id)}
-                          disabled={deletingId === thread.id}
-                          className="flex-shrink-0 p-1 text-[#C4A08A] hover:text-red-500 transition-colors disabled:opacity-40"
-                          aria-label="Delete question"
+                        )}
+                        <span
+                          className="text-[10px] ml-auto"
+                          style={{ color: INK_40, fontFamily: 'var(--font-math-mono)', fontVariantNumeric: 'tabular-nums' }}
                         >
-                          {deletingId === thread.id ? (
-                            <Loader2 className="w-3.5 h-3.5 animate-spin" strokeWidth={1.5} />
-                          ) : (
-                            <Trash2 className="w-3.5 h-3.5" strokeWidth={1.5} />
-                          )}
-                        </button>
-                      )}
-                    </div>
-
-                    {/* Answers */}
-                    {thread.answers.length > 0 && (
-                      <div className="ml-4 space-y-2 border-l-2 border-[#760F13]/20 pl-3">
-                        {thread.answers.map((answer) => (
-                          <div key={answer.id} className={`rounded-xl p-3 space-y-1 ${answer.isStaff ? 'bg-[#F5EDE3] border border-[#760F13]/15' : 'bg-[#FAF5EF]'}`}>
-                            <div className="flex items-center gap-1.5 flex-wrap">
-                              <span className="text-xs font-semibold text-[#1A0507]">{answer.userName}</span>
-                              {answer.isStaff && (
-                                <span className="text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full bg-[#760F13] text-white">
-                                  Instructor
-                                </span>
-                              )}
-                              <span className="text-[10px] text-[#A86E58] ml-auto">
-                                {formatDhaka(new Date(answer.createdAt), 'time')}
-                              </span>
-                              {answer.isOwn && (
-                                <button
-                                  onClick={() => void handleDelete(answer.id, thread.id)}
-                                  disabled={deletingId === answer.id}
-                                  className="p-0.5 text-[#C4A08A] hover:text-red-500 transition-colors disabled:opacity-40"
-                                  aria-label="Delete answer"
-                                >
-                                  {deletingId === answer.id ? (
-                                    <Loader2 className="w-3 h-3 animate-spin" strokeWidth={1.5} />
-                                  ) : (
-                                    <Trash2 className="w-3 h-3" strokeWidth={1.5} />
-                                  )}
-                                </button>
-                              )}
-                            </div>
-                            <p className="text-xs text-[#3D1517] leading-relaxed">{answer.body}</p>
-                          </div>
-                        ))}
+                          {formatDhaka(new Date(thread.createdAt), 'time')}
+                        </span>
                       </div>
+                      <p className="text-sm leading-relaxed" style={{ color: INK_64 }}>{thread.body}</p>
+                    </div>
+                    {thread.isOwn && (
+                      <button
+                        onClick={() => void handleDelete(thread.id)}
+                        disabled={deletingId === thread.id}
+                        className="flex-shrink-0 p-1 transition-colors disabled:opacity-40"
+                        style={{ color: INK_40 }}
+                        onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = RED; }}
+                        onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = INK_40; }}
+                        aria-label="Delete question"
+                      >
+                        {deletingId === thread.id ? (
+                          <Loader2 className="w-3.5 h-3.5 animate-spin" strokeWidth={1.5} />
+                        ) : (
+                          <Trash2 className="w-3.5 h-3.5" strokeWidth={1.5} />
+                        )}
+                      </button>
                     )}
-                  </motion.div>
-                ))
-              )}
-            </AnimatePresence>
-          </div>
+                  </div>
+
+                  {/* Answers */}
+                  {thread.answers.length > 0 && (
+                    <div className="ml-4 space-y-2 pl-3" style={{ borderLeft: `1px solid ${HAIRLINE}` }}>
+                      {thread.answers.map((answer) => (
+                        <div key={answer.id} className="space-y-1">
+                          <div className="flex items-center gap-1.5 flex-wrap">
+                            <span className="text-xs font-medium" style={{ color: INK }}>{answer.userName}</span>
+                            {answer.isStaff && (
+                              <span className="text-[10px] uppercase tracking-wide" style={{ color: TAN }}>
+                                instructor
+                              </span>
+                            )}
+                            <span
+                              className="text-[10px] ml-auto"
+                              style={{ color: INK_40, fontFamily: 'var(--font-math-mono)', fontVariantNumeric: 'tabular-nums' }}
+                            >
+                              {formatDhaka(new Date(answer.createdAt), 'time')}
+                            </span>
+                            {answer.isOwn && (
+                              <button
+                                onClick={() => void handleDelete(answer.id, thread.id)}
+                                disabled={deletingId === answer.id}
+                                className="p-0.5 transition-colors disabled:opacity-40"
+                                style={{ color: INK_40 }}
+                                onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = RED; }}
+                                onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = INK_40; }}
+                                aria-label="Delete answer"
+                              >
+                                {deletingId === answer.id ? (
+                                  <Loader2 className="w-3 h-3 animate-spin" strokeWidth={1.5} />
+                                ) : (
+                                  <Trash2 className="w-3 h-3" strokeWidth={1.5} />
+                                )}
+                              </button>
+                            )}
+                          </div>
+                          <p className="text-xs leading-relaxed" style={{ color: INK_64 }}>{answer.body}</p>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </motion.div>
+              ))
+            )}
+          </AnimatePresence>
 
           {/* Question composer */}
-          <div className="px-5 py-4 border-t border-[#F0E8E0] space-y-2">
+          <div className="px-5 py-4 space-y-2" style={{ borderTop: `1px solid ${HAIRLINE}` }}>
             <div className="flex gap-2">
               <textarea
                 value={questionText}
@@ -389,13 +451,17 @@ export default function ClassDetailStudentClient({
                 placeholder="Ask a question about this class…"
                 rows={2}
                 maxLength={2000}
-                className="flex-1 text-sm text-[#1A0507] border border-[#E8DDD5] rounded-xl px-3 py-2 bg-[#FAF5EF]/50 focus:outline-none focus:border-[#760F13]/50 transition-colors resize-none placeholder:text-[#C4A08A]"
+                className="flex-1 text-sm rounded-xl px-3 py-2 resize-none focus:outline-none transition-colors"
+                style={{ color: INK, backgroundColor: 'rgba(250,245,239,0.03)', border: `1px solid ${HAIRLINE}` }}
+                onFocus={(e) => { (e.currentTarget as HTMLElement).style.borderColor = 'rgba(212,176,148,0.5)'; }}
+                onBlur={(e) => { (e.currentTarget as HTMLElement).style.borderColor = HAIRLINE; }}
               />
               <motion.button
                 onClick={handlePostQuestion}
                 disabled={postingQuestion || !questionText.trim()}
                 whileTap={!postingQuestion ? { scale: 0.93 } : {}}
-                className="flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-xl bg-[#760F13] text-white disabled:opacity-50 disabled:cursor-not-allowed self-end"
+                className="flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-xl disabled:opacity-40 disabled:cursor-not-allowed self-end transition-opacity hover:opacity-90"
+                style={{ backgroundColor: TAN, color: '#1A0507' }}
                 aria-label="Post question"
               >
                 {postingQuestion ? (
@@ -406,7 +472,7 @@ export default function ClassDetailStudentClient({
               </motion.button>
             </div>
             {questionError && (
-              <p className="text-xs text-red-600">{questionError}</p>
+              <p className="text-xs" style={{ color: RED }}>{questionError}</p>
             )}
           </div>
         </motion.section>
