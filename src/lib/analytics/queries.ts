@@ -518,6 +518,53 @@ export async function getVocab(range: Range) {
   }
 }
 
+export async function getRetention(range: Range) {
+  const cutoff = cutoffDate(range);
+  try {
+    const events = await db.select({ userId: analyticsEvents.userId, name: analyticsEvents.name, createdAt: analyticsEvents.createdAt })
+      .from(analyticsEvents)
+      .where(cutoff
+        ? and(eq(analyticsEvents.module, 'vocab'), gte(analyticsEvents.createdAt, cutoff))
+        : eq(analyticsEvents.module, 'vocab'));
+
+    const starts = events.filter(event => event.name === 'onboarding_started');
+    const activations = events.filter(event => event.name === 'activation_achieved');
+    const completed = events.filter(event => event.name === 'learning_session_completed');
+    const restored = events.filter(event => event.name === 'session_restored');
+    const startByUser = new Map<number, Date>();
+    for (const event of starts) if (event.userId && !startByUser.has(event.userId)) startByUser.set(event.userId, event.createdAt);
+    const timeToValue = activations.flatMap(event => {
+      const start = event.userId ? startByUser.get(event.userId) : null;
+      return start ? [Math.max(0, event.createdAt.getTime() - start.getTime())] : [];
+    }).sort((a, b) => a - b);
+    const middle = Math.floor(timeToValue.length / 2);
+    const medianTimeToValueMs = timeToValue.length
+      ? (timeToValue.length % 2 ? timeToValue[middle] : Math.round((timeToValue[middle - 1] + timeToValue[middle]) / 2))
+      : 0;
+
+    const activatedUsers = await db.select({ userId: vocabUserProgress.userId, activatedAt: vocabUserProgress.activatedAt })
+      .from(vocabUserProgress).where(sql`${vocabUserProgress.activatedAt} is not null`);
+    const answers = await db.select({ userId: vocabQuizAnswers.userId, answeredAt: vocabQuizAnswers.answeredAt })
+      .from(vocabQuizAnswers).where(eq(vocabQuizAnswers.isCorrect, true));
+    const retainedAt = (days: number) => {
+      const eligible = activatedUsers.filter(row => row.activatedAt && Date.now() - row.activatedAt.getTime() >= days * 86_400_000);
+      const retained = eligible.filter(row => answers.some(answer => answer.userId === row.userId
+        && row.activatedAt && answer.answeredAt.getTime() >= row.activatedAt.getTime() + days * 86_400_000
+        && answer.answeredAt.getTime() < row.activatedAt.getTime() + (days + 1) * 86_400_000));
+      return { eligible: eligible.length, retained: retained.length, rate: eligible.length ? Math.round(retained.length / eligible.length * 100) : 0 };
+    };
+
+    return {
+      activation: { started: starts.length, achieved: activations.length, rate: starts.length ? Math.round(activations.length / starts.length * 100) : 0, medianTimeToValueMs },
+      sessions: { completed: completed.length, restored: restored.length },
+      testedRecallRetention: { d1: retainedAt(1), d7: retainedAt(7), d30: retainedAt(30) },
+    };
+  } catch {
+    const empty = { eligible: 0, retained: 0, rate: 0 };
+    return { activation: { started: 0, achieved: 0, rate: 0, medianTimeToValueMs: 0 }, sessions: { completed: 0, restored: 0 }, testedRecallRetention: { d1: empty, d7: empty, d30: empty } };
+  }
+}
+
 // ─── Math ─────────────────────────────────────────────────────────────────────
 
 export async function getMath(range: Range) {

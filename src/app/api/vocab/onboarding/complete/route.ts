@@ -3,8 +3,8 @@ import { NextResponse } from 'next/server';
 import { after } from 'next/server';
 import { revalidateTag } from 'next/cache';
 import { authOptions } from '@/lib/auth';
-import { db, users, vocabUserProgress } from '@/lib/db';
-import { eq } from 'drizzle-orm';
+import { db, users, vocabUserProgress, vocabWords } from '@/lib/db';
+import { eq, inArray } from 'drizzle-orm';
 import { z } from 'zod';
 import { VocabCacheTag } from '@/lib/vocab/cache-keys';
 import { getHomeData } from '@/lib/vocab/home-data';
@@ -14,6 +14,10 @@ import { getPracticePageData } from '@/lib/vocab/practice-data';
 const schema = z.object({
   deadline:    z.string().datetime().optional(),
   wordsPerDay: z.number().int().positive().optional(),
+  learningGoal: z.enum(['admission', 'conversation', 'academic', 'general']),
+  starterWordIds: z.array(z.number().int().positive()).length(3),
+  recalledWordId: z.number().int().positive(),
+  selectedWordId: z.number().int().positive(),
 });
 
 export async function POST(req: Request) {
@@ -38,6 +42,17 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: 'User not found' }, { status: 404 });
   }
 
+  const starterWords = await db.select({ id: vocabWords.id }).from(vocabWords)
+    .where(inArray(vocabWords.id, parsed.data.starterWordIds));
+  const starterSet = new Set(starterWords.map(word => word.id));
+  const validRecall = starterSet.size === 3
+    && starterSet.has(parsed.data.recalledWordId)
+    && starterSet.has(parsed.data.selectedWordId);
+  if (!validRecall) return NextResponse.json({ error: 'The starter recall set changed. Please retry.' }, { status: 409 });
+
+  const isCorrect = parsed.data.recalledWordId === parsed.data.selectedWordId;
+  if (!isCorrect) return NextResponse.json({ ok: false, isCorrect, correctWordId: parsed.data.recalledWordId });
+
   const deadline     = parsed.data.deadline ? new Date(parsed.data.deadline) : null;
   const daysUntil    = deadline
     ? Math.max(1, Math.ceil((deadline.getTime() - Date.now()) / 86400000))
@@ -57,14 +72,20 @@ export async function POST(req: Request) {
       phase:              2,
       deadline,
       dailyTarget,
+      learningGoal: parsed.data.learningGoal,
       onboardingComplete: true,
+      onboardingCompletedAt: new Date(),
+      activatedAt: new Date(),
     })
     .onConflictDoUpdate({
       target: vocabUserProgress.userId,
       set: {
         deadline,
         dailyTarget,
+        learningGoal: parsed.data.learningGoal,
         onboardingComplete: true,
+        onboardingCompletedAt: new Date(),
+        activatedAt: new Date(),
         updatedAt:          new Date(),
       },
     });
@@ -85,5 +106,5 @@ export async function POST(req: Request) {
     ]);
   });
 
-  return NextResponse.json({ ok: true });
+  return NextResponse.json({ ok: true, isCorrect: true, activated: true });
 }

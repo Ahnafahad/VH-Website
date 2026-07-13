@@ -40,12 +40,13 @@ import {
   Trophy, Award, CheckCircle2, Crown, Cpu, Sparkles,
   Infinity as InfinityIcon,
   Bell, BellOff, Mail, MailOpen, Sun, Moon, CalendarDays,
-  Volume2, Vibrate,
+  Volume2, Vibrate, Accessibility, Type,
   type LucideIcon,
 } from 'lucide-react';
 import { useVocabFeedback } from '@/lib/vocab/use-vocab-feedback';
 import AnimatedNumber from '@/components/vocab/AnimatedNumber';
 import { usePushNotifications } from '@/hooks/usePushNotifications';
+import { useLexiAccessibility } from '@/hooks/useLexiAccessibility';
 import type { ProfileData, BadgeRow, WordRow } from './page';
 
 // ─── Badge icons ──────────────────────────────────────────────────────────────
@@ -507,6 +508,8 @@ export default function ProfileScreen({
       }
     }
   }, []);
+
+  const accessibility = useLexiAccessibility();
 
   // Notifications — wired to usePushNotifications for real Web Push support
   const {
@@ -1485,6 +1488,19 @@ export default function ProfileScreen({
               </motion.div>
 
               {/* ══ SECTION 4: Email Summary ═══════════════════════════════ */}
+              <motion.div variants={settingItem} style={{ marginBottom: 24 }}>
+                <SectionLabel>Accessibility</SectionLabel>
+                <GoldRule />
+
+                <SettingRow icon={Accessibility} label="Reduce Motion" sublabel="Use calm fades instead of flips, sweeps, and celebration motion">
+                  <LuxToggle on={accessibility.reduceMotion} onChange={accessibility.setReduceMotion} accent="#D62B38" />
+                </SettingRow>
+
+                <SettingRow icon={Type} label="Larger Text" sublabel="Increase interface text while keeping layouts responsive">
+                  <LuxToggle on={accessibility.largeText} onChange={accessibility.setLargeText} accent="#D62B38" />
+                </SettingRow>
+              </motion.div>
+
               <motion.div variants={settingItem} style={{ marginBottom: 24 }}>
                 <SectionLabel>Email</SectionLabel>
                 <GoldRule />

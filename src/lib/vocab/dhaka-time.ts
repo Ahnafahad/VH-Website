@@ -28,3 +28,11 @@ export function dhakaDayStart(now: Date = new Date()): Date {
 export function dhakaYesterdayStart(now: Date = new Date()): Date {
   return new Date(dhakaDayStart(now).getTime() - 86_400_000);
 }
+
+/** Monday 00:00 Dhaka for the week containing `now`, returned as a UTC instant. */
+export function dhakaWeekStart(now: Date = new Date()): Date {
+  const start = dhakaDayStart(now);
+  const shifted = new Date(start.getTime() + DHAKA_OFFSET_MS);
+  const daysSinceMonday = (shifted.getUTCDay() + 6) % 7;
+  return new Date(start.getTime() - daysSinceMonday * 86_400_000);
+}

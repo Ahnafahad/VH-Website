@@ -1,12 +1,12 @@
 'use client';
 
-import { useState, useEffect, useCallback, useRef } from 'react';
+import { useState, useEffect, useCallback, useMemo, useRef } from 'react';
 import type { QuizConfig } from '@/components/vocab/QuizConfigSheet';
 import { motion, AnimatePresence, useReducedMotion, type Variants } from 'framer-motion';
 import { useSafeNavigate } from '@/hooks/useSafeNavigate';
 import {
   MoveRight, BadgeCheck, OctagonX,
-  Gem, RefreshCcwDot, Crown, ChevronDown,
+  Gem, RefreshCcwDot, Crown, ChevronDown, Share2,
 } from 'lucide-react';
 import { useBadgeQueue } from '@/lib/vocab/badges/queue';
 import { consumePrefetch } from '@/lib/vocab/quiz-prefetch';
@@ -14,6 +14,8 @@ import { useVocabFeedback } from '@/lib/vocab/use-vocab-feedback';
 import Celebration from '@/components/vocab/Celebration';
 import AnimatedNumber from '@/components/vocab/AnimatedNumber';
 import { trackFeature } from '@/lib/analytics/tracker';
+import { RETENTION_EVENTS, trackRetention } from '@/lib/vocab/retention-events';
+import { shareLexiCore } from '@/lib/vocab/native-share';
 
 // ─── Inline SVG micro-icons (no generic defaults) ────────────────────────────
 function IconClose() {
@@ -352,6 +354,8 @@ function OptionCard({ opt, phase, selectedLetter, result, index, onSelect }: Opt
       }}
       whileTap={phase !== 'revealed' ? { scale: 0.975 } : {}}
       onClick={() => phase !== 'revealed' && onSelect(opt)}
+      aria-keyshortcuts={`${index + 1}`}
+      aria-pressed={isSelected}
       disabled={phase === 'revealed'}
       style={{
         display: 'flex', alignItems: 'center', gap: '0.75rem',
@@ -537,6 +541,23 @@ function QuizSummary({ summary, onContinue }: { summary: SummaryData; onContinue
             <RefreshCcwDot size={15} /> Review {wrongOnly.length} weak word{wrongOnly.length !== 1 ? 's' : ''}
           </button>
         )}
+
+        <button
+          onClick={() => void shareLexiCore({
+            title: 'My LexiCore session',
+            text: `I recalled ${correctAnswers} of ${totalQuestions} words in LexiCore today.`,
+            path: '/vocab',
+          })}
+          style={{
+            width: '100%', minHeight: 44, padding: '0.75rem',
+            background: 'transparent', border: 'none',
+            fontFamily: SANS, fontSize: '0.8125rem', fontWeight: 500,
+            color: C.textSec, cursor: 'pointer',
+            display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 7,
+          }}
+        >
+          <Share2 size={15} /> Share this milestone
+        </button>
       </motion.div>
 
       {/* Question review list */}
@@ -760,6 +781,10 @@ export default function QuizScreen({ themeId, themeIds, letterWordIds, sessionTy
   const { push }     = useBadgeQueue();
   const fb           = useVocabFeedback();
   const reduceMotion = useReducedMotion();
+  const recoveryKey = useMemo(() => {
+    const scope = themeId ?? themeIds?.join('-') ?? letterWordIds?.join('-') ?? 'global';
+    return `lx-quiz-recovery:${sessionType}:${scope}`;
+  }, [sessionType, themeId, themeIds, letterWordIds]);
 
   // Hint words for loading screen
   const [hintWords, setHintWords] = useState<HintWord[]>(hintWordsProp ?? []);
@@ -799,6 +824,26 @@ export default function QuizScreen({ themeId, themeIds, letterWordIds, sessionTy
   // Generate on mount — also fetch word hints in parallel if not pre-supplied
   useEffect(() => {
     // ── Parallel word-hint fetch (fast, pure DB) ───────────────────────────
+    try {
+      const raw = localStorage.getItem(recoveryKey);
+      if (raw) {
+        const cached = JSON.parse(raw) as { version?: number; savedAt?: number; sessionId?: number; questions?: QuizQuestion[]; currentIdx?: number; totalEarned?: number };
+        const fresh = typeof cached.savedAt === 'number' && Date.now() - cached.savedAt < 6 * 60 * 60 * 1000;
+        if (cached.version === 1 && fresh && typeof cached.sessionId === 'number' && cached.questions?.length) {
+          setSessionId(cached.sessionId);
+          setQuestions(cached.questions);
+          setCurrentIdx(Math.min(cached.currentIdx ?? 0, cached.questions.length - 1));
+          setTotalEarned(cached.totalEarned ?? 0);
+          setPhase('quiz');
+          trackRetention(RETENTION_EVENTS.sessionRestored, { sessionType, sessionId: cached.sessionId, question: (cached.currentIdx ?? 0) + 1 });
+          return;
+        }
+        localStorage.removeItem(recoveryKey);
+      }
+    } catch {
+      localStorage.removeItem(recoveryKey);
+    }
+
     if ((hintWordsProp ?? []).length === 0) {
       let previewUrl = '';
       if      (sessionType === 'letter'   && letterWordIds?.length) previewUrl = `/api/vocab/words/preview?wordIds=${letterWordIds.join(',')}`;
@@ -849,6 +894,7 @@ export default function QuizScreen({ themeId, themeIds, letterWordIds, sessionTy
         setSessionId(data.sessionId);
         setQuestions(data.questions);
         setPhase('quiz');
+        trackRetention(RETENTION_EVENTS.learningSessionStarted, { sessionType, sessionId: data.sessionId, questions: data.questions.length });
       } catch {
         // Covers network errors, non-OK responses, and AbortError (45s timeout) —
         // all fall through to the same error phase with retry.
@@ -856,6 +902,21 @@ export default function QuizScreen({ themeId, themeIds, letterWordIds, sessionTy
       }
     })();
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+  useEffect(() => {
+    if (phase !== 'quiz' || !sessionId || questions.length === 0) return;
+    localStorage.setItem(recoveryKey, JSON.stringify({
+      version: 1, savedAt: Date.now(), sessionId, questions, currentIdx, totalEarned,
+    }));
+  }, [phase, sessionId, questions, currentIdx, totalEarned, recoveryKey]);
+
+  useEffect(() => {
+    if (phase === 'summary') {
+      localStorage.removeItem(recoveryKey);
+      trackRetention(RETENTION_EVENTS.learningSessionCompleted, { sessionType, sessionId, correct: summary?.correctAnswers ?? 0, total: summary?.totalQuestions ?? questions.length });
+      if (sessionType === 'practice' || sessionType === 'letter') trackRetention(RETENTION_EVENTS.reviewCompleted, { sessionType, sessionId });
+    }
+  }, [phase, recoveryKey]);
 
   const current = questions[currentIdx];
 
@@ -1039,6 +1100,27 @@ export default function QuizScreen({ themeId, themeIds, letterWordIds, sessionTy
       setSubmitting(false);
     }
   }, [sessionId, current, submitting, answerPhase, typedValue, advanceAfterReveal, fb]);
+
+  useEffect(() => {
+    if (phase !== 'quiz' || !current || current.inputMode === 'typed') return;
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.altKey || event.ctrlKey || event.metaKey) return;
+      if (event.key >= '1' && event.key <= '4' && answerPhase !== 'revealed') {
+        const option = current.options[Number(event.key) - 1];
+        if (!option) return;
+        event.preventDefault();
+        setSelectedId(option.wordId);
+        setSelectedLetter(option.letter);
+        setAnswerPhase('selected');
+        fb.play('select');
+      } else if (event.key === 'Enter' && answerPhase === 'selected') {
+        event.preventDefault();
+        handleConfirm();
+      }
+    };
+    window.addEventListener('keydown', onKeyDown);
+    return () => window.removeEventListener('keydown', onKeyDown);
+  }, [phase, current, answerPhase, fb, handleConfirm]);
 
   // ── Render ─────────────────────────────────────────────────────────────────
 

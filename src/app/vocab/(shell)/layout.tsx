@@ -9,6 +9,12 @@ import { DailyDossier } from '@/components/vocab/DailyDossier';
 import { BadgeQueueProvider, useBadgeQueue } from '@/lib/vocab/badges/queue';
 import type { EarnedBadge } from '@/lib/vocab/badges/checker';
 import { unlockAudio } from '@/lib/vocab/sound';
+import { ConnectionStatus } from '@/components/vocab/ConnectionStatus';
+import { useLexiAccessibility } from '@/hooks/useLexiAccessibility';
+import { NativeAppBridge } from '@/components/vocab/NativeAppBridge';
+import { DailyBrief } from '@/components/vocab/DailyBrief';
+import { LexiTelemetry } from '@/components/vocab/LexiTelemetry';
+import { AppUpdatePrompt } from '@/components/vocab/AppUpdatePrompt';
 
 function todayKey(): string {
   return new Date().toISOString().slice(0, 10);
@@ -20,6 +26,8 @@ function VocabShellInner({ children }: { children: React.ReactNode }) {
   const dailyLoginFired   = useRef(false);
   const [theme, setTheme] = useState<'dark' | 'light'>('dark');
   const [dossierMessage, setDossierMessage] = useState<string | null>(null);
+  const [dossierExpanded, setDossierExpanded] = useState(false);
+  useLexiAccessibility();
 
   useEffect(() => {
     const saved = localStorage.getItem('lx-theme') as 'dark' | 'light' | null;
@@ -93,6 +101,9 @@ function VocabShellInner({ children }: { children: React.ReactNode }) {
           const msg = (await res.json()) as { message?: string };
           if (msg?.message) {
             setDossierMessage(msg.message);
+            const introduced = localStorage.getItem('lx-dossier-introduced') === '1';
+            setDossierExpanded(!introduced);
+            if (!introduced) localStorage.setItem('lx-dossier-introduced', '1');
             localStorage.setItem(key, '1');
           }
         } catch {
@@ -109,9 +120,8 @@ function VocabShellInner({ children }: { children: React.ReactNode }) {
       {/* Google Fonts — Cormorant Garamond for words, Sora for UI */}
       {/* eslint-disable-next-line @next/next/no-page-custom-font */}
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Sora:wght@300;400;500;600;700&display=swap');
-        .lx-root { font-family: 'Sora', sans-serif; }
-        .lx-word { font-family: 'Cormorant Garamond', Georgia, serif; }
+        .lx-root { font-family: var(--font-lexi-ui), system-ui, sans-serif; }
+        .lx-word { font-family: var(--font-lexi-word), Georgia, serif; }
       `}</style>
 
       <div
@@ -153,15 +163,26 @@ function VocabShellInner({ children }: { children: React.ReactNode }) {
 
         {/* Install prompt — PWA add-to-home-screen nudge */}
         <InstallPrompt />
+        <ConnectionStatus />
+        <NativeAppBridge />
+        <LexiTelemetry />
+        <AppUpdatePrompt />
 
         {/* Bottom nav — fixed, centered, mobile only */}
         <BottomNav />
 
         {/* L's daily dossier — fullscreen, first authenticated action of the day */}
-        {dossierMessage && (
+        {dossierMessage && !dossierExpanded && (
+          <DailyBrief
+            message={dossierMessage}
+            onOpen={() => setDossierExpanded(true)}
+            onDismiss={() => setDossierMessage(null)}
+          />
+        )}
+        {dossierMessage && dossierExpanded && (
           <DailyDossier
             message={dossierMessage}
-            onDismiss={() => setDossierMessage(null)}
+            onDismiss={() => { setDossierExpanded(false); setDossierMessage(null); }}
           />
         )}
       </div>

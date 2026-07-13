@@ -16,9 +16,22 @@ android {
             ignoreAssetsPattern = '!.svn:!.git:!.ds_store:!*.scc:.*:!CVS:!thumbs.db:!picasa.ini:!*~'
         }
     }
+    signingConfigs {
+        release {
+            def keyStorePath = System.getenv('LEXICORE_KEYSTORE_PATH')
+            if (keyStorePath) {
+                storeFile file(keyStorePath)
+                storePassword System.getenv('LEXICORE_KEYSTORE_PASSWORD')
+                keyAlias System.getenv('LEXICORE_KEY_ALIAS')
+                keyPassword System.getenv('LEXICORE_KEY_PASSWORD')
+            }
+        }
+    }
     buildTypes {
         release {
-            minifyEnabled false
+            if (System.getenv('LEXICORE_KEYSTORE_PATH')) signingConfig signingConfigs.release
+            minifyEnabled true
+            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }

@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { HelpCircle, Lock, X } from 'lucide-react';
+import { HelpCircle, Lock, X, Target, CheckCircle2, Clock3, ArrowRight } from 'lucide-react';
 import type { HomeData, MasteryBreakdown, SessionsData } from '@/lib/vocab/home-data';
 import { useSafeNavigate } from '@/hooks/useSafeNavigate';
 import ProgressRing from '@/components/vocab/ProgressRing';
@@ -13,6 +13,8 @@ import DeadlineBanner from '@/components/vocab/DeadlineBanner';
 import UpgradeModal from '@/components/vocab/UpgradeModal';
 import { FREE_WORD_POOL, PAID_WORD_POOL } from '@/lib/vocab/constants';
 import { useVocabFeedback } from '@/lib/vocab/use-vocab-feedback';
+import type { LearningRecommendation } from '@/lib/vocab/recommendation';
+import { RETENTION_EVENTS, trackRetention } from '@/lib/vocab/retention-events';
 
 function greeting(): string {
   const h = new Date().getHours();
@@ -146,6 +148,9 @@ function StatCol({ label, value, unit, color, pulse, delay = 0, onClick }: StatC
       animate={{ opacity: 1, y: 0 }}
       transition={{ type: 'spring' as const, stiffness: 320, damping: 28, delay }}
       onClick={onClick}
+      role={onClick ? 'button' : undefined}
+      tabIndex={onClick ? 0 : undefined}
+      onKeyDown={onClick ? event => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); onClick(); } } : undefined}
       whileTap={onClick ? { scale: 0.97 } : undefined}
       style={{
         display:        'flex',
@@ -258,37 +263,23 @@ function SessionRow({ title, subtitle, color, pulse, delay, onClick }: SessionRo
         onMouseLeave={() => setHovered(false)}
         style={{
           display:    'flex',
-          alignItems: 'stretch',
+          alignItems: 'center',
           width:      '100%',
           cursor:     'pointer',
           background: hovered ? `${color}0A` : 'transparent',
-          border:     'none',
-          padding:    0,
+          border:     `1px solid ${hovered ? `${color}66` : 'var(--color-lx-border)'}`,
+          padding:    '11px 12px',
           borderRadius: 8,
           overflow:   'hidden',
           transition: 'background 0.2s ease',
         }}
       >
-        {/* Left bar */}
-        <motion.div
-          animate={{
-            width:   hovered ? 4 : 3,
-            opacity: hovered ? 1 : 0.65,
-          }}
-          transition={{ type: 'spring' as const, stiffness: 500, damping: 32 }}
-          style={{
-            background: color,
-            flexShrink: 0,
-            minHeight:  52,
-            transition: `box-shadow 0.2s ease`,
-            boxShadow:  hovered ? `0 0 12px ${color}55` : 'none',
-          }}
-        />
+        <span aria-hidden style={{ width: 8, height: 8, borderRadius: '50%', flexShrink: 0, background: color, boxShadow: pulse ? `0 0 10px ${color}55` : 'none' }} />
 
         {/* Text */}
         <div style={{
           flex:           1,
-          padding:        '11px 14px',
+          padding:        0,
           display:        'flex',
           alignItems:     'center',
           justifyContent: 'space-between',
@@ -466,7 +457,8 @@ function DailyMessage() {
         alignItems: 'flex-start',
         gap:        14,
         padding:    '14px 16px',
-        borderLeft: '2px solid rgba(244,168,40,0.15)',
+        border:     '1px solid rgba(244,168,40,0.15)',
+        borderRadius: 10,
       }}>
         <div style={{
           width: 48, height: 48, borderRadius: '50%',
@@ -505,7 +497,8 @@ function DailyMessage() {
             alignItems: 'flex-start',
             gap:        14,
             padding:    '14px 16px 14px 16px',
-            borderLeft: '2px solid rgba(244,168,40,0.35)',
+            border:     '1px solid rgba(244,168,40,0.22)',
+            borderRadius: 10,
             background: 'linear-gradient(90deg, rgba(244,168,40,0.03) 0%, transparent 40%)',
             position:   'relative',
           }}
@@ -729,6 +722,21 @@ function ProgressSection({
 
 // ─── Main HomeScreen ──────────────────────────────────────────────────────────
 
+function NextAction({ recommendation, onStart }: { recommendation: LearningRecommendation; onStart: () => void }) {
+  return (
+    <motion.section className="lx-next-action" aria-labelledby="lx-next-action-title"
+      initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .24, ease: [0.16, 1, 0.3, 1] }}>
+      <div className="lx-next-action-topline"><span>Recommended next</span><span><Clock3 size={14} aria-hidden /> About {recommendation.durationMinutes} min</span></div>
+      <h2 id="lx-next-action-title">{recommendation.title}</h2>
+      <p>{recommendation.reason}</p>
+      <div className="lx-next-action-outcome"><Target size={17} aria-hidden /><span>{recommendation.outcome}</span></div>
+      <motion.button type="button" whileTap={{ scale: .985 }} onClick={onStart}>
+        {recommendation.action}<ArrowRight size={18} aria-hidden />
+      </motion.button>
+    </motion.section>
+  );
+}
+
 export default function HomeScreen({ data }: { data: HomeData }) {
   const router                 = useRouter();
   const { navigate }           = useSafeNavigate();
@@ -881,6 +889,14 @@ export default function HomeScreen({ data }: { data: HomeData }) {
 
       <Rule delay={0.08} />
 
+      <div style={{ marginTop: '1.25rem' }}>
+        <NextAction recommendation={data.recommendation} onStart={() => {
+          fb.play('tap');
+          trackRetention(RETENTION_EVENTS.recommendationStarted, { kind: data.recommendation.kind, href: data.recommendation.href });
+          navigate(data.recommendation.href);
+        }} />
+      </div>
+
       {/* ── Daily AI message ───────────────────────────────────── */}
       <div style={{ marginTop: '1rem' }}>
         <DailyMessage />
@@ -969,12 +985,12 @@ export default function HomeScreen({ data }: { data: HomeData }) {
       {/* ── Main content grid ─────────────────────────────────── */}
       {/* Mobile: single column stack. lg+: 2-col grid [metrics | sessions] */}
       <div
-        className="lg:grid lg:grid-cols-[1fr_300px] lg:items-start lg:gap-8"
+        className="flex flex-col gap-7 lg:grid lg:grid-cols-[1fr_300px] lg:items-start lg:gap-8"
         style={{ marginTop: '1.75rem' }}
       >
 
         {/* ── LEFT column: stats + hero ──────────────────────── */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '1.75rem' }}>
+        <div className="order-2 lg:order-1" style={{ display: 'flex', flexDirection: 'column', gap: '1.75rem' }}>
 
           {/* ── Stats strip ─────────────────────────────────── */}
           <div style={{ display: 'flex', alignItems: 'center', gap: 0 }}>
@@ -1154,7 +1170,7 @@ export default function HomeScreen({ data }: { data: HomeData }) {
 
         {/* ── RIGHT column: sessions ─────────────────────────── */}
         {/* Mobile: sits below hero naturally. Desktop: sticky beside it. */}
-        <div className="mt-7 lg:mt-0 lg:sticky lg:top-6">
+        <div className="order-1 lg:order-2 lg:mt-0 lg:sticky lg:top-6">
 
           {/* Desktop card shell — invisible on mobile */}
           <div
@@ -1244,6 +1260,20 @@ export default function HomeScreen({ data }: { data: HomeData }) {
         </div>{/* end right column */}
 
       </div>{/* end grid */}
+
+      <section className="lx-weekly-challenge" aria-labelledby="weekly-challenge-title">
+        <div className="lx-weekly-challenge-icon" aria-hidden>
+          {data.weeklyRecallCount >= data.weeklyRecallTarget ? <CheckCircle2 size={20} /> : <Target size={20} />}
+        </div>
+        <div className="lx-weekly-challenge-copy">
+          <span>This week</span>
+          <h2 id="weekly-challenge-title">Recall {data.weeklyRecallTarget} words correctly</h2>
+          <p>{data.weeklyRecallCount >= data.weeklyRecallTarget ? 'Challenge complete — your recall work is compounding.' : `${data.weeklyRecallCount} recalled · ${Math.max(0, data.weeklyRecallTarget - data.weeklyRecallCount)} remaining`}</p>
+        </div>
+        <div className="lx-weekly-challenge-progress" aria-label={`${Math.min(100, Math.round((data.weeklyRecallCount / data.weeklyRecallTarget) * 100))}% complete`}>
+          <span style={{ width: `${Math.min(100, Math.round((data.weeklyRecallCount / data.weeklyRecallTarget) * 100))}%` }} />
+        </div>
+      </section>
 
       {/* ── Progress section ───────────────────────────────────── */}
       <div style={{ marginTop: '2rem' }}>

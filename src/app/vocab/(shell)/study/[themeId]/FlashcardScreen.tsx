@@ -10,12 +10,13 @@ import {
   type PanInfo,
 } from 'framer-motion';
 import { useRouter } from 'next/navigation';
-import { ChevronLeft, RotateCcw, CheckCircle2, HelpCircle, XCircle, Trophy } from 'lucide-react';
+import { ChevronLeft, RotateCcw, CheckCircle2, HelpCircle, XCircle, Trophy, Volume2 } from 'lucide-react';
 import type { FlashcardSessionData, FlashcardWord } from '@/lib/vocab/flashcard-data';
 import { useBadgeQueue } from '@/lib/vocab/badges/queue';
 import { useVocabFeedback } from '@/lib/vocab/use-vocab-feedback';
 import Celebration from '@/components/vocab/Celebration';
 import { trackFeature } from '@/lib/analytics/tracker';
+import { RETENTION_EVENTS, trackRetention } from '@/lib/vocab/retention-events';
 
 type Rating = 'got_it' | 'unsure' | 'missed_it';
 
@@ -197,6 +198,16 @@ function FlipCard({
   }
 
   const flipDuration = reduce ? 0.12 : 0.65;
+  const speakWord = useCallback(() => {
+    if (!('speechSynthesis' in window)) return;
+    window.speechSynthesis.cancel();
+    const utterance = new SpeechSynthesisUtterance(word.word);
+    utterance.lang = 'en-US';
+    utterance.rate = 0.82;
+    const preferred = window.speechSynthesis.getVoices().find(voice => voice.lang.startsWith('en'));
+    if (preferred) utterance.voice = preferred;
+    window.speechSynthesis.speak(utterance);
+  }, [word.word]);
 
   return (
     <div
@@ -371,6 +382,19 @@ function FlipCard({
                 )}
                 {/* Flip-back button — enlarged to ≥44px touch target */}
                 <motion.button
+                  onClick={speakWord}
+                  whileTap={{ scale: 0.88 }}
+                  style={{
+                    width: 44, height: 44, flexShrink: 0,
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    borderRadius: '50%', background: 'var(--color-lx-elevated)',
+                    border: '1px solid var(--color-lx-border)', color: 'var(--color-lx-accent-gold)',
+                  }}
+                  aria-label={`Hear ${word.word} pronounced`}
+                >
+                  <Volume2 size={16} />
+                </motion.button>
+                <motion.button
                   onClick={onFlipBack}
                   whileTap={{ scale: 0.88 }}
                   style={{
@@ -492,6 +516,7 @@ export default function FlashcardScreen({ data }: { data: FlashcardSessionData }
   // Track flashcard session start once on mount
   useEffect(() => {
     trackFeature('flashcard_start', 'vocab', { themeId: data.themeId });
+    trackRetention(RETENTION_EVENTS.learningSessionStarted, { sessionType: data.letterGroup ? 'letter_flashcard' : 'flashcard', themeId: data.themeId, words: data.words.length });
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -565,6 +590,7 @@ export default function FlashcardScreen({ data }: { data: FlashcardSessionData }
     // stored in a cancellable ref to prevent double-fire on unmount
     if (isLast) {
       setComplete(true);
+      trackRetention(RETENTION_EVENTS.learningSessionCompleted, { sessionType: data.letterGroup ? 'letter_flashcard' : 'flashcard', themeId: data.themeId, words: data.words.length });
       submitting.current = false;
     } else {
       setDirection(1);

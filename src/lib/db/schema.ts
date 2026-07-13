@@ -299,7 +299,10 @@ export const vocabUserProgress = sqliteTable('vocab_user_progress', {
   lastStudyDate:        integer('last_study_date', { mode: 'timestamp' }),
   deadline:             integer('deadline', { mode: 'timestamp' }),
   dailyTarget:          integer('daily_target').notNull().default(10),
+  learningGoal:         text('learning_goal').notNull().default('general'),
   onboardingComplete:   integer('onboarding_complete', { mode: 'boolean' }).notNull().default(false),
+  onboardingCompletedAt: integer('onboarding_completed_at', { mode: 'timestamp' }),
+  activatedAt:          integer('activated_at', { mode: 'timestamp' }),
   notificationsEnabled: integer('notifications_enabled', { mode: 'boolean' }).notNull().default(false),
   emailSummaryEnabled:  integer('email_summary_enabled', { mode: 'boolean' }).notNull().default(true),
   pushSubscription:     text('push_subscription'), // JSON string of PushSubscriptionJSON
@@ -425,7 +428,9 @@ export const vocabQuizAnswers = sqliteTable('vocab_quiz_answers', {
   // 'fill_blank' | 'analogy' | 'correct_usage'
   questionType:   text('question_type').notNull(),
   answeredAt:     integer('answered_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
-});
+}, (t) => [
+  unique('uq_vocab_quiz_answer_session_word').on(t.sessionId, t.wordId),
+]);
 
 // ─── SRS Events (audit trail) ────────────────────────────────────────────────
 // One row per flashcard rating or quiz answer. Lets us trace how each word's

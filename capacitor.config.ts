@@ -2,7 +2,7 @@ import type { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
   appId: 'org.beyondthehorizons.vhapp',
-  appName: 'Beyond the Horizons',
+  appName: 'LexiCore',
   // webDir points to the offline-fallback bundle; the live app loads from server.url below.
   webDir: 'mobile/www',
   server: {

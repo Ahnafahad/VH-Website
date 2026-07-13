@@ -101,6 +101,43 @@ interface AIQuestionResult {
   explanation:  string;
 }
 
+function blankTarget(example: string, word: string): string | null {
+  if (!example.trim()) return null;
+  const escaped = word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const replaced = example.replace(new RegExp(`\\b${escaped}\\b`, 'i'), '_____');
+  return replaced === example ? null : replaced;
+}
+
+/** Reliable, deterministic copy used when external AI providers are unavailable. */
+export function buildDeterministicQuestionCopy(input: QuizQuestionInput): AIQuestionResult {
+  const { correct, type } = input;
+  const cloze = blankTarget(correct.exampleSentence, correct.word);
+  const definition = correct.definition.trim() || `the vocabulary word “${correct.word}”`;
+
+  if (type === 'type_word') {
+    return {
+      questionText: `Type the word that means: ${definition}`,
+      explanation: `${correct.word} means ${definition}`,
+    };
+  }
+  if (type === 'type_cloze' && cloze) {
+    return {
+      questionText: `Complete the sentence: ${cloze}`,
+      explanation: `${correct.word} completes the sentence and means ${definition}`,
+    };
+  }
+  if ((type === 'fill_blank' || type === 'correct_usage') && cloze) {
+    return {
+      questionText: `Which word best completes this sentence? ${cloze}`,
+      explanation: `${correct.word} fits the context because it means ${definition}`,
+    };
+  }
+  return {
+    questionText: `Which word best matches this definition? ${definition}`,
+    explanation: `${correct.word} is the closest match: ${definition}`,
+  };
+}
+
 // ─── Prompt builder ───────────────────────────────────────────────────────────
 
 function buildPrompt(
@@ -341,9 +378,11 @@ export async function generateQuizQuestions(
   try {
     return assembleResults(await callGemini(prompt, maxTokens));
   } catch (geminiErr) {
-    throw new Error(
-      `All AI providers failed. DeepSeek: ${deepSeekError} | Gemini: ${geminiErr}`,
-    );
+    console.error('All AI providers failed; using deterministic quiz fallback.', {
+      deepSeekError,
+      geminiError: geminiErr,
+    });
+    return assembleResults(inputs.map(buildDeterministicQuestionCopy));
   }
 }
 

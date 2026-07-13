@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Fraunces, Geist, JetBrains_Mono } from "next/font/google";
+import { Cormorant_Garamond, Fraunces, Geist, JetBrains_Mono, Sora } from "next/font/google";
 import "./globals.css";
 import MainSiteShell from "@/components/MainSiteShell";
 import AuthProvider from "@/components/AuthProvider";
@@ -26,6 +26,21 @@ const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
   display: "swap",
   weight: ["300", "400", "500", "700"],
+});
+
+const lexiUi = Sora({
+  variable: "--font-lexi-ui",
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["400", "500", "600", "700"],
+});
+
+const lexiWord = Cormorant_Garamond({
+  variable: "--font-lexi-word",
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["400", "600", "700"],
+  style: ["normal", "italic"],
 });
 
 const SITE_URL = "https://www.vh-beyondthehorizons.org";
@@ -159,7 +174,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${fraunces.variable} ${geist.variable} ${jetbrainsMono.variable} antialiased`}
+        className={`${fraunces.variable} ${geist.variable} ${jetbrainsMono.variable} ${lexiUi.variable} ${lexiWord.variable} antialiased`}
       >
         <AuthProvider>
           <MainSiteShell>

@@ -1,4 +1,4 @@
-/**
+﻿/**
  * POST /api/vocab/quiz/answer
  *
  * Records a single quiz answer and updates all downstream state:
@@ -35,8 +35,8 @@ import { isTypedAnswerCorrect }     from '@/lib/vocab/typed-answer';
 import type { GeneratedQuestion }   from '@/lib/vocab/quiz-generator';
 import { canAccessWord }            from '@/lib/vocab/access-check';
 
-// ─── Point values (PRD Module 10) ────────────────────────────────────────────
-// Production (typed) recall is the hardest — it pays the most.
+// â”€â”€â”€ Point values (PRD Module 10) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// Production (typed) recall is the hardest â€” it pays the most.
 
 const POINTS: Record<string, number> = {
   fill_blank:    5,
@@ -65,11 +65,12 @@ export async function POST(req: NextRequest) {
     const hasTypedAnswer  = typeof typedAnswer === 'string';
     const hasLetterAnswer = typeof selectedLetter === 'string' && /^[A-E]$/.test(selectedLetter);
     if (!hasWordAnswer && !hasTypedAnswer && !hasLetterAnswer) {
-      throw new ApiException('One of selectedWordId (number), typedAnswer (string), or selectedLetter (A–E) is required', 400);
+      throw new ApiException('One of selectedWordId (number), typedAnswer (string), or selectedLetter (Aâ€“E) is required', 400);
     }
 
+    return db.transaction(async (tx) => {
     // Resolve user
-    const [user] = await db
+    const [user] = await tx
       .select({ id: users.id })
       .from(users)
       .where(eq(users.email, email))
@@ -77,7 +78,7 @@ export async function POST(req: NextRequest) {
     if (!user) throw new ApiException('User not found', 404);
 
     // Load quiz session
-    const [session] = await db
+    const [session] = await tx
       .select()
       .from(vocabQuizSessions)
       .where(
@@ -103,8 +104,12 @@ export async function POST(req: NextRequest) {
     }
 
     // Check if already answered (no-repeat rule)
-    const [existing] = await db
-      .select({ id: vocabQuizAnswers.id })
+    const [existing] = await tx
+      .select({
+        id: vocabQuizAnswers.id,
+        isCorrect: vocabQuizAnswers.isCorrect,
+        pointsEarned: vocabQuizAnswers.pointsEarned,
+      })
       .from(vocabQuizAnswers)
       .where(
         and(
@@ -113,12 +118,26 @@ export async function POST(req: NextRequest) {
         )
       )
       .limit(1);
-    if (existing) throw new ApiException('This word has already been answered in this session', 409);
+    if (existing) {
+      return {
+        isCorrect: existing.isCorrect,
+        correctLetter: question.correctLetter,
+        correctWordId: question.correctWordId,
+        explanation: question.explanation,
+        ...(question.inputMode === 'typed' ? { correctWord: question.correctWord } : {}),
+        pointsEarned: 0,
+        originalPointsEarned: existing.pointsEarned,
+        masteryDelta: 0,
+        newMasteryLevel: null,
+        confusionLogged: false,
+        idempotentReplay: true,
+      };
+    }
 
     // Determine correctness per question shape:
-    //   typed (production)        → compare typed string with the target word
-    //   string options (syn/ant)  → compare selected letter
-    //   word options (default)    → compare selected word id
+    //   typed (production)        â†’ compare typed string with the target word
+    //   string options (syn/ant)  â†’ compare selected letter
+    //   word options (default)    â†’ compare selected word id
     const isTyped         = question.inputMode === 'typed';
     const isStringOptions = question.optionKind === 'string';
     const selWordId       = hasWordAnswer ? (selectedWordId as number) : null;
@@ -135,8 +154,8 @@ export async function POST(req: NextRequest) {
       isCorrect = selWordId === question.correctWordId;
     }
 
-    // ── Update Word A (correct answer word) ───────────────────────────────────
-    const [wordARecord] = await db
+    // â”€â”€ Update Word A (correct answer word) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    const [wordARecord] = await tx
       .select()
       .from(vocabUserWordRecords)
       .where(
@@ -160,7 +179,7 @@ export async function POST(req: NextRequest) {
         );
 
     // Deadline-capped SRS interval
-    const [progress] = await db
+    const [progress] = await tx
       .select({ deadline: vocabUserProgress.deadline })
       .from(vocabUserProgress)
       .where(eq(vocabUserProgress.userId, user.id))
@@ -182,7 +201,7 @@ export async function POST(req: NextRequest) {
 
     const newScore = currentScore + delta.scoreDelta;
 
-    await db
+    await tx
       .insert(vocabUserWordRecords)
       .values({
         userId:             user.id,
@@ -229,7 +248,7 @@ export async function POST(req: NextRequest) {
       });
 
     // Log SRS event for beta-tester audit trail (Habib only).
-    if (user.id === 10) await db.insert(vocabSrsEvents).values({
+    if (user.id === 10) await tx.insert(vocabSrsEvents).values({
       userId:            user.id,
       wordId:            question.correctWordId,
       eventType:         'quiz',
@@ -245,12 +264,12 @@ export async function POST(req: NextRequest) {
       createdAt:         now,
     });
 
-    // ── Update Word B (wrongly selected word) — confusion penalty ─────────────
+    // â”€â”€ Update Word B (wrongly selected word) â€” confusion penalty â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     // Only applies when the wrong answer was a real pool word (MCQ with word
     // options). Typed and string-option questions have no Word B.
     let wordBUpdated = false;
     if (!isCorrect && selWordId !== null && selWordId !== question.correctWordId) {
-      const [wordBRecord] = await db
+      const [wordBRecord] = await tx
         .select({ masteryScore: vocabUserWordRecords.masteryScore })
         .from(vocabUserWordRecords)
         .where(
@@ -265,7 +284,7 @@ export async function POST(req: NextRequest) {
       const wordBDelta = quizDelta({ kind: 'wrong_word_b' }, wordBScore);
       const newWordBScore = wordBScore + wordBDelta.scoreDelta;
 
-      await db
+      await tx
         .insert(vocabUserWordRecords)
         .values({
           userId:            user.id,
@@ -287,7 +306,7 @@ export async function POST(req: NextRequest) {
         });
 
       // Log / increment confusion pair (word_a = correct, word_b = wrongly selected)
-      await db
+      await tx
         .insert(vocabConfusionPairs)
         .values({
           userId:   user.id,
@@ -307,11 +326,11 @@ export async function POST(req: NextRequest) {
       wordBUpdated = true;
     }
 
-    // ── Award points ──────────────────────────────────────────────────────────
+    // â”€â”€ Award points â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     const pointsEarned = isCorrect ? (POINTS[question.type] ?? 5) : 0;
 
     if (pointsEarned > 0) {
-      await db
+      await tx
         .update(vocabUserProgress)
         .set({
           totalPoints:  sql`total_points + ${pointsEarned}`,
@@ -321,8 +340,8 @@ export async function POST(req: NextRequest) {
         .where(eq(vocabUserProgress.userId, user.id));
     }
 
-    // ── Record answer ─────────────────────────────────────────────────────────
-    await db.insert(vocabQuizAnswers).values({
+    // â”€â”€ Record answer â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    await tx.insert(vocabQuizAnswers).values({
       sessionId,
       userId:         user.id,
       wordId:         question.correctWordId,
@@ -333,9 +352,9 @@ export async function POST(req: NextRequest) {
       answeredAt:     now,
     });
 
-    // ── Update session correct count ──────────────────────────────────────────
+    // â”€â”€ Update session correct count â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     if (isCorrect) {
-      await db
+      await tx
         .update(vocabQuizSessions)
         .set({ correctAnswers: sql`correct_answers + 1` })
         .where(eq(vocabQuizSessions.id, sessionId));
@@ -350,12 +369,13 @@ export async function POST(req: NextRequest) {
       correctLetter:  question.correctLetter,
       correctWordId:  question.correctWordId,
       explanation:    question.explanation,
-      // Typed questions withhold the answer at generate time — reveal it now.
+      // Typed questions withhold the answer at generate time â€” reveal it now.
       ...(isTyped ? { correctWord: question.correctWord } : {}),
       pointsEarned,
       masteryDelta:   delta.scoreDelta,
       newMasteryLevel: delta.newLevel,
       confusionLogged: !isCorrect && wordBUpdated,
     };
+    });
   });
 }

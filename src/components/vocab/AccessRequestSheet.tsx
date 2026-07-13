@@ -70,7 +70,7 @@ export default function AccessRequestSheet({ title, subtitle, onClose }: Props) 
 
       if (!res.ok) {
         const body = await res.json().catch(() => ({}));
-        setErrorMsg((body as { error?: string }).error ?? 'Something went wrong. Please try again.');
+        setErrorMsg((body as { error?: string }).error ?? 'We couldn’t send your request. Check your connection and try again.');
         setState('error');
         return;
       }

@@ -1,11 +1,13 @@
 import {
   db, users, userAccess, vocabUserProgress, vocabUserWordRecords,
-  vocabFlashcardSessions, vocabThemes, vocabQuizSessions, vocabWords,
+  vocabFlashcardSessions, vocabThemes, vocabQuizSessions, vocabQuizAnswers, vocabWords,
 } from '@/lib/db';
-import { eq, and, lte, count, sql, inArray } from 'drizzle-orm';
+import { eq, and, lte, gte, count, sql, inArray } from 'drizzle-orm';
 import { FREE_WORD_POOL, PAID_WORD_POOL } from './constants';
 import { unstable_cache } from 'next/cache';
 import { VocabCacheTag } from './cache-keys';
+import { dhakaWeekStart } from './dhaka-time';
+import { chooseRecommendation, type LearningRecommendation } from './recommendation';
 
 export interface MasteryBreakdown {
   new:      number;
@@ -27,6 +29,8 @@ export interface HomeData {
   streakDays:       number;
   totalPoints:      number;
   weeklyPoints:     number;
+  weeklyRecallCount: number;
+  weeklyRecallTarget: number;
   dueWordsCount:    number;
   dailyTarget:      number;
   goalProgress:     number;        // 0–100 percentage of today's target reviewed
@@ -36,6 +40,7 @@ export interface HomeData {
   sessions:         SessionsData;
   masteryBreakdown: MasteryBreakdown;
   hasPaidAccess:    boolean;       // true if user has any active product or is admin
+  recommendation:   LearningRecommendation;
 }
 
 async function _getHomeData(email: string): Promise<HomeData | null> {
@@ -55,6 +60,14 @@ async function _getHomeData(email: string): Promise<HomeData | null> {
 
   if (!progress) return null;
 
+  const [weeklyRecall] = await db.select({ value: count() })
+    .from(vocabQuizAnswers)
+    .where(and(
+      eq(vocabQuizAnswers.userId, user.id),
+      eq(vocabQuizAnswers.isCorrect, true),
+      gte(vocabQuizAnswers.answeredAt, dhakaWeekStart()),
+    ));
+
   const now = new Date();
 
   // ── Parallel queries ──────────────────────────────────────────────────────
@@ -69,6 +82,7 @@ async function _getHomeData(email: string): Promise<HomeData | null> {
     completedQuizzes,
     allThemes,
     accessRows,
+    activeQuizRows,
   ] = await Promise.all([
     // SRS due count
     db.select({ value: count() })
@@ -149,6 +163,20 @@ async function _getHomeData(email: string): Promise<HomeData | null> {
       .from(userAccess)
       .where(and(eq(userAccess.userId, user.id), eq(userAccess.active, true)))
       .limit(1),
+
+    db.select({
+      id: vocabQuizSessions.id,
+      themeId: vocabQuizSessions.themeId,
+      sessionType: vocabQuizSessions.sessionType,
+      total: vocabQuizSessions.totalQuestions,
+      answered: sql<number>`count(${vocabQuizAnswers.id})`,
+    })
+      .from(vocabQuizSessions)
+      .leftJoin(vocabQuizAnswers, eq(vocabQuizAnswers.sessionId, vocabQuizSessions.id))
+      .where(and(eq(vocabQuizSessions.userId, user.id), eq(vocabQuizSessions.status, 'in_progress')))
+      .groupBy(vocabQuizSessions.id)
+      .orderBy(sql`${vocabQuizSessions.startedAt} DESC`)
+      .limit(1),
   ]);
 
   // ── Compute basics ────────────────────────────────────────────────────────
@@ -206,6 +234,25 @@ async function _getHomeData(email: string): Promise<HomeData | null> {
   const isAdmin     = user.role === 'admin' || user.role === 'super_admin';
   const hasPaidAccess = isAdmin || accessRows.length > 0;
 
+  const activeQuiz = activeQuizRows[0] && Number(activeQuizRows[0].answered ?? 0) > 0
+    ? {
+        id: activeQuizRows[0].id,
+        href: activeQuizRows[0].sessionType === 'study' && activeQuizRows[0].themeId
+          ? `/vocab/study/${activeQuizRows[0].themeId}/quiz`
+          : '/vocab/practice/quiz',
+        answered: Number(activeQuizRows[0].answered ?? 0),
+        total: activeQuizRows[0].total,
+      }
+    : null;
+
+  const recommendation = chooseRecommendation({
+    activeQuiz,
+    dueCount: dueWordsCount,
+    learn: learnSession ? { ...learnSession, inProgress: Boolean(inProgressTheme && inProgressTheme.id === learnSession.themeId) } : null,
+    quiz: quizSession,
+    weakCount,
+  });
+
   // ── Dynamic daily target ───────────────────────────────────────────────────
   // Recalculate from deadline + remaining words so stale onboarding values
   // auto-correct after a long absence (e.g. skip a month → pace increases).
@@ -230,6 +277,8 @@ async function _getHomeData(email: string): Promise<HomeData | null> {
     streakDays:       progress.streakDays,
     totalPoints:      progress.totalPoints,
     weeklyPoints:     progress.weeklyPoints,
+    weeklyRecallCount: weeklyRecall?.value ?? 0,
+    weeklyRecallTarget: 25,
     dueWordsCount,
     dailyTarget:      dynamicDailyTarget,
     goalProgress,
@@ -239,6 +288,7 @@ async function _getHomeData(email: string): Promise<HomeData | null> {
     sessions,
     masteryBreakdown: breakdown,
     hasPaidAccess,
+    recommendation,
   };
 }
 

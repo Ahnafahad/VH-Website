@@ -462,7 +462,7 @@ function WtpPath({ onBack }: { onBack: () => void }) {
           opacity:        loading ? 0.7 : 1,
         }}
       >
-        {loading ? 'Submitting…' : 'Submit →'}
+        {loading ? 'Sending request…' : 'Request full access'}
       </motion.button>
     </motion.div>
   );

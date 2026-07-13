@@ -1,5 +1,8 @@
 'use client';
 
+import { Capacitor } from '@capacitor/core';
+import { Haptics, ImpactStyle, NotificationType } from '@capacitor/haptics';
+
 // Haptic feedback for LexiCore (vocab). Ported from the math haptics pack.
 // Patterns are tuned to event significance: light for frequent taps, distinct
 // multi-buzz patterns for sentiment-laden moments (missed, celebration).
@@ -38,6 +41,16 @@ export function writeHapticsPref(enabled: boolean): void {
 /** Fire a haptic pattern. No-op on desktop / unsupported browsers / when disabled. */
 export function vibrate(event: HapticEvent, enabled: boolean): void {
   if (!enabled) return;
+  if (Capacitor.isNativePlatform()) {
+    if (event === 'correct' || event === 'complete' || event === 'levelUp' || event === 'badge') {
+      void Haptics.notification({ type: NotificationType.Success });
+    } else if (event === 'incorrect' || event === 'missed') {
+      void Haptics.notification({ type: NotificationType.Error });
+    } else {
+      void Haptics.impact({ style: event === 'back' || event === 'unsure' ? ImpactStyle.Medium : ImpactStyle.Light });
+    }
+    return;
+  }
   if (typeof navigator === 'undefined' || !navigator.vibrate) return;
   navigator.vibrate(HAPTIC_PATTERNS[event]);
 }
