@@ -23,6 +23,10 @@ import {
   freeSignups,
   vocabUpgradeRequests,
   vocabAccessRequests,
+  materials,
+  classSessions,
+  assignmentSubmissions,
+  recordingWatchProgress,
 } from '@/lib/db';
 import { sql, eq, and, gte, desc, count } from 'drizzle-orm';
 
@@ -514,6 +518,109 @@ export async function getVocab(range: Range) {
       featureUsage: [],
       funnel: { studied: 0, quizzed: 0, passed: 0 },
       questionTypeAccuracy: [], topStudiedWords: [],
+    };
+  }
+}
+
+// ─── LMS ────────────────────────────────────────────────────────────────────
+
+export async function getLms(range: Range) {
+  try {
+    const cutoff = cutoffDate(range);
+    const eventQuery = db.select({
+      anonId: analyticsEvents.anonId,
+      userId: analyticsEvents.userId,
+      type: analyticsEvents.type,
+      path: analyticsEvents.path,
+      name: analyticsEvents.name,
+      durationMs: analyticsEvents.durationMs,
+      createdAt: analyticsEvents.createdAt,
+    }).from(analyticsEvents);
+
+    const eventRows = await (cutoff
+      ? eventQuery.where(and(eq(analyticsEvents.module, 'lms'), gte(analyticsEvents.createdAt, cutoff)))
+      : eventQuery.where(eq(analyticsEvents.module, 'lms'))
+    ).catch(() => []);
+
+    const identities = new Set<string>();
+    const featureCounts = new Map<string, number>();
+    const pathCounts = new Map<string, number>();
+    const dailyUsers = new Map<string, Set<string>>();
+    let pageviews = 0;
+    let reliableVisibleMs = 0;
+    let excludedDurationEvents = 0;
+
+    for (const event of eventRows) {
+      const identity = event.userId != null ? `user:${event.userId}` : `browser:${event.anonId}`;
+      identities.add(identity);
+      const date = toIsoDate(event.createdAt);
+      if (!dailyUsers.has(date)) dailyUsers.set(date, new Set());
+      dailyUsers.get(date)!.add(identity);
+
+      if (event.type === 'pageview') {
+        pageviews++;
+        const path = event.path ?? '/dashboard';
+        pathCounts.set(path, (pathCounts.get(path) ?? 0) + 1);
+      }
+      if (event.type === 'feature' && event.name) {
+        featureCounts.set(event.name, (featureCounts.get(event.name) ?? 0) + 1);
+      }
+      if (event.type === 'page_exit' && event.durationMs != null) {
+        // A backgrounded tab used to report multi-hour sessions as active time.
+        // Exclude implausible single-page durations rather than presenting them
+        // as trustworthy engagement.
+        if (event.durationMs <= 4 * 60 * 60 * 1000) reliableVisibleMs += event.durationMs;
+        else excludedDurationEvents++;
+      }
+    }
+
+    const [materialRows, classRows, submissionRows, watchRows] = await Promise.all([
+      db.select({ c: count() }).from(materials).catch(() => [{ c: 0 }]),
+      db.select({ c: count() }).from(classSessions).catch(() => [{ c: 0 }]),
+      db.select({ c: count() }).from(assignmentSubmissions).catch(() => [{ c: 0 }]),
+      db.select({ c: count() }).from(recordingWatchProgress).catch(() => [{ c: 0 }]),
+    ]);
+
+    const feature = (name: string) => featureCounts.get(name) ?? 0;
+    const pdfOpens = feature('material_opened');
+    const pdfFailures = feature('material_load_failed');
+
+    return {
+      activeLearners: identities.size,
+      pageviews,
+      reliableVisibleMs,
+      excludedDurationEvents,
+      pdfOpens,
+      pdfFailures,
+      pdfFailureRate: pdfOpens > 0 ? Math.round((pdfFailures / pdfOpens) * 1000) / 10 : 0,
+      pdfDownloads: feature('material_downloaded'),
+      pdfRetries: feature('material_retry'),
+      materialUploads: feature('material_uploaded'),
+      classesCreated: feature('class_created'),
+      classesJoined: feature('class_joined'),
+      joinFailures: feature('class_join_failed'),
+      assignmentsSubmitted: feature('assignment_submitted') + feature('assignment_resubmitted'),
+      inventory: {
+        materials: Number(materialRows[0]?.c ?? 0),
+        classes: Number(classRows[0]?.c ?? 0),
+        submissions: Number(submissionRows[0]?.c ?? 0),
+        recordingProgress: Number(watchRows[0]?.c ?? 0),
+      },
+      topPaths: Array.from(pathCounts.entries())
+        .sort((a, b) => b[1] - a[1])
+        .slice(0, 10)
+        .map(([path, views]) => ({ path, views })),
+      dailyActive: Array.from(dailyUsers.entries())
+        .sort((a, b) => a[0].localeCompare(b[0]))
+        .map(([date, users]) => ({ date, users: users.size })),
+    };
+  } catch {
+    return {
+      activeLearners: 0, pageviews: 0, reliableVisibleMs: 0, excludedDurationEvents: 0,
+      pdfOpens: 0, pdfFailures: 0, pdfFailureRate: 0, pdfDownloads: 0, pdfRetries: 0,
+      materialUploads: 0, classesCreated: 0, classesJoined: 0, joinFailures: 0, assignmentsSubmitted: 0,
+      inventory: { materials: 0, classes: 0, submissions: 0, recordingProgress: 0 },
+      topPaths: [], dailyActive: [],
     };
   }
 }

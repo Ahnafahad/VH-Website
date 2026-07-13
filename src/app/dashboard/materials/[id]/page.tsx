@@ -4,6 +4,8 @@
  */
 
 import { redirect } from 'next/navigation';
+import Link from 'next/link';
+import { AlertCircle, ArrowLeft, RefreshCw } from 'lucide-react';
 import { getServerSession } from 'next-auth';
 import { and, asc, eq } from 'drizzle-orm';
 import { authOptions } from '@/lib/auth';
@@ -39,6 +41,31 @@ interface PageProps {
   params: Promise<{ id: string }>;
 }
 
+function MaterialUnavailable({ message }: { message: string }) {
+  return (
+    <main className="min-h-dvh bg-[#FAF5EF] px-5 py-12 text-[#1A0507]">
+      <div className="mx-auto flex min-h-[70dvh] max-w-md flex-col items-center justify-center text-center">
+        <span className="mb-5 grid h-14 w-14 place-items-center rounded-2xl border border-[#D4B094]/50 bg-white text-[#760F13]">
+          <AlertCircle className="h-6 w-6" aria-hidden />
+        </span>
+        <h1 className="text-balance text-2xl font-semibold tracking-[-0.025em]">This material is not available</h1>
+        <p className="mt-3 max-w-sm text-pretty text-base leading-6 text-[#6F4A43]">{message}</p>
+        <div className="mt-7 flex w-full flex-col gap-3 sm:flex-row sm:justify-center">
+          <Link href="/dashboard" className="inline-flex min-h-11 items-center justify-center gap-2 rounded-xl bg-[#760F13] px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#5A0B0F] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#760F13]">
+            <ArrowLeft className="h-4 w-4" aria-hidden />
+            Back to learning
+          </Link>
+          <Link href="/dashboard" prefetch={false} className="inline-flex min-h-11 items-center justify-center gap-2 rounded-xl border border-[#D8C7BA] bg-white px-5 py-3 text-sm font-semibold text-[#5A0B0F] transition-colors hover:bg-[#F4ECE5] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#760F13]">
+            <RefreshCw className="h-4 w-4" aria-hidden />
+            Refresh dashboard
+          </Link>
+        </div>
+        <p className="mt-5 text-sm text-[#8B655D]">If the class still shows this file, ask your instructor to reattach it.</p>
+      </div>
+    </main>
+  );
+}
+
 export async function generateMetadata({ params }: PageProps) {
   const { id } = await params;
   const materialId = parseInt(id, 10);
@@ -62,7 +89,7 @@ export default async function MaterialViewerPage({ params }: PageProps) {
 
   const { id } = await params;
   const materialId = parseInt(id, 10);
-  if (isNaN(materialId)) redirect('/dashboard');
+  if (isNaN(materialId)) return <MaterialUnavailable message="The material link is invalid." />;
 
   const material = await db
     .select()
@@ -70,10 +97,12 @@ export default async function MaterialViewerPage({ params }: PageProps) {
     .where(eq(materials.id, materialId))
     .get();
 
-  if (!material) redirect('/dashboard');
+  if (!material) {
+    return <MaterialUnavailable message="This file may have been removed or replaced by your instructor." />;
+  }
 
   if (!canAccessLmsContent(user, { product: material.product, batch: material.batch })) {
-    redirect('/dashboard');
+    return <MaterialUnavailable message="This file belongs to a different course or batch than your account." />;
   }
 
   // Only the PDF viewer makes sense; link-type materials should open externally
@@ -107,7 +136,10 @@ export default async function MaterialViewerPage({ params }: PageProps) {
 
   // Resolve the R2 key to a presigned GET URL (2 h TTL) for the PDF viewer.
   // For link-type materials we already redirected above, so this is always a key.
-  const resolvedUrl = (await resolveFileUrl(material.blobUrl)) ?? '';
+  const resolvedUrl = await resolveFileUrl(material.blobUrl).catch(() => null);
+  if (!resolvedUrl) {
+    return <MaterialUnavailable message="The file storage link could not be prepared. Please try again shortly." />;
+  }
 
   const serializedMaterial: SerializedMaterial = {
     id: material.id,

@@ -668,7 +668,7 @@ export type AnalyticsEvent      = typeof analyticsEvents.$inferSelect;
 export type NewAnalyticsEvent   = typeof analyticsEvents.$inferInsert;
 
 export type AnalyticsEventType = 'pageview' | 'page_exit' | 'feature' | 'click' | 'custom';
-export type AnalyticsModule    = 'site' | 'vocab' | 'math' | 'accounting' | 'workbook' | 'auth' | 'admin';
+export type AnalyticsModule    = 'site' | 'vocab' | 'math' | 'accounting' | 'workbook' | 'auth' | 'admin' | 'lms';
 
 // ══════════════════════════════════════════════════════════════════════════════
 // ONLINE TESTS — Reusable MCQ test templates, timed windows, attempts, results

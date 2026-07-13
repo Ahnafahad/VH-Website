@@ -179,7 +179,7 @@ export default function ClassHistoryTile({ classPulse }: Props) {
                   {cls.materials.map((mat) => (
                     <Link
                       key={mat.id}
-                      href={`/dashboard/materials/${mat.id}`}
+                      href={mat.type === 'pdf' ? `/dashboard/materials/${mat.id}` : `/dashboard/classes/${cls.id}`}
                       className="flex items-center gap-1.5 transition-opacity hover:opacity-80 min-h-[44px] py-1"
                     >
                       <FileText
@@ -197,7 +197,7 @@ export default function ClassHistoryTile({ classPulse }: Props) {
                         className="text-xs ml-1"
                         style={{ color: 'rgba(250,245,239,0.40)' }}
                       >
-                        {mat.type}
+                        {mat.type === 'pdf' ? 'Open PDF' : 'Open class'}
                       </span>
                     </Link>
                   ))}

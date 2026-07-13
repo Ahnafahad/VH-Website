@@ -148,6 +148,14 @@ const QUICK_LINKS: QuickLink[] = [
   { label: 'Google Cal',  desc: 'Connect Google Calendar & Meet',      href: '/admin/settings/google',    icon: Settings,      section: 'SYSTEM'          },
 ];
 
+const PRIMARY_ACTIONS = [
+  { label: "Run today's class", href: '/admin/today', icon: CalendarCheck, primary: true },
+  { label: 'Schedule a class', href: '/admin/classes', icon: CalendarDays },
+  { label: 'Share a PDF', href: '/admin/materials', icon: FileText },
+  { label: 'Check marks', href: '/admin/tests', icon: ClipboardList },
+  { label: 'LMS statistics', href: '/admin/analytics', icon: BarChart3 },
+];
+
 // ─── Component ────────────────────────────────────────────────────────────────
 
 export default async function AdminOverviewPage() {
@@ -215,8 +223,10 @@ export default async function AdminOverviewPage() {
       <style>{`
         .vh-stat-card { transition: box-shadow 0.15s, transform 0.15s; }
         .vh-stat-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.08); transform: translateY(-1px); }
-        .vh-quick-card { transition: border-color 0.12s, background-color 0.12s; }
-        .vh-quick-card:hover { border-color: #D1D5DB; background-color: #F9FAFB; }
+        .vh-primary-action { transition: transform 0.15s, background-color 0.15s, border-color 0.15s; }
+        .vh-primary-action:hover { transform: translateY(-1px); border-color: #C9A88E !important; }
+        .vh-quick-card { transition: background-color 0.12s; }
+        .vh-quick-card:hover { background-color: #F9FAFB; }
       `}</style>
 
       {/* ── Greeting ────────────────────────────────────────────────────────── */}
@@ -237,6 +247,26 @@ export default async function AdminOverviewPage() {
           {dateLabel} · {timeLabel} (Asia/Dhaka)
         </p>
       </div>
+
+      <section aria-labelledby="admin-start-heading" style={{ marginBottom: 28 }}>
+        <h2 id="admin-start-heading" style={{ margin: '0 0 10px', fontSize: 14, color: '#111827' }}>What do you need to do?</h2>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
+          {PRIMARY_ACTIONS.map(action => {
+            const Icon = action.icon;
+            return (
+              <Link
+                key={action.href}
+                href={action.href}
+                className="vh-primary-action"
+                style={{ minHeight: 44, display: 'inline-flex', alignItems: 'center', gap: 8, padding: '10px 14px', borderRadius: 10, border: action.primary ? '1px solid #760F13' : '1px solid #E1D4CB', background: action.primary ? '#760F13' : '#FFFFFF', color: action.primary ? '#FFFFFF' : '#5A0B0F', textDecoration: 'none', fontSize: 13, fontWeight: 650 }}
+              >
+                <Icon size={16} aria-hidden />
+                {action.label}
+              </Link>
+            );
+          })}
+        </div>
+      </section>
 
       {/* ── Stat cards ──────────────────────────────────────────────────────── */}
       <div
@@ -339,8 +369,8 @@ export default async function AdminOverviewPage() {
               <div
                 style={{
                   display:             'grid',
-                  gridTemplateColumns: 'repeat(auto-fill, minmax(170px, 1fr))',
-                  gap:                 8,
+                  gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
+                  gap:                 0,
                 }}
               >
                 {links.map((link) => {
@@ -354,10 +384,9 @@ export default async function AdminOverviewPage() {
                       <div
                         className="vh-quick-card"
                         style={{
-                          border:       '1px solid #E5E7EB',
-                          borderRadius: 10,
-                          padding:      '13px 14px',
-                          background:   '#FFFFFF',
+                          borderBottom: '1px solid #E5E7EB',
+                          padding:      '12px 4px',
+                          background:   'transparent',
                           display:      'flex',
                           alignItems:   'center',
                           gap:          11,
@@ -369,7 +398,7 @@ export default async function AdminOverviewPage() {
                             width:          32,
                             height:         32,
                             borderRadius:   8,
-                            background:     '#F3F4F6',
+                            background:     'transparent',
                             display:        'flex',
                             alignItems:     'center',
                             justifyContent: 'center',

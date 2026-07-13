@@ -25,6 +25,7 @@ import {
 import Link from 'next/link';
 import { uploadToR2 } from '@/lib/lms/upload-client';
 import { formatDhaka } from '@/lib/lms/time';
+import { trackFeature } from '@/lib/analytics/tracker';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -125,6 +126,11 @@ export default function AssignmentDetailClient({ assignment, initialSubmission }
       }
 
       const saved = await res.json() as SubmissionInfo;
+      trackFeature(resubmitting ? 'assignment_resubmitted' : 'assignment_submitted', 'lms', {
+        assignmentId: assignment.id,
+        hasFile: Boolean(fileUrl),
+        hasNote: Boolean(note.trim()),
+      });
       setSubmission(saved);
       setResubmitting(false);
       setSelectedFile(null);

@@ -5,12 +5,13 @@ import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   Video, Upload, BookOpen, CheckCircle, Users, Clock,
-  ExternalLink, CalendarX, ChevronRight, Loader2, X,
+  ExternalLink, CalendarX, ChevronRight, Loader2,
 } from 'lucide-react';
 import { uploadToR2 } from '@/lib/lms/upload-client';
+import { trackFeature } from '@/lib/analytics/tracker';
 import {
   SubjectBadge, StatusBadge, Toast, ConfirmDialog, Modal,
-  FieldLabel, FieldInput, FieldTextarea, FieldSelect, PrimaryBtn, GhostBtn,
+  FieldLabel, FieldInput, FieldTextarea, PrimaryBtn, GhostBtn,
   fmtDhaka, dhakaLocalToISO, SPIN_CSS, RED, SLATE, BORDER, MUTED, BG,
   rowV,
 } from './lms-shared';
@@ -50,13 +51,12 @@ function UploadSheet({
 }) {
   const [file,    setFile]    = useState<File | null>(null);
   const [title,   setTitle]   = useState('');
-  const [batch,   setBatch]   = useState(session.batch ?? '');
   const [progress, setProgress] = useState(0);
   const [stage,   setStage]   = useState<'idle' | 'uploading' | 'saving' | 'done'>('idle');
   const [error,   setError]   = useState('');
 
   const handleUpload = async () => {
-    if (!file || !title.trim()) { setError('Title and file are required'); return; }
+    if (!file) { setError('Choose a PDF file to upload'); return; }
     setError('');
     try {
       setStage('uploading');
@@ -70,18 +70,16 @@ function UploadSheet({
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          title: title.trim(),
+          title: title.trim() || file.name.replace(/\.pdf$/i, '').replace(/[-_]+/g, ' '),
           type: 'pdf',
           blobUrl: key,
           fileName: file.name,
           fileSize: file.size,
-          subject: session.subject,
-          product: session.product,
-          batch: batch || null,
           classSessionId: session.id,
         }),
       });
       if (!res.ok) throw new Error('Save failed');
+      trackFeature('material_uploaded', 'lms', { classSessionId: session.id, source: 'today' });
       setStage('done');
       setTimeout(() => { onDone(); onClose(); }, 800);
     } catch (e) {
@@ -93,7 +91,7 @@ function UploadSheet({
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
       <div>
-        <FieldLabel>Title *</FieldLabel>
+        <FieldLabel>Lecture title</FieldLabel>
         <FieldInput
           value={title}
           onChange={e => setTitle(e.target.value)}
@@ -101,33 +99,34 @@ function UploadSheet({
         />
       </div>
       <div>
-        <FieldLabel>Batch (leave blank for all)</FieldLabel>
-        <FieldInput
-          value={batch}
-          onChange={e => setBatch(e.target.value)}
-          placeholder="e.g. 2025"
-        />
-      </div>
-      <div>
         <FieldLabel>PDF File *</FieldLabel>
         <input
           type="file"
           accept="application/pdf"
-          onChange={e => setFile(e.target.files?.[0] ?? null)}
-          style={{ fontSize: 13, color: SLATE }}
+          onChange={e => {
+            const nextFile = e.target.files?.[0] ?? null;
+            setFile(nextFile);
+            if (nextFile && !title.trim()) {
+              setTitle(nextFile.name.replace(/\.pdf$/i, '').replace(/[-_]+/g, ' '));
+            }
+          }}
+          style={{ width: '100%', minHeight: 44, padding: '10px 12px', fontSize: 13, color: SLATE, border: `1px solid ${BORDER}`, borderRadius: 10, background: '#FFFFFF' }}
         />
         {file && (
           <p style={{ margin: '4px 0 0', fontSize: 11, color: MUTED }}>
             {file.name} — {(file.size / 1024 / 1024).toFixed(1)} MB
           </p>
         )}
+        <p style={{ margin: '5px 0 0', fontSize: 11, lineHeight: 1.5, color: MUTED }}>
+          Course, subject, batch, and access are inherited from this class automatically.
+        </p>
       </div>
       {stage === 'uploading' && (
         <div>
           <div style={{ background: '#F3F4F6', borderRadius: 4, height: 4 }}>
             <div style={{
               height: 4, borderRadius: 4, background: RED,
-              width: `${progress}%`, transition: 'width 0.3s',
+              width: '100%', transform: `scaleX(${progress / 100})`, transformOrigin: 'left', transition: 'transform 0.3s',
             }} />
           </div>
           <p style={{ fontSize: 11, color: MUTED, margin: '4px 0 0' }}>Uploading… {progress}%</p>
@@ -138,7 +137,7 @@ function UploadSheet({
         <GhostBtn onClick={onClose} small>Cancel</GhostBtn>
         <PrimaryBtn
           onClick={handleUpload}
-          disabled={!file || !title.trim() || stage !== 'idle'}
+          disabled={!file || stage !== 'idle'}
           loading={stage === 'uploading' || stage === 'saving'}
           small
         >

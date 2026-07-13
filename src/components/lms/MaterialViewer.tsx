@@ -30,6 +30,7 @@ import type {
   ScaledPosition,
   ViewportHighlight,
 } from 'react-pdf-highlighter-extended';
+import { trackFeature } from '@/lib/analytics/tracker';
 import type { SerializedHighlight, SerializedMaterial } from '@/app/dashboard/materials/[id]/page';
 
 // ─── Lazy-load pdf highlighter (needs window) ─────────────────────────────────
@@ -41,16 +42,6 @@ const PdfLoader = dynamic(
 
 const PdfHighlighter = dynamic(
   () => import('react-pdf-highlighter-extended').then((m) => m.PdfHighlighter),
-  { ssr: false },
-);
-
-const TextHighlight = dynamic(
-  () => import('react-pdf-highlighter-extended').then((m) => m.TextHighlight),
-  { ssr: false },
-);
-
-const MonitoredHighlightContainer = dynamic(
-  () => import('react-pdf-highlighter-extended').then((m) => m.MonitoredHighlightContainer),
   { ssr: false },
 );
 
@@ -124,13 +115,14 @@ function SelectionTip({ onSave, onCancel }: SelectionTipProps) {
           <button
             key={c}
             onClick={() => setColor(c)}
-            className="w-6 h-6 rounded-full border-2 transition-transform hover:scale-110"
+            className="w-11 h-11 rounded-full border-2 flex items-center justify-center transition-colors hover:bg-[#FAF5EF]"
             style={{
-              backgroundColor: hex,
               borderColor: color === c ? '#1A0507' : 'transparent',
             }}
             aria-label={c}
-          />
+          >
+            <span className="block w-6 h-6 rounded-full" style={{ backgroundColor: hex }} aria-hidden />
+          </button>
         ))}
       </div>
 
@@ -403,14 +395,19 @@ export default function MaterialViewer({ material, initialHighlights, isAdmin = 
   const [scale, setScale] = useState<number | 'page-width'>('page-width');
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [loadError, setLoadError] = useState<Error | null>(null);
-  const [pendingGhost, setPendingGhost] = useState<GhostHighlight | null>(null);
+  const [viewerKey, setViewerKey] = useState(0);
   const [showSelectionTip, setShowSelectionTip] = useState(false);
   const [selectionTipContent, setSelectionTipContent] = useState<PdfSelection | null>(null);
 
   const highlighterUtilsRef = useRef<PdfHighlighterUtils | null>(null);
 
-  // pdf.js workerSrc — use CDN matching pdfjs-dist version installed
-  const workerSrc = `https://unpkg.com/pdfjs-dist@4.10.38/build/pdf.worker.min.mjs`;
+  // Keep the worker inside the application bundle. A public-CDN worker was
+  // blocked by the site CSP and by restricted student networks.
+  const workerSrc = new URL('pdfjs-dist/build/pdf.worker.min.mjs', import.meta.url).toString();
+
+  useEffect(() => {
+    trackFeature('material_opened', 'lms', { materialId: material.id, type: material.type });
+  }, [material.id, material.type]);
 
   // ─── Optimistic add after POST ─────────────────────────────────────────────
 
@@ -555,19 +552,32 @@ export default function MaterialViewer({ material, initialHighlights, isAdmin = 
     return (
       <div className="min-h-screen bg-[#FAF5EF] flex flex-col items-center justify-center gap-4 p-6">
         <FileText className="w-12 h-12 text-[#D4B094]" strokeWidth={1.25} />
-        <p className="text-sm text-[#A86E58] text-center">
-          {isAdmin ? 'The PDF could not be loaded. You can still download it.' : 'The PDF could not be loaded. Please contact your instructor.'}
+        <h1 className="text-xl font-semibold text-[#1A0507]">The PDF did not load</h1>
+        <p className="max-w-sm text-base leading-6 text-[#6F4A43] text-center">
+          Your place is safe. Retry the viewer or download the file and open it on your device.
         </p>
-        {isAdmin && (
+        <div className="flex w-full max-w-sm flex-col gap-3 sm:flex-row sm:justify-center">
+          <button
+            type="button"
+            onClick={() => {
+              trackFeature('material_retry', 'lms', { materialId: material.id });
+              setLoadError(null);
+              setViewerKey((key) => key + 1);
+            }}
+            className="inline-flex min-h-11 items-center justify-center rounded-xl bg-[#760F13] px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-[#5A0B0F] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#760F13]"
+          >
+            Retry viewer
+          </button>
           <a
             href={material.blobUrl}
             download={material.fileName ?? material.title}
-            className="flex items-center gap-2 px-4 py-2 bg-[#5A0B0F] text-white text-sm rounded-lg hover:bg-[#760F13] transition-colors"
+            onClick={() => trackFeature('material_downloaded', 'lms', { materialId: material.id, from: 'error' })}
+            className="inline-flex min-h-11 items-center justify-center gap-2 rounded-xl border border-[#D8C7BA] bg-white px-4 py-2 text-sm font-semibold text-[#5A0B0F] transition-colors hover:bg-[#F4ECE5] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#760F13]"
           >
             <Download className="w-4 h-4" />
             Download PDF
           </a>
-        )}
+        </div>
         <a
           href="/dashboard"
           className="text-xs text-[#A86E58] hover:text-[#5A0B0F] transition-colors"
@@ -584,7 +594,7 @@ export default function MaterialViewer({ material, initialHighlights, isAdmin = 
       <header className="flex items-center gap-3 px-4 py-2.5 bg-white border-b border-[#E8DDD5] shadow-sm z-30 flex-shrink-0">
         <a
           href="/dashboard"
-          className="flex items-center gap-1.5 text-xs text-[#A86E58] hover:text-[#5A0B0F] transition-colors flex-shrink-0"
+          className="flex min-h-11 items-center gap-1.5 text-xs text-[#A86E58] hover:text-[#5A0B0F] transition-colors flex-shrink-0"
         >
           <ArrowLeft className="w-3.5 h-3.5" />
           <span className="hidden sm:inline">Dashboard</span>
@@ -600,7 +610,7 @@ export default function MaterialViewer({ material, initialHighlights, isAdmin = 
         <div className="flex items-center gap-1 flex-shrink-0">
           <button
             onClick={handleZoomOut}
-            className="w-7 h-7 flex items-center justify-center rounded-lg text-[#A86E58] hover:bg-[#FAF5EF] hover:text-[#5A0B0F] transition-colors"
+            className="w-11 h-11 flex items-center justify-center rounded-lg text-[#A86E58] hover:bg-[#FAF5EF] hover:text-[#5A0B0F] transition-colors"
             aria-label="Zoom out"
           >
             <ZoomOut className="w-3.5 h-3.5" />
@@ -610,7 +620,7 @@ export default function MaterialViewer({ material, initialHighlights, isAdmin = 
           </span>
           <button
             onClick={handleZoomIn}
-            className="w-7 h-7 flex items-center justify-center rounded-lg text-[#A86E58] hover:bg-[#FAF5EF] hover:text-[#5A0B0F] transition-colors"
+            className="w-11 h-11 flex items-center justify-center rounded-lg text-[#A86E58] hover:bg-[#FAF5EF] hover:text-[#5A0B0F] transition-colors"
             aria-label="Zoom in"
           >
             <ZoomIn className="w-3.5 h-3.5" />
@@ -636,7 +646,8 @@ export default function MaterialViewer({ material, initialHighlights, isAdmin = 
           <a
             href={material.blobUrl}
             download={material.fileName ?? material.title}
-            className="flex items-center gap-1.5 text-xs text-[#A86E58] hover:text-[#5A0B0F] transition-colors flex-shrink-0"
+            onClick={() => trackFeature('material_downloaded', 'lms', { materialId: material.id, from: 'toolbar' })}
+            className="flex min-h-11 items-center gap-1.5 text-xs text-[#A86E58] hover:text-[#5A0B0F] transition-colors flex-shrink-0"
             aria-label="Download PDF"
           >
             <Download className="w-3.5 h-3.5" />
@@ -650,9 +661,16 @@ export default function MaterialViewer({ material, initialHighlights, isAdmin = 
         {/* PDF Viewer */}
         <div className="flex-1 relative overflow-hidden">
           <PdfLoader
+            key={viewerKey}
             document={material.blobUrl}
             workerSrc={workerSrc}
-            onError={(err) => setLoadError(err)}
+            onError={(err) => {
+              trackFeature('material_load_failed', 'lms', {
+                materialId: material.id,
+                message: err.message.slice(0, 160),
+              });
+              setLoadError(err);
+            }}
             beforeLoad={(progress) => (
               <div className="absolute inset-0 flex flex-col items-center justify-center gap-3">
                 <div className="w-10 h-10 border-2 border-[#A86E58]/30 border-t-[#A86E58] rounded-full animate-spin" />

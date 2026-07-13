@@ -6,10 +6,11 @@ import BehaviorPanel from './BehaviorPanel';
 import VocabPanel    from './VocabPanel';
 import MathPanel     from './MathPanel';
 import FunnelPanel   from './FunnelPanel';
+import LmsPanel      from './LmsPanel';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
-type Section = 'overview' | 'behavior' | 'vocab' | 'math' | 'funnel';
+type Section = 'overview' | 'behavior' | 'lms' | 'vocab' | 'math' | 'funnel';
 type Range   = '7d' | '30d' | '90d' | 'all';
 
 interface Tab {
@@ -20,6 +21,7 @@ interface Tab {
 const TABS: Tab[] = [
   { id: 'overview',  label: 'Overview'           },
   { id: 'behavior',  label: 'Behavior & Flow'    },
+  { id: 'lms',       label: 'LMS'                },
   { id: 'vocab',     label: 'LexiCore (Vocab)'   },
   { id: 'math',      label: 'Mental Math'        },
   { id: 'funnel',    label: 'Engagement & Funnel'},
@@ -117,11 +119,11 @@ export default function AnalyticsDashboard() {
     }
     if (!data) return null;
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const d = data as any;
     switch (activeTab) {
       case 'overview':  return <OverviewPanel data={d} />;
       case 'behavior':  return <BehaviorPanel data={d} />;
+      case 'lms':       return <LmsPanel      data={d} />;
       case 'vocab':     return <VocabPanel    data={d} />;
       case 'math':      return <MathPanel     data={d} />;
       case 'funnel':    return <FunnelPanel   data={d} />;
@@ -134,8 +136,8 @@ export default function AnalyticsDashboard() {
         display:       'flex',
         flexDirection: 'column',
         gap:           '20px',
-        padding:       '28px 32px',
-        minHeight:     '100vh',
+        padding:       'clamp(16px, 3vw, 32px)',
+        minHeight:     '100dvh',
         background:    '#FAFAFA',
       }}
     >
@@ -185,6 +187,7 @@ export default function AnalyticsDashboard() {
               onClick={() => handleRangeChange(r.value)}
               style={{
                 padding:      '5px 14px',
+                minHeight:    44,
                 border:       'none',
                 borderRadius: '6px',
                 fontSize:     '13px',
@@ -223,6 +226,7 @@ export default function AnalyticsDashboard() {
             onClick={() => handleTabChange(tab.id)}
             style={{
               padding:       '10px 16px',
+              minHeight:     44,
               border:        'none',
               borderBottom:  activeTab === tab.id ? '2px solid #D62B38' : '2px solid transparent',
               background:    'transparent',

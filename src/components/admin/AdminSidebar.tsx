@@ -54,13 +54,20 @@ const INSTRUCTOR_NAV_SECTIONS: NavSection[] = [
     ],
   },
   {
-    label: 'CLASSROOM',
+    label: 'TEACHING',
     items: [
       { href: '/admin/classes',            label: 'Classes',   icon: CalendarDays  },
       { href: '/admin/materials',          label: 'Materials', icon: FileText      },
       { href: '/admin/homework',           label: 'Homework',  icon: BookMarked    },
       { href: '/admin/bookings',           label: 'Bookings',  icon: CalendarClock },
       { href: '/admin/announcements-feed', label: 'Feed',      icon: Rss           },
+    ],
+  },
+  {
+    label: 'MARKS & INSIGHTS',
+    items: [
+      { href: '/admin/tests',     label: 'Tests & marks', icon: ClipboardList },
+      { href: '/admin/analytics', label: 'LMS statistics', icon: BarChart3 },
     ],
   },
   {
@@ -79,7 +86,7 @@ const NAV_SECTIONS: NavSection[] = [
     ],
   },
   {
-    label: 'CLASSROOM',
+    label: 'TEACHING',
     items: [
       { href: '/admin/today',              label: 'Today',    icon: CalendarCheck },
       { href: '/admin/classes',            label: 'Classes',  icon: CalendarDays  },
@@ -90,16 +97,17 @@ const NAV_SECTIONS: NavSection[] = [
     ],
   },
   {
-    label: 'TESTS & GAMES',
+    label: 'MARKS & PRACTICE',
     items: [
-      { href: '/admin/tests',       label: 'Tests',       icon: ClipboardList },
+      { href: '/admin/tests',       label: 'Tests & marks',icon: ClipboardList },
+      { href: '/admin/analytics',   label: 'LMS statistics',icon: BarChart3 },
       { href: '/admin/vocab',       label: 'Vocabulary',  icon: BookOpen      },
       { href: '/admin/words',       label: 'Word Bank',   icon: Database      },
       { href: '/admin/leaderboard', label: 'Leaderboard', icon: Trophy        },
     ],
   },
   {
-    label: 'PEOPLE',
+    label: 'STUDENTS & COMMS',
     items: [
       { href: '/admin/users',         label: 'Users',          icon: Users     },
       { href: '/admin/registrations', label: 'Registrations',  icon: UserCheck },
@@ -109,7 +117,6 @@ const NAV_SECTIONS: NavSection[] = [
   {
     label: 'SYSTEM',
     items: [
-      { href: '/admin/analytics',       label: 'Analytics',       icon: BarChart3 },
       { href: '/admin/settings/google', label: 'Google Calendar', icon: Settings  },
     ],
   },
@@ -238,11 +245,14 @@ export default function AdminSidebar({ adminName, adminEmail, role }: AdminSideb
                           position:        'relative',
                           display:         'flex',
                           alignItems:      'center',
+                          minHeight:       44,
                           gap:             10,
                           padding:         '9px 12px',
                           cursor:          'pointer',
                           marginBottom:    1,
-                          borderLeft:      active ? `3px solid ${gold}` : '3px solid transparent',
+                          border:          '1px solid transparent',
+                          borderColor:     active ? 'rgba(212,176,148,0.28)' : 'transparent',
+                          borderRadius:    9,
                           backgroundColor: active ? goldBg : 'transparent',
                           transition:      'border-color 0.15s, background-color 0.15s',
                         }}
@@ -458,11 +468,14 @@ export default function AdminSidebar({ adminName, adminEmail, role }: AdminSideb
                         position:        'relative',
                         display:         'flex',
                         alignItems:      'center',
+                        minHeight:       44,
                         gap:             10,
                         padding:         '9px 12px',
                         cursor:          'pointer',
                         marginBottom:    1,
-                        borderLeft:      active ? '3px solid #D62B38' : '3px solid transparent',
+                        border:          '1px solid transparent',
+                        borderColor:     active ? 'rgba(214,43,56,0.18)' : 'transparent',
+                        borderRadius:    9,
                         backgroundColor: active ? 'rgba(214,43,56,0.04)' : 'transparent',
                         transition:      'border-color 0.15s, background-color 0.15s',
                       }}

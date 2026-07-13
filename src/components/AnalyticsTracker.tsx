@@ -16,6 +16,7 @@ import type { AnalyticsModule } from '@/lib/analytics/tracker';
 function moduleFromPath(path: string): AnalyticsModule {
   if (path.startsWith('/vocab'))      return 'vocab';
   if (path.startsWith('/admin'))      return 'admin';
+  if (path.startsWith('/dashboard'))  return 'lms';
   if (path.startsWith('/workbook'))   return 'workbook';
   if (path.startsWith('/math') || path.startsWith('/mental-math')) return 'math';
   if (path.startsWith('/accounting') || path.includes('accounting')) return 'accounting';
@@ -81,8 +82,6 @@ export default function AnalyticsTracker(): null {
           const durationMs = collectVisibleMs();
           trackPageExit(prevPathRef.current, moduleFromPath(prevPathRef.current), durationMs);
           flush(true);
-          // Resume tracking for when they come back (path unchanged)
-          resumeTimer();
         }
       } else {
         resumeTimer();

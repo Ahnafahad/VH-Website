@@ -4,11 +4,12 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FileText, Link as LinkIcon, Trash2, Upload, ExternalLink, Plus } from 'lucide-react';
 import { uploadToR2 } from '@/lib/lms/upload-client';
+import { trackFeature } from '@/lib/analytics/tracker';
 import {
-  SubjectBadge, Toast, ConfirmDialog, Modal, TabBar,
-  FieldLabel, FieldInput, FieldSelect, PrimaryBtn, GhostBtn, DangerBtn,
+  SubjectBadge, Toast, ConfirmDialog, TabBar,
+  FieldLabel, FieldInput, FieldSelect, PrimaryBtn, GhostBtn,
   IconBtn, EmptyState, PageHeader,
-  fmtDhaka, SPIN_CSS, RED, SLATE, BORDER, MUTED, BG, rowV,
+  fmtDhaka, RED, SLATE, BORDER, MUTED, rowV,
 } from './lms-shared';
 import type { ClassSession } from './ClassesClient';
 
@@ -61,9 +62,10 @@ function UploadPdfTab({
   const [progress, setProgress] = useState(0);
   const [stage,    setStage]    = useState<'idle' | 'uploading' | 'saving' | 'done'>('idle');
   const [error,    setError]    = useState('');
+  const selectedSession = sessions.find((session) => String(session.id) === classId) ?? null;
 
   const handleUpload = async () => {
-    if (!file || !title.trim()) { setError('Title and PDF file are required'); return; }
+    if (!file) { setError('Choose a PDF file to upload'); return; }
     setError('');
     try {
       setStage('uploading');
@@ -77,7 +79,7 @@ function UploadPdfTab({
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          title: title.trim(),
+          title: title.trim() || file.name.replace(/\.pdf$/i, '').replace(/[-_]+/g, ' '),
           type: 'pdf',
           blobUrl: key,
           fileName: file.name,
@@ -88,9 +90,16 @@ function UploadPdfTab({
           classSessionId: classId ? Number(classId) : null,
         }),
       });
-      if (!res.ok) throw new Error('Metadata save failed');
+      if (!res.ok) {
+        const body = await res.json().catch(() => null) as { error?: string } | null;
+        throw new Error(body?.error ?? 'The material details could not be saved');
+      }
       const mat = await res.json() as Material;
       onUploaded(mat);
+      trackFeature('material_uploaded', 'lms', {
+        classSessionId: selectedSession?.id ?? null,
+        source: 'materials',
+      });
       setStage('done');
       // Reset
       setTimeout(() => {
@@ -107,10 +116,40 @@ function UploadPdfTab({
     <div style={{ maxWidth: 520 }}>
       <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
         <div>
-          <FieldLabel>Title *</FieldLabel>
-          <FieldInput value={title} onChange={e => setTitle(e.target.value)} placeholder="e.g. Class Notes – English Week 3" />
+          <FieldLabel>Class to share with</FieldLabel>
+          <FieldSelect value={classId} onChange={e => setClassId(e.target.value)}>
+            <option value="">Standalone material</option>
+            {sessions.map(s => (
+              <option key={s.id} value={s.id}>{s.title} ({fmtDhaka(s.scheduledAt, { dateStyle: 'short' })})</option>
+            ))}
+          </FieldSelect>
+          <p style={{ margin: '5px 0 0', fontSize: 11, lineHeight: 1.5, color: MUTED }}>
+            {selectedSession
+              ? `Course, batch, and student access will match ${selectedSession.title}.`
+              : 'Choose a class to fill course access automatically.'}
+          </p>
         </div>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
+        <div>
+          <FieldLabel>PDF File *</FieldLabel>
+          <input
+            type="file"
+            accept="application/pdf"
+            onChange={e => {
+              const nextFile = e.target.files?.[0] ?? null;
+              setFile(nextFile);
+              if (nextFile && !title.trim()) {
+                setTitle(nextFile.name.replace(/\.pdf$/i, '').replace(/[-_]+/g, ' '));
+              }
+            }}
+            style={{ width: '100%', minHeight: 44, padding: '10px 12px', fontSize: 13, color: SLATE, border: `1px solid ${BORDER}`, borderRadius: 10, background: '#FFFFFF' }}
+          />
+          {file && <p style={{ margin: '4px 0 0', fontSize: 11, color: MUTED }}>{file.name} — {fmtSize(file.size)}</p>}
+        </div>
+        <div>
+          <FieldLabel>Lecture title</FieldLabel>
+          <FieldInput value={title} onChange={e => setTitle(e.target.value)} placeholder="Filled from the PDF file name" />
+        </div>
+        {!selectedSession && <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: 12 }}>
           <div>
             <FieldLabel>Subject *</FieldLabel>
             <FieldSelect value={subject} onChange={e => setSubject(e.target.value)}>
@@ -125,35 +164,17 @@ function UploadPdfTab({
               <option value="fbs_detailed">FBS Detailed</option>
             </FieldSelect>
           </div>
-        </div>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
+        </div>}
+        {!selectedSession && <div>
           <div>
             <FieldLabel>Batch (blank = all)</FieldLabel>
             <FieldInput value={batch} onChange={e => setBatch(e.target.value)} placeholder="e.g. 2025" />
           </div>
-          <div>
-            <FieldLabel>Link to Class (optional)</FieldLabel>
-            <FieldSelect value={classId} onChange={e => setClassId(e.target.value)}>
-              <option value="">— none —</option>
-              {sessions.map(s => (
-                <option key={s.id} value={s.id}>{s.title} ({fmtDhaka(s.scheduledAt, { dateStyle: 'short' })})</option>
-              ))}
-            </FieldSelect>
-          </div>
-        </div>
-        <div>
-          <FieldLabel>PDF File *</FieldLabel>
-          <input
-            type="file" accept="application/pdf"
-            onChange={e => setFile(e.target.files?.[0] ?? null)}
-            style={{ fontSize: 13, color: SLATE }}
-          />
-          {file && <p style={{ margin: '4px 0 0', fontSize: 11, color: MUTED }}>{file.name} — {fmtSize(file.size)}</p>}
-        </div>
+        </div>}
         {stage === 'uploading' && (
           <div>
             <div style={{ background: '#F3F4F6', borderRadius: 4, height: 4 }}>
-              <div style={{ height: 4, borderRadius: 4, background: RED, width: `${progress}%`, transition: 'width 0.3s' }} />
+              <div style={{ height: 4, borderRadius: 4, background: RED, width: '100%', transform: `scaleX(${progress / 100})`, transformOrigin: 'left', transition: 'transform 0.3s' }} />
             </div>
             <p style={{ fontSize: 11, color: MUTED, margin: '4px 0 0' }}>Uploading… {progress}%</p>
           </div>
@@ -163,7 +184,7 @@ function UploadPdfTab({
         <div style={{ display: 'flex', gap: 8 }}>
           <PrimaryBtn
             onClick={handleUpload}
-            disabled={!file || !title.trim() || stage !== 'idle'}
+            disabled={!file || stage !== 'idle'}
             loading={stage === 'uploading' || stage === 'saving'}
           >
             <Upload size={14} aria-hidden />

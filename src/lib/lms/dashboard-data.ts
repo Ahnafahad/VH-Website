@@ -340,7 +340,12 @@ export async function getDashboardData(
       db
         .select()
         .from(materials)
-        .where(eq(materials.classSessionId, lastClass.id)),
+        .where(
+          and(
+            eq(materials.classSessionId, lastClass.id),
+            ...lmsScopeConditions(user, materials),
+          ),
+        ),
       db
         .select({ status: recordings.status })
         .from(recordings)
@@ -627,7 +632,12 @@ export async function getDashboardData(
             type: materials.type,
           })
           .from(materials)
-          .where(eq(materials.classSessionId, newestId))
+          .where(
+            and(
+              eq(materials.classSessionId, newestId),
+              ...lmsScopeConditions(user, materials),
+            ),
+          )
       : Promise.resolve([] as Array<{ id: number; title: string; type: string }>),
 
     // Vocab user progress

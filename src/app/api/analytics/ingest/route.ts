@@ -13,7 +13,7 @@ const EventSchema = z.object({
   anonId:     z.string(),
   userId:     z.number().int().nullable().optional(),
   type:       z.enum(['pageview', 'page_exit', 'feature', 'click', 'custom']),
-  module:     z.enum(['site', 'vocab', 'math', 'accounting', 'workbook', 'auth', 'admin']).optional(),
+  module:     z.enum(['site', 'vocab', 'math', 'accounting', 'workbook', 'auth', 'admin', 'lms']).optional(),
   path:       z.string().optional(),
   name:       z.string().optional(),
   props:      z.record(z.string(), z.unknown()).optional(),

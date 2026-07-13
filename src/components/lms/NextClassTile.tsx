@@ -6,6 +6,7 @@ import { Video, Clock, ExternalLink, CalendarClock, Loader2 } from 'lucide-react
 import type { DashboardNextClass } from '@/lib/lms/dashboard-data';
 import { formatDhaka } from '@/lib/lms/time';
 import { JOIN_WINDOW_EARLY_MINUTES, JOIN_WINDOW_LATE_MINUTES } from '@/lib/lms/constants';
+import { trackFeature } from '@/lib/analytics/tracker';
 
 interface Props {
   nextClass: DashboardNextClass | null;
@@ -128,13 +129,16 @@ export default function NextClassTile({ nextClass, serverJoinOpen }: Props) {
         } else {
           setJoinError((data as { error?: string }).error ?? 'Could not join. Please try again.');
         }
+        trackFeature('class_join_failed', 'lms', { classSessionId: nextClass.id, code: code ?? 'UNKNOWN' });
         return;
       }
 
       const { meetLink } = (await res.json()) as { meetLink: string };
+      trackFeature('class_joined', 'lms', { classSessionId: nextClass.id });
       window.open(meetLink, '_blank', 'noopener,noreferrer');
     } catch {
       setJoinError('Network error. Please try again.');
+      trackFeature('class_join_failed', 'lms', { classSessionId: nextClass.id, code: 'NETWORK' });
     } finally {
       setJoining(false);
     }

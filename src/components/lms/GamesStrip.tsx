@@ -42,7 +42,7 @@ const BLOCKS: GameBlock[] = [
         : 'Play now →',
   },
   {
-    name: 'Accounting',
+    name: 'FBS Accounting',
     href: '/games/fbs-accounting',
     icon: ClipboardList,
     stat: (g) =>
@@ -60,6 +60,7 @@ const BLOCKS: GameBlock[] = [
 
 export default function GamesStrip({ games }: Props) {
   const prefersReduced = useReducedMotion();
+  const visibleBlocks = BLOCKS.filter(block => block.href !== '/games/fbs-accounting' || games.accounting !== null);
 
   return (
     <div>
@@ -69,16 +70,16 @@ export default function GamesStrip({ games }: Props) {
           className="font-heading italic text-sm flex-shrink-0"
           style={{ color: '#D4B094' }}
         >
-          practice arena
+          study tools & support
         </span>
         <div className="flex-1 h-px" style={{ backgroundColor: 'rgba(212,176,148,0.16)' }} />
       </div>
 
       <div
-        className="grid grid-cols-2 lg:grid-cols-4 rounded-lg overflow-hidden"
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 rounded-lg overflow-hidden"
         style={{ border: '1px solid rgba(212,176,148,0.16)' }}
       >
-        {BLOCKS.map((block, i) => {
+        {visibleBlocks.map((block, i) => {
           const Icon = block.icon;
           const statText = block.stat(games);
           const secondaryText = block.secondary?.(games);
@@ -88,9 +89,9 @@ export default function GamesStrip({ games }: Props) {
               key={block.href}
               whileTap={prefersReduced ? {} : { scale: 0.99 }}
               transition={{ type: 'spring' as const, stiffness: 400, damping: 28 }}
-              className={i < 3 ? 'lg:border-r' : ''}
+              className={i < visibleBlocks.length - 1 ? 'lg:border-r' : ''}
               style={{
-                borderRight: i < 3 ? '1px solid rgba(212,176,148,0.16)' : undefined,
+                borderRight: i < visibleBlocks.length - 1 ? '1px solid rgba(212,176,148,0.16)' : undefined,
                 borderTop: i >= 2 ? '1px solid rgba(212,176,148,0.16)' : undefined,
               }}
             >

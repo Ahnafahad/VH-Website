@@ -1,20 +1,21 @@
 'use client';
 
-import React, { useState, useCallback, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   Plus, Edit2, Trash2, Calendar, Zap, RefreshCw, ChevronRight, ExternalLink,
-  CheckCircle, FileText, Upload, X as XIcon, Paperclip, BookMarked,
+  CheckCircle, FileText, Upload, X as XIcon, BookMarked, ChevronDown,
 } from 'lucide-react';
 import {
   SubjectBadge, StatusBadge, Toast, ConfirmDialog, Modal, TabBar, Toggle,
   FieldLabel, FieldInput, FieldTextarea, FieldSelect, PrimaryBtn, GhostBtn,
-  DangerBtn, IconBtn, EmptyState, PageHeader,
+  IconBtn, EmptyState, PageHeader,
   fmtDhaka, dhakaLocalToISO, epochToDhakaLocal,
   SPIN_CSS, RED, SLATE, BORDER, MUTED, BG, rowV,
 } from './lms-shared';
 import { uploadToR2 } from '@/lib/lms/upload-client';
+import { trackFeature } from '@/lib/analytics/tracker';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -91,17 +92,18 @@ function SessionModal({
   } : defaultSessionForm);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState('');
+  const [showMore, setShowMore] = useState(Boolean(editing));
 
   const f = (k: keyof SessionForm, v: string) => setForm(p => ({ ...p, [k]: v }));
 
   const handleSave = async () => {
-    if (!form.title.trim() || !form.scheduledAt || !form.durationMinutes) {
-      setError('Title, scheduled time and duration are required'); return;
+    if (!form.scheduledAt || !form.durationMinutes) {
+      setError('Choose the class time and duration'); return;
     }
     setSaving(true); setError('');
     try {
       const payload = {
-        title: form.title.trim(),
+        title: form.title.trim() || `${form.subject.charAt(0).toUpperCase() + form.subject.slice(1)} Class`,
         description: form.description.trim() || null,
         subject: form.subject,
         product: form.product,
@@ -118,6 +120,11 @@ function SessionModal({
       });
       if (!res.ok) { const e = await res.json() as { error?: string }; throw new Error(e.error ?? 'Failed'); }
       const saved = await res.json() as ClassSession;
+      trackFeature(editing ? 'class_updated' : 'class_created', 'lms', {
+        classSessionId: saved.id,
+        subject: saved.subject,
+        product: saved.product,
+      });
       onSaved(saved); onClose();
     } catch (e) {
       setError(e instanceof Error ? e.message : 'Failed');
@@ -129,11 +136,11 @@ function SessionModal({
   return (
     <Modal open={open} onClose={onClose} title={editing ? 'Edit Session' : 'New Session'} width={560}>
       <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
-        <div>
-          <FieldLabel>Title *</FieldLabel>
-          <FieldInput value={form.title} onChange={e => f('title', e.target.value)} placeholder="Session title" />
-        </div>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
+        {showMore && <div>
+          <FieldLabel>Class title</FieldLabel>
+          <FieldInput value={form.title} onChange={e => f('title', e.target.value)} placeholder="Optional — e.g. English Class" />
+        </div>}
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: 12 }}>
           <div>
             <FieldLabel>Subject *</FieldLabel>
             <FieldSelect value={form.subject} onChange={e => f('subject', e.target.value)}>
@@ -149,19 +156,19 @@ function SessionModal({
             </FieldSelect>
           </div>
         </div>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: 12 }}>
           <div>
             <FieldLabel>Batch (blank = all)</FieldLabel>
             <FieldInput value={form.batch} onChange={e => f('batch', e.target.value)} placeholder="e.g. 2025" />
           </div>
-          <div>
+          {showMore && <div>
             <FieldLabel>Status</FieldLabel>
             <FieldSelect value={form.status} onChange={e => f('status', e.target.value)}>
               {STATUSES.map(s => <option key={s} value={s}>{s.charAt(0).toUpperCase() + s.slice(1)}</option>)}
             </FieldSelect>
-          </div>
+          </div>}
         </div>
-        <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: 12 }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: 12 }}>
           <div>
             <FieldLabel>Date & Time (Dhaka) *</FieldLabel>
             <FieldInput type="datetime-local" value={form.scheduledAt} onChange={e => f('scheduledAt', e.target.value)} />
@@ -171,14 +178,25 @@ function SessionModal({
             <FieldInput type="number" min="15" value={form.durationMinutes} onChange={e => f('durationMinutes', e.target.value)} />
           </div>
         </div>
-        <div>
+        {showMore && <div>
           <FieldLabel>Description</FieldLabel>
           <FieldTextarea value={form.description} onChange={e => f('description', e.target.value)} placeholder="Optional description" rows={3} />
-        </div>
-        <div>
+        </div>}
+        {showMore && <div>
           <FieldLabel>Meet Link (optional)</FieldLabel>
           <FieldInput value={form.meetLink} onChange={e => f('meetLink', e.target.value)} placeholder="https://meet.google.com/..." />
-        </div>
+        </div>}
+        {!editing && (
+          <button
+            type="button"
+            onClick={() => setShowMore((value) => !value)}
+            aria-expanded={showMore}
+            style={{ minHeight: 44, alignSelf: 'flex-start', display: 'inline-flex', alignItems: 'center', gap: 6, padding: '8px 0', border: 0, background: 'transparent', color: '#760F13', fontSize: 13, fontWeight: 600, cursor: 'pointer' }}
+          >
+            <ChevronDown size={16} aria-hidden style={{ transform: showMore ? 'rotate(180deg)' : 'none', transition: 'transform 160ms ease' }} />
+            {showMore ? 'Hide optional details' : 'Add title, description, status, or Meet link'}
+          </button>
+        )}
         {error && <p style={{ fontSize: 12, color: RED, margin: 0 }}>{error}</p>}
         <div style={{ display: 'flex', gap: 8, justifyContent: 'flex-end' }}>
           <GhostBtn onClick={onClose} small>Cancel</GhostBtn>
@@ -735,8 +753,10 @@ function CompletedClassModal({
                           <div style={{
                             height: '100%', borderRadius: 2,
                             background: RED,
-                            width: `${pf.progress}%`,
-                            transition: 'width 0.1s',
+                            width: '100%',
+                            transform: `scaleX(${pf.progress / 100})`,
+                            transformOrigin: 'left',
+                            transition: 'transform 0.1s',
                           }} />
                         </div>
                       )}
@@ -797,9 +817,7 @@ function CompletedClassModal({
 
 // ─── Sessions tab ─────────────────────────────────────────────────────────────
 
-function SessionsTab({ sessions, onRefresh }: {
-  sessions: ClassSession[]; onRefresh: () => void;
-}) {
+function SessionsTab({ sessions }: { sessions: ClassSession[] }) {
   const [modalOpen,         setModalOpen]         = useState(false);
   const [completedOpen,     setCompletedOpen]     = useState(false);
   const [editing,           setEditing]           = useState<ClassSession | null>(null);
@@ -1127,7 +1145,7 @@ export default function ClassesClient({ initialSessions, initialSchedules }: Pro
       />
       <AnimatePresence mode="wait">
         {tab === 'sessions'
-          ? <SessionsTab key="sessions" sessions={initialSessions} onRefresh={() => {}} />
+          ? <SessionsTab key="sessions" sessions={initialSessions} />
           : <SchedulesTab key="schedules" schedules={initialSchedules} />
         }
       </AnimatePresence>
