@@ -10,6 +10,7 @@ import {
   FieldLabel, FieldInput, FieldSelect, PrimaryBtn, GhostBtn,
   IconBtn, EmptyState, PageHeader,
   fmtDhaka, RED, SLATE, BORDER, MUTED, rowV,
+  titleCase, extractPdfHeading,
 } from './lms-shared';
 import type { ClassSession } from './ClassesClient';
 
@@ -100,6 +101,27 @@ function UploadPdfTab({
         classSessionId: selectedSession?.id ?? null,
         source: 'materials',
       });
+
+      // Auto-append the PDF cover heading to the linked class's title
+      // (e.g. "English Class 2" → "English Class 2 – Foundation Grammar Skills")
+      if (selectedSession) {
+        try {
+          const heading = await extractPdfHeading(file);
+          if (heading) {
+            const titled = titleCase(heading);
+            if (!selectedSession.title.toLowerCase().includes(titled.toLowerCase())) {
+              await fetch(`/api/lms/admin/classes/${selectedSession.id}`, {
+                method: 'PATCH',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ title: `${selectedSession.title} – ${titled}` }),
+              });
+            }
+          }
+        } catch {
+          // Non-fatal — heading extraction/title update is a nice-to-have
+        }
+      }
+
       setStage('done');
       // Reset
       setTimeout(() => {

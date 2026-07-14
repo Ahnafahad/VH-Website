@@ -17,6 +17,70 @@ export const BORDER = '#E5E7EB';
 export const MUTED  = '#9CA3AF';
 export const BG     = '#FAFAFA';
 
+// ─── PDF heading extraction ───────────────────────────────────────────────────
+
+export function titleCase(s: string): string {
+  return s
+    .toLowerCase()
+    .split(/\s+/)
+    .map(w => w.charAt(0).toUpperCase() + w.slice(1))
+    .join(' ');
+}
+
+async function processPdf(arrayBuffer: ArrayBuffer, pdfjsLib: any, resolve: (value: string) => void, reject: (reason?: any) => void) {
+  try {
+    const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
+    const page = await pdf.getPage(1);
+    const textContent = await page.getTextContent();
+    const text = textContent.items
+      .map((item: any) => item.str)
+      .join(' ')
+      .trim();
+
+    // Extract the largest/most prominent text (usually the title)
+    const lines: string[] = text.split(/[\n\r]+/).map((l: string) => l.trim()).filter((l: string) => l.length > 0);
+    // Prefer all-caps lines (usually titles), then pick the longest
+    const heading = lines.find((l: string) => l.toUpperCase() === l && l.length > 5) || lines[0] || '';
+    resolve(heading.trim());
+  } catch (err) {
+    reject(new Error(`Failed to extract PDF heading: ${err instanceof Error ? err.message : 'Unknown error'}`));
+  }
+}
+
+// Extract the cover-page heading from a PDF file using PDF.js from CDN
+export async function extractPdfHeading(file: File): Promise<string> {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = async (e) => {
+      try {
+        const arrayBuffer = e.target?.result as ArrayBuffer;
+        if (!arrayBuffer) throw new Error('Failed to read file');
+
+        // Load PDF.js from CDN
+        if (typeof window !== 'undefined' && !(window as any).pdfjsWorkerScript) {
+          const script = document.createElement('script');
+          script.src = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.0.269/pdf.min.js';
+          script.onload = () => {
+            (window as any).pdfjsWorkerScript = true;
+            const pdfjsLib = (window as any).pdfjsLib;
+            if (pdfjsLib) {
+              pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.0.269/pdf.worker.min.js';
+              processPdf(arrayBuffer, pdfjsLib, resolve, reject);
+            }
+          };
+          document.head.appendChild(script);
+        } else if ((window as any).pdfjsLib) {
+          processPdf(arrayBuffer, (window as any).pdfjsLib, resolve, reject);
+        }
+      } catch (err) {
+        reject(new Error(`Failed to extract PDF heading: ${err instanceof Error ? err.message : 'Unknown error'}`));
+      }
+    };
+    reader.onerror = () => reject(new Error('Failed to read file'));
+    reader.readAsArrayBuffer(file);
+  });
+}
+
 // ─── Motion variants ─────────────────────────────────────────────────────────
 
 export const backdropV: Variants = {
