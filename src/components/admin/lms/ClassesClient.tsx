@@ -1,11 +1,11 @@
 'use client';
 
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   Plus, Edit2, Trash2, Calendar, Zap, RefreshCw, ChevronRight, ExternalLink,
-  CheckCircle, FileText, Upload, X as XIcon, BookMarked, ChevronDown,
+  CheckCircle, FileText, Upload, X as XIcon, BookMarked, ChevronDown, AlertCircle,
 } from 'lucide-react';
 import {
   SubjectBadge, StatusBadge, Toast, ConfirmDialog, Modal, TabBar, Toggle,
@@ -60,6 +60,79 @@ const DAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 
 const SUBJECTS = ['english', 'math', 'analytical'];
 const STATUSES = ['draft', 'scheduled', 'live', 'completed', 'cancelled'];
 
+// Predict next class number based on existing sessions
+function predictNextClassName(sessions: ClassSession[], subject: string): string | null {
+  const subjectSessions = sessions.filter(s => s.subject === subject);
+  if (subjectSessions.length === 0) return null;
+
+  const classRegex = new RegExp(`${subject}\\s+class\\s+(\\d+)`, 'i');
+  const numbers = subjectSessions
+    .map(s => {
+      const match = s.title.match(classRegex);
+      return match ? parseInt(match[1], 10) : null;
+    })
+    .filter((n): n is number => n !== null)
+    .sort((a, b) => b - a);
+
+  if (numbers.length === 0) return null;
+  const nextNum = numbers[0] + 1;
+  return `${subject.charAt(0).toUpperCase() + subject.slice(1)} Class ${nextNum}`;
+}
+
+// Extract heading from PDF file using PDF.js from CDN
+async function extractPdfHeading(file: File): Promise<string> {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = async (e) => {
+      try {
+        const arrayBuffer = e.target?.result as ArrayBuffer;
+        if (!arrayBuffer) throw new Error('Failed to read file');
+
+        // Load PDF.js from CDN
+        if (typeof window !== 'undefined' && !(window as any).pdfjsWorkerScript) {
+          const script = document.createElement('script');
+          script.src = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.0.269/pdf.min.js';
+          script.onload = () => {
+            (window as any).pdfjsWorkerScript = true;
+            const pdfjsLib = (window as any).pdfjsLib;
+            if (pdfjsLib) {
+              pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.0.269/pdf.worker.min.js';
+              processPdf(arrayBuffer, pdfjsLib, resolve, reject);
+            }
+          };
+          document.head.appendChild(script);
+        } else if ((window as any).pdfjsLib) {
+          processPdf(arrayBuffer, (window as any).pdfjsLib, resolve, reject);
+        }
+      } catch (err) {
+        reject(new Error(`Failed to extract PDF heading: ${err instanceof Error ? err.message : 'Unknown error'}`));
+      }
+    };
+    reader.onerror = () => reject(new Error('Failed to read file'));
+    reader.readAsArrayBuffer(file);
+  });
+}
+
+async function processPdf(arrayBuffer: ArrayBuffer, pdfjsLib: any, resolve: (value: string) => void, reject: (reason?: any) => void) {
+  try {
+    const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
+    const page = await pdf.getPage(1);
+    const textContent = await page.getTextContent();
+    const text = textContent.items
+      .map((item: any) => item.str)
+      .join(' ')
+      .trim();
+
+    // Extract the largest/most prominent text (usually the title)
+    const lines: string[] = text.split(/[\n\r]+/).map((l: string) => l.trim()).filter((l: string) => l.length > 0);
+    // Prefer all-caps lines (usually titles), then pick the longest
+    const heading = lines.find((l: string) => l.toUpperCase() === l && l.length > 5) || lines[0] || '';
+    resolve(heading.trim());
+  } catch (err) {
+    reject(new Error(`Failed to extract PDF heading: ${err instanceof Error ? err.message : 'Unknown error'}`));
+  }
+}
+
 // ─── Session Form ─────────────────────────────────────────────────────────────
 
 interface SessionForm {
@@ -74,10 +147,11 @@ const defaultSessionForm: SessionForm = {
 };
 
 function SessionModal({
-  open, editing, onClose, onSaved,
+  open, editing, onClose, onSaved, allSessions = [],
 }: {
   open: boolean; editing: ClassSession | null;
   onClose: () => void; onSaved: (s: ClassSession) => void;
+  allSessions?: ClassSession[];
 }) {
   const [form, setForm] = useState<SessionForm>(() => editing ? {
     title: editing.title,
@@ -93,8 +167,37 @@ function SessionModal({
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState('');
   const [showMore, setShowMore] = useState(Boolean(editing));
+  const [extracting, setExtracting] = useState(false);
+  const pdfInputRef = useRef<HTMLInputElement>(null);
+
+  const predictedName = !editing ? predictNextClassName(allSessions, form.subject) : null;
 
   const f = (k: keyof SessionForm, v: string) => setForm(p => ({ ...p, [k]: v }));
+
+  const handlePdfUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    setExtracting(true);
+    setError('');
+    try {
+      const heading = await extractPdfHeading(file);
+      if (heading) {
+        f('title', heading);
+      } else {
+        setError('Could not extract title from PDF');
+      }
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Failed to process PDF');
+    } finally {
+      setExtracting(false);
+      if (pdfInputRef.current) pdfInputRef.current.value = '';
+    }
+  };
+
+  const applyPredicted = () => {
+    if (predictedName) f('title', predictedName);
+  };
 
   const handleSave = async () => {
     if (!form.scheduledAt || !form.durationMinutes) {
@@ -139,6 +242,42 @@ function SessionModal({
         {showMore && <div>
           <FieldLabel>Class title</FieldLabel>
           <FieldInput value={form.title} onChange={e => f('title', e.target.value)} placeholder="Optional — e.g. English Class" />
+          {!editing && (predictedName || !form.title) && (
+            <div style={{ display: 'flex', gap: 8, marginTop: 8, flexWrap: 'wrap' }}>
+              {predictedName && (
+                <button
+                  type="button"
+                  onClick={applyPredicted}
+                  style={{
+                    padding: '6px 12px', borderRadius: 6, fontSize: 12, cursor: 'pointer',
+                    border: `1px solid ${BORDER}`, background: '#FFFFFF', color: '#374151',
+                    fontWeight: 500,
+                  }}
+                >
+                  ✓ Use "{predictedName}"
+                </button>
+              )}
+              <button
+                type="button"
+                onClick={() => pdfInputRef.current?.click()}
+                disabled={extracting}
+                style={{
+                  padding: '6px 12px', borderRadius: 6, fontSize: 12, cursor: extracting ? 'not-allowed' : 'pointer',
+                  border: `1px solid ${BORDER}`, background: '#FFFFFF', color: '#374151',
+                  fontWeight: 500, opacity: extracting ? 0.6 : 1,
+                }}
+              >
+                {extracting ? '⟳ Reading PDF…' : '📄 From PDF'}
+              </button>
+              <input
+                ref={pdfInputRef}
+                type="file"
+                accept="application/pdf"
+                style={{ display: 'none' }}
+                onChange={handlePdfUpload}
+              />
+            </div>
+          )}
         </div>}
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: 12 }}>
           <div>
@@ -958,6 +1097,7 @@ function SessionsTab({ sessions }: { sessions: ClassSession[] }) {
         editing={editing}
         onClose={() => { setModalOpen(false); setEditing(null); }}
         onSaved={handleSaved}
+        allSessions={localSessions}
       />
       <CompletedClassModal
         open={completedOpen}
