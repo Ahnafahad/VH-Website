@@ -150,9 +150,9 @@ export default function AssignmentDetailClient({ assignment, initialSubmission }
     (resubmitting && submission.status !== 'reviewed');
 
   return (
-    <div className="min-h-screen bg-[#FAF5EF] pb-16">
+    <div className="min-h-screen bg-[#FAF5EF] pb-16 pt-24 sm:pt-28">
       {/* ── Header ─────────────────────────────────────────────────────────── */}
-      <div className="bg-white border-b border-[#E8DDD5] px-4 py-4 flex items-center gap-3 sticky top-0 z-10">
+      <div className="bg-white border-b border-[#E8DDD5] px-4 py-4 flex items-center gap-3 sticky top-24 sm:top-28 z-10">
         <Link
           href="/dashboard"
           className="flex items-center justify-center w-8 h-8 rounded-full hover:bg-[#F5EDE3] transition-colors"

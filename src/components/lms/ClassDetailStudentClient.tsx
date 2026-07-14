@@ -205,10 +205,10 @@ export default function ClassDetailStudentClient({
   };
 
   return (
-    <div className="min-h-screen pb-16" style={{ backgroundColor: '#1A0507' }}>
+    <div className="min-h-screen pb-16 pt-24 sm:pt-28" style={{ backgroundColor: '#1A0507' }}>
       {/* ── Header ─────────────────────────────────────────────────────────── */}
       <div
-        className="sticky top-0 z-10 backdrop-blur-sm"
+        className="sticky top-24 sm:top-28 z-10 backdrop-blur-sm"
         style={{ backgroundColor: 'rgba(26,5,7,0.92)', borderBottom: `1px solid ${HAIRLINE}` }}
       >
         <div className="max-w-xl mx-auto px-4 py-4 flex items-center gap-3">
