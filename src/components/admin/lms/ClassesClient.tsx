@@ -170,6 +170,26 @@ function SessionModal({
   const [extracting, setExtracting] = useState(false);
   const pdfInputRef = useRef<HTMLInputElement>(null);
 
+  // Resync form state whenever the modal opens — it's mounted once and
+  // reused for every session, so `editing` can change without a remount.
+  useEffect(() => {
+    if (!open) return;
+    setForm(editing ? {
+      title: editing.title,
+      description: editing.description ?? '',
+      subject: editing.subject,
+      product: editing.product,
+      batch: editing.batch ?? '',
+      scheduledAt: epochToDhakaLocal(editing.scheduledAt),
+      durationMinutes: String(editing.durationMinutes),
+      meetLink: editing.meetLink ?? '',
+      status: editing.status,
+    } : defaultSessionForm);
+    setShowMore(Boolean(editing));
+    setError('');
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [open, editing]);
+
   const predictedName = !editing ? predictNextClassName(allSessions, form.subject) : null;
 
   const f = (k: keyof SessionForm, v: string) => setForm(p => ({ ...p, [k]: v }));
@@ -378,6 +398,23 @@ function ScheduleModal({
   } : defaultScheduleForm);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState('');
+
+  // Resync form state whenever the modal opens — see SessionModal for why.
+  useEffect(() => {
+    if (!open) return;
+    setForm(editing ? {
+      titleTemplate: editing.titleTemplate,
+      subject: editing.subject,
+      product: editing.product,
+      batch: editing.batch ?? '',
+      dayOfWeek: String(editing.dayOfWeek),
+      timeOfDay: editing.timeOfDay,
+      durationMinutes: String(editing.durationMinutes),
+      active: editing.active,
+    } : defaultScheduleForm);
+    setError('');
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [open, editing]);
 
   const f = (k: keyof ScheduleForm, v: string | boolean) =>
     setForm(p => ({ ...p, [k]: v }));
