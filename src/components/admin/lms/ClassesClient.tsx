@@ -79,6 +79,14 @@ function predictNextClassName(sessions: ClassSession[], subject: string): string
   return `${subject.charAt(0).toUpperCase() + subject.slice(1)} Class ${nextNum}`;
 }
 
+function titleCase(s: string): string {
+  return s
+    .toLowerCase()
+    .split(/\s+/)
+    .map(w => w.charAt(0).toUpperCase() + w.slice(1))
+    .join(' ');
+}
+
 // Extract heading from PDF file using PDF.js from CDN
 async function extractPdfHeading(file: File): Promise<string> {
   return new Promise((resolve, reject) => {
@@ -687,6 +695,30 @@ function CompletedClassModal({
           idx === i ? { ...f, progress: 100, done: true } : f,
         ));
       }
+
+      // Auto-append the PDF cover heading to the class title (e.g.
+      // "English Class 1" → "English Class 1 – Foundation Grammar Skills")
+      try {
+        const heading = await extractPdfHeading(files[0].file);
+        if (heading) {
+          const titled = titleCase(heading);
+          if (!createdSession.title.toLowerCase().includes(titled.toLowerCase())) {
+            const newTitle = `${createdSession.title} – ${titled}`;
+            const patchRes = await fetch(`/api/lms/admin/classes/${createdSession.id}`, {
+              method: 'PATCH',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ title: newTitle }),
+            });
+            if (patchRes.ok) {
+              const updated = await patchRes.json() as ClassSession;
+              setCreatedSession(updated);
+            }
+          }
+        }
+      } catch {
+        // Non-fatal — heading extraction/title update is a nice-to-have
+      }
+
       setUploadDone(true);
     } catch (e) {
       setError(e instanceof Error ? e.message : 'Upload failed');
