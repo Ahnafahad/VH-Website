@@ -1,9 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { validateAuth, ApiException, createErrorResponse } from '@/lib/api-utils';
 import { getUserByEmail } from '@/lib/db-access-control';
-import { type Range, getOverview, getBehavior, getVocab, getMath, getFunnel, getRetention, getLms } from '@/lib/analytics/queries';
+import { type Range, getOverview, getBehavior, getVocab, getMath, getFunnel, getRetention, getLms, getLexicore } from '@/lib/analytics/queries';
 
-const VALID_SECTIONS = ['overview', 'behavior', 'lms', 'vocab', 'math', 'funnel', 'retention'] as const;
+const VALID_SECTIONS = ['overview', 'behavior', 'lms', 'vocab', 'lexicore', 'math', 'funnel', 'retention'] as const;
 type Section = typeof VALID_SECTIONS[number];
 
 const VALID_RANGES: Range[] = ['7d', '30d', '90d', 'all'];
@@ -35,6 +35,7 @@ export async function GET(req: NextRequest) {
       case 'behavior':  data = await getBehavior(range);  break;
       case 'lms':       data = await getLms(range);       break;
       case 'vocab':     data = await getVocab(range);     break;
+      case 'lexicore':  data = await getLexicore(range);  break;
       case 'math':      data = await getMath(range);      break;
       case 'funnel':    data = await getFunnel(range);    break;
       case 'retention': data = await getRetention(range); break;

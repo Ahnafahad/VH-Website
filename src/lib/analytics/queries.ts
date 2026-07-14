@@ -16,6 +16,7 @@ import {
   vocabQuizAnswers,
   vocabFlashcardSessions,
   vocabUserProgress,
+  vocabUserBadges,
   mathQuestionAttempts,
   mathSessions,
   mathUserProgress,
@@ -29,6 +30,7 @@ import {
   recordingWatchProgress,
 } from '@/lib/db';
 import { sql, eq, and, gte, desc, count } from 'drizzle-orm';
+import { dhakaDayStart, dhakaYesterdayStart } from '@/lib/vocab/dhaka-time';
 
 // ─── Range helpers ────────────────────────────────────────────────────────────
 
@@ -518,6 +520,231 @@ export async function getVocab(range: Range) {
       featureUsage: [],
       funnel: { studied: 0, quizzed: 0, passed: 0 },
       questionTypeAccuracy: [], topStudiedWords: [],
+    };
+  }
+}
+
+// ─── LexiCore (user-level engagement, learning, quiz, gamification) ──────────
+
+export async function getLexicore(range: Range) {
+  try {
+    const cutoff = cutoffDate(range);
+    const now = new Date();
+    const dayStart      = dhakaDayStart(now);
+    const yesterdayStart = dhakaYesterdayStart(now);
+    const sevenDaysAgo  = new Date(now.getTime() - 7 * 86_400_000);
+    const fourteenDaysAgo = new Date(now.getTime() - 14 * 86_400_000);
+    const thirtyDaysAgo = new Date(now.getTime() - 30 * 86_400_000);
+
+    const progressRows = await db.select({
+      userId:               vocabUserProgress.userId,
+      phase:                vocabUserProgress.phase,
+      totalPoints:          vocabUserProgress.totalPoints,
+      streakDays:           vocabUserProgress.streakDays,
+      longestStreak:        vocabUserProgress.longestStreak,
+      lastStudyDate:        vocabUserProgress.lastStudyDate,
+      dailyTarget:          vocabUserProgress.dailyTarget,
+      onboardingCompletedAt: vocabUserProgress.onboardingCompletedAt,
+      createdAt:            vocabUserProgress.createdAt,
+    }).from(vocabUserProgress).catch(() => []);
+
+    const userRows = await db.select({ id: users.id, name: users.name }).from(users).catch(() => []);
+    const nameById = new Map(userRows.map(u => [u.id, u.name]));
+
+    const wordRecordRows = await db.select({
+      userId:        vocabUserWordRecords.userId,
+      totalAttempts: vocabUserWordRecords.totalAttempts,
+      masteryLevel:  vocabUserWordRecords.masteryLevel,
+      masteryScore:  vocabUserWordRecords.masteryScore,
+      createdAt:     vocabUserWordRecords.createdAt,
+    }).from(vocabUserWordRecords).catch(() => []);
+
+    const quizRows = await db.select({
+      userId:         vocabQuizSessions.userId,
+      status:         vocabQuizSessions.status,
+      score:          vocabQuizSessions.score,
+      passed:         vocabQuizSessions.passed,
+      totalQuestions: vocabQuizSessions.totalQuestions,
+      correctAnswers: vocabQuizSessions.correctAnswers,
+      startedAt:      vocabQuizSessions.startedAt,
+    }).from(vocabQuizSessions).catch(() => []);
+
+    const flashcardRows = await db.select({
+      userId: vocabFlashcardSessions.userId,
+      status: vocabFlashcardSessions.status,
+    }).from(vocabFlashcardSessions).catch(() => []);
+
+    const badgeRows = await db.select({
+      userId:   vocabUserBadges.userId,
+      badgeId:  vocabUserBadges.badgeId,
+      earnedAt: vocabUserBadges.earnedAt,
+    }).from(vocabUserBadges).catch(() => []);
+
+    // ── Engagement & retention ────────────────────────────────────────────
+    const activeUsers = progressRows.filter(p => p.lastStudyDate);
+    const isOnOrAfter = (d: Date | null, cutoffD: Date) => !!d && d >= cutoffD;
+
+    const dau = activeUsers.filter(p => isOnOrAfter(p.lastStudyDate, dayStart)).length;
+    const wau = new Set(activeUsers.filter(p => isOnOrAfter(p.lastStudyDate, sevenDaysAgo)).map(p => p.userId)).size;
+    const mau = new Set(activeUsers.filter(p => isOnOrAfter(p.lastStudyDate, thirtyDaysAgo)).map(p => p.userId)).size;
+    const totalUsers = progressRows.length;
+    const newUsersInRange = cutoff
+      ? progressRows.filter(p => p.onboardingCompletedAt && p.onboardingCompletedAt >= cutoff).length
+      : progressRows.filter(p => p.onboardingCompletedAt).length;
+
+    const streakedUsers = progressRows.filter(p => p.streakDays > 0);
+    const avgStreakDays = streakedUsers.length
+      ? Math.round((streakedUsers.reduce((s, p) => s + p.streakDays, 0) / streakedUsers.length) * 10) / 10
+      : 0;
+    const usersWithStreak7Plus = progressRows.filter(p => p.streakDays >= 7).length;
+
+    const longestStreakRow = [...progressRows].sort((a, b) => b.longestStreak - a.longestStreak)[0];
+    const longestStreakUser = longestStreakRow
+      ? { name: nameById.get(longestStreakRow.userId) ?? `User #${longestStreakRow.userId}`, days: longestStreakRow.longestStreak }
+      : null;
+
+    // 7-day rolling retention: of users active in the prior 7-day window, what
+    // share came back in the most recent 7-day window.
+    const cohortPrev = new Set(
+      progressRows.filter(p => p.lastStudyDate && p.lastStudyDate >= fourteenDaysAgo && p.lastStudyDate < sevenDaysAgo).map(p => p.userId),
+    );
+    const cohortReturned = progressRows.filter(
+      p => cohortPrev.has(p.userId) && p.lastStudyDate && p.lastStudyDate >= sevenDaysAgo,
+    ).length;
+    const retention7d = cohortPrev.size ? Math.round((cohortReturned / cohortPrev.size) * 1000) / 10 : 0;
+
+    const churned14d = progressRows.filter(p => p.lastStudyDate && p.lastStudyDate < fourteenDaysAgo).length;
+
+    // ── Learning progress ─────────────────────────────────────────────────
+    const wordsByUser = new Map<number, { attempted: number; mastered: number; masterySum: number }>();
+    for (const r of wordRecordRows) {
+      if (!wordsByUser.has(r.userId)) wordsByUser.set(r.userId, { attempted: 0, mastered: 0, masterySum: 0 });
+      const e = wordsByUser.get(r.userId)!;
+      if (r.totalAttempts > 0) e.attempted++;
+      if (r.masteryLevel === 'mastered') e.mastered++;
+      e.masterySum += r.masteryScore;
+    }
+    const wordUsers = Array.from(wordsByUser.values());
+    const avgWordsStudiedPerUser = wordUsers.length
+      ? Math.round((wordUsers.reduce((s, u) => s + u.attempted, 0) / wordUsers.length) * 10) / 10
+      : 0;
+    const avgWordsMasteredPerUser = wordUsers.length
+      ? Math.round((wordUsers.reduce((s, u) => s + u.mastered, 0) / wordUsers.length) * 10) / 10
+      : 0;
+    const totalWordsStudiedAllUsers = wordRecordRows.length;
+    const [wordBankRow] = await db.select({ c: count() }).from(vocabWords).catch(() => [{ c: 0 }]);
+    const avgMasteryScore = wordRecordRows.length
+      ? Math.round((wordRecordRows.reduce((s, r) => s + r.masteryScore, 0) / wordRecordRows.length) * 100) / 100
+      : 0;
+    const wordsLearnedToday = wordRecordRows.filter(r => r.createdAt && r.createdAt >= dayStart).length;
+
+    const topUserByWordsMasteredEntry = Array.from(wordsByUser.entries()).sort((a, b) => b[1].mastered - a[1].mastered)[0];
+    const topUserByWordsMastered = topUserByWordsMasteredEntry
+      ? { name: nameById.get(topUserByWordsMasteredEntry[0]) ?? `User #${topUserByWordsMasteredEntry[0]}`, count: topUserByWordsMasteredEntry[1].mastered }
+      : null;
+
+    const phase1Count = progressRows.filter(p => p.phase === 1).length;
+    const phase2Count = progressRows.filter(p => p.phase === 2).length;
+
+    // ── Quiz & flashcard performance ──────────────────────────────────────
+    const quizRowsInRange = cutoff ? quizRows.filter(q => q.startedAt >= cutoff) : quizRows;
+    const completedQuizzes = quizRowsInRange.filter(q => q.status === 'complete');
+    const quizzesByUser = new Map<number, number>();
+    for (const q of quizRowsInRange) quizzesByUser.set(q.userId, (quizzesByUser.get(q.userId) ?? 0) + 1);
+    const avgQuizzesPerUser = quizzesByUser.size
+      ? Math.round((quizRowsInRange.length / quizzesByUser.size) * 10) / 10
+      : 0;
+    const totalQuizzesTaken = quizRowsInRange.length;
+    const quizzesToday = quizRows.filter(q => q.startedAt >= dayStart).length;
+    const avgQuizScore = completedQuizzes.length
+      ? Math.round((completedQuizzes.reduce((s, q) => s + (q.score ?? 0), 0) / completedQuizzes.length) * 10) / 10
+      : 0;
+    const quizPassRate = completedQuizzes.length
+      ? Math.round((completedQuizzes.filter(q => q.passed).length / completedQuizzes.length) * 1000) / 10
+      : 0;
+
+    const flashcardsByUser = new Map<number, number>();
+    for (const f of flashcardRows) flashcardsByUser.set(f.userId, (flashcardsByUser.get(f.userId) ?? 0) + 1);
+    const avgFlashcardSessionsPerUser = flashcardsByUser.size
+      ? Math.round((flashcardRows.length / flashcardsByUser.size) * 10) / 10
+      : 0;
+    const totalFlashcardSessions = flashcardRows.length;
+    const flashcardCompletionRate = flashcardRows.length
+      ? Math.round((flashcardRows.filter(f => f.status === 'complete').length / flashcardRows.length) * 1000) / 10
+      : 0;
+
+    // ── Leaderboard & gamification ────────────────────────────────────────
+    const topUserByPointsRow = [...progressRows].sort((a, b) => b.totalPoints - a.totalPoints)[0];
+    const topUserByPoints = topUserByPointsRow
+      ? { name: nameById.get(topUserByPointsRow.userId) ?? `User #${topUserByPointsRow.userId}`, points: topUserByPointsRow.totalPoints }
+      : null;
+
+    const topUserByStreakRow = [...progressRows].sort((a, b) => b.streakDays - a.streakDays)[0];
+    const topUserByStreak = topUserByStreakRow
+      ? { name: nameById.get(topUserByStreakRow.userId) ?? `User #${topUserByStreakRow.userId}`, days: topUserByStreakRow.streakDays }
+      : null;
+
+    const avgTotalPoints = progressRows.length
+      ? Math.round(progressRows.reduce((s, p) => s + p.totalPoints, 0) / progressRows.length)
+      : 0;
+
+    const earnedBadges = badgeRows.filter(b => b.earnedAt);
+    const totalBadgesEarned = earnedBadges.length;
+    const badgeCounts = new Map<string, number>();
+    for (const b of earnedBadges) badgeCounts.set(b.badgeId, (badgeCounts.get(b.badgeId) ?? 0) + 1);
+    const mostEarnedBadgeEntry = Array.from(badgeCounts.entries()).sort((a, b) => b[1] - a[1])[0];
+    const mostEarnedBadge = mostEarnedBadgeEntry ? { badgeId: mostEarnedBadgeEntry[0], count: mostEarnedBadgeEntry[1] } : null;
+
+    const top10Leaderboard = [...progressRows]
+      .sort((a, b) => b.totalPoints - a.totalPoints)
+      .slice(0, 10)
+      .map(p => ({
+        name:            nameById.get(p.userId) ?? `User #${p.userId}`,
+        points:          p.totalPoints,
+        streakDays:      p.streakDays,
+        wordsMastered:   wordsByUser.get(p.userId)?.mastered ?? 0,
+      }));
+
+    return {
+      engagement: {
+        dau, wau, mau, totalUsers, newUsersInRange,
+        avgStreakDays, usersWithStreak7Plus, longestStreakUser,
+        retention7d, churned14d,
+      },
+      learning: {
+        avgWordsStudiedPerUser, avgWordsMasteredPerUser, totalWordsStudiedAllUsers,
+        totalWordBank: Number(wordBankRow?.c ?? 0), avgMasteryScore, wordsLearnedToday,
+        topUserByWordsMastered, phase1Count, phase2Count,
+      },
+      quizAndFlashcard: {
+        avgQuizzesPerUser, totalQuizzesTaken, quizzesToday, avgQuizScore, quizPassRate,
+        avgFlashcardSessionsPerUser, totalFlashcardSessions, flashcardCompletionRate,
+      },
+      leaderboard: {
+        topUserByPoints, topUserByStreak, avgTotalPoints,
+        totalBadgesEarned, mostEarnedBadge, top10Leaderboard,
+      },
+    };
+  } catch {
+    return {
+      engagement: {
+        dau: 0, wau: 0, mau: 0, totalUsers: 0, newUsersInRange: 0,
+        avgStreakDays: 0, usersWithStreak7Plus: 0, longestStreakUser: null,
+        retention7d: 0, churned14d: 0,
+      },
+      learning: {
+        avgWordsStudiedPerUser: 0, avgWordsMasteredPerUser: 0, totalWordsStudiedAllUsers: 0,
+        totalWordBank: 0, avgMasteryScore: 0, wordsLearnedToday: 0,
+        topUserByWordsMastered: null, phase1Count: 0, phase2Count: 0,
+      },
+      quizAndFlashcard: {
+        avgQuizzesPerUser: 0, totalQuizzesTaken: 0, quizzesToday: 0, avgQuizScore: 0, quizPassRate: 0,
+        avgFlashcardSessionsPerUser: 0, totalFlashcardSessions: 0, flashcardCompletionRate: 0,
+      },
+      leaderboard: {
+        topUserByPoints: null, topUserByStreak: null, avgTotalPoints: 0,
+        totalBadgesEarned: 0, mostEarnedBadge: null, top10Leaderboard: [],
+      },
     };
   }
 }

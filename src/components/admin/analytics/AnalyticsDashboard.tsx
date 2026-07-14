@@ -1,16 +1,17 @@
 'use client';
 
 import React, { useState, useEffect, useCallback } from 'react';
-import OverviewPanel from './OverviewPanel';
-import BehaviorPanel from './BehaviorPanel';
-import VocabPanel    from './VocabPanel';
-import MathPanel     from './MathPanel';
-import FunnelPanel   from './FunnelPanel';
-import LmsPanel      from './LmsPanel';
+import OverviewPanel  from './OverviewPanel';
+import BehaviorPanel  from './BehaviorPanel';
+import VocabPanel     from './VocabPanel';
+import LexicorePanel  from './LexicorePanel';
+import MathPanel      from './MathPanel';
+import FunnelPanel    from './FunnelPanel';
+import LmsPanel       from './LmsPanel';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
-type Section = 'overview' | 'behavior' | 'lms' | 'vocab' | 'math' | 'funnel';
+type Section = 'overview' | 'behavior' | 'lms' | 'vocab' | 'lexicore' | 'math' | 'funnel';
 type Range   = '7d' | '30d' | '90d' | 'all';
 
 interface Tab {
@@ -22,7 +23,8 @@ const TABS: Tab[] = [
   { id: 'overview',  label: 'Overview'           },
   { id: 'behavior',  label: 'Behavior & Flow'    },
   { id: 'lms',       label: 'LMS'                },
-  { id: 'vocab',     label: 'LexiCore (Vocab)'   },
+  { id: 'lexicore',  label: 'LexiCore'           },
+  { id: 'vocab',     label: 'Vocab (Words)'      },
   { id: 'math',      label: 'Mental Math'        },
   { id: 'funnel',    label: 'Engagement & Funnel'},
 ];
@@ -125,6 +127,7 @@ export default function AnalyticsDashboard() {
       case 'behavior':  return <BehaviorPanel data={d} />;
       case 'lms':       return <LmsPanel      data={d} />;
       case 'vocab':     return <VocabPanel    data={d} />;
+      case 'lexicore':  return <LexicorePanel data={d} />;
       case 'math':      return <MathPanel     data={d} />;
       case 'funnel':    return <FunnelPanel   data={d} />;
     }
