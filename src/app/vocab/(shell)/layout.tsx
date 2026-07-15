@@ -11,6 +11,7 @@ import type { EarnedBadge } from '@/lib/vocab/badges/checker';
 import { unlockAudio } from '@/lib/vocab/sound';
 import { ConnectionStatus } from '@/components/vocab/ConnectionStatus';
 import { useLexiAccessibility } from '@/hooks/useLexiAccessibility';
+import { useAnimationStallGuard } from '@/hooks/useAnimationStallGuard';
 import { NativeAppBridge } from '@/components/vocab/NativeAppBridge';
 import { DailyBrief } from '@/components/vocab/DailyBrief';
 import { LexiTelemetry } from '@/components/vocab/LexiTelemetry';
@@ -30,6 +31,7 @@ function VocabShellInner({ children }: { children: React.ReactNode }) {
   const [dossierMessage, setDossierMessage] = useState<string | null>(null);
   const [dossierExpanded, setDossierExpanded] = useState(false);
   useLexiAccessibility();
+  useAnimationStallGuard();
 
   useEffect(() => {
     const saved = localStorage.getItem('lx-theme') as 'dark' | 'light' | null;
