@@ -20,7 +20,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence, Variants } from 'motion/react';
 import {
   ArrowLeft, Download, ZoomIn, ZoomOut, X, Pencil, Trash2,
-  BookMarked, ChevronDown, FileText,
+  BookMarked, ChevronDown, FileText, PenLine, Undo2, Eraser, Check,
 } from 'lucide-react';
 import type {
   Highlight,
@@ -31,7 +31,8 @@ import type {
   ViewportHighlight,
 } from 'react-pdf-highlighter-extended';
 import { trackFeature } from '@/lib/analytics/tracker';
-import type { SerializedHighlight, SerializedMaterial } from '@/app/dashboard/materials/[id]/page';
+import type { SerializedDrawing, SerializedHighlight, SerializedMaterial } from '@/app/dashboard/materials/[id]/page';
+import DrawingLayer, { type Stroke } from './DrawingLayer';
 
 // ─── Lazy-load pdf highlighter (needs window) ─────────────────────────────────
 
@@ -72,8 +73,21 @@ const COLOR_SWATCH: Record<string, string> = {
 interface Props {
   material: SerializedMaterial;
   initialHighlights: SerializedHighlight[];
+  initialDrawings: SerializedDrawing[];
   isAdmin?: boolean;
 }
+
+// ─── Pen tool config ──────────────────────────────────────────────────────────
+
+const PEN_COLORS: { id: string; hex: string; label: string }[] = [
+  { id: 'ink',   hex: '#1A0507', label: 'Ink' },
+  { id: 'red',   hex: '#760F13', label: 'Red' },
+  { id: 'blue',  hex: '#1D4ED8', label: 'Blue' },
+  { id: 'green', hex: '#15803D', label: 'Green' },
+];
+
+const PEN_SIZES = { thin: 2.5, thick: 6 } as const;
+type PenSize = keyof typeof PEN_SIZES;
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
@@ -388,7 +402,7 @@ function HighlightSidebar({ highlights, onClickHighlight, onClose }: SidebarProp
 
 // ─── Main component ───────────────────────────────────────────────────────────
 
-export default function MaterialViewer({ material, initialHighlights, isAdmin = false }: Props) {
+export default function MaterialViewer({ material, initialHighlights, initialDrawings, isAdmin = false }: Props) {
   const [highlights, setHighlights] = useState<AppHighlight[]>(
     initialHighlights.map(serializedToApp),
   );
@@ -399,7 +413,24 @@ export default function MaterialViewer({ material, initialHighlights, isAdmin = 
   const [showSelectionTip, setShowSelectionTip] = useState(false);
   const [selectionTipContent, setSelectionTipContent] = useState<PdfSelection | null>(null);
 
+  // ─── Drawing state ──────────────────────────────────────────────────────────
+  const [drawMode, setDrawMode] = useState(false);
+  const [penMenuOpen, setPenMenuOpen] = useState(false);
+  const [penColor, setPenColor] = useState(PEN_COLORS[0].hex);
+  const [penSize, setPenSize] = useState<PenSize>('thin');
+  const [drawings, setDrawings] = useState<Record<number, Stroke[]>>(() => {
+    const map: Record<number, Stroke[]> = {};
+    for (const d of initialDrawings) map[d.pageNumber] = d.strokes;
+    return map;
+  });
+  const [activePage, setActivePage] = useState<number | null>(null);
+  const [saveStatus, setSaveStatus] = useState<'idle' | 'saving' | 'saved'>('idle');
+
   const highlighterUtilsRef = useRef<PdfHighlighterUtils | null>(null);
+  const pdfPaneRef = useRef<HTMLDivElement>(null);
+  const penMenuRef = useRef<HTMLDivElement>(null);
+  const saveTimersRef = useRef<Record<number, ReturnType<typeof setTimeout>>>({});
+  const savedIndicatorTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   // Keep the worker inside the application bundle. A public-CDN worker was
   // blocked by the site CSP and by restricted student networks.
@@ -408,6 +439,107 @@ export default function MaterialViewer({ material, initialHighlights, isAdmin = 
   useEffect(() => {
     trackFeature('material_opened', 'lms', { materialId: material.id, type: material.type });
   }, [material.id, material.type]);
+
+  // ─── Drawing persistence ────────────────────────────────────────────────────
+
+  const saveDrawingsForPage = useCallback(
+    async (pageNumber: number, strokes: Stroke[]) => {
+      setSaveStatus('saving');
+      try {
+        const res = await fetch(`/api/lms/materials/${material.id}/drawings/${pageNumber}`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ strokes }),
+        });
+        if (!res.ok) throw new Error('Failed to save drawing');
+        setSaveStatus('saved');
+        if (savedIndicatorTimerRef.current) clearTimeout(savedIndicatorTimerRef.current);
+        savedIndicatorTimerRef.current = setTimeout(() => setSaveStatus('idle'), 1800);
+      } catch (e) {
+        console.error('Network error saving drawing', e);
+        setSaveStatus('idle');
+      }
+    },
+    [material.id],
+  );
+
+  const scheduleSave = useCallback(
+    (pageNumber: number, strokes: Stroke[]) => {
+      const timers = saveTimersRef.current;
+      if (timers[pageNumber]) clearTimeout(timers[pageNumber]);
+      timers[pageNumber] = setTimeout(() => {
+        void saveDrawingsForPage(pageNumber, strokes);
+      }, 700);
+    },
+    [saveDrawingsForPage],
+  );
+
+  useEffect(() => {
+    const timers = saveTimersRef.current;
+    return () => {
+      Object.values(timers).forEach(clearTimeout);
+      if (savedIndicatorTimerRef.current) clearTimeout(savedIndicatorTimerRef.current);
+    };
+  }, []);
+
+  const handleStrokeComplete = useCallback(
+    (pageNumber: number, stroke: Stroke) => {
+      setDrawings((prev) => {
+        const next = { ...prev, [pageNumber]: [...(prev[pageNumber] ?? []), stroke] };
+        scheduleSave(pageNumber, next[pageNumber]);
+        return next;
+      });
+      trackFeature('material_drawing_added', 'lms', { materialId: material.id, pageNumber });
+    },
+    [material.id, scheduleSave],
+  );
+
+  const handleUndo = useCallback(() => {
+    if (!activePage) return;
+    setDrawings((prev) => {
+      const pageStrokes = prev[activePage];
+      if (!pageStrokes || pageStrokes.length === 0) return prev;
+      const next = { ...prev, [activePage]: pageStrokes.slice(0, -1) };
+      scheduleSave(activePage, next[activePage]);
+      return next;
+    });
+  }, [activePage, scheduleSave]);
+
+  const handleClearPage = useCallback(() => {
+    if (!activePage) return;
+    setDrawings((prev) => {
+      if (!prev[activePage] || prev[activePage].length === 0) return prev;
+      const next = { ...prev, [activePage]: [] };
+      scheduleSave(activePage, []);
+      return next;
+    });
+  }, [activePage, scheduleSave]);
+
+  const hasActivePageStrokes = activePage != null && (drawings[activePage]?.length ?? 0) > 0;
+
+  // Pen button cycles: off → on+menu-open → on+menu-closed → off.
+  const handlePenButtonClick = useCallback(() => {
+    if (!drawMode) {
+      setDrawMode(true);
+      setPenMenuOpen(true);
+    } else if (penMenuOpen) {
+      setPenMenuOpen(false);
+    } else {
+      setDrawMode(false);
+    }
+  }, [drawMode, penMenuOpen]);
+
+  // Dismiss the pen popover on outside click (draw mode itself stays on).
+  useEffect(() => {
+    if (!penMenuOpen) return;
+    const handleClick = (e: MouseEvent) => {
+      if (penMenuRef.current && !penMenuRef.current.contains(e.target as Node)) {
+        setPenMenuOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClick);
+    return () => document.removeEventListener('mousedown', handleClick);
+  }, [penMenuOpen]);
 
   // ─── Optimistic add after POST ─────────────────────────────────────────────
 
@@ -591,75 +723,192 @@ export default function MaterialViewer({ material, initialHighlights, isAdmin = 
   return (
     <div className="flex flex-col h-screen bg-[#F2EBE3] overflow-hidden">
       {/* ── Toolbar ─────────────────────────────────────────────────────────── */}
-      <header className="flex items-center gap-3 px-4 py-2.5 bg-white border-b border-[#E8DDD5] shadow-sm z-30 flex-shrink-0">
+      <header className="flex items-center gap-3 px-3 sm:px-5 py-3 bg-white/95 backdrop-blur-sm border-b border-[#E8DDD5] shadow-[0_1px_2px_rgba(26,5,7,0.05)] z-30 flex-shrink-0">
         <a
           href="/dashboard"
-          className="flex min-h-11 items-center gap-1.5 text-xs text-[#A86E58] hover:text-[#5A0B0F] transition-colors flex-shrink-0"
+          className="flex min-h-11 items-center gap-1.5 px-2 -ml-2 rounded-lg text-xs font-medium text-[#A86E58] hover:text-[#5A0B0F] hover:bg-[#FAF5EF] transition-colors flex-shrink-0"
         >
           <ArrowLeft className="w-3.5 h-3.5" />
           <span className="hidden sm:inline">Dashboard</span>
         </a>
 
-        <div className="w-px h-4 bg-[#E8DDD5] flex-shrink-0" />
+        <div className="w-px h-5 bg-[#E8DDD5] flex-shrink-0" />
 
-        <h1 className="text-sm font-medium text-[#1A0507] truncate flex-1 min-w-0">
-          {material.title}
-        </h1>
+        <div className="flex-1 min-w-0 flex items-baseline gap-2.5">
+          <h1 className="font-heading text-[15px] sm:text-base font-medium tracking-[-0.01em] text-[#1A0507] truncate">
+            {material.title}
+          </h1>
+          <AnimatePresence>
+            {saveStatus !== 'idle' && (
+              <motion.span
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className="hidden sm:flex items-center gap-1 text-[11px] text-[#A86E58]/80 flex-shrink-0"
+              >
+                {saveStatus === 'saving' ? (
+                  <>
+                    <span className="w-3 h-3 border-[1.5px] border-[#A86E58]/40 border-t-[#A86E58] rounded-full animate-spin" />
+                    Saving…
+                  </>
+                ) : (
+                  <>
+                    <Check className="w-3 h-3" />
+                    Saved
+                  </>
+                )}
+              </motion.span>
+            )}
+          </AnimatePresence>
+        </div>
 
-        {/* Zoom */}
-        <div className="flex items-center gap-1 flex-shrink-0">
+        {/* Unified control pill */}
+        <div className="flex items-center gap-0.5 flex-shrink-0 bg-[#FAF5EF] border border-[#E8DDD5]/70 rounded-full p-1">
+          {/* Zoom */}
           <button
             onClick={handleZoomOut}
-            className="w-11 h-11 flex items-center justify-center rounded-lg text-[#A86E58] hover:bg-[#FAF5EF] hover:text-[#5A0B0F] transition-colors"
+            className="w-9 h-9 flex items-center justify-center rounded-full text-[#A86E58] hover:bg-white hover:text-[#5A0B0F] transition-colors"
             aria-label="Zoom out"
           >
             <ZoomOut className="w-3.5 h-3.5" />
           </button>
-          <span className="text-[10px] text-[#A86E58] w-10 text-center font-mono">
+          <span className="text-[10px] text-[#A86E58] w-9 text-center font-mono flex-shrink-0">
             {typeof scale === 'number' ? `${Math.round(scale * 100)}%` : 'fit'}
           </span>
           <button
             onClick={handleZoomIn}
-            className="w-11 h-11 flex items-center justify-center rounded-lg text-[#A86E58] hover:bg-[#FAF5EF] hover:text-[#5A0B0F] transition-colors"
+            className="w-9 h-9 flex items-center justify-center rounded-full text-[#A86E58] hover:bg-white hover:text-[#5A0B0F] transition-colors"
             aria-label="Zoom in"
           >
             <ZoomIn className="w-3.5 h-3.5" />
           </button>
-        </div>
 
-        {/* Sidebar toggle (mobile) */}
-        <button
-          onClick={() => setSidebarOpen((v) => !v)}
-          className="lg:hidden flex items-center gap-1.5 text-xs text-[#A86E58] hover:text-[#5A0B0F] transition-colors flex-shrink-0"
-          aria-label="Toggle highlights"
-        >
-          <BookMarked className="w-3.5 h-3.5" />
-          {highlights.length > 0 && (
-            <span className="text-[10px] bg-[#5A0B0F] text-white rounded-full w-4 h-4 flex items-center justify-center">
-              {highlights.length}
-            </span>
-          )}
-        </button>
+          <div className="w-px h-4 bg-[#E8DDD5] mx-0.5" />
 
-        {/* Download — admins only */}
-        {isAdmin && (
-          <a
-            href={material.blobUrl}
-            download={material.fileName ?? material.title}
-            onClick={() => trackFeature('material_downloaded', 'lms', { materialId: material.id, from: 'toolbar' })}
-            className="flex min-h-11 items-center gap-1.5 text-xs text-[#A86E58] hover:text-[#5A0B0F] transition-colors flex-shrink-0"
-            aria-label="Download PDF"
+          {/* Draw toggle + popover */}
+          <div className="relative" ref={penMenuRef}>
+            <button
+              onClick={handlePenButtonClick}
+              className={`w-9 h-9 flex items-center justify-center rounded-full transition-colors ${
+                drawMode
+                  ? 'bg-[#5A0B0F] text-white'
+                  : 'text-[#A86E58] hover:bg-white hover:text-[#5A0B0F]'
+              }`}
+              aria-label="Draw on PDF"
+              aria-pressed={drawMode}
+            >
+              <PenLine className="w-3.5 h-3.5" />
+            </button>
+
+            <AnimatePresence>
+              {penMenuOpen && drawMode && (
+                <motion.div
+                  initial={{ opacity: 0, y: 6, scale: 0.97 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, y: 4, scale: 0.97 }}
+                  transition={{ type: 'spring' as const, stiffness: 340, damping: 28 }}
+                  className="absolute right-0 top-full mt-2 bg-white rounded-xl shadow-xl border border-[#E8DDD5] p-3 w-56 z-50"
+                >
+                  <p className="text-[10px] text-[#A86E58] uppercase tracking-widest mb-2">Pen</p>
+
+                  <div className="flex gap-2 mb-3">
+                    {PEN_COLORS.map((c) => (
+                      <button
+                        key={c.id}
+                        onClick={() => setPenColor(c.hex)}
+                        className="w-9 h-9 rounded-full border-2 flex items-center justify-center transition-colors hover:bg-[#FAF5EF]"
+                        style={{ borderColor: penColor === c.hex ? '#1A0507' : 'transparent' }}
+                        aria-label={c.label}
+                        aria-pressed={penColor === c.hex}
+                      >
+                        <span className="block w-5 h-5 rounded-full" style={{ backgroundColor: c.hex }} aria-hidden />
+                      </button>
+                    ))}
+                  </div>
+
+                  <div className="flex gap-2 mb-3">
+                    {(Object.keys(PEN_SIZES) as PenSize[]).map((size) => (
+                      <button
+                        key={size}
+                        onClick={() => setPenSize(size)}
+                        className={`flex-1 flex items-center justify-center gap-1.5 py-1.5 rounded-lg border text-xs font-medium transition-colors ${
+                          penSize === size
+                            ? 'border-[#5A0B0F] bg-[#5A0B0F]/5 text-[#5A0B0F]'
+                            : 'border-[#E8DDD5] text-[#A86E58] hover:bg-[#FAF5EF]'
+                        }`}
+                        aria-pressed={penSize === size}
+                      >
+                        <span
+                          className="rounded-full bg-current"
+                          style={{ width: size === 'thin' ? 4 : 8, height: size === 'thin' ? 4 : 8 }}
+                          aria-hidden
+                        />
+                        {size === 'thin' ? 'Thin' : 'Thick'}
+                      </button>
+                    ))}
+                  </div>
+
+                  <div className="flex gap-2">
+                    <button
+                      onClick={handleUndo}
+                      disabled={!hasActivePageStrokes}
+                      className="flex-1 flex items-center justify-center gap-1.5 text-xs font-medium text-[#5A0B0F] border border-[#E8DDD5] rounded-lg py-1.5 hover:bg-[#FAF5EF] transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+                    >
+                      <Undo2 className="w-3 h-3" />
+                      Undo
+                    </button>
+                    <button
+                      onClick={handleClearPage}
+                      disabled={!hasActivePageStrokes}
+                      className="flex-1 flex items-center justify-center gap-1.5 text-xs font-medium text-red-600 border border-[#E8DDD5] rounded-lg py-1.5 hover:bg-red-50 transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+                    >
+                      <Eraser className="w-3 h-3" />
+                      Clear page
+                    </button>
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+
+          <div className="w-px h-4 bg-[#E8DDD5] mx-0.5 lg:hidden" />
+
+          {/* Sidebar toggle (mobile) */}
+          <button
+            onClick={() => setSidebarOpen((v) => !v)}
+            className="lg:hidden relative w-9 h-9 flex items-center justify-center rounded-full text-[#A86E58] hover:bg-white hover:text-[#5A0B0F] transition-colors"
+            aria-label="Toggle highlights"
           >
-            <Download className="w-3.5 h-3.5" />
-            <span className="hidden sm:inline">Download</span>
-          </a>
-        )}
+            <BookMarked className="w-3.5 h-3.5" />
+            {highlights.length > 0 && (
+              <span className="absolute -top-0.5 -right-0.5 text-[9px] bg-[#5A0B0F] text-white rounded-full w-4 h-4 flex items-center justify-center">
+                {highlights.length}
+              </span>
+            )}
+          </button>
+
+          {/* Download — admins only */}
+          {isAdmin && (
+            <>
+              <div className="w-px h-4 bg-[#E8DDD5] mx-0.5" />
+              <a
+                href={material.blobUrl}
+                download={material.fileName ?? material.title}
+                onClick={() => trackFeature('material_downloaded', 'lms', { materialId: material.id, from: 'toolbar' })}
+                className="w-9 h-9 flex items-center justify-center rounded-full text-[#A86E58] hover:bg-white hover:text-[#5A0B0F] transition-colors"
+                aria-label="Download PDF"
+              >
+                <Download className="w-3.5 h-3.5" />
+              </a>
+            </>
+          )}
+        </div>
       </header>
 
       {/* ── Body ──────────────────────────────────────────────────────────────── */}
       <div className="flex flex-1 min-h-0 relative">
         {/* PDF Viewer */}
-        <div className="flex-1 relative overflow-hidden">
+        <div ref={pdfPaneRef} className="flex-1 relative overflow-hidden">
           <PdfLoader
             key={viewerKey}
             document={material.blobUrl}
@@ -712,6 +961,17 @@ export default function MaterialViewer({ material, initialHighlights, isAdmin = 
               </PdfHighlighter>
             )}
           </PdfLoader>
+
+          <DrawingLayer
+            containerRef={pdfPaneRef}
+            active={drawMode}
+            color={penColor}
+            strokeWidthPx={PEN_SIZES[penSize]}
+            drawings={drawings}
+            onStrokeComplete={handleStrokeComplete}
+            onActivePageChange={setActivePage}
+            scale={scale}
+          />
         </div>
 
         {/* Desktop sidebar */}

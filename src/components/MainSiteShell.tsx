@@ -6,7 +6,8 @@ import Footer from '@/components/Footer';
 
 export default function MainSiteShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
-  const isVocab = pathname.startsWith('/vocab') || pathname.startsWith('/admin') || pathname.startsWith('/workbook');
+  const isVocab = pathname.startsWith('/vocab') || pathname.startsWith('/admin') || pathname.startsWith('/workbook')
+    || pathname.startsWith('/dashboard/materials');
 
   return (
     <>

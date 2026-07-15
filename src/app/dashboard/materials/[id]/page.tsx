@@ -11,7 +11,7 @@ import { and, asc, eq } from 'drizzle-orm';
 import { authOptions } from '@/lib/auth';
 import { getUserByEmail } from '@/lib/db-access-control';
 import { db } from '@/lib/db';
-import { materials, materialHighlights } from '@/lib/db/schema';
+import { materials, materialHighlights, materialDrawings } from '@/lib/db/schema';
 import { canAccessLmsContent } from '@/lib/lms/access';
 import MaterialViewer from '@/components/lms/MaterialViewer';
 import { resolveFileUrl } from '@/lib/storage/r2';
@@ -25,6 +25,12 @@ export interface SerializedHighlight {
   selectedText: string;
   note: string | null;
   color: string;
+  updatedAt: number;
+}
+
+export interface SerializedDrawing {
+  pageNumber: number;
+  strokes: { points: { x: number; y: number }[]; color: string; width: number }[];
   updatedAt: number;
 }
 
@@ -134,6 +140,24 @@ export default async function MaterialViewerPage({ params }: PageProps) {
     updatedAt: h.updatedAt instanceof Date ? h.updatedAt.getTime() : Number(h.updatedAt),
   }));
 
+  // Fetch my drawings (never other users')
+  const rawDrawings = await db
+    .select()
+    .from(materialDrawings)
+    .where(
+      and(
+        eq(materialDrawings.materialId, materialId),
+        eq(materialDrawings.userId, user.id),
+      ),
+    )
+    .orderBy(asc(materialDrawings.pageNumber));
+
+  const drawings: SerializedDrawing[] = rawDrawings.map((d) => ({
+    pageNumber: d.pageNumber,
+    strokes: JSON.parse(d.strokes) as SerializedDrawing['strokes'],
+    updatedAt: d.updatedAt instanceof Date ? d.updatedAt.getTime() : Number(d.updatedAt),
+  }));
+
   // Resolve the R2 key to a presigned GET URL (2 h TTL) for the PDF viewer.
   // For link-type materials we already redirected above, so this is always a key.
   const resolvedUrl = await resolveFileUrl(material.blobUrl).catch(() => null);
@@ -156,6 +180,7 @@ export default async function MaterialViewerPage({ params }: PageProps) {
     <MaterialViewer
       material={serializedMaterial}
       initialHighlights={highlights}
+      initialDrawings={drawings}
       isAdmin={isAdmin}
     />
   );

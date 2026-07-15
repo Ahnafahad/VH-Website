@@ -1007,6 +1007,20 @@ export const materialHighlights = sqliteTable('material_highlights', {
   index('idx_mh_user_material').on(t.userId, t.materialId),
 ]);
 
+// Private per-user freehand drawings on PDF materials. One row per page —
+// `strokes` holds the full stroke array (points normalized 0–1 to page
+// width/height so they replay correctly at any zoom level).
+export const materialDrawings = sqliteTable('material_drawings', {
+  id:         integer('id').primaryKey({ autoIncrement: true }),
+  userId:     integer('user_id').notNull().references(() => users.id, { onDelete: 'cascade' }),
+  materialId: integer('material_id').notNull().references(() => materials.id, { onDelete: 'cascade' }),
+  pageNumber: integer('page_number').notNull(),
+  strokes:    text('strokes').notNull().default('[]'),         // JSON: { points: {x,y}[], color, width }[]
+  updatedAt:  integer('updated_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
+}, (t) => [
+  unique('uq_md_user_material_page').on(t.userId, t.materialId, t.pageNumber),
+]);
+
 // ─── Assignments ──────────────────────────────────────────────────────────────
 // Homework tasks scoped to subject/product/batch.
 
@@ -1186,6 +1200,7 @@ export type RecordingWatchProgress   = typeof recordingWatchProgress.$inferSelec
 export type Material                 = typeof materials.$inferSelect;
 export type NewMaterial              = typeof materials.$inferInsert;
 export type MaterialHighlight        = typeof materialHighlights.$inferSelect;
+export type MaterialDrawing          = typeof materialDrawings.$inferSelect;
 export type Assignment               = typeof assignments.$inferSelect;
 export type NewAssignment            = typeof assignments.$inferInsert;
 export type AssignmentSubmission     = typeof assignmentSubmissions.$inferSelect;
