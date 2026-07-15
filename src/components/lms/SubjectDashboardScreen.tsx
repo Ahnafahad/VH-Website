@@ -8,7 +8,7 @@ import {
 } from 'lucide-react';
 import type { LucideProps } from 'lucide-react';
 import type { SubjectData, SubjectAssignment, SubjectTestSection } from '@/lib/lms/subject-data';
-import { SUBJECT_LABELS } from '@/lib/lms/subject-data';
+import { SUBJECT_LABELS } from '@/lib/lms/subject-constants';
 import { formatDhaka } from '@/lib/lms/time';
 
 interface Props {

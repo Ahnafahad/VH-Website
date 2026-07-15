@@ -19,17 +19,10 @@ import { lmsScopeConditions } from './access';
 import { canAccessTest } from '@/lib/tests/access';
 import { resolveFileUrl } from '@/lib/storage/r2';
 
-export const SUBJECTS: readonly LmsSubject[] = ['english', 'math', 'analytical'];
-
-export function isLmsSubject(value: string): value is LmsSubject {
-  return (SUBJECTS as readonly string[]).includes(value);
-}
-
-export const SUBJECT_LABELS: Record<LmsSubject, string> = {
-  english: 'English',
-  math: 'Math',
-  analytical: 'Analytical',
-};
+// Re-exported for server-side consumers (page.tsx etc.) — client components
+// must import these from subject-constants.ts directly, never from here,
+// since this module also pulls in the DB client.
+export { SUBJECTS, isLmsSubject, SUBJECT_LABELS } from './subject-constants';
 
 // ─── Best-effort subject match for mock-test sections ─────────────────────────
 // Mock tests aren't subject-tagged yet (they're one test covering all

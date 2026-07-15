@@ -42,7 +42,7 @@ import { resolveFileUrl } from '@/lib/storage/r2';
 import { canAccessTest } from '@/lib/tests/access';
 import { effectiveWindowState, type EffectiveWindowState } from '@/lib/tests/windows';
 import { computeRanks } from '@/lib/tests/scoring';
-import { SUBJECTS } from './subject-data';
+import { SUBJECTS } from './subject-constants';
 import type { LmsSubject } from '@/lib/db/schema';
 
 // ─── Return shape ─────────────────────────────────────────────────────────────

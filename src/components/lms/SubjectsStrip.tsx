@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { BookOpen, Calculator, Waypoints } from 'lucide-react';
 import type { LucideProps } from 'lucide-react';
 import type { DashboardSubjectSummary } from '@/lib/lms/dashboard-data';
-import { SUBJECT_LABELS } from '@/lib/lms/subject-data';
+import { SUBJECT_LABELS } from '@/lib/lms/subject-constants';
 
 interface Props {
   subjects: DashboardSubjectSummary[];
