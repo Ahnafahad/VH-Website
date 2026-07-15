@@ -90,14 +90,20 @@ function CountdownUnit({
 export default function NextClassTile({ nextClass, serverJoinOpen }: Props) {
   const prefersReduced = useReducedMotion();
   const [joinOpen, setJoinOpen] = useState(serverJoinOpen);
-  const [countdown, setCountdown] = useState(
-    nextClass ? getCountdown(nextClass.scheduledAt - Date.now()) : null,
-  );
+  // Starts null rather than computing Date.now() here: that initializer would
+  // run once during SSR (server's "now") and again during client hydration
+  // (a moment later), so the seconds value would almost always differ from
+  // the server-rendered HTML — a guaranteed hydration text mismatch. Instead
+  // both the server and the client's first paint show the same placeholder
+  // (all zeros, hidden below), and the real countdown appears a tick after
+  // mount via the effect below — a normal post-hydration update, not a
+  // mismatch.
+  const [countdown, setCountdown] = useState<{ d: number; h: number; m: number; s: number } | null>(null);
   const [joining, setJoining] = useState(false);
   const [joinError, setJoinError] = useState<string | null>(null);
 
   useEffect(() => {
-    if (!nextClass) return;
+    if (!nextClass) { setCountdown(null); return; }
     const tick = () => {
       const msLeft = nextClass.scheduledAt - Date.now();
       setCountdown(getCountdown(msLeft));
@@ -144,7 +150,7 @@ export default function NextClassTile({ nextClass, serverJoinOpen }: Props) {
     }
   }, [nextClass, joining]);
 
-  if (!nextClass || !countdown) {
+  if (!nextClass) {
     return (
       <div className="flex flex-col items-start gap-2 py-4">
         <CalendarClock
@@ -159,6 +165,10 @@ export default function NextClassTile({ nextClass, serverJoinOpen }: Props) {
     );
   }
 
+  // Briefly null on first paint (see the state initializer above) — render
+  // zeros rather than bailing to the empty state, so both server and client
+  // agree on this first frame before the real countdown lands a tick later.
+  const displayCountdown = countdown ?? { d: 0, h: 0, m: 0, s: 0 };
   const scheduledDate = new Date(nextClass.scheduledAt);
 
   return (
@@ -217,28 +227,28 @@ export default function NextClassTile({ nextClass, serverJoinOpen }: Props) {
 
       {/* Countdown */}
       <div className="flex items-center gap-2 sm:gap-3">
-        <CountdownUnit value={countdown.d} label="days" prefersReduced={prefersReduced} />
+        <CountdownUnit value={displayCountdown.d} label="days" prefersReduced={prefersReduced} />
         <span
           className="text-3xl -mt-4"
           style={{ color: 'rgba(212,176,148,0.40)' }}
         >
           :
         </span>
-        <CountdownUnit value={countdown.h} label="hrs" prefersReduced={prefersReduced} />
+        <CountdownUnit value={displayCountdown.h} label="hrs" prefersReduced={prefersReduced} />
         <span
           className="text-3xl -mt-4"
           style={{ color: 'rgba(212,176,148,0.40)' }}
         >
           :
         </span>
-        <CountdownUnit value={countdown.m} label="min" prefersReduced={prefersReduced} />
+        <CountdownUnit value={displayCountdown.m} label="min" prefersReduced={prefersReduced} />
         <span
           className="text-3xl -mt-4"
           style={{ color: 'rgba(212,176,148,0.40)' }}
         >
           :
         </span>
-        <CountdownUnit value={countdown.s} label="sec" prefersReduced={prefersReduced} />
+        <CountdownUnit value={displayCountdown.s} label="sec" prefersReduced={prefersReduced} />
       </div>
 
       {/* Join button — the ONE gold filled CTA */}
