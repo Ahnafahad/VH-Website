@@ -13,6 +13,7 @@ import { assertRoleAssignable } from '@/lib/admin/role-guards';
 import { getServerSession } from 'next-auth/next';
 import { authOptions } from '@/lib/auth';
 import type { UserProduct } from '@/lib/db/schema';
+import { grantFullVocabAccessIfEligible } from '@/lib/vocab/full-access-batches';
 
 // ─── Auth helper (inline, avoids validateAuth which checks isEmailAuthorized) ──
 
@@ -139,6 +140,16 @@ export async function PATCH(
     }
 
     clearAccessControlCache(updated.email);
+
+    // Auto-upgrade to full LexiCore access if this batch+product combo qualifies
+    // (e.g. IBA 2026-27) — requery fresh so this is correct whether batch,
+    // products, or both changed in this call.
+    const finalProducts = await db
+      .select({ product: userAccess.product })
+      .from(userAccess)
+      .where(and(eq(userAccess.userId, userId), eq(userAccess.active, true)));
+    await grantFullVocabAccessIfEligible(userId, updated.batch, finalProducts.map((r) => r.product));
+
     return NextResponse.json({ success: true, user: updated });
   } catch (error) {
     return createErrorResponse(error);

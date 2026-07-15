@@ -5,6 +5,7 @@ import { validateAuth, createErrorResponse, ApiException } from '@/lib/api-utils
 import { isAdminEmail, isSuperAdminEmail, getUserByEmail, clearAccessControlCache, grantProduct, revokeProduct } from '@/lib/db-access-control';
 import { assertRoleAssignable } from '@/lib/admin/role-guards';
 import type { UserProduct } from '@/lib/db/schema';
+import { grantFullVocabAccessIfEligible } from '@/lib/vocab/full-access-batches';
 
 // GET — list users
 export async function GET(request: NextRequest) {
@@ -100,6 +101,7 @@ export async function POST(request: NextRequest) {
     }
 
     clearAccessControlCache(normalEmail);
+    await grantFullVocabAccessIfEligible(newUser.id, newUser.batch, products && Array.isArray(products) ? products : []);
     return NextResponse.json({ success: true, user: { ...newUser, products: products || [] } }, { status: 201 });
   } catch (error) {
     return createErrorResponse(error);
@@ -168,6 +170,16 @@ export async function PATCH(request: NextRequest) {
     }
 
     clearAccessControlCache(updated.email);
+
+    // Auto-upgrade to full LexiCore access if this batch+product combo qualifies
+    // (e.g. IBA 2026-27) — requery fresh so this is correct whether batch,
+    // products, or both changed in this call.
+    const finalProducts = await db
+      .select({ product: userAccess.product })
+      .from(userAccess)
+      .where(and(eq(userAccess.userId, userId), eq(userAccess.active, true)));
+    await grantFullVocabAccessIfEligible(userId, updated.batch, finalProducts.map((r) => r.product));
+
     return NextResponse.json({ success: true, user: updated });
   } catch (error) {
     return createErrorResponse(error);
