@@ -88,5 +88,5 @@ export async function POST(req: NextRequest) {
     }
 
     return { sent, failed };
-  });
+  }, '/api/vocab/push/send');
 }

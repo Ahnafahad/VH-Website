@@ -23,6 +23,7 @@ import {
   Settings,
   CalendarClock,
   UserCheck,
+  TriangleAlert,
 } from 'lucide-react';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
@@ -117,7 +118,8 @@ const NAV_SECTIONS: NavSection[] = [
   {
     label: 'SYSTEM',
     items: [
-      { href: '/admin/settings/google', label: 'Google Calendar', icon: Settings  },
+      { href: '/admin/errors',           label: 'Error Logs',     icon: TriangleAlert },
+      { href: '/admin/settings/google',  label: 'Google Calendar', icon: Settings  },
     ],
   },
 ];

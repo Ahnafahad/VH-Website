@@ -50,5 +50,5 @@ export async function GET() {
       .limit(30);
 
     return NextResponse.json({ words: rows });
-  });
+  }, '/api/vocab/review/words');
 }

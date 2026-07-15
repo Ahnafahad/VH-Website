@@ -34,5 +34,5 @@ export async function POST() {
       .where(eq(vocabUserProgress.userId, user.id));
 
     return { success: true };
-  });
+  }, '/api/vocab/push/unsubscribe');
 }

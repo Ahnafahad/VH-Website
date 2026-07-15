@@ -59,7 +59,7 @@ export async function GET(_req: NextRequest) {
       return NextResponse.json({ error: 'Rate limit exceeded' }, { status: 429 });
     }
   }
-  return safeApiHandler(handleDailyLogin);
+  return safeApiHandler(handleDailyLogin, '/api/vocab/daily-login');
 }
 
 export async function POST(_req: NextRequest) {
@@ -69,5 +69,5 @@ export async function POST(_req: NextRequest) {
       return NextResponse.json({ error: 'Rate limit exceeded' }, { status: 429 });
     }
   }
-  return safeApiHandler(handleDailyLogin);
+  return safeApiHandler(handleDailyLogin, '/api/vocab/daily-login');
 }

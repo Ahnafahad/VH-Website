@@ -75,5 +75,5 @@ export async function GET(_req: NextRequest) {
     }
 
     return { entries, myRank };
-  });
+  }, '/api/vocab/leaderboard/alltime');
 }

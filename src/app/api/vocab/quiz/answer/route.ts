@@ -377,5 +377,5 @@ export async function POST(req: NextRequest) {
       confusionLogged: !isCorrect && wordBUpdated,
     };
     });
-  });
+  }, '/api/vocab/quiz/answer');
 }

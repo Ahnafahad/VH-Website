@@ -577,6 +577,26 @@ export type WorkbookBookmark        = typeof workbookBookmarks.$inferSelect;
 export type WorkbookMcqAttempt      = typeof workbookMcqAttempts.$inferSelect;
 export type WorkbookProgressStatus  = 'not_started' | 'in_progress' | 'completed';
 
+// ─── Error Logs ───────────────────────────────────────────────────────────────
+// Server-side LexiCore failure log: quiz generation AI failures, API 5xx errors,
+// and merged client_error/unhandled_rejection analytics events (source='client').
+// Rows older than 30 days are pruned on each admin fetch.
+
+export const vocabErrorLogs = sqliteTable('vocab_error_logs', {
+  id:        integer('id').primaryKey({ autoIncrement: true }),
+  createdAt: text('created_at').notNull().default(sql`(strftime('%Y-%m-%dT%H:%M:%SZ', 'now'))`),
+  // 'quiz_generation' | 'api' | 'client'
+  source:    text('source').notNull(),
+  // 'error' | 'warning'
+  severity:  text('severity').notNull().default('error'),
+  context:   text('context').notNull(),   // route path or operation name
+  message:   text('message').notNull(),
+  detail:    text('detail'),              // JSON string, max 8000 chars
+  userEmail: text('user_email'),
+}, (t) => [
+  index('idx_vocab_error_logs_created_at').on(t.createdAt),
+]);
+
 // ─── LexiCore Type Exports ────────────────────────────────────────────────────
 
 export type VocabUnit             = typeof vocabUnits.$inferSelect;
@@ -589,6 +609,9 @@ export type VocabQuizSession      = typeof vocabQuizSessions.$inferSelect;
 export type VocabQuizAnswer       = typeof vocabQuizAnswers.$inferSelect;
 export type VocabSrsEvent         = typeof vocabSrsEvents.$inferSelect;
 export type VocabUserBadge        = typeof vocabUserBadges.$inferSelect;
+
+export type VocabErrorLog     = typeof vocabErrorLogs.$inferSelect;
+export type NewVocabErrorLog  = typeof vocabErrorLogs.$inferInsert;
 
 export type VocabMasteryLevel = 'new' | 'learning' | 'familiar' | 'strong' | 'mastered';
 export type VocabPhase        = 1 | 2;

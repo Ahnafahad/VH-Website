@@ -1,4 +1,13 @@
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
+
+// quiz-generator now imports error-log → db; mock it so tests stay unit-isolated.
+vi.mock('@/lib/db', () => ({
+  db: {
+    insert: vi.fn().mockReturnValue({ values: vi.fn().mockResolvedValue(undefined) }),
+  },
+  vocabErrorLogs: {},
+}));
+
 import { buildDeterministicQuestionCopy, type QuizQuestionInput } from '../quiz-generator';
 
 function input(type: QuizQuestionInput['type'], exampleSentence = 'Her sagacious advice prevented a costly mistake.'): QuizQuestionInput {

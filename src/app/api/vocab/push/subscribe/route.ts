@@ -65,5 +65,5 @@ export async function POST(req: NextRequest) {
       .where(eq(vocabUserProgress.userId, user.id));
 
     return { success: true };
-  });
+  }, '/api/vocab/push/subscribe');
 }

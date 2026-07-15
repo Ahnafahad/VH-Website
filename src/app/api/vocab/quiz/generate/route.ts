@@ -367,7 +367,7 @@ export async function POST(req: NextRequest) {
     }
 
     throw new ApiException('type must be "study", "practice", "letter", or "exam"', 400);
-  });
+  }, '/api/vocab/quiz/generate');
 }
 
 // ─── Student level (shared by exam gate and buildSession) ────────────────────

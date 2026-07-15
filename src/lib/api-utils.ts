@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import { getServerSession } from 'next-auth/next';
 import { authOptions } from '@/lib/auth';
 import { isEmailAuthorized } from '@/lib/db-access-control';
+import { logVocabErrorSafe } from '@/lib/vocab/error-log';
 
 export interface ApiError {
   message: string;
@@ -49,11 +50,33 @@ export async function validateAuth(): Promise<{ email: string; name?: string }> 
   return { email: session.user.email, name: session.user.name || undefined };
 }
 
-export async function safeApiHandler<T>(handler: () => Promise<T>): Promise<NextResponse> {
+export async function safeApiHandler<T>(
+  handler: () => Promise<T>,
+  context?: string,
+): Promise<NextResponse> {
   try {
     const result = await handler();
     return NextResponse.json(result);
   } catch (error) {
+    // Log 500-class failures to vocab_error_logs when a context is provided.
+    // 4xx ApiExceptions (auth noise, validation) are intentionally skipped.
+    if (context) {
+      const is5xx =
+        error instanceof ApiException ? error.status >= 500 : error instanceof Error;
+      if (is5xx) {
+        logVocabErrorSafe({
+          source:  'api',
+          severity: 'error',
+          context,
+          message: error instanceof Error ? error.message : String(error),
+          detail: {
+            stack:  error instanceof Error ? error.stack : undefined,
+            status: error instanceof ApiException ? error.status : 500,
+            code:   error instanceof ApiException ? error.code : undefined,
+          },
+        });
+      }
+    }
     return createErrorResponse(error);
   }
 }

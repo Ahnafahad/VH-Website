@@ -34,5 +34,5 @@ export async function POST(req: NextRequest) {
       });
 
     return { ok: true };
-  });
+  }, '/api/vocab/upgrade-interest');
 }

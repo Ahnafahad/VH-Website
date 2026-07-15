@@ -100,5 +100,5 @@ export async function POST(req: NextRequest) {
     }
 
     return { visible: true, usersChecked, badgesAwarded };
-  });
+  }, '/api/vocab/admin/ultimate-toggle');
 }

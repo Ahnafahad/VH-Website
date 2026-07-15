@@ -76,5 +76,5 @@ export async function POST(req: NextRequest) {
     });
 
     return { success: true };
-  });
+  }, '/api/vocab/access-request');
 }

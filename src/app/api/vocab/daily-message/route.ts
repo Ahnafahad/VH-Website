@@ -5,5 +5,5 @@ export async function GET() {
   return safeApiHandler(async () => {
     const { email } = await validateAuth();
     return getDailyMessage(email);
-  });
+  }, '/api/vocab/daily-message');
 }

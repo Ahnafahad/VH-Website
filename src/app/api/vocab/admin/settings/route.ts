@@ -38,7 +38,7 @@ export async function GET() {
       map[row.key] = row.value;
     }
     return map;
-  });
+  }, '/api/vocab/admin/settings');
 }
 
 const patchSchema = z.object({
@@ -66,5 +66,5 @@ export async function PATCH(req: NextRequest) {
       });
 
     return { ok: true, key, value };
-  });
+  }, '/api/vocab/admin/settings');
 }

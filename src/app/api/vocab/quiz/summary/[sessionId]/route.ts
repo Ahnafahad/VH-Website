@@ -226,5 +226,5 @@ export async function GET(
       questions:      questionResults,
       earnedBadges,
     };
-  });
+  }, '/api/vocab/quiz/summary');
 }

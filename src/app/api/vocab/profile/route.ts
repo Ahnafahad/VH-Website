@@ -122,5 +122,5 @@ export async function PATCH(req: NextRequest) {
     }
 
     return { ok: true, name: data.name };
-  });
+  }, '/api/vocab/profile');
 }

@@ -11,6 +11,7 @@
 import { randomUUID } from 'crypto';
 import type { WordForDistractor, DistractorSelection } from '@/lib/vocab/distractor-selector';
 import type { VocabQuestionType } from '@/lib/db/schema';
+import { logVocabErrorSafe } from '@/lib/vocab/error-log';
 
 // ─── Variation pools ──────────────────────────────────────────────────────────
 
@@ -375,12 +376,39 @@ export async function generateQuizQuestions(
 
   // ── Fallback: Gemini (one attempt) ────────────────────────────────────
   console.warn('DeepSeek failed, falling back to Gemini:', deepSeekError);
+  logVocabErrorSafe({
+    source:   'quiz_generation',
+    severity: 'warning',
+    context:  'deepseek_provider',
+    message:  deepSeekError instanceof Error ? deepSeekError.message : String(deepSeekError),
+    detail: {
+      attempts:   MAX_RETRIES + 1,
+      stack:      deepSeekError instanceof Error ? deepSeekError.stack : undefined,
+      errorType:  deepSeekError instanceof Error ? deepSeekError.name : typeof deepSeekError,
+    },
+  });
   try {
     return assembleResults(await callGemini(prompt, maxTokens));
   } catch (geminiErr) {
     console.error('All AI providers failed; using deterministic quiz fallback.', {
       deepSeekError,
       geminiError: geminiErr,
+    });
+    logVocabErrorSafe({
+      source:   'quiz_generation',
+      severity: 'error',
+      context:  'all_providers_failed',
+      message:  'All AI providers failed; falling back to deterministic quiz generation',
+      detail: {
+        deepSeekError: {
+          message: deepSeekError instanceof Error ? deepSeekError.message : String(deepSeekError),
+          stack:   deepSeekError instanceof Error ? deepSeekError.stack : undefined,
+        },
+        geminiError: {
+          message: geminiErr instanceof Error ? geminiErr.message : String(geminiErr),
+          stack:   geminiErr instanceof Error ? (geminiErr as Error).stack : undefined,
+        },
+      },
     });
     return assembleResults(inputs.map(buildDeterministicQuestionCopy));
   }
