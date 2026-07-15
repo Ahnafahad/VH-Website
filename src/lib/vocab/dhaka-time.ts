@@ -13,6 +13,17 @@ export function dhakaDayString(date: Date): string {
   return new Date(date.getTime() + DHAKA_OFFSET_MS).toISOString().slice(0, 10);
 }
 
+/**
+ * Hour of day (0-23) in Dhaka for a given instant. Deterministic from the UTC
+ * epoch alone, so it returns the same value on the server (which typically
+ * runs in UTC) and in the browser (which runs in the visitor's local
+ * timezone) — unlike `date.getHours()`, which reads the machine's own
+ * timezone and therefore disagrees between SSR and hydration.
+ */
+export function dhakaHour(date: Date = new Date()): number {
+  return new Date(date.getTime() + DHAKA_OFFSET_MS).getUTCHours();
+}
+
 /** The UTC instant at which the current Dhaka day started (00:00 Dhaka). */
 export function dhakaDayStart(now: Date = new Date()): Date {
   const shifted = new Date(now.getTime() + DHAKA_OFFSET_MS);

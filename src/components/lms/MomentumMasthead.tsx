@@ -13,8 +13,13 @@ interface Props {
 
 function getDhakaGreeting(): { greeting: string; date: string } {
   const now = new Date();
-  // Dhaka is UTC+6
-  const dhakaMs = now.getTime() + (6 * 60 - now.getTimezoneOffset()) * 60_000;
+  // Dhaka is a fixed UTC+6 (no DST) — add the offset directly from the UTC
+  // epoch rather than via `now.getTimezoneOffset()`, which reads the *local
+  // machine's* timezone and previously double-counted the offset on a Dhaka
+  // browser (server runs in UTC, offset 0; client offset -360), landing in a
+  // different greeting bucket than the server and causing a hydration
+  // text mismatch.
+  const dhakaMs = now.getTime() + 6 * 60 * 60_000;
   const dhaka = new Date(dhakaMs);
   const hour = dhaka.getUTCHours();
 

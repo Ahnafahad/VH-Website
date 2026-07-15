@@ -17,9 +17,14 @@ import type { LearningRecommendation } from '@/lib/vocab/recommendation';
 import { RETENTION_EVENTS, trackRetention } from '@/lib/vocab/retention-events';
 import { Capacitor } from '@capacitor/core';
 import { scheduleReminders, readReminderEnabled } from '@/lib/vocab/local-reminders';
+import { dhakaHour } from '@/lib/vocab/dhaka-time';
 
+// Uses the visitor's Dhaka-local hour (not the machine's own timezone) so the
+// greeting is identical during SSR (server runs in UTC) and client hydration
+// (browser runs in the visitor's local timezone) — using `date.getHours()`
+// here previously caused a hydration text mismatch for anyone outside UTC.
 function greeting(): string {
-  const h = new Date().getHours();
+  const h = dhakaHour();
   if (h < 5)  return 'Night owl';
   if (h < 12) return 'Good morning';
   if (h < 17) return 'Good afternoon';
