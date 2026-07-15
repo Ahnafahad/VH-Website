@@ -13,6 +13,7 @@ import StatBand from './StatBand';
 import ResultsHub from './ResultsHub';
 import ClassHistoryTile from './ClassHistoryTile';
 import GamesStrip from './GamesStrip';
+import SubjectsStrip from './SubjectsStrip';
 
 interface Props {
   data: DashboardData | { hasAccess: false };
@@ -100,6 +101,13 @@ export default function DashboardScreen({ data, userName }: Props) {
             </motion.div>
           )}
 
+          {/* ── Subjects strip ── */}
+          {hasAccess && d && (
+            <motion.div variants={iv} className="mb-10">
+              <SubjectsStrip subjects={d.subjects} />
+            </motion.div>
+          )}
+
           {/* ── 2. Next Class + Week Strip band ── */}
           {hasAccess && (
             <motion.div variants={iv} className="grid grid-cols-1 lg:grid-cols-12 gap-x-12 gap-y-8 mb-10">
@@ -135,31 +143,47 @@ export default function DashboardScreen({ data, userName }: Props) {
                 <StatBand classPulse={classPulse} results={results} games={games} />
               </motion.div>
 
-              {/* ── 4. Results + Homework band ── */}
-              <motion.div variants={iv} className="grid grid-cols-1 lg:grid-cols-12 gap-x-12 gap-y-10 mb-10">
-                {/* Results Hub — lg:col-span-7 */}
-                <div className="lg:col-span-7">
-                  <ResultsHub results={results} />
-                </div>
+              {/* ── 4. Results + Homework band — each side hidden when empty, sibling expands to fill the freed space ── */}
+              {(() => {
+                const hasResults = results.latest !== null;
+                const hasHomework = (d?.assignments?.length ?? 0) > 0;
+                if (!hasResults && !hasHomework) return null;
+                return (
+                  <motion.div variants={iv} className="grid grid-cols-1 lg:grid-cols-12 gap-x-12 gap-y-10 mb-10">
+                    {hasResults && (
+                      <div className={hasHomework ? 'lg:col-span-7' : 'lg:col-span-12'}>
+                        <ResultsHub results={results} />
+                      </div>
+                    )}
+                    {hasHomework && (
+                      <div className={hasResults ? 'lg:col-span-5' : 'lg:col-span-12'}>
+                        <HomeworkTile assignments={d?.assignments ?? []} />
+                      </div>
+                    )}
+                  </motion.div>
+                );
+              })()}
 
-                {/* Homework — lg:col-span-5 */}
-                <div className="lg:col-span-5">
-                  <HomeworkTile assignments={d?.assignments ?? []} />
-                </div>
-              </motion.div>
-
-              {/* ── 5. Class History + Upcoming Tests band ── */}
-              <motion.div variants={iv} className="grid grid-cols-1 lg:grid-cols-12 gap-x-12 gap-y-10 mb-10">
-                {/* Class History — lg:col-span-7 */}
-                <div className="lg:col-span-7">
-                  <ClassHistoryTile classPulse={classPulse} />
-                </div>
-
-                {/* Upcoming Tests — lg:col-span-5, id="tests" via UpcomingTestTile */}
-                <div className="lg:col-span-5">
-                  <UpcomingTestTile upcomingTests={d?.upcomingTests ?? []} />
-                </div>
-              </motion.div>
+              {/* ── 5. Class History + Upcoming Tests band — same dynamic hide/expand ── */}
+              {(() => {
+                const hasClassHistory = classPulse.recentClasses.length > 0 || classPulse.resumeTarget !== null;
+                const hasUpcomingTests = (d?.upcomingTests?.length ?? 0) > 0;
+                if (!hasClassHistory && !hasUpcomingTests) return null;
+                return (
+                  <motion.div variants={iv} className="grid grid-cols-1 lg:grid-cols-12 gap-x-12 gap-y-10 mb-10">
+                    {hasClassHistory && (
+                      <div className={hasUpcomingTests ? 'lg:col-span-7' : 'lg:col-span-12'}>
+                        <ClassHistoryTile classPulse={classPulse} />
+                      </div>
+                    )}
+                    {hasUpcomingTests && (
+                      <div className={hasClassHistory ? 'lg:col-span-5' : 'lg:col-span-12'}>
+                        <UpcomingTestTile upcomingTests={d?.upcomingTests ?? []} />
+                      </div>
+                    )}
+                  </motion.div>
+                );
+              })()}
 
               {/* ── 6. Games Strip ── */}
               <motion.div variants={iv} className="mb-10">

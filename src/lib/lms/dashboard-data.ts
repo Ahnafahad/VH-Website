@@ -42,6 +42,8 @@ import { resolveFileUrl } from '@/lib/storage/r2';
 import { canAccessTest } from '@/lib/tests/access';
 import { effectiveWindowState, type EffectiveWindowState } from '@/lib/tests/windows';
 import { computeRanks } from '@/lib/tests/scoring';
+import { SUBJECTS } from './subject-data';
+import type { LmsSubject } from '@/lib/db/schema';
 
 // ─── Return shape ─────────────────────────────────────────────────────────────
 
@@ -196,6 +198,14 @@ export interface DashboardMomentum {
   unwatchedRecordings: number;
 }
 
+export interface DashboardSubjectSummary {
+  subject: LmsSubject;
+  /** Not-yet-submitted assignments due now or later, for this subject. */
+  pendingHomeworkCount: number;
+  /** Lecture-sheet (PDF material) count for this subject, in scope. */
+  lectureSheetCount: number;
+}
+
 export interface DashboardData {
   hasAccess: true;
   lastClass: DashboardLastClass | null;
@@ -208,6 +218,7 @@ export interface DashboardData {
   classPulse: DashboardClassPulse;
   games: DashboardGames;
   momentum: DashboardMomentum;
+  subjects: DashboardSubjectSummary[];
 }
 
 // ─── Local helpers ─────────────────────────────────────────────────────────────
@@ -255,6 +266,7 @@ export async function getDashboardData(
     rawAssignments,
     announcementRows,
     publishedTests,
+    lectureSheetCountRows,
   ] = await Promise.all([
     // Last completed class in scope
     db
@@ -326,6 +338,13 @@ export async function getDashboardData(
       .select()
       .from(tests)
       .where(eq(tests.status, 'published')),
+
+    // Lecture-sheet (pdf material) count grouped by subject, in scope
+    db
+      .select({ subject: materials.subject, value: count() })
+      .from(materials)
+      .where(and(eq(materials.type, 'pdf'), ...lmsScopeConditions(user, materials)))
+      .groupBy(materials.subject),
   ]);
 
   // ─── Materials + recording for lastClass ─────────────────────────────────────
@@ -798,6 +817,19 @@ export async function getDashboardData(
     return submission === 'pending' && a.dueAt.getTime() >= nowMs;
   }).length;
 
+  // ─── Per-subject summary (for the subject-hub buttons) ───────────────────────
+  const lectureSheetCountBySubject = new Map(
+    lectureSheetCountRows.map((r) => [r.subject, r.value]),
+  );
+  const dashSubjects: DashboardSubjectSummary[] = SUBJECTS.map((subject) => ({
+    subject,
+    pendingHomeworkCount: rawAssignments.filter((a) => {
+      const submission = subMap.has(a.id) ? { status: subMap.get(a.id)! } : 'pending';
+      return a.subject === subject && submission === 'pending' && a.dueAt.getTime() >= nowMs;
+    }).length,
+    lectureSheetCount: lectureSheetCountBySubject.get(subject) ?? 0,
+  }));
+
   const testsOpenNow = upcomingTests.filter((t) => {
     const hasOpenWindow = t.windows.some((w) => w.state === 'open');
     const notSubmitted =
@@ -889,5 +921,6 @@ export async function getDashboardData(
     classPulse: dashClassPulse,
     games: dashGames,
     momentum: dashMomentum,
+    subjects: dashSubjects,
   };
 }
