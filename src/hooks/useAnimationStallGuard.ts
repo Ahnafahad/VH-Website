@@ -2,7 +2,7 @@
 
 import { useEffect } from 'react';
 
-const TICK_MS = 1200;
+const TICK_MS = 400;
 
 /**
  * Self-heal for frozen entrance animations.
