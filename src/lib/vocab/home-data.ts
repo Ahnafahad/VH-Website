@@ -2,7 +2,7 @@ import {
   db, users, userAccess, vocabUserProgress, vocabUserWordRecords,
   vocabFlashcardSessions, vocabThemes, vocabQuizSessions, vocabQuizAnswers, vocabWords,
 } from '@/lib/db';
-import { eq, and, lte, gte, count, sql, inArray } from 'drizzle-orm';
+import { eq, and, lte, gte, gt, count, sql, inArray, min } from 'drizzle-orm';
 import { FREE_WORD_POOL, PAID_WORD_POOL } from './constants';
 import { unstable_cache } from 'next/cache';
 import { VocabCacheTag } from './cache-keys';
@@ -41,6 +41,8 @@ export interface HomeData {
   masteryBreakdown: MasteryBreakdown;
   hasPaidAccess:    boolean;       // true if user has any active product or is admin
   recommendation:   LearningRecommendation;
+  /** ISO timestamp of the earliest future SRS review date, or null. Used to schedule local notifications. */
+  nextDueIso:       string | null;
 }
 
 async function _getHomeData(email: string): Promise<HomeData | null> {
@@ -83,6 +85,7 @@ async function _getHomeData(email: string): Promise<HomeData | null> {
     allThemes,
     accessRows,
     activeQuizRows,
+    nextDueResult,
   ] = await Promise.all([
     // SRS due count
     db.select({ value: count() })
@@ -177,6 +180,15 @@ async function _getHomeData(email: string): Promise<HomeData | null> {
       .groupBy(vocabQuizSessions.id)
       .orderBy(sql`${vocabQuizSessions.startedAt} DESC`)
       .limit(1),
+
+    // Earliest future SRS review date (for local notification scheduling).
+    db.select({ earliest: min(vocabUserWordRecords.srsNextReviewDate) })
+      .from(vocabUserWordRecords)
+      .where(and(
+        eq(vocabUserWordRecords.userId, user.id),
+        eq(vocabUserWordRecords.inSrsPool, true),
+        gt(vocabUserWordRecords.srsNextReviewDate, now),
+      )),
   ]);
 
   // ── Compute basics ────────────────────────────────────────────────────────
@@ -272,6 +284,13 @@ async function _getHomeData(email: string): Promise<HomeData | null> {
 
   const goalProgress = Math.min(100, Math.round((reviewedCount / dynamicDailyTarget) * 100));
 
+  const earliestFutureDue = nextDueResult[0]?.earliest;
+  const nextDueIso = earliestFutureDue instanceof Date
+    ? earliestFutureDue.toISOString()
+    : typeof earliestFutureDue === 'string'
+      ? earliestFutureDue
+      : null;
+
   return {
     userName:         user.name,
     streakDays:       progress.streakDays,
@@ -289,6 +308,7 @@ async function _getHomeData(email: string): Promise<HomeData | null> {
     masteryBreakdown: breakdown,
     hasPaidAccess,
     recommendation,
+    nextDueIso,
   };
 }
 

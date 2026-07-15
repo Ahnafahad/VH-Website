@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import { Capacitor } from '@capacitor/core';
 import { App } from '@capacitor/app';
 import { PushNotifications } from '@capacitor/push-notifications';
+import { registerTapListener, rescheduleFromCache } from '@/lib/vocab/local-reminders';
 
 function safeAppPath(rawUrl: string): string | null {
   try {
@@ -56,7 +57,18 @@ export function NativeAppBridge() {
       }
     }).then(handle => removers.push(() => handle.remove()));
 
-    return () => { for (const remove of removers) void remove(); };
+    // Local notification tap routing — mirrors push routing above.
+    void registerTapListener((path) => { router.push(path); })
+      .then(cleanup => removers.push(async () => { cleanup(); }));
+
+    // Reschedule on every app resume so data stays fresh.
+    const onResume = () => { void rescheduleFromCache(); };
+    window.addEventListener('lexicore:resume', onResume);
+
+    return () => {
+      window.removeEventListener('lexicore:resume', onResume);
+      for (const remove of removers) void remove();
+    };
   }, [router]);
 
   return null;

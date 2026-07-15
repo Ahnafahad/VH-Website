@@ -15,6 +15,8 @@ import { FREE_WORD_POOL, PAID_WORD_POOL } from '@/lib/vocab/constants';
 import { useVocabFeedback } from '@/lib/vocab/use-vocab-feedback';
 import type { LearningRecommendation } from '@/lib/vocab/recommendation';
 import { RETENTION_EVENTS, trackRetention } from '@/lib/vocab/retention-events';
+import { Capacitor } from '@capacitor/core';
+import { scheduleReminders, readReminderEnabled } from '@/lib/vocab/local-reminders';
 
 function greeting(): string {
   const h = new Date().getHours();
@@ -746,6 +748,17 @@ export default function HomeScreen({ data }: { data: HomeData }) {
   const [showUpgrade, setShowUpgrade] = useState(false);
   const prefersReducedMotion   = useReducedMotion();
   const fb                     = useVocabFeedback();
+
+  // Reschedule local notifications with fresh SRS data on every home-screen visit.
+  useEffect(() => {
+    if (!Capacitor.isNativePlatform()) return;
+    const enabled = readReminderEnabled();
+    void scheduleReminders({
+      dueCount:         data.dueWordsCount,
+      nextDueIso:       data.nextDueIso,
+      remindersEnabled: enabled,
+    });
+  }, [data.dueWordsCount, data.nextDueIso]);
 
   return (
     <div

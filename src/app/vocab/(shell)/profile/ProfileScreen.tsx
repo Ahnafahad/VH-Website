@@ -47,6 +47,8 @@ import { useVocabFeedback } from '@/lib/vocab/use-vocab-feedback';
 import AnimatedNumber from '@/components/vocab/AnimatedNumber';
 import { usePushNotifications } from '@/hooks/usePushNotifications';
 import { useLexiAccessibility } from '@/hooks/useLexiAccessibility';
+import { Capacitor } from '@capacitor/core';
+import { readReminderEnabled, writeReminderEnabled, rescheduleFromCache, cancelReminders } from '@/lib/vocab/local-reminders';
 import type { ProfileData, BadgeRow, WordRow } from './page';
 
 // ─── Badge icons ──────────────────────────────────────────────────────────────
@@ -528,6 +530,20 @@ export default function ProfileScreen({
       await unsubscribePush();
     }
   }, [subscribePush, unsubscribePush]);
+
+  // Daily local reminder (native only)
+  const isNative = Capacitor.isNativePlatform();
+  const [dailyReminderEnabled, setDailyReminderEnabled] = useState(() => readReminderEnabled());
+
+  const toggleDailyReminder = useCallback((next: boolean) => {
+    setDailyReminderEnabled(next);
+    writeReminderEnabled(next);
+    if (next) {
+      void rescheduleFromCache();
+    } else {
+      void cancelReminders();
+    }
+  }, []);
 
   // Email summary
   const [emailSummaryEnabled, setEmailSummaryEnabled] = useState(data.emailSummaryEnabled);
@@ -1460,6 +1476,20 @@ export default function ProfileScreen({
                   >
                     To enable, open your browser&apos;s site settings and allow notifications for this domain.
                   </motion.p>
+                )}
+
+                {isNative && (
+                  <SettingRow
+                    icon={dailyReminderEnabled ? Bell : BellOff}
+                    label="Daily Reminder"
+                    sublabel="Notification at 19:30 to keep your streak alive"
+                  >
+                    <LuxToggle
+                      on={dailyReminderEnabled}
+                      onChange={toggleDailyReminder}
+                      accent="#D62B38"
+                    />
+                  </SettingRow>
                 )}
 
                 <SettingRow

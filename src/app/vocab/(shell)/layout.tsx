@@ -15,6 +15,8 @@ import { NativeAppBridge } from '@/components/vocab/NativeAppBridge';
 import { DailyBrief } from '@/components/vocab/DailyBrief';
 import { LexiTelemetry } from '@/components/vocab/LexiTelemetry';
 import { AppUpdatePrompt } from '@/components/vocab/AppUpdatePrompt';
+import { Capacitor } from '@capacitor/core';
+import { rescheduleFromCache } from '@/lib/vocab/local-reminders';
 
 function todayKey(): string {
   return new Date().toISOString().slice(0, 10);
@@ -75,6 +77,15 @@ function VocabShellInner({ children }: { children: React.ReactNode }) {
     return () => {
       navigator.serviceWorker.removeEventListener('controllerchange', onControllerChange);
     };
+  }, []);
+
+  // On-device reminder scheduling — fires once on shell mount (app launch).
+  // NativeAppBridge re-fires this on every resume via lexicore:resume.
+  // Onboarding is complete at this point because the shell only renders after
+  // the home/study/etc. redirect from the onboarding page.
+  useEffect(() => {
+    if (!Capacitor.isNativePlatform()) return;
+    void rescheduleFromCache();
   }, []);
 
   // Daily login — first authenticated action of the day triggers:
