@@ -6,6 +6,14 @@ const nextConfig: NextConfig = {
   async headers() {
     return [
       {
+        // Ensure Android package manager receives the correct MIME type for the APK.
+        source: "/app/:file*.apk",
+        headers: [
+          { key: "Content-Type", value: "application/vnd.android.package-archive" },
+          { key: "Content-Disposition", value: "attachment" },
+        ],
+      },
+      {
         source: "/(.*)",
         headers: [
           { key: "X-Content-Type-Options",  value: "nosniff" },
@@ -44,7 +52,7 @@ const pwaConfig = withPWA({
   // Don't precache the large mock-test/accounting JSON blobs (several MB) —
   // they'd all download on first SW install, which made the app's first
   // launch crawl. They're fetched on demand by the pages that need them.
-  publicExcludes: ["!data/**/*", "!migrate-students.html", "!tests/**/*"],
+  publicExcludes: ["!data/**/*", "!migrate-students.html", "!tests/**/*", "!app/**/*"],
   // Never let the SW cache Next.js RSC payloads or API responses.
   // Stale RSC cache causes 2-minute blank screens on mobile navigation.
   //

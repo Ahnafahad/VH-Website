@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "org.beyondthehorizons.vhapp",
+      "sha256_cert_fingerprints": [
+        "A4:77:E5:08:F2:17:CF:D8:CB:CE:BB:4E:C8:8B:CC:51:17:9B:F7:BF:3D:57:4B:C9:D1:C7:08:71:C6:36:17:5D"
+      ]
+    }
+  }
+]
