@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
@@ -221,6 +221,148 @@ function HomeworkSheet({
   );
 }
 
+// ─── Attendance Sheet ─────────────────────────────────────────────────────────
+
+interface RosterStudent {
+  userId: number;
+  name: string;
+  email: string;
+  present: boolean;
+  mode: 'online' | 'offline';
+  totalAbsences: number;
+  absencesLast7Days: number;
+}
+
+function AttendanceSheet({
+  session, onClose, onDone,
+}: {
+  session: TodaySession; onClose: () => void; onDone: () => void;
+}) {
+  const [students, setStudents] = useState<RosterStudent[] | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [saving,  setSaving]  = useState(false);
+  const [error,   setError]  = useState('');
+
+  useEffect(() => {
+    let cancelled = false;
+    (async () => {
+      try {
+        const res = await fetch(`/api/lms/admin/classes/${session.id}/attendance/roster`);
+        if (!res.ok) throw new Error('Failed to load roster');
+        const json = await res.json() as { students: RosterStudent[] };
+        if (!cancelled) setStudents(json.students);
+      } catch (e) {
+        if (!cancelled) setError(e instanceof Error ? e.message : 'Failed to load roster');
+      } finally {
+        if (!cancelled) setLoading(false);
+      }
+    })();
+    return () => { cancelled = true; };
+  }, [session.id]);
+
+  const togglePresent = (userId: number) => {
+    setStudents(prev => prev?.map(s => s.userId === userId ? { ...s, present: !s.present } : s) ?? null);
+  };
+  const setMode = (userId: number, mode: 'online' | 'offline') => {
+    setStudents(prev => prev?.map(s => s.userId === userId ? { ...s, mode } : s) ?? null);
+  };
+
+  const handleSave = async () => {
+    if (!students) return;
+    setSaving(true); setError('');
+    try {
+      const res = await fetch(`/api/lms/admin/classes/${session.id}/attendance`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          records: students.map(s => ({ userId: s.userId, present: s.present, mode: s.mode })),
+        }),
+      });
+      if (!res.ok) throw new Error('Save failed');
+      onDone(); onClose();
+    } catch (e) {
+      setError(e instanceof Error ? e.message : 'Failed to save');
+    } finally {
+      setSaving(false);
+    }
+  };
+
+  if (loading) {
+    return (
+      <div style={{ padding: '32px 0', textAlign: 'center' }}>
+        <Loader2 size={20} style={{ color: MUTED, animation: 'spin 1s linear infinite' }} aria-hidden />
+      </div>
+    );
+  }
+
+  if (!students || students.length === 0) {
+    return <p style={{ margin: 0, fontSize: 13, color: MUTED }}>No students in scope for this class.</p>;
+  }
+
+  const presentCount = students.filter(s => s.present).length;
+
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+      <p style={{ margin: 0, fontSize: 12, color: MUTED }}>
+        {presentCount} / {students.length} marked present
+      </p>
+
+      <div style={{ maxHeight: 380, overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: 6 }}>
+        {students.map(s => (
+          <div
+            key={s.userId}
+            style={{
+              display: 'flex', alignItems: 'center', gap: 10,
+              padding: '8px 10px', borderRadius: 8, border: `1px solid ${BORDER}`,
+              background: s.present ? 'rgba(16,185,129,0.06)' : '#FFFFFF',
+            }}
+          >
+            <input
+              type="checkbox"
+              checked={s.present}
+              onChange={() => togglePresent(s.userId)}
+              style={{ width: 16, height: 16, flexShrink: 0, cursor: 'pointer' }}
+            />
+            <div style={{ flex: 1, minWidth: 0 }}>
+              <p style={{
+                margin: 0, fontSize: 13, fontWeight: 600, color: SLATE,
+                overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap',
+              }}>
+                {s.name}
+              </p>
+              <p style={{ margin: 0, fontSize: 11, color: MUTED }}>
+                {s.totalAbsences} absent total · {s.absencesLast7Days} in last 7d
+              </p>
+            </div>
+            <select
+              value={s.mode}
+              onChange={e => setMode(s.userId, e.target.value as 'online' | 'offline')}
+              disabled={!s.present}
+              style={{
+                fontSize: 12, padding: '5px 8px', borderRadius: 6,
+                border: `1px solid ${BORDER}`,
+                background: s.present ? '#FFFFFF' : BG,
+                color: s.present ? SLATE : MUTED,
+                flexShrink: 0,
+              }}
+            >
+              <option value="online">Online</option>
+              <option value="offline">Offline</option>
+            </select>
+          </div>
+        ))}
+      </div>
+
+      {error && <p style={{ fontSize: 12, color: RED, margin: 0 }}>{error}</p>}
+
+      <div style={{ display: 'flex', gap: 8, justifyContent: 'flex-end' }}>
+        <GhostBtn onClick={onClose} small>Cancel</GhostBtn>
+        <PrimaryBtn onClick={handleSave} loading={saving} small>Save Attendance</PrimaryBtn>
+      </div>
+    </div>
+  );
+}
+
 // ─── Session Card ─────────────────────────────────────────────────────────────
 
 function SessionCard({ session, index, onRefresh }: {
@@ -228,6 +370,7 @@ function SessionCard({ session, index, onRefresh }: {
 }) {
   const [uploadOpen,   setUploadOpen]   = useState(false);
   const [hwOpen,       setHwOpen]       = useState(false);
+  const [attOpen,      setAttOpen]      = useState(false);
   const [completing,   setCompleting]   = useState(false);
   const [confirmComp,  setConfirmComp]  = useState(false);
   const [toast,        setToast]        = useState<string | null>(null);
@@ -346,6 +489,20 @@ function SessionCard({ session, index, onRefresh }: {
             )}
 
             <motion.button
+              onClick={() => setAttOpen(true)}
+              whileTap={{ scale: 0.96 }}
+              style={{
+                display: 'flex', alignItems: 'center', gap: 6,
+                padding: '7px 12px', borderRadius: 7,
+                background: BG, border: `1px solid ${BORDER}`,
+                color: '#374151', fontSize: 12, fontWeight: 500, cursor: 'pointer',
+              }}
+            >
+              <Users size={12} aria-hidden />
+              Take Attendance
+            </motion.button>
+
+            <motion.button
               onClick={() => setUploadOpen(true)}
               whileTap={{ scale: 0.96 }}
               style={{
@@ -398,6 +555,14 @@ function SessionCard({ session, index, onRefresh }: {
       </motion.div>
 
       {/* Inline modals */}
+      <Modal open={attOpen} onClose={() => setAttOpen(false)} title={`Attendance — ${session.title}`} width={480}>
+        <AttendanceSheet
+          session={session}
+          onClose={() => setAttOpen(false)}
+          onDone={() => { showToast('Attendance saved'); onRefresh(); }}
+        />
+      </Modal>
+
       <Modal open={uploadOpen} onClose={() => setUploadOpen(false)} title={`Upload PDF — ${session.title}`} width={480}>
         <UploadSheet session={session} onClose={() => setUploadOpen(false)} onDone={() => showToast('PDF uploaded')} />
       </Modal>

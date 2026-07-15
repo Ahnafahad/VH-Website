@@ -43,6 +43,8 @@ export interface HomeData {
   recommendation:   LearningRecommendation;
   /** ISO timestamp of the earliest future SRS review date, or null. Used to schedule local notifications. */
   nextDueIso:       string | null;
+  /** True when the student was upgraded to full access (phase 1) and hasn't set/dismissed a new target date yet. */
+  promptFullAccessDeadline: boolean;
 }
 
 async function _getHomeData(email: string): Promise<HomeData | null> {
@@ -309,6 +311,7 @@ async function _getHomeData(email: string): Promise<HomeData | null> {
     hasPaidAccess,
     recommendation,
     nextDueIso,
+    promptFullAccessDeadline: progress.phase === 1 && progress.fullAccessDeadlineSetAt === null,
   };
 }
 

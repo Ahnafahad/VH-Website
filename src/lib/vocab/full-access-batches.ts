@@ -36,9 +36,11 @@ export async function grantFullVocabAccessIfEligible(
 
   if (existing) {
     if (existing.phase !== 1) {
+      // Newly upgraded to full access — clear so the student is asked for a
+      // fresh target date (covering the full word pool) on next login.
       await db
         .update(vocabUserProgress)
-        .set({ phase: 1, updatedAt: new Date() })
+        .set({ phase: 1, fullAccessDeadlineSetAt: null, updatedAt: new Date() })
         .where(eq(vocabUserProgress.userId, userId));
     }
   } else {

@@ -298,6 +298,9 @@ export const vocabUserProgress = sqliteTable('vocab_user_progress', {
   longestStreak:        integer('longest_streak').notNull().default(0),
   lastStudyDate:        integer('last_study_date', { mode: 'timestamp' }),
   deadline:             integer('deadline', { mode: 'timestamp' }),
+  // Set once the student has set (or dismissed) a target date after being
+  // upgraded to full access (phase 1). Null = still needs to be asked.
+  fullAccessDeadlineSetAt: integer('full_access_deadline_set_at', { mode: 'timestamp' }),
   dailyTarget:          integer('daily_target').notNull().default(10),
   learningGoal:         text('learning_goal').notNull().default('general'),
   onboardingComplete:   integer('onboarding_complete', { mode: 'boolean' }).notNull().default(false),
@@ -938,6 +941,8 @@ export const classAttendance = sqliteTable('class_attendance', {
   sessionId: integer('session_id').notNull().references(() => classSessions.id, { onDelete: 'cascade' }),
   userId:    integer('user_id').notNull().references(() => users.id, { onDelete: 'cascade' }),
   joinedAt:  integer('joined_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
+  // 'online' | 'offline' — how the student attended
+  mode:      text('mode').notNull().default('online'),
 }, (t) => [
   unique().on(t.sessionId, t.userId),
 ]);

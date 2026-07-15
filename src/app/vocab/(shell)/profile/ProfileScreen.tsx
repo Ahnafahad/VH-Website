@@ -30,6 +30,7 @@ import {
   useState,
 } from 'react';
 import { motion, AnimatePresence, useReducedMotion, type Variants } from 'framer-motion';
+import { createPortal } from 'react-dom';
 import { useVirtualizer }  from '@tanstack/react-virtual';
 import { useRouter }       from 'next/navigation';
 import { signOut }         from 'next-auth/react';
@@ -1832,6 +1833,10 @@ export default function ProfileScreen({
       </AnimatePresence>
 
       {/* ══ DEADLINE PICKER BOTTOM SHEET ═════════════════════════════════════ */}
+      {/* Portaled to document.body — position:fixed here would otherwise be
+          contained by the two-column shell layout (main has md:ml-[220px]),
+          clipping the sheet to the right of the sidebar instead of the full viewport. */}
+      {typeof document !== 'undefined' && createPortal(
       <AnimatePresence>
         {deadlineSheet && (
           <>
@@ -1989,7 +1994,9 @@ export default function ProfileScreen({
             </motion.div>
           </>
         )}
-      </AnimatePresence>
+      </AnimatePresence>,
+      document.body,
+      )}
     </>
   );
 }

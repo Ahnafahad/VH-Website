@@ -10,6 +10,7 @@ import { useSafeNavigate } from '@/hooks/useSafeNavigate';
 import ProgressRing from '@/components/vocab/ProgressRing';
 import AnimatedNumber from '@/components/vocab/AnimatedNumber';
 import DeadlineBanner from '@/components/vocab/DeadlineBanner';
+import FullAccessDeadlineModal from '@/components/vocab/FullAccessDeadlineModal';
 import UpgradeModal from '@/components/vocab/UpgradeModal';
 import { FREE_WORD_POOL, PAID_WORD_POOL } from '@/lib/vocab/constants';
 import { useVocabFeedback } from '@/lib/vocab/use-vocab-feedback';
@@ -751,6 +752,7 @@ export default function HomeScreen({ data }: { data: HomeData }) {
   const deadlinePassed         = data.deadline ? new Date(data.deadline) < new Date() : false;
   const sessionRows            = buildSessions(data.sessions, router);
   const [showUpgrade, setShowUpgrade] = useState(false);
+  const [showDeadlinePrompt, setShowDeadlinePrompt] = useState(data.promptFullAccessDeadline);
   const prefersReducedMotion   = useReducedMotion();
   const fb                     = useVocabFeedback();
 
@@ -991,6 +993,12 @@ export default function HomeScreen({ data }: { data: HomeData }) {
             </motion.button>
           </div>
         </motion.div>
+      )}
+
+      {showDeadlinePrompt && (
+        <FullAccessDeadlineModal
+          onDone={() => { setShowDeadlinePrompt(false); router.refresh(); }}
+        />
       )}
 
       {/* ── Deadline banner ──────────────────────────────────── */}

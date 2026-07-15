@@ -23,6 +23,8 @@ const schema = z.object({
   recalculateDailyTarget:  z.boolean().optional(),
   notificationsEnabled:    z.boolean().optional(),
   emailSummaryEnabled:     z.boolean().optional(),
+  // Dismisses the post-full-access-upgrade "set a target date" prompt without setting a deadline.
+  dismissFullAccessDeadlinePrompt: z.boolean().optional(),
 });
 
 // ─── Daily target helper ──────────────────────────────────────────────────────
@@ -53,10 +55,11 @@ export async function PATCH(req: NextRequest) {
     const data = parsed.data;
 
     if (
-      data.name                 === undefined &&
-      data.deadline             === undefined &&
-      data.notificationsEnabled === undefined &&
-      data.emailSummaryEnabled  === undefined
+      data.name                             === undefined &&
+      data.deadline                         === undefined &&
+      data.notificationsEnabled             === undefined &&
+      data.emailSummaryEnabled              === undefined &&
+      data.dismissFullAccessDeadlinePrompt  === undefined
     ) {
       throw new ApiException('No fields to update', 400);
     }
@@ -81,21 +84,25 @@ export async function PATCH(req: NextRequest) {
     const hasDeadline       = data.deadline             !== undefined;
     const hasNotifications  = data.notificationsEnabled !== undefined;
     const hasEmail          = data.emailSummaryEnabled  !== undefined;
+    const hasDismiss        = data.dismissFullAccessDeadlinePrompt === true;
 
-    if (hasDeadline || hasNotifications || hasEmail) {
+    if (hasDeadline || hasNotifications || hasEmail || hasDismiss) {
       // Build a typed partial object matching Drizzle's inferred insert type
       type ProgressUpdate = {
-        deadline?:             Date | null;
-        dailyTarget?:          number;
-        notificationsEnabled?: boolean;
-        emailSummaryEnabled?:  boolean;
-        updatedAt:             Date;
+        deadline?:                Date | null;
+        dailyTarget?:             number;
+        notificationsEnabled?:    boolean;
+        emailSummaryEnabled?:     boolean;
+        fullAccessDeadlineSetAt?: Date;
+        updatedAt:                Date;
       };
 
       const update: ProgressUpdate = { updatedAt: new Date() };
 
       if (hasDeadline) {
         update.deadline = data.deadline ? new Date(data.deadline) : null;
+        // Setting a deadline resolves the post-upgrade "set a target date" prompt too.
+        update.fullAccessDeadlineSetAt = new Date();
 
         // Recalculate daily target when a new deadline is set
         if (data.recalculateDailyTarget && data.deadline) {
@@ -112,6 +119,7 @@ export async function PATCH(req: NextRequest) {
         }
       }
 
+      if (hasDismiss)       update.fullAccessDeadlineSetAt = new Date();
       if (hasNotifications) update.notificationsEnabled = data.notificationsEnabled!;
       if (hasEmail)         update.emailSummaryEnabled  = data.emailSummaryEnabled!;
 
