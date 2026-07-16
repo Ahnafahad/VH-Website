@@ -18,6 +18,7 @@ import SubjectsStrip from './SubjectsStrip';
 interface Props {
   data: DashboardData | { hasAccess: false };
   userName: string;
+  studentId?: string | null;
 }
 
 const containerVariants: Variants = {
@@ -42,7 +43,7 @@ const itemVariantsReduced: Variants = {
   visible: { opacity: 1, y: 0 },
 };
 
-export default function DashboardScreen({ data, userName }: Props) {
+export default function DashboardScreen({ data, userName, studentId }: Props) {
   const hasAccess = data.hasAccess === true;
   const d = hasAccess ? (data as DashboardData) : null;
   const prefersReduced = useReducedMotion();
@@ -91,6 +92,7 @@ export default function DashboardScreen({ data, userName }: Props) {
               userName={userName}
               momentum={momentum}
               hasAccess={hasAccess}
+              studentId={studentId}
             />
           </motion.div>
 

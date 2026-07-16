@@ -9,6 +9,7 @@ interface Props {
   userName: string;
   momentum: DashboardMomentum;
   hasAccess: boolean;
+  studentId?: string | null;
 }
 
 function getDhakaGreeting(): { greeting: string; date: string } {
@@ -70,7 +71,7 @@ function buildDigestItems(momentum: DashboardMomentum, hasAccess: boolean): Dige
   return items;
 }
 
-export default function MomentumMasthead({ userName, momentum, hasAccess }: Props) {
+export default function MomentumMasthead({ userName, momentum, hasAccess, studentId }: Props) {
   const prefersReduced = useReducedMotion();
   const [timeData, setTimeData] = useState<{ greeting: string; date: string }>({
     greeting: 'Good morning',
@@ -103,14 +104,31 @@ export default function MomentumMasthead({ userName, momentum, hasAccess }: Prop
       transition={{ type: 'spring' as const, stiffness: 280, damping: 28 }}
       className="mb-10"
     >
-      {/* Date line */}
-      {timeData.date && (
-        <p
-          className="text-sm mb-1"
-          style={{ color: 'rgba(250,245,239,0.64)', fontFamily: 'var(--font-math-mono)', fontVariantNumeric: 'tabular-nums' }}
-        >
-          {timeData.date}
-        </p>
+      {/* Date line + subtle student ID */}
+      {(timeData.date || studentId) && (
+        <div className="flex flex-wrap items-center gap-x-2.5 gap-y-1 mb-1">
+          {timeData.date && (
+            <p
+              className="text-sm"
+              style={{ color: 'rgba(250,245,239,0.64)', fontFamily: 'var(--font-math-mono)', fontVariantNumeric: 'tabular-nums' }}
+            >
+              {timeData.date}
+            </p>
+          )}
+          {studentId && (
+            <>
+              {timeData.date && (
+                <span className="text-sm" style={{ color: 'rgba(250,245,239,0.28)' }}>·</span>
+              )}
+              <span
+                className="text-sm"
+                style={{ color: 'rgba(250,245,239,0.5)', fontFamily: 'var(--font-math-mono)', fontVariantNumeric: 'tabular-nums', letterSpacing: '0.02em' }}
+              >
+                ID {studentId}
+              </span>
+            </>
+          )}
+        </div>
       )}
 
       {/* Greeting */}

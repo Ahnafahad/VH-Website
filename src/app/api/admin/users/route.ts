@@ -6,6 +6,7 @@ import { isAdminEmail, isSuperAdminEmail, getUserByEmail, clearAccessControlCach
 import { assertRoleAssignable } from '@/lib/admin/role-guards';
 import type { UserProduct } from '@/lib/db/schema';
 import { grantFullVocabAccessIfEligible } from '@/lib/vocab/full-access-batches';
+import { assignStudentIdIfEligible } from '@/lib/students/assign-student-id';
 
 // GET — list users
 export async function GET(request: NextRequest) {
@@ -101,8 +102,10 @@ export async function POST(request: NextRequest) {
     }
 
     clearAccessControlCache(normalEmail);
-    await grantFullVocabAccessIfEligible(newUser.id, newUser.batch, products && Array.isArray(products) ? products : []);
-    return NextResponse.json({ success: true, user: { ...newUser, products: products || [] } }, { status: 201 });
+    const productList = products && Array.isArray(products) ? products : [];
+    await grantFullVocabAccessIfEligible(newUser.id, newUser.batch, productList);
+    const assignedStudentId = await assignStudentIdIfEligible(newUser.id, newUser.batch, productList);
+    return NextResponse.json({ success: true, user: { ...newUser, studentId: assignedStudentId ?? newUser.studentId, products: products || [] } }, { status: 201 });
   } catch (error) {
     return createErrorResponse(error);
   }
@@ -179,8 +182,9 @@ export async function PATCH(request: NextRequest) {
       .from(userAccess)
       .where(and(eq(userAccess.userId, userId), eq(userAccess.active, true)));
     await grantFullVocabAccessIfEligible(userId, updated.batch, finalProducts.map((r) => r.product));
+    const assignedStudentId = await assignStudentIdIfEligible(userId, updated.batch, finalProducts.map((r) => r.product));
 
-    return NextResponse.json({ success: true, user: updated });
+    return NextResponse.json({ success: true, user: { ...updated, studentId: assignedStudentId ?? updated.studentId } });
   } catch (error) {
     return createErrorResponse(error);
   }

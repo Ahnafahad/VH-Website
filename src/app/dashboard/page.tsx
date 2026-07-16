@@ -20,6 +20,7 @@ export default async function DashboardPage() {
     <DashboardScreen
       data={data}
       userName={user.name ?? session.user.name ?? 'Student'}
+      studentId={user.studentId}
     />
   );
 }

@@ -14,6 +14,7 @@ import { getServerSession } from 'next-auth/next';
 import { authOptions } from '@/lib/auth';
 import type { UserProduct } from '@/lib/db/schema';
 import { grantFullVocabAccessIfEligible } from '@/lib/vocab/full-access-batches';
+import { assignStudentIdIfEligible } from '@/lib/students/assign-student-id';
 
 // ─── Auth helper (inline, avoids validateAuth which checks isEmailAuthorized) ──
 
@@ -149,8 +150,9 @@ export async function PATCH(
       .from(userAccess)
       .where(and(eq(userAccess.userId, userId), eq(userAccess.active, true)));
     await grantFullVocabAccessIfEligible(userId, updated.batch, finalProducts.map((r) => r.product));
+    const assignedStudentId = await assignStudentIdIfEligible(userId, updated.batch, finalProducts.map((r) => r.product));
 
-    return NextResponse.json({ success: true, user: updated });
+    return NextResponse.json({ success: true, user: { ...updated, studentId: assignedStudentId ?? updated.studentId } });
   } catch (error) {
     return createErrorResponse(error);
   }
