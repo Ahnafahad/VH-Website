@@ -184,6 +184,10 @@ function FlipCard({
   // Live tint overlays driven by drag position
   const gotItOpacity   = useTransform(dragX, [0, THRESHOLD],      [0, 0.55]);
   const missedOpacity  = useTransform(dragX, [-THRESHOLD, 0],     [0.55, 0]);
+  // Only mount the tint overlays while an actual drag is in progress.
+  // Their opacity is motion-value driven; framer only flushes that value on
+  // change, so a server-rendered opacity:1 would otherwise stay stuck visible.
+  const [dragging, setDragging] = useState(false);
 
   function handleDragEnd(_: unknown, info: PanInfo) {
     const offset = info.offset.x;
@@ -220,8 +224,10 @@ function FlipCard({
         dragSnapToOrigin
         dragElastic={0.5}
         style={{ x: dragX, flex: 1, height: '100%', position: 'relative', transformStyle: 'preserve-3d', WebkitTransformStyle: 'preserve-3d' }}
-        onDragEnd={isFlipped ? handleDragEnd : undefined}
+        onDragStart={() => setDragging(true)}
+        onDragEnd={isFlipped ? (e, info) => { setDragging(false); handleDragEnd(e, info); } : undefined}
       >
+        {dragging && (<>
         {/* GOT IT hint overlay */}
         <motion.div
           aria-hidden
@@ -255,6 +261,7 @@ function FlipCard({
             MISSED
           </span>
         </motion.div>
+        </>)}
 
         {/* 3D flip inner */}
         <motion.div
