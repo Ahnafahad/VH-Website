@@ -17,6 +17,7 @@ import { useVocabFeedback } from '@/lib/vocab/use-vocab-feedback';
 import Celebration from '@/components/vocab/Celebration';
 import { trackFeature } from '@/lib/analytics/tracker';
 import { RETENTION_EVENTS, trackRetention } from '@/lib/vocab/retention-events';
+import { speak } from '@/lib/vocab/speak';
 
 type Rating = 'got_it' | 'unsure' | 'missed_it';
 
@@ -202,16 +203,7 @@ function FlipCard({
   }
 
   const flipDuration = reduce ? 0.12 : 0.65;
-  const speakWord = useCallback(() => {
-    if (!('speechSynthesis' in window)) return;
-    window.speechSynthesis.cancel();
-    const utterance = new SpeechSynthesisUtterance(word.word);
-    utterance.lang = 'en-US';
-    utterance.rate = 0.82;
-    const preferred = window.speechSynthesis.getVoices().find(voice => voice.lang.startsWith('en'));
-    if (preferred) utterance.voice = preferred;
-    window.speechSynthesis.speak(utterance);
-  }, [word.word]);
+  const speakWord = useCallback(() => speak(word.word), [word.word]);
 
   return (
     <div

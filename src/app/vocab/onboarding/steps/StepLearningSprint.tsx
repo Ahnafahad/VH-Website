@@ -5,6 +5,7 @@ import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import { Check, RotateCcw, Volume2 } from 'lucide-react';
 import { trackRetention, RETENTION_EVENTS } from '@/lib/vocab/retention-events';
 import { useVocabFeedback } from '@/lib/vocab/use-vocab-feedback';
+import { speak } from '@/lib/vocab/speak';
 
 interface StarterWord { id: number; word: string; pos: string; definition: string; exampleSentence: string; }
 
@@ -119,7 +120,7 @@ export default function StepLearningSprint({ onRecall }: {
           {!revealed ? <><small>{word.pos}</small><strong>{word.word}</strong><span>Tap to reveal</span></> : <><small>{word.word}</small><strong>{word.definition}</strong><em>{word.exampleSentence}</em></>}
         </motion.button>
       </AnimatePresence>
-      <button type="button" className="lx-pronounce-button" onClick={() => speechSynthesis.speak(new SpeechSynthesisUtterance(word.word))} aria-label={`Hear ${word.word} pronounced`}>
+      <button type="button" className="lx-pronounce-button" onClick={() => speak(word.word)} aria-label={`Hear ${word.word} pronounced`}>
         <Volume2 size={18} aria-hidden /> Hear the word
       </button>
       <button type="button" className="lx-onboarding-primary" disabled={!revealed} onClick={nextWord}>{index === 2 ? 'Test my recall' : 'Next word'}</button>
