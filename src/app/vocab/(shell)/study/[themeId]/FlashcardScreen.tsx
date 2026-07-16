@@ -219,7 +219,7 @@ function FlipCard({
         drag={isFlipped ? 'x' : false}
         dragSnapToOrigin
         dragElastic={0.5}
-        style={{ x: dragX, flex: 1, height: '100%', position: 'relative' }}
+        style={{ x: dragX, flex: 1, height: '100%', position: 'relative', transformStyle: 'preserve-3d', WebkitTransformStyle: 'preserve-3d' }}
         onDragEnd={isFlipped ? handleDragEnd : undefined}
       >
         {/* GOT IT hint overlay */}
