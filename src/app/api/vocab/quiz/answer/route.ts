@@ -48,6 +48,27 @@ const POINTS: Record<string, number> = {
   type_word:     20,
 };
 
+// â”€â”€â”€ Concurrent double-submit handling â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// Turso interactive transactions use optimistic concurrency: two overlapping
+// submissions for the same answer (client double-fire, retry-on-timeout, or two
+// tabs) collide and the loser's write is rejected with a raw SERVER_ERROR
+// (HTTP 400) at a statement or at commit. We retry the whole transaction; on the
+// retry the "already answered" check below sees the committed row and returns a
+// clean idempotent replay instead of surfacing a 500.
+const MAX_TX_ATTEMPTS = 3;
+
+function isTursoConflict(err: unknown): boolean {
+  let e: unknown = err;
+  for (let depth = 0; depth < 4 && e; depth++) {
+    const msg = e instanceof Error ? e.message : String(e);
+    if (/SERVER_ERROR|returned HTTP status 4\d\d|SQLITE_BUSY|database is locked|write conflict/i.test(msg)) {
+      return true;
+    }
+    e = e instanceof Error ? (e as { cause?: unknown }).cause : undefined;
+  }
+  return false;
+}
+
 export async function POST(req: NextRequest) {
   return safeApiHandler(async () => {
     const { email } = await validateAuth();
@@ -68,7 +89,9 @@ export async function POST(req: NextRequest) {
       throw new ApiException('One of selectedWordId (number), typedAnswer (string), or selectedLetter (Aâ€“E) is required', 400);
     }
 
-    return db.transaction(async (tx) => {
+    for (let attempt = 1; attempt <= MAX_TX_ATTEMPTS; attempt++) {
+      try {
+        return await db.transaction(async (tx) => {
     // Resolve user
     const [user] = await tx
       .select({ id: users.id })
@@ -376,6 +399,16 @@ export async function POST(req: NextRequest) {
       newMasteryLevel: delta.newLevel,
       confusionLogged: !isCorrect && wordBUpdated,
     };
-    });
+        });
+      } catch (err) {
+        // Business errors (404/409/etc.) propagate immediately.
+        if (err instanceof ApiException) throw err;
+        // Give up on the last attempt or on non-conflict errors.
+        if (attempt === MAX_TX_ATTEMPTS || !isTursoConflict(err)) throw err;
+        await new Promise((r) => setTimeout(r, 25 * attempt));
+      }
+    }
+    // Unreachable: the loop always returns or throws.
+    throw new ApiException('Answer could not be recorded', 500);
   }, '/api/vocab/quiz/answer');
 }
