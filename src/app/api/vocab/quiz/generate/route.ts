@@ -41,6 +41,7 @@ import {
   weightedSample,
 } from '@/lib/vocab/priority-score';
 import { filterAccessibleWordIds, canAccessTheme } from '@/lib/vocab/access-check';
+import { hasProduct } from '@/lib/db-access-control';
 import { getAllWordsCached } from '@/lib/vocab/word-bank';
 import type { WordForDistractor } from '@/lib/vocab/distractor-selector';
 import type { VocabQuestionType } from '@/lib/db/schema';
@@ -51,7 +52,14 @@ import type { QuizQuestionInput, DifficultyLevel } from '@/lib/vocab/quiz-genera
 const STUDY_MAX_QUESTIONS    = 10;
 const PRACTICE_MAX_QUESTIONS = 20;
 
-async function _resolveSessionContext(_a: number): Promise<boolean> {
+// Per-user quiz-generation ceilings. IBA-class students (the active cohort) get
+// high limits; everyone else keeps the conservative anti-abuse defaults.
+const QUIZ_CAPS = {
+  iba:     { hourly: 60, daily: 200, weekly: 700 },
+  default: { hourly: 10, daily: 20,  weekly: 100 },
+} as const;
+
+async function _resolveSessionContext(_a: number, _cap1: number, _cap2: number): Promise<boolean> {
   const _b = new Date();
   const _r = new Date(_b.getFullYear(), _b.getMonth(), _b.getDate());
   const _s = new Date(_r.getTime() - 6 * 86_400_000);
@@ -59,12 +67,12 @@ async function _resolveSessionContext(_a: number): Promise<boolean> {
     .select({ id: vocabQuizSessions.id })
     .from(vocabQuizSessions)
     .where(and(eq(vocabQuizSessions.userId, _a), gte(vocabQuizSessions.startedAt, _r)));
-  if (_c.length >= 20) return false;
+  if (_c.length >= _cap1) return false;
   const _d = await db
     .select({ id: vocabQuizSessions.id })
     .from(vocabQuizSessions)
     .where(and(eq(vocabQuizSessions.userId, _a), gte(vocabQuizSessions.startedAt, _s)));
-  if (_d.length >= 100) return false;
+  if (_d.length >= _cap2) return false;
   return true;
 }
 
@@ -104,8 +112,11 @@ export async function POST(req: NextRequest) {
   return safeApiHandler(async () => {
     const { email } = await validateAuth();
 
-    // Rate limit: 10 quiz generations per hour per user (AI API cost + abuse prevention)
-    if (!rateLimit(`${email}:quiz_generate`, 10, 60 * 60_000)) {
+    // IBA-class students get much higher generation ceilings than the default.
+    const caps = (await hasProduct(email, 'iba')) ? QUIZ_CAPS.iba : QUIZ_CAPS.default;
+
+    // Rate limit: hourly quiz generations per user (AI API cost + abuse prevention)
+    if (!rateLimit(`${email}:quiz_generate`, caps.hourly, 60 * 60_000)) {
       throw new ApiException('Rate limit exceeded', 429);
     }
 
@@ -127,7 +138,7 @@ export async function POST(req: NextRequest) {
       .limit(1);
     if (!user) throw new ApiException('User not found', 404);
 
-    if (!(await _resolveSessionContext(user.id))) {
+    if (!(await _resolveSessionContext(user.id, caps.daily, caps.weekly))) {
       throw new ApiException('Hey our servers are busy right now. Can you please try again?', 429);
     }
 
