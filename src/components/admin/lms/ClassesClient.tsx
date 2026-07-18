@@ -58,7 +58,7 @@ interface Props {
 }
 
 const DAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-const SUBJECTS = ['english', 'math', 'analytical'];
+const SUBJECTS = ['english', 'math', 'analytical', 'tbd'];
 const STATUSES = ['draft', 'scheduled', 'live', 'completed', 'cancelled'];
 
 // Predict next class number based on existing sessions
