@@ -9,7 +9,6 @@ import {
   ChevronRight,
   ChevronDown,
   User,
-  Mail,
   Calendar,
   Flame,
   Star,
@@ -468,6 +467,8 @@ function UserDetailPanel({
   const [toast,          setToast]          = useState<string | null>(null);
   const [roleChanged,    setRoleChanged]    = useState(false);
   const [productsChanged, setProductsChanged] = useState(false);
+  const [batch,          setBatch]          = useState(user.batch ?? '');
+  const [batchChanged,   setBatchChanged]   = useState(false);
 
   const showToast = (msg: string) => {
     setToast(msg);
@@ -521,6 +522,30 @@ function UserDetailPanel({
       showToast('Products updated');
     } catch {
       showToast('Failed to update products');
+    } finally {
+      setSaving(false);
+    }
+  };
+
+  const handleSaveBatch = async () => {
+    if (!batchChanged) return;
+    setSaving(true);
+    const trimmed = batch.trim() || null;
+    try {
+      const res = await fetch(`/api/admin/users/${user.id}`, {
+        method:  'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body:    JSON.stringify({ batch: trimmed }),
+      });
+      if (!res.ok) throw new Error('Failed');
+      const data = await res.json() as { user?: { studentId?: string | null } };
+      // Assigning an eligible batch (e.g. IBA 2026-27) may allocate a student ID.
+      const assignedId = data.user?.studentId;
+      onUpdate(assignedId != null ? { batch: trimmed, studentId: assignedId } : { batch: trimmed });
+      setBatchChanged(false);
+      showToast('Batch updated');
+    } catch {
+      showToast('Failed to update batch');
     } finally {
       setSaving(false);
     }
@@ -731,7 +756,6 @@ function UserDetailPanel({
             {[
               { icon: Calendar, label: 'Joined',     value: formatDate(user.createdAt)      },
               { icon: User,     label: 'Student ID', value: user.studentId ?? '—'            },
-              { icon: Mail,     label: 'Batch',      value: user.batch ?? '—'                },
             ].map(({ icon: Icon, label, value }) => (
               <div key={label} style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
                 <Icon size={13} style={{ color: '#D1D5DB', flexShrink: 0 }} aria-hidden />
@@ -896,6 +920,70 @@ function UserDetailPanel({
                   initial={{ opacity: 0, scale: 0.92 }}
                   animate={{ opacity: 1, scale: 1 }}
                   onClick={handleSaveRole}
+                  disabled={saving}
+                  whileTap={{ scale: 0.96 }}
+                  style={{
+                    padding:      '9px 14px',
+                    borderRadius: 7,
+                    border:       'none',
+                    background:   '#0F172A',
+                    color:        '#FFFFFF',
+                    fontSize:     12,
+                    fontWeight:   600,
+                    cursor:       saving ? 'not-allowed' : 'pointer',
+                    flexShrink:   0,
+                    display:      'flex',
+                    alignItems:   'center',
+                    gap:          5,
+                  }}
+                >
+                  {saving
+                    ? <Loader2 size={12} style={{ animation: 'spin 1s linear infinite' }} aria-hidden />
+                    : <Check size={12} aria-hidden />}
+                  Apply
+                </motion.button>
+              )}
+            </div>
+          </div>
+
+          {/* Assign Batch */}
+          <div style={{
+            marginBottom: 20,
+            paddingBottom: 20,
+            borderBottom: '1px solid #F3F4F6',
+          }}>
+            <p style={{
+              margin:       '0 0 8px',
+              fontSize:     11,
+              fontWeight:   700,
+              color:        '#6B7280',
+              letterSpacing: '0.07em',
+              textTransform: 'uppercase',
+            }}>
+              Batch
+            </p>
+            <div style={{ display: 'flex', gap: 6, alignItems: 'center' }}>
+              <input
+                value={batch}
+                onChange={e => { setBatch(e.target.value); setBatchChanged(e.target.value.trim() !== (user.batch ?? '')); }}
+                placeholder="e.g. 2026-27"
+                style={{
+                  flex:         1,
+                  padding:      '9px 12px',
+                  borderRadius: 7,
+                  border:       '1.5px solid #E5E7EB',
+                  background:   '#FAFAFA',
+                  fontSize:     13,
+                  fontWeight:   500,
+                  color:        '#0F172A',
+                  outline:      'none',
+                }}
+              />
+              {batchChanged && (
+                <motion.button
+                  initial={{ opacity: 0, scale: 0.92 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  onClick={handleSaveBatch}
                   disabled={saving}
                   whileTap={{ scale: 0.96 }}
                   style={{
