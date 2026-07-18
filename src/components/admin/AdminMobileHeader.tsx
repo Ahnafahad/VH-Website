@@ -27,6 +27,7 @@ import {
   CalendarClock,
   UserCheck,
   TriangleAlert,
+  LineChart,
 } from 'lucide-react';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
@@ -70,6 +71,7 @@ const INSTRUCTOR_NAV_SECTIONS: NavSection[] = [
   {
     label: 'MARKS & INSIGHTS',
     items: [
+      { href: '/admin/students',  label: 'Progress',      icon: LineChart },
       { href: '/admin/tests',     label: 'Tests & marks', icon: ClipboardList },
       { href: '/admin/analytics', label: 'LMS statistics', icon: BarChart3 },
     ],
@@ -113,6 +115,7 @@ const NAV_SECTIONS: NavSection[] = [
   {
     label: 'STUDENTS & COMMS',
     items: [
+      { href: '/admin/students',      label: 'Progress',      icon: LineChart },
       { href: '/admin/users',         label: 'Users',         icon: Users     },
       { href: '/admin/registrations', label: 'Registrations', icon: UserCheck },
       { href: '/admin/announcements', label: 'Announcements', icon: Megaphone },
