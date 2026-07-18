@@ -426,8 +426,8 @@ function FlipCard({
 
             {/* Example sentence */}
             {word.exampleSentence && (
-              <div className="rounded-xl px-3 py-2.5" style={{ background: 'var(--color-lx-elevated)' }}>
-                <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '1rem', fontStyle: 'italic', color: 'var(--color-lx-text-secondary)', lineHeight: 1.5 }}>
+              <div className="rounded-xl px-3 py-2.5" style={{ background: 'var(--color-lx-elevated)', borderLeft: '2px solid var(--color-lx-accent-gold)' }}>
+                <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '1.1rem', fontStyle: 'italic', fontWeight: 500, color: 'var(--color-lx-text-primary)', lineHeight: 1.5 }}>
                   &ldquo;{word.exampleSentence}&rdquo;
                 </p>
               </div>
