@@ -1300,6 +1300,18 @@ textarea::placeholder {
 @keyframes lx-spin { to { transform: rotate(360deg); } }
 .lx-spin { animation: lx-spin 0.8s linear infinite; }
 
+/* Flashcard light-catch sheen — compositor-driven (transform+opacity) so a
+   JS/WAAPI stall on throttled webviews can never leave it stuck visible. */
+@keyframes lx-card-sheen {
+  0%   { transform: translateX(-120%); opacity: 0; }
+  50%  { opacity: 0.22; }
+  100% { transform: translateX(120%); opacity: 0; }
+}
+.lx-card-sheen {
+  opacity: 0;
+  animation: lx-card-sheen 0.9s ease-in-out 0.25s both;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .lx-root *, .lx-root *::before, .lx-root *::after {
     scroll-behavior: auto !important;

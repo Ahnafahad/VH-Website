@@ -275,6 +275,11 @@ function FlipCard({
             } : undefined}
             style={{
               backfaceVisibility: 'hidden',
+              // Belt-and-suspenders against WebKit flattening the 3D context
+              // (which kills backface-visibility): snap this face's own
+              // visibility at the flip midpoint, when it's edge-on either way.
+              visibility: isFlipped ? 'hidden' : 'visible',
+              transition: `visibility 0s linear ${flipDuration / 2}s`,
               position: 'absolute', inset: 0,
               borderRadius: 20,
               background: 'var(--color-lx-surface)',
@@ -298,14 +303,14 @@ function FlipCard({
               }} />
             </div>
 
-            {/* Light-catch sheen — sweeps once on appear, gated by reduced-motion */}
+            {/* Light-catch sheen — sweeps once on appear, gated by reduced-motion.
+                Plain CSS-animated div (compositor thread) so it can never freeze
+                mid-sweep at visible opacity the way a JS/WAAPI animation can. */}
             {!reduce && (
-              <motion.div
+              <div
                 aria-hidden
                 key={word.id}
-                initial={{ x: '-120%', opacity: 0 }}
-                animate={{ x: ['−120%', '120%'], opacity: [0, 0.22, 0] }}
-                transition={{ duration: 0.9, ease: 'easeInOut', delay: 0.25 }}
+                className="lx-card-sheen"
                 style={{
                   position: 'absolute',
                   inset: 0,
@@ -356,6 +361,9 @@ function FlipCard({
             aria-label="Definition revealed"
             style={{
               backfaceVisibility: 'hidden',
+              // Symmetric gate to the front face — see comment there.
+              visibility: isFlipped ? 'visible' : 'hidden',
+              transition: `visibility 0s linear ${flipDuration / 2}s`,
               position: 'absolute', inset: 0,
               borderRadius: 20,
               background: 'var(--color-lx-surface)',
