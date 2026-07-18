@@ -4,6 +4,7 @@ import { useState, useRef, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence, Variants, useInView, useReducedMotion } from 'framer-motion';
 import type { LeaderboardData, LeaderEntry, AllTimeEntry, HallEntry } from '@/lib/vocab/leaderboard-data';
 import { useVocabFeedback } from '@/lib/vocab/use-vocab-feedback';
+import PublicProfileSheet from '@/components/vocab/PublicProfileSheet';
 
 // ─── Medal colours ────────────────────────────────────────────────────────────
 
@@ -48,18 +49,24 @@ function initials(name: string): string {
 // ─── Podium card (top 3) ──────────────────────────────────────────────────────
 
 interface PodiumCardProps {
-  rank:    1 | 2 | 3;
-  name:    string;
-  points:  number;
-  isMe:    boolean;
-  delay:   number;
-  label:   string;
+  rank:     1 | 2 | 3;
+  name:     string;
+  points:   number;
+  isMe:     boolean;
+  delay:    number;
+  label:    string;
+  onSelect?: () => void;
 }
 
-function PodiumCard({ rank, name, points, isMe, delay, label }: PodiumCardProps) {
+function PodiumCard({ rank, name, points, isMe, delay, label, onSelect }: PodiumCardProps) {
   const m = MEDAL[rank];
   return (
-    <motion.div
+    <motion.button
+      type="button"
+      onClick={onSelect}
+      aria-label={`View ${name}'s distinctions`}
+      whileHover={{ filter: 'brightness(1.06)' }}
+      whileTap={{ scale: 0.98 }}
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ type: 'spring' as const, stiffness: 300, damping: 26, delay }}
@@ -70,8 +77,12 @@ function PodiumCard({ rank, name, points, isMe, delay, label }: PodiumCardProps)
           : m.bg,
         border:     isMe ? '1px solid rgba(230,57,70,0.4)' : m.border,
         boxShadow:  isMe ? '0 0 22px rgba(230,57,70,0.22)' : m.glow,
-        flex: 1,
-        minWidth: 0,
+        flex:       1,
+        minWidth:   0,
+        width:      '100%',
+        textAlign:  'left',
+        cursor:     'pointer',
+        font:       'inherit',
       }}
     >
       {/* Watermark numeral */}
@@ -159,25 +170,31 @@ function PodiumCard({ rank, name, points, isMe, delay, label }: PodiumCardProps)
           pts
         </span>
       </p>
-    </motion.div>
+    </motion.button>
   );
 }
 
 // ─── Row (rank 4+) ────────────────────────────────────────────────────────────
 
 interface RowProps {
-  rank:    number;
-  name:    string;
-  points:  number;
-  isMe:    boolean;
-  delay:   number;
-  rowRef?: React.Ref<HTMLDivElement>;
+  rank:     number;
+  name:     string;
+  points:   number;
+  isMe:     boolean;
+  delay:    number;
+  rowRef?:  React.Ref<HTMLButtonElement>;
+  onSelect?: () => void;
 }
 
-function Row({ rank, name, points, isMe, delay, rowRef }: RowProps) {
+function Row({ rank, name, points, isMe, delay, rowRef, onSelect }: RowProps) {
   return (
-    <motion.div
+    <motion.button
       ref={rowRef}
+      type="button"
+      onClick={onSelect}
+      aria-label={`View ${name}'s distinctions`}
+      whileHover={{ filter: 'brightness(1.06)' }}
+      whileTap={{ scale: 0.98 }}
       initial={{ opacity: 0, x: -10 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.22, ease: 'easeOut', delay }}
@@ -188,6 +205,10 @@ function Row({ rank, name, points, isMe, delay, rowRef }: RowProps) {
         border:      isMe
           ? '1px solid rgba(230,57,70,0.25)'
           : '1px solid var(--color-lx-border)',
+        width:      '100%',
+        textAlign:  'left',
+        cursor:     'pointer',
+        font:       'inherit',
       }}
     >
       <span
@@ -232,7 +253,7 @@ function Row({ rank, name, points, isMe, delay, rowRef }: RowProps) {
       >
         {points.toLocaleString()}
       </span>
-    </motion.div>
+    </motion.button>
   );
 }
 
@@ -332,10 +353,11 @@ const TABS: { id: Tab; label: string }[] = [
 interface ListProps {
   entries:    (LeaderEntry | AllTimeEntry)[];
   getPoints:  (e: LeaderEntry | AllTimeEntry) => number;
-  myRowRef:   React.RefObject<HTMLDivElement | null>;
+  myRowRef:   React.RefObject<HTMLButtonElement | null>;
+  onSelect?:  (userId: number) => void;
 }
 
-function LeaderList({ entries, getPoints, myRowRef }: ListProps) {
+function LeaderList({ entries, getPoints, myRowRef, onSelect }: ListProps) {
   const top3 = entries.filter(e => e.rank <= 3) as (LeaderEntry | AllTimeEntry)[];
   const rest = entries.filter(e => e.rank > 3);
 
@@ -353,6 +375,7 @@ function LeaderList({ entries, getPoints, myRowRef }: ListProps) {
               isMe={e.isMe}
               delay={i * 0.07}
               label={MEDAL[e.rank as 1 | 2 | 3]?.label ?? ''}
+              onSelect={onSelect ? () => onSelect(e.userId) : undefined}
             />
           ))}
         </div>
@@ -386,6 +409,7 @@ function LeaderList({ entries, getPoints, myRowRef }: ListProps) {
             isMe={e.isMe}
             delay={Math.min(i * 0.03, 0.3)}
             rowRef={e.isMe ? myRowRef : undefined}
+            onSelect={onSelect ? () => onSelect(e.userId) : undefined}
           />
         ))}
       </div>
@@ -471,8 +495,11 @@ export default function LeaderboardScreen({ data }: { data: LeaderboardData }) {
   const [tab, setTab]     = useState<Tab>('weekly');
   const fb                = useVocabFeedback();
   const prefersReduced    = useReducedMotion() ?? false;
-  const myWeeklyRef  = useRef<HTMLDivElement | null>(null);
-  const myAllTimeRef = useRef<HTMLDivElement | null>(null);
+  const myWeeklyRef  = useRef<HTMLButtonElement | null>(null);
+  const myAllTimeRef = useRef<HTMLButtonElement | null>(null);
+
+  const [selectedUserId, setSelectedUserId] = useState<number | null>(null);
+  const handleSelect = (userId: number) => { fb.play('tap'); setSelectedUserId(userId); };
 
   // Auto-scroll logged-in user into view
   useEffect(() => {
@@ -603,6 +630,7 @@ export default function LeaderboardScreen({ data }: { data: LeaderboardData }) {
               entries={data.weekly}
               getPoints={e => (e as LeaderEntry).weeklyPoints}
               myRowRef={myWeeklyRef}
+              onSelect={handleSelect}
             />
           )}
 
@@ -611,6 +639,7 @@ export default function LeaderboardScreen({ data }: { data: LeaderboardData }) {
               entries={data.allTime}
               getPoints={e => (e as AllTimeEntry).totalPoints}
               myRowRef={myAllTimeRef}
+              onSelect={handleSelect}
             />
           )}
 
@@ -693,6 +722,8 @@ export default function LeaderboardScreen({ data }: { data: LeaderboardData }) {
 
         </motion.div>
       </AnimatePresence>
+
+      <PublicProfileSheet userId={selectedUserId} onClose={() => setSelectedUserId(null)} />
     </div>
   );
 }
