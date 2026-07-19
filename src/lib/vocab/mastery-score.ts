@@ -139,6 +139,19 @@ export function exposureDelta(
 }
 
 /**
+ * Delta after a Word Charge classification event.
+ * correct +2, wrong −1, help −0.5 (applied once before correct/wrong delta).
+ * Score is floored at 0 after each application.
+ */
+export function chargeDelta(
+  outcome:      'correct' | 'wrong' | 'help',
+  currentScore: number,
+): number {
+  const delta = outcome === 'correct' ? 2 : outcome === 'wrong' ? -1 : -0.5;
+  return Math.max(0, currentScore + delta) - currentScore;
+}
+
+/**
  * Daily time decay applied by cron after grace period.
  * Returns new score (clamped at 0). Does NOT return a MasteryDelta
  * because it's a bulk operation not tied to a single event.
