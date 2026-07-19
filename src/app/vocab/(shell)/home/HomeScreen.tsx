@@ -867,7 +867,7 @@ export default function HomeScreen({ data }: { data: HomeData }) {
               color:          'var(--color-lx-text-muted)',
               flexShrink:     0,
             }}>
-              <LexiIcon path="navigation/profile.svg" size={14} />
+              <LexiIcon path="navigation/profile.svg" size={20} />
             </span>
           </button>
         </div>
@@ -912,7 +912,7 @@ export default function HomeScreen({ data }: { data: HomeData }) {
               background:     'var(--color-lx-elevated)',
               border:         '1px solid var(--color-lx-border)',
             }}>
-              <LexiIcon path="navigation/help.svg" size={14} />
+              <LexiIcon path="navigation/help.svg" size={20} />
             </span>
           </Link>
 

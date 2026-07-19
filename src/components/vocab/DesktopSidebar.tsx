@@ -171,7 +171,7 @@ export default function DesktopSidebar() {
 
               <LexiIcon
                 path={tab.icon}
-                size={18}
+                size={20}
                 color={isActive ? 'var(--color-lx-accent-red)' : 'var(--color-lx-text-muted)'}
                 style={{
                   filter: isActive ? 'drop-shadow(0 0 5px rgba(230,57,70,0.5))' : 'none',

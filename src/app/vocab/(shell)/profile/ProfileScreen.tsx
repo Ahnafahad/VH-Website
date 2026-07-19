@@ -74,20 +74,13 @@ const BADGE_ICONS: Record<string, LucideIcon> = {
 };
 
 const BADGE_ASSETS: Record<string, string> = {
-  first_step: 'badges/first-word.svg', quiz_starter: 'badges/first-quiz.svg',
+  first_step: 'badges/first-recall.svg', quiz_starter: 'badges/first-quiz.svg',
   on_a_roll: 'badges/streak-3.svg', perfectionist: 'badges/perfect-quiz.svg',
-  week_warrior: 'badges/streak-7.svg', sharp_shooter: 'badges/practice-specialist.svg',
-  unit_slayer: 'badges/mastered-50.svg', analogy_apprentice: 'badges/first-recall.svg',
-  halfway_there: 'badges/mastered-250.svg', streak_keeper: 'badges/streak-14.svg',
-  review_regular: 'badges/review-guardian.svg', speed_demon: 'badges/practice-specialist.svg',
-  leaderboard_climber: 'badges/weekly-champion.svg', vocab_explorer: 'badges/mastered-100.svg',
-  vocab_game_explorer: 'badges/word-hunt-winner.svg', the_800_club: 'badges/full-lexicon.svg',
-  analogy_master: 'badges/mastered-500.svg', unit_conqueror: 'badges/mastered-500.svg',
-  review_legend: 'badges/review-guardian.svg', completionist: 'badges/full-lexicon.svg',
-  leaderboard_legend: 'badges/hall-of-fame.svg', vocab_game_builder: 'badges/word-hunt-winner.svg',
-  vocab_game_master: 'badges/word-charge-specialist.svg', question_machine: 'badges/weekly-points.svg',
-  flawless_run: 'badges/perfect-quiz.svg', word_sovereign: 'badges/full-lexicon.svg',
-  immortal: 'badges/streak-100.svg',
+  week_warrior: 'badges/streak-7.svg', streak_keeper: 'badges/streak-14.svg',
+  review_legend: 'badges/review-guardian.svg',
+  the_800_club: 'badges/full-lexicon.svg',
+  leaderboard_legend: 'badges/hall-of-fame.svg',
+  vocab_game_builder: 'badges/word-hunt-winner.svg',
 };
 
 // ─── Colour helpers ───────────────────────────────────────────────────────────
@@ -945,7 +938,7 @@ export default function ProfileScreen({
                           opacity: badge.earned ? 1 : 0.9,
                         }}>
                           {asset ? (
-                            <LexiArtwork path={asset} width={44} height={44} />
+                            <LexiArtwork path={asset} width={56} height={56} />
                           ) : (
                             <Icon
                               size={24}
