@@ -31,10 +31,11 @@ import {
   useState,
 } from 'react';
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
-import { Pause, HelpCircle, Flame } from 'lucide-react';
+import { Pause, HelpCircle } from 'lucide-react';
 import { useSafeNavigate } from '@/hooks/useSafeNavigate';
 import { useVocabFeedback } from '@/lib/vocab/use-vocab-feedback';
 import AnimatedNumber from '@/components/vocab/AnimatedNumber';
+import { LexiArtwork } from '@/components/vocab/LexiAsset';
 
 import ChargeCard    from './ChargeCard';
 import ChargeIntro   from './ChargeIntro';
@@ -485,6 +486,51 @@ function PauseOverlay({
   );
 }
 
+// ─── Charge meter (streak) ────────────────────────────────────────────────────
+
+/** Maps the current streak to the bespoke charge-ring asset states. */
+function chargeAssetFor(streak: number): string {
+  if (streak >= 5) return 'charge-full';
+  if (streak === 4) return 'charge-high';
+  if (streak >= 2) return 'charge-medium';
+  if (streak === 1) return 'charge-low';
+  return 'charge-empty';
+}
+
+// ─── Surge banner (5-streak milestone) ────────────────────────────────────────
+
+function SurgeBanner({ streak, onDone, reduce }: { streak: number; onDone: () => void; reduce: boolean }) {
+  useEffect(() => {
+    const t = setTimeout(onDone, reduce ? 300 : 1100);
+    return () => clearTimeout(t);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, scale: reduce ? 1 : 0.7 }}
+      animate={{ opacity: 1, scale: 1 }}
+      exit={{ opacity: 0, scale: reduce ? 1 : 1.15 }}
+      transition={{ duration: reduce ? 0.1 : 0.28, ease: 'easeOut' }}
+      style={{
+        position: 'absolute', left: 0, right: 0, top: '8%',
+        display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 4,
+        zIndex: 25, pointerEvents: 'none',
+      }}
+    >
+      <LexiArtwork path="games/word-charge/charge-full.svg" width={44} height={44} />
+      <span style={{
+        fontFamily: SANS, fontWeight: 800, fontSize: '0.82rem',
+        letterSpacing: '0.22em', textTransform: 'uppercase',
+        color: 'var(--color-lx-accent-gold)',
+        textShadow: '0 0 18px rgba(244,168,40,0.55), 0 1px 4px rgba(0,0,0,0.8)',
+      }}>
+        {streak}-streak surge +10
+      </span>
+    </motion.div>
+  );
+}
+
 // ─── Floating points chip ─────────────────────────────────────────────────────
 
 interface FloatingChipProps { label: string; onDone: () => void; reduce: boolean }
@@ -547,6 +593,10 @@ export default function WordChargeScreen() {
   // Floating chip state
   const [floatingChip, setFloatingChip] = useState<{ id: number; label: string } | null>(null);
   const chipId = useRef(0);
+
+  // Milestone surge banner + meter-discharge shake (both transient)
+  const [surge, setSurge] = useState<{ id: number; streak: number } | null>(null);
+  const [meterShake, setMeterShake] = useState(0);
 
   // Intro overlay shown from help
   const [showIntroOverlay, setShowIntroOverlay] = useState(false);
@@ -654,12 +704,15 @@ export default function WordChargeScreen() {
       // Floating chip
       const pts = pointsFor(true, state.helpUsedForCurrent, state.streak);
       const isStreak5 = (state.streak + 1) % 5 === 0;
-      const label = isStreak5 ? `+${pts} 🔥 Streak!` : `+${pts}`;
       chipId.current += 1;
-      setFloatingChip({ id: chipId.current, label });
-      if (isStreak5) fb.play('levelUp');
+      setFloatingChip({ id: chipId.current, label: `+${pts}` });
+      if (isStreak5) {
+        fb.play('levelUp');
+        setSurge({ id: chipId.current, streak: state.streak + 1 });
+      }
     } else {
       fb.play('incorrect');
+      setMeterShake(n => n + 1);
     }
 
     dispatch({ type: 'COMMIT', choice, now: performance.now() });
@@ -863,7 +916,17 @@ export default function WordChargeScreen() {
               word={currentWord}
               onChoose={choice => {
                 const correct = choice === currentWord.connotation;
-                if (correct) fb.play('correct'); else fb.play('incorrect');
+                if (correct) {
+                  fb.play('correct');
+                  if ((streak + 1) % 5 === 0) {
+                    fb.play('levelUp');
+                    chipId.current += 1;
+                    setSurge({ id: chipId.current, streak: streak + 1 });
+                  }
+                } else {
+                  fb.play('incorrect');
+                  setMeterShake(n => n + 1);
+                }
                 dispatch({ type: 'HELP_CHOOSE', choice, now: performance.now() });
               }}
               onSkip={() => dispatch({ type: 'HELP_SKIP', now: performance.now() })}
@@ -922,29 +985,35 @@ export default function WordChargeScreen() {
           </div>
         </div>
 
-        {/* Points + streak */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+        {/* Points + charge meter (streak) */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
           <span style={{
             fontFamily: SANS, fontSize: '0.82rem', fontWeight: 700,
             color: 'var(--color-lx-accent-gold)',
           }}>
             <AnimatedNumber value={roundPoints} />
           </span>
-          {streak >= 2 && (
-            <motion.span
-              key={streak}
-              initial={{ scale: reduce ? 1 : 0.7, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              style={{
-                display: 'flex', alignItems: 'center', gap: 2,
-                fontFamily: SANS, fontSize: '0.75rem', fontWeight: 700,
-                color: 'var(--color-lx-accent-gold)',
-              }}
-            >
-              <Flame size={13} />
-              {streak}
-            </motion.span>
-          )}
+          <span
+            key={meterShake}
+            className={meterShake > 0 && !reduce ? 'wc-shake' : undefined}
+            style={{ display: 'flex', alignItems: 'center', gap: 4 }}
+            aria-label={`Charge streak: ${streak}`}
+          >
+            <LexiArtwork path={`games/word-charge/${chargeAssetFor(streak)}.svg`} width={26} height={26} loading="eager" />
+            {streak >= 2 && (
+              <motion.span
+                key={streak}
+                initial={{ scale: reduce ? 1 : 0.7, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                style={{
+                  fontFamily: SANS, fontSize: '0.75rem', fontWeight: 700,
+                  color: streak >= 5 ? 'var(--color-lx-accent-gold)' : 'var(--color-lx-text-secondary)',
+                }}
+              >
+                {streak}
+              </motion.span>
+            )}
+          </span>
         </div>
 
         {/* Help icon */}
@@ -1002,6 +1071,26 @@ export default function WordChargeScreen() {
       <div style={{
         position: 'relative', flex: 1, display: 'flex', alignItems: 'center',
       }}>
+        {/* Ambient energy field — static gradient, intensity follows the streak */}
+        <div aria-hidden style={{
+          position: 'absolute', inset: '-8%', pointerEvents: 'none', zIndex: 0,
+          background: 'radial-gradient(circle at 50% 46%, rgba(244,168,40,0.20) 0%, rgba(230,57,70,0.06) 42%, transparent 65%)',
+          opacity: Math.min(streak, 8) / 8,
+          transition: 'opacity 0.6s ease',
+        }} />
+
+        {/* Milestone surge banner */}
+        <AnimatePresence>
+          {surge && (
+            <SurgeBanner
+              key={surge.id}
+              streak={surge.streak}
+              reduce={reduce}
+              onDone={() => setSurge(null)}
+            />
+          )}
+        </AnimatePresence>
+
         {/* Left rail — Negative — blue */}
         <div style={{
           position: 'absolute', left: -16, top: 0, bottom: 0, width: 36,
@@ -1032,11 +1121,16 @@ export default function WordChargeScreen() {
             {currentWord && (
               <motion.div
                 key={cardKey}
-                initial={{ opacity: 0, y: reduce ? 0 : 20 }}
-                animate={{ opacity: 1, y: 0 }}
+                initial={{
+                  opacity: 0,
+                  y: reduce ? 0 : 22,
+                  // Vary the entrance angle so consecutive words don't feel identical
+                  rotate: reduce ? 0 : [0, -4, 4][state.cardIndex % 3],
+                }}
+                animate={{ opacity: 1, y: 0, rotate: 0 }}
                 exit={{ opacity: 0, y: reduce ? 0 : -10 }}
-                transition={{ duration: reduce ? 0.05 : 0.2, ease: 'easeOut' }}
-                style={{ position: 'relative' }}
+                transition={{ duration: reduce ? 0.05 : 0.22, ease: 'easeOut' }}
+                style={{ position: 'relative', zIndex: 1 }}
               >
                 {/* Floating chip */}
                 <AnimatePresence>
@@ -1146,7 +1240,16 @@ export default function WordChargeScreen() {
         </button>
       </div>
 
-      {/* ── CSS keyframes for timer pulse and shimmer ──────────────────────── */}
+      {/* ── Final-seconds crimson vignette (static per-second, stall-safe) ─── */}
+      {phase === 'playing' && isLowTime && remainSecs > 0 && (
+        <div aria-hidden style={{
+          position: 'fixed', inset: 0, pointerEvents: 'none', zIndex: 40,
+          boxShadow: `inset 0 0 ${28 + (5 - remainSecs) * 16}px rgba(230,57,70,${(0.10 + (5 - remainSecs) * 0.05).toFixed(2)})`,
+          transition: 'box-shadow 0.3s ease',
+        }} />
+      )}
+
+      {/* ── CSS keyframes for timer pulse, meter shake and shimmer ─────────── */}
       <style>{`
         @keyframes lx-timer-pulse {
           0%, 100% { opacity: 1; }
@@ -1154,6 +1257,16 @@ export default function WordChargeScreen() {
         }
         .lx-timer-pulse {
           animation: lx-timer-pulse 0.9s ease-in-out infinite;
+        }
+        @keyframes wc-shake {
+          0%, 100% { transform: translateX(0); }
+          20%       { transform: translateX(-3px); }
+          40%       { transform: translateX(3px); }
+          60%       { transform: translateX(-2px); }
+          80%       { transform: translateX(2px); }
+        }
+        .wc-shake {
+          animation: wc-shake 0.4s ease-in-out 1;
         }
         @keyframes shimmer {
           0%   { background-position: -200% 0; }

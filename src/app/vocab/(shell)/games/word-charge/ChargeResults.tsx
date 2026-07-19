@@ -10,11 +10,22 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Volume2, Flame, ChevronDown, ChevronUp } from 'lucide-react';
 import { speak } from '@/lib/vocab/speak';
 import AnimatedNumber from '@/components/vocab/AnimatedNumber';
+import { LexiArtwork } from '@/components/vocab/LexiAsset';
 import { useVocabFeedback } from '@/lib/vocab/use-vocab-feedback';
 import type { ChargeWord, ChargeAnswer, ChargeFinishResponse, Connotation } from '@/lib/vocab/word-charge/types';
 
 const SERIF = "'Cormorant Garamond', Georgia, serif";
 const SANS  = "'Sora', sans-serif";
+
+/** Round tier from server-recomputed stats — drives the result emblem. */
+function roundTier(r: ChargeFinishResponse): { asset: string; label: string } {
+  const attempts = r.correct + r.wrong;
+  const acc = attempts > 0 ? r.correct / attempts : 0;
+  if (r.wrong === 0 && r.skipped === 0 && r.correct >= 8) return { asset: 'result-perfect',   label: 'Perfect round' };
+  if (acc >= 0.8 && r.correct >= 5)                       return { asset: 'result-excellent', label: 'Excellent' };
+  if (acc >= 0.55 && attempts > 0)                        return { asset: 'result-good',      label: 'Good round' };
+  return { asset: 'result-weak', label: 'Keep charging' };
+}
 
 function SideChip({ connotation }: { connotation: Connotation }) {
   const isPos = connotation === 'positive';
@@ -243,6 +254,22 @@ export default function ChargeResults({ result, saveError, onSaveRetry, onPlayAg
               position: 'absolute', inset: 0, pointerEvents: 'none',
               background: 'radial-gradient(ellipse at center top, rgba(244,168,40,0.08) 0%, transparent 65%)',
             }} />
+
+            {/* Round tier emblem */}
+            <motion.div
+              initial={{ opacity: 0, scale: reduce ? 1 : 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.15, type: 'spring', stiffness: 260, damping: 20 }}
+              style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6, marginBottom: '0.875rem' }}
+            >
+              <LexiArtwork path={`games/word-charge/${roundTier(result).asset}.svg`} width={64} height={64} loading="eager" />
+              <span style={{
+                fontFamily: SERIF, fontStyle: 'italic', fontWeight: 700,
+                fontSize: '1.15rem', color: 'var(--color-lx-text-primary)',
+              }}>
+                {roundTier(result).label}
+              </span>
+            </motion.div>
 
             <p style={{ fontFamily: SANS, fontSize: '0.6rem', fontWeight: 600, letterSpacing: '0.16em', textTransform: 'uppercase', color: 'var(--color-lx-text-muted)', marginBottom: '0.5rem' }}>
               Points earned
