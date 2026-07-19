@@ -11,6 +11,7 @@ import AllWordsReviewedScreen from '@/components/vocab/AllWordsReviewedScreen';
 import LockedUnitOverlay from '@/components/vocab/LockedUnitOverlay';
 import ReviewTab from './ReviewTab';
 import { useVocabFeedback } from '@/lib/vocab/use-vocab-feedback';
+import { LexiArtwork } from '@/components/vocab/LexiAsset';
 
 interface Props {
   data: {
@@ -85,18 +86,24 @@ function LetterCard({ summary }: { summary: LetterSummary }) {
         width: '100%',
       }}
     >
+      <LexiArtwork
+        path="study/letter-tile-frame.svg"
+        width="calc(100% - 8px)"
+        height="calc(100% - 8px)"
+        style={{ position: 'absolute', inset: 4, opacity: 0.2, zIndex: 0 }}
+      />
       <span style={{
         fontFamily: "'Cormorant Garamond', Georgia, serif",
         fontSize: '1.75rem', fontWeight: 700,
         color: 'var(--color-lx-text-primary)',
-        lineHeight: 1,
+        lineHeight: 1, position: 'relative', zIndex: 1,
       }}>
         {summary.letter}
       </span>
 
       <div style={{
         display: 'flex', flexDirection: 'column',
-        alignItems: 'flex-start', gap: 3,
+        alignItems: 'flex-start', gap: 3, position: 'relative', zIndex: 1,
       }}>
         <Chip
           n={summary.studiedCount}
@@ -382,7 +389,9 @@ function UnitAccordion({
         }}
       >
         <div className="flex items-center justify-between">
-          <div className="flex flex-col items-start gap-0.5">
+          <div className="flex items-center gap-3">
+            <LexiArtwork path="study/unit-marker.svg" width={38} height={38} />
+            <div className="flex flex-col items-start gap-0.5">
             <span
               className="text-lg font-semibold"
               style={{ fontFamily: "'Sora', sans-serif" }}
@@ -392,6 +401,7 @@ function UnitAccordion({
             <span className="text-xs" style={{ color: 'var(--color-lx-text-muted)', fontFamily: "'Sora', sans-serif" }}>
               {unit.completePct}% complete · {unit.themes.length} themes
             </span>
+            </div>
           </div>
           <motion.div animate={{ rotate: isOpen ? 180 : 0 }} transition={{ duration: 0.25 }}>
             <ChevronDown size={18} style={{ color: 'var(--color-lx-text-muted)' }} />

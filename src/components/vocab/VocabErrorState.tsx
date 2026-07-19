@@ -1,7 +1,8 @@
 'use client';
 
-import { AlertTriangle, Home, RefreshCw } from 'lucide-react';
+import { Home, RefreshCw } from 'lucide-react';
 import { useRouter } from 'next/navigation';
+import { LexiArtwork } from '@/components/vocab/LexiAsset';
 
 interface VocabErrorStateProps {
   title?: string;
@@ -20,7 +21,7 @@ export function VocabErrorState({
 
   return (
     <main className="lx-error-state" aria-labelledby="lx-error-title">
-      <div className="lx-error-mark" aria-hidden="true"><AlertTriangle size={24} /></div>
+      <LexiArtwork path="states/server-error.webp" width={132} height={132} />
       <h1 id="lx-error-title" className="lx-word">{title}</h1>
       <p>{description}</p>
       <div className="lx-error-actions">

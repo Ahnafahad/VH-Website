@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { HelpCircle, Lock, X, Target, CheckCircle2, Clock3, ArrowRight, User } from 'lucide-react';
+import { Lock, X, Target, CheckCircle2, Clock3, ArrowRight } from 'lucide-react';
 import type { HomeData, MasteryBreakdown, SessionsData } from '@/lib/vocab/home-data';
 import { useSafeNavigate } from '@/hooks/useSafeNavigate';
 import ProgressRing from '@/components/vocab/ProgressRing';
@@ -19,6 +19,7 @@ import { RETENTION_EVENTS, trackRetention } from '@/lib/vocab/retention-events';
 import { Capacitor } from '@capacitor/core';
 import { scheduleReminders, readReminderEnabled } from '@/lib/vocab/local-reminders';
 import { dhakaHour } from '@/lib/vocab/dhaka-time';
+import { LexiArtwork, LexiIcon } from '@/components/vocab/LexiAsset';
 
 // Uses the visitor's Dhaka-local hour (not the machine's own timezone) so the
 // greeting is identical during SSR (server runs in UTC) and client hydration
@@ -730,12 +731,24 @@ function ProgressSection({
 
 // ─── Main HomeScreen ──────────────────────────────────────────────────────────
 
+const RECOMMENDATION_ART: Record<LearningRecommendation['kind'], string> = {
+  resume_quiz:    'home/recommendation-resume-quiz.webp',
+  due_review:     'home/recommendation-due-review.webp',
+  resume_learning:'home/recommendation-resume-learning.webp',
+  ready_quiz:     'home/recommendation-start-recall.webp',
+  repair:         'home/recommendation-repair-weak.webp',
+  new_learning:   'home/recommendation-learn-new.webp',
+};
+
 function NextAction({ recommendation, onStart }: { recommendation: LearningRecommendation; onStart: () => void }) {
   return (
     <motion.section className="lx-next-action" aria-labelledby="lx-next-action-title"
       initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .24, ease: [0.16, 1, 0.3, 1] }}>
       <div className="lx-next-action-topline"><span>Recommended next</span><span><Clock3 size={14} aria-hidden /> About {recommendation.durationMinutes} min</span></div>
-      <h2 id="lx-next-action-title">{recommendation.title}</h2>
+      <div className="lx-next-action-heading">
+        <LexiArtwork path={RECOMMENDATION_ART[recommendation.kind]} width={72} height={72} loading="eager" />
+        <h2 id="lx-next-action-title">{recommendation.title}</h2>
+      </div>
       <p>{recommendation.reason}</p>
       <div className="lx-next-action-outcome"><Target size={17} aria-hidden /><span>{recommendation.outcome}</span></div>
       <motion.button type="button" whileTap={{ scale: .985 }} onClick={onStart}>
@@ -854,7 +867,7 @@ export default function HomeScreen({ data }: { data: HomeData }) {
               color:          'var(--color-lx-text-muted)',
               flexShrink:     0,
             }}>
-              <User size={13} />
+              <LexiIcon path="navigation/profile.svg" size={14} />
             </span>
           </button>
         </div>
@@ -899,7 +912,7 @@ export default function HomeScreen({ data }: { data: HomeData }) {
               background:     'var(--color-lx-elevated)',
               border:         '1px solid var(--color-lx-border)',
             }}>
-              <HelpCircle size={13} />
+              <LexiIcon path="navigation/help.svg" size={14} />
             </span>
           </Link>
 

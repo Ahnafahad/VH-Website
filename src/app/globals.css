@@ -1263,13 +1263,15 @@ textarea::placeholder {
 .lx-next-action-topline { display: flex; align-items: center; justify-content: space-between; gap: .75rem; color: var(--color-lx-text-secondary); font: 600 .72rem/1.4 'Sora', sans-serif; }
 .lx-next-action-topline > span:first-child { color: var(--color-lx-accent-red); }
 .lx-next-action-topline > span:last-child { display: inline-flex; align-items: center; gap: .35rem; white-space: nowrap; }
+.lx-next-action-heading { display: flex; align-items: center; gap: .875rem; min-width: 0; }
+.lx-next-action-heading img { flex: 0 0 auto; filter: drop-shadow(0 .5rem 1.1rem rgba(0,0,0,.28)); }
 .lx-next-action h2 { margin: 0; max-width: 22ch; color: var(--color-lx-text-primary); font: 700 1.75rem/1.08 'Cormorant Garamond', Georgia, serif; text-wrap: balance; }
 .lx-next-action > p { margin: 0; max-width: 58ch; color: var(--color-lx-text-secondary); font: 400 .9rem/1.55 'Sora', sans-serif; }
 .lx-next-action-outcome { display: flex; align-items: flex-start; gap: .55rem; padding-top: .75rem; border-top: 1px solid var(--color-lx-border); color: var(--color-lx-text-secondary); font: 500 .78rem/1.45 'Sora', sans-serif; }
 .lx-next-action-outcome svg { flex: 0 0 auto; margin-top: .05rem; color: var(--color-lx-accent-gold); }
 .lx-next-action > button { min-height: 3.25rem; display: inline-flex; align-items: center; justify-content: center; gap: .55rem; border: 0; border-radius: .75rem; background: var(--color-lx-accent-red); color: white; font: 650 .9rem/1 'Sora', sans-serif; cursor: pointer; touch-action: manipulation; }
 .lx-next-action > button:focus-visible { outline: 3px solid color-mix(in srgb, var(--color-lx-accent-red) 45%, transparent); outline-offset: 3px; }
-@media (min-width: 768px) { .lx-next-action { grid-template-columns: minmax(0,1fr) auto; align-items: end; padding: 1.5rem; } .lx-next-action-topline, .lx-next-action h2, .lx-next-action > p, .lx-next-action-outcome { grid-column: 1; } .lx-next-action > button { grid-column: 2; grid-row: 2 / span 3; min-width: 10.5rem; align-self: center; } }
+@media (min-width: 768px) { .lx-next-action { grid-template-columns: minmax(0,1fr) auto; align-items: end; padding: 1.5rem; } .lx-next-action-topline, .lx-next-action-heading, .lx-next-action > p, .lx-next-action-outcome { grid-column: 1; } .lx-next-action-heading img { width: 82px !important; height: 82px !important; } .lx-next-action > button { grid-column: 2; grid-row: 2 / span 3; min-width: 10.5rem; align-self: center; } }
 
 /* LexiCore premium application layer */
 .lx-root {

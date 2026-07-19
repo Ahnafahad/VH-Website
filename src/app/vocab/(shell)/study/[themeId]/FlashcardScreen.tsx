@@ -10,7 +10,7 @@ import {
   type PanInfo,
 } from 'framer-motion';
 import { useRouter } from 'next/navigation';
-import { ChevronLeft, RotateCcw, CheckCircle2, HelpCircle, XCircle, Trophy, Volume2 } from 'lucide-react';
+import { ChevronLeft, RotateCcw, Volume2 } from 'lucide-react';
 import type { FlashcardSessionData, FlashcardWord } from '@/lib/vocab/flashcard-data';
 import { useBadgeQueue } from '@/lib/vocab/badges/queue';
 import { useVocabFeedback } from '@/lib/vocab/use-vocab-feedback';
@@ -18,6 +18,7 @@ import Celebration from '@/components/vocab/Celebration';
 import { trackFeature } from '@/lib/analytics/tracker';
 import { RETENTION_EVENTS, trackRetention } from '@/lib/vocab/retention-events';
 import { speak } from '@/lib/vocab/speak';
+import { LexiArtwork } from '@/components/vocab/LexiAsset';
 
 type Rating = 'got_it' | 'unsure' | 'missed_it';
 
@@ -61,7 +62,7 @@ function SessionComplete({
           className="flex h-24 w-24 items-center justify-center rounded-full"
           style={{ background: 'rgba(244,168,40,0.15)', border: '2px solid rgba(244,168,40,0.4)' }}
         >
-          <Trophy size={48} strokeWidth={1.5} color="var(--color-lx-accent-gold)" />
+          <LexiArtwork path="flashcards/session-complete.svg" width={88} height={88} />
         </motion.div>
 
         <motion.div
@@ -459,9 +460,9 @@ function FlipCard({
 /* ─── Rating buttons ─────────────────────────────────────── */
 function RatingButtons({ onRate, disabled }: { onRate: (r: Rating) => void; disabled: boolean }) {
   const btns: { rating: Rating; label: string; icon: React.ReactNode; color: string; bg: string }[] = [
-    { rating: 'missed_it', label: 'Missed',  icon: <XCircle size={18} />,       color: 'var(--color-lx-accent-red)', bg: 'rgba(230,57,70,0.12)' },
-    { rating: 'unsure',    label: 'Unsure',  icon: <HelpCircle size={18} />,    color: 'var(--color-lx-warning)',    bg: 'rgba(243,156,18,0.12)' },
-    { rating: 'got_it',    label: 'Got It',  icon: <CheckCircle2 size={18} />,  color: 'var(--color-lx-success)',    bg: 'rgba(46,204,113,0.12)' },
+    { rating: 'missed_it', label: 'Missed',  icon: <LexiArtwork path="flashcards/missed.svg" width={28} height={28} />, color: 'var(--color-lx-accent-red)', bg: 'rgba(230,57,70,0.12)' },
+    { rating: 'unsure',    label: 'Unsure',  icon: <LexiArtwork path="flashcards/unsure.svg" width={28} height={28} />, color: 'var(--color-lx-warning)', bg: 'rgba(243,156,18,0.12)' },
+    { rating: 'got_it',    label: 'Got It',  icon: <LexiArtwork path="flashcards/got-it.svg" width={28} height={28} />, color: 'var(--color-lx-success)', bg: 'rgba(46,204,113,0.12)' },
   ];
 
   return (

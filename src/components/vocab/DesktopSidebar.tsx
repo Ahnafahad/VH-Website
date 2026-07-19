@@ -3,16 +3,16 @@
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Home, BookOpen, Zap, Trophy, Gamepad2 } from 'lucide-react';
 import { useSession } from 'next-auth/react';
 import { useSafeNavigate } from '@/hooks/useSafeNavigate';
+import { LexiIcon } from '@/components/vocab/LexiAsset';
 
 const TABS = [
-  { id: 'home',        href: '/vocab/home',        icon: Home,     label: 'Home'       },
-  { id: 'study',       href: '/vocab/study',       icon: BookOpen, label: 'Study'      },
-  { id: 'practice',   href: '/vocab/practice',    icon: Zap,      label: 'Practice'  },
-  { id: 'leaderboard',href: '/vocab/leaderboard', icon: Trophy,   label: 'Leaderboard' },
-  { id: 'games',      href: '/vocab/games',       icon: Gamepad2, label: 'Games'      },
+  { id: 'home',        href: '/vocab/home',        icon: 'navigation/home.svg',        label: 'Home' },
+  { id: 'study',       href: '/vocab/study',       icon: 'navigation/study.svg',       label: 'Study' },
+  { id: 'practice',    href: '/vocab/practice',    icon: 'navigation/practice.svg',    label: 'Practice' },
+  { id: 'leaderboard', href: '/vocab/leaderboard', icon: 'navigation/leaderboard.svg', label: 'Leaderboard' },
+  { id: 'games',       href: '/vocab/games',       icon: 'navigation/games.svg',       label: 'Games' },
 ] as const;
 
 function initials(name: string): string {
@@ -128,7 +128,6 @@ export default function DesktopSidebar() {
         style={{ flex: 1, padding: '12px 10px', display: 'flex', flexDirection: 'column', gap: 2 }}
       >
         {TABS.map(tab => {
-          const Icon     = tab.icon;
           const isActive = active === tab.id;
 
           return (
@@ -170,15 +169,14 @@ export default function DesktopSidebar() {
                 />
               )}
 
-              <Icon
+              <LexiIcon
+                path={tab.icon}
                 size={18}
+                color={isActive ? 'var(--color-lx-accent-red)' : 'var(--color-lx-text-muted)'}
                 style={{
-                  color:      isActive ? 'var(--color-lx-accent-red)' : 'var(--color-lx-text-muted)',
-                  filter:     isActive ? 'drop-shadow(0 0 5px rgba(230,57,70,0.5))' : 'none',
-                  transition: 'color 0.2s',
-                  flexShrink: 0,
+                  filter: isActive ? 'drop-shadow(0 0 5px rgba(230,57,70,0.5))' : 'none',
+                  transition: 'background-color 0.2s',
                 }}
-                strokeWidth={isActive ? 2.2 : 1.7}
               />
 
               <span

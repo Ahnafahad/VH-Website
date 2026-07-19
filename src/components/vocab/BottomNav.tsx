@@ -3,16 +3,16 @@
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { usePathname } from 'next/navigation';
-import { Home, BookOpen, Zap, Trophy, Gamepad2 } from 'lucide-react';
 import { useVocabFeedback } from '@/lib/vocab/use-vocab-feedback';
 import { useSafeNavigate } from '@/hooks/useSafeNavigate';
+import { LexiIcon } from '@/components/vocab/LexiAsset';
 
 const TABS = [
-  { id: 'home',        href: '/vocab/home',        icon: Home,     label: 'Home' },
-  { id: 'study',       href: '/vocab/study',       icon: BookOpen, label: 'Study' },
-  { id: 'practice',   href: '/vocab/practice',    icon: Zap,      label: 'Practice' },
-  { id: 'leaderboard',href: '/vocab/leaderboard', icon: Trophy,   label: 'Board' },
-  { id: 'games',      href: '/vocab/games',       icon: Gamepad2, label: 'Games' },
+  { id: 'home',        href: '/vocab/home',        icon: 'navigation/home.svg',        label: 'Home' },
+  { id: 'study',       href: '/vocab/study',       icon: 'navigation/study.svg',       label: 'Study' },
+  { id: 'practice',    href: '/vocab/practice',    icon: 'navigation/practice.svg',    label: 'Practice' },
+  { id: 'leaderboard', href: '/vocab/leaderboard', icon: 'navigation/leaderboard.svg', label: 'Board' },
+  { id: 'games',       href: '/vocab/games',       icon: 'navigation/games.svg',       label: 'Games' },
 ] as const;
 
 export default function BottomNav() {
@@ -36,7 +36,6 @@ export default function BottomNav() {
     >
       <div className="flex h-16 items-end justify-around pb-1 px-1">
         {TABS.map(tab => {
-          const Icon     = tab.icon;
           const isActive = active === tab.id;
 
           return (
@@ -85,14 +84,14 @@ export default function BottomNav() {
                 whileTap={{ scale: 0.82 }}
                 className="relative z-10 flex items-center justify-center"
               >
-                <Icon
+                <LexiIcon
+                  path={tab.icon}
                   size={22}
+                  color={isActive ? 'var(--color-lx-accent-red)' : 'var(--color-lx-text-muted)'}
                   style={{
-                    color: isActive ? 'var(--color-lx-accent-red)' : 'var(--color-lx-text-muted)',
                     filter: isActive ? 'drop-shadow(0 0 6px rgba(230,57,70,0.6))' : 'none',
-                    transition: 'color 0.2s, filter 0.2s',
+                    transition: 'background-color 0.2s, filter 0.2s',
                   }}
-                  strokeWidth={isActive ? 2.2 : 1.7}
                 />
               </motion.div>
 

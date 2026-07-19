@@ -3,9 +3,10 @@
 import { useState, useCallback } from 'react';
 import { motion, AnimatePresence, useReducedMotion, type Variants } from 'framer-motion';
 import { useRouter } from 'next/navigation';
-import { CheckCircle2, HelpCircle, XCircle, Zap, ArrowLeft } from 'lucide-react';
+import { ArrowLeft } from 'lucide-react';
 import { useVocabFeedback } from '@/lib/vocab/use-vocab-feedback';
 import Celebration from '@/components/vocab/Celebration';
+import { LexiArtwork } from '@/components/vocab/LexiAsset';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -104,13 +105,13 @@ function ReviewComplete({
         animate={{ scale: 1, opacity: 1 }}
         transition={{ type: 'spring', stiffness: 280, damping: 20, delay: 0.08 }}
         style={{
-          width: 72, height: 72, borderRadius: '50%',
-          background: 'rgba(244,168,40,0.12)',
-          border: '1.5px solid rgba(244,168,40,0.3)',
+          width: 104, height: 104, borderRadius: '50%',
+          background: 'transparent',
+          border: 'none',
           display: 'flex', alignItems: 'center', justifyContent: 'center',
         }}
       >
-        <Zap size={32} color={C.gold} fill={C.gold} />
+        <LexiArtwork path="review/review-complete.webp" width={96} height={96} />
       </motion.div>
 
       <div>
@@ -198,13 +199,7 @@ function NoReviews({ onBack }: { onBack: () => void }) {
         padding: '2rem 1.5rem', gap: '1.25rem', textAlign: 'center',
       }}
     >
-      <div style={{
-        width: 64, height: 64, borderRadius: '50%',
-        background: 'rgba(46,204,113,0.12)', border: '1.5px solid rgba(46,204,113,0.25)',
-        display: 'flex', alignItems: 'center', justifyContent: 'center',
-      }}>
-        <CheckCircle2 size={28} color={C.success} />
-      </div>
+      <LexiArtwork path="review/all-caught-up.webp" width={128} height={128} />
       <div>
         <h2 style={{ fontFamily: SERIF, fontSize: '2rem', fontWeight: 700, fontStyle: 'italic', color: C.textPrim }}>
           All caught up
@@ -467,7 +462,7 @@ export default function ReviewScreen({ words, dueCount }: Props) {
                 display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 4,
               }}
             >
-              <XCircle size={20} color={C.red} />
+              <LexiArtwork path="flashcards/missed.svg" width={28} height={28} />
               <span style={{ fontFamily: SANS, fontSize: '0.7rem', fontWeight: 600, color: C.red, letterSpacing: '0.04em' }}>
                 Missed
               </span>
@@ -487,7 +482,7 @@ export default function ReviewScreen({ words, dueCount }: Props) {
                 display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 4,
               }}
             >
-              <HelpCircle size={20} color={C.gold} />
+              <LexiArtwork path="flashcards/unsure.svg" width={28} height={28} />
               <span style={{ fontFamily: SANS, fontSize: '0.7rem', fontWeight: 600, color: C.gold, letterSpacing: '0.04em' }}>
                 Unsure
               </span>
@@ -507,7 +502,7 @@ export default function ReviewScreen({ words, dueCount }: Props) {
                 display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 4,
               }}
             >
-              <CheckCircle2 size={20} color={C.success} />
+              <LexiArtwork path="flashcards/got-it.svg" width={28} height={28} />
               <span style={{ fontFamily: SANS, fontSize: '0.7rem', fontWeight: 600, color: C.success, letterSpacing: '0.04em' }}>
                 Got it
               </span>

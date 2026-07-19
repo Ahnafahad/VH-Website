@@ -2,10 +2,11 @@
 
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
-import { Puzzle, Sparkles, Flame, Zap } from 'lucide-react';
+import { Sparkles, Flame } from 'lucide-react';
 import { useSafeNavigate } from '@/hooks/useSafeNavigate';
 import { useVocabFeedback } from '@/lib/vocab/use-vocab-feedback';
 import AnimatedNumber from '@/components/vocab/AnimatedNumber';
+import { LexiArtwork } from '@/components/vocab/LexiAsset';
 import type { GameStateResponse } from '@/lib/vocab/game/types';
 import type { ChargeSummaryResponse } from '@/lib/vocab/word-charge/types';
 
@@ -111,6 +112,13 @@ function WordHuntHero({ state, onPlay }: { state: GameStateResponse; onPlay: () 
         pointerEvents: 'none',
       }} />
 
+      <LexiArtwork
+        path="games/word-hunt.webp"
+        width={104}
+        height={104}
+        style={{ position: 'absolute', right: 10, top: 54, opacity: 0.82, zIndex: 0 }}
+      />
+
       <div style={{ position: 'relative', zIndex: 1 }}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
@@ -120,7 +128,7 @@ function WordHuntHero({ state, onPlay }: { state: GameStateResponse; onPlay: () 
               display: 'flex', alignItems: 'center', justifyContent: 'center',
               color: 'var(--color-lx-accent-red)',
             }}>
-              <Puzzle size={16} />
+              <LexiArtwork path="games/word-hunt/insignia.svg" width={28} height={28} />
             </span>
             <span style={{
               fontFamily: SANS, fontSize: '0.6rem', fontWeight: 600,
@@ -147,14 +155,14 @@ function WordHuntHero({ state, onPlay }: { state: GameStateResponse; onPlay: () 
         <h2 style={{
           fontFamily: SERIF, fontStyle: 'italic', fontWeight: 700,
           fontSize: '1.9rem', lineHeight: 1.1, color: 'var(--color-lx-text-primary)',
-          marginTop: '0.75rem',
+          marginTop: '0.75rem', maxWidth: 'calc(100% - 104px)',
         }}>
           Word Hunt
         </h2>
 
         <p style={{
           fontFamily: SANS, fontSize: '0.78rem', color: 'var(--color-lx-text-secondary)',
-          marginTop: '0.375rem', lineHeight: 1.5,
+          marginTop: '0.375rem', lineHeight: 1.5, maxWidth: 'calc(100% - 104px)',
         }}>
           {state.topic} · {state.wordType} · {state.letterCount} letters
         </p>
@@ -223,6 +231,13 @@ function WordChargeCard({
         background: 'linear-gradient(105deg, rgba(91,163,245,0.07) 0%, transparent 45%, rgba(244,168,40,0.07) 55%, transparent 100%)',
       }} />
 
+      <LexiArtwork
+        path="games/word-charge.webp"
+        width={100}
+        height={100}
+        style={{ position: 'absolute', right: 12, top: 52, opacity: 0.8, zIndex: 0 }}
+      />
+
       {/* One-time sheen on mount */}
       {!reduceMotion && (
         <motion.div
@@ -248,7 +263,7 @@ function WordChargeCard({
               display: 'flex', alignItems: 'center', justifyContent: 'center',
               color: 'var(--color-lx-accent-gold)',
             }}>
-              <Zap size={16} />
+              <LexiArtwork path="games/word-charge/insignia.svg" width={28} height={28} />
             </span>
             <span style={{
               fontFamily: SANS, fontSize: '0.6rem', fontWeight: 600,
@@ -279,14 +294,14 @@ function WordChargeCard({
         <h2 style={{
           fontFamily: SERIF, fontStyle: 'italic', fontWeight: 700,
           fontSize: '1.9rem', lineHeight: 1.1, color: 'var(--color-lx-text-primary)',
-          marginTop: '0.75rem',
+          marginTop: '0.75rem', maxWidth: 'calc(100% - 104px)',
         }}>
           Word Charge
         </h2>
 
         <p style={{
           fontFamily: SANS, fontSize: '0.78rem', color: 'var(--color-lx-text-secondary)',
-          marginTop: '0.375rem', lineHeight: 1.5,
+          marginTop: '0.375rem', lineHeight: 1.5, maxWidth: 'calc(100% - 104px)',
         }}>
           Positive or negative? 30 seconds.
         </p>

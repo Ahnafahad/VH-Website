@@ -2,6 +2,7 @@
 
 import { useState, useCallback } from 'react';
 import { motion } from 'framer-motion';
+import { LexiArtwork } from '@/components/vocab/LexiAsset';
 
 const TOTAL_WORDS = 100;
 
@@ -68,6 +69,8 @@ export default function StepDeadline({ onNext }: Props) {
           Set your target date and we&apos;ll build a daily plan so you master all 100 words before exam day — not the night before.
         </p>
       </div>
+
+      <LexiArtwork path="onboarding/pace-deadline.webp" width={112} height={112} style={{ margin: '-0.75rem auto' }} />
 
       {/* Date display pill */}
       <div className="flex flex-col items-center gap-4">

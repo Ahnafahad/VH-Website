@@ -6,6 +6,7 @@ import { Check, RotateCcw, Volume2 } from 'lucide-react';
 import { trackRetention, RETENTION_EVENTS } from '@/lib/vocab/retention-events';
 import { useVocabFeedback } from '@/lib/vocab/use-vocab-feedback';
 import { speak } from '@/lib/vocab/speak';
+import { LexiArtwork } from '@/components/vocab/LexiAsset';
 
 interface StarterWord { id: number; word: string; pos: string; definition: string; exampleSentence: string; }
 
@@ -75,6 +76,7 @@ export default function StepLearningSprint({ onRecall }: {
 
   if (success && target) return (
     <section className="lx-onboarding-panel lx-activation-success" aria-live="polite">
+      <LexiArtwork path="onboarding/first-recall-success.webp" width={116} height={116} style={{ margin: '0 auto' }} />
       <div className="lx-activation-check" aria-hidden><Check size={28} /></div>
       <div className="lx-onboarding-heading">
         <p>First recall complete</p>
@@ -86,6 +88,7 @@ export default function StepLearningSprint({ onRecall }: {
 
   if (testing && target) return (
     <section className="lx-onboarding-panel" aria-labelledby="recall-title">
+      <LexiArtwork path="onboarding/first-recall.webp" width={96} height={96} style={{ margin: '0 auto' }} />
       <div className="lx-onboarding-heading">
         <p>One quick recall check</p>
         <h1 id="recall-title">Which word means this?</h1>
@@ -109,6 +112,7 @@ export default function StepLearningSprint({ onRecall }: {
   const word = words[index];
   return (
     <section className="lx-onboarding-panel" aria-labelledby="sprint-title">
+      <LexiArtwork path="onboarding/learning-sprint.webp" width={88} height={88} style={{ margin: '0 auto' }} />
       <div className="lx-onboarding-heading">
         <p>Word {index + 1} of 3</p>
         <h1 id="sprint-title">Learn a tiny set, then prove what stayed.</h1>

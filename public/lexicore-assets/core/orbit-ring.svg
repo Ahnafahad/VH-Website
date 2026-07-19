@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" fill="none" role="img" aria-label="Curved recall orbit">
+  <g stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M16 58a34 34 0 0 1 54-32" stroke-width="3"/>
+    <path d="M78 37a34 34 0 0 1-52 39" stroke-width="3"/>
+    <path d="m68 20 3 7-8-1" stroke-width="2"/>
+    <path d="m28 81-3-7 8 1" stroke-width="2"/>
+    <circle cx="16" cy="58" r="4" fill="currentColor" stroke="none"/>
+    <circle cx="78" cy="37" r="4" fill="currentColor" stroke="none"/>
+    <circle cx="48" cy="48" r="7" stroke-width="2"/>
+  </g>
+</svg>

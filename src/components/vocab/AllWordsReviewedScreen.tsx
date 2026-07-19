@@ -17,6 +17,7 @@ import { useRouter } from 'next/navigation';
 import { CheckCircle2, Zap, Star, ArrowRight } from 'lucide-react';
 import Celebration from '@/components/vocab/Celebration';
 import { useVocabFeedback } from '@/lib/vocab/use-vocab-feedback';
+import { LexiArtwork } from '@/components/vocab/LexiAsset';
 
 // ─── Variants ─────────────────────────────────────────────────────────────────
 
@@ -203,14 +204,7 @@ export default function AllWordsReviewedScreen({ totalWords, masteredWords, tota
               position:       'relative',
             }}
           >
-            <CheckCircle2
-              size={34}
-              strokeWidth={1.4}
-              style={{
-                color:  'var(--color-lx-accent-gold)',
-                filter: 'drop-shadow(0 0 8px rgba(201,168,76,0.7))',
-              }}
-            />
+            <LexiArtwork path="badges/full-lexicon.svg" width={76} height={76} />
           </div>
         </motion.div>
 

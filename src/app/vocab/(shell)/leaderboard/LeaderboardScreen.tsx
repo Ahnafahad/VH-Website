@@ -5,6 +5,7 @@ import { motion, AnimatePresence, Variants, useInView, useReducedMotion } from '
 import type { LeaderboardData, LeaderEntry, AllTimeEntry, HallEntry } from '@/lib/vocab/leaderboard-data';
 import { useVocabFeedback } from '@/lib/vocab/use-vocab-feedback';
 import PublicProfileSheet from '@/components/vocab/PublicProfileSheet';
+import { LexiArtwork } from '@/components/vocab/LexiAsset';
 
 // ─── Medal colours ────────────────────────────────────────────────────────────
 
@@ -103,18 +104,26 @@ function PodiumCard({ rank, name, points, isMe, delay, label, onSelect }: Podium
 
       {/* Avatar */}
       <div
-        className="relative z-10 flex h-14 w-14 shrink-0 items-center justify-center rounded-full"
+        className="relative z-10 flex h-16 w-16 shrink-0 items-center justify-center rounded-full"
         style={{
           background:  'var(--color-lx-elevated)',
           boxShadow:   `0 0 0 2px ${isMe ? 'var(--color-lx-accent-red)' : m.ring}`,
         }}
       >
+        <LexiArtwork
+          path={`leaderboard/${rank === 1 ? 'first' : rank === 2 ? 'second' : 'third'}-place.svg`}
+          width={76}
+          height={76}
+          style={{ position: 'absolute', inset: -6, zIndex: 0 }}
+        />
         <span
           style={{
             fontFamily: "'Cormorant Garamond', serif",
             fontSize:   '1.4rem',
             fontWeight: 700,
             color:      isMe ? 'var(--color-lx-accent-red)' : m.ring,
+            position:   'relative',
+            zIndex:     1,
           }}
         >
           {initials(name)}
@@ -668,20 +677,7 @@ export default function LeaderboardScreen({ data }: { data: LeaderboardData }) {
                       repeatType: 'loop',
                     }}
                   >
-                    <svg width="52" height="52" viewBox="0 0 52 52" fill="none" aria-hidden="true">
-                      <path
-                        d="M26 5L31.8 18H46L34.8 26.2L39 40L26 32L13 40L17.2 26.2L6 18H20.2L26 5Z"
-                        fill="var(--color-lx-elevated)"
-                        stroke="var(--color-lx-accent-gold)"
-                        strokeWidth="1.8"
-                        strokeLinejoin="round"
-                      />
-                      {/* Inner highlight */}
-                      <path
-                        d="M26 12L29.8 20.5H39L31.6 25.8L34.2 34.5L26 29.5L17.8 34.5L20.4 25.8L13 20.5H22.2L26 12Z"
-                        fill="rgba(244,168,40,0.13)"
-                      />
-                    </svg>
+                    <LexiArtwork path="leaderboard/hall-of-fame-empty.webp" width={116} height={116} />
                   </motion.div>
 
                   {/* Title — staggered fade in */}

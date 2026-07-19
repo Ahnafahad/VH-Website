@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="Seamless abstract lexicon texture">
+  <rect width="128" height="128" fill="none"/>
+  <g fill="none" stroke="currentColor" stroke-width="1.5" opacity=".16" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M8 16h24l8 8v18H16l-8-8V16Zm76-8v24l-8 8H58V16l8-8h18ZM12 76h28v28H12zM66 64h46v18H84v30H66V64Z"/>
+    <path d="M21 25h10m-10 7h13m34-15h9m-9 7h6M20 87h12m-12 7h8m49-20h22M76 94h20"/>
+    <circle cx="48" cy="61" r="4"/><circle cx="114" cy="50" r="3"/>
+    <path d="m48 57 15-12m50 8-13 11"/>
+  </g>
+</svg>

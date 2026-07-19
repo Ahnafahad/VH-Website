@@ -16,6 +16,7 @@ import AnimatedNumber from '@/components/vocab/AnimatedNumber';
 import { trackFeature } from '@/lib/analytics/tracker';
 import { RETENTION_EVENTS, trackRetention } from '@/lib/vocab/retention-events';
 import { shareLexiCore } from '@/lib/vocab/native-share';
+import { LexiArtwork } from '@/components/vocab/LexiAsset';
 
 // ─── Inline SVG micro-icons (no generic defaults) ────────────────────────────
 function IconClose() {
@@ -200,7 +201,7 @@ function QuizLoading({ words }: { words: HintWord[] }) {
                     exit={{ opacity: 0, y: -8 }}
                     transition={{ duration: 0.32, ease: 'easeOut' }}
                     style={{
-                      position: 'absolute', inset: 0,
+                      width: '100%',
                       display: 'flex', flexDirection: 'column', gap: '0.35rem',
                       padding: '0.875rem 1rem',
                       background: C.elevated,
@@ -275,7 +276,7 @@ function QuizError({ onBack }: { onBack: () => void }) {
           display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.75rem',
         }}
       >
-        <OctagonX size={34} color={C.red} />
+        <LexiArtwork path="states/server-error.webp" width={112} height={112} />
         <p style={{ fontFamily: SERIF, fontSize: '1.4rem', fontWeight: 700, color: C.textPrim }}>
           Quiz unavailable
         </p>
@@ -442,7 +443,8 @@ function QuizSummary({ summary, onContinue }: { summary: SummaryData; onContinue
       >
         {/* Ring */}
         <div style={{ position: 'relative', width: 140, height: 140 }}>
-          <svg width={140} height={140} style={{ transform: 'rotate(-90deg)' }}>
+          <LexiArtwork path={passed ? 'quiz/pass.svg' : 'quiz/try-again.svg'} width={140} height={140} style={{ position: 'absolute', inset: 0, opacity: 0.42 }} />
+          <svg width={140} height={140} style={{ transform: 'rotate(-90deg)', position: 'relative', zIndex: 1 }}>
             <circle cx={70} cy={70} r={54} fill="none" strokeWidth={9} stroke={C.elevated} />
             <motion.circle
               cx={70} cy={70} r={54}
@@ -459,6 +461,7 @@ function QuizSummary({ summary, onContinue }: { summary: SummaryData; onContinue
           <div style={{
             position: 'absolute', inset: 0,
             display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
+            zIndex: 2,
           }}>
             <span style={{ fontFamily: SERIF, fontSize: '2.1rem', fontWeight: 700, lineHeight: 1, color: C.textPrim }}>
               <AnimatedNumber value={scorePct} />%
@@ -1145,7 +1148,7 @@ export default function QuizScreen({ themeId, themeIds, letterWordIds, sessionTy
 
   return (
     <div style={{
-      minHeight: 'calc(100dvh - 72px)',
+      height: 'calc(100dvh - 72px)',
       display: 'flex', flexDirection: 'column',
       padding: '1rem 1.25rem 1.25rem',
       maxWidth: 680,
@@ -1239,7 +1242,7 @@ export default function QuizScreen({ themeId, themeIds, letterWordIds, sessionTy
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: -direction * 28 }}
           transition={{ duration: 0.26, ease: 'easeOut' }}
-          style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '0.875rem' }}
+          style={{ flex: 1, minHeight: 0, overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: '0.875rem' }}
         >
           {/* Question text */}
           <div style={{

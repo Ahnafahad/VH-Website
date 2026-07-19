@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" fill="none" role="img" aria-label="Archival page corner flourish">
+  <g stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M16 80V16h64" stroke-width="4"/>
+    <path d="M25 71V25h46" stroke-width="1.5" opacity=".55"/>
+    <path d="M18 48c19 0 16-27 36-27 10 0 15 7 17 14-10-3-20 2-20 13 0 13 13 18 24 12-5 12-15 19-28 17-16-2-23-15-29-29Z" stroke-width="2.5"/>
+    <circle cx="31" cy="61" r="3" fill="currentColor" stroke="none"/>
+  </g>
+</svg>

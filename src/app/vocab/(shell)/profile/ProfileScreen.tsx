@@ -52,6 +52,7 @@ import { useLexiAccessibility } from '@/hooks/useLexiAccessibility';
 import { Capacitor } from '@capacitor/core';
 import { readReminderEnabled, writeReminderEnabled, rescheduleFromCache, cancelReminders } from '@/lib/vocab/local-reminders';
 import type { ProfileData, BadgeRow, WordRow } from './page';
+import { LexiArtwork } from '@/components/vocab/LexiAsset';
 
 // ─── Badge icons ──────────────────────────────────────────────────────────────
 
@@ -70,6 +71,23 @@ const BADGE_ICONS: Record<string, LucideIcon> = {
   word_sovereign:      Crown,     immortal:           InfinityIcon,
   vocab_game_explorer: Puzzle,    vocab_game_builder: Hammer,
   vocab_game_master:   Gem,
+};
+
+const BADGE_ASSETS: Record<string, string> = {
+  first_step: 'badges/first-word.svg', quiz_starter: 'badges/first-quiz.svg',
+  on_a_roll: 'badges/streak-3.svg', perfectionist: 'badges/perfect-quiz.svg',
+  week_warrior: 'badges/streak-7.svg', sharp_shooter: 'badges/practice-specialist.svg',
+  unit_slayer: 'badges/mastered-50.svg', analogy_apprentice: 'badges/first-recall.svg',
+  halfway_there: 'badges/mastered-250.svg', streak_keeper: 'badges/streak-14.svg',
+  review_regular: 'badges/review-guardian.svg', speed_demon: 'badges/practice-specialist.svg',
+  leaderboard_climber: 'badges/weekly-champion.svg', vocab_explorer: 'badges/mastered-100.svg',
+  vocab_game_explorer: 'badges/word-hunt-winner.svg', the_800_club: 'badges/full-lexicon.svg',
+  analogy_master: 'badges/mastered-500.svg', unit_conqueror: 'badges/mastered-500.svg',
+  review_legend: 'badges/review-guardian.svg', completionist: 'badges/full-lexicon.svg',
+  leaderboard_legend: 'badges/hall-of-fame.svg', vocab_game_builder: 'badges/word-hunt-winner.svg',
+  vocab_game_master: 'badges/word-charge-specialist.svg', question_machine: 'badges/weekly-points.svg',
+  flawless_run: 'badges/perfect-quiz.svg', word_sovereign: 'badges/full-lexicon.svg',
+  immortal: 'badges/streak-100.svg',
 };
 
 // ─── Colour helpers ───────────────────────────────────────────────────────────
@@ -896,6 +914,7 @@ export default function ProfileScreen({
                 }}>
                   {data.badges.map((badge, i) => {
                     const Icon   = BADGE_ICONS[badge.id] ?? Star;
+                    const asset  = BADGE_ASSETS[badge.id];
                     const accent = badgeAccent(badge.category);
                     return (
                       <motion.button
@@ -925,12 +944,16 @@ export default function ProfileScreen({
                           filter:  badge.earned ? 'none' : 'grayscale(1) brightness(0.35)',
                           opacity: badge.earned ? 1 : 0.9,
                         }}>
-                          <Icon
-                            size={24}
-                            color={badge.earned ? accent : '#ffffff'}
-                            strokeWidth={1.5}
-                            style={badge.earned ? { filter: `drop-shadow(0 0 4px ${accent}80)` } : {}}
-                          />
+                          {asset ? (
+                            <LexiArtwork path={asset} width={44} height={44} />
+                          ) : (
+                            <Icon
+                              size={24}
+                              color={badge.earned ? accent : '#ffffff'}
+                              strokeWidth={1.5}
+                              style={badge.earned ? { filter: `drop-shadow(0 0 4px ${accent}80)` } : {}}
+                            />
+                          )}
                         </div>
                         <span style={{
                           fontFamily:       "'Sora', sans-serif",
@@ -1691,6 +1714,7 @@ export default function ProfileScreen({
               {(() => {
                 const b      = selectedBadge;
                 const Icon   = BADGE_ICONS[b.id] ?? Star;
+                const asset  = BADGE_ASSETS[b.id];
                 const accent = badgeAccent(b.category);
                 return (
                   <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
@@ -1706,7 +1730,11 @@ export default function ProfileScreen({
                       marginBottom:   16,
                       filter:         b.earned ? 'none' : 'grayscale(1) brightness(0.4)',
                     }}>
-                      <Icon size={32} color={accent} strokeWidth={1.4} style={b.earned ? { filter: `drop-shadow(0 0 6px ${accent}80)` } : {}} />
+                      {asset ? (
+                        <LexiArtwork path={asset} width={68} height={68} />
+                      ) : (
+                        <Icon size={32} color={accent} strokeWidth={1.4} style={b.earned ? { filter: `drop-shadow(0 0 6px ${accent}80)` } : {}} />
+                      )}
                     </div>
                     <h2 style={{
                       fontFamily: "'Cormorant Garamond', Georgia, serif",

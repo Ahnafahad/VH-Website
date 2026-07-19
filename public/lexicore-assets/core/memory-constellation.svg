@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" fill="none" role="img" aria-label="Connected memory nodes">
+  <g stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <path d="m18 66 14-37 23 11 23-18-8 48-27 8-25-12Z" stroke-width="2" opacity=".72"/>
+    <path d="m32 29 11 49m12-38 15 30M18 66l37-26m-12 38 35-56" stroke-width="1.5" opacity=".45"/>
+    <g fill="currentColor" stroke="none">
+      <circle cx="18" cy="66" r="4"/><circle cx="32" cy="29" r="5"/><circle cx="55" cy="40" r="4"/><circle cx="78" cy="22" r="5"/><circle cx="70" cy="70" r="4"/><circle cx="43" cy="78" r="5"/>
+    </g>
+    <circle cx="55" cy="40" r="9" stroke-width="2"/>
+  </g>
+</svg>

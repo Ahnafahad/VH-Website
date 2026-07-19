@@ -13,8 +13,9 @@
 import { useState, useEffect, useCallback } from 'react';
 import { createPortal } from 'react-dom';
 import { AnimatePresence } from 'framer-motion';
-import { Lock, ChevronRight } from 'lucide-react';
+import { ChevronRight } from 'lucide-react';
 import AccessRequestSheet from './AccessRequestSheet';
+import { LexiArtwork } from '@/components/vocab/LexiAsset';
 
 interface Props {
   /** Unit name to display in the bottom sheet header */
@@ -61,8 +62,8 @@ export default function LockedUnitOverlay({ unitName = 'this unit' }: Props) {
       >
         <div
           style={{
-            width:          40,
-            height:         40,
+            width:          64,
+            height:         64,
             borderRadius:   '50%',
             background:     'rgba(201,168,76,0.12)',
             border:         '1px solid rgba(201,168,76,0.35)',
@@ -72,14 +73,7 @@ export default function LockedUnitOverlay({ unitName = 'this unit' }: Props) {
             boxShadow:      '0 0 16px rgba(201,168,76,0.2)',
           }}
         >
-          <Lock
-            size={18}
-            strokeWidth={1.6}
-            style={{
-              color:  '#C9A84C',
-              filter: 'drop-shadow(0 0 4px rgba(201,168,76,0.6))',
-            }}
-          />
+          <LexiArtwork path="states/content-locked.webp" width={58} height={58} />
         </div>
 
         <div style={{ textAlign: 'center' }}>

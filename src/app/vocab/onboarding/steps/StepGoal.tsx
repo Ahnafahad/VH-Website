@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { BookOpen, GraduationCap, MessageCircle, Sparkles } from 'lucide-react';
+import { LexiArtwork } from '@/components/vocab/LexiAsset';
 
 export type LearningGoal = 'admission' | 'conversation' | 'academic' | 'general';
 
@@ -20,6 +21,7 @@ export default function StepGoal({ onNext }: { onNext: (goal: LearningGoal) => v
         <h1 id="goal-title">What should your vocabulary help you do?</h1>
         <span>One answer is enough. You can change it later.</span>
       </div>
+      <LexiArtwork path="onboarding/learning-goal.webp" width={104} height={104} style={{ margin: '0 auto' }} />
       <div className="lx-goal-list">
         {goals.map(({ id, label, detail, icon: Icon }) => (
           <motion.button key={id} type="button" whileTap={{ scale: 0.985 }} onClick={() => onNext(id)} className="lx-goal-option">

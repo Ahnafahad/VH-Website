@@ -6,6 +6,7 @@ import { useSafeNavigate } from '@/hooks/useSafeNavigate';
 import type { PracticePageData, PracticeUnitItem } from '@/lib/vocab/practice-data';
 import { useVocabFeedback } from '@/lib/vocab/use-vocab-feedback';
 import { trackFeature } from '@/lib/analytics/tracker';
+import { LexiArtwork } from '@/components/vocab/LexiAsset';
 
 type PracticeTab = 'unit' | 'letter';
 
@@ -686,6 +687,7 @@ export default function PracticeScreen({ data }: { data: PracticePageData }) {
   if (data.units.length === 0) {
     return (
       <div className="flex flex-col items-center justify-center gap-5 px-6 pt-24 text-center">
+        <LexiArtwork path="practice/no-selection.webp" width={144} height={144} />
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -714,7 +716,13 @@ export default function PracticeScreen({ data }: { data: PracticePageData }) {
       style={{ minHeight: 'calc(100dvh - 72px)', paddingBottom: showCta ? 112 : 32 }}
     >
       {/* ── Header ── */}
-      <div className="px-5 pt-10 pb-6 md:px-8 md:pt-12">
+      <div className="relative overflow-hidden px-5 pt-10 pb-6 pr-28 md:px-8 md:pt-12 md:pr-36">
+        <LexiArtwork
+          path="practice/builder-hero.webp"
+          width={104}
+          height={104}
+          style={{ position: 'absolute', right: 12, top: 30, opacity: 0.82 }}
+        />
         <motion.p
           initial={{ opacity: 0, y: -6 }}
           animate={{ opacity: 1, y: 0 }}

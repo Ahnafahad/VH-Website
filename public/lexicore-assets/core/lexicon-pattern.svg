@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none" role="img" aria-label="Abstract lexicon pattern">
+  <g stroke="currentColor" stroke-width="2" opacity=".22" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 20h24l8 8v18H20l-8-8V20Zm72-8v24l-8 8H58V20l8-8h18ZM16 78h28v28H16zM66 67h44v18H82v28H66V67Z"/>
+    <path d="M26 28h8M26 36h11M67 22h8M67 30h5M24 88h12M24 96h7M78 76h20M76 95h18"/>
+    <circle cx="50" cy="63" r="4"/><circle cx="112" cy="52" r="3"/>
+    <path d="m50 59 15-12m46 8-12 12"/>
+  </g>
+</svg>
