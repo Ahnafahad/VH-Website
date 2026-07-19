@@ -2,7 +2,9 @@
 
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
+import { ShieldAlert } from 'lucide-react';
 import TimerArc from '@/components/tests/TimerArc';
 import QuestionView from '@/components/tests/QuestionView';
 import QuestionNavigator from '@/components/tests/QuestionNavigator';
@@ -231,8 +233,10 @@ export default function OnlineExamScreen({ slug, bucket, initialPayload, exitHre
     return (
       <div className="min-h-screen bg-exam-base flex items-center justify-center p-6 text-center">
         <div className="max-w-sm">
-          <div className="text-exam-danger text-5xl mb-4">🚫</div>
-          <h1 className="text-exam-ink text-xl font-semibold mb-2">Access Revoked</h1>
+          <div className="inline-flex items-center justify-center w-16 h-16 rounded-full border-2 border-exam-danger mb-6">
+            <ShieldAlert className="w-7 h-7 text-exam-danger" strokeWidth={1.5} />
+          </div>
+          <h1 className="font-heading text-exam-ink text-2xl font-medium mb-2">Access Revoked</h1>
           <p className="text-exam-ink-muted text-sm leading-relaxed mb-6">
             You have been banned from this test due to repeated violations. Contact an admin to appeal.
           </p>
@@ -257,7 +261,7 @@ export default function OnlineExamScreen({ slug, bucket, initialPayload, exitHre
             style={{ boxShadow: 'var(--color-exam-glow-gold) 0 0 32px 0' }}>
             <span className="text-exam-gold text-2xl">✓</span>
           </div>
-          <h1 className="text-exam-ink font-serif text-2xl font-semibold mb-2">Answers Locked In</h1>
+          <h1 className="font-heading text-exam-ink text-2xl font-medium mb-2">Answers Locked In</h1>
           <p className="text-exam-ink-muted text-sm leading-relaxed mb-6">
             Results will be available once the test window closes and all answers have been reviewed.
           </p>
@@ -275,37 +279,50 @@ export default function OnlineExamScreen({ slug, bucket, initialPayload, exitHre
   return (
     <div className="flex flex-col h-screen bg-exam-base overflow-hidden">
       {/* Header */}
-      <header className="flex-shrink-0 flex items-center justify-between px-4 py-3 bg-exam-surface border-b border-exam-border z-10">
-        <div className="flex flex-col min-w-0">
-          <h1 className="text-exam-ink text-sm font-semibold truncate">{initialPayload.test.title}</h1>
-          <span className="text-exam-ink-faint text-xs">
-            {initialPayload.sections[
-              allQuestions.findIndex((_, i) => i === currentIdx) >= 0
-                ? (function() {
-                    let sum = 0;
-                    for (let si = 0; si < initialPayload.sections.length; si++) {
-                      sum += initialPayload.sections[si].questions.length;
-                      if (currentIdx < sum) return si;
-                    }
-                    return 0;
-                  })()
-                : 0
-            ]?.title ?? ''}
-          </span>
-        </div>
-        <div className="flex items-center gap-3">
-          {syncError && (
-            <span className="text-exam-warning text-xs animate-pulse">reconnecting…</span>
-          )}
-          <div className="px-3 py-1.5 rounded-lg bg-exam-elevated border border-exam-border">
-            <TimerArc deadlineMs={initialPayload.attempt.deadline} onExpire={handleAutoSubmit} />
+      <header className="relative flex-shrink-0 flex items-center justify-between gap-4 px-4 sm:px-5 py-3 bg-exam-surface border-b border-exam-border z-10">
+        <div
+          className="absolute inset-x-0 bottom-0 h-px pointer-events-none"
+          style={{ background: 'linear-gradient(90deg, transparent, var(--color-exam-gold) 50%, transparent)', opacity: 0.35 }}
+        />
+        <div className="flex items-center gap-3 min-w-0">
+          <Image
+            src="/bth_compact_square_maroon.png"
+            alt=""
+            width={28}
+            height={28}
+            className="rounded-md flex-shrink-0 hidden sm:block"
+          />
+          <div className="flex flex-col min-w-0">
+            <h1 className="font-heading text-exam-ink text-base sm:text-lg font-medium tracking-tight truncate">
+              {initialPayload.test.title}
+            </h1>
+            <span className="text-exam-gold/70 text-[11px] uppercase tracking-[0.15em] font-medium">
+              {initialPayload.sections[
+                allQuestions.findIndex((_, i) => i === currentIdx) >= 0
+                  ? (function() {
+                      let sum = 0;
+                      for (let si = 0; si < initialPayload.sections.length; si++) {
+                        sum += initialPayload.sections[si].questions.length;
+                        if (currentIdx < sum) return si;
+                      }
+                      return 0;
+                    })()
+                  : 0
+              ]?.title ?? ''}
+            </span>
           </div>
+        </div>
+        <div className="flex items-center gap-3 sm:gap-4 flex-shrink-0">
+          {syncError && (
+            <span className="text-exam-warning text-xs animate-pulse hidden sm:inline">reconnecting…</span>
+          )}
+          <TimerArc deadlineMs={initialPayload.attempt.deadline} onExpire={handleAutoSubmit} />
           <motion.button
             onClick={() => setSubmitDialog(true)}
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.97 }}
             transition={{ type: 'spring' as const, stiffness: 400, damping: 22 }}
-            className="px-3 py-1.5 rounded-lg bg-exam-maroon hover:bg-exam-maroon-bright text-exam-ink text-xs font-medium transition-colors"
+            className="px-3.5 py-1.5 rounded-lg bg-exam-maroon hover:bg-exam-maroon-bright text-exam-ink text-xs font-medium transition-colors"
           >
             Submit
           </motion.button>

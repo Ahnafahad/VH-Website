@@ -59,8 +59,15 @@ export default function QuestionView({
   return (
     <div className="flex flex-col h-full">
       {/* Question header */}
-      <div className="flex items-center justify-between px-4 py-3 border-b border-exam-border flex-shrink-0">
-        <span className="text-exam-ink-faint text-xs font-medium uppercase tracking-widest">
+      <div className="relative flex items-center justify-between px-4 py-3 border-b border-exam-border flex-shrink-0 overflow-hidden">
+        <span
+          aria-hidden
+          className="font-heading italic absolute -left-1 -top-3 text-[3.5rem] leading-none text-exam-gold select-none pointer-events-none"
+          style={{ opacity: 0.08 }}
+        >
+          {String(questionNumber).padStart(2, '0')}
+        </span>
+        <span className="relative text-exam-ink-faint text-xs font-medium uppercase tracking-widest">
           Question {questionNumber} of {totalQuestions}
         </span>
         <motion.button
@@ -111,7 +118,11 @@ export default function QuestionView({
                     transition={{ duration: 0.2 }}
                     className="overflow-hidden px-4 pb-4"
                   >
-                    <div className="bg-exam-elevated rounded-xl p-4 border border-exam-border">
+                    <div className="relative bg-exam-elevated rounded-xl p-4 border border-exam-border overflow-hidden">
+                      <div
+                        className="absolute inset-x-0 top-0 h-px pointer-events-none"
+                        style={{ background: 'linear-gradient(90deg, transparent, var(--color-exam-gold) 50%, transparent)', opacity: 0.25 }}
+                      />
                       <p className="text-exam-ink-muted text-sm leading-relaxed">
                         <RichText content={group?.content ?? ''} />
                       </p>

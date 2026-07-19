@@ -34,6 +34,13 @@ function parseMarkdown(text: string): React.ReactNode[] {
       parts.push(<strong key={key++}>{remaining.slice(2, end)}</strong>);
       remaining = remaining.slice(end + 2);
     } else if (remaining.startsWith('_')) {
+      // Runs of 2+ underscores are fill-in-the-blank markers, not italics — keep literal.
+      const run = remaining.match(/^_+/)![0];
+      if (run.length > 1) {
+        parts.push(run);
+        remaining = remaining.slice(run.length);
+        continue;
+      }
       const end = remaining.indexOf('_', 1);
       if (end === -1) { parts.push(remaining); break; }
       parts.push(<em key={key++}>{remaining.slice(1, end)}</em>);

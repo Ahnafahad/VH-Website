@@ -85,7 +85,8 @@ export default function FbsDiagnosisClient() {
   );
 
   const featured = tests[0] ?? null;
-  const others = tests.slice(1);
+  const featuredDone = featured?.attempt?.status === 'submitted';
+  const others = featuredDone ? tests.slice(1) : [];
 
   return (
     <main className="bg-[#FAF5EF] text-[#1A0507]">

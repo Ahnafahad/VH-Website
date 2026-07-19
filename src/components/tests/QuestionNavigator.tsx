@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence, Variants } from 'framer-motion';
 import { ChevronDown, ChevronUp, Send } from 'lucide-react';
+import { BorderBeam } from '@/components/ui/border-beam';
 import type { TakingSection } from '@/lib/tests/types';
 
 export type QState = 'blank' | 'answered' | 'flagged' | 'current';
@@ -34,7 +35,7 @@ const stateClass: Record<QState, string> = {
   blank: 'bg-exam-q-blank border-exam-border text-exam-ink-faint',
   answered: 'bg-exam-q-answered border-exam-q-answered text-white',
   flagged: 'bg-exam-q-flagged border-exam-q-flagged text-white',
-  current: 'bg-exam-q-current border-exam-q-current text-white ring-2 ring-exam-maroon-bright/40',
+  current: 'bg-exam-q-current border-exam-q-current text-white ring-2 ring-exam-gold/50 ring-offset-2 ring-offset-exam-surface',
 };
 
 function ChipGrid({ sections, currentGlobalIdx, getState, onJump }: Omit<QuestionNavigatorProps, 'onSubmit' | 'mobile'>) {
@@ -46,7 +47,7 @@ function ChipGrid({ sections, currentGlobalIdx, getState, onJump }: Omit<Questio
         gIdx += section.questions.length;
         return (
           <div key={section.id}>
-            <p className="text-exam-ink-faint text-xs uppercase tracking-widest mb-2 px-1">
+            <p className="text-exam-ink-faint text-[10px] uppercase tracking-[0.2em] font-medium mb-2 px-1">
               {section.title}
             </p>
             <div className="flex flex-wrap gap-1.5">
@@ -57,10 +58,10 @@ function ChipGrid({ sections, currentGlobalIdx, getState, onJump }: Omit<Questio
                   <motion.button
                     key={q.id}
                     onClick={() => onJump(idx)}
-                    whileHover={{ scale: 1.15 }}
-                    whileTap={{ scale: 0.9 }}
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.92 }}
                     transition={{ type: 'spring' as const, stiffness: 500, damping: 24 }}
-                    className={`w-8 h-8 rounded-lg border text-xs font-bold transition-colors ${stateClass[state]}`}
+                    className={`w-8 h-8 rounded-md border text-xs font-semibold tabular-nums transition-colors ${stateClass[state]}`}
                     aria-label={`Question ${q.number}`}
                   >
                     {q.number}
@@ -106,13 +107,17 @@ export default function QuestionNavigator(props: QuestionNavigatorProps) {
       <>
         {/* Bottom bar toggle */}
         <div className="fixed bottom-0 left-0 right-0 z-30 bg-exam-surface border-t border-exam-border safe-area-bottom">
+          <div
+            className="absolute inset-x-0 top-0 h-px pointer-events-none"
+            style={{ background: 'linear-gradient(90deg, transparent, var(--color-exam-gold) 50%, transparent)', opacity: 0.35 }}
+          />
           <div className="flex items-center justify-between px-4 py-2">
             <button
               onClick={() => setDrawerOpen(o => !o)}
               className="flex items-center gap-2 text-exam-ink-muted text-sm"
             >
               {drawerOpen ? <ChevronDown className="w-4 h-4" /> : <ChevronUp className="w-4 h-4" />}
-              <span>{answeredCount}/{totalQ} answered</span>
+              <span className="tabular-nums">{answeredCount}/{totalQ} answered</span>
             </button>
             <motion.button
               onClick={onSubmit}
@@ -149,11 +154,15 @@ export default function QuestionNavigator(props: QuestionNavigatorProps) {
 
   // Desktop rail
   return (
-    <aside className="w-64 flex-shrink-0 bg-exam-surface border-l border-exam-border flex flex-col">
+    <aside className="relative w-64 flex-shrink-0 bg-exam-surface border-l border-exam-border flex flex-col">
+      <div
+        className="absolute inset-x-0 top-0 h-px pointer-events-none"
+        style={{ background: 'linear-gradient(90deg, transparent, var(--color-exam-gold) 50%, transparent)', opacity: 0.35 }}
+      />
       <div className="flex-1 overflow-y-auto p-4">
-        <p className="text-exam-ink text-sm font-semibold mb-4">
+        <p className="font-heading text-exam-ink text-base font-medium mb-4">
           Question Navigator
-          <span className="ml-2 text-exam-ink-faint font-normal text-xs">{answeredCount}/{totalQ}</span>
+          <span className="ml-2 text-exam-ink-faint font-sans font-normal text-xs tabular-nums">{answeredCount}/{totalQ}</span>
         </p>
         <ChipGrid {...props} />
         <LegendRow />
@@ -161,14 +170,15 @@ export default function QuestionNavigator(props: QuestionNavigatorProps) {
       <div className="p-4 border-t border-exam-border">
         <motion.button
           onClick={onSubmit}
-          whileHover={{ scale: 1.03 }}
-          whileTap={{ scale: 0.97 }}
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
           transition={{ type: 'spring' as const, stiffness: 400, damping: 20 }}
-          className="w-full flex items-center justify-center gap-2 py-3 bg-exam-maroon hover:bg-exam-maroon-bright
+          className="relative w-full flex items-center justify-center gap-2 py-3 overflow-hidden bg-exam-maroon hover:bg-exam-maroon-bright
             text-exam-ink font-medium text-sm rounded-xl transition-colors"
         >
-          <Send className="w-4 h-4" />
-          Submit Test
+          <BorderBeam size={60} duration={7} colorFrom="var(--color-exam-gold)" colorTo="var(--color-exam-maroon-bright)" />
+          <Send className="relative w-4 h-4" />
+          <span className="relative">Submit Test</span>
         </motion.button>
       </div>
     </aside>

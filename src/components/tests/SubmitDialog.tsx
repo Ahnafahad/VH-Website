@@ -44,7 +44,7 @@ export default function SubmitDialog({ open, answered, flagged, blank, total, on
             className="w-full max-w-sm bg-exam-surface border border-exam-border rounded-2xl p-6"
           >
             <div className="flex items-start justify-between mb-4">
-              <h2 className="text-exam-ink font-semibold text-lg">Submit Test?</h2>
+              <h2 className="font-heading text-exam-ink font-medium text-xl">Submit Test?</h2>
               <button onClick={onCancel} className="text-exam-ink-faint hover:text-exam-ink transition-colors">
                 <X className="w-5 h-5" />
               </button>

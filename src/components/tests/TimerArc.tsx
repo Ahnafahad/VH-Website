@@ -8,6 +8,11 @@ interface TimerArcProps {
   onExpire: () => void;
 }
 
+const RING_SIZE = 40;
+const RING_STROKE = 3;
+const RING_RADIUS = (RING_SIZE - RING_STROKE) / 2;
+const RING_CIRCUMFERENCE = 2 * Math.PI * RING_RADIUS;
+
 function formatTime(ms: number): string {
   if (ms <= 0) return '0:00';
   const totalSecs = Math.ceil(ms / 1000);
@@ -21,9 +26,12 @@ function formatTime(ms: number): string {
 export default function TimerArc({ deadlineMs, onExpire }: TimerArcProps) {
   const [remaining, setRemaining] = useState(() => Math.max(0, deadlineMs - Date.now()));
   const expiredRef = useRef(false);
+  // Reference for the ring sweep: the window duration as seen on first render.
+  const totalRef = useRef(remaining);
 
   useEffect(() => {
     expiredRef.current = false;
+    totalRef.current = Math.max(1, deadlineMs - Date.now());
     const tick = () => {
       const rem = Math.max(0, deadlineMs - Date.now());
       setRemaining(rem);
@@ -45,24 +53,57 @@ export default function TimerArc({ deadlineMs, onExpire }: TimerArcProps) {
     : isGold
     ? 'text-exam-gold'
     : 'text-exam-ink';
+  const strokeVar = isRed
+    ? 'var(--color-exam-danger)'
+    : isGold
+    ? 'var(--color-exam-gold)'
+    : 'var(--color-exam-ink-muted)';
+
+  const progress = Math.min(1, remaining / totalRef.current);
+  const dashoffset = RING_CIRCUMFERENCE * (1 - progress);
 
   return (
-    <motion.span
+    <motion.div
       animate={
         isRed
-          ? { opacity: [1, 0.5, 1] }
+          ? { opacity: [1, 0.55, 1] }
           : isGold
-          ? { opacity: [1, 0.7, 1] }
+          ? { opacity: [1, 0.75, 1] }
           : { opacity: 1 }
       }
       transition={
         isRed || isGold
-          ? { repeat: Infinity, duration: isRed ? 0.8 : 1.5, ease: 'easeInOut' }
+          ? { repeat: Infinity, duration: isRed ? 0.8 : 1.6, ease: 'easeInOut' }
           : {}
       }
-      className={`font-mono text-sm font-semibold tabular-nums ${colorClass}`}
+      className="relative flex items-center justify-center"
+      style={{ width: RING_SIZE, height: RING_SIZE }}
     >
-      {formatTime(remaining)}
-    </motion.span>
+      <svg width={RING_SIZE} height={RING_SIZE} className="-rotate-90">
+        <circle
+          cx={RING_SIZE / 2}
+          cy={RING_SIZE / 2}
+          r={RING_RADIUS}
+          fill="none"
+          stroke="var(--color-exam-border)"
+          strokeWidth={RING_STROKE}
+        />
+        <circle
+          cx={RING_SIZE / 2}
+          cy={RING_SIZE / 2}
+          r={RING_RADIUS}
+          fill="none"
+          stroke={strokeVar}
+          strokeWidth={RING_STROKE}
+          strokeLinecap="round"
+          strokeDasharray={RING_CIRCUMFERENCE}
+          strokeDashoffset={dashoffset}
+          style={{ transition: 'stroke-dashoffset 900ms linear, stroke 300ms ease' }}
+        />
+      </svg>
+      <span suppressHydrationWarning className={`absolute font-mono text-[10px] font-semibold tabular-nums ${colorClass}`}>
+        {formatTime(remaining)}
+      </span>
+    </motion.div>
   );
 }
