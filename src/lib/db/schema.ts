@@ -278,6 +278,8 @@ export const vocabWords = sqliteTable('vocab_words', {
   exampleSentence: text('example_sentence').notNull(),
   partOfSpeech:    text('part_of_speech').notNull(),
   difficultyBase:  integer('difficulty_base').notNull().default(3), // 1–5
+  // Word Charge connotation: 'positive' | 'negative' | 'inapplicable' | NULL
+  connotation:     text('connotation'),
   createdAt:       integer('created_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
   updatedAt:       integer('updated_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
 }, (t) => [
@@ -600,6 +602,81 @@ export const vocabErrorLogs = sqliteTable('vocab_error_logs', {
   index('idx_vocab_error_logs_created_at').on(t.createdAt),
 ]);
 
+// ─── Word Hunt Game ────────────────────────────────────────────────────────────
+// Daily Wordle-style vocabulary guessing game. One round per calendar day
+// (Dhaka/UTC+6). content stores the JSON-serialized RoundContent (see
+// src/lib/vocab/game/types.ts) — clues, accepted answers, teaching feedback.
+
+export const vocabGameRounds = sqliteTable('vocab_game_rounds', {
+  id:        integer('id').primaryKey({ autoIncrement: true }),
+  roundDate: text('round_date').notNull().unique(),   // ISO 'YYYY-MM-DD', Dhaka calendar day
+  wordId:    integer('word_id').notNull().references(() => vocabWords.id, { onDelete: 'cascade' }),
+  content:   text('content').notNull(),               // JSON RoundContent
+  createdAt: integer('created_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
+  updatedAt: integer('updated_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
+});
+
+export const vocabGameSessions = sqliteTable('vocab_game_sessions', {
+  id:             integer('id').primaryKey({ autoIncrement: true }),
+  userId:         integer('user_id').notNull().references(() => users.id, { onDelete: 'cascade' }),
+  roundId:        integer('round_id').notNull().references(() => vocabGameRounds.id, { onDelete: 'cascade' }),
+  // 'in_progress' | 'won' | 'lost'
+  status:         text('status').notNull().default('in_progress'),
+  guessCount:     integer('guess_count').notNull().default(0),      // consumed attempts (1-6)
+  wordPoints:     integer('word_points').notNull().default(0),
+  sentencePoints: integer('sentence_points').notNull().default(0),
+  isCatchUp:      integer('is_catch_up', { mode: 'boolean' }).notNull().default(false),
+  startedAt:      integer('started_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
+  completedAt:    integer('completed_at', { mode: 'timestamp' }),
+}, (t) => [
+  unique().on(t.userId, t.roundId),
+  index('idx_game_sessions_user_status').on(t.userId, t.status),
+]);
+
+export const vocabGameGuesses = sqliteTable('vocab_game_guesses', {
+  id:                   integer('id').primaryKey({ autoIncrement: true }),
+  sessionId:            integer('session_id').notNull().references(() => vocabGameSessions.id, { onDelete: 'cascade' }),
+  userId:               integer('user_id').notNull().references(() => users.id, { onDelete: 'cascade' }),
+  guessNumber:          integer('guess_number').notNull(),   // 1-6
+  word:                 text('word').notNull(),
+  normalizedWord:       text('normalized_word').notNull(),
+  sentence:             text('sentence').notNull(),          // latest submitted sentence
+  // 'pending' | 'accepted_clear' | 'accepted_basic' | 'accepted_revised' | 'rejected'
+  sentenceStatus:       text('sentence_status').notNull().default('pending'),
+  revisionCount:        integer('revision_count').notNull().default(0),
+  sentenceFeedback:     text('sentence_feedback'),            // latest judge explanation
+  // 'correct' | 'very_close' | 'related' | 'same_topic' | 'opposite' | 'unrelated'
+  relation:             text('relation'),
+  relationFeedback:     text('relation_feedback'),
+  sentencePointsEarned: integer('sentence_points_earned').notNull().default(0),
+  createdAt:            integer('created_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
+  updatedAt:            integer('updated_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
+}, (t) => [
+  unique().on(t.sessionId, t.guessNumber),
+]);
+
+// ─── Word Charge Rounds ───────────────────────────────────────────────────────
+// One row per started round. wordIds/answers are JSON-serialised arrays.
+
+export const vocabChargeRounds = sqliteTable('vocab_charge_rounds', {
+  id:           integer('id').primaryKey({ autoIncrement: true }),
+  userId:       integer('user_id').notNull().references(() => users.id, { onDelete: 'cascade' }),
+  // 'active' | 'finished'
+  status:       text('status').notNull().default('active'),
+  wordIds:      text('word_ids').notNull(),      // JSON int[] — order preserved
+  answers:      text('answers'),                  // JSON ChargeAnswer[] | null until finish
+  correctCount: integer('correct_count').notNull().default(0),
+  wrongCount:   integer('wrong_count').notNull().default(0),
+  helpedCount:  integer('helped_count').notNull().default(0),
+  skippedCount: integer('skipped_count').notNull().default(0),
+  bestStreak:   integer('best_streak').notNull().default(0),
+  pointsEarned: integer('points_earned').notNull().default(0),
+  startedAt:    integer('started_at',  { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
+  finishedAt:   integer('finished_at', { mode: 'timestamp' }),
+}, (t) => [
+  index('idx_charge_rounds_user').on(t.userId, t.startedAt),
+]);
+
 // ─── LexiCore Type Exports ────────────────────────────────────────────────────
 
 export type VocabUnit             = typeof vocabUnits.$inferSelect;
@@ -612,6 +689,11 @@ export type VocabQuizSession      = typeof vocabQuizSessions.$inferSelect;
 export type VocabQuizAnswer       = typeof vocabQuizAnswers.$inferSelect;
 export type VocabSrsEvent         = typeof vocabSrsEvents.$inferSelect;
 export type VocabUserBadge        = typeof vocabUserBadges.$inferSelect;
+export type VocabGameRound        = typeof vocabGameRounds.$inferSelect;
+export type VocabGameSession      = typeof vocabGameSessions.$inferSelect;
+export type VocabGameGuess        = typeof vocabGameGuesses.$inferSelect;
+export type VocabChargeRound      = typeof vocabChargeRounds.$inferSelect;
+export type NewVocabChargeRound   = typeof vocabChargeRounds.$inferInsert;
 
 export type VocabErrorLog     = typeof vocabErrorLogs.$inferSelect;
 export type NewVocabErrorLog  = typeof vocabErrorLogs.$inferInsert;
@@ -715,6 +797,8 @@ export const tests = sqliteTable('tests', {
   // 'draft' | 'published' | 'archived'
   status:          text('status').notNull().default('draft'),
   allowedProducts: text('allowed_products'),                 // JSON string[] | null = everyone
+  // true = FBS public diagnostic; hidden from normal /tests listing
+  isDiagnostic:    integer('is_diagnostic', { mode: 'boolean' }).notNull().default(false),
   totalQuestions:  integer('total_questions').notNull().default(0),
   totalMarks:      real('total_marks').notNull().default(0),
   // Set to force-publish results before every window has closed (admin override)

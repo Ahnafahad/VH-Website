@@ -100,6 +100,12 @@ export const BADGE_DEFS: readonly BadgeDefinition[] = [
     description: 'Start flashcards for 8 different units.',
     category:    'mid_term',
   },
+  {
+    id:          'vocab_game_explorer',
+    name:        'Vocabulary Explorer',
+    description: 'Complete 10 Word Hunt rounds.',
+    category:    'mid_term',
+  },
 
   // ── Long-term (6) ────────────────────────────────────────────────────────────
   {
@@ -136,6 +142,18 @@ export const BADGE_DEFS: readonly BadgeDefinition[] = [
     id:          'leaderboard_legend',
     name:        'Leaderboard Legend',
     description: 'Finish in the Top 3 on any weekly leaderboard.',
+    category:    'long_term',
+  },
+  {
+    id:          'vocab_game_builder',
+    name:        'Vocabulary Builder',
+    description: 'Correctly identify 25 Word Hunt hidden words.',
+    category:    'long_term',
+  },
+  {
+    id:          'vocab_game_master',
+    name:        'Vocabulary Master',
+    description: 'Identify 75 Word Hunt hidden words, at least 15 of them within 3 guesses.',
     category:    'long_term',
   },
 

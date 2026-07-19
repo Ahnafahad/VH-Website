@@ -42,6 +42,7 @@ import {
   Infinity as InfinityIcon,
   Bell, BellOff, Mail, MailOpen, Sun, Moon, CalendarDays,
   Volume2, Vibrate, Accessibility, Type,
+  Puzzle, Hammer, Gem,
   type LucideIcon,
 } from 'lucide-react';
 import { useVocabFeedback } from '@/lib/vocab/use-vocab-feedback';
@@ -67,6 +68,8 @@ const BADGE_ICONS: Record<string, LucideIcon> = {
   completionist:       CheckCircle2, leaderboard_legend: Crown,
   question_machine:    Cpu,       flawless_run:       Sparkles,
   word_sovereign:      Crown,     immortal:           InfinityIcon,
+  vocab_game_explorer: Puzzle,    vocab_game_builder: Hammer,
+  vocab_game_master:   Gem,
 };
 
 // ─── Colour helpers ───────────────────────────────────────────────────────────

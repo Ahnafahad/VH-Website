@@ -18,8 +18,9 @@ import {
   vocabThemes,
   vocabWords,
   vocabAdminSettings,
+  vocabGameSessions,
 } from '@/lib/db/schema';
-import { eq, and, count, isNotNull, isNull, sql } from 'drizzle-orm';
+import { eq, and, count, isNotNull, isNull, sql, inArray } from 'drizzle-orm';
 import { BADGE_MAP } from './definitions';
 
 // ─── Public types ─────────────────────────────────────────────────────────────
@@ -28,7 +29,8 @@ export type BadgeTrigger =
   | 'flashcard_complete'
   | 'quiz_complete'
   | 'streak_update'
-  | 'leaderboard_weekly_reset';
+  | 'leaderboard_weekly_reset'
+  | 'game_complete';
 
 export interface BadgeCheckContext {
   /** ID of the completed quiz session (quiz_complete trigger). */
@@ -395,6 +397,33 @@ export async function checkBadges(
       // leaderboard_legend: top 3
       if (rank <= 3)  await award('leaderboard_legend');
     }
+  }
+
+  // ── Trigger: game_complete ──────────────────────────────────────────────────
+  if (trigger === 'game_complete') {
+    const sessions = await db
+      .select({ status: vocabGameSessions.status, guessCount: vocabGameSessions.guessCount })
+      .from(vocabGameSessions)
+      .where(and(
+        eq(vocabGameSessions.userId, userId),
+        inArray(vocabGameSessions.status, ['won', 'lost']),
+      ));
+
+    const completed = sessions.length;
+    const won       = sessions.filter(s => s.status === 'won').length;
+    const earlyWins = sessions.filter(s => s.status === 'won' && s.guessCount <= 3).length;
+
+    // vocab_game_explorer: complete 10 rounds
+    if (completed >= 10) await award('vocab_game_explorer');
+    else                 await setProgress('vocab_game_explorer', completed);
+
+    // vocab_game_builder: identify 25 hidden words
+    if (won >= 25) await award('vocab_game_builder');
+    else           await setProgress('vocab_game_builder', won);
+
+    // vocab_game_master: 75 hidden words, ≥15 of them within 3 guesses
+    if (won >= 75 && earlyWins >= 15) await award('vocab_game_master');
+    else                              await setProgress('vocab_game_master', Math.min(won, 75));
   }
 
   // Invalidate cache if any badges were awarded/updated

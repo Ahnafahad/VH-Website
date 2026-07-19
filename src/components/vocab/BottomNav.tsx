@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { usePathname } from 'next/navigation';
-import { Home, BookOpen, Zap, Trophy, User } from 'lucide-react';
+import { Home, BookOpen, Zap, Trophy, Gamepad2 } from 'lucide-react';
 import { useVocabFeedback } from '@/lib/vocab/use-vocab-feedback';
 import { useSafeNavigate } from '@/hooks/useSafeNavigate';
 
@@ -12,7 +12,7 @@ const TABS = [
   { id: 'study',       href: '/vocab/study',       icon: BookOpen, label: 'Study' },
   { id: 'practice',   href: '/vocab/practice',    icon: Zap,      label: 'Practice' },
   { id: 'leaderboard',href: '/vocab/leaderboard', icon: Trophy,   label: 'Board' },
-  { id: 'profile',    href: '/vocab/profile',     icon: User,     label: 'Me' },
+  { id: 'games',      href: '/vocab/games',       icon: Gamepad2, label: 'Games' },
 ] as const;
 
 export default function BottomNav() {

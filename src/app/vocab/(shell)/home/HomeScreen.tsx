@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { HelpCircle, Lock, X, Target, CheckCircle2, Clock3, ArrowRight } from 'lucide-react';
+import { HelpCircle, Lock, X, Target, CheckCircle2, Clock3, ArrowRight, User } from 'lucide-react';
 import type { HomeData, MasteryBreakdown, SessionsData } from '@/lib/vocab/home-data';
 import { useSafeNavigate } from '@/hooks/useSafeNavigate';
 import ProgressRing from '@/components/vocab/ProgressRing';
@@ -814,18 +814,49 @@ export default function HomeScreen({ data }: { data: HomeData }) {
             </svg>
             VH Website
           </Link>
-          <h1 style={{
-            fontFamily:    "'Cormorant Garamond', Georgia, serif",
-            fontSize:      'clamp(2rem, 5vw, 2.75rem)',
-            lineHeight:    1,
-            fontWeight:    700,
-            fontStyle:     'italic',
-            color:         'var(--color-lx-text-primary)',
-            letterSpacing: '-0.01em',
-            margin:        0,
-          }}>
-            {firstName}
-          </h1>
+          {/* Name + icon — opens profile (replaces the removed Me tab) */}
+          <button
+            type="button"
+            onClick={() => { fb.play('tap'); navigate('/vocab/profile'); }}
+            aria-label="Open profile"
+            style={{
+              display:    'flex',
+              alignItems: 'center',
+              gap:        10,
+              background: 'transparent',
+              border:     'none',
+              padding:    0,
+              cursor:     'pointer',
+              textAlign:  'left',
+            }}
+          >
+            <h1 style={{
+              fontFamily:    "'Cormorant Garamond', Georgia, serif",
+              fontSize:      'clamp(2rem, 5vw, 2.75rem)',
+              lineHeight:    1,
+              fontWeight:    700,
+              fontStyle:     'italic',
+              color:         'var(--color-lx-text-primary)',
+              letterSpacing: '-0.01em',
+              margin:        0,
+            }}>
+              {firstName}
+            </h1>
+            <span style={{
+              display:        'flex',
+              alignItems:     'center',
+              justifyContent: 'center',
+              width:          28,
+              height:         28,
+              borderRadius:   '50%',
+              background:     'var(--color-lx-elevated)',
+              border:         '1px solid var(--color-lx-border)',
+              color:          'var(--color-lx-text-muted)',
+              flexShrink:     0,
+            }}>
+              <User size={13} />
+            </span>
+          </button>
         </div>
 
         {/* Right: points + help icon */}

@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Home, BookOpen, Zap, Trophy, User } from 'lucide-react';
+import { Home, BookOpen, Zap, Trophy, Gamepad2 } from 'lucide-react';
 import { useSession } from 'next-auth/react';
 import { useSafeNavigate } from '@/hooks/useSafeNavigate';
 
@@ -12,7 +12,7 @@ const TABS = [
   { id: 'study',       href: '/vocab/study',       icon: BookOpen, label: 'Study'      },
   { id: 'practice',   href: '/vocab/practice',    icon: Zap,      label: 'Practice'  },
   { id: 'leaderboard',href: '/vocab/leaderboard', icon: Trophy,   label: 'Leaderboard' },
-  { id: 'profile',    href: '/vocab/profile',     icon: User,     label: 'Profile'    },
+  { id: 'games',      href: '/vocab/games',       icon: Gamepad2, label: 'Games'      },
 ] as const;
 
 function initials(name: string): string {
@@ -224,15 +224,22 @@ export default function DesktopSidebar() {
         VH Website
       </Link>
 
-      {/* User footer */}
+      {/* User footer — opens profile */}
       {userName && (
-        <div
+        <button
+          onClick={() => navigate('/vocab/profile')}
+          aria-label="Open profile"
           style={{
             padding:      '14px 16px',
+            border:       'none',
             borderTop:    '1px solid var(--color-lx-border)',
             display:      'flex',
             alignItems:   'center',
             gap:          10,
+            background:   'transparent',
+            cursor:       'pointer',
+            width:        '100%',
+            textAlign:    'left',
           }}
         >
           {/* Avatar */}
@@ -288,7 +295,7 @@ export default function DesktopSidebar() {
               {userName}
             </p>
           </div>
-        </div>
+        </button>
       )}
     </aside>
   );

@@ -1,0 +1,2706 @@
+[
+  {
+    "date": "2026-11-09",
+    "word": "Laconic",
+    "unit": "Persuasion, Figurative Language & Moral Instruction",
+    "theme": "Brevity, Persuasion & Economy of Expression",
+    "intendedMeaning": "using very few words; brief in speech without sounding rude or cold",
+    "definition": "Using very few words to say something, in a way that feels natural rather than unfriendly.",
+    "wordType": "Adjective",
+    "tone": "neutral",
+    "topic": "Communication style",
+    "acceptedAnswers": [
+      "laconic"
+    ],
+    "clue1Distinction": "The hidden word is not about being persuasive or convincing — it is about HOW MUCH someone says, not how well they say it.",
+    "clue2Characteristics": [
+      "Uses very few words",
+      "Brief without long explanations",
+      "Does not feel cold or rude",
+      "Often describes a person's natural speaking style"
+    ],
+    "clue3Note": "Unlike a word that means unfriendly or short-tempered, the hidden word carries no negative feeling — a person can be this way and still seem calm and pleasant.",
+    "clue4ContextSentence": "Asked how the exam went, Rafiq gave a ________ reply: \"Fine.\" He never used ten words when two would do.",
+    "clue5FirstLetter": "L",
+    "clue5Extra": "A related word is \"terse,\" though that one can sound sharper.",
+    "clue6Choices": [
+      "Laconic",
+      "Verbose",
+      "Eloquent"
+    ],
+    "relatedGuesses": [
+      {
+        "word": "terse",
+        "distinction": "\"Terse\" is also brief, but it often sounds curt or impatient; the hidden word is brief without sounding rude."
+      },
+      {
+        "word": "concise",
+        "distinction": "\"Concise\" means expressing an idea clearly with no wasted words; the hidden word is more about a person's general habit of speaking little."
+      },
+      {
+        "word": "blunt",
+        "distinction": "\"Blunt\" is about being direct to the point of bluntness, not about the amount of words used; the hidden word is purely about brevity."
+      },
+      {
+        "word": "quiet",
+        "distinction": "\"Quiet\" describes someone who doesn't talk much at all; the hidden word describes someone who talks briefly whenever they do speak."
+      }
+    ],
+    "modelSentence": "The old fisherman was laconic by nature — when a tourist asked about the storm, he simply said, \"Bad,\" and kept mending his net.",
+    "failExplanation": "The hidden word was \"laconic\" — using very few words to say something, without sounding cold or rude. Your closest guesses probably focused on rudeness or on clear explanation; \"laconic\" is really just about extreme brevity of speech."
+  },
+  {
+    "date": "2026-11-10",
+    "word": "Demagogue",
+    "unit": "Argument, Calming & Reconciliation",
+    "theme": "Challenging, Refuting & Inciting",
+    "intendedMeaning": "a leader who gains power by appealing to fear and prejudice rather than reason",
+    "definition": "A leader who wins support by stirring up people's fears and prejudices with emotional speech, rather than appealing to reason.",
+    "wordType": "Noun",
+    "tone": "negative",
+    "topic": "Political leadership",
+    "acceptedAnswers": [
+      "demagogue"
+    ],
+    "clue1Distinction": "The hidden word does not simply mean a powerful leader — it describes ONE SPECIFIC and dishonest way a leader wins support.",
+    "clue2Characteristics": [
+      "A public figure who seeks power over a crowd",
+      "Appeals to fear and prejudice instead of reason",
+      "Uses emotional speech rather than facts",
+      "Often blames a specific group for problems"
+    ],
+    "clue3Note": "Unlike a word that just means a harsh or cruel ruler, the hidden word is specifically about HOW someone gains and keeps power — through manipulating public emotion, not through force alone.",
+    "clue4ContextSentence": "Historians describe him as a classic ________: he never offered a real policy, only a list of enemies to blame.",
+    "clue5FirstLetter": "D",
+    "clue5Extra": "A related word is \"tyrant,\" though that word focuses more on cruel rule than persuasive speech.",
+    "clue6Choices": [
+      "Demagogue",
+      "Diplomat",
+      "Dissident"
+    ],
+    "relatedGuesses": [
+      {
+        "word": "tyrant",
+        "distinction": "\"Tyrant\" focuses on cruel, oppressive rule once in power; the hidden word focuses on the emotional, fear-based speech used to gain that power."
+      },
+      {
+        "word": "agitator",
+        "distinction": "\"Agitator\" describes someone who stirs up trouble or unrest generally; the hidden word specifically means a leader who does this to win political support."
+      },
+      {
+        "word": "dictator",
+        "distinction": "\"Dictator\" describes someone who rules with total, unchecked power; the hidden word describes the persuasive method a leader uses, not the amount of power held."
+      },
+      {
+        "word": "populist",
+        "distinction": "\"Populist\" simply means claiming to represent ordinary people; the hidden word adds a strong negative sense of exploiting fear and prejudice dishonestly."
+      }
+    ],
+    "modelSentence": "The demagogue toured small towns promising simple solutions to complicated problems, always pointing to the same group as the cause of every hardship.",
+    "failExplanation": "The hidden word was \"demagogue\" — a leader who wins power by stirring up people's fears and prejudices instead of appealing to reason. Your guesses probably named leaders in general or cruel rulers; \"demagogue\" is specifically about the manipulative, fear-based method of persuasion."
+  },
+  {
+    "date": "2026-11-11",
+    "word": "Milieu",
+    "unit": "Culture, Praise & Rural Life",
+    "theme": "A Linguist Demonstrates How Language Varies",
+    "intendedMeaning": "the social setting or environment surrounding a person or event",
+    "definition": "The social setting or environment in which a person lives or an event takes place.",
+    "wordType": "Noun",
+    "tone": "neutral",
+    "topic": "Social environment",
+    "acceptedAnswers": [
+      "milieu"
+    ],
+    "clue1Distinction": "The hidden word is not about a person's personality or personal history — it is about the SURROUNDING SOCIAL WORLD a person or event exists within.",
+    "clue2Characteristics": [
+      "The social setting around a person or event",
+      "Includes the people, customs, and atmosphere of a place",
+      "Often used when explaining why something made sense in one place but not another",
+      "A borrowed word, often used in writing about culture or literature"
+    ],
+    "clue3Note": "Unlike a word that simply means the physical location, the hidden word emphasizes the social and cultural atmosphere — the people and norms — not just the geography.",
+    "clue4ContextSentence": "The joke made perfect sense in its original ________ — a university debate club — but fell completely flat at the formal dinner.",
+    "clue5FirstLetter": "M",
+    "clue5Extra": "A related word is \"environment,\" though that word is more general and can describe purely physical surroundings too.",
+    "clue6Choices": [
+      "Milieu",
+      "Location",
+      "Reputation"
+    ],
+    "relatedGuesses": [
+      {
+        "word": "environment",
+        "distinction": "\"Environment\" can mean any surroundings, physical or social; the hidden word specifically points to the social and cultural setting."
+      },
+      {
+        "word": "atmosphere",
+        "distinction": "\"Atmosphere\" describes the mood or feeling of a place; the hidden word describes the whole social world — people, customs, and setting together."
+      },
+      {
+        "word": "background",
+        "distinction": "\"Background\" usually refers to a person's own history; the hidden word refers to the setting around a person or event, not their personal past."
+      },
+      {
+        "word": "community",
+        "distinction": "\"Community\" refers to a specific group of people; the hidden word refers to the broader social setting that a community, event, or person exists within."
+      }
+    ],
+    "modelSentence": "The novel's dialogue felt authentic because the author had spent a year immersed in the milieu of the fishing village she wrote about.",
+    "failExplanation": "The hidden word was \"milieu\" — the social setting or environment surrounding a person or event. Your guesses may have focused on physical location or personal history; \"milieu\" is about the surrounding social world specifically."
+  },
+  {
+    "date": "2026-11-12",
+    "word": "Pernicious",
+    "unit": "Exclusion, Growth & Scale",
+    "theme": "Social Exclusion, Oppression & Marginalization",
+    "intendedMeaning": "causing serious harm gradually, in a way that is hard to detect",
+    "definition": "Causing serious harm in a way that is gradual and hard to notice until the damage is already done.",
+    "wordType": "Adjective",
+    "tone": "negative",
+    "topic": "Long-term harm",
+    "acceptedAnswers": [
+      "pernicious"
+    ],
+    "clue1Distinction": "The hidden word is not about sudden, obvious damage — it describes harm that builds up SLOWLY and is easy to miss until it's serious.",
+    "clue2Characteristics": [
+      "Causes real, serious harm",
+      "Works gradually, not suddenly",
+      "Hard to notice while it is happening",
+      "Often used for policies, habits, or influences rather than single events"
+    ],
+    "clue3Note": "Unlike a word that means openly dangerous or violent, the hidden word is about harm that is quiet, slow, and easy to overlook until the damage is already done.",
+    "clue4ContextSentence": "Economists warned that the tax loophole was ________: unnoticed for years, it had quietly drained billions from public services.",
+    "clue5FirstLetter": "P",
+    "clue5Extra": "A related word is \"insidious,\" which shares this idea of hidden, creeping harm.",
+    "clue6Choices": [
+      "Pernicious",
+      "Ferocious",
+      "Notorious"
+    ],
+    "relatedGuesses": [
+      {
+        "word": "toxic",
+        "distinction": "\"Toxic\" usually means directly poisonous or harmful, often quickly; the hidden word emphasizes harm that is slow and hard to detect."
+      },
+      {
+        "word": "dangerous",
+        "distinction": "\"Dangerous\" is a general word for anything risky or harmful; the hidden word specifically describes harm that creeps in gradually."
+      },
+      {
+        "word": "noxious",
+        "distinction": "\"Noxious\" usually describes something harmful in a direct, physical way, like fumes; the hidden word describes harm that is gradual and less obvious."
+      },
+      {
+        "word": "destructive",
+        "distinction": "\"Destructive\" can describe sudden or dramatic damage; the hidden word specifically describes damage that builds quietly over time."
+      }
+    ],
+    "modelSentence": "The pernicious effects of the outdated policy went unnoticed for decades, slowly widening the gap between rich and poor neighborhoods.",
+    "failExplanation": "The hidden word was \"pernicious\" — causing serious harm gradually and in a way that is hard to detect. Your guesses probably described obvious or sudden danger; \"pernicious\" is specifically about slow, hidden harm."
+  },
+  {
+    "date": "2026-11-13",
+    "word": "Ubiquitous",
+    "unit": "Ubiquity, Causation & Consequences",
+    "theme": "Ubiquity, Proliferation & Excess",
+    "intendedMeaning": "seeming to appear everywhere at the same time",
+    "definition": "Present in all places or situations at once, or seeming to be.",
+    "wordType": "Adjective",
+    "tone": "neutral",
+    "topic": "Everyday presence",
+    "acceptedAnswers": [
+      "ubiquitous"
+    ],
+    "clue1Distinction": "The hidden word does not mean popular or well-liked — it means something is present EVERYWHERE, regardless of whether people like it.",
+    "clue2Characteristics": [
+      "Seems to be everywhere at once",
+      "Present in nearly every place or situation",
+      "Often used for technology, trends, or common objects",
+      "Says nothing about quality — just about how widespread something is"
+    ],
+    "clue3Note": "Unlike a word that means growing quickly, the hidden word describes something that has ALREADY spread everywhere and is now simply everywhere you look.",
+    "clue4ContextSentence": "Rickshaws are so ________ in Dhaka that a street without one feels strangely empty.",
+    "clue5FirstLetter": "U",
+    "clue5Extra": "A related word is \"omnipresent,\" a slightly more formal synonym often used for something god-like or all-powerful.",
+    "clue6Choices": [
+      "Ubiquitous",
+      "Prestigious",
+      "Notorious"
+    ],
+    "relatedGuesses": [
+      {
+        "word": "common",
+        "distinction": "\"Common\" just means frequent or ordinary; the hidden word is stronger — it means present literally everywhere, not just often."
+      },
+      {
+        "word": "popular",
+        "distinction": "\"Popular\" means widely liked; the hidden word says nothing about whether people like the thing, only that it is everywhere."
+      },
+      {
+        "word": "widespread",
+        "distinction": "\"Widespread\" means spread over a large area; the hidden word is even stronger, suggesting the thing is present in almost every single place."
+      },
+      {
+        "word": "prevalent",
+        "distinction": "\"Prevalent\" means common within a particular group or situation; the hidden word suggests presence across all places and situations generally."
+      }
+    ],
+    "modelSentence": "Plastic packaging has become so ubiquitous that finding a store without it now feels like a special achievement.",
+    "failExplanation": "The hidden word was \"ubiquitous\" — seeming to be present everywhere at once. Your guesses may have focused on popularity or frequency; \"ubiquitous\" is specifically about being everywhere, not about being liked or common in one place."
+  },
+  {
+    "date": "2026-11-14",
+    "word": "Ephemeral",
+    "unit": "Time, Struggle & Transcendence",
+    "theme": "Time, Transience & Transformation",
+    "intendedMeaning": "lasting for only a very short time by its very nature",
+    "definition": "Lasting for only a very short time by its very nature; fleeting in a way that cannot be changed.",
+    "wordType": "Adjective",
+    "tone": "neutral",
+    "topic": "Duration of things",
+    "acceptedAnswers": [
+      "ephemeral"
+    ],
+    "clue1Distinction": "The hidden word is not about something that COULD last but doesn't — it describes something that is SHORT-LIVED BY NATURE, built to fade quickly.",
+    "clue2Characteristics": [
+      "Lasts only a short time",
+      "Naturally fleeting, not accidentally cut short",
+      "Often used for beauty, moments, or fame",
+      "Carries a slightly poetic or reflective feeling"
+    ],
+    "clue3Note": "Unlike a word that simply means temporary or lasting a while before ending normally, the hidden word emphasizes how fragile and fast-fading something is by its very design.",
+    "clue4ContextSentence": "Cherry blossoms are famously ________ — the entire bloom lasts barely a week before the petals fall.",
+    "clue5FirstLetter": "E",
+    "clue5Extra": "A related word is \"transient,\" though that word applies more broadly to people or things passing through.",
+    "clue6Choices": [
+      "Ephemeral",
+      "Eternal",
+      "Essential"
+    ],
+    "relatedGuesses": [
+      {
+        "word": "temporary",
+        "distinction": "\"Temporary\" simply means not permanent, for any reason; the hidden word suggests something is naturally, inherently short-lived, almost by design."
+      },
+      {
+        "word": "transient",
+        "distinction": "\"Transient\" often describes someone or something passing through briefly; the hidden word focuses more on the brief lifespan of the thing itself."
+      },
+      {
+        "word": "fleeting",
+        "distinction": "\"Fleeting\" is very close in meaning; the hidden word is slightly more formal and often used for delicate, beautiful, or poetic things."
+      },
+      {
+        "word": "momentary",
+        "distinction": "\"Momentary\" suggests something lasting only a single instant; the hidden word can describe something lasting a bit longer, like days or a season, but still brief overall."
+      }
+    ],
+    "modelSentence": "The northern lights were ephemeral, lighting the sky in brilliant color for perhaps ten minutes before fading into darkness.",
+    "failExplanation": "The hidden word was \"ephemeral\" — lasting only a very short time by its very nature. Your guesses probably described things that simply aren't permanent; \"ephemeral\" specifically suggests fragile, natural brevity, often with a poetic feel."
+  },
+  {
+    "date": "2026-11-15",
+    "word": "Moribund",
+    "unit": "Illness, Action & Exceptional Figures",
+    "theme": "Bodies Failing Despite Treatment",
+    "intendedMeaning": "at the point of death, or in a state of dying (literally or figuratively)",
+    "definition": "At the point of death or complete failure; in a state of dying with little chance of recovery.",
+    "wordType": "Adjective",
+    "tone": "negative",
+    "topic": "State of decline",
+    "acceptedAnswers": [
+      "moribund"
+    ],
+    "clue1Distinction": "The hidden word does not mean simply old or weak — it describes something at the very edge of ENDING completely, whether a body or an institution.",
+    "clue2Characteristics": [
+      "Close to death or complete failure",
+      "Can describe a person, business, or system",
+      "Suggests almost no chance of recovery",
+      "Often used when something once active has become nearly lifeless"
+    ],
+    "clue3Note": "Unlike a word that means permanently ended already, the hidden word describes something still technically alive or existing, but only barely — on the very edge of ending.",
+    "clue4ContextSentence": "By the time new management arrived, the once-thriving factory was ________, with only a handful of orders left on the books.",
+    "clue5FirstLetter": "M",
+    "clue5Extra": "A related word is \"dying,\" though the hidden word is used more often in formal or medical writing.",
+    "clue6Choices": [
+      "Moribund",
+      "Momentous",
+      "Meticulous"
+    ],
+    "relatedGuesses": [
+      {
+        "word": "dying",
+        "distinction": "\"Dying\" is the plain, everyday word for the same idea; the hidden word is a more formal term often used for institutions as well as bodies."
+      },
+      {
+        "word": "declining",
+        "distinction": "\"Declining\" suggests a gradual downward trend that could still be reversed; the hidden word suggests the situation is nearly beyond saving."
+      },
+      {
+        "word": "failing",
+        "distinction": "\"Failing\" can describe any kind of struggle or underperformance; the hidden word specifically suggests being at the very final stage, close to complete collapse."
+      },
+      {
+        "word": "stagnant",
+        "distinction": "\"Stagnant\" means not moving or growing, but not necessarily near death; the hidden word goes further, suggesting the thing is actually dying out."
+      }
+    ],
+    "modelSentence": "Critics called the newspaper industry moribund, pointing to falling readership and shuttered printing presses across the country.",
+    "failExplanation": "The hidden word was \"moribund\" — at the point of death or complete failure. Your guesses probably described decline in general; \"moribund\" is specifically about being on the very edge of ending, whether that's a body, a business, or a system."
+  },
+  {
+    "date": "2026-11-16",
+    "word": "Delineate",
+    "unit": "Limits, Measurement & Conflict",
+    "theme": "Structural Limits, Boundaries & Demarcation",
+    "intendedMeaning": "to describe or mark something out precisely and in clear detail",
+    "definition": "To describe, mark out, or explain something precisely and in clear detail.",
+    "wordType": "Verb",
+    "tone": "neutral",
+    "topic": "Defining details",
+    "acceptedAnswers": [
+      "delineate"
+    ],
+    "clue1Distinction": "The hidden word is not about drawing a picture or making a rough guess — it means marking out something in PRECISE, CLEAR detail, often in writing.",
+    "clue2Characteristics": [
+      "To describe or explain something exactly",
+      "Marks the boundaries or details of a plan, area, or idea",
+      "Suggests precision and clarity",
+      "Often used for contracts, maps, or formal explanations"
+    ],
+    "clue3Note": "Unlike a word that means simply to describe something in general, the hidden word emphasizes making the EXACT edges or details clear — leaving nothing vague.",
+    "clue4ContextSentence": "The lawyer took two pages to ________ exactly which responsibilities belonged to each partner in the new agreement.",
+    "clue5FirstLetter": "D",
+    "clue5Extra": "A related word is \"define,\" which shares this focus on setting clear limits or meanings.",
+    "clue6Choices": [
+      "Delineate",
+      "Deliberate",
+      "Decorate"
+    ],
+    "relatedGuesses": [
+      {
+        "word": "describe",
+        "distinction": "\"Describe\" is the general word for explaining what something is like; the hidden word suggests marking out precise boundaries or details, not just a general account."
+      },
+      {
+        "word": "define",
+        "distinction": "\"Define\" focuses on stating the exact meaning of a word or idea; the hidden word can apply more broadly to plans, areas, or responsibilities as well."
+      },
+      {
+        "word": "outline",
+        "distinction": "\"Outline\" often means giving a brief, general summary; the hidden word suggests going further, into precise and complete detail."
+      },
+      {
+        "word": "specify",
+        "distinction": "\"Specify\" means to state something exactly, usually a single detail; the hidden word often covers laying out several details or boundaries together."
+      }
+    ],
+    "modelSentence": "The architect's drawings delineated every measurement so precisely that the builders never once had to ask for clarification.",
+    "failExplanation": "The hidden word was \"delineate\" — to describe or mark something out in precise, clear detail. Your guesses may have suggested general description; \"delineate\" specifically emphasizes exactness and clear boundaries."
+  },
+  {
+    "date": "2026-11-17",
+    "word": "Rhetoric",
+    "unit": "Persuasion, Figurative Language & Moral Instruction",
+    "theme": "Brevity, Persuasion & Economy of Expression",
+    "intendedMeaning": "the art of using language effectively and persuasively",
+    "definition": "The skillful, persuasive use of language, especially in speaking or writing.",
+    "wordType": "Noun",
+    "tone": "neutral",
+    "topic": "Language and persuasion",
+    "acceptedAnswers": [
+      "rhetoric"
+    ],
+    "clue1Distinction": "The hidden word is not about whether an argument's CONTENT is true or false — it is about the SKILL and TECHNIQUE of using language to persuade.",
+    "clue2Characteristics": [
+      "The skillful, persuasive use of language",
+      "Can be used honestly or manipulatively",
+      "Studied as a formal art, especially in speeches",
+      "Often contrasted with plain facts or action"
+    ],
+    "clue3Note": "Unlike a word that simply means a speech or a lie, the hidden word refers to the whole CRAFT of persuasive language — it can describe honest eloquence or empty, misleading talk.",
+    "clue4ContextSentence": "Critics said the candidate was full of ________ but offered no actual plan for fixing the roads.",
+    "clue5FirstLetter": "R",
+    "clue5Extra": "A related word is \"oratory,\" which focuses more narrowly on skilled public speaking.",
+    "clue6Choices": [
+      "Rhetoric",
+      "Rebuttal",
+      "Reticence"
+    ],
+    "relatedGuesses": [
+      {
+        "word": "persuasion",
+        "distinction": "\"Persuasion\" is the general act or result of convincing someone; the hidden word is the specific art and technique used to achieve that persuasion."
+      },
+      {
+        "word": "eloquence",
+        "distinction": "\"Eloquence\" means fluent, graceful speaking; the hidden word focuses more on the strategic, persuasive use of language, not just its beauty."
+      },
+      {
+        "word": "propaganda",
+        "distinction": "\"Propaganda\" specifically means one-sided, often dishonest persuasion for a political cause; the hidden word is a neutral term that can be honest or manipulative."
+      },
+      {
+        "word": "argument",
+        "distinction": "\"Argument\" refers to the reasoning or claims themselves; the hidden word refers to the language TECHNIQUE used to present those claims persuasively."
+      }
+    ],
+    "modelSentence": "Her speech was a masterclass in rhetoric, using repetition and vivid imagery to make a simple idea feel unforgettable.",
+    "failExplanation": "The hidden word was \"rhetoric\" — the art of using language effectively and persuasively. Your guesses may have focused on honesty or dishonesty; \"rhetoric\" itself is neutral — it's the skill of persuasive language, which can be used well or badly."
+  },
+  {
+    "date": "2026-11-18",
+    "word": "Refute",
+    "unit": "Argument, Calming & Reconciliation",
+    "theme": "Challenging, Refuting & Inciting",
+    "intendedMeaning": "to prove that a claim or argument is wrong using evidence or reasoning",
+    "definition": "To prove that a claim, argument, or person is wrong by using clear evidence or solid reasoning.",
+    "wordType": "Verb",
+    "tone": "neutral",
+    "topic": "Debate and evidence",
+    "acceptedAnswers": [
+      "refute"
+    ],
+    "clue1Distinction": "The hidden word is not about simply disagreeing or expressing doubt — it means actually PROVING something wrong with evidence or logic.",
+    "clue2Characteristics": [
+      "To prove a claim is false",
+      "Requires evidence or solid reasoning, not just opinion",
+      "Used in debates, science, and law",
+      "Suggests a successful, convincing rebuttal"
+    ],
+    "clue3Note": "Unlike a word that simply means to disagree or object, the hidden word means WINNING the argument by disproving the other side with real evidence.",
+    "clue4ContextSentence": "The scientist was able to ________ the popular theory by presenting data that directly contradicted its central claim.",
+    "clue5FirstLetter": "R",
+    "clue5Extra": "A related word is \"disprove,\" which means almost exactly the same thing.",
+    "clue6Choices": [
+      "Refute",
+      "Reject",
+      "Retort"
+    ],
+    "relatedGuesses": [
+      {
+        "word": "deny",
+        "distinction": "\"Deny\" simply means to say something is not true, without necessarily proving it; the hidden word means successfully proving it false with evidence."
+      },
+      {
+        "word": "reject",
+        "distinction": "\"Reject\" means to refuse to accept something; the hidden word goes further, actively disproving the claim rather than just refusing it."
+      },
+      {
+        "word": "challenge",
+        "distinction": "\"Challenge\" means questioning or disputing a claim; the hidden word means successfully defeating that claim with proof."
+      },
+      {
+        "word": "contradict",
+        "distinction": "\"Contradict\" simply means to say the opposite; the hidden word means proving the opposite is true through solid reasoning or evidence."
+      }
+    ],
+    "modelSentence": "The defense attorney refuted the witness's testimony by producing security footage that placed her client miles away that night.",
+    "failExplanation": "The hidden word was \"refute\" — to prove a claim wrong using evidence or reasoning. Your guesses may have described simple disagreement; \"refute\" requires actually winning the argument with proof."
+  },
+  {
+    "date": "2026-11-19",
+    "word": "Succinct",
+    "unit": "Persuasion, Figurative Language & Moral Instruction",
+    "theme": "Brevity, Persuasion & Economy of Expression",
+    "intendedMeaning": "clearly and briefly expressed, with nothing wasted",
+    "definition": "Expressed clearly and briefly, saying exactly what needs to be said and nothing more.",
+    "wordType": "Adjective",
+    "tone": "positive",
+    "topic": "Writing and summaries",
+    "acceptedAnswers": [
+      "succinct"
+    ],
+    "clue1Distinction": "The hidden word is not about a person's speaking personality — it describes the QUALITY of a piece of writing or an explanation itself.",
+    "clue2Characteristics": [
+      "Brief and compact",
+      "Clear, with nothing important missing",
+      "No wasted words or filler",
+      "Praised as a quality of good summaries and answers"
+    ],
+    "clue3Note": "Unlike words that describe a person who habitually talks little, the hidden word praises a specific statement or text for packing full meaning into few words.",
+    "clue4ContextSentence": "The examiner praised her answer for being ________ — just three sentences, yet it covered every required point.",
+    "clue5FirstLetter": "S",
+    "clue5Extra": "A related word is \"pithy,\" which adds a sense of cleverness to the brevity.",
+    "clue6Choices": [
+      "Succinct",
+      "Superficial",
+      "Simplistic"
+    ],
+    "relatedGuesses": [
+      {
+        "word": "concise",
+        "distinction": "\"Concise\" is nearly the same idea; the hidden word puts slightly more emphasis on tight, compact completeness — nothing missing, nothing extra."
+      },
+      {
+        "word": "brief",
+        "distinction": "\"Brief\" only means short; the hidden word means short AND complete — all the meaning survives the cutting."
+      },
+      {
+        "word": "laconic",
+        "distinction": "\"Laconic\" describes a person's habit of speaking very little; the hidden word describes a particular statement or text, not a person's style."
+      },
+      {
+        "word": "short",
+        "distinction": "\"Short\" says nothing about quality — a short answer can be incomplete; the hidden word means the short version still says everything needed."
+      }
+    ],
+    "modelSentence": "His report was succinct: one page that told the committee exactly what happened, why, and what to do next.",
+    "failExplanation": "The hidden word was \"succinct\" — clearly and briefly expressed with nothing wasted. Your guesses probably meant just \"short\" or described a quiet person; \"succinct\" praises a statement for being both brief AND complete."
+  },
+  {
+    "date": "2026-11-20",
+    "word": "Assuage",
+    "unit": "Argument, Calming & Reconciliation",
+    "theme": "Calming, Soothing & De-escalation",
+    "intendedMeaning": "to make a painful feeling, fear, or worry less intense",
+    "definition": "To make an unpleasant feeling — such as fear, grief, guilt, or worry — less intense; to bring relief.",
+    "wordType": "Verb",
+    "tone": "positive",
+    "topic": "Easing emotions",
+    "acceptedAnswers": [
+      "assuage"
+    ],
+    "clue1Distinction": "The hidden word is not about calming an angry PERSON — it is about easing a painful FEELING itself, like fear, guilt, or grief.",
+    "clue2Characteristics": [
+      "Makes a painful feeling less intense",
+      "Works on emotions like worry, guilt, and grief",
+      "Brings relief rather than a full cure",
+      "Often done through comforting words or reassurance"
+    ],
+    "clue3Note": "Unlike words that mean satisfying an angry person by giving them what they want, the hidden word targets the inner feeling — you do it to someone's fears or doubts, not to the person's demands.",
+    "clue4ContextSentence": "The principal's phone call did much to ________ the parents' fears about the new examination format.",
+    "clue5FirstLetter": "A",
+    "clue5Extra": "A related word is \"allay,\" often used the same way with fears and doubts.",
+    "clue6Choices": [
+      "Assuage",
+      "Aggravate",
+      "Appraise"
+    ],
+    "relatedGuesses": [
+      {
+        "word": "soothe",
+        "distinction": "\"Soothe\" is the general everyday word for calming; the hidden word is more formal and almost always targets a specific feeling like fear or guilt."
+      },
+      {
+        "word": "appease",
+        "distinction": "\"Appease\" means satisfying an angry person by giving them what they want; the hidden word means easing a painful feeling, with no giving-in involved."
+      },
+      {
+        "word": "comfort",
+        "distinction": "\"Comfort\" focuses on supporting the person who suffers; the hidden word focuses on reducing the feeling itself — you comfort a person but do this to their fear."
+      },
+      {
+        "word": "relieve",
+        "distinction": "\"Relieve\" is a broad word for removing any burden or pain; the hidden word specifically suggests softening an emotional distress."
+      },
+      {
+        "word": "calm",
+        "distinction": "\"Calm\" is the simple, general idea; the hidden word is the stronger, more formal version used for deep feelings like grief and anxiety."
+      }
+    ],
+    "modelSentence": "Nothing could fully remove her guilt, but volunteering at the clinic each weekend helped assuage it a little.",
+    "failExplanation": "The hidden word was \"assuage\" — to make a painful feeling like fear or worry less intense. Your guesses probably described calming a person or giving in to demands; \"assuage\" is aimed at the feeling itself."
+  },
+  {
+    "date": "2026-11-21",
+    "word": "Bucolic",
+    "unit": "Culture, Praise & Rural Life",
+    "theme": "Rural Life, Nature & Cultural Aspiration",
+    "intendedMeaning": "relating to the pleasant, peaceful side of country life",
+    "definition": "Relating to the pleasant, peaceful side of the countryside; charmingly rural.",
+    "wordType": "Adjective",
+    "tone": "positive",
+    "topic": "Countryside scenes",
+    "acceptedAnswers": [
+      "bucolic"
+    ],
+    "clue1Distinction": "The hidden word is not about farming as work or business — it describes the pleasant, picture-like CHARM of country scenery and life.",
+    "clue2Characteristics": [
+      "Describes countryside settings",
+      "Suggests peace, greenery, and simple charm",
+      "Often used for landscapes, villages, and painted scenes",
+      "Carries a warm, admiring feeling"
+    ],
+    "clue3Note": "Unlike a word that means perfect and happy in a dreamlike way anywhere, the hidden word is tied specifically to the COUNTRYSIDE — fields, herds, and village life.",
+    "clue4ContextSentence": "The painting showed a ________ scene: cattle grazing beside a quiet pond while a farmer dozed under a banyan tree.",
+    "clue5FirstLetter": "B",
+    "clue5Extra": "A related word is \"pastoral,\" often used for poetry and art about shepherd life.",
+    "clue6Choices": [
+      "Bucolic",
+      "Baroque",
+      "Bountiful"
+    ],
+    "relatedGuesses": [
+      {
+        "word": "rural",
+        "distinction": "\"Rural\" is the neutral, factual word for countryside areas; the hidden word adds a warm sense of peaceful charm and beauty."
+      },
+      {
+        "word": "idyllic",
+        "distinction": "\"Idyllic\" means almost too perfect and can describe any setting, even a beach; the hidden word is specifically about countryside charm."
+      },
+      {
+        "word": "pastoral",
+        "distinction": "\"Pastoral\" is very close, often used for art about shepherds and fields; the hidden word is the broader everyday choice for any charming rural scene."
+      },
+      {
+        "word": "agrarian",
+        "distinction": "\"Agrarian\" is about farming as a livelihood and economy; the hidden word is about how pleasant and peaceful the countryside looks and feels."
+      }
+    ],
+    "modelSentence": "After a decade in Dhaka's traffic, he found the bucolic quiet of his grandfather's village almost startling — green paddies, slow rivers, and no horns at all.",
+    "failExplanation": "The hidden word was \"bucolic\" — relating to the pleasant, peaceful side of country life. Your guesses probably meant simply \"rural\" or \"perfect\"; \"bucolic\" combines both: countryside charm specifically."
+  },
+  {
+    "date": "2026-11-22",
+    "word": "Burgeon",
+    "unit": "Exclusion, Growth & Scale",
+    "theme": "Growth, Abundance & Proliferation",
+    "intendedMeaning": "to grow or expand rapidly, with new energy",
+    "definition": "To grow or expand rapidly, especially in a fresh, energetic way like new growth in spring.",
+    "wordType": "Verb",
+    "tone": "positive",
+    "topic": "Rapid development",
+    "acceptedAnswers": [
+      "burgeon"
+    ],
+    "clue1Distinction": "The hidden word is not about becoming larger by having something added from outside — it describes something growing rapidly FROM WITHIN, by its own energy.",
+    "clue2Characteristics": [
+      "Rapid growth or expansion",
+      "Suggests freshness and new energy",
+      "Originally used for plants budding",
+      "Now used for industries, cities, talents, and movements"
+    ],
+    "clue3Note": "Unlike words that mean simply to increase in number, the hidden word carries an image of vigorous, healthy flowering — something young that is taking off.",
+    "clue4ContextSentence": "Freelancing platforms caused the city's tech scene to ________, with new startups appearing in every neighborhood.",
+    "clue5FirstLetter": "B",
+    "clue5Extra": "A related word is \"flourish,\" which shares the sense of healthy, thriving growth.",
+    "clue6Choices": [
+      "Burgeon",
+      "Bolster",
+      "Broaden"
+    ],
+    "relatedGuesses": [
+      {
+        "word": "grow",
+        "distinction": "\"Grow\" is the plain, general word; the hidden word specifically suggests rapid, energetic, blossoming growth."
+      },
+      {
+        "word": "flourish",
+        "distinction": "\"Flourish\" means to thrive and do well overall; the hidden word emphasizes the rapid expansion phase itself — the sudden budding outward."
+      },
+      {
+        "word": "expand",
+        "distinction": "\"Expand\" means to become larger in size or scope, at any speed; the hidden word implies fast, lively, spring-like growth."
+      },
+      {
+        "word": "multiply",
+        "distinction": "\"Multiply\" is about increasing in number; the hidden word is about vigorous overall growth and development, not just count."
+      }
+    ],
+    "modelSentence": "Interest in coding bootcamps began to burgeon after the ministry announced its digital employment scheme, tripling enrolment in a single year.",
+    "failExplanation": "The hidden word was \"burgeon\" — to grow or expand rapidly with fresh energy. Your guesses probably described growth in general; \"burgeon\" adds the image of vigorous, blossoming, fast growth."
+  },
+  {
+    "date": "2026-11-23",
+    "word": "Catalyst",
+    "unit": "Ubiquity, Causation & Consequences",
+    "theme": "Causes, Triggers & Preconditions",
+    "intendedMeaning": "a person or event that causes an important change or chain of events to begin",
+    "definition": "A person or event that sets off an important change or chain of events, often without being the deep cause itself.",
+    "wordType": "Noun",
+    "tone": "neutral",
+    "topic": "Starting change",
+    "acceptedAnswers": [
+      "catalyst"
+    ],
+    "clue1Distinction": "The hidden word is not the deep, underlying cause of something — it is the SPARK that sets an already-loaded situation into motion.",
+    "clue2Characteristics": [
+      "Triggers a significant change or chain of events",
+      "Often small compared to the change it starts",
+      "Borrowed from chemistry",
+      "The conditions for change usually existed already — this thing sets them off"
+    ],
+    "clue3Note": "Unlike words that mean an early sign or warning of what is coming, the hidden word actively STARTS the change — it does not merely predict it.",
+    "clue4ContextSentence": "The viral video of the flooded classroom became the ________ for a nationwide campaign to repair school buildings.",
+    "clue5FirstLetter": "C",
+    "clue5Extra": "A related word is \"spark,\" the everyday image behind this idea.",
+    "clue6Choices": [
+      "Catalyst",
+      "Consequence",
+      "Criterion"
+    ],
+    "relatedGuesses": [
+      {
+        "word": "trigger",
+        "distinction": "\"Trigger\" is the informal near-twin; the hidden word is the more formal term and suggests the change that follows is large and transformative."
+      },
+      {
+        "word": "cause",
+        "distinction": "\"Cause\" is whatever truly produces a result; the hidden word is often NOT the deep cause — just the event that sets everything already building into motion."
+      },
+      {
+        "word": "harbinger",
+        "distinction": "\"Harbinger\" is a sign that something is coming; the hidden word actually starts the change rather than announcing it."
+      },
+      {
+        "word": "motive",
+        "distinction": "\"Motive\" is the inner reason a person acts; the hidden word is an outside person or event that launches a chain of events."
+      }
+    ],
+    "modelSentence": "The senior student's unexpected success at IBA became a catalyst in her village, inspiring a dozen younger students to attempt the admission test.",
+    "failExplanation": "The hidden word was \"catalyst\" — a person or event that sets off an important change. Your guesses may have named causes or warning signs; a \"catalyst\" is the spark that starts a change that was waiting to happen."
+  },
+  {
+    "date": "2026-11-24",
+    "word": "Arduous",
+    "unit": "Time, Struggle & Transcendence",
+    "theme": "Grinding Against Resistant Forces",
+    "intendedMeaning": "requiring great effort and endurance over a long time",
+    "definition": "Requiring a very great amount of effort and endurance over a long period; exhaustingly difficult.",
+    "wordType": "Adjective",
+    "tone": "negative",
+    "topic": "Demanding tasks",
+    "acceptedAnswers": [
+      "arduous"
+    ],
+    "clue1Distinction": "The hidden word is not about a problem being complicated or confusing — it is about the sheer EFFORT and STAMINA a task demands over time.",
+    "clue2Characteristics": [
+      "Demands enormous, sustained effort",
+      "Tests endurance, not just skill",
+      "Usually lasts a long time",
+      "Often describes journeys, training, or long processes"
+    ],
+    "clue3Note": "Unlike words that mean mentally tricky or intellectually hard, the hidden word describes work that grinds you down physically or mentally through sheer sustained labour.",
+    "clue4ContextSentence": "Preparing for the admission test while working part-time was ________ — eighteen months of five-hour study nights after full shifts.",
+    "clue5FirstLetter": "A",
+    "clue5Extra": "A related word is \"gruelling,\" which shares the sense of punishing effort.",
+    "clue6Choices": [
+      "Arduous",
+      "Ambiguous",
+      "Audacious"
+    ],
+    "relatedGuesses": [
+      {
+        "word": "difficult",
+        "distinction": "\"Difficult\" is the general word for anything hard; the hidden word specifically means hard through long, exhausting effort."
+      },
+      {
+        "word": "gruelling",
+        "distinction": "\"Gruelling\" is very close, stressing punishment and exhaustion; the hidden word is slightly more formal and stresses the sustained effort required."
+      },
+      {
+        "word": "onerous",
+        "distinction": "\"Onerous\" describes a burden that feels heavy and unfair, like duties or obligations; the hidden word describes effort and endurance demanded by the task itself."
+      },
+      {
+        "word": "tedious",
+        "distinction": "\"Tedious\" means boring through repetition; the hidden word means exhausting through effort — a task can be this without being boring at all."
+      }
+    ],
+    "modelSentence": "The trek to the base camp was arduous — nine days of climbing through mud and thin air with forty-kilogram packs.",
+    "failExplanation": "The hidden word was \"arduous\" — requiring great effort and endurance over a long time. Your guesses probably meant generally difficult or boring; \"arduous\" is specifically about sustained, exhausting effort."
+  },
+  {
+    "date": "2026-11-25",
+    "word": "Panacea",
+    "unit": "Illness, Action & Exceptional Figures",
+    "theme": "Practical Action, Utility & Reversal",
+    "intendedMeaning": "a supposed remedy claimed to fix all problems at once",
+    "definition": "A supposed cure-all — a single remedy or solution claimed to fix every problem, which rarely works in practice.",
+    "wordType": "Noun",
+    "tone": "negative",
+    "topic": "Promised solutions",
+    "acceptedAnswers": [
+      "panacea"
+    ],
+    "clue1Distinction": "The hidden word is not a real, working solution — it names something CLAIMED to fix everything, usually with doubt that it actually can.",
+    "clue2Characteristics": [
+      "A single remedy promised to solve all problems",
+      "Almost always mentioned with scepticism",
+      "Often appears in the phrase \"is no ________\"",
+      "Originally referred to a mythical universal medicine"
+    ],
+    "clue3Note": "Unlike a word for a genuine remedy for one specific problem, the hidden word claims to cure EVERYTHING at once — and the claim is usually too good to be true.",
+    "clue4ContextSentence": "Experts cautioned that online classes are no ________ — they widen access, but they cannot fix weak teaching or unequal internet access.",
+    "clue5FirstLetter": "P",
+    "clue5Extra": "A related term is \"silver bullet,\" the informal phrase for the same idea.",
+    "clue6Choices": [
+      "Panacea",
+      "Paradigm",
+      "Placebo"
+    ],
+    "relatedGuesses": [
+      {
+        "word": "cure",
+        "distinction": "\"Cure\" is a real remedy for one specific illness or problem; the hidden word is a supposed remedy for ALL problems, viewed with doubt."
+      },
+      {
+        "word": "solution",
+        "distinction": "\"Solution\" is the neutral word for whatever fixes a problem; the hidden word implies an over-promised fix-everything that likely disappoints."
+      },
+      {
+        "word": "remedy",
+        "distinction": "\"Remedy\" targets one particular ailment or wrong; the hidden word claims universal power over every ailment at once."
+      },
+      {
+        "word": "placebo",
+        "distinction": "\"Placebo\" is a fake treatment that works only through belief; the hidden word is a supposed universal cure — the problem is its impossible scope, not fakeness."
+      }
+    ],
+    "modelSentence": "The minister presented the new highway as a panacea for the region's economy, but unemployment barely moved in the years that followed.",
+    "failExplanation": "The hidden word was \"panacea\" — a supposed cure-all claimed to fix every problem at once. Your guesses probably named real cures or solutions; \"panacea\" specifically carries doubt about a fix-everything promise."
+  },
+  {
+    "date": "2026-11-26",
+    "word": "Preclude",
+    "unit": "Limits, Measurement & Conflict",
+    "theme": "Structural Limits, Boundaries & Demarcation",
+    "intendedMeaning": "to prevent something from happening or make it impossible in advance",
+    "definition": "To make something impossible in advance; to rule it out before it can happen.",
+    "wordType": "Verb",
+    "tone": "neutral",
+    "topic": "Rules and possibility",
+    "acceptedAnswers": [
+      "preclude"
+    ],
+    "clue1Distinction": "The hidden word is not about stopping something that has already started — it shuts the door BEFORE the thing can even begin.",
+    "clue2Characteristics": [
+      "Makes something impossible in advance",
+      "Often done by a rule, condition, or earlier event",
+      "Works automatically rather than through active effort",
+      "Common in legal and formal writing"
+    ],
+    "clue3Note": "Unlike words that mean physically blocking or officially forbidding something, the hidden word works by prior logic — an existing condition simply rules the thing out.",
+    "clue4ContextSentence": "His second-division grade in HSC did not ________ him from applying, but it made a scholarship far less likely.",
+    "clue5FirstLetter": "P",
+    "clue5Extra": "A related phrase is \"rule out,\" the everyday equivalent.",
+    "clue6Choices": [
+      "Preclude",
+      "Postpone",
+      "Presume"
+    ],
+    "relatedGuesses": [
+      {
+        "word": "prevent",
+        "distinction": "\"Prevent\" is the general word for stopping something, before or during; the hidden word specifically means ruling it out in advance, often through a condition or rule."
+      },
+      {
+        "word": "prohibit",
+        "distinction": "\"Prohibit\" means officially forbidding by authority; the hidden word makes something impossible by circumstance or logic, with or without a ban."
+      },
+      {
+        "word": "block",
+        "distinction": "\"Block\" suggests an active obstacle placed in the way; the hidden word works quietly and beforehand — the possibility never opens at all."
+      },
+      {
+        "word": "hinder",
+        "distinction": "\"Hinder\" means making something harder but still possible; the hidden word makes it impossible entirely."
+      }
+    ],
+    "modelSentence": "The contract's exclusivity clause precluded the singer from performing at any rival venue for two years.",
+    "failExplanation": "The hidden word was \"preclude\" — to make something impossible in advance. Your guesses probably described blocking or forbidding; \"preclude\" means the possibility is ruled out beforehand, often by a rule or condition."
+  },
+  {
+    "date": "2026-11-27",
+    "word": "Didactic",
+    "unit": "Persuasion, Figurative Language & Moral Instruction",
+    "theme": "Moral Instruction & Stale Language",
+    "intendedMeaning": "intended to teach a moral lesson, often in an overly preachy way",
+    "definition": "Intended to teach a lesson, especially a moral one — often in a manner that feels overly instructive or preachy.",
+    "wordType": "Adjective",
+    "tone": "negative",
+    "topic": "Stories and lessons",
+    "acceptedAnswers": [
+      "didactic"
+    ],
+    "clue1Distinction": "The hidden word is not about whether a work is entertaining or boring in general — it is about a work being designed to TEACH you a lesson, often too obviously.",
+    "clue2Characteristics": [
+      "Aims to teach, especially morally",
+      "Often feels preachy or heavy-handed",
+      "Common criticism of stories, films, and speeches",
+      "Leaves little room for the audience to think for themselves"
+    ],
+    "clue3Note": "Unlike a word that simply means educational or informative, the hidden word usually criticizes HOW the teaching is done — moralising at the audience instead of trusting them.",
+    "clue4ContextSentence": "The film's ending felt ________ — instead of letting viewers reflect, the narrator spelled out the moral in a two-minute lecture.",
+    "clue5FirstLetter": "D",
+    "clue5Extra": "A related word is \"preachy,\" the informal version of the same criticism.",
+    "clue6Choices": [
+      "Didactic",
+      "Dramatic",
+      "Derivative"
+    ],
+    "relatedGuesses": [
+      {
+        "word": "educational",
+        "distinction": "\"Educational\" is neutral praise for teaching content; the hidden word usually criticizes teaching that is forced or moralising."
+      },
+      {
+        "word": "preachy",
+        "distinction": "\"Preachy\" is the informal near-twin; the hidden word is the formal term used in literary and academic criticism."
+      },
+      {
+        "word": "moralistic",
+        "distinction": "\"Moralistic\" describes judging others by narrow moral rules; the hidden word describes the intent to TEACH morals, especially in art or writing."
+      },
+      {
+        "word": "boring",
+        "distinction": "\"Boring\" is about failing to hold interest; the hidden word is about lecturing the audience — a work can be exciting and still have this flaw."
+      }
+    ],
+    "modelSentence": "Victorian children's books were often openly didactic, ending every adventure with a neat paragraph about honesty or obedience.",
+    "failExplanation": "The hidden word was \"didactic\" — intended to teach a moral lesson, often in a preachy way. Your guesses probably meant educational or dull; \"didactic\" is specifically about heavy-handed moral instruction."
+  },
+  {
+    "date": "2026-11-28",
+    "word": "Capitulate",
+    "unit": "Argument, Calming & Reconciliation",
+    "theme": "Caution, Persistence, Conceding & Reconciliation",
+    "intendedMeaning": "to stop resisting and give in, especially after holding out for a long time",
+    "definition": "To stop resisting and give in to an opponent or demand, especially after a long period of holding out.",
+    "wordType": "Verb",
+    "tone": "negative",
+    "topic": "Ending resistance",
+    "acceptedAnswers": [
+      "capitulate"
+    ],
+    "clue1Distinction": "The hidden word is not about calmly agreeing to a reasonable idea — it means giving up a FIGHT after resisting for a long time.",
+    "clue2Characteristics": [
+      "Means giving in after resistance",
+      "Usually follows a long struggle or standoff",
+      "Suggests the other side's pressure won",
+      "Used for wars, negotiations, and stubborn disputes"
+    ],
+    "clue3Note": "Unlike a word that means quietly accepting something without protest from the start, the hidden word implies there WAS a real fight — and it has now been abandoned.",
+    "clue4ContextSentence": "After six months of strikes and lost revenue, the management finally ________d, accepting nearly every demand it had once called impossible.",
+    "clue5FirstLetter": "C",
+    "clue5Extra": "A related word is \"surrender,\" the plain military equivalent.",
+    "clue6Choices": [
+      "Capitulate",
+      "Collaborate",
+      "Contemplate"
+    ],
+    "relatedGuesses": [
+      {
+        "word": "surrender",
+        "distinction": "\"Surrender\" is the plain word, strongest in military settings; the hidden word is the formal term, common for negotiations and long disputes."
+      },
+      {
+        "word": "acquiesce",
+        "distinction": "\"Acquiesce\" means accepting quietly without much protest; the hidden word means giving up AFTER real, sustained resistance."
+      },
+      {
+        "word": "yield",
+        "distinction": "\"Yield\" is a gentler, more general giving way; the hidden word suggests total collapse of resistance at the end of a struggle."
+      },
+      {
+        "word": "compromise",
+        "distinction": "\"Compromise\" means both sides give something up; the hidden word means one side gives up almost everything."
+      }
+    ],
+    "modelSentence": "The city held out through a two-year siege before it finally capitulated, opening its gates to the invading army.",
+    "failExplanation": "The hidden word was \"capitulate\" — to stop resisting and give in after holding out. Your guesses probably described quiet acceptance or mutual agreement; \"capitulate\" means one side's resistance finally collapses."
+  },
+  {
+    "date": "2026-11-29",
+    "word": "Accolade",
+    "unit": "Culture, Praise & Rural Life",
+    "theme": "Praise, Honor & Public Commendation",
+    "intendedMeaning": "an award or expression of strong approval recognizing an achievement",
+    "definition": "An award, honor, or expression of strong public approval given to recognize someone's achievement.",
+    "wordType": "Noun",
+    "tone": "positive",
+    "topic": "Recognition of achievement",
+    "acceptedAnswers": [
+      "accolade"
+    ],
+    "clue1Distinction": "The hidden word is not the achievement itself — it is the public RECOGNITION given for it: an award, honor, or formal praise.",
+    "clue2Characteristics": [
+      "A form of public recognition",
+      "Given for achievement or excellence",
+      "Can be a trophy, title, review, or formal praise",
+      "Often plural when someone has earned many"
+    ],
+    "clue3Note": "Unlike words that mean the feeling of admiration people privately hold, the hidden word is the concrete, outward mark of honor — the thing that is GIVEN or received.",
+    "clue4ContextSentence": "Winning the national debate championship was the highest ________ of her school career, and the trophy still sits in the main hall.",
+    "clue5FirstLetter": "A",
+    "clue5Extra": "A related word is \"laurel,\" as in \"resting on one's laurels.\"",
+    "clue6Choices": [
+      "Accolade",
+      "Anecdote",
+      "Attribute"
+    ],
+    "relatedGuesses": [
+      {
+        "word": "award",
+        "distinction": "\"Award\" is the plain word for a prize given formally; the hidden word covers awards AND other marks of high praise, like glowing reviews or titles."
+      },
+      {
+        "word": "praise",
+        "distinction": "\"Praise\" is the general act of saying good things; the hidden word is a specific, often formal instance of recognition for achievement."
+      },
+      {
+        "word": "honor",
+        "distinction": "\"Honor\" is the broad idea of respect or a mark of respect; the hidden word specifically ties the recognition to an achievement or excellence."
+      },
+      {
+        "word": "trophy",
+        "distinction": "\"Trophy\" is a physical object given to winners; the hidden word can be a trophy, a title, or simply high public praise."
+      }
+    ],
+    "modelSentence": "The chef collected accolade after accolade — three national awards and a glowing feature in every major food magazine.",
+    "failExplanation": "The hidden word was \"accolade\" — an award or expression of strong approval for an achievement. Your guesses probably named praise in general or physical prizes; an \"accolade\" is any formal mark of recognition, from trophies to rave reviews."
+  },
+  {
+    "date": "2026-11-30",
+    "word": "Coalesce",
+    "unit": "Exclusion, Growth & Scale",
+    "theme": "Growth, Abundance & Proliferation",
+    "intendedMeaning": "to come together and form one larger, unified whole",
+    "definition": "To come together and merge into one larger, unified whole.",
+    "wordType": "Verb",
+    "tone": "neutral",
+    "topic": "Things combining",
+    "acceptedAnswers": [
+      "coalesce"
+    ],
+    "clue1Distinction": "The hidden word is not about people simply gathering in one place — it is about separate things MERGING until they become a single whole.",
+    "clue2Characteristics": [
+      "Separate parts come together",
+      "The parts merge into ONE new whole",
+      "Usually gradual and natural, not forced",
+      "Used for groups, ideas, droplets, and movements"
+    ],
+    "clue3Note": "Unlike words that mean deliberately joining things together by force or plan, the hidden word suggests a gradual, almost natural flowing-together of separate parts.",
+    "clue4ContextSentence": "Over several months, the scattered protest groups began to ________ into a single national movement with one name and one set of demands.",
+    "clue5FirstLetter": "C",
+    "clue5Extra": "A related word is \"merge,\" though that one is more deliberate and business-like.",
+    "clue6Choices": [
+      "Coalesce",
+      "Collide",
+      "Collapse"
+    ],
+    "relatedGuesses": [
+      {
+        "word": "merge",
+        "distinction": "\"Merge\" often suggests a planned, formal combination, like companies; the hidden word suggests a gradual, natural coming-together."
+      },
+      {
+        "word": "unite",
+        "distinction": "\"Unite\" means joining for a shared purpose while parts may stay distinct; the hidden word means the parts blend into one single whole."
+      },
+      {
+        "word": "combine",
+        "distinction": "\"Combine\" is the general word for putting things together; the hidden word specifically describes separate things fusing into one unified body."
+      },
+      {
+        "word": "gather",
+        "distinction": "\"Gather\" means coming into one place while staying separate; the hidden word means the separateness itself disappears."
+      }
+    ],
+    "modelSentence": "Small droplets on the window slowly coalesced into larger drops that finally slid down the glass.",
+    "failExplanation": "The hidden word was \"coalesce\" — to come together and form one unified whole. Your guesses probably described gathering or deliberate joining; \"coalesce\" is the gradual merging of separate parts into one."
+  },
+  {
+    "date": "2026-12-01",
+    "word": "Harbinger",
+    "unit": "Ubiquity, Causation & Consequences",
+    "theme": "Causes, Triggers & Preconditions",
+    "intendedMeaning": "a person or thing that signals that something significant is about to happen",
+    "definition": "A person or thing that signals that something significant — often unpleasant — is about to happen.",
+    "wordType": "Noun",
+    "tone": "neutral",
+    "topic": "Signs of what's coming",
+    "acceptedAnswers": [
+      "harbinger"
+    ],
+    "clue1Distinction": "The hidden word does not CAUSE anything to happen — it ANNOUNCES that something is on its way, like the first cool wind before a storm.",
+    "clue2Characteristics": [
+      "A sign that something is coming",
+      "Often signals something significant or unpleasant",
+      "Arrives before the main event",
+      "Used for events, trends, and natural signs"
+    ],
+    "clue3Note": "Unlike a word for something that actively triggers a change, the hidden word merely comes FIRST and signals what follows — it announces, it does not cause.",
+    "clue4ContextSentence": "Falling remittances were a ________ of the economic troubles that arrived in full force the following year.",
+    "clue5FirstLetter": "H",
+    "clue5Extra": "A related word is \"omen,\" though that one leans more supernatural.",
+    "clue6Choices": [
+      "Harbinger",
+      "Hindrance",
+      "Hierarchy"
+    ],
+    "relatedGuesses": [
+      {
+        "word": "omen",
+        "distinction": "\"Omen\" is a sign read superstitiously, often from nature; the hidden word is a real early event or figure that reliably signals what's coming."
+      },
+      {
+        "word": "warning",
+        "distinction": "\"Warning\" is usually a deliberate message meant to alert people; the hidden word signals what is coming simply by appearing first."
+      },
+      {
+        "word": "catalyst",
+        "distinction": "\"Catalyst\" actively sets a change in motion; the hidden word only announces the change — it plays no part in causing it."
+      },
+      {
+        "word": "precursor",
+        "distinction": "\"Precursor\" is whatever comes before and leads to something; the hidden word emphasizes the SIGNAL — you read it as a sign of what follows."
+      }
+    ],
+    "modelSentence": "The first migrating geese overhead were a harbinger of winter, arriving weeks before the cold itself.",
+    "failExplanation": "The hidden word was \"harbinger\" — a person or thing that signals something significant is coming. Your guesses probably named causes or deliberate warnings; a \"harbinger\" simply appears first and announces what follows."
+  },
+  {
+    "date": "2026-12-02",
+    "word": "Attrition",
+    "unit": "Time, Struggle & Transcendence",
+    "theme": "Grinding Against Resistant Forces",
+    "intendedMeaning": "gradual reduction in numbers or strength through sustained pressure or wear",
+    "definition": "A gradual reduction in numbers, strength, or resources through constant pressure, loss, or wear — not a single blow.",
+    "wordType": "Noun",
+    "tone": "negative",
+    "topic": "Slow weakening",
+    "acceptedAnswers": [
+      "attrition"
+    ],
+    "clue1Distinction": "The hidden word is not about a sudden collapse or one big loss — it names weakening that happens GRADUALLY, loss by loss, over a long time.",
+    "clue2Characteristics": [
+      "A gradual reduction in numbers or strength",
+      "Happens through constant wear, not one event",
+      "Common for staff leaving, armies shrinking, or resources draining",
+      "Often appears in the phrase \"war of ________\""
+    ],
+    "clue3Note": "Unlike words that mean deliberately cutting numbers down at once, the hidden word describes slow, unplanned shrinkage — people or strength simply drain away bit by bit.",
+    "clue4ContextSentence": "The company never announced layoffs; instead, the team shrank through ________, as one exhausted employee after another quietly resigned.",
+    "clue5FirstLetter": "A",
+    "clue5Extra": "A related word is \"erosion,\" the same idea applied to soil and support.",
+    "clue6Choices": [
+      "Attrition",
+      "Ambition",
+      "Aggression"
+    ],
+    "relatedGuesses": [
+      {
+        "word": "erosion",
+        "distinction": "\"Erosion\" is gradual wearing away, originally of land; the hidden word is the standard term for gradual loss of PEOPLE, strength, or resources."
+      },
+      {
+        "word": "decline",
+        "distinction": "\"Decline\" is any downward trend for any reason; the hidden word specifically means shrinking through continual small losses under pressure."
+      },
+      {
+        "word": "reduction",
+        "distinction": "\"Reduction\" is often deliberate and planned; the hidden word describes losses that simply accumulate — nobody decides them one by one."
+      },
+      {
+        "word": "exhaustion",
+        "distinction": "\"Exhaustion\" is the state of being completely worn out; the hidden word is the PROCESS of numbers or strength wearing down over time."
+      }
+    ],
+    "modelSentence": "The general avoided open battle, preferring a war of attrition that slowly bled the larger army of soldiers and supplies.",
+    "failExplanation": "The hidden word was \"attrition\" — gradual loss of numbers or strength through constant pressure and wear. Your guesses probably described sudden losses or planned cuts; \"attrition\" is the slow, steady drain."
+  },
+  {
+    "date": "2026-12-03",
+    "word": "Pragmatic",
+    "unit": "Illness, Action & Exceptional Figures",
+    "theme": "Practical Action, Utility & Reversal",
+    "intendedMeaning": "focused on practical results and what actually works, rather than theory",
+    "definition": "Focused on practical results and what actually works in the real world, rather than on theory or rigid principles.",
+    "wordType": "Adjective",
+    "tone": "positive",
+    "topic": "Decision-making style",
+    "acceptedAnswers": [
+      "pragmatic"
+    ],
+    "clue1Distinction": "The hidden word is not about being clever or logical in the abstract — it is about caring what WORKS in practice more than what is ideal in theory.",
+    "clue2Characteristics": [
+      "Focused on real-world results",
+      "Prefers workable solutions over perfect theories",
+      "Willing to compromise on principles for progress",
+      "Often contrasted with idealistic thinking"
+    ],
+    "clue3Note": "Unlike words that mean sensible about avoiding risk, the hidden word is about choosing what actually works over what theory, ideology, or ideals recommend.",
+    "clue4ContextSentence": "Rather than waiting for the perfect policy, the ________ mayor fixed the drainage first — imperfectly, cheaply, and before the monsoon arrived.",
+    "clue5FirstLetter": "P",
+    "clue5Extra": "A related word is \"realistic,\" which shares the down-to-earth focus.",
+    "clue6Choices": [
+      "Pragmatic",
+      "Passive",
+      "Pedantic"
+    ],
+    "relatedGuesses": [
+      {
+        "word": "practical",
+        "distinction": "\"Practical\" is the everyday near-twin; the hidden word is the more formal term, especially for decision-making that puts results above theory or ideology."
+      },
+      {
+        "word": "realistic",
+        "distinction": "\"Realistic\" means seeing things as they truly are; the hidden word goes further — it means ACTING on what works, not just seeing clearly."
+      },
+      {
+        "word": "sensible",
+        "distinction": "\"Sensible\" means showing generally good judgment; the hidden word specifically means preferring workable results over ideals and theories."
+      },
+      {
+        "word": "prudent",
+        "distinction": "\"Prudent\" emphasizes caution and avoiding risk; the hidden word emphasizes effectiveness — a choice can be this and still be bold."
+      }
+    ],
+    "modelSentence": "She took a pragmatic approach to the budget shortfall: instead of debating whose fault it was, she cut the three least-used programs and moved on.",
+    "failExplanation": "The hidden word was \"pragmatic\" — focused on practical results and what actually works. Your guesses probably meant careful or generally sensible; \"pragmatic\" is specifically about choosing workable results over theory and ideals."
+  },
+  {
+    "date": "2026-12-04",
+    "word": "Sequester",
+    "unit": "Limits, Measurement & Conflict",
+    "theme": "Structural Limits, Boundaries & Demarcation",
+    "intendedMeaning": "to isolate or set apart from outside contact or influence",
+    "definition": "To isolate or set apart a person, group, or thing from outside contact or influence.",
+    "wordType": "Verb",
+    "tone": "neutral",
+    "topic": "Keeping things apart",
+    "acceptedAnswers": [
+      "sequester"
+    ],
+    "clue1Distinction": "The hidden word is not about punishing someone by locking them up — it means deliberately setting someone or something APART from outside contact, often for protection or fairness.",
+    "clue2Characteristics": [
+      "Cuts off outside contact or influence",
+      "Usually deliberate and purposeful",
+      "Often protects fairness, secrecy, or safety",
+      "Famously done to juries during major trials"
+    ],
+    "clue3Note": "Unlike words that mean keeping a sick person away to stop disease from spreading, the hidden word is about shielding someone or something from outside INFLUENCE or claiming and setting assets aside.",
+    "clue4ContextSentence": "During the high-profile trial, the judge chose to ________ the jury in a hotel, cutting them off from news reports and phone calls.",
+    "clue5FirstLetter": "S",
+    "clue5Extra": "A related word is \"seclude,\" which shares the sense of being set apart from others.",
+    "clue6Choices": [
+      "Sequester",
+      "Subpoena",
+      "Surrender"
+    ],
+    "relatedGuesses": [
+      {
+        "word": "isolate",
+        "distinction": "\"Isolate\" is the general word for separating from others for any reason; the hidden word is deliberate separation specifically from outside contact or influence."
+      },
+      {
+        "word": "quarantine",
+        "distinction": "\"Quarantine\" separates to stop disease from spreading; the hidden word separates to protect from influence, pressure, or interference."
+      },
+      {
+        "word": "seclude",
+        "distinction": "\"Seclude\" usually means withdrawing to a private, quiet place, often by choice; the hidden word is usually done BY an authority to someone or something."
+      },
+      {
+        "word": "confine",
+        "distinction": "\"Confine\" means restricting someone within limits, like a cell; the hidden word focuses on cutting off outside contact, not on restricting movement itself."
+      }
+    ],
+    "modelSentence": "The research team was sequestered in a mountain facility for the final month, with no internet access, so no results could leak before the announcement.",
+    "failExplanation": "The hidden word was \"sequester\" — to isolate or set apart from outside contact or influence. Your guesses probably described general isolation or disease control; \"sequester\" is deliberate separation to block outside influence."
+  },
+  {
+    "date": "2026-12-05",
+    "word": "Hackneyed",
+    "unit": "Persuasion, Figurative Language & Moral Instruction",
+    "theme": "Moral Instruction & Stale Language",
+    "intendedMeaning": "so overused that it has lost all meaning or power",
+    "definition": "So overused and repeated that it has lost its freshness, meaning, or power — worn out by repetition.",
+    "wordType": "Adjective",
+    "tone": "negative",
+    "topic": "Language quality",
+    "acceptedAnswers": [
+      "hackneyed"
+    ],
+    "clue1Distinction": "The hidden word is not about language being wrong or unclear — it is about language that was once effective but has been REPEATED so much it no longer moves anyone.",
+    "clue2Characteristics": [
+      "Worn out by constant repetition",
+      "Once fresh, now empty",
+      "Applies to phrases, plots, and ideas",
+      "Provokes groans rather than feeling"
+    ],
+    "clue3Note": "Unlike a word that means dull and unimaginative from the start, the hidden word implies the expression once had power — repetition is what killed it.",
+    "clue4ContextSentence": "The scriptwriter's dialogue was so ________ that the audience whispered each line — \"we've got company,\" \"it's not what it looks like\" — before the actors spoke.",
+    "clue5FirstLetter": "H",
+    "clue5Extra": "A related word is \"trite,\" a close cousin in criticism of stale writing.",
+    "clue6Choices": [
+      "Hackneyed",
+      "Heretical",
+      "Haphazard"
+    ],
+    "relatedGuesses": [
+      {
+        "word": "cliched",
+        "distinction": "\"Cliched\" means full of overused phrases; the hidden word is the broader critical term for anything — phrase, plot, or idea — worn out by repetition."
+      },
+      {
+        "word": "banal",
+        "distinction": "\"Banal\" means ordinary and unoriginal, possibly from the very start; the hidden word specifically means EXHAUSTED through overuse over time."
+      },
+      {
+        "word": "boring",
+        "distinction": "\"Boring\" is about failing to interest anyone, for any reason; the hidden word is specifically about staleness caused by endless repetition."
+      },
+      {
+        "word": "outdated",
+        "distinction": "\"Outdated\" means no longer current or valid; the hidden word may still be perfectly current — it's just been used far too many times."
+      }
+    ],
+    "modelSentence": "\"Hard work is the key to success\" has become so hackneyed that students barely hear it anymore, however true it may be.",
+    "failExplanation": "The hidden word was \"hackneyed\" — so overused that it has lost its power. Your guesses probably meant dull or old; \"hackneyed\" specifically means worn out by endless repetition."
+  },
+  {
+    "date": "2026-12-06",
+    "word": "Impugn",
+    "unit": "Argument, Calming & Reconciliation",
+    "theme": "Challenging, Refuting & Inciting",
+    "intendedMeaning": "to attack something as false or dishonest, especially someone's motives or character",
+    "definition": "To call something into doubt or attack it as false or dishonest — especially someone's character, motives, or honesty.",
+    "wordType": "Verb",
+    "tone": "negative",
+    "topic": "Casting doubt",
+    "acceptedAnswers": [
+      "impugn"
+    ],
+    "clue1Distinction": "The hidden word is not about proving a FACT wrong with evidence — it is about attacking the TRUSTWORTHINESS of a person, their motives, or their honesty.",
+    "clue2Characteristics": [
+      "Attacks credibility rather than facts",
+      "Targets character, motives, or honesty",
+      "Common in courtrooms and political debate",
+      "Suggests casting doubt, not necessarily proving anything"
+    ],
+    "clue3Note": "Unlike a word that means disproving a claim with evidence, the hidden word aims at the SOURCE — suggesting the person cannot be believed, whatever the facts say.",
+    "clue4ContextSentence": "Rather than answer the report's findings, the spokesman chose to ________ the journalist's motives, hinting she had been paid by rivals.",
+    "clue5FirstLetter": "I",
+    "clue5Extra": "A related phrase is \"call into question,\" the softer everyday equivalent.",
+    "clue6Choices": [
+      "Impugn",
+      "Implore",
+      "Impede"
+    ],
+    "relatedGuesses": [
+      {
+        "word": "refute",
+        "distinction": "\"Refute\" means proving a claim false with evidence; the hidden word means attacking someone's credibility or motives, often without proof."
+      },
+      {
+        "word": "accuse",
+        "distinction": "\"Accuse\" means directly charging someone with wrongdoing; the hidden word works by casting doubt and suggestion rather than making a formal charge."
+      },
+      {
+        "word": "criticize",
+        "distinction": "\"Criticize\" means pointing out faults in anything; the hidden word specifically attacks honesty, motives, or character as untrustworthy."
+      },
+      {
+        "word": "slander",
+        "distinction": "\"Slander\" means spreading false statements that damage a reputation; the hidden word means challenging credibility, which may be done fairly or unfairly."
+      }
+    ],
+    "modelSentence": "The defense attorney impugned the witness's testimony by revealing that he stood to inherit money if the verdict went his way.",
+    "failExplanation": "The hidden word was \"impugn\" — to attack someone's character, motives, or honesty as untrustworthy. Your guesses probably described disproving facts or making accusations; \"impugn\" is specifically about casting doubt on credibility."
+  },
+  {
+    "date": "2026-12-07",
+    "word": "Neologism",
+    "unit": "Culture, Praise & Rural Life",
+    "theme": "A Linguist Demonstrates How Language Varies",
+    "intendedMeaning": "a newly invented word or phrase that has recently entered the language",
+    "definition": "A newly invented word or phrase that has recently entered the language, often to name something new.",
+    "wordType": "Noun",
+    "tone": "neutral",
+    "topic": "Words themselves",
+    "acceptedAnswers": [
+      "neologism"
+    ],
+    "clue1Distinction": "The hidden word is not about old or formal language — it names a word that is brand NEW to the language, often invented for something that didn't exist before.",
+    "clue2Characteristics": [
+      "A newly created word or phrase",
+      "Recently entered the language",
+      "Often names a new technology, habit, or idea",
+      "Studied by linguists as evidence of language change"
+    ],
+    "clue3Note": "Unlike a word for informal street language in general, the hidden word is specifically about NEWNESS — a coined term of any register, from slang to science.",
+    "clue4ContextSentence": "\"Doomscrolling\" is a recent ________ — a word that simply could not have existed before smartphones and endless news feeds.",
+    "clue5FirstLetter": "N",
+    "clue5Extra": "A related word is \"coinage,\" from the idea of minting new words like coins.",
+    "clue6Choices": [
+      "Neologism",
+      "Nuance",
+      "Notation"
+    ],
+    "relatedGuesses": [
+      {
+        "word": "slang",
+        "distinction": "\"Slang\" is informal language used by particular groups, old or new; the hidden word is defined by NEWNESS, and it can be formal or scientific too."
+      },
+      {
+        "word": "jargon",
+        "distinction": "\"Jargon\" is specialist vocabulary of a profession; the hidden word is any freshly invented term, whether specialist or everyday."
+      },
+      {
+        "word": "buzzword",
+        "distinction": "\"Buzzword\" is a fashionable term used to sound impressive; the hidden word is neutral — any new word, trendy or not."
+      },
+      {
+        "word": "idiom",
+        "distinction": "\"Idiom\" is an established phrase whose meaning isn't literal; the hidden word is a term so new it may not be in dictionaries yet."
+      }
+    ],
+    "modelSentence": "Each year the dictionary admits a handful of neologisms, and \"selfie\" went from internet joke to official entry in less than a decade.",
+    "failExplanation": "The hidden word was \"neologism\" — a newly invented word or phrase that has recently entered the language. Your guesses probably named informal or specialist language; a \"neologism\" is defined purely by being new."
+  },
+  {
+    "date": "2026-12-08",
+    "word": "Inundate",
+    "unit": "Exclusion, Growth & Scale",
+    "theme": "Scale, Pervasiveness & Overwhelming Extent",
+    "intendedMeaning": "to flood or overwhelm with an extremely large amount of something",
+    "definition": "To flood a place with water, or to overwhelm someone with far more of something than they can handle.",
+    "wordType": "Verb",
+    "tone": "negative",
+    "topic": "Being overwhelmed",
+    "acceptedAnswers": [
+      "inundate"
+    ],
+    "clue1Distinction": "The hidden word is not about a steady, manageable flow of things arriving — it describes an overwhelming FLOOD, literal or figurative, far beyond what can be handled.",
+    "clue2Characteristics": [
+      "Literally means to flood with water",
+      "Figuratively means to overwhelm with a huge quantity",
+      "The amount is far beyond normal capacity",
+      "Often used with requests, messages, applications, and complaints"
+    ],
+    "clue3Note": "Unlike words that mean to fill something completely, the hidden word emphasizes the OVERFLOW — so much arrives that it drowns the ability to cope.",
+    "clue4ContextSentence": "After the results were published, the admissions office was ________d with phone calls — over two thousand in a single morning.",
+    "clue5FirstLetter": "I",
+    "clue5Extra": "A related word is \"deluge,\" which can be both the flood and the act of flooding.",
+    "clue6Choices": [
+      "Inundate",
+      "Initiate",
+      "Irrigate"
+    ],
+    "relatedGuesses": [
+      {
+        "word": "flood",
+        "distinction": "\"Flood\" is the everyday word for the same idea; the hidden word is the formal term, very common in writing about being overwhelmed by messages or demands."
+      },
+      {
+        "word": "overwhelm",
+        "distinction": "\"Overwhelm\" describes the effect on the person — being unable to cope; the hidden word describes the flooding action that causes it."
+      },
+      {
+        "word": "swamp",
+        "distinction": "\"Swamp\" is the informal near-twin; the hidden word is the standard formal choice in reports and news writing."
+      },
+      {
+        "word": "saturate",
+        "distinction": "\"Saturate\" means filling something completely until no more fits; the hidden word emphasizes the overwhelming incoming flood, not the filled-up end state."
+      }
+    ],
+    "modelSentence": "Monsoon rains inundated the low-lying districts, and within hours the same word applied to the relief agencies — inundated with calls for help.",
+    "failExplanation": "The hidden word was \"inundate\" — to flood or overwhelm with an enormous amount. Your guesses probably described filling or the feeling of being overwhelmed; \"inundate\" is the flooding action itself, literal or figurative."
+  },
+  {
+    "date": "2026-12-09",
+    "word": "Precipitate",
+    "unit": "Ubiquity, Causation & Consequences",
+    "theme": "Consequences, Ramifications & Cascading Effects",
+    "intendedMeaning": "to cause something serious to happen sooner than expected",
+    "definition": "To cause something unpleasant or serious to happen suddenly, sooner than expected or before anyone is ready.",
+    "wordType": "Verb",
+    "tone": "negative",
+    "topic": "Sudden consequences",
+    "acceptedAnswers": [
+      "precipitate"
+    ],
+    "clue1Distinction": "The hidden word is not about slowly building toward a result — it means MAKING something serious happen suddenly, before its time.",
+    "clue2Characteristics": [
+      "Causes something serious or unpleasant to happen",
+      "Makes it happen suddenly or too early",
+      "Usually the result was already brewing",
+      "Common in news about crises, resignations, and market crashes"
+    ],
+    "clue3Note": "Unlike a word that means simply to cause something, the hidden word adds SPEED and suddenness — the action shoves a looming event into happening now.",
+    "clue4ContextSentence": "The finance minister's surprise resignation ________d a currency crisis that analysts had expected to take months to unfold.",
+    "clue5FirstLetter": "P",
+    "clue5Extra": "A related word is \"hasten,\" which shares the sense of speeding something up.",
+    "clue6Choices": [
+      "Precipitate",
+      "Perpetuate",
+      "Postulate"
+    ],
+    "relatedGuesses": [
+      {
+        "word": "cause",
+        "distinction": "\"Cause\" is the general word for producing any result at any speed; the hidden word means causing something serious to arrive SUDDENLY and early."
+      },
+      {
+        "word": "trigger",
+        "distinction": "\"Trigger\" means setting something off; the hidden word adds the sense of rushing it — the event lands before anyone is prepared."
+      },
+      {
+        "word": "provoke",
+        "distinction": "\"Provoke\" usually means deliberately stirring a reaction from a person or group; the hidden word usually describes accidentally rushing a crisis into being."
+      },
+      {
+        "word": "accelerate",
+        "distinction": "\"Accelerate\" means speeding up a process already underway; the hidden word means making the event itself burst into happening ahead of time."
+      }
+    ],
+    "modelSentence": "One bank's collapse precipitated a nationwide panic, as depositors rushed to withdraw savings from institutions that had been perfectly healthy.",
+    "failExplanation": "The hidden word was \"precipitate\" — to cause something serious to happen suddenly and sooner than expected. Your guesses probably described causing or speeding up generally; \"precipitate\" specifically shoves a looming event into happening now."
+  },
+  {
+    "date": "2026-12-10",
+    "word": "Onerous",
+    "unit": "Time, Struggle & Transcendence",
+    "theme": "Grinding Against Resistant Forces",
+    "intendedMeaning": "involving a burden of work or responsibility that feels heavier than fair",
+    "definition": "Involving a very heavy burden of work, responsibility, or difficulty — more demanding than seems fair or reasonable.",
+    "wordType": "Adjective",
+    "tone": "negative",
+    "topic": "Burdens and duties",
+    "acceptedAnswers": [
+      "onerous"
+    ],
+    "clue1Distinction": "The hidden word is not about a task being complicated or long — it is about a duty or requirement that feels like an unfairly HEAVY BURDEN placed on someone.",
+    "clue2Characteristics": [
+      "Describes duties, rules, or obligations",
+      "Feels like a heavy weight to carry",
+      "Often seems heavier than is fair or reasonable",
+      "Common in complaints about regulations, contracts, and paperwork"
+    ],
+    "clue3Note": "Unlike a word that means exhausting through sheer sustained effort, the hidden word focuses on the BURDEN imposed — obligations that weigh someone down, often unfairly.",
+    "clue4ContextSentence": "The licence renewal process was so ________ — fourteen forms, five office visits, and three separate fees — that many small shopkeepers simply gave up.",
+    "clue5FirstLetter": "O",
+    "clue5Extra": "A related word is \"burdensome,\" the more transparent everyday equivalent.",
+    "clue6Choices": [
+      "Onerous",
+      "Ominous",
+      "Obsolete"
+    ],
+    "relatedGuesses": [
+      {
+        "word": "burdensome",
+        "distinction": "\"Burdensome\" is the plain near-twin; the hidden word is the more formal term, common in legal and business writing, with a stronger hint of unfairness."
+      },
+      {
+        "word": "arduous",
+        "distinction": "\"Arduous\" describes effort and endurance the task demands; the hidden word describes the imposed BURDEN of a duty or requirement."
+      },
+      {
+        "word": "demanding",
+        "distinction": "\"Demanding\" means requiring a lot of skill or effort, sometimes admirably; the hidden word is always negative — a weight that oppresses."
+      },
+      {
+        "word": "tedious",
+        "distinction": "\"Tedious\" means boring and repetitive; the hidden word means crushingly heavy — a duty can be this while being anything but boring."
+      }
+    ],
+    "modelSentence": "The loan came with onerous conditions: weekly reporting, personal guarantees, and penalties that doubled with every missed deadline.",
+    "failExplanation": "The hidden word was \"onerous\" — involving a burden heavier than seems fair. Your guesses probably described effort or boredom; \"onerous\" is about oppressive obligations weighing someone down."
+  },
+  {
+    "date": "2026-12-11",
+    "word": "Palliate",
+    "unit": "Illness, Action & Exceptional Figures",
+    "theme": "Bodies Failing Despite Treatment",
+    "intendedMeaning": "to ease symptoms without curing the underlying cause",
+    "definition": "To make symptoms or a problem less severe without curing or fixing the underlying cause.",
+    "wordType": "Verb",
+    "tone": "neutral",
+    "topic": "Partial relief",
+    "acceptedAnswers": [
+      "palliate"
+    ],
+    "clue1Distinction": "The hidden word is not about solving a problem — it means easing the PAIN of a problem while leaving its root cause untouched.",
+    "clue2Characteristics": [
+      "Reduces symptoms or suffering",
+      "Does NOT cure the underlying cause",
+      "Originally a medical term",
+      "Also used for measures that soften a problem without solving it"
+    ],
+    "clue3Note": "Unlike words that mean reducing a problem's overall severity, the hidden word draws a sharp line: the surface suffering eases, but the disease or root cause continues underneath.",
+    "clue4ContextSentence": "The new medicine could only ________ the patient's pain; the disease itself continued to advance untouched.",
+    "clue5FirstLetter": "P",
+    "clue5Extra": "A related word is \"alleviate,\" which shares the sense of easing without removing.",
+    "clue6Choices": [
+      "Palliate",
+      "Pacify",
+      "Penetrate"
+    ],
+    "relatedGuesses": [
+      {
+        "word": "alleviate",
+        "distinction": "\"Alleviate\" means easing any pain or difficulty; the hidden word adds a pointed contrast — relief is given while the CAUSE is deliberately left uncured."
+      },
+      {
+        "word": "cure",
+        "distinction": "\"Cure\" means removing the disease or problem entirely; the hidden word is almost its opposite — comfort without cure."
+      },
+      {
+        "word": "soothe",
+        "distinction": "\"Soothe\" means gently calming pain or distress; the hidden word is the formal medical term, always implying the underlying condition remains."
+      },
+      {
+        "word": "mitigate",
+        "distinction": "\"Mitigate\" means reducing the severity of the harm itself; the hidden word reduces only the felt symptoms while the harm continues."
+      }
+    ],
+    "modelSentence": "Cash handouts palliated the crisis for a few months, but without new jobs the region's underlying poverty remained exactly where it was.",
+    "failExplanation": "The hidden word was \"palliate\" — to ease symptoms without curing the cause. Your guesses probably described general relief or full cures; \"palliate\" is specifically comfort at the surface while the root problem continues."
+  },
+  {
+    "date": "2026-12-12",
+    "word": "Tantamount",
+    "unit": "Limits, Measurement & Conflict",
+    "theme": "Structural Limits, Boundaries & Demarcation",
+    "intendedMeaning": "effectively the same as something else in meaning or effect",
+    "definition": "Effectively the same as something else — equal to it in meaning, value, or effect, even if not identical in form.",
+    "wordType": "Adjective",
+    "tone": "neutral",
+    "topic": "Equivalence",
+    "acceptedAnswers": [
+      "tantamount"
+    ],
+    "clue1Distinction": "The hidden word is not about two things looking alike — it says one act or statement amounts to the SAME THING as another in its effect, usually something serious.",
+    "clue2Characteristics": [
+      "Declares two things effectively equal",
+      "Focuses on effect, not appearance",
+      "Almost always followed by \"to\"",
+      "Usually equates something with a serious accusation or outcome"
+    ],
+    "clue3Note": "Unlike words that mean similar or comparable, the hidden word makes a total claim: in practice, the one thing IS the other — refusing to answer being the same as admitting guilt, for example.",
+    "clue4ContextSentence": "The general's refusal to obey the elected government was ________ to open rebellion, whatever polite language he used.",
+    "clue5FirstLetter": "T",
+    "clue5Extra": "A related phrase is \"amounts to,\" the verb form of the same idea.",
+    "clue6Choices": [
+      "Tantamount",
+      "Paramount",
+      "Redundant"
+    ],
+    "relatedGuesses": [
+      {
+        "word": "equivalent",
+        "distinction": "\"Equivalent\" is the neutral word for equal value or meaning; the hidden word carries a charge — it usually equates an act with something serious or damning."
+      },
+      {
+        "word": "equal",
+        "distinction": "\"Equal\" means the same in measure or amount; the hidden word means the same in practical EFFECT, even when the forms differ completely."
+      },
+      {
+        "word": "similar",
+        "distinction": "\"Similar\" means alike in some ways; the hidden word claims full equivalence — not resemblance, but identity of effect."
+      },
+      {
+        "word": "comparable",
+        "distinction": "\"Comparable\" means close enough to compare fairly; the hidden word goes all the way — the two things amount to the same thing."
+      }
+    ],
+    "modelSentence": "Deleting the audit records was tantamount to a confession — no innocent explanation could survive that act.",
+    "failExplanation": "The hidden word was \"tantamount\" — effectively the same as something else in effect. Your guesses probably meant similar or comparable; \"tantamount\" claims the two things amount to exactly the same thing, usually something serious."
+  },
+  {
+    "date": "2026-12-13",
+    "word": "Platitude",
+    "unit": "Persuasion, Figurative Language & Moral Instruction",
+    "theme": "Moral Instruction & Stale Language",
+    "intendedMeaning": "a dull, obvious statement offered as if it were meaningful insight",
+    "definition": "A dull, obvious moral statement offered as though it were a deep insight, especially one meant to comfort or advise.",
+    "wordType": "Noun",
+    "tone": "negative",
+    "topic": "Empty sayings",
+    "acceptedAnswers": [
+      "platitude"
+    ],
+    "clue1Distinction": "The hidden word is not a false statement — it is usually TRUE but so obvious and overused that saying it adds nothing.",
+    "clue2Characteristics": [
+      "An obvious, unoriginal statement",
+      "Offered as though it were wisdom",
+      "Often used to comfort or advise",
+      "Leaves listeners feeling nothing was really said"
+    ],
+    "clue3Note": "Unlike a word for a genuinely wise, memorable saying, the hidden word names its empty cousin — a stock phrase mistaken for insight, like \"everything happens for a reason.\"",
+    "clue4ContextSentence": "Instead of a real plan, the speech offered one ________ after another — \"we must work together,\" \"the future belongs to the youth\" — and the audience left unmoved.",
+    "clue5FirstLetter": "P",
+    "clue5Extra": "A related word is \"truism\" — a statement so obviously true it isn't worth saying.",
+    "clue6Choices": [
+      "Platitude",
+      "Paradox",
+      "Prophecy"
+    ],
+    "relatedGuesses": [
+      {
+        "word": "cliche",
+        "distinction": "\"Cliche\" is any overused phrase or idea; the hidden word is specifically an obvious moral statement dressed up as wisdom or comfort."
+      },
+      {
+        "word": "truism",
+        "distinction": "\"Truism\" is a statement too obviously true to need saying; the hidden word adds the pretence — it is DELIVERED as though it were deep insight."
+      },
+      {
+        "word": "proverb",
+        "distinction": "\"Proverb\" is a respected traditional saying that carries real wisdom; the hidden word is the empty imitation that only sounds wise."
+      },
+      {
+        "word": "slogan",
+        "distinction": "\"Slogan\" is a catchy phrase made for campaigns or advertising; the hidden word pretends to offer moral guidance, not to sell or rally."
+      }
+    ],
+    "modelSentence": "When she lost the scholarship, relatives offered platitudes about doors closing and windows opening; only her brother offered actual help.",
+    "failExplanation": "The hidden word was \"platitude\" — a dull, obvious statement presented as insight. Your guesses probably named wise sayings or catchy phrases; a \"platitude\" is the empty statement that only pretends to be wisdom."
+  },
+  {
+    "date": "2026-12-14",
+    "word": "Acquiesce",
+    "unit": "Argument, Calming & Reconciliation",
+    "theme": "Caution, Persistence, Conceding & Reconciliation",
+    "intendedMeaning": "to accept or go along with something without protest, even if not fully agreeing",
+    "definition": "To accept or go along with something without objecting, even when one does not fully agree; to consent quietly.",
+    "wordType": "Verb",
+    "tone": "neutral",
+    "topic": "Going along with things",
+    "acceptedAnswers": [
+      "acquiesce"
+    ],
+    "clue1Distinction": "The hidden word is not about enthusiastic agreement — it means going along with something QUIETLY, often while privately unconvinced.",
+    "clue2Characteristics": [
+      "Accepting without protest",
+      "Consent is quiet, often reluctant",
+      "Inner agreement may be missing",
+      "Often happens out of tiredness, politeness, or powerlessness"
+    ],
+    "clue3Note": "Unlike a word that means giving up after a long, open fight, the hidden word involves no real battle at all — resistance simply never gets voiced.",
+    "clue4ContextSentence": "Though she doubted the plan would work, she chose to ________ rather than start another exhausting argument with the committee.",
+    "clue5FirstLetter": "A",
+    "clue5Extra": "A related phrase is \"go along with,\" the informal everyday version.",
+    "clue6Choices": [
+      "Acquiesce",
+      "Advocate",
+      "Antagonize"
+    ],
+    "relatedGuesses": [
+      {
+        "word": "agree",
+        "distinction": "\"Agree\" implies genuine shared opinion; the hidden word means outward acceptance that may hide private doubt or reluctance."
+      },
+      {
+        "word": "capitulate",
+        "distinction": "\"Capitulate\" means surrendering after long, open resistance; the hidden word means never voicing resistance in the first place."
+      },
+      {
+        "word": "comply",
+        "distinction": "\"Comply\" means following a rule or order as required; the hidden word emphasizes the silent, unprotesting attitude behind the acceptance."
+      },
+      {
+        "word": "submit",
+        "distinction": "\"Submit\" suggests yielding to a stronger power, often unwillingly and visibly; the hidden word is quieter — a wordless letting-it-happen."
+      }
+    ],
+    "modelSentence": "The board acquiesced to the chairman's proposal, less from conviction than from the knowledge that opposing him never changed anything.",
+    "failExplanation": "The hidden word was \"acquiesce\" — to accept quietly without protest, even without full agreement. Your guesses probably described genuine agreement or open surrender; \"acquiesce\" is the silent, unprotesting middle path."
+  },
+  {
+    "date": "2026-12-15",
+    "word": "Idyllic",
+    "unit": "Culture, Praise & Rural Life",
+    "theme": "Rural Life, Nature & Cultural Aspiration",
+    "intendedMeaning": "extremely pleasant and peaceful in a way that seems almost too perfect",
+    "definition": "Extremely pleasant, peaceful, and happy — in a way that seems almost too perfect to be real.",
+    "wordType": "Adjective",
+    "tone": "positive",
+    "topic": "Perfect scenes",
+    "acceptedAnswers": [
+      "idyllic"
+    ],
+    "clue1Distinction": "The hidden word is not just \"beautiful\" — it describes a scene or life so peaceful and happy it feels like a picture from a storybook.",
+    "clue2Characteristics": [
+      "Extremely peaceful and pleasant",
+      "Feels almost too perfect to be real",
+      "Often describes places, childhoods, and holidays",
+      "Suggests a dreamlike, unspoiled quality"
+    ],
+    "clue3Note": "Unlike a word tied specifically to charming countryside scenes, the hidden word can describe ANY setting or period — a beach, a marriage, a childhood — that seems perfectly happy.",
+    "clue4ContextSentence": "Their honeymoon in the hill town was ________ — misty mornings, quiet walks, and not a single worry for ten whole days.",
+    "clue5FirstLetter": "I",
+    "clue5Extra": "A related word is \"picturesque,\" which focuses on visual charm.",
+    "clue6Choices": [
+      "Idyllic",
+      "Iconic",
+      "Immaculate"
+    ],
+    "relatedGuesses": [
+      {
+        "word": "perfect",
+        "distinction": "\"Perfect\" is the general word for flawless; the hidden word specifically paints peaceful, happy, dreamlike scenes and periods of life."
+      },
+      {
+        "word": "peaceful",
+        "distinction": "\"Peaceful\" means calm and quiet; the hidden word adds happiness and an almost unreal, storybook perfection."
+      },
+      {
+        "word": "bucolic",
+        "distinction": "\"Bucolic\" is tied to countryside charm specifically; the hidden word can describe any perfectly happy setting — coastal, urban, or domestic."
+      },
+      {
+        "word": "serene",
+        "distinction": "\"Serene\" describes deep calm, in places or people; the hidden word describes whole scenes or times that seem perfectly, almost impossibly happy."
+      }
+    ],
+    "modelSentence": "In her memory the village summers were idyllic — mango trees, cousins everywhere, and days that seemed to last forever.",
+    "failExplanation": "The hidden word was \"idyllic\" — so pleasant and peaceful it seems too perfect to be real. Your guesses probably meant beautiful or calm; \"idyllic\" adds that dreamlike, storybook perfection."
+  },
+  {
+    "date": "2026-12-16",
+    "word": "Relegate",
+    "unit": "Exclusion, Growth & Scale",
+    "theme": "Social Exclusion, Oppression & Marginalization",
+    "intendedMeaning": "to move someone or something to a lower or less important position",
+    "definition": "To move someone or something down to a lower or less important position; to push to the margins.",
+    "wordType": "Verb",
+    "tone": "negative",
+    "topic": "Losing position",
+    "acceptedAnswers": [
+      "relegate"
+    ],
+    "clue1Distinction": "The hidden word is not about removing someone entirely — it means pushing them DOWN to a lower, less important place while they remain in the system.",
+    "clue2Characteristics": [
+      "Moves something to a lower rank or position",
+      "The thing remains, but matters less",
+      "Done TO someone, rarely by choice",
+      "Familiar from football league demotions"
+    ],
+    "clue3Note": "Unlike a word that means formally reducing someone's job rank, the hidden word applies to anything — people, topics, objects — pushed to the sidelines or a lower tier.",
+    "clue4ContextSentence": "Once the star of the shop window, the old typewriter was ________d to a dusty shelf in the storeroom.",
+    "clue5FirstLetter": "R",
+    "clue5Extra": "A related word is \"sideline,\" the sporting image of being pushed out of the action.",
+    "clue6Choices": [
+      "Relegate",
+      "Reiterate",
+      "Replicate"
+    ],
+    "relatedGuesses": [
+      {
+        "word": "demote",
+        "distinction": "\"Demote\" means officially lowering someone's job rank; the hidden word applies far more widely — to people, teams, topics, and things pushed to lesser positions."
+      },
+      {
+        "word": "downgrade",
+        "distinction": "\"Downgrade\" means reducing an official status or rating; the hidden word emphasizes being pushed aside into unimportance."
+      },
+      {
+        "word": "dismiss",
+        "distinction": "\"Dismiss\" means removing someone entirely or waving something away; the hidden word keeps the thing around — just lower and less regarded."
+      },
+      {
+        "word": "marginalize",
+        "distinction": "\"Marginalize\" means pushing a group to the powerless edge of society; the hidden word is the broader act of assigning anything a lower place."
+      }
+    ],
+    "modelSentence": "After the scandal, the once-powerful minister was relegated to a ceremonial post with a grand title and no actual authority.",
+    "failExplanation": "The hidden word was \"relegate\" — to push someone or something down to a lower, less important position. Your guesses probably meant removing or officially demoting; \"relegate\" covers any pushing-down to the margins."
+  },
+  {
+    "date": "2026-12-17",
+    "word": "Ramification",
+    "unit": "Ubiquity, Causation & Consequences",
+    "theme": "Consequences, Ramifications & Cascading Effects",
+    "intendedMeaning": "an indirect consequence that spreads outward from a decision or event",
+    "definition": "An unintended or indirect consequence that spreads outward from a decision or event, often making things more complicated.",
+    "wordType": "Noun",
+    "tone": "negative",
+    "topic": "Spreading effects",
+    "acceptedAnswers": [
+      "ramification"
+    ],
+    "clue1Distinction": "The hidden word is not the direct, expected result of an action — it names the INDIRECT effects that branch outward in ways nobody planned.",
+    "clue2Characteristics": [
+      "A consequence of a decision or event",
+      "Indirect and often unintended",
+      "Spreads outward like branches",
+      "Usually plural, and usually complicates things"
+    ],
+    "clue3Note": "Unlike a word for any result that follows from a cause, the hidden word specifically suggests BRANCHING — one decision splitting into many far-reaching, tangled effects.",
+    "clue4ContextSentence": "The new visa rule seemed minor, but its ________s spread everywhere: cancelled conferences, stalled research projects, and families separated for months.",
+    "clue5FirstLetter": "R",
+    "clue5Extra": "A related term is \"knock-on effect,\" the informal phrase for the same branching consequences.",
+    "clue6Choices": [
+      "Ramification",
+      "Ratification",
+      "Reservation"
+    ],
+    "relatedGuesses": [
+      {
+        "word": "consequence",
+        "distinction": "\"Consequence\" is any result of an action, direct or indirect; the hidden word is specifically the indirect, branching effects nobody fully planned for."
+      },
+      {
+        "word": "repercussion",
+        "distinction": "\"Repercussion\" is an unpleasant effect felt later, echoing back; the hidden word emphasizes effects spreading OUTWARD into many areas at once."
+      },
+      {
+        "word": "effect",
+        "distinction": "\"Effect\" is the neutral, general word; the hidden word implies complexity — one act splitting into many tangled outcomes."
+      },
+      {
+        "word": "aftermath",
+        "distinction": "\"Aftermath\" is the whole situation left behind after a major event; the hidden word names the individual branching consequences within it."
+      }
+    ],
+    "modelSentence": "Nobody weighed the ramifications of the dam: downstream fisheries collapsed, villages relocated, and two provinces began a water dispute that lasted decades.",
+    "failExplanation": "The hidden word was \"ramification\" — an indirect consequence spreading outward from a decision. Your guesses probably named results in general; \"ramification\" is specifically the branching, unintended effects."
+  },
+  {
+    "date": "2026-12-18",
+    "word": "Ineffable",
+    "unit": "Time, Struggle & Transcendence",
+    "theme": "A Piece of Music That Exceeds Everything",
+    "intendedMeaning": "too great or extreme to be described in words",
+    "definition": "Too great, beautiful, or extreme to be described in words; beyond ordinary expression.",
+    "wordType": "Adjective",
+    "tone": "positive",
+    "topic": "Beyond description",
+    "acceptedAnswers": [
+      "ineffable"
+    ],
+    "clue1Distinction": "The hidden word is not about something being confusing or mysterious — it describes a feeling or quality so great that WORDS simply cannot capture it.",
+    "clue2Characteristics": [
+      "Cannot be expressed in words",
+      "Usually describes overwhelming feelings or beauty",
+      "The experience itself is clear — only language fails",
+      "Common in writing about music, faith, and awe"
+    ],
+    "clue3Note": "Unlike a word that means hard to understand or explain logically, the hidden word means the thing is fully FELT — it is only the describing that becomes impossible.",
+    "clue4ContextSentence": "Standing before the Himalayas at sunrise, she felt an ________ joy — every word she reached for seemed too small.",
+    "clue5FirstLetter": "I",
+    "clue5Extra": "A related word is \"indescribable,\" the plainer everyday equivalent.",
+    "clue6Choices": [
+      "Ineffable",
+      "Inevitable",
+      "Infallible"
+    ],
+    "relatedGuesses": [
+      {
+        "word": "indescribable",
+        "distinction": "\"Indescribable\" is the plain version of the same idea; the hidden word is the literary term, usually reserved for sublime or sacred experiences."
+      },
+      {
+        "word": "inexplicable",
+        "distinction": "\"Inexplicable\" means impossible to EXPLAIN or account for; the hidden word means impossible to put into words — the feeling itself is perfectly clear."
+      },
+      {
+        "word": "unspeakable",
+        "distinction": "\"Unspeakable\" most often describes things too terrible to mention; the hidden word usually describes things too wonderful for words."
+      },
+      {
+        "word": "profound",
+        "distinction": "\"Profound\" means deep and intellectually weighty; the hidden word is about the LIMITS of language — depth so great that words give out."
+      }
+    ],
+    "modelSentence": "The final movement left the hall in silence — an ineffable beauty that even the critics, paid to describe such things, struggled to put into sentences.",
+    "failExplanation": "The hidden word was \"ineffable\" — too great or beautiful to be described in words. Your guesses probably meant mysterious or deep; \"ineffable\" is specifically about language failing before an overwhelming experience."
+  },
+  {
+    "date": "2026-12-19",
+    "word": "Circumvent",
+    "unit": "Illness, Action & Exceptional Figures",
+    "theme": "Practical Action, Utility & Reversal",
+    "intendedMeaning": "to get around a rule or obstacle by an indirect, clever route",
+    "definition": "To get around a rule, obstacle, or difficulty by finding a clever or indirect route instead of confronting it directly.",
+    "wordType": "Verb",
+    "tone": "negative",
+    "topic": "Getting around obstacles",
+    "acceptedAnswers": [
+      "circumvent"
+    ],
+    "clue1Distinction": "The hidden word is not about breaking a rule openly — it means finding a clever path AROUND the rule or obstacle so it never has to be faced at all.",
+    "clue2Characteristics": [
+      "Avoids an obstacle or rule",
+      "Uses an indirect, often clever route",
+      "The rule is dodged, not broken openly",
+      "Often used for regulations, security, and restrictions"
+    ],
+    "clue3Note": "Unlike a word that means simply staying away from something, the hidden word implies purpose and ingenuity — a deliberate detour designed to defeat the obstacle's intent.",
+    "clue4ContextSentence": "The importers used a chain of shell companies to ________ the new tariffs, routing goods through three countries before delivery.",
+    "clue5FirstLetter": "C",
+    "clue5Extra": "A related word is \"sidestep,\" the lighter informal version.",
+    "clue6Choices": [
+      "Circumvent",
+      "Consolidate",
+      "Corroborate"
+    ],
+    "relatedGuesses": [
+      {
+        "word": "avoid",
+        "distinction": "\"Avoid\" is the general word for keeping away from something; the hidden word means actively engineering a route around a rule or obstacle."
+      },
+      {
+        "word": "bypass",
+        "distinction": "\"Bypass\" is the closest everyday twin; the hidden word carries a stronger suggestion of cleverness and of defeating the rule's purpose."
+      },
+      {
+        "word": "evade",
+        "distinction": "\"Evade\" means escaping something pursuing you, like capture or questions; the hidden word means routing around a standing obstacle in your path."
+      },
+      {
+        "word": "violate",
+        "distinction": "\"Violate\" means breaking the rule outright; the hidden word leaves the rule technically intact — it just makes the rule useless."
+      }
+    ],
+    "modelSentence": "Students discovered they could circumvent the site's paywall by accessing it through the library's network — technically no rule was broken.",
+    "failExplanation": "The hidden word was \"circumvent\" — to get around a rule or obstacle through a clever, indirect route. Your guesses probably meant avoiding or breaking rules; \"circumvent\" is the artful path around them."
+  },
+  {
+    "date": "2026-12-20",
+    "word": "Stymie",
+    "unit": "Limits, Measurement & Conflict",
+    "theme": "When Every Door Slams Shut",
+    "intendedMeaning": "to block someone's progress toward a goal completely",
+    "definition": "To prevent someone from making progress or achieving a goal; to block or frustrate their efforts completely.",
+    "wordType": "Verb",
+    "tone": "negative",
+    "topic": "Blocked progress",
+    "acceptedAnswers": [
+      "stymie"
+    ],
+    "clue1Distinction": "The hidden word is not about slowing someone down — it means their progress is BLOCKED, leaving no clear way forward at all.",
+    "clue2Characteristics": [
+      "Blocks progress toward a goal",
+      "Leaves the person stuck, without a path forward",
+      "Often done by obstacles, rules, or rivals",
+      "Originally a golf term for a blocked shot"
+    ],
+    "clue3Note": "Unlike words that mean making a task harder while still possible, the hidden word means the effort is stopped cold — the person is left frustrated with nowhere to go.",
+    "clue4ContextSentence": "The investigation was ________d at every turn: witnesses vanished, records burned, and the one cooperative official was abruptly transferred.",
+    "clue5FirstLetter": "S",
+    "clue5Extra": "A related word is \"thwart,\" which shares the sense of defeating someone's plans.",
+    "clue6Choices": [
+      "Stymie",
+      "Stipulate",
+      "Simulate"
+    ],
+    "relatedGuesses": [
+      {
+        "word": "block",
+        "distinction": "\"Block\" is the plain physical word for stopping passage; the hidden word specifically means frustrating someone's PLANS or progress toward a goal."
+      },
+      {
+        "word": "hinder",
+        "distinction": "\"Hinder\" means slowing or hampering progress that still continues; the hidden word means progress stops — the person is stuck."
+      },
+      {
+        "word": "thwart",
+        "distinction": "\"Thwart\" means defeating a plan, often at the decisive moment; the hidden word emphasizes being stuck and frustrated, unable to move forward at all."
+      },
+      {
+        "word": "obstruct",
+        "distinction": "\"Obstruct\" means placing obstacles in the way, often deliberately and officially; the hidden word describes the resulting dead end for the person trying."
+      }
+    ],
+    "modelSentence": "A single missing signature stymied the entire land transfer for two years, defeating lawyers, brokers, and three separate appeals.",
+    "failExplanation": "The hidden word was \"stymie\" — to block someone's progress completely. Your guesses probably described slowing or obstructing; \"stymie\" means the effort is stopped cold with no way forward."
+  },
+  {
+    "date": "2026-12-21",
+    "word": "Exhort",
+    "unit": "Persuasion, Figurative Language & Moral Instruction",
+    "theme": "Moral Instruction & Stale Language",
+    "intendedMeaning": "to strongly urge someone to do something, with passion and moral urgency",
+    "definition": "To strongly urge someone to do something, often with passion and a sense of moral urgency.",
+    "wordType": "Verb",
+    "tone": "positive",
+    "topic": "Urging others",
+    "acceptedAnswers": [
+      "exhort"
+    ],
+    "clue1Distinction": "The hidden word is not about ordering or forcing anyone — it means URGING them passionately, appealing to their will rather than commanding it.",
+    "clue2Characteristics": [
+      "Strongly urges someone to act",
+      "Delivered with passion and energy",
+      "Appeals to duty, courage, or morality",
+      "Typical of coaches, preachers, and leaders before a great effort"
+    ],
+    "clue3Note": "Unlike words that mean quietly advising or begging for oneself, the hidden word is a rousing call pushing OTHERS toward action they should take.",
+    "clue4ContextSentence": "At halftime the captain ________ed her exhausted teammates to give everything in the final twenty minutes, reminding them how far they had come.",
+    "clue5FirstLetter": "E",
+    "clue5Extra": "A related word is \"implore,\" though that one pleads while this one rallies.",
+    "clue6Choices": [
+      "Exhort",
+      "Extort",
+      "Export"
+    ],
+    "relatedGuesses": [
+      {
+        "word": "urge",
+        "distinction": "\"Urge\" is the everyday word for pushing someone toward action; the hidden word is stronger and more formal, with passion and moral weight behind it."
+      },
+      {
+        "word": "encourage",
+        "distinction": "\"Encourage\" means giving support and confidence gently; the hidden word is a forceful, stirring appeal — closer to a rallying cry."
+      },
+      {
+        "word": "implore",
+        "distinction": "\"Implore\" means begging desperately, usually for something you want; the hidden word pushes others toward what THEY ought to do."
+      },
+      {
+        "word": "persuade",
+        "distinction": "\"Persuade\" means successfully changing someone's mind with reasons; the hidden word is the passionate urging itself, whether or not it succeeds."
+      }
+    ],
+    "modelSentence": "The retiring principal used his final assembly to exhort students to serve their country with honesty, whatever careers they chose.",
+    "failExplanation": "The hidden word was \"exhort\" — to urge someone strongly and passionately toward action. Your guesses probably meant encouraging or begging; \"exhort\" is the rousing, morally charged appeal."
+  },
+  {
+    "date": "2026-12-22",
+    "word": "Conciliatory",
+    "unit": "Argument, Calming & Reconciliation",
+    "theme": "Calming, Soothing & De-escalation",
+    "intendedMeaning": "intended to reduce hostility and restore goodwill; willing to meet halfway",
+    "definition": "Intended to reduce anger or hostility and bring back goodwill; showing willingness to meet the other side halfway.",
+    "wordType": "Adjective",
+    "tone": "positive",
+    "topic": "Repairing relations",
+    "acceptedAnswers": [
+      "conciliatory"
+    ],
+    "clue1Distinction": "The hidden word does not describe surrender or weakness — it describes a deliberate CHOICE of tone or gesture aimed at cooling a conflict and rebuilding goodwill.",
+    "clue2Characteristics": [
+      "Aims to reduce anger and hostility",
+      "Signals willingness to meet halfway",
+      "Describes tones, gestures, and approaches",
+      "Chosen deliberately during disputes"
+    ],
+    "clue3Note": "Unlike a word that means calm and peaceful by nature, the hidden word describes an active PEACEMAKING stance taken toward an angry or opposing side.",
+    "clue4ContextSentence": "After weeks of harsh statements, the minister struck a ________ tone, praising the strikers' patience and offering fresh talks without conditions.",
+    "clue5FirstLetter": "C",
+    "clue5Extra": "A related term is \"olive branch,\" the classic symbol of this attitude.",
+    "clue6Choices": [
+      "Conciliatory",
+      "Contradictory",
+      "Celebratory"
+    ],
+    "relatedGuesses": [
+      {
+        "word": "peaceful",
+        "distinction": "\"Peaceful\" describes a calm state or nature; the hidden word describes an active effort to END hostility with the other side."
+      },
+      {
+        "word": "apologetic",
+        "distinction": "\"Apologetic\" means expressing regret for one's own fault; the hidden word seeks to cool the conflict, with or without admitting any fault."
+      },
+      {
+        "word": "diplomatic",
+        "distinction": "\"Diplomatic\" means tactful and careful not to offend; the hidden word goes further — actively offering goodwill and concessions to repair a rift."
+      },
+      {
+        "word": "compromising",
+        "distinction": "\"Compromising\" is about actually splitting the difference; the hidden word is the friendly TONE and gestures that make compromise possible."
+      }
+    ],
+    "modelSentence": "Her conciliatory email — acknowledging the team's frustration and proposing a joint review — ended a feud that memos full of blame had only deepened.",
+    "failExplanation": "The hidden word was \"conciliatory\" — intended to reduce hostility and restore goodwill. Your guesses probably meant peaceful or apologetic; \"conciliatory\" is the active peacemaking stance toward an opposing side."
+  },
+  {
+    "date": "2026-12-23",
+    "word": "Adulation",
+    "unit": "Culture, Praise & Rural Life",
+    "theme": "Praise, Honor & Public Commendation",
+    "intendedMeaning": "excessive, uncritical admiration or praise",
+    "definition": "Excessive admiration or praise, often so intense and uncritical that it goes beyond what is deserved.",
+    "wordType": "Noun",
+    "tone": "negative",
+    "topic": "Fame and admirers",
+    "acceptedAnswers": [
+      "adulation"
+    ],
+    "clue1Distinction": "The hidden word is not ordinary appreciation — it is admiration taken to an EXCESSIVE, almost worshipful level, usually from crowds or fans.",
+    "clue2Characteristics": [
+      "Extreme, intense admiration",
+      "Uncritical — flaws are ignored",
+      "Usually directed at celebrities, stars, or leaders",
+      "Often implies the praise has gone too far"
+    ],
+    "clue3Note": "Unlike a word for deep, earned respect for someone's character or wisdom, the hidden word suggests emotional excess — worship that no longer sees the person clearly.",
+    "clue4ContextSentence": "The young cricketer struggled with the ________ that followed his debut century — crowds mobbed his house, and strangers wept at the sight of him.",
+    "clue5FirstLetter": "A",
+    "clue5Extra": "A related term is \"hero worship,\" the informal phrase for the same excess.",
+    "clue6Choices": [
+      "Adulation",
+      "Alienation",
+      "Aspiration"
+    ],
+    "relatedGuesses": [
+      {
+        "word": "admiration",
+        "distinction": "\"Admiration\" is healthy respect for someone's qualities; the hidden word is admiration inflated past reason — excessive and uncritical."
+      },
+      {
+        "word": "praise",
+        "distinction": "\"Praise\" is the general act of expressing approval; the hidden word is a flood of worshipful approval, usually from masses of people."
+      },
+      {
+        "word": "worship",
+        "distinction": "\"Worship\" is religious devotion, or its strongest metaphor; the hidden word is the standard term for celebrity-style excessive adoration."
+      },
+      {
+        "word": "flattery",
+        "distinction": "\"Flattery\" is insincere praise given to gain favour; the hidden word is usually sincere — the admirers genuinely feel it, they just feel far too much."
+      }
+    ],
+    "modelSentence": "The actor admitted that decades of adulation had warped him — he could no longer tell honest feedback from applause.",
+    "failExplanation": "The hidden word was \"adulation\" — excessive, uncritical admiration or praise. Your guesses probably named healthy respect or insincere praise; \"adulation\" is sincere admiration inflated far beyond reason."
+  },
+  {
+    "date": "2026-12-24",
+    "word": "Enfranchise",
+    "unit": "Exclusion, Growth & Scale",
+    "theme": "Social Exclusion, Oppression & Marginalization",
+    "intendedMeaning": "to give a group the right to vote or take full part in political life",
+    "definition": "To give a person or group the right to vote or to take full part in a society's political life.",
+    "wordType": "Verb",
+    "tone": "positive",
+    "topic": "Rights and participation",
+    "acceptedAnswers": [
+      "enfranchise"
+    ],
+    "clue1Distinction": "The hidden word is not about freeing someone from prison or slavery — it is about granting a group full POLITICAL rights, above all the right to vote.",
+    "clue2Characteristics": [
+      "Grants political rights to a group",
+      "Centres on the right to vote",
+      "Usually follows long exclusion or struggle",
+      "Done through law or constitutional change"
+    ],
+    "clue3Note": "Unlike a word that means giving someone general power or confidence, the hidden word is the precise legal term for admitting a group into the voting community.",
+    "clue4ContextSentence": "The 1918 act ________d millions of British women, who cast their first parliamentary votes after decades of campaigning.",
+    "clue5FirstLetter": "E",
+    "clue5Extra": "A related word is \"suffrage,\" the noun for the voting right itself.",
+    "clue6Choices": [
+      "Enfranchise",
+      "Emancipate",
+      "Endorse"
+    ],
+    "relatedGuesses": [
+      {
+        "word": "empower",
+        "distinction": "\"Empower\" means giving someone power or confidence in any sphere; the hidden word specifically grants formal political rights, especially the vote."
+      },
+      {
+        "word": "liberate",
+        "distinction": "\"Liberate\" means setting someone free from control or captivity; the hidden word admits already-free people into full political participation."
+      },
+      {
+        "word": "emancipate",
+        "distinction": "\"Emancipate\" means freeing from slavery or legal bondage; the hidden word is the next step — granting the freed the right to vote."
+      },
+      {
+        "word": "legalize",
+        "distinction": "\"Legalize\" makes an activity lawful; the hidden word gives a GROUP of people a political right they lacked."
+      }
+    ],
+    "modelSentence": "Lowering the voting age enfranchised four million young citizens, and both parties immediately began courting them.",
+    "failExplanation": "The hidden word was \"enfranchise\" — to grant a group the right to vote and take part in political life. Your guesses probably meant freeing or empowering generally; \"enfranchise\" is specifically about admission to the ballot."
+  },
+  {
+    "date": "2026-12-25",
+    "word": "Prolific",
+    "unit": "Ubiquity, Causation & Consequences",
+    "theme": "Ubiquity, Proliferation & Excess",
+    "intendedMeaning": "producing a large amount of work or results",
+    "definition": "Producing a very large amount of work, output, or results.",
+    "wordType": "Adjective",
+    "tone": "positive",
+    "topic": "Output and productivity",
+    "acceptedAnswers": [
+      "prolific"
+    ],
+    "clue1Distinction": "The hidden word is not about the QUALITY of someone's work — it is purely about the remarkable QUANTITY they produce.",
+    "clue2Characteristics": [
+      "Produces an unusually large output",
+      "Applies to writers, artists, scorers, and inventors",
+      "Output continues steadily over time",
+      "Says nothing about whether the work is good"
+    ],
+    "clue3Note": "Unlike a word that means naturally fertile soil or offspring, the hidden word is the standard choice for CREATIVE or professional output — books, goals, patents, films.",
+    "clue4ContextSentence": "Humayun Ahmed was astonishingly ________, publishing over two hundred books alongside a full career in film and television.",
+    "clue5FirstLetter": "P",
+    "clue5Extra": "A related word is \"productive,\" the everyday workplace equivalent.",
+    "clue6Choices": [
+      "Prolific",
+      "Proficient",
+      "Prominent"
+    ],
+    "relatedGuesses": [
+      {
+        "word": "productive",
+        "distinction": "\"Productive\" means getting a good amount done, especially at work; the hidden word means an extraordinary, career-defining volume of output."
+      },
+      {
+        "word": "talented",
+        "distinction": "\"Talented\" is about ability and quality; the hidden word is strictly about quantity — a creator can be this without being especially talented."
+      },
+      {
+        "word": "fertile",
+        "distinction": "\"Fertile\" describes soil, imagination, or biological reproduction; the hidden word is the standard term for abundant creative or professional output."
+      },
+      {
+        "word": "industrious",
+        "distinction": "\"Industrious\" describes the hard-working habit; the hidden word describes the resulting flood of finished work."
+      }
+    ],
+    "modelSentence": "The striker was the league's most prolific scorer for five straight seasons, averaging a goal a game.",
+    "failExplanation": "The hidden word was \"prolific\" — producing a very large amount of work or results. Your guesses probably described skill or effort; \"prolific\" is purely about the extraordinary quantity produced."
+  },
+  {
+    "date": "2026-12-26",
+    "word": "Transcend",
+    "unit": "Time, Struggle & Transcendence",
+    "theme": "A Piece of Music That Exceeds Everything",
+    "intendedMeaning": "to go beyond the normal limits of something; to rise above",
+    "definition": "To go beyond the normal limits of something; to rise above and surpass what is ordinarily possible.",
+    "wordType": "Verb",
+    "tone": "positive",
+    "topic": "Going beyond limits",
+    "acceptedAnswers": [
+      "transcend"
+    ],
+    "clue1Distinction": "The hidden word is not about beating a rival or breaking a record — it means rising ABOVE an entire category or limit, leaving it behind altogether.",
+    "clue2Characteristics": [
+      "Goes beyond normal limits",
+      "Rises above whole categories or boundaries",
+      "Often used with borders, differences, and expectations",
+      "Suggests reaching a higher plane, not winning a contest"
+    ],
+    "clue3Note": "Unlike words that mean doing better than others at the same game, the hidden word means moving beyond the game itself — a story that rises above its genre, a friendship above politics.",
+    "clue4ContextSentence": "The 1971 songs of protest came to ________ their moment, speaking to generations who had never seen the war.",
+    "clue5FirstLetter": "T",
+    "clue5Extra": "A related phrase is \"rise above,\" the everyday version of the same movement.",
+    "clue6Choices": [
+      "Transcend",
+      "Transform",
+      "Translate"
+    ],
+    "relatedGuesses": [
+      {
+        "word": "surpass",
+        "distinction": "\"Surpass\" means doing better than something within the same scale; the hidden word means rising beyond the scale itself."
+      },
+      {
+        "word": "exceed",
+        "distinction": "\"Exceed\" means going past a measured limit, like a speed or target; the hidden word means rising above whole categories and boundaries."
+      },
+      {
+        "word": "overcome",
+        "distinction": "\"Overcome\" means defeating an obstacle or difficulty; the hidden word means rising to a plane where the limit no longer applies at all."
+      },
+      {
+        "word": "outshine",
+        "distinction": "\"Outshine\" means performing more brilliantly than rivals; the hidden word is not about competition — it is about escaping the category entirely."
+      }
+    ],
+    "modelSentence": "Great literature transcends its language: readers who will never learn Russian still weep over Tolstoy in translation.",
+    "failExplanation": "The hidden word was \"transcend\" — to rise above the normal limits of something entirely. Your guesses probably meant beating or exceeding within a scale; \"transcend\" means leaving the scale itself behind."
+  },
+  {
+    "date": "2026-12-27",
+    "word": "Prodigy",
+    "unit": "Illness, Action & Exceptional Figures",
+    "theme": "The Once-in-a-Generation Figure",
+    "intendedMeaning": "a young person with extraordinary natural talent far beyond their age",
+    "definition": "A young person whose extraordinary natural talent far exceeds what is normal for their age.",
+    "wordType": "Noun",
+    "tone": "positive",
+    "topic": "Exceptional young people",
+    "acceptedAnswers": [
+      "prodigy"
+    ],
+    "clue1Distinction": "The hidden word is not just a talented or hardworking student — it names someone whose ability arrives astonishingly EARLY, far beyond their years.",
+    "clue2Characteristics": [
+      "A young person, usually a child or teenager",
+      "Talent far beyond their age",
+      "The ability seems natural, not just trained",
+      "Classic examples come from chess, music, and mathematics"
+    ],
+    "clue3Note": "Unlike a word for anyone with exceptional brilliance at any age, the hidden word is defined by YOUTH — the astonishment is that someone so young performs at such a level.",
+    "clue4ContextSentence": "A chess ________ from Chattogram, she defeated her first international master at the age of nine.",
+    "clue5FirstLetter": "P",
+    "clue5Extra": "A related term is \"wunderkind,\" the German loanword for the same figure.",
+    "clue6Choices": [
+      "Prodigy",
+      "Protege",
+      "Pioneer"
+    ],
+    "relatedGuesses": [
+      {
+        "word": "genius",
+        "distinction": "\"Genius\" describes extraordinary intellect at any age; the hidden word specifically means a CHILD or young person performing far beyond their years."
+      },
+      {
+        "word": "talent",
+        "distinction": "\"Talent\" is the ability itself, or loosely a person who has it; the hidden word names the young person whose ability is astonishing for their age."
+      },
+      {
+        "word": "protege",
+        "distinction": "\"Protege\" is someone guided and promoted by a powerful mentor; the hidden word needs no mentor — the defining feature is precocious natural gift."
+      },
+      {
+        "word": "virtuoso",
+        "distinction": "\"Virtuoso\" is a supremely skilled performer, usually an adult master; the hidden word is remarkable precisely because mastery has arrived so early."
+      }
+    ],
+    "modelSentence": "Mozart remains the textbook prodigy — composing at five, touring Europe's courts at six, and writing symphonies before turning ten.",
+    "failExplanation": "The hidden word was \"prodigy\" — a young person with extraordinary talent far beyond their age. Your guesses probably named brilliance in general; a \"prodigy\" is defined by that brilliance arriving in childhood."
+  },
+  {
+    "date": "2026-12-28",
+    "word": "Exacerbate",
+    "unit": "Limits, Measurement & Conflict",
+    "theme": "When Every Door Slams Shut",
+    "intendedMeaning": "to make an already bad situation even worse",
+    "definition": "To make a bad situation or problem even worse than it already was.",
+    "wordType": "Verb",
+    "tone": "negative",
+    "topic": "Worsening situations",
+    "acceptedAnswers": [
+      "exacerbate"
+    ],
+    "clue1Distinction": "The hidden word does not create a new problem — it takes a problem that ALREADY exists and makes it worse.",
+    "clue2Characteristics": [
+      "Worsens an existing problem",
+      "The situation was already bad",
+      "Often unintended — attempts to help can do this",
+      "Common with crises, tensions, illnesses, and shortages"
+    ],
+    "clue3Note": "Unlike a word that means deliberately provoking a person to anger, the hidden word acts on SITUATIONS and conditions — deepening a crisis, worsening an illness, sharpening a shortage.",
+    "clue4ContextSentence": "Panic-buying only ________d the fuel shortage, emptying stations that could otherwise have served everyone for days.",
+    "clue5FirstLetter": "E",
+    "clue5Extra": "A related word is \"aggravate,\" its close partner in formal writing.",
+    "clue6Choices": [
+      "Exacerbate",
+      "Exonerate",
+      "Extrapolate"
+    ],
+    "relatedGuesses": [
+      {
+        "word": "worsen",
+        "distinction": "\"Worsen\" is the plain word, and things can worsen on their own; the hidden word is transitive — something actively pushes the bad situation further down."
+      },
+      {
+        "word": "aggravate",
+        "distinction": "\"Aggravate\" is the near-twin, but informally it often means annoying a person; the hidden word applies strictly to worsening conditions and situations."
+      },
+      {
+        "word": "intensify",
+        "distinction": "\"Intensify\" means making anything stronger, good or bad; the hidden word only ever applies to bad things getting worse."
+      },
+      {
+        "word": "provoke",
+        "distinction": "\"Provoke\" means triggering a reaction or starting trouble; the hidden word deepens trouble that has already begun."
+      }
+    ],
+    "modelSentence": "The harsh curfew, meant to restore calm, exacerbated the unrest instead — each arrest brought three more protesters into the streets.",
+    "failExplanation": "The hidden word was \"exacerbate\" — to make an already bad situation worse. Your guesses probably described causing or intensifying things generally; \"exacerbate\" specifically deepens an existing problem."
+  },
+  {
+    "date": "2026-12-29",
+    "word": "Tangential",
+    "unit": "Persuasion, Figurative Language & Moral Instruction",
+    "theme": "Figurative, Indirect & Plain Language",
+    "intendedMeaning": "only loosely or indirectly connected to the main point",
+    "definition": "Only loosely or indirectly connected to the main point; touching a subject without engaging it directly.",
+    "wordType": "Adjective",
+    "tone": "negative",
+    "topic": "Staying on topic",
+    "acceptedAnswers": [
+      "tangential"
+    ],
+    "clue1Distinction": "The hidden word does not mean completely unrelated — it describes something with only a THIN, sideways connection to the main topic.",
+    "clue2Characteristics": [
+      "Loosely connected to the main subject",
+      "Touches the topic at the edge, then drifts away",
+      "Common criticism of comments and discussion points",
+      "Borrowed from geometry — a line touching a circle at one point"
+    ],
+    "clue3Note": "Unlike a word that means having no connection at all, the hidden word admits a connection exists — it is just too slight and sideways to belong in the main discussion.",
+    "clue4ContextSentence": "His comment about canteen prices was ________ to the debate on exam reform, and the moderator gently steered the discussion back.",
+    "clue5FirstLetter": "T",
+    "clue5Extra": "A related word is \"peripheral,\" describing what sits at the edge rather than the centre.",
+    "clue6Choices": [
+      "Tangential",
+      "Theoretical",
+      "Trivial"
+    ],
+    "relatedGuesses": [
+      {
+        "word": "irrelevant",
+        "distinction": "\"Irrelevant\" means having no bearing on the topic at all; the hidden word means having a real but thin, sideways connection."
+      },
+      {
+        "word": "unrelated",
+        "distinction": "\"Unrelated\" denies any link whatsoever; the hidden word describes a link that exists but barely touches the main point."
+      },
+      {
+        "word": "peripheral",
+        "distinction": "\"Peripheral\" means located at the edge of importance; the hidden word emphasizes the sideways DIRECTION — touching the topic and veering off."
+      },
+      {
+        "word": "digressive",
+        "distinction": "\"Digressive\" describes wandering away from the topic at length; the hidden word describes the loose relationship of a single point to the main subject."
+      }
+    ],
+    "modelSentence": "The biography kept drifting into tangential detail — the poet's cousin's business, the weather of 1943 — while the poems themselves went unexamined.",
+    "failExplanation": "The hidden word was \"tangential\" — only loosely and indirectly connected to the main point. Your guesses probably meant fully unrelated or unimportant; \"tangential\" is the thin, sideways connection that touches a topic and drifts away."
+  },
+  {
+    "date": "2026-12-30",
+    "word": "Fortuitous",
+    "unit": "Ubiquity, Causation & Consequences",
+    "theme": "Causes, Triggers & Preconditions",
+    "intendedMeaning": "happening by chance, often with a lucky result",
+    "definition": "Happening by chance rather than by plan, often with a lucky or beneficial result.",
+    "wordType": "Adjective",
+    "tone": "positive",
+    "topic": "Chance events",
+    "acceptedAnswers": [
+      "fortuitous"
+    ],
+    "clue1Distinction": "The hidden word is not about skill or planning paying off — it describes something good arriving purely by CHANCE, with no design behind it.",
+    "clue2Characteristics": [
+      "Happens by accident, not by plan",
+      "The outcome is usually lucky or beneficial",
+      "Nobody arranged or intended it",
+      "Often describes meetings, discoveries, and timings"
+    ],
+    "clue3Note": "Unlike a word that simply means fortunate or blessed, the hidden word insists on the ACCIDENT — the good thing occurred without anyone planning or deserving it.",
+    "clue4ContextSentence": "Their meeting was entirely ________ — both had missed the same flight, and the conversation at the gate led to a business partnership.",
+    "clue5FirstLetter": "F",
+    "clue5Extra": "A related word is \"serendipitous,\" the term for happy accidental discoveries.",
+    "clue6Choices": [
+      "Fortuitous",
+      "Fastidious",
+      "Felicitous"
+    ],
+    "relatedGuesses": [
+      {
+        "word": "lucky",
+        "distinction": "\"Lucky\" focuses on the good outcome for someone; the hidden word focuses on the CHANCE nature of the event itself — unplanned and unarranged."
+      },
+      {
+        "word": "accidental",
+        "distinction": "\"Accidental\" means unintended, and often describes mishaps; the hidden word means unplanned with a usually happy result."
+      },
+      {
+        "word": "coincidental",
+        "distinction": "\"Coincidental\" means two things happening together by chance; the hidden word adds the sense that the chance turned out beneficial."
+      },
+      {
+        "word": "serendipitous",
+        "distinction": "\"Serendipitous\" specifically describes finding something good while looking for something else; the hidden word covers any lucky chance event."
+      }
+    ],
+    "modelSentence": "The discovery of penicillin was fortuitous: a mould drifted into Fleming's dish by accident and killed the bacteria around it.",
+    "failExplanation": "The hidden word was \"fortuitous\" — happening by chance, often with a lucky result. Your guesses probably focused on the luck alone; \"fortuitous\" is defined first by the accident, and only second by the happy outcome."
+  },
+  {
+    "date": "2026-12-31",
+    "word": "Malleable",
+    "unit": "Time, Struggle & Transcendence",
+    "theme": "Time, Transience & Transformation",
+    "intendedMeaning": "able to be shaped or influenced without breaking; adaptable",
+    "definition": "Able to be shaped, changed, or influenced without breaking; adaptable to new conditions.",
+    "wordType": "Adjective",
+    "tone": "neutral",
+    "topic": "Capacity for change",
+    "acceptedAnswers": [
+      "malleable"
+    ],
+    "clue1Distinction": "The hidden word is not about being weak or easily broken — it describes something that can be RESHAPED again and again without breaking at all.",
+    "clue2Characteristics": [
+      "Can be shaped or moulded",
+      "Bends and reforms without breaking",
+      "Literally describes metals like gold",
+      "Figuratively describes young minds, plans, and opinions"
+    ],
+    "clue3Note": "Unlike a word that means willing to adjust or cooperate by choice, the hidden word describes a PROPERTY — the capacity to be shaped by outside forces, for better or worse.",
+    "clue4ContextSentence": "Gold is prized partly because it is so ________ — a single gram can be hammered into a sheet a metre wide.",
+    "clue5FirstLetter": "M",
+    "clue5Extra": "A related word is \"pliable,\" used for materials and people who bend easily.",
+    "clue6Choices": [
+      "Malleable",
+      "Measurable",
+      "Memorable"
+    ],
+    "relatedGuesses": [
+      {
+        "word": "flexible",
+        "distinction": "\"Flexible\" means bending and returning to its original form; the hidden word means holding the NEW shape it is given."
+      },
+      {
+        "word": "adaptable",
+        "distinction": "\"Adaptable\" describes actively adjusting oneself to conditions; the hidden word describes being shaped by outside forces or influence."
+      },
+      {
+        "word": "soft",
+        "distinction": "\"Soft\" just means yielding to pressure; the hidden word means yielding usefully — reshaping without cracking or breaking."
+      },
+      {
+        "word": "impressionable",
+        "distinction": "\"Impressionable\" applies to people easily influenced, often gullibly; the hidden word covers metals, minds, and plans alike, and is more neutral."
+      }
+    ],
+    "modelSentence": "Children's language habits are remarkably malleable — a year in a new city, and their accent has quietly reshaped itself.",
+    "failExplanation": "The hidden word was \"malleable\" — able to be shaped or influenced without breaking. Your guesses probably meant flexible or soft; \"malleable\" specifically means taking and keeping a new shape, like hammered gold."
+  },
+  {
+    "date": "2027-01-01",
+    "word": "Renaissance",
+    "unit": "Illness, Action & Exceptional Figures",
+    "theme": "The Once-in-a-Generation Figure",
+    "intendedMeaning": "a great revival or flowering of art, learning, and culture — originally the European period of the 14th–16th centuries",
+    "definition": "A great flowering or revival of art, science, and learning — originally the period of European history from the 14th to the 16th century.",
+    "wordType": "Noun",
+    "tone": "positive",
+    "topic": "Cultural revival",
+    "acceptedAnswers": [
+      "renaissance"
+    ],
+    "clue1Distinction": "The hidden word is not about a single invention or discovery — it names a whole PERIOD of flowering, when art, science, and learning bloom together again.",
+    "clue2Characteristics": [
+      "A broad revival of art, science, and learning",
+      "Literally means 'rebirth'",
+      "Originally names a famous period of European history",
+      "Now used for any field or city enjoying a creative flowering"
+    ],
+    "clue3Note": "Unlike words that mean a single comeback or return to popularity, the hidden word describes a whole era of creative rebirth — many arts and ideas flourishing at once, as in 15th-century Italy.",
+    "clue4ContextSentence": "Critics say Bangla cinema is enjoying a ________ — new directors, sold-out festivals, and international awards after decades of decline.",
+    "clue5FirstLetter": "R",
+    "clue5Extra": "A related word is \"revival,\" the plainer term for something coming back to life.",
+    "clue6Choices": [
+      "Renaissance",
+      "Revolution",
+      "Reformation"
+    ],
+    "relatedGuesses": [
+      {
+        "word": "revival",
+        "distinction": "\"Revival\" is any return to life or popularity, however small; the hidden word is a grand, era-defining flowering across many fields at once."
+      },
+      {
+        "word": "rebirth",
+        "distinction": "\"Rebirth\" is the literal meaning behind the hidden word; the hidden word itself specifically names a historical period and cultural flowerings modelled on it."
+      },
+      {
+        "word": "revolution",
+        "distinction": "\"Revolution\" means overthrowing an old order, often suddenly and violently; the hidden word means an old culture blooming again, not being overthrown."
+      },
+      {
+        "word": "resurgence",
+        "distinction": "\"Resurgence\" means rising again in strength or numbers; the hidden word emphasizes creative and intellectual flowering, not just renewed strength."
+      }
+    ],
+    "modelSentence": "Scholars of the Renaissance drew on ancient Greek and Roman texts to reshape painting, architecture, and philosophy across Europe.",
+    "failExplanation": "The hidden word was \"renaissance\" — a great revival of art, science, and learning, named after the famous European period. Your guesses probably meant comebacks or upheavals; a \"renaissance\" is a broad creative rebirth across a whole culture."
+  }
+]
