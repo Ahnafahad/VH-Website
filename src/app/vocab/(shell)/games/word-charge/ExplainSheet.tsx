@@ -174,7 +174,8 @@ export default function ExplainSheet(props: Props) {
               >
                 <Volume2 size={16} />
               </motion.button>
-              <SideChip connotation={word.connotation} />
+              {/* Help mode must not reveal the answer — the student can still classify for +2 */}
+              {props.mode === 'wrong' && <SideChip connotation={word.connotation} />}
             </div>
 
             {/* Part of speech */}

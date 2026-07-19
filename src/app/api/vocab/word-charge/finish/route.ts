@@ -57,8 +57,8 @@ export async function POST(req: NextRequest) {
       .limit(1);
     if (!round) throw new ApiException('Round not found', 404);
 
-    // Idempotent: if already finished, return stored result
-    if (round.status === 'finished') {
+    // Returns the stored result for an already-finished round (idempotent replay).
+    async function storedResponse(finished: typeof round) {
       const [progress] = await db
         .select({ totalPoints: vocabUserProgress.totalPoints })
         .from(vocabUserProgress)
@@ -78,20 +78,26 @@ export async function POST(req: NextRequest) {
         );
       const personalBest = allFinished.reduce((m, r) => Math.max(m, r.pts), 0);
 
-      const answers = round.answers ? (JSON.parse(round.answers) as typeof clientAnswers) : [];
+      const answers = finished.answers ? (JSON.parse(finished.answers) as typeof clientAnswers) : [];
       const skipped = answers.filter(a => a.choice === null).length;
       const helped  = answers.filter(a => a.usedHelp).length;
 
       return {
-        pointsEarned: round.pointsEarned,
+        pointsEarned: finished.pointsEarned,
         totalPoints,
-        correct:      round.correctCount,
-        wrong:        round.wrongCount,
+        correct:      finished.correctCount,
+        wrong:        finished.wrongCount,
         helped,
         skipped,
+        bestStreak:   finished.bestStreak,
         personalBest,
         isNewBest:    false,
       };
+    }
+
+    // Idempotent: if already finished, return stored result
+    if (round.status === 'finished') {
+      return storedResponse(round);
     }
 
     const roundWordIds: number[] = JSON.parse(round.wordIds);
@@ -190,10 +196,15 @@ export async function POST(req: NextRequest) {
 
     const now = new Date();
 
-    // Transaction: update round + upsert word records + update progress
-    await db.transaction(async (tx) => {
-      // 1. Finish round
-      await tx
+    // Transaction: update round + upsert word records + update progress.
+    // The status==='active' condition on the round update makes concurrent
+    // duplicate finishes (double-tap, beacon + retry race) lose cleanly:
+    // the loser rolls back and replays the stored result.
+    const ALREADY_FINISHED = 'CHARGE_ALREADY_FINISHED';
+    try {
+      await db.transaction(async (tx) => {
+      // 1. Finish round (only if still active — concurrency guard)
+      const updated = await tx
         .update(vocabChargeRounds)
         .set({
           status:       'finished',
@@ -206,7 +217,13 @@ export async function POST(req: NextRequest) {
           pointsEarned: points,
           finishedAt:   now,
         })
-        .where(eq(vocabChargeRounds.id, roundId));
+        .where(
+          and(
+            eq(vocabChargeRounds.id, roundId),
+            eq(vocabChargeRounds.status, 'active'),
+          ),
+        );
+      if (updated.rowsAffected === 0) throw new Error(ALREADY_FINISHED);
 
       // 2. Upsert word records per answered word
       for (const sa of scoredAnswers) {
@@ -319,7 +336,18 @@ export async function POST(req: NextRequest) {
             .where(eq(vocabUserProgress.userId, user.id));
         }
       }
-    });
+      });
+    } catch (err) {
+      if (err instanceof Error && err.message === ALREADY_FINISHED) {
+        const [finished] = await db
+          .select()
+          .from(vocabChargeRounds)
+          .where(eq(vocabChargeRounds.id, roundId))
+          .limit(1);
+        if (finished) return storedResponse(finished);
+      }
+      throw err;
+    }
 
     // Fetch updated total
     const [progress] = await db
@@ -329,9 +357,9 @@ export async function POST(req: NextRequest) {
       .limit(1);
     const totalPoints = progress?.totalPoints ?? 0;
 
-    // Personal best
-    const allFinished = await db
-      .select({ pts: vocabChargeRounds.pointsEarned })
+    // Personal best BEFORE this round (exclude it so ties don't read as new bests)
+    const otherFinished = await db
+      .select({ pts: vocabChargeRounds.pointsEarned, id: vocabChargeRounds.id })
       .from(vocabChargeRounds)
       .where(
         and(
@@ -339,8 +367,9 @@ export async function POST(req: NextRequest) {
           eq(vocabChargeRounds.status, 'finished'),
         ),
       );
-    const personalBest = allFinished.reduce((m, r) => Math.max(m, r.pts), 0);
-    const isNewBest    = points > 0 && points >= personalBest;
+    const prevBest     = otherFinished.reduce((m, r) => (r.id === roundId ? m : Math.max(m, r.pts)), 0);
+    const personalBest = Math.max(prevBest, points);
+    const isNewBest    = points > 0 && points > prevBest;
 
     return {
       pointsEarned: points,
@@ -349,6 +378,7 @@ export async function POST(req: NextRequest) {
       wrong:        wrongCount,
       helped:       helpedCount,
       skipped:      skippedCount,
+      bestStreak,
       personalBest,
       isNewBest,
     };

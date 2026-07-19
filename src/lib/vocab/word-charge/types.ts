@@ -40,6 +40,7 @@ export interface ChargeFinishResponse {
   wrong: number;
   helped: number;      // answers where help was used
   skipped: number;     // choice === null
+  bestStreak: number;  // server-recomputed
   personalBest: number;
   isNewBest: boolean;
 }

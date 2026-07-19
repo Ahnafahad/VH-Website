@@ -5,7 +5,7 @@
  * Points from server (authoritative); local answers used for review list.
  */
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Volume2, Flame, ChevronDown, ChevronUp } from 'lucide-react';
 import { speak } from '@/lib/vocab/speak';
@@ -154,12 +154,14 @@ interface Props {
 export default function ChargeResults({ result, saveError, onSaveRetry, onPlayAgain, onBack, words, answers, reduce }: Props) {
   const fb = useVocabFeedback();
 
+  const completePlayed = useRef(false);
   useEffect(() => {
-    if (result) {
+    if (result && !completePlayed.current) {
+      completePlayed.current = true;
       fb.play('complete');
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [result]);
 
   // Words to review: wrong or skipped answers
   const reviewAnswers = answers.filter(a => {
@@ -302,7 +304,7 @@ export default function ChargeResults({ result, saveError, onSaveRetry, onPlayAg
             }}>
               <span style={{ fontFamily: SERIF, fontWeight: 700, fontSize: '1.6rem', color: 'var(--color-lx-accent-gold)', lineHeight: 1, display: 'flex', alignItems: 'center', gap: 2 }}>
                 <Flame size={18} />
-                {result.correct}
+                {result.bestStreak}
               </span>
               <span style={{ fontFamily: SANS, fontSize: '0.6rem', color: 'var(--color-lx-text-muted)', letterSpacing: '0.04em', textTransform: 'uppercase' }}>
                 Streak
