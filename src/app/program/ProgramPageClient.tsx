@@ -641,6 +641,45 @@ function ProgramSection({ program, index }: { program: Program; index: number })
           </div>
         </div>
 
+        {/* Free diagnostic CTA — FBS only */}
+        {program.id === 'fbs' && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="mb-20 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 border-t border-b py-10"
+            style={{ borderColor: borderCol }}
+          >
+            <div className="max-w-xl">
+              <div
+                className="font-sans text-[10px] tracking-[0.3em] uppercase mb-3 flex items-center gap-3"
+                style={{ color: accent }}
+              >
+                <span className="w-6 h-px" style={{ backgroundColor: accent }} />
+                Free · No commitment
+              </div>
+              <p
+                className="font-heading font-light text-2xl sm:text-3xl leading-[1.2] tracking-[-0.01em]"
+                style={{ color: fg }}
+              >
+                See where you stand before you begin.
+              </p>
+            </div>
+            <Link
+              href="/fbs-diagnosis"
+              className="group inline-flex items-center gap-3 rounded-full border px-8 py-4 font-sans text-sm font-medium tracking-[0.12em] uppercase transition-colors flex-shrink-0"
+              style={{ color: accent, borderColor: `${accent}55` }}
+            >
+              <span>Take the free FBS diagnostic test</span>
+              <ArrowUpRight
+                className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                strokeWidth={1.5}
+              />
+            </Link>
+          </motion.div>
+        )}
+
         {/* Outcome quote */}
         {program.outcome && (
           <motion.blockquote

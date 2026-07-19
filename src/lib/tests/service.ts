@@ -12,6 +12,7 @@ import {
 import { and, eq, inArray } from 'drizzle-orm';
 import { effectiveWindowState, resultsVisible, type EffectiveWindowState } from './windows';
 import { scoreAttempt, computeRanks, type AttemptScore } from './scoring';
+import { parseChosenSections } from './diagnostic';
 
 // ─── Listing ──────────────────────────────────────────────────────────────────
 
@@ -43,7 +44,9 @@ export interface TestListEntry {
 
 export async function getTestListForUser(userId: number): Promise<TestListEntry[]> {
   const now = new Date();
-  const rows = await db.select().from(tests).where(eq(tests.status, 'published'));
+  const rows = await db.select().from(tests).where(
+    and(eq(tests.status, 'published'), eq(tests.isDiagnostic, false)),
+  );
   if (rows.length === 0) return [];
 
   const testIds = rows.map(t => t.id);
@@ -99,6 +102,7 @@ export interface TakingQuestion {
   stem: string;
   options: TestOption[];
   imageUrl: string | null;
+  explanation: string | null;
 }
 
 export interface TakingSection {
@@ -119,10 +123,20 @@ export interface TakingSection {
   questions: TakingQuestion[];
 }
 
-/** Full test content WITHOUT answer keys — safe to send to a taker. */
-export async function getTestContent(testId: number): Promise<TakingSection[]> {
-  const sections = await db.select().from(testSections)
+/**
+ * Full test content WITHOUT answer keys — safe to send to a taker.
+ * When restrictSectionIds is provided, only sections in that set are returned
+ * (used by the diagnostic elective mechanic to send only the 4 chosen sections).
+ */
+export async function getTestContent(
+  testId: number,
+  restrictSectionIds?: number[],
+): Promise<TakingSection[]> {
+  const allSections = await db.select().from(testSections)
     .where(eq(testSections.testId, testId));
+  const sections = restrictSectionIds
+    ? allSections.filter(s => restrictSectionIds.includes(s.id))
+    : allSections;
   if (sections.length === 0) return [];
   const sectionIds = sections.map(s => s.id);
 
@@ -163,6 +177,7 @@ export async function getTestContent(testId: number): Promise<TakingSection[]> {
           stem: q.stem,
           options: JSON.parse(q.options) as TestOption[],
           imageUrl: q.imageUrl,
+          explanation: q.explanation,
         })),
     }));
 }
@@ -185,8 +200,15 @@ export async function getUserAttempt(testId: number, userId: number): Promise<Te
 
 // ─── Scoring an attempt (server-side, at submit) ─────────────────────────────
 
-export async function scoreAttemptById(attemptId: number, testId: number): Promise<AttemptScore> {
-  const sections = await db.select().from(testSections).where(eq(testSections.testId, testId));
+export async function scoreAttemptById(
+  attemptId: number,
+  testId: number,
+  restrictSectionIds?: number[],
+): Promise<AttemptScore> {
+  const allSections = await db.select().from(testSections).where(eq(testSections.testId, testId));
+  const sections = restrictSectionIds
+    ? allSections.filter(s => restrictSectionIds.includes(s.id))
+    : allSections;
   const sectionIds = sections.map(s => s.id);
   const [questions, answers] = await Promise.all([
     db.select().from(testQuestions).where(inArray(testQuestions.sectionId, sectionIds)),
@@ -241,6 +263,24 @@ export async function getTestResults(testId: number, userId: number): Promise<Te
     submitted.map(a => ({ attemptId: a.id, totalScore: a.totalScore ?? 0 })),
   );
 
+  // Diagnostic elective mechanic: when the caller's own submitted attempt has a
+  // subject selection, restrict all returned content/breakdown to those 4
+  // sections and recompute the marks denominator over the attempted sections.
+  const mine = submitted.find(a => a.userId === userId) ?? null;
+  const chosenIds = test.isDiagnostic ? parseChosenSections(mine?.chosenSections ?? null) : [];
+  const restrictIds = chosenIds.length > 0 ? chosenIds : undefined;
+
+  // Marks denominator: attempted-section marks for a diagnostic with a
+  // selection (= 40), otherwise the whole test's totalMarks.
+  let attemptedMarks = test.totalMarks;
+  if (restrictIds) {
+    const sectionMarkRows = await db.select({ id: testSections.id, totalMarks: testSections.totalMarks })
+      .from(testSections).where(eq(testSections.testId, testId));
+    attemptedMarks = sectionMarkRows
+      .filter(s => restrictIds.includes(s.id))
+      .reduce((sum, s) => sum + s.totalMarks, 0);
+  }
+
   const scores = submitted.map(a => a.totalScore ?? 0).sort((a, b) => b - a);
   const top5 = scores.slice(0, 5);
   const classStats = {
@@ -252,7 +292,7 @@ export async function getTestResults(testId: number, userId: number): Promise<Te
   };
 
   // Question-level class analytics
-  const sections = await getTestContent(testId);
+  const sections = await getTestContent(testId, restrictIds);
   const allQuestionIds = sections.flatMap(s => s.questions.map(q => q.id));
   const keyRows = allQuestionIds.length
     ? await db.select({ id: testQuestions.id, correctKey: testQuestions.correctKey })
@@ -279,7 +319,6 @@ export async function getTestResults(testId: number, userId: number): Promise<Te
   }
 
   // Own attempt
-  const mine = submitted.find(a => a.userId === userId) ?? null;
   let me: TestResultsPayload['me'] = null;
   if (mine) {
     const myRank = ranks.find(r => r.attemptId === mine.id)!;
@@ -295,14 +334,17 @@ export async function getTestResults(testId: number, userId: number): Promise<Te
         isCorrect: selected && correct ? selected === correct : null,
       };
     }
-    const sectionScores = mine.sectionScores
+    let sectionScores = mine.sectionScores
       ? (JSON.parse(mine.sectionScores) as AttemptScore['sections'])
       : [];
+    if (restrictIds) {
+      sectionScores = sectionScores.filter(s => restrictIds.includes(s.sectionId));
+    }
     me = {
       attemptId: mine.id,
       mode: mine.mode,
       totalScore: mine.totalScore ?? 0,
-      percentage: test.totalMarks > 0 ? round2(((mine.totalScore ?? 0) / test.totalMarks) * 100) : 0,
+      percentage: attemptedMarks > 0 ? round2(((mine.totalScore ?? 0) / attemptedMarks) * 100) : 0,
       totalCorrect: mine.totalCorrect ?? 0,
       totalWrong: mine.totalWrong ?? 0,
       totalUnattempted: mine.totalUnattempted ?? 0,
@@ -321,7 +363,7 @@ export async function getTestResults(testId: number, userId: number): Promise<Te
       slug: test.slug,
       title: test.title,
       bucket: test.bucket,
-      totalMarks: test.totalMarks,
+      totalMarks: attemptedMarks,
       totalQuestions: test.totalQuestions,
     },
     me,

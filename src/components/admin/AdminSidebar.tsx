@@ -25,6 +25,7 @@ import {
   UserCheck,
   TriangleAlert,
   LineChart,
+  Stethoscope,
 } from 'lucide-react';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
@@ -68,9 +69,10 @@ const INSTRUCTOR_NAV_SECTIONS: NavSection[] = [
   {
     label: 'MARKS & INSIGHTS',
     items: [
-      { href: '/admin/students',  label: 'Progress',      icon: LineChart },
-      { href: '/admin/tests',     label: 'Tests & marks', icon: ClipboardList },
-      { href: '/admin/analytics', label: 'LMS statistics', icon: BarChart3 },
+      { href: '/admin/students',      label: 'Progress',      icon: LineChart },
+      { href: '/admin/tests',         label: 'Tests & marks', icon: ClipboardList },
+      { href: '/admin/analytics',     label: 'LMS statistics', icon: BarChart3 },
+      { href: '/admin/diagnosis-fbs', label: 'Diagnosis FBS', icon: Stethoscope },
     ],
   },
   {
@@ -107,6 +109,7 @@ const NAV_SECTIONS: NavSection[] = [
       { href: '/admin/vocab',       label: 'Vocabulary',  icon: BookOpen      },
       { href: '/admin/words',       label: 'Word Bank',   icon: Database      },
       { href: '/admin/leaderboard', label: 'Leaderboard', icon: Trophy        },
+      { href: '/admin/diagnosis-fbs', label: 'Diagnosis FBS', icon: Stethoscope },
     ],
   },
   {

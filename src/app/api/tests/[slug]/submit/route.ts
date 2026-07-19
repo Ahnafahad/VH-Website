@@ -13,6 +13,7 @@ import { safeApiHandler, ApiException } from '@/lib/api-utils';
 import { requireUser, requireTestForUser } from '@/lib/tests/route-helpers';
 import { getUserAttempt, scoreAttemptById } from '@/lib/tests/service';
 import { attemptDeadline } from '@/lib/tests/windows';
+import { parseChosenSections } from '@/lib/tests/diagnostic';
 
 const GRACE_MS = 2 * 60_000;
 
@@ -41,7 +42,10 @@ export async function POST(
       throw new ApiException('Submission window has passed', 409, 'TIME_UP');
     }
 
-    const score = await scoreAttemptById(attempt.id, test.id);
+    // Diagnostic: score only the 4 chosen sections so the max is 40.
+    const chosen = test.isDiagnostic ? parseChosenSections(attempt.chosenSections) : [];
+    const restrictIds = chosen.length > 0 ? chosen : undefined;
+    const score = await scoreAttemptById(attempt.id, test.id, restrictIds);
 
     await db.update(testAttempts).set({
       status: 'submitted',

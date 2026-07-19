@@ -1,0 +1,753 @@
+{
+  "slug": "fbs-diagnostic-2",
+  "title": "FBS Diagnostic — Assessment 2",
+  "durationMinutes": 30,
+  "totalMarks": 50,
+  "sections": [
+    {
+      "order": 1,
+      "title": "General English",
+      "marksPerCorrect": 1,
+      "penaltyPerWrong": 0,
+      "thresholdPercent": null,
+      "questions": [
+        {
+          "number": 1,
+          "order": 1,
+          "type": "mcq",
+          "stem": "Choose the synonym of 'Rapid'.",
+          "options": [
+            {"key":"A","text":"Slow"},
+            {"key":"B","text":"Swift"},
+            {"key":"C","text":"Calm"},
+            {"key":"D","text":"Heavy"}
+          ],
+          "correctKey": "B",
+          "explanation": "'Rapid' means fast or quick, so its synonym is 'Swift'. 'Slow' is the opposite, while 'Calm' and 'Heavy' are unrelated to speed."
+        },
+        {
+          "number": 2,
+          "order": 2,
+          "type": "mcq",
+          "stem": "Fill in the blank. She is fond ____ music.",
+          "options": [
+            {"key":"A","text":"with"},
+            {"key":"B","text":"to"},
+            {"key":"C","text":"of"},
+            {"key":"D","text":"at"}
+          ],
+          "correctKey": "C",
+          "explanation": "The adjective 'fond' always takes the preposition 'of', giving the fixed collocation 'fond of'. The other prepositions do not combine with 'fond'."
+        },
+        {
+          "number": 3,
+          "order": 3,
+          "type": "mcq",
+          "stem": "Choose the correctly spelled word.",
+          "options": [
+            {"key":"A","text":"Necessary"},
+            {"key":"B","text":"Neccessary"},
+            {"key":"C","text":"Necesary"},
+            {"key":"D","text":"Neccesary"}
+          ],
+          "correctKey": "A",
+          "explanation": "The correct spelling is 'Necessary' — one 'c' and two 's' letters. A useful memory aid: one collar (c) and two sleeves (ss)."
+        },
+        {
+          "number": 4,
+          "order": 4,
+          "type": "mcq",
+          "stem": "Choose the correct sentence.",
+          "options": [
+            {"key":"A","text":"He don't like tea."},
+            {"key":"B","text":"He not like tea."},
+            {"key":"C","text":"He doesn't likes tea."},
+            {"key":"D","text":"He doesn't like tea."}
+          ],
+          "correctKey": "D",
+          "explanation": "With the third-person singular 'he', the negative uses 'doesn't' followed by the base verb 'like', so 'He doesn't like tea' is correct. 'Don't' is wrong for 'he', and after 'doesn't' the main verb must not take an 's'."
+        },
+        {
+          "number": 5,
+          "order": 5,
+          "type": "mcq",
+          "stem": "\"Once in a blue moon\" means:",
+          "options": [
+            {"key":"A","text":"Every day"},
+            {"key":"B","text":"Very rarely"},
+            {"key":"C","text":"At night"},
+            {"key":"D","text":"Very often"}
+          ],
+          "correctKey": "B",
+          "explanation": "The idiom 'once in a blue moon' means something that happens very rarely. It is the opposite of 'very often' and has nothing to do with a specific time of day."
+        },
+        {
+          "number": 6,
+          "order": 6,
+          "type": "mcq",
+          "stem": "Choose the antonym of 'Ancient'.",
+          "options": [
+            {"key":"A","text":"Modern"},
+            {"key":"B","text":"Old"},
+            {"key":"C","text":"Historic"},
+            {"key":"D","text":"Aged"}
+          ],
+          "correctKey": "A",
+          "explanation": "'Ancient' means very old, so its antonym is 'Modern'. 'Old', 'Historic', and 'Aged' are synonyms, not opposites."
+        },
+        {
+          "number": 7,
+          "order": 7,
+          "type": "mcq",
+          "stem": "If she ____ harder, she would pass.",
+          "options": [
+            {"key":"A","text":"study"},
+            {"key":"B","text":"studies"},
+            {"key":"C","text":"studied"},
+            {"key":"D","text":"has studied"}
+          ],
+          "correctKey": "C",
+          "explanation": "This is a second conditional expressing a hypothetical situation, so the if-clause takes the past simple 'studied' to match 'would pass' in the main clause. The present forms do not fit the conditional structure."
+        },
+        {
+          "number": 8,
+          "order": 8,
+          "type": "mcq",
+          "stem": "Choose the correct passive voice. Someone stole my bag.",
+          "options": [
+            {"key":"A","text":"My bag is stolen."},
+            {"key":"B","text":"My bag has stolen."},
+            {"key":"C","text":"My bag was stole."},
+            {"key":"D","text":"My bag was stolen."}
+          ],
+          "correctKey": "D",
+          "explanation": "The active sentence is in the past simple, so the passive is 'was' plus the past participle 'stolen', giving 'My bag was stolen.' Option C uses 'stole' instead of the participle, and A uses the wrong tense."
+        },
+        {
+          "number": 9,
+          "order": 9,
+          "type": "mcq",
+          "stem": "Neither Rahim nor Karim ____ present.",
+          "options": [
+            {"key":"A","text":"are"},
+            {"key":"B","text":"were"},
+            {"key":"C","text":"was"},
+            {"key":"D","text":"have been"}
+          ],
+          "correctKey": "C",
+          "explanation": "With 'neither...nor', the verb agrees with the nearer subject, which is the singular 'Karim', so the singular 'was' is correct. Plural verbs like 'are' or 'were' would be wrong here."
+        },
+        {
+          "number": 10,
+          "order": 10,
+          "type": "mcq",
+          "stem": "The word 'Vacant' means:",
+          "options": [
+            {"key":"A","text":"Empty"},
+            {"key":"B","text":"Full"},
+            {"key":"C","text":"Busy"},
+            {"key":"D","text":"Closed"}
+          ],
+          "correctKey": "A",
+          "explanation": "'Vacant' means unoccupied or empty. 'Full' and 'Busy' are opposite in sense, and 'Closed' describes a different state."
+        }
+      ]
+    },
+    {
+      "order": 2,
+      "title": "Advanced English",
+      "marksPerCorrect": 1,
+      "penaltyPerWrong": 0,
+      "thresholdPercent": null,
+      "questions": [
+        {
+          "number": 11,
+          "order": 1,
+          "type": "mcq",
+          "stem": "Choose the closest meaning of 'Meticulous'.",
+          "options": [
+            {"key":"A","text":"Careless"},
+            {"key":"B","text":"Quick"},
+            {"key":"C","text":"Careful and precise"},
+            {"key":"D","text":"Lazy"}
+          ],
+          "correctKey": "C",
+          "explanation": "'Meticulous' describes someone who shows great attention to detail, so 'careful and precise' is the closest meaning. 'Careless' and 'Lazy' are opposites in meaning."
+        },
+        {
+          "number": 12,
+          "order": 2,
+          "type": "mcq",
+          "stem": "Not only ____ late, but he also forgot the file.",
+          "options": [
+            {"key":"A","text":"he was"},
+            {"key":"B","text":"was he"},
+            {"key":"C","text":"he is"},
+            {"key":"D","text":"is he"}
+          ],
+          "correctKey": "B",
+          "explanation": "When a sentence begins with the negative adverbial 'Not only', the subject and auxiliary must invert, giving 'was he'. The past tense is required to match 'forgot' later in the sentence."
+        },
+        {
+          "number": 13,
+          "order": 3,
+          "type": "mcq",
+          "stem": "Choose the correctly punctuated sentence.",
+          "options": [
+            {"key":"A","text":"Its a fine day."},
+            {"key":"B","text":"Its' a fine day."},
+            {"key":"C","text":"It's a fine day, isnt it."},
+            {"key":"D","text":"It's a fine day, isn't it?"}
+          ],
+          "correctKey": "D",
+          "explanation": "'It's' correctly uses the apostrophe for 'it is', 'isn't' is properly contracted, and a tag question ends with a question mark. The other options misplace or omit apostrophes and end punctuation."
+        },
+        {
+          "number": 14,
+          "order": 4,
+          "type": "mcq",
+          "stem": "Choose the antonym of 'Benevolent'.",
+          "options": [
+            {"key":"A","text":"Cruel"},
+            {"key":"B","text":"Kind"},
+            {"key":"C","text":"Generous"},
+            {"key":"D","text":"Gentle"}
+          ],
+          "correctKey": "A",
+          "explanation": "'Benevolent' means kind and well-meaning, so its antonym is 'Cruel'. 'Kind', 'Generous', and 'Gentle' are all synonyms rather than opposites."
+        },
+        {
+          "number": 15,
+          "order": 5,
+          "type": "mcq",
+          "stem": "Seldom ____ such dedication.",
+          "options": [
+            {"key":"A","text":"we see"},
+            {"key":"B","text":"do we see"},
+            {"key":"C","text":"we do see"},
+            {"key":"D","text":"see we"}
+          ],
+          "correctKey": "B",
+          "explanation": "The negative adverb 'Seldom' at the start of a sentence triggers subject-auxiliary inversion, so the correct form is 'do we see'. Without inversion, 'we see' or 'we do see' would be ungrammatical here."
+        },
+        {
+          "number": 16,
+          "order": 6,
+          "type": "mcq",
+          "stem": "\"To bite the bullet\" means:",
+          "options": [
+            {"key":"A","text":"To eat quickly"},
+            {"key":"B","text":"To start a fight"},
+            {"key":"C","text":"To face a difficult situation bravely"},
+            {"key":"D","text":"To waste time"}
+          ],
+          "correctKey": "C",
+          "explanation": "The idiom 'to bite the bullet' means to face an unpleasant or difficult situation with courage. It has no literal connection to eating or fighting."
+        },
+        {
+          "number": 17,
+          "order": 7,
+          "type": "mcq",
+          "stem": "Which sentence contains an error?",
+          "options": [
+            {"key":"A","text":"The scenery are beautiful."},
+            {"key":"B","text":"The furniture is new."},
+            {"key":"C","text":"The information is useful."},
+            {"key":"D","text":"The advice was helpful."}
+          ],
+          "correctKey": "A",
+          "explanation": "'Scenery' is an uncountable noun and takes a singular verb, so 'The scenery are beautiful' is wrong; it should be 'is beautiful'. The other sentences correctly use singular verbs with uncountable nouns."
+        },
+        {
+          "number": 18,
+          "order": 8,
+          "type": "mcq",
+          "stem": "Choose the appropriate preposition. He is devoid ____ fear.",
+          "options": [
+            {"key":"A","text":"from"},
+            {"key":"B","text":"with"},
+            {"key":"C","text":"to"},
+            {"key":"D","text":"of"}
+          ],
+          "correctKey": "D",
+          "explanation": "The adjective 'devoid' is always followed by 'of', forming the fixed phrase 'devoid of' (meaning entirely without). No other preposition collocates with 'devoid'."
+        },
+        {
+          "number": 19,
+          "order": 9,
+          "type": "mcq",
+          "stem": "'Ambiguous' most nearly means:",
+          "options": [
+            {"key":"A","text":"Clear"},
+            {"key":"B","text":"Unclear or open to more than one meaning"},
+            {"key":"C","text":"Loud"},
+            {"key":"D","text":"Certain"}
+          ],
+          "correctKey": "B",
+          "explanation": "'Ambiguous' describes something that can be understood in more than one way, so 'unclear or open to more than one meaning' is correct. 'Clear' and 'Certain' are opposites."
+        },
+        {
+          "number": 20,
+          "order": 10,
+          "type": "mcq",
+          "stem": "Her argument was so ____ that no one could refute it.",
+          "options": [
+            {"key":"A","text":"weak"},
+            {"key":"B","text":"vague"},
+            {"key":"C","text":"cogent"},
+            {"key":"D","text":"dull"}
+          ],
+          "correctKey": "C",
+          "explanation": "Since no one could refute the argument, it must have been 'cogent', meaning clear, logical, and convincing. A 'weak' or 'vague' argument would be easy to refute, so those do not fit."
+        }
+      ]
+    },
+    {
+      "order": 3,
+      "title": "Business Studies",
+      "marksPerCorrect": 1,
+      "penaltyPerWrong": 0,
+      "thresholdPercent": null,
+      "questions": [
+        {
+          "number": 21,
+          "order": 1,
+          "type": "mcq",
+          "stem": "The main objective of a commercial business is to:",
+          "options": [
+            {"key":"A","text":"Provide free services"},
+            {"key":"B","text":"Earn profit"},
+            {"key":"C","text":"Employ people only"},
+            {"key":"D","text":"Reduce prices"}
+          ],
+          "correctKey": "B",
+          "explanation": "A commercial business exists primarily to earn profit for its owners. Employing people and pricing decisions are means to that end, not the main objective, while free services describe non-profit or charitable bodies."
+        },
+        {
+          "number": 22,
+          "order": 2,
+          "type": "mcq",
+          "stem": "Which of the following has a separate legal entity?",
+          "options": [
+            {"key":"A","text":"Sole proprietorship"},
+            {"key":"B","text":"Partnership"},
+            {"key":"C","text":"Cooperative only"},
+            {"key":"D","text":"Joint stock company"}
+          ],
+          "correctKey": "D",
+          "explanation": "A joint stock company is incorporated and therefore has a separate legal entity distinct from its shareholders. A sole proprietorship and a partnership are not legally separate from their owners."
+        },
+        {
+          "number": 23,
+          "order": 3,
+          "type": "mcq",
+          "stem": "The management function that sets objectives and decides the course of action is:",
+          "options": [
+            {"key":"A","text":"Planning"},
+            {"key":"B","text":"Staffing"},
+            {"key":"C","text":"Directing"},
+            {"key":"D","text":"Controlling"}
+          ],
+          "correctKey": "A",
+          "explanation": "Planning is the management function that sets objectives and decides in advance the course of action to achieve them. Staffing, directing, and controlling come after the plan is set."
+        },
+        {
+          "number": 24,
+          "order": 4,
+          "type": "mcq",
+          "stem": "The four Ps of the marketing mix are Product, Price, Place and:",
+          "options": [
+            {"key":"A","text":"People"},
+            {"key":"B","text":"Process"},
+            {"key":"C","text":"Promotion"},
+            {"key":"D","text":"Packaging"}
+          ],
+          "correctKey": "C",
+          "explanation": "The traditional four Ps of the marketing mix are Product, Price, Place, and Promotion. People and Process belong to the extended seven Ps for services, not the original four."
+        },
+        {
+          "number": 25,
+          "order": 5,
+          "type": "mcq",
+          "stem": "Which document contains the rules for the internal management of a company?",
+          "options": [
+            {"key":"A","text":"Memorandum of Association"},
+            {"key":"B","text":"Articles of Association"},
+            {"key":"C","text":"Prospectus"},
+            {"key":"D","text":"Certificate of Incorporation"}
+          ],
+          "correctKey": "B",
+          "explanation": "The Articles of Association set out the rules governing the internal management of a company. The Memorandum defines the company's relationship with the outside world, while the prospectus invites the public to buy shares."
+        },
+        {
+          "number": 26,
+          "order": 6,
+          "type": "mcq",
+          "stem": "Working capital is:",
+          "options": [
+            {"key":"A","text":"Current assets minus current liabilities"},
+            {"key":"B","text":"Fixed assets minus liabilities"},
+            {"key":"C","text":"Total assets"},
+            {"key":"D","text":"Share capital"}
+          ],
+          "correctKey": "A",
+          "explanation": "Working capital is defined as current assets minus current liabilities, measuring a firm's short-term liquidity. The other options describe different accounting concepts, not working capital."
+        },
+        {
+          "number": 27,
+          "order": 7,
+          "type": "mcq",
+          "stem": "Which is a source of long-term finance?",
+          "options": [
+            {"key":"A","text":"Trade credit"},
+            {"key":"B","text":"Bank overdraft"},
+            {"key":"C","text":"Accruals"},
+            {"key":"D","text":"Debentures"}
+          ],
+          "correctKey": "D",
+          "explanation": "Debentures are long-term debt instruments and thus a source of long-term finance. Trade credit, bank overdrafts, and accruals are all short-term sources."
+        },
+        {
+          "number": 28,
+          "order": 8,
+          "type": "mcq",
+          "stem": "The style of leadership where the leader makes all decisions alone is:",
+          "options": [
+            {"key":"A","text":"Democratic"},
+            {"key":"B","text":"Laissez-faire"},
+            {"key":"C","text":"Autocratic"},
+            {"key":"D","text":"Participative"}
+          ],
+          "correctKey": "C",
+          "explanation": "An autocratic leader makes all decisions alone without consulting subordinates. Democratic and participative styles involve the team in decisions, and laissez-faire leaves decisions to subordinates."
+        },
+        {
+          "number": 29,
+          "order": 9,
+          "type": "mcq",
+          "stem": "Insurance works on the principle of:",
+          "options": [
+            {"key":"A","text":"Profit sharing"},
+            {"key":"B","text":"Pooling of risk"},
+            {"key":"C","text":"Fixed return"},
+            {"key":"D","text":"Speculation"}
+          ],
+          "correctKey": "B",
+          "explanation": "Insurance operates on the pooling of risk, where many policyholders contribute premiums so that the losses of the few can be compensated. It is not speculation and does not promise profit sharing or fixed returns."
+        },
+        {
+          "number": 30,
+          "order": 10,
+          "type": "mcq",
+          "stem": "Recruitment is best described as the process of:",
+          "options": [
+            {"key":"A","text":"Attracting candidates to apply for jobs"},
+            {"key":"B","text":"Training employees"},
+            {"key":"C","text":"Dismissing staff"},
+            {"key":"D","text":"Paying wages"}
+          ],
+          "correctKey": "A",
+          "explanation": "Recruitment is the process of attracting a pool of suitable candidates to apply for jobs. Training, dismissal, and paying wages are separate human resource activities."
+        }
+      ]
+    },
+    {
+      "order": 4,
+      "title": "Economics",
+      "marksPerCorrect": 1,
+      "penaltyPerWrong": 0,
+      "thresholdPercent": null,
+      "questions": [
+        {
+          "number": 31,
+          "order": 1,
+          "type": "mcq",
+          "stem": "The basic economic problem arises because of:",
+          "options": [
+            {"key":"A","text":"Scarcity of resources"},
+            {"key":"B","text":"Excess of money"},
+            {"key":"C","text":"Government policy"},
+            {"key":"D","text":"Overpopulation only"}
+          ],
+          "correctKey": "A",
+          "explanation": "The basic economic problem is scarcity: resources are limited while human wants are unlimited, forcing choices. Overpopulation is only one possible pressure, not the fundamental cause."
+        },
+        {
+          "number": 32,
+          "order": 2,
+          "type": "mcq",
+          "stem": "A movement along the demand curve is caused by a change in:",
+          "options": [
+            {"key":"A","text":"Income"},
+            {"key":"B","text":"Taste"},
+            {"key":"C","text":"Price of the good itself"},
+            {"key":"D","text":"Population"}
+          ],
+          "correctKey": "C",
+          "explanation": "A movement along the demand curve is caused only by a change in the price of the good itself. Changes in income, taste, or population shift the entire curve rather than moving along it."
+        },
+        {
+          "number": 33,
+          "order": 3,
+          "type": "mcq",
+          "stem": "Which of the following is a macroeconomic issue?",
+          "options": [
+            {"key":"A","text":"Price of a single good"},
+            {"key":"B","text":"National unemployment rate"},
+            {"key":"C","text":"A firm's output"},
+            {"key":"D","text":"A consumer's budget"}
+          ],
+          "correctKey": "B",
+          "explanation": "The national unemployment rate concerns the economy as a whole and is therefore a macroeconomic issue. The price of one good, a single firm's output, and one consumer's budget are microeconomic matters."
+        },
+        {
+          "number": 34,
+          "order": 4,
+          "type": "mcq",
+          "stem": "In a command economy, resources are allocated by:",
+          "options": [
+            {"key":"A","text":"The price mechanism"},
+            {"key":"B","text":"Consumers"},
+            {"key":"C","text":"Firms"},
+            {"key":"D","text":"The government"}
+          ],
+          "correctKey": "D",
+          "explanation": "In a command economy the government plans and allocates resources centrally. The price mechanism and decisions by consumers and firms characterise a market economy instead."
+        },
+        {
+          "number": 35,
+          "order": 5,
+          "type": "mcq",
+          "stem": "Which factor of production earns rent?",
+          "options": [
+            {"key":"A","text":"Labour"},
+            {"key":"B","text":"Capital"},
+            {"key":"C","text":"Land"},
+            {"key":"D","text":"Entrepreneurship"}
+          ],
+          "correctKey": "C",
+          "explanation": "Land is the factor of production that earns rent as its reward. Labour earns wages, capital earns interest, and entrepreneurship earns profit."
+        },
+        {
+          "number": 36,
+          "order": 6,
+          "type": "mcq",
+          "stem": "Deflation refers to a general:",
+          "options": [
+            {"key":"A","text":"Fall in the price level"},
+            {"key":"B","text":"Rise in the price level"},
+            {"key":"C","text":"Rise in output"},
+            {"key":"D","text":"Fall in unemployment"}
+          ],
+          "correctKey": "A",
+          "explanation": "Deflation is a sustained general fall in the price level. A general rise in prices would be inflation, and deflation is defined by prices, not by output or unemployment directly."
+        },
+        {
+          "number": 37,
+          "order": 7,
+          "type": "mcq",
+          "stem": "Which good is bought less as consumer income rises?",
+          "options": [
+            {"key":"A","text":"Normal good"},
+            {"key":"B","text":"Luxury good"},
+            {"key":"C","text":"Complementary good"},
+            {"key":"D","text":"Inferior good"}
+          ],
+          "correctKey": "D",
+          "explanation": "An inferior good is one whose demand falls as consumer income rises, because people switch to better alternatives. Normal and luxury goods are bought more as income rises."
+        },
+        {
+          "number": 38,
+          "order": 8,
+          "type": "mcq",
+          "stem": "The central bank controls the economy mainly through:",
+          "options": [
+            {"key":"A","text":"Fiscal policy"},
+            {"key":"B","text":"Monetary policy"},
+            {"key":"C","text":"Trade policy"},
+            {"key":"D","text":"Wage policy"}
+          ],
+          "correctKey": "B",
+          "explanation": "The central bank influences the economy mainly through monetary policy, controlling money supply and interest rates. Fiscal policy is handled by the government through taxation and spending."
+        },
+        {
+          "number": 39,
+          "order": 9,
+          "type": "mcq",
+          "stem": "A subsidy given to producers will tend to:",
+          "options": [
+            {"key":"A","text":"Raise price to consumers"},
+            {"key":"B","text":"Reduce supply"},
+            {"key":"C","text":"Increase supply"},
+            {"key":"D","text":"Reduce demand"}
+          ],
+          "correctKey": "C",
+          "explanation": "A subsidy lowers producers' costs, encouraging them to supply more, so it increases supply and shifts the supply curve to the right. This typically lowers, not raises, the price to consumers."
+        },
+        {
+          "number": 40,
+          "order": 10,
+          "type": "mcq",
+          "stem": "GNP differs from GDP because GNP includes:",
+          "options": [
+            {"key":"A","text":"Net income from abroad"},
+            {"key":"B","text":"Only exports"},
+            {"key":"C","text":"Government spending only"},
+            {"key":"D","text":"Depreciation"}
+          ],
+          "correctKey": "A",
+          "explanation": "GNP equals GDP plus net income earned from abroad by a country's residents. It is the addition of net foreign factor income, not exports or depreciation, that distinguishes GNP from GDP."
+        }
+      ]
+    },
+    {
+      "order": 5,
+      "title": "Accounting",
+      "marksPerCorrect": 1,
+      "penaltyPerWrong": 0,
+      "thresholdPercent": null,
+      "questions": [
+        {
+          "number": 41,
+          "order": 1,
+          "type": "mcq",
+          "stem": "A debit entry increases:",
+          "options": [
+            {"key":"A","text":"Liabilities"},
+            {"key":"B","text":"Capital"},
+            {"key":"C","text":"Assets"},
+            {"key":"D","text":"Revenue"}
+          ],
+          "correctKey": "C",
+          "explanation": "A debit increases assets (and expenses), while it decreases liabilities, capital, and revenue. Therefore a debit entry increases assets."
+        },
+        {
+          "number": 42,
+          "order": 2,
+          "type": "mcq",
+          "stem": "Which of the following is a nominal (temporary) account?",
+          "options": [
+            {"key":"A","text":"Rent expense"},
+            {"key":"B","text":"Machinery"},
+            {"key":"C","text":"Accounts payable"},
+            {"key":"D","text":"Cash"}
+          ],
+          "correctKey": "A",
+          "explanation": "Nominal (temporary) accounts record incomes and expenses and are closed each period, so 'Rent expense' qualifies. Machinery, accounts payable, and cash are real or personal accounts that carry balances forward."
+        },
+        {
+          "number": 43,
+          "order": 3,
+          "type": "mcq",
+          "stem": "The trial balance is prepared to check the:",
+          "options": [
+            {"key":"A","text":"Profit of the business"},
+            {"key":"B","text":"Cash balance"},
+            {"key":"C","text":"Financial position"},
+            {"key":"D","text":"Arithmetical accuracy of the ledger"}
+          ],
+          "correctKey": "D",
+          "explanation": "A trial balance lists all ledger balances to check the arithmetical accuracy of the double-entry records by ensuring total debits equal total credits. Profit and financial position are shown in the final accounts, not the trial balance."
+        },
+        {
+          "number": 44,
+          "order": 4,
+          "type": "mcq",
+          "stem": "Prepaid rent is classified as a(n):",
+          "options": [
+            {"key":"A","text":"Expense"},
+            {"key":"B","text":"Asset"},
+            {"key":"C","text":"Liability"},
+            {"key":"D","text":"Revenue"}
+          ],
+          "correctKey": "B",
+          "explanation": "Prepaid rent is rent paid in advance for a future period, so it represents a benefit yet to be received and is recorded as a current asset. It becomes an expense only when the rental period passes."
+        },
+        {
+          "number": 45,
+          "order": 5,
+          "type": "mcq",
+          "stem": "If total assets are Tk. 90,000 and liabilities are Tk. 30,000, the owner's capital is:",
+          "options": [
+            {"key":"A","text":"Tk. 1,20,000"},
+            {"key":"B","text":"Tk. 30,000"},
+            {"key":"C","text":"Tk. 60,000"},
+            {"key":"D","text":"Tk. 90,000"}
+          ],
+          "correctKey": "C",
+          "explanation": "By the accounting equation, Capital = Assets minus Liabilities = 90,000 minus 30,000 = Tk. 60,000. Adding the figures would wrongly give 1,20,000."
+        },
+        {
+          "number": 46,
+          "order": 6,
+          "type": "mcq",
+          "stem": "Which concept requires expenses to be recorded in the same period as the related revenue?",
+          "options": [
+            {"key":"A","text":"Matching concept"},
+            {"key":"B","text":"Going concern"},
+            {"key":"C","text":"Consistency"},
+            {"key":"D","text":"Entity concept"}
+          ],
+          "correctKey": "A",
+          "explanation": "The matching concept requires expenses to be recognised in the same period as the revenues they help to generate. Going concern, consistency, and entity concepts address different accounting assumptions."
+        },
+        {
+          "number": 47,
+          "order": 7,
+          "type": "mcq",
+          "stem": "Discount allowed to customers is treated as a(n):",
+          "options": [
+            {"key":"A","text":"Income"},
+            {"key":"B","text":"Expense"},
+            {"key":"C","text":"Asset"},
+            {"key":"D","text":"Liability"}
+          ],
+          "correctKey": "B",
+          "explanation": "Discount allowed is a reduction the seller grants to customers, representing a cost to the business, so it is treated as an expense. Discount received, by contrast, would be an income."
+        },
+        {
+          "number": 48,
+          "order": 8,
+          "type": "mcq",
+          "stem": "Which of the following is an intangible asset?",
+          "options": [
+            {"key":"A","text":"Building"},
+            {"key":"B","text":"Stock"},
+            {"key":"C","text":"Debtors"},
+            {"key":"D","text":"Goodwill"}
+          ],
+          "correctKey": "D",
+          "explanation": "Goodwill has no physical form yet holds value, making it an intangible asset. Building, stock, and debtors are all tangible or physical/financial assets."
+        },
+        {
+          "number": 49,
+          "order": 9,
+          "type": "mcq",
+          "stem": "The withdrawal of cash by the owner for personal use is recorded as:",
+          "options": [
+            {"key":"A","text":"Drawings"},
+            {"key":"B","text":"Expense"},
+            {"key":"C","text":"Liability"},
+            {"key":"D","text":"Loss"}
+          ],
+          "correctKey": "A",
+          "explanation": "Cash taken by the owner for personal use is recorded as drawings, which reduces the owner's capital. It is not a business expense or loss because it is unrelated to earning revenue."
+        },
+        {
+          "number": 50,
+          "order": 10,
+          "type": "mcq",
+          "stem": "Net profit is transferred to the:",
+          "options": [
+            {"key":"A","text":"Cash account"},
+            {"key":"B","text":"Bank account"},
+            {"key":"C","text":"Capital account"},
+            {"key":"D","text":"Drawings account"}
+          ],
+          "correctKey": "C",
+          "explanation": "Net profit belongs to the owner and is transferred to the capital account, increasing it. It does not go to cash or bank accounts, which record only actual money movements."
+        }
+      ]
+    }
+  ]
+}

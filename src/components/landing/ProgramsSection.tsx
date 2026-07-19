@@ -32,6 +32,7 @@ const programs = [
       'Built around the accounting-heavy reality of the C-unit test. Live problem-solving sessions. Founder-built question bank with 2,000+ drilled items.',
     href: '/program#fbs',
     cta: 'Read the prospectus',
+    diagnosticHref: '/fbs-diagnosis',
     bgClass: 'bg-[#1A0507]',
     accent: '#D4B094',
     fg: '#FAF5EF',
@@ -209,6 +210,26 @@ export function ProgramsSection() {
                     whileHover={{ width: '100%' }}
                   />
                 </Link>
+
+                {/* Secondary CTA — free FBS diagnostic (FBS card only) */}
+                {p.diagnosticHref && (
+                  <div className="relative mt-5">
+                    <Link
+                      href={p.diagnosticHref}
+                      className="group/diag inline-flex items-center gap-2 rounded-full border px-4 py-2 font-sans text-xs font-medium tracking-[0.1em] uppercase transition-colors"
+                      style={{
+                        color: p.accent,
+                        borderColor: `${p.accent}40`,
+                      }}
+                    >
+                      <span>Take the free FBS diagnostic</span>
+                      <ArrowUpRight
+                        className="w-3.5 h-3.5 transition-transform duration-300 group-hover/diag:translate-x-0.5 group-hover/diag:-translate-y-0.5"
+                        strokeWidth={1.5}
+                      />
+                    </Link>
+                  </div>
+                )}
 
                 {/* Corner brackets */}
                 <span

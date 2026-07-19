@@ -911,6 +911,9 @@ export const testAttempts = sqliteTable('test_attempts', {
   totalWrong:       integer('total_wrong'),
   totalUnattempted: integer('total_unattempted'),
   sectionScores:    text('section_scores'),                  // JSON per-section breakdown
+  // Diagnostic elective mechanic: JSON int[] of the section ids the taker will
+  // attempt (2 compulsory English + 2 chosen electives = 4). Null for normal tests.
+  chosenSections:   text('chosen_sections'),
 }, (t) => [
   unique().on(t.testId, t.userId),
   index('idx_test_attempts_user').on(t.userId),

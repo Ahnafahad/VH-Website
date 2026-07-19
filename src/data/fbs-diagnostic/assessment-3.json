@@ -1,0 +1,753 @@
+{
+  "slug": "fbs-diagnostic-3",
+  "title": "FBS Diagnostic — Assessment 3",
+  "durationMinutes": 30,
+  "totalMarks": 50,
+  "sections": [
+    {
+      "order": 1,
+      "title": "General English",
+      "marksPerCorrect": 1,
+      "penaltyPerWrong": 0,
+      "thresholdPercent": null,
+      "questions": [
+        {
+          "number": 1,
+          "order": 1,
+          "type": "mcq",
+          "stem": "Choose the synonym of 'Brave'.",
+          "options": [
+            {"key":"A","text":"Weak"},
+            {"key":"B","text":"Timid"},
+            {"key":"C","text":"Fearful"},
+            {"key":"D","text":"Courageous"}
+          ],
+          "correctKey": "D",
+          "explanation": "'Brave' means showing no fear in the face of danger, which is exactly what 'courageous' means. Weak, timid and fearful are all antonyms, describing the opposite quality."
+        },
+        {
+          "number": 2,
+          "order": 2,
+          "type": "mcq",
+          "stem": "Fill in the blank. He succeeded ____ his exam.",
+          "options": [
+            {"key":"A","text":"in"},
+            {"key":"B","text":"at"},
+            {"key":"C","text":"on"},
+            {"key":"D","text":"for"}
+          ],
+          "correctKey": "A",
+          "explanation": "The verb 'succeed' takes the preposition 'in' before a noun or an activity, so 'succeeded in his exam' is the correct collocation. 'At', 'on' and 'for' are not used with 'succeed' in this sense."
+        },
+        {
+          "number": 3,
+          "order": 3,
+          "type": "mcq",
+          "stem": "Choose the correctly spelled word.",
+          "options": [
+            {"key":"A","text":"Seperate"},
+            {"key":"B","text":"Separate"},
+            {"key":"C","text":"Seperete"},
+            {"key":"D","text":"Separete"}
+          ],
+          "correctKey": "B",
+          "explanation": "The correct spelling is 'Separate', with an 'a' in the middle (remember 'there is a rat in sepArate'). The common misspelling 'seperate' uses an 'e' in the second syllable and is wrong."
+        },
+        {
+          "number": 4,
+          "order": 4,
+          "type": "mcq",
+          "stem": "Choose the correct sentence.",
+          "options": [
+            {"key":"A","text":"She can sings well."},
+            {"key":"B","text":"She can to sing well."},
+            {"key":"C","text":"She can sing well."},
+            {"key":"D","text":"She cans sing well."}
+          ],
+          "correctKey": "C",
+          "explanation": "A modal verb like 'can' is always followed by the bare infinitive, so the correct form is 'can sing'. The modal itself never takes an -s ('cans'), and 'to' is not used after 'can'."
+        },
+        {
+          "number": 5,
+          "order": 5,
+          "type": "mcq",
+          "stem": "\"A piece of cake\" means:",
+          "options": [
+            {"key":"A","text":"A dessert"},
+            {"key":"B","text":"A difficult task"},
+            {"key":"C","text":"A small portion"},
+            {"key":"D","text":"Something very easy"}
+          ],
+          "correctKey": "D",
+          "explanation": "The idiom 'a piece of cake' means something very easy to do. The literal meanings (a dessert, a small portion) are traps because idioms carry a figurative, not literal, meaning."
+        },
+        {
+          "number": 6,
+          "order": 6,
+          "type": "mcq",
+          "stem": "Choose the antonym of 'Expand'.",
+          "options": [
+            {"key":"A","text":"Grow"},
+            {"key":"B","text":"Contract"},
+            {"key":"C","text":"Widen"},
+            {"key":"D","text":"Stretch"}
+          ],
+          "correctKey": "B",
+          "explanation": "'Expand' means to become larger, so its opposite is 'contract', meaning to become smaller. Grow, widen and stretch are all synonyms of expand, not antonyms."
+        },
+        {
+          "number": 7,
+          "order": 7,
+          "type": "mcq",
+          "stem": "I have been living here ____ 2015.",
+          "options": [
+            {"key":"A","text":"since"},
+            {"key":"B","text":"for"},
+            {"key":"C","text":"from"},
+            {"key":"D","text":"in"}
+          ],
+          "correctKey": "A",
+          "explanation": "'Since' is used with a specific point in time (like 2015) in the present perfect continuous. 'For' would need a duration (for eight years), not a starting point."
+        },
+        {
+          "number": 8,
+          "order": 8,
+          "type": "mcq",
+          "stem": "He asked whether I ____ free the next day.",
+          "options": [
+            {"key":"A","text":"am"},
+            {"key":"B","text":"will be"},
+            {"key":"C","text":"was"},
+            {"key":"D","text":"is"}
+          ],
+          "correctKey": "C",
+          "explanation": "In reported speech introduced by 'asked', the tense shifts back, so present 'am' becomes past 'was'. 'Will be' and 'am' fail to follow the required backshift, and 'is' is the wrong subject agreement for 'I'."
+        },
+        {
+          "number": 9,
+          "order": 9,
+          "type": "mcq",
+          "stem": "The word 'Genuine' means:",
+          "options": [
+            {"key":"A","text":"Real"},
+            {"key":"B","text":"False"},
+            {"key":"C","text":"Copied"},
+            {"key":"D","text":"Fake"}
+          ],
+          "correctKey": "A",
+          "explanation": "'Genuine' means authentic or real. False, copied and fake are all antonyms describing something that is not genuine."
+        },
+        {
+          "number": 10,
+          "order": 10,
+          "type": "mcq",
+          "stem": "Choose the correct option. Each of the students ____ a book.",
+          "options": [
+            {"key":"A","text":"have"},
+            {"key":"B","text":"are having"},
+            {"key":"C","text":"were"},
+            {"key":"D","text":"has"}
+          ],
+          "correctKey": "D",
+          "explanation": "The subject 'each' is singular, so it takes the singular verb 'has' regardless of the plural noun 'students' that follows. The plural forms 'have', 'are having' and 'were' all violate subject-verb agreement here."
+        }
+      ]
+    },
+    {
+      "order": 2,
+      "title": "Advanced English",
+      "marksPerCorrect": 1,
+      "penaltyPerWrong": 0,
+      "thresholdPercent": null,
+      "questions": [
+        {
+          "number": 11,
+          "order": 1,
+          "type": "mcq",
+          "stem": "Choose the closest meaning of 'Ephemeral'.",
+          "options": [
+            {"key":"A","text":"Permanent"},
+            {"key":"B","text":"Short-lived"},
+            {"key":"C","text":"Ancient"},
+            {"key":"D","text":"Strong"}
+          ],
+          "correctKey": "B",
+          "explanation": "'Ephemeral' describes something that lasts a very short time, so 'short-lived' is the closest match. 'Permanent' is the direct opposite."
+        },
+        {
+          "number": 12,
+          "order": 2,
+          "type": "mcq",
+          "stem": "Rarely ____ such a talented musician.",
+          "options": [
+            {"key":"A","text":"we meet"},
+            {"key":"B","text":"we do meet"},
+            {"key":"C","text":"do we meet"},
+            {"key":"D","text":"meet we"}
+          ],
+          "correctKey": "C",
+          "explanation": "When a negative adverb like 'rarely' begins a sentence, the subject and auxiliary invert, giving 'do we meet'. The normal order 'we meet' is wrong because inversion is required after the fronted negative adverb."
+        },
+        {
+          "number": 13,
+          "order": 3,
+          "type": "mcq",
+          "stem": "Which sentence contains an error?",
+          "options": [
+            {"key":"A","text":"He is one of the best player in the team."},
+            {"key":"B","text":"He is one of the best players in the team."},
+            {"key":"C","text":"She is taller than her sister."},
+            {"key":"D","text":"They have finished the work."}
+          ],
+          "correctKey": "A",
+          "explanation": "The phrase 'one of the best' must be followed by a plural noun, so 'one of the best player' is wrong and should be 'players'. Options B, C and D are all grammatically correct."
+        },
+        {
+          "number": 14,
+          "order": 4,
+          "type": "mcq",
+          "stem": "Choose the appropriate preposition. She was oblivious ____ the danger.",
+          "options": [
+            {"key":"A","text":"about"},
+            {"key":"B","text":"from"},
+            {"key":"C","text":"with"},
+            {"key":"D","text":"to"}
+          ],
+          "correctKey": "D",
+          "explanation": "'Oblivious' collocates with the preposition 'to' (or sometimes 'of'), so 'oblivious to the danger' is correct. About, from and with are not standard partners for 'oblivious'."
+        },
+        {
+          "number": 15,
+          "order": 5,
+          "type": "mcq",
+          "stem": "\"To let the cat out of the bag\" means:",
+          "options": [
+            {"key":"A","text":"To free an animal"},
+            {"key":"B","text":"To buy something"},
+            {"key":"C","text":"To reveal a secret"},
+            {"key":"D","text":"To make a mistake"}
+          ],
+          "correctKey": "C",
+          "explanation": "This idiom means to reveal a secret, usually accidentally. The literal reading about an animal is a distractor, since idioms carry figurative meaning."
+        },
+        {
+          "number": 16,
+          "order": 6,
+          "type": "mcq",
+          "stem": "Choose the antonym of 'Candid'.",
+          "options": [
+            {"key":"A","text":"Secretive"},
+            {"key":"B","text":"Honest"},
+            {"key":"C","text":"Frank"},
+            {"key":"D","text":"Open"}
+          ],
+          "correctKey": "A",
+          "explanation": "'Candid' means open, honest and frank, so its antonym is 'secretive'. Honest, frank and open are all synonyms, not opposites."
+        },
+        {
+          "number": 17,
+          "order": 7,
+          "type": "mcq",
+          "stem": "No sooner had the bell rung ____ the students left.",
+          "options": [
+            {"key":"A","text":"when"},
+            {"key":"B","text":"then"},
+            {"key":"C","text":"so"},
+            {"key":"D","text":"than"}
+          ],
+          "correctKey": "D",
+          "explanation": "The fixed correlative structure is 'no sooner ... than', so 'than' is required to complete it. 'When' pairs with 'hardly/scarcely', not with 'no sooner'."
+        },
+        {
+          "number": 18,
+          "order": 8,
+          "type": "mcq",
+          "stem": "'Prolific' most nearly means:",
+          "options": [
+            {"key":"A","text":"Lazy"},
+            {"key":"B","text":"Producing much"},
+            {"key":"C","text":"Silent"},
+            {"key":"D","text":"Weak"}
+          ],
+          "correctKey": "B",
+          "explanation": "'Prolific' describes someone or something that produces a great deal, such as a prolific writer. 'Lazy' is essentially the opposite in terms of output."
+        },
+        {
+          "number": 19,
+          "order": 9,
+          "type": "mcq",
+          "stem": "Choose the correctly punctuated sentence.",
+          "options": [
+            {"key":"A","text":"The books which are old, are torn."},
+            {"key":"B","text":"The books, which are old are torn."},
+            {"key":"C","text":"The books, which are old, are torn."},
+            {"key":"D","text":"The books which, are old are torn."}
+          ],
+          "correctKey": "C",
+          "explanation": "A non-defining relative clause ('which are old') must be set off by a pair of commas, one before and one after. Only option C brackets the clause correctly on both sides."
+        },
+        {
+          "number": 20,
+          "order": 10,
+          "type": "mcq",
+          "stem": "The evidence was ____ enough to convict him.",
+          "options": [
+            {"key":"A","text":"compelling"},
+            {"key":"B","text":"trivial"},
+            {"key":"C","text":"absent"},
+            {"key":"D","text":"weak"}
+          ],
+          "correctKey": "A",
+          "explanation": "To convict someone, the evidence must be strong and convincing, which is what 'compelling' means. Trivial, absent and weak evidence would not be enough to secure a conviction."
+        }
+      ]
+    },
+    {
+      "order": 3,
+      "title": "Business Studies",
+      "marksPerCorrect": 1,
+      "penaltyPerWrong": 0,
+      "thresholdPercent": null,
+      "questions": [
+        {
+          "number": 21,
+          "order": 1,
+          "type": "mcq",
+          "stem": "Which of the following is an internal source of finance?",
+          "options": [
+            {"key":"A","text":"Retained earnings"},
+            {"key":"B","text":"Bank loan"},
+            {"key":"C","text":"Debentures"},
+            {"key":"D","text":"Trade credit"}
+          ],
+          "correctKey": "A",
+          "explanation": "Retained earnings are profits kept within the business, making them an internal source of finance. Bank loans, debentures and trade credit all bring funds in from outside parties, so they are external sources."
+        },
+        {
+          "number": 22,
+          "order": 2,
+          "type": "mcq",
+          "stem": "The process of dividing a market into distinct groups of buyers is called:",
+          "options": [
+            {"key":"A","text":"Positioning"},
+            {"key":"B","text":"Targeting"},
+            {"key":"C","text":"Segmentation"},
+            {"key":"D","text":"Branding"}
+          ],
+          "correctKey": "C",
+          "explanation": "Segmentation is dividing a broad market into distinct groups of buyers with similar needs. Targeting is choosing which segment to serve, and positioning is shaping how the product is perceived, both of which come after segmentation."
+        },
+        {
+          "number": 23,
+          "order": 3,
+          "type": "mcq",
+          "stem": "In a partnership, the liability of the partners is generally:",
+          "options": [
+            {"key":"A","text":"Limited"},
+            {"key":"B","text":"Unlimited"},
+            {"key":"C","text":"Zero"},
+            {"key":"D","text":"Limited to salary"}
+          ],
+          "correctKey": "B",
+          "explanation": "In an ordinary partnership the partners have unlimited liability, meaning their personal assets can be used to settle business debts. Limited liability is a feature of companies, not of a general partnership."
+        },
+        {
+          "number": 24,
+          "order": 4,
+          "type": "mcq",
+          "stem": "Which of the following is the last function of management?",
+          "options": [
+            {"key":"A","text":"Planning"},
+            {"key":"B","text":"Organizing"},
+            {"key":"C","text":"Directing"},
+            {"key":"D","text":"Controlling"}
+          ],
+          "correctKey": "D",
+          "explanation": "In the standard sequence of management functions (planning, organizing, directing/leading, controlling), controlling comes last because it measures actual results against the original plan. Planning is the first function, not the last."
+        },
+        {
+          "number": 25,
+          "order": 5,
+          "type": "mcq",
+          "stem": "A cheque is an example of a:",
+          "options": [
+            {"key":"A","text":"Negotiable instrument"},
+            {"key":"B","text":"Fixed asset"},
+            {"key":"C","text":"Share"},
+            {"key":"D","text":"Debenture"}
+          ],
+          "correctKey": "A",
+          "explanation": "A cheque is a negotiable instrument because it is a written order to pay that can be transferred from one person to another. It is not a fixed asset, a share or a debenture."
+        },
+        {
+          "number": 26,
+          "order": 6,
+          "type": "mcq",
+          "stem": "Span of control refers to the number of:",
+          "options": [
+            {"key":"A","text":"Departments in a firm"},
+            {"key":"B","text":"Products a firm sells"},
+            {"key":"C","text":"Subordinates a manager can supervise"},
+            {"key":"D","text":"Shareholders in a company"}
+          ],
+          "correctKey": "C",
+          "explanation": "Span of control is the number of subordinates that one manager can effectively supervise. It has nothing to do with the count of departments, products or shareholders."
+        },
+        {
+          "number": 27,
+          "order": 7,
+          "type": "mcq",
+          "stem": "Which pricing strategy sets a high initial price for a new product?",
+          "options": [
+            {"key":"A","text":"Penetration pricing"},
+            {"key":"B","text":"Skimming pricing"},
+            {"key":"C","text":"Cost-plus pricing"},
+            {"key":"D","text":"Competitive pricing"}
+          ],
+          "correctKey": "B",
+          "explanation": "Price skimming sets a high initial price to capture buyers willing to pay a premium, then lowers it over time. Penetration pricing does the opposite, starting with a low price to gain market share quickly."
+        },
+        {
+          "number": 28,
+          "order": 8,
+          "type": "mcq",
+          "stem": "The minimum number of members required to form a private limited company in Bangladesh is:",
+          "options": [
+            {"key":"A","text":"1"},
+            {"key":"B","text":"5"},
+            {"key":"C","text":"7"},
+            {"key":"D","text":"2"}
+          ],
+          "correctKey": "D",
+          "explanation": "Under the Companies Act 1994, a private limited company in Bangladesh requires a minimum of 2 members. A public limited company, by contrast, needs a minimum of 7 members."
+        },
+        {
+          "number": 29,
+          "order": 9,
+          "type": "mcq",
+          "stem": "Delegation of authority means:",
+          "options": [
+            {"key":"A","text":"Passing authority down to subordinates"},
+            {"key":"B","text":"Removing authority"},
+            {"key":"C","text":"Increasing salary"},
+            {"key":"D","text":"Hiring new staff"}
+          ],
+          "correctKey": "A",
+          "explanation": "Delegation is the process of a manager passing authority and responsibility down to subordinates so they can carry out specific tasks. It is not about removing authority, raising pay or recruiting."
+        },
+        {
+          "number": 30,
+          "order": 10,
+          "type": "mcq",
+          "stem": "Which of the following is a promotional tool?",
+          "options": [
+            {"key":"A","text":"Distribution"},
+            {"key":"B","text":"Warehousing"},
+            {"key":"C","text":"Advertising"},
+            {"key":"D","text":"Production"}
+          ],
+          "correctKey": "C",
+          "explanation": "Advertising is part of the promotion element of the marketing mix, used to communicate with and persuade customers. Distribution, warehousing and production belong to other business functions, not promotion."
+        }
+      ]
+    },
+    {
+      "order": 4,
+      "title": "Economics",
+      "marksPerCorrect": 1,
+      "penaltyPerWrong": 0,
+      "thresholdPercent": null,
+      "questions": [
+        {
+          "number": 31,
+          "order": 1,
+          "type": "mcq",
+          "stem": "Which best describes economics?",
+          "options": [
+            {"key":"A","text":"The study of money only"},
+            {"key":"B","text":"The study of business only"},
+            {"key":"C","text":"The study of banking"},
+            {"key":"D","text":"The study of how scarce resources are allocated"}
+          ],
+          "correctKey": "D",
+          "explanation": "Economics is fundamentally about how society allocates scarce resources among unlimited wants. The other options are far too narrow, since economics covers much more than money, business or banking alone."
+        },
+        {
+          "number": 32,
+          "order": 2,
+          "type": "mcq",
+          "stem": "An increase in the price of a substitute good will cause demand for the original good to:",
+          "options": [
+            {"key":"A","text":"Fall"},
+            {"key":"B","text":"Rise"},
+            {"key":"C","text":"Stay constant"},
+            {"key":"D","text":"Become zero"}
+          ],
+          "correctKey": "B",
+          "explanation": "When a substitute becomes more expensive, consumers switch to the original good, so its demand rises. For example, if the price of tea rises, demand for coffee tends to increase."
+        },
+        {
+          "number": 33,
+          "order": 3,
+          "type": "mcq",
+          "stem": "The law of demand states that, other things equal, as price falls, quantity demanded:",
+          "options": [
+            {"key":"A","text":"Rises"},
+            {"key":"B","text":"Falls"},
+            {"key":"C","text":"Stays the same"},
+            {"key":"D","text":"Becomes zero"}
+          ],
+          "correctKey": "A",
+          "explanation": "The law of demand states an inverse relationship between price and quantity demanded, so when price falls, quantity demanded rises. This is why the demand curve slopes downward."
+        },
+        {
+          "number": 34,
+          "order": 4,
+          "type": "mcq",
+          "stem": "Fiscal policy is conducted through:",
+          "options": [
+            {"key":"A","text":"Interest rates"},
+            {"key":"B","text":"Money supply"},
+            {"key":"C","text":"Government taxation and spending"},
+            {"key":"D","text":"Exchange rates"}
+          ],
+          "correctKey": "C",
+          "explanation": "Fiscal policy uses government taxation and spending to influence the economy. Interest rates and money supply are the tools of monetary policy, run by the central bank, not fiscal policy."
+        },
+        {
+          "number": 35,
+          "order": 5,
+          "type": "mcq",
+          "stem": "A market with a single seller is called:",
+          "options": [
+            {"key":"A","text":"Perfect competition"},
+            {"key":"B","text":"Oligopoly"},
+            {"key":"C","text":"Monopolistic competition"},
+            {"key":"D","text":"Monopoly"}
+          ],
+          "correctKey": "D",
+          "explanation": "A monopoly is a market structure with a single seller dominating the entire market. An oligopoly has a few sellers, while perfect and monopolistic competition both have many sellers."
+        },
+        {
+          "number": 36,
+          "order": 6,
+          "type": "mcq",
+          "stem": "Which of the following is a withdrawal (leakage) from the circular flow of income?",
+          "options": [
+            {"key":"A","text":"Savings"},
+            {"key":"B","text":"Investment"},
+            {"key":"C","text":"Government spending"},
+            {"key":"D","text":"Exports"}
+          ],
+          "correctKey": "A",
+          "explanation": "Savings are a leakage because they represent income that households do not spend, removing it from the circular flow. Investment, government spending and exports are injections that add income back into the flow."
+        },
+        {
+          "number": 37,
+          "order": 7,
+          "type": "mcq",
+          "stem": "Real GDP differs from nominal GDP because real GDP is adjusted for:",
+          "options": [
+            {"key":"A","text":"Population"},
+            {"key":"B","text":"Unemployment"},
+            {"key":"C","text":"Inflation"},
+            {"key":"D","text":"Exports"}
+          ],
+          "correctKey": "C",
+          "explanation": "Real GDP is nominal GDP adjusted for inflation, so it measures output in constant prices and reflects genuine changes in quantity produced. GDP adjusted for population would be GDP per capita, which is a different measure."
+        },
+        {
+          "number": 38,
+          "order": 8,
+          "type": "mcq",
+          "stem": "If demand is perfectly inelastic, the demand curve is:",
+          "options": [
+            {"key":"A","text":"Horizontal"},
+            {"key":"B","text":"Vertical"},
+            {"key":"C","text":"Upward sloping"},
+            {"key":"D","text":"A 45-degree line"}
+          ],
+          "correctKey": "B",
+          "explanation": "Perfectly inelastic demand means quantity demanded does not change at all when price changes, which produces a vertical demand curve. A horizontal curve would instead represent perfectly elastic demand."
+        },
+        {
+          "number": 39,
+          "order": 9,
+          "type": "mcq",
+          "stem": "Which of the following would shift the supply curve to the right?",
+          "options": [
+            {"key":"A","text":"A rise in input costs"},
+            {"key":"B","text":"A new tax"},
+            {"key":"C","text":"A fall in the number of firms"},
+            {"key":"D","text":"An improvement in technology"}
+          ],
+          "correctKey": "D",
+          "explanation": "Better technology lowers production costs and lets firms supply more at every price, shifting supply to the right. Higher input costs, new taxes and fewer firms would all shift supply to the left."
+        },
+        {
+          "number": 40,
+          "order": 10,
+          "type": "mcq",
+          "stem": "The study of individual markets and consumer behaviour is called:",
+          "options": [
+            {"key":"A","text":"Macroeconomics"},
+            {"key":"B","text":"Microeconomics"},
+            {"key":"C","text":"Development economics"},
+            {"key":"D","text":"International economics"}
+          ],
+          "correctKey": "B",
+          "explanation": "Microeconomics studies individual units such as single markets, firms and consumers. Macroeconomics, by contrast, examines the economy as a whole, covering aggregates like national income and inflation."
+        }
+      ]
+    },
+    {
+      "order": 5,
+      "title": "Accounting",
+      "marksPerCorrect": 1,
+      "penaltyPerWrong": 0,
+      "thresholdPercent": null,
+      "questions": [
+        {
+          "number": 41,
+          "order": 1,
+          "type": "mcq",
+          "stem": "An increase in a liability is recorded as a:",
+          "options": [
+            {"key":"A","text":"Debit"},
+            {"key":"B","text":"Credit"},
+            {"key":"C","text":"Both"},
+            {"key":"D","text":"Neither"}
+          ],
+          "correctKey": "B",
+          "explanation": "Liabilities have a normal credit balance, so an increase in a liability is recorded as a credit. A debit would decrease a liability, not increase it."
+        },
+        {
+          "number": 42,
+          "order": 2,
+          "type": "mcq",
+          "stem": "Which of the following is shown on the balance sheet?",
+          "options": [
+            {"key":"A","text":"Sales"},
+            {"key":"B","text":"Cost of goods sold"},
+            {"key":"C","text":"Wages expense"},
+            {"key":"D","text":"Accounts payable"}
+          ],
+          "correctKey": "D",
+          "explanation": "Accounts payable is a liability, so it appears on the balance sheet. Sales, cost of goods sold and wages expense are income statement items, not balance sheet items."
+        },
+        {
+          "number": 43,
+          "order": 3,
+          "type": "mcq",
+          "stem": "Closing stock is valued at:",
+          "options": [
+            {"key":"A","text":"Cost price always"},
+            {"key":"B","text":"Market price always"},
+            {"key":"C","text":"Lower of cost or net realisable value"},
+            {"key":"D","text":"Selling price"}
+          ],
+          "correctKey": "C",
+          "explanation": "Following the prudence concept, closing stock is valued at the lower of cost or net realisable value to avoid overstating assets and profit. Valuing at selling price would recognise profit before the sale actually occurs."
+        },
+        {
+          "number": 44,
+          "order": 4,
+          "type": "mcq",
+          "stem": "A credit note is issued when:",
+          "options": [
+            {"key":"A","text":"Goods are returned by a customer"},
+            {"key":"B","text":"Goods are sold"},
+            {"key":"C","text":"Cash is received"},
+            {"key":"D","text":"An asset is bought"}
+          ],
+          "correctKey": "A",
+          "explanation": "A credit note is issued by a seller when a customer returns goods, reducing the amount the customer owes. When goods are sold, an invoice (not a credit note) is issued."
+        },
+        {
+          "number": 45,
+          "order": 5,
+          "type": "mcq",
+          "stem": "If sales are Tk. 1,00,000 and gross profit is 20% of sales, the cost of goods sold is:",
+          "options": [
+            {"key":"A","text":"Tk. 1,20,000"},
+            {"key":"B","text":"Tk. 80,000"},
+            {"key":"C","text":"Tk. 20,000"},
+            {"key":"D","text":"Tk. 1,00,000"}
+          ],
+          "correctKey": "B",
+          "explanation": "Gross profit is 20% of 1,00,000 = 20,000, and cost of goods sold equals sales minus gross profit, so 1,00,000 - 20,000 = 80,000. Tk. 20,000 is only the gross profit, not the cost of goods sold."
+        },
+        {
+          "number": 46,
+          "order": 6,
+          "type": "mcq",
+          "stem": "The account used to record the owner's investment in the business is the:",
+          "options": [
+            {"key":"A","text":"Cash account"},
+            {"key":"B","text":"Drawings account"},
+            {"key":"C","text":"Sales account"},
+            {"key":"D","text":"Capital account"}
+          ],
+          "correctKey": "D",
+          "explanation": "The owner's investment in the business is recorded in the capital account. The drawings account records the opposite, money the owner takes out of the business."
+        },
+        {
+          "number": 47,
+          "order": 7,
+          "type": "mcq",
+          "stem": "Bad debts are treated as a(n):",
+          "options": [
+            {"key":"A","text":"Asset"},
+            {"key":"B","text":"Income"},
+            {"key":"C","text":"Expense"},
+            {"key":"D","text":"Liability"}
+          ],
+          "correctKey": "C",
+          "explanation": "Bad debts are amounts owed by customers that cannot be recovered, so they are written off as an expense in the income statement. They reduce profit and are not treated as an asset or income."
+        },
+        {
+          "number": 48,
+          "order": 8,
+          "type": "mcq",
+          "stem": "The matching principle relates most closely to:",
+          "options": [
+            {"key":"A","text":"Recognising expenses with related revenues"},
+            {"key":"B","text":"Valuing assets at cost"},
+            {"key":"C","text":"Continuity of the business"},
+            {"key":"D","text":"Recording only monetary items"}
+          ],
+          "correctKey": "A",
+          "explanation": "The matching principle requires expenses to be recognised in the same period as the revenues they help generate. Valuing assets at cost, business continuity and monetary recording relate to the cost, going concern and money measurement concepts respectively."
+        },
+        {
+          "number": 49,
+          "order": 9,
+          "type": "mcq",
+          "stem": "Which of the following is a liability?",
+          "options": [
+            {"key":"A","text":"Debtors"},
+            {"key":"B","text":"Creditors"},
+            {"key":"C","text":"Stock"},
+            {"key":"D","text":"Furniture"}
+          ],
+          "correctKey": "B",
+          "explanation": "Creditors are amounts the business owes to suppliers, making them a liability. Debtors, stock and furniture are all assets owned by or owed to the business."
+        },
+        {
+          "number": 50,
+          "order": 10,
+          "type": "mcq",
+          "stem": "Salaries outstanding at year end are shown as a:",
+          "options": [
+            {"key":"A","text":"Current asset"},
+            {"key":"B","text":"Fixed asset"},
+            {"key":"C","text":"Expense only"},
+            {"key":"D","text":"Current liability"}
+          ],
+          "correctKey": "D",
+          "explanation": "Salaries outstanding are amounts owed but not yet paid at year end, so they are a current liability on the balance sheet. Although the salary is also an expense for the year, the unpaid portion specifically represents an obligation the business still owes."
+        }
+      ]
+    }
+  ]
+}

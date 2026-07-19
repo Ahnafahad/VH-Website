@@ -216,6 +216,24 @@ function QuestionItem({
         </div>
       )}
 
+      {/* Explanation */}
+      {q.explanation && q.explanation.trim().length > 0 && (
+        <div
+          className="ml-10 mt-3 rounded-lg px-4 py-3"
+          style={{
+            background: 'color-mix(in srgb, var(--color-exam-gold) 8%, transparent)',
+            border: '1px solid color-mix(in srgb, var(--color-exam-gold) 24%, transparent)',
+          }}
+        >
+          <div className="text-[var(--color-exam-gold)] text-xs font-medium tracking-[0.14em] uppercase mb-1.5">
+            Explanation
+          </div>
+          <div className="text-sm leading-relaxed text-[var(--color-exam-ink-muted)]">
+            <RichText content={q.explanation} />
+          </div>
+        </div>
+      )}
+
       {/* Class difficulty bar */}
       <div className="ml-10 mt-1">
         <ClassDiffBar analytics={analytics} />

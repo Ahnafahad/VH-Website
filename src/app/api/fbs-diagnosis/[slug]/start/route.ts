@@ -1,21 +1,27 @@
 /**
- * POST /api/tests/[slug]/start
- * Body: { windowId: number }
- * Creates the caller's attempt for this test in the window's mode, or resumes
- * an in-progress one. One attempt per student per test — a submitted or banned
- * attempt blocks starting again (admin can reset).
+ * POST /api/fbs-diagnosis/[slug]/start
+ * Body: { windowId: number, electiveSectionIds: number[] }
+ * Starts (or resumes) the caller's diagnostic attempt AFTER they pick exactly 2
+ * of the 3 elective subjects. attemptedSectionIds = [both compulsory English
+ * sections, ...the 2 chosen electives] (4 sections = 40 marks). The 30-minute
+ * timer begins at attempt creation. Resuming an in-progress attempt keeps its
+ * existing selection (no re-choosing).
  */
 
 import { NextRequest } from 'next/server';
 import { z } from 'zod';
 import { and, eq } from 'drizzle-orm';
 import { db } from '@/lib/db';
-import { testAttempts } from '@/lib/db/schema';
+import { testSections, testAttempts } from '@/lib/db/schema';
 import { safeApiHandler, ApiException } from '@/lib/api-utils';
 import { requireUser, requireTestForUser } from '@/lib/tests/route-helpers';
 import { effectiveWindowState, attemptDeadline } from '@/lib/tests/windows';
+import { isCompulsorySection } from '@/lib/tests/diagnostic';
 
-const bodySchema = z.object({ windowId: z.number().int().positive() });
+const bodySchema = z.object({
+  windowId: z.number().int().positive(),
+  electiveSectionIds: z.array(z.number().int().positive()),
+});
 
 export async function POST(
   req: NextRequest,
@@ -26,8 +32,8 @@ export async function POST(
     const { slug } = await params;
     const { test, windows } = await requireTestForUser(slug, user);
 
-    if (test.isDiagnostic) {
-      throw new ApiException('Use the diagnostic start endpoint', 400, 'USE_DIAGNOSTIC_START');
+    if (!test.isDiagnostic) {
+      throw new ApiException('This is not a diagnostic test', 400, 'NOT_DIAGNOSTIC');
     }
 
     const parsed = bodySchema.safeParse(await req.json());
@@ -38,6 +44,24 @@ export async function POST(
     if (effectiveWindowState(window) !== 'open') {
       throw new ApiException('This test window is not open', 409, 'WINDOW_NOT_OPEN');
     }
+
+    // Derive compulsory vs elective from section titles.
+    const sectionRows = await db.select().from(testSections)
+      .where(eq(testSections.testId, test.id));
+    const compulsoryIds = sectionRows.filter(s => isCompulsorySection(s.title)).map(s => s.id);
+    const electiveIds = new Set(sectionRows.filter(s => !isCompulsorySection(s.title)).map(s => s.id));
+
+    // Validate the 2 chosen electives: exactly 2 distinct, each an elective of this test.
+    const chosen = parsed.data.electiveSectionIds;
+    const distinct = new Set(chosen);
+    if (chosen.length !== 2 || distinct.size !== 2) {
+      throw new ApiException('Choose exactly 2 elective subjects', 400, 'INVALID_SELECTION');
+    }
+    if (![...distinct].every(id => electiveIds.has(id))) {
+      throw new ApiException('Invalid elective subject selection', 400, 'INVALID_SELECTION');
+    }
+
+    const attemptedSectionIds = [...compulsoryIds, ...chosen];
 
     const existing = await db.select().from(testAttempts)
       .where(and(eq(testAttempts.testId, test.id), eq(testAttempts.userId, user.id)))
@@ -50,12 +74,12 @@ export async function POST(
       if (existing.status === 'submitted') {
         throw new ApiException('You have already submitted this test', 409, 'ALREADY_SUBMITTED');
       }
-      // Resume in-progress attempt (same mode only)
       if (existing.mode !== window.mode) {
         throw new ApiException(
           `You already started this test in ${existing.mode} mode`, 409, 'MODE_LOCKED',
         );
       }
+      // Resume an in-progress attempt as-is — the selection is already locked.
       return {
         attemptId: existing.id,
         resumed: true,
@@ -70,6 +94,7 @@ export async function POST(
       mode: window.mode,
       status: 'in_progress',
       startedAt: new Date(),
+      chosenSections: JSON.stringify(attemptedSectionIds),
     }).returning();
 
     return {

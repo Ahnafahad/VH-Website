@@ -16,6 +16,7 @@ import {
   ClipboardList,
   ArrowUpRight,
   LayoutDashboard,
+  Stethoscope,
 } from 'lucide-react';
 import {
   motion,
@@ -175,12 +176,14 @@ const Header = () => {
           { label: 'About', href: '/#about', icon: Target },
         ]
       : [
+          { label: 'FBS Diagnostic', href: '/fbs-diagnosis', icon: Stethoscope },
           { label: 'Results', href: '/results', icon: BarChart3 },
           { label: 'Programs', href: '/program', icon: BookOpen },
           { label: 'About', href: '/#about', icon: Target },
           { label: 'Eligibility Checker', href: '/eligibility-checker', icon: Target },
         ]
     : [
+        { label: 'FBS Diagnostic', href: '/fbs-diagnosis', icon: Stethoscope },
         { label: 'Eligibility Checker', href: '/eligibility-checker', icon: Target },
         { label: 'Mental Math', href: '/games/mental-math', icon: Calculator },
         { label: 'Vocab', href: '/vocab/home', icon: BookOpen },

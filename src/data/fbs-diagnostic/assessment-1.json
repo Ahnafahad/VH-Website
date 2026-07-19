@@ -1,0 +1,753 @@
+{
+  "slug": "fbs-diagnostic-1",
+  "title": "FBS Diagnostic — Assessment 1",
+  "durationMinutes": 30,
+  "totalMarks": 50,
+  "sections": [
+    {
+      "order": 1,
+      "title": "General English",
+      "marksPerCorrect": 1,
+      "penaltyPerWrong": 0,
+      "thresholdPercent": null,
+      "questions": [
+        {
+          "number": 1,
+          "order": 1,
+          "type": "mcq",
+          "stem": "Choose the synonym of 'Abundant'.",
+          "options": [
+            {"key":"A","text":"Scarce"},
+            {"key":"B","text":"Plentiful"},
+            {"key":"C","text":"Limited"},
+            {"key":"D","text":"Rare"}
+          ],
+          "correctKey": "B",
+          "explanation": "'Abundant' means existing in large quantities, so 'Plentiful' is its closest synonym. The other three options (Scarce, Limited, Rare) are all antonyms that describe something in short supply."
+        },
+        {
+          "number": 2,
+          "order": 2,
+          "type": "mcq",
+          "stem": "Fill in the blank. She is good ____ Mathematics.",
+          "options": [
+            {"key":"A","text":"in"},
+            {"key":"B","text":"at"},
+            {"key":"C","text":"on"},
+            {"key":"D","text":"with"}
+          ],
+          "correctKey": "B",
+          "explanation": "The fixed expression 'good at' is used to describe skill or ability in a subject or activity. We say 'good at Mathematics', not 'good in' or 'good on'."
+        },
+        {
+          "number": 3,
+          "order": 3,
+          "type": "mcq",
+          "stem": "Choose the correctly spelled word.",
+          "options": [
+            {"key":"A","text":"Acquaintance"},
+            {"key":"B","text":"Aquaintance"},
+            {"key":"C","text":"Acquintance"},
+            {"key":"D","text":"Acquantance"}
+          ],
+          "correctKey": "A",
+          "explanation": "The correct spelling is 'Acquaintance', which keeps the 'c' after the 'a' (acq-) and the 'ai' in the middle (-quaint-). The other options drop the 'c' or misspell the '-quaint-' portion."
+        },
+        {
+          "number": 4,
+          "order": 4,
+          "type": "mcq",
+          "stem": "Identify the sentence with the correct grammar.",
+          "options": [
+            {"key":"A","text":"Each of the boys have submitted the assignment."},
+            {"key":"B","text":"Each of the boys has submitted the assignment."},
+            {"key":"C","text":"Each of the boys were submitted the assignment."},
+            {"key":"D","text":"Each boys has submitted the assignment."}
+          ],
+          "correctKey": "B",
+          "explanation": "'Each' is a singular subject and always takes a singular verb, so it must be 'has' (not 'have' or 'were'). Option D is also wrong because 'each' must be followed by a singular noun ('each boy'), not the plural 'boys'."
+        },
+        {
+          "number": 5,
+          "order": 5,
+          "type": "mcq",
+          "stem": "\"A blessing in disguise\" means—",
+          "options": [
+            {"key":"A","text":"A hidden problem"},
+            {"key":"B","text":"Something good that first seemed bad"},
+            {"key":"C","text":"A false promise"},
+            {"key":"D","text":"A lucky coincidence"}
+          ],
+          "correctKey": "B",
+          "explanation": "The idiom 'a blessing in disguise' refers to something that appears bad or unfortunate at first but later turns out to be beneficial. It is essentially the opposite of a hidden problem."
+        },
+        {
+          "number": 6,
+          "order": 6,
+          "type": "mcq",
+          "stem": "Choose the antonym of 'Optimistic'.",
+          "options": [
+            {"key":"A","text":"Positive"},
+            {"key":"B","text":"Cheerful"},
+            {"key":"C","text":"Pessimistic"},
+            {"key":"D","text":"Hopeful"}
+          ],
+          "correctKey": "C",
+          "explanation": "'Optimistic' means expecting good outcomes, so its antonym is 'Pessimistic', which means expecting the worst. Positive, Cheerful, and Hopeful are all synonyms of optimistic, not opposites."
+        },
+        {
+          "number": 7,
+          "order": 7,
+          "type": "mcq",
+          "stem": "If I ____ your phone number, I would have called you.",
+          "options": [
+            {"key":"A","text":"know"},
+            {"key":"B","text":"knew"},
+            {"key":"C","text":"had known"},
+            {"key":"D","text":"have known"}
+          ],
+          "correctKey": "C",
+          "explanation": "This is a third conditional describing an unreal past situation. The structure requires 'If + had + past participle' in the if-clause to match 'would have called', so 'had known' is correct."
+        },
+        {
+          "number": 8,
+          "order": 8,
+          "type": "mcq",
+          "stem": "Choose the correct passive voice. They will announce the results tomorrow.",
+          "options": [
+            {"key":"A","text":"The results are announced tomorrow."},
+            {"key":"B","text":"The results will be announced tomorrow."},
+            {"key":"C","text":"The results have been announced tomorrow."},
+            {"key":"D","text":"The results were announced tomorrow."}
+          ],
+          "correctKey": "B",
+          "explanation": "The active sentence is in the simple future ('will announce'), so the passive form is 'will be + past participle', giving 'will be announced'. The other options wrongly shift the tense to present, present perfect, or past."
+        },
+        {
+          "number": 9,
+          "order": 9,
+          "type": "mcq",
+          "stem": "Which sentence is correct?",
+          "options": [
+            {"key":"A","text":"One of my friend is absent."},
+            {"key":"B","text":"One of my friends are absent."},
+            {"key":"C","text":"One of my friends is absent."},
+            {"key":"D","text":"One of friend is absent."}
+          ],
+          "correctKey": "C",
+          "explanation": "The phrase 'one of' must be followed by a plural noun ('friends'), but the actual subject is the singular 'one', so the verb must be singular ('is'). Option B uses the wrong verb, and A and D use the wrong noun form."
+        },
+        {
+          "number": 10,
+          "order": 10,
+          "type": "mcq",
+          "stem": "The word 'Fragile' means—",
+          "options": [
+            {"key":"A","text":"Strong"},
+            {"key":"B","text":"Delicate"},
+            {"key":"C","text":"Heavy"},
+            {"key":"D","text":"Flexible"}
+          ],
+          "correctKey": "B",
+          "explanation": "'Fragile' means easily broken or damaged, which matches 'Delicate'. 'Strong' is its opposite, and 'Heavy' and 'Flexible' describe unrelated physical properties."
+        }
+      ]
+    },
+    {
+      "order": 2,
+      "title": "Advanced English",
+      "marksPerCorrect": 1,
+      "penaltyPerWrong": 0,
+      "thresholdPercent": null,
+      "questions": [
+        {
+          "number": 11,
+          "order": 1,
+          "type": "mcq",
+          "stem": "Choose the closest meaning of 'Pragmatic'.",
+          "options": [
+            {"key":"A","text":"Emotional"},
+            {"key":"B","text":"Practical"},
+            {"key":"C","text":"Traditional"},
+            {"key":"D","text":"Careless"}
+          ],
+          "correctKey": "B",
+          "explanation": "'Pragmatic' describes dealing with things sensibly and realistically, so 'Practical' is the closest meaning. It is the opposite of being idealistic or purely emotional."
+        },
+        {
+          "number": 12,
+          "order": 2,
+          "type": "mcq",
+          "stem": "Fill in the blank. Hardly ____ the station when the train left.",
+          "options": [
+            {"key":"A","text":"I had reached"},
+            {"key":"B","text":"had I reached"},
+            {"key":"C","text":"I reached"},
+            {"key":"D","text":"reached I"}
+          ],
+          "correctKey": "B",
+          "explanation": "When a sentence begins with the negative adverb 'Hardly', the subject and auxiliary verb must be inverted, giving 'had I reached'. This inversion pairs with 'when' in the 'Hardly...when' construction."
+        },
+        {
+          "number": 13,
+          "order": 3,
+          "type": "mcq",
+          "stem": "Choose the correctly punctuated sentence.",
+          "options": [
+            {"key":"A","text":"However he agreed to help."},
+            {"key":"B","text":"However, he agreed to help."},
+            {"key":"C","text":"However; he agreed to help."},
+            {"key":"D","text":"However: he agreed to help."}
+          ],
+          "correctKey": "B",
+          "explanation": "When 'However' introduces a sentence as a conjunctive adverb, it should be followed by a comma. A semicolon or colon after 'However' is incorrect, and omitting the comma entirely is a punctuation error."
+        },
+        {
+          "number": 14,
+          "order": 4,
+          "type": "mcq",
+          "stem": "Which word best completes the sentence? The CEO delivered a ____ speech that inspired every employee.",
+          "options": [
+            {"key":"A","text":"tedious"},
+            {"key":"B","text":"compelling"},
+            {"key":"C","text":"reluctant"},
+            {"key":"D","text":"fragile"}
+          ],
+          "correctKey": "B",
+          "explanation": "A speech that 'inspired every employee' must be 'compelling', meaning powerfully persuasive and engaging. 'Tedious' means boring, while 'reluctant' and 'fragile' do not sensibly describe an inspiring speech."
+        },
+        {
+          "number": 15,
+          "order": 5,
+          "type": "mcq",
+          "stem": "\"Burn the midnight oil\" means—",
+          "options": [
+            {"key":"A","text":"Waste electricity"},
+            {"key":"B","text":"Study or work late into the night"},
+            {"key":"C","text":"Sleep late"},
+            {"key":"D","text":"Stay outdoors at night"}
+          ],
+          "correctKey": "B",
+          "explanation": "The idiom 'burn the midnight oil' means to stay up late studying or working, dating from when people used oil lamps at night. It refers to effort, not literally wasting energy or sleeping."
+        },
+        {
+          "number": 16,
+          "order": 6,
+          "type": "mcq",
+          "stem": "Which sentence is grammatically correct?",
+          "options": [
+            {"key":"A","text":"Neither of the answers are correct."},
+            {"key":"B","text":"Neither of the answers is correct."},
+            {"key":"C","text":"Neither the answers is correct."},
+            {"key":"D","text":"Neither answer are correct."}
+          ],
+          "correctKey": "B",
+          "explanation": "'Neither' is treated as singular, so it takes the singular verb 'is', even though it is followed by the plural 'answers'. Options A and D use the wrong verb form, and C omits the necessary 'of'."
+        },
+        {
+          "number": 17,
+          "order": 7,
+          "type": "mcq",
+          "stem": "Choose the antonym of 'Lucid'.",
+          "options": [
+            {"key":"A","text":"Clear"},
+            {"key":"B","text":"Confusing"},
+            {"key":"C","text":"Logical"},
+            {"key":"D","text":"Intelligent"}
+          ],
+          "correctKey": "B",
+          "explanation": "'Lucid' means clear and easy to understand, so its antonym is 'Confusing'. 'Clear' and 'Logical' are synonyms of lucid, not opposites."
+        },
+        {
+          "number": 18,
+          "order": 8,
+          "type": "mcq",
+          "stem": "Which sentence contains an error?",
+          "options": [
+            {"key":"A","text":"The news is encouraging."},
+            {"key":"B","text":"Physics is my favourite subject."},
+            {"key":"C","text":"The police has arrested the thief."},
+            {"key":"D","text":"Every student was present."}
+          ],
+          "correctKey": "C",
+          "explanation": "'Police' is a plural noun and takes a plural verb, so it should be 'The police have arrested the thief'. The other sentences correctly treat 'news', 'physics', and 'every student' as singular."
+        },
+        {
+          "number": 19,
+          "order": 9,
+          "type": "mcq",
+          "stem": "Choose the appropriate preposition. He is responsible ____ maintaining the records.",
+          "options": [
+            {"key":"A","text":"to"},
+            {"key":"B","text":"with"},
+            {"key":"C","text":"for"},
+            {"key":"D","text":"at"}
+          ],
+          "correctKey": "C",
+          "explanation": "The correct collocation is 'responsible for' when referring to a duty or task. We say 'responsible to' only when referring to a person or authority one answers to, not a task."
+        },
+        {
+          "number": 20,
+          "order": 10,
+          "type": "mcq",
+          "stem": "\"The proposal was rejected because it lacked ____.\"",
+          "options": [
+            {"key":"A","text":"merit"},
+            {"key":"B","text":"merits"},
+            {"key":"C","text":"meritorious"},
+            {"key":"D","text":"meriting"}
+          ],
+          "correctKey": "A",
+          "explanation": "Here 'merit' is used as an uncountable noun meaning worth or value, so the singular form without 's' fits the phrase 'lacked merit'. 'Meritorious' is an adjective and 'meriting' is a verb form, neither of which fits after 'lacked'."
+        }
+      ]
+    },
+    {
+      "order": 3,
+      "title": "Business Studies",
+      "marksPerCorrect": 1,
+      "penaltyPerWrong": 0,
+      "thresholdPercent": null,
+      "questions": [
+        {
+          "number": 21,
+          "order": 1,
+          "type": "mcq",
+          "stem": "Which banking service allows customers to withdraw cash anytime using a card?",
+          "options": [
+            {"key":"A","text":"Pay Order"},
+            {"key":"B","text":"Letter of Credit"},
+            {"key":"C","text":"ATM Service"},
+            {"key":"D","text":"Bank Draft"}
+          ],
+          "correctKey": "C",
+          "explanation": "An ATM (Automated Teller Machine) service lets customers withdraw cash at any time using a card, without needing a bank employee. Pay Order, Letter of Credit, and Bank Draft are payment instruments, not card-based cash-withdrawal services."
+        },
+        {
+          "number": 22,
+          "order": 2,
+          "type": "mcq",
+          "stem": "Which of the following is an objective of social business?",
+          "options": [
+            {"key":"A","text":"Profit maximization"},
+            {"key":"B","text":"Poverty reduction"},
+            {"key":"C","text":"Market monopoly"},
+            {"key":"D","text":"Price discrimination"}
+          ],
+          "correctKey": "B",
+          "explanation": "A social business, as conceived by Muhammad Yunus, aims to solve social problems such as poverty rather than to maximize profit. Profit maximization, monopoly, and price discrimination are goals of conventional profit-driven businesses."
+        },
+        {
+          "number": 23,
+          "order": 3,
+          "type": "mcq",
+          "stem": "What does unlimited liability mean?",
+          "options": [
+            {"key":"A","text":"Liability limited to total capital"},
+            {"key":"B","text":"Liability limited to total investment"},
+            {"key":"C","text":"Liability extending to personal assets beyond investment"},
+            {"key":"D","text":"Liability limited to government guarantee"}
+          ],
+          "correctKey": "C",
+          "explanation": "Unlimited liability means the owner is personally responsible for all business debts, so personal assets can be used to settle them even beyond the amount invested. The other options describe limited liability, where responsibility stops at the invested capital."
+        },
+        {
+          "number": 24,
+          "order": 4,
+          "type": "mcq",
+          "stem": "Which leadership style encourages employees to participate in decision-making?",
+          "options": [
+            {"key":"A","text":"Autocratic"},
+            {"key":"B","text":"Democratic"},
+            {"key":"C","text":"Bureaucratic"},
+            {"key":"D","text":"Laissez-faire"}
+          ],
+          "correctKey": "B",
+          "explanation": "Democratic (participative) leadership invites employees to share ideas and take part in decisions. Autocratic leaders decide alone, bureaucratic leaders follow rigid rules, and laissez-faire leaders leave employees fully on their own."
+        },
+        {
+          "number": 25,
+          "order": 5,
+          "type": "mcq",
+          "stem": "Which marketing function is concerned with creating a distinct image in customers' minds?",
+          "options": [
+            {"key":"A","text":"Segmentation"},
+            {"key":"B","text":"Positioning"},
+            {"key":"C","text":"Forecasting"},
+            {"key":"D","text":"Warehousing"}
+          ],
+          "correctKey": "B",
+          "explanation": "Positioning is the act of designing a product's image so it occupies a distinct place in the target customer's mind relative to competitors. Segmentation divides the market, forecasting predicts demand, and warehousing is a storage function."
+        },
+        {
+          "number": 26,
+          "order": 6,
+          "type": "mcq",
+          "stem": "The primary goal of financial management is to:",
+          "options": [
+            {"key":"A","text":"Maximize total sales revenue"},
+            {"key":"B","text":"Maximize shareholders' wealth"},
+            {"key":"C","text":"Minimize costs only"},
+            {"key":"D","text":"Maximize the number of employees"}
+          ],
+          "correctKey": "B",
+          "explanation": "The widely accepted primary objective of financial management is to maximize the wealth (market value) of the owners or shareholders. Maximizing sales (A) or minimizing costs (C) are narrower operational aims that ignore risk and long-term value, and increasing headcount (D) is not a financial objective at all."
+        },
+        {
+          "number": 27,
+          "order": 7,
+          "type": "mcq",
+          "stem": "Which management function determines the future course of action?",
+          "options": [
+            {"key":"A","text":"Organizing"},
+            {"key":"B","text":"Planning"},
+            {"key":"C","text":"Staffing"},
+            {"key":"D","text":"Controlling"}
+          ],
+          "correctKey": "B",
+          "explanation": "Planning is the primary management function that sets goals and decides the future course of action in advance. Organizing arranges resources, staffing fills positions, and controlling checks performance against the plan."
+        },
+        {
+          "number": 28,
+          "order": 8,
+          "type": "mcq",
+          "stem": "Which is NOT an external source of recruitment?",
+          "options": [
+            {"key":"A","text":"Advertising"},
+            {"key":"B","text":"Promotion"},
+            {"key":"C","text":"Job agents"},
+            {"key":"D","text":"Vocational training centre"}
+          ],
+          "correctKey": "B",
+          "explanation": "Promotion fills a vacancy by moving an existing employee up within the organization, making it an internal source of recruitment. Advertising, job agents, and vocational training centres all bring in candidates from outside the firm."
+        },
+        {
+          "number": 29,
+          "order": 9,
+          "type": "mcq",
+          "stem": "Positioning is a part of which business function?",
+          "options": [
+            {"key":"A","text":"Accounting"},
+            {"key":"B","text":"Finance"},
+            {"key":"C","text":"Marketing"},
+            {"key":"D","text":"Management"}
+          ],
+          "correctKey": "C",
+          "explanation": "Positioning is a core marketing activity, part of the segmentation-targeting-positioning (STP) process used to shape a product's image. It is not a function of accounting, finance, or general management."
+        },
+        {
+          "number": 30,
+          "order": 10,
+          "type": "mcq",
+          "stem": "Which business organization has unlimited liability?",
+          "options": [
+            {"key":"A","text":"Public Limited Company"},
+            {"key":"B","text":"Private Limited Company"},
+            {"key":"C","text":"Sole Proprietorship"},
+            {"key":"D","text":"Cooperative Society"}
+          ],
+          "correctKey": "C",
+          "explanation": "In a sole proprietorship the owner and the business are legally the same, so the owner bears unlimited liability for all debts. Limited companies and cooperative societies are separate legal entities that give their members limited liability."
+        }
+      ]
+    },
+    {
+      "order": 4,
+      "title": "Economics",
+      "marksPerCorrect": 1,
+      "penaltyPerWrong": 0,
+      "thresholdPercent": null,
+      "questions": [
+        {
+          "number": 31,
+          "order": 1,
+          "type": "mcq",
+          "stem": "Opportunity cost refers to—",
+          "options": [
+            {"key":"A","text":"Total production cost"},
+            {"key":"B","text":"Money spent on production"},
+            {"key":"C","text":"The next best alternative sacrificed"},
+            {"key":"D","text":"Fixed cost"}
+          ],
+          "correctKey": "C",
+          "explanation": "Opportunity cost is the value of the next best alternative you give up when making a choice. It is a concept of foregone benefit, not an accounting figure like total, fixed, or money cost."
+        },
+        {
+          "number": 32,
+          "order": 2,
+          "type": "mcq",
+          "stem": "Which of the following is not a factor of production?",
+          "options": [
+            {"key":"A","text":"Land"},
+            {"key":"B","text":"Labour"},
+            {"key":"C","text":"Entrepreneurship"},
+            {"key":"D","text":"Inflation"}
+          ],
+          "correctKey": "D",
+          "explanation": "The four factors of production are land, labour, capital, and entrepreneurship. Inflation is a rise in the general price level, not a resource used to produce goods and services."
+        },
+        {
+          "number": 33,
+          "order": 3,
+          "type": "mcq",
+          "stem": "A rise in price generally causes—",
+          "options": [
+            {"key":"A","text":"An increase in quantity demanded"},
+            {"key":"B","text":"A decrease in quantity demanded"},
+            {"key":"C","text":"No change in demand"},
+            {"key":"D","text":"An increase in supply only"}
+          ],
+          "correctKey": "B",
+          "explanation": "The law of demand states that, other things equal, a rise in price leads to a fall in the quantity demanded. Consumers buy less of a good as it becomes more expensive."
+        },
+        {
+          "number": 34,
+          "order": 4,
+          "type": "mcq",
+          "stem": "Which economic system mainly relies on the price mechanism?",
+          "options": [
+            {"key":"A","text":"Socialist economy"},
+            {"key":"B","text":"Command economy"},
+            {"key":"C","text":"Capitalist economy"},
+            {"key":"D","text":"Traditional economy"}
+          ],
+          "correctKey": "C",
+          "explanation": "A capitalist (free-market) economy relies on the price mechanism, where prices set by supply and demand guide resource allocation. Socialist and command economies rely instead on central planning by the government."
+        },
+        {
+          "number": 35,
+          "order": 5,
+          "type": "mcq",
+          "stem": "Inflation primarily reduces the—",
+          "options": [
+            {"key":"A","text":"Purchasing power of money"},
+            {"key":"B","text":"Production capacity"},
+            {"key":"C","text":"Population growth"},
+            {"key":"D","text":"Tax revenue"}
+          ],
+          "correctKey": "A",
+          "explanation": "Inflation means the general price level rises, so each unit of money buys fewer goods, reducing its purchasing power. It does not directly cut production capacity, population, or tax revenue."
+        },
+        {
+          "number": 36,
+          "order": 6,
+          "type": "mcq",
+          "stem": "Which of the following is an example of a public good?",
+          "options": [
+            {"key":"A","text":"Private car"},
+            {"key":"B","text":"Mobile phone"},
+            {"key":"C","text":"Street lighting"},
+            {"key":"D","text":"Restaurant meal"}
+          ],
+          "correctKey": "C",
+          "explanation": "Street lighting is a public good because it is non-excludable and non-rival: no one can be prevented from benefiting, and one person's use does not reduce it for others. A car, phone, and meal are private goods that one person consumes exclusively."
+        },
+        {
+          "number": 37,
+          "order": 7,
+          "type": "mcq",
+          "stem": "Which institution formulates the monetary policy of Bangladesh?",
+          "options": [
+            {"key":"A","text":"Ministry of Finance"},
+            {"key":"B","text":"Bangladesh Bank"},
+            {"key":"C","text":"National Board of Revenue"},
+            {"key":"D","text":"Bangladesh Bureau of Statistics"}
+          ],
+          "correctKey": "B",
+          "explanation": "Bangladesh Bank is the country's central bank and is responsible for formulating and implementing monetary policy. The NBR handles taxation, and the BBS handles statistics, while fiscal policy sits with the Ministry of Finance."
+        },
+        {
+          "number": 38,
+          "order": 8,
+          "type": "mcq",
+          "stem": "In perfect competition, the price is determined by:",
+          "options": [
+            {"key":"A","text":"Government"},
+            {"key":"B","text":"Individual firm"},
+            {"key":"C","text":"Market demand and supply"},
+            {"key":"D","text":"Consumers only"}
+          ],
+          "correctKey": "C",
+          "explanation": "Under perfect competition, price is set by the interaction of overall market demand and supply, and each firm is a price taker. No single firm, the government, or consumers alone can dictate the market price."
+        },
+        {
+          "number": 39,
+          "order": 9,
+          "type": "mcq",
+          "stem": "GDP measures—",
+          "options": [
+            {"key":"A","text":"National savings only"},
+            {"key":"B","text":"Total value of final goods and services produced within a country"},
+            {"key":"C","text":"Government expenditure only"},
+            {"key":"D","text":"Export earnings only"}
+          ],
+          "correctKey": "B",
+          "explanation": "Gross Domestic Product (GDP) is the total market value of all final goods and services produced within a country's borders in a given period. It is a broad output measure, not limited to savings, government spending, or exports."
+        },
+        {
+          "number": 40,
+          "order": 10,
+          "type": "mcq",
+          "stem": "Which one is an indirect tax?",
+          "options": [
+            {"key":"A","text":"Income Tax"},
+            {"key":"B","text":"Corporate Tax"},
+            {"key":"C","text":"VAT"},
+            {"key":"D","text":"Wealth Tax"}
+          ],
+          "correctKey": "C",
+          "explanation": "VAT (Value Added Tax) is an indirect tax because it is levied on goods and services and its burden can be passed on to the final consumer. Income, corporate, and wealth taxes are direct taxes paid straight to the government by the person or entity assessed."
+        }
+      ]
+    },
+    {
+      "order": 5,
+      "title": "Accounting",
+      "marksPerCorrect": 1,
+      "penaltyPerWrong": 0,
+      "thresholdPercent": null,
+      "questions": [
+        {
+          "number": 41,
+          "order": 1,
+          "type": "mcq",
+          "stem": "The accounting equation is expressed as:",
+          "options": [
+            {"key":"A","text":"Assets = Liabilities minus Capital"},
+            {"key":"B","text":"Assets = Liabilities plus Capital"},
+            {"key":"C","text":"Capital = Assets plus Liabilities"},
+            {"key":"D","text":"Liabilities = Assets plus Capital"}
+          ],
+          "correctKey": "B",
+          "explanation": "The fundamental accounting equation is Assets = Liabilities + Capital, meaning a firm's assets are financed by what it owes (liabilities) plus the owner's stake (capital). The other arrangements rearrange the terms incorrectly."
+        },
+        {
+          "number": 42,
+          "order": 2,
+          "type": "mcq",
+          "stem": "The account that normally carries a credit balance is:",
+          "options": [
+            {"key":"A","text":"Machinery"},
+            {"key":"B","text":"Drawings"},
+            {"key":"C","text":"Sales revenue"},
+            {"key":"D","text":"Rent expense"}
+          ],
+          "correctKey": "C",
+          "explanation": "Revenue accounts such as Sales revenue normally carry a credit balance because income increases owner's equity. Machinery (an asset), Drawings, and Rent expense all normally carry debit balances."
+        },
+        {
+          "number": 43,
+          "order": 3,
+          "type": "mcq",
+          "stem": "A transaction is first recorded in the:",
+          "options": [
+            {"key":"A","text":"Ledger"},
+            {"key":"B","text":"Journal"},
+            {"key":"C","text":"Trial balance"},
+            {"key":"D","text":"Balance sheet"}
+          ],
+          "correctKey": "B",
+          "explanation": "The journal is the book of original entry where transactions are first recorded in chronological order before being posted to the ledger. The trial balance and balance sheet are later stages in the accounting cycle."
+        },
+        {
+          "number": 44,
+          "order": 4,
+          "type": "mcq",
+          "stem": "Depreciation is best described as:",
+          "options": [
+            {"key":"A","text":"An increase in the value of an asset"},
+            {"key":"B","text":"The current market value of an asset"},
+            {"key":"C","text":"A cash payment made for an asset"},
+            {"key":"D","text":"The allocation of an asset's cost over its useful life"}
+          ],
+          "correctKey": "D",
+          "explanation": "Depreciation is the systematic allocation of a fixed asset's cost over its useful life to match the expense with the revenue it helps generate. It is not a market valuation, a cash payment, or an increase in value."
+        },
+        {
+          "number": 45,
+          "order": 5,
+          "type": "mcq",
+          "stem": "Which statement shows the financial position of a business on a specific date?",
+          "options": [
+            {"key":"A","text":"Income statement"},
+            {"key":"B","text":"Cash flow statement"},
+            {"key":"C","text":"Balance sheet"},
+            {"key":"D","text":"Statement of owner's equity"}
+          ],
+          "correctKey": "C",
+          "explanation": "The balance sheet shows a firm's assets, liabilities, and capital at a specific point in time, giving its financial position on that date. The income and cash flow statements cover activity over a period rather than a single date."
+        },
+        {
+          "number": 46,
+          "order": 6,
+          "type": "mcq",
+          "stem": "Goods returned by a customer are recorded by the seller as:",
+          "options": [
+            {"key":"A","text":"Sales return"},
+            {"key":"B","text":"Purchase return"},
+            {"key":"C","text":"Sales"},
+            {"key":"D","text":"Purchases"}
+          ],
+          "correctKey": "A",
+          "explanation": "When a customer returns goods, the seller records it as a sales return (return inwards), which reduces total sales. A purchase return would be recorded by the buyer, not the seller."
+        },
+        {
+          "number": 47,
+          "order": 7,
+          "type": "mcq",
+          "stem": "If beginning inventory is Tk. 10,000, purchases are Tk. 50,000 and ending inventory is Tk. 15,000, the cost of goods sold is:",
+          "options": [
+            {"key":"A","text":"Tk. 75,000"},
+            {"key":"B","text":"Tk. 60,000"},
+            {"key":"C","text":"Tk. 50,000"},
+            {"key":"D","text":"Tk. 45,000"}
+          ],
+          "correctKey": "D",
+          "explanation": "Cost of goods sold = beginning inventory + purchases - ending inventory = 10,000 + 50,000 - 15,000 = Tk. 45,000. The distractors come from forgetting to subtract ending inventory or misapplying the formula."
+        },
+        {
+          "number": 48,
+          "order": 8,
+          "type": "mcq",
+          "stem": "Which accounting concept assumes a business will continue to operate for the foreseeable future?",
+          "options": [
+            {"key":"A","text":"Matching concept"},
+            {"key":"B","text":"Going concern concept"},
+            {"key":"C","text":"Money measurement concept"},
+            {"key":"D","text":"Prudence concept"}
+          ],
+          "correctKey": "B",
+          "explanation": "The going concern concept assumes the business will keep operating for the foreseeable future and is not about to shut down. This justifies recording assets at cost rather than immediate liquidation value."
+        },
+        {
+          "number": 49,
+          "order": 9,
+          "type": "mcq",
+          "stem": "Unearned revenue is classified as a:",
+          "options": [
+            {"key":"A","text":"Liability"},
+            {"key":"B","text":"Asset"},
+            {"key":"C","text":"Revenue"},
+            {"key":"D","text":"Expense"}
+          ],
+          "correctKey": "A",
+          "explanation": "Unearned revenue is money received in advance for goods or services not yet delivered, so the business owes that performance and records it as a liability. It becomes revenue only once the goods or services are actually provided."
+        },
+        {
+          "number": 50,
+          "order": 10,
+          "type": "mcq",
+          "stem": "Sales revenue minus cost of goods sold equals:",
+          "options": [
+            {"key":"A","text":"Net profit"},
+            {"key":"B","text":"Operating profit"},
+            {"key":"C","text":"Gross profit"},
+            {"key":"D","text":"Retained earnings"}
+          ],
+          "correctKey": "C",
+          "explanation": "Sales revenue minus cost of goods sold gives gross profit. Operating and net profit are found only after further deducting operating expenses, interest, and taxes."
+        }
+      ]
+    }
+  ]
+}

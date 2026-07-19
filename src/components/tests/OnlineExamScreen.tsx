@@ -15,6 +15,10 @@ interface Props {
   slug: string;
   bucket: string;
   initialPayload: AttemptPayload;
+  /** Where the "Back to Tests" button after submit/ban points. Defaults to /tests/{bucket}. */
+  exitHref?: string;
+  /** Optional label for the exit button. Defaults to "Back to Tests". */
+  exitLabel?: string;
 }
 
 // Flat list of all questions across sections
@@ -36,8 +40,10 @@ function buildGroupMap(payload: AttemptPayload): Map<number, (typeof payload.sec
 
 type AnswerMap = Record<number, { selectedKey: string | null; flagged: boolean }>;
 
-export default function OnlineExamScreen({ slug, bucket, initialPayload }: Props) {
+export default function OnlineExamScreen({ slug, bucket, initialPayload, exitHref, exitLabel }: Props) {
   const router = useRouter();
+  const resolvedExitHref = exitHref ?? `/tests/${bucket}`;
+  const resolvedExitLabel = exitLabel ?? 'Back to Tests';
 
   // Build answer state from payload
   const initAnswers = (): AnswerMap => {
@@ -230,8 +236,8 @@ export default function OnlineExamScreen({ slug, bucket, initialPayload }: Props
           <p className="text-exam-ink-muted text-sm leading-relaxed mb-6">
             You have been banned from this test due to repeated violations. Contact an admin to appeal.
           </p>
-          <button onClick={() => router.push(`/tests/${bucket}`)} className="px-6 py-3 rounded-xl bg-exam-elevated border border-exam-border text-exam-ink-muted text-sm">
-            Back to Tests
+          <button onClick={() => router.push(resolvedExitHref)} className="px-6 py-3 rounded-xl bg-exam-elevated border border-exam-border text-exam-ink-muted text-sm">
+            {resolvedExitLabel}
           </button>
         </div>
       </div>
@@ -256,10 +262,10 @@ export default function OnlineExamScreen({ slug, bucket, initialPayload }: Props
             Results will be available once the test window closes and all answers have been reviewed.
           </p>
           <button
-            onClick={() => router.push(`/tests/${bucket}`)}
+            onClick={() => router.push(resolvedExitHref)}
             className="px-6 py-3 rounded-xl bg-exam-maroon hover:bg-exam-maroon-bright text-exam-ink text-sm font-medium transition-colors"
           >
-            Back to Tests
+            {resolvedExitLabel}
           </button>
         </motion.div>
       </div>

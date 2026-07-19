@@ -50,6 +50,7 @@ export interface TakingQuestion {
   stem: string;
   options: Option[];
   imageUrl: string | null;
+  explanation: string | null;
 }
 export interface TakingGroup {
   id: number;
