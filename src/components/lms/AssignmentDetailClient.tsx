@@ -36,6 +36,7 @@ export interface AssignmentInfo {
   title: string;
   description: string;
   attachmentUrl: string | null;
+  materialId: number | null;
   subject: string;
   dueAt: number;
   classSessionId: number | null;
@@ -55,7 +56,7 @@ export interface SubmissionInfo {
 interface Props {
   assignment: AssignmentInfo;
   initialSubmission: SubmissionInfo | null;
-  solutionUrl: string | null;
+  solutionMaterialId: number | null;
 }
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
@@ -80,7 +81,7 @@ const cardV: Variants = {
 
 // ─── Component ────────────────────────────────────────────────────────────────
 
-export default function AssignmentDetailClient({ assignment, initialSubmission, solutionUrl }: Props) {
+export default function AssignmentDetailClient({ assignment, initialSubmission, solutionMaterialId }: Props) {
   const [submission, setSubmission] = useState<SubmissionInfo | null>(initialSubmission);
   const [resubmitting, setResubmitting] = useState(false);
   const [note, setNote] = useState('');
@@ -205,7 +206,15 @@ export default function AssignmentDetailClient({ assignment, initialSubmission, 
             {assignment.description}
           </p>
 
-          {assignment.attachmentUrl && (
+          {assignment.materialId ? (
+            <Link
+              href={`/dashboard/materials/${assignment.materialId}`}
+              className="inline-flex items-center gap-2 text-xs text-[#760F13] font-medium hover:underline"
+            >
+              <Paperclip className="w-3.5 h-3.5" strokeWidth={1.5} />
+              View attached resource
+            </Link>
+          ) : assignment.attachmentUrl && (
             <a
               href={assignment.attachmentUrl}
               target="_blank"
@@ -322,21 +331,19 @@ export default function AssignmentDetailClient({ assignment, initialSubmission, 
         </AnimatePresence>
 
         {/* ── Solution unlock ───────────────────────────────────────────────── */}
-        {submission && solutionUrl && (
+        {solutionMaterialId && (
           <motion.section
             variants={cardV} initial="hidden" animate="visible"
             className="bg-white rounded-2xl border border-[#E8DDD5] p-5"
             style={{ boxShadow: '0 1px 3px rgba(90,11,15,0.06)' }}
           >
-            <a
-              href={solutionUrl}
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              href={`/dashboard/materials/${solutionMaterialId}`}
               className="flex items-center gap-2 text-sm font-semibold text-[#760F13] hover:underline"
             >
               <KeyRound className="w-4 h-4" strokeWidth={1.5} />
               View solution
-            </a>
+            </Link>
           </motion.section>
         )}
 
