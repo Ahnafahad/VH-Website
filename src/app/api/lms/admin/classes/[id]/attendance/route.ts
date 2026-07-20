@@ -117,7 +117,7 @@ function validateRecords(body: unknown): AttendanceRecordInput[] {
     return {
       userId,
       present: rec.present === true,
-      mode: rec.mode === 'offline' ? 'offline' : 'online',
+      mode: rec.mode === 'online' ? 'online' : 'offline',
     };
   });
 }

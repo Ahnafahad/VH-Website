@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   Video, Upload, BookOpen, CheckCircle, Users, Clock,
-  ExternalLink, CalendarX, ChevronRight, Loader2,
+  ExternalLink, CalendarX, ChevronRight, Loader2, Check,
 } from 'lucide-react';
 import { uploadToR2 } from '@/lib/lms/upload-client';
 import { trackFeature } from '@/lib/analytics/tracker';
@@ -223,6 +223,14 @@ function HomeworkSheet({
 
 // ─── Attendance Sheet ─────────────────────────────────────────────────────────
 
+interface RosterStudentHistoryEntry {
+  sessionId: number;
+  title: string;
+  scheduledAt: number; // ms
+  present: boolean;
+  mode: 'online' | 'offline' | null;
+}
+
 interface RosterStudent {
   userId: number;
   name: string;
@@ -231,6 +239,8 @@ interface RosterStudent {
   mode: 'online' | 'offline';
   totalAbsences: number;
   absencesLast7Days: number;
+  lexicalPoints: number;
+  history: RosterStudentHistoryEntry[];
 }
 
 function AttendanceSheet({
@@ -242,6 +252,7 @@ function AttendanceSheet({
   const [loading, setLoading] = useState(true);
   const [saving,  setSaving]  = useState(false);
   const [error,   setError]  = useState('');
+  const [expandedId, setExpandedId] = useState<number | null>(null);
 
   useEffect(() => {
     let cancelled = false;
@@ -308,49 +319,138 @@ function AttendanceSheet({
       </p>
 
       <div style={{ maxHeight: 380, overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: 6 }}>
-        {students.map(s => (
-          <div
-            key={s.userId}
-            style={{
-              display: 'flex', alignItems: 'center', gap: 10,
-              padding: '8px 10px', borderRadius: 8, border: `1px solid ${BORDER}`,
-              background: s.present ? 'rgba(16,185,129,0.06)' : '#FFFFFF',
-            }}
-          >
-            <input
-              type="checkbox"
-              checked={s.present}
-              onChange={() => togglePresent(s.userId)}
-              style={{ width: 16, height: 16, flexShrink: 0, cursor: 'pointer' }}
-            />
-            <div style={{ flex: 1, minWidth: 0 }}>
-              <p style={{
-                margin: 0, fontSize: 13, fontWeight: 600, color: SLATE,
-                overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap',
-              }}>
-                {s.name}
-              </p>
-              <p style={{ margin: 0, fontSize: 11, color: MUTED }}>
-                {s.totalAbsences} absent total · {s.absencesLast7Days} in last 7d
-              </p>
+        {students.map(s => {
+          const isExpanded = expandedId === s.userId;
+          const lastPresent = s.history.find(h => h.present);
+
+          return (
+            <div key={s.userId}>
+              {/* Main row */}
+              <div
+                style={{
+                  display: 'flex', alignItems: 'center', gap: 10,
+                  padding: '8px 10px',
+                  borderRadius: isExpanded ? '8px 8px 0 0' : 8,
+                  border: `1px solid ${BORDER}`,
+                  borderBottom: isExpanded ? `1px solid ${BORDER}` : `1px solid ${BORDER}`,
+                  background: s.present ? 'rgba(16,185,129,0.06)' : '#FFFFFF',
+                }}
+              >
+                <input
+                  type="checkbox"
+                  checked={s.present}
+                  onChange={() => togglePresent(s.userId)}
+                  style={{ width: 16, height: 16, flexShrink: 0, cursor: 'pointer' }}
+                />
+                <div
+                  style={{ flex: 1, minWidth: 0, cursor: 'pointer' }}
+                  onClick={() => setExpandedId(isExpanded ? null : s.userId)}
+                >
+                  <p style={{
+                    margin: 0, fontSize: 13, fontWeight: 600, color: SLATE,
+                    overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap',
+                  }}>
+                    {s.name}
+                  </p>
+                  <p style={{ margin: 0, fontSize: 11, color: MUTED }}>
+                    {s.totalAbsences} absent total · {s.absencesLast7Days} in last 7d
+                  </p>
+                </div>
+                {/* Segmented Offline | Online toggle */}
+                <div style={{
+                  display: 'flex', flexShrink: 0,
+                  border: `1px solid ${BORDER}`, borderRadius: 6, overflow: 'hidden',
+                  opacity: s.present ? 1 : 0.45,
+                  pointerEvents: s.present ? 'auto' : 'none',
+                }}>
+                  {(['offline', 'online'] as const).map(opt => (
+                    <button
+                      key={opt}
+                      onClick={() => setMode(s.userId, opt)}
+                      disabled={!s.present}
+                      style={{
+                        padding: '4px 9px', fontSize: 11, fontWeight: 600,
+                        border: 'none', borderRight: opt === 'offline' ? `1px solid ${BORDER}` : 'none',
+                        background: s.mode === opt ? RED : '#FFFFFF',
+                        color: s.mode === opt ? '#FFFFFF' : MUTED,
+                        cursor: s.present ? 'pointer' : 'default',
+                        textTransform: 'capitalize',
+                        transition: 'background 0.12s, color 0.12s',
+                      }}
+                    >
+                      {opt.charAt(0).toUpperCase() + opt.slice(1)}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Expandable details panel */}
+              {isExpanded && (
+                <div style={{
+                  border: `1px solid ${BORDER}`, borderTop: 'none',
+                  borderRadius: '0 0 8px 8px',
+                  padding: '10px 12px',
+                  background: BG,
+                  display: 'flex', flexDirection: 'column', gap: 6,
+                }}>
+                  <p style={{ margin: 0, fontSize: 12, color: SLATE }}>
+                    <span style={{ color: MUTED }}>Email: </span>{s.email}
+                  </p>
+                  <p style={{ margin: 0, fontSize: 12, color: SLATE }}>
+                    <span style={{ color: MUTED }}>Lexical points: </span>{s.lexicalPoints}
+                  </p>
+                  <p style={{ margin: 0, fontSize: 12, color: SLATE }}>
+                    <span style={{ color: MUTED }}>Last attendance: </span>
+                    {lastPresent ? fmtDhaka(lastPresent.scheduledAt, { dateStyle: 'medium' }) : 'Never'}
+                  </p>
+                  {s.history.length === 0 ? (
+                    <p style={{ margin: 0, fontSize: 11, color: MUTED }}>No past classes yet.</p>
+                  ) : (
+                    <div style={{ overflowX: 'auto', marginTop: 4 }}>
+                      <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 11 }}>
+                        <thead>
+                          <tr>
+                            {['Class', 'Present', 'Online', 'Offline'].map(col => (
+                              <th key={col} style={{
+                                padding: '4px 8px', textAlign: 'left', fontWeight: 700,
+                                color: MUTED, borderBottom: `1px solid ${BORDER}`,
+                                whiteSpace: 'nowrap',
+                              }}>{col}</th>
+                            ))}
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {s.history.map(h => (
+                            <tr key={h.sessionId}>
+                              <td style={{ padding: '4px 8px', color: SLATE, maxWidth: 140, borderBottom: `1px solid ${BORDER}` }}>
+                                <p style={{
+                                  margin: 0, overflow: 'hidden', textOverflow: 'ellipsis',
+                                  whiteSpace: 'nowrap', fontWeight: 500,
+                                }}>{h.title}</p>
+                                <p style={{ margin: 0, color: MUTED, fontSize: 10 }}>
+                                  {fmtDhaka(h.scheduledAt, { dateStyle: 'short' })}
+                                </p>
+                              </td>
+                              <td style={{ padding: '4px 8px', textAlign: 'center', borderBottom: `1px solid ${BORDER}` }}>
+                                {h.present ? <Check size={12} style={{ color: '#10B981' }} aria-hidden /> : <span style={{ color: MUTED }}>—</span>}
+                              </td>
+                              <td style={{ padding: '4px 8px', textAlign: 'center', borderBottom: `1px solid ${BORDER}` }}>
+                                {h.present && h.mode === 'online' ? <Check size={12} style={{ color: '#10B981' }} aria-hidden /> : <span style={{ color: MUTED }}>—</span>}
+                              </td>
+                              <td style={{ padding: '4px 8px', textAlign: 'center', borderBottom: `1px solid ${BORDER}` }}>
+                                {h.present && h.mode === 'offline' ? <Check size={12} style={{ color: '#10B981' }} aria-hidden /> : <span style={{ color: MUTED }}>—</span>}
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  )}
+                </div>
+              )}
             </div>
-            <select
-              value={s.mode}
-              onChange={e => setMode(s.userId, e.target.value as 'online' | 'offline')}
-              disabled={!s.present}
-              style={{
-                fontSize: 12, padding: '5px 8px', borderRadius: 6,
-                border: `1px solid ${BORDER}`,
-                background: s.present ? '#FFFFFF' : BG,
-                color: s.present ? SLATE : MUTED,
-                flexShrink: 0,
-              }}
-            >
-              <option value="online">Online</option>
-              <option value="offline">Offline</option>
-            </select>
-          </div>
-        ))}
+          );
+        })}
       </div>
 
       {error && <p style={{ fontSize: 12, color: RED, margin: 0 }}>{error}</p>}

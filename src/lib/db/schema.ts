@@ -1029,7 +1029,7 @@ export const classAttendance = sqliteTable('class_attendance', {
   userId:    integer('user_id').notNull().references(() => users.id, { onDelete: 'cascade' }),
   joinedAt:  integer('joined_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
   // 'online' | 'offline' — how the student attended
-  mode:      text('mode').notNull().default('online'),
+  mode:      text('mode').notNull().default('offline'),
 }, (t) => [
   unique().on(t.sessionId, t.userId),
 ]);
