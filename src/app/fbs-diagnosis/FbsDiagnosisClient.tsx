@@ -8,9 +8,6 @@ import { motion } from 'motion/react';
 import {
   ArrowUpRight,
   ArrowDown,
-  Clock,
-  ListChecks,
-  Trophy,
   GraduationCap,
   Sparkles,
 } from 'lucide-react';
@@ -96,30 +93,40 @@ export default function FbsDiagnosisClient() {
       <section className="relative bg-[#F5EDE3] py-20 sm:py-28 overflow-hidden">
         <LedgerLines />
         <div className="relative max-w-[1400px] mx-auto px-6 sm:px-10 lg:px-16">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px border-t border-b border-[#1A0507]/10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+            className="flex flex-wrap items-baseline gap-x-10 gap-y-4 pb-10 border-b border-[#1A0507]/10"
+          >
             {[
-              { icon: Clock, k: '30 minutes', v: 'One focused sitting, timed to the paper.' },
-              { icon: ListChecks, k: '50 MCQs', v: 'Across five DU C-Unit subjects.' },
-              { icon: Sparkles, k: 'Instant results', v: 'Detailed breakdown with explanations.' },
-              { icon: Trophy, k: 'Leaderboard', v: 'See how you rank against everyone.' },
-            ].map((f, i) => (
-              <motion.div
-                key={f.k}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.7, delay: i * 0.08 }}
-                className="relative py-10 px-6 sm:px-8 bg-[#F5EDE3]"
-                style={{ boxShadow: 'inset -1px 0 0 rgba(26,5,7,0.1)' }}
-              >
-                <f.icon className="w-5 h-5 mb-4 text-[#A86E58]" strokeWidth={1.5} />
-                <div className="font-heading font-light text-2xl sm:text-3xl tracking-[-0.02em] text-[#1A0507] mb-2">
-                  {f.k}
-                </div>
-                <p className="font-sans text-sm leading-relaxed text-[#1A0507]/60">{f.v}</p>
-              </motion.div>
+              ['50', 'MCQs'],
+              ['50', 'Marks'],
+              ['30', 'Minutes'],
+            ].map(([n, label]) => (
+              <div key={label} className="flex items-baseline gap-2.5">
+                <span className="font-heading font-light text-[clamp(2.5rem,6vw,4rem)] leading-none tracking-[-0.02em] text-[#1A0507]">
+                  {n}
+                </span>
+                <span className="font-sans text-[11px] tracking-[0.25em] uppercase text-[#A86E58]">
+                  {label}
+                </span>
+              </div>
             ))}
-          </div>
+          </motion.div>
+
+          <motion.p
+            initial={{ opacity: 0, y: 14 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, delay: 0.1 }}
+            className="mt-10 max-w-2xl font-sans text-base sm:text-lg leading-relaxed text-[#1A0507]/65"
+          >
+            One focused sitting across five DU C-Unit subjects. Instant, detailed
+            results with explanations — see your rank on a public leaderboard,
+            benchmarked against our instructors.
+          </motion.p>
 
           {/* Subjects list */}
           <div className="mt-12 flex flex-wrap items-center gap-3">
@@ -148,13 +155,18 @@ export default function FbsDiagnosisClient() {
             transition={{ duration: 0.8 }}
             className="mb-16"
           >
-            <div className="font-sans text-[11px] tracking-[0.3em] uppercase text-[#A86E58] mb-5 flex items-center gap-3">
-              <span className="w-8 h-px bg-[#A86E58]" />
-              The assessments
-            </div>
             <h2 className="font-heading font-light text-[#1A0507] text-[clamp(2.2rem,6vw,4.5rem)] leading-[0.95] tracking-[-0.02em]">
-              Three papers.{' '}
-              <em className="font-extralight text-[#760F13]">Start with one.</em>
+              {featuredDone ? (
+                <>
+                  Two more papers.{' '}
+                  <em className="font-extralight text-[#760F13]">Keep going.</em>
+                </>
+              ) : (
+                <>
+                  One paper.{' '}
+                  <em className="font-extralight text-[#760F13]">Start here.</em>
+                </>
+              )}
             </h2>
           </motion.div>
 
