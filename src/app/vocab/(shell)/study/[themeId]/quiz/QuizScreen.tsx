@@ -5,8 +5,8 @@ import type { QuizConfig } from '@/components/vocab/QuizConfigSheet';
 import { motion, AnimatePresence, useReducedMotion, type Variants } from 'framer-motion';
 import { useSafeNavigate } from '@/hooks/useSafeNavigate';
 import {
-  MoveRight, BadgeCheck, OctagonX,
-  Gem, RefreshCcwDot, Crown, ChevronDown, Share2,
+  MoveRight,
+  Gem, RefreshCcwDot, ChevronDown, Share2,
 } from 'lucide-react';
 import { useBadgeQueue } from '@/lib/vocab/badges/queue';
 import { consumePrefetch } from '@/lib/vocab/quiz-prefetch';
@@ -16,7 +16,7 @@ import AnimatedNumber from '@/components/vocab/AnimatedNumber';
 import { trackFeature } from '@/lib/analytics/tracker';
 import { RETENTION_EVENTS, trackRetention } from '@/lib/vocab/retention-events';
 import { shareLexiCore } from '@/lib/vocab/native-share';
-import { LexiArtwork } from '@/components/vocab/LexiAsset';
+import { LexiArtwork, LexiIcon } from '@/components/vocab/LexiAsset';
 
 // ─── Inline SVG micro-icons (no generic defaults) ────────────────────────────
 function IconClose() {
@@ -396,9 +396,13 @@ function OptionCard({ opt, phase, selectedLetter, result, index, onSelect }: Opt
         {opt.word}
       </span>
 
-      {/* Reveal icon */}
-      {isRevealed && isCorrect && <BadgeCheck size={16} color={C.success} style={{ flexShrink: 0 }} />}
-      {isRevealed && isWrong   && <OctagonX   size={16} color={C.red}     style={{ flexShrink: 0 }} />}
+      {/* Reveal icon — purpose-built quiz stamps */}
+      {isRevealed && isCorrect && (
+        <LexiIcon path="quiz/correct.svg" size={20} color={C.success} label="Correct" style={{ flexShrink: 0 }} />
+      )}
+      {isRevealed && isWrong && (
+        <LexiIcon path="quiz/incorrect.svg" size={20} color={C.red} label="Incorrect" style={{ flexShrink: 0 }} />
+      )}
     </motion.button>
   );
 }
@@ -443,7 +447,30 @@ function QuizSummary({ summary, onContinue }: { summary: SummaryData; onContinue
       >
         {/* Ring */}
         <div style={{ position: 'relative', width: 140, height: 140 }}>
-          <LexiArtwork path={passed ? 'quiz/pass.svg' : 'quiz/try-again.svg'} width={140} height={140} style={{ position: 'absolute', inset: 0, opacity: 0.42 }} />
+          {/* summary-ring.svg: decorative orbital backdrop, always present */}
+          <LexiIcon
+            path="quiz/summary-ring.svg"
+            size={140}
+            color={ringColor}
+            style={{ position: 'absolute', inset: 0, opacity: 0.12, flexShrink: 0 }}
+          />
+          {/* perfect-score for 100%, otherwise pass/try-again watermark */}
+          {scorePct === 100 ? (
+            <LexiIcon
+              path="quiz/perfect-score.svg"
+              size={52}
+              color={C.gold}
+              label="Perfect score"
+              style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', zIndex: 3, marginTop: -22 }}
+            />
+          ) : (
+            <LexiIcon
+              path={passed ? 'quiz/pass.svg' : 'quiz/try-again.svg'}
+              size={140}
+              color={ringColor}
+              style={{ position: 'absolute', inset: 0, opacity: 0.28, flexShrink: 0 }}
+            />
+          )}
           <svg width={140} height={140} style={{ transform: 'rotate(-90deg)', position: 'relative', zIndex: 1 }}>
             <circle cx={70} cy={70} r={54} fill="none" strokeWidth={9} stroke={C.elevated} />
             <motion.circle
@@ -458,18 +485,21 @@ function QuizSummary({ summary, onContinue }: { summary: SummaryData; onContinue
               style={{ filter: `drop-shadow(0 0 6px ${ringColor}60)` }}
             />
           </svg>
-          <div style={{
-            position: 'absolute', inset: 0,
-            display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
-            zIndex: 2,
-          }}>
-            <span style={{ fontFamily: SERIF, fontSize: '2.1rem', fontWeight: 700, lineHeight: 1, color: C.textPrim }}>
-              <AnimatedNumber value={scorePct} />%
-            </span>
-            <span style={{ fontFamily: SANS, fontSize: '0.65rem', color: C.textMuted, marginTop: 2, letterSpacing: '0.06em' }}>
-              SCORE
-            </span>
-          </div>
+          {/* Score label — hidden behind perfect-score icon when 100% */}
+          {scorePct !== 100 && (
+            <div style={{
+              position: 'absolute', inset: 0,
+              display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
+              zIndex: 2,
+            }}>
+              <span style={{ fontFamily: SERIF, fontSize: '2.1rem', fontWeight: 700, lineHeight: 1, color: C.textPrim }}>
+                <AnimatedNumber value={scorePct} />%
+              </span>
+              <span style={{ fontFamily: SANS, fontSize: '0.65rem', color: C.textMuted, marginTop: 2, letterSpacing: '0.06em' }}>
+                SCORE
+              </span>
+            </div>
+          )}
         </div>
 
         {/* Premium celebration — passed quizzes only */}
@@ -499,7 +529,7 @@ function QuizSummary({ summary, onContinue }: { summary: SummaryData; onContinue
               borderRadius: 20,
             }}
           >
-            <Crown size={13} color={C.gold} />
+            <LexiIcon path="quiz/points-earned.svg" size={14} color={C.gold} />
             <span style={{ fontFamily: SANS, fontSize: '0.8125rem', fontWeight: 600, color: C.gold }}>
               +{bonusPoints} bonus points
             </span>
@@ -605,8 +635,8 @@ function QuizSummary({ summary, onContinue }: { summary: SummaryData; onContinue
                       marginTop: 2,
                     }}>
                       {correct
-                        ? <BadgeCheck size={13} color={C.success} />
-                        : <OctagonX   size={13} color={C.red}     />
+                        ? <LexiIcon path="quiz/correct.svg" size={13} color={C.success} />
+                        : <LexiIcon path="quiz/incorrect.svg" size={13} color={C.red} />
                       }
                     </div>
                     <p style={{ fontFamily: SERIF, fontSize: '0.9375rem', lineHeight: 1.5, color: C.textPrim, flex: 1 }}>
@@ -691,8 +721,8 @@ function QuizSummary({ summary, onContinue }: { summary: SummaryData; onContinue
                                     {opt.letter}
                                   </span>
                                   {isCorrectOpt
-                                    ? <BadgeCheck size={12} color={C.success} style={{ flexShrink: 0 }} />
-                                    : <OctagonX   size={12} color={isWrongPick ? C.red : C.textMuted} style={{ flexShrink: 0, opacity: isWrongPick ? 1 : 0.4 }} />
+                                    ? <LexiIcon path="quiz/correct.svg" size={12} color={C.success} style={{ flexShrink: 0 }} />
+                                    : <LexiIcon path="quiz/incorrect.svg" size={12} color={isWrongPick ? C.red : C.textMuted} style={{ flexShrink: 0, opacity: isWrongPick ? 1 : 0.4 }} />
                                   }
                                   <span style={{
                                     fontFamily: SERIF, fontSize: '0.9rem',
@@ -734,6 +764,7 @@ function QuizSummary({ summary, onContinue }: { summary: SummaryData; onContinue
 
 function TimerBar({ secondsLeft, totalSeconds }: { secondsLeft: number; totalSeconds: number }) {
   const pct = secondsLeft / totalSeconds;
+  const isUrgent = pct <= 0.3;
   const color = pct > 0.6
     ? 'var(--color-lx-success)'
     : pct > 0.3
@@ -741,25 +772,44 @@ function TimerBar({ secondsLeft, totalSeconds }: { secondsLeft: number; totalSec
       : 'var(--color-lx-accent-red)';
 
   return (
-    <div style={{
-      height: 4, borderRadius: 2,
-      background: 'var(--color-lx-elevated)',
-      marginBottom: '0.625rem',
-      overflow: 'hidden',
-    }}>
-      <motion.div
-        animate={{ scaleX: pct, originX: 0 }}
-        transition={{ duration: 0.25, ease: 'linear' }}
-        style={{
-          height: '100%',
-          width: '100%',
-          borderRadius: 2,
-          background: color,
-          transformOrigin: 'left center',
-          transition: `background 0.4s`,
-          boxShadow: `0 0 6px ${color}60`,
-        }}
-      />
+    <div style={{ marginBottom: '0.625rem' }}>
+      {/* Timer icon chip + seconds display */}
+      <div style={{ display: 'flex', alignItems: 'center', gap: 5, marginBottom: '0.3rem' }}>
+        <LexiIcon
+          path={isUrgent ? 'quiz/timer-urgent.svg' : 'quiz/timer.svg'}
+          size={13}
+          color={color}
+        />
+        <span style={{
+          fontFamily: "'Sora', sans-serif",
+          fontSize: '0.6875rem', fontWeight: 700,
+          color,
+          fontVariantNumeric: 'tabular-nums',
+          letterSpacing: '0.02em',
+          transition: 'color 0.4s',
+        }}>
+          {secondsLeft}s
+        </span>
+      </div>
+      <div style={{
+        height: 4, borderRadius: 2,
+        background: 'var(--color-lx-elevated)',
+        overflow: 'hidden',
+      }}>
+        <motion.div
+          animate={{ scaleX: pct, originX: 0 }}
+          transition={{ duration: 0.25, ease: 'linear' }}
+          style={{
+            height: '100%',
+            width: '100%',
+            borderRadius: 2,
+            background: color,
+            transformOrigin: 'left center',
+            transition: `background 0.4s`,
+            boxShadow: `0 0 6px ${color}60`,
+          }}
+        />
+      </div>
     </div>
   );
 }

@@ -3,6 +3,7 @@
 import { motion, useReducedMotion } from 'framer-motion';
 import { Trophy, BookOpen } from 'lucide-react';
 import AnimatedNumber from '@/components/vocab/AnimatedNumber';
+import { LexiArtwork } from '@/components/vocab/LexiAsset';
 import type { PublicReveal } from '@/lib/vocab/game/types';
 
 const SANS  = "'Sora', sans-serif";
@@ -54,6 +55,18 @@ export default function RevealCard({
           }}
         />
       )}
+
+      {/* Reveal artwork — win or fail */}
+      <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '1rem' }}>
+        <LexiArtwork
+          path={won ? 'games/word-hunt/reveal-success.webp' : 'games/word-hunt/reveal-failed.webp'}
+          alt={won ? 'Round solved' : 'Round over'}
+          width={96}
+          height={96}
+          loading="eager"
+          style={{ borderRadius: 12, opacity: 0.9 }}
+        />
+      </div>
 
       <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: '0.875rem' }}>
         {won

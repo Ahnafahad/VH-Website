@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation';
 import { ArrowLeft } from 'lucide-react';
 import { useVocabFeedback } from '@/lib/vocab/use-vocab-feedback';
 import Celebration from '@/components/vocab/Celebration';
-import { LexiArtwork } from '@/components/vocab/LexiAsset';
+import { LexiArtwork, LexiIcon } from '@/components/vocab/LexiAsset';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -45,6 +45,19 @@ const C = {
 
 const SERIF = "'Cormorant Garamond', Georgia, serif";
 const SANS  = "'Sora', sans-serif";
+
+// ─── SRS due-state config (overdue > due-now > due-later) ────────────────────
+
+function DueStateIcon({ masteryScore }: { masteryScore: number }) {
+  // masteryScore: higher = more overdue. 0 = not yet due/due later.
+  if (masteryScore >= 0.7) {
+    return <LexiIcon path="review/overdue.svg" size={14} color="var(--color-lx-accent-red)" label="Overdue" />;
+  }
+  if (masteryScore >= 0.4) {
+    return <LexiIcon path="review/due-now.svg" size={14} color="var(--color-lx-accent-gold)" label="Due now" />;
+  }
+  return <LexiIcon path="review/due-later.svg" size={14} color="var(--color-lx-text-muted)" label="Due later" />;
+}
 
 // ─── Mastery level badge ──────────────────────────────────────────────────────
 
@@ -199,7 +212,16 @@ function NoReviews({ onBack }: { onBack: () => void }) {
         padding: '2rem 1.5rem', gap: '1.25rem', textAlign: 'center',
       }}
     >
-      <LexiArtwork path="review/all-caught-up.webp" width={128} height={128} />
+      {/* srs-orbit: interval/empty-queue visual framing the main artwork */}
+      <div style={{ position: 'relative', width: 128, height: 128 }}>
+        <LexiIcon
+          path="review/srs-orbit.svg"
+          size={128}
+          color="var(--color-lx-accent-gold)"
+          style={{ position: 'absolute', inset: 0, opacity: 0.15, flexShrink: 0 }}
+        />
+        <LexiArtwork path="review/all-caught-up.webp" width={128} height={128} style={{ position: 'relative', zIndex: 1 }} />
+      </div>
       <div>
         <h2 style={{ fontFamily: SERIF, fontSize: '2rem', fontWeight: 700, fontStyle: 'italic', color: C.textPrim }}>
           All caught up
@@ -367,7 +389,7 @@ export default function ReviewScreen({ words, dueCount }: Props) {
               pointerEvents: 'none',
             }} />
 
-            {/* Level badge */}
+            {/* Level badge + due-state icon */}
             <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
               <span style={{
                 fontFamily: SANS, fontSize: '0.65rem', fontWeight: 700,
@@ -378,6 +400,7 @@ export default function ReviewScreen({ words, dueCount }: Props) {
               }}>
                 {current.masteryLevel}
               </span>
+              <DueStateIcon masteryScore={current.masteryScore} />
               <span style={{ fontFamily: SANS, fontSize: '0.7rem', color: C.textMuted, fontStyle: 'italic' }}>
                 {current.partOfSpeech}
               </span>

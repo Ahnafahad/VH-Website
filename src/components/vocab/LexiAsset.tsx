@@ -31,6 +31,7 @@ export function LexiIcon({
       role={label ? 'img' : undefined}
       aria-label={label}
       aria-hidden={label ? undefined : true}
+      data-lx-decor=""
       style={{
         display: 'inline-block',
         width: size,
@@ -78,6 +79,7 @@ export function LexiArtwork({
       alt={alt}
       aria-hidden={alt ? undefined : true}
       className={className}
+      data-lx-decor=""
       loading={loading}
       decoding="async"
       draggable={false}

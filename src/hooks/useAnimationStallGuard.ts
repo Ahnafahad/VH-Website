@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { usePathname } from 'next/navigation';
 
 const TICK_MS            = 400;    // guard poll interval
@@ -39,7 +39,7 @@ function invisibleUnderMain(): HTMLElement[] {
   const main = document.querySelector('main');
   if (!main) return [];
   const out: HTMLElement[] = [];
-  for (const el of main.querySelectorAll<HTMLElement>('[style*="opacity"]')) {
+  for (const el of main.querySelectorAll<HTMLElement>('[style*="opacity"]:not([data-lx-decor])')) {
     if (parseFloat(getComputedStyle(el).opacity) < 0.1) out.push(el);
   }
   return out;
@@ -47,6 +47,7 @@ function invisibleUnderMain(): HTMLElement[] {
 
 export function useAnimationStallGuard() {
   const pathname = usePathname();
+  const sweepRef = useRef<() => void>(() => {});
 
   // Layers 1 + 2 — continuous polling guard.
   useEffect(() => {
@@ -75,21 +76,28 @@ export function useAnimationStallGuard() {
 
       // Layer 2: JS-driven (spring) animations frozen at opacity ~0.
       // Threshold 0.1 so intentionally dimmed UI (locked cards at 0.3+)
-      // is never touched.
+      // is never touched. While the document is hidden, animations can't
+      // visually play anyway, so there's zero cost to forcing content
+      // visible immediately instead of waiting out STUCK_AFTER_MS.
+      const stuckAfter = document.hidden ? 0 : STUCK_AFTER_MS;
       const main = document.querySelector('main');
       if (main) {
-        for (const el of main.querySelectorAll<HTMLElement>('[style*="opacity"]')) {
+        // [data-lx-decor] = static decorative art intentionally below 0.1 —
+        // never animated, so never "stuck".
+        for (const el of main.querySelectorAll<HTMLElement>('[style*="opacity"]:not([data-lx-decor])')) {
           const o = parseFloat(el.style.opacity);
           if (!Number.isFinite(o) || o >= 0.1) continue;
           const seen = firstSeen.get(el);
-          if (seen === undefined) {
+          if (seen === undefined && stuckAfter > 0) {
             firstSeen.set(el, now);
-          } else if (now - seen > STUCK_AFTER_MS) {
+          } else if (seen === undefined || now - seen > stuckAfter) {
             forceVisible(el);
           }
         }
       }
     };
+
+    sweepRef.current = sweep;
 
     const id = setInterval(sweep, TICK_MS);
 
@@ -106,6 +114,15 @@ export function useAnimationStallGuard() {
     };
   }, []);
 
+  // Immediate sweep on route change when the page is hidden — don't wait
+  // for the next poll tick or the Layer 3 blank-screen watchdog.
+  useEffect(() => {
+    if (!document.hidden) return;
+    sweepRef.current();
+    const t = setTimeout(() => sweepRef.current(), 450);
+    return () => clearTimeout(t);
+  }, [pathname]);
+
   // Layer 3 — per-navigation blank-screen watchdog.
   useEffect(() => {
     let cancelled = false;
@@ -115,7 +132,7 @@ export function useAnimationStallGuard() {
       const main = document.querySelector('main');
       if (!main) return;
 
-      const styled = main.querySelectorAll<HTMLElement>('[style*="opacity"]');
+      const styled = main.querySelectorAll<HTMLElement>('[style*="opacity"]:not([data-lx-decor])');
       const invisible = invisibleUnderMain();
       const blank = styled.length > 0 && invisible.length >= Math.max(1, styled.length * 0.5);
       if (!blank) return;

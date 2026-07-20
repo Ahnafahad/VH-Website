@@ -6,7 +6,7 @@ import { Sparkles, Flame } from 'lucide-react';
 import { useSafeNavigate } from '@/hooks/useSafeNavigate';
 import { useVocabFeedback } from '@/lib/vocab/use-vocab-feedback';
 import AnimatedNumber from '@/components/vocab/AnimatedNumber';
-import { LexiArtwork } from '@/components/vocab/LexiAsset';
+import { LexiArtwork, LexiIcon } from '@/components/vocab/LexiAsset';
 import type { GameStateResponse } from '@/lib/vocab/game/types';
 import type { ChargeSummaryResponse } from '@/lib/vocab/word-charge/types';
 
@@ -368,11 +368,19 @@ function ArchiveRow({ entry, index, onOpen }: { entry: ArchiveEntry; index: numb
         transition: 'background 0.16s ease',
       }}
     >
-      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: 44, flexShrink: 0 }}>
-        <span style={{ fontFamily: SANS, fontSize: '0.58rem', fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--color-lx-text-muted)' }}>
+      {/* Archive thumbnail pip + date */}
+      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: 44, flexShrink: 0, gap: 2 }}>
+        <LexiIcon
+          path="games/word-hunt/archive-thumbnail.svg"
+          size={18}
+          color={entry.played
+            ? (won ? 'var(--color-lx-success)' : 'var(--color-lx-text-muted)')
+            : 'var(--color-lx-accent-gold)'}
+        />
+        <span style={{ fontFamily: SANS, fontSize: '0.52rem', fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--color-lx-text-muted)' }}>
           {weekday}
         </span>
-        <span style={{ fontFamily: SERIF, fontSize: '1rem', fontWeight: 700, color: 'var(--color-lx-text-primary)', lineHeight: 1.2 }}>
+        <span style={{ fontFamily: SERIF, fontSize: '0.9rem', fontWeight: 700, color: 'var(--color-lx-text-primary)', lineHeight: 1.1 }}>
           {day}
         </span>
       </div>

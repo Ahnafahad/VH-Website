@@ -10,7 +10,7 @@ import {
   type PanInfo,
 } from 'framer-motion';
 import { useRouter } from 'next/navigation';
-import { ChevronLeft, RotateCcw, Volume2 } from 'lucide-react';
+import { ChevronLeft, RotateCcw } from 'lucide-react';
 import type { FlashcardSessionData, FlashcardWord } from '@/lib/vocab/flashcard-data';
 import { useBadgeQueue } from '@/lib/vocab/badges/queue';
 import { useVocabFeedback } from '@/lib/vocab/use-vocab-feedback';
@@ -18,7 +18,7 @@ import Celebration from '@/components/vocab/Celebration';
 import { trackFeature } from '@/lib/analytics/tracker';
 import { RETENTION_EVENTS, trackRetention } from '@/lib/vocab/retention-events';
 import { speak } from '@/lib/vocab/speak';
-import { LexiArtwork } from '@/components/vocab/LexiAsset';
+import { LexiArtwork, LexiIcon } from '@/components/vocab/LexiAsset';
 
 type Rating = 'got_it' | 'unsure' | 'missed_it';
 
@@ -304,6 +304,31 @@ function FlipCard({
               }} />
             </div>
 
+            {/* front-frame.svg: scholarly card-face border detail, purely decorative */}
+            <LexiArtwork
+              path="flashcards/front-frame.svg"
+              style={{
+                position: 'absolute', inset: 0,
+                width: '100%', height: '100%',
+                opacity: 0.08,
+                pointerEvents: 'none',
+                zIndex: 1,
+                objectFit: 'fill',
+              }}
+            />
+
+            {/* flip-corner.svg: affordance hint in top-right corner */}
+            <LexiArtwork
+              path="flashcards/flip-corner.svg"
+              style={{
+                position: 'absolute', top: 0, right: 0,
+                width: 40, height: 40,
+                opacity: 0.22,
+                pointerEvents: 'none',
+                zIndex: 1,
+              }}
+            />
+
             {/* Light-catch sheen — sweeps once on appear, gated by reduced-motion.
                 Plain CSS-animated div (compositor thread) so it can never freeze
                 mid-sweep at visible opacity the way a JS/WAAPI animation can. */}
@@ -379,6 +404,18 @@ function FlipCard({
             }}
             className="hide-scrollbar"
           >
+            {/* back-frame.svg: matching decorative frame for the definition face */}
+            <LexiArtwork
+              path="flashcards/back-frame.svg"
+              style={{
+                position: 'absolute', inset: 0,
+                width: '100%', height: '100%',
+                opacity: 0.07,
+                pointerEvents: 'none',
+                zIndex: 0,
+                objectFit: 'fill',
+              }}
+            />
             {/* Word again (small) */}
             <div className="flex items-center justify-between">
               <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '1.1rem', fontStyle: 'italic', color: 'var(--color-lx-accent-red)', fontWeight: 600, overflowWrap: 'break-word', maxWidth: '100%' }}>
@@ -400,7 +437,7 @@ function FlipCard({
                   }}
                   aria-label={`Hear ${word.word} pronounced`}
                 >
-                  <Volume2 size={16} />
+                  <LexiIcon path="flashcards/pronunciation.svg" size={16} color="var(--color-lx-accent-gold)" />
                 </motion.button>
                 <motion.button
                   onClick={onFlipBack}

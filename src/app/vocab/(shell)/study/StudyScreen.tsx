@@ -3,7 +3,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import { useSafeNavigate } from '@/hooks/useSafeNavigate';
-import { ChevronDown, Lock, CheckCircle, Clock, BookOpen, Circle } from 'lucide-react';
+import { ChevronDown, Circle } from 'lucide-react';
 import type { UnitWithThemes, ThemeWithStatus, ThemeStatus } from '@/lib/vocab/study-data';
 import type { LetterSummary } from '@/lib/vocab/letter-data';
 import type { ReviewData } from '@/lib/vocab/review-data';
@@ -11,7 +11,7 @@ import AllWordsReviewedScreen from '@/components/vocab/AllWordsReviewedScreen';
 import LockedUnitOverlay from '@/components/vocab/LockedUnitOverlay';
 import ReviewTab from './ReviewTab';
 import { useVocabFeedback } from '@/lib/vocab/use-vocab-feedback';
-import { LexiArtwork } from '@/components/vocab/LexiAsset';
+import { LexiArtwork, LexiIcon } from '@/components/vocab/LexiAsset';
 
 interface Props {
   data: {
@@ -316,9 +316,19 @@ export default function StudyScreen({ data, letterIndex, reviewData }: Props) {
             className="md:max-w-2xl md:w-full md:mx-auto"
           >
             {letterIndex.length === 0 ? (
-              <p className="text-sm" style={{ color: 'var(--color-lx-text-secondary)' }}>
-                No words in the library yet.
-              </p>
+              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.875rem', padding: '3rem 1rem', textAlign: 'center' }}>
+                <LexiArtwork path="study/empty-library.webp" width={120} height={120} />
+                <p style={{
+                  fontFamily: "'Cormorant Garamond', Georgia, serif",
+                  fontSize: '1.5rem', fontWeight: 700, fontStyle: 'italic',
+                  color: 'var(--color-lx-text-primary)',
+                }}>
+                  Library empty
+                </p>
+                <p className="text-sm" style={{ color: 'var(--color-lx-text-secondary)', fontFamily: "'Sora', sans-serif" }}>
+                  No words in the library yet.
+                </p>
+              </div>
             ) : (
               <div style={{
                 display: 'grid',
@@ -455,9 +465,9 @@ function UnitAccordion({
 
 const STATUS_CONFIG: Record<ThemeStatus, { label: string; color: string; bg: string; icon: React.ReactNode }> = {
   not_started:     { label: 'Not Started',     color: 'var(--color-lx-text-muted)',  bg: 'rgba(255,255,255,0.04)',       icon: <Circle size={11} /> },
-  flashcards_done: { label: 'Cards Done',      color: 'var(--color-lx-warning)',     bg: 'rgba(243,156,18,0.12)',        icon: <BookOpen size={11} /> },
-  quiz_pending:    { label: 'Quiz Pending',    color: 'var(--color-lx-warning)',     bg: 'rgba(243,156,18,0.12)',        icon: <Clock size={11} /> },
-  complete:        { label: 'Complete',        color: 'var(--color-lx-success)',     bg: 'rgba(46,204,113,0.12)',        icon: <CheckCircle size={11} /> },
+  flashcards_done: { label: 'Cards Done',      color: 'var(--color-lx-warning)',     bg: 'rgba(243,156,18,0.12)',        icon: <LexiIcon path="study/review-due.svg" size={11} color="var(--color-lx-warning)" /> },
+  quiz_pending:    { label: 'Quiz Pending',    color: 'var(--color-lx-warning)',     bg: 'rgba(243,156,18,0.12)',        icon: <LexiIcon path="study/review-due.svg" size={11} color="var(--color-lx-warning)" /> },
+  complete:        { label: 'Complete',        color: 'var(--color-lx-success)',     bg: 'rgba(46,204,113,0.12)',        icon: <LexiIcon path="study/theme-completed.svg" size={11} color="var(--color-lx-success)" /> },
 };
 
 function ThemeCard({
@@ -500,6 +510,16 @@ function ThemeCard({
         cursor:   theme.locked ? 'default' : 'pointer',
       }}
     >
+      {/* theme-corner.svg: subtle card-corner mark — decorative only */}
+      <LexiArtwork
+        path="study/theme-corner.svg"
+        style={{
+          position: 'absolute', bottom: 0, right: 0,
+          width: 28, height: 28,
+          opacity: 0.1,
+          pointerEvents: 'none',
+        }}
+      />
       <div className="flex flex-col gap-0.5">
         <span
           className="text-sm font-semibold"
@@ -539,7 +559,7 @@ function ThemeCard({
         </motion.span>
 
         {theme.locked && (
-          <Lock size={13} style={{ color: 'var(--color-lx-text-muted)' }} />
+          <LexiIcon path="study/theme-locked.svg" size={13} color="var(--color-lx-text-muted)" label="Locked" />
         )}
       </div>
     </motion.button>

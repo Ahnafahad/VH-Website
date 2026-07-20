@@ -5,7 +5,7 @@ import { motion, AnimatePresence, Variants, useInView, useReducedMotion } from '
 import type { LeaderboardData, LeaderEntry, AllTimeEntry, HallEntry } from '@/lib/vocab/leaderboard-data';
 import { useVocabFeedback } from '@/lib/vocab/use-vocab-feedback';
 import PublicProfileSheet from '@/components/vocab/PublicProfileSheet';
-import { LexiArtwork } from '@/components/vocab/LexiAsset';
+import { LexiArtwork, LexiIcon } from '@/components/vocab/LexiAsset';
 
 // ─── Medal colours ────────────────────────────────────────────────────────────
 
@@ -186,16 +186,21 @@ function PodiumCard({ rank, name, points, isMe, delay, label, onSelect }: Podium
 // ─── Row (rank 4+) ────────────────────────────────────────────────────────────
 
 interface RowProps {
-  rank:     number;
-  name:     string;
-  points:   number;
-  isMe:     boolean;
-  delay:    number;
-  rowRef?:  React.Ref<HTMLButtonElement>;
-  onSelect?: () => void;
+  rank:       number;
+  name:       string;
+  points:     number;
+  isMe:       boolean;
+  delay:      number;
+  rowRef?:    React.Ref<HTMLButtonElement>;
+  onSelect?:  () => void;
+  prevRank?:  number | null;
 }
 
-function Row({ rank, name, points, isMe, delay, rowRef, onSelect }: RowProps) {
+function Row({ rank, name, points, isMe, delay, rowRef, onSelect, prevRank }: RowProps) {
+  // rank movement indicator
+  const moved = prevRank != null && prevRank !== rank;
+  const movedUp = moved && prevRank > rank;
+  const movedDown = moved && prevRank < rank;
   return (
     <motion.button
       ref={rowRef}
@@ -252,6 +257,25 @@ function Row({ rank, name, points, isMe, delay, rowRef, onSelect }: RowProps) {
       >
         {name}{isMe ? ' · you' : ''}
       </p>
+
+      {/* Rank movement indicator */}
+      {moved && (
+        <LexiIcon
+          path={movedUp ? 'leaderboard/rank-up.svg' : 'leaderboard/rank-down.svg'}
+          size={16}
+          color={movedUp ? 'var(--color-lx-success)' : 'var(--color-lx-danger)'}
+        />
+      )}
+
+      {/* Current-user marker */}
+      {isMe && (
+        <LexiIcon
+          path="leaderboard/current-user.svg"
+          size={16}
+          color="var(--color-lx-accent-red)"
+          label="You"
+        />
+      )}
 
       <span
         className="shrink-0 tabular-nums text-sm font-semibold"
@@ -351,10 +375,10 @@ function SessionGroup({ label, entries }: SessionGroupProps) {
 
 type Tab = 'weekly' | 'alltime' | 'hall';
 
-const TABS: { id: Tab; label: string }[] = [
-  { id: 'weekly',  label: 'This Week'    },
-  { id: 'alltime', label: 'All-Time'     },
-  { id: 'hall',    label: 'Hall of Fame' },
+const TABS: { id: Tab; label: string; icon: string }[] = [
+  { id: 'weekly',  label: 'This Week',    icon: 'leaderboard/weekly.svg'       },
+  { id: 'alltime', label: 'All-Time',     icon: 'leaderboard/all-time.svg'     },
+  { id: 'hall',    label: 'Hall of Fame', icon: 'leaderboard/hall-of-fame.svg' },
 ];
 
 // ─── Leaderboard list ─────────────────────────────────────────────────────────
@@ -374,19 +398,36 @@ function LeaderList({ entries, getPoints, myRowRef, onSelect }: ListProps) {
     <div className="flex flex-col gap-4">
       {/* Podium */}
       {top3.length > 0 && (
-        <div className="flex gap-2.5">
-          {top3.map((e, i) => (
-            <PodiumCard
-              key={e.userId}
-              rank={e.rank as 1 | 2 | 3}
-              name={e.displayName}
-              points={getPoints(e)}
-              isMe={e.isMe}
-              delay={i * 0.07}
-              label={MEDAL[e.rank as 1 | 2 | 3]?.label ?? ''}
-              onSelect={onSelect ? () => onSelect(e.userId) : undefined}
-            />
-          ))}
+        <div className="relative">
+          {/* Background podium artwork */}
+          <LexiArtwork
+            path="leaderboard/podium.webp"
+            width={180}
+            height={90}
+            loading="lazy"
+            style={{
+              position: 'absolute',
+              bottom: 0,
+              left: '50%',
+              transform: 'translateX(-50%)',
+              opacity: 0.07,
+              pointerEvents: 'none',
+            }}
+          />
+          <div className="flex gap-2.5 relative z-10">
+            {top3.map((e, i) => (
+              <PodiumCard
+                key={e.userId}
+                rank={e.rank as 1 | 2 | 3}
+                name={e.displayName}
+                points={getPoints(e)}
+                isMe={e.isMe}
+                delay={i * 0.07}
+                label={MEDAL[e.rank as 1 | 2 | 3]?.label ?? ''}
+                onSelect={onSelect ? () => onSelect(e.userId) : undefined}
+              />
+            ))}
+          </div>
         </div>
       )}
 
@@ -603,7 +644,14 @@ export default function LeaderboardScreen({ data }: { data: LeaderboardData }) {
                   transition={{ type: 'spring' as const, stiffness: 440, damping: 34 }}
                 />
               )}
-              <span className="relative z-10">{t.label}</span>
+              <span className="relative z-10 flex items-center justify-center gap-1.5">
+                <LexiIcon
+                  path={t.icon}
+                  size={13}
+                  color={tab === t.id ? 'var(--color-lx-text-primary)' : 'var(--color-lx-text-muted)'}
+                />
+                {t.label}
+              </span>
             </button>
           ))}
         </div>

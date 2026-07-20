@@ -169,6 +169,23 @@ export default function DesktopSidebar() {
                 />
               )}
 
+              {/* Active edge mark — right edge accent */}
+              {isActive && (
+                <LexiIcon
+                  path="navigation/desktop-active-edge.svg"
+                  size={16}
+                  color="var(--color-lx-accent-red)"
+                  style={{
+                    position:  'absolute',
+                    right:     -2,
+                    top:       '50%',
+                    transform: 'translateY(-50%)',
+                    opacity:   0.7,
+                    pointerEvents: 'none',
+                  }}
+                />
+              )}
+
               <LexiIcon
                 path={tab.icon}
                 size={20}

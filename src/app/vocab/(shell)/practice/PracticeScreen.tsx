@@ -6,7 +6,7 @@ import { useSafeNavigate } from '@/hooks/useSafeNavigate';
 import type { PracticePageData, PracticeUnitItem } from '@/lib/vocab/practice-data';
 import { useVocabFeedback } from '@/lib/vocab/use-vocab-feedback';
 import { trackFeature } from '@/lib/analytics/tracker';
-import { LexiArtwork } from '@/components/vocab/LexiAsset';
+import { LexiArtwork, LexiIcon } from '@/components/vocab/LexiAsset';
 
 type PracticeTab = 'unit' | 'letter';
 
@@ -127,23 +127,43 @@ function LetterCard({ summary, selected, onToggle }: LetterCardProps) {
     >
       <AnimatePresence>
         {selected && (
-          <motion.div
-            initial={{ scale: 0, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            exit={{ scale: 0, opacity: 0 }}
-            transition={{ type: 'spring', stiffness: 480, damping: 26 }}
-            style={{
-              position: 'absolute', top: 5, right: 5,
-              width: 14, height: 14,
-              borderRadius: '50%',
-              background: 'var(--color-lx-accent-red)',
-              display: 'flex', alignItems: 'center', justifyContent: 'center',
-            }}
-          >
-            <svg width="8" height="8" viewBox="0 0 8 8" fill="none">
-              <path d="M1.5 4l2 2 3-3" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </motion.div>
+          <>
+            {/* letter-selected.svg: edge highlight for selected letter tiles */}
+            <motion.span
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.18 }}
+              aria-hidden
+              style={{ position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 0 }}
+            >
+              <LexiIcon
+                path="practice/letter-selected.svg"
+                size="100%"
+                color="var(--color-lx-accent-red)"
+                style={{ width: '100%', height: '100%', opacity: 0.18, borderRadius: 16 }}
+              />
+            </motion.span>
+            {/* Check badge */}
+            <motion.div
+              initial={{ scale: 0, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0, opacity: 0 }}
+              transition={{ type: 'spring', stiffness: 480, damping: 26 }}
+              style={{
+                position: 'absolute', top: 5, right: 5,
+                width: 14, height: 14,
+                borderRadius: '50%',
+                background: 'var(--color-lx-accent-red)',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                zIndex: 2,
+              }}
+            >
+              <svg width="8" height="8" viewBox="0 0 8 8" fill="none">
+                <path d="M1.5 4l2 2 3-3" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
 
@@ -217,45 +237,24 @@ function AnimatedCheck({ checked }: { checked: boolean }) {
 // ─── Tri-state unit checkbox (none / partial / all) ───────────────────────────
 
 function UnitCheckbox({ state }: { state: 'none' | 'partial' | 'all' }) {
+  const icon = state === 'all' ? 'practice/selection-all.svg'
+    : state === 'partial' ? 'practice/selection-partial.svg'
+    : 'practice/selection-none.svg';
+  const label = state === 'all' ? 'All themes selected' : state === 'partial' ? 'Some themes selected' : 'No themes selected';
+  const opacity = state === 'none' ? 0.35 : 1;
   return (
-    <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
-      <motion.rect
-        x="1" y="1" width="20" height="20" rx="5"
-        stroke="var(--color-lx-accent-gold)"
-        strokeWidth="1.5"
-        animate={{
-          strokeOpacity: state === 'none' ? 0.3 : 1,
-          fill: state === 'all'
-            ? 'rgba(212,175,55,0.2)'
-            : state === 'partial'
-              ? 'rgba(212,175,55,0.08)'
-              : 'transparent',
-        }}
-        transition={{ duration: 0.18 }}
+    <motion.span
+      animate={{ opacity }}
+      transition={{ duration: 0.18 }}
+      style={{ display: 'inline-flex' }}
+    >
+      <LexiIcon
+        path={icon}
+        size={22}
+        color="var(--color-lx-accent-gold)"
+        label={label}
       />
-      {/* Partial: dash */}
-      <motion.line
-        x1="6.5" y1="11" x2="15.5" y2="11"
-        stroke="var(--color-lx-accent-gold)"
-        strokeWidth="2"
-        strokeLinecap="round"
-        initial={false}
-        animate={{ opacity: state === 'partial' ? 1 : 0, scaleX: state === 'partial' ? 1 : 0 }}
-        transition={{ duration: 0.2 }}
-      />
-      {/* All: checkmark */}
-      <motion.path
-        d="M6 11.5l3.5 3.5 6.5-7"
-        stroke="var(--color-lx-accent-gold)"
-        strokeWidth="1.75"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        fill="none"
-        initial={false}
-        animate={{ pathLength: state === 'all' ? 1 : 0, opacity: state === 'all' ? 1 : 0 }}
-        transition={{ duration: 0.28, ease: 'easeOut' }}
-      />
-    </svg>
+    </motion.span>
   );
 }
 
@@ -291,8 +290,20 @@ function ThemeRow({ name, wordCount, masteredCount, selected, onToggle }: ThemeR
           border: '1px solid var(--color-lx-border)',
           borderRadius: 14, padding: '0.75rem 1rem',
           marginLeft: 4,
+          position: 'relative', overflow: 'hidden',
         }}
       >
+        {/* theme-selected-edge: decorative right-edge flourish when selected */}
+        {selected && (
+          <span aria-hidden style={{ position: 'absolute', right: 0, top: 0, bottom: 0, width: 28, pointerEvents: 'none', zIndex: 0 }}>
+            <LexiIcon
+              path="practice/theme-selected-edge.svg"
+              size={28}
+              color="var(--color-lx-accent-red)"
+              style={{ width: 28, height: '100%', opacity: 0.18 }}
+            />
+          </span>
+        )}
         {/* Left bar accent when selected */}
         <motion.div
           animate={{ opacity: selected ? 1 : 0, scaleY: selected ? 1 : 0.4 }}
@@ -552,15 +563,12 @@ function ExamModeCard({ unlocked, onStart }: { unlocked: boolean; onStart: () =>
         background: unlocked ? 'rgba(244,168,40,0.14)' : 'var(--color-lx-elevated)',
         display: 'flex', alignItems: 'center', justifyContent: 'center',
       }}>
-        {unlocked ? (
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-lx-accent-gold)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-            <path d="M22 10v6M2 10l10-5 10 5-10 5z" /><path d="M6 12v5c3 3 9 3 12 0v-5" />
-          </svg>
-        ) : (
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-lx-text-muted)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-            <rect x="3" y="11" width="18" height="11" rx="2" /><path d="M7 11V7a5 5 0 0 1 10 0v4" />
-          </svg>
-        )}
+        <LexiIcon
+          path={unlocked ? 'practice/exam-mode-unlocked.svg' : 'practice/exam-mode-locked.svg'}
+          size={22}
+          color={unlocked ? 'var(--color-lx-accent-gold)' : 'var(--color-lx-text-muted)'}
+          label={unlocked ? 'Exam mode unlocked' : 'Exam mode locked'}
+        />
       </div>
       <div style={{ flex: 1, minWidth: 0 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
@@ -863,9 +871,13 @@ export default function PracticeScreen({ data }: { data: PracticePageData }) {
           onClick={handleStart}
           whileTap={{ scale: 0.97 }}
           className="w-full md:max-w-2xl md:mx-auto rounded-2xl py-4 flex items-center justify-between px-6"
-          style={{ background: 'var(--color-lx-accent-red)', boxShadow: '0 4px 24px rgba(230,57,70,0.4)', fontFamily: "'Sora', sans-serif" }}
+          style={{ background: 'var(--color-lx-accent-red)', boxShadow: '0 4px 24px rgba(230,57,70,0.4)', fontFamily: "'Sora', sans-serif", position: 'relative', overflow: 'hidden' }}
         >
-          <div className="flex flex-col items-start">
+          {/* start-accent.svg: decorative energy mark on the CTA */}
+          <span aria-hidden style={{ position: 'absolute', right: 56, top: 0, bottom: 0, width: 32, pointerEvents: 'none', display: 'flex', alignItems: 'center' }}>
+            <LexiIcon path="practice/start-accent.svg" size={28} color="rgba(255,255,255,0.22)" />
+          </span>
+          <div className="flex flex-col items-start" style={{ position: 'relative' }}>
             <span className="text-base font-bold text-white leading-tight">Start Practice</span>
             <span className="text-xs text-white/70 mt-0.5">
               {activeTab === 'unit'
@@ -873,7 +885,7 @@ export default function PracticeScreen({ data }: { data: PracticePageData }) {
                 : `${selectedLetters.size} letter${selectedLetters.size !== 1 ? 's' : ''} · up to ${Math.min(totalLetterWords, 20)} questions`}
             </span>
           </div>
-          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true" style={{ position: 'relative', flexShrink: 0 }}>
             <path d="M4 11h14M13 6l5 5-5 5" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         </motion.button>

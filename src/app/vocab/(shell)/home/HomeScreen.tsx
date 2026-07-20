@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { Lock, X, Target, CheckCircle2, Clock3, ArrowRight } from 'lucide-react';
+import { Lock, X, Target, Clock3, ArrowRight } from 'lucide-react';
 import type { HomeData, MasteryBreakdown, SessionsData } from '@/lib/vocab/home-data';
 import { useSafeNavigate } from '@/hooks/useSafeNavigate';
 import ProgressRing from '@/components/vocab/ProgressRing';
@@ -45,6 +45,14 @@ const MASTERY_COLORS = {
 
 const MASTERY_FULL: Record<string, string> = {
   new: 'New', learning: 'Learning', familiar: 'Familiar', strong: 'Strong', mastered: 'Mastered',
+};
+
+const MASTERY_PIPS: Record<string, string> = {
+  new:      'home/mastery-new.svg',
+  learning: 'home/mastery-learning.svg',
+  familiar: 'home/mastery-familiar.svg',
+  strong:   'home/mastery-strong.svg',
+  mastered: 'home/mastery-mastered.svg',
 };
 
 function MasteryHistogram({ breakdown }: { breakdown: MasteryBreakdown }) {
@@ -120,16 +128,13 @@ function MasteryHistogram({ breakdown }: { breakdown: MasteryBreakdown }) {
               }}
             />
 
-            <span style={{
-              fontFamily:    "'Sora', sans-serif",
-              fontSize:      '0.5rem',
-              fontWeight:    600,
-              color:         isOn ? color : 'var(--color-lx-text-muted)',
-              transition:    'color 0.18s',
-              letterSpacing: '0.02em',
-            }}>
-              {count}
-            </span>
+            {/* Mastery pip icon */}
+            <LexiIcon
+              path={MASTERY_PIPS[lvl]}
+              size={10}
+              color={isOn ? color : 'var(--color-lx-text-muted)'}
+              style={{ opacity: active && !isOn ? 0.3 : 1, transition: 'opacity 0.18s ease, background-color 0.18s ease' }}
+            />
           </div>
         );
       })}
@@ -140,16 +145,17 @@ function MasteryHistogram({ breakdown }: { breakdown: MasteryBreakdown }) {
 // ─── Stat column ──────────────────────────────────────────────────────────────
 
 interface StatColProps {
-  label:  string;
-  value:  number;
-  unit?:  string;
-  color?: string;
-  pulse?: boolean;
-  delay?: number;
-  onClick?: () => void;
+  label:     string;
+  value:     number;
+  unit?:     string;
+  color?:    string;
+  pulse?:    boolean;
+  delay?:    number;
+  iconPath?: string; // LexiIcon path shown beside the value
+  onClick?:  () => void;
 }
 
-function StatCol({ label, value, unit, color, pulse, delay = 0, onClick }: StatColProps) {
+function StatCol({ label, value, unit, color, pulse, delay = 0, iconPath, onClick }: StatColProps) {
   const prefersReducedMotion = useReducedMotion();
   return (
     <motion.div
@@ -181,47 +187,57 @@ function StatCol({ label, value, unit, color, pulse, delay = 0, onClick }: StatC
         {label}
       </span>
 
-      <div style={{ display: 'flex', alignItems: 'baseline', gap: 3 }}>
-        {pulse && value > 0 && !prefersReducedMotion ? (
-          <motion.span
-            animate={{ opacity: [1, 0.55, 1] }}
-            transition={{ repeat: Infinity, duration: 2.6, ease: 'easeInOut' }}
-            style={{
+      <div style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
+        {iconPath && (
+          <LexiIcon
+            path={iconPath}
+            size={18}
+            color={color ?? 'var(--color-lx-accent-gold)'}
+            style={{ flexShrink: 0, marginBottom: 2 }}
+          />
+        )}
+        <div style={{ display: 'flex', alignItems: 'baseline', gap: 3 }}>
+          {pulse && value > 0 && !prefersReducedMotion ? (
+            <motion.span
+              animate={{ opacity: [1, 0.55, 1] }}
+              transition={{ repeat: Infinity, duration: 2.6, ease: 'easeInOut' }}
+              style={{
+                fontFamily: "'Cormorant Garamond', Georgia, serif",
+                fontSize:   'clamp(1.5rem, 6vw, 2.15rem)',
+                lineHeight: 1,
+                fontWeight: 700,
+                whiteSpace: 'nowrap',
+                color:      color ?? 'var(--color-lx-text-primary)',
+              }}
+            >
+              {value}
+            </motion.span>
+          ) : (
+            <span style={{
               fontFamily: "'Cormorant Garamond', Georgia, serif",
-              fontSize:   'clamp(1.5rem, 6vw, 2.15rem)',
+              fontSize:   '2.15rem',
               lineHeight: 1,
               fontWeight: 700,
-              whiteSpace: 'nowrap',
-              color:      color ?? 'var(--color-lx-text-primary)',
-            }}
-          >
-            {value}
-          </motion.span>
-        ) : (
-          <span style={{
-            fontFamily: "'Cormorant Garamond', Georgia, serif",
-            fontSize:   '2.15rem',
-            lineHeight: 1,
-            fontWeight: 700,
-            color:      (color && value > 0)
-              ? color
-              : value === 0 && color
-                ? 'var(--color-lx-success)'
-                : color ?? 'var(--color-lx-text-primary)',
-          }}>
-            <AnimatedNumber value={value} />
-          </span>
-        )}
-        {unit && (
-          <span style={{
-            fontFamily:  "'Sora', sans-serif",
-            fontSize:    '0.68rem',
-            color:       'var(--color-lx-text-muted)',
-            paddingBottom: 4,
-          }}>
-            {unit}
-          </span>
-        )}
+              color:      (color && value > 0)
+                ? color
+                : value === 0 && color
+                  ? 'var(--color-lx-success)'
+                  : color ?? 'var(--color-lx-text-primary)',
+            }}>
+              <AnimatedNumber value={value} />
+            </span>
+          )}
+          {unit && (
+            <span style={{
+              fontFamily:  "'Sora', sans-serif",
+              fontSize:    '0.68rem',
+              color:       'var(--color-lx-text-muted)',
+              paddingBottom: 4,
+            }}>
+              {unit}
+            </span>
+          )}
+        </div>
       </div>
     </motion.div>
   );
@@ -746,7 +762,14 @@ function NextAction({ recommendation, onStart }: { recommendation: LearningRecom
       initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .24, ease: [0.16, 1, 0.3, 1] }}>
       <div className="lx-next-action-topline"><span>Recommended next</span><span><Clock3 size={14} aria-hidden /> About {recommendation.durationMinutes} min</span></div>
       <div className="lx-next-action-heading">
-        <LexiArtwork path={RECOMMENDATION_ART[recommendation.kind]} width={72} height={72} loading="eager" />
+        <LexiArtwork
+          path={RECOMMENDATION_ART[recommendation.kind]}
+          alt={`${recommendation.title} illustration`}
+          width={88}
+          height={88}
+          loading="eager"
+          style={{ borderRadius: 10, flexShrink: 0 }}
+        />
         <h2 id="lx-next-action-title">{recommendation.title}</h2>
       </div>
       <p>{recommendation.reason}</p>
@@ -1068,7 +1091,8 @@ export default function HomeScreen({ data }: { data: HomeData }) {
               label="Streak"
               value={data.streakDays}
               unit="days"
-              color={data.streakDays > 0 ? 'var(--color-lx-accent-red)' : undefined}
+              color={data.streakDays > 0 ? 'var(--color-lx-accent-gold)' : undefined}
+              iconPath={data.streakDays > 0 ? 'home/streak-ember.svg' : undefined}
               delay={0.15}
             />
             <div style={{ width: 1, height: 40, background: 'var(--color-lx-border)', margin: '0 0.75rem', flexShrink: 0 }} />
@@ -1077,6 +1101,7 @@ export default function HomeScreen({ data }: { data: HomeData }) {
               value={data.dueWordsCount}
               unit="words"
               color={data.dueWordsCount > 0 ? 'var(--color-lx-accent-gold)' : 'var(--color-lx-success)'}
+              iconPath={data.dueWordsCount > 0 ? 'home/due-review-mark.svg' : undefined}
               pulse={data.dueWordsCount > 0}
               delay={0.2}
               onClick={data.dueWordsCount > 0 ? () => router.push('/vocab/review') : undefined}
@@ -1087,6 +1112,7 @@ export default function HomeScreen({ data }: { data: HomeData }) {
               value={data.weeklyPoints}
               unit="pts"
               color="var(--color-lx-accent-gold)"
+              iconPath={data.weeklyPoints > 0 ? 'home/weekly-points-seal.svg' : undefined}
               delay={0.25}
             />
           </div>
@@ -1172,17 +1198,26 @@ export default function HomeScreen({ data }: { data: HomeData }) {
                     words
                   </span>
                 </div>
-                <p style={{
-                  fontFamily:    "'Sora', sans-serif",
-                  fontSize:      '0.62rem',
-                  color:         'var(--color-lx-text-muted)',
-                  marginTop:     6,
-                  fontStyle:     'italic',
-                }}>
-                  {data.goalProgress === 0
-                    ? 'Nothing reviewed yet today'
-                    : `${data.goalProgress}% complete`}
-                </p>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 5, marginTop: 6 }}>
+                  <LexiIcon
+                    path={data.goalProgress >= 100 ? 'home/goal-complete.svg' : 'home/daily-goal-ring.svg'}
+                    size={12}
+                    color={data.goalProgress >= 100 ? 'var(--color-lx-success)' : 'var(--color-lx-text-muted)'}
+                  />
+                  <p style={{
+                    fontFamily: "'Sora', sans-serif",
+                    fontSize:   '0.62rem',
+                    color:      data.goalProgress >= 100 ? 'var(--color-lx-success)' : 'var(--color-lx-text-muted)',
+                    margin:     0,
+                    fontStyle:  'italic',
+                  }}>
+                    {data.goalProgress === 0
+                      ? 'Nothing reviewed yet today'
+                      : data.goalProgress >= 100
+                        ? 'Goal complete'
+                        : `${data.goalProgress}% complete`}
+                  </p>
+                </div>
               </div>
             </div>
 
@@ -1333,7 +1368,10 @@ export default function HomeScreen({ data }: { data: HomeData }) {
 
       <section className="lx-weekly-challenge" aria-labelledby="weekly-challenge-title">
         <div className="lx-weekly-challenge-icon" aria-hidden>
-          {data.weeklyRecallCount >= data.weeklyRecallTarget ? <CheckCircle2 size={20} /> : <Target size={20} />}
+          {data.weeklyRecallCount >= data.weeklyRecallTarget
+            ? <LexiIcon path="home/weekly-points-seal.svg" size={20} color="var(--color-lx-accent-gold)" />
+            : <LexiIcon path="home/weekly-challenge.svg"   size={20} color="var(--color-lx-accent-gold)" />
+          }
         </div>
         <div className="lx-weekly-challenge-copy">
           <span>This week</span>

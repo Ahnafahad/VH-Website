@@ -5,6 +5,7 @@ import { motion, AnimatePresence, type Variants } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 import { ChevronDown, BookOpen, Zap } from 'lucide-react';
 import type { ReviewData, ReviewWord } from '@/lib/vocab/review-data';
+import { LexiIcon } from '@/components/vocab/LexiAsset';
 
 // ─── Design tokens ────────────────────────────────────────────────────────────
 
@@ -115,13 +116,19 @@ function ReviewWordRow({
           </p>
         </div>
 
-        {/* Meta tag (overdue / accuracy) */}
+        {/* Meta tag (overdue / accuracy) + due-state icon */}
         <span style={{
           fontFamily: SANS, fontSize: '0.6rem', fontWeight: 600,
           letterSpacing: '0.04em',
           padding: '0.2rem 0.5rem', borderRadius: 8, flexShrink: 0,
           background: metaBg, color: metaColor,
+          display: 'flex', alignItems: 'center', gap: 4,
         }}>
+          {variant === 'due' && (
+            w.daysOverdue > 2
+              ? <LexiIcon path="review/overdue.svg" size={10} color={metaColor} />
+              : <LexiIcon path="review/due-now.svg" size={10} color={metaColor} />
+          )}
           {metaLabel}
         </span>
 
@@ -322,15 +329,14 @@ export default function ReviewTab({ reviewData }: Props) {
           gap: '0.75rem',
         }}
       >
-        {/* Decorative ring */}
+        {/* srs-orbit: SRS empty-queue visual */}
         <div style={{
-          width: 64, height: 64, borderRadius: '50%',
-          border: `1px solid ${C.border}`,
+          width: 64, height: 64,
           display: 'flex', alignItems: 'center', justifyContent: 'center',
           marginBottom: '0.5rem',
-          background: 'rgba(244,168,40,0.06)',
+          position: 'relative',
         }}>
-          <span style={{ fontSize: '1.75rem', lineHeight: 1 }}>◇</span>
+          <LexiIcon path="review/srs-orbit.svg" size={64} color={C.gold} style={{ opacity: 0.25 }} />
         </div>
         <h3 style={{
           fontFamily: SERIF, fontSize: '1.5rem', fontWeight: 700, fontStyle: 'italic',

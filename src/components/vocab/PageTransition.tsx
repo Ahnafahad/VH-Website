@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect, useRef } from 'react';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import { usePathname } from 'next/navigation';
 
@@ -14,11 +15,24 @@ import { usePathname } from 'next/navigation';
 export default function PageTransition({ children }: { children: React.ReactNode }) {
   const pathname           = usePathname();
   const shouldReduceMotion = useReducedMotion();
+  const wrapperRef         = useRef<HTMLDivElement>(null);
+
+  // If navigation happens while the tab is hidden, the entrance opacity
+  // animation can never visually play and (per the framer-motion bug this
+  // hook works around) may never resolve either. Skip it imperatively —
+  // this runs client-side only, after hydration, so it can't cause a
+  // hydration mismatch.
+  useEffect(() => {
+    if (document.hidden && wrapperRef.current) {
+      wrapperRef.current.style.opacity = '1';
+    }
+  }, [pathname]);
 
   return (
     <AnimatePresence mode="wait">
       <motion.div
         key={pathname}
+        ref={wrapperRef}
         initial={
           shouldReduceMotion
             ? { opacity: 1 }

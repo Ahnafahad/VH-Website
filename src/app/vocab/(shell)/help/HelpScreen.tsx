@@ -5,10 +5,11 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 import { ChevronLeft, ChevronDown, GraduationCap } from 'lucide-react';
 import DemoModal from './DemoModal';
+import { LexiArtwork } from '@/components/vocab/LexiAsset';
 
 // ─── Section data ─────────────────────────────────────────────────────────────
 
-const SECTIONS = [
+const SECTIONS: { title: string; content: string; diagram?: string; diagramAlt?: string }[] = [
   {
     title: 'What is LexiCore?',
     content: `LexiCore is a vocabulary training system built specifically for Bangladesh university admissions — IBA DU, BUP, and DU FBS.
@@ -16,6 +17,8 @@ const SECTIONS = [
 It uses spaced repetition (SRS), adaptive quizzes, and daily streaks to help you master 800 curated words in the most efficient way possible.
 
 Words are organized by themes and units, indexed by first letter, and your progress is tracked at every level.`,
+    diagram: 'help/learn-recall-review-master.svg',
+    diagramAlt: 'Learn → Recall → Review → Master cycle',
   },
   {
     title: 'Points & Streaks',
@@ -28,6 +31,8 @@ Words are organized by themes and units, indexed by first letter, and your progr
 • Streak bonus: extra points for consecutive days
 
 Your streak resets if you miss a day. Keeping your streak alive multiplies your progress over time.`,
+    diagram: 'help/streaks-daily-goals.svg',
+    diagramAlt: 'Streaks and daily goals diagram',
   },
   {
     title: 'Mastery Levels',
@@ -40,6 +45,8 @@ Your streak resets if you miss a day. Keeping your streak alive multiplies your 
 • Mastered — fully learned, enters long-term review
 
 Words progress through these levels via flashcard ratings and quiz performance. The goal is to move every word to Mastered before your deadline.`,
+    diagram: 'help/mastery-stages.svg',
+    diagramAlt: 'Mastery stages: New → Learning → Familiar → Strong → Mastered',
   },
   {
     title: 'Flashcards & SRS',
@@ -52,6 +59,21 @@ After flipping a card, rate yourself honestly:
 • Missed It — you didn't know it. It comes back very soon.
 
 The SRS engine schedules each word's next review date based on your history. Due words appear on your home screen as "X words due for review."`,
+    diagram: 'help/spaced-repetition.svg',
+    diagramAlt: 'Spaced repetition scheduling diagram',
+  },
+  {
+    title: 'Flashcard Flow',
+    content: `Each flashcard session follows a simple flow:
+
+1. See the word on the card front.
+2. Recall its meaning — tap to reveal.
+3. Rate yourself: Got It, Unsure, or Missed It.
+4. The next card appears.
+
+Complete all cards to unlock the theme quiz.`,
+    diagram: 'help/flashcard-flow.svg',
+    diagramAlt: 'Flashcard flip and rating flow',
   },
   {
     title: 'Themes & Units',
@@ -62,6 +84,8 @@ The SRS engine schedules each word's next review date based on your history. Due
 • Units → form the complete LexiCore library
 
 You study theme by theme. Once you've completed flashcards for a theme, a quiz unlocks. Complete the quiz to mark the theme as done.`,
+    diagram: 'help/theme-letter-paths.svg',
+    diagramAlt: 'Theme and letter study paths diagram',
   },
   {
     title: 'Letters (A–Z)',
@@ -82,6 +106,16 @@ Selecting letters and starting a practice session is useful for targeted review 
 You can configure the quiz length (10 / 15 / 20 questions) and enable Timed Mode with a countdown per question (15s / 30s / 45s / 1min).
 
 Quiz scores and accuracy are reflected in your mastery levels and points.`,
+    diagram: 'help/quiz-flow.svg',
+    diagramAlt: 'Quiz question and answer flow',
+  },
+  {
+    title: 'Points earned per action',
+    content: `Understanding how points are calculated helps you optimise your study sessions.
+
+Stronger mastery ratings earn more points. Consistent daily activity earns streak bonuses that compound.`,
+    diagram: 'help/points-earned.svg',
+    diagramAlt: 'Points earned per action diagram',
   },
   {
     title: 'Badges & Achievements',
@@ -108,7 +142,13 @@ To unlock all 800 words:
 
 // ─── Section accordion ────────────────────────────────────────────────────────
 
-function Section({ title, content, index }: { title: string; content: string; index: number }) {
+function Section({ title, content, diagram, diagramAlt, index }: {
+  title:       string;
+  content:     string;
+  diagram?:    string;
+  diagramAlt?: string;
+  index:       number;
+}) {
   const [open, setOpen] = useState(false);
 
   return (
@@ -167,6 +207,31 @@ function Section({ title, content, index }: { title: string; content: string; in
             style={{ overflow: 'hidden' }}
           >
             <div style={{ paddingBottom: '1.25rem' }}>
+              {/* Section diagram — lazy-loaded, constrained, decorative */}
+              {diagram && (
+                <div style={{
+                  display:        'flex',
+                  justifyContent: 'center',
+                  marginBottom:   '1rem',
+                  padding:        '0.75rem 0',
+                  borderRadius:   12,
+                  background:     'rgba(255,255,255,0.025)',
+                }}>
+                  <LexiArtwork
+                    path={diagram}
+                    alt={diagramAlt ?? ''}
+                    width={Math.min(280, 280)}
+                    height="auto"
+                    loading="lazy"
+                    style={{
+                      maxWidth:  280,
+                      width:     '100%',
+                      opacity:   0.85,
+                    }}
+                  />
+                </div>
+              )}
+
               {content.split('\n\n').map((para, i) => (
                 <p
                   key={i}
@@ -340,7 +405,14 @@ export default function HelpScreen() {
       {/* Accordion */}
       <div>
         {SECTIONS.map((section, i) => (
-          <Section key={section.title} {...section} index={i} />
+          <Section
+            key={section.title}
+            title={section.title}
+            content={section.content}
+            diagram={section.diagram}
+            diagramAlt={section.diagramAlt}
+            index={i}
+          />
         ))}
       </div>
 

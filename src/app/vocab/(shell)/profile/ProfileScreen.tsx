@@ -52,7 +52,7 @@ import { useLexiAccessibility } from '@/hooks/useLexiAccessibility';
 import { Capacitor } from '@capacitor/core';
 import { readReminderEnabled, writeReminderEnabled, rescheduleFromCache, cancelReminders } from '@/lib/vocab/local-reminders';
 import type { ProfileData, BadgeRow, WordRow } from './page';
-import { LexiArtwork } from '@/components/vocab/LexiAsset';
+import { LexiArtwork, LexiIcon } from '@/components/vocab/LexiAsset';
 
 // ─── Badge icons ──────────────────────────────────────────────────────────────
 
@@ -74,13 +74,38 @@ const BADGE_ICONS: Record<string, LucideIcon> = {
 };
 
 const BADGE_ASSETS: Record<string, string> = {
-  first_step: 'badges/first-recall.svg', quiz_starter: 'badges/first-quiz.svg',
-  on_a_roll: 'badges/streak-3.svg', perfectionist: 'badges/perfect-quiz.svg',
-  week_warrior: 'badges/streak-7.svg', streak_keeper: 'badges/streak-14.svg',
-  review_legend: 'badges/review-guardian.svg',
-  the_800_club: 'badges/full-lexicon.svg',
-  leaderboard_legend: 'badges/hall-of-fame.svg',
-  vocab_game_builder: 'badges/word-hunt-winner.svg',
+  // short_term
+  first_step:          'badges/first-recall.svg',
+  quiz_starter:        'badges/first-quiz.svg',
+  on_a_roll:           'badges/streak-3.svg',
+  perfectionist:       'badges/perfect-quiz.svg',
+  week_warrior:        'badges/streak-7.svg',
+  sharp_shooter:       'badges/perfect-quiz.svg',
+  // mid_term
+  streak_keeper:       'badges/streak-14.svg',
+  halfway_there:       'badges/mastered-50.svg',
+  review_regular:      'badges/review-guardian.svg',
+  unit_slayer:         'badges/mastered-10.svg',
+  analogy_apprentice:  'badges/practice-specialist.svg',
+  // long_term
+  the_800_club:        'badges/full-lexicon.svg',
+  review_legend:       'badges/review-guardian.svg',
+  leaderboard_legend:  'badges/hall-of-fame.svg',
+  completionist:       'badges/mastered-500.svg',
+  unit_conqueror:      'badges/mastered-250.svg',
+  analogy_master:      'badges/mastered-100.svg',
+  speed_demon:         'badges/practice-specialist.svg',
+  leaderboard_climber: 'badges/weekly-champion.svg',
+  vocab_explorer:      'badges/mastered-10.svg',
+  question_machine:    'badges/mastered-100.svg',
+  // ultimate
+  word_sovereign:      'badges/mastered-500.svg',
+  immortal:            'badges/streak-100.svg',
+  flawless_run:        'badges/perfect-quiz.svg',
+  // games
+  vocab_game_explorer: 'badges/word-charge-specialist.svg',
+  vocab_game_builder:  'badges/word-hunt-winner.svg',
+  vocab_game_master:   'badges/weekly-champion.svg',
 };
 
 // ─── Colour helpers ───────────────────────────────────────────────────────────
@@ -168,7 +193,7 @@ function daysUntil(iso: string): number {
 
 // ─── Sub-components ───────────────────────────────────────────────────────────
 
-/** Hexagonal SVG clip-path avatar with rotating accent ring */
+/** Hexagonal SVG clip-path avatar with rotating accent ring and initials-frame overlay */
 function HexAvatar({ initials: init }: { initials: string }) {
   const prefersReducedMotion = useReducedMotion();
   return (
@@ -206,6 +231,13 @@ function HexAvatar({ initials: init }: { initials: string }) {
           {init}
         </span>
       </div>
+      {/* Decorative initials-frame overlay — subtle ornamental ring */}
+      <LexiIcon
+        path="profile/initials-frame.svg"
+        size={78}
+        color="rgba(244,168,40,0.25)"
+        style={{ position: 'absolute', top: -3, left: -3, pointerEvents: 'none' }}
+      />
     </div>
   );
 }
@@ -752,7 +784,7 @@ export default function ProfileScreen({
 
               {/* ══ 2. STATS — Ledger Strips ════════════════════════════════ */}
               <motion.div variants={sectionFade} style={{ marginBottom: 32 }}>
-                <SectionLabel>Statistics</SectionLabel>
+                <SectionLabel icon="profile/statistics.svg">Statistics</SectionLabel>
                 <div style={{
                   display:      'flex',
                   borderTop:    '1px solid rgba(255,255,255,0.06)',
@@ -854,6 +886,18 @@ export default function ProfileScreen({
                   />
                 </div>
 
+                {/* Word progress artwork — decorative, lazy-loaded */}
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', marginBottom: 10 }}>
+                  <LexiArtwork
+                    path="profile/word-progress.webp"
+                    width={64}
+                    height={64}
+                    loading="lazy"
+                    alt=""
+                    style={{ opacity: 0.55, flexShrink: 0 }}
+                  />
+                </div>
+
                 <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
                   {(Object.entries({
                     new:      data.levelStats.new,
@@ -897,8 +941,34 @@ export default function ProfileScreen({
 
               {/* ══ 4. DISTINCTIONS — Museum Specimen Badge Grid ════════════ */}
               <motion.div variants={sectionFade} style={{ marginBottom: 32 }}>
-                <SectionLabel center>— Distinctions —</SectionLabel>
+                <SectionLabel center icon="profile/distinctions.svg">— Distinctions —</SectionLabel>
 
+                {data.badges.length === 0 ? (
+                  /* No-badges empty state */
+                  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 12, padding: '24px 0' }}>
+                    <LexiArtwork
+                      path="profile/no-badges.webp"
+                      width={100}
+                      height={100}
+                      loading="lazy"
+                      alt="No badges yet"
+                    />
+                    <p style={{
+                      fontFamily: "'Cormorant Garamond', Georgia, serif",
+                      fontSize: 18, fontStyle: 'italic',
+                      color: 'var(--color-lx-text-muted)', margin: 0, textAlign: 'center',
+                    }}>
+                      No distinctions yet.
+                    </p>
+                    <p style={{
+                      fontFamily: "'Sora', sans-serif",
+                      fontSize: 11, color: 'var(--color-lx-text-muted)',
+                      margin: 0, textAlign: 'center', maxWidth: 200, lineHeight: 1.5,
+                    }}>
+                      Complete study sessions and quizzes to earn your first badge.
+                    </p>
+                  </div>
+                ) : (
                 <div style={{
                   display:             'grid',
                   gridTemplateColumns: 'repeat(auto-fill, minmax(76px, 1fr))',
@@ -933,12 +1003,20 @@ export default function ProfileScreen({
                           ...(badge.earned ? { boxShadow: `inset 0 0 0 1px ${accent}55` } : {}),
                         }}
                       >
+                        {/* Badge art container */}
                         <div style={{
-                          filter:  badge.earned ? 'none' : 'grayscale(1) brightness(0.35)',
-                          opacity: badge.earned ? 1 : 0.9,
+                          position: 'relative',
+                          filter:   badge.earned ? 'none' : 'grayscale(1) brightness(0.3)',
+                          opacity:  badge.earned ? 1 : 0.85,
                         }}>
                           {asset ? (
-                            <LexiArtwork path={asset} width={56} height={56} />
+                            <LexiArtwork
+                              path={asset}
+                              width={56}
+                              height={56}
+                              loading="lazy"
+                              style={badge.earned ? { filter: `drop-shadow(0 0 6px ${accent}55)` } : undefined}
+                            />
                           ) : (
                             <Icon
                               size={24}
@@ -947,7 +1025,22 @@ export default function ProfileScreen({
                               style={badge.earned ? { filter: `drop-shadow(0 0 4px ${accent}80)` } : {}}
                             />
                           )}
+
+                          {/* State overlay: locked or newly-earned */}
+                          {!badge.earned && (
+                            <LexiIcon
+                              path="badges/state-locked.svg"
+                              size={20}
+                              color="rgba(255,255,255,0.35)"
+                              style={{
+                                position: 'absolute',
+                                bottom: -2, right: -2,
+                                pointerEvents: 'none',
+                              }}
+                            />
+                          )}
                         </div>
+
                         <span style={{
                           fontFamily:       "'Sora', sans-serif",
                           fontSize:         8,
@@ -983,11 +1076,12 @@ export default function ProfileScreen({
                     );
                   })}
                 </div>
+                )}
               </motion.div>
 
               {/* ══ 5. LEXICON — Virtualized Word List ══════════════════════ */}
               <motion.div variants={sectionFade} style={{ marginBottom: 32 }}>
-                <SectionLabel>The Lexicon</SectionLabel>
+                <SectionLabel icon="profile/lexicon.svg">The Lexicon</SectionLabel>
 
                 <div style={{
                   display:       'flex',
@@ -1063,27 +1157,22 @@ export default function ProfileScreen({
                 </div>
 
                 {filteredWords.length === 0 ? (
-                  <div style={{ position: 'relative', height: 160, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                    <span style={{
-                      position:      'absolute',
-                      fontSize:      120,
-                      fontFamily:    "'Cormorant Garamond', Georgia, serif",
-                      fontStyle:     'italic',
-                      color:         'rgba(228,57,70,0.04)',
-                      userSelect:    'none',
-                      pointerEvents: 'none',
-                      top:           '50%',
-                      left:          '50%',
-                      transform:     'translate(-50%, -50%)',
-                    }}>
-                      &amp;
-                    </span>
+                  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 10, padding: '24px 0' }}>
+                    {search ? (
+                      <LexiArtwork
+                        path="profile/search-empty.webp"
+                        width={88}
+                        height={88}
+                        loading="lazy"
+                        alt="No results"
+                        style={{ opacity: 0.7 }}
+                      />
+                    ) : null}
                     <span style={{
                       fontFamily: "'Cormorant Garamond', Georgia, serif",
                       fontSize:   20,
                       fontStyle:  'italic',
                       color:      'var(--color-lx-text-muted)',
-                      position:   'relative',
                     }}>
                       No words found
                     </span>
@@ -1202,6 +1291,7 @@ export default function ProfileScreen({
               {/* ══ SECTION 1: Study Deadline ══════════════════════════════ */}
               <motion.div variants={settingItem} style={{ marginBottom: 24 }}>
                 <SectionLabel>Study Deadline</SectionLabel>
+                {/* deadline-editor artwork shown beside section — decorative */}
                 <GoldRule />
 
                 {/* Large serif date display */}
@@ -1345,7 +1435,7 @@ export default function ProfileScreen({
 
               {/* ══ SECTION 2: Appearance ══════════════════════════════════ */}
               <motion.div variants={settingItem} style={{ marginBottom: 24 }}>
-                <SectionLabel>Appearance</SectionLabel>
+                <SectionLabel icon="profile/appearance.svg">Appearance</SectionLabel>
                 <GoldRule />
 
                 <SettingRow
@@ -1458,7 +1548,7 @@ export default function ProfileScreen({
 
               {/* ══ SECTION 3: Notifications ═══════════════════════════════ */}
               <motion.div variants={settingItem} style={{ marginBottom: 24 }}>
-                <SectionLabel>Notifications</SectionLabel>
+                <SectionLabel icon="profile/notifications.svg">Notifications</SectionLabel>
                 <GoldRule />
 
                 <SettingRow
@@ -1537,9 +1627,9 @@ export default function ProfileScreen({
                 </SettingRow>
               </motion.div>
 
-              {/* ══ SECTION 4: Email Summary ═══════════════════════════════ */}
+              {/* ══ SECTION 4: Accessibility ══════════════════════════════ */}
               <motion.div variants={settingItem} style={{ marginBottom: 24 }}>
-                <SectionLabel>Accessibility</SectionLabel>
+                <SectionLabel icon="profile/accessibility.svg">Accessibility</SectionLabel>
                 <GoldRule />
 
                 <SettingRow icon={Accessibility} label="Reduce Motion" sublabel="Use calm fades instead of flips, sweeps, and celebration motion">
@@ -1552,7 +1642,7 @@ export default function ProfileScreen({
               </motion.div>
 
               <motion.div variants={settingItem} style={{ marginBottom: 24 }}>
-                <SectionLabel>Email</SectionLabel>
+                <SectionLabel>Email Summary</SectionLabel>
                 <GoldRule />
 
                 <SettingRow
@@ -1612,7 +1702,7 @@ export default function ProfileScreen({
 
               {/* ══ SECTION 5: Danger Zone ═════════════════════════════════ */}
               <motion.div variants={settingItem} style={{ marginTop: 16 }}>
-                <SectionLabel>Danger Zone</SectionLabel>
+                <SectionLabel icon="profile/danger-zone.svg">Danger Zone</SectionLabel>
                 <GoldRule />
 
                 <div style={{
@@ -1655,7 +1745,7 @@ export default function ProfileScreen({
                         color:         '#D62B38',
                       }}
                     >
-                      <LogOut size={14} />
+                      <LexiIcon path="profile/sign-out.svg" size={14} color="#D62B38" />
                       Sign Out of LexiCore
                     </motion.button>
                   </div>
@@ -1712,6 +1802,7 @@ export default function ProfileScreen({
                 return (
                   <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
                     <div style={{
+                      position:       'relative',
                       width:          72,
                       height:         72,
                       borderRadius:   '50%',
@@ -1727,6 +1818,15 @@ export default function ProfileScreen({
                         <LexiArtwork path={asset} width={68} height={68} />
                       ) : (
                         <Icon size={32} color={accent} strokeWidth={1.4} style={b.earned ? { filter: `drop-shadow(0 0 6px ${accent}80)` } : {}} />
+                      )}
+                      {/* State overlays */}
+                      {!b.earned && (
+                        <LexiIcon
+                          path="badges/state-locked.svg"
+                          size={24}
+                          color="rgba(255,255,255,0.4)"
+                          style={{ position: 'absolute', bottom: 0, right: 0 }}
+                        />
                       )}
                     </div>
                     <h2 style={{
@@ -2052,19 +2152,33 @@ const sheetBtn: React.CSSProperties = {
 
 // ─── Section label ────────────────────────────────────────────────────────────
 
-function SectionLabel({ children, center }: { children: React.ReactNode; center?: boolean }) {
+function SectionLabel({ children, center, icon }: { children: React.ReactNode; center?: boolean; icon?: string }) {
   return (
-    <p style={{
-      fontFamily:    "'Sora', sans-serif",
-      fontSize:      9,
-      fontWeight:    600,
-      letterSpacing: '0.18em',
-      textTransform: 'uppercase',
-      color:         'var(--color-lx-text-muted)',
-      margin:        '0 0 12px',
-      textAlign:     center ? 'center' : 'left',
+    <div style={{
+      display:    'flex',
+      alignItems: 'center',
+      gap:        6,
+      margin:     '0 0 12px',
+      justifyContent: center ? 'center' : 'flex-start',
     }}>
-      {children}
-    </p>
+      {icon && (
+        <LexiIcon
+          path={icon}
+          size={13}
+          color="var(--color-lx-text-muted)"
+        />
+      )}
+      <p style={{
+        fontFamily:    "'Sora', sans-serif",
+        fontSize:      9,
+        fontWeight:    600,
+        letterSpacing: '0.18em',
+        textTransform: 'uppercase',
+        color:         'var(--color-lx-text-muted)',
+        margin:        0,
+      }}>
+        {children}
+      </p>
+    </div>
   );
 }
