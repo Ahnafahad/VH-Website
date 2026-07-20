@@ -399,21 +399,6 @@ function LeaderList({ entries, getPoints, myRowRef, onSelect }: ListProps) {
       {/* Podium */}
       {top3.length > 0 && (
         <div className="relative">
-          {/* Background podium artwork */}
-          <LexiArtwork
-            path="leaderboard/podium.webp"
-            width={180}
-            height={90}
-            loading="lazy"
-            style={{
-              position: 'absolute',
-              bottom: 0,
-              left: '50%',
-              transform: 'translateX(-50%)',
-              opacity: 0.07,
-              pointerEvents: 'none',
-            }}
-          />
           <div className="flex gap-2.5 relative z-10">
             {top3.map((e, i) => (
               <PodiumCard
