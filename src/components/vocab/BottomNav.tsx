@@ -22,6 +22,13 @@ export default function BottomNav() {
 
   const active = TABS.find(t => pathname.startsWith(t.href))?.id ?? 'home';
 
+  // Word Charge is a fullscreen, timed game. Its wrong/help/pause overlays live
+  // inside the page's PageTransition stacking context, so a fixed nav (even at a
+  // lower z-index) still paints over their controls — tapping "Continue" hit the
+  // nav instead. The game has its own pause→exit and back-to-games controls, so
+  // drop the nav here entirely.
+  if (pathname.startsWith('/vocab/games/word-charge')) return null;
+
   return (
     <nav
       aria-label="Main navigation"

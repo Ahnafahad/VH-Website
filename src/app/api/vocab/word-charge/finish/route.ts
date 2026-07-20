@@ -126,10 +126,12 @@ export async function POST(req: NextRequest) {
       : [];
     const connotationMap = new Map(wordRows.map(w => [w.id, w.connotation]));
 
-    // Server-side recompute: points + streak
-    const POINTS_CORRECT       = 5;
-    const POINTS_HELPED        = 2;
-    const STREAK_MILESTONE_BONUS = 10;
+    // Server-side recompute: points + streak.
+    // Quarter-scale awards (rounded): correct 5→1, helped 2→1, milestone 10→3.
+    // Must stay in sync with pointsFor() in WordChargeScreen.tsx.
+    const POINTS_CORRECT       = 1;
+    const POINTS_HELPED        = 1;
+    const STREAK_MILESTONE_BONUS = 3;
     const STREAK_MILESTONE      = 5;
 
     let streak      = 0;

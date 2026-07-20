@@ -31,7 +31,7 @@ import {
   useState,
 } from 'react';
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
-import { Pause, HelpCircle } from 'lucide-react';
+import { Pause, HelpCircle, Heart } from 'lucide-react';
 import { useSafeNavigate } from '@/hooks/useSafeNavigate';
 import { useVocabFeedback } from '@/lib/vocab/use-vocab-feedback';
 import AnimatedNumber from '@/components/vocab/AnimatedNumber';
@@ -52,6 +52,7 @@ import type {
 // ─── Constants ────────────────────────────────────────────────────────────────
 
 const ROUND_MS    = 30_000;
+const LIVES       = 3;
 const INTRO_KEY   = 'lx-charge-intro';
 const SANS        = "'Sora', sans-serif";
 const SERIF       = "'Cormorant Garamond', Georgia, serif";
@@ -81,6 +82,7 @@ interface GameState {
   answers:      ChargeAnswer[];
   streak:       number;
   bestStreak:   number;
+  lives:        number;    // wrong answers remaining before the round ends
   roundPoints:  number;    // client-side accumulator (display only; server is authoritative)
   // Help
   helpUsedForCurrent: boolean;
@@ -113,10 +115,12 @@ type Action =
 
 function pointsFor(isCorrect: boolean, usedHelp: boolean, streak: number): number {
   if (!isCorrect) return 0;
-  const base = usedHelp ? 2 : 5;
+  // Quarter-scale awards (rounded): correct 5→1, helped 2→1, milestone 10→3.
+  // Must stay in sync with the server recompute in /api/vocab/word-charge/finish.
+  const base = usedHelp ? 1 : 1;
   // Milestone bonus: every 5th consecutive correct
   const newStreak = streak + 1;
-  const milestone = newStreak % 5 === 0 ? 10 : 0;
+  const milestone = newStreak % 5 === 0 ? 3 : 0;
   return base + milestone;
 }
 
@@ -124,7 +128,7 @@ function initialState(): GameState {
   return {
     phase: 'loading',
     words: [], roundId: 0, personalBest: 0, totalPoints: 0,
-    cardIndex: 0, answers: [], streak: 0, bestStreak: 0, roundPoints: 0,
+    cardIndex: 0, answers: [], streak: 0, bestStreak: 0, lives: LIVES, roundPoints: 0,
     helpUsedForCurrent: false,
     activeMs: 0, timerStartAt: 0,
     result: null, saveError: false,
@@ -176,7 +180,7 @@ function reducer(s: GameState, a: Action): GameState {
       const newAnswers = [...s.answers, { wordId: word.id, choice: a.choice, usedHelp: s.helpUsedForCurrent }];
 
       if (!correct) {
-        // Pause timer, open explain sheet
+        // Lose a life, pause timer, open explain sheet
         const elapsed = a.now - s.timerStartAt;
         return {
           ...s,
@@ -184,6 +188,7 @@ function reducer(s: GameState, a: Action): GameState {
           answers:     newAnswers,
           streak:      0,
           bestStreak:  newBestStreak,
+          lives:       s.lives - 1,
           activeMs:    s.activeMs + elapsed,
         };
       }
@@ -219,13 +224,14 @@ function reducer(s: GameState, a: Action): GameState {
       const newAnswers = [...s.answers, { wordId: word.id, choice: a.choice, usedHelp: true }];
 
       if (!correct) {
-        // Swap from help → explain (timer stays paused)
+        // Lose a life, swap from help → explain (timer stays paused)
         return {
           ...s,
           phase:      'explain',
           answers:    newAnswers,
           streak:     0,
           bestStreak: newBestStreak,
+          lives:      s.lives - 1,
         };
       }
       return advanceCard({
@@ -246,6 +252,8 @@ function reducer(s: GameState, a: Action): GameState {
     }
 
     case 'WRONG_CONTINUE':
+      // Out of lives → end the round; otherwise resume with the next word.
+      if (s.lives <= 0) return { ...s, phase: 'finishing' };
       return advanceCard({ ...s }, a.now);
 
     case 'PAUSE': {
@@ -574,7 +582,7 @@ export default function WordChargeScreen() {
   const [state, dispatch] = useReducer(reducer, undefined, initialState);
   const {
     phase, words, roundId, answers,
-    streak, bestStreak, roundPoints,
+    streak, bestStreak, roundPoints, lives,
     activeMs, timerStartAt,
     result, saveError,
   } = state;
@@ -1037,11 +1045,15 @@ export default function WordChargeScreen() {
         </motion.button>
       </div>
 
-      {/* ── Progress dots ─────────────────────────────────────────────────── */}
+      {/* ── Progress dots + lives ─────────────────────────────────────────── */}
       <div style={{
-        display: 'flex', alignItems: 'center', gap: 3, marginBottom: '0.75rem',
-        flexShrink: 0, flexWrap: 'wrap',
+        display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+        gap: 10, marginBottom: '0.75rem', flexShrink: 0,
       }}>
+        <div style={{
+          display: 'flex', alignItems: 'center', gap: 3,
+          flexWrap: 'wrap', flex: 1, minWidth: 0,
+        }}>
         {words.slice(0, Math.min(words.length, 20)).map((_, i) => {
           const isAttempted = i < state.cardIndex;
           const isCurrent   = i === state.cardIndex;
@@ -1065,6 +1077,28 @@ export default function WordChargeScreen() {
             +{words.length - 20}
           </span>
         )}
+        </div>
+
+        {/* Lives */}
+        <div
+          style={{ display: 'flex', alignItems: 'center', gap: 3, flexShrink: 0 }}
+          aria-label={`Lives remaining: ${Math.max(0, lives)} of ${LIVES}`}
+        >
+          {Array.from({ length: LIVES }).map((_, i) => {
+            const alive = i < lives;
+            return (
+              <Heart
+                key={i}
+                size={16}
+                aria-hidden
+                style={{ transition: 'opacity 0.2s ease' }}
+                fill={alive ? 'var(--color-lx-accent-red)' : 'none'}
+                color={alive ? 'var(--color-lx-accent-red)' : 'var(--color-lx-text-muted)'}
+                strokeWidth={2}
+              />
+            );
+          })}
+        </div>
       </div>
 
       {/* ── Side rails ────────────────────────────────────────────────────── */}

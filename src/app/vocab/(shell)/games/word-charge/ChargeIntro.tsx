@@ -312,9 +312,9 @@ export default function ChargeIntro({ onDone, onSkip, reduce, asOverlay }: Props
 
             {/* Beat 3 */}
             <p style={{ fontFamily: SANS, fontSize: '0.82rem', color: 'var(--color-lx-text-secondary)', lineHeight: 1.6 }}>
-              30 seconds. Swipe left for negative, right for positive. As many words as you can.
+              30 seconds, 3 lives. Swipe left for negative, right for positive. As many words as you can.
               <br />
-              <span style={{ color: 'var(--color-lx-text-muted)', fontSize: '0.76rem' }}>Wrong answers pause the timer and teach you the word.</span>
+              <span style={{ color: 'var(--color-lx-text-muted)', fontSize: '0.76rem' }}>Wrong answers pause the timer and teach you the word — but cost a life. Three wrong ends the round.</span>
             </p>
 
             <motion.button

@@ -142,24 +142,30 @@ function PodiumCard({ rank, name, points, isMe, delay, label, onSelect }: Podium
         {isMe ? 'YOU' : label}
       </span>
 
-      {/* Name */}
-      <p
-        className="relative z-10 text-center leading-tight"
-        style={{
-          fontFamily: "'Cormorant Garamond', serif",
-          fontSize:   '1.05rem',
-          fontWeight: 600,
-          fontStyle:  'italic',
-          color:      'var(--color-lx-text-primary)',
-          maxWidth:   '100%',
-          overflow:   'hidden',
-          display:    '-webkit-box',
-          WebkitLineClamp: 2,
-          WebkitBoxOrient: 'vertical',
-        }}
+      {/* Name — reserve 2 lines so single- and two-line names keep the
+          points row aligned across all three podium cards */}
+      <div
+        className="relative z-10 flex items-center justify-center"
+        style={{ minHeight: '2.6em', width: '100%' }}
       >
-        {name}
-      </p>
+        <p
+          className="text-center leading-tight"
+          style={{
+            fontFamily: "'Cormorant Garamond', serif",
+            fontSize:   '1.05rem',
+            fontWeight: 600,
+            fontStyle:  'italic',
+            color:      'var(--color-lx-text-primary)',
+            maxWidth:   '100%',
+            overflow:   'hidden',
+            display:    '-webkit-box',
+            WebkitLineClamp: 2,
+            WebkitBoxOrient: 'vertical',
+          }}
+        >
+          {name}
+        </p>
+      </div>
 
       {/* Points */}
       <p
