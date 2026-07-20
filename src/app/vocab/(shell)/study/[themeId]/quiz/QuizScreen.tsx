@@ -1301,6 +1301,10 @@ export default function QuizScreen({ themeId, themeIds, letterWordIds, sessionTy
             borderRadius: 16,
             padding: '1.25rem',
             position: 'relative', overflow: 'hidden',
+            // Keep full height so long prompts never clip — the parent
+            // column scrolls instead of this flex child shrinking (overflow
+            // hidden here only clips the decorative rotating gradient).
+            flexShrink: 0,
           }}>
             {/* Rotating radial gradient — premium depth effect */}
             <motion.div
