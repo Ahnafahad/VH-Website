@@ -21,6 +21,7 @@ export interface Assignment {
   description: string;
   attachmentUrl: string | null;
   materialId: number | null;
+  solutionMaterialId: number | null;
   subject: string;
   product: string;
   batch: string | null;
@@ -89,11 +90,12 @@ interface AssignmentForm {
   title: string; description: string; subject: string; product: string;
   batch: string; classSessionId: string; dueAt: string;
   materialId: string; // '' = none, or numeric string
+  solutionMaterialId: string; // '' = none, or numeric string
 }
 
 const defaultForm: AssignmentForm = {
   title: '', description: '', subject: 'english', product: 'iba',
-  batch: '', classSessionId: '', dueAt: '', materialId: '',
+  batch: '', classSessionId: '', dueAt: '', materialId: '', solutionMaterialId: '',
 };
 
 function AssignmentModal({
@@ -113,6 +115,7 @@ function AssignmentModal({
     classSessionId: editing.classSessionId ? String(editing.classSessionId) : '',
     dueAt: epochToDhakaLocal(editing.dueAt),
     materialId: editing.materialId ? String(editing.materialId) : '',
+    solutionMaterialId: editing.solutionMaterialId ? String(editing.solutionMaterialId) : '',
   } : defaultForm);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState('');
@@ -120,6 +123,10 @@ function AssignmentModal({
   const [uploading, setUploading] = useState(false);
   const [uploadProgress, setUploadProgress] = useState(0);
   const fileRef = useRef<HTMLInputElement>(null);
+  const [solutionUploadFile, setSolutionUploadFile] = useState<File | null>(null);
+  const [solutionUploading, setSolutionUploading] = useState(false);
+  const [solutionUploadProgress, setSolutionUploadProgress] = useState(0);
+  const solutionFileRef = useRef<HTMLInputElement>(null);
 
   const f = (k: keyof AssignmentForm, v: string) => setForm(p => ({ ...p, [k]: v }));
 
@@ -160,6 +167,43 @@ function AssignmentModal({
     }
   };
 
+  const handleUploadSolutionPdf = async () => {
+    if (!solutionUploadFile) return;
+    setSolutionUploading(true); setError('');
+    try {
+      const { key } = await uploadToR2({
+        file: solutionUploadFile,
+        endpoint: '/api/lms/admin/materials/upload',
+        onProgress: setSolutionUploadProgress,
+      });
+      const matRes = await fetch('/api/lms/admin/materials', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          title: `${solutionUploadFile.name.replace(/\.pdf$/i, '')} (Solution)`,
+          type: 'pdf',
+          blobUrl: key,
+          fileName: solutionUploadFile.name,
+          fileSize: solutionUploadFile.size,
+          subject: form.subject,
+          product: form.product,
+          batch: form.batch.trim() || null,
+        }),
+      });
+      if (!matRes.ok) throw new Error('Material save failed');
+      const newMat = await matRes.json() as MaterialOption;
+      allMaterials.push(newMat); // mutate for this session
+      setForm(p => ({ ...p, solutionMaterialId: String(newMat.id) }));
+      setSolutionUploadFile(null);
+      setSolutionUploadProgress(0);
+      if (solutionFileRef.current) solutionFileRef.current.value = '';
+    } catch (e) {
+      setError(e instanceof Error ? e.message : 'Upload failed');
+    } finally {
+      setSolutionUploading(false);
+    }
+  };
+
   const handleSave = async () => {
     if (!form.title.trim() || !form.description.trim() || !form.dueAt) {
       setError('Title, instructions and due date are required'); return;
@@ -175,6 +219,7 @@ function AssignmentModal({
         classSessionId: form.classSessionId ? Number(form.classSessionId) : null,
         dueAt: dhakaLocalToISO(form.dueAt),
         materialId: form.materialId ? Number(form.materialId) : null,
+        solutionMaterialId: form.solutionMaterialId ? Number(form.solutionMaterialId) : null,
       };
       const url    = editing ? `/api/lms/admin/assignments/${editing.id}` : '/api/lms/admin/assignments';
       const method = editing ? 'PATCH' : 'POST';
@@ -303,6 +348,72 @@ function AssignmentModal({
             </p>
           )}
         </div>
+        <div>
+          <FieldLabel>Solution PDF (optional)</FieldLabel>
+          <p style={{ fontSize: 11, color: MUTED, margin: '0 0 6px' }}>
+            Students unlock this the moment they submit or choose to show their work offline.
+          </p>
+          {/* Pick existing */}
+          <FieldSelect value={form.solutionMaterialId} onChange={e => f('solutionMaterialId', e.target.value)}>
+            <option value="">— none —</option>
+            {allMaterials.map(m => (
+              <option key={m.id} value={String(m.id)}>
+                {m.title}{m.fileSize ? ` (${(m.fileSize / 1_000_000).toFixed(1)} MB)` : ''}
+              </option>
+            ))}
+          </FieldSelect>
+          {/* Or upload new */}
+          <div style={{ marginTop: 8, display: 'flex', gap: 8, alignItems: 'center' }}>
+            <label style={{
+              flex: 1, display: 'flex', alignItems: 'center', gap: 6,
+              fontSize: 12, color: MUTED, border: `1px dashed ${BORDER}`,
+              borderRadius: 8, padding: '6px 10px', cursor: 'pointer',
+            }}>
+              <FileText size={13} />
+              <span style={{ flex: 1, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                {solutionUploadFile ? solutionUploadFile.name : 'Upload new PDF…'}
+              </span>
+              <input
+                ref={solutionFileRef}
+                type="file"
+                accept=".pdf"
+                style={{ display: 'none' }}
+                onChange={e => setSolutionUploadFile(e.target.files?.[0] ?? null)}
+              />
+            </label>
+            {solutionUploadFile && (
+              <button
+                type="button"
+                onClick={() => void handleUploadSolutionPdf()}
+                disabled={solutionUploading}
+                style={{
+                  fontSize: 12, fontWeight: 600, padding: '6px 12px', borderRadius: 8,
+                  background: '#D62B38', color: '#fff', border: 'none', cursor: solutionUploading ? 'not-allowed' : 'pointer',
+                  opacity: solutionUploading ? 0.7 : 1, display: 'flex', alignItems: 'center', gap: 4,
+                }}
+              >
+                {solutionUploading ? (
+                  <><Loader2 size={12} className="animate-spin" />  {solutionUploadProgress < 100 ? `${solutionUploadProgress}%` : 'Saving…'}</>
+                ) : (
+                  <><Upload size={12} /> Upload</>
+                )}
+              </button>
+            )}
+          </div>
+          {form.solutionMaterialId && (
+            <p style={{ fontSize: 11, color: '#059669', marginTop: 4, display: 'flex', alignItems: 'center', gap: 4 }}>
+              <CheckCircle size={11} /> Solution attached: {allMaterials.find(m => String(m.id) === form.solutionMaterialId)?.title ?? `Material #${form.solutionMaterialId}`}
+              <button
+                type="button"
+                onClick={() => f('solutionMaterialId', '')}
+                style={{ marginLeft: 4, background: 'none', border: 'none', cursor: 'pointer', color: MUTED, padding: 0 }}
+                aria-label="Clear solution"
+              >
+                <XIcon size={11} />
+              </button>
+            </p>
+          )}
+        </div>
         {error && <p style={{ fontSize: 12, color: RED, margin: 0 }}>{error}</p>}
         <div style={{ display: 'flex', gap: 8, justifyContent: 'flex-end' }}>
           <GhostBtn onClick={onClose} small>Cancel</GhostBtn>
@@ -324,6 +435,8 @@ interface SubmissionRow {
   email: string;
   batch: string | null;
   status: 'pending' | 'submitted' | 'reviewed';
+  mode: 'file' | 'offline' | null;
+  offlineChecked: boolean;
   fileUrl: string | null;
   note: string | null;
   instructorComment: string | null;
@@ -427,6 +540,16 @@ function SubmissionsPanel({ assignmentId, onClose }: { assignmentId: number; onC
                   }}>
                     {sub.status}
                   </span>
+                  {sub.mode === 'offline' && (
+                    <span style={{
+                      padding: '2px 8px', borderRadius: 100, fontSize: 11, fontWeight: 600,
+                      background: sub.offlineChecked ? 'rgba(16,185,129,0.08)' : '#F3F4F6',
+                      color: sub.offlineChecked ? '#065F46' : '#6B7280',
+                      border: `1px solid ${sub.offlineChecked ? 'rgba(16,185,129,0.2)' : BORDER}`,
+                    }}>
+                      {sub.offlineChecked ? 'Shown in class ✓' : 'Will show offline'}
+                    </span>
+                  )}
                 </div>
 
                 {sub.status !== 'pending' && (

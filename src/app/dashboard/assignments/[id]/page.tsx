@@ -9,7 +9,7 @@ import { and, eq } from 'drizzle-orm';
 import { authOptions } from '@/lib/auth';
 import { getUserByEmail } from '@/lib/db-access-control';
 import { db } from '@/lib/db';
-import { assignments, assignmentSubmissions } from '@/lib/db/schema';
+import { assignments, assignmentSubmissions, materials } from '@/lib/db/schema';
 import { canAccessLmsContent } from '@/lib/lms/access';
 import AssignmentDetailClient from '@/components/lms/AssignmentDetailClient';
 import { resolveFileUrl } from '@/lib/storage/r2';
@@ -64,11 +64,34 @@ export default async function AssignmentDetailPage({ params }: PageProps) {
     .get() ?? null;
 
   // Resolve file refs to presigned URLs at render time.
-  // attachmentUrl is always an http link (entered manually in admin form).
+  // attachmentUrl is a legacy manually-entered link, kept for old rows.
+  // Current admin form instead links a materials-library PDF via materialId,
+  // which must be resolved here — it was never wired to the student view.
   // submission.fileUrl is an R2 key (or legacy http Blob URL).
   const resolvedFileUrl = submission
     ? await resolveFileUrl(submission.fileUrl)
     : null;
+
+  let effectiveAttachmentUrl = assignment.attachmentUrl;
+  if (!effectiveAttachmentUrl && assignment.materialId) {
+    const attachmentMaterial = await db
+      .select({ blobUrl: materials.blobUrl })
+      .from(materials)
+      .where(eq(materials.id, assignment.materialId))
+      .get();
+    if (attachmentMaterial) effectiveAttachmentUrl = await resolveFileUrl(attachmentMaterial.blobUrl);
+  }
+
+  // Solution unlocks once the student has any submission row (file or offline).
+  let solutionUrl: string | null = null;
+  if (submission && assignment.solutionMaterialId) {
+    const solutionMaterial = await db
+      .select({ blobUrl: materials.blobUrl })
+      .from(materials)
+      .where(eq(materials.id, assignment.solutionMaterialId))
+      .get();
+    if (solutionMaterial) solutionUrl = await resolveFileUrl(solutionMaterial.blobUrl);
+  }
 
   return (
     <AssignmentDetailClient
@@ -76,7 +99,7 @@ export default async function AssignmentDetailPage({ params }: PageProps) {
         id: assignment.id,
         title: assignment.title,
         description: assignment.description,
-        attachmentUrl: assignment.attachmentUrl,
+        attachmentUrl: effectiveAttachmentUrl,
         subject: assignment.subject,
         dueAt: assignment.dueAt.getTime(),
         classSessionId: assignment.classSessionId,
@@ -86,6 +109,7 @@ export default async function AssignmentDetailPage({ params }: PageProps) {
           ? {
               id: submission.id,
               status: submission.status as 'submitted' | 'reviewed',
+              mode: submission.mode as 'file' | 'offline',
               fileUrl: resolvedFileUrl,
               note: submission.note,
               instructorComment: submission.instructorComment,
@@ -94,6 +118,7 @@ export default async function AssignmentDetailPage({ params }: PageProps) {
             }
           : null
       }
+      solutionUrl={solutionUrl}
     />
   );
 }

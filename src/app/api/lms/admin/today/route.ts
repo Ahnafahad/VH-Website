@@ -11,6 +11,8 @@ import {
   classAttendance,
   materials,
   assignments,
+  assignmentSubmissions,
+  users,
 } from '@/lib/db/schema';
 import { safeApiHandler } from '@/lib/api-utils';
 import { requireStaff } from '@/lib/tests/route-helpers';
@@ -59,7 +61,7 @@ export async function GET() {
     const sessionIds = todaySessions.map((s) => s.id);
 
     // Parallelise: attendance counts per session + materials per session + assignments due in 48h
-    const [attendanceCounts, materialCounts, assignmentsDue48h] =
+    const [attendanceCounts, materialCounts, assignmentsDue48h, offlineSubs] =
       await Promise.all([
         // Attendance counts
         Promise.all(
@@ -97,10 +99,35 @@ export async function GET() {
           )
           .get()
           .then((r) => r?.count ?? 0),
+
+        // Students who declared "show offline" (any assignment, any due date) —
+        // matched against today's sessions by subject/product/batch below.
+        db
+          .select({
+            submissionId: assignmentSubmissions.id,
+            userId: assignmentSubmissions.userId,
+            userName: users.name,
+            userEmail: users.email,
+            checked: assignmentSubmissions.offlineChecked,
+            submittedAt: assignmentSubmissions.submittedAt,
+            assignmentId: assignments.id,
+            assignmentTitle: assignments.title,
+            subject: assignments.subject,
+            product: assignments.product,
+            batch: assignments.batch,
+          })
+          .from(assignmentSubmissions)
+          .innerJoin(assignments, eq(assignmentSubmissions.assignmentId, assignments.id))
+          .innerJoin(users, eq(assignmentSubmissions.userId, users.id))
+          .where(eq(assignmentSubmissions.mode, 'offline')),
       ]);
 
     const attendanceMap = new Map(attendanceCounts.map((r) => [r.sessionId, r.count]));
     const materialsMap = new Map(materialCounts.map((r) => [r.sessionId, r.count]));
+
+    // batch null = "all batches" on either side, so it matches any specific batch
+    const batchMatches = (a: string | null, b: string | null) =>
+      a === null || b === null || a === b;
 
     return {
       sessions: todaySessions.map((s) => ({
@@ -115,6 +142,22 @@ export async function GET() {
         meetLink: s.meetLink,
         attendanceCount: attendanceMap.get(s.id) ?? 0,
         materialsCount: materialsMap.get(s.id) ?? 0,
+        offlineShowcase: offlineSubs
+          .filter((o) =>
+            o.subject === s.subject &&
+            o.product === s.product &&
+            batchMatches(o.batch, s.batch),
+          )
+          .map((o) => ({
+            submissionId: o.submissionId,
+            userId: o.userId,
+            userName: o.userName,
+            userEmail: o.userEmail,
+            checked: o.checked,
+            submittedAt: o.submittedAt.getTime(),
+            assignmentId: o.assignmentId,
+            assignmentTitle: o.assignmentTitle,
+          })),
       })),
       assignmentsDue48h,
     };

@@ -1145,6 +1145,7 @@ export const assignments = sqliteTable('assignments', {
   description:    text('description').notNull(),
   attachmentUrl:  text('attachment_url'),
   materialId:     integer('material_id'),                           // soft FK → materials.id (nullable)
+  solutionMaterialId: integer('solution_material_id'),               // soft FK → materials.id (nullable) — instructor's answer key
   subject:        text('subject').notNull(),
   product:        text('product').notNull().default('iba'),
   batch:          text('batch'),
@@ -1160,6 +1161,8 @@ export const assignments = sqliteTable('assignments', {
 // ─── Assignment Submissions ───────────────────────────────────────────────────
 // UNIQUE(assignmentId, userId). "pending" = no row exists.
 // status: 'submitted' | 'reviewed'
+// mode: 'file' (uploaded a PDF) | 'offline' (will show physical work in next class)
+// offlineChecked: instructor's own tracking mark for mode='offline' rows — does NOT gate solution access
 
 export const assignmentSubmissions = sqliteTable('assignment_submissions', {
   id:                integer('id').primaryKey({ autoIncrement: true }),
@@ -1167,6 +1170,9 @@ export const assignmentSubmissions = sqliteTable('assignment_submissions', {
   userId:            integer('user_id').notNull().references(() => users.id, { onDelete: 'cascade' }),
   // 'submitted' | 'reviewed'
   status:            text('status').notNull().default('submitted'),
+  // 'file' | 'offline'
+  mode:              text('mode').notNull().default('file'),
+  offlineChecked:    integer('offline_checked', { mode: 'boolean' }).notNull().default(false),
   fileUrl:           text('file_url'),
   note:              text('note'),
   instructorComment: text('instructor_comment'),

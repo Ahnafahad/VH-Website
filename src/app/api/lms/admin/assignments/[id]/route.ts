@@ -41,6 +41,7 @@ export async function PATCH(
     }
     if (body.attachmentUrl !== undefined) updates.attachmentUrl = body.attachmentUrl ?? null;
     if (body.materialId !== undefined) updates.materialId = body.materialId ? Number(body.materialId) : null;
+    if (body.solutionMaterialId !== undefined) updates.solutionMaterialId = body.solutionMaterialId ? Number(body.solutionMaterialId) : null;
     if (body.subject !== undefined) {
       if (!(LMS_SUBJECTS as readonly string[]).includes(body.subject)) {
         throw new ApiException(`subject must be one of: ${LMS_SUBJECTS.join(', ')}`, 400);
@@ -70,6 +71,7 @@ export async function PATCH(
       description: updated.description,
       attachmentUrl: updated.attachmentUrl,
       materialId: updated.materialId ?? null,
+      solutionMaterialId: updated.solutionMaterialId ?? null,
       subject: updated.subject,
       product: updated.product,
       batch: updated.batch,

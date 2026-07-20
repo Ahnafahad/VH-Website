@@ -2,8 +2,10 @@
  * POST /api/lms/assignments/[id]/submit
  * Student submits (or resubmits) their homework for an assignment.
  *
- * Body: { fileUrl?: string; note?: string }
- * At least one of fileUrl or note must be provided.
+ * Body: { fileUrl?: string; note?: string; mode?: 'file' | 'offline' }
+ * mode 'file' (default): at least one of fileUrl or note must be provided.
+ * mode 'offline': student declares they'll show physical work in the next
+ * class instead of uploading — no file required.
  * Resubmission is allowed while status !== 'reviewed'.
  */
 
@@ -43,11 +45,14 @@ export async function POST(
       throw new ApiException('Access denied', 403, 'FORBIDDEN');
     }
 
-    const body = (await req.json()) as { fileUrl?: string; note?: string };
-    const fileUrl = typeof body.fileUrl === 'string' && body.fileUrl.trim() ? body.fileUrl.trim() : null;
+    const body = (await req.json()) as { fileUrl?: string; note?: string; mode?: string };
+    const mode = body.mode === 'offline' ? 'offline' : 'file';
     const note = typeof body.note === 'string' && body.note.trim() ? body.note.trim() : null;
+    const fileUrl = mode === 'file' && typeof body.fileUrl === 'string' && body.fileUrl.trim()
+      ? body.fileUrl.trim()
+      : null;
 
-    if (!fileUrl && !note) {
+    if (mode === 'file' && !fileUrl && !note) {
       throw new ApiException('At least a file or a note is required', 400, 'MISSING_CONTENT');
     }
 
@@ -80,6 +85,8 @@ export async function POST(
         .set({
           fileUrl,
           note,
+          mode,
+          offlineChecked: false,
           status: 'submitted',
           submittedAt: now,
           instructorComment: null,
@@ -93,6 +100,8 @@ export async function POST(
         assignmentId: updated.assignmentId,
         userId: updated.userId,
         status: updated.status,
+        mode: updated.mode,
+        offlineChecked: updated.offlineChecked,
         fileUrl: await resolveFileUrl(updated.fileUrl),
         note: updated.note,
         instructorComment: updated.instructorComment,
@@ -109,6 +118,7 @@ export async function POST(
         userId: user.id,
         fileUrl,
         note,
+        mode,
         status: 'submitted',
         submittedAt: now,
       })
@@ -119,6 +129,8 @@ export async function POST(
       assignmentId: inserted.assignmentId,
       userId: inserted.userId,
       status: inserted.status,
+      mode: inserted.mode,
+      offlineChecked: inserted.offlineChecked,
       fileUrl: await resolveFileUrl(inserted.fileUrl),
       note: inserted.note,
       instructorComment: inserted.instructorComment,

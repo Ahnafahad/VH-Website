@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   Video, Upload, BookOpen, CheckCircle, Users, Clock,
-  ExternalLink, CalendarX, ChevronRight, Loader2, Check,
+  ExternalLink, CalendarX, ChevronRight, Loader2, Check, KeyRound,
 } from 'lucide-react';
 import { uploadToR2 } from '@/lib/lms/upload-client';
 import { trackFeature } from '@/lib/analytics/tracker';
@@ -17,6 +17,17 @@ import {
 } from './lms-shared';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
+
+export interface OfflineShowcaseEntry {
+  submissionId: number;
+  userId: number;
+  userName: string;
+  userEmail: string;
+  checked: boolean;
+  submittedAt: number;
+  assignmentId: number;
+  assignmentTitle: string;
+}
 
 export interface TodaySession {
   id: number;
@@ -30,6 +41,7 @@ export interface TodaySession {
   meetLink: string | null;
   attendanceCount: number;
   materialsCount: number;
+  offlineShowcase: OfflineShowcaseEntry[];
 }
 
 interface TodayData {
@@ -463,6 +475,85 @@ function AttendanceSheet({
   );
 }
 
+// ─── Offline Homework Sheet ───────────────────────────────────────────────────
+// Students who chose "I'll show it in the next class" for an assignment
+// matching this session's subject/product/batch. Checking a row is purely the
+// instructor's own record of who presented in class — it does not affect the
+// student's access to the assignment solution.
+
+function OfflineHomeworkSheet({
+  entries, onClose, onRefresh,
+}: {
+  entries: OfflineShowcaseEntry[]; onClose: () => void; onRefresh: () => void;
+}) {
+  const [rows, setRows] = useState(entries);
+  const [savingId, setSavingId] = useState<number | null>(null);
+
+  const toggleChecked = async (submissionId: number, checked: boolean) => {
+    setSavingId(submissionId);
+    setRows(prev => prev.map(r => r.submissionId === submissionId ? { ...r, checked } : r));
+    try {
+      const res = await fetch(`/api/lms/admin/submissions/${submissionId}/check`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ checked }),
+      });
+      if (!res.ok) throw new Error('Failed');
+    } catch {
+      setRows(prev => prev.map(r => r.submissionId === submissionId ? { ...r, checked: !checked } : r));
+    } finally {
+      setSavingId(null);
+    }
+  };
+
+  const sorted = [...rows].sort((a, b) => Number(a.checked) - Number(b.checked));
+
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+      <p style={{ margin: 0, fontSize: 12, color: MUTED }}>
+        {rows.filter(r => r.checked).length} / {rows.length} checked off
+      </p>
+      <div style={{ maxHeight: 380, overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: 6 }}>
+        {sorted.map(r => (
+          <label
+            key={r.submissionId}
+            style={{
+              display: 'flex', alignItems: 'center', gap: 10, padding: '8px 10px',
+              borderRadius: 8, border: `1px solid ${BORDER}`, cursor: 'pointer',
+              background: r.checked ? 'rgba(16,185,129,0.06)' : '#FFFFFF',
+            }}
+          >
+            <input
+              type="checkbox"
+              checked={r.checked}
+              disabled={savingId === r.submissionId}
+              onChange={() => void toggleChecked(r.submissionId, !r.checked)}
+              style={{ width: 16, height: 16, flexShrink: 0, cursor: 'pointer' }}
+            />
+            <div style={{ flex: 1, minWidth: 0 }}>
+              <p style={{
+                margin: 0, fontSize: 13, fontWeight: 600, color: SLATE,
+                overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap',
+              }}>
+                {r.userName}
+              </p>
+              <p style={{
+                margin: 0, fontSize: 11, color: MUTED,
+                overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap',
+              }}>
+                {r.assignmentTitle}
+              </p>
+            </div>
+          </label>
+        ))}
+      </div>
+      <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+        <GhostBtn small onClick={() => { onRefresh(); onClose(); }}>Close</GhostBtn>
+      </div>
+    </div>
+  );
+}
+
 // ─── Session Card ─────────────────────────────────────────────────────────────
 
 function SessionCard({ session, index, onRefresh }: {
@@ -471,6 +562,7 @@ function SessionCard({ session, index, onRefresh }: {
   const [uploadOpen,   setUploadOpen]   = useState(false);
   const [hwOpen,       setHwOpen]       = useState(false);
   const [attOpen,      setAttOpen]      = useState(false);
+  const [offlineOpen,  setOfflineOpen]  = useState(false);
   const [completing,   setCompleting]   = useState(false);
   const [confirmComp,  setConfirmComp]  = useState(false);
   const [toast,        setToast]        = useState<string | null>(null);
@@ -630,6 +722,27 @@ function SessionCard({ session, index, onRefresh }: {
               Post Homework
             </motion.button>
 
+            {session.offlineShowcase.length > 0 && (() => {
+              const uncheckedCount = session.offlineShowcase.filter(e => !e.checked).length;
+              return (
+                <motion.button
+                  onClick={() => setOfflineOpen(true)}
+                  whileTap={{ scale: 0.96 }}
+                  style={{
+                    display: 'flex', alignItems: 'center', gap: 6,
+                    padding: '7px 12px', borderRadius: 7,
+                    background: uncheckedCount > 0 ? 'rgba(245,158,11,0.1)' : 'rgba(16,185,129,0.09)',
+                    border: `1px solid ${uncheckedCount > 0 ? 'rgba(245,158,11,0.25)' : 'rgba(16,185,129,0.25)'}`,
+                    color: uncheckedCount > 0 ? '#92400E' : '#065F46',
+                    fontSize: 12, fontWeight: 600, cursor: 'pointer',
+                  }}
+                >
+                  <KeyRound size={12} aria-hidden />
+                  Offline Homework · {session.offlineShowcase.length}
+                </motion.button>
+              );
+            })()}
+
             {!isDone && (
               <motion.button
                 onClick={() => setConfirmComp(true)}
@@ -669,6 +782,14 @@ function SessionCard({ session, index, onRefresh }: {
 
       <Modal open={hwOpen} onClose={() => setHwOpen(false)} title={`Post Homework — ${session.title}`} width={480}>
         <HomeworkSheet session={session} onClose={() => setHwOpen(false)} onDone={() => showToast('Homework posted')} />
+      </Modal>
+
+      <Modal open={offlineOpen} onClose={() => setOfflineOpen(false)} title={`Offline Homework — ${session.title}`} width={480}>
+        <OfflineHomeworkSheet
+          entries={session.offlineShowcase}
+          onClose={() => setOfflineOpen(false)}
+          onRefresh={onRefresh}
+        />
       </Modal>
 
       <ConfirmDialog
