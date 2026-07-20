@@ -2,6 +2,7 @@ import { NextAuthOptions } from 'next-auth'
 import GoogleProvider from 'next-auth/providers/google'
 import CredentialsProvider from 'next-auth/providers/credentials'
 import { OAuth2Client } from 'google-auth-library'
+import { timingSafeEqual } from 'crypto'
 import {
   isEmailAuthorized,
   getUserByEmail,
@@ -12,12 +13,57 @@ import {
 import { getUserByEmail as getConfigUser } from '@/lib/generated-access-control'
 import { db, users } from '@/lib/db'
 
+// ── Dev-only login shortcut ──────────────────────────────────────────────
+// Lets local development sign in as the super-admin without the Google OAuth
+// round-trip. HARD-GATED to NODE_ENV==='development': on Vercel NODE_ENV is
+// 'production', so the provider below is never even constructed. Requires the
+// DEV_LOGIN_CODE env var (kept in .env.local, which is gitignored).
+const IS_DEV = process.env.NODE_ENV === 'development'
+const DEV_LOGIN_EMAIL = 'ahnaf816@gmail.com'
+
+function codeMatches(input: string, expected: string): boolean {
+  const a = Buffer.from(input)
+  const b = Buffer.from(expected)
+  // timingSafeEqual throws on length mismatch, so length-check first.
+  if (a.length !== b.length) return false
+  return timingSafeEqual(a, b)
+}
+
 export const authOptions: NextAuthOptions = {
   providers: [
     GoogleProvider({
       clientId:     process.env.GOOGLE_CLIENT_ID!,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
     }),
+    ...(IS_DEV && process.env.DEV_LOGIN_CODE
+      ? [
+          CredentialsProvider({
+            id: 'dev-login',
+            name: 'Dev Login',
+            credentials: {
+              code: { label: 'Login code', type: 'password' },
+            },
+            async authorize(credentials) {
+              // Re-check the gate at call time — belt and suspenders.
+              if (process.env.NODE_ENV !== 'development') return null
+              const expected = process.env.DEV_LOGIN_CODE
+              if (!expected) return null
+              const got = (credentials?.code ?? '').trim()
+              if (!got || !codeMatches(got, expected.trim())) {
+                console.warn('dev-login: code mismatch, rejected')
+                return null
+              }
+              console.log(`dev-login: granted as ${DEV_LOGIN_EMAIL}`)
+              return {
+                id:    `dev-${DEV_LOGIN_EMAIL}`,
+                name:  'Ahnaf Ahad',
+                email: DEV_LOGIN_EMAIL,
+                image: null,
+              }
+            },
+          }),
+        ]
+      : []),
     CredentialsProvider({
       id: 'google-native',
       name: 'Google (Native)',
@@ -49,8 +95,12 @@ export const authOptions: NextAuthOptions = {
   ],
   callbacks: {
     async signIn({ user, account }) {
-      // Allow both the web Google OAuth flow and the native Capacitor token exchange
-      if (account?.provider !== 'google' && account?.provider !== 'google-native') return false
+      // Allow the Google OAuth flow, the native Capacitor token exchange, and
+      // (development only) the dev-login shortcut. Identity for dev-login was
+      // already verified in its authorize(); we still run it through the same
+      // gmail-authorized / auto-provision path below.
+      const isDevLogin = IS_DEV && account?.provider === 'dev-login'
+      if (account?.provider !== 'google' && account?.provider !== 'google-native' && !isDevLogin) return false
       const email = user.email?.toLowerCase() || ''
       if (!email.endsWith('@gmail.com')) {
         console.log(`Sign-in rejected (non-gmail): ${email}`)
