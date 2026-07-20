@@ -102,32 +102,15 @@ function PodiumCard({ rank, name, points, isMe, delay, label, onSelect }: Podium
         {m.numeral}
       </span>
 
-      {/* Avatar */}
-      <div
-        className="relative z-10 flex h-16 w-16 shrink-0 items-center justify-center rounded-full"
-        style={{
-          background:  'var(--color-lx-elevated)',
-          boxShadow:   `0 0 0 2px ${isMe ? 'var(--color-lx-accent-red)' : m.ring}`,
-        }}
-      >
+      {/* Avatar — the place medal (star + ribbon) is the emblem; no initials
+          overlaid on top of it (the name sits directly below). */}
+      <div className="relative z-10 flex h-16 w-16 shrink-0 items-center justify-center">
         <LexiArtwork
           path={`leaderboard/${rank === 1 ? 'first' : rank === 2 ? 'second' : 'third'}-place.svg`}
-          width={76}
-          height={76}
-          style={{ position: 'absolute', inset: -6, zIndex: 0 }}
+          width={64}
+          height={64}
+          alt={`${MEDAL[rank].label} medal`}
         />
-        <span
-          style={{
-            fontFamily: "'Cormorant Garamond', serif",
-            fontSize:   '1.4rem',
-            fontWeight: 700,
-            color:      isMe ? 'var(--color-lx-accent-red)' : m.ring,
-            position:   'relative',
-            zIndex:     1,
-          }}
-        >
-          {initials(name)}
-        </span>
       </div>
 
       {/* Medal label */}
