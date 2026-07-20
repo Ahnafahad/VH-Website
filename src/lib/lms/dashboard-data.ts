@@ -333,11 +333,12 @@ export async function getDashboardData(
       .orderBy(desc(lmsAnnouncements.pinned), desc(lmsAnnouncements.createdAt))
       .limit(10),
 
-    // All published tests (we'll filter by user products below)
+    // All published, non-diagnostic tests (diagnostics have their own funnel
+    // and shouldn't clutter the course dashboard — filter by user products below)
     db
       .select()
       .from(tests)
-      .where(eq(tests.status, 'published')),
+      .where(and(eq(tests.status, 'published'), eq(tests.isDiagnostic, false))),
 
     // Lecture-sheet (pdf material) count grouped by subject, in scope
     db
