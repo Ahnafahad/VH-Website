@@ -304,19 +304,6 @@ function FlipCard({
               }} />
             </div>
 
-            {/* front-frame.svg: scholarly card-face border detail, purely decorative */}
-            <LexiArtwork
-              path="flashcards/front-frame.svg"
-              style={{
-                position: 'absolute', inset: 0,
-                width: '100%', height: '100%',
-                opacity: 0.08,
-                pointerEvents: 'none',
-                zIndex: 1,
-                objectFit: 'fill',
-              }}
-            />
-
             {/* flip-corner.svg: affordance hint in top-right corner */}
             <LexiArtwork
               path="flashcards/flip-corner.svg"
@@ -404,18 +391,6 @@ function FlipCard({
             }}
             className="hide-scrollbar"
           >
-            {/* back-frame.svg: matching decorative frame for the definition face */}
-            <LexiArtwork
-              path="flashcards/back-frame.svg"
-              style={{
-                position: 'absolute', inset: 0,
-                width: '100%', height: '100%',
-                opacity: 0.07,
-                pointerEvents: 'none',
-                zIndex: 0,
-                objectFit: 'fill',
-              }}
-            />
             {/* Word again (small) */}
             <div className="flex items-center justify-between">
               <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '1.1rem', fontStyle: 'italic', color: 'var(--color-lx-accent-red)', fontWeight: 600, overflowWrap: 'break-word', maxWidth: '100%' }}>
