@@ -285,8 +285,10 @@ function SubjectPicker({ slug, data, onStarted, onError, onBanned, onSubmitted }
           </h1>
           <p className="text-exam-ink-muted text-sm leading-relaxed max-w-lg">
             The two English sections are compulsory. Pick <span className="text-exam-ink font-medium">exactly 2</span> of
-            the remaining 3 subjects. You&rsquo;ll attempt 4 sections in total — scored out of 40. The
-            un-chosen subject is excluded entirely (it is not marked wrong).
+            the remaining {electives.length} subjects. You&rsquo;ll attempt 4 sections in total — scored out of 40. The
+            {electives.length - 2 === 1
+              ? ' un-chosen subject is'
+              : ` other ${electives.length - 2} subjects are`} excluded entirely (not marked wrong).
           </p>
         </div>
 
@@ -318,7 +320,7 @@ function SubjectPicker({ slug, data, onStarted, onError, onBanned, onSubmitted }
           <p className="text-exam-ink-faint text-[10px] tracking-[0.2em] uppercase mb-3">
             Pick 2 electives · {chosen.length}/2 selected
           </p>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
             {electives.map((s) => {
               const selected = chosen.includes(s.id);
               const disabled = !selected && chosen.length >= 2;

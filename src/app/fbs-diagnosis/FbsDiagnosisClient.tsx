@@ -35,6 +35,7 @@ const SUBJECTS = [
   'Business Studies',
   'Economics',
   'Accounting',
+  'Mathematics',
 ];
 
 // Every diagnostic follows the same fixed format: the two English sections
@@ -133,8 +134,8 @@ export default function FbsDiagnosisClient() {
             transition={{ duration: 0.7, delay: 0.1 }}
             className="mt-10 max-w-2xl font-sans text-base sm:text-lg leading-relaxed text-[#1A0507]/65"
           >
-            One focused sitting — compulsory English plus 2 of 3 electives you
-            choose. Instant, detailed results with explanations — see your rank
+            One focused sitting — compulsory English plus 2 electives of your
+            choice. Instant, detailed results with explanations — see your rank
             on a public leaderboard, benchmarked against our instructors.
           </motion.p>
 
@@ -307,7 +308,7 @@ function Hero() {
           className="mt-12 font-sans text-[#FAF5EF]/65 text-base sm:text-lg leading-relaxed max-w-xl"
         >
           A free, 30-minute diagnostic for the DU C-Unit paper — 40 MCQs:
-          compulsory English plus 2 of 3 electives you choose. Get instant,
+          compulsory English plus 2 electives of your choice. Get instant,
           detailed results with explanations, see your rank on the
           leaderboard, and measure yourself against our instructors&rsquo;
           benchmark.
