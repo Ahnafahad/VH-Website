@@ -332,7 +332,7 @@ export default function OnlineExamScreen({ slug, bucket, initialPayload, exitHre
       {/* Body: question + desktop navigator */}
       <div className="flex flex-1 overflow-hidden">
         {/* Question pane */}
-        <main className="flex-1 overflow-hidden">
+        <main className="flex-1 overflow-hidden pb-[52px] lg:pb-0">
           {currentQ && (
             <QuestionView
               question={currentQ}
