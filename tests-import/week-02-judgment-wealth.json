@@ -1,0 +1,1302 @@
+{
+  "slug": "week-02-judgment-wealth",
+  "title": "Week 2 — Public Judgment, Flattery & Governance + Wealth, Greed & Deprivation",
+  "bucket": "iba",
+  "description": "Fill-in-the-blank vocabulary on the language of public judgment, flattery, and governance, and on wealth, greed, and deprivation.",
+  "sections": [
+    {
+      "order": 1,
+      "title": "SECTION A",
+      "marksPerCorrect": 1,
+      "penaltyPerWrong": 0,
+      "thresholdPercent": null,
+      "groups": [
+        {
+          "ref": "w2-sA-wordbank",
+          "kind": "word_bank",
+          "title": "SECTION A",
+          "content": "Use words from the box to fill the blanks. There are more words than necessary. No marks would be deducted for wrong answers.",
+          "sharedOptions": [
+            {
+              "key": "A",
+              "text": "Peremptory"
+            },
+            {
+              "key": "B",
+              "text": "Exonerate"
+            },
+            {
+              "key": "C",
+              "text": "Ignominy"
+            },
+            {
+              "key": "D",
+              "text": "Notorious"
+            },
+            {
+              "key": "E",
+              "text": "Obsequious"
+            },
+            {
+              "key": "F",
+              "text": "Cajole"
+            },
+            {
+              "key": "G",
+              "text": "Deference"
+            },
+            {
+              "key": "H",
+              "text": "Nepotism"
+            },
+            {
+              "key": "I",
+              "text": "Prerogative"
+            },
+            {
+              "key": "J",
+              "text": "Curtail"
+            },
+            {
+              "key": "K",
+              "text": "Infamous"
+            },
+            {
+              "key": "L",
+              "text": "Servile"
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "number": 1,
+          "group": "w2-sA-wordbank",
+          "stem": "After months of inquiry, a witness's confession finally ______ the young clerk, proving he had taken no part whatever in the theft of the funds.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Peremptory"
+            },
+            {
+              "key": "B",
+              "text": "Exonerate"
+            },
+            {
+              "key": "C",
+              "text": "Ignominy"
+            },
+            {
+              "key": "D",
+              "text": "Notorious"
+            },
+            {
+              "key": "E",
+              "text": "Obsequious"
+            },
+            {
+              "key": "F",
+              "text": "Cajole"
+            },
+            {
+              "key": "G",
+              "text": "Deference"
+            },
+            {
+              "key": "H",
+              "text": "Nepotism"
+            },
+            {
+              "key": "I",
+              "text": "Prerogative"
+            },
+            {
+              "key": "J",
+              "text": "Curtail"
+            },
+            {
+              "key": "K",
+              "text": "Infamous"
+            },
+            {
+              "key": "L",
+              "text": "Servile"
+            }
+          ],
+          "correctKey": "B",
+          "imageUrl": null,
+          "explanation": "Exonerate means to clear someone of blame or accusation, fitting 'proving he had taken no part.' The nearest tempting word, Infamous (K), also concerns public wrongdoing and reputation, but it means widely known for something bad, not cleared of it — the opposite sense the sentence requires."
+        },
+        {
+          "number": 2,
+          "group": "w2-sA-wordbank",
+          "stem": "Stripped of his sword before the assembled troops, the general suffered the ______ of a dismissal so public that his name became a byword for disgrace.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Peremptory"
+            },
+            {
+              "key": "B",
+              "text": "Exonerate"
+            },
+            {
+              "key": "C",
+              "text": "Ignominy"
+            },
+            {
+              "key": "D",
+              "text": "Notorious"
+            },
+            {
+              "key": "E",
+              "text": "Obsequious"
+            },
+            {
+              "key": "F",
+              "text": "Cajole"
+            },
+            {
+              "key": "G",
+              "text": "Deference"
+            },
+            {
+              "key": "H",
+              "text": "Nepotism"
+            },
+            {
+              "key": "I",
+              "text": "Prerogative"
+            },
+            {
+              "key": "J",
+              "text": "Curtail"
+            },
+            {
+              "key": "K",
+              "text": "Infamous"
+            },
+            {
+              "key": "L",
+              "text": "Servile"
+            }
+          ],
+          "correctKey": "C",
+          "imageUrl": null,
+          "explanation": "Ignominy is public shame or disgrace (a noun), matching a humiliation staged 'before the assembled troops.' The nearest distractor, Infamous (K), carries the same idea of disgrace but is an adjective and cannot fill the noun slot 'the ______ of a dismissal.'"
+        },
+        {
+          "number": 3,
+          "group": "w2-sA-wordbank",
+          "stem": "The smuggler grew ______ the length of the coast — known less for any single wickedness than for how widely and how often his exploits were retold in every port.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Peremptory"
+            },
+            {
+              "key": "B",
+              "text": "Exonerate"
+            },
+            {
+              "key": "C",
+              "text": "Ignominy"
+            },
+            {
+              "key": "D",
+              "text": "Notorious"
+            },
+            {
+              "key": "E",
+              "text": "Obsequious"
+            },
+            {
+              "key": "F",
+              "text": "Cajole"
+            },
+            {
+              "key": "G",
+              "text": "Deference"
+            },
+            {
+              "key": "H",
+              "text": "Nepotism"
+            },
+            {
+              "key": "I",
+              "text": "Prerogative"
+            },
+            {
+              "key": "J",
+              "text": "Curtail"
+            },
+            {
+              "key": "K",
+              "text": "Infamous"
+            },
+            {
+              "key": "L",
+              "text": "Servile"
+            }
+          ],
+          "correctKey": "D",
+          "imageUrl": null,
+          "explanation": "Notorious means widely known for something bad, with the stress on the breadth of the reputation, pinned down by 'how widely and how often his exploits were retold.' The nearest distractor, Infamous (K), stresses the wickedness of the deed rather than how widely it is known, and the sentence deliberately downplays 'any single wickedness.'"
+        },
+        {
+          "number": 4,
+          "group": "w2-sA-wordbank",
+          "stem": "Hoping for a place in the new regime, the aide turned ______, lavishing the governor with flattery and springing to grant wishes that had not yet been spoken.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Peremptory"
+            },
+            {
+              "key": "B",
+              "text": "Exonerate"
+            },
+            {
+              "key": "C",
+              "text": "Ignominy"
+            },
+            {
+              "key": "D",
+              "text": "Notorious"
+            },
+            {
+              "key": "E",
+              "text": "Obsequious"
+            },
+            {
+              "key": "F",
+              "text": "Cajole"
+            },
+            {
+              "key": "G",
+              "text": "Deference"
+            },
+            {
+              "key": "H",
+              "text": "Nepotism"
+            },
+            {
+              "key": "I",
+              "text": "Prerogative"
+            },
+            {
+              "key": "J",
+              "text": "Curtail"
+            },
+            {
+              "key": "K",
+              "text": "Infamous"
+            },
+            {
+              "key": "L",
+              "text": "Servile"
+            }
+          ],
+          "correctKey": "E",
+          "imageUrl": null,
+          "explanation": "Obsequious means fawning and ingratiating, eager to please for advantage, matching 'lavishing flattery' to win a place. The nearest distractor, Servile (L), means slavishly submissive like a menial; it lacks the element of calculated flattery that obsequious carries."
+        },
+        {
+          "number": 5,
+          "group": "w2-sA-wordbank",
+          "stem": "Unable to command the sulking child to eat, the nurse instead ______ him with soft promises of a bedtime story until at last he cleaned his plate.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Peremptory"
+            },
+            {
+              "key": "B",
+              "text": "Exonerate"
+            },
+            {
+              "key": "C",
+              "text": "Ignominy"
+            },
+            {
+              "key": "D",
+              "text": "Notorious"
+            },
+            {
+              "key": "E",
+              "text": "Obsequious"
+            },
+            {
+              "key": "F",
+              "text": "Cajole"
+            },
+            {
+              "key": "G",
+              "text": "Deference"
+            },
+            {
+              "key": "H",
+              "text": "Nepotism"
+            },
+            {
+              "key": "I",
+              "text": "Prerogative"
+            },
+            {
+              "key": "J",
+              "text": "Curtail"
+            },
+            {
+              "key": "K",
+              "text": "Infamous"
+            },
+            {
+              "key": "L",
+              "text": "Servile"
+            }
+          ],
+          "correctKey": "F",
+          "imageUrl": null,
+          "explanation": "Cajole means to persuade someone by coaxing, flattery, or soft promises, exactly the 'soft promises' used on the child. No other box word denotes wheedling someone into an act; Obsequious (E) names a fawning manner, not the act of coaxing another to comply."
+        },
+        {
+          "number": 6,
+          "group": "w2-sA-wordbank",
+          "stem": "Out of ______ to the elder judges, the young magistrate held back his own view until every senior voice on the bench had been heard.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Peremptory"
+            },
+            {
+              "key": "B",
+              "text": "Exonerate"
+            },
+            {
+              "key": "C",
+              "text": "Ignominy"
+            },
+            {
+              "key": "D",
+              "text": "Notorious"
+            },
+            {
+              "key": "E",
+              "text": "Obsequious"
+            },
+            {
+              "key": "F",
+              "text": "Cajole"
+            },
+            {
+              "key": "G",
+              "text": "Deference"
+            },
+            {
+              "key": "H",
+              "text": "Nepotism"
+            },
+            {
+              "key": "I",
+              "text": "Prerogative"
+            },
+            {
+              "key": "J",
+              "text": "Curtail"
+            },
+            {
+              "key": "K",
+              "text": "Infamous"
+            },
+            {
+              "key": "L",
+              "text": "Servile"
+            }
+          ],
+          "correctKey": "G",
+          "imageUrl": null,
+          "explanation": "Deference is respectful submission to another's judgment (a noun), fitting a magistrate who yields to his seniors. The nearest distractors, Obsequious (E) and Servile (L), are adjectives that cannot fill 'out of ______ to'; deference is also dignified respect, not excessive fawning."
+        },
+        {
+          "number": 7,
+          "group": "w2-sA-wordbank",
+          "stem": "Every senior post went to the chairman's cousins and nephews — a display of ______ so brazen that the passed-over staff threatened to resign en masse.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Peremptory"
+            },
+            {
+              "key": "B",
+              "text": "Exonerate"
+            },
+            {
+              "key": "C",
+              "text": "Ignominy"
+            },
+            {
+              "key": "D",
+              "text": "Notorious"
+            },
+            {
+              "key": "E",
+              "text": "Obsequious"
+            },
+            {
+              "key": "F",
+              "text": "Cajole"
+            },
+            {
+              "key": "G",
+              "text": "Deference"
+            },
+            {
+              "key": "H",
+              "text": "Nepotism"
+            },
+            {
+              "key": "I",
+              "text": "Prerogative"
+            },
+            {
+              "key": "J",
+              "text": "Curtail"
+            },
+            {
+              "key": "K",
+              "text": "Infamous"
+            },
+            {
+              "key": "L",
+              "text": "Servile"
+            }
+          ],
+          "correctKey": "H",
+          "imageUrl": null,
+          "explanation": "Nepotism is favoritism shown to relatives, especially in appointments, matching posts handed to 'cousins and nephews.' The nearest tempting word, Prerogative (I), might excuse the appointments as an exercise of authority, but it means a lawful exclusive right, not the abuse of favoring kin."
+        },
+        {
+          "number": 8,
+          "group": "w2-sA-wordbank",
+          "stem": "The granting of pardons remained the sovereign's sole ______, an exclusive right that no minister or court could exercise in her name.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Peremptory"
+            },
+            {
+              "key": "B",
+              "text": "Exonerate"
+            },
+            {
+              "key": "C",
+              "text": "Ignominy"
+            },
+            {
+              "key": "D",
+              "text": "Notorious"
+            },
+            {
+              "key": "E",
+              "text": "Obsequious"
+            },
+            {
+              "key": "F",
+              "text": "Cajole"
+            },
+            {
+              "key": "G",
+              "text": "Deference"
+            },
+            {
+              "key": "H",
+              "text": "Nepotism"
+            },
+            {
+              "key": "I",
+              "text": "Prerogative"
+            },
+            {
+              "key": "J",
+              "text": "Curtail"
+            },
+            {
+              "key": "K",
+              "text": "Infamous"
+            },
+            {
+              "key": "L",
+              "text": "Servile"
+            }
+          ],
+          "correctKey": "I",
+          "imageUrl": null,
+          "explanation": "A prerogative is an exclusive right or privilege attached to a person or office, fitting a power 'no minister or court could exercise.' The nearest distractor, Nepotism (H), also concerns the use of official power but means favoring relatives, whereas a prerogative is a legitimate reserved right."
+        },
+        {
+          "number": 9,
+          "group": "w2-sA-wordbank",
+          "stem": "With the treasury shrinking, the council voted to ______ the ancient festival to a single afternoon, paring back what had once filled a whole week.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Peremptory"
+            },
+            {
+              "key": "B",
+              "text": "Exonerate"
+            },
+            {
+              "key": "C",
+              "text": "Ignominy"
+            },
+            {
+              "key": "D",
+              "text": "Notorious"
+            },
+            {
+              "key": "E",
+              "text": "Obsequious"
+            },
+            {
+              "key": "F",
+              "text": "Cajole"
+            },
+            {
+              "key": "G",
+              "text": "Deference"
+            },
+            {
+              "key": "H",
+              "text": "Nepotism"
+            },
+            {
+              "key": "I",
+              "text": "Prerogative"
+            },
+            {
+              "key": "J",
+              "text": "Curtail"
+            },
+            {
+              "key": "K",
+              "text": "Infamous"
+            },
+            {
+              "key": "L",
+              "text": "Servile"
+            }
+          ],
+          "correctKey": "J",
+          "imageUrl": null,
+          "explanation": "Curtail means to cut short or reduce, matching 'paring back' the festival to a single afternoon. The nearest tempting word, Peremptory (A), shares the Latin root for 'cut' but describes a brusque, unarguable manner, not the act of shortening something."
+        },
+        {
+          "number": 10,
+          "group": "w2-sA-wordbank",
+          "stem": "The colonel's ______ order allowed no discussion whatever; the men were to advance at once, and the least hesitation would be counted as mutiny.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Peremptory"
+            },
+            {
+              "key": "B",
+              "text": "Exonerate"
+            },
+            {
+              "key": "C",
+              "text": "Ignominy"
+            },
+            {
+              "key": "D",
+              "text": "Notorious"
+            },
+            {
+              "key": "E",
+              "text": "Obsequious"
+            },
+            {
+              "key": "F",
+              "text": "Cajole"
+            },
+            {
+              "key": "G",
+              "text": "Deference"
+            },
+            {
+              "key": "H",
+              "text": "Nepotism"
+            },
+            {
+              "key": "I",
+              "text": "Prerogative"
+            },
+            {
+              "key": "J",
+              "text": "Curtail"
+            },
+            {
+              "key": "K",
+              "text": "Infamous"
+            },
+            {
+              "key": "L",
+              "text": "Servile"
+            }
+          ],
+          "correctKey": "A",
+          "imageUrl": null,
+          "explanation": "Peremptory means insisting on immediate obedience and admitting no refusal, matching an order that 'allowed no discussion.' The nearest tempting word, Curtail (J), comes from the same 'cut' root but means to shorten or reduce, not to command in a manner that brooks no dispute."
+        }
+      ]
+    },
+    {
+      "order": 2,
+      "title": "SECTION B",
+      "marksPerCorrect": 1,
+      "penaltyPerWrong": 0,
+      "thresholdPercent": null,
+      "groups": [
+        {
+          "ref": "w2-sB-wordbank",
+          "kind": "word_bank",
+          "title": "SECTION B",
+          "content": "Use words from the box to fill the blanks. There are more words than necessary. No marks would be deducted for wrong answers.",
+          "sharedOptions": [
+            {
+              "key": "A",
+              "text": "Glut"
+            },
+            {
+              "key": "B",
+              "text": "Opulent"
+            },
+            {
+              "key": "C",
+              "text": "Munificent"
+            },
+            {
+              "key": "D",
+              "text": "Rapacious"
+            },
+            {
+              "key": "E",
+              "text": "Covet"
+            },
+            {
+              "key": "F",
+              "text": "Dearth"
+            },
+            {
+              "key": "G",
+              "text": "Destitute"
+            },
+            {
+              "key": "H",
+              "text": "Mendicant"
+            },
+            {
+              "key": "I",
+              "text": "Squalor"
+            },
+            {
+              "key": "J",
+              "text": "Insatiable"
+            },
+            {
+              "key": "K",
+              "text": "Avarice"
+            },
+            {
+              "key": "L",
+              "text": "Indigent"
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "number": 1,
+          "group": "w2-sB-wordbank",
+          "stem": "The banking family received their guests in ______ halls of marble and gilt, every surface dripping with a luxury meant to overwhelm.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Glut"
+            },
+            {
+              "key": "B",
+              "text": "Opulent"
+            },
+            {
+              "key": "C",
+              "text": "Munificent"
+            },
+            {
+              "key": "D",
+              "text": "Rapacious"
+            },
+            {
+              "key": "E",
+              "text": "Covet"
+            },
+            {
+              "key": "F",
+              "text": "Dearth"
+            },
+            {
+              "key": "G",
+              "text": "Destitute"
+            },
+            {
+              "key": "H",
+              "text": "Mendicant"
+            },
+            {
+              "key": "I",
+              "text": "Squalor"
+            },
+            {
+              "key": "J",
+              "text": "Insatiable"
+            },
+            {
+              "key": "K",
+              "text": "Avarice"
+            },
+            {
+              "key": "L",
+              "text": "Indigent"
+            }
+          ],
+          "correctKey": "B",
+          "imageUrl": null,
+          "explanation": "Opulent means ostentatiously rich and luxurious, describing sumptuous things such as halls 'of marble and gilt.' The nearest tempting word, Munificent (C), also concerns great wealth, but it describes generous giving, not the sumptuous physical luxury of the halls themselves."
+        },
+        {
+          "number": 2,
+          "group": "w2-sB-wordbank",
+          "stem": "The old merchant proved ______, endowing three hospitals and a college with sums so vast that no one had dared to ask for them.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Glut"
+            },
+            {
+              "key": "B",
+              "text": "Opulent"
+            },
+            {
+              "key": "C",
+              "text": "Munificent"
+            },
+            {
+              "key": "D",
+              "text": "Rapacious"
+            },
+            {
+              "key": "E",
+              "text": "Covet"
+            },
+            {
+              "key": "F",
+              "text": "Dearth"
+            },
+            {
+              "key": "G",
+              "text": "Destitute"
+            },
+            {
+              "key": "H",
+              "text": "Mendicant"
+            },
+            {
+              "key": "I",
+              "text": "Squalor"
+            },
+            {
+              "key": "J",
+              "text": "Insatiable"
+            },
+            {
+              "key": "K",
+              "text": "Avarice"
+            },
+            {
+              "key": "L",
+              "text": "Indigent"
+            }
+          ],
+          "correctKey": "C",
+          "imageUrl": null,
+          "explanation": "Munificent means exceptionally generous in giving, matching endowments 'no one had dared to ask for.' The nearest tempting word, Opulent (B), describes the possession of great wealth or luxury, not the openhanded giving of it away."
+        },
+        {
+          "number": 3,
+          "group": "w2-sB-wordbank",
+          "stem": "The ______ landlords seized every last scrap of the harvest, grasping for still more even as the tenants who grew it began to starve.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Glut"
+            },
+            {
+              "key": "B",
+              "text": "Opulent"
+            },
+            {
+              "key": "C",
+              "text": "Munificent"
+            },
+            {
+              "key": "D",
+              "text": "Rapacious"
+            },
+            {
+              "key": "E",
+              "text": "Covet"
+            },
+            {
+              "key": "F",
+              "text": "Dearth"
+            },
+            {
+              "key": "G",
+              "text": "Destitute"
+            },
+            {
+              "key": "H",
+              "text": "Mendicant"
+            },
+            {
+              "key": "I",
+              "text": "Squalor"
+            },
+            {
+              "key": "J",
+              "text": "Insatiable"
+            },
+            {
+              "key": "K",
+              "text": "Avarice"
+            },
+            {
+              "key": "L",
+              "text": "Indigent"
+            }
+          ],
+          "correctKey": "D",
+          "imageUrl": null,
+          "explanation": "Rapacious means aggressively greedy and grasping, fitting landlords who 'seized every scrap... grasping for more.' The nearest distractor, Avarice (K), names the same greed but is a noun; the adjective slot 'the ______ landlords' requires rapacious."
+        },
+        {
+          "number": 4,
+          "group": "w2-sB-wordbank",
+          "stem": "He could not help but ______ his neighbour's estate, eyeing the man's fields and barns with a longing he was ashamed to admit even to himself.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Glut"
+            },
+            {
+              "key": "B",
+              "text": "Opulent"
+            },
+            {
+              "key": "C",
+              "text": "Munificent"
+            },
+            {
+              "key": "D",
+              "text": "Rapacious"
+            },
+            {
+              "key": "E",
+              "text": "Covet"
+            },
+            {
+              "key": "F",
+              "text": "Dearth"
+            },
+            {
+              "key": "G",
+              "text": "Destitute"
+            },
+            {
+              "key": "H",
+              "text": "Mendicant"
+            },
+            {
+              "key": "I",
+              "text": "Squalor"
+            },
+            {
+              "key": "J",
+              "text": "Insatiable"
+            },
+            {
+              "key": "K",
+              "text": "Avarice"
+            },
+            {
+              "key": "L",
+              "text": "Indigent"
+            }
+          ],
+          "correctKey": "E",
+          "imageUrl": null,
+          "explanation": "Covet means to yearn to possess something, especially what belongs to another, matching a 'longing' for the neighbour's estate. The nearest tempting word, Avarice (K), is the general vice of greed as a noun, whereas covet is the verb of desiring a particular thing."
+        },
+        {
+          "number": 5,
+          "group": "w2-sB-wordbank",
+          "stem": "The long drought produced a ______ of grain so severe that the city's granaries stood empty by midwinter and bread could not be had at any price.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Glut"
+            },
+            {
+              "key": "B",
+              "text": "Opulent"
+            },
+            {
+              "key": "C",
+              "text": "Munificent"
+            },
+            {
+              "key": "D",
+              "text": "Rapacious"
+            },
+            {
+              "key": "E",
+              "text": "Covet"
+            },
+            {
+              "key": "F",
+              "text": "Dearth"
+            },
+            {
+              "key": "G",
+              "text": "Destitute"
+            },
+            {
+              "key": "H",
+              "text": "Mendicant"
+            },
+            {
+              "key": "I",
+              "text": "Squalor"
+            },
+            {
+              "key": "J",
+              "text": "Insatiable"
+            },
+            {
+              "key": "K",
+              "text": "Avarice"
+            },
+            {
+              "key": "L",
+              "text": "Indigent"
+            }
+          ],
+          "correctKey": "F",
+          "imageUrl": null,
+          "explanation": "Dearth means a scarcity of something essential, especially food, carrying a sense of want, and fits empty granaries after a drought. The nearest tempting word, Indigent (L), also concerns a painful lack, but it describes people who are poor and needy, not a scarcity of a commodity like grain."
+        },
+        {
+          "number": 6,
+          "group": "w2-sB-wordbank",
+          "stem": "The fire left the family ______, without a coin, a roof, or a single possession to their name by the time the sun rose.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Glut"
+            },
+            {
+              "key": "B",
+              "text": "Opulent"
+            },
+            {
+              "key": "C",
+              "text": "Munificent"
+            },
+            {
+              "key": "D",
+              "text": "Rapacious"
+            },
+            {
+              "key": "E",
+              "text": "Covet"
+            },
+            {
+              "key": "F",
+              "text": "Dearth"
+            },
+            {
+              "key": "G",
+              "text": "Destitute"
+            },
+            {
+              "key": "H",
+              "text": "Mendicant"
+            },
+            {
+              "key": "I",
+              "text": "Squalor"
+            },
+            {
+              "key": "J",
+              "text": "Insatiable"
+            },
+            {
+              "key": "K",
+              "text": "Avarice"
+            },
+            {
+              "key": "L",
+              "text": "Indigent"
+            }
+          ],
+          "correctKey": "G",
+          "imageUrl": null,
+          "explanation": "Destitute means utterly without resources, matching a family left 'without a coin, a roof, or a single possession.' The nearest distractor, Indigent (L), means habitually poor and needy, but it lacks destitute's sense of being suddenly stripped of absolutely everything."
+        },
+        {
+          "number": 7,
+          "group": "w2-sB-wordbank",
+          "stem": "By winter he was a ______, moving from door to door with an outstretched bowl and living wholly on whatever coins strangers chose to give.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Glut"
+            },
+            {
+              "key": "B",
+              "text": "Opulent"
+            },
+            {
+              "key": "C",
+              "text": "Munificent"
+            },
+            {
+              "key": "D",
+              "text": "Rapacious"
+            },
+            {
+              "key": "E",
+              "text": "Covet"
+            },
+            {
+              "key": "F",
+              "text": "Dearth"
+            },
+            {
+              "key": "G",
+              "text": "Destitute"
+            },
+            {
+              "key": "H",
+              "text": "Mendicant"
+            },
+            {
+              "key": "I",
+              "text": "Squalor"
+            },
+            {
+              "key": "J",
+              "text": "Insatiable"
+            },
+            {
+              "key": "K",
+              "text": "Avarice"
+            },
+            {
+              "key": "L",
+              "text": "Indigent"
+            }
+          ],
+          "correctKey": "H",
+          "imageUrl": null,
+          "explanation": "A mendicant is a beggar who lives by alms, matching one who goes 'door to door with an outstretched bowl.' The nearest distractor, Indigent (L), means merely poor or needy and does not denote the specific figure who begs for a living."
+        },
+        {
+          "number": 8,
+          "group": "w2-sB-wordbank",
+          "stem": "Behind the grand avenues lay tenements of unspeakable ______, whole families packed together among filth, damp, and rot.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Glut"
+            },
+            {
+              "key": "B",
+              "text": "Opulent"
+            },
+            {
+              "key": "C",
+              "text": "Munificent"
+            },
+            {
+              "key": "D",
+              "text": "Rapacious"
+            },
+            {
+              "key": "E",
+              "text": "Covet"
+            },
+            {
+              "key": "F",
+              "text": "Dearth"
+            },
+            {
+              "key": "G",
+              "text": "Destitute"
+            },
+            {
+              "key": "H",
+              "text": "Mendicant"
+            },
+            {
+              "key": "I",
+              "text": "Squalor"
+            },
+            {
+              "key": "J",
+              "text": "Insatiable"
+            },
+            {
+              "key": "K",
+              "text": "Avarice"
+            },
+            {
+              "key": "L",
+              "text": "Indigent"
+            }
+          ],
+          "correctKey": "I",
+          "imageUrl": null,
+          "explanation": "Squalor is filth and degradation, especially the kind bred by poverty, fitting tenements of 'filth, damp, and rot' (a noun). The nearest distractor, Destitute (G), is an adjective describing lack of money and cannot fill the noun slot 'tenements of unspeakable ______,' which names the physical filth itself."
+        },
+        {
+          "number": 9,
+          "group": "w2-sB-wordbank",
+          "stem": "His appetite for conquest was ______; every new territory he seized only sharpened his hunger for the next one beyond it.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Glut"
+            },
+            {
+              "key": "B",
+              "text": "Opulent"
+            },
+            {
+              "key": "C",
+              "text": "Munificent"
+            },
+            {
+              "key": "D",
+              "text": "Rapacious"
+            },
+            {
+              "key": "E",
+              "text": "Covet"
+            },
+            {
+              "key": "F",
+              "text": "Dearth"
+            },
+            {
+              "key": "G",
+              "text": "Destitute"
+            },
+            {
+              "key": "H",
+              "text": "Mendicant"
+            },
+            {
+              "key": "I",
+              "text": "Squalor"
+            },
+            {
+              "key": "J",
+              "text": "Insatiable"
+            },
+            {
+              "key": "K",
+              "text": "Avarice"
+            },
+            {
+              "key": "L",
+              "text": "Indigent"
+            }
+          ],
+          "correctKey": "J",
+          "imageUrl": null,
+          "explanation": "Insatiable means impossible to satisfy, fitting a hunger that 'every new territory only sharpened.' The nearest tempting word, Rapacious (D), describes greedy grasping action, whereas insatiable describes the bottomless want that can never be filled."
+        },
+        {
+          "number": 10,
+          "group": "w2-sB-wordbank",
+          "stem": "So many growers planted the very same crop that the market suffered a ______, and prices collapsed under mountains of produce no one could sell.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Glut"
+            },
+            {
+              "key": "B",
+              "text": "Opulent"
+            },
+            {
+              "key": "C",
+              "text": "Munificent"
+            },
+            {
+              "key": "D",
+              "text": "Rapacious"
+            },
+            {
+              "key": "E",
+              "text": "Covet"
+            },
+            {
+              "key": "F",
+              "text": "Dearth"
+            },
+            {
+              "key": "G",
+              "text": "Destitute"
+            },
+            {
+              "key": "H",
+              "text": "Mendicant"
+            },
+            {
+              "key": "I",
+              "text": "Squalor"
+            },
+            {
+              "key": "J",
+              "text": "Insatiable"
+            },
+            {
+              "key": "K",
+              "text": "Avarice"
+            },
+            {
+              "key": "L",
+              "text": "Indigent"
+            }
+          ],
+          "correctKey": "A",
+          "imageUrl": null,
+          "explanation": "A glut is an excessive supply, matching a market flooded with 'produce no one could sell.' The nearest tempting word, Dearth (F), is its exact opposite — a scarcity — so a collapse of prices under oversupply can only be a glut."
+        }
+      ]
+    }
+  ]
+}

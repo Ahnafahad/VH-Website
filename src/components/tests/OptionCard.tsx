@@ -9,6 +9,8 @@ interface OptionCardProps {
   selected: boolean;
   onSelect: () => void;
   disabled?: boolean;
+  /** Word already chosen for another question in the same word-bank group. */
+  usedElsewhere?: boolean;
 }
 
 const cardVariants: Variants = {
@@ -16,24 +18,26 @@ const cardVariants: Variants = {
   tap: { scale: 0.975 },
 };
 
-export default function OptionCard({ optionKey, text, selected, onSelect, disabled }: OptionCardProps) {
+export default function OptionCard({ optionKey, text, selected, onSelect, disabled, usedElsewhere }: OptionCardProps) {
+  const isDisabled = disabled || usedElsewhere;
   return (
     <motion.button
       onClick={onSelect}
-      disabled={disabled}
+      disabled={isDisabled}
       variants={cardVariants}
       initial="idle"
       whileTap="tap"
       transition={{ type: 'spring' as const, stiffness: 500, damping: 28 }}
       className={[
-        'w-full text-left flex items-start gap-4 p-4 rounded-xl border transition-[background-color,border-color,box-shadow] duration-150',
+        'w-full text-left flex items-start gap-4 p-4 rounded-xl border transition-[background-color,border-color,box-shadow,filter,opacity] duration-150',
         'focus:outline-none focus-visible:ring-2 focus-visible:ring-exam-gold/50',
         selected
           ? 'bg-exam-maroon/15 border-exam-maroon-bright text-exam-ink shadow-[0_0_0_1px_var(--color-exam-maroon-bright),0_8px_24px_-12px_var(--color-exam-glow-gold)]'
           : 'bg-exam-elevated border-exam-border text-exam-ink-muted hover:border-exam-gold/40 hover:text-exam-ink',
-        disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer',
+        usedElsewhere ? 'opacity-40 blur-[1px] cursor-not-allowed' : (disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'),
       ].join(' ')}
       aria-pressed={selected}
+      aria-disabled={usedElsewhere}
     >
       {/* Key bubble */}
       <span

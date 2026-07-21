@@ -1,0 +1,1302 @@
+{
+  "slug": "week-04-mockery-law",
+  "title": "Week 4 — Hypocrisy, Doubt & Mockery + Law, Justice & Intellectual Precision",
+  "bucket": "iba",
+  "description": "Fill-in-the-blank vocabulary on the language of hypocrisy, doubt, and mockery, and on law, justice, and exacting intellectual precision.",
+  "sections": [
+    {
+      "order": 1,
+      "title": "SECTION A",
+      "marksPerCorrect": 1,
+      "penaltyPerWrong": 0,
+      "thresholdPercent": null,
+      "groups": [
+        {
+          "ref": "w4-sA-wordbank",
+          "kind": "word_bank",
+          "title": "SECTION A",
+          "content": "Use words from the box to fill the blanks. There are more words than necessary. No marks would be deducted for wrong answers.",
+          "sharedOptions": [
+            {
+              "key": "A",
+              "text": "Caustic"
+            },
+            {
+              "key": "B",
+              "text": "Conjecture"
+            },
+            {
+              "key": "C",
+              "text": "Unctuous"
+            },
+            {
+              "key": "D",
+              "text": "Tenuous"
+            },
+            {
+              "key": "E",
+              "text": "Acerbic"
+            },
+            {
+              "key": "F",
+              "text": "Belie"
+            },
+            {
+              "key": "G",
+              "text": "Dubious"
+            },
+            {
+              "key": "H",
+              "text": "Apocryphal"
+            },
+            {
+              "key": "I",
+              "text": "Spurious"
+            },
+            {
+              "key": "J",
+              "text": "Affectation"
+            },
+            {
+              "key": "K",
+              "text": "Facetious"
+            },
+            {
+              "key": "L",
+              "text": "Caricature"
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "number": 1,
+          "group": "w4-sA-wordbank",
+          "stem": "The head waiter's ______ manner — all glistening smiles and murmured compliments — made the diners feel flattered and faintly nauseated at once.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Caustic"
+            },
+            {
+              "key": "B",
+              "text": "Conjecture"
+            },
+            {
+              "key": "C",
+              "text": "Unctuous"
+            },
+            {
+              "key": "D",
+              "text": "Tenuous"
+            },
+            {
+              "key": "E",
+              "text": "Acerbic"
+            },
+            {
+              "key": "F",
+              "text": "Belie"
+            },
+            {
+              "key": "G",
+              "text": "Dubious"
+            },
+            {
+              "key": "H",
+              "text": "Apocryphal"
+            },
+            {
+              "key": "I",
+              "text": "Spurious"
+            },
+            {
+              "key": "J",
+              "text": "Affectation"
+            },
+            {
+              "key": "K",
+              "text": "Facetious"
+            },
+            {
+              "key": "L",
+              "text": "Caricature"
+            }
+          ],
+          "correctKey": "C",
+          "imageUrl": null,
+          "explanation": "Unctuous means ingratiatingly and excessively smooth, oily, or flattering, matching the 'glistening smiles and murmured compliments.' The nearest distractor, Affectation (J), is a noun naming an artificial pose; it cannot fill an adjective slot before 'manner' and names the pose itself rather than the oily, fawning quality described."
+        },
+        {
+          "number": 2,
+          "group": "w4-sA-wordbank",
+          "stem": "Her reviews were famous for their ______ wit, each elegant sentence leaving its target smarting yet somehow amused.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Caustic"
+            },
+            {
+              "key": "B",
+              "text": "Conjecture"
+            },
+            {
+              "key": "C",
+              "text": "Unctuous"
+            },
+            {
+              "key": "D",
+              "text": "Tenuous"
+            },
+            {
+              "key": "E",
+              "text": "Acerbic"
+            },
+            {
+              "key": "F",
+              "text": "Belie"
+            },
+            {
+              "key": "G",
+              "text": "Dubious"
+            },
+            {
+              "key": "H",
+              "text": "Apocryphal"
+            },
+            {
+              "key": "I",
+              "text": "Spurious"
+            },
+            {
+              "key": "J",
+              "text": "Affectation"
+            },
+            {
+              "key": "K",
+              "text": "Facetious"
+            },
+            {
+              "key": "L",
+              "text": "Caricature"
+            }
+          ],
+          "correctKey": "E",
+          "imageUrl": null,
+          "explanation": "Acerbic means sharp and bitingly clever in tone, wit that stings with finesse — fitting the 'elegant sentence... yet somehow amused' cue. The nearest distractor, Caustic (A), means corrosively cutting and savage, intended purely to burn and wound; it clashes with the amused, elegant quality the sentence highlights."
+        },
+        {
+          "number": 3,
+          "group": "w4-sA-wordbank",
+          "stem": "The cartoonist reduced the minister to a ______: a bloated top hat perched on a single, enormous, grasping hand.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Caustic"
+            },
+            {
+              "key": "B",
+              "text": "Conjecture"
+            },
+            {
+              "key": "C",
+              "text": "Unctuous"
+            },
+            {
+              "key": "D",
+              "text": "Tenuous"
+            },
+            {
+              "key": "E",
+              "text": "Acerbic"
+            },
+            {
+              "key": "F",
+              "text": "Belie"
+            },
+            {
+              "key": "G",
+              "text": "Dubious"
+            },
+            {
+              "key": "H",
+              "text": "Apocryphal"
+            },
+            {
+              "key": "I",
+              "text": "Spurious"
+            },
+            {
+              "key": "J",
+              "text": "Affectation"
+            },
+            {
+              "key": "K",
+              "text": "Facetious"
+            },
+            {
+              "key": "L",
+              "text": "Caricature"
+            }
+          ],
+          "correctKey": "L",
+          "imageUrl": null,
+          "explanation": "Caricature is a grotesquely exaggerated representation that distorts features for comic or critical effect, exactly the bloated, single-feature image described. The nearest distractor, Facetious (K), is an adjective meaning flippantly humorous; it cannot fill the noun slot after 'reduced to a' and describes a tone, not a distorted portrait."
+        },
+        {
+          "number": 4,
+          "group": "w4-sA-wordbank",
+          "stem": "Asked to explain the missing funds, he gave a ______ reply about buying the office a yacht, and the auditors were not amused.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Caustic"
+            },
+            {
+              "key": "B",
+              "text": "Conjecture"
+            },
+            {
+              "key": "C",
+              "text": "Unctuous"
+            },
+            {
+              "key": "D",
+              "text": "Tenuous"
+            },
+            {
+              "key": "E",
+              "text": "Acerbic"
+            },
+            {
+              "key": "F",
+              "text": "Belie"
+            },
+            {
+              "key": "G",
+              "text": "Dubious"
+            },
+            {
+              "key": "H",
+              "text": "Apocryphal"
+            },
+            {
+              "key": "I",
+              "text": "Spurious"
+            },
+            {
+              "key": "J",
+              "text": "Affectation"
+            },
+            {
+              "key": "K",
+              "text": "Facetious"
+            },
+            {
+              "key": "L",
+              "text": "Caricature"
+            }
+          ],
+          "correctKey": "K",
+          "imageUrl": null,
+          "explanation": "Facetious means treating a serious matter with inappropriate flippancy or joking, matching the yacht quip offered when a straight account was expected. The nearest distractor, Acerbic (E), means sharply and bitterly critical; the reply here is an ill-timed joke, not a cutting barb aimed at a target."
+        },
+        {
+          "number": 5,
+          "group": "w4-sA-wordbank",
+          "stem": "The tale that the poet composed the entire epic in a single fevered night is almost certainly ______, though biographers repeat it with relish.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Caustic"
+            },
+            {
+              "key": "B",
+              "text": "Conjecture"
+            },
+            {
+              "key": "C",
+              "text": "Unctuous"
+            },
+            {
+              "key": "D",
+              "text": "Tenuous"
+            },
+            {
+              "key": "E",
+              "text": "Acerbic"
+            },
+            {
+              "key": "F",
+              "text": "Belie"
+            },
+            {
+              "key": "G",
+              "text": "Dubious"
+            },
+            {
+              "key": "H",
+              "text": "Apocryphal"
+            },
+            {
+              "key": "I",
+              "text": "Spurious"
+            },
+            {
+              "key": "J",
+              "text": "Affectation"
+            },
+            {
+              "key": "K",
+              "text": "Facetious"
+            },
+            {
+              "key": "L",
+              "text": "Caricature"
+            }
+          ],
+          "correctKey": "H",
+          "imageUrl": null,
+          "explanation": "Apocryphal describes a well-known story of doubtful authenticity that is widely retold but probably untrue, matching the legend 'biographers repeat with relish.' The nearest distractor, Spurious (I), implies a deliberate fake or forgery, whereas apocryphal stresses an unverified legend handed down rather than a knowingly manufactured falsehood."
+        },
+        {
+          "number": 6,
+          "group": "w4-sA-wordbank",
+          "stem": "Customs seized a crate of ______ designer watches, each stamped with a forged hallmark to pass as the genuine article.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Caustic"
+            },
+            {
+              "key": "B",
+              "text": "Conjecture"
+            },
+            {
+              "key": "C",
+              "text": "Unctuous"
+            },
+            {
+              "key": "D",
+              "text": "Tenuous"
+            },
+            {
+              "key": "E",
+              "text": "Acerbic"
+            },
+            {
+              "key": "F",
+              "text": "Belie"
+            },
+            {
+              "key": "G",
+              "text": "Dubious"
+            },
+            {
+              "key": "H",
+              "text": "Apocryphal"
+            },
+            {
+              "key": "I",
+              "text": "Spurious"
+            },
+            {
+              "key": "J",
+              "text": "Affectation"
+            },
+            {
+              "key": "K",
+              "text": "Facetious"
+            },
+            {
+              "key": "L",
+              "text": "Caricature"
+            }
+          ],
+          "correctKey": "I",
+          "imageUrl": null,
+          "explanation": "Spurious means false, counterfeit, or not genuine, matching watches bearing a 'forged hallmark to pass as the genuine article.' The nearest distractor, Dubious (G), means merely doubtful or questionable; the watches are not simply of uncertain worth but outright fakes, which spurious asserts and dubious does not."
+        },
+        {
+          "number": 7,
+          "group": "w4-sA-wordbank",
+          "stem": "Until the archive is opened, any claim about the treaty's secret clauses is pure ______, unsupported by a single document.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Caustic"
+            },
+            {
+              "key": "B",
+              "text": "Conjecture"
+            },
+            {
+              "key": "C",
+              "text": "Unctuous"
+            },
+            {
+              "key": "D",
+              "text": "Tenuous"
+            },
+            {
+              "key": "E",
+              "text": "Acerbic"
+            },
+            {
+              "key": "F",
+              "text": "Belie"
+            },
+            {
+              "key": "G",
+              "text": "Dubious"
+            },
+            {
+              "key": "H",
+              "text": "Apocryphal"
+            },
+            {
+              "key": "I",
+              "text": "Spurious"
+            },
+            {
+              "key": "J",
+              "text": "Affectation"
+            },
+            {
+              "key": "K",
+              "text": "Facetious"
+            },
+            {
+              "key": "L",
+              "text": "Caricature"
+            }
+          ],
+          "correctKey": "B",
+          "imageUrl": null,
+          "explanation": "Conjecture is a conclusion or opinion formed on incomplete evidence — guesswork, exactly what 'unsupported by a single document' signals. The nearest distractor, Apocryphal (H), is an adjective describing a legend of doubtful authenticity; it cannot fill the noun slot after 'pure' and refers to circulated stories, not reasoned guessing from missing evidence."
+        },
+        {
+          "number": 8,
+          "group": "w4-sA-wordbank",
+          "stem": "The prosecution's case rested on a ______ chain of coincidences, so slight that a single alibi caused it to collapse.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Caustic"
+            },
+            {
+              "key": "B",
+              "text": "Conjecture"
+            },
+            {
+              "key": "C",
+              "text": "Unctuous"
+            },
+            {
+              "key": "D",
+              "text": "Tenuous"
+            },
+            {
+              "key": "E",
+              "text": "Acerbic"
+            },
+            {
+              "key": "F",
+              "text": "Belie"
+            },
+            {
+              "key": "G",
+              "text": "Dubious"
+            },
+            {
+              "key": "H",
+              "text": "Apocryphal"
+            },
+            {
+              "key": "I",
+              "text": "Spurious"
+            },
+            {
+              "key": "J",
+              "text": "Affectation"
+            },
+            {
+              "key": "K",
+              "text": "Facetious"
+            },
+            {
+              "key": "L",
+              "text": "Caricature"
+            }
+          ],
+          "correctKey": "D",
+          "imageUrl": null,
+          "explanation": "Tenuous means weak, flimsy, or insubstantial, matching a chain 'so slight' it collapses under one alibi. The nearest distractor, Spurious (I), means false or fabricated; the coincidences here are genuine but merely too weak to sustain the case, so the flaw is thinness (tenuous), not falsity."
+        },
+        {
+          "number": 9,
+          "group": "w4-sA-wordbank",
+          "stem": "His habit of dropping French phrases into every conversation was mere ______, an ornament he had adopted to seem more travelled than he really was.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Caustic"
+            },
+            {
+              "key": "B",
+              "text": "Conjecture"
+            },
+            {
+              "key": "C",
+              "text": "Unctuous"
+            },
+            {
+              "key": "D",
+              "text": "Tenuous"
+            },
+            {
+              "key": "E",
+              "text": "Acerbic"
+            },
+            {
+              "key": "F",
+              "text": "Belie"
+            },
+            {
+              "key": "G",
+              "text": "Dubious"
+            },
+            {
+              "key": "H",
+              "text": "Apocryphal"
+            },
+            {
+              "key": "I",
+              "text": "Spurious"
+            },
+            {
+              "key": "J",
+              "text": "Affectation"
+            },
+            {
+              "key": "K",
+              "text": "Facetious"
+            },
+            {
+              "key": "L",
+              "text": "Caricature"
+            }
+          ],
+          "correctKey": "J",
+          "imageUrl": null,
+          "explanation": "Affectation is a studied, artificial manner adopted to impress others, exactly the pose 'adopted to seem more travelled.' The nearest distractor, Conjecture (B), is also a noun and tempting for the slot, but it means a guess drawn from scant evidence, not a pretentious mannerism."
+        },
+        {
+          "number": 10,
+          "group": "w4-sA-wordbank",
+          "stem": "Her calm, unhurried voice ______ the panic that was rising in her chest as the deadline slipped past.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Caustic"
+            },
+            {
+              "key": "B",
+              "text": "Conjecture"
+            },
+            {
+              "key": "C",
+              "text": "Unctuous"
+            },
+            {
+              "key": "D",
+              "text": "Tenuous"
+            },
+            {
+              "key": "E",
+              "text": "Acerbic"
+            },
+            {
+              "key": "F",
+              "text": "Belie"
+            },
+            {
+              "key": "G",
+              "text": "Dubious"
+            },
+            {
+              "key": "H",
+              "text": "Apocryphal"
+            },
+            {
+              "key": "I",
+              "text": "Spurious"
+            },
+            {
+              "key": "J",
+              "text": "Affectation"
+            },
+            {
+              "key": "K",
+              "text": "Facetious"
+            },
+            {
+              "key": "L",
+              "text": "Caricature"
+            }
+          ],
+          "correctKey": "F",
+          "imageUrl": null,
+          "explanation": "Belie means to contradict or give a false impression of, so the calm voice masks and misrepresents the inner panic. The nearest distractor, Affectation (J), is tempting because both concern false appearances, but it is a noun naming a pose, whereas the slot needs a verb meaning to contradict or disguise the true feeling — belie."
+        }
+      ]
+    },
+    {
+      "order": 2,
+      "title": "SECTION B",
+      "marksPerCorrect": 1,
+      "penaltyPerWrong": 0,
+      "thresholdPercent": null,
+      "groups": [
+        {
+          "ref": "w4-sB-wordbank",
+          "kind": "word_bank",
+          "title": "SECTION B",
+          "content": "Use words from the box to fill the blanks. There are more words than necessary. No marks would be deducted for wrong answers.",
+          "sharedOptions": [
+            {
+              "key": "A",
+              "text": "Slander"
+            },
+            {
+              "key": "B",
+              "text": "Sagacious"
+            },
+            {
+              "key": "C",
+              "text": "Circumspect"
+            },
+            {
+              "key": "D",
+              "text": "Libel"
+            },
+            {
+              "key": "E",
+              "text": "Perjury"
+            },
+            {
+              "key": "F",
+              "text": "Rebut"
+            },
+            {
+              "key": "G",
+              "text": "Stipulate"
+            },
+            {
+              "key": "H",
+              "text": "Discern"
+            },
+            {
+              "key": "I",
+              "text": "Judicious"
+            },
+            {
+              "key": "J",
+              "text": "Cogent"
+            },
+            {
+              "key": "K",
+              "text": "Criterion"
+            },
+            {
+              "key": "L",
+              "text": "Arbiter"
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "number": 1,
+          "group": "w4-sB-wordbank",
+          "stem": "Because the accusation appeared in print in the newspaper's Sunday edition, the actor's lawyers sued for ______ rather than for any spoken smear.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Slander"
+            },
+            {
+              "key": "B",
+              "text": "Sagacious"
+            },
+            {
+              "key": "C",
+              "text": "Circumspect"
+            },
+            {
+              "key": "D",
+              "text": "Libel"
+            },
+            {
+              "key": "E",
+              "text": "Perjury"
+            },
+            {
+              "key": "F",
+              "text": "Rebut"
+            },
+            {
+              "key": "G",
+              "text": "Stipulate"
+            },
+            {
+              "key": "H",
+              "text": "Discern"
+            },
+            {
+              "key": "I",
+              "text": "Judicious"
+            },
+            {
+              "key": "J",
+              "text": "Cogent"
+            },
+            {
+              "key": "K",
+              "text": "Criterion"
+            },
+            {
+              "key": "L",
+              "text": "Arbiter"
+            }
+          ],
+          "correctKey": "D",
+          "imageUrl": null,
+          "explanation": "Libel is defamation in a fixed, published form such as print, matching the accusation that 'appeared in print.' The nearest distractor, Slander (A), is spoken defamation; the sentence deliberately contrasts the printed claim with 'any spoken smear,' which rules slander out."
+        },
+        {
+          "number": 2,
+          "group": "w4-sB-wordbank",
+          "stem": "Having sworn on oath to tell the truth, the witness committed ______ the moment he claimed to have been abroad on the night of the robbery.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Slander"
+            },
+            {
+              "key": "B",
+              "text": "Sagacious"
+            },
+            {
+              "key": "C",
+              "text": "Circumspect"
+            },
+            {
+              "key": "D",
+              "text": "Libel"
+            },
+            {
+              "key": "E",
+              "text": "Perjury"
+            },
+            {
+              "key": "F",
+              "text": "Rebut"
+            },
+            {
+              "key": "G",
+              "text": "Stipulate"
+            },
+            {
+              "key": "H",
+              "text": "Discern"
+            },
+            {
+              "key": "I",
+              "text": "Judicious"
+            },
+            {
+              "key": "J",
+              "text": "Cogent"
+            },
+            {
+              "key": "K",
+              "text": "Criterion"
+            },
+            {
+              "key": "L",
+              "text": "Arbiter"
+            }
+          ],
+          "correctKey": "E",
+          "imageUrl": null,
+          "explanation": "Perjury is the offence of deliberately lying while under oath, pinned by the phrase 'sworn on oath to tell the truth.' The nearest distractor, Libel (D), is also a falsehood-based legal wrong, but it concerns published defamation of another person, not a false statement made under oath in court."
+        },
+        {
+          "number": 3,
+          "group": "w4-sB-wordbank",
+          "stem": "Rather than dismiss the charge outright, defence counsel rose to ______ it point by point, marshalling receipts and timestamps against each allegation.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Slander"
+            },
+            {
+              "key": "B",
+              "text": "Sagacious"
+            },
+            {
+              "key": "C",
+              "text": "Circumspect"
+            },
+            {
+              "key": "D",
+              "text": "Libel"
+            },
+            {
+              "key": "E",
+              "text": "Perjury"
+            },
+            {
+              "key": "F",
+              "text": "Rebut"
+            },
+            {
+              "key": "G",
+              "text": "Stipulate"
+            },
+            {
+              "key": "H",
+              "text": "Discern"
+            },
+            {
+              "key": "I",
+              "text": "Judicious"
+            },
+            {
+              "key": "J",
+              "text": "Cogent"
+            },
+            {
+              "key": "K",
+              "text": "Criterion"
+            },
+            {
+              "key": "L",
+              "text": "Arbiter"
+            }
+          ],
+          "correctKey": "F",
+          "imageUrl": null,
+          "explanation": "Rebut means to refute or disprove a claim by argument and evidence, matching 'marshalling receipts and timestamps against each allegation.' The nearest distractor, Stipulate (G), is another courtroom verb, but it means to agree or specify a condition — the opposite of contesting the charge the counsel is attacking."
+        },
+        {
+          "number": 4,
+          "group": "w4-sB-wordbank",
+          "stem": "The lease was careful to ______ that the tenant must repaint the walls their original colour before vacating the flat.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Slander"
+            },
+            {
+              "key": "B",
+              "text": "Sagacious"
+            },
+            {
+              "key": "C",
+              "text": "Circumspect"
+            },
+            {
+              "key": "D",
+              "text": "Libel"
+            },
+            {
+              "key": "E",
+              "text": "Perjury"
+            },
+            {
+              "key": "F",
+              "text": "Rebut"
+            },
+            {
+              "key": "G",
+              "text": "Stipulate"
+            },
+            {
+              "key": "H",
+              "text": "Discern"
+            },
+            {
+              "key": "I",
+              "text": "Judicious"
+            },
+            {
+              "key": "J",
+              "text": "Cogent"
+            },
+            {
+              "key": "K",
+              "text": "Criterion"
+            },
+            {
+              "key": "L",
+              "text": "Arbiter"
+            }
+          ],
+          "correctKey": "G",
+          "imageUrl": null,
+          "explanation": "Stipulate means to specify a requirement as an essential condition of an agreement, exactly what the lease does regarding repainting. The nearest distractor, Criterion (K), is a noun naming a standard of judgment; it cannot fill this verb slot and names a measure rather than the act of setting a binding contractual condition."
+        },
+        {
+          "number": 5,
+          "group": "w4-sB-wordbank",
+          "stem": "Only a trained eye could ______ the faint brushstrokes of a later hand beneath the varnish of the supposed original.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Slander"
+            },
+            {
+              "key": "B",
+              "text": "Sagacious"
+            },
+            {
+              "key": "C",
+              "text": "Circumspect"
+            },
+            {
+              "key": "D",
+              "text": "Libel"
+            },
+            {
+              "key": "E",
+              "text": "Perjury"
+            },
+            {
+              "key": "F",
+              "text": "Rebut"
+            },
+            {
+              "key": "G",
+              "text": "Stipulate"
+            },
+            {
+              "key": "H",
+              "text": "Discern"
+            },
+            {
+              "key": "I",
+              "text": "Judicious"
+            },
+            {
+              "key": "J",
+              "text": "Cogent"
+            },
+            {
+              "key": "K",
+              "text": "Criterion"
+            },
+            {
+              "key": "L",
+              "text": "Arbiter"
+            }
+          ],
+          "correctKey": "H",
+          "imageUrl": null,
+          "explanation": "Discern means to perceive or make out something subtle or barely visible, matching 'faint brushstrokes... beneath the varnish.' The nearest distractor, Circumspect (C), is associatively tempting but means prudently cautious about consequences — an attitude, not the act of detecting a faint detail that discern names."
+        },
+        {
+          "number": 6,
+          "group": "w4-sB-wordbank",
+          "stem": "A ______ editor, she cut just enough to sharpen the argument without ever bruising the author's voice — every excision weighed and justified.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Slander"
+            },
+            {
+              "key": "B",
+              "text": "Sagacious"
+            },
+            {
+              "key": "C",
+              "text": "Circumspect"
+            },
+            {
+              "key": "D",
+              "text": "Libel"
+            },
+            {
+              "key": "E",
+              "text": "Perjury"
+            },
+            {
+              "key": "F",
+              "text": "Rebut"
+            },
+            {
+              "key": "G",
+              "text": "Stipulate"
+            },
+            {
+              "key": "H",
+              "text": "Discern"
+            },
+            {
+              "key": "I",
+              "text": "Judicious"
+            },
+            {
+              "key": "J",
+              "text": "Cogent"
+            },
+            {
+              "key": "K",
+              "text": "Criterion"
+            },
+            {
+              "key": "L",
+              "text": "Arbiter"
+            }
+          ],
+          "correctKey": "I",
+          "imageUrl": null,
+          "explanation": "Judicious means showing sound, well-weighed practical judgment, matching cuts that are 'weighed and justified.' The nearest distractor, Sagacious (B), means wise and shrewd with deep insight or foresight, especially about people or the future; the cue here is measured decision-making about edits, which is judicious rather than sagacious."
+        },
+        {
+          "number": 7,
+          "group": "w4-sB-wordbank",
+          "stem": "The barrister's closing was so ______ that even the sceptical jurors found each step of the reasoning impossible to resist.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Slander"
+            },
+            {
+              "key": "B",
+              "text": "Sagacious"
+            },
+            {
+              "key": "C",
+              "text": "Circumspect"
+            },
+            {
+              "key": "D",
+              "text": "Libel"
+            },
+            {
+              "key": "E",
+              "text": "Perjury"
+            },
+            {
+              "key": "F",
+              "text": "Rebut"
+            },
+            {
+              "key": "G",
+              "text": "Stipulate"
+            },
+            {
+              "key": "H",
+              "text": "Discern"
+            },
+            {
+              "key": "I",
+              "text": "Judicious"
+            },
+            {
+              "key": "J",
+              "text": "Cogent"
+            },
+            {
+              "key": "K",
+              "text": "Criterion"
+            },
+            {
+              "key": "L",
+              "text": "Arbiter"
+            }
+          ],
+          "correctKey": "J",
+          "imageUrl": null,
+          "explanation": "Cogent describes an argument that is clear, logical, and compelling, matching reasoning 'impossible to resist.' The nearest distractor, Judicious (I), describes a person or decision showing good judgment, not the persuasive logical force of an argument itself, which is what cogent names."
+        },
+        {
+          "number": 8,
+          "group": "w4-sB-wordbank",
+          "stem": "Originality, not mere technical polish, was the decisive ______ by which the panel ranked the competing designs.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Slander"
+            },
+            {
+              "key": "B",
+              "text": "Sagacious"
+            },
+            {
+              "key": "C",
+              "text": "Circumspect"
+            },
+            {
+              "key": "D",
+              "text": "Libel"
+            },
+            {
+              "key": "E",
+              "text": "Perjury"
+            },
+            {
+              "key": "F",
+              "text": "Rebut"
+            },
+            {
+              "key": "G",
+              "text": "Stipulate"
+            },
+            {
+              "key": "H",
+              "text": "Discern"
+            },
+            {
+              "key": "I",
+              "text": "Judicious"
+            },
+            {
+              "key": "J",
+              "text": "Cogent"
+            },
+            {
+              "key": "K",
+              "text": "Criterion"
+            },
+            {
+              "key": "L",
+              "text": "Arbiter"
+            }
+          ],
+          "correctKey": "K",
+          "imageUrl": null,
+          "explanation": "Criterion is a standard or principle by which something is judged, matching the measure 'by which the panel ranked' the designs. The nearest distractor, Arbiter (L), is a person who judges or settles a dispute, not the standard applied; the slot names the measure of judgment, so criterion fits."
+        },
+        {
+          "number": 9,
+          "group": "w4-sB-wordbank",
+          "stem": "For decades the old critic was the undisputed ______ of literary taste, and no reputation was secure until he had pronounced upon it.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Slander"
+            },
+            {
+              "key": "B",
+              "text": "Sagacious"
+            },
+            {
+              "key": "C",
+              "text": "Circumspect"
+            },
+            {
+              "key": "D",
+              "text": "Libel"
+            },
+            {
+              "key": "E",
+              "text": "Perjury"
+            },
+            {
+              "key": "F",
+              "text": "Rebut"
+            },
+            {
+              "key": "G",
+              "text": "Stipulate"
+            },
+            {
+              "key": "H",
+              "text": "Discern"
+            },
+            {
+              "key": "I",
+              "text": "Judicious"
+            },
+            {
+              "key": "J",
+              "text": "Cogent"
+            },
+            {
+              "key": "K",
+              "text": "Criterion"
+            },
+            {
+              "key": "L",
+              "text": "Arbiter"
+            }
+          ],
+          "correctKey": "L",
+          "imageUrl": null,
+          "explanation": "An arbiter is a person with recognised authority to judge or settle a matter, matching one whose pronouncement fixes reputations. The nearest distractor, Criterion (K), names the standard applied in a judgment rather than the person who applies it — the sentence needs the judge whose word settles reputations, not the yardstick he uses, so arbiter fits and criterion does not."
+        },
+        {
+          "number": 10,
+          "group": "w4-sB-wordbank",
+          "stem": "Burned once by a hasty endorsement, the senator grew ______, weighing every possible consequence before committing herself to any public position.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Slander"
+            },
+            {
+              "key": "B",
+              "text": "Sagacious"
+            },
+            {
+              "key": "C",
+              "text": "Circumspect"
+            },
+            {
+              "key": "D",
+              "text": "Libel"
+            },
+            {
+              "key": "E",
+              "text": "Perjury"
+            },
+            {
+              "key": "F",
+              "text": "Rebut"
+            },
+            {
+              "key": "G",
+              "text": "Stipulate"
+            },
+            {
+              "key": "H",
+              "text": "Discern"
+            },
+            {
+              "key": "I",
+              "text": "Judicious"
+            },
+            {
+              "key": "J",
+              "text": "Cogent"
+            },
+            {
+              "key": "K",
+              "text": "Criterion"
+            },
+            {
+              "key": "L",
+              "text": "Arbiter"
+            }
+          ],
+          "correctKey": "C",
+          "imageUrl": null,
+          "explanation": "Circumspect means cautious and wary, considering all the circumstances and risks before acting, matching 'weighing every possible consequence before committing.' The nearest distractor, Judicious (I), describes sound decision-making in general, but circumspect specifically denotes prudent, risk-averse caution, which the 'burned once by a hasty endorsement' cue signals."
+        }
+      ]
+    }
+  ]
+}

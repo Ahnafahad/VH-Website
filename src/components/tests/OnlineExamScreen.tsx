@@ -88,10 +88,6 @@ export default function OnlineExamScreen({ slug, bucket, initialPayload, exitHre
     try {
       const res = await fetch(`/api/tests/${slug}/violation`, { method: 'POST' });
       const data: ViolationResponse = await res.json();
-      if (data.action === 'exempt') {
-        violationOpenRef.current = false;
-        return;
-      }
       if (data.action === 'ban') {
         bannedRef.current = true;
         setBanned(true);
@@ -232,6 +228,16 @@ export default function OnlineExamScreen({ slug, bucket, initialPayload, exitHre
   const currentGroup = currentQ?.groupId != null ? (groupMap.get(currentQ.groupId) ?? null) : null;
   const currentAnswer = answers[currentQ?.id ?? -1] ?? { selectedKey: null, flagged: false };
 
+  // word_bank: keys already chosen for other questions in the same group (pool exclusion)
+  const excludedKeys = currentGroup?.kind === 'word_bank'
+    ? new Set(
+        allQuestions
+          .filter(q => q.groupId === currentGroup.id && q.id !== currentQ?.id)
+          .map(q => answers[q.id]?.selectedKey)
+          .filter((k): k is string => k != null),
+      )
+    : undefined;
+
   // ── Terminal screens ──────────────────────────────────────────────────────────
   if (banned) {
     return (
@@ -336,7 +342,7 @@ export default function OnlineExamScreen({ slug, bucket, initialPayload, exitHre
       {/* Body: question + desktop navigator */}
       <div className="flex flex-1 overflow-hidden">
         {/* Question pane */}
-        <main className="flex-1 overflow-hidden pb-[52px] lg:pb-0">
+        <main className="flex-1 overflow-hidden">
           {currentQ && (
             <QuestionView
               question={currentQ}
@@ -349,6 +355,7 @@ export default function OnlineExamScreen({ slug, bucket, initialPayload, exitHre
               onNext={currentIdx < allQuestions.length - 1 ? () => setCurrentIdx(i => i + 1) : null}
               questionNumber={currentIdx + 1}
               totalQuestions={allQuestions.length}
+              excludedKeys={excludedKeys}
             />
           )}
         </main>

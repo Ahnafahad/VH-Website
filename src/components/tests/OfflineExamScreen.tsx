@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
 import TimerArc from '@/components/tests/TimerArc';
 import OmrSheet from '@/components/tests/OmrSheet';
+import WordBankSheet from '@/components/tests/WordBankSheet';
 import SubmitDialog from '@/components/tests/SubmitDialog';
 import type { AttemptPayload } from '@/lib/tests/types';
 
@@ -59,6 +60,7 @@ export default function OfflineExamScreen({ slug, bucket, initialPayload }: Prop
   const allQuestions = initialPayload.sections.flatMap(s => s.questions);
   const answeredCount = allQuestions.filter(q => answers[q.id] != null).length;
   const blankCount = allQuestions.length - answeredCount;
+  const isWordBank = initialPayload.sections.some(s => s.groups.some(g => g.kind === 'word_bank'));
 
   if (submitted) {
     return (
@@ -112,11 +114,19 @@ export default function OfflineExamScreen({ slug, bucket, initialPayload }: Prop
         </div>
       </header>
 
-      <OmrSheet
-        sections={initialPayload.sections}
-        answers={answers}
-        onAnswer={handleAnswer}
-      />
+      {isWordBank ? (
+        <WordBankSheet
+          sections={initialPayload.sections}
+          answers={answers}
+          onAnswer={handleAnswer}
+        />
+      ) : (
+        <OmrSheet
+          sections={initialPayload.sections}
+          answers={answers}
+          onAnswer={handleAnswer}
+        />
+      )}
 
       <SubmitDialog
         open={submitDialog}

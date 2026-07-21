@@ -1,0 +1,1302 @@
+{
+  "slug": "week-11-culture-growth",
+  "title": "Week 11 — Culture, Praise & Rural Life + Exclusion, Growth & Scale",
+  "bucket": "iba",
+  "description": "Fill-in-the-blank vocabulary on the language of culture, praise, and rural life, and on exclusion, growth, and sheer scale.",
+  "sections": [
+    {
+      "order": 1,
+      "title": "SECTION A",
+      "marksPerCorrect": 1,
+      "penaltyPerWrong": 0,
+      "thresholdPercent": null,
+      "groups": [
+        {
+          "ref": "w11-sA-wordbank",
+          "kind": "word_bank",
+          "title": "SECTION A",
+          "content": "Use words from the box to fill the blanks. There are more words than necessary. No marks would be deducted for wrong answers.",
+          "sharedOptions": [
+            {
+              "key": "A",
+              "text": "Adulation"
+            },
+            {
+              "key": "B",
+              "text": "Husbandry"
+            },
+            {
+              "key": "C",
+              "text": "Milieu"
+            },
+            {
+              "key": "D",
+              "text": "Bucolic"
+            },
+            {
+              "key": "E",
+              "text": "Ambience"
+            },
+            {
+              "key": "F",
+              "text": "Accolade"
+            },
+            {
+              "key": "G",
+              "text": "Approbation"
+            },
+            {
+              "key": "H",
+              "text": "Revere"
+            },
+            {
+              "key": "I",
+              "text": "Agrarian"
+            },
+            {
+              "key": "J",
+              "text": "Rustic"
+            },
+            {
+              "key": "K",
+              "text": "Neologism"
+            },
+            {
+              "key": "L",
+              "text": "Epigram"
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "number": 1,
+          "group": "w11-sA-wordbank",
+          "stem": "Soft lamplight, worn leather chairs, and the smell of old paper gave the little shop a cosy ______ that made customers reluctant to leave.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Adulation"
+            },
+            {
+              "key": "B",
+              "text": "Husbandry"
+            },
+            {
+              "key": "C",
+              "text": "Milieu"
+            },
+            {
+              "key": "D",
+              "text": "Bucolic"
+            },
+            {
+              "key": "E",
+              "text": "Ambience"
+            },
+            {
+              "key": "F",
+              "text": "Accolade"
+            },
+            {
+              "key": "G",
+              "text": "Approbation"
+            },
+            {
+              "key": "H",
+              "text": "Revere"
+            },
+            {
+              "key": "I",
+              "text": "Agrarian"
+            },
+            {
+              "key": "J",
+              "text": "Rustic"
+            },
+            {
+              "key": "K",
+              "text": "Neologism"
+            },
+            {
+              "key": "L",
+              "text": "Epigram"
+            }
+          ],
+          "correctKey": "E",
+          "imageUrl": null,
+          "explanation": "Ambience is the felt atmosphere or mood of a place, created here by light, furniture, and smell. The nearest distractor, Milieu (C), means one's social or cultural surroundings, not the sensory mood of a single room."
+        },
+        {
+          "number": 2,
+          "group": "w11-sA-wordbank",
+          "stem": "Raised among diplomats and scholars, she moved with ease through a rarefied social ______ that a self-made man could never quite enter.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Adulation"
+            },
+            {
+              "key": "B",
+              "text": "Husbandry"
+            },
+            {
+              "key": "C",
+              "text": "Milieu"
+            },
+            {
+              "key": "D",
+              "text": "Bucolic"
+            },
+            {
+              "key": "E",
+              "text": "Ambience"
+            },
+            {
+              "key": "F",
+              "text": "Accolade"
+            },
+            {
+              "key": "G",
+              "text": "Approbation"
+            },
+            {
+              "key": "H",
+              "text": "Revere"
+            },
+            {
+              "key": "I",
+              "text": "Agrarian"
+            },
+            {
+              "key": "J",
+              "text": "Rustic"
+            },
+            {
+              "key": "K",
+              "text": "Neologism"
+            },
+            {
+              "key": "L",
+              "text": "Epigram"
+            }
+          ],
+          "correctKey": "C",
+          "imageUrl": null,
+          "explanation": "A milieu is the social or cultural environment one inhabits, matching the exclusive social world described. The nearest distractor, Ambience (E), refers to the mood or atmosphere of a physical place, not to a social sphere one belongs to."
+        },
+        {
+          "number": 3,
+          "group": "w11-sA-wordbank",
+          "stem": "'Selfie' began as a jokey ______, just one more freshly minted word that within a year had slipped into every dictionary.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Adulation"
+            },
+            {
+              "key": "B",
+              "text": "Husbandry"
+            },
+            {
+              "key": "C",
+              "text": "Milieu"
+            },
+            {
+              "key": "D",
+              "text": "Bucolic"
+            },
+            {
+              "key": "E",
+              "text": "Ambience"
+            },
+            {
+              "key": "F",
+              "text": "Accolade"
+            },
+            {
+              "key": "G",
+              "text": "Approbation"
+            },
+            {
+              "key": "H",
+              "text": "Revere"
+            },
+            {
+              "key": "I",
+              "text": "Agrarian"
+            },
+            {
+              "key": "J",
+              "text": "Rustic"
+            },
+            {
+              "key": "K",
+              "text": "Neologism"
+            },
+            {
+              "key": "L",
+              "text": "Epigram"
+            }
+          ],
+          "correctKey": "K",
+          "imageUrl": null,
+          "explanation": "A neologism is a newly coined word, matching 'freshly minted word.' The nearest distractor, Epigram (L), is a short witty saying or verse, not a single invented word."
+        },
+        {
+          "number": 4,
+          "group": "w11-sA-wordbank",
+          "stem": "Wilde could fold an entire moral philosophy into a single glittering ______, a line so neat and witty that it outlived him by a century.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Adulation"
+            },
+            {
+              "key": "B",
+              "text": "Husbandry"
+            },
+            {
+              "key": "C",
+              "text": "Milieu"
+            },
+            {
+              "key": "D",
+              "text": "Bucolic"
+            },
+            {
+              "key": "E",
+              "text": "Ambience"
+            },
+            {
+              "key": "F",
+              "text": "Accolade"
+            },
+            {
+              "key": "G",
+              "text": "Approbation"
+            },
+            {
+              "key": "H",
+              "text": "Revere"
+            },
+            {
+              "key": "I",
+              "text": "Agrarian"
+            },
+            {
+              "key": "J",
+              "text": "Rustic"
+            },
+            {
+              "key": "K",
+              "text": "Neologism"
+            },
+            {
+              "key": "L",
+              "text": "Epigram"
+            }
+          ],
+          "correctKey": "L",
+          "imageUrl": null,
+          "explanation": "An epigram is a concise, polished, witty saying, matching 'a line so neat and witty.' The nearest distractor, Neologism (K), is a newly invented word, not a crafted witty sentence."
+        },
+        {
+          "number": 5,
+          "group": "w11-sA-wordbank",
+          "stem": "The villagers so ______ the old midwife that they rose to their feet whenever she entered and repeated her sayings like scripture.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Adulation"
+            },
+            {
+              "key": "B",
+              "text": "Husbandry"
+            },
+            {
+              "key": "C",
+              "text": "Milieu"
+            },
+            {
+              "key": "D",
+              "text": "Bucolic"
+            },
+            {
+              "key": "E",
+              "text": "Ambience"
+            },
+            {
+              "key": "F",
+              "text": "Accolade"
+            },
+            {
+              "key": "G",
+              "text": "Approbation"
+            },
+            {
+              "key": "H",
+              "text": "Revere"
+            },
+            {
+              "key": "I",
+              "text": "Agrarian"
+            },
+            {
+              "key": "J",
+              "text": "Rustic"
+            },
+            {
+              "key": "K",
+              "text": "Neologism"
+            },
+            {
+              "key": "L",
+              "text": "Epigram"
+            }
+          ],
+          "correctKey": "H",
+          "imageUrl": null,
+          "explanation": "Revere means to regard with deep, almost sacred respect and awe, matching people who stand for her and treat her words as scripture. The nearest distractor, Adulation (A), names excessive, often insincere flattery rather than the solemn personal respect the villagers show."
+        },
+        {
+          "number": 6,
+          "group": "w11-sA-wordbank",
+          "stem": "The boy king was ruined by ______, surrounded from birth by courtiers whose ceaseless, fawning flattery let him believe he could do no wrong.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Adulation"
+            },
+            {
+              "key": "B",
+              "text": "Husbandry"
+            },
+            {
+              "key": "C",
+              "text": "Milieu"
+            },
+            {
+              "key": "D",
+              "text": "Bucolic"
+            },
+            {
+              "key": "E",
+              "text": "Ambience"
+            },
+            {
+              "key": "F",
+              "text": "Accolade"
+            },
+            {
+              "key": "G",
+              "text": "Approbation"
+            },
+            {
+              "key": "H",
+              "text": "Revere"
+            },
+            {
+              "key": "I",
+              "text": "Agrarian"
+            },
+            {
+              "key": "J",
+              "text": "Rustic"
+            },
+            {
+              "key": "K",
+              "text": "Neologism"
+            },
+            {
+              "key": "L",
+              "text": "Epigram"
+            }
+          ],
+          "correctKey": "A",
+          "imageUrl": null,
+          "explanation": "Adulation is excessive, servile admiration or flattery, matching 'ceaseless, fawning flattery.' The nearest distractor, Approbation (G), means formal approval, which is far milder and carries none of the fawning excess named here."
+        },
+        {
+          "number": 7,
+          "group": "w11-sA-wordbank",
+          "stem": "Election to the Academy was the highest ______ the nation could bestow, an honour granted to barely a dozen living painters.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Adulation"
+            },
+            {
+              "key": "B",
+              "text": "Husbandry"
+            },
+            {
+              "key": "C",
+              "text": "Milieu"
+            },
+            {
+              "key": "D",
+              "text": "Bucolic"
+            },
+            {
+              "key": "E",
+              "text": "Ambience"
+            },
+            {
+              "key": "F",
+              "text": "Accolade"
+            },
+            {
+              "key": "G",
+              "text": "Approbation"
+            },
+            {
+              "key": "H",
+              "text": "Revere"
+            },
+            {
+              "key": "I",
+              "text": "Agrarian"
+            },
+            {
+              "key": "J",
+              "text": "Rustic"
+            },
+            {
+              "key": "K",
+              "text": "Neologism"
+            },
+            {
+              "key": "L",
+              "text": "Epigram"
+            }
+          ],
+          "correctKey": "F",
+          "imageUrl": null,
+          "explanation": "An accolade is a conferred award or mark of honour, matching an honour formally bestowed on a select few. The nearest distractor, Approbation (G), means general approval rather than a specific honour that can be granted to named individuals."
+        },
+        {
+          "number": 8,
+          "group": "w11-sA-wordbank",
+          "stem": "Before the mills arrived, the province was thoroughly ______, its wealth measured in acres of wheat and the size of each autumn harvest.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Adulation"
+            },
+            {
+              "key": "B",
+              "text": "Husbandry"
+            },
+            {
+              "key": "C",
+              "text": "Milieu"
+            },
+            {
+              "key": "D",
+              "text": "Bucolic"
+            },
+            {
+              "key": "E",
+              "text": "Ambience"
+            },
+            {
+              "key": "F",
+              "text": "Accolade"
+            },
+            {
+              "key": "G",
+              "text": "Approbation"
+            },
+            {
+              "key": "H",
+              "text": "Revere"
+            },
+            {
+              "key": "I",
+              "text": "Agrarian"
+            },
+            {
+              "key": "J",
+              "text": "Rustic"
+            },
+            {
+              "key": "K",
+              "text": "Neologism"
+            },
+            {
+              "key": "L",
+              "text": "Epigram"
+            }
+          ],
+          "correctKey": "I",
+          "imageUrl": null,
+          "explanation": "Agrarian means relating to cultivated land and farming as the basis of society or economy, matching wealth measured in acres and harvests. The nearest distractor, Rustic (J), means rural in a plain or unsophisticated way and describes character, not an agricultural economy."
+        },
+        {
+          "number": 9,
+          "group": "w11-sA-wordbank",
+          "stem": "The painting offered a ______ scene of shepherds dozing beside a slow stream, the very image of rural peace.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Adulation"
+            },
+            {
+              "key": "B",
+              "text": "Husbandry"
+            },
+            {
+              "key": "C",
+              "text": "Milieu"
+            },
+            {
+              "key": "D",
+              "text": "Bucolic"
+            },
+            {
+              "key": "E",
+              "text": "Ambience"
+            },
+            {
+              "key": "F",
+              "text": "Accolade"
+            },
+            {
+              "key": "G",
+              "text": "Approbation"
+            },
+            {
+              "key": "H",
+              "text": "Revere"
+            },
+            {
+              "key": "I",
+              "text": "Agrarian"
+            },
+            {
+              "key": "J",
+              "text": "Rustic"
+            },
+            {
+              "key": "K",
+              "text": "Neologism"
+            },
+            {
+              "key": "L",
+              "text": "Epigram"
+            }
+          ],
+          "correctKey": "D",
+          "imageUrl": null,
+          "explanation": "Bucolic means relating to the pleasant, pastoral aspects of the countryside, matching this idealised image of rural peace. The nearest distractor, Rustic (J), also means rural but connotes roughness or plainness rather than idyllic charm."
+        },
+        {
+          "number": 10,
+          "group": "w11-sA-wordbank",
+          "stem": "Years of patient ______ had enriched both soil and herd, for the farmer rotated his fields and bred his cattle with equal care.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Adulation"
+            },
+            {
+              "key": "B",
+              "text": "Husbandry"
+            },
+            {
+              "key": "C",
+              "text": "Milieu"
+            },
+            {
+              "key": "D",
+              "text": "Bucolic"
+            },
+            {
+              "key": "E",
+              "text": "Ambience"
+            },
+            {
+              "key": "F",
+              "text": "Accolade"
+            },
+            {
+              "key": "G",
+              "text": "Approbation"
+            },
+            {
+              "key": "H",
+              "text": "Revere"
+            },
+            {
+              "key": "I",
+              "text": "Agrarian"
+            },
+            {
+              "key": "J",
+              "text": "Rustic"
+            },
+            {
+              "key": "K",
+              "text": "Neologism"
+            },
+            {
+              "key": "L",
+              "text": "Epigram"
+            }
+          ],
+          "correctKey": "B",
+          "imageUrl": null,
+          "explanation": "Husbandry is the careful management and cultivation of crops and animals, matching the rotation of fields and breeding of cattle. The nearest distractor, Agrarian (I), is an adjective and cannot fill a noun slot, and it names a type of economy, not the practice of tending land and stock."
+        }
+      ]
+    },
+    {
+      "order": 2,
+      "title": "SECTION B",
+      "marksPerCorrect": 1,
+      "penaltyPerWrong": 0,
+      "thresholdPercent": null,
+      "groups": [
+        {
+          "ref": "w11-sB-wordbank",
+          "kind": "word_bank",
+          "title": "SECTION B",
+          "content": "Use words from the box to fill the blanks. There are more words than necessary. No marks would be deducted for wrong answers.",
+          "sharedOptions": [
+            {
+              "key": "A",
+              "text": "Confluence"
+            },
+            {
+              "key": "B",
+              "text": "Endemic"
+            },
+            {
+              "key": "C",
+              "text": "Augment"
+            },
+            {
+              "key": "D",
+              "text": "Segregate"
+            },
+            {
+              "key": "E",
+              "text": "Sinister"
+            },
+            {
+              "key": "F",
+              "text": "Apartheid"
+            },
+            {
+              "key": "G",
+              "text": "Permeate"
+            },
+            {
+              "key": "H",
+              "text": "Coalesce"
+            },
+            {
+              "key": "I",
+              "text": "Relegate"
+            },
+            {
+              "key": "J",
+              "text": "Pernicious"
+            },
+            {
+              "key": "K",
+              "text": "Noxious"
+            },
+            {
+              "key": "L",
+              "text": "Burgeon"
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "number": 1,
+          "group": "w11-sB-wordbank",
+          "stem": "The new statutes compelled officials to ______ the two races on every train, herding them into separate carriages divided by a painted line.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Confluence"
+            },
+            {
+              "key": "B",
+              "text": "Endemic"
+            },
+            {
+              "key": "C",
+              "text": "Augment"
+            },
+            {
+              "key": "D",
+              "text": "Segregate"
+            },
+            {
+              "key": "E",
+              "text": "Sinister"
+            },
+            {
+              "key": "F",
+              "text": "Apartheid"
+            },
+            {
+              "key": "G",
+              "text": "Permeate"
+            },
+            {
+              "key": "H",
+              "text": "Coalesce"
+            },
+            {
+              "key": "I",
+              "text": "Relegate"
+            },
+            {
+              "key": "J",
+              "text": "Pernicious"
+            },
+            {
+              "key": "K",
+              "text": "Noxious"
+            },
+            {
+              "key": "L",
+              "text": "Burgeon"
+            }
+          ],
+          "correctKey": "D",
+          "imageUrl": null,
+          "explanation": "Segregate means to force groups apart into separate spaces, matching the division into separate carriages. The nearest distractor, Apartheid (F), is a noun naming the whole system of racial separation and cannot fill a verb slot after 'to ___ the races.'"
+        },
+        {
+          "number": 2,
+          "group": "w11-sB-wordbank",
+          "stem": "When his patron lost office, the once-promising clerk was quietly ______ to a windowless back room, copying ledgers that no one would ever read.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Confluence"
+            },
+            {
+              "key": "B",
+              "text": "Endemic"
+            },
+            {
+              "key": "C",
+              "text": "Augment"
+            },
+            {
+              "key": "D",
+              "text": "Segregate"
+            },
+            {
+              "key": "E",
+              "text": "Sinister"
+            },
+            {
+              "key": "F",
+              "text": "Apartheid"
+            },
+            {
+              "key": "G",
+              "text": "Permeate"
+            },
+            {
+              "key": "H",
+              "text": "Coalesce"
+            },
+            {
+              "key": "I",
+              "text": "Relegate"
+            },
+            {
+              "key": "J",
+              "text": "Pernicious"
+            },
+            {
+              "key": "K",
+              "text": "Noxious"
+            },
+            {
+              "key": "L",
+              "text": "Burgeon"
+            }
+          ],
+          "correctKey": "I",
+          "imageUrl": null,
+          "explanation": "Relegate means to consign someone to an inferior rank or place, matching the demotion to a windowless back room. The nearest distractor, Segregate (D), means to separate groups from one another, not to push a single person down in status."
+        },
+        {
+          "number": 3,
+          "group": "w11-sB-wordbank",
+          "stem": "The doctrine seemed harmless in the lecture hall, yet it proved deeply ______, corroding the students' judgement by degrees so small that no one marked the change.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Confluence"
+            },
+            {
+              "key": "B",
+              "text": "Endemic"
+            },
+            {
+              "key": "C",
+              "text": "Augment"
+            },
+            {
+              "key": "D",
+              "text": "Segregate"
+            },
+            {
+              "key": "E",
+              "text": "Sinister"
+            },
+            {
+              "key": "F",
+              "text": "Apartheid"
+            },
+            {
+              "key": "G",
+              "text": "Permeate"
+            },
+            {
+              "key": "H",
+              "text": "Coalesce"
+            },
+            {
+              "key": "I",
+              "text": "Relegate"
+            },
+            {
+              "key": "J",
+              "text": "Pernicious"
+            },
+            {
+              "key": "K",
+              "text": "Noxious"
+            },
+            {
+              "key": "L",
+              "text": "Burgeon"
+            }
+          ],
+          "correctKey": "J",
+          "imageUrl": null,
+          "explanation": "Pernicious means having a gradual, subtle, and destructive effect, matching harm that spreads by imperceptible degrees. The nearest distractor, Noxious (K), means overtly poisonous or physically harmful, said of fumes or substances, not of a slow moral corrosion."
+        },
+        {
+          "number": 4,
+          "group": "w11-sB-wordbank",
+          "stem": "There was something faintly ______ about the abandoned house, nothing you could name, only a cold sense that some evil waited patiently behind its shutters.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Confluence"
+            },
+            {
+              "key": "B",
+              "text": "Endemic"
+            },
+            {
+              "key": "C",
+              "text": "Augment"
+            },
+            {
+              "key": "D",
+              "text": "Segregate"
+            },
+            {
+              "key": "E",
+              "text": "Sinister"
+            },
+            {
+              "key": "F",
+              "text": "Apartheid"
+            },
+            {
+              "key": "G",
+              "text": "Permeate"
+            },
+            {
+              "key": "H",
+              "text": "Coalesce"
+            },
+            {
+              "key": "I",
+              "text": "Relegate"
+            },
+            {
+              "key": "J",
+              "text": "Pernicious"
+            },
+            {
+              "key": "K",
+              "text": "Noxious"
+            },
+            {
+              "key": "L",
+              "text": "Burgeon"
+            }
+          ],
+          "correctKey": "E",
+          "imageUrl": null,
+          "explanation": "Sinister means giving an impression of threatening evil, matching a menace that is felt but not yet acted on. The nearest distractor, Pernicious (J), describes something that actually causes gradual harm, whereas here nothing has been damaged, only a threat is sensed."
+        },
+        {
+          "number": 5,
+          "group": "w11-sB-wordbank",
+          "stem": "Once the new harbour opened, the drowsy fishing village began to ______, its lanes filling within a decade with traders, inns, and crowded markets.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Confluence"
+            },
+            {
+              "key": "B",
+              "text": "Endemic"
+            },
+            {
+              "key": "C",
+              "text": "Augment"
+            },
+            {
+              "key": "D",
+              "text": "Segregate"
+            },
+            {
+              "key": "E",
+              "text": "Sinister"
+            },
+            {
+              "key": "F",
+              "text": "Apartheid"
+            },
+            {
+              "key": "G",
+              "text": "Permeate"
+            },
+            {
+              "key": "H",
+              "text": "Coalesce"
+            },
+            {
+              "key": "I",
+              "text": "Relegate"
+            },
+            {
+              "key": "J",
+              "text": "Pernicious"
+            },
+            {
+              "key": "K",
+              "text": "Noxious"
+            },
+            {
+              "key": "L",
+              "text": "Burgeon"
+            }
+          ],
+          "correctKey": "L",
+          "imageUrl": null,
+          "explanation": "Burgeon means to grow and flourish rapidly, matching a village that expands within a decade. The nearest distractor, Augment (C), means to make larger by adding to and is transitive, requiring a direct object the clause does not supply."
+        },
+        {
+          "number": 6,
+          "group": "w11-sB-wordbank",
+          "stem": "To ______ his meagre pension, the retired major tutored the neighbours' children, adding just enough each week to keep his little cottage warm.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Confluence"
+            },
+            {
+              "key": "B",
+              "text": "Endemic"
+            },
+            {
+              "key": "C",
+              "text": "Augment"
+            },
+            {
+              "key": "D",
+              "text": "Segregate"
+            },
+            {
+              "key": "E",
+              "text": "Sinister"
+            },
+            {
+              "key": "F",
+              "text": "Apartheid"
+            },
+            {
+              "key": "G",
+              "text": "Permeate"
+            },
+            {
+              "key": "H",
+              "text": "Coalesce"
+            },
+            {
+              "key": "I",
+              "text": "Relegate"
+            },
+            {
+              "key": "J",
+              "text": "Pernicious"
+            },
+            {
+              "key": "K",
+              "text": "Noxious"
+            },
+            {
+              "key": "L",
+              "text": "Burgeon"
+            }
+          ],
+          "correctKey": "C",
+          "imageUrl": null,
+          "explanation": "Augment means to increase something by adding to it, matching a pension supplemented with tutoring income. The nearest distractor, Burgeon (L), means to grow of its own accord and cannot take a direct object such as 'his pension.'"
+        },
+        {
+          "number": 7,
+          "group": "w11-sB-wordbank",
+          "stem": "Faced with a common enemy, the feuding clans at last ______ into a single people, their ancient quarrels forgotten in the need to survive.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Confluence"
+            },
+            {
+              "key": "B",
+              "text": "Endemic"
+            },
+            {
+              "key": "C",
+              "text": "Augment"
+            },
+            {
+              "key": "D",
+              "text": "Segregate"
+            },
+            {
+              "key": "E",
+              "text": "Sinister"
+            },
+            {
+              "key": "F",
+              "text": "Apartheid"
+            },
+            {
+              "key": "G",
+              "text": "Permeate"
+            },
+            {
+              "key": "H",
+              "text": "Coalesce"
+            },
+            {
+              "key": "I",
+              "text": "Relegate"
+            },
+            {
+              "key": "J",
+              "text": "Pernicious"
+            },
+            {
+              "key": "K",
+              "text": "Noxious"
+            },
+            {
+              "key": "L",
+              "text": "Burgeon"
+            }
+          ],
+          "correctKey": "H",
+          "imageUrl": null,
+          "explanation": "Coalesce means to come together and merge into one whole, matching separate clans becoming a single people. The nearest distractor, Confluence (A), is a noun meaning a flowing-together and cannot occupy the verb slot after 'at last ___ into.'"
+        },
+        {
+          "number": 8,
+          "group": "w11-sB-wordbank",
+          "stem": "The panic arose from an unlucky ______ of failed banks, poor harvests, and rumours of war, three misfortunes striking the nation in the very same month.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Confluence"
+            },
+            {
+              "key": "B",
+              "text": "Endemic"
+            },
+            {
+              "key": "C",
+              "text": "Augment"
+            },
+            {
+              "key": "D",
+              "text": "Segregate"
+            },
+            {
+              "key": "E",
+              "text": "Sinister"
+            },
+            {
+              "key": "F",
+              "text": "Apartheid"
+            },
+            {
+              "key": "G",
+              "text": "Permeate"
+            },
+            {
+              "key": "H",
+              "text": "Coalesce"
+            },
+            {
+              "key": "I",
+              "text": "Relegate"
+            },
+            {
+              "key": "J",
+              "text": "Pernicious"
+            },
+            {
+              "key": "K",
+              "text": "Noxious"
+            },
+            {
+              "key": "L",
+              "text": "Burgeon"
+            }
+          ],
+          "correctKey": "A",
+          "imageUrl": null,
+          "explanation": "A confluence is a coming-together of several currents or factors, matching three misfortunes arriving at once. The nearest distractor, Coalesce (H), is a verb and cannot follow the article in 'an unlucky ___ of.'"
+        },
+        {
+          "number": 9,
+          "group": "w11-sB-wordbank",
+          "stem": "Petty bribery was so ______ to the port that newcomers assumed the extra 'fees' were simply part of the lawful price of doing business there.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Confluence"
+            },
+            {
+              "key": "B",
+              "text": "Endemic"
+            },
+            {
+              "key": "C",
+              "text": "Augment"
+            },
+            {
+              "key": "D",
+              "text": "Segregate"
+            },
+            {
+              "key": "E",
+              "text": "Sinister"
+            },
+            {
+              "key": "F",
+              "text": "Apartheid"
+            },
+            {
+              "key": "G",
+              "text": "Permeate"
+            },
+            {
+              "key": "H",
+              "text": "Coalesce"
+            },
+            {
+              "key": "I",
+              "text": "Relegate"
+            },
+            {
+              "key": "J",
+              "text": "Pernicious"
+            },
+            {
+              "key": "K",
+              "text": "Noxious"
+            },
+            {
+              "key": "L",
+              "text": "Burgeon"
+            }
+          ],
+          "correctKey": "B",
+          "imageUrl": null,
+          "explanation": "Endemic means regularly found in and native to a particular place, matching corruption rooted in this one port ('endemic to'). The nearest distractor, Permeate (G), is a verb and cannot fill the adjective slot after 'so ___ to.'"
+        },
+        {
+          "number": 10,
+          "group": "w11-sB-wordbank",
+          "stem": "A smell of damp and old candlewax seemed to ______ the whole monastery, soaking into the stone walls and the monks' woollen robes alike.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Confluence"
+            },
+            {
+              "key": "B",
+              "text": "Endemic"
+            },
+            {
+              "key": "C",
+              "text": "Augment"
+            },
+            {
+              "key": "D",
+              "text": "Segregate"
+            },
+            {
+              "key": "E",
+              "text": "Sinister"
+            },
+            {
+              "key": "F",
+              "text": "Apartheid"
+            },
+            {
+              "key": "G",
+              "text": "Permeate"
+            },
+            {
+              "key": "H",
+              "text": "Coalesce"
+            },
+            {
+              "key": "I",
+              "text": "Relegate"
+            },
+            {
+              "key": "J",
+              "text": "Pernicious"
+            },
+            {
+              "key": "K",
+              "text": "Noxious"
+            },
+            {
+              "key": "L",
+              "text": "Burgeon"
+            }
+          ],
+          "correctKey": "G",
+          "imageUrl": null,
+          "explanation": "Permeate means to spread through every part of something, matching a smell that soaks into walls and robes. The nearest distractor, Endemic (B), is an adjective and cannot serve as this verb; it also means native prevalence, not physical spreading."
+        }
+      ]
+    }
+  ]
+}

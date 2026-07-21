@@ -19,6 +19,8 @@ interface QuestionViewProps {
   questionNumber: number;   // display number
   totalQuestions: number;
   disabled?: boolean;
+  /** word_bank only: option keys already chosen for another question in this group. */
+  excludedKeys?: Set<string>;
 }
 
 const slideVariants: Variants = {
@@ -50,11 +52,13 @@ export default function QuestionView({
   questionNumber,
   totalQuestions,
   disabled,
+  excludedKeys,
 }: QuestionViewProps) {
   const [passageExpanded, setPassageExpanded] = useState(true);
 
   const hasGroup = group !== null;
   const isSharedOptions = group?.kind === 'shared_options';
+  const isWordBank = group?.kind === 'word_bank';
 
   return (
     <div className="flex flex-col h-full">
@@ -91,7 +95,7 @@ export default function QuestionView({
       <div className="flex-1 overflow-y-auto">
         {/* Group content (passage / instruction / scenario) */}
         <AnimatePresence initial={false}>
-          {hasGroup && !isSharedOptions && (
+          {hasGroup && !isSharedOptions && !isWordBank && (
             <motion.div
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
@@ -151,6 +155,18 @@ export default function QuestionView({
           </div>
         )}
 
+        {/* Word bank instructions */}
+        {hasGroup && isWordBank && (
+          <div className="px-4 pt-4 pb-2 border-b border-exam-border">
+            <p className="text-exam-gold text-xs font-bold uppercase tracking-widest mb-1">
+              {group?.title || 'Word Bank'}
+            </p>
+            <p className="text-exam-ink-faint text-xs leading-relaxed">
+              <RichText content={group?.content ?? ''} inline />
+            </p>
+          </div>
+        )}
+
         {/* Stem + image + options */}
         <div className="px-4 py-5 space-y-5">
           {/* Stem */}
@@ -169,18 +185,34 @@ export default function QuestionView({
           )}
 
           {/* Options */}
-          <div className="space-y-2.5">
-            {question.options.map(opt => (
-              <OptionCard
-                key={opt.key}
-                optionKey={opt.key}
-                text={opt.text}
-                selected={selectedKey === opt.key}
-                onSelect={() => onSelect(selectedKey === opt.key ? null : opt.key)}
-                disabled={disabled}
-              />
-            ))}
-          </div>
+          {isWordBank ? (
+            <div className="grid grid-cols-2 gap-2.5">
+              {question.options.map(opt => (
+                <OptionCard
+                  key={opt.key}
+                  optionKey={opt.key}
+                  text={opt.text}
+                  selected={selectedKey === opt.key}
+                  onSelect={() => onSelect(selectedKey === opt.key ? null : opt.key)}
+                  disabled={disabled}
+                  usedElsewhere={selectedKey !== opt.key && (excludedKeys?.has(opt.key) ?? false)}
+                />
+              ))}
+            </div>
+          ) : (
+            <div className="space-y-2.5">
+              {question.options.map(opt => (
+                <OptionCard
+                  key={opt.key}
+                  optionKey={opt.key}
+                  text={opt.text}
+                  selected={selectedKey === opt.key}
+                  onSelect={() => onSelect(selectedKey === opt.key ? null : opt.key)}
+                  disabled={disabled}
+                />
+              ))}
+            </div>
+          )}
         </div>
       </div>
 

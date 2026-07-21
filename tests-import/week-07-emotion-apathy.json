@@ -1,0 +1,1302 @@
+{
+  "slug": "week-07-emotion-apathy",
+  "title": "Week 7 — Grief, Joy & Hostility + Apathy, Stagnation & Inward Shame",
+  "bucket": "iba",
+  "description": "Fill-in-the-blank vocabulary on the language of grief, joy, and hostility, and on apathy, stagnation, and inward shame.",
+  "sections": [
+    {
+      "order": 1,
+      "title": "SECTION A",
+      "marksPerCorrect": 1,
+      "penaltyPerWrong": 0,
+      "thresholdPercent": null,
+      "groups": [
+        {
+          "ref": "w7-sA-wordbank",
+          "kind": "word_bank",
+          "title": "SECTION A",
+          "content": "Use words from the box to fill the blanks. There are more words than necessary. No marks would be deducted for wrong answers.",
+          "sharedOptions": [
+            {
+              "key": "A",
+              "text": "Despondent"
+            },
+            {
+              "key": "B",
+              "text": "Reprisal"
+            },
+            {
+              "key": "C",
+              "text": "Sanguine"
+            },
+            {
+              "key": "D",
+              "text": "Belligerent"
+            },
+            {
+              "key": "E",
+              "text": "Anguish"
+            },
+            {
+              "key": "F",
+              "text": "Auspicious"
+            },
+            {
+              "key": "G",
+              "text": "Rancour"
+            },
+            {
+              "key": "H",
+              "text": "Trepidation"
+            },
+            {
+              "key": "I",
+              "text": "Bereaved"
+            },
+            {
+              "key": "J",
+              "text": "Ebullient"
+            },
+            {
+              "key": "K",
+              "text": "Animosity"
+            },
+            {
+              "key": "L",
+              "text": "Lament"
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "number": 1,
+          "group": "w7-sA-wordbank",
+          "stem": "When the news of the shipwreck reached her, she cried out in ______, a raw and unbearable pain that no words of comfort could ever reach.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Despondent"
+            },
+            {
+              "key": "B",
+              "text": "Reprisal"
+            },
+            {
+              "key": "C",
+              "text": "Sanguine"
+            },
+            {
+              "key": "D",
+              "text": "Belligerent"
+            },
+            {
+              "key": "E",
+              "text": "Anguish"
+            },
+            {
+              "key": "F",
+              "text": "Auspicious"
+            },
+            {
+              "key": "G",
+              "text": "Rancour"
+            },
+            {
+              "key": "H",
+              "text": "Trepidation"
+            },
+            {
+              "key": "I",
+              "text": "Bereaved"
+            },
+            {
+              "key": "J",
+              "text": "Ebullient"
+            },
+            {
+              "key": "K",
+              "text": "Animosity"
+            },
+            {
+              "key": "L",
+              "text": "Lament"
+            }
+          ],
+          "correctKey": "E",
+          "imageUrl": null,
+          "explanation": "Anguish is severe mental or physical suffering, matching 'raw and unbearable pain.' The nearest distractor, Trepidation (H), means anxious dread of something about to happen, not the present suffering the sentence describes."
+        },
+        {
+          "number": 2,
+          "group": "w7-sA-wordbank",
+          "stem": "The ______ father kept his son's room exactly as it had been, unable to accept that the boy would never come home again.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Despondent"
+            },
+            {
+              "key": "B",
+              "text": "Reprisal"
+            },
+            {
+              "key": "C",
+              "text": "Sanguine"
+            },
+            {
+              "key": "D",
+              "text": "Belligerent"
+            },
+            {
+              "key": "E",
+              "text": "Anguish"
+            },
+            {
+              "key": "F",
+              "text": "Auspicious"
+            },
+            {
+              "key": "G",
+              "text": "Rancour"
+            },
+            {
+              "key": "H",
+              "text": "Trepidation"
+            },
+            {
+              "key": "I",
+              "text": "Bereaved"
+            },
+            {
+              "key": "J",
+              "text": "Ebullient"
+            },
+            {
+              "key": "K",
+              "text": "Animosity"
+            },
+            {
+              "key": "L",
+              "text": "Lament"
+            }
+          ],
+          "correctKey": "I",
+          "imageUrl": null,
+          "explanation": "Bereaved means deprived of a loved one through death, matching 'the boy would never come home again.' The nearest distractor, Despondent (A), means dejected and hopeless in mood but says nothing of loss through death."
+        },
+        {
+          "number": 3,
+          "group": "w7-sA-wordbank",
+          "stem": "After his third venture collapsed and left him penniless, he grew utterly ______, convinced that nothing he ever attempted would succeed.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Despondent"
+            },
+            {
+              "key": "B",
+              "text": "Reprisal"
+            },
+            {
+              "key": "C",
+              "text": "Sanguine"
+            },
+            {
+              "key": "D",
+              "text": "Belligerent"
+            },
+            {
+              "key": "E",
+              "text": "Anguish"
+            },
+            {
+              "key": "F",
+              "text": "Auspicious"
+            },
+            {
+              "key": "G",
+              "text": "Rancour"
+            },
+            {
+              "key": "H",
+              "text": "Trepidation"
+            },
+            {
+              "key": "I",
+              "text": "Bereaved"
+            },
+            {
+              "key": "J",
+              "text": "Ebullient"
+            },
+            {
+              "key": "K",
+              "text": "Animosity"
+            },
+            {
+              "key": "L",
+              "text": "Lament"
+            }
+          ],
+          "correctKey": "A",
+          "imageUrl": null,
+          "explanation": "Despondent means in low spirits from a loss of hope or courage, matching 'convinced that nothing would succeed.' The nearest distractor, Bereaved (I), denotes the loss of a loved one through death, not despair arising from repeated failure."
+        },
+        {
+          "number": 4,
+          "group": "w7-sA-wordbank",
+          "stem": "In ballad after ballad the old sailors still ______ the loss of the great ship, recalling with grief the night she went down with all hands.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Despondent"
+            },
+            {
+              "key": "B",
+              "text": "Reprisal"
+            },
+            {
+              "key": "C",
+              "text": "Sanguine"
+            },
+            {
+              "key": "D",
+              "text": "Belligerent"
+            },
+            {
+              "key": "E",
+              "text": "Anguish"
+            },
+            {
+              "key": "F",
+              "text": "Auspicious"
+            },
+            {
+              "key": "G",
+              "text": "Rancour"
+            },
+            {
+              "key": "H",
+              "text": "Trepidation"
+            },
+            {
+              "key": "I",
+              "text": "Bereaved"
+            },
+            {
+              "key": "J",
+              "text": "Ebullient"
+            },
+            {
+              "key": "K",
+              "text": "Animosity"
+            },
+            {
+              "key": "L",
+              "text": "Lament"
+            }
+          ],
+          "correctKey": "L",
+          "imageUrl": null,
+          "explanation": "Lament means to mourn or express grief for something, matching 'recalling with grief the loss.' The nearest distractor, Anguish (E), names the feeling of suffering itself as a noun, not the act of mourning aloud."
+        },
+        {
+          "number": 5,
+          "group": "w7-sA-wordbank",
+          "stem": "She approached the examiner's door with visible ______, her hands trembling at the mere thought of the ordeal that awaited her inside.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Despondent"
+            },
+            {
+              "key": "B",
+              "text": "Reprisal"
+            },
+            {
+              "key": "C",
+              "text": "Sanguine"
+            },
+            {
+              "key": "D",
+              "text": "Belligerent"
+            },
+            {
+              "key": "E",
+              "text": "Anguish"
+            },
+            {
+              "key": "F",
+              "text": "Auspicious"
+            },
+            {
+              "key": "G",
+              "text": "Rancour"
+            },
+            {
+              "key": "H",
+              "text": "Trepidation"
+            },
+            {
+              "key": "I",
+              "text": "Bereaved"
+            },
+            {
+              "key": "J",
+              "text": "Ebullient"
+            },
+            {
+              "key": "K",
+              "text": "Animosity"
+            },
+            {
+              "key": "L",
+              "text": "Lament"
+            }
+          ],
+          "correctKey": "H",
+          "imageUrl": null,
+          "explanation": "Trepidation is anxious fear about something about to happen, matching 'the ordeal that awaited her inside.' The nearest distractor, Anguish (E), denotes present, acute suffering rather than dread of a coming event."
+        },
+        {
+          "number": 6,
+          "group": "w7-sA-wordbank",
+          "stem": "The host was so ______ all evening, bubbling with laughter and darting from guest to guest, that his high spirits swept the whole room along.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Despondent"
+            },
+            {
+              "key": "B",
+              "text": "Reprisal"
+            },
+            {
+              "key": "C",
+              "text": "Sanguine"
+            },
+            {
+              "key": "D",
+              "text": "Belligerent"
+            },
+            {
+              "key": "E",
+              "text": "Anguish"
+            },
+            {
+              "key": "F",
+              "text": "Auspicious"
+            },
+            {
+              "key": "G",
+              "text": "Rancour"
+            },
+            {
+              "key": "H",
+              "text": "Trepidation"
+            },
+            {
+              "key": "I",
+              "text": "Bereaved"
+            },
+            {
+              "key": "J",
+              "text": "Ebullient"
+            },
+            {
+              "key": "K",
+              "text": "Animosity"
+            },
+            {
+              "key": "L",
+              "text": "Lament"
+            }
+          ],
+          "correctKey": "J",
+          "imageUrl": null,
+          "explanation": "Ebullient means overflowing with cheerful energy, matching 'bubbling with laughter... high spirits.' The nearest distractor, Sanguine (C), means optimistic and hopeful about outcomes, not visibly bubbling with energy."
+        },
+        {
+          "number": 7,
+          "group": "w7-sA-wordbank",
+          "stem": "The clear skies and cheering crowds made for an ______ beginning to the young queen's reign, a sign, many said, of golden years to come.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Despondent"
+            },
+            {
+              "key": "B",
+              "text": "Reprisal"
+            },
+            {
+              "key": "C",
+              "text": "Sanguine"
+            },
+            {
+              "key": "D",
+              "text": "Belligerent"
+            },
+            {
+              "key": "E",
+              "text": "Anguish"
+            },
+            {
+              "key": "F",
+              "text": "Auspicious"
+            },
+            {
+              "key": "G",
+              "text": "Rancour"
+            },
+            {
+              "key": "H",
+              "text": "Trepidation"
+            },
+            {
+              "key": "I",
+              "text": "Bereaved"
+            },
+            {
+              "key": "J",
+              "text": "Ebullient"
+            },
+            {
+              "key": "K",
+              "text": "Animosity"
+            },
+            {
+              "key": "L",
+              "text": "Lament"
+            }
+          ],
+          "correctKey": "F",
+          "imageUrl": null,
+          "explanation": "Auspicious means giving promise of success and attended by good omens, matching 'a sign of golden years to come.' The nearest distractor, Sanguine (C), means personally optimistic and hopeful, describing a person's outlook rather than the external circumstances and good omens the sentence describes."
+        },
+        {
+          "number": 8,
+          "group": "w7-sA-wordbank",
+          "stem": "Years of border raids had bred such deep ______ between the two clans that neither could so much as name the other without open contempt.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Despondent"
+            },
+            {
+              "key": "B",
+              "text": "Reprisal"
+            },
+            {
+              "key": "C",
+              "text": "Sanguine"
+            },
+            {
+              "key": "D",
+              "text": "Belligerent"
+            },
+            {
+              "key": "E",
+              "text": "Anguish"
+            },
+            {
+              "key": "F",
+              "text": "Auspicious"
+            },
+            {
+              "key": "G",
+              "text": "Rancour"
+            },
+            {
+              "key": "H",
+              "text": "Trepidation"
+            },
+            {
+              "key": "I",
+              "text": "Bereaved"
+            },
+            {
+              "key": "J",
+              "text": "Ebullient"
+            },
+            {
+              "key": "K",
+              "text": "Animosity"
+            },
+            {
+              "key": "L",
+              "text": "Lament"
+            }
+          ],
+          "correctKey": "K",
+          "imageUrl": null,
+          "explanation": "Animosity is strong, open hostility or enmity, matching mutual 'open contempt.' The nearest distractor, Rancour (G), is long-nursed bitter resentment, a brooding inward bitterness rather than the active mutual hostility described."
+        },
+        {
+          "number": 9,
+          "group": "w7-sA-wordbank",
+          "stem": "Drunk and spoiling for a fight, he turned increasingly ______, shoving strangers and daring anyone in the crowded bar to challenge him.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Despondent"
+            },
+            {
+              "key": "B",
+              "text": "Reprisal"
+            },
+            {
+              "key": "C",
+              "text": "Sanguine"
+            },
+            {
+              "key": "D",
+              "text": "Belligerent"
+            },
+            {
+              "key": "E",
+              "text": "Anguish"
+            },
+            {
+              "key": "F",
+              "text": "Auspicious"
+            },
+            {
+              "key": "G",
+              "text": "Rancour"
+            },
+            {
+              "key": "H",
+              "text": "Trepidation"
+            },
+            {
+              "key": "I",
+              "text": "Bereaved"
+            },
+            {
+              "key": "J",
+              "text": "Ebullient"
+            },
+            {
+              "key": "K",
+              "text": "Animosity"
+            },
+            {
+              "key": "L",
+              "text": "Lament"
+            }
+          ],
+          "correctKey": "D",
+          "imageUrl": null,
+          "explanation": "Belligerent means aggressively hostile and eager to fight, matching 'spoiling for a fight... daring anyone.' The nearest distractor, Animosity (K), is a noun naming a feeling of hostility, not the aggressive fighting manner the slot requires."
+        },
+        {
+          "number": 10,
+          "group": "w7-sA-wordbank",
+          "stem": "The dawn raid was launched purely as a ______, an eye-for-an-eye answer to the ambush that had killed six of their own the week before.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Despondent"
+            },
+            {
+              "key": "B",
+              "text": "Reprisal"
+            },
+            {
+              "key": "C",
+              "text": "Sanguine"
+            },
+            {
+              "key": "D",
+              "text": "Belligerent"
+            },
+            {
+              "key": "E",
+              "text": "Anguish"
+            },
+            {
+              "key": "F",
+              "text": "Auspicious"
+            },
+            {
+              "key": "G",
+              "text": "Rancour"
+            },
+            {
+              "key": "H",
+              "text": "Trepidation"
+            },
+            {
+              "key": "I",
+              "text": "Bereaved"
+            },
+            {
+              "key": "J",
+              "text": "Ebullient"
+            },
+            {
+              "key": "K",
+              "text": "Animosity"
+            },
+            {
+              "key": "L",
+              "text": "Lament"
+            }
+          ],
+          "correctKey": "B",
+          "imageUrl": null,
+          "explanation": "Reprisal is an act of retaliation, matching 'an eye-for-an-eye answer to the ambush.' The nearest distractor, Rancour (G), is bitter resentment, a feeling, not the concrete retaliatory act described."
+        }
+      ]
+    },
+    {
+      "order": 2,
+      "title": "SECTION B",
+      "marksPerCorrect": 1,
+      "penaltyPerWrong": 0,
+      "thresholdPercent": null,
+      "groups": [
+        {
+          "ref": "w7-sB-wordbank",
+          "kind": "word_bank",
+          "title": "SECTION B",
+          "content": "Use words from the box to fill the blanks. There are more words than necessary. No marks would be deducted for wrong answers.",
+          "sharedOptions": [
+            {
+              "key": "A",
+              "text": "Soporific"
+            },
+            {
+              "key": "B",
+              "text": "Nostalgia"
+            },
+            {
+              "key": "C",
+              "text": "Maudlin"
+            },
+            {
+              "key": "D",
+              "text": "Desultory"
+            },
+            {
+              "key": "E",
+              "text": "Complacent"
+            },
+            {
+              "key": "F",
+              "text": "Poignant"
+            },
+            {
+              "key": "G",
+              "text": "Lethargic"
+            },
+            {
+              "key": "H",
+              "text": "Apathy"
+            },
+            {
+              "key": "I",
+              "text": "Torpor"
+            },
+            {
+              "key": "J",
+              "text": "Enervate"
+            },
+            {
+              "key": "K",
+              "text": "Dormant"
+            },
+            {
+              "key": "L",
+              "text": "Malaise"
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "number": 1,
+          "group": "w7-sB-wordbank",
+          "stem": "Turnout collapsed not out of anger but out of sheer ______, a widespread indifference that left half the town unwilling even to discuss the election.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Soporific"
+            },
+            {
+              "key": "B",
+              "text": "Nostalgia"
+            },
+            {
+              "key": "C",
+              "text": "Maudlin"
+            },
+            {
+              "key": "D",
+              "text": "Desultory"
+            },
+            {
+              "key": "E",
+              "text": "Complacent"
+            },
+            {
+              "key": "F",
+              "text": "Poignant"
+            },
+            {
+              "key": "G",
+              "text": "Lethargic"
+            },
+            {
+              "key": "H",
+              "text": "Apathy"
+            },
+            {
+              "key": "I",
+              "text": "Torpor"
+            },
+            {
+              "key": "J",
+              "text": "Enervate"
+            },
+            {
+              "key": "K",
+              "text": "Dormant"
+            },
+            {
+              "key": "L",
+              "text": "Malaise"
+            }
+          ],
+          "correctKey": "H",
+          "imageUrl": null,
+          "explanation": "Apathy is a lack of interest, enthusiasm, or concern, matching 'a widespread indifference.' The nearest distractor, Malaise (L), is a general feeling of unease or discontent, not the absence of interest the sentence names."
+        },
+        {
+          "number": 2,
+          "group": "w7-sB-wordbank",
+          "stem": "Their early success made the directors dangerously ______, so pleased with their lead that they never noticed the rivals quietly overtaking them.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Soporific"
+            },
+            {
+              "key": "B",
+              "text": "Nostalgia"
+            },
+            {
+              "key": "C",
+              "text": "Maudlin"
+            },
+            {
+              "key": "D",
+              "text": "Desultory"
+            },
+            {
+              "key": "E",
+              "text": "Complacent"
+            },
+            {
+              "key": "F",
+              "text": "Poignant"
+            },
+            {
+              "key": "G",
+              "text": "Lethargic"
+            },
+            {
+              "key": "H",
+              "text": "Apathy"
+            },
+            {
+              "key": "I",
+              "text": "Torpor"
+            },
+            {
+              "key": "J",
+              "text": "Enervate"
+            },
+            {
+              "key": "K",
+              "text": "Dormant"
+            },
+            {
+              "key": "L",
+              "text": "Malaise"
+            }
+          ],
+          "correctKey": "E",
+          "imageUrl": null,
+          "explanation": "Complacent means smugly self-satisfied and uncritical of one's position, matching 'so pleased with their lead... never noticed.' The nearest distractor, Apathy (H), is a noun meaning indifference and cannot fill this adjective slot, nor does it convey smug satisfaction."
+        },
+        {
+          "number": 3,
+          "group": "w7-sB-wordbank",
+          "stem": "The relentless tropical heat began to ______ the marching soldiers, sapping their strength until they could barely lift their own packs.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Soporific"
+            },
+            {
+              "key": "B",
+              "text": "Nostalgia"
+            },
+            {
+              "key": "C",
+              "text": "Maudlin"
+            },
+            {
+              "key": "D",
+              "text": "Desultory"
+            },
+            {
+              "key": "E",
+              "text": "Complacent"
+            },
+            {
+              "key": "F",
+              "text": "Poignant"
+            },
+            {
+              "key": "G",
+              "text": "Lethargic"
+            },
+            {
+              "key": "H",
+              "text": "Apathy"
+            },
+            {
+              "key": "I",
+              "text": "Torpor"
+            },
+            {
+              "key": "J",
+              "text": "Enervate"
+            },
+            {
+              "key": "K",
+              "text": "Dormant"
+            },
+            {
+              "key": "L",
+              "text": "Malaise"
+            }
+          ],
+          "correctKey": "J",
+          "imageUrl": null,
+          "explanation": "Enervate means to drain of energy or vitality, and is the verb needed after 'began to,' matching 'sapping their strength.' The nearest distractor, Lethargic (G), is an adjective describing the drained, sluggish state itself, not the verb that causes it."
+        },
+        {
+          "number": 4,
+          "group": "w7-sB-wordbank",
+          "stem": "Through the sweltering afternoon a heavy ______ settled over the village, and not a soul stirred until the cool of evening finally returned.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Soporific"
+            },
+            {
+              "key": "B",
+              "text": "Nostalgia"
+            },
+            {
+              "key": "C",
+              "text": "Maudlin"
+            },
+            {
+              "key": "D",
+              "text": "Desultory"
+            },
+            {
+              "key": "E",
+              "text": "Complacent"
+            },
+            {
+              "key": "F",
+              "text": "Poignant"
+            },
+            {
+              "key": "G",
+              "text": "Lethargic"
+            },
+            {
+              "key": "H",
+              "text": "Apathy"
+            },
+            {
+              "key": "I",
+              "text": "Torpor"
+            },
+            {
+              "key": "J",
+              "text": "Enervate"
+            },
+            {
+              "key": "K",
+              "text": "Dormant"
+            },
+            {
+              "key": "L",
+              "text": "Malaise"
+            }
+          ],
+          "correctKey": "I",
+          "imageUrl": null,
+          "explanation": "Torpor is a state of physical or mental inactivity or sluggishness, a noun matching 'not a soul stirred.' The nearest distractor, Lethargic (G), is an adjective and so cannot fill the noun slot 'a heavy ___.'"
+        },
+        {
+          "number": 5,
+          "group": "w7-sB-wordbank",
+          "stem": "The virus can lie ______ in the body for decades, betraying no symptom whatever before it suddenly reawakens and strikes.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Soporific"
+            },
+            {
+              "key": "B",
+              "text": "Nostalgia"
+            },
+            {
+              "key": "C",
+              "text": "Maudlin"
+            },
+            {
+              "key": "D",
+              "text": "Desultory"
+            },
+            {
+              "key": "E",
+              "text": "Complacent"
+            },
+            {
+              "key": "F",
+              "text": "Poignant"
+            },
+            {
+              "key": "G",
+              "text": "Lethargic"
+            },
+            {
+              "key": "H",
+              "text": "Apathy"
+            },
+            {
+              "key": "I",
+              "text": "Torpor"
+            },
+            {
+              "key": "J",
+              "text": "Enervate"
+            },
+            {
+              "key": "K",
+              "text": "Dormant"
+            },
+            {
+              "key": "L",
+              "text": "Malaise"
+            }
+          ],
+          "correctKey": "K",
+          "imageUrl": null,
+          "explanation": "Dormant means temporarily inactive but capable of becoming active again, matching 'for decades... before it reawakens.' The nearest distractor, Torpor (I), is a noun that cannot fill the adjective slot 'lie ___,' and denotes present sluggishness rather than latent, revivable inactivity."
+        },
+        {
+          "number": 6,
+          "group": "w7-sB-wordbank",
+          "stem": "The lecturer's flat, droning monotone was so ______ that half the hall had nodded off before he reached the second slide.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Soporific"
+            },
+            {
+              "key": "B",
+              "text": "Nostalgia"
+            },
+            {
+              "key": "C",
+              "text": "Maudlin"
+            },
+            {
+              "key": "D",
+              "text": "Desultory"
+            },
+            {
+              "key": "E",
+              "text": "Complacent"
+            },
+            {
+              "key": "F",
+              "text": "Poignant"
+            },
+            {
+              "key": "G",
+              "text": "Lethargic"
+            },
+            {
+              "key": "H",
+              "text": "Apathy"
+            },
+            {
+              "key": "I",
+              "text": "Torpor"
+            },
+            {
+              "key": "J",
+              "text": "Enervate"
+            },
+            {
+              "key": "K",
+              "text": "Dormant"
+            },
+            {
+              "key": "L",
+              "text": "Malaise"
+            }
+          ],
+          "correctKey": "A",
+          "imageUrl": null,
+          "explanation": "Soporific means tending to induce sleep, matching 'half the hall had nodded off.' The nearest distractor, Lethargic (G), describes a person who feels drowsy, not something that causes drowsiness in others."
+        },
+        {
+          "number": 7,
+          "group": "w7-sB-wordbank",
+          "stem": "He made only a ______ attempt at his studies, drifting from one book to the next without any plan and finishing none of them.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Soporific"
+            },
+            {
+              "key": "B",
+              "text": "Nostalgia"
+            },
+            {
+              "key": "C",
+              "text": "Maudlin"
+            },
+            {
+              "key": "D",
+              "text": "Desultory"
+            },
+            {
+              "key": "E",
+              "text": "Complacent"
+            },
+            {
+              "key": "F",
+              "text": "Poignant"
+            },
+            {
+              "key": "G",
+              "text": "Lethargic"
+            },
+            {
+              "key": "H",
+              "text": "Apathy"
+            },
+            {
+              "key": "I",
+              "text": "Torpor"
+            },
+            {
+              "key": "J",
+              "text": "Enervate"
+            },
+            {
+              "key": "K",
+              "text": "Dormant"
+            },
+            {
+              "key": "L",
+              "text": "Malaise"
+            }
+          ],
+          "correctKey": "D",
+          "imageUrl": null,
+          "explanation": "Desultory means lacking a plan or purpose and moving randomly from one thing to another, matching 'drifting... without any plan.' The nearest distractor, Apathy (H), is a noun meaning indifference, whereas the slot needs an adjective describing the aimless, unmethodical manner of the effort."
+        },
+        {
+          "number": 8,
+          "group": "w7-sB-wordbank",
+          "stem": "Long before the accounts confirmed it, a vague ______ had spread through the firm, an uneasy sense that something was quietly going wrong.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Soporific"
+            },
+            {
+              "key": "B",
+              "text": "Nostalgia"
+            },
+            {
+              "key": "C",
+              "text": "Maudlin"
+            },
+            {
+              "key": "D",
+              "text": "Desultory"
+            },
+            {
+              "key": "E",
+              "text": "Complacent"
+            },
+            {
+              "key": "F",
+              "text": "Poignant"
+            },
+            {
+              "key": "G",
+              "text": "Lethargic"
+            },
+            {
+              "key": "H",
+              "text": "Apathy"
+            },
+            {
+              "key": "I",
+              "text": "Torpor"
+            },
+            {
+              "key": "J",
+              "text": "Enervate"
+            },
+            {
+              "key": "K",
+              "text": "Dormant"
+            },
+            {
+              "key": "L",
+              "text": "Malaise"
+            }
+          ],
+          "correctKey": "L",
+          "imageUrl": null,
+          "explanation": "Malaise is a general feeling of unease or discontent that is hard to pinpoint, matching 'an uneasy sense that something was going wrong.' The nearest distractor, Torpor (I), is physical or mental sluggishness, not a pervasive feeling of unease."
+        },
+        {
+          "number": 9,
+          "group": "w7-sB-wordbank",
+          "stem": "The smell of woodsmoke filled her with sudden ______, carrying her back to the childhood autumns she had spent in her grandmother's garden.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Soporific"
+            },
+            {
+              "key": "B",
+              "text": "Nostalgia"
+            },
+            {
+              "key": "C",
+              "text": "Maudlin"
+            },
+            {
+              "key": "D",
+              "text": "Desultory"
+            },
+            {
+              "key": "E",
+              "text": "Complacent"
+            },
+            {
+              "key": "F",
+              "text": "Poignant"
+            },
+            {
+              "key": "G",
+              "text": "Lethargic"
+            },
+            {
+              "key": "H",
+              "text": "Apathy"
+            },
+            {
+              "key": "I",
+              "text": "Torpor"
+            },
+            {
+              "key": "J",
+              "text": "Enervate"
+            },
+            {
+              "key": "K",
+              "text": "Dormant"
+            },
+            {
+              "key": "L",
+              "text": "Malaise"
+            }
+          ],
+          "correctKey": "B",
+          "imageUrl": null,
+          "explanation": "Nostalgia is a sentimental longing for the past, a noun matching 'carrying her back to childhood.' The nearest distractor, Maudlin (C), is an adjective meaning tearfully over-sentimental; it cannot fill the noun slot and implies mawkish excess, not fond remembrance."
+        },
+        {
+          "number": 10,
+          "group": "w7-sB-wordbank",
+          "stem": "The film's final scene was almost unbearably ______, a quiet, wordless farewell that left the entire cinema in tears.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Soporific"
+            },
+            {
+              "key": "B",
+              "text": "Nostalgia"
+            },
+            {
+              "key": "C",
+              "text": "Maudlin"
+            },
+            {
+              "key": "D",
+              "text": "Desultory"
+            },
+            {
+              "key": "E",
+              "text": "Complacent"
+            },
+            {
+              "key": "F",
+              "text": "Poignant"
+            },
+            {
+              "key": "G",
+              "text": "Lethargic"
+            },
+            {
+              "key": "H",
+              "text": "Apathy"
+            },
+            {
+              "key": "I",
+              "text": "Torpor"
+            },
+            {
+              "key": "J",
+              "text": "Enervate"
+            },
+            {
+              "key": "K",
+              "text": "Dormant"
+            },
+            {
+              "key": "L",
+              "text": "Malaise"
+            }
+          ],
+          "correctKey": "F",
+          "imageUrl": null,
+          "explanation": "Poignant means keenly moving and evoking a sharp sense of sadness, matching a farewell that 'left the entire cinema in tears.' The nearest distractor, Maudlin (C), means weakly and tearfully sentimental in a way that feels cheap, whereas the scene's restrained, genuine sadness makes it poignant."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1302 @@
+{
+  "slug": "week-13-illness-limits",
+  "title": "Week 13 — Illness, Action & Exceptional Figures + Limits, Measurement & Conflict",
+  "bucket": "iba",
+  "description": "Fill-in-the-blank vocabulary on the language of illness, decisive action and exceptional figures, and on boundaries, measurement and conflict.",
+  "sections": [
+    {
+      "order": 1,
+      "title": "SECTION A",
+      "marksPerCorrect": 1,
+      "penaltyPerWrong": 0,
+      "thresholdPercent": null,
+      "groups": [
+        {
+          "ref": "w13-sA-wordbank",
+          "kind": "word_bank",
+          "title": "SECTION A",
+          "content": "Use words from the box to fill the blanks. There are more words than necessary. No marks would be deducted for wrong answers.",
+          "sharedOptions": [
+            {
+              "key": "A",
+              "text": "Recant"
+            },
+            {
+              "key": "B",
+              "text": "Chronic"
+            },
+            {
+              "key": "C",
+              "text": "Prodigy"
+            },
+            {
+              "key": "D",
+              "text": "Malinger"
+            },
+            {
+              "key": "E",
+              "text": "Epitome"
+            },
+            {
+              "key": "F",
+              "text": "Panacea"
+            },
+            {
+              "key": "G",
+              "text": "Malignant"
+            },
+            {
+              "key": "H",
+              "text": "Circumvent"
+            },
+            {
+              "key": "I",
+              "text": "Moribund"
+            },
+            {
+              "key": "J",
+              "text": "Expedite"
+            },
+            {
+              "key": "K",
+              "text": "Archetype"
+            },
+            {
+              "key": "L",
+              "text": "Palliate"
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "number": 1,
+          "group": "w13-sA-wordbank",
+          "stem": "Her ______ back pain had come and gone for over thirty years, flaring in winter and easing in summer but never once vanishing for good.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Recant"
+            },
+            {
+              "key": "B",
+              "text": "Chronic"
+            },
+            {
+              "key": "C",
+              "text": "Prodigy"
+            },
+            {
+              "key": "D",
+              "text": "Malinger"
+            },
+            {
+              "key": "E",
+              "text": "Epitome"
+            },
+            {
+              "key": "F",
+              "text": "Panacea"
+            },
+            {
+              "key": "G",
+              "text": "Malignant"
+            },
+            {
+              "key": "H",
+              "text": "Circumvent"
+            },
+            {
+              "key": "I",
+              "text": "Moribund"
+            },
+            {
+              "key": "J",
+              "text": "Expedite"
+            },
+            {
+              "key": "K",
+              "text": "Archetype"
+            },
+            {
+              "key": "L",
+              "text": "Palliate"
+            }
+          ],
+          "correctKey": "B",
+          "imageUrl": null,
+          "explanation": "Chronic describes an ailment that persists or recurs over a long period; 'for over thirty years... never vanishing' fixes it. The nearest distractor, Malignant (G), describes a condition that is dangerous and aggressively spreading — but the sentence stresses decades of mild, cyclical recurrence, not danger or invasive growth."
+        },
+        {
+          "number": 2,
+          "group": "w13-sA-wordbank",
+          "stem": "Certain the private was only feigning a fever to escape the trenches, the medical officer reported him for ______ instead of signing his leave.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Recant"
+            },
+            {
+              "key": "B",
+              "text": "Chronic"
+            },
+            {
+              "key": "C",
+              "text": "Prodigy"
+            },
+            {
+              "key": "D",
+              "text": "Malinger"
+            },
+            {
+              "key": "E",
+              "text": "Epitome"
+            },
+            {
+              "key": "F",
+              "text": "Panacea"
+            },
+            {
+              "key": "G",
+              "text": "Malignant"
+            },
+            {
+              "key": "H",
+              "text": "Circumvent"
+            },
+            {
+              "key": "I",
+              "text": "Moribund"
+            },
+            {
+              "key": "J",
+              "text": "Expedite"
+            },
+            {
+              "key": "K",
+              "text": "Archetype"
+            },
+            {
+              "key": "L",
+              "text": "Palliate"
+            }
+          ],
+          "correctKey": "D",
+          "imageUrl": null,
+          "explanation": "To malinger is to pretend illness in order to evade duty; 'feigning a fever to escape' is the decisive cue. The nearest distractor, Moribund (I), describes someone genuinely at the point of death — the very opposite of a soldier who is only pretending to be ill."
+        },
+        {
+          "number": 3,
+          "group": "w13-sA-wordbank",
+          "stem": "The once-mighty shipyard was now ______, its cranes rusting and its order books empty for the better part of a decade.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Recant"
+            },
+            {
+              "key": "B",
+              "text": "Chronic"
+            },
+            {
+              "key": "C",
+              "text": "Prodigy"
+            },
+            {
+              "key": "D",
+              "text": "Malinger"
+            },
+            {
+              "key": "E",
+              "text": "Epitome"
+            },
+            {
+              "key": "F",
+              "text": "Panacea"
+            },
+            {
+              "key": "G",
+              "text": "Malignant"
+            },
+            {
+              "key": "H",
+              "text": "Circumvent"
+            },
+            {
+              "key": "I",
+              "text": "Moribund"
+            },
+            {
+              "key": "J",
+              "text": "Expedite"
+            },
+            {
+              "key": "K",
+              "text": "Archetype"
+            },
+            {
+              "key": "L",
+              "text": "Palliate"
+            }
+          ],
+          "correctKey": "I",
+          "imageUrl": null,
+          "explanation": "Moribund means at the point of death or, figuratively, collapsing into obsolescence; 'rusting... empty for a decade' signals terminal decline. The nearest distractor, Malignant (G), denotes a disease that spreads dangerously — an image of aggressive growth, not the stagnant dying-off the sentence paints."
+        },
+        {
+          "number": 4,
+          "group": "w13-sA-wordbank",
+          "stem": "The biopsy showed the tumour to be ______, multiplying so aggressively that the surgeons booked an operation within the week.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Recant"
+            },
+            {
+              "key": "B",
+              "text": "Chronic"
+            },
+            {
+              "key": "C",
+              "text": "Prodigy"
+            },
+            {
+              "key": "D",
+              "text": "Malinger"
+            },
+            {
+              "key": "E",
+              "text": "Epitome"
+            },
+            {
+              "key": "F",
+              "text": "Panacea"
+            },
+            {
+              "key": "G",
+              "text": "Malignant"
+            },
+            {
+              "key": "H",
+              "text": "Circumvent"
+            },
+            {
+              "key": "I",
+              "text": "Moribund"
+            },
+            {
+              "key": "J",
+              "text": "Expedite"
+            },
+            {
+              "key": "K",
+              "text": "Archetype"
+            },
+            {
+              "key": "L",
+              "text": "Palliate"
+            }
+          ],
+          "correctKey": "G",
+          "imageUrl": null,
+          "explanation": "Malignant describes a growth that is dangerous and prone to spreading; 'multiplying so aggressively' is the anchor. The nearest distractor, Chronic (B), refers only to how long a condition lasts, not to how dangerous or invasive it is."
+        },
+        {
+          "number": 5,
+          "group": "w13-sA-wordbank",
+          "stem": "Powerless to cure the illness itself, the physicians could only ______ his agony with opiates that dulled the sharpest of the pain.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Recant"
+            },
+            {
+              "key": "B",
+              "text": "Chronic"
+            },
+            {
+              "key": "C",
+              "text": "Prodigy"
+            },
+            {
+              "key": "D",
+              "text": "Malinger"
+            },
+            {
+              "key": "E",
+              "text": "Epitome"
+            },
+            {
+              "key": "F",
+              "text": "Panacea"
+            },
+            {
+              "key": "G",
+              "text": "Malignant"
+            },
+            {
+              "key": "H",
+              "text": "Circumvent"
+            },
+            {
+              "key": "I",
+              "text": "Moribund"
+            },
+            {
+              "key": "J",
+              "text": "Expedite"
+            },
+            {
+              "key": "K",
+              "text": "Archetype"
+            },
+            {
+              "key": "L",
+              "text": "Palliate"
+            }
+          ],
+          "correctKey": "L",
+          "imageUrl": null,
+          "explanation": "To palliate is to relieve symptoms without removing the underlying cause; 'powerless to cure... only... dulled the pain' fits precisely. The nearest distractor, Panacea (F), is a noun meaning a supposed cure-all — it cannot fill a verb slot and implies a total remedy, which the sentence explicitly denies."
+        },
+        {
+          "number": 6,
+          "group": "w13-sA-wordbank",
+          "stem": "By routing the shipments through a neutral port, the traders managed to ______ the embargo without ever openly breaking it.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Recant"
+            },
+            {
+              "key": "B",
+              "text": "Chronic"
+            },
+            {
+              "key": "C",
+              "text": "Prodigy"
+            },
+            {
+              "key": "D",
+              "text": "Malinger"
+            },
+            {
+              "key": "E",
+              "text": "Epitome"
+            },
+            {
+              "key": "F",
+              "text": "Panacea"
+            },
+            {
+              "key": "G",
+              "text": "Malignant"
+            },
+            {
+              "key": "H",
+              "text": "Circumvent"
+            },
+            {
+              "key": "I",
+              "text": "Moribund"
+            },
+            {
+              "key": "J",
+              "text": "Expedite"
+            },
+            {
+              "key": "K",
+              "text": "Archetype"
+            },
+            {
+              "key": "L",
+              "text": "Palliate"
+            }
+          ],
+          "correctKey": "H",
+          "imageUrl": null,
+          "explanation": "To circumvent is to find a way around an obstacle or rule; 'without ever openly breaking it' shows evasion rather than defiance. The nearest distractor, Expedite (J), means to speed a process along — the traders were not hastening the embargo but slipping past it."
+        },
+        {
+          "number": 7,
+          "group": "w13-sA-wordbank",
+          "stem": "To ______ the relief effort, the governor waived the usual paperwork so that trucks could roll toward the flood zone that same afternoon.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Recant"
+            },
+            {
+              "key": "B",
+              "text": "Chronic"
+            },
+            {
+              "key": "C",
+              "text": "Prodigy"
+            },
+            {
+              "key": "D",
+              "text": "Malinger"
+            },
+            {
+              "key": "E",
+              "text": "Epitome"
+            },
+            {
+              "key": "F",
+              "text": "Panacea"
+            },
+            {
+              "key": "G",
+              "text": "Malignant"
+            },
+            {
+              "key": "H",
+              "text": "Circumvent"
+            },
+            {
+              "key": "I",
+              "text": "Moribund"
+            },
+            {
+              "key": "J",
+              "text": "Expedite"
+            },
+            {
+              "key": "K",
+              "text": "Archetype"
+            },
+            {
+              "key": "L",
+              "text": "Palliate"
+            }
+          ],
+          "correctKey": "J",
+          "imageUrl": null,
+          "explanation": "To expedite is to speed up a process; 'waived the paperwork so trucks could roll the same afternoon' signals acceleration. The nearest distractor, Circumvent (H), means to bypass an obstacle — the governor was hastening the effort, not evading a rule."
+        },
+        {
+          "number": 8,
+          "group": "w13-sA-wordbank",
+          "stem": "A violin ______, she was performing full concertos before packed halls at an age when other children were still struggling through their scales.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Recant"
+            },
+            {
+              "key": "B",
+              "text": "Chronic"
+            },
+            {
+              "key": "C",
+              "text": "Prodigy"
+            },
+            {
+              "key": "D",
+              "text": "Malinger"
+            },
+            {
+              "key": "E",
+              "text": "Epitome"
+            },
+            {
+              "key": "F",
+              "text": "Panacea"
+            },
+            {
+              "key": "G",
+              "text": "Malignant"
+            },
+            {
+              "key": "H",
+              "text": "Circumvent"
+            },
+            {
+              "key": "I",
+              "text": "Moribund"
+            },
+            {
+              "key": "J",
+              "text": "Expedite"
+            },
+            {
+              "key": "K",
+              "text": "Archetype"
+            },
+            {
+              "key": "L",
+              "text": "Palliate"
+            }
+          ],
+          "correctKey": "C",
+          "imageUrl": null,
+          "explanation": "A prodigy is a young person with extraordinary talent; 'performing concertos... when other children were struggling through scales' pins the youth and genius. The nearest distractor, Epitome (E), means a perfect embodiment of a quality — it would need 'the epitome of' something and carries no sense of precocious youth."
+        },
+        {
+          "number": 9,
+          "group": "w13-sA-wordbank",
+          "stem": "With his unfailing courtesy and quiet restraint, the old diplomat was the very ______ of the gentleman his age so admired.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Recant"
+            },
+            {
+              "key": "B",
+              "text": "Chronic"
+            },
+            {
+              "key": "C",
+              "text": "Prodigy"
+            },
+            {
+              "key": "D",
+              "text": "Malinger"
+            },
+            {
+              "key": "E",
+              "text": "Epitome"
+            },
+            {
+              "key": "F",
+              "text": "Panacea"
+            },
+            {
+              "key": "G",
+              "text": "Malignant"
+            },
+            {
+              "key": "H",
+              "text": "Circumvent"
+            },
+            {
+              "key": "I",
+              "text": "Moribund"
+            },
+            {
+              "key": "J",
+              "text": "Expedite"
+            },
+            {
+              "key": "K",
+              "text": "Archetype"
+            },
+            {
+              "key": "L",
+              "text": "Palliate"
+            }
+          ],
+          "correctKey": "E",
+          "imageUrl": null,
+          "explanation": "The epitome of something is its perfect embodiment; 'the very ___ of the gentleman' is the giveaway construction. The nearest distractor, Archetype (K), means an original model or prototype from which copies derive — the diplomat is a flawless example of a type, not the ancestral pattern behind it."
+        },
+        {
+          "number": 10,
+          "group": "w13-sA-wordbank",
+          "stem": "Threatened with the stake, the astronomer agreed to ______ his claim that the earth moved, though he is said to have muttered the truth under his breath.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Recant"
+            },
+            {
+              "key": "B",
+              "text": "Chronic"
+            },
+            {
+              "key": "C",
+              "text": "Prodigy"
+            },
+            {
+              "key": "D",
+              "text": "Malinger"
+            },
+            {
+              "key": "E",
+              "text": "Epitome"
+            },
+            {
+              "key": "F",
+              "text": "Panacea"
+            },
+            {
+              "key": "G",
+              "text": "Malignant"
+            },
+            {
+              "key": "H",
+              "text": "Circumvent"
+            },
+            {
+              "key": "I",
+              "text": "Moribund"
+            },
+            {
+              "key": "J",
+              "text": "Expedite"
+            },
+            {
+              "key": "K",
+              "text": "Archetype"
+            },
+            {
+              "key": "L",
+              "text": "Palliate"
+            }
+          ],
+          "correctKey": "A",
+          "imageUrl": null,
+          "explanation": "To recant is to withdraw a belief or statement formally, especially under pressure; 'threatened with the stake... his claim' fits. The nearest distractor, Circumvent (H), means to go around an obstacle — it has nothing to do with retracting a stated belief, which is what the astronomer publicly does here."
+        }
+      ]
+    },
+    {
+      "order": 2,
+      "title": "SECTION B",
+      "marksPerCorrect": 1,
+      "penaltyPerWrong": 0,
+      "thresholdPercent": null,
+      "groups": [
+        {
+          "ref": "w13-sB-wordbank",
+          "kind": "word_bank",
+          "title": "SECTION B",
+          "content": "Use words from the box to fill the blanks. There are more words than necessary. No marks would be deducted for wrong answers.",
+          "sharedOptions": [
+            {
+              "key": "A",
+              "text": "Preclude"
+            },
+            {
+              "key": "B",
+              "text": "Circumscribe"
+            },
+            {
+              "key": "C",
+              "text": "Stymie"
+            },
+            {
+              "key": "D",
+              "text": "Delineate"
+            },
+            {
+              "key": "E",
+              "text": "Abortive"
+            },
+            {
+              "key": "F",
+              "text": "Proximity"
+            },
+            {
+              "key": "G",
+              "text": "Discrete"
+            },
+            {
+              "key": "H",
+              "text": "Debacle"
+            },
+            {
+              "key": "I",
+              "text": "Sequester"
+            },
+            {
+              "key": "J",
+              "text": "Minuscule"
+            },
+            {
+              "key": "K",
+              "text": "Contiguous"
+            },
+            {
+              "key": "L",
+              "text": "Infinitesimal"
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "number": 1,
+          "group": "w13-sB-wordbank",
+          "stem": "The new constitution deliberately ______d the president's authority, hemming each executive power within limits that only the assembly could later widen.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Preclude"
+            },
+            {
+              "key": "B",
+              "text": "Circumscribe"
+            },
+            {
+              "key": "C",
+              "text": "Stymie"
+            },
+            {
+              "key": "D",
+              "text": "Delineate"
+            },
+            {
+              "key": "E",
+              "text": "Abortive"
+            },
+            {
+              "key": "F",
+              "text": "Proximity"
+            },
+            {
+              "key": "G",
+              "text": "Discrete"
+            },
+            {
+              "key": "H",
+              "text": "Debacle"
+            },
+            {
+              "key": "I",
+              "text": "Sequester"
+            },
+            {
+              "key": "J",
+              "text": "Minuscule"
+            },
+            {
+              "key": "K",
+              "text": "Contiguous"
+            },
+            {
+              "key": "L",
+              "text": "Infinitesimal"
+            }
+          ],
+          "correctKey": "B",
+          "imageUrl": null,
+          "explanation": "To circumscribe is to draw firm limits around something, restricting its scope; 'hemming each power within limits' fits. The nearest distractor, Preclude (A), means to rule something out entirely — but the constitution confines the president's powers, it does not abolish them."
+        },
+        {
+          "number": 2,
+          "group": "w13-sB-wordbank",
+          "stem": "The two farms were ______, their fields meeting along a single hedgerow that ran unbroken from the river to the ridge.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Preclude"
+            },
+            {
+              "key": "B",
+              "text": "Circumscribe"
+            },
+            {
+              "key": "C",
+              "text": "Stymie"
+            },
+            {
+              "key": "D",
+              "text": "Delineate"
+            },
+            {
+              "key": "E",
+              "text": "Abortive"
+            },
+            {
+              "key": "F",
+              "text": "Proximity"
+            },
+            {
+              "key": "G",
+              "text": "Discrete"
+            },
+            {
+              "key": "H",
+              "text": "Debacle"
+            },
+            {
+              "key": "I",
+              "text": "Sequester"
+            },
+            {
+              "key": "J",
+              "text": "Minuscule"
+            },
+            {
+              "key": "K",
+              "text": "Contiguous"
+            },
+            {
+              "key": "L",
+              "text": "Infinitesimal"
+            }
+          ],
+          "correctKey": "K",
+          "imageUrl": null,
+          "explanation": "Contiguous means sharing a common border or touching; 'fields meeting along a single hedgerow' is decisive. The nearest distractor, Proximity (F), is a noun meaning mere nearness — two farms can be in proximity without their land actually touching, which the shared hedgerow requires."
+        },
+        {
+          "number": 3,
+          "group": "w13-sB-wordbank",
+          "stem": "A sound treaty must ______ each side's obligations in exact language, spelling out precisely who must do what and by when.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Preclude"
+            },
+            {
+              "key": "B",
+              "text": "Circumscribe"
+            },
+            {
+              "key": "C",
+              "text": "Stymie"
+            },
+            {
+              "key": "D",
+              "text": "Delineate"
+            },
+            {
+              "key": "E",
+              "text": "Abortive"
+            },
+            {
+              "key": "F",
+              "text": "Proximity"
+            },
+            {
+              "key": "G",
+              "text": "Discrete"
+            },
+            {
+              "key": "H",
+              "text": "Debacle"
+            },
+            {
+              "key": "I",
+              "text": "Sequester"
+            },
+            {
+              "key": "J",
+              "text": "Minuscule"
+            },
+            {
+              "key": "K",
+              "text": "Contiguous"
+            },
+            {
+              "key": "L",
+              "text": "Infinitesimal"
+            }
+          ],
+          "correctKey": "D",
+          "imageUrl": null,
+          "explanation": "To delineate is to describe or set something out in precise detail; 'spelling out precisely who must do what' fits. The nearest distractor, Circumscribe (B), means to restrict within bounds — the treaty is defining the obligations in full, not narrowing their extent."
+        },
+        {
+          "number": 4,
+          "group": "w13-sB-wordbank",
+          "stem": "The syllabus falls into five ______ units, each so self-contained that a student may study them in any order without confusion.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Preclude"
+            },
+            {
+              "key": "B",
+              "text": "Circumscribe"
+            },
+            {
+              "key": "C",
+              "text": "Stymie"
+            },
+            {
+              "key": "D",
+              "text": "Delineate"
+            },
+            {
+              "key": "E",
+              "text": "Abortive"
+            },
+            {
+              "key": "F",
+              "text": "Proximity"
+            },
+            {
+              "key": "G",
+              "text": "Discrete"
+            },
+            {
+              "key": "H",
+              "text": "Debacle"
+            },
+            {
+              "key": "I",
+              "text": "Sequester"
+            },
+            {
+              "key": "J",
+              "text": "Minuscule"
+            },
+            {
+              "key": "K",
+              "text": "Contiguous"
+            },
+            {
+              "key": "L",
+              "text": "Infinitesimal"
+            }
+          ],
+          "correctKey": "G",
+          "imageUrl": null,
+          "explanation": "Discrete means separate and individually distinct; 'self-contained... any order' fits. The nearest distractor, Contiguous (K), means touching or adjoining — the opposite of the cleanly separated, standalone units described. (The homophone 'discreet', meaning tactful, is unrelated.)"
+        },
+        {
+          "number": 5,
+          "group": "w13-sB-wordbank",
+          "stem": "Throughout the trial the jurors were ______ed in a guarded hotel, cut off from newspapers, broadcasts and even their own families.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Preclude"
+            },
+            {
+              "key": "B",
+              "text": "Circumscribe"
+            },
+            {
+              "key": "C",
+              "text": "Stymie"
+            },
+            {
+              "key": "D",
+              "text": "Delineate"
+            },
+            {
+              "key": "E",
+              "text": "Abortive"
+            },
+            {
+              "key": "F",
+              "text": "Proximity"
+            },
+            {
+              "key": "G",
+              "text": "Discrete"
+            },
+            {
+              "key": "H",
+              "text": "Debacle"
+            },
+            {
+              "key": "I",
+              "text": "Sequester"
+            },
+            {
+              "key": "J",
+              "text": "Minuscule"
+            },
+            {
+              "key": "K",
+              "text": "Contiguous"
+            },
+            {
+              "key": "L",
+              "text": "Infinitesimal"
+            }
+          ],
+          "correctKey": "I",
+          "imageUrl": null,
+          "explanation": "To sequester is to isolate or set apart, especially to shield from outside influence; 'cut off from newspapers... families' fits. The nearest distractor, Circumscribe (B), means to limit the scope of something, but it lacks the sense of physically isolating people from all outside contact."
+        },
+        {
+          "number": 6,
+          "group": "w13-sB-wordbank",
+          "stem": "The gap between the two readings was ______, so vanishingly small that not one instrument in the laboratory could register it at all.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Preclude"
+            },
+            {
+              "key": "B",
+              "text": "Circumscribe"
+            },
+            {
+              "key": "C",
+              "text": "Stymie"
+            },
+            {
+              "key": "D",
+              "text": "Delineate"
+            },
+            {
+              "key": "E",
+              "text": "Abortive"
+            },
+            {
+              "key": "F",
+              "text": "Proximity"
+            },
+            {
+              "key": "G",
+              "text": "Discrete"
+            },
+            {
+              "key": "H",
+              "text": "Debacle"
+            },
+            {
+              "key": "I",
+              "text": "Sequester"
+            },
+            {
+              "key": "J",
+              "text": "Minuscule"
+            },
+            {
+              "key": "K",
+              "text": "Contiguous"
+            },
+            {
+              "key": "L",
+              "text": "Infinitesimal"
+            }
+          ],
+          "correctKey": "L",
+          "imageUrl": null,
+          "explanation": "Infinitesimal means immeasurably or vanishingly small; 'no instrument could register it' pushes beyond merely tiny. The nearest distractor, Minuscule (J), means very small but still perceptible — the sentence insists the quantity is too small even to detect, a stronger claim."
+        },
+        {
+          "number": 7,
+          "group": "w13-sB-wordbank",
+          "stem": "The product launch was an outright ______: the servers crashed, the demo froze on stage, and the share price had tumbled by nightfall.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Preclude"
+            },
+            {
+              "key": "B",
+              "text": "Circumscribe"
+            },
+            {
+              "key": "C",
+              "text": "Stymie"
+            },
+            {
+              "key": "D",
+              "text": "Delineate"
+            },
+            {
+              "key": "E",
+              "text": "Abortive"
+            },
+            {
+              "key": "F",
+              "text": "Proximity"
+            },
+            {
+              "key": "G",
+              "text": "Discrete"
+            },
+            {
+              "key": "H",
+              "text": "Debacle"
+            },
+            {
+              "key": "I",
+              "text": "Sequester"
+            },
+            {
+              "key": "J",
+              "text": "Minuscule"
+            },
+            {
+              "key": "K",
+              "text": "Contiguous"
+            },
+            {
+              "key": "L",
+              "text": "Infinitesimal"
+            }
+          ],
+          "correctKey": "H",
+          "imageUrl": null,
+          "explanation": "A debacle is a sudden, humiliating collapse or fiasco; the cascade of very public failures fits. The nearest distractor, Abortive (E), means failing before completion — but the launch did not fail to happen; it happened and turned into a spectacular disaster."
+        },
+        {
+          "number": 8,
+          "group": "w13-sB-wordbank",
+          "stem": "A single unpaid fine can ______ you from standing for office altogether, barring the candidacy before it has even begun.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Preclude"
+            },
+            {
+              "key": "B",
+              "text": "Circumscribe"
+            },
+            {
+              "key": "C",
+              "text": "Stymie"
+            },
+            {
+              "key": "D",
+              "text": "Delineate"
+            },
+            {
+              "key": "E",
+              "text": "Abortive"
+            },
+            {
+              "key": "F",
+              "text": "Proximity"
+            },
+            {
+              "key": "G",
+              "text": "Discrete"
+            },
+            {
+              "key": "H",
+              "text": "Debacle"
+            },
+            {
+              "key": "I",
+              "text": "Sequester"
+            },
+            {
+              "key": "J",
+              "text": "Minuscule"
+            },
+            {
+              "key": "K",
+              "text": "Contiguous"
+            },
+            {
+              "key": "L",
+              "text": "Infinitesimal"
+            }
+          ],
+          "correctKey": "A",
+          "imageUrl": null,
+          "explanation": "To preclude is to prevent or rule out in advance; 'barring the candidacy before it begins' fits. The nearest distractor, Stymie (C), means to obstruct progress already under way — precluding shuts the door beforehand rather than merely hindering an effort in motion."
+        },
+        {
+          "number": 9,
+          "group": "w13-sB-wordbank",
+          "stem": "Every attempt at reform was ______d by the same handful of officials, who buried each proposal in committee until it quietly died.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Preclude"
+            },
+            {
+              "key": "B",
+              "text": "Circumscribe"
+            },
+            {
+              "key": "C",
+              "text": "Stymie"
+            },
+            {
+              "key": "D",
+              "text": "Delineate"
+            },
+            {
+              "key": "E",
+              "text": "Abortive"
+            },
+            {
+              "key": "F",
+              "text": "Proximity"
+            },
+            {
+              "key": "G",
+              "text": "Discrete"
+            },
+            {
+              "key": "H",
+              "text": "Debacle"
+            },
+            {
+              "key": "I",
+              "text": "Sequester"
+            },
+            {
+              "key": "J",
+              "text": "Minuscule"
+            },
+            {
+              "key": "K",
+              "text": "Contiguous"
+            },
+            {
+              "key": "L",
+              "text": "Infinitesimal"
+            }
+          ],
+          "correctKey": "C",
+          "imageUrl": null,
+          "explanation": "To stymie is to obstruct or thwart an effort in progress; 'buried each proposal... until it died' fits. The nearest distractor, Preclude (A), means to make something impossible in advance — but here the reforms were actively begun and then frustrated, not ruled out beforehand."
+        },
+        {
+          "number": 10,
+          "group": "w13-sB-wordbank",
+          "stem": "After two ______ attempts on the summit, both turned back by storms before the halfway camp, the expedition abandoned the climb for the season.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Preclude"
+            },
+            {
+              "key": "B",
+              "text": "Circumscribe"
+            },
+            {
+              "key": "C",
+              "text": "Stymie"
+            },
+            {
+              "key": "D",
+              "text": "Delineate"
+            },
+            {
+              "key": "E",
+              "text": "Abortive"
+            },
+            {
+              "key": "F",
+              "text": "Proximity"
+            },
+            {
+              "key": "G",
+              "text": "Discrete"
+            },
+            {
+              "key": "H",
+              "text": "Debacle"
+            },
+            {
+              "key": "I",
+              "text": "Sequester"
+            },
+            {
+              "key": "J",
+              "text": "Minuscule"
+            },
+            {
+              "key": "K",
+              "text": "Contiguous"
+            },
+            {
+              "key": "L",
+              "text": "Infinitesimal"
+            }
+          ],
+          "correctKey": "E",
+          "imageUrl": null,
+          "explanation": "Abortive means failing to succeed or coming to nothing before completion; 'turned back... before the halfway camp' fits. The nearest distractor, Debacle (H), means a disastrous, humiliating collapse — the attempts simply fell short of their goal, they were not public catastrophes."
+        }
+      ]
+    }
+  ]
+}

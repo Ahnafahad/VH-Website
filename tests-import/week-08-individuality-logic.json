@@ -1,0 +1,1302 @@
+{
+  "slug": "week-08-individuality-logic",
+  "title": "Week 8 — Individuality, Skepticism & Reasoning + Flawed Logic, Guiding Ideas & Hidden Knowledge",
+  "bucket": "iba",
+  "description": "Fill-in-the-blank vocabulary on individuality, skepticism, and the language of reasoning, and on flawed logic, guiding ideas, and hidden knowledge.",
+  "sections": [
+    {
+      "order": 1,
+      "title": "SECTION A",
+      "marksPerCorrect": 1,
+      "penaltyPerWrong": 0,
+      "thresholdPercent": null,
+      "groups": [
+        {
+          "ref": "w8-sA-wordbank",
+          "kind": "word_bank",
+          "title": "SECTION A",
+          "content": "Use words from the box to fill the blanks. There are more words than necessary. No marks would be deducted for wrong answers.",
+          "sharedOptions": [
+            {
+              "key": "A",
+              "text": "Deduce"
+            },
+            {
+              "key": "B",
+              "text": "Iconoclast"
+            },
+            {
+              "key": "C",
+              "text": "Maverick"
+            },
+            {
+              "key": "D",
+              "text": "Idiosyncrasy"
+            },
+            {
+              "key": "E",
+              "text": "Cynic"
+            },
+            {
+              "key": "F",
+              "text": "Infer"
+            },
+            {
+              "key": "G",
+              "text": "Nihilism"
+            },
+            {
+              "key": "H",
+              "text": "Fatalist"
+            },
+            {
+              "key": "I",
+              "text": "Empirical"
+            },
+            {
+              "key": "J",
+              "text": "Corroborate"
+            },
+            {
+              "key": "K",
+              "text": "Extrapolate"
+            },
+            {
+              "key": "L",
+              "text": "Foible"
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "number": 1,
+          "group": "w8-sA-wordbank",
+          "stem": "As a lifelong ______, she delighted in toppling the sacred reputations that everyone else was too timid to question.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Deduce"
+            },
+            {
+              "key": "B",
+              "text": "Iconoclast"
+            },
+            {
+              "key": "C",
+              "text": "Maverick"
+            },
+            {
+              "key": "D",
+              "text": "Idiosyncrasy"
+            },
+            {
+              "key": "E",
+              "text": "Cynic"
+            },
+            {
+              "key": "F",
+              "text": "Infer"
+            },
+            {
+              "key": "G",
+              "text": "Nihilism"
+            },
+            {
+              "key": "H",
+              "text": "Fatalist"
+            },
+            {
+              "key": "I",
+              "text": "Empirical"
+            },
+            {
+              "key": "J",
+              "text": "Corroborate"
+            },
+            {
+              "key": "K",
+              "text": "Extrapolate"
+            },
+            {
+              "key": "L",
+              "text": "Foible"
+            }
+          ],
+          "correctKey": "B",
+          "imageUrl": null,
+          "explanation": "An iconoclast is one who attacks cherished beliefs, institutions, or revered reputations, matching 'toppling the sacred reputations.' The nearest distractor, Maverick (C), names an independent nonconformist who goes his own way, but it does not carry the specific sense of assailing what others hold sacred."
+        },
+        {
+          "number": 2,
+          "group": "w8-sA-wordbank",
+          "stem": "He sat in Parliament as a ______, ignoring the party whip and voting on each bill exactly as his own conscience dictated.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Deduce"
+            },
+            {
+              "key": "B",
+              "text": "Iconoclast"
+            },
+            {
+              "key": "C",
+              "text": "Maverick"
+            },
+            {
+              "key": "D",
+              "text": "Idiosyncrasy"
+            },
+            {
+              "key": "E",
+              "text": "Cynic"
+            },
+            {
+              "key": "F",
+              "text": "Infer"
+            },
+            {
+              "key": "G",
+              "text": "Nihilism"
+            },
+            {
+              "key": "H",
+              "text": "Fatalist"
+            },
+            {
+              "key": "I",
+              "text": "Empirical"
+            },
+            {
+              "key": "J",
+              "text": "Corroborate"
+            },
+            {
+              "key": "K",
+              "text": "Extrapolate"
+            },
+            {
+              "key": "L",
+              "text": "Foible"
+            }
+          ],
+          "correctKey": "C",
+          "imageUrl": null,
+          "explanation": "A maverick is an independent-minded person who refuses to conform to the group, matching 'ignoring the party whip... his own conscience.' The nearest distractor, Iconoclast (B), means one who attacks revered beliefs, which is more than mere independence from a party line."
+        },
+        {
+          "number": 3,
+          "group": "w8-sA-wordbank",
+          "stem": "Writing every letter in green ink was an ______ that made the old professor so memorable to his students.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Deduce"
+            },
+            {
+              "key": "B",
+              "text": "Iconoclast"
+            },
+            {
+              "key": "C",
+              "text": "Maverick"
+            },
+            {
+              "key": "D",
+              "text": "Idiosyncrasy"
+            },
+            {
+              "key": "E",
+              "text": "Cynic"
+            },
+            {
+              "key": "F",
+              "text": "Infer"
+            },
+            {
+              "key": "G",
+              "text": "Nihilism"
+            },
+            {
+              "key": "H",
+              "text": "Fatalist"
+            },
+            {
+              "key": "I",
+              "text": "Empirical"
+            },
+            {
+              "key": "J",
+              "text": "Corroborate"
+            },
+            {
+              "key": "K",
+              "text": "Extrapolate"
+            },
+            {
+              "key": "L",
+              "text": "Foible"
+            }
+          ],
+          "correctKey": "D",
+          "imageUrl": null,
+          "explanation": "An idiosyncrasy is a distinctive, harmless personal peculiarity, matching an endearing quirk that makes someone memorable. The nearest distractor, Foible (L), also means a minor quirk but specifically a small weakness or failing of character, whereas this habit is a neutral, memorable trait, not a flaw."
+        },
+        {
+          "number": 4,
+          "group": "w8-sA-wordbank",
+          "stem": "From the mud on his boots and the torn ferry ticket in his coat, the inspector could ______ that the man had crossed from the island that very morning.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Deduce"
+            },
+            {
+              "key": "B",
+              "text": "Iconoclast"
+            },
+            {
+              "key": "C",
+              "text": "Maverick"
+            },
+            {
+              "key": "D",
+              "text": "Idiosyncrasy"
+            },
+            {
+              "key": "E",
+              "text": "Cynic"
+            },
+            {
+              "key": "F",
+              "text": "Infer"
+            },
+            {
+              "key": "G",
+              "text": "Nihilism"
+            },
+            {
+              "key": "H",
+              "text": "Fatalist"
+            },
+            {
+              "key": "I",
+              "text": "Empirical"
+            },
+            {
+              "key": "J",
+              "text": "Corroborate"
+            },
+            {
+              "key": "K",
+              "text": "Extrapolate"
+            },
+            {
+              "key": "L",
+              "text": "Foible"
+            }
+          ],
+          "correctKey": "F",
+          "imageUrl": null,
+          "explanation": "To infer is to reach a probable conclusion from evidence or circumstantial clues, matching a guess drawn from mud and a ticket. The nearest distractor, Deduce (A), means to derive a conclusion by strict logical necessity from general premises, whereas reasoning from suggestive clues to a likelihood is inference, not deduction."
+        },
+        {
+          "number": 5,
+          "group": "w8-sA-wordbank",
+          "stem": "Taking three years of steadily rising sales, the analysts tried to ______ the trend forward and predict where the firm would stand a decade hence.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Deduce"
+            },
+            {
+              "key": "B",
+              "text": "Iconoclast"
+            },
+            {
+              "key": "C",
+              "text": "Maverick"
+            },
+            {
+              "key": "D",
+              "text": "Idiosyncrasy"
+            },
+            {
+              "key": "E",
+              "text": "Cynic"
+            },
+            {
+              "key": "F",
+              "text": "Infer"
+            },
+            {
+              "key": "G",
+              "text": "Nihilism"
+            },
+            {
+              "key": "H",
+              "text": "Fatalist"
+            },
+            {
+              "key": "I",
+              "text": "Empirical"
+            },
+            {
+              "key": "J",
+              "text": "Corroborate"
+            },
+            {
+              "key": "K",
+              "text": "Extrapolate"
+            },
+            {
+              "key": "L",
+              "text": "Foible"
+            }
+          ],
+          "correctKey": "K",
+          "imageUrl": null,
+          "explanation": "To extrapolate is to extend a known trend or set of data beyond its range to estimate unknown or future values, matching projecting sales a decade ahead. The nearest distractor, Infer (F), means to draw a conclusion from evidence generally, but lacks the specific sense of continuing an established trend into the unknown."
+        },
+        {
+          "number": 6,
+          "group": "w8-sA-wordbank",
+          "stem": "A thoroughgoing ______, he took it for granted that every charitable gesture masked some private advantage and that pure generosity did not exist.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Deduce"
+            },
+            {
+              "key": "B",
+              "text": "Iconoclast"
+            },
+            {
+              "key": "C",
+              "text": "Maverick"
+            },
+            {
+              "key": "D",
+              "text": "Idiosyncrasy"
+            },
+            {
+              "key": "E",
+              "text": "Cynic"
+            },
+            {
+              "key": "F",
+              "text": "Infer"
+            },
+            {
+              "key": "G",
+              "text": "Nihilism"
+            },
+            {
+              "key": "H",
+              "text": "Fatalist"
+            },
+            {
+              "key": "I",
+              "text": "Empirical"
+            },
+            {
+              "key": "J",
+              "text": "Corroborate"
+            },
+            {
+              "key": "K",
+              "text": "Extrapolate"
+            },
+            {
+              "key": "L",
+              "text": "Foible"
+            }
+          ],
+          "correctKey": "E",
+          "imageUrl": null,
+          "explanation": "A cynic distrusts human sincerity and assumes people act only from self-interest, matching the suspicion behind every kind act. The nearest distractor, Fatalist (H), believes events are fixed by fate; it concerns inevitability, not distrust of others' motives."
+        },
+        {
+          "number": 7,
+          "group": "w8-sA-wordbank",
+          "stem": "Ever the ______, she received the grim prognosis with a shrug, certain that whatever fate had ordained would come to pass whether she struggled or not.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Deduce"
+            },
+            {
+              "key": "B",
+              "text": "Iconoclast"
+            },
+            {
+              "key": "C",
+              "text": "Maverick"
+            },
+            {
+              "key": "D",
+              "text": "Idiosyncrasy"
+            },
+            {
+              "key": "E",
+              "text": "Cynic"
+            },
+            {
+              "key": "F",
+              "text": "Infer"
+            },
+            {
+              "key": "G",
+              "text": "Nihilism"
+            },
+            {
+              "key": "H",
+              "text": "Fatalist"
+            },
+            {
+              "key": "I",
+              "text": "Empirical"
+            },
+            {
+              "key": "J",
+              "text": "Corroborate"
+            },
+            {
+              "key": "K",
+              "text": "Extrapolate"
+            },
+            {
+              "key": "L",
+              "text": "Foible"
+            }
+          ],
+          "correctKey": "H",
+          "imageUrl": null,
+          "explanation": "A fatalist believes all events are predetermined and inevitable, so resistance is pointless, matching the shrug of resignation to 'whatever fate had ordained.' The nearest distractor, Cynic (E), distrusts people's motives, a quite different attitude from submission to an inevitable destiny."
+        },
+        {
+          "number": 8,
+          "group": "w8-sA-wordbank",
+          "stem": "By the end his thought had hardened into sheer ______, a conviction that no value was real, no moral claim binding, and no purpose to be found anywhere.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Deduce"
+            },
+            {
+              "key": "B",
+              "text": "Iconoclast"
+            },
+            {
+              "key": "C",
+              "text": "Maverick"
+            },
+            {
+              "key": "D",
+              "text": "Idiosyncrasy"
+            },
+            {
+              "key": "E",
+              "text": "Cynic"
+            },
+            {
+              "key": "F",
+              "text": "Infer"
+            },
+            {
+              "key": "G",
+              "text": "Nihilism"
+            },
+            {
+              "key": "H",
+              "text": "Fatalist"
+            },
+            {
+              "key": "I",
+              "text": "Empirical"
+            },
+            {
+              "key": "J",
+              "text": "Corroborate"
+            },
+            {
+              "key": "K",
+              "text": "Extrapolate"
+            },
+            {
+              "key": "L",
+              "text": "Foible"
+            }
+          ],
+          "correctKey": "G",
+          "imageUrl": null,
+          "explanation": "Nihilism is the outright rejection of all values, morality, and meaning, matching 'no value real... no purpose anywhere,' and it is the abstract noun the phrase 'sheer ______' requires. The nearest distractor, Cynic (E), names a person rather than a doctrine and cannot fill this slot, nor does distrust of motives amount to a denial of all meaning."
+        },
+        {
+          "number": 9,
+          "group": "w8-sA-wordbank",
+          "stem": "A second witness came forward to ______ the alibi, giving detectives independent grounds to trust the suspect's account.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Deduce"
+            },
+            {
+              "key": "B",
+              "text": "Iconoclast"
+            },
+            {
+              "key": "C",
+              "text": "Maverick"
+            },
+            {
+              "key": "D",
+              "text": "Idiosyncrasy"
+            },
+            {
+              "key": "E",
+              "text": "Cynic"
+            },
+            {
+              "key": "F",
+              "text": "Infer"
+            },
+            {
+              "key": "G",
+              "text": "Nihilism"
+            },
+            {
+              "key": "H",
+              "text": "Fatalist"
+            },
+            {
+              "key": "I",
+              "text": "Empirical"
+            },
+            {
+              "key": "J",
+              "text": "Corroborate"
+            },
+            {
+              "key": "K",
+              "text": "Extrapolate"
+            },
+            {
+              "key": "L",
+              "text": "Foible"
+            }
+          ],
+          "correctKey": "J",
+          "imageUrl": null,
+          "explanation": "To corroborate is to confirm or support an existing statement with additional evidence, matching a witness who backs up the alibi. The nearest distractor, Deduce (A), means to work out a fresh conclusion by reasoning, not to lend independent support to a claim already made."
+        },
+        {
+          "number": 10,
+          "group": "w8-sA-wordbank",
+          "stem": "Distrusting the elegant theory, the committee demanded ______ proof, the kind drawn from field measurements and carefully controlled trials.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Deduce"
+            },
+            {
+              "key": "B",
+              "text": "Iconoclast"
+            },
+            {
+              "key": "C",
+              "text": "Maverick"
+            },
+            {
+              "key": "D",
+              "text": "Idiosyncrasy"
+            },
+            {
+              "key": "E",
+              "text": "Cynic"
+            },
+            {
+              "key": "F",
+              "text": "Infer"
+            },
+            {
+              "key": "G",
+              "text": "Nihilism"
+            },
+            {
+              "key": "H",
+              "text": "Fatalist"
+            },
+            {
+              "key": "I",
+              "text": "Empirical"
+            },
+            {
+              "key": "J",
+              "text": "Corroborate"
+            },
+            {
+              "key": "K",
+              "text": "Extrapolate"
+            },
+            {
+              "key": "L",
+              "text": "Foible"
+            }
+          ],
+          "correctKey": "I",
+          "imageUrl": null,
+          "explanation": "Empirical means based on direct observation or experiment rather than theory, matching evidence 'drawn from field measurements and controlled trials.' The nearest distractor, Deduce (A), is a verb and cannot fill the adjective slot before 'proof,' and it points to conclusions reached by reasoning rather than knowledge gathered by observation."
+        }
+      ]
+    },
+    {
+      "order": 2,
+      "title": "SECTION B",
+      "marksPerCorrect": 1,
+      "penaltyPerWrong": 0,
+      "thresholdPercent": null,
+      "groups": [
+        {
+          "ref": "w8-sB-wordbank",
+          "kind": "word_bank",
+          "title": "SECTION B",
+          "content": "Use words from the box to fill the blanks. There are more words than necessary. No marks would be deducted for wrong answers.",
+          "sharedOptions": [
+            {
+              "key": "A",
+              "text": "Dictum"
+            },
+            {
+              "key": "B",
+              "text": "Obtuse"
+            },
+            {
+              "key": "C",
+              "text": "Ambivalent"
+            },
+            {
+              "key": "D",
+              "text": "Maxim"
+            },
+            {
+              "key": "E",
+              "text": "Touchstone"
+            },
+            {
+              "key": "F",
+              "text": "Axiom"
+            },
+            {
+              "key": "G",
+              "text": "Cryptic"
+            },
+            {
+              "key": "H",
+              "text": "Paradigm"
+            },
+            {
+              "key": "I",
+              "text": "Nebulous"
+            },
+            {
+              "key": "J",
+              "text": "Enigma"
+            },
+            {
+              "key": "K",
+              "text": "Arcane"
+            },
+            {
+              "key": "L",
+              "text": "Esoteric"
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "number": 1,
+          "group": "w8-sB-wordbank",
+          "stem": "Either he was being deliberately ______ or he genuinely could not grasp a point that was obvious to everyone else in the room.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Dictum"
+            },
+            {
+              "key": "B",
+              "text": "Obtuse"
+            },
+            {
+              "key": "C",
+              "text": "Ambivalent"
+            },
+            {
+              "key": "D",
+              "text": "Maxim"
+            },
+            {
+              "key": "E",
+              "text": "Touchstone"
+            },
+            {
+              "key": "F",
+              "text": "Axiom"
+            },
+            {
+              "key": "G",
+              "text": "Cryptic"
+            },
+            {
+              "key": "H",
+              "text": "Paradigm"
+            },
+            {
+              "key": "I",
+              "text": "Nebulous"
+            },
+            {
+              "key": "J",
+              "text": "Enigma"
+            },
+            {
+              "key": "K",
+              "text": "Arcane"
+            },
+            {
+              "key": "L",
+              "text": "Esoteric"
+            }
+          ],
+          "correctKey": "B",
+          "imageUrl": null,
+          "explanation": "Obtuse means annoyingly slow or unwilling to understand, matching a failure to grasp the obvious. The nearest distractor, Cryptic (G), describes a message or meaning that is deliberately puzzling, not a person's dull failure to comprehend it."
+        },
+        {
+          "number": 2,
+          "group": "w8-sB-wordbank",
+          "stem": "She felt deeply ______ about the promotion, thrilled by the larger salary yet dreading the loss of her free evenings.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Dictum"
+            },
+            {
+              "key": "B",
+              "text": "Obtuse"
+            },
+            {
+              "key": "C",
+              "text": "Ambivalent"
+            },
+            {
+              "key": "D",
+              "text": "Maxim"
+            },
+            {
+              "key": "E",
+              "text": "Touchstone"
+            },
+            {
+              "key": "F",
+              "text": "Axiom"
+            },
+            {
+              "key": "G",
+              "text": "Cryptic"
+            },
+            {
+              "key": "H",
+              "text": "Paradigm"
+            },
+            {
+              "key": "I",
+              "text": "Nebulous"
+            },
+            {
+              "key": "J",
+              "text": "Enigma"
+            },
+            {
+              "key": "K",
+              "text": "Arcane"
+            },
+            {
+              "key": "L",
+              "text": "Esoteric"
+            }
+          ],
+          "correctKey": "C",
+          "imageUrl": null,
+          "explanation": "Ambivalent means holding two opposing feelings at once, matching being thrilled yet full of dread about the same thing. The nearest distractor, Nebulous (I), means vague or ill-defined, describing hazy ideas rather than the clash of contradictory emotions expressed here."
+        },
+        {
+          "number": 3,
+          "group": "w8-sB-wordbank",
+          "stem": "'Waste not, want not' was the ______ her grandmother repeated whenever the children left food untouched on their plates.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Dictum"
+            },
+            {
+              "key": "B",
+              "text": "Obtuse"
+            },
+            {
+              "key": "C",
+              "text": "Ambivalent"
+            },
+            {
+              "key": "D",
+              "text": "Maxim"
+            },
+            {
+              "key": "E",
+              "text": "Touchstone"
+            },
+            {
+              "key": "F",
+              "text": "Axiom"
+            },
+            {
+              "key": "G",
+              "text": "Cryptic"
+            },
+            {
+              "key": "H",
+              "text": "Paradigm"
+            },
+            {
+              "key": "I",
+              "text": "Nebulous"
+            },
+            {
+              "key": "J",
+              "text": "Enigma"
+            },
+            {
+              "key": "K",
+              "text": "Arcane"
+            },
+            {
+              "key": "L",
+              "text": "Esoteric"
+            }
+          ],
+          "correctKey": "D",
+          "imageUrl": null,
+          "explanation": "A maxim is a short, memorable saying that expresses a general rule of conduct, matching a homely proverb about thrift. The nearest distractor, Dictum (A), is an authoritative or formal pronouncement handed down from on high, not the folk rule of daily life a maxim conveys."
+        },
+        {
+          "number": 4,
+          "group": "w8-sB-wordbank",
+          "stem": "In geometry a proof must begin from an ______: a starting truth so self-evident that no one troubles to demonstrate it.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Dictum"
+            },
+            {
+              "key": "B",
+              "text": "Obtuse"
+            },
+            {
+              "key": "C",
+              "text": "Ambivalent"
+            },
+            {
+              "key": "D",
+              "text": "Maxim"
+            },
+            {
+              "key": "E",
+              "text": "Touchstone"
+            },
+            {
+              "key": "F",
+              "text": "Axiom"
+            },
+            {
+              "key": "G",
+              "text": "Cryptic"
+            },
+            {
+              "key": "H",
+              "text": "Paradigm"
+            },
+            {
+              "key": "I",
+              "text": "Nebulous"
+            },
+            {
+              "key": "J",
+              "text": "Enigma"
+            },
+            {
+              "key": "K",
+              "text": "Arcane"
+            },
+            {
+              "key": "L",
+              "text": "Esoteric"
+            }
+          ],
+          "correctKey": "F",
+          "imageUrl": null,
+          "explanation": "An axiom is a self-evident truth assumed without proof as the basis for reasoning, matching a starting point taken as given in geometry. The nearest distractor, Maxim (D), is a memorable rule of conduct for living, not a foundational premise of logical demonstration."
+        },
+        {
+          "number": 5,
+          "group": "w8-sB-wordbank",
+          "stem": "Newton's laws furnished the reigning ______ of physics for two centuries, the framework within which every problem was posed and solved.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Dictum"
+            },
+            {
+              "key": "B",
+              "text": "Obtuse"
+            },
+            {
+              "key": "C",
+              "text": "Ambivalent"
+            },
+            {
+              "key": "D",
+              "text": "Maxim"
+            },
+            {
+              "key": "E",
+              "text": "Touchstone"
+            },
+            {
+              "key": "F",
+              "text": "Axiom"
+            },
+            {
+              "key": "G",
+              "text": "Cryptic"
+            },
+            {
+              "key": "H",
+              "text": "Paradigm"
+            },
+            {
+              "key": "I",
+              "text": "Nebulous"
+            },
+            {
+              "key": "J",
+              "text": "Enigma"
+            },
+            {
+              "key": "K",
+              "text": "Arcane"
+            },
+            {
+              "key": "L",
+              "text": "Esoteric"
+            }
+          ],
+          "correctKey": "H",
+          "imageUrl": null,
+          "explanation": "A paradigm is an overarching model or framework of thought within which a field operates, matching the framework 'within which every problem was posed.' The nearest distractor, Touchstone (E), means a standard or test for judging quality, not the whole conceptual model the sentence describes."
+        },
+        {
+          "number": 6,
+          "group": "w8-sB-wordbank",
+          "stem": "For her, sincerity was the ______ of good art; any work that failed that single test she dismissed at once.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Dictum"
+            },
+            {
+              "key": "B",
+              "text": "Obtuse"
+            },
+            {
+              "key": "C",
+              "text": "Ambivalent"
+            },
+            {
+              "key": "D",
+              "text": "Maxim"
+            },
+            {
+              "key": "E",
+              "text": "Touchstone"
+            },
+            {
+              "key": "F",
+              "text": "Axiom"
+            },
+            {
+              "key": "G",
+              "text": "Cryptic"
+            },
+            {
+              "key": "H",
+              "text": "Paradigm"
+            },
+            {
+              "key": "I",
+              "text": "Nebulous"
+            },
+            {
+              "key": "J",
+              "text": "Enigma"
+            },
+            {
+              "key": "K",
+              "text": "Arcane"
+            },
+            {
+              "key": "L",
+              "text": "Esoteric"
+            }
+          ],
+          "correctKey": "E",
+          "imageUrl": null,
+          "explanation": "A touchstone is the standard or criterion against which something is judged, matching a 'single test' that decides an artwork's worth. The nearest distractor, Paradigm (H), means a model or framework of thought, not the yardstick used to appraise individual cases."
+        },
+        {
+          "number": 7,
+          "group": "w8-sB-wordbank",
+          "stem": "The ceremony was governed by ______ rules, hidden and jealously guarded, and known only to a handful of elderly initiates.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Dictum"
+            },
+            {
+              "key": "B",
+              "text": "Obtuse"
+            },
+            {
+              "key": "C",
+              "text": "Ambivalent"
+            },
+            {
+              "key": "D",
+              "text": "Maxim"
+            },
+            {
+              "key": "E",
+              "text": "Touchstone"
+            },
+            {
+              "key": "F",
+              "text": "Axiom"
+            },
+            {
+              "key": "G",
+              "text": "Cryptic"
+            },
+            {
+              "key": "H",
+              "text": "Paradigm"
+            },
+            {
+              "key": "I",
+              "text": "Nebulous"
+            },
+            {
+              "key": "J",
+              "text": "Enigma"
+            },
+            {
+              "key": "K",
+              "text": "Arcane"
+            },
+            {
+              "key": "L",
+              "text": "Esoteric"
+            }
+          ],
+          "correctKey": "K",
+          "imageUrl": null,
+          "explanation": "Arcane means secret, mysterious, and understood by very few, matching hidden rules 'jealously guarded' by a tiny circle. The nearest distractor, Esoteric (L), also describes knowledge confined to a select few, but stresses specialised, inner-circle understanding rather than the concealed, guarded secrecy the sentence emphasises."
+        },
+        {
+          "number": 8,
+          "group": "w8-sB-wordbank",
+          "stem": "His final message was maddeningly ______: a single line about 'the bird that never lands,' which no one at the meeting could decode.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Dictum"
+            },
+            {
+              "key": "B",
+              "text": "Obtuse"
+            },
+            {
+              "key": "C",
+              "text": "Ambivalent"
+            },
+            {
+              "key": "D",
+              "text": "Maxim"
+            },
+            {
+              "key": "E",
+              "text": "Touchstone"
+            },
+            {
+              "key": "F",
+              "text": "Axiom"
+            },
+            {
+              "key": "G",
+              "text": "Cryptic"
+            },
+            {
+              "key": "H",
+              "text": "Paradigm"
+            },
+            {
+              "key": "I",
+              "text": "Nebulous"
+            },
+            {
+              "key": "J",
+              "text": "Enigma"
+            },
+            {
+              "key": "K",
+              "text": "Arcane"
+            },
+            {
+              "key": "L",
+              "text": "Esoteric"
+            }
+          ],
+          "correctKey": "G",
+          "imageUrl": null,
+          "explanation": "Cryptic means deliberately obscure or puzzling in meaning, matching a short message whose sense no one can decode. The nearest distractor, Arcane (K), refers to hidden specialist knowledge held by few, whereas the fault here is a wilfully riddling wording, not restricted expertise."
+        },
+        {
+          "number": 9,
+          "group": "w8-sB-wordbank",
+          "stem": "Even after thirty years of friendship he remained an ______ to her, a man whose true motives she could never quite make out.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Dictum"
+            },
+            {
+              "key": "B",
+              "text": "Obtuse"
+            },
+            {
+              "key": "C",
+              "text": "Ambivalent"
+            },
+            {
+              "key": "D",
+              "text": "Maxim"
+            },
+            {
+              "key": "E",
+              "text": "Touchstone"
+            },
+            {
+              "key": "F",
+              "text": "Axiom"
+            },
+            {
+              "key": "G",
+              "text": "Cryptic"
+            },
+            {
+              "key": "H",
+              "text": "Paradigm"
+            },
+            {
+              "key": "I",
+              "text": "Nebulous"
+            },
+            {
+              "key": "J",
+              "text": "Enigma"
+            },
+            {
+              "key": "K",
+              "text": "Arcane"
+            },
+            {
+              "key": "L",
+              "text": "Esoteric"
+            }
+          ],
+          "correctKey": "J",
+          "imageUrl": null,
+          "explanation": "An enigma is a person or thing that stays mysterious and impossible to fathom, and it is the noun the phrase 'an ______' requires. The nearest distractor, Cryptic (G), is an adjective describing puzzling messages and cannot fill a noun slot naming the baffling man himself."
+        },
+        {
+          "number": 10,
+          "group": "w8-sB-wordbank",
+          "stem": "The committee's goals were so ______ that no one could say what success on the project would actually look like.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Dictum"
+            },
+            {
+              "key": "B",
+              "text": "Obtuse"
+            },
+            {
+              "key": "C",
+              "text": "Ambivalent"
+            },
+            {
+              "key": "D",
+              "text": "Maxim"
+            },
+            {
+              "key": "E",
+              "text": "Touchstone"
+            },
+            {
+              "key": "F",
+              "text": "Axiom"
+            },
+            {
+              "key": "G",
+              "text": "Cryptic"
+            },
+            {
+              "key": "H",
+              "text": "Paradigm"
+            },
+            {
+              "key": "I",
+              "text": "Nebulous"
+            },
+            {
+              "key": "J",
+              "text": "Enigma"
+            },
+            {
+              "key": "K",
+              "text": "Arcane"
+            },
+            {
+              "key": "L",
+              "text": "Esoteric"
+            }
+          ],
+          "correctKey": "I",
+          "imageUrl": null,
+          "explanation": "Nebulous means vague, hazy, and lacking any definite form, matching aims too ill-defined to picture success. The nearest distractor, Ambivalent (C), means torn between opposing feelings and applies to a divided attitude, not to goals that are simply unclear and unformed."
+        }
+      ]
+    }
+  ]
+}

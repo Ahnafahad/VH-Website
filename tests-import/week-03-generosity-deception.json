@@ -1,0 +1,1302 @@
+{
+  "slug": "week-03-generosity-deception",
+  "title": "Week 3 — Generosity & Restraint + Deception, Evasion & Honesty",
+  "bucket": "iba",
+  "description": "Fill-in-the-blank vocabulary on giving, thrift and self-denial, and on the language of deceit, evasion, ambiguity and plain honesty.",
+  "sections": [
+    {
+      "order": 1,
+      "title": "SECTION A",
+      "marksPerCorrect": 1,
+      "penaltyPerWrong": 0,
+      "thresholdPercent": null,
+      "groups": [
+        {
+          "ref": "w3-sA-wordbank",
+          "kind": "word_bank",
+          "title": "SECTION A",
+          "content": "Use words from the box to fill the blanks. There are more words than necessary. No marks would be deducted for wrong answers.",
+          "sharedOptions": [
+            {
+              "key": "A",
+              "text": "Benevolent"
+            },
+            {
+              "key": "B",
+              "text": "Frugal"
+            },
+            {
+              "key": "C",
+              "text": "Altruism"
+            },
+            {
+              "key": "D",
+              "text": "Philanthropy"
+            },
+            {
+              "key": "E",
+              "text": "Benefactor"
+            },
+            {
+              "key": "F",
+              "text": "Largess"
+            },
+            {
+              "key": "G",
+              "text": "Prodigal"
+            },
+            {
+              "key": "H",
+              "text": "Provident"
+            },
+            {
+              "key": "I",
+              "text": "Parsimonious"
+            },
+            {
+              "key": "J",
+              "text": "Solicitous"
+            },
+            {
+              "key": "K",
+              "text": "Abstinent"
+            },
+            {
+              "key": "L",
+              "text": "Temperate"
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "number": 1,
+          "group": "w3-sA-wordbank",
+          "stem": "Her lifelong ______ was beyond question: she nursed plague victims with her own hands, seeking neither payment nor the least word of praise.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Benevolent"
+            },
+            {
+              "key": "B",
+              "text": "Frugal"
+            },
+            {
+              "key": "C",
+              "text": "Altruism"
+            },
+            {
+              "key": "D",
+              "text": "Philanthropy"
+            },
+            {
+              "key": "E",
+              "text": "Benefactor"
+            },
+            {
+              "key": "F",
+              "text": "Largess"
+            },
+            {
+              "key": "G",
+              "text": "Prodigal"
+            },
+            {
+              "key": "H",
+              "text": "Provident"
+            },
+            {
+              "key": "I",
+              "text": "Parsimonious"
+            },
+            {
+              "key": "J",
+              "text": "Solicitous"
+            },
+            {
+              "key": "K",
+              "text": "Abstinent"
+            },
+            {
+              "key": "L",
+              "text": "Temperate"
+            }
+          ],
+          "correctKey": "C",
+          "imageUrl": null,
+          "explanation": "Altruism is the noun for selfless concern for others' welfare, matching action taken with no thought of reward. The nearest distractor, Benevolent (A), is an adjective meaning kindly disposed and cannot fill the noun slot after 'her lifelong'."
+        },
+        {
+          "number": 2,
+          "group": "w3-sA-wordbank",
+          "stem": "The steel magnate devoted his old age to ______, systematically endowing libraries and universities for the public good.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Benevolent"
+            },
+            {
+              "key": "B",
+              "text": "Frugal"
+            },
+            {
+              "key": "C",
+              "text": "Altruism"
+            },
+            {
+              "key": "D",
+              "text": "Philanthropy"
+            },
+            {
+              "key": "E",
+              "text": "Benefactor"
+            },
+            {
+              "key": "F",
+              "text": "Largess"
+            },
+            {
+              "key": "G",
+              "text": "Prodigal"
+            },
+            {
+              "key": "H",
+              "text": "Provident"
+            },
+            {
+              "key": "I",
+              "text": "Parsimonious"
+            },
+            {
+              "key": "J",
+              "text": "Solicitous"
+            },
+            {
+              "key": "K",
+              "text": "Abstinent"
+            },
+            {
+              "key": "L",
+              "text": "Temperate"
+            }
+          ],
+          "correctKey": "D",
+          "imageUrl": null,
+          "explanation": "Philanthropy is organized charitable giving of wealth for the public good, which 'systematically endowing... institutions' demands. The nearest distractor, Largess (F), denotes lavish, spontaneous bounty bestowed on dependents, not systematic institutional charity."
+        },
+        {
+          "number": 3,
+          "group": "w3-sA-wordbank",
+          "stem": "The struggling theatre was saved by a mysterious ______ who settled every debt and asked for nothing in return.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Benevolent"
+            },
+            {
+              "key": "B",
+              "text": "Frugal"
+            },
+            {
+              "key": "C",
+              "text": "Altruism"
+            },
+            {
+              "key": "D",
+              "text": "Philanthropy"
+            },
+            {
+              "key": "E",
+              "text": "Benefactor"
+            },
+            {
+              "key": "F",
+              "text": "Largess"
+            },
+            {
+              "key": "G",
+              "text": "Prodigal"
+            },
+            {
+              "key": "H",
+              "text": "Provident"
+            },
+            {
+              "key": "I",
+              "text": "Parsimonious"
+            },
+            {
+              "key": "J",
+              "text": "Solicitous"
+            },
+            {
+              "key": "K",
+              "text": "Abstinent"
+            },
+            {
+              "key": "L",
+              "text": "Temperate"
+            }
+          ],
+          "correctKey": "E",
+          "imageUrl": null,
+          "explanation": "A benefactor is a person who gives help or money, fitting the personal noun slot in 'a mysterious ___ who'. The nearest distractor, Benevolent (A), is an adjective describing a kindly disposition and cannot denote the individual who acts."
+        },
+        {
+          "number": 4,
+          "group": "w3-sA-wordbank",
+          "stem": "At the coronation feast the new queen dispensed ______ with abandon, flinging purses of coin to the crowds thronging the palace gates.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Benevolent"
+            },
+            {
+              "key": "B",
+              "text": "Frugal"
+            },
+            {
+              "key": "C",
+              "text": "Altruism"
+            },
+            {
+              "key": "D",
+              "text": "Philanthropy"
+            },
+            {
+              "key": "E",
+              "text": "Benefactor"
+            },
+            {
+              "key": "F",
+              "text": "Largess"
+            },
+            {
+              "key": "G",
+              "text": "Prodigal"
+            },
+            {
+              "key": "H",
+              "text": "Provident"
+            },
+            {
+              "key": "I",
+              "text": "Parsimonious"
+            },
+            {
+              "key": "J",
+              "text": "Solicitous"
+            },
+            {
+              "key": "K",
+              "text": "Abstinent"
+            },
+            {
+              "key": "L",
+              "text": "Temperate"
+            }
+          ],
+          "correctKey": "F",
+          "imageUrl": null,
+          "explanation": "Largess is generous, lavish bestowal of gifts or money, especially by the powerful, matching the queen scattering coin to the crowd. The nearest distractor, Philanthropy (D), means systematic charity for humanitarian causes, not a spontaneous shower of gifts on well-wishers."
+        },
+        {
+          "number": 5,
+          "group": "w3-sA-wordbank",
+          "stem": "Though he had inherited a fortune, his ______ habits — champagne, racehorses, and endless parties — left him penniless within a decade.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Benevolent"
+            },
+            {
+              "key": "B",
+              "text": "Frugal"
+            },
+            {
+              "key": "C",
+              "text": "Altruism"
+            },
+            {
+              "key": "D",
+              "text": "Philanthropy"
+            },
+            {
+              "key": "E",
+              "text": "Benefactor"
+            },
+            {
+              "key": "F",
+              "text": "Largess"
+            },
+            {
+              "key": "G",
+              "text": "Prodigal"
+            },
+            {
+              "key": "H",
+              "text": "Provident"
+            },
+            {
+              "key": "I",
+              "text": "Parsimonious"
+            },
+            {
+              "key": "J",
+              "text": "Solicitous"
+            },
+            {
+              "key": "K",
+              "text": "Abstinent"
+            },
+            {
+              "key": "L",
+              "text": "Temperate"
+            }
+          ],
+          "correctKey": "G",
+          "imageUrl": null,
+          "explanation": "Prodigal is an adjective meaning recklessly wasteful and extravagant, matching a fortune squandered on himself. The nearest distractor, Largess (F), is a noun denoting generosity toward others and cannot fill the adjective slot before 'habits'."
+        },
+        {
+          "number": 6,
+          "group": "w3-sA-wordbank",
+          "stem": "A ______ farmer, she stored grain through every good harvest, so that when the drought finally came her family never went hungry.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Benevolent"
+            },
+            {
+              "key": "B",
+              "text": "Frugal"
+            },
+            {
+              "key": "C",
+              "text": "Altruism"
+            },
+            {
+              "key": "D",
+              "text": "Philanthropy"
+            },
+            {
+              "key": "E",
+              "text": "Benefactor"
+            },
+            {
+              "key": "F",
+              "text": "Largess"
+            },
+            {
+              "key": "G",
+              "text": "Prodigal"
+            },
+            {
+              "key": "H",
+              "text": "Provident"
+            },
+            {
+              "key": "I",
+              "text": "Parsimonious"
+            },
+            {
+              "key": "J",
+              "text": "Solicitous"
+            },
+            {
+              "key": "K",
+              "text": "Abstinent"
+            },
+            {
+              "key": "L",
+              "text": "Temperate"
+            }
+          ],
+          "correctKey": "H",
+          "imageUrl": null,
+          "explanation": "Provident means making prudent provision for the future, matching the foresight of laying up stores against the drought. The nearest distractor, Frugal (B), means merely thrifty or sparing in consumption and misses the forward-looking preparation the sentence stresses."
+        },
+        {
+          "number": 7,
+          "group": "w3-sA-wordbank",
+          "stem": "So ______ was the old miser that he refused to light a second candle and grudged every crust his servants ate.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Benevolent"
+            },
+            {
+              "key": "B",
+              "text": "Frugal"
+            },
+            {
+              "key": "C",
+              "text": "Altruism"
+            },
+            {
+              "key": "D",
+              "text": "Philanthropy"
+            },
+            {
+              "key": "E",
+              "text": "Benefactor"
+            },
+            {
+              "key": "F",
+              "text": "Largess"
+            },
+            {
+              "key": "G",
+              "text": "Prodigal"
+            },
+            {
+              "key": "H",
+              "text": "Provident"
+            },
+            {
+              "key": "I",
+              "text": "Parsimonious"
+            },
+            {
+              "key": "J",
+              "text": "Solicitous"
+            },
+            {
+              "key": "K",
+              "text": "Abstinent"
+            },
+            {
+              "key": "L",
+              "text": "Temperate"
+            }
+          ],
+          "correctKey": "I",
+          "imageUrl": null,
+          "explanation": "Parsimonious means excessively and meanly frugal, matching the miser who begrudges even bread. The nearest distractor, Frugal (B), denotes sensible economy without moral fault and lacks the stinginess that 'grudged every crust' requires."
+        },
+        {
+          "number": 8,
+          "group": "w3-sA-wordbank",
+          "stem": "The nurse was endlessly ______ of her patients, forever plumping pillows and asking whether they were warm enough.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Benevolent"
+            },
+            {
+              "key": "B",
+              "text": "Frugal"
+            },
+            {
+              "key": "C",
+              "text": "Altruism"
+            },
+            {
+              "key": "D",
+              "text": "Philanthropy"
+            },
+            {
+              "key": "E",
+              "text": "Benefactor"
+            },
+            {
+              "key": "F",
+              "text": "Largess"
+            },
+            {
+              "key": "G",
+              "text": "Prodigal"
+            },
+            {
+              "key": "H",
+              "text": "Provident"
+            },
+            {
+              "key": "I",
+              "text": "Parsimonious"
+            },
+            {
+              "key": "J",
+              "text": "Solicitous"
+            },
+            {
+              "key": "K",
+              "text": "Abstinent"
+            },
+            {
+              "key": "L",
+              "text": "Temperate"
+            }
+          ],
+          "correctKey": "J",
+          "imageUrl": null,
+          "explanation": "Solicitous means showing attentive, hovering care and concern, and takes the collocation 'solicitous of'. The nearest distractor, Benevolent (A), denotes a general goodwill rather than the fussing, hands-on attentiveness shown by the constant checking."
+        },
+        {
+          "number": 9,
+          "group": "w3-sA-wordbank",
+          "stem": "After years of ruinous drinking he became wholly ______, refusing so much as a drop of wine at his own wedding.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Benevolent"
+            },
+            {
+              "key": "B",
+              "text": "Frugal"
+            },
+            {
+              "key": "C",
+              "text": "Altruism"
+            },
+            {
+              "key": "D",
+              "text": "Philanthropy"
+            },
+            {
+              "key": "E",
+              "text": "Benefactor"
+            },
+            {
+              "key": "F",
+              "text": "Largess"
+            },
+            {
+              "key": "G",
+              "text": "Prodigal"
+            },
+            {
+              "key": "H",
+              "text": "Provident"
+            },
+            {
+              "key": "I",
+              "text": "Parsimonious"
+            },
+            {
+              "key": "J",
+              "text": "Solicitous"
+            },
+            {
+              "key": "K",
+              "text": "Abstinent"
+            },
+            {
+              "key": "L",
+              "text": "Temperate"
+            }
+          ],
+          "correctKey": "K",
+          "imageUrl": null,
+          "explanation": "Abstinent means refraining entirely, especially from alcohol or indulgence, which 'not so much as a drop' demands. The nearest distractor, Temperate (L), means only moderate and self-restrained, which contradicts total refusal."
+        },
+        {
+          "number": 10,
+          "group": "w3-sA-wordbank",
+          "stem": "A ______ man in all things, he drank a little wine but never to excess and rose early even after a feast.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Benevolent"
+            },
+            {
+              "key": "B",
+              "text": "Frugal"
+            },
+            {
+              "key": "C",
+              "text": "Altruism"
+            },
+            {
+              "key": "D",
+              "text": "Philanthropy"
+            },
+            {
+              "key": "E",
+              "text": "Benefactor"
+            },
+            {
+              "key": "F",
+              "text": "Largess"
+            },
+            {
+              "key": "G",
+              "text": "Prodigal"
+            },
+            {
+              "key": "H",
+              "text": "Provident"
+            },
+            {
+              "key": "I",
+              "text": "Parsimonious"
+            },
+            {
+              "key": "J",
+              "text": "Solicitous"
+            },
+            {
+              "key": "K",
+              "text": "Abstinent"
+            },
+            {
+              "key": "L",
+              "text": "Temperate"
+            }
+          ],
+          "correctKey": "L",
+          "imageUrl": null,
+          "explanation": "Temperate means moderate and self-restrained rather than abstaining altogether, matching a man who drinks 'a little... but never to excess'. The nearest distractor, Abstinent (K), means refraining completely and so contradicts the fact that he still drinks a little wine."
+        }
+      ]
+    },
+    {
+      "order": 2,
+      "title": "SECTION B",
+      "marksPerCorrect": 1,
+      "penaltyPerWrong": 0,
+      "thresholdPercent": null,
+      "groups": [
+        {
+          "ref": "w3-sB-wordbank",
+          "kind": "word_bank",
+          "title": "SECTION B",
+          "content": "Use words from the box to fill the blanks. There are more words than necessary. No marks would be deducted for wrong answers.",
+          "sharedOptions": [
+            {
+              "key": "A",
+              "text": "Ambiguous"
+            },
+            {
+              "key": "B",
+              "text": "Mendacious"
+            },
+            {
+              "key": "C",
+              "text": "Charlatan"
+            },
+            {
+              "key": "D",
+              "text": "Chicanery"
+            },
+            {
+              "key": "E",
+              "text": "Duplicity"
+            },
+            {
+              "key": "F",
+              "text": "Guile"
+            },
+            {
+              "key": "G",
+              "text": "Specious"
+            },
+            {
+              "key": "H",
+              "text": "Obfuscate"
+            },
+            {
+              "key": "I",
+              "text": "Equivocal"
+            },
+            {
+              "key": "J",
+              "text": "Euphemism"
+            },
+            {
+              "key": "K",
+              "text": "Circumlocution"
+            },
+            {
+              "key": "L",
+              "text": "Candor"
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "number": 1,
+          "group": "w3-sB-wordbank",
+          "stem": "The so-called doctor was exposed as a ______, peddling coloured water as a cure for every disease known to man.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Ambiguous"
+            },
+            {
+              "key": "B",
+              "text": "Mendacious"
+            },
+            {
+              "key": "C",
+              "text": "Charlatan"
+            },
+            {
+              "key": "D",
+              "text": "Chicanery"
+            },
+            {
+              "key": "E",
+              "text": "Duplicity"
+            },
+            {
+              "key": "F",
+              "text": "Guile"
+            },
+            {
+              "key": "G",
+              "text": "Specious"
+            },
+            {
+              "key": "H",
+              "text": "Obfuscate"
+            },
+            {
+              "key": "I",
+              "text": "Equivocal"
+            },
+            {
+              "key": "J",
+              "text": "Euphemism"
+            },
+            {
+              "key": "K",
+              "text": "Circumlocution"
+            },
+            {
+              "key": "L",
+              "text": "Candor"
+            }
+          ],
+          "correctKey": "C",
+          "imageUrl": null,
+          "explanation": "A charlatan is a person who falsely claims special skill or knowledge, a fraud or quack, fitting the noun slot 'a ___'. The nearest distractor, Mendacious (B), is an adjective meaning untruthful and cannot denote a person, and labels lying in general rather than false pretension to expertise."
+        },
+        {
+          "number": 2,
+          "group": "w3-sB-wordbank",
+          "stem": "The contract was won through sheer ______ — buried clauses, forged filings, and a maze of shell companies designed to baffle the auditors.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Ambiguous"
+            },
+            {
+              "key": "B",
+              "text": "Mendacious"
+            },
+            {
+              "key": "C",
+              "text": "Charlatan"
+            },
+            {
+              "key": "D",
+              "text": "Chicanery"
+            },
+            {
+              "key": "E",
+              "text": "Duplicity"
+            },
+            {
+              "key": "F",
+              "text": "Guile"
+            },
+            {
+              "key": "G",
+              "text": "Specious"
+            },
+            {
+              "key": "H",
+              "text": "Obfuscate"
+            },
+            {
+              "key": "I",
+              "text": "Equivocal"
+            },
+            {
+              "key": "J",
+              "text": "Euphemism"
+            },
+            {
+              "key": "K",
+              "text": "Circumlocution"
+            },
+            {
+              "key": "L",
+              "text": "Candor"
+            }
+          ],
+          "correctKey": "D",
+          "imageUrl": null,
+          "explanation": "Chicanery is the use of trickery and sharp practice, especially legal or procedural, matching the buried clauses and shell companies. The nearest distractor, Duplicity (E), stresses two-faced betrayal of trust rather than the technical subterfuge and manoeuvring the sentence describes."
+        },
+        {
+          "number": 3,
+          "group": "w3-sB-wordbank",
+          "stem": "His ______ was breathtaking: he swore loyalty to the king each morning and carried the court's secrets to the rebels each night.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Ambiguous"
+            },
+            {
+              "key": "B",
+              "text": "Mendacious"
+            },
+            {
+              "key": "C",
+              "text": "Charlatan"
+            },
+            {
+              "key": "D",
+              "text": "Chicanery"
+            },
+            {
+              "key": "E",
+              "text": "Duplicity"
+            },
+            {
+              "key": "F",
+              "text": "Guile"
+            },
+            {
+              "key": "G",
+              "text": "Specious"
+            },
+            {
+              "key": "H",
+              "text": "Obfuscate"
+            },
+            {
+              "key": "I",
+              "text": "Equivocal"
+            },
+            {
+              "key": "J",
+              "text": "Euphemism"
+            },
+            {
+              "key": "K",
+              "text": "Circumlocution"
+            },
+            {
+              "key": "L",
+              "text": "Candor"
+            }
+          ],
+          "correctKey": "E",
+          "imageUrl": null,
+          "explanation": "Duplicity is deceitful double-dealing — serving two sides at once — which the daily switching of allegiance captures. The nearest distractor, Guile (F), means crafty cunning in general and lacks the specific two-faced treachery the sentence requires."
+        },
+        {
+          "number": 4,
+          "group": "w3-sB-wordbank",
+          "stem": "With quiet ______, the old fox of a lawyer led the witness into contradicting himself without once asking a hostile question.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Ambiguous"
+            },
+            {
+              "key": "B",
+              "text": "Mendacious"
+            },
+            {
+              "key": "C",
+              "text": "Charlatan"
+            },
+            {
+              "key": "D",
+              "text": "Chicanery"
+            },
+            {
+              "key": "E",
+              "text": "Duplicity"
+            },
+            {
+              "key": "F",
+              "text": "Guile"
+            },
+            {
+              "key": "G",
+              "text": "Specious"
+            },
+            {
+              "key": "H",
+              "text": "Obfuscate"
+            },
+            {
+              "key": "I",
+              "text": "Equivocal"
+            },
+            {
+              "key": "J",
+              "text": "Euphemism"
+            },
+            {
+              "key": "K",
+              "text": "Circumlocution"
+            },
+            {
+              "key": "L",
+              "text": "Candor"
+            }
+          ],
+          "correctKey": "F",
+          "imageUrl": null,
+          "explanation": "Guile is subtle, artful cunning used to outwit others, matching the lawyer's clever, indirect handling of the witness. The nearest distractor, Chicanery (D), implies disreputable trickery and schemes, whereas the passage highlights skilful cunning rather than underhanded devices."
+        },
+        {
+          "number": 5,
+          "group": "w3-sB-wordbank",
+          "stem": "The salesman's argument sounded convincing at first, but it was entirely ______: every 'fact' he cited collapsed the moment it was checked.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Ambiguous"
+            },
+            {
+              "key": "B",
+              "text": "Mendacious"
+            },
+            {
+              "key": "C",
+              "text": "Charlatan"
+            },
+            {
+              "key": "D",
+              "text": "Chicanery"
+            },
+            {
+              "key": "E",
+              "text": "Duplicity"
+            },
+            {
+              "key": "F",
+              "text": "Guile"
+            },
+            {
+              "key": "G",
+              "text": "Specious"
+            },
+            {
+              "key": "H",
+              "text": "Obfuscate"
+            },
+            {
+              "key": "I",
+              "text": "Equivocal"
+            },
+            {
+              "key": "J",
+              "text": "Euphemism"
+            },
+            {
+              "key": "K",
+              "text": "Circumlocution"
+            },
+            {
+              "key": "L",
+              "text": "Candor"
+            }
+          ],
+          "correctKey": "G",
+          "imageUrl": null,
+          "explanation": "Specious means superficially plausible yet actually false, matching an argument that seems sound but falls apart under scrutiny. The nearest distractor, Ambiguous (A), means merely open to more than one interpretation, not seemingly true but ultimately wrong."
+        },
+        {
+          "number": 6,
+          "group": "w3-sB-wordbank",
+          "stem": "Rather than answer plainly, the official chose to ______ the report, burying the single damaging figure beneath a hundred pages of jargon.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Ambiguous"
+            },
+            {
+              "key": "B",
+              "text": "Mendacious"
+            },
+            {
+              "key": "C",
+              "text": "Charlatan"
+            },
+            {
+              "key": "D",
+              "text": "Chicanery"
+            },
+            {
+              "key": "E",
+              "text": "Duplicity"
+            },
+            {
+              "key": "F",
+              "text": "Guile"
+            },
+            {
+              "key": "G",
+              "text": "Specious"
+            },
+            {
+              "key": "H",
+              "text": "Obfuscate"
+            },
+            {
+              "key": "I",
+              "text": "Equivocal"
+            },
+            {
+              "key": "J",
+              "text": "Euphemism"
+            },
+            {
+              "key": "K",
+              "text": "Circumlocution"
+            },
+            {
+              "key": "L",
+              "text": "Candor"
+            }
+          ],
+          "correctKey": "H",
+          "imageUrl": null,
+          "explanation": "Obfuscate is the verb meaning to make deliberately obscure or confusing, matching the figure hidden under jargon. The nearest distractor, Circumlocution (K), is a noun for roundabout speech and cannot fill this verb slot, nor does it capture the clouding of a document."
+        },
+        {
+          "number": 7,
+          "group": "w3-sB-wordbank",
+          "stem": "Pressed on whether he would resign, the minister gave an ______ reply that his supporters and his critics each read as agreement with their own view.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Ambiguous"
+            },
+            {
+              "key": "B",
+              "text": "Mendacious"
+            },
+            {
+              "key": "C",
+              "text": "Charlatan"
+            },
+            {
+              "key": "D",
+              "text": "Chicanery"
+            },
+            {
+              "key": "E",
+              "text": "Duplicity"
+            },
+            {
+              "key": "F",
+              "text": "Guile"
+            },
+            {
+              "key": "G",
+              "text": "Specious"
+            },
+            {
+              "key": "H",
+              "text": "Obfuscate"
+            },
+            {
+              "key": "I",
+              "text": "Equivocal"
+            },
+            {
+              "key": "J",
+              "text": "Euphemism"
+            },
+            {
+              "key": "K",
+              "text": "Circumlocution"
+            },
+            {
+              "key": "L",
+              "text": "Candor"
+            }
+          ],
+          "correctKey": "I",
+          "imageUrl": null,
+          "explanation": "Equivocal means deliberately ambiguous so as to avoid commitment, matching a reply crafted to satisfy both sides at once. The nearest distractor, Ambiguous (A), can describe unintended unclarity, but the minister's calculated evasion under pressure requires the deliberate double meaning of equivocal."
+        },
+        {
+          "number": 8,
+          "group": "w3-sB-wordbank",
+          "stem": "The firm never spoke of sacking anyone; 'letting people go' was the gentle ______ it preferred for mass dismissals.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Ambiguous"
+            },
+            {
+              "key": "B",
+              "text": "Mendacious"
+            },
+            {
+              "key": "C",
+              "text": "Charlatan"
+            },
+            {
+              "key": "D",
+              "text": "Chicanery"
+            },
+            {
+              "key": "E",
+              "text": "Duplicity"
+            },
+            {
+              "key": "F",
+              "text": "Guile"
+            },
+            {
+              "key": "G",
+              "text": "Specious"
+            },
+            {
+              "key": "H",
+              "text": "Obfuscate"
+            },
+            {
+              "key": "I",
+              "text": "Equivocal"
+            },
+            {
+              "key": "J",
+              "text": "Euphemism"
+            },
+            {
+              "key": "K",
+              "text": "Circumlocution"
+            },
+            {
+              "key": "L",
+              "text": "Candor"
+            }
+          ],
+          "correctKey": "J",
+          "imageUrl": null,
+          "explanation": "A euphemism is a mild term substituted for a blunt or harsh one, exactly what 'letting people go' does for firing. The nearest distractor, Circumlocution (K), means long-winded, roundabout phrasing, not a single softened word standing in for a harsh one."
+        },
+        {
+          "number": 9,
+          "group": "w3-sB-wordbank",
+          "stem": "Unable to admit he had lost the money, he took refuge in ______, filling ten minutes of talk with everything except a straight answer.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Ambiguous"
+            },
+            {
+              "key": "B",
+              "text": "Mendacious"
+            },
+            {
+              "key": "C",
+              "text": "Charlatan"
+            },
+            {
+              "key": "D",
+              "text": "Chicanery"
+            },
+            {
+              "key": "E",
+              "text": "Duplicity"
+            },
+            {
+              "key": "F",
+              "text": "Guile"
+            },
+            {
+              "key": "G",
+              "text": "Specious"
+            },
+            {
+              "key": "H",
+              "text": "Obfuscate"
+            },
+            {
+              "key": "I",
+              "text": "Equivocal"
+            },
+            {
+              "key": "J",
+              "text": "Euphemism"
+            },
+            {
+              "key": "K",
+              "text": "Circumlocution"
+            },
+            {
+              "key": "L",
+              "text": "Candor"
+            }
+          ],
+          "correctKey": "K",
+          "imageUrl": null,
+          "explanation": "Circumlocution is evasive, roundabout speech that talks around a point, matching ten minutes of talk that never reaches the answer. The nearest distractor, Euphemism (J), is a single softened word substituted for a harsh one, not the rambling evasion the sentence describes."
+        },
+        {
+          "number": 10,
+          "group": "w3-sB-wordbank",
+          "stem": "I admired her ______; she told the committee exactly where the project had failed and named her own mistakes first.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Ambiguous"
+            },
+            {
+              "key": "B",
+              "text": "Mendacious"
+            },
+            {
+              "key": "C",
+              "text": "Charlatan"
+            },
+            {
+              "key": "D",
+              "text": "Chicanery"
+            },
+            {
+              "key": "E",
+              "text": "Duplicity"
+            },
+            {
+              "key": "F",
+              "text": "Guile"
+            },
+            {
+              "key": "G",
+              "text": "Specious"
+            },
+            {
+              "key": "H",
+              "text": "Obfuscate"
+            },
+            {
+              "key": "I",
+              "text": "Equivocal"
+            },
+            {
+              "key": "J",
+              "text": "Euphemism"
+            },
+            {
+              "key": "K",
+              "text": "Circumlocution"
+            },
+            {
+              "key": "L",
+              "text": "Candor"
+            }
+          ],
+          "correctKey": "L",
+          "imageUrl": null,
+          "explanation": "Candor is frank, forthright honesty, matching a person who openly owns her failures before others. The nearest distractor, Guile (F), denotes crafty, artful cunning used to gain an advantage — the opposite of the plain openness the sentence describes."
+        }
+      ]
+    }
+  ]
+}

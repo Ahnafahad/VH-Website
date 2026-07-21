@@ -55,7 +55,7 @@ function loadEnv() {
 // ─── Validation helpers ──────────────────────────────────────────────────────
 
 const VALID_BUCKETS = new Set(['iba', 'du_fbs']);
-const VALID_KINDS   = new Set(['instruction', 'passage', 'scenario', 'shared_options']);
+const VALID_KINDS   = new Set(['instruction', 'passage', 'scenario', 'shared_options', 'word_bank']);
 const KEBAB_RE      = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 // LaTeX commands that suggest un-converted content (outside math)
 const LATEX_CMD_RE  = /\\(?!frac|sqrt|times|cdots|leq|geq|sum|int|infty|alpha|beta|pm|div|neq|approx|left|right|text|hspace|vspace|begin|end|item)[a-zA-Z]+/;
@@ -91,9 +91,9 @@ function validateGroups(groups, secTitle) {
     if (!VALID_KINDS.has(g.kind))
       throw new Error(`${prefix}: group "${g.ref}" has invalid kind "${g.kind}" (allowed: ${[...VALID_KINDS].join(', ')})`);
     if (!g.content) throw new Error(`${prefix}: group "${g.ref}" has empty content`);
-    if (g.kind === 'shared_options') {
+    if (g.kind === 'shared_options' || g.kind === 'word_bank') {
       if (!Array.isArray(g.sharedOptions) || g.sharedOptions.length < 2)
-        throw new Error(`${prefix}: shared_options group "${g.ref}" must have sharedOptions array with ≥2 items`);
+        throw new Error(`${prefix}: ${g.kind} group "${g.ref}" must have sharedOptions array with ≥2 items`);
       const soKeys = new Set();
       for (const so of g.sharedOptions) {
         if (!so.key || !so.text) throw new Error(`${prefix}: sharedOption missing key or text in "${g.ref}"`);
@@ -246,7 +246,7 @@ function validate(data) {
     // Build sharedOptions map for correctKey validation
     const sharedOptionsByGroupRef = {};
     for (const g of sec.groups) {
-      if (g.kind === 'shared_options' && g.sharedOptions) {
+      if ((g.kind === 'shared_options' || g.kind === 'word_bank') && g.sharedOptions) {
         sharedOptionsByGroupRef[g.ref] = g.sharedOptions;
       }
     }

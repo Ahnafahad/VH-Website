@@ -1,0 +1,1302 @@
+{
+  "slug": "week-06-temperament-intellect",
+  "title": "Week 6 — Temperament, Withdrawal & Warmth + Community, Intelligence & Pedantry",
+  "bucket": "iba",
+  "description": "Fill-in-the-blank vocabulary on the language of temperament, emotional withdrawal, and social warmth, and on belonging, keenness of mind, and shallow or pedantic learning.",
+  "sections": [
+    {
+      "order": 1,
+      "title": "SECTION A",
+      "marksPerCorrect": 1,
+      "penaltyPerWrong": 0,
+      "thresholdPercent": null,
+      "groups": [
+        {
+          "ref": "w6-sA-wordbank",
+          "kind": "word_bank",
+          "title": "SECTION A",
+          "content": "Use words from the box to fill the blanks. There are more words than necessary. No marks would be deducted for wrong answers.",
+          "sharedOptions": [
+            {
+              "key": "A",
+              "text": "Amiable"
+            },
+            {
+              "key": "B",
+              "text": "Ardent"
+            },
+            {
+              "key": "C",
+              "text": "Choleric"
+            },
+            {
+              "key": "D",
+              "text": "Taciturn"
+            },
+            {
+              "key": "E",
+              "text": "Affable"
+            },
+            {
+              "key": "F",
+              "text": "Irascible"
+            },
+            {
+              "key": "G",
+              "text": "Avuncular"
+            },
+            {
+              "key": "H",
+              "text": "Alacrity"
+            },
+            {
+              "key": "I",
+              "text": "Obdurate"
+            },
+            {
+              "key": "J",
+              "text": "Equanimity"
+            },
+            {
+              "key": "K",
+              "text": "Gregarious"
+            },
+            {
+              "key": "L",
+              "text": "Reticent"
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "number": 1,
+          "group": "w6-sA-wordbank",
+          "stem": "The old colonel grew so ______ in his final years that a single misplaced fork at dinner could set off an hour of shouting.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Amiable"
+            },
+            {
+              "key": "B",
+              "text": "Ardent"
+            },
+            {
+              "key": "C",
+              "text": "Choleric"
+            },
+            {
+              "key": "D",
+              "text": "Taciturn"
+            },
+            {
+              "key": "E",
+              "text": "Affable"
+            },
+            {
+              "key": "F",
+              "text": "Irascible"
+            },
+            {
+              "key": "G",
+              "text": "Avuncular"
+            },
+            {
+              "key": "H",
+              "text": "Alacrity"
+            },
+            {
+              "key": "I",
+              "text": "Obdurate"
+            },
+            {
+              "key": "J",
+              "text": "Equanimity"
+            },
+            {
+              "key": "K",
+              "text": "Gregarious"
+            },
+            {
+              "key": "L",
+              "text": "Reticent"
+            }
+          ],
+          "correctKey": "F",
+          "imageUrl": null,
+          "explanation": "Irascible means readily and easily provoked to anger, especially over trifles; the 'single misplaced fork could set off an hour of shouting' cue captures that hair-trigger irritability. The nearest distractor, Choleric (C), also means bad-tempered but describes a generally hot, angry disposition rather than the quickness to flare at tiny provocations that irascible stresses."
+        },
+        {
+          "number": 2,
+          "group": "w6-sA-wordbank",
+          "stem": "When the captain called for volunteers, the young recruit stepped forward with such ______ that the others had barely registered the question.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Amiable"
+            },
+            {
+              "key": "B",
+              "text": "Ardent"
+            },
+            {
+              "key": "C",
+              "text": "Choleric"
+            },
+            {
+              "key": "D",
+              "text": "Taciturn"
+            },
+            {
+              "key": "E",
+              "text": "Affable"
+            },
+            {
+              "key": "F",
+              "text": "Irascible"
+            },
+            {
+              "key": "G",
+              "text": "Avuncular"
+            },
+            {
+              "key": "H",
+              "text": "Alacrity"
+            },
+            {
+              "key": "I",
+              "text": "Obdurate"
+            },
+            {
+              "key": "J",
+              "text": "Equanimity"
+            },
+            {
+              "key": "K",
+              "text": "Gregarious"
+            },
+            {
+              "key": "L",
+              "text": "Reticent"
+            }
+          ],
+          "correctKey": "H",
+          "imageUrl": null,
+          "explanation": "Alacrity is a noun meaning brisk and cheerful eagerness or promptness, which fits 'stepped forward... before the others had registered the question.' The nearest distractor, Equanimity (J), is the only other abstract-quality noun that fits 'with such ___' grammatically, but it denotes calm composure, the opposite of the eager haste the sentence describes."
+        },
+        {
+          "number": 3,
+          "group": "w6-sA-wordbank",
+          "stem": "An ______ republican since boyhood, he spent every evening writing pamphlets that burned with conviction.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Amiable"
+            },
+            {
+              "key": "B",
+              "text": "Ardent"
+            },
+            {
+              "key": "C",
+              "text": "Choleric"
+            },
+            {
+              "key": "D",
+              "text": "Taciturn"
+            },
+            {
+              "key": "E",
+              "text": "Affable"
+            },
+            {
+              "key": "F",
+              "text": "Irascible"
+            },
+            {
+              "key": "G",
+              "text": "Avuncular"
+            },
+            {
+              "key": "H",
+              "text": "Alacrity"
+            },
+            {
+              "key": "I",
+              "text": "Obdurate"
+            },
+            {
+              "key": "J",
+              "text": "Equanimity"
+            },
+            {
+              "key": "K",
+              "text": "Gregarious"
+            },
+            {
+              "key": "L",
+              "text": "Reticent"
+            }
+          ],
+          "correctKey": "B",
+          "imageUrl": null,
+          "explanation": "Ardent means intensely passionate and devoted to a cause, which the lifelong dedication and 'burned with conviction' cue confirm. The nearest distractor, Choleric (C), shares the imagery of heat and burning, but choleric means hot-tempered and irritable, describing anger rather than the loyal, enthusiastic devotion ardent conveys."
+        },
+        {
+          "number": 4,
+          "group": "w6-sA-wordbank",
+          "stem": "Normally forthcoming about his travels, he became strangely ______ whenever the subject of his years abroad arose, changing the topic within moments.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Amiable"
+            },
+            {
+              "key": "B",
+              "text": "Ardent"
+            },
+            {
+              "key": "C",
+              "text": "Choleric"
+            },
+            {
+              "key": "D",
+              "text": "Taciturn"
+            },
+            {
+              "key": "E",
+              "text": "Affable"
+            },
+            {
+              "key": "F",
+              "text": "Irascible"
+            },
+            {
+              "key": "G",
+              "text": "Avuncular"
+            },
+            {
+              "key": "H",
+              "text": "Alacrity"
+            },
+            {
+              "key": "I",
+              "text": "Obdurate"
+            },
+            {
+              "key": "J",
+              "text": "Equanimity"
+            },
+            {
+              "key": "K",
+              "text": "Gregarious"
+            },
+            {
+              "key": "L",
+              "text": "Reticent"
+            }
+          ],
+          "correctKey": "L",
+          "imageUrl": null,
+          "explanation": "Reticent means reluctant to speak about a particular matter, holding back on specific things, which the 'normally forthcoming... but on this subject' contrast pinpoints. The nearest distractor, Taciturn (D), means habitually silent by disposition, but the man is talkative in general and guarded only here, so his reserve is topic-specific reticence, not a settled silence."
+        },
+        {
+          "number": 5,
+          "group": "w6-sA-wordbank",
+          "stem": "A ______ man by nature, the shepherd could pass an entire week in the hills without feeling the least need to speak to anyone.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Amiable"
+            },
+            {
+              "key": "B",
+              "text": "Ardent"
+            },
+            {
+              "key": "C",
+              "text": "Choleric"
+            },
+            {
+              "key": "D",
+              "text": "Taciturn"
+            },
+            {
+              "key": "E",
+              "text": "Affable"
+            },
+            {
+              "key": "F",
+              "text": "Irascible"
+            },
+            {
+              "key": "G",
+              "text": "Avuncular"
+            },
+            {
+              "key": "H",
+              "text": "Alacrity"
+            },
+            {
+              "key": "I",
+              "text": "Obdurate"
+            },
+            {
+              "key": "J",
+              "text": "Equanimity"
+            },
+            {
+              "key": "K",
+              "text": "Gregarious"
+            },
+            {
+              "key": "L",
+              "text": "Reticent"
+            }
+          ],
+          "correctKey": "D",
+          "imageUrl": null,
+          "explanation": "Taciturn means disposed by temperament to say very little, which the 'by nature... without the least need to speak to anyone' cue signals as a blanket trait. The nearest distractor, Reticent (L), implies holding back on a specific topic, but here the silence is a general, settled disposition rather than reluctance about any particular subject."
+        },
+        {
+          "number": 6,
+          "group": "w6-sA-wordbank",
+          "stem": "Even as the verdict was read and gasps filled the courtroom, she received the news with perfect ______, her face betraying nothing.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Amiable"
+            },
+            {
+              "key": "B",
+              "text": "Ardent"
+            },
+            {
+              "key": "C",
+              "text": "Choleric"
+            },
+            {
+              "key": "D",
+              "text": "Taciturn"
+            },
+            {
+              "key": "E",
+              "text": "Affable"
+            },
+            {
+              "key": "F",
+              "text": "Irascible"
+            },
+            {
+              "key": "G",
+              "text": "Avuncular"
+            },
+            {
+              "key": "H",
+              "text": "Alacrity"
+            },
+            {
+              "key": "I",
+              "text": "Obdurate"
+            },
+            {
+              "key": "J",
+              "text": "Equanimity"
+            },
+            {
+              "key": "K",
+              "text": "Gregarious"
+            },
+            {
+              "key": "L",
+              "text": "Reticent"
+            }
+          ],
+          "correctKey": "J",
+          "imageUrl": null,
+          "explanation": "Equanimity is a noun meaning calmness and composure, especially under stress, which 'her face betraying nothing' amid gasps illustrates. The nearest distractor, Alacrity (H), is the other abstract-quality noun that fits 'with perfect ___' grammatically, but it means brisk eagerness, which has nothing to do with the unruffled steadiness the scene demands."
+        },
+        {
+          "number": 7,
+          "group": "w6-sA-wordbank",
+          "stem": "Every envoy failed; the king remained ______ to the last, refusing even to consider terms that might have spared his city from the flames.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Amiable"
+            },
+            {
+              "key": "B",
+              "text": "Ardent"
+            },
+            {
+              "key": "C",
+              "text": "Choleric"
+            },
+            {
+              "key": "D",
+              "text": "Taciturn"
+            },
+            {
+              "key": "E",
+              "text": "Affable"
+            },
+            {
+              "key": "F",
+              "text": "Irascible"
+            },
+            {
+              "key": "G",
+              "text": "Avuncular"
+            },
+            {
+              "key": "H",
+              "text": "Alacrity"
+            },
+            {
+              "key": "I",
+              "text": "Obdurate"
+            },
+            {
+              "key": "J",
+              "text": "Equanimity"
+            },
+            {
+              "key": "K",
+              "text": "Gregarious"
+            },
+            {
+              "key": "L",
+              "text": "Reticent"
+            }
+          ],
+          "correctKey": "I",
+          "imageUrl": null,
+          "explanation": "Obdurate means stubbornly refusing to change one's position, unyielding to the last, which 'refusing even to consider terms' conveys. The nearest distractor, Irascible (F), means quick-tempered; a king who refuses may seem angry, but obduracy is about an immovable will, not the readiness to lose one's temper that irascible names."
+        },
+        {
+          "number": 8,
+          "group": "w6-sA-wordbank",
+          "stem": "So ______ was the innkeeper that an evening without a full common room and a dozen conversations left him thoroughly miserable.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Amiable"
+            },
+            {
+              "key": "B",
+              "text": "Ardent"
+            },
+            {
+              "key": "C",
+              "text": "Choleric"
+            },
+            {
+              "key": "D",
+              "text": "Taciturn"
+            },
+            {
+              "key": "E",
+              "text": "Affable"
+            },
+            {
+              "key": "F",
+              "text": "Irascible"
+            },
+            {
+              "key": "G",
+              "text": "Avuncular"
+            },
+            {
+              "key": "H",
+              "text": "Alacrity"
+            },
+            {
+              "key": "I",
+              "text": "Obdurate"
+            },
+            {
+              "key": "J",
+              "text": "Equanimity"
+            },
+            {
+              "key": "K",
+              "text": "Gregarious"
+            },
+            {
+              "key": "L",
+              "text": "Reticent"
+            }
+          ],
+          "correctKey": "K",
+          "imageUrl": null,
+          "explanation": "Gregarious means fond of the company of others and happiest in a crowd, which 'miserable without a full room and a dozen conversations' makes plain. The nearest distractor, Affable (E), means friendly and easy to talk to, but it describes a pleasant manner, not the active craving for company and bustle that gregarious specifies."
+        },
+        {
+          "number": 9,
+          "group": "w6-sA-wordbank",
+          "stem": "The shopkeeper's ______ manner — a warm word for every customer, a joke always ready — made his little store the most popular on the street.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Amiable"
+            },
+            {
+              "key": "B",
+              "text": "Ardent"
+            },
+            {
+              "key": "C",
+              "text": "Choleric"
+            },
+            {
+              "key": "D",
+              "text": "Taciturn"
+            },
+            {
+              "key": "E",
+              "text": "Affable"
+            },
+            {
+              "key": "F",
+              "text": "Irascible"
+            },
+            {
+              "key": "G",
+              "text": "Avuncular"
+            },
+            {
+              "key": "H",
+              "text": "Alacrity"
+            },
+            {
+              "key": "I",
+              "text": "Obdurate"
+            },
+            {
+              "key": "J",
+              "text": "Equanimity"
+            },
+            {
+              "key": "K",
+              "text": "Gregarious"
+            },
+            {
+              "key": "L",
+              "text": "Reticent"
+            }
+          ],
+          "correctKey": "E",
+          "imageUrl": null,
+          "explanation": "Affable means easy to approach and pleasant in conversation, which 'a warm word for every customer, a joke always ready' captures. The nearest distractor, Amiable (A), is nearly synonymous but stresses an agreeable, likeable inner disposition, whereas affable points to the outward approachability and readiness in talk that the sentence foregrounds."
+        },
+        {
+          "number": 10,
+          "group": "w6-sA-wordbank",
+          "stem": "The professor took an ______ interest in his students, dispensing career advice and gentle warnings over tea like a favourite uncle.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Amiable"
+            },
+            {
+              "key": "B",
+              "text": "Ardent"
+            },
+            {
+              "key": "C",
+              "text": "Choleric"
+            },
+            {
+              "key": "D",
+              "text": "Taciturn"
+            },
+            {
+              "key": "E",
+              "text": "Affable"
+            },
+            {
+              "key": "F",
+              "text": "Irascible"
+            },
+            {
+              "key": "G",
+              "text": "Avuncular"
+            },
+            {
+              "key": "H",
+              "text": "Alacrity"
+            },
+            {
+              "key": "I",
+              "text": "Obdurate"
+            },
+            {
+              "key": "J",
+              "text": "Equanimity"
+            },
+            {
+              "key": "K",
+              "text": "Gregarious"
+            },
+            {
+              "key": "L",
+              "text": "Reticent"
+            }
+          ],
+          "correctKey": "G",
+          "imageUrl": null,
+          "explanation": "Avuncular means kind and genial toward younger people in the manner of an uncle, which the 'like a favourite uncle' cue states outright. The nearest distractor, Amiable (A), means merely friendly and good-natured, but it lacks the older-to-younger, mentoring warmth that avuncular specifically carries."
+        }
+      ]
+    },
+    {
+      "order": 2,
+      "title": "SECTION B",
+      "marksPerCorrect": 1,
+      "penaltyPerWrong": 0,
+      "thresholdPercent": null,
+      "groups": [
+        {
+          "ref": "w6-sB-wordbank",
+          "kind": "word_bank",
+          "title": "SECTION B",
+          "content": "Use words from the box to fill the blanks. There are more words than necessary. No marks would be deducted for wrong answers.",
+          "sharedOptions": [
+            {
+              "key": "A",
+              "text": "Immigrate"
+            },
+            {
+              "key": "B",
+              "text": "Cosmopolitan"
+            },
+            {
+              "key": "C",
+              "text": "Adroit"
+            },
+            {
+              "key": "D",
+              "text": "Emigrate"
+            },
+            {
+              "key": "E",
+              "text": "Superficial"
+            },
+            {
+              "key": "F",
+              "text": "Assimilate"
+            },
+            {
+              "key": "G",
+              "text": "Cursory"
+            },
+            {
+              "key": "H",
+              "text": "Pedantic"
+            },
+            {
+              "key": "I",
+              "text": "Astute"
+            },
+            {
+              "key": "J",
+              "text": "Erudite"
+            },
+            {
+              "key": "K",
+              "text": "Facile"
+            },
+            {
+              "key": "L",
+              "text": "Dilettante"
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "number": 1,
+          "group": "w6-sB-wordbank",
+          "stem": "Within two generations the immigrant families had so completely ______ that their grandchildren celebrated only the festivals of their adopted country.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Immigrate"
+            },
+            {
+              "key": "B",
+              "text": "Cosmopolitan"
+            },
+            {
+              "key": "C",
+              "text": "Adroit"
+            },
+            {
+              "key": "D",
+              "text": "Emigrate"
+            },
+            {
+              "key": "E",
+              "text": "Superficial"
+            },
+            {
+              "key": "F",
+              "text": "Assimilate"
+            },
+            {
+              "key": "G",
+              "text": "Cursory"
+            },
+            {
+              "key": "H",
+              "text": "Pedantic"
+            },
+            {
+              "key": "I",
+              "text": "Astute"
+            },
+            {
+              "key": "J",
+              "text": "Erudite"
+            },
+            {
+              "key": "K",
+              "text": "Facile"
+            },
+            {
+              "key": "L",
+              "text": "Dilettante"
+            }
+          ],
+          "correctKey": "F",
+          "imageUrl": null,
+          "explanation": "Assimilate means to absorb or become absorbed into a surrounding culture, which 'grandchildren celebrated only the festivals of their adopted country' demonstrates. The nearest distractor, Immigrate (A), means only to arrive in a new country to settle; it names the act of coming, not the later cultural blending the sentence describes."
+        },
+        {
+          "number": 2,
+          "group": "w6-sB-wordbank",
+          "stem": "Driven out by famine, whole villages resolved to ______ from their homeland, never expecting to see its shores again.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Immigrate"
+            },
+            {
+              "key": "B",
+              "text": "Cosmopolitan"
+            },
+            {
+              "key": "C",
+              "text": "Adroit"
+            },
+            {
+              "key": "D",
+              "text": "Emigrate"
+            },
+            {
+              "key": "E",
+              "text": "Superficial"
+            },
+            {
+              "key": "F",
+              "text": "Assimilate"
+            },
+            {
+              "key": "G",
+              "text": "Cursory"
+            },
+            {
+              "key": "H",
+              "text": "Pedantic"
+            },
+            {
+              "key": "I",
+              "text": "Astute"
+            },
+            {
+              "key": "J",
+              "text": "Erudite"
+            },
+            {
+              "key": "K",
+              "text": "Facile"
+            },
+            {
+              "key": "L",
+              "text": "Dilettante"
+            }
+          ],
+          "correctKey": "D",
+          "imageUrl": null,
+          "explanation": "Emigrate means to leave one's own country to settle elsewhere, taking 'from,' which the 'from their homeland... its shores again' cue marks as departure. The nearest distractor, Immigrate (A), means to enter a new country and takes 'into/to'; the directional 'from their homeland' makes emigrate the only correct fit."
+        },
+        {
+          "number": 3,
+          "group": "w6-sB-wordbank",
+          "stem": "Equally at ease ordering dinner in Tokyo, Cairo or Rome, she had the ______ polish of someone who had never truly belonged to any single city.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Immigrate"
+            },
+            {
+              "key": "B",
+              "text": "Cosmopolitan"
+            },
+            {
+              "key": "C",
+              "text": "Adroit"
+            },
+            {
+              "key": "D",
+              "text": "Emigrate"
+            },
+            {
+              "key": "E",
+              "text": "Superficial"
+            },
+            {
+              "key": "F",
+              "text": "Assimilate"
+            },
+            {
+              "key": "G",
+              "text": "Cursory"
+            },
+            {
+              "key": "H",
+              "text": "Pedantic"
+            },
+            {
+              "key": "I",
+              "text": "Astute"
+            },
+            {
+              "key": "J",
+              "text": "Erudite"
+            },
+            {
+              "key": "K",
+              "text": "Facile"
+            },
+            {
+              "key": "L",
+              "text": "Dilettante"
+            }
+          ],
+          "correctKey": "B",
+          "imageUrl": null,
+          "explanation": "Cosmopolitan means worldly and at home among many cultures, which 'equally at ease in Tokyo, Cairo or Rome' conveys. The nearest distractor, Erudite (J), means deeply learned in books and scholarship; that is knowledge, not the multicultural social ease that the travel cue signals as cosmopolitan."
+        },
+        {
+          "number": 4,
+          "group": "w6-sB-wordbank",
+          "stem": "The old broker was ______ enough to sense a panic before it broke, quietly selling while everyone else still congratulated themselves.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Immigrate"
+            },
+            {
+              "key": "B",
+              "text": "Cosmopolitan"
+            },
+            {
+              "key": "C",
+              "text": "Adroit"
+            },
+            {
+              "key": "D",
+              "text": "Emigrate"
+            },
+            {
+              "key": "E",
+              "text": "Superficial"
+            },
+            {
+              "key": "F",
+              "text": "Assimilate"
+            },
+            {
+              "key": "G",
+              "text": "Cursory"
+            },
+            {
+              "key": "H",
+              "text": "Pedantic"
+            },
+            {
+              "key": "I",
+              "text": "Astute"
+            },
+            {
+              "key": "J",
+              "text": "Erudite"
+            },
+            {
+              "key": "K",
+              "text": "Facile"
+            },
+            {
+              "key": "L",
+              "text": "Dilettante"
+            }
+          ],
+          "correctKey": "I",
+          "imageUrl": null,
+          "explanation": "Astute means shrewdly perceptive about people and situations, often to one's own advantage, which 'sensing panic and quietly selling first' shows. The nearest distractor, Adroit (C), means cleverly skilful in handling situations or actions, but here the gift is one of foresight and reading a situation, not the deft execution adroit describes, so astute is right."
+        },
+        {
+          "number": 5,
+          "group": "w6-sB-wordbank",
+          "stem": "A ______ negotiator, she could turn a hostile room to her side with a single well-timed concession.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Immigrate"
+            },
+            {
+              "key": "B",
+              "text": "Cosmopolitan"
+            },
+            {
+              "key": "C",
+              "text": "Adroit"
+            },
+            {
+              "key": "D",
+              "text": "Emigrate"
+            },
+            {
+              "key": "E",
+              "text": "Superficial"
+            },
+            {
+              "key": "F",
+              "text": "Assimilate"
+            },
+            {
+              "key": "G",
+              "text": "Cursory"
+            },
+            {
+              "key": "H",
+              "text": "Pedantic"
+            },
+            {
+              "key": "I",
+              "text": "Astute"
+            },
+            {
+              "key": "J",
+              "text": "Erudite"
+            },
+            {
+              "key": "K",
+              "text": "Facile"
+            },
+            {
+              "key": "L",
+              "text": "Dilettante"
+            }
+          ],
+          "correctKey": "C",
+          "imageUrl": null,
+          "explanation": "Adroit means cleverly skilful in handling situations or actions, which 'turn a hostile room with a well-timed concession' captures as deft manoeuvre. The nearest distractor, Astute (I), means shrewd in judgement and perception, but the sentence stresses skilful execution rather than mere insight, so adroit fits the handling of the moment."
+        },
+        {
+          "number": 6,
+          "group": "w6-sB-wordbank",
+          "stem": "His footnotes alone filled a hundred pages; no one doubted the ______ command of ancient languages that underlay the book.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Immigrate"
+            },
+            {
+              "key": "B",
+              "text": "Cosmopolitan"
+            },
+            {
+              "key": "C",
+              "text": "Adroit"
+            },
+            {
+              "key": "D",
+              "text": "Emigrate"
+            },
+            {
+              "key": "E",
+              "text": "Superficial"
+            },
+            {
+              "key": "F",
+              "text": "Assimilate"
+            },
+            {
+              "key": "G",
+              "text": "Cursory"
+            },
+            {
+              "key": "H",
+              "text": "Pedantic"
+            },
+            {
+              "key": "I",
+              "text": "Astute"
+            },
+            {
+              "key": "J",
+              "text": "Erudite"
+            },
+            {
+              "key": "K",
+              "text": "Facile"
+            },
+            {
+              "key": "L",
+              "text": "Dilettante"
+            }
+          ],
+          "correctKey": "J",
+          "imageUrl": null,
+          "explanation": "Erudite means possessing or showing deep, admirable learning, which 'command of ancient languages that underlay the book' confirms. The nearest distractor, Pedantic (H), also concerns learning but pejoratively, meaning tediously fixated on minor detail; here the footnotes rest on genuine scholarship, so the learning is erudite, not pedantic."
+        },
+        {
+          "number": 7,
+          "group": "w6-sB-wordbank",
+          "stem": "The examiner was insufferably ______, docking marks for a misplaced comma while ignoring the brilliance of the argument itself.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Immigrate"
+            },
+            {
+              "key": "B",
+              "text": "Cosmopolitan"
+            },
+            {
+              "key": "C",
+              "text": "Adroit"
+            },
+            {
+              "key": "D",
+              "text": "Emigrate"
+            },
+            {
+              "key": "E",
+              "text": "Superficial"
+            },
+            {
+              "key": "F",
+              "text": "Assimilate"
+            },
+            {
+              "key": "G",
+              "text": "Cursory"
+            },
+            {
+              "key": "H",
+              "text": "Pedantic"
+            },
+            {
+              "key": "I",
+              "text": "Astute"
+            },
+            {
+              "key": "J",
+              "text": "Erudite"
+            },
+            {
+              "key": "K",
+              "text": "Facile"
+            },
+            {
+              "key": "L",
+              "text": "Dilettante"
+            }
+          ],
+          "correctKey": "H",
+          "imageUrl": null,
+          "explanation": "Pedantic means tediously preoccupied with minor rules and detail at the expense of substance, which 'docking marks for a comma while ignoring the brilliance' captures. The nearest distractor, Erudite (J), means genuinely learned, but fussing over a comma while missing the argument is petty rule-obsession, not real scholarship, so pedantic is right."
+        },
+        {
+          "number": 8,
+          "group": "w6-sB-wordbank",
+          "stem": "He gave the contract only a ______ glance before signing, and so missed the clause that would cost him the house.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Immigrate"
+            },
+            {
+              "key": "B",
+              "text": "Cosmopolitan"
+            },
+            {
+              "key": "C",
+              "text": "Adroit"
+            },
+            {
+              "key": "D",
+              "text": "Emigrate"
+            },
+            {
+              "key": "E",
+              "text": "Superficial"
+            },
+            {
+              "key": "F",
+              "text": "Assimilate"
+            },
+            {
+              "key": "G",
+              "text": "Cursory"
+            },
+            {
+              "key": "H",
+              "text": "Pedantic"
+            },
+            {
+              "key": "I",
+              "text": "Astute"
+            },
+            {
+              "key": "J",
+              "text": "Erudite"
+            },
+            {
+              "key": "K",
+              "text": "Facile"
+            },
+            {
+              "key": "L",
+              "text": "Dilettante"
+            }
+          ],
+          "correctKey": "G",
+          "imageUrl": null,
+          "explanation": "Cursory means hasty and passing, a quick once-over lacking care, which 'a glance before signing... missed the clause' illustrates. The nearest distractor, Superficial (E), also implies shallowness, but it stresses staying on the surface generally, whereas cursory specifically stresses the speed and brevity of the look."
+        },
+        {
+          "number": 9,
+          "group": "w6-sB-wordbank",
+          "stem": "For all his talk of painting, he was a mere ______, dabbling for a season in oils before abandoning them for the harpsichord.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Immigrate"
+            },
+            {
+              "key": "B",
+              "text": "Cosmopolitan"
+            },
+            {
+              "key": "C",
+              "text": "Adroit"
+            },
+            {
+              "key": "D",
+              "text": "Emigrate"
+            },
+            {
+              "key": "E",
+              "text": "Superficial"
+            },
+            {
+              "key": "F",
+              "text": "Assimilate"
+            },
+            {
+              "key": "G",
+              "text": "Cursory"
+            },
+            {
+              "key": "H",
+              "text": "Pedantic"
+            },
+            {
+              "key": "I",
+              "text": "Astute"
+            },
+            {
+              "key": "J",
+              "text": "Erudite"
+            },
+            {
+              "key": "K",
+              "text": "Facile"
+            },
+            {
+              "key": "L",
+              "text": "Dilettante"
+            }
+          ],
+          "correctKey": "L",
+          "imageUrl": null,
+          "explanation": "Dilettante is a noun for a dabbler who pursues an art superficially and without commitment, which 'dabbling for a season before abandoning it' captures. The nearest distractor, Superficial (E), is an adjective describing such shallowness, but the slot 'a mere ___' needs a noun naming the person, and dilettante is that noun."
+        },
+        {
+          "number": 10,
+          "group": "w6-sB-wordbank",
+          "stem": "The critics dismissed his argument as ______ — smooth and superficially persuasive, but collapsing the moment one pressed on any of its claims.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Immigrate"
+            },
+            {
+              "key": "B",
+              "text": "Cosmopolitan"
+            },
+            {
+              "key": "C",
+              "text": "Adroit"
+            },
+            {
+              "key": "D",
+              "text": "Emigrate"
+            },
+            {
+              "key": "E",
+              "text": "Superficial"
+            },
+            {
+              "key": "F",
+              "text": "Assimilate"
+            },
+            {
+              "key": "G",
+              "text": "Cursory"
+            },
+            {
+              "key": "H",
+              "text": "Pedantic"
+            },
+            {
+              "key": "I",
+              "text": "Astute"
+            },
+            {
+              "key": "J",
+              "text": "Erudite"
+            },
+            {
+              "key": "K",
+              "text": "Facile"
+            },
+            {
+              "key": "L",
+              "text": "Dilettante"
+            }
+          ],
+          "correctKey": "K",
+          "imageUrl": null,
+          "explanation": "Facile means achieved too easily and therefore glib, oversimplifying and ignoring real difficulty, which 'smooth but collapsing when pressed' captures. The nearest distractor, Superficial (E), means merely on the surface; the sentence uses 'superficially' as a separate descriptor and reserves the blank for the higher judgement of glib oversimplification, which is facile."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1302 @@
+{
+  "slug": "week-12-causation-transcendence",
+  "title": "Week 12 — Ubiquity, Causation & Consequences + Time, Struggle & Transcendence",
+  "bucket": "iba",
+  "description": "Fill-in-the-blank vocabulary on ubiquity, causes, and consequences, and on the language of time, hardship, and transcendence.",
+  "sections": [
+    {
+      "order": 1,
+      "title": "SECTION A",
+      "marksPerCorrect": 1,
+      "penaltyPerWrong": 0,
+      "thresholdPercent": null,
+      "groups": [
+        {
+          "ref": "w12-sA-wordbank",
+          "kind": "word_bank",
+          "title": "SECTION A",
+          "content": "Use words from the box to fill the blanks. There are more words than necessary. No marks would be deducted for wrong answers.",
+          "sharedOptions": [
+            {
+              "key": "A",
+              "text": "Catalyst"
+            },
+            {
+              "key": "B",
+              "text": "Ubiquitous"
+            },
+            {
+              "key": "C",
+              "text": "Pervade"
+            },
+            {
+              "key": "D",
+              "text": "Contingent"
+            },
+            {
+              "key": "E",
+              "text": "Proliferate"
+            },
+            {
+              "key": "F",
+              "text": "Reciprocal"
+            },
+            {
+              "key": "G",
+              "text": "Harbinger"
+            },
+            {
+              "key": "H",
+              "text": "Conducive"
+            },
+            {
+              "key": "I",
+              "text": "Precursor"
+            },
+            {
+              "key": "J",
+              "text": "Ramification"
+            },
+            {
+              "key": "K",
+              "text": "Repercussion"
+            },
+            {
+              "key": "L",
+              "text": "Imminent"
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "number": 1,
+          "group": "w12-sA-wordbank",
+          "stem": "A faint scent of incense seemed to ______ the whole temple, drifting into every alcove and settling deep in the folds of the ancient tapestries.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Catalyst"
+            },
+            {
+              "key": "B",
+              "text": "Ubiquitous"
+            },
+            {
+              "key": "C",
+              "text": "Pervade"
+            },
+            {
+              "key": "D",
+              "text": "Contingent"
+            },
+            {
+              "key": "E",
+              "text": "Proliferate"
+            },
+            {
+              "key": "F",
+              "text": "Reciprocal"
+            },
+            {
+              "key": "G",
+              "text": "Harbinger"
+            },
+            {
+              "key": "H",
+              "text": "Conducive"
+            },
+            {
+              "key": "I",
+              "text": "Precursor"
+            },
+            {
+              "key": "J",
+              "text": "Ramification"
+            },
+            {
+              "key": "K",
+              "text": "Repercussion"
+            },
+            {
+              "key": "L",
+              "text": "Imminent"
+            }
+          ],
+          "correctKey": "C",
+          "imageUrl": null,
+          "explanation": "Pervade is a verb meaning to spread through and be present in every part of something, matching a scent that reaches every alcove. The nearest distractor, Ubiquitous (B), carries the same sense of being everywhere but is an adjective and cannot fill the verb slot in 'to ______ the whole temple.'"
+        },
+        {
+          "number": 2,
+          "group": "w12-sA-wordbank",
+          "stem": "In the warm, stagnant shallows the bacteria began to ______, their colonies multiplying so fast that the entire pond turned green within days.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Catalyst"
+            },
+            {
+              "key": "B",
+              "text": "Ubiquitous"
+            },
+            {
+              "key": "C",
+              "text": "Pervade"
+            },
+            {
+              "key": "D",
+              "text": "Contingent"
+            },
+            {
+              "key": "E",
+              "text": "Proliferate"
+            },
+            {
+              "key": "F",
+              "text": "Reciprocal"
+            },
+            {
+              "key": "G",
+              "text": "Harbinger"
+            },
+            {
+              "key": "H",
+              "text": "Conducive"
+            },
+            {
+              "key": "I",
+              "text": "Precursor"
+            },
+            {
+              "key": "J",
+              "text": "Ramification"
+            },
+            {
+              "key": "K",
+              "text": "Repercussion"
+            },
+            {
+              "key": "L",
+              "text": "Imminent"
+            }
+          ],
+          "correctKey": "E",
+          "imageUrl": null,
+          "explanation": "Proliferate means to increase rapidly in number, matching colonies that multiply until the pond turns green. The nearest distractor, Pervade (C), means to spread through a space and is transitive; it describes diffusion rather than growth in number, so it does not fit an image of things multiplying."
+        },
+        {
+          "number": 3,
+          "group": "w12-sA-wordbank",
+          "stem": "The market crash proved the ______ of the revolution, tipping decades of simmering resentment into open revolt within a single fortnight.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Catalyst"
+            },
+            {
+              "key": "B",
+              "text": "Ubiquitous"
+            },
+            {
+              "key": "C",
+              "text": "Pervade"
+            },
+            {
+              "key": "D",
+              "text": "Contingent"
+            },
+            {
+              "key": "E",
+              "text": "Proliferate"
+            },
+            {
+              "key": "F",
+              "text": "Reciprocal"
+            },
+            {
+              "key": "G",
+              "text": "Harbinger"
+            },
+            {
+              "key": "H",
+              "text": "Conducive"
+            },
+            {
+              "key": "I",
+              "text": "Precursor"
+            },
+            {
+              "key": "J",
+              "text": "Ramification"
+            },
+            {
+              "key": "K",
+              "text": "Repercussion"
+            },
+            {
+              "key": "L",
+              "text": "Imminent"
+            }
+          ],
+          "correctKey": "A",
+          "imageUrl": null,
+          "explanation": "A catalyst is something that actively precipitates or triggers a change, matching a crash that 'tips' resentment into revolt. The nearest distractor, Precursor (I), means only a forerunner that comes before something; it marks precedence in time, not the causal triggering the sentence describes."
+        },
+        {
+          "number": 4,
+          "group": "w12-sA-wordbank",
+          "stem": "The alliance rested on a ______ pledge of defence: each state bound itself to march to the other's aid the moment either was attacked.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Catalyst"
+            },
+            {
+              "key": "B",
+              "text": "Ubiquitous"
+            },
+            {
+              "key": "C",
+              "text": "Pervade"
+            },
+            {
+              "key": "D",
+              "text": "Contingent"
+            },
+            {
+              "key": "E",
+              "text": "Proliferate"
+            },
+            {
+              "key": "F",
+              "text": "Reciprocal"
+            },
+            {
+              "key": "G",
+              "text": "Harbinger"
+            },
+            {
+              "key": "H",
+              "text": "Conducive"
+            },
+            {
+              "key": "I",
+              "text": "Precursor"
+            },
+            {
+              "key": "J",
+              "text": "Ramification"
+            },
+            {
+              "key": "K",
+              "text": "Repercussion"
+            },
+            {
+              "key": "L",
+              "text": "Imminent"
+            }
+          ],
+          "correctKey": "F",
+          "imageUrl": null,
+          "explanation": "Reciprocal means given and received in mutual exchange, matching 'each... the other' and 'either.' The nearest distractor, Contingent (D), means dependent on a condition; while the pledge has a triggering condition, its defining quality here is mutuality, which contingent does not capture."
+        },
+        {
+          "number": 5,
+          "group": "w12-sA-wordbank",
+          "stem": "Once a rarity, the plastic bottle is now so ______ that it litters the remotest beaches and the deepest ocean trenches alike.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Catalyst"
+            },
+            {
+              "key": "B",
+              "text": "Ubiquitous"
+            },
+            {
+              "key": "C",
+              "text": "Pervade"
+            },
+            {
+              "key": "D",
+              "text": "Contingent"
+            },
+            {
+              "key": "E",
+              "text": "Proliferate"
+            },
+            {
+              "key": "F",
+              "text": "Reciprocal"
+            },
+            {
+              "key": "G",
+              "text": "Harbinger"
+            },
+            {
+              "key": "H",
+              "text": "Conducive"
+            },
+            {
+              "key": "I",
+              "text": "Precursor"
+            },
+            {
+              "key": "J",
+              "text": "Ramification"
+            },
+            {
+              "key": "K",
+              "text": "Repercussion"
+            },
+            {
+              "key": "L",
+              "text": "Imminent"
+            }
+          ],
+          "correctKey": "B",
+          "imageUrl": null,
+          "explanation": "Ubiquitous means present or found everywhere, matching an object that reaches even the remotest places. The nearest distractor, Pervade (C), shares the sense of being everywhere but is a verb and cannot follow 'so ______ that,' where an adjective is required."
+        },
+        {
+          "number": 6,
+          "group": "w12-sA-wordbank",
+          "stem": "The clinic's soft lighting and hushed corridors were deliberately arranged to be ______ to rest and unhurried recovery.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Catalyst"
+            },
+            {
+              "key": "B",
+              "text": "Ubiquitous"
+            },
+            {
+              "key": "C",
+              "text": "Pervade"
+            },
+            {
+              "key": "D",
+              "text": "Contingent"
+            },
+            {
+              "key": "E",
+              "text": "Proliferate"
+            },
+            {
+              "key": "F",
+              "text": "Reciprocal"
+            },
+            {
+              "key": "G",
+              "text": "Harbinger"
+            },
+            {
+              "key": "H",
+              "text": "Conducive"
+            },
+            {
+              "key": "I",
+              "text": "Precursor"
+            },
+            {
+              "key": "J",
+              "text": "Ramification"
+            },
+            {
+              "key": "K",
+              "text": "Repercussion"
+            },
+            {
+              "key": "L",
+              "text": "Imminent"
+            }
+          ],
+          "correctKey": "H",
+          "imageUrl": null,
+          "explanation": "Conducive means favourable to bringing about a result and pairs with 'to,' matching surroundings that promote rest. The nearest distractor, Contingent (D), takes 'on' or 'upon' and means dependent, not favourable, so it fits neither the preposition nor the sense of helping something along."
+        },
+        {
+          "number": 7,
+          "group": "w12-sA-wordbank",
+          "stem": "Payment of the final installment was ______ on the builders finishing every last repair before the first winter frost set in.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Catalyst"
+            },
+            {
+              "key": "B",
+              "text": "Ubiquitous"
+            },
+            {
+              "key": "C",
+              "text": "Pervade"
+            },
+            {
+              "key": "D",
+              "text": "Contingent"
+            },
+            {
+              "key": "E",
+              "text": "Proliferate"
+            },
+            {
+              "key": "F",
+              "text": "Reciprocal"
+            },
+            {
+              "key": "G",
+              "text": "Harbinger"
+            },
+            {
+              "key": "H",
+              "text": "Conducive"
+            },
+            {
+              "key": "I",
+              "text": "Precursor"
+            },
+            {
+              "key": "J",
+              "text": "Ramification"
+            },
+            {
+              "key": "K",
+              "text": "Repercussion"
+            },
+            {
+              "key": "L",
+              "text": "Imminent"
+            }
+          ],
+          "correctKey": "D",
+          "imageUrl": null,
+          "explanation": "Contingent means dependent on a condition being met and pairs with 'on,' matching payment that hinges on the repairs being finished. The nearest distractor, Conducive (H), also concerns bringing something about but means favourable and takes 'to'; it cannot express the strict dependency the sentence sets up."
+        },
+        {
+          "number": 8,
+          "group": "w12-sA-wordbank",
+          "stem": "The dark, swollen clouds and the sudden hush of the birds warned the sailors that a violent storm was ______.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Catalyst"
+            },
+            {
+              "key": "B",
+              "text": "Ubiquitous"
+            },
+            {
+              "key": "C",
+              "text": "Pervade"
+            },
+            {
+              "key": "D",
+              "text": "Contingent"
+            },
+            {
+              "key": "E",
+              "text": "Proliferate"
+            },
+            {
+              "key": "F",
+              "text": "Reciprocal"
+            },
+            {
+              "key": "G",
+              "text": "Harbinger"
+            },
+            {
+              "key": "H",
+              "text": "Conducive"
+            },
+            {
+              "key": "I",
+              "text": "Precursor"
+            },
+            {
+              "key": "J",
+              "text": "Ramification"
+            },
+            {
+              "key": "K",
+              "text": "Repercussion"
+            },
+            {
+              "key": "L",
+              "text": "Imminent"
+            }
+          ],
+          "correctKey": "L",
+          "imageUrl": null,
+          "explanation": "Imminent is an adjective meaning about to happen at any moment, matching a storm on the verge of breaking. The nearest distractor, Harbinger (G), belongs to the same domain of things to come but is a noun naming a sign of what approaches; the clouds are the harbinger, whereas the storm itself is described as imminent."
+        },
+        {
+          "number": 9,
+          "group": "w12-sA-wordbank",
+          "stem": "The first crocus pushing through the snow is welcomed as a ______ of spring, an early omen of warmth still many weeks away.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Catalyst"
+            },
+            {
+              "key": "B",
+              "text": "Ubiquitous"
+            },
+            {
+              "key": "C",
+              "text": "Pervade"
+            },
+            {
+              "key": "D",
+              "text": "Contingent"
+            },
+            {
+              "key": "E",
+              "text": "Proliferate"
+            },
+            {
+              "key": "F",
+              "text": "Reciprocal"
+            },
+            {
+              "key": "G",
+              "text": "Harbinger"
+            },
+            {
+              "key": "H",
+              "text": "Conducive"
+            },
+            {
+              "key": "I",
+              "text": "Precursor"
+            },
+            {
+              "key": "J",
+              "text": "Ramification"
+            },
+            {
+              "key": "K",
+              "text": "Repercussion"
+            },
+            {
+              "key": "L",
+              "text": "Imminent"
+            }
+          ],
+          "correctKey": "G",
+          "imageUrl": null,
+          "explanation": "A harbinger is a herald or omen that signals something approaching, matching a flower 'welcomed as' an omen of spring. The nearest distractor, Precursor (I), is a neutral forerunner in a sequence and lacks the sense of a heralding sign or omen that 'welcomed as' and 'omen' specifically call for."
+        },
+        {
+          "number": 10,
+          "group": "w12-sA-wordbank",
+          "stem": "The bank's collapse sent ______ through economies on the far side of the globe, ruining firms that had never once heard its name.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Catalyst"
+            },
+            {
+              "key": "B",
+              "text": "Ubiquitous"
+            },
+            {
+              "key": "C",
+              "text": "Pervade"
+            },
+            {
+              "key": "D",
+              "text": "Contingent"
+            },
+            {
+              "key": "E",
+              "text": "Proliferate"
+            },
+            {
+              "key": "F",
+              "text": "Reciprocal"
+            },
+            {
+              "key": "G",
+              "text": "Harbinger"
+            },
+            {
+              "key": "H",
+              "text": "Conducive"
+            },
+            {
+              "key": "I",
+              "text": "Precursor"
+            },
+            {
+              "key": "J",
+              "text": "Ramification"
+            },
+            {
+              "key": "K",
+              "text": "Repercussion"
+            },
+            {
+              "key": "L",
+              "text": "Imminent"
+            }
+          ],
+          "correctKey": "K",
+          "imageUrl": null,
+          "explanation": "A repercussion is a reverberating, far-reaching after-effect of an event, matching shockwaves 'sent through' distant economies. The nearest distractor, Ramification (J), also means a consequence but denotes the complex branching implications one traces out; it does not collocate with the outward-rippling 'sent through' that repercussion demands."
+        }
+      ]
+    },
+    {
+      "order": 2,
+      "title": "SECTION B",
+      "marksPerCorrect": 1,
+      "penaltyPerWrong": 0,
+      "thresholdPercent": null,
+      "groups": [
+        {
+          "ref": "w12-sB-wordbank",
+          "kind": "word_bank",
+          "title": "SECTION B",
+          "content": "Use words from the box to fill the blanks. There are more words than necessary. No marks would be deducted for wrong answers.",
+          "sharedOptions": [
+            {
+              "key": "A",
+              "text": "Ineffable"
+            },
+            {
+              "key": "B",
+              "text": "Sporadic"
+            },
+            {
+              "key": "C",
+              "text": "Onerous"
+            },
+            {
+              "key": "D",
+              "text": "Ethereal"
+            },
+            {
+              "key": "E",
+              "text": "Arduous"
+            },
+            {
+              "key": "F",
+              "text": "Transient"
+            },
+            {
+              "key": "G",
+              "text": "Profound"
+            },
+            {
+              "key": "H",
+              "text": "Transcend"
+            },
+            {
+              "key": "I",
+              "text": "Hiatus"
+            },
+            {
+              "key": "J",
+              "text": "Ephemeral"
+            },
+            {
+              "key": "K",
+              "text": "Extricate"
+            },
+            {
+              "key": "L",
+              "text": "Stringent"
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "number": 1,
+          "group": "w12-sB-wordbank",
+          "stem": "The blossom of the cherry is famously ______, blazing pink for a single week before the petals brown and drift to the ground.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Ineffable"
+            },
+            {
+              "key": "B",
+              "text": "Sporadic"
+            },
+            {
+              "key": "C",
+              "text": "Onerous"
+            },
+            {
+              "key": "D",
+              "text": "Ethereal"
+            },
+            {
+              "key": "E",
+              "text": "Arduous"
+            },
+            {
+              "key": "F",
+              "text": "Transient"
+            },
+            {
+              "key": "G",
+              "text": "Profound"
+            },
+            {
+              "key": "H",
+              "text": "Transcend"
+            },
+            {
+              "key": "I",
+              "text": "Hiatus"
+            },
+            {
+              "key": "J",
+              "text": "Ephemeral"
+            },
+            {
+              "key": "K",
+              "text": "Extricate"
+            },
+            {
+              "key": "L",
+              "text": "Stringent"
+            }
+          ],
+          "correctKey": "J",
+          "imageUrl": null,
+          "explanation": "Ephemeral means lasting for a very short time, matching a bloom that survives barely a week. The nearest distractor, Transient (F), also means brief, but it stresses passing through or being temporary as a state; ephemeral names the intrinsically short natural lifespan of a thing, which the fleeting blossom exemplifies."
+        },
+        {
+          "number": 2,
+          "group": "w12-sB-wordbank",
+          "stem": "The ascent to the summit was long and ______, every uphill step through the thin air draining what little strength the climbers had left.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Ineffable"
+            },
+            {
+              "key": "B",
+              "text": "Sporadic"
+            },
+            {
+              "key": "C",
+              "text": "Onerous"
+            },
+            {
+              "key": "D",
+              "text": "Ethereal"
+            },
+            {
+              "key": "E",
+              "text": "Arduous"
+            },
+            {
+              "key": "F",
+              "text": "Transient"
+            },
+            {
+              "key": "G",
+              "text": "Profound"
+            },
+            {
+              "key": "H",
+              "text": "Transcend"
+            },
+            {
+              "key": "I",
+              "text": "Hiatus"
+            },
+            {
+              "key": "J",
+              "text": "Ephemeral"
+            },
+            {
+              "key": "K",
+              "text": "Extricate"
+            },
+            {
+              "key": "L",
+              "text": "Stringent"
+            }
+          ],
+          "correctKey": "E",
+          "imageUrl": null,
+          "explanation": "Arduous means requiring great and wearying physical effort, matching a gruelling climb that saps strength. The nearest distractor, Onerous (C), means burdensome in the sense of a heavy duty or obligation; it suits taxes and responsibilities rather than the sheer bodily toil of a hard climb."
+        },
+        {
+          "number": 3,
+          "group": "w12-sB-wordbank",
+          "stem": "Her later music seemed to ______ the boundaries of any single genre, belonging at once to jazz, to folk, and to something beyond them both.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Ineffable"
+            },
+            {
+              "key": "B",
+              "text": "Sporadic"
+            },
+            {
+              "key": "C",
+              "text": "Onerous"
+            },
+            {
+              "key": "D",
+              "text": "Ethereal"
+            },
+            {
+              "key": "E",
+              "text": "Arduous"
+            },
+            {
+              "key": "F",
+              "text": "Transient"
+            },
+            {
+              "key": "G",
+              "text": "Profound"
+            },
+            {
+              "key": "H",
+              "text": "Transcend"
+            },
+            {
+              "key": "I",
+              "text": "Hiatus"
+            },
+            {
+              "key": "J",
+              "text": "Ephemeral"
+            },
+            {
+              "key": "K",
+              "text": "Extricate"
+            },
+            {
+              "key": "L",
+              "text": "Stringent"
+            }
+          ],
+          "correctKey": "H",
+          "imageUrl": null,
+          "explanation": "Transcend means to rise above or go beyond the limits of something, matching music that surpasses every genre. The nearest distractor, Extricate (K), means to free oneself from a difficulty or entanglement; the sentence is about surpassing boundaries, not escaping a trap, so extricate does not fit."
+        },
+        {
+          "number": 4,
+          "group": "w12-sB-wordbank",
+          "stem": "It took a skilled lawyer a full year to ______ the company from the tangle of lawsuits in which its founder had recklessly ensnared it.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Ineffable"
+            },
+            {
+              "key": "B",
+              "text": "Sporadic"
+            },
+            {
+              "key": "C",
+              "text": "Onerous"
+            },
+            {
+              "key": "D",
+              "text": "Ethereal"
+            },
+            {
+              "key": "E",
+              "text": "Arduous"
+            },
+            {
+              "key": "F",
+              "text": "Transient"
+            },
+            {
+              "key": "G",
+              "text": "Profound"
+            },
+            {
+              "key": "H",
+              "text": "Transcend"
+            },
+            {
+              "key": "I",
+              "text": "Hiatus"
+            },
+            {
+              "key": "J",
+              "text": "Ephemeral"
+            },
+            {
+              "key": "K",
+              "text": "Extricate"
+            },
+            {
+              "key": "L",
+              "text": "Stringent"
+            }
+          ],
+          "correctKey": "K",
+          "imageUrl": null,
+          "explanation": "Extricate means to free or disentangle something from a difficulty, matching 'tangle' and 'ensnared.' The nearest distractor, Transcend (H), means to rise above or surpass; it describes going beyond limits, not pulling something free from a practical predicament, so it fails the imagery here."
+        },
+        {
+          "number": 5,
+          "group": "w12-sB-wordbank",
+          "stem": "The gunfire had died down to ______ bursts, a single crack ringing out now and then across the ruined square, hours apart and without any pattern.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Ineffable"
+            },
+            {
+              "key": "B",
+              "text": "Sporadic"
+            },
+            {
+              "key": "C",
+              "text": "Onerous"
+            },
+            {
+              "key": "D",
+              "text": "Ethereal"
+            },
+            {
+              "key": "E",
+              "text": "Arduous"
+            },
+            {
+              "key": "F",
+              "text": "Transient"
+            },
+            {
+              "key": "G",
+              "text": "Profound"
+            },
+            {
+              "key": "H",
+              "text": "Transcend"
+            },
+            {
+              "key": "I",
+              "text": "Hiatus"
+            },
+            {
+              "key": "J",
+              "text": "Ephemeral"
+            },
+            {
+              "key": "K",
+              "text": "Extricate"
+            },
+            {
+              "key": "L",
+              "text": "Stringent"
+            }
+          ],
+          "correctKey": "B",
+          "imageUrl": null,
+          "explanation": "Sporadic means occurring at scattered, irregular intervals, matching shots that ring out 'now and then... without any pattern.' The nearest distractor, Transient (F), means short-lived; it describes how briefly each burst lasts, not the irregular, unpredictable timing between them that sporadic captures."
+        },
+        {
+          "number": 6,
+          "group": "w12-sB-wordbank",
+          "stem": "The laboratory imposed ______ safety rules, and a single unbuttoned collar or unwashed hand was enough to bar a technician from the room.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Ineffable"
+            },
+            {
+              "key": "B",
+              "text": "Sporadic"
+            },
+            {
+              "key": "C",
+              "text": "Onerous"
+            },
+            {
+              "key": "D",
+              "text": "Ethereal"
+            },
+            {
+              "key": "E",
+              "text": "Arduous"
+            },
+            {
+              "key": "F",
+              "text": "Transient"
+            },
+            {
+              "key": "G",
+              "text": "Profound"
+            },
+            {
+              "key": "H",
+              "text": "Transcend"
+            },
+            {
+              "key": "I",
+              "text": "Hiatus"
+            },
+            {
+              "key": "J",
+              "text": "Ephemeral"
+            },
+            {
+              "key": "K",
+              "text": "Extricate"
+            },
+            {
+              "key": "L",
+              "text": "Stringent"
+            }
+          ],
+          "correctKey": "L",
+          "imageUrl": null,
+          "explanation": "Stringent means strict and rigorously enforced, matching rules so exacting that a tiny lapse bars entry. The nearest distractor, Onerous (C), means burdensome or heavy to bear; the rules here are demanding in their strictness rather than merely wearisome, so stringent is the precise fit."
+        },
+        {
+          "number": 7,
+          "group": "w12-sB-wordbank",
+          "stem": "After a decade of relentless touring the band announced a ______, vanishing from the stage for three long years before their sudden return.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Ineffable"
+            },
+            {
+              "key": "B",
+              "text": "Sporadic"
+            },
+            {
+              "key": "C",
+              "text": "Onerous"
+            },
+            {
+              "key": "D",
+              "text": "Ethereal"
+            },
+            {
+              "key": "E",
+              "text": "Arduous"
+            },
+            {
+              "key": "F",
+              "text": "Transient"
+            },
+            {
+              "key": "G",
+              "text": "Profound"
+            },
+            {
+              "key": "H",
+              "text": "Transcend"
+            },
+            {
+              "key": "I",
+              "text": "Hiatus"
+            },
+            {
+              "key": "J",
+              "text": "Ephemeral"
+            },
+            {
+              "key": "K",
+              "text": "Extricate"
+            },
+            {
+              "key": "L",
+              "text": "Stringent"
+            }
+          ],
+          "correctKey": "I",
+          "imageUrl": null,
+          "explanation": "A hiatus is a pause or break in continuity, matching a definite gap of three years between spells of activity. The nearest distractor, Sporadic (B), belongs to the same domain of interrupted time but is an adjective meaning irregular; it cannot fill the noun slot naming a single, bounded pause."
+        },
+        {
+          "number": 8,
+          "group": "w12-sB-wordbank",
+          "stem": "The soprano's voice was so ______ that it seemed to float free of her body, a thread of sound spun from nothing but air and light.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Ineffable"
+            },
+            {
+              "key": "B",
+              "text": "Sporadic"
+            },
+            {
+              "key": "C",
+              "text": "Onerous"
+            },
+            {
+              "key": "D",
+              "text": "Ethereal"
+            },
+            {
+              "key": "E",
+              "text": "Arduous"
+            },
+            {
+              "key": "F",
+              "text": "Transient"
+            },
+            {
+              "key": "G",
+              "text": "Profound"
+            },
+            {
+              "key": "H",
+              "text": "Transcend"
+            },
+            {
+              "key": "I",
+              "text": "Hiatus"
+            },
+            {
+              "key": "J",
+              "text": "Ephemeral"
+            },
+            {
+              "key": "K",
+              "text": "Extricate"
+            },
+            {
+              "key": "L",
+              "text": "Stringent"
+            }
+          ],
+          "correctKey": "D",
+          "imageUrl": null,
+          "explanation": "Ethereal means delicate, weightless, and otherworldly, matching a voice that seems to float free of the body. The nearest distractor, Ineffable (A), also evokes something beyond ordinary, tangible description, but ineffable specifically means impossible to put into words, whereas ethereal describes an airy, otherworldly delicacy of substance or sound rather than an inability to be expressed."
+        },
+        {
+          "number": 9,
+          "group": "w12-sB-wordbank",
+          "stem": "Standing at last before the vast, silent glacier, she felt an ______ awe that no words in any language she knew could begin to convey.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Ineffable"
+            },
+            {
+              "key": "B",
+              "text": "Sporadic"
+            },
+            {
+              "key": "C",
+              "text": "Onerous"
+            },
+            {
+              "key": "D",
+              "text": "Ethereal"
+            },
+            {
+              "key": "E",
+              "text": "Arduous"
+            },
+            {
+              "key": "F",
+              "text": "Transient"
+            },
+            {
+              "key": "G",
+              "text": "Profound"
+            },
+            {
+              "key": "H",
+              "text": "Transcend"
+            },
+            {
+              "key": "I",
+              "text": "Hiatus"
+            },
+            {
+              "key": "J",
+              "text": "Ephemeral"
+            },
+            {
+              "key": "K",
+              "text": "Extricate"
+            },
+            {
+              "key": "L",
+              "text": "Stringent"
+            }
+          ],
+          "correctKey": "A",
+          "imageUrl": null,
+          "explanation": "Ineffable means too great or intense to be expressed in words, matching an awe that 'no words could convey.' The nearest distractor, Profound (G), means very deep or intense; the awe is indeed profound, but the decisive cue is inexpressibility, which is the exact sense of ineffable."
+        },
+        {
+          "number": 10,
+          "group": "w12-sB-wordbank",
+          "stem": "His grief was ______, reaching so far into him that even years later the smallest reminder could still stop him where he stood.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Ineffable"
+            },
+            {
+              "key": "B",
+              "text": "Sporadic"
+            },
+            {
+              "key": "C",
+              "text": "Onerous"
+            },
+            {
+              "key": "D",
+              "text": "Ethereal"
+            },
+            {
+              "key": "E",
+              "text": "Arduous"
+            },
+            {
+              "key": "F",
+              "text": "Transient"
+            },
+            {
+              "key": "G",
+              "text": "Profound"
+            },
+            {
+              "key": "H",
+              "text": "Transcend"
+            },
+            {
+              "key": "I",
+              "text": "Hiatus"
+            },
+            {
+              "key": "J",
+              "text": "Ephemeral"
+            },
+            {
+              "key": "K",
+              "text": "Extricate"
+            },
+            {
+              "key": "L",
+              "text": "Stringent"
+            }
+          ],
+          "correctKey": "G",
+          "imageUrl": null,
+          "explanation": "Profound means very deep, intense, and far-reaching, matching grief that lingers for years and cuts to the core. The nearest distractor, Ineffable (A), means beyond words; the emphasis here is on the depth and lasting reach of the grief rather than on any inability to express it, so profound is the better fit."
+        }
+      ]
+    }
+  ]
+}

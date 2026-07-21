@@ -1,0 +1,1302 @@
+{
+  "slug": "week-09-perception-belief",
+  "title": "Week 9 — Investigation, Perception & Abstract Thought + Belief, Secularism & Performative Language",
+  "bucket": "iba",
+  "description": "Fill-in-the-blank vocabulary on the language of investigation, perception, and abstract thought, and on belief, secularism, and performative or exaggerated language.",
+  "sections": [
+    {
+      "order": 1,
+      "title": "SECTION A",
+      "marksPerCorrect": 1,
+      "penaltyPerWrong": 0,
+      "thresholdPercent": null,
+      "groups": [
+        {
+          "ref": "w9-sA-wordbank",
+          "kind": "word_bank",
+          "title": "SECTION A",
+          "content": "Use words from the box to fill the blanks. There are more words than necessary. No marks would be deducted for wrong answers.",
+          "sharedOptions": [
+            {
+              "key": "A",
+              "text": "Chronicle"
+            },
+            {
+              "key": "B",
+              "text": "Scrutinize"
+            },
+            {
+              "key": "C",
+              "text": "Compendium"
+            },
+            {
+              "key": "D",
+              "text": "Innate"
+            },
+            {
+              "key": "E",
+              "text": "Ruminate"
+            },
+            {
+              "key": "F",
+              "text": "Amorphous"
+            },
+            {
+              "key": "G",
+              "text": "Introspective"
+            },
+            {
+              "key": "H",
+              "text": "Abstract"
+            },
+            {
+              "key": "I",
+              "text": "Peruse"
+            },
+            {
+              "key": "J",
+              "text": "Immutable"
+            },
+            {
+              "key": "K",
+              "text": "Intrinsic"
+            },
+            {
+              "key": "L",
+              "text": "Absolute"
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "number": 1,
+          "group": "w9-sA-wordbank",
+          "stem": "The referee paused to ______ the replay frame by frame, hunting for the faintest sign that the ball had wholly crossed the line.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Chronicle"
+            },
+            {
+              "key": "B",
+              "text": "Scrutinize"
+            },
+            {
+              "key": "C",
+              "text": "Compendium"
+            },
+            {
+              "key": "D",
+              "text": "Innate"
+            },
+            {
+              "key": "E",
+              "text": "Ruminate"
+            },
+            {
+              "key": "F",
+              "text": "Amorphous"
+            },
+            {
+              "key": "G",
+              "text": "Introspective"
+            },
+            {
+              "key": "H",
+              "text": "Abstract"
+            },
+            {
+              "key": "I",
+              "text": "Peruse"
+            },
+            {
+              "key": "J",
+              "text": "Immutable"
+            },
+            {
+              "key": "K",
+              "text": "Intrinsic"
+            },
+            {
+              "key": "L",
+              "text": "Absolute"
+            }
+          ],
+          "correctKey": "B",
+          "imageUrl": null,
+          "explanation": "Scrutinize means to examine closely and critically, matching a frame-by-frame search for the faintest sign. The nearest distractor, Peruse (I), means to read through or survey; though often used loosely for 'browse,' it lacks the intense, fault-finding examination the cue demands."
+        },
+        {
+          "number": 2,
+          "group": "w9-sA-wordbank",
+          "stem": "Her ______ sense of pitch showed itself in the cradle, long before any teacher could take the smallest credit for it.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Chronicle"
+            },
+            {
+              "key": "B",
+              "text": "Scrutinize"
+            },
+            {
+              "key": "C",
+              "text": "Compendium"
+            },
+            {
+              "key": "D",
+              "text": "Innate"
+            },
+            {
+              "key": "E",
+              "text": "Ruminate"
+            },
+            {
+              "key": "F",
+              "text": "Amorphous"
+            },
+            {
+              "key": "G",
+              "text": "Introspective"
+            },
+            {
+              "key": "H",
+              "text": "Abstract"
+            },
+            {
+              "key": "I",
+              "text": "Peruse"
+            },
+            {
+              "key": "J",
+              "text": "Immutable"
+            },
+            {
+              "key": "K",
+              "text": "Intrinsic"
+            },
+            {
+              "key": "L",
+              "text": "Absolute"
+            }
+          ],
+          "correctKey": "D",
+          "imageUrl": null,
+          "explanation": "Innate means existing in a living being from birth, matching a trait present 'in the cradle' before any teaching. The nearest distractor, Intrinsic (K), means belonging to the essential nature of a thing; it describes inherent properties of objects or ideas rather than a quality a person is born with."
+        },
+        {
+          "number": 3,
+          "group": "w9-sA-wordbank",
+          "stem": "The sculptor began with an ______ lump of clay, a mass without edge or form, and slowly coaxed a human face from it.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Chronicle"
+            },
+            {
+              "key": "B",
+              "text": "Scrutinize"
+            },
+            {
+              "key": "C",
+              "text": "Compendium"
+            },
+            {
+              "key": "D",
+              "text": "Innate"
+            },
+            {
+              "key": "E",
+              "text": "Ruminate"
+            },
+            {
+              "key": "F",
+              "text": "Amorphous"
+            },
+            {
+              "key": "G",
+              "text": "Introspective"
+            },
+            {
+              "key": "H",
+              "text": "Abstract"
+            },
+            {
+              "key": "I",
+              "text": "Peruse"
+            },
+            {
+              "key": "J",
+              "text": "Immutable"
+            },
+            {
+              "key": "K",
+              "text": "Intrinsic"
+            },
+            {
+              "key": "L",
+              "text": "Absolute"
+            }
+          ],
+          "correctKey": "F",
+          "imageUrl": null,
+          "explanation": "Amorphous means having no definite shape or form, matching 'a mass without edge or form.' The nearest distractor, Abstract (H), means existing as an idea rather than a physical thing; the clay here is emphatically physical and merely formless, so 'abstract' misreads the cue."
+        },
+        {
+          "number": 4,
+          "group": "w9-sA-wordbank",
+          "stem": "Justice, freedom, beauty — such ______ ideas cannot be weighed or touched, and yet men have given their lives for them.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Chronicle"
+            },
+            {
+              "key": "B",
+              "text": "Scrutinize"
+            },
+            {
+              "key": "C",
+              "text": "Compendium"
+            },
+            {
+              "key": "D",
+              "text": "Innate"
+            },
+            {
+              "key": "E",
+              "text": "Ruminate"
+            },
+            {
+              "key": "F",
+              "text": "Amorphous"
+            },
+            {
+              "key": "G",
+              "text": "Introspective"
+            },
+            {
+              "key": "H",
+              "text": "Abstract"
+            },
+            {
+              "key": "I",
+              "text": "Peruse"
+            },
+            {
+              "key": "J",
+              "text": "Immutable"
+            },
+            {
+              "key": "K",
+              "text": "Intrinsic"
+            },
+            {
+              "key": "L",
+              "text": "Absolute"
+            }
+          ],
+          "correctKey": "H",
+          "imageUrl": null,
+          "explanation": "Abstract means existing in thought rather than in physical form, matching ideas that 'cannot be weighed or touched.' The nearest distractor, Amorphous (F), means physically shapeless; these concepts are not shapeless matter but non-physical notions, so 'abstract' is the precise word."
+        },
+        {
+          "number": 5,
+          "group": "w9-sA-wordbank",
+          "stem": "The elders held the old laws to be ______, carved once into stone and never to be revised by any generation that followed.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Chronicle"
+            },
+            {
+              "key": "B",
+              "text": "Scrutinize"
+            },
+            {
+              "key": "C",
+              "text": "Compendium"
+            },
+            {
+              "key": "D",
+              "text": "Innate"
+            },
+            {
+              "key": "E",
+              "text": "Ruminate"
+            },
+            {
+              "key": "F",
+              "text": "Amorphous"
+            },
+            {
+              "key": "G",
+              "text": "Introspective"
+            },
+            {
+              "key": "H",
+              "text": "Abstract"
+            },
+            {
+              "key": "I",
+              "text": "Peruse"
+            },
+            {
+              "key": "J",
+              "text": "Immutable"
+            },
+            {
+              "key": "K",
+              "text": "Intrinsic"
+            },
+            {
+              "key": "L",
+              "text": "Absolute"
+            }
+          ],
+          "correctKey": "J",
+          "imageUrl": null,
+          "explanation": "Immutable means unchanging and impossible to alter, matching laws 'never to be revised.' The nearest distractor, Absolute (L), means complete or unconditional; it would not fit 'never to be revised,' a clause about permanence rather than extent, which is exactly what 'immutable' names."
+        },
+        {
+          "number": 6,
+          "group": "w9-sA-wordbank",
+          "stem": "The tsar wielded ______ authority, answerable to no parliament, bound by no law, and checked by no council of any kind.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Chronicle"
+            },
+            {
+              "key": "B",
+              "text": "Scrutinize"
+            },
+            {
+              "key": "C",
+              "text": "Compendium"
+            },
+            {
+              "key": "D",
+              "text": "Innate"
+            },
+            {
+              "key": "E",
+              "text": "Ruminate"
+            },
+            {
+              "key": "F",
+              "text": "Amorphous"
+            },
+            {
+              "key": "G",
+              "text": "Introspective"
+            },
+            {
+              "key": "H",
+              "text": "Abstract"
+            },
+            {
+              "key": "I",
+              "text": "Peruse"
+            },
+            {
+              "key": "J",
+              "text": "Immutable"
+            },
+            {
+              "key": "K",
+              "text": "Intrinsic"
+            },
+            {
+              "key": "L",
+              "text": "Absolute"
+            }
+          ],
+          "correctKey": "L",
+          "imageUrl": null,
+          "explanation": "Absolute means total and unrestricted by anything else, matching power 'answerable to no parliament, bound by no law.' The nearest distractor, Immutable (J), means unchangeable; the sentence concerns the unlimited extent of the power, not its permanence, so 'absolute' fits and 'immutable' does not."
+        },
+        {
+          "number": 7,
+          "group": "w9-sA-wordbank",
+          "stem": "The abbey's ______ recorded each harvest, plague, and coronation in the very year it fell, an unbroken account across three centuries.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Chronicle"
+            },
+            {
+              "key": "B",
+              "text": "Scrutinize"
+            },
+            {
+              "key": "C",
+              "text": "Compendium"
+            },
+            {
+              "key": "D",
+              "text": "Innate"
+            },
+            {
+              "key": "E",
+              "text": "Ruminate"
+            },
+            {
+              "key": "F",
+              "text": "Amorphous"
+            },
+            {
+              "key": "G",
+              "text": "Introspective"
+            },
+            {
+              "key": "H",
+              "text": "Abstract"
+            },
+            {
+              "key": "I",
+              "text": "Peruse"
+            },
+            {
+              "key": "J",
+              "text": "Immutable"
+            },
+            {
+              "key": "K",
+              "text": "Intrinsic"
+            },
+            {
+              "key": "L",
+              "text": "Absolute"
+            }
+          ],
+          "correctKey": "A",
+          "imageUrl": null,
+          "explanation": "A chronicle is a factual account of events set down in the order they occurred, matching a record 'in the very year it fell.' The nearest distractor, Compendium (C), is a concise collection of a body of knowledge, not a time-ordered record of events, so it misses the chronological cue."
+        },
+        {
+          "number": 8,
+          "group": "w9-sA-wordbank",
+          "stem": "The professor's new ______ distils the essential findings of the whole field into a single, well-indexed volume for the busy student.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Chronicle"
+            },
+            {
+              "key": "B",
+              "text": "Scrutinize"
+            },
+            {
+              "key": "C",
+              "text": "Compendium"
+            },
+            {
+              "key": "D",
+              "text": "Innate"
+            },
+            {
+              "key": "E",
+              "text": "Ruminate"
+            },
+            {
+              "key": "F",
+              "text": "Amorphous"
+            },
+            {
+              "key": "G",
+              "text": "Introspective"
+            },
+            {
+              "key": "H",
+              "text": "Abstract"
+            },
+            {
+              "key": "I",
+              "text": "Peruse"
+            },
+            {
+              "key": "J",
+              "text": "Immutable"
+            },
+            {
+              "key": "K",
+              "text": "Intrinsic"
+            },
+            {
+              "key": "L",
+              "text": "Absolute"
+            }
+          ],
+          "correctKey": "C",
+          "imageUrl": null,
+          "explanation": "A compendium is a concise but comprehensive summary of a subject gathered into one work, matching 'the essential findings of the whole field into a single volume.' The nearest distractor, Chronicle (A), records events in time order and would not describe a topical digest of findings."
+        },
+        {
+          "number": 9,
+          "group": "w9-sA-wordbank",
+          "stem": "He would ______ for hours over a single line of verse, turning its meaning this way and that before he was ever satisfied.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Chronicle"
+            },
+            {
+              "key": "B",
+              "text": "Scrutinize"
+            },
+            {
+              "key": "C",
+              "text": "Compendium"
+            },
+            {
+              "key": "D",
+              "text": "Innate"
+            },
+            {
+              "key": "E",
+              "text": "Ruminate"
+            },
+            {
+              "key": "F",
+              "text": "Amorphous"
+            },
+            {
+              "key": "G",
+              "text": "Introspective"
+            },
+            {
+              "key": "H",
+              "text": "Abstract"
+            },
+            {
+              "key": "I",
+              "text": "Peruse"
+            },
+            {
+              "key": "J",
+              "text": "Immutable"
+            },
+            {
+              "key": "K",
+              "text": "Intrinsic"
+            },
+            {
+              "key": "L",
+              "text": "Absolute"
+            }
+          ],
+          "correctKey": "E",
+          "imageUrl": null,
+          "explanation": "Ruminate means to think deeply and at length about something, matching hours spent 'turning its meaning this way and that.' The nearest distractor, Introspective (G), is an adjective describing an inward-looking disposition; it cannot fill this verb slot, nor does it name the act of pondering an external subject."
+        },
+        {
+          "number": 10,
+          "group": "w9-sA-wordbank",
+          "stem": "A quiet, ______ child, she spent long afternoons examining her own moods and motives rather than playing with the others.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Chronicle"
+            },
+            {
+              "key": "B",
+              "text": "Scrutinize"
+            },
+            {
+              "key": "C",
+              "text": "Compendium"
+            },
+            {
+              "key": "D",
+              "text": "Innate"
+            },
+            {
+              "key": "E",
+              "text": "Ruminate"
+            },
+            {
+              "key": "F",
+              "text": "Amorphous"
+            },
+            {
+              "key": "G",
+              "text": "Introspective"
+            },
+            {
+              "key": "H",
+              "text": "Abstract"
+            },
+            {
+              "key": "I",
+              "text": "Peruse"
+            },
+            {
+              "key": "J",
+              "text": "Immutable"
+            },
+            {
+              "key": "K",
+              "text": "Intrinsic"
+            },
+            {
+              "key": "L",
+              "text": "Absolute"
+            }
+          ],
+          "correctKey": "G",
+          "imageUrl": null,
+          "explanation": "Introspective means given to examining one's own thoughts and feelings, matching a child who examines 'her own moods and motives.' The nearest distractor, Ruminate (E), also concerns deep reflection, but it is a verb and cannot modify 'child,' and it implies pondering a topic rather than the inward self-scrutiny described."
+        }
+      ]
+    },
+    {
+      "order": 2,
+      "title": "SECTION B",
+      "marksPerCorrect": 1,
+      "penaltyPerWrong": 0,
+      "thresholdPercent": null,
+      "groups": [
+        {
+          "ref": "w9-sB-wordbank",
+          "kind": "word_bank",
+          "title": "SECTION B",
+          "content": "Use words from the box to fill the blanks. There are more words than necessary. No marks would be deducted for wrong answers.",
+          "sharedOptions": [
+            {
+              "key": "A",
+              "text": "Cacophony"
+            },
+            {
+              "key": "B",
+              "text": "Mellifluous"
+            },
+            {
+              "key": "C",
+              "text": "Heresy"
+            },
+            {
+              "key": "D",
+              "text": "Cadence"
+            },
+            {
+              "key": "E",
+              "text": "Agnostic"
+            },
+            {
+              "key": "F",
+              "text": "Histrionic"
+            },
+            {
+              "key": "G",
+              "text": "Secular"
+            },
+            {
+              "key": "H",
+              "text": "Hyperbole"
+            },
+            {
+              "key": "I",
+              "text": "Insular"
+            },
+            {
+              "key": "J",
+              "text": "Atheist"
+            },
+            {
+              "key": "K",
+              "text": "Parochial"
+            },
+            {
+              "key": "L",
+              "text": "Provincial"
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "number": 1,
+          "group": "w9-sB-wordbank",
+          "stem": "To teach that the soul dies with the body was condemned as ______, a doctrine flatly opposed to the settled teaching of the Church.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Cacophony"
+            },
+            {
+              "key": "B",
+              "text": "Mellifluous"
+            },
+            {
+              "key": "C",
+              "text": "Heresy"
+            },
+            {
+              "key": "D",
+              "text": "Cadence"
+            },
+            {
+              "key": "E",
+              "text": "Agnostic"
+            },
+            {
+              "key": "F",
+              "text": "Histrionic"
+            },
+            {
+              "key": "G",
+              "text": "Secular"
+            },
+            {
+              "key": "H",
+              "text": "Hyperbole"
+            },
+            {
+              "key": "I",
+              "text": "Insular"
+            },
+            {
+              "key": "J",
+              "text": "Atheist"
+            },
+            {
+              "key": "K",
+              "text": "Parochial"
+            },
+            {
+              "key": "L",
+              "text": "Provincial"
+            }
+          ],
+          "correctKey": "C",
+          "imageUrl": null,
+          "explanation": "Heresy is a belief or opinion that contradicts established religious doctrine, matching a teaching 'flatly opposed to the settled teaching.' The nearest distractor, Atheist (J), names a person who denies the existence of God outright; the sentence condemns a doctrine about the soul, not a denial of God, and 'atheist' is a noun for a believer's stance, not a word for the doctrine itself, so it cannot fill this noun slot correctly."
+        },
+        {
+          "number": 2,
+          "group": "w9-sB-wordbank",
+          "stem": "Unable either to affirm or to deny a creator, he settled into the position of a thoughtful ______, content to leave the question forever open.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Cacophony"
+            },
+            {
+              "key": "B",
+              "text": "Mellifluous"
+            },
+            {
+              "key": "C",
+              "text": "Heresy"
+            },
+            {
+              "key": "D",
+              "text": "Cadence"
+            },
+            {
+              "key": "E",
+              "text": "Agnostic"
+            },
+            {
+              "key": "F",
+              "text": "Histrionic"
+            },
+            {
+              "key": "G",
+              "text": "Secular"
+            },
+            {
+              "key": "H",
+              "text": "Hyperbole"
+            },
+            {
+              "key": "I",
+              "text": "Insular"
+            },
+            {
+              "key": "J",
+              "text": "Atheist"
+            },
+            {
+              "key": "K",
+              "text": "Parochial"
+            },
+            {
+              "key": "L",
+              "text": "Provincial"
+            }
+          ],
+          "correctKey": "E",
+          "imageUrl": null,
+          "explanation": "An agnostic holds that the existence of God can be neither proved nor disproved, matching 'neither affirm nor deny... leave the question open.' The nearest distractor, Atheist (J), denotes one who positively denies any god; that certainty is the opposite of the suspended judgement the sentence describes."
+        },
+        {
+          "number": 3,
+          "group": "w9-sB-wordbank",
+          "stem": "The new constitution founded a strictly ______ state, one that funded no church, taught no catechism, and took no side in matters of faith.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Cacophony"
+            },
+            {
+              "key": "B",
+              "text": "Mellifluous"
+            },
+            {
+              "key": "C",
+              "text": "Heresy"
+            },
+            {
+              "key": "D",
+              "text": "Cadence"
+            },
+            {
+              "key": "E",
+              "text": "Agnostic"
+            },
+            {
+              "key": "F",
+              "text": "Histrionic"
+            },
+            {
+              "key": "G",
+              "text": "Secular"
+            },
+            {
+              "key": "H",
+              "text": "Hyperbole"
+            },
+            {
+              "key": "I",
+              "text": "Insular"
+            },
+            {
+              "key": "J",
+              "text": "Atheist"
+            },
+            {
+              "key": "K",
+              "text": "Parochial"
+            },
+            {
+              "key": "L",
+              "text": "Provincial"
+            }
+          ],
+          "correctKey": "G",
+          "imageUrl": null,
+          "explanation": "Secular means not connected with religious or spiritual matters, matching a state that 'took no side in matters of faith.' The nearest distractor, Agnostic (E), describes an individual's uncertainty about God and cannot characterise the institutional religious neutrality of a whole state."
+        },
+        {
+          "number": 4,
+          "group": "w9-sB-wordbank",
+          "stem": "Cut off from the mainland for generations, the islanders had grown ______, meeting every foreign custom with suspicion and every stranger with a closed door.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Cacophony"
+            },
+            {
+              "key": "B",
+              "text": "Mellifluous"
+            },
+            {
+              "key": "C",
+              "text": "Heresy"
+            },
+            {
+              "key": "D",
+              "text": "Cadence"
+            },
+            {
+              "key": "E",
+              "text": "Agnostic"
+            },
+            {
+              "key": "F",
+              "text": "Histrionic"
+            },
+            {
+              "key": "G",
+              "text": "Secular"
+            },
+            {
+              "key": "H",
+              "text": "Hyperbole"
+            },
+            {
+              "key": "I",
+              "text": "Insular"
+            },
+            {
+              "key": "J",
+              "text": "Atheist"
+            },
+            {
+              "key": "K",
+              "text": "Parochial"
+            },
+            {
+              "key": "L",
+              "text": "Provincial"
+            }
+          ],
+          "correctKey": "I",
+          "imageUrl": null,
+          "explanation": "Insular means isolated and narrow in a way that shuns outside influence, matching a people 'cut off... meeting every foreign custom with suspicion.' The nearest distractor, Parochial (K), also means narrow, but it stresses a limited range of concerns rather than the cut-off, hostile-to-outsiders isolation the cue emphasises."
+        },
+        {
+          "number": 5,
+          "group": "w9-sB-wordbank",
+          "stem": "The magazine's ______ concerns rarely reached past campus gossip and the petty rivalries of a single university department.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Cacophony"
+            },
+            {
+              "key": "B",
+              "text": "Mellifluous"
+            },
+            {
+              "key": "C",
+              "text": "Heresy"
+            },
+            {
+              "key": "D",
+              "text": "Cadence"
+            },
+            {
+              "key": "E",
+              "text": "Agnostic"
+            },
+            {
+              "key": "F",
+              "text": "Histrionic"
+            },
+            {
+              "key": "G",
+              "text": "Secular"
+            },
+            {
+              "key": "H",
+              "text": "Hyperbole"
+            },
+            {
+              "key": "I",
+              "text": "Insular"
+            },
+            {
+              "key": "J",
+              "text": "Atheist"
+            },
+            {
+              "key": "K",
+              "text": "Parochial"
+            },
+            {
+              "key": "L",
+              "text": "Provincial"
+            }
+          ],
+          "correctKey": "K",
+          "imageUrl": null,
+          "explanation": "Parochial means narrowly restricted to a small sphere of interests, matching concerns confined to 'a single university department.' The nearest distractor, Provincial (L), also suggests narrowness but carries the sense of unsophisticated, rustic manners far from the metropolis, which the campus setting does not invoke."
+        },
+        {
+          "number": 6,
+          "group": "w9-sB-wordbank",
+          "stem": "The market was a ______ of blaring horns, clanging bells, and a hundred vendors all shouting over one another at once.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Cacophony"
+            },
+            {
+              "key": "B",
+              "text": "Mellifluous"
+            },
+            {
+              "key": "C",
+              "text": "Heresy"
+            },
+            {
+              "key": "D",
+              "text": "Cadence"
+            },
+            {
+              "key": "E",
+              "text": "Agnostic"
+            },
+            {
+              "key": "F",
+              "text": "Histrionic"
+            },
+            {
+              "key": "G",
+              "text": "Secular"
+            },
+            {
+              "key": "H",
+              "text": "Hyperbole"
+            },
+            {
+              "key": "I",
+              "text": "Insular"
+            },
+            {
+              "key": "J",
+              "text": "Atheist"
+            },
+            {
+              "key": "K",
+              "text": "Parochial"
+            },
+            {
+              "key": "L",
+              "text": "Provincial"
+            }
+          ],
+          "correctKey": "A",
+          "imageUrl": null,
+          "explanation": "A cacophony is a harsh, jarring mixture of sounds, matching horns, bells, and shouting heard all at once. The nearest distractor, Cadence (D), means a measured, rhythmic flow of sound; the scene is chaotic noise, the very opposite of an ordered rhythm."
+        },
+        {
+          "number": 7,
+          "group": "w9-sB-wordbank",
+          "stem": "His ______ baritone poured over the hushed audience like warm honey, every note smooth and sweetly rounded.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Cacophony"
+            },
+            {
+              "key": "B",
+              "text": "Mellifluous"
+            },
+            {
+              "key": "C",
+              "text": "Heresy"
+            },
+            {
+              "key": "D",
+              "text": "Cadence"
+            },
+            {
+              "key": "E",
+              "text": "Agnostic"
+            },
+            {
+              "key": "F",
+              "text": "Histrionic"
+            },
+            {
+              "key": "G",
+              "text": "Secular"
+            },
+            {
+              "key": "H",
+              "text": "Hyperbole"
+            },
+            {
+              "key": "I",
+              "text": "Insular"
+            },
+            {
+              "key": "J",
+              "text": "Atheist"
+            },
+            {
+              "key": "K",
+              "text": "Parochial"
+            },
+            {
+              "key": "L",
+              "text": "Provincial"
+            }
+          ],
+          "correctKey": "B",
+          "imageUrl": null,
+          "explanation": "Mellifluous means sweet and smooth-flowing to hear, matching a voice 'like warm honey... smooth and sweetly rounded.' The nearest distractor, Cadence (D), refers to the rhythm or rise and fall of sound, not to its sweetness of tone, so it misses the cue."
+        },
+        {
+          "number": 8,
+          "group": "w9-sB-wordbank",
+          "stem": "The sergeant's orders fell in a steady ______, each syllable landing squarely on the beat as the men marched in time.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Cacophony"
+            },
+            {
+              "key": "B",
+              "text": "Mellifluous"
+            },
+            {
+              "key": "C",
+              "text": "Heresy"
+            },
+            {
+              "key": "D",
+              "text": "Cadence"
+            },
+            {
+              "key": "E",
+              "text": "Agnostic"
+            },
+            {
+              "key": "F",
+              "text": "Histrionic"
+            },
+            {
+              "key": "G",
+              "text": "Secular"
+            },
+            {
+              "key": "H",
+              "text": "Hyperbole"
+            },
+            {
+              "key": "I",
+              "text": "Insular"
+            },
+            {
+              "key": "J",
+              "text": "Atheist"
+            },
+            {
+              "key": "K",
+              "text": "Parochial"
+            },
+            {
+              "key": "L",
+              "text": "Provincial"
+            }
+          ],
+          "correctKey": "D",
+          "imageUrl": null,
+          "explanation": "A cadence is the rhythmic rise, fall, and beat of sound or speech, matching syllables 'landing squarely on the beat.' The nearest distractor, Mellifluous (B), describes sweetness of tone; it is an adjective that neither fits this noun slot nor captures the marching rhythm the sentence stresses."
+        },
+        {
+          "number": 9,
+          "group": "w9-sB-wordbank",
+          "stem": "Her ______ display of grief — the wailing, the wringing of hands, the swoon — struck everyone as staged rather than sincere.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Cacophony"
+            },
+            {
+              "key": "B",
+              "text": "Mellifluous"
+            },
+            {
+              "key": "C",
+              "text": "Heresy"
+            },
+            {
+              "key": "D",
+              "text": "Cadence"
+            },
+            {
+              "key": "E",
+              "text": "Agnostic"
+            },
+            {
+              "key": "F",
+              "text": "Histrionic"
+            },
+            {
+              "key": "G",
+              "text": "Secular"
+            },
+            {
+              "key": "H",
+              "text": "Hyperbole"
+            },
+            {
+              "key": "I",
+              "text": "Insular"
+            },
+            {
+              "key": "J",
+              "text": "Atheist"
+            },
+            {
+              "key": "K",
+              "text": "Parochial"
+            },
+            {
+              "key": "L",
+              "text": "Provincial"
+            }
+          ],
+          "correctKey": "F",
+          "imageUrl": null,
+          "explanation": "Histrionic means excessively theatrical or melodramatic in manner, matching grief that seemed 'staged rather than sincere.' The nearest distractor, Hyperbole (H), is a noun meaning exaggerated statement in language; it names a figure of speech, not the exaggerated behaviour described, and cannot serve as the adjective required here."
+        },
+        {
+          "number": 10,
+          "group": "w9-sB-wordbank",
+          "stem": "His threat to 'burn the whole city down' was mere ______, and no one at the table took the words remotely literally.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Cacophony"
+            },
+            {
+              "key": "B",
+              "text": "Mellifluous"
+            },
+            {
+              "key": "C",
+              "text": "Heresy"
+            },
+            {
+              "key": "D",
+              "text": "Cadence"
+            },
+            {
+              "key": "E",
+              "text": "Agnostic"
+            },
+            {
+              "key": "F",
+              "text": "Histrionic"
+            },
+            {
+              "key": "G",
+              "text": "Secular"
+            },
+            {
+              "key": "H",
+              "text": "Hyperbole"
+            },
+            {
+              "key": "I",
+              "text": "Insular"
+            },
+            {
+              "key": "J",
+              "text": "Atheist"
+            },
+            {
+              "key": "K",
+              "text": "Parochial"
+            },
+            {
+              "key": "L",
+              "text": "Provincial"
+            }
+          ],
+          "correctKey": "H",
+          "imageUrl": null,
+          "explanation": "Hyperbole is deliberate exaggeration used for effect and not meant to be taken literally, matching a threat 'no one took remotely literally.' The nearest distractor, Histrionic (F), is an adjective for melodramatic behaviour; it cannot fill this noun slot ('mere ______') and refers to overacted conduct rather than overstated words."
+        }
+      ]
+    }
+  ]
+}

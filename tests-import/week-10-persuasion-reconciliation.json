@@ -1,0 +1,1302 @@
+{
+  "slug": "week-10-persuasion-reconciliation",
+  "title": "Week 10 — Persuasion, Figurative Language & Moral Instruction + Argument, Calming & Reconciliation",
+  "bucket": "iba",
+  "description": "Fill-in-the-blank vocabulary on persuasion, figurative language, and moral instruction, and on argument, calming, and reconciliation.",
+  "sections": [
+    {
+      "order": 1,
+      "title": "SECTION A",
+      "marksPerCorrect": 1,
+      "penaltyPerWrong": 0,
+      "thresholdPercent": null,
+      "groups": [
+        {
+          "ref": "w10-sA-wordbank",
+          "kind": "word_bank",
+          "title": "SECTION A",
+          "content": "Use words from the box to fill the blanks. There are more words than necessary. No marks would be deducted for wrong answers.",
+          "sharedOptions": [
+            {
+              "key": "A",
+              "text": "Allusion"
+            },
+            {
+              "key": "B",
+              "text": "Exhort"
+            },
+            {
+              "key": "C",
+              "text": "Subtle"
+            },
+            {
+              "key": "D",
+              "text": "Succinct"
+            },
+            {
+              "key": "E",
+              "text": "Elicit"
+            },
+            {
+              "key": "F",
+              "text": "Analogy"
+            },
+            {
+              "key": "G",
+              "text": "Saccharine"
+            },
+            {
+              "key": "H",
+              "text": "Broach"
+            },
+            {
+              "key": "I",
+              "text": "Nuance"
+            },
+            {
+              "key": "J",
+              "text": "Didactic"
+            },
+            {
+              "key": "K",
+              "text": "Concise"
+            },
+            {
+              "key": "L",
+              "text": "Insipid"
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "number": 1,
+          "group": "w10-sA-wordbank",
+          "stem": "In one ______ paragraph the memo distilled an argument its rivals had smeared across twenty rambling pages.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Allusion"
+            },
+            {
+              "key": "B",
+              "text": "Exhort"
+            },
+            {
+              "key": "C",
+              "text": "Subtle"
+            },
+            {
+              "key": "D",
+              "text": "Succinct"
+            },
+            {
+              "key": "E",
+              "text": "Elicit"
+            },
+            {
+              "key": "F",
+              "text": "Analogy"
+            },
+            {
+              "key": "G",
+              "text": "Saccharine"
+            },
+            {
+              "key": "H",
+              "text": "Broach"
+            },
+            {
+              "key": "I",
+              "text": "Nuance"
+            },
+            {
+              "key": "J",
+              "text": "Didactic"
+            },
+            {
+              "key": "K",
+              "text": "Concise"
+            },
+            {
+              "key": "L",
+              "text": "Insipid"
+            }
+          ],
+          "correctKey": "D",
+          "imageUrl": null,
+          "explanation": "Succinct means briefly and clearly expressed, saying much in few words, which fits distilling a whole argument into a single paragraph. The nearest distractor, Concise (K), also means brief, but it stresses merely the absence of superfluous words, whereas the cue emphasizes compressed, pithy density — the special force of succinct."
+        },
+        {
+          "number": 2,
+          "group": "w10-sA-wordbank",
+          "stem": "Not even the gentlest coaxing could ______ so much as a word from the traumatised boy.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Allusion"
+            },
+            {
+              "key": "B",
+              "text": "Exhort"
+            },
+            {
+              "key": "C",
+              "text": "Subtle"
+            },
+            {
+              "key": "D",
+              "text": "Succinct"
+            },
+            {
+              "key": "E",
+              "text": "Elicit"
+            },
+            {
+              "key": "F",
+              "text": "Analogy"
+            },
+            {
+              "key": "G",
+              "text": "Saccharine"
+            },
+            {
+              "key": "H",
+              "text": "Broach"
+            },
+            {
+              "key": "I",
+              "text": "Nuance"
+            },
+            {
+              "key": "J",
+              "text": "Didactic"
+            },
+            {
+              "key": "K",
+              "text": "Concise"
+            },
+            {
+              "key": "L",
+              "text": "Insipid"
+            }
+          ],
+          "correctKey": "E",
+          "imageUrl": null,
+          "explanation": "Elicit means to draw out a response or reaction from someone, matching 'a word from the boy.' The nearest distractor, Broach (H), means to introduce a topic oneself, not to extract a response from another, and cannot take 'a word' as its object in that sense."
+        },
+        {
+          "number": 3,
+          "group": "w10-sA-wordbank",
+          "stem": "To make the tax code intelligible, she drew an ______ between the flow of revenue and the circulation of blood, matching each levy to a beating vessel.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Allusion"
+            },
+            {
+              "key": "B",
+              "text": "Exhort"
+            },
+            {
+              "key": "C",
+              "text": "Subtle"
+            },
+            {
+              "key": "D",
+              "text": "Succinct"
+            },
+            {
+              "key": "E",
+              "text": "Elicit"
+            },
+            {
+              "key": "F",
+              "text": "Analogy"
+            },
+            {
+              "key": "G",
+              "text": "Saccharine"
+            },
+            {
+              "key": "H",
+              "text": "Broach"
+            },
+            {
+              "key": "I",
+              "text": "Nuance"
+            },
+            {
+              "key": "J",
+              "text": "Didactic"
+            },
+            {
+              "key": "K",
+              "text": "Concise"
+            },
+            {
+              "key": "L",
+              "text": "Insipid"
+            }
+          ],
+          "correctKey": "F",
+          "imageUrl": null,
+          "explanation": "An analogy is an explanatory comparison drawn between two things to clarify one of them, matching the point-by-point matching of levies to vessels. The nearest distractor, Allusion (A), is a brief indirect reference to something else, not a sustained comparison built to explain a point."
+        },
+        {
+          "number": 4,
+          "group": "w10-sA-wordbank",
+          "stem": "The valentine's verse was so ______ — all cooing endearments and syrup-thick devotion — that even romantics found it cloying.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Allusion"
+            },
+            {
+              "key": "B",
+              "text": "Exhort"
+            },
+            {
+              "key": "C",
+              "text": "Subtle"
+            },
+            {
+              "key": "D",
+              "text": "Succinct"
+            },
+            {
+              "key": "E",
+              "text": "Elicit"
+            },
+            {
+              "key": "F",
+              "text": "Analogy"
+            },
+            {
+              "key": "G",
+              "text": "Saccharine"
+            },
+            {
+              "key": "H",
+              "text": "Broach"
+            },
+            {
+              "key": "I",
+              "text": "Nuance"
+            },
+            {
+              "key": "J",
+              "text": "Didactic"
+            },
+            {
+              "key": "K",
+              "text": "Concise"
+            },
+            {
+              "key": "L",
+              "text": "Insipid"
+            }
+          ],
+          "correctKey": "G",
+          "imageUrl": null,
+          "explanation": "Saccharine means excessively sweet or sentimental to the point of being sickly, matching 'syrup-thick devotion' and 'cloying.' The nearest distractor, Insipid (L), means bland and lacking flavour or interest — the opposite fault, an absence of savour rather than an overdose of sweetness."
+        },
+        {
+          "number": 5,
+          "group": "w10-sA-wordbank",
+          "stem": "She waited until the servants had withdrawn before she dared to ______ the delicate matter of the unpaid dowry.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Allusion"
+            },
+            {
+              "key": "B",
+              "text": "Exhort"
+            },
+            {
+              "key": "C",
+              "text": "Subtle"
+            },
+            {
+              "key": "D",
+              "text": "Succinct"
+            },
+            {
+              "key": "E",
+              "text": "Elicit"
+            },
+            {
+              "key": "F",
+              "text": "Analogy"
+            },
+            {
+              "key": "G",
+              "text": "Saccharine"
+            },
+            {
+              "key": "H",
+              "text": "Broach"
+            },
+            {
+              "key": "I",
+              "text": "Nuance"
+            },
+            {
+              "key": "J",
+              "text": "Didactic"
+            },
+            {
+              "key": "K",
+              "text": "Concise"
+            },
+            {
+              "key": "L",
+              "text": "Insipid"
+            }
+          ],
+          "correctKey": "H",
+          "imageUrl": null,
+          "explanation": "Broach means to raise or introduce a difficult subject for discussion, matching 'the delicate matter.' The nearest distractor, Elicit (E), means to draw a response out of someone else; it cannot mean to open a topic of one's own, which the sentence requires."
+        },
+        {
+          "number": 6,
+          "group": "w10-sA-wordbank",
+          "stem": "Every ______ of his expression — the faint lift of a brow, the half-second pause — told the jury more than his words did.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Allusion"
+            },
+            {
+              "key": "B",
+              "text": "Exhort"
+            },
+            {
+              "key": "C",
+              "text": "Subtle"
+            },
+            {
+              "key": "D",
+              "text": "Succinct"
+            },
+            {
+              "key": "E",
+              "text": "Elicit"
+            },
+            {
+              "key": "F",
+              "text": "Analogy"
+            },
+            {
+              "key": "G",
+              "text": "Saccharine"
+            },
+            {
+              "key": "H",
+              "text": "Broach"
+            },
+            {
+              "key": "I",
+              "text": "Nuance"
+            },
+            {
+              "key": "J",
+              "text": "Didactic"
+            },
+            {
+              "key": "K",
+              "text": "Concise"
+            },
+            {
+              "key": "L",
+              "text": "Insipid"
+            }
+          ],
+          "correctKey": "I",
+          "imageUrl": null,
+          "explanation": "A nuance is a subtle shade or fine distinction — a noun that 'every ___ of his expression' demands. The nearest distractor, Subtle (C), carries the same idea of fineness but is an adjective and cannot fill the noun slot after 'every.'"
+        },
+        {
+          "number": 7,
+          "group": "w10-sA-wordbank",
+          "stem": "The novel grows tiresomely ______, forever halting the plot to lecture the reader on thrift, duty, and the wages of vice.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Allusion"
+            },
+            {
+              "key": "B",
+              "text": "Exhort"
+            },
+            {
+              "key": "C",
+              "text": "Subtle"
+            },
+            {
+              "key": "D",
+              "text": "Succinct"
+            },
+            {
+              "key": "E",
+              "text": "Elicit"
+            },
+            {
+              "key": "F",
+              "text": "Analogy"
+            },
+            {
+              "key": "G",
+              "text": "Saccharine"
+            },
+            {
+              "key": "H",
+              "text": "Broach"
+            },
+            {
+              "key": "I",
+              "text": "Nuance"
+            },
+            {
+              "key": "J",
+              "text": "Didactic"
+            },
+            {
+              "key": "K",
+              "text": "Concise"
+            },
+            {
+              "key": "L",
+              "text": "Insipid"
+            }
+          ],
+          "correctKey": "J",
+          "imageUrl": null,
+          "explanation": "Didactic means intended to instruct or moralise, matching a story that keeps stopping to lecture the reader. The nearest distractor, Exhort (B), also concerns urging virtue, but it is a verb meaning to strongly urge someone to act and cannot occupy the adjective slot after 'grows tiresomely.'"
+        },
+        {
+          "number": 8,
+          "group": "w10-sA-wordbank",
+          "stem": "The novel's title is a fleeting ______ to Milton, a nod that delights readers who catch it and passes unnoticed by those who do not.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Allusion"
+            },
+            {
+              "key": "B",
+              "text": "Exhort"
+            },
+            {
+              "key": "C",
+              "text": "Subtle"
+            },
+            {
+              "key": "D",
+              "text": "Succinct"
+            },
+            {
+              "key": "E",
+              "text": "Elicit"
+            },
+            {
+              "key": "F",
+              "text": "Analogy"
+            },
+            {
+              "key": "G",
+              "text": "Saccharine"
+            },
+            {
+              "key": "H",
+              "text": "Broach"
+            },
+            {
+              "key": "I",
+              "text": "Nuance"
+            },
+            {
+              "key": "J",
+              "text": "Didactic"
+            },
+            {
+              "key": "K",
+              "text": "Concise"
+            },
+            {
+              "key": "L",
+              "text": "Insipid"
+            }
+          ],
+          "correctKey": "A",
+          "imageUrl": null,
+          "explanation": "An allusion is an indirect, passing reference to another work, matching a 'nod' that some readers catch and others miss. The nearest distractor, Analogy (F), is an extended comparison drawn to explain something, not a brief glancing reference."
+        },
+        {
+          "number": 9,
+          "group": "w10-sA-wordbank",
+          "stem": "From the pulpit the old priest would ______ his flock to abandon their idleness and give their whole strength to honest work.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Allusion"
+            },
+            {
+              "key": "B",
+              "text": "Exhort"
+            },
+            {
+              "key": "C",
+              "text": "Subtle"
+            },
+            {
+              "key": "D",
+              "text": "Succinct"
+            },
+            {
+              "key": "E",
+              "text": "Elicit"
+            },
+            {
+              "key": "F",
+              "text": "Analogy"
+            },
+            {
+              "key": "G",
+              "text": "Saccharine"
+            },
+            {
+              "key": "H",
+              "text": "Broach"
+            },
+            {
+              "key": "I",
+              "text": "Nuance"
+            },
+            {
+              "key": "J",
+              "text": "Didactic"
+            },
+            {
+              "key": "K",
+              "text": "Concise"
+            },
+            {
+              "key": "L",
+              "text": "Insipid"
+            }
+          ],
+          "correctKey": "B",
+          "imageUrl": null,
+          "explanation": "Exhort means to strongly urge someone to do something, matching the priest pressing his flock to act. The nearest distractor, Didactic (J), belongs to the same moralising domain but is an adjective meaning designed to teach, and cannot serve as the verb the sentence needs."
+        },
+        {
+          "number": 10,
+          "group": "w10-sA-wordbank",
+          "stem": "The assassin favoured poison precisely because it worked by so ______ a mechanism that the death passed for natural causes.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Allusion"
+            },
+            {
+              "key": "B",
+              "text": "Exhort"
+            },
+            {
+              "key": "C",
+              "text": "Subtle"
+            },
+            {
+              "key": "D",
+              "text": "Succinct"
+            },
+            {
+              "key": "E",
+              "text": "Elicit"
+            },
+            {
+              "key": "F",
+              "text": "Analogy"
+            },
+            {
+              "key": "G",
+              "text": "Saccharine"
+            },
+            {
+              "key": "H",
+              "text": "Broach"
+            },
+            {
+              "key": "I",
+              "text": "Nuance"
+            },
+            {
+              "key": "J",
+              "text": "Didactic"
+            },
+            {
+              "key": "K",
+              "text": "Concise"
+            },
+            {
+              "key": "L",
+              "text": "Insipid"
+            }
+          ],
+          "correctKey": "C",
+          "imageUrl": null,
+          "explanation": "Subtle means delicate and hard to detect — the adjective that 'so ___ a mechanism' requires. The nearest distractor, Nuance (I), shares the idea of fineness but is a noun and cannot fill an adjective slot before 'a mechanism.'"
+        }
+      ]
+    },
+    {
+      "order": 2,
+      "title": "SECTION B",
+      "marksPerCorrect": 1,
+      "penaltyPerWrong": 0,
+      "thresholdPercent": null,
+      "groups": [
+        {
+          "ref": "w10-sB-wordbank",
+          "kind": "word_bank",
+          "title": "SECTION B",
+          "content": "Use words from the box to fill the blanks. There are more words than necessary. No marks would be deducted for wrong answers.",
+          "sharedOptions": [
+            {
+              "key": "A",
+              "text": "Concord"
+            },
+            {
+              "key": "B",
+              "text": "Incense"
+            },
+            {
+              "key": "C",
+              "text": "Instigate"
+            },
+            {
+              "key": "D",
+              "text": "Assuage"
+            },
+            {
+              "key": "E",
+              "text": "Placate"
+            },
+            {
+              "key": "F",
+              "text": "Mitigate"
+            },
+            {
+              "key": "G",
+              "text": "Acquiesce"
+            },
+            {
+              "key": "H",
+              "text": "Refute"
+            },
+            {
+              "key": "I",
+              "text": "Impugn"
+            },
+            {
+              "key": "J",
+              "text": "Consensus"
+            },
+            {
+              "key": "K",
+              "text": "Capitulate"
+            },
+            {
+              "key": "L",
+              "text": "Mollify"
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "number": 1,
+          "group": "w10-sB-wordbank",
+          "stem": "Nothing the doctors said could ______ the widow's grief, though they sat with her for hours.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Concord"
+            },
+            {
+              "key": "B",
+              "text": "Incense"
+            },
+            {
+              "key": "C",
+              "text": "Instigate"
+            },
+            {
+              "key": "D",
+              "text": "Assuage"
+            },
+            {
+              "key": "E",
+              "text": "Placate"
+            },
+            {
+              "key": "F",
+              "text": "Mitigate"
+            },
+            {
+              "key": "G",
+              "text": "Acquiesce"
+            },
+            {
+              "key": "H",
+              "text": "Refute"
+            },
+            {
+              "key": "I",
+              "text": "Impugn"
+            },
+            {
+              "key": "J",
+              "text": "Consensus"
+            },
+            {
+              "key": "K",
+              "text": "Capitulate"
+            },
+            {
+              "key": "L",
+              "text": "Mollify"
+            }
+          ],
+          "correctKey": "D",
+          "imageUrl": null,
+          "explanation": "Assuage means to soothe or relieve a painful feeling such as grief, fear, or guilt, matching 'the widow's grief.' The nearest distractor, Mollify (L), means to calm the anger of a person, but grief is a sorrow to be soothed, not an anger to be appeased, so it takes assuage."
+        },
+        {
+          "number": 2,
+          "group": "w10-sB-wordbank",
+          "stem": "The manager offered a full refund and a free meal to ______ the furious customer before he made a scene.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Concord"
+            },
+            {
+              "key": "B",
+              "text": "Incense"
+            },
+            {
+              "key": "C",
+              "text": "Instigate"
+            },
+            {
+              "key": "D",
+              "text": "Assuage"
+            },
+            {
+              "key": "E",
+              "text": "Placate"
+            },
+            {
+              "key": "F",
+              "text": "Mitigate"
+            },
+            {
+              "key": "G",
+              "text": "Acquiesce"
+            },
+            {
+              "key": "H",
+              "text": "Refute"
+            },
+            {
+              "key": "I",
+              "text": "Impugn"
+            },
+            {
+              "key": "J",
+              "text": "Consensus"
+            },
+            {
+              "key": "K",
+              "text": "Capitulate"
+            },
+            {
+              "key": "L",
+              "text": "Mollify"
+            }
+          ],
+          "correctKey": "E",
+          "imageUrl": null,
+          "explanation": "Placate means to appease an angry person, especially by concessions, matching the refund and free meal offered to head off a scene. The nearest distractor, Mollify (L), means to soften someone's temper with soothing words; it lacks the sense of buying off anger with concessions that the offer here implies."
+        },
+        {
+          "number": 3,
+          "group": "w10-sB-wordbank",
+          "stem": "The lawyer argued that her client's youth and evident remorse should ______ the severity of the sentence.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Concord"
+            },
+            {
+              "key": "B",
+              "text": "Incense"
+            },
+            {
+              "key": "C",
+              "text": "Instigate"
+            },
+            {
+              "key": "D",
+              "text": "Assuage"
+            },
+            {
+              "key": "E",
+              "text": "Placate"
+            },
+            {
+              "key": "F",
+              "text": "Mitigate"
+            },
+            {
+              "key": "G",
+              "text": "Acquiesce"
+            },
+            {
+              "key": "H",
+              "text": "Refute"
+            },
+            {
+              "key": "I",
+              "text": "Impugn"
+            },
+            {
+              "key": "J",
+              "text": "Consensus"
+            },
+            {
+              "key": "K",
+              "text": "Capitulate"
+            },
+            {
+              "key": "L",
+              "text": "Mollify"
+            }
+          ],
+          "correctKey": "F",
+          "imageUrl": null,
+          "explanation": "Mitigate means to make something less severe or serious, matching 'the severity of the sentence.' The nearest distractor, Assuage (D), means to soothe a feeling such as grief or anger, but a sentence's severity is a condition to be lessened, not a feeling to be calmed."
+        },
+        {
+          "number": 4,
+          "group": "w10-sB-wordbank",
+          "stem": "Too weary to argue any longer, the committee simply ______d in the chairman's decision and moved on to other business.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Concord"
+            },
+            {
+              "key": "B",
+              "text": "Incense"
+            },
+            {
+              "key": "C",
+              "text": "Instigate"
+            },
+            {
+              "key": "D",
+              "text": "Assuage"
+            },
+            {
+              "key": "E",
+              "text": "Placate"
+            },
+            {
+              "key": "F",
+              "text": "Mitigate"
+            },
+            {
+              "key": "G",
+              "text": "Acquiesce"
+            },
+            {
+              "key": "H",
+              "text": "Refute"
+            },
+            {
+              "key": "I",
+              "text": "Impugn"
+            },
+            {
+              "key": "J",
+              "text": "Consensus"
+            },
+            {
+              "key": "K",
+              "text": "Capitulate"
+            },
+            {
+              "key": "L",
+              "text": "Mollify"
+            }
+          ],
+          "correctKey": "G",
+          "imageUrl": null,
+          "explanation": "Acquiesce means to accept or consent passively, without protest, and takes 'in' as here. The nearest distractor, Capitulate (K), means to surrender after resistance to an opponent or force; there is no defeated struggle here, only weary, quiet consent."
+        },
+        {
+          "number": 5,
+          "group": "w10-sB-wordbank",
+          "stem": "With a single ledger entry the accountant ______d the accusation, proving that the funds had never once left the company.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Concord"
+            },
+            {
+              "key": "B",
+              "text": "Incense"
+            },
+            {
+              "key": "C",
+              "text": "Instigate"
+            },
+            {
+              "key": "D",
+              "text": "Assuage"
+            },
+            {
+              "key": "E",
+              "text": "Placate"
+            },
+            {
+              "key": "F",
+              "text": "Mitigate"
+            },
+            {
+              "key": "G",
+              "text": "Acquiesce"
+            },
+            {
+              "key": "H",
+              "text": "Refute"
+            },
+            {
+              "key": "I",
+              "text": "Impugn"
+            },
+            {
+              "key": "J",
+              "text": "Consensus"
+            },
+            {
+              "key": "K",
+              "text": "Capitulate"
+            },
+            {
+              "key": "L",
+              "text": "Mollify"
+            }
+          ],
+          "correctKey": "H",
+          "imageUrl": null,
+          "explanation": "Refute means to prove a claim false with evidence or argument, matching the ledger entry that disproves the charge. The nearest distractor, Impugn (I), means to attack or cast doubt on something's honesty or validity without necessarily disproving it, but here the accusation is conclusively shown to be false with hard evidence."
+        },
+        {
+          "number": 6,
+          "group": "w10-sB-wordbank",
+          "stem": "He would not answer the charge itself but instead sought to ______ the honesty of every witness who testified against him.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Concord"
+            },
+            {
+              "key": "B",
+              "text": "Incense"
+            },
+            {
+              "key": "C",
+              "text": "Instigate"
+            },
+            {
+              "key": "D",
+              "text": "Assuage"
+            },
+            {
+              "key": "E",
+              "text": "Placate"
+            },
+            {
+              "key": "F",
+              "text": "Mitigate"
+            },
+            {
+              "key": "G",
+              "text": "Acquiesce"
+            },
+            {
+              "key": "H",
+              "text": "Refute"
+            },
+            {
+              "key": "I",
+              "text": "Impugn"
+            },
+            {
+              "key": "J",
+              "text": "Consensus"
+            },
+            {
+              "key": "K",
+              "text": "Capitulate"
+            },
+            {
+              "key": "L",
+              "text": "Mollify"
+            }
+          ],
+          "correctKey": "I",
+          "imageUrl": null,
+          "explanation": "Impugn means to attack as false or call into question, especially someone's integrity or motives, matching an attack on the witnesses' honesty. The nearest distractor, Refute (H), means to disprove a claim with evidence; but he pointedly does not answer the charge, only casts doubt on the witnesses, which is to impugn them."
+        },
+        {
+          "number": 7,
+          "group": "w10-sB-wordbank",
+          "stem": "After hours of wrangling the delegates at last reached a ______, every faction consenting to the final wording of the clause.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Concord"
+            },
+            {
+              "key": "B",
+              "text": "Incense"
+            },
+            {
+              "key": "C",
+              "text": "Instigate"
+            },
+            {
+              "key": "D",
+              "text": "Assuage"
+            },
+            {
+              "key": "E",
+              "text": "Placate"
+            },
+            {
+              "key": "F",
+              "text": "Mitigate"
+            },
+            {
+              "key": "G",
+              "text": "Acquiesce"
+            },
+            {
+              "key": "H",
+              "text": "Refute"
+            },
+            {
+              "key": "I",
+              "text": "Impugn"
+            },
+            {
+              "key": "J",
+              "text": "Consensus"
+            },
+            {
+              "key": "K",
+              "text": "Capitulate"
+            },
+            {
+              "key": "L",
+              "text": "Mollify"
+            }
+          ],
+          "correctKey": "J",
+          "imageUrl": null,
+          "explanation": "A consensus is a collective agreement reached by a group on a particular question, matching 'every faction consenting to the final wording.' The nearest distractor, Concord (A), means a lasting state of harmony between parties, not an agreement hammered out on a specific decision."
+        },
+        {
+          "number": 8,
+          "group": "w10-sB-wordbank",
+          "stem": "The treaty ushered in an age of ______ between the two kingdoms, and for a generation no sword was drawn along the frontier.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Concord"
+            },
+            {
+              "key": "B",
+              "text": "Incense"
+            },
+            {
+              "key": "C",
+              "text": "Instigate"
+            },
+            {
+              "key": "D",
+              "text": "Assuage"
+            },
+            {
+              "key": "E",
+              "text": "Placate"
+            },
+            {
+              "key": "F",
+              "text": "Mitigate"
+            },
+            {
+              "key": "G",
+              "text": "Acquiesce"
+            },
+            {
+              "key": "H",
+              "text": "Refute"
+            },
+            {
+              "key": "I",
+              "text": "Impugn"
+            },
+            {
+              "key": "J",
+              "text": "Consensus"
+            },
+            {
+              "key": "K",
+              "text": "Capitulate"
+            },
+            {
+              "key": "L",
+              "text": "Mollify"
+            }
+          ],
+          "correctKey": "A",
+          "imageUrl": null,
+          "explanation": "Concord means a state of harmony and peaceful relations between parties, matching an age in which no sword is drawn. The nearest distractor, Consensus (J), means agreement reached on a specific decision by a group, not the enduring amity between nations the sentence describes."
+        },
+        {
+          "number": 9,
+          "group": "w10-sB-wordbank",
+          "stem": "The proposal to sell off the temple lands ______d the villagers, who massed at the gates shouting for the governor's head.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Concord"
+            },
+            {
+              "key": "B",
+              "text": "Incense"
+            },
+            {
+              "key": "C",
+              "text": "Instigate"
+            },
+            {
+              "key": "D",
+              "text": "Assuage"
+            },
+            {
+              "key": "E",
+              "text": "Placate"
+            },
+            {
+              "key": "F",
+              "text": "Mitigate"
+            },
+            {
+              "key": "G",
+              "text": "Acquiesce"
+            },
+            {
+              "key": "H",
+              "text": "Refute"
+            },
+            {
+              "key": "I",
+              "text": "Impugn"
+            },
+            {
+              "key": "J",
+              "text": "Consensus"
+            },
+            {
+              "key": "K",
+              "text": "Capitulate"
+            },
+            {
+              "key": "L",
+              "text": "Mollify"
+            }
+          ],
+          "correctKey": "B",
+          "imageUrl": null,
+          "explanation": "Incense means to make someone very angry, and here takes the villagers as its object, matching their furious protest. The nearest distractor, Instigate (C), means to bring about or provoke an action or event; one incenses people but instigates an event, and the object here is people made angry."
+        },
+        {
+          "number": 10,
+          "group": "w10-sB-wordbank",
+          "stem": "Foreign agents were blamed for ______ing the riot, having spread the very rumours that first drew the mob into the square.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Concord"
+            },
+            {
+              "key": "B",
+              "text": "Incense"
+            },
+            {
+              "key": "C",
+              "text": "Instigate"
+            },
+            {
+              "key": "D",
+              "text": "Assuage"
+            },
+            {
+              "key": "E",
+              "text": "Placate"
+            },
+            {
+              "key": "F",
+              "text": "Mitigate"
+            },
+            {
+              "key": "G",
+              "text": "Acquiesce"
+            },
+            {
+              "key": "H",
+              "text": "Refute"
+            },
+            {
+              "key": "I",
+              "text": "Impugn"
+            },
+            {
+              "key": "J",
+              "text": "Consensus"
+            },
+            {
+              "key": "K",
+              "text": "Capitulate"
+            },
+            {
+              "key": "L",
+              "text": "Mollify"
+            }
+          ],
+          "correctKey": "C",
+          "imageUrl": null,
+          "explanation": "Instigate means to incite or bring about an action or event, matching a riot stirred into being by planted rumours. The nearest distractor, Incense (B), means to fill a person with anger and takes a person as its object, whereas the object here is 'the riot,' an event that was provoked."
+        }
+      ]
+    }
+  ]
+}

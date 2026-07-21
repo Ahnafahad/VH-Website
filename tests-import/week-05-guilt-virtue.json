@@ -1,0 +1,1302 @@
+{
+  "slug": "week-05-guilt-virtue",
+  "title": "Week 5 — Moral Failure, Guilt & Rebuke + Virtue, Resolve & Arrogance",
+  "bucket": "iba",
+  "description": "Fill-in-the-blank vocabulary on the language of moral failure, guilt, and rebuke, and on virtue, resolve, and arrogance.",
+  "sections": [
+    {
+      "order": 1,
+      "title": "SECTION A",
+      "marksPerCorrect": 1,
+      "penaltyPerWrong": 0,
+      "thresholdPercent": null,
+      "groups": [
+        {
+          "ref": "w5-sA-wordbank",
+          "kind": "word_bank",
+          "title": "SECTION A",
+          "content": "Use words from the box to fill the blanks. There are more words than necessary. No marks would be deducted for wrong answers.",
+          "sharedOptions": [
+            {
+              "key": "A",
+              "text": "Censure"
+            },
+            {
+              "key": "B",
+              "text": "Depravity"
+            },
+            {
+              "key": "C",
+              "text": "Clemency"
+            },
+            {
+              "key": "D",
+              "text": "Debauchery"
+            },
+            {
+              "key": "E",
+              "text": "Perfidy"
+            },
+            {
+              "key": "F",
+              "text": "Malfeasance"
+            },
+            {
+              "key": "G",
+              "text": "Absolve"
+            },
+            {
+              "key": "H",
+              "text": "Peccadillo"
+            },
+            {
+              "key": "I",
+              "text": "Reparation"
+            },
+            {
+              "key": "J",
+              "text": "Transgress"
+            },
+            {
+              "key": "K",
+              "text": "Flout"
+            },
+            {
+              "key": "L",
+              "text": "Chastise"
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "number": 1,
+          "group": "w5-sA-wordbank",
+          "stem": "The young heir wasted his inheritance in ceaseless ______, his nights given over to wine, gambling, and the company of courtesans.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Censure"
+            },
+            {
+              "key": "B",
+              "text": "Depravity"
+            },
+            {
+              "key": "C",
+              "text": "Clemency"
+            },
+            {
+              "key": "D",
+              "text": "Debauchery"
+            },
+            {
+              "key": "E",
+              "text": "Perfidy"
+            },
+            {
+              "key": "F",
+              "text": "Malfeasance"
+            },
+            {
+              "key": "G",
+              "text": "Absolve"
+            },
+            {
+              "key": "H",
+              "text": "Peccadillo"
+            },
+            {
+              "key": "I",
+              "text": "Reparation"
+            },
+            {
+              "key": "J",
+              "text": "Transgress"
+            },
+            {
+              "key": "K",
+              "text": "Flout"
+            },
+            {
+              "key": "L",
+              "text": "Chastise"
+            }
+          ],
+          "correctKey": "D",
+          "imageUrl": null,
+          "explanation": "Debauchery is excessive indulgence in sensual pleasures such as drink and vice, matching the wine, gambling, and courtesans. The nearest distractor, Depravity (B), names inherent moral corruption or wickedness in the abstract, not the concrete pursuit of physical pleasure the cue describes."
+        },
+        {
+          "number": 2,
+          "group": "w5-sA-wordbank",
+          "stem": "The envoy's ______ was complete when, having sworn eternal friendship at the treaty table, he handed the enemy the keys to the city gates.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Censure"
+            },
+            {
+              "key": "B",
+              "text": "Depravity"
+            },
+            {
+              "key": "C",
+              "text": "Clemency"
+            },
+            {
+              "key": "D",
+              "text": "Debauchery"
+            },
+            {
+              "key": "E",
+              "text": "Perfidy"
+            },
+            {
+              "key": "F",
+              "text": "Malfeasance"
+            },
+            {
+              "key": "G",
+              "text": "Absolve"
+            },
+            {
+              "key": "H",
+              "text": "Peccadillo"
+            },
+            {
+              "key": "I",
+              "text": "Reparation"
+            },
+            {
+              "key": "J",
+              "text": "Transgress"
+            },
+            {
+              "key": "K",
+              "text": "Flout"
+            },
+            {
+              "key": "L",
+              "text": "Chastise"
+            }
+          ],
+          "correctKey": "E",
+          "imageUrl": null,
+          "explanation": "Perfidy is treachery, the breaking of faith or a sworn trust, matching a man who betrays the very friendship he pledged. The nearest distractor, Malfeasance (F), means wrongdoing or corruption by someone in office, not the personal betrayal of an oath the sentence stresses."
+        },
+        {
+          "number": 3,
+          "group": "w5-sA-wordbank",
+          "stem": "The commission's report detailed the mayor's ______, from steering city contracts to his cronies to pocketing the fees meant for the treasury.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Censure"
+            },
+            {
+              "key": "B",
+              "text": "Depravity"
+            },
+            {
+              "key": "C",
+              "text": "Clemency"
+            },
+            {
+              "key": "D",
+              "text": "Debauchery"
+            },
+            {
+              "key": "E",
+              "text": "Perfidy"
+            },
+            {
+              "key": "F",
+              "text": "Malfeasance"
+            },
+            {
+              "key": "G",
+              "text": "Absolve"
+            },
+            {
+              "key": "H",
+              "text": "Peccadillo"
+            },
+            {
+              "key": "I",
+              "text": "Reparation"
+            },
+            {
+              "key": "J",
+              "text": "Transgress"
+            },
+            {
+              "key": "K",
+              "text": "Flout"
+            },
+            {
+              "key": "L",
+              "text": "Chastise"
+            }
+          ],
+          "correctKey": "F",
+          "imageUrl": null,
+          "explanation": "Malfeasance is wrongdoing or misconduct by a public official, matching the abuse of the mayor's office for private gain. The nearest distractor, Perfidy (E), means betrayal of a personal trust or oath, not the corrupt exercise of public duties described here."
+        },
+        {
+          "number": 4,
+          "group": "w5-sA-wordbank",
+          "stem": "Only a full confession, the priest said, could ______ him of the guilt he had carried in silence for thirty years.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Censure"
+            },
+            {
+              "key": "B",
+              "text": "Depravity"
+            },
+            {
+              "key": "C",
+              "text": "Clemency"
+            },
+            {
+              "key": "D",
+              "text": "Debauchery"
+            },
+            {
+              "key": "E",
+              "text": "Perfidy"
+            },
+            {
+              "key": "F",
+              "text": "Malfeasance"
+            },
+            {
+              "key": "G",
+              "text": "Absolve"
+            },
+            {
+              "key": "H",
+              "text": "Peccadillo"
+            },
+            {
+              "key": "I",
+              "text": "Reparation"
+            },
+            {
+              "key": "J",
+              "text": "Transgress"
+            },
+            {
+              "key": "K",
+              "text": "Flout"
+            },
+            {
+              "key": "L",
+              "text": "Chastise"
+            }
+          ],
+          "correctKey": "G",
+          "imageUrl": null,
+          "explanation": "Absolve is a verb meaning to free someone from guilt or blame, and fits the slot 'could ______ him of the guilt.' The nearest distractor, Clemency (C), is a noun meaning mercy or leniency in punishment; it cannot occupy the verb position and concerns a softer penalty, not the clearing of guilt."
+        },
+        {
+          "number": 5,
+          "group": "w5-sA-wordbank",
+          "stem": "The tabloids treated a harmless ______ — his fondness for buying too many hats — as though it were some monstrous crime.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Censure"
+            },
+            {
+              "key": "B",
+              "text": "Depravity"
+            },
+            {
+              "key": "C",
+              "text": "Clemency"
+            },
+            {
+              "key": "D",
+              "text": "Debauchery"
+            },
+            {
+              "key": "E",
+              "text": "Perfidy"
+            },
+            {
+              "key": "F",
+              "text": "Malfeasance"
+            },
+            {
+              "key": "G",
+              "text": "Absolve"
+            },
+            {
+              "key": "H",
+              "text": "Peccadillo"
+            },
+            {
+              "key": "I",
+              "text": "Reparation"
+            },
+            {
+              "key": "J",
+              "text": "Transgress"
+            },
+            {
+              "key": "K",
+              "text": "Flout"
+            },
+            {
+              "key": "L",
+              "text": "Chastise"
+            }
+          ],
+          "correctKey": "H",
+          "imageUrl": null,
+          "explanation": "A peccadillo is a small, trivial fault or minor sin, matching a harmless quirk absurdly inflated into a crime. The nearest distractor, Depravity (B), denotes profound moral corruption — the very opposite of the negligible offence the cue sets up."
+        },
+        {
+          "number": 6,
+          "group": "w5-sA-wordbank",
+          "stem": "The court ordered the company to pay ______ to every family poisoned by the leak, a sum meant to make good the harm it had done.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Censure"
+            },
+            {
+              "key": "B",
+              "text": "Depravity"
+            },
+            {
+              "key": "C",
+              "text": "Clemency"
+            },
+            {
+              "key": "D",
+              "text": "Debauchery"
+            },
+            {
+              "key": "E",
+              "text": "Perfidy"
+            },
+            {
+              "key": "F",
+              "text": "Malfeasance"
+            },
+            {
+              "key": "G",
+              "text": "Absolve"
+            },
+            {
+              "key": "H",
+              "text": "Peccadillo"
+            },
+            {
+              "key": "I",
+              "text": "Reparation"
+            },
+            {
+              "key": "J",
+              "text": "Transgress"
+            },
+            {
+              "key": "K",
+              "text": "Flout"
+            },
+            {
+              "key": "L",
+              "text": "Chastise"
+            }
+          ],
+          "correctKey": "I",
+          "imageUrl": null,
+          "explanation": "Reparation is compensation or amends made by a wrongdoer to those they have harmed, matching 'pay... to make good the harm.' The nearest distractor, Clemency (C), means mercy shown to a wrongdoer by an authority — the wrong direction entirely, since here the wrongdoer pays rather than being spared."
+        },
+        {
+          "number": 7,
+          "group": "w5-sA-wordbank",
+          "stem": "Even the saintliest among us will now and then ______ some small commandment, whether through weakness or through mere forgetfulness.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Censure"
+            },
+            {
+              "key": "B",
+              "text": "Depravity"
+            },
+            {
+              "key": "C",
+              "text": "Clemency"
+            },
+            {
+              "key": "D",
+              "text": "Debauchery"
+            },
+            {
+              "key": "E",
+              "text": "Perfidy"
+            },
+            {
+              "key": "F",
+              "text": "Malfeasance"
+            },
+            {
+              "key": "G",
+              "text": "Absolve"
+            },
+            {
+              "key": "H",
+              "text": "Peccadillo"
+            },
+            {
+              "key": "I",
+              "text": "Reparation"
+            },
+            {
+              "key": "J",
+              "text": "Transgress"
+            },
+            {
+              "key": "K",
+              "text": "Flout"
+            },
+            {
+              "key": "L",
+              "text": "Chastise"
+            }
+          ],
+          "correctKey": "J",
+          "imageUrl": null,
+          "explanation": "Transgress means to break or violate a rule or law, and here the breach comes 'through weakness or forgetfulness,' i.e. inadvertently. The nearest distractor, Flout (K), means to defy a rule openly and contemptuously, which the accidental, apologetic tone of the sentence rules out."
+        },
+        {
+          "number": 8,
+          "group": "w5-sA-wordbank",
+          "stem": "The developers openly ______ the safety code, boasting that no inspector would ever dare halt so profitable a project.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Censure"
+            },
+            {
+              "key": "B",
+              "text": "Depravity"
+            },
+            {
+              "key": "C",
+              "text": "Clemency"
+            },
+            {
+              "key": "D",
+              "text": "Debauchery"
+            },
+            {
+              "key": "E",
+              "text": "Perfidy"
+            },
+            {
+              "key": "F",
+              "text": "Malfeasance"
+            },
+            {
+              "key": "G",
+              "text": "Absolve"
+            },
+            {
+              "key": "H",
+              "text": "Peccadillo"
+            },
+            {
+              "key": "I",
+              "text": "Reparation"
+            },
+            {
+              "key": "J",
+              "text": "Transgress"
+            },
+            {
+              "key": "K",
+              "text": "Flout"
+            },
+            {
+              "key": "L",
+              "text": "Chastise"
+            }
+          ],
+          "correctKey": "K",
+          "imageUrl": null,
+          "explanation": "Flout means to disregard a rule openly and with contempt, matching the boastful, brazen defiance in the sentence. The nearest distractor, Transgress (J), means simply to break a rule and carries no note of open scorn, which the words 'openly' and 'boasting' demand."
+        },
+        {
+          "number": 9,
+          "group": "w5-sA-wordbank",
+          "stem": "The sergeant would ______ any recruit who faltered, driving the lesson home with a tongue-lashing that none of them soon forgot.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Censure"
+            },
+            {
+              "key": "B",
+              "text": "Depravity"
+            },
+            {
+              "key": "C",
+              "text": "Clemency"
+            },
+            {
+              "key": "D",
+              "text": "Debauchery"
+            },
+            {
+              "key": "E",
+              "text": "Perfidy"
+            },
+            {
+              "key": "F",
+              "text": "Malfeasance"
+            },
+            {
+              "key": "G",
+              "text": "Absolve"
+            },
+            {
+              "key": "H",
+              "text": "Peccadillo"
+            },
+            {
+              "key": "I",
+              "text": "Reparation"
+            },
+            {
+              "key": "J",
+              "text": "Transgress"
+            },
+            {
+              "key": "K",
+              "text": "Flout"
+            },
+            {
+              "key": "L",
+              "text": "Chastise"
+            }
+          ],
+          "correctKey": "L",
+          "imageUrl": null,
+          "explanation": "Chastise means to rebuke or punish severely, matching the personal, stinging tongue-lashing delivered to an individual. The nearest distractor, Censure (A), denotes formal, often official condemnation, not the immediate personal scolding the sentence describes."
+        },
+        {
+          "number": 10,
+          "group": "w5-sA-wordbank",
+          "stem": "The assembly voted to formally ______ the minister, entering its condemnation into the official record for all to see.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Censure"
+            },
+            {
+              "key": "B",
+              "text": "Depravity"
+            },
+            {
+              "key": "C",
+              "text": "Clemency"
+            },
+            {
+              "key": "D",
+              "text": "Debauchery"
+            },
+            {
+              "key": "E",
+              "text": "Perfidy"
+            },
+            {
+              "key": "F",
+              "text": "Malfeasance"
+            },
+            {
+              "key": "G",
+              "text": "Absolve"
+            },
+            {
+              "key": "H",
+              "text": "Peccadillo"
+            },
+            {
+              "key": "I",
+              "text": "Reparation"
+            },
+            {
+              "key": "J",
+              "text": "Transgress"
+            },
+            {
+              "key": "K",
+              "text": "Flout"
+            },
+            {
+              "key": "L",
+              "text": "Chastise"
+            }
+          ],
+          "correctKey": "A",
+          "imageUrl": null,
+          "explanation": "Censure is a formal expression of disapproval, especially one passed by an official body, matching the recorded vote of the assembly. The nearest distractor, Chastise (L), implies personal, severe rebuke or punishment, not the ceremonial, institutional condemnation described here."
+        }
+      ]
+    },
+    {
+      "order": 2,
+      "title": "SECTION B",
+      "marksPerCorrect": 1,
+      "penaltyPerWrong": 0,
+      "thresholdPercent": null,
+      "groups": [
+        {
+          "ref": "w5-sB-wordbank",
+          "kind": "word_bank",
+          "title": "SECTION B",
+          "content": "Use words from the box to fill the blanks. There are more words than necessary. No marks would be deducted for wrong answers.",
+          "sharedOptions": [
+            {
+              "key": "A",
+              "text": "Narcissism"
+            },
+            {
+              "key": "B",
+              "text": "Benign"
+            },
+            {
+              "key": "C",
+              "text": "Sardonic"
+            },
+            {
+              "key": "D",
+              "text": "Magnanimous"
+            },
+            {
+              "key": "E",
+              "text": "Impeccable"
+            },
+            {
+              "key": "F",
+              "text": "Pristine"
+            },
+            {
+              "key": "G",
+              "text": "Salutary"
+            },
+            {
+              "key": "H",
+              "text": "Resolute"
+            },
+            {
+              "key": "I",
+              "text": "Staunch"
+            },
+            {
+              "key": "J",
+              "text": "Tenacious"
+            },
+            {
+              "key": "K",
+              "text": "Supercilious"
+            },
+            {
+              "key": "L",
+              "text": "Querulous"
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "number": 1,
+          "group": "w5-sB-wordbank",
+          "stem": "Though he had every right to gloat, the champion was ______, praising his beaten rival's courage and returning the man's sword with a bow.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Narcissism"
+            },
+            {
+              "key": "B",
+              "text": "Benign"
+            },
+            {
+              "key": "C",
+              "text": "Sardonic"
+            },
+            {
+              "key": "D",
+              "text": "Magnanimous"
+            },
+            {
+              "key": "E",
+              "text": "Impeccable"
+            },
+            {
+              "key": "F",
+              "text": "Pristine"
+            },
+            {
+              "key": "G",
+              "text": "Salutary"
+            },
+            {
+              "key": "H",
+              "text": "Resolute"
+            },
+            {
+              "key": "I",
+              "text": "Staunch"
+            },
+            {
+              "key": "J",
+              "text": "Tenacious"
+            },
+            {
+              "key": "K",
+              "text": "Supercilious"
+            },
+            {
+              "key": "L",
+              "text": "Querulous"
+            }
+          ],
+          "correctKey": "D",
+          "imageUrl": null,
+          "explanation": "Magnanimous means noble and generous, especially toward a defeated rival, matching the graceful honouring of a beaten foe. The nearest distractor, Benign (B), means merely gentle or kindly and lacks the specific note of lofty generosity to an adversary that the scene demands."
+        },
+        {
+          "number": 2,
+          "group": "w5-sB-wordbank",
+          "stem": "His tailoring was ______; the sharpest critic in London could not find a single stitch out of place or a fault to remark upon.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Narcissism"
+            },
+            {
+              "key": "B",
+              "text": "Benign"
+            },
+            {
+              "key": "C",
+              "text": "Sardonic"
+            },
+            {
+              "key": "D",
+              "text": "Magnanimous"
+            },
+            {
+              "key": "E",
+              "text": "Impeccable"
+            },
+            {
+              "key": "F",
+              "text": "Pristine"
+            },
+            {
+              "key": "G",
+              "text": "Salutary"
+            },
+            {
+              "key": "H",
+              "text": "Resolute"
+            },
+            {
+              "key": "I",
+              "text": "Staunch"
+            },
+            {
+              "key": "J",
+              "text": "Tenacious"
+            },
+            {
+              "key": "K",
+              "text": "Supercilious"
+            },
+            {
+              "key": "L",
+              "text": "Querulous"
+            }
+          ],
+          "correctKey": "E",
+          "imageUrl": null,
+          "explanation": "Impeccable means faultless, without a flaw to be criticised, matching a critic who can find nothing amiss. The nearest distractor, Pristine (F), means unspoiled or in original pure condition; it speaks to cleanness and untouched newness, not to the flawlessness-by-a-standard the cue emphasises."
+        },
+        {
+          "number": 3,
+          "group": "w5-sB-wordbank",
+          "stem": "The mountain lake lay ______, its waters so clear and untouched that they might never have known the presence of man.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Narcissism"
+            },
+            {
+              "key": "B",
+              "text": "Benign"
+            },
+            {
+              "key": "C",
+              "text": "Sardonic"
+            },
+            {
+              "key": "D",
+              "text": "Magnanimous"
+            },
+            {
+              "key": "E",
+              "text": "Impeccable"
+            },
+            {
+              "key": "F",
+              "text": "Pristine"
+            },
+            {
+              "key": "G",
+              "text": "Salutary"
+            },
+            {
+              "key": "H",
+              "text": "Resolute"
+            },
+            {
+              "key": "I",
+              "text": "Staunch"
+            },
+            {
+              "key": "J",
+              "text": "Tenacious"
+            },
+            {
+              "key": "K",
+              "text": "Supercilious"
+            },
+            {
+              "key": "L",
+              "text": "Querulous"
+            }
+          ],
+          "correctKey": "F",
+          "imageUrl": null,
+          "explanation": "Pristine means unspoiled and in its original pure state, matching untouched waters that seem never to have known humanity. The nearest distractor, Impeccable (E), means faultless by a standard of conduct or workmanship and is not used of untouched natural purity."
+        },
+        {
+          "number": 4,
+          "group": "w5-sB-wordbank",
+          "stem": "The collapse of one reckless bank served as a ______ warning to all the others, and lending grew prudent almost overnight.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Narcissism"
+            },
+            {
+              "key": "B",
+              "text": "Benign"
+            },
+            {
+              "key": "C",
+              "text": "Sardonic"
+            },
+            {
+              "key": "D",
+              "text": "Magnanimous"
+            },
+            {
+              "key": "E",
+              "text": "Impeccable"
+            },
+            {
+              "key": "F",
+              "text": "Pristine"
+            },
+            {
+              "key": "G",
+              "text": "Salutary"
+            },
+            {
+              "key": "H",
+              "text": "Resolute"
+            },
+            {
+              "key": "I",
+              "text": "Staunch"
+            },
+            {
+              "key": "J",
+              "text": "Tenacious"
+            },
+            {
+              "key": "K",
+              "text": "Supercilious"
+            },
+            {
+              "key": "L",
+              "text": "Querulous"
+            }
+          ],
+          "correctKey": "G",
+          "imageUrl": null,
+          "explanation": "Salutary means producing a beneficial or corrective effect, matching a warning that actually reformed the others' behaviour. The nearest distractor, Benign (B), means merely harmless or gentle, which contradicts a jolt sharp enough to change conduct overnight."
+        },
+        {
+          "number": 5,
+          "group": "w5-sB-wordbank",
+          "stem": "Battered by setbacks that would have broken a lesser person, she remained ______, holding fast to her purpose until the last of the work was done.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Narcissism"
+            },
+            {
+              "key": "B",
+              "text": "Benign"
+            },
+            {
+              "key": "C",
+              "text": "Sardonic"
+            },
+            {
+              "key": "D",
+              "text": "Magnanimous"
+            },
+            {
+              "key": "E",
+              "text": "Impeccable"
+            },
+            {
+              "key": "F",
+              "text": "Pristine"
+            },
+            {
+              "key": "G",
+              "text": "Salutary"
+            },
+            {
+              "key": "H",
+              "text": "Resolute"
+            },
+            {
+              "key": "I",
+              "text": "Staunch"
+            },
+            {
+              "key": "J",
+              "text": "Tenacious"
+            },
+            {
+              "key": "K",
+              "text": "Supercilious"
+            },
+            {
+              "key": "L",
+              "text": "Querulous"
+            }
+          ],
+          "correctKey": "H",
+          "imageUrl": null,
+          "explanation": "Resolute means firmly determined and unwavering in purpose, matching one who clings to her own goal through adversity. The nearest distractor, Staunch (I), stresses loyal, steadfast support of a person or cause rather than fixed determination toward one's own aim."
+        },
+        {
+          "number": 6,
+          "group": "w5-sB-wordbank",
+          "stem": "He was a ______ defender of the exiled queen, upholding her cause in every hostile court and never once wavering in his loyalty.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Narcissism"
+            },
+            {
+              "key": "B",
+              "text": "Benign"
+            },
+            {
+              "key": "C",
+              "text": "Sardonic"
+            },
+            {
+              "key": "D",
+              "text": "Magnanimous"
+            },
+            {
+              "key": "E",
+              "text": "Impeccable"
+            },
+            {
+              "key": "F",
+              "text": "Pristine"
+            },
+            {
+              "key": "G",
+              "text": "Salutary"
+            },
+            {
+              "key": "H",
+              "text": "Resolute"
+            },
+            {
+              "key": "I",
+              "text": "Staunch"
+            },
+            {
+              "key": "J",
+              "text": "Tenacious"
+            },
+            {
+              "key": "K",
+              "text": "Supercilious"
+            },
+            {
+              "key": "L",
+              "text": "Querulous"
+            }
+          ],
+          "correctKey": "I",
+          "imageUrl": null,
+          "explanation": "Staunch means firmly loyal and steadfast in support, matching an unwavering champion of another's cause. The nearest distractor, Resolute (H), means determined in one's own purpose; it does not carry the sense of devoted allegiance to a person that 'defender' and 'loyalty' require."
+        },
+        {
+          "number": 7,
+          "group": "w5-sB-wordbank",
+          "stem": "Like a bulldog that will not unlock its jaws, the reporter was ______, chasing the buried story for a decade until at last it broke.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Narcissism"
+            },
+            {
+              "key": "B",
+              "text": "Benign"
+            },
+            {
+              "key": "C",
+              "text": "Sardonic"
+            },
+            {
+              "key": "D",
+              "text": "Magnanimous"
+            },
+            {
+              "key": "E",
+              "text": "Impeccable"
+            },
+            {
+              "key": "F",
+              "text": "Pristine"
+            },
+            {
+              "key": "G",
+              "text": "Salutary"
+            },
+            {
+              "key": "H",
+              "text": "Resolute"
+            },
+            {
+              "key": "I",
+              "text": "Staunch"
+            },
+            {
+              "key": "J",
+              "text": "Tenacious"
+            },
+            {
+              "key": "K",
+              "text": "Supercilious"
+            },
+            {
+              "key": "L",
+              "text": "Querulous"
+            }
+          ],
+          "correctKey": "J",
+          "imageUrl": null,
+          "explanation": "Tenacious means gripping firmly and refusing to let go, matching the bulldog image and a decade of dogged pursuit. The nearest distractor, Resolute (H), stresses firmness of decision rather than the persistent, clinging refusal to release the sentence pictures."
+        },
+        {
+          "number": 8,
+          "group": "w5-sB-wordbank",
+          "stem": "The maître d' gave the shabby couple a ______ glance, one eyebrow arched, making it plain that people of their sort were not welcome.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Narcissism"
+            },
+            {
+              "key": "B",
+              "text": "Benign"
+            },
+            {
+              "key": "C",
+              "text": "Sardonic"
+            },
+            {
+              "key": "D",
+              "text": "Magnanimous"
+            },
+            {
+              "key": "E",
+              "text": "Impeccable"
+            },
+            {
+              "key": "F",
+              "text": "Pristine"
+            },
+            {
+              "key": "G",
+              "text": "Salutary"
+            },
+            {
+              "key": "H",
+              "text": "Resolute"
+            },
+            {
+              "key": "I",
+              "text": "Staunch"
+            },
+            {
+              "key": "J",
+              "text": "Tenacious"
+            },
+            {
+              "key": "K",
+              "text": "Supercilious"
+            },
+            {
+              "key": "L",
+              "text": "Querulous"
+            }
+          ],
+          "correctKey": "K",
+          "imageUrl": null,
+          "explanation": "Supercilious means haughtily superior and disdainful, matching the arched eyebrow and air of looking down on others. The nearest distractor, Sardonic (C), means grimly mocking or sarcastic; it describes bitter derision rather than the lofty sense of superiority the cue conveys."
+        },
+        {
+          "number": 9,
+          "group": "w5-sB-wordbank",
+          "stem": "Nothing ever pleased the old lodger; he grew more ______ by the year, forever grumbling that the tea was cold and the stairs too steep.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Narcissism"
+            },
+            {
+              "key": "B",
+              "text": "Benign"
+            },
+            {
+              "key": "C",
+              "text": "Sardonic"
+            },
+            {
+              "key": "D",
+              "text": "Magnanimous"
+            },
+            {
+              "key": "E",
+              "text": "Impeccable"
+            },
+            {
+              "key": "F",
+              "text": "Pristine"
+            },
+            {
+              "key": "G",
+              "text": "Salutary"
+            },
+            {
+              "key": "H",
+              "text": "Resolute"
+            },
+            {
+              "key": "I",
+              "text": "Staunch"
+            },
+            {
+              "key": "J",
+              "text": "Tenacious"
+            },
+            {
+              "key": "K",
+              "text": "Supercilious"
+            },
+            {
+              "key": "L",
+              "text": "Querulous"
+            }
+          ],
+          "correctKey": "L",
+          "imageUrl": null,
+          "explanation": "Querulous means habitually complaining in a peevish, whining way, matching the endless grumbling over trifles. The nearest distractor, Sardonic (C), means bitterly mocking or sarcastic, a manner of scornful wit rather than the fretful, dissatisfied complaint described."
+        },
+        {
+          "number": 10,
+          "group": "w5-sB-wordbank",
+          "stem": "His ______ knew no bounds: he could not pass a mirror without pausing, and every conversation curved back, sooner or later, to his own brilliance.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Narcissism"
+            },
+            {
+              "key": "B",
+              "text": "Benign"
+            },
+            {
+              "key": "C",
+              "text": "Sardonic"
+            },
+            {
+              "key": "D",
+              "text": "Magnanimous"
+            },
+            {
+              "key": "E",
+              "text": "Impeccable"
+            },
+            {
+              "key": "F",
+              "text": "Pristine"
+            },
+            {
+              "key": "G",
+              "text": "Salutary"
+            },
+            {
+              "key": "H",
+              "text": "Resolute"
+            },
+            {
+              "key": "I",
+              "text": "Staunch"
+            },
+            {
+              "key": "J",
+              "text": "Tenacious"
+            },
+            {
+              "key": "K",
+              "text": "Supercilious"
+            },
+            {
+              "key": "L",
+              "text": "Querulous"
+            }
+          ],
+          "correctKey": "A",
+          "imageUrl": null,
+          "explanation": "Narcissism is excessive self-love and self-admiration — the noun required by 'His ______' and matched by the mirror-gazing and constant self-praise. The nearest distractor, Supercilious (K), is an adjective describing a haughty manner toward others, and cannot fill the noun slot or name the inward self-absorption the cue describes."
+        }
+      ]
+    }
+  ]
+}

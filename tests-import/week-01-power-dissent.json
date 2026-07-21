@@ -1,0 +1,1302 @@
+{
+  "slug": "week-01-power-dissent",
+  "title": "Week 1 — Power, Hierarchy & Legitimacy + Dissent, Ideology & Conspiracy",
+  "bucket": "iba",
+  "description": "Fill-in-the-blank vocabulary on the language of political power, rank, and legitimacy, and on dissent, ideology, and secret conspiracy.",
+  "sections": [
+    {
+      "order": 1,
+      "title": "SECTION A",
+      "marksPerCorrect": 1,
+      "penaltyPerWrong": 0,
+      "thresholdPercent": null,
+      "groups": [
+        {
+          "ref": "w1-sA-wordbank",
+          "kind": "word_bank",
+          "title": "SECTION A",
+          "content": "Use words from the box to fill the blanks. There are more words than necessary. No marks would be deducted for wrong answers.",
+          "sharedOptions": [
+            {
+              "key": "A",
+              "text": "Subjugate"
+            },
+            {
+              "key": "B",
+              "text": "Mandate"
+            },
+            {
+              "key": "C",
+              "text": "Coerce"
+            },
+            {
+              "key": "D",
+              "text": "Patronize"
+            },
+            {
+              "key": "E",
+              "text": "Inaugurate"
+            },
+            {
+              "key": "F",
+              "text": "Hegemony"
+            },
+            {
+              "key": "G",
+              "text": "Promulgate"
+            },
+            {
+              "key": "H",
+              "text": "Ascendancy"
+            },
+            {
+              "key": "I",
+              "text": "Condescend"
+            },
+            {
+              "key": "J",
+              "text": "Abdicate"
+            },
+            {
+              "key": "K",
+              "text": "Usurp"
+            },
+            {
+              "key": "L",
+              "text": "Patrician"
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "number": 1,
+          "group": "w1-sA-wordbank",
+          "stem": "Fearing for their families, the tenants were ______ into surrendering their land the moment the militia threatened to poison the wells.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Subjugate"
+            },
+            {
+              "key": "B",
+              "text": "Mandate"
+            },
+            {
+              "key": "C",
+              "text": "Coerce"
+            },
+            {
+              "key": "D",
+              "text": "Patronize"
+            },
+            {
+              "key": "E",
+              "text": "Inaugurate"
+            },
+            {
+              "key": "F",
+              "text": "Hegemony"
+            },
+            {
+              "key": "G",
+              "text": "Promulgate"
+            },
+            {
+              "key": "H",
+              "text": "Ascendancy"
+            },
+            {
+              "key": "I",
+              "text": "Condescend"
+            },
+            {
+              "key": "J",
+              "text": "Abdicate"
+            },
+            {
+              "key": "K",
+              "text": "Usurp"
+            },
+            {
+              "key": "L",
+              "text": "Patrician"
+            }
+          ],
+          "correctKey": "C",
+          "imageUrl": null,
+          "explanation": "Coerce means to compel someone into an act through force or threats; the 'threatened... into surrendering' cue fits it exactly. The nearest distractor, Subjugate (A), means to conquer a people and bring them wholly under domination — it does not take the 'into + gerund' construction and describes total subjection, not pressure toward one act."
+        },
+        {
+          "number": 2,
+          "group": "w1-sA-wordbank",
+          "stem": "The empire's legions marched north to ______ the free tribes, reducing once-proud peoples to tribute-paying subjects of the crown.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Subjugate"
+            },
+            {
+              "key": "B",
+              "text": "Mandate"
+            },
+            {
+              "key": "C",
+              "text": "Coerce"
+            },
+            {
+              "key": "D",
+              "text": "Patronize"
+            },
+            {
+              "key": "E",
+              "text": "Inaugurate"
+            },
+            {
+              "key": "F",
+              "text": "Hegemony"
+            },
+            {
+              "key": "G",
+              "text": "Promulgate"
+            },
+            {
+              "key": "H",
+              "text": "Ascendancy"
+            },
+            {
+              "key": "I",
+              "text": "Condescend"
+            },
+            {
+              "key": "J",
+              "text": "Abdicate"
+            },
+            {
+              "key": "K",
+              "text": "Usurp"
+            },
+            {
+              "key": "L",
+              "text": "Patrician"
+            }
+          ],
+          "correctKey": "A",
+          "imageUrl": null,
+          "explanation": "Subjugate means to conquer and bring under complete domination, matching 'reducing peoples to subjects.' The nearest distractor, Coerce (C), means only to pressure someone into a particular act — it does not convey the wholesale conquest and permanent rule the sentence describes."
+        },
+        {
+          "number": 3,
+          "group": "w1-sA-wordbank",
+          "stem": "With the young king still abroad, the regent moved to ______ a throne to which he held no lawful claim whatsoever.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Subjugate"
+            },
+            {
+              "key": "B",
+              "text": "Mandate"
+            },
+            {
+              "key": "C",
+              "text": "Coerce"
+            },
+            {
+              "key": "D",
+              "text": "Patronize"
+            },
+            {
+              "key": "E",
+              "text": "Inaugurate"
+            },
+            {
+              "key": "F",
+              "text": "Hegemony"
+            },
+            {
+              "key": "G",
+              "text": "Promulgate"
+            },
+            {
+              "key": "H",
+              "text": "Ascendancy"
+            },
+            {
+              "key": "I",
+              "text": "Condescend"
+            },
+            {
+              "key": "J",
+              "text": "Abdicate"
+            },
+            {
+              "key": "K",
+              "text": "Usurp"
+            },
+            {
+              "key": "L",
+              "text": "Patrician"
+            }
+          ],
+          "correctKey": "K",
+          "imageUrl": null,
+          "explanation": "Usurp means to seize power or position wrongfully, matching 'no lawful claim.' The nearest distractor, Inaugurate (E), means to install someone in office with formal ceremony — it implies legitimate installation, the opposite of an unlawful seizure."
+        },
+        {
+          "number": 4,
+          "group": "w1-sA-wordbank",
+          "stem": "For fifty years the superpower held near-total ______ over the region, dictating the trade terms of every weaker state.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Subjugate"
+            },
+            {
+              "key": "B",
+              "text": "Mandate"
+            },
+            {
+              "key": "C",
+              "text": "Coerce"
+            },
+            {
+              "key": "D",
+              "text": "Patronize"
+            },
+            {
+              "key": "E",
+              "text": "Inaugurate"
+            },
+            {
+              "key": "F",
+              "text": "Hegemony"
+            },
+            {
+              "key": "G",
+              "text": "Promulgate"
+            },
+            {
+              "key": "H",
+              "text": "Ascendancy"
+            },
+            {
+              "key": "I",
+              "text": "Condescend"
+            },
+            {
+              "key": "J",
+              "text": "Abdicate"
+            },
+            {
+              "key": "K",
+              "text": "Usurp"
+            },
+            {
+              "key": "L",
+              "text": "Patrician"
+            }
+          ],
+          "correctKey": "F",
+          "imageUrl": null,
+          "explanation": "Hegemony is the established, systemic dominance of one power over others, matching decades of dictating terms to others. The nearest distractor, Ascendancy (H), stresses the process of rising to dominance, not the entrenched control the sentence describes."
+        },
+        {
+          "number": 5,
+          "group": "w1-sA-wordbank",
+          "stem": "However humble the audience, the professor would ______, pausing to explain elementary words as though addressing small children.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Subjugate"
+            },
+            {
+              "key": "B",
+              "text": "Mandate"
+            },
+            {
+              "key": "C",
+              "text": "Coerce"
+            },
+            {
+              "key": "D",
+              "text": "Patronize"
+            },
+            {
+              "key": "E",
+              "text": "Inaugurate"
+            },
+            {
+              "key": "F",
+              "text": "Hegemony"
+            },
+            {
+              "key": "G",
+              "text": "Promulgate"
+            },
+            {
+              "key": "H",
+              "text": "Ascendancy"
+            },
+            {
+              "key": "I",
+              "text": "Condescend"
+            },
+            {
+              "key": "J",
+              "text": "Abdicate"
+            },
+            {
+              "key": "K",
+              "text": "Usurp"
+            },
+            {
+              "key": "L",
+              "text": "Patrician"
+            }
+          ],
+          "correctKey": "I",
+          "imageUrl": null,
+          "explanation": "Condescend means to behave as if superior and is used intransitively here, with no object after the blank. The nearest distractor, Patronize (D), carries the same sense of talking down but is transitive and requires a direct object, which this sentence does not supply."
+        },
+        {
+          "number": 6,
+          "group": "w1-sA-wordbank",
+          "stem": "With his inherited estate and effortless polish, he was every inch the ______, quietly disdainful of anyone obliged to earn a living.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Subjugate"
+            },
+            {
+              "key": "B",
+              "text": "Mandate"
+            },
+            {
+              "key": "C",
+              "text": "Coerce"
+            },
+            {
+              "key": "D",
+              "text": "Patronize"
+            },
+            {
+              "key": "E",
+              "text": "Inaugurate"
+            },
+            {
+              "key": "F",
+              "text": "Hegemony"
+            },
+            {
+              "key": "G",
+              "text": "Promulgate"
+            },
+            {
+              "key": "H",
+              "text": "Ascendancy"
+            },
+            {
+              "key": "I",
+              "text": "Condescend"
+            },
+            {
+              "key": "J",
+              "text": "Abdicate"
+            },
+            {
+              "key": "K",
+              "text": "Usurp"
+            },
+            {
+              "key": "L",
+              "text": "Patrician"
+            }
+          ],
+          "correctKey": "L",
+          "imageUrl": null,
+          "explanation": "A patrician is a member of the aristocracy — a noun that fits 'the ___.' The nearest distractor, Patronize (D), is close in root and spelling but is a verb and cannot fill the noun slot."
+        },
+        {
+          "number": 7,
+          "group": "w1-sA-wordbank",
+          "stem": "Worn down by scandal and age, the monarch chose to ______, surrendering the crown to his son and withdrawing from public life.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Subjugate"
+            },
+            {
+              "key": "B",
+              "text": "Mandate"
+            },
+            {
+              "key": "C",
+              "text": "Coerce"
+            },
+            {
+              "key": "D",
+              "text": "Patronize"
+            },
+            {
+              "key": "E",
+              "text": "Inaugurate"
+            },
+            {
+              "key": "F",
+              "text": "Hegemony"
+            },
+            {
+              "key": "G",
+              "text": "Promulgate"
+            },
+            {
+              "key": "H",
+              "text": "Ascendancy"
+            },
+            {
+              "key": "I",
+              "text": "Condescend"
+            },
+            {
+              "key": "J",
+              "text": "Abdicate"
+            },
+            {
+              "key": "K",
+              "text": "Usurp"
+            },
+            {
+              "key": "L",
+              "text": "Patrician"
+            }
+          ],
+          "correctKey": "J",
+          "imageUrl": null,
+          "explanation": "Abdicate means to formally renounce a throne or high office, matching 'surrendering the crown.' The nearest distractor, Usurp (K), belongs to the same royal domain but means to seize a throne wrongfully — the exact opposite of giving one up."
+        },
+        {
+          "number": 8,
+          "group": "w1-sA-wordbank",
+          "stem": "A solemn ceremony was held to ______ the new president, marking the formal beginning of her term in office.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Subjugate"
+            },
+            {
+              "key": "B",
+              "text": "Mandate"
+            },
+            {
+              "key": "C",
+              "text": "Coerce"
+            },
+            {
+              "key": "D",
+              "text": "Patronize"
+            },
+            {
+              "key": "E",
+              "text": "Inaugurate"
+            },
+            {
+              "key": "F",
+              "text": "Hegemony"
+            },
+            {
+              "key": "G",
+              "text": "Promulgate"
+            },
+            {
+              "key": "H",
+              "text": "Ascendancy"
+            },
+            {
+              "key": "I",
+              "text": "Condescend"
+            },
+            {
+              "key": "J",
+              "text": "Abdicate"
+            },
+            {
+              "key": "K",
+              "text": "Usurp"
+            },
+            {
+              "key": "L",
+              "text": "Patrician"
+            }
+          ],
+          "correctKey": "E",
+          "imageUrl": null,
+          "explanation": "Inaugurate means to install someone in office with formal ceremony or to mark a beginning. The nearest distractor, Promulgate (G), is also a formal official act but applies to laws and decrees, not to installing a person."
+        },
+        {
+          "number": 9,
+          "group": "w1-sA-wordbank",
+          "stem": "Having taken seventy percent of the vote, the party insisted it now held a clear ______ to push through sweeping reform.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Subjugate"
+            },
+            {
+              "key": "B",
+              "text": "Mandate"
+            },
+            {
+              "key": "C",
+              "text": "Coerce"
+            },
+            {
+              "key": "D",
+              "text": "Patronize"
+            },
+            {
+              "key": "E",
+              "text": "Inaugurate"
+            },
+            {
+              "key": "F",
+              "text": "Hegemony"
+            },
+            {
+              "key": "G",
+              "text": "Promulgate"
+            },
+            {
+              "key": "H",
+              "text": "Ascendancy"
+            },
+            {
+              "key": "I",
+              "text": "Condescend"
+            },
+            {
+              "key": "J",
+              "text": "Abdicate"
+            },
+            {
+              "key": "K",
+              "text": "Usurp"
+            },
+            {
+              "key": "L",
+              "text": "Patrician"
+            }
+          ],
+          "correctKey": "B",
+          "imageUrl": null,
+          "explanation": "A mandate is the authority to act granted by an electorate or higher power, which a decisive vote confers. The nearest distractor, Hegemony (F), means dominance over others, not the delegated authorization to govern."
+        },
+        {
+          "number": 10,
+          "group": "w1-sA-wordbank",
+          "stem": "The council voted to ______ the new statute, publishing it in the official gazette so that every citizen would be bound by its terms.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Subjugate"
+            },
+            {
+              "key": "B",
+              "text": "Mandate"
+            },
+            {
+              "key": "C",
+              "text": "Coerce"
+            },
+            {
+              "key": "D",
+              "text": "Patronize"
+            },
+            {
+              "key": "E",
+              "text": "Inaugurate"
+            },
+            {
+              "key": "F",
+              "text": "Hegemony"
+            },
+            {
+              "key": "G",
+              "text": "Promulgate"
+            },
+            {
+              "key": "H",
+              "text": "Ascendancy"
+            },
+            {
+              "key": "I",
+              "text": "Condescend"
+            },
+            {
+              "key": "J",
+              "text": "Abdicate"
+            },
+            {
+              "key": "K",
+              "text": "Usurp"
+            },
+            {
+              "key": "L",
+              "text": "Patrician"
+            }
+          ],
+          "correctKey": "G",
+          "imageUrl": null,
+          "explanation": "Promulgate means to make a law officially known and put it into effect, matching 'publishing it in the official gazette.' The nearest distractor, Mandate (B), can mean to make something compulsory, but one does not 'mandate a statute'; the publishing-into-force cue points specifically to promulgation."
+        }
+      ]
+    },
+    {
+      "order": 2,
+      "title": "SECTION B",
+      "marksPerCorrect": 1,
+      "penaltyPerWrong": 0,
+      "thresholdPercent": null,
+      "groups": [
+        {
+          "ref": "w1-sB-wordbank",
+          "kind": "word_bank",
+          "title": "SECTION B",
+          "content": "Use words from the box to fill the blanks. There are more words than necessary. No marks would be deducted for wrong answers.",
+          "sharedOptions": [
+            {
+              "key": "A",
+              "text": "Sedition"
+            },
+            {
+              "key": "B",
+              "text": "Egalitarian"
+            },
+            {
+              "key": "C",
+              "text": "Foment"
+            },
+            {
+              "key": "D",
+              "text": "Machination"
+            },
+            {
+              "key": "E",
+              "text": "Insurgent"
+            },
+            {
+              "key": "F",
+              "text": "Dogmatic"
+            },
+            {
+              "key": "G",
+              "text": "Doctrinaire"
+            },
+            {
+              "key": "H",
+              "text": "Polarize"
+            },
+            {
+              "key": "I",
+              "text": "Ideology"
+            },
+            {
+              "key": "J",
+              "text": "Subversive"
+            },
+            {
+              "key": "K",
+              "text": "Espouse"
+            },
+            {
+              "key": "L",
+              "text": "Insidious"
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "number": 1,
+          "group": "w1-sB-wordbank",
+          "stem": "Outside agitators slipped into the mills to ______ unrest, whispering rumors designed to turn the workers against their employers.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Sedition"
+            },
+            {
+              "key": "B",
+              "text": "Egalitarian"
+            },
+            {
+              "key": "C",
+              "text": "Foment"
+            },
+            {
+              "key": "D",
+              "text": "Machination"
+            },
+            {
+              "key": "E",
+              "text": "Insurgent"
+            },
+            {
+              "key": "F",
+              "text": "Dogmatic"
+            },
+            {
+              "key": "G",
+              "text": "Doctrinaire"
+            },
+            {
+              "key": "H",
+              "text": "Polarize"
+            },
+            {
+              "key": "I",
+              "text": "Ideology"
+            },
+            {
+              "key": "J",
+              "text": "Subversive"
+            },
+            {
+              "key": "K",
+              "text": "Espouse"
+            },
+            {
+              "key": "L",
+              "text": "Insidious"
+            }
+          ],
+          "correctKey": "C",
+          "imageUrl": null,
+          "explanation": "Foment means to stir up or incite trouble, matching the deliberate instigation of unrest. The nearest distractor, Polarize (H), means to split a group into two opposing extremes, not to actively provoke discontent."
+        },
+        {
+          "number": 2,
+          "group": "w1-sB-wordbank",
+          "stem": "The pamphlets were seized as ______, for they openly urged the garrison to defy its officers and rise against the state.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Sedition"
+            },
+            {
+              "key": "B",
+              "text": "Egalitarian"
+            },
+            {
+              "key": "C",
+              "text": "Foment"
+            },
+            {
+              "key": "D",
+              "text": "Machination"
+            },
+            {
+              "key": "E",
+              "text": "Insurgent"
+            },
+            {
+              "key": "F",
+              "text": "Dogmatic"
+            },
+            {
+              "key": "G",
+              "text": "Doctrinaire"
+            },
+            {
+              "key": "H",
+              "text": "Polarize"
+            },
+            {
+              "key": "I",
+              "text": "Ideology"
+            },
+            {
+              "key": "J",
+              "text": "Subversive"
+            },
+            {
+              "key": "K",
+              "text": "Espouse"
+            },
+            {
+              "key": "L",
+              "text": "Insidious"
+            }
+          ],
+          "correctKey": "A",
+          "imageUrl": null,
+          "explanation": "Sedition is the offense of inciting rebellion against lawful authority — a noun matching 'urged... to rise against the state.' The nearest distractor, Subversive (J), is chiefly an adjective and implies covert undermining rather than the open incitement named here."
+        },
+        {
+          "number": 3,
+          "group": "w1-sB-wordbank",
+          "stem": "Government troops could not root out the ______ who struck from the hills at dawn and then melted back among the villagers.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Sedition"
+            },
+            {
+              "key": "B",
+              "text": "Egalitarian"
+            },
+            {
+              "key": "C",
+              "text": "Foment"
+            },
+            {
+              "key": "D",
+              "text": "Machination"
+            },
+            {
+              "key": "E",
+              "text": "Insurgent"
+            },
+            {
+              "key": "F",
+              "text": "Dogmatic"
+            },
+            {
+              "key": "G",
+              "text": "Doctrinaire"
+            },
+            {
+              "key": "H",
+              "text": "Polarize"
+            },
+            {
+              "key": "I",
+              "text": "Ideology"
+            },
+            {
+              "key": "J",
+              "text": "Subversive"
+            },
+            {
+              "key": "K",
+              "text": "Espouse"
+            },
+            {
+              "key": "L",
+              "text": "Insidious"
+            }
+          ],
+          "correctKey": "E",
+          "imageUrl": null,
+          "explanation": "An insurgent is an armed rebel in open revolt, matching one who launches raids and hides. The nearest distractor, Sedition (A), refers to the crime of inciting revolt, not to the fighter himself."
+        },
+        {
+          "number": 4,
+          "group": "w1-sB-wordbank",
+          "stem": "The divisive ruling only served to ______ the electorate further, hardening each camp and leaving no common ground between them.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Sedition"
+            },
+            {
+              "key": "B",
+              "text": "Egalitarian"
+            },
+            {
+              "key": "C",
+              "text": "Foment"
+            },
+            {
+              "key": "D",
+              "text": "Machination"
+            },
+            {
+              "key": "E",
+              "text": "Insurgent"
+            },
+            {
+              "key": "F",
+              "text": "Dogmatic"
+            },
+            {
+              "key": "G",
+              "text": "Doctrinaire"
+            },
+            {
+              "key": "H",
+              "text": "Polarize"
+            },
+            {
+              "key": "I",
+              "text": "Ideology"
+            },
+            {
+              "key": "J",
+              "text": "Subversive"
+            },
+            {
+              "key": "K",
+              "text": "Espouse"
+            },
+            {
+              "key": "L",
+              "text": "Insidious"
+            }
+          ],
+          "correctKey": "H",
+          "imageUrl": null,
+          "explanation": "Polarize means to divide a group into two sharply opposed extremes, matching 'each camp... no common ground.' The nearest distractor, Foment (C), means to incite unrest, not to split opinion into opposing poles."
+        },
+        {
+          "number": 5,
+          "group": "w1-sB-wordbank",
+          "stem": "Late in life he came to ______ the very radical doctrines he had once ridiculed, defending them now in speeches across the land.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Sedition"
+            },
+            {
+              "key": "B",
+              "text": "Egalitarian"
+            },
+            {
+              "key": "C",
+              "text": "Foment"
+            },
+            {
+              "key": "D",
+              "text": "Machination"
+            },
+            {
+              "key": "E",
+              "text": "Insurgent"
+            },
+            {
+              "key": "F",
+              "text": "Dogmatic"
+            },
+            {
+              "key": "G",
+              "text": "Doctrinaire"
+            },
+            {
+              "key": "H",
+              "text": "Polarize"
+            },
+            {
+              "key": "I",
+              "text": "Ideology"
+            },
+            {
+              "key": "J",
+              "text": "Subversive"
+            },
+            {
+              "key": "K",
+              "text": "Espouse"
+            },
+            {
+              "key": "L",
+              "text": "Insidious"
+            }
+          ],
+          "correctKey": "K",
+          "imageUrl": null,
+          "explanation": "Espouse means to adopt and actively support a cause or belief, matching his conversion to defending those doctrines. The nearest distractor, Foment (C), concerns promoting something too, but means to incite trouble, not to personally embrace a set of ideas."
+        },
+        {
+          "number": 6,
+          "group": "w1-sB-wordbank",
+          "stem": "Their whole political ______ rested on a single conviction: that the state alone should own the means of production.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Sedition"
+            },
+            {
+              "key": "B",
+              "text": "Egalitarian"
+            },
+            {
+              "key": "C",
+              "text": "Foment"
+            },
+            {
+              "key": "D",
+              "text": "Machination"
+            },
+            {
+              "key": "E",
+              "text": "Insurgent"
+            },
+            {
+              "key": "F",
+              "text": "Dogmatic"
+            },
+            {
+              "key": "G",
+              "text": "Doctrinaire"
+            },
+            {
+              "key": "H",
+              "text": "Polarize"
+            },
+            {
+              "key": "I",
+              "text": "Ideology"
+            },
+            {
+              "key": "J",
+              "text": "Subversive"
+            },
+            {
+              "key": "K",
+              "text": "Espouse"
+            },
+            {
+              "key": "L",
+              "text": "Insidious"
+            }
+          ],
+          "correctKey": "I",
+          "imageUrl": null,
+          "explanation": "An ideology is a system of ideas and beliefs — the noun that 'their whole political ___' requires. The nearest distractor, Doctrinaire (G), describes a person who rigidly applies a theory; it is an adjective and cannot name the body of beliefs itself."
+        },
+        {
+          "number": 7,
+          "group": "w1-sB-wordbank",
+          "stem": "He was so ______ in his convictions that he treated every objection as heresy and refused to weigh a single counter-argument.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Sedition"
+            },
+            {
+              "key": "B",
+              "text": "Egalitarian"
+            },
+            {
+              "key": "C",
+              "text": "Foment"
+            },
+            {
+              "key": "D",
+              "text": "Machination"
+            },
+            {
+              "key": "E",
+              "text": "Insurgent"
+            },
+            {
+              "key": "F",
+              "text": "Dogmatic"
+            },
+            {
+              "key": "G",
+              "text": "Doctrinaire"
+            },
+            {
+              "key": "H",
+              "text": "Polarize"
+            },
+            {
+              "key": "I",
+              "text": "Ideology"
+            },
+            {
+              "key": "J",
+              "text": "Subversive"
+            },
+            {
+              "key": "K",
+              "text": "Espouse"
+            },
+            {
+              "key": "L",
+              "text": "Insidious"
+            }
+          ],
+          "correctKey": "F",
+          "imageUrl": null,
+          "explanation": "Dogmatic means asserting one's beliefs as unquestionably true, matching the intolerance of any disagreement. The nearest distractor, Doctrinaire (G), is close but stresses impractical insistence on applying a doctrine, whereas the cue emphasizes refusing all dissent."
+        },
+        {
+          "number": 8,
+          "group": "w1-sB-wordbank",
+          "stem": "The movement's ______ program rejected all inherited privilege, insisting that every citizen deserve an equal share and an equal voice.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Sedition"
+            },
+            {
+              "key": "B",
+              "text": "Egalitarian"
+            },
+            {
+              "key": "C",
+              "text": "Foment"
+            },
+            {
+              "key": "D",
+              "text": "Machination"
+            },
+            {
+              "key": "E",
+              "text": "Insurgent"
+            },
+            {
+              "key": "F",
+              "text": "Dogmatic"
+            },
+            {
+              "key": "G",
+              "text": "Doctrinaire"
+            },
+            {
+              "key": "H",
+              "text": "Polarize"
+            },
+            {
+              "key": "I",
+              "text": "Ideology"
+            },
+            {
+              "key": "J",
+              "text": "Subversive"
+            },
+            {
+              "key": "K",
+              "text": "Espouse"
+            },
+            {
+              "key": "L",
+              "text": "Insidious"
+            }
+          ],
+          "correctKey": "B",
+          "imageUrl": null,
+          "explanation": "Egalitarian means believing in the equality of all people — the adjective that 'equal share and equal voice' demands. The nearest distractor, Ideology (I), is a noun that cannot modify 'program,' nor does it carry the specific sense of equality."
+        },
+        {
+          "number": 9,
+          "group": "w1-sB-wordbank",
+          "stem": "The memoir lays bare the ceaseless ______ of the courtiers, each scheming in private to ruin his rivals and climb a little higher.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Sedition"
+            },
+            {
+              "key": "B",
+              "text": "Egalitarian"
+            },
+            {
+              "key": "C",
+              "text": "Foment"
+            },
+            {
+              "key": "D",
+              "text": "Machination"
+            },
+            {
+              "key": "E",
+              "text": "Insurgent"
+            },
+            {
+              "key": "F",
+              "text": "Dogmatic"
+            },
+            {
+              "key": "G",
+              "text": "Doctrinaire"
+            },
+            {
+              "key": "H",
+              "text": "Polarize"
+            },
+            {
+              "key": "I",
+              "text": "Ideology"
+            },
+            {
+              "key": "J",
+              "text": "Subversive"
+            },
+            {
+              "key": "K",
+              "text": "Espouse"
+            },
+            {
+              "key": "L",
+              "text": "Insidious"
+            }
+          ],
+          "correctKey": "D",
+          "imageUrl": null,
+          "explanation": "A machination is a crafty individual scheme or intrigue, matching each courtier plotting alone. The nearest distractor, Sedition (A), also involves a plot against authority, but names the specific crime of inciting rebellion, not the private scheming among rival courtiers described here."
+        },
+        {
+          "number": 10,
+          "group": "w1-sB-wordbank",
+          "stem": "The propaganda proved ______, seeping so gradually into public opinion that no one recognized the damage until it was already done.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Sedition"
+            },
+            {
+              "key": "B",
+              "text": "Egalitarian"
+            },
+            {
+              "key": "C",
+              "text": "Foment"
+            },
+            {
+              "key": "D",
+              "text": "Machination"
+            },
+            {
+              "key": "E",
+              "text": "Insurgent"
+            },
+            {
+              "key": "F",
+              "text": "Dogmatic"
+            },
+            {
+              "key": "G",
+              "text": "Doctrinaire"
+            },
+            {
+              "key": "H",
+              "text": "Polarize"
+            },
+            {
+              "key": "I",
+              "text": "Ideology"
+            },
+            {
+              "key": "J",
+              "text": "Subversive"
+            },
+            {
+              "key": "K",
+              "text": "Espouse"
+            },
+            {
+              "key": "L",
+              "text": "Insidious"
+            }
+          ],
+          "correctKey": "L",
+          "imageUrl": null,
+          "explanation": "Insidious means working in a subtle, gradual, and harmful way, matching harm that spreads unnoticed. The nearest distractor, Subversive (J), also implies covert harm to an established order, but describes activity aimed at undermining authority, not the slow, unnoticed spread of damage insidious conveys."
+        }
+      ]
+    }
+  ]
+}
