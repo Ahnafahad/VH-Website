@@ -11,6 +11,7 @@ import { safeApiHandler, ApiException } from '@/lib/api-utils';
 import { requireStaff } from '@/lib/tests/route-helpers';
 import { r2Delete, resolveFileUrl } from '@/lib/storage/r2';
 import { LMS_SUBJECTS } from '@/lib/lms/constants';
+import { DOC_TYPES } from '@/lib/naming/taxonomy';
 
 export async function PATCH(
   req: NextRequest,
@@ -44,6 +45,14 @@ export async function PATCH(
     }
     if (body.product !== undefined) updates.product = body.product;
     if (body.batch !== undefined) updates.batch = body.batch ?? null;
+    if (body.docType !== undefined) {
+      if (body.docType !== null && !(DOC_TYPES as readonly { key: string }[]).some(d => d.key === body.docType)) {
+        throw new ApiException(`docType must be one of: ${DOC_TYPES.map(d => d.key).join(', ')}`, 400);
+      }
+      updates.docType = body.docType ?? null;
+    }
+    if (body.number !== undefined) updates.number = body.number ?? null;
+    if (body.topic !== undefined) updates.topic = body.topic ?? null;
     if (body.classSessionId !== undefined) updates.classSessionId = body.classSessionId ?? null;
 
     if (Object.keys(updates).length === 0) throw new ApiException('No fields to update', 400);
@@ -64,6 +73,9 @@ export async function PATCH(
       subject: updated.subject,
       product: updated.product,
       batch: updated.batch,
+      docType: updated.docType,
+      number: updated.number,
+      topic: updated.topic,
       classSessionId: updated.classSessionId,
       createdAt: updated.createdAt.getTime(),
     };

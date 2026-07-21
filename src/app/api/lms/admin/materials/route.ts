@@ -14,6 +14,7 @@ import { safeApiHandler, ApiException } from '@/lib/api-utils';
 import { requireStaff } from '@/lib/tests/route-helpers';
 import { LMS_SUBJECTS } from '@/lib/lms/constants';
 import { resolveFileUrl } from '@/lib/storage/r2';
+import { DOC_TYPES } from '@/lib/naming/taxonomy';
 
 export async function GET() {
   return safeApiHandler(async () => {
@@ -31,7 +32,7 @@ export async function POST(req: NextRequest) {
     const staff = await requireStaff();
     const body = await req.json();
 
-    const { title, type, blobUrl, fileName, fileSize, subject, product, batch, classSessionId } = body;
+    const { title, type, blobUrl, fileName, fileSize, subject, product, batch, classSessionId, docType, number, topic } = body;
 
     if (!title || typeof title !== 'string') throw new ApiException('title is required', 400);
     if (!type || !['pdf', 'link'].includes(type)) throw new ApiException("type must be 'pdf' or 'link'", 400);
@@ -39,6 +40,9 @@ export async function POST(req: NextRequest) {
     const sessionId: number | null = classSessionId ? Number(classSessionId) : null;
     if (sessionId !== null && (!Number.isInteger(sessionId) || sessionId <= 0)) {
       throw new ApiException('classSessionId must be a valid class id', 400);
+    }
+    if (docType !== undefined && docType !== null && !(DOC_TYPES as readonly { key: string }[]).some(d => d.key === docType)) {
+      throw new ApiException(`docType must be one of: ${DOC_TYPES.map(d => d.key).join(', ')}`, 400);
     }
 
     // Materials attached to a class inherit its access scope. Previously the
@@ -82,6 +86,9 @@ export async function POST(req: NextRequest) {
         subject: resolvedSubject,
         product: resolvedProduct,
         batch: resolvedBatch,
+        docType: docType ?? null,
+        number: number ?? null,
+        topic: topic ?? null,
         classSessionId: sessionId,
         uploadedBy: staff.id,
       })
@@ -110,6 +117,9 @@ async function serializeMaterial(m: typeof materials.$inferSelect) {
     subject: m.subject,
     product: m.product,
     batch: m.batch,
+    docType: m.docType,
+    number: m.number,
+    topic: m.topic,
     classSessionId: m.classSessionId,
     uploadedBy: m.uploadedBy,
     createdAt: m.createdAt.getTime(),

@@ -41,6 +41,9 @@ interface ClassSessionInfo {
   status: string;
   meetLink: string | null;
   recallBotId: string | null;
+  topic: string | null;
+  classNumber: number | null;
+  instructorName: string | null;
 }
 
 interface RecordingInfo {
@@ -428,6 +431,20 @@ export default function ClassDetailClient({
             </dd>
             <dt className="text-gray-500">Duration</dt>
             <dd className="font-medium text-gray-900">{classSession.durationMinutes} min</dd>
+            <dt className="text-gray-500">Instructor</dt>
+            <dd className="font-medium text-gray-900">{classSession.instructorName ?? 'Not set'}</dd>
+            {classSession.topic && (
+              <>
+                <dt className="text-gray-500">Topic</dt>
+                <dd className="font-medium text-gray-900">{classSession.topic}</dd>
+              </>
+            )}
+            {classSession.classNumber != null && (
+              <>
+                <dt className="text-gray-500">Class #</dt>
+                <dd className="font-medium text-gray-900">{classSession.classNumber}</dd>
+              </>
+            )}
             {classSession.meetLink && (
               <>
                 <dt className="text-gray-500">Meet link</dt>

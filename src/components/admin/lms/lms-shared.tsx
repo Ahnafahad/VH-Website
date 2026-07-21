@@ -8,6 +8,7 @@
 import React from 'react';
 import { motion, AnimatePresence, Variants } from 'framer-motion';
 import { X, AlertTriangle, Loader2, Check, ChevronDown } from 'lucide-react';
+import { COURSES, SUBJECTS, DOC_TYPES, BATCHES, CourseKey, SubjectKey, DocTypeKey, BatchKey } from '@/lib/naming/taxonomy';
 
 // ─── Design tokens ────────────────────────────────────────────────────────────
 
@@ -422,6 +423,81 @@ export function FieldSelect(props: React.SelectHTMLAttributes<HTMLSelectElement>
       }} aria-hidden />
     </div>
   );
+}
+
+// ─── Taxonomy-driven selects ──────────────────────────────────────────────────
+// Course/Subject/DocType/Batch selects, sourced from src/lib/naming/taxonomy.ts
+// so the option lists stay in one place.
+
+interface TaxonomySelectProps<K extends string> {
+  value: K;
+  onChange: (value: K) => void;
+  label?: string;
+}
+
+function TaxonomySelect<K extends string>({
+  options, value, onChange, label,
+}: TaxonomySelectProps<K> & { options: readonly { key: K; label: string }[] }) {
+  return (
+    <div>
+      <FieldLabel>{label}</FieldLabel>
+      <FieldSelect value={value} onChange={e => onChange(e.target.value as K)}>
+        {options.map(o => <option key={o.key} value={o.key}>{o.label}</option>)}
+      </FieldSelect>
+    </div>
+  );
+}
+
+export function CourseSelect({ value, onChange, label = 'Course' }: TaxonomySelectProps<CourseKey>) {
+  return <TaxonomySelect options={COURSES} value={value} onChange={onChange} label={label} />;
+}
+
+export function SubjectSelect({ value, onChange, label = 'Subject' }: TaxonomySelectProps<SubjectKey>) {
+  return <TaxonomySelect options={SUBJECTS} value={value} onChange={onChange} label={label} />;
+}
+
+export function DocTypeSelect({ value, onChange, label = 'Doc Type' }: TaxonomySelectProps<DocTypeKey>) {
+  return <TaxonomySelect options={DOC_TYPES} value={value} onChange={onChange} label={label} />;
+}
+
+/**
+ * Batch picker. `null` is a real, load-bearing value — schema documents
+ * `batch: null` as "all batches", and src/lib/lms/access.ts grants a student
+ * access when `batch IS NULL OR batch = user.batch`. Students with no batch of
+ * their own can ONLY see null-batch rows, so silently coercing null to a
+ * concrete batch hides content from them. Never drop the "All batches" option.
+ */
+export function BatchSelect({ value, onChange, label = 'Batch' }: {
+  value: BatchKey | null;
+  onChange: (value: BatchKey | null) => void;
+  label?: string;
+}) {
+  return (
+    <div>
+      <FieldLabel>{label}</FieldLabel>
+      <FieldSelect
+        value={value ?? ''}
+        onChange={e => onChange(e.target.value === '' ? null : e.target.value as BatchKey)}
+      >
+        <option value="">All batches</option>
+        {BATCHES.map(o => <option key={o.key} value={o.key}>{o.label}</option>)}
+      </FieldSelect>
+    </div>
+  );
+}
+
+const LAST_USED_BATCH_KEY = 'vh-lms-last-used-batch';
+
+/** Read the batch the current admin last used, if any (opt-in — not called automatically). */
+export function getLastUsedBatch(): BatchKey | null {
+  if (typeof window === 'undefined') return null;
+  return localStorage.getItem(LAST_USED_BATCH_KEY) as BatchKey | null;
+}
+
+/** Persist the batch the current admin just used, for getLastUsedBatch() to pick up next time. */
+export function setLastUsedBatch(batch: BatchKey): void {
+  if (typeof window === 'undefined') return;
+  localStorage.setItem(LAST_USED_BATCH_KEY, batch);
 }
 
 // ─── Primary / ghost buttons ──────────────────────────────────────────────────

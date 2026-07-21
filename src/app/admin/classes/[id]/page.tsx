@@ -67,6 +67,15 @@ export default async function ClassDetailPage({
     .get();
   if (!classSession) redirect('/admin/classes');
 
+  // Load instructor name (nullable — instructor_id may be unset)
+  const instructor = classSession.instructorId
+    ? await db
+        .select({ name: users.name })
+        .from(users)
+        .where(eq(users.id, classSession.instructorId))
+        .get()
+    : null;
+
   // Load materials for this session (junction + legacy classSessionId)
   const [junctionMaterials, legacyMaterials] = await Promise.all([
     db
@@ -206,6 +215,9 @@ export default async function ClassDetailPage({
         status: classSession.status,
         meetLink: classSession.meetLink,
         recallBotId: classSession.recallBotId,
+        topic: classSession.topic,
+        classNumber: classSession.classNumber,
+        instructorName: instructor?.name ?? null,
       }}
       recording={
         recording
