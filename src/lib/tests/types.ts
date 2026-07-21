@@ -9,7 +9,7 @@ export type TestBucket = 'iba' | 'du_fbs';
 export type TestMode = 'online' | 'offline';
 export type WindowState = 'upcoming' | 'open' | 'closed';
 export type AttemptStatus = 'in_progress' | 'submitted' | 'banned';
-export type ViolationAction = 'warning' | 'reset' | 'ban';
+export type ViolationAction = 'warning' | 'reset' | 'ban' | 'exempt';
 export type GroupKind = 'instruction' | 'passage' | 'scenario' | 'shared_options';
 
 export interface Option {

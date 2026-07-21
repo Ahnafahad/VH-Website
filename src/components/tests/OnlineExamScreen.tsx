@@ -88,6 +88,10 @@ export default function OnlineExamScreen({ slug, bucket, initialPayload, exitHre
     try {
       const res = await fetch(`/api/tests/${slug}/violation`, { method: 'POST' });
       const data: ViolationResponse = await res.json();
+      if (data.action === 'exempt') {
+        violationOpenRef.current = false;
+        return;
+      }
       if (data.action === 'ban') {
         bannedRef.current = true;
         setBanned(true);

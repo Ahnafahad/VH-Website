@@ -5,6 +5,8 @@
  *   1st  → warning
  *   2nd  → progress reset (answers wiped; timer keeps running)
  *   3rd  → banned from this test (admin can reinstate)
+ * Instructors/admins are exempt from the escalation ladder entirely — they
+ * can still trip the tab-leave detector, but it's a no-op for them.
  * Returns { action, tabLeaveCount }.
  */
 
@@ -14,6 +16,7 @@ import { db } from '@/lib/db';
 import { testAnswers, testAttempts, testViolations } from '@/lib/db/schema';
 import { safeApiHandler, ApiException } from '@/lib/api-utils';
 import { requireUser, requireTestForUser } from '@/lib/tests/route-helpers';
+import { isTestStaff } from '@/lib/tests/access';
 import { getUserAttempt } from '@/lib/tests/service';
 
 export async function POST(
@@ -28,6 +31,10 @@ export async function POST(
     const attempt = await getUserAttempt(test.id, user.id);
     if (!attempt || attempt.status !== 'in_progress') {
       throw new ApiException('No in-progress attempt', 409, 'NO_ATTEMPT');
+    }
+
+    if (isTestStaff(user)) {
+      return { action: 'exempt' as const, tabLeaveCount: attempt.tabLeaveCount };
     }
 
     const count = attempt.tabLeaveCount + 1;
