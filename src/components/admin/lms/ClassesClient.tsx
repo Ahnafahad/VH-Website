@@ -14,9 +14,12 @@ import {
   fmtDhaka, dhakaLocalToISO, epochToDhakaLocal,
   SPIN_CSS, RED, SLATE, BORDER, MUTED, BG, rowV,
   titleCase, extractPdfHeading,
+  CourseSelect, SubjectSelect, BatchSelect, getLastUsedBatch, setLastUsedBatch,
 } from './lms-shared';
 import { uploadToR2 } from '@/lib/lms/upload-client';
 import { trackFeature } from '@/lib/analytics/tracker';
+import { formatClassName } from '@/lib/naming/format-name';
+import { SUBJECTS as SUBJECT_TAXONOMY, BATCHES, CourseKey, SubjectKey, BatchKey } from '@/lib/naming/taxonomy';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -34,6 +37,9 @@ export interface ClassSession {
   meetLink: string | null;
   googleEventId: string | null;
   recallBotId: string | null;
+  instructorId: number | null;
+  topic: string | null;
+  classNumber: number | null;
   createdBy: number;
   createdAt: number;
 }
@@ -55,91 +61,132 @@ export interface ClassSchedule {
 interface Props {
   initialSessions: ClassSession[];
   initialSchedules: ClassSchedule[];
+  teachingUsers: TeachingUser[];
+}
+
+export interface TeachingUser {
+  id: number;
+  name: string;
 }
 
 const DAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 const SUBJECTS = ['english', 'math', 'analytical', 'tbd'];
 const STATUSES = ['draft', 'scheduled', 'live', 'completed', 'cancelled'];
 
-// Predict next class number based on existing sessions
-function predictNextClassName(sessions: ClassSession[], subject: string): string | null {
-  const subjectSessions = sessions.filter(s => s.subject === subject);
-  if (subjectSessions.length === 0) return null;
+function isTaxonomySubject(s: string): s is SubjectKey {
+  return SUBJECT_TAXONOMY.some(o => o.key === s);
+}
 
-  const classRegex = new RegExp(`${subject}\\s+class\\s+(\\d+)`, 'i');
-  const numbers = subjectSessions
-    .map(s => {
-      const match = s.title.match(classRegex);
-      return match ? parseInt(match[1], 10) : null;
-    })
-    .filter((n): n is number => n !== null)
-    .sort((a, b) => b - a);
-
-  if (numbers.length === 0) return null;
-  const nextNum = numbers[0] + 1;
-  return `${subject.charAt(0).toUpperCase() + subject.slice(1)} Class ${nextNum}`;
+// Subject select that renders an explicit "Not set" state for values outside
+// the taxonomy (e.g. auto-generated recurring classes carrying subject='tbd')
+// instead of crashing or silently coercing to a real subject.
+function SubjectField({ value, onChange }: { value: string; onChange: (v: SubjectKey) => void }) {
+  if (!isTaxonomySubject(value)) {
+    return (
+      <div>
+        <FieldLabel>Subject *</FieldLabel>
+        <div style={{
+          display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 8,
+          padding: '9px 12px', borderRadius: 7,
+          border: `1.5px dashed ${MUTED}`, background: BG,
+        }}>
+          <span style={{ fontSize: 13, color: MUTED }}>
+            Not set{value ? ` (raw value: "${value}")` : ''}
+          </span>
+          <button
+            type="button"
+            onClick={() => onChange(SUBJECT_TAXONOMY[0].key)}
+            style={{
+              fontSize: 12, fontWeight: 600, color: RED,
+              background: 'none', border: 'none', cursor: 'pointer', padding: 0,
+            }}
+          >
+            Set subject
+          </button>
+        </div>
+      </div>
+    );
+  }
+  return <SubjectSelect value={value} onChange={onChange} />;
 }
 
 // ─── Session Form ─────────────────────────────────────────────────────────────
 
 interface SessionForm {
-  title: string; description: string; subject: string; product: string;
-  batch: string; scheduledAt: string; durationMinutes: string;
+  title: string; description: string; subject: string; product: CourseKey;
+  batch: string | null; scheduledAt: string; durationMinutes: string;
   meetLink: string; status: string;
+  instructorId: string; topic: string; classNumber: string;
 }
 
-const defaultSessionForm: SessionForm = {
-  title: '', description: '', subject: 'english', product: 'iba',
-  batch: '', scheduledAt: '', durationMinutes: '90', meetLink: '', status: 'scheduled',
-};
+function makeDefaultSessionForm(): SessionForm {
+  return {
+    title: '', description: '', subject: 'english', product: 'iba',
+    batch: getLastUsedBatch() ?? BATCHES[0].key,
+    scheduledAt: '', durationMinutes: '90', meetLink: '', status: 'scheduled',
+    instructorId: '', topic: '', classNumber: '',
+  };
+}
 
-function SessionModal({
-  open, editing, onClose, onSaved, allSessions = [],
-}: {
-  open: boolean; editing: ClassSession | null;
-  onClose: () => void; onSaved: (s: ClassSession) => void;
-  allSessions?: ClassSession[];
-}) {
-  const [form, setForm] = useState<SessionForm>(() => editing ? {
+function sessionFormFromEditing(editing: ClassSession): SessionForm {
+  return {
     title: editing.title,
     description: editing.description ?? '',
     subject: editing.subject,
-    product: editing.product,
-    batch: editing.batch ?? '',
+    product: editing.product as CourseKey,
+    batch: editing.batch,   // preserve null ("all batches") — never coerce on edit
     scheduledAt: epochToDhakaLocal(editing.scheduledAt),
     durationMinutes: String(editing.durationMinutes),
     meetLink: editing.meetLink ?? '',
     status: editing.status,
-  } : defaultSessionForm);
+    instructorId: editing.instructorId != null ? String(editing.instructorId) : '',
+    topic: editing.topic ?? '',
+    classNumber: editing.classNumber != null ? String(editing.classNumber) : '',
+  };
+}
+
+function SessionModal({
+  open, editing, onClose, onSaved, teachingUsers,
+}: {
+  open: boolean; editing: ClassSession | null;
+  onClose: () => void; onSaved: (s: ClassSession) => void;
+  teachingUsers: TeachingUser[];
+}) {
+  const [form, setForm] = useState<SessionForm>(() => editing ? sessionFormFromEditing(editing) : makeDefaultSessionForm());
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState('');
   const [showMore, setShowMore] = useState(Boolean(editing));
   const [extracting, setExtracting] = useState(false);
+  const [titleManuallyEdited, setTitleManuallyEdited] = useState(Boolean(editing));
   const pdfInputRef = useRef<HTMLInputElement>(null);
 
   // Resync form state whenever the modal opens — it's mounted once and
   // reused for every session, so `editing` can change without a remount.
   useEffect(() => {
     if (!open) return;
-    setForm(editing ? {
-      title: editing.title,
-      description: editing.description ?? '',
-      subject: editing.subject,
-      product: editing.product,
-      batch: editing.batch ?? '',
-      scheduledAt: epochToDhakaLocal(editing.scheduledAt),
-      durationMinutes: String(editing.durationMinutes),
-      meetLink: editing.meetLink ?? '',
-      status: editing.status,
-    } : defaultSessionForm);
+    setForm(editing ? sessionFormFromEditing(editing) : makeDefaultSessionForm());
     setShowMore(Boolean(editing));
+    setTitleManuallyEdited(Boolean(editing));
     setError('');
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open, editing]);
 
-  const predictedName = !editing ? predictNextClassName(allSessions, form.subject) : null;
+  // Live auto-generated title from course/subject/class#/topic, until the
+  // admin edits the title by hand (see "Reset to auto" affordance below).
+  useEffect(() => {
+    if (titleManuallyEdited) return;
+    if (!isTaxonomySubject(form.subject)) return;
+    const auto = formatClassName({
+      course: form.product,
+      subject: form.subject,
+      classNumber: form.classNumber.trim() ? Number(form.classNumber) : null,
+      topic: form.topic.trim() || null,
+    });
+    setForm(p => (p.title === auto ? p : { ...p, title: auto }));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [form.product, form.subject, form.classNumber, form.topic, titleManuallyEdited]);
 
-  const f = (k: keyof SessionForm, v: string) => setForm(p => ({ ...p, [k]: v }));
+  const f = (k: keyof SessionForm, v: string | null) => setForm(p => ({ ...p, [k]: v }));
 
   const handlePdfUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -151,6 +198,7 @@ function SessionModal({
       const heading = await extractPdfHeading(file);
       if (heading) {
         f('title', heading);
+        setTitleManuallyEdited(true);
       } else {
         setError('Could not extract title from PDF');
       }
@@ -160,10 +208,6 @@ function SessionModal({
       setExtracting(false);
       if (pdfInputRef.current) pdfInputRef.current.value = '';
     }
-  };
-
-  const applyPredicted = () => {
-    if (predictedName) f('title', predictedName);
   };
 
   const handleSave = async () => {
@@ -177,11 +221,14 @@ function SessionModal({
         description: form.description.trim() || null,
         subject: form.subject,
         product: form.product,
-        batch: form.batch.trim() || null,
+        batch: form.batch,
         scheduledAt: dhakaLocalToISO(form.scheduledAt),
         durationMinutes: Number(form.durationMinutes),
         meetLink: form.meetLink.trim() || null,
         status: form.status,
+        instructorId: form.instructorId ? Number(form.instructorId) : null,
+        topic: form.topic.trim() || null,
+        classNumber: form.classNumber.trim() ? Number(form.classNumber) : null,
       };
       const url    = editing ? `/api/lms/admin/classes/${editing.id}` : '/api/lms/admin/classes';
       const method = editing ? 'PATCH' : 'POST';
@@ -190,6 +237,7 @@ function SessionModal({
       });
       if (!res.ok) { const e = await res.json() as { error?: string }; throw new Error(e.error ?? 'Failed'); }
       const saved = await res.json() as ClassSession;
+      if (form.batch) setLastUsedBatch(form.batch as BatchKey);
       trackFeature(editing ? 'class_updated' : 'class_created', 'lms', {
         classSessionId: saved.id,
         subject: saved.subject,
@@ -206,24 +254,42 @@ function SessionModal({
   return (
     <Modal open={open} onClose={onClose} title={editing ? 'Edit Session' : 'New Session'} width={560}>
       <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
-        {showMore && <div>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: 12 }}>
+          <CourseSelect value={form.product} onChange={v => f('product', v)} />
+          <SubjectField value={form.subject} onChange={v => f('subject', v)} />
+        </div>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: 12 }}>
+          <div>
+            <FieldLabel>Topic (optional)</FieldLabel>
+            <FieldInput value={form.topic} onChange={e => f('topic', e.target.value)} placeholder="e.g. Advanced Sentence Structures" />
+          </div>
+          <div>
+            <FieldLabel>Class Number (optional)</FieldLabel>
+            <FieldInput type="number" min="0" step="1" value={form.classNumber} onChange={e => f('classNumber', e.target.value)} placeholder="e.g. 3" />
+          </div>
+        </div>
+        <div>
           <FieldLabel>Class title</FieldLabel>
-          <FieldInput value={form.title} onChange={e => f('title', e.target.value)} placeholder="Optional — e.g. English Class" />
-          {!editing && (predictedName || !form.title) && (
-            <div style={{ display: 'flex', gap: 8, marginTop: 8, flexWrap: 'wrap' }}>
-              {predictedName && (
-                <button
-                  type="button"
-                  onClick={applyPredicted}
-                  style={{
-                    padding: '6px 12px', borderRadius: 6, fontSize: 12, cursor: 'pointer',
-                    border: `1px solid ${BORDER}`, background: '#FFFFFF', color: '#374151',
-                    fontWeight: 500,
-                  }}
-                >
-                  ✓ Use "{predictedName}"
-                </button>
-              )}
+          <FieldInput
+            value={form.title}
+            onChange={e => { f('title', e.target.value); setTitleManuallyEdited(true); }}
+            placeholder="Auto-generated from course, subject, class #, topic"
+          />
+          <div style={{ display: 'flex', gap: 8, marginTop: 8, flexWrap: 'wrap' }}>
+            {titleManuallyEdited && isTaxonomySubject(form.subject) && (
+              <button
+                type="button"
+                onClick={() => setTitleManuallyEdited(false)}
+                style={{
+                  padding: '6px 12px', borderRadius: 6, fontSize: 12, cursor: 'pointer',
+                  border: `1px solid ${BORDER}`, background: '#FFFFFF', color: '#374151',
+                  fontWeight: 500,
+                }}
+              >
+                ↺ Reset to auto
+              </button>
+            )}
+            {!editing && (
               <button
                 type="button"
                 onClick={() => pdfInputRef.current?.click()}
@@ -236,43 +302,25 @@ function SessionModal({
               >
                 {extracting ? '⟳ Reading PDF…' : '📄 From PDF'}
               </button>
-              <input
-                ref={pdfInputRef}
-                type="file"
-                accept="application/pdf"
-                style={{ display: 'none' }}
-                onChange={handlePdfUpload}
-              />
-            </div>
-          )}
-        </div>}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: 12 }}>
-          <div>
-            <FieldLabel>Subject *</FieldLabel>
-            <FieldSelect value={form.subject} onChange={e => f('subject', e.target.value)}>
-              {SUBJECTS.map(s => <option key={s} value={s}>{s.charAt(0).toUpperCase() + s.slice(1)}</option>)}
-            </FieldSelect>
-          </div>
-          <div>
-            <FieldLabel>Product *</FieldLabel>
-            <FieldSelect value={form.product} onChange={e => f('product', e.target.value)}>
-              <option value="iba">IBA</option>
-              <option value="fbs">FBS</option>
-              <option value="fbs_detailed">FBS Detailed</option>
-            </FieldSelect>
+            )}
+            <input
+              ref={pdfInputRef}
+              type="file"
+              accept="application/pdf"
+              style={{ display: 'none' }}
+              onChange={handlePdfUpload}
+            />
           </div>
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: 12 }}>
+          <BatchSelect value={form.batch as BatchKey | null} onChange={v => f('batch', v)} />
           <div>
-            <FieldLabel>Batch (blank = all)</FieldLabel>
-            <FieldInput value={form.batch} onChange={e => f('batch', e.target.value)} placeholder="e.g. 2025" />
-          </div>
-          {showMore && <div>
-            <FieldLabel>Status</FieldLabel>
-            <FieldSelect value={form.status} onChange={e => f('status', e.target.value)}>
-              {STATUSES.map(s => <option key={s} value={s}>{s.charAt(0).toUpperCase() + s.slice(1)}</option>)}
+            <FieldLabel>Instructor</FieldLabel>
+            <FieldSelect value={form.instructorId} onChange={e => f('instructorId', e.target.value)}>
+              <option value="">Not set</option>
+              {teachingUsers.map(u => <option key={u.id} value={String(u.id)}>{u.name}</option>)}
             </FieldSelect>
-          </div>}
+          </div>
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: 12 }}>
           <div>
@@ -284,6 +332,12 @@ function SessionModal({
             <FieldInput type="number" min="15" value={form.durationMinutes} onChange={e => f('durationMinutes', e.target.value)} />
           </div>
         </div>
+        {showMore && <div>
+          <FieldLabel>Status</FieldLabel>
+          <FieldSelect value={form.status} onChange={e => f('status', e.target.value)}>
+            {STATUSES.map(s => <option key={s} value={s}>{s.charAt(0).toUpperCase() + s.slice(1)}</option>)}
+          </FieldSelect>
+        </div>}
         {showMore && <div>
           <FieldLabel>Description</FieldLabel>
           <FieldTextarea value={form.description} onChange={e => f('description', e.target.value)} placeholder="Optional description" rows={3} />
@@ -300,7 +354,7 @@ function SessionModal({
             style={{ minHeight: 44, alignSelf: 'flex-start', display: 'inline-flex', alignItems: 'center', gap: 6, padding: '8px 0', border: 0, background: 'transparent', color: '#760F13', fontSize: 13, fontWeight: 600, cursor: 'pointer' }}
           >
             <ChevronDown size={16} aria-hidden style={{ transform: showMore ? 'rotate(180deg)' : 'none', transition: 'transform 160ms ease' }} />
-            {showMore ? 'Hide optional details' : 'Add title, description, status, or Meet link'}
+            {showMore ? 'Hide optional details' : 'Add status, description, or Meet link'}
           </button>
         )}
         {error && <p style={{ fontSize: 12, color: RED, margin: 0 }}>{error}</p>}
@@ -316,16 +370,19 @@ function SessionModal({
 // ─── Schedule Form ────────────────────────────────────────────────────────────
 
 interface ScheduleForm {
-  titleTemplate: string; subject: string; product: string;
-  batch: string; dayOfWeek: string; timeOfDay: string;
+  titleTemplate: string; subject: string; product: CourseKey;
+  batch: string | null; dayOfWeek: string; timeOfDay: string;
   durationMinutes: string; active: boolean;
 }
 
-const defaultScheduleForm: ScheduleForm = {
-  titleTemplate: '', subject: 'english', product: 'iba',
-  batch: '', dayOfWeek: '0', timeOfDay: '10:00',
-  durationMinutes: '90', active: true,
-};
+function defaultScheduleForm(): ScheduleForm {
+  return {
+    titleTemplate: '', subject: 'english', product: 'iba',
+    batch: getLastUsedBatch() ?? BATCHES[0].key,
+    dayOfWeek: '0', timeOfDay: '10:00',
+    durationMinutes: '90', active: true,
+  };
+}
 
 function ScheduleModal({
   open, editing, onClose, onSaved,
@@ -336,13 +393,13 @@ function ScheduleModal({
   const [form, setForm] = useState<ScheduleForm>(() => editing ? {
     titleTemplate: editing.titleTemplate,
     subject: editing.subject,
-    product: editing.product,
-    batch: editing.batch ?? '',
+    product: editing.product as CourseKey,
+    batch: editing.batch,   // preserve null ("all batches") — never coerce on edit
     dayOfWeek: String(editing.dayOfWeek),
     timeOfDay: editing.timeOfDay,
     durationMinutes: String(editing.durationMinutes),
     active: editing.active,
-  } : defaultScheduleForm);
+  } : defaultScheduleForm());
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState('');
 
@@ -352,18 +409,18 @@ function ScheduleModal({
     setForm(editing ? {
       titleTemplate: editing.titleTemplate,
       subject: editing.subject,
-      product: editing.product,
-      batch: editing.batch ?? '',
+      product: editing.product as CourseKey,
+      batch: editing.batch,   // preserve null ("all batches") — never coerce on edit
       dayOfWeek: String(editing.dayOfWeek),
       timeOfDay: editing.timeOfDay,
       durationMinutes: String(editing.durationMinutes),
       active: editing.active,
-    } : defaultScheduleForm);
+    } : defaultScheduleForm());
     setError('');
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open, editing]);
 
-  const f = (k: keyof ScheduleForm, v: string | boolean) =>
+  const f = (k: keyof ScheduleForm, v: string | boolean | null) =>
     setForm(p => ({ ...p, [k]: v }));
 
   const handleSave = async () => {
@@ -374,7 +431,7 @@ function ScheduleModal({
         titleTemplate: form.titleTemplate.trim(),
         subject: form.subject,
         product: form.product,
-        batch: form.batch.trim() || null,
+        batch: form.batch,
         dayOfWeek: Number(form.dayOfWeek),
         timeOfDay: form.timeOfDay,
         durationMinutes: Number(form.durationMinutes),
@@ -403,20 +460,8 @@ function ScheduleModal({
           <FieldInput value={form.titleTemplate} onChange={e => f('titleTemplate', e.target.value)} placeholder="e.g. English Class – Week {n}" />
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
-          <div>
-            <FieldLabel>Subject *</FieldLabel>
-            <FieldSelect value={form.subject} onChange={e => f('subject', e.target.value)}>
-              {SUBJECTS.map(s => <option key={s} value={s}>{s.charAt(0).toUpperCase() + s.slice(1)}</option>)}
-            </FieldSelect>
-          </div>
-          <div>
-            <FieldLabel>Product *</FieldLabel>
-            <FieldSelect value={form.product} onChange={e => f('product', e.target.value)}>
-              <option value="iba">IBA</option>
-              <option value="fbs">FBS</option>
-              <option value="fbs_detailed">FBS Detailed</option>
-            </FieldSelect>
-          </div>
+          <CourseSelect value={form.product} onChange={v => f('product', v)} />
+          <SubjectField value={form.subject} onChange={v => f('subject', v)} />
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
           <div>
@@ -435,10 +480,7 @@ function ScheduleModal({
             <FieldLabel>Duration (min)</FieldLabel>
             <FieldInput type="number" min="15" value={form.durationMinutes} onChange={e => f('durationMinutes', e.target.value)} />
           </div>
-          <div>
-            <FieldLabel>Batch (blank = all)</FieldLabel>
-            <FieldInput value={form.batch} onChange={e => f('batch', e.target.value)} placeholder="e.g. 2025" />
-          </div>
+          <BatchSelect value={form.batch as BatchKey | null} onChange={v => f('batch', v)} />
         </div>
         <Toggle checked={form.active} onChange={v => f('active', v)} label="Active (generates sessions)" />
         {error && <p style={{ fontSize: 12, color: RED, margin: 0 }}>{error}</p>}
@@ -464,21 +506,23 @@ interface CompletedClassForm {
   title: string;
   description: string;
   subject: string;
-  product: string;
-  batch: string;
+  product: CourseKey;
+  batch: string | null;
   scheduledAt: string; // Dhaka datetime-local
   durationMinutes: string;
 }
 
-const defaultCompletedForm: CompletedClassForm = {
-  title: '',
-  description: '',
-  subject: 'english',
-  product: 'iba',
-  batch: '',
-  scheduledAt: '',
-  durationMinutes: '90',
-};
+function makeDefaultCompletedForm(): CompletedClassForm {
+  return {
+    title: '',
+    description: '',
+    subject: 'english',
+    product: 'iba',
+    batch: getLastUsedBatch() ?? BATCHES[0].key,
+    scheduledAt: '',
+    durationMinutes: '90',
+  };
+}
 
 function CompletedClassModal({
   open, onClose, onSaved,
@@ -488,7 +532,7 @@ function CompletedClassModal({
   onSaved: (s: ClassSession) => void;
 }) {
   const [step, setStep]       = useState<'details' | 'upload'>('details');
-  const [form, setForm]       = useState<CompletedClassForm>(defaultCompletedForm);
+  const [form, setForm]       = useState<CompletedClassForm>(makeDefaultCompletedForm);
   const [saving, setSaving]   = useState(false);
   const [error, setError]     = useState('');
   const [createdSession, setCreatedSession] = useState<ClassSession | null>(null);
@@ -499,7 +543,7 @@ function CompletedClassModal({
   const [uploadDone, setUploadDone] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
-  const f = (k: keyof CompletedClassForm, v: string) =>
+  const f = (k: keyof CompletedClassForm, v: string | null) =>
     setForm(p => ({ ...p, [k]: v }));
 
   // Reset when modal opens/closes
@@ -507,7 +551,7 @@ function CompletedClassModal({
     if (!open) {
       setTimeout(() => {
         setStep('details');
-        setForm(defaultCompletedForm);
+        setForm(makeDefaultCompletedForm());
         setSaving(false);
         setError('');
         setCreatedSession(null);
@@ -535,7 +579,7 @@ function CompletedClassModal({
         description:     form.description.trim() || null,
         subject:         form.subject,
         product:         form.product,
-        batch:           form.batch.trim() || null,
+        batch:           form.batch,
         scheduledAt:     dhakaLocalToISO(form.scheduledAt),
         durationMinutes: Number(form.durationMinutes),
         meetLink:        null,
@@ -551,6 +595,7 @@ function CompletedClassModal({
         throw new Error(e.error ?? 'Failed to create session');
       }
       const created = await res.json() as ClassSession;
+      if (form.batch) setLastUsedBatch(form.batch as BatchKey);
       setCreatedSession(created);
       setStep('upload');
     } catch (e) {
@@ -713,22 +758,8 @@ function CompletedClassModal({
           </div>
 
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
-            <div>
-              <FieldLabel>Subject *</FieldLabel>
-              <FieldSelect value={form.subject} onChange={e => f('subject', e.target.value)}>
-                {SUBJECTS.map(s => (
-                  <option key={s} value={s}>{s.charAt(0).toUpperCase() + s.slice(1)}</option>
-                ))}
-              </FieldSelect>
-            </div>
-            <div>
-              <FieldLabel>Product *</FieldLabel>
-              <FieldSelect value={form.product} onChange={e => f('product', e.target.value)}>
-                <option value="iba">IBA</option>
-                <option value="fbs">FBS</option>
-                <option value="fbs_detailed">FBS Detailed</option>
-              </FieldSelect>
-            </div>
+            <CourseSelect value={form.product} onChange={v => f('product', v)} />
+            <SubjectField value={form.subject} onChange={v => f('subject', v)} />
           </div>
 
           <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: 12 }}>
@@ -753,14 +784,7 @@ function CompletedClassModal({
           </div>
 
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
-            <div>
-              <FieldLabel>Batch (blank = all)</FieldLabel>
-              <FieldInput
-                value={form.batch}
-                onChange={e => f('batch', e.target.value)}
-                placeholder="e.g. 2025"
-              />
-            </div>
+            <BatchSelect value={form.batch as BatchKey | null} onChange={v => f('batch', v)} />
           </div>
 
           <div>
@@ -964,7 +988,7 @@ function CompletedClassModal({
 
 // ─── Sessions tab ─────────────────────────────────────────────────────────────
 
-function SessionsTab({ sessions }: { sessions: ClassSession[] }) {
+function SessionsTab({ sessions, teachingUsers }: { sessions: ClassSession[]; teachingUsers: TeachingUser[] }) {
   const [modalOpen,         setModalOpen]         = useState(false);
   const [completedOpen,     setCompletedOpen]     = useState(false);
   const [editing,           setEditing]           = useState<ClassSession | null>(null);
@@ -1105,7 +1129,7 @@ function SessionsTab({ sessions }: { sessions: ClassSession[] }) {
         editing={editing}
         onClose={() => { setModalOpen(false); setEditing(null); }}
         onSaved={handleSaved}
-        allSessions={localSessions}
+        teachingUsers={teachingUsers}
       />
       <CompletedClassModal
         open={completedOpen}
@@ -1267,7 +1291,7 @@ function SchedulesTab({ schedules }: { schedules: ClassSchedule[] }) {
 
 // ─── Main component ───────────────────────────────────────────────────────────
 
-export default function ClassesClient({ initialSessions, initialSchedules }: Props) {
+export default function ClassesClient({ initialSessions, initialSchedules, teachingUsers }: Props) {
   const [tab, setTab] = useState<'sessions' | 'schedules'>('sessions');
 
   return (
@@ -1293,7 +1317,7 @@ export default function ClassesClient({ initialSessions, initialSchedules }: Pro
       />
       <AnimatePresence mode="wait">
         {tab === 'sessions'
-          ? <SessionsTab key="sessions" sessions={initialSessions} />
+          ? <SessionsTab key="sessions" sessions={initialSessions} teachingUsers={teachingUsers} />
           : <SchedulesTab key="schedules" schedules={initialSchedules} />
         }
       </AnimatePresence>

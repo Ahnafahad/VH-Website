@@ -6,7 +6,7 @@
 import { NextRequest } from 'next/server';
 import { eq } from 'drizzle-orm';
 import { db } from '@/lib/db';
-import { classSessions, classAttendance, recordings } from '@/lib/db/schema';
+import { classSessions, classAttendance, recordings, users } from '@/lib/db/schema';
 import { safeApiHandler, ApiException } from '@/lib/api-utils';
 import { requireStaff } from '@/lib/tests/route-helpers';
 import { LMS_SUBJECTS } from '@/lib/lms/constants';
@@ -67,6 +67,33 @@ export async function PATCH(
       updates.status = body.status;
     }
     if (body.meetLink !== undefined) updates.meetLink = body.meetLink ?? null;
+    if (body.instructorId !== undefined) {
+      if (body.instructorId === null || body.instructorId === '') {
+        updates.instructorId = null;
+      } else {
+        const instructorIdNum = Number(body.instructorId);
+        if (!Number.isInteger(instructorIdNum)) throw new ApiException('instructorId must be an integer', 400);
+        const instructor = await db
+          .select({ id: users.id, isTeaching: users.isTeaching })
+          .from(users)
+          .where(eq(users.id, instructorIdNum))
+          .get();
+        if (!instructor || !instructor.isTeaching) {
+          throw new ApiException('instructorId must reference a user with is_teaching = true', 400);
+        }
+        updates.instructorId = instructorIdNum;
+      }
+    }
+    if (body.topic !== undefined) updates.topic = body.topic ?? null;
+    if (body.classNumber !== undefined) {
+      if (body.classNumber === null || body.classNumber === '') {
+        updates.classNumber = null;
+      } else {
+        const classNumberNum = Number(body.classNumber);
+        if (!Number.isInteger(classNumberNum)) throw new ApiException('classNumber must be an integer', 400);
+        updates.classNumber = classNumberNum;
+      }
+    }
 
     if (Object.keys(updates).length === 0) throw new ApiException('No fields to update', 400);
 
@@ -314,6 +341,9 @@ function serializeSession(s: typeof classSessions.$inferSelect) {
     meetLink: s.meetLink,
     googleEventId: s.googleEventId,
     recallBotId: s.recallBotId,
+    instructorId: s.instructorId,
+    topic: s.topic,
+    classNumber: s.classNumber,
     createdBy: s.createdBy,
     createdAt: s.createdAt.getTime(),
   };

@@ -16,6 +16,7 @@ export const users = sqliteTable('users', {
   class:     text('class'),
   notes:     text('notes'),
   whatsapp:          text('whatsapp'),
+  isTeaching:        integer('is_teaching', { mode: 'boolean' }).default(false),
   onboardingSkips:   integer('onboarding_skips').notNull().default(0),
   onboardedAt:       integer('onboarded_at', { mode: 'timestamp' }),
   createdAt: integer('created_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
@@ -1025,6 +1026,9 @@ export const classSessions = sqliteTable('class_sessions', {
   meetLink:        text('meet_link'),
   googleEventId:   text('google_event_id'),
   recallBotId:     text('recall_bot_id'),
+  instructorId:    integer('instructor_id').references(() => users.id),
+  topic:           text('topic'),
+  classNumber:     integer('class_number'),
   createdBy:       integer('created_by').notNull().references(() => users.id),
   createdAt:       integer('created_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
 }, (t) => [
@@ -1110,6 +1114,11 @@ export const materials = sqliteTable('materials', {
   subject:        text('subject').notNull(),
   product:        text('product').notNull().default('iba'),
   batch:          text('batch'),
+  // 'lecture' | 'solution' | 'question_paper' | 'notes' | 'homework' | 'practice' — see src/lib/naming/taxonomy.ts.
+  // Distinct from `type` (pdf | link) above — do not confuse the two.
+  docType:        text('doc_type'),
+  number:         text('number'),
+  topic:          text('topic'),
   classSessionId: integer('class_session_id').references(() => classSessions.id, { onDelete: 'set null' }),
   uploadedBy:     integer('uploaded_by').notNull().references(() => users.id),
   createdAt:      integer('created_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
