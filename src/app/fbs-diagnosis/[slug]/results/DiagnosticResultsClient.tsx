@@ -46,6 +46,11 @@ interface DiagnosticTest {
   attempt: { status: string; submittedAt: number | null } | null;
 }
 
+// Every diagnostic is 40 attempted questions/marks (2 compulsory English +
+// 2 of 3 chosen electives, 10 each) — not the DB's 50-question full bank.
+// See ATTEMPT_QUESTIONS in ../../FbsDiagnosisClient.tsx.
+const ATTEMPT_QUESTIONS = 40;
+
 type CoreStatus = 'loading' | 'locked' | 'error' | 'ok' | 'unauth';
 
 interface Props {
@@ -361,7 +366,7 @@ function OtherAssessments({ others, isAuthed }: { others: DiagnosticTest[]; isAu
                 />
               </div>
               <p className="text-[var(--color-exam-ink-muted)] text-xs mt-1.5">
-                {t.totalQuestions} questions · {t.durationMinutes} min ·{' '}
+                {ATTEMPT_QUESTIONS} questions · {t.durationMinutes} min ·{' '}
                 {submitted ? 'Completed' : isAuthed ? 'Ready to start' : 'Sign in to start'}
               </p>
             </Link>

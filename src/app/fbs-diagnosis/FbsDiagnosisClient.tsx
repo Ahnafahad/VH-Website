@@ -37,6 +37,16 @@ const SUBJECTS = [
   'Accounting',
 ];
 
+// Every diagnostic follows the same fixed format: the two English sections
+// are compulsory, then candidates pick exactly 2 of the 3 remaining
+// electives (10 questions each) — always 40 questions/marks in total,
+// regardless of which electives are chosen. `test.totalQuestions`/
+// `totalMarks` from the API reflect the full 5-subject question bank (50),
+// not what any candidate actually attempts, so we display these fixed
+// values instead. See the subject picker in `[slug]/take/page.tsx`.
+const ATTEMPT_QUESTIONS = 40;
+const ATTEMPT_MARKS = 40;
+
 /* ------------------------------------------------------------------ */
 /*  PAGE                                                               */
 /* ------------------------------------------------------------------ */
@@ -101,8 +111,8 @@ export default function FbsDiagnosisClient() {
             className="flex flex-wrap items-baseline gap-x-10 gap-y-4 pb-10 border-b border-[#1A0507]/10"
           >
             {[
-              ['50', 'MCQs'],
-              ['50', 'Marks'],
+              [String(ATTEMPT_QUESTIONS), 'MCQs'],
+              [String(ATTEMPT_MARKS), 'Marks'],
               ['30', 'Minutes'],
             ].map(([n, label]) => (
               <div key={label} className="flex items-baseline gap-2.5">
@@ -123,9 +133,9 @@ export default function FbsDiagnosisClient() {
             transition={{ duration: 0.7, delay: 0.1 }}
             className="mt-10 max-w-2xl font-sans text-base sm:text-lg leading-relaxed text-[#1A0507]/65"
           >
-            One focused sitting across five DU C-Unit subjects. Instant, detailed
-            results with explanations — see your rank on a public leaderboard,
-            benchmarked against our instructors.
+            One focused sitting — compulsory English plus 2 of 3 electives you
+            choose. Instant, detailed results with explanations — see your rank
+            on a public leaderboard, benchmarked against our instructors.
           </motion.p>
 
           {/* Subjects list */}
@@ -296,10 +306,11 @@ function Hero() {
           transition={{ duration: 0.8, delay: 0.7 }}
           className="mt-12 font-sans text-[#FAF5EF]/65 text-base sm:text-lg leading-relaxed max-w-xl"
         >
-          A free, 30-minute diagnostic for the DU C-Unit paper — 50 MCQs across
-          five subjects. Get instant, detailed results with explanations, see
-          your rank on the leaderboard, and measure yourself against our
-          instructors&rsquo; benchmark.
+          A free, 30-minute diagnostic for the DU C-Unit paper — 40 MCQs:
+          compulsory English plus 2 of 3 electives you choose. Get instant,
+          detailed results with explanations, see your rank on the
+          leaderboard, and measure yourself against our instructors&rsquo;
+          benchmark.
         </motion.p>
 
         <motion.div
@@ -390,15 +401,15 @@ function FeaturedCard({ test, isAuthed, authLoading, onStart }: CardProps) {
             {test.title}
           </h3>
           <p className="font-sans text-sm sm:text-base text-[#FAF5EF]/60 leading-relaxed max-w-lg">
-            The full DU C-Unit experience — {test.totalQuestions} questions,{' '}
-            {test.totalMarks} marks, {test.durationMinutes} minutes. Your best
+            The full DU C-Unit experience — {ATTEMPT_QUESTIONS} questions,{' '}
+            {ATTEMPT_MARKS} marks, {test.durationMinutes} minutes. Your best
             starting point.
           </p>
 
           <div className="mt-8 flex flex-wrap gap-x-8 gap-y-3">
             {[
-              { k: 'Questions', v: String(test.totalQuestions) },
-              { k: 'Marks', v: String(test.totalMarks) },
+              { k: 'Questions', v: String(ATTEMPT_QUESTIONS) },
+              { k: 'Marks', v: String(ATTEMPT_MARKS) },
               { k: 'Duration', v: `${test.durationMinutes} min` },
             ].map((s) => (
               <div key={s.k} className="flex flex-col">
@@ -470,7 +481,7 @@ function SecondaryCard({
         {test.title}
       </h3>
       <p className="relative font-sans text-sm text-[#1A0507]/55 leading-relaxed mb-8">
-        {test.totalQuestions} questions · {test.totalMarks} marks · {test.durationMinutes} min
+        {ATTEMPT_QUESTIONS} questions · {ATTEMPT_MARKS} marks · {test.durationMinutes} min
       </p>
 
       <button
