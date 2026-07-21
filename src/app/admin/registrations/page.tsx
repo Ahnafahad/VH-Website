@@ -703,6 +703,25 @@ function RegistrationCard({ registration, editingId, editData, onStartEdit, onSa
         </div>
       )}
 
+      {reg.programMode === 'full' && reg.selectedFullCourses && (
+        <div className="bg-blue-50 rounded-lg p-4 border border-blue-200 mb-4">
+          <p className="text-sm font-semibold text-blue-900 mb-2">Selected Full Course(s):</p>
+          <ul className="list-disc list-inside space-y-1 text-sm text-blue-800">
+            {(() => {
+              try { return JSON.parse(reg.selectedFullCourses as string); } catch { return []; }
+            })().map((course: string, idx: number) => (
+              <li key={idx}>{course.replace(/-/g, ' ').toUpperCase()}</li>
+            ))}
+          </ul>
+          {(reg.pricingFinalPrice ?? 0) > 0 && (
+            <div className="mt-3 pt-3 border-t border-blue-300 flex justify-between text-base">
+              <span className="font-bold text-blue-900">Fees due:</span>
+              <span className="font-black text-blue-900">Tk {(reg.pricingFinalPrice ?? 0).toLocaleString()}</span>
+            </div>
+          )}
+        </div>
+      )}
+
       {/* Referral Information */}
       {reg.referralName && (
         <div className="bg-purple-50 rounded-lg p-4 border border-purple-200 mb-4">

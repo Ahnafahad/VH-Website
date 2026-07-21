@@ -9,6 +9,8 @@ import {
   calculateMocksPricing,
   isFullCourse,
   isMockProgram,
+  DU_FBS_FULL_FEES,
+  IBA_COMBINED_FULL_FEE,
   type MockProgram,
 } from '@/lib/registration/pricing';
 
@@ -36,9 +38,14 @@ export async function POST(request: NextRequest) {
     }
     if (errors.length) throw new ApiException(`Validation failed: ${errors.join(', ')}`, 400);
 
+    let fullFeeTotal = 0;
+    if (programMode === 'full' && Array.isArray(selectedFullCourses)) {
+      if (selectedFullCourses.includes('du-fbs-full'))  fullFeeTotal += DU_FBS_FULL_FEES.admissionFee + DU_FBS_FULL_FEES.monthlyFee;
+      if (selectedFullCourses.includes('iba-combined')) fullFeeTotal += IBA_COMBINED_FULL_FEE;
+    }
     const srvPricing = programMode === 'mocks'
       ? calculateMocksPricing(selectedMocks as MockProgram[])
-      : { subtotal: 0, discount: 0, finalPrice: 0 };
+      : { subtotal: fullFeeTotal, discount: 0, finalPrice: fullFeeTotal };
 
     const [saved] = await db.insert(registrations).values({
       name:                name.trim(),

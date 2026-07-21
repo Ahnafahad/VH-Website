@@ -4,7 +4,7 @@ import { useState, useMemo } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'motion/react';
 import { ArrowRight, ArrowLeft, ArrowUpRight, Check, Loader2 } from 'lucide-react';
-import { MOCK_PRICES, calculateMocksPricing, type MockProgram, type FullCourse } from '@/lib/registration/pricing';
+import { MOCK_PRICES, calculateMocksPricing, DU_FBS_FULL_FEES, IBA_COMBINED_FULL_FEE, type MockProgram, type FullCourse } from '@/lib/registration/pricing';
 import { trackFeature } from '@/lib/analytics/tracker';
 
 type EducationType = 'hsc' | 'alevels' | null;
@@ -55,6 +55,10 @@ const FULL_LABELS: Record<FullCourse, { title: string; short: string; detail: st
 // HSC students: only see EM-oriented programs + warning. A-Levels see all.
 const HSC_VISIBLE_MOCKS: MockProgram[] = ['du-iba', 'bup-fbs'];
 const HSC_VISIBLE_FULL:  FullCourse[]  = ['iba-combined', 'bup-fbs-full'];
+
+// These full courses are now actual registrations (real, fixed pricing) — the
+// rest (bup-fbs-full) is still an interest-only form.
+const REAL_FULL_COURSES: FullCourse[] = ['du-fbs-full', 'iba-combined'];
 
 const STEPS = ['Personal', 'Education', 'Program', 'Review'];
 
@@ -173,16 +177,40 @@ export default function CoursesRegistrationPage() {
             ))}
           </div>
 
-          <div className="relative rounded-2xl border border-[#D4B094]/40 bg-white/70 backdrop-blur-sm p-6 sm:p-8 mb-8 overflow-hidden">
-            <CornerBrackets accent="#A86E58" />
-            <div className="font-sans text-[10px] tracking-[0.3em] uppercase text-[#760F13] mb-3">
-              Early-bird advantage — unlocked
+          {mode === 'full' && fullCourses.some(c => REAL_FULL_COURSES.includes(c)) ? (
+            <div className="relative rounded-2xl border border-[#D4B094]/40 bg-white/70 backdrop-blur-sm p-6 sm:p-8 mb-8 overflow-hidden">
+              <CornerBrackets accent="#A86E58" />
+              <div className="font-sans text-[10px] tracking-[0.3em] uppercase text-[#760F13] mb-3">
+                Payment details
+              </div>
+              <div className="space-y-1 mb-4">
+                {fullCourses.includes('du-fbs-full') && (
+                  <p className="font-heading text-xl sm:text-2xl leading-snug text-[#1A0507] font-light">
+                    DU FBS: Tk {DU_FBS_FULL_FEES.admissionFee.toLocaleString()} admission + Tk {DU_FBS_FULL_FEES.monthlyFee.toLocaleString()}/month tuition.
+                  </p>
+                )}
+                {fullCourses.includes('iba-combined') && (
+                  <p className="font-heading text-xl sm:text-2xl leading-snug text-[#1A0507] font-light">
+                    DU IBA & BUP IBA: Tk {IBA_COMBINED_FULL_FEE.toLocaleString()} full course.
+                  </p>
+                )}
+              </div>
+              <p className="font-sans text-sm text-[#1A0507]/70 leading-relaxed">
+                Pay at the VH premises or via bKash. Message us on WhatsApp using the button below and we&rsquo;ll confirm your seat and share exact payment details.
+              </p>
             </div>
-            <p className="font-heading text-xl sm:text-2xl leading-snug text-[#1A0507] font-light">
-              You&rsquo;ve locked in current rates and first access to the {year} cohort.
-              We will be in touch on <strong className="font-medium">{phone}</strong> within the week.
-            </p>
-          </div>
+          ) : (
+            <div className="relative rounded-2xl border border-[#D4B094]/40 bg-white/70 backdrop-blur-sm p-6 sm:p-8 mb-8 overflow-hidden">
+              <CornerBrackets accent="#A86E58" />
+              <div className="font-sans text-[10px] tracking-[0.3em] uppercase text-[#760F13] mb-3">
+                Early-bird advantage — unlocked
+              </div>
+              <p className="font-heading text-xl sm:text-2xl leading-snug text-[#1A0507] font-light">
+                You&rsquo;ve locked in current rates and first access to the {year} cohort.
+                We will be in touch on <strong className="font-medium">{phone}</strong> within the week.
+              </p>
+            </div>
+          )}
 
           <div className="relative rounded-2xl border border-[#D4B094]/30 bg-[#1A0507] text-[#FAF5EF] p-6 sm:p-10 overflow-hidden">
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-8">
@@ -195,7 +223,9 @@ export default function CoursesRegistrationPage() {
                   Join the group. Don&rsquo;t miss the update.
                 </h3>
                 <p className="font-sans text-sm text-[#FAF5EF]/70 leading-relaxed mb-6 max-w-md">
-                  Scan or tap below. Early-bird advantage, course updates, and cohort announcements come here first.
+                  {mode === 'full' && fullCourses.some(c => REAL_FULL_COURSES.includes(c))
+                    ? 'Scan or tap below. Class schedules and updates come here first.'
+                    : 'Scan or tap below. Early-bird advantage, course updates, and cohort announcements come here first.'}
                 </p>
                 <a
                   href="https://chat.whatsapp.com/LBdtaxyUP6w1S7npTrFli6"
@@ -237,8 +267,11 @@ export default function CoursesRegistrationPage() {
           transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
           className="font-heading text-[clamp(2.5rem,6vw,5rem)] leading-[0.92] tracking-[-0.02em] font-light mt-8 mb-12"
         >
-          Secure your{' '}
-          <em className="font-extralight text-[#760F13]">early-bird seat.</em>
+          {mode === 'full' && fullCourses.some(c => REAL_FULL_COURSES.includes(c)) ? (
+            <>Secure your <em className="font-extralight text-[#760F13]">seat.</em></>
+          ) : (
+            <>Secure your <em className="font-extralight text-[#760F13]">early-bird seat.</em></>
+          )}
         </motion.h1>
 
         {/* Step progress */}
@@ -459,7 +492,44 @@ export default function CoursesRegistrationPage() {
                         detail={FULL_LABELS[c].detail}
                       />
                     ))}
-                    {fullCourses.length > 0 && (
+                    {fullCourses.includes('du-fbs-full') && (
+                      <div className="rounded-2xl bg-[#1A0507] text-[#FAF5EF] p-6 sm:p-8 overflow-hidden relative">
+                        <CornerBrackets accent="#D4B094" />
+                        <div className="font-sans text-[10px] tracking-[0.3em] uppercase text-[#D4B094] mb-5">
+                          DU FBS Fees
+                        </div>
+                        <div className="space-y-2 text-sm font-sans text-[#FAF5EF]/70">
+                          <div className="flex justify-between">
+                            <span>Admission fee (one-time)</span>
+                            <span className="text-[#FAF5EF]">Tk {DU_FBS_FULL_FEES.admissionFee.toLocaleString()}</span>
+                          </div>
+                          <div className="flex justify-between">
+                            <span>Tuition</span>
+                            <span className="text-[#FAF5EF]">Tk {DU_FBS_FULL_FEES.monthlyFee.toLocaleString()}/month</span>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                    {fullCourses.includes('iba-combined') && (
+                      <div className="rounded-2xl bg-[#1A0507] text-[#FAF5EF] p-6 sm:p-8 overflow-hidden relative">
+                        <CornerBrackets accent="#D4B094" />
+                        <div className="font-sans text-[10px] tracking-[0.3em] uppercase text-[#D4B094] mb-5">
+                          DU IBA & BUP IBA Fees
+                        </div>
+                        <div className="space-y-2 text-sm font-sans text-[#FAF5EF]/70">
+                          <div className="flex justify-between">
+                            <span>Full course</span>
+                            <span className="text-[#FAF5EF]">Tk {IBA_COMBINED_FULL_FEE.toLocaleString()}</span>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                    {fullCourses.some(c => REAL_FULL_COURSES.includes(c)) && (
+                      <p className="font-sans text-xs text-[#A86E58]/80 leading-relaxed pt-2">
+                        Registration is open now. Pay at the VH premises or via bKash, then message us on WhatsApp to confirm your seat.
+                      </p>
+                    )}
+                    {fullCourses.some(c => !REAL_FULL_COURSES.includes(c)) && (
                       <p className="font-sans text-xs text-[#A86E58]/80 leading-relaxed pt-2">
                         Our admissions team will contact you within 24 hours to discuss curriculum, scheduling, and pricing.
                       </p>
@@ -490,6 +560,12 @@ export default function CoursesRegistrationPage() {
                         ? mocks.map(m => MOCK_LABELS[m].short).join(' · ')
                         : fullCourses.map(c => FULL_LABELS[c].short).join(' · ') },
                     ...(mode === 'mocks' && finalPrice > 0 ? [{ label: 'Total', value: `Tk ${finalPrice.toLocaleString()}` }] : []),
+                    ...(mode === 'full' && fullCourses.includes('du-fbs-full')
+                      ? [{ label: 'DU FBS Fees', value: `Tk ${DU_FBS_FULL_FEES.admissionFee.toLocaleString()} admission + Tk ${DU_FBS_FULL_FEES.monthlyFee.toLocaleString()}/mo` }]
+                      : []),
+                    ...(mode === 'full' && fullCourses.includes('iba-combined')
+                      ? [{ label: 'IBA Fees', value: `Tk ${IBA_COMBINED_FULL_FEE.toLocaleString()} full course` }]
+                      : []),
                   ].map(({ label, value }) => (
                     <div key={label} className="flex items-baseline gap-4">
                       <span className="font-sans text-[10px] tracking-[0.3em] uppercase text-[#A86E58] w-24 shrink-0">{label}</span>
@@ -542,12 +618,14 @@ export default function CoursesRegistrationPage() {
                 <div className="rounded-2xl border border-[#D4B094]/40 bg-white/60 p-6 relative overflow-hidden">
                   <CornerBrackets accent="#A86E58" />
                   <div className="font-sans text-[10px] tracking-[0.3em] uppercase text-[#760F13] mb-2">
-                    Early-bird advantage
+                    {mode === 'full' && fullCourses.some(c => REAL_FULL_COURSES.includes(c)) ? 'Payment' : 'Early-bird advantage'}
                   </div>
                   <p className="font-sans text-sm text-[#1A0507]/70 leading-relaxed">
                     {mode === 'mocks'
                       ? 'No payment at registration. First mock is complimentary. Payment details shared separately.'
-                      : 'Our team will reach you within 24 hours to discuss curriculum, schedule, and pricing.'}
+                      : fullCourses.some(c => REAL_FULL_COURSES.includes(c))
+                        ? 'Pay at the VH premises or via bKash. Message us on WhatsApp to confirm and get exact payment details.'
+                        : 'Our team will reach you within 24 hours to discuss curriculum, schedule, and pricing.'}
                   </p>
                 </div>
 
