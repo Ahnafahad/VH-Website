@@ -888,9 +888,16 @@ export const testWindows = sqliteTable('test_windows', {
 ]);
 
 // ─── Test Attempts ────────────────────────────────────────────────────────────
-// One attempt per student per test (unique). Reset (2nd tab-leave) wipes
-// answers and bumps resetCount but keeps the row. Score fields are computed at
-// submit; rank/percentile are computed on demand once results are visible.
+// One attempt per student per test (unique) — the row is always reused, never
+// duplicated. Reset (2nd tab-leave) wipes answers and bumps resetCount but
+// keeps the row. Score fields are computed at submit; rank/percentile are
+// computed on demand once results are visible.
+//
+// Staff exception (admin/super_admin/instructor) on FBS diagnostics: they may
+// retake after submitting. A retake reuses the same row (still one row per
+// user+test) and resets it to in_progress, stashing the prior score+answers
+// in bestSnapshot until the next submit — which keeps whichever of the two is
+// better and discards the other. Everyone else is one-and-done.
 
 export const testAttempts = sqliteTable('test_attempts', {
   id:               integer('id').primaryKey({ autoIncrement: true }),
@@ -914,6 +921,12 @@ export const testAttempts = sqliteTable('test_attempts', {
   // Diagnostic elective mechanic: JSON int[] of the section ids the taker will
   // attempt (2 compulsory English + 2 chosen electives = 4). Null for normal tests.
   chosenSections:   text('chosen_sections'),
+  // Staff-only diagnostic retakes: while a retake is in_progress, this JSON
+  // snapshot (BestSnapshot, see lib/tests/best-snapshot.ts) holds the prior
+  // submission's score + answers so submit can keep whichever is better and
+  // restore the loser. Null once resolved — the row's own fields are always
+  // the current best. Never set for non-staff or non-diagnostic attempts.
+  bestSnapshot:     text('best_snapshot'),
 }, (t) => [
   unique().on(t.testId, t.userId),
   index('idx_test_attempts_user').on(t.userId),

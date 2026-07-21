@@ -4,6 +4,11 @@
  * compulsory (English) or elective (the rest). Also reports whether the caller
  * already has an attempt (so the take page can skip the picker on resume).
  * Requires auth. 404 if the test is not a diagnostic. No answer keys leak.
+ *
+ * Staff (admin/super_admin/instructor) never get alreadySubmitted:true here —
+ * they're allowed to retake, so the take page shows the picker again instead
+ * of redirecting to results. Their previous best score (if any) is surfaced
+ * as previousBestScore so the picker can say so.
  */
 
 import { NextRequest } from 'next/server';
@@ -13,6 +18,7 @@ import { testSections, testWindows, testAttempts } from '@/lib/db/schema';
 import { safeApiHandler, ApiException } from '@/lib/api-utils';
 import { requireUser, requireTestForUser } from '@/lib/tests/route-helpers';
 import { isCompulsorySection } from '@/lib/tests/diagnostic';
+import { isTestStaff } from '@/lib/tests/access';
 
 export async function GET(
   _req: NextRequest,
@@ -45,6 +51,8 @@ export async function GET(
       .where(and(eq(testAttempts.testId, test.id), eq(testAttempts.userId, user.id)))
       .get();
 
+    const staffCanRetake = isTestStaff(user) && attempt?.status === 'submitted';
+
     return {
       test: {
         slug: test.slug,
@@ -54,7 +62,8 @@ export async function GET(
       },
       sections,
       alreadyStarted: attempt?.status === 'in_progress',
-      alreadySubmitted: attempt?.status === 'submitted',
+      alreadySubmitted: attempt?.status === 'submitted' && !staffCanRetake,
+      previousBestScore: staffCanRetake ? (attempt?.totalScore ?? null) : null,
     };
   });
 }

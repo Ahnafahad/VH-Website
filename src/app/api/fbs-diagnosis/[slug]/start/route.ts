@@ -2,21 +2,29 @@
  * POST /api/fbs-diagnosis/[slug]/start
  * Body: { windowId: number, electiveSectionIds: number[] }
  * Starts (or resumes) the caller's diagnostic attempt AFTER they pick exactly 2
- * of the 3 elective subjects. attemptedSectionIds = [both compulsory English
- * sections, ...the 2 chosen electives] (4 sections = 40 marks). The 30-minute
- * timer begins at attempt creation. Resuming an in-progress attempt keeps its
- * existing selection (no re-choosing).
+ * of the remaining elective subjects. attemptedSectionIds = [both compulsory
+ * English sections, ...the 2 chosen electives] (4 sections = 40 marks). The
+ * 30-minute timer begins at attempt creation. Resuming an in-progress attempt
+ * keeps its existing selection (no re-choosing).
+ *
+ * Staff exception: admin/super_admin/instructor may retake after already
+ * submitting. The existing row is reused (park current score+answers into
+ * bestSnapshot, wipe answers, reset to in_progress) — submit() then keeps
+ * whichever of the two attempts scores higher. Everyone else gets
+ * ALREADY_SUBMITTED.
  */
 
 import { NextRequest } from 'next/server';
 import { z } from 'zod';
 import { and, eq } from 'drizzle-orm';
 import { db } from '@/lib/db';
-import { testSections, testAttempts } from '@/lib/db/schema';
+import { testSections, testAttempts, testAnswers } from '@/lib/db/schema';
 import { safeApiHandler, ApiException } from '@/lib/api-utils';
 import { requireUser, requireTestForUser } from '@/lib/tests/route-helpers';
 import { effectiveWindowState, attemptDeadline } from '@/lib/tests/windows';
 import { isCompulsorySection } from '@/lib/tests/diagnostic';
+import { isTestStaff } from '@/lib/tests/access';
+import { serializeBestSnapshot, type BestSnapshot } from '@/lib/tests/best-snapshot';
 
 const bodySchema = z.object({
   windowId: z.number().int().positive(),
@@ -72,7 +80,42 @@ export async function POST(
         throw new ApiException('You are banned from this test. Contact an admin.', 403, 'ATTEMPT_BANNED');
       }
       if (existing.status === 'submitted') {
-        throw new ApiException('You have already submitted this test', 409, 'ALREADY_SUBMITTED');
+        if (!isTestStaff(user)) {
+          throw new ApiException('You have already submitted this test', 409, 'ALREADY_SUBMITTED');
+        }
+        // Staff retake: park the current row (by invariant, always the best
+        // score so far — submit() resolves and clears bestSnapshot every
+        // time) so submit() can restore it if this retake scores lower.
+        const priorAnswers = await db.select().from(testAnswers)
+          .where(eq(testAnswers.attemptId, existing.id));
+        const snapshot: BestSnapshot = {
+          totalScore: existing.totalScore ?? 0,
+          totalCorrect: existing.totalCorrect ?? 0,
+          totalWrong: existing.totalWrong ?? 0,
+          totalUnattempted: existing.totalUnattempted ?? 0,
+          sectionScores: existing.sectionScores ?? '[]',
+          submittedAt: existing.submittedAt?.getTime() ?? Date.now(),
+          answers: priorAnswers.map(a => ({
+            questionId: a.questionId, selectedKey: a.selectedKey, flagged: a.flagged,
+          })),
+        };
+        await db.delete(testAnswers).where(eq(testAnswers.attemptId, existing.id));
+        const [retaken] = await db.update(testAttempts).set({
+          status: 'in_progress',
+          startedAt: new Date(),
+          submittedAt: null,
+          tabLeaveCount: 0,
+          mode: window.mode,
+          windowId: window.id,
+          chosenSections: JSON.stringify(attemptedSectionIds),
+          bestSnapshot: serializeBestSnapshot(snapshot),
+        }).where(eq(testAttempts.id, existing.id)).returning();
+
+        return {
+          attemptId: retaken.id,
+          resumed: false,
+          deadline: attemptDeadline(retaken, window).getTime(),
+        };
       }
       if (existing.mode !== window.mode) {
         throw new ApiException(

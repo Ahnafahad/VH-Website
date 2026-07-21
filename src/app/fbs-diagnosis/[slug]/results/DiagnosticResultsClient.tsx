@@ -58,7 +58,9 @@ interface Props {
 }
 
 export default function DiagnosticResultsClient({ slug }: Props) {
-  const { status: sessionStatus } = useSession();
+  const { data: session, status: sessionStatus } = useSession();
+  const role = session?.user?.role;
+  const isStaff = role === 'admin' || role === 'super_admin' || role === 'instructor';
 
   const [core, setCore] = useState<ResultsPayload | null>(null);
   const [coreStatus, setCoreStatus] = useState<CoreStatus>('loading');
@@ -162,6 +164,16 @@ export default function DiagnosticResultsClient({ slug }: Props) {
             <span className="text-[var(--color-exam-gold)] font-medium">40</span>, across the 4 subjects you attempted.
           </p>
         </div>
+
+        {isStaff && (
+          <Link
+            href={`/fbs-diagnosis/${slug}/take`}
+            className="mt-3 inline-flex items-center gap-2 text-[var(--color-exam-gold)] hover:text-[var(--color-exam-gold-bright)] text-xs font-medium transition-colors"
+          >
+            <ArrowUpRight className="w-3.5 h-3.5" strokeWidth={1.5} />
+            Retake this assessment (staff only — your best score is kept)
+          </Link>
+        )}
       </div>
 
       {/* Core results scorecard (reused) */}

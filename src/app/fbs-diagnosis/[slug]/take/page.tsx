@@ -17,6 +17,8 @@ interface SectionsPayload {
   sections: SectionInfo[];
   alreadyStarted: boolean;
   alreadySubmitted: boolean;
+  /** Staff only: score of a prior submitted attempt they're allowed to retake. */
+  previousBestScore: number | null;
 }
 
 type PageState =
@@ -290,6 +292,12 @@ function SubjectPicker({ slug, data, onStarted, onError, onBanned, onSubmitted }
               ? ' un-chosen subject is'
               : ` other ${electives.length - 2} subjects are`} excluded entirely (not marked wrong).
           </p>
+          {data.previousBestScore != null && (
+            <p className="mt-4 rounded-xl border border-exam-gold/30 bg-exam-gold/10 px-4 py-3 text-sm text-exam-gold">
+              You&rsquo;ve already scored {data.previousBestScore}/40 on this assessment. Retaking is fine —
+              only your best score is kept.
+            </p>
+          )}
         </div>
 
         {/* Compulsory — locked in */}
