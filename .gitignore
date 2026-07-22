@@ -58,6 +58,9 @@ yarn-error.log*
 # vercel
 .vercel
 
+# local-only dev tools (never pushed — see scripts/dev-login.sh header)
+scripts/dev-login.sh
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
