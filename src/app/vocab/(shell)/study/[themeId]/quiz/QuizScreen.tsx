@@ -853,6 +853,7 @@ export default function QuizScreen({ themeId, themeIds, letterWordIds, sessionTy
   const [typedValue,     setTypedValue]     = useState('');
   const [result,      setResult]      = useState<AnswerResult | null>(null);
   const [submitting,  setSubmitting]  = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
   const [summary,     setSummary]     = useState<SummaryData | null>(null);
   const [totalEarned, setTotalEarned] = useState(0);
   const [direction,   setDirection]   = useState(1);
@@ -1135,6 +1136,7 @@ export default function QuizScreen({ themeId, themeIds, letterWordIds, sessionTy
 
     if (timerRef.current) { clearInterval(timerRef.current); timerRef.current = null; }
     setSubmitting(true);
+    setSubmitError(null);
 
     try {
       const res = await fetch('/api/vocab/quiz/answer', {
@@ -1150,6 +1152,10 @@ export default function QuizScreen({ themeId, themeIds, letterWordIds, sessionTy
       if (data.pointsEarned) setTotalEarned(p => p + data.pointsEarned);
       advanceAfterReveal(null);
     } catch {
+      // Network hiccup or dead connection — the answer was never recorded.
+      // Surface it instead of silently reverting to "Submit Answer" with no
+      // explanation, which reads to the student as the app just doing nothing.
+      setSubmitError("Couldn't submit — check your connection and try again.");
       setSubmitting(false);
     }
   }, [sessionId, current, submitting, answerPhase, typedValue, advanceAfterReveal, fb]);
@@ -1343,7 +1349,7 @@ export default function QuizScreen({ themeId, themeIds, letterWordIds, sessionTy
               <input
                 type="text"
                 value={typedValue}
-                onChange={(e) => setTypedValue(e.target.value)}
+                onChange={(e) => { setTypedValue(e.target.value); if (submitError) setSubmitError(null); }}
                 onKeyDown={(e) => { if (e.key === 'Enter') void handleTypedSubmit(); }}
                 disabled={answerPhase === 'revealed' || submitting}
                 placeholder="Type your answer…"
@@ -1459,6 +1465,20 @@ export default function QuizScreen({ themeId, themeIds, letterWordIds, sessionTy
           {submitting ? 'Checking…' : 'Submit Answer'}
           {!submitting && <IconConfirm />}
         </motion.button>
+      )}
+      {isTypedQ && answerPhase !== 'revealed' && submitError && (
+        <motion.p
+          initial={{ opacity: 0, y: 4 }}
+          animate={{ opacity: 1, y: 0 }}
+          role="alert"
+          style={{
+            marginTop: '0.5rem',
+            fontFamily: SANS, fontSize: '0.8125rem', fontWeight: 500,
+            color: C.red, textAlign: 'center',
+          }}
+        >
+          {submitError}
+        </motion.p>
       )}
 
       {/* ── Confirm button (springs up on selection) ─────────────────────── */}
