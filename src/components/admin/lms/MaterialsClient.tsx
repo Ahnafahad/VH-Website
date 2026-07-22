@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FileText, Link as LinkIcon, Trash2, Upload, ExternalLink, Plus, Paperclip } from 'lucide-react';
+import { FileText, Link as LinkIcon, Trash2, Upload, ExternalLink, Plus, Paperclip, Pencil } from 'lucide-react';
 import { uploadToR2 } from '@/lib/lms/upload-client';
 import { trackFeature } from '@/lib/analytics/tracker';
 import {
@@ -669,17 +669,112 @@ function LinkClassDialog({
   );
 }
 
+// ─── Edit material dialog ─────────────────────────────────────────────────────
+// Wires up the fields the PATCH endpoint already accepts (title, subject,
+// product, batch, docType, number, topic) but that the list UI never exposed.
+
+function EditMaterialDialog({
+  material, onClose, onSaved,
+}: {
+  material: Material;
+  onClose: () => void;
+  onSaved: (updated: Material) => void;
+}) {
+  const [title,   setTitle]   = useState(material.title);
+  const [subject, setSubject] = useState<SubjectKey>(material.subject as SubjectKey);
+  const [course,  setCourse]  = useState<CourseKey>(material.product as CourseKey);
+  const [batch,   setBatch]   = useState<BatchKey | null>(material.batch as BatchKey | null);
+  const [docType, setDocType] = useState<DocTypeKey>((material.docType as DocTypeKey | null) ?? DOC_TYPES[0].key);
+  const [number,  setNumber]  = useState(material.number ?? '');
+  const [topic,   setTopic]   = useState(material.topic ?? '');
+  const [saving,  setSaving]  = useState(false);
+  const [error,   setError]   = useState('');
+
+  const handleSave = async () => {
+    if (!title.trim()) { setError('Title is required'); return; }
+    setSaving(true); setError('');
+    try {
+      const res = await fetch(`/api/lms/admin/materials/${material.id}`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          title: title.trim(), subject, product: course, batch,
+          docType, number: number.trim() || null, topic: topic.trim() || null,
+        }),
+      });
+      if (!res.ok) throw new Error('Could not save these changes');
+      const updated = await res.json() as Material;
+      onSaved(updated);
+      onClose();
+    } catch (e) {
+      setError(e instanceof Error ? e.message : 'Failed');
+    } finally {
+      setSaving(false);
+    }
+  };
+
+  return (
+    <AnimatePresence>
+      <motion.div
+        variants={backdropV} initial="hidden" animate="visible" exit="exit"
+        onClick={onClose}
+        style={{ position: 'fixed', inset: 0, background: 'rgba(15,23,42,0.45)', zIndex: 50,
+          display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 20 }}
+      >
+        <motion.div
+          variants={modalV} initial="hidden" animate="visible" exit="exit"
+          onClick={e => e.stopPropagation()}
+          style={{ background: '#FFFFFF', borderRadius: 12, padding: 20, width: '100%', maxWidth: 460,
+            maxHeight: '90vh', overflowY: 'auto',
+            display: 'flex', flexDirection: 'column', gap: 14 }}
+        >
+          <p style={{ margin: 0, fontSize: 15, fontWeight: 700, color: SLATE }}>Edit material</p>
+          <div>
+            <FieldLabel>Title</FieldLabel>
+            <FieldInput value={title} onChange={e => setTitle(e.target.value)} />
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
+            <SubjectSelect value={subject} onChange={setSubject} />
+            <CourseSelect value={course} onChange={setCourse} />
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
+            <BatchSelect value={batch} onChange={setBatch} />
+            <DocTypeSelect value={docType} onChange={setDocType} />
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
+            <div>
+              <FieldLabel>Number</FieldLabel>
+              <FieldInput value={number} onChange={e => setNumber(e.target.value)} placeholder="e.g. 1.3 or 4" />
+            </div>
+            <div>
+              <FieldLabel>Topic</FieldLabel>
+              <FieldInput value={topic} onChange={e => setTopic(e.target.value)} placeholder="e.g. Advanced Sentence Structures" />
+            </div>
+          </div>
+          {error && <p style={{ fontSize: 12, color: RED, margin: 0 }}>{error}</p>}
+          <div style={{ display: 'flex', gap: 8, justifyContent: 'flex-end' }}>
+            <GhostBtn onClick={onClose}>Cancel</GhostBtn>
+            <PrimaryBtn onClick={handleSave} loading={saving}>Save</PrimaryBtn>
+          </div>
+        </motion.div>
+      </motion.div>
+    </AnimatePresence>
+  );
+}
+
 // ─── Materials list ───────────────────────────────────────────────────────────
 
 function MaterialsList({
-  materials, sessions, onDeleted, onLinked, onUpload,
+  materials, sessions, onDeleted, onLinked, onEdited, onUpload,
 }: {
   materials: Material[]; sessions: ClassSession[];
   onDeleted: (id: number) => void;
   onLinked: (materialId: number, classSessionId: number | null, renamed?: RenamedClass) => void;
+  onEdited: (updated: Material) => void;
   onUpload: () => void;
 }) {
   const [linkMaterial, setLinkMaterial] = useState<Material | null>(null);
+  const [editMaterial, setEditMaterial] = useState<Material | null>(null);
   const [deleteId, setDeleteId] = useState<number | null>(null);
   const [deleting, setDeleting] = useState(false);
   const [toast, setToast] = useState<string | null>(null);
@@ -809,6 +904,7 @@ function MaterialsList({
                 <a href={m.blobUrl} target="_blank" rel="noopener noreferrer">
                   <IconBtn icon={ExternalLink} label="Open" onClick={() => {}} />
                 </a>
+                <IconBtn icon={Pencil} label="Edit details" onClick={() => setEditMaterial(m)} />
                 <IconBtn icon={Paperclip} label="Link to class" onClick={() => setLinkMaterial(m)} />
                 <IconBtn icon={Trash2} label="Delete" danger onClick={() => setDeleteId(m.id)} />
               </div>
@@ -829,6 +925,13 @@ function MaterialsList({
           sessions={sessions}
           onClose={() => setLinkMaterial(null)}
           onLinked={onLinked}
+        />
+      )}
+      {editMaterial && (
+        <EditMaterialDialog
+          material={editMaterial}
+          onClose={() => setEditMaterial(null)}
+          onSaved={onEdited}
         />
       )}
       <Toast message={toast} />
@@ -852,6 +955,10 @@ export default function MaterialsClient({ initialMaterials, sessions: initialSes
 
   const handleDeleted = (id: number) => {
     setMaterials(prev => prev.filter(m => m.id !== id));
+  };
+
+  const handleEdited = (updated: Material) => {
+    setMaterials(prev => prev.map(m => m.id === updated.id ? { ...m, ...updated } : m));
   };
 
   const handleLinked = (materialId: number, classSessionId: number | null, renamed?: RenamedClass) => {
@@ -891,7 +998,7 @@ export default function MaterialsClient({ initialMaterials, sessions: initialSes
         onChange={(id) => setTab(id as 'list' | 'upload' | 'link')}
       />
       <AnimatePresence mode="wait">
-        {tab === 'list'   && <MaterialsList key="list" materials={materials} sessions={sessions} onDeleted={handleDeleted} onLinked={handleLinked} onUpload={() => setTab('upload')} />}
+        {tab === 'list'   && <MaterialsList key="list" materials={materials} sessions={sessions} onDeleted={handleDeleted} onLinked={handleLinked} onEdited={handleEdited} onUpload={() => setTab('upload')} />}
         {tab === 'upload' && <UploadPdfTab key="upload" sessions={sessions} initialMaterials={initialMaterials} onUploaded={handleAdded} />}
         {tab === 'link'   && <AddLinkTab   key="link"   sessions={sessions} onAdded={handleAdded} />}
       </AnimatePresence>
