@@ -2,7 +2,7 @@
   "slug": "fbs-diagnostic-3",
   "title": "FBS Diagnostic — Assessment 3",
   "durationMinutes": 30,
-  "totalMarks": 50,
+  "totalMarks": 60,
   "sections": [
     {
       "order": 1,
@@ -746,6 +746,155 @@
           ],
           "correctKey": "D",
           "explanation": "Salaries outstanding are amounts owed but not yet paid at year end, so they are a current liability on the balance sheet. Although the salary is also an expense for the year, the unpaid portion specifically represents an obligation the business still owes."
+        }
+      ]
+    },
+    {
+      "order": 6,
+      "title": "Mathematics",
+      "marksPerCorrect": 1,
+      "penaltyPerWrong": 0,
+      "thresholdPercent": null,
+      "questions": [
+        {
+          "number": 51,
+          "order": 1,
+          "type": "mcq",
+          "stem": "A square matrix whose determinant is zero is called—",
+          "options": [
+            {"key":"A","text":"Singular"},
+            {"key":"B","text":"Symmetric"},
+            {"key":"C","text":"Orthogonal"},
+            {"key":"D","text":"Identity"}
+          ],
+          "correctKey": "A",
+          "explanation": "A matrix with a determinant of zero has no inverse and is called singular. Symmetric ($A^T=A$), orthogonal ($A^TA=I$), and identity matrices are defined by different conditions and are not generally singular."
+        },
+        {
+          "number": 52,
+          "order": 2,
+          "type": "mcq",
+          "stem": "What is the radius of the circle $x^2+y^2-6x+8y+9=0$?",
+          "options": [
+            {"key":"A","text":"$4$"},
+            {"key":"B","text":"$5$"},
+            {"key":"C","text":"$3$"},
+            {"key":"D","text":"$16$"}
+          ],
+          "correctKey": "A",
+          "explanation": "Completing the square gives $(x-3)^2+(y+4)^2=9+16-9=16$, so the radius is $\\sqrt{16}=4$. Option D is the squared radius, not the radius itself, and B and C come from miscalculating the constant."
+        },
+        {
+          "number": 53,
+          "order": 3,
+          "type": "mcq",
+          "stem": "If $\\tan\\theta=-1$ and $\\theta$ lies in the second quadrant, then $\\theta=?$",
+          "options": [
+            {"key":"A","text":"$135^\\circ$"},
+            {"key":"B","text":"$45^\\circ$"},
+            {"key":"C","text":"$225^\\circ$"},
+            {"key":"D","text":"$315^\\circ$"}
+          ],
+          "correctKey": "A",
+          "explanation": "The reference angle for $\\tan\\theta=1$ is $45^\\circ$. Since $\\theta$ must lie in the second quadrant, $\\theta=180^\\circ-45^\\circ=135^\\circ$, where tangent is indeed negative. The other options fall in the wrong quadrant."
+        },
+        {
+          "number": 54,
+          "order": 4,
+          "type": "mcq",
+          "stem": "If $y=x^2\\ln x$, then $\\dfrac{dy}{dx}=?$",
+          "options": [
+            {"key":"A","text":"$2x\\ln x+x$"},
+            {"key":"B","text":"$x\\ln x+x$"},
+            {"key":"C","text":"$2x\\ln x$"},
+            {"key":"D","text":"$\\ln x+x$"}
+          ],
+          "correctKey": "A",
+          "explanation": "Using the product rule, $\\dfrac{dy}{dx}=2x\\ln x+x^2\\cdot\\dfrac{1}{x}=2x\\ln x+x$. The other options drop the derivative of one factor or simplify $x^2\\cdot\\frac{1}{x}$ incorrectly."
+        },
+        {
+          "number": 55,
+          "order": 5,
+          "type": "mcq",
+          "stem": "What is the value of $\\displaystyle\\int_0^1(3x^2+2x)\\,dx$?",
+          "options": [
+            {"key":"A","text":"$2$"},
+            {"key":"B","text":"$1$"},
+            {"key":"C","text":"$3$"},
+            {"key":"D","text":"$5$"}
+          ],
+          "correctKey": "A",
+          "explanation": "Integrating gives $\\left[x^3+x^2\\right]_0^1=(1+1)-(0+0)=2$. The other options come from integrating only one term or evaluating the limits incorrectly."
+        },
+        {
+          "number": 56,
+          "order": 6,
+          "type": "mcq",
+          "stem": "In how many ways can 5 people be arranged in a row so that 2 particular people always sit together?",
+          "options": [
+            {"key":"A","text":"$48$"},
+            {"key":"B","text":"$24$"},
+            {"key":"C","text":"$120$"},
+            {"key":"D","text":"$60$"}
+          ],
+          "correctKey": "A",
+          "explanation": "Treat the 2 people who must sit together as one block, giving 4 units to arrange in $4!=24$ ways, and the pair can switch places internally in $2!=2$ ways, so the total is $24\\times2=48$. Option C ($5!$) ignores the restriction entirely."
+        },
+        {
+          "number": 57,
+          "order": 7,
+          "type": "mcq",
+          "stem": "What is the value of $i^{102}$ (where $i=\\sqrt{-1}$)?",
+          "options": [
+            {"key":"A","text":"$-1$"},
+            {"key":"B","text":"$1$"},
+            {"key":"C","text":"$i$"},
+            {"key":"D","text":"$-i$"}
+          ],
+          "correctKey": "A",
+          "explanation": "Powers of $i$ repeat every 4: $i^{100}=(i^4)^{25}=1$, so $i^{102}=i^{100}\\cdot i^2=1\\times(-1)=-1$. The other options come from stopping at the wrong point in the 4-cycle."
+        },
+        {
+          "number": 58,
+          "order": 8,
+          "type": "mcq",
+          "stem": "The sum of the first 20 terms of an A.P. whose first term is 3 and common difference is 4 is—",
+          "options": [
+            {"key":"A","text":"$820$"},
+            {"key":"B","text":"$800$"},
+            {"key":"C","text":"$780$"},
+            {"key":"D","text":"$840$"}
+          ],
+          "correctKey": "A",
+          "explanation": "Using $S_n=\\dfrac{n}{2}\\left[2a+(n-1)d\\right]$ with $a=3$, $d=4$, $n=20$: $S_{20}=10\\left[6+19\\times4\\right]=10\\times82=820$. The other options come from a slightly wrong term count or arithmetic slip."
+        },
+        {
+          "number": 59,
+          "order": 9,
+          "type": "mcq",
+          "stem": "If the roots of $x^2-7x+k=0$ are equal, what is the value of $k$?",
+          "options": [
+            {"key":"A","text":"$\\dfrac{49}{4}$"},
+            {"key":"B","text":"$\\dfrac{7}{4}$"},
+            {"key":"C","text":"$\\dfrac{49}{2}$"},
+            {"key":"D","text":"$7$"}
+          ],
+          "correctKey": "A",
+          "explanation": "Equal roots require the discriminant to be zero: $(-7)^2-4(1)(k)=0$, so $49-4k=0$ and $k=\\dfrac{49}{4}$. The other options come from omitting the factor of 4 or dividing incorrectly."
+        },
+        {
+          "number": 60,
+          "order": 10,
+          "type": "mcq",
+          "stem": "What is the equation of the straight line passing through $(2,-3)$ with slope $4$?",
+          "options": [
+            {"key":"A","text":"$4x-y-11=0$"},
+            {"key":"B","text":"$4x-y+11=0$"},
+            {"key":"C","text":"$4x+y-11=0$"},
+            {"key":"D","text":"$4x-y-5=0$"}
+          ],
+          "correctKey": "A",
+          "explanation": "Using point-slope form: $y-(-3)=4(x-2)$, which simplifies to $y+3=4x-8$, then $4x-y-11=0$. The other options have sign errors in the constant or the $y$ term."
         }
       ]
     }

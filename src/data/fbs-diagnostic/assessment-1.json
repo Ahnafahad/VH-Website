@@ -760,21 +760,21 @@
           "number": 51,
           "order": 1,
           "type": "mcq",
-          "stem": "If $$A=\\begin{pmatrix}5&2\\\\-3&1\\end{pmatrix},$$ then $A^{-1}=?$",
+          "stem": "If $A=\\begin{pmatrix}5&2\\\\-3&1\\end{pmatrix}$, then $A^{-1}=?$",
           "options": [
-            {"key":"A","text":"$\\displaystyle \\frac{1}{5}\\begin{pmatrix}3&-1\\\\1&2\\end{pmatrix}$"},
-            {"key":"B","text":"$\\displaystyle -\\frac{1}{11}\\begin{pmatrix}-1&2\\\\5&-3\\end{pmatrix}$"},
-            {"key":"C","text":"$\\displaystyle \\frac{1}{11}\\begin{pmatrix}1&-2\\\\3&5\\end{pmatrix}$"},
-            {"key":"D","text":"$\\displaystyle \\frac{1}{3}\\begin{pmatrix}1&-2\\\\3&-1\\end{pmatrix}$"}
+            {"key":"A","text":"$\\dfrac{1}{5}\\begin{pmatrix}3&-1\\\\1&2\\end{pmatrix}$"},
+            {"key":"B","text":"$-\\dfrac{1}{11}\\begin{pmatrix}-1&2\\\\5&-3\\end{pmatrix}$"},
+            {"key":"C","text":"$\\dfrac{1}{11}\\begin{pmatrix}1&-2\\\\3&5\\end{pmatrix}$"},
+            {"key":"D","text":"$\\dfrac{1}{3}\\begin{pmatrix}1&-2\\\\3&-1\\end{pmatrix}$"}
           ],
           "correctKey": "C",
-          "explanation": "For $A=\\begin{pmatrix}a&b\\\\c&d\\end{pmatrix}$, $A^{-1}=\\frac{1}{ad-bc}\\begin{pmatrix}d&-b\\\\-c&a\\end{pmatrix}$. Here $\\det A = 5(1)-2(-3)=11$, so $A^{-1}=\\frac{1}{11}\\begin{pmatrix}1&-2\\\\3&5\\end{pmatrix}$."
+          "explanation": "For a 2×2 matrix $\\begin{pmatrix}a&b\\\\c&d\\end{pmatrix}$, the inverse is $\\dfrac{1}{ad-bc}\\begin{pmatrix}d&-b\\\\-c&a\\end{pmatrix}$. Here $ad-bc=5(1)-2(-3)=11$, giving $A^{-1}=\\dfrac{1}{11}\\begin{pmatrix}1&-2\\\\3&5\\end{pmatrix}$. The other options use the wrong determinant or misplace the signs in the adjugate."
         },
         {
           "number": 52,
           "order": 2,
           "type": "mcq",
-          "stem": "What is the area of the circle with equation $$x^2+y^2-8x+6y+16=0$$ (in square units)?",
+          "stem": "What is the area of the circle with equation $x^2+y^2-8x+6y+16=0$ (in square units)?",
           "options": [
             {"key":"A","text":"$9.43$"},
             {"key":"B","text":"$9\\pi$"},
@@ -782,7 +782,7 @@
             {"key":"D","text":"$\\pi$"}
           ],
           "correctKey": "B",
-          "explanation": "Completing the square: $(x-4)^2+(y+3)^2=9$, so the radius is $3$ and the area is $\\pi r^2 = 9\\pi$ square units."
+          "explanation": "Completing the square gives $(x-4)^2+(y+3)^2=9$, so the radius is $3$. The area is $\\pi r^2=9\\pi$ square units. The other options come from misreading the constant term or using the wrong formula."
         },
         {
           "number": 53,
@@ -790,19 +790,19 @@
           "type": "mcq",
           "stem": "If $y=\\sqrt{\\sec x}$, then $\\dfrac{dy}{dx}=?$",
           "options": [
-            {"key":"A","text":"$\\displaystyle \\frac{y\\tan x}{2}$"},
-            {"key":"B","text":"$\\displaystyle \\frac{\\tan x}{2y}$"},
+            {"key":"A","text":"$\\dfrac{y\\tan x}{2}$"},
+            {"key":"B","text":"$\\dfrac{\\tan x}{2y}$"},
             {"key":"C","text":"$2\\cos x$"},
-            {"key":"D","text":"$\\displaystyle \\frac{\\cot x}{2}$"}
+            {"key":"D","text":"$\\dfrac{\\cot x}{2}$"}
           ],
           "correctKey": "A",
-          "explanation": "$y=(\\sec x)^{1/2}$, so $\\dfrac{dy}{dx}=\\frac{1}{2}(\\sec x)^{-1/2}\\sec x\\tan x=\\frac{1}{2}\\sqrt{\\sec x}\\,\\tan x=\\frac{y\\tan x}{2}$."
+          "explanation": "Writing $y=(\\sec x)^{1/2}$ and differentiating gives $\\dfrac{dy}{dx}=\\dfrac{1}{2}(\\sec x)^{-1/2}\\sec x\\tan x=\\dfrac{1}{2}\\sqrt{\\sec x}\\,\\tan x=\\dfrac{y\\tan x}{2}$. The other options either invert the relationship with $y$ or simplify incorrectly."
         },
         {
           "number": 54,
           "order": 4,
           "type": "mcq",
-          "stem": "If the value of one root of the quadratic equation $$x^2+2x-p=0$$ is twice the other, which are the roots of the equation?",
+          "stem": "If the value of one root of the quadratic equation $x^2+2x-p=0$ is twice the other, which are the roots of the equation?",
           "options": [
             {"key":"A","text":"$-\\dfrac{2}{3},-\\dfrac{1}{3}$"},
             {"key":"B","text":"$-\\dfrac{2}{3},-\\dfrac{4}{3}$"},
@@ -810,13 +810,13 @@
             {"key":"D","text":"$\\dfrac{2}{3},\\dfrac{4}{3}$"}
           ],
           "correctKey": "B",
-          "explanation": "Let the roots be $r$ and $2r$. Sum of roots $=3r=-2 \\Rightarrow r=-\\frac{2}{3}$, so the roots are $-\\frac{2}{3}$ and $-\\frac{4}{3}$."
+          "explanation": "Let the roots be $r$ and $2r$. Their sum equals $-2$ (from $-b/a$), so $3r=-2$ and $r=-\\dfrac{2}{3}$, making the other root $2r=-\\dfrac{4}{3}$. The remaining options use the wrong sum or sign."
         },
         {
           "number": 55,
           "order": 5,
           "type": "mcq",
-          "stem": "Which is the vertex of the parabola $$y^2+2y+4x-10=0?$$",
+          "stem": "Which is the vertex of the parabola $y^2+2y+4x-10=0$?",
           "options": [
             {"key":"A","text":"$\\left(-\\dfrac{9}{4},1\\right)$"},
             {"key":"B","text":"$\\left(\\dfrac{11}{4},-1\\right)$"},
@@ -824,13 +824,13 @@
             {"key":"D","text":"$\\left(\\dfrac{9}{4},-1\\right)$"}
           ],
           "correctKey": "B",
-          "explanation": "Completing the square: $(y+1)^2=-4x+11=-4\\left(x-\\frac{11}{4}\\right)$, which is of the form $(y-k)^2=4p(x-h)$ with vertex $\\left(\\frac{11}{4},-1\\right)$."
+          "explanation": "Completing the square in $y$ gives $(y+1)^2=-4x+11=-4\\left(x-\\dfrac{11}{4}\\right)$, so the vertex is at $\\left(\\dfrac{11}{4},-1\\right)$. The other options come from sign errors while completing the square."
         },
         {
           "number": 56,
           "order": 6,
           "type": "mcq",
-          "stem": "What is the general solution of the equation $$\\cos 2\\theta=\\frac{1}{\\sqrt{2}}?$$",
+          "stem": "What is the general solution of the equation $\\cos 2\\theta=\\dfrac{1}{\\sqrt{2}}$?",
           "options": [
             {"key":"A","text":"$2n\\pi\\pm\\dfrac{\\pi}{8}$"},
             {"key":"B","text":"$n\\pi\\pm\\dfrac{\\pi}{3}$"},
@@ -838,13 +838,13 @@
             {"key":"D","text":"$n\\pi\\pm\\dfrac{\\pi}{8}$"}
           ],
           "correctKey": "D",
-          "explanation": "$\\cos 2\\theta=\\cos\\frac{\\pi}{4}\\Rightarrow 2\\theta=2n\\pi\\pm\\frac{\\pi}{4}\\Rightarrow \\theta=n\\pi\\pm\\frac{\\pi}{8}$."
+          "explanation": "Since $\\cos 2\\theta=\\cos\\dfrac{\\pi}{4}$, the general solution is $2\\theta=2n\\pi\\pm\\dfrac{\\pi}{4}$, so $\\theta=n\\pi\\pm\\dfrac{\\pi}{8}$. The other options forget to divide the whole solution by 2 or apply it to the wrong angle."
         },
         {
           "number": 57,
           "order": 7,
           "type": "mcq",
-          "stem": "Which is the value of $$\\int_0^1 e^{-2x}\\,dx?$$",
+          "stem": "Which is the value of $\\displaystyle\\int_0^1 e^{-2x}\\,dx$?",
           "options": [
             {"key":"A","text":"$2(1-e^{-2})$"},
             {"key":"B","text":"$2(e^{-2}-1)$"},
@@ -852,13 +852,13 @@
             {"key":"D","text":"$\\dfrac{1}{2}(e^{-2}-1)$"}
           ],
           "correctKey": "C",
-          "explanation": "$\\int_0^1 e^{-2x}\\,dx=\\left[-\\frac{1}{2}e^{-2x}\\right]_0^1=\\frac{1}{2}(1-e^{-2})$."
+          "explanation": "Integrating gives $\\left[-\\dfrac{1}{2}e^{-2x}\\right]_0^1=-\\dfrac{1}{2}e^{-2}+\\dfrac{1}{2}=\\dfrac{1}{2}(1-e^{-2})$. The other options misplace the sign or the factor of $\\dfrac{1}{2}$."
         },
         {
           "number": 58,
           "order": 8,
           "type": "mcq",
-          "stem": "For what value of $k$ will the straight lines $$2x-y+7=0$$ and $$3x+ky-5=0$$ be perpendicular to each other?",
+          "stem": "For what value of $k$ will the straight lines $2x-y+7=0$ and $3x+ky-5=0$ be perpendicular to each other?",
           "options": [
             {"key":"A","text":"$-6$"},
             {"key":"B","text":"$6$"},
@@ -866,13 +866,13 @@
             {"key":"D","text":"$\\dfrac{1}{6}$"}
           ],
           "correctKey": "B",
-          "explanation": "The first line has slope $2$; the second has slope $-\\frac{3}{k}$. Perpendicular lines satisfy $2\\cdot\\left(-\\frac{3}{k}\\right)=-1$, giving $k=6$."
+          "explanation": "The first line has slope $2$, and the second has slope $-\\dfrac{3}{k}$. Perpendicularity requires $2\\times\\left(-\\dfrac{3}{k}\\right)=-1$, which gives $k=6$. The other options invert or negate the fraction incorrectly."
         },
         {
           "number": 59,
           "order": 9,
           "type": "mcq",
-          "stem": "Which of the following is the equation of the straight line that passes through the point $(-3,1)$ and is perpendicular to the line $$5x-2y+7=0?$$",
+          "stem": "Which of the following is the equation of the straight line that passes through the point $(-3,1)$ and is perpendicular to the line $5x-2y+7=0$?",
           "options": [
             {"key":"A","text":"$2x-5y+1=0$"},
             {"key":"B","text":"$2x+5y+1=0$"},
@@ -880,13 +880,13 @@
             {"key":"D","text":"$2x-5y-1=0$"}
           ],
           "correctKey": "B",
-          "explanation": "The given line has slope $\\frac{5}{2}$, so a perpendicular line has slope $-\\frac{2}{5}$. Through $(-3,1)$: $y-1=-\\frac{2}{5}(x+3) \\Rightarrow 2x+5y+1=0$."
+          "explanation": "The given line has slope $\\dfrac{5}{2}$, so the perpendicular slope is $-\\dfrac{2}{5}$. Using point $(-3,1)$: $y-1=-\\dfrac{2}{5}(x+3)$, which simplifies to $2x+5y+1=0$. The other options have sign errors in the slope or the constant term."
         },
         {
           "number": 60,
           "order": 10,
           "type": "mcq",
-          "stem": "Which is the equation of the circle whose center is at $(4,5)$ and passes through the center of the circle $$x^2+y^2+4x+6y-12=0?$$",
+          "stem": "Which is the equation of the circle whose center is at $(4,5)$ and passes through the center of the circle $x^2+y^2+4x+6y-12=0$?",
           "options": [
             {"key":"A","text":"$(x-4)^2+(y-5)^2=100$"},
             {"key":"B","text":"$(x+4)^2+(y+5)^2=100$"},
@@ -894,7 +894,7 @@
             {"key":"D","text":"$(x+4)^2+(y-5)^2=64$"}
           ],
           "correctKey": "A",
-          "explanation": "The given circle has center $(-2,-3)$. The radius of the new circle is the distance from $(4,5)$ to $(-2,-3)$: $\\sqrt{6^2+8^2}=10$, so its equation is $(x-4)^2+(y-5)^2=100$."
+          "explanation": "The given circle's center is $(-2,-3)$ (from completing the square). The radius of the new circle is the distance from $(4,5)$ to $(-2,-3)$, which is $\\sqrt{6^2+8^2}=10$. So the equation is $(x-4)^2+(y-5)^2=100$. The other options use the wrong center coordinates or radius."
         }
       ]
     }

@@ -2,7 +2,7 @@
   "slug": "fbs-diagnostic-2",
   "title": "FBS Diagnostic — Assessment 2",
   "durationMinutes": 30,
-  "totalMarks": 50,
+  "totalMarks": 60,
   "sections": [
     {
       "order": 1,
@@ -746,6 +746,155 @@
           ],
           "correctKey": "C",
           "explanation": "Net profit belongs to the owner and is transferred to the capital account, increasing it. It does not go to cash or bank accounts, which record only actual money movements."
+        }
+      ]
+    },
+    {
+      "order": 6,
+      "title": "Mathematics",
+      "marksPerCorrect": 1,
+      "penaltyPerWrong": 0,
+      "thresholdPercent": null,
+      "questions": [
+        {
+          "number": 51,
+          "order": 1,
+          "type": "mcq",
+          "stem": "If ${}^{18}C_r={}^{18}C_{r+2}$, then what is the value of $r$?",
+          "options": [
+            {"key":"A","text":"$8$"},
+            {"key":"B","text":"$7$"},
+            {"key":"C","text":"$6$"},
+            {"key":"D","text":"$5$"}
+          ],
+          "correctKey": "A",
+          "explanation": "Since ${}^nC_r={}^nC_{n-r}$, the equation ${}^{18}C_r={}^{18}C_{r+2}$ holds when $r+2=18-r$, giving $2r=16$ and $r=8$. The other options do not satisfy this identity."
+        },
+        {
+          "number": 52,
+          "order": 2,
+          "type": "mcq",
+          "stem": "If $\\sin\\theta+\\cos\\theta=\\sqrt{2}$, then $\\theta=?$",
+          "options": [
+            {"key":"A","text":"$30^\\circ$"},
+            {"key":"B","text":"$45^\\circ$"},
+            {"key":"C","text":"$60^\\circ$"},
+            {"key":"D","text":"$75^\\circ$"}
+          ],
+          "correctKey": "B",
+          "explanation": "Since $\\sin\\theta+\\cos\\theta=\\sqrt{2}\\sin(\\theta+45^\\circ)$, the maximum possible value $\\sqrt{2}$ is reached only when $\\sin(\\theta+45^\\circ)=1$, i.e. at $\\theta=45^\\circ$. No other angle among the options achieves this maximum."
+        },
+        {
+          "number": 53,
+          "order": 3,
+          "type": "mcq",
+          "stem": "If for two matrices $A$ and $B$, $AB=BA$, then $A$ and $B$ are said to be—",
+          "options": [
+            {"key":"A","text":"Commuting"},
+            {"key":"B","text":"Singular"},
+            {"key":"C","text":"Orthogonal"},
+            {"key":"D","text":"Symmetric"}
+          ],
+          "correctKey": "A",
+          "explanation": "Matrices that satisfy $AB=BA$ are called commuting matrices, since the order of multiplication does not affect the product. Singular refers to a zero determinant, orthogonal to $A^TA=I$, and symmetric to $A=A^T$ — none of which describe this property."
+        },
+        {
+          "number": 54,
+          "order": 4,
+          "type": "mcq",
+          "stem": "Which of the following is not a quadratic equation?",
+          "options": [
+            {"key":"A","text":"$(x+2)^2=2(x+3)$"},
+            {"key":"B","text":"$x^3-x^2+2x+1=(x+1)^3$"},
+            {"key":"C","text":"$x^2+3x=(-1)(1-3x)^2$"},
+            {"key":"D","text":"$(x+2)(x-1)=x^2-2x-3$"}
+          ],
+          "correctKey": "D",
+          "explanation": "Expanding option D gives $x^2+x-2=x^2-2x-3$, and the $x^2$ terms cancel, leaving the linear equation $3x+1=0$ — so it is not quadratic. Options A, B and C all simplify to genuine quadratics ($x^2+2x-2=0$, $4x^2+x=0$, and $10x^2-3x+1=0$ respectively) once expanded."
+        },
+        {
+          "number": 55,
+          "order": 5,
+          "type": "mcq",
+          "stem": "If the line $y=mx-7\\sqrt{3}$ is normal to the hyperbola $\\dfrac{x^2}{24}-\\dfrac{y^2}{18}=1$, then a value of $m$ is—",
+          "options": [
+            {"key":"A","text":"$\\dfrac{2}{\\sqrt{5}}$"},
+            {"key":"B","text":"$\\dfrac{\\sqrt{5}}{2}$"},
+            {"key":"C","text":"$\\dfrac{3}{\\sqrt{5}}$"},
+            {"key":"D","text":"$\\dfrac{5}{\\sqrt{3}}$"}
+          ],
+          "correctKey": "A",
+          "explanation": "For the hyperbola $\\dfrac{x^2}{a^2}-\\dfrac{y^2}{b^2}=1$, a normal $y=mx+c$ satisfies $c^2=\\dfrac{m^2(a^2+b^2)^2}{a^2-m^2b^2}$. With $a^2=24$, $b^2=18$ and $c=-7\\sqrt{3}$ (so $c^2=147$), solving gives $m^2=\\dfrac{4}{5}$, hence $m=\\dfrac{2}{\\sqrt{5}}$. The other options do not satisfy this normal condition."
+        },
+        {
+          "number": 56,
+          "order": 6,
+          "type": "mcq",
+          "stem": "What is the value of ${}^{7}P_3$?",
+          "options": [
+            {"key":"A","text":"$210$"},
+            {"key":"B","text":"$350$"},
+            {"key":"C","text":"$120$"},
+            {"key":"D","text":"$840$"}
+          ],
+          "correctKey": "A",
+          "explanation": "${}^{7}P_3=7\\times6\\times5=210$, the number of ways to arrange 3 of 7 distinct items in order. The other options come from multiplying the wrong sequence of factors or confusing permutation with combination."
+        },
+        {
+          "number": 57,
+          "order": 7,
+          "type": "mcq",
+          "stem": "What is the modulus of the complex number $3+4i$?",
+          "options": [
+            {"key":"A","text":"$5$"},
+            {"key":"B","text":"$7$"},
+            {"key":"C","text":"$25$"},
+            {"key":"D","text":"$1$"}
+          ],
+          "correctKey": "A",
+          "explanation": "The modulus of $a+bi$ is $\\sqrt{a^2+b^2}$, so here it is $\\sqrt{3^2+4^2}=\\sqrt{9+16}=\\sqrt{25}=5$. Option C is the value before taking the square root, and B and D do not follow from the formula."
+        },
+        {
+          "number": 58,
+          "order": 8,
+          "type": "mcq",
+          "stem": "A square matrix $A$ for which $A^T=A$ is called—",
+          "options": [
+            {"key":"A","text":"Symmetric"},
+            {"key":"B","text":"Skew-symmetric"},
+            {"key":"C","text":"Orthogonal"},
+            {"key":"D","text":"Singular"}
+          ],
+          "correctKey": "A",
+          "explanation": "A matrix equal to its own transpose ($A^T=A$) is called symmetric. Skew-symmetric requires $A^T=-A$, orthogonal requires $A^TA=I$, and singular refers to a zero determinant — none of which match this condition."
+        },
+        {
+          "number": 59,
+          "order": 9,
+          "type": "mcq",
+          "stem": "The 10th term of a G.P. whose first term is $5$ and common ratio is $2$ is—",
+          "options": [
+            {"key":"A","text":"$2560$"},
+            {"key":"B","text":"$1280$"},
+            {"key":"C","text":"$5120$"},
+            {"key":"D","text":"$1024$"}
+          ],
+          "correctKey": "A",
+          "explanation": "The $n$th term of a G.P. is $ar^{n-1}$, so the 10th term is $5\\times2^{9}=5\\times512=2560$. The other options come from using the wrong power of $r$ or the wrong multiple of the first term."
+        },
+        {
+          "number": 60,
+          "order": 10,
+          "type": "mcq",
+          "stem": "What is the determinant of the $3\\times3$ identity matrix?",
+          "options": [
+            {"key":"A","text":"$1$"},
+            {"key":"B","text":"$0$"},
+            {"key":"C","text":"$3$"},
+            {"key":"D","text":"$-1$"}
+          ],
+          "correctKey": "A",
+          "explanation": "The identity matrix has $1$s on the diagonal and $0$s elsewhere, so its determinant is always $1$, regardless of size. A determinant of $0$ would instead mean the matrix is singular."
         }
       ]
     }
