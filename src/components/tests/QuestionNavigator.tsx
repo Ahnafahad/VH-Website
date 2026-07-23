@@ -106,7 +106,10 @@ export default function QuestionNavigator(props: QuestionNavigatorProps) {
     return (
       <>
         {/* Bottom bar toggle */}
-        <div className="fixed bottom-0 left-0 right-0 z-30 bg-exam-surface border-t border-exam-border safe-area-bottom">
+        <div
+          className="fixed bottom-0 left-0 right-0 z-30 bg-exam-surface border-t border-exam-border"
+          style={{ paddingBottom: 'env(safe-area-inset-bottom)' }}
+        >
           <div
             className="absolute inset-x-0 top-0 h-px pointer-events-none"
             style={{ background: 'linear-gradient(90deg, transparent, var(--color-exam-gold) 50%, transparent)', opacity: 0.35 }}
@@ -140,7 +143,7 @@ export default function QuestionNavigator(props: QuestionNavigatorProps) {
               initial="hidden"
               animate="visible"
               exit="exit"
-              className="fixed bottom-[52px] left-0 right-0 z-20 bg-exam-surface border-t border-exam-border
+              className="fixed bottom-[calc(52px_+_env(safe-area-inset-bottom))] left-0 right-0 z-20 bg-exam-surface border-t border-exam-border
                 max-h-[60vh] overflow-y-auto p-4"
             >
               <ChipGrid {...props} />
