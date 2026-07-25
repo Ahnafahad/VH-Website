@@ -65,10 +65,11 @@ export async function POST(request: NextRequest) {
           'Authorization': `Bearer ${deepSeekKey}`,
         },
         body: JSON.stringify({
-          model:    'deepseek-chat',
+          model:    'deepseek-v4-flash',
           messages: [{ role: 'user', content: prompt }],
           temperature: 0.7,
           max_tokens:  2048,
+          thinking:    { type: 'disabled' },
         }),
       });
 

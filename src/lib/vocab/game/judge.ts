@@ -174,10 +174,11 @@ async function callDeepSeekJudge(prompt: string): Promise<JudgeResult> {
         'Authorization': `Bearer ${apiKey}`,
       },
       body: JSON.stringify({
-        model:       'deepseek-chat',
+        model:       'deepseek-v4-flash',
         messages:    [{ role: 'user', content: prompt }],
         temperature: 0.2,
         max_tokens:  600,
+        thinking:    { type: 'disabled' },
       }),
       signal: controller.signal,
     });

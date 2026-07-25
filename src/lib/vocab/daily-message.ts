@@ -133,10 +133,11 @@ Rules:
       'Authorization': `Bearer ${apiKey}`,
     },
     body: JSON.stringify({
-      model:       'deepseek-chat',
+      model:       'deepseek-v4-flash',
       messages:    [{ role: 'user', content: prompt }],
       temperature: 0.9,
       max_tokens:  120,
+      thinking:    { type: 'disabled' },
     }),
   });
 
