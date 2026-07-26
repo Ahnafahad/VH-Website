@@ -19,6 +19,12 @@ export const users = sqliteTable('users', {
   isTeaching:        integer('is_teaching', { mode: 'boolean' }).default(false),
   onboardingSkips:   integer('onboarding_skips').notNull().default(0),
   onboardedAt:       integer('onboarded_at', { mode: 'timestamp' }),
+  // Site-wide push notifications (distinct from the vocab-specific
+  // vocab_user_progress.pushSubscription, which is LexiCore-only).
+  pushSubscription:    text('push_subscription'),
+  notifyMaterials:     integer('notify_materials', { mode: 'boolean' }).notNull().default(true),
+  notifyAnnouncements: integer('notify_announcements', { mode: 'boolean' }).notNull().default(true),
+  notifyCommentReply:  integer('notify_comment_reply', { mode: 'boolean' }).notNull().default(true),
   createdAt: integer('created_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
   updatedAt: integer('updated_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
 });

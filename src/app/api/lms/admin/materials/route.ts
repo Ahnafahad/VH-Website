@@ -15,6 +15,7 @@ import { requireStaff } from '@/lib/tests/route-helpers';
 import { LMS_SUBJECTS } from '@/lib/lms/constants';
 import { resolveFileUrl } from '@/lib/storage/r2';
 import { DOC_TYPES } from '@/lib/naming/taxonomy';
+import { notifyStudentsForContent } from '@/lib/notifications/push';
 
 export async function GET() {
   return safeApiHandler(async () => {
@@ -101,6 +102,19 @@ export async function POST(req: NextRequest) {
         .values({ sessionId, materialId: created.id })
         .onConflictDoNothing();
     }
+
+    // Fire-and-forget push to students who can see this material. Swallow all
+    // errors — a push failure must never turn a successful upload into a 500.
+    try {
+      await notifyStudentsForContent(db, {
+        product:  resolvedProduct,
+        batch:    resolvedBatch,
+        category: 'materials',
+        title:    'New material',
+        body:     created.title,
+        url:      '/dashboard',
+      });
+    } catch { /* swallow — never fail the upload because of push */ }
 
     return await serializeMaterial(created);
   });

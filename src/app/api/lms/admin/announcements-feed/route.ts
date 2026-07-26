@@ -10,6 +10,7 @@ import { lmsAnnouncements } from '@/lib/db/schema';
 import { safeApiHandler, ApiException } from '@/lib/api-utils';
 import { requireStaff } from '@/lib/tests/route-helpers';
 import { LMS_SUBJECTS } from '@/lib/lms/constants';
+import { notifyStudentsForContent } from '@/lib/notifications/push';
 
 export async function GET() {
   return safeApiHandler(async () => {
@@ -48,6 +49,19 @@ export async function POST(req: NextRequest) {
         createdBy: staff.id,
       })
       .returning();
+
+    // Fire-and-forget push to students who can see this announcement. Swallow
+    // all errors — a push failure must never turn a successful create into a 500.
+    try {
+      await notifyStudentsForContent(db, {
+        product:  created.product,
+        batch:    created.batch,
+        category: 'announcements',
+        title:    created.title,
+        body:     created.body.slice(0, 120),
+        url:      '/dashboard',
+      });
+    } catch { /* swallow — never fail the create because of push */ }
 
     return serializeAnnouncement(created);
   });

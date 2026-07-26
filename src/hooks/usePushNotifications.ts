@@ -56,7 +56,11 @@ function urlBase64ToUint8Array(base64String: string): Uint8Array {
 
 export function usePushNotifications(
   initialSubscribed = false,
+  opts?: { subscribeUrl?: string; unsubscribeUrl?: string },
 ): UsePushNotificationsReturn {
+  const subscribeUrl   = opts?.subscribeUrl   ?? '/api/vocab/push/subscribe';
+  const unsubscribeUrl = opts?.unsubscribeUrl ?? '/api/vocab/push/unsubscribe';
+
   const [isSupported, setIsSupported] = useState(false);
   const [isSubscribed, setIsSubscribed] = useState(initialSubscribed);
   const [permission, setPermission]   = useState<PushPermission>('default');
@@ -109,7 +113,7 @@ export function usePushNotifications(
       });
 
       // 4. Persist to server — this also sets notificationsEnabled = true.
-      const res = await fetch('/api/vocab/push/subscribe', {
+      const res = await fetch(subscribeUrl, {
         method:  'POST',
         headers: { 'Content-Type': 'application/json' },
         body:    JSON.stringify({ subscription: subscription.toJSON() }),
@@ -127,7 +131,7 @@ export function usePushNotifications(
     } finally {
       setIsLoading(false);
     }
-  }, [isSupported]);
+  }, [isSupported, subscribeUrl]);
 
   // ── unsubscribe ────────────────────────────────────────────────────────────
 
@@ -144,7 +148,7 @@ export function usePushNotifications(
       }
 
       // 2. Clear from server — this also sets notificationsEnabled = false.
-      const res = await fetch('/api/vocab/push/unsubscribe', {
+      const res = await fetch(unsubscribeUrl, {
         method: 'POST',
       });
 
@@ -160,7 +164,7 @@ export function usePushNotifications(
     } finally {
       setIsLoading(false);
     }
-  }, [isSupported]);
+  }, [isSupported, unsubscribeUrl]);
 
   return { isSupported, isSubscribed, permission, isLoading, subscribe, unsubscribe };
 }

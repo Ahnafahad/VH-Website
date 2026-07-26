@@ -13,8 +13,9 @@ import {
   classSessions,
   sessionRequests,
 } from '@/lib/db/schema';
-import { eq, and, gte, lt, sql } from 'drizzle-orm';
+import { eq, and, gte, lt, ne, or, isNull, isNotNull, desc, sql } from 'drizzle-orm';
 import { formatDhaka } from '@/lib/lms/time';
+import ClassCloseoutPrompt, { type CloseoutSession } from '@/components/admin/ClassCloseoutPrompt';
 import Link from 'next/link';
 import {
   Users,
@@ -104,6 +105,115 @@ async function fetchStats() {
   };
 }
 
+// Teaching instructors ({id, name}) — shared by both closeout + load sections.
+async function fetchTeachingUsers() {
+  return db
+    .select({ id: users.id, name: users.name })
+    .from(users)
+    .where(eq(users.isTeaching, true))
+    .all()
+    .catch(() => [] as { id: number; name: string }[]);
+}
+
+// PAST sessions still missing an instructor and/or a real subject.
+async function fetchCloseoutSessions(): Promise<CloseoutSession[]> {
+  const now = new Date();
+  const rows = await db
+    .select({
+      id:           classSessions.id,
+      title:        classSessions.title,
+      subject:      classSessions.subject,
+      scheduledAt:  classSessions.scheduledAt,
+      instructorId: classSessions.instructorId,
+      topic:        classSessions.topic,
+      classNumber:  classSessions.classNumber,
+    })
+    .from(classSessions)
+    .where(
+      and(
+        lt(classSessions.scheduledAt, now),
+        ne(classSessions.status, 'cancelled'),
+        or(isNull(classSessions.instructorId), eq(classSessions.subject, 'tbd')),
+      ),
+    )
+    .orderBy(desc(classSessions.scheduledAt))
+    .limit(20)
+    .all()
+    .catch(() => [] as (typeof classSessions.$inferSelect)[]);
+
+  return rows.map((r) => ({
+    id:           r.id,
+    title:        r.title,
+    subject:      r.subject,
+    scheduledAt:  r.scheduledAt.getTime(),
+    instructorId: r.instructorId,
+    topic:        r.topic,
+    classNumber:  r.classNumber,
+  }));
+}
+
+// Per-instructor session counts for the current month + previous 2 (Dhaka).
+async function fetchInstructorLoad(teachingUsers: { id: number; name: string }[]) {
+  const DHAKA_OFFSET_MS = 6 * 60 * 60 * 1000; // UTC+6
+  const nowDhaka = new Date(Date.now() + DHAKA_OFFSET_MS);
+  const y = nowDhaka.getUTCFullYear();
+  const m = nowDhaka.getUTCMonth();
+
+  // 3 columns, oldest → current. Each has UTC boundaries for its Dhaka month.
+  const months = [2, 1, 0].map((back) => {
+    const startUtc = new Date(Date.UTC(y, m - back, 1) - DHAKA_OFFSET_MS);
+    const endUtc   = new Date(Date.UTC(y, m - back + 1, 1) - DHAKA_OFFSET_MS);
+    return {
+      label: formatDhaka(startUtc, { month: 'short', year: 'numeric' }),
+      startUtc,
+      endUtc,
+    };
+  });
+
+  const rangeStart = months[0].startUtc;
+  const rangeEnd   = months[months.length - 1].endUtc;
+
+  const rows = await db
+    .select({
+      instructorId:   classSessions.instructorId,
+      instructorName: users.name,
+      scheduledAt:    classSessions.scheduledAt,
+    })
+    .from(classSessions)
+    .innerJoin(users, eq(classSessions.instructorId, users.id))
+    .where(
+      and(
+        isNotNull(classSessions.instructorId),
+        ne(classSessions.status, 'cancelled'),
+        gte(classSessions.scheduledAt, rangeStart),
+        lt(classSessions.scheduledAt, rangeEnd),
+      ),
+    )
+    .all()
+    .catch(() => [] as { instructorId: number | null; instructorName: string; scheduledAt: Date }[]);
+
+  // Instructors = teaching users ∪ anyone who taught in-range.
+  const names = new Map<number, string>();
+  for (const u of teachingUsers) names.set(u.id, u.name);
+  for (const r of rows) if (r.instructorId != null) names.set(r.instructorId, r.instructorName);
+
+  // counts[instructorId][monthIndex]
+  const counts = new Map<number, number[]>();
+  for (const id of names.keys()) counts.set(id, months.map(() => 0));
+  for (const r of rows) {
+    if (r.instructorId == null) continue;
+    const t = r.scheduledAt.getTime();
+    const idx = months.findIndex((mo) => t >= mo.startUtc.getTime() && t < mo.endUtc.getTime());
+    if (idx >= 0) counts.get(r.instructorId)![idx] += 1;
+  }
+
+  const instructors = [...names.entries()]
+    .map(([id, name]) => ({ id, name, counts: counts.get(id)! }))
+    .sort((a, b) => a.name.localeCompare(b.name));
+
+  return { monthLabels: months.map((mo) => mo.label), instructors };
+}
+
 // ─── Stat card data ───────────────────────────────────────────────────────────
 
 interface StatCard {
@@ -166,7 +276,12 @@ export default async function AdminOverviewPage() {
     redirect('/vocab');
   }
 
-  const stats = await fetchStats();
+  const teachingUsers = await fetchTeachingUsers();
+  const [stats, closeoutSessions, instructorLoad] = await Promise.all([
+    fetchStats(),
+    fetchCloseoutSessions(),
+    fetchInstructorLoad(teachingUsers),
+  ]);
   const adminName = session.user.name ?? 'Admin';
 
   const now = new Date();
@@ -247,6 +362,9 @@ export default async function AdminOverviewPage() {
           {dateLabel} · {timeLabel} (Asia/Dhaka)
         </p>
       </div>
+
+      {/* ── Needs attention (post-class close-out) ──────────────────────────── */}
+      <ClassCloseoutPrompt sessions={closeoutSessions} teachingUsers={teachingUsers} />
 
       <section aria-labelledby="admin-start-heading" style={{ marginBottom: 28 }}>
         <h2 id="admin-start-heading" style={{ margin: '0 0 10px', fontSize: 14, color: '#111827' }}>What do you need to do?</h2>
@@ -344,6 +462,52 @@ export default async function AdminOverviewPage() {
           );
         })}
       </div>
+
+      {/* ── Instructor load ─────────────────────────────────────────────────── */}
+      {instructorLoad.instructors.length > 0 && (
+        <div style={{ marginBottom: 32 }}>
+          <p
+            style={{
+              margin:        '0 0 10px',
+              fontSize:      10,
+              fontWeight:    600,
+              color:         '#9CA3AF',
+              letterSpacing: '0.1em',
+              textTransform: 'uppercase',
+            }}
+          >
+            Instructor load
+          </p>
+          <div style={{ border: '1px solid #E5E7EB', borderRadius: 14, overflow: 'hidden' }}>
+            <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 13 }}>
+              <thead>
+                <tr style={{ background: '#F9FAFB' }}>
+                  <th style={{ textAlign: 'left', padding: '10px 14px', fontSize: 11, fontWeight: 600, color: '#6B7280' }}>
+                    Instructor
+                  </th>
+                  {instructorLoad.monthLabels.map((label) => (
+                    <th key={label} style={{ textAlign: 'right', padding: '10px 14px', fontSize: 11, fontWeight: 600, color: '#6B7280' }}>
+                      {label}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {instructorLoad.instructors.map((ins, i) => (
+                  <tr key={ins.id} style={{ borderTop: i === 0 ? 'none' : '1px solid #F3F4F6' }}>
+                    <td style={{ padding: '10px 14px', color: '#111827', fontWeight: 500 }}>{ins.name}</td>
+                    {ins.counts.map((c, j) => (
+                      <td key={j} style={{ padding: '10px 14px', textAlign: 'right', color: c === 0 ? '#D1D5DB' : '#111827', fontVariantNumeric: 'tabular-nums' }}>
+                        {c === 0 ? '—' : c}
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      )}
 
       {/* ── Quick links by section ───────────────────────────────────────────── */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: 28 }}>
