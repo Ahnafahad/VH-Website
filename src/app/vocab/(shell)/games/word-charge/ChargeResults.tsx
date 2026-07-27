@@ -12,6 +12,7 @@ import { speak } from '@/lib/vocab/speak';
 import AnimatedNumber from '@/components/vocab/AnimatedNumber';
 import { LexiArtwork } from '@/components/vocab/LexiAsset';
 import { useVocabFeedback } from '@/lib/vocab/use-vocab-feedback';
+import MiniLeaderboard from '@/components/vocab/MiniLeaderboard';
 import type { ChargeWord, ChargeAnswer, ChargeFinishResponse, Connotation } from '@/lib/vocab/word-charge/types';
 
 const SERIF = "'Cormorant Garamond', Georgia, serif";
@@ -363,6 +364,10 @@ export default function ChargeResults({ result, saveError, onSaveRetry, onPlayAg
               </div>
             </div>
           )}
+
+          <div style={{ marginBottom: '1.5rem' }}>
+            <MiniLeaderboard game="word-charge" />
+          </div>
 
           {/* CTAs */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>

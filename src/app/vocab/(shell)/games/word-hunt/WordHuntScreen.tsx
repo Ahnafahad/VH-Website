@@ -6,6 +6,7 @@ import { ChevronLeft, AlertTriangle, RotateCcw } from 'lucide-react';
 import { useSafeNavigate } from '@/hooks/useSafeNavigate';
 import { useVocabFeedback } from '@/lib/vocab/use-vocab-feedback';
 import { useBadgeQueue } from '@/lib/vocab/badges/queue';
+import MiniLeaderboard from '@/components/vocab/MiniLeaderboard';
 import type { GameStateResponse } from '@/lib/vocab/game/types';
 import AttemptTracker from './AttemptTracker';
 import ClueDossier from './ClueDossier';
@@ -207,7 +208,7 @@ export default function WordHuntScreen({ date }: { date?: string }) {
 
   return (
     <div
-      style={{ maxWidth: 640, marginLeft: 'auto', marginRight: 'auto', width: '100%', paddingBottom: showInput ? 190 : 40 }}
+      style={{ maxWidth: 640, marginLeft: 'auto', marginRight: 'auto', width: '100%', paddingBottom: showInput ? 190 : 'calc(104px + env(safe-area-inset-bottom, 0px))' }}
     >
       {/* ── Header ── */}
       <div style={{
@@ -277,6 +278,8 @@ export default function WordHuntScreen({ date }: { date?: string }) {
             totalPoints={gameState.totalPoints}
           />
         )}
+
+        {finished && <MiniLeaderboard game="word-hunt" />}
       </div>
 
       {/* ── Sticky input area ── */}

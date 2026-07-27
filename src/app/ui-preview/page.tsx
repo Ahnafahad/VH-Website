@@ -11,8 +11,10 @@ import DemoSlides       from '@/app/vocab/onboarding/demo/DemoSlides';
 import ProgressRing     from '@/components/vocab/ProgressRing';
 import StudyScreen      from '@/app/vocab/(shell)/study/StudyScreen';
 import LeaderboardScreen from '@/app/vocab/(shell)/leaderboard/LeaderboardScreen';
+import MiniLeaderboard   from '@/components/vocab/MiniLeaderboard';
 import type { LeaderboardData } from '@/lib/vocab/leaderboard-data';
 import type { UnitWithThemes }  from '@/lib/vocab/study-data';
+import type { MiniLeaderboardResponse } from '@/lib/vocab/mini-leaderboard';
 
 /* ── Mock data ──────────────────────────────────────────────────────────────── */
 
@@ -43,6 +45,44 @@ const mockLeaderboard: LeaderboardData = {
     { rank: 3, displayName: 'Lamia Khan',   points:  8_100, sessionLabel: 'Week of Mar 17' },
     { rank: 4, displayName: 'Omar Faruk',   points:  6_500, sessionLabel: 'Week of Mar 10' },
   ],
+};
+
+const mockMiniLeaderboardCharge: MiniLeaderboardResponse = {
+  top: [
+    { rank: 1, userId: 101, displayName: 'Samiha Islam Seen',      points: 223, isMe: false },
+    { rank: 2, userId: 102, displayName: 'Ihdina Iftakhar',        points: 206, isMe: true  },
+    { rank: 3, userId: 103, displayName: 'Abdullah Jubran',        points: 190, isMe: false },
+    { rank: 4, userId: 104, displayName: 'Jumanah Mariyam Ra...',  points: 185, isMe: false },
+    { rank: 5, userId: 105, displayName: 'Mehka Tarannum',         points: 175, isMe: false },
+  ],
+  lifetime: [
+    { rank: 1, userId: 101, displayName: 'Samiha Islam Seen',      points: 10_321, isMe: false },
+    { rank: 2, userId: 102, displayName: 'Ihdina Iftakhar',        points:  8_683, isMe: true  },
+    { rank: 3, userId: 103, displayName: 'Abdullah Jubran',        points:    337, isMe: false },
+    { rank: 4, userId: 104, displayName: 'Jumanah Mariyam Ra...',  points:    282, isMe: false },
+    { rank: 5, userId: 105, displayName: 'Mehka Tarannum',         points:    262, isMe: false },
+  ],
+  myTop:      null,
+  myLifetime: null,
+};
+
+const mockMiniLeaderboardHunt: MiniLeaderboardResponse = {
+  top: [
+    { rank: 1, userId: 111, displayName: 'Samiha Islam Seen',      points: 520, isMe: false },
+    { rank: 2, userId: 112, displayName: 'Ihdina Iftakhar',        points: 520, isMe: false },
+    { rank: 3, userId: 113, displayName: 'Abdullah Jubran',        points: 520, isMe: false },
+    { rank: 4, userId: 114, displayName: 'Jumanah Mariyam Ra...',  points: 520, isMe: false },
+    { rank: 5, userId: 115, displayName: 'Mehka Tarannum',         points: 520, isMe: false },
+  ],
+  lifetime: [
+    { rank: 1, userId: 111, displayName: 'Samiha Islam Seen',      points: 3_400, isMe: false },
+    { rank: 2, userId: 112, displayName: 'Ihdina Iftakhar',        points: 3_210, isMe: false },
+    { rank: 3, userId: 113, displayName: 'Abdullah Jubran',        points: 2_838, isMe: false },
+    { rank: 4, userId: 114, displayName: 'Jumanah Mariyam Ra...',  points: 2_740, isMe: false },
+    { rank: 5, userId: 115, displayName: 'Mehka Tarannum',         points: 2_670, isMe: false },
+  ],
+  myTop:      { rank: 23, userId: 199, displayName: 'You (preview)', points:   520, isMe: true },
+  myLifetime: { rank: 23, userId: 199, displayName: 'You (preview)', points: 1_850, isMe: true },
 };
 
 const mockUnits: UnitWithThemes[] = [
@@ -184,6 +224,19 @@ export default function UIPreviewPage() {
         {/* 5 — LeaderboardScreen */}
         <Section label="Leaderboard Screen">
           <LeaderboardScreen data={mockLeaderboard} />
+        </Section>
+
+        {/* 6 — MiniLeaderboard */}
+        <Section label="Mini Leaderboard — Word Charge">
+          <div className="p-4">
+            <MiniLeaderboard game="word-charge" data={mockMiniLeaderboardCharge} />
+          </div>
+        </Section>
+
+        <Section label="Mini Leaderboard — Word Hunt (you outside top 5)">
+          <div className="p-4">
+            <MiniLeaderboard game="word-hunt" data={mockMiniLeaderboardHunt} />
+          </div>
         </Section>
 
       </div>
