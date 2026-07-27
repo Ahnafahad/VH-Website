@@ -7,7 +7,7 @@ import { VocabCacheTag }               from '@/lib/vocab/cache-keys';
 import {
   db, users, vocabUserWordRecords, vocabUserProgress,
 } from '@/lib/db';
-import { eq, and, sql }                from 'drizzle-orm';
+import { eq, and }                     from 'drizzle-orm';
 import { nextSrsState, initialSrsState, isLongGap } from '@/lib/vocab/srs/engine';
 import { maxIntervalForDeadline }     from '@/lib/vocab/srs/deadline-cap';
 import type { SrsRating }              from '@/lib/vocab/srs/engine';
@@ -15,6 +15,8 @@ import { flashcardDelta }              from '@/lib/vocab/mastery-score';
 import { rateLimit }                   from '@/lib/rate-limit';
 import { canAccessWord }               from '@/lib/vocab/access-check';
 import { ensureDailyLoginAwarded }     from '@/lib/vocab/daily-login';
+import { awardPoints }                 from '@/lib/vocab/points';
+import { nextAttemptStats } from '@/lib/vocab/attempt-stats';
 
 const bodySchema = z.object({
   wordId: z.number().int().positive(),
@@ -94,13 +96,7 @@ export async function POST(req: NextRequest) {
     });
 
     if (pointsEarned > 0) {
-      await db.update(vocabUserProgress)
-        .set({
-          totalPoints:  sql`${vocabUserProgress.totalPoints}  + ${pointsEarned}`,
-          weeklyPoints: sql`${vocabUserProgress.weeklyPoints} + ${pointsEarned}`,
-          updatedAt:    now,
-        })
-        .where(eq(vocabUserProgress.userId, user.id));
+      await awardPoints(db, user.id, pointsEarned, now);
       await ensureDailyLoginAwarded(user.id, now);
     }
 
@@ -119,7 +115,6 @@ export async function POST(req: NextRequest) {
 
   const wasCorrect = rating === 'got_it';
   const wasWrong   = rating === 'missed_it';
-  const isUnsure   = rating === 'unsure';
   const longGap    = isLongGap(existing.lastCorrectAt ?? null);
 
   // Deadline-capped SRS interval
@@ -142,16 +137,12 @@ export async function POST(req: NextRequest) {
   );
 
   // "unsure" is neutral — does not count as an attempt and does not touch streaks.
-  const prevTotal    = existing.totalAttempts    ?? 0;
-  const prevCorrect  = existing.correctAttempts  ?? 0;
-  const prevConsecC  = existing.consecutiveCorrect ?? 0;
-  const prevConsecW  = existing.consecutiveWrong   ?? 0;
-
-  const newTotal       = isUnsure ? prevTotal   : prevTotal + 1;
-  const newCorrect     = wasCorrect ? prevCorrect + 1 : prevCorrect;
-  const newConsecCorr  = wasCorrect ? prevConsecC + 1 : (wasWrong ? 0 : prevConsecC);
-  const newConsecWrong = wasWrong   ? prevConsecW + 1 : (wasCorrect ? 0 : prevConsecW);
-  const newAccuracy    = newTotal > 0 ? newCorrect / newTotal : 0;
+  const stats = nextAttemptStats(existing, rating);
+  const newTotal       = stats.totalAttempts;
+  const newCorrect     = stats.correctAttempts;
+  const newConsecCorr  = stats.consecutiveCorrect;
+  const newConsecWrong = stats.consecutiveWrong;
+  const newAccuracy    = stats.accuracyRate;
 
   const mastDelta      = flashcardDelta(rating, existing.masteryScore ?? 0);
   const newMastery     = (existing.masteryScore ?? 0) + mastDelta.scoreDelta;
@@ -184,13 +175,7 @@ export async function POST(req: NextRequest) {
     ));
 
   if (pointsEarned > 0) {
-    await db.update(vocabUserProgress)
-      .set({
-        totalPoints:  sql`${vocabUserProgress.totalPoints}  + ${pointsEarned}`,
-        weeklyPoints: sql`${vocabUserProgress.weeklyPoints} + ${pointsEarned}`,
-        updatedAt:    now,
-      })
-      .where(eq(vocabUserProgress.userId, user.id));
+    await awardPoints(db, user.id, pointsEarned, now);
     await ensureDailyLoginAwarded(user.id, now);
   }
 

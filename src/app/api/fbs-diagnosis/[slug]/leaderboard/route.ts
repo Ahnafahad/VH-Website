@@ -12,8 +12,9 @@ import { db } from '@/lib/db';
 import { tests, testAttempts, users } from '@/lib/db/schema';
 import { safeApiHandler, ApiException } from '@/lib/api-utils';
 import { computeRanks } from '@/lib/tests/scoring';
+import { isStaffRole } from '@/lib/auth/roles';
 
-const STAFF_ROLES = new Set(['admin', 'super_admin', 'instructor']);
+// Staff tier defined once in lib/auth/roles.ts — see isStaffRole.
 
 function shortName(fullName: string | null): string {
   const base = (fullName ?? '').trim();
@@ -53,8 +54,8 @@ export async function GET(
       .innerJoin(users, eq(testAttempts.userId, users.id))
       .where(and(eq(testAttempts.testId, test.id), eq(testAttempts.status, 'submitted')));
 
-    const students = rows.filter(r => !STAFF_ROLES.has(r.role));
-    const staff = rows.filter(r => STAFF_ROLES.has(r.role));
+    const students = rows.filter(r => !isStaffRole(r.role));
+    const staff = rows.filter(r => isStaffRole(r.role));
 
     // Leaderboard — students only, ranked, top 20.
     const ranks = computeRanks(

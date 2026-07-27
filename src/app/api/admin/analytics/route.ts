@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { validateAuth, ApiException, createErrorResponse } from '@/lib/api-utils';
 import { getUserByEmail } from '@/lib/db-access-control';
 import { type Range, getOverview, getBehavior, getVocab, getMath, getFunnel, getRetention, getLms, getLexicore } from '@/lib/analytics/queries';
+import { isStaffRole } from '@/lib/auth/roles';
 
 const VALID_SECTIONS = ['overview', 'behavior', 'lms', 'vocab', 'lexicore', 'math', 'funnel', 'retention'] as const;
 type Section = typeof VALID_SECTIONS[number];
@@ -12,7 +13,7 @@ export async function GET(req: NextRequest) {
   try {
     const auth = await validateAuth();
     const user = await getUserByEmail(auth.email);
-    if (!user || !['admin', 'super_admin', 'instructor'].includes(user.role)) {
+    if (!user || !isStaffRole(user.role)) {
       throw new ApiException('Unauthorized', 403);
     }
 

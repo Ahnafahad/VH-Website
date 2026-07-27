@@ -12,6 +12,7 @@ import { db } from '@/lib/db';
 import { tests } from '@/lib/db/schema';
 import { safeApiHandler, ApiException } from '@/lib/api-utils';
 import { requireUser } from '@/lib/tests/route-helpers';
+import { isAdminRole } from '@/lib/auth/roles';
 
 const bodySchema = z.object({
   status: z.enum(['draft', 'published', 'archived']).optional(),
@@ -26,7 +27,7 @@ export async function PATCH(
 ) {
   return safeApiHandler(async () => {
     const user = await requireUser();
-    if (user.role !== 'admin' && user.role !== 'super_admin') {
+    if (!isAdminRole(user.role)) {
       throw new ApiException('Admin access required', 403);
     }
 

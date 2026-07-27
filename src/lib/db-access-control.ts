@@ -7,6 +7,7 @@ import { db } from '@/lib/db';
 import { users, userAccess } from '@/lib/db/schema';
 import { eq, and } from 'drizzle-orm';
 import type { UserWithProducts, UserProduct } from '@/lib/db/schema';
+import { isStaffRole, isSuperAdminRole } from '@/lib/auth/roles';
 
 // ─── Cache ────────────────────────────────────────────────────────────────────
 
@@ -68,12 +69,13 @@ export async function isEmailAuthorized(email: string): Promise<boolean> {
 
 export async function isAdminEmail(email: string): Promise<boolean> {
   const user = await getCachedUser(email.toLowerCase());
-  return user?.role === 'admin' || user?.role === 'super_admin' || user?.role === 'instructor';
+  // NB: staff-level, not admin-level — instructors pass. Name predates the role.
+  return isStaffRole(user?.role);
 }
 
 export async function isSuperAdminEmail(email: string): Promise<boolean> {
   const user = await getCachedUser(email.toLowerCase());
-  return user?.role === 'super_admin';
+  return isSuperAdminRole(user?.role);
 }
 
 export async function getUserByEmail(email: string): Promise<UserWithProducts | null> {
@@ -94,7 +96,7 @@ export async function getUserById(id: number): Promise<UserWithProducts | null> 
 
 /** Derive legacy accessTypes + mockAccess from the products array */
 export function computeAccessFromProducts(user: UserWithProducts) {
-  const isAdmin = user.role === 'admin' || user.role === 'super_admin' || user.role === 'instructor';
+  const isAdmin = isStaffRole(user.role);
   const p = user.products;
   return {
     accessTypes: {
@@ -114,7 +116,7 @@ export function computeAccessFromProducts(user: UserWithProducts) {
 export async function hasProduct(email: string, product: UserProduct): Promise<boolean> {
   const user = await getCachedUser(email.toLowerCase());
   if (!user) return false;
-  if (user.role === 'admin' || user.role === 'super_admin' || user.role === 'instructor') return true;
+  if (isStaffRole(user.role)) return true;
   return user.products.includes(product);
 }
 

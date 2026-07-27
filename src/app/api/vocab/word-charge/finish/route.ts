@@ -16,6 +16,7 @@ import {
 } from '@/lib/db/schema';
 import { safeApiHandler, validateAuth, ApiException } from '@/lib/api-utils';
 import { chargeDelta, masteryLevel } from '@/lib/vocab/mastery-score';
+import { awardPoints } from '@/lib/vocab/points';
 
 const answerSchema = z.object({
   wordId:    z.number().int().positive(),
@@ -328,14 +329,7 @@ export async function POST(req: NextRequest) {
           .where(eq(vocabUserProgress.userId, user.id))
           .limit(1);
         if (prog) {
-          await tx
-            .update(vocabUserProgress)
-            .set({
-              totalPoints:  sql`${vocabUserProgress.totalPoints}  + ${points}`,
-              weeklyPoints: sql`${vocabUserProgress.weeklyPoints} + ${points}`,
-              updatedAt:    now,
-            })
-            .where(eq(vocabUserProgress.userId, user.id));
+          await awardPoints(tx, user.id, points, now);
         }
       }
       });

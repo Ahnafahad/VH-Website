@@ -13,10 +13,11 @@ import { tests, testSections, testQuestions, testAttempts } from '@/lib/db/schem
 import { safeApiHandler, ApiException } from '@/lib/api-utils';
 import { requireUser } from '@/lib/tests/route-helpers';
 import { scoreAttemptById } from '@/lib/tests/service';
+import { isAdminRole } from '@/lib/auth/roles';
 
 async function requireAdmin() {
   const user = await requireUser();
-  if (user.role !== 'admin' && user.role !== 'super_admin') {
+  if (!isAdminRole(user.role)) {
     throw new ApiException('Admin access required', 403);
   }
   return user;

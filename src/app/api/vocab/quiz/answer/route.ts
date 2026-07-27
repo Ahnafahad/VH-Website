@@ -34,6 +34,8 @@ import { quizDelta, masteryLevel }  from '@/lib/vocab/mastery-score';
 import { isTypedAnswerCorrect }     from '@/lib/vocab/typed-answer';
 import type { GeneratedQuestion }   from '@/lib/vocab/quiz-generator';
 import { canAccessWord }            from '@/lib/vocab/access-check';
+import { MAX_TX_ATTEMPTS, isTursoConflict } from '@/lib/db/tx-retry';
+import { awardPoints }              from '@/lib/vocab/points';
 
 // â”€â”€â”€ Point values (PRD Module 10) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 // Production (typed) recall is the hardest â€” it pays the most.
@@ -55,19 +57,8 @@ const POINTS: Record<string, number> = {
 // (HTTP 400) at a statement or at commit. We retry the whole transaction; on the
 // retry the "already answered" check below sees the committed row and returns a
 // clean idempotent replay instead of surfacing a 500.
-const MAX_TX_ATTEMPTS = 3;
-
-function isTursoConflict(err: unknown): boolean {
-  let e: unknown = err;
-  for (let depth = 0; depth < 4 && e; depth++) {
-    const msg = e instanceof Error ? e.message : String(e);
-    if (/SERVER_ERROR|returned HTTP status 4\d\d|SQLITE_BUSY|database is locked|write conflict/i.test(msg)) {
-      return true;
-    }
-    e = e instanceof Error ? (e as { cause?: unknown }).cause : undefined;
-  }
-  return false;
-}
+// MAX_TX_ATTEMPTS / isTursoConflict are shared with the other retrying writer
+// (lib/vocab/game/finalize-guess.ts) — see lib/db/tx-retry.ts.
 
 export async function POST(req: NextRequest) {
   return safeApiHandler(async () => {
@@ -352,16 +343,7 @@ export async function POST(req: NextRequest) {
     // â”€â”€ Award points â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     const pointsEarned = isCorrect ? (POINTS[question.type] ?? 5) : 0;
 
-    if (pointsEarned > 0) {
-      await tx
-        .update(vocabUserProgress)
-        .set({
-          totalPoints:  sql`total_points + ${pointsEarned}`,
-          weeklyPoints: sql`weekly_points + ${pointsEarned}`,
-          updatedAt:    now,
-        })
-        .where(eq(vocabUserProgress.userId, user.id));
-    }
+    await awardPoints(tx, user.id, pointsEarned, now);
 
     // â”€â”€ Record answer â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     await tx.insert(vocabQuizAnswers).values({

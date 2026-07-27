@@ -7,9 +7,10 @@
  */
 
 import type { Test, UserWithProducts } from '@/lib/db/schema';
+import { isStaffRole } from '@/lib/auth/roles';
 
 export function isTestStaff(user: Pick<UserWithProducts, 'role'>): boolean {
-  return user.role === 'admin' || user.role === 'super_admin' || user.role === 'instructor';
+  return isStaffRole(user.role);
 }
 
 export function canAccessTest(user: UserWithProducts, test: Test): boolean {

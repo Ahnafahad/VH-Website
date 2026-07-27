@@ -13,6 +13,7 @@ import { validateAuth, ApiException, createErrorResponse } from '@/lib/api-utils
 import { getUserByEmail } from '@/lib/db-access-control';
 import { db } from '@/lib/db';
 import { vocabErrorLogs, analyticsEvents } from '@/lib/db/schema';
+import { isStaffRole } from '@/lib/auth/roles';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -32,7 +33,7 @@ interface ErrorLogRow {
 async function requireAdminAccess(): Promise<void> {
   const auth = await validateAuth();
   const user = await getUserByEmail(auth.email);
-  if (!user || !['admin', 'super_admin', 'instructor'].includes(user.role)) {
+  if (!user || !isStaffRole(user.role)) {
     throw new ApiException('Unauthorized', 403);
   }
 }

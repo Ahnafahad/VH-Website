@@ -17,6 +17,7 @@ import { eq, ne } from 'drizzle-orm';
 import { authOptions } from '@/lib/auth';
 import { db, users } from '@/lib/db';
 import { sendAdminAnnouncement } from '@/lib/email';
+import { isAdminRole } from '@/lib/auth/roles';
 
 // ─── Zod schema ───────────────────────────────────────────────────────────────
 
@@ -41,7 +42,7 @@ async function requireAdmin() {
   }
 
   const role = (session.user as { role?: string }).role;
-  if (role !== 'admin' && role !== 'super_admin') {
+  if (!isAdminRole(role)) {
     return { error: NextResponse.json({ error: 'Admin access required' }, { status: 403 }) };
   }
 

@@ -44,6 +44,7 @@ import { effectiveWindowState, type EffectiveWindowState } from '@/lib/tests/win
 import { computeRanks } from '@/lib/tests/scoring';
 import { SUBJECTS } from './subject-constants';
 import type { LmsSubject } from '@/lib/db/schema';
+import { isStaffRole } from '@/lib/auth/roles';
 
 // ─── Return shape ─────────────────────────────────────────────────────────────
 
@@ -230,11 +231,7 @@ function round2(n: number): number {
 // ─── Helper: is LMS staff ─────────────────────────────────────────────────────
 
 function isLmsStaff(user: UserWithProducts): boolean {
-  return (
-    user.role === 'admin' ||
-    user.role === 'super_admin' ||
-    user.role === 'instructor'
-  );
+  return isStaffRole(user.role);
 }
 
 // ─── Main function ────────────────────────────────────────────────────────────

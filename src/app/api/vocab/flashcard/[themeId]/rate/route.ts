@@ -8,10 +8,12 @@ import {
   db, users, vocabFlashcardSessions, vocabUserWordRecords,
   vocabUserProgress, vocabWords, vocabSrsEvents,
 } from '@/lib/db';
-import { eq, and, sql }                from 'drizzle-orm';
+import { eq, and }                     from 'drizzle-orm';
 import { nextSrsState, initialSrsState, isLongGap } from '@/lib/vocab/srs/engine';
 import { maxIntervalForDeadline }     from '@/lib/vocab/srs/deadline-cap';
 import { flashcardDelta } from '@/lib/vocab/mastery-score';
+import { awardPoints } from '@/lib/vocab/points';
+import { nextAttemptStats } from '@/lib/vocab/attempt-stats';
 import { checkBadges }                 from '@/lib/vocab/badges/checker';
 import { rateLimit }                   from '@/lib/rate-limit';
 import { canAccessTheme, canAccessWord } from '@/lib/vocab/access-check';
@@ -139,19 +141,15 @@ export async function POST(
       // "unsure" is neutral — does not count as an attempt and does not touch streaks.
       const wasCorrect  = rating === 'got_it';
       const wasWrong    = rating === 'missed_it';
-      const isUnsure    = rating === 'unsure';
 
       const longGap      = isLongGap(existing.lastCorrectAt ?? null);
-      const prevTotal    = existing.totalAttempts    ?? 0;
-      const prevCorrect  = existing.correctAttempts  ?? 0;
-      const prevConsecC  = existing.consecutiveCorrect ?? 0;
-      const prevConsecW  = existing.consecutiveWrong   ?? 0;
 
-      const newTotal        = isUnsure ? prevTotal   : prevTotal + 1;
-      const newCorrect      = wasCorrect ? prevCorrect + 1 : prevCorrect;
-      const newConsecCorr   = wasCorrect ? prevConsecC + 1 : (wasWrong ? 0 : prevConsecC);
-      const newConsecWrong  = wasWrong   ? prevConsecW + 1 : (wasCorrect ? 0 : prevConsecW);
-      const newAccuracy     = newTotal > 0 ? newCorrect / newTotal : 0;
+      const stats = nextAttemptStats(existing, rating);
+      const newTotal        = stats.totalAttempts;
+      const newCorrect      = stats.correctAttempts;
+      const newConsecCorr   = stats.consecutiveCorrect;
+      const newConsecWrong  = stats.consecutiveWrong;
+      const newAccuracy     = stats.accuracyRate;
 
       const delta        = flashcardDelta(rating, existing.masteryScore ?? 0);
       const newMastery   = (existing.masteryScore ?? 0) + delta.scoreDelta;
@@ -283,15 +281,7 @@ export async function POST(
     }
 
     // Award points (daily-login helper owns lastStudyDate — don't write it here).
-    if (pointsEarned > 0) {
-      await tx.update(vocabUserProgress)
-        .set({
-          totalPoints:  sql`${vocabUserProgress.totalPoints} + ${pointsEarned}`,
-          weeklyPoints: sql`${vocabUserProgress.weeklyPoints} + ${pointsEarned}`,
-          updatedAt:    now,
-        })
-        .where(eq(vocabUserProgress.userId, user.id));
-    }
+    await awardPoints(tx, user.id, pointsEarned, now);
 
     const daily = await ensureDailyLoginAwarded(user.id, now, tx);
 

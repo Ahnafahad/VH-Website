@@ -8,6 +8,7 @@ import { unstable_cache } from 'next/cache';
 import { VocabCacheTag } from './cache-keys';
 import { dhakaWeekStart } from './dhaka-time';
 import { chooseRecommendation, type LearningRecommendation } from './recommendation';
+import { isAdminRole } from '@/lib/auth/roles';
 
 export interface MasteryBreakdown {
   new:      number;
@@ -245,7 +246,7 @@ async function _getHomeData(email: string): Promise<HomeData | null> {
     practice: practiceSession,
   };
 
-  const isAdmin     = user.role === 'admin' || user.role === 'super_admin';
+  const isAdmin     = isAdminRole(user.role);
   const hasPaidAccess = isAdmin || accessRows.length > 0;
 
   const activeQuiz = activeQuizRows[0] && Number(activeQuizRows[0].answered ?? 0) > 0

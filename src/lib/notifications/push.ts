@@ -18,6 +18,7 @@ import { and, eq, isNotNull } from 'drizzle-orm';
 import type { LibSQLDatabase } from 'drizzle-orm/libsql';
 import type * as schema from '@/lib/db/schema';
 import { users, userAccess } from '@/lib/db/schema';
+import { lmsStudentAudienceConditions } from '@/lib/lms/access';
 
 // ─── VAPID initialisation ────────────────────────────────────────────────────
 
@@ -88,10 +89,11 @@ export async function sendPushToUser(
  * Sends a push to every active student who can see the given content scope and
  * has the matching category preference enabled.
  *
- * Recipient rule mirrors the INVERSE of canAccessLmsContent:
- *   role = 'student' AND status = 'active' AND has userAccess.product = product
- *   AND site-wide pushSubscription is set AND the category pref column is true
- *   AND (batch is null → all such students; else users.batch = batch).
+ * Recipient rule is NOT re-encoded here — the audience comes from
+ * `lmsStudentAudienceConditions` (lib/lms/access.ts), the same seam that backs
+ * `canAccessLmsContent` / `lmsScopeConditions`. This function only adds the two
+ * notification-specific filters on top: a site-wide pushSubscription must be
+ * set, and the category preference column must be true.
  *
  * Expired subscriptions (send returns false) are nulled out and counted.
  */
@@ -111,17 +113,14 @@ export async function notifyStudentsForContent(
     : args.category === 'announcements' ? users.notifyAnnouncements
     : users.notifyCommentReply;
 
+  // Audience (who can SEE this content) comes from the LMS access seam so the
+  // rule is not re-encoded here; the two extra conditions are notification
+  // concerns only — they narrow the audience, they never widen it.
   const conditions = [
-    eq(users.role, 'student'),
-    eq(users.status, 'active'),
-    eq(userAccess.product, args.product),
-    eq(userAccess.active, true), // mirror fetchUserWithProducts — only active grants can see content
+    ...lmsStudentAudienceConditions({ product: args.product, batch: args.batch }),
     isNotNull(users.pushSubscription),
     eq(prefColumn, true),
   ];
-  if (args.batch !== null) {
-    conditions.push(eq(users.batch, args.batch));
-  }
 
   const rows = await db
     .select({ userId: users.id, pushSubscription: users.pushSubscription })

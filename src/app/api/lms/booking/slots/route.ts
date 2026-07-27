@@ -12,14 +12,14 @@ import { db } from '@/lib/db';
 import { bookingSlots, users } from '@/lib/db/schema';
 import { safeApiHandler, ApiException } from '@/lib/api-utils';
 import { requireUser } from '@/lib/tests/route-helpers';
+import { isStaffRole } from '@/lib/auth/roles';
 
 export async function GET(_req: NextRequest) {
   return safeApiHandler(async () => {
     const me = await requireUser();
 
     // Staff always get through; students must have at least one product
-    const isStaff =
-      me.role === 'admin' || me.role === 'super_admin' || me.role === 'instructor';
+    const isStaff = isStaffRole(me.role);
 
     if (!isStaff && me.products.length === 0) {
       throw new ApiException('LMS access required', 403, 'LMS_ACCESS_DENIED');

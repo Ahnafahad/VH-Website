@@ -13,7 +13,6 @@ import { db } from '@/lib/db';
 import {
   vocabGameGuesses,
   vocabGameSessions,
-  vocabUserProgress,
   type VocabGameRound,
   type VocabGameSession,
 } from '@/lib/db/schema';
@@ -22,20 +21,8 @@ import { WORD_POINTS, applyCatchUp } from './scoring';
 import { checkBadges } from '@/lib/vocab/badges/checker';
 import { buildGameStateResponse } from './state-builder';
 import type { GameStateResponse, GuessRelation, RoundContent, SessionStatus } from './types';
-
-const MAX_TX_ATTEMPTS = 3;
-
-function isTursoConflict(err: unknown): boolean {
-  let e: unknown = err;
-  for (let depth = 0; depth < 4 && e; depth++) {
-    const msg = e instanceof Error ? e.message : String(e);
-    if (/SERVER_ERROR|returned HTTP status 4\d\d|SQLITE_BUSY|database is locked|write conflict/i.test(msg)) {
-      return true;
-    }
-    e = e instanceof Error ? (e as { cause?: unknown }).cause : undefined;
-  }
-  return false;
-}
+import { MAX_TX_ATTEMPTS, isTursoConflict } from '@/lib/db/tx-retry';
+import { awardPoints } from '@/lib/vocab/points';
 
 export interface FinalizeAcceptedGuessParams {
   userId:           number;
@@ -137,16 +124,7 @@ export async function finalizeAcceptedGuess(params: FinalizeAcceptedGuessParams)
           .where(eq(vocabGameSessions.id, activeSession.id));
 
         const totalAward = sentencePoints + wordPointsEarned;
-        if (totalAward > 0) {
-          await tx
-            .update(vocabUserProgress)
-            .set({
-              totalPoints:  sql`total_points + ${totalAward}`,
-              weeklyPoints: sql`weekly_points + ${totalAward}`,
-              updatedAt:    now,
-            })
-            .where(eq(vocabUserProgress.userId, userId));
-        }
+        await awardPoints(tx, userId, totalAward, now);
       });
       break;
     } catch (err) {

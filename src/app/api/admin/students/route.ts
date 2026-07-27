@@ -3,13 +3,14 @@ import { getServerSession } from 'next-auth/next';
 import { authOptions } from '@/lib/auth';
 import { createErrorResponse, ApiException } from '@/lib/api-utils';
 import { listBatches, getBatchSummaries } from '@/lib/students/progress';
+import { isStaffRole } from '@/lib/auth/roles';
 
 // ─── Auth helper (staff only: admin, super_admin, instructor) ─────────────────
 
 async function requireStaff() {
   const session = await getServerSession(authOptions);
   if (!session?.user?.email) throw new ApiException('Authentication required', 401);
-  if (!session.user.role || !['admin', 'super_admin', 'instructor'].includes(session.user.role)) {
+  if (!isStaffRole(session.user.role)) {
     throw new ApiException('Unauthorized', 403);
   }
   return session.user;

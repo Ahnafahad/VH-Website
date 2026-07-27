@@ -10,6 +10,7 @@ import { sessionRequests } from '@/lib/db/schema';
 import { safeApiHandler, ApiException } from '@/lib/api-utils';
 import { requireUser } from '@/lib/tests/route-helpers';
 import { LMS_SUBJECTS } from '@/lib/lms/constants';
+import { isStaffRole } from '@/lib/auth/roles';
 
 const VALID_MODES = ['online', 'offline', 'either'] as const;
 
@@ -33,7 +34,7 @@ export async function GET(_req: NextRequest) {
   return safeApiHandler(async () => {
     const me = await requireUser();
 
-    const isStaff = me.role === 'admin' || me.role === 'super_admin' || me.role === 'instructor';
+    const isStaff = isStaffRole(me.role);
     if (!isStaff && me.products.length === 0) {
       throw new ApiException('LMS access required', 403, 'LMS_ACCESS_DENIED');
     }
@@ -52,7 +53,7 @@ export async function POST(req: NextRequest) {
   return safeApiHandler(async () => {
     const me = await requireUser();
 
-    const isStaff = me.role === 'admin' || me.role === 'super_admin' || me.role === 'instructor';
+    const isStaff = isStaffRole(me.role);
     if (!isStaff && me.products.length === 0) {
       throw new ApiException('LMS access required', 403, 'LMS_ACCESS_DENIED');
     }
