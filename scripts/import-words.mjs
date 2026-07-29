@@ -11,9 +11,13 @@ import { fileURLToPath } from 'url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
+if (!process.env.TURSO_DATABASE_URL || !process.env.TURSO_AUTH_TOKEN) {
+  throw new Error('Missing TURSO_DATABASE_URL / TURSO_AUTH_TOKEN. Run with: node --env-file=.env.local <script>');
+}
+
 const client = createClient({
-  url:       'libsql://vh-beyond-the-horizon-ahnafahad.aws-ap-south-1.turso.io',
-  authToken: 'eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJhIjoicnciLCJpYXQiOjE3NzUxNDUzODYsImlkIjoiMDE5ZDRjZGQtZmMwMS03Njc2LTkwODItNjUxYjlhMWUzMTVhIiwicmlkIjoiMjAxZGQ5ZDktYTEwYi00ZTA4LTg3ODgtMWMyMmRmZmMyODgxIn0.vw7b-JVuzAts5PP4rzgMwhKV-XRVLkXl_Lxfta5YUgtbUORsiHqFU6Tkb0Ll_D4L4tKeAM-lxF5e-OT_McZ_Aw',
+  url:       process.env.TURSO_DATABASE_URL,
+  authToken: process.env.TURSO_AUTH_TOKEN,
 });
 
 // ─── LaTeX text cleaner ────────────────────────────────────────────────────────
