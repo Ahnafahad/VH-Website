@@ -191,7 +191,7 @@ function QuestionItem({
             <StatusChip status={status} />
             {selected && correctKey && selected !== correctKey && (
               <span className="text-[var(--color-exam-ink-faint)] text-xs">
-                Correct: {correctKey}
+                Correct: {displayOptions.find((o) => o.key === correctKey)?.text ?? correctKey}
               </span>
             )}
           </div>

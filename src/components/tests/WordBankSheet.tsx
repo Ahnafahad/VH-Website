@@ -17,13 +17,13 @@ const bubbleVariants: Variants = {
 };
 
 function Bubble({
-  label,
+  word,
   selected,
   usedElsewhere,
   onClick,
   disabled,
 }: {
-  label: string;
+  word: string;
   selected: boolean;
   usedElsewhere: boolean;
   onClick: () => void;
@@ -39,16 +39,15 @@ function Bubble({
       whileTap="tap"
       transition={{ type: 'spring' as const, stiffness: 500, damping: 22 }}
       aria-pressed={selected}
-      aria-label={`Option ${label}`}
       className={[
-        'w-8 h-8 rounded-full border-2 flex items-center justify-center text-[11px] font-bold transition-[background-color,border-color,filter,opacity] duration-100',
+        'px-3 py-1.5 rounded-full border-2 text-xs font-semibold whitespace-nowrap transition-[background-color,border-color,filter,opacity] duration-100',
         selected
           ? 'bg-exam-maroon border-exam-maroon text-white'
-          : 'bg-transparent border-[#C8A24B]/40 text-[#7C6E60] hover:border-exam-maroon/60',
-        usedElsewhere ? 'opacity-40 blur-[0.5px] cursor-not-allowed' : (disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'),
+          : 'bg-transparent border-[#C8A24B]/40 text-[#5A4C40] hover:border-exam-maroon/60',
+        usedElsewhere ? 'opacity-40 blur-[0.5px] line-through cursor-not-allowed' : (disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'),
       ].join(' ')}
     >
-      {label}
+      <RichText content={word} inline />
     </motion.button>
   );
 }
@@ -59,7 +58,7 @@ export default function WordBankSheet({ sections, answers, onAnswer, disabled }:
       <div className="max-w-2xl mx-auto bg-[#FAF5EF] rounded-2xl shadow-xl overflow-hidden">
         <div className="bg-exam-maroon px-6 py-4">
           <h2 className="text-white font-serif text-lg font-semibold tracking-wide">Word Bank Answer Sheet</h2>
-          <p className="text-white/70 text-xs mt-0.5">Pick a letter for each sentence. Tap again to clear.</p>
+          <p className="text-white/70 text-xs mt-0.5">Pick a word for each sentence. Tap again to clear.</p>
         </div>
 
         <div className="divide-y divide-[#E8DDD0]">
@@ -98,8 +97,8 @@ export default function WordBankSheet({ sections, answers, onAnswer, disabled }:
                   {section.questions.map((q) => {
                     const selected = answers[q.id] ?? null;
                     return (
-                      <div key={q.id} className="grid items-center gap-2 py-1.5" style={{ gridTemplateColumns: '3rem 1fr' }}>
-                        <span className="text-[#3A2F29] text-sm font-semibold tabular-nums">{q.number}</span>
+                      <div key={q.id} className="grid items-start gap-2 py-1.5" style={{ gridTemplateColumns: '3rem 1fr' }}>
+                        <span className="text-[#3A2F29] text-sm font-semibold tabular-nums pt-1.5">{q.number}</span>
                         <div className="flex flex-wrap gap-2">
                           {bank.map((opt) => {
                             const usedElsewhere = opt.key !== selected && Object.entries(usedByQuestion)
@@ -107,7 +106,7 @@ export default function WordBankSheet({ sections, answers, onAnswer, disabled }:
                             return (
                               <Bubble
                                 key={opt.key}
-                                label={opt.key}
+                                word={opt.text}
                                 selected={selected === opt.key}
                                 usedElsewhere={usedElsewhere}
                                 onClick={() => onAnswer(q.id, selected === opt.key ? null : opt.key)}
