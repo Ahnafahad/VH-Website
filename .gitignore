@@ -107,3 +107,21 @@ android/local.properties
 
 # Claude Code local tool permissions - machine-specific
 /.claude/settings.local.json
+
+# Generated / machine-local. graphify-out/ IS tracked - CLAUDE.md's navigation
+# protocol tells every session to read graphify-out/GRAPH_REPORT.md. The copy
+# under src/ is a stray second generation and is not tracked.
+/src/graphify-out/
+/.agents/
+/.claude/commands/
+/.claude/launch.json
+/lexicore-promo.html
+/brand-kit.zip
+
+# graphify-out/converted/ holds xlsx-to-markdown conversions of mock RESULTS
+# files: named students, IDs, per-section marks and ranks. This repo is
+# PUBLIC - never commit these. GRAPH_REPORT.md/graph.json/manifest.json were
+# verified free of all 58 student names and are tracked for the nav protocol.
+/graphify-out/converted/
+/graphify-out/cache/
+/graphify-out/.graphify_chunk_*.json
