@@ -1110,9 +1110,9 @@ export default function TodayClient({ initial }: Props) {
           <p style={{ margin: '0 0 16px', fontSize: 13, color: MUTED }}>
             No sessions scheduled for today in Dhaka time.
           </p>
-          <Link href="/admin/classes" className="lms-int" style={{
+          <Link href="/admin/classes" className="lms-int lms-primary" style={{
             display: 'inline-flex', alignItems: 'center', gap: 8,
-            padding: '8px 16px', borderRadius: R_MD, background: SLATE,
+            padding: '8px 16px', borderRadius: R_MD, background: RED,
             color: SURFACE, fontSize: 13, fontWeight: 600,
             textDecoration: 'none',
           }}>

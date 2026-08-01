@@ -726,7 +726,8 @@ export function EmptyState({ icon: Icon, message, action }: {
     }}>
       <Icon size={28} style={{ color: MUTED, margin: '0 auto 10px', display: 'block' }} aria-hidden />
       <p style={{ margin: '0 0 12px', fontSize: 13, color: MUTED }}>{message}</p>
-      {action}
+      {/* actions are usually flex buttons, which `textAlign` can't centre */}
+      {action ? <div style={{ display: 'flex', justifyContent: 'center' }}>{action}</div> : null}
     </div>
   );
 }

@@ -512,7 +512,13 @@ function SubmissionsPanel({ assignmentId, onClose }: { assignmentId: number; onC
     let mounted = true;
     setLoading(true);
     fetch(`/api/lms/admin/assignments/${assignmentId}/submissions`)
-      .then(r => r.json())
+      .then(async r => {
+        // An error response still parses as JSON ({ error }), and storing that
+        // shape as `data` crashes the render below on `data.submissions`.
+        const body = await r.json().catch(() => null);
+        if (!r.ok || !Array.isArray(body?.submissions)) throw new Error('bad response');
+        return body as SubmissionsData;
+      })
       .then((d: SubmissionsData) => {
         if (!mounted) return;
         setData(d);
