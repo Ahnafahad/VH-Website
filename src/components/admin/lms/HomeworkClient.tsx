@@ -10,6 +10,10 @@ import {
   IconBtn, EmptyState, PageHeader,
   fmtDhaka, dhakaLocalToISO, epochToDhakaLocal,
   SPIN_CSS, RED, SLATE, BORDER, MUTED, BG, rowV,
+  RED_HOVER, INK_SOFT, SURFACE, SURFACE_ALT,
+  OK, OK_BG, WARN, WARN_BG, INFO,
+  R_SM, R_MD, R_LG, R_PILL,
+  SHADOW_SM, FONT_HEADING,
 } from './lms-shared';
 import type { ClassSession } from './ClassesClient';
 
@@ -49,6 +53,25 @@ interface Props {
 
 const SUBJECTS = ['english', 'math', 'analytical'];
 
+// ─── Local styles (hover / focus-visible — inline style props can't express
+//     pseudo-classes, so this scoped stylesheet fills that gap using the same
+//     imported tokens as everything else in this file) ────────────────────────
+
+const HW_LOCAL_STYLES = `
+  .hw-pill { transition: background-color .15s, color .15s, border-color .15s; }
+  .hw-pill:hover:not(:disabled) { filter: brightness(0.97); }
+  .hw-link { transition: color .15s; }
+  .hw-link:hover:not(:disabled) { color: ${RED_HOVER}; }
+  .hw-btn-primary:hover:not(:disabled) { background: ${RED_HOVER}; }
+  .hw-row:hover:not(:disabled) { background: ${SURFACE_ALT}; }
+  .hw-pill:focus-visible, .hw-link:focus-visible, .hw-btn-primary:focus-visible,
+  .hw-row:focus-visible, .hw-input:focus-visible, .hw-mark-btn:focus-visible,
+  .hw-file-link:focus-visible {
+    outline: 2px solid ${RED}; outline-offset: 2px;
+  }
+  .hw-mark-btn:hover:not(:disabled) { filter: brightness(0.96); }
+`;
+
 // ─── Due date chip ────────────────────────────────────────────────────────────
 
 function DueChip({ epochMs }: { epochMs: number }) {
@@ -67,14 +90,14 @@ function DueChip({ epochMs }: { epochMs: number }) {
     label = `Due in ${days}d`;
   }
 
-  const bg     = overdue ? 'rgba(239,68,68,0.08)'     : diff < 86400000 ? 'rgba(245,158,11,0.1)' : 'rgba(16,185,129,0.08)';
-  const color  = overdue ? '#B91C1C'                   : diff < 86400000 ? '#92400E'              : '#065F46';
-  const border = overdue ? 'rgba(239,68,68,0.2)'       : diff < 86400000 ? 'rgba(245,158,11,0.25)' : 'rgba(16,185,129,0.2)';
+  const bg     = overdue ? `${RED}14`     : diff < 86400000 ? WARN_BG            : OK_BG;
+  const color  = overdue ? RED             : diff < 86400000 ? WARN               : OK;
+  const border = overdue ? `${RED}33`     : diff < 86400000 ? `${WARN}40`        : `${OK}33`;
 
   return (
     <span style={{
       display: 'inline-flex', alignItems: 'center', gap: 4,
-      padding: '2px 8px', borderRadius: 100,
+      padding: '2px 8px', borderRadius: R_PILL,
       fontSize: 11, fontWeight: 600, lineHeight: 1.6,
       background: bg, color, border: `1px solid ${border}`,
     }}>
@@ -301,7 +324,7 @@ function AssignmentModal({
             <label style={{
               flex: 1, display: 'flex', alignItems: 'center', gap: 6,
               fontSize: 12, color: MUTED, border: `1px dashed ${BORDER}`,
-              borderRadius: 8, padding: '6px 10px', cursor: 'pointer',
+              borderRadius: R_MD, padding: '6px 10px', cursor: 'pointer',
             }}>
               <FileText size={13} />
               <span style={{ flex: 1, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
@@ -320,9 +343,10 @@ function AssignmentModal({
                 type="button"
                 onClick={() => void handleUploadPdf()}
                 disabled={uploading}
+                className="hw-btn-primary"
                 style={{
-                  fontSize: 12, fontWeight: 600, padding: '6px 12px', borderRadius: 8,
-                  background: '#D62B38', color: '#fff', border: 'none', cursor: uploading ? 'not-allowed' : 'pointer',
+                  fontSize: 12, fontWeight: 600, padding: '6px 12px', borderRadius: R_MD,
+                  background: RED, color: SURFACE, border: 'none', cursor: uploading ? 'not-allowed' : 'pointer',
                   opacity: uploading ? 0.7 : 1, display: 'flex', alignItems: 'center', gap: 4,
                 }}
               >
@@ -335,7 +359,7 @@ function AssignmentModal({
             )}
           </div>
           {form.materialId && (
-            <p style={{ fontSize: 11, color: '#059669', marginTop: 4, display: 'flex', alignItems: 'center', gap: 4 }}>
+            <p style={{ fontSize: 11, color: OK, marginTop: 4, display: 'flex', alignItems: 'center', gap: 4 }}>
               <CheckCircle size={11} /> PDF attached: {allMaterials.find(m => String(m.id) === form.materialId)?.title ?? `Material #${form.materialId}`}
               <button
                 type="button"
@@ -367,7 +391,7 @@ function AssignmentModal({
             <label style={{
               flex: 1, display: 'flex', alignItems: 'center', gap: 6,
               fontSize: 12, color: MUTED, border: `1px dashed ${BORDER}`,
-              borderRadius: 8, padding: '6px 10px', cursor: 'pointer',
+              borderRadius: R_MD, padding: '6px 10px', cursor: 'pointer',
             }}>
               <FileText size={13} />
               <span style={{ flex: 1, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
@@ -386,9 +410,10 @@ function AssignmentModal({
                 type="button"
                 onClick={() => void handleUploadSolutionPdf()}
                 disabled={solutionUploading}
+                className="hw-btn-primary"
                 style={{
-                  fontSize: 12, fontWeight: 600, padding: '6px 12px', borderRadius: 8,
-                  background: '#D62B38', color: '#fff', border: 'none', cursor: solutionUploading ? 'not-allowed' : 'pointer',
+                  fontSize: 12, fontWeight: 600, padding: '6px 12px', borderRadius: R_MD,
+                  background: RED, color: SURFACE, border: 'none', cursor: solutionUploading ? 'not-allowed' : 'pointer',
                   opacity: solutionUploading ? 0.7 : 1, display: 'flex', alignItems: 'center', gap: 4,
                 }}
               >
@@ -401,7 +426,7 @@ function AssignmentModal({
             )}
           </div>
           {form.solutionMaterialId && (
-            <p style={{ fontSize: 11, color: '#059669', marginTop: 4, display: 'flex', alignItems: 'center', gap: 4 }}>
+            <p style={{ fontSize: 11, color: OK, marginTop: 4, display: 'flex', alignItems: 'center', gap: 4 }}>
               <CheckCircle size={11} /> Solution attached: {allMaterials.find(m => String(m.id) === form.solutionMaterialId)?.title ?? `Material #${form.solutionMaterialId}`}
               <button
                 type="button"
@@ -546,29 +571,29 @@ function SubmissionsPanel({ assignmentId, onClose }: { assignmentId: number; onC
 
   return (
     <div style={{
-      background: '#FAFAFA', border: `1px solid ${BORDER}`,
-      borderRadius: 10, marginTop: 8, maxHeight: '70vh', overflowY: 'auto',
+      background: BG, border: `1px solid ${BORDER}`,
+      borderRadius: R_LG, marginTop: 8, maxHeight: '70vh', overflowY: 'auto',
     }}>
       <div style={{
-        position: 'sticky', top: 0, zIndex: 1, background: '#FAFAFA',
+        position: 'sticky', top: 0, zIndex: 1, background: BG,
         padding: '14px 16px 10px', borderBottom: `1px solid ${BORDER}`,
-        borderTopLeftRadius: 10, borderTopRightRadius: 10,
+        borderTopLeftRadius: R_LG, borderTopRightRadius: R_LG,
       }}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 8 }}>
-          <p style={{ margin: 0, fontSize: 13, fontWeight: 700, color: SLATE, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+          <p style={{ margin: 0, fontFamily: FONT_HEADING, fontSize: 13, fontWeight: 700, color: SLATE, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
             {data?.assignment.title ?? 'Submissions'}
           </p>
-          <button onClick={onClose} style={{ background: 'none', border: 'none', cursor: 'pointer', color: MUTED, fontSize: 12, flexShrink: 0, minHeight: 44, padding: '0 4px' }}>
+          <button onClick={onClose} className="hw-link" style={{ background: 'none', border: 'none', cursor: 'pointer', color: MUTED, fontSize: 12, flexShrink: 0, minHeight: 44, padding: '0 4px' }}>
             Close
           </button>
         </div>
         {submittedTotal > 0 && (
           <div style={{ marginTop: 8, display: 'flex', alignItems: 'center', gap: 8 }}>
-            <span style={{ fontSize: 12, fontWeight: 700, color: allMarked ? '#065F46' : SLATE, whiteSpace: 'nowrap' }}>
+            <span style={{ fontSize: 12, fontWeight: 700, color: allMarked ? OK : SLATE, whiteSpace: 'nowrap' }}>
               {reviewedTotal} of {submittedTotal} reviewed
             </span>
-            <div style={{ flex: 1, height: 6, minWidth: 60, borderRadius: 100, background: '#E5E7EB', overflow: 'hidden' }}>
-              <div style={{ height: '100%', width: `${(reviewedTotal / submittedTotal) * 100}%`, background: '#10B981', borderRadius: 100 }} />
+            <div style={{ flex: 1, height: 6, minWidth: 60, borderRadius: R_PILL, background: BORDER, overflow: 'hidden' }}>
+              <div style={{ height: '100%', width: `${(reviewedTotal / submittedTotal) * 100}%`, background: OK, borderRadius: R_PILL }} />
             </div>
             {pendingTotal > 0 && (
               <span style={{ fontSize: 11, color: MUTED, whiteSpace: 'nowrap' }}>{pendingTotal} not submitted</span>
@@ -590,10 +615,10 @@ function SubmissionsPanel({ assignmentId, onClose }: { assignmentId: number; onC
               return (
                 <div key={sub.userId} style={{
                   display: 'flex', alignItems: 'center', gap: 8,
-                  padding: '8px 10px', borderRadius: 8,
-                  background: '#F9FAFB', border: `1px dashed ${BORDER}`, opacity: 0.7,
+                  padding: '8px 10px', borderRadius: R_MD,
+                  background: SURFACE_ALT, border: `1px dashed ${BORDER}`, opacity: 0.7,
                 }}>
-                  <span aria-hidden style={{ width: 8, height: 8, borderRadius: '50%', background: '#D1D5DB', flexShrink: 0 }} />
+                  <span aria-hidden style={{ width: 8, height: 8, borderRadius: '50%', background: BORDER, flexShrink: 0 }} />
                   <span style={{ flex: 1, minWidth: 0, fontSize: 13, color: MUTED, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                     {sub.name}
                   </span>
@@ -610,13 +635,13 @@ function SubmissionsPanel({ assignmentId, onClose }: { assignmentId: number; onC
             return (
               <div key={sub.userId} style={{
                 display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap',
-                padding: '8px 10px', borderRadius: 8,
-                background: isReviewed ? '#FFFFFF' : 'rgba(245,158,11,0.06)',
-                border: `1px solid ${isReviewed ? BORDER : 'rgba(245,158,11,0.3)'}`,
+                padding: '8px 10px', borderRadius: R_MD,
+                background: isReviewed ? SURFACE : WARN_BG,
+                border: `1px solid ${isReviewed ? BORDER : `${WARN}4D`}`,
               }}>
                 <span aria-hidden style={{
                   width: 8, height: 8, borderRadius: '50%', flexShrink: 0,
-                  background: isReviewed ? '#10B981' : '#F59E0B',
+                  background: isReviewed ? OK : WARN,
                 }} />
                 <span title={sub.name} style={{
                   flex: '0 1 140px', minWidth: 80, fontSize: 13, fontWeight: 600, color: SLATE,
@@ -626,7 +651,8 @@ function SubmissionsPanel({ assignmentId, onClose }: { assignmentId: number; onC
                 </span>
                 {sub.fileUrl && (
                   <a href={sub.fileUrl} target="_blank" rel="noopener noreferrer" title="View submitted file"
-                    style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: 40, height: 40, flexShrink: 0, color: '#3B82F6' }}>
+                    className="hw-file-link"
+                    style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: 40, height: 40, borderRadius: R_SM, flexShrink: 0, color: INFO }}>
                     <FileText size={15} aria-hidden />
                   </a>
                 )}
@@ -636,9 +662,10 @@ function SubmissionsPanel({ assignmentId, onClose }: { assignmentId: number; onC
                   onKeyDown={e => { if (e.key === 'Enter') { e.preventDefault(); void handleSetReviewed(sub, true); } }}
                   placeholder="Note (optional)"
                   disabled={saving}
+                  className="hw-input"
                   style={{
                     flex: '1 1 120px', minWidth: 100, boxSizing: 'border-box', height: 40,
-                    padding: '0 10px', borderRadius: 6, border: `1px solid ${BORDER}`,
+                    padding: '0 10px', borderRadius: R_SM, border: `1px solid ${BORDER}`,
                     fontSize: 12, color: SLATE, outline: 'none',
                   }}
                 />
@@ -648,12 +675,13 @@ function SubmissionsPanel({ assignmentId, onClose }: { assignmentId: number; onC
                   disabled={saving}
                   aria-label={isReviewed ? `Mark ${sub.name} not reviewed` : `Mark ${sub.name} reviewed`}
                   title={isReviewed ? 'Reviewed — click to undo' : 'Mark reviewed'}
+                  className="hw-mark-btn"
                   style={{
                     display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 5,
-                    minWidth: 44, height: 44, padding: '0 12px', borderRadius: 8, flexShrink: 0,
+                    minWidth: 44, height: 44, padding: '0 12px', borderRadius: R_MD, flexShrink: 0,
                     border: 'none', cursor: saving ? 'not-allowed' : 'pointer',
-                    background: isReviewed ? 'rgba(16,185,129,0.1)' : '#D62B38',
-                    color: isReviewed ? '#065F46' : '#fff',
+                    background: isReviewed ? OK_BG : RED,
+                    color: isReviewed ? OK : SURFACE,
                     fontSize: 12, fontWeight: 600, opacity: saving ? 0.7 : 1,
                   }}
                 >
@@ -661,7 +689,7 @@ function SubmissionsPanel({ assignmentId, onClose }: { assignmentId: number; onC
                   {isReviewed ? 'Reviewed' : 'Mark'}
                 </button>
                 {sub.note && (
-                  <span style={{ flexBasis: '100%', fontSize: 11, color: MUTED, background: '#fff', border: `1px solid ${BORDER}`, borderRadius: 6, padding: '4px 8px' }}>
+                  <span style={{ flexBasis: '100%', fontSize: 11, color: MUTED, background: SURFACE, border: `1px solid ${BORDER}`, borderRadius: R_SM, padding: '4px 8px' }}>
                     {sub.note}
                   </span>
                 )}
@@ -670,6 +698,7 @@ function SubmissionsPanel({ assignmentId, onClose }: { assignmentId: number; onC
                     <AlertCircle size={11} aria-hidden /> {err}
                     <button
                       onClick={() => void handleSetReviewed(sub, !isReviewed)}
+                      className="hw-link"
                       style={{ fontSize: 11, fontWeight: 600, color: RED, background: 'none', border: 'none', textDecoration: 'underline', cursor: 'pointer', padding: 0 }}
                     >
                       Retry
@@ -732,6 +761,7 @@ export default function HomeworkClient({ initialAssignments, sessions, allMateri
   return (
     <>
       <style>{SPIN_CSS}</style>
+      <style>{HW_LOCAL_STYLES}</style>
       <PageHeader
         title="Homework"
         subtitle={`${assignments.length} assignment${assignments.length !== 1 ? 's' : ''}`}
@@ -746,12 +776,12 @@ export default function HomeworkClient({ initialAssignments, sessions, allMateri
       {/* Subject filter */}
       <div style={{ display: 'flex', gap: 8, marginBottom: 20, flexWrap: 'wrap' }}>
         {['all', ...SUBJECTS].map(s => (
-          <button key={s} onClick={() => setSubjectFilter(s)} style={{
-            padding: '5px 12px', borderRadius: 100, fontSize: 12, cursor: 'pointer',
+          <button key={s} onClick={() => setSubjectFilter(s)} className="hw-pill" style={{
+            padding: '5px 12px', borderRadius: R_PILL, fontSize: 12, cursor: 'pointer',
             fontWeight: subjectFilter === s ? 600 : 400,
             border: `1.5px solid ${subjectFilter === s ? RED : BORDER}`,
-            background: subjectFilter === s ? 'rgba(214,43,56,0.05)' : '#FFFFFF',
-            color: subjectFilter === s ? RED : '#6B7280',
+            background: subjectFilter === s ? `${RED}0D` : SURFACE,
+            color: subjectFilter === s ? RED : MUTED,
           }}>
             {s === 'all' ? 'All' : s.charAt(0).toUpperCase() + s.slice(1)}
           </button>
@@ -768,8 +798,8 @@ export default function HomeworkClient({ initialAssignments, sessions, allMateri
               key={a.id}
               custom={i} variants={rowV} initial="hidden" animate="visible"
               style={{
-                background: '#FFFFFF', border: `1px solid ${BORDER}`,
-                borderRadius: 10, padding: '14px 16px',
+                background: SURFACE, border: `1px solid ${BORDER}`,
+                borderRadius: R_LG, padding: '14px 16px', boxShadow: SHADOW_SM,
               }}
             >
               <div style={{ display: 'flex', alignItems: 'flex-start', gap: 12 }}>
@@ -779,12 +809,12 @@ export default function HomeworkClient({ initialAssignments, sessions, allMateri
                     <SubjectBadge subject={a.subject} />
                     <DueChip epochMs={a.dueAt} />
                     {a.batch && (
-                      <span style={{ fontSize: 11, color: MUTED, background: BG, border: `1px solid ${BORDER}`, padding: '2px 7px', borderRadius: 100 }}>
+                      <span style={{ fontSize: 11, color: MUTED, background: BG, border: `1px solid ${BORDER}`, padding: '2px 7px', borderRadius: R_PILL }}>
                         Batch {a.batch}
                       </span>
                     )}
                   </div>
-                  <p style={{ margin: '0 0 4px', fontSize: 12, color: '#6B7280', lineHeight: 1.4,
+                  <p style={{ margin: '0 0 4px', fontSize: 12, color: INK_SOFT, lineHeight: 1.4,
                     display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical' as const, overflow: 'hidden' }}>
                     {a.description}
                   </p>
@@ -797,12 +827,13 @@ export default function HomeworkClient({ initialAssignments, sessions, allMateri
                   <button
                     onClick={() => setExpandedSubmissions(expandedSubmissions === a.id ? null : a.id)}
                     title="View submissions"
+                    className="hw-pill"
                     style={{
                       display: 'flex', alignItems: 'center', gap: 4,
-                      padding: '4px 8px', borderRadius: 6, fontSize: 11, fontWeight: 500,
+                      padding: '4px 8px', borderRadius: R_SM, fontSize: 11, fontWeight: 500,
                       border: `1px solid ${expandedSubmissions === a.id ? RED : BORDER}`,
-                      background: expandedSubmissions === a.id ? 'rgba(214,43,56,0.05)' : '#FFF',
-                      color: expandedSubmissions === a.id ? RED : '#6B7280', cursor: 'pointer',
+                      background: expandedSubmissions === a.id ? `${RED}0D` : SURFACE,
+                      color: expandedSubmissions === a.id ? RED : MUTED, cursor: 'pointer',
                     }}
                   >
                     {expandedSubmissions === a.id ? <ChevronUp size={11} aria-hidden /> : <ChevronDown size={11} aria-hidden />}

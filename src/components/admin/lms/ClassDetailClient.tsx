@@ -27,7 +27,17 @@ import {
 } from 'lucide-react';
 import { formatDhaka } from '@/lib/lms/time';
 import { uploadToR2 } from '@/lib/lms/upload-client';
-import { useConfirm } from './lms-shared';
+import {
+  useConfirm,
+  EmptyState,
+  SURFACE, SURFACE_ALT, BORDER, MUTED, BG, SLATE, INK_SOFT,
+  RED, RED_HOVER, RED_DARK,
+  OK, OK_BG, WARN, WARN_BG, INFO, INFO_BG,
+  R_MD, R_LG, R_PILL,
+  SHADOW_SM,
+  FONT_HEADING,
+  SPIN_CSS,
+} from './lms-shared';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -120,41 +130,82 @@ interface Props {
   initialMaterials: MaterialInfo[];
 }
 
+// ─── Local styles (hover / focus-visible — inline style props can't express
+//     pseudo-classes, so this scoped stylesheet fills that gap using the same
+//     imported tokens as everything else in this file) ────────────────────────
+
+const LOCAL_STYLES = `
+  .cdc-iconbtn { transition: background-color .15s, color .15s; }
+  .cdc-iconbtn:hover:not(:disabled) { background: ${SURFACE_ALT}; }
+  .cdc-iconbtn.cdc-danger:hover:not(:disabled) { background: ${RED}14; color: ${RED}; }
+  .cdc-link { transition: color .15s; }
+  .cdc-link:hover { color: ${RED_DARK}; }
+  .cdc-btn-primary { transition: background-color .15s; }
+  .cdc-btn-primary:hover:not(:disabled) { background: ${RED_HOVER}; }
+  .cdc-iconbtn:focus-visible, .cdc-link:focus-visible, .cdc-btn-primary:focus-visible,
+  .cdc-input:focus-visible, .cdc-pick-row:focus-visible, .cdc-back:focus-visible {
+    outline: 2px solid ${RED}; outline-offset: 2px;
+  }
+  .cdc-back { transition: background-color .15s; }
+  .cdc-back:hover { background: ${SURFACE_ALT}; }
+  .cdc-pick-row { transition: background-color .15s, border-color .15s; }
+  .cdc-pick-row:hover:not(:disabled) { background: ${SURFACE}; border-color: ${BORDER}; }
+`;
+
 // ─── Helpers ─────────────────────────────────────────────────────────────────
 
-function statusBadge(status: string) {
-  const map: Record<string, string> = {
-    draft:     'bg-stone-100 text-stone-500',
-    scheduled: 'bg-blue-50 text-blue-600',
-    live:      'bg-green-50 text-green-600',
-    completed: 'bg-emerald-50 text-emerald-700',
-    cancelled: 'bg-red-50 text-red-600',
-  };
+const STATUS_STYLE: Record<string, { bg: string; color: string }> = {
+  draft:     { bg: SURFACE_ALT, color: MUTED },
+  scheduled: { bg: INFO_BG,     color: INFO },
+  live:      { bg: OK_BG,       color: OK },
+  completed: { bg: OK_BG,       color: OK },
+  cancelled: { bg: `${RED}14`,  color: RED },
+};
+
+const RECORDING_STATUS_STYLE: Record<string, { bg: string; color: string }> = {
+  pending:    { bg: WARN_BG,    color: WARN },
+  processing: { bg: INFO_BG,    color: INFO },
+  available:  { bg: OK_BG,      color: OK },
+  failed:     { bg: `${RED}14`, color: RED },
+  expired:    { bg: SURFACE_ALT, color: MUTED },
+};
+
+function Pill({ children, bg, color }: { children: React.ReactNode; bg: string; color: string }) {
   return (
     <span
-      className={`inline-block text-[10px] uppercase tracking-wider font-semibold px-2 py-0.5 rounded-full ${map[status] ?? 'bg-stone-100 text-stone-500'}`}
+      style={{
+        display: 'inline-block', fontSize: 10, textTransform: 'uppercase', letterSpacing: '0.05em',
+        fontWeight: 600, padding: '2px 9px', borderRadius: R_PILL, background: bg, color,
+      }}
     >
-      {status}
+      {children}
     </span>
   );
+}
+
+function statusBadge(status: string) {
+  const s = STATUS_STYLE[status] ?? STATUS_STYLE.draft;
+  return <Pill bg={s.bg} color={s.color}>{status}</Pill>;
 }
 
 function recordingStatusBadge(status: string) {
-  const map: Record<string, string> = {
-    pending:    'bg-amber-50 text-amber-700',
-    processing: 'bg-blue-50 text-blue-600',
-    available:  'bg-emerald-50 text-emerald-700',
-    failed:     'bg-red-50 text-red-600',
-    expired:    'bg-stone-100 text-stone-500',
-  };
-  return (
-    <span
-      className={`inline-block text-[10px] uppercase tracking-wider font-semibold px-2 py-0.5 rounded-full ${map[status] ?? 'bg-stone-100 text-stone-500'}`}
-    >
-      {status}
-    </span>
-  );
+  const s = RECORDING_STATUS_STYLE[status] ?? RECORDING_STATUS_STYLE.expired;
+  return <Pill bg={s.bg} color={s.color}>{status}</Pill>;
 }
+
+const sectionLabel: React.CSSProperties = {
+  fontFamily: FONT_HEADING, fontSize: 12, textTransform: 'uppercase', letterSpacing: '0.08em',
+  color: MUTED, fontWeight: 600, margin: 0,
+};
+
+const cardStyle: React.CSSProperties = {
+  background: SURFACE, borderRadius: R_LG, border: `1px solid ${BORDER}`, boxShadow: SHADOW_SM,
+};
+
+const inputStyle: React.CSSProperties = {
+  fontSize: 12, border: `1px solid ${BORDER}`, borderRadius: R_MD, padding: '7px 10px',
+  color: SLATE, background: SURFACE, outline: 'none',
+};
 
 // ─── Component ────────────────────────────────────────────────────────────────
 
@@ -411,19 +462,33 @@ export default function ClassDetailClient({
   }
 
   return (
-    <div className="min-h-screen bg-[#F7F4F0] pb-16" style={{ colorScheme: 'light' }}>
+    <div style={{ minHeight: '100vh', background: BG, paddingBottom: 64, colorScheme: 'light' }}>
+      <style>{SPIN_CSS}{LOCAL_STYLES}</style>
+
       {/* ── Header ─────────────────────────────────────────────────────────── */}
-      <div className="bg-white border-b border-gray-200 px-4 py-4 flex items-center gap-3">
+      <div style={{
+        background: SURFACE, borderBottom: `1px solid ${BORDER}`,
+        padding: '14px 16px', display: 'flex', alignItems: 'center', gap: 12,
+      }}>
         <Link
           href="/admin/classes"
-          className="flex items-center justify-center w-8 h-8 rounded-full hover:bg-gray-100 transition-colors"
+          className="cdc-back"
           aria-label="Back to classes"
+          style={{
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            width: 44, height: 44, borderRadius: R_PILL, flexShrink: 0,
+          }}
         >
-          <ArrowLeft className="w-4 h-4 text-gray-700" strokeWidth={2} />
+          <ArrowLeft size={16} strokeWidth={2} style={{ color: INK_SOFT }} aria-hidden />
         </Link>
-        <div className="min-w-0 flex-1">
-          <h1 className="text-sm font-semibold text-gray-900 truncate">{classSession.title}</h1>
-          <p className="text-xs text-gray-500 capitalize">
+        <div style={{ minWidth: 0, flex: 1 }}>
+          <h1 style={{
+            margin: 0, fontFamily: FONT_HEADING, fontSize: 15, fontWeight: 700, color: SLATE,
+            overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap',
+          }}>
+            {classSession.title}
+          </h1>
+          <p style={{ margin: 0, fontSize: 12, color: MUTED, textTransform: 'capitalize' }}>
             {classSession.subject} · {classSession.product}
             {classSession.batch ? ` · Batch ${classSession.batch}` : ''}
           </p>
@@ -431,42 +496,46 @@ export default function ClassDetailClient({
         {statusBadge(classSession.status)}
       </div>
 
-      <div className="max-w-3xl mx-auto px-4 pt-5 space-y-5">
+      <div style={{ maxWidth: 720, margin: '0 auto', padding: '20px 16px 0', display: 'flex', flexDirection: 'column', gap: 20 }}>
         {/* ── Session Info ───────────────────────────────────────────────────── */}
-        <section className="bg-white rounded-xl border border-gray-200 p-5">
-          <h2 className="text-xs uppercase tracking-widest text-gray-400 font-semibold mb-3">
-            Class Info
-          </h2>
-          <dl className="grid grid-cols-2 gap-x-4 gap-y-2 text-sm">
-            <dt className="text-gray-500">Scheduled</dt>
-            <dd className="font-medium text-gray-900">
+        <section style={{ ...cardStyle, padding: 20 }}>
+          <h2 style={{ ...sectionLabel, marginBottom: 12 }}>Class Info</h2>
+          <dl style={{
+            display: 'grid', gridTemplateColumns: 'auto 1fr', columnGap: 16, rowGap: 8, fontSize: 13, margin: 0,
+          }}>
+            <dt style={{ color: MUTED, margin: 0 }}>Scheduled</dt>
+            <dd style={{ fontWeight: 500, color: SLATE, margin: 0 }}>
               {formatDhaka(scheduledDate, 'datetime')}
             </dd>
-            <dt className="text-gray-500">Duration</dt>
-            <dd className="font-medium text-gray-900">{classSession.durationMinutes} min</dd>
-            <dt className="text-gray-500">Instructor</dt>
-            <dd className="font-medium text-gray-900">{classSession.instructorName ?? 'Not set'}</dd>
+            <dt style={{ color: MUTED, margin: 0 }}>Duration</dt>
+            <dd style={{ fontWeight: 500, color: SLATE, margin: 0 }}>{classSession.durationMinutes} min</dd>
+            <dt style={{ color: MUTED, margin: 0 }}>Instructor</dt>
+            <dd style={{ fontWeight: 500, color: SLATE, margin: 0 }}>{classSession.instructorName ?? 'Not set'}</dd>
             {classSession.topic && (
               <>
-                <dt className="text-gray-500">Topic</dt>
-                <dd className="font-medium text-gray-900">{classSession.topic}</dd>
+                <dt style={{ color: MUTED, margin: 0 }}>Topic</dt>
+                <dd style={{ fontWeight: 500, color: SLATE, margin: 0 }}>{classSession.topic}</dd>
               </>
             )}
             {classSession.classNumber != null && (
               <>
-                <dt className="text-gray-500">Class #</dt>
-                <dd className="font-medium text-gray-900">{classSession.classNumber}</dd>
+                <dt style={{ color: MUTED, margin: 0 }}>Class #</dt>
+                <dd style={{ fontWeight: 500, color: SLATE, margin: 0 }}>{classSession.classNumber}</dd>
               </>
             )}
             {classSession.meetLink && (
               <>
-                <dt className="text-gray-500">Meet link</dt>
-                <dd>
+                <dt style={{ color: MUTED, margin: 0 }}>Meet link</dt>
+                <dd style={{ margin: 0, minWidth: 0 }}>
                   <a
                     href={classSession.meetLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-blue-600 underline truncate block text-xs"
+                    className="cdc-link"
+                    style={{
+                      color: INFO, textDecoration: 'underline', fontSize: 12,
+                      display: 'block', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap',
+                    }}
                   >
                     {classSession.meetLink}
                   </a>
@@ -475,8 +544,11 @@ export default function ClassDetailClient({
             )}
             {classSession.recallBotId && (
               <>
-                <dt className="text-gray-500">Bot ID</dt>
-                <dd className="text-xs text-gray-500 font-mono truncate">
+                <dt style={{ color: MUTED, margin: 0 }}>Bot ID</dt>
+                <dd style={{
+                  fontSize: 11, color: MUTED, fontFamily: 'monospace', margin: 0,
+                  overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap',
+                }}>
                   {classSession.recallBotId}
                 </dd>
               </>
@@ -485,45 +557,46 @@ export default function ClassDetailClient({
         </section>
 
         {/* ── Recording ─────────────────────────────────────────────────────── */}
-        <section className="bg-white rounded-xl border border-gray-200 p-5">
-          <div className="flex items-center gap-2 mb-3">
-            <Video className="w-4 h-4 text-gray-400" strokeWidth={1.5} />
-            <h2 className="text-xs uppercase tracking-widest text-gray-400 font-semibold">
-              Recording
-            </h2>
+        <section style={{ ...cardStyle, padding: 20 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 12 }}>
+            <Video size={15} strokeWidth={1.5} style={{ color: MUTED }} aria-hidden />
+            <h2 style={sectionLabel}>Recording</h2>
           </div>
 
           {!recording ? (
-            <p className="text-sm text-gray-500">No recording for this session.</p>
+            <EmptyState icon={Video} message="No recording for this session." />
           ) : (
-            <div className="space-y-3">
-              <div className="flex items-center gap-2 flex-wrap">
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
                 {recordingStatusBadge(recording.status)}
                 {recording.durationSeconds && (
-                  <span className="text-xs text-gray-500">
+                  <span style={{ fontSize: 12, color: MUTED }}>
                     {Math.round(recording.durationSeconds / 60)} min
                   </span>
                 )}
                 {recording.fileSize && (
-                  <span className="text-xs text-gray-500">
+                  <span style={{ fontSize: 12, color: MUTED }}>
                     {(recording.fileSize / 1_000_000).toFixed(1)} MB
                   </span>
                 )}
               </div>
               {recording.errorMessage && (
-                <p className="text-xs text-red-600 bg-red-50 rounded px-3 py-2">
+                <p style={{
+                  margin: 0, fontSize: 12, color: RED, background: `${RED}14`,
+                  borderRadius: R_MD, padding: '8px 12px',
+                }}>
                   {recording.errorMessage}
                 </p>
               )}
 
               {/* ── Grants ─────────────────────────────────────────────────── */}
-              <div className="border-t border-gray-100 pt-3">
-                <p className="text-xs font-semibold text-gray-700 mb-2">Access Grants</p>
+              <div style={{ borderTop: `1px solid ${BORDER}`, paddingTop: 12 }}>
+                <p style={{ margin: '0 0 8px', fontSize: 12, fontWeight: 600, color: SLATE }}>Access Grants</p>
 
                 {grants.length === 0 ? (
-                  <p className="text-xs text-gray-400">No active grants.</p>
+                  <p style={{ margin: 0, fontSize: 12, color: MUTED }}>No active grants.</p>
                 ) : (
-                  <ul className="space-y-1.5">
+                  <ul style={{ display: 'flex', flexDirection: 'column', gap: 6, margin: 0, padding: 0, listStyle: 'none' }}>
                     {grants.map((g) => {
                       const isExpired = g.expiresAt <= Date.now();
                       const userName =
@@ -533,27 +606,32 @@ export default function ClassDetailClient({
                       return (
                         <li
                           key={g.id}
-                          className="flex items-center gap-2 text-xs"
+                          style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 12 }}
                         >
                           {isExpired ? (
-                            <XCircle className="w-3.5 h-3.5 text-red-400 flex-shrink-0" strokeWidth={1.5} />
+                            <XCircle size={14} strokeWidth={1.5} style={{ color: `${RED}99`, flexShrink: 0 }} aria-hidden />
                           ) : (
-                            <CheckCircle className="w-3.5 h-3.5 text-emerald-500 flex-shrink-0" strokeWidth={1.5} />
+                            <CheckCircle size={14} strokeWidth={1.5} style={{ color: OK, flexShrink: 0 }} aria-hidden />
                           )}
-                          <span className={isExpired ? 'text-gray-400 line-through' : 'text-gray-700'}>
+                          <span style={{ color: isExpired ? MUTED : INK_SOFT, textDecoration: isExpired ? 'line-through' : 'none' }}>
                             {userName}
                           </span>
-                          <span className="text-gray-400">until</span>
-                          <span className={isExpired ? 'text-gray-400' : 'text-gray-700'}>
+                          <span style={{ color: MUTED }}>until</span>
+                          <span style={{ color: isExpired ? MUTED : INK_SOFT }}>
                             {formatDhaka(new Date(g.expiresAt), 'datetime')}
                           </span>
                           {!isExpired && (
                             <button
                               onClick={() => handleRevoke(g.id)}
-                              className="ml-auto text-red-400 hover:text-red-600 transition-colors"
+                              className="cdc-iconbtn cdc-danger"
                               aria-label="Revoke grant"
+                              style={{
+                                marginLeft: 'auto', display: 'flex', alignItems: 'center', justifyContent: 'center',
+                                width: 32, height: 32, borderRadius: R_MD, border: 'none', background: 'transparent',
+                                color: `${RED}99`, cursor: 'pointer', flexShrink: 0,
+                              }}
                             >
-                              <Trash2 className="w-3.5 h-3.5" strokeWidth={1.5} />
+                              <Trash2 size={14} strokeWidth={1.5} aria-hidden />
                             </button>
                           )}
                         </li>
@@ -563,50 +641,63 @@ export default function ClassDetailClient({
                 )}
 
                 {/* Grant form */}
-                <form onSubmit={(e) => { void handleGrant(e); }} className="mt-3 pt-3 border-t border-gray-100 space-y-2">
-                  <p className="text-xs font-semibold text-gray-700 flex items-center gap-1">
-                    <Plus className="w-3 h-3" strokeWidth={2} /> Add Extension Grant
+                <form onSubmit={(e) => { void handleGrant(e); }} style={{
+                  marginTop: 12, paddingTop: 12, borderTop: `1px solid ${BORDER}`,
+                  display: 'flex', flexDirection: 'column', gap: 8,
+                }}>
+                  <p style={{ margin: 0, fontSize: 12, fontWeight: 600, color: SLATE, display: 'flex', alignItems: 'center', gap: 4 }}>
+                    <Plus size={12} strokeWidth={2} aria-hidden /> Add Extension Grant
                   </p>
 
-                  <div className="flex flex-col sm:flex-row gap-2">
-                    <select
-                      value={grantUserId}
-                      onChange={(e) => setGrantUserId(e.target.value)}
-                      className="flex-1 text-xs border border-gray-200 rounded-lg px-2.5 py-1.5 text-gray-700 bg-white focus:outline-none focus:ring-2 focus:ring-[#D62B38]/30"
-                    >
-                      <option value="">Whole batch</option>
-                      {allUsers.map((u) => (
-                        <option key={u.id} value={String(u.id)}>
-                          {u.name} ({u.email})
-                        </option>
-                      ))}
-                    </select>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
+                      <select
+                        value={grantUserId}
+                        onChange={(e) => setGrantUserId(e.target.value)}
+                        className="cdc-input"
+                        style={{ ...inputStyle, flex: '1 1 160px', minWidth: 0 }}
+                      >
+                        <option value="">Whole batch</option>
+                        {allUsers.map((u) => (
+                          <option key={u.id} value={String(u.id)}>
+                            {u.name} ({u.email})
+                          </option>
+                        ))}
+                      </select>
 
-                    <input
-                      type="datetime-local"
-                      value={grantExpiry}
-                      onChange={(e) => setGrantExpiry(e.target.value)}
-                      className="flex-1 text-xs border border-gray-200 rounded-lg px-2.5 py-1.5 text-gray-700 bg-white focus:outline-none focus:ring-2 focus:ring-[#D62B38]/30"
-                      required
-                    />
+                      <input
+                        type="datetime-local"
+                        value={grantExpiry}
+                        onChange={(e) => setGrantExpiry(e.target.value)}
+                        className="cdc-input"
+                        style={{ ...inputStyle, flex: '1 1 160px', minWidth: 0 }}
+                        required
+                      />
 
-                    <motion.button
-                      type="submit"
-                      disabled={isPending}
-                      whileTap={{ scale: 0.97 }}
-                      className="flex items-center gap-1.5 text-xs font-medium bg-[#D62B38] text-white px-3 py-1.5 rounded-lg disabled:opacity-60 whitespace-nowrap"
-                    >
-                      {isPending ? (
-                        <Loader2 className="w-3 h-3 animate-spin" />
-                      ) : (
-                        <Plus className="w-3 h-3" strokeWidth={2} />
-                      )}
-                      Grant
-                    </motion.button>
+                      <motion.button
+                        type="submit"
+                        disabled={isPending}
+                        whileTap={{ scale: 0.97 }}
+                        className="cdc-btn-primary"
+                        style={{
+                          display: 'flex', alignItems: 'center', gap: 6, fontSize: 12, fontWeight: 600,
+                          background: RED, color: SURFACE, padding: '0 14px', height: 40, borderRadius: R_MD,
+                          border: 'none', cursor: isPending ? 'not-allowed' : 'pointer',
+                          opacity: isPending ? 0.6 : 1, whiteSpace: 'nowrap',
+                        }}
+                      >
+                        {isPending ? (
+                          <Loader2 size={13} className="animate-spin" aria-hidden />
+                        ) : (
+                          <Plus size={13} strokeWidth={2} aria-hidden />
+                        )}
+                        Grant
+                      </motion.button>
+                    </div>
                   </div>
 
                   {grantError && (
-                    <p className="text-xs text-red-600">{grantError}</p>
+                    <p style={{ margin: 0, fontSize: 12, color: RED }}>{grantError}</p>
                   )}
                 </form>
               </div>
@@ -615,52 +706,62 @@ export default function ClassDetailClient({
         </section>
 
         {/* ── Materials ────────────────────────────────────────────────────── */}
-        <section className="bg-white rounded-xl border border-gray-200 p-5">
-          <div className="flex items-center justify-between mb-3">
-            <div className="flex items-center gap-2">
-              <FileText className="w-4 h-4 text-gray-400" strokeWidth={1.5} />
-              <h2 className="text-xs uppercase tracking-widest text-gray-400 font-semibold">
-                Lecture Materials ({sessionMats.length})
-              </h2>
+        <section style={{ ...cardStyle, padding: 20 }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 12, flexWrap: 'wrap', gap: 8 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+              <FileText size={15} strokeWidth={1.5} style={{ color: MUTED }} aria-hidden />
+              <h2 style={sectionLabel}>Lecture Materials ({sessionMats.length})</h2>
             </div>
-            <div className="flex items-center gap-2">
-              <button
-                onClick={() => void openAttachPicker()}
-                className="flex items-center gap-1 text-xs text-blue-600 hover:text-blue-700 font-medium"
-              >
-                <Link2 className="w-3.5 h-3.5" strokeWidth={2} />
-                Attach existing
-              </button>
-            </div>
+            <button
+              onClick={() => void openAttachPicker()}
+              className="cdc-link"
+              style={{
+                display: 'flex', alignItems: 'center', gap: 4, fontSize: 12, fontWeight: 600,
+                color: INFO, background: 'none', border: 'none', cursor: 'pointer', padding: '4px 0',
+              }}
+            >
+              <Link2 size={13} strokeWidth={2} aria-hidden />
+              Attach existing
+            </button>
           </div>
 
           {matError && (
-            <p className="text-xs text-red-600 mb-2">{matError}</p>
+            <p style={{ margin: '0 0 8px', fontSize: 12, color: RED }}>{matError}</p>
           )}
 
           {/* Attached materials list */}
           {sessionMats.length === 0 ? (
-            <p className="text-sm text-gray-400 mb-3">No PDFs attached yet.</p>
+            <p style={{ margin: '0 0 12px', fontSize: 13, color: MUTED }}>No PDFs attached yet.</p>
           ) : (
-            <ul className="space-y-1.5 mb-3">
+            <ul style={{ display: 'flex', flexDirection: 'column', gap: 6, margin: '0 0 12px', padding: 0, listStyle: 'none' }}>
               {sessionMats.map((m) => (
-                <li key={m.id} className="flex items-center gap-2 text-xs bg-gray-50 rounded-lg px-3 py-2">
-                  <FileText className="w-3.5 h-3.5 text-gray-400 flex-shrink-0" strokeWidth={1.5} />
-                  <span className="flex-1 font-medium text-gray-800 truncate">{m.title}</span>
+                <li key={m.id} style={{
+                  display: 'flex', alignItems: 'center', gap: 8, fontSize: 12,
+                  background: SURFACE_ALT, borderRadius: R_MD, padding: '8px 12px',
+                }}>
+                  <FileText size={14} strokeWidth={1.5} style={{ color: MUTED, flexShrink: 0 }} aria-hidden />
+                  <span style={{ flex: 1, fontWeight: 500, color: SLATE, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                    {m.title}
+                  </span>
                   {m.fileSize && (
-                    <span className="text-gray-400 flex-shrink-0">
+                    <span style={{ color: MUTED, flexShrink: 0 }}>
                       {(m.fileSize / 1_000_000).toFixed(1)} MB
                     </span>
                   )}
                   <button
                     onClick={() => void handleDetach(m.id)}
                     disabled={detachingId === m.id}
-                    className="flex-shrink-0 text-gray-300 hover:text-red-500 transition-colors disabled:opacity-40"
+                    className="cdc-iconbtn cdc-danger"
                     aria-label="Detach"
+                    style={{
+                      flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center',
+                      width: 32, height: 32, borderRadius: R_MD, border: 'none', background: 'transparent',
+                      color: MUTED, cursor: 'pointer', opacity: detachingId === m.id ? 0.4 : 1,
+                    }}
                   >
                     {detachingId === m.id
-                      ? <Loader2 className="w-3.5 h-3.5 animate-spin" strokeWidth={1.5} />
-                      : <XIcon className="w-3.5 h-3.5" strokeWidth={1.5} />
+                      ? <Loader2 size={14} className="animate-spin" aria-hidden />
+                      : <XIcon size={14} strokeWidth={1.5} aria-hidden />
                     }
                   </button>
                 </li>
@@ -670,16 +771,16 @@ export default function ClassDetailClient({
 
           {/* Attach existing picker */}
           {showAttachPicker && (
-            <div className="border border-gray-200 rounded-lg p-3 mb-3 bg-gray-50">
-              <p className="text-xs font-semibold text-gray-700 mb-2">Pick an existing PDF</p>
+            <div style={{ border: `1px solid ${BORDER}`, borderRadius: R_MD, padding: 12, marginBottom: 12, background: BG }}>
+              <p style={{ margin: '0 0 8px', fontSize: 12, fontWeight: 600, color: SLATE }}>Pick an existing PDF</p>
               {loadingAllMats ? (
-                <p className="text-xs text-gray-400 flex items-center gap-1">
-                  <Loader2 className="w-3 h-3 animate-spin" /> Loading…
+                <p style={{ margin: 0, fontSize: 12, color: MUTED, display: 'flex', alignItems: 'center', gap: 4 }}>
+                  <Loader2 size={12} className="animate-spin" aria-hidden /> Loading…
                 </p>
               ) : (
-                <div className="space-y-1 max-h-48 overflow-y-auto">
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 4, maxHeight: 192, overflowY: 'auto' }}>
                   {allMaterials.filter((m) => !sessionMats.find((s) => s.id === m.id)).length === 0 ? (
-                    <p className="text-xs text-gray-400">No other PDFs available.</p>
+                    <p style={{ margin: 0, fontSize: 12, color: MUTED }}>No other PDFs available.</p>
                   ) : (
                     allMaterials
                       .filter((m) => !sessionMats.find((s) => s.id === m.id))
@@ -688,11 +789,19 @@ export default function ClassDetailClient({
                           key={m.id}
                           onClick={() => void handleAttach(m.id)}
                           disabled={attachingId === m.id}
-                          className="w-full text-left flex items-center gap-2 text-xs px-2.5 py-2 rounded-lg hover:bg-white border border-transparent hover:border-gray-200 transition-colors disabled:opacity-60"
+                          className="cdc-pick-row"
+                          style={{
+                            width: '100%', textAlign: 'left', display: 'flex', alignItems: 'center', gap: 8,
+                            fontSize: 12, padding: '8px 10px', borderRadius: R_MD,
+                            border: `1px solid transparent`, background: 'none', cursor: 'pointer',
+                            opacity: attachingId === m.id ? 0.6 : 1,
+                          }}
                         >
-                          <FileText className="w-3.5 h-3.5 text-gray-400 flex-shrink-0" strokeWidth={1.5} />
-                          <span className="flex-1 font-medium text-gray-700 truncate">{m.title}</span>
-                          {attachingId === m.id && <Loader2 className="w-3 h-3 animate-spin text-gray-400" />}
+                          <FileText size={14} strokeWidth={1.5} style={{ color: MUTED, flexShrink: 0 }} aria-hidden />
+                          <span style={{ flex: 1, fontWeight: 500, color: INK_SOFT, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                            {m.title}
+                          </span>
+                          {attachingId === m.id && <Loader2 size={12} className="animate-spin" style={{ color: MUTED }} aria-hidden />}
                         </button>
                       ))
                   )}
@@ -700,7 +809,8 @@ export default function ClassDetailClient({
               )}
               <button
                 onClick={() => setShowAttachPicker(false)}
-                className="mt-2 text-xs text-gray-400 hover:text-gray-600"
+                className="cdc-link"
+                style={{ marginTop: 8, fontSize: 12, color: MUTED, background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}
               >
                 Cancel
               </button>
@@ -708,28 +818,32 @@ export default function ClassDetailClient({
           )}
 
           {/* Upload new PDF */}
-          <div className="border-t border-gray-100 pt-3">
-            <p className="text-xs font-semibold text-gray-700 mb-2 flex items-center gap-1">
-              <Upload className="w-3.5 h-3.5" strokeWidth={2} /> Upload new PDF
+          <div style={{ borderTop: `1px solid ${BORDER}`, paddingTop: 12 }}>
+            <p style={{ margin: '0 0 8px', fontSize: 12, fontWeight: 600, color: SLATE, display: 'flex', alignItems: 'center', gap: 4 }}>
+              <Upload size={13} strokeWidth={2} aria-hidden /> Upload new PDF
             </p>
-            <div className="space-y-2">
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
               <input
                 type="text"
                 placeholder="PDF title (optional)"
                 value={matUploadTitle}
                 onChange={(e) => setMatUploadTitle(e.target.value)}
-                className="w-full text-xs border border-gray-200 rounded-lg px-2.5 py-1.5 text-gray-700 bg-white focus:outline-none focus:ring-2 focus:ring-[#D62B38]/30"
+                className="cdc-input"
+                style={{ ...inputStyle, width: '100%', boxSizing: 'border-box' }}
               />
-              <div className="flex items-center gap-2">
-                <label className="flex-1 flex items-center gap-2 text-xs border border-dashed border-gray-300 rounded-lg px-3 py-2 cursor-pointer hover:border-gray-400 transition-colors">
-                  <FileText className="w-3.5 h-3.5 text-gray-400" strokeWidth={1.5} />
-                  <span className="text-gray-500 truncate">
+              <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
+                <label style={{
+                  flex: '1 1 160px', minWidth: 0, display: 'flex', alignItems: 'center', gap: 6, fontSize: 12,
+                  border: `1px dashed ${BORDER}`, borderRadius: R_MD, padding: '8px 12px', cursor: 'pointer',
+                }}>
+                  <FileText size={14} strokeWidth={1.5} style={{ color: MUTED, flexShrink: 0 }} aria-hidden />
+                  <span style={{ color: MUTED, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                     {matUploadFile ? matUploadFile.name : 'Choose PDF file…'}
                   </span>
                   <input
                     type="file"
                     accept=".pdf"
-                    className="sr-only"
+                    style={{ position: 'absolute', width: 1, height: 1, overflow: 'hidden', opacity: 0 }}
                     onChange={(e) => setMatUploadFile(e.target.files?.[0] ?? null)}
                   />
                 </label>
@@ -737,16 +851,22 @@ export default function ClassDetailClient({
                   onClick={() => void handleUploadMaterial()}
                   disabled={!matUploadFile || matUploading}
                   whileTap={{ scale: 0.97 }}
-                  className="flex items-center gap-1 text-xs font-medium bg-[#D62B38] text-white px-3 py-1.5 rounded-lg disabled:opacity-50 whitespace-nowrap"
+                  className="cdc-btn-primary"
+                  style={{
+                    display: 'flex', alignItems: 'center', gap: 6, fontSize: 12, fontWeight: 600,
+                    background: RED, color: SURFACE, height: 40, padding: '0 14px', borderRadius: R_MD,
+                    border: 'none', cursor: (!matUploadFile || matUploading) ? 'not-allowed' : 'pointer',
+                    opacity: (!matUploadFile || matUploading) ? 0.5 : 1, whiteSpace: 'nowrap',
+                  }}
                 >
                   {matUploading ? (
                     <>
-                      <Loader2 className="w-3 h-3 animate-spin" />
+                      <Loader2 size={13} className="animate-spin" aria-hidden />
                       {matUploadProgress < 100 ? `${matUploadProgress}%` : 'Saving…'}
                     </>
                   ) : (
                     <>
-                      <Upload className="w-3 h-3" strokeWidth={2} />
+                      <Upload size={13} strokeWidth={2} aria-hidden />
                       Upload
                     </>
                   )}
@@ -757,33 +877,31 @@ export default function ClassDetailClient({
         </section>
 
         {/* ── Attendance ────────────────────────────────────────────────────── */}
-        <section className="bg-white rounded-xl border border-gray-200 overflow-hidden">
-          <div className="px-5 py-4 border-b border-gray-100 flex items-center gap-2">
-            <Users className="w-4 h-4 text-gray-400" strokeWidth={1.5} />
-            <h2 className="text-xs uppercase tracking-widest text-gray-400 font-semibold">
-              Attendance ({attendance.length})
-            </h2>
+        <section style={{ ...cardStyle, overflow: 'hidden' }}>
+          <div style={{ padding: '16px 20px', borderBottom: `1px solid ${BORDER}`, display: 'flex', alignItems: 'center', gap: 8 }}>
+            <Users size={15} strokeWidth={1.5} style={{ color: MUTED }} aria-hidden />
+            <h2 style={sectionLabel}>Attendance ({attendance.length})</h2>
           </div>
 
           {attendance.length === 0 ? (
-            <div className="px-5 py-4">
-              <p className="text-sm text-gray-500">No attendance recorded yet.</p>
+            <div style={{ padding: 20 }}>
+              <EmptyState icon={Users} message="No attendance recorded yet." />
             </div>
           ) : (
-            <div className="overflow-x-auto">
-              <table className="w-full text-xs">
+            <div style={{ overflowX: 'auto' }}>
+              <table style={{ width: '100%', fontSize: 12, borderCollapse: 'collapse' }}>
                 <thead>
-                  <tr className="bg-gray-50 border-b border-gray-100">
-                    <th className="text-left px-4 py-2.5 font-medium text-gray-500">Student</th>
-                    <th className="text-left px-4 py-2.5 font-medium text-gray-500 whitespace-nowrap">
+                  <tr style={{ background: SURFACE_ALT, borderBottom: `1px solid ${BORDER}` }}>
+                    <th style={{ textAlign: 'left', padding: '10px 16px', fontWeight: 600, color: MUTED }}>Student</th>
+                    <th style={{ textAlign: 'left', padding: '10px 16px', fontWeight: 600, color: MUTED, whiteSpace: 'nowrap' }}>
                       Joined (Dhaka)
                     </th>
                     {recording && (
                       <>
-                        <th className="text-right px-4 py-2.5 font-medium text-gray-500">
+                        <th style={{ textAlign: 'right', padding: '10px 16px', fontWeight: 600, color: MUTED }}>
                           Watched
                         </th>
-                        <th className="text-right px-4 py-2.5 font-medium text-gray-500">
+                        <th style={{ textAlign: 'right', padding: '10px 16px', fontWeight: 600, color: MUTED }}>
                           Progress
                         </th>
                       </>
@@ -794,40 +912,39 @@ export default function ClassDetailClient({
                   {attendance.map((row, i) => (
                     <tr
                       key={row.userId}
-                      className={`border-b border-gray-50 ${i % 2 === 0 ? '' : 'bg-gray-50/30'}`}
+                      style={{ borderBottom: `1px solid ${BORDER}`, background: i % 2 === 0 ? 'transparent' : SURFACE_ALT }}
                     >
-                      <td className="px-4 py-2.5">
-                        <p className="font-medium text-gray-900">{row.name}</p>
-                        <p className="text-gray-400 text-[10px]">{row.email}</p>
+                      <td style={{ padding: '10px 16px' }}>
+                        <p style={{ margin: 0, fontWeight: 500, color: SLATE }}>{row.name}</p>
+                        <p style={{ margin: 0, color: MUTED, fontSize: 10 }}>{row.email}</p>
                       </td>
-                      <td className="px-4 py-2.5 text-gray-600 whitespace-nowrap">
-                        <span className="flex items-center gap-1">
-                          <Clock className="w-3 h-3 text-gray-400 flex-shrink-0" strokeWidth={1.5} />
+                      <td style={{ padding: '10px 16px', color: INK_SOFT, whiteSpace: 'nowrap' }}>
+                        <span style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
+                          <Clock size={12} style={{ color: MUTED, flexShrink: 0 }} strokeWidth={1.5} aria-hidden />
                           {formatDhaka(new Date(row.joinedAt), 'time')}
                         </span>
                       </td>
                       {recording && (
                         <>
-                          <td className="px-4 py-2.5 text-right text-gray-600">
+                          <td style={{ padding: '10px 16px', textAlign: 'right', color: INK_SOFT, fontVariantNumeric: 'tabular-nums' }}>
                             {row.watchProgress
                               ? `${Math.round(row.watchProgress.secondsWatched / 60)} min`
                               : '—'}
                           </td>
-                          <td className="px-4 py-2.5 text-right">
+                          <td style={{ padding: '10px 16px', textAlign: 'right' }}>
                             {row.watchProgress ? (
-                              <div className="flex items-center justify-end gap-2">
-                                <div className="w-16 h-1.5 rounded-full bg-gray-100 overflow-hidden">
+                              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', gap: 8 }}>
+                                <div style={{ width: 64, height: 6, borderRadius: R_PILL, background: BORDER, overflow: 'hidden' }}>
                                   <div
-                                    className="h-full bg-emerald-500 rounded-full"
-                                    style={{ width: `${row.watchProgress.completedPercent}%` }}
+                                    style={{ height: '100%', borderRadius: R_PILL, background: OK, width: `${row.watchProgress.completedPercent}%` }}
                                   />
                                 </div>
-                                <span className="text-gray-600 w-8 text-right">
+                                <span style={{ color: INK_SOFT, width: 32, textAlign: 'right', fontVariantNumeric: 'tabular-nums' }}>
                                   {row.watchProgress.completedPercent}%
                                 </span>
                               </div>
                             ) : (
-                              <span className="text-gray-400">—</span>
+                              <span style={{ color: MUTED }}>—</span>
                             )}
                           </td>
                         </>
@@ -840,84 +957,93 @@ export default function ClassDetailClient({
           )}
         </section>
         {/* ── Q&A ──────────────────────────────────────────────────────────── */}
-        <section className="bg-white rounded-xl border border-gray-200 overflow-hidden">
-          <div className="px-5 py-4 border-b border-gray-100 flex items-center gap-2">
-            <MessageSquare className="w-4 h-4 text-gray-400" strokeWidth={1.5} />
-            <h2 className="text-xs uppercase tracking-widest text-gray-400 font-semibold">
-              Q&amp;A ({threads.length})
-            </h2>
+        <section style={{ ...cardStyle, overflow: 'hidden' }}>
+          <div style={{ padding: '16px 20px', borderBottom: `1px solid ${BORDER}`, display: 'flex', alignItems: 'center', gap: 8 }}>
+            <MessageSquare size={15} strokeWidth={1.5} style={{ color: MUTED }} aria-hidden />
+            <h2 style={sectionLabel}>Q&amp;A ({threads.length})</h2>
           </div>
 
-          <div className="divide-y divide-gray-50">
+          <div>
             {threads.length === 0 ? (
-              <p className="px-5 py-4 text-sm text-gray-500">No questions yet.</p>
+              <div style={{ padding: 20 }}>
+                <EmptyState icon={MessageSquare} message="No questions yet." />
+              </div>
             ) : (
-              threads.map((thread) => (
-                <div key={thread.id} className="px-5 py-4 space-y-2">
+              threads.map((thread, i) => (
+                <div key={thread.id} style={{
+                  padding: '16px 20px', display: 'flex', flexDirection: 'column', gap: 8,
+                  borderTop: i === 0 ? 'none' : `1px solid ${BORDER}`,
+                }}>
                   {/* Question row */}
-                  <div className="flex items-start gap-2">
-                    <div className="flex-1 min-w-0">
-                      <div className="flex items-center gap-1.5 mb-1 flex-wrap">
-                        <span className="text-xs font-semibold text-gray-900">{thread.userName}</span>
-                        {thread.isStaff && (
-                          <span className="text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full bg-[#D62B38] text-white">
-                            Staff
-                          </span>
-                        )}
-                        <span className="text-[10px] text-gray-400 ml-auto">
+                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: 8 }}>
+                    <div style={{ flex: 1, minWidth: 0 }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 4, flexWrap: 'wrap' }}>
+                        <span style={{ fontSize: 12, fontWeight: 600, color: SLATE }}>{thread.userName}</span>
+                        {thread.isStaff && <Pill bg={RED} color={SURFACE}>Staff</Pill>}
+                        <span style={{ fontSize: 10, color: MUTED, marginLeft: 'auto' }}>
                           {formatDhaka(new Date(thread.createdAt), 'datetime')}
                         </span>
                       </div>
-                      <p className="text-sm text-gray-700 leading-relaxed">{thread.body}</p>
+                      <p style={{ margin: 0, fontSize: 13, color: INK_SOFT, lineHeight: 1.5 }}>{thread.body}</p>
                     </div>
                     <button
                       onClick={() => void handleDeleteQA(thread.id)}
                       disabled={deletingId === thread.id}
-                      className="flex-shrink-0 p-1 text-gray-300 hover:text-red-500 transition-colors disabled:opacity-40"
+                      className="cdc-iconbtn cdc-danger"
                       aria-label="Delete question"
+                      style={{
+                        flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center',
+                        width: 32, height: 32, borderRadius: R_MD, border: 'none', background: 'transparent',
+                        color: MUTED, cursor: 'pointer', opacity: deletingId === thread.id ? 0.4 : 1,
+                      }}
                     >
                       {deletingId === thread.id
-                        ? <Loader2 className="w-3.5 h-3.5 animate-spin" strokeWidth={1.5} />
-                        : <Trash2 className="w-3.5 h-3.5" strokeWidth={1.5} />
+                        ? <Loader2 size={14} className="animate-spin" aria-hidden />
+                        : <Trash2 size={14} strokeWidth={1.5} aria-hidden />
                       }
                     </button>
                   </div>
 
                   {/* Answers */}
                   {thread.answers.length > 0 && (
-                    <div className="ml-4 space-y-2 border-l-2 border-[#D62B38]/20 pl-3">
+                    <div style={{ marginLeft: 16, paddingLeft: 12, borderLeft: `2px solid ${RED}33`, display: 'flex', flexDirection: 'column', gap: 8 }}>
                       {thread.answers.map((ans) => (
-                        <div key={ans.id} className={`rounded-lg p-2.5 ${ans.isStaff ? 'bg-red-50 border border-red-100' : 'bg-gray-50'}`}>
-                          <div className="flex items-center gap-1.5 mb-1 flex-wrap">
-                            <span className="text-xs font-semibold text-gray-900">{ans.userName}</span>
-                            {ans.isStaff && (
-                              <span className="text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full bg-[#D62B38] text-white">
-                                Staff
-                              </span>
-                            )}
-                            <span className="text-[10px] text-gray-400 ml-auto">
+                        <div key={ans.id} style={{
+                          borderRadius: R_MD, padding: 10,
+                          background: ans.isStaff ? `${RED}0D` : SURFACE_ALT,
+                          border: ans.isStaff ? `1px solid ${RED}26` : 'none',
+                        }}>
+                          <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 4, flexWrap: 'wrap' }}>
+                            <span style={{ fontSize: 12, fontWeight: 600, color: SLATE }}>{ans.userName}</span>
+                            {ans.isStaff && <Pill bg={RED} color={SURFACE}>Staff</Pill>}
+                            <span style={{ fontSize: 10, color: MUTED, marginLeft: 'auto' }}>
                               {formatDhaka(new Date(ans.createdAt), 'time')}
                             </span>
                             <button
                               onClick={() => void handleDeleteQA(ans.id, thread.id)}
                               disabled={deletingId === ans.id}
-                              className="p-0.5 text-gray-300 hover:text-red-500 transition-colors disabled:opacity-40"
+                              className="cdc-iconbtn cdc-danger"
                               aria-label="Delete answer"
+                              style={{
+                                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                                width: 28, height: 28, borderRadius: R_MD, border: 'none', background: 'transparent',
+                                color: MUTED, cursor: 'pointer', opacity: deletingId === ans.id ? 0.4 : 1,
+                              }}
                             >
                               {deletingId === ans.id
-                                ? <Loader2 className="w-3 h-3 animate-spin" strokeWidth={1.5} />
-                                : <Trash2 className="w-3 h-3" strokeWidth={1.5} />
+                                ? <Loader2 size={12} className="animate-spin" aria-hidden />
+                                : <Trash2 size={12} strokeWidth={1.5} aria-hidden />
                               }
                             </button>
                           </div>
-                          <p className="text-xs text-gray-700 leading-relaxed">{ans.body}</p>
+                          <p style={{ margin: 0, fontSize: 12, color: INK_SOFT, lineHeight: 1.5 }}>{ans.body}</p>
                         </div>
                       ))}
                     </div>
                   )}
 
                   {/* Answer composer (staff) */}
-                  <div className="ml-4 pl-3 border-l-2 border-gray-100 flex gap-2 mt-1">
+                  <div style={{ marginLeft: 16, paddingLeft: 12, borderLeft: `2px solid ${BORDER}`, display: 'flex', gap: 8, marginTop: 4 }}>
                     <textarea
                       value={answerText[thread.id] ?? ''}
                       onChange={(e) => setAnswerText((prev) => ({ ...prev, [thread.id]: e.target.value }))}
@@ -930,18 +1056,26 @@ export default function ClassDetailClient({
                       placeholder="Reply as instructor…"
                       rows={1}
                       maxLength={2000}
-                      className="flex-1 text-xs text-gray-700 border border-gray-200 rounded-lg px-2.5 py-1.5 bg-white focus:outline-none focus:ring-2 focus:ring-[#D62B38]/30 resize-none"
+                      className="cdc-input"
+                      style={{ ...inputStyle, flex: 1, resize: 'none' }}
                     />
                     <motion.button
                       onClick={() => void handlePostAnswer(thread.id)}
                       disabled={postingAnswer === thread.id || !(answerText[thread.id] ?? '').trim()}
                       whileTap={{ scale: 0.93 }}
-                      className="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-lg bg-[#D62B38] text-white disabled:opacity-50 self-end"
+                      className="cdc-btn-primary"
                       aria-label="Post answer"
+                      style={{
+                        flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center',
+                        width: 40, height: 40, borderRadius: R_MD, border: 'none', background: RED, color: SURFACE,
+                        cursor: (postingAnswer === thread.id || !(answerText[thread.id] ?? '').trim()) ? 'not-allowed' : 'pointer',
+                        opacity: (postingAnswer === thread.id || !(answerText[thread.id] ?? '').trim()) ? 0.5 : 1,
+                        alignSelf: 'flex-end',
+                      }}
                     >
                       {postingAnswer === thread.id
-                        ? <Loader2 className="w-3.5 h-3.5 animate-spin" strokeWidth={2} />
-                        : <Send className="w-3.5 h-3.5" strokeWidth={2} />
+                        ? <Loader2 size={14} className="animate-spin" strokeWidth={2} aria-hidden />
+                        : <Send size={14} strokeWidth={2} aria-hidden />
                       }
                     </motion.button>
                   </div>

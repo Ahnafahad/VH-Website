@@ -13,7 +13,8 @@ import {
   SubjectBadge, StatusBadge, Toast, ConfirmDialog, Modal, useConfirm,
   FieldLabel, FieldInput, FieldTextarea, PrimaryBtn, GhostBtn,
   fmtDhaka, dhakaLocalToISO, SPIN_CSS, RED, SLATE, BORDER, MUTED, BG,
-  rowV,
+  rowV, SURFACE, SURFACE_ALT, OK, OK_BG, WARN, WARN_BG, INK_SOFT,
+  RED_HOVER, R_SM, R_MD, R_LG, R_PILL, SHADOW_SM, FONT_HEADING,
 } from './lms-shared';
 import { suggestMaterialFields, type MaterialSuggestion } from '@/lib/naming/suggest';
 import { formatMaterialName } from '@/lib/naming/format-name';
@@ -65,6 +66,16 @@ interface Props {
 export interface CloseGuardHandle {
   canClose: () => boolean | Promise<boolean>;
 }
+
+// ─── Interactive-state CSS (hover + focus-visible) ─────────────────────────────
+// Applied via className to raw <button>/<a>/<input> elements in this file that
+// don't already go through a shared component with built-in states.
+
+const INT_CSS = `
+.lms-int:focus-visible { outline: 2px solid ${RED}; outline-offset: 2px; border-radius: ${R_SM}px; }
+.lms-int:hover { opacity: 0.92; }
+.lms-primary:hover { background: ${RED_HOVER} !important; opacity: 1; }
+`;
 
 // ─── Upload PDF Sheet ─────────────────────────────────────────────────────────
 
@@ -185,7 +196,8 @@ const UploadSheet = React.forwardRef<CloseGuardHandle, {
                 : nextFile.name.replace(/\.pdf$/i, '').replace(/[-_]+/g, ' '));
             }
           }}
-          style={{ width: '100%', minHeight: 44, padding: '10px 12px', fontSize: 13, color: SLATE, border: `1px solid ${BORDER}`, borderRadius: 10, background: '#FFFFFF' }}
+          className="lms-int"
+          style={{ width: '100%', minHeight: 44, padding: '10px 12px', fontSize: 13, color: SLATE, border: `1px solid ${BORDER}`, borderRadius: R_MD, background: SURFACE }}
         />
         {file && (
           <p style={{ margin: '4px 0 0', fontSize: 11, color: MUTED }}>
@@ -198,7 +210,7 @@ const UploadSheet = React.forwardRef<CloseGuardHandle, {
       </div>
       {stage === 'uploading' && (
         <div>
-          <div style={{ background: '#F3F4F6', borderRadius: 4, height: 4 }}>
+          <div style={{ background: SURFACE_ALT, borderRadius: 4, height: 4 }}>
             <div style={{
               height: 4, borderRadius: 4, background: RED,
               width: '100%', transform: `scaleX(${progress / 100})`, transformOrigin: 'left', transition: 'transform 0.3s',
@@ -483,7 +495,7 @@ const AttendanceSheet = React.forwardRef<CloseGuardHandle, {
         {presentCount} / {students.length} marked present — saved automatically as you toggle
       </p>
 
-      <div style={{ maxHeight: 380, overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: 6 }}>
+      <div style={{ maxHeight: 380, overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: 8 }}>
         {students.map(s => {
           const isExpanded = expandedId === s.userId;
           const lastPresent = s.history.find(h => h.present);
@@ -494,18 +506,19 @@ const AttendanceSheet = React.forwardRef<CloseGuardHandle, {
               {/* Main row */}
               <div
                 style={{
-                  display: 'flex', alignItems: 'center', gap: 10,
-                  padding: '8px 10px',
-                  borderRadius: isExpanded ? '8px 8px 0 0' : 8,
+                  display: 'flex', alignItems: 'center', gap: 12,
+                  padding: '8px 12px',
+                  borderRadius: isExpanded ? `${R_MD}px ${R_MD}px 0 0` : R_MD,
                   border: status === 'error' ? `1px solid ${RED}` : `1px solid ${BORDER}`,
                   borderBottom: isExpanded ? `1px solid ${BORDER}` : (status === 'error' ? `1px solid ${RED}` : `1px solid ${BORDER}`),
-                  background: s.present ? 'rgba(16,185,129,0.06)' : '#FFFFFF',
+                  background: s.present ? OK_BG : SURFACE,
                 }}
               >
                 <input
                   type="checkbox"
                   checked={s.present}
                   onChange={() => togglePresent(s.userId)}
+                  className="lms-int"
                   style={{ width: 16, height: 16, flexShrink: 0, cursor: 'pointer' }}
                 />
                 <div
@@ -525,7 +538,7 @@ const AttendanceSheet = React.forwardRef<CloseGuardHandle, {
                 {/* Segmented Offline | Online toggle */}
                 <div style={{
                   display: 'flex', flexShrink: 0,
-                  border: `1px solid ${BORDER}`, borderRadius: 6, overflow: 'hidden',
+                  border: `1px solid ${BORDER}`, borderRadius: R_SM, overflow: 'hidden',
                   opacity: s.present ? 1 : 0.45,
                   pointerEvents: s.present ? 'auto' : 'none',
                 }}>
@@ -534,11 +547,12 @@ const AttendanceSheet = React.forwardRef<CloseGuardHandle, {
                       key={opt}
                       onClick={() => setMode(s.userId, opt)}
                       disabled={!s.present}
+                      className="lms-int"
                       style={{
-                        padding: '4px 9px', fontSize: 11, fontWeight: 600,
+                        padding: '4px 8px', fontSize: 11, fontWeight: 600,
                         border: 'none', borderRight: opt === 'offline' ? `1px solid ${BORDER}` : 'none',
-                        background: s.mode === opt ? RED : '#FFFFFF',
-                        color: s.mode === opt ? '#FFFFFF' : MUTED,
+                        background: s.mode === opt ? RED : SURFACE,
+                        color: s.mode === opt ? SURFACE : MUTED,
                         cursor: s.present ? 'pointer' : 'default',
                         textTransform: 'capitalize',
                         transition: 'background 0.12s, color 0.12s',
@@ -555,10 +569,11 @@ const AttendanceSheet = React.forwardRef<CloseGuardHandle, {
                 {status === 'error' && (
                   <button
                     onClick={(e) => { e.stopPropagation(); retryRow(s.userId); }}
+                    className="lms-int"
                     style={{
                       fontSize: 10, fontWeight: 700, color: RED,
-                      background: 'rgba(214,43,56,0.08)', border: `1px solid rgba(214,43,56,0.3)`,
-                      borderRadius: 6, padding: '4px 8px', cursor: 'pointer',
+                      background: SURFACE, border: `1px solid ${RED}`,
+                      borderRadius: R_SM, padding: '4px 8px', cursor: 'pointer',
                       flexShrink: 0, whiteSpace: 'nowrap',
                     }}
                   >
@@ -571,10 +586,10 @@ const AttendanceSheet = React.forwardRef<CloseGuardHandle, {
               {isExpanded && (
                 <div style={{
                   border: `1px solid ${BORDER}`, borderTop: 'none',
-                  borderRadius: '0 0 8px 8px',
-                  padding: '10px 12px',
-                  background: BG,
-                  display: 'flex', flexDirection: 'column', gap: 6,
+                  borderRadius: `0 0 ${R_MD}px ${R_MD}px`,
+                  padding: '12px',
+                  background: SURFACE_ALT,
+                  display: 'flex', flexDirection: 'column', gap: 8,
                 }}>
                   <p style={{ margin: 0, fontSize: 12, color: SLATE }}>
                     <span style={{ color: MUTED }}>Email: </span>{s.email}
@@ -615,13 +630,13 @@ const AttendanceSheet = React.forwardRef<CloseGuardHandle, {
                                 </p>
                               </td>
                               <td style={{ padding: '4px 8px', textAlign: 'center', borderBottom: `1px solid ${BORDER}` }}>
-                                {h.present ? <Check size={12} style={{ color: '#10B981' }} aria-hidden /> : <span style={{ color: MUTED }}>—</span>}
+                                {h.present ? <Check size={12} style={{ color: OK }} aria-hidden /> : <span style={{ color: MUTED }}>—</span>}
                               </td>
                               <td style={{ padding: '4px 8px', textAlign: 'center', borderBottom: `1px solid ${BORDER}` }}>
-                                {h.present && h.mode === 'online' ? <Check size={12} style={{ color: '#10B981' }} aria-hidden /> : <span style={{ color: MUTED }}>—</span>}
+                                {h.present && h.mode === 'online' ? <Check size={12} style={{ color: OK }} aria-hidden /> : <span style={{ color: MUTED }}>—</span>}
                               </td>
                               <td style={{ padding: '4px 8px', textAlign: 'center', borderBottom: `1px solid ${BORDER}` }}>
-                                {h.present && h.mode === 'offline' ? <Check size={12} style={{ color: '#10B981' }} aria-hidden /> : <span style={{ color: MUTED }}>—</span>}
+                                {h.present && h.mode === 'offline' ? <Check size={12} style={{ color: OK }} aria-hidden /> : <span style={{ color: MUTED }}>—</span>}
                               </td>
                             </tr>
                           ))}
@@ -684,14 +699,14 @@ function OfflineHomeworkSheet({
       <p style={{ margin: 0, fontSize: 12, color: MUTED }}>
         {rows.filter(r => r.checked).length} / {rows.length} checked off
       </p>
-      <div style={{ maxHeight: 380, overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: 6 }}>
+      <div style={{ maxHeight: 380, overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: 8 }}>
         {sorted.map(r => (
           <label
             key={r.submissionId}
             style={{
-              display: 'flex', alignItems: 'center', gap: 10, padding: '8px 10px',
-              borderRadius: 8, border: `1px solid ${BORDER}`, cursor: 'pointer',
-              background: r.checked ? 'rgba(16,185,129,0.06)' : '#FFFFFF',
+              display: 'flex', alignItems: 'center', gap: 12, padding: '8px 12px',
+              borderRadius: R_MD, border: `1px solid ${BORDER}`, cursor: 'pointer',
+              background: r.checked ? OK_BG : SURFACE,
             }}
           >
             <input
@@ -699,6 +714,7 @@ function OfflineHomeworkSheet({
               checked={r.checked}
               disabled={savingId === r.submissionId}
               onChange={() => void toggleChecked(r.submissionId, !r.checked)}
+              className="lms-int"
               style={{ width: 16, height: 16, flexShrink: 0, cursor: 'pointer' }}
             />
             <div style={{ flex: 1, minWidth: 0 }}>
@@ -774,17 +790,18 @@ function SessionCard({ session, index, onRefresh }: {
 
   return (
     <>
-      <style>{SPIN_CSS}</style>
+      <style>{SPIN_CSS}{INT_CSS}</style>
       <motion.div
         custom={index}
         variants={rowV}
         initial="hidden"
         animate="visible"
         style={{
-          background: '#FFFFFF',
+          background: SURFACE,
           border: `1px solid ${BORDER}`,
-          borderRadius: 12,
-          padding: '18px 20px',
+          borderRadius: R_LG,
+          boxShadow: SHADOW_SM,
+          padding: '16px 20px',
           opacity: isCancelled ? 0.55 : 1,
         }}
       >
@@ -794,11 +811,11 @@ function SessionCard({ session, index, onRefresh }: {
             <p style={{ margin: '0 0 4px', fontSize: 15, fontWeight: 700, color: SLATE, letterSpacing: '-0.02em' }}>
               {session.title}
             </p>
-            <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap', alignItems: 'center' }}>
+            <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', alignItems: 'center' }}>
               <SubjectBadge subject={session.subject} />
               <StatusBadge status={session.status} />
               {session.batch && (
-                <span style={{ fontSize: 11, color: MUTED, background: BG, border: `1px solid ${BORDER}`, padding: '2px 7px', borderRadius: 100 }}>
+                <span style={{ fontSize: 11, color: MUTED, background: BG, border: `1px solid ${BORDER}`, padding: '2px 8px', borderRadius: R_PILL }}>
                   Batch {session.batch}
                 </span>
               )}
@@ -813,26 +830,27 @@ function SessionCard({ session, index, onRefresh }: {
         </div>
 
         {/* Stats row */}
-        <div style={{ display: 'flex', gap: 16, marginBottom: 14 }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 5 }}>
+        <div style={{ display: 'flex', gap: 16, rowGap: 8, flexWrap: 'wrap', marginBottom: 16 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
             <Users size={12} style={{ color: MUTED }} aria-hidden />
-            <span style={{ fontSize: 12, color: '#6B7280' }}>{session.attendanceCount} attended</span>
+            <span style={{ fontSize: 12, color: INK_SOFT }}>{session.attendanceCount} attended</span>
           </div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 5 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
             <BookOpen size={12} style={{ color: MUTED }} aria-hidden />
-            <span style={{ fontSize: 12, color: '#6B7280' }}>{session.materialsCount} materials</span>
+            <span style={{ fontSize: 12, color: INK_SOFT }}>{session.materialsCount} materials</span>
           </div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 5 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
             <Clock size={12} style={{ color: MUTED }} aria-hidden />
-            <span style={{ fontSize: 12, color: '#6B7280' }}>{session.durationMinutes} min</span>
+            <span style={{ fontSize: 12, color: INK_SOFT }}>{session.durationMinutes} min</span>
           </div>
           {session.pendingReviewCount > 0 && (
             <Link
               href="/admin/homework"
-              style={{ display: 'flex', alignItems: 'center', gap: 5, textDecoration: 'none' }}
+              className="lms-int"
+              style={{ display: 'flex', alignItems: 'center', gap: 4, textDecoration: 'none' }}
             >
-              <ClipboardCheck size={12} style={{ color: '#B45309' }} aria-hidden />
-              <span style={{ fontSize: 12, color: '#B45309', fontWeight: 600 }}>
+              <ClipboardCheck size={12} style={{ color: WARN }} aria-hidden />
+              <span style={{ fontSize: 12, color: WARN, fontWeight: 600 }}>
                 {session.pendingReviewCount} to review
               </span>
             </Link>
@@ -842,21 +860,37 @@ function SessionCard({ session, index, onRefresh }: {
         {/* Action buttons */}
         {!isCancelled && (
           <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+            <motion.button
+              onClick={() => setAttOpen(true)}
+              whileTap={{ scale: 0.96 }}
+              className="lms-int lms-primary"
+              style={{
+                display: 'flex', alignItems: 'center', gap: 8,
+                padding: '8px 12px', borderRadius: R_MD,
+                background: RED, border: '1px solid transparent',
+                color: SURFACE, fontSize: 12, fontWeight: 600, cursor: 'pointer',
+              }}
+            >
+              <Users size={12} aria-hidden />
+              Take Attendance
+            </motion.button>
+
             {session.meetLink && (
               <a
                 href={session.meetLink}
                 target="_blank"
                 rel="noopener noreferrer"
+                className="lms-int"
                 style={{ textDecoration: 'none' }}
               >
                 <motion.div
                   whileTap={{ scale: 0.96 }}
                   style={{
-                    display: 'flex', alignItems: 'center', gap: 6,
-                    padding: '7px 12px', borderRadius: 7,
-                    background: 'rgba(16,185,129,0.09)',
-                    border: '1px solid rgba(16,185,129,0.25)',
-                    color: '#065F46', fontSize: 12, fontWeight: 600, cursor: 'pointer',
+                    display: 'flex', alignItems: 'center', gap: 8,
+                    padding: '8px 12px', borderRadius: R_MD,
+                    background: OK_BG,
+                    border: `1px solid ${BORDER}`,
+                    color: OK, fontSize: 12, fontWeight: 600, cursor: 'pointer',
                   }}
                 >
                   <Video size={12} aria-hidden />
@@ -867,27 +901,14 @@ function SessionCard({ session, index, onRefresh }: {
             )}
 
             <motion.button
-              onClick={() => setAttOpen(true)}
-              whileTap={{ scale: 0.96 }}
-              style={{
-                display: 'flex', alignItems: 'center', gap: 6,
-                padding: '7px 12px', borderRadius: 7,
-                background: BG, border: `1px solid ${BORDER}`,
-                color: '#374151', fontSize: 12, fontWeight: 500, cursor: 'pointer',
-              }}
-            >
-              <Users size={12} aria-hidden />
-              Take Attendance
-            </motion.button>
-
-            <motion.button
               onClick={() => setUploadOpen(true)}
               whileTap={{ scale: 0.96 }}
+              className="lms-int"
               style={{
-                display: 'flex', alignItems: 'center', gap: 6,
-                padding: '7px 12px', borderRadius: 7,
-                background: BG, border: `1px solid ${BORDER}`,
-                color: '#374151', fontSize: 12, fontWeight: 500, cursor: 'pointer',
+                display: 'flex', alignItems: 'center', gap: 8,
+                padding: '8px 12px', borderRadius: R_MD,
+                background: SURFACE, border: `1px solid ${BORDER}`,
+                color: INK_SOFT, fontSize: 12, fontWeight: 500, cursor: 'pointer',
               }}
             >
               <Upload size={12} aria-hidden />
@@ -897,11 +918,12 @@ function SessionCard({ session, index, onRefresh }: {
             <motion.button
               onClick={() => setHwOpen(true)}
               whileTap={{ scale: 0.96 }}
+              className="lms-int"
               style={{
-                display: 'flex', alignItems: 'center', gap: 6,
-                padding: '7px 12px', borderRadius: 7,
-                background: BG, border: `1px solid ${BORDER}`,
-                color: '#374151', fontSize: 12, fontWeight: 500, cursor: 'pointer',
+                display: 'flex', alignItems: 'center', gap: 8,
+                padding: '8px 12px', borderRadius: R_MD,
+                background: SURFACE, border: `1px solid ${BORDER}`,
+                color: INK_SOFT, fontSize: 12, fontWeight: 500, cursor: 'pointer',
               }}
             >
               <BookOpen size={12} aria-hidden />
@@ -914,12 +936,13 @@ function SessionCard({ session, index, onRefresh }: {
                 <motion.button
                   onClick={() => setOfflineOpen(true)}
                   whileTap={{ scale: 0.96 }}
+                  className="lms-int"
                   style={{
-                    display: 'flex', alignItems: 'center', gap: 6,
-                    padding: '7px 12px', borderRadius: 7,
-                    background: uncheckedCount > 0 ? 'rgba(245,158,11,0.1)' : 'rgba(16,185,129,0.09)',
-                    border: `1px solid ${uncheckedCount > 0 ? 'rgba(245,158,11,0.25)' : 'rgba(16,185,129,0.25)'}`,
-                    color: uncheckedCount > 0 ? '#92400E' : '#065F46',
+                    display: 'flex', alignItems: 'center', gap: 8,
+                    padding: '8px 12px', borderRadius: R_MD,
+                    background: uncheckedCount > 0 ? WARN_BG : OK_BG,
+                    border: `1px solid ${BORDER}`,
+                    color: uncheckedCount > 0 ? WARN : OK,
                     fontSize: 12, fontWeight: 600, cursor: 'pointer',
                   }}
                 >
@@ -934,11 +957,12 @@ function SessionCard({ session, index, onRefresh }: {
                 onClick={() => setConfirmComp(true)}
                 disabled={completing}
                 whileTap={{ scale: 0.96 }}
+                className="lms-int"
                 style={{
-                  display: 'flex', alignItems: 'center', gap: 6,
-                  padding: '7px 12px', borderRadius: 7,
-                  background: 'rgba(214,43,56,0.05)',
-                  border: '1px solid rgba(214,43,56,0.2)',
+                  display: 'flex', alignItems: 'center', gap: 8,
+                  padding: '8px 12px', borderRadius: R_MD,
+                  background: SURFACE,
+                  border: `1px solid ${BORDER}`,
                   color: RED, fontSize: 12, fontWeight: 500,
                   cursor: completing ? 'not-allowed' : 'pointer',
                   opacity: completing ? 0.6 : 1,
@@ -1033,22 +1057,22 @@ export default function TodayClient({ initial }: Props) {
 
   return (
     <>
-      <style>{SPIN_CSS}</style>
+      <style>{SPIN_CSS}{INT_CSS}</style>
 
       {/* Page header */}
-      <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 12, marginBottom: 24 }}>
+      <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 12, flexWrap: 'wrap', marginBottom: 24 }}>
         <div>
-          <h1 style={{ margin: 0, fontSize: 22, fontWeight: 700, color: SLATE, letterSpacing: '-0.04em', lineHeight: 1.2 }}>
+          <h1 style={{ margin: 0, fontSize: 22, fontWeight: 700, color: SLATE, letterSpacing: '-0.02em', lineHeight: 1.2, fontFamily: FONT_HEADING }}>
             Today
           </h1>
           <p style={{ margin: '4px 0 0', fontSize: 13, color: MUTED }}>{dateLabel}</p>
         </div>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 12, flexWrap: 'wrap' }}>
           {data.assignmentsDue48h > 0 && (
             <span style={{
-              padding: '4px 10px', borderRadius: 100, fontSize: 11, fontWeight: 600,
-              background: 'rgba(245,158,11,0.1)', color: '#92400E',
-              border: '1px solid rgba(245,158,11,0.25)',
+              padding: '4px 12px', borderRadius: R_PILL, fontSize: 11, fontWeight: 600,
+              background: WARN_BG, color: WARN,
+              border: `1px solid ${BORDER}`,
             }}>
               {data.assignmentsDue48h} homework due in 48h
             </span>
@@ -1057,11 +1081,12 @@ export default function TodayClient({ initial }: Props) {
             onClick={refresh}
             disabled={refreshing}
             whileTap={{ scale: 0.96 }}
+            className="lms-int"
             style={{
-              display: 'flex', alignItems: 'center', gap: 6,
-              padding: '7px 12px', borderRadius: 7,
-              background: BG, border: `1px solid ${BORDER}`,
-              color: '#374151', fontSize: 12, fontWeight: 500, cursor: 'pointer',
+              display: 'flex', alignItems: 'center', gap: 8,
+              padding: '8px 12px', borderRadius: R_MD,
+              background: SURFACE, border: `1px solid ${BORDER}`,
+              color: INK_SOFT, fontSize: 12, fontWeight: 500, cursor: 'pointer',
             }}
           >
             <Loader2
@@ -1078,17 +1103,17 @@ export default function TodayClient({ initial }: Props) {
       {data.sessions.length === 0 ? (
         <div style={{
           background: BG, border: `1px dashed ${BORDER}`,
-          borderRadius: 12, padding: '48px 24px', textAlign: 'center',
+          borderRadius: R_LG, padding: '48px 24px', textAlign: 'center',
         }}>
-          <CalendarX size={32} style={{ color: '#D1D5DB', margin: '0 auto 12px', display: 'block' }} aria-hidden />
-          <p style={{ margin: '0 0 8px', fontSize: 16, fontWeight: 600, color: SLATE }}>No class today</p>
+          <CalendarX size={32} style={{ color: MUTED, margin: '0 auto 12px', display: 'block' }} aria-hidden />
+          <p style={{ margin: '0 0 8px', fontSize: 16, fontWeight: 600, color: SLATE, fontFamily: FONT_HEADING }}>No class today</p>
           <p style={{ margin: '0 0 16px', fontSize: 13, color: MUTED }}>
             No sessions scheduled for today in Dhaka time.
           </p>
-          <Link href="/admin/classes" style={{
-            display: 'inline-flex', alignItems: 'center', gap: 6,
-            padding: '8px 16px', borderRadius: 7, background: SLATE,
-            color: '#FFFFFF', fontSize: 13, fontWeight: 600,
+          <Link href="/admin/classes" className="lms-int" style={{
+            display: 'inline-flex', alignItems: 'center', gap: 8,
+            padding: '8px 16px', borderRadius: R_MD, background: SLATE,
+            color: SURFACE, fontSize: 13, fontWeight: 600,
             textDecoration: 'none',
           }}>
             Go to Classes

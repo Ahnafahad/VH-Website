@@ -20,11 +20,19 @@ import {
 } from 'lucide-react';
 import {
   BORDER, MUTED, RED, SLATE, BG,
+  SURFACE, OK, OK_BG, WARN, WARN_BG, INFO, INFO_BG,
+  R_SM, R_MD, R_LG, R_PILL, SHADOW_SM, SHADOW_LG, FONT_HEADING, RED_DARK, INK_SOFT,
   backdropV, modalV, rowV, SPIN_CSS,
   PageHeader, TabBar, Modal, FieldLabel, FieldInput, FieldTextarea, FieldSelect,
   PrimaryBtn, DangerBtn, GhostBtn, Toast, EmptyState, StatusBadge, SubjectBadge,
   fmtDhaka, dhakaLocalToISO, epochToDhakaLocal,
 } from './lms-shared';
+
+// Local hover/focus CSS for the meet-link anchor (inline style can't do :hover/:focus-visible).
+const LINK_CSS = `
+.vh-meet-link:hover { text-decoration: underline; }
+.vh-meet-link:focus-visible { outline: 2px solid ${RED}; outline-offset: 2px; border-radius: ${R_SM}px; }
+`;
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -70,15 +78,20 @@ interface BookingsClientProps {
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
+// Destructive (cancelled/declined) tint derived from the RED token itself —
+// mirrors the rgba-from-RED technique lms-shared's DangerBtn already uses.
+const NEG_BG     = `${RED}14`;
+const NEG_BORDER = `${RED}40`;
+
 function ModeBadge({ mode }: { mode: string }) {
   const online = mode === 'online';
   return (
     <span style={{
       display: 'inline-flex', alignItems: 'center', gap: 4,
-      padding: '2px 8px', borderRadius: 100, fontSize: 11, fontWeight: 600,
-      background: online ? 'rgba(59,130,246,0.08)' : 'rgba(16,185,129,0.08)',
-      color: online ? '#1D4ED8' : '#065F46',
-      border: `1px solid ${online ? 'rgba(59,130,246,0.2)' : 'rgba(16,185,129,0.2)'}`,
+      padding: '2px 8px', borderRadius: R_PILL, fontSize: 11, fontWeight: 600,
+      background: online ? INFO_BG : OK_BG,
+      color: online ? INFO : OK,
+      border: `1px solid ${online ? `${INFO}33` : `${OK}33`}`,
     }}>
       {online ? <Video size={9} aria-hidden /> : <MapPin size={9} aria-hidden />}
       {mode}
@@ -88,15 +101,15 @@ function ModeBadge({ mode }: { mode: string }) {
 
 function SlotStatusBadge({ status }: { status: string }) {
   const colors: Record<string, { bg: string; color: string; border: string }> = {
-    open:      { bg: 'rgba(16,185,129,0.08)',  color: '#065F46', border: 'rgba(16,185,129,0.25)' },
-    booked:    { bg: 'rgba(245,158,11,0.10)',  color: '#92400E', border: 'rgba(245,158,11,0.25)' },
-    cancelled: { bg: 'rgba(239,68,68,0.08)',   color: '#B91C1C', border: 'rgba(239,68,68,0.2)'  },
+    open:      { bg: OK_BG,   color: OK,       border: `${OK}33`   },
+    booked:    { bg: WARN_BG, color: WARN,     border: `${WARN}33` },
+    cancelled: { bg: NEG_BG,  color: RED_DARK, border: NEG_BORDER  },
   };
   const s = colors[status] ?? colors.open;
   return (
     <span style={{
       display: 'inline-flex', alignItems: 'center', padding: '2px 8px',
-      borderRadius: 100, fontSize: 11, fontWeight: 600, textTransform: 'capitalize',
+      borderRadius: R_PILL, fontSize: 11, fontWeight: 600, textTransform: 'capitalize',
       background: s.bg, color: s.color, border: `1px solid ${s.border}`,
     }}>
       {status}
@@ -106,16 +119,16 @@ function SlotStatusBadge({ status }: { status: string }) {
 
 function RequestStatusBadge({ status }: { status: string }) {
   const colors: Record<string, { bg: string; color: string; border: string }> = {
-    pending:   { bg: 'rgba(245,158,11,0.10)',  color: '#92400E', border: 'rgba(245,158,11,0.25)' },
-    approved:  { bg: 'rgba(16,185,129,0.08)',  color: '#065F46', border: 'rgba(16,185,129,0.2)'  },
-    declined:  { bg: 'rgba(239,68,68,0.08)',   color: '#B91C1C', border: 'rgba(239,68,68,0.2)'   },
-    scheduled: { bg: 'rgba(59,130,246,0.08)',  color: '#1D4ED8', border: 'rgba(59,130,246,0.2)'  },
+    pending:   { bg: WARN_BG, color: WARN,     border: `${WARN}33` },
+    approved:  { bg: OK_BG,   color: OK,       border: `${OK}33`   },
+    declined:  { bg: NEG_BG,  color: RED_DARK, border: NEG_BORDER  },
+    scheduled: { bg: INFO_BG, color: INFO,     border: `${INFO}33` },
   };
   const s = colors[status] ?? colors.pending;
   return (
     <span style={{
       display: 'inline-flex', alignItems: 'center', padding: '2px 8px',
-      borderRadius: 100, fontSize: 11, fontWeight: 600, textTransform: 'capitalize',
+      borderRadius: R_PILL, fontSize: 11, fontWeight: 600, textTransform: 'capitalize',
       background: s.bg, color: s.color, border: `1px solid ${s.border}`,
     }}>
       {status}
@@ -279,7 +292,7 @@ export default function BookingsClient({ initialSlots, initialRequests }: Bookin
 
   return (
     <>
-      <style>{SPIN_CSS}</style>
+      <style>{SPIN_CSS}{LINK_CSS}</style>
 
       <PageHeader
         title="Bookings"
@@ -323,9 +336,10 @@ export default function BookingsClient({ initialSlots, initialRequests }: Bookin
                 initial="hidden"
                 animate="visible"
                 style={{
-                  background: '#FFFFFF',
+                  background: SURFACE,
                   border: `1px solid ${BORDER}`,
-                  borderRadius: 10,
+                  borderRadius: R_LG,
+                  boxShadow: SHADOW_SM,
                   padding: '14px 16px',
                   display: 'flex',
                   alignItems: 'flex-start',
@@ -352,16 +366,16 @@ export default function BookingsClient({ initialSlots, initialRequests }: Bookin
                     <SubjectBadge subject={slot.subject} />
                   </div>
                   {slot.topic && (
-                    <p style={{ margin: 0, fontSize: 12, color: '#374151' }}>{slot.topic}</p>
+                    <p style={{ margin: 0, fontSize: 12, color: INK_SOFT, wordBreak: 'break-word' }}>{slot.topic}</p>
                   )}
                   {slot.status === 'booked' && slot.bookedByName && (
-                    <p style={{ margin: '4px 0 0', fontSize: 11, color: MUTED }}>
+                    <p style={{ margin: '4px 0 0', fontSize: 11, color: MUTED, wordBreak: 'break-word' }}>
                       Booked by: <strong style={{ color: SLATE }}>{slot.bookedByName}</strong>
                     </p>
                   )}
                   {slot.meetLink && (
-                    <a href={slot.meetLink} target="_blank" rel="noopener noreferrer"
-                      style={{ display: 'inline-flex', alignItems: 'center', gap: 4, marginTop: 4, fontSize: 11, color: '#3B82F6' }}>
+                    <a href={slot.meetLink} target="_blank" rel="noopener noreferrer" className="vh-meet-link"
+                      style={{ display: 'inline-flex', alignItems: 'center', gap: 4, marginTop: 4, fontSize: 11, color: INFO }}>
                       <ExternalLink size={10} aria-hidden /> Meet link
                     </a>
                   )}
@@ -398,9 +412,10 @@ export default function BookingsClient({ initialSlots, initialRequests }: Bookin
                 initial="hidden"
                 animate="visible"
                 style={{
-                  background: '#FFFFFF',
+                  background: SURFACE,
                   border: `1px solid ${BORDER}`,
-                  borderRadius: 10,
+                  borderRadius: R_LG,
+                  boxShadow: SHADOW_SM,
                   padding: '14px 16px',
                   display: 'flex',
                   alignItems: 'flex-start',
@@ -414,12 +429,12 @@ export default function BookingsClient({ initialSlots, initialRequests }: Bookin
                     <SubjectBadge subject={req.subject} />
                     <span style={{ fontSize: 11, color: MUTED }}>{req.durationMinutes} min · {req.preferredMode} preferred</span>
                   </div>
-                  <p style={{ margin: 0, fontSize: 13, fontWeight: 600, color: SLATE }}>{req.topic}</p>
-                  <p style={{ margin: '3px 0 0', fontSize: 12, color: MUTED }}>
+                  <p style={{ margin: 0, fontSize: 13, fontWeight: 600, color: SLATE, wordBreak: 'break-word' }}>{req.topic}</p>
+                  <p style={{ margin: '3px 0 0', fontSize: 12, color: MUTED, wordBreak: 'break-word' }}>
                     {req.userName} · {req.userEmail}
                   </p>
                   {req.notes && (
-                    <p style={{ margin: '6px 0 0', fontSize: 12, color: '#374151', background: BG, padding: '6px 10px', borderRadius: 6, border: `1px solid ${BORDER}` }}>
+                    <p style={{ margin: '6px 0 0', fontSize: 12, color: INK_SOFT, background: BG, padding: '6px 10px', borderRadius: R_SM, border: `1px solid ${BORDER}`, wordBreak: 'break-word' }}>
                       {req.notes}
                     </p>
                   )}
@@ -434,7 +449,7 @@ export default function BookingsClient({ initialSlots, initialRequests }: Bookin
                 {req.status === 'pending' && (
                   <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
                     <GhostBtn small onClick={() => { setResolveTarget(req); setResolveAction('approve'); }}>
-                      <CheckCircle size={12} style={{ color: '#10B981' }} aria-hidden />
+                      <CheckCircle size={12} style={{ color: OK }} aria-hidden />
                       Approve
                     </GhostBtn>
                     <GhostBtn small onClick={() => { setResolveTarget(req); setResolveAction('decline'); }}>
@@ -513,7 +528,7 @@ export default function BookingsClient({ initialSlots, initialRequests }: Bookin
       >
         {resolveTarget && (
           <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
-            <div style={{ background: BG, border: `1px solid ${BORDER}`, borderRadius: 8, padding: '12px 14px' }}>
+            <div style={{ background: BG, border: `1px solid ${BORDER}`, borderRadius: R_MD, padding: '12px 14px' }}>
               <p style={{ margin: 0, fontSize: 13, fontWeight: 600, color: SLATE }}>{resolveTarget.topic}</p>
               <p style={{ margin: '3px 0 0', fontSize: 12, color: MUTED }}>
                 {resolveTarget.userName} · {resolveTarget.subject} · {resolveTarget.durationMinutes} min · {resolveTarget.preferredMode} preferred
@@ -590,7 +605,7 @@ export default function BookingsClient({ initialSlots, initialRequests }: Bookin
               key="cancel-backdrop"
               variants={backdropV} initial="hidden" animate="visible" exit="exit"
               onClick={() => setCancelTarget(null)}
-              style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.28)', zIndex: 200 }}
+              style={{ position: 'fixed', inset: 0, background: 'rgba(26,5,7,0.28)', zIndex: 200 }}
             />
             <motion.div
               key="cancel-modal"
@@ -598,14 +613,14 @@ export default function BookingsClient({ initialSlots, initialRequests }: Bookin
               style={{
                 position: 'fixed', top: '50%', left: '50%',
                 transform: 'translate(-50%,-50%)',
-                zIndex: 201, background: '#FFFFFF', borderRadius: 12,
+                zIndex: 201, background: SURFACE, borderRadius: R_LG,
                 padding: '24px 28px', width: 360, maxWidth: '94vw',
-                boxShadow: '0 20px 60px rgba(0,0,0,0.14)',
+                boxShadow: SHADOW_LG,
                 border: `1px solid ${BORDER}`,
               }}
             >
-              <p style={{ margin: 0, fontSize: 14, fontWeight: 700, color: SLATE }}>Cancel this slot?</p>
-              <p style={{ margin: '8px 0 0', fontSize: 13, color: '#6B7280', lineHeight: 1.5 }}>
+              <p style={{ margin: 0, fontSize: 14, fontWeight: 700, color: SLATE, fontFamily: FONT_HEADING }}>Cancel this slot?</p>
+              <p style={{ margin: '8px 0 0', fontSize: 13, color: INK_SOFT, lineHeight: 1.5 }}>
                 {fmtDhaka(cancelTarget.startAt)} — {cancelTarget.mode} {cancelTarget.subject}
                 {cancelTarget.status === 'booked' && cancelTarget.bookedByName && (
                   <><br />Currently booked by: <strong>{cancelTarget.bookedByName}</strong></>

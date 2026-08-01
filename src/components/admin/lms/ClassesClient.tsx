@@ -13,6 +13,8 @@ import {
   IconBtn, EmptyState, PageHeader,
   fmtDhaka, dhakaLocalToISO, epochToDhakaLocal,
   SPIN_CSS, RED, SLATE, BORDER, MUTED, BG, rowV,
+  SURFACE, SURFACE_ALT, OK, OK_BG, R_SM, R_MD, R_LG, R_PILL,
+  SHADOW_SM, RED_HOVER, INK_SOFT,
   titleCase, extractPdfHeading,
   CourseSelect, SubjectSelect, BatchSelect, getLastUsedBatch, setLastUsedBatch,
 } from './lms-shared';
@@ -74,6 +76,17 @@ const DAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 
 const SUBJECTS = ['english', 'math', 'analytical', 'tbd'];
 const STATUSES = ['draft', 'scheduled', 'live', 'completed', 'cancelled'];
 
+// Hover/focus-visible states for the custom (non-shared) interactive elements
+// in this file. Inline `style` objects can't express pseudo-classes, so these
+// are applied via className alongside the base inline styles.
+const INTERACTIVE_CSS = `
+.lms-cc-focus:focus-visible { outline: 2px solid ${RED}; outline-offset: 2px; }
+.lms-cc-bordered:hover { background: ${SURFACE_ALT}; border-color: ${RED}; }
+.lms-cc-text:hover { color: ${RED_HOVER}; }
+.lms-cc-icon:hover { background: ${SURFACE_ALT}; color: ${RED}; }
+.lms-cc-row:hover { box-shadow: ${SHADOW_SM}; border-color: ${RED_HOVER}44; }
+`;
+
 function isTaxonomySubject(s: string): s is SubjectKey {
   return SUBJECT_TAXONOMY.some(o => o.key === s);
 }
@@ -88,7 +101,7 @@ function SubjectField({ value, onChange }: { value: string; onChange: (v: Subjec
         <FieldLabel>Subject *</FieldLabel>
         <div style={{
           display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 8,
-          padding: '9px 12px', borderRadius: 7,
+          padding: '8px 12px', borderRadius: R_MD,
           border: `1.5px dashed ${MUTED}`, background: BG,
         }}>
           <span style={{ fontSize: 13, color: MUTED }}>
@@ -96,6 +109,7 @@ function SubjectField({ value, onChange }: { value: string; onChange: (v: Subjec
           </span>
           <button
             type="button"
+            className="lms-cc-text lms-cc-focus"
             onClick={() => onChange(SUBJECT_TAXONOMY[0].key)}
             style={{
               fontSize: 12, fontWeight: 600, color: RED,
@@ -280,10 +294,11 @@ function SessionModal({
             {titleManuallyEdited && isTaxonomySubject(form.subject) && (
               <button
                 type="button"
+                className="lms-cc-bordered lms-cc-focus"
                 onClick={() => setTitleManuallyEdited(false)}
                 style={{
-                  padding: '6px 12px', borderRadius: 6, fontSize: 12, cursor: 'pointer',
-                  border: `1px solid ${BORDER}`, background: '#FFFFFF', color: '#374151',
+                  padding: '8px 12px', borderRadius: R_MD, fontSize: 12, cursor: 'pointer',
+                  border: `1px solid ${BORDER}`, background: SURFACE, color: INK_SOFT,
                   fontWeight: 500,
                 }}
               >
@@ -293,11 +308,12 @@ function SessionModal({
             {!editing && (
               <button
                 type="button"
+                className="lms-cc-bordered lms-cc-focus"
                 onClick={() => pdfInputRef.current?.click()}
                 disabled={extracting}
                 style={{
-                  padding: '6px 12px', borderRadius: 6, fontSize: 12, cursor: extracting ? 'not-allowed' : 'pointer',
-                  border: `1px solid ${BORDER}`, background: '#FFFFFF', color: '#374151',
+                  padding: '8px 12px', borderRadius: R_MD, fontSize: 12, cursor: extracting ? 'not-allowed' : 'pointer',
+                  border: `1px solid ${BORDER}`, background: SURFACE, color: INK_SOFT,
                   fontWeight: 500, opacity: extracting ? 0.6 : 1,
                 }}
               >
@@ -352,7 +368,8 @@ function SessionModal({
             type="button"
             onClick={() => setShowMore((value) => !value)}
             aria-expanded={showMore}
-            style={{ minHeight: 44, alignSelf: 'flex-start', display: 'inline-flex', alignItems: 'center', gap: 6, padding: '8px 0', border: 0, background: 'transparent', color: '#760F13', fontSize: 13, fontWeight: 600, cursor: 'pointer' }}
+            className="lms-cc-text lms-cc-focus"
+            style={{ minHeight: 44, alignSelf: 'flex-start', display: 'inline-flex', alignItems: 'center', gap: 6, padding: '8px 0', border: 0, background: 'transparent', color: RED, fontSize: 13, fontWeight: 600, cursor: 'pointer' }}
           >
             <ChevronDown size={16} aria-hidden style={{ transform: showMore ? 'rotate(180deg)' : 'none', transition: 'transform 160ms ease' }} />
             {showMore ? 'Hide optional details' : 'Add status, description, or Meet link'}
@@ -787,11 +804,11 @@ function CompletedClassModal({
           {/* Step indicator */}
           <div style={{
             display: 'flex', alignItems: 'center', gap: 8,
-            padding: '8px 12px', borderRadius: 8,
-            background: 'rgba(16,185,129,0.06)', border: '1px solid rgba(16,185,129,0.18)',
+            padding: '8px 12px', borderRadius: R_MD,
+            background: OK_BG, border: `1px solid ${OK}33`,
           }}>
-            <CheckCircle size={14} style={{ color: '#10B981', flexShrink: 0 }} aria-hidden />
-            <span style={{ fontSize: 12, color: '#065F46', fontWeight: 500 }}>
+            <CheckCircle size={14} style={{ color: OK, flexShrink: 0 }} aria-hidden />
+            <span style={{ fontSize: 12, color: OK, fontWeight: 500 }}>
               Step 1 of 2 — Class details. You can attach PDFs in the next step.
             </span>
           </div>
@@ -859,11 +876,11 @@ function CompletedClassModal({
           {/* Step indicator */}
           <div style={{
             display: 'flex', alignItems: 'center', gap: 8,
-            padding: '8px 12px', borderRadius: 8,
-            background: 'rgba(16,185,129,0.06)', border: '1px solid rgba(16,185,129,0.18)',
+            padding: '8px 12px', borderRadius: R_MD,
+            background: OK_BG, border: `1px solid ${OK}33`,
           }}>
-            <CheckCircle size={14} style={{ color: '#10B981', flexShrink: 0 }} aria-hidden />
-            <span style={{ fontSize: 12, color: '#065F46', fontWeight: 500 }}>
+            <CheckCircle size={14} style={{ color: OK, flexShrink: 0 }} aria-hidden />
+            <span style={{ fontSize: 12, color: OK, fontWeight: 500 }}>
               Step 2 of 2 — Class saved. Attach lecture-sheet PDFs (optional).
             </span>
           </div>
@@ -871,7 +888,7 @@ function CompletedClassModal({
           {/* Session summary */}
           {createdSession && (
             <div style={{
-              padding: '10px 14px', borderRadius: 8,
+              padding: '12px 16px', borderRadius: R_MD,
               background: BG, border: `1px solid ${BORDER}`,
               display: 'flex', alignItems: 'center', gap: 8,
             }}>
@@ -893,10 +910,11 @@ function CompletedClassModal({
               <div>
                 <button
                   type="button"
+                  className="lms-cc-bordered lms-cc-focus"
                   onClick={() => fileInputRef.current?.click()}
                   disabled={uploading}
                   style={{
-                    width: '100%', padding: '20px', borderRadius: 10,
+                    width: '100%', padding: '20px', borderRadius: R_LG,
                     border: `2px dashed ${BORDER}`, background: BG,
                     cursor: uploading ? 'not-allowed' : 'pointer',
                     display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8,
@@ -904,7 +922,7 @@ function CompletedClassModal({
                   }}
                 >
                   <Upload size={22} style={{ color: MUTED }} aria-hidden />
-                  <span style={{ fontSize: 13, color: '#374151', fontWeight: 500 }}>
+                  <span style={{ fontSize: 13, color: INK_SOFT, fontWeight: 500 }}>
                     Click to select PDF files
                   </span>
                   <span style={{ fontSize: 11, color: MUTED }}>
@@ -928,10 +946,10 @@ function CompletedClassModal({
                     <div
                       key={idx}
                       style={{
-                        padding: '10px 12px', borderRadius: 8,
-                        border: `1px solid ${pf.progress === -1 ? 'rgba(214,43,56,0.3)' : BORDER}`,
-                        background: pf.progress === -1 ? 'rgba(214,43,56,0.04)' : '#FFFFFF',
-                        display: 'flex', flexDirection: 'column', gap: 6,
+                        padding: '12px 12px', borderRadius: R_MD,
+                        border: `1px solid ${pf.progress === -1 ? `${RED}4D` : BORDER}`,
+                        background: pf.progress === -1 ? `${RED}0A` : SURFACE,
+                        display: 'flex', flexDirection: 'column', gap: 8,
                       }}
                     >
                       <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
@@ -941,6 +959,7 @@ function CompletedClassModal({
                           onChange={e => setFileTitle(idx, e.target.value)}
                           disabled={uploading || pf.done}
                           placeholder="Material title"
+                          className="lms-cc-focus"
                           style={{
                             flex: 1, border: 'none', outline: 'none',
                             fontSize: 12, fontWeight: 500, color: SLATE,
@@ -950,9 +969,11 @@ function CompletedClassModal({
                         {!uploading && !pf.done && (
                           <button
                             type="button"
+                            className="lms-cc-icon lms-cc-focus"
                             onClick={() => removeFile(idx)}
                             style={{
                               background: 'none', border: 'none', cursor: 'pointer',
+                              borderRadius: R_SM,
                               color: MUTED, padding: 2, display: 'flex', alignItems: 'center',
                             }}
                             aria-label="Remove file"
@@ -961,14 +982,14 @@ function CompletedClassModal({
                           </button>
                         )}
                         {pf.done && (
-                          <CheckCircle size={13} style={{ color: '#10B981', flexShrink: 0 }} aria-hidden />
+                          <CheckCircle size={13} style={{ color: OK, flexShrink: 0 }} aria-hidden />
                         )}
                       </div>
                       <p style={{ margin: 0, fontSize: 11, color: MUTED }}>
                         {pf.file.name} · {(pf.file.size / 1024).toFixed(0)} KB
                       </p>
                       {pf.progress > 0 && !pf.done && pf.progress !== -1 && (
-                        <div style={{ height: 3, background: '#E5E7EB', borderRadius: 2 }}>
+                        <div style={{ height: 3, background: BORDER, borderRadius: 2 }}>
                           <div style={{
                             height: '100%', borderRadius: 2,
                             background: RED,
@@ -992,15 +1013,15 @@ function CompletedClassModal({
           {uploadDone && (
             <div style={{
               display: 'flex', alignItems: 'center', gap: 10,
-              padding: '14px 16px', borderRadius: 8,
-              background: 'rgba(16,185,129,0.06)', border: '1px solid rgba(16,185,129,0.18)',
+              padding: '16px 16px', borderRadius: R_MD,
+              background: OK_BG, border: `1px solid ${OK}33`,
             }}>
-              <CheckCircle size={18} style={{ color: '#10B981', flexShrink: 0 }} aria-hidden />
+              <CheckCircle size={18} style={{ color: OK, flexShrink: 0 }} aria-hidden />
               <div>
-                <p style={{ margin: 0, fontSize: 13, fontWeight: 600, color: '#065F46' }}>
+                <p style={{ margin: 0, fontSize: 13, fontWeight: 600, color: OK }}>
                   {files.length} PDF{files.length !== 1 ? 's' : ''} uploaded successfully
                 </p>
-                <p style={{ margin: '2px 0 0', fontSize: 11, color: '#059669' }}>
+                <p style={{ margin: '2px 0 0', fontSize: 11, color: OK }}>
                   Lecture sheets are now attached to this class.
                 </p>
               </div>
@@ -1101,25 +1122,33 @@ function SessionsTab({ sessions, teachingUsers }: { sessions: ClassSession[]; te
 
   return (
     <>
-      <style>{SPIN_CSS}</style>
+      <style>{SPIN_CSS}{INTERACTIVE_CSS}</style>
       {/* Toolbar */}
       <div style={{ display: 'flex', gap: 8, marginBottom: 16, flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between' }}>
         <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
           {/* Status filter chips */}
           {['all', ...STATUSES].map(s => (
-            <button key={s} onClick={() => setStatusFilter(s)} style={{
-              padding: '5px 12px', borderRadius: 100, fontSize: 12, cursor: 'pointer',
-              fontWeight: statusFilter === s ? 600 : 400,
-              border: `1.5px solid ${statusFilter === s ? RED : BORDER}`,
-              background: statusFilter === s ? 'rgba(214,43,56,0.05)' : '#FFFFFF',
-              color: statusFilter === s ? RED : '#6B7280',
-            }}>{s === 'all' ? 'All' : s.charAt(0).toUpperCase() + s.slice(1)}</button>
+            <button
+              key={s}
+              onClick={() => setStatusFilter(s)}
+              className={statusFilter === s ? 'lms-cc-focus' : 'lms-cc-bordered lms-cc-focus'}
+              style={{
+                padding: '8px 12px', borderRadius: R_PILL, fontSize: 12, cursor: 'pointer',
+                fontWeight: statusFilter === s ? 600 : 400,
+                border: `1.5px solid ${statusFilter === s ? RED : BORDER}`,
+                background: statusFilter === s ? `${RED}0D` : SURFACE,
+                color: statusFilter === s ? RED : MUTED,
+              }}>{s === 'all' ? 'All' : s.charAt(0).toUpperCase() + s.slice(1)}</button>
           ))}
           {/* Subject filter */}
-          <select value={subjectFilter} onChange={e => setSubjectFilter(e.target.value)} style={{
-            padding: '5px 28px 5px 10px', borderRadius: 100, fontSize: 12, cursor: 'pointer',
-            border: `1.5px solid ${BORDER}`, background: '#FFFFFF', color: '#6B7280', outline: 'none',
-          }}>
+          <select
+            value={subjectFilter}
+            onChange={e => setSubjectFilter(e.target.value)}
+            className="lms-cc-bordered lms-cc-focus"
+            style={{
+              padding: '8px 28px 8px 10px', borderRadius: R_PILL, fontSize: 12, cursor: 'pointer',
+              border: `1.5px solid ${BORDER}`, background: SURFACE, color: MUTED, outline: 'none',
+            }}>
             <option value="all">All subjects</option>
             {SUBJECTS.map(s => <option key={s} value={s}>{s.charAt(0).toUpperCase() + s.slice(1)}</option>)}
           </select>
@@ -1145,11 +1174,13 @@ function SessionsTab({ sessions, teachingUsers }: { sessions: ClassSession[]; te
             <motion.div
               key={s.id}
               custom={i} variants={rowV} initial="hidden" animate="visible"
+              className="lms-cc-row"
               style={{
-                background: '#FFFFFF', border: `1px solid ${BORDER}`,
-                borderRadius: 10, padding: '14px 16px',
-                display: 'flex', alignItems: 'center', gap: 12,
+                background: SURFACE, border: `1px solid ${BORDER}`,
+                borderRadius: R_LG, padding: '12px 16px',
+                display: 'flex', alignItems: 'center', gap: 16,
                 opacity: s.status === 'cancelled' ? 0.55 : 1,
+                transition: 'box-shadow 120ms ease, border-color 120ms ease',
               }}
             >
               <div style={{ flex: 1, minWidth: 0 }}>
@@ -1163,14 +1194,15 @@ function SessionsTab({ sessions, teachingUsers }: { sessions: ClassSession[]; te
                   {fmtDhaka(s.scheduledAt)} · {s.durationMinutes} min
                 </p>
               </div>
-              <div style={{ display: 'flex', gap: 6, flexShrink: 0, alignItems: 'center' }}>
+              <div style={{ display: 'flex', gap: 8, flexShrink: 0, alignItems: 'center' }}>
                 <Link
                   href={`/admin/classes/${s.id}`}
                   title="View detail"
+                  className="lms-cc-icon lms-cc-focus"
                   style={{
                     display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
-                    width: 28, height: 28, borderRadius: 6, border: `1px solid ${BORDER}`,
-                    background: '#FFFFFF', color: '#6B7280', flexShrink: 0,
+                    width: 40, height: 40, borderRadius: R_SM, border: `1px solid ${BORDER}`,
+                    background: SURFACE, color: MUTED, flexShrink: 0,
                     textDecoration: 'none',
                   }}
                   aria-label="View class detail"
@@ -1280,7 +1312,7 @@ function SchedulesTab({ schedules }: { schedules: ClassSchedule[] }) {
 
   return (
     <>
-      <style>{SPIN_CSS}</style>
+      <style>{SPIN_CSS}{INTERACTIVE_CSS}</style>
       <div style={{ display: 'flex', justifyContent: 'space-between', gap: 8, marginBottom: 16, flexWrap: 'wrap' }}>
         <GhostBtn onClick={handleGenerate} disabled={generating} small>
           {generating
@@ -1301,11 +1333,13 @@ function SchedulesTab({ schedules }: { schedules: ClassSchedule[] }) {
             <motion.div
               key={sc.id}
               custom={i} variants={rowV} initial="hidden" animate="visible"
+              className="lms-cc-row"
               style={{
-                background: '#FFFFFF', border: `1px solid ${BORDER}`,
-                borderRadius: 10, padding: '14px 16px',
-                display: 'flex', alignItems: 'center', gap: 12,
+                background: SURFACE, border: `1px solid ${BORDER}`,
+                borderRadius: R_LG, padding: '12px 16px',
+                display: 'flex', alignItems: 'center', gap: 16,
                 opacity: sc.active ? 1 : 0.55,
+                transition: 'box-shadow 120ms ease, border-color 120ms ease',
               }}
             >
               <div style={{ flex: 1, minWidth: 0 }}>
@@ -1313,7 +1347,7 @@ function SchedulesTab({ schedules }: { schedules: ClassSchedule[] }) {
                   <p style={{ margin: 0, fontSize: 13, fontWeight: 600, color: SLATE }}>{sc.titleTemplate}</p>
                   <SubjectBadge subject={sc.subject} />
                   {!sc.active && (
-                    <span style={{ fontSize: 11, color: MUTED, background: '#F3F4F6', padding: '2px 7px', borderRadius: 100 }}>Paused</span>
+                    <span style={{ fontSize: 11, color: MUTED, background: SURFACE_ALT, padding: '2px 7px', borderRadius: R_PILL }}>Paused</span>
                   )}
                 </div>
                 <p style={{ margin: 0, fontSize: 12, color: MUTED }}>
@@ -1321,7 +1355,7 @@ function SchedulesTab({ schedules }: { schedules: ClassSchedule[] }) {
                   {sc.batch ? ` · Batch ${sc.batch}` : ' · All batches'}
                 </p>
               </div>
-              <div style={{ display: 'flex', gap: 6, flexShrink: 0, alignItems: 'center' }}>
+              <div style={{ display: 'flex', gap: 8, flexShrink: 0, alignItems: 'center' }}>
                 <Toggle checked={sc.active} onChange={() => void handleToggleActive(sc)} label="" />
                 <IconBtn icon={Edit2} label="Edit" onClick={() => { setEditing(sc); setModalOpen(true); }} />
                 <IconBtn icon={Trash2} label="Delete" danger onClick={() => setDeleteId(sc.id)} />
@@ -1361,12 +1395,15 @@ export default function ClassesClient({ initialSessions, initialSchedules, teach
         title="Classes"
         subtitle="Manage class sessions and recurring schedule rules"
         action={
-          <a href="/admin/today" style={{
-            display: 'inline-flex', alignItems: 'center', gap: 5,
-            padding: '7px 14px', borderRadius: 7, background: BG,
-            border: `1px solid ${BORDER}`, color: '#374151',
-            fontSize: 12, fontWeight: 500, textDecoration: 'none',
-          }}>
+          <a
+            href="/admin/today"
+            className="lms-cc-bordered lms-cc-focus"
+            style={{
+              display: 'inline-flex', alignItems: 'center', gap: 5,
+              padding: '8px 14px', borderRadius: R_MD, background: BG,
+              border: `1px solid ${BORDER}`, color: INK_SOFT,
+              fontSize: 12, fontWeight: 500, textDecoration: 'none',
+            }}>
             Today's console <ChevronRight size={12} aria-hidden />
           </a>
         }

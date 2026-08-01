@@ -13,6 +13,9 @@ import {
   getLastUsedBatch, setLastUsedBatch,
   fmtDhaka, RED, SLATE, BORDER, MUTED, rowV, backdropV, modalV,
   extractPdfHeading,
+  SURFACE, SURFACE_ALT, OK, INFO, INFO_BG,
+  R_SM, R_MD, R_LG, SHADOW_LG, FONT_HEADING, RED_HOVER, BEIGE,
+  SPIN_CSS,
 } from './lms-shared';
 import {
   COURSES, SUBJECTS, DOC_TYPES, BATCHES,
@@ -83,9 +86,13 @@ function TitleField({
 }) {
   return (
     <div>
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 5 }}>
+      <style>{`
+        .lms-materials-reset:hover { color: ${RED_HOVER}; }
+        .lms-materials-reset:focus-visible { outline: 2px solid ${RED}; outline-offset: 2px; border-radius: ${R_SM}px; }
+      `}</style>
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 4 }}>
         <label style={{
-          fontSize: 11, fontWeight: 700, color: '#6B7280',
+          fontSize: 11, fontWeight: 700, color: MUTED,
           letterSpacing: '0.07em', textTransform: 'uppercase',
         }}>
           {label}
@@ -93,6 +100,7 @@ function TitleField({
         {titleManual && (
           <button
             type="button"
+            className="lms-materials-reset"
             onClick={onReset}
             style={{ background: 'none', border: 'none', color: RED, fontSize: 11, fontWeight: 600, cursor: 'pointer', padding: 0 }}
           >
@@ -339,7 +347,7 @@ function UploadPdfTab({
               <option key={s.id} value={s.id}>{s.title} ({fmtDhaka(s.scheduledAt, { dateStyle: 'short' })})</option>
             ))}
           </FieldSelect>
-          <p style={{ margin: '5px 0 0', fontSize: 11, lineHeight: 1.5, color: MUTED }}>
+          <p style={{ margin: '4px 0 0', fontSize: 11, lineHeight: 1.5, color: MUTED }}>
             {selectedSession
               ? `Course, batch, and student access will match ${selectedSession.title}.`
               : 'Choose a class to fill course access automatically.'}
@@ -347,11 +355,16 @@ function UploadPdfTab({
         </div>
         <div>
           <FieldLabel>PDF File *</FieldLabel>
+          <style>{`
+            .lms-materials-file-input:hover { border-color: ${BEIGE}; }
+            .lms-materials-file-input:focus-visible { outline: 2px solid ${RED}; outline-offset: 2px; }
+          `}</style>
           <input
             type="file"
             accept="application/pdf"
+            className="lms-materials-file-input"
             onChange={e => handleFileChange(e.target.files?.[0] ?? null)}
-            style={{ width: '100%', minHeight: 44, padding: '10px 12px', fontSize: 13, color: SLATE, border: `1px solid ${BORDER}`, borderRadius: 10, background: '#FFFFFF' }}
+            style={{ width: '100%', minHeight: 44, padding: '10px 12px', fontSize: 13, color: SLATE, border: `1px solid ${BORDER}`, borderRadius: R_MD, background: SURFACE, transition: 'border-color 0.14s' }}
           />
           {file && <p style={{ margin: '4px 0 0', fontSize: 11, color: MUTED }}>{file.name} — {fmtSize(file.size)}</p>}
         </div>
@@ -394,13 +407,13 @@ function UploadPdfTab({
         />
         {stage === 'uploading' && (
           <div>
-            <div style={{ background: '#F3F4F6', borderRadius: 4, height: 4 }}>
+            <div style={{ background: SURFACE_ALT, borderRadius: 4, height: 4 }}>
               <div style={{ height: 4, borderRadius: 4, background: RED, width: '100%', transform: `scaleX(${progress / 100})`, transformOrigin: 'left', transition: 'transform 0.3s' }} />
             </div>
             <p style={{ fontSize: 11, color: MUTED, margin: '4px 0 0' }}>Uploading… {progress}%</p>
           </div>
         )}
-        {stage === 'done' && <p style={{ fontSize: 13, color: '#047857', fontWeight: 600 }}>Uploaded successfully!</p>}
+        {stage === 'done' && <p style={{ fontSize: 13, color: OK, fontWeight: 600 }}>Uploaded successfully!</p>}
         {error && <p style={{ fontSize: 12, color: RED, margin: 0 }}>{error}</p>}
         <div style={{ display: 'flex', gap: 8 }}>
           <PrimaryBtn
@@ -593,16 +606,16 @@ function LinkClassDialog({
       <motion.div
         variants={backdropV} initial="hidden" animate="visible" exit="exit"
         onClick={onClose}
-        style={{ position: 'fixed', inset: 0, background: 'rgba(15,23,42,0.45)', zIndex: 50,
+        style={{ position: 'fixed', inset: 0, background: `${SLATE}73`, zIndex: 50,
           display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 20 }}
       >
         <motion.div
           variants={modalV} initial="hidden" animate="visible" exit="exit"
           onClick={e => e.stopPropagation()}
-          style={{ background: '#FFFFFF', borderRadius: 12, padding: 20, width: '100%', maxWidth: 420,
-            display: 'flex', flexDirection: 'column', gap: 14 }}
+          style={{ background: SURFACE, borderRadius: R_LG, padding: 20, width: '100%', maxWidth: 420,
+            boxShadow: SHADOW_LG, display: 'flex', flexDirection: 'column', gap: 14 }}
         >
-          <p style={{ margin: 0, fontSize: 15, fontWeight: 700, color: SLATE }}>Link to class</p>
+          <p style={{ margin: 0, fontSize: 15, fontWeight: 700, color: SLATE, fontFamily: FONT_HEADING }}>Link to class</p>
           <p style={{ margin: 0, fontSize: 12, color: MUTED }}>
             An unnamed class (&ldquo;Thursday Class&rdquo;) will take this material&rsquo;s name; a class that already has a name is left as-is.
           </p>
@@ -675,17 +688,17 @@ function EditMaterialDialog({
       <motion.div
         variants={backdropV} initial="hidden" animate="visible" exit="exit"
         onClick={onClose}
-        style={{ position: 'fixed', inset: 0, background: 'rgba(15,23,42,0.45)', zIndex: 50,
+        style={{ position: 'fixed', inset: 0, background: `${SLATE}73`, zIndex: 50,
           display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 20 }}
       >
         <motion.div
           variants={modalV} initial="hidden" animate="visible" exit="exit"
           onClick={e => e.stopPropagation()}
-          style={{ background: '#FFFFFF', borderRadius: 12, padding: 20, width: '100%', maxWidth: 460,
-            maxHeight: '90vh', overflowY: 'auto',
+          style={{ background: SURFACE, borderRadius: R_LG, padding: 20, width: '100%', maxWidth: 460,
+            maxHeight: '90vh', overflowY: 'auto', boxShadow: SHADOW_LG,
             display: 'flex', flexDirection: 'column', gap: 14 }}
         >
-          <p style={{ margin: 0, fontSize: 15, fontWeight: 700, color: SLATE }}>Edit material</p>
+          <p style={{ margin: 0, fontSize: 15, fontWeight: 700, color: SLATE, fontFamily: FONT_HEADING }}>Edit material</p>
           <div>
             <FieldLabel>Title</FieldLabel>
             <FieldInput value={title} onChange={e => setTitle(e.target.value)} />
@@ -786,6 +799,7 @@ function MaterialsList({
 
   return (
     <>
+      <style>{`.lms-materials-open-link:focus-visible { outline: 2px solid ${RED}; outline-offset: 2px; border-radius: ${R_SM}px; }`}</style>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))', gap: 10, marginBottom: 16 }}>
         <div>
           <FieldLabel>Course</FieldLabel>
@@ -825,19 +839,19 @@ function MaterialsList({
               key={m.id}
               custom={i} variants={rowV} initial="hidden" animate="visible"
               style={{
-                background: '#FFFFFF', border: `1px solid ${BORDER}`,
-                borderRadius: 10, padding: '13px 16px',
-                display: 'flex', alignItems: 'center', gap: 12,
+                background: SURFACE, border: `1px solid ${BORDER}`,
+                borderRadius: R_LG, padding: '12px 16px',
+                display: 'flex', alignItems: 'center', gap: 12, flexWrap: 'wrap',
               }}
             >
               <div style={{
-                width: 36, height: 36, borderRadius: 8, flexShrink: 0,
-                background: m.type === 'pdf' ? 'rgba(214,43,56,0.08)' : 'rgba(59,130,246,0.08)',
+                width: 36, height: 36, borderRadius: R_MD, flexShrink: 0,
+                background: m.type === 'pdf' ? `${RED}14` : INFO_BG,
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
               }}>
                 {m.type === 'pdf'
                   ? <FileText size={16} style={{ color: RED }} aria-hidden />
-                  : <LinkIcon size={16} style={{ color: '#3B82F6' }} aria-hidden />}
+                  : <LinkIcon size={16} style={{ color: INFO }} aria-hidden />}
               </div>
               <div style={{ flex: 1, minWidth: 0 }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap', marginBottom: 3 }}>
@@ -858,7 +872,7 @@ function MaterialsList({
                 </p>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: 6, flexShrink: 0, flexWrap: 'wrap', justifyContent: 'flex-end' }}>
-                <a href={m.blobUrl} target="_blank" rel="noopener noreferrer">
+                <a href={m.blobUrl} target="_blank" rel="noopener noreferrer" className="lms-materials-open-link">
                   <IconBtn icon={ExternalLink} label="Open" onClick={() => {}} />
                 </a>
                 <IconBtn icon={Pencil} label="Edit details" onClick={() => setEditMaterial(m)} />
@@ -932,6 +946,7 @@ export default function MaterialsClient({ initialMaterials, sessions: initialSes
 
   return (
     <>
+      <style>{SPIN_CSS}</style>
       <PageHeader
         title="Materials"
         subtitle={`${materials.length} material${materials.length !== 1 ? 's' : ''} — PDFs and links for students`}

@@ -9,6 +9,7 @@ import {
   IconBtn, EmptyState, PageHeader,
   fmtDhaka,
   SPIN_CSS, RED, SLATE, BORDER, MUTED, BG, rowV,
+  SURFACE, INK_SOFT, R_MD, R_LG, R_PILL,
 } from './lms-shared';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
@@ -194,6 +195,12 @@ export default function AnnouncementsFeedClient({ initialAnnouncements }: Props)
   return (
     <>
       <style>{SPIN_CSS}</style>
+      <style>{`
+        .lms-ann-email-link:hover { border-color: ${RED}; color: ${RED}; }
+        .lms-ann-email-link:focus-visible { outline: 2px solid ${RED}; outline-offset: 2px; }
+        .lms-ann-pin:hover { border-color: ${RED}; }
+        .lms-ann-pin:focus-visible { outline: 2px solid ${RED}; outline-offset: 2px; }
+      `}</style>
       <PageHeader
         title="Announcement Feed"
         subtitle={
@@ -211,11 +218,13 @@ export default function AnnouncementsFeedClient({ initialAnnouncements }: Props)
           <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
             <a
               href="/admin/announcements"
+              className="lms-ann-email-link"
               style={{
                 display: 'inline-flex', alignItems: 'center', gap: 5,
-                padding: '7px 12px', borderRadius: 7, background: BG,
-                border: `1px solid ${BORDER}`, color: '#6B7280',
+                padding: '7px 12px', borderRadius: R_MD, background: BG,
+                border: `1px solid ${BORDER}`, color: INK_SOFT,
                 fontSize: 12, fontWeight: 500, textDecoration: 'none',
+                transition: 'border-color 0.14s',
               }}
             >
               Email Blasts <ExternalLink size={11} aria-hidden />
@@ -237,30 +246,30 @@ export default function AnnouncementsFeedClient({ initialAnnouncements }: Props)
               key={a.id}
               custom={i} variants={rowV} initial="hidden" animate="visible"
               style={{
-                background: '#FFFFFF',
-                border: `1px solid ${a.pinned ? 'rgba(214,43,56,0.25)' : BORDER}`,
-                borderRadius: 10, padding: '14px 16px',
+                background: SURFACE,
+                border: `1px solid ${a.pinned ? `${RED}40` : BORDER}`,
+                borderRadius: R_LG, padding: '12px 16px',
                 borderLeft: a.pinned ? `3px solid ${RED}` : `1px solid ${BORDER}`,
               }}
             >
               <div style={{ display: 'flex', alignItems: 'flex-start', gap: 12 }}>
                 <div style={{ flex: 1, minWidth: 0 }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 5, flexWrap: 'wrap' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 4, flexWrap: 'wrap' }}>
                     {a.pinned && (
                       <Pin size={12} style={{ color: RED, flexShrink: 0 }} aria-hidden />
                     )}
                     <p style={{ margin: 0, fontSize: 13, fontWeight: 600, color: SLATE }}>{a.title}</p>
                     <SubjectBadge subject={a.subject} />
                     {a.batch && (
-                      <span style={{ fontSize: 11, color: MUTED, background: BG, border: `1px solid ${BORDER}`, padding: '2px 7px', borderRadius: 100 }}>
+                      <span style={{ fontSize: 11, color: MUTED, background: BG, border: `1px solid ${BORDER}`, padding: '2px 7px', borderRadius: R_PILL }}>
                         Batch {a.batch}
                       </span>
                     )}
-                    <span style={{ fontSize: 11, color: MUTED, background: BG, border: `1px solid ${BORDER}`, padding: '2px 7px', borderRadius: 100 }}>
+                    <span style={{ fontSize: 11, color: MUTED, background: BG, border: `1px solid ${BORDER}`, padding: '2px 7px', borderRadius: R_PILL }}>
                       {a.product.toUpperCase()}
                     </span>
                   </div>
-                  <p style={{ margin: '0 0 4px', fontSize: 12, color: '#6B7280', lineHeight: 1.5,
+                  <p style={{ margin: '0 0 4px', fontSize: 12, color: INK_SOFT, lineHeight: 1.5,
                     display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical' as const, overflow: 'hidden' }}>
                     {a.body}
                   </p>
@@ -274,12 +283,14 @@ export default function AnnouncementsFeedClient({ initialAnnouncements }: Props)
                     whileTap={{ scale: 0.92 }}
                     title={a.pinned ? 'Unpin' : 'Pin to top'}
                     aria-label={a.pinned ? 'Unpin' : 'Pin to top'}
+                    className="lms-ann-pin"
                     style={{
                       display: 'flex', alignItems: 'center', justifyContent: 'center',
-                      width: 40, height: 40, borderRadius: 6,
-                      border: `1px solid ${a.pinned ? 'rgba(214,43,56,0.3)' : BORDER}`,
-                      background: a.pinned ? 'rgba(214,43,56,0.06)' : '#FFFFFF',
-                      color: a.pinned ? RED : '#6B7280', cursor: 'pointer',
+                      width: 40, height: 40, borderRadius: R_MD,
+                      border: `1px solid ${a.pinned ? `${RED}4D` : BORDER}`,
+                      background: a.pinned ? `${RED}0F` : SURFACE,
+                      color: a.pinned ? RED : MUTED, cursor: 'pointer',
+                      transition: 'border-color 0.14s',
                     }}
                   >
                     <Pin size={13} aria-hidden />

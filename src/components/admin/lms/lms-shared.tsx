@@ -11,12 +11,41 @@ import { X, AlertTriangle, Loader2, Check, ChevronDown } from 'lucide-react';
 import { COURSES, SUBJECTS, DOC_TYPES, BATCHES, CourseKey, SubjectKey, DocTypeKey, BatchKey } from '@/lib/naming/taxonomy';
 
 // ─── Design tokens ────────────────────────────────────────────────────────────
+// Warm-editorial palette, matching the admin shell (src/app/admin/page.tsx).
+// Existing five keep their exact names (imported by name in 7 sibling files) —
+// only their values change.
 
-export const RED    = '#D62B38';
-export const SLATE  = '#0F172A';
-export const BORDER = '#E5E7EB';
-export const MUTED  = '#9CA3AF';
-export const BG     = '#FAFAFA';
+export const RED    = '#760F13';
+export const SLATE  = '#1A0507';
+export const BORDER = '#E1D4CB';
+export const MUTED  = '#9A7060';
+export const BG     = '#FAF5EF';
+
+export const RED_HOVER   = '#9A1B20';
+export const RED_DARK    = '#5A0B0F';
+export const INK_SOFT    = '#3D1A10';
+export const SURFACE     = '#FFFFFF';
+export const SURFACE_ALT = '#F5EDE3';
+export const BEIGE       = '#D4B094';
+
+export const OK      = '#2F6B4F';
+export const OK_BG   = '#EAF2ED';
+export const WARN    = '#8A5A1A';
+export const WARN_BG = '#FAF0E2';
+export const INFO    = '#2A5A8A';
+export const INFO_BG = '#EAF0F6';
+
+export const R_SM   = 6;
+export const R_MD   = 8;
+export const R_LG   = 10;
+export const R_XL   = 14;
+export const R_PILL = 999;
+
+export const SHADOW_SM = '0 1px 2px rgba(26,5,7,0.04), 0 1px 3px rgba(26,5,7,0.03)';
+export const SHADOW_MD = '0 2px 6px rgba(26,5,7,0.07)';
+export const SHADOW_LG = '0 8px 24px rgba(26,5,7,0.12)';
+
+export const FONT_HEADING = "var(--font-heading), Georgia, serif";
 
 // ─── PDF heading extraction ───────────────────────────────────────────────────
 
@@ -105,26 +134,48 @@ export const rowV: Variants = {
   }),
 };
 
-// ─── Spin keyframe ────────────────────────────────────────────────────────────
+// ─── Spin keyframe + shared interactive-state CSS ─────────────────────────────
+// hover/:focus-visible rules for the primitives below ride along on the same
+// injected tag as the spin keyframe. Every LMS screen must render
+// `<style>{SPIN_CSS}</style>` once, or its shared buttons, fields and icon
+// buttons silently lose their hover and focus states.
 
-export const SPIN_CSS = `@keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}`;
+export const SPIN_CSS = `
+@keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+.lms-field{transition:border-color .14s}
+.lms-field:hover{border-color:${BEIGE}}
+.lms-field:focus{border-color:${RED}}
+.lms-field:focus-visible{outline:2px solid ${RED};outline-offset:2px}
+.lms-btn{transition:background-color .14s,border-color .14s,color .14s}
+.lms-btn:focus-visible{outline:2px solid ${RED};outline-offset:2px}
+.lms-btn-primary:hover:not(:disabled){background:${RED_HOVER}}
+.lms-btn-primary:active:not(:disabled){background:${RED_DARK}}
+.lms-btn-danger:hover:not(:disabled){background:${RED}1F;border-color:${RED}4D}
+.lms-btn-ghost:hover:not(:disabled){background:${SURFACE_ALT};border-color:${BEIGE}}
+.lms-iconbtn{transition:background-color .14s,border-color .14s,color .14s}
+.lms-iconbtn:hover:not(:disabled){background:${SURFACE_ALT};border-color:${BEIGE};color:${RED_DARK}}
+.lms-iconbtn:focus-visible{outline:2px solid ${RED};outline-offset:2px}
+.lms-tab{transition:color .14s,border-color .14s}
+.lms-tab:hover{color:${RED_DARK}}
+.lms-tab:focus-visible{outline:2px solid ${RED};outline-offset:2px}
+`;
 
 // ─── Subject badge ────────────────────────────────────────────────────────────
 
 const subjectColors: Record<string, { bg: string; color: string; border: string }> = {
-  english:    { bg: 'rgba(59,130,246,0.08)',  color: '#1D4ED8', border: 'rgba(59,130,246,0.2)'  },
-  math:       { bg: 'rgba(16,185,129,0.08)', color: '#065F46', border: 'rgba(16,185,129,0.2)'  },
-  analytical: { bg: 'rgba(245,158,11,0.10)', color: '#92400E', border: 'rgba(245,158,11,0.25)' },
+  english:    { bg: `${INFO}14`, color: INFO, border: `${INFO}33` },
+  math:       { bg: `${OK}14`,   color: OK,   border: `${OK}33`   },
+  analytical: { bg: `${WARN}17`, color: WARN, border: `${WARN}40` },
 };
 
 export function SubjectBadge({ subject }: { subject: string }) {
-  const s = subjectColors[subject] ?? { bg: '#F3F4F6', color: '#374151', border: BORDER };
+  const s = subjectColors[subject] ?? { bg: SURFACE_ALT, color: INK_SOFT, border: BORDER };
   return (
     <span style={{
       display:       'inline-flex',
       alignItems:    'center',
       padding:       '2px 8px',
-      borderRadius:  100,
+      borderRadius:  R_PILL,
       fontSize:      11,
       fontWeight:    600,
       letterSpacing: '0.01em',
@@ -142,11 +193,11 @@ export function SubjectBadge({ subject }: { subject: string }) {
 // ─── Status badge ─────────────────────────────────────────────────────────────
 
 const statusColors: Record<string, { bg: string; color: string; border: string }> = {
-  draft:     { bg: '#F3F4F6',                  color: '#6B7280', border: BORDER },
-  scheduled: { bg: 'rgba(59,130,246,0.08)',    color: '#1D4ED8', border: 'rgba(59,130,246,0.2)' },
-  live:      { bg: 'rgba(16,185,129,0.09)',    color: '#065F46', border: 'rgba(16,185,129,0.25)' },
-  completed: { bg: 'rgba(107,114,128,0.08)',   color: '#374151', border: 'rgba(107,114,128,0.2)' },
-  cancelled: { bg: 'rgba(239,68,68,0.08)',     color: '#B91C1C', border: 'rgba(239,68,68,0.2)' },
+  draft:     { bg: SURFACE_ALT,  color: MUTED,    border: BORDER      },
+  scheduled: { bg: `${INFO}14`,  color: INFO,     border: `${INFO}33` },
+  live:      { bg: `${OK}17`,    color: OK,       border: `${OK}40`   },
+  completed: { bg: SURFACE_ALT,  color: INK_SOFT, border: BORDER      },
+  cancelled: { bg: `${RED}14`,   color: RED_DARK, border: `${RED}33`  },
 };
 
 export function StatusBadge({ status }: { status: string }) {
@@ -157,7 +208,7 @@ export function StatusBadge({ status }: { status: string }) {
       alignItems:    'center',
       gap:           4,
       padding:       '2px 8px',
-      borderRadius:  100,
+      borderRadius:  R_PILL,
       fontSize:      11,
       fontWeight:    600,
       letterSpacing: '0.01em',
@@ -170,7 +221,7 @@ export function StatusBadge({ status }: { status: string }) {
       {status === 'live' && (
         <span style={{
           width: 5, height: 5, borderRadius: '50%',
-          background: '#10B981', flexShrink: 0,
+          background: OK, flexShrink: 0,
         }} />
       )}
       {status}
@@ -197,12 +248,12 @@ export function Toast({ message, onDismiss }: { message: string | null; onDismis
             transform:    'translateX(-50%)',
             zIndex:       9999,
             padding:      '10px 20px',
-            borderRadius: 8,
+            borderRadius: R_MD,
             background:   SLATE,
-            color:        '#FFFFFF',
+            color:        SURFACE,
             fontSize:     13,
             fontWeight:   500,
-            boxShadow:    '0 4px 20px rgba(0,0,0,0.18)',
+            boxShadow:    SHADOW_LG,
             whiteSpace:   'nowrap',
             display:      'flex',
             alignItems:   'center',
@@ -211,7 +262,7 @@ export function Toast({ message, onDismiss }: { message: string | null; onDismis
         >
           {message}
           {onDismiss && (
-            <button onClick={onDismiss} style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'rgba(255,255,255,0.6)', padding: 2 }}>
+            <button onClick={onDismiss} className="lms-iconbtn" style={{ background: 'none', border: 'none', borderRadius: R_SM, cursor: 'pointer', color: 'rgba(255,255,255,0.6)', padding: 2 }}>
               <X size={12} aria-hidden />
             </button>
           )}
@@ -238,41 +289,41 @@ export function ConfirmDialog({
           <motion.div
             variants={backdropV} initial="hidden" animate="visible" exit="exit"
             onClick={onCancel}
-            style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.35)', zIndex: 300 }}
+            style={{ position: 'fixed', inset: 0, background: 'rgba(26,5,7,0.35)', zIndex: 300 }}
           />
           <motion.div
             variants={modalV} initial="hidden" animate="visible" exit="exit"
             style={{
               position: 'fixed', top: '50%', left: '50%',
               transform: 'translate(-50%,-50%)',
-              zIndex: 301, background: '#FFFFFF', borderRadius: 12,
+              zIndex: 301, background: SURFACE, borderRadius: R_LG,
               padding: '24px 28px', width: 340, maxWidth: '92vw',
-              boxShadow: '0 20px 60px rgba(0,0,0,0.14)',
+              boxShadow: SHADOW_LG,
               border: `1px solid ${BORDER}`,
             }}
           >
             <div style={{ display: 'flex', gap: 14, marginBottom: 20 }}>
               <div style={{
                 width: 36, height: 36, borderRadius: '50%', flexShrink: 0,
-                background: destructive ? 'rgba(214,43,56,0.1)' : 'rgba(59,130,246,0.1)',
+                background: destructive ? `${RED}1A` : `${INFO}1A`,
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
               }}>
-                <AlertTriangle size={17} style={{ color: destructive ? RED : '#3B82F6' }} aria-hidden />
+                <AlertTriangle size={17} style={{ color: destructive ? RED : INFO }} aria-hidden />
               </div>
               <div>
-                <p style={{ margin: 0, fontSize: 14, fontWeight: 600, color: SLATE, lineHeight: 1.3 }}>{title}</p>
-                <p style={{ margin: '5px 0 0', fontSize: 13, color: '#6B7280', lineHeight: 1.45 }}>{message}</p>
+                <p style={{ margin: 0, fontFamily: FONT_HEADING, fontSize: 15, fontWeight: 700, color: SLATE, lineHeight: 1.3 }}>{title}</p>
+                <p style={{ margin: '4px 0 0', fontSize: 13, color: MUTED, lineHeight: 1.45 }}>{message}</p>
               </div>
             </div>
             <div style={{ display: 'flex', gap: 8, justifyContent: 'flex-end' }}>
-              <motion.button onClick={onCancel} whileTap={{ scale: 0.97 }} disabled={loading} style={{
-                padding: '8px 16px', borderRadius: 7, fontSize: 13, fontWeight: 500,
-                border: `1px solid ${BORDER}`, background: '#FFFFFF', color: '#374151',
+              <motion.button onClick={onCancel} whileTap={{ scale: 0.97 }} disabled={loading} className="lms-btn lms-btn-ghost" style={{
+                padding: '8px 16px', borderRadius: R_MD, fontSize: 13, fontWeight: 500,
+                border: `1px solid ${BORDER}`, background: SURFACE, color: INK_SOFT,
                 cursor: 'pointer', opacity: loading ? 0.5 : 1,
               }}>Cancel</motion.button>
-              <motion.button onClick={onConfirm} whileTap={{ scale: 0.97 }} disabled={loading} style={{
-                padding: '8px 16px', borderRadius: 7, fontSize: 13, fontWeight: 600,
-                border: 'none', background: destructive ? RED : SLATE, color: '#FFFFFF',
+              <motion.button onClick={onConfirm} whileTap={{ scale: 0.97 }} disabled={loading} className={`lms-btn ${destructive ? 'lms-btn-danger' : 'lms-btn-primary'}`} style={{
+                padding: '8px 16px', borderRadius: R_MD, fontSize: 13, fontWeight: 600,
+                border: 'none', background: destructive ? RED_DARK : RED, color: SURFACE,
                 cursor: loading ? 'not-allowed' : 'pointer', opacity: loading ? 0.7 : 1,
                 display: 'flex', alignItems: 'center', gap: 6,
               }}>
@@ -357,7 +408,7 @@ export function Modal({
             key="modal-backdrop"
             variants={backdropV} initial="hidden" animate="visible" exit="exit"
             onClick={() => void requestClose()}
-            style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.28)', zIndex: 200 }}
+            style={{ position: 'fixed', inset: 0, background: 'rgba(26,5,7,0.28)', zIndex: 200 }}
           />
           <motion.div
             key="modal-panel"
@@ -365,10 +416,10 @@ export function Modal({
             transformTemplate={(_, generated) => `translate(-50%, -50%) ${generated}`}
             style={{
               position: 'fixed', top: '50%', left: '50%',
-              zIndex: 201, background: '#FFFFFF', borderRadius: 14,
+              zIndex: 201, background: SURFACE, borderRadius: R_LG,
               width, maxWidth: 'calc(100vw - 32px)', maxHeight: '90vh',
               display: 'flex', flexDirection: 'column',
-              boxShadow: '0 24px 80px rgba(0,0,0,0.14)',
+              boxShadow: SHADOW_LG,
               border: `1px solid ${BORDER}`,
             }}
           >
@@ -376,19 +427,20 @@ export function Modal({
             <div style={{
               display: 'flex', alignItems: 'center', justifyContent: 'space-between',
               padding: '16px 20px', borderBottom: `1px solid ${BORDER}`,
-              position: 'sticky', top: 0, background: '#FFFFFF', borderRadius: '14px 14px 0 0',
+              position: 'sticky', top: 0, background: SURFACE, borderRadius: `${R_LG}px ${R_LG}px 0 0`,
               flexShrink: 0,
             }}>
-              <span style={{ fontSize: 14, fontWeight: 700, color: SLATE, letterSpacing: '-0.02em' }}>
+              <span style={{ fontFamily: FONT_HEADING, fontSize: 16, fontWeight: 700, color: SLATE, letterSpacing: '-0.01em' }}>
                 {title}
               </span>
               <motion.button
                 onClick={() => void requestClose()} whileTap={{ scale: 0.92 }}
+                className="lms-iconbtn"
                 style={{
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
                   width: 28, height: 28, borderRadius: '50%',
                   border: `1px solid ${BORDER}`, background: BG,
-                  cursor: 'pointer', color: '#6B7280',
+                  cursor: 'pointer', color: INK_SOFT,
                 }}
                 aria-label="Close"
               >
@@ -411,7 +463,7 @@ export function Modal({
 export function FieldLabel({ children }: { children: React.ReactNode }) {
   return (
     <label style={{
-      display: 'block', fontSize: 11, fontWeight: 700, color: '#6B7280',
+      display: 'block', fontSize: 11, fontWeight: 700, color: MUTED,
       letterSpacing: '0.07em', textTransform: 'uppercase', marginBottom: 5,
     }}>
       {children}
@@ -423,16 +475,14 @@ export function FieldInput(props: React.InputHTMLAttributes<HTMLInputElement>) {
   return (
     <input
       {...props}
+      className={`lms-field${props.className ? ` ${props.className}` : ''}`}
       style={{
         width: '100%', boxSizing: 'border-box',
-        padding: '9px 12px', borderRadius: 7,
+        padding: '9px 12px', borderRadius: R_MD,
         border: `1.5px solid ${BORDER}`, background: BG,
         fontSize: 13, color: SLATE, outline: 'none',
-        transition: 'border-color 0.14s',
         ...props.style,
       }}
-      onFocus={e => { e.target.style.borderColor = RED; props.onFocus?.(e); }}
-      onBlur={e  => { e.target.style.borderColor = BORDER; props.onBlur?.(e); }}
     />
   );
 }
@@ -441,16 +491,15 @@ export function FieldTextarea(props: React.TextareaHTMLAttributes<HTMLTextAreaEl
   return (
     <textarea
       {...props}
+      className={`lms-field${props.className ? ` ${props.className}` : ''}`}
       style={{
         width: '100%', boxSizing: 'border-box',
-        padding: '9px 12px', borderRadius: 7,
+        padding: '9px 12px', borderRadius: R_MD,
         border: `1.5px solid ${BORDER}`, background: BG,
         fontSize: 13, color: SLATE, outline: 'none',
-        transition: 'border-color 0.14s', resize: 'vertical', minHeight: 80,
+        resize: 'vertical', minHeight: 80,
         ...props.style,
       }}
-      onFocus={e => { e.target.style.borderColor = RED; props.onFocus?.(e); }}
-      onBlur={e  => { e.target.style.borderColor = BORDER; props.onBlur?.(e); }}
     />
   );
 }
@@ -460,16 +509,14 @@ export function FieldSelect(props: React.SelectHTMLAttributes<HTMLSelectElement>
     <div style={{ position: 'relative' }}>
       <select
         {...props}
+        className={`lms-field${props.className ? ` ${props.className}` : ''}`}
         style={{
           width: '100%', boxSizing: 'border-box',
-          appearance: 'none', padding: '9px 36px 9px 12px', borderRadius: 7,
+          appearance: 'none', padding: '9px 36px 9px 12px', borderRadius: R_MD,
           border: `1.5px solid ${BORDER}`, background: BG,
           fontSize: 13, color: SLATE, cursor: 'pointer', outline: 'none',
-          transition: 'border-color 0.14s',
           ...props.style,
         }}
-        onFocus={e => { e.target.style.borderColor = RED; props.onFocus?.(e); }}
-        onBlur={e  => { e.target.style.borderColor = BORDER; props.onBlur?.(e); }}
       />
       <ChevronDown size={13} style={{
         position: 'absolute', right: 10, top: '50%',
@@ -568,12 +615,12 @@ export function PrimaryBtn({
       onClick={onClick}
       disabled={disabled || loading}
       whileTap={{ scale: 0.97 }}
-      whileHover={!(disabled || loading) ? { opacity: 0.9 } : {}}
+      className="lms-btn lms-btn-primary"
       style={{
         display: 'flex', alignItems: 'center', gap: 6,
         padding: small ? '6px 12px' : '9px 18px',
-        borderRadius: 7, border: 'none', background: SLATE,
-        color: '#FFFFFF', fontSize: small ? 12 : 13, fontWeight: 600,
+        borderRadius: R_MD, border: 'none', background: RED,
+        color: SURFACE, fontSize: small ? 12 : 13, fontWeight: 600,
         cursor: (disabled || loading) ? 'not-allowed' : 'pointer',
         opacity: (disabled || loading) ? 0.6 : 1,
         letterSpacing: '-0.01em',
@@ -597,11 +644,12 @@ export function DangerBtn({
       onClick={onClick}
       disabled={disabled || loading}
       whileTap={{ scale: 0.97 }}
+      className="lms-btn lms-btn-danger"
       style={{
         display: 'flex', alignItems: 'center', gap: 6,
         padding: small ? '6px 12px' : '9px 18px',
-        borderRadius: 7, border: `1px solid rgba(214,43,56,0.3)`,
-        background: 'rgba(214,43,56,0.06)',
+        borderRadius: R_MD, border: `1px solid ${RED}4D`,
+        background: `${RED}0F`,
         color: RED, fontSize: small ? 12 : 13, fontWeight: 600,
         cursor: (disabled || loading) ? 'not-allowed' : 'pointer',
         opacity: (disabled || loading) ? 0.6 : 1,
@@ -624,11 +672,12 @@ export function GhostBtn({
       onClick={onClick}
       disabled={disabled}
       whileTap={{ scale: 0.97 }}
+      className="lms-btn lms-btn-ghost"
       style={{
         display: 'flex', alignItems: 'center', gap: 6,
         padding: small ? '5px 10px' : '8px 14px',
-        borderRadius: 7, border: `1px solid ${BORDER}`,
-        background: '#FFFFFF', color: '#374151',
+        borderRadius: R_MD, border: `1px solid ${BORDER}`,
+        background: SURFACE, color: INK_SOFT,
         fontSize: small ? 12 : 13, fontWeight: 500,
         cursor: disabled ? 'not-allowed' : 'pointer',
         opacity: disabled ? 0.5 : 1,
@@ -651,8 +700,8 @@ export function PageHeader({ title, subtitle, action }: {
     }}>
       <div>
         <h1 style={{
-          margin: 0, fontSize: 22, fontWeight: 700, color: SLATE,
-          letterSpacing: '-0.04em', lineHeight: 1.2,
+          margin: 0, fontFamily: FONT_HEADING, fontSize: 24, fontWeight: 700, color: SLATE,
+          letterSpacing: '-0.02em', lineHeight: 1.2,
         }}>
           {title}
         </h1>
@@ -673,9 +722,9 @@ export function EmptyState({ icon: Icon, message, action }: {
   return (
     <div style={{
       background: BG, border: `1px dashed ${BORDER}`,
-      borderRadius: 10, padding: '40px 24px', textAlign: 'center',
+      borderRadius: R_LG, padding: '40px 24px', textAlign: 'center',
     }}>
-      <Icon size={28} style={{ color: '#D1D5DB', margin: '0 auto 10px', display: 'block' }} aria-hidden />
+      <Icon size={28} style={{ color: MUTED, margin: '0 auto 10px', display: 'block' }} aria-hidden />
       <p style={{ margin: '0 0 12px', fontSize: 13, color: MUTED }}>{message}</p>
       {action}
     </div>
@@ -733,14 +782,14 @@ export function TabBar({ tabs, active, onChange }: {
         <button
           key={t.id}
           onClick={() => onChange(t.id)}
+          className="lms-tab"
           style={{
             padding: '10px 18px',
             fontSize: 13, fontWeight: active === t.id ? 600 : 400,
-            color: active === t.id ? RED : '#6B7280',
+            color: active === t.id ? RED : MUTED,
             background: 'transparent', border: 'none', cursor: 'pointer',
             borderBottom: active === t.id ? `2px solid ${RED}` : '2px solid transparent',
             marginBottom: -1, whiteSpace: 'nowrap',
-            transition: 'color 0.14s, border-color 0.14s',
           }}
         >
           {t.label}
@@ -764,8 +813,8 @@ export function Toggle({ checked, onChange, label }: {
         role="switch"
         aria-checked={checked}
         style={{
-          width: 36, height: 20, borderRadius: 10, flexShrink: 0,
-          background: checked ? RED : '#D1D5DB',
+          width: 36, height: 20, borderRadius: R_LG, flexShrink: 0,
+          background: checked ? RED : BEIGE,
           transition: 'background 0.18s',
           position: 'relative', cursor: 'pointer',
         }}
@@ -774,7 +823,7 @@ export function Toggle({ checked, onChange, label }: {
           position: 'absolute',
           top: 3, left: checked ? 19 : 3,
           width: 14, height: 14, borderRadius: '50%',
-          background: '#FFFFFF',
+          background: SURFACE,
           transition: 'left 0.18s',
         }} />
       </div>
@@ -798,11 +847,12 @@ export function IconBtn({
       whileTap={{ scale: 0.92 }}
       title={label}
       aria-label={label}
+      className="lms-iconbtn"
       style={{
         display: 'flex', alignItems: 'center', justifyContent: 'center',
-        width: 40, height: 40, borderRadius: 6,
-        border: `1px solid ${BORDER}`, background: '#FFFFFF',
-        color: danger ? RED : '#6B7280', cursor: disabled ? 'not-allowed' : 'pointer',
+        width: 40, height: 40, borderRadius: R_MD,
+        border: `1px solid ${BORDER}`, background: SURFACE,
+        color: danger ? RED : INK_SOFT, cursor: disabled ? 'not-allowed' : 'pointer',
         opacity: disabled ? 0.4 : 1,
       }}
     >
