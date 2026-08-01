@@ -11,6 +11,7 @@ import { classSessions, materials, sessionMaterials } from '@/lib/db/schema';
 import { safeApiHandler, ApiException } from '@/lib/api-utils';
 import { requireStaff } from '@/lib/tests/route-helpers';
 import { resolveFileUrl } from '@/lib/storage/r2';
+import { propagateMaterialNameToClasses } from '@/lib/naming/propagate';
 
 type RouteCtx = { params: Promise<{ id: string }> };
 
@@ -21,22 +22,16 @@ export async function GET(_req: NextRequest, { params }: RouteCtx) {
     const sessionId = parseInt(id, 10);
     if (isNaN(sessionId)) throw new ApiException('Invalid session id', 400);
 
-    // Union: junction table rows + legacy classSessionId FK
-    const [junctionRows, legacyRows] = await Promise.all([
-      db
-        .select({ materialId: sessionMaterials.materialId })
-        .from(sessionMaterials)
-        .where(eq(sessionMaterials.sessionId, sessionId)),
-      db
-        .select({ id: materials.id })
-        .from(materials)
-        .where(eq(materials.classSessionId, sessionId)),
-    ]);
+    // session_materials is the single source of truth for this link — every
+    // write path that attaches a material to a class (create, "Link to
+    // class" PATCH, this route's own POST) writes a junction row, so no
+    // union with the legacy materials.classSessionId column is needed here.
+    const junctionRows = await db
+      .select({ materialId: sessionMaterials.materialId })
+      .from(sessionMaterials)
+      .where(eq(sessionMaterials.sessionId, sessionId));
 
-    const idSet = new Set<number>([
-      ...junctionRows.map((r) => r.materialId),
-      ...legacyRows.map((r) => r.id),
-    ]);
+    const idSet = new Set<number>(junctionRows.map((r) => r.materialId));
 
     if (idSet.size === 0) return [];
 
@@ -93,6 +88,10 @@ export async function POST(req: NextRequest, { params }: RouteCtx) {
       .values({ sessionId, materialId: body.materialId })
       .onConflictDoNothing();
 
+    // Newly-linked class inherits the material's identity if it has no real
+    // lesson name yet (planClassRenameFromMaterial's never-clobber rule).
+    await propagateMaterialNameToClasses(db, body.materialId);
+
     return { sessionId, materialId: body.materialId };
   });
 }
@@ -108,14 +107,33 @@ export async function DELETE(req: NextRequest, { params }: RouteCtx) {
     const materialId = parseInt(url.searchParams.get('materialId') ?? '', 10);
     if (isNaN(materialId)) throw new ApiException('materialId query param required', 400);
 
-    await db
-      .delete(sessionMaterials)
-      .where(
-        and(
-          eq(sessionMaterials.sessionId, sessionId),
-          eq(sessionMaterials.materialId, materialId),
-        ),
-      );
+    // Both writes happen in one transaction so a partial failure can't leave
+    // the junction and the legacy pointer out of sync.
+    await db.transaction(async (tx) => {
+      await tx
+        .delete(sessionMaterials)
+        .where(
+          and(
+            eq(sessionMaterials.sessionId, sessionId),
+            eq(sessionMaterials.materialId, materialId),
+          ),
+        );
+
+      // materials.classSessionId is the legacy link, kept in sync for
+      // reversibility (see GET's comment above). Detaching via the junction
+      // must also clear it — but only when it still points at *this*
+      // session; if it points elsewhere that's a separate, legitimate link
+      // and must be left alone.
+      await tx
+        .update(materials)
+        .set({ classSessionId: null })
+        .where(
+          and(
+            eq(materials.id, materialId),
+            eq(materials.classSessionId, sessionId),
+          ),
+        );
+    });
 
     return { deleted: true };
   });

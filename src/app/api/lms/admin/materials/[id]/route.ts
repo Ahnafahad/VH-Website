@@ -4,14 +4,20 @@
  */
 
 import { NextRequest } from 'next/server';
-import { eq } from 'drizzle-orm';
+import { and, eq } from 'drizzle-orm';
 import { db } from '@/lib/db';
-import { materials } from '@/lib/db/schema';
+import { materials, sessionMaterials } from '@/lib/db/schema';
 import { safeApiHandler, ApiException } from '@/lib/api-utils';
 import { requireStaff } from '@/lib/tests/route-helpers';
 import { r2Delete, resolveFileUrl } from '@/lib/storage/r2';
 import { LMS_SUBJECTS } from '@/lib/lms/constants';
 import { DOC_TYPES } from '@/lib/naming/taxonomy';
+import { propagateMaterialNameToClasses } from '@/lib/naming/propagate';
+
+// Fields that can change which class(es) this material names, or the name
+// it contributes — either a naming fact, or the material↔class relationship
+// itself (classSessionId, as set by the "Link to class" dialog).
+const PROPAGATION_TRIGGER_FIELDS = ['subject', 'docType', 'number', 'topic', 'classSessionId'] as const;
 
 export async function PATCH(
   req: NextRequest,
@@ -63,6 +69,40 @@ export async function PATCH(
       .where(eq(materials.id, materialId))
       .returning();
 
+    // Keep the session_materials junction (the single source of truth for
+    // "which classes is this material attached to") in sync with the legacy
+    // classSessionId column, which the "Link to class" dialog still writes.
+    // Only this material's own column-established link is touched — any
+    // other junction rows for this material (from the "attach existing
+    // material" flow) are independent and left alone.
+    if (body.classSessionId !== undefined) {
+      const oldSessionId = existing.classSessionId;
+      const newSessionId = updates.classSessionId ?? null;
+      if (oldSessionId !== null && oldSessionId !== newSessionId) {
+        await db
+          .delete(sessionMaterials)
+          .where(
+            and(
+              eq(sessionMaterials.sessionId, oldSessionId),
+              eq(sessionMaterials.materialId, materialId),
+            ),
+          );
+      }
+      if (newSessionId !== null) {
+        await db
+          .insert(sessionMaterials)
+          .values({ sessionId: newSessionId, materialId })
+          .onConflictDoNothing();
+      }
+    }
+
+    // Re-propagate this material's naming facts to every class it's linked
+    // to, but only when a field that can affect that changed.
+    const shouldPropagate = PROPAGATION_TRIGGER_FIELDS.some((f) => f in updates);
+    const renamedClasses = shouldPropagate
+      ? await propagateMaterialNameToClasses(db, materialId)
+      : [];
+
     return {
       id: updated.id,
       title: updated.title,
@@ -78,6 +118,7 @@ export async function PATCH(
       topic: updated.topic,
       classSessionId: updated.classSessionId,
       createdAt: updated.createdAt.getTime(),
+      renamedClasses,
     };
   });
 }

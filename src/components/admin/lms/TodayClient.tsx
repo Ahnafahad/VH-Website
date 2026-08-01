@@ -1,20 +1,23 @@
 'use client';
 
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useState, useCallback, useEffect, useRef, useImperativeHandle } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   Video, Upload, BookOpen, CheckCircle, Users, Clock,
-  ExternalLink, CalendarX, ChevronRight, Loader2, Check, KeyRound,
+  ExternalLink, CalendarX, ChevronRight, Loader2, Check, KeyRound, ClipboardCheck,
 } from 'lucide-react';
 import { uploadToR2 } from '@/lib/lms/upload-client';
 import { trackFeature } from '@/lib/analytics/tracker';
 import {
-  SubjectBadge, StatusBadge, Toast, ConfirmDialog, Modal,
+  SubjectBadge, StatusBadge, Toast, ConfirmDialog, Modal, useConfirm,
   FieldLabel, FieldInput, FieldTextarea, PrimaryBtn, GhostBtn,
   fmtDhaka, dhakaLocalToISO, SPIN_CSS, RED, SLATE, BORDER, MUTED, BG,
   rowV,
 } from './lms-shared';
+import { suggestMaterialFields, type MaterialSuggestion } from '@/lib/naming/suggest';
+import { formatMaterialName } from '@/lib/naming/format-name';
+import { COURSES, SUBJECTS, DOC_TYPES } from '@/lib/naming/taxonomy';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -41,6 +44,7 @@ export interface TodaySession {
   meetLink: string | null;
   attendanceCount: number;
   materialsCount: number;
+  pendingReviewCount: number;
   offlineShowcase: OfflineShowcaseEntry[];
 }
 
@@ -54,18 +58,53 @@ interface Props {
   sessions: TodaySession[]; // upcoming sessions for "next" empty state
 }
 
+// ─── Close guard handle ───────────────────────────────────────────────────────
+// Exposed by sheets rendered inside a `Modal` so the parent can wire the
+// Modal's `confirmClose` prop to the sheet's own in-flight/dirty state.
+
+export interface CloseGuardHandle {
+  canClose: () => boolean | Promise<boolean>;
+}
+
 // ─── Upload PDF Sheet ─────────────────────────────────────────────────────────
 
-function UploadSheet({
-  session, onClose, onDone,
-}: {
+const UploadSheet = React.forwardRef<CloseGuardHandle, {
   session: TodaySession; onClose: () => void; onDone: () => void;
-}) {
+}>(function UploadSheet({ session, onClose, onDone }, ref) {
   const [file,    setFile]    = useState<File | null>(null);
   const [title,   setTitle]   = useState('');
   const [progress, setProgress] = useState(0);
   const [stage,   setStage]   = useState<'idle' | 'uploading' | 'saving' | 'done'>('idle');
   const [error,   setError]   = useState('');
+  // docType/number/topic derived from the filename via the same autofill
+  // engine the Materials screen uses (suggestMaterialFields). This sheet has
+  // no selects for these fields — they're always inherited/derived, never
+  // admin-editable here — so unlike the Materials screen's "touched" guard,
+  // a re-pick of the file always recomputes them.
+  const [suggestion, setSuggestion] = useState<MaterialSuggestion | null>(null);
+  const [confirm, confirmDialog] = useConfirm();
+
+  useImperativeHandle(ref, () => ({
+    canClose: () => {
+      if (stage === 'uploading' || stage === 'saving') {
+        return confirm({
+          title: 'Upload in progress',
+          message: 'Upload is still in progress. Close anyway?',
+          confirmLabel: 'Close anyway',
+          destructive: true,
+        });
+      }
+      if (stage === 'idle' && (file || title.trim())) {
+        return confirm({
+          title: 'Discard this upload?',
+          message: 'The selected file and title will be lost.',
+          confirmLabel: 'Discard',
+          destructive: true,
+        });
+      }
+      return true;
+    },
+  }), [stage, file, title, confirm]);
 
   const handleUpload = async () => {
     if (!file) { setError('Choose a PDF file to upload'); return; }
@@ -88,6 +127,11 @@ function UploadSheet({
           fileName: file.name,
           fileSize: file.size,
           classSessionId: session.id,
+          // Subject/product are intentionally not sent — the server always
+          // inherits those from the linked session (see materials/route.ts).
+          docType: suggestion?.docType ?? DOC_TYPES[0].key,
+          number: suggestion?.number ?? null,
+          topic: suggestion?.topic ?? null,
         }),
       });
       if (!res.ok) throw new Error('Save failed');
@@ -118,8 +162,27 @@ function UploadSheet({
           onChange={e => {
             const nextFile = e.target.files?.[0] ?? null;
             setFile(nextFile);
-            if (nextFile && !title.trim()) {
-              setTitle(nextFile.name.replace(/\.pdf$/i, '').replace(/[-_]+/g, ' '));
+            if (!nextFile) { setSuggestion(null); return; }
+            const s = suggestMaterialFields(nextFile.name);
+            setSuggestion(s);
+            if (!title.trim()) {
+              // Prefer the session's own (already-known) subject/course when
+              // they're real taxonomy values, same as the Materials screen's
+              // inherited-title logic; fall back to whatever the filename
+              // itself suggests when the session doesn't have one yet
+              // (e.g. an auto-generated session with subject 'tbd').
+              const inheritedSubject = SUBJECTS.find(x => x.key === session.subject)?.key;
+              const inheritedCourse  = COURSES.find(x => x.key === session.product)?.key;
+              const subjectForTitle = inheritedSubject ?? s.subject;
+              setTitle(subjectForTitle
+                ? formatMaterialName({
+                    course: inheritedCourse ?? s.course ?? COURSES[0].key,
+                    subject: subjectForTitle,
+                    docType: s.docType ?? DOC_TYPES[0].key,
+                    number: s.number,
+                    topic: s.topic,
+                  })
+                : nextFile.name.replace(/\.pdf$/i, '').replace(/[-_]+/g, ' '));
             }
           }}
           style={{ width: '100%', minHeight: 44, padding: '10px 12px', fontSize: 13, color: SLATE, border: `1px solid ${BORDER}`, borderRadius: 10, background: '#FFFFFF' }}
@@ -156,17 +219,16 @@ function UploadSheet({
           {stage === 'done' ? 'Uploaded!' : 'Upload PDF'}
         </PrimaryBtn>
       </div>
+      {confirmDialog}
     </div>
   );
-}
+});
 
 // ─── Post Homework Sheet ──────────────────────────────────────────────────────
 
-function HomeworkSheet({
-  session, onClose, onDone,
-}: {
+const HomeworkSheet = React.forwardRef<CloseGuardHandle, {
   session: TodaySession; onClose: () => void; onDone: () => void;
-}) {
+}>(function HomeworkSheet({ session, onClose, onDone }, ref) {
   const [form, setForm] = useState({
     title: '',
     description: '',
@@ -175,8 +237,33 @@ function HomeworkSheet({
   });
   const [saving, setSaving]  = useState(false);
   const [error,  setError]   = useState('');
+  const [confirm, confirmDialog] = useConfirm();
 
   const f = (k: keyof typeof form, v: string) => setForm(p => ({ ...p, [k]: v }));
+
+  useImperativeHandle(ref, () => ({
+    canClose: () => {
+      if (saving) {
+        return confirm({
+          title: 'Homework post in progress',
+          message: 'Homework post is still saving. Close anyway?',
+          confirmLabel: 'Close anyway',
+          destructive: true,
+        });
+      }
+      const dirty = form.title.trim() !== '' || form.description.trim() !== ''
+        || form.dueAt !== '' || form.batch !== (session.batch ?? '');
+      if (dirty) {
+        return confirm({
+          title: 'Discard this homework draft?',
+          message: 'Your unsaved changes will be lost.',
+          confirmLabel: 'Discard',
+          destructive: true,
+        });
+      }
+      return true;
+    },
+  }), [saving, form, session.batch, confirm]);
 
   const handleSave = async () => {
     if (!form.title.trim() || !form.description.trim() || !form.dueAt) {
@@ -229,9 +316,10 @@ function HomeworkSheet({
         <GhostBtn onClick={onClose} small>Cancel</GhostBtn>
         <PrimaryBtn onClick={handleSave} loading={saving} small>Post Homework</PrimaryBtn>
       </div>
+      {confirmDialog}
     </div>
   );
-}
+});
 
 // ─── Attendance Sheet ─────────────────────────────────────────────────────────
 
@@ -255,16 +343,18 @@ interface RosterStudent {
   history: RosterStudentHistoryEntry[];
 }
 
-function AttendanceSheet({
-  session, onClose, onDone,
-}: {
+const AttendanceSheet = React.forwardRef<CloseGuardHandle, {
   session: TodaySession; onClose: () => void; onDone: () => void;
-}) {
+}>(function AttendanceSheet({ session, onClose, onDone }, ref) {
   const [students, setStudents] = useState<RosterStudent[] | null>(null);
   const [loading, setLoading] = useState(true);
-  const [saving,  setSaving]  = useState(false);
   const [error,   setError]  = useState('');
   const [expandedId, setExpandedId] = useState<number | null>(null);
+  // Per-row autosave state: 'pending' = debounce running, 'saving' = PATCH in
+  // flight, 'error' = last save failed and needs a retry. No entry = saved.
+  const [rowStatus, setRowStatus] = useState<Record<number, 'pending' | 'saving' | 'error'>>({});
+  const saveTimers = useRef<Map<number, ReturnType<typeof setTimeout>>>(new Map());
+  const [confirm, confirmDialog] = useConfirm();
 
   useEffect(() => {
     let cancelled = false;
@@ -283,31 +373,94 @@ function AttendanceSheet({
     return () => { cancelled = true; };
   }, [session.id]);
 
-  const togglePresent = (userId: number) => {
-    setStudents(prev => prev?.map(s => s.userId === userId ? { ...s, present: !s.present } : s) ?? null);
-  };
-  const setMode = (userId: number, mode: 'online' | 'offline') => {
-    setStudents(prev => prev?.map(s => s.userId === userId ? { ...s, mode } : s) ?? null);
-  };
+  // Cancel any debounce timers still waiting when the sheet unmounts. A timer
+  // only exists while a row is 'pending'; canClose() below blocks closing on
+  // 'pending'/'saving'/'error' rows, so by the time unmount happens any real
+  // edit has either already reached the server or the admin explicitly chose
+  // to discard it.
+  useEffect(() => {
+    return () => {
+      saveTimers.current.forEach(t => clearTimeout(t));
+      saveTimers.current.clear();
+    };
+  }, []);
 
-  const handleSave = async () => {
-    if (!students) return;
-    setSaving(true); setError('');
+  // No per-row attendance endpoint exists — this reuses the bulk PUT
+  // (/api/lms/admin/classes/[id]/attendance) with a single-record `records`
+  // array. The route already upserts/deletes per record independently, so a
+  // one-record call is a safe, additive per-row save (assumption: this route
+  // shape is stable — verified by reading its handler before writing this).
+  const saveRow = useCallback(async (userId: number, present: boolean, mode: 'online' | 'offline') => {
+    setRowStatus(prev => ({ ...prev, [userId]: 'saving' }));
     try {
       const res = await fetch(`/api/lms/admin/classes/${session.id}/attendance`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          records: students.map(s => ({ userId: s.userId, present: s.present, mode: s.mode })),
-        }),
+        body: JSON.stringify({ records: [{ userId, present, mode }] }),
       });
       if (!res.ok) throw new Error('Save failed');
-      onDone(); onClose();
-    } catch (e) {
-      setError(e instanceof Error ? e.message : 'Failed to save');
-    } finally {
-      setSaving(false);
+      setRowStatus(prev => {
+        const next = { ...prev };
+        delete next[userId];
+        return next;
+      });
+    } catch {
+      setRowStatus(prev => ({ ...prev, [userId]: 'error' }));
     }
+  }, [session.id]);
+
+  const scheduleSave = useCallback((userId: number, present: boolean, mode: 'online' | 'offline') => {
+    setRowStatus(prev => ({ ...prev, [userId]: 'pending' }));
+    const existing = saveTimers.current.get(userId);
+    if (existing) clearTimeout(existing);
+    const timer = setTimeout(() => {
+      saveTimers.current.delete(userId);
+      void saveRow(userId, present, mode);
+    }, 350);
+    saveTimers.current.set(userId, timer);
+  }, [saveRow]);
+
+  const togglePresent = (userId: number) => {
+    if (!students) return;
+    const next = students.map(s => s.userId === userId ? { ...s, present: !s.present } : s);
+    setStudents(next);
+    const row = next.find(s => s.userId === userId);
+    if (row) scheduleSave(row.userId, row.present, row.mode);
+  };
+  const setMode = (userId: number, mode: 'online' | 'offline') => {
+    if (!students) return;
+    const next = students.map(s => s.userId === userId ? { ...s, mode } : s);
+    setStudents(next);
+    const row = next.find(s => s.userId === userId);
+    if (row) scheduleSave(row.userId, row.present, row.mode);
+  };
+  const retryRow = (userId: number) => {
+    const row = students?.find(s => s.userId === userId);
+    if (row) void saveRow(row.userId, row.present, row.mode);
+  };
+
+  // Shared by the Modal's confirmClose guard (via the ref below) and the
+  // in-sheet Done button — closing must never silently drop a row that
+  // hasn't reached the server yet.
+  const checkCanClose = useCallback((): boolean | Promise<boolean> => {
+    const problems = Object.entries(rowStatus);
+    if (problems.length === 0) return true;
+    const hasError = problems.some(([, st]) => st === 'error');
+    return confirm({
+      title: hasError ? 'Attendance save failed' : 'Attendance still saving',
+      message: hasError
+        ? `${problems.length} attendance change(s) failed to save. Close anyway and lose them?`
+        : 'Attendance is still saving. Close anyway?',
+      confirmLabel: 'Close anyway',
+      destructive: hasError,
+    });
+  }, [rowStatus, confirm]);
+
+  useImperativeHandle(ref, () => ({ canClose: checkCanClose }), [checkCanClose]);
+
+  const handleDone = async () => {
+    if (!(await checkCanClose())) return;
+    onDone(); onClose();
   };
 
   if (loading) {
@@ -327,13 +480,14 @@ function AttendanceSheet({
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
       <p style={{ margin: 0, fontSize: 12, color: MUTED }}>
-        {presentCount} / {students.length} marked present
+        {presentCount} / {students.length} marked present — saved automatically as you toggle
       </p>
 
       <div style={{ maxHeight: 380, overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: 6 }}>
         {students.map(s => {
           const isExpanded = expandedId === s.userId;
           const lastPresent = s.history.find(h => h.present);
+          const status = rowStatus[s.userId];
 
           return (
             <div key={s.userId}>
@@ -343,8 +497,8 @@ function AttendanceSheet({
                   display: 'flex', alignItems: 'center', gap: 10,
                   padding: '8px 10px',
                   borderRadius: isExpanded ? '8px 8px 0 0' : 8,
-                  border: `1px solid ${BORDER}`,
-                  borderBottom: isExpanded ? `1px solid ${BORDER}` : `1px solid ${BORDER}`,
+                  border: status === 'error' ? `1px solid ${RED}` : `1px solid ${BORDER}`,
+                  borderBottom: isExpanded ? `1px solid ${BORDER}` : (status === 'error' ? `1px solid ${RED}` : `1px solid ${BORDER}`),
                   background: s.present ? 'rgba(16,185,129,0.06)' : '#FFFFFF',
                 }}
               >
@@ -394,6 +548,23 @@ function AttendanceSheet({
                     </button>
                   ))}
                 </div>
+                {/* Autosave status */}
+                {(status === 'pending' || status === 'saving') && (
+                  <Loader2 size={14} style={{ color: MUTED, animation: 'spin 1s linear infinite', flexShrink: 0 }} aria-hidden />
+                )}
+                {status === 'error' && (
+                  <button
+                    onClick={(e) => { e.stopPropagation(); retryRow(s.userId); }}
+                    style={{
+                      fontSize: 10, fontWeight: 700, color: RED,
+                      background: 'rgba(214,43,56,0.08)', border: `1px solid rgba(214,43,56,0.3)`,
+                      borderRadius: 6, padding: '4px 8px', cursor: 'pointer',
+                      flexShrink: 0, whiteSpace: 'nowrap',
+                    }}
+                  >
+                    Failed · Retry
+                  </button>
+                )}
               </div>
 
               {/* Expandable details panel */}
@@ -468,12 +639,12 @@ function AttendanceSheet({
       {error && <p style={{ fontSize: 12, color: RED, margin: 0 }}>{error}</p>}
 
       <div style={{ display: 'flex', gap: 8, justifyContent: 'flex-end' }}>
-        <GhostBtn onClick={onClose} small>Cancel</GhostBtn>
-        <PrimaryBtn onClick={handleSave} loading={saving} small>Save Attendance</PrimaryBtn>
+        <PrimaryBtn onClick={handleDone} small>Done</PrimaryBtn>
       </div>
+      {confirmDialog}
     </div>
   );
-}
+});
 
 // ─── Offline Homework Sheet ───────────────────────────────────────────────────
 // Students who chose "I'll show it in the next class" for an assignment
@@ -567,6 +738,10 @@ function SessionCard({ session, index, onRefresh }: {
   const [confirmComp,  setConfirmComp]  = useState(false);
   const [toast,        setToast]        = useState<string | null>(null);
 
+  const attendanceGuard = useRef<CloseGuardHandle>(null);
+  const uploadGuard      = useRef<CloseGuardHandle>(null);
+  const hwGuard           = useRef<CloseGuardHandle>(null);
+
   const showToast = useCallback((msg: string) => {
     setToast(msg);
     setTimeout(() => setToast(null), 3000);
@@ -651,6 +826,17 @@ function SessionCard({ session, index, onRefresh }: {
             <Clock size={12} style={{ color: MUTED }} aria-hidden />
             <span style={{ fontSize: 12, color: '#6B7280' }}>{session.durationMinutes} min</span>
           </div>
+          {session.pendingReviewCount > 0 && (
+            <Link
+              href="/admin/homework"
+              style={{ display: 'flex', alignItems: 'center', gap: 5, textDecoration: 'none' }}
+            >
+              <ClipboardCheck size={12} style={{ color: '#B45309' }} aria-hidden />
+              <span style={{ fontSize: 12, color: '#B45309', fontWeight: 600 }}>
+                {session.pendingReviewCount} to review
+              </span>
+            </Link>
+          )}
         </div>
 
         {/* Action buttons */}
@@ -768,20 +954,33 @@ function SessionCard({ session, index, onRefresh }: {
       </motion.div>
 
       {/* Inline modals */}
-      <Modal open={attOpen} onClose={() => setAttOpen(false)} title={`Attendance — ${session.title}`} width={480}>
+      <Modal
+        open={attOpen} onClose={() => setAttOpen(false)}
+        title={`Attendance — ${session.title}`} width={480}
+        confirmClose={() => attendanceGuard.current?.canClose() ?? true}
+      >
         <AttendanceSheet
+          ref={attendanceGuard}
           session={session}
           onClose={() => setAttOpen(false)}
           onDone={() => { showToast('Attendance saved'); onRefresh(); }}
         />
       </Modal>
 
-      <Modal open={uploadOpen} onClose={() => setUploadOpen(false)} title={`Upload PDF — ${session.title}`} width={480}>
-        <UploadSheet session={session} onClose={() => setUploadOpen(false)} onDone={() => showToast('PDF uploaded')} />
+      <Modal
+        open={uploadOpen} onClose={() => setUploadOpen(false)}
+        title={`Upload PDF — ${session.title}`} width={480}
+        confirmClose={() => uploadGuard.current?.canClose() ?? true}
+      >
+        <UploadSheet ref={uploadGuard} session={session} onClose={() => setUploadOpen(false)} onDone={() => showToast('PDF uploaded')} />
       </Modal>
 
-      <Modal open={hwOpen} onClose={() => setHwOpen(false)} title={`Post Homework — ${session.title}`} width={480}>
-        <HomeworkSheet session={session} onClose={() => setHwOpen(false)} onDone={() => showToast('Homework posted')} />
+      <Modal
+        open={hwOpen} onClose={() => setHwOpen(false)}
+        title={`Post Homework — ${session.title}`} width={480}
+        confirmClose={() => hwGuard.current?.canClose() ?? true}
+      >
+        <HomeworkSheet ref={hwGuard} session={session} onClose={() => setHwOpen(false)} onDone={() => showToast('Homework posted')} />
       </Modal>
 
       <Modal open={offlineOpen} onClose={() => setOfflineOpen(false)} title={`Offline Homework — ${session.title}`} width={480}>

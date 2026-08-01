@@ -18,8 +18,9 @@ import {
 } from './lms-shared';
 import { uploadToR2 } from '@/lib/lms/upload-client';
 import { trackFeature } from '@/lib/analytics/tracker';
-import { formatClassName } from '@/lib/naming/format-name';
-import { SUBJECTS as SUBJECT_TAXONOMY, BATCHES, CourseKey, SubjectKey, BatchKey } from '@/lib/naming/taxonomy';
+import { formatClassName, formatMaterialName } from '@/lib/naming/format-name';
+import { suggestMaterialFields, type MaterialSuggestion } from '@/lib/naming/suggest';
+import { SUBJECTS as SUBJECT_TAXONOMY, COURSES, DOC_TYPES, BATCHES, CourseKey, SubjectKey, BatchKey } from '@/lib/naming/taxonomy';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -498,6 +499,10 @@ function ScheduleModal({
 interface PendingFile {
   file: File;
   title: string;
+  // Derived once per file via suggestMaterialFields (same engine as
+  // MaterialsClient's UploadPdfTab / TodayClient's UploadSheet); sent
+  // alongside the title in the material POST below.
+  suggestion: MaterialSuggestion | null;
   progress: number; // 0–100, -1 = error
   done: boolean;
 }
@@ -542,6 +547,28 @@ function CompletedClassModal({
   const [uploading, setUploading] = useState(false);
   const [uploadDone, setUploadDone] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
+
+  // Close guard: once step 1 succeeds the class is already saved on the
+  // server as 'completed' — closing the sheet before finishing step 2 (or
+  // before typed step-1 details are saved) would leave that either
+  // unreferenced in the local list or lose typed effort silently.
+  const [closeConfirmOpen, setCloseConfirmOpen] = useState(false);
+  const closeResolverRef = useRef<((ok: boolean) => void) | null>(null);
+  const hasUnsavedWork = step === 'upload'
+    ? true
+    : Boolean(form.title.trim() || form.description.trim() || form.scheduledAt);
+
+  const confirmClose = (): Promise<boolean> => {
+    if (!hasUnsavedWork) return Promise.resolve(true);
+    return new Promise<boolean>(resolve => {
+      closeResolverRef.current = resolve;
+      setCloseConfirmOpen(true);
+    });
+  };
+
+  const guardedClose = async () => {
+    if (await confirmClose()) onClose();
+  };
 
   const f = (k: keyof CompletedClassForm, v: string | null) =>
     setForm(p => ({ ...p, [k]: v }));
@@ -605,18 +632,34 @@ function CompletedClassModal({
     }
   };
 
-  // File picker
+  // File picker — title derived per file via the same naming engine as
+  // MaterialsClient's UploadPdfTab / TodayClient's UploadSheet, inheriting
+  // course/subject from the just-created session the same way those
+  // references inherit from a linked class. Only fills the title at
+  // creation time (it starts blank for every file), so a file's own title
+  // is never auto-overwritten once the admin edits it — same effect as the
+  // references' !touched guard.
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const picked = Array.from(e.target.files ?? []).filter(f => f.type === 'application/pdf');
     if (picked.length === 0) return;
+    const inheritedCourse  = createdSession ? COURSES.find(c => c.key === createdSession.product)?.key : undefined;
+    const inheritedSubject = createdSession ? SUBJECT_TAXONOMY.find(s => s.key === createdSession.subject)?.key : undefined;
     setFiles(prev => [
       ...prev,
-      ...picked.map(file => ({
-        file,
-        title: file.name.replace(/\.pdf$/i, '').replace(/[_-]/g, ' '),
-        progress: 0,
-        done: false,
-      })),
+      ...picked.map(file => {
+        const suggestion = suggestMaterialFields(file.name);
+        const subjectForTitle = inheritedSubject ?? suggestion.subject;
+        const title = subjectForTitle
+          ? formatMaterialName({
+              course: inheritedCourse ?? suggestion.course ?? COURSES[0].key,
+              subject: subjectForTitle,
+              docType: suggestion.docType ?? DOC_TYPES[0].key,
+              number: suggestion.number,
+              topic: suggestion.topic,
+            })
+          : file.name.replace(/\.pdf$/i, '').replace(/[_-]/g, ' ');
+        return { file, title, suggestion, progress: 0, done: false };
+      }),
     ]);
     // Reset input so the same file can be added again if needed
     e.target.value = '';
@@ -668,6 +711,9 @@ function CompletedClassModal({
             product:        createdSession.product,
             batch:          createdSession.batch ?? null,
             classSessionId: createdSession.id,
+            docType:        pf.suggestion?.docType ?? DOC_TYPES[0].key,
+            number:         pf.suggestion?.number ?? null,
+            topic:          pf.suggestion?.topic ?? null,
           }),
         });
         if (!matRes.ok) {
@@ -728,9 +774,11 @@ function CompletedClassModal({
   })();
 
   return (
+    <>
     <Modal
       open={open}
       onClose={onClose}
+      confirmClose={confirmClose}
       title={step === 'details' ? 'Log Completed Class' : 'Attach Lecture Sheets'}
       width={560}
     >
@@ -800,7 +848,7 @@ function CompletedClassModal({
           {error && <p style={{ fontSize: 12, color: RED, margin: 0 }}>{error}</p>}
 
           <div style={{ display: 'flex', gap: 8, justifyContent: 'flex-end' }}>
-            <GhostBtn onClick={onClose} small>Cancel</GhostBtn>
+            <GhostBtn onClick={() => void guardedClose()} small>Cancel</GhostBtn>
             <PrimaryBtn onClick={handleCreateSession} loading={saving} small>
               Next: Attach PDFs
             </PrimaryBtn>
@@ -983,6 +1031,19 @@ function CompletedClassModal({
         </div>
       )}
     </Modal>
+    <ConfirmDialog
+      open={closeConfirmOpen}
+      title={step === 'upload' ? 'Close without finishing?' : 'Discard this class log?'}
+      message={step === 'upload'
+        ? 'The class was already logged. Closing now may leave lecture sheets unattached — you can attach them later from Materials.'
+        : 'The title, date, and other details you entered will be lost.'}
+      confirmLabel="Close anyway"
+      destructive
+      loading={false}
+      onConfirm={() => { closeResolverRef.current?.(true); closeResolverRef.current = null; setCloseConfirmOpen(false); }}
+      onCancel={() => { closeResolverRef.current?.(false); closeResolverRef.current = null; setCloseConfirmOpen(false); }}
+    />
+    </>
   );
 }
 

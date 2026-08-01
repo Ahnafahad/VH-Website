@@ -1,7 +1,7 @@
 /**
  * GET /api/lms/admin/today
  * Today's sessions (Dhaka day) with attendance counts, material counts,
- * and assignment counts due within 48 hours.
+ * assignment counts due within 48 hours, and per-session pending-review counts.
  */
 
 import { and, count, eq, gte, lte } from 'drizzle-orm';
@@ -61,7 +61,7 @@ export async function GET() {
     const sessionIds = todaySessions.map((s) => s.id);
 
     // Parallelise: attendance counts per session + materials per session + assignments due in 48h
-    const [attendanceCounts, materialCounts, assignmentsDue48h, offlineSubs] =
+    const [attendanceCounts, materialCounts, assignmentsDue48h, offlineSubs, pendingReviewSubs] =
       await Promise.all([
         // Attendance counts
         Promise.all(
@@ -120,6 +120,20 @@ export async function GET() {
           .innerJoin(assignments, eq(assignmentSubmissions.assignmentId, assignments.id))
           .innerJoin(users, eq(assignmentSubmissions.userId, users.id))
           .where(eq(assignmentSubmissions.mode, 'offline')),
+
+        // Submissions awaiting instructor review (handed in, not yet reviewed) —
+        // matched against today's sessions below via assignmentMatchesSession.
+        db
+          .select({
+            submissionId: assignmentSubmissions.id,
+            classSessionId: assignments.classSessionId,
+            subject: assignments.subject,
+            product: assignments.product,
+            batch: assignments.batch,
+          })
+          .from(assignmentSubmissions)
+          .innerJoin(assignments, eq(assignmentSubmissions.assignmentId, assignments.id))
+          .where(eq(assignmentSubmissions.status, 'submitted')),
       ]);
 
     const attendanceMap = new Map(attendanceCounts.map((r) => [r.sessionId, r.count]));
@@ -128,6 +142,19 @@ export async function GET() {
     // batch null = "all batches" on either side, so it matches any specific batch
     const batchMatches = (a: string | null, b: string | null) =>
       a === null || b === null || a === b;
+
+    // An assignment belongs to a session if it was created against that exact
+    // session (classSessionId FK — set whenever homework is posted from the
+    // Today screen or picked in the Homework admin form); assignments created
+    // without picking a session (classSessionId null) fall back to matching by
+    // subject/product/batch, same rule already used for offlineShowcase above.
+    const assignmentMatchesSession = (
+      a: { classSessionId: number | null; subject: string; product: string; batch: string | null },
+      s: { id: number; subject: string; product: string; batch: string | null },
+    ) =>
+      a.classSessionId !== null
+        ? a.classSessionId === s.id
+        : a.subject === s.subject && a.product === s.product && batchMatches(a.batch, s.batch);
 
     return {
       sessions: todaySessions.map((s) => ({
@@ -142,6 +169,7 @@ export async function GET() {
         meetLink: s.meetLink,
         attendanceCount: attendanceMap.get(s.id) ?? 0,
         materialsCount: materialsMap.get(s.id) ?? 0,
+        pendingReviewCount: pendingReviewSubs.filter((p) => assignmentMatchesSession(p, s)).length,
         offlineShowcase: offlineSubs
           .filter((o) =>
             o.subject === s.subject &&

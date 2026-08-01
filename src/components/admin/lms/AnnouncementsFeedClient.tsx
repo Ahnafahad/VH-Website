@@ -276,7 +276,7 @@ export default function AnnouncementsFeedClient({ initialAnnouncements }: Props)
                     aria-label={a.pinned ? 'Unpin' : 'Pin to top'}
                     style={{
                       display: 'flex', alignItems: 'center', justifyContent: 'center',
-                      width: 30, height: 30, borderRadius: 6,
+                      width: 40, height: 40, borderRadius: 6,
                       border: `1px solid ${a.pinned ? 'rgba(214,43,56,0.3)' : BORDER}`,
                       background: a.pinned ? 'rgba(214,43,56,0.06)' : '#FFFFFF',
                       color: a.pinned ? RED : '#6B7280', cursor: 'pointer',

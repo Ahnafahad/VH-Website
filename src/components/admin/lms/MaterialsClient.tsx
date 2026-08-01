@@ -21,7 +21,7 @@ import {
 import { formatMaterialName } from '@/lib/naming/format-name';
 import { suggestMaterialFields, type Provenance } from '@/lib/naming/suggest';
 import { getLastUsed, setLastUsed, type ExistingMaterial } from '@/lib/naming/predict';
-import { classUsableName, planClassRenameFromMaterial, cleanHeading } from '@/lib/naming/class-link';
+import { classUsableName, cleanHeading } from '@/lib/naming/class-link';
 import type { ClassSession } from './ClassesClient';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
@@ -309,33 +309,8 @@ function UploadPdfTab({
       });
 
       // If the linked class has no real lesson name ("Thursday Class",
-      // "English Class 3"), it inherits this material's identity — subject,
-      // name, number, canonical title. planClassRenameFromMaterial returns null
-      // (and we skip) for a class that already has a real name.
-      if (selectedSession) {
-        const plan = planClassRenameFromMaterial(
-          {
-            title: selectedSession.title, subject: selectedSession.subject,
-            topic: selectedSession.topic, product: selectedSession.product,
-            classNumber: selectedSession.classNumber,
-          },
-          { course, subject, docType, number, topic },
-        );
-        if (plan) {
-          try {
-            await fetch(`/api/lms/admin/classes/${selectedSession.id}`, {
-              method: 'PATCH',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({
-                subject: plan.subject, topic: plan.topic,
-                classNumber: plan.classNumber, title: plan.title,
-              }),
-            });
-          } catch {
-            // Non-fatal — the material already saved.
-          }
-        }
-      }
+      // "English Class 3"), the server renames it to inherit this material's
+      // identity (POST /api/lms/admin/materials propagates server-side).
 
       setStage('done');
       // Reset
@@ -599,29 +574,11 @@ function LinkClassDialog({
       });
       if (!res.ok) throw new Error('Could not link this material');
 
-      // If the newly-linked class has no lesson name, it inherits this
-      // material's identity — same rule as upload.
-      let renamed: RenamedClass | undefined;
-      const target = newClassId ? sessions.find(s => s.id === newClassId) : null;
-      if (target) {
-        const plan = planClassRenameFromMaterial(
-          { title: target.title, subject: target.subject, topic: target.topic, product: target.product, classNumber: target.classNumber },
-          { course: material.product as CourseKey, subject: material.subject as SubjectKey,
-            docType: material.docType as DocTypeKey | null, number: material.number ?? '', topic: material.topic ?? '' },
-        );
-        if (plan) {
-          try {
-            await fetch(`/api/lms/admin/classes/${target.id}`, {
-              method: 'PATCH',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({ subject: plan.subject, topic: plan.topic, classNumber: plan.classNumber, title: plan.title }),
-            });
-            renamed = { id: target.id, title: plan.title, subject: plan.subject, topic: plan.topic, classNumber: plan.classNumber };
-          } catch {
-            // Non-fatal — the material link already saved.
-          }
-        }
-      }
+      // Server propagates the material's identity to the newly-linked class
+      // when it has no lesson name yet; it reports back what it renamed so
+      // the list can reflect it without a refetch.
+      const body = await res.json() as { renamedClasses?: RenamedClass[] };
+      const renamed = body.renamedClasses?.find(r => r.id === newClassId);
       onLinked(material.id, newClassId, renamed);
       onClose();
     } catch (e) {
@@ -900,12 +857,15 @@ function MaterialsList({
                   {m.classSessionId ? ` · ${sessionMap.get(m.classSessionId)?.title ?? 'Class #' + m.classSessionId}` : ''}
                 </p>
               </div>
-              <div style={{ display: 'flex', gap: 6, flexShrink: 0 }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 6, flexShrink: 0, flexWrap: 'wrap', justifyContent: 'flex-end' }}>
                 <a href={m.blobUrl} target="_blank" rel="noopener noreferrer">
                   <IconBtn icon={ExternalLink} label="Open" onClick={() => {}} />
                 </a>
                 <IconBtn icon={Pencil} label="Edit details" onClick={() => setEditMaterial(m)} />
                 <IconBtn icon={Paperclip} label="Link to class" onClick={() => setLinkMaterial(m)} />
+                {/* Wider gap + divider before Delete so it isn't a mis-tap target
+                    next to the other (non-destructive) actions on a phone. */}
+                <div aria-hidden style={{ width: 1, height: 24, background: BORDER, margin: '0 4px' }} />
                 <IconBtn icon={Trash2} label="Delete" danger onClick={() => setDeleteId(m.id)} />
               </div>
             </motion.div>

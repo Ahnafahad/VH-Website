@@ -2,7 +2,7 @@
 
 import React, { useState, useCallback, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { BookOpen, Trash2, Edit2, Plus, AlertCircle, Clock, ChevronDown, ChevronUp, FileText, CheckCircle, Send, Loader2, Upload, Link2, X as XIcon } from 'lucide-react';
+import { BookOpen, Trash2, Edit2, Plus, AlertCircle, Clock, ChevronDown, ChevronUp, FileText, CheckCircle, Loader2, Upload, Link2, X as XIcon } from 'lucide-react';
 import { uploadToR2 } from '@/lib/lms/upload-client';
 import {
   SubjectBadge, Toast, ConfirmDialog, Modal,
@@ -449,36 +449,69 @@ interface SubmissionsData {
   submissions: SubmissionRow[];
 }
 
-// ─── Submissions panel ────────────────────────────────────────────────────────
+// ─── Submissions / marking panel ───────────────────────────────────────────────
+//
+// Batch marking, rebuilt per D:\VH Website\.claude\scratch\homework-marking-ux-spec.md.
+// One assignment, many students, marked in one sitting. Design constraints:
+//  - Never leave this panel to mark a student (no per-row modal, no separate page).
+//  - Keyboard-first: Enter on a row's Mark button (or in its note field) saves
+//    that row AND auto-focuses the next not-yet-reviewed row's Mark button.
+//  - Dense rows: no avatar/ID/timestamp/email/mode metadata — just status dot,
+//    name, an optional file link, an optional note field, and the Mark control.
+//  - Autosave per row via the existing POST /api/lms/admin/submissions/[id]
+//    endpoint (marks status='reviewed', sets instructorComment). No terminal
+//    Save button. Failures show inline on the row with a Retry action.
+//  - Sticky "N of M marked" header inside the panel's own scroll area, so
+//    position stays obvious while scrolling a long roster.
+//
+// "Marked" only applies to students who actually submitted — the API has no
+// endpoint to act on a 'pending' (not-yet-submitted) row, so those are shown
+// for context (dim, non-interactive) but excluded from the N/M count.
 
 function SubmissionsPanel({ assignmentId, onClose }: { assignmentId: number; onClose: () => void }) {
   const [data, setData] = useState<SubmissionsData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
-  const [reviewing, setReviewing] = useState<number | null>(null); // submissionId
-  const [comment, setComment] = useState('');
-  const [saving, setSaving] = useState(false);
-  const [toast, setToast] = useState<string | null>(null);
-
-  const showToast = (m: string) => { setToast(m); setTimeout(() => setToast(null), 3000); };
+  const [commentDrafts, setCommentDrafts] = useState<Record<number, string>>({});
+  const [rowState, setRowState] = useState<Record<number, 'saving' | 'error'>>({});
+  const [rowError, setRowError] = useState<Record<number, string>>({});
+  const [focusTargetId, setFocusTargetId] = useState<number | null>(null);
+  const buttonRefs = useRef<Map<number, HTMLButtonElement>>(new Map());
 
   React.useEffect(() => {
     let mounted = true;
     setLoading(true);
     fetch(`/api/lms/admin/assignments/${assignmentId}/submissions`)
       .then(r => r.json())
-      .then((d: SubmissionsData) => { if (mounted) { setData(d); setLoading(false); } })
+      .then((d: SubmissionsData) => {
+        if (!mounted) return;
+        setData(d);
+        setLoading(false);
+        const first = d.submissions.find(s => s.status === 'submitted' && s.id !== null);
+        if (first?.id != null) setFocusTargetId(first.id);
+      })
       .catch(() => { if (mounted) { setError('Failed to load submissions'); setLoading(false); } });
     return () => { mounted = false; };
   }, [assignmentId]);
 
-  const handleReview = useCallback(async (submissionId: number) => {
-    setSaving(true);
+  React.useEffect(() => {
+    if (focusTargetId !== null) {
+      buttonRefs.current.get(focusTargetId)?.focus();
+      setFocusTargetId(null);
+    }
+  }, [focusTargetId]);
+
+  const handleMark = useCallback(async (sub: SubmissionRow) => {
+    if (sub.id === null || !data) return;
+    const submissionId = sub.id;
+    const idx = data.submissions.findIndex(s => s.id === submissionId);
+    setRowState(s => ({ ...s, [submissionId]: 'saving' }));
+    setRowError(e => { const { [submissionId]: _drop, ...rest } = e; return rest; });
     try {
       const res = await fetch(`/api/lms/admin/submissions/${submissionId}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ instructorComment: comment.trim() || undefined }),
+        body: JSON.stringify({ instructorComment: (commentDrafts[submissionId] ?? '').trim() || undefined }),
       });
       if (!res.ok) throw new Error('Failed');
       const updated = await res.json() as SubmissionRow;
@@ -488,145 +521,156 @@ function SubmissionsPanel({ assignmentId, onClose }: { assignmentId: number; onC
           s.id === submissionId ? { ...s, ...updated, status: 'reviewed' } : s,
         ),
       } : prev);
-      setReviewing(null);
-      setComment('');
-      showToast('Marked as reviewed');
+      setRowState(s => { const { [submissionId]: _drop, ...rest } = s; return rest; });
+      const next = data.submissions.slice(idx + 1).find(s => s.status === 'submitted' && s.id !== null);
+      setFocusTargetId(next?.id ?? null);
     } catch {
-      showToast('Failed to save review');
-    } finally {
-      setSaving(false);
+      setRowState(s => ({ ...s, [submissionId]: 'error' }));
+      setRowError(e => ({ ...e, [submissionId]: 'Save failed' }));
     }
-  }, [comment]);
+  }, [data, commentDrafts]);
 
-  const statusColor = (status: string) => {
-    if (status === 'reviewed') return { bg: 'rgba(16,185,129,0.08)', color: '#065F46', border: 'rgba(16,185,129,0.2)' };
-    if (status === 'submitted') return { bg: 'rgba(245,158,11,0.1)', color: '#92400E', border: 'rgba(245,158,11,0.25)' };
-    return { bg: '#F3F4F6', color: '#6B7280', border: BORDER };
-  };
+  const submittedTotal = data ? data.submissions.filter(s => s.status !== 'pending').length : 0;
+  const reviewedTotal = data ? data.submissions.filter(s => s.status === 'reviewed').length : 0;
+  const pendingTotal = data ? data.submissions.filter(s => s.status === 'pending').length : 0;
+  const allMarked = submittedTotal > 0 && reviewedTotal === submittedTotal;
 
   return (
     <div style={{
       background: '#FAFAFA', border: `1px solid ${BORDER}`,
-      borderRadius: 10, padding: '20px', marginTop: 8,
+      borderRadius: 10, marginTop: 8, maxHeight: '70vh', overflowY: 'auto',
     }}>
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 16 }}>
-        <p style={{ margin: 0, fontSize: 13, fontWeight: 700, color: SLATE }}>Submissions</p>
-        <button onClick={onClose} style={{ background: 'none', border: 'none', cursor: 'pointer', color: MUTED, fontSize: 12 }}>
-          Close
-        </button>
+      <div style={{
+        position: 'sticky', top: 0, zIndex: 1, background: '#FAFAFA',
+        padding: '14px 16px 10px', borderBottom: `1px solid ${BORDER}`,
+        borderTopLeftRadius: 10, borderTopRightRadius: 10,
+      }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 8 }}>
+          <p style={{ margin: 0, fontSize: 13, fontWeight: 700, color: SLATE, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+            {data?.assignment.title ?? 'Submissions'}
+          </p>
+          <button onClick={onClose} style={{ background: 'none', border: 'none', cursor: 'pointer', color: MUTED, fontSize: 12, flexShrink: 0, minHeight: 44, padding: '0 4px' }}>
+            Close
+          </button>
+        </div>
+        {submittedTotal > 0 && (
+          <div style={{ marginTop: 8, display: 'flex', alignItems: 'center', gap: 8 }}>
+            <span style={{ fontSize: 12, fontWeight: 700, color: allMarked ? '#065F46' : SLATE, whiteSpace: 'nowrap' }}>
+              {reviewedTotal} of {submittedTotal} marked
+            </span>
+            <div style={{ flex: 1, height: 6, minWidth: 60, borderRadius: 100, background: '#E5E7EB', overflow: 'hidden' }}>
+              <div style={{ height: '100%', width: `${(reviewedTotal / submittedTotal) * 100}%`, background: '#10B981', borderRadius: 100 }} />
+            </div>
+            {pendingTotal > 0 && (
+              <span style={{ fontSize: 11, color: MUTED, whiteSpace: 'nowrap' }}>{pendingTotal} not submitted</span>
+            )}
+          </div>
+        )}
       </div>
 
-      {loading ? (
-        <p style={{ fontSize: 13, color: MUTED, textAlign: 'center', padding: '24px 0' }}>Loading…</p>
-      ) : error ? (
-        <p style={{ fontSize: 13, color: RED, textAlign: 'center', padding: '24px 0' }}>{error}</p>
-      ) : !data || data.submissions.length === 0 ? (
-        <p style={{ fontSize: 13, color: MUTED, textAlign: 'center', padding: '24px 0' }}>No students in scope.</p>
-      ) : (
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-          {data.submissions.map((sub) => {
-            const sc = statusColor(sub.status);
-            const isReviewOpen = reviewing === sub.id;
-            return (
-              <div key={sub.userId} style={{ background: '#FFFFFF', border: `1px solid ${BORDER}`, borderRadius: 8, padding: '12px 14px' }}>
-                <div style={{ display: 'flex', alignItems: 'flex-start', gap: 10, flexWrap: 'wrap' }}>
-                  <div style={{ flex: 1, minWidth: 180 }}>
-                    <p style={{ margin: 0, fontSize: 13, fontWeight: 600, color: SLATE }}>{sub.name}</p>
-                    <p style={{ margin: '2px 0 0', fontSize: 11, color: MUTED }}>{sub.email}{sub.batch ? ` · Batch ${sub.batch}` : ''}</p>
-                  </div>
-                  <span style={{
-                    padding: '2px 8px', borderRadius: 100, fontSize: 11, fontWeight: 600,
-                    background: sc.bg, color: sc.color, border: `1px solid ${sc.border}`, textTransform: 'capitalize',
-                  }}>
-                    {sub.status}
+      <div style={{ padding: '10px 16px 16px', display: 'flex', flexDirection: 'column', gap: 6 }}>
+        {loading ? (
+          <p style={{ fontSize: 13, color: MUTED, textAlign: 'center', padding: '24px 0' }}>Loading…</p>
+        ) : error ? (
+          <p style={{ fontSize: 13, color: RED, textAlign: 'center', padding: '24px 0' }}>{error}</p>
+        ) : !data || data.submissions.length === 0 ? (
+          <p style={{ fontSize: 13, color: MUTED, textAlign: 'center', padding: '24px 0' }}>No students in scope.</p>
+        ) : (
+          data.submissions.map((sub) => {
+            if (sub.status === 'pending' || sub.id === null) {
+              return (
+                <div key={sub.userId} style={{
+                  display: 'flex', alignItems: 'center', gap: 8,
+                  padding: '8px 10px', borderRadius: 8,
+                  background: '#F9FAFB', border: `1px dashed ${BORDER}`, opacity: 0.7,
+                }}>
+                  <span aria-hidden style={{ width: 8, height: 8, borderRadius: '50%', background: '#D1D5DB', flexShrink: 0 }} />
+                  <span style={{ flex: 1, minWidth: 0, fontSize: 13, color: MUTED, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                    {sub.name}
                   </span>
-                  {sub.mode === 'offline' && (
-                    <span style={{
-                      padding: '2px 8px', borderRadius: 100, fontSize: 11, fontWeight: 600,
-                      background: sub.offlineChecked ? 'rgba(16,185,129,0.08)' : '#F3F4F6',
-                      color: sub.offlineChecked ? '#065F46' : '#6B7280',
-                      border: `1px solid ${sub.offlineChecked ? 'rgba(16,185,129,0.2)' : BORDER}`,
-                    }}>
-                      {sub.offlineChecked ? 'Shown in class ✓' : 'Will show offline'}
-                    </span>
-                  )}
+                  <span style={{ fontSize: 11, color: MUTED, flexShrink: 0 }}>Not submitted</span>
                 </div>
+              );
+            }
 
-                {sub.status !== 'pending' && (
-                  <div style={{ marginTop: 10, display: 'flex', flexDirection: 'column', gap: 6 }}>
-                    {sub.fileUrl && (
-                      <a href={sub.fileUrl} target="_blank" rel="noopener noreferrer"
-                        style={{ display: 'inline-flex', alignItems: 'center', gap: 5, fontSize: 12, color: '#3B82F6' }}>
-                        <FileText size={12} aria-hidden /> View submitted file
-                      </a>
-                    )}
-                    {sub.note && (
-                      <p style={{ margin: 0, fontSize: 12, color: '#374151', background: BG, padding: '6px 10px', borderRadius: 6, border: `1px solid ${BORDER}` }}>
-                        Note: {sub.note}
-                      </p>
-                    )}
-                    {sub.instructorComment && (
-                      <p style={{ margin: 0, fontSize: 12, color: '#374151', borderLeft: `2px solid ${RED}`, paddingLeft: 8 }}>
-                        Feedback: {sub.instructorComment}
-                      </p>
-                    )}
-                    {sub.status === 'submitted' && sub.id !== null && (
-                      <>
-                        <button
-                          onClick={() => setReviewing(isReviewOpen ? null : sub.id)}
-                          style={{
-                            display: 'inline-flex', alignItems: 'center', gap: 5,
-                            fontSize: 12, fontWeight: 500, color: SLATE,
-                            background: 'none', border: `1px solid ${BORDER}`, borderRadius: 6,
-                            padding: '5px 10px', cursor: 'pointer', marginTop: 4, width: 'fit-content',
-                          }}
-                        >
-                          <CheckCircle size={12} aria-hidden />
-                          Mark Reviewed
-                          {isReviewOpen ? <ChevronUp size={11} aria-hidden /> : <ChevronDown size={11} aria-hidden />}
-                        </button>
-                        {isReviewOpen && (
-                          <div style={{ display: 'flex', flexDirection: 'column', gap: 8, marginTop: 4 }}>
-                            <textarea
-                              value={comment}
-                              onChange={e => setComment(e.target.value)}
-                              placeholder="Instructor comment (optional)"
-                              rows={3}
-                              style={{
-                                width: '100%', boxSizing: 'border-box',
-                                padding: '8px 10px', borderRadius: 6,
-                                border: `1.5px solid ${BORDER}`, fontSize: 12, color: SLATE,
-                                outline: 'none', resize: 'vertical',
-                              }}
-                            />
-                            <div style={{ display: 'flex', gap: 6 }}>
-                              <GhostBtn small onClick={() => { setReviewing(null); setComment(''); }}>Cancel</GhostBtn>
-                              <PrimaryBtn small onClick={() => { if (sub.id !== null) void handleReview(sub.id); }} loading={saving}>
-                                <Send size={11} aria-hidden /> Save Review
-                              </PrimaryBtn>
-                            </div>
-                          </div>
-                        )}
-                      </>
-                    )}
-                  </div>
+            const submissionId = sub.id;
+            const isReviewed = sub.status === 'reviewed';
+            const saving = rowState[submissionId] === 'saving';
+            const err = rowError[submissionId];
+
+            return (
+              <div key={sub.userId} style={{
+                display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap',
+                padding: '8px 10px', borderRadius: 8,
+                background: isReviewed ? '#FFFFFF' : 'rgba(245,158,11,0.06)',
+                border: `1px solid ${isReviewed ? BORDER : 'rgba(245,158,11,0.3)'}`,
+              }}>
+                <span aria-hidden style={{
+                  width: 8, height: 8, borderRadius: '50%', flexShrink: 0,
+                  background: isReviewed ? '#10B981' : '#F59E0B',
+                }} />
+                <span title={sub.name} style={{
+                  flex: '0 1 140px', minWidth: 80, fontSize: 13, fontWeight: 600, color: SLATE,
+                  overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap',
+                }}>
+                  {sub.name}
+                </span>
+                {sub.fileUrl && (
+                  <a href={sub.fileUrl} target="_blank" rel="noopener noreferrer" title="View submitted file"
+                    style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: 40, height: 40, flexShrink: 0, color: '#3B82F6' }}>
+                    <FileText size={15} aria-hidden />
+                  </a>
+                )}
+                <input
+                  value={commentDrafts[submissionId] ?? sub.instructorComment ?? ''}
+                  onChange={e => setCommentDrafts(prev => ({ ...prev, [submissionId]: e.target.value }))}
+                  onKeyDown={e => { if (e.key === 'Enter') { e.preventDefault(); void handleMark(sub); } }}
+                  placeholder="Note (optional)"
+                  disabled={saving}
+                  style={{
+                    flex: '1 1 120px', minWidth: 100, boxSizing: 'border-box', height: 40,
+                    padding: '0 10px', borderRadius: 6, border: `1px solid ${BORDER}`,
+                    fontSize: 12, color: SLATE, outline: 'none',
+                  }}
+                />
+                <button
+                  ref={el => { if (el) buttonRefs.current.set(submissionId, el); else buttonRefs.current.delete(submissionId); }}
+                  onClick={() => void handleMark(sub)}
+                  disabled={saving}
+                  aria-label={isReviewed ? `Re-save review for ${sub.name}` : `Mark ${sub.name} reviewed`}
+                  style={{
+                    display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 5,
+                    minWidth: 44, height: 44, padding: '0 12px', borderRadius: 8, flexShrink: 0,
+                    border: 'none', cursor: saving ? 'not-allowed' : 'pointer',
+                    background: isReviewed ? 'rgba(16,185,129,0.1)' : '#D62B38',
+                    color: isReviewed ? '#065F46' : '#fff',
+                    fontSize: 12, fontWeight: 600, opacity: saving ? 0.7 : 1,
+                  }}
+                >
+                  {saving ? <Loader2 size={15} className="animate-spin" aria-hidden /> : <CheckCircle size={15} aria-hidden />}
+                  {isReviewed ? 'Reviewed' : 'Mark'}
+                </button>
+                {sub.note && (
+                  <span style={{ flexBasis: '100%', fontSize: 11, color: MUTED, background: '#fff', border: `1px solid ${BORDER}`, borderRadius: 6, padding: '4px 8px' }}>
+                    {sub.note}
+                  </span>
+                )}
+                {err && (
+                  <span style={{ flexBasis: '100%', display: 'flex', alignItems: 'center', gap: 6, fontSize: 11, color: RED }}>
+                    <AlertCircle size={11} aria-hidden /> {err}
+                    <button
+                      onClick={() => void handleMark(sub)}
+                      style={{ fontSize: 11, fontWeight: 600, color: RED, background: 'none', border: 'none', textDecoration: 'underline', cursor: 'pointer', padding: 0 }}
+                    >
+                      Retry
+                    </button>
+                  </span>
                 )}
               </div>
             );
-          })}
-        </div>
-      )}
-
-      {toast && (
-        <div style={{
-          position: 'fixed', bottom: 24, left: '50%', transform: 'translateX(-50%)',
-          zIndex: 9999, padding: '10px 20px', borderRadius: 8,
-          background: SLATE, color: '#FFF', fontSize: 13, fontWeight: 500,
-          boxShadow: '0 4px 20px rgba(0,0,0,0.18)',
-        }}>
-          {toast}
-        </div>
-      )}
+          })
+        )}
+      </div>
     </div>
   );
 }

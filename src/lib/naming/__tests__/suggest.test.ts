@@ -47,4 +47,19 @@ describe('suggestMaterialFields', () => {
 
     expect(result.course).toBe('iba');
   });
+
+  // Production rows 13-15/17 (see naming-accuracy-report.md) were stored with
+  // subject "tbd", null docType/number, and a raw-filename title, even though
+  // this is the exact filename shape parseFilename/suggestMaterialFields
+  // handle confidently. This test pins down that the confident prediction
+  // itself is correct end to end (all fields + assembled title) — proving the
+  // drop happens downstream of this pure function, not inside it.
+  it('produces a fully-assembled, non-null title for an unambiguous filename (regression guard for prod rows 13-15/17)', () => {
+    const result = suggestMaterialFields('IBA Maths - Lecture 1.5.pdf');
+
+    expect(result.subject).toBe('math');
+    expect(result.docType).toBe('lecture');
+    expect(result.number).toBe('1.5');
+    expect(result.title).toBe('IBA Math Lecture 1.5');
+  });
 });

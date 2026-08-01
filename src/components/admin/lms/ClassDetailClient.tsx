@@ -27,6 +27,7 @@ import {
 } from 'lucide-react';
 import { formatDhaka } from '@/lib/lms/time';
 import { uploadToR2 } from '@/lib/lms/upload-client';
+import { useConfirm } from './lms-shared';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -191,6 +192,7 @@ export default function ClassDetailClient({
   const [answerText, setAnswerText] = useState<Record<number, string>>({});
   const [postingAnswer, setPostingAnswer] = useState<number | null>(null);
   const [deletingId, setDeletingId] = useState<number | null>(null);
+  const [confirm, confirmDialog] = useConfirm();
 
   const scheduledDate = new Date(classSession.scheduledAt);
 
@@ -338,7 +340,12 @@ export default function ClassDetailClient({
 
   // ── Grant revocation ────────────────────────────────────────────────────────
   async function handleRevoke(grantId: number) {
-    if (!confirm('Revoke this access grant?')) return;
+    const ok = await confirm({
+      title: 'Revoke this access grant?',
+      message: 'The student will lose access immediately. You can grant access again later.',
+      confirmLabel: 'Revoke',
+    });
+    if (!ok) return;
     try {
       const res = await fetch(`/api/lms/admin/grants/${grantId}`, {
         method: 'DELETE',
@@ -378,7 +385,13 @@ export default function ClassDetailClient({
 
   // ── Q&A: delete ─────────────────────────────────────────────────────────────
   async function handleDeleteQA(id: number, parentId?: number) {
-    if (!confirm('Delete this message?')) return;
+    const ok = await confirm({
+      title: 'Delete this message?',
+      message: "This can't be undone.",
+      confirmLabel: 'Delete',
+      destructive: true,
+    });
+    if (!ok) return;
     setDeletingId(id);
     try {
       const res = await fetch(`/api/lms/questions/${id}`, { method: 'DELETE' });
@@ -938,6 +951,7 @@ export default function ClassDetailClient({
           </div>
         </section>
       </div>
+      {confirmDialog}
     </div>
   );
 }

@@ -325,6 +325,18 @@ export default function AnnouncementsClient({
     };
   }, []);
 
+  // Warn before an accidental tab close / refresh discards an unsent draft
+  useEffect(() => {
+    const hasDraft = subject.trim().length > 0 || body.trim().length > 0;
+    if (!hasDraft || sending) return;
+    const handler = (e: BeforeUnloadEvent) => {
+      e.preventDefault();
+      e.returnValue = '';
+    };
+    window.addEventListener('beforeunload', handler);
+    return () => window.removeEventListener('beforeunload', handler);
+  }, [subject, body, sending]);
+
   // ── Toast helper ─────────────────────────────────────────────────────────────
 
   const showToast = useCallback((type: ToastType, message: string) => {

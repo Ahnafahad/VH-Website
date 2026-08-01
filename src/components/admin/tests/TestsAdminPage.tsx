@@ -37,6 +37,7 @@ import {
   ZapOff,
 } from 'lucide-react';
 import { BUCKET_LABELS, type TestBucket, type AttemptStatus, type TestMode } from '@/lib/tests/types';
+import { ConfirmDialog } from '../lms/lms-shared';
 
 // ─── Design tokens (light admin palette, matching existing admin pages) ────────
 
@@ -260,42 +261,6 @@ function SectionTitle({ children }: { children: React.ReactNode }) {
       fontFamily: SANS, paddingBottom: 10,
       borderBottom: `1px solid ${C.border}`, marginBottom: 14,
     }}>{children}</h3>
-  );
-}
-
-// ─── Confirm dialog ───────────────────────────────────────────────────────────
-
-function ConfirmDialog({
-  title, message, confirmLabel = 'Confirm', danger,
-  onConfirm, onCancel,
-}: {
-  title: string;
-  message: string;
-  confirmLabel?: string;
-  danger?: boolean;
-  onConfirm: () => void;
-  onCancel: () => void;
-}) {
-  return (
-    <div style={{
-      position: 'fixed', inset: 0, zIndex: 9998,
-      background: 'rgba(0,0,0,0.4)',
-      display: 'flex', alignItems: 'center', justifyContent: 'center',
-      padding: 16,
-    }} onClick={onCancel}>
-      <div onClick={e => e.stopPropagation()} style={{
-        background: '#fff', borderRadius: 10, padding: 24,
-        maxWidth: 400, width: '100%',
-        boxShadow: '0 8px 32px rgba(0,0,0,0.18)',
-      }}>
-        <h4 style={{ margin: '0 0 8px', fontSize: 16, fontWeight: 700, color: C.text, fontFamily: SANS }}>{title}</h4>
-        <p style={{ margin: '0 0 20px', fontSize: 13, color: C.textSec, fontFamily: SANS, lineHeight: 1.55 }}>{message}</p>
-        <div style={{ display: 'flex', gap: 8, justifyContent: 'flex-end' }}>
-          <Btn variant="outline" onClick={onCancel}>Cancel</Btn>
-          <Btn variant="primary" danger={danger} onClick={onConfirm}>{confirmLabel}</Btn>
-        </div>
-      </div>
-    </div>
   );
 }
 
@@ -766,10 +731,11 @@ function WindowsManager({
       {/* Confirm delete dialog */}
       {confirmDelete !== null && (
         <ConfirmDialog
+          open
           title="Delete Window"
           message="This will permanently delete the window. If any student has started an attempt through this window, the deletion will fail with an error — close it instead."
           confirmLabel="Delete"
-          danger
+          destructive
           onConfirm={() => deleteWindow(confirmDelete)}
           onCancel={() => setConfirmDelete(null)}
         />
@@ -964,10 +930,11 @@ function AttemptsTable({
 
       {confirmReset !== null && (
         <ConfirmDialog
+          open
           title="Reset Attempt"
           message="This wipes the student's answers and score so they can start the test fresh. Their violation counters are also cleared. This cannot be undone."
           confirmLabel="Reset Attempt"
-          danger
+          destructive
           onConfirm={() => { doAction(confirmReset, 'reset'); setConfirmReset(null); }}
           onCancel={() => setConfirmReset(null)}
         />

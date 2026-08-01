@@ -16,13 +16,13 @@ import {
   ShieldOff,
   Package,
   Check,
-  AlertTriangle,
   Clock,
   MessageSquare,
   Phone,
   RefreshCw,
   Loader2,
 } from 'lucide-react';
+import { ConfirmDialog } from './lms/lms-shared';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -305,149 +305,6 @@ function SectionHeader({ title, subtitle }: { title: string; subtitle?: string }
   );
 }
 
-// ─── Confirm Dialog ───────────────────────────────────────────────────────────
-
-function ConfirmDialog({
-  open,
-  title,
-  message,
-  confirmLabel,
-  destructive,
-  loading,
-  onConfirm,
-  onCancel,
-}: {
-  open:          boolean;
-  title:         string;
-  message:       string;
-  confirmLabel:  string;
-  destructive:   boolean;
-  loading:       boolean;
-  onConfirm:     () => void;
-  onCancel:      () => void;
-}) {
-  return (
-    <AnimatePresence>
-      {open && (
-        <>
-          <motion.div
-            variants={backdropVariants}
-            initial="hidden"
-            animate="visible"
-            exit="exit"
-            onClick={onCancel}
-            style={{
-              position:   'fixed',
-              inset:      0,
-              background: 'rgba(0,0,0,0.35)',
-              zIndex:     200,
-            }}
-          />
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95, y: 12 }}
-            animate={{ opacity: 1, scale: 1, y: 0, transition: { type: 'spring' as const, stiffness: 380, damping: 28 } }}
-            exit={{ opacity: 0, scale: 0.95, y: 8, transition: { duration: 0.16 } }}
-            style={{
-              position:     'fixed',
-              top:          '50%',
-              left:         '50%',
-              transform:    'translate(-50%, -50%)',
-              zIndex:       201,
-              background:   '#FFFFFF',
-              borderRadius: 12,
-              padding:      '24px 28px',
-              width:        340,
-              boxShadow:    '0 20px 60px rgba(0,0,0,0.14), 0 4px 16px rgba(0,0,0,0.06)',
-              border:       '1px solid #E5E7EB',
-            }}
-          >
-            <div style={{ display: 'flex', alignItems: 'flex-start', gap: 14, marginBottom: 20 }}>
-              <div style={{
-                width:           36,
-                height:          36,
-                borderRadius:    '50%',
-                background:      destructive ? 'rgba(214,43,56,0.1)' : 'rgba(59,130,246,0.1)',
-                display:         'flex',
-                alignItems:      'center',
-                justifyContent:  'center',
-                flexShrink:      0,
-              }}>
-                <AlertTriangle
-                  size={17}
-                  style={{ color: destructive ? '#D62B38' : '#3B82F6' }}
-                  aria-hidden
-                />
-              </div>
-              <div>
-                <p style={{
-                  margin:     0,
-                  fontSize:   14,
-                  fontWeight: 600,
-                  color:      '#0F172A',
-                  lineHeight: 1.3,
-                }}>
-                  {title}
-                </p>
-                <p style={{
-                  margin:     '5px 0 0',
-                  fontSize:   13,
-                  color:      '#6B7280',
-                  lineHeight: 1.45,
-                }}>
-                  {message}
-                </p>
-              </div>
-            </div>
-
-            <div style={{ display: 'flex', gap: 8, justifyContent: 'flex-end' }}>
-              <motion.button
-                onClick={onCancel}
-                whileTap={{ scale: 0.97 }}
-                disabled={loading}
-                style={{
-                  padding:      '8px 16px',
-                  borderRadius: 7,
-                  fontSize:     13,
-                  fontWeight:   500,
-                  border:       '1px solid #E5E7EB',
-                  background:   '#FFFFFF',
-                  color:        '#374151',
-                  cursor:       'pointer',
-                  opacity:      loading ? 0.5 : 1,
-                }}
-              >
-                Cancel
-              </motion.button>
-              <motion.button
-                onClick={onConfirm}
-                whileTap={{ scale: 0.97 }}
-                disabled={loading}
-                style={{
-                  padding:      '8px 16px',
-                  borderRadius: 7,
-                  fontSize:     13,
-                  fontWeight:   600,
-                  border:       'none',
-                  background:   destructive ? '#D62B38' : '#0F172A',
-                  color:        '#FFFFFF',
-                  cursor:       loading ? 'not-allowed' : 'pointer',
-                  opacity:      loading ? 0.7 : 1,
-                  display:      'flex',
-                  alignItems:   'center',
-                  gap:          6,
-                }}
-              >
-                {loading && <Loader2 size={12} style={{ animation: 'spin 1s linear infinite' }} aria-hidden />}
-                {confirmLabel}
-              </motion.button>
-            </div>
-          </motion.div>
-        </>
-      )}
-    </AnimatePresence>
-  );
-}
-
 // ─── User Detail Panel ────────────────────────────────────────────────────────
 
 function UserDetailPanel({
@@ -464,11 +321,14 @@ function UserDetailPanel({
   const [saving,         setSaving]         = useState(false);
   const [suspending,     setSuspending]     = useState(false);
   const [confirmSuspend, setConfirmSuspend] = useState(false);
+  const [confirmDiscard, setConfirmDiscard] = useState(false);
   const [toast,          setToast]          = useState<string | null>(null);
   const [roleChanged,    setRoleChanged]    = useState(false);
   const [productsChanged, setProductsChanged] = useState(false);
   const [batch,          setBatch]          = useState(user.batch ?? '');
   const [batchChanged,   setBatchChanged]   = useState(false);
+
+  const anyChanged = roleChanged || productsChanged || batchChanged;
 
   const showToast = (msg: string) => {
     setToast(msg);
@@ -487,9 +347,10 @@ function UserDetailPanel({
     setProductsChanged(true);
   };
 
-  const handleSaveRole = async () => {
-    if (!roleChanged) return;
-    setSaving(true);
+  // Each `apply*` fires its own PATCH and, on success, clears its own
+  // `*Changed` flag — so a field that failed stays marked as pending and can
+  // be retried, while fields that succeeded don't re-fire on retry.
+  const applyRole = async (): Promise<boolean> => {
     try {
       const res = await fetch(`/api/admin/users/${user.id}`, {
         method:  'PATCH',
@@ -499,17 +360,13 @@ function UserDetailPanel({
       if (!res.ok) throw new Error('Failed');
       onUpdate({ role });
       setRoleChanged(false);
-      showToast('Role updated');
+      return true;
     } catch {
-      showToast('Failed to update role');
-    } finally {
-      setSaving(false);
+      return false;
     }
   };
 
-  const handleSaveProducts = async () => {
-    if (!productsChanged) return;
-    setSaving(true);
+  const applyProducts = async (): Promise<boolean> => {
     try {
       const res = await fetch(`/api/admin/users/${user.id}`, {
         method:  'PATCH',
@@ -519,17 +376,13 @@ function UserDetailPanel({
       if (!res.ok) throw new Error('Failed');
       onUpdate({ products: Array.from(products) as ('iba' | 'fbs' | 'fbs_detailed')[] });
       setProductsChanged(false);
-      showToast('Products updated');
+      return true;
     } catch {
-      showToast('Failed to update products');
-    } finally {
-      setSaving(false);
+      return false;
     }
   };
 
-  const handleSaveBatch = async () => {
-    if (!batchChanged) return;
-    setSaving(true);
+  const applyBatch = async (): Promise<boolean> => {
     const trimmed = batch.trim() || null;
     try {
       const res = await fetch(`/api/admin/users/${user.id}`, {
@@ -543,11 +396,37 @@ function UserDetailPanel({
       const assignedId = data.user?.studentId;
       onUpdate(assignedId != null ? { batch: trimmed, studentId: assignedId } : { batch: trimmed });
       setBatchChanged(false);
-      showToast('Batch updated');
+      return true;
     } catch {
-      showToast('Failed to update batch');
-    } finally {
-      setSaving(false);
+      return false;
+    }
+  };
+
+  // Single consolidated save: fires only the PATCH calls for fields that
+  // actually changed, then reports exactly which of those succeeded/failed —
+  // never a blanket "saved" or "failed" when it was actually a partial result.
+  const handleSaveAll = async () => {
+    const jobs: { label: string; run: () => Promise<boolean> }[] = [];
+    if (productsChanged) jobs.push({ label: 'Product access', run: applyProducts });
+    if (roleChanged)     jobs.push({ label: 'Role',            run: applyRole });
+    if (batchChanged)    jobs.push({ label: 'Batch',           run: applyBatch });
+    if (jobs.length === 0) return;
+
+    setSaving(true);
+    const results = await Promise.all(
+      jobs.map(async j => ({ label: j.label, ok: await j.run() })),
+    );
+    setSaving(false);
+
+    const succeeded = results.filter(r => r.ok).map(r => r.label);
+    const failed    = results.filter(r => !r.ok).map(r => r.label);
+
+    if (failed.length === 0) {
+      showToast(succeeded.length > 1 ? 'All changes saved' : `${succeeded[0]} saved`);
+    } else if (succeeded.length === 0) {
+      showToast(failed.length > 1 ? `Failed to save: ${failed.join(', ')}` : `Failed to save ${failed[0].toLowerCase()}`);
+    } else {
+      showToast(`Saved: ${succeeded.join(', ')}. Failed: ${failed.join(', ')} — try again.`);
     }
   };
 
@@ -574,6 +453,13 @@ function UserDetailPanel({
 
   const isSuspended = user.status === 'inactive';
 
+  // Closing (backdrop click or the X button) must not silently discard
+  // unsaved role/product/batch edits — confirm first if anything is pending.
+  const requestClose = () => {
+    if (anyChanged) { setConfirmDiscard(true); return; }
+    onClose();
+  };
+
   return (
     <>
       {/* Backdrop */}
@@ -582,7 +468,7 @@ function UserDetailPanel({
         initial="hidden"
         animate="visible"
         exit="exit"
-        onClick={onClose}
+        onClick={requestClose}
         style={{
           position:   'fixed',
           inset:      0,
@@ -636,7 +522,7 @@ function UserDetailPanel({
             User Detail
           </span>
           <motion.button
-            onClick={onClose}
+            onClick={requestClose}
             whileTap={{ scale: 0.92 }}
             aria-label="Close panel"
             style={{
@@ -832,36 +718,6 @@ function UserDetailPanel({
                 );
               })}
             </div>
-            {productsChanged && (
-              <motion.button
-                initial={{ opacity: 0, y: 4 }}
-                animate={{ opacity: 1, y: 0 }}
-                onClick={handleSaveProducts}
-                disabled={saving}
-                whileTap={{ scale: 0.97 }}
-                style={{
-                  marginTop:    8,
-                  width:        '100%',
-                  padding:      '8px',
-                  borderRadius: 7,
-                  border:       'none',
-                  background:   '#0F172A',
-                  color:        '#FFFFFF',
-                  fontSize:     12,
-                  fontWeight:   600,
-                  cursor:       saving ? 'not-allowed' : 'pointer',
-                  opacity:      saving ? 0.7 : 1,
-                  display:      'flex',
-                  alignItems:   'center',
-                  justifyContent: 'center',
-                  gap:          6,
-                }}
-              >
-                {saving
-                  ? <><Loader2 size={12} style={{ animation: 'spin 1s linear infinite' }} aria-hidden /> Saving…</>
-                  : 'Save Product Changes'}
-              </motion.button>
-            )}
           </div>
 
           {/* Change Role */}
@@ -915,34 +771,6 @@ function UserDetailPanel({
                   aria-hidden
                 />
               </div>
-              {roleChanged && (
-                <motion.button
-                  initial={{ opacity: 0, scale: 0.92 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  onClick={handleSaveRole}
-                  disabled={saving}
-                  whileTap={{ scale: 0.96 }}
-                  style={{
-                    padding:      '9px 14px',
-                    borderRadius: 7,
-                    border:       'none',
-                    background:   '#0F172A',
-                    color:        '#FFFFFF',
-                    fontSize:     12,
-                    fontWeight:   600,
-                    cursor:       saving ? 'not-allowed' : 'pointer',
-                    flexShrink:   0,
-                    display:      'flex',
-                    alignItems:   'center',
-                    gap:          5,
-                  }}
-                >
-                  {saving
-                    ? <Loader2 size={12} style={{ animation: 'spin 1s linear infinite' }} aria-hidden />
-                    : <Check size={12} aria-hidden />}
-                  Apply
-                </motion.button>
-              )}
             </div>
           </div>
 
@@ -979,36 +807,45 @@ function UserDetailPanel({
                   outline:      'none',
                 }}
               />
-              {batchChanged && (
-                <motion.button
-                  initial={{ opacity: 0, scale: 0.92 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  onClick={handleSaveBatch}
-                  disabled={saving}
-                  whileTap={{ scale: 0.96 }}
-                  style={{
-                    padding:      '9px 14px',
-                    borderRadius: 7,
-                    border:       'none',
-                    background:   '#0F172A',
-                    color:        '#FFFFFF',
-                    fontSize:     12,
-                    fontWeight:   600,
-                    cursor:       saving ? 'not-allowed' : 'pointer',
-                    flexShrink:   0,
-                    display:      'flex',
-                    alignItems:   'center',
-                    gap:          5,
-                  }}
-                >
-                  {saving
-                    ? <Loader2 size={12} style={{ animation: 'spin 1s linear infinite' }} aria-hidden />
-                    : <Check size={12} aria-hidden />}
-                  Apply
-                </motion.button>
-              )}
             </div>
           </div>
+
+          {/* Save changes (consolidated Product Access / Role / Batch) */}
+          {anyChanged && (
+            <div style={{
+              marginBottom: 20,
+              paddingBottom: 20,
+              borderBottom: '1px solid #F3F4F6',
+            }}>
+              <motion.button
+                initial={{ opacity: 0, y: 4 }}
+                animate={{ opacity: 1, y: 0 }}
+                onClick={handleSaveAll}
+                disabled={saving}
+                whileTap={{ scale: 0.97 }}
+                style={{
+                  width:        '100%',
+                  padding:      '10px',
+                  borderRadius: 7,
+                  border:       'none',
+                  background:   '#0F172A',
+                  color:        '#FFFFFF',
+                  fontSize:     13,
+                  fontWeight:   600,
+                  cursor:       saving ? 'not-allowed' : 'pointer',
+                  opacity:      saving ? 0.7 : 1,
+                  display:      'flex',
+                  alignItems:   'center',
+                  justifyContent: 'center',
+                  gap:          6,
+                }}
+              >
+                {saving
+                  ? <><Loader2 size={13} style={{ animation: 'spin 1s linear infinite' }} aria-hidden /> Saving…</>
+                  : <><Check size={13} aria-hidden /> Save changes</>}
+              </motion.button>
+            </div>
+          )}
 
           {/* Suspend / Reactivate */}
           <div>
@@ -1095,6 +932,18 @@ function UserDetailPanel({
         loading={suspending}
         onConfirm={handleSuspendToggle}
         onCancel={() => setConfirmSuspend(false)}
+      />
+
+      {/* Discard Unsaved Changes Confirm Dialog */}
+      <ConfirmDialog
+        open={confirmDiscard}
+        title="Discard unsaved changes?"
+        message="Product access, role, or batch edits you made haven't been saved yet. Closing now will discard them."
+        confirmLabel="Discard"
+        destructive
+        loading={false}
+        onConfirm={() => { setConfirmDiscard(false); onClose(); }}
+        onCancel={() => setConfirmDiscard(false)}
       />
     </>
   );

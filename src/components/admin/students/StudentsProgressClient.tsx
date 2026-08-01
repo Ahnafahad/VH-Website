@@ -254,18 +254,21 @@ export default function StudentsProgressClient({
   const [batch, setBatch]       = useState<string>(initialBatch ?? '');
   const [students, setStudents] = useState<StudentSummary[]>(initialStudents);
   const [loading, setLoading]   = useState(false);
+  const [loadError, setLoadError] = useState(false);
 
   const fetchBatch = async (b: string) => {
     if (!b || b === batch) { setBatch(b); return; }
     setBatch(b);
     setLoading(true);
+    setLoadError(false);
     try {
       const res  = await fetch(`/api/admin/students?batch=${encodeURIComponent(b)}`);
       if (!res.ok) throw new Error('Failed');
       const data = await res.json() as { students: StudentSummary[] };
       setStudents(data.students);
     } catch {
-      // keep current data on error
+      // keep current data on screen, but tell the admin the switch failed
+      setLoadError(true);
     } finally {
       setLoading(false);
     }
@@ -337,6 +340,12 @@ export default function StudentsProgressClient({
                 #batch-select { display: block !important; }
               }
             `}</style>
+
+            {loadError && (
+              <p style={{ margin: '8px 0 0', fontSize: 12, color: '#DC2626' }}>
+                Couldn&apos;t load that batch. Showing previous results — try again.
+              </p>
+            )}
           </div>
         )}
 

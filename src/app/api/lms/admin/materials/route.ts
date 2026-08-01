@@ -16,6 +16,33 @@ import { LMS_SUBJECTS } from '@/lib/lms/constants';
 import { resolveFileUrl } from '@/lib/storage/r2';
 import { DOC_TYPES } from '@/lib/naming/taxonomy';
 import { notifyStudentsForContent } from '@/lib/notifications/push';
+import { propagateMaterialNameToClasses } from '@/lib/naming/propagate';
+
+// A linked class session's subject/product columns are free text and may
+// carry the literal placeholder 'tbd' (auto-generated recurring sessions
+// that haven't been assigned a real subject yet — see
+// src/lib/lms/constants.ts LMS_SUBJECTS, which lists 'tbd' as a legitimate
+// value). Precedence: a real (non-'tbd') session value always wins over the
+// client's value, since the session is the source of truth for a scheduled
+// class. A 'tbd' placeholder session value must not silently overwrite a
+// value the client confidently derived and sent (e.g. from filename
+// parsing) — it is only used when the client sent nothing.
+//
+// NOT exported: Next.js's App Router route contract (enforced by the "next"
+// TS plugin via generated .next/types) only permits GET/POST/etc. and a few
+// config exports from a route.ts file — any other export fails `tsc
+// --noEmit`. Verified empirically: no other route.ts in this codebase
+// exports a helper. The precedence rule is unit-tested via a same-logic copy
+// in src/lib/naming/__tests__/materials-route-precedence.test.ts (see that
+// file's header comment) rather than by importing this function directly.
+function resolveLinkedField(
+  sessionValue: string | null | undefined,
+  clientValue: unknown,
+): string | null | undefined {
+  if (sessionValue != null && sessionValue !== 'tbd') return sessionValue;
+  if (typeof clientValue === 'string' && clientValue.trim() !== '') return clientValue;
+  return sessionValue;
+}
 
 export async function GET() {
   return safeApiHandler(async () => {
@@ -65,8 +92,13 @@ export async function POST(req: NextRequest) {
       throw new ApiException('The selected class no longer exists', 404);
     }
 
-    const resolvedSubject = linkedSession?.subject ?? subject;
-    const resolvedProduct = linkedSession?.product ?? product;
+    const resolvedSubject = resolveLinkedField(linkedSession?.subject, subject);
+    // 'product' has no equivalent placeholder today: the column defaults to
+    // 'iba' at the schema level and the taxonomy has exactly one course key,
+    // so a linked session's product is always a real value, never a 'tbd'-style
+    // placeholder. resolveLinkedField is still applied for symmetry with
+    // subject and to guard the (currently unused) case cheaply.
+    const resolvedProduct = resolveLinkedField(linkedSession?.product, product);
     const resolvedBatch = linkedSession ? linkedSession.batch : (batch ?? null);
 
     if (!resolvedSubject || !(LMS_SUBJECTS as readonly string[]).includes(resolvedSubject)) {
@@ -101,6 +133,10 @@ export async function POST(req: NextRequest) {
         .insert(sessionMaterials)
         .values({ sessionId, materialId: created.id })
         .onConflictDoNothing();
+
+      // The linked class inherits this material's identity if it has no
+      // real lesson name yet.
+      await propagateMaterialNameToClasses(db, created.id);
     }
 
     // Fire-and-forget push to students who can see this material. Swallow all

@@ -287,14 +287,68 @@ export function ConfirmDialog({
   );
 }
 
+// ─── Imperative confirm helper ────────────────────────────────────────────────
+// Wraps ConfirmDialog for call sites that need a promise (e.g. a Modal's
+// `confirmClose`, or an onClick handler that used to be `if (!confirm(...))`).
+// Usage: `const [confirm, confirmDialog] = useConfirm();` then
+// `if (!(await confirm({ title, message }))) return;`, and render
+// `{confirmDialog}` once somewhere in the component's JSX output.
+
+export interface ConfirmOptions {
+  title: string;
+  message: string;
+  confirmLabel?: string;
+  destructive?: boolean;
+}
+
+export function useConfirm(): [(opts: ConfirmOptions) => Promise<boolean>, React.ReactNode] {
+  const [state, setState] = React.useState<ConfirmOptions | null>(null);
+  const resolveRef = React.useRef<((value: boolean) => void) | null>(null);
+
+  const confirm = React.useCallback((opts: ConfirmOptions) => {
+    setState(opts);
+    return new Promise<boolean>(resolve => { resolveRef.current = resolve; });
+  }, []);
+
+  const settle = (value: boolean) => {
+    setState(null);
+    resolveRef.current?.(value);
+    resolveRef.current = null;
+  };
+
+  const dialog = (
+    <ConfirmDialog
+      open={state !== null}
+      title={state?.title ?? ''}
+      message={state?.message ?? ''}
+      confirmLabel={state?.confirmLabel}
+      destructive={state?.destructive}
+      onConfirm={() => settle(true)}
+      onCancel={() => settle(false)}
+    />
+  );
+
+  return [confirm, dialog];
+}
+
 // ─── Modal wrapper ────────────────────────────────────────────────────────────
 
 export function Modal({
-  open, onClose, title, children, width = 560,
+  open, onClose, title, children, width = 560, confirmClose,
 }: {
   open: boolean; onClose: () => void; title: string;
   children: React.ReactNode; width?: number;
+  /** If provided, backdrop/X call this first and only close on a truthy (or resolved-truthy) result. */
+  confirmClose?: () => boolean | Promise<boolean>;
 }) {
+  const requestClose = async () => {
+    if (confirmClose) {
+      const ok = await confirmClose();
+      if (!ok) return;
+    }
+    onClose();
+  };
+
   return (
     <AnimatePresence>
       {open && (
@@ -302,7 +356,7 @@ export function Modal({
           <motion.div
             key="modal-backdrop"
             variants={backdropV} initial="hidden" animate="visible" exit="exit"
-            onClick={onClose}
+            onClick={() => void requestClose()}
             style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.28)', zIndex: 200 }}
           />
           <motion.div
@@ -329,7 +383,7 @@ export function Modal({
                 {title}
               </span>
               <motion.button
-                onClick={onClose} whileTap={{ scale: 0.92 }}
+                onClick={() => void requestClose()} whileTap={{ scale: 0.92 }}
                 style={{
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
                   width: 28, height: 28, borderRadius: '50%',
@@ -746,7 +800,7 @@ export function IconBtn({
       aria-label={label}
       style={{
         display: 'flex', alignItems: 'center', justifyContent: 'center',
-        width: 30, height: 30, borderRadius: 6,
+        width: 40, height: 40, borderRadius: 6,
         border: `1px solid ${BORDER}`, background: '#FFFFFF',
         color: danger ? RED : '#6B7280', cursor: disabled ? 'not-allowed' : 'pointer',
         opacity: disabled ? 0.4 : 1,

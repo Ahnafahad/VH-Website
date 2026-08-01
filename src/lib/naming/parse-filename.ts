@@ -39,6 +39,7 @@ const DOC_TYPE_PRIORITY: Record<DocTypeKey, number> = {
 };
 const DOC_TYPE_SINGLE_WORDS: Record<string, DocTypeKey> = {
   SOLUTION: 'solution',
+  SOLUTIONS: 'solution',
   QP: 'question_paper',
   NOTES: 'notes',
   HOMEWORK: 'homework',

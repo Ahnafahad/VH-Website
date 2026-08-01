@@ -75,3 +75,20 @@ describe('parseFilename — oracle fixtures', () => {
     });
   }
 });
+
+describe('parseFilename — plural doc-type vocabulary (production row 12)', () => {
+  // Production row 12: "Chapter4-Advanced-Sentence-Structures-Solutions.pdf".
+  // The plural "Solutions" was missing from DOC_TYPE_SINGLE_WORDS, so it fell
+  // through to the topic leftover pool instead of being recognized as docType.
+  it('recognizes plural "Solutions" as docType solution, not topic leakage', () => {
+    const result = parseFilename('Chapter4-Advanced-Sentence-Structures-Solutions.pdf');
+    expect(result.docType).toBe('solution');
+    expect(result.number).toBe('4');
+    expect(result.topic).toBe('Advanced Sentence Structures');
+  });
+
+  it('still recognizes singular "Solution"', () => {
+    const result = parseFilename('IBA Maths - Lecture 1.1 - Solution.pdf');
+    expect(result.docType).toBe('solution');
+  });
+});
