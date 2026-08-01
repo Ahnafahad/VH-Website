@@ -1,6 +1,7 @@
 /**
  * POST /api/lms/admin/submissions/[id]/review
- * Mark a submission as reviewed with an optional instructor comment.
+ * Set a submission's reviewed state (yes/no) with an optional instructor comment.
+ * `reviewed` defaults to true so existing callers keep marking as reviewed.
  */
 
 import { NextRequest } from 'next/server';
@@ -28,18 +29,19 @@ export async function POST(
       .get();
     if (!existing) throw new ApiException('Submission not found', 404);
 
-    const body = (await req.json()) as { instructorComment?: string };
+    const body = (await req.json()) as { instructorComment?: string; reviewed?: boolean };
     const instructorComment =
       typeof body.instructorComment === 'string' && body.instructorComment.trim()
         ? body.instructorComment.trim()
         : null;
+    const reviewed = body.reviewed !== false;
 
     const [updated] = await db
       .update(assignmentSubmissions)
       .set({
-        status: 'reviewed',
+        status: reviewed ? 'reviewed' : 'submitted',
         instructorComment,
-        reviewedAt: new Date(),
+        reviewedAt: reviewed ? new Date() : null,
       })
       .where(eq(assignmentSubmissions.id, submissionId))
       .returning();

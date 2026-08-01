@@ -452,19 +452,24 @@ interface SubmissionsData {
 // ─── Submissions / marking panel ───────────────────────────────────────────────
 //
 // Batch marking, rebuilt per D:\VH Website\.claude\scratch\homework-marking-ux-spec.md.
-// One assignment, many students, marked in one sitting. Design constraints:
-//  - Never leave this panel to mark a student (no per-row modal, no separate page).
-//  - Keyboard-first: Enter on a row's Mark button (or in its note field) saves
-//    that row AND auto-focuses the next not-yet-reviewed row's Mark button.
+// One assignment, many students, reviewed in one sitting. There are no marks or
+// scores anywhere here — a submission is reviewed or it isn't, and the row
+// button toggles between the two so a mis-click is undoable.
+//
+// Design constraints:
+//  - Never leave this panel to review a student (no per-row modal, no separate page).
+//  - Keyboard-first: Enter in a row's note field marks it reviewed AND
+//    auto-focuses the next not-yet-reviewed row's button. Enter always means
+//    "reviewed, next"; un-reviewing is a deliberate click and does not advance.
 //  - Dense rows: no avatar/ID/timestamp/email/mode metadata — just status dot,
-//    name, an optional file link, an optional note field, and the Mark control.
-//  - Autosave per row via the existing POST /api/lms/admin/submissions/[id]
-//    endpoint (marks status='reviewed', sets instructorComment). No terminal
-//    Save button. Failures show inline on the row with a Retry action.
-//  - Sticky "N of M marked" header inside the panel's own scroll area, so
+//    name, an optional file link, an optional note field, and the toggle.
+//  - Autosave per row via POST /api/lms/admin/submissions/[id] with
+//    { reviewed, instructorComment }. No terminal Save button. Failures show
+//    inline on the row with a Retry action.
+//  - Sticky "N of M reviewed" header inside the panel's own scroll area, so
 //    position stays obvious while scrolling a long roster.
 //
-// "Marked" only applies to students who actually submitted — the API has no
+// The count only covers students who actually submitted — the API has no
 // endpoint to act on a 'pending' (not-yet-submitted) row, so those are shown
 // for context (dim, non-interactive) but excluded from the N/M count.
 
@@ -501,7 +506,7 @@ function SubmissionsPanel({ assignmentId, onClose }: { assignmentId: number; onC
     }
   }, [focusTargetId]);
 
-  const handleMark = useCallback(async (sub: SubmissionRow) => {
+  const handleSetReviewed = useCallback(async (sub: SubmissionRow, reviewed: boolean) => {
     if (sub.id === null || !data) return;
     const submissionId = sub.id;
     const idx = data.submissions.findIndex(s => s.id === submissionId);
@@ -511,19 +516,23 @@ function SubmissionsPanel({ assignmentId, onClose }: { assignmentId: number; onC
       const res = await fetch(`/api/lms/admin/submissions/${submissionId}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ instructorComment: (commentDrafts[submissionId] ?? '').trim() || undefined }),
+        body: JSON.stringify({ reviewed, instructorComment: (commentDrafts[submissionId] ?? sub.instructorComment ?? '').trim() || undefined }),
       });
       if (!res.ok) throw new Error('Failed');
       const updated = await res.json() as SubmissionRow;
       setData(prev => prev ? {
         ...prev,
         submissions: prev.submissions.map(s =>
-          s.id === submissionId ? { ...s, ...updated, status: 'reviewed' } : s,
+          s.id === submissionId ? { ...s, ...updated } : s,
         ),
       } : prev);
       setRowState(s => { const { [submissionId]: _drop, ...rest } = s; return rest; });
-      const next = data.submissions.slice(idx + 1).find(s => s.status === 'submitted' && s.id !== null);
-      setFocusTargetId(next?.id ?? null);
+      // Only advance when reviewing. Un-reviewing means the owner is fixing that
+      // row, so focus stays put.
+      if (reviewed) {
+        const next = data.submissions.slice(idx + 1).find(s => s.status === 'submitted' && s.id !== null);
+        setFocusTargetId(next?.id ?? null);
+      }
     } catch {
       setRowState(s => ({ ...s, [submissionId]: 'error' }));
       setRowError(e => ({ ...e, [submissionId]: 'Save failed' }));
@@ -556,7 +565,7 @@ function SubmissionsPanel({ assignmentId, onClose }: { assignmentId: number; onC
         {submittedTotal > 0 && (
           <div style={{ marginTop: 8, display: 'flex', alignItems: 'center', gap: 8 }}>
             <span style={{ fontSize: 12, fontWeight: 700, color: allMarked ? '#065F46' : SLATE, whiteSpace: 'nowrap' }}>
-              {reviewedTotal} of {submittedTotal} marked
+              {reviewedTotal} of {submittedTotal} reviewed
             </span>
             <div style={{ flex: 1, height: 6, minWidth: 60, borderRadius: 100, background: '#E5E7EB', overflow: 'hidden' }}>
               <div style={{ height: '100%', width: `${(reviewedTotal / submittedTotal) * 100}%`, background: '#10B981', borderRadius: 100 }} />
@@ -624,7 +633,7 @@ function SubmissionsPanel({ assignmentId, onClose }: { assignmentId: number; onC
                 <input
                   value={commentDrafts[submissionId] ?? sub.instructorComment ?? ''}
                   onChange={e => setCommentDrafts(prev => ({ ...prev, [submissionId]: e.target.value }))}
-                  onKeyDown={e => { if (e.key === 'Enter') { e.preventDefault(); void handleMark(sub); } }}
+                  onKeyDown={e => { if (e.key === 'Enter') { e.preventDefault(); void handleSetReviewed(sub, true); } }}
                   placeholder="Note (optional)"
                   disabled={saving}
                   style={{
@@ -635,9 +644,10 @@ function SubmissionsPanel({ assignmentId, onClose }: { assignmentId: number; onC
                 />
                 <button
                   ref={el => { if (el) buttonRefs.current.set(submissionId, el); else buttonRefs.current.delete(submissionId); }}
-                  onClick={() => void handleMark(sub)}
+                  onClick={() => void handleSetReviewed(sub, !isReviewed)}
                   disabled={saving}
-                  aria-label={isReviewed ? `Re-save review for ${sub.name}` : `Mark ${sub.name} reviewed`}
+                  aria-label={isReviewed ? `Mark ${sub.name} not reviewed` : `Mark ${sub.name} reviewed`}
+                  title={isReviewed ? 'Reviewed — click to undo' : 'Mark reviewed'}
                   style={{
                     display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 5,
                     minWidth: 44, height: 44, padding: '0 12px', borderRadius: 8, flexShrink: 0,
@@ -659,7 +669,7 @@ function SubmissionsPanel({ assignmentId, onClose }: { assignmentId: number; onC
                   <span style={{ flexBasis: '100%', display: 'flex', alignItems: 'center', gap: 6, fontSize: 11, color: RED }}>
                     <AlertCircle size={11} aria-hidden /> {err}
                     <button
-                      onClick={() => void handleMark(sub)}
+                      onClick={() => void handleSetReviewed(sub, !isReviewed)}
                       style={{ fontSize: 11, fontWeight: 600, color: RED, background: 'none', border: 'none', textDecoration: 'underline', cursor: 'pointer', padding: 0 }}
                     >
                       Retry
