@@ -1122,7 +1122,7 @@ function SessionsTab({ sessions, teachingUsers }: { sessions: ClassSession[]; te
 
   return (
     <>
-      <style>{SPIN_CSS}{INTERACTIVE_CSS}</style>
+      <style>{SPIN_CSS + INTERACTIVE_CSS}</style>
       {/* Toolbar */}
       <div style={{ display: 'flex', gap: 8, marginBottom: 16, flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between' }}>
         <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
@@ -1312,7 +1312,7 @@ function SchedulesTab({ schedules }: { schedules: ClassSchedule[] }) {
 
   return (
     <>
-      <style>{SPIN_CSS}{INTERACTIVE_CSS}</style>
+      <style>{SPIN_CSS + INTERACTIVE_CSS}</style>
       <div style={{ display: 'flex', justifyContent: 'space-between', gap: 8, marginBottom: 16, flexWrap: 'wrap' }}>
         <GhostBtn onClick={handleGenerate} disabled={generating} small>
           {generating

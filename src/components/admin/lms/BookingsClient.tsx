@@ -292,7 +292,7 @@ export default function BookingsClient({ initialSlots, initialRequests }: Bookin
 
   return (
     <>
-      <style>{SPIN_CSS}{LINK_CSS}</style>
+      <style>{SPIN_CSS + LINK_CSS}</style>
 
       <PageHeader
         title="Bookings"

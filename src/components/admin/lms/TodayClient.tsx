@@ -790,7 +790,7 @@ function SessionCard({ session, index, onRefresh }: {
 
   return (
     <>
-      <style>{SPIN_CSS}{INT_CSS}</style>
+      <style>{SPIN_CSS + INT_CSS}</style>
       <motion.div
         custom={index}
         variants={rowV}
@@ -1057,7 +1057,7 @@ export default function TodayClient({ initial }: Props) {
 
   return (
     <>
-      <style>{SPIN_CSS}{INT_CSS}</style>
+      <style>{SPIN_CSS + INT_CSS}</style>
 
       {/* Page header */}
       <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 12, flexWrap: 'wrap', marginBottom: 24 }}>

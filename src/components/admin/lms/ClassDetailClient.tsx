@@ -463,7 +463,7 @@ export default function ClassDetailClient({
 
   return (
     <div style={{ minHeight: '100vh', background: BG, paddingBottom: 64, colorScheme: 'light' }}>
-      <style>{SPIN_CSS}{LOCAL_STYLES}</style>
+      <style>{SPIN_CSS + LOCAL_STYLES}</style>
 
       {/* ── Header ─────────────────────────────────────────────────────────── */}
       <div style={{
