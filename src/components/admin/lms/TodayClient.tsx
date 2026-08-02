@@ -12,6 +12,7 @@ import { trackFeature } from '@/lib/analytics/tracker';
 import {
   SubjectBadge, StatusBadge, Toast, ConfirmDialog, Modal, useConfirm,
   FieldLabel, FieldInput, FieldTextarea, PrimaryBtn, GhostBtn,
+  FormActions,
   fmtDhaka, dhakaLocalToISO, SPIN_CSS, RED, SLATE, BORDER, MUTED, BG,
   rowV, SURFACE, SURFACE_ALT, OK, OK_BG, WARN, WARN_BG, INK_SOFT,
   RED_HOVER, R_SM, R_MD, R_LG, R_PILL, SHADOW_SM, FONT_HEADING,
@@ -220,7 +221,7 @@ const UploadSheet = React.forwardRef<CloseGuardHandle, {
         </div>
       )}
       {error && <p style={{ fontSize: 12, color: RED, margin: 0 }}>{error}</p>}
-      <div style={{ display: 'flex', gap: 8, justifyContent: 'flex-end' }}>
+      <FormActions>
         <GhostBtn onClick={onClose} small>Cancel</GhostBtn>
         <PrimaryBtn
           onClick={handleUpload}
@@ -230,7 +231,7 @@ const UploadSheet = React.forwardRef<CloseGuardHandle, {
         >
           {stage === 'done' ? 'Uploaded!' : 'Upload PDF'}
         </PrimaryBtn>
-      </div>
+      </FormActions>
       {confirmDialog}
     </div>
   );
@@ -324,10 +325,10 @@ const HomeworkSheet = React.forwardRef<CloseGuardHandle, {
         <FieldInput value={form.batch} onChange={e => f('batch', e.target.value)} placeholder="e.g. 2025" />
       </div>
       {error && <p style={{ fontSize: 12, color: RED, margin: 0 }}>{error}</p>}
-      <div style={{ display: 'flex', gap: 8, justifyContent: 'flex-end' }}>
+      <FormActions>
         <GhostBtn onClick={onClose} small>Cancel</GhostBtn>
         <PrimaryBtn onClick={handleSave} loading={saving} small>Post Homework</PrimaryBtn>
-      </div>
+      </FormActions>
       {confirmDialog}
     </div>
   );
@@ -653,9 +654,9 @@ const AttendanceSheet = React.forwardRef<CloseGuardHandle, {
 
       {error && <p style={{ fontSize: 12, color: RED, margin: 0 }}>{error}</p>}
 
-      <div style={{ display: 'flex', gap: 8, justifyContent: 'flex-end' }}>
+      <FormActions>
         <PrimaryBtn onClick={handleDone} small>Done</PrimaryBtn>
-      </div>
+      </FormActions>
       {confirmDialog}
     </div>
   );
@@ -734,9 +735,9 @@ function OfflineHomeworkSheet({
           </label>
         ))}
       </div>
-      <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+      <FormActions>
         <GhostBtn small onClick={() => { onRefresh(); onClose(); }}>Close</GhostBtn>
-      </div>
+      </FormActions>
     </div>
   );
 }

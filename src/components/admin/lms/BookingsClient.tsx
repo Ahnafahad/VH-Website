@@ -25,6 +25,7 @@ import {
   backdropV, modalV, rowV, SPIN_CSS,
   PageHeader, TabBar, Modal, FieldLabel, FieldInput, FieldTextarea, FieldSelect,
   PrimaryBtn, DangerBtn, GhostBtn, Toast, EmptyState, StatusBadge, SubjectBadge,
+  FormActions,
   fmtDhaka, dhakaLocalToISO, epochToDhakaLocal,
 } from './lms-shared';
 
@@ -512,10 +513,10 @@ export default function BookingsClient({ initialSlots, initialRequests }: Bookin
               onChange={e => setCreateForm(f => ({ ...f, topic: e.target.value }))}
             />
           </div>
-          <div style={{ display: 'flex', justifyContent: 'flex-end', gap: 8, paddingTop: 4 }}>
+          <FormActions>
             <GhostBtn onClick={() => setShowCreate(false)}>Cancel</GhostBtn>
             <PrimaryBtn onClick={handleCreate} loading={createLoading}>Create Slot</PrimaryBtn>
-          </div>
+          </FormActions>
         </div>
       </Modal>
 
@@ -587,12 +588,12 @@ export default function BookingsClient({ initialSlots, initialRequests }: Bookin
               />
             </div>
 
-            <div style={{ display: 'flex', justifyContent: 'flex-end', gap: 8, paddingTop: 4 }}>
+            <FormActions>
               <GhostBtn onClick={() => { setResolveTarget(null); setResolveNote(''); }}>Cancel</GhostBtn>
               <PrimaryBtn onClick={handleResolve} loading={resolveLoading}>
                 {resolveAction === 'approve' ? 'Approve' : resolveAction === 'decline' ? 'Decline' : 'Schedule'}
               </PrimaryBtn>
-            </div>
+            </FormActions>
           </div>
         )}
       </Modal>

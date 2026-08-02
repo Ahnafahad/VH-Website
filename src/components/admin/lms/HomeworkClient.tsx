@@ -7,7 +7,7 @@ import { uploadToR2 } from '@/lib/lms/upload-client';
 import {
   SubjectBadge, Toast, ConfirmDialog, Modal,
   FieldLabel, FieldInput, FieldTextarea, FieldSelect, PrimaryBtn, GhostBtn,
-  IconBtn, EmptyState, PageHeader,
+  IconBtn, EmptyState, PageHeader, FormActions,
   fmtDhaka, dhakaLocalToISO, epochToDhakaLocal,
   SPIN_CSS, RED, SLATE, BORDER, MUTED, BG, rowV,
   RED_HOVER, INK_SOFT, SURFACE, SURFACE_ALT,
@@ -440,12 +440,12 @@ function AssignmentModal({
           )}
         </div>
         {error && <p style={{ fontSize: 12, color: RED, margin: 0 }}>{error}</p>}
-        <div style={{ display: 'flex', gap: 8, justifyContent: 'flex-end' }}>
+        <FormActions>
           <GhostBtn onClick={onClose} small>Cancel</GhostBtn>
           <PrimaryBtn onClick={handleSave} loading={saving} small>
             {editing ? 'Save Changes' : 'Create Assignment'}
           </PrimaryBtn>
-        </div>
+        </FormActions>
       </div>
     </Modal>
   );

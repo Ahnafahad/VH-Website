@@ -458,6 +458,27 @@ export function Modal({
   );
 }
 
+// `Modal`'s body is the scroll container, so a form's action row scrolls out of
+// reach whenever the form is taller than the panel — the buttons look cut off at
+// the bottom edge. This pins them there instead. The negative margins let the
+// bar bleed over the body's 20px padding so scrolled content passes behind it,
+// and `bottom` cancels that same padding, which otherwise holds the sticky
+// anchor 20px clear of the panel's bottom edge and leaves a sliver of form
+// showing underneath. Both track `Modal`'s body padding — change them together.
+export function FormActions({ children }: { children: React.ReactNode }) {
+  return (
+    <div style={{
+      position: 'sticky', bottom: -20, zIndex: 1,
+      display: 'flex', gap: 8, justifyContent: 'flex-end', alignItems: 'center',
+      margin: '4px -20px -20px', padding: '12px 20px',
+      background: SURFACE, borderTop: `1px solid ${BORDER}`,
+      borderRadius: `0 0 ${R_LG}px ${R_LG}px`,
+    }}>
+      {children}
+    </div>
+  );
+}
+
 // ─── Form field helpers ───────────────────────────────────────────────────────
 
 export function FieldLabel({ children }: { children: React.ReactNode }) {

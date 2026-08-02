@@ -8,7 +8,7 @@ import { trackFeature } from '@/lib/analytics/tracker';
 import {
   SubjectBadge, Toast, ConfirmDialog, TabBar,
   FieldLabel, FieldInput, FieldSelect, PrimaryBtn, GhostBtn,
-  IconBtn, EmptyState, PageHeader,
+  IconBtn, EmptyState, PageHeader, FormActions,
   CourseSelect, SubjectSelect, DocTypeSelect, BatchSelect,
   getLastUsedBatch, setLastUsedBatch,
   fmtDhaka, RED, SLATE, BORDER, MUTED, rowV, backdropV, modalV,
@@ -722,10 +722,10 @@ function EditMaterialDialog({
             </div>
           </div>
           {error && <p style={{ fontSize: 12, color: RED, margin: 0 }}>{error}</p>}
-          <div style={{ display: 'flex', gap: 8, justifyContent: 'flex-end' }}>
+          <FormActions>
             <GhostBtn onClick={onClose}>Cancel</GhostBtn>
             <PrimaryBtn onClick={handleSave} loading={saving}>Save</PrimaryBtn>
-          </div>
+          </FormActions>
         </motion.div>
       </motion.div>
     </AnimatePresence>

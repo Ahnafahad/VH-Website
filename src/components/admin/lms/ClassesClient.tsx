@@ -10,7 +10,7 @@ import {
 import {
   SubjectBadge, StatusBadge, Toast, ConfirmDialog, Modal, TabBar, Toggle,
   FieldLabel, FieldInput, FieldTextarea, FieldSelect, PrimaryBtn, GhostBtn,
-  IconBtn, EmptyState, PageHeader,
+  IconBtn, EmptyState, PageHeader, FormActions,
   fmtDhaka, dhakaLocalToISO, epochToDhakaLocal,
   SPIN_CSS, RED, SLATE, BORDER, MUTED, BG, rowV,
   SURFACE, SURFACE_ALT, OK, OK_BG, R_SM, R_MD, R_LG, R_PILL,
@@ -376,10 +376,10 @@ function SessionModal({
           </button>
         )}
         {error && <p style={{ fontSize: 12, color: RED, margin: 0 }}>{error}</p>}
-        <div style={{ display: 'flex', gap: 8, justifyContent: 'flex-end' }}>
+        <FormActions>
           <GhostBtn onClick={onClose} small>Cancel</GhostBtn>
           <PrimaryBtn onClick={handleSave} loading={saving} small>{editing ? 'Save Changes' : 'Create Session'}</PrimaryBtn>
-        </div>
+        </FormActions>
       </div>
     </Modal>
   );
@@ -502,10 +502,10 @@ function ScheduleModal({
         </div>
         <Toggle checked={form.active} onChange={v => f('active', v)} label="Active (generates sessions)" />
         {error && <p style={{ fontSize: 12, color: RED, margin: 0 }}>{error}</p>}
-        <div style={{ display: 'flex', gap: 8, justifyContent: 'flex-end' }}>
+        <FormActions>
           <GhostBtn onClick={onClose} small>Cancel</GhostBtn>
           <PrimaryBtn onClick={handleSave} loading={saving} small>{editing ? 'Save Changes' : 'Create Rule'}</PrimaryBtn>
-        </div>
+        </FormActions>
       </div>
     </Modal>
   );
@@ -864,12 +864,12 @@ function CompletedClassModal({
 
           {error && <p style={{ fontSize: 12, color: RED, margin: 0 }}>{error}</p>}
 
-          <div style={{ display: 'flex', gap: 8, justifyContent: 'flex-end' }}>
+          <FormActions>
             <GhostBtn onClick={() => void guardedClose()} small>Cancel</GhostBtn>
             <PrimaryBtn onClick={handleCreateSession} loading={saving} small>
               Next: Attach PDFs
             </PrimaryBtn>
-          </div>
+          </FormActions>
         </div>
       ) : (
         <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
@@ -1030,7 +1030,7 @@ function CompletedClassModal({
 
           {error && <p style={{ fontSize: 12, color: RED, margin: 0 }}>{error}</p>}
 
-          <div style={{ display: 'flex', gap: 8, justifyContent: 'flex-end' }}>
+          <FormActions>
             {!uploadDone ? (
               <>
                 <GhostBtn onClick={handleFinish} small disabled={uploading}>
@@ -1048,7 +1048,7 @@ function CompletedClassModal({
                 Done
               </PrimaryBtn>
             )}
-          </div>
+          </FormActions>
         </div>
       )}
     </Modal>

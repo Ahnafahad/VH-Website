@@ -6,7 +6,7 @@ import { Megaphone, Pin, Edit2, Trash2, Plus, ExternalLink } from 'lucide-react'
 import {
   SubjectBadge, Toast, ConfirmDialog, Modal, Toggle,
   FieldLabel, FieldInput, FieldTextarea, FieldSelect, PrimaryBtn, GhostBtn,
-  IconBtn, EmptyState, PageHeader,
+  IconBtn, EmptyState, PageHeader, FormActions,
   fmtDhaka,
   SPIN_CSS, RED, SLATE, BORDER, MUTED, BG, rowV,
   SURFACE, INK_SOFT, R_MD, R_LG, R_PILL,
@@ -126,12 +126,12 @@ function AnnouncementModal({
         </div>
         <Toggle checked={form.pinned} onChange={v => f('pinned', v)} label="Pin to top of feed" />
         {error && <p style={{ fontSize: 12, color: RED, margin: 0 }}>{error}</p>}
-        <div style={{ display: 'flex', gap: 8, justifyContent: 'flex-end' }}>
+        <FormActions>
           <GhostBtn onClick={onClose} small>Cancel</GhostBtn>
           <PrimaryBtn onClick={handleSave} loading={saving} small>
             {editing ? 'Save Changes' : 'Post Announcement'}
           </PrimaryBtn>
-        </div>
+        </FormActions>
       </div>
     </Modal>
   );
