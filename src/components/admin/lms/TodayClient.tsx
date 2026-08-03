@@ -522,9 +522,19 @@ const AttendanceSheet = React.forwardRef<CloseGuardHandle, {
                   className="lms-int"
                   style={{ width: 16, height: 16, flexShrink: 0, cursor: 'pointer' }}
                 />
-                <div
-                  style={{ flex: 1, minWidth: 0, cursor: 'pointer' }}
+                {/* A real button: this was a bare <div onClick>, so the only
+                    way to open a student's absence history was a mouse, even
+                    though the checkbox and the Offline/Online toggle either
+                    side of it are both keyboard-reachable. */}
+                <button
+                  type="button"
                   onClick={() => setExpandedId(isExpanded ? null : s.userId)}
+                  aria-expanded={isExpanded}
+                  className="lms-btn"
+                  style={{
+                    flex: 1, minWidth: 0, cursor: 'pointer',
+                    padding: 0, border: 'none', background: 'none', textAlign: 'left',
+                  }}
                 >
                   <p style={{
                     margin: 0, fontSize: 13, fontWeight: 600, color: SLATE,
@@ -535,7 +545,7 @@ const AttendanceSheet = React.forwardRef<CloseGuardHandle, {
                   <p style={{ margin: 0, fontSize: 11, color: MUTED }}>
                     {s.totalAbsences} absent total · {s.absencesLast7Days} in last 7d
                   </p>
-                </div>
+                </button>
                 {/* Segmented Offline | Online toggle */}
                 <div style={{
                   display: 'flex', flexShrink: 0,
@@ -675,9 +685,11 @@ function OfflineHomeworkSheet({
 }) {
   const [rows, setRows] = useState(entries);
   const [savingId, setSavingId] = useState<number | null>(null);
+  const [saveError, setSaveError] = useState<string | null>(null);
 
   const toggleChecked = async (submissionId: number, checked: boolean) => {
     setSavingId(submissionId);
+    setSaveError(null);
     setRows(prev => prev.map(r => r.submissionId === submissionId ? { ...r, checked } : r));
     try {
       const res = await fetch(`/api/lms/admin/submissions/${submissionId}/check`, {
@@ -688,6 +700,9 @@ function OfflineHomeworkSheet({
       if (!res.ok) throw new Error('Failed');
     } catch {
       setRows(prev => prev.map(r => r.submissionId === submissionId ? { ...r, checked: !checked } : r));
+      // The optimistic tick used to just snap back with no explanation, which
+      // reads as "my click didn't register" rather than "the save failed".
+      setSaveError("Couldn't save that change — it has been undone. Try again.");
     } finally {
       setSavingId(null);
     }
@@ -697,6 +712,11 @@ function OfflineHomeworkSheet({
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+      {saveError && (
+        <p role="alert" style={{ margin: 0, fontSize: 12, color: RED, fontWeight: 500 }}>
+          {saveError}
+        </p>
+      )}
       <p style={{ margin: 0, fontSize: 12, color: MUTED }}>
         {rows.filter(r => r.checked).length} / {rows.length} checked off
       </p>

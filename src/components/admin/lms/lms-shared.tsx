@@ -18,8 +18,17 @@ import { COURSES, SUBJECTS, DOC_TYPES, BATCHES, CourseKey, SubjectKey, DocTypeKe
 export const RED    = '#760F13';
 export const SLATE  = '#1A0507';
 export const BORDER = '#E1D4CB';
-export const MUTED  = '#9A7060';
+// Was #9A7060, which failed WCAG AA as body text on all three surfaces it lands
+// on (4.32 on SURFACE, 3.99 on BG, 3.72 on SURFACE_ALT — needs 4.5). Darkened
+// within the same warm-brown hue: now 5.33 / 4.91 / 4.59.
+export const MUTED  = '#8A6250';
 export const BG     = '#FAF5EF';
+
+// BORDER is a divider tone (1.45:1 on SURFACE) — fine for card edges and rules,
+// which WCAG 1.4.11 exempts, but not for the boundary of a form control, which
+// needs 3:1. Fields and the Toggle track use this instead: 3.54 on SURFACE,
+// 3.26 on BG. Don't swap it in for dividers; it reads as a heavy line there.
+export const BORDER_FIELD = '#9E8371';
 
 export const RED_HOVER   = '#9A1B20';
 export const RED_DARK    = '#5A0B0F';
@@ -46,6 +55,17 @@ export const SHADOW_MD = '0 2px 6px rgba(26,5,7,0.07)';
 export const SHADOW_LG = '0 8px 24px rgba(26,5,7,0.12)';
 
 export const FONT_HEADING = "var(--font-heading), Georgia, serif";
+
+// Semantic stacking order. The values used to be written inline (200/201 for
+// Modal, 300/301 for ConfirmDialog, 9999 for Toast), which made "what sits on
+// top of what" a thing you had to reverse-engineer. Confirm outranks Modal
+// because it is raised *from* an open modal; Toast outranks both because it
+// reports the result of whatever the dialog just did.
+export const Z_MODAL_BACKDROP   = 200;
+export const Z_MODAL            = 201;
+export const Z_CONFIRM_BACKDROP = 300;
+export const Z_CONFIRM          = 301;
+export const Z_TOAST            = 400;
 
 // ─── PDF heading extraction ───────────────────────────────────────────────────
 
@@ -130,7 +150,10 @@ export const rowV: Variants = {
   hidden:  { opacity: 0, y: 6 },
   visible: (i: number) => ({
     opacity: 1, y: 0,
-    transition: { type: 'spring' as const, stiffness: 380, damping: 32, delay: i * 0.03 },
+    // Capped: the stagger used to be unbounded, so a 40-row materials list made
+    // the last row wait 1.2s before it appeared. Beyond ~10 rows the sequence
+    // has already read as a sequence; anything later is just latency.
+    transition: { type: 'spring' as const, stiffness: 380, damping: 32, delay: Math.min(i, 10) * 0.03 },
   }),
 };
 
@@ -143,7 +166,7 @@ export const rowV: Variants = {
 export const SPIN_CSS = `
 @keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
 .lms-field{transition:border-color .14s}
-.lms-field:hover{border-color:${BEIGE}}
+.lms-field:hover{border-color:${MUTED}}
 .lms-field:focus{border-color:${RED}}
 .lms-field:focus-visible{outline:2px solid ${RED};outline-offset:2px}
 .lms-btn{transition:background-color .14s,border-color .14s,color .14s}
@@ -158,6 +181,27 @@ export const SPIN_CSS = `
 .lms-tab{transition:color .14s,border-color .14s}
 .lms-tab:hover{color:${RED_DARK}}
 .lms-tab:focus-visible{outline:2px solid ${RED};outline-offset:2px}
+.lms-switch{transition:background-color .18s}
+.lms-switch:focus-visible{outline:2px solid ${RED};outline-offset:3px}
+.lms-switch-knob{transition:transform .18s}
+/* The visual boxes stay at their desktop density; on a touch device the hit
+   area alone grows to the 44px minimum, so nothing reflows on a mouse. */
+@media (pointer:coarse){
+.lms-btn{min-height:44px}
+.lms-iconbtn{min-width:44px;min-height:44px}
+.lms-tab{min-height:44px}
+.lms-field{min-height:44px}
+/* The switch track stays 20px tall; only the button around it grows, so the
+   row gains height on touch without the control itself changing shape. */
+.lms-switch{min-height:44px}
+}
+/* Framer-motion's side of this is handled once by MotionConfig in the admin
+   layout. The loading spinner is deliberately left spinning — it reports status
+   rather than decorating, and freezing it would remove the only signal that
+   work is in flight. */
+@media (prefers-reduced-motion:reduce){
+.lms-field,.lms-btn,.lms-iconbtn,.lms-tab,.lms-switch,.lms-switch-knob{transition-duration:.01ms}
+}
 `;
 
 // ─── Subject badge ────────────────────────────────────────────────────────────
@@ -229,6 +273,75 @@ export function StatusBadge({ status }: { status: string }) {
   );
 }
 
+// ─── Dialog behaviour ─────────────────────────────────────────────────────────
+// Modal and ConfirmDialog are hand-built overlays, not <dialog>, so everything
+// the platform would give for free has to be wired here: without it, Tab walks
+// the page behind the backdrop, Escape does nothing, and closing drops focus on
+// <body> instead of returning it to the control that opened the dialog.
+
+// Only the topmost dialog may answer Escape. ConfirmDialog is routinely raised
+// from inside an open Modal (`confirmClose`), and both listen on `document` —
+// without this, one Escape would cancel the confirm *and* close the modal
+// underneath it, which is the opposite of what the confirm is protecting.
+const dialogStack: symbol[] = [];
+let savedBodyOverflow = '';
+
+function useDialogBehaviour(open: boolean, onEscape: () => void) {
+  const ref = React.useRef<HTMLDivElement>(null);
+  // Held in a ref so a new closure from the parent's re-render doesn't re-run
+  // the effect and re-steal focus mid-edit.
+  const escapeRef = React.useRef(onEscape);
+  escapeRef.current = onEscape;
+
+  React.useEffect(() => {
+    if (!open) return;
+    const id = Symbol('dialog');
+    dialogStack.push(id);
+    const opener = document.activeElement as HTMLElement | null;
+
+    const SELECTOR = 'a[href],button:not([disabled]),input:not([disabled]),select:not([disabled]),textarea:not([disabled]),[tabindex]:not([tabindex="-1"])';
+    const focusable = () =>
+      Array.from(ref.current?.querySelectorAll<HTMLElement>(SELECTOR) ?? [])
+        .filter(el => el.offsetParent !== null);
+
+    // A frame late on purpose — the panel animates in, and querying before the
+    // first paint finds nothing to focus.
+    const raf = requestAnimationFrame(() => (focusable()[0] ?? ref.current)?.focus());
+
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (dialogStack[dialogStack.length - 1] !== id) return;
+      if (e.key === 'Escape') { e.preventDefault(); escapeRef.current(); return; }
+      if (e.key !== 'Tab') return;
+      const els = focusable();
+      if (els.length === 0) return;
+      const first = els[0];
+      const last = els[els.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    };
+    document.addEventListener('keydown', onKeyDown, true);
+
+    // Scroll lock belongs to the stack, not to each dialog. Confirming a discard
+    // unmounts the confirm and the modal in one commit, and React runs the two
+    // cleanups in tree order — if each restored the value it captured on open,
+    // the confirm's 'hidden' would land last and leave the page unscrollable.
+    if (dialogStack.length === 1) {
+      savedBodyOverflow = document.body.style.overflow;
+      document.body.style.overflow = 'hidden';
+    }
+
+    return () => {
+      cancelAnimationFrame(raf);
+      document.removeEventListener('keydown', onKeyDown, true);
+      dialogStack.splice(dialogStack.indexOf(id), 1);
+      if (dialogStack.length === 0) document.body.style.overflow = savedBodyOverflow;
+      opener?.focus?.();
+    };
+  }, [open]);
+
+  return ref;
+}
+
 // ─── Toast ────────────────────────────────────────────────────────────────────
 
 export function Toast({ message, onDismiss }: { message: string | null; onDismiss?: () => void }) {
@@ -246,7 +359,7 @@ export function Toast({ message, onDismiss }: { message: string | null; onDismis
             bottom:       24,
             left:         '50%',
             transform:    'translateX(-50%)',
-            zIndex:       9999,
+            zIndex:       Z_TOAST,
             padding:      '10px 20px',
             borderRadius: R_MD,
             background:   SLATE,
@@ -254,7 +367,9 @@ export function Toast({ message, onDismiss }: { message: string | null; onDismis
             fontSize:     13,
             fontWeight:   500,
             boxShadow:    SHADOW_LG,
-            whiteSpace:   'nowrap',
+            // Was `nowrap`, which pushed longer messages (API errors, filenames)
+            // off both edges of a phone screen with no way to read them.
+            maxWidth:     'calc(100vw - 32px)',
             display:      'flex',
             alignItems:   'center',
             gap:          8,
@@ -275,13 +390,23 @@ export function Toast({ message, onDismiss }: { message: string | null; onDismis
 // ─── Confirm Dialog ───────────────────────────────────────────────────────────
 
 export function ConfirmDialog({
-  open, title, message, confirmLabel = 'Confirm', destructive = false, loading = false,
-  onConfirm, onCancel,
+  open, title, message, confirmLabel = 'Confirm', cancelLabel = 'Cancel',
+  destructive = false, loading = false, onConfirm, onCancel,
 }: {
   open: boolean; title: string; message: string;
-  confirmLabel?: string; destructive?: boolean; loading?: boolean;
+  confirmLabel?: string;
+  /** Override when the default would be ambiguous — e.g. a "Cancel this slot?"
+   *  dialog, where a "Cancel" dismiss button reads as the action itself. */
+  cancelLabel?: string;
+  destructive?: boolean; loading?: boolean;
   onConfirm: () => void; onCancel: () => void;
 }) {
+  const labelId = React.useId();
+  const descId = React.useId();
+  // Escape is ignored mid-request for the same reason Cancel is disabled: the
+  // action is already in flight and dismissing the dialog would hide its result.
+  const panelRef = useDialogBehaviour(open, () => { if (!loading) onCancel(); });
+
   return (
     <AnimatePresence>
       {open && (
@@ -289,14 +414,19 @@ export function ConfirmDialog({
           <motion.div
             variants={backdropV} initial="hidden" animate="visible" exit="exit"
             onClick={onCancel}
-            style={{ position: 'fixed', inset: 0, background: 'rgba(26,5,7,0.35)', zIndex: 300 }}
+            style={{ position: 'fixed', inset: 0, background: 'rgba(26,5,7,0.35)', zIndex: Z_CONFIRM_BACKDROP }}
           />
           <motion.div
+            ref={panelRef}
+            role="alertdialog"
+            aria-modal="true"
+            aria-labelledby={labelId}
+            aria-describedby={descId}
             variants={modalV} initial="hidden" animate="visible" exit="exit"
             style={{
               position: 'fixed', top: '50%', left: '50%',
               transform: 'translate(-50%,-50%)',
-              zIndex: 301, background: SURFACE, borderRadius: R_LG,
+              zIndex: Z_CONFIRM, background: SURFACE, borderRadius: R_LG,
               padding: '24px 28px', width: 340, maxWidth: '92vw',
               boxShadow: SHADOW_LG,
               border: `1px solid ${BORDER}`,
@@ -311,8 +441,8 @@ export function ConfirmDialog({
                 <AlertTriangle size={17} style={{ color: destructive ? RED : INFO }} aria-hidden />
               </div>
               <div>
-                <p style={{ margin: 0, fontFamily: FONT_HEADING, fontSize: 15, fontWeight: 700, color: SLATE, lineHeight: 1.3 }}>{title}</p>
-                <p style={{ margin: '4px 0 0', fontSize: 13, color: MUTED, lineHeight: 1.45 }}>{message}</p>
+                <p id={labelId} style={{ margin: 0, fontFamily: FONT_HEADING, fontSize: 15, fontWeight: 700, color: SLATE, lineHeight: 1.3 }}>{title}</p>
+                <p id={descId} style={{ margin: '4px 0 0', fontSize: 13, color: MUTED, lineHeight: 1.45 }}>{message}</p>
               </div>
             </div>
             <div style={{ display: 'flex', gap: 8, justifyContent: 'flex-end' }}>
@@ -320,7 +450,7 @@ export function ConfirmDialog({
                 padding: '8px 16px', borderRadius: R_MD, fontSize: 13, fontWeight: 500,
                 border: `1px solid ${BORDER}`, background: SURFACE, color: INK_SOFT,
                 cursor: 'pointer', opacity: loading ? 0.5 : 1,
-              }}>Cancel</motion.button>
+              }}>{cancelLabel}</motion.button>
               <motion.button onClick={onConfirm} whileTap={{ scale: 0.97 }} disabled={loading} className={`lms-btn ${destructive ? 'lms-btn-danger' : 'lms-btn-primary'}`} style={{
                 padding: '8px 16px', borderRadius: R_MD, fontSize: 13, fontWeight: 600,
                 border: 'none', background: destructive ? RED_DARK : RED, color: SURFACE,
@@ -349,6 +479,7 @@ export interface ConfirmOptions {
   title: string;
   message: string;
   confirmLabel?: string;
+  cancelLabel?: string;
   destructive?: boolean;
 }
 
@@ -373,6 +504,7 @@ export function useConfirm(): [(opts: ConfirmOptions) => Promise<boolean>, React
       title={state?.title ?? ''}
       message={state?.message ?? ''}
       confirmLabel={state?.confirmLabel}
+      cancelLabel={state?.cancelLabel}
       destructive={state?.destructive}
       onConfirm={() => settle(true)}
       onCancel={() => settle(false)}
@@ -392,6 +524,8 @@ export function Modal({
   /** If provided, backdrop/X call this first and only close on a truthy (or resolved-truthy) result. */
   confirmClose?: () => boolean | Promise<boolean>;
 }) {
+  const labelId = React.useId();
+
   const requestClose = async () => {
     if (confirmClose) {
       const ok = await confirmClose();
@@ -399,6 +533,8 @@ export function Modal({
     }
     onClose();
   };
+
+  const panelRef = useDialogBehaviour(open, () => void requestClose());
 
   return (
     <AnimatePresence>
@@ -408,15 +544,19 @@ export function Modal({
             key="modal-backdrop"
             variants={backdropV} initial="hidden" animate="visible" exit="exit"
             onClick={() => void requestClose()}
-            style={{ position: 'fixed', inset: 0, background: 'rgba(26,5,7,0.28)', zIndex: 200 }}
+            style={{ position: 'fixed', inset: 0, background: 'rgba(26,5,7,0.28)', zIndex: Z_MODAL_BACKDROP }}
           />
           <motion.div
             key="modal-panel"
+            ref={panelRef}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby={labelId}
             variants={modalV} initial="hidden" animate="visible" exit="exit"
             transformTemplate={(_, generated) => `translate(-50%, -50%) ${generated}`}
             style={{
               position: 'fixed', top: '50%', left: '50%',
-              zIndex: 201, background: SURFACE, borderRadius: R_LG,
+              zIndex: Z_MODAL, background: SURFACE, borderRadius: R_LG,
               width, maxWidth: 'calc(100vw - 32px)', maxHeight: '90vh',
               display: 'flex', flexDirection: 'column',
               boxShadow: SHADOW_LG,
@@ -430,7 +570,7 @@ export function Modal({
               position: 'sticky', top: 0, background: SURFACE, borderRadius: `${R_LG}px ${R_LG}px 0 0`,
               flexShrink: 0,
             }}>
-              <span style={{ fontFamily: FONT_HEADING, fontSize: 16, fontWeight: 700, color: SLATE, letterSpacing: '-0.01em' }}>
+              <span id={labelId} style={{ fontFamily: FONT_HEADING, fontSize: 16, fontWeight: 700, color: SLATE, letterSpacing: '-0.01em' }}>
                 {title}
               </span>
               <motion.button
@@ -481,9 +621,15 @@ export function FormActions({ children }: { children: React.ReactNode }) {
 
 // ─── Form field helpers ───────────────────────────────────────────────────────
 
-export function FieldLabel({ children }: { children: React.ReactNode }) {
+/**
+ * `htmlFor` is optional only because most existing call sites predate it. Pass
+ * it (with a matching `id` on the field) wherever you touch a form — without
+ * the pair, a screen reader announces the input as unlabelled and clicking the
+ * label does nothing.
+ */
+export function FieldLabel({ children, htmlFor }: { children: React.ReactNode; htmlFor?: string }) {
   return (
-    <label style={{
+    <label htmlFor={htmlFor} style={{
       display: 'block', fontSize: 11, fontWeight: 700, color: MUTED,
       letterSpacing: '0.07em', textTransform: 'uppercase', marginBottom: 5,
     }}>
@@ -500,7 +646,7 @@ export function FieldInput(props: React.InputHTMLAttributes<HTMLInputElement>) {
       style={{
         width: '100%', boxSizing: 'border-box',
         padding: '9px 12px', borderRadius: R_MD,
-        border: `1.5px solid ${BORDER}`, background: BG,
+        border: `1.5px solid ${BORDER_FIELD}`, background: BG,
         fontSize: 13, color: SLATE, outline: 'none',
         ...props.style,
       }}
@@ -516,7 +662,7 @@ export function FieldTextarea(props: React.TextareaHTMLAttributes<HTMLTextAreaEl
       style={{
         width: '100%', boxSizing: 'border-box',
         padding: '9px 12px', borderRadius: R_MD,
-        border: `1.5px solid ${BORDER}`, background: BG,
+        border: `1.5px solid ${BORDER_FIELD}`, background: BG,
         fontSize: 13, color: SLATE, outline: 'none',
         resize: 'vertical', minHeight: 80,
         ...props.style,
@@ -534,7 +680,7 @@ export function FieldSelect(props: React.SelectHTMLAttributes<HTMLSelectElement>
         style={{
           width: '100%', boxSizing: 'border-box',
           appearance: 'none', padding: '9px 36px 9px 12px', borderRadius: R_MD,
-          border: `1.5px solid ${BORDER}`, background: BG,
+          border: `1.5px solid ${BORDER_FIELD}`, background: BG,
           fontSize: 13, color: SLATE, cursor: 'pointer', outline: 'none',
           ...props.style,
         }}
@@ -823,61 +969,102 @@ export function TabBar({ tabs, active, onChange }: {
 
 // ─── Checkbox ─────────────────────────────────────────────────────────────────
 
-export function Toggle({ checked, onChange, label }: {
+// Was a <div role="switch"> inside a <label> that wrapped no input: not
+// focusable, not operable by keyboard, and the label text was dead to clicks
+// too. A single <button role="switch"> fixes all three at once — it takes its
+// accessible name from the text it contains, so the whole row is one target.
+export function Toggle({ checked, onChange, label, ariaLabel }: {
   checked: boolean; onChange: (v: boolean) => void; label: string;
+  /**
+   * Required when `label` is empty — a bare switch in a dense row has no text
+   * to take its name from, and a screen reader would announce only "switch,
+   * on" with no clue what it controls.
+   */
+  ariaLabel?: string;
 }) {
   return (
-    <label style={{
-      display: 'flex', alignItems: 'center', gap: 10, cursor: 'pointer',
-    }}>
-      <div
-        onClick={() => onChange(!checked)}
-        role="switch"
-        aria-checked={checked}
+    <button
+      type="button"
+      role="switch"
+      aria-checked={checked}
+      aria-label={label ? undefined : ariaLabel}
+      onClick={() => onChange(!checked)}
+      className="lms-switch"
+      style={{
+        display: 'flex', alignItems: 'center', gap: 10,
+        padding: 0, border: 'none', background: 'none',
+        cursor: 'pointer', textAlign: 'left',
+      }}
+    >
+      <span
+        aria-hidden
         style={{
           width: 36, height: 20, borderRadius: R_LG, flexShrink: 0,
           background: checked ? RED : BEIGE,
-          transition: 'background 0.18s',
-          position: 'relative', cursor: 'pointer',
+          // BEIGE alone is only 2.01:1 against the surface, so an "off" switch
+          // was barely visible — WCAG 1.4.11 wants 3:1 for a state indicator.
+          // An inset ring instead of a border keeps the knob's geometry intact.
+          boxShadow: checked ? 'none' : `inset 0 0 0 1.5px ${BORDER_FIELD}`,
+          transition: 'background-color 0.18s',
+          position: 'relative', display: 'block',
         }}
       >
-        <div style={{
-          position: 'absolute',
-          top: 3, left: checked ? 19 : 3,
-          width: 14, height: 14, borderRadius: '50%',
-          background: SURFACE,
-          transition: 'left 0.18s',
-        }} />
-      </div>
+        <span
+          className="lms-switch-knob"
+          style={{
+            position: 'absolute',
+            top: 3, left: 3,
+            width: 14, height: 14, borderRadius: '50%',
+            background: SURFACE,
+            // translateX rather than animating `left`, which is a layout
+            // property and forces a reflow on every frame of the slide.
+            transform: `translateX(${checked ? 16 : 0}px)`,
+            display: 'block',
+          }}
+        />
+      </span>
       <span style={{ fontSize: 13, color: SLATE }}>{label}</span>
-    </label>
+    </button>
   );
 }
 
 // ─── Check icon btn ───────────────────────────────────────────────────────────
 
+/**
+ * Pass `href` for actions that are really navigation (opening a file). Call
+ * sites used to wrap this in an `<a>` instead, which nests a button inside a
+ * link: invalid markup, two tab stops for one action, and the inner control
+ * did nothing. Rendering the anchor here keeps one definition of the tile.
+ */
 export function IconBtn({
-  icon: Icon, onClick, label, danger, disabled,
+  icon: Icon, onClick, label, danger, disabled, href,
 }: {
-  icon: React.ElementType; onClick: () => void; label: string;
-  danger?: boolean; disabled?: boolean;
+  icon: React.ElementType; onClick?: () => void; label: string;
+  danger?: boolean; disabled?: boolean; href?: string;
 }) {
+  const shared = {
+    className: 'lms-iconbtn',
+    title: label,
+    'aria-label': label,
+    style: {
+      display: 'flex', alignItems: 'center', justifyContent: 'center',
+      width: 40, height: 40, borderRadius: R_MD,
+      border: `1px solid ${BORDER}`, background: SURFACE,
+      color: danger ? RED : INK_SOFT, cursor: disabled ? 'not-allowed' : 'pointer',
+      opacity: disabled ? 0.4 : 1,
+    } as React.CSSProperties,
+  };
+
+  if (href) {
+    return (
+      <motion.a {...shared} href={href} target="_blank" rel="noopener noreferrer" whileTap={{ scale: 0.92 }}>
+        <Icon size={13} aria-hidden />
+      </motion.a>
+    );
+  }
+
   return (
-    <motion.button
-      onClick={onClick}
-      disabled={disabled}
-      whileTap={{ scale: 0.92 }}
-      title={label}
-      aria-label={label}
-      className="lms-iconbtn"
-      style={{
-        display: 'flex', alignItems: 'center', justifyContent: 'center',
-        width: 40, height: 40, borderRadius: R_MD,
-        border: `1px solid ${BORDER}`, background: SURFACE,
-        color: danger ? RED : INK_SOFT, cursor: disabled ? 'not-allowed' : 'pointer',
-        opacity: disabled ? 0.4 : 1,
-      }}
-    >
+    <motion.button {...shared} onClick={onClick} disabled={disabled} whileTap={{ scale: 0.92 }}>
       <Icon size={13} aria-hidden />
     </motion.button>
   );

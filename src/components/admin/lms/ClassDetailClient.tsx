@@ -30,6 +30,7 @@ import { uploadToR2 } from '@/lib/lms/upload-client';
 import {
   useConfirm,
   EmptyState,
+  Toast,
   SURFACE, SURFACE_ALT, BORDER, MUTED, BG, SLATE, INK_SOFT,
   RED, RED_HOVER, RED_DARK,
   OK, OK_BG, WARN, WARN_BG, INFO, INFO_BG,
@@ -245,6 +246,16 @@ export default function ClassDetailClient({
   const [deletingId, setDeletingId] = useState<number | null>(null);
   const [confirm, confirmDialog] = useConfirm();
 
+  // Grants, Q&A and the attach picker have no inline error slot the way the
+  // materials panel does (matError / grantError), so their failures used to
+  // return silently — the dialog closed and nothing happened. This is also the
+  // feedback channel every other LMS admin screen already uses.
+  const [toast, setToast] = useState<string | null>(null);
+  const showToast = (msg: string) => {
+    setToast(msg);
+    setTimeout(() => setToast(null), 3500);
+  };
+
   const scheduledDate = new Date(classSession.scheduledAt);
 
   // ── Materials: load all for picker ────────────────────────────────────────
@@ -255,6 +266,11 @@ export default function ClassDetailClient({
     try {
       const res = await fetch('/api/lms/admin/materials');
       if (res.ok) setAllMaterials(await res.json() as MaterialInfo[]);
+      // Otherwise the picker renders "No other PDFs available", which is
+      // indistinguishable from a genuinely empty catalogue.
+      else showToast('Could not load the PDF library. Close and reopen to retry.');
+    } catch {
+      showToast('Could not load the PDF library. Check your connection.');
     } finally {
       setLoadingAllMats(false);
     }
@@ -401,10 +417,10 @@ export default function ClassDetailClient({
       const res = await fetch(`/api/lms/admin/grants/${grantId}`, {
         method: 'DELETE',
       });
-      if (!res.ok) return;
+      if (!res.ok) { showToast('Could not revoke the grant. The student still has access.'); return; }
       setGrants((prev) => prev.filter((g) => g.id !== grantId));
     } catch {
-      // non-fatal
+      showToast('Could not revoke the grant. The student still has access.');
     }
   }
 
@@ -419,7 +435,7 @@ export default function ClassDetailClient({
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ body: text }),
       });
-      if (!res.ok) return;
+      if (!res.ok) { showToast('Could not post your reply. Your text is still in the box — try again.'); return; }
       const newAnswer = await res.json() as AnswerRow;
       setThreads((prev) =>
         prev.map((t) =>
@@ -429,6 +445,8 @@ export default function ClassDetailClient({
         ),
       );
       setAnswerText((prev) => ({ ...prev, [questionId]: '' }));
+    } catch {
+      showToast('Could not post your reply. Your text is still in the box — try again.');
     } finally {
       setPostingAnswer(null);
     }
@@ -446,7 +464,7 @@ export default function ClassDetailClient({
     setDeletingId(id);
     try {
       const res = await fetch(`/api/lms/questions/${id}`, { method: 'DELETE' });
-      if (!res.ok) return;
+      if (!res.ok) { showToast('Could not delete the message. It is still visible to students.'); return; }
       if (parentId !== undefined) {
         setThreads((prev) =>
           prev.map((t) =>
@@ -456,6 +474,8 @@ export default function ClassDetailClient({
       } else {
         setThreads((prev) => prev.filter((t) => t.id !== id));
       }
+    } catch {
+      showToast('Could not delete the message. It is still visible to students.');
     } finally {
       setDeletingId(null);
     }
@@ -1086,6 +1106,7 @@ export default function ClassDetailClient({
         </section>
       </div>
       {confirmDialog}
+      <Toast message={toast} />
     </div>
   );
 }

@@ -6,7 +6,7 @@
  */
 
 import React, { useState, useCallback } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import {
   CalendarPlus,
   Trash2,
@@ -21,9 +21,9 @@ import {
 import {
   BORDER, MUTED, RED, SLATE, BG,
   SURFACE, OK, OK_BG, WARN, WARN_BG, INFO, INFO_BG,
-  R_SM, R_MD, R_LG, R_PILL, SHADOW_SM, SHADOW_LG, FONT_HEADING, RED_DARK, INK_SOFT,
-  backdropV, modalV, rowV, SPIN_CSS,
-  PageHeader, TabBar, Modal, FieldLabel, FieldInput, FieldTextarea, FieldSelect,
+  R_SM, R_MD, R_LG, R_PILL, SHADOW_SM, RED_DARK, INK_SOFT,
+  rowV, SPIN_CSS,
+  PageHeader, TabBar, Modal, ConfirmDialog, FieldLabel, FieldInput, FieldTextarea, FieldSelect,
   PrimaryBtn, DangerBtn, GhostBtn, Toast, EmptyState, StatusBadge, SubjectBadge,
   FormActions,
   fmtDhaka, dhakaLocalToISO, epochToDhakaLocal,
@@ -180,10 +180,13 @@ export default function BookingsClient({ initialSlots, initialRequests }: Bookin
       ]);
       if (sRes.ok) setSlots(await sRes.json() as Slot[]);
       if (rRes.ok) setRequests(await rRes.json() as Request[]);
+      if (!sRes.ok || !rRes.ok) showToast('Could not load bookings — showing the last known state');
+    } catch {
+      showToast('Could not reach the server. Check your connection and refresh.');
     } finally {
       setLoading(false);
     }
-  }, []);
+  }, [showToast]);
 
   // ── Create slot ────────────────────────────────────────────────────────────
 
@@ -214,6 +217,11 @@ export default function BookingsClient({ initialSlots, initialRequests }: Bookin
       setShowCreate(false);
       setCreateForm({ startAt: '', endAt: '', mode: 'online', topic: '', subject: 'english' });
       showToast(data.calendarWarning ?? 'Slot created');
+    } catch {
+      // Reached when fetch rejects (offline) or the body isn't JSON — a 502
+      // returns HTML, and res.json() throws on it. Without this the spinner
+      // just stops and the slot silently never appears.
+      showToast('Could not create the slot. Check your connection and try again.');
     } finally {
       setCreateLoading(false);
     }
@@ -235,6 +243,8 @@ export default function BookingsClient({ initialSlots, initialRequests }: Bookin
         ? `Slot cancelled. Student email: ${data.bookedByEmail}`
         : 'Slot cancelled';
       showToast(msg);
+    } catch {
+      showToast('Could not cancel the slot. Check your connection and try again.');
     } finally {
       setCancelLoading(false);
       setCancelTarget(null);
@@ -284,6 +294,8 @@ export default function BookingsClient({ initialSlots, initialRequests }: Bookin
       setResolveNote('');
       setScheduleForm({ startAt: '', endAt: '', mode: 'online' });
       showToast(data.meetWarning ?? `Request ${data.status}`);
+    } catch {
+      showToast('Could not resolve the request. Check your connection and try again.');
     } finally {
       setResolveLoading(false);
     }
@@ -598,43 +610,26 @@ export default function BookingsClient({ initialSlots, initialRequests }: Bookin
         )}
       </Modal>
 
-      {/* ── Cancel Slot Confirm ───────────────────────────────────────────── */}
-      <AnimatePresence>
-        {cancelTarget && (
-          <>
-            <motion.div
-              key="cancel-backdrop"
-              variants={backdropV} initial="hidden" animate="visible" exit="exit"
-              onClick={() => setCancelTarget(null)}
-              style={{ position: 'fixed', inset: 0, background: 'rgba(26,5,7,0.28)', zIndex: 200 }}
-            />
-            <motion.div
-              key="cancel-modal"
-              variants={modalV} initial="hidden" animate="visible" exit="exit"
-              style={{
-                position: 'fixed', top: '50%', left: '50%',
-                transform: 'translate(-50%,-50%)',
-                zIndex: 201, background: SURFACE, borderRadius: R_LG,
-                padding: '24px 28px', width: 360, maxWidth: '94vw',
-                boxShadow: SHADOW_LG,
-                border: `1px solid ${BORDER}`,
-              }}
-            >
-              <p style={{ margin: 0, fontSize: 14, fontWeight: 700, color: SLATE, fontFamily: FONT_HEADING }}>Cancel this slot?</p>
-              <p style={{ margin: '8px 0 0', fontSize: 13, color: INK_SOFT, lineHeight: 1.5 }}>
-                {fmtDhaka(cancelTarget.startAt)} — {cancelTarget.mode} {cancelTarget.subject}
-                {cancelTarget.status === 'booked' && cancelTarget.bookedByName && (
-                  <><br />Currently booked by: <strong>{cancelTarget.bookedByName}</strong></>
-                )}
-              </p>
-              <div style={{ display: 'flex', gap: 8, justifyContent: 'flex-end', marginTop: 20 }}>
-                <GhostBtn onClick={() => setCancelTarget(null)}>Keep</GhostBtn>
-                <DangerBtn onClick={() => handleCancel(cancelTarget)} loading={cancelLoading}>Cancel Slot</DangerBtn>
-              </div>
-            </motion.div>
-          </>
-        )}
-      </AnimatePresence>
+      {/* ── Cancel Slot Confirm ───────────────────────────────────────────────
+          Was a hand-rolled backdrop + panel that duplicated ConfirmDialog's
+          markup. Same dialog, so it now shares the component — and with it the
+          Escape key, focus trap and focus restore the local copy never had. */}
+      <ConfirmDialog
+        open={cancelTarget !== null}
+        title="Cancel this slot?"
+        message={cancelTarget
+          ? `${fmtDhaka(cancelTarget.startAt)} — ${cancelTarget.mode} ${cancelTarget.subject}.`
+            + (cancelTarget.status === 'booked' && cancelTarget.bookedByName
+                ? ` Currently booked by ${cancelTarget.bookedByName}.`
+                : '')
+          : ''}
+        confirmLabel="Cancel Slot"
+        cancelLabel="Keep"
+        destructive
+        loading={cancelLoading}
+        onConfirm={() => { if (cancelTarget) void handleCancel(cancelTarget); }}
+        onCancel={() => setCancelTarget(null)}
+      />
 
       <Toast message={toast} onDismiss={() => setToast(null)} />
     </>

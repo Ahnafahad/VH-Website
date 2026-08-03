@@ -175,6 +175,26 @@ function SessionModal({
   const [titleManuallyEdited, setTitleManuallyEdited] = useState(Boolean(editing));
   const pdfInputRef = useRef<HTMLInputElement>(null);
 
+  // Close guard: Escape and a backdrop click both discard the whole form. Track
+  // dirtiness through `f` (the only user-edit path) rather than diffing against
+  // a snapshot — the auto-title effect below rewrites `title` on its own, so a
+  // snapshot diff would report a brand-new modal as dirty before anything is typed.
+  const [dirty, setDirty] = useState(false);
+  const [closeConfirmOpen, setCloseConfirmOpen] = useState(false);
+  const closeResolverRef = useRef<((ok: boolean) => void) | null>(null);
+
+  const confirmClose = (): Promise<boolean> => {
+    if (!dirty) return Promise.resolve(true);
+    return new Promise<boolean>(resolve => {
+      closeResolverRef.current = resolve;
+      setCloseConfirmOpen(true);
+    });
+  };
+
+  const guardedClose = async () => {
+    if (await confirmClose()) onClose();
+  };
+
   // Resync form state whenever the modal opens — it's mounted once and
   // reused for every session, so `editing` can change without a remount.
   useEffect(() => {
@@ -183,6 +203,7 @@ function SessionModal({
     setShowMore(Boolean(editing));
     setTitleManuallyEdited(Boolean(editing));
     setError('');
+    setDirty(false);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open, editing]);
 
@@ -201,7 +222,7 @@ function SessionModal({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [form.product, form.subject, form.classNumber, form.topic, titleManuallyEdited]);
 
-  const f = (k: keyof SessionForm, v: string | null) => setForm(p => ({ ...p, [k]: v }));
+  const f = (k: keyof SessionForm, v: string | null) => { setDirty(true); setForm(p => ({ ...p, [k]: v })); };
 
   const handlePdfUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -267,7 +288,8 @@ function SessionModal({
   };
 
   return (
-    <Modal open={open} onClose={onClose} title={editing ? 'Edit Session' : 'New Session'} width={560}>
+    <>
+    <Modal open={open} onClose={onClose} confirmClose={confirmClose} title={editing ? 'Edit Session' : 'New Session'} width={560}>
       <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: 12 }}>
           <CourseSelect value={form.product} onChange={v => f('product', v)} />
@@ -377,11 +399,24 @@ function SessionModal({
         )}
         {error && <p style={{ fontSize: 12, color: RED, margin: 0 }}>{error}</p>}
         <FormActions>
-          <GhostBtn onClick={onClose} small>Cancel</GhostBtn>
+          <GhostBtn onClick={() => void guardedClose()} small>Cancel</GhostBtn>
           <PrimaryBtn onClick={handleSave} loading={saving} small>{editing ? 'Save Changes' : 'Create Session'}</PrimaryBtn>
         </FormActions>
       </div>
     </Modal>
+    <ConfirmDialog
+      open={closeConfirmOpen}
+      title={editing ? 'Discard your changes?' : 'Discard this session?'}
+      message={editing
+        ? 'The edits you made to this session will be lost.'
+        : 'The details you entered will be lost.'}
+      confirmLabel="Discard"
+      cancelLabel="Keep editing"
+      destructive
+      onConfirm={() => { closeResolverRef.current?.(true); closeResolverRef.current = null; setCloseConfirmOpen(false); }}
+      onCancel={() => { closeResolverRef.current?.(false); closeResolverRef.current = null; setCloseConfirmOpen(false); }}
+    />
+    </>
   );
 }
 
@@ -421,6 +456,23 @@ function ScheduleModal({
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState('');
 
+  // Close guard — see SessionModal for why dirtiness is tracked through `f`.
+  const [dirty, setDirty] = useState(false);
+  const [closeConfirmOpen, setCloseConfirmOpen] = useState(false);
+  const closeResolverRef = useRef<((ok: boolean) => void) | null>(null);
+
+  const confirmClose = (): Promise<boolean> => {
+    if (!dirty) return Promise.resolve(true);
+    return new Promise<boolean>(resolve => {
+      closeResolverRef.current = resolve;
+      setCloseConfirmOpen(true);
+    });
+  };
+
+  const guardedClose = async () => {
+    if (await confirmClose()) onClose();
+  };
+
   // Resync form state whenever the modal opens — see SessionModal for why.
   useEffect(() => {
     if (!open) return;
@@ -435,11 +487,14 @@ function ScheduleModal({
       active: editing.active,
     } : defaultScheduleForm());
     setError('');
+    setDirty(false);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open, editing]);
 
-  const f = (k: keyof ScheduleForm, v: string | boolean | null) =>
+  const f = (k: keyof ScheduleForm, v: string | boolean | null) => {
+    setDirty(true);
     setForm(p => ({ ...p, [k]: v }));
+  };
 
   const handleSave = async () => {
     if (!form.titleTemplate.trim()) { setError('Title template is required'); return; }
@@ -471,7 +526,8 @@ function ScheduleModal({
   };
 
   return (
-    <Modal open={open} onClose={onClose} title={editing ? 'Edit Schedule Rule' : 'New Schedule Rule'} width={480}>
+    <>
+    <Modal open={open} onClose={onClose} confirmClose={confirmClose} title={editing ? 'Edit Schedule Rule' : 'New Schedule Rule'} width={480}>
       <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
         <div>
           <FieldLabel>Title Template *</FieldLabel>
@@ -503,11 +559,24 @@ function ScheduleModal({
         <Toggle checked={form.active} onChange={v => f('active', v)} label="Active (generates sessions)" />
         {error && <p style={{ fontSize: 12, color: RED, margin: 0 }}>{error}</p>}
         <FormActions>
-          <GhostBtn onClick={onClose} small>Cancel</GhostBtn>
+          <GhostBtn onClick={() => void guardedClose()} small>Cancel</GhostBtn>
           <PrimaryBtn onClick={handleSave} loading={saving} small>{editing ? 'Save Changes' : 'Create Rule'}</PrimaryBtn>
         </FormActions>
       </div>
     </Modal>
+    <ConfirmDialog
+      open={closeConfirmOpen}
+      title={editing ? 'Discard your changes?' : 'Discard this schedule rule?'}
+      message={editing
+        ? 'The edits you made to this rule will be lost.'
+        : 'The details you entered will be lost.'}
+      confirmLabel="Discard"
+      cancelLabel="Keep editing"
+      destructive
+      onConfirm={() => { closeResolverRef.current?.(true); closeResolverRef.current = null; setCloseConfirmOpen(false); }}
+      onCancel={() => { closeResolverRef.current?.(false); closeResolverRef.current = null; setCloseConfirmOpen(false); }}
+    />
+    </>
   );
 }
 
@@ -1356,7 +1425,14 @@ function SchedulesTab({ schedules }: { schedules: ClassSchedule[] }) {
                 </p>
               </div>
               <div style={{ display: 'flex', gap: 8, flexShrink: 0, alignItems: 'center' }}>
-                <Toggle checked={sc.active} onChange={() => void handleToggleActive(sc)} label="" />
+                {/* No visible label — the row is already titled — so name it for
+                    screen readers, which would otherwise announce a bare "switch". */}
+                <Toggle
+                  checked={sc.active}
+                  onChange={() => void handleToggleActive(sc)}
+                  label=""
+                  ariaLabel={`Active — ${sc.titleTemplate}`}
+                />
                 <IconBtn icon={Edit2} label="Edit" onClick={() => { setEditing(sc); setModalOpen(true); }} />
                 <IconBtn icon={Trash2} label="Delete" danger onClick={() => setDeleteId(sc.id)} />
               </div>

@@ -799,7 +799,6 @@ function MaterialsList({
 
   return (
     <>
-      <style>{`.lms-materials-open-link:focus-visible { outline: 2px solid ${RED}; outline-offset: 2px; border-radius: ${R_SM}px; }`}</style>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))', gap: 10, marginBottom: 16 }}>
         <div>
           <FieldLabel>Course</FieldLabel>
@@ -872,9 +871,7 @@ function MaterialsList({
                 </p>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: 6, flexShrink: 0, flexWrap: 'wrap', justifyContent: 'flex-end' }}>
-                <a href={m.blobUrl} target="_blank" rel="noopener noreferrer" className="lms-materials-open-link">
-                  <IconBtn icon={ExternalLink} label="Open" onClick={() => {}} />
-                </a>
+                <IconBtn icon={ExternalLink} label="Open" href={m.blobUrl} />
                 <IconBtn icon={Pencil} label="Edit details" onClick={() => setEditMaterial(m)} />
                 <IconBtn icon={Paperclip} label="Link to class" onClick={() => setLinkMaterial(m)} />
                 {/* Wider gap + divider before Delete so it isn't a mis-tap target
