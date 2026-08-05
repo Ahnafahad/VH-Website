@@ -17,6 +17,7 @@ import { getAttendeeEmails } from '@/lib/lms/attendees';
 import { isMeetAutoCreateEnabled } from '@/lib/lms/settings';
 import { getRecordingProvider } from '@/lib/recording/recall';
 import { recordings } from '@/lib/db/schema';
+import { getDisplayClassNumbers } from '@/lib/lms/class-numbering';
 
 export async function GET(req: NextRequest) {
   return safeApiHandler(async () => {
@@ -49,7 +50,11 @@ export async function GET(req: NextRequest) {
       .where(conditions.length ? and(...conditions) : undefined)
       .orderBy(asc(classSessions.scheduledAt));
 
-    return rows.map(serializeSession);
+    // Numbering is computed over ALL sessions (not just this filtered page)
+    // so a from/to/status filter never skews a series' sequence.
+    const displayNumbers = await getDisplayClassNumbers();
+
+    return rows.map((s) => serializeSession(s, displayNumbers.get(s.id) ?? null));
   });
 }
 
@@ -183,7 +188,8 @@ export async function POST(req: NextRequest) {
       }
     }
 
-    const result = serializeSession(created);
+    const displayNumbers = await getDisplayClassNumbers();
+    const result = serializeSession(created, displayNumbers.get(created.id) ?? null);
     const warnings: Record<string, string> = {};
     if (calendarWarning) warnings.calendarWarning = calendarWarning;
     if (recordingWarning) warnings.recordingWarning = recordingWarning;
@@ -191,7 +197,7 @@ export async function POST(req: NextRequest) {
   });
 }
 
-function serializeSession(s: typeof classSessions.$inferSelect) {
+function serializeSession(s: typeof classSessions.$inferSelect, displayClassNumber: number | null) {
   return {
     id: s.id,
     scheduleId: s.scheduleId,
@@ -209,6 +215,7 @@ function serializeSession(s: typeof classSessions.$inferSelect) {
     instructorId: s.instructorId,
     topic: s.topic,
     classNumber: s.classNumber,
+    displayClassNumber,
     createdBy: s.createdBy,
     createdAt: s.createdAt.getTime(),
   };

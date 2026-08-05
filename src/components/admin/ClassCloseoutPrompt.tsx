@@ -8,6 +8,7 @@
 
 import { useState } from 'react';
 import { AlertCircle } from 'lucide-react';
+import { formatInstructorNames } from '@/lib/lms/instructor-name';
 
 const RED = '#760F13';
 const BORDER = '#E5E7EB';
@@ -49,6 +50,7 @@ function Row({
   onSaved: (id: number) => void;
 }) {
   const needsSubject = session.subject === 'tbd';
+  const instructorNames = formatInstructorNames(teachingUsers);
 
   const [instructorId, setInstructorId] = useState(
     session.instructorId != null ? String(session.instructorId) : '',
@@ -137,7 +139,7 @@ function Row({
           <option value="">Instructor…</option>
           {teachingUsers.map((u) => (
             <option key={u.id} value={String(u.id)}>
-              {u.name}
+              {instructorNames.get(u.id) ?? u.name}
             </option>
           ))}
         </select>

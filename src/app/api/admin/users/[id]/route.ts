@@ -15,6 +15,7 @@ import { authOptions } from '@/lib/auth';
 import type { UserProduct } from '@/lib/db/schema';
 import { grantFullVocabAccessIfEligible } from '@/lib/vocab/full-access-batches';
 import { assignStudentIdIfEligible } from '@/lib/students/assign-student-id';
+import { recordAudit } from '@/lib/audit-log';
 
 // ─── Auth helper (inline, avoids validateAuth which checks isEmailAuthorized) ──
 
@@ -122,6 +123,17 @@ export async function PATCH(
       .set(updateSet)
       .where(eq(users.id, userId))
       .returning();
+
+    if (updates['role'] !== undefined && updates['role'] !== existing.role) {
+      recordAudit({
+        actorUserId: adminUser?.id ?? null,
+        action:      'role.change',
+        entityType:  'user',
+        entityId:    userId,
+        before:      { role: existing.role },
+        after:       { role: updated.role },
+      }).catch(() => {});
+    }
 
     // Sync products if provided
     if (newProducts !== undefined && Array.isArray(newProducts)) {

@@ -5,7 +5,8 @@ import { db, users, userAccess, vocabUserProgress, vocabAccessRequests } from '@
 import type { UserAccess, VocabUserProgress } from '@/lib/db/schema';
 import { eq, desc, and, inArray } from 'drizzle-orm';
 import UsersClient from '@/components/admin/UsersClient';
-import type { AdminUserRow, AdminAccessRequest } from '@/components/admin/UsersClient';
+import type { AdminUserRow, AdminAccessRequest, AdminBatch } from '@/components/admin/UsersClient';
+import { getActiveBatches } from '@/lib/batches/read';
 
 export const metadata = { title: 'Users — VH Admin' };
 
@@ -109,11 +110,22 @@ export default async function AdminUsersPage() {
     fetchAccessRequests(),
   ]);
 
+  // Batches table may not exist yet in this environment — degrade to an
+  // empty list rather than failing the whole page.
+  let initialBatches: AdminBatch[] = [];
+  try {
+    const rows = await getActiveBatches();
+    initialBatches = rows.map(b => ({ id: b.id, name: b.name, product: b.product }));
+  } catch {
+    // batch dropdowns fall back to "All batches" only
+  }
+
   return (
     <UsersClient
       initialUsers={initialData.users}
       initialTotal={initialData.total}
       initialAccessRequests={accessRequests}
+      initialBatches={initialBatches}
     />
   );
 }

@@ -78,6 +78,7 @@ export default function AdminRegistrationsPage() {
   const [registrations, setRegistrations] = useState<Registration[]>([]);
   const [students, setStudents] = useState<Student[]>([]);
   const [freeSignups, setFreeSignups] = useState<FreeSignup[]>([]);
+  const [batches, setBatches] = useState<{ id: number; name: string; product: string }[]>([]);
   const [counts, setCounts] = useState({ pending: 0, contacted: 0, enrolled: 0, cancelled: 0 });
   const [error, setError] = useState<string | null>(null);
 
@@ -127,6 +128,13 @@ export default function AdminRegistrationsPage() {
       if (freeRes.ok) {
         const freeData = await freeRes.json();
         setFreeSignups(freeData.freeSignups || []);
+      }
+
+      // Load batches for the batch dropdowns (degrades to empty list if unavailable)
+      const batchesRes = await fetch('/api/admin/batches');
+      if (batchesRes.ok) {
+        const batchesData = await batchesRes.json();
+        setBatches(batchesData.batches || []);
       }
 
       setError(null);
@@ -472,6 +480,7 @@ export default function AdminRegistrationsPage() {
                     <StudentCard
                       key={student.studentId}
                       student={student}
+                      batches={batches}
                       onUpdate={updateStudent}
                     />
                   ))
@@ -486,6 +495,7 @@ export default function AdminRegistrationsPage() {
       {showGrantAccessModal && (
         <GrantAccessModal
           data={grantAccessData}
+          batches={batches}
           onClose={() => setShowGrantAccessModal(false)}
           onGrant={grantAccess}
           setData={setGrantAccessData}
@@ -773,7 +783,8 @@ function RegistrationCard({ registration, editingId, editData, onStartEdit, onSa
 }
 
 // Component for student card
-function StudentCard({ student, onUpdate }: any) {
+function StudentCard({ student, batches, onUpdate }: any) {
+  const batchOptions: string[] = Array.from(new Set<string>((batches || []).map((b: any) => b.name as string))).sort();
   return (
     <div className="bg-gradient-to-br from-white to-purple-50 rounded-xl border-2 border-purple-200 p-6">
       <div className="flex items-start justify-between mb-4">
@@ -811,17 +822,18 @@ function StudentCard({ student, onUpdate }: any) {
 
         <div className="bg-white rounded-lg p-3 border border-gray-200">
           <p className="text-xs font-semibold text-gray-500 mb-1">Batch</p>
-          <input
-            type="text"
+          <select
             defaultValue={student.batch || ''}
-            onBlur={(e) => {
+            onChange={(e) => {
               if (e.target.value !== student.batch) {
                 onUpdate(student.studentId, { batch: e.target.value });
               }
             }}
-            className="w-full px-2 py-1 text-sm border border-gray-300 rounded focus:border-vh-red focus:ring-1 focus:ring-vh-red/20 outline-none"
-            placeholder="e.g., 2025"
-          />
+            className="w-full px-2 py-1 text-sm border border-gray-300 rounded focus:border-vh-red focus:ring-1 focus:ring-vh-red/20 outline-none bg-white"
+          >
+            <option value="">— none —</option>
+            {batchOptions.map((name) => <option key={name} value={name}>{name}</option>)}
+          </select>
         </div>
 
         <div className="bg-white rounded-lg p-3 border border-gray-200">
@@ -865,7 +877,8 @@ function StudentCard({ student, onUpdate }: any) {
 }
 
 // Component for grant access modal
-function GrantAccessModal({ data, onClose, onGrant, setData }: any) {
+function GrantAccessModal({ data, batches, onClose, onGrant, setData }: any) {
+  const batchOptions: string[] = Array.from(new Set<string>((batches || []).map((b: any) => b.name as string))).sort();
   return (
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
       <div className="bg-white rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
@@ -934,13 +947,14 @@ function GrantAccessModal({ data, onClose, onGrant, setData }: any) {
 
             <div>
               <label className="block text-sm font-semibold text-gray-700 mb-2">Batch *</label>
-              <input
-                type="text"
+              <select
                 value={data.batch || ''}
                 onChange={(e) => setData({ ...data, batch: e.target.value })}
-                placeholder="e.g., 2025, 2026"
-                className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-vh-red focus:ring-2 focus:ring-vh-red/20 outline-none"
-              />
+                className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-vh-red focus:ring-2 focus:ring-vh-red/20 outline-none bg-white"
+              >
+                <option value="">Select a batch…</option>
+                {batchOptions.map((name) => <option key={name} value={name}>{name}</option>)}
+              </select>
             </div>
           </div>
 

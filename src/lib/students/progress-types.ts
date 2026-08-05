@@ -16,6 +16,9 @@
  * GET /api/admin/students/[id]       → StudentDetailResponse (one student deep-dive)
  */
 
+import type { StudentMetrics } from './student-metrics-pure';
+import type { AtRiskResult } from './at-risk-pure';
+
 // ─── List view (batch selector + summary table) ───────────────────────────────
 
 export interface BatchOption {
@@ -74,6 +77,7 @@ export interface StudentProfile {
   role:      string;
   status:    string;
   joinedAt:  string;                       // ISO
+  whatsapp:  string | null;
 }
 
 /** Headline KPI strip shown at the top of the detail page (the "overview"). */
@@ -178,4 +182,12 @@ export interface StudentDetailResponse {
   weakSections: WeakSection[];             // weakest first, capped ~5
   attendance:   AttendanceBreakdown;
   lexicore:     LexicoreBreakdown;
+  /**
+   * The 11 non-LexiCore progress metrics (DECISIONS.md §12), computed by the
+   * pure/testable core in student-metrics-pure.ts. Null only if the user row
+   * itself vanished between the two lookups (should not happen in practice).
+   */
+  metrics:      StudentMetrics | null;
+  /** At-risk flag + reasons (null when `metrics` is null — see at-risk.ts). */
+  atRisk:       AtRiskResult | null;
 }

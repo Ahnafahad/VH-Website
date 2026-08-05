@@ -17,6 +17,15 @@ export const users = sqliteTable('users', {
   notes:     text('notes'),
   whatsapp:          text('whatsapp'),
   isTeaching:        integer('is_teaching', { mode: 'boolean' }).default(false),
+  // ── Avatars ────────────────────────────────────────────────────────────────
+  // Exclusivity is enforced by a UNIQUE INDEX on this column (SQLite allows many
+  // NULLs under a unique index), so two students can never hold the same character.
+  avatarCharacterId:   integer('avatar_character_id').references(() => avatarCharacters.id, { onDelete: 'set null' }),
+  // Free-text write-in when none of the offered characters appeal. Not guaranteed —
+  // granted on review and availability, which is stated to the student at selection time.
+  avatarCustomRequest: text('avatar_custom_request'),
+  // 'pending' | 'approved' | 'rejected' — only meaningful when avatarCustomRequest is set
+  avatarRequestStatus: text('avatar_request_status'),
   onboardingSkips:   integer('onboarding_skips').notNull().default(0),
   onboardedAt:       integer('onboarded_at', { mode: 'timestamp' }),
   // Site-wide push notifications (distinct from the vocab-specific
@@ -44,6 +53,50 @@ export const userAccess = sqliteTable('user_access', {
   grantedAt: integer('granted_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
   grantedBy: integer('granted_by').references(() => users.id),
 }, (t) => [unique().on(t.userId, t.product)]);
+
+// ─── Batches ──────────────────────────────────────────────────────────────────
+// Reference table for named batches (e.g. '2026-27'), scoped per product.
+// DB-backed replacement for the hardcoded BATCHES constant in
+// src/lib/naming/taxonomy.ts (that constant stays until Wave 2 migrates the
+// UI dropdowns off it — do not remove it here).
+
+export const batches = sqliteTable('batches', {
+  id:        integer('id').primaryKey({ autoIncrement: true }),
+  name:      text('name').notNull(),                          // e.g. '2026-27'
+  // 'iba' | 'fbs' | 'fbs_detailed' — matches userAccess.product
+  product:   text('product').notNull(),
+  // 'active' | 'archived'
+  status:    text('status').notNull().default('active'),
+  createdAt: integer('created_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
+  updatedAt: integer('updated_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
+}, (t) => [unique().on(t.name, t.product)]);
+
+export type Batch       = typeof batches.$inferSelect;
+export type NewBatch    = typeof batches.$inferInsert;
+export type BatchStatus = 'active' | 'archived';
+
+// ─── Avatar Characters ────────────────────────────────────────────────────────
+// The catalogue students pick from. Each character is exclusive to one student —
+// enforced by a unique index on users.avatar_character_id, not here.
+// Artwork is added later; imageUrl stays NULL until then.
+
+export const avatarCharacters = sqliteTable('avatar_characters', {
+  id:        integer('id').primaryKey({ autoIncrement: true }),
+  name:      text('name').notNull().unique(),
+  // 'male' | 'female' — how the list is organised. Not a restriction on who may pick.
+  gender:    text('gender').notNull(),
+  // 'anime' | 'movie' | 'tv'
+  source:    text('source').notNull(),
+  // Where the character is from, e.g. 'Death Note'. Display only.
+  origin:    text('origin'),
+  imageUrl:  text('image_url'),
+  // 'available' | 'retired' — retired characters stay selectable by whoever holds them
+  status:    text('status').notNull().default('available'),
+  createdAt: integer('created_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
+});
+
+export type AvatarCharacter    = typeof avatarCharacters.$inferSelect;
+export type NewAvatarCharacter = typeof avatarCharacters.$inferInsert;
 
 // ─── Math Scores ──────────────────────────────────────────────────────────────
 
@@ -886,6 +939,11 @@ export const testWindows = sqliteTable('test_windows', {
   opensAt:         integer('opens_at',  { mode: 'timestamp' }).notNull(),
   closesAt:        integer('closes_at', { mode: 'timestamp' }).notNull(),
   durationMinutes: integer('duration_minutes'),
+  // Explicit link to the class this sitting belongs to. Lives on the WINDOW, not the
+  // test, because a test can span several sittings on different days (the FBS tests ran
+  // Jul 21→31) — a test-level link would map every attempt to one wrong session.
+  // NULL = not linked; attendance auto-pull falls back to same-calendar-date matching.
+  classSessionId:  integer('class_session_id').references(() => classSessions.id, { onDelete: 'set null' }),
   // 'scheduled' | 'open' | 'closed'
   status:          text('status').notNull().default('scheduled'),
   createdBy:       integer('created_by').references(() => users.id),
@@ -1053,6 +1111,10 @@ export const classAttendance = sqliteTable('class_attendance', {
   joinedAt:  integer('joined_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
   // 'online' | 'offline' — how the student attended
   mode:      text('mode').notNull().default('offline'),
+  // How this row came to exist. 'manual' = an instructor marked it, 'join' = the student
+  // clicked Join on the class, 'pulled' = inferred from a test/quiz submission on the same
+  // date. Instructors see 'pulled' rows flagged as inferred and can correct them.
+  source:    text('source').notNull().default('manual'),
 }, (t) => [
   unique().on(t.sessionId, t.userId),
 ]);
@@ -1287,6 +1349,9 @@ export const lmsAnnouncements = sqliteTable('lms_announcements', {
   subject:   text('subject').notNull(),
   product:   text('product').notNull().default('iba'),
   batch:     text('batch'),
+  // JSON array of user ids when the announcement targets named individuals instead of
+  // a product/batch cohort. NULL = cohort-targeted (use product/batch above).
+  targetUserIds: text('target_user_ids'),
   pinned:    integer('pinned', { mode: 'boolean' }).notNull().default(false),
   createdBy: integer('created_by').notNull().references(() => users.id),
   createdAt: integer('created_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
@@ -1370,3 +1435,26 @@ export type BookingSlotStatus        = 'open' | 'booked' | 'cancelled';
 export type SessionRequestStatus     = 'pending' | 'approved' | 'declined' | 'scheduled';
 export type BookingMode              = 'online' | 'offline';
 export type SessionPreferredMode     = 'online' | 'offline' | 'either';
+
+// ══════════════════════════════════════════════════════════════════════════════
+// AUDIT LOG — generic audit trail scaffold (Wave 1). Not wired into any
+// mutation route yet — later waves call recordAudit() (src/lib/audit-log.ts)
+// from attendance/role/suspension/marks mutations.
+// ══════════════════════════════════════════════════════════════════════════════
+
+export const auditLog = sqliteTable('audit_log', {
+  id:          integer('id').primaryKey({ autoIncrement: true }),
+  actorUserId: integer('actor_user_id').references(() => users.id, { onDelete: 'set null' }),
+  action:      text('action').notNull(),        // e.g. 'attendance.update' | 'role.change' | 'user.suspend' | 'marks.edit'
+  entityType:  text('entity_type').notNull(),    // e.g. 'user' | 'class_attendance' | 'test_attempt'
+  entityId:    integer('entity_id'),             // soft FK — target row id, varies by entityType
+  before:      text('before'),                   // JSON snapshot pre-change, null on create
+  after:       text('after'),                    // JSON snapshot post-change, null on delete
+  createdAt:   integer('created_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
+}, (t) => [
+  index('idx_audit_log_entity').on(t.entityType, t.entityId),
+  index('idx_audit_log_actor').on(t.actorUserId, t.createdAt),
+]);
+
+export type AuditLog    = typeof auditLog.$inferSelect;
+export type NewAuditLog = typeof auditLog.$inferInsert;

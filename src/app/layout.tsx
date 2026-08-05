@@ -4,6 +4,7 @@ import "./globals.css";
 import MainSiteShell from "@/components/MainSiteShell";
 import AuthProvider from "@/components/AuthProvider";
 import OnboardingGate from "@/components/onboarding/OnboardingGate";
+import AvatarGate from "@/components/avatars/AvatarGate";
 import AnalyticsTracker from "@/components/AnalyticsTracker";
 import { Analytics } from "@vercel/analytics/react";
 
@@ -181,6 +182,7 @@ export default function RootLayout({
             {children}
           </MainSiteShell>
           <OnboardingGate />
+          <AvatarGate />
           <AnalyticsTracker />
         </AuthProvider>
         <Analytics />

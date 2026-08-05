@@ -7,6 +7,7 @@
 
 import { useState, useTransition } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
 import {
   ArrowLeft,
@@ -24,9 +25,13 @@ import {
   Upload,
   Link2,
   X as XIcon,
+  Edit2,
+  BookMarked,
+  ClipboardList,
 } from 'lucide-react';
 import { formatDhaka } from '@/lib/lms/time';
 import { uploadToR2 } from '@/lib/lms/upload-client';
+import { SessionModal, type ClassSession, type TeachingUser } from './ClassesClient';
 import {
   useConfirm,
   EmptyState,
@@ -54,7 +59,7 @@ interface ClassSessionInfo {
   meetLink: string | null;
   recallBotId: string | null;
   topic: string | null;
-  classNumber: number | null;
+  displayClassNumber: number | null;
   instructorName: string | null;
 }
 
@@ -67,12 +72,24 @@ interface RecordingInfo {
   createdAt: number;
 }
 
-interface AttendeeRow {
+// Full session roster — present and absent students alike, each with an
+// explicit mode (present rows: online/offline; absent rows: no attendance row
+// at all, present=false).
+interface RosterStudent {
   userId: number;
   name: string;
   email: string;
-  joinedAt: number;
+  present: boolean;
+  mode: 'online' | 'offline';
+  joinedAt: number | null;
   watchProgress: { secondsWatched: number; completedPercent: number } | null;
+}
+
+interface HomeworkRow {
+  id: number;
+  title: string;
+  dueAt: number;
+  subject: string;
 }
 
 interface GrantRow {
@@ -122,13 +139,16 @@ interface MaterialInfo {
 
 interface Props {
   classSession: ClassSessionInfo;
+  rawSession: ClassSession;
+  teachingUsers: TeachingUser[];
   recording: RecordingInfo | null;
-  attendance: AttendeeRow[];
+  roster: RosterStudent[];
   grants: GrantRow[];
   allUsers: UserOption[];
   initialThreads: QuestionThread[];
   currentUserId: number;
   initialMaterials: MaterialInfo[];
+  homework: HomeworkRow[];
 }
 
 // ─── Local styles (hover / focus-visible — inline style props can't express
@@ -212,14 +232,19 @@ const inputStyle: React.CSSProperties = {
 
 export default function ClassDetailClient({
   classSession,
+  rawSession,
+  teachingUsers,
   recording,
-  attendance,
+  roster,
   grants: initialGrants,
   allUsers,
   initialThreads,
   currentUserId,
   initialMaterials,
+  homework,
 }: Props) {
+  const router = useRouter();
+  const [editOpen, setEditOpen] = useState(false);
   const [grants, setGrants] = useState<GrantRow[]>(initialGrants);
 
   // Materials state
@@ -519,7 +544,20 @@ export default function ClassDetailClient({
       <div style={{ maxWidth: 720, margin: '0 auto', padding: '20px 16px 0', display: 'flex', flexDirection: 'column', gap: 20 }}>
         {/* ── Session Info ───────────────────────────────────────────────────── */}
         <section style={{ ...cardStyle, padding: 20 }}>
-          <h2 style={{ ...sectionLabel, marginBottom: 12 }}>Class Info</h2>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 12 }}>
+            <h2 style={sectionLabel}>Class Info</h2>
+            <button
+              onClick={() => setEditOpen(true)}
+              className="cdc-link"
+              style={{
+                display: 'flex', alignItems: 'center', gap: 4, fontSize: 12, fontWeight: 600,
+                color: INFO, background: 'none', border: 'none', cursor: 'pointer', padding: '4px 0',
+              }}
+            >
+              <Edit2 size={12} strokeWidth={2} aria-hidden />
+              Edit
+            </button>
+          </div>
           <dl style={{
             display: 'grid', gridTemplateColumns: 'auto 1fr', columnGap: 16, rowGap: 8, fontSize: 13, margin: 0,
           }}>
@@ -537,10 +575,10 @@ export default function ClassDetailClient({
                 <dd style={{ fontWeight: 500, color: SLATE, margin: 0 }}>{classSession.topic}</dd>
               </>
             )}
-            {classSession.classNumber != null && (
+            {classSession.displayClassNumber != null && (
               <>
                 <dt style={{ color: MUTED, margin: 0 }}>Class #</dt>
-                <dd style={{ fontWeight: 500, color: SLATE, margin: 0 }}>{classSession.classNumber}</dd>
+                <dd style={{ fontWeight: 500, color: SLATE, margin: 0 }}>{classSession.displayClassNumber}</dd>
               </>
             )}
             {classSession.meetLink && (
@@ -900,12 +938,12 @@ export default function ClassDetailClient({
         <section style={{ ...cardStyle, overflow: 'hidden' }}>
           <div style={{ padding: '16px 20px', borderBottom: `1px solid ${BORDER}`, display: 'flex', alignItems: 'center', gap: 8 }}>
             <Users size={15} strokeWidth={1.5} style={{ color: MUTED }} aria-hidden />
-            <h2 style={sectionLabel}>Attendance ({attendance.length})</h2>
+            <h2 style={sectionLabel}>Attendance ({roster.length})</h2>
           </div>
 
-          {attendance.length === 0 ? (
+          {roster.length === 0 ? (
             <div style={{ padding: 20 }}>
-              <EmptyState icon={Users} message="No attendance recorded yet." />
+              <EmptyState icon={Users} message="No students in scope for this session yet." />
             </div>
           ) : (
             <div style={{ overflowX: 'auto' }}>
@@ -913,6 +951,9 @@ export default function ClassDetailClient({
                 <thead>
                   <tr style={{ background: SURFACE_ALT, borderBottom: `1px solid ${BORDER}` }}>
                     <th style={{ textAlign: 'left', padding: '10px 16px', fontWeight: 600, color: MUTED }}>Student</th>
+                    <th style={{ textAlign: 'left', padding: '10px 16px', fontWeight: 600, color: MUTED, whiteSpace: 'nowrap' }}>
+                      Mode
+                    </th>
                     <th style={{ textAlign: 'left', padding: '10px 16px', fontWeight: 600, color: MUTED, whiteSpace: 'nowrap' }}>
                       Joined (Dhaka)
                     </th>
@@ -929,7 +970,7 @@ export default function ClassDetailClient({
                   </tr>
                 </thead>
                 <tbody>
-                  {attendance.map((row, i) => (
+                  {roster.map((row, i) => (
                     <tr
                       key={row.userId}
                       style={{ borderBottom: `1px solid ${BORDER}`, background: i % 2 === 0 ? 'transparent' : SURFACE_ALT }}
@@ -938,11 +979,20 @@ export default function ClassDetailClient({
                         <p style={{ margin: 0, fontWeight: 500, color: SLATE }}>{row.name}</p>
                         <p style={{ margin: 0, color: MUTED, fontSize: 10 }}>{row.email}</p>
                       </td>
+                      <td style={{ padding: '10px 16px' }}>
+                        {row.present
+                          ? <Pill bg={row.mode === 'online' ? INFO_BG : SURFACE_ALT} color={row.mode === 'online' ? INFO : INK_SOFT}>{row.mode}</Pill>
+                          : <Pill bg={`${RED}14`} color={RED}>absent</Pill>}
+                      </td>
                       <td style={{ padding: '10px 16px', color: INK_SOFT, whiteSpace: 'nowrap' }}>
-                        <span style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
-                          <Clock size={12} style={{ color: MUTED, flexShrink: 0 }} strokeWidth={1.5} aria-hidden />
-                          {formatDhaka(new Date(row.joinedAt), 'time')}
-                        </span>
+                        {row.joinedAt != null ? (
+                          <span style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
+                            <Clock size={12} style={{ color: MUTED, flexShrink: 0 }} strokeWidth={1.5} aria-hidden />
+                            {formatDhaka(new Date(row.joinedAt), 'time')}
+                          </span>
+                        ) : (
+                          <span style={{ color: MUTED }}>—</span>
+                        )}
                       </td>
                       {recording && (
                         <>
@@ -976,6 +1026,47 @@ export default function ClassDetailClient({
             </div>
           )}
         </section>
+
+        {/* ── Homework ─────────────────────────────────────────────────────── */}
+        <section style={{ ...cardStyle, padding: 20 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 12 }}>
+            <BookMarked size={15} strokeWidth={1.5} style={{ color: MUTED }} aria-hidden />
+            <h2 style={sectionLabel}>Homework ({homework.length})</h2>
+          </div>
+          {homework.length === 0 ? (
+            <EmptyState icon={BookMarked} message="No assignment linked to this class." />
+          ) : (
+            <ul style={{ display: 'flex', flexDirection: 'column', gap: 6, margin: 0, padding: 0, listStyle: 'none' }}>
+              {homework.map((h) => (
+                <li key={h.id} style={{
+                  display: 'flex', alignItems: 'center', gap: 8, fontSize: 12,
+                  background: SURFACE_ALT, borderRadius: R_MD, padding: '8px 12px',
+                }}>
+                  <BookMarked size={14} strokeWidth={1.5} style={{ color: MUTED, flexShrink: 0 }} aria-hidden />
+                  <span style={{ flex: 1, fontWeight: 500, color: SLATE, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                    {h.title}
+                  </span>
+                  <span style={{ color: MUTED, flexShrink: 0, whiteSpace: 'nowrap' }}>
+                    Due {formatDhaka(new Date(h.dueAt), 'date')}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          )}
+        </section>
+
+        {/* ── Test ─────────────────────────────────────────────────────────── */}
+        <section style={{ ...cardStyle, padding: 20 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 12 }}>
+            <ClipboardList size={15} strokeWidth={1.5} style={{ color: MUTED }} aria-hidden />
+            <h2 style={sectionLabel}>Test Taken This Day</h2>
+          </div>
+          <EmptyState
+            icon={ClipboardList}
+            message="No test↔class link exists yet — tests aren't tied to a class session in the schema, so this can't be shown reliably. Needs the test↔session link (queued, not built in this pass)."
+          />
+        </section>
+
         {/* ── Q&A ──────────────────────────────────────────────────────────── */}
         <section style={{ ...cardStyle, overflow: 'hidden' }}>
           <div style={{ padding: '16px 20px', borderBottom: `1px solid ${BORDER}`, display: 'flex', alignItems: 'center', gap: 8 }}>
@@ -1107,6 +1198,13 @@ export default function ClassDetailClient({
       </div>
       {confirmDialog}
       <Toast message={toast} />
+      <SessionModal
+        open={editOpen}
+        editing={rawSession}
+        teachingUsers={teachingUsers}
+        onClose={() => setEditOpen(false)}
+        onSaved={() => { setEditOpen(false); router.refresh(); }}
+      />
     </div>
   );
 }

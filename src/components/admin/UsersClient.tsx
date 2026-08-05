@@ -1,6 +1,8 @@
 'use client';
 
 import React, { useState, useCallback, useRef, useEffect, useTransition } from 'react';
+import Link from 'next/link';
+import { useRouter, usePathname, useSearchParams } from 'next/navigation';
 import { motion, AnimatePresence, Variants } from 'framer-motion';
 import {
   Search,
@@ -21,6 +23,7 @@ import {
   Phone,
   RefreshCw,
   Loader2,
+  Gauge,
 } from 'lucide-react';
 import { ConfirmDialog } from './lms/lms-shared';
 
@@ -52,6 +55,12 @@ export interface AdminAccessRequest {
   userEmail: string;
 }
 
+export interface AdminBatch {
+  id:      number;
+  name:    string;
+  product: string;
+}
+
 interface DetailedUser extends AdminUserRow {
   badgeCount?:  number;
   vocabPhase?:  number | null;
@@ -62,6 +71,7 @@ interface UsersClientProps {
   initialUsers:          AdminUserRow[];
   initialTotal:          number;
   initialAccessRequests: AdminAccessRequest[];
+  initialBatches:        AdminBatch[];
 }
 
 // ─── Constants ────────────────────────────────────────────────────────────────
@@ -70,6 +80,17 @@ const PAGE_SIZE       = 20;
 const DEBOUNCE_MS     = 300;
 const PRODUCTS        = ['iba', 'fbs', 'fbs_detailed'] as const;
 const PRODUCT_LABELS  = { iba: 'IBA', fbs: 'FBS', fbs_detailed: 'FBS Detailed' } as const;
+
+const selectFilterStyle: React.CSSProperties = {
+  padding:      '6px 10px',
+  borderRadius: 8,
+  border:       '1.5px solid #E5E7EB',
+  background:   '#FAFAFA',
+  fontSize:     12.5,
+  color:        '#374151',
+  outline:      'none',
+  cursor:       'pointer',
+};
 
 // ─── Framer Motion Variants ───────────────────────────────────────────────────
 
@@ -309,10 +330,12 @@ function SectionHeader({ title, subtitle }: { title: string; subtitle?: string }
 
 function UserDetailPanel({
   user,
+  batches,
   onClose,
   onUpdate,
 }: {
   user:     DetailedUser;
+  batches:  AdminBatch[];
   onClose:  () => void;
   onUpdate: (updated: Partial<AdminUserRow>) => void;
 }) {
@@ -327,6 +350,7 @@ function UserDetailPanel({
   const [productsChanged, setProductsChanged] = useState(false);
   const [batch,          setBatch]          = useState(user.batch ?? '');
   const [batchChanged,   setBatchChanged]   = useState(false);
+  const batchOptions = Array.from(new Set(batches.map(b => b.name))).sort();
 
   const anyChanged = roleChanged || productsChanged || batchChanged;
 
@@ -660,6 +684,32 @@ function UserDetailPanel({
             )}
           </div>
 
+          {/* View Progress (students only) — entry point to the per-student metrics page */}
+          {user.role === 'student' && (
+            <div style={{ marginBottom: 20, paddingBottom: 20, borderBottom: '1px solid #F3F4F6' }}>
+              <Link
+                href={`/admin/students/${user.id}`}
+                style={{
+                  display:        'flex',
+                  alignItems:     'center',
+                  justifyContent: 'center',
+                  gap:            7,
+                  width:          '100%',
+                  padding:        '9px',
+                  borderRadius:   7,
+                  border:         '1.5px solid rgba(214,43,56,0.3)',
+                  background:     'rgba(214,43,56,0.04)',
+                  color:          '#D62B38',
+                  fontSize:       13,
+                  fontWeight:     600,
+                  textDecoration: 'none',
+                }}
+              >
+                <Gauge size={13} aria-hidden /> View Progress
+              </Link>
+            </div>
+          )}
+
           {/* Product Access */}
           <div style={{ marginBottom: 20 }}>
             <p style={{
@@ -756,7 +806,9 @@ function UserDetailPanel({
                   }}
                 >
                   <option value="student">Student</option>
+                  <option value="instructor">Instructor</option>
                   <option value="admin">Admin</option>
+                  <option value="super_admin">Super Admin</option>
                 </select>
                 <ChevronDown
                   size={13}
@@ -791,10 +843,9 @@ function UserDetailPanel({
               Batch
             </p>
             <div style={{ display: 'flex', gap: 6, alignItems: 'center' }}>
-              <input
+              <select
                 value={batch}
-                onChange={e => { setBatch(e.target.value); setBatchChanged(e.target.value.trim() !== (user.batch ?? '')); }}
-                placeholder="e.g. 2026-27"
+                onChange={e => { setBatch(e.target.value); setBatchChanged(e.target.value !== (user.batch ?? '')); }}
                 style={{
                   flex:         1,
                   padding:      '9px 12px',
@@ -805,8 +856,12 @@ function UserDetailPanel({
                   fontWeight:   500,
                   color:        '#0F172A',
                   outline:      'none',
+                  cursor:       'pointer',
                 }}
-              />
+              >
+                <option value="">— none —</option>
+                {batchOptions.map(name => <option key={name} value={name}>{name}</option>)}
+              </select>
             </div>
           </div>
 
@@ -1110,13 +1165,23 @@ export default function UsersClient({
   initialUsers,
   initialTotal,
   initialAccessRequests,
+  initialBatches,
 }: UsersClientProps) {
-  // ── State ──────────────────────────────────────────────────────────────────
+  const router      = useRouter();
+  const pathname     = usePathname();
+  const searchParams = useSearchParams();
+
+  // ── State (filters initialised from the URL so they're shareable/reloadable) ─
   const [userList,      setUserList]      = useState<AdminUserRow[]>(initialUsers);
   const [total,         setTotal]         = useState(initialTotal);
-  const [search,        setSearch]        = useState('');
-  const [roleFilter,    setRoleFilter]    = useState<'all' | 'admin' | 'student'>('all');
-  const [page,          setPage]          = useState(1);
+  const [search,        setSearch]        = useState(() => searchParams.get('search') ?? '');
+  const [roleFilter,    setRoleFilter]    = useState<'all' | 'student' | 'instructor' | 'admin' | 'super_admin'>(
+    () => (searchParams.get('role') as 'student' | 'instructor' | 'admin' | 'super_admin' | null) ?? 'all',
+  );
+  const [batchFilter,   setBatchFilter]   = useState(() => searchParams.get('batch') ?? '');
+  const [productFilter, setProductFilter] = useState(() => searchParams.get('product') ?? '');
+  const [statusFilter,  setStatusFilter]  = useState(() => searchParams.get('status') ?? '');
+  const [page,          setPage]          = useState(() => Number(searchParams.get('page')) || 1);
   const [loading,       setLoading]       = useState(false);
   const [selectedUser,  setSelectedUser]  = useState<DetailedUser | null>(null);
   const [panelLoading,  setPanelLoading]  = useState(false);
@@ -1126,17 +1191,22 @@ export default function UsersClient({
   const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const totalPages  = Math.ceil(total / PAGE_SIZE);
 
+  interface Filters { q: string; role: string; batch: string; product: string; status: string }
+  const currentFilters = (): Filters => ({ q: search, role: roleFilter, batch: batchFilter, product: productFilter, status: statusFilter });
+
   // ── Fetch users ────────────────────────────────────────────────────────────
   const fetchUsers = useCallback(async (
-    q: string,
-    role: string,
+    filters: Filters,
     pg: number,
   ) => {
     setLoading(true);
     try {
       const params = new URLSearchParams();
-      if (q)            params.set('search', q);
-      if (role !== 'all') params.set('role', role);
+      if (filters.q)                params.set('search',  filters.q);
+      if (filters.role !== 'all')   params.set('role',    filters.role);
+      if (filters.batch)            params.set('batch',   filters.batch);
+      if (filters.product)          params.set('product', filters.product);
+      if (filters.status)           params.set('status',  filters.status);
       params.set('page',  String(pg));
       params.set('limit', String(PAGE_SIZE));
 
@@ -1160,25 +1230,42 @@ export default function UsersClient({
     }
   }, []);
 
-  // Debounced search
+  // ── Keep the URL in sync with the current filters/page (shareable, survives reload) ─
+  const syncURL = useCallback((filters: Filters, pg: number) => {
+    const params = new URLSearchParams();
+    if (filters.q)              params.set('search',  filters.q);
+    if (filters.role !== 'all') params.set('role',    filters.role);
+    if (filters.batch)          params.set('batch',   filters.batch);
+    if (filters.product)        params.set('product', filters.product);
+    if (filters.status)         params.set('status',  filters.status);
+    if (pg > 1)                 params.set('page',    String(pg));
+    const qs = params.toString();
+    router.replace(qs ? `${pathname}?${qs}` : pathname, { scroll: false });
+  }, [router, pathname]);
+
+  // Debounced filters → refetch page 1 + sync URL
   useEffect(() => {
     if (debounceRef.current) clearTimeout(debounceRef.current);
     debounceRef.current = setTimeout(() => {
       startTransition(() => {
-        void fetchUsers(search, roleFilter, 1);
+        const filters = currentFilters();
+        void fetchUsers(filters, 1);
         setPage(1);
+        syncURL(filters, 1);
       });
     }, DEBOUNCE_MS);
     return () => {
       if (debounceRef.current) clearTimeout(debounceRef.current);
     };
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [search, roleFilter]);
+  }, [search, roleFilter, batchFilter, productFilter, statusFilter]);
 
   // Pagination
   const handlePageChange = (newPage: number) => {
     setPage(newPage);
-    void fetchUsers(search, roleFilter, newPage);
+    const filters = currentFilters();
+    void fetchUsers(filters, newPage);
+    syncURL(filters, newPage);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -1222,9 +1309,14 @@ export default function UsersClient({
     setAccessRequests(prev => prev.filter(r => r.id !== id));
   };
 
-  // ── Role filter counts ─────────────────────────────────────────────────────
-  const adminCount   = userList.filter(u => u.role === 'admin' || u.role === 'super_admin').length;
-  const studentCount = userList.filter(u => u.role === 'student').length;
+  // ── Role filter counts (current page only, like the existing chips) ────────
+  const studentCount    = userList.filter(u => u.role === 'student').length;
+  const instructorCount = userList.filter(u => u.role === 'instructor').length;
+  const adminCount      = userList.filter(u => u.role === 'admin').length;
+  const superAdminCount = userList.filter(u => u.role === 'super_admin').length;
+
+  // ── Batch filter options — empty when the batches table has no rows yet ────
+  const batchOptions = Array.from(new Set(initialBatches.map(b => b.name))).sort();
 
   // ── Render ─────────────────────────────────────────────────────────────────
   return (
@@ -1276,16 +1368,28 @@ export default function UsersClient({
                 onClick={() => setRoleFilter('all')}
               />
               <FilterChip
+                label="Student"
+                active={roleFilter === 'student'}
+                count={studentCount}
+                onClick={() => setRoleFilter('student')}
+              />
+              <FilterChip
+                label="Instructor"
+                active={roleFilter === 'instructor'}
+                count={instructorCount}
+                onClick={() => setRoleFilter('instructor')}
+              />
+              <FilterChip
                 label="Admin"
                 active={roleFilter === 'admin'}
                 count={adminCount}
                 onClick={() => setRoleFilter('admin')}
               />
               <FilterChip
-                label="Student"
-                active={roleFilter === 'student'}
-                count={studentCount}
-                onClick={() => setRoleFilter('student')}
+                label="Super Admin"
+                active={roleFilter === 'super_admin'}
+                count={superAdminCount}
+                onClick={() => setRoleFilter('super_admin')}
               />
             </div>
 
@@ -1345,6 +1449,39 @@ export default function UsersClient({
                 </button>
               )}
             </div>
+          </div>
+
+          {/* Secondary filters: batch / product / status */}
+          <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginBottom: 16 }}>
+            <select
+              value={batchFilter}
+              onChange={e => setBatchFilter(e.target.value)}
+              aria-label="Filter by batch"
+              style={selectFilterStyle}
+            >
+              <option value="">All batches</option>
+              {batchOptions.map(name => <option key={name} value={name}>{name}</option>)}
+            </select>
+            <select
+              value={productFilter}
+              onChange={e => setProductFilter(e.target.value)}
+              aria-label="Filter by product"
+              style={selectFilterStyle}
+            >
+              <option value="">All products</option>
+              {PRODUCTS.map(p => <option key={p} value={p}>{PRODUCT_LABELS[p]}</option>)}
+            </select>
+            <select
+              value={statusFilter}
+              onChange={e => setStatusFilter(e.target.value)}
+              aria-label="Filter by status"
+              style={selectFilterStyle}
+            >
+              <option value="">All statuses</option>
+              <option value="active">Active</option>
+              <option value="inactive">Inactive</option>
+              <option value="pending">Pending</option>
+            </select>
           </div>
 
           {/* Table */}
@@ -1610,6 +1747,7 @@ export default function UsersClient({
           <UserDetailPanel
             key={selectedUser.id}
             user={selectedUser}
+            batches={initialBatches}
             onClose={() => setSelectedUser(null)}
             onUpdate={handleUserUpdate}
           />

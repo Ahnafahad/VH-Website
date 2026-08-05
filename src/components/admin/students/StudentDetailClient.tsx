@@ -12,11 +12,16 @@ import {
   ClipboardList,
   CalendarCheck,
   Sparkles,
+  Gauge,
+  AlertTriangle,
 } from 'lucide-react';
 import StatCard  from '@/components/admin/analytics/StatCard';
 import ChartCard from '@/components/admin/analytics/ChartCard';
 import BarList   from '@/components/admin/analytics/BarList';
 import { fmtNum, fmtPct } from '@/components/admin/analytics/formatters';
+import StudentMetricsPanel from '@/components/students/StudentMetricsPanel';
+import WhatsAppButton from './WhatsAppButton';
+import { buildStatusMessage } from '@/lib/students/whatsapp-message';
 import type {
   StudentDetailResponse,
   StudentTestResult,
@@ -37,7 +42,7 @@ interface StudentDetailClientProps {
   detail: StudentDetailResponse;
 }
 
-type Tab = 'tests' | 'attendance' | 'lexicore';
+type Tab = 'tests' | 'attendance' | 'lexicore' | 'metrics';
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
@@ -416,6 +421,10 @@ export default function StudentDetailClient({ detail }: StudentDetailClientProps
   const { profile, overview, tests, weakSections, attendance, lexicore } = detail;
   const [tab, setTab] = useState<Tab>('tests');
 
+  const whatsappMessage = detail.metrics
+    ? buildStatusMessage({ studentName: profile.name, metrics: detail.metrics, atRisk: detail.atRisk ?? { atRisk: false, reasons: [] } })
+    : `Hi, checking in on ${profile.name}'s progress at VH.`;
+
   return (
     <div style={{ maxWidth: 1040, margin: '0 auto' }}>
 
@@ -464,7 +473,25 @@ export default function StudentDetailClient({ detail }: StudentDetailClientProps
             </span>
           </div>
         </div>
+        <WhatsAppButton whatsapp={profile.whatsapp} message={whatsappMessage} />
       </motion.div>
+
+      {/* At-risk banner */}
+      {detail.atRisk?.atRisk && (
+        <div style={{
+          display: 'flex', alignItems: 'flex-start', gap: 10,
+          background: '#FEF2F2', border: '1px solid #FECACA', borderRadius: 10,
+          padding: '12px 16px', marginBottom: 24,
+        }}>
+          <AlertTriangle size={16} style={{ color: '#B91C1C', flexShrink: 0, marginTop: 1 }} aria-hidden />
+          <div>
+            <p style={{ margin: '0 0 4px', fontSize: 13, fontWeight: 700, color: '#B91C1C' }}>At risk</p>
+            <ul style={{ margin: 0, paddingLeft: 16, fontSize: 12, color: '#7F1D1D' }}>
+              {detail.atRisk.reasons.map(r => <li key={r.code}>{r.message}</li>)}
+            </ul>
+          </div>
+        </div>
+      )}
 
       {/* Overview KPI strip */}
       <div style={{
@@ -487,6 +514,7 @@ export default function StudentDetailClient({ detail }: StudentDetailClientProps
         <TabButton label="Tests"       icon={ClipboardList} active={tab === 'tests'}      onClick={() => setTab('tests')} />
         <TabButton label="Attendance"  icon={CalendarCheck} active={tab === 'attendance'} onClick={() => setTab('attendance')} />
         <TabButton label="LexiCore"    icon={Sparkles}      active={tab === 'lexicore'}   onClick={() => setTab('lexicore')} />
+        <TabButton label="Progress Metrics" icon={Gauge}    active={tab === 'metrics'}    onClick={() => setTab('metrics')} />
       </div>
 
       {/* Tab content */}
@@ -501,6 +529,15 @@ export default function StudentDetailClient({ detail }: StudentDetailClientProps
           {tab === 'tests'      && <TestsTab tests={tests} weakSections={weakSections} />}
           {tab === 'attendance' && <AttendanceTab attendance={attendance} />}
           {tab === 'lexicore'   && <LexicoreTab lexicore={lexicore} />}
+          {tab === 'metrics'    && (
+            detail.metrics
+              ? <StudentMetricsPanel metrics={detail.metrics} lexicore={lexicore} />
+              : (
+                <div style={{ background: '#FAFAFA', border: '1px dashed #E5E7EB', borderRadius: 10, padding: '40px 24px', textAlign: 'center' }}>
+                  <p style={{ margin: 0, fontSize: 13, color: '#9CA3AF' }}>Metrics unavailable.</p>
+                </div>
+              )
+          )}
         </motion.div>
       </AnimatePresence>
     </div>

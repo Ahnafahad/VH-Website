@@ -128,6 +128,77 @@ export function computeRanks(entries: { attemptId: number; totalScore: number }[
   return out;
 }
 
+// ─── Cohort ranking (test × batch × product) ─────────────────────────────────
+// Used by the non-diagnostic student results page (see service.ts:getTestResults).
+// FBS diagnostics keep the plain computeRanks() above untouched — they have
+// their own separate leaderboard (api/fbs-diagnosis/[slug]/leaderboard).
+
+export interface CohortRankEntry {
+  attemptId: number;
+  userId: number;
+  totalScore: number;
+  submittedAt: number; // epoch ms — earlier wins the tie-break
+  correct: number;
+  wrong: number;
+}
+
+export interface CohortRankedEntry {
+  attemptId: number;
+  userId: number;
+  totalScore: number;
+  rank: number;
+  percentile: number;
+}
+
+/** True when cohort ranking (batch/product scoped, tie-broken) should be used
+ * instead of the plain test-wide computeRanks(). False for diagnostics and for
+ * tests with no submissions at all (nothing to scope). */
+export function useCohortRanking(test: { isDiagnostic: boolean }, submittedCount: number): boolean {
+  return !test.isDiagnostic && submittedCount > 0;
+}
+
+/**
+ * Standard competition ranking (1224), same as computeRanks — but the order
+ * used to pick a definite Top 5 (and their listed order) follows a
+ * deterministic tie-break: earlier submission first, then higher accuracy.
+ * The tie-break only decides which members of a tied group make the cut and
+ * their list order — it never changes the rank NUMBER two equally-scored
+ * students see, which stays standard competition ranking (ties share a rank).
+ */
+export function rankCohort(entries: CohortRankEntry[]): CohortRankedEntry[] {
+  function accuracy(e: CohortRankEntry): number {
+    const attempted = e.correct + e.wrong;
+    return attempted > 0 ? e.correct / attempted : 0;
+  }
+
+  const sorted = [...entries].sort((a, b) => {
+    if (b.totalScore !== a.totalScore) return b.totalScore - a.totalScore;
+    if (a.submittedAt !== b.submittedAt) return a.submittedAt - b.submittedAt;
+    return accuracy(b) - accuracy(a);
+  });
+
+  const n = sorted.length;
+  const out: CohortRankedEntry[] = [];
+  let rank = 0, prevScore: number | null = null;
+
+  sorted.forEach((e, i) => {
+    if (prevScore === null || e.totalScore < prevScore) {
+      rank = i + 1;
+      prevScore = e.totalScore;
+    }
+    const below = sorted.filter(s => s.totalScore < e.totalScore).length;
+    out.push({
+      attemptId: e.attemptId,
+      userId: e.userId,
+      totalScore: e.totalScore,
+      rank,
+      percentile: n > 1 ? round2((below / n) * 100) : 100,
+    });
+  });
+
+  return out;
+}
+
 function round2(n: number): number {
   return Math.round(n * 100) / 100;
 }

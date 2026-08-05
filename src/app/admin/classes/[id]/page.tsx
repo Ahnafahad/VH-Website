@@ -14,16 +14,20 @@ import {
   classSessions,
   recordings,
   recordingAccessGrants,
-  classAttendance,
   recordingWatchProgress,
   users,
   classQuestions,
   materials,
   sessionMaterials,
+  assignments,
 } from '@/lib/db/schema';
 import ClassDetailClient from '@/components/admin/lms/ClassDetailClient';
+import type { ClassSession, TeachingUser } from '@/components/admin/lms/ClassesClient';
 import { getUserByEmail } from '@/lib/db-access-control';
 import { inArray } from 'drizzle-orm';
+import { getDisplayClassNumbers } from '@/lib/lms/class-numbering';
+import { formatInstructorNames } from '@/lib/lms/instructor-name';
+import { adminApiFetch } from '@/lib/lms/admin-fetch';
 
 export const dynamic = 'force-dynamic';
 
@@ -67,7 +71,9 @@ export default async function ClassDetailPage({
     .get();
   if (!classSession) redirect('/admin/classes');
 
-  // Load instructor name (nullable — instructor_id may be unset)
+  // Load instructor name (nullable — instructor_id may be unset). Falls back to
+  // the raw stored name if the instructor has since been unflagged is_teaching
+  // (formatInstructorNames only covers the current teaching set).
   const instructor = classSession.instructorId
     ? await db
         .select({ name: users.name })
@@ -75,6 +81,25 @@ export default async function ClassDetailPage({
         .where(eq(users.id, classSession.instructorId))
         .get()
     : null;
+
+  // All current teaching users — needed both for the first-name display label
+  // (formatInstructorNames disambiguates collisions across this whole set,
+  // same as the class list) and as the dropdown source for the edit modal.
+  const teachingUsers = await db
+    .select({ id: users.id, name: users.name })
+    .from(users)
+    .where(eq(users.isTeaching, true));
+  const instructorNames = formatInstructorNames(teachingUsers);
+  const instructorLabel = classSession.instructorId != null
+    ? (instructorNames.get(classSession.instructorId) ?? instructor?.name ?? null)
+    : null;
+
+  // Computed-on-read class number (manual override in classNumber wins) — see
+  // src/lib/lms/class-numbering.ts. classSession.classNumber (raw) is kept
+  // separate below for the edit form, which must bind to the override column,
+  // not this computed value.
+  const displayNumbers = await getDisplayClassNumbers();
+  const displayClassNumber = displayNumbers.get(sessionId) ?? null;
 
   // Load materials for this session (junction + legacy classSessionId)
   const [junctionMaterials, legacyMaterials] = await Promise.all([
@@ -107,18 +132,6 @@ export default async function ClassDetailPage({
     .where(eq(recordings.classSessionId, sessionId))
     .get() ?? null;
 
-  // Load attendance with user info
-  const attendanceRows = await db
-    .select({
-      userId: classAttendance.userId,
-      joinedAt: classAttendance.joinedAt,
-      name: users.name,
-      email: users.email,
-    })
-    .from(classAttendance)
-    .innerJoin(users, eq(classAttendance.userId, users.id))
-    .where(eq(classAttendance.sessionId, sessionId));
-
   // Load watch progress if recording exists
   const watchProgressMap: Record<number, { secondsWatched: number; completedPercent: number }> = {};
   if (recording) {
@@ -133,6 +146,26 @@ export default async function ClassDetailPage({
       };
     }
   }
+
+  // Full attendance roster (present + absent, with mode) — reuses the same
+  // scoped-student + attendance-merge endpoint the manual attendance sheet
+  // (TodayClient) uses, rather than re-deriving the scoping/batch-match rules
+  // here.
+  interface RosterStudent {
+    userId: number; name: string; email: string;
+    present: boolean; mode: 'online' | 'offline'; joinedAt: number | null;
+  }
+  const rosterRes = await adminApiFetch(`/api/lms/admin/classes/${sessionId}/attendance/roster`);
+  const rosterStudents: RosterStudent[] = rosterRes.ok
+    ? ((await rosterRes.json()) as { students: RosterStudent[] }).students
+    : [];
+
+  // Linked homework/assignments — single direct FK, no union needed (verified
+  // in schema: assignments.classSessionId is the only link, no junction table).
+  const homeworkRows = await db
+    .select({ id: assignments.id, title: assignments.title, dueAt: assignments.dueAt, subject: assignments.subject })
+    .from(assignments)
+    .where(eq(assignments.classSessionId, sessionId));
 
   // Load active grants for this recording
   const grants = recording
@@ -202,6 +235,31 @@ export default async function ClassDetailPage({
     })),
   }));
 
+  // Raw session (unmodified stored columns, incl. the classNumber override)
+  // for the reused SessionModal edit form — must NOT bind to displayClassNumber,
+  // or saving would freeze a computed value into the override column.
+  const rawSessionForEdit: ClassSession = {
+    id: classSession.id,
+    scheduleId: classSession.scheduleId,
+    title: classSession.title,
+    description: classSession.description,
+    subject: classSession.subject,
+    product: classSession.product,
+    batch: classSession.batch,
+    scheduledAt: classSession.scheduledAt.getTime(),
+    durationMinutes: classSession.durationMinutes,
+    status: classSession.status,
+    meetLink: classSession.meetLink,
+    googleEventId: classSession.googleEventId,
+    recallBotId: classSession.recallBotId,
+    instructorId: classSession.instructorId,
+    topic: classSession.topic,
+    classNumber: classSession.classNumber,
+    displayClassNumber,
+    createdBy: classSession.createdBy,
+    createdAt: classSession.createdAt.getTime(),
+  };
+
   return (
     <ClassDetailClient
       classSession={{
@@ -216,9 +274,11 @@ export default async function ClassDetailPage({
         meetLink: classSession.meetLink,
         recallBotId: classSession.recallBotId,
         topic: classSession.topic,
-        classNumber: classSession.classNumber,
-        instructorName: instructor?.name ?? null,
+        displayClassNumber,
+        instructorName: instructorLabel,
       }}
+      rawSession={rawSessionForEdit}
+      teachingUsers={teachingUsers as TeachingUser[]}
       recording={
         recording
           ? {
@@ -231,12 +291,14 @@ export default async function ClassDetailPage({
             }
           : null
       }
-      attendance={attendanceRows.map((row) => ({
-        userId: row.userId,
-        name: row.name,
-        email: row.email,
-        joinedAt: row.joinedAt.getTime(),
-        watchProgress: watchProgressMap[row.userId] ?? null,
+      roster={rosterStudents.map((s) => ({
+        userId: s.userId,
+        name: s.name,
+        email: s.email,
+        present: s.present,
+        mode: s.mode,
+        joinedAt: s.joinedAt,
+        watchProgress: watchProgressMap[s.userId] ?? null,
       }))}
       grants={grants.map((g) => ({
         id: g.id,
@@ -256,6 +318,12 @@ export default async function ClassDetailPage({
         fileSize: m.fileSize,
         subject: m.subject,
         createdAt: m.createdAt.getTime(),
+      }))}
+      homework={homeworkRows.map((h) => ({
+        id: h.id,
+        title: h.title,
+        dueAt: h.dueAt.getTime(),
+        subject: h.subject,
       }))}
     />
   );

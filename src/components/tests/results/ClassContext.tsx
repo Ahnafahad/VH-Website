@@ -97,6 +97,39 @@ function DistributionStrip({ classStats, myScore, totalMarks }: {
   );
 }
 
+// ─── Top 5 ────────────────────────────────────────────────────────────────────
+
+function TopFiveList({ entries }: { entries: Array<{ name: string; score: number }> }) {
+  if (entries.length === 0) return null;
+
+  return (
+    <div className="mt-6">
+      <h3 className="text-[var(--color-exam-ink-faint)] text-xs tracking-[0.18em] uppercase mb-3">
+        Top 5
+      </h3>
+      <div className="flex flex-col gap-2">
+        {entries.map((e, i) => (
+          <div
+            key={`${i}-${e.name}`}
+            className="flex items-center justify-between px-4 py-2 rounded-lg"
+            style={{ background: 'var(--color-exam-elevated)', border: '1px solid var(--color-exam-border)' }}
+          >
+            <div className="flex items-center gap-3">
+              <span className="w-6 text-center font-semibold" style={{ color: 'var(--color-exam-gold)' }}>
+                {i + 1}
+              </span>
+              <span className="text-[var(--color-exam-ink)] text-sm">{e.name}</span>
+            </div>
+            <span className="text-[var(--color-exam-ink)] font-semibold text-sm">
+              {e.score % 1 === 0 ? e.score : e.score.toFixed(2)}
+            </span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 // ─── Stat pill ────────────────────────────────────────────────────────────────
 
 function StatPill({ label, value }: { label: string; value: string }) {
@@ -137,6 +170,9 @@ export default function ClassContext({ classStats, myScore, test }: Props) {
           myScore={myScore}
           totalMarks={test.totalMarks}
         />
+
+        {/* Top 5 */}
+        <TopFiveList entries={classStats.topFive} />
       </div>
     </div>
   );

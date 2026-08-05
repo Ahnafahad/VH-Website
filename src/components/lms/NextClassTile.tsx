@@ -101,6 +101,10 @@ export default function NextClassTile({ nextClass, serverJoinOpen }: Props) {
   const [countdown, setCountdown] = useState<{ d: number; h: number; m: number; s: number } | null>(null);
   const [joining, setJoining] = useState(false);
   const [joinError, setJoinError] = useState<string | null>(null);
+  // Not an error — the join still succeeds and the meet link still opens.
+  // Set when the student is at the 8-online-attendance cap (spec §9): they
+  // attend as normal, but this join wasn't recorded as attendance.
+  const [attendanceNotice, setAttendanceNotice] = useState<string | null>(null);
 
   useEffect(() => {
     if (!nextClass) { setCountdown(null); return; }
@@ -118,6 +122,7 @@ export default function NextClassTile({ nextClass, serverJoinOpen }: Props) {
     if (!nextClass || joining) return;
     setJoining(true);
     setJoinError(null);
+    setAttendanceNotice(null);
 
     try {
       const res = await fetch(`/api/lms/classes/${nextClass.id}/join`, {
@@ -139,8 +144,11 @@ export default function NextClassTile({ nextClass, serverJoinOpen }: Props) {
         return;
       }
 
-      const { meetLink } = (await res.json()) as { meetLink: string };
+      const { meetLink, attendanceRecorded } = (await res.json()) as { meetLink: string; attendanceRecorded: boolean };
       trackFeature('class_joined', 'lms', { classSessionId: nextClass.id });
+      if (!attendanceRecorded) {
+        setAttendanceNotice("You've reached the 8-online-class limit for this course, so this session won't count toward attendance — but go ahead and join.");
+      }
       window.open(meetLink, '_blank', 'noopener,noreferrer');
     } catch {
       setJoinError('Network error. Please try again.');
@@ -283,6 +291,14 @@ export default function NextClassTile({ nextClass, serverJoinOpen }: Props) {
               style={{ color: '#FF8A8F' }}
             >
               {joinError}
+            </p>
+          )}
+          {attendanceNotice && (
+            <p
+              className="mt-2 text-xs text-center leading-snug"
+              style={{ color: '#D4B094' }}
+            >
+              {attendanceNotice}
             </p>
           )}
         </div>

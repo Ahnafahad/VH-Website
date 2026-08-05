@@ -2,6 +2,7 @@ import { getServerSession } from 'next-auth/next';
 import { authOptions } from '@/lib/auth';
 import { redirect } from 'next/navigation';
 import TodayClient from '@/components/admin/lms/TodayClient';
+import type { BatchOption } from '@/components/admin/lms/TodayClient';
 import { adminApiFetch } from '@/lib/lms/admin-fetch';
 
 export const dynamic = 'force-dynamic';
@@ -24,5 +25,13 @@ export default async function TodayPage() {
     // render empty state; client can refresh
   }
 
-  return <TodayClient initial={data} sessions={data.sessions} />;
+  let batches: BatchOption[] = [];
+  try {
+    const batchesRes = await adminApiFetch('/api/admin/batches');
+    if (batchesRes.ok) batches = (await batchesRes.json() as { batches: BatchOption[] }).batches;
+  } catch {
+    // batch dropdown degrades to "All batches" only
+  }
+
+  return <TodayClient initial={data} sessions={data.sessions} batches={batches} />;
 }

@@ -21,6 +21,7 @@ import { getUserAttempt, scoreAttemptById } from '@/lib/tests/service';
 import { attemptDeadline } from '@/lib/tests/windows';
 import { parseChosenSections } from '@/lib/tests/diagnostic';
 import { parseBestSnapshot } from '@/lib/tests/best-snapshot';
+import { pullAttendanceForSubmission } from '@/lib/lms/attendance-pull';
 
 const GRACE_MS = 2 * 60_000;
 
@@ -90,6 +91,20 @@ export async function POST(
         sectionScores: JSON.stringify(score.sections),
         bestSnapshot: null,
       }).where(eq(testAttempts.id, attempt.id));
+    }
+
+    // Attendance auto-pull: a student who submitted online was present
+    // online for the class it belongs to. Best-effort — must never fail the
+    // submission itself.
+    try {
+      await pullAttendanceForSubmission(db, {
+        userId: user.id,
+        windowId: attempt.windowId,
+        mode: attempt.mode,
+        submittedAt: new Date(),
+      });
+    } catch (err) {
+      console.error('[attendance-pull] failed for attempt', attempt.id, err);
     }
 
     // Score is NOT returned — results stay hidden until the windows close.

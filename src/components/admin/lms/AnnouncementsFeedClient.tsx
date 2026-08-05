@@ -1,8 +1,8 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { Megaphone, Pin, Edit2, Trash2, Plus, ExternalLink } from 'lucide-react';
+import { Megaphone, Pin, Edit2, Trash2, Plus, ExternalLink, X, Users } from 'lucide-react';
 import {
   SubjectBadge, Toast, ConfirmDialog, Modal, Toggle,
   FieldLabel, FieldInput, FieldTextarea, FieldSelect, PrimaryBtn, GhostBtn,
@@ -14,6 +14,12 @@ import {
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
+interface TargetUser {
+  id: number;
+  name: string;
+  email: string;
+}
+
 export interface LmsAnnouncement {
   id: number;
   title: string;
@@ -21,34 +27,154 @@ export interface LmsAnnouncement {
   subject: string;
   product: string;
   batch: string | null;
+  /** Named individuals this announcement targets — null = cohort-targeted (batch/product above). */
+  targetUsers: TargetUser[] | null;
   pinned: boolean;
   createdBy: number;
   createdAt: number;
 }
 
+interface AudienceBatch {
+  id: number;
+  name: string;
+  product: string;
+}
+
 interface Props {
   initialAnnouncements: LmsAnnouncement[];
+  batches: AudienceBatch[];
 }
 
 const SUBJECTS = ['english', 'math', 'analytical'];
 
+function audienceModeBtnStyle(active: boolean): React.CSSProperties {
+  return {
+    display: 'inline-flex', alignItems: 'center',
+    padding: '6px 12px', borderRadius: R_MD, fontSize: 12, fontWeight: 500,
+    cursor: 'pointer',
+    border: `1px solid ${active ? RED : BORDER}`,
+    background: active ? `${RED}0F` : SURFACE,
+    color: active ? RED : INK_SOFT,
+  };
+}
+
+// ─── Individual picker ─────────────────────────────────────────────────────────
+// Search-and-add widget for targeting named students, mirroring the email
+// blast's IndividualPicker (src/components/admin/AnnouncementsClient.tsx) but
+// styled with this file's lms-shared primitives.
+
+function IndividualPicker({
+  selected, onChange,
+}: {
+  selected: TargetUser[];
+  onChange: (next: TargetUser[]) => void;
+}) {
+  const [query, setQuery] = useState('');
+  const [results, setResults] = useState<TargetUser[]>([]);
+  const [loading, setLoading] = useState(false);
+  const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    if (debounceRef.current) clearTimeout(debounceRef.current);
+    if (!query.trim()) { setResults([]); return; }
+    debounceRef.current = setTimeout(() => {
+      setLoading(true);
+      fetch(`/api/admin/users?search=${encodeURIComponent(query.trim())}&limit=8`)
+        .then(res => res.json())
+        .then((data: { users?: TargetUser[] }) => setResults(data.users ?? []))
+        .catch(() => setResults([]))
+        .finally(() => setLoading(false));
+    }, 300);
+    return () => { if (debounceRef.current) clearTimeout(debounceRef.current); };
+  }, [query]);
+
+  const addPick = (pick: TargetUser) => {
+    if (selected.some(s => s.id === pick.id)) return;
+    onChange([...selected, pick]);
+    setQuery(''); setResults([]);
+  };
+  const removePick = (id: number) => onChange(selected.filter(s => s.id !== id));
+
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+      <div style={{ position: 'relative' }}>
+        <FieldInput
+          value={query}
+          onChange={e => setQuery(e.target.value)}
+          placeholder="Search by name or email…"
+        />
+        {(results.length > 0 || loading) && (
+          <div style={{
+            position: 'absolute', top: '100%', left: 0, right: 0, marginTop: 4,
+            background: SURFACE, border: `1px solid ${BORDER}`, borderRadius: R_MD,
+            boxShadow: '0 4px 16px rgba(0,0,0,0.08)', zIndex: 10, maxHeight: 200, overflowY: 'auto',
+          }}>
+            {loading && <div style={{ padding: '8px 12px', fontSize: 12, color: MUTED }}>Searching…</div>}
+            {!loading && results.map(r => (
+              <button
+                key={r.id}
+                type="button"
+                onClick={() => addPick(r)}
+                style={{
+                  display: 'block', width: '100%', textAlign: 'left',
+                  padding: '8px 12px', fontSize: 12.5, color: SLATE,
+                  background: 'transparent', border: 'none', cursor: 'pointer',
+                }}
+              >
+                {r.name} <span style={{ color: MUTED }}>({r.email})</span>
+              </button>
+            ))}
+          </div>
+        )}
+      </div>
+      {selected.length > 0 && (
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
+          {selected.map(s => (
+            <span key={s.id} style={{
+              display: 'inline-flex', alignItems: 'center', gap: 5,
+              padding: '4px 8px', borderRadius: R_PILL, fontSize: 11.5,
+              background: BG, border: `1px solid ${BORDER}`, color: INK_SOFT,
+            }}>
+              {s.name}
+              <button
+                type="button"
+                onClick={() => removePick(s.id)}
+                aria-label={`Remove ${s.name}`}
+                style={{ display: 'flex', background: 'none', border: 'none', cursor: 'pointer', color: INK_SOFT, padding: 0 }}
+              >
+                <X size={11} aria-hidden />
+              </button>
+            </span>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
 // ─── Announcement form modal ──────────────────────────────────────────────────
+
+type AudienceMode = 'batchProduct' | 'individuals';
 
 interface AnnForm {
   title: string; body: string; subject: string; product: string;
   batch: string; pinned: boolean;
+  audienceMode: AudienceMode;
+  individuals: TargetUser[];
 }
 
 const defaultForm: AnnForm = {
   title: '', body: '', subject: 'english', product: 'iba',
   batch: '', pinned: false,
+  audienceMode: 'batchProduct', individuals: [],
 };
 
 function AnnouncementModal({
-  open, editing, onClose, onSaved,
+  open, editing, onClose, onSaved, batches,
 }: {
   open: boolean; editing: LmsAnnouncement | null;
   onClose: () => void; onSaved: (a: LmsAnnouncement) => void;
+  batches: AudienceBatch[];
 }) {
   const [form, setForm] = useState<AnnForm>(() => editing ? {
     title: editing.title,
@@ -57,6 +183,8 @@ function AnnouncementModal({
     product: editing.product,
     batch: editing.batch ?? '',
     pinned: editing.pinned,
+    audienceMode: editing.targetUsers && editing.targetUsers.length > 0 ? 'individuals' : 'batchProduct',
+    individuals: editing.targetUsers ?? [],
   } : defaultForm);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState('');
@@ -67,6 +195,9 @@ function AnnouncementModal({
     if (!form.title.trim() || !form.body.trim()) {
       setError('Title and body are required'); return;
     }
+    if (form.audienceMode === 'individuals' && form.individuals.length === 0) {
+      setError('Search and add at least one student'); return;
+    }
     setSaving(true); setError('');
     try {
       const payload = {
@@ -74,7 +205,8 @@ function AnnouncementModal({
         body: form.body.trim(),
         subject: form.subject,
         product: form.product,
-        batch: form.batch.trim() || null,
+        batch: form.audienceMode === 'individuals' ? null : (form.batch.trim() || null),
+        targetUserIds: form.audienceMode === 'individuals' ? form.individuals.map(i => i.id) : null,
         pinned: form.pinned,
       };
       const url    = editing ? `/api/lms/admin/announcements-feed/${editing.id}` : '/api/lms/admin/announcements-feed';
@@ -121,8 +253,42 @@ function AnnouncementModal({
           </div>
         </div>
         <div>
-          <FieldLabel>Batch (blank = all)</FieldLabel>
-          <FieldInput value={form.batch} onChange={e => f('batch', e.target.value)} placeholder="e.g. 2025" />
+          <FieldLabel>Send to</FieldLabel>
+          <div style={{ display: 'flex', gap: 8, marginBottom: 10 }}>
+            <button
+              type="button"
+              onClick={() => f('audienceMode', 'batchProduct')}
+              className="lms-btn"
+              style={audienceModeBtnStyle(form.audienceMode === 'batchProduct')}
+            >
+              Batch &amp; product
+            </button>
+            <button
+              type="button"
+              onClick={() => f('audienceMode', 'individuals')}
+              className="lms-btn"
+              style={audienceModeBtnStyle(form.audienceMode === 'individuals')}
+            >
+              <Users size={12} aria-hidden style={{ marginRight: 4 }} />
+              Specific students
+            </button>
+          </div>
+          {form.audienceMode === 'batchProduct' ? (
+            <FieldSelect value={form.batch} onChange={e => f('batch', e.target.value)}>
+              <option value="">All batches</option>
+              {batches.filter(b => b.product === form.product).map(b => (
+                <option key={b.id} value={b.name}>{b.name}</option>
+              ))}
+              {form.batch && !batches.some(b => b.product === form.product && b.name === form.batch) && (
+                <option value={form.batch}>{form.batch} (inactive/removed)</option>
+              )}
+            </FieldSelect>
+          ) : (
+            <IndividualPicker
+              selected={form.individuals}
+              onChange={next => setForm(p => ({ ...p, individuals: next }))}
+            />
+          )}
         </div>
         <Toggle checked={form.pinned} onChange={v => f('pinned', v)} label="Pin to top of feed" />
         {error && <p style={{ fontSize: 12, color: RED, margin: 0 }}>{error}</p>}
@@ -139,7 +305,7 @@ function AnnouncementModal({
 
 // ─── Main component ───────────────────────────────────────────────────────────
 
-export default function AnnouncementsFeedClient({ initialAnnouncements }: Props) {
+export default function AnnouncementsFeedClient({ initialAnnouncements, batches }: Props) {
   const [announcements, setAnnouncements] = useState(initialAnnouncements);
   const [modalOpen, setModalOpen] = useState(false);
   const [editing, setEditing] = useState<LmsAnnouncement | null>(null);
@@ -260,7 +426,15 @@ export default function AnnouncementsFeedClient({ initialAnnouncements }: Props)
                     )}
                     <p style={{ margin: 0, fontSize: 13, fontWeight: 600, color: SLATE }}>{a.title}</p>
                     <SubjectBadge subject={a.subject} />
-                    {a.batch && (
+                    {a.targetUsers && a.targetUsers.length > 0 ? (
+                      <span
+                        title={a.targetUsers.map(u => u.name).join(', ')}
+                        style={{ display: 'inline-flex', alignItems: 'center', gap: 4, fontSize: 11, color: RED, background: `${RED}0F`, border: `1px solid ${RED}33`, padding: '2px 7px', borderRadius: R_PILL }}
+                      >
+                        <Users size={10} aria-hidden />
+                        {a.targetUsers.length} student{a.targetUsers.length === 1 ? '' : 's'}
+                      </span>
+                    ) : a.batch && (
                       <span style={{ fontSize: 11, color: MUTED, background: BG, border: `1px solid ${BORDER}`, padding: '2px 7px', borderRadius: R_PILL }}>
                         Batch {a.batch}
                       </span>
@@ -309,6 +483,7 @@ export default function AnnouncementsFeedClient({ initialAnnouncements }: Props)
         editing={editing}
         onClose={() => { setModalOpen(false); setEditing(null); }}
         onSaved={handleSaved}
+        batches={batches}
       />
       <ConfirmDialog
         open={!!deleteId} title="Delete this announcement?"

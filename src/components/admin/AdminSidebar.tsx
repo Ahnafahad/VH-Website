@@ -26,6 +26,7 @@ import {
   TriangleAlert,
   LineChart,
   Stethoscope,
+  Drama,
 } from 'lucide-react';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
@@ -119,6 +120,7 @@ const NAV_SECTIONS: NavSection[] = [
       { href: '/admin/users',         label: 'Users',          icon: Users     },
       { href: '/admin/registrations', label: 'Registrations',  icon: UserCheck },
       { href: '/admin/announcements', label: 'Announcements',  icon: Megaphone },
+      { href: '/admin/avatars',       label: 'Avatars',        icon: Drama    },
     ],
   },
   {

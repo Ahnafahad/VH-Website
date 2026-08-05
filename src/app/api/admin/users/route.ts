@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { db, users, userAccess } from '@/lib/db';
-import { eq, and, or, like, desc, ne, inArray } from 'drizzle-orm';
+import { eq, and, or, like, desc, ne, inArray, count } from 'drizzle-orm';
 import { validateAuth, createErrorResponse, ApiException } from '@/lib/api-utils';
 import { isAdminEmail, isSuperAdminEmail, getUserByEmail, clearAccessControlCache, grantProduct, revokeProduct } from '@/lib/db-access-control';
 import { assertRoleAssignable } from '@/lib/admin/role-guards';
@@ -15,13 +15,22 @@ export async function GET(request: NextRequest) {
     if (!(await isAdminEmail(auth.email))) throw new ApiException('Unauthorized', 403);
 
     const { searchParams } = new URL(request.url);
-    const role   = searchParams.get('role');
-    const status = searchParams.get('status');
-    const search = searchParams.get('search');
+    const role    = searchParams.get('role');
+    const status  = searchParams.get('status');
+    const search  = searchParams.get('search');
+    const batch   = searchParams.get('batch');
+    const product = searchParams.get('product');
+
+    const pageParam  = searchParams.get('page');
+    const limitParam = searchParams.get('limit');
+    const page   = Math.max(1, parseInt(pageParam ?? '1', 10) || 1);
+    const limit  = Math.min(100, Math.max(1, parseInt(limitParam ?? '20', 10) || 20));
+    const offset = (page - 1) * limit;
 
     const conditions = [];
     if (role)   conditions.push(eq(users.role, role));
     if (status) conditions.push(eq(users.status, status));
+    if (batch)  conditions.push(eq(users.batch, batch));
     if (search) {
       conditions.push(or(
         like(users.name,  `%${search}%`),
@@ -29,12 +38,25 @@ export async function GET(request: NextRequest) {
         like(users.studentId ?? '', `%${search}%`),
       )!);
     }
+    if (product) {
+      const grantedIds = await db.select({ userId: userAccess.userId }).from(userAccess)
+        .where(and(eq(userAccess.product, product), eq(userAccess.active, true)));
+      conditions.push(inArray(users.id, grantedIds.map(r => r.userId).length ? grantedIds.map(r => r.userId) : [-1]));
+    }
 
-    const rows = await db
-      .select()
-      .from(users)
-      .where(conditions.length ? and(...conditions) : undefined)
-      .orderBy(desc(users.createdAt));
+    const where = conditions.length ? and(...conditions) : undefined;
+
+    const [totalResult, rows] = await Promise.all([
+      db.select({ count: count() }).from(users).where(where),
+      db
+        .select()
+        .from(users)
+        .where(where)
+        .orderBy(desc(users.createdAt))
+        .limit(limit)
+        .offset(offset),
+    ]);
+    const total = totalResult[0]?.count ?? 0;
 
     // Attach products to each user
     const ids = rows.map(u => u.id);
@@ -50,7 +72,7 @@ export async function GET(request: NextRequest) {
 
     const result = rows.map(u => ({ ...u, products: productMap.get(u.id) || [] }));
 
-    return NextResponse.json({ success: true, users: result, count: result.length });
+    return NextResponse.json({ success: true, users: result, count: total });
   } catch (error) {
     return createErrorResponse(error);
   }

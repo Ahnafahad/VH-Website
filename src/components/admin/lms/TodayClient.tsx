@@ -11,7 +11,7 @@ import { uploadToR2 } from '@/lib/lms/upload-client';
 import { trackFeature } from '@/lib/analytics/tracker';
 import {
   SubjectBadge, StatusBadge, Toast, ConfirmDialog, Modal, useConfirm,
-  FieldLabel, FieldInput, FieldTextarea, PrimaryBtn, GhostBtn,
+  FieldLabel, FieldInput, FieldSelect, FieldTextarea, PrimaryBtn, GhostBtn,
   FormActions,
   fmtDhaka, dhakaLocalToISO, SPIN_CSS, RED, SLATE, BORDER, MUTED, BG,
   rowV, SURFACE, SURFACE_ALT, OK, OK_BG, WARN, WARN_BG, INK_SOFT,
@@ -55,9 +55,17 @@ interface TodayData {
   assignmentsDue48h: number;
 }
 
+export interface BatchOption {
+  id: number;
+  name: string;
+  product: string;
+  status: string;
+}
+
 interface Props {
   initial: TodayData;
   sessions: TodaySession[]; // upcoming sessions for "next" empty state
+  batches: BatchOption[];
 }
 
 // ─── Close guard handle ───────────────────────────────────────────────────────
@@ -240,8 +248,8 @@ const UploadSheet = React.forwardRef<CloseGuardHandle, {
 // ─── Post Homework Sheet ──────────────────────────────────────────────────────
 
 const HomeworkSheet = React.forwardRef<CloseGuardHandle, {
-  session: TodaySession; onClose: () => void; onDone: () => void;
-}>(function HomeworkSheet({ session, onClose, onDone }, ref) {
+  session: TodaySession; batches: BatchOption[]; onClose: () => void; onDone: () => void;
+}>(function HomeworkSheet({ session, batches, onClose, onDone }, ref) {
   const [form, setForm] = useState({
     title: '',
     description: '',
@@ -322,7 +330,12 @@ const HomeworkSheet = React.forwardRef<CloseGuardHandle, {
       </div>
       <div>
         <FieldLabel>Batch (leave blank for all)</FieldLabel>
-        <FieldInput value={form.batch} onChange={e => f('batch', e.target.value)} placeholder="e.g. 2025" />
+        <FieldSelect value={form.batch} onChange={e => f('batch', e.target.value)}>
+          <option value="">All batches</option>
+          {batches.filter(b => b.product === session.product).map(b => (
+            <option key={b.id} value={b.name}>{b.name}</option>
+          ))}
+        </FieldSelect>
       </div>
       {error && <p style={{ fontSize: 12, color: RED, margin: 0 }}>{error}</p>}
       <FormActions>
@@ -350,9 +363,12 @@ interface RosterStudent {
   email: string;
   present: boolean;
   mode: 'online' | 'offline';
+  source: 'manual' | 'join' | 'pulled' | null;
   totalAbsences: number;
   absencesLast7Days: number;
   lexicalPoints: number;
+  onlineCount: number;
+  onlineCapped: boolean;
   history: RosterStudentHistoryEntry[];
 }
 
@@ -543,7 +559,8 @@ const AttendanceSheet = React.forwardRef<CloseGuardHandle, {
                     {s.name}
                   </p>
                   <p style={{ margin: 0, fontSize: 11, color: MUTED }}>
-                    {s.totalAbsences} absent total · {s.absencesLast7Days} in last 7d
+                    {s.totalAbsences} absent total · {s.absencesLast7Days} in last 7d · {s.onlineCount}/8 online
+                    {s.source === 'pulled' && ' · auto-pulled'}
                   </p>
                 </button>
                 {/* Segmented Offline | Online toggle */}
@@ -553,25 +570,33 @@ const AttendanceSheet = React.forwardRef<CloseGuardHandle, {
                   opacity: s.present ? 1 : 0.45,
                   pointerEvents: s.present ? 'auto' : 'none',
                 }}>
-                  {(['offline', 'online'] as const).map(opt => (
-                    <button
-                      key={opt}
-                      onClick={() => setMode(s.userId, opt)}
-                      disabled={!s.present}
-                      className="lms-int"
-                      style={{
-                        padding: '4px 8px', fontSize: 11, fontWeight: 600,
-                        border: 'none', borderRight: opt === 'offline' ? `1px solid ${BORDER}` : 'none',
-                        background: s.mode === opt ? RED : SURFACE,
-                        color: s.mode === opt ? SURFACE : MUTED,
-                        cursor: s.present ? 'pointer' : 'default',
-                        textTransform: 'capitalize',
-                        transition: 'background 0.12s, color 0.12s',
-                      }}
-                    >
-                      {opt.charAt(0).toUpperCase() + opt.slice(1)}
-                    </button>
-                  ))}
+                  {(['offline', 'online'] as const).map(opt => {
+                    // Hard block: once capped, "Online" isn't offered as a NEW
+                    // choice — the row already marked online can stay online
+                    // (no disable there), but a currently-offline row can't
+                    // switch to online anymore.
+                    const capBlocksThis = opt === 'online' && s.onlineCapped && s.mode !== 'online';
+                    return (
+                      <button
+                        key={opt}
+                        onClick={() => setMode(s.userId, opt)}
+                        disabled={!s.present || capBlocksThis}
+                        title={capBlocksThis ? 'Online attendance cap (8) reached for this student' : undefined}
+                        className="lms-int"
+                        style={{
+                          padding: '4px 8px', fontSize: 11, fontWeight: 600,
+                          border: 'none', borderRight: opt === 'offline' ? `1px solid ${BORDER}` : 'none',
+                          background: s.mode === opt ? RED : SURFACE,
+                          color: s.mode === opt ? SURFACE : (capBlocksThis ? BORDER : MUTED),
+                          cursor: s.present && !capBlocksThis ? 'pointer' : 'default',
+                          textTransform: 'capitalize',
+                          transition: 'background 0.12s, color 0.12s',
+                        }}
+                      >
+                        {opt.charAt(0).toUpperCase() + opt.slice(1)}
+                      </button>
+                    );
+                  })}
                 </div>
                 {/* Autosave status */}
                 {(status === 'pending' || status === 'saving') && (
@@ -764,8 +789,8 @@ function OfflineHomeworkSheet({
 
 // ─── Session Card ─────────────────────────────────────────────────────────────
 
-function SessionCard({ session, index, onRefresh }: {
-  session: TodaySession; index: number; onRefresh: () => void;
+function SessionCard({ session, index, batches, onRefresh }: {
+  session: TodaySession; index: number; batches: BatchOption[]; onRefresh: () => void;
 }) {
   const [uploadOpen,   setUploadOpen]   = useState(false);
   const [hwOpen,       setHwOpen]       = useState(false);
@@ -1025,7 +1050,7 @@ function SessionCard({ session, index, onRefresh }: {
         title={`Post Homework — ${session.title}`} width={480}
         confirmClose={() => hwGuard.current?.canClose() ?? true}
       >
-        <HomeworkSheet ref={hwGuard} session={session} onClose={() => setHwOpen(false)} onDone={() => showToast('Homework posted')} />
+        <HomeworkSheet ref={hwGuard} session={session} batches={batches} onClose={() => setHwOpen(false)} onDone={() => showToast('Homework posted')} />
       </Modal>
 
       <Modal open={offlineOpen} onClose={() => setOfflineOpen(false)} title={`Offline Homework — ${session.title}`} width={480}>
@@ -1053,7 +1078,7 @@ function SessionCard({ session, index, onRefresh }: {
 
 // ─── Main component ───────────────────────────────────────────────────────────
 
-export default function TodayClient({ initial }: Props) {
+export default function TodayClient({ initial, batches }: Props) {
   const [data, setData] = useState(initial);
   const [refreshing, setRefreshing] = useState(false);
   const [toast, setToast] = useState<string | null>(null);
@@ -1145,7 +1170,7 @@ export default function TodayClient({ initial }: Props) {
         <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
           <AnimatePresence>
             {data.sessions.map((s, i) => (
-              <SessionCard key={s.id} session={s} index={i} onRefresh={refresh} />
+              <SessionCard key={s.id} session={s} index={i} batches={batches} onRefresh={refresh} />
             ))}
           </AnimatePresence>
         </div>

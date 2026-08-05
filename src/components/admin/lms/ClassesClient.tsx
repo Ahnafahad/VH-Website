@@ -20,6 +20,7 @@ import {
 } from './lms-shared';
 import { uploadToR2 } from '@/lib/lms/upload-client';
 import { trackFeature } from '@/lib/analytics/tracker';
+import { formatInstructorNames } from '@/lib/lms/instructor-name';
 import { formatClassName, formatMaterialName } from '@/lib/naming/format-name';
 import { suggestMaterialFields, type MaterialSuggestion } from '@/lib/naming/suggest';
 import { SUBJECTS as SUBJECT_TAXONOMY, COURSES, DOC_TYPES, BATCHES, CourseKey, SubjectKey, BatchKey } from '@/lib/naming/taxonomy';
@@ -43,6 +44,7 @@ export interface ClassSession {
   instructorId: number | null;
   topic: string | null;
   classNumber: number | null;
+  displayClassNumber: number | null;
   createdBy: number;
   createdAt: number;
 }
@@ -160,7 +162,7 @@ function sessionFormFromEditing(editing: ClassSession): SessionForm {
   };
 }
 
-function SessionModal({
+export function SessionModal({
   open, editing, onClose, onSaved, teachingUsers,
 }: {
   open: boolean; editing: ClassSession | null;
@@ -168,6 +170,7 @@ function SessionModal({
   teachingUsers: TeachingUser[];
 }) {
   const [form, setForm] = useState<SessionForm>(() => editing ? sessionFormFromEditing(editing) : makeDefaultSessionForm());
+  const instructorNames = formatInstructorNames(teachingUsers);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState('');
   const [showMore, setShowMore] = useState(Boolean(editing));
@@ -357,7 +360,7 @@ function SessionModal({
             <FieldLabel>Instructor</FieldLabel>
             <FieldSelect value={form.instructorId} onChange={e => f('instructorId', e.target.value)}>
               <option value="">Not set</option>
-              {teachingUsers.map(u => <option key={u.id} value={String(u.id)}>{u.name}</option>)}
+              {teachingUsers.map(u => <option key={u.id} value={String(u.id)}>{instructorNames.get(u.id) ?? u.name}</option>)}
             </FieldSelect>
           </div>
         </div>
@@ -1139,7 +1142,28 @@ function CompletedClassModal({
 
 // ─── Sessions tab ─────────────────────────────────────────────────────────────
 
+function InstructorBadge({ name }: { name: string }) {
+  return (
+    <span style={{
+      display:       'inline-flex',
+      alignItems:    'center',
+      padding:       '2px 8px',
+      borderRadius:  R_PILL,
+      fontSize:      11,
+      fontWeight:    600,
+      letterSpacing: '0.01em',
+      lineHeight:    1.6,
+      background:    SURFACE_ALT,
+      color:         INK_SOFT,
+      border:        `1px solid ${BORDER}`,
+    }}>
+      {name}
+    </span>
+  );
+}
+
 function SessionsTab({ sessions, teachingUsers }: { sessions: ClassSession[]; teachingUsers: TeachingUser[] }) {
+  const instructorNames = formatInstructorNames(teachingUsers);
   const [modalOpen,         setModalOpen]         = useState(false);
   const [completedOpen,     setCompletedOpen]     = useState(false);
   const [editing,           setEditing]           = useState<ClassSession | null>(null);
@@ -1257,10 +1281,14 @@ function SessionsTab({ sessions, teachingUsers }: { sessions: ClassSession[]; te
                   <p style={{ margin: 0, fontSize: 13, fontWeight: 600, color: SLATE }}>{s.title}</p>
                   <SubjectBadge subject={s.subject} />
                   <StatusBadge status={s.status} />
+                  {s.instructorId != null && (
+                    <InstructorBadge name={instructorNames.get(s.instructorId) ?? 'Unknown'} />
+                  )}
                   {s.batch && <span style={{ fontSize: 11, color: MUTED }}>Batch {s.batch}</span>}
                 </div>
                 <p style={{ margin: 0, fontSize: 12, color: MUTED }}>
                   {fmtDhaka(s.scheduledAt)} · {s.durationMinutes} min
+                  {s.displayClassNumber != null ? ` · Class ${s.displayClassNumber}` : ''}
                 </p>
               </div>
               <div style={{ display: 'flex', gap: 8, flexShrink: 0, alignItems: 'center' }}>

@@ -16,6 +16,8 @@ import {
 import { eq, and, gte, lt, ne, or, isNull, isNotNull, desc, sql } from 'drizzle-orm';
 import { formatDhaka } from '@/lib/lms/time';
 import ClassCloseoutPrompt, { type CloseoutSession } from '@/components/admin/ClassCloseoutPrompt';
+import { getAtRiskStudents, type AtRiskStudent } from '@/lib/students/at-risk';
+import { Suspense } from 'react';
 import Link from 'next/link';
 import {
   Users,
@@ -33,6 +35,7 @@ import {
   CalendarClock,
   Settings,
   UserCheck,
+  AlertTriangle,
 } from 'lucide-react';
 
 export const metadata = { title: 'Overview — VH Admin' };
@@ -268,6 +271,45 @@ const PRIMARY_ACTIONS = [
 
 // ─── Component ────────────────────────────────────────────────────────────────
 
+// Rendered inside <Suspense> so the rest of the admin home paints immediately.
+// getAtRiskStudents() fans out per-student metric reads and takes seconds; a failure
+// resolves to an empty list rather than taking the page down.
+async function AtRiskSection() {
+  const atRiskStudents = await getAtRiskStudents().catch(() => [] as AtRiskStudent[]);
+  if (!atRiskStudents.length) return null;
+
+  return (
+    <section aria-labelledby="admin-at-risk-heading" style={{ marginBottom: 28 }}>
+      <h2
+        id="admin-at-risk-heading"
+        style={{ display: 'flex', alignItems: 'center', gap: 6, margin: '0 0 10px', fontSize: 14, color: '#B91C1C' }}
+      >
+        <AlertTriangle size={15} aria-hidden /> At-risk students ({atRiskStudents.length})
+      </h2>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+        {atRiskStudents.map((s) => (
+          <Link
+            key={s.id}
+            href={`/admin/students/${s.id}`}
+            style={{
+              display: 'block', textDecoration: 'none',
+              border: '1px solid #FECACA', borderRadius: 10,
+              background: '#FEF2F2', padding: '10px 14px',
+            }}
+          >
+            <p style={{ margin: '0 0 4px', fontSize: 13, fontWeight: 700, color: '#0F172A' }}>
+              {s.name}{s.batch ? ` · ${s.batch}` : ''}
+            </p>
+            <ul style={{ margin: 0, paddingLeft: 16, fontSize: 12, color: '#7F1D1D' }}>
+              {s.reasons.map(r => <li key={r.code}>{r.message}</li>)}
+            </ul>
+          </Link>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 export default async function AdminOverviewPage() {
   const session = await getServerSession(authOptions);
   if (!session?.user?.email) redirect('/auth/signin');
@@ -365,6 +407,13 @@ export default async function AdminOverviewPage() {
 
       {/* ── Needs attention (post-class close-out) ──────────────────────────── */}
       <ClassCloseoutPrompt sessions={closeoutSessions} teachingUsers={teachingUsers} />
+
+      {/* ── At-risk students ──────────────────────────────────────────────────── */}
+      {/* Streamed separately: the scan reads per-student metrics and takes seconds.
+          Inside the page's Promise.all it delayed the whole admin home by that much. */}
+      <Suspense fallback={null}>
+        <AtRiskSection />
+      </Suspense>
 
       <section aria-labelledby="admin-start-heading" style={{ marginBottom: 28 }}>
         <h2 id="admin-start-heading" style={{ margin: '0 0 10px', fontSize: 14, color: '#111827' }}>What do you need to do?</h2>

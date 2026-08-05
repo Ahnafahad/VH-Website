@@ -13,6 +13,7 @@ import { LMS_SUBJECTS } from '@/lib/lms/constants';
 import { updateMeetEvent, deleteMeetEvent } from '@/lib/google/calendar';
 import { getRecordingProvider } from '@/lib/recording/recall';
 import { isMeetAutoCreateEnabled } from '@/lib/lms/settings';
+import { getDisplayClassNumbers } from '@/lib/lms/class-numbering';
 
 const VALID_STATUSES = ['draft', 'scheduled', 'live', 'completed', 'cancelled'] as const;
 
@@ -235,7 +236,8 @@ export async function PATCH(
       }
     }
 
-    const result = serializeSession(updated);
+    const displayNumbers = await getDisplayClassNumbers();
+    const result = serializeSession(updated, displayNumbers.get(updated.id) ?? null);
     const warnings: Record<string, string> = {};
     if (calendarWarning) warnings.calendarWarning = calendarWarning;
     if (recordingWarning) warnings.recordingWarning = recordingWarning;
@@ -326,7 +328,7 @@ export async function DELETE(
   });
 }
 
-function serializeSession(s: typeof classSessions.$inferSelect) {
+function serializeSession(s: typeof classSessions.$inferSelect, displayClassNumber: number | null) {
   return {
     id: s.id,
     scheduleId: s.scheduleId,
@@ -344,6 +346,7 @@ function serializeSession(s: typeof classSessions.$inferSelect) {
     instructorId: s.instructorId,
     topic: s.topic,
     classNumber: s.classNumber,
+    displayClassNumber,
     createdBy: s.createdBy,
     createdAt: s.createdAt.getTime(),
   };

@@ -36,8 +36,9 @@ import {
   asc,
   count,
 } from 'drizzle-orm';
-import { lmsScopeConditions } from './access';
+import { lmsScopeConditions, lmsAnnouncementScopeConditions } from './access';
 import { isJoinOpen } from './join-window';
+import { getDisplayClassNumbers } from './class-numbering';
 import { resolveFileUrl } from '@/lib/storage/r2';
 import { canAccessTest } from '@/lib/tests/access';
 import { effectiveWindowState, type EffectiveWindowState } from '@/lib/tests/windows';
@@ -165,6 +166,8 @@ export interface DashboardRecentClass {
   title: string;
   subject: string;
   scheduledAt: number; // epoch ms
+  /** Computed-on-read class number (manual override wins); null for tbd/cancelled. */
+  classNumber: number | null;
   /** Materials populated only for the newest class; [] for all others. */
   materials: Array<{ id: number; title: string; type: string }>;
   recording: { status: string } | null;
@@ -264,6 +267,7 @@ export async function getDashboardData(
     announcementRows,
     publishedTests,
     lectureSheetCountRows,
+    displayClassNumbers,
   ] = await Promise.all([
     // Last completed class in scope
     db
@@ -322,11 +326,14 @@ export async function getDashboardData(
       )
       .orderBy(asc(assignments.dueAt)),
 
-    // Latest 10 announcements in scope, pinned first
+    // Latest 10 announcements in scope, pinned first. Announcements can
+    // additionally target named individuals (targetUserIds) — a dedicated
+    // condition, not the generic lmsScopeConditions, since no other content
+    // table has that column. See lmsAnnouncementScopeConditions for the rule.
     db
       .select()
       .from(lmsAnnouncements)
-      .where(and(...lmsScopeConditions(user, lmsAnnouncements)))
+      .where(and(...lmsAnnouncementScopeConditions(user)))
       .orderBy(desc(lmsAnnouncements.pinned), desc(lmsAnnouncements.createdAt))
       .limit(10),
 
@@ -343,6 +350,9 @@ export async function getDashboardData(
       .from(materials)
       .where(and(eq(materials.type, 'pdf'), ...lmsScopeConditions(user, materials)))
       .groupBy(materials.subject),
+
+    // Computed-on-read class numbers, keyed by session id (one query, all sessions)
+    getDisplayClassNumbers(),
   ]);
 
   // ─── Materials + recording for lastClass ─────────────────────────────────────
@@ -739,6 +749,7 @@ export async function getDashboardData(
       title: s.title,
       subject: s.subject,
       scheduledAt: s.scheduledAt.getTime(),
+      classNumber: displayClassNumbers.get(s.id) ?? null,
       // Materials only for the newest (index 0)
       materials: idx === 0 ? newestMaterials : [],
       recording: rec ? { status: rec.status } : null,

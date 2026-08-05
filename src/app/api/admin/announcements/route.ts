@@ -1,25 +1,42 @@
 /**
  * /api/admin/announcements
  *
- * POST — Send an announcement email to all active users.
- *        Admin-only. Validates session role server-side.
+ * POST — Send an announcement email to a targeted audience. Admin-only.
+ *        Validates session role server-side. Audience is resolved through the
+ *        shared resolver (src/lib/audience/resolve.ts) — the same one the LMS
+ *        announcement feed's push notifications use — so this system and the
+ *        in-app feed never drift onto two different "who gets this" rules.
  *
- * GET  — Returns a lightweight summary: total user count eligible to receive
- *        announcements. (No announcements log table exists yet — returns
- *        placeholder history.)
+ * GET  — Returns a lightweight summary: recipient count for a given audience
+ *        selection (defaults to "everyone", matching the original behaviour
+ *        before targeting existed). (No announcements log table exists yet —
+ *        returns placeholder history.)
  */
 
 import { NextRequest, NextResponse } from 'next/server';
 import { getServerSession } from 'next-auth/next';
 import { z } from 'zod';
-import { eq, ne } from 'drizzle-orm';
 
 import { authOptions } from '@/lib/auth';
-import { db, users } from '@/lib/db';
+import { db } from '@/lib/db';
 import { sendAdminAnnouncement } from '@/lib/email';
 import { isAdminRole } from '@/lib/auth/roles';
+import { resolveAudience, isAudienceProduct, type AudienceSelection } from '@/lib/audience/resolve';
 
 // ─── Zod schema ───────────────────────────────────────────────────────────────
+
+const audienceSchema = z.discriminatedUnion('mode', [
+  z.object({ mode: z.literal('everyone') }),
+  z.object({
+    mode:    z.literal('batchProduct'),
+    product: z.enum(['iba', 'fbs', 'fbs_detailed']),
+    batch:   z.string().nullable(),
+  }),
+  z.object({
+    mode:    z.literal('individuals'),
+    userIds: z.array(z.number().int()).min(1, 'Select at least one recipient'),
+  }),
+]);
 
 const announcementSchema = z.object({
   subject: z
@@ -30,6 +47,7 @@ const announcementSchema = z.object({
     .string()
     .min(1, 'Body is required')
     .max(5000, 'Body must be 5 000 characters or fewer'),
+  audience: audienceSchema.default({ mode: 'everyone' }),
 });
 
 // ─── Auth helper ──────────────────────────────────────────────────────────────
@@ -52,21 +70,45 @@ async function requireAdmin() {
   };
 }
 
+// ─── Query-string → AudienceSelection ──────────────────────────────────────────
+
+function audienceFromSearchParams(searchParams: URLSearchParams): AudienceSelection | { error: string } {
+  const mode = searchParams.get('mode') ?? 'everyone';
+
+  if (mode === 'everyone') return { mode: 'everyone' };
+
+  if (mode === 'batchProduct') {
+    const product = searchParams.get('product');
+    if (!isAudienceProduct(product)) return { error: 'product must be one of iba, fbs, fbs_detailed' };
+    const batch = searchParams.get('batch');
+    return { mode: 'batchProduct', product, batch: batch ? batch : null };
+  }
+
+  if (mode === 'individuals') {
+    const raw = searchParams.get('userIds') ?? '';
+    const userIds = raw.split(',').filter(Boolean).map(Number).filter(n => Number.isInteger(n));
+    return { mode: 'individuals', userIds };
+  }
+
+  return { error: `Unknown mode: ${mode}` };
+}
+
 // ─── GET /api/admin/announcements ─────────────────────────────────────────────
 
-export async function GET() {
+export async function GET(req: NextRequest) {
   const auth = await requireAdmin();
   if ('error' in auth) return auth.error;
 
+  const audience = audienceFromSearchParams(req.nextUrl.searchParams);
+  if ('error' in audience) {
+    return NextResponse.json({ error: audience.error }, { status: 400 });
+  }
+
   try {
-    // Count all active, non-suspended users (exclude super_admin for email lists)
-    const allUsers = await db
-      .select({ email: users.email })
-      .from(users)
-      .where(ne(users.status, 'inactive'));
+    const recipients = await resolveAudience(db, audience);
 
     return NextResponse.json({
-      recipientCount: allUsers.length,
+      recipientCount: recipients.length,
       // No log table exists yet — return empty history
       history:        [],
     });
@@ -98,27 +140,20 @@ export async function POST(req: NextRequest) {
     );
   }
 
-  const { subject, body } = parsed.data;
+  const { subject, body, audience } = parsed.data;
 
-  // ── Collect recipient emails ───────────────────────────────────────────────
-  // Include all users whose status is not 'inactive'.
-  // We intentionally include all roles (student, admin, super_admin) so the
-  // admin-only broadcast reaches every active account.
+  // ── Collect recipient emails via the shared audience resolver ─────────────
   let recipientEmails: string[];
   try {
-    const rows = await db
-      .select({ email: users.email })
-      .from(users)
-      .where(ne(users.status, 'inactive'));
-
-    recipientEmails = rows.map(r => r.email).filter(Boolean);
+    const recipients = await resolveAudience(db, audience);
+    recipientEmails = recipients.map(r => r.email).filter(Boolean);
   } catch (err) {
-    console.error('[POST /api/admin/announcements] DB error fetching emails:', err);
-    return NextResponse.json({ error: 'Failed to fetch recipients' }, { status: 500 });
+    console.error('[POST /api/admin/announcements] DB error resolving audience:', err);
+    return NextResponse.json({ error: 'Failed to resolve recipients' }, { status: 500 });
   }
 
   if (recipientEmails.length === 0) {
-    return NextResponse.json({ error: 'No active recipients found' }, { status: 422 });
+    return NextResponse.json({ error: 'No active recipients found for the selected audience' }, { status: 422 });
   }
 
   // ── Send emails ───────────────────────────────────────────────────────────

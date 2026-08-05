@@ -5,6 +5,7 @@ import { createErrorResponse, ApiException } from '@/lib/api-utils';
 import { isAdminEmail, getUserByEmail, clearAccessControlCache } from '@/lib/db-access-control';
 import { getServerSession } from 'next-auth/next';
 import { authOptions } from '@/lib/auth';
+import { recordAudit } from '@/lib/audit-log';
 
 // ─── Auth helper ──────────────────────────────────────────────────────────────
 
@@ -54,6 +55,15 @@ export async function POST(
       .returning();
 
     clearAccessControlCache(updated.email);
+
+    recordAudit({
+      actorUserId: adminUser?.id ?? null,
+      action:      'user.suspend',
+      entityType:  'user',
+      entityId:    userId,
+      before:      { status: existing.status },
+      after:       { status: updated.status },
+    }).catch(() => {});
 
     return NextResponse.json({
       success:   true,

@@ -119,6 +119,9 @@ export interface ResultsPayload {
     top5Average: number;
     highest: number;
     lowest: number;
+    /** Top 5 by cohort (test × batch × product), tie-broken by earlier
+     * submission then accuracy. Empty for FBS diagnostics. */
+    topFive: Array<{ name: string; score: number }>;
   };
   questionAnalytics: Record<number, { correctCount: number; wrongCount: number; skippedCount: number }>;
   sections: TakingSection[];

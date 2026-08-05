@@ -137,7 +137,7 @@ export default function ClassHistoryTile({ classPulse }: Props) {
                     className="text-xs block lowercase"
                     style={{ color: 'rgba(250,245,239,0.40)' }}
                   >
-                    {cls.subject}
+                    {cls.subject}{cls.classNumber != null ? ` · class ${cls.classNumber}` : ''}
                   </span>
                   <span
                     className="text-sm block truncate"

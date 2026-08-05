@@ -45,10 +45,18 @@ export interface MaterialOption {
   createdAt: number;
 }
 
+export interface BatchOption {
+  id: number;
+  name: string;
+  product: string;
+  status: string;
+}
+
 interface Props {
   initialAssignments: Assignment[];
   sessions: ClassSession[];
   allMaterials: MaterialOption[];
+  batches: BatchOption[];
 }
 
 const SUBJECTS = ['english', 'math', 'analytical'];
@@ -122,11 +130,12 @@ const defaultForm: AssignmentForm = {
 };
 
 function AssignmentModal({
-  open, editing, sessions, allMaterials, onClose, onSaved,
+  open, editing, sessions, allMaterials, batches, onClose, onSaved,
 }: {
   open: boolean; editing: Assignment | null;
   sessions: ClassSession[];
   allMaterials: MaterialOption[];
+  batches: BatchOption[];
   onClose: () => void; onSaved: (a: Assignment) => void;
 }) {
   const [form, setForm] = useState<AssignmentForm>(() => editing ? {
@@ -290,7 +299,12 @@ function AssignmentModal({
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
           <div>
             <FieldLabel>Batch (blank = all)</FieldLabel>
-            <FieldInput value={form.batch} onChange={e => f('batch', e.target.value)} placeholder="e.g. 2025" />
+            <FieldSelect value={form.batch} onChange={e => f('batch', e.target.value)}>
+              <option value="">All batches</option>
+              {batches.filter(b => b.product === form.product).map(b => (
+                <option key={b.id} value={b.name}>{b.name}</option>
+              ))}
+            </FieldSelect>
           </div>
           <div>
             <FieldLabel>Link to Class (optional)</FieldLabel>
@@ -722,7 +736,7 @@ function SubmissionsPanel({ assignmentId, onClose }: { assignmentId: number; onC
 
 // ─── Main component ───────────────────────────────────────────────────────────
 
-export default function HomeworkClient({ initialAssignments, sessions, allMaterials }: Props) {
+export default function HomeworkClient({ initialAssignments, sessions, allMaterials, batches }: Props) {
   const [assignments, setAssignments] = useState(initialAssignments);
   const [modalOpen, setModalOpen] = useState(false);
   const [editing, setEditing] = useState<Assignment | null>(null);
@@ -862,6 +876,7 @@ export default function HomeworkClient({ initialAssignments, sessions, allMateri
         editing={editing}
         sessions={sessions}
         allMaterials={allMaterials}
+        batches={batches}
         onClose={() => { setModalOpen(false); setEditing(null); }}
         onSaved={handleSaved}
       />

@@ -6,13 +6,14 @@
 import { db } from '@/lib/db';
 import {
   tests, testSections, testQuestionGroups, testQuestions,
-  testWindows, testAttempts, testAnswers,
+  testWindows, testAttempts, testAnswers, users, userAccess,
   type Test, type TestWindow, type TestAttempt, type TestOption,
 } from '@/lib/db/schema';
 import { and, eq, inArray } from 'drizzle-orm';
 import { effectiveWindowState, resultsVisible, type EffectiveWindowState } from './windows';
-import { scoreAttempt, computeRanks, type AttemptScore } from './scoring';
+import { scoreAttempt, computeRanks, rankCohort, useCohortRanking, type AttemptScore } from './scoring';
 import { parseChosenSections } from './diagnostic';
+import { getUserById } from '@/lib/db-access-control';
 
 // ─── Listing ──────────────────────────────────────────────────────────────────
 
@@ -245,6 +246,9 @@ export interface TestResultsPayload {
     top5Average: number;
     highest: number;
     lowest: number;
+    /** Top 5 by cohort (test × batch × product), tie-broken by earlier
+     * submission then accuracy. Empty for FBS diagnostics — out of scope. */
+    topFive: Array<{ name: string; score: number }>;
   };
   questionAnalytics: Record<number, { correctCount: number; wrongCount: number; skippedCount: number }>;
   sections: TakingSection[];
@@ -257,10 +261,6 @@ export async function getTestResults(testId: number, userId: number): Promise<Te
 
   const submitted = await db.select().from(testAttempts).where(
     and(eq(testAttempts.testId, testId), eq(testAttempts.status, 'submitted')),
-  );
-
-  const ranks = computeRanks(
-    submitted.map(a => ({ attemptId: a.id, totalScore: a.totalScore ?? 0 })),
   );
 
   // Diagnostic elective mechanic: when the caller's own submitted attempt has a
@@ -281,14 +281,70 @@ export async function getTestResults(testId: number, userId: number): Promise<Te
       .reduce((sum, s) => sum + s.totalMarks, 0);
   }
 
-  const scores = submitted.map(a => a.totalScore ?? 0).sort((a, b) => b - a);
+  // Ranking cohort: non-diagnostic tests rank within test × batch × product
+  // (spec §4 — "Top 5 on results"). FBS diagnostics are excluded and keep the
+  // original test-wide computeRanks() untouched — they have their own
+  // separate leaderboard (api/fbs-diagnosis/[slug]/leaderboard).
+  let ranks: { attemptId: number; totalScore: number; rank: number; percentile: number }[];
+  let cohortScores: number[];
+  let topFive: Array<{ name: string; score: number }> = [];
+
+  if (!useCohortRanking(test, submitted.length)) {
+    ranks = computeRanks(submitted.map(a => ({ attemptId: a.id, totalScore: a.totalScore ?? 0 })));
+    cohortScores = submitted.map(a => a.totalScore ?? 0);
+  } else {
+    const attemptUserIds = submitted.map(a => a.userId);
+    const [userRows, accessRows, viewer] = await Promise.all([
+      db.select({ id: users.id, name: users.name, batch: users.batch })
+        .from(users).where(inArray(users.id, attemptUserIds)),
+      db.select({ userId: userAccess.userId, product: userAccess.product })
+        .from(userAccess)
+        .where(and(inArray(userAccess.userId, attemptUserIds), eq(userAccess.active, true))),
+      getUserById(userId),
+    ]);
+    const userById = new Map(userRows.map(u => [u.id, u]));
+    const productsByUser = new Map<number, Set<string>>();
+    for (const r of accessRows) {
+      const set = productsByUser.get(r.userId) ?? new Set<string>();
+      set.add(r.product);
+      productsByUser.set(r.userId, set);
+    }
+    const viewerBatch = viewer?.batch ?? null;
+    const viewerProducts = new Set<string>(viewer?.products ?? []);
+
+    const cohort = submitted.filter(a => {
+      if ((userById.get(a.userId)?.batch ?? null) !== viewerBatch) return false;
+      if (a.userId === userId) return true; // always include self
+      const otherProducts = productsByUser.get(a.userId) ?? new Set<string>();
+      for (const p of otherProducts) if (viewerProducts.has(p)) return true;
+      return false;
+    });
+
+    const cohortRanks = rankCohort(cohort.map(a => ({
+      attemptId: a.id,
+      userId: a.userId,
+      totalScore: a.totalScore ?? 0,
+      submittedAt: a.submittedAt?.getTime() ?? 0,
+      correct: a.totalCorrect ?? 0,
+      wrong: a.totalWrong ?? 0,
+    })));
+    ranks = cohortRanks;
+    cohortScores = cohort.map(a => a.totalScore ?? 0);
+    topFive = cohortRanks.slice(0, 5).map(r => ({
+      name: userById.get(r.userId)?.name ?? 'Student',
+      score: r.totalScore,
+    }));
+  }
+
+  const scores = [...cohortScores].sort((a, b) => b - a);
   const top5 = scores.slice(0, 5);
   const classStats = {
-    totalStudents: submitted.length,
+    totalStudents: scores.length,
     averageScore: scores.length ? round2(scores.reduce((s, x) => s + x, 0) / scores.length) : 0,
     top5Average: top5.length ? round2(top5.reduce((s, x) => s + x, 0) / top5.length) : 0,
     highest: scores[0] ?? 0,
     lowest: scores[scores.length - 1] ?? 0,
+    topFive,
   };
 
   // Question-level class analytics

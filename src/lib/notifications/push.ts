@@ -14,11 +14,12 @@
  */
 
 import webpush from 'web-push';
-import { and, eq, isNotNull } from 'drizzle-orm';
+import { eq } from 'drizzle-orm';
 import type { LibSQLDatabase } from 'drizzle-orm/libsql';
 import type * as schema from '@/lib/db/schema';
-import { users, userAccess } from '@/lib/db/schema';
-import { lmsStudentAudienceConditions } from '@/lib/lms/access';
+import { users } from '@/lib/db/schema';
+import type { UserProduct } from '@/lib/db/schema';
+import { resolveAudience } from '@/lib/audience/resolve';
 
 // ─── VAPID initialisation ────────────────────────────────────────────────────
 
@@ -90,10 +91,11 @@ export async function sendPushToUser(
  * has the matching category preference enabled.
  *
  * Recipient rule is NOT re-encoded here — the audience comes from
- * `lmsStudentAudienceConditions` (lib/lms/access.ts), the same seam that backs
- * `canAccessLmsContent` / `lmsScopeConditions`. This function only adds the two
- * notification-specific filters on top: a site-wide pushSubscription must be
- * set, and the category preference column must be true.
+ * `resolveAudience` (lib/audience/resolve.ts), the single audience-resolution
+ * path shared with the email announcement blast and the LMS announcement
+ * feed. This function only adds the two notification-specific filters on
+ * top: a site-wide pushSubscription must be set, and the category preference
+ * column must be true.
  *
  * Expired subscriptions (send returns false) are nulled out and counted.
  */
@@ -102,36 +104,40 @@ export async function notifyStudentsForContent(
   args: {
     product: string;
     batch: string | null;
+    /**
+     * When set, the content targets these specific users rather than a cohort —
+     * the push must go to them only. Sending the cohort push for individually
+     * targeted content would notify the whole batch about something they cannot
+     * open. Null/undefined = normal product+batch cohort.
+     */
+    targetUserIds?: number[] | null;
     category: NotifyCategory;
     title: string;
     body: string;
     url: string;
   },
 ): Promise<{ sent: number; failed: number; cleaned: number }> {
-  const prefColumn =
-    args.category === 'materials'     ? users.notifyMaterials
-    : args.category === 'announcements' ? users.notifyAnnouncements
-    : users.notifyCommentReply;
+  const prefField: 'notifyMaterials' | 'notifyAnnouncements' | 'notifyCommentReply' =
+    args.category === 'materials'       ? 'notifyMaterials'
+    : args.category === 'announcements' ? 'notifyAnnouncements'
+    : 'notifyCommentReply';
 
-  // Audience (who can SEE this content) comes from the LMS access seam so the
-  // rule is not re-encoded here; the two extra conditions are notification
+  // Audience (who can SEE this content) comes from the shared resolver so the
+  // rule is not re-encoded here; the two extra filters below are notification
   // concerns only — they narrow the audience, they never widen it.
-  const conditions = [
-    ...lmsStudentAudienceConditions({ product: args.product, batch: args.batch }),
-    isNotNull(users.pushSubscription),
-    eq(prefColumn, true),
-  ];
+  const audience = await resolveAudience(
+    db,
+    args.targetUserIds && args.targetUserIds.length > 0
+      ? { mode: 'individuals', userIds: args.targetUserIds }
+      : { mode: 'batchProduct', product: args.product as UserProduct, batch: args.batch },
+  );
 
-  const rows = await db
-    .select({ userId: users.id, pushSubscription: users.pushSubscription })
-    .from(users)
-    .innerJoin(userAccess, eq(userAccess.userId, users.id))
-    .where(and(...conditions));
-
-  // Deduplicate: a user may hold multiple userAccess rows.
+  // Deduplicate: a user may hold multiple userAccess rows (unlikely to
+  // surface duplicates here since batchProduct scopes to one product, but the
+  // Map keeps this robust either way).
   const recipients = new Map<number, string>();
-  for (const row of rows) {
-    if (row.pushSubscription) recipients.set(row.userId, row.pushSubscription);
+  for (const row of audience) {
+    if (row.pushSubscription && row[prefField]) recipients.set(row.id, row.pushSubscription);
   }
 
   let sent    = 0;

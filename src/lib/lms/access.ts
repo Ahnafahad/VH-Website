@@ -1,9 +1,9 @@
 // ─── LMS Access Control ───────────────────────────────────────────────────────
 // Single implementation for all LMS content scope checks.
 
-import { SQL, and, eq, isNull, or } from 'drizzle-orm';
+import { SQL, and, eq, isNull, or, sql } from 'drizzle-orm';
 import type { UserWithProducts } from '@/lib/db/schema';
-import { users, userAccess } from '@/lib/db/schema';
+import { users, userAccess, lmsAnnouncements } from '@/lib/db/schema';
 import { isStaffRole } from '@/lib/auth/roles';
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
@@ -129,4 +129,35 @@ export function lmsStudentAudienceConditions(content: LmsContentScope): SQL[] {
   }
 
   return conditions;
+}
+
+// ─── lmsAnnouncementScopeConditions ───────────────────────────────────────────
+
+/**
+ * Dedicated visibility rule for `lmsAnnouncements`, which — unlike the other
+ * LMS content tables `lmsScopeConditions` is generic over — can additionally
+ * target named individuals via `targetUserIds` (JSON array of user ids).
+ * NOT folded into `lmsScopeConditions`: that helper is shared by tables
+ * (materials, assignments, class_sessions) with no such column.
+ *
+ * Rule:
+ *   staff                                       → see everything (handled by caller)
+ *   targetUserIds IS NULL                       → normal cohort rule (product + batch)
+ *   targetUserIds contains this user's id        → visible regardless of cohort
+ *   targetUserIds set but does NOT contain them  → NOT visible (no leak to the batch)
+ */
+export function lmsAnnouncementScopeConditions(user: UserWithProducts): SQL[] {
+  if (isStaff(user)) return [];
+
+  const cohortMatch = and(...lmsScopeConditions(user, lmsAnnouncements));
+  const targetedToMe = sql`(${lmsAnnouncements.targetUserIds} IS NOT NULL AND EXISTS (
+    SELECT 1 FROM json_each(${lmsAnnouncements.targetUserIds}) WHERE CAST(json_each.value AS INTEGER) = ${user.id}
+  ))`;
+
+  return [
+    or(
+      and(isNull(lmsAnnouncements.targetUserIds), cohortMatch),
+      targetedToMe,
+    ) as SQL,
+  ];
 }

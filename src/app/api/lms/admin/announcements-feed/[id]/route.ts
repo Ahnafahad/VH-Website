@@ -10,6 +10,7 @@ import { lmsAnnouncements } from '@/lib/db/schema';
 import { safeApiHandler, ApiException } from '@/lib/api-utils';
 import { requireStaff } from '@/lib/tests/route-helpers';
 import { LMS_SUBJECTS } from '@/lib/lms/constants';
+import { encodeTargetUserIds, parseTargetUserIds, resolveTargetUsers } from '@/lib/lms/announcement-targets';
 
 export async function PATCH(
   req: NextRequest,
@@ -47,6 +48,7 @@ export async function PATCH(
     }
     if (body.product !== undefined) updates.product = body.product;
     if (body.batch !== undefined) updates.batch = body.batch ?? null;
+    if (body.targetUserIds !== undefined) updates.targetUserIds = encodeTargetUserIds(body.targetUserIds);
     if (body.pinned !== undefined) updates.pinned = Boolean(body.pinned);
 
     if (Object.keys(updates).length === 0) throw new ApiException('No fields to update', 400);
@@ -57,6 +59,8 @@ export async function PATCH(
       .where(eq(lmsAnnouncements.id, announcementId))
       .returning();
 
+    const targetUsers = await resolveTargetUsers(db, parseTargetUserIds(updated.targetUserIds));
+
     return {
       id: updated.id,
       title: updated.title,
@@ -64,6 +68,7 @@ export async function PATCH(
       subject: updated.subject,
       product: updated.product,
       batch: updated.batch,
+      targetUsers: targetUsers.length > 0 ? targetUsers : null,
       pinned: updated.pinned,
       createdAt: updated.createdAt.getTime(),
     };

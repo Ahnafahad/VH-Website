@@ -3,19 +3,21 @@
 /**
  * AnnouncementsClient
  *
- * Compose + preview UI for broadcasting an announcement to all active users.
- * Light mode, clean editorial aesthetic consistent with the admin panel.
+ * Compose + preview UI for broadcasting an announcement email. Light mode,
+ * clean editorial aesthetic consistent with the admin panel.
  *
  * Features:
  *   - Subject input (max 100) + character counter
  *   - Body textarea (max 5 000) + character counter
+ *   - Audience targeting: everyone / batch × product / specific students
+ *     (shared resolver — src/lib/audience/resolve.ts)
  *   - Live side-by-side HTML preview (dark email-branded panel)
- *   - Recipient count badge
+ *   - Recipient count badge, recomputed per audience selection
  *   - Send button → confirmation modal → POST → inline result toast
  *   - Form resets on successful send
  */
 
-import { useState, useCallback, useRef, useEffect } from 'react';
+import { useState, useCallback, useRef, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence, Variants } from 'framer-motion';
 import {
   Megaphone,
@@ -32,9 +34,16 @@ import {
 
 // ─── Props ────────────────────────────────────────────────────────────────────
 
+interface AudienceBatch {
+  id: number;
+  name: string;
+  product: string;
+}
+
 interface AnnouncementsClientProps {
   recipientCount: number;
   adminName: string;
+  batches: AudienceBatch[];
 }
 
 // ─── Types ────────────────────────────────────────────────────────────────────
@@ -52,6 +61,24 @@ interface SendResult {
   total: number;
   sentAt: string;
 }
+
+// ─── Audience selector types ───────────────────────────────────────────────────
+// Mirrors AudienceSelection in src/lib/audience/resolve.ts — the same shared
+// shape the LMS announcement feed's targeting uses.
+
+type AudienceMode = 'everyone' | 'batchProduct' | 'individuals';
+type AudienceProduct = 'iba' | 'fbs' | 'fbs_detailed';
+
+interface IndividualPick {
+  id: number;
+  name: string;
+  email: string;
+}
+
+type AudiencePayload =
+  | { mode: 'everyone' }
+  | { mode: 'batchProduct'; product: AudienceProduct; batch: string | null }
+  | { mode: 'individuals'; userIds: number[] };
 
 // ─── Constants ────────────────────────────────────────────────────────────────
 
@@ -156,7 +183,7 @@ function CharCounter({
   );
 }
 
-function RecipientBadge({ count }: { count: number }) {
+function RecipientBadge({ count, loading }: { count: number; loading?: boolean }) {
   return (
     <div
       style={{
@@ -173,9 +200,220 @@ function RecipientBadge({ count }: { count: number }) {
       }}
     >
       <Users size={13} aria-hidden />
-      {count === 0
-        ? 'No active recipients'
-        : `Will be sent to ${count.toLocaleString()} user${count === 1 ? '' : 's'}`}
+      {loading
+        ? 'Counting recipients…'
+        : count === 0
+          ? 'No recipients'
+          : `Will be sent to ${count.toLocaleString()} user${count === 1 ? '' : 's'}`}
+    </div>
+  );
+}
+
+// ─── Audience selector ─────────────────────────────────────────────────────────
+// Targeting: batch × product, or individual students, or everyone (preserves
+// the pre-targeting behaviour as an explicit, still-selectable option).
+
+const audienceModeStyles = (active: boolean): React.CSSProperties => ({
+  padding:      '7px 14px',
+  borderRadius: 7,
+  fontSize:     12.5,
+  fontWeight:   500,
+  cursor:       'pointer',
+  border:       `1px solid ${active ? '#D62B38' : '#D1D5DB'}`,
+  background:   active ? '#FEF2F2' : '#FFFFFF',
+  color:        active ? '#D62B38' : '#374151',
+  transition:   'border-color 0.15s, background 0.15s, color 0.15s',
+});
+
+const selectStyle: React.CSSProperties = {
+  padding:      '8px 10px',
+  border:       '1px solid #D1D5DB',
+  borderRadius: 7,
+  fontSize:     13,
+  color:        '#0F172A',
+  background:   '#FAFAFA',
+  fontFamily:   'inherit',
+  width:        '100%',
+  boxSizing:    'border-box',
+};
+
+function IndividualPicker({
+  selected,
+  onChange,
+}: {
+  selected: IndividualPick[];
+  onChange: (next: IndividualPick[]) => void;
+}) {
+  const [query, setQuery]     = useState('');
+  const [results, setResults] = useState<IndividualPick[]>([]);
+  const [loading, setLoading] = useState(false);
+  const debounceRef           = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    if (debounceRef.current) clearTimeout(debounceRef.current);
+    if (!query.trim()) {
+      setResults([]);
+      return;
+    }
+    debounceRef.current = setTimeout(() => {
+      setLoading(true);
+      fetch(`/api/admin/users?search=${encodeURIComponent(query.trim())}&limit=8`)
+        .then(res => res.json())
+        .then((data: { users?: IndividualPick[] }) => setResults(data.users ?? []))
+        .catch(() => setResults([]))
+        .finally(() => setLoading(false));
+    }, 300);
+    return () => {
+      if (debounceRef.current) clearTimeout(debounceRef.current);
+    };
+  }, [query]);
+
+  const addPick = (pick: IndividualPick) => {
+    if (selected.some(s => s.id === pick.id)) return;
+    onChange([...selected, pick]);
+    setQuery('');
+    setResults([]);
+  };
+
+  const removePick = (id: number) => onChange(selected.filter(s => s.id !== id));
+
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+      <div style={{ position: 'relative' }}>
+        <input
+          type="text"
+          value={query}
+          onChange={e => setQuery(e.target.value)}
+          placeholder="Search by name or email…"
+          style={selectStyle}
+        />
+        {(results.length > 0 || loading) && (
+          <div
+            style={{
+              position:     'absolute',
+              top:          '100%',
+              left:         0,
+              right:        0,
+              marginTop:    4,
+              background:   '#FFFFFF',
+              border:       '1px solid #E5E7EB',
+              borderRadius: 7,
+              boxShadow:    '0 4px 16px rgba(0,0,0,0.08)',
+              zIndex:       10,
+              maxHeight:    200,
+              overflowY:    'auto',
+            }}
+          >
+            {loading && (
+              <div style={{ padding: '8px 12px', fontSize: 12, color: '#9CA3AF' }}>Searching…</div>
+            )}
+            {!loading && results.map(r => (
+              <button
+                key={r.id}
+                type="button"
+                onClick={() => addPick(r)}
+                style={{
+                  display: 'block', width: '100%', textAlign: 'left',
+                  padding: '8px 12px', fontSize: 12.5, color: '#0F172A',
+                  background: 'transparent', border: 'none', cursor: 'pointer',
+                }}
+              >
+                {r.name} <span style={{ color: '#9CA3AF' }}>({r.email})</span>
+              </button>
+            ))}
+          </div>
+        )}
+      </div>
+      {selected.length > 0 && (
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
+          {selected.map(s => (
+            <span
+              key={s.id}
+              style={{
+                display: 'inline-flex', alignItems: 'center', gap: 5,
+                padding: '4px 8px', borderRadius: 14, fontSize: 11.5,
+                background: '#F0F9FF', border: '1px solid #BAE6FD', color: '#0369A1',
+              }}
+            >
+              {s.name}
+              <button
+                type="button"
+                onClick={() => removePick(s.id)}
+                aria-label={`Remove ${s.name}`}
+                style={{ display: 'flex', background: 'none', border: 'none', cursor: 'pointer', color: '#0369A1', padding: 0 }}
+              >
+                <X size={11} aria-hidden />
+              </button>
+            </span>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
+function AudienceSelector({
+  mode, onModeChange,
+  product, onProductChange,
+  batch, onBatchChange,
+  individuals, onIndividualsChange,
+  batches,
+}: {
+  mode: AudienceMode;
+  onModeChange: (m: AudienceMode) => void;
+  product: AudienceProduct;
+  onProductChange: (p: AudienceProduct) => void;
+  batch: string | null;
+  onBatchChange: (b: string | null) => void;
+  individuals: IndividualPick[];
+  onIndividualsChange: (v: IndividualPick[]) => void;
+  batches: AudienceBatch[];
+}) {
+  const batchOptions = batches.filter(b => b.product === product);
+
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+      <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+        <button type="button" style={audienceModeStyles(mode === 'everyone')} onClick={() => onModeChange('everyone')}>
+          Everyone
+        </button>
+        <button type="button" style={audienceModeStyles(mode === 'batchProduct')} onClick={() => onModeChange('batchProduct')}>
+          Batch &amp; product
+        </button>
+        <button type="button" style={audienceModeStyles(mode === 'individuals')} onClick={() => onModeChange('individuals')}>
+          Specific students
+        </button>
+      </div>
+
+      {mode === 'batchProduct' && (
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10 }}>
+          <select
+            value={product}
+            onChange={e => { onProductChange(e.target.value as AudienceProduct); onBatchChange(null); }}
+            style={selectStyle}
+            aria-label="Product"
+          >
+            <option value="iba">IBA</option>
+            <option value="fbs">FBS</option>
+            <option value="fbs_detailed">FBS Detailed</option>
+          </select>
+          <select
+            value={batch ?? ''}
+            onChange={e => onBatchChange(e.target.value ? e.target.value : null)}
+            style={selectStyle}
+            aria-label="Batch"
+          >
+            <option value="">All batches</option>
+            {batchOptions.map(b => (
+              <option key={b.id} value={b.name}>{b.name}</option>
+            ))}
+          </select>
+        </div>
+      )}
+
+      {mode === 'individuals' && (
+        <IndividualPicker selected={individuals} onChange={onIndividualsChange} />
+      )}
     </div>
   );
 }
@@ -299,8 +537,9 @@ function EmailPreview({
 // ─── Main Component ───────────────────────────────────────────────────────────
 
 export default function AnnouncementsClient({
-  recipientCount,
+  recipientCount: initialRecipientCount,
   adminName,
+  batches,
 }: AnnouncementsClientProps) {
   const [subject,      setSubject]      = useState('');
   const [body,         setBody]         = useState('');
@@ -309,6 +548,47 @@ export default function AnnouncementsClient({
   const [toast,        setToast]        = useState<ToastState | null>(null);
   const toastTimerRef                   = useRef<ReturnType<typeof setTimeout> | null>(null);
   const confirmBtnRef                   = useRef<HTMLButtonElement>(null);
+
+  // ── Audience targeting ───────────────────────────────────────────────────────
+  const [audienceMode,    setAudienceMode]    = useState<AudienceMode>('everyone');
+  const [audienceProduct, setAudienceProduct] = useState<AudienceProduct>('iba');
+  const [audienceBatch,   setAudienceBatch]   = useState<string | null>(null);
+  const [individuals,     setIndividuals]     = useState<IndividualPick[]>([]);
+  const [recipientCount,  setRecipientCount]  = useState(initialRecipientCount);
+  const [countLoading,    setCountLoading]    = useState(false);
+
+  const audience: AudiencePayload = useMemo(() => (
+    audienceMode === 'everyone'       ? { mode: 'everyone' }
+    : audienceMode === 'batchProduct' ? { mode: 'batchProduct', product: audienceProduct, batch: audienceBatch }
+    : { mode: 'individuals', userIds: individuals.map(i => i.id) }
+  ), [audienceMode, audienceProduct, audienceBatch, individuals]);
+
+  // Recompute the recipient count whenever the audience selection changes.
+  // "everyone" reuses the server-provided initial count (that count can't
+  // change based on client-side selections); "individuals" is just the
+  // number of picked users; "batchProduct" needs a server round trip.
+  useEffect(() => {
+    if (audienceMode === 'everyone') {
+      setRecipientCount(initialRecipientCount);
+      return;
+    }
+    if (audienceMode === 'individuals') {
+      setRecipientCount(individuals.length);
+      return;
+    }
+    let cancelled = false;
+    setCountLoading(true);
+    const params = new URLSearchParams({ mode: 'batchProduct', product: audienceProduct });
+    if (audienceBatch) params.set('batch', audienceBatch);
+    fetch(`/api/admin/announcements?${params.toString()}`)
+      .then(res => res.json())
+      .then((data: { recipientCount?: number }) => {
+        if (!cancelled) setRecipientCount(data.recipientCount ?? 0);
+      })
+      .catch(() => { if (!cancelled) setRecipientCount(0); })
+      .finally(() => { if (!cancelled) setCountLoading(false); });
+    return () => { cancelled = true; };
+  }, [audienceMode, audienceProduct, audienceBatch, individuals, initialRecipientCount]);
 
   // Auto-focus confirm button when modal opens
   useEffect(() => {
@@ -356,7 +636,7 @@ export default function AnnouncementsClient({
       const res = await fetch('/api/admin/announcements', {
         method:  'POST',
         headers: { 'Content-Type': 'application/json' },
-        body:    JSON.stringify({ subject: subject.trim(), body: body.trim() }),
+        body:    JSON.stringify({ subject: subject.trim(), body: body.trim(), audience }),
       });
 
       const data = await res.json() as SendResult & { error?: string };
@@ -390,7 +670,7 @@ export default function AnnouncementsClient({
     } finally {
       setSending(false);
     }
-  }, [sending, subject, body, showToast]);
+  }, [sending, subject, body, audience, showToast]);
 
   // ── Keyboard: close modal on Escape ─────────────────────────────────────────
 
@@ -405,7 +685,8 @@ export default function AnnouncementsClient({
 
   // ── Derived state ────────────────────────────────────────────────────────────
 
-  const canSend = subject.trim().length > 0 && body.trim().length > 0 && !sending;
+  const audienceValid = audienceMode !== 'individuals' || individuals.length > 0;
+  const canSend = subject.trim().length > 0 && body.trim().length > 0 && !sending && audienceValid;
 
   // ── Render ───────────────────────────────────────────────────────────────────
 
@@ -538,7 +819,7 @@ export default function AnnouncementsClient({
                   <p style={{ margin: '4px 0 0', fontSize: 13, color: '#6B7280', lineHeight: 1.5 }}>
                     This will send an email to&nbsp;
                     <strong style={{ color: '#0F172A' }}>
-                      {recipientCount.toLocaleString()} active user{recipientCount === 1 ? '' : 's'}
+                      {recipientCount.toLocaleString()} user{recipientCount === 1 ? '' : 's'}
                     </strong>.
                     This action cannot be undone.
                   </p>
@@ -633,7 +914,7 @@ export default function AnnouncementsClient({
           <div>
             <h1 style={s.pageTitle}>Announcements</h1>
             <p style={s.pageSubtitle}>
-              Compose and broadcast a message to all active LexiCore users.
+              Compose and broadcast a message to everyone, a batch, or specific students.
             </p>
           </div>
         </motion.div>
@@ -723,9 +1004,32 @@ export default function AnnouncementsClient({
               </div>
             </div>
 
+            {/* Audience */}
+            <div style={s.fieldGroup}>
+              <div style={s.fieldLabelRow}>
+                <label style={s.label}>Send to</label>
+              </div>
+              <AudienceSelector
+                mode={audienceMode}
+                onModeChange={setAudienceMode}
+                product={audienceProduct}
+                onProductChange={setAudienceProduct}
+                batch={audienceBatch}
+                onBatchChange={setAudienceBatch}
+                individuals={individuals}
+                onIndividualsChange={setIndividuals}
+                batches={batches}
+              />
+              {audienceMode === 'individuals' && individuals.length === 0 && (
+                <p style={{ margin: 0, fontSize: 11.5, color: '#9CA3AF' }}>
+                  Search and add at least one student.
+                </p>
+              )}
+            </div>
+
             {/* Recipients + Send button */}
             <div style={s.footer}>
-              <RecipientBadge count={recipientCount} />
+              <RecipientBadge count={recipientCount} loading={countLoading} />
 
               <motion.button
                 onClick={() => canSend && setModalOpen(true)}

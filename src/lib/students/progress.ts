@@ -6,16 +6,18 @@
 import { db } from '@/lib/db';
 import {
   users, userAccess, classSessions, classAttendance,
-  testAttempts, tests, vocabUserProgress, vocabQuizAnswers,
-  vocabQuizSessions, vocabUserWordRecords,
+  testAttempts, tests, vocabUserProgress,
 } from '@/lib/db/schema';
-import { and, eq, inArray, isNull, or, lte, desc, count } from 'drizzle-orm';
+import { and, eq, inArray, isNull, or, lte, desc } from 'drizzle-orm';
 import { getTestResults } from '@/lib/tests/service';
+import { getLexicoreBreakdown } from './lexicore-breakdown';
+import { getStudentMetricsForUser } from './student-metrics';
+import { computeAtRiskFlag } from './at-risk-pure';
 import type {
   BatchListResponse, BatchOption, BatchSummaryResponse, StudentSummary,
   StudentSummaryLastTest, StudentDetailResponse, StudentProfile,
   StudentOverview, StudentTestResult, WeakSection, AttendanceBreakdown,
-  AttendanceBySubject, AttendanceSession, LexicoreBreakdown,
+  AttendanceBySubject, AttendanceSession,
 } from './progress-types';
 
 function round2(n: number): number {
@@ -192,6 +194,7 @@ export async function getStudentDetail(userId: number): Promise<StudentDetailRes
     role: user.role,
     status: user.status,
     joinedAt: user.createdAt.toISOString(),
+    whatsapp: user.whatsapp,
   };
 
   // ── Tests (newest first) ──
@@ -325,46 +328,11 @@ export async function getStudentDetail(userId: number): Promise<StudentDetailRes
 
   const attendance: AttendanceBreakdown = { overallPercent, attended, total, bySubject, recent };
 
-  // ── LexiCore ──
-  const progress = await db.select().from(vocabUserProgress)
-    .where(eq(vocabUserProgress.userId, userId)).get();
-
-  const quizAnswers = await db.select().from(vocabQuizAnswers)
-    .where(eq(vocabQuizAnswers.userId, userId));
-  const quizPoints = quizAnswers.reduce((sum, a) => sum + a.pointsEarned, 0);
-  const quizCorrect = quizAnswers.filter(a => a.isCorrect).length;
-  const quizAccuracy = quizAnswers.length > 0
-    ? round2((quizCorrect / quizAnswers.length) * 100)
-    : null;
-
-  const [quizSessionsRow] = await db.select({ total: count() }).from(vocabQuizSessions)
-    .where(and(eq(vocabQuizSessions.userId, userId), eq(vocabQuizSessions.status, 'complete')));
-  const quizzesCompleted = quizSessionsRow?.total ?? 0;
-
-  const [wordsMasteredRow] = await db.select({ total: count() }).from(vocabUserWordRecords)
-    .where(and(eq(vocabUserWordRecords.userId, userId), eq(vocabUserWordRecords.masteryLevel, 'mastered')));
-  const wordsMastered = wordsMasteredRow?.total ?? 0;
-
-  const [wordsSeenRow] = await db.select({ total: count() }).from(vocabUserWordRecords)
-    .where(eq(vocabUserWordRecords.userId, userId));
-  const wordsSeen = wordsSeenRow?.total ?? 0;
-
-  const totalPoints = progress?.totalPoints ?? 0;
-  const wordPoints = Math.max(0, totalPoints - quizPoints);
-
-  const lexicore: LexicoreBreakdown = {
-    totalPoints,
-    quizPoints,
-    wordPoints,
-    quizzesCompleted,
-    quizAccuracy,
-    wordsMastered,
-    wordsSeen,
-    streakDays: progress?.streakDays ?? 0,
-    longestStreak: progress?.longestStreak ?? 0,
-    weeklyPoints: progress?.weeklyPoints ?? 0,
-    hasProgress: !!progress,
-  };
+  // ── LexiCore + progress metrics (single shared call — see student-metrics.ts) ──
+  const fullMetrics = await getStudentMetricsForUser(userId);
+  const lexicore = fullMetrics?.lexicore ?? await getLexicoreBreakdown(userId);
+  const metrics = fullMetrics?.testMetrics ?? null;
+  const atRisk = metrics ? computeAtRiskFlag(metrics) : null;
 
   // ── Overview KPI strip ──
   const avgTestPercentage = testResults.length > 0
@@ -381,10 +349,10 @@ export async function getStudentDetail(userId: number): Promise<StudentDetailRes
     testsTaken: testResults.length,
     avgTestPercentage,
     bestRank,
-    lexicorePoints: totalPoints,
-    wordsMastered,
-    streakDays: progress?.streakDays ?? 0,
+    lexicorePoints: lexicore.totalPoints,
+    wordsMastered: lexicore.wordsMastered,
+    streakDays: lexicore.streakDays,
   };
 
-  return { profile, overview, tests: testResults, weakSections, attendance, lexicore };
+  return { profile, overview, tests: testResults, weakSections, attendance, lexicore, metrics, atRisk };
 }

@@ -5,7 +5,7 @@
  */
 
 import { NextRequest } from 'next/server';
-import { and, eq } from 'drizzle-orm';
+import { and, eq, inArray } from 'drizzle-orm';
 import { db } from '@/lib/db';
 import {
   classAttendance,
@@ -16,6 +16,8 @@ import {
 } from '@/lib/db/schema';
 import { safeApiHandler, ApiException } from '@/lib/api-utils';
 import { requireStaff } from '@/lib/tests/route-helpers';
+import { ONLINE_ATTENDANCE_CAP, countOnlineAttendance } from '@/lib/lms/attendance-cap';
+import { recordAudit } from '@/lib/audit-log';
 
 export async function GET(
   _req: NextRequest,
@@ -127,13 +129,13 @@ export async function PUT(
   { params }: { params: Promise<{ id: string }> },
 ) {
   return safeApiHandler(async () => {
-    await requireStaff();
+    const actor = await requireStaff();
     const { id } = await params;
     const sessionId = parseInt(id, 10);
     if (isNaN(sessionId)) throw new ApiException('Invalid id', 400);
 
     const session = await db
-      .select({ id: classSessions.id })
+      .select({ id: classSessions.id, product: classSessions.product })
       .from(classSessions)
       .where(eq(classSessions.id, sessionId))
       .get();
@@ -142,14 +144,58 @@ export async function PUT(
     const records = validateRecords(await req.json());
     const now = new Date();
 
+    // Online cap (rec: 8 per student per course) — a hard block for the
+    // attendance taker. Only checked for records that would newly BECOME
+    // online here; a row already online for this exact session is not new
+    // usage, so re-saving it must never be blocked by its own count.
+    const onlineCandidates = records.filter((r) => r.present && r.mode === 'online');
+    if (onlineCandidates.length > 0) {
+      const existingOnlineRows = await db
+        .select({ userId: classAttendance.userId })
+        .from(classAttendance)
+        .where(and(
+          eq(classAttendance.sessionId, sessionId),
+          inArray(classAttendance.userId, onlineCandidates.map((r) => r.userId)),
+          eq(classAttendance.mode, 'online'),
+        ));
+      const alreadyOnline = new Set(existingOnlineRows.map((r) => r.userId));
+      const newOnline = onlineCandidates.filter((r) => !alreadyOnline.has(r.userId));
+
+      const blocked: number[] = [];
+      for (const r of newOnline) {
+        const count = await countOnlineAttendance(db, r.userId, session.product);
+        if (count >= ONLINE_ATTENDANCE_CAP) blocked.push(r.userId);
+      }
+      if (blocked.length > 0) {
+        throw new ApiException(
+          `Online attendance cap (${ONLINE_ATTENDANCE_CAP}) reached for ${blocked.length} student(s) — mark offline or absent instead.`,
+          409,
+          'ONLINE_CAP_REACHED',
+        );
+      }
+    }
+
+    // Snapshot before mutating, so the audit row can show what actually changed.
+    // "Who marked this student absent, and when" is the question this answers.
+    const rosterSnapshot = () => db
+      .select({
+        userId: classAttendance.userId,
+        mode:   classAttendance.mode,
+        source: classAttendance.source,
+      })
+      .from(classAttendance)
+      .where(eq(classAttendance.sessionId, sessionId));
+
+    const before = await rosterSnapshot().catch(() => null);
+
     for (const rec of records) {
       if (rec.present) {
         await db
           .insert(classAttendance)
-          .values({ sessionId, userId: rec.userId, joinedAt: now, mode: rec.mode })
+          .values({ sessionId, userId: rec.userId, joinedAt: now, mode: rec.mode, source: 'manual' })
           .onConflictDoUpdate({
             target: [classAttendance.sessionId, classAttendance.userId],
-            set: { mode: rec.mode },
+            set: { mode: rec.mode, source: 'manual' },
           });
       } else {
         await db
@@ -161,6 +207,20 @@ export async function PUT(
             ),
           );
       }
+    }
+
+    // Fire-and-forget: a logging failure must never fail the attendance save.
+    if (before) {
+      rosterSnapshot()
+        .then((after) => recordAudit({
+          actorUserId: actor.id,
+          action:      'attendance.update',
+          entityType:  'class_session',
+          entityId:    sessionId,
+          before,
+          after,
+        }))
+        .catch(() => {});
     }
 
     return { success: true };

@@ -14,6 +14,7 @@ import { safeApiHandler, ApiException } from '@/lib/api-utils';
 import { requireUser } from '@/lib/tests/route-helpers';
 import { scoreAttemptById } from '@/lib/tests/service';
 import { isAdminRole } from '@/lib/auth/roles';
+import { recordAudit } from '@/lib/audit-log';
 
 async function requireAdmin() {
   const user = await requireUser();
@@ -58,7 +59,7 @@ export async function PATCH(
   { params }: { params: Promise<{ id: string }> },
 ) {
   return safeApiHandler(async () => {
-    await requireAdmin();
+    const admin = await requireAdmin();
     const id = parseInt((await params).id, 10);
 
     const parsed = bodySchema.safeParse(await req.json());
@@ -99,6 +100,15 @@ export async function PATCH(
         sectionScores: JSON.stringify(score.sections),
       }).where(eq(testAttempts.id, attempt.id));
     }
+
+    recordAudit({
+      actorUserId: admin.id,
+      action:      'marks.edit',
+      entityType:  'test',
+      entityId:    id,
+      before:      null,
+      after:       { keys: parsed.data.keys, rescoredAttempts: submitted.length },
+    }).catch(() => {});
 
     return { updated, rescored: submitted.length };
   });

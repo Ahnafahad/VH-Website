@@ -53,6 +53,7 @@ export async function GET() {
             opensAt: w.opensAt.getTime(),
             closesAt: w.closesAt.getTime(),
             durationMinutes: w.durationMinutes,
+            classSessionId: w.classSessionId,
             status: w.status,
             state: effectiveWindowState(w, now),
           })),

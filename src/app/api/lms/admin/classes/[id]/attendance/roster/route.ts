@@ -13,6 +13,7 @@ import { classAttendance, classSessions, userAccess, users, vocabUserProgress } 
 import { safeApiHandler, ApiException } from '@/lib/api-utils';
 import { requireStaff } from '@/lib/tests/route-helpers';
 import { computeAttendanceStats } from '@/lib/lms/attendance-stats';
+import { ONLINE_ATTENDANCE_CAP, countOnlineAttendanceBatch } from '@/lib/lms/attendance-cap';
 
 export async function GET(
   _req: NextRequest,
@@ -89,7 +90,7 @@ export async function GET(
     const pastSessionIds = pastSessions.map((s) => s.id);
 
     // ── Fetch all queries in parallel ──────────────────────────────────────────
-    const [attendanceRows, statsMap, lexPointRows, historyAttRows] = await Promise.all([
+    const [attendanceRows, statsMap, onlineCountMap, lexPointRows, historyAttRows] = await Promise.all([
       db
         .select()
         .from(classAttendance)
@@ -100,6 +101,9 @@ export async function GET(
           ),
         ),
       computeAttendanceStats(session, userIds, now),
+      // Running online-attendance count per student, for the 8-per-course cap
+      // (surfaced so the attendance taker is never surprised by the block).
+      countOnlineAttendanceBatch(db, userIds, session.product),
       // Lexical points per user
       db
         .select({ userId: vocabUserProgress.userId, totalPoints: vocabUserProgress.totalPoints })
@@ -158,16 +162,23 @@ export async function GET(
           };
         });
 
+        const onlineCount = onlineCountMap.get(s.id) ?? 0;
+
         return {
           userId: s.id,
           name: s.name,
           email: s.email,
           present: !!att,
           mode: (att?.mode ?? 'offline') as 'online' | 'offline',
+          source: (att?.source ?? null) as 'manual' | 'join' | 'pulled' | null,
           joinedAt: att?.joinedAt.getTime() ?? null,
           totalAbsences: stat.totalAbsences,
           absencesLast7Days: stat.absencesLast7Days,
           lexicalPoints: lexPointsMap.get(s.id) ?? 0,
+          // 8-per-course online cap (rec: existing rows count) — surfaced so
+          // the attendance taker never hits the block as a surprise.
+          onlineCount,
+          onlineCapped: onlineCount >= ONLINE_ATTENDANCE_CAP,
           history,
         };
       })

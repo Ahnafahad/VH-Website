@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { Settings } from 'lucide-react';
+import { Settings, Gauge, CalendarCheck } from 'lucide-react';
 import { useReducedMotion, motion, Variants } from 'motion/react';
 import type { DashboardData } from '@/lib/lms/dashboard-data';
 import NextClassTile from './NextClassTile';
@@ -83,8 +83,28 @@ export default function DashboardScreen({ data, userName, studentId }: Props) {
         {/* pt-24 sm:pt-28 — clears fixed floating nav */}
         <div className="pt-0 sm:pt-4" />
 
-        {/* Settings link — small, top-right */}
-        <div className="flex justify-end mb-2">
+        {/* Settings + Progress links — small, top-right */}
+        <div className="flex justify-end items-center gap-1 mb-2">
+          {hasAccess && (
+            <Link
+              href="/dashboard/attendance"
+              aria-label="My Attendance"
+              className="inline-flex items-center justify-center w-9 h-9 rounded-full transition-colors"
+              style={{ color: 'rgba(250,245,239,0.64)' }}
+            >
+              <CalendarCheck className="w-5 h-5" strokeWidth={1.5} />
+            </Link>
+          )}
+          {hasAccess && (
+            <Link
+              href="/dashboard/progress"
+              aria-label="My Progress"
+              className="inline-flex items-center justify-center w-9 h-9 rounded-full transition-colors"
+              style={{ color: 'rgba(250,245,239,0.64)' }}
+            >
+              <Gauge className="w-5 h-5" strokeWidth={1.5} />
+            </Link>
+          )}
           <Link
             href="/settings"
             aria-label="Settings"

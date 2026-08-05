@@ -26,6 +26,7 @@ import {
   ClipboardList,
   Clock,
   Edit2,
+  Eye,
   Info,
   Loader2,
   Plus,
@@ -38,10 +39,11 @@ import {
 } from 'lucide-react';
 import { BUCKET_LABELS, type TestBucket, type AttemptStatus, type TestMode } from '@/lib/tests/types';
 import { ConfirmDialog } from '../lms/lms-shared';
+import TestAnalytics from './TestAnalytics';
 
 // ─── Design tokens (light admin palette, matching existing admin pages) ────────
 
-const C = {
+export const C = {
   bg:         '#FFFFFF',
   surface:    '#FAFAFA',
   border:     '#E5E7EB',
@@ -67,7 +69,7 @@ const C = {
   goldBg:     'rgba(180,83,9,0.08)',
 } as const;
 
-const SANS = 'system-ui, -apple-system, sans-serif';
+export const SANS = 'system-ui, -apple-system, sans-serif';
 
 // ─── API response types ────────────────────────────────────────────────────────
 
@@ -77,6 +79,7 @@ interface AdminWindow {
   opensAt: number;
   closesAt: number;
   durationMinutes: number | null;
+  classSessionId: number | null;
   status: 'scheduled' | 'open' | 'closed';
   state: 'upcoming' | 'open' | 'closed';
 }
@@ -110,6 +113,13 @@ interface AdminAttempt {
   totalCorrect: number | null;
   totalWrong: number | null;
   totalUnattempted: number | null;
+}
+
+/** Minimal shape for the class-session picker on a window (rec #5 test<->class link). */
+interface ClassSessionOption {
+  id: number;
+  title: string;
+  scheduledAt: number;
 }
 
 interface AnswerKeyQuestion {
@@ -197,7 +207,7 @@ function BucketBadge({ bucket }: { bucket: TestBucket }) {
   );
 }
 
-function Btn({
+export function Btn({
   children, onClick, disabled, variant = 'primary', size = 'md', danger,
 }: {
   children: React.ReactNode;
@@ -244,7 +254,7 @@ function Btn({
   );
 }
 
-function Spinner({ size = 16 }: { size?: number }) {
+export function Spinner({ size = 16 }: { size?: number }) {
   return (
     <>
       <Loader2 size={size} style={{ animation: 'spin 1s linear infinite' }} />
@@ -253,7 +263,7 @@ function Spinner({ size = 16 }: { size?: number }) {
   );
 }
 
-function SectionTitle({ children }: { children: React.ReactNode }) {
+export function SectionTitle({ children }: { children: React.ReactNode }) {
   return (
     <h3 style={{
       margin: 0, fontSize: 12, fontWeight: 700, color: C.textMuted,
@@ -483,10 +493,11 @@ interface WindowFormState {
   opensAt: string;
   closesAt: string;
   durationMinutes: string;
+  classSessionId: string; // '' = unlinked
 }
 
 function blankForm(): WindowFormState {
-  return { mode: 'online', opensAt: '', closesAt: '', durationMinutes: '' };
+  return { mode: 'online', opensAt: '', closesAt: '', durationMinutes: '', classSessionId: '' };
 }
 
 function WindowsManager({
@@ -502,6 +513,24 @@ function WindowsManager({
   const [saving, setSaving] = useState(false);
   const [deletingId, setDeletingId] = useState<number | null>(null);
   const [confirmDelete, setConfirmDelete] = useState<number | null>(null);
+  const [classSessions, setClassSessions] = useState<ClassSessionOption[]>([]);
+
+  // Loaded once per open test — used by the "Class session" picker so an
+  // admin can set the explicit test<->class link (rec #5).
+  useEffect(() => {
+    let cancelled = false;
+    (async () => {
+      try {
+        const res = await fetch('/api/lms/admin/classes');
+        if (!res.ok) return;
+        const rows = await res.json() as { id: number; title: string; scheduledAt: number }[];
+        if (!cancelled) setClassSessions(rows.map(r => ({ id: r.id, title: r.title, scheduledAt: r.scheduledAt })));
+      } catch {
+        // Non-critical — the picker just stays empty; opensAt/closesAt/mode still work.
+      }
+    })();
+    return () => { cancelled = true; };
+  }, []);
 
   function startCreate() {
     setEditingId(null);
@@ -517,6 +546,7 @@ function WindowsManager({
       opensAt: msToLocal(w.opensAt),
       closesAt: msToLocal(w.closesAt),
       durationMinutes: w.durationMinutes != null ? String(w.durationMinutes) : '',
+      classSessionId: w.classSessionId != null ? String(w.classSessionId) : '',
     });
   }
 
@@ -546,6 +576,7 @@ function WindowsManager({
     const body: Record<string, unknown> = {
       opensAt: opensMs,
       closesAt: closesMs,
+      classSessionId: form.classSessionId ? parseInt(form.classSessionId, 10) : null,
       ...(form.mode === 'online' ? { durationMinutes: parseInt(form.durationMinutes, 10) } : {}),
     };
 
@@ -665,6 +696,11 @@ function WindowsManager({
                   {fmtDate(w.opensAt)} → {fmtDate(w.closesAt)}
                 </span>
               </div>
+              {w.classSessionId != null && (
+                <p style={{ margin: '6px 0 0', fontSize: 11, color: C.infoText, fontFamily: SANS }}>
+                  Linked class: {classSessions.find(c => c.id === w.classSessionId)?.title ?? `#${w.classSessionId}`}
+                </p>
+              )}
               <div style={{ display: 'flex', gap: 6, marginTop: 8, flexWrap: 'wrap' }}>
                 {w.state !== 'open' && w.status !== 'closed' && (
                   <Btn size="sm" variant="outline" onClick={() => patchStatus(w.id, 'open')} disabled={saving}>
@@ -690,7 +726,7 @@ function WindowsManager({
               {/* Inline edit form */}
               {editingId === w.id && (
                 <form onSubmit={submitForm} style={{ marginTop: 12 }}>
-                  <WindowFormFields form={form} setForm={setForm} inputStyle={inputStyle} isEdit />
+                  <WindowFormFields form={form} setForm={setForm} inputStyle={inputStyle} isEdit classSessions={classSessions} />
                   <div style={{ display: 'flex', gap: 8, marginTop: 10 }}>
                     <Btn size="sm" onClick={() => {}} disabled={saving}>
                       {saving ? <Spinner size={12} /> : null} Save
@@ -710,7 +746,7 @@ function WindowsManager({
           background: C.surface, border: `1px solid ${C.border}`, borderRadius: 8, padding: 14,
         }}>
           <p style={{ margin: '0 0 12px', fontSize: 13, fontWeight: 600, color: C.text, fontFamily: SANS }}>New Window</p>
-          <WindowFormFields form={form} setForm={setForm} inputStyle={inputStyle} isEdit={false} />
+          <WindowFormFields form={form} setForm={setForm} inputStyle={inputStyle} isEdit={false} classSessions={classSessions} />
           <div style={{ display: 'flex', gap: 8, marginTop: 12 }}>
             <Btn size="sm" onClick={() => {}} disabled={saving}>
               {saving ? <Spinner size={12} /> : null} Create Window
@@ -745,12 +781,13 @@ function WindowsManager({
 }
 
 function WindowFormFields({
-  form, setForm, inputStyle, isEdit,
+  form, setForm, inputStyle, isEdit, classSessions,
 }: {
   form: WindowFormState;
   setForm: React.Dispatch<React.SetStateAction<WindowFormState>>;
   inputStyle: React.CSSProperties;
   isEdit: boolean;
+  classSessions: ClassSessionOption[];
 }) {
   return (
     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: 10 }}>
@@ -790,6 +827,21 @@ function WindowFormFields({
             style={inputStyle} />
         </div>
       )}
+      <div>
+        <label style={{ display: 'block', fontSize: 11, fontWeight: 600, color: C.textSec, fontFamily: SANS, marginBottom: 4 }}>
+          Class session (optional)
+        </label>
+        <select
+          value={form.classSessionId}
+          onChange={e => setForm(prev => ({ ...prev, classSessionId: e.target.value }))}
+          style={inputStyle}
+        >
+          <option value="">Not linked (attendance falls back to date match)</option>
+          {classSessions.map(c => (
+            <option key={c.id} value={c.id}>{c.title} — {fmtDate(c.scheduledAt)}</option>
+          ))}
+        </select>
+      </div>
     </div>
   );
 }
@@ -901,6 +953,19 @@ function AttemptsTable({
                   </td>
                   <td style={{ padding: '8px 10px' }}>
                     <div style={{ display: 'flex', gap: 4, flexWrap: 'nowrap' }}>
+                      {a.status === 'submitted' && (
+                        <a
+                          href={`/admin/tests/${testId}/attempts/${a.id}`}
+                          target="_blank" rel="noopener noreferrer"
+                          style={{
+                            display: 'inline-flex', alignItems: 'center', gap: 4,
+                            fontSize: 12, fontWeight: 600, color: C.textSec,
+                            textDecoration: 'none', padding: '5px 10px',
+                          }}
+                        >
+                          <Eye size={11} /> View Result
+                        </a>
+                      )}
                       <Btn
                         size="sm" variant="ghost"
                         onClick={() => setConfirmReset(a.id)}
@@ -1139,7 +1204,7 @@ function AnswerKeyEditor({
 
 // ─── Test Row (expandable) ────────────────────────────────────────────────────
 
-type TabKey = 'settings' | 'windows' | 'attempts' | 'answerKey';
+type TabKey = 'settings' | 'windows' | 'attempts' | 'answerKey' | 'analytics';
 
 function TestRow({
   test, isAdmin, onRefresh, showToast,
@@ -1155,6 +1220,7 @@ function TestRow({
   const tabs: { key: TabKey; label: string; adminOnly?: boolean }[] = [
     { key: 'windows',   label: 'Windows'    },
     { key: 'attempts',  label: 'Attempts'   },
+    { key: 'analytics', label: 'Analytics'  },
     { key: 'settings',  label: 'Settings',  adminOnly: true },
     { key: 'answerKey', label: 'Answer Key', adminOnly: true },
   ];
@@ -1233,6 +1299,9 @@ function TestRow({
             )}
             {tab === 'attempts' && (
               <AttemptsTable testId={test.id} showToast={showToast} />
+            )}
+            {tab === 'analytics' && (
+              <TestAnalytics testId={test.id} />
             )}
             {tab === 'settings' && isAdmin && (
               <TestSettings test={test} onRefresh={onRefresh} showToast={showToast} />
