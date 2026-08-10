@@ -17,6 +17,7 @@ import {
 import type { Batch, UserProduct } from '@/lib/db/schema';
 import { and, eq, inArray, ne } from 'drizzle-orm';
 import { resultsVisible } from '@/lib/tests/windows';
+import { isTestAllowedForProducts } from '@/lib/tests/access';
 import {
   isTestBoardEligible, pickLatestTestId, rankTestBoard, rankAllTestsBoard,
   rankLexiCoreBoard, type RankedBoardEntry, type AllTestsAttempt,
@@ -76,9 +77,10 @@ export async function getLexiCoreBoard(batch: Batch): Promise<RankedBoardEntry[]
 
 // ─── Shared: cohort's visible non-diagnostic submitted attempts ──────────────
 
-async function getVisibleCohortAttempts(cohort: Map<number, string>) {
+async function getVisibleCohortAttempts(cohort: Map<number, string>, product: string) {
   const eligibleTests = (await db.select().from(tests).where(eq(tests.status, 'published')))
-    .filter(isTestBoardEligible);
+    .filter(isTestBoardEligible)
+    .filter(t => isTestAllowedForProducts(t, [product]));
   if (eligibleTests.length === 0) return { attempts: [], testById: new Map<number, typeof eligibleTests[number]>() };
 
   const testIds = eligibleTests.map(t => t.id);
@@ -118,7 +120,7 @@ export async function getLatestTestBoard(batch: Batch): Promise<LatestTestBoard>
   const cohort = await getCohort(batch);
   if (cohort.size === 0) return { entries: [], testTitle: null };
 
-  const { attempts, testById } = await getVisibleCohortAttempts(cohort);
+  const { attempts, testById } = await getVisibleCohortAttempts(cohort, batch.product);
   if (attempts.length === 0) return { entries: [], testTitle: null };
 
   const lastByTest = new Map<number, number>();
@@ -152,7 +154,7 @@ export async function getAllTestsBoard(batch: Batch): Promise<RankedBoardEntry[]
   const cohort = await getCohort(batch);
   if (cohort.size === 0) return [];
 
-  const { attempts, testById } = await getVisibleCohortAttempts(cohort);
+  const { attempts, testById } = await getVisibleCohortAttempts(cohort, batch.product);
   if (attempts.length === 0) return [];
 
   const rows: AllTestsAttempt[] = [];

@@ -288,10 +288,12 @@ export async function getTestResults(testId: number, userId: number): Promise<Te
   let ranks: { attemptId: number; totalScore: number; rank: number; percentile: number }[];
   let cohortScores: number[];
   let topFive: Array<{ name: string; score: number }> = [];
+  let cohortAttempts: typeof submitted;
 
   if (!useCohortRanking(test, submitted.length)) {
     ranks = computeRanks(submitted.map(a => ({ attemptId: a.id, totalScore: a.totalScore ?? 0 })));
     cohortScores = submitted.map(a => a.totalScore ?? 0);
+    cohortAttempts = submitted;
   } else {
     const attemptUserIds = submitted.map(a => a.userId);
     const [userRows, accessRows, viewer] = await Promise.all([
@@ -330,6 +332,7 @@ export async function getTestResults(testId: number, userId: number): Promise<Te
     })));
     ranks = cohortRanks;
     cohortScores = cohort.map(a => a.totalScore ?? 0);
+    cohortAttempts = cohort;
     topFive = cohortRanks.slice(0, 5).map(r => ({
       name: userById.get(r.userId)?.name ?? 'Student',
       score: r.totalScore,
@@ -356,14 +359,14 @@ export async function getTestResults(testId: number, userId: number): Promise<Te
     : [];
   const keyMap = new Map(keyRows.map(k => [k.id, k.correctKey]));
 
-  const attemptIds = submitted.map(a => a.id);
+  const attemptIds = cohortAttempts.map(a => a.id);
   const allAnswers = attemptIds.length
     ? await db.select().from(testAnswers).where(inArray(testAnswers.attemptId, attemptIds))
     : [];
 
   const questionAnalytics: TestResultsPayload['questionAnalytics'] = {};
   for (const qid of allQuestionIds) {
-    questionAnalytics[qid] = { correctCount: 0, wrongCount: 0, skippedCount: submitted.length };
+    questionAnalytics[qid] = { correctCount: 0, wrongCount: 0, skippedCount: cohortAttempts.length };
   }
   for (const a of allAnswers) {
     const stats = questionAnalytics[a.questionId];

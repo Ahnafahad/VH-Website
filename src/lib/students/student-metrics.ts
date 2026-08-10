@@ -8,9 +8,11 @@
  */
 
 import { db } from '@/lib/db';
-import { users, tests, testAttempts, testViolations } from '@/lib/db/schema';
-import { and, eq, inArray, count } from 'drizzle-orm';
+import { users, tests, testAttempts, testViolations, userAccess } from '@/lib/db/schema';
+import type { UserProduct } from '@/lib/db/schema';
+import { and, eq, inArray } from 'drizzle-orm';
 import { getTestResults } from '@/lib/tests/service';
+import { canAccessTest } from '@/lib/tests/access';
 import { getLexicoreBreakdown } from './lexicore-breakdown';
 import {
   computeStudentMetrics,
@@ -92,13 +94,17 @@ export async function getStudentMetricsForUser(userId: number): Promise<StudentF
         .where(inArray(testViolations.attemptId, attemptIds))
     : [];
 
-  const [availableRow] = await db.select({ total: count() }).from(tests)
+  const publishedTests = await db.select().from(tests)
     .where(and(eq(tests.status, 'published'), eq(tests.isDiagnostic, false)));
+  const userProductRows = await db.select({ product: userAccess.product }).from(userAccess)
+    .where(and(eq(userAccess.userId, userId), eq(userAccess.active, true)));
+  const userWithProducts = { ...user, products: userProductRows.map(r => r.product as UserProduct) };
+  const availableTestsCount = publishedTests.filter(t => canAccessTest(userWithProducts, t)).length;
 
   const testMetrics = computeStudentMetrics({
     attempts,
     batchSectionTotals,
-    availableTestsCount: availableRow?.total ?? 0,
+    availableTestsCount,
     violationCount: violationRows.length,
   });
 

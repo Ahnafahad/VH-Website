@@ -13,15 +13,21 @@ export function isTestStaff(user: Pick<UserWithProducts, 'role'>): boolean {
   return isStaffRole(user.role);
 }
 
-export function canAccessTest(user: UserWithProducts, test: Test): boolean {
-  if (isTestStaff(user)) return true;
-  if (test.status !== 'published') return false;
+/** Product-only half of the access rule — usable where there's a product
+ * (e.g. a leaderboard batch) but no specific user. */
+export function isTestAllowedForProducts(test: Pick<Test, 'allowedProducts'>, products: string[]): boolean {
   if (!test.allowedProducts) return true;
   try {
     const required = JSON.parse(test.allowedProducts) as string[];
     if (!Array.isArray(required) || required.length === 0) return true;
-    return required.some(p => user.products.includes(p as UserWithProducts['products'][number]));
+    return required.some(p => products.includes(p));
   } catch {
     return true; // malformed config should never lock students out silently
   }
+}
+
+export function canAccessTest(user: UserWithProducts, test: Test): boolean {
+  if (isTestStaff(user)) return true;
+  if (test.status !== 'published') return false;
+  return isTestAllowedForProducts(test, user.products);
 }
