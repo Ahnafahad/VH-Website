@@ -11,7 +11,7 @@ import {
 } from '@/lib/db/schema';
 import { and, eq, inArray } from 'drizzle-orm';
 import { effectiveWindowState, resultsVisible, type EffectiveWindowState } from './windows';
-import { scoreAttempt, computeRanks, rankCohort, useCohortRanking, type AttemptScore } from './scoring';
+import { scoreAttempt, computeRanks, rankCohort, shouldRankByCohort, type AttemptScore } from './scoring';
 import { parseChosenSections } from './diagnostic';
 import { getUserById } from '@/lib/db-access-control';
 
@@ -290,7 +290,7 @@ export async function getTestResults(testId: number, userId: number): Promise<Te
   let topFive: Array<{ name: string; score: number }> = [];
   let cohortAttempts: typeof submitted;
 
-  if (!useCohortRanking(test, submitted.length)) {
+  if (!shouldRankByCohort(test, submitted.length)) {
     ranks = computeRanks(submitted.map(a => ({ attemptId: a.id, totalScore: a.totalScore ?? 0 })));
     cohortScores = submitted.map(a => a.totalScore ?? 0);
     cohortAttempts = submitted;

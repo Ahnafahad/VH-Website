@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { rankCohort, useCohortRanking, type CohortRankEntry } from '../scoring';
+import { rankCohort, shouldRankByCohort, type CohortRankEntry } from '../scoring';
 
 function entry(overrides: Partial<CohortRankEntry> & { attemptId: number }): CohortRankEntry {
   return {
@@ -64,17 +64,17 @@ describe('rankCohort', () => {
   });
 });
 
-describe('useCohortRanking', () => {
+describe('shouldRankByCohort', () => {
   it('is false for FBS diagnostics regardless of submission count', () => {
-    expect(useCohortRanking({ isDiagnostic: true }, 0)).toBe(false);
-    expect(useCohortRanking({ isDiagnostic: true }, 40)).toBe(false);
+    expect(shouldRankByCohort({ isDiagnostic: true }, 0)).toBe(false);
+    expect(shouldRankByCohort({ isDiagnostic: true }, 40)).toBe(false);
   });
 
   it('is false for a non-diagnostic test with no submissions (nothing to scope)', () => {
-    expect(useCohortRanking({ isDiagnostic: false }, 0)).toBe(false);
+    expect(shouldRankByCohort({ isDiagnostic: false }, 0)).toBe(false);
   });
 
   it('is true for a non-diagnostic test with submissions', () => {
-    expect(useCohortRanking({ isDiagnostic: false }, 1)).toBe(true);
+    expect(shouldRankByCohort({ isDiagnostic: false }, 1)).toBe(true);
   });
 });

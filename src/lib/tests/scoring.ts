@@ -153,7 +153,7 @@ export interface CohortRankedEntry {
 /** True when cohort ranking (batch/product scoped, tie-broken) should be used
  * instead of the plain test-wide computeRanks(). False for diagnostics and for
  * tests with no submissions at all (nothing to scope). */
-export function useCohortRanking(test: { isDiagnostic: boolean }, submittedCount: number): boolean {
+export function shouldRankByCohort(test: { isDiagnostic: boolean }, submittedCount: number): boolean {
   return !test.isDiagnostic && submittedCount > 0;
 }
 
