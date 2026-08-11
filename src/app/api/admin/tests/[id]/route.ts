@@ -1,7 +1,8 @@
 /**
  * PATCH /api/admin/tests/[id]
- * Admin-only test settings: status (draft/published/archived), allowedProducts,
- * force-publish/unpublish results.
+ * Staff-only (admin/super_admin/instructor) test settings: status
+ * (draft/published/archived), allowedProducts, force-publish/unpublish
+ * results.
  * Body: { status?, allowedProducts?: string[] | null, publishResults?: boolean }
  */
 
@@ -12,7 +13,7 @@ import { db } from '@/lib/db';
 import { tests } from '@/lib/db/schema';
 import { safeApiHandler, ApiException } from '@/lib/api-utils';
 import { requireUser } from '@/lib/tests/route-helpers';
-import { isAdminRole } from '@/lib/auth/roles';
+import { isStaffRole } from '@/lib/auth/roles';
 
 const bodySchema = z.object({
   status: z.enum(['draft', 'published', 'archived']).optional(),
@@ -27,8 +28,8 @@ export async function PATCH(
 ) {
   return safeApiHandler(async () => {
     const user = await requireUser();
-    if (!isAdminRole(user.role)) {
-      throw new ApiException('Admin access required', 403);
+    if (!isStaffRole(user.role)) {
+      throw new ApiException('Staff access required', 403);
     }
 
     const id = parseInt((await params).id, 10);
