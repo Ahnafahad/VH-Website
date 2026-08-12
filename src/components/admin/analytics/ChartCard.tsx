@@ -1,6 +1,10 @@
 'use client';
 
 import React from 'react';
+import {
+  BORDER, INK_SOFT, MUTED, R_LG, R_MD, SHADOW_SM, SURFACE, SURFACE_ALT,
+  T_BASE, T_MD, T_SM,
+} from '../lms/lms-shared';
 
 interface ChartCardProps {
   title:      string;
@@ -22,9 +26,10 @@ export default function ChartCard({
   return (
     <div
       style={{
-        background:   '#FFFFFF',
-        border:       '1px solid #E5E7EB',
-        borderRadius: '10px',
+        background:   SURFACE,
+        border:       `1px solid ${BORDER}`,
+        borderRadius: R_LG,
+        boxShadow:    SHADOW_SM,
         padding:      '20px',
         display:      'flex',
         flexDirection:'column',
@@ -32,8 +37,8 @@ export default function ChartCard({
       }}
     >
       <div>
-        <div style={{ fontSize: '14px', fontWeight: 600, color: '#111827' }}>{title}</div>
-        {sub && <div style={{ fontSize: '12px', color: '#9CA3AF', marginTop: '2px' }}>{sub}</div>}
+        <div style={{ fontSize: T_MD, fontWeight: 600, color: INK_SOFT }}>{title}</div>
+        {sub && <div style={{ fontSize: T_SM, color: MUTED, marginTop: '2px' }}>{sub}</div>}
       </div>
       {empty ? (
         <div
@@ -42,13 +47,13 @@ export default function ChartCard({
             display:        'flex',
             alignItems:     'center',
             justifyContent: 'center',
-            color:          '#9CA3AF',
-            fontSize:       '13px',
+            color:          MUTED,
+            fontSize:       T_BASE,
             textAlign:      'center',
             padding:        '16px',
-            background:     '#FAFAFA',
-            borderRadius:   '8px',
-            border:         '1px dashed #E5E7EB',
+            background:     SURFACE_ALT,
+            borderRadius:   R_MD,
+            border:         `1px dashed ${BORDER}`,
           }}
         >
           {emptyNote ?? 'No data available yet.'}

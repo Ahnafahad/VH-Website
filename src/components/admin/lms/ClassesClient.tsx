@@ -14,7 +14,7 @@ import {
   fmtDhaka, dhakaLocalToISO, epochToDhakaLocal,
   SPIN_CSS, RED, SLATE, BORDER, MUTED, BG, rowV,
   SURFACE, SURFACE_ALT, OK, OK_BG, R_SM, R_MD, R_LG, R_PILL,
-  SHADOW_SM, RED_HOVER, INK_SOFT,
+  SHADOW_SM, RED_HOVER, INK_SOFT, T_XS, T_SM, T_BASE,
   titleCase, extractPdfHeading,
   CourseSelect, SubjectSelect, BatchSelect, getLastUsedBatch, setLastUsedBatch,
 } from './lms-shared';
@@ -106,7 +106,7 @@ function SubjectField({ value, onChange }: { value: string; onChange: (v: Subjec
           padding: '8px 12px', borderRadius: R_MD,
           border: `1.5px dashed ${MUTED}`, background: BG,
         }}>
-          <span style={{ fontSize: 13, color: MUTED }}>
+          <span style={{ fontSize: T_BASE, color: MUTED }}>
             Not set{value ? ` (raw value: "${value}")` : ''}
           </span>
           <button
@@ -114,7 +114,7 @@ function SubjectField({ value, onChange }: { value: string; onChange: (v: Subjec
             className="lms-cc-text lms-cc-focus"
             onClick={() => onChange(SUBJECT_TAXONOMY[0].key)}
             style={{
-              fontSize: 12, fontWeight: 600, color: RED,
+              fontSize: T_SM, fontWeight: 600, color: RED,
               background: 'none', border: 'none', cursor: 'pointer', padding: 0,
             }}
           >
@@ -322,7 +322,7 @@ export function SessionModal({
                 className="lms-cc-bordered lms-cc-focus"
                 onClick={() => setTitleManuallyEdited(false)}
                 style={{
-                  padding: '8px 12px', borderRadius: R_MD, fontSize: 12, cursor: 'pointer',
+                  padding: '8px 12px', borderRadius: R_MD, fontSize: T_SM, cursor: 'pointer',
                   border: `1px solid ${BORDER}`, background: SURFACE, color: INK_SOFT,
                   fontWeight: 500,
                 }}
@@ -337,7 +337,7 @@ export function SessionModal({
                 onClick={() => pdfInputRef.current?.click()}
                 disabled={extracting}
                 style={{
-                  padding: '8px 12px', borderRadius: R_MD, fontSize: 12, cursor: extracting ? 'not-allowed' : 'pointer',
+                  padding: '8px 12px', borderRadius: R_MD, fontSize: T_SM, cursor: extracting ? 'not-allowed' : 'pointer',
                   border: `1px solid ${BORDER}`, background: SURFACE, color: INK_SOFT,
                   fontWeight: 500, opacity: extracting ? 0.6 : 1,
                 }}
@@ -394,13 +394,13 @@ export function SessionModal({
             onClick={() => setShowMore((value) => !value)}
             aria-expanded={showMore}
             className="lms-cc-text lms-cc-focus"
-            style={{ minHeight: 44, alignSelf: 'flex-start', display: 'inline-flex', alignItems: 'center', gap: 6, padding: '8px 0', border: 0, background: 'transparent', color: RED, fontSize: 13, fontWeight: 600, cursor: 'pointer' }}
+            style={{ minHeight: 44, alignSelf: 'flex-start', display: 'inline-flex', alignItems: 'center', gap: 6, padding: '8px 0', border: 0, background: 'transparent', color: RED, fontSize: T_BASE, fontWeight: 600, cursor: 'pointer' }}
           >
             <ChevronDown size={16} aria-hidden style={{ transform: showMore ? 'rotate(180deg)' : 'none', transition: 'transform 160ms ease' }} />
             {showMore ? 'Hide optional details' : 'Add status, description, or Meet link'}
           </button>
         )}
-        {error && <p style={{ fontSize: 12, color: RED, margin: 0 }}>{error}</p>}
+        {error && <p style={{ fontSize: T_SM, color: RED, margin: 0 }}>{error}</p>}
         <FormActions>
           <GhostBtn onClick={() => void guardedClose()} small>Cancel</GhostBtn>
           <PrimaryBtn onClick={handleSave} loading={saving} small>{editing ? 'Save Changes' : 'Create Session'}</PrimaryBtn>
@@ -560,7 +560,7 @@ function ScheduleModal({
           <BatchSelect value={form.batch as BatchKey | null} onChange={v => f('batch', v)} />
         </div>
         <Toggle checked={form.active} onChange={v => f('active', v)} label="Active (generates sessions)" />
-        {error && <p style={{ fontSize: 12, color: RED, margin: 0 }}>{error}</p>}
+        {error && <p style={{ fontSize: T_SM, color: RED, margin: 0 }}>{error}</p>}
         <FormActions>
           <GhostBtn onClick={() => void guardedClose()} small>Cancel</GhostBtn>
           <PrimaryBtn onClick={handleSave} loading={saving} small>{editing ? 'Save Changes' : 'Create Rule'}</PrimaryBtn>
@@ -880,7 +880,7 @@ function CompletedClassModal({
             background: OK_BG, border: `1px solid ${OK}33`,
           }}>
             <CheckCircle size={14} style={{ color: OK, flexShrink: 0 }} aria-hidden />
-            <span style={{ fontSize: 12, color: OK, fontWeight: 500 }}>
+            <span style={{ fontSize: T_SM, color: OK, fontWeight: 500 }}>
               Step 1 of 2 — Class details. You can attach PDFs in the next step.
             </span>
           </div>
@@ -934,7 +934,7 @@ function CompletedClassModal({
             />
           </div>
 
-          {error && <p style={{ fontSize: 12, color: RED, margin: 0 }}>{error}</p>}
+          {error && <p style={{ fontSize: T_SM, color: RED, margin: 0 }}>{error}</p>}
 
           <FormActions>
             <GhostBtn onClick={() => void guardedClose()} small>Cancel</GhostBtn>
@@ -952,7 +952,7 @@ function CompletedClassModal({
             background: OK_BG, border: `1px solid ${OK}33`,
           }}>
             <CheckCircle size={14} style={{ color: OK, flexShrink: 0 }} aria-hidden />
-            <span style={{ fontSize: 12, color: OK, fontWeight: 500 }}>
+            <span style={{ fontSize: T_SM, color: OK, fontWeight: 500 }}>
               Step 2 of 2 — Class saved. Attach lecture-sheet PDFs (optional).
             </span>
           </div>
@@ -966,10 +966,10 @@ function CompletedClassModal({
             }}>
               <BookMarked size={14} style={{ color: MUTED, flexShrink: 0 }} aria-hidden />
               <div style={{ minWidth: 0 }}>
-                <p style={{ margin: 0, fontSize: 13, fontWeight: 600, color: SLATE, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                <p style={{ margin: 0, fontSize: T_BASE, fontWeight: 600, color: SLATE, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                   {createdSession.title}
                 </p>
-                <p style={{ margin: '2px 0 0', fontSize: 11, color: MUTED }}>
+                <p style={{ margin: '2px 0 0', fontSize: T_XS, color: MUTED }}>
                   {fmtDhaka(createdSession.scheduledAt)} · {createdSession.durationMinutes} min · completed
                 </p>
               </div>
@@ -994,10 +994,10 @@ function CompletedClassModal({
                   }}
                 >
                   <Upload size={22} style={{ color: MUTED }} aria-hidden />
-                  <span style={{ fontSize: 13, color: INK_SOFT, fontWeight: 500 }}>
+                  <span style={{ fontSize: T_BASE, color: INK_SOFT, fontWeight: 500 }}>
                     Click to select PDF files
                   </span>
-                  <span style={{ fontSize: 11, color: MUTED }}>
+                  <span style={{ fontSize: T_XS, color: MUTED }}>
                     PDF only · multiple files allowed
                   </span>
                 </button>
@@ -1034,7 +1034,7 @@ function CompletedClassModal({
                           className="lms-cc-focus"
                           style={{
                             flex: 1, border: 'none', outline: 'none',
-                            fontSize: 12, fontWeight: 500, color: SLATE,
+                            fontSize: T_SM, fontWeight: 500, color: SLATE,
                             background: 'transparent',
                           }}
                         />
@@ -1057,7 +1057,7 @@ function CompletedClassModal({
                           <CheckCircle size={13} style={{ color: OK, flexShrink: 0 }} aria-hidden />
                         )}
                       </div>
-                      <p style={{ margin: 0, fontSize: 11, color: MUTED }}>
+                      <p style={{ margin: 0, fontSize: T_XS, color: MUTED }}>
                         {pf.file.name} · {(pf.file.size / 1024).toFixed(0)} KB
                       </p>
                       {pf.progress > 0 && !pf.done && pf.progress !== -1 && (
@@ -1073,7 +1073,7 @@ function CompletedClassModal({
                         </div>
                       )}
                       {pf.progress === -1 && (
-                        <p style={{ margin: 0, fontSize: 11, color: RED }}>Upload failed</p>
+                        <p style={{ margin: 0, fontSize: T_XS, color: RED }}>Upload failed</p>
                       )}
                     </div>
                   ))}
@@ -1090,17 +1090,17 @@ function CompletedClassModal({
             }}>
               <CheckCircle size={18} style={{ color: OK, flexShrink: 0 }} aria-hidden />
               <div>
-                <p style={{ margin: 0, fontSize: 13, fontWeight: 600, color: OK }}>
+                <p style={{ margin: 0, fontSize: T_BASE, fontWeight: 600, color: OK }}>
                   {files.length} PDF{files.length !== 1 ? 's' : ''} uploaded successfully
                 </p>
-                <p style={{ margin: '2px 0 0', fontSize: 11, color: OK }}>
+                <p style={{ margin: '2px 0 0', fontSize: T_XS, color: OK }}>
                   Lecture sheets are now attached to this class.
                 </p>
               </div>
             </div>
           )}
 
-          {error && <p style={{ fontSize: 12, color: RED, margin: 0 }}>{error}</p>}
+          {error && <p style={{ fontSize: T_SM, color: RED, margin: 0 }}>{error}</p>}
 
           <FormActions>
             {!uploadDone ? (
@@ -1149,7 +1149,7 @@ function InstructorBadge({ name }: { name: string }) {
       alignItems:    'center',
       padding:       '2px 8px',
       borderRadius:  R_PILL,
-      fontSize:      11,
+      fontSize:      T_XS,
       fontWeight:    600,
       letterSpacing: '0.01em',
       lineHeight:    1.6,
@@ -1226,7 +1226,7 @@ function SessionsTab({ sessions, teachingUsers }: { sessions: ClassSession[]; te
               onClick={() => setStatusFilter(s)}
               className={statusFilter === s ? 'lms-cc-focus' : 'lms-cc-bordered lms-cc-focus'}
               style={{
-                padding: '8px 12px', borderRadius: R_PILL, fontSize: 12, cursor: 'pointer',
+                padding: '8px 12px', borderRadius: R_PILL, fontSize: T_SM, cursor: 'pointer',
                 fontWeight: statusFilter === s ? 600 : 400,
                 border: `1.5px solid ${statusFilter === s ? RED : BORDER}`,
                 background: statusFilter === s ? `${RED}0D` : SURFACE,
@@ -1239,7 +1239,7 @@ function SessionsTab({ sessions, teachingUsers }: { sessions: ClassSession[]; te
             onChange={e => setSubjectFilter(e.target.value)}
             className="lms-cc-bordered lms-cc-focus"
             style={{
-              padding: '8px 28px 8px 10px', borderRadius: R_PILL, fontSize: 12, cursor: 'pointer',
+              padding: '8px 28px 8px 10px', borderRadius: R_PILL, fontSize: T_SM, cursor: 'pointer',
               border: `1.5px solid ${BORDER}`, background: SURFACE, color: MUTED, outline: 'none',
             }}>
             <option value="all">All subjects</option>
@@ -1278,15 +1278,15 @@ function SessionsTab({ sessions, teachingUsers }: { sessions: ClassSession[]; te
             >
               <div style={{ flex: 1, minWidth: 0 }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 4, flexWrap: 'wrap' }}>
-                  <p style={{ margin: 0, fontSize: 13, fontWeight: 600, color: SLATE }}>{s.title}</p>
+                  <p style={{ margin: 0, fontSize: T_BASE, fontWeight: 600, color: SLATE }}>{s.title}</p>
                   <SubjectBadge subject={s.subject} />
                   <StatusBadge status={s.status} />
                   {s.instructorId != null && (
                     <InstructorBadge name={instructorNames.get(s.instructorId) ?? 'Unknown'} />
                   )}
-                  {s.batch && <span style={{ fontSize: 11, color: MUTED }}>Batch {s.batch}</span>}
+                  {s.batch && <span style={{ fontSize: T_XS, color: MUTED }}>Batch {s.batch}</span>}
                 </div>
-                <p style={{ margin: 0, fontSize: 12, color: MUTED }}>
+                <p style={{ margin: 0, fontSize: T_SM, color: MUTED }}>
                   {fmtDhaka(s.scheduledAt)} · {s.durationMinutes} min
                   {s.displayClassNumber != null ? ` · Class ${s.displayClassNumber}` : ''}
                 </p>
@@ -1441,13 +1441,13 @@ function SchedulesTab({ schedules }: { schedules: ClassSchedule[] }) {
             >
               <div style={{ flex: 1, minWidth: 0 }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 4, flexWrap: 'wrap' }}>
-                  <p style={{ margin: 0, fontSize: 13, fontWeight: 600, color: SLATE }}>{sc.titleTemplate}</p>
+                  <p style={{ margin: 0, fontSize: T_BASE, fontWeight: 600, color: SLATE }}>{sc.titleTemplate}</p>
                   <SubjectBadge subject={sc.subject} />
                   {!sc.active && (
-                    <span style={{ fontSize: 11, color: MUTED, background: SURFACE_ALT, padding: '2px 7px', borderRadius: R_PILL }}>Paused</span>
+                    <span style={{ fontSize: T_XS, color: MUTED, background: SURFACE_ALT, padding: '2px 7px', borderRadius: R_PILL }}>Paused</span>
                   )}
                 </div>
-                <p style={{ margin: 0, fontSize: 12, color: MUTED }}>
+                <p style={{ margin: 0, fontSize: T_SM, color: MUTED }}>
                   {DAYS[sc.dayOfWeek]} at {sc.timeOfDay} Dhaka · {sc.durationMinutes} min
                   {sc.batch ? ` · Batch ${sc.batch}` : ' · All batches'}
                 </p>
@@ -1506,7 +1506,7 @@ export default function ClassesClient({ initialSessions, initialSchedules, teach
               display: 'inline-flex', alignItems: 'center', gap: 5,
               padding: '8px 14px', borderRadius: R_MD, background: BG,
               border: `1px solid ${BORDER}`, color: INK_SOFT,
-              fontSize: 12, fontWeight: 500, textDecoration: 'none',
+              fontSize: T_SM, fontWeight: 500, textDecoration: 'none',
             }}>
             Today's console <ChevronRight size={12} aria-hidden />
           </a>

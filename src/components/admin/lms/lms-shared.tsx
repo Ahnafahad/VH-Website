@@ -11,61 +11,19 @@ import { X, AlertTriangle, Loader2, Check, ChevronDown } from 'lucide-react';
 import { COURSES, SUBJECTS, DOC_TYPES, BATCHES, CourseKey, SubjectKey, DocTypeKey, BatchKey } from '@/lib/naming/taxonomy';
 
 // ─── Design tokens ────────────────────────────────────────────────────────────
-// Warm-editorial palette, matching the admin shell (src/app/admin/page.tsx).
-// Existing five keep their exact names (imported by name in 7 sibling files) —
-// only their values change.
-
-export const RED    = '#760F13';
-export const SLATE  = '#1A0507';
-export const BORDER = '#E1D4CB';
-// Was #9A7060, which failed WCAG AA as body text on all three surfaces it lands
-// on (4.32 on SURFACE, 3.99 on BG, 3.72 on SURFACE_ALT — needs 4.5). Darkened
-// within the same warm-brown hue: now 5.33 / 4.91 / 4.59.
-export const MUTED  = '#8A6250';
-export const BG     = '#FAF5EF';
-
-// BORDER is a divider tone (1.45:1 on SURFACE) — fine for card edges and rules,
-// which WCAG 1.4.11 exempts, but not for the boundary of a form control, which
-// needs 3:1. Fields and the Toggle track use this instead: 3.54 on SURFACE,
-// 3.26 on BG. Don't swap it in for dividers; it reads as a heavy line there.
-export const BORDER_FIELD = '#9E8371';
-
-export const RED_HOVER   = '#9A1B20';
-export const RED_DARK    = '#5A0B0F';
-export const INK_SOFT    = '#3D1A10';
-export const SURFACE     = '#FFFFFF';
-export const SURFACE_ALT = '#F5EDE3';
-export const BEIGE       = '#D4B094';
-
-export const OK      = '#2F6B4F';
-export const OK_BG   = '#EAF2ED';
-export const WARN    = '#8A5A1A';
-export const WARN_BG = '#FAF0E2';
-export const INFO    = '#2A5A8A';
-export const INFO_BG = '#EAF0F6';
-
-export const R_SM   = 6;
-export const R_MD   = 8;
-export const R_LG   = 10;
-export const R_XL   = 14;
-export const R_PILL = 999;
-
-export const SHADOW_SM = '0 1px 2px rgba(26,5,7,0.04), 0 1px 3px rgba(26,5,7,0.03)';
-export const SHADOW_MD = '0 2px 6px rgba(26,5,7,0.07)';
-export const SHADOW_LG = '0 8px 24px rgba(26,5,7,0.12)';
-
-export const FONT_HEADING = "var(--font-heading), Georgia, serif";
-
-// Semantic stacking order. The values used to be written inline (200/201 for
-// Modal, 300/301 for ConfirmDialog, 9999 for Toast), which made "what sits on
-// top of what" a thing you had to reverse-engineer. Confirm outranks Modal
-// because it is raised *from* an open modal; Toast outranks both because it
-// reports the result of whatever the dialog just did.
-export const Z_MODAL_BACKDROP   = 200;
-export const Z_MODAL            = 201;
-export const Z_CONFIRM_BACKDROP = 300;
-export const Z_CONFIRM          = 301;
-export const Z_TOAST            = 400;
+// Sourced from tokens.ts, a plain module with no 'use client' directive.
+// Server Components (e.g. app/admin/page.tsx) must import tokens from
+// './tokens' directly, not from this file — see that file's header comment
+// for why. Re-exported here so every existing
+// `import { RED, ... } from './lms-shared'` in the ~20 client files that
+// already use these keeps working unchanged.
+import {
+  RED, SLATE, BORDER, MUTED, BG, BORDER_FIELD, RED_HOVER, RED_DARK, INK_SOFT,
+  SURFACE, SURFACE_ALT, BEIGE, OK, WARN, WARN_BG, INFO, R_SM, R_MD, R_LG, R_PILL,
+  SHADOW_LG, FONT_HEADING,
+  Z_MODAL_BACKDROP, Z_MODAL, Z_CONFIRM_BACKDROP, Z_CONFIRM, Z_TOAST,
+} from './tokens';
+export * from './tokens';
 
 // ─── PDF heading extraction ───────────────────────────────────────────────────
 
@@ -184,6 +142,9 @@ export const SPIN_CSS = `
 .lms-switch{transition:background-color .18s}
 .lms-switch:focus-visible{outline:2px solid ${RED};outline-offset:3px}
 .lms-switch-knob{transition:transform .18s}
+.lms-atrisk-badge{transition:background-color .14s,border-color .14s}
+.lms-atrisk-badge:hover{background:${WARN}29;border-color:${WARN}}
+.lms-atrisk-badge:focus-visible{outline:2px solid ${WARN};outline-offset:2px}
 /* The visual boxes stay at their desktop density; on a touch device the hit
    area alone grows to the 44px minimum, so nothing reflows on a mouse. */
 @media (pointer:coarse){
@@ -194,13 +155,17 @@ export const SPIN_CSS = `
 /* The switch track stays 20px tall; only the button around it grows, so the
    row gains height on touch without the control itself changing shape. */
 .lms-switch{min-height:44px}
+/* Deliberately NOT grown to 44px here — this badge sits inline beside a name
+   in a table row, not as a standalone control; ballooning it would dominate
+   the row. It's a secondary affordance (right-click / the row itself is the
+   primary path), so its own small tap target is acceptable. */
 }
 /* Framer-motion's side of this is handled once by MotionConfig in the admin
    layout. The loading spinner is deliberately left spinning — it reports status
    rather than decorating, and freezing it would remove the only signal that
    work is in flight. */
 @media (prefers-reduced-motion:reduce){
-.lms-field,.lms-btn,.lms-iconbtn,.lms-tab,.lms-switch,.lms-switch-knob{transition-duration:.01ms}
+.lms-field,.lms-btn,.lms-iconbtn,.lms-tab,.lms-switch,.lms-switch-knob,.lms-atrisk-badge{transition-duration:.01ms}
 }
 `;
 
@@ -286,7 +251,7 @@ export function StatusBadge({ status }: { status: string }) {
 const dialogStack: symbol[] = [];
 let savedBodyOverflow = '';
 
-function useDialogBehaviour(open: boolean, onEscape: () => void) {
+export function useDialogBehaviour(open: boolean, onEscape: () => void) {
   const ref = React.useRef<HTMLDivElement>(null);
   // Held in a ref so a new closure from the parent's re-render doesn't re-run
   // the effect and re-steal focus mid-edit.
@@ -1067,6 +1032,146 @@ export function IconBtn({
     <motion.button {...shared} onClick={onClick} disabled={disabled} whileTap={{ scale: 0.92 }}>
       <Icon size={13} aria-hidden />
     </motion.button>
+  );
+}
+
+// ─── At-risk badge + popover ───────────────────────────────────────────────────
+// Shared by /admin/students and /admin/users rosters (DECISIONS.md A4). A small
+// inline indicator next to a flagged student's name; desktop opens it via
+// right-click (onContextMenu) at cursor position, touch via tapping the badge
+// itself. Deliberately lighter than Modal/useDialogBehaviour — no focus trap,
+// no scroll lock, just outside-click + Escape to dismiss.
+
+export interface AtRiskBadgeReason {
+  code:    string;
+  message: string;
+}
+
+export interface AtRiskPopoverState {
+  x:       number;
+  y:       number;
+  name:    string;
+  reasons: AtRiskBadgeReason[];
+}
+
+/** State manager for the popover — one instance per page (not per row). */
+export function useAtRiskPopover() {
+  const [state, setState] = React.useState<AtRiskPopoverState | null>(null);
+
+  const openAt = React.useCallback((x: number, y: number, name: string, reasons: AtRiskBadgeReason[]) => {
+    setState({ x, y, name, reasons });
+  }, []);
+
+  const close = React.useCallback(() => setState(null), []);
+
+  /** Convenience for onContextMenu handlers: preventDefault + open at cursor. */
+  const openFromContextMenu = React.useCallback((e: React.MouseEvent, name: string, reasons: AtRiskBadgeReason[]) => {
+    e.preventDefault();
+    e.stopPropagation();
+    openAt(e.clientX, e.clientY, name, reasons);
+  }, [openAt]);
+
+  /** Convenience for the badge's own onClick (touch fallback): open near the badge. */
+  const openFromBadge = React.useCallback((e: React.MouseEvent, name: string, reasons: AtRiskBadgeReason[]) => {
+    e.preventDefault();
+    e.stopPropagation();
+    const rect = e.currentTarget.getBoundingClientRect();
+    openAt(rect.left, rect.bottom + 6, name, reasons);
+  }, [openAt]);
+
+  return { state, openFromContextMenu, openFromBadge, close };
+}
+
+/** Small inline indicator next to a flagged row's name. Tappable (touch fallback);
+ * the row's own right-click is the primary desktop path and does not go through this button. */
+export function AtRiskBadge({ onOpen }: { onOpen: (e: React.MouseEvent) => void }) {
+  return (
+    <button
+      type="button"
+      className="lms-atrisk-badge"
+      onClick={onOpen}
+      aria-label="At-risk student — tap for details"
+      title="At-risk"
+      style={{
+        display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+        width: 20, height: 20, borderRadius: '50%', flexShrink: 0,
+        border: `1px solid ${WARN}`, background: WARN_BG, color: WARN,
+        cursor: 'pointer', padding: 0,
+      }}
+    >
+      <AlertTriangle size={11} aria-hidden />
+    </button>
+  );
+}
+
+/** Renders nothing when state is null — mount once per page, feed it `state`/`close` from useAtRiskPopover(). */
+export function AtRiskPopover({ state, onClose }: { state: AtRiskPopoverState | null; onClose: () => void }) {
+  const panelRef = React.useRef<HTMLDivElement>(null);
+  // null = not yet measured (rough estimate below is used for the very first paint);
+  // corrected synchronously via useLayoutEffect once the panel has laid out, before the browser paints.
+  const [top, setTop] = React.useState<number | null>(null);
+
+  React.useLayoutEffect(() => {
+    if (!state || !panelRef.current) { setTop(null); return; }
+    const height = panelRef.current.getBoundingClientRect().height;
+    const maxTop = window.innerHeight - height - 12;
+    setTop(Math.max(Math.min(state.y, maxTop), 12));
+  }, [state]);
+
+  React.useEffect(() => {
+    if (!state) return;
+    // Checks DOM containment rather than relying on React's synthetic
+    // stopPropagation reaching this plain `document` listener — React delegates
+    // events at the root container, and in practice a stopPropagation() called
+    // there does not reliably stop a *separately* `document`-attached listener
+    // from also seeing the same native event, so the popover's own click/
+    // right-click was dismissing itself instead of staying open.
+    const dismiss = (e: MouseEvent) => {
+      if (panelRef.current?.contains(e.target as Node)) return;
+      onClose();
+    };
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose(); };
+    // Deferred so the same click/contextmenu that opened it doesn't immediately close it.
+    const t = setTimeout(() => {
+      document.addEventListener('click', dismiss);
+      document.addEventListener('contextmenu', dismiss);
+    }, 0);
+    document.addEventListener('keydown', onKey);
+    return () => {
+      clearTimeout(t);
+      document.removeEventListener('click', dismiss);
+      document.removeEventListener('contextmenu', dismiss);
+      document.removeEventListener('keydown', onKey);
+    };
+  }, [state, onClose]);
+
+  if (!state) return null;
+
+  const width = 280;
+  const left = Math.min(state.x, window.innerWidth - width - 12);
+
+  return (
+    <div
+      ref={panelRef}
+      role="dialog"
+      aria-label={`At-risk reasons for ${state.name}`}
+      onContextMenu={(e) => e.preventDefault()}
+      style={{
+        position: 'fixed', top: top ?? Math.max(Math.min(state.y, window.innerHeight - 160), 12), left: Math.max(left, 12), zIndex: Z_MODAL,
+        width, background: SURFACE, borderRadius: R_MD, border: `1px solid ${BORDER}`,
+        boxShadow: SHADOW_LG, padding: '12px 14px',
+      }}
+    >
+      <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 8 }}>
+        <AlertTriangle size={13} style={{ color: WARN }} aria-hidden />
+        <span style={{ fontSize: 12.5, fontWeight: 700, color: SLATE }}>{state.name} — at risk</span>
+      </div>
+      <ul style={{ margin: 0, paddingLeft: 16, display: 'flex', flexDirection: 'column', gap: 4 }}>
+        {state.reasons.map(r => (
+          <li key={r.code} style={{ fontSize: 12, color: INK_SOFT, lineHeight: 1.4 }}>{r.message}</li>
+        ))}
+      </ul>
+    </div>
   );
 }
 

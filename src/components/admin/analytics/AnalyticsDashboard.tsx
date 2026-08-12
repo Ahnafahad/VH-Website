@@ -8,6 +8,10 @@ import LexicorePanel  from './LexicorePanel';
 import MathPanel      from './MathPanel';
 import FunnelPanel    from './FunnelPanel';
 import LmsPanel       from './LmsPanel';
+import {
+  BG, BORDER, FONT_HEADING, MUTED, RED, RED_DARK, RED_HOVER, R_LG, R_MD, R_SM,
+  SHADOW_SM, SLATE, SURFACE, SURFACE_ALT, T_BASE, T_XL,
+} from '../lms/lms-shared';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -46,8 +50,9 @@ function Skeleton() {
           key={i}
           style={{
             height:       `${h}px`,
-            background:   '#F3F4F6',
-            borderRadius: '10px',
+            background:   SURFACE_ALT,
+            border:       `1px solid ${BORDER}`,
+            borderRadius: R_LG,
             animation:    'pulse 1.5s ease-in-out infinite',
           }}
         />
@@ -108,11 +113,11 @@ export default function AnalyticsDashboard() {
         <div
           style={{
             padding:      '24px',
-            background:   'rgba(214,43,56,0.04)',
-            border:       '1px solid rgba(214,43,56,0.2)',
-            borderRadius: '10px',
-            color:        '#D62B38',
-            fontSize:     '14px',
+            background:   `${RED}0A`,
+            border:       `1px solid ${RED}33`,
+            borderRadius: R_LG,
+            color:        RED_DARK,
+            fontSize:     T_BASE,
           }}
         >
           <strong>Error loading data:</strong> {error}
@@ -141,7 +146,7 @@ export default function AnalyticsDashboard() {
         gap:           '20px',
         padding:       'clamp(16px, 3vw, 32px)',
         minHeight:     '100dvh',
-        background:    '#FAFAFA',
+        background:    BG,
       }}
     >
       {/* ── Header ──────────────────────────────────────────────────────────── */}
@@ -158,15 +163,16 @@ export default function AnalyticsDashboard() {
           <h1
             style={{
               margin:        0,
-              fontSize:      '22px',
-              fontWeight:    700,
-              color:         '#0F172A',
+              fontFamily:    FONT_HEADING,
+              fontSize:      T_XL,
+              fontWeight:    500,
+              color:         SLATE,
               letterSpacing: '-0.025em',
             }}
           >
             Analytics
           </h1>
-          <p style={{ margin: '4px 0 0', fontSize: '13px', color: '#6B7280' }}>
+          <p style={{ margin: '4px 0 0', fontSize: T_BASE, color: MUTED }}>
             Platform usage, engagement, and funnel metrics
           </p>
         </div>
@@ -176,8 +182,9 @@ export default function AnalyticsDashboard() {
           style={{
             display:      'flex',
             alignItems:   'center',
-            background:   '#F3F4F6',
-            borderRadius: '8px',
+            background:   SURFACE_ALT,
+            border:       `1px solid ${BORDER}`,
+            borderRadius: R_MD,
             padding:      '3px',
             gap:          '2px',
           }}
@@ -187,18 +194,19 @@ export default function AnalyticsDashboard() {
           {RANGES.map(r => (
             <button
               key={r.value}
+              className="analytics-range"
               onClick={() => handleRangeChange(r.value)}
               style={{
                 padding:      '5px 14px',
                 minHeight:    44,
                 border:       'none',
-                borderRadius: '6px',
-                fontSize:     '13px',
+                borderRadius: R_SM,
+                fontSize:     T_BASE,
                 fontWeight:   range === r.value ? 600 : 400,
-                color:        range === r.value ? '#0F172A' : '#6B7280',
-                background:   range === r.value ? '#FFFFFF' : 'transparent',
+                color:        range === r.value ? RED_DARK : MUTED,
+                background:   range === r.value ? SURFACE : 'transparent',
                 cursor:       'pointer',
-                boxShadow:    range === r.value ? '0 1px 3px rgba(0,0,0,0.1)' : 'none',
+                boxShadow:    range === r.value ? SHADOW_SM : 'none',
                 transition:   'all 0.15s',
               }}
               aria-pressed={range === r.value}
@@ -215,7 +223,7 @@ export default function AnalyticsDashboard() {
           display:      'flex',
           alignItems:   'center',
           gap:          '2px',
-          borderBottom: '1px solid #E5E7EB',
+          borderBottom: `1px solid ${BORDER}`,
           overflowX:    'auto',
         }}
         role="tablist"
@@ -224,6 +232,7 @@ export default function AnalyticsDashboard() {
         {TABS.map(tab => (
           <button
             key={tab.id}
+            className="analytics-tab"
             role="tab"
             aria-selected={activeTab === tab.id}
             onClick={() => handleTabChange(tab.id)}
@@ -231,11 +240,11 @@ export default function AnalyticsDashboard() {
               padding:       '10px 16px',
               minHeight:     44,
               border:        'none',
-              borderBottom:  activeTab === tab.id ? '2px solid #D62B38' : '2px solid transparent',
+              borderBottom:  activeTab === tab.id ? `2px solid ${RED}` : '2px solid transparent',
               background:    'transparent',
-              fontSize:      '13px',
+              fontSize:      T_BASE,
               fontWeight:    activeTab === tab.id ? 600 : 400,
-              color:         activeTab === tab.id ? '#D62B38' : '#6B7280',
+              color:         activeTab === tab.id ? RED : MUTED,
               cursor:        'pointer',
               whiteSpace:    'nowrap',
               marginBottom:  '-1px',
@@ -251,6 +260,14 @@ export default function AnalyticsDashboard() {
       <div role="tabpanel">
         {renderPanel()}
       </div>
+      <style>{`
+        .analytics-range:hover { color: ${RED_HOVER} !important; background: ${SURFACE} !important; }
+        .analytics-range:focus-visible, .analytics-tab:focus-visible { outline: 2px solid ${RED}; outline-offset: 2px; }
+        .analytics-tab:hover { color: ${RED_HOVER} !important; }
+        @media (prefers-reduced-motion: reduce) {
+          .analytics-range, .analytics-tab { transition-duration: .01ms !important; }
+        }
+      `}</style>
     </div>
   );
 }

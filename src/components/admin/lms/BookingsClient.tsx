@@ -22,7 +22,7 @@ import {
   BORDER, MUTED, RED, SLATE, BG,
   SURFACE, OK, OK_BG, WARN, WARN_BG, INFO, INFO_BG,
   R_SM, R_MD, R_LG, R_PILL, SHADOW_SM, RED_DARK, INK_SOFT,
-  rowV, SPIN_CSS,
+  rowV, SPIN_CSS, T_XS, T_SM, T_BASE,
   PageHeader, TabBar, Modal, ConfirmDialog, FieldLabel, FieldInput, FieldTextarea, FieldSelect,
   PrimaryBtn, DangerBtn, GhostBtn, Toast, EmptyState, StatusBadge, SubjectBadge,
   FormActions,
@@ -89,7 +89,7 @@ function ModeBadge({ mode }: { mode: string }) {
   return (
     <span style={{
       display: 'inline-flex', alignItems: 'center', gap: 4,
-      padding: '2px 8px', borderRadius: R_PILL, fontSize: 11, fontWeight: 600,
+      padding: '2px 8px', borderRadius: R_PILL, fontSize: T_XS, fontWeight: 600,
       background: online ? INFO_BG : OK_BG,
       color: online ? INFO : OK,
       border: `1px solid ${online ? `${INFO}33` : `${OK}33`}`,
@@ -110,7 +110,7 @@ function SlotStatusBadge({ status }: { status: string }) {
   return (
     <span style={{
       display: 'inline-flex', alignItems: 'center', padding: '2px 8px',
-      borderRadius: R_PILL, fontSize: 11, fontWeight: 600, textTransform: 'capitalize',
+      borderRadius: R_PILL, fontSize: T_XS, fontWeight: 600, textTransform: 'capitalize',
       background: s.bg, color: s.color, border: `1px solid ${s.border}`,
     }}>
       {status}
@@ -129,7 +129,7 @@ function RequestStatusBadge({ status }: { status: string }) {
   return (
     <span style={{
       display: 'inline-flex', alignItems: 'center', padding: '2px 8px',
-      borderRadius: R_PILL, fontSize: 11, fontWeight: 600, textTransform: 'capitalize',
+      borderRadius: R_PILL, fontSize: T_XS, fontWeight: 600, textTransform: 'capitalize',
       background: s.bg, color: s.color, border: `1px solid ${s.border}`,
     }}>
       {status}
@@ -362,10 +362,10 @@ export default function BookingsClient({ initialSlots, initialRequests }: Bookin
               >
                 {/* Date/time block */}
                 <div style={{ minWidth: 140 }}>
-                  <p style={{ margin: 0, fontSize: 13, fontWeight: 600, color: SLATE }}>
+                  <p style={{ margin: 0, fontSize: T_BASE, fontWeight: 600, color: SLATE }}>
                     {fmtDhaka(slot.startAt, { weekday: 'short', month: 'short', day: 'numeric' })}
                   </p>
-                  <p style={{ margin: '2px 0 0', fontSize: 12, color: MUTED }}>
+                  <p style={{ margin: '2px 0 0', fontSize: T_SM, color: MUTED }}>
                     {fmtDhaka(slot.startAt, { hour: '2-digit', minute: '2-digit' })} –{' '}
                     {fmtDhaka(slot.endAt,   { hour: '2-digit', minute: '2-digit' })}
                   </p>
@@ -379,16 +379,16 @@ export default function BookingsClient({ initialSlots, initialRequests }: Bookin
                     <SubjectBadge subject={slot.subject} />
                   </div>
                   {slot.topic && (
-                    <p style={{ margin: 0, fontSize: 12, color: INK_SOFT, wordBreak: 'break-word' }}>{slot.topic}</p>
+                    <p style={{ margin: 0, fontSize: T_SM, color: INK_SOFT, wordBreak: 'break-word' }}>{slot.topic}</p>
                   )}
                   {slot.status === 'booked' && slot.bookedByName && (
-                    <p style={{ margin: '4px 0 0', fontSize: 11, color: MUTED, wordBreak: 'break-word' }}>
+                    <p style={{ margin: '4px 0 0', fontSize: T_XS, color: MUTED, wordBreak: 'break-word' }}>
                       Booked by: <strong style={{ color: SLATE }}>{slot.bookedByName}</strong>
                     </p>
                   )}
                   {slot.meetLink && (
                     <a href={slot.meetLink} target="_blank" rel="noopener noreferrer" className="vh-meet-link"
-                      style={{ display: 'inline-flex', alignItems: 'center', gap: 4, marginTop: 4, fontSize: 11, color: INFO }}>
+                      style={{ display: 'inline-flex', alignItems: 'center', gap: 4, marginTop: 4, fontSize: T_XS, color: INFO }}>
                       <ExternalLink size={10} aria-hidden /> Meet link
                     </a>
                   )}
@@ -440,21 +440,21 @@ export default function BookingsClient({ initialSlots, initialRequests }: Bookin
                   <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap', marginBottom: 6 }}>
                     <RequestStatusBadge status={req.status} />
                     <SubjectBadge subject={req.subject} />
-                    <span style={{ fontSize: 11, color: MUTED }}>{req.durationMinutes} min · {req.preferredMode} preferred</span>
+                    <span style={{ fontSize: T_XS, color: MUTED }}>{req.durationMinutes} min · {req.preferredMode} preferred</span>
                   </div>
-                  <p style={{ margin: 0, fontSize: 13, fontWeight: 600, color: SLATE, wordBreak: 'break-word' }}>{req.topic}</p>
-                  <p style={{ margin: '3px 0 0', fontSize: 12, color: MUTED, wordBreak: 'break-word' }}>
+                  <p style={{ margin: 0, fontSize: T_BASE, fontWeight: 600, color: SLATE, wordBreak: 'break-word' }}>{req.topic}</p>
+                  <p style={{ margin: '3px 0 0', fontSize: T_SM, color: MUTED, wordBreak: 'break-word' }}>
                     {req.userName} · {req.userEmail}
                   </p>
                   {req.notes && (
-                    <p style={{ margin: '6px 0 0', fontSize: 12, color: INK_SOFT, background: BG, padding: '6px 10px', borderRadius: R_SM, border: `1px solid ${BORDER}`, wordBreak: 'break-word' }}>
+                    <p style={{ margin: '6px 0 0', fontSize: T_SM, color: INK_SOFT, background: BG, padding: '6px 10px', borderRadius: R_SM, border: `1px solid ${BORDER}`, wordBreak: 'break-word' }}>
                       {req.notes}
                     </p>
                   )}
                   {req.staffNote && (
-                    <p style={{ margin: '4px 0 0', fontSize: 11, color: MUTED }}>Staff note: {req.staffNote}</p>
+                    <p style={{ margin: '4px 0 0', fontSize: T_XS, color: MUTED }}>Staff note: {req.staffNote}</p>
                   )}
-                  <p style={{ margin: '4px 0 0', fontSize: 11, color: MUTED }}>
+                  <p style={{ margin: '4px 0 0', fontSize: T_XS, color: MUTED }}>
                     {fmtDhaka(req.createdAt)}
                   </p>
                 </div>
@@ -542,8 +542,8 @@ export default function BookingsClient({ initialSlots, initialRequests }: Bookin
         {resolveTarget && (
           <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
             <div style={{ background: BG, border: `1px solid ${BORDER}`, borderRadius: R_MD, padding: '12px 14px' }}>
-              <p style={{ margin: 0, fontSize: 13, fontWeight: 600, color: SLATE }}>{resolveTarget.topic}</p>
-              <p style={{ margin: '3px 0 0', fontSize: 12, color: MUTED }}>
+              <p style={{ margin: 0, fontSize: T_BASE, fontWeight: 600, color: SLATE }}>{resolveTarget.topic}</p>
+              <p style={{ margin: '3px 0 0', fontSize: T_SM, color: MUTED }}>
                 {resolveTarget.userName} · {resolveTarget.subject} · {resolveTarget.durationMinutes} min · {resolveTarget.preferredMode} preferred
               </p>
             </div>

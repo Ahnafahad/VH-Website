@@ -9,8 +9,9 @@
  *   3. Hall of Fame session cards
  *   4. Danger Zone with Reset modal (requires session label, then confirm step)
  *
- * Design: light mode, Linear/Vercel editorial. Crimson #D62B38 for destructive
- * actions. Gold/silver/bronze left-border accent on top-3 rows.
+ * Design: VH Editorial tokens (see lms/tokens.ts); RED for destructive
+ * actions. Gold/silver/bronze left-border accent on top-3 rows (decorative
+ * medal palette — deliberately outside the brand token set, see RANK_ACCENT).
  * Framer Motion for page entrance + modal. No emojis — lucide-react only.
  */
 
@@ -31,6 +32,10 @@ import {
   Flame,
 } from 'lucide-react';
 import type { LeaderboardEntry, HofSession } from '@/app/admin/leaderboard/page';
+import {
+  RED, BORDER, MUTED, INK_SOFT, SURFACE, SURFACE_ALT,
+  OK, OK_BG, WARN, WARN_BG, INFO, INFO_BG, R_SM, R_MD, R_LG, R_XL, R_PILL,
+} from '@/components/admin/lms/tokens';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -178,7 +183,7 @@ function UserAvatar({ name, accent }: { name: string; accent?: { border: string 
         height:          30,
         borderRadius:    '50%',
         background:      accent ? accent.border : avatarBg(name),
-        color:           '#FFF',
+        color:           SURFACE,
         fontSize:        10,
         fontWeight:      700,
         display:         'flex',
@@ -207,7 +212,7 @@ function LeaderboardTable({
   if (entries.length === 0) {
     return (
       <div style={S.emptyState}>
-        <Trophy size={26} style={{ color: '#CBD5E1' }} />
+        <Trophy size={26} style={{ color: BORDER }} />
         <p style={S.emptyText}>{emptyText}</p>
       </div>
     );
@@ -247,7 +252,7 @@ function LeaderboardTable({
                   <span style={{ fontSize: 12, fontWeight: 700 }}>{entry.rank}</span>
                 </span>
               ) : (
-                <span style={{ fontSize: 13, fontWeight: 500, color: '#9CA3AF' }}>
+                <span style={{ fontSize: 13, fontWeight: 500, color: MUTED }}>
                   {entry.rank}
                 </span>
               )}
@@ -270,7 +275,7 @@ function LeaderboardTable({
             <div style={{ ...S.tdCell, width: 100, justifyContent: 'flex-end' }}>
               <span style={{
                 ...S.pointsVal,
-                color: acc ? acc.border : '#111827',
+                color: acc ? acc.border : INK_SOFT,
               }}>
                 {formatPts(entry.points)}
               </span>
@@ -289,7 +294,7 @@ function HofCards({ sessions }: { sessions: HofSession[] }) {
   if (sessions.length === 0) {
     return (
       <div style={{ ...S.emptyState, padding: '32px 20px' }}>
-        <Star size={26} style={{ color: '#CBD5E1' }} />
+        <Star size={26} style={{ color: BORDER }} />
         <p style={S.emptyText}>
           No Hall of Fame sessions yet. Reset the all-time leaderboard to create one.
         </p>
@@ -320,7 +325,7 @@ function HofCards({ sessions }: { sessions: HofSession[] }) {
               <div style={{ minWidth: 0 }}>
                 <p style={S.hofLabel}>{session.sessionLabel}</p>
                 <div style={S.hofDateRow}>
-                  <Calendar size={10} style={{ color: '#94A3B8', flexShrink: 0 }} />
+                  <Calendar size={10} style={{ color: MUTED, flexShrink: 0 }} />
                   <span style={S.hofDateText}>{formatDate(session.weekEndDate)}</span>
                 </div>
               </div>
@@ -337,14 +342,14 @@ function HofCards({ sessions }: { sessions: HofSession[] }) {
                       width:          22,
                       height:         22,
                       borderRadius:   '50%',
-                      background:     entryAcc ? entryAcc.border : '#CBD5E1',
+                      background:     entryAcc ? entryAcc.border : BORDER,
                       display:        'flex',
                       alignItems:     'center',
                       justifyContent: 'center',
                       flexShrink:     0,
                     }}>
                       {EntryIcon && (
-                        <EntryIcon size={11} color="#FFFFFF" />
+                        <EntryIcon size={11} color={SURFACE} />
                       )}
                     </div>
                     <span style={S.hofEntryName} title={entry.displayName}>
@@ -352,7 +357,7 @@ function HofCards({ sessions }: { sessions: HofSession[] }) {
                     </span>
                     <span style={{
                       ...S.hofEntryPts,
-                      color: entryAcc ? entryAcc.border : '#64748B',
+                      color: entryAcc ? entryAcc.border : MUTED,
                     }}>
                       {formatPts(entry.points)}
                     </span>
@@ -452,7 +457,7 @@ function ResetModal({ open, onClose, onConfirm, loading }: ResetModalProps) {
 
             {/* Warning icon */}
             <div style={S.modalIconWrap}>
-              <AlertTriangle size={20} color="#D62B38" />
+              <AlertTriangle size={20} color={RED} />
             </div>
 
             <h2 id="lb-reset-title" style={S.modalTitle}>
@@ -469,7 +474,7 @@ function ResetModal({ open, onClose, onConfirm, loading }: ResetModalProps) {
 
                 <div style={{ marginTop: 18 }}>
                   <label htmlFor="lb-session-label" style={S.inputLabel}>
-                    Session label <span style={{ color: '#D62B38' }}>*</span>
+                    Session label <span style={{ color: RED }}>*</span>
                   </label>
                   <input
                     ref={inputRef}
@@ -483,7 +488,7 @@ function ResetModal({ open, onClose, onConfirm, loading }: ResetModalProps) {
                     disabled={loading}
                     style={{
                       ...S.modalInput,
-                      borderColor: err ? '#D62B38' : label.trim() ? '#6EE7B7' : '#E2E8F0',
+                      borderColor: err ? RED : label.trim() ? OK : BORDER,
                     }}
                     aria-required="true"
                     aria-describedby="lb-label-hint"
@@ -519,8 +524,8 @@ function ResetModal({ open, onClose, onConfirm, loading }: ResetModalProps) {
               <>
                 {/* Warning stripe */}
                 <div style={S.warningStripe}>
-                  <AlertTriangle size={13} color="#92400E" style={{ flexShrink: 0, marginTop: 1 }} />
-                  <p style={{ margin: 0, fontSize: 12.5, color: '#92400E', lineHeight: 1.5 }}>
+                  <AlertTriangle size={13} color={WARN} style={{ flexShrink: 0, marginTop: 1 }} />
+                  <p style={{ margin: 0, fontSize: 12.5, color: WARN, lineHeight: 1.5 }}>
                     You are about to permanently zero all{' '}
                     <code style={{ fontFamily: 'ui-monospace, monospace', fontSize: 11 }}>
                       totalPoints
@@ -739,9 +744,9 @@ export default function LeaderboardClient({
       <SectionCard
         title="Weekly Leaderboard"
         desc="Points earned this week. Resets automatically on Monday."
-        iconBg="#EFF6FF"
+        iconBg={INFO_BG}
         icon={TrendingUp}
-        iconColor="#2563EB"
+        iconColor={INFO}
         count={weeklyLeaderboard.length}
         countLabel="users"
       >
@@ -757,9 +762,9 @@ export default function LeaderboardClient({
       <SectionCard
         title="All-Time Leaderboard"
         desc="Cumulative total points since the last reset."
-        iconBg="#FEF3C7"
+        iconBg={WARN_BG}
         icon={Trophy}
-        iconColor="#D97706"
+        iconColor={WARN}
         count={allTime.length}
         countLabel="users"
         action={
@@ -799,8 +804,8 @@ export default function LeaderboardClient({
       ═══════════════════════════════════════════════════════════════════════ */}
       <motion.section variants={sectionVariants} style={S.dangerZone}>
         <div style={S.dangerHead}>
-          <div style={{ ...S.iconBadge, background: '#FEF2F2' }}>
-            <AlertTriangle size={15} color="#D62B38" />
+          <div style={{ ...S.iconBadge, background: `${RED}1A` }}>
+            <AlertTriangle size={15} color={RED} />
           </div>
           <div>
             <h2 style={{ ...S.cardTitle }}>Danger Zone</h2>
@@ -854,7 +859,7 @@ const S = {
     gap:           18,
     maxWidth:      '100%',
     fontFamily:    'system-ui, -apple-system, sans-serif',
-    color:         '#0F172A',
+    color:         INK_SOFT,
     colorScheme:   'light',
   },
 
@@ -866,7 +871,7 @@ const S = {
     margin:        0,
     fontSize:      22,
     fontWeight:    700,
-    color:         '#0F172A',
+    color:         INK_SOFT,
     letterSpacing: '-0.025em',
     lineHeight:    1.2,
   } as React.CSSProperties,
@@ -874,15 +879,15 @@ const S = {
   pageSubtitle: {
     margin:     '4px 0 0',
     fontSize:   13,
-    color:      '#64748B',
+    color:      MUTED,
     fontWeight: 400,
   } as React.CSSProperties,
 
   // ── Section card ─────────────────────────────────────────────────────────────
   card: {
-    background:   '#FFFFFF',
-    border:       '1px solid #E2E8F0',
-    borderRadius: 12,
+    background:   SURFACE,
+    border:       `1px solid ${BORDER}`,
+    borderRadius: R_LG,
     overflow:     'hidden' as const,
   } as React.CSSProperties,
 
@@ -891,14 +896,14 @@ const S = {
     alignItems:   'center',
     gap:          12,
     padding:      '15px 18px',
-    borderBottom: '1px solid #F1F5F9',
+    borderBottom: `1px solid ${BORDER}`,
     flexWrap:     'wrap' as const,
   } as React.CSSProperties,
 
   iconBadge: {
     width:          34,
     height:         34,
-    borderRadius:   8,
+    borderRadius:   R_MD,
     display:        'flex',
     alignItems:     'center',
     justifyContent: 'center',
@@ -909,25 +914,25 @@ const S = {
     margin:        0,
     fontSize:      14,
     fontWeight:    600,
-    color:         '#0F172A',
+    color:         INK_SOFT,
     letterSpacing: '-0.01em',
   } as React.CSSProperties,
 
   cardDesc: {
     margin:    '1px 0 0',
     fontSize:  12,
-    color:     '#94A3B8',
+    color:     MUTED,
     fontWeight: 400,
   } as React.CSSProperties,
 
   countPill: {
     marginLeft:    'auto',
     padding:       '3px 9px',
-    borderRadius:  20,
-    background:    '#F3F4F6',
+    borderRadius:  R_PILL,
+    background:    BORDER,
     fontSize:      11,
     fontWeight:    600,
-    color:         '#6B7280',
+    color:         MUTED,
     letterSpacing: '0.02em',
     whiteSpace:    'nowrap' as const,
   } as React.CSSProperties,
@@ -938,11 +943,11 @@ const S = {
     gap:          5,
     padding:      '6px 12px',
     background:   'transparent',
-    border:       '1.5px solid #D62B38',
-    borderRadius: 7,
+    border:       `1.5px solid ${RED}`,
+    borderRadius: R_MD,
     fontSize:     12,
     fontWeight:   600,
-    color:        '#D62B38',
+    color:        RED,
     cursor:       'pointer',
     whiteSpace:   'nowrap' as const,
     letterSpacing: '-0.005em',
@@ -953,15 +958,15 @@ const S = {
     display:      'flex',
     alignItems:   'center',
     padding:      '8px 18px',
-    borderBottom: '1px solid #F1F5F9',
-    background:   '#F8FAFC',
+    borderBottom: `1px solid ${BORDER}`,
+    background:   SURFACE_ALT,
     gap:          10,
   } as React.CSSProperties,
 
   thCell: {
     fontSize:      10.5,
     fontWeight:    700,
-    color:         '#94A3B8',
+    color:         MUTED,
     letterSpacing: '0.07em',
     textTransform: 'uppercase' as const,
     display:       'flex',
@@ -973,7 +978,7 @@ const S = {
     alignItems:   'center',
     padding:      '9px 18px',
     gap:          10,
-    borderBottom: '1px solid #F8FAFC',
+    borderBottom: `1px solid ${BORDER}`,
     transition:   'background 0.1s',
   } as React.CSSProperties,
 
@@ -987,7 +992,7 @@ const S = {
   userName: {
     fontSize:     13,
     fontWeight:   500,
-    color:        '#111827',
+    color:        INK_SOFT,
     letterSpacing: '-0.01em',
     overflow:     'hidden',
     textOverflow: 'ellipsis',
@@ -996,7 +1001,7 @@ const S = {
 
   userEmail: {
     fontSize:     11,
-    color:        '#9CA3AF',
+    color:        MUTED,
     overflow:     'hidden',
     textOverflow: 'ellipsis',
     whiteSpace:   'nowrap' as const,
@@ -1013,7 +1018,7 @@ const S = {
   pointsUnit: {
     fontSize:     10,
     fontWeight:   600,
-    color:        '#94A3B8',
+    color:        MUTED,
     letterSpacing: '0.04em',
     marginLeft:   2,
   } as React.CSSProperties,
@@ -1030,7 +1035,7 @@ const S = {
   emptyText: {
     margin:     0,
     fontSize:   13,
-    color:      '#94A3B8',
+    color:      MUTED,
     textAlign:  'center' as const,
     maxWidth:   300,
     lineHeight: 1.5,
@@ -1045,10 +1050,10 @@ const S = {
   } as React.CSSProperties,
 
   hofCard: {
-    border:       '1px solid #E2E8F0',
-    borderRadius: 10,
+    border:       `1px solid ${BORDER}`,
+    borderRadius: R_LG,
     overflow:     'hidden' as const,
-    background:   '#FAFAFA',
+    background:   SURFACE_ALT,
   } as React.CSSProperties,
 
   hofCardHead: {
@@ -1056,14 +1061,14 @@ const S = {
     alignItems:   'flex-start',
     gap:          10,
     padding:      '12px 14px',
-    borderBottom: '1px solid #E2E8F0',
-    background:   '#FFFFFF',
+    borderBottom: `1px solid ${BORDER}`,
+    background:   SURFACE,
   } as React.CSSProperties,
 
   hofTrophyBadge: {
     width:          26,
     height:         26,
-    borderRadius:   6,
+    borderRadius:   R_SM,
     background:     'rgba(201,168,76,0.12)',
     display:        'flex',
     alignItems:     'center',
@@ -1076,7 +1081,7 @@ const S = {
     margin:        0,
     fontSize:      12.5,
     fontWeight:    600,
-    color:         '#111827',
+    color:         INK_SOFT,
     letterSpacing: '-0.01em',
     overflow:      'hidden',
     textOverflow:  'ellipsis',
@@ -1092,7 +1097,7 @@ const S = {
 
   hofDateText: {
     fontSize:  10.5,
-    color:     '#94A3B8',
+    color:     MUTED,
   } as React.CSSProperties,
 
   hofEntries: {
@@ -1112,7 +1117,7 @@ const S = {
     flex:         1,
     fontSize:     12,
     fontWeight:   500,
-    color:        '#374151',
+    color:        INK_SOFT,
     overflow:     'hidden',
     textOverflow: 'ellipsis',
     whiteSpace:   'nowrap' as const,
@@ -1129,9 +1134,9 @@ const S = {
 
   // ── Danger Zone ───────────────────────────────────────────────────────────────
   dangerZone: {
-    background:   '#FFFFFF',
-    border:       '1px solid #FECACA',
-    borderRadius: 12,
+    background:   SURFACE,
+    border:       `1px solid ${RED}40`,
+    borderRadius: R_LG,
     overflow:     'hidden' as const,
   } as React.CSSProperties,
 
@@ -1140,8 +1145,8 @@ const S = {
     alignItems:   'center',
     gap:          12,
     padding:      '15px 18px',
-    borderBottom: '1px solid #FEE2E2',
-    background:   '#FFF5F5',
+    borderBottom: `1px solid ${RED}40`,
+    background:   `${RED}1A`,
   } as React.CSSProperties,
 
   dangerRow: {
@@ -1156,13 +1161,13 @@ const S = {
     margin:     0,
     fontSize:   13.5,
     fontWeight: 600,
-    color:      '#0F172A',
+    color:      INK_SOFT,
   } as React.CSSProperties,
 
   dangerRowDesc: {
     margin:     '4px 0 0',
     fontSize:   12.5,
-    color:      '#64748B',
+    color:      MUTED,
     lineHeight: 1.55,
     maxWidth:   480,
   } as React.CSSProperties,
@@ -1173,11 +1178,11 @@ const S = {
     gap:          6,
     padding:      '8px 16px',
     background:   'transparent',
-    border:       '1.5px solid #D62B38',
-    borderRadius: 7,
+    border:       `1.5px solid ${RED}`,
+    borderRadius: R_MD,
     fontSize:     13,
     fontWeight:   600,
-    color:        '#D62B38',
+    color:        RED,
     cursor:       'pointer',
     whiteSpace:   'nowrap' as const,
     flexShrink:   0,
@@ -1204,15 +1209,15 @@ const S = {
   } as React.CSSProperties,
 
   toastSuccess: {
-    background: '#F0FDF4',
-    border:     '1px solid #BBF7D0',
-    color:      '#166534',
+    background: OK_BG,
+    border:     `1px solid ${OK}40`,
+    color:      OK,
   } as React.CSSProperties,
 
   toastError: {
-    background: '#FEF2F2',
-    border:     '1px solid #FECACA',
-    color:      '#991B1B',
+    background: `${RED}1A`,
+    border:     `1px solid ${RED}40`,
+    color:      RED,
   } as React.CSSProperties,
 
   // ── Modal ─────────────────────────────────────────────────────────────────────
@@ -1232,9 +1237,9 @@ const S = {
     zIndex:       1001,
     width:        '100%',
     maxWidth:     450,
-    background:   '#FFFFFF',
-    border:       '1px solid #E2E8F0',
-    borderRadius: 14,
+    background:   SURFACE,
+    border:       `1px solid ${BORDER}`,
+    borderRadius: R_XL,
     padding:      '26px 26px 22px',
     boxShadow:    '0 20px 60px rgba(0,0,0,0.14), 0 4px 16px rgba(0,0,0,0.06)',
   } as React.CSSProperties,
@@ -1244,11 +1249,11 @@ const S = {
     top:            12,
     right:          12,
     background:     'transparent',
-    border:         '1px solid #E2E8F0',
-    borderRadius:   6,
+    border:         `1px solid ${BORDER}`,
+    borderRadius:   R_SM,
     padding:        5,
     cursor:         'pointer',
-    color:          '#6B7280',
+    color:          MUTED,
     display:        'flex',
     alignItems:     'center',
     justifyContent: 'center',
@@ -1258,7 +1263,7 @@ const S = {
   modalIconWrap: {
     width:          42,
     height:         42,
-    borderRadius:   10,
+    borderRadius:   R_LG,
     background:     'rgba(214,43,56,0.08)',
     display:        'flex',
     alignItems:     'center',
@@ -1270,7 +1275,7 @@ const S = {
     margin:        0,
     fontSize:      16,
     fontWeight:    700,
-    color:         '#0F172A',
+    color:         INK_SOFT,
     letterSpacing: '-0.02em',
     marginBottom:  6,
   } as React.CSSProperties,
@@ -1278,7 +1283,7 @@ const S = {
   modalDesc: {
     margin:     0,
     fontSize:   13,
-    color:      '#64748B',
+    color:      MUTED,
     lineHeight: 1.6,
   } as React.CSSProperties,
 
@@ -1286,7 +1291,7 @@ const S = {
     display:       'block',
     fontSize:      12,
     fontWeight:    600,
-    color:         '#374151',
+    color:         INK_SOFT,
     marginBottom:  5,
     letterSpacing: '-0.005em',
   } as React.CSSProperties,
@@ -1295,11 +1300,11 @@ const S = {
     display:      'block',
     width:        '100%',
     padding:      '9px 12px',
-    border:       '1.5px solid #E2E8F0',
-    borderRadius: 7,
+    border:       `1.5px solid ${BORDER}`,
+    borderRadius: R_MD,
     fontSize:     13,
-    color:        '#0F172A',
-    background:   '#FAFAFA',
+    color:        INK_SOFT,
+    background:   SURFACE_ALT,
     outline:      'none',
     boxSizing:    'border-box' as const,
     fontFamily:   'system-ui, -apple-system, sans-serif',
@@ -1309,14 +1314,14 @@ const S = {
   fieldError: {
     margin:     '5px 0 0',
     fontSize:   11.5,
-    color:      '#D62B38',
+    color:      RED,
     fontWeight: 500,
   } as React.CSSProperties,
 
   fieldHint: {
     margin:    '4px 0 0',
     fontSize:  11,
-    color:     '#9CA3AF',
+    color:     MUTED,
     lineHeight: 1.4,
   } as React.CSSProperties,
 
@@ -1325,9 +1330,9 @@ const S = {
     alignItems:   'flex-start',
     gap:          8,
     padding:      '10px 12px',
-    background:   '#FFFBEB',
-    border:       '1px solid #FDE68A',
-    borderRadius: 7,
+    background:   WARN_BG,
+    border:       `1px solid ${WARN}55`,
+    borderRadius: R_MD,
     marginTop:    10,
     marginBottom: 14,
   } as React.CSSProperties,
@@ -1337,16 +1342,16 @@ const S = {
     alignItems:   'center',
     gap:          8,
     padding:      '8px 12px',
-    background:   '#F8FAFC',
-    border:       '1px solid #E2E8F0',
-    borderRadius: 7,
+    background:   SURFACE_ALT,
+    border:       `1px solid ${BORDER}`,
+    borderRadius: R_MD,
     marginBottom: 4,
   } as React.CSSProperties,
 
   confirmPreviewLabel: {
     fontSize:   11,
     fontWeight: 600,
-    color:      '#6B7280',
+    color:      MUTED,
     flexShrink: 0,
     letterSpacing: '0.02em',
     textTransform: 'uppercase' as const,
@@ -1355,7 +1360,7 @@ const S = {
   confirmPreviewValue: {
     fontSize:     13,
     fontWeight:   600,
-    color:        '#0F172A',
+    color:        INK_SOFT,
     overflow:     'hidden',
     textOverflow: 'ellipsis',
     whiteSpace:   'nowrap' as const,
@@ -1370,10 +1375,10 @@ const S = {
 
   btnGhost: {
     padding:      '8px 16px',
-    border:       '1px solid #E2E8F0',
-    borderRadius: 7,
+    border:       `1px solid ${BORDER}`,
+    borderRadius: R_MD,
     background:   'transparent',
-    color:        '#64748B',
+    color:        MUTED,
     fontSize:     13,
     fontWeight:   500,
     cursor:       'pointer',
@@ -1382,9 +1387,9 @@ const S = {
   btnDark: {
     padding:      '8px 18px',
     border:       'none',
-    borderRadius: 7,
-    background:   '#0F172A',
-    color:        '#FFFFFF',
+    borderRadius: R_MD,
+    background:   INK_SOFT,
+    color:        SURFACE,
     fontSize:     13,
     fontWeight:   600,
     cursor:       'pointer',
@@ -1397,9 +1402,9 @@ const S = {
     gap:          6,
     padding:      '8px 18px',
     border:       'none',
-    borderRadius: 7,
-    background:   '#D62B38',
-    color:        '#FFFFFF',
+    borderRadius: R_MD,
+    background:   RED,
+    color:        SURFACE,
     fontSize:     13,
     fontWeight:   600,
     letterSpacing: '-0.005em',

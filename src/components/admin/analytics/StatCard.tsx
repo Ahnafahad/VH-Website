@@ -1,6 +1,9 @@
 'use client';
 
 import React from 'react';
+import {
+  BORDER, INK_SOFT, MUTED, RED, R_LG, SHADOW_SM, SURFACE, T_2XL, T_SM,
+} from '../lms/lms-shared';
 
 interface StatCardProps {
   label:   string;
@@ -13,9 +16,10 @@ export default function StatCard({ label, value, sub, accent }: StatCardProps) {
   return (
     <div
       style={{
-        background:   '#FFFFFF',
-        border:       '1px solid #E5E7EB',
-        borderRadius: '10px',
+        background:   SURFACE,
+        border:       `1px solid ${BORDER}`,
+        borderRadius: R_LG,
+        boxShadow:    SHADOW_SM,
         padding:      '16px 20px',
         display:      'flex',
         flexDirection:'column',
@@ -25,9 +29,9 @@ export default function StatCard({ label, value, sub, accent }: StatCardProps) {
     >
       <span
         style={{
-          fontSize:     '12px',
+          fontSize:     T_SM,
           fontWeight:   500,
-          color:        '#6B7280',
+          color:        MUTED,
           textTransform:'uppercase',
           letterSpacing:'0.05em',
           whiteSpace:   'nowrap',
@@ -39,16 +43,16 @@ export default function StatCard({ label, value, sub, accent }: StatCardProps) {
       </span>
       <span
         style={{
-          fontSize:   '24px',
+          fontSize:   T_2XL,
           fontWeight: 700,
-          color:      accent ? '#D62B38' : '#0F172A',
+          color:      accent ? RED : INK_SOFT,
           lineHeight: 1.2,
         }}
       >
         {value}
       </span>
       {sub && (
-        <span style={{ fontSize: '12px', color: '#9CA3AF' }}>{sub}</span>
+        <span style={{ fontSize: T_SM, color: MUTED }}>{sub}</span>
       )}
     </div>
   );

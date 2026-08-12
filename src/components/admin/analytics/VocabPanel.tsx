@@ -14,6 +14,10 @@ import StatCard  from './StatCard';
 import ChartCard from './ChartCard';
 import BarList   from './BarList';
 import { fmtNum, fmtPct } from './formatters';
+import {
+  BORDER, INFO, INK_SOFT, MUTED, OK, RED, RED_HOVER, R_MD, R_PILL, R_SM,
+  SURFACE, SURFACE_ALT, T_BASE, T_SM, T_XS, WARN,
+} from '../lms/lms-shared';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -60,7 +64,7 @@ interface VocabPanelProps {
 
 // ─── Palette ──────────────────────────────────────────────────────────────────
 
-const FUNNEL_COLORS = ['#D62B38', '#F87171', '#FBBF24'];
+const FUNNEL_COLORS = [RED, INFO, WARN];
 
 // ─── Component ────────────────────────────────────────────────────────────────
 
@@ -134,7 +138,7 @@ export default function VocabPanel({ data }: VocabPanelProps) {
         <BarList
           items={hardestItems}
           valueFormat={v => fmtPct(v)}
-          accent="#F87171"
+          accent={RED_HOVER}
           limit={15}
         />
       </ChartCard>
@@ -155,24 +159,24 @@ export default function VocabPanel({ data }: VocabPanelProps) {
                 justifyContent: 'space-between',
                 alignItems:     'center',
                 padding:        '8px 10px',
-                background:     '#FAFAFA',
-                borderRadius:   '6px',
-                border:         '1px solid #E5E7EB',
+                background:     SURFACE_ALT,
+                borderRadius:   R_SM,
+                border:         `1px solid ${BORDER}`,
               }}
             >
-              <span style={{ fontSize: '13px', color: '#374151' }}>
-                <strong style={{ color: '#111827' }}>{pair.wordA}</strong>
-                <span style={{ color: '#9CA3AF', margin: '0 6px' }}>↔</span>
-                <strong style={{ color: '#111827' }}>{pair.wordB}</strong>
+              <span style={{ fontSize: T_BASE, color: INK_SOFT }}>
+                <strong style={{ color: INK_SOFT }}>{pair.wordA}</strong>
+                <span style={{ color: MUTED, margin: '0 6px' }}>↔</span>
+                <strong style={{ color: INK_SOFT }}>{pair.wordB}</strong>
               </span>
               <span
                 style={{
-                  fontSize:   '12px',
+                  fontSize:   T_SM,
                   fontWeight: 600,
-                  color:      '#D62B38',
-                  background: 'rgba(214,43,56,0.06)',
+                  color:      RED,
+                  background: `${RED}0F`,
                   padding:    '2px 8px',
-                  borderRadius: '12px',
+                  borderRadius: R_PILL,
                 }}
               >
                 {fmtNum(pair.count)}×
@@ -193,27 +197,27 @@ export default function VocabPanel({ data }: VocabPanelProps) {
         >
           <ResponsiveContainer width="100%" height={220}>
             <BarChart data={masteryData} margin={{ top: 4, right: 8, bottom: 0, left: -16 }}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#F3F4F6" />
+              <CartesianGrid strokeDasharray="3 3" stroke={SURFACE_ALT} />
               <XAxis
                 dataKey="level"
-                tick={{ fontSize: 11, fill: '#9CA3AF' }}
+                tick={{ fontSize: T_XS, fill: MUTED }}
                 tickLine={false}
                 axisLine={false}
-                label={{ value: 'Level', position: 'insideBottom', offset: -2, fontSize: 10, fill: '#9CA3AF' }}
+                label={{ value: 'Level', position: 'insideBottom', offset: -2, fontSize: 10, fill: MUTED }}
               />
               <YAxis
-                tick={{ fontSize: 11, fill: '#9CA3AF' }}
+                tick={{ fontSize: T_XS, fill: MUTED }}
                 tickLine={false}
                 axisLine={false}
                 allowDecimals={false}
               />
               <Tooltip
                 contentStyle={{
-                  background: '#FFFFFF', border: '1px solid #E5E7EB',
-                  borderRadius: '8px', fontSize: '12px',
+                  background: SURFACE, border: `1px solid ${BORDER}`,
+                  borderRadius: R_MD, fontSize: T_SM,
                 }}
               />
-              <Bar dataKey="count" name="Words" fill="#D62B38" radius={[3, 3, 0, 0]} maxBarSize={40} />
+              <Bar dataKey="count" name="Words" fill={RED} radius={[3, 3, 0, 0]} maxBarSize={40} />
             </BarChart>
           </ResponsiveContainer>
         </ChartCard>
@@ -227,15 +231,15 @@ export default function VocabPanel({ data }: VocabPanelProps) {
         >
           <ResponsiveContainer width="100%" height={220}>
             <BarChart data={qtData} margin={{ top: 4, right: 8, bottom: 0, left: -16 }}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#F3F4F6" />
+              <CartesianGrid strokeDasharray="3 3" stroke={SURFACE_ALT} />
               <XAxis
                 dataKey="type"
-                tick={{ fontSize: 11, fill: '#9CA3AF' }}
+                tick={{ fontSize: T_XS, fill: MUTED }}
                 tickLine={false}
                 axisLine={false}
               />
               <YAxis
-                tick={{ fontSize: 11, fill: '#9CA3AF' }}
+                tick={{ fontSize: T_XS, fill: MUTED }}
                 tickLine={false}
                 axisLine={false}
                 domain={[0, 100]}
@@ -243,12 +247,12 @@ export default function VocabPanel({ data }: VocabPanelProps) {
               />
               <Tooltip
                 contentStyle={{
-                  background: '#FFFFFF', border: '1px solid #E5E7EB',
-                  borderRadius: '8px', fontSize: '12px',
+                  background: SURFACE, border: `1px solid ${BORDER}`,
+                  borderRadius: R_MD, fontSize: T_SM,
                 }}
                 formatter={(v: number) => [`${v}%`, 'Accuracy']}
               />
-              <Bar dataKey="accuracy" name="Accuracy %" fill="#60A5FA" radius={[3, 3, 0, 0]} maxBarSize={40} />
+              <Bar dataKey="accuracy" name="Accuracy %" fill={INFO} radius={[3, 3, 0, 0]} maxBarSize={40} />
             </BarChart>
           </ResponsiveContainer>
         </ChartCard>
@@ -262,7 +266,7 @@ export default function VocabPanel({ data }: VocabPanelProps) {
           empty={featureUsage.length === 0}
           emptyNote="No feature usage data yet."
         >
-          <BarList items={featureItems} valueFormat={v => fmtNum(v) + ' sessions'} accent="#A78BFA" />
+          <BarList items={featureItems} valueFormat={v => fmtNum(v) + ' sessions'} accent={MUTED} />
         </ChartCard>
 
         <ChartCard
@@ -271,7 +275,7 @@ export default function VocabPanel({ data }: VocabPanelProps) {
           empty={topStudiedWords.length === 0}
           emptyNote="No study data yet."
         >
-          <BarList items={topStudiedItems} valueFormat={v => fmtNum(v) + ' attempts'} accent="#34D399" limit={15} />
+          <BarList items={topStudiedItems} valueFormat={v => fmtNum(v) + ' attempts'} accent={OK} limit={15} />
         </ChartCard>
       </div>
     </div>

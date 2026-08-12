@@ -31,6 +31,12 @@ import {
   Info,
   TriangleAlert,
 } from 'lucide-react';
+import {
+  RED, RED_DARK, SLATE, BORDER, BORDER_FIELD, MUTED, SURFACE, SURFACE_ALT, SURFACE_SHELL,
+  BEIGE, INK_SOFT, OK, OK_BG, WARN, WARN_BG, INFO, INFO_BG,
+  R_SM, R_MD, R_LG, R_XL, R_PILL, SHADOW_MD, SHADOW_LG, FONT_HEADING,
+  T_XS, T_SM, T_BASE, T_MD, T_LG, Z_MODAL, Z_TOAST,
+} from './lms/lms-shared';
 
 // ─── Props ────────────────────────────────────────────────────────────────────
 
@@ -153,9 +159,9 @@ const toastVariants: Variants = {
 
 function counterColor(current: number, max: number): string {
   const pct = current / max;
-  if (pct >= 0.95) return '#DC2626';
-  if (pct >= 0.80) return '#D97706';
-  return '#9CA3AF';
+  if (pct >= 0.95) return RED;
+  if (pct >= 0.80) return WARN;
+  return MUTED;
 }
 
 // ─── Sub-components ───────────────────────────────────────────────────────────
@@ -170,7 +176,7 @@ function CharCounter({
   return (
     <span
       style={{
-        fontSize:      11,
+        fontSize:      T_XS,
         fontWeight:    500,
         color:         counterColor(current, max),
         fontVariantNumeric: 'tabular-nums',
@@ -191,12 +197,12 @@ function RecipientBadge({ count, loading }: { count: number; loading?: boolean }
         alignItems:   'center',
         gap:          6,
         padding:      '5px 12px',
-        background:   '#F0F9FF',
-        border:       '1px solid #BAE6FD',
-        borderRadius: 20,
+        background:   INFO_BG,
+        border:       `1px solid ${INFO}33`,
+        borderRadius: R_PILL,
         fontSize:     12.5,
         fontWeight:   500,
-        color:        '#0369A1',
+        color:        INFO,
       }}
     >
       <Users size={13} aria-hidden />
@@ -219,19 +225,19 @@ const audienceModeStyles = (active: boolean): React.CSSProperties => ({
   fontSize:     12.5,
   fontWeight:   500,
   cursor:       'pointer',
-  border:       `1px solid ${active ? '#D62B38' : '#D1D5DB'}`,
-  background:   active ? '#FEF2F2' : '#FFFFFF',
-  color:        active ? '#D62B38' : '#374151',
+  border:       `1px solid ${active ? RED : BORDER_FIELD}`,
+  background:   active ? `${RED}0F` : SURFACE,
+  color:        active ? RED : INK_SOFT,
   transition:   'border-color 0.15s, background 0.15s, color 0.15s',
 });
 
 const selectStyle: React.CSSProperties = {
   padding:      '8px 10px',
-  border:       '1px solid #D1D5DB',
+  border:       `1px solid ${BORDER_FIELD}`,
   borderRadius: 7,
-  fontSize:     13,
-  color:        '#0F172A',
-  background:   '#FAFAFA',
+  fontSize:     T_BASE,
+  color:        SLATE,
+  background:   SURFACE_SHELL,
   fontFamily:   'inherit',
   width:        '100%',
   boxSizing:    'border-box',
@@ -295,17 +301,17 @@ function IndividualPicker({
               left:         0,
               right:        0,
               marginTop:    4,
-              background:   '#FFFFFF',
-              border:       '1px solid #E5E7EB',
+              background:   SURFACE,
+              border:       `1px solid ${BORDER}`,
               borderRadius: 7,
-              boxShadow:    '0 4px 16px rgba(0,0,0,0.08)',
+              boxShadow:    SHADOW_MD,
               zIndex:       10,
               maxHeight:    200,
               overflowY:    'auto',
             }}
           >
             {loading && (
-              <div style={{ padding: '8px 12px', fontSize: 12, color: '#9CA3AF' }}>Searching…</div>
+              <div style={{ padding: '8px 12px', fontSize: T_SM, color: MUTED }}>Searching…</div>
             )}
             {!loading && results.map(r => (
               <button
@@ -314,11 +320,11 @@ function IndividualPicker({
                 onClick={() => addPick(r)}
                 style={{
                   display: 'block', width: '100%', textAlign: 'left',
-                  padding: '8px 12px', fontSize: 12.5, color: '#0F172A',
+                  padding: '8px 12px', fontSize: 12.5, color: SLATE,
                   background: 'transparent', border: 'none', cursor: 'pointer',
                 }}
               >
-                {r.name} <span style={{ color: '#9CA3AF' }}>({r.email})</span>
+                {r.name} <span style={{ color: MUTED }}>({r.email})</span>
               </button>
             ))}
           </div>
@@ -331,8 +337,8 @@ function IndividualPicker({
               key={s.id}
               style={{
                 display: 'inline-flex', alignItems: 'center', gap: 5,
-                padding: '4px 8px', borderRadius: 14, fontSize: 11.5,
-                background: '#F0F9FF', border: '1px solid #BAE6FD', color: '#0369A1',
+                padding: '4px 8px', borderRadius: R_XL, fontSize: 11.5,
+                background: INFO_BG, border: `1px solid ${INFO}33`, color: INFO,
               }}
             >
               {s.name}
@@ -340,7 +346,7 @@ function IndividualPicker({
                 type="button"
                 onClick={() => removePick(s.id)}
                 aria-label={`Remove ${s.name}`}
-                style={{ display: 'flex', background: 'none', border: 'none', cursor: 'pointer', color: '#0369A1', padding: 0 }}
+                style={{ display: 'flex', background: 'none', border: 'none', cursor: 'pointer', color: INFO, padding: 0 }}
               >
                 <X size={11} aria-hidden />
               </button>
@@ -434,8 +440,8 @@ function EmailPreview({
   return (
     <div
       style={{
-        background:   '#0F0F0F',
-        borderRadius: 8,
+        background:   SLATE,
+        borderRadius: R_MD,
         overflow:     'hidden',
         height:       '100%',
         display:      'flex',
@@ -446,7 +452,7 @@ function EmailPreview({
       {/* Email header band */}
       <div
         style={{
-          background: '#D62B38',
+          background: RED,
           padding:    '16px 20px',
           flexShrink: 0,
         }}
@@ -457,7 +463,7 @@ function EmailPreview({
             fontSize:       9,
             letterSpacing:  '3px',
             textTransform:  'uppercase',
-            color:          'rgba(255,255,255,0.65)',
+            color:          `${SURFACE}A6`,
             marginBottom:   4,
           }}
         >
@@ -466,10 +472,10 @@ function EmailPreview({
         <h3
           style={{
             margin:        0,
-            fontFamily:    'Georgia, serif',
+            fontFamily:    FONT_HEADING,
             fontSize:      subject ? 15 : 13,
             fontWeight:    400,
-            color:         subject ? '#FFFFFF' : 'rgba(255,255,255,0.4)',
+            color:         subject ? SURFACE : `${SURFACE}66`,
             letterSpacing: '0.3px',
             lineHeight:    1.3,
             fontStyle:     subject ? 'normal' : 'italic',
@@ -486,7 +492,7 @@ function EmailPreview({
           padding:    '20px',
           fontSize:   13.5,
           lineHeight: 1.75,
-          color:      '#E8E4DC',
+          color:      BORDER,
           overflowY:  'auto',
         }}
       >
@@ -494,9 +500,9 @@ function EmailPreview({
           <p
             style={{
               margin:     0,
-              color:      '#5A5750',
+              color:      BEIGE,
               fontStyle:  'italic',
-              fontSize:   13,
+              fontSize:   T_BASE,
             }}
           >
             Your message body will appear here. Supports basic HTML formatting.
@@ -513,7 +519,7 @@ function EmailPreview({
       {!isEmpty && (
         <div
           style={{
-            borderTop:  '1px solid #2A2A2A',
+            borderTop:  `1px solid ${INK_SOFT}`,
             padding:    '12px 20px',
             flexShrink: 0,
           }}
@@ -521,8 +527,8 @@ function EmailPreview({
           <p
             style={{
               margin:    0,
-              fontSize:  11,
-              color:     '#5A5750',
+              fontSize:  T_XS,
+              color:     BEIGE,
               lineHeight: 1.6,
             }}
           >
@@ -708,31 +714,31 @@ export default function AnnouncementsClient({
               top:         20,
               left:        '50%',
               transform:   'translateX(-50%)',
-              zIndex:      9999,
+              zIndex:      Z_TOAST,
               display:     'flex',
               alignItems:  'center',
               gap:         8,
               padding:     '10px 18px',
-              borderRadius: 8,
-              fontSize:    13,
+              borderRadius: R_MD,
+              fontSize:    T_BASE,
               fontWeight:  500,
-              boxShadow:   '0 4px 20px rgba(0,0,0,0.1), 0 1px 4px rgba(0,0,0,0.06)',
+              boxShadow:   SHADOW_LG,
               maxWidth:    480,
               whiteSpace:  'nowrap',
               ...(toast.type === 'success' && {
-                background: '#F0FDF4',
-                color:      '#166534',
-                border:     '1px solid #BBF7D0',
+                background: OK_BG,
+                color:      OK,
+                border:     `1px solid ${OK}33`,
               }),
               ...(toast.type === 'warning' && {
-                background: '#FFFBEB',
-                color:      '#92400E',
-                border:     '1px solid #FDE68A',
+                background: WARN_BG,
+                color:      WARN,
+                border:     `1px solid ${WARN}33`,
               }),
               ...(toast.type === 'error' && {
-                background: '#FEF2F2',
-                color:      '#991B1B',
-                border:     '1px solid #FECACA',
+                background: `${RED}0F`,
+                color:      RED_DARK,
+                border:     `1px solid ${RED}33`,
               }),
             }}
           >
@@ -757,8 +763,8 @@ export default function AnnouncementsClient({
             style={{
               position:        'fixed',
               inset:           0,
-              zIndex:          1000,
-              background:      'rgba(0,0,0,0.35)',
+              zIndex:          Z_MODAL,
+              background:      `${SLATE}59`,
               backdropFilter:  'blur(3px)',
               display:         'flex',
               alignItems:      'center',
@@ -778,13 +784,13 @@ export default function AnnouncementsClient({
               aria-labelledby="modal-title"
               onClick={e => e.stopPropagation()}
               style={{
-                background:   '#FFFFFF',
+                background:   SURFACE,
                 borderRadius: 12,
                 padding:      28,
                 width:        '100%',
                 maxWidth:     440,
-                boxShadow:    '0 20px 60px rgba(0,0,0,0.18), 0 4px 16px rgba(0,0,0,0.08)',
-                border:       '1px solid #E5E7EB',
+                boxShadow:    SHADOW_LG,
+                border:       `1px solid ${BORDER}`,
               }}
             >
               {/* Icon + title */}
@@ -793,32 +799,32 @@ export default function AnnouncementsClient({
                   style={{
                     width:          40,
                     height:         40,
-                    borderRadius:   10,
-                    background:     '#FEF2F2',
+                    borderRadius:   R_LG,
+                    background:     `${RED}0F`,
                     display:        'flex',
                     alignItems:     'center',
                     justifyContent: 'center',
                     flexShrink:     0,
                   }}
                 >
-                  <Send size={18} color="#D62B38" aria-hidden />
+                  <Send size={18} color={RED} aria-hidden />
                 </div>
                 <div>
                   <h2
                     id="modal-title"
                     style={{
                       margin:        0,
-                      fontSize:      16,
+                      fontSize:      T_LG,
                       fontWeight:    700,
-                      color:         '#0F172A',
+                      color:         SLATE,
                       letterSpacing: '-0.02em',
                     }}
                   >
                     Send announcement?
                   </h2>
-                  <p style={{ margin: '4px 0 0', fontSize: 13, color: '#6B7280', lineHeight: 1.5 }}>
+                  <p style={{ margin: '4px 0 0', fontSize: T_BASE, color: MUTED, lineHeight: 1.5 }}>
                     This will send an email to&nbsp;
-                    <strong style={{ color: '#0F172A' }}>
+                    <strong style={{ color: SLATE }}>
                       {recipientCount.toLocaleString()} user{recipientCount === 1 ? '' : 's'}
                     </strong>.
                     This action cannot be undone.
@@ -829,9 +835,9 @@ export default function AnnouncementsClient({
               {/* Subject preview */}
               <div
                 style={{
-                  background:   '#F8FAFC',
-                  border:       '1px solid #E5E7EB',
-                  borderRadius: 6,
+                  background:   SURFACE_ALT,
+                  border:       `1px solid ${BORDER}`,
+                  borderRadius: R_SM,
                   padding:      '10px 14px',
                   marginBottom: 22,
                 }}
@@ -841,7 +847,7 @@ export default function AnnouncementsClient({
                     margin:        0,
                     fontSize:      10,
                     fontWeight:    600,
-                    color:         '#9CA3AF',
+                    color:         MUTED,
                     letterSpacing: '0.08em',
                     textTransform: 'uppercase',
                     marginBottom:  4,
@@ -852,8 +858,8 @@ export default function AnnouncementsClient({
                 <p
                   style={{
                     margin:        0,
-                    fontSize:      13,
-                    color:         '#0F172A',
+                    fontSize:      T_BASE,
+                    color:         SLATE,
                     fontWeight:    500,
                     lineHeight:    1.4,
                     wordBreak:     'break-word',
@@ -901,15 +907,15 @@ export default function AnnouncementsClient({
             style={{
               width:          40,
               height:         40,
-              borderRadius:   10,
-              background:     '#FEF2F2',
+              borderRadius:   R_LG,
+              background:     `${RED}0F`,
               display:        'flex',
               alignItems:     'center',
               justifyContent: 'center',
               flexShrink:     0,
             }}
           >
-            <Megaphone size={20} color="#D62B38" aria-hidden />
+            <Megaphone size={20} color={RED} aria-hidden />
           </div>
           <div>
             <h1 style={s.pageTitle}>Announcements</h1>
@@ -932,7 +938,7 @@ export default function AnnouncementsClient({
                   width:  6,
                   height: 6,
                   borderRadius: '50%',
-                  background: '#D62B38',
+                  background: RED,
                   flexShrink: 0,
                   marginTop: 1,
                 }}
@@ -1021,7 +1027,7 @@ export default function AnnouncementsClient({
                 batches={batches}
               />
               {audienceMode === 'individuals' && individuals.length === 0 && (
-                <p style={{ margin: 0, fontSize: 11.5, color: '#9CA3AF' }}>
+                <p style={{ margin: 0, fontSize: 11.5, color: MUTED }}>
                   Search and add at least one student.
                 </p>
               )}
@@ -1101,7 +1107,7 @@ const s: Record<string, React.CSSProperties> = {
     maxWidth:   1080,
     margin:     '0 auto',
     padding:    '8px 0 48px',
-    color:      '#0F172A',
+    color:      SLATE,
     fontFamily: 'system-ui, -apple-system, sans-serif',
   },
 
@@ -1116,7 +1122,8 @@ const s: Record<string, React.CSSProperties> = {
     margin:        0,
     fontSize:      22,
     fontWeight:    700,
-    color:         '#0F172A',
+    color:         SLATE,
+    fontFamily:    FONT_HEADING,
     letterSpacing: '-0.025em',
     lineHeight:    1.2,
   },
@@ -1124,7 +1131,7 @@ const s: Record<string, React.CSSProperties> = {
   pageSubtitle: {
     margin:     '3px 0 0',
     fontSize:   13.5,
-    color:      '#6B7280',
+    color:      MUTED,
     lineHeight: 1.5,
   },
 
@@ -1138,8 +1145,8 @@ const s: Record<string, React.CSSProperties> = {
   },
 
   card: {
-    background:   '#FFFFFF',
-    border:       '1px solid #E5E7EB',
+    background:   SURFACE,
+    border:       `1px solid ${BORDER}`,
     borderRadius: 12,
     padding:      24,
     display:      'flex',
@@ -1157,9 +1164,9 @@ const s: Record<string, React.CSSProperties> = {
     display:       'flex',
     alignItems:    'center',
     gap:           6,
-    fontSize:      11,
+    fontSize:      T_XS,
     fontWeight:    600,
-    color:         '#9CA3AF',
+    color:         MUTED,
     letterSpacing: '0.08em',
     textTransform: 'uppercase',
   },
@@ -1178,24 +1185,24 @@ const s: Record<string, React.CSSProperties> = {
   },
 
   label: {
-    fontSize:      13,
+    fontSize:      T_BASE,
     fontWeight:    600,
-    color:         '#374151',
+    color:         INK_SOFT,
     letterSpacing: '-0.01em',
   },
 
   required: {
-    color:      '#D62B38',
+    color:      RED,
     marginLeft: 2,
   },
 
   input: {
     padding:       '9px 12px',
-    border:        '1px solid #D1D5DB',
+    border:        `1px solid ${BORDER_FIELD}`,
     borderRadius:  7,
-    fontSize:      14,
-    color:         '#0F172A',
-    background:    '#FAFAFA',
+    fontSize:      T_MD,
+    color:         SLATE,
+    background:    SURFACE_SHELL,
     outline:       'none',
     width:         '100%',
     boxSizing:     'border-box',
@@ -1205,11 +1212,11 @@ const s: Record<string, React.CSSProperties> = {
 
   textarea: {
     padding:      '9px 12px',
-    border:       '1px solid #D1D5DB',
+    border:       `1px solid ${BORDER_FIELD}`,
     borderRadius: 7,
     fontSize:     13.5,
-    color:        '#0F172A',
-    background:   '#FAFAFA',
+    color:        SLATE,
+    background:   SURFACE_SHELL,
     outline:      'none',
     width:        '100%',
     boxSizing:    'border-box',
@@ -1221,8 +1228,8 @@ const s: Record<string, React.CSSProperties> = {
   },
 
   inputNearLimit: {
-    borderColor: '#FCA5A5',
-    background:  '#FFF8F8',
+    borderColor: RED,
+    background:  `${RED}0A`,
   },
 
   hint: {
@@ -1230,7 +1237,7 @@ const s: Record<string, React.CSSProperties> = {
     alignItems: 'flex-start',
     gap:        5,
     fontSize:   11.5,
-    color:      '#9CA3AF',
+    color:      MUTED,
     lineHeight: 1.55,
     marginTop:  -4,
   },
@@ -1238,11 +1245,11 @@ const s: Record<string, React.CSSProperties> = {
   code: {
     fontFamily:   'ui-monospace, monospace',
     fontSize:     10.5,
-    background:   '#F3F4F6',
-    color:        '#4B5563',
+    background:   SURFACE_ALT,
+    color:        INK_SOFT,
     padding:      '1px 4px',
     borderRadius: 3,
-    border:       '1px solid #E5E7EB',
+    border:       `1px solid ${BORDER}`,
   },
 
   footer: {
@@ -1251,7 +1258,7 @@ const s: Record<string, React.CSSProperties> = {
     justifyContent: 'space-between',
     gap:            12,
     flexWrap:       'wrap',
-    borderTop:      '1px solid #F3F4F6',
+    borderTop:      `1px solid ${BORDER}`,
     paddingTop:     16,
     marginTop:      -4,
   },
@@ -1261,10 +1268,10 @@ const s: Record<string, React.CSSProperties> = {
     alignItems:   'center',
     gap:          7,
     padding:      '10px 20px',
-    background:   '#D62B38',
-    color:        '#FFFFFF',
+    background:   RED,
+    color:        SURFACE,
     border:       'none',
-    borderRadius: 8,
+    borderRadius: R_MD,
     fontSize:     13.5,
     fontWeight:   600,
     letterSpacing: '-0.01em',
@@ -1275,8 +1282,8 @@ const s: Record<string, React.CSSProperties> = {
 
   previewCaption: {
     margin:     0,
-    fontSize:   11,
-    color:      '#9CA3AF',
+    fontSize:   T_XS,
+    color:      MUTED,
     lineHeight: 1.5,
     fontStyle:  'italic',
   },
@@ -1284,11 +1291,11 @@ const s: Record<string, React.CSSProperties> = {
   // Modal button styles
   cancelBtn: {
     padding:      '9px 18px',
-    background:   '#F9FAFB',
-    color:        '#374151',
-    border:       '1px solid #E5E7EB',
+    background:   SURFACE_SHELL,
+    color:        INK_SOFT,
+    border:       `1px solid ${BORDER}`,
     borderRadius: 7,
-    fontSize:     13,
+    fontSize:     T_BASE,
     fontWeight:   500,
     cursor:       'pointer',
   },
@@ -1298,11 +1305,11 @@ const s: Record<string, React.CSSProperties> = {
     alignItems:   'center',
     gap:          7,
     padding:      '9px 20px',
-    background:   '#D62B38',
-    color:        '#FFFFFF',
+    background:   RED,
+    color:        SURFACE,
     border:       'none',
     borderRadius: 7,
-    fontSize:     13,
+    fontSize:     T_BASE,
     fontWeight:   600,
     cursor:       'pointer',
     letterSpacing: '-0.01em',

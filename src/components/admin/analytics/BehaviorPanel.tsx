@@ -12,6 +12,10 @@ import {
 import ChartCard from './ChartCard';
 import BarList   from './BarList';
 import { msToHuman, fmtNum } from './formatters';
+import {
+  BEIGE, BORDER, INFO, INK_SOFT, MUTED, OK, RED, R_LG, R_MD, SURFACE, SURFACE_ALT,
+  T_MD, T_SM, WARN,
+} from '../lms/lms-shared';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -31,7 +35,12 @@ interface BehaviorPanelProps {
 
 // ─── Palette ──────────────────────────────────────────────────────────────────
 
-const COLORS = ['#D62B38', '#F87171', '#FBBF24', '#34D399', '#60A5FA', '#A78BFA'];
+// A qualitative palette for meaning-free categories (device types, etc) — not
+// semantic (OK/WARN/INFO carry status meaning that doesn't apply to a neutral
+// category bucket). Chosen from the token set for maximum pairwise contrast;
+// INK_SOFT rather than MUTED as the 6th color since MUTED sits too close to
+// WARN in hue/lightness to read as a separate slice in a small legend.
+const COLORS = [RED, WARN, OK, INFO, BEIGE, INK_SOFT];
 
 const EMPTY_NOTE = 'No clickstream data yet — this populates as visitors browse the site.';
 
@@ -82,13 +91,13 @@ export default function BehaviorPanel({ data }: BehaviorPanelProps) {
           alignItems:     'center',
           justifyContent: 'center',
           minHeight:      '240px',
-          color:          '#9CA3AF',
-          fontSize:       '14px',
+          color:          MUTED,
+          fontSize:       T_MD,
           textAlign:      'center',
           padding:        '24px',
-          background:     '#FAFAFA',
-          borderRadius:   '10px',
-          border:         '1px dashed #E5E7EB',
+          background:     SURFACE_ALT,
+          borderRadius:   R_LG,
+          border:         `1px dashed ${BORDER}`,
         }}
       >
         {EMPTY_NOTE}
@@ -117,7 +126,7 @@ export default function BehaviorPanel({ data }: BehaviorPanelProps) {
           empty={isEmpty(data.entryPages)}
           emptyNote={EMPTY_NOTE}
         >
-          <BarList items={entryItems} valueFormat={v => fmtNum(v)} accent="#60A5FA" />
+          <BarList items={entryItems} valueFormat={v => fmtNum(v)} accent={INFO} />
         </ChartCard>
         <ChartCard
           title="Exit Pages"
@@ -125,7 +134,7 @@ export default function BehaviorPanel({ data }: BehaviorPanelProps) {
           empty={isEmpty(data.exitPages)}
           emptyNote={EMPTY_NOTE}
         >
-          <BarList items={exitItems} valueFormat={v => fmtNum(v)} accent="#FBBF24" />
+          <BarList items={exitItems} valueFormat={v => fmtNum(v)} accent={WARN} />
         </ChartCard>
       </div>
 
@@ -157,10 +166,10 @@ export default function BehaviorPanel({ data }: BehaviorPanelProps) {
               </Pie>
               <Tooltip
                 contentStyle={{
-                  background:   '#FFFFFF',
-                  border:       '1px solid #E5E7EB',
-                  borderRadius: '8px',
-                  fontSize:     '12px',
+                  background:   SURFACE,
+                  border:       `1px solid ${BORDER}`,
+                  borderRadius: R_MD,
+                  fontSize:     T_SM,
                 }}
               />
             </PieChart>
@@ -188,18 +197,18 @@ export default function BehaviorPanel({ data }: BehaviorPanelProps) {
                 }
                 labelLine={false}
               >
-                <Cell fill="#D62B38" />
-                <Cell fill="#E5E7EB" />
+                <Cell fill={RED} />
+                <Cell fill={BEIGE} />
               </Pie>
               <Tooltip
                 contentStyle={{
-                  background:   '#FFFFFF',
-                  border:       '1px solid #E5E7EB',
-                  borderRadius: '8px',
-                  fontSize:     '12px',
+                  background:   SURFACE,
+                  border:       `1px solid ${BORDER}`,
+                  borderRadius: R_MD,
+                  fontSize:     T_SM,
                 }}
               />
-              <Legend iconType="circle" iconSize={10} wrapperStyle={{ fontSize: '12px' }} />
+              <Legend iconType="circle" iconSize={10} wrapperStyle={{ fontSize: T_SM, color: MUTED }} />
             </PieChart>
           </ResponsiveContainer>
         </ChartCard>
@@ -212,7 +221,7 @@ export default function BehaviorPanel({ data }: BehaviorPanelProps) {
         empty={isEmpty(data.referrers)}
         emptyNote={EMPTY_NOTE}
       >
-        <BarList items={referrerItems} valueFormat={v => fmtNum(v) + ' visits'} accent="#A78BFA" />
+        <BarList items={referrerItems} valueFormat={v => fmtNum(v) + ' visits'} accent={MUTED} />
       </ChartCard>
     </div>
   );

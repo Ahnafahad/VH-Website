@@ -13,7 +13,7 @@ import {
   RED_HOVER, INK_SOFT, SURFACE, SURFACE_ALT,
   OK, OK_BG, WARN, WARN_BG, INFO,
   R_SM, R_MD, R_LG, R_PILL,
-  SHADOW_SM, FONT_HEADING,
+  SHADOW_SM, FONT_HEADING, T_XS, T_SM, T_BASE,
 } from './lms-shared';
 import type { ClassSession } from './ClassesClient';
 
@@ -106,7 +106,7 @@ function DueChip({ epochMs }: { epochMs: number }) {
     <span style={{
       display: 'inline-flex', alignItems: 'center', gap: 4,
       padding: '2px 8px', borderRadius: R_PILL,
-      fontSize: 11, fontWeight: 600, lineHeight: 1.6,
+      fontSize: T_XS, fontWeight: 600, lineHeight: 1.6,
       background: bg, color, border: `1px solid ${border}`,
     }}>
       {overdue ? <AlertCircle size={10} aria-hidden /> : <Clock size={10} aria-hidden />}
@@ -337,7 +337,7 @@ function AssignmentModal({
           <div style={{ marginTop: 8, display: 'flex', gap: 8, alignItems: 'center' }}>
             <label style={{
               flex: 1, display: 'flex', alignItems: 'center', gap: 6,
-              fontSize: 12, color: MUTED, border: `1px dashed ${BORDER}`,
+              fontSize: T_SM, color: MUTED, border: `1px dashed ${BORDER}`,
               borderRadius: R_MD, padding: '6px 10px', cursor: 'pointer',
             }}>
               <FileText size={13} />
@@ -359,7 +359,7 @@ function AssignmentModal({
                 disabled={uploading}
                 className="hw-btn-primary"
                 style={{
-                  fontSize: 12, fontWeight: 600, padding: '6px 12px', borderRadius: R_MD,
+                  fontSize: T_SM, fontWeight: 600, padding: '6px 12px', borderRadius: R_MD,
                   background: RED, color: SURFACE, border: 'none', cursor: uploading ? 'not-allowed' : 'pointer',
                   opacity: uploading ? 0.7 : 1, display: 'flex', alignItems: 'center', gap: 4,
                 }}
@@ -373,7 +373,7 @@ function AssignmentModal({
             )}
           </div>
           {form.materialId && (
-            <p style={{ fontSize: 11, color: OK, marginTop: 4, display: 'flex', alignItems: 'center', gap: 4 }}>
+            <p style={{ fontSize: T_XS, color: OK, marginTop: 4, display: 'flex', alignItems: 'center', gap: 4 }}>
               <CheckCircle size={11} /> PDF attached: {allMaterials.find(m => String(m.id) === form.materialId)?.title ?? `Material #${form.materialId}`}
               <button
                 type="button"
@@ -388,7 +388,7 @@ function AssignmentModal({
         </div>
         <div>
           <FieldLabel>Solution PDF (optional)</FieldLabel>
-          <p style={{ fontSize: 11, color: MUTED, margin: '0 0 6px' }}>
+          <p style={{ fontSize: T_XS, color: MUTED, margin: '0 0 6px' }}>
             Students unlock this the moment they submit or choose to show their work offline.
           </p>
           {/* Pick existing */}
@@ -404,7 +404,7 @@ function AssignmentModal({
           <div style={{ marginTop: 8, display: 'flex', gap: 8, alignItems: 'center' }}>
             <label style={{
               flex: 1, display: 'flex', alignItems: 'center', gap: 6,
-              fontSize: 12, color: MUTED, border: `1px dashed ${BORDER}`,
+              fontSize: T_SM, color: MUTED, border: `1px dashed ${BORDER}`,
               borderRadius: R_MD, padding: '6px 10px', cursor: 'pointer',
             }}>
               <FileText size={13} />
@@ -426,7 +426,7 @@ function AssignmentModal({
                 disabled={solutionUploading}
                 className="hw-btn-primary"
                 style={{
-                  fontSize: 12, fontWeight: 600, padding: '6px 12px', borderRadius: R_MD,
+                  fontSize: T_SM, fontWeight: 600, padding: '6px 12px', borderRadius: R_MD,
                   background: RED, color: SURFACE, border: 'none', cursor: solutionUploading ? 'not-allowed' : 'pointer',
                   opacity: solutionUploading ? 0.7 : 1, display: 'flex', alignItems: 'center', gap: 4,
                 }}
@@ -440,7 +440,7 @@ function AssignmentModal({
             )}
           </div>
           {form.solutionMaterialId && (
-            <p style={{ fontSize: 11, color: OK, marginTop: 4, display: 'flex', alignItems: 'center', gap: 4 }}>
+            <p style={{ fontSize: T_XS, color: OK, marginTop: 4, display: 'flex', alignItems: 'center', gap: 4 }}>
               <CheckCircle size={11} /> Solution attached: {allMaterials.find(m => String(m.id) === form.solutionMaterialId)?.title ?? `Material #${form.solutionMaterialId}`}
               <button
                 type="button"
@@ -453,7 +453,7 @@ function AssignmentModal({
             </p>
           )}
         </div>
-        {error && <p style={{ fontSize: 12, color: RED, margin: 0 }}>{error}</p>}
+        {error && <p style={{ fontSize: T_SM, color: RED, margin: 0 }}>{error}</p>}
         <FormActions>
           <GhostBtn onClick={onClose} small>Cancel</GhostBtn>
           <PrimaryBtn onClick={handleSave} loading={saving} small>
@@ -600,23 +600,23 @@ function SubmissionsPanel({ assignmentId, onClose }: { assignmentId: number; onC
         borderTopLeftRadius: R_LG, borderTopRightRadius: R_LG,
       }}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 8 }}>
-          <p style={{ margin: 0, fontFamily: FONT_HEADING, fontSize: 13, fontWeight: 700, color: SLATE, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+          <p style={{ margin: 0, fontFamily: FONT_HEADING, fontSize: T_BASE, fontWeight: 700, color: SLATE, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
             {data?.assignment.title ?? 'Submissions'}
           </p>
-          <button onClick={onClose} className="hw-link" style={{ background: 'none', border: 'none', cursor: 'pointer', color: MUTED, fontSize: 12, flexShrink: 0, minHeight: 44, padding: '0 4px' }}>
+          <button onClick={onClose} className="hw-link" style={{ background: 'none', border: 'none', cursor: 'pointer', color: MUTED, fontSize: T_SM, flexShrink: 0, minHeight: 44, padding: '0 4px' }}>
             Close
           </button>
         </div>
         {submittedTotal > 0 && (
           <div style={{ marginTop: 8, display: 'flex', alignItems: 'center', gap: 8 }}>
-            <span style={{ fontSize: 12, fontWeight: 700, color: allMarked ? OK : SLATE, whiteSpace: 'nowrap' }}>
+            <span style={{ fontSize: T_SM, fontWeight: 700, color: allMarked ? OK : SLATE, whiteSpace: 'nowrap' }}>
               {reviewedTotal} of {submittedTotal} reviewed
             </span>
             <div style={{ flex: 1, height: 6, minWidth: 60, borderRadius: R_PILL, background: BORDER, overflow: 'hidden' }}>
               <div style={{ height: '100%', width: `${(reviewedTotal / submittedTotal) * 100}%`, background: OK, borderRadius: R_PILL }} />
             </div>
             {pendingTotal > 0 && (
-              <span style={{ fontSize: 11, color: MUTED, whiteSpace: 'nowrap' }}>{pendingTotal} not submitted</span>
+              <span style={{ fontSize: T_XS, color: MUTED, whiteSpace: 'nowrap' }}>{pendingTotal} not submitted</span>
             )}
           </div>
         )}
@@ -624,11 +624,11 @@ function SubmissionsPanel({ assignmentId, onClose }: { assignmentId: number; onC
 
       <div style={{ padding: '10px 16px 16px', display: 'flex', flexDirection: 'column', gap: 6 }}>
         {loading ? (
-          <p style={{ fontSize: 13, color: MUTED, textAlign: 'center', padding: '24px 0' }}>Loading…</p>
+          <p style={{ fontSize: T_BASE, color: MUTED, textAlign: 'center', padding: '24px 0' }}>Loading…</p>
         ) : error ? (
-          <p style={{ fontSize: 13, color: RED, textAlign: 'center', padding: '24px 0' }}>{error}</p>
+          <p style={{ fontSize: T_BASE, color: RED, textAlign: 'center', padding: '24px 0' }}>{error}</p>
         ) : !data || data.submissions.length === 0 ? (
-          <p style={{ fontSize: 13, color: MUTED, textAlign: 'center', padding: '24px 0' }}>No students in scope.</p>
+          <p style={{ fontSize: T_BASE, color: MUTED, textAlign: 'center', padding: '24px 0' }}>No students in scope.</p>
         ) : (
           data.submissions.map((sub) => {
             if (sub.status === 'pending' || sub.id === null) {
@@ -639,10 +639,10 @@ function SubmissionsPanel({ assignmentId, onClose }: { assignmentId: number; onC
                   background: SURFACE_ALT, border: `1px dashed ${BORDER}`, opacity: 0.7,
                 }}>
                   <span aria-hidden style={{ width: 8, height: 8, borderRadius: '50%', background: BORDER, flexShrink: 0 }} />
-                  <span style={{ flex: 1, minWidth: 0, fontSize: 13, color: MUTED, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                  <span style={{ flex: 1, minWidth: 0, fontSize: T_BASE, color: MUTED, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                     {sub.name}
                   </span>
-                  <span style={{ fontSize: 11, color: MUTED, flexShrink: 0 }}>Not submitted</span>
+                  <span style={{ fontSize: T_XS, color: MUTED, flexShrink: 0 }}>Not submitted</span>
                 </div>
               );
             }
@@ -664,7 +664,7 @@ function SubmissionsPanel({ assignmentId, onClose }: { assignmentId: number; onC
                   background: isReviewed ? OK : WARN,
                 }} />
                 <span title={sub.name} style={{
-                  flex: '0 1 140px', minWidth: 80, fontSize: 13, fontWeight: 600, color: SLATE,
+                  flex: '0 1 140px', minWidth: 80, fontSize: T_BASE, fontWeight: 600, color: SLATE,
                   overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap',
                 }}>
                   {sub.name}
@@ -686,7 +686,7 @@ function SubmissionsPanel({ assignmentId, onClose }: { assignmentId: number; onC
                   style={{
                     flex: '1 1 120px', minWidth: 100, boxSizing: 'border-box', height: 40,
                     padding: '0 10px', borderRadius: R_SM, border: `1px solid ${BORDER}`,
-                    fontSize: 12, color: SLATE, outline: 'none',
+                    fontSize: T_SM, color: SLATE, outline: 'none',
                   }}
                 />
                 <button
@@ -702,24 +702,24 @@ function SubmissionsPanel({ assignmentId, onClose }: { assignmentId: number; onC
                     border: 'none', cursor: saving ? 'not-allowed' : 'pointer',
                     background: isReviewed ? OK_BG : RED,
                     color: isReviewed ? OK : SURFACE,
-                    fontSize: 12, fontWeight: 600, opacity: saving ? 0.7 : 1,
+                    fontSize: T_SM, fontWeight: 600, opacity: saving ? 0.7 : 1,
                   }}
                 >
                   {saving ? <Loader2 size={15} className="animate-spin" aria-hidden /> : <CheckCircle size={15} aria-hidden />}
                   {isReviewed ? 'Reviewed' : 'Mark'}
                 </button>
                 {sub.note && (
-                  <span style={{ flexBasis: '100%', fontSize: 11, color: MUTED, background: SURFACE, border: `1px solid ${BORDER}`, borderRadius: R_SM, padding: '4px 8px' }}>
+                  <span style={{ flexBasis: '100%', fontSize: T_XS, color: MUTED, background: SURFACE, border: `1px solid ${BORDER}`, borderRadius: R_SM, padding: '4px 8px' }}>
                     {sub.note}
                   </span>
                 )}
                 {err && (
-                  <span style={{ flexBasis: '100%', display: 'flex', alignItems: 'center', gap: 6, fontSize: 11, color: RED }}>
+                  <span style={{ flexBasis: '100%', display: 'flex', alignItems: 'center', gap: 6, fontSize: T_XS, color: RED }}>
                     <AlertCircle size={11} aria-hidden /> {err}
                     <button
                       onClick={() => void handleSetReviewed(sub, !isReviewed)}
                       className="hw-link"
-                      style={{ fontSize: 11, fontWeight: 600, color: RED, background: 'none', border: 'none', textDecoration: 'underline', cursor: 'pointer', padding: 0 }}
+                      style={{ fontSize: T_XS, fontWeight: 600, color: RED, background: 'none', border: 'none', textDecoration: 'underline', cursor: 'pointer', padding: 0 }}
                     >
                       Retry
                     </button>
@@ -797,7 +797,7 @@ export default function HomeworkClient({ initialAssignments, sessions, allMateri
       <div style={{ display: 'flex', gap: 8, marginBottom: 20, flexWrap: 'wrap' }}>
         {['all', ...SUBJECTS].map(s => (
           <button key={s} onClick={() => setSubjectFilter(s)} className="hw-pill" style={{
-            padding: '5px 12px', borderRadius: R_PILL, fontSize: 12, cursor: 'pointer',
+            padding: '5px 12px', borderRadius: R_PILL, fontSize: T_SM, cursor: 'pointer',
             fontWeight: subjectFilter === s ? 600 : 400,
             border: `1.5px solid ${subjectFilter === s ? RED : BORDER}`,
             background: subjectFilter === s ? `${RED}0D` : SURFACE,
@@ -825,20 +825,20 @@ export default function HomeworkClient({ initialAssignments, sessions, allMateri
               <div style={{ display: 'flex', alignItems: 'flex-start', gap: 12 }}>
                 <div style={{ flex: 1, minWidth: 0 }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 5, flexWrap: 'wrap' }}>
-                    <p style={{ margin: 0, fontSize: 13, fontWeight: 600, color: SLATE }}>{a.title}</p>
+                    <p style={{ margin: 0, fontSize: T_BASE, fontWeight: 600, color: SLATE }}>{a.title}</p>
                     <SubjectBadge subject={a.subject} />
                     <DueChip epochMs={a.dueAt} />
                     {a.batch && (
-                      <span style={{ fontSize: 11, color: MUTED, background: BG, border: `1px solid ${BORDER}`, padding: '2px 7px', borderRadius: R_PILL }}>
+                      <span style={{ fontSize: T_XS, color: MUTED, background: BG, border: `1px solid ${BORDER}`, padding: '2px 7px', borderRadius: R_PILL }}>
                         Batch {a.batch}
                       </span>
                     )}
                   </div>
-                  <p style={{ margin: '0 0 4px', fontSize: 12, color: INK_SOFT, lineHeight: 1.4,
+                  <p style={{ margin: '0 0 4px', fontSize: T_SM, color: INK_SOFT, lineHeight: 1.4,
                     display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical' as const, overflow: 'hidden' }}>
                     {a.description}
                   </p>
-                  <p style={{ margin: 0, fontSize: 11, color: MUTED }}>
+                  <p style={{ margin: 0, fontSize: T_XS, color: MUTED }}>
                     Due {fmtDhaka(a.dueAt)}
                     {a.classSessionId ? ` · ${sessionMap.get(a.classSessionId)?.title ?? 'Class #' + a.classSessionId}` : ''}
                   </p>
@@ -850,7 +850,7 @@ export default function HomeworkClient({ initialAssignments, sessions, allMateri
                     className="hw-pill"
                     style={{
                       display: 'flex', alignItems: 'center', gap: 4,
-                      padding: '4px 8px', borderRadius: R_SM, fontSize: 11, fontWeight: 500,
+                      padding: '4px 8px', borderRadius: R_SM, fontSize: T_XS, fontWeight: 500,
                       border: `1px solid ${expandedSubmissions === a.id ? RED : BORDER}`,
                       background: expandedSubmissions === a.id ? `${RED}0D` : SURFACE,
                       color: expandedSubmissions === a.id ? RED : MUTED, cursor: 'pointer',

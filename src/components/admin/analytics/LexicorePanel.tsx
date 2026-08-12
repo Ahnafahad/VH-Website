@@ -4,6 +4,9 @@ import React from 'react';
 import StatCard  from './StatCard';
 import ChartCard from './ChartCard';
 import { fmtNum, fmtPct } from './formatters';
+import {
+  BORDER, INK_SOFT, MUTED, RED, R_SM, SURFACE_ALT, T_BASE, T_SM,
+} from '../lms/lms-shared';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -59,7 +62,7 @@ interface LexicorePanelProps {
 
 function SectionHeading({ children }: { children: React.ReactNode }) {
   return (
-    <div style={{ fontSize: '13px', fontWeight: 600, color: '#6B7280', textTransform: 'uppercase', letterSpacing: '0.05em', marginTop: '4px' }}>
+    <div style={{ fontSize: T_BASE, fontWeight: 600, color: MUTED, textTransform: 'uppercase', letterSpacing: '0.05em', marginTop: '4px' }}>
       {children}
     </div>
   );
@@ -161,23 +164,23 @@ export default function LexicorePanel({ data }: LexicorePanelProps) {
                 justifyContent: 'space-between',
                 gap:            '10px',
                 padding:        '8px 10px',
-                background:     '#FAFAFA',
-                borderRadius:   '6px',
-                border:         '1px solid #E5E7EB',
+                background:     SURFACE_ALT,
+                borderRadius:   R_SM,
+                border:         `1px solid ${BORDER}`,
               }}
             >
               <span style={{ display: 'flex', alignItems: 'center', gap: '10px', minWidth: 0 }}>
-                <span style={{ fontSize: '12px', fontWeight: 700, color: '#9CA3AF', width: '18px', flexShrink: 0 }}>
+                <span style={{ fontSize: T_SM, fontWeight: 700, color: MUTED, width: '18px', flexShrink: 0 }}>
                   {i + 1}
                 </span>
-                <span style={{ fontSize: '13px', color: '#111827', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                <span style={{ fontSize: T_BASE, color: INK_SOFT, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                   {u.name}
                 </span>
               </span>
-              <span style={{ display: 'flex', alignItems: 'center', gap: '14px', flexShrink: 0, fontSize: '12px', color: '#6B7280' }}>
+              <span style={{ display: 'flex', alignItems: 'center', gap: '14px', flexShrink: 0, fontSize: T_SM, color: MUTED }}>
                 <span>{u.wordsMastered} mastered</span>
                 <span>{u.streakDays}d streak</span>
-                <span style={{ fontWeight: 700, color: '#D62B38' }}>{fmtNum(u.points)} pts</span>
+                <span style={{ fontWeight: 700, color: RED }}>{fmtNum(u.points)} pts</span>
               </span>
             </div>
           ))}

@@ -14,6 +14,7 @@ import StatCard  from './StatCard';
 import ChartCard from './ChartCard';
 import BarList   from './BarList';
 import { msToHuman, fmtNum, fmtPct } from './formatters';
+import { BORDER, MUTED, RED, R_MD, SURFACE, SURFACE_ALT, T_SM, T_XS } from '../lms/lms-shared';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -91,35 +92,35 @@ export default function OverviewPanel({ data }: OverviewPanelProps) {
       >
         <ResponsiveContainer width="100%" height={220}>
           <LineChart data={dauWau} margin={{ top: 4, right: 8, bottom: 0, left: -16 }}>
-            <CartesianGrid strokeDasharray="3 3" stroke="#F3F4F6" />
+            <CartesianGrid strokeDasharray="3 3" stroke={SURFACE_ALT} />
             <XAxis
               dataKey="date"
-              tick={{ fontSize: 11, fill: '#9CA3AF' }}
+              tick={{ fontSize: T_XS, fill: MUTED }}
               tickLine={false}
               axisLine={false}
             />
             <YAxis
-              tick={{ fontSize: 11, fill: '#9CA3AF' }}
+              tick={{ fontSize: T_XS, fill: MUTED }}
               tickLine={false}
               axisLine={false}
               allowDecimals={false}
             />
             <Tooltip
               contentStyle={{
-                background:   '#FFFFFF',
-                border:       '1px solid #E5E7EB',
-                borderRadius: '8px',
-                fontSize:     '12px',
+                background:   SURFACE,
+                border:       `1px solid ${BORDER}`,
+                borderRadius: R_MD,
+                fontSize:     T_SM,
               }}
             />
             <Line
               type="monotone"
               dataKey="dau"
               name="DAU"
-              stroke="#D62B38"
+              stroke={RED}
               strokeWidth={2}
               dot={false}
-              activeDot={{ r: 4, fill: '#D62B38' }}
+              activeDot={{ r: 4, fill: RED }}
             />
           </LineChart>
         </ResponsiveContainer>

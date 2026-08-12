@@ -11,6 +11,10 @@ import { useCallback, useEffect, useState } from 'react';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import { Loader2, Drama, Check, X } from 'lucide-react';
+import {
+  RED, RED_DARK, SLATE, INK_SOFT, BORDER, MUTED, SURFACE_SHELL, OK, OK_BG,
+  R_SM, R_MD, R_PILL, SHADOW_LG, FONT_HEADING, T_SM, T_BASE, T_XL, Z_TOAST,
+} from '@/components/admin/lms/lms-shared';
 
 type Status = 'pending' | 'approved' | 'rejected';
 
@@ -89,7 +93,7 @@ export default function AvatarRequestsClient() {
   ) {
     return (
       <div style={S.center}>
-        <Loader2 size={28} style={{ animation: 'spin 1s linear infinite', color: '#D62B38' }} />
+        <Loader2 size={28} style={{ animation: 'spin 1s linear infinite', color: RED }} />
         <style>{`@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }`}</style>
       </div>
     );
@@ -106,7 +110,7 @@ export default function AvatarRequestsClient() {
       )}
 
       <div style={S.header}>
-        <Drama size={20} color="#D62B38" aria-hidden />
+        <Drama size={20} color={RED} aria-hidden />
         <div>
           <h1 style={S.title}>Avatar Requests</h1>
           <p style={S.subtitle}>Custom write-ins — not in the catalogue, review before granting.</p>
@@ -127,11 +131,11 @@ export default function AvatarRequestsClient() {
 
       {loading ? (
         <div style={S.center}>
-          <Loader2 size={24} style={{ animation: 'spin 1s linear infinite', color: '#9CA3AF' }} />
+          <Loader2 size={24} style={{ animation: 'spin 1s linear infinite', color: MUTED }} />
         </div>
       ) : rows.length === 0 ? (
         <div style={S.emptyState}>
-          <Drama size={32} color="#D1D5DB" aria-hidden />
+          <Drama size={32} color={BORDER} aria-hidden />
           <p style={S.emptyTitle}>Nothing here.</p>
         </div>
       ) : (
@@ -175,45 +179,45 @@ export default function AvatarRequestsClient() {
 const SANS = "'Inter', 'Sora', system-ui, sans-serif";
 
 const S = {
-  page: { fontFamily: SANS, color: '#111827', maxWidth: 800 } as React.CSSProperties,
+  page: { fontFamily: SANS, color: SLATE, maxWidth: 800 } as React.CSSProperties,
   center: { display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: 200 } as React.CSSProperties,
   toast: {
-    position: 'fixed', top: 20, left: '50%', transform: 'translateX(-50%)', zIndex: 9999,
-    padding: '10px 18px', borderRadius: 8, fontSize: 13, fontWeight: 500,
-    boxShadow: '0 4px 16px rgba(0,0,0,0.16)', whiteSpace: 'nowrap',
+    position: 'fixed', top: 20, left: '50%', transform: 'translateX(-50%)', zIndex: Z_TOAST,
+    padding: '10px 18px', borderRadius: R_MD, fontSize: T_BASE, fontWeight: 500,
+    boxShadow: SHADOW_LG, whiteSpace: 'nowrap',
   } as React.CSSProperties,
-  toastSuccess: { background: 'rgba(46,204,113,0.12)', color: '#1D7A47', border: '1px solid rgba(46,204,113,0.30)' } as React.CSSProperties,
-  toastError: { background: 'rgba(229,57,70,0.10)', color: '#B91C1C', border: '1px solid rgba(229,57,70,0.28)' } as React.CSSProperties,
+  toastSuccess: { background: OK_BG, color: OK, border: `1px solid ${OK}4D` } as React.CSSProperties,
+  toastError: { background: `${RED}0F`, color: RED_DARK, border: `1px solid ${RED}47` } as React.CSSProperties,
   header: { display: 'flex', alignItems: 'flex-start', gap: 10, marginBottom: 20 } as React.CSSProperties,
-  title: { margin: 0, fontSize: 20, fontWeight: 700, color: '#111827' } as React.CSSProperties,
-  subtitle: { margin: '2px 0 0', fontSize: 13, color: '#6B7280', fontWeight: 400 } as React.CSSProperties,
+  title: { margin: 0, fontFamily: FONT_HEADING, fontSize: T_XL, fontWeight: 700, color: SLATE } as React.CSSProperties,
+  subtitle: { margin: '2px 0 0', fontSize: T_BASE, color: MUTED, fontWeight: 400 } as React.CSSProperties,
   chips: { display: 'flex', gap: 8, marginBottom: 16 } as React.CSSProperties,
   chip: {
-    padding: '6px 14px', borderRadius: 20, border: '1px solid #E5E7EB', background: 'transparent',
-    cursor: 'pointer', fontSize: 12, fontWeight: 500, color: '#6B7280', textTransform: 'capitalize' as const,
+    padding: '6px 14px', borderRadius: R_PILL, border: `1px solid ${BORDER}`, background: 'transparent',
+    cursor: 'pointer', fontSize: T_SM, fontWeight: 500, color: MUTED, textTransform: 'capitalize' as const,
   } as React.CSSProperties,
-  chipActive: { background: 'rgba(214,43,56,0.06)', border: '1px solid rgba(214,43,56,0.25)', color: '#D62B38' } as React.CSSProperties,
+  chipActive: { background: `${RED}0F`, border: `1px solid ${RED}40`, color: RED } as React.CSSProperties,
   emptyState: {
     display: 'flex', flexDirection: 'column' as const, alignItems: 'center', justifyContent: 'center',
     padding: '48px 24px', gap: 10, textAlign: 'center' as const,
   } as React.CSSProperties,
-  emptyTitle: { margin: 0, fontSize: 15, fontWeight: 600, color: '#374151' } as React.CSSProperties,
+  emptyTitle: { margin: 0, fontSize: 15, fontWeight: 600, color: INK_SOFT } as React.CSSProperties,
   list: { display: 'flex', flexDirection: 'column' as const, gap: 8 } as React.CSSProperties,
   card: {
     display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12,
-    background: '#FAFAFA', border: '1px solid #E5E7EB', borderRadius: 8, padding: '12px 14px', flexWrap: 'wrap' as const,
+    background: SURFACE_SHELL, border: `1px solid ${BORDER}`, borderRadius: R_MD, padding: '12px 14px', flexWrap: 'wrap' as const,
   } as React.CSSProperties,
   cardBody: { minWidth: 0, flex: 1 } as React.CSSProperties,
-  name: { margin: 0, fontSize: 13, fontWeight: 600, color: '#111827' } as React.CSSProperties,
-  email: { fontWeight: 400, color: '#9CA3AF', fontSize: 12, marginLeft: 6 } as React.CSSProperties,
-  request: { margin: '4px 0 0', fontSize: 13, color: '#374151', fontStyle: 'italic' as const } as React.CSSProperties,
+  name: { margin: 0, fontSize: T_BASE, fontWeight: 600, color: SLATE } as React.CSSProperties,
+  email: { fontWeight: 400, color: MUTED, fontSize: T_SM, marginLeft: 6 } as React.CSSProperties,
+  request: { margin: '4px 0 0', fontSize: T_BASE, color: INK_SOFT, fontStyle: 'italic' as const } as React.CSSProperties,
   actions: { display: 'flex', gap: 8, flexShrink: 0 } as React.CSSProperties,
   approveBtn: {
-    display: 'flex', alignItems: 'center', gap: 6, background: 'transparent', border: '1px solid rgba(46,204,113,0.35)',
-    borderRadius: 6, padding: '7px 12px', cursor: 'pointer', color: '#1D7A47', fontSize: 12, fontWeight: 500,
+    display: 'flex', alignItems: 'center', gap: 6, background: OK_BG, border: `1px solid ${OK}59`,
+    borderRadius: R_SM, padding: '7px 12px', cursor: 'pointer', color: OK, fontSize: T_SM, fontWeight: 500,
   } as React.CSSProperties,
   rejectBtn: {
-    display: 'flex', alignItems: 'center', gap: 6, background: 'transparent', border: '1px solid rgba(229,57,70,0.35)',
-    borderRadius: 6, padding: '7px 12px', cursor: 'pointer', color: '#D62B38', fontSize: 12, fontWeight: 500,
+    display: 'flex', alignItems: 'center', gap: 6, background: `${RED}0F`, border: `1px solid ${RED}59`,
+    borderRadius: R_SM, padding: '7px 12px', cursor: 'pointer', color: RED, fontSize: T_SM, fontWeight: 500,
   } as React.CSSProperties,
 };

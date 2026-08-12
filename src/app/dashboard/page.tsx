@@ -21,6 +21,7 @@ export default async function DashboardPage() {
       data={data}
       userName={user.name ?? session.user.name ?? 'Student'}
       studentId={user.studentId}
+      userId={user.id}
     />
   );
 }

@@ -42,7 +42,7 @@ import {
   R_MD, R_LG, R_PILL,
   SHADOW_SM,
   FONT_HEADING,
-  SPIN_CSS,
+  SPIN_CSS, T_XS, T_SM, T_BASE,
 } from './lms-shared';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
@@ -163,6 +163,7 @@ const LOCAL_STYLES = `
   .cdc-link:hover { color: ${RED_DARK}; }
   .cdc-btn-primary { transition: background-color .15s; }
   .cdc-btn-primary:hover:not(:disabled) { background: ${RED_HOVER}; }
+  .cdc-input:hover { border-color: ${MUTED}; }
   .cdc-iconbtn:focus-visible, .cdc-link:focus-visible, .cdc-btn-primary:focus-visible,
   .cdc-input:focus-visible, .cdc-pick-row:focus-visible, .cdc-back:focus-visible {
     outline: 2px solid ${RED}; outline-offset: 2px;
@@ -215,7 +216,7 @@ function recordingStatusBadge(status: string) {
 }
 
 const sectionLabel: React.CSSProperties = {
-  fontFamily: FONT_HEADING, fontSize: 12, textTransform: 'uppercase', letterSpacing: '0.08em',
+  fontFamily: FONT_HEADING, fontSize: T_SM, textTransform: 'uppercase', letterSpacing: '0.08em',
   color: MUTED, fontWeight: 600, margin: 0,
 };
 
@@ -224,7 +225,7 @@ const cardStyle: React.CSSProperties = {
 };
 
 const inputStyle: React.CSSProperties = {
-  fontSize: 12, border: `1px solid ${BORDER}`, borderRadius: R_MD, padding: '7px 10px',
+  fontSize: T_SM, border: `1px solid ${BORDER}`, borderRadius: R_MD, padding: '7px 10px',
   color: SLATE, background: SURFACE, outline: 'none',
 };
 
@@ -533,7 +534,7 @@ export default function ClassDetailClient({
           }}>
             {classSession.title}
           </h1>
-          <p style={{ margin: 0, fontSize: 12, color: MUTED, textTransform: 'capitalize' }}>
+          <p style={{ margin: 0, fontSize: T_SM, color: MUTED, textTransform: 'capitalize' }}>
             {classSession.subject} · {classSession.product}
             {classSession.batch ? ` · Batch ${classSession.batch}` : ''}
           </p>
@@ -550,7 +551,7 @@ export default function ClassDetailClient({
               onClick={() => setEditOpen(true)}
               className="cdc-link"
               style={{
-                display: 'flex', alignItems: 'center', gap: 4, fontSize: 12, fontWeight: 600,
+                display: 'flex', alignItems: 'center', gap: 4, fontSize: T_SM, fontWeight: 600,
                 color: INFO, background: 'none', border: 'none', cursor: 'pointer', padding: '4px 0',
               }}
             >
@@ -559,7 +560,7 @@ export default function ClassDetailClient({
             </button>
           </div>
           <dl style={{
-            display: 'grid', gridTemplateColumns: 'auto 1fr', columnGap: 16, rowGap: 8, fontSize: 13, margin: 0,
+            display: 'grid', gridTemplateColumns: 'auto 1fr', columnGap: 16, rowGap: 8, fontSize: T_BASE, margin: 0,
           }}>
             <dt style={{ color: MUTED, margin: 0 }}>Scheduled</dt>
             <dd style={{ fontWeight: 500, color: SLATE, margin: 0 }}>
@@ -591,7 +592,7 @@ export default function ClassDetailClient({
                     rel="noopener noreferrer"
                     className="cdc-link"
                     style={{
-                      color: INFO, textDecoration: 'underline', fontSize: 12,
+                      color: INFO, textDecoration: 'underline', fontSize: T_SM,
                       display: 'block', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap',
                     }}
                   >
@@ -604,7 +605,7 @@ export default function ClassDetailClient({
               <>
                 <dt style={{ color: MUTED, margin: 0 }}>Bot ID</dt>
                 <dd style={{
-                  fontSize: 11, color: MUTED, fontFamily: 'monospace', margin: 0,
+                  fontSize: T_XS, color: MUTED, fontFamily: 'monospace', margin: 0,
                   overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap',
                 }}>
                   {classSession.recallBotId}
@@ -628,19 +629,19 @@ export default function ClassDetailClient({
               <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
                 {recordingStatusBadge(recording.status)}
                 {recording.durationSeconds && (
-                  <span style={{ fontSize: 12, color: MUTED }}>
+                  <span style={{ fontSize: T_SM, color: MUTED }}>
                     {Math.round(recording.durationSeconds / 60)} min
                   </span>
                 )}
                 {recording.fileSize && (
-                  <span style={{ fontSize: 12, color: MUTED }}>
+                  <span style={{ fontSize: T_SM, color: MUTED }}>
                     {(recording.fileSize / 1_000_000).toFixed(1)} MB
                   </span>
                 )}
               </div>
               {recording.errorMessage && (
                 <p style={{
-                  margin: 0, fontSize: 12, color: RED, background: `${RED}14`,
+                  margin: 0, fontSize: T_SM, color: RED, background: `${RED}14`,
                   borderRadius: R_MD, padding: '8px 12px',
                 }}>
                   {recording.errorMessage}
@@ -649,10 +650,10 @@ export default function ClassDetailClient({
 
               {/* ── Grants ─────────────────────────────────────────────────── */}
               <div style={{ borderTop: `1px solid ${BORDER}`, paddingTop: 12 }}>
-                <p style={{ margin: '0 0 8px', fontSize: 12, fontWeight: 600, color: SLATE }}>Access Grants</p>
+                <p style={{ margin: '0 0 8px', fontSize: T_SM, fontWeight: 600, color: SLATE }}>Access Grants</p>
 
                 {grants.length === 0 ? (
-                  <p style={{ margin: 0, fontSize: 12, color: MUTED }}>No active grants.</p>
+                  <p style={{ margin: 0, fontSize: T_SM, color: MUTED }}>No active grants.</p>
                 ) : (
                   <ul style={{ display: 'flex', flexDirection: 'column', gap: 6, margin: 0, padding: 0, listStyle: 'none' }}>
                     {grants.map((g) => {
@@ -664,7 +665,7 @@ export default function ClassDetailClient({
                       return (
                         <li
                           key={g.id}
-                          style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 12 }}
+                          style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: T_SM }}
                         >
                           {isExpired ? (
                             <XCircle size={14} strokeWidth={1.5} style={{ color: `${RED}99`, flexShrink: 0 }} aria-hidden />
@@ -703,7 +704,7 @@ export default function ClassDetailClient({
                   marginTop: 12, paddingTop: 12, borderTop: `1px solid ${BORDER}`,
                   display: 'flex', flexDirection: 'column', gap: 8,
                 }}>
-                  <p style={{ margin: 0, fontSize: 12, fontWeight: 600, color: SLATE, display: 'flex', alignItems: 'center', gap: 4 }}>
+                  <p style={{ margin: 0, fontSize: T_SM, fontWeight: 600, color: SLATE, display: 'flex', alignItems: 'center', gap: 4 }}>
                     <Plus size={12} strokeWidth={2} aria-hidden /> Add Extension Grant
                   </p>
 
@@ -738,7 +739,7 @@ export default function ClassDetailClient({
                         whileTap={{ scale: 0.97 }}
                         className="cdc-btn-primary"
                         style={{
-                          display: 'flex', alignItems: 'center', gap: 6, fontSize: 12, fontWeight: 600,
+                          display: 'flex', alignItems: 'center', gap: 6, fontSize: T_SM, fontWeight: 600,
                           background: RED, color: SURFACE, padding: '0 14px', height: 40, borderRadius: R_MD,
                           border: 'none', cursor: isPending ? 'not-allowed' : 'pointer',
                           opacity: isPending ? 0.6 : 1, whiteSpace: 'nowrap',
@@ -755,7 +756,7 @@ export default function ClassDetailClient({
                   </div>
 
                   {grantError && (
-                    <p style={{ margin: 0, fontSize: 12, color: RED }}>{grantError}</p>
+                    <p style={{ margin: 0, fontSize: T_SM, color: RED }}>{grantError}</p>
                   )}
                 </form>
               </div>
@@ -774,7 +775,7 @@ export default function ClassDetailClient({
               onClick={() => void openAttachPicker()}
               className="cdc-link"
               style={{
-                display: 'flex', alignItems: 'center', gap: 4, fontSize: 12, fontWeight: 600,
+                display: 'flex', alignItems: 'center', gap: 4, fontSize: T_SM, fontWeight: 600,
                 color: INFO, background: 'none', border: 'none', cursor: 'pointer', padding: '4px 0',
               }}
             >
@@ -784,17 +785,17 @@ export default function ClassDetailClient({
           </div>
 
           {matError && (
-            <p style={{ margin: '0 0 8px', fontSize: 12, color: RED }}>{matError}</p>
+            <p style={{ margin: '0 0 8px', fontSize: T_SM, color: RED }}>{matError}</p>
           )}
 
           {/* Attached materials list */}
           {sessionMats.length === 0 ? (
-            <p style={{ margin: '0 0 12px', fontSize: 13, color: MUTED }}>No PDFs attached yet.</p>
+            <p style={{ margin: '0 0 12px', fontSize: T_BASE, color: MUTED }}>No PDFs attached yet.</p>
           ) : (
             <ul style={{ display: 'flex', flexDirection: 'column', gap: 6, margin: '0 0 12px', padding: 0, listStyle: 'none' }}>
               {sessionMats.map((m) => (
                 <li key={m.id} style={{
-                  display: 'flex', alignItems: 'center', gap: 8, fontSize: 12,
+                  display: 'flex', alignItems: 'center', gap: 8, fontSize: T_SM,
                   background: SURFACE_ALT, borderRadius: R_MD, padding: '8px 12px',
                 }}>
                   <FileText size={14} strokeWidth={1.5} style={{ color: MUTED, flexShrink: 0 }} aria-hidden />
@@ -830,15 +831,15 @@ export default function ClassDetailClient({
           {/* Attach existing picker */}
           {showAttachPicker && (
             <div style={{ border: `1px solid ${BORDER}`, borderRadius: R_MD, padding: 12, marginBottom: 12, background: BG }}>
-              <p style={{ margin: '0 0 8px', fontSize: 12, fontWeight: 600, color: SLATE }}>Pick an existing PDF</p>
+              <p style={{ margin: '0 0 8px', fontSize: T_SM, fontWeight: 600, color: SLATE }}>Pick an existing PDF</p>
               {loadingAllMats ? (
-                <p style={{ margin: 0, fontSize: 12, color: MUTED, display: 'flex', alignItems: 'center', gap: 4 }}>
+                <p style={{ margin: 0, fontSize: T_SM, color: MUTED, display: 'flex', alignItems: 'center', gap: 4 }}>
                   <Loader2 size={12} className="animate-spin" aria-hidden /> Loading…
                 </p>
               ) : (
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 4, maxHeight: 192, overflowY: 'auto' }}>
                   {allMaterials.filter((m) => !sessionMats.find((s) => s.id === m.id)).length === 0 ? (
-                    <p style={{ margin: 0, fontSize: 12, color: MUTED }}>No other PDFs available.</p>
+                    <p style={{ margin: 0, fontSize: T_SM, color: MUTED }}>No other PDFs available.</p>
                   ) : (
                     allMaterials
                       .filter((m) => !sessionMats.find((s) => s.id === m.id))
@@ -850,7 +851,7 @@ export default function ClassDetailClient({
                           className="cdc-pick-row"
                           style={{
                             width: '100%', textAlign: 'left', display: 'flex', alignItems: 'center', gap: 8,
-                            fontSize: 12, padding: '8px 10px', borderRadius: R_MD,
+                            fontSize: T_SM, padding: '8px 10px', borderRadius: R_MD,
                             border: `1px solid transparent`, background: 'none', cursor: 'pointer',
                             opacity: attachingId === m.id ? 0.6 : 1,
                           }}
@@ -868,7 +869,7 @@ export default function ClassDetailClient({
               <button
                 onClick={() => setShowAttachPicker(false)}
                 className="cdc-link"
-                style={{ marginTop: 8, fontSize: 12, color: MUTED, background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}
+                style={{ marginTop: 8, fontSize: T_SM, color: MUTED, background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}
               >
                 Cancel
               </button>
@@ -877,7 +878,7 @@ export default function ClassDetailClient({
 
           {/* Upload new PDF */}
           <div style={{ borderTop: `1px solid ${BORDER}`, paddingTop: 12 }}>
-            <p style={{ margin: '0 0 8px', fontSize: 12, fontWeight: 600, color: SLATE, display: 'flex', alignItems: 'center', gap: 4 }}>
+            <p style={{ margin: '0 0 8px', fontSize: T_SM, fontWeight: 600, color: SLATE, display: 'flex', alignItems: 'center', gap: 4 }}>
               <Upload size={13} strokeWidth={2} aria-hidden /> Upload new PDF
             </p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
@@ -891,7 +892,7 @@ export default function ClassDetailClient({
               />
               <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
                 <label style={{
-                  flex: '1 1 160px', minWidth: 0, display: 'flex', alignItems: 'center', gap: 6, fontSize: 12,
+                  flex: '1 1 160px', minWidth: 0, display: 'flex', alignItems: 'center', gap: 6, fontSize: T_SM,
                   border: `1px dashed ${BORDER}`, borderRadius: R_MD, padding: '8px 12px', cursor: 'pointer',
                 }}>
                   <FileText size={14} strokeWidth={1.5} style={{ color: MUTED, flexShrink: 0 }} aria-hidden />
@@ -911,7 +912,7 @@ export default function ClassDetailClient({
                   whileTap={{ scale: 0.97 }}
                   className="cdc-btn-primary"
                   style={{
-                    display: 'flex', alignItems: 'center', gap: 6, fontSize: 12, fontWeight: 600,
+                    display: 'flex', alignItems: 'center', gap: 6, fontSize: T_SM, fontWeight: 600,
                     background: RED, color: SURFACE, height: 40, padding: '0 14px', borderRadius: R_MD,
                     border: 'none', cursor: (!matUploadFile || matUploading) ? 'not-allowed' : 'pointer',
                     opacity: (!matUploadFile || matUploading) ? 0.5 : 1, whiteSpace: 'nowrap',
@@ -947,7 +948,7 @@ export default function ClassDetailClient({
             </div>
           ) : (
             <div style={{ overflowX: 'auto' }}>
-              <table style={{ width: '100%', fontSize: 12, borderCollapse: 'collapse' }}>
+              <table style={{ width: '100%', fontSize: T_SM, borderCollapse: 'collapse' }}>
                 <thead>
                   <tr style={{ background: SURFACE_ALT, borderBottom: `1px solid ${BORDER}` }}>
                     <th style={{ textAlign: 'left', padding: '10px 16px', fontWeight: 600, color: MUTED }}>Student</th>
@@ -1039,7 +1040,7 @@ export default function ClassDetailClient({
             <ul style={{ display: 'flex', flexDirection: 'column', gap: 6, margin: 0, padding: 0, listStyle: 'none' }}>
               {homework.map((h) => (
                 <li key={h.id} style={{
-                  display: 'flex', alignItems: 'center', gap: 8, fontSize: 12,
+                  display: 'flex', alignItems: 'center', gap: 8, fontSize: T_SM,
                   background: SURFACE_ALT, borderRadius: R_MD, padding: '8px 12px',
                 }}>
                   <BookMarked size={14} strokeWidth={1.5} style={{ color: MUTED, flexShrink: 0 }} aria-hidden />
@@ -1089,13 +1090,13 @@ export default function ClassDetailClient({
                   <div style={{ display: 'flex', alignItems: 'flex-start', gap: 8 }}>
                     <div style={{ flex: 1, minWidth: 0 }}>
                       <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 4, flexWrap: 'wrap' }}>
-                        <span style={{ fontSize: 12, fontWeight: 600, color: SLATE }}>{thread.userName}</span>
+                        <span style={{ fontSize: T_SM, fontWeight: 600, color: SLATE }}>{thread.userName}</span>
                         {thread.isStaff && <Pill bg={RED} color={SURFACE}>Staff</Pill>}
                         <span style={{ fontSize: 10, color: MUTED, marginLeft: 'auto' }}>
                           {formatDhaka(new Date(thread.createdAt), 'datetime')}
                         </span>
                       </div>
-                      <p style={{ margin: 0, fontSize: 13, color: INK_SOFT, lineHeight: 1.5 }}>{thread.body}</p>
+                      <p style={{ margin: 0, fontSize: T_BASE, color: INK_SOFT, lineHeight: 1.5 }}>{thread.body}</p>
                     </div>
                     <button
                       onClick={() => void handleDeleteQA(thread.id)}
@@ -1125,7 +1126,7 @@ export default function ClassDetailClient({
                           border: ans.isStaff ? `1px solid ${RED}26` : 'none',
                         }}>
                           <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 4, flexWrap: 'wrap' }}>
-                            <span style={{ fontSize: 12, fontWeight: 600, color: SLATE }}>{ans.userName}</span>
+                            <span style={{ fontSize: T_SM, fontWeight: 600, color: SLATE }}>{ans.userName}</span>
                             {ans.isStaff && <Pill bg={RED} color={SURFACE}>Staff</Pill>}
                             <span style={{ fontSize: 10, color: MUTED, marginLeft: 'auto' }}>
                               {formatDhaka(new Date(ans.createdAt), 'time')}
@@ -1147,7 +1148,7 @@ export default function ClassDetailClient({
                               }
                             </button>
                           </div>
-                          <p style={{ margin: 0, fontSize: 12, color: INK_SOFT, lineHeight: 1.5 }}>{ans.body}</p>
+                          <p style={{ margin: 0, fontSize: T_SM, color: INK_SOFT, lineHeight: 1.5 }}>{ans.body}</p>
                         </div>
                       ))}
                     </div>

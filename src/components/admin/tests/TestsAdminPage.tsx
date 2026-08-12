@@ -38,35 +38,64 @@ import {
   ZapOff,
 } from 'lucide-react';
 import { BUCKET_LABELS, type TestBucket, type AttemptStatus, type TestMode } from '@/lib/tests/types';
-import { ConfirmDialog } from '../lms/lms-shared';
+import {
+  BG,
+  BORDER,
+  BORDER_FIELD,
+  FONT_HEADING,
+  INFO,
+  INFO_BG,
+  INK_SOFT,
+  MUTED,
+  OK,
+  OK_BG,
+  RED,
+  RED_DARK,
+  R_LG,
+  R_MD,
+  R_PILL,
+  R_SM,
+  SHADOW_LG,
+  SPIN_CSS,
+  SLATE,
+  SURFACE,
+  SURFACE_ALT,
+  T_BASE,
+  T_MD,
+  T_SM,
+  T_XS,
+  WARN,
+  WARN_BG,
+  ConfirmDialog,
+} from '../lms/lms-shared';
 import TestAnalytics from './TestAnalytics';
 
 // ─── Design tokens (light admin palette, matching existing admin pages) ────────
 
 export const C = {
-  bg:         '#FFFFFF',
-  surface:    '#FAFAFA',
-  border:     '#E5E7EB',
-  red:        '#D62B38',
-  redLight:   'rgba(214,43,56,0.06)',
-  redMid:     'rgba(214,43,56,0.12)',
-  text:       '#111827',
-  textSec:    '#6B7280',
-  textMuted:  '#9CA3AF',
-  success:    '#059669',
-  successBg:  'rgba(5,150,105,0.08)',
-  successBdr: 'rgba(5,150,105,0.25)',
-  warn:       '#D97706',
-  warnBg:     'rgba(217,119,6,0.08)',
-  warnBdr:    'rgba(217,119,6,0.25)',
-  danger:     '#DC2626',
-  dangerBg:   'rgba(220,38,38,0.08)',
-  dangerBdr:  'rgba(220,38,38,0.25)',
-  infoBg:     'rgba(59,130,246,0.08)',
-  infoBdr:    'rgba(59,130,246,0.25)',
-  infoText:   '#1D4ED8',
-  gold:       '#B45309',
-  goldBg:     'rgba(180,83,9,0.08)',
+  bg:         SURFACE,
+  surface:    SURFACE_ALT,
+  border:     BORDER,
+  red:        RED,
+  redLight:   `${RED}0F`,
+  redMid:     `${RED}1F`,
+  text:       SLATE,
+  textSec:    INK_SOFT,
+  textMuted:  MUTED,
+  success:    OK,
+  successBg:  OK_BG,
+  successBdr: `${OK}40`,
+  warn:       WARN,
+  warnBg:     WARN_BG,
+  warnBdr:    `${WARN}40`,
+  danger:     RED_DARK,
+  dangerBg:   `${RED}14`,
+  dangerBdr:  `${RED}40`,
+  infoBg:     INFO_BG,
+  infoBdr:    `${INFO}40`,
+  infoText:   INFO,
+  gold:       WARN,
+  goldBg:     WARN_BG,
 } as const;
 
 export const SANS = 'system-ui, -apple-system, sans-serif';
@@ -188,7 +217,7 @@ function Badge({ value }: { value: string }) {
   return (
     <span style={{
       display: 'inline-flex', alignItems: 'center',
-      padding: '2px 8px', borderRadius: 99, fontSize: 11, fontWeight: 600,
+      padding: '2px 8px', borderRadius: R_PILL, fontSize: T_XS, fontWeight: 600,
       background: s.bg, color: s.color, letterSpacing: '0.02em',
       whiteSpace: 'nowrap',
     }}>{s.label}</span>
@@ -199,8 +228,8 @@ function BucketBadge({ bucket }: { bucket: TestBucket }) {
   return (
     <span style={{
       display: 'inline-flex', alignItems: 'center',
-      padding: '2px 8px', borderRadius: 99, fontSize: 11, fontWeight: 700,
-      background: bucket === 'iba' ? 'rgba(214,43,56,0.10)' : 'rgba(59,130,246,0.10)',
+      padding: '2px 8px', borderRadius: R_PILL, fontSize: T_XS, fontWeight: 700,
+      background: bucket === 'iba' ? `${RED}1A` : `${INFO}1A`,
       color: bucket === 'iba' ? C.red : C.infoText,
       letterSpacing: '0.03em',
     }}>{BUCKET_LABELS[bucket]}</span>
@@ -219,18 +248,18 @@ export function Btn({
 }) {
   const base: React.CSSProperties = {
     display: 'inline-flex', alignItems: 'center', gap: 6,
-    border: 'none', borderRadius: 6, cursor: disabled ? 'not-allowed' : 'pointer',
+    border: 'none', borderRadius: R_SM, cursor: disabled ? 'not-allowed' : 'pointer',
     fontFamily: SANS, fontWeight: 600, opacity: disabled ? 0.6 : 1,
     transition: 'background 0.15s',
     padding: size === 'sm' ? '5px 10px' : '8px 14px',
-    fontSize: size === 'sm' ? 12 : 13,
+    fontSize: size === 'sm' ? T_SM : T_BASE,
   };
   if (variant === 'primary') {
     return (
       <button onClick={onClick} disabled={disabled} style={{
         ...base,
         background: danger ? C.danger : C.red,
-        color: '#fff',
+        color: SURFACE,
       }}>{children}</button>
     );
   }
@@ -266,7 +295,7 @@ export function Spinner({ size = 16 }: { size?: number }) {
 export function SectionTitle({ children }: { children: React.ReactNode }) {
   return (
     <h3 style={{
-      margin: 0, fontSize: 12, fontWeight: 700, color: C.textMuted,
+      margin: 0, fontSize: T_SM, fontWeight: 700, color: C.textMuted,
       textTransform: 'uppercase', letterSpacing: '0.07em',
       fontFamily: SANS, paddingBottom: 10,
       borderBottom: `1px solid ${C.border}`, marginBottom: 14,
@@ -288,8 +317,8 @@ function Toast({ toast, onClose }: { toast: ToastState; onClose: () => void }) {
     <div style={{
       position: 'fixed', top: 20, left: '50%', transform: 'translateX(-50%)',
       zIndex: 9999, display: 'flex', alignItems: 'center', gap: 8,
-      padding: '10px 16px', borderRadius: 8, fontSize: 13, fontFamily: SANS,
-      fontWeight: 500, boxShadow: '0 4px 16px rgba(0,0,0,0.14)',
+      padding: '10px 16px', borderRadius: R_MD, fontSize: T_BASE, fontFamily: SANS,
+      fontWeight: 500, boxShadow: SHADOW_LG,
       maxWidth: 'min(520px, calc(100vw - 32px))',
       background: s.bg, color: s.color, border: `1px solid ${s.border}`,
     }}>
@@ -360,13 +389,13 @@ function TestSettings({
 
       {/* Status */}
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, alignItems: 'center' }}>
-        <span style={{ fontSize: 13, color: C.text, fontWeight: 600, fontFamily: SANS, marginRight: 4 }}>Status:</span>
+        <span style={{ fontSize: T_BASE, color: C.text, fontWeight: 600, fontFamily: SANS, marginRight: 4 }}>Status:</span>
         {(['draft', 'published', 'archived'] as const).map(s => (
           <button
             key={s}
             onClick={() => setStatus(s)}
             style={{
-              padding: '5px 12px', borderRadius: 6, fontSize: 12, fontWeight: 600,
+              padding: '5px 12px', borderRadius: R_SM, fontSize: T_SM, fontWeight: 600,
               fontFamily: SANS, cursor: 'pointer',
               background: status === s ? (s === 'published' ? C.successBg : s === 'archived' ? C.goldBg : C.surface) : 'transparent',
               color: status === s ? (s === 'published' ? C.success : s === 'archived' ? C.gold : C.text) : C.textSec,
@@ -387,7 +416,7 @@ function TestSettings({
 
       {/* Publish results */}
       <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-        <label style={{ display: 'flex', alignItems: 'center', gap: 8, cursor: 'pointer', fontSize: 13, fontFamily: SANS, color: C.text }}>
+        <label style={{ display: 'flex', alignItems: 'center', gap: 8, cursor: 'pointer', fontSize: T_BASE, fontFamily: SANS, color: C.text }}>
           <input
             type="checkbox"
             checked={resultsPublished}
@@ -396,7 +425,7 @@ function TestSettings({
           />
           <span>Force-publish results</span>
         </label>
-        <span style={{ fontSize: 12, color: C.textMuted, fontFamily: SANS }}>
+        <span style={{ fontSize: T_SM, color: C.textMuted, fontFamily: SANS }}>
           (normally auto-releases when all windows close)
         </span>
         <Btn
@@ -410,17 +439,17 @@ function TestSettings({
 
       {/* Allowed products */}
       <div>
-        <div style={{ fontSize: 13, fontWeight: 600, color: C.text, fontFamily: SANS, marginBottom: 8 }}>
+        <div style={{ fontSize: T_BASE, fontWeight: 600, color: C.text, fontFamily: SANS, marginBottom: 8 }}>
           Access control
         </div>
-        <label style={{ display: 'flex', alignItems: 'center', gap: 8, cursor: 'pointer', fontSize: 13, fontFamily: SANS, color: C.text, marginBottom: 8 }}>
+        <label style={{ display: 'flex', alignItems: 'center', gap: 8, cursor: 'pointer', fontSize: T_BASE, fontFamily: SANS, color: C.text, marginBottom: 8 }}>
           <input
             type="checkbox"
             checked={productsNull}
             onChange={e => setProductsNull(e.target.checked)}
             style={{ width: 15, height: 15, cursor: 'pointer' }}
           />
-          <span>Everyone (all logged-in users — <code style={{ fontSize: 11, background: C.surface, padding: '1px 5px', borderRadius: 3 }}>null</code>)</span>
+          <span>Everyone (all logged-in users — <code style={{ fontSize: T_XS, background: C.surface, padding: '1px 5px', borderRadius: 3 }}>null</code>)</span>
         </label>
         {!productsNull && (
           <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginBottom: 10 }}>
@@ -429,7 +458,7 @@ function TestSettings({
                 key={p}
                 onClick={() => toggleProduct(p)}
                 style={{
-                  padding: '5px 12px', borderRadius: 6, fontSize: 12, fontWeight: 600,
+                  padding: '5px 12px', borderRadius: R_SM, fontSize: T_SM, fontWeight: 600,
                   fontFamily: SANS, cursor: 'pointer',
                   background: selectedProducts.includes(p) ? C.redLight : 'transparent',
                   color: selectedProducts.includes(p) ? C.red : C.textSec,
@@ -448,7 +477,7 @@ function TestSettings({
           Save Access
         </Btn>
         {!productsNull && selectedProducts.length === 0 && (
-          <p style={{ fontSize: 12, color: C.warn, fontFamily: SANS, margin: '6px 0 0' }}>
+          <p style={{ fontSize: T_SM, color: C.warn, fontFamily: SANS, margin: '6px 0 0' }}>
             Warning: no products selected — no student will see this test.
           </p>
         )}
@@ -456,7 +485,7 @@ function TestSettings({
 
       {/* Syllabus */}
       <div>
-        <div style={{ fontSize: 13, fontWeight: 600, color: C.text, fontFamily: SANS, marginBottom: 6 }}>
+        <div style={{ fontSize: T_BASE, fontWeight: 600, color: C.text, fontFamily: SANS, marginBottom: 6 }}>
           Syllabus
         </div>
         <textarea
@@ -465,10 +494,10 @@ function TestSettings({
           placeholder="Topics covered — shown to students on their dashboard before the test"
           rows={4}
           style={{
-            width: '100%', padding: '8px 10px', borderRadius: 6,
-            border: `1px solid ${C.border}`, fontSize: 13, fontFamily: SANS,
+            width: '100%', padding: '8px 10px', borderRadius: R_SM,
+            border: `1px solid ${BORDER_FIELD}`, fontSize: T_BASE, fontFamily: SANS,
             color: C.text, resize: 'vertical', minHeight: 80,
-            boxSizing: 'border-box', background: '#fff',
+            boxSizing: 'border-box', background: SURFACE,
           }}
         />
         <div style={{ marginTop: 8 }}>
@@ -662,8 +691,8 @@ function WindowsManager({
   }
 
   const inputStyle: React.CSSProperties = {
-    padding: '8px 10px', borderRadius: 6, border: `1px solid ${C.border}`,
-    fontSize: 13, fontFamily: SANS, color: C.text, background: '#fff',
+    padding: '8px 10px', borderRadius: R_SM, border: `1px solid ${BORDER_FIELD}`,
+    fontSize: T_BASE, fontFamily: SANS, color: C.text, background: SURFACE,
     width: '100%', boxSizing: 'border-box',
   };
 
@@ -673,31 +702,31 @@ function WindowsManager({
 
       {/* Window list */}
       {test.windows.length === 0 ? (
-        <p style={{ fontSize: 13, color: C.textMuted, fontFamily: SANS, margin: 0 }}>No windows yet.</p>
+        <p style={{ fontSize: T_BASE, color: C.textMuted, fontFamily: SANS, margin: 0 }}>No windows yet.</p>
       ) : (
         <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
           {test.windows.map(w => (
             <div key={w.id} style={{
               background: C.surface, border: `1px solid ${C.border}`,
-              borderRadius: 8, padding: '10px 14px',
+              borderRadius: R_MD, padding: '10px 14px',
             }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
-                <span style={{ fontSize: 12, fontWeight: 700, fontFamily: SANS, color: C.textSec, textTransform: 'uppercase' }}>
+                <span style={{ fontSize: T_SM, fontWeight: 700, fontFamily: SANS, color: C.textSec, textTransform: 'uppercase' }}>
                   {w.mode}
                 </span>
                 <Badge value={w.status} />
                 <Badge value={w.state} />
                 {w.durationMinutes && (
-                  <span style={{ fontSize: 12, color: C.textMuted, fontFamily: SANS }}>
+                  <span style={{ fontSize: T_SM, color: C.textMuted, fontFamily: SANS }}>
                     {w.durationMinutes} min
                   </span>
                 )}
-                <span style={{ fontSize: 12, color: C.textMuted, fontFamily: SANS, marginLeft: 'auto' }}>
+                <span style={{ fontSize: T_SM, color: C.textMuted, fontFamily: SANS, marginLeft: 'auto' }}>
                   {fmtDate(w.opensAt)} → {fmtDate(w.closesAt)}
                 </span>
               </div>
               {w.classSessionId != null && (
-                <p style={{ margin: '6px 0 0', fontSize: 11, color: C.infoText, fontFamily: SANS }}>
+                <p style={{ margin: '6px 0 0', fontSize: T_XS, color: C.infoText, fontFamily: SANS }}>
                   Linked class: {classSessions.find(c => c.id === w.classSessionId)?.title ?? `#${w.classSessionId}`}
                 </p>
               )}
@@ -743,9 +772,9 @@ function WindowsManager({
       {/* Create form */}
       {showCreate && (
         <form onSubmit={submitForm} style={{
-          background: C.surface, border: `1px solid ${C.border}`, borderRadius: 8, padding: 14,
+          background: C.surface, border: `1px solid ${C.border}`, borderRadius: R_MD, padding: 14,
         }}>
-          <p style={{ margin: '0 0 12px', fontSize: 13, fontWeight: 600, color: C.text, fontFamily: SANS }}>New Window</p>
+          <p style={{ margin: '0 0 12px', fontSize: T_BASE, fontWeight: 600, color: C.text, fontFamily: SANS }}>New Window</p>
           <WindowFormFields form={form} setForm={setForm} inputStyle={inputStyle} isEdit={false} classSessions={classSessions} />
           <div style={{ display: 'flex', gap: 8, marginTop: 12 }}>
             <Btn size="sm" onClick={() => {}} disabled={saving}>
@@ -793,7 +822,7 @@ function WindowFormFields({
     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: 10 }}>
       {!isEdit && (
         <div>
-          <label style={{ display: 'block', fontSize: 11, fontWeight: 600, color: C.textSec, fontFamily: SANS, marginBottom: 4 }}>Mode</label>
+          <label style={{ display: 'block', fontSize: T_XS, fontWeight: 600, color: C.textSec, fontFamily: SANS, marginBottom: 4 }}>Mode</label>
           <select
             value={form.mode}
             onChange={e => setForm(prev => ({ ...prev, mode: e.target.value as TestMode }))}
@@ -805,20 +834,20 @@ function WindowFormFields({
         </div>
       )}
       <div>
-        <label style={{ display: 'block', fontSize: 11, fontWeight: 600, color: C.textSec, fontFamily: SANS, marginBottom: 4 }}>Opens At</label>
+        <label style={{ display: 'block', fontSize: T_XS, fontWeight: 600, color: C.textSec, fontFamily: SANS, marginBottom: 4 }}>Opens At</label>
         <input type="datetime-local" value={form.opensAt}
           onChange={e => setForm(prev => ({ ...prev, opensAt: e.target.value }))}
           style={inputStyle} />
       </div>
       <div>
-        <label style={{ display: 'block', fontSize: 11, fontWeight: 600, color: C.textSec, fontFamily: SANS, marginBottom: 4 }}>Closes At</label>
+        <label style={{ display: 'block', fontSize: T_XS, fontWeight: 600, color: C.textSec, fontFamily: SANS, marginBottom: 4 }}>Closes At</label>
         <input type="datetime-local" value={form.closesAt}
           onChange={e => setForm(prev => ({ ...prev, closesAt: e.target.value }))}
           style={inputStyle} />
       </div>
       {(form.mode === 'online' || isEdit) && (
         <div>
-          <label style={{ display: 'block', fontSize: 11, fontWeight: 600, color: C.textSec, fontFamily: SANS, marginBottom: 4 }}>
+          <label style={{ display: 'block', fontSize: T_XS, fontWeight: 600, color: C.textSec, fontFamily: SANS, marginBottom: 4 }}>
             Duration (minutes){form.mode === 'online' ? ' *' : ' (online only)'}
           </label>
           <input type="number" min={1} value={form.durationMinutes}
@@ -828,7 +857,7 @@ function WindowFormFields({
         </div>
       )}
       <div>
-        <label style={{ display: 'block', fontSize: 11, fontWeight: 600, color: C.textSec, fontFamily: SANS, marginBottom: 4 }}>
+        <label style={{ display: 'block', fontSize: T_XS, fontWeight: 600, color: C.textSec, fontFamily: SANS, marginBottom: 4 }}>
           Class session (optional)
         </label>
         <select
@@ -898,7 +927,7 @@ function AttemptsTable({
 
   if (loading && !attempts) {
     return (
-      <div style={{ padding: '20px 0', display: 'flex', alignItems: 'center', gap: 8, color: C.textSec, fontSize: 13, fontFamily: SANS }}>
+      <div style={{ padding: '20px 0', display: 'flex', alignItems: 'center', gap: 8, color: C.textSec, fontSize: T_BASE, fontFamily: SANS }}>
         <Spinner /> Loading attempts…
       </div>
     );
@@ -917,15 +946,15 @@ function AttemptsTable({
       </div>
 
       {!attempts || attempts.length === 0 ? (
-        <p style={{ fontSize: 13, color: C.textMuted, fontFamily: SANS, margin: 0 }}>No attempts yet.</p>
+        <p style={{ fontSize: T_BASE, color: C.textMuted, fontFamily: SANS, margin: 0 }}>No attempts yet.</p>
       ) : (
         <div style={{ overflowX: 'auto' }}>
-          <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 12, fontFamily: SANS }}>
+          <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: T_SM, fontFamily: SANS }}>
             <thead>
               <tr style={{ borderBottom: `1px solid ${C.border}` }}>
                 {['Student', 'ID', 'Mode', 'Status', 'Started', 'Submitted', 'Leaves', 'Resets', 'Score', 'Actions'].map(h => (
                   <th key={h} style={{
-                    padding: '6px 10px', textAlign: 'left', fontSize: 11,
+                    padding: '6px 10px', textAlign: 'left', fontSize: T_XS,
                     fontWeight: 700, color: C.textMuted, textTransform: 'uppercase',
                     letterSpacing: '0.05em', whiteSpace: 'nowrap',
                   }}>{h}</th>
@@ -937,7 +966,7 @@ function AttemptsTable({
                 <tr key={a.id} style={{ borderBottom: `1px solid ${C.border}` }}>
                   <td style={{ padding: '8px 10px', color: C.text }}>
                     <div style={{ fontWeight: 600 }}>{a.user.name ?? '—'}</div>
-                    <div style={{ color: C.textMuted, fontSize: 11 }}>{a.user.email}</div>
+                    <div style={{ color: C.textMuted, fontSize: T_XS }}>{a.user.email}</div>
                   </td>
                   <td style={{ padding: '8px 10px', color: C.textSec }}>{a.user.studentId ?? '—'}</td>
                   <td style={{ padding: '8px 10px', color: C.textSec, textTransform: 'capitalize' }}>{a.mode}</td>
@@ -959,7 +988,7 @@ function AttemptsTable({
                           target="_blank" rel="noopener noreferrer"
                           style={{
                             display: 'inline-flex', alignItems: 'center', gap: 4,
-                            fontSize: 12, fontWeight: 600, color: C.textSec,
+                            fontSize: T_SM, fontWeight: 600, color: C.textSec,
                             textDecoration: 'none', padding: '5px 10px',
                           }}
                         >
@@ -1102,7 +1131,7 @@ function AnswerKeyEditor({
 
   if (loading) {
     return (
-      <div style={{ padding: '20px 0', display: 'flex', alignItems: 'center', gap: 8, color: C.textSec, fontSize: 13, fontFamily: SANS }}>
+      <div style={{ padding: '20px 0', display: 'flex', alignItems: 'center', gap: 8, color: C.textSec, fontSize: T_BASE, fontFamily: SANS }}>
         <Spinner /> Loading answer key…
       </div>
     );
@@ -1118,8 +1147,8 @@ function AnswerKeyEditor({
   }
 
   const selectStyle: React.CSSProperties = {
-    padding: '4px 6px', borderRadius: 5, border: `1px solid ${C.border}`,
-    fontSize: 12, fontFamily: SANS, color: C.text, background: '#fff',
+    padding: '4px 6px', borderRadius: 5, border: `1px solid ${BORDER_FIELD}`,
+    fontSize: T_SM, fontFamily: SANS, color: C.text, background: SURFACE,
     width: 52,
   };
 
@@ -1130,12 +1159,12 @@ function AnswerKeyEditor({
       {/* Bulk paste */}
       <div style={{
         background: C.surface, border: `1px solid ${C.border}`,
-        borderRadius: 8, padding: 14,
+        borderRadius: R_MD, padding: 14,
       }}>
-        <p style={{ margin: '0 0 8px', fontSize: 12, fontWeight: 600, color: C.text, fontFamily: SANS }}>
+        <p style={{ margin: '0 0 8px', fontSize: T_SM, fontWeight: 600, color: C.text, fontFamily: SANS }}>
           Bulk Paste
         </p>
-        <p style={{ margin: '0 0 8px', fontSize: 12, color: C.textMuted, fontFamily: SANS }}>
+        <p style={{ margin: '0 0 8px', fontSize: T_SM, color: C.textMuted, fontFamily: SANS }}>
           Paste answer keys in any liberal format, e.g. <code>1.D 2.C 3-A, 4 B</code>
         </p>
         <div style={{ display: 'flex', gap: 8, alignItems: 'flex-start' }}>
@@ -1145,8 +1174,8 @@ function AnswerKeyEditor({
             placeholder="1.D 2.C 3.A 4.B ..."
             rows={3}
             style={{
-              flex: 1, padding: '8px 10px', borderRadius: 6, border: `1px solid ${C.border}`,
-              fontSize: 13, fontFamily: SANS, resize: 'vertical', minHeight: 60,
+              flex: 1, padding: '8px 10px', borderRadius: R_SM, border: `1px solid ${BORDER_FIELD}`,
+              fontSize: T_BASE, fontFamily: SANS, resize: 'vertical', minHeight: 60,
             }}
           />
           <Btn size="sm" variant="outline" onClick={applyBulkPaste} disabled={!bulkText.trim()}>
@@ -1158,13 +1187,13 @@ function AnswerKeyEditor({
       {/* Per-section grid */}
       {Object.entries(sections).map(([title, qs]) => (
         <div key={title}>
-          <p style={{ margin: '0 0 10px', fontSize: 12, fontWeight: 700, color: C.textSec, fontFamily: SANS, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+          <p style={{ margin: '0 0 10px', fontSize: T_SM, fontWeight: 700, color: C.textSec, fontFamily: SANS, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
             {title}
           </p>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(110px, 1fr))', gap: 8 }}>
             {qs.map(q => (
               <div key={q.id} style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-                <span style={{ fontSize: 12, color: C.textSec, fontFamily: SANS, minWidth: 20 }}>#{q.number}</span>
+                <span style={{ fontSize: T_SM, color: C.textSec, fontFamily: SANS, minWidth: 20 }}>#{q.number}</span>
                 <select
                   value={keys[q.id] ?? ''}
                   onChange={e => setKeys(prev => ({ ...prev, [q.id]: e.target.value || null }))}
@@ -1194,7 +1223,7 @@ function AnswerKeyEditor({
       )}
 
       {questions && questions.length === 0 && (
-        <p style={{ fontSize: 13, color: C.textMuted, fontFamily: SANS, margin: 0 }}>
+        <p style={{ fontSize: T_BASE, color: C.textMuted, fontFamily: SANS, margin: 0 }}>
           No questions found for this test.
         </p>
       )}
@@ -1229,8 +1258,8 @@ function TestRow({
 
   return (
     <div style={{
-      border: `1px solid ${C.border}`, borderRadius: 10,
-      background: '#fff', overflow: 'hidden',
+      border: `1px solid ${C.border}`, borderRadius: R_LG,
+      background: SURFACE, overflow: 'hidden',
     }}>
       {/* Header row */}
       <button
@@ -1245,19 +1274,19 @@ function TestRow({
           <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
             <BucketBadge bucket={test.bucket} />
             <Badge value={test.status} />
-            <span style={{ fontSize: 14, fontWeight: 700, color: C.text, fontFamily: SANS }}>
+            <span style={{ fontSize: T_MD, fontWeight: 700, color: C.text, fontFamily: FONT_HEADING }}>
               {test.title}
             </span>
           </div>
           <div style={{ marginTop: 4, display: 'flex', gap: 12, flexWrap: 'wrap' }}>
-            <span style={{ fontSize: 11, color: C.textMuted, fontFamily: SANS }}>
+            <span style={{ fontSize: T_XS, color: C.textMuted, fontFamily: SANS }}>
               {test.totalQuestions} Qs · {test.totalMarks} marks
             </span>
-            <span style={{ fontSize: 11, color: C.textMuted, fontFamily: SANS }}>
+            <span style={{ fontSize: T_XS, color: C.textMuted, fontFamily: SANS }}>
               {test.windows.length} window{test.windows.length !== 1 ? 's' : ''}
             </span>
             {total > 0 && (
-              <span style={{ fontSize: 11, color: C.textMuted, fontFamily: SANS }}>
+              <span style={{ fontSize: T_XS, color: C.textMuted, fontFamily: SANS }}>
                 {test.attemptCounts.inProgress} in-progress · {test.attemptCounts.submitted} submitted
                 {test.attemptCounts.banned > 0 ? ` · ${test.attemptCounts.banned} banned` : ''}
               </span>
@@ -1281,7 +1310,7 @@ function TestRow({
                 onClick={() => setTab(t.key)}
                 style={{
                   padding: '10px 14px', background: 'none', border: 'none',
-                  cursor: 'pointer', fontSize: 13, fontFamily: SANS, fontWeight: tab === t.key ? 600 : 400,
+                  cursor: 'pointer', fontSize: T_BASE, fontFamily: SANS, fontWeight: tab === t.key ? 600 : 400,
                   color: tab === t.key ? C.red : C.textSec,
                   borderBottom: tab === t.key ? `2px solid ${C.red}` : '2px solid transparent',
                   whiteSpace: 'nowrap',
@@ -1360,11 +1389,11 @@ export default function TestsAdminPage({ isAdmin }: { isAdmin: boolean }) {
         <div style={{ flex: 1 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 4 }}>
             <ClipboardList size={20} style={{ color: C.red }} />
-            <h1 style={{ margin: 0, fontSize: 22, fontWeight: 700, letterSpacing: '-0.025em' }}>
+            <h1 style={{ margin: 0, fontSize: 22, fontWeight: 700, fontFamily: FONT_HEADING, letterSpacing: '-0.025em' }}>
               Online Tests
             </h1>
           </div>
-          <p style={{ margin: 0, fontSize: 13, color: C.textSec }}>
+          <p style={{ margin: 0, fontSize: T_BASE, color: C.textSec }}>
             Manage tests, sitting windows, student attempts{isAdmin ? ', and answer keys' : ''}.
           </p>
         </div>
@@ -1373,7 +1402,7 @@ export default function TestsAdminPage({ isAdmin }: { isAdmin: boolean }) {
           disabled={loading}
           aria-label="Refresh"
           style={{
-            background: 'transparent', border: `1px solid ${C.border}`, borderRadius: 6,
+            background: 'transparent', border: `1px solid ${C.border}`, borderRadius: R_SM,
             padding: 8, cursor: loading ? 'not-allowed' : 'pointer', color: C.textSec,
             display: 'flex', alignItems: 'center', justifyContent: 'center',
             minWidth: 36, minHeight: 36,
@@ -1391,8 +1420,8 @@ export default function TestsAdminPage({ isAdmin }: { isAdmin: boolean }) {
           value={search}
           onChange={e => setSearch(e.target.value)}
           style={{
-            padding: '7px 12px', borderRadius: 6, border: `1px solid ${C.border}`,
-            fontSize: 13, fontFamily: SANS, color: C.text, background: '#fff',
+            padding: '7px 12px', borderRadius: R_SM, border: `1px solid ${BORDER_FIELD}`,
+            fontSize: T_BASE, fontFamily: SANS, color: C.text, background: SURFACE,
             flex: '1 1 220px', minWidth: 0,
           }}
         />
@@ -1401,7 +1430,7 @@ export default function TestsAdminPage({ isAdmin }: { isAdmin: boolean }) {
             key={f}
             onClick={() => setFilter(f)}
             style={{
-              padding: '6px 12px', borderRadius: 6, fontSize: 12, fontWeight: 600,
+              padding: '6px 12px', borderRadius: R_SM, fontSize: T_SM, fontWeight: 600,
               fontFamily: SANS, cursor: 'pointer',
               background: filter === f ? C.redLight : 'transparent',
               color: filter === f ? C.red : C.textSec,
@@ -1415,7 +1444,7 @@ export default function TestsAdminPage({ isAdmin }: { isAdmin: boolean }) {
 
       {/* Loading */}
       {loading && !tests && (
-        <div style={{ padding: '48px 0', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10, color: C.textSec, fontSize: 14 }}>
+        <div style={{ padding: '48px 0', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10, color: C.textSec, fontSize: T_MD }}>
           <Spinner /> Loading tests…
         </div>
       )}
@@ -1424,11 +1453,12 @@ export default function TestsAdminPage({ isAdmin }: { isAdmin: boolean }) {
       {!loading && tests && tests.length === 0 && (
         <div style={{
           padding: '48px 0', textAlign: 'center',
-          border: `1px dashed ${C.border}`, borderRadius: 10,
+          border: `1px dashed ${C.border}`, borderRadius: R_LG,
+          background: BG,
         }}>
           <ZapOff size={28} style={{ color: C.textMuted, marginBottom: 8 }} />
-          <p style={{ margin: 0, fontSize: 14, color: C.textSec }}>No tests found.</p>
-          <p style={{ margin: '4px 0 0', fontSize: 12, color: C.textMuted }}>
+          <p style={{ margin: 0, fontSize: T_MD, color: C.textSec }}>No tests found.</p>
+          <p style={{ margin: '4px 0 0', fontSize: T_SM, color: C.textMuted }}>
             Import a test via <code>scripts/import-test.mjs</code> to get started.
           </p>
         </div>
@@ -1451,7 +1481,7 @@ export default function TestsAdminPage({ isAdmin }: { isAdmin: boolean }) {
 
       {/* Filtered empty */}
       {!loading && tests && tests.length > 0 && filtered.length === 0 && (
-        <p style={{ fontSize: 13, color: C.textMuted, textAlign: 'center', padding: '32px 0' }}>
+        <p style={{ fontSize: T_BASE, color: C.textMuted, textAlign: 'center', padding: '32px 0' }}>
           No tests match your filter.
         </p>
       )}
@@ -1459,21 +1489,19 @@ export default function TestsAdminPage({ isAdmin }: { isAdmin: boolean }) {
       {/* Instructor note */}
       {!isAdmin && (
         <div style={{
-          marginTop: 24, padding: '10px 14px', borderRadius: 8,
+          marginTop: 24, padding: '10px 14px', borderRadius: R_MD,
           background: C.infoBg, border: `1px solid ${C.infoBdr}`,
           display: 'flex', alignItems: 'flex-start', gap: 8,
         }}>
           <Info size={14} style={{ color: C.infoText, flexShrink: 0, marginTop: 1 }} />
-          <p style={{ margin: 0, fontSize: 12, color: C.infoText, fontFamily: SANS, lineHeight: 1.5 }}>
+          <p style={{ margin: 0, fontSize: T_SM, color: C.infoText, fontFamily: SANS, lineHeight: 1.5 }}>
             You are viewing as <strong>Instructor</strong>. Test settings and answer key editing require Admin access.
           </p>
         </div>
       )}
 
-      <style>{`
-        @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-        * { box-sizing: border-box; }
-      `}</style>
+      <style>{SPIN_CSS}</style>
+      <style>{`* { box-sizing: border-box; }`}</style>
     </div>
   );
 }

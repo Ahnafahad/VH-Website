@@ -18,6 +18,12 @@ import {
   ChevronDown,
   ChevronUp,
 } from 'lucide-react';
+import {
+  RED, RED_DARK, SLATE, BORDER, MUTED, BG, SURFACE, SURFACE_ALT, INK_SOFT,
+  OK, OK_BG, WARN, WARN_BG, INFO, INFO_BG,
+  R_SM, R_MD, R_LG, R_PILL, SHADOW_LG, FONT_HEADING,
+  T_XS, T_SM, T_BASE, T_LG, T_XL, SPIN_CSS,
+} from '@/components/admin/lms/lms-shared';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -65,9 +71,9 @@ function prettyJson(raw: string | null): string {
 
 function sourceBadgeStyle(source: ErrorLogRow['source']): React.CSSProperties {
   const map: Record<string, React.CSSProperties> = {
-    quiz_generation: { background: 'rgba(155,89,182,0.12)', color: '#8E44AD', border: '1px solid rgba(155,89,182,0.30)' },
-    api:             { background: 'rgba(41,128,185,0.10)', color: '#2980B9', border: '1px solid rgba(41,128,185,0.28)' },
-    client:          { background: 'rgba(243,156,18,0.10)', color: '#D68910', border: '1px solid rgba(243,156,18,0.30)' },
+    quiz_generation: { background: `${RED}14`, color: RED_DARK, border: `1px solid ${RED}33` },
+    api:             { background: INFO_BG, color: INFO, border: `1px solid ${INFO}33` },
+    client:          { background: WARN_BG, color: WARN, border: `1px solid ${WARN}40` },
   };
   return map[source] ?? {};
 }
@@ -192,8 +198,8 @@ export default function ErrorLogsClient() {
   ) {
     return (
       <div style={S.center}>
-        <Loader2 size={28} style={{ animation: 'spin 1s linear infinite', color: '#D62B38' }} />
-        <style>{`@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }`}</style>
+        <Loader2 size={28} style={{ animation: 'spin 1s linear infinite', color: RED }} />
+        <style>{SPIN_CSS}</style>
       </div>
     );
   }
@@ -209,7 +215,7 @@ export default function ErrorLogsClient() {
 
   return (
     <div style={S.page}>
-      <style>{`@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }`}</style>
+      <style>{SPIN_CSS}</style>
 
       {/* Toast */}
       {toast && (
@@ -221,7 +227,7 @@ export default function ErrorLogsClient() {
       {/* Header */}
       <div style={S.header}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-          <TriangleAlert size={20} color="#D62B38" aria-hidden />
+          <TriangleAlert size={20} color={RED} aria-hidden />
           <div>
             <h1 style={S.title}>Error Logs</h1>
             <p style={S.subtitle}>LexiCore failures — server and client</p>
@@ -230,6 +236,7 @@ export default function ErrorLogsClient() {
         <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
           <button
             onClick={handleRefresh}
+            className="lms-iconbtn"
             style={S.iconBtn}
             aria-label="Refresh"
             disabled={loading}
@@ -238,6 +245,7 @@ export default function ErrorLogsClient() {
           </button>
           <button
             onClick={handleClear}
+            className="lms-btn lms-btn-danger"
             disabled={clearing}
             style={S.clearBtn}
             aria-label="Clear server-side logs"
@@ -256,6 +264,7 @@ export default function ErrorLogsClient() {
           <button
             key={chip.value}
             onClick={() => handleSourceChange(chip.value)}
+            className="lms-btn lms-btn-ghost"
             style={{
               ...S.chip,
               ...(source === chip.value ? S.chipActive : {}),
@@ -275,11 +284,11 @@ export default function ErrorLogsClient() {
       {/* List */}
       {loading ? (
         <div style={S.center}>
-          <Loader2 size={24} style={{ animation: 'spin 1s linear infinite', color: '#9CA3AF' }} />
+          <Loader2 size={24} style={{ animation: 'spin 1s linear infinite', color: MUTED }} />
         </div>
       ) : rows.length === 0 ? (
         <div style={S.emptyState}>
-          <TriangleAlert size={32} color="#D1D5DB" aria-hidden />
+          <TriangleAlert size={32} color={MUTED} aria-hidden />
           <p style={S.emptyTitle}>No failures logged. That&apos;s the goal.</p>
           <p style={S.emptyDesc}>
             Errors will appear here as quiz generation fails, API 500s occur,
@@ -295,6 +304,7 @@ export default function ErrorLogsClient() {
                 {/* Row header — always visible */}
                 <button
                   onClick={() => toggleExpand(row.id)}
+                  className="lms-btn lms-btn-ghost"
                   style={S.rowBtn}
                   aria-expanded={isOpen}
                 >
@@ -302,7 +312,7 @@ export default function ErrorLogsClient() {
                   <span
                     style={{
                       ...S.dot,
-                      background: row.severity === 'error' ? '#E53E3E' : '#D97706',
+                      background: row.severity === 'error' ? RED : WARN,
                     }}
                     aria-label={row.severity}
                   />
@@ -329,7 +339,7 @@ export default function ErrorLogsClient() {
                   )}
 
                   {/* Expand chevron */}
-                  <span style={{ marginLeft: 'auto', flexShrink: 0, color: '#9CA3AF' }}>
+                  <span style={{ marginLeft: 'auto', flexShrink: 0, color: MUTED }}>
                     {isOpen ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
                   </span>
                 </button>
@@ -370,6 +380,7 @@ export default function ErrorLogsClient() {
         <div style={{ textAlign: 'center', marginTop: 16 }}>
           <button
             onClick={handleLoadMore}
+            className="lms-btn lms-btn-ghost"
             disabled={loadingMore}
             style={S.loadMoreBtn}
           >
@@ -385,12 +396,9 @@ export default function ErrorLogsClient() {
 
 // ─── Styles ───────────────────────────────────────────────────────────────────
 
-const SANS = "'Inter', 'Sora', system-ui, sans-serif";
-
 const S = {
   page: {
-    fontFamily: SANS,
-    color:      '#111827',
+    color:      SLATE,
     maxWidth:   900,
   } as React.CSSProperties,
 
@@ -408,23 +416,23 @@ const S = {
     transform:    'translateX(-50%)',
     zIndex:       9999,
     padding:      '10px 18px',
-    borderRadius: 8,
-    fontSize:     13,
+    borderRadius: R_MD,
+    fontSize:     T_BASE,
     fontWeight:   500,
-    boxShadow:    '0 4px 16px rgba(0,0,0,0.16)',
+    boxShadow:    SHADOW_LG,
     whiteSpace:   'nowrap',
   } as React.CSSProperties,
 
   toastSuccess: {
-    background: 'rgba(46,204,113,0.12)',
-    color:      '#1D7A47',
-    border:     '1px solid rgba(46,204,113,0.30)',
+    background: OK_BG,
+    color:      OK,
+    border:     `1px solid ${OK}40`,
   } as React.CSSProperties,
 
   toastError: {
-    background: 'rgba(229,57,70,0.10)',
-    color:      '#B91C1C',
-    border:     '1px solid rgba(229,57,70,0.28)',
+    background: `${RED}14`,
+    color:      RED_DARK,
+    border:     `1px solid ${RED}33`,
   } as React.CSSProperties,
 
   header: {
@@ -438,15 +446,16 @@ const S = {
 
   title: {
     margin:     0,
-    fontSize:   20,
+    fontFamily: FONT_HEADING,
+    fontSize:   T_XL,
     fontWeight: 700,
-    color:      '#111827',
+    color:      SLATE,
   } as React.CSSProperties,
 
   subtitle: {
     margin:     '2px 0 0',
-    fontSize:   13,
-    color:      '#6B7280',
+    fontSize:   T_BASE,
+    color:      MUTED,
     fontWeight: 400,
   } as React.CSSProperties,
 
@@ -455,11 +464,11 @@ const S = {
     alignItems:     'center',
     justifyContent: 'center',
     background:     'transparent',
-    border:         '1px solid #E5E7EB',
-    borderRadius:   6,
+    border:         `1px solid ${BORDER}`,
+    borderRadius:   R_SM,
     padding:        8,
     cursor:         'pointer',
-    color:          '#6B7280',
+    color:          MUTED,
     minWidth:       36,
     minHeight:      36,
   } as React.CSSProperties,
@@ -469,12 +478,12 @@ const S = {
     alignItems:  'center',
     gap:         6,
     background:  'transparent',
-    border:      '1px solid rgba(229,57,70,0.35)',
-    borderRadius:6,
+    border:      `1px solid ${RED}4D`,
+    borderRadius:R_SM,
     padding:     '7px 12px',
     cursor:      'pointer',
-    color:       '#D62B38',
-    fontSize:    12,
+    color:       RED,
+    fontSize:    T_SM,
     fontWeight:  500,
     minHeight:   36,
   } as React.CSSProperties,
@@ -491,33 +500,33 @@ const S = {
     alignItems:   'center',
     gap:          6,
     padding:      '6px 12px',
-    borderRadius: 20,
-    border:       '1px solid #E5E7EB',
+    borderRadius: R_PILL,
+    border:       `1px solid ${BORDER}`,
     background:   'transparent',
     cursor:       'pointer',
-    fontSize:     12,
+    fontSize:     T_SM,
     fontWeight:   500,
-    color:        '#6B7280',
+    color:        MUTED,
   } as React.CSSProperties,
 
   chipActive: {
-    background:  'rgba(214,43,56,0.06)',
-    border:      '1px solid rgba(214,43,56,0.25)',
-    color:       '#D62B38',
+    background:  `${RED}0F`,
+    border:      `1px solid ${RED}40`,
+    color:       RED,
   } as React.CSSProperties,
 
   chipCount: {
-    background:   '#F3F4F6',
-    borderRadius: 10,
+    background:   SURFACE_ALT,
+    borderRadius: R_LG,
     padding:      '1px 6px',
-    fontSize:     11,
-    color:        '#6B7280',
+    fontSize:     T_XS,
+    color:        MUTED,
     fontWeight:   600,
   } as React.CSSProperties,
 
   chipCountActive: {
-    background: 'rgba(214,43,56,0.12)',
-    color:      '#D62B38',
+    background: `${RED}1F`,
+    color:      RED,
   } as React.CSSProperties,
 
   emptyState: {
@@ -532,15 +541,15 @@ const S = {
 
   emptyTitle: {
     margin:     0,
-    fontSize:   15,
+    fontSize:   T_LG,
     fontWeight: 600,
-    color:      '#374151',
+    color:      INK_SOFT,
   } as React.CSSProperties,
 
   emptyDesc: {
     margin:     0,
-    fontSize:   13,
-    color:      '#9CA3AF',
+    fontSize:   T_BASE,
+    color:      MUTED,
     maxWidth:   340,
     lineHeight: 1.55,
   } as React.CSSProperties,
@@ -552,9 +561,9 @@ const S = {
   } as React.CSSProperties,
 
   card: {
-    background:   '#FAFAFA',
-    border:       '1px solid #E5E7EB',
-    borderRadius: 8,
+    background:   SURFACE,
+    border:       `1px solid ${BORDER}`,
+    borderRadius: R_MD,
     overflow:     'hidden',
   } as React.CSSProperties,
 
@@ -580,16 +589,16 @@ const S = {
   } as React.CSSProperties,
 
   time: {
-    fontSize:   11,
-    color:      '#9CA3AF',
+    fontSize:   T_XS,
+    color:      MUTED,
     whiteSpace: 'nowrap' as const,
     flexShrink: 0,
   } as React.CSSProperties,
 
   badge: {
     padding:      '2px 7px',
-    borderRadius: 4,
-    fontSize:     10,
+    borderRadius: R_SM,
+    fontSize:     T_XS,
     fontWeight:   600,
     flexShrink:   0,
     letterSpacing:'0.02em',
@@ -597,8 +606,8 @@ const S = {
   } as React.CSSProperties,
 
   context: {
-    fontSize:     12,
-    color:        '#6B7280',
+    fontSize:     T_SM,
+    color:        MUTED,
     fontFamily:   "'Courier New', monospace",
     whiteSpace:   'nowrap' as const,
     overflow:     'hidden',
@@ -608,8 +617,8 @@ const S = {
   } as React.CSSProperties,
 
   message: {
-    fontSize:     13,
-    color:        '#374151',
+    fontSize:     T_BASE,
+    color:        INK_SOFT,
     overflow:     'hidden',
     textOverflow: 'ellipsis',
     whiteSpace:   'nowrap' as const,
@@ -618,16 +627,16 @@ const S = {
   } as React.CSSProperties,
 
   email: {
-    fontSize:   11,
-    color:      '#9CA3AF',
+    fontSize:   T_XS,
+    color:      MUTED,
     whiteSpace: 'nowrap' as const,
     flexShrink: 0,
   } as React.CSSProperties,
 
   expandedPanel: {
-    borderTop:   '1px solid #E5E7EB',
+    borderTop:   `1px solid ${BORDER}`,
     padding:     '12px 14px',
-    background:  '#FFFFFF',
+    background:  SURFACE,
     display:     'flex',
     flexDirection:'column' as const,
     gap:         10,
@@ -640,9 +649,9 @@ const S = {
   } as React.CSSProperties,
 
   expandedLabel: {
-    fontSize:   11,
+    fontSize:   T_XS,
     fontWeight: 600,
-    color:      '#9CA3AF',
+    color:      MUTED,
     textTransform: 'uppercase' as const,
     letterSpacing: '0.06em',
     minWidth:   70,
@@ -651,8 +660,8 @@ const S = {
   } as React.CSSProperties,
 
   expandedValue: {
-    fontSize:   13,
-    color:      '#374151',
+    fontSize:   T_BASE,
+    color:      INK_SOFT,
     lineHeight: 1.5,
     wordBreak:  'break-word' as const,
   } as React.CSSProperties,
@@ -660,12 +669,12 @@ const S = {
   pre: {
     margin:       0,
     padding:      '10px 12px',
-    background:   '#F9FAFB',
-    border:       '1px solid #E5E7EB',
-    borderRadius: 6,
-    fontSize:     11,
+    background:   BG,
+    border:       `1px solid ${BORDER}`,
+    borderRadius: R_SM,
+    fontSize:     T_XS,
     fontFamily:   "'Courier New', 'Consolas', monospace",
-    color:        '#374151',
+    color:        INK_SOFT,
     overflowX:    'auto' as const,
     whiteSpace:   'pre' as const,
     maxHeight:    320,
@@ -678,11 +687,11 @@ const S = {
     gap:            6,
     padding:        '8px 20px',
     background:     'transparent',
-    border:         '1px solid #E5E7EB',
-    borderRadius:   6,
+    border:         `1px solid ${BORDER}`,
+    borderRadius:   R_SM,
     cursor:         'pointer',
-    fontSize:       13,
-    color:          '#6B7280',
+    fontSize:       T_BASE,
+    color:          INK_SOFT,
     fontWeight:     500,
   } as React.CSSProperties,
 };

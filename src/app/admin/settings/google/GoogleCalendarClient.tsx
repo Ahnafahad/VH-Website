@@ -4,6 +4,12 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { CheckCircle2, AlertCircle, Link2, Unlink, RefreshCw, Calendar, Video, ChevronDown, ChevronUp, Zap } from 'lucide-react';
+import {
+  RED, SLATE, BORDER, BORDER_FIELD, MUTED, SURFACE, SURFACE_ALT, SURFACE_SHELL,
+  BEIGE, INK_SOFT, OK, OK_BG, WARN, WARN_BG, INFO, INFO_BG,
+  R_MD, R_LG, R_XL, R_PILL, SHADOW_SM,
+  T_XS, T_SM, T_BASE, T_MD, SPIN_CSS,
+} from '@/components/admin/lms/lms-shared';
 
 interface StatusConnected {
   connected: true;
@@ -99,6 +105,7 @@ export default function GoogleCalendarClient({ status, flashConnected, flashErro
 
   return (
     <div>
+      <style>{SPIN_CSS}</style>
       {/* Flash success banner */}
       {flashConnected && (
         <motion.div
@@ -110,14 +117,14 @@ export default function GoogleCalendarClient({ status, flashConnected, flashErro
             alignItems:   'center',
             gap:          10,
             padding:      '12px 16px',
-            borderRadius: 10,
-            background:   '#F0FDF4',
-            border:       '1px solid #BBF7D0',
+            borderRadius: R_LG,
+            background:   OK_BG,
+            border:       `1px solid ${OK}40`,
             marginBottom: 20,
           }}
         >
-          <CheckCircle2 size={16} style={{ color: '#16A34A', flexShrink: 0 }} />
-          <p style={{ margin: 0, fontSize: 13, color: '#15803D', fontWeight: 500 }}>
+          <CheckCircle2 size={16} style={{ color: OK, flexShrink: 0 }} />
+          <p style={{ margin: 0, fontSize: T_BASE, color: OK, fontWeight: 500 }}>
             Google Calendar connected successfully.
           </p>
         </motion.div>
@@ -134,25 +141,25 @@ export default function GoogleCalendarClient({ status, flashConnected, flashErro
             alignItems:   'center',
             gap:          10,
             padding:      '12px 16px',
-            borderRadius: 10,
-            background:   '#FEF2F2',
-            border:       '1px solid #FCA5A5',
+            borderRadius: R_LG,
+            background:   `${RED}14`,
+            border:       `1px solid ${RED}33`,
             marginBottom: 20,
           }}
         >
-          <AlertCircle size={16} style={{ color: '#DC2626', flexShrink: 0 }} />
-          <p style={{ margin: 0, fontSize: 13, color: '#B91C1C' }}>{errorMsg}</p>
+          <AlertCircle size={16} style={{ color: RED, flexShrink: 0 }} />
+          <p style={{ margin: 0, fontSize: T_BASE, color: RED }}>{errorMsg}</p>
         </motion.div>
       )}
 
       {/* Status card */}
       <div
         style={{
-          border:       '1px solid #E5E7EB',
-          borderRadius: 14,
+          border:       `1px solid ${BORDER}`,
+          borderRadius: R_XL,
           padding:      '20px 24px',
-          background:   '#FFFFFF',
-          boxShadow:    '0 1px 4px rgba(0,0,0,0.04)',
+          background:   SURFACE,
+          boxShadow:    SHADOW_SM,
         }}
       >
         {/* Icon + status row */}
@@ -161,25 +168,25 @@ export default function GoogleCalendarClient({ status, flashConnected, flashErro
             style={{
               width:           44,
               height:          44,
-              borderRadius:    12,
-              background:      status.connected ? '#F0FDF4' : '#F9FAFB',
-              border:          `1px solid ${status.connected ? '#BBF7D0' : '#E5E7EB'}`,
+              borderRadius:    R_LG,
+              background:      status.connected ? OK_BG : SURFACE_ALT,
+              border:          `1px solid ${status.connected ? `${OK}40` : BORDER}`,
               display:         'flex',
               alignItems:      'center',
               justifyContent:  'center',
               flexShrink:      0,
             }}
           >
-            <Calendar size={20} style={{ color: status.connected ? '#16A34A' : '#9CA3AF' }} />
+            <Calendar size={20} style={{ color: status.connected ? OK : MUTED }} />
           </div>
 
           <div style={{ flex: 1, minWidth: 0 }}>
             <p
               style={{
                 margin:     0,
-                fontSize:   14,
+                fontSize:   T_MD,
                 fontWeight: 600,
-                color:      '#0F172A',
+                color:      SLATE,
                 letterSpacing: '-0.01em',
               }}
             >
@@ -188,8 +195,8 @@ export default function GoogleCalendarClient({ status, flashConnected, flashErro
             <p
               style={{
                 margin:   0,
-                fontSize: 12,
-                color:    '#6B7280',
+                fontSize: T_SM,
+                color:    MUTED,
                 marginTop: 2,
               }}
             >
@@ -202,12 +209,12 @@ export default function GoogleCalendarClient({ status, flashConnected, flashErro
           {/* Connection status badge */}
           <span
             style={{
-              fontSize:     11,
+              fontSize:     T_XS,
               fontWeight:   600,
               padding:      '3px 10px',
-              borderRadius: 20,
-              background:   status.connected ? '#DCFCE7' : '#F3F4F6',
-              color:        status.connected ? '#15803D' : '#6B7280',
+              borderRadius: R_PILL,
+              background:   status.connected ? OK_BG : SURFACE_ALT,
+              color:        status.connected ? OK : MUTED,
               letterSpacing: '0.02em',
               flexShrink:   0,
             }}
@@ -221,17 +228,17 @@ export default function GoogleCalendarClient({ status, flashConnected, flashErro
           <div
             style={{
               padding:      '12px 14px',
-              borderRadius: 8,
-              background:   '#F9FAFB',
-              border:       '1px solid #F3F4F6',
+              borderRadius: R_MD,
+              background:   SURFACE_SHELL,
+              border:       `1px solid ${BORDER}`,
               marginBottom: 20,
-              fontSize:     12,
-              color:        '#6B7280',
+              fontSize:     T_SM,
+              color:        MUTED,
               lineHeight:   1.6,
             }}
           >
-            <div>Token expires: <strong style={{ color: '#374151' }}>{new Date(status.expiresAt).toLocaleString('en-GB', { timeZone: 'Asia/Dhaka' })}</strong></div>
-            <div>Last updated:  <strong style={{ color: '#374151' }}>{new Date(status.updatedAt).toLocaleString('en-GB', { timeZone: 'Asia/Dhaka' })}</strong></div>
+            <div>Token expires: <strong style={{ color: INK_SOFT }}>{new Date(status.expiresAt).toLocaleString('en-GB', { timeZone: 'Asia/Dhaka' })}</strong></div>
+            <div>Last updated:  <strong style={{ color: INK_SOFT }}>{new Date(status.updatedAt).toLocaleString('en-GB', { timeZone: 'Asia/Dhaka' })}</strong></div>
           </div>
         )}
 
@@ -240,6 +247,7 @@ export default function GoogleCalendarClient({ status, flashConnected, flashErro
           {/* Connect / Reconnect */}
           <motion.a
             href="/api/lms/admin/google/connect"
+            className="lms-btn lms-btn-primary"
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.97 }}
             style={{
@@ -247,10 +255,10 @@ export default function GoogleCalendarClient({ status, flashConnected, flashErro
               alignItems:     'center',
               gap:            7,
               padding:        '9px 18px',
-              borderRadius:   9,
-              background:     '#0F172A',
-              color:          '#FFFFFF',
-              fontSize:       13,
+              borderRadius:   R_MD,
+              background:     RED,
+              color:          SURFACE,
+              fontSize:       T_BASE,
               fontWeight:     600,
               textDecoration: 'none',
               letterSpacing:  '-0.01em',
@@ -274,6 +282,7 @@ export default function GoogleCalendarClient({ status, flashConnected, flashErro
           {status.connected && (
             <motion.button
               onClick={handleDisconnect}
+              className="lms-btn lms-btn-danger"
               disabled={busy}
               whileHover={busy ? {} : { scale: 1.02 }}
               whileTap={busy ? {} : { scale: 0.97 }}
@@ -282,11 +291,11 @@ export default function GoogleCalendarClient({ status, flashConnected, flashErro
                 alignItems:    'center',
                 gap:           7,
                 padding:       '9px 18px',
-                borderRadius:  9,
+                borderRadius:  R_MD,
                 background:    'transparent',
-                border:        '1px solid #E5E7EB',
-                color:         busy ? '#9CA3AF' : '#DC2626',
-                fontSize:      13,
+                border:        `1px solid ${RED}4D`,
+                color:         busy ? MUTED : RED,
+                fontSize:      T_BASE,
                 fontWeight:    500,
                 cursor:        busy ? 'not-allowed' : 'pointer',
                 letterSpacing: '-0.01em',
@@ -304,11 +313,11 @@ export default function GoogleCalendarClient({ status, flashConnected, flashErro
         style={{
           marginTop:    16,
           padding:      '12px 14px',
-          borderRadius: 8,
-          background:   '#FFFBEB',
-          border:       '1px solid #FDE68A',
-          fontSize:     12,
-          color:        '#92400E',
+          borderRadius: R_MD,
+          background:   WARN_BG,
+          border:       `1px solid ${WARN}40`,
+          fontSize:     T_SM,
+          color:        WARN,
           lineHeight:   1.6,
         }}
       >
@@ -321,11 +330,11 @@ export default function GoogleCalendarClient({ status, flashConnected, flashErro
       <div
         style={{
           marginTop:    24,
-          border:       '1px solid #E5E7EB',
-          borderRadius: 14,
+          border:       `1px solid ${BORDER}`,
+          borderRadius: R_XL,
           padding:      '20px 24px',
-          background:   '#FFFFFF',
-          boxShadow:    '0 1px 4px rgba(0,0,0,0.04)',
+          background:   SURFACE,
+          boxShadow:    SHADOW_SM,
         }}
       >
         <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 16 }}>
@@ -333,22 +342,22 @@ export default function GoogleCalendarClient({ status, flashConnected, flashErro
             <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 6 }}>
               <div
                 style={{
-                  width: 32, height: 32, borderRadius: 8, flexShrink: 0,
-                  background: '#F0F9FF', border: '1px solid #BAE6FD',
+                  width: 32, height: 32, borderRadius: R_MD, flexShrink: 0,
+                  background: INFO_BG, border: `1px solid ${INFO}33`,
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
                 }}
               >
-                <Video size={16} style={{ color: '#0284C7' }} />
+                <Video size={16} style={{ color: INFO }} />
               </div>
-              <p style={{ margin: 0, fontSize: 14, fontWeight: 600, color: '#0F172A', letterSpacing: '-0.01em' }}>
+              <p style={{ margin: 0, fontSize: T_MD, fontWeight: 600, color: SLATE, letterSpacing: '-0.01em' }}>
                 Auto-create Meet links for new classes
               </p>
             </div>
-            <p style={{ margin: 0, fontSize: 12, color: '#6B7280', lineHeight: 1.6 }}>
+            <p style={{ margin: 0, fontSize: T_SM, color: MUTED, lineHeight: 1.6 }}>
               When enabled, every new class and online booking slot automatically gets a Google Meet link.
               Disable to manage Meet links manually — you can still paste links directly on each class.
               {!status.connected && (
-                <span style={{ color: '#D97706', display: 'block', marginTop: 4 }}>
+                <span style={{ color: WARN, display: 'block', marginTop: 4 }}>
                   Note: no Google account is connected, so auto-creation will silently skip even when enabled.
                 </span>
               )}
@@ -358,6 +367,7 @@ export default function GoogleCalendarClient({ status, flashConnected, flashErro
           {/* Spring toggle switch */}
           <motion.button
             onClick={() => { void handleToggleMeetAutoCreate(); }}
+            className="lms-switch"
             disabled={toggleBusy}
             aria-label={meetAutoCreate ? 'Disable Meet auto-create' : 'Enable Meet auto-create'}
             aria-pressed={meetAutoCreate}
@@ -366,10 +376,11 @@ export default function GoogleCalendarClient({ status, flashConnected, flashErro
               flexShrink: 0,
               width: 48,
               height: 28,
-              borderRadius: 14,
+              borderRadius: R_XL,
               border: 'none',
               cursor: toggleBusy ? 'not-allowed' : 'pointer',
-              background: meetAutoCreate ? '#0284C7' : '#D1D5DB',
+              background: meetAutoCreate ? RED : BEIGE,
+              boxShadow: meetAutoCreate ? 'none' : `inset 0 0 0 1.5px ${BORDER_FIELD}`,
               padding: 0,
               opacity: toggleBusy ? 0.6 : 1,
               transition: 'background 0.2s',
@@ -387,8 +398,8 @@ export default function GoogleCalendarClient({ status, flashConnected, flashErro
                 width: 22,
                 height: 22,
                 borderRadius: '50%',
-                background: '#FFFFFF',
-                boxShadow: '0 1px 4px rgba(0,0,0,0.20)',
+                background: SURFACE,
+                boxShadow: SHADOW_SM,
               }}
             />
           </motion.button>
@@ -402,7 +413,7 @@ export default function GoogleCalendarClient({ status, flashConnected, flashErro
               initial={{ opacity: 0, y: -4 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0 }}
-              style={{ margin: '10px 0 0', fontSize: 12, color: '#16A34A', display: 'flex', alignItems: 'center', gap: 5 }}
+              style={{ margin: '10px 0 0', fontSize: T_SM, color: OK, display: 'flex', alignItems: 'center', gap: 5 }}
             >
               <CheckCircle2 size={13} />
               {meetAutoCreate ? 'Auto-create enabled' : 'Auto-create disabled'}
@@ -421,7 +432,7 @@ export default function GoogleCalendarClient({ status, flashConnected, flashErro
           alignItems:  'center',
         }}
       >
-        <span style={{ fontSize: 11, color: '#6B7280', fontWeight: 500 }}>Status:</span>
+        <span style={{ fontSize: T_XS, color: MUTED, fontWeight: 500 }}>Status:</span>
 
         {/* API env set? */}
         <span
@@ -429,13 +440,13 @@ export default function GoogleCalendarClient({ status, flashConnected, flashErro
             display:      'inline-flex',
             alignItems:   'center',
             gap:          4,
-            fontSize:     11,
+            fontSize:     T_XS,
             fontWeight:   600,
             padding:      '3px 9px',
-            borderRadius: 20,
+            borderRadius: R_PILL,
             background:   process.env.NEXT_PUBLIC_GOOGLE_CALENDAR_REDIRECT_URI_SET !== 'false'
-              ? '#DCFCE7' : '#F3F4F6',
-            color:        '#374151',
+              ? OK_BG : SURFACE_ALT,
+            color:        INK_SOFT,
           }}
         >
           Redirect URI env
@@ -449,12 +460,12 @@ export default function GoogleCalendarClient({ status, flashConnected, flashErro
             display:      'inline-flex',
             alignItems:   'center',
             gap:          4,
-            fontSize:     11,
+            fontSize:     T_XS,
             fontWeight:   600,
             padding:      '3px 9px',
-            borderRadius: 20,
-            background:   status.connected ? '#DCFCE7' : '#F3F4F6',
-            color:        status.connected ? '#15803D' : '#6B7280',
+            borderRadius: R_PILL,
+            background:   status.connected ? OK_BG : SURFACE_ALT,
+            color:        status.connected ? OK : MUTED,
           }}
         >
           {status.connected ? '✓ Host connected' : '✗ Not connected'}
@@ -466,12 +477,12 @@ export default function GoogleCalendarClient({ status, flashConnected, flashErro
             display:      'inline-flex',
             alignItems:   'center',
             gap:          4,
-            fontSize:     11,
+            fontSize:     T_XS,
             fontWeight:   600,
             padding:      '3px 9px',
-            borderRadius: 20,
-            background:   meetAutoCreate ? '#DCFCE7' : '#F3F4F6',
-            color:        meetAutoCreate ? '#15803D' : '#6B7280',
+            borderRadius: R_PILL,
+            background:   meetAutoCreate ? OK_BG : SURFACE_ALT,
+            color:        meetAutoCreate ? OK : MUTED,
           }}
         >
           {meetAutoCreate ? '✓ Auto-create on' : '✗ Auto-create off'}
@@ -482,15 +493,16 @@ export default function GoogleCalendarClient({ status, flashConnected, flashErro
       <div
         style={{
           marginTop:    16,
-          border:       '1px solid #E5E7EB',
-          borderRadius: 12,
+          border:       `1px solid ${BORDER}`,
+          borderRadius: R_LG,
           overflow:     'hidden',
-          background:   '#FAFAFA',
+          background:   SURFACE_SHELL,
         }}
       >
         {/* Collapsible header */}
         <button
           onClick={() => setGuideOpen((v) => !v)}
+          className="lms-btn lms-btn-ghost"
           style={{
             width:         '100%',
             display:       'flex',
@@ -506,14 +518,14 @@ export default function GoogleCalendarClient({ status, flashConnected, flashErro
           aria-expanded={guideOpen}
         >
           <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-            <Zap size={14} style={{ color: '#D97706', flexShrink: 0 }} aria-hidden />
-            <span style={{ fontSize: 13, fontWeight: 600, color: '#374151', letterSpacing: '-0.01em' }}>
+            <Zap size={14} style={{ color: WARN, flexShrink: 0 }} aria-hidden />
+            <span style={{ fontSize: T_BASE, fontWeight: 600, color: INK_SOFT, letterSpacing: '-0.01em' }}>
               How to activate Google Meet (when you&apos;re ready)
             </span>
           </div>
           {guideOpen
-            ? <ChevronUp  size={14} style={{ color: '#9CA3AF', flexShrink: 0 }} aria-hidden />
-            : <ChevronDown size={14} style={{ color: '#9CA3AF', flexShrink: 0 }} aria-hidden />
+            ? <ChevronUp  size={14} style={{ color: MUTED, flexShrink: 0 }} aria-hidden />
+            : <ChevronDown size={14} style={{ color: MUTED, flexShrink: 0 }} aria-hidden />
           }
         </button>
 
@@ -530,10 +542,10 @@ export default function GoogleCalendarClient({ status, flashConnected, flashErro
               <div
                 style={{
                   padding:    '0 16px 16px',
-                  borderTop:  '1px solid #E5E7EB',
+                  borderTop:  `1px solid ${BORDER}`,
                 }}
               >
-                <p style={{ margin: '12px 0 10px', fontSize: 12, color: '#6B7280', lineHeight: 1.6 }}>
+                <p style={{ margin: '12px 0 10px', fontSize: T_SM, color: MUTED, lineHeight: 1.6 }}>
                   Four quick steps — takes under 10 minutes once you have your Google Cloud Console open.
                 </p>
 
@@ -574,9 +586,9 @@ export default function GoogleCalendarClient({ status, flashConnected, flashErro
                           width:          22,
                           height:         22,
                           borderRadius:   '50%',
-                          background:     '#0F172A',
-                          color:          '#FFFFFF',
-                          fontSize:       11,
+                          background:     SLATE,
+                          color:          SURFACE,
+                          fontSize:       T_XS,
                           fontWeight:     700,
                           display:        'flex',
                           alignItems:     'center',
@@ -587,10 +599,10 @@ export default function GoogleCalendarClient({ status, flashConnected, flashErro
                         {step.n}
                       </span>
                       <div>
-                        <p style={{ margin: 0, fontSize: 13, fontWeight: 600, color: '#111827', letterSpacing: '-0.01em' }}>
+                        <p style={{ margin: 0, fontSize: T_BASE, fontWeight: 600, color: SLATE, letterSpacing: '-0.01em' }}>
                           {step.head}
                         </p>
-                        <p style={{ margin: '2px 0 0', fontSize: 12, color: '#6B7280', lineHeight: 1.6 }}>
+                        <p style={{ margin: '2px 0 0', fontSize: T_SM, color: MUTED, lineHeight: 1.6 }}>
                           {step.body}
                         </p>
                       </div>

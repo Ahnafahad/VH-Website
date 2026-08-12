@@ -6,6 +6,20 @@ import { usePathname } from 'next/navigation';
 import { signOut } from 'next-auth/react';
 import { motion, Variants } from 'framer-motion';
 import {
+  BEIGE,
+  BG,
+  BORDER,
+  INK_SOFT,
+  MUTED,
+  RED,
+  SLATE,
+  SURFACE,
+  SURFACE_SHELL,
+  T_BASE,
+  T_SM,
+  T_XS,
+} from './lms/lms-shared';
+import {
   LayoutDashboard,
   BookOpen,
   Users,
@@ -181,10 +195,11 @@ export default function AdminSidebar({ adminName, adminEmail, role }: AdminSideb
 
   // ── Instructor shell (dark themed, classroom-scoped) ──────────────────────
   if (role === 'instructor') {
-    const ink     = '#FAF5EF';
+    const ink     = BG;
+    // Alpha variants derived from the shared BG token for dark-shell text and hover states.
     const inkMid  = 'rgba(250,245,239,0.65)';
     const inkDim  = 'rgba(250,245,239,0.35)';
-    const gold    = '#D4B094';
+    const gold    = BEIGE;
     const goldBg  = 'rgba(212,176,148,0.12)';
     const hoverBg = 'rgba(250,245,239,0.06)';
 
@@ -195,7 +210,7 @@ export default function AdminSidebar({ adminName, adminEmail, role }: AdminSideb
         animate="visible"
         className="hidden md:flex flex-col fixed left-0 top-0 h-full w-60 z-40"
         style={{
-          background:  '#1A0507',
+          background:  SLATE,
           borderRight: '1px solid rgba(212,176,148,0.15)',
         }}
       >
@@ -295,7 +310,7 @@ export default function AdminSidebar({ adminName, adminEmail, role }: AdminSideb
 
                         <span
                           style={{
-                            fontSize:      13,
+                            fontSize:      T_BASE,
                             fontWeight:    active ? 600 : 400,
                             color:         active ? gold : inkMid,
                             letterSpacing: '-0.01em',
@@ -324,8 +339,8 @@ export default function AdminSidebar({ adminName, adminEmail, role }: AdminSideb
                 height:         32,
                 borderRadius:   '50%',
                 background:     gold,
-                color:          '#1A0507',
-                fontSize:       11,
+                color:          SLATE,
+                fontSize:       T_XS,
                 fontWeight:     700,
                 display:        'flex',
                 alignItems:     'center',
@@ -342,7 +357,7 @@ export default function AdminSidebar({ adminName, adminEmail, role }: AdminSideb
               <p
                 style={{
                   margin:       0,
-                  fontSize:     12,
+                  fontSize:     T_SM,
                   fontWeight:   600,
                   color:        ink,
                   letterSpacing:'-0.01em',
@@ -356,7 +371,7 @@ export default function AdminSidebar({ adminName, adminEmail, role }: AdminSideb
               <p
                 style={{
                   margin:       0,
-                  fontSize:     11,
+                  fontSize:     T_XS,
                   color:        inkDim,
                   overflow:     'hidden',
                   textOverflow: 'ellipsis',
@@ -386,7 +401,7 @@ export default function AdminSidebar({ adminName, adminEmail, role }: AdminSideb
               borderRadius:  7,
               cursor:        'pointer',
               color:         inkMid,
-              fontSize:      12,
+              fontSize:      T_SM,
               fontWeight:    500,
               letterSpacing: '-0.01em',
             }}
@@ -408,8 +423,8 @@ export default function AdminSidebar({ adminName, adminEmail, role }: AdminSideb
       animate="visible"
       className="hidden md:flex flex-col fixed left-0 top-0 h-full w-60 z-40"
       style={{
-        background:   '#FAFAFA',
-        borderRight:  '1px solid #E5E7EB',
+        background:   SURFACE_SHELL,
+        borderRight:  `1px solid ${BORDER}`,
         colorScheme:  'light',
       }}
     >
@@ -417,7 +432,7 @@ export default function AdminSidebar({ adminName, adminEmail, role }: AdminSideb
       <div
         style={{
           padding:        '20px 20px 18px',
-          borderBottom:   '1px solid #E5E7EB',
+          borderBottom:   `1px solid ${BORDER}`,
           display:        'flex',
           alignItems:     'center',
           gap:            10,
@@ -448,7 +463,7 @@ export default function AdminSidebar({ adminName, adminEmail, role }: AdminSideb
                   margin:        si === 0 ? '8px 12px 4px' : '12px 12px 4px',
                   fontSize:      10,
                   fontWeight:    600,
-                  color:         '#9CA3AF',
+                  color:         MUTED,
                   letterSpacing: '0.1em',
                   textTransform: 'uppercase',
                   lineHeight:    1,
@@ -484,9 +499,9 @@ export default function AdminSidebar({ adminName, adminEmail, role }: AdminSideb
                         cursor:          'pointer',
                         marginBottom:    1,
                         border:          '1px solid transparent',
-                        borderColor:     active ? 'rgba(214,43,56,0.18)' : 'transparent',
+                        borderColor:     active ? 'rgba(118,15,19,0.18)' : 'transparent',
                         borderRadius:    9,
-                        backgroundColor: active ? 'rgba(214,43,56,0.04)' : 'transparent',
+                        backgroundColor: active ? 'rgba(118,15,19,0.04)' : 'transparent',
                         transition:      'border-color 0.15s, background-color 0.15s',
                       }}
                     >
@@ -497,7 +512,7 @@ export default function AdminSidebar({ adminName, adminEmail, role }: AdminSideb
                           style={{
                             position:      'absolute',
                             inset:         0,
-                            background:    'rgba(214,43,56,0.04)',
+                            background:    'rgba(118,15,19,0.04)',
                             pointerEvents: 'none',
                             zIndex:        0,
                           }}
@@ -509,7 +524,7 @@ export default function AdminSidebar({ adminName, adminEmail, role }: AdminSideb
                         size={16}
                         style={{
                           flexShrink: 0,
-                          color:      active ? '#D62B38' : '#6B7280',
+                          color:      active ? RED : MUTED,
                           position:   'relative',
                           zIndex:     1,
                           transition: 'color 0.15s',
@@ -519,9 +534,9 @@ export default function AdminSidebar({ adminName, adminEmail, role }: AdminSideb
 
                       <span
                         style={{
-                          fontSize:      13,
+                          fontSize:      T_BASE,
                           fontWeight:    active ? 600 : 400,
-                          color:         active ? '#D62B38' : '#6B7280',
+                          color:         active ? RED : MUTED,
                           letterSpacing: '-0.01em',
                           position:      'relative',
                           zIndex:        1,
@@ -543,7 +558,7 @@ export default function AdminSidebar({ adminName, adminEmail, role }: AdminSideb
       <div
         style={{
           padding:     '14px 16px',
-          borderTop:   '1px solid #E5E7EB',
+          borderTop:   `1px solid ${BORDER}`,
         }}
       >
         {/* Admin name + email */}
@@ -561,9 +576,9 @@ export default function AdminSidebar({ adminName, adminEmail, role }: AdminSideb
               width:           32,
               height:          32,
               borderRadius:    '50%',
-              background:      '#D62B38',
-              color:           '#FFFFFF',
-              fontSize:        11,
+              background:      RED,
+              color:           SURFACE,
+              fontSize:        T_XS,
               fontWeight:      700,
               display:         'flex',
               alignItems:      'center',
@@ -580,9 +595,9 @@ export default function AdminSidebar({ adminName, adminEmail, role }: AdminSideb
             <p
               style={{
                 margin:        0,
-                fontSize:      12,
+                fontSize:      T_SM,
                 fontWeight:    600,
-                color:         '#111827',
+                color:         INK_SOFT,
                 letterSpacing: '-0.01em',
                 overflow:      'hidden',
                 textOverflow:  'ellipsis',
@@ -594,8 +609,8 @@ export default function AdminSidebar({ adminName, adminEmail, role }: AdminSideb
             <p
               style={{
                 margin:       0,
-                fontSize:     11,
-                color:        '#9CA3AF',
+                fontSize:     T_XS,
+                color:        MUTED,
                 overflow:     'hidden',
                 textOverflow: 'ellipsis',
                 whiteSpace:   'nowrap',
@@ -610,7 +625,7 @@ export default function AdminSidebar({ adminName, adminEmail, role }: AdminSideb
         <motion.button
           onClick={() => signOut({ callbackUrl: '/auth/signin' })}
           whileHover={{
-            backgroundColor: 'rgba(214,43,56,0.06)',
+            backgroundColor: 'rgba(118,15,19,0.06)',
             transition: { type: 'spring' as const, stiffness: 400, damping: 30 },
           }}
           whileTap={{ scale: 0.97 }}
@@ -621,11 +636,11 @@ export default function AdminSidebar({ adminName, adminEmail, role }: AdminSideb
             gap:            8,
             padding:        '8px 10px',
             background:     'transparent',
-            border:         '1px solid #E5E7EB',
+            border:         `1px solid ${BORDER}`,
             borderRadius:   7,
             cursor:         'pointer',
-            color:          '#6B7280',
-            fontSize:       12,
+            color:          MUTED,
+            fontSize:       T_SM,
             fontWeight:     500,
             letterSpacing:  '-0.01em',
           }}

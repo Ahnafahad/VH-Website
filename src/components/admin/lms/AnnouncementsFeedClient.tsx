@@ -9,7 +9,7 @@ import {
   IconBtn, EmptyState, PageHeader, FormActions,
   fmtDhaka,
   SPIN_CSS, RED, SLATE, BORDER, MUTED, BG, rowV,
-  SURFACE, INK_SOFT, R_MD, R_LG, R_PILL,
+  SURFACE, INK_SOFT, R_MD, R_LG, R_PILL, T_XS, T_SM, T_BASE,
 } from './lms-shared';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
@@ -50,7 +50,7 @@ const SUBJECTS = ['english', 'math', 'analytical'];
 function audienceModeBtnStyle(active: boolean): React.CSSProperties {
   return {
     display: 'inline-flex', alignItems: 'center',
-    padding: '6px 12px', borderRadius: R_MD, fontSize: 12, fontWeight: 500,
+    padding: '6px 12px', borderRadius: R_MD, fontSize: T_SM, fontWeight: 500,
     cursor: 'pointer',
     border: `1px solid ${active ? RED : BORDER}`,
     background: active ? `${RED}0F` : SURFACE,
@@ -109,7 +109,7 @@ function IndividualPicker({
             background: SURFACE, border: `1px solid ${BORDER}`, borderRadius: R_MD,
             boxShadow: '0 4px 16px rgba(0,0,0,0.08)', zIndex: 10, maxHeight: 200, overflowY: 'auto',
           }}>
-            {loading && <div style={{ padding: '8px 12px', fontSize: 12, color: MUTED }}>Searching…</div>}
+            {loading && <div style={{ padding: '8px 12px', fontSize: T_SM, color: MUTED }}>Searching…</div>}
             {!loading && results.map(r => (
               <button
                 key={r.id}
@@ -291,7 +291,7 @@ function AnnouncementModal({
           )}
         </div>
         <Toggle checked={form.pinned} onChange={v => f('pinned', v)} label="Pin to top of feed" />
-        {error && <p style={{ fontSize: 12, color: RED, margin: 0 }}>{error}</p>}
+        {error && <p style={{ fontSize: T_SM, color: RED, margin: 0 }}>{error}</p>}
         <FormActions>
           <GhostBtn onClick={onClose} small>Cancel</GhostBtn>
           <PrimaryBtn onClick={handleSave} loading={saving} small>
@@ -389,7 +389,7 @@ export default function AnnouncementsFeedClient({ initialAnnouncements, batches 
                 display: 'inline-flex', alignItems: 'center', gap: 5,
                 padding: '7px 12px', borderRadius: R_MD, background: BG,
                 border: `1px solid ${BORDER}`, color: INK_SOFT,
-                fontSize: 12, fontWeight: 500, textDecoration: 'none',
+                fontSize: T_SM, fontWeight: 500, textDecoration: 'none',
                 transition: 'border-color 0.14s',
               }}
             >
@@ -412,10 +412,9 @@ export default function AnnouncementsFeedClient({ initialAnnouncements, batches 
               key={a.id}
               custom={i} variants={rowV} initial="hidden" animate="visible"
               style={{
-                background: SURFACE,
+                background: a.pinned ? `${RED}0F` : SURFACE,
                 border: `1px solid ${a.pinned ? `${RED}40` : BORDER}`,
                 borderRadius: R_LG, padding: '12px 16px',
-                borderLeft: a.pinned ? `3px solid ${RED}` : `1px solid ${BORDER}`,
               }}
             >
               <div style={{ display: 'flex', alignItems: 'flex-start', gap: 12 }}>
@@ -424,30 +423,30 @@ export default function AnnouncementsFeedClient({ initialAnnouncements, batches 
                     {a.pinned && (
                       <Pin size={12} style={{ color: RED, flexShrink: 0 }} aria-hidden />
                     )}
-                    <p style={{ margin: 0, fontSize: 13, fontWeight: 600, color: SLATE }}>{a.title}</p>
+                    <p style={{ margin: 0, fontSize: T_BASE, fontWeight: 600, color: SLATE }}>{a.title}</p>
                     <SubjectBadge subject={a.subject} />
                     {a.targetUsers && a.targetUsers.length > 0 ? (
                       <span
                         title={a.targetUsers.map(u => u.name).join(', ')}
-                        style={{ display: 'inline-flex', alignItems: 'center', gap: 4, fontSize: 11, color: RED, background: `${RED}0F`, border: `1px solid ${RED}33`, padding: '2px 7px', borderRadius: R_PILL }}
+                        style={{ display: 'inline-flex', alignItems: 'center', gap: 4, fontSize: T_XS, color: RED, background: `${RED}0F`, border: `1px solid ${RED}33`, padding: '2px 7px', borderRadius: R_PILL }}
                       >
                         <Users size={10} aria-hidden />
                         {a.targetUsers.length} student{a.targetUsers.length === 1 ? '' : 's'}
                       </span>
                     ) : a.batch && (
-                      <span style={{ fontSize: 11, color: MUTED, background: BG, border: `1px solid ${BORDER}`, padding: '2px 7px', borderRadius: R_PILL }}>
+                      <span style={{ fontSize: T_XS, color: MUTED, background: BG, border: `1px solid ${BORDER}`, padding: '2px 7px', borderRadius: R_PILL }}>
                         Batch {a.batch}
                       </span>
                     )}
-                    <span style={{ fontSize: 11, color: MUTED, background: BG, border: `1px solid ${BORDER}`, padding: '2px 7px', borderRadius: R_PILL }}>
+                    <span style={{ fontSize: T_XS, color: MUTED, background: BG, border: `1px solid ${BORDER}`, padding: '2px 7px', borderRadius: R_PILL }}>
                       {a.product.toUpperCase()}
                     </span>
                   </div>
-                  <p style={{ margin: '0 0 4px', fontSize: 12, color: INK_SOFT, lineHeight: 1.5,
+                  <p style={{ margin: '0 0 4px', fontSize: T_SM, color: INK_SOFT, lineHeight: 1.5,
                     display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical' as const, overflow: 'hidden' }}>
                     {a.body}
                   </p>
-                  <p style={{ margin: 0, fontSize: 11, color: MUTED }}>
+                  <p style={{ margin: 0, fontSize: T_XS, color: MUTED }}>
                     Posted {fmtDhaka(a.createdAt)}
                   </p>
                 </div>

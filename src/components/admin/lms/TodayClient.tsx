@@ -15,7 +15,7 @@ import {
   FormActions,
   fmtDhaka, dhakaLocalToISO, SPIN_CSS, RED, SLATE, BORDER, MUTED, BG,
   rowV, SURFACE, SURFACE_ALT, OK, OK_BG, WARN, WARN_BG, INK_SOFT,
-  RED_HOVER, R_SM, R_MD, R_LG, R_PILL, SHADOW_SM, FONT_HEADING,
+  RED_HOVER, R_SM, R_MD, R_LG, R_PILL, SHADOW_SM, FONT_HEADING, T_XS, T_SM, T_BASE, T_MD, T_LG,
 } from './lms-shared';
 import { suggestMaterialFields, type MaterialSuggestion } from '@/lib/naming/suggest';
 import { formatMaterialName } from '@/lib/naming/format-name';
@@ -206,14 +206,14 @@ const UploadSheet = React.forwardRef<CloseGuardHandle, {
             }
           }}
           className="lms-int"
-          style={{ width: '100%', minHeight: 44, padding: '10px 12px', fontSize: 13, color: SLATE, border: `1px solid ${BORDER}`, borderRadius: R_MD, background: SURFACE }}
+          style={{ width: '100%', minHeight: 44, padding: '10px 12px', fontSize: T_BASE, color: SLATE, border: `1px solid ${BORDER}`, borderRadius: R_MD, background: SURFACE }}
         />
         {file && (
-          <p style={{ margin: '4px 0 0', fontSize: 11, color: MUTED }}>
+          <p style={{ margin: '4px 0 0', fontSize: T_XS, color: MUTED }}>
             {file.name} — {(file.size / 1024 / 1024).toFixed(1)} MB
           </p>
         )}
-        <p style={{ margin: '5px 0 0', fontSize: 11, lineHeight: 1.5, color: MUTED }}>
+        <p style={{ margin: '5px 0 0', fontSize: T_XS, lineHeight: 1.5, color: MUTED }}>
           Course, subject, batch, and access are inherited from this class automatically.
         </p>
       </div>
@@ -225,10 +225,10 @@ const UploadSheet = React.forwardRef<CloseGuardHandle, {
               width: '100%', transform: `scaleX(${progress / 100})`, transformOrigin: 'left', transition: 'transform 0.3s',
             }} />
           </div>
-          <p style={{ fontSize: 11, color: MUTED, margin: '4px 0 0' }}>Uploading… {progress}%</p>
+          <p style={{ fontSize: T_XS, color: MUTED, margin: '4px 0 0' }}>Uploading… {progress}%</p>
         </div>
       )}
-      {error && <p style={{ fontSize: 12, color: RED, margin: 0 }}>{error}</p>}
+      {error && <p style={{ fontSize: T_SM, color: RED, margin: 0 }}>{error}</p>}
       <FormActions>
         <GhostBtn onClick={onClose} small>Cancel</GhostBtn>
         <PrimaryBtn
@@ -337,7 +337,7 @@ const HomeworkSheet = React.forwardRef<CloseGuardHandle, {
           ))}
         </FieldSelect>
       </div>
-      {error && <p style={{ fontSize: 12, color: RED, margin: 0 }}>{error}</p>}
+      {error && <p style={{ fontSize: T_SM, color: RED, margin: 0 }}>{error}</p>}
       <FormActions>
         <GhostBtn onClick={onClose} small>Cancel</GhostBtn>
         <PrimaryBtn onClick={handleSave} loading={saving} small>Post Homework</PrimaryBtn>
@@ -501,14 +501,14 @@ const AttendanceSheet = React.forwardRef<CloseGuardHandle, {
   }
 
   if (!students || students.length === 0) {
-    return <p style={{ margin: 0, fontSize: 13, color: MUTED }}>No students in scope for this class.</p>;
+    return <p style={{ margin: 0, fontSize: T_BASE, color: MUTED }}>No students in scope for this class.</p>;
   }
 
   const presentCount = students.filter(s => s.present).length;
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-      <p style={{ margin: 0, fontSize: 12, color: MUTED }}>
+      <p style={{ margin: 0, fontSize: T_SM, color: MUTED }}>
         {presentCount} / {students.length} marked present — saved automatically as you toggle
       </p>
 
@@ -553,12 +553,12 @@ const AttendanceSheet = React.forwardRef<CloseGuardHandle, {
                   }}
                 >
                   <p style={{
-                    margin: 0, fontSize: 13, fontWeight: 600, color: SLATE,
+                    margin: 0, fontSize: T_BASE, fontWeight: 600, color: SLATE,
                     overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap',
                   }}>
                     {s.name}
                   </p>
-                  <p style={{ margin: 0, fontSize: 11, color: MUTED }}>
+                  <p style={{ margin: 0, fontSize: T_XS, color: MUTED }}>
                     {s.totalAbsences} absent total · {s.absencesLast7Days} in last 7d · {s.onlineCount}/8 online
                     {s.source === 'pulled' && ' · auto-pulled'}
                   </p>
@@ -584,7 +584,7 @@ const AttendanceSheet = React.forwardRef<CloseGuardHandle, {
                         title={capBlocksThis ? 'Online attendance cap (8) reached for this student' : undefined}
                         className="lms-int"
                         style={{
-                          padding: '4px 8px', fontSize: 11, fontWeight: 600,
+                          padding: '4px 8px', fontSize: T_XS, fontWeight: 600,
                           border: 'none', borderRight: opt === 'offline' ? `1px solid ${BORDER}` : 'none',
                           background: s.mode === opt ? RED : SURFACE,
                           color: s.mode === opt ? SURFACE : (capBlocksThis ? BORDER : MUTED),
@@ -627,21 +627,21 @@ const AttendanceSheet = React.forwardRef<CloseGuardHandle, {
                   background: SURFACE_ALT,
                   display: 'flex', flexDirection: 'column', gap: 8,
                 }}>
-                  <p style={{ margin: 0, fontSize: 12, color: SLATE }}>
+                  <p style={{ margin: 0, fontSize: T_SM, color: SLATE }}>
                     <span style={{ color: MUTED }}>Email: </span>{s.email}
                   </p>
-                  <p style={{ margin: 0, fontSize: 12, color: SLATE }}>
+                  <p style={{ margin: 0, fontSize: T_SM, color: SLATE }}>
                     <span style={{ color: MUTED }}>Lexical points: </span>{s.lexicalPoints}
                   </p>
-                  <p style={{ margin: 0, fontSize: 12, color: SLATE }}>
+                  <p style={{ margin: 0, fontSize: T_SM, color: SLATE }}>
                     <span style={{ color: MUTED }}>Last attendance: </span>
                     {lastPresent ? fmtDhaka(lastPresent.scheduledAt, { dateStyle: 'medium' }) : 'Never'}
                   </p>
                   {s.history.length === 0 ? (
-                    <p style={{ margin: 0, fontSize: 11, color: MUTED }}>No past classes yet.</p>
+                    <p style={{ margin: 0, fontSize: T_XS, color: MUTED }}>No past classes yet.</p>
                   ) : (
                     <div style={{ overflowX: 'auto', marginTop: 4 }}>
-                      <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 11 }}>
+                      <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: T_XS }}>
                         <thead>
                           <tr>
                             {['Class', 'Present', 'Online', 'Offline'].map(col => (
@@ -687,7 +687,7 @@ const AttendanceSheet = React.forwardRef<CloseGuardHandle, {
         })}
       </div>
 
-      {error && <p style={{ fontSize: 12, color: RED, margin: 0 }}>{error}</p>}
+      {error && <p style={{ fontSize: T_SM, color: RED, margin: 0 }}>{error}</p>}
 
       <FormActions>
         <PrimaryBtn onClick={handleDone} small>Done</PrimaryBtn>
@@ -738,11 +738,11 @@ function OfflineHomeworkSheet({
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
       {saveError && (
-        <p role="alert" style={{ margin: 0, fontSize: 12, color: RED, fontWeight: 500 }}>
+        <p role="alert" style={{ margin: 0, fontSize: T_SM, color: RED, fontWeight: 500 }}>
           {saveError}
         </p>
       )}
-      <p style={{ margin: 0, fontSize: 12, color: MUTED }}>
+      <p style={{ margin: 0, fontSize: T_SM, color: MUTED }}>
         {rows.filter(r => r.checked).length} / {rows.length} checked off
       </p>
       <div style={{ maxHeight: 380, overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: 8 }}>
@@ -765,13 +765,13 @@ function OfflineHomeworkSheet({
             />
             <div style={{ flex: 1, minWidth: 0 }}>
               <p style={{
-                margin: 0, fontSize: 13, fontWeight: 600, color: SLATE,
+                margin: 0, fontSize: T_BASE, fontWeight: 600, color: SLATE,
                 overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap',
               }}>
                 {r.userName}
               </p>
               <p style={{
-                margin: 0, fontSize: 11, color: MUTED,
+                margin: 0, fontSize: T_XS, color: MUTED,
                 overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap',
               }}>
                 {r.assignmentTitle}
@@ -861,17 +861,17 @@ function SessionCard({ session, index, batches, onRefresh }: {
               <SubjectBadge subject={session.subject} />
               <StatusBadge status={session.status} />
               {session.batch && (
-                <span style={{ fontSize: 11, color: MUTED, background: BG, border: `1px solid ${BORDER}`, padding: '2px 8px', borderRadius: R_PILL }}>
+                <span style={{ fontSize: T_XS, color: MUTED, background: BG, border: `1px solid ${BORDER}`, padding: '2px 8px', borderRadius: R_PILL }}>
                   Batch {session.batch}
                 </span>
               )}
             </div>
           </div>
           <div style={{ flexShrink: 0, textAlign: 'right' }}>
-            <p style={{ margin: 0, fontSize: 14, fontWeight: 700, color: SLATE, fontVariantNumeric: 'tabular-nums' }}>
+            <p style={{ margin: 0, fontSize: T_MD, fontWeight: 700, color: SLATE, fontVariantNumeric: 'tabular-nums' }}>
               {startTime}
             </p>
-            <p style={{ margin: 0, fontSize: 11, color: MUTED }}>→ {endTime}</p>
+            <p style={{ margin: 0, fontSize: T_XS, color: MUTED }}>→ {endTime}</p>
           </div>
         </div>
 
@@ -879,15 +879,15 @@ function SessionCard({ session, index, batches, onRefresh }: {
         <div style={{ display: 'flex', gap: 16, rowGap: 8, flexWrap: 'wrap', marginBottom: 16 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
             <Users size={12} style={{ color: MUTED }} aria-hidden />
-            <span style={{ fontSize: 12, color: INK_SOFT }}>{session.attendanceCount} attended</span>
+            <span style={{ fontSize: T_SM, color: INK_SOFT }}>{session.attendanceCount} attended</span>
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
             <BookOpen size={12} style={{ color: MUTED }} aria-hidden />
-            <span style={{ fontSize: 12, color: INK_SOFT }}>{session.materialsCount} materials</span>
+            <span style={{ fontSize: T_SM, color: INK_SOFT }}>{session.materialsCount} materials</span>
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
             <Clock size={12} style={{ color: MUTED }} aria-hidden />
-            <span style={{ fontSize: 12, color: INK_SOFT }}>{session.durationMinutes} min</span>
+            <span style={{ fontSize: T_SM, color: INK_SOFT }}>{session.durationMinutes} min</span>
           </div>
           {session.pendingReviewCount > 0 && (
             <Link
@@ -896,7 +896,7 @@ function SessionCard({ session, index, batches, onRefresh }: {
               style={{ display: 'flex', alignItems: 'center', gap: 4, textDecoration: 'none' }}
             >
               <ClipboardCheck size={12} style={{ color: WARN }} aria-hidden />
-              <span style={{ fontSize: 12, color: WARN, fontWeight: 600 }}>
+              <span style={{ fontSize: T_SM, color: WARN, fontWeight: 600 }}>
                 {session.pendingReviewCount} to review
               </span>
             </Link>
@@ -914,7 +914,7 @@ function SessionCard({ session, index, batches, onRefresh }: {
                 display: 'flex', alignItems: 'center', gap: 8,
                 padding: '8px 12px', borderRadius: R_MD,
                 background: RED, border: '1px solid transparent',
-                color: SURFACE, fontSize: 12, fontWeight: 600, cursor: 'pointer',
+                color: SURFACE, fontSize: T_SM, fontWeight: 600, cursor: 'pointer',
               }}
             >
               <Users size={12} aria-hidden />
@@ -936,7 +936,7 @@ function SessionCard({ session, index, batches, onRefresh }: {
                     padding: '8px 12px', borderRadius: R_MD,
                     background: OK_BG,
                     border: `1px solid ${BORDER}`,
-                    color: OK, fontSize: 12, fontWeight: 600, cursor: 'pointer',
+                    color: OK, fontSize: T_SM, fontWeight: 600, cursor: 'pointer',
                   }}
                 >
                   <Video size={12} aria-hidden />
@@ -954,7 +954,7 @@ function SessionCard({ session, index, batches, onRefresh }: {
                 display: 'flex', alignItems: 'center', gap: 8,
                 padding: '8px 12px', borderRadius: R_MD,
                 background: SURFACE, border: `1px solid ${BORDER}`,
-                color: INK_SOFT, fontSize: 12, fontWeight: 500, cursor: 'pointer',
+                color: INK_SOFT, fontSize: T_SM, fontWeight: 500, cursor: 'pointer',
               }}
             >
               <Upload size={12} aria-hidden />
@@ -969,7 +969,7 @@ function SessionCard({ session, index, batches, onRefresh }: {
                 display: 'flex', alignItems: 'center', gap: 8,
                 padding: '8px 12px', borderRadius: R_MD,
                 background: SURFACE, border: `1px solid ${BORDER}`,
-                color: INK_SOFT, fontSize: 12, fontWeight: 500, cursor: 'pointer',
+                color: INK_SOFT, fontSize: T_SM, fontWeight: 500, cursor: 'pointer',
               }}
             >
               <BookOpen size={12} aria-hidden />
@@ -989,7 +989,7 @@ function SessionCard({ session, index, batches, onRefresh }: {
                     background: uncheckedCount > 0 ? WARN_BG : OK_BG,
                     border: `1px solid ${BORDER}`,
                     color: uncheckedCount > 0 ? WARN : OK,
-                    fontSize: 12, fontWeight: 600, cursor: 'pointer',
+                    fontSize: T_SM, fontWeight: 600, cursor: 'pointer',
                   }}
                 >
                   <KeyRound size={12} aria-hidden />
@@ -1009,7 +1009,7 @@ function SessionCard({ session, index, batches, onRefresh }: {
                   padding: '8px 12px', borderRadius: R_MD,
                   background: SURFACE,
                   border: `1px solid ${BORDER}`,
-                  color: RED, fontSize: 12, fontWeight: 500,
+                  color: RED, fontSize: T_SM, fontWeight: 500,
                   cursor: completing ? 'not-allowed' : 'pointer',
                   opacity: completing ? 0.6 : 1,
                 }}
@@ -1111,12 +1111,12 @@ export default function TodayClient({ initial, batches }: Props) {
           <h1 style={{ margin: 0, fontSize: 22, fontWeight: 700, color: SLATE, letterSpacing: '-0.02em', lineHeight: 1.2, fontFamily: FONT_HEADING }}>
             Today
           </h1>
-          <p style={{ margin: '4px 0 0', fontSize: 13, color: MUTED }}>{dateLabel}</p>
+          <p style={{ margin: '4px 0 0', fontSize: T_BASE, color: MUTED }}>{dateLabel}</p>
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: 12, flexWrap: 'wrap' }}>
           {data.assignmentsDue48h > 0 && (
             <span style={{
-              padding: '4px 12px', borderRadius: R_PILL, fontSize: 11, fontWeight: 600,
+              padding: '4px 12px', borderRadius: R_PILL, fontSize: T_XS, fontWeight: 600,
               background: WARN_BG, color: WARN,
               border: `1px solid ${BORDER}`,
             }}>
@@ -1132,7 +1132,7 @@ export default function TodayClient({ initial, batches }: Props) {
               display: 'flex', alignItems: 'center', gap: 8,
               padding: '8px 12px', borderRadius: R_MD,
               background: SURFACE, border: `1px solid ${BORDER}`,
-              color: INK_SOFT, fontSize: 12, fontWeight: 500, cursor: 'pointer',
+              color: INK_SOFT, fontSize: T_SM, fontWeight: 500, cursor: 'pointer',
             }}
           >
             <Loader2
@@ -1152,14 +1152,14 @@ export default function TodayClient({ initial, batches }: Props) {
           borderRadius: R_LG, padding: '48px 24px', textAlign: 'center',
         }}>
           <CalendarX size={32} style={{ color: MUTED, margin: '0 auto 12px', display: 'block' }} aria-hidden />
-          <p style={{ margin: '0 0 8px', fontSize: 16, fontWeight: 600, color: SLATE, fontFamily: FONT_HEADING }}>No class today</p>
-          <p style={{ margin: '0 0 16px', fontSize: 13, color: MUTED }}>
+          <p style={{ margin: '0 0 8px', fontSize: T_LG, fontWeight: 600, color: SLATE, fontFamily: FONT_HEADING }}>No class today</p>
+          <p style={{ margin: '0 0 16px', fontSize: T_BASE, color: MUTED }}>
             No sessions scheduled for today in Dhaka time.
           </p>
           <Link href="/admin/classes" className="lms-int lms-primary" style={{
             display: 'inline-flex', alignItems: 'center', gap: 8,
             padding: '8px 16px', borderRadius: R_MD, background: RED,
-            color: SURFACE, fontSize: 13, fontWeight: 600,
+            color: SURFACE, fontSize: T_BASE, fontWeight: 600,
             textDecoration: 'none',
           }}>
             Go to Classes

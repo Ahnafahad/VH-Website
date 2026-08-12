@@ -3,6 +3,7 @@
 import StatCard from './StatCard';
 import ChartCard from './ChartCard';
 import BarList from './BarList';
+import { BORDER, INK_SOFT, MUTED, RED, R_LG, T_BASE, T_LG, WARN, WARN_BG } from '../lms/lms-shared';
 
 interface LmsData {
   activeLearners: number;
@@ -64,22 +65,22 @@ export default function LmsPanel({ data }: { data: LmsData }) {
       </div>
 
       {data.excludedDurationEvents > 0 && (
-        <div role="status" style={{ padding: '12px 14px', border: '1px solid #FDE68A', borderRadius: 10, background: '#FFFBEB', color: '#92400E', fontSize: 13, lineHeight: 1.5 }}>
+        <div role="status" style={{ padding: '12px 14px', border: `1px solid ${WARN}4D`, borderRadius: R_LG, background: WARN_BG, color: WARN, fontSize: T_BASE, lineHeight: 1.5 }}>
           {data.excludedDurationEvents} unusually long page event{data.excludedDurationEvents === 1 ? ' was' : 's were'} excluded so active-time reporting stays trustworthy.
         </div>
       )}
 
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 16 }}>
         <ChartCard title="Learning-material workflow" sub="Actions completed in the selected date range" empty={workflowItems.every(item => item.value === 0)} emptyNote="LMS action tracking starts with this release.">
-          <BarList items={workflowItems} accent="#760F13" valueFormat={value => value.toLocaleString()} />
+          <BarList items={workflowItems} accent={RED} valueFormat={value => value.toLocaleString()} />
         </ChartCard>
         <ChartCard title="Most-used LMS pages" sub="Page views in the selected date range" empty={pathItems.length === 0} emptyNote="No LMS page views have been recorded in this range.">
-          <BarList items={pathItems} accent="#A86E58" valueFormat={value => `${value} views`} />
+          <BarList items={pathItems} accent={MUTED} valueFormat={value => `${value} views`} />
         </ChartCard>
       </div>
 
-      <div style={{ borderTop: '1px solid #E5E7EB', paddingTop: 16 }}>
-        <h2 style={{ margin: '0 0 10px', fontSize: 15, color: '#111827' }}>Current LMS records</h2>
+      <div style={{ borderTop: `1px solid ${BORDER}`, paddingTop: 16 }}>
+        <h2 style={{ margin: '0 0 10px', fontSize: T_LG, color: INK_SOFT }}>Current LMS records</h2>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: 10 }}>
           <StatCard label="Materials" value={data.inventory.materials} />
           <StatCard label="Classes" value={data.inventory.classes} />

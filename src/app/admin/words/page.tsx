@@ -38,6 +38,13 @@ import {
   FolderOpen,
   Tag,
 } from 'lucide-react';
+import {
+  RED, RED_DARK, SLATE, BORDER, BORDER_FIELD, MUTED, BG, SURFACE, SURFACE_ALT,
+  SURFACE_SHELL, INK_SOFT, OK, OK_BG, WARN, WARN_BG, INFO, INFO_BG,
+  T_XS, T_SM, T_BASE, T_MD, T_LG, T_XL,
+  R_SM, R_MD, R_LG, R_XL,
+  SHADOW_LG, FONT_HEADING, Z_MODAL_BACKDROP, Z_TOAST,
+} from '@/components/admin/lms/lms-shared';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -206,7 +213,7 @@ export default function WordsAdminPage() {
   if (status === 'loading') {
     return (
       <div style={s.loadingPage}>
-        <Loader2 size={24} style={{ animation: 'spin 1s linear infinite', color: '#D62B38' }} />
+        <Loader2 size={24} style={{ animation: 'spin 1s linear infinite', color: RED }} />
       </div>
     );
   }
@@ -251,7 +258,7 @@ export default function WordsAdminPage() {
       <motion.div variants={fadeIn} initial="hidden" animate="visible" style={s.pageHeader}>
         <div style={s.pageHeaderLeft}>
           <div style={s.pageTitleRow}>
-            <Database size={18} style={{ color: '#D62B38', flexShrink: 0 }} />
+            <Database size={18} style={{ color: RED, flexShrink: 0 }} />
             <h1 style={s.pageTitle}>Word Bank</h1>
           </div>
           <p style={s.pageSubtitle}>Import vocabulary, manage units &amp; themes, edit words</p>
@@ -431,12 +438,12 @@ function ImportSection({ onToast }: { onToast: (type: Toast['type'], msg: string
         <div style={s.dropzoneInner}>
           {fileName ? (
             <>
-              <div style={{ ...s.dropzoneIcon, background: '#FEF2F2' }}>
-                <FileText size={22} style={{ color: '#D62B38' }} />
+              <div style={{ ...s.dropzoneIcon, background: `${RED}14` }}>
+                <FileText size={22} style={{ color: RED }} />
               </div>
               <div>
-                <p style={{ ...s.dropzoneText, color: '#111827', fontWeight: 600 }}>{fileName}</p>
-                <p style={{ ...s.dropzoneSubtext, color: '#D62B38' }}>
+                <p style={{ ...s.dropzoneText, color: SLATE, fontWeight: 600 }}>{fileName}</p>
+                <p style={{ ...s.dropzoneSubtext, color: RED }}>
                   {parsed ? `${parsed.length} row(s) parsed` : 'Parsing...'}
                 </p>
               </div>
@@ -451,7 +458,7 @@ function ImportSection({ onToast }: { onToast: (type: Toast['type'], msg: string
           ) : (
             <>
               <div style={s.dropzoneIcon}>
-                <Upload size={22} style={{ color: '#6B7280' }} />
+                <Upload size={22} style={{ color: MUTED }} />
               </div>
               <div>
                 <p style={s.dropzoneText}>
@@ -466,7 +473,7 @@ function ImportSection({ onToast }: { onToast: (type: Toast['type'], msg: string
 
       {/* ── Format hint ────────────────────────────────────────────────────── */}
       <div style={s.hintBox}>
-        <Info size={12} style={{ color: '#9CA3AF', flexShrink: 0, marginTop: 1 }} />
+        <Info size={12} style={{ color: MUTED, flexShrink: 0, marginTop: 1 }} />
         <span style={s.hintText}>
           <strong>CSV columns:</strong>{' '}
           word, definition, synonyms, antonyms, exampleSentence, partOfSpeech, unitId, themeId, difficultyBase
@@ -478,8 +485,8 @@ function ImportSection({ onToast }: { onToast: (type: Toast['type'], msg: string
       {/* ── Parse error ────────────────────────────────────────────────────── */}
       {parseError && (
         <div style={s.errorBox}>
-          <AlertTriangle size={14} style={{ color: '#B91C1C', flexShrink: 0 }} />
-          <span style={{ fontSize: 13, color: '#991B1B' }}>{parseError}</span>
+          <AlertTriangle size={14} style={{ color: RED_DARK, flexShrink: 0 }} />
+          <span style={{ fontSize: T_BASE, color: RED_DARK }}>{parseError}</span>
         </div>
       )}
 
@@ -550,25 +557,25 @@ function ImportSection({ onToast }: { onToast: (type: Toast['type'], msg: string
           style={s.resultBox}
         >
           <div style={s.resultRow}>
-            <div style={{ ...s.resultStat, background: '#F0FDF4', borderColor: '#BBF7D0' }}>
-              <span style={{ fontSize: 22, fontWeight: 700, color: '#166534' }}>{importResult.imported}</span>
-              <span style={{ fontSize: 11, color: '#166534' }}>Imported</span>
+            <div style={{ ...s.resultStat, borderRight: `1px solid ${BORDER}` }}>
+              <span style={{ fontSize: T_XL, fontWeight: 700, color: OK }}>{importResult.imported}</span>
+              <span style={{ fontSize: T_XS, color: OK }}>Imported</span>
             </div>
-            <div style={{ ...s.resultStat, background: '#EFF6FF', borderColor: '#BFDBFE' }}>
-              <span style={{ fontSize: 22, fontWeight: 700, color: '#1D4ED8' }}>{importResult.updated}</span>
-              <span style={{ fontSize: 11, color: '#1D4ED8' }}>Updated</span>
+            <div style={{ ...s.resultStat, borderRight: `1px solid ${BORDER}` }}>
+              <span style={{ fontSize: T_XL, fontWeight: 700, color: INFO }}>{importResult.updated}</span>
+              <span style={{ fontSize: T_XS, color: INFO }}>Updated</span>
             </div>
-            <div style={{ ...s.resultStat, background: importResult.errors.length ? '#FEF2F2' : '#F0FDF4', borderColor: importResult.errors.length ? '#FECACA' : '#BBF7D0' }}>
-              <span style={{ fontSize: 22, fontWeight: 700, color: importResult.errors.length ? '#B91C1C' : '#166534' }}>{importResult.errors.length}</span>
-              <span style={{ fontSize: 11, color: importResult.errors.length ? '#B91C1C' : '#166534' }}>Errors</span>
+            <div style={s.resultStat}>
+              <span style={{ fontSize: T_XL, fontWeight: 700, color: importResult.errors.length ? RED_DARK : OK }}>{importResult.errors.length}</span>
+              <span style={{ fontSize: T_XS, color: importResult.errors.length ? RED_DARK : OK }}>Errors</span>
             </div>
           </div>
           {importResult.errors.length > 0 && (
             <ul style={s.errorList}>
               {importResult.errors.map((e, i) => (
                 <li key={i} style={s.errorItem}>
-                  <AlertTriangle size={11} style={{ color: '#B91C1C', flexShrink: 0, marginTop: 1 }} />
-                  <span style={{ fontSize: 12, color: '#7F1D1D' }}>{e}</span>
+                  <AlertTriangle size={11} style={{ color: RED_DARK, flexShrink: 0, marginTop: 1 }} />
+                  <span style={{ fontSize: T_SM, color: RED_DARK }}>{e}</span>
                 </li>
               ))}
             </ul>
@@ -724,8 +731,8 @@ function StructureSection({ onToast }: { onToast: (type: Toast['type'], msg: str
   if (loading) {
     return (
       <motion.div variants={fadeIn} initial="hidden" animate="visible" style={s.loadingCard}>
-        <Loader2 size={20} style={{ animation: 'spin 1s linear infinite', color: '#D62B38' }} />
-        <span style={{ fontSize: 13, color: '#6B7280' }}>Loading units…</span>
+        <Loader2 size={20} style={{ animation: 'spin 1s linear infinite', color: RED }} />
+        <span style={{ fontSize: T_BASE, color: MUTED }}>Loading units…</span>
       </motion.div>
     );
   }
@@ -761,7 +768,7 @@ function StructureSection({ onToast }: { onToast: (type: Toast['type'], msg: str
               onClick={e => e.stopPropagation()}
             >
               <div style={s.confirmIcon}>
-                <AlertTriangle size={20} style={{ color: '#B91C1C' }} />
+                <AlertTriangle size={20} style={{ color: RED_DARK }} />
               </div>
               <h3 style={s.confirmTitle}>Delete &ldquo;{delConfirm.name}&rdquo;?</h3>
               <p style={s.confirmDesc}>
@@ -799,7 +806,7 @@ function StructureSection({ onToast }: { onToast: (type: Toast['type'], msg: str
 
       {/* ── Add Unit button ──────────────────────────────────────────────── */}
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>
-        <p style={{ margin: 0, fontSize: 13, color: '#6B7280' }}>
+        <p style={{ margin: 0, fontSize: T_BASE, color: MUTED }}>
           {units.length} unit{units.length !== 1 ? 's' : ''}
         </p>
         {!addingUnit && (
@@ -837,7 +844,7 @@ function StructureSection({ onToast }: { onToast: (type: Toast['type'], msg: str
               disabled={!newUnitName.trim() || saving}
               style={!newUnitName.trim() || saving
                 ? { ...s.iconBtn, opacity: 0.5, cursor: 'default' }
-                : { ...s.iconBtn, background: '#D62B38', color: '#fff' }
+                : { ...s.iconBtn, background: RED, color: SURFACE }
               }
               aria-label="Save unit"
             >
@@ -857,8 +864,8 @@ function StructureSection({ onToast }: { onToast: (type: Toast['type'], msg: str
       {/* ── Units accordion ──────────────────────────────────────────────── */}
       {units.length === 0 && !addingUnit && (
         <div style={s.emptyState}>
-          <FolderOpen size={28} style={{ color: '#D1D5DB' }} />
-          <p style={{ margin: '8px 0 0', fontSize: 13, color: '#9CA3AF' }}>No units yet. Add one above.</p>
+          <FolderOpen size={28} style={{ color: BORDER }} />
+          <p style={{ margin: '8px 0 0', fontSize: T_BASE, color: MUTED }}>No units yet. Add one above.</p>
         </div>
       )}
 
@@ -878,8 +885,8 @@ function StructureSection({ onToast }: { onToast: (type: Toast['type'], msg: str
                   aria-expanded={isOpen}
                 >
                   {isOpen
-                    ? <ChevronDown size={14} style={{ color: '#6B7280' }} />
-                    : <ChevronRight size={14} style={{ color: '#6B7280' }} />
+                    ? <ChevronDown size={14} style={{ color: MUTED }} />
+                    : <ChevronRight size={14} style={{ color: MUTED }} />
                   }
                 </button>
 
@@ -901,7 +908,7 @@ function StructureSection({ onToast }: { onToast: (type: Toast['type'], msg: str
                       disabled={!editing.value.trim() || saving}
                       style={!editing.value.trim() || saving
                         ? { ...s.iconBtn, opacity: 0.5, cursor: 'default' }
-                        : { ...s.iconBtn, background: '#D62B38', color: '#fff' }
+                        : { ...s.iconBtn, background: RED, color: SURFACE }
                       }
                       aria-label="Save rename"
                     >
@@ -925,7 +932,7 @@ function StructureSection({ onToast }: { onToast: (type: Toast['type'], msg: str
                       </button>
                       <button
                         onClick={() => setDelConfirm({ id: unit.id, level: 'unit', name: unit.name })}
-                        style={{ ...s.actionBtn, color: '#B91C1C' }}
+                        style={{ ...s.actionBtn, color: RED_DARK }}
                         aria-label={`Delete unit ${unit.name}`}
                       >
                         <Trash2 size={12} />
@@ -948,7 +955,7 @@ function StructureSection({ onToast }: { onToast: (type: Toast['type'], msg: str
                   >
                     <div style={s.themeList}>
                       {unit.themes.length === 0 && (
-                        <p style={{ fontSize: 12, color: '#9CA3AF', margin: '4px 0 8px 28px' }}>
+                        <p style={{ fontSize: T_SM, color: MUTED, margin: '4px 0 8px 28px' }}>
                           No themes yet.
                         </p>
                       )}
@@ -957,7 +964,7 @@ function StructureSection({ onToast }: { onToast: (type: Toast['type'], msg: str
                         const isEditingTheme = editing?.id === theme.id && editing?.level === 'theme';
                         return (
                           <div key={theme.id} style={s.themeRow}>
-                            <Tag size={11} style={{ color: '#9CA3AF', flexShrink: 0 }} />
+                            <Tag size={11} style={{ color: MUTED, flexShrink: 0 }} />
                             {isEditingTheme ? (
                               <>
                                 <input
@@ -976,7 +983,7 @@ function StructureSection({ onToast }: { onToast: (type: Toast['type'], msg: str
                                   disabled={!editing.value.trim() || saving}
                                   style={!editing.value.trim() || saving
                                     ? { ...s.iconBtn, opacity: 0.5, cursor: 'default', padding: '3px 6px' }
-                                    : { ...s.iconBtn, background: '#D62B38', color: '#fff', padding: '3px 6px' }
+                                    : { ...s.iconBtn, background: RED, color: SURFACE, padding: '3px 6px' }
                                   }
                                 >
                                   {saving ? <Loader2 size={11} style={{ animation: 'spin 1s linear infinite' }} /> : <Check size={11} />}
@@ -998,7 +1005,7 @@ function StructureSection({ onToast }: { onToast: (type: Toast['type'], msg: str
                                   </button>
                                   <button
                                     onClick={() => setDelConfirm({ id: theme.id, level: 'theme', name: theme.name })}
-                                    style={{ ...s.actionBtn, color: '#B91C1C' }}
+                                    style={{ ...s.actionBtn, color: RED_DARK }}
                                     aria-label={`Delete theme ${theme.name}`}
                                   >
                                     <Trash2 size={11} />
@@ -1030,7 +1037,7 @@ function StructureSection({ onToast }: { onToast: (type: Toast['type'], msg: str
                             disabled={!newThemeName.trim() || saving}
                             style={!newThemeName.trim() || saving
                               ? { ...s.iconBtn, opacity: 0.5, cursor: 'default', padding: '3px 8px' }
-                              : { ...s.iconBtn, background: '#D62B38', color: '#fff', padding: '3px 8px' }
+                              : { ...s.iconBtn, background: RED, color: SURFACE, padding: '3px 8px' }
                             }
                           >
                             {saving ? <Loader2 size={12} style={{ animation: 'spin 1s linear infinite' }} /> : <Check size={12} />}
@@ -1316,7 +1323,7 @@ function WordsSection({ onToast }: { onToast: (type: Toast['type'], msg: string)
               <div style={s.modalBody}>
                 {/* Word */}
                 <div style={s.formField}>
-                  <label style={s.label} htmlFor="wf-word">Word <span style={{ color: '#D62B38' }}>*</span></label>
+                  <label style={s.label} htmlFor="wf-word">Word <span style={{ color: RED }}>*</span></label>
                   <input
                     id="wf-word"
                     value={formState.word ?? ''}
@@ -1328,7 +1335,7 @@ function WordsSection({ onToast }: { onToast: (type: Toast['type'], msg: string)
 
                 {/* Definition */}
                 <div style={s.formField}>
-                  <label style={s.label} htmlFor="wf-def">Definition <span style={{ color: '#D62B38' }}>*</span></label>
+                  <label style={s.label} htmlFor="wf-def">Definition <span style={{ color: RED }}>*</span></label>
                   <textarea
                     id="wf-def"
                     value={formState.definition ?? ''}
@@ -1411,7 +1418,7 @@ function WordsSection({ onToast }: { onToast: (type: Toast['type'], msg: string)
                 {/* Unit + Theme pickers */}
                 <div style={{ display: 'flex', gap: 12 }}>
                   <div style={{ ...s.formField, flex: 1 }}>
-                    <label style={s.label} htmlFor="wf-unit">Unit <span style={{ color: '#D62B38' }}>*</span></label>
+                    <label style={s.label} htmlFor="wf-unit">Unit <span style={{ color: RED }}>*</span></label>
                     <select
                       id="wf-unit"
                       value={formState.unitId ?? ''}
@@ -1427,7 +1434,7 @@ function WordsSection({ onToast }: { onToast: (type: Toast['type'], msg: string)
                     </select>
                   </div>
                   <div style={{ ...s.formField, flex: 1 }}>
-                    <label style={s.label} htmlFor="wf-theme">Theme <span style={{ color: '#D62B38' }}>*</span></label>
+                    <label style={s.label} htmlFor="wf-theme">Theme <span style={{ color: RED }}>*</span></label>
                     <select
                       id="wf-theme"
                       value={formState.themeId ?? ''}
@@ -1493,7 +1500,7 @@ function WordsSection({ onToast }: { onToast: (type: Toast['type'], msg: string)
               onClick={e => e.stopPropagation()}
             >
               <div style={s.confirmIcon}>
-                <AlertTriangle size={20} style={{ color: '#B91C1C' }} />
+                <AlertTriangle size={20} style={{ color: RED_DARK }} />
               </div>
               <h3 style={s.confirmTitle}>Delete &ldquo;{delConfirm.word}&rdquo;?</h3>
               <p style={s.confirmDesc}>
@@ -1542,7 +1549,7 @@ function WordsSection({ onToast }: { onToast: (type: Toast['type'], msg: string)
 
         {/* Search */}
         <div style={s.searchWrap}>
-          <Search size={13} style={{ position: 'absolute', left: 9, top: '50%', transform: 'translateY(-50%)', color: '#9CA3AF', pointerEvents: 'none' }} />
+          <Search size={13} style={{ position: 'absolute', left: 9, top: '50%', transform: 'translateY(-50%)', color: MUTED, pointerEvents: 'none' }} />
           <input
             value={searchInput}
             onChange={e => handleSearchInput(e.target.value)}
@@ -1560,20 +1567,20 @@ function WordsSection({ onToast }: { onToast: (type: Toast['type'], msg: string)
       </div>
 
       {/* ── Result count ─────────────────────────────────────────────────── */}
-      <p style={{ margin: '0 0 10px', fontSize: 12, color: '#9CA3AF' }}>
+      <p style={{ margin: '0 0 10px', fontSize: T_SM, color: MUTED }}>
         {loading ? 'Loading…' : `${total} word${total !== 1 ? 's' : ''}`}
       </p>
 
       {/* ── Table ────────────────────────────────────────────────────────── */}
       {loading ? (
         <div style={s.loadingCard}>
-          <Loader2 size={18} style={{ animation: 'spin 1s linear infinite', color: '#D62B38' }} />
-          <span style={{ fontSize: 13, color: '#6B7280' }}>Loading words…</span>
+          <Loader2 size={18} style={{ animation: 'spin 1s linear infinite', color: RED }} />
+          <span style={{ fontSize: T_BASE, color: MUTED }}>Loading words…</span>
         </div>
       ) : words.length === 0 ? (
         <div style={s.emptyState}>
-          <BookOpen size={28} style={{ color: '#D1D5DB' }} />
-          <p style={{ margin: '8px 0 0', fontSize: 13, color: '#9CA3AF' }}>
+          <BookOpen size={28} style={{ color: BORDER }} />
+          <p style={{ margin: '8px 0 0', fontSize: T_BASE, color: MUTED }}>
             No words found. Try adjusting filters or add a word.
           </p>
         </div>
@@ -1592,25 +1599,25 @@ function WordsSection({ onToast }: { onToast: (type: Toast['type'], msg: string)
             <tbody>
               {words.map((word, i) => (
                 <tr key={word.id} style={i % 2 === 0 ? s.trEven : {}}>
-                  <td style={{ ...s.td, fontWeight: 600, color: '#111827' }}>{word.word}</td>
+                  <td style={{ ...s.td, fontWeight: 600, color: SLATE }}>{word.word}</td>
                   <td style={{ ...s.td, maxWidth: 260 }}>
                     <span style={s.truncate}>{word.definition}</span>
                   </td>
                   <td style={s.td}>
                     {word.partOfSpeech
                       ? <span style={s.badge}>{word.partOfSpeech}</span>
-                      : <span style={{ color: '#D1D5DB' }}>—</span>
+                      : <span style={{ color: BORDER }}>—</span>
                     }
                   </td>
                   <td style={{ ...s.td, textAlign: 'center' as const }}>
                     <span style={{
                       ...s.diffBadge,
-                      background: word.difficultyBase <= 2 ? '#F0FDF4'
-                        : word.difficultyBase === 3 ? '#FFF7ED'
-                        : '#FEF2F2',
-                      color: word.difficultyBase <= 2 ? '#166534'
-                        : word.difficultyBase === 3 ? '#92400E'
-                        : '#B91C1C',
+                      background: word.difficultyBase <= 2 ? OK_BG
+                        : word.difficultyBase === 3 ? WARN_BG
+                        : `${RED}14`,
+                      color: word.difficultyBase <= 2 ? OK
+                        : word.difficultyBase === 3 ? WARN
+                        : RED_DARK,
                     }}>
                       {word.difficultyBase}
                     </span>
@@ -1626,7 +1633,7 @@ function WordsSection({ onToast }: { onToast: (type: Toast['type'], msg: string)
                       </button>
                       <button
                         onClick={() => setDelConfirm({ id: word.id, word: word.word })}
-                        style={{ ...s.actionBtn, color: '#B91C1C' }}
+                        style={{ ...s.actionBtn, color: RED_DARK }}
                         aria-label={`Delete ${word.word}`}
                       >
                         <Trash2 size={12} />
@@ -1652,7 +1659,7 @@ function WordsSection({ onToast }: { onToast: (type: Toast['type'], msg: string)
             <ChevronLeft size={14} />
           </button>
 
-          <span style={{ fontSize: 13, color: '#374151' }}>
+          <span style={{ fontSize: T_BASE, color: INK_SOFT }}>
             Page {page} of {pages}
           </span>
 
@@ -1675,9 +1682,8 @@ function WordsSection({ onToast }: { onToast: (type: Toast['type'], msg: string)
 const s = {
   page: {
     minHeight:   '100vh',
-    background:  '#FFFFFF',
-    color:       '#111827',
-    fontFamily:  '-apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
+    background:  BG,
+    color:       SLATE,
     maxWidth:    1100,
     margin:      '0 auto',
   } as React.CSSProperties,
@@ -1687,7 +1693,7 @@ const s = {
     display:         'flex',
     alignItems:      'center',
     justifyContent:  'center',
-    background:      '#FFFFFF',
+    background:      BG,
   } as React.CSSProperties,
 
   pageHeader: {
@@ -1708,16 +1714,17 @@ const s = {
 
   pageTitle: {
     margin:        0,
-    fontSize:      22,
+    fontSize:      T_XL,
     fontWeight:    700,
-    color:         '#111827',
+    fontFamily:    FONT_HEADING,
+    color:         SLATE,
     letterSpacing: '-0.025em',
   } as React.CSSProperties,
 
   pageSubtitle: {
     margin:    0,
-    fontSize:  13,
-    color:     '#6B7280',
+    fontSize:  T_BASE,
+    color:     MUTED,
     fontWeight: 400,
   } as React.CSSProperties,
 
@@ -1726,7 +1733,7 @@ const s = {
     display:       'flex',
     gap:           4,
     marginBottom:  20,
-    borderBottom:  '1px solid #F3F4F6',
+    borderBottom:  `1px solid ${BORDER}`,
     paddingBottom: 0,
   } as React.CSSProperties,
 
@@ -1739,16 +1746,16 @@ const s = {
     border:         'none',
     borderBottom:   '2px solid transparent',
     cursor:         'pointer',
-    fontSize:       13,
+    fontSize:       T_BASE,
     fontWeight:     500,
-    color:          '#6B7280',
+    color:          MUTED,
     transition:     'color 0.15s, border-color 0.15s',
     marginBottom:   -1,
   } as React.CSSProperties,
 
   tabActive: {
-    color:        '#111827',
-    borderBottom: '2px solid #D62B38',
+    color:        SLATE,
+    borderBottom: `2px solid ${RED}`,
     fontWeight:   600,
   } as React.CSSProperties,
 
@@ -1764,21 +1771,21 @@ const s = {
     position:    'fixed' as const,
     top:         20,
     left:        '50%',
-    zIndex:      9999,
+    zIndex:      Z_TOAST,
     display:     'flex',
     alignItems:  'center',
     gap:         8,
     padding:     '10px 14px',
-    borderRadius: 8,
-    fontSize:    13,
+    borderRadius: R_MD,
+    fontSize:    T_BASE,
     fontWeight:  500,
-    boxShadow:   '0 4px 16px rgba(0,0,0,0.10)',
+    boxShadow:   SHADOW_LG,
     maxWidth:    500,
     border:      '1px solid transparent',
   } as React.CSSProperties,
-  toastSuccess: { background: '#F0FDF4', color: '#166534', borderColor: '#BBF7D0' },
-  toastError:   { background: '#FEF2F2', color: '#991B1B', borderColor: '#FECACA' },
-  toastInfo:    { background: '#EFF6FF', color: '#1E40AF', borderColor: '#BFDBFE' },
+  toastSuccess: { background: OK_BG, color: OK, borderColor: `${OK}40` },
+  toastError:   { background: `${RED}14`, color: RED_DARK, borderColor: `${RED}33` },
+  toastInfo:    { background: INFO_BG, color: INFO, borderColor: `${INFO}33` },
   toastClose: {
     marginLeft:  'auto',
     background:  'transparent',
@@ -1793,22 +1800,22 @@ const s = {
 
   // Dropzone
   dropzone: {
-    border:        '2px dashed #E5E7EB',
-    borderRadius:  12,
+    border:        `2px dashed ${BORDER}`,
+    borderRadius:  R_XL,
     padding:       '32px 24px',
-    background:    '#FAFAFA',
+    background:    SURFACE_SHELL,
     cursor:        'pointer',
     transition:    'border-color 0.15s, background 0.15s',
     outline:       'none',
   } as React.CSSProperties,
   dropzoneOver: {
-    borderColor:   '#D62B38',
-    background:    '#FEF2F2',
+    borderColor:   RED,
+    background:    `${RED}14`,
   },
   dropzoneHasFile: {
-    borderColor:   '#D62B38',
+    borderColor:   RED,
     borderStyle:   'solid',
-    background:    '#FFF5F5',
+    background:    `${RED}14`,
   },
   dropzoneInner: {
     display:     'flex',
@@ -1818,8 +1825,8 @@ const s = {
   dropzoneIcon: {
     width:           48,
     height:          48,
-    borderRadius:    10,
-    background:      '#F3F4F6',
+    borderRadius:    R_LG,
+    background:      SURFACE_ALT,
     display:         'flex',
     alignItems:      'center',
     justifyContent:  'center',
@@ -1827,23 +1834,23 @@ const s = {
   } as React.CSSProperties,
   dropzoneText: {
     margin:     0,
-    fontSize:   14,
+    fontSize:   T_MD,
     fontWeight: 500,
-    color:      '#374151',
+    color:      INK_SOFT,
   } as React.CSSProperties,
   dropzoneSubtext: {
     margin:    '2px 0 0',
-    fontSize:  12,
-    color:     '#9CA3AF',
+    fontSize:  T_SM,
+    color:     MUTED,
   } as React.CSSProperties,
   dropzoneReset: {
     marginLeft:  'auto',
     background:  'transparent',
-    border:      '1px solid #E5E7EB',
-    borderRadius: 6,
+    border:      `1px solid ${BORDER}`,
+    borderRadius: R_SM,
     padding:     '4px 6px',
     cursor:      'pointer',
-    color:       '#6B7280',
+    color:       MUTED,
     display:     'flex',
     alignItems:  'center',
   } as React.CSSProperties,
@@ -1854,13 +1861,13 @@ const s = {
     alignItems:  'flex-start',
     gap:         7,
     padding:     '10px 12px',
-    background:  '#F9FAFB',
-    border:      '1px solid #F3F4F6',
-    borderRadius: 8,
+    background:  SURFACE_SHELL,
+    border:      `1px solid ${BORDER}`,
+    borderRadius: R_MD,
   } as React.CSSProperties,
   hintText: {
-    fontSize:   12,
-    color:      '#6B7280',
+    fontSize:   T_SM,
+    color:      MUTED,
     lineHeight: 1.5,
   } as React.CSSProperties,
 
@@ -1870,59 +1877,59 @@ const s = {
     alignItems:  'flex-start',
     gap:         8,
     padding:     '10px 14px',
-    background:  '#FEF2F2',
-    border:      '1px solid #FECACA',
-    borderRadius: 8,
+    background:  `${RED}14`,
+    border:      `1px solid ${RED}33`,
+    borderRadius: R_MD,
   } as React.CSSProperties,
 
   // Preview table
   previewWrap: {
-    border:        '1px solid #E5E7EB',
-    borderRadius:  10,
+    border:        `1px solid ${BORDER}`,
+    borderRadius:  R_LG,
     overflow:      'hidden',
   } as React.CSSProperties,
   previewLabel: {
     margin:     0,
     padding:    '8px 12px',
-    fontSize:   12,
-    color:      '#6B7280',
-    background: '#F9FAFB',
-    borderBottom: '1px solid #E5E7EB',
+    fontSize:   T_SM,
+    color:      MUTED,
+    background: SURFACE_SHELL,
+    borderBottom: `1px solid ${BORDER}`,
     fontWeight: 500,
   } as React.CSSProperties,
 
   // Table
   tableScroll: {
     overflowX: 'auto' as const,
-    borderRadius: 10,
-    border: '1px solid #E5E7EB',
+    borderRadius: R_LG,
+    border: `1px solid ${BORDER}`,
   } as React.CSSProperties,
   table: {
     width:           '100%',
     borderCollapse:  'collapse' as const,
-    fontSize:        13,
-    background:      '#fff',
+    fontSize:        T_BASE,
+    background:      SURFACE,
   } as React.CSSProperties,
   th: {
     padding:     '9px 12px',
     textAlign:   'left' as const,
-    fontSize:    11,
+    fontSize:    T_XS,
     fontWeight:  600,
-    color:       '#6B7280',
+    color:       MUTED,
     letterSpacing: '0.04em',
     textTransform: 'uppercase' as const,
-    background:  '#F9FAFB',
-    borderBottom: '1px solid #E5E7EB',
+    background:  SURFACE_SHELL,
+    borderBottom: `1px solid ${BORDER}`,
     whiteSpace:  'nowrap' as const,
   } as React.CSSProperties,
   td: {
     padding:     '10px 12px',
-    borderBottom: '1px solid #F3F4F6',
-    color:       '#374151',
+    borderBottom: `1px solid ${BORDER}`,
+    color:       INK_SOFT,
     verticalAlign: 'top' as const,
   } as React.CSSProperties,
   trEven: {
-    background: '#FAFAFA',
+    background: SURFACE_SHELL,
   } as React.CSSProperties,
   truncate: {
     display:      'block',
@@ -1934,24 +1941,26 @@ const s = {
 
   // Result box
   resultBox: {
-    border:        '1px solid #E5E7EB',
-    borderRadius:  10,
+    border:        `1px solid ${BORDER}`,
+    borderRadius:  R_LG,
     padding:       16,
-    background:    '#FAFAFA',
+    background:    SURFACE_SHELL,
   } as React.CSSProperties,
   resultRow: {
-    display:  'flex',
-    gap:      12,
-    flexWrap: 'wrap' as const,
+    display:      'grid',
+    gridTemplateColumns: 'repeat(3, minmax(0, 1fr))',
+    border:       `1px solid ${BORDER}`,
+    borderRadius: R_LG,
+    overflow:     'hidden',
+    background:   SURFACE,
   } as React.CSSProperties,
   resultStat: {
     display:        'flex',
     flexDirection:  'column' as const,
     alignItems:     'center',
     padding:        '12px 20px',
-    borderRadius:   8,
-    border:         '1px solid transparent',
-    minWidth:       80,
+    background:     SURFACE,
+    minWidth:       0,
   } as React.CSSProperties,
   errorList: {
     marginTop:  12,
@@ -1966,8 +1975,8 @@ const s = {
     alignItems: 'flex-start',
     gap:        6,
     padding:    '5px 8px',
-    background: '#FFF5F5',
-    borderRadius: 5,
+    background: `${RED}14`,
+    borderRadius: R_SM,
   } as React.CSSProperties,
 
   // Buttons
@@ -1976,11 +1985,11 @@ const s = {
     alignItems:     'center',
     gap:            6,
     padding:        '8px 14px',
-    background:     '#D62B38',
-    color:          '#FFFFFF',
+    background:     RED,
+    color:          SURFACE,
     border:         'none',
-    borderRadius:   7,
-    fontSize:       13,
+    borderRadius:   R_MD,
+    fontSize:       T_BASE,
     fontWeight:     600,
     cursor:         'pointer',
     whiteSpace:     'nowrap' as const,
@@ -1992,10 +2001,10 @@ const s = {
     gap:         5,
     padding:     '8px 14px',
     background:  'transparent',
-    color:       '#374151',
-    border:      '1px solid #E5E7EB',
-    borderRadius: 7,
-    fontSize:    13,
+    color:       INK_SOFT,
+    border:      `1px solid ${BORDER}`,
+    borderRadius: R_MD,
+    fontSize:    T_BASE,
     fontWeight:  500,
     cursor:      'pointer',
     whiteSpace:  'nowrap' as const,
@@ -2005,11 +2014,11 @@ const s = {
     alignItems:  'center',
     gap:         5,
     padding:     '8px 14px',
-    background:  '#B91C1C',
-    color:       '#FFFFFF',
+    background:  RED_DARK,
+    color:       SURFACE,
     border:      'none',
-    borderRadius: 7,
-    fontSize:    13,
+    borderRadius: R_MD,
+    fontSize:    T_BASE,
     fontWeight:  600,
     cursor:      'pointer',
   } as React.CSSProperties,
@@ -2018,12 +2027,12 @@ const s = {
     alignItems:  'center',
     justifyContent: 'center',
     padding:     '5px 8px',
-    background:  '#F3F4F6',
-    color:       '#374151',
-    border:      '1px solid #E5E7EB',
-    borderRadius: 6,
+    background:  SURFACE_ALT,
+    color:       INK_SOFT,
+    border:      `1px solid ${BORDER}`,
+    borderRadius: R_SM,
     cursor:      'pointer',
-    fontSize:    12,
+    fontSize:    T_SM,
     fontWeight:  500,
   } as React.CSSProperties,
   actionBtn: {
@@ -2031,26 +2040,26 @@ const s = {
     alignItems:  'center',
     padding:     '4px 6px',
     background:  'transparent',
-    color:       '#6B7280',
+    color:       MUTED,
     border:      '1px solid transparent',
-    borderRadius: 5,
+    borderRadius: R_SM,
     cursor:      'pointer',
     transition:  'background 0.1s, color 0.1s',
   } as React.CSSProperties,
 
   // Accordion / unit structure
   unitCard: {
-    border:       '1px solid #E5E7EB',
-    borderRadius: 10,
+    border:       `1px solid ${BORDER}`,
+    borderRadius: R_LG,
     overflow:     'hidden',
-    background:   '#FFFFFF',
+    background:   SURFACE,
   } as React.CSSProperties,
   unitHeader: {
     display:     'flex',
     alignItems:  'center',
     gap:         8,
     padding:     '10px 12px',
-    background:  '#FAFAFA',
+    background:  SURFACE_SHELL,
     minHeight:   44,
   } as React.CSSProperties,
   expandBtn: {
@@ -2063,14 +2072,14 @@ const s = {
     flexShrink:  0,
   } as React.CSSProperties,
   unitName: {
-    fontSize:   14,
+    fontSize:   T_MD,
     fontWeight: 600,
-    color:      '#111827',
+    color:      SLATE,
     flex:       1,
   } as React.CSSProperties,
   unitCount: {
-    fontSize:   12,
-    color:      '#9CA3AF',
+    fontSize:   T_SM,
+    color:      MUTED,
     marginRight: 4,
     whiteSpace: 'nowrap' as const,
   } as React.CSSProperties,
@@ -2084,19 +2093,19 @@ const s = {
     display:     'flex',
     flexDirection: 'column' as const,
     gap:         2,
-    borderTop:   '1px solid #F3F4F6',
+    borderTop:   `1px solid ${BORDER}`,
   } as React.CSSProperties,
   themeRow: {
     display:     'flex',
     alignItems:  'center',
     gap:         8,
     padding:     '6px 4px 6px 16px',
-    borderRadius: 6,
+    borderRadius: R_SM,
     minHeight:   36,
   } as React.CSSProperties,
   themeName: {
-    fontSize:  13,
-    color:     '#374151',
+    fontSize:  T_BASE,
+    color:     INK_SOFT,
     flex:      1,
   } as React.CSSProperties,
   addThemeBtn: {
@@ -2106,9 +2115,9 @@ const s = {
     padding:     '5px 8px 5px 20px',
     background:  'transparent',
     border:      'none',
-    color:       '#9CA3AF',
+    color:       MUTED,
     cursor:      'pointer',
-    fontSize:    12,
+    fontSize:    T_SM,
     fontWeight:  500,
     marginTop:   2,
   } as React.CSSProperties,
@@ -2122,11 +2131,11 @@ const s = {
   } as React.CSSProperties,
   inlineInput: {
     padding:      '5px 10px',
-    border:       '1px solid #D62B38',
-    borderRadius: 6,
-    fontSize:     13,
-    color:        '#111827',
-    background:   '#FFFFFF',
+    border:       `1px solid ${BORDER_FIELD}`,
+    borderRadius: R_SM,
+    fontSize:     T_BASE,
+    color:        SLATE,
+    background:   SURFACE,
     outline:      'none',
     flex:         1,
   } as React.CSSProperties,
@@ -2154,33 +2163,33 @@ const s = {
     gap:           4,
   } as React.CSSProperties,
   label: {
-    fontSize:   12,
+    fontSize:   T_SM,
     fontWeight: 600,
-    color:      '#374151',
+    color:      INK_SOFT,
     letterSpacing: '0.01em',
   } as React.CSSProperties,
   helperText: {
-    fontSize:   11,
+    fontSize:   T_XS,
     fontWeight: 400,
-    color:      '#9CA3AF',
+    color:      MUTED,
   } as React.CSSProperties,
   input: {
     padding:      '8px 10px',
-    border:       '1px solid #E5E7EB',
-    borderRadius: 6,
-    fontSize:     13,
-    color:        '#111827',
-    background:   '#FFFFFF',
+    border:       `1px solid ${BORDER_FIELD}`,
+    borderRadius: R_SM,
+    fontSize:     T_BASE,
+    color:        SLATE,
+    background:   SURFACE,
     outline:      'none',
     width:        '100%',
   } as React.CSSProperties,
   select: {
     padding:      '8px 10px',
-    border:       '1px solid #E5E7EB',
-    borderRadius: 6,
-    fontSize:     13,
-    color:        '#111827',
-    background:   '#FFFFFF',
+    border:       `1px solid ${BORDER_FIELD}`,
+    borderRadius: R_SM,
+    fontSize:     T_BASE,
+    color:        SLATE,
+    background:   SURFACE,
     outline:      'none',
     cursor:       'pointer',
     width:        '100%',
@@ -2190,19 +2199,20 @@ const s = {
   modalOverlay: {
     position:        'fixed' as const,
     inset:           0,
-    background:      'rgba(0,0,0,0.35)',
-    zIndex:          1000,
+    background:      `${SLATE}59`,
+    zIndex:          Z_MODAL_BACKDROP,
     display:         'flex',
     alignItems:      'center',
     justifyContent:  'center',
     padding:         16,
   } as React.CSSProperties,
   modalPanel: {
-    background:   '#FFFFFF',
-    borderRadius: 12,
+    background:   SURFACE,
+    borderRadius: R_XL,
     width:        '100%',
     maxWidth:     540,
-    boxShadow:    '0 8px 40px rgba(0,0,0,0.15)',
+    boxShadow:    SHADOW_LG,
+    border:       `1px solid ${BORDER}`,
     overflow:     'hidden',
     maxHeight:    '90vh',
     display:      'flex',
@@ -2213,14 +2223,15 @@ const s = {
     alignItems:    'center',
     justifyContent: 'space-between',
     padding:       '16px 20px',
-    borderBottom:  '1px solid #E5E7EB',
+    borderBottom:  `1px solid ${BORDER}`,
     flexShrink:    0,
   } as React.CSSProperties,
   modalTitle: {
     margin:      0,
-    fontSize:    16,
+    fontSize:    T_LG,
     fontWeight:  700,
-    color:       '#111827',
+    fontFamily:  FONT_HEADING,
+    color:       SLATE,
     letterSpacing: '-0.02em',
   } as React.CSSProperties,
   modalBody: {
@@ -2236,25 +2247,26 @@ const s = {
     justifyContent:  'flex-end',
     gap:             8,
     padding:         '14px 20px',
-    borderTop:       '1px solid #E5E7EB',
+    borderTop:       `1px solid ${BORDER}`,
     flexShrink:      0,
   } as React.CSSProperties,
 
   // Confirm panel
   confirmPanel: {
-    background:   '#FFFFFF',
-    borderRadius: 12,
+    background:   SURFACE,
+    borderRadius: R_XL,
     width:        '100%',
     maxWidth:     420,
     padding:      24,
-    boxShadow:    '0 8px 40px rgba(0,0,0,0.15)',
+    boxShadow:    SHADOW_LG,
+    border:       `1px solid ${BORDER}`,
     textAlign:    'center' as const,
   } as React.CSSProperties,
   confirmIcon: {
     width:           48,
     height:          48,
     borderRadius:    '50%',
-    background:      '#FEF2F2',
+    background:      `${RED}14`,
     display:         'flex',
     alignItems:      'center',
     justifyContent:  'center',
@@ -2262,15 +2274,16 @@ const s = {
   } as React.CSSProperties,
   confirmTitle: {
     margin:      0,
-    fontSize:    16,
+    fontSize:    T_LG,
     fontWeight:  700,
-    color:       '#111827',
+    fontFamily:  FONT_HEADING,
+    color:       SLATE,
     letterSpacing: '-0.02em',
   } as React.CSSProperties,
   confirmDesc: {
     margin:     '8px 0 20px',
-    fontSize:   13,
-    color:      '#6B7280',
+    fontSize:   T_BASE,
+    color:      MUTED,
     lineHeight: 1.6,
   } as React.CSSProperties,
   confirmActions: {
@@ -2285,9 +2298,9 @@ const s = {
     flexDirection:  'column' as const,
     alignItems:     'center',
     padding:        '40px 20px',
-    border:         '1px dashed #E5E7EB',
-    borderRadius:   10,
-    background:     '#FAFAFA',
+    border:         `1px dashed ${BORDER}`,
+    borderRadius:   R_LG,
+    background:     SURFACE_SHELL,
   } as React.CSSProperties,
   loadingCard: {
     display:        'flex',
@@ -2295,24 +2308,24 @@ const s = {
     gap:            10,
     padding:        32,
     justifyContent: 'center',
-    background:     '#FAFAFA',
-    borderRadius:   10,
-    border:         '1px solid #E5E7EB',
+    background:     SURFACE_SHELL,
+    borderRadius:   R_LG,
+    border:         `1px solid ${BORDER}`,
   } as React.CSSProperties,
   badge: {
     display:      'inline-block',
     padding:      '2px 7px',
-    background:   '#F3F4F6',
-    color:        '#374151',
-    borderRadius: 5,
-    fontSize:     11,
+    background:   SURFACE_ALT,
+    color:        INK_SOFT,
+    borderRadius: R_SM,
+    fontSize:     T_XS,
     fontWeight:   500,
   } as React.CSSProperties,
   diffBadge: {
     display:      'inline-block',
     padding:      '2px 7px',
-    borderRadius: 5,
-    fontSize:     12,
+    borderRadius: R_SM,
+    fontSize:     T_SM,
     fontWeight:   600,
   } as React.CSSProperties,
   pagination: {
@@ -2326,10 +2339,10 @@ const s = {
     display:     'flex',
     alignItems:  'center',
     padding:     '6px 10px',
-    background:  '#F3F4F6',
-    border:      '1px solid #E5E7EB',
-    borderRadius: 6,
+    background:  SURFACE_ALT,
+    border:      `1px solid ${BORDER}`,
+    borderRadius: R_SM,
     cursor:      'pointer',
-    color:       '#374151',
+    color:       INK_SOFT,
   } as React.CSSProperties,
 } as const;

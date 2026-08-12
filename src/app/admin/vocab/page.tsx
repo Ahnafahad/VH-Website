@@ -25,6 +25,12 @@ import {
   ChevronLeft,
   RefreshCw,
 } from 'lucide-react';
+import {
+  RED, RED_DARK, SLATE, BORDER, BORDER_FIELD, MUTED, BG, SURFACE, SURFACE_ALT,
+  BEIGE, INK_SOFT, OK, OK_BG, WARN, WARN_BG, INFO, INFO_BG,
+  T_SM, T_BASE, T_MD, T_XL, R_SM, R_MD, R_LG, R_PILL,
+  SHADOW_LG, SHADOW_SM, FONT_HEADING, Z_TOAST,
+} from '@/components/admin/lms/lms-shared';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -184,7 +190,7 @@ export default function VocabAdminPage() {
       (status === 'authenticated' && !session?.user?.isAdmin)) {
     return (
       <div style={styles.centerPage}>
-        <Loader2 size={28} style={{ animation: 'spin 1s linear infinite', color: 'var(--color-lx-accent-red)' }} />
+        <Loader2 size={28} style={{ animation: 'spin 1s linear infinite', color: RED }} />
         <style>{`@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }`}</style>
       </div>
     );
@@ -237,8 +243,8 @@ export default function VocabAdminPage() {
         {/* ── Ultimate Achievements ─────────────────────────────────── */}
         <section style={styles.card}>
           <div style={styles.cardHeader}>
-            <div style={{ ...styles.iconBadge, background: ultimateOn ? 'rgba(244,168,40,0.12)' : 'var(--color-lx-elevated)' }}>
-              <Trophy size={18} color={ultimateOn ? 'var(--color-lx-accent-gold)' : 'var(--color-lx-text-secondary)'} />
+            <div style={{ ...styles.iconBadge, background: ultimateOn ? WARN_BG : SURFACE_ALT }}>
+              <Trophy size={18} color={ultimateOn ? WARN : MUTED} />
             </div>
             <div style={{ flex: 1 }}>
               <h2 style={styles.cardTitle}>Ultimate Achievements</h2>
@@ -255,7 +261,7 @@ export default function VocabAdminPage() {
               aria-pressed={ultimateOn}
               style={{
                 ...styles.toggle,
-                background:   ultimateOn ? 'var(--color-lx-accent-red)' : 'var(--color-lx-elevated)',
+                background:   ultimateOn ? RED : BEIGE,
                 cursor:       ultimateLoading ? 'wait' : 'pointer',
                 opacity:      ultimateLoading ? 0.7 : 1,
               }}
@@ -269,7 +275,7 @@ export default function VocabAdminPage() {
                 {ultimateLoading && (
                   <Loader2
                     size={10}
-                    style={{ animation: 'spin 1s linear infinite', color: 'var(--color-lx-text-muted)' }}
+                    style={{ animation: 'spin 1s linear infinite', color: MUTED }}
                   />
                 )}
               </span>
@@ -278,8 +284,8 @@ export default function VocabAdminPage() {
 
           {ultimateOn && (
             <div style={styles.warningBox}>
-              <AlertTriangle size={13} color='var(--color-lx-warning)' />
-              <span style={{ fontSize: 12, fontFamily: "'Sora', sans-serif", color: 'var(--color-lx-warning)' }}>
+              <AlertTriangle size={13} color={WARN} />
+              <span style={{ fontSize: T_SM, color: WARN }}>
                 Disabling will hide these badges from the UI but will not revoke already-awarded badges.
               </span>
             </div>
@@ -289,8 +295,8 @@ export default function VocabAdminPage() {
         {/* ── Quiz Pass Threshold ───────────────────────────────────── */}
         <section style={styles.card}>
           <div style={styles.cardHeader}>
-            <div style={{ ...styles.iconBadge, background: 'rgba(46,204,113,0.12)' }}>
-              <CheckCircle size={18} color='var(--color-lx-success)' />
+            <div style={{ ...styles.iconBadge, background: OK_BG }}>
+              <CheckCircle size={18} color={OK} />
             </div>
             <div style={{ flex: 1 }}>
               <h2 style={styles.cardTitle}>Quiz Pass Threshold</h2>
@@ -325,8 +331,8 @@ export default function VocabAdminPage() {
         {/* ── Phase Cut-off Date ────────────────────────────────────── */}
         <section style={styles.card}>
           <div style={styles.cardHeader}>
-            <div style={{ ...styles.iconBadge, background: 'rgba(230,57,70,0.12)' }}>
-              <Calendar size={18} color='var(--color-lx-accent-red)' />
+            <div style={{ ...styles.iconBadge, background: `${RED}14` }}>
+              <Calendar size={18} color={RED} />
             </div>
             <div style={{ flex: 1 }}>
               <h2 style={styles.cardTitle}>Phase 1 Cut-off Date</h2>
@@ -363,33 +369,13 @@ export default function VocabAdminPage() {
   );
 }
 
-// ─── LexiCore design tokens (mirrors QuizScreen.tsx pattern) ─────────────────
-
-const C = {
-  base:       'var(--color-lx-base)',
-  surface:    'var(--color-lx-surface)',
-  elevated:   'var(--color-lx-elevated)',
-  border:     'var(--color-lx-border)',
-  red:        'var(--color-lx-accent-red)',
-  gold:       'var(--color-lx-accent-gold)',
-  success:    'var(--color-lx-success)',
-  warning:    'var(--color-lx-warning)',
-  textPrim:   'var(--color-lx-text-primary)',
-  textSec:    'var(--color-lx-text-secondary)',
-  textMuted:  'var(--color-lx-text-muted)',
-} as const;
-
-const SERIF = "'Cormorant Garamond', Georgia, serif";
-const SANS  = "'Sora', sans-serif";
-
 // ─── Styles ───────────────────────────────────────────────────────────────────
 
 const styles = {
   page: {
     minHeight:       '100vh',
-    background:      C.base,
-    color:           C.textPrim,
-    fontFamily:      SANS,
+    background:      BG,
+    color:           SLATE,
     padding:         '24px 16px 48px',
     maxWidth:        '680px',
     margin:          '0 auto',
@@ -400,7 +386,7 @@ const styles = {
     display:         'flex',
     alignItems:      'center',
     justifyContent:  'center',
-    background:      C.base,
+    background:      BG,
   } as React.CSSProperties,
 
   toast: {
@@ -408,16 +394,15 @@ const styles = {
     top:           20,
     left:          '50%',
     transform:     'translateX(-50%)',
-    zIndex:        9999,
+    zIndex:        Z_TOAST,
     display:       'flex',
     alignItems:    'center',
     gap:           8,
     padding:       '10px 18px',
-    borderRadius:  8,
-    fontSize:      13,
-    fontFamily:    SANS,
+    borderRadius:  R_MD,
+    fontSize:      T_BASE,
     fontWeight:    500,
-    boxShadow:     '0 4px 16px rgba(0,0,0,0.48)',
+    boxShadow:     SHADOW_LG,
     maxWidth:      'min(480px, calc(100vw - 32px))',
     whiteSpace:    'normal',
     wordBreak:     'break-word',
@@ -425,19 +410,19 @@ const styles = {
 
   toastVariant: {
     success: {
-      background: 'rgba(46,204,113,0.12)',
-      color:      'var(--color-lx-success)',
-      border:     '1px solid rgba(46,204,113,0.30)',
+      background: OK_BG,
+      color:      OK,
+      border:     `1px solid ${OK}40`,
     },
     error: {
-      background: 'rgba(230,57,70,0.12)',
-      color:      'var(--color-lx-accent-red)',
-      border:     '1px solid rgba(230,57,70,0.30)',
+      background: `${RED}14`,
+      color:      RED_DARK,
+      border:     `1px solid ${RED}33`,
     },
     info: {
-      background: 'var(--color-lx-elevated)',
-      color:      'var(--color-lx-text-secondary)',
-      border:     '1px solid var(--color-lx-border)',
+      background: INFO_BG,
+      color:      INFO,
+      border:     `1px solid ${INFO}33`,
     },
   },
 
@@ -454,12 +439,11 @@ const styles = {
     alignItems:   'center',
     gap:          4,
     background:   'transparent',
-    border:       `1px solid ${C.border}`,
-    borderRadius: 6,
+    border:       `1px solid ${BORDER}`,
+    borderRadius: R_SM,
     padding:      '6px 10px',
-    fontSize:     13,
-    fontFamily:   SANS,
-    color:        C.textSec,
+    fontSize:     T_BASE,
+    color:        MUTED,
     cursor:       'pointer',
     whiteSpace:   'nowrap' as const,
     marginTop:    4,
@@ -468,18 +452,17 @@ const styles = {
 
   title: {
     margin:        0,
-    fontSize:      22,
+    fontSize:      T_XL,
     fontWeight:    700,
-    fontFamily:    SERIF,
-    color:         C.textPrim,
+    fontFamily:    FONT_HEADING,
+    color:         SLATE,
     letterSpacing: '-0.01em',
   } as React.CSSProperties,
 
   subtitle: {
     margin:     '2px 0 0',
-    fontSize:   13,
-    fontFamily: SANS,
-    color:      C.textSec,
+    fontSize:   T_BASE,
+    color:      MUTED,
     fontWeight: 400,
   } as React.CSSProperties,
 
@@ -487,11 +470,11 @@ const styles = {
     marginLeft:   'auto',
     marginTop:    6,
     background:   'transparent',
-    border:       `1px solid ${C.border}`,
-    borderRadius: 6,
+    border:       `1px solid ${BORDER}`,
+    borderRadius: R_SM,
     padding:      8,
     cursor:       'pointer',
-    color:        C.textSec,
+    color:        INK_SOFT,
     display:      'flex',
     alignItems:   'center',
     minWidth:     40,
@@ -506,9 +489,9 @@ const styles = {
   } as React.CSSProperties,
 
   card: {
-    background:   C.surface,
-    border:       `1px solid ${C.border}`,
-    borderRadius: 12,
+    background:   SURFACE,
+    border:       `1px solid ${BORDER}`,
+    borderRadius: R_LG,
     padding:      20,
   } as React.CSSProperties,
 
@@ -522,7 +505,7 @@ const styles = {
   iconBadge: {
     width:          38,
     height:         38,
-    borderRadius:   8,
+    borderRadius:   R_MD,
     display:        'flex',
     alignItems:     'center',
     justifyContent: 'center',
@@ -531,17 +514,15 @@ const styles = {
 
   cardTitle: {
     margin:     0,
-    fontSize:   15,
+    fontSize:   T_MD,
     fontWeight: 600,
-    fontFamily: SANS,
-    color:      C.textPrim,
+    color:      SLATE,
   } as React.CSSProperties,
 
   cardDesc: {
     margin:     '3px 0 0',
-    fontSize:   12.5,
-    fontFamily: SANS,
-    color:      C.textSec,
+    fontSize:   T_SM,
+    color:      MUTED,
     lineHeight: 1.5,
   } as React.CSSProperties,
 
@@ -549,7 +530,7 @@ const styles = {
     position:     'relative' as const,
     width:        44,
     height:       24,
-    borderRadius: 12,
+    borderRadius: R_PILL,
     border:       'none',
     flexShrink:   0,
     transition:   'background 0.2s',
@@ -564,8 +545,8 @@ const styles = {
     width:          20,
     height:         20,
     borderRadius:   '50%',
-    background:     '#ffffff',
-    boxShadow:      '0 1px 3px rgba(0,0,0,0.4)',
+    background:     SURFACE,
+    boxShadow:      SHADOW_SM,
     transition:     'transform 0.2s',
     display:        'flex',
     alignItems:     'center',
@@ -575,9 +556,9 @@ const styles = {
   warningBox: {
     marginTop:    12,
     padding:      '8px 12px',
-    background:   'rgba(243,156,18,0.10)',
-    border:       '1px solid rgba(243,156,18,0.30)',
-    borderRadius: 6,
+    background:   WARN_BG,
+    border:       `1px solid ${WARN}40`,
+    borderRadius: R_SM,
     display:      'flex',
     alignItems:   'flex-start',
     gap:          6,
@@ -598,12 +579,11 @@ const styles = {
 
   input: {
     padding:      '11px 12px',
-    border:       '1px solid var(--form-border)',
-    borderRadius: 6,
-    fontSize:     14,
-    fontFamily:   SANS,
-    color:        C.textPrim,
-    background:   'var(--form-field-bg)',
+    border:       `1px solid ${BORDER_FIELD}`,
+    borderRadius: R_SM,
+    fontSize:     T_MD,
+    color:        SLATE,
+    background:   SURFACE,
     outline:      'none',
     width:        80,
   } as React.CSSProperties,
@@ -611,19 +591,18 @@ const styles = {
   inputSuffix: {
     position:      'absolute' as const,
     right:         10,
-    fontSize:      13,
-    color:         C.textMuted,
+    fontSize:      T_BASE,
+    color:         MUTED,
     pointerEvents: 'none' as const,
   } as React.CSSProperties,
 
   saveBtn: {
     padding:        '11px 18px',
-    background:     C.red,
-    color:          '#ffffff',
+    background:     RED,
+    color:          SURFACE,
     border:         'none',
-    borderRadius:   6,
-    fontSize:       13,
-    fontFamily:     SANS,
+    borderRadius:   R_SM,
+    fontSize:       T_BASE,
     fontWeight:     600,
     cursor:         'pointer',
     display:        'flex',

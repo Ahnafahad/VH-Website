@@ -3,6 +3,7 @@ import { authOptions } from '@/lib/auth';
 import { redirect } from 'next/navigation';
 import { listBatches, getBatchSummaries } from '@/lib/students/progress';
 import StudentsProgressClient from '@/components/admin/students/StudentsProgressClient';
+import { getAtRiskStudents, type AtRiskStudent } from '@/lib/students/at-risk';
 
 export const metadata = { title: 'Students Progress — VH Admin' };
 
@@ -13,7 +14,10 @@ export default async function AdminStudentsPage() {
     redirect('/auth/signin');
   }
 
-  const { batches, defaultBatch } = await listBatches();
+  const [{ batches, defaultBatch }, atRiskStudents] = await Promise.all([
+    listBatches(),
+    getAtRiskStudents().catch(() => [] as AtRiskStudent[]),
+  ]);
   const initial = defaultBatch ? await getBatchSummaries(defaultBatch) : { batch: '', students: [] };
 
   return (
@@ -21,6 +25,7 @@ export default async function AdminStudentsPage() {
       initialBatches={batches}
       initialBatch={defaultBatch}
       initialStudents={initial.students}
+      atRiskStudents={atRiskStudents}
     />
   );
 }

@@ -6,6 +6,7 @@
 
 import { MessageCircle } from 'lucide-react';
 import { buildWhatsAppLink } from '@/lib/students/whatsapp-link';
+import { BORDER, MUTED, SURFACE_ALT } from '@/components/admin/lms/tokens';
 
 interface Props {
   whatsapp: string | null;
@@ -35,9 +36,9 @@ export default function WhatsAppButton({ whatsapp, message }: Props) {
         title={result.reason}
         style={{
           ...baseStyle,
-          borderColor: '#E5E7EB',
-          color:       '#9CA3AF',
-          background:  '#F9FAFB',
+          borderColor: BORDER,
+          color:       MUTED,
+          background:  SURFACE_ALT,
           cursor:      'not-allowed',
         }}
       >

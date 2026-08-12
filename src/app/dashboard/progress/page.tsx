@@ -6,6 +6,7 @@ import { authOptions } from '@/lib/auth';
 import { getUserByEmail } from '@/lib/db-access-control';
 import { getStudentMetricsForUser } from '@/lib/students/student-metrics';
 import StudentMetricsPanel from '@/components/students/StudentMetricsPanel';
+import { BG, FONT_HEADING, SLATE, T_BASE, T_XL } from '@/components/admin/lms/tokens';
 
 export const metadata = { title: 'My Progress — VH' };
 
@@ -22,20 +23,20 @@ export default async function StudentProgressPage() {
   const full = await getStudentMetricsForUser(user.id);
 
   return (
-    <main style={{ minHeight: '100vh', background: '#FAFAFA', padding: '32px 16px 64px' }}>
+    <main style={{ minHeight: '100vh', background: SLATE, padding: '32px 16px 64px' }}>
       <div style={{ maxWidth: 900, margin: '0 auto' }}>
         <Link
           href="/dashboard"
-          style={{ display: 'inline-flex', alignItems: 'center', gap: 6, fontSize: 13, color: '#6B7280', fontWeight: 500, marginBottom: 16, textDecoration: 'none' }}
+          style={{ display: 'inline-flex', alignItems: 'center', gap: 6, fontSize: T_BASE, color: 'rgba(250,245,239,0.64)', fontWeight: 500, marginBottom: 16, textDecoration: 'none' }}
         >
           <ArrowLeft size={14} aria-hidden /> Back to Dashboard
         </Link>
-        <h1 style={{ fontSize: 20, fontWeight: 700, color: '#0F172A', marginBottom: 20, letterSpacing: '-0.02em' }}>
+        <h1 style={{ fontFamily: FONT_HEADING, fontSize: T_XL, fontWeight: 700, color: BG, marginBottom: 20, letterSpacing: '-0.02em' }}>
           My Progress
         </h1>
         {full
           ? <StudentMetricsPanel metrics={full.testMetrics} lexicore={full.lexicore} />
-          : <p style={{ fontSize: 13, color: '#9CA3AF' }}>No progress data available yet.</p>}
+          : <p style={{ fontSize: T_BASE, color: 'rgba(250,245,239,0.40)' }}>No progress data available yet.</p>}
       </div>
     </main>
   );

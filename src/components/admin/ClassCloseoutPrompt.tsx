@@ -9,12 +9,7 @@
 import { useState } from 'react';
 import { AlertCircle } from 'lucide-react';
 import { formatInstructorNames } from '@/lib/lms/instructor-name';
-
-const RED = '#760F13';
-const BORDER = '#E5E7EB';
-const MUTED = '#9CA3AF';
-const SLATE = '#111827';
-const BG = '#F9FAFB';
+import { RED, BORDER, MUTED, SLATE, SURFACE, WARN, WARN_BG, R_MD, R_LG, R_XL } from '@/components/admin/lms/tokens';
 
 const SUBJECTS = ['english', 'math', 'analytical'] as const;
 
@@ -103,9 +98,9 @@ function Row({
 
   const fieldStyle: React.CSSProperties = {
     padding: '7px 9px',
-    borderRadius: 7,
+    borderRadius: R_MD,
     border: `1px solid ${BORDER}`,
-    background: '#FFFFFF',
+    background: SURFACE,
     fontSize: 12,
     color: SLATE,
     outline: 'none',
@@ -116,9 +111,9 @@ function Row({
     <div
       style={{
         border: `1px solid ${BORDER}`,
-        borderRadius: 10,
+        borderRadius: R_LG,
         padding: '12px 14px',
-        background: '#FFFFFF',
+        background: SURFACE,
         display: 'flex',
         flexDirection: 'column',
         gap: 10,
@@ -185,10 +180,10 @@ function Row({
           disabled={saving}
           style={{
             padding: '8px 16px',
-            borderRadius: 7,
+            borderRadius: R_MD,
             border: `1px solid ${RED}`,
             background: RED,
-            color: '#FFFFFF',
+            color: SURFACE,
             fontSize: 12,
             fontWeight: 650,
             cursor: saving ? 'not-allowed' : 'pointer',
@@ -223,15 +218,15 @@ export default function ClassCloseoutPrompt({
       aria-labelledby="admin-closeout-heading"
       style={{
         marginBottom: 28,
-        border: '1px solid #FDE68A',
-        borderRadius: 14,
-        background: '#FFFBEB',
+        border: `1px solid ${WARN}55`,
+        borderRadius: R_XL,
+        background: WARN_BG,
         padding: '16px 18px',
       }}
     >
       <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 12 }}>
-        <AlertCircle size={16} style={{ color: '#D97706', flexShrink: 0 }} aria-hidden />
-        <h2 id="admin-closeout-heading" style={{ margin: 0, fontSize: 14, fontWeight: 700, color: '#92400E' }}>
+        <AlertCircle size={16} style={{ color: WARN, flexShrink: 0 }} aria-hidden />
+        <h2 id="admin-closeout-heading" style={{ margin: 0, fontSize: 14, fontWeight: 700, color: WARN }}>
           Needs attention · {rows.length} past class{rows.length !== 1 ? 'es' : ''} missing info
         </h2>
       </div>

@@ -16,11 +16,13 @@ import ResultsHub from './ResultsHub';
 import ClassHistoryTile from './ClassHistoryTile';
 import GamesStrip from './GamesStrip';
 import SubjectsStrip from './SubjectsStrip';
+import DashboardLeaderboardWidget from './DashboardLeaderboardWidget';
 
 interface Props {
   data: DashboardData | { hasAccess: false };
   userName: string;
   studentId?: string | null;
+  userId?: number;
 }
 
 const containerVariants: Variants = {
@@ -45,7 +47,7 @@ const itemVariantsReduced: Variants = {
   visible: { opacity: 1, y: 0 },
 };
 
-export default function DashboardScreen({ data, userName, studentId }: Props) {
+export default function DashboardScreen({ data, userName, studentId, userId }: Props) {
   const hasAccess = data.hasAccess === true;
   const d = hasAccess ? (data as DashboardData) : null;
   const prefersReduced = useReducedMotion();
@@ -199,6 +201,13 @@ export default function DashboardScreen({ data, userName, studentId }: Props) {
                   </motion.div>
                 );
               })()}
+
+              {/* ── 4b. Leaderboard widget — Latest Test board only ── */}
+              {typeof userId === 'number' && (
+                <motion.div variants={iv} className="mb-10">
+                  <DashboardLeaderboardWidget userId={userId} />
+                </motion.div>
+              )}
 
               {/* ── 5. Class History + Upcoming Tests band — same dynamic hide/expand ── */}
               {(() => {

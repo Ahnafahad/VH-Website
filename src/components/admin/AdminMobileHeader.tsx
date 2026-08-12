@@ -7,6 +7,22 @@ import { signOut } from 'next-auth/react';
 import { useState } from 'react';
 import { AnimatePresence, motion, Variants } from 'framer-motion';
 import {
+  BEIGE,
+  BG,
+  BORDER,
+  INK_SOFT,
+  MUTED,
+  RED,
+  R_SM,
+  SLATE,
+  SURFACE,
+  SURFACE_SHELL,
+  T_BASE,
+  T_SM,
+  T_XS,
+  useDialogBehaviour,
+} from './lms/lms-shared';
+import {
   Menu,
   X,
   LayoutDashboard,
@@ -194,12 +210,19 @@ function getInitials(name: string): string {
 export default function AdminMobileHeader({ adminName, adminEmail, role }: AdminMobileHeaderProps) {
   const pathname        = usePathname();
   const [open, setOpen] = useState(false);
+  // Escape-to-close + scroll lock, matching every other dismissible surface in
+  // the admin LMS. NOT attaching the returned ref to the drawer panel — doing
+  // so broke framer-motion's slide-in/out animation (the panel got stuck at
+  // its "hidden" x:-256 transform instead of animating to x:0), so this drawer
+  // gets Escape/scroll-lock but not the hook's focus-trap/auto-focus half.
+  useDialogBehaviour(open, () => setOpen(false));
 
   // ── Instructor shell ───────────────────────────────────────────────────────
   if (role === 'instructor') {
-    const bg      = '#1A0507';
-    const gold    = '#D4B094';
-    const ink     = '#FAF5EF';
+    const bg      = SLATE;
+    const gold    = BEIGE;
+    const ink     = BG;
+    // Alpha variants derived from the shared BG token for dark-shell text states.
     const inkMid  = 'rgba(250,245,239,0.65)';
     const inkDim  = 'rgba(250,245,239,0.35)';
     const goldBg  = 'rgba(212,176,148,0.12)';
@@ -233,7 +256,7 @@ export default function AdminMobileHeader({ adminName, adminEmail, role }: Admin
               border:      'none',
               cursor:      'pointer',
               padding:     6,
-              borderRadius:6,
+              borderRadius:R_SM,
               display:     'flex',
               alignItems:  'center',
               color:       ink,
@@ -270,7 +293,7 @@ export default function AdminMobileHeader({ adminName, adminEmail, role }: Admin
               borderRadius:  '50%',
               background:    gold,
               color:         bg,
-              fontSize:      11,
+              fontSize:      T_XS,
               fontWeight:    700,
               display:       'flex',
               alignItems:    'center',
@@ -351,7 +374,7 @@ export default function AdminMobileHeader({ adminName, adminEmail, role }: Admin
                       border:       'none',
                       cursor:       'pointer',
                       padding:      4,
-                      borderRadius: 6,
+                      borderRadius: R_SM,
                       display:      'flex',
                       alignItems:   'center',
                       color:        inkMid,
@@ -425,7 +448,7 @@ export default function AdminMobileHeader({ adminName, adminEmail, role }: Admin
                                   />
                                   <span
                                     style={{
-                                      fontSize:      13,
+                                      fontSize:      T_BASE,
                                       fontWeight:    active ? 600 : 400,
                                       color:         active ? gold : inkMid,
                                       letterSpacing: '-0.01em',
@@ -452,7 +475,7 @@ export default function AdminMobileHeader({ adminName, adminEmail, role }: Admin
                         borderRadius:   '50%',
                         background:     gold,
                         color:          bg,
-                        fontSize:       11,
+                        fontSize:       T_XS,
                         fontWeight:     700,
                         display:        'flex',
                         alignItems:     'center',
@@ -465,10 +488,10 @@ export default function AdminMobileHeader({ adminName, adminEmail, role }: Admin
                       {getInitials(adminName || 'I')}
                     </div>
                     <div style={{ minWidth: 0 }}>
-                      <p style={{ margin: 0, fontSize: 12, fontWeight: 600, color: ink, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                      <p style={{ margin: 0, fontSize: T_SM, fontWeight: 600, color: ink, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                         {adminName || 'Instructor'}
                       </p>
-                      <p style={{ margin: 0, fontSize: 11, color: inkDim, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                      <p style={{ margin: 0, fontSize: T_XS, color: inkDim, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                         {adminEmail}
                       </p>
                     </div>
@@ -488,7 +511,7 @@ export default function AdminMobileHeader({ adminName, adminEmail, role }: Admin
                       borderRadius:  7,
                       cursor:        'pointer',
                       color:         inkMid,
-                      fontSize:      12,
+                      fontSize:      T_SM,
                       fontWeight:    500,
                       letterSpacing: '-0.01em',
                     }}
@@ -528,8 +551,8 @@ export default function AdminMobileHeader({ adminName, adminEmail, role }: Admin
           left:        0,
           right:       0,
           height:      56,
-          background:  '#FFFFFF',
-          borderBottom:'1px solid #E5E7EB',
+          background:  SURFACE_SHELL,
+          borderBottom:`1px solid ${BORDER}`,
           zIndex:      50,
           alignItems:  'center',
           padding:     '0 16px',
@@ -547,10 +570,10 @@ export default function AdminMobileHeader({ adminName, adminEmail, role }: Admin
             padding:     6,
             minWidth:    44,
             minHeight:   44,
-            borderRadius:6,
+            borderRadius:R_SM,
             display:     'flex',
             alignItems:  'center',
-            color:       '#374151',
+            color:       INK_SOFT,
           }}
           aria-label="Open navigation menu"
         >
@@ -584,9 +607,9 @@ export default function AdminMobileHeader({ adminName, adminEmail, role }: Admin
             width:         32,
             height:        32,
             borderRadius:  '50%',
-            background:    '#D62B38',
-            color:         '#FFFFFF',
-            fontSize:      11,
+            background:    RED,
+            color:         SURFACE,
+            fontSize:      T_XS,
             fontWeight:    700,
             display:       'flex',
             alignItems:    'center',
@@ -635,7 +658,7 @@ export default function AdminMobileHeader({ adminName, adminEmail, role }: Admin
                 left:        0,
                 height:      '100%',
                 width:       256,
-                background:  '#FFFFFF',
+                background:  SURFACE_SHELL,
                 boxShadow:   '4px 0 24px rgba(0,0,0,0.10)',
                 zIndex:      70,
                 display:     'flex',
@@ -650,7 +673,7 @@ export default function AdminMobileHeader({ adminName, adminEmail, role }: Admin
               <div
                 style={{
                   padding:      '16px 16px 14px',
-                  borderBottom: '1px solid #E5E7EB',
+                  borderBottom: `1px solid ${BORDER}`,
                   display:      'flex',
                   alignItems:   'center',
                   justifyContent:'space-between',
@@ -676,10 +699,10 @@ export default function AdminMobileHeader({ adminName, adminEmail, role }: Admin
                     border:       'none',
                     cursor:       'pointer',
                     padding:      4,
-                    borderRadius: 6,
+                    borderRadius: R_SM,
                     display:      'flex',
                     alignItems:   'center',
-                    color:        '#6B7280',
+                    color:        MUTED,
                   }}
                   aria-label="Close navigation menu"
                 >
@@ -703,7 +726,7 @@ export default function AdminMobileHeader({ adminName, adminEmail, role }: Admin
                             margin:        '10px 12px 4px',
                             fontSize:      10,
                             fontWeight:    600,
-                            color:         '#9CA3AF',
+                            color:         MUTED,
                             letterSpacing: '0.1em',
                             textTransform: 'uppercase',
                             lineHeight:    1,
@@ -740,9 +763,9 @@ export default function AdminMobileHeader({ adminName, adminEmail, role }: Admin
                                   gap:             10,
                                   padding:         '10px 12px',
                                   border:          '1px solid transparent',
-                                  borderColor:     active ? 'rgba(214,43,56,0.18)' : 'transparent',
+                                  borderColor:     active ? 'rgba(118,15,19,0.18)' : 'transparent',
                                   borderRadius:    9,
-                                  backgroundColor: active ? 'rgba(214,43,56,0.04)' : 'transparent',
+                                  backgroundColor: active ? 'rgba(118,15,19,0.04)' : 'transparent',
                                   marginBottom:    2,
                                   cursor:          'pointer',
                                   transition:      'background-color 0.12s, border-color 0.12s',
@@ -752,15 +775,15 @@ export default function AdminMobileHeader({ adminName, adminEmail, role }: Admin
                                   size={16}
                                   style={{
                                     flexShrink: 0,
-                                    color:      active ? '#D62B38' : '#6B7280',
+                                    color:      active ? RED : MUTED,
                                   }}
                                   aria-hidden
                                 />
                                 <span
                                   style={{
-                                    fontSize:      13,
+                                    fontSize:      T_BASE,
                                     fontWeight:    active ? 600 : 400,
-                                    color:         active ? '#D62B38' : '#374151',
+                                    color:         active ? RED : INK_SOFT,
                                     letterSpacing: '-0.01em',
                                   }}
                                 >
@@ -780,7 +803,7 @@ export default function AdminMobileHeader({ adminName, adminEmail, role }: Admin
               <div
                 style={{
                   padding:   '14px 16px',
-                  borderTop: '1px solid #E5E7EB',
+                  borderTop: `1px solid ${BORDER}`,
                 }}
               >
                 {/* Admin info row */}
@@ -797,9 +820,9 @@ export default function AdminMobileHeader({ adminName, adminEmail, role }: Admin
                       width:           32,
                       height:          32,
                       borderRadius:    '50%',
-                      background:      '#D62B38',
-                      color:           '#FFFFFF',
-                      fontSize:        11,
+                      background:      RED,
+                      color:           SURFACE,
+                      fontSize:        T_XS,
                       fontWeight:      700,
                       display:         'flex',
                       alignItems:      'center',
@@ -815,9 +838,9 @@ export default function AdminMobileHeader({ adminName, adminEmail, role }: Admin
                     <p
                       style={{
                         margin:       0,
-                        fontSize:     12,
+                        fontSize:     T_SM,
                         fontWeight:   600,
-                        color:        '#111827',
+                        color:        INK_SOFT,
                         overflow:     'hidden',
                         textOverflow: 'ellipsis',
                         whiteSpace:   'nowrap',
@@ -828,8 +851,8 @@ export default function AdminMobileHeader({ adminName, adminEmail, role }: Admin
                     <p
                       style={{
                         margin:       0,
-                        fontSize:     11,
-                        color:        '#9CA3AF',
+                        fontSize:     T_XS,
+                        color:        MUTED,
                         overflow:     'hidden',
                         textOverflow: 'ellipsis',
                         whiteSpace:   'nowrap',
@@ -851,11 +874,11 @@ export default function AdminMobileHeader({ adminName, adminEmail, role }: Admin
                     gap:           8,
                     padding:       '8px 10px',
                     background:    'transparent',
-                    border:        '1px solid #E5E7EB',
+                    border:        `1px solid ${BORDER}`,
                     borderRadius:  7,
                     cursor:        'pointer',
-                    color:         '#6B7280',
-                    fontSize:      12,
+                    color:         MUTED,
+                    fontSize:      T_SM,
                     fontWeight:    500,
                     letterSpacing: '-0.01em',
                   }}

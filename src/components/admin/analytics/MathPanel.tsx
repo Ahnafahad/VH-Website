@@ -16,6 +16,9 @@ import StatCard  from './StatCard';
 import ChartCard from './ChartCard';
 import BarList   from './BarList';
 import { fmtNum, fmtPct, msToHuman } from './formatters';
+import {
+  BORDER, MUTED, RED, R_MD, SURFACE, SURFACE_ALT, T_SM, T_XS, WARN,
+} from '../lms/lms-shared';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -109,7 +112,7 @@ export default function MathPanel({ data }: MathPanelProps) {
         <BarList
           items={opAccuracyItems}
           valueFormat={v => fmtPct(v)}
-          accent="#D62B38"
+          accent={RED}
         />
       </ChartCard>
 
@@ -123,33 +126,33 @@ export default function MathPanel({ data }: MathPanelProps) {
       >
         <ResponsiveContainer width="100%" height={220}>
           <LineChart data={sessionsOverTime} margin={{ top: 4, right: 8, bottom: 0, left: -16 }}>
-            <CartesianGrid strokeDasharray="3 3" stroke="#F3F4F6" />
+            <CartesianGrid strokeDasharray="3 3" stroke={SURFACE_ALT} />
             <XAxis
               dataKey="date"
-              tick={{ fontSize: 11, fill: '#9CA3AF' }}
+              tick={{ fontSize: T_XS, fill: MUTED }}
               tickLine={false}
               axisLine={false}
             />
             <YAxis
-              tick={{ fontSize: 11, fill: '#9CA3AF' }}
+              tick={{ fontSize: T_XS, fill: MUTED }}
               tickLine={false}
               axisLine={false}
               allowDecimals={false}
             />
             <Tooltip
               contentStyle={{
-                background: '#FFFFFF', border: '1px solid #E5E7EB',
-                borderRadius: '8px', fontSize: '12px',
+                background: SURFACE, border: `1px solid ${BORDER}`,
+                borderRadius: R_MD, fontSize: T_SM,
               }}
             />
             <Line
               type="monotone"
               dataKey="sessions"
               name="Sessions"
-              stroke="#D62B38"
+              stroke={RED}
               strokeWidth={2}
               dot={false}
-              activeDot={{ r: 4, fill: '#D62B38' }}
+              activeDot={{ r: 4, fill: RED }}
             />
           </LineChart>
         </ResponsiveContainer>
@@ -168,28 +171,28 @@ export default function MathPanel({ data }: MathPanelProps) {
             data={difficultyDistribution}
             margin={{ top: 4, right: 8, bottom: 0, left: -16 }}
           >
-            <CartesianGrid strokeDasharray="3 3" stroke="#F3F4F6" />
+            <CartesianGrid strokeDasharray="3 3" stroke={SURFACE_ALT} />
             <XAxis
               dataKey="bucket"
-              tick={{ fontSize: 11, fill: '#9CA3AF' }}
+              tick={{ fontSize: T_XS, fill: MUTED }}
               tickLine={false}
               axisLine={false}
-              label={{ value: 'Difficulty', position: 'insideBottom', offset: -2, fontSize: 10, fill: '#9CA3AF' }}
+              label={{ value: 'Difficulty', position: 'insideBottom', offset: -2, fontSize: 10, fill: MUTED }}
             />
             <YAxis
-              tick={{ fontSize: 11, fill: '#9CA3AF' }}
+              tick={{ fontSize: T_XS, fill: MUTED }}
               tickLine={false}
               axisLine={false}
               allowDecimals={false}
             />
             <Tooltip
               contentStyle={{
-                background: '#FFFFFF', border: '1px solid #E5E7EB',
-                borderRadius: '8px', fontSize: '12px',
+                background: SURFACE, border: `1px solid ${BORDER}`,
+                borderRadius: R_MD, fontSize: T_SM,
               }}
               formatter={(v: number) => [fmtNum(v), 'Attempts']}
             />
-            <Bar dataKey="count" name="Attempts" fill="#FBBF24" radius={[3, 3, 0, 0]} maxBarSize={40} />
+            <Bar dataKey="count" name="Attempts" fill={WARN} radius={[3, 3, 0, 0]} maxBarSize={40} />
           </BarChart>
         </ResponsiveContainer>
       </ChartCard>

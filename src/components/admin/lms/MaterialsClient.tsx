@@ -15,7 +15,7 @@ import {
   extractPdfHeading,
   SURFACE, SURFACE_ALT, OK, INFO, INFO_BG,
   R_SM, R_MD, R_LG, SHADOW_LG, FONT_HEADING, RED_HOVER, BEIGE,
-  SPIN_CSS,
+  SPIN_CSS, T_XS, T_SM, T_BASE,
 } from './lms-shared';
 import {
   COURSES, SUBJECTS, DOC_TYPES, BATCHES,
@@ -92,7 +92,7 @@ function TitleField({
       `}</style>
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 4 }}>
         <label style={{
-          fontSize: 11, fontWeight: 700, color: MUTED,
+          fontSize: T_XS, fontWeight: 700, color: MUTED,
           letterSpacing: '0.07em', textTransform: 'uppercase',
         }}>
           {label}
@@ -102,7 +102,7 @@ function TitleField({
             type="button"
             className="lms-materials-reset"
             onClick={onReset}
-            style={{ background: 'none', border: 'none', color: RED, fontSize: 11, fontWeight: 600, cursor: 'pointer', padding: 0 }}
+            style={{ background: 'none', border: 'none', color: RED, fontSize: T_XS, fontWeight: 600, cursor: 'pointer', padding: 0 }}
           >
             Reset to auto
           </button>
@@ -347,7 +347,7 @@ function UploadPdfTab({
               <option key={s.id} value={s.id}>{s.title} ({fmtDhaka(s.scheduledAt, { dateStyle: 'short' })})</option>
             ))}
           </FieldSelect>
-          <p style={{ margin: '4px 0 0', fontSize: 11, lineHeight: 1.5, color: MUTED }}>
+          <p style={{ margin: '4px 0 0', fontSize: T_XS, lineHeight: 1.5, color: MUTED }}>
             {selectedSession
               ? `Course, batch, and student access will match ${selectedSession.title}.`
               : 'Choose a class to fill course access automatically.'}
@@ -364,9 +364,9 @@ function UploadPdfTab({
             accept="application/pdf"
             className="lms-materials-file-input"
             onChange={e => handleFileChange(e.target.files?.[0] ?? null)}
-            style={{ width: '100%', minHeight: 44, padding: '10px 12px', fontSize: 13, color: SLATE, border: `1px solid ${BORDER}`, borderRadius: R_MD, background: SURFACE, transition: 'border-color 0.14s' }}
+            style={{ width: '100%', minHeight: 44, padding: '10px 12px', fontSize: T_BASE, color: SLATE, border: `1px solid ${BORDER}`, borderRadius: R_MD, background: SURFACE, transition: 'border-color 0.14s' }}
           />
-          {file && <p style={{ margin: '4px 0 0', fontSize: 11, color: MUTED }}>{file.name} — {fmtSize(file.size)}</p>}
+          {file && <p style={{ margin: '4px 0 0', fontSize: T_XS, color: MUTED }}>{file.name} — {fmtSize(file.size)}</p>}
         </div>
         {!selectedSession && <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: 12 }}>
           <div>
@@ -410,11 +410,11 @@ function UploadPdfTab({
             <div style={{ background: SURFACE_ALT, borderRadius: 4, height: 4 }}>
               <div style={{ height: 4, borderRadius: 4, background: RED, width: '100%', transform: `scaleX(${progress / 100})`, transformOrigin: 'left', transition: 'transform 0.3s' }} />
             </div>
-            <p style={{ fontSize: 11, color: MUTED, margin: '4px 0 0' }}>Uploading… {progress}%</p>
+            <p style={{ fontSize: T_XS, color: MUTED, margin: '4px 0 0' }}>Uploading… {progress}%</p>
           </div>
         )}
-        {stage === 'done' && <p style={{ fontSize: 13, color: OK, fontWeight: 600 }}>Uploaded successfully!</p>}
-        {error && <p style={{ fontSize: 12, color: RED, margin: 0 }}>{error}</p>}
+        {stage === 'done' && <p style={{ fontSize: T_BASE, color: OK, fontWeight: 600 }}>Uploaded successfully!</p>}
+        {error && <p style={{ fontSize: T_SM, color: RED, margin: 0 }}>{error}</p>}
         <div style={{ display: 'flex', gap: 8 }}>
           <PrimaryBtn
             onClick={handleUpload}
@@ -550,7 +550,7 @@ function AddLinkTab({
           <FieldLabel>Topic (optional)</FieldLabel>
           <FieldInput value={topic} onChange={e => setTopic(e.target.value)} placeholder="e.g. Advanced Sentence Structures" />
         </div>
-        {error && <p style={{ fontSize: 12, color: RED, margin: 0 }}>{error}</p>}
+        {error && <p style={{ fontSize: T_SM, color: RED, margin: 0 }}>{error}</p>}
         <PrimaryBtn onClick={handleAdd} loading={saving}>
           <Plus size={14} aria-hidden />
           Add Link
@@ -616,7 +616,7 @@ function LinkClassDialog({
             boxShadow: SHADOW_LG, display: 'flex', flexDirection: 'column', gap: 14 }}
         >
           <p style={{ margin: 0, fontSize: 15, fontWeight: 700, color: SLATE, fontFamily: FONT_HEADING }}>Link to class</p>
-          <p style={{ margin: 0, fontSize: 12, color: MUTED }}>
+          <p style={{ margin: 0, fontSize: T_SM, color: MUTED }}>
             An unnamed class (&ldquo;Thursday Class&rdquo;) will take this material&rsquo;s name; a class that already has a name is left as-is.
           </p>
           <div>
@@ -628,7 +628,7 @@ function LinkClassDialog({
               ))}
             </FieldSelect>
           </div>
-          {error && <p style={{ fontSize: 12, color: RED, margin: 0 }}>{error}</p>}
+          {error && <p style={{ fontSize: T_SM, color: RED, margin: 0 }}>{error}</p>}
           <div style={{ display: 'flex', gap: 8, justifyContent: 'flex-end' }}>
             <GhostBtn onClick={onClose}>Cancel</GhostBtn>
             <PrimaryBtn onClick={handleSave} loading={saving}>Save</PrimaryBtn>
@@ -721,7 +721,7 @@ function EditMaterialDialog({
               <FieldInput value={topic} onChange={e => setTopic(e.target.value)} placeholder="e.g. Advanced Sentence Structures" />
             </div>
           </div>
-          {error && <p style={{ fontSize: 12, color: RED, margin: 0 }}>{error}</p>}
+          {error && <p style={{ fontSize: T_SM, color: RED, margin: 0 }}>{error}</p>}
           <FormActions>
             <GhostBtn onClick={onClose}>Cancel</GhostBtn>
             <PrimaryBtn onClick={handleSave} loading={saving}>Save</PrimaryBtn>
@@ -854,16 +854,16 @@ function MaterialsList({
               </div>
               <div style={{ flex: 1, minWidth: 0 }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap', marginBottom: 3 }}>
-                  <p style={{ margin: 0, fontSize: 13, fontWeight: 600, color: SLATE }}>{m.title}</p>
+                  <p style={{ margin: 0, fontSize: T_BASE, fontWeight: 600, color: SLATE }}>{m.title}</p>
                   <SubjectBadge subject={m.subject} />
                   {docTypeLabel(m.docType) && (
-                    <span style={{ fontSize: 11, color: MUTED }}>
+                    <span style={{ fontSize: T_XS, color: MUTED }}>
                       {docTypeLabel(m.docType)}{m.number ? ` ${m.number}` : ''}
                     </span>
                   )}
-                  {m.batch && <span style={{ fontSize: 11, color: MUTED }}>Batch {m.batch}</span>}
+                  {m.batch && <span style={{ fontSize: T_XS, color: MUTED }}>Batch {m.batch}</span>}
                 </div>
-                <p style={{ margin: 0, fontSize: 11, color: MUTED }}>
+                <p style={{ margin: 0, fontSize: T_XS, color: MUTED }}>
                   {m.topic ? `${m.topic} · ` : ''}
                   {fmtDhaka(m.createdAt, { dateStyle: 'medium' })}
                   {m.fileSize ? ` · ${fmtSize(m.fileSize)}` : ''}

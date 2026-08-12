@@ -21,6 +21,34 @@ import {
   Mail,
   AlertCircle
 } from 'lucide-react';
+import {
+  RED,
+  RED_DARK,
+  BORDER,
+  MUTED,
+  BG,
+  SURFACE,
+  SURFACE_ALT,
+  SURFACE_SHELL,
+  INK_SOFT,
+  OK,
+  OK_BG,
+  WARN,
+  WARN_BG,
+  INFO,
+  INFO_BG,
+  T_XS,
+  T_2XL,
+  R_MD,
+  R_LG,
+  R_XL,
+  R_2XL,
+  R_PILL,
+  SHADOW_SM,
+  SHADOW_MD,
+  SHADOW_LG,
+  Modal,
+} from '@/components/admin/lms/lms-shared';
 
 type Registration = {
   id: number;
@@ -84,6 +112,7 @@ export default function AdminRegistrationsPage() {
 
   // Filters
   const [statusFilter, setStatusFilter] = useState<string>('all');
+  const [courseFilter, setCourseFilter] = useState<string>('all');
   const [searchTerm, setSearchTerm] = useState('');
 
   // Edit states
@@ -249,7 +278,14 @@ export default function AdminRegistrationsPage() {
     const matchesStatus = statusFilter === 'all' || reg.status === statusFilter;
     const matchesSearch = reg.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
                           reg.email.toLowerCase().includes(searchTerm.toLowerCase());
-    return matchesStatus && matchesSearch;
+    const matchesCourse = courseFilter === 'all' ||
+      (reg.programMode === 'mocks' && (() => {
+        try { return JSON.parse(reg.selectedMocks as string); } catch { return []; }
+      })().includes(courseFilter)) ||
+      (reg.programMode === 'full' && (() => {
+        try { return JSON.parse(reg.selectedFullCourses as string); } catch { return []; }
+      })().includes(courseFilter));
+    return matchesStatus && matchesSearch && matchesCourse;
   });
 
   const filteredStudents = students.filter(student =>
@@ -265,10 +301,10 @@ export default function AdminRegistrationsPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-50 to-white flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center" style={{ background: BG }}>
         <div className="text-center">
-          <RefreshCw className="w-12 h-12 text-vh-red animate-spin mx-auto mb-4" />
-          <p className="text-gray-600">Loading admin panel...</p>
+          <RefreshCw className="w-12 h-12 animate-spin mx-auto mb-4" style={{ color: RED }} />
+          <p style={{ color: MUTED }}>Loading admin panel...</p>
         </div>
       </div>
     );
@@ -276,8 +312,8 @@ export default function AdminRegistrationsPage() {
 
   if (error) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-50 to-white flex items-center justify-center">
-        <div className="text-center bg-white rounded-2xl shadow-xl p-8 max-w-md">
+      <div className="min-h-screen flex items-center justify-center" style={{ background: BG }}>
+        <div className="text-center p-8 max-w-md" style={{ background: SURFACE, border: `1px solid ${BORDER}`, borderRadius: R_2XL, boxShadow: SHADOW_LG }}>
           <XCircle className="w-16 h-16 text-red-500 mx-auto mb-4" />
           <h2 className="text-2xl font-bold text-gray-900 mb-2">Error</h2>
           <p className="text-red-600">{error}</p>
@@ -293,7 +329,7 @@ export default function AdminRegistrationsPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-vh-beige/5">
+    <div className="min-h-screen" style={{ background: BG }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
 
         {/* Header */}
@@ -312,50 +348,38 @@ export default function AdminRegistrationsPage() {
             </button>
           </div>
 
-          {/* Stats Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
-            <div className="bg-yellow-50 border-2 border-yellow-200 rounded-xl p-4">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-yellow-600 text-sm font-semibold">Pending</p>
-                  <p className="text-3xl font-black text-yellow-700">{counts.pending}</p>
+          {/* Stats band */}
+          <div
+            className="vh-stat-band mb-6"
+            style={{ display: 'grid', gridTemplateColumns: 'repeat(4, minmax(0, 1fr))', border: `1px solid ${BORDER}`, borderRadius: R_LG, overflow: 'hidden' }}
+          >
+            {[
+              { label: 'Pending', value: counts.pending, icon: Clock },
+              { label: 'Contacted', value: counts.contacted, icon: Users },
+              { label: 'Enrolled', value: counts.enrolled, icon: CheckCircle },
+              { label: 'Active Students', value: students.length, icon: Shield },
+            ].map((item, index) => {
+              const Icon = item.icon;
+              return (
+                <div
+                  key={item.label}
+                  className="vh-stat-col"
+                  style={{ padding: '16px 18px', background: SURFACE, borderLeft: index === 0 ? 'none' : `1px solid ${BORDER}` }}
+                >
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 7, marginBottom: 8 }}>
+                    <Icon size={14} style={{ color: MUTED }} aria-hidden />
+                    <span style={{ fontSize: T_XS, fontWeight: 600, color: MUTED, letterSpacing: '0.02em' }}>{item.label}</span>
+                  </div>
+                  <p style={{ margin: 0, fontSize: T_2XL, fontWeight: 700, color: INK_SOFT, lineHeight: 1, letterSpacing: '-0.02em' }}>{item.value}</p>
                 </div>
-                <Clock className="w-10 h-10 text-yellow-500" />
-              </div>
-            </div>
-            <div className="bg-blue-50 border-2 border-blue-200 rounded-xl p-4">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-blue-600 text-sm font-semibold">Contacted</p>
-                  <p className="text-3xl font-black text-blue-700">{counts.contacted}</p>
-                </div>
-                <Users className="w-10 h-10 text-blue-500" />
-              </div>
-            </div>
-            <div className="bg-green-50 border-2 border-green-200 rounded-xl p-4">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-green-600 text-sm font-semibold">Enrolled</p>
-                  <p className="text-3xl font-black text-green-700">{counts.enrolled}</p>
-                </div>
-                <CheckCircle className="w-10 h-10 text-green-500" />
-              </div>
-            </div>
-            <div className="bg-purple-50 border-2 border-purple-200 rounded-xl p-4">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-purple-600 text-sm font-semibold">Active Students</p>
-                  <p className="text-3xl font-black text-purple-700">{students.length}</p>
-                </div>
-                <Shield className="w-10 h-10 text-purple-500" />
-              </div>
-            </div>
+              );
+            })}
           </div>
         </div>
 
         {/* Tabs */}
-        <div className="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden">
-          <div className="border-b border-gray-200">
+        <div className="overflow-hidden" style={{ background: SURFACE, borderRadius: R_2XL, boxShadow: SHADOW_MD, border: `1px solid ${BORDER}` }}>
+          <div style={{ borderBottom: `1px solid ${BORDER}` }}>
             <div className="flex">
               <button
                 onClick={() => setActiveTab('registrations')}
@@ -394,7 +418,7 @@ export default function AdminRegistrationsPage() {
           </div>
 
           {/* Filters */}
-          <div className="p-6 bg-gray-50 border-b border-gray-200">
+          <div className="p-6" style={{ background: SURFACE_SHELL, borderBottom: `1px solid ${BORDER}` }}>
             <div className="flex flex-col md:flex-row gap-4">
               <div className="flex-1 relative">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
@@ -407,20 +431,43 @@ export default function AdminRegistrationsPage() {
                 />
               </div>
               {activeTab === 'registrations' && (
-                <div className="relative">
-                  <Filter className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
-                  <select
-                    value={statusFilter}
-                    onChange={(e) => setStatusFilter(e.target.value)}
-                    className="pl-10 pr-8 py-2 border-2 border-gray-200 rounded-lg focus:border-vh-red focus:ring-2 focus:ring-vh-red/20 outline-none transition-all bg-white"
-                  >
-                    <option value="all">All Status</option>
-                    <option value="pending">Pending</option>
-                    <option value="contacted">Contacted</option>
-                    <option value="enrolled">Enrolled</option>
-                    <option value="cancelled">Cancelled</option>
-                  </select>
-                </div>
+                <>
+                  <div className="relative">
+                    <Filter className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+                    <select
+                      value={statusFilter}
+                      onChange={(e) => setStatusFilter(e.target.value)}
+                      className="pl-10 pr-8 py-2 border-2 border-gray-200 rounded-lg focus:border-vh-red focus:ring-2 focus:ring-vh-red/20 outline-none transition-all bg-white"
+                    >
+                      <option value="all">All Status</option>
+                      <option value="pending">Pending</option>
+                      <option value="contacted">Contacted</option>
+                      <option value="enrolled">Enrolled</option>
+                      <option value="cancelled">Cancelled</option>
+                    </select>
+                  </div>
+                  <div className="relative">
+                    <Filter className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+                    <select
+                      value={courseFilter}
+                      onChange={(e) => setCourseFilter(e.target.value)}
+                      className="pl-10 pr-8 py-2 border-2 border-gray-200 rounded-lg focus:border-vh-red focus:ring-2 focus:ring-vh-red/20 outline-none transition-all bg-white"
+                    >
+                      <option value="all">All Courses</option>
+                      <optgroup label="Mock Programs">
+                        <option value="du-iba">DU IBA</option>
+                        <option value="bup-iba">BUP IBA</option>
+                        <option value="du-fbs">DU FBS</option>
+                        <option value="bup-fbs">BUP FBS</option>
+                      </optgroup>
+                      <optgroup label="Full Courses">
+                        <option value="iba-combined">IBA Combined</option>
+                        <option value="du-fbs-full">DU FBS Full</option>
+                        <option value="bup-fbs-full">BUP FBS Full</option>
+                      </optgroup>
+                    </select>
+                  </div>
+                </>
               )}
             </div>
           </div>
@@ -492,15 +539,14 @@ export default function AdminRegistrationsPage() {
       </div>
 
       {/* Grant Access Modal */}
-      {showGrantAccessModal && (
-        <GrantAccessModal
-          data={grantAccessData}
-          batches={batches}
-          onClose={() => setShowGrantAccessModal(false)}
-          onGrant={grantAccess}
-          setData={setGrantAccessData}
-        />
-      )}
+      <GrantAccessModal
+        open={showGrantAccessModal}
+        data={grantAccessData}
+        batches={batches}
+        onClose={() => setShowGrantAccessModal(false)}
+        onGrant={grantAccess}
+        setData={setGrantAccessData}
+      />
     </div>
   );
 }
@@ -509,7 +555,7 @@ export default function AdminRegistrationsPage() {
 function EmailStatusBadge({ label, status }: { label: string; status?: 'sent' | 'failed' | null }) {
   if (status === 'sent') {
     return (
-      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-semibold bg-green-100 text-green-700 border border-green-200">
+      <span className="inline-flex items-center gap-1 px-2 py-0.5 text-xs font-semibold" style={{ background: OK_BG, color: OK, border: `1px solid ${OK}33`, borderRadius: R_PILL }}>
         <CheckCircle className="w-3 h-3" />
         {label}: Sent
       </span>
@@ -517,14 +563,14 @@ function EmailStatusBadge({ label, status }: { label: string; status?: 'sent' | 
   }
   if (status === 'failed') {
     return (
-      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-semibold bg-red-100 text-red-700 border border-red-200">
+      <span className="inline-flex items-center gap-1 px-2 py-0.5 text-xs font-semibold" style={{ background: `${RED}14`, color: RED_DARK, border: `1px solid ${RED}33`, borderRadius: R_PILL }}>
         <AlertCircle className="w-3 h-3" />
         {label}: Failed
       </span>
     );
   }
   return (
-    <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-semibold bg-gray-100 text-gray-500 border border-gray-200">
+    <span className="inline-flex items-center gap-1 px-2 py-0.5 text-xs font-semibold" style={{ background: WARN_BG, color: WARN, border: `1px solid ${WARN}33`, borderRadius: R_PILL }}>
       <Clock className="w-3 h-3" />
       {label}: Pending
     </span>
@@ -537,7 +583,7 @@ function RegistrationCard({ registration, editingId, editData, onStartEdit, onSa
 
   if (isEditing) {
     return (
-      <div className="bg-gradient-to-br from-white to-gray-50 rounded-xl border-2 border-gray-200 p-6">
+      <div className="p-6" style={{ background: SURFACE, border: `1px solid ${BORDER}`, borderRadius: R_XL }}>
         <div className="space-y-4">
           <div className="flex items-center justify-between mb-4">
             <h3 className="text-xl font-bold text-gray-900">Edit Registration</h3>
@@ -607,17 +653,19 @@ function RegistrationCard({ registration, editingId, editData, onStartEdit, onSa
   }
 
   return (
-    <div className="bg-gradient-to-br from-white to-gray-50 rounded-xl border-2 border-gray-200 p-6 hover:border-vh-red/30 transition-all">
+    <div className="p-6 transition-all" style={{ background: SURFACE, border: `1px solid ${BORDER}`, borderRadius: R_XL, boxShadow: SHADOW_SM }}>
       <div className="flex items-start justify-between mb-4">
         <div className="flex-1">
           <div className="flex items-center gap-3 mb-2">
             <h3 className="text-xl font-bold text-gray-900">{reg.name}</h3>
-            <span className={`px-3 py-1 rounded-full text-xs font-bold ${
-              reg.status === 'pending' ? 'bg-yellow-100 text-yellow-700' :
-              reg.status === 'contacted' ? 'bg-blue-100 text-blue-700' :
-              reg.status === 'enrolled' ? 'bg-green-100 text-green-700' :
-              'bg-gray-100 text-gray-700'
-            }`}>
+            <span
+              className="px-3 py-1 text-xs font-bold"
+              style={{
+                borderRadius: R_PILL,
+                background: reg.status === 'pending' ? WARN_BG : reg.status === 'contacted' ? INFO_BG : reg.status === 'enrolled' ? OK_BG : SURFACE_ALT,
+                color: reg.status === 'pending' ? WARN : reg.status === 'contacted' ? INFO : reg.status === 'enrolled' ? OK : MUTED,
+              }}
+            >
               {reg.status.toUpperCase()}
             </span>
           </div>
@@ -786,14 +834,15 @@ function RegistrationCard({ registration, editingId, editData, onStartEdit, onSa
 function StudentCard({ student, batches, onUpdate }: any) {
   const batchOptions: string[] = Array.from(new Set<string>((batches || []).map((b: any) => b.name as string))).sort();
   return (
-    <div className="bg-gradient-to-br from-white to-purple-50 rounded-xl border-2 border-purple-200 p-6">
+    <div className="p-6" style={{ background: SURFACE, border: `1px solid ${BORDER}`, borderRadius: R_XL, boxShadow: SHADOW_SM }}>
       <div className="flex items-start justify-between mb-4">
         <div className="flex-1">
           <div className="flex items-center gap-3 mb-2">
             <h3 className="text-xl font-bold text-gray-900">{student.name}</h3>
-            <span className={`px-3 py-1 rounded-full text-xs font-bold ${
-              student.active ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'
-            }`}>
+            <span
+              className="px-3 py-1 text-xs font-bold"
+              style={{ borderRadius: R_PILL, background: student.active ? OK_BG : SURFACE_ALT, color: student.active ? OK : MUTED }}
+            >
               {student.active ? 'ACTIVE' : 'INACTIVE'}
             </span>
           </div>
@@ -877,26 +926,13 @@ function StudentCard({ student, batches, onUpdate }: any) {
 }
 
 // Component for grant access modal
-function GrantAccessModal({ data, batches, onClose, onGrant, setData }: any) {
+function GrantAccessModal({ open, data, batches, onClose, onGrant, setData }: any) {
   const batchOptions: string[] = Array.from(new Set<string>((batches || []).map((b: any) => b.name as string))).sort();
   return (
-    <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
-      <div className="bg-white rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
-        <div className="p-6 border-b border-gray-200">
-          <div className="flex items-center justify-between">
-            <h2 className="text-2xl font-bold text-gray-900">Grant System Access</h2>
-            <button
-              onClick={onClose}
-              className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
-            >
-              <X className="w-6 h-6" />
-            </button>
-          </div>
-        </div>
-
-        <div className="p-6 space-y-4">
-          <div className="bg-purple-50 border border-purple-200 rounded-lg p-4 mb-4">
-            <p className="text-sm text-purple-900">
+    <Modal open={open} onClose={onClose} title="Grant System Access" width={672}>
+      <div className="space-y-4">
+          <div className="p-4 mb-4" style={{ background: INFO_BG, border: `1px solid ${INFO}33`, borderRadius: R_MD }}>
+            <p className="text-sm" style={{ color: INFO }}>
               <strong>Note:</strong> This will add the user to the access-control.json file and regenerate the access control system. They will be able to log in and access the platform.
             </p>
           </div>
@@ -979,9 +1015,7 @@ function GrantAccessModal({ data, batches, onClose, onGrant, setData }: any) {
               ))}
             </div>
           </div>
-        </div>
-
-        <div className="p-6 border-t border-gray-200 flex justify-end gap-3">
+        <div className="pt-5 flex justify-end gap-3" style={{ borderTop: `1px solid ${BORDER}` }}>
           <button
             onClick={onClose}
             className="px-6 py-2 border-2 border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors font-semibold"
@@ -997,7 +1031,7 @@ function GrantAccessModal({ data, batches, onClose, onGrant, setData }: any) {
           </button>
         </div>
       </div>
-    </div>
+    </Modal>
   );
 }
 
@@ -1012,12 +1046,12 @@ function FreeSignupCard({ signup }: { signup: FreeSignup }) {
     : created.toLocaleString('en-US', { dateStyle: 'medium', timeStyle: 'short' });
 
   return (
-    <div className="bg-gradient-to-br from-white to-amber-50 rounded-xl border-2 border-amber-200 p-6">
+    <div className="p-6" style={{ background: SURFACE, border: `1px solid ${BORDER}`, borderRadius: R_XL, boxShadow: SHADOW_SM }}>
       <div className="flex items-start justify-between gap-4 mb-4">
         <div className="flex-1">
           <div className="flex items-center gap-3 mb-2">
             <h3 className="text-xl font-bold text-gray-900">{signup.name}</h3>
-            <span className="px-3 py-1 rounded-full text-xs font-bold bg-amber-100 text-amber-800 inline-flex items-center gap-1.5">
+            <span className="px-3 py-1 text-xs font-bold inline-flex items-center gap-1.5" style={{ background: WARN_BG, color: WARN, borderRadius: R_PILL }}>
               <Sparkles className="w-3 h-3" />
               FREE
             </span>

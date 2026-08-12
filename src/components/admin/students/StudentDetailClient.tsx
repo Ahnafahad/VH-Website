@@ -22,6 +22,11 @@ import { fmtNum, fmtPct } from '@/components/admin/analytics/formatters';
 import StudentMetricsPanel from '@/components/students/StudentMetricsPanel';
 import WhatsAppButton from './WhatsAppButton';
 import { buildStatusMessage } from '@/lib/students/whatsapp-message';
+import {
+  RED, RED_HOVER, RED_DARK, SLATE, BORDER, BORDER_FIELD, MUTED, BG, SURFACE, SURFACE_ALT,
+  INK_SOFT, OK, WARN, WARN_BG, T_XS, T_SM, T_BASE, T_XL, T_2XL,
+  R_SM, R_MD, R_LG, R_PILL, FONT_HEADING,
+} from '../lms/lms-shared';
 import type {
   StudentDetailResponse,
   StudentTestResult,
@@ -69,10 +74,10 @@ function formatShortDate(iso: string): string {
 }
 
 function attendanceColor(pct: number | null): string {
-  if (pct == null) return '#9CA3AF';
-  if (pct >= 80) return '#10B981';
-  if (pct >= 50) return '#F59E0B';
-  return '#EF4444';
+  if (pct == null) return MUTED;
+  if (pct >= 80) return OK;
+  if (pct >= 50) return WARN;
+  return RED;
 }
 
 // ─── Motion variants ─────────────────────────────────────────────────────────
@@ -91,15 +96,15 @@ function Chip({ label, tone = 'neutral' }: { label: string; tone?: 'neutral' | '
       display:       'inline-flex',
       alignItems:    'center',
       padding:       '2px 9px',
-      borderRadius:  100,
-      fontSize:      11,
+      borderRadius:  R_PILL,
+      fontSize:      T_XS,
       fontWeight:    600,
       letterSpacing: '0.02em',
       lineHeight:    1.6,
       whiteSpace:    'nowrap',
-      background:    brand ? 'rgba(214,43,56,0.07)' : '#F3F4F6',
-      color:         brand ? '#B91C2C' : '#374151',
-      border:        brand ? '1px solid rgba(214,43,56,0.2)' : '1px solid #E5E7EB',
+      background:    brand ? `${RED}12` : SURFACE_ALT,
+      color:         brand ? RED_DARK : INK_SOFT,
+      border:        `1px solid ${brand ? `${RED}33` : BORDER}`,
     }}>
       {label}
     </span>
@@ -118,13 +123,13 @@ function TabButton({ label, active, onClick, icon: Icon }: { label: string; acti
         alignItems:    'center',
         gap:           6,
         padding:       '8px 16px',
-        borderRadius:  8,
-        fontSize:      13,
+        borderRadius:  R_MD,
+        fontSize:      T_BASE,
         fontWeight:    active ? 600 : 500,
         cursor:        'pointer',
-        border:        active ? '1.5px solid #D62B38' : '1.5px solid #E5E7EB',
-        background:    active ? 'rgba(214,43,56,0.05)' : '#FFFFFF',
-        color:         active ? '#D62B38' : '#6B7280',
+        border:        `1px solid ${active ? RED : BORDER_FIELD}`,
+        background:    active ? `${RED}0D` : SURFACE,
+        color:         active ? RED : MUTED,
         transition:    'all 0.14s ease',
         whiteSpace:    'nowrap',
       }}
@@ -149,7 +154,7 @@ function AttendanceRing({ percent }: { percent: number | null }) {
   return (
     <div style={{ position: 'relative', width: size, height: size, flexShrink: 0 }}>
       <svg width={size} height={size} style={{ transform: 'rotate(-90deg)' }}>
-        <circle cx={size / 2} cy={size / 2} r={r} fill="none" stroke="#F3F4F6" strokeWidth={stroke} />
+        <circle cx={size / 2} cy={size / 2} r={r} fill="none" stroke={SURFACE_ALT} strokeWidth={stroke} />
         {percent != null && (
           <circle
             cx={size / 2} cy={size / 2} r={r} fill="none"
@@ -162,7 +167,7 @@ function AttendanceRing({ percent }: { percent: number | null }) {
         position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center',
         flexDirection: 'column',
       }}>
-        <span style={{ fontSize: 18, fontWeight: 700, color: '#0F172A', letterSpacing: '-0.02em' }}>
+        <span style={{ fontSize: 18, fontWeight: 700, color: SLATE, letterSpacing: '-0.02em' }}>
           {percent == null ? '—' : `${Math.round(percent)}%`}
         </span>
       </div>
@@ -174,7 +179,7 @@ function AttendanceRing({ percent }: { percent: number | null }) {
 
 function TestRow({ test, expanded, onToggle }: { test: StudentTestResult; expanded: boolean; onToggle: () => void }) {
   return (
-    <div style={{ borderBottom: '1px solid #F9FAFB' }}>
+    <div style={{ borderBottom: `1px solid ${BORDER}` }}>
       <div
         onClick={onToggle}
         role="button"
@@ -189,17 +194,17 @@ function TestRow({ test, expanded, onToggle }: { test: StudentTestResult; expand
           gap:          8,
         }}
       >
-        <span style={{ fontSize: 13, fontWeight: 600, color: '#0F172A', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+        <span style={{ fontSize: T_BASE, fontWeight: 600, color: SLATE, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
           {test.title}
         </span>
-        <span style={{ fontSize: 12, color: '#6B7280' }}>{formatShortDate(test.takenAt)}</span>
-        <span style={{ fontSize: 12, color: '#374151' }}>{test.score}/{test.totalMarks}</span>
-        <span style={{ fontSize: 13, fontWeight: 700, color: '#0F172A' }}>{Math.round(test.percentage)}%</span>
-        <span style={{ fontSize: 12, color: '#6B7280' }}>
+        <span style={{ fontSize: T_SM, color: MUTED }}>{formatShortDate(test.takenAt)}</span>
+        <span style={{ fontSize: T_SM, color: INK_SOFT }}>{test.score}/{test.totalMarks}</span>
+        <span style={{ fontSize: T_BASE, fontWeight: 700, color: SLATE }}>{Math.round(test.percentage)}%</span>
+        <span style={{ fontSize: T_SM, color: MUTED }}>
           Rank {test.rank}/{test.totalStudents}
         </span>
         <motion.span animate={{ rotate: expanded ? 180 : 0 }} style={{ display: 'flex', justifyContent: 'flex-end' }}>
-          <ChevronDown size={15} style={{ color: '#9CA3AF' }} aria-hidden />
+          <ChevronDown size={15} style={{ color: MUTED }} aria-hidden />
         </motion.span>
       </div>
 
@@ -212,14 +217,14 @@ function TestRow({ test, expanded, onToggle }: { test: StudentTestResult; expand
             transition={{ duration: 0.18 }}
             style={{ overflow: 'hidden' }}
           >
-            <div style={{ padding: '4px 16px 16px', background: '#FAFAFA' }}>
-              <div style={{ display: 'flex', gap: 16, marginBottom: 10, fontSize: 12, color: '#6B7280', flexWrap: 'wrap' }}>
-                <span>Class avg: <strong style={{ color: '#374151' }}>{test.classAverage.toFixed(1)}</strong></span>
-                <span>Top 5 avg: <strong style={{ color: '#374151' }}>{test.top5Average.toFixed(1)}</strong></span>
-                <span>Highest: <strong style={{ color: '#374151' }}>{test.highest}</strong></span>
-                <span>Correct: <strong style={{ color: '#047857' }}>{test.totalCorrect}</strong></span>
-                <span>Wrong: <strong style={{ color: '#B91C1C' }}>{test.totalWrong}</strong></span>
-                <span>Unattempted: <strong style={{ color: '#9CA3AF' }}>{test.totalUnattempted}</strong></span>
+            <div style={{ padding: '4px 16px 16px', background: SURFACE_ALT }}>
+              <div style={{ display: 'flex', gap: 16, marginBottom: 10, fontSize: T_SM, color: MUTED, flexWrap: 'wrap' }}>
+                <span>Class avg: <strong style={{ color: INK_SOFT }}>{test.classAverage.toFixed(1)}</strong></span>
+                <span>Top 5 avg: <strong style={{ color: INK_SOFT }}>{test.top5Average.toFixed(1)}</strong></span>
+                <span>Highest: <strong style={{ color: INK_SOFT }}>{test.highest}</strong></span>
+                <span>Correct: <strong style={{ color: OK }}>{test.totalCorrect}</strong></span>
+                <span>Wrong: <strong style={{ color: RED_DARK }}>{test.totalWrong}</strong></span>
+                <span>Unattempted: <strong style={{ color: MUTED }}>{test.totalUnattempted}</strong></span>
               </div>
 
               {test.sections.length > 0 ? (
@@ -228,23 +233,23 @@ function TestRow({ test, expanded, onToggle }: { test: StudentTestResult; expand
                     <div key={i} style={{
                       display: 'grid', gridTemplateColumns: '1.5fr 90px 60px 1fr',
                       alignItems: 'center', gap: 8,
-                      padding: '8px 10px', background: '#FFFFFF', border: '1px solid #E5E7EB', borderRadius: 6,
+                      padding: '8px 10px', background: SURFACE, border: `1px solid ${BORDER}`, borderRadius: R_SM,
                     }}>
-                      <span style={{ fontSize: 12, fontWeight: 600, color: '#374151', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                      <span style={{ fontSize: T_SM, fontWeight: 600, color: INK_SOFT, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                         {s.title}
                       </span>
-                      <span style={{ fontSize: 12, color: '#6B7280' }}>{s.score}/{s.totalMarks}</span>
-                      <span style={{ fontSize: 12, fontWeight: 700, color: '#0F172A' }}>{Math.round(s.percentage)}%</span>
-                      <span style={{ fontSize: 11, color: '#9CA3AF' }}>
-                        <span style={{ color: '#047857' }}>{s.correct}✓</span>{' '}
-                        <span style={{ color: '#B91C1C' }}>{s.wrong}✗</span>{' '}
+                      <span style={{ fontSize: T_SM, color: MUTED }}>{s.score}/{s.totalMarks}</span>
+                      <span style={{ fontSize: T_SM, fontWeight: 700, color: SLATE }}>{Math.round(s.percentage)}%</span>
+                      <span style={{ fontSize: T_XS, color: MUTED }}>
+                        <span style={{ color: OK }}>{s.correct}✓</span>{' '}
+                        <span style={{ color: RED_DARK }}>{s.wrong}✗</span>{' '}
                         <span>{s.unattempted} skipped</span>
                       </span>
                     </div>
                   ))}
                 </div>
               ) : (
-                <p style={{ margin: 0, fontSize: 12, color: '#9CA3AF' }}>No section breakdown available.</p>
+                <p style={{ margin: 0, fontSize: T_SM, color: MUTED }}>No section breakdown available.</p>
               )}
             </div>
           </motion.div>
@@ -272,9 +277,9 @@ function TestsTab({ tests, weakSections }: { tests: StudentTestResult[]; weakSec
 
   if (tests.length === 0) {
     return (
-      <div style={{ background: '#FAFAFA', border: '1px dashed #E5E7EB', borderRadius: 10, padding: '40px 24px', textAlign: 'center' }}>
-        <ClipboardList size={22} style={{ color: '#D1D5DB', margin: '0 auto 8px' }} aria-hidden />
-        <p style={{ margin: 0, fontSize: 13, color: '#9CA3AF' }}>No tests taken yet.</p>
+      <div style={{ background: BG, border: `1px dashed ${BORDER}`, borderRadius: R_LG, padding: '40px 24px', textAlign: 'center' }}>
+        <ClipboardList size={22} style={{ color: MUTED, margin: '0 auto 8px' }} aria-hidden />
+        <p style={{ margin: 0, fontSize: T_BASE, color: MUTED }}>No tests taken yet.</p>
       </div>
     );
   }
@@ -284,19 +289,19 @@ function TestsTab({ tests, weakSections }: { tests: StudentTestResult[]; weakSec
       <ChartCard title="Test Performance Over Time" sub="Percentage per attempt" minHeight={200}>
         <ResponsiveContainer width="100%" height={200}>
           <LineChart data={chronological} margin={{ top: 4, right: 8, bottom: 0, left: -16 }}>
-            <CartesianGrid strokeDasharray="3 3" stroke="#F3F4F6" />
-            <XAxis dataKey="date" tick={{ fontSize: 11, fill: '#9CA3AF' }} tickLine={false} axisLine={false} />
-            <YAxis tick={{ fontSize: 11, fill: '#9CA3AF' }} tickLine={false} axisLine={false} domain={[0, 100]} />
-            <Tooltip contentStyle={{ background: '#FFFFFF', border: '1px solid #E5E7EB', borderRadius: '8px', fontSize: '12px' }} />
-            <Line type="monotone" dataKey="percentage" name="Score %" stroke="#D62B38" strokeWidth={2} dot={{ r: 3, fill: '#D62B38' }} activeDot={{ r: 5, fill: '#D62B38' }} />
+            <CartesianGrid strokeDasharray="3 3" stroke={BORDER} />
+            <XAxis dataKey="date" tick={{ fontSize: T_XS, fill: MUTED }} tickLine={false} axisLine={false} />
+            <YAxis tick={{ fontSize: T_XS, fill: MUTED }} tickLine={false} axisLine={false} domain={[0, 100]} />
+            <Tooltip contentStyle={{ background: SURFACE, border: `1px solid ${BORDER}`, borderRadius: R_MD, fontSize: T_SM }} />
+            <Line type="monotone" dataKey="percentage" name="Score %" stroke={RED} strokeWidth={2} dot={{ r: 3, fill: RED }} activeDot={{ r: 5, fill: RED_HOVER }} />
           </LineChart>
         </ResponsiveContainer>
       </ChartCard>
 
-      <div style={{ background: '#FFFFFF', border: '1px solid #E5E7EB', borderRadius: 10, overflow: 'hidden' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: '2fr 90px 100px 70px 110px 32px', padding: '10px 16px', background: '#FAFAFA', borderBottom: '1px solid #F3F4F6' }}>
+      <div style={{ background: SURFACE, border: `1px solid ${BORDER}`, borderRadius: R_LG, overflow: 'hidden' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: '2fr 90px 100px 70px 110px 32px', padding: '10px 16px', background: SURFACE_ALT, borderBottom: `1px solid ${BORDER}` }}>
           {['Test', 'Date', 'Score', '%', 'Rank', ''].map(h => (
-            <span key={h} style={{ fontSize: 11, fontWeight: 600, color: '#9CA3AF', letterSpacing: '0.06em', textTransform: 'uppercase' }}>{h}</span>
+            <span key={h} style={{ fontSize: T_XS, fontWeight: 600, color: MUTED, letterSpacing: '0.06em', textTransform: 'uppercase' }}>{h}</span>
           ))}
         </div>
         {tests.map(t => (
@@ -311,7 +316,7 @@ function TestsTab({ tests, weakSections }: { tests: StudentTestResult[]; weakSec
 
       {weakItems.length > 0 && (
         <ChartCard title="Weakest Areas" sub="Lowest accuracy sections across all tests">
-          <BarList items={weakItems} max={100} valueFormat={v => `${v}%`} accent="#EF4444" />
+          <BarList items={weakItems} max={100} valueFormat={v => `${v}%`} accent={RED} />
         </ChartCard>
       )}
     </div>
@@ -323,9 +328,9 @@ function TestsTab({ tests, weakSections }: { tests: StudentTestResult[]; weakSec
 function AttendanceTab({ attendance }: { attendance: StudentDetailResponse['attendance'] }) {
   if (attendance.total === 0) {
     return (
-      <div style={{ background: '#FAFAFA', border: '1px dashed #E5E7EB', borderRadius: 10, padding: '40px 24px', textAlign: 'center' }}>
-        <CalendarCheck size={22} style={{ color: '#D1D5DB', margin: '0 auto 8px' }} aria-hidden />
-        <p style={{ margin: 0, fontSize: 13, color: '#9CA3AF' }}>No attendance sessions recorded yet.</p>
+      <div style={{ background: BG, border: `1px dashed ${BORDER}`, borderRadius: R_LG, padding: '40px 24px', textAlign: 'center' }}>
+        <CalendarCheck size={22} style={{ color: MUTED, margin: '0 auto 8px' }} aria-hidden />
+        <p style={{ margin: 0, fontSize: T_BASE, color: MUTED }}>No attendance sessions recorded yet.</p>
       </div>
     );
   }
@@ -338,11 +343,11 @@ function AttendanceTab({ attendance }: { attendance: StudentDetailResponse['atte
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-      <div style={{ background: '#FFFFFF', border: '1px solid #E5E7EB', borderRadius: 10, padding: 20, display: 'flex', alignItems: 'center', gap: 20 }}>
+      <div style={{ background: SURFACE, border: `1px solid ${BORDER}`, borderRadius: R_LG, padding: 20, display: 'flex', alignItems: 'center', gap: 20 }}>
         <AttendanceRing percent={attendance.overallPercent} />
         <div>
-          <p style={{ margin: '0 0 4px', fontSize: 13, fontWeight: 600, color: '#0F172A' }}>Overall Attendance</p>
-          <p style={{ margin: 0, fontSize: 12, color: '#9CA3AF' }}>
+          <p style={{ margin: '0 0 4px', fontSize: T_BASE, fontWeight: 600, color: SLATE }}>Overall Attendance</p>
+          <p style={{ margin: 0, fontSize: T_SM, color: MUTED }}>
             {attendance.attended} attended of {attendance.total} sessions
           </p>
         </div>
@@ -359,22 +364,22 @@ function AttendanceTab({ attendance }: { attendance: StudentDetailResponse['atte
           {attendance.recent.map(s => (
             <div key={s.sessionId} style={{
               display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 10,
-              padding: '9px 12px', background: '#FAFAFA', border: '1px solid #E5E7EB', borderRadius: 7,
+              padding: '9px 12px', background: SURFACE_ALT, border: `1px solid ${BORDER}`, borderRadius: 7,
             }}>
               <div style={{ minWidth: 0, display: 'flex', alignItems: 'center', gap: 8 }}>
                 {s.attended
-                  ? <CheckCircle2 size={15} style={{ color: '#10B981', flexShrink: 0 }} aria-hidden />
-                  : <XCircle size={15} style={{ color: '#EF4444', flexShrink: 0 }} aria-hidden />}
+                  ? <CheckCircle2 size={15} style={{ color: OK, flexShrink: 0 }} aria-hidden />
+                  : <XCircle size={15} style={{ color: RED, flexShrink: 0 }} aria-hidden />}
                 <div style={{ minWidth: 0 }}>
-                  <p style={{ margin: 0, fontSize: 12, fontWeight: 600, color: '#374151', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                  <p style={{ margin: 0, fontSize: T_SM, fontWeight: 600, color: INK_SOFT, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                     {s.title}
                   </p>
-                  <p style={{ margin: 0, fontSize: 11, color: '#9CA3AF' }}>{s.subject}</p>
+                  <p style={{ margin: 0, fontSize: T_XS, color: MUTED }}>{s.subject}</p>
                 </div>
               </div>
               <div style={{ textAlign: 'right', flexShrink: 0 }}>
-                <p style={{ margin: 0, fontSize: 11, color: '#6B7280' }}>{formatShortDate(s.scheduledAt)}</p>
-                {s.attended && s.mode && <p style={{ margin: 0, fontSize: 10, color: '#9CA3AF' }}>{s.mode}</p>}
+                <p style={{ margin: 0, fontSize: T_XS, color: MUTED }}>{formatShortDate(s.scheduledAt)}</p>
+                {s.attended && s.mode && <p style={{ margin: 0, fontSize: 10, color: MUTED }}>{s.mode}</p>}
               </div>
             </div>
           ))}
@@ -389,9 +394,9 @@ function AttendanceTab({ attendance }: { attendance: StudentDetailResponse['atte
 function LexicoreTab({ lexicore }: { lexicore: StudentDetailResponse['lexicore'] }) {
   if (!lexicore.hasProgress) {
     return (
-      <div style={{ background: '#FAFAFA', border: '1px dashed #E5E7EB', borderRadius: 10, padding: '40px 24px', textAlign: 'center' }}>
-        <Sparkles size={22} style={{ color: '#D1D5DB', margin: '0 auto 8px' }} aria-hidden />
-        <p style={{ margin: 0, fontSize: 13, color: '#9CA3AF' }}>Hasn&apos;t started LexiCore yet.</p>
+      <div style={{ background: BG, border: `1px dashed ${BORDER}`, borderRadius: R_LG, padding: '40px 24px', textAlign: 'center' }}>
+        <Sparkles size={22} style={{ color: MUTED, margin: '0 auto 8px' }} aria-hidden />
+        <p style={{ margin: 0, fontSize: T_BASE, color: MUTED }}>Hasn&apos;t started LexiCore yet.</p>
       </div>
     );
   }
@@ -400,7 +405,7 @@ function LexicoreTab({ lexicore }: { lexicore: StudentDetailResponse['lexicore']
     <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
       <StatCard label="Total LexiCore Points" value={fmtNum(lexicore.totalPoints)} accent />
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: 12 }}>
+      <div className="student-stat-band" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', border: `1px solid ${BORDER}`, borderRadius: R_LG, overflow: 'hidden' }}>
         <StatCard label="Quiz Points"        value={fmtNum(lexicore.quizPoints)} />
         <StatCard label="Word Points"        value={fmtNum(lexicore.wordPoints)} />
         <StatCard label="Quizzes Completed"  value={fmtNum(lexicore.quizzesCompleted)} />
@@ -427,10 +432,16 @@ export default function StudentDetailClient({ detail }: StudentDetailClientProps
 
   return (
     <div style={{ maxWidth: 1040, margin: '0 auto' }}>
+      <style>{`
+        .student-stat-band > div { border: 0 !important; border-radius: 0 !important; }
+        .student-stat-band > div + div { border-left: 1px solid ${BORDER} !important; }
+        .student-stat-band > div > span:first-child { color: ${MUTED} !important; font-size: ${T_SM}px !important; }
+        .student-stat-band > div > span:nth-child(2) { color: ${INK_SOFT} !important; font-size: ${T_2XL}px !important; }
+      `}</style>
 
       {/* Back link */}
       <Link href="/admin/students" style={{ textDecoration: 'none' }}>
-        <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6, fontSize: 13, color: '#6B7280', fontWeight: 500, marginBottom: 16 }}>
+        <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6, fontSize: T_BASE, color: MUTED, fontWeight: 500, marginBottom: 16 }}>
           <ArrowLeft size={14} aria-hidden /> Back to Students
         </span>
       </Link>
@@ -446,13 +457,13 @@ export default function StudentDetailClient({ detail }: StudentDetailClientProps
           gap:          16,
           marginBottom: 24,
           paddingBottom: 24,
-          borderBottom: '1px solid #F3F4F6',
+          borderBottom: `1px solid ${BORDER}`,
           flexWrap:     'wrap',
         }}
       >
         <div style={{
           width: 56, height: 56, borderRadius: '50%',
-          background: '#D62B38', color: '#FFFFFF',
+          background: RED, color: SURFACE,
           fontSize: 18, fontWeight: 700,
           display: 'flex', alignItems: 'center', justifyContent: 'center',
           flexShrink: 0, letterSpacing: '0.04em',
@@ -460,15 +471,15 @@ export default function StudentDetailClient({ detail }: StudentDetailClientProps
           {getInitials(profile.name || 'S')}
         </div>
         <div style={{ minWidth: 0, flex: 1 }}>
-          <h1 style={{ margin: 0, fontSize: 20, fontWeight: 700, color: '#0F172A', letterSpacing: '-0.03em' }}>
+          <h1 style={{ margin: 0, fontFamily: FONT_HEADING, fontSize: T_XL, fontWeight: 700, color: SLATE, letterSpacing: '-0.03em' }}>
             {profile.name}
           </h1>
-          <p style={{ margin: '2px 0 8px', fontSize: 13, color: '#6B7280' }}>{profile.email}</p>
+          <p style={{ margin: '2px 0 8px', fontSize: T_BASE, color: MUTED }}>{profile.email}</p>
           <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap', alignItems: 'center' }}>
             {profile.studentId && <Chip label={profile.studentId} tone="brand" />}
             {profile.batch && <Chip label={profile.batch} />}
             {profile.products.map(p => <Chip key={p} label={p.toUpperCase()} />)}
-            <span style={{ display: 'inline-flex', alignItems: 'center', gap: 4, fontSize: 11, color: '#9CA3AF' }}>
+            <span style={{ display: 'inline-flex', alignItems: 'center', gap: 4, fontSize: T_XS, color: MUTED }}>
               <Calendar size={11} aria-hidden /> Joined {formatDate(profile.joinedAt)}
             </span>
           </div>
@@ -480,13 +491,13 @@ export default function StudentDetailClient({ detail }: StudentDetailClientProps
       {detail.atRisk?.atRisk && (
         <div style={{
           display: 'flex', alignItems: 'flex-start', gap: 10,
-          background: '#FEF2F2', border: '1px solid #FECACA', borderRadius: 10,
+          background: WARN_BG, border: `1px solid ${WARN}40`, borderRadius: R_LG,
           padding: '12px 16px', marginBottom: 24,
         }}>
-          <AlertTriangle size={16} style={{ color: '#B91C1C', flexShrink: 0, marginTop: 1 }} aria-hidden />
+          <AlertTriangle size={16} style={{ color: WARN, flexShrink: 0, marginTop: 1 }} aria-hidden />
           <div>
-            <p style={{ margin: '0 0 4px', fontSize: 13, fontWeight: 700, color: '#B91C1C' }}>At risk</p>
-            <ul style={{ margin: 0, paddingLeft: 16, fontSize: 12, color: '#7F1D1D' }}>
+            <p style={{ margin: '0 0 4px', fontSize: T_BASE, fontWeight: 700, color: WARN }}>At risk</p>
+            <ul style={{ margin: 0, paddingLeft: 16, fontSize: T_SM, color: INK_SOFT }}>
               {detail.atRisk.reasons.map(r => <li key={r.code}>{r.message}</li>)}
             </ul>
           </div>
@@ -497,9 +508,11 @@ export default function StudentDetailClient({ detail }: StudentDetailClientProps
       <div style={{
         display: 'grid',
         gridTemplateColumns: 'repeat(auto-fill, minmax(140px, 1fr))',
-        gap: 12,
+        border: `1px solid ${BORDER}`,
+        borderRadius: R_LG,
+        overflow: 'hidden',
         marginBottom: 28,
-      }}>
+      }} className="student-stat-band">
         <StatCard label="Attendance"    value={fmtPct(overview.attendancePercent, 0)} sub={`${overview.attendedSessions}/${overview.totalSessions} sessions`} />
         <StatCard label="Tests Taken"   value={fmtNum(overview.testsTaken)} />
         <StatCard label="Avg Test %"    value={fmtPct(overview.avgTestPercentage, 0)} accent />
@@ -533,8 +546,8 @@ export default function StudentDetailClient({ detail }: StudentDetailClientProps
             detail.metrics
               ? <StudentMetricsPanel metrics={detail.metrics} lexicore={lexicore} />
               : (
-                <div style={{ background: '#FAFAFA', border: '1px dashed #E5E7EB', borderRadius: 10, padding: '40px 24px', textAlign: 'center' }}>
-                  <p style={{ margin: 0, fontSize: 13, color: '#9CA3AF' }}>Metrics unavailable.</p>
+                <div style={{ background: BG, border: `1px dashed ${BORDER}`, borderRadius: R_LG, padding: '40px 24px', textAlign: 'center' }}>
+                  <p style={{ margin: 0, fontSize: T_BASE, color: MUTED }}>Metrics unavailable.</p>
                 </div>
               )
           )}

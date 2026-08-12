@@ -37,6 +37,11 @@ import {
   UserCheck,
   AlertTriangle,
 } from 'lucide-react';
+import {
+  RED, RED_DARK, SLATE, BORDER, MUTED, SURFACE, SURFACE_SHELL, INK_SOFT,
+  BEIGE, WARN, WARN_BG, T_XS, T_SM, T_BASE, T_MD, T_XL, T_2XL, R_MD, R_LG,
+  FONT_HEADING,
+} from '@/components/admin/lms/tokens';
 
 export const metadata = { title: 'Overview — VH Admin' };
 export const dynamic = 'force-dynamic';
@@ -224,9 +229,6 @@ interface StatCard {
   value:    number;
   icon:     React.ElementType;
   href:     string;
-  color:    string;
-  bgColor:  string;
-  borderColor: string;
 }
 
 // ─── Quick link data ──────────────────────────────────────────────────────────
@@ -282,7 +284,7 @@ async function AtRiskSection() {
     <section aria-labelledby="admin-at-risk-heading" style={{ marginBottom: 28 }}>
       <h2
         id="admin-at-risk-heading"
-        style={{ display: 'flex', alignItems: 'center', gap: 6, margin: '0 0 10px', fontSize: 14, color: '#B91C1C' }}
+        style={{ display: 'flex', alignItems: 'center', gap: 6, margin: '0 0 10px', fontSize: T_MD, color: WARN }}
       >
         <AlertTriangle size={15} aria-hidden /> At-risk students ({atRiskStudents.length})
       </h2>
@@ -291,16 +293,17 @@ async function AtRiskSection() {
           <Link
             key={s.id}
             href={`/admin/students/${s.id}`}
+            className="vh-atrisk-row"
             style={{
               display: 'block', textDecoration: 'none',
-              border: '1px solid #FECACA', borderRadius: 10,
-              background: '#FEF2F2', padding: '10px 14px',
+              border: `1px solid ${WARN}4D`, borderRadius: R_MD,
+              background: WARN_BG, padding: '10px 14px',
             }}
           >
-            <p style={{ margin: '0 0 4px', fontSize: 13, fontWeight: 700, color: '#0F172A' }}>
+            <p style={{ margin: '0 0 4px', fontSize: T_BASE, fontWeight: 700, color: INK_SOFT }}>
               {s.name}{s.batch ? ` · ${s.batch}` : ''}
             </p>
-            <ul style={{ margin: 0, paddingLeft: 16, fontSize: 12, color: '#7F1D1D' }}>
+            <ul style={{ margin: 0, paddingLeft: 16, fontSize: T_SM, color: WARN }}>
               {s.reasons.map(r => <li key={r.code}>{r.message}</li>)}
             </ul>
           </Link>
@@ -331,42 +334,10 @@ export default async function AdminOverviewPage() {
   const timeLabel = formatDhaka(now, 'time');
 
   const statCards: StatCard[] = [
-    {
-      label:       'Active Students',
-      value:       stats.activeStudents,
-      icon:        Users,
-      href:        '/admin/users',
-      color:       '#2563EB',
-      bgColor:     '#EFF6FF',
-      borderColor: '#BFDBFE',
-    },
-    {
-      label:       "Today's Classes",
-      value:       stats.todayClasses,
-      icon:        CalendarDays,
-      href:        '/admin/today',
-      color:       '#059669',
-      bgColor:     '#ECFDF5',
-      borderColor: '#A7F3D0',
-    },
-    {
-      label:       'Pending Requests',
-      value:       stats.pendingRequests,
-      icon:        CalendarClock,
-      href:        '/admin/bookings',
-      color:       '#D97706',
-      bgColor:     '#FFFBEB',
-      borderColor: '#FDE68A',
-    },
-    {
-      label:       'Pending Registrations',
-      value:       stats.pendingRegs,
-      icon:        UserCheck,
-      href:        '/admin/registrations',
-      color:       '#7C3AED',
-      bgColor:     '#F5F3FF',
-      borderColor: '#DDD6FE',
-    },
+    { label: 'Active Students',       value: stats.activeStudents,  icon: Users,         href: '/admin/users' },
+    { label: "Today's Classes",       value: stats.todayClasses,    icon: CalendarDays,  href: '/admin/today' },
+    { label: 'Pending Requests',      value: stats.pendingRequests, icon: CalendarClock, href: '/admin/bookings' },
+    { label: 'Pending Registrations', value: stats.pendingRegs,     icon: UserCheck,     href: '/admin/registrations' },
   ];
 
   // Group quick links by section
@@ -378,29 +349,44 @@ export default async function AdminOverviewPage() {
       {/* Hover styles — this is a Server Component, so interactivity must be pure
           CSS (event handlers can't be passed to client props from the server). */}
       <style>{`
-        .vh-stat-card { transition: box-shadow 0.15s, transform 0.15s; }
-        .vh-stat-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.08); transform: translateY(-1px); }
+        .vh-stat-band { grid-template-columns: repeat(2, 1fr); }
+        .vh-stat-band .vh-stat-col:nth-child(n+3) { border-top: 1px solid ${BORDER}; }
+        .vh-stat-band .vh-stat-col:nth-child(2n) { border-left: 1px solid ${BORDER}; }
+        @media (min-width: 640px) {
+          .vh-stat-band { grid-template-columns: repeat(4, 1fr); }
+          .vh-stat-band .vh-stat-col:nth-child(n+3) { border-top: none; }
+          .vh-stat-band .vh-stat-col:nth-child(2n) { border-left: none; }
+          .vh-stat-band .vh-stat-col:not(:first-child) { border-left: 1px solid ${BORDER}; }
+        }
+        .vh-stat-col { transition: background-color 0.15s; }
+        .vh-stat-col:hover { background-color: ${SURFACE_SHELL}; }
         .vh-primary-action { transition: transform 0.15s, background-color 0.15s, border-color 0.15s; }
-        .vh-primary-action:hover { transform: translateY(-1px); border-color: #C9A88E !important; }
+        .vh-primary-action:hover { transform: translateY(-1px); border-color: ${BEIGE} !important; }
         .vh-quick-card { transition: background-color 0.12s; }
-        .vh-quick-card:hover { background-color: #F9FAFB; }
+        .vh-quick-card:hover { background-color: ${SURFACE_SHELL}; }
+        .vh-atrisk-row { transition: border-color 0.12s; }
+        .vh-atrisk-row:hover { border-color: ${WARN}; }
+        @media (prefers-reduced-motion: reduce) {
+          .vh-stat-col, .vh-primary-action, .vh-quick-card, .vh-atrisk-row { transition-duration: .01ms; }
+        }
       `}</style>
 
       {/* ── Greeting ────────────────────────────────────────────────────────── */}
       <div style={{ marginBottom: 28 }}>
         <h1
           style={{
-            fontSize:      22,
-            fontWeight:    700,
-            color:         '#0F172A',
-            letterSpacing: '-0.03em',
+            fontFamily:    FONT_HEADING,
+            fontSize:      T_XL,
+            fontWeight:    500,
+            color:         SLATE,
+            letterSpacing: '-0.02em',
             margin:        0,
             lineHeight:    1.2,
           }}
         >
           Good to see you, {adminName.split(' ')[0]}.
         </h1>
-        <p style={{ margin: '4px 0 0', fontSize: 13, color: '#9CA3AF' }}>
+        <p style={{ margin: '4px 0 0', fontSize: T_BASE, color: MUTED }}>
           {dateLabel} · {timeLabel} (Asia/Dhaka)
         </p>
       </div>
@@ -416,7 +402,7 @@ export default async function AdminOverviewPage() {
       </Suspense>
 
       <section aria-labelledby="admin-start-heading" style={{ marginBottom: 28 }}>
-        <h2 id="admin-start-heading" style={{ margin: '0 0 10px', fontSize: 14, color: '#111827' }}>What do you need to do?</h2>
+        <h2 id="admin-start-heading" style={{ margin: '0 0 10px', fontSize: T_MD, color: INK_SOFT }}>What do you need to do?</h2>
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
           {PRIMARY_ACTIONS.map(action => {
             const Icon = action.icon;
@@ -425,7 +411,7 @@ export default async function AdminOverviewPage() {
                 key={action.href}
                 href={action.href}
                 className="vh-primary-action"
-                style={{ minHeight: 44, display: 'inline-flex', alignItems: 'center', gap: 8, padding: '10px 14px', borderRadius: 10, border: action.primary ? '1px solid #760F13' : '1px solid #E1D4CB', background: action.primary ? '#760F13' : '#FFFFFF', color: action.primary ? '#FFFFFF' : '#5A0B0F', textDecoration: 'none', fontSize: 13, fontWeight: 650 }}
+                style={{ minHeight: 44, display: 'inline-flex', alignItems: 'center', gap: 8, padding: '10px 14px', borderRadius: R_LG, border: action.primary ? `1px solid ${RED}` : `1px solid ${BORDER}`, background: action.primary ? RED : SURFACE, color: action.primary ? SURFACE : RED_DARK, textDecoration: 'none', fontSize: T_BASE, fontWeight: 650 }}
               >
                 <Icon size={16} aria-hidden />
                 {action.label}
@@ -435,13 +421,18 @@ export default async function AdminOverviewPage() {
         </div>
       </section>
 
-      {/* ── Stat cards ──────────────────────────────────────────────────────── */}
+      {/* ── Stat band ───────────────────────────────────────────────────────── */}
+      {/* One bordered-column row rather than four separately-colored cards — these
+          are all just counts to check, not distinct semantic categories, so a
+          rainbow per card was noise rather than signal. */}
       <div
+        className="vh-stat-band"
         style={{
-          display:             'grid',
-          gridTemplateColumns: 'repeat(auto-fill, minmax(188px, 1fr))',
-          gap:                 12,
-          marginBottom:        32,
+          display:      'grid',
+          border:       `1px solid ${BORDER}`,
+          borderRadius: R_LG,
+          overflow:     'hidden',
+          marginBottom: 32,
         }}
       >
         {statCards.map((card) => {
@@ -450,63 +441,23 @@ export default async function AdminOverviewPage() {
             <Link
               key={card.label}
               href={card.href}
-              style={{ textDecoration: 'none' }}
+              className="vh-stat-col"
+              style={{
+                textDecoration: 'none',
+                display:      'block',
+                padding:      '16px 18px',
+                background:   SURFACE,
+              }}
             >
-              <div
-                className="vh-stat-card"
-                style={{
-                  border:       `1px solid ${card.borderColor}`,
-                  borderRadius: 14,
-                  padding:      '16px 18px',
-                  background:   card.bgColor,
-                  display:      'flex',
-                  flexDirection:'column',
-                  gap:          10,
-                  cursor:       'pointer',
-                }}
-              >
-                <div
-                  style={{
-                    width:          36,
-                    height:         36,
-                    borderRadius:   10,
-                    background:     '#FFFFFF',
-                    border:         `1px solid ${card.borderColor}`,
-                    display:        'flex',
-                    alignItems:     'center',
-                    justifyContent: 'center',
-                    flexShrink:     0,
-                  }}
-                >
-                  <Icon size={17} style={{ color: card.color }} aria-hidden />
-                </div>
-
-                <div>
-                  <p
-                    style={{
-                      margin:     0,
-                      fontSize:   26,
-                      fontWeight: 700,
-                      color:      card.color,
-                      lineHeight: 1,
-                      letterSpacing: '-0.03em',
-                    }}
-                  >
-                    {card.value}
-                  </p>
-                  <p
-                    style={{
-                      margin:     '3px 0 0',
-                      fontSize:   11,
-                      fontWeight: 500,
-                      color:      '#6B7280',
-                      lineHeight: 1.3,
-                    }}
-                  >
-                    {card.label}
-                  </p>
-                </div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 7, marginBottom: 8 }}>
+                <Icon size={14} style={{ color: MUTED }} aria-hidden />
+                <span style={{ fontSize: T_XS, fontWeight: 600, color: MUTED, letterSpacing: '0.02em' }}>
+                  {card.label}
+                </span>
               </div>
+              <p style={{ margin: 0, fontSize: T_2XL, fontWeight: 700, color: INK_SOFT, lineHeight: 1, letterSpacing: '-0.02em' }}>
+                {card.value}
+              </p>
             </Link>
           );
         })}
@@ -518,24 +469,24 @@ export default async function AdminOverviewPage() {
           <p
             style={{
               margin:        '0 0 10px',
-              fontSize:      10,
+              fontSize:      T_XS,
               fontWeight:    600,
-              color:         '#9CA3AF',
+              color:         MUTED,
               letterSpacing: '0.1em',
               textTransform: 'uppercase',
             }}
           >
             Instructor load
           </p>
-          <div style={{ border: '1px solid #E5E7EB', borderRadius: 14, overflow: 'hidden' }}>
-            <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 13 }}>
+          <div style={{ border: `1px solid ${BORDER}`, borderRadius: R_LG, overflow: 'hidden' }}>
+            <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: T_BASE }}>
               <thead>
-                <tr style={{ background: '#F9FAFB' }}>
-                  <th style={{ textAlign: 'left', padding: '10px 14px', fontSize: 11, fontWeight: 600, color: '#6B7280' }}>
+                <tr style={{ background: SURFACE_SHELL }}>
+                  <th style={{ textAlign: 'left', padding: '10px 14px', fontSize: T_XS, fontWeight: 600, color: MUTED }}>
                     Instructor
                   </th>
                   {instructorLoad.monthLabels.map((label) => (
-                    <th key={label} style={{ textAlign: 'right', padding: '10px 14px', fontSize: 11, fontWeight: 600, color: '#6B7280' }}>
+                    <th key={label} style={{ textAlign: 'right', padding: '10px 14px', fontSize: T_XS, fontWeight: 600, color: MUTED }}>
                       {label}
                     </th>
                   ))}
@@ -543,10 +494,10 @@ export default async function AdminOverviewPage() {
               </thead>
               <tbody>
                 {instructorLoad.instructors.map((ins, i) => (
-                  <tr key={ins.id} style={{ borderTop: i === 0 ? 'none' : '1px solid #F3F4F6' }}>
-                    <td style={{ padding: '10px 14px', color: '#111827', fontWeight: 500 }}>{ins.name}</td>
+                  <tr key={ins.id} style={{ borderTop: i === 0 ? 'none' : `1px solid ${BORDER}` }}>
+                    <td style={{ padding: '10px 14px', color: INK_SOFT, fontWeight: 500 }}>{ins.name}</td>
                     {ins.counts.map((c, j) => (
-                      <td key={j} style={{ padding: '10px 14px', textAlign: 'right', color: c === 0 ? '#D1D5DB' : '#111827', fontVariantNumeric: 'tabular-nums' }}>
+                      <td key={j} style={{ padding: '10px 14px', textAlign: 'right', color: c === 0 ? BORDER : INK_SOFT, fontVariantNumeric: 'tabular-nums' }}>
                         {c === 0 ? '—' : c}
                       </td>
                     ))}
@@ -568,9 +519,9 @@ export default async function AdminOverviewPage() {
               <p
                 style={{
                   margin:        '0 0 10px',
-                  fontSize:      10,
+                  fontSize:      T_XS,
                   fontWeight:    600,
-                  color:         '#9CA3AF',
+                  color:         MUTED,
                   letterSpacing: '0.1em',
                   textTransform: 'uppercase',
                 }}
@@ -597,7 +548,7 @@ export default async function AdminOverviewPage() {
                       <div
                         className="vh-quick-card"
                         style={{
-                          borderBottom: '1px solid #E5E7EB',
+                          borderBottom: `1px solid ${BORDER}`,
                           padding:      '12px 4px',
                           background:   'transparent',
                           display:      'flex',
@@ -610,7 +561,7 @@ export default async function AdminOverviewPage() {
                           style={{
                             width:          32,
                             height:         32,
-                            borderRadius:   8,
+                            borderRadius:   R_MD,
                             background:     'transparent',
                             display:        'flex',
                             alignItems:     'center',
@@ -618,16 +569,16 @@ export default async function AdminOverviewPage() {
                             flexShrink:     0,
                           }}
                         >
-                          <Icon size={15} style={{ color: '#374151' }} aria-hidden />
+                          <Icon size={15} style={{ color: INK_SOFT }} aria-hidden />
                         </div>
 
                         <div style={{ minWidth: 0 }}>
                           <p
                             style={{
                               margin:       0,
-                              fontSize:     13,
+                              fontSize:     T_BASE,
                               fontWeight:   600,
-                              color:        '#111827',
+                              color:        INK_SOFT,
                               letterSpacing:'-0.01em',
                               whiteSpace:   'nowrap',
                               overflow:     'hidden',
@@ -639,8 +590,8 @@ export default async function AdminOverviewPage() {
                           <p
                             style={{
                               margin:       '1px 0 0',
-                              fontSize:     11,
-                              color:        '#9CA3AF',
+                              fontSize:     T_XS,
+                              color:        MUTED,
                               lineHeight:   1.3,
                               overflow:     'hidden',
                               textOverflow: 'ellipsis',

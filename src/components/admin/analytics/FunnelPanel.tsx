@@ -17,6 +17,10 @@ import {
 import ChartCard from './ChartCard';
 import BarList   from './BarList';
 import { fmtNum } from './formatters';
+import {
+  BEIGE, BORDER, INFO, INK_SOFT, MUTED, OK, RED, R_MD, SURFACE, SURFACE_ALT,
+  T_BASE, T_SM, T_XS, WARN,
+} from '../lms/lms-shared';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -53,7 +57,11 @@ interface FunnelPanelProps {
 
 // ─── Palette ──────────────────────────────────────────────────────────────────
 
-const PIE_COLORS = ['#D62B38', '#F87171', '#FBBF24', '#34D399', '#60A5FA', '#A78BFA'];
+// Registration-status categories aren't reliably status-ordered from the data
+// layer, so this is a qualitative (not semantic) palette — chosen for pairwise
+// contrast; INK_SOFT rather than MUTED as the 6th color since MUTED sits too
+// close to WARN in hue/lightness to read as a separate slice in a small legend.
+const PIE_COLORS = [RED, WARN, OK, INFO, BEIGE, INK_SOFT];
 
 // ─── Component ────────────────────────────────────────────────────────────────
 
@@ -111,16 +119,16 @@ export default function FunnelPanel({ data }: FunnelPanelProps) {
                     marginBottom:   '3px',
                   }}
                 >
-                  <span style={{ fontSize: '13px', color: '#374151', fontWeight: 500 }}>
+                  <span style={{ fontSize: T_BASE, color: INK_SOFT, fontWeight: 500 }}>
                     {step.stage}
                   </span>
                   <span style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                     {dropPct !== null && (
-                      <span style={{ fontSize: '11px', color: '#9CA3AF' }}>
+                      <span style={{ fontSize: T_XS, color: MUTED }}>
                         −{dropPct}% drop
                       </span>
                     )}
-                    <span style={{ fontSize: '13px', fontWeight: 700, color: '#111827' }}>
+                    <span style={{ fontSize: T_BASE, fontWeight: 700, color: INK_SOFT }}>
                       {fmtNum(step.count)}
                     </span>
                   </span>
@@ -128,7 +136,7 @@ export default function FunnelPanel({ data }: FunnelPanelProps) {
                 <div
                   style={{
                     height: '10px',
-                    background: '#F3F4F6',
+                    background: SURFACE_ALT,
                     borderRadius: '4px',
                     overflow: 'hidden',
                   }}
@@ -160,33 +168,33 @@ export default function FunnelPanel({ data }: FunnelPanelProps) {
       >
         <ResponsiveContainer width="100%" height={220}>
           <LineChart data={signupsOverTime} margin={{ top: 4, right: 8, bottom: 0, left: -16 }}>
-            <CartesianGrid strokeDasharray="3 3" stroke="#F3F4F6" />
+            <CartesianGrid strokeDasharray="3 3" stroke={SURFACE_ALT} />
             <XAxis
               dataKey="date"
-              tick={{ fontSize: 11, fill: '#9CA3AF' }}
+              tick={{ fontSize: T_XS, fill: MUTED }}
               tickLine={false}
               axisLine={false}
             />
             <YAxis
-              tick={{ fontSize: 11, fill: '#9CA3AF' }}
+              tick={{ fontSize: T_XS, fill: MUTED }}
               tickLine={false}
               axisLine={false}
               allowDecimals={false}
             />
             <Tooltip
               contentStyle={{
-                background: '#FFFFFF', border: '1px solid #E5E7EB',
-                borderRadius: '8px', fontSize: '12px',
+                background: SURFACE, border: `1px solid ${BORDER}`,
+                borderRadius: R_MD, fontSize: T_SM,
               }}
             />
             <Line
               type="monotone"
               dataKey="count"
               name="Signups"
-              stroke="#D62B38"
+              stroke={RED}
               strokeWidth={2}
               dot={false}
-              activeDot={{ r: 4, fill: '#D62B38' }}
+              activeDot={{ r: 4, fill: RED }}
             />
           </LineChart>
         </ResponsiveContainer>
@@ -219,11 +227,11 @@ export default function FunnelPanel({ data }: FunnelPanelProps) {
               </Pie>
               <Tooltip
                 contentStyle={{
-                  background: '#FFFFFF', border: '1px solid #E5E7EB',
-                  borderRadius: '8px', fontSize: '12px',
+                  background: SURFACE, border: `1px solid ${BORDER}`,
+                  borderRadius: R_MD, fontSize: T_SM,
                 }}
               />
-              <Legend iconType="circle" iconSize={10} wrapperStyle={{ fontSize: '12px' }} />
+              <Legend iconType="circle" iconSize={10} wrapperStyle={{ fontSize: T_SM, color: MUTED }} />
             </PieChart>
           </ResponsiveContainer>
         </ChartCard>
@@ -234,7 +242,7 @@ export default function FunnelPanel({ data }: FunnelPanelProps) {
           empty={registrationsByMode.length === 0}
           emptyNote="No registration mode data yet."
         >
-          <BarList items={regModeItems} valueFormat={v => fmtNum(v)} accent="#60A5FA" />
+          <BarList items={regModeItems} valueFormat={v => fmtNum(v)} accent={INFO} />
         </ChartCard>
       </div>
 
@@ -246,7 +254,7 @@ export default function FunnelPanel({ data }: FunnelPanelProps) {
           empty={upgradeInterest.length === 0}
           emptyNote="No upgrade requests yet."
         >
-          <BarList items={upgradeItems} valueFormat={v => fmtNum(v)} accent="#A78BFA" />
+          <BarList items={upgradeItems} valueFormat={v => fmtNum(v)} accent={MUTED} />
         </ChartCard>
 
         <ChartCard
@@ -255,7 +263,7 @@ export default function FunnelPanel({ data }: FunnelPanelProps) {
           empty={accessRequests.length === 0}
           emptyNote="No access requests yet."
         >
-          <BarList items={accessItems} valueFormat={v => fmtNum(v)} accent="#34D399" />
+          <BarList items={accessItems} valueFormat={v => fmtNum(v)} accent={OK} />
         </ChartCard>
       </div>
     </div>

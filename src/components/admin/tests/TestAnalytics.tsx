@@ -12,7 +12,26 @@
 
 import { useCallback, useEffect, useState } from 'react';
 import { Eye, ShieldAlert } from 'lucide-react';
-import { C, SANS, Spinner, SectionTitle } from './TestsAdminPage';
+import { SANS, Spinner, SectionTitle } from './TestsAdminPage';
+import {
+  BORDER,
+  FONT_HEADING,
+  INFO,
+  INK_SOFT,
+  MUTED,
+  RED,
+  R_LG,
+  R_MD,
+  SLATE,
+  SURFACE,
+  SURFACE_ALT,
+  SURFACE_SHELL,
+  T_2XL,
+  T_BASE,
+  T_SM,
+  T_XS,
+  WARN,
+} from '../lms/lms-shared';
 import type {
   TestAnalytics as TestAnalyticsData,
   ViolationStats,
@@ -61,7 +80,7 @@ export default function TestAnalytics({ testId }: Props) {
 
   if (loading && !data) {
     return (
-      <div style={{ padding: '20px 0', display: 'flex', alignItems: 'center', gap: 8, color: C.textSec, fontSize: 13, fontFamily: SANS }}>
+      <div style={{ padding: '20px 0', display: 'flex', alignItems: 'center', gap: 8, color: INK_SOFT, fontSize: T_BASE, fontFamily: SANS }}>
         <Spinner /> Loading analytics…
       </div>
     );
@@ -69,7 +88,7 @@ export default function TestAnalytics({ testId }: Props) {
 
   if (excluded) {
     return (
-      <p style={{ fontSize: 13, color: C.textMuted, fontFamily: SANS, margin: 0 }}>
+      <p style={{ fontSize: T_BASE, color: MUTED, fontFamily: SANS, margin: 0 }}>
         Analytics are not available for FBS diagnostic tests (excluded per spec).
       </p>
     );
@@ -77,7 +96,7 @@ export default function TestAnalytics({ testId }: Props) {
 
   if (errorMsg) {
     return (
-      <p style={{ fontSize: 13, color: C.danger, fontFamily: SANS, margin: 0 }}>{errorMsg}</p>
+      <p style={{ fontSize: T_BASE, color: RED, fontFamily: SANS, margin: 0 }}>{errorMsg}</p>
     );
   }
 
@@ -89,7 +108,7 @@ export default function TestAnalytics({ testId }: Props) {
     return (
       <div>
         <SectionTitle>Analytics</SectionTitle>
-        <p style={{ fontSize: 13, color: C.textMuted, fontFamily: SANS, margin: 0 }}>
+        <p style={{ fontSize: T_BASE, color: MUTED, fontFamily: SANS, margin: 0 }}>
           No one has attempted this test yet — {a.participation.eligible} student
           {a.participation.eligible !== 1 ? 's are' : ' is'} eligible.
         </p>
@@ -173,7 +192,7 @@ export default function TestAnalytics({ testId }: Props) {
       {a.questions.length > 0 && (
         <details>
           <summary style={{
-            fontSize: 12, fontWeight: 700, color: C.textSec, fontFamily: SANS,
+            fontSize: T_SM, fontWeight: 700, color: INK_SOFT, fontFamily: SANS,
             textTransform: 'uppercase', letterSpacing: '0.05em', cursor: 'pointer', marginBottom: 8,
           }}>
             Per-question accuracy (all {a.questions.length})
@@ -205,11 +224,11 @@ export default function TestAnalytics({ testId }: Props) {
         <div>
           <Label>Proctoring violations</Label>
           <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginTop: 8 }}>
-            <ShieldAlert size={14} style={{ color: C.warn }} />
-            <span style={{ fontSize: 13, color: C.text, fontFamily: SANS }}>
+            <ShieldAlert size={14} style={{ color: WARN }} />
+            <span style={{ fontSize: T_BASE, color: SLATE, fontFamily: SANS }}>
               {violations.totalCount} total
               {Object.entries(violations.byAction).map(([action, count]) => (
-                <span key={action} style={{ color: C.textSec }}> · {count} {action}</span>
+                <span key={action} style={{ color: INK_SOFT }}> · {count} {action}</span>
               ))}
             </span>
           </div>
@@ -223,26 +242,41 @@ export default function TestAnalytics({ testId }: Props) {
 
 function Grid({ children }: { children: React.ReactNode }) {
   return (
-    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))', gap: 10 }}>
+    <div className="tests-stat-band" style={{
+      display: 'grid', border: `1px solid ${BORDER}`, borderRadius: R_LG,
+      overflow: 'hidden',
+    }}>
       {children}
+      <style>{`
+        .tests-stat-band { grid-template-columns: repeat(2, 1fr); }
+        .tests-stat-band .tests-stat-col:nth-child(n+3) { border-top: 1px solid ${BORDER}; }
+        .tests-stat-band .tests-stat-col:nth-child(2n) { border-left: 1px solid ${BORDER}; }
+        @media (min-width: 760px) {
+          .tests-stat-band { grid-template-columns: repeat(4, 1fr); }
+          .tests-stat-band .tests-stat-col:nth-child(n+3) { border-top: none; }
+          .tests-stat-band .tests-stat-col:nth-child(2n) { border-left: none; }
+          .tests-stat-band .tests-stat-col:not(:first-child) { border-left: 1px solid ${BORDER}; }
+          .tests-stat-band .tests-stat-col:nth-child(n+5) { border-top: 1px solid ${BORDER}; }
+          .tests-stat-band .tests-stat-col:nth-child(5) { border-left: none; }
+        }
+      `}</style>
     </div>
   );
 }
 
 function Stat({ label, value, sub }: { label: string; value: string; sub?: string }) {
   return (
-    <div style={{
-      background: C.surface, border: `1px solid ${C.border}`, borderRadius: 8,
-      padding: '10px 12px',
+    <div className="tests-stat-col" style={{
+      background: SURFACE, padding: '16px 18px',
     }}>
-      <div style={{ fontSize: 11, color: C.textMuted, fontFamily: SANS, textTransform: 'uppercase', letterSpacing: '0.04em' }}>
+      <div style={{ fontSize: T_XS, color: MUTED, fontFamily: SANS, textTransform: 'uppercase', letterSpacing: '0.04em' }}>
         {label}
       </div>
-      <div style={{ fontSize: 18, fontWeight: 700, color: C.text, fontFamily: SANS, marginTop: 2 }}>
+      <div style={{ fontSize: T_2XL, fontWeight: 700, color: INK_SOFT, fontFamily: FONT_HEADING, lineHeight: 1, letterSpacing: '-0.02em', marginTop: 8 }}>
         {value}
       </div>
       {sub && (
-        <div style={{ fontSize: 11, color: C.textSec, fontFamily: SANS, marginTop: 2 }}>{sub}</div>
+        <div style={{ fontSize: T_XS, color: INK_SOFT, fontFamily: SANS, marginTop: 5 }}>{sub}</div>
       )}
     </div>
   );
@@ -251,7 +285,7 @@ function Stat({ label, value, sub }: { label: string; value: string; sub?: strin
 function Label({ children }: { children: React.ReactNode }) {
   return (
     <p style={{
-      margin: 0, fontSize: 12, fontWeight: 700, color: C.textSec, fontFamily: SANS,
+      margin: 0, fontSize: T_SM, fontWeight: 700, color: INK_SOFT, fontFamily: FONT_HEADING,
       textTransform: 'uppercase', letterSpacing: '0.05em',
     }}>
       {children}
@@ -263,11 +297,11 @@ function DistributionBar({ label, count, max }: { label: string; count: number; 
   const pct = max > 0 ? (count / max) * 100 : 0;
   return (
     <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-      <span style={{ width: 64, fontSize: 11, color: C.textSec, fontFamily: SANS, flexShrink: 0 }}>{label}</span>
-      <div style={{ flex: 1, background: C.surface, borderRadius: 4, height: 14, overflow: 'hidden' }}>
-        <div style={{ width: `${pct}%`, background: C.red, height: '100%' }} />
+      <span style={{ width: 64, fontSize: T_XS, color: INK_SOFT, fontFamily: SANS, flexShrink: 0 }}>{label}</span>
+      <div style={{ flex: 1, background: SURFACE_ALT, borderRadius: 4, height: 14, overflow: 'hidden' }}>
+        <div style={{ width: `${pct}%`, background: RED, height: '100%' }} />
       </div>
-      <span style={{ width: 24, fontSize: 11, color: C.textSec, fontFamily: SANS, textAlign: 'right', flexShrink: 0 }}>
+      <span style={{ width: 24, fontSize: T_XS, color: INK_SOFT, fontFamily: SANS, textAlign: 'right', flexShrink: 0 }}>
         {count}
       </span>
     </div>
@@ -276,14 +310,14 @@ function DistributionBar({ label, count, max }: { label: string; count: number; 
 
 function Table({ headers, rows }: { headers: string[]; rows: string[][] }) {
   return (
-    <div style={{ overflowX: 'auto', marginTop: 8 }}>
-      <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 12, fontFamily: SANS }}>
+    <div style={{ overflowX: 'auto', marginTop: 8, border: `1px solid ${BORDER}`, borderRadius: R_MD }}>
+      <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: T_SM, fontFamily: SANS, background: SURFACE }}>
         <thead>
-          <tr style={{ borderBottom: `1px solid ${C.border}` }}>
+          <tr style={{ borderBottom: `1px solid ${BORDER}`, background: SURFACE_SHELL }}>
             {headers.map(h => (
               <th key={h} style={{
-                padding: '6px 10px', textAlign: 'left', fontSize: 11,
-                fontWeight: 700, color: C.textMuted, textTransform: 'uppercase',
+                padding: '6px 10px', textAlign: 'left', fontSize: T_XS,
+                fontWeight: 700, color: MUTED, textTransform: 'uppercase',
                 letterSpacing: '0.05em', whiteSpace: 'nowrap',
               }}>{h}</th>
             ))}
@@ -291,9 +325,9 @@ function Table({ headers, rows }: { headers: string[]; rows: string[][] }) {
         </thead>
         <tbody>
           {rows.map((row, i) => (
-            <tr key={i} style={{ borderBottom: `1px solid ${C.border}` }}>
+            <tr key={i} style={{ borderBottom: `1px solid ${BORDER}` }}>
               {row.map((cell, j) => (
-                <td key={j} style={{ padding: '6px 10px', color: C.text }}>{cell}</td>
+                <td key={j} style={{ padding: '6px 10px', color: SLATE }}>{cell}</td>
               ))}
             </tr>
           ))}
@@ -310,17 +344,17 @@ function StudentTable({
   rows: TestAnalyticsData['top5'];
 }) {
   if (rows.length === 0) {
-    return <p style={{ fontSize: 12, color: C.textMuted, fontFamily: SANS, margin: '8px 0 0' }}>No submitted attempts.</p>;
+    return <p style={{ fontSize: T_SM, color: MUTED, fontFamily: SANS, margin: '8px 0 0' }}>No submitted attempts.</p>;
   }
   return (
-    <div style={{ overflowX: 'auto', marginTop: 8 }}>
-      <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 12, fontFamily: SANS }}>
+    <div style={{ overflowX: 'auto', marginTop: 8, border: `1px solid ${BORDER}`, borderRadius: R_MD }}>
+      <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: T_SM, fontFamily: SANS, background: SURFACE }}>
         <thead>
-          <tr style={{ borderBottom: `1px solid ${C.border}` }}>
+          <tr style={{ borderBottom: `1px solid ${BORDER}`, background: SURFACE_SHELL }}>
             {['Student', 'Score', '%', ''].map(h => (
               <th key={h} style={{
-                padding: '6px 10px', textAlign: 'left', fontSize: 11,
-                fontWeight: 700, color: C.textMuted, textTransform: 'uppercase',
+                padding: '6px 10px', textAlign: 'left', fontSize: T_XS,
+                fontWeight: 700, color: MUTED, textTransform: 'uppercase',
                 letterSpacing: '0.05em', whiteSpace: 'nowrap',
               }}>{h}</th>
             ))}
@@ -328,17 +362,17 @@ function StudentTable({
         </thead>
         <tbody>
           {rows.map(r => (
-            <tr key={r.attemptId} style={{ borderBottom: `1px solid ${C.border}` }}>
-              <td style={{ padding: '6px 10px', color: C.text }}>{r.name ?? r.email}</td>
-              <td style={{ padding: '6px 10px', color: C.text }}>{r.totalScore}</td>
-              <td style={{ padding: '6px 10px', color: C.textSec }}>{r.percentage}%</td>
+            <tr key={r.attemptId} style={{ borderBottom: `1px solid ${BORDER}` }}>
+              <td style={{ padding: '6px 10px', color: SLATE }}>{r.name ?? r.email}</td>
+              <td style={{ padding: '6px 10px', color: SLATE }}>{r.totalScore}</td>
+              <td style={{ padding: '6px 10px', color: INK_SOFT }}>{r.percentage}%</td>
               <td style={{ padding: '6px 10px' }}>
                 <a
                   href={`/admin/tests/${testId}/attempts/${r.attemptId}`}
                   target="_blank" rel="noopener noreferrer"
                   style={{
                     display: 'inline-flex', alignItems: 'center', gap: 4,
-                    fontSize: 12, fontWeight: 600, color: C.textSec, textDecoration: 'none',
+                    fontSize: T_SM, fontWeight: 600, color: INFO, textDecoration: 'none',
                   }}
                 >
                   <Eye size={11} /> View

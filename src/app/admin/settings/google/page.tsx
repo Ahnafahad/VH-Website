@@ -14,6 +14,7 @@ import { googleCredentials, users } from '@/lib/db/schema';
 import { desc, eq } from 'drizzle-orm';
 import GoogleCalendarClient from './GoogleCalendarClient';
 import { isMeetAutoCreateEnabled } from '@/lib/lms/settings';
+import { SLATE, MUTED, INK_SOFT, FONT_HEADING, T_BASE, T_2XL } from '@/components/admin/lms/tokens';
 
 export const metadata = { title: 'Google Calendar — Admin' };
 
@@ -71,19 +72,20 @@ export default async function GoogleSettingsPage({
       <div style={{ marginBottom: 28 }}>
         <h1
           style={{
-            fontSize:      22,
+            fontFamily:    FONT_HEADING,
+            fontSize:      T_2XL,
             fontWeight:    700,
-            color:         '#0F172A',
+            color:         SLATE,
             letterSpacing: '-0.03em',
             margin:        0,
           }}
         >
           Google Calendar
         </h1>
-        <p style={{ fontSize: 13, color: '#6B7280', marginTop: 6, lineHeight: 1.5 }}>
+        <p style={{ fontSize: T_BASE, color: MUTED, marginTop: 6, lineHeight: 1.5 }}>
           Connect one Google account to auto-create Meet links for every class. All
           batch students are invited automatically.{' '}
-          <strong style={{ color: '#374151' }}>
+          <strong style={{ color: INK_SOFT }}>
             This is separate from student sign-in — calendar scope never touches the
             login flow.
           </strong>

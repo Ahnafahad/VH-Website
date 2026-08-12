@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import { INK_SOFT, MUTED, RED, SURFACE_ALT, T_BASE, T_XS } from '../lms/lms-shared';
 
 interface BarListItem {
   label:  string;
@@ -20,7 +21,7 @@ export default function BarList({
   items,
   max,
   valueFormat,
-  accent = '#D62B38',
+  accent = RED,
   limit = 10,
 }: BarListProps) {
   const displayed = items.slice(0, limit);
@@ -28,7 +29,7 @@ export default function BarList({
 
   if (displayed.length === 0) {
     return (
-      <div style={{ color: '#9CA3AF', fontSize: '13px', padding: '8px 0' }}>
+      <div style={{ color: MUTED, fontSize: T_BASE, padding: '8px 0' }}>
         No data yet.
       </div>
     );
@@ -50,8 +51,8 @@ export default function BarList({
             >
               <span
                 style={{
-                  fontSize:     '13px',
-                  color:        '#374151',
+                  fontSize:     T_BASE,
+                  color:        INK_SOFT,
                   overflow:     'hidden',
                   textOverflow: 'ellipsis',
                   whiteSpace:   'nowrap',
@@ -63,9 +64,9 @@ export default function BarList({
               </span>
               <span style={{ display: 'flex', alignItems: 'center', gap: '6px', flexShrink: 0 }}>
                 {item.sub && (
-                  <span style={{ fontSize: '11px', color: '#9CA3AF' }}>{item.sub}</span>
+                  <span style={{ fontSize: T_XS, color: MUTED }}>{item.sub}</span>
                 )}
-                <span style={{ fontSize: '13px', fontWeight: 600, color: '#111827' }}>
+                <span style={{ fontSize: T_BASE, fontWeight: 600, color: INK_SOFT }}>
                   {valueFormat ? valueFormat(item.value) : item.value.toLocaleString()}
                 </span>
               </span>
@@ -73,7 +74,7 @@ export default function BarList({
             <div
               style={{
                 height:       '4px',
-                background:   '#F3F4F6',
+                background:   SURFACE_ALT,
                 borderRadius: '2px',
                 overflow:     'hidden',
               }}

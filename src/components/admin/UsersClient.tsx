@@ -24,8 +24,10 @@ import {
   RefreshCw,
   Loader2,
   Gauge,
+  Mail,
+  Users,
 } from 'lucide-react';
-import { ConfirmDialog } from './lms/lms-shared';
+import { ConfirmDialog, Modal, AtRiskBadge, AtRiskPopover, useAtRiskPopover, type AtRiskBadgeReason, RED, RED_DARK, SLATE, BORDER, BORDER_FIELD, MUTED, BG, SURFACE, SURFACE_ALT, SURFACE_SHELL, BEIGE, INK_SOFT, OK, OK_BG, WARN, WARN_BG, R_SM, R_MD, R_LG, R_PILL, SHADOW_LG, T_XS, T_SM, T_BASE, T_LG } from './lms/lms-shared';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -61,6 +63,11 @@ export interface AdminBatch {
   product: string;
 }
 
+export interface AdminAtRiskStudent {
+  id:      number;
+  reasons: AtRiskBadgeReason[];
+}
+
 interface DetailedUser extends AdminUserRow {
   badgeCount?:  number;
   vocabPhase?:  number | null;
@@ -72,6 +79,7 @@ interface UsersClientProps {
   initialTotal:          number;
   initialAccessRequests: AdminAccessRequest[];
   initialBatches:        AdminBatch[];
+  atRiskStudents?:       AdminAtRiskStudent[];
 }
 
 // ─── Constants ────────────────────────────────────────────────────────────────
@@ -83,11 +91,11 @@ const PRODUCT_LABELS  = { iba: 'IBA', fbs: 'FBS', fbs_detailed: 'FBS Detailed' }
 
 const selectFilterStyle: React.CSSProperties = {
   padding:      '6px 10px',
-  borderRadius: 8,
-  border:       '1.5px solid #E5E7EB',
-  background:   '#FAFAFA',
+  borderRadius: R_MD,
+  border:       `1.5px solid ${BORDER_FIELD}`,
+  background:   SURFACE_SHELL,
   fontSize:     12.5,
-  color:        '#374151',
+  color:        INK_SOFT,
   outline:      'none',
   cursor:       'pointer',
 };
@@ -173,19 +181,19 @@ function formatRelative(iso: string | null): string {
 function RoleBadge({ role }: { role: string }) {
   const styles: Record<string, React.CSSProperties> = {
     super_admin: {
-      background:    '#0F172A',
-      color:         '#F8FAFC',
-      border:        '1px solid #0F172A',
+      background:    SLATE,
+      color:         SURFACE,
+      border:        `1px solid ${SLATE}`,
     },
     admin: {
-      background:    'rgba(214,43,56,0.07)',
-      color:         '#B91C2C',
-      border:        '1px solid rgba(214,43,56,0.2)',
+      background:    `${RED}12`,
+      color:         RED_DARK,
+      border:        `1px solid ${RED}33`,
     },
     student: {
-      background:    '#F3F4F6',
-      color:         '#374151',
-      border:        '1px solid #E5E7EB',
+      background:    SURFACE_ALT,
+      color:         INK_SOFT,
+      border:        `1px solid ${BORDER}`,
     },
   };
 
@@ -200,8 +208,8 @@ function RoleBadge({ role }: { role: string }) {
       display:       'inline-flex',
       alignItems:    'center',
       padding:       '2px 8px',
-      borderRadius:  100,
-      fontSize:      11,
+      borderRadius:  R_PILL,
+      fontSize:      T_XS,
       fontWeight:    600,
       letterSpacing: '0.02em',
       lineHeight:    1.6,
@@ -225,20 +233,20 @@ function StatusBadge({ status }: { status: string }) {
       alignItems:    'center',
       gap:           4,
       padding:       '2px 8px',
-      borderRadius:  100,
-      fontSize:      11,
+      borderRadius:  R_PILL,
+      fontSize:      T_XS,
       fontWeight:    500,
       letterSpacing: '0.01em',
       lineHeight:    1.6,
-      background:    isActive ? 'rgba(16,185,129,0.08)' : isPending ? 'rgba(245,158,11,0.1)' : 'rgba(239,68,68,0.08)',
-      color:         isActive ? '#047857'                : isPending ? '#92400E'               : '#B91C1C',
-      border:        `1px solid ${isActive ? 'rgba(16,185,129,0.2)' : isPending ? 'rgba(245,158,11,0.25)' : 'rgba(239,68,68,0.2)'}`,
+      background:    isActive ? OK_BG : isPending ? WARN_BG : `${RED}14`,
+      color:         isActive ? OK                : isPending ? WARN               : RED_DARK,
+      border:        `1px solid ${isActive ? `${OK}33` : isPending ? `${WARN}40` : `${RED}33`}`,
     }}>
       <span style={{
         width:        5,
         height:       5,
         borderRadius: '50%',
-        background:   isActive ? '#10B981' : isPending ? '#F59E0B' : '#EF4444',
+        background:   isActive ? OK : isPending ? WARN : RED,
         flexShrink:   0,
       }} />
       {isActive ? 'Active' : isPending ? 'Pending' : 'Suspended'}
@@ -268,14 +276,14 @@ function FilterChip({
         alignItems:    'center',
         gap:           5,
         padding:       '5px 12px',
-        borderRadius:  100,
-        fontSize:      12,
+        borderRadius:  R_PILL,
+        fontSize:      T_SM,
         fontWeight:    active ? 600 : 400,
         letterSpacing: '-0.01em',
         cursor:        'pointer',
-        border:        active ? '1.5px solid #D62B38' : '1.5px solid #E5E7EB',
-        background:    active ? 'rgba(214,43,56,0.05)' : '#FFFFFF',
-        color:         active ? '#D62B38' : '#6B7280',
+        border:        active ? `1.5px solid ${RED}` : `1.5px solid ${BORDER}`,
+        background:    active ? `${RED}0D` : SURFACE,
+        color:         active ? RED : MUTED,
         transition:    'all 0.14s ease',
       }}
     >
@@ -285,9 +293,9 @@ function FilterChip({
           fontSize:   10,
           fontWeight: 700,
           padding:    '1px 5px',
-          borderRadius: 100,
-          background: active ? '#D62B38' : '#F3F4F6',
-          color:      active ? '#FFFFFF' : '#9CA3AF',
+          borderRadius: R_PILL,
+          background: active ? RED : SURFACE_ALT,
+          color:      active ? SURFACE : MUTED,
           lineHeight: 1.6,
         }}>
           {count}
@@ -306,7 +314,7 @@ function SectionHeader({ title, subtitle }: { title: string; subtitle?: string }
         margin:        0,
         fontSize:      18,
         fontWeight:    700,
-        color:         '#0F172A',
+        color:         SLATE,
         letterSpacing: '-0.03em',
         lineHeight:    1.2,
       }}>
@@ -315,8 +323,8 @@ function SectionHeader({ title, subtitle }: { title: string; subtitle?: string }
       {subtitle && (
         <p style={{
           margin:    '3px 0 0',
-          fontSize:  13,
-          color:     '#9CA3AF',
+          fontSize:  T_BASE,
+          color:     MUTED,
           lineHeight: 1.4,
         }}>
           {subtitle}
@@ -496,7 +504,7 @@ function UserDetailPanel({
         style={{
           position:   'fixed',
           inset:      0,
-          background: 'rgba(0,0,0,0.25)',
+          background: `${SLATE}40`,
           zIndex:     50,
         }}
       />
@@ -516,12 +524,12 @@ function UserDetailPanel({
           width:       400,
           maxWidth:    '92vw',
           zIndex:      51,
-          background:  '#FFFFFF',
-          borderLeft:  '1px solid #E5E7EB',
+          background:  SURFACE,
+          border:      `1px solid ${BORDER}`,
           overflowY:   'auto',
           display:     'flex',
           flexDirection: 'column',
-          boxShadow:   '-8px 0 40px rgba(0,0,0,0.08)',
+          boxShadow:   SHADOW_LG,
         }}
       >
         {/* Header */}
@@ -530,16 +538,16 @@ function UserDetailPanel({
           alignItems:     'center',
           justifyContent: 'space-between',
           padding:        '16px 20px',
-          borderBottom:   '1px solid #F3F4F6',
+          borderBottom:   `1px solid ${SURFACE_ALT}`,
           position:       'sticky',
           top:            0,
-          background:     '#FFFFFF',
+          background:     SURFACE,
           zIndex:         1,
         }}>
           <span style={{
-            fontSize:   11,
+            fontSize:   T_XS,
             fontWeight: 600,
-            color:      '#9CA3AF',
+            color:      MUTED,
             letterSpacing: '0.08em',
             textTransform: 'uppercase',
           }}>
@@ -556,10 +564,10 @@ function UserDetailPanel({
               width:          30,
               height:         30,
               borderRadius:   '50%',
-              border:         '1px solid #E5E7EB',
-              background:     '#FAFAFA',
+              border:         `1px solid ${BORDER}`,
+              background:     SURFACE_SHELL,
               cursor:         'pointer',
-              color:          '#6B7280',
+              color:          MUTED,
             }}
           >
             <X size={14} aria-hidden />
@@ -576,14 +584,14 @@ function UserDetailPanel({
             gap:          14,
             marginBottom: 20,
             paddingBottom: 20,
-            borderBottom: '1px solid #F3F4F6',
+            borderBottom: `1px solid ${SURFACE_ALT}`,
           }}>
             <div style={{
               width:          52,
               height:         52,
               borderRadius:   '50%',
-              background:     '#D62B38',
-              color:          '#FFFFFF',
+              background:     RED,
+              color:          SURFACE,
               fontSize:       17,
               fontWeight:     700,
               display:        'flex',
@@ -597,9 +605,9 @@ function UserDetailPanel({
             <div style={{ minWidth: 0 }}>
               <p style={{
                 margin:       0,
-                fontSize:     16,
+                fontSize:     T_LG,
                 fontWeight:   700,
-                color:        '#0F172A',
+                color:        SLATE,
                 letterSpacing: '-0.02em',
                 overflow:     'hidden',
                 textOverflow: 'ellipsis',
@@ -609,8 +617,8 @@ function UserDetailPanel({
               </p>
               <p style={{
                 margin:       '2px 0 6px',
-                fontSize:     12,
-                color:        '#6B7280',
+                fontSize:     T_SM,
+                color:        MUTED,
                 overflow:     'hidden',
                 textOverflow: 'ellipsis',
                 whiteSpace:   'nowrap',
@@ -637,17 +645,17 @@ function UserDetailPanel({
               { label: 'Last Study', value: formatRelative(user.lastStudyDate),        icon: Clock     },
             ].map(({ label, value, icon: Icon }) => (
               <div key={label} style={{
-                background:   '#FAFAFA',
-                border:       '1px solid #F3F4F6',
-                borderRadius: 8,
+                background:   SURFACE_SHELL,
+                border:       `1px solid ${SURFACE_ALT}`,
+                borderRadius: R_MD,
                 padding:      '10px 12px',
                 textAlign:    'center',
               }}>
-                <Icon size={13} style={{ color: '#9CA3AF', marginBottom: 4 }} aria-hidden />
-                <p style={{ margin: 0, fontSize: 15, fontWeight: 700, color: '#0F172A', letterSpacing: '-0.02em' }}>
+                <Icon size={13} style={{ color: MUTED, marginBottom: 4 }} aria-hidden />
+                <p style={{ margin: 0, fontSize: 15, fontWeight: 700, color: SLATE, letterSpacing: '-0.02em' }}>
                   {value}
                 </p>
-                <p style={{ margin: 0, fontSize: 10, color: '#9CA3AF', letterSpacing: '0.04em', textTransform: 'uppercase', fontWeight: 600 }}>
+                <p style={{ margin: 0, fontSize: 10, color: MUTED, letterSpacing: '0.04em', textTransform: 'uppercase', fontWeight: 600 }}>
                   {label}
                 </p>
               </div>
@@ -661,23 +669,23 @@ function UserDetailPanel({
             gap:          6,
             marginBottom: 20,
             paddingBottom: 20,
-            borderBottom: '1px solid #F3F4F6',
+            borderBottom: `1px solid ${SURFACE_ALT}`,
           }}>
             {[
               { icon: Calendar, label: 'Joined',     value: formatDate(user.createdAt)      },
               { icon: User,     label: 'Student ID', value: user.studentId ?? '—'            },
             ].map(({ icon: Icon, label, value }) => (
               <div key={label} style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                <Icon size={13} style={{ color: '#D1D5DB', flexShrink: 0 }} aria-hidden />
-                <span style={{ fontSize: 12, color: '#9CA3AF', minWidth: 72 }}>{label}</span>
-                <span style={{ fontSize: 12, color: '#374151', fontWeight: 500 }}>{value}</span>
+                <Icon size={13} style={{ color: BEIGE, flexShrink: 0 }} aria-hidden />
+                <span style={{ fontSize: T_SM, color: MUTED, minWidth: 72 }}>{label}</span>
+                <span style={{ fontSize: T_SM, color: INK_SOFT, fontWeight: 500 }}>{value}</span>
               </div>
             ))}
             {typeof user.badgeCount === 'number' && (
               <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                <Shield size={13} style={{ color: '#D1D5DB', flexShrink: 0 }} aria-hidden />
-                <span style={{ fontSize: 12, color: '#9CA3AF', minWidth: 72 }}>Badges</span>
-                <span style={{ fontSize: 12, color: '#374151', fontWeight: 500 }}>
+                <Shield size={13} style={{ color: BEIGE, flexShrink: 0 }} aria-hidden />
+                <span style={{ fontSize: T_SM, color: MUTED, minWidth: 72 }}>Badges</span>
+                <span style={{ fontSize: T_SM, color: INK_SOFT, fontWeight: 500 }}>
                   {user.badgeCount} earned
                 </span>
               </div>
@@ -686,7 +694,7 @@ function UserDetailPanel({
 
           {/* View Progress (students only) — entry point to the per-student metrics page */}
           {user.role === 'student' && (
-            <div style={{ marginBottom: 20, paddingBottom: 20, borderBottom: '1px solid #F3F4F6' }}>
+            <div style={{ marginBottom: 20, paddingBottom: 20, borderBottom: `1px solid ${SURFACE_ALT}` }}>
               <Link
                 href={`/admin/students/${user.id}`}
                 style={{
@@ -697,10 +705,10 @@ function UserDetailPanel({
                   width:          '100%',
                   padding:        '9px',
                   borderRadius:   7,
-                  border:         '1.5px solid rgba(214,43,56,0.3)',
-                  background:     'rgba(214,43,56,0.04)',
-                  color:          '#D62B38',
-                  fontSize:       13,
+                  border:         `1.5px solid ${RED}4D`,
+                  background:     `${RED}0A`,
+                  color:          RED,
+                  fontSize:       T_BASE,
                   fontWeight:     600,
                   textDecoration: 'none',
                 }}
@@ -714,9 +722,9 @@ function UserDetailPanel({
           <div style={{ marginBottom: 20 }}>
             <p style={{
               margin:       '0 0 10px',
-              fontSize:     11,
+              fontSize:     T_XS,
               fontWeight:   700,
-              color:        '#6B7280',
+              color:        MUTED,
               letterSpacing: '0.07em',
               textTransform: 'uppercase',
             }}>
@@ -736,18 +744,18 @@ function UserDetailPanel({
                       justifyContent:  'space-between',
                       padding:         '9px 12px',
                       borderRadius:    7,
-                      border:          granted ? '1.5px solid rgba(214,43,56,0.25)' : '1.5px solid #E5E7EB',
-                      background:      granted ? 'rgba(214,43,56,0.04)' : '#FAFAFA',
+                      border:          granted ? `1.5px solid ${RED}40` : `1.5px solid ${BORDER}`,
+                      background:      granted ? `${RED}0A` : SURFACE_SHELL,
                       cursor:          'pointer',
                       transition:      'all 0.14s ease',
                     }}
                   >
                     <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                      <Package size={13} style={{ color: granted ? '#D62B38' : '#9CA3AF' }} aria-hidden />
+                      <Package size={13} style={{ color: granted ? RED : MUTED }} aria-hidden />
                       <span style={{
-                        fontSize:  12,
+                        fontSize:  T_SM,
                         fontWeight: 600,
-                        color:      granted ? '#B91C2C' : '#374151',
+                        color:      granted ? RED_DARK : INK_SOFT,
                       }}>
                         {PRODUCT_LABELS[p]}
                       </span>
@@ -756,13 +764,13 @@ function UserDetailPanel({
                       width:          18,
                       height:         18,
                       borderRadius:   '50%',
-                      border:         granted ? 'none' : '1.5px solid #D1D5DB',
-                      background:     granted ? '#D62B38' : 'transparent',
+                      border:         granted ? 'none' : `1.5px solid ${BEIGE}`,
+                      background:     granted ? RED : 'transparent',
                       display:        'flex',
                       alignItems:     'center',
                       justifyContent: 'center',
                     }}>
-                      {granted && <Check size={10} style={{ color: '#FFFFFF' }} aria-hidden />}
+                      {granted && <Check size={10} style={{ color: SURFACE }} aria-hidden />}
                     </div>
                   </motion.button>
                 );
@@ -774,13 +782,13 @@ function UserDetailPanel({
           <div style={{
             marginBottom: 20,
             paddingBottom: 20,
-            borderBottom: '1px solid #F3F4F6',
+            borderBottom: `1px solid ${SURFACE_ALT}`,
           }}>
             <p style={{
               margin:       '0 0 8px',
-              fontSize:     11,
+              fontSize:     T_XS,
               fontWeight:   700,
-              color:        '#6B7280',
+              color:        MUTED,
               letterSpacing: '0.07em',
               textTransform: 'uppercase',
             }}>
@@ -796,11 +804,11 @@ function UserDetailPanel({
                     appearance:   'none',
                     padding:      '9px 36px 9px 12px',
                     borderRadius: 7,
-                    border:       '1.5px solid #E5E7EB',
-                    background:   '#FAFAFA',
-                    fontSize:     13,
+                    border:       `1.5px solid ${BORDER_FIELD}`,
+                    background:   SURFACE_SHELL,
+                    fontSize:     T_BASE,
                     fontWeight:   500,
-                    color:        '#0F172A',
+                    color:        SLATE,
                     cursor:       'pointer',
                     outline:      'none',
                   }}
@@ -817,7 +825,7 @@ function UserDetailPanel({
                     right:       10,
                     top:         '50%',
                     transform:   'translateY(-50%)',
-                    color:       '#9CA3AF',
+                    color:       MUTED,
                     pointerEvents: 'none',
                   }}
                   aria-hidden
@@ -830,13 +838,13 @@ function UserDetailPanel({
           <div style={{
             marginBottom: 20,
             paddingBottom: 20,
-            borderBottom: '1px solid #F3F4F6',
+            borderBottom: `1px solid ${SURFACE_ALT}`,
           }}>
             <p style={{
               margin:       '0 0 8px',
-              fontSize:     11,
+              fontSize:     T_XS,
               fontWeight:   700,
-              color:        '#6B7280',
+              color:        MUTED,
               letterSpacing: '0.07em',
               textTransform: 'uppercase',
             }}>
@@ -850,11 +858,11 @@ function UserDetailPanel({
                   flex:         1,
                   padding:      '9px 12px',
                   borderRadius: 7,
-                  border:       '1.5px solid #E5E7EB',
-                  background:   '#FAFAFA',
-                  fontSize:     13,
+                  border:       `1.5px solid ${BORDER_FIELD}`,
+                  background:   SURFACE_SHELL,
+                  fontSize:     T_BASE,
                   fontWeight:   500,
-                  color:        '#0F172A',
+                  color:        SLATE,
                   outline:      'none',
                   cursor:       'pointer',
                 }}
@@ -870,7 +878,7 @@ function UserDetailPanel({
             <div style={{
               marginBottom: 20,
               paddingBottom: 20,
-              borderBottom: '1px solid #F3F4F6',
+              borderBottom: `1px solid ${SURFACE_ALT}`,
             }}>
               <motion.button
                 initial={{ opacity: 0, y: 4 }}
@@ -883,9 +891,9 @@ function UserDetailPanel({
                   padding:      '10px',
                   borderRadius: 7,
                   border:       'none',
-                  background:   '#0F172A',
-                  color:        '#FFFFFF',
-                  fontSize:     13,
+                  background:   SLATE,
+                  color:        SURFACE,
+                  fontSize:     T_BASE,
                   fontWeight:   600,
                   cursor:       saving ? 'not-allowed' : 'pointer',
                   opacity:      saving ? 0.7 : 1,
@@ -906,9 +914,9 @@ function UserDetailPanel({
           <div>
             <p style={{
               margin:       '0 0 8px',
-              fontSize:     11,
+              fontSize:     T_XS,
               fontWeight:   700,
-              color:        '#6B7280',
+              color:        MUTED,
               letterSpacing: '0.07em',
               textTransform: 'uppercase',
             }}>
@@ -922,10 +930,10 @@ function UserDetailPanel({
                 width:        '100%',
                 padding:      '9px',
                 borderRadius: 7,
-                border:       isSuspended ? '1.5px solid rgba(16,185,129,0.3)' : '1.5px solid rgba(214,43,56,0.3)',
-                background:   isSuspended ? 'rgba(16,185,129,0.05)' : 'rgba(214,43,56,0.04)',
-                color:        isSuspended ? '#047857' : '#D62B38',
-                fontSize:     13,
+                border:       isSuspended ? `1.5px solid ${OK}4D` : `1.5px solid ${RED}4D`,
+                background:   isSuspended ? `${OK}0D` : `${RED}0A`,
+                color:        isSuspended ? OK : RED,
+                fontSize:     T_BASE,
                 fontWeight:   600,
                 cursor:       suspending ? 'not-allowed' : 'pointer',
                 display:      'flex',
@@ -958,13 +966,13 @@ function UserDetailPanel({
                 bottom:       16,
                 margin:       '0 16px 16px',
                 padding:      '10px 16px',
-                borderRadius: 8,
-                background:   '#0F172A',
-                color:        '#FFFFFF',
-                fontSize:     12,
+                borderRadius: R_MD,
+                background:   SLATE,
+                color:        SURFACE,
+                fontSize:     T_SM,
                 fontWeight:   500,
                 textAlign:    'center',
-                boxShadow:    '0 4px 16px rgba(0,0,0,0.15)',
+                boxShadow:    SHADOW_LG,
               }}
             >
               {toast}
@@ -1041,9 +1049,9 @@ function AccessRequestCard({
       exit="exit"
       layout
       style={{
-        background:   '#FFFFFF',
-        border:       '1px solid #E5E7EB',
-        borderRadius: 10,
+        background:   SURFACE,
+        border:       `1px solid ${BORDER}`,
+        borderRadius: R_LG,
         padding:      '16px 18px',
         display:      'flex',
         alignItems:   'flex-start',
@@ -1055,9 +1063,9 @@ function AccessRequestCard({
         width:          36,
         height:         36,
         borderRadius:   '50%',
-        background:     '#F3F4F6',
-        color:          '#374151',
-        fontSize:       12,
+        background:     SURFACE_ALT,
+        color:          INK_SOFT,
+        fontSize:       T_SM,
         fontWeight:     700,
         display:        'flex',
         alignItems:     'center',
@@ -1072,9 +1080,9 @@ function AccessRequestCard({
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 8, marginBottom: 3 }}>
           <p style={{
             margin:       0,
-            fontSize:     13,
+            fontSize:     T_BASE,
             fontWeight:   600,
-            color:        '#0F172A',
+            color:        SLATE,
             overflow:     'hidden',
             textOverflow: 'ellipsis',
             whiteSpace:   'nowrap',
@@ -1082,8 +1090,8 @@ function AccessRequestCard({
             {request.userName}
           </p>
           <span style={{
-            fontSize:   11,
-            color:      '#9CA3AF',
+            fontSize:   T_XS,
+            color:      MUTED,
             flexShrink: 0,
           }}>
             {formatRelative(request.createdAt)}
@@ -1092,8 +1100,8 @@ function AccessRequestCard({
 
         <p style={{
           margin:       '0 0 8px',
-          fontSize:     12,
-          color:        '#6B7280',
+          fontSize:     T_SM,
+          color:        MUTED,
           overflow:     'hidden',
           textOverflow: 'ellipsis',
           whiteSpace:   'nowrap',
@@ -1105,16 +1113,16 @@ function AccessRequestCard({
         <div style={{ display: 'flex', flexDirection: 'column', gap: 3, marginBottom: 10 }}>
           {request.whatsapp && (
             <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-              <Phone size={10} style={{ color: '#D1D5DB', flexShrink: 0 }} aria-hidden />
-              <span style={{ fontSize: 11, color: '#9CA3AF' }}>{request.whatsapp}</span>
+              <Phone size={10} style={{ color: BEIGE, flexShrink: 0 }} aria-hidden />
+              <span style={{ fontSize: T_XS, color: MUTED }}>{request.whatsapp}</span>
             </div>
           )}
           {request.message && (
             <div style={{ display: 'flex', alignItems: 'flex-start', gap: 6 }}>
-              <MessageSquare size={10} style={{ color: '#D1D5DB', flexShrink: 0, marginTop: 2 }} aria-hidden />
+              <MessageSquare size={10} style={{ color: BEIGE, flexShrink: 0, marginTop: 2 }} aria-hidden />
               <span style={{
-                fontSize:       11,
-                color:          '#9CA3AF',
+                fontSize:       T_XS,
+                color:          MUTED,
                 lineHeight:     1.45,
                 display:        '-webkit-box',
                 WebkitLineClamp: 2,
@@ -1137,11 +1145,11 @@ function AccessRequestCard({
             alignItems:   'center',
             gap:          6,
             padding:      '6px 14px',
-            borderRadius: 6,
-            border:       approved ? '1px solid rgba(16,185,129,0.3)' : '1px solid #E5E7EB',
-            background:   approved ? 'rgba(16,185,129,0.08)' : '#FAFAFA',
-            color:        approved ? '#047857' : '#374151',
-            fontSize:     12,
+            borderRadius: R_SM,
+            border:       approved ? `1px solid ${OK}4D` : `1px solid ${BORDER}`,
+            background:   approved ? OK_BG : SURFACE_SHELL,
+            color:        approved ? OK : INK_SOFT,
+            fontSize:     T_SM,
             fontWeight:   600,
             cursor:       loading || approved ? 'not-allowed' : 'pointer',
             opacity:      loading ? 0.7 : 1,
@@ -1159,6 +1167,288 @@ function AccessRequestCard({
   );
 }
 
+// ─── Bulk email modal ───────────────────────────────────────────────────────────
+
+const SUBJECT_MAX = 100;
+const BODY_MAX    = 5000;
+
+const bulkFieldStyle: React.CSSProperties = {
+  width:        '100%',
+  padding:      '9px 12px',
+  borderRadius: 7,
+  border:       `1.5px solid ${BORDER_FIELD}`,
+  background:   SURFACE_SHELL,
+  fontSize:     T_BASE,
+  color:        SLATE,
+  outline:      'none',
+};
+
+function BulkEmailModal({
+  open, onClose, selectedIds, onSent,
+}: {
+  open: boolean; onClose: () => void; selectedIds: number[];
+  onSent: (msg: string) => void;
+}) {
+  const [subject, setSubject] = useState('');
+  const [body,    setBody]    = useState('');
+  const [sending, setSending] = useState(false);
+
+  const handleClose = () => {
+    if (sending) return;
+    setSubject('');
+    setBody('');
+    onClose();
+  };
+
+  const handleSend = async () => {
+    if (!subject.trim() || !body.trim() || sending) return;
+    setSending(true);
+    try {
+      const res = await fetch('/api/admin/announcements', {
+        method:  'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          subject: subject.trim(),
+          body:    body.trim(),
+          audience: { mode: 'individuals', userIds: selectedIds },
+        }),
+      });
+      const data = await res.json() as { success?: number; failed?: number; total?: number; error?: string };
+      if (!res.ok) {
+        onSent(data.error ?? 'Failed to send email');
+      } else {
+        onSent(`Sent to ${data.success ?? 0} of ${data.total ?? selectedIds.length} recipients${(data.failed ?? 0) > 0 ? ` (${data.failed} failed)` : ''}`);
+        setSubject('');
+        setBody('');
+        onClose();
+      }
+    } catch {
+      onSent('Failed to send email');
+    } finally {
+      setSending(false);
+    }
+  };
+
+  const canSend = subject.trim().length > 0 && body.trim().length > 0 && !sending;
+
+  return (
+    <Modal open={open} onClose={handleClose} title={`Email ${selectedIds.length} selected user${selectedIds.length === 1 ? '' : 's'}`} width={480}>
+      <div style={{ padding: 20, display: 'flex', flexDirection: 'column', gap: 14 }}>
+        <div>
+          <label htmlFor="bulk-email-subject" style={{ display: 'block', fontSize: T_XS, fontWeight: 700, color: MUTED, letterSpacing: '0.06em', textTransform: 'uppercase', marginBottom: 6 }}>
+            Subject
+          </label>
+          <input
+            id="bulk-email-subject"
+            type="text"
+            value={subject}
+            onChange={e => setSubject(e.target.value.slice(0, SUBJECT_MAX))}
+            style={bulkFieldStyle}
+            placeholder="Subject"
+          />
+        </div>
+        <div>
+          <label htmlFor="bulk-email-body" style={{ display: 'block', fontSize: T_XS, fontWeight: 700, color: MUTED, letterSpacing: '0.06em', textTransform: 'uppercase', marginBottom: 6 }}>
+            Message
+          </label>
+          <textarea
+            id="bulk-email-body"
+            value={body}
+            onChange={e => setBody(e.target.value.slice(0, BODY_MAX))}
+            rows={6}
+            style={{ ...bulkFieldStyle, resize: 'vertical' as const, fontFamily: 'inherit' }}
+            placeholder="Message body"
+          />
+        </div>
+        <button
+          type="button"
+          onClick={() => void handleSend()}
+          disabled={!canSend}
+          style={{
+            padding: '10px', borderRadius: 7, border: 'none',
+            background: SLATE, color: SURFACE, fontSize: T_BASE, fontWeight: 600,
+            cursor: canSend ? 'pointer' : 'not-allowed', opacity: canSend ? 1 : 0.5,
+            display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 7,
+          }}
+        >
+          {sending ? <><Loader2 size={13} style={{ animation: 'spin 1s linear infinite' }} aria-hidden /> Sending…</> : `Send to ${selectedIds.length}`}
+        </button>
+      </div>
+    </Modal>
+  );
+}
+
+// ─── Bulk edit modal ──────────────────────────────────────────────────────────
+
+interface BulkEditState {
+  applyStatus:   boolean; status:   string;
+  applyRole:     boolean; role:     string;
+  applyBatch:    boolean; batch:    string;
+  applyProducts: boolean; products: Set<'iba' | 'fbs' | 'fbs_detailed'>;
+}
+
+const bulkEditInitial: BulkEditState = {
+  applyStatus: false, status: 'active',
+  applyRole: false, role: 'student',
+  applyBatch: false, batch: '',
+  applyProducts: false, products: new Set(),
+};
+
+function BulkEditModal({
+  open, onClose, selectedIds, batchOptions, onDone,
+}: {
+  open: boolean; onClose: () => void; selectedIds: number[]; batchOptions: string[];
+  onDone: (msg: string, failedIds: number[]) => void;
+}) {
+  const [state, setState] = useState<BulkEditState>(bulkEditInitial);
+  const [submitting, setSubmitting] = useState(false);
+
+  const handleClose = () => {
+    if (submitting) return;
+    setState(bulkEditInitial);
+    onClose();
+  };
+
+  const toggleProduct = (p: 'iba' | 'fbs' | 'fbs_detailed') => {
+    setState(prev => {
+      const next = new Set(prev.products);
+      if (next.has(p)) next.delete(p); else next.add(p);
+      return { ...prev, products: next };
+    });
+  };
+
+  const anyApplied = state.applyStatus || state.applyRole || state.applyBatch || state.applyProducts;
+
+  const handleApply = async () => {
+    if (!anyApplied || submitting) return;
+    setSubmitting(true);
+
+    const updates: Record<string, unknown> = {};
+    if (state.applyStatus) updates.status = state.status;
+    if (state.applyRole) updates.role = state.role;
+    if (state.applyBatch) updates.batch = state.batch;
+    if (state.applyProducts) updates.products = Array.from(state.products);
+
+    try {
+      const results = await Promise.allSettled(
+        selectedIds.map(id =>
+          fetch(`/api/admin/users/${id}`, {
+            method:  'PATCH',
+            headers: { 'Content-Type': 'application/json' },
+            body:    JSON.stringify(updates),
+          }).then(res => { if (!res.ok) throw new Error(String(res.status)); return id; }),
+        ),
+      );
+      const succeeded = results.filter(r => r.status === 'fulfilled').length;
+      const failedIds = selectedIds.filter((_, i) => results[i]!.status === 'rejected');
+      onDone(
+        failedIds.length === 0
+          ? `Updated ${succeeded} user${succeeded === 1 ? '' : 's'}`
+          : `Updated ${succeeded}, failed ${failedIds.length} — kept failed users selected, try again`,
+        failedIds,
+      );
+      setState(bulkEditInitial);
+      onClose();
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
+  return (
+    <Modal open={open} onClose={handleClose} title={`Edit ${selectedIds.length} selected user${selectedIds.length === 1 ? '' : 's'}`} width={440}>
+      <div style={{ padding: 20, display: 'flex', flexDirection: 'column', gap: 16 }}>
+        {/* Status */}
+        <div>
+          <label style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 12.5, fontWeight: 600, color: INK_SOFT, marginBottom: state.applyStatus ? 8 : 0 }}>
+            <input type="checkbox" checked={state.applyStatus} onChange={e => setState(s => ({ ...s, applyStatus: e.target.checked }))} />
+            Change status
+          </label>
+          {state.applyStatus && (
+            <select value={state.status} onChange={e => setState(s => ({ ...s, status: e.target.value }))} style={bulkFieldStyle}>
+              <option value="active">Active</option>
+              <option value="inactive">Suspended</option>
+            </select>
+          )}
+        </div>
+
+        {/* Role */}
+        <div>
+          <label style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 12.5, fontWeight: 600, color: INK_SOFT, marginBottom: state.applyRole ? 8 : 0 }}>
+            <input type="checkbox" checked={state.applyRole} onChange={e => setState(s => ({ ...s, applyRole: e.target.checked }))} />
+            Change role
+          </label>
+          {state.applyRole && (
+            <select value={state.role} onChange={e => setState(s => ({ ...s, role: e.target.value }))} style={bulkFieldStyle}>
+              <option value="student">Student</option>
+              <option value="instructor">Instructor</option>
+              <option value="admin">Admin</option>
+              <option value="super_admin">Super Admin</option>
+            </select>
+          )}
+        </div>
+
+        {/* Batch */}
+        <div>
+          <label style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 12.5, fontWeight: 600, color: INK_SOFT, marginBottom: state.applyBatch ? 8 : 0 }}>
+            <input type="checkbox" checked={state.applyBatch} onChange={e => setState(s => ({ ...s, applyBatch: e.target.checked }))} />
+            Change batch
+          </label>
+          {state.applyBatch && (
+            <select value={state.batch} onChange={e => setState(s => ({ ...s, batch: e.target.value }))} style={bulkFieldStyle}>
+              <option value="">— none —</option>
+              {batchOptions.map(name => <option key={name} value={name}>{name}</option>)}
+            </select>
+          )}
+        </div>
+
+        {/* Products */}
+        <div>
+          <label style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 12.5, fontWeight: 600, color: INK_SOFT, marginBottom: state.applyProducts ? 8 : 0 }}>
+            <input type="checkbox" checked={state.applyProducts} onChange={e => setState(s => ({ ...s, applyProducts: e.target.checked }))} />
+            Change product access
+          </label>
+          {state.applyProducts && (
+            <div style={{ display: 'flex', gap: 8 }}>
+              {PRODUCTS.map(p => {
+                const on = state.products.has(p);
+                return (
+                  <button
+                    key={p}
+                    type="button"
+                    onClick={() => toggleProduct(p)}
+                    style={{
+                      flex: 1, padding: '7px 8px', borderRadius: 7, fontSize: T_SM, fontWeight: 600, cursor: 'pointer',
+                      border: on ? `1.5px solid ${RED}4D` : `1.5px solid ${BORDER}`,
+                      background: on ? `${RED}0F` : SURFACE_SHELL,
+                      color: on ? RED_DARK : MUTED,
+                    }}
+                  >
+                    {PRODUCT_LABELS[p]}
+                  </button>
+                );
+              })}
+            </div>
+          )}
+        </div>
+
+        <button
+          type="button"
+          onClick={() => void handleApply()}
+          disabled={!anyApplied || submitting}
+          style={{
+            padding: '10px', borderRadius: 7, border: 'none',
+            background: SLATE, color: SURFACE, fontSize: T_BASE, fontWeight: 600,
+            cursor: anyApplied && !submitting ? 'pointer' : 'not-allowed', opacity: anyApplied && !submitting ? 1 : 0.5,
+            display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 7,
+          }}
+        >
+          {submitting ? <><Loader2 size={13} style={{ animation: 'spin 1s linear infinite' }} aria-hidden /> Applying…</> : `Apply to ${selectedIds.length}`}
+        </button>
+      </div>
+    </Modal>
+  );
+}
+
 // ─── Main Component ───────────────────────────────────────────────────────────
 
 export default function UsersClient({
@@ -1166,7 +1456,14 @@ export default function UsersClient({
   initialTotal,
   initialAccessRequests,
   initialBatches,
+  atRiskStudents = [],
 }: UsersClientProps) {
+  const atRiskMap = React.useMemo(() => {
+    const m = new Map<number, AtRiskBadgeReason[]>();
+    for (const s of atRiskStudents) m.set(s.id, s.reasons);
+    return m;
+  }, [atRiskStudents]);
+  const atRiskPopover = useAtRiskPopover();
   const router      = useRouter();
   const pathname     = usePathname();
   const searchParams = useSearchParams();
@@ -1187,6 +1484,41 @@ export default function UsersClient({
   const [panelLoading,  setPanelLoading]  = useState(false);
   const [accessRequests, setAccessRequests] = useState<AdminAccessRequest[]>(initialAccessRequests);
   const [, startTransition] = useTransition();
+
+  // ── Bulk selection ─────────────────────────────────────────────────────────
+  const [selected,       setSelected]       = useState<Set<number>>(new Set());
+  const [showBulkEmail,  setShowBulkEmail]  = useState(false);
+  const [showBulkEdit,   setShowBulkEdit]   = useState(false);
+  const [bulkToast,      setBulkToast]      = useState<string | null>(null);
+
+  const showBulkToast = (msg: string) => {
+    setBulkToast(msg);
+    setTimeout(() => setBulkToast(null), 4000);
+  };
+
+  const toggleSelect = (id: number) => {
+    setSelected(prev => {
+      const next = new Set(prev);
+      if (next.has(id)) next.delete(id); else next.add(id);
+      return next;
+    });
+  };
+
+  const allOnPageSelected = userList.length > 0 && userList.every(u => selected.has(u.id));
+
+  const toggleSelectAllOnPage = () => {
+    setSelected(prev => {
+      const next = new Set(prev);
+      if (allOnPageSelected) {
+        for (const u of userList) next.delete(u.id);
+      } else {
+        for (const u of userList) next.add(u.id);
+      }
+      return next;
+    });
+  };
+
+  const clearSelection = () => setSelected(new Set());
 
   const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const totalPages  = Math.ceil(total / PAGE_SIZE);
@@ -1332,7 +1664,7 @@ export default function UsersClient({
             margin:        0,
             fontSize:      22,
             fontWeight:    700,
-            color:         '#0F172A',
+            color:         SLATE,
             letterSpacing: '-0.04em',
             lineHeight:    1.2,
           }}>
@@ -1340,8 +1672,8 @@ export default function UsersClient({
           </h1>
           <p style={{
             margin:   '4px 0 0',
-            fontSize: 13,
-            color:    '#9CA3AF',
+            fontSize: T_BASE,
+            color:    MUTED,
           }}>
             {total.toLocaleString()} total — manage roles, access, and account status
           </p>
@@ -1402,7 +1734,7 @@ export default function UsersClient({
                   left:        11,
                   top:         '50%',
                   transform:   'translateY(-50%)',
-                  color:       '#9CA3AF',
+                  color:       MUTED,
                   pointerEvents: 'none',
                 }}
                 aria-hidden
@@ -1417,16 +1749,16 @@ export default function UsersClient({
                   width:        '100%',
                   boxSizing:    'border-box',
                   padding:      '7px 12px 7px 32px',
-                  borderRadius: 8,
-                  border:       '1.5px solid #E5E7EB',
-                  background:   '#FAFAFA',
-                  fontSize:     13,
-                  color:        '#0F172A',
+                  borderRadius: R_MD,
+                  border:       `1.5px solid ${BORDER_FIELD}`,
+                  background:   SURFACE_SHELL,
+                  fontSize:     T_BASE,
+                  color:        SLATE,
                   outline:      'none',
                   transition:   'border-color 0.14s',
                 }}
-                onFocus={e => (e.target.style.borderColor = '#D62B38')}
-                onBlur={e  => (e.target.style.borderColor = '#E5E7EB')}
+                onFocus={e => (e.target.style.borderColor = RED)}
+                onBlur={e  => (e.target.style.borderColor = BORDER_FIELD)}
               />
               {search && (
                 <button
@@ -1441,7 +1773,7 @@ export default function UsersClient({
                     border:     'none',
                     cursor:     'pointer',
                     padding:    2,
-                    color:      '#9CA3AF',
+                    color:      MUTED,
                     display:    'flex',
                   }}
                 >
@@ -1484,26 +1816,87 @@ export default function UsersClient({
             </select>
           </div>
 
+          {/* Bulk selection toolbar */}
+          {selected.size > 0 && (
+            <div style={{
+              display:        'flex',
+              alignItems:     'center',
+              gap:            12,
+              padding:        '10px 16px',
+              marginBottom:   12,
+              borderRadius:   R_LG,
+              background:     SLATE,
+              color:          SURFACE,
+            }}>
+              <Users size={14} aria-hidden />
+              <span style={{ fontSize: T_BASE, fontWeight: 600 }}>{selected.size} selected</span>
+              <div style={{ flex: 1 }} />
+              <button
+                type="button"
+                onClick={() => setShowBulkEmail(true)}
+                style={{
+                  display: 'flex', alignItems: 'center', gap: 6,
+                  padding: '6px 12px', borderRadius: 7, border: 'none',
+                  background: `${SURFACE}1F`, color: SURFACE,
+                  fontSize: 12.5, fontWeight: 600, cursor: 'pointer',
+                }}
+              >
+                <Mail size={13} aria-hidden /> Email
+              </button>
+              <button
+                type="button"
+                onClick={() => setShowBulkEdit(true)}
+                style={{
+                  display: 'flex', alignItems: 'center', gap: 6,
+                  padding: '6px 12px', borderRadius: 7, border: 'none',
+                  background: `${SURFACE}1F`, color: SURFACE,
+                  fontSize: 12.5, fontWeight: 600, cursor: 'pointer',
+                }}
+              >
+                Edit fields
+              </button>
+              <button
+                type="button"
+                onClick={clearSelection}
+                style={{
+                  padding: '6px 12px', borderRadius: 7, border: 'none',
+                  background: 'transparent', color: `${SURFACE}A3`,
+                  fontSize: 12.5, fontWeight: 600, cursor: 'pointer',
+                }}
+              >
+                Clear
+              </button>
+            </div>
+          )}
+
           {/* Table */}
           <div style={{
-            background:   '#FFFFFF',
-            border:       '1px solid #E5E7EB',
-            borderRadius: 10,
+            background:   SURFACE,
+            border:       `1px solid ${BORDER}`,
+            borderRadius: R_LG,
             overflow:     'hidden',
           }}>
             {/* Table header */}
             <div style={{
               display:     'grid',
-              gridTemplateColumns: '2fr 1fr 90px 80px 110px 80px',
+              gridTemplateColumns: '28px 2fr 1fr 90px 80px 110px 80px',
               padding:     '10px 16px',
-              background:  '#FAFAFA',
-              borderBottom: '1px solid #F3F4F6',
+              background:  SURFACE_SHELL,
+              borderBottom: `1px solid ${SURFACE_ALT}`,
+              alignItems:  'center',
             }}>
+              <input
+                type="checkbox"
+                checked={allOnPageSelected}
+                onChange={toggleSelectAllOnPage}
+                aria-label="Select all users on this page"
+                style={{ width: 15, height: 15, cursor: 'pointer' }}
+              />
               {['User', 'Role', 'Points', 'Streak', 'Last Active', 'Status'].map(h => (
                 <span key={h} style={{
-                  fontSize:      11,
+                  fontSize:      T_XS,
                   fontWeight:    600,
-                  color:         '#9CA3AF',
+                  color:         MUTED,
                   letterSpacing: '0.06em',
                   textTransform: 'uppercase',
                 }}>
@@ -1521,8 +1914,8 @@ export default function UsersClient({
                 alignItems:     'center',
                 justifyContent: 'center',
                 gap:            8,
-                color:          '#9CA3AF',
-                fontSize:       13,
+                color:          MUTED,
+                fontSize:       T_BASE,
               }}>
                 <Loader2 size={16} style={{ animation: 'spin 1s linear infinite' }} aria-hidden />
                 Loading…
@@ -1534,8 +1927,8 @@ export default function UsersClient({
               <div style={{
                 padding:    '40px 16px',
                 textAlign:  'center',
-                color:      '#9CA3AF',
-                fontSize:   13,
+                color:      MUTED,
+                fontSize:   T_BASE,
               }}>
                 No users found.
               </div>
@@ -1549,21 +1942,35 @@ export default function UsersClient({
                 initial="hidden"
                 animate="visible"
                 onClick={() => void openUserPanel(user)}
+                onContextMenu={(e) => {
+                  const reasons = atRiskMap.get(user.id);
+                  if (reasons) atRiskPopover.openFromContextMenu(e, user.name, reasons);
+                }}
                 role="button"
                 tabIndex={0}
                 aria-label={`View details for ${user.name}`}
                 onKeyDown={e => e.key === 'Enter' && void openUserPanel(user)}
                 style={{
                   display:     'grid',
-                  gridTemplateColumns: '2fr 1fr 90px 80px 110px 80px',
+                  gridTemplateColumns: '28px 2fr 1fr 90px 80px 110px 80px',
                   padding:     '12px 16px',
-                  borderBottom: i < userList.length - 1 ? '1px solid #F9FAFB' : 'none',
+                  borderBottom: i < userList.length - 1 ? `1px solid ${BG}` : 'none',
                   cursor:      'pointer',
                   transition:  'background 0.1s',
                   alignItems:  'center',
                 }}
-                whileHover={{ backgroundColor: 'rgba(0,0,0,0.015)' }}
+                whileHover={{ backgroundColor: `${SLATE}04` }}
               >
+                {/* Select */}
+                <input
+                  type="checkbox"
+                  checked={selected.has(user.id)}
+                  onChange={() => toggleSelect(user.id)}
+                  onClick={(e) => e.stopPropagation()}
+                  aria-label={`Select ${user.name}`}
+                  style={{ width: 15, height: 15, cursor: 'pointer' }}
+                />
+
                 {/* User info */}
                 <div style={{ display: 'flex', alignItems: 'center', gap: 10, minWidth: 0 }}>
                   <div style={{
@@ -1571,11 +1978,11 @@ export default function UsersClient({
                     height:         30,
                     borderRadius:   '50%',
                     background:     user.role === 'admin' || user.role === 'super_admin'
-                      ? '#D62B38'
-                      : '#F3F4F6',
+                      ? RED
+                      : SURFACE_ALT,
                     color:          user.role === 'admin' || user.role === 'super_admin'
-                      ? '#FFFFFF'
-                      : '#374151',
+                      ? SURFACE
+                      : INK_SOFT,
                     fontSize:       10,
                     fontWeight:     700,
                     display:        'flex',
@@ -1589,19 +1996,25 @@ export default function UsersClient({
                   <div style={{ minWidth: 0 }}>
                     <p style={{
                       margin:       0,
-                      fontSize:     13,
+                      fontSize:     T_BASE,
                       fontWeight:   600,
-                      color:        '#0F172A',
+                      color:        SLATE,
                       overflow:     'hidden',
                       textOverflow: 'ellipsis',
                       whiteSpace:   'nowrap',
+                      display:      'flex',
+                      alignItems:   'center',
+                      gap:          6,
                     }}>
-                      {user.name}
+                      <span style={{ overflow: 'hidden', textOverflow: 'ellipsis' }}>{user.name}</span>
+                      {atRiskMap.has(user.id) && (
+                        <AtRiskBadge onOpen={(e) => atRiskPopover.openFromBadge(e, user.name, atRiskMap.get(user.id)!)} />
+                      )}
                     </p>
                     <p style={{
                       margin:       0,
-                      fontSize:     11,
-                      color:        '#9CA3AF',
+                      fontSize:     T_XS,
+                      color:        MUTED,
                       overflow:     'hidden',
                       textOverflow: 'ellipsis',
                       whiteSpace:   'nowrap',
@@ -1615,18 +2028,18 @@ export default function UsersClient({
                 <div><RoleBadge role={user.role} /></div>
 
                 {/* Points */}
-                <div style={{ fontSize: 13, fontWeight: 600, color: '#374151', fontVariantNumeric: 'tabular-nums' }}>
+                <div style={{ fontSize: T_BASE, fontWeight: 600, color: INK_SOFT, fontVariantNumeric: 'tabular-nums' }}>
                   {user.totalPoints.toLocaleString()}
                 </div>
 
                 {/* Streak */}
-                <div style={{ display: 'flex', alignItems: 'center', gap: 4, fontSize: 13, color: user.streakDays > 0 ? '#EA580C' : '#9CA3AF', fontWeight: 600 }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 4, fontSize: T_BASE, color: user.streakDays > 0 ? WARN : MUTED, fontWeight: 600 }}>
                   {user.streakDays > 0 && <Flame size={12} aria-hidden />}
                   {user.streakDays > 0 ? `${user.streakDays}d` : '—'}
                 </div>
 
                 {/* Last Active */}
-                <div style={{ fontSize: 12, color: '#6B7280' }}>
+                <div style={{ fontSize: T_SM, color: MUTED }}>
                   {formatRelative(user.lastStudyDate)}
                 </div>
 
@@ -1645,7 +2058,7 @@ export default function UsersClient({
               marginTop:      14,
               padding:        '10px 0',
             }}>
-              <span style={{ fontSize: 12, color: '#9CA3AF' }}>
+              <span style={{ fontSize: T_SM, color: MUTED }}>
                 Page {page} of {totalPages}
               </span>
               <div style={{ display: 'flex', gap: 6 }}>
@@ -1660,11 +2073,11 @@ export default function UsersClient({
                     gap:            4,
                     padding:        '6px 12px',
                     borderRadius:   7,
-                    border:         '1px solid #E5E7EB',
-                    background:     '#FFFFFF',
-                    fontSize:       12,
+                    border:         `1px solid ${BORDER}`,
+                    background:     SURFACE,
+                    fontSize:       T_SM,
                     fontWeight:     500,
-                    color:          page === 1 ? '#D1D5DB' : '#374151',
+                    color:          page === 1 ? BEIGE : INK_SOFT,
                     cursor:         page === 1 ? 'not-allowed' : 'pointer',
                   }}
                 >
@@ -1681,11 +2094,11 @@ export default function UsersClient({
                     gap:            4,
                     padding:        '6px 12px',
                     borderRadius:   7,
-                    border:         '1px solid #E5E7EB',
-                    background:     '#FFFFFF',
-                    fontSize:       12,
+                    border:         `1px solid ${BORDER}`,
+                    background:     SURFACE,
+                    fontSize:       T_SM,
                     fontWeight:     500,
-                    color:          page === totalPages ? '#D1D5DB' : '#374151',
+                    color:          page === totalPages ? BEIGE : INK_SOFT,
                     cursor:         page === totalPages ? 'not-allowed' : 'pointer',
                   }}
                 >
@@ -1709,14 +2122,14 @@ export default function UsersClient({
 
           {accessRequests.length === 0 ? (
             <div style={{
-              background:   '#FAFAFA',
-              border:       '1px dashed #E5E7EB',
-              borderRadius: 10,
+              background:   SURFACE_SHELL,
+              border:       `1px dashed ${BORDER}`,
+              borderRadius: R_LG,
               padding:      '32px 24px',
               textAlign:    'center',
             }}>
-              <Shield size={22} style={{ color: '#D1D5DB', margin: '0 auto 8px' }} aria-hidden />
-              <p style={{ margin: 0, fontSize: 13, color: '#9CA3AF' }}>
+              <Shield size={22} style={{ color: BEIGE, margin: '0 auto 8px' }} aria-hidden />
+              <p style={{ margin: 0, fontSize: T_BASE, color: MUTED }}>
                 All caught up — no pending access requests.
               </p>
             </div>
@@ -1761,12 +2174,12 @@ export default function UsersClient({
           top:             16,
           right:           416,
           zIndex:          60,
-          background:      '#0F172A',
-          color:           '#FFFFFF',
-          fontSize:        11,
+          background:      SLATE,
+          color:           SURFACE,
+          fontSize:        T_XS,
           fontWeight:      600,
           padding:         '5px 10px',
-          borderRadius:    100,
+          borderRadius:    R_PILL,
           display:         'flex',
           alignItems:      'center',
           gap:             5,
@@ -1774,6 +2187,37 @@ export default function UsersClient({
         }}>
           <Loader2 size={10} style={{ animation: 'spin 1s linear infinite' }} aria-hidden />
           Loading details…
+        </div>
+      )}
+
+      <AtRiskPopover state={atRiskPopover.state} onClose={atRiskPopover.close} />
+
+      <BulkEmailModal
+        open={showBulkEmail}
+        onClose={() => setShowBulkEmail(false)}
+        selectedIds={Array.from(selected)}
+        onSent={(msg) => showBulkToast(msg)}
+      />
+      <BulkEditModal
+        open={showBulkEdit}
+        onClose={() => setShowBulkEdit(false)}
+        selectedIds={Array.from(selected)}
+        batchOptions={batchOptions}
+        onDone={(msg, failedIds) => {
+          showBulkToast(msg);
+          setSelected(new Set(failedIds));
+          void fetchUsers(currentFilters(), page);
+        }}
+      />
+
+      {/* Bulk action toast */}
+      {bulkToast && (
+        <div style={{
+          position: 'fixed', bottom: 24, left: '50%', transform: 'translateX(-50%)',
+          zIndex: 500, background: SLATE, color: SURFACE, fontSize: T_BASE, fontWeight: 600,
+          padding: '10px 18px', borderRadius: R_PILL, boxShadow: SHADOW_LG,
+        }}>
+          {bulkToast}
         </div>
       )}
     </>
