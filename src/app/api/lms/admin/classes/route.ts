@@ -15,7 +15,7 @@ import type { SQL } from 'drizzle-orm';
 import { createMeetEvent } from '@/lib/google/calendar';
 import { getAttendeeEmails } from '@/lib/lms/attendees';
 import { isMeetAutoCreateEnabled } from '@/lib/lms/settings';
-import { getRecordingProvider } from '@/lib/recording/recall';
+import { getRecordingProvider } from '@/lib/recording/skribby';
 import { recordings } from '@/lib/db/schema';
 import { getDisplayClassNumbers } from '@/lib/lms/class-numbering';
 
@@ -155,7 +155,7 @@ export async function POST(req: NextRequest) {
       }
     }
 
-    // ── Auto-schedule Recall.ai recording bot (non-blocking, failure-tolerant) ─
+    // ── Auto-schedule Skribby recording bot (non-blocking, failure-tolerant) ──
     let recordingWarning: string | undefined;
     const resolvedMeetLink = created.meetLink;
 
@@ -179,11 +179,11 @@ export async function POST(req: NextRequest) {
             classSessionId: created.id,
             r2Key: `recordings/${created.id}.mp4`,
             status: 'pending',
-            source: 'recall',
+            source: 'skribby',
           });
         }
       } catch (err) {
-        console.error('[LMS] Recall.ai bot scheduling failed (non-fatal):', err);
+        console.error('[LMS] Skribby bot scheduling failed (non-fatal):', err);
         recordingWarning = 'Recording bot could not be scheduled. You can retry from the class detail page.';
       }
     }

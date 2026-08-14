@@ -6,13 +6,17 @@
 // unit-tested without a DB connection.
 
 import { db } from '@/lib/db';
-import { classSchedules, classSessions } from '@/lib/db/schema';
+import { classSchedules, classSessions, recordings } from '@/lib/db/schema';
 import { and, eq, gte, lte } from 'drizzle-orm';
 import { computeOccurrences } from './schedule-generator-pure';
 import {
   SCHEDULE_GENERATOR_DAYS_AHEAD,
   SCHEDULE_GENERATOR_DEDUP_HOURS,
 } from './constants';
+import { createMeetEvent } from '@/lib/google/calendar';
+import { getAttendeeEmails } from './attendees';
+import { isMeetAutoCreateEnabled } from './settings';
+import { getRecordingProvider } from '@/lib/recording/skribby';
 
 // Re-export the pure function so callers can import from a single module
 export { computeOccurrences } from './schedule-generator-pure';
@@ -60,7 +64,7 @@ export async function generateSessionsFromSchedules(
 
       if (existing) continue;
 
-      await db.insert(classSessions).values({
+      const [created] = await db.insert(classSessions).values({
         scheduleId:      schedule.id,
         title:           schedule.titleTemplate,
         subject:         schedule.subject,
@@ -70,11 +74,76 @@ export async function generateSessionsFromSchedules(
         durationMinutes: schedule.durationMinutes,
         status:          'scheduled',
         createdBy:       schedule.createdBy,
-      });
+      }).returning();
 
       inserted++;
+
+      await createMeetAndBotForSession(created, schedule);
     }
   }
 
   return inserted;
+}
+
+/**
+ * Auto-create a Google Meet event + Skribby recording bot for a freshly
+ * generated session, mirroring the manual-create flow in
+ * /api/lms/admin/classes (POST). Non-blocking, failure-tolerant: logs and
+ * moves on so a Calendar/Skribby outage never breaks session generation.
+ */
+async function createMeetAndBotForSession(
+  session:  typeof classSessions.$inferSelect,
+  schedule: typeof classSchedules.$inferSelect,
+): Promise<void> {
+  if (!(await isMeetAutoCreateEnabled())) return;
+
+  let meetLink: string | null = null;
+
+  try {
+    const endDate = new Date(session.scheduledAt.getTime() + schedule.durationMinutes * 60_000);
+    const attendeeEmails = await getAttendeeEmails({ product: schedule.product, batch: schedule.batch });
+
+    const meetResult = await createMeetEvent({
+      title:     session.title,
+      startISO:  session.scheduledAt.toISOString(),
+      endISO:    endDate.toISOString(),
+      attendeeEmails,
+    });
+
+    if (meetResult) {
+      meetLink = meetResult.meetLink;
+      await db
+        .update(classSessions)
+        .set({ meetLink: meetResult.meetLink, googleEventId: meetResult.eventId })
+        .where(eq(classSessions.id, session.id));
+    }
+  } catch (err) {
+    console.error('[schedule-generator] Google Calendar event creation failed (non-fatal):', err);
+  }
+
+  if (!meetLink) return;
+
+  try {
+    const provider = getRecordingProvider();
+    if (!provider) return;
+
+    const { botId } = await provider.scheduleBot({
+      meetingUrl: meetLink,
+      joinAt:     session.scheduledAt,
+    });
+
+    await db
+      .update(classSessions)
+      .set({ recallBotId: botId })
+      .where(eq(classSessions.id, session.id));
+
+    await db.insert(recordings).values({
+      classSessionId: session.id,
+      r2Key:           `recordings/${session.id}.mp4`,
+      status:          'pending',
+      source:          'skribby',
+    });
+  } catch (err) {
+    console.error('[schedule-generator] Skribby bot scheduling failed (non-fatal):', err);
+  }
 }

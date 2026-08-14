@@ -11,7 +11,7 @@ import { safeApiHandler, ApiException } from '@/lib/api-utils';
 import { requireStaff } from '@/lib/tests/route-helpers';
 import { LMS_SUBJECTS } from '@/lib/lms/constants';
 import { updateMeetEvent, deleteMeetEvent } from '@/lib/google/calendar';
-import { getRecordingProvider } from '@/lib/recording/recall';
+import { getRecordingProvider } from '@/lib/recording/skribby';
 import { isMeetAutoCreateEnabled } from '@/lib/lms/settings';
 import { getDisplayClassNumbers } from '@/lib/lms/class-numbering';
 
@@ -149,7 +149,7 @@ export async function PATCH(
       }
     }
 
-    // ── Sync Recall.ai bot (failure-tolerant) ────────────────────────────────
+    // ── Sync Skribby bot (failure-tolerant) ───────────────────────────────────
     let recordingWarning: string | undefined;
     const provider = getRecordingProvider();
 
@@ -172,8 +172,8 @@ export async function PATCH(
             .where(eq(classSessions.id, sessionId));
           updated.recallBotId = null;
         } catch (err) {
-          console.error('[LMS] Recall.ai bot cancellation failed (non-fatal):', err);
-          recordingWarning = 'Recording bot could not be cancelled. Please cancel it manually in Recall.ai.';
+          console.error('[LMS] Skribby bot cancellation failed (non-fatal):', err);
+          recordingWarning = 'Recording bot could not be cancelled. Please cancel it manually in Skribby.';
         }
       } else if (timeChanged || linkChanged) {
         try {
@@ -193,7 +193,7 @@ export async function PATCH(
             updated.recallBotId = botId;
           }
         } catch (err) {
-          console.error('[LMS] Recall.ai bot reschedule failed (non-fatal):', err);
+          console.error('[LMS] Skribby bot reschedule failed (non-fatal):', err);
           recordingWarning = 'Recording bot could not be rescheduled. The bot may use the old meeting time.';
         }
       }
@@ -226,11 +226,11 @@ export async function PATCH(
               classSessionId: sessionId,
               r2Key: `recordings/${sessionId}.mp4`,
               status: 'pending',
-              source: 'recall',
+              source: 'skribby',
             });
           }
         } catch (err) {
-          console.error('[LMS] Recall.ai bot scheduling failed during PATCH (non-fatal):', err);
+          console.error('[LMS] Skribby bot scheduling failed during PATCH (non-fatal):', err);
           recordingWarning = 'Recording bot could not be scheduled. You can retry from the class detail page.';
         }
       }
@@ -292,12 +292,12 @@ export async function DELETE(
         });
       }
 
-      // Best-effort: cancel Recall.ai bot
+      // Best-effort: cancel Skribby bot
       if (existing.recallBotId) {
         const provider = getRecordingProvider();
         if (provider) {
           provider.cancelBot(existing.recallBotId).catch((err) => {
-            console.error('[LMS] Recall.ai bot cancellation failed (soft-delete, non-fatal):', err);
+            console.error('[LMS] Skribby bot cancellation failed (soft-delete, non-fatal):', err);
           });
         }
       }
@@ -312,12 +312,12 @@ export async function DELETE(
       });
     }
 
-    // Best-effort: cancel Recall.ai bot before hard delete
+    // Best-effort: cancel Skribby bot before hard delete
     if (existing.recallBotId) {
       const provider = getRecordingProvider();
       if (provider) {
         provider.cancelBot(existing.recallBotId).catch((err) => {
-          console.error('[LMS] Recall.ai bot cancellation failed (hard-delete, non-fatal):', err);
+          console.error('[LMS] Skribby bot cancellation failed (hard-delete, non-fatal):', err);
         });
       }
     }

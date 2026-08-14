@@ -1,12 +1,14 @@
 /**
  * POST /api/lms/recordings/webhook
  *
- * Receives Recall.ai webhook events delivered via Svix.
- * No session auth — authenticated by Svix HMAC-SHA256 signature.
+ * Receives Skribby webhook events.
+ * No session auth — authenticated by X-Skribby-Signature HMAC-SHA256 header.
  *
- * Handled events:
- *   bot.done / recording.done  → download video → upload to R2 → mark available
- *   bot.fatal / bot.failed     → mark recording failed + notify admins
+ * Skribby only sends one event type, 'status_update'. On new_status='finished'
+ * we poll GET /bot/{id} to fetch the recording_url (not included in the webhook
+ * payload itself), then download and upload it to R2. Other terminal statuses
+ * (not_admitted, bot_detected, auth_required, invalid_credentials, failed) are
+ * treated as failures.
  *
  * maxDuration = 300 so the function can stream a full video to R2.
  */
@@ -17,87 +19,61 @@ import { eq } from 'drizzle-orm';
 import { db } from '@/lib/db';
 import { classSessions, recordings } from '@/lib/db/schema';
 import { r2PutStream } from '@/lib/storage/r2';
-import { getRecordingProvider } from '@/lib/recording/recall';
+import { getRecordingProvider } from '@/lib/recording/skribby';
 import { sendRecordingFailedAlert } from '@/lib/email';
 
 export const maxDuration = 300;
 
-// ─── Svix signature verification ──────────────────────────────────────────────
-// Recall.ai uses Svix for webhook delivery.
-// Signature spec: HMAC-SHA256 over "{svix-id}.{svix-timestamp}.{body}"
-// The RECALL_WEBHOOK_SECRET is in the format "whsec_<base64-payload>".
+// ─── Signature verification ────────────────────────────────────────────────────
+// Skribby signs: HMAC-SHA256(timestamp + "." + raw_body, SKRIBBY_WEBHOOK_SECRET)
+// Header: X-Skribby-Signature: "sha256=<hex>"; X-Skribby-Timestamp: unix seconds
 
-function verifyWebhookSignature(
-  rawBody: string,
-  headers: Headers,
-): boolean {
-  const secret = process.env.RECALL_WEBHOOK_SECRET;
+const TIMESTAMP_TOLERANCE_SECONDS = 300; // 5 minutes
+
+function verifyWebhookSignature(rawBody: string, headers: Headers): boolean {
+  const secret = process.env.SKRIBBY_WEBHOOK_SECRET;
   if (!secret) {
-    console.warn('[webhook] RECALL_WEBHOOK_SECRET not set — skipping verification (dev mode)');
+    console.warn('[webhook] SKRIBBY_WEBHOOK_SECRET not set — skipping verification (dev mode)');
     return true; // degrade gracefully at build time; in prod the secret must be set
   }
 
-  const svixId        = headers.get('svix-id')        ?? '';
-  const svixTimestamp = headers.get('svix-timestamp')  ?? '';
-  const svixSignature = headers.get('svix-signature')  ?? '';
+  const signatureHeader = headers.get('x-skribby-signature') ?? '';
+  const timestampHeader  = headers.get('x-skribby-timestamp') ?? '';
+  if (!signatureHeader || !timestampHeader) return false;
 
-  if (!svixId || !svixTimestamp || !svixSignature) return false;
-
-  // Decode the base64 part after 'whsec_'
-  const base64Part = secret.startsWith('whsec_') ? secret.slice(6) : secret;
-  const keyBytes = Buffer.from(base64Part, 'base64');
-
-  // Svix signed content: "{svix-id}.{svix-timestamp}.{rawBody}"
-  const toSign = `${svixId}.${svixTimestamp}.${rawBody}`;
-  const computed = createHmac('sha256', keyBytes).update(toSign).digest('base64');
-
-  // svix-signature may be "v1,<sig>" or space-separated multiple sigs
-  const sigs = svixSignature.split(' ');
-  for (const sigEntry of sigs) {
-    const sig = sigEntry.startsWith('v1,') ? sigEntry.slice(3) : sigEntry;
-    try {
-      const computedBuf = Buffer.from(computed, 'base64');
-      const receivedBuf = Buffer.from(sig, 'base64');
-      if (
-        computedBuf.length === receivedBuf.length &&
-        timingSafeEqual(computedBuf, receivedBuf)
-      ) {
-        return true;
-      }
-    } catch {
-      // malformed sig — continue to next
-    }
+  const timestamp = parseInt(timestampHeader, 10);
+  if (isNaN(timestamp) || Math.abs(Date.now() / 1000 - timestamp) > TIMESTAMP_TOLERANCE_SECONDS) {
+    return false;
   }
-  return false;
-}
 
-// ─── Bot ID extraction (tolerant of different payload shapes) ─────────────────
+  const receivedHex = signatureHeader.startsWith('sha256=') ? signatureHeader.slice(7) : signatureHeader;
+  const computedHex = createHmac('sha256', secret).update(`${timestampHeader}.${rawBody}`).digest('hex');
 
-function extractBotId(payload: Record<string, unknown>): string | null {
-  // Shape 1: { event: 'bot.done', data: { bot: { id: '...' } } }
-  const data = payload.data as Record<string, unknown> | undefined;
-  if (data) {
-    const bot = data.bot as Record<string, unknown> | undefined;
-    if (typeof bot?.id === 'string') return bot.id;
-    if (typeof data.bot_id === 'string') return data.bot_id;
-    if (typeof data.id === 'string') return data.id;
+  try {
+    const receivedBuf = Buffer.from(receivedHex, 'hex');
+    const computedBuf = Buffer.from(computedHex, 'hex');
+    return receivedBuf.length === computedBuf.length && timingSafeEqual(receivedBuf, computedBuf);
+  } catch {
+    return false;
   }
-  // Shape 2: top-level { bot_id: '...' }
-  if (typeof payload.bot_id === 'string') return payload.bot_id;
-  // Shape 3: top-level { id: '...' }
-  if (typeof payload.id === 'string') return payload.id;
-  return null;
 }
 
 // ─── Handler ──────────────────────────────────────────────────────────────────
 
+const FAILURE_STATUSES = new Set([
+  'not_admitted',
+  'bot_detected',
+  'auth_required',
+  'invalid_credentials',
+  'failed',
+]);
+
 export async function POST(req: NextRequest) {
-  // Read body as text for signature verification
   const rawBody = await req.text();
 
   if (!verifyWebhookSignature(rawBody, req.headers)) {
-    console.warn('[webhook] Svix signature verification failed');
-    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    console.warn('[webhook] Skribby signature verification failed');
+    return NextResponse.json({ error: 'Invalid signature' }, { status: 401 });
   }
 
   let payload: Record<string, unknown>;
@@ -107,39 +83,28 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'Invalid JSON' }, { status: 400 });
   }
 
-  const event = typeof payload.event === 'string' ? payload.event : '';
+  if (payload.type !== 'status_update') {
+    return NextResponse.json({ ignored: true, type: payload.type });
+  }
 
-  // ── Classify event ────────────────────────────────────────────────────────
-  const isDone =
-    event === 'bot.done' ||
-    event === 'recording.done' ||
-    event === 'bot.status_change' ||
-    // Some Recall versions use 'status_change' with status.code = 'done'
-    (event === 'bot.status_change' &&
-      ((payload.data as Record<string, unknown>)?.status as Record<string, unknown>)?.code === 'done');
+  const botId = typeof payload.bot_id === 'string' ? payload.bot_id : null;
+  const data = payload.data as Record<string, unknown> | undefined;
+  const newStatus = typeof data?.new_status === 'string' ? data.new_status : null;
 
-  const isFailed =
-    event === 'bot.fatal' ||
-    event === 'bot.failed' ||
-    event === 'recording.failed' ||
-    (event === 'bot.status_change' &&
-      (
-        ((payload.data as Record<string, unknown>)?.status as Record<string, unknown>)?.code === 'fatal' ||
-        ((payload.data as Record<string, unknown>)?.status as Record<string, unknown>)?.code === 'error'
-      ));
+  if (!botId || !newStatus) {
+    console.warn('[webhook] Missing bot_id or new_status in payload', JSON.stringify(payload).slice(0, 500));
+    return NextResponse.json({ ignored: true, reason: 'malformed_payload' });
+  }
+
+  const isDone = newStatus === 'finished';
+  const isFailed = FAILURE_STATUSES.has(newStatus);
 
   if (!isDone && !isFailed) {
-    // Unknown event type — ack and ignore
-    return NextResponse.json({ ignored: true, event });
+    // Intermediate status (booting, joining, recording, processing, transcribing, ...) — ack and ignore
+    return NextResponse.json({ ignored: true, status: newStatus });
   }
 
-  const botId = extractBotId(payload);
-  if (!botId) {
-    console.warn('[webhook] Could not extract botId from payload', JSON.stringify(payload).slice(0, 500));
-    return NextResponse.json({ ignored: true, reason: 'no_bot_id' });
-  }
-
-  // Look up session by recallBotId
+  // Look up session by botId (stored in the recallBotId column, reused across providers)
   const session = await db
     .select()
     .from(classSessions)
@@ -151,7 +116,6 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ ignored: true });
   }
 
-  // Load recording row
   const recording = await db
     .select()
     .from(recordings)
@@ -163,30 +127,26 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ ignored: true, reason: 'no_recording_row' });
   }
 
-  // ── Handle failure events ─────────────────────────────────────────────────
+  // ── Handle failure statuses ───────────────────────────────────────────────
   if (isFailed) {
-    const errMsg =
-      (typeof (payload.data as Record<string, unknown>)?.error === 'string'
-        ? ((payload.data as Record<string, unknown>).error as string)
-        : null) ?? `bot event: ${event}`;
+    const stopReason = typeof data?.stop_reason === 'string' ? data.stop_reason : newStatus;
 
     await db
       .update(recordings)
-      .set({ status: 'failed', errorMessage: errMsg })
+      .set({ status: 'failed', errorMessage: stopReason })
       .where(eq(recordings.id, recording.id));
 
-    // Notify admins
     sendRecordingFailedAlert({
       sessionTitle: session.title,
       sessionId: session.id,
       botId,
-      errorMessage: errMsg,
+      errorMessage: stopReason,
     }).catch((e) => console.error('[webhook] sendRecordingFailedAlert error:', e));
 
     return NextResponse.json({ ok: true, action: 'marked_failed' });
   }
 
-  // ── Handle done event ─────────────────────────────────────────────────────
+  // ── Handle 'finished' status ──────────────────────────────────────────────
   // Mark as processing first so duplicate webhooks are harmless
   await db
     .update(recordings)
@@ -195,49 +155,35 @@ export async function POST(req: NextRequest) {
 
   try {
     const provider = getRecordingProvider();
-    if (!provider) throw new Error('RECALL_API_KEY not set — cannot fetch video URL');
+    if (!provider) throw new Error('SKRIBBY_API_KEY not set — cannot fetch video URL');
 
-    // Fetch bot details to get the video URL
+    // recording_url is not included in the webhook payload — poll the bot object
     const videoUrl = await provider.getVideoUrl(botId);
-    if (!videoUrl) throw new Error(`No video URL found for bot ${botId}`);
+    if (!videoUrl) throw new Error(`No recording_url found for bot ${botId}`);
 
-    // Stream from Recall → R2 (server-to-server only, never through response)
+    // Stream from Skribby → R2 (server-to-server only, never through response)
     const videoRes = await fetch(videoUrl);
     if (!videoRes.ok) {
-      throw new Error(`Failed to fetch video from Recall: ${videoRes.status}`);
+      throw new Error(`Failed to fetch recording from Skribby: ${videoRes.status}`);
     }
 
-    // Determine file size from headers if available
     const contentLength = videoRes.headers.get('content-length');
     const fileSize = contentLength ? parseInt(contentLength, 10) : undefined;
 
-    // Extract duration from payload if present
-    const data = payload.data as Record<string, unknown> | undefined;
-    const durationSeconds =
-      typeof data?.duration === 'number' ? Math.floor(data.duration) :
-      typeof (data?.recording as Record<string, unknown>)?.duration === 'number'
-        ? Math.floor((data!.recording as Record<string, unknown>).duration as number)
-        : undefined;
-
-    // Upload to R2 via streaming
     const r2Key = recording.r2Key;
     if (!videoRes.body) throw new Error('Video response has no body');
 
-    // Node.js ReadableStream → upload
     await r2PutStream(r2Key, videoRes.body as never, 'video/mp4');
 
-    // Mark available
     await db
       .update(recordings)
       .set({
         status: 'available',
         ...(fileSize !== undefined ? { fileSize } : {}),
-        ...(durationSeconds !== undefined ? { durationSeconds } : {}),
         errorMessage: null,
       })
       .where(eq(recordings.id, recording.id));
 
-    // Mark session as completed
     await db
       .update(classSessions)
       .set({ status: 'completed' })
@@ -254,7 +200,6 @@ export async function POST(req: NextRequest) {
       .set({ status: 'failed', errorMessage: errMsg })
       .where(eq(recordings.id, recording.id));
 
-    // Notify admins
     sendRecordingFailedAlert({
       sessionTitle: session.title,
       sessionId: session.id,
@@ -262,7 +207,8 @@ export async function POST(req: NextRequest) {
       errorMessage: errMsg,
     }).catch((e) => console.error('[webhook] sendRecordingFailedAlert error (pipeline failure):', e));
 
-    // Return 200 so Recall doesn't retry (we've logged the error)
+    // Return 200 so Skribby doesn't retry (we've logged the error) — matches
+    // Skribby's own "no automatic retry" behavior, kept for parity with our side.
     return NextResponse.json({ ok: false, error: errMsg });
   }
 }
