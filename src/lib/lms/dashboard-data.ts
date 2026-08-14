@@ -38,6 +38,7 @@ import {
 } from 'drizzle-orm';
 import { lmsScopeConditions, lmsAnnouncementScopeConditions } from './access';
 import { isJoinOpen } from './join-window';
+import { getGatedSolutionMaterialIds } from './homework-access';
 import { getDisplayClassNumbers } from './class-numbering';
 import { resolveFileUrl } from '@/lib/storage/r2';
 import { canAccessTest } from '@/lib/tests/access';
@@ -379,14 +380,17 @@ export async function getDashboardData(
         .where(eq(recordings.classSessionId, lastClass.id))
         .limit(1),
     ]);
+    const gatedMatIds = await getGatedSolutionMaterialIds(user, mats.map((m) => m.id));
     lastClassMaterials = await Promise.all(
-      mats.map(async (m) => ({
-        id: m.id,
-        title: m.title,
-        type: m.type,
-        blobUrl: (await resolveFileUrl(m.blobUrl)) ?? '',
-        fileName: m.fileName,
-      })),
+      mats
+        .filter((m) => !gatedMatIds.has(m.id))
+        .map(async (m) => ({
+          id: m.id,
+          title: m.title,
+          type: m.type,
+          blobUrl: (await resolveFileUrl(m.blobUrl)) ?? '',
+          fileName: m.fileName,
+        })),
     );
     lastClassRecording = recs[0] ?? null;
   }

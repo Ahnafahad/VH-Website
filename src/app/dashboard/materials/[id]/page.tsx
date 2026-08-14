@@ -13,6 +13,7 @@ import { getUserByEmail } from '@/lib/db-access-control';
 import { db } from '@/lib/db';
 import { materials, materialHighlights, materialDrawings } from '@/lib/db/schema';
 import { canAccessLmsContent } from '@/lib/lms/access';
+import { getGatedSolutionMaterialIds } from '@/lib/lms/homework-access';
 import MaterialViewer from '@/components/lms/MaterialViewer';
 import { resolveFileUrl } from '@/lib/storage/r2';
 import type { ScaledPosition } from 'react-pdf-highlighter-extended';
@@ -109,6 +110,11 @@ export default async function MaterialViewerPage({ params }: PageProps) {
 
   if (!canAccessLmsContent(user, { product: material.product, batch: material.batch })) {
     return <MaterialUnavailable message="This file belongs to a different course or batch than your account." />;
+  }
+
+  const gatedIds = await getGatedSolutionMaterialIds(user, [material.id]);
+  if (gatedIds.has(material.id)) {
+    return <MaterialUnavailable message="This is a homework solution — submit that assignment to unlock it." />;
   }
 
   // Only the PDF viewer makes sense; link-type materials should open externally

@@ -17,6 +17,7 @@ import {
   users,
 } from '@/lib/db/schema';
 import { canAccessLmsContent } from '@/lib/lms/access';
+import { getGatedSolutionMaterialIds } from '@/lib/lms/homework-access';
 import ClassDetailStudentClient from '@/components/lms/ClassDetailStudentClient';
 
 interface PageProps {
@@ -74,6 +75,15 @@ export default async function ClassDetailStudentPage({ params }: PageProps) {
     })
     .from(materials)
     .where(eq(materials.classSessionId, sessionId));
+
+  // A material can be reused as a homework solution (the solution picker can
+  // pick any existing material, not just freshly-uploaded ones) — keep it out
+  // of the class materials list too until the student has submitted.
+  const gatedMaterialIds = await getGatedSolutionMaterialIds(
+    user,
+    sessionMaterials.map((m) => m.id),
+  );
+  const visibleSessionMaterials = sessionMaterials.filter((m) => !gatedMaterialIds.has(m.id));
 
   // Load recording (nullable)
   const recording = await db
@@ -143,7 +153,7 @@ export default async function ClassDetailStudentPage({ params }: PageProps) {
         status: classSession.status,
         meetLink: classSession.meetLink,
       }}
-      materials={sessionMaterials.map((m) => ({
+      materials={visibleSessionMaterials.map((m) => ({
         id: m.id,
         title: m.title,
         type: m.type,

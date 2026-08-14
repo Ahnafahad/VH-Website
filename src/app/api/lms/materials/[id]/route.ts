@@ -11,6 +11,7 @@ import { safeApiHandler, ApiException } from '@/lib/api-utils';
 import { requireUser } from '@/lib/tests/route-helpers';
 import { canAccessLmsContent } from '@/lib/lms/access';
 import { resolveFileUrl } from '@/lib/storage/r2';
+import { getGatedSolutionMaterialIds } from '@/lib/lms/homework-access';
 
 export async function GET(
   _req: NextRequest,
@@ -36,6 +37,11 @@ export async function GET(
         batch: material.batch,
       })
     ) {
+      throw new ApiException('Access denied', 403, 'FORBIDDEN');
+    }
+
+    const gatedIds = await getGatedSolutionMaterialIds(user, [material.id]);
+    if (gatedIds.has(material.id)) {
       throw new ApiException('Access denied', 403, 'FORBIDDEN');
     }
 

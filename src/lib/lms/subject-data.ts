@@ -18,6 +18,8 @@ import { and, eq, inArray, desc, asc } from 'drizzle-orm';
 import { lmsScopeConditions } from './access';
 import { canAccessTest } from '@/lib/tests/access';
 import { resolveFileUrl } from '@/lib/storage/r2';
+import { computeGatedSolutionMaterialIds } from './homework-access';
+import { isStaffRole } from '@/lib/auth/roles';
 
 // Re-exported for server-side consumers (page.tsx etc.) — client components
 // must import these from subject-constants.ts directly, never from here,
@@ -112,25 +114,8 @@ export async function getSubjectData(
     db.select().from(tests).where(eq(tests.status, 'published')),
   ]);
 
-  // ─── Materials: lecture sheets (pdf) vs other materials (links) ─────────────
-  const lectureSheets: SubjectMaterial[] = [];
-  const otherMaterials: SubjectMaterial[] = [];
-
-  for (const m of subjectMaterials) {
-    const entry: SubjectMaterial = {
-      id: m.id,
-      title: m.title,
-      type: m.type,
-      blobUrl: (await resolveFileUrl(m.blobUrl)) ?? m.blobUrl,
-      fileName: m.fileName,
-      fileSize: m.fileSize,
-      createdAt: m.createdAt.getTime(),
-    };
-    if (m.type === 'pdf') lectureSheets.push(entry);
-    else otherMaterials.push(entry);
-  }
-
-  // ─── Homework: my submissions, then split current vs previous ───────────────
+  // ─── Homework: my submissions (fetched first — also drives solution gating
+  // on the materials list below), then split current vs previous ────────────
   const assignmentIds = subjectAssignments.map((a) => a.id);
   const mySubmissions =
     assignmentIds.length > 0
@@ -145,6 +130,33 @@ export async function getSubjectData(
           )
       : [];
   const subMap = new Map(mySubmissions.map((s) => [s.assignmentId, s.status]));
+
+  // ─── Materials: lecture sheets (pdf) vs other materials (links) ─────────────
+  // Solution materials (assignments.solutionMaterialId) are excluded here
+  // until the student has submitted the homework they answer — the moment a
+  // submission row exists, the solution shows up automatically on the next
+  // fetch. Staff are never gated (see getGatedSolutionMaterialIds).
+  const gatedMaterialIds = isStaffRole(user.role)
+    ? new Set<number>()
+    : computeGatedSolutionMaterialIds(subjectAssignments, new Set(subMap.keys()));
+
+  const lectureSheets: SubjectMaterial[] = [];
+  const otherMaterials: SubjectMaterial[] = [];
+
+  for (const m of subjectMaterials) {
+    if (gatedMaterialIds.has(m.id)) continue;
+    const entry: SubjectMaterial = {
+      id: m.id,
+      title: m.title,
+      type: m.type,
+      blobUrl: (await resolveFileUrl(m.blobUrl)) ?? m.blobUrl,
+      fileName: m.fileName,
+      fileSize: m.fileSize,
+      createdAt: m.createdAt.getTime(),
+    };
+    if (m.type === 'pdf') lectureSheets.push(entry);
+    else otherMaterials.push(entry);
+  }
 
   const currentHomework: SubjectAssignment[] = [];
   const previousHomework: SubjectAssignment[] = [];

@@ -10,6 +10,7 @@ import { materials } from '@/lib/db/schema';
 import { safeApiHandler } from '@/lib/api-utils';
 import { requireUser } from '@/lib/tests/route-helpers';
 import { lmsScopeConditions } from '@/lib/lms/access';
+import { getGatedSolutionMaterialIds } from '@/lib/lms/homework-access';
 import { resolveFileUrl } from '@/lib/storage/r2';
 
 export async function GET(req: NextRequest) {
@@ -34,8 +35,11 @@ export async function GET(req: NextRequest) {
       .from(materials)
       .where(and(...conditions));
 
+    const gatedIds = await getGatedSolutionMaterialIds(user, rows.map((r) => r.id));
+    const visibleRows = rows.filter((r) => !gatedIds.has(r.id));
+
     return Promise.all(
-      rows.map(async (m) => ({
+      visibleRows.map(async (m) => ({
         id: m.id,
         title: m.title,
         type: m.type,
