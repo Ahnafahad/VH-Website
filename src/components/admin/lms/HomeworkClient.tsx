@@ -59,7 +59,7 @@ interface Props {
   batches: BatchOption[];
 }
 
-const SUBJECTS = ['english', 'math', 'analytical'];
+const SUBJECTS = ['english', 'math', 'analytical', 'accounting', 'economics', 'business_studies'];
 
 // ─── Local styles (hover / focus-visible — inline style props can't express
 //     pseudo-classes, so this scoped stylesheet fills that gap using the same

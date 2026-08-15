@@ -75,7 +75,7 @@ export interface TeachingUser {
 }
 
 const DAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-const SUBJECTS = ['english', 'math', 'analytical', 'tbd'];
+const SUBJECTS = ['english', 'math', 'analytical', 'accounting', 'economics', 'business_studies', 'tbd'];
 const STATUSES = ['draft', 'scheduled', 'live', 'completed', 'cancelled'];
 
 // Hover/focus-visible states for the custom (non-shared) interactive elements

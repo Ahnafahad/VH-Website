@@ -1053,7 +1053,8 @@ export type TestOption        = { key: string; text: string };
 
 // ─── Class Schedules ─────────────────────────────────────────────────────────
 // Recurring rules: generator materialises class_sessions 14 days ahead.
-// subject: 'english' | 'math' | 'analytical'
+// subject: see LmsSubject below (english/math/analytical for iba, accounting/
+// economics/business_studies for fbs)
 // dayOfWeek: 0 = Sunday … 6 = Saturday (Dhaka local)
 // timeOfDay: 'HH:mm' Dhaka local
 
@@ -1426,7 +1427,7 @@ export type GoogleCredential         = typeof googleCredentials.$inferSelect;
 export type SessionMaterial          = typeof sessionMaterials.$inferSelect;
 export type NewSessionMaterial       = typeof sessionMaterials.$inferInsert;
 
-export type LmsSubject               = 'english' | 'math' | 'analytical';
+export type LmsSubject               = 'english' | 'math' | 'analytical' | 'accounting' | 'economics' | 'business_studies';
 export type ClassSessionStatus       = 'draft' | 'scheduled' | 'live' | 'completed' | 'cancelled';
 export type RecordingStatus          = 'pending' | 'processing' | 'available' | 'failed' | 'expired';
 export type MaterialType             = 'pdf' | 'link';

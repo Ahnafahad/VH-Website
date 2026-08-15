@@ -2,7 +2,7 @@
 // Single implementation for all LMS content scope checks.
 
 import { SQL, and, eq, isNull, or, sql } from 'drizzle-orm';
-import type { UserWithProducts } from '@/lib/db/schema';
+import type { UserWithProducts, UserProduct } from '@/lib/db/schema';
 import { users, userAccess, lmsAnnouncements } from '@/lib/db/schema';
 import { isStaffRole } from '@/lib/auth/roles';
 
@@ -53,6 +53,8 @@ export function canAccessLmsContent(
  *
  * For staff: returns an empty array (no extra filtering needed).
  * For students: filters to their products AND (batch IS NULL OR batch = user.batch).
+ * Pass `product` to scope to a single one of the student's products (e.g. the
+ * dashboard's active-product toggle) instead of the OR of all of them.
  *
  * Usage:
  *   const conditions = lmsScopeConditions(user, classSessions);
@@ -65,22 +67,24 @@ export function lmsScopeConditions<
 >(
   user: UserWithProducts,
   table: T,
+  product?: UserProduct,
 ): SQL[] {
   if (isStaff(user)) return [];
 
   const conditions: SQL[] = [];
+  const products = product ? [product] : user.products;
 
-  if (user.products.length === 0) {
+  if (products.length === 0) {
     // No products → no LMS content
     conditions.push(eq(table.product, '__never__') as SQL);
     return conditions;
   }
 
-  // product IN (user's products) — expressed as OR chain for SQLite compatibility
+  // product IN (scoped products) — expressed as OR chain for SQLite compatibility
   const productCondition =
-    user.products.length === 1
-      ? (eq(table.product, user.products[0]) as SQL)
-      : (or(...user.products.map((p) => eq(table.product, p))) as SQL);
+    products.length === 1
+      ? (eq(table.product, products[0]) as SQL)
+      : (or(...products.map((p) => eq(table.product, p))) as SQL);
 
   conditions.push(productCondition);
 

@@ -62,9 +62,14 @@ function loadEnv() {
 // ─── Config ──────────────────────────────────────────────────────────────────
 // Products actually in use in prod today (env-roles-batches.md: userAccess.product
 // has only 'iba' rows — no 'fbs'/'fbs_detailed' yet).
+//
+// '2026-27' / 'fbs' added alongside the FBS LMS build-out (mirrors IBA's batch
+// naming — no FBS-specific batch info given, so this is the defensible default;
+// confirm with the user before real FBS students are scoped to it).
 
 const SEED_ROWS = [
   { name: '2026-27', product: 'iba', status: 'active' },
+  { name: '2026-27', product: 'fbs', status: 'active' },
 ];
 
 // ─── Main ────────────────────────────────────────────────────────────────────

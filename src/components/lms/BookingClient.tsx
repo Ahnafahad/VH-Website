@@ -99,7 +99,7 @@ const cardV: Variants = {
   }),
 };
 
-const SUBJECTS = ['english', 'math', 'analytical'] as const;
+const SUBJECTS = ['english', 'math', 'analytical', 'accounting', 'economics', 'business_studies'] as const;
 const MODES = ['online', 'offline', 'either'] as const;
 const DURATIONS = [15, 30, 45, 60, 90, 120] as const;
 
