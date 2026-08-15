@@ -10,6 +10,7 @@ import { sessionRequests } from '@/lib/db/schema';
 import { safeApiHandler, ApiException } from '@/lib/api-utils';
 import { requireUser } from '@/lib/tests/route-helpers';
 import { LMS_SUBJECTS } from '@/lib/lms/constants';
+import { isLmsSubject, productForSubject } from '@/lib/lms/subject-constants';
 import { isStaffRole } from '@/lib/auth/roles';
 
 const VALID_MODES = ['online', 'offline', 'either'] as const;
@@ -85,12 +86,21 @@ export async function POST(req: NextRequest) {
       throw new ApiException('durationMinutes must be between 15 and 120', 400);
     }
 
+    // Infer product from the chosen subject when possible (e.g. 'accounting' →
+    // 'fbs') so multi-product students' requests land in the right product,
+    // rather than always defaulting to their first product.
+    const inferredProduct = isLmsSubject(subject) ? productForSubject(subject) : undefined;
+    const product =
+      inferredProduct && me.products.includes(inferredProduct)
+        ? inferredProduct
+        : (me.products[0] ?? 'iba');
+
     const [created] = await db
       .insert(sessionRequests)
       .values({
         userId:          me.id,
         subject,
-        product:         me.products[0] ?? 'iba',
+        product,
         batch:           me.batch ?? null,
         topic:           topic.trim(),
         preferredMode,

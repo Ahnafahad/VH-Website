@@ -2,7 +2,7 @@
 
 import { motion, useReducedMotion } from 'motion/react';
 import Link from 'next/link';
-import { BookOpen, Calculator, Waypoints } from 'lucide-react';
+import { BookOpen, Calculator, Waypoints, Receipt, TrendingUp, Briefcase } from 'lucide-react';
 import type { LucideProps } from 'lucide-react';
 import type { DashboardSubjectSummary } from '@/lib/lms/dashboard-data';
 import { SUBJECT_LABELS } from '@/lib/lms/subject-constants';
@@ -18,6 +18,9 @@ const SUBJECT_META: Record<
   english:    { icon: BookOpen,    accent: '#8FAED1' },
   math:       { icon: Calculator, accent: '#8FCBB0' },
   analytical: { icon: Waypoints,  accent: '#D4956E' },
+  accounting:        { icon: Receipt,    accent: '#D1B98F' },
+  economics:         { icon: TrendingUp, accent: '#B18FD1' },
+  business_studies:  { icon: Briefcase,  accent: '#D18FA8' },
 };
 
 export default function SubjectsStrip({ subjects }: Props) {

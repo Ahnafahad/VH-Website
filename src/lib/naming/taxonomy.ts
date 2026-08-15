@@ -8,12 +8,16 @@
 
 export const COURSES = [
   { key: 'iba', label: 'IBA' },
+  { key: 'fbs', label: 'DU FBS' },
 ] as const;
 
 export const SUBJECTS = [
   { key: 'math', label: 'Math' },
   { key: 'english', label: 'English' },
   { key: 'analytical', label: 'Analytical' },
+  { key: 'accounting', label: 'Accounting' },
+  { key: 'economics', label: 'Economics' },
+  { key: 'business_studies', label: 'Business Studies' },
 ] as const;
 
 export const DOC_TYPES = [

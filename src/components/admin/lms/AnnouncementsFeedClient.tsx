@@ -45,7 +45,7 @@ interface Props {
   batches: AudienceBatch[];
 }
 
-const SUBJECTS = ['english', 'math', 'analytical'];
+const SUBJECTS = ['english', 'math', 'analytical', 'accounting', 'economics', 'business_studies'];
 
 function audienceModeBtnStyle(active: boolean): React.CSSProperties {
   return {

@@ -15,16 +15,22 @@ export interface ParsedFilenameFields {
   topic:   string      | null;
 }
 
-// Tokens that are brand noise, never topic content. `IBA`/`BBA` additionally
-// signal course `iba`; `BTH`/`BH` are pure noise.
-const BRAND_NOISE = new Set(['BTH', 'BH', 'BBA', 'IBA']);
-const COURSE_SIGNAL = new Set(['BBA', 'IBA']);
+// Tokens that are brand noise, never topic content. `IBA`/`BBA` signal course
+// `iba`, `FBS`/`DUFBS` signal course `fbs`; `BTH`/`BH` are pure noise.
+const BRAND_NOISE = new Set(['BTH', 'BH', 'BBA', 'IBA', 'FBS', 'DUFBS']);
+const COURSE_SIGNAL: Record<string, CourseKey> = {
+  BBA: 'iba', IBA: 'iba',
+  FBS: 'fbs', DUFBS: 'fbs',
+};
 
 const SUBJECT_MAP: Record<string, SubjectKey> = {
   MATHS: 'math',
   MATH: 'math',
   ENGLISH: 'english',
   ANALYTICAL: 'analytical',
+  ACCOUNTING: 'accounting',
+  ECONOMICS: 'economics',
+  BUSINESS: 'business_studies',
 };
 
 // Doc-type vocabulary, ranked by priority (lower wins when several appear —

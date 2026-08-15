@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { Settings, Gauge, CalendarCheck } from 'lucide-react';
 import { useReducedMotion, motion, Variants } from 'motion/react';
 import type { DashboardData } from '@/lib/lms/dashboard-data';
+import type { UserProduct } from '@/lib/db/schema';
 import NextClassTile from './NextClassTile';
 import HomeworkTile from './HomeworkTile';
 import UpcomingTestTile from './UpcomingTestTile';
@@ -23,7 +24,17 @@ interface Props {
   userName: string;
   studentId?: string | null;
   userId?: number;
+  /** All LMS products the student has active access to. */
+  products?: UserProduct[];
+  /** Which product `data` is currently scoped to. */
+  activeProduct?: UserProduct;
 }
+
+const PRODUCT_LABELS: Record<UserProduct, string> = {
+  iba: 'IBA',
+  fbs: 'FBS',
+  fbs_detailed: 'FBS Detailed',
+};
 
 const containerVariants: Variants = {
   hidden: {},
@@ -47,7 +58,7 @@ const itemVariantsReduced: Variants = {
   visible: { opacity: 1, y: 0 },
 };
 
-export default function DashboardScreen({ data, userName, studentId, userId }: Props) {
+export default function DashboardScreen({ data, userName, studentId, userId, products = [], activeProduct }: Props) {
   const hasAccess = data.hasAccess === true;
   const d = hasAccess ? (data as DashboardData) : null;
   const prefersReduced = useReducedMotion();
@@ -116,6 +127,29 @@ export default function DashboardScreen({ data, userName, studentId, userId }: P
             <Settings className="w-5 h-5" strokeWidth={1.5} />
           </Link>
         </div>
+
+        {/* Product toggle — only when the student has more than one active product */}
+        {hasAccess && products.length > 1 && (
+          <div className="flex items-center gap-2 mb-4">
+            {products.map((p) => {
+              const active = p === activeProduct;
+              return (
+                <Link
+                  key={p}
+                  href={`/dashboard?product=${p}`}
+                  className="px-3 py-1.5 rounded-full text-xs font-medium transition-colors"
+                  style={{
+                    border: `1px solid ${active ? '#D4B094' : 'rgba(212,176,148,0.24)'}`,
+                    color: active ? '#D4B094' : 'rgba(250,245,239,0.64)',
+                    backgroundColor: active ? 'rgba(212,176,148,0.08)' : 'transparent',
+                  }}
+                >
+                  {PRODUCT_LABELS[p]}
+                </Link>
+              );
+            })}
+          </div>
+        )}
 
         <motion.div
           variants={containerVariants}

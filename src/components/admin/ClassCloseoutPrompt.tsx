@@ -11,7 +11,7 @@ import { AlertCircle } from 'lucide-react';
 import { formatInstructorNames } from '@/lib/lms/instructor-name';
 import { RED, BORDER, MUTED, SLATE, SURFACE, WARN, WARN_BG, R_MD, R_LG, R_XL } from '@/components/admin/lms/tokens';
 
-const SUBJECTS = ['english', 'math', 'analytical'] as const;
+const SUBJECTS = ['english', 'math', 'analytical', 'accounting', 'economics', 'business_studies'] as const;
 
 export interface CloseoutSession {
   id: number;

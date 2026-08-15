@@ -24,7 +24,7 @@ import {
   mathUserProgress,
   accountingProgress,
 } from '@/lib/db/schema';
-import type { UserWithProducts } from '@/lib/db/schema';
+import type { UserWithProducts, UserProduct } from '@/lib/db/schema';
 import {
   and,
   desc,
@@ -44,7 +44,7 @@ import { resolveFileUrl } from '@/lib/storage/r2';
 import { canAccessTest } from '@/lib/tests/access';
 import { effectiveWindowState, type EffectiveWindowState } from '@/lib/tests/windows';
 import { computeRanks } from '@/lib/tests/scoring';
-import { SUBJECTS } from './subject-constants';
+import { SUBJECTS, SUBJECTS_BY_PRODUCT } from './subject-constants';
 import type { LmsSubject } from '@/lib/db/schema';
 import { isStaffRole } from '@/lib/auth/roles';
 
@@ -242,6 +242,10 @@ function isLmsStaff(user: UserWithProducts): boolean {
 
 export async function getDashboardData(
   user: UserWithProducts,
+  /** Which of the student's products to scope this dashboard to (multi-product
+   *  students only — the dashboard's active-product toggle). Omitted = every
+   *  product the student has, unscoped (legacy/single-product behaviour). */
+  product?: UserProduct,
 ): Promise<DashboardData | { hasAccess: false }> {
   const staff = isLmsStaff(user);
 
@@ -253,7 +257,7 @@ export async function getDashboardData(
   const now = new Date();
 
   // Scope conditions for session queries (staff = no extra filter)
-  const sessionScope = lmsScopeConditions(user, classSessions);
+  const sessionScope = lmsScopeConditions(user, classSessions, product);
 
   // ─── Parallel batch 1: last class + next class + week classes + assignments + announcements
   const weekAgo = new Date(now.getTime() - 7 * 86400_000);
@@ -322,7 +326,7 @@ export async function getDashboardData(
       .where(
         and(
           gte(assignments.dueAt, sevenDaysAgo),
-          ...lmsScopeConditions(user, assignments),
+          ...lmsScopeConditions(user, assignments, product),
         ),
       )
       .orderBy(asc(assignments.dueAt)),
@@ -349,7 +353,7 @@ export async function getDashboardData(
     db
       .select({ subject: materials.subject, value: count() })
       .from(materials)
-      .where(and(eq(materials.type, 'pdf'), ...lmsScopeConditions(user, materials)))
+      .where(and(eq(materials.type, 'pdf'), ...lmsScopeConditions(user, materials, product)))
       .groupBy(materials.subject),
 
     // Computed-on-read class numbers, keyed by session id (one query, all sessions)
@@ -371,7 +375,7 @@ export async function getDashboardData(
         .where(
           and(
             eq(materials.classSessionId, lastClass.id),
-            ...lmsScopeConditions(user, materials),
+            ...lmsScopeConditions(user, materials, product),
           ),
         ),
       db
@@ -666,7 +670,7 @@ export async function getDashboardData(
           .where(
             and(
               eq(materials.classSessionId, newestId),
-              ...lmsScopeConditions(user, materials),
+              ...lmsScopeConditions(user, materials, product),
             ),
           )
       : Promise.resolve([] as Array<{ id: number; title: string; type: string }>),
@@ -834,7 +838,8 @@ export async function getDashboardData(
   const lectureSheetCountBySubject = new Map(
     lectureSheetCountRows.map((r) => [r.subject, r.value]),
   );
-  const dashSubjects: DashboardSubjectSummary[] = SUBJECTS.map((subject) => ({
+  const subjectsInScope = product ? SUBJECTS_BY_PRODUCT[product] : SUBJECTS;
+  const dashSubjects: DashboardSubjectSummary[] = subjectsInScope.map((subject) => ({
     subject,
     pendingHomeworkCount: rawAssignments.filter((a) => {
       const submission = subMap.has(a.id) ? { status: subMap.get(a.id)! } : 'pending';
