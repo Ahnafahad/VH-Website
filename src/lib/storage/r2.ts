@@ -52,14 +52,17 @@ function getBucket(): string {
 /**
  * Upload a stream (or Buffer / string) to R2.
  *
- * @param key         - Object key, e.g. 'recordings/42.mp4'
- * @param body        - Readable stream, Buffer, or string
- * @param contentType - MIME type, e.g. 'video/mp4'
+ * @param key           - Object key, e.g. 'recordings/42.mp4'
+ * @param body          - Readable stream, Buffer, or string
+ * @param contentType   - MIME type, e.g. 'video/mp4'
+ * @param contentLength - Byte length; required when body is a Readable stream
+ *                        (the SDK's checksum middleware can't infer it otherwise)
  */
 export async function r2PutStream(
   key: string,
   body: Readable | Buffer | string,
   contentType: string,
+  contentLength?: number,
 ): Promise<void> {
   await getClient().send(
     new PutObjectCommand({
@@ -67,6 +70,7 @@ export async function r2PutStream(
       Key: key,
       Body: body as never,
       ContentType: contentType,
+      ...(contentLength !== undefined ? { ContentLength: contentLength } : {}),
     }),
   );
 }
