@@ -18,8 +18,6 @@ import type { RecordingProvider, ScheduleBotArgs, ScheduleBotResult } from './pr
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
-const DEFAULT_TRANSCRIPTION_MODEL = 'deepgram/nova-2';
-
 function getApiKey(): string {
   const key = process.env.SKRIBBY_API_KEY;
   if (!key) throw new Error('SKRIBBY_API_KEY is not set.');
@@ -71,7 +69,6 @@ class SkribbyProvider implements RecordingProvider {
       meeting_url: args.meetingUrl,
       service: 'gmeet',
       bot_name: args.botName ?? 'VH Recorder',
-      transcription_model: DEFAULT_TRANSCRIPTION_MODEL,
       video: true,
       scheduled_start_time: Math.floor(args.joinAt.getTime() / 1000),
       webhook_url: getWebhookUrl(),

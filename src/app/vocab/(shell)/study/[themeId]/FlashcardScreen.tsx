@@ -515,7 +515,7 @@ function RatingButtons({ onRate, disabled }: { onRate: (r: Rating) => void; disa
 }
 
 /* ─── Main screen ────────────────────────────────────────── */
-export default function FlashcardScreen({ data }: { data: FlashcardSessionData }) {
+export default function FlashcardScreen({ data, onTakeQuiz }: { data: FlashcardSessionData; onTakeQuiz?: () => void }) {
   const router      = useRouter();
   const { push }    = useBadgeQueue();
   const fb          = useVocabFeedback();
@@ -662,11 +662,7 @@ export default function FlashcardScreen({ data }: { data: FlashcardSessionData }
         ratings={ratings}
         words={data.words}
         onReview={handleReview}
-        onNext={() => router.push(
-          data.letterGroup
-            ? `/vocab/study/letter/${data.letterGroup}`
-            : `/vocab/study/${data.themeId}/quiz`
-        )}
+        onNext={onTakeQuiz ?? (() => router.push(`/vocab/study/${data.themeId}/quiz`))}
       />
     );
   }

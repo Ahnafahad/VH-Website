@@ -236,7 +236,7 @@ export default function LetterStudyScreen({ letter, words, totalPoints }: Props)
       letterGroup:  letter,
     };
 
-    return <FlashcardScreen data={sessionData} />;
+    return <FlashcardScreen data={sessionData} onTakeQuiz={() => setPhase('config')} />;
   }
 
   // ── Quiz phase ───────────────────────────────────────────────────────────────

@@ -15,6 +15,7 @@
 
 import { NextRequest, NextResponse } from 'next/server';
 import { createHmac, timingSafeEqual } from 'crypto';
+import { Readable } from 'stream';
 import { eq } from 'drizzle-orm';
 import { db } from '@/lib/db';
 import { classSessions, recordings } from '@/lib/db/schema';
@@ -173,7 +174,10 @@ export async function POST(req: NextRequest) {
     const r2Key = recording.r2Key;
     if (!videoRes.body) throw new Error('Video response has no body');
 
-    await r2PutStream(r2Key, videoRes.body as never, 'video/mp4');
+    // fetch()'s .body is a WHATWG ReadableStream — the S3 SDK's checksum
+    // middleware needs a Node Readable, not that shape (throws "Unable to
+    // calculate hash for flowing readable stream" otherwise).
+    await r2PutStream(r2Key, Readable.fromWeb(videoRes.body as never), 'video/mp4');
 
     await db
       .update(recordings)
