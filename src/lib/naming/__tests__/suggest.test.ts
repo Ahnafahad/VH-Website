@@ -21,7 +21,9 @@ describe('suggestMaterialFields', () => {
   it('falls back to last-used subject when the filename has no subject signal', () => {
     const result = suggestMaterialFields(
       'Chapter4-Advanced-Sentence-Structures-Lecture-Sheet.pdf',
-      { lastUsed: { subject: 'english' } },
+      // course must also come from last-used now — with 2 courses in the
+      // taxonomy, a filename with no brand token no longer implies one.
+      { lastUsed: { course: 'iba', subject: 'english' } },
     );
 
     expect(result.subject).toBe('english');
@@ -42,10 +44,10 @@ describe('suggestMaterialFields', () => {
     expect(result.title).toBe('IBA Math Solution 1.1');
   });
 
-  it('still resolves course to iba with no brand token and no context (only course in taxonomy)', () => {
+  it('leaves course null with no brand token and no context (ambiguous between iba/fbs)', () => {
     const result = suggestMaterialFields('random-unrecognized-file.pdf');
 
-    expect(result.course).toBe('iba');
+    expect(result.course).toBe(null);
   });
 
   // Production rows 13-15/17 (see naming-accuracy-report.md) were stored with

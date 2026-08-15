@@ -5,6 +5,7 @@ import Link from 'next/link';
 import {
   ArrowLeft, FileText, Link2, AlertCircle,
   BookOpen, Calculator, Waypoints, FlaskConical,
+  Receipt, TrendingUp, Briefcase,
 } from 'lucide-react';
 import type { LucideProps } from 'lucide-react';
 import type { SubjectData, SubjectAssignment, SubjectTestSection } from '@/lib/lms/subject-data';
@@ -21,6 +22,9 @@ const SUBJECT_ACCENT: Record<SubjectData['subject'], { color: string; icon: Reac
   english:    { color: '#8FAED1', icon: BookOpen },
   math:       { color: '#8FCBB0', icon: Calculator },
   analytical: { color: '#D4956E', icon: Waypoints },
+  accounting:       { color: '#D1B98F', icon: Receipt },
+  economics:        { color: '#B18FD1', icon: TrendingUp },
+  business_studies: { color: '#D18FA8', icon: Briefcase },
 };
 
 const containerVariants: Variants = {

@@ -4,7 +4,7 @@
  * guess came from. Layer 4 (AI fallback) is out of scope here.
  */
 
-import { COURSES, CourseKey, SubjectKey, DocTypeKey } from './taxonomy';
+import { CourseKey, SubjectKey, DocTypeKey } from './taxonomy';
 import { formatMaterialName } from './format-name';
 import { parseFilename } from './parse-filename';
 import { predictNextNumber, ExistingMaterial } from './predict';
@@ -88,12 +88,6 @@ export function suggestMaterialFields(fileName: string, ctx: SuggestContext = {}
       number = next;
       provenance.number = 'sequence';
     }
-  }
-
-  // Course default — only course in the taxonomy.
-  if (course === null && COURSES.length === 1) {
-    course = COURSES[0].key;
-    provenance.course = 'default';
   }
 
   const confidence: Record<SuggestibleField, number> = {

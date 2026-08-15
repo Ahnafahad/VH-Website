@@ -13,7 +13,10 @@ const ORACLE = [
   {
     id: 1,
     fileName: 'BTH English Lecture Sheet 1.pdf',
-    expected: { course: 'iba', subject: 'english', docType: 'lecture', number: '1', topic: null },
+    // Was 'iba' when the taxonomy had only one course — 'BTH' is the general
+    // brand token (applies to both IBA and FBS), not a course-specific one,
+    // so now that 'fbs' exists too this is genuinely ambiguous and abstains.
+    expected: { course: null, subject: 'english', docType: 'lecture', number: '1', topic: null },
   },
   {
     id: 3,
@@ -58,7 +61,10 @@ const ORACLE = [
   {
     id: 11,
     fileName: 'Chapter4-Advanced-Sentence-Structures-Lecture-Sheet.pdf',
-    expected: { course: 'iba', subject: null, docType: 'lecture', number: '4', topic: 'Advanced Sentence Structures' },
+    // Was 'iba' when the taxonomy had only one course (any filename could
+    // default to it unambiguously); now that 'fbs' exists too, a filename
+    // with no brand token is genuinely ambiguous and the parser abstains.
+    expected: { course: null, subject: null, docType: 'lecture', number: '4', topic: 'Advanced Sentence Structures' },
   },
 ] as const;
 

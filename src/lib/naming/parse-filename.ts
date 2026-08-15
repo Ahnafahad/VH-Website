@@ -5,7 +5,7 @@
  * this layer never guesses; later layers (predict.ts, suggest.ts) fill gaps.
  */
 
-import { COURSES, CourseKey, SubjectKey, DocTypeKey } from './taxonomy';
+import { CourseKey, SubjectKey, DocTypeKey } from './taxonomy';
 
 export interface ParsedFilenameFields {
   course:  CourseKey  | null;
@@ -69,19 +69,15 @@ function normalizeAndTokenize(fileName: string): string[] {
 }
 
 function detectCourse(tokens: string[], consumed: boolean[]): CourseKey | null {
-  let hasSignal = false;
+  let signaled: CourseKey | null = null;
   for (let i = 0; i < tokens.length; i++) {
     const upper = tokens[i].toUpperCase();
     if (BRAND_NOISE.has(upper)) {
       consumed[i] = true;
-      if (COURSE_SIGNAL.has(upper)) hasSignal = true;
+      if (upper in COURSE_SIGNAL) signaled = COURSE_SIGNAL[upper];
     }
   }
-  if (hasSignal) return 'iba';
-  // Taxonomy currently has exactly one course, so it's unambiguous even
-  // without an explicit brand token in the filename.
-  if (COURSES.length === 1) return COURSES[0].key;
-  return null;
+  return signaled;
 }
 
 function detectSubject(tokens: string[], consumed: boolean[]): SubjectKey | null {
