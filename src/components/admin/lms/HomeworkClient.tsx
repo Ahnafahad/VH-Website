@@ -16,6 +16,7 @@ import {
   SHADOW_SM, FONT_HEADING, T_XS, T_SM, T_BASE,
 } from './lms-shared';
 import type { ClassSession } from './ClassesClient';
+import { useAdminProduct } from '@/components/admin/AdminProductContext';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -737,6 +738,7 @@ function SubmissionsPanel({ assignmentId, onClose }: { assignmentId: number; onC
 // ─── Main component ───────────────────────────────────────────────────────────
 
 export default function HomeworkClient({ initialAssignments, sessions, allMaterials, batches }: Props) {
+  const { product } = useAdminProduct();
   const [assignments, setAssignments] = useState(initialAssignments);
   const [modalOpen, setModalOpen] = useState(false);
   const [editing, setEditing] = useState<Assignment | null>(null);
@@ -749,7 +751,8 @@ export default function HomeworkClient({ initialAssignments, sessions, allMateri
   const showToast = (m: string) => { setToast(m); setTimeout(() => setToast(null), 3000); };
 
   const filtered = assignments.filter(a =>
-    subjectFilter === 'all' || a.subject === subjectFilter,
+    a.product === product &&
+    (subjectFilter === 'all' || a.subject === subjectFilter),
   );
 
   const handleSaved = (saved: Assignment) => {

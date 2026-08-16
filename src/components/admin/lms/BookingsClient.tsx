@@ -28,6 +28,7 @@ import {
   FormActions,
   fmtDhaka, dhakaLocalToISO, epochToDhakaLocal,
 } from './lms-shared';
+import { useAdminProduct } from '@/components/admin/AdminProductContext';
 
 // Local hover/focus CSS for the meet-link anchor (inline style can't do :hover/:focus-visible).
 const LINK_CSS = `
@@ -62,6 +63,7 @@ interface Request {
   userName: string;
   userEmail: string;
   subject: string;
+  product: string;
   topic: string;
   preferredMode: string;
   durationMinutes: number;
@@ -140,11 +142,15 @@ function RequestStatusBadge({ status }: { status: string }) {
 // ─── Main component ───────────────────────────────────────────────────────────
 
 export default function BookingsClient({ initialSlots, initialRequests }: BookingsClientProps) {
+  const { product }               = useAdminProduct();
   const [tab, setTab]             = useState<'slots' | 'requests'>('slots');
   const [slots, setSlots]         = useState<Slot[]>(initialSlots);
   const [requests, setRequests]   = useState<Request[]>(initialRequests);
   const [toast, setToast]         = useState<string | null>(null);
   const [loading, setLoading]     = useState(false);
+
+  const filteredSlots    = slots.filter(s => s.product === product);
+  const filteredRequests = requests.filter(r => r.product === product);
 
   // Create slot modal
   const [showCreate, setShowCreate] = useState(false);
@@ -328,8 +334,8 @@ export default function BookingsClient({ initialSlots, initialRequests }: Bookin
 
       <TabBar
         tabs={[
-          { id: 'slots',    label: `Slots (${slots.length})` },
-          { id: 'requests', label: `Requests (${requests.filter(r => r.status === 'pending').length} pending)` },
+          { id: 'slots',    label: `Slots (${filteredSlots.length})` },
+          { id: 'requests', label: `Requests (${filteredRequests.filter(r => r.status === 'pending').length} pending)` },
         ]}
         active={tab}
         onChange={(id) => setTab(id as 'slots' | 'requests')}
@@ -338,10 +344,10 @@ export default function BookingsClient({ initialSlots, initialRequests }: Bookin
       {/* ── Slots tab ─────────────────────────────────────────────────────── */}
       {tab === 'slots' && (
         <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-          {slots.length === 0 ? (
+          {filteredSlots.length === 0 ? (
             <EmptyState icon={CalendarClock} message="No booking slots yet. Create one to get started." />
           ) : (
-            slots.map((slot, i) => (
+            filteredSlots.map((slot, i) => (
               <motion.div
                 key={slot.id}
                 custom={i}
@@ -414,10 +420,10 @@ export default function BookingsClient({ initialSlots, initialRequests }: Bookin
       {/* ── Requests tab ──────────────────────────────────────────────────── */}
       {tab === 'requests' && (
         <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-          {requests.length === 0 ? (
+          {filteredRequests.length === 0 ? (
             <EmptyState icon={CalendarClock} message="No session requests yet." />
           ) : (
-            requests.map((req, i) => (
+            filteredRequests.map((req, i) => (
               <motion.div
                 key={req.id}
                 custom={i}

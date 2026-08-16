@@ -4,6 +4,7 @@ import { authOptions } from '@/lib/auth';
 import AdminSidebar from '@/components/admin/AdminSidebar';
 import AdminMobileHeader from '@/components/admin/AdminMobileHeader';
 import AdminMotionConfig from '@/components/admin/AdminMotionConfig';
+import { AdminProductProvider } from '@/components/admin/AdminProductContext';
 
 export default async function AdminLayout({
   children,
@@ -29,6 +30,7 @@ export default async function AdminLayout({
   // ── Render ─────────────────────────────────────────────────────────────────
   return (
     <AdminMotionConfig>
+    <AdminProductProvider>
     <div
       style={{
         display:     'flex',
@@ -73,6 +75,7 @@ export default async function AdminLayout({
         </div>
       </main>
     </div>
+    </AdminProductProvider>
     </AdminMotionConfig>
   );
 }

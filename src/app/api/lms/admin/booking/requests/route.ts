@@ -31,6 +31,7 @@ export async function GET(_req: NextRequest) {
       userName:        r.userName ?? 'Unknown',
       userEmail:       r.userEmail ?? '',
       subject:         r.request.subject,
+      product:         r.request.product,
       topic:           r.request.topic,
       preferredMode:   r.request.preferredMode,
       durationMinutes: r.request.durationMinutes,

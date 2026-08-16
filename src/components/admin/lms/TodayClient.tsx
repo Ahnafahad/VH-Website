@@ -20,6 +20,7 @@ import {
 import { suggestMaterialFields, type MaterialSuggestion } from '@/lib/naming/suggest';
 import { formatMaterialName } from '@/lib/naming/format-name';
 import { COURSES, SUBJECTS, DOC_TYPES } from '@/lib/naming/taxonomy';
+import { useAdminProduct } from '@/components/admin/AdminProductContext';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -1079,9 +1080,12 @@ function SessionCard({ session, index, batches, onRefresh }: {
 // ─── Main component ───────────────────────────────────────────────────────────
 
 export default function TodayClient({ initial, batches }: Props) {
+  const { product } = useAdminProduct();
   const [data, setData] = useState(initial);
   const [refreshing, setRefreshing] = useState(false);
   const [toast, setToast] = useState<string | null>(null);
+
+  const sessions = data.sessions.filter(s => s.product === product);
 
   const refresh = useCallback(async () => {
     setRefreshing(true);
@@ -1146,7 +1150,7 @@ export default function TodayClient({ initial, batches }: Props) {
       </div>
 
       {/* Sessions */}
-      {data.sessions.length === 0 ? (
+      {sessions.length === 0 ? (
         <div style={{
           background: BG, border: `1px dashed ${BORDER}`,
           borderRadius: R_LG, padding: '48px 24px', textAlign: 'center',
@@ -1169,7 +1173,7 @@ export default function TodayClient({ initial, batches }: Props) {
       ) : (
         <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
           <AnimatePresence>
-            {data.sessions.map((s, i) => (
+            {sessions.map((s, i) => (
               <SessionCard key={s.id} session={s} index={i} batches={batches} onRefresh={refresh} />
             ))}
           </AnimatePresence>

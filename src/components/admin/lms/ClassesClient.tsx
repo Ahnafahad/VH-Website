@@ -24,6 +24,7 @@ import { formatInstructorNames } from '@/lib/lms/instructor-name';
 import { formatClassName, formatMaterialName } from '@/lib/naming/format-name';
 import { suggestMaterialFields, type MaterialSuggestion } from '@/lib/naming/suggest';
 import { SUBJECTS as SUBJECT_TAXONOMY, COURSES, DOC_TYPES, BATCHES, CourseKey, SubjectKey, BatchKey } from '@/lib/naming/taxonomy';
+import { useAdminProduct } from '@/components/admin/AdminProductContext';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -1163,6 +1164,7 @@ function InstructorBadge({ name }: { name: string }) {
 }
 
 function SessionsTab({ sessions, teachingUsers }: { sessions: ClassSession[]; teachingUsers: TeachingUser[] }) {
+  const { product }     = useAdminProduct();
   const instructorNames = formatInstructorNames(teachingUsers);
   const [modalOpen,         setModalOpen]         = useState(false);
   const [completedOpen,     setCompletedOpen]     = useState(false);
@@ -1177,6 +1179,7 @@ function SessionsTab({ sessions, teachingUsers }: { sessions: ClassSession[]; te
   const showToast = (m: string) => { setToast(m); setTimeout(() => setToast(null), 3000); };
 
   const filtered = localSessions.filter(s => {
+    if (s.product !== product) return false;
     if (statusFilter  !== 'all' && s.status  !== statusFilter)  return false;
     if (subjectFilter !== 'all' && s.subject !== subjectFilter) return false;
     return true;
@@ -1345,6 +1348,7 @@ function SessionsTab({ sessions, teachingUsers }: { sessions: ClassSession[]; te
 // ─── Schedules tab ────────────────────────────────────────────────────────────
 
 function SchedulesTab({ schedules }: { schedules: ClassSchedule[] }) {
+  const { product }   = useAdminProduct();
   const [modalOpen,   setModalOpen]   = useState(false);
   const [editing,     setEditing]     = useState<ClassSchedule | null>(null);
   const [deleteId,    setDeleteId]    = useState<number | null>(null);
@@ -1354,6 +1358,8 @@ function SchedulesTab({ schedules }: { schedules: ClassSchedule[] }) {
   const [localList,   setLocalList]   = useState(schedules);
 
   const showToast = (m: string) => { setToast(m); setTimeout(() => setToast(null), 3500); };
+
+  const filteredList = localList.filter(sc => sc.product === product);
 
   const handleSaved = (saved: ClassSchedule) => {
     setLocalList(prev => {
@@ -1422,11 +1428,11 @@ function SchedulesTab({ schedules }: { schedules: ClassSchedule[] }) {
         </PrimaryBtn>
       </div>
 
-      {localList.length === 0 ? (
+      {filteredList.length === 0 ? (
         <EmptyState icon={Calendar} message="No recurring schedules. Create a rule to auto-generate sessions." />
       ) : (
         <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-          {localList.map((sc, i) => (
+          {filteredList.map((sc, i) => (
             <motion.div
               key={sc.id}
               custom={i} variants={rowV} initial="hidden" animate="visible"

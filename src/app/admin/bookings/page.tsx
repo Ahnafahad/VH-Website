@@ -80,6 +80,7 @@ export default async function BookingsPage() {
     userName:        row.userName,
     userEmail:       row.userEmail,
     subject:         row.req.subject,
+    product:         row.req.product,
     topic:           row.req.topic,
     preferredMode:   row.req.preferredMode,
     durationMinutes: row.req.durationMinutes,

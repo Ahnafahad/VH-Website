@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { signOut } from 'next-auth/react';
+import AdminProductToggle from './AdminProductToggle';
 import { motion, Variants } from 'framer-motion';
 import {
   BEIGE,
@@ -220,7 +221,8 @@ export default function AdminSidebar({ adminName, adminEmail, role }: AdminSideb
             padding:      '20px 20px 18px',
             borderBottom: '1px solid rgba(212,176,148,0.15)',
             display:      'flex',
-            alignItems:   'center',
+            flexDirection: 'column',
+            gap:          12,
           }}
         >
           <Image
@@ -231,6 +233,7 @@ export default function AdminSidebar({ adminName, adminEmail, role }: AdminSideb
             sizes="100vw"
             style={{ height: 30, width: 'auto', filter: 'brightness(0) invert(1) opacity(0.85)' }}
           />
+          <AdminProductToggle variant="dark" />
         </div>
 
         {/* Nav */}
@@ -434,8 +437,8 @@ export default function AdminSidebar({ adminName, adminEmail, role }: AdminSideb
           padding:        '20px 20px 18px',
           borderBottom:   `1px solid ${BORDER}`,
           display:        'flex',
-          alignItems:     'center',
-          gap:            10,
+          flexDirection:  'column',
+          gap:            12,
         }}
       >
         {/* LexiCore logo */}
@@ -447,6 +450,7 @@ export default function AdminSidebar({ adminName, adminEmail, role }: AdminSideb
           sizes="100vw"
           style={{ height: 30, width: 'auto' }}
         />
+        <AdminProductToggle variant="light" />
       </div>
 
       {/* ── Navigation ────────────────────────────────────────────────────── */}

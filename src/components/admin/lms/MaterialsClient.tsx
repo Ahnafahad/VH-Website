@@ -26,6 +26,7 @@ import { suggestMaterialFields, type Provenance } from '@/lib/naming/suggest';
 import { getLastUsed, setLastUsed, type ExistingMaterial } from '@/lib/naming/predict';
 import { classUsableName, cleanHeading } from '@/lib/naming/class-link';
 import type { ClassSession } from './ClassesClient';
+import { useAdminProduct } from '@/components/admin/AdminProductContext';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -743,6 +744,7 @@ function MaterialsList({
   onEdited: (updated: Material) => void;
   onUpload: () => void;
 }) {
+  const { product: adminProduct } = useAdminProduct();
   const [linkMaterial, setLinkMaterial] = useState<Material | null>(null);
   const [editMaterial, setEditMaterial] = useState<Material | null>(null);
   const [deleteId, setDeleteId] = useState<number | null>(null);
@@ -791,6 +793,7 @@ function MaterialsList({
 
   const sorted = [...materials].sort((a, b) => b.createdAt - a.createdAt);
   const filtered = sorted.filter(m =>
+    m.product === adminProduct &&
     (filterCourse  === 'all' || m.product === filterCourse) &&
     (filterSubject === 'all' || m.subject === filterSubject) &&
     (filterDocType === 'all' || m.docType === filterDocType) &&

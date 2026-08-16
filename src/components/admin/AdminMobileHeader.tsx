@@ -6,6 +6,7 @@ import { usePathname } from 'next/navigation';
 import { signOut } from 'next-auth/react';
 import { useState } from 'react';
 import { AnimatePresence, motion, Variants } from 'framer-motion';
+import AdminProductToggle from './AdminProductToggle';
 import {
   BEIGE,
   BG,
@@ -385,6 +386,10 @@ export default function AdminMobileHeader({ adminName, adminEmail, role }: Admin
                   </motion.button>
                 </div>
 
+                <div style={{ padding: '12px 16px 0' }}>
+                  <AdminProductToggle variant="dark" />
+                </div>
+
                 <nav style={{ flex: 1, padding: '8px 8px', overflowY: 'auto' }} aria-label="Instructor navigation">
                   {(() => {
                     let itemIndex = 0;
@@ -708,6 +713,10 @@ export default function AdminMobileHeader({ adminName, adminEmail, role }: Admin
                 >
                   <X size={18} aria-hidden />
                 </motion.button>
+              </div>
+
+              <div style={{ padding: '12px 16px 0' }}>
+                <AdminProductToggle variant="light" />
               </div>
 
               {/* Drawer nav items */}
