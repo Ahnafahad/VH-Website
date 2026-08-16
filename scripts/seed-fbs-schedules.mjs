@@ -1,22 +1,17 @@
 #!/usr/bin/env node
 // scripts/seed-fbs-schedules.mjs — Seeds the 3 weekly recurring FBS class_schedules
-// rows (Accounting/Sun, Business Studies/Mon, Economics/Thu), mirroring the IBA
-// weekly-class-schedule convention ("IBA Class" titleTemplate → here "FBS Class").
+// rows (Sun 12-2, Mon 4-6, Thu 2-4), mirroring the IBA weekly-class-schedule
+// convention exactly: generic subject='tbd' / titleTemplate="FBS Class" —
+// subjects (Accounting/Economics/Business Studies) are NOT tied to a
+// particular day, same as IBA's English/Math/Analytical aren't. batch=null
+// so it invites whoever has active 'fbs' product access, regardless of batch
+// (same semantics as IBA's schedules).
 // Idempotent: skips a row if one already exists for the same (product, subject,
 // dayOfWeek, timeOfDay).
 //
-// IMPORTANT — subject↔timeslot mapping is an ASSUMPTION, not given by any spec:
-// Accounting → Sunday 12:00–14:00, Business Studies → Monday 16:00–18:00,
-// Economics → Thursday 14:00–16:00 (alphabetical subject order mapped onto
-// chronological weekday order — the most defensible default absent other
-// guidance). CONFIRM/CORRECT before running with --apply.
-//
-// Applying this script does NOT enable Google Meet/Skribby auto-creation —
-// that's the separate, still-disabled `meet_auto_create` global flag (shared
-// with IBA). Rows inserted here only make "FBS Class" show up on the FBS
-// dashboard once the nightly lms-generate-sessions cron materialises sessions
-// from them; no real Calendar invites or Skribby bots are scheduled until
-// meet_auto_create is turned on.
+// meet_auto_create is already enabled globally (shared with IBA) — running
+// this with --apply and then regenerating sessions WILL create real Google
+// Calendar events and schedule real Skribby recording bots immediately.
 //
 // Usage:
 //   node scripts/seed-fbs-schedules.mjs --dry-run   # plan only, no DB writes
@@ -79,9 +74,9 @@ function loadEnv() {
 const OWNER_EMAIL = 'ahnaf816@gmail.com';
 
 const SEED_ROWS = [
-  { titleTemplate: 'FBS Class', subject: 'accounting',        product: 'fbs', batch: '2026-27', dayOfWeek: 0, timeOfDay: '12:00', durationMinutes: 120 }, // Sunday 12:00–14:00
-  { titleTemplate: 'FBS Class', subject: 'business_studies',  product: 'fbs', batch: '2026-27', dayOfWeek: 1, timeOfDay: '16:00', durationMinutes: 120 }, // Monday 16:00–18:00
-  { titleTemplate: 'FBS Class', subject: 'economics',         product: 'fbs', batch: '2026-27', dayOfWeek: 4, timeOfDay: '14:00', durationMinutes: 120 }, // Thursday 14:00–16:00
+  { titleTemplate: 'FBS Class', subject: 'tbd', product: 'fbs', batch: null, dayOfWeek: 0, timeOfDay: '12:00', durationMinutes: 120 }, // Sunday 12:00–14:00
+  { titleTemplate: 'FBS Class', subject: 'tbd', product: 'fbs', batch: null, dayOfWeek: 1, timeOfDay: '16:00', durationMinutes: 120 }, // Monday 16:00–18:00
+  { titleTemplate: 'FBS Class', subject: 'tbd', product: 'fbs', batch: null, dayOfWeek: 4, timeOfDay: '14:00', durationMinutes: 120 }, // Thursday 14:00–16:00
 ];
 
 // ─── Main ────────────────────────────────────────────────────────────────────
