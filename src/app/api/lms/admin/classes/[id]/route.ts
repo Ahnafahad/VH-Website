@@ -6,7 +6,7 @@
 import { NextRequest } from 'next/server';
 import { eq } from 'drizzle-orm';
 import { db } from '@/lib/db';
-import { classSessions, classAttendance, recordings, users } from '@/lib/db/schema';
+import { classSessions, classAttendance, recordings, users, sessionMaterials } from '@/lib/db/schema';
 import { safeApiHandler, ApiException } from '@/lib/api-utils';
 import { requireStaff } from '@/lib/tests/route-helpers';
 import { LMS_SUBJECTS } from '@/lib/lms/constants';
@@ -14,6 +14,7 @@ import { updateMeetEvent, deleteMeetEvent } from '@/lib/google/calendar';
 import { getRecordingProvider } from '@/lib/recording/skribby';
 import { isMeetAutoCreateEnabled } from '@/lib/lms/settings';
 import { getDisplayClassNumbers } from '@/lib/lms/class-numbering';
+import { propagateMaterialNameToClasses } from '@/lib/naming/propagate';
 
 const VALID_STATUSES = ['draft', 'scheduled', 'live', 'completed', 'cancelled'] as const;
 
@@ -103,6 +104,28 @@ export async function PATCH(
       .set(updates)
       .where(eq(classSessions.id, sessionId))
       .returning();
+
+    // A class's subject/product feed the auto-naming rename plan, so a class
+    // that was attached to a material while still 'tbd' and then given a
+    // real subject here would otherwise stay stuck with its stale title —
+    // propagation only ever fires from the material side. Idempotent by
+    // design (planClassRenameFromMaterial protects an already-named class).
+    let renamed: typeof updated | undefined;
+    if (updates.subject !== undefined || updates.product !== undefined) {
+      const linked = await db
+        .select({ materialId: sessionMaterials.materialId })
+        .from(sessionMaterials)
+        .where(eq(sessionMaterials.sessionId, sessionId));
+      let anyApplied = false;
+      for (const { materialId } of linked) {
+        const applied = await propagateMaterialNameToClasses(db, materialId);
+        if (applied.some((r) => r.id === sessionId)) anyApplied = true;
+      }
+      if (anyApplied) {
+        renamed = await db.select().from(classSessions).where(eq(classSessions.id, sessionId)).get();
+      }
+    }
+    if (renamed) Object.assign(updated, renamed);
 
     // ── Sync Google Calendar event (failure-tolerant) ─────────────────────────
     let calendarWarning: string | undefined;
