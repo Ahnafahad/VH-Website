@@ -38,6 +38,26 @@ function VocabShellInner({ children }: { children: React.ReactNode }) {
     if (saved) setTheme(saved);
   }, []);
 
+  // TEMP DEBUG: catch-all net for the "Take Quiz" investigation — logs every
+  // uncaught error / rejected promise anywhere in the vocab shell so nothing
+  // gets silently swallowed. Remove once the bug is found.
+  useEffect(() => {
+    const onError = (e: ErrorEvent) => {
+      // eslint-disable-next-line no-console
+      console.error('[LX-DEBUG] window error:', e.message, e.error);
+    };
+    const onRejection = (e: PromiseRejectionEvent) => {
+      // eslint-disable-next-line no-console
+      console.error('[LX-DEBUG] unhandled promise rejection:', e.reason);
+    };
+    window.addEventListener('error', onError);
+    window.addEventListener('unhandledrejection', onRejection);
+    return () => {
+      window.removeEventListener('error', onError);
+      window.removeEventListener('unhandledrejection', onRejection);
+    };
+  }, []);
+
   // One-time audio context unlock on first user gesture so Web Audio works
   // once the user enables sound. Self-removing and SSR-safe (typeof window check).
   useEffect(() => {

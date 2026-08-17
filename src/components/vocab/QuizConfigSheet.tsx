@@ -197,7 +197,14 @@ export default function QuizConfigSheet({ onStart, onCancel }: Props) {
     try { localStorage.setItem(STORAGE_KEY, JSON.stringify(config)); } catch { /* ignore */ }
   }, [config]);
 
-  const handleStart = () => onStart(config);
+  const handleStart = () => {
+    // eslint-disable-next-line no-console
+    console.log('[LX-DEBUG] QuizConfigSheet "Start Quiz" clicked, config =', config, 'onStart typeof =', typeof onStart);
+    onStart(config);
+  };
+
+  // eslint-disable-next-line no-console
+  console.log('[LX-DEBUG] QuizConfigSheet mounted/rendered');
 
   return (
     <motion.div

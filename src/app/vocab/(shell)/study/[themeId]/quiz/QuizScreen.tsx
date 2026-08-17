@@ -827,6 +827,8 @@ interface Props {
 }
 
 export default function QuizScreen({ themeId, themeIds, letterWordIds, sessionType, quizConfig, hintWords: hintWordsProp }: Props) {
+  // eslint-disable-next-line no-console
+  console.log('[LX-DEBUG] QuizScreen mounted/rendered — props:', { themeId, themeIds, letterWordIds, sessionType, quizConfig, hintWordsPropLen: hintWordsProp?.length });
   const { navigate } = useSafeNavigate();
   // Known exit target per session type — router.back() can't be watchdogged
   // (unknown destination), so exit/error routes go to the launching hub.
@@ -877,13 +879,21 @@ export default function QuizScreen({ themeId, themeIds, letterWordIds, sessionTy
 
   // Generate on mount — also fetch word hints in parallel if not pre-supplied
   useEffect(() => {
+    // eslint-disable-next-line no-console
+    console.log('[LX-DEBUG] QuizScreen generate-effect firing. recoveryKey =', recoveryKey);
     // ── Parallel word-hint fetch (fast, pure DB) ───────────────────────────
     try {
       const raw = localStorage.getItem(recoveryKey);
+      // eslint-disable-next-line no-console
+      console.log('[LX-DEBUG] recovery localStorage raw =', raw);
       if (raw) {
         const cached = JSON.parse(raw) as { version?: number; savedAt?: number; sessionId?: number; questions?: QuizQuestion[]; currentIdx?: number; totalEarned?: number };
         const fresh = typeof cached.savedAt === 'number' && Date.now() - cached.savedAt < 6 * 60 * 60 * 1000;
+        // eslint-disable-next-line no-console
+        console.log('[LX-DEBUG] recovery cache parsed:', { version: cached.version, fresh, sessionId: cached.sessionId, questionCount: cached.questions?.length });
         if (cached.version === 1 && fresh && typeof cached.sessionId === 'number' && cached.questions?.length) {
+          // eslint-disable-next-line no-console
+          console.log('[LX-DEBUG] USING RECOVERY CACHE — skipping fresh generation, jumping straight to phase "quiz"');
           setSessionId(cached.sessionId);
           setQuestions(cached.questions);
           setCurrentIdx(Math.min(cached.currentIdx ?? 0, cached.questions.length - 1));
@@ -894,7 +904,9 @@ export default function QuizScreen({ themeId, themeIds, letterWordIds, sessionTy
         }
         localStorage.removeItem(recoveryKey);
       }
-    } catch {
+    } catch (cacheErr) {
+      // eslint-disable-next-line no-console
+      console.error('[LX-DEBUG] recovery cache parse threw:', cacheErr);
       localStorage.removeItem(recoveryKey);
     }
 
@@ -930,28 +942,50 @@ export default function QuizScreen({ themeId, themeIds, letterWordIds, sessionTy
               ? { type: 'exam', questionCount: quizConfig?.questionCount ?? 15 }
               : { type: 'practice', themeIds, questionCount: quizConfig?.questionCount ?? 20 };
 
+        // eslint-disable-next-line no-console
+        console.log('[LX-DEBUG] quiz generation body =', body);
+
         const prefetched = consumePrefetch(body as Parameters<typeof consumePrefetch>[0]);
+        // eslint-disable-next-line no-console
+        console.log('[LX-DEBUG] prefetched hit? ', Boolean(prefetched));
         let data: { sessionId: number; questions: QuizQuestion[] };
         if (prefetched) {
           data = await prefetched as { sessionId: number; questions: QuizQuestion[] };
+          // eslint-disable-next-line no-console
+          console.log('[LX-DEBUG] prefetched data resolved:', data);
         } else {
+          // eslint-disable-next-line no-console
+          console.log('[LX-DEBUG] calling POST /api/vocab/quiz/generate ...');
           const res = await fetch('/api/vocab/quiz/generate', {
             method:  'POST',
             headers: { 'Content-Type': 'application/json' },
             body:    JSON.stringify(body),
             signal:  AbortSignal.timeout(45000),
           });
-          if (!res.ok) throw new Error('generation failed');
+          // eslint-disable-next-line no-console
+          console.log('[LX-DEBUG] /api/vocab/quiz/generate response status =', res.status, res.ok);
+          if (!res.ok) {
+            const errText = await res.text().catch(() => '<unreadable body>');
+            // eslint-disable-next-line no-console
+            console.error('[LX-DEBUG] /api/vocab/quiz/generate FAILED, status =', res.status, 'body =', errText);
+            throw new Error('generation failed: ' + res.status + ' ' + errText);
+          }
           data = await res.json() as { sessionId: number; questions: QuizQuestion[] };
+          // eslint-disable-next-line no-console
+          console.log('[LX-DEBUG] /api/vocab/quiz/generate SUCCESS, sessionId =', data.sessionId, 'questions =', data.questions?.length);
         }
 
         setSessionId(data.sessionId);
         setQuestions(data.questions);
         setPhase('quiz');
+        // eslint-disable-next-line no-console
+        console.log('[LX-DEBUG] setPhase("quiz") called — quiz should now render');
         trackRetention(RETENTION_EVENTS.learningSessionStarted, { sessionType, sessionId: data.sessionId, questions: data.questions.length });
-      } catch {
+      } catch (genErr) {
         // Covers network errors, non-OK responses, and AbortError (45s timeout) —
         // all fall through to the same error phase with retry.
+        // eslint-disable-next-line no-console
+        console.error('[LX-DEBUG] quiz generation threw — setPhase("error"). Error:', genErr, 'name:', (genErr as Error)?.name, 'message:', (genErr as Error)?.message);
         setPhase('error');
       }
     })();

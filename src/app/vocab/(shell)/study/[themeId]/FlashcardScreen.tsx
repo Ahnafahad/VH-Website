@@ -47,6 +47,8 @@ function SessionComplete({
   // Fire complete feedback once on mount
   useEffect(() => {
     fb.play('complete');
+    // eslint-disable-next-line no-console
+    console.log('[LX-DEBUG] SessionComplete mounted, onNext typeof =', typeof onNext);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -145,7 +147,18 @@ function SessionComplete({
           className="flex w-full flex-col gap-3"
         >
           <button
-            onClick={onNext}
+            onClick={() => {
+              // eslint-disable-next-line no-console
+              console.log('[LX-DEBUG] "Take the Quiz" button clicked, onNext typeof =', typeof onNext);
+              try {
+                onNext();
+                // eslint-disable-next-line no-console
+                console.log('[LX-DEBUG] onNext() returned without throwing');
+              } catch (err) {
+                // eslint-disable-next-line no-console
+                console.error('[LX-DEBUG] onNext() threw:', err);
+              }
+            }}
             className="flex w-full items-center justify-center gap-2 rounded-2xl py-4 text-base font-semibold"
             style={{ background: 'var(--color-lx-accent-red)', color: '#fff', fontFamily: "'Sora', sans-serif" }}
           >
@@ -609,6 +622,8 @@ export default function FlashcardScreen({ data, onTakeQuiz }: { data: FlashcardS
     // State-driven advance: flip back first, then advance after a short delay
     // stored in a cancellable ref to prevent double-fire on unmount
     if (isLast) {
+      // eslint-disable-next-line no-console
+      console.log('[LX-DEBUG] last card rated — setComplete(true), letterGroup =', data.letterGroup);
       setComplete(true);
       trackRetention(RETENTION_EVENTS.learningSessionCompleted, { sessionType: data.letterGroup ? 'letter_flashcard' : 'flashcard', themeId: data.themeId, words: data.words.length });
       submitting.current = false;
