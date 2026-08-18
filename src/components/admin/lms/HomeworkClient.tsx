@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useCallback, useRef } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { BookOpen, Trash2, Edit2, Plus, AlertCircle, Clock, ChevronDown, ChevronUp, FileText, CheckCircle, Loader2, Upload, Link2, X as XIcon } from 'lucide-react';
 import { uploadToR2 } from '@/lib/lms/upload-client';
@@ -130,16 +130,8 @@ const defaultForm: AssignmentForm = {
   batch: '', classSessionId: '', dueAt: '', materialId: '', solutionMaterialId: '',
 };
 
-function AssignmentModal({
-  open, editing, sessions, allMaterials, batches, onClose, onSaved,
-}: {
-  open: boolean; editing: Assignment | null;
-  sessions: ClassSession[];
-  allMaterials: MaterialOption[];
-  batches: BatchOption[];
-  onClose: () => void; onSaved: (a: Assignment) => void;
-}) {
-  const [form, setForm] = useState<AssignmentForm>(() => editing ? {
+function assignmentFormFromEditing(editing: Assignment): AssignmentForm {
+  return {
     title: editing.title,
     description: editing.description,
     subject: editing.subject,
@@ -149,7 +141,19 @@ function AssignmentModal({
     dueAt: epochToDhakaLocal(editing.dueAt),
     materialId: editing.materialId ? String(editing.materialId) : '',
     solutionMaterialId: editing.solutionMaterialId ? String(editing.solutionMaterialId) : '',
-  } : defaultForm);
+  };
+}
+
+function AssignmentModal({
+  open, editing, sessions, allMaterials, batches, onClose, onSaved,
+}: {
+  open: boolean; editing: Assignment | null;
+  sessions: ClassSession[];
+  allMaterials: MaterialOption[];
+  batches: BatchOption[];
+  onClose: () => void; onSaved: (a: Assignment) => void;
+}) {
+  const [form, setForm] = useState<AssignmentForm>(() => editing ? assignmentFormFromEditing(editing) : defaultForm);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState('');
   const [uploadFile, setUploadFile] = useState<File | null>(null);
@@ -160,6 +164,20 @@ function AssignmentModal({
   const [solutionUploading, setSolutionUploading] = useState(false);
   const [solutionUploadProgress, setSolutionUploadProgress] = useState(0);
   const solutionFileRef = useRef<HTMLInputElement>(null);
+
+  // Resync form state whenever the modal opens — it's mounted once and reused
+  // for every assignment, so `editing` can change without a remount (same fix
+  // as ClassesClient's SessionModal).
+  useEffect(() => {
+    if (!open) return;
+    setForm(editing ? assignmentFormFromEditing(editing) : defaultForm);
+    setError('');
+    setUploadFile(null);
+    setUploadProgress(0);
+    setSolutionUploadFile(null);
+    setSolutionUploadProgress(0);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [open, editing]);
 
   const f = (k: keyof AssignmentForm, v: string) => setForm(p => ({ ...p, [k]: v }));
 

@@ -169,14 +169,8 @@ const defaultForm: AnnForm = {
   audienceMode: 'batchProduct', individuals: [],
 };
 
-function AnnouncementModal({
-  open, editing, onClose, onSaved, batches,
-}: {
-  open: boolean; editing: LmsAnnouncement | null;
-  onClose: () => void; onSaved: (a: LmsAnnouncement) => void;
-  batches: AudienceBatch[];
-}) {
-  const [form, setForm] = useState<AnnForm>(() => editing ? {
+function annFormFromEditing(editing: LmsAnnouncement): AnnForm {
+  return {
     title: editing.title,
     body: editing.body,
     subject: editing.subject,
@@ -185,9 +179,29 @@ function AnnouncementModal({
     pinned: editing.pinned,
     audienceMode: editing.targetUsers && editing.targetUsers.length > 0 ? 'individuals' : 'batchProduct',
     individuals: editing.targetUsers ?? [],
-  } : defaultForm);
+  };
+}
+
+function AnnouncementModal({
+  open, editing, onClose, onSaved, batches,
+}: {
+  open: boolean; editing: LmsAnnouncement | null;
+  onClose: () => void; onSaved: (a: LmsAnnouncement) => void;
+  batches: AudienceBatch[];
+}) {
+  const [form, setForm] = useState<AnnForm>(() => editing ? annFormFromEditing(editing) : defaultForm);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState('');
+
+  // Resync form state whenever the modal opens — it's mounted once and reused
+  // for every announcement, so `editing` can change without a remount (same
+  // fix as ClassesClient's SessionModal).
+  useEffect(() => {
+    if (!open) return;
+    setForm(editing ? annFormFromEditing(editing) : defaultForm);
+    setError('');
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [open, editing]);
 
   const f = (k: keyof AnnForm, v: string | boolean) => setForm(p => ({ ...p, [k]: v }));
 
