@@ -450,6 +450,28 @@ export default function ClassDetailClient({
     }
   }
 
+  // ── Recording bot: manual retry ─────────────────────────────────────────────
+  const [retryingBot, setRetryingBot] = useState(false);
+  async function handleRetryBot() {
+    setRetryingBot(true);
+    try {
+      const res = await fetch(`/api/lms/admin/classes/${classSession.id}/retry-bot`, {
+        method: 'POST',
+      });
+      if (!res.ok) {
+        const json = await res.json().catch(() => null) as { error?: string } | null;
+        showToast(json?.error ?? 'Could not schedule a retry bot.');
+        return;
+      }
+      showToast('Bot scheduled — it will join the meeting in about a minute.');
+      router.refresh();
+    } catch {
+      showToast('Network error — could not schedule a retry bot.');
+    } finally {
+      setRetryingBot(false);
+    }
+  }
+
   // ── Q&A: post answer ────────────────────────────────────────────────────────
   async function handlePostAnswer(questionId: number) {
     const text = (answerText[questionId] ?? '').trim();
@@ -617,9 +639,27 @@ export default function ClassDetailClient({
 
         {/* ── Recording ─────────────────────────────────────────────────────── */}
         <section style={{ ...cardStyle, padding: 20 }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 12 }}>
-            <Video size={15} strokeWidth={1.5} style={{ color: MUTED }} aria-hidden />
-            <h2 style={sectionLabel}>Recording</h2>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 12, flexWrap: 'wrap', gap: 8 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+              <Video size={15} strokeWidth={1.5} style={{ color: MUTED }} aria-hidden />
+              <h2 style={sectionLabel}>Recording</h2>
+            </div>
+            {classSession.meetLink && (
+              <button
+                onClick={() => void handleRetryBot()}
+                disabled={retryingBot}
+                className="cdc-link"
+                style={{
+                  display: 'flex', alignItems: 'center', gap: 4, fontSize: T_SM, fontWeight: 600,
+                  color: INFO, background: 'none', border: 'none',
+                  cursor: retryingBot ? 'default' : 'pointer', padding: '4px 0',
+                  opacity: retryingBot ? 0.6 : 1,
+                }}
+              >
+                {retryingBot ? <Loader2 size={13} strokeWidth={2} className="animate-spin" aria-hidden /> : <Video size={13} strokeWidth={2} aria-hidden />}
+                {retryingBot ? 'Scheduling…' : 'Retry bot'}
+              </button>
+            )}
           </div>
 
           {!recording ? (
