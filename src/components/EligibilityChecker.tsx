@@ -24,6 +24,9 @@ const atLeast = (grade: string, min: string) => (GRADE_RANK[grade] ?? 0) >= (GRA
 // ─── Grade-point scales (each institution uses its own — never mix) ─────────────
 
 const duPoints:   Record<string, number> = { 'A*': 5.0, A: 5.0, B: 4.0, C: 3.5, D: 0.0, E: 0.0 };
+// Some years' DU admission circulars have graded C as 3.0 rather than 3.5 — used
+// only to flag IBA results that depend on which reading applies (see calcIBA).
+const duPointsCStrict: Record<string, number> = { 'A*': 5.0, A: 5.0, B: 4.0, C: 3.0, D: 0.0, E: 0.0 };
 const bupPoints:  Record<string, number> = { 'A*': 5.0, A: 5.0, B: 4.0, C: 3.5, D: 3.0, E: 0.0 };
 const bracPoints: Record<string, number> = { 'A*': 5.0, A: 5.0, B: 4.0, C: 3.0, D: 2.0 }; // E excluded
 const nsuPoints:  Record<string, number> = { 'A*': 5.0, A: 5.0, B: 4.0, C: 3.0, D: 2.0, E: 1.0 };
@@ -95,17 +98,40 @@ function calcIBA(oLevels: Subject[], aLevels: Subject[]): Result {
 
   const olAvg = bestAvg(ol, duPoints, 5).avg;
   const alAvg = bestAvg(al, duPoints, 2).avg;
+  // Rerun the same averages treating C as 3.0 instead of 3.5, to flag results
+  // that only clear the 3.5 bar because of this year's (unconfirmed) reading of C.
+  const olAvgStrictC = bestAvg(ol, duPointsCStrict, 5).avg;
+  const alAvgStrictC = bestAvg(al, duPointsCStrict, 2).avg;
   const { atLeastA } = distribution(ol, al);
   const olPass = olAvg >= 3.5, alPass = alAvg >= 3.5, twoA = atLeastA >= 2;
   const eligible = olPass && alPass && twoA;
 
+  const olCRisk = olPass && olAvgStrictC < 3.5;
+  const alCRisk = alPass && alAvgStrictC < 3.5;
+  const cRisk = eligible && (olCRisk || alCRisk);
+
   return {
     eligible,
-    reason: eligible ? 'Meets all IBA (DU) requirements.' : 'Requirements not met.',
+    reason: eligible
+      ? cRisk
+        ? "Meets IBA (DU) requirements with C graded as 3.5 — but some years' circulars have graded C as 3.0, which would drop you below the 3.5 average. Confirm this year's circular before relying on this."
+        : 'Meets all IBA (DU) requirements.'
+      : 'Requirements not met.',
+    warn: cRisk,
     checks: [
       { label: 'O-Level Mathematics present', pass: true },
-      { label: 'O-Level avg ≥ 3.5', value: olAvg.toFixed(2), pass: olPass },
-      { label: 'A-Level avg ≥ 3.5', value: alAvg.toFixed(2), pass: alPass },
+      {
+        label: 'O-Level avg ≥ 3.5',
+        value: olCRisk ? `${olAvg.toFixed(2)} (${olAvgStrictC.toFixed(2)} if C=3)` : olAvg.toFixed(2),
+        pass: olPass,
+        warn: olCRisk,
+      },
+      {
+        label: 'A-Level avg ≥ 3.5',
+        value: alCRisk ? `${alAvg.toFixed(2)} (${alAvgStrictC.toFixed(2)} if C=3)` : alAvg.toFixed(2),
+        pass: alPass,
+        warn: alCRisk,
+      },
       { label: 'Min 2 A grades (across 7)', value: `${atLeastA} A`, pass: twoA },
     ],
     info,

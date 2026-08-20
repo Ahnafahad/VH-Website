@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Link from 'next/link';
 import { motion, AnimatePresence, useReducedMotion } from 'motion/react';
 import type { DashboardWeekClass } from '@/lib/lms/dashboard-data';
 import { formatDhaka } from '@/lib/lms/time';
@@ -101,6 +102,13 @@ export default function WeekStripTile({ weekClasses }: Props) {
           this week
         </span>
         <div className="flex-1 h-px" style={{ backgroundColor: 'rgba(212,176,148,0.16)' }} />
+        <Link
+          href="/dashboard/classes"
+          className="text-xs flex-shrink-0 transition-opacity hover:opacity-70"
+          style={{ color: 'rgba(250,245,239,0.40)' }}
+        >
+          view all →
+        </Link>
       </div>
 
       {/* 7-day strip */}
