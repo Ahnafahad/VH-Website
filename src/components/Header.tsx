@@ -37,6 +37,7 @@ const STUDENT_MAIN_LINKS = [
   { label: 'Dashboard', href: '/dashboard' },
   { label: 'Vocab', href: '/vocab/home' },
   { label: 'Tests', href: '/tests' },
+  { label: 'Marathon', href: '/marathon' },
   { label: 'Mental Math', href: '/games/mental-math' },
 ];
 
@@ -45,6 +46,7 @@ const ADMIN_MAIN_LINKS = [
   { label: 'Admin', href: '/admin' },
   { label: 'Vocab', href: '/vocab/home' },
   { label: 'Tests', href: '/tests' },
+  { label: 'Marathon', href: '/marathon' },
 ];
 
 const INSTRUCTOR_MAIN_LINKS = [
@@ -52,6 +54,7 @@ const INSTRUCTOR_MAIN_LINKS = [
   { label: 'Instructor', href: '/admin/today' },
   { label: 'Vocab', href: '/vocab/home' },
   { label: 'Tests', href: '/tests' },
+  { label: 'Marathon', href: '/marathon' },
 ];
 
 /**
