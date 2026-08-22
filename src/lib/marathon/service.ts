@@ -14,7 +14,7 @@ import {
 } from '@/lib/db/schema';
 import { and, eq, inArray, sql } from 'drizzle-orm';
 import { ApiException } from '@/lib/api-utils';
-import { assignmentMatchesUser } from './access';
+import { assignmentMatchesUser, isMarathonStaff } from './access';
 import { isUltimateTesterEmail } from '@/lib/auth/roles';
 import { earliestStartDate, effectiveDayState } from './unlock';
 import { scoreMarathonAttempt } from './scoring';
@@ -49,8 +49,8 @@ export async function getUserAttempt(dayId: number, userId: number): Promise<Mar
 // ─── Overview (chapter + day list for a student) ──────────────────────────────
 
 export async function getMarathonOverviewForUser(user: UserWithProducts): Promise<MarathonChapterListEntry[]> {
-  const isUltimateTester = isUltimateTesterEmail(user.email);
-  const chapters = isUltimateTester
+  const bypass = isMarathonStaff(user) || isUltimateTesterEmail(user.email);
+  const chapters = bypass
     ? await db.select().from(marathonChapters)
     : await db.select().from(marathonChapters).where(eq(marathonChapters.status, 'published'));
   if (chapters.length === 0) return [];
@@ -72,7 +72,7 @@ export async function getMarathonOverviewForUser(user: UserWithProducts): Promis
   const result: MarathonChapterListEntry[] = [];
   for (const chapter of chapters) {
     const mine = allAssignments.filter(a => a.chapterId === chapter.id && assignmentMatchesUser(a, user));
-    if (mine.length === 0 && !isUltimateTester) continue; // not assigned to this student at all
+    if (mine.length === 0 && !bypass) continue; // not assigned to this student at all
     const startDate = mine.length > 0 ? earliestStartDate(mine.map(a => a.startDate))! : now;
 
     const days = allDays
@@ -84,7 +84,7 @@ export async function getMarathonOverviewForUser(user: UserWithProducts): Promis
           id: d.id,
           dayNumber: d.dayNumber,
           totalQuestions: d.totalQuestions,
-          state: isUltimateTester ? 'unlocked' as const : effectiveDayState(startDate, d.dayNumber, now),
+          state: bypass ? 'unlocked' as const : effectiveDayState(startDate, d.dayNumber, now),
           unlocksAt: startDate.getTime() + (d.dayNumber - 1) * 86_400_000,
           attempt: attempt && {
             id: attempt.id,
