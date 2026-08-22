@@ -3132,7 +3132,7 @@
             }
           ],
           "correctKey": "C",
-          "solution": null,
+          "solution": "**Solution.** Notice each remainder is exactly $3$ less than its divisor: $8-5=3$, $10-7=3$, $12-9=3$. That means the number is always $3$ short of a common multiple of $8$, $10$, and $12$ — i.e. $N+3$ is divisible by all three. Find $\\text{lcm}(8,10,12)$: $8=2^3$, $10=2\\times5$, $12=2^2\\times3$; LCM $=2^3\\times3\\times5=120$. So $N=120k-3$ for whole numbers $k$; the smallest positive value comes from $k=1$: $N=117$.\n\n**Verify:** $117\\div8 = 14$ remainder $5$; $117\\div10=11$ remainder $7$; $117\\div12=9$ remainder $9$. All check out.\n\n**Worth remembering.** Whenever every remainder is a _fixed_ amount less than its own divisor, that constant shortfall (not the individual remainders) is the number to work with — it turns three separate remainder conditions into a single LCM-and-shift calculation.",
           "imageUrl": null,
           "primaryTag": {
             "code": "1.3.3",
@@ -3166,7 +3166,7 @@
             }
           ],
           "correctKey": "B",
-          "solution": null,
+          "solution": "**Solution.** Original total: $8\\times15=120$. New total after adding two copies of $x$: $120+2x$, and this must equal $10\\times17=170$. So $2x=170-120=50$, giving $x=25$.",
           "imageUrl": null,
           "primaryTag": {
             "code": "1.5.1",
@@ -3200,7 +3200,7 @@
             }
           ],
           "correctKey": "C",
-          "solution": null,
+          "solution": "**Solution.** Prime-factorize: $360=2^3\\times3^2\\times5$. Total factors: $(3+1)(2+1)(1+1)=4\\times3\\times2=24$. A factor is _odd_ exactly when it uses zero factors of $2$ — that count is found by dropping the $2^3$ term entirely: $(2+1)(1+1)=3\\times2=6$ odd factors. Every other factor must be even, so even factors $=24-6=18$.\n\n**Rule used:** total factors $-$ odd factors $=$ even factors — computing \"odd factors\" (set the power of $2$ to $0$ only) is almost always easier than trying to count even factors directly.",
           "imageUrl": null,
           "primaryTag": {
             "code": "1.3.1",
@@ -3234,7 +3234,7 @@
             }
           ],
           "correctKey": "A",
-          "solution": null,
+          "solution": "**Solution.** For $x$ between $1$ and $7$ (inclusive), the outer two distances add to a constant: $|x-1|+|x-7| = (x-1)+(7-x) = 6$, regardless of where exactly $x$ sits in that range. So for $1\\le x\\le7$, the full sum is $6+|x-4|$. Setting $6+|x-4|\\le8$ gives $|x-4|\\le2$, i.e. $2\\le x\\le6$ — five integers: $2,3,4,5,6$.\n\nOutside $[1,7]$ the sum only grows larger (moving away from the cluster of points $1,4,7$ increases every distance at once), so no additional solutions exist there — check $x=0$: sum $=1+4+7=12>8$, confirming it's excluded.\n\n**Rule used:** for a sum of absolute values like $|x-a|+|x-b|+|x-c|$, the expression is _flattest_ (grows slowest) between the smallest and largest reference points — collapse the outer terms to a constant there, and reason about the middle term separately.",
           "imageUrl": null,
           "primaryTag": {
             "code": "1.1.3",
@@ -3268,7 +3268,7 @@
             }
           ],
           "correctKey": "A",
-          "solution": null,
+          "solution": "**Solution.** Girls are $\\dfrac58$ of the class, so boys are $1-\\dfrac58=\\dfrac38$. Glasses-wearing girls: $\\dfrac15\\times\\dfrac58=\\dfrac18$ of the whole class. Glasses-wearing boys: $\\dfrac14\\times\\dfrac38=\\dfrac{3}{32}$ of the whole class. Total fraction wearing glasses:\n$$\n\\frac18+\\frac{3}{32} = \\frac{4}{32}+\\frac{3}{32} = \\frac{7}{32}.\n$$\n\n**Rule used:** whenever a problem gives \"fraction of a fraction\" for two complementary subgroups (here girls/boys), convert each piece to a fraction of the _whole_ class before adding — never add fractions that are relative to different bases.",
           "imageUrl": null,
           "primaryTag": {
             "code": "1.4.4",
@@ -3302,7 +3302,7 @@
             }
           ],
           "correctKey": "B",
-          "solution": null,
+          "solution": "**Solution.** Let the GCF be $g$; then the LCM is $12g$. Their sum is given: $g+12g=403 \\Rightarrow 13g=403 \\Rightarrow g=31$. So $\\text{GCF}=31$ and $\\text{LCM}=12\\times31=372$. Using $\\text{GCF}\\times\\text{LCM}=$ product of the two numbers: $31\\times372=11532$. Since one number is $93$, the other is $11532\\div93=124$.\n\n**Verify:** $\\gcd(93,124)$: $93=3\\times31$, $124=4\\times31$, so $\\gcd=31$ ✓. $\\text{lcm}(93,124)=3\\times4\\times31=372$ ✓.",
           "imageUrl": null,
           "primaryTag": {
             "code": "1.3.2",
@@ -3336,7 +3336,7 @@
             }
           ],
           "correctKey": "C",
-          "solution": null,
+          "solution": "**Solution.** Handle each power's units-digit cycle separately (all have period $4$).\n\nPowers of $3$: cycle $3,9,7,1$. $17=4\\times4+1$, remainder $1\\to$ first entry, $3$.\n\nPowers of $7$: cycle $7,9,3,1$. $23=4\\times5+3$, remainder $3\\to$ third entry, $3$.\n\nPowers of $2$: cycle $2,4,8,6$. $40=4\\times10+0$, remainder $0\\to$ last entry, $6$.\n\nAdd the three units digits: $3+3+6=12$, so the units digit of the total is $2$.",
           "imageUrl": null,
           "primaryTag": {
             "code": "1.7.1",
@@ -3370,7 +3370,7 @@
             }
           ],
           "correctKey": "E",
-          "solution": null,
+          "solution": "**Solution.** For an evenly-spaced list, the average equals the average of the first and last terms. Let the six consecutive multiples of $5$ be $a, a+5, a+10, a+15, a+20, a+25$. Average $=\\dfrac{a+(a+25)}{2}=a+12.5=42.5$, so $a=30$. The six terms are $30,35,40,45,50,55$; the largest is $55$.\n\n**Verify:** average $=(30+55)/2=42.5$ ✓.",
           "imageUrl": null,
           "primaryTag": {
             "code": "1.5.1",
@@ -3404,7 +3404,7 @@
             }
           ],
           "correctKey": "E",
-          "solution": null,
+          "solution": "**Solution.** Because the pattern repeats forever, the whole expression equals itself one layer in: if $x$ is the value of the radical, then $x=\\sqrt{6+x}$. Square both sides: $x^2=6+x$, i.e. $x^2-x-6=0$, which factors as $(x-3)(x+2)=0$. So $x=3$ or $x=-2$; since the radical is a square root, it must be non-negative, so $x=3$.\n\n**Rule used:** any infinite nested radical $\\sqrt{k+\\sqrt{k+\\sqrt{k+\\cdots}}}$ satisfies $x=\\sqrt{k+x}$ — squaring turns it into an ordinary quadratic, and the negative root is always discarded.",
           "imageUrl": null,
           "primaryTag": {
             "code": "1.7.2",
@@ -3438,7 +3438,7 @@
             }
           ],
           "correctKey": "D",
-          "solution": null,
+          "solution": "**Solution.** Write $12=2^2\\times3$. In $n^2$, every prime's exponent is automatically _even_ (double whatever it is in $n$). For $n^2$ to be divisible by $2^2\\times3$, it needs at least two factors of $2$ (already even — no extra condition beyond what's needed) and at least one factor of $3$. But since exponents in $n^2$ are forced to be even, \"at least one factor of $3$\" in $n^2$ actually means at least _two_ (the next even number up), which means $n$ itself must contribute at least one factor of $3$. Similarly, $n^2$ needing at least $2^2$ means $n$ needs at least $2^1$. So $n$ must be divisible by $2\\times3=6$.\n\n**Verify with a case:** $n=6$: $n^2=36=12\\times3$, divisible by $12$ ✓, and $n=6$ is divisible by $6$. Try $n=18=6\\times3$: $n^2=324=12\\times27$, divisible by $12$, and $18$ is divisible by $6$ but not by $12$ or $24$ — showing those stronger options aren't guaranteed.\n\n**Trap check.** Choice (A) and (C) demand more of $n$ than the condition actually guarantees; testing $n=6$ eliminates both immediately, since $6$ isn't divisible by $12$ or $24$ but still satisfies every given condition.",
           "imageUrl": null,
           "primaryTag": {
             "code": "1.3.1",
@@ -3475,7 +3475,7 @@
             }
           ],
           "correctKey": "C",
-          "solution": null,
+          "solution": "**Solution.** Bring every option to a comparable exponent by rewriting using a common outer power where possible.\n\n$2^{30}=(2^3)^{10}=8^{10}$. $6^{10}$ is already to the $10$th power. $10^9$ and $5^{12}$ don't share that exponent as neatly, so estimate with logarithms (base $10$): $\\log(2^{30})=30\\log2\\approx9.03$; $\\log(5^{12})=12\\log5\\approx8.39$; $\\log(3^{20})=20\\log3\\approx9.54$; $\\log(6^{10})=10\\log6\\approx7.78$; $\\log(10^9)=9$.\n\nThe largest log value is $3^{20}$'s $9.54$, so $3^{20}$ is the greatest.\n\n**Rule used:** when comparing large powers with different bases and exponents, taking $\\log_{10}$ of each turns the comparison into simple multiplication ($\\text{exponent}\\times\\log(\\text{base})$) rather than trying to compute enormous numbers directly.",
           "imageUrl": null,
           "primaryTag": {
             "code": "1.6.1",
@@ -3509,7 +3509,7 @@
             }
           ],
           "correctKey": "A",
-          "solution": null,
+          "solution": "**Solution.** A number has exactly $3$ divisors only when it's the square of a prime: if $N=p^2$, its divisor count is $2+1=3$, and no other shape gives exactly $3$ (any other factorization has at least one exponent-plus-one factor other than $3$ itself, and $3$ being prime forces a single $p^2$ form). Find primes $p$ with $p^2<100$, i.e. $p<10$: $p=2,3,5,7$, giving $4,9,25,49$ — four such numbers.",
           "imageUrl": null,
           "primaryTag": {
             "code": "1.3.1",
@@ -3543,7 +3543,7 @@
             }
           ],
           "correctKey": "D",
-          "solution": null,
+          "solution": "**Solution.** Every prime greater than $3$ is of the form $6n+1$ or $6n-1$ (it can't be divisible by $2$ or $3$). If $p=6n+1$, then $p+2=6n+3=3(2n+1)$ — divisible by $3$, so it can only be prime if it equals $3$ itself, which isn't possible here since $p>3$. So $p$ must instead be of the form $6n-1$, making $p+2=6n+1$, which is not automatically divisible by anything small — consistent with both being prime. With $p=6n-1$, $p+1=6n$, which is exactly divisible by $6$, leaving remainder $0$.\n\n**Verify with a case:** $p=5$, $p+2=7$ (both prime, twin primes). $p+1=6$, and $6\\div6$ leaves remainder $0$. Try $p=11$, $p+2=13$: $p+1=12$, remainder $0$ again.",
           "imageUrl": null,
           "primaryTag": {
             "code": "1.2.3",
@@ -3577,7 +3577,7 @@
             }
           ],
           "correctKey": "E",
-          "solution": null,
+          "solution": "**Solution.** $0.81=\\dfrac{81}{100}$, and $\\sqrt{81}=9$, $\\sqrt{100}=10$, so $\\sqrt{0.81}=\\dfrac{9}{10}=0.9$.",
           "imageUrl": null,
           "primaryTag": {
             "code": "1.7.2",
@@ -3611,7 +3611,7 @@
             }
           ],
           "correctKey": "E",
-          "solution": null,
+          "solution": "**Solution.** We need three-digit numbers that are simultaneously multiples of $7$ and end in the digit $3$. Multiples of $7$ ending in $3$ repeat with period $10$ in the multiplier (because units digits of multiples of $7$ cycle every $10$ multiples): checking small multiples, $7\\times9=63$ is the first one ending in $3$, and the next is $7\\times19=133$ (adding $10$ to the multiplier each time, since $7\\times10=70$ shifts the units digit pattern back to where it started). So the qualifying numbers are $63, 133, 203, \\dots$, an arithmetic sequence with common difference $70$.\n\nRestrict to three-digit numbers ($100$ to $999$): the first term at or above $100$ is $133$, and the pattern continues $133, 203, 273, \\dots$ Find the last term at or below $999$: $133+70k\\le999 \\Rightarrow 70k\\le866 \\Rightarrow k\\le12.37$, so $k$ runs from $0$ to $12$ — that's $13$ values.\n\n**Verify the endpoints:** $k=0$ gives $133$ ✓ (three-digit, ends in $3$, $133=7\\times19$). $k=12$ gives $133+840=973=7\\times139$ ✓, and the next one, $1043$, is four digits.",
           "imageUrl": null,
           "primaryTag": {
             "code": "1.2.2",
@@ -3648,7 +3648,7 @@
             }
           ],
           "correctKey": "D",
-          "solution": null,
+          "solution": "**Solution.** Write $y=x-10$, so $xy = x(x-10) = x^2-10x$. This is a upward-opening parabola in $x$, minimized at $x=-\\dfrac{-10}{2(1)}=5$. Since $x=5$ is itself an integer, the true minimum is achieved exactly there: $x=5$, $y=5-10=-5$, giving $xy=5\\times(-5)=-25$.\n\n**Verify:** $|x-y|=|5-(-5)|=10$ ✓, and $xy=-25$.\n\n**Worth remembering.** For a fixed difference between two numbers, their product is minimized (most negative) when they're centered symmetrically around zero — i.e. one is the negative of the other. Any other split of the same fixed difference gives a _less_ negative (or positive) product.",
           "imageUrl": null,
           "primaryTag": {
             "code": "1.1.3",
@@ -3682,7 +3682,7 @@
             }
           ],
           "correctKey": "B",
-          "solution": null,
+          "solution": "**Solution.** Rewrite each factor as a single fraction: $1+\\dfrac1k = \\dfrac{k+1}{k}$. The full product becomes\n$$\n\\frac32\\cdot\\frac43\\cdot\\frac54\\cdot\\frac65\\cdot\\frac76\\cdot\\frac87\\cdot\\frac98\\cdot\\frac{10}{9}.\n$$\nEvery numerator cancels with the denominator of the next fraction (a telescoping product), leaving only the very first denominator and the very last numerator: $\\dfrac{10}{2}=5$.\n\n**Rule used:** any product of consecutive terms $\\dfrac{k+1}{k}$ telescopes down to $\\dfrac{\\text{last numerator}}{\\text{first denominator}}$ — recognizing this pattern turns an eight-term multiplication into a one-line answer.",
           "imageUrl": null,
           "primaryTag": {
             "code": "1.4.3",
@@ -3716,7 +3716,7 @@
             }
           ],
           "correctKey": "E",
-          "solution": null,
+          "solution": "**Solution.** Write $12=2^2\\times3^1$ and $24=2^3\\times3^1$. A factor of $n$ is a multiple of $12$ exactly when its power of $2$ is at least $2$ and its power of $3$ is at least $1$. To _also_ fail to be a multiple of $24$, its power of $2$ must be _less than_ $3$ — combined with \"at least $2$,\" that pins the power of $2$ down to exactly $2$ (only one choice). The power of $3$ just needs to be at least $1$, and can go up to the maximum available, $4$: that's $4$ choices ($1,2,3,4$). The power of $5$ is completely unrestricted by this condition, so it can be $0,1,$ or $2$: $3$ choices.\n\nMultiply the independent choice counts: $1\\times4\\times3=12$.",
           "imageUrl": null,
           "primaryTag": {
             "code": "1.3.1",
@@ -3750,7 +3750,7 @@
             }
           ],
           "correctKey": "C",
-          "solution": null,
+          "solution": "**Solution.** Dividing by a fraction means multiplying by its reciprocal: $\\dfrac23\\div\\dfrac49 = \\dfrac23\\times\\dfrac94 = \\dfrac{18}{12}=\\dfrac32$.",
           "imageUrl": null,
           "primaryTag": {
             "code": "1.4.3",
@@ -3784,7 +3784,7 @@
             }
           ],
           "correctKey": "D",
-          "solution": null,
+          "solution": "**Solution.** $|x-3|$ is the distance from $x$ to $3$; we need that distance strictly between $2$ and $5$. This splits into two intervals: $x-3$ between $2$ and $5$ gives $5<x<8$, and $x-3$ between $-5$ and $-2$ gives $-2<x<1$. Integers in $5<x<8$: $6,7$. Integers in $-2<x<1$: $-1,0$. Total: four integers.\n\n**Trap check.** It's easy to only find one side of the two-sided inequality and stop — remember $|x-3|$ being \"between $2$ and $5$\" describes points on _both_ sides of $3$, not just the far side.",
           "imageUrl": null,
           "primaryTag": {
             "code": "1.1.3",
@@ -3818,7 +3818,7 @@
             }
           ],
           "correctKey": "C",
-          "solution": null,
+          "solution": "**Solution.** Use the sum formula $\\dfrac{n(n+1)}{2}=210$, so $n(n+1)=420$. Estimate: $\\sqrt{420}\\approx20.5$, so try $n=20$: $20\\times21=420$ ✓.",
           "imageUrl": null,
           "primaryTag": {
             "code": "1.1.2",
@@ -3852,7 +3852,7 @@
             }
           ],
           "correctKey": "A",
-          "solution": null,
+          "solution": "**Solution.** Mean $10$ over $5$ numbers means the total sum is $50$. Sort the list $a_1\\le a_2\\le a_3\\le a_4\\le a_5$; the median condition fixes $a_3=12$. To make the largest value $a_5$ as big as possible, make everything else as small as the constraints allow: the two smallest positive integers are $a_1=1$, $a_2=1$, and since $a_4$ must be at least as large as the median, its smallest allowed value is $a_4=12$. That leaves\n$$\na_5 = 50 - (1+1+12+12) = 50-26 = 24.\n$$\n\n**Verify:** the list $1,1,12,12,24$ has sum $50$ (mean $10$ ✓) and median $12$ ✓, with every value a positive integer.\n\n**Rule used:** \"maximize one value subject to a fixed total and other constraints\" always means minimizing every other value down to the tightest limits those constraints allow — here, the positivity floor for the bottom two and the median floor for the fourth value.",
           "imageUrl": null,
           "primaryTag": {
             "code": "1.5.1",
@@ -3886,7 +3886,7 @@
             }
           ],
           "correctKey": "D",
-          "solution": null,
+          "solution": "**Solution.** Let the total be $T$. Red $=\\dfrac25T$, leaving $\\dfrac35T$. Blue is $\\dfrac13$ of that remainder: $\\dfrac13\\times\\dfrac35T=\\dfrac15T$. Green is whatever's left:\n$$\nT - \\frac25T - \\frac15T = T\\left(1-\\frac25-\\frac15\\right) = T\\cdot\\frac{2}{5}.\n$$\nThis equals $36$: $\\dfrac25T=36 \\Rightarrow T=90$.\n\n**Verify:** red $=\\frac25(90)=36$, remaining $54$; blue $=\\frac13(54)=18$; green $=54-18=36$ ✓.",
           "imageUrl": null,
           "primaryTag": {
             "code": "1.4.4",
@@ -3920,7 +3920,7 @@
             }
           ],
           "correctKey": "B",
-          "solution": null,
+          "solution": "**Solution.** Work modulo $3$: since $2\\equiv-1\\pmod3$, $2^n\\equiv(-1)^n\\pmod3$. So $2^n+1\\equiv(-1)^n+1\\pmod3$. This is $0$ exactly when $(-1)^n=-1$, i.e. when $n$ is odd. Count the odd positive integers less than $50$ (i.e. from $1$ to $49$): $1,3,5,\\dots,49$ — that's $25$ values.\n\n**Rule used:** reducing the base modulo the divisor first ($2\\equiv-1\\pmod3$) turns a power-of-$2$ divisibility question into a simple parity check on the exponent.",
           "imageUrl": null,
           "primaryTag": {
             "code": "1.3.5",
@@ -3957,7 +3957,7 @@
             }
           ],
           "correctKey": "A",
-          "solution": null,
+          "solution": "**Solution.** First count \"divisible by $3$ or $5$\" using inclusion–exclusion: multiples of $3$ up to $200$: $\\lfloor200/3\\rfloor=66$. Multiples of $5$: $\\lfloor200/5\\rfloor=40$. Multiples of both (i.e. of $15$): $\\lfloor200/15\\rfloor=13$. So divisible by $3$ or $5$: $66+40-13=93$.\n\nNow exclude the ones divisible by $15$ (since those are divisible by _both_ $3$ and $5$, and the question wants \"or, but not both/$15$\"): $93-13=80$.\n\n**Rule used:** \"$A$ or $B$ but not both\" is (count of $A$ or $B$) $-$ (count of $A$ and $B$) — the overlap gets removed a second time, since inclusion–exclusion already counted it once inside the \"or\" total.",
           "imageUrl": null,
           "primaryTag": {
             "code": "1.3.2",
@@ -3991,7 +3991,7 @@
             }
           ],
           "correctKey": "E",
-          "solution": null,
+          "solution": "**Solution.** Multiply by the conjugate $\\sqrt5+\\sqrt3$ over itself:\n$$\n\\frac{(\\sqrt5+\\sqrt3)^2}{(\\sqrt5-\\sqrt3)(\\sqrt5+\\sqrt3)} = \\frac{5+2\\sqrt{15}+3}{5-3} = \\frac{8+2\\sqrt{15}}{2} = 4+\\sqrt{15}.\n$$",
           "imageUrl": null,
           "primaryTag": {
             "code": "1.7.2",
@@ -4025,7 +4025,7 @@
             }
           ],
           "correctKey": "B",
-          "solution": null,
+          "solution": "**Solution.** This is the product of four consecutive integers. Among any four consecutive integers, the count of multiples of $2$, $3$, and $4$ combine to guarantee divisibility by $4!=24$ — in general, the product of $k$ consecutive integers is always divisible by $k!$.\n\n**Verify with a case:** $n=1$: $1\\times2\\times3\\times4=24=24\\times1$ (the smallest possible case, confirming $24$ is the _largest_ guaranteed value — nothing bigger works for every $n$).",
           "imageUrl": null,
           "primaryTag": {
             "code": "1.1.2",
@@ -4059,7 +4059,7 @@
             }
           ],
           "correctKey": "D",
-          "solution": null,
+          "solution": "**Solution.** Factor out the smaller power of $2$: $2^{x+3}+2^x = 2^x(2^3+1) = 2^x\\times9$. Set this equal to $72$: $2^x=72\\div9=8=2^3$, so $x=3$.\n\n**Verify:** $2^{6}+2^{3}=64+8=72$ ✓.",
           "imageUrl": null,
           "primaryTag": {
             "code": "1.6.1",
@@ -4093,7 +4093,7 @@
             }
           ],
           "correctKey": "B",
-          "solution": null,
+          "solution": "**Solution.** The tens digit requires the _last two_ digits of $7^{2024}$, so track $7^n$ modulo $100$ instead of just modulo $10$. Compute the cycle: $7^1=07$, $7^2=49$, $7^3=343\\to43$, $7^4=7\\times43=301\\to01$, $7^5=07$ — the cycle repeats every $4$ powers, as $07,49,43,01$.\n\n$2024\\div4=506$ exactly, remainder $0$, which matches the _last_ entry of the cycle: $01$. So the last two digits of $7^{2024}$ are $01$, meaning the tens digit is $0$.\n\n**Worth remembering.** Whenever a question asks for the tens digit (not just units), you need the cycle of the base modulo $100$, not modulo $10$ — a different, usually longer, computation than a simple units-digit cyclicity question.",
           "imageUrl": null,
           "primaryTag": {
             "code": "1.7.1",
@@ -4127,7 +4127,7 @@
             }
           ],
           "correctKey": "A",
-          "solution": null,
+          "solution": "**Solution.** Since $N$ leaves remainder $24$ on division by $d$, write $N=dq+24$ where $24<d$ (a remainder is always smaller than the divisor). Then $2N=2dq+48=d(2q)+48$. If $48$ happened to be smaller than $d$, that would already be the remainder — but we're told the remainder of $2N$ is $11$, not $48$, so $48$ must exceed $d$, and one extra $d$ needs to be absorbed into the quotient: $2N=d(2q+1)+(48-d)$. So the true remainder is $48-d$, and setting this equal to $11$ gives $d=37$.\n\n**Verify:** $d=37>24$, satisfying the requirement that the first remainder ($24$) be smaller than $d$. Try a concrete $N$: let $q=1$, so $N=37+24=61$. Then $2N=122$, and $122\\div37=3$ remainder $11$ ✓ ($37\\times3=111$, $122-111=11$).",
           "imageUrl": null,
           "primaryTag": {
             "code": "1.3.5",

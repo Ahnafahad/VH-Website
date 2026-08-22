@@ -105,6 +105,6 @@ creating an assignment for it — students only ever see `published` chapters
 
 ## Current content
 `marathon-import/number-system.json` — Chapter 1 "Number System", 14 days × 30
-questions (420 total), fully keyed. Solutions authored for Days 1–3 only; Days
-4–14 show the answer key with "solution coming soon" until follow-up solution
+questions (420 total), fully keyed. Solutions authored for Days 1–4 only; Days
+5–14 show the answer key with "solution coming soon" until follow-up solution
 sheets are prepped through the same pipeline.
