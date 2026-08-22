@@ -1037,6 +1037,166 @@ export type TestQuestion      = typeof testQuestions.$inferSelect;
 export type TestWindow        = typeof testWindows.$inferSelect;
 export type TestAttempt       = typeof testAttempts.$inferSelect;
 export type TestAnswer        = typeof testAnswers.$inferSelect;
+
+// ══════════════════════════════════════════════════════════════════════════════
+// MATH MARATHON — Multi-day chapter drills (IBA). Same taking mechanics as the
+// online tests module above (KaTeX/markdown stems, MCQ options, one attempt per
+// student per day) but with three deliberate differences driving the extra
+// tables below: (1) a day unlocks on a schedule, not a window; (2) per-question
+// time is tracked live via client heartbeats, accumulating across revisits,
+// because the whole point is time-management coaching; (3) a self-serve pause
+// (max 2) replaces the tab-leave ban ladder — this is practice, not a proctored
+// exam. No negative marking. Full design: docs/marathon-module.md.
+// ══════════════════════════════════════════════════════════════════════════════
+
+// ─── Chapters ─────────────────────────────────────────────────────────────────
+// One row per chapter (e.g. "Number System"). Days/questions are imported
+// together from one canonical JSON via scripts/import-marathon.mjs.
+
+export const marathonChapters = sqliteTable('marathon_chapters', {
+  id:              integer('id').primaryKey({ autoIncrement: true }),
+  slug:            text('slug').notNull().unique(),
+  title:           text('title').notNull(),
+  subject:         text('subject').notNull().default('math'),   // LmsSubject
+  product:         text('product').notNull().default('iba'),
+  totalDays:       integer('total_days').notNull(),
+  questionsPerDay: integer('questions_per_day').notNull().default(30),
+  // 'draft' | 'published' — draft chapters can't be assigned to a batch
+  status:          text('status').notNull().default('draft'),
+  createdBy:       integer('created_by').references(() => users.id),
+  createdAt:       integer('created_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
+}, (t) => [
+  index('idx_marathon_chapters_product').on(t.product, t.status),
+]);
+
+// ─── Days ───────────────────────────────────────────────────────────────────
+
+export const marathonDays = sqliteTable('marathon_days', {
+  id:             integer('id').primaryKey({ autoIncrement: true }),
+  chapterId:      integer('chapter_id').notNull().references(() => marathonChapters.id, { onDelete: 'cascade' }),
+  dayNumber:      integer('day_number').notNull(),
+  totalQuestions: integer('total_questions').notNull().default(0),
+}, (t) => [
+  unique().on(t.chapterId, t.dayNumber),
+  index('idx_marathon_days_chapter').on(t.chapterId, t.dayNumber),
+]);
+
+// ─── Questions ────────────────────────────────────────────────────────────────
+// stem/options/solution: markdown + $...$ math (RichText format, same as
+// testQuestions). solution is nullable — null renders as "solution coming
+// soon" until authored; the answer key itself is always available at submit.
+// Tags come from the source content's subtopic taxonomy (e.g. "1.1.2" /
+// "Lecture 1.1 — Consecutive Integers") and drive the per-subtopic weakness
+// report — deliberately absent from the plain tests module, present here.
+
+export const marathonQuestions = sqliteTable('marathon_questions', {
+  id:                integer('id').primaryKey({ autoIncrement: true }),
+  dayId:             integer('day_id').notNull().references(() => marathonDays.id, { onDelete: 'cascade' }),
+  number:            integer('number').notNull(),           // 1..N, position within the day
+  stem:              text('stem').notNull(),
+  options:           text('options').notNull(),             // JSON [{key,text}]
+  correctKey:        text('correct_key').notNull(),
+  solution:          text('solution'),                      // markdown explanation; null = not authored yet
+  imageUrl:          text('image_url'),
+  primaryTagCode:    text('primary_tag_code'),               // e.g. '1.1.2'
+  primaryTagLabel:   text('primary_tag_label'),               // e.g. 'Lecture 1.1 — Consecutive Integers'
+  secondaryTagCode:  text('secondary_tag_code'),
+  secondaryTagLabel: text('secondary_tag_label'),
+}, (t) => [
+  unique().on(t.dayId, t.number),
+  index('idx_marathon_questions_day').on(t.dayId, t.number),
+]);
+
+// ─── Assignments ──────────────────────────────────────────────────────────────
+// One row = "this chapter is live for this batch, Day 1 unlocks on startDate".
+// batch NULL = every student with access to `product`. Day N's unlock date is
+// startDate + (N-1) calendar days (see lib/marathon/unlock.ts); once unlocked a
+// day stays open indefinitely — students catch up at their own pace, later days
+// keep unlocking on schedule regardless of who has or hasn't finished earlier
+// ones.
+
+export const marathonAssignments = sqliteTable('marathon_assignments', {
+  id:         integer('id').primaryKey({ autoIncrement: true }),
+  chapterId:  integer('chapter_id').notNull().references(() => marathonChapters.id, { onDelete: 'cascade' }),
+  product:    text('product').notNull().default('iba'),
+  batch:      text('batch'),                                 // null = all batches on this product
+  startDate:  integer('start_date', { mode: 'timestamp' }).notNull(), // Day 1 unlock date
+  assignedBy: integer('assigned_by').references(() => users.id),
+  createdAt:  integer('created_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
+}, (t) => [
+  index('idx_marathon_assignments_chapter').on(t.chapterId),
+  index('idx_marathon_assignments_product_batch').on(t.product, t.batch),
+]);
+
+// ─── Attempts ─────────────────────────────────────────────────────────────────
+// One per (day, user). Free navigation within the day — students can revisit
+// skipped/answered questions before submitting. Stopwatch semantics: elapsed
+// wall-clock time minus totalPausedMs is the attempt's active time; pauseCount
+// is capped at 2 and enforced server-side (see api/marathon/.../pause).
+// Scoring: plain correct-count out of the day's question total — no negative
+// marking (this is mastery practice, not a scored test).
+
+export const marathonAttempts = sqliteTable('marathon_attempts', {
+  id:            integer('id').primaryKey({ autoIncrement: true }),
+  dayId:         integer('day_id').notNull().references(() => marathonDays.id, { onDelete: 'cascade' }),
+  userId:        integer('user_id').notNull().references(() => users.id, { onDelete: 'cascade' }),
+  // 'in_progress' | 'submitted'
+  status:        text('status').notNull().default('in_progress'),
+  startedAt:     integer('started_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
+  submittedAt:   integer('submitted_at', { mode: 'timestamp' }),
+  pauseCount:    integer('pause_count').notNull().default(0),      // 0..2
+  pausedAt:      integer('paused_at', { mode: 'timestamp' }),      // set while currently paused
+  totalPausedMs: integer('total_paused_ms').notNull().default(0),
+  totalActiveMs: integer('total_active_ms'),                       // computed at submit
+  totalCorrect:  integer('total_correct'),
+  totalWrong:    integer('total_wrong'),
+  totalSkipped:  integer('total_skipped'),
+}, (t) => [
+  unique().on(t.dayId, t.userId),
+  index('idx_marathon_attempts_user').on(t.userId),
+]);
+
+// ─── Answers ──────────────────────────────────────────────────────────────────
+// One per (attempt, question). timeSpentMs accumulates across multiple visits
+// (free navigation) via periodic client heartbeats while the question is on
+// screen and the attempt isn't paused — see api/marathon/.../time.
+
+export const marathonAnswers = sqliteTable('marathon_answers', {
+  id:             integer('id').primaryKey({ autoIncrement: true }),
+  attemptId:      integer('attempt_id').notNull().references(() => marathonAttempts.id, { onDelete: 'cascade' }),
+  questionId:     integer('question_id').notNull().references(() => marathonQuestions.id, { onDelete: 'cascade' }),
+  selectedKey:    text('selected_key'),                       // null = unanswered/skipped
+  visited:        integer('visited', { mode: 'boolean' }).notNull().default(false),
+  timeSpentMs:    integer('time_spent_ms').notNull().default(0),
+  visitCount:     integer('visit_count').notNull().default(0),
+  firstVisitedAt: integer('first_visited_at', { mode: 'timestamp' }),
+  lastVisitedAt:  integer('last_visited_at', { mode: 'timestamp' }),
+}, (t) => [
+  unique().on(t.attemptId, t.questionId),
+  index('idx_marathon_answers_question').on(t.questionId),
+]);
+
+// ─── Pause events ─────────────────────────────────────────────────────────────
+// Audit trail, mirrors testViolations.
+
+export const marathonPauseEvents = sqliteTable('marathon_pause_events', {
+  id:        integer('id').primaryKey({ autoIncrement: true }),
+  attemptId: integer('attempt_id').notNull().references(() => marathonAttempts.id, { onDelete: 'cascade' }),
+  pausedAt:  integer('paused_at', { mode: 'timestamp' }).notNull(),
+  resumedAt: integer('resumed_at', { mode: 'timestamp' }),
+}, (t) => [
+  index('idx_marathon_pause_events_attempt').on(t.attemptId),
+]);
+
+// ─── Math Marathon Type Exports ────────────────────────────────────────────────
+
+export type MarathonChapter    = typeof marathonChapters.$inferSelect;
+export type MarathonDay        = typeof marathonDays.$inferSelect;
+export type MarathonQuestion   = typeof marathonQuestions.$inferSelect;
+export type MarathonAssignment = typeof marathonAssignments.$inferSelect;
+export type MarathonAttempt    = typeof marathonAttempts.$inferSelect;
+export type MarathonAnswer     = typeof marathonAnswers.$inferSelect;
+export type MarathonPauseEvent = typeof marathonPauseEvents.$inferSelect;
 export type TestViolation     = typeof testViolations.$inferSelect;
 
 export type TestBucket        = 'iba' | 'du_fbs';

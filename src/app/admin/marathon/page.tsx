@@ -1,0 +1,165 @@
+'use client';
+
+import { useEffect, useState } from 'react';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+
+interface ChapterOption { id: number; slug: string; title: string; product: string; totalDays: number; questionsPerDay: number; status: string }
+interface BatchOption { id: number; name: string; product: string; status: string }
+interface AssignmentRow { id: number; chapterId: number; chapterTitle: string; product: string; batch: string | null; startDate: number }
+
+export default function MarathonAdminPage() {
+  const [chapters, setChapters] = useState<ChapterOption[]>([]);
+  const [batches, setBatches] = useState<BatchOption[]>([]);
+  const [assignments, setAssignments] = useState<AssignmentRow[]>([]);
+  const [chapterId, setChapterId] = useState<number | ''>('');
+  const [batchName, setBatchName] = useState<string>(''); // '' = all batches
+  const [startDate, setStartDate] = useState<string>('');
+  const [saving, setSaving] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  const load = async () => {
+    const [chRes, batchRes, assignRes] = await Promise.all([
+      fetch('/api/admin/marathon/chapters'),
+      fetch('/api/admin/batches'),
+      fetch('/api/admin/marathon/assignments'),
+    ]);
+    if (chRes.ok) setChapters((await chRes.json()).chapters);
+    if (batchRes.ok) setBatches((await batchRes.json()).batches);
+    if (assignRes.ok) setAssignments((await assignRes.json()).assignments);
+    setLoading(false);
+  };
+
+  useEffect(() => { load(); }, []);
+
+  const selectedChapter = chapters.find(c => c.id === chapterId);
+  const batchesForProduct = batches.filter(b => b.product === selectedChapter?.product);
+
+  const togglePublish = async (chapter: ChapterOption) => {
+    const nextStatus = chapter.status === 'published' ? 'draft' : 'published';
+    const res = await fetch(`/api/admin/marathon/chapters/${chapter.id}`, {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ status: nextStatus }),
+    });
+    if (res.ok) await load();
+  };
+
+  const submit = async () => {
+    if (!chapterId || !startDate || !selectedChapter) return;
+    setSaving(true);
+    setError(null);
+    try {
+      const res = await fetch('/api/admin/marathon/assignments', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          chapterId,
+          product: selectedChapter.product,
+          batch: batchName || null,
+          startDate: new Date(`${startDate}T00:00:00`).getTime(),
+        }),
+      });
+      if (!res.ok) {
+        const body = await res.json().catch(() => ({}));
+        throw new Error(body.error ?? 'Could not create assignment');
+      }
+      setChapterId('');
+      setBatchName('');
+      setStartDate('');
+      await load();
+    } catch (e) {
+      setError(e instanceof Error ? e.message : 'Something went wrong');
+    } finally {
+      setSaving(false);
+    }
+  };
+
+  return (
+    <div className="max-w-3xl mx-auto px-4 py-10">
+      <h1 className="text-2xl font-semibold mb-1">Math Marathon</h1>
+      <p className="text-muted-foreground text-sm mb-8">Assign a chapter to a batch. Day 1 unlocks on the start date; each later day unlocks one calendar day after the previous, and stays open once unlocked.</p>
+
+      {loading ? (
+        <p className="text-muted-foreground">Loading…</p>
+      ) : (
+        <>
+          <h2 className="font-semibold text-sm mb-3">Chapters</h2>
+          <div className="border rounded-xl divide-y mb-8">
+            {chapters.length === 0 && <p className="text-sm text-muted-foreground p-4">No chapters imported yet — run scripts/import-marathon.mjs.</p>}
+            {chapters.map(c => (
+              <div key={c.id} className="flex items-center justify-between px-4 py-3 text-sm">
+                <div>
+                  <p className="font-medium">{c.title}</p>
+                  <p className="text-muted-foreground text-xs">{c.totalDays} days · {c.questionsPerDay} q/day · {c.product}</p>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className={c.status === 'published' ? 'text-emerald-600 text-xs font-semibold' : 'text-muted-foreground text-xs'}>{c.status}</span>
+                  <Button variant="outline" size="sm" onClick={() => togglePublish(c)}>
+                    {c.status === 'published' ? 'Unpublish' : 'Publish'}
+                  </Button>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="border rounded-xl p-5 mb-8 space-y-4">
+            <h2 className="font-semibold text-sm">New assignment</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              <div>
+                <label className="text-xs text-muted-foreground block mb-1">Chapter</label>
+                <select
+                  className="h-8 w-full rounded-lg border border-input bg-transparent px-2 text-sm"
+                  value={chapterId}
+                  onChange={e => { setChapterId(e.target.value ? Number(e.target.value) : ''); setBatchName(''); }}
+                >
+                  <option value="">Select…</option>
+                  {chapters.map(c => (
+                    <option key={c.id} value={c.id}>{c.title} ({c.status})</option>
+                  ))}
+                </select>
+              </div>
+              <div>
+                <label className="text-xs text-muted-foreground block mb-1">Batch</label>
+                <select
+                  className="h-8 w-full rounded-lg border border-input bg-transparent px-2 text-sm"
+                  value={batchName}
+                  onChange={e => setBatchName(e.target.value)}
+                  disabled={!selectedChapter}
+                >
+                  <option value="">All batches on {selectedChapter?.product ?? 'this product'}</option>
+                  {batchesForProduct.map(b => (
+                    <option key={b.id} value={b.name}>{b.name}</option>
+                  ))}
+                </select>
+              </div>
+              <div>
+                <label className="text-xs text-muted-foreground block mb-1">Day 1 unlocks on</label>
+                <Input type="date" value={startDate} onChange={e => setStartDate(e.target.value)} />
+              </div>
+            </div>
+            {error && <p className="text-sm text-destructive">{error}</p>}
+            <Button onClick={submit} disabled={saving || !chapterId || !startDate}>
+              {saving ? 'Assigning…' : 'Assign'}
+            </Button>
+          </div>
+
+          <h2 className="font-semibold text-sm mb-3">Existing assignments</h2>
+          <div className="border rounded-xl divide-y">
+            {assignments.length === 0 && <p className="text-sm text-muted-foreground p-4">No assignments yet.</p>}
+            {assignments.map(a => (
+              <div key={a.id} className="flex items-center justify-between px-4 py-3 text-sm">
+                <div>
+                  <p className="font-medium">{a.chapterTitle}</p>
+                  <p className="text-muted-foreground text-xs">{a.product} · {a.batch ?? 'all batches'}</p>
+                </div>
+                <p className="text-muted-foreground text-xs">Day 1: {new Date(a.startDate).toLocaleDateString()}</p>
+              </div>
+            ))}
+          </div>
+        </>
+      )}
+    </div>
+  );
+}
