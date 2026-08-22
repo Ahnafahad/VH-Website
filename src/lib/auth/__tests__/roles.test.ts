@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { isStaffRole, isAdminRole, isSuperAdminRole } from '../roles';
+import { isStaffRole, isAdminRole, isSuperAdminRole, isUltimateTesterEmail } from '../roles';
 
 const ROLES = ['student', 'instructor', 'admin', 'super_admin'] as const;
 
@@ -34,6 +34,19 @@ describe('role tiers', () => {
       expect(isStaffRole(value), String(value)).toBe(false);
       expect(isAdminRole(value), String(value)).toBe(false);
       expect(isSuperAdminRole(value), String(value)).toBe(false);
+    }
+  });
+});
+
+describe('isUltimateTesterEmail', () => {
+  it('matches only the hardcoded QA account, case-insensitively', () => {
+    expect(isUltimateTesterEmail('ahnafahad16@gmail.com')).toBe(true);
+    expect(isUltimateTesterEmail('AhnafAhad16@Gmail.com')).toBe(true);
+  });
+
+  it('rejects everyone else, including missing values', () => {
+    for (const value of [null, undefined, '', 'ahnaf816@gmail.com', 'someone@example.com']) {
+      expect(isUltimateTesterEmail(value), String(value)).toBe(false);
     }
   });
 });

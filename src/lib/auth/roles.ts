@@ -40,3 +40,18 @@ export function isAdminRole(role: string | null | undefined): boolean {
 export function isSuperAdminRole(role: string | null | undefined): boolean {
   return role === 'super_admin';
 }
+
+/**
+ * One hardcoded QA account that must see every piece of student-facing
+ * content (tests, marathon days, recordings, materials) with none of the
+ * normal viewing restrictions — draft/published status, product/batch
+ * assignment, unlock schedules, cohort result windows, anti-cheat — while
+ * remaining a plain `student` role with zero admin/mutation privileges.
+ * Deliberately NOT folded into isStaffRole: every call site below only ORs
+ * this into content-VISIBILITY checks, never into admin-authorization gates
+ * (which stay isStaffRole/isAdminRole-only), so this account never gains the
+ * ability to create/edit/delete anything.
+ */
+export function isUltimateTesterEmail(email: string | null | undefined): boolean {
+  return (email ?? '').toLowerCase() === 'ahnafahad16@gmail.com';
+}

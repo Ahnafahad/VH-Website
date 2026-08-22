@@ -17,6 +17,7 @@ import {
 import { safeApiHandler, ApiException } from '@/lib/api-utils';
 import { requireUser } from '@/lib/tests/route-helpers';
 import { canAccessLmsContent } from '@/lib/lms/access';
+import { isUltimateTesterEmail } from '@/lib/auth/roles';
 import { countSubsequentCompletedClasses } from '@/lib/lms/recording-expiry-db';
 import { isRecordingWatchable } from '@/lib/lms/recording-expiry';
 import { r2PresignGet } from '@/lib/storage/r2';
@@ -51,7 +52,8 @@ export async function GET(
     }
 
     const isStaff =
-      user.role === 'admin' || user.role === 'super_admin' || user.role === 'instructor';
+      user.role === 'admin' || user.role === 'super_admin' || user.role === 'instructor' ||
+      isUltimateTesterEmail(user.email);
 
     // Algorithm A inputs
     const subsequentCompletedCount = await countSubsequentCompletedClasses(session);

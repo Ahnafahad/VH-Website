@@ -7,7 +7,7 @@
  */
 
 import type { Test, UserWithProducts } from '@/lib/db/schema';
-import { isStaffRole } from '@/lib/auth/roles';
+import { isStaffRole, isUltimateTesterEmail } from '@/lib/auth/roles';
 
 export function isTestStaff(user: Pick<UserWithProducts, 'role'>): boolean {
   return isStaffRole(user.role);
@@ -27,7 +27,7 @@ export function isTestAllowedForProducts(test: Pick<Test, 'allowedProducts'>, pr
 }
 
 export function canAccessTest(user: UserWithProducts, test: Test): boolean {
-  if (isTestStaff(user)) return true;
+  if (isTestStaff(user) || isUltimateTesterEmail(user.email)) return true;
   if (test.status !== 'published') return false;
   return isTestAllowedForProducts(test, user.products);
 }

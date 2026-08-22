@@ -17,6 +17,7 @@ import { testAnswers, testAttempts, testViolations } from '@/lib/db/schema';
 import { safeApiHandler, ApiException } from '@/lib/api-utils';
 import { requireUser, requireTestForUser } from '@/lib/tests/route-helpers';
 import { isTestStaff } from '@/lib/tests/access';
+import { isUltimateTesterEmail } from '@/lib/auth/roles';
 import { getUserAttempt } from '@/lib/tests/service';
 
 export async function POST(
@@ -33,7 +34,7 @@ export async function POST(
       throw new ApiException('No in-progress attempt', 409, 'NO_ATTEMPT');
     }
 
-    if (isTestStaff(user)) {
+    if (isTestStaff(user) || isUltimateTesterEmail(user.email)) {
       return { action: 'exempt' as const, tabLeaveCount: attempt.tabLeaveCount };
     }
 

@@ -9,6 +9,7 @@ import { NextRequest } from 'next/server';
 import { safeApiHandler, ApiException } from '@/lib/api-utils';
 import { requireUser, requireTestForUser } from '@/lib/tests/route-helpers';
 import { isTestStaff } from '@/lib/tests/access';
+import { isUltimateTesterEmail } from '@/lib/auth/roles';
 import { resultsVisible } from '@/lib/tests/windows';
 import { getTestResults } from '@/lib/tests/service';
 
@@ -21,7 +22,7 @@ export async function GET(
     const { slug } = await params;
     const { test, windows } = await requireTestForUser(slug, user);
 
-    if (!isTestStaff(user) && !resultsVisible(test, windows)) {
+    if (!isTestStaff(user) && !isUltimateTesterEmail(user.email) && !resultsVisible(test, windows)) {
       throw new ApiException(
         'Results will be available once the test window closes',
         403,

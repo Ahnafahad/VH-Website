@@ -4,12 +4,12 @@
 import { SQL, and, eq, isNull, or, sql } from 'drizzle-orm';
 import type { UserWithProducts, UserProduct } from '@/lib/db/schema';
 import { users, userAccess, lmsAnnouncements } from '@/lib/db/schema';
-import { isStaffRole } from '@/lib/auth/roles';
+import { isStaffRole, isUltimateTesterEmail } from '@/lib/auth/roles';
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
 function isStaff(user: UserWithProducts): boolean {
-  return isStaffRole(user.role);
+  return isStaffRole(user.role) || isUltimateTesterEmail(user.email);
 }
 
 // ─── Content scope type ───────────────────────────────────────────────────────

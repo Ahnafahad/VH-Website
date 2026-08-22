@@ -8,7 +8,7 @@ import { and, eq, inArray } from 'drizzle-orm';
 import { db } from '@/lib/db';
 import { assignments, assignmentSubmissions } from '@/lib/db/schema';
 import type { UserWithProducts } from '@/lib/db/schema';
-import { isStaffRole } from '@/lib/auth/roles';
+import { isStaffRole, isUltimateTesterEmail } from '@/lib/auth/roles';
 
 /**
  * Pure: given assignment rows (id + solutionMaterialId) and the set of
@@ -40,7 +40,7 @@ export async function getGatedSolutionMaterialIds(
   user: UserWithProducts,
   materialIds: number[],
 ): Promise<Set<number>> {
-  if (isStaffRole(user.role) || materialIds.length === 0) return new Set();
+  if (isStaffRole(user.role) || isUltimateTesterEmail(user.email) || materialIds.length === 0) return new Set();
 
   const linked = await db
     .select({ id: assignments.id, solutionMaterialId: assignments.solutionMaterialId })
