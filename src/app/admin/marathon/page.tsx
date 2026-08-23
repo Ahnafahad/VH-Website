@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 
@@ -18,6 +19,9 @@ export default function MarathonAdminPage() {
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
+  const [editingId, setEditingId] = useState<number | null>(null);
+  const [editDate, setEditDate] = useState('');
+  const [editSaving, setEditSaving] = useState(false);
 
   const load = async () => {
     const [chRes, batchRes, assignRes] = await Promise.all([
@@ -35,6 +39,31 @@ export default function MarathonAdminPage() {
 
   const selectedChapter = chapters.find(c => c.id === chapterId);
   const batchesForProduct = batches.filter(b => b.product === selectedChapter?.product);
+
+  const startEdit = (a: AssignmentRow) => {
+    setEditingId(a.id);
+    const d = new Date(a.startDate);
+    const local = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+    setEditDate(local);
+  };
+
+  const saveEdit = async (id: number) => {
+    if (!editDate) return;
+    setEditSaving(true);
+    try {
+      const res = await fetch(`/api/admin/marathon/assignments/${id}`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ startDate: new Date(`${editDate}T00:00:00`).getTime() }),
+      });
+      if (res.ok) {
+        setEditingId(null);
+        await load();
+      }
+    } finally {
+      setEditSaving(false);
+    }
+  };
 
   const togglePublish = async (chapter: ChapterOption) => {
     const nextStatus = chapter.status === 'published' ? 'draft' : 'published';
@@ -99,6 +128,7 @@ export default function MarathonAdminPage() {
                   <Button variant="outline" size="sm" onClick={() => togglePublish(c)}>
                     {c.status === 'published' ? 'Unpublish' : 'Publish'}
                   </Button>
+                  <Link href={`/admin/marathon/${c.id}`} className="text-sm text-primary hover:underline">View days →</Link>
                 </div>
               </div>
             ))}
@@ -154,7 +184,18 @@ export default function MarathonAdminPage() {
                   <p className="font-medium">{a.chapterTitle}</p>
                   <p className="text-muted-foreground text-xs">{a.product} · {a.batch ?? 'all batches'}</p>
                 </div>
-                <p className="text-muted-foreground text-xs">Day 1: {new Date(a.startDate).toLocaleDateString()}</p>
+                {editingId === a.id ? (
+                  <div className="flex items-center gap-2">
+                    <Input type="date" value={editDate} onChange={e => setEditDate(e.target.value)} className="h-8" />
+                    <Button size="sm" onClick={() => saveEdit(a.id)} disabled={editSaving}>Save</Button>
+                    <Button size="sm" variant="outline" onClick={() => setEditingId(null)}>Cancel</Button>
+                  </div>
+                ) : (
+                  <div className="flex items-center gap-3">
+                    <p className="text-muted-foreground text-xs">Day 1: {new Date(a.startDate).toLocaleDateString()}</p>
+                    <Button size="sm" variant="outline" onClick={() => startEdit(a)}>Edit date</Button>
+                  </div>
+                )}
               </div>
             ))}
           </div>

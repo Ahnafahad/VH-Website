@@ -106,3 +106,36 @@ export interface MarathonResultsPayload {
   /** Per-subtopic accuracy across every submitted day the student has done in this chapter. */
   subtopicWeakness: SubtopicStat[];
 }
+
+// ─── Admin: attendance / analytics ───────────────────────────────────────────
+
+export interface MarathonDayOverview {
+  dayId: number;
+  dayNumber: number;
+  totalQuestions: number;
+  questionsWithSolution: number;
+  attendedCount: number;        // submitted attempts
+  eligibleCount: number;        // students who can access this chapter
+  averageActiveMs: number | null;
+}
+
+export interface MarathonAttemptRow {
+  attemptId: number;
+  user: { id: number; name: string | null; email: string; studentId: string | null };
+  status: AttemptStatus;
+  startedAt: number;
+  submittedAt: number | null;
+  totalCorrect: number | null;
+  totalWrong: number | null;
+  totalSkipped: number | null;
+  totalActiveMs: number | null;
+}
+
+export interface MarathonDayAttendance {
+  day: { id: number; dayNumber: number; totalQuestions: number };
+  chapter: { id: number; title: string };
+  eligibleCount: number;
+  attendedCount: number;
+  averageActiveMs: number | null;
+  attempts: MarathonAttemptRow[];
+}

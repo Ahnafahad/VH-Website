@@ -8,6 +8,7 @@ import { db } from '@/lib/db';
 import {
   marathonChapters, marathonDays, marathonQuestions, marathonAssignments,
   marathonAttempts, marathonAnswers, marathonPauseEvents,
+  users, userAccess,
   type UserWithProducts, type MarathonChapter, type MarathonDay,
   type MarathonAssignment, type MarathonAttempt,
   type TestOption,
@@ -21,7 +22,7 @@ import { scoreMarathonAttempt } from './scoring';
 import { isSlow, median } from './time-flags';
 import type {
   MarathonChapterListEntry, MarathonAttemptPayload, MarathonResultsPayload,
-  MarathonQuestionResult, SubtopicStat,
+  MarathonQuestionResult, SubtopicStat, MarathonDayOverview, MarathonDayAttendance,
 } from './types';
 
 const MAX_PAUSES = 2;
@@ -403,4 +404,106 @@ export async function listAssignmentsWithChapter() {
     chapter: marathonChapters,
   }).from(marathonAssignments).innerJoin(marathonChapters, eq(marathonAssignments.chapterId, marathonChapters.id));
   return rows;
+}
+
+export async function updateAssignmentStartDate(id: number, startDate: Date): Promise<void> {
+  await db.update(marathonAssignments).set({ startDate }).where(eq(marathonAssignments.id, id));
+}
+
+// ─── Admin: attendance / analytics ────────────────────────────────────────────
+// A chapter's eligible cohort is the union, across every assignment for that
+// chapter, of active students holding access to the assignment's product
+// (and matching its batch, when set) — mirrors assignmentMatchesUser but
+// queried in bulk instead of per-student.
+
+async function getEligibleStudentIdsForChapter(chapterId: number): Promise<Set<number>> {
+  const assignments = await db.select().from(marathonAssignments).where(eq(marathonAssignments.chapterId, chapterId));
+  const ids = new Set<number>();
+  for (const a of assignments) {
+    const rows = await db.select({ id: users.id, batch: users.batch })
+      .from(users)
+      .innerJoin(userAccess, eq(userAccess.userId, users.id))
+      .where(and(
+        eq(users.role, 'student'), eq(users.status, 'active'),
+        eq(userAccess.product, a.product), eq(userAccess.active, true),
+      ));
+    for (const r of rows) {
+      if (a.batch && r.batch !== a.batch) continue;
+      ids.add(r.id);
+    }
+  }
+  return ids;
+}
+
+export async function getChapterDaysOverview(chapterId: number): Promise<MarathonDayOverview[]> {
+  const days = await db.select().from(marathonDays)
+    .where(eq(marathonDays.chapterId, chapterId))
+    .orderBy(marathonDays.dayNumber);
+  if (days.length === 0) return [];
+  const dayIds = days.map(d => d.id);
+
+  const [questionRows, attemptRows, eligibleIds] = await Promise.all([
+    db.select({ dayId: marathonQuestions.dayId, solution: marathonQuestions.solution })
+      .from(marathonQuestions).where(inArray(marathonQuestions.dayId, dayIds)),
+    db.select().from(marathonAttempts)
+      .where(and(inArray(marathonAttempts.dayId, dayIds), eq(marathonAttempts.status, 'submitted'))),
+    getEligibleStudentIdsForChapter(chapterId),
+  ]);
+
+  return days.map(d => {
+    const questionsWithSolution = questionRows.filter(q => q.dayId === d.id && !!q.solution?.trim()).length;
+    const attemptsForDay = attemptRows.filter(a => a.dayId === d.id);
+    const times = attemptsForDay.map(a => a.totalActiveMs).filter((t): t is number => t != null);
+    return {
+      dayId: d.id,
+      dayNumber: d.dayNumber,
+      totalQuestions: d.totalQuestions,
+      questionsWithSolution,
+      attendedCount: attemptsForDay.length,
+      eligibleCount: eligibleIds.size,
+      averageActiveMs: times.length ? Math.round(times.reduce((s, t) => s + t, 0) / times.length) : null,
+    };
+  });
+}
+
+export async function getDayAttendance(dayId: number): Promise<MarathonDayAttendance | null> {
+  const day = await db.select().from(marathonDays).where(eq(marathonDays.id, dayId)).get();
+  if (!day) return null;
+  const chapter = await db.select().from(marathonChapters).where(eq(marathonChapters.id, day.chapterId)).get();
+  if (!chapter) return null;
+
+  const [attemptRows, eligibleIds] = await Promise.all([
+    db.select({
+      attempt: marathonAttempts,
+      userId: users.id, userName: users.name, userEmail: users.email, studentId: users.studentId,
+    }).from(marathonAttempts)
+      .innerJoin(users, eq(marathonAttempts.userId, users.id))
+      .where(eq(marathonAttempts.dayId, dayId)),
+    getEligibleStudentIdsForChapter(chapter.id),
+  ]);
+
+  const submitted = attemptRows.filter(r => r.attempt.status === 'submitted');
+  const times = submitted.map(r => r.attempt.totalActiveMs).filter((t): t is number => t != null);
+
+  return {
+    day: { id: day.id, dayNumber: day.dayNumber, totalQuestions: day.totalQuestions },
+    chapter: { id: chapter.id, title: chapter.title },
+    eligibleCount: eligibleIds.size,
+    attendedCount: submitted.length,
+    averageActiveMs: times.length ? Math.round(times.reduce((s, t) => s + t, 0) / times.length) : null,
+    attempts: attemptRows
+      .sort((a, b) => (b.attempt.submittedAt?.getTime() ?? b.attempt.startedAt.getTime())
+        - (a.attempt.submittedAt?.getTime() ?? a.attempt.startedAt.getTime()))
+      .map(r => ({
+        attemptId: r.attempt.id,
+        user: { id: r.userId, name: r.userName, email: r.userEmail, studentId: r.studentId },
+        status: r.attempt.status as MarathonDayAttendance['attempts'][number]['status'],
+        startedAt: r.attempt.startedAt.getTime(),
+        submittedAt: r.attempt.submittedAt?.getTime() ?? null,
+        totalCorrect: r.attempt.totalCorrect,
+        totalWrong: r.attempt.totalWrong,
+        totalSkipped: r.attempt.totalSkipped,
+        totalActiveMs: r.attempt.totalActiveMs,
+      })),
+  };
 }
