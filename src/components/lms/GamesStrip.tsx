@@ -2,7 +2,7 @@
 
 import { motion, useReducedMotion } from 'motion/react';
 import Link from 'next/link';
-import { BookOpenText, Calculator, ClipboardList, CalendarPlus } from 'lucide-react';
+import { BookOpenText, Calculator, ClipboardList, CalendarPlus, Route } from 'lucide-react';
 import type { LucideProps } from 'lucide-react';
 import type { DashboardGames } from '@/lib/lms/dashboard-data';
 
@@ -33,7 +33,7 @@ const BLOCKS: GameBlock[] = [
         : null,
   },
   {
-    name: 'Mental Math',
+    name: 'Zap',
     href: '/games/mental-math',
     icon: Calculator,
     stat: (g) =>
@@ -55,6 +55,12 @@ const BLOCKS: GameBlock[] = [
     href: '/dashboard/book',
     icon: CalendarPlus,
     stat: () => 'Book a 1-on-1 →',
+  },
+  {
+    name: 'Marathon',
+    href: '/marathon',
+    icon: Route,
+    stat: () => 'Chapter drills →',
   },
 ];
 
@@ -89,10 +95,9 @@ export default function GamesStrip({ games }: Props) {
               key={block.href}
               whileTap={prefersReduced ? {} : { scale: 0.99 }}
               transition={{ type: 'spring' as const, stiffness: 400, damping: 28 }}
-              className={i < visibleBlocks.length - 1 ? 'lg:border-r' : ''}
               style={{
-                borderRight: i < visibleBlocks.length - 1 ? '1px solid rgba(212,176,148,0.16)' : undefined,
-                borderTop: i >= 2 ? '1px solid rgba(212,176,148,0.16)' : undefined,
+                borderRight: '1px solid rgba(212,176,148,0.16)',
+                borderBottom: i < visibleBlocks.length - 1 ? '1px solid rgba(212,176,148,0.16)' : undefined,
               }}
             >
               <Link

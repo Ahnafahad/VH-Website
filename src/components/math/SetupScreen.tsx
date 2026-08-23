@@ -41,7 +41,7 @@ export function SetupScreen(props: SetupScreenProps) {
 
   return (
     <div className="relative mx-auto max-w-[960px] px-6 sm:px-10 lg:px-16 pt-20 sm:pt-28 pb-28">
-      <SectionMark chapter="Chapter Zero" title="Mental Math" />
+      <SectionMark chapter="Chapter Zero" title="Zap" />
 
       <motion.h1
         initial={{ opacity: 0, y: 8 }}

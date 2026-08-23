@@ -27,7 +27,10 @@ export default function MarathonResultsScreen({ results }: { results: MarathonRe
   return (
     <div className="min-h-screen bg-exam-base text-exam-ink">
       <div className="border-b border-exam-border bg-exam-surface">
-        <div className="max-w-4xl mx-auto px-4 py-8">
+        <div
+          className="max-w-4xl mx-auto px-4 pb-8"
+          style={{ paddingTop: 'max(6rem, calc(6rem + env(safe-area-inset-top)))' }}
+        >
           <p className="text-exam-gold text-xs font-bold uppercase tracking-widest mb-2">{results.chapter.title} · Day {results.day.dayNumber}</p>
           <h1 className="font-serif text-3xl font-semibold mb-4">Results</h1>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">

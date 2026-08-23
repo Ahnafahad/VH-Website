@@ -445,7 +445,7 @@ export async function sendStudentConfirmationEmail(data: StudentConfirmationData
                 <tr>
                   <td style="padding:20px 24px 20px 20px;border-left:3px solid #760F13;">
                     <p style="margin:0 0 8px 0;font-size:15px;font-family:Georgia,'Times New Roman',Times,serif;color:#1A0507;font-weight:400;">If you want to start practising right now, for free</p>
-                    <p style="margin:0 0 14px 0;font-size:13px;color:#6B4032;line-height:1.7;">Vocab training, mental math, and an accounting game. All free. All built around what actually shows up in these exams.</p>
+                    <p style="margin:0 0 14px 0;font-size:13px;color:#6B4032;line-height:1.7;">Vocab training, Zap, and an accounting game. All free. All built around what actually shows up in these exams.</p>
                     <a href="${baseUrl}/registration/games" style="display:inline-block;font-size:11px;color:#760F13;text-decoration:none;letter-spacing:2px;text-transform:uppercase;border-bottom:1px solid #D4B094;padding-bottom:2px;">Get Free Access</a>
                   </td>
                 </tr>

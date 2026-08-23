@@ -31,7 +31,10 @@ export default function MarathonHubPage() {
   return (
     <main className="min-h-screen bg-exam-base text-exam-ink">
       <div className="border-b border-exam-border bg-exam-surface">
-        <div className="max-w-4xl mx-auto px-4 py-10 sm:py-14">
+        <div
+          className="max-w-4xl mx-auto px-4 pb-10 sm:pb-14"
+          style={{ paddingTop: 'max(6rem, calc(6rem + env(safe-area-inset-top)))' }}
+        >
           <p className="text-exam-gold text-xs font-bold uppercase tracking-widest mb-3">Math Marathon</p>
           <h1 className="font-serif text-3xl sm:text-4xl font-semibold text-exam-ink mb-2">Chapter Drills</h1>
           <p className="text-exam-ink-muted text-base max-w-lg">

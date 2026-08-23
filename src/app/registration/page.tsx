@@ -27,7 +27,7 @@ export default function RegistrationChooserPage() {
       title: 'Just the games',
       subtitle: 'Free forever. 30 seconds to sign up.',
       description:
-        'Play mental math drills. Work through LexiCore vocabulary. Use every free resource we publish. No calls, no fees.',
+        'Play Zap drills. Work through LexiCore vocabulary. Use every free resource we publish. No calls, no fees.',
       bullets: ['Gmail + WhatsApp', 'Instant access after Google sign-in', 'Nothing else, ever'],
       href: '/registration/games',
       cta: 'Create free access',

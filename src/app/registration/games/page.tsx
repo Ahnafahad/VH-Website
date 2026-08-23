@@ -115,7 +115,7 @@ function FreeSignupForm() {
             {/* Quiet feature list */}
             <ul className="mt-10 space-y-3 max-w-sm">
               {[
-                'Mental math drills, daily.',
+                'Zap drills, daily.',
                 'LexiCore vocabulary with spaced repetition.',
                 'Free resources as we publish them.',
               ].map((t) => (

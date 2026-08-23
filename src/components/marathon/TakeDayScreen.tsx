@@ -181,9 +181,9 @@ export default function TakeDayScreen({ slug, day, initial }: { slug: string; da
   const isPaused = pausedAt !== null;
 
   return (
-    <div className="min-h-screen bg-exam-base text-exam-ink">
-      {/* Masthead */}
-      <div className="border-b border-exam-border bg-exam-surface sticky top-0 z-10">
+    <div className="min-h-screen bg-exam-base text-exam-ink" style={{ paddingTop: 'max(6rem, calc(6rem + env(safe-area-inset-top)))' }}>
+      {/* Masthead — sticky top-24 (6rem) clears the fixed floating nav on scroll */}
+      <div className="border-b border-exam-border bg-exam-surface sticky top-24 z-10">
         <div className="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
           <div>
             <p className="text-exam-gold text-xs font-bold uppercase tracking-widest">{payload.chapter.title}</p>

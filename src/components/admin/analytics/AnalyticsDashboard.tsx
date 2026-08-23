@@ -29,7 +29,7 @@ const TABS: Tab[] = [
   { id: 'lms',       label: 'LMS'                },
   { id: 'lexicore',  label: 'LexiCore'           },
   { id: 'vocab',     label: 'Vocab (Words)'      },
-  { id: 'math',      label: 'Mental Math'        },
+  { id: 'math',      label: 'Zap'                },
   { id: 'funnel',    label: 'Engagement & Funnel'},
 ];
 

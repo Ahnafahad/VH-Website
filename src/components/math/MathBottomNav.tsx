@@ -27,7 +27,7 @@ const TABS: TabConfig[] = [
 export function MathBottomNav({ active, onChange }: MathBottomNavProps) {
   return (
     <nav
-      aria-label="Mental math navigation"
+      aria-label="Zap navigation"
       className="fixed bottom-4 left-1/2 z-40 -translate-x-1/2"
     >
       <div className="relative flex items-center gap-1 rounded-full border border-[var(--color-math-border)] bg-[var(--color-math-surface)]/85 backdrop-blur-xl px-1.5 py-1.5 math-card-shadow">

@@ -37,8 +37,7 @@ const STUDENT_MAIN_LINKS = [
   { label: 'Dashboard', href: '/dashboard' },
   { label: 'Vocab', href: '/vocab/home' },
   { label: 'Tests', href: '/tests' },
-  { label: 'Marathon', href: '/marathon' },
-  { label: 'Mental Math', href: '/games/mental-math' },
+  { label: 'Zap', href: '/games/mental-math' },
 ];
 
 const ADMIN_MAIN_LINKS = [
@@ -46,7 +45,6 @@ const ADMIN_MAIN_LINKS = [
   { label: 'Admin', href: '/admin' },
   { label: 'Vocab', href: '/vocab/home' },
   { label: 'Tests', href: '/tests' },
-  { label: 'Marathon', href: '/marathon' },
 ];
 
 const INSTRUCTOR_MAIN_LINKS = [
@@ -54,7 +52,6 @@ const INSTRUCTOR_MAIN_LINKS = [
   { label: 'Instructor', href: '/admin/today' },
   { label: 'Vocab', href: '/vocab/home' },
   { label: 'Tests', href: '/tests' },
-  { label: 'Marathon', href: '/marathon' },
 ];
 
 /**
@@ -169,7 +166,7 @@ const Header = () => {
   const moreLinks = session
     ? isAdmin
       ? [
-          { label: 'Mental Math', href: '/games/mental-math', icon: Calculator },
+          { label: 'Zap', href: '/games/mental-math', icon: Calculator },
           { label: 'Results', href: '/results', icon: BarChart3 },
           ...(isStaff ? [
             { label: 'Registrations', href: '/admin/registrations', icon: Users },
@@ -189,7 +186,7 @@ const Header = () => {
     : [
         { label: 'FBS Diagnostic', href: '/fbs-diagnosis', icon: Stethoscope },
         { label: 'Eligibility Checker', href: '/eligibility-checker', icon: Target },
-        { label: 'Mental Math', href: '/games/mental-math', icon: Calculator },
+        { label: 'Zap', href: '/games/mental-math', icon: Calculator },
         { label: 'Vocab', href: '/vocab/home', icon: BookOpen },
         { label: 'Register', href: '/registration', icon: ClipboardList },
       ];

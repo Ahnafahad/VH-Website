@@ -106,7 +106,7 @@ function buildEmailHtml(firstName: string): string {
         </td>
         <td width="48%" style="padding-left:8px;">
           <a href="https://vh-beyondthehorizons.org/games/mental-math" style="display:block;background:#fff;border:1px solid #e8d5c4;border-radius:5px;padding:10px 14px;text-decoration:none;">
-            <p style="margin:0 0 2px;font-size:13px;font-weight:500;color:#760F13;">Mental Math</p>
+            <p style="margin:0 0 2px;font-size:13px;font-weight:500;color:#760F13;">Zap</p>
             <p style="margin:0;font-size:12px;color:#8a6a5a;">Speed arithmetic</p>
           </a>
         </td>
