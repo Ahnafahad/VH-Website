@@ -331,7 +331,9 @@ export default function AssignmentDetailClient({ assignment, initialSubmission, 
         </AnimatePresence>
 
         {/* ── Solution unlock ───────────────────────────────────────────────── */}
-        {solutionMaterialId && (
+        {/* Gated on `submission` (reactive client state), not a server-frozen
+            prop, so the link appears right after a submit without a reload. */}
+        {solutionMaterialId && submission && (
           <motion.section
             variants={cardV} initial="hidden" animate="visible"
             className="bg-white rounded-2xl border border-[#E8DDD5] p-5"

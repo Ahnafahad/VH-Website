@@ -99,7 +99,11 @@ export default async function AssignmentDetailPage({ params }: PageProps) {
           : null
       }
       // Solution unlocks once the student has any submission row (file or offline).
-      solutionMaterialId={submission ? assignment.solutionMaterialId : null}
+      // Always pass the raw id — AssignmentDetailClient gates rendering on its own
+      // (reactive) submission state so the link appears immediately after a submit,
+      // without requiring a page reload. The materials page re-checks server-side
+      // regardless, so this isn't a new way to see the id before submitting.
+      solutionMaterialId={assignment.solutionMaterialId}
     />
   );
 }
