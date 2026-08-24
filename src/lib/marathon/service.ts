@@ -23,6 +23,7 @@ import { isSlow, median } from './time-flags';
 import type {
   MarathonChapterListEntry, MarathonAttemptPayload, MarathonResultsPayload,
   MarathonQuestionResult, SubtopicStat, MarathonDayOverview, MarathonDayAttendance,
+  MarathonQuestionStat,
 } from './types';
 
 const MAX_PAUSES = 2;
@@ -410,6 +411,33 @@ export async function updateAssignmentStartDate(id: number, startDate: Date): Pr
   await db.update(marathonAssignments).set({ startDate }).where(eq(marathonAssignments.id, id));
 }
 
+/** True if any student eligible for this assignment (its product/batch) has an attempt on one of its chapter's days. */
+async function assignmentHasAttempts(assignment: MarathonAssignment): Promise<boolean> {
+  const days = await db.select({ id: marathonDays.id }).from(marathonDays)
+    .where(eq(marathonDays.chapterId, assignment.chapterId));
+  const dayIds = days.map(d => d.id);
+  if (dayIds.length === 0) return false;
+
+  const rows = await db.select({ userId: marathonAttempts.userId, batch: users.batch })
+    .from(marathonAttempts)
+    .innerJoin(users, eq(marathonAttempts.userId, users.id))
+    .innerJoin(userAccess, eq(userAccess.userId, users.id))
+    .where(and(
+      inArray(marathonAttempts.dayId, dayIds),
+      eq(users.role, 'student'), eq(userAccess.product, assignment.product), eq(userAccess.active, true),
+    ));
+  return rows.some(r => !assignment.batch || r.batch === assignment.batch);
+}
+
+export async function deleteAssignment(id: number): Promise<void> {
+  const assignment = await db.select().from(marathonAssignments).where(eq(marathonAssignments.id, id)).get();
+  if (!assignment) throw new ApiException('Assignment not found', 404);
+  if (await assignmentHasAttempts(assignment)) {
+    throw new ApiException('This assignment has student attempts and cannot be deleted', 409);
+  }
+  await db.delete(marathonAssignments).where(eq(marathonAssignments.id, id));
+}
+
 // ─── Admin: attendance / analytics ────────────────────────────────────────────
 // A chapter's eligible cohort is the union, across every assignment for that
 // chapter, of active students holding access to the assignment's product
@@ -506,4 +534,36 @@ export async function getDayAttendance(dayId: number): Promise<MarathonDayAttend
         totalActiveMs: r.attempt.totalActiveMs,
       })),
   };
+}
+
+/** Per-question correct/wrong/skipped rollup across every submitted attempt of a day, hardest-first. */
+export async function getDayQuestionStats(dayId: number): Promise<MarathonQuestionStat[]> {
+  const [questions, submittedAttempts] = await Promise.all([
+    db.select().from(marathonQuestions).where(eq(marathonQuestions.dayId, dayId)),
+    db.select({ id: marathonAttempts.id }).from(marathonAttempts)
+      .where(and(eq(marathonAttempts.dayId, dayId), eq(marathonAttempts.status, 'submitted'))),
+  ]);
+  const attemptIds = submittedAttempts.map(a => a.id);
+  const allAnswers = attemptIds.length
+    ? await db.select().from(marathonAnswers).where(inArray(marathonAnswers.attemptId, attemptIds))
+    : [];
+
+  return questions
+    .map(q => {
+      const answersForQ = allAnswers.filter(a => a.questionId === q.id);
+      let correctCount = 0, wrongCount = 0, skippedCount = 0;
+      for (const a of answersForQ) {
+        if (!a.selectedKey) skippedCount++;
+        else if (a.selectedKey === q.correctKey) correctCount++;
+        else wrongCount++;
+      }
+      const total = correctCount + wrongCount + skippedCount;
+      return {
+        questionId: q.id,
+        number: q.number,
+        correctCount, wrongCount, skippedCount,
+        correctRate: total > 0 ? Math.round((correctCount / total) * 100) : 0,
+      };
+    })
+    .sort((a, b) => a.correctRate - b.correctRate);
 }

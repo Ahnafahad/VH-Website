@@ -9,6 +9,7 @@ import ClassContext from './ClassContext';
 import InsightsTiles from './InsightsTiles';
 import QuestionReview from './QuestionReview';
 import HardestStrip from './HardestStrip';
+import StrategyStrip from './StrategyStrip';
 import LockedState from './LockedState';
 import NoAttemptState from './NoAttemptState';
 
@@ -141,6 +142,18 @@ export default function ResultsShell({ status, data, errorMsg }: Props) {
               answerKey={answerKey}
             />
           </motion.div>
+
+          {/* ── 5b. Strategy Read (opportunities / standouts / skip pattern) ─ */}
+          {me !== null && (
+            <motion.div variants={sectionVariants} className="mt-10">
+              <StrategyStrip
+                sections={sections}
+                questionAnalytics={questionAnalytics}
+                responses={me.responses}
+                answerKey={answerKey}
+              />
+            </motion.div>
+          )}
 
           {/* ── 6. Question Review ────────────────────────────────────────── */}
           <motion.div variants={sectionVariants} className="mt-10">

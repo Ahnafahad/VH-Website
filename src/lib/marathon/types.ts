@@ -139,3 +139,13 @@ export interface MarathonDayAttendance {
   averageActiveMs: number | null;
   attempts: MarathonAttemptRow[];
 }
+
+/** Class-wide per-question stats for a day, ranked hardest-first by the caller. */
+export interface MarathonQuestionStat {
+  questionId: number;
+  number: number;
+  correctCount: number;
+  wrongCount: number;
+  skippedCount: number;
+  correctRate: number; // 0-100, over all submitted attempts (skips count against it)
+}

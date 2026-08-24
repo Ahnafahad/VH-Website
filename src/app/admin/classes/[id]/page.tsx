@@ -8,7 +8,7 @@
 import { getServerSession } from 'next-auth/next';
 import { authOptions } from '@/lib/auth';
 import { redirect } from 'next/navigation';
-import { eq } from 'drizzle-orm';
+import { and, asc, eq, isNull, or } from 'drizzle-orm';
 import { db } from '@/lib/db';
 import {
   classSessions,
@@ -16,6 +16,7 @@ import {
   recordingAccessGrants,
   recordingWatchProgress,
   users,
+  userAccess,
   classQuestions,
   materials,
   sessionMaterials,
@@ -181,11 +182,32 @@ export default async function ClassDetailPage({
         .where(eq(recordingAccessGrants.recordingId, recording.id))
     : [];
 
-  // Load all users for the grant form (to allow picking a specific student)
-  const allUsers = await db
-    .select({ id: users.id, name: users.name, email: users.email })
-    .from(users)
-    .where(eq(users.role, 'student'));
+  // Load approved students for the grant form (scoped to this class's own
+  // product + batch, same rule as the attendance roster endpoint, so FBS
+  // classes only offer FBS students and vice versa) — sorted alphabetically.
+  const accessRows = await db
+    .select({ userId: userAccess.userId })
+    .from(userAccess)
+    .where(and(eq(userAccess.product, classSession.product), eq(userAccess.active, true)));
+  const scopedUserIds = accessRows.map((r) => r.userId);
+  const batchCondition =
+    classSession.batch === null
+      ? undefined
+      : or(eq(users.batch, classSession.batch), isNull(users.batch));
+  const allUsers = scopedUserIds.length > 0
+    ? await db
+        .select({ id: users.id, name: users.name, email: users.email })
+        .from(users)
+        .where(
+          and(
+            inArray(users.id, scopedUserIds),
+            eq(users.role, 'student'),
+            eq(users.status, 'active'),
+            batchCondition,
+          ),
+        )
+        .orderBy(asc(users.name))
+    : [];
 
   // Load Q&A threads
   function isStaffRole(role: string) {

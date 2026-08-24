@@ -7,7 +7,7 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { db } from '@/lib/db';
-import { getDayByNumber, getDayAttendance } from '@/lib/marathon/service';
+import { getDayByNumber, getDayAttendance, getDayQuestionStats } from '@/lib/marathon/service';
 import { marathonChapters } from '@/lib/db/schema';
 import { eq } from 'drizzle-orm';
 
@@ -36,6 +36,8 @@ export default async function MarathonDayAdminPage({
 
   const attendance = await getDayAttendance(day.id);
   if (!attendance) notFound();
+
+  const questionStats = await getDayQuestionStats(day.id);
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-10">
@@ -75,6 +77,20 @@ export default async function MarathonDayAdminPage({
             <div key={a.attemptId}>{row}</div>
           );
         })}
+      </div>
+
+      <h2 className="text-lg font-semibold mt-10 mb-3">Question difficulty (hardest first)</h2>
+      <div className="border rounded-xl divide-y">
+        {questionStats.length === 0 && <p className="text-sm text-muted-foreground p-4">No submitted attempts yet.</p>}
+        {questionStats.map(q => (
+          <div key={q.questionId} className="flex items-center justify-between px-4 py-3 text-sm">
+            <p className="font-medium">Q{q.number}</p>
+            <div className="text-right">
+              <p className="font-medium">{q.correctRate}% correct</p>
+              <p className="text-muted-foreground text-xs">{q.correctCount} correct · {q.wrongCount} wrong · {q.skippedCount} skipped</p>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );

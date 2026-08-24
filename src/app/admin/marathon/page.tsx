@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import { ConfirmDialog } from '@/components/admin/lms/lms-shared';
 
 interface ChapterOption { id: number; slug: string; title: string; product: string; totalDays: number; questionsPerDay: number; status: string }
 interface BatchOption { id: number; name: string; product: string; status: string }
@@ -22,6 +23,9 @@ export default function MarathonAdminPage() {
   const [editingId, setEditingId] = useState<number | null>(null);
   const [editDate, setEditDate] = useState('');
   const [editSaving, setEditSaving] = useState(false);
+  const [confirmDeleteId, setConfirmDeleteId] = useState<number | null>(null);
+  const [deleting, setDeleting] = useState(false);
+  const [deleteError, setDeleteError] = useState<string | null>(null);
 
   const load = async () => {
     const [chRes, batchRes, assignRes] = await Promise.all([
@@ -62,6 +66,27 @@ export default function MarathonAdminPage() {
       }
     } finally {
       setEditSaving(false);
+    }
+  };
+
+  const deleteAssignment = async (id: number) => {
+    setDeleting(true);
+    setDeleteError(null);
+    try {
+      const res = await fetch(`/api/admin/marathon/assignments/${id}`, { method: 'DELETE' });
+      if (res.status === 409) {
+        setDeleteError('This assignment has student attempts and cannot be deleted.');
+      } else if (!res.ok) {
+        const body = await res.json().catch(() => ({}));
+        setDeleteError(body.error ?? 'Could not delete assignment');
+      } else {
+        await load();
+      }
+    } catch {
+      setDeleteError('Network error.');
+    } finally {
+      setDeleting(false);
+      setConfirmDeleteId(null);
     }
   };
 
@@ -176,6 +201,7 @@ export default function MarathonAdminPage() {
           </div>
 
           <h2 className="font-semibold text-sm mb-3">Existing assignments</h2>
+          {deleteError && <p className="text-sm text-destructive mb-3">{deleteError}</p>}
           <div className="border rounded-xl divide-y">
             {assignments.length === 0 && <p className="text-sm text-muted-foreground p-4">No assignments yet.</p>}
             {assignments.map(a => (
@@ -194,6 +220,7 @@ export default function MarathonAdminPage() {
                   <div className="flex items-center gap-3">
                     <p className="text-muted-foreground text-xs">Day 1: {new Date(a.startDate).toLocaleDateString()}</p>
                     <Button size="sm" variant="outline" onClick={() => startEdit(a)}>Edit date</Button>
+                    <Button size="sm" variant="destructive" onClick={() => { setDeleteError(null); setConfirmDeleteId(a.id); }}>Delete</Button>
                   </div>
                 )}
               </div>
@@ -201,6 +228,17 @@ export default function MarathonAdminPage() {
           </div>
         </>
       )}
+
+      <ConfirmDialog
+        open={confirmDeleteId !== null}
+        title="Delete assignment"
+        message="This will permanently remove this assignment. If any eligible student already has an attempt on one of the chapter's days, deletion will be blocked."
+        confirmLabel="Delete"
+        destructive
+        loading={deleting}
+        onConfirm={() => confirmDeleteId !== null && deleteAssignment(confirmDeleteId)}
+        onCancel={() => setConfirmDeleteId(null)}
+      />
     </div>
   );
 }

@@ -260,10 +260,41 @@ export default function ClassDetailClient({
   const [matUploading, setMatUploading] = useState(false);
   const [matUploadProgress, setMatUploadProgress] = useState(0);
   const [matError, setMatError] = useState<string | null>(null);
-  const [grantUserId, setGrantUserId] = useState<string>('');     // '' = batch-wide
+  const [grantWholeBatch, setGrantWholeBatch] = useState(false);
+  const [grantSelectedIds, setGrantSelectedIds] = useState<Set<number>>(new Set());
+  const [grantSearch, setGrantSearch] = useState('');
+  const [grantLastClickedIndex, setGrantLastClickedIndex] = useState<number | null>(null);
   const [grantExpiry, setGrantExpiry] = useState<string>('');
   const [grantError, setGrantError] = useState<string | null>(null);
   const [isPending, startTransition] = useTransition();
+
+  const grantedUserIds = new Set(grants.map((g) => g.userId).filter((id): id is number => id !== null));
+  const filteredGrantUsers = allUsers.filter((u) => {
+    const q = grantSearch.trim().toLowerCase();
+    if (!q) return true;
+    return u.name.toLowerCase().includes(q) || u.email.toLowerCase().includes(q);
+  });
+
+  function toggleGrantUser(index: number, e: React.MouseEvent) {
+    const user = filteredGrantUsers[index];
+    if (!user) return;
+    setGrantSelectedIds((prev) => {
+      const next = new Set(prev);
+      if (e.shiftKey && grantLastClickedIndex !== null) {
+        const [start, end] = [grantLastClickedIndex, index].sort((a, b) => a - b);
+        const shouldSelect = !prev.has(user.id);
+        for (let i = start; i <= end; i++) {
+          const u = filteredGrantUsers[i];
+          if (!u) continue;
+          if (shouldSelect) next.add(u.id); else next.delete(u.id);
+        }
+      } else {
+        if (next.has(user.id)) next.delete(user.id); else next.add(user.id);
+      }
+      return next;
+    });
+    setGrantLastClickedIndex(index);
+  }
 
   // Q&A state
   const [threads, setThreads] = useState<QuestionThread[]>(initialThreads);
@@ -382,6 +413,10 @@ export default function ClassDetailClient({
     if (!recording) return;
     setGrantError(null);
 
+    if (!grantWholeBatch && grantSelectedIds.size === 0) {
+      setGrantError('Select at least one student, or choose "Whole batch"');
+      return;
+    }
     if (!grantExpiry) {
       setGrantError('Expiry date is required');
       return;
@@ -400,10 +435,10 @@ export default function ClassDetailClient({
     const body: Record<string, unknown> = {
       expiresAt: localDate.toISOString(),
     };
-    if (grantUserId !== '') {
-      body.userId = parseInt(grantUserId, 10);
-    } else {
+    if (grantWholeBatch) {
       body.userId = null;
+    } else {
+      body.userIds = [...grantSelectedIds];
     }
 
     startTransition(async () => {
@@ -421,9 +456,11 @@ export default function ClassDetailClient({
           setGrantError(json.error ?? 'Failed to create grant');
           return;
         }
-        const newGrant = await res.json() as GrantRow;
-        setGrants((prev) => [...prev, newGrant]);
-        setGrantUserId('');
+        const newGrants = await res.json() as GrantRow | GrantRow[];
+        setGrants((prev) => [...prev, ...(Array.isArray(newGrants) ? newGrants : [newGrants])]);
+        setGrantSelectedIds(new Set());
+        setGrantWholeBatch(false);
+        setGrantSearch('');
         setGrantExpiry('');
       } catch {
         setGrantError('Network error — please try again');
@@ -749,21 +786,68 @@ export default function ClassDetailClient({
                   </p>
 
                   <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
-                      <select
-                        value={grantUserId}
-                        onChange={(e) => setGrantUserId(e.target.value)}
-                        className="cdc-input"
-                        style={{ ...inputStyle, flex: '1 1 160px', minWidth: 0 }}
-                      >
-                        <option value="">Whole batch</option>
-                        {allUsers.map((u) => (
-                          <option key={u.id} value={String(u.id)}>
-                            {u.name} ({u.email})
-                          </option>
-                        ))}
-                      </select>
+                    <label style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: T_SM, color: INK_SOFT, cursor: 'pointer' }}>
+                      <input
+                        type="checkbox"
+                        checked={grantWholeBatch}
+                        onChange={(e) => setGrantWholeBatch(e.target.checked)}
+                      />
+                      Whole batch (all {classSession.product.toUpperCase()} students, not individual selection)
+                    </label>
 
+                    {!grantWholeBatch && (
+                      <>
+                        <input
+                          type="text"
+                          placeholder={`Search ${classSession.product.toUpperCase()} students by name or email…`}
+                          value={grantSearch}
+                          onChange={(e) => setGrantSearch(e.target.value)}
+                          className="cdc-input"
+                          style={{ ...inputStyle, width: '100%', boxSizing: 'border-box' }}
+                        />
+                        <div style={{
+                          maxHeight: 220, overflowY: 'auto', border: `1px solid ${BORDER}`, borderRadius: R_MD,
+                        }}>
+                          {filteredGrantUsers.length === 0 ? (
+                            <p style={{ margin: 0, padding: 12, fontSize: T_SM, color: MUTED }}>No matching students.</p>
+                          ) : (
+                            <ul style={{ margin: 0, padding: 0, listStyle: 'none' }}>
+                              {filteredGrantUsers.map((u, i) => {
+                                const alreadyGranted = grantedUserIds.has(u.id);
+                                const checked = grantSelectedIds.has(u.id);
+                                return (
+                                  <li key={u.id}>
+                                    <label
+                                      onClick={(e) => { e.preventDefault(); toggleGrantUser(i, e); }}
+                                      style={{
+                                        display: 'flex', alignItems: 'center', gap: 8, fontSize: T_SM, padding: '6px 10px',
+                                        cursor: 'pointer', userSelect: 'none',
+                                        background: checked ? INFO_BG : 'transparent',
+                                        borderBottom: i < filteredGrantUsers.length - 1 ? `1px solid ${BORDER}` : 'none',
+                                      }}
+                                    >
+                                      <input type="checkbox" checked={checked} readOnly />
+                                      <span style={{ flex: 1, minWidth: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                                        <span style={{ color: SLATE, fontWeight: 500 }}>{u.name}</span>{' '}
+                                        <span style={{ color: MUTED }}>({u.email})</span>
+                                      </span>
+                                      {alreadyGranted && (
+                                        <span style={{ fontSize: T_XS, color: OK, flexShrink: 0 }}>already granted</span>
+                                      )}
+                                    </label>
+                                  </li>
+                                );
+                              })}
+                            </ul>
+                          )}
+                        </div>
+                        <p style={{ margin: 0, fontSize: T_XS, color: MUTED }}>
+                          {grantSelectedIds.size} selected · click to toggle, shift-click to select a range
+                        </p>
+                      </>
+                    )}
+
+                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
                       <input
                         type="datetime-local"
                         value={grantExpiry}
