@@ -246,6 +246,10 @@ export default function RecordingPlayer({
               ref={videoRef}
               src={loadState.url}
               controls
+              controlsList="nodownload noremoteplayback"
+              disablePictureInPicture
+              disableRemotePlayback
+              onContextMenu={(e) => e.preventDefault()}
               playsInline
               onLoadedMetadata={handleMetadataLoaded}
               className="w-full aspect-video bg-black"
