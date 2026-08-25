@@ -4,7 +4,7 @@ import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import { useSafeNavigate } from '@/hooks/useSafeNavigate';
 import { ChevronDown, Circle } from 'lucide-react';
-import type { UnitWithThemes, ThemeWithStatus, ThemeStatus } from '@/lib/vocab/study-data';
+import type { UnitWithThemes, ThemeWithStatus, ThemeStatus, StudyBriefingCard } from '@/lib/vocab/study-data';
 import type { LetterSummary } from '@/lib/vocab/letter-data';
 import type { ReviewData } from '@/lib/vocab/review-data';
 import AllWordsReviewedScreen from '@/components/vocab/AllWordsReviewedScreen';
@@ -12,6 +12,7 @@ import LockedUnitOverlay from '@/components/vocab/LockedUnitOverlay';
 import ReviewTab from './ReviewTab';
 import { useVocabFeedback } from '@/lib/vocab/use-vocab-feedback';
 import { LexiArtwork, LexiIcon } from '@/components/vocab/LexiAsset';
+import { BriefingSection } from '@/components/vocab/BriefingCards';
 
 interface Props {
   data: {
@@ -21,6 +22,7 @@ interface Props {
     totalPoints:   number;
     masteredWords: number;
     totalWords:    number;
+    briefingCards: StudyBriefingCard[];
   };
   letterIndex: LetterSummary[];
   reviewData:  ReviewData;
@@ -254,6 +256,11 @@ export default function StudyScreen({ data, letterIndex, reviewData }: Props) {
       >
         Study
       </h1>
+
+      {/* Today's Briefing — curated cases, above the manual picker */}
+      <div className="md:max-w-2xl md:w-full md:mx-auto" style={{ marginTop: '0.25rem' }}>
+        <BriefingSection label="Today's Briefing" cards={data.briefingCards} />
+      </div>
 
       {/* Tab switcher */}
       <div className="md:max-w-2xl md:w-full md:mx-auto">

@@ -7,6 +7,8 @@ import type { PracticePageData, PracticeUnitItem } from '@/lib/vocab/practice-da
 import { useVocabFeedback } from '@/lib/vocab/use-vocab-feedback';
 import { trackFeature } from '@/lib/analytics/tracker';
 import { LexiArtwork, LexiIcon } from '@/components/vocab/LexiAsset';
+import { BriefingSection } from '@/components/vocab/BriefingCards';
+import { MasteryBar } from '@/components/vocab/MasteryBar';
 
 type PracticeTab = 'unit' | 'letter';
 
@@ -200,6 +202,12 @@ function LetterCard({ summary, selected, onToggle }: LetterCardProps) {
           color="var(--color-lx-text-secondary)"
         />
       </div>
+
+      {summary.wordCount > 0 && (
+        <div style={{ width: '100%', marginTop: 2 }}>
+          <MasteryBar pct={masteryPct * 100} />
+        </div>
+      )}
     </motion.button>
   );
 }
@@ -261,16 +269,16 @@ function UnitCheckbox({ state }: { state: 'none' | 'partial' | 'all' }) {
 // ─── Theme row (inside accordion) ────────────────────────────────────────────
 
 interface ThemeRowProps {
-  name:          string;
-  wordCount:     number;
-  masteredCount: number;
-  selected:      boolean;
-  onToggle:      () => void;
+  name:              string;
+  wordCount:         number;
+  familiarPlusCount: number;
+  selected:          boolean;
+  onToggle:          () => void;
 }
 
-function ThemeRow({ name, wordCount, masteredCount, selected, onToggle }: ThemeRowProps) {
-  const masteredPct = wordCount > 0 ? Math.round((masteredCount / wordCount) * 100) : 0;
-  const fb          = useVocabFeedback();
+function ThemeRow({ name, wordCount, familiarPlusCount, selected, onToggle }: ThemeRowProps) {
+  const masteryPct = wordCount > 0 ? (familiarPlusCount / wordCount) * 100 : 0;
+  const fb         = useVocabFeedback();
 
   return (
     <motion.button
@@ -331,25 +339,8 @@ function ThemeRow({ name, wordCount, masteredCount, selected, onToggle }: ThemeR
             }}>
               {wordCount} words
             </span>
-            {masteredCount > 0 && (
-              <span style={{
-                fontFamily: "'Sora', sans-serif",
-                fontSize: '0.7rem', color: 'var(--color-lx-success)',
-              }}>
-                {masteredPct}% mastered
-              </span>
-            )}
           </div>
-          {wordCount > 0 && (
-            <div style={{ height: 2, background: 'var(--color-lx-elevated)', borderRadius: 1, overflow: 'hidden', width: '100%' }}>
-              <motion.div
-                style={{ height: '100%', background: 'var(--color-lx-success)', borderRadius: 1 }}
-                initial={{ width: 0 }}
-                animate={{ width: `${masteredPct}%` }}
-                transition={{ duration: 0.55, ease: 'easeOut', delay: 0.05 }}
-              />
-            </div>
-          )}
+          {wordCount > 0 && <MasteryBar pct={masteryPct} />}
         </div>
 
         <div style={{ flexShrink: 0 }}>
@@ -522,7 +513,7 @@ function UnitAccordionCard({ unit, expanded, onToggleExpand, selected, onToggleT
                   key={theme.id}
                   name={theme.name}
                   wordCount={theme.wordCount}
-                  masteredCount={theme.masteredCount}
+                  familiarPlusCount={theme.familiarPlusCount}
                   selected={selected.has(theme.id)}
                   onToggle={() => onToggleTheme(theme.id)}
                 />
@@ -763,6 +754,11 @@ export default function PracticeScreen({ data }: { data: PracticePageData }) {
             ? 'Select a whole unit or pick individual themes to include'
             : 'Tap letters to include in your practice quiz'}
         </motion.p>
+      </div>
+
+      {/* ── Today's Briefing — curated quiz cases, above the manual picker ── */}
+      <div className="px-5 md:px-8">
+        <BriefingSection label="Today's Briefing" cards={data.briefingCards} />
       </div>
 
       {/* ── Exam Mode (IBA-style) entry ── */}

@@ -820,7 +820,7 @@ interface Props {
   themeId?:        number;
   themeIds?:       number[];
   letterWordIds?:  number[];
-  sessionType:     'study' | 'practice' | 'letter' | 'exam';
+  sessionType:     'study' | 'practice' | 'letter' | 'briefing' | 'exam';
   quizConfig?:     QuizConfig;
   /** Pre-loaded hint words (pass from parent if already available, e.g. letter mode) */
   hintWords?:      HintWord[];
@@ -832,7 +832,7 @@ export default function QuizScreen({ themeId, themeIds, letterWordIds, sessionTy
   const { navigate } = useSafeNavigate();
   // Known exit target per session type — router.back() can't be watchdogged
   // (unknown destination), so exit/error routes go to the launching hub.
-  const exitHref     = sessionType === 'practice' || sessionType === 'exam' ? '/vocab/practice' : '/vocab/study';
+  const exitHref     = sessionType === 'practice' || sessionType === 'exam' || sessionType === 'briefing' ? '/vocab/practice' : '/vocab/study';
   const { push }     = useBadgeQueue();
   const fb           = useVocabFeedback();
   const reduceMotion = useReducedMotion();
@@ -912,7 +912,8 @@ export default function QuizScreen({ themeId, themeIds, letterWordIds, sessionTy
 
     if ((hintWordsProp ?? []).length === 0) {
       let previewUrl = '';
-      if      (sessionType === 'letter'   && letterWordIds?.length) previewUrl = `/api/vocab/words/preview?wordIds=${letterWordIds.join(',')}`;
+      if      ((sessionType === 'letter' || sessionType === 'briefing') && letterWordIds?.length)
+                                                                      previewUrl = `/api/vocab/words/preview?wordIds=${letterWordIds.join(',')}`;
       else if (sessionType === 'study'    && themeId)               previewUrl = `/api/vocab/words/preview?themeId=${themeId}`;
       else if (sessionType === 'practice' && themeIds?.length)      previewUrl = `/api/vocab/words/preview?themeIds=${themeIds.join(',')}`;
 
@@ -928,7 +929,7 @@ export default function QuizScreen({ themeId, themeIds, letterWordIds, sessionTy
     // Track quiz start event
     if (sessionType === 'study') {
       trackFeature('quiz_start', 'vocab', { type: 'study' });
-    } else if (sessionType === 'practice' || sessionType === 'letter') {
+    } else if (sessionType === 'practice' || sessionType === 'letter' || sessionType === 'briefing') {
       trackFeature('quiz_start', 'vocab', { type: 'practice' });
     }
 
@@ -938,9 +939,11 @@ export default function QuizScreen({ themeId, themeIds, letterWordIds, sessionTy
           ? { type: 'study', themeId, questionCount: quizConfig?.questionCount ?? 10 }
           : sessionType === 'letter'
             ? { type: 'letter', wordIds: letterWordIds, questionCount: quizConfig?.questionCount ?? 10 }
-            : sessionType === 'exam'
-              ? { type: 'exam', questionCount: quizConfig?.questionCount ?? 15 }
-              : { type: 'practice', themeIds, questionCount: quizConfig?.questionCount ?? 20 };
+            : sessionType === 'briefing'
+              ? { type: 'briefing', wordIds: letterWordIds, questionCount: quizConfig?.questionCount ?? 20 }
+              : sessionType === 'exam'
+                ? { type: 'exam', questionCount: quizConfig?.questionCount ?? 15 }
+                : { type: 'practice', themeIds, questionCount: quizConfig?.questionCount ?? 20 };
 
         // eslint-disable-next-line no-console
         console.log('[LX-DEBUG] quiz generation body =', body);
@@ -1002,7 +1005,7 @@ export default function QuizScreen({ themeId, themeIds, letterWordIds, sessionTy
     if (phase === 'summary') {
       localStorage.removeItem(recoveryKey);
       trackRetention(RETENTION_EVENTS.learningSessionCompleted, { sessionType, sessionId, correct: summary?.correctAnswers ?? 0, total: summary?.totalQuestions ?? questions.length });
-      if (sessionType === 'practice' || sessionType === 'letter') trackRetention(RETENTION_EVENTS.reviewCompleted, { sessionType, sessionId });
+      if (sessionType === 'practice' || sessionType === 'letter' || sessionType === 'briefing') trackRetention(RETENTION_EVENTS.reviewCompleted, { sessionType, sessionId });
     }
   }, [phase, recoveryKey]);
 

@@ -18,13 +18,19 @@ export default function PracticeQuizPage() {
   const wordIdsParam = searchParams.get('wordIds') ?? '';
   const letterWordIds = wordIdsParam.split(',').map(Number).filter(n => !isNaN(n) && n > 0);
 
-  const isLetterMode = letterWordIds.length > 0;
-  const isExamMode   = searchParams.get('mode') === 'exam';
+  const isLetterMode   = letterWordIds.length > 0;
+  const isExamMode     = searchParams.get('mode') === 'exam';
+  // Today's Briefing cards (Repeat Offenders, The Deadline File) pass explicit
+  // wordIds too, but must NOT go through 'letter' mode — that type filters
+  // every distractor to one starting letter, which is wrong for a cross-theme
+  // curated list. `mode=briefing` picks the unscoped session type instead.
+  const isBriefingMode = searchParams.get('mode') === 'briefing';
 
   // Fire prefetch immediately — user is reading the config sheet (3–30s dead time).
-  // Must be before the early return to satisfy rules of hooks.
+  // Must be before the early return to satisfy rules of hooks. Briefing sessions
+  // aren't prefetched — a small, deliberate scope trim, not a correctness issue.
   useEffect(() => {
-    if (isExamMode) return; // exam sessions are generated on demand
+    if (isExamMode || isBriefingMode) return;
     if (!isLetterMode && themeIds.length === 0) return;
     let questionCount = 10;
     try {
@@ -59,6 +65,12 @@ export default function PracticeQuizPage() {
         isExamMode ? (
           <QuizScreen
             sessionType="exam"
+            quizConfig={config}
+          />
+        ) : isBriefingMode ? (
+          <QuizScreen
+            letterWordIds={letterWordIds}
+            sessionType="briefing"
             quizConfig={config}
           />
         ) : isLetterMode ? (

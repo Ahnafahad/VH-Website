@@ -7,8 +7,19 @@ import { FREE_WORD_POOL, PAID_WORD_POOL } from './constants';
 import { unstable_cache } from 'next/cache';
 import { VocabCacheTag } from './cache-keys';
 import { dhakaWeekStart } from './dhaka-time';
-import { chooseRecommendation, type LearningRecommendation } from './recommendation';
+import { sortByBriefingPriority, computeRequiredPace, computeRepeatOffenders, type BriefingKind } from './briefing';
+import type { WordPriorityInput } from './priority-score';
 import { isAdminRole } from '@/lib/auth/roles';
+
+export interface HomeRecommendation {
+  kind:            BriefingKind;
+  href:            string;
+  action:          string;
+  title:           string;
+  reason:          string;
+  durationMinutes: number;
+  outcome:         string;
+}
 
 export interface MasteryBreakdown {
   new:      number;
@@ -41,7 +52,7 @@ export interface HomeData {
   sessions:         SessionsData;
   masteryBreakdown: MasteryBreakdown;
   hasPaidAccess:    boolean;       // true if user has any active product or is admin
-  recommendation:   LearningRecommendation;
+  recommendation:   HomeRecommendation;
   /** ISO timestamp of the earliest future SRS review date, or null. Used to schedule local notifications. */
   nextDueIso:       string | null;
   /** True when the student was upgraded to full access (phase 1) and hasn't set/dismissed a new target date yet. */
@@ -89,6 +100,7 @@ async function _getHomeData(email: string): Promise<HomeData | null> {
     accessRows,
     activeQuizRows,
     nextDueResult,
+    wordRecords,
   ] = await Promise.all([
     // SRS due count
     db.select({ value: count() })
@@ -192,6 +204,20 @@ async function _getHomeData(email: string): Promise<HomeData | null> {
         eq(vocabUserWordRecords.inSrsPool, true),
         gt(vocabUserWordRecords.srsNextReviewDate, now),
       )),
+
+    // Per-word mastery records → feeds Repeat Offenders (shared with practice-data.ts
+    // via computeRepeatOffenders, so Home and Practice always agree on the same words).
+    db.select({
+      wordId:            vocabUserWordRecords.wordId,
+      masteryLevel:      vocabUserWordRecords.masteryLevel,
+      masteryScore:      vocabUserWordRecords.masteryScore,
+      accuracyRate:      vocabUserWordRecords.accuracyRate,
+      lastSeenAt:        vocabUserWordRecords.lastSeenAt,
+      srsNextReviewDate: vocabUserWordRecords.srsNextReviewDate,
+      exposureCount:     vocabUserWordRecords.exposureCount,
+    })
+      .from(vocabUserWordRecords)
+      .where(eq(vocabUserWordRecords.userId, user.id)),
   ]);
 
   // ── Compute basics ────────────────────────────────────────────────────────
@@ -260,14 +286,6 @@ async function _getHomeData(email: string): Promise<HomeData | null> {
       }
     : null;
 
-  const recommendation = chooseRecommendation({
-    activeQuiz,
-    dueCount: dueWordsCount,
-    learn: learnSession ? { ...learnSession, inProgress: Boolean(inProgressTheme && inProgressTheme.id === learnSession.themeId) } : null,
-    quiz: quizSession,
-    weakCount,
-  });
-
   // ── Dynamic daily target ───────────────────────────────────────────────────
   // Recalculate from deadline + remaining words so stale onboarding values
   // auto-correct after a long absence (e.g. skip a month → pace increases).
@@ -276,14 +294,88 @@ async function _getHomeData(email: string): Promise<HomeData | null> {
   const masteredWords = breakdown.mastered + breakdown.strong;
   const remainingWords = Math.max(0, pool - masteredWords);
 
-  let dynamicDailyTarget = progress.dailyTarget ?? 10;
-  if (progress.deadline) {
-    const msLeft   = progress.deadline.getTime() - Date.now();
-    const daysLeft = Math.ceil(msLeft / 86_400_000);
-    if (daysLeft > 0) {
-      dynamicDailyTarget = Math.max(1, Math.ceil(remainingWords / daysLeft));
-    }
+  const { requiredPace, daysUntilDeadline } = computeRequiredPace(progress.deadline, remainingWords);
+  const dynamicDailyTarget = requiredPace ?? (progress.dailyTarget ?? 10);
+
+  // ── Today's Briefing — Home shows only the single highest-priority card ────
+
+  const candidates: HomeRecommendation[] = [];
+
+  if (activeQuiz) {
+    const left = Math.max(1, activeQuiz.total - activeQuiz.answered);
+    candidates.push({
+      kind: 'resume', href: activeQuiz.href, action: 'Resume quiz',
+      title: `Finish your ${left}-question recall check`,
+      reason: 'Your answers are saved — pick the case back up where it stalled.',
+      durationMinutes: Math.max(1, Math.ceil(left * 0.5)),
+      outcome: 'Close the loop and update your mastery.',
+    });
   }
+  const priorityInputs: WordPriorityInput[] = wordRecords.map(r => ({
+    wordId:            r.wordId,
+    masteryLevel:      (r.masteryLevel ?? 'new') as WordPriorityInput['masteryLevel'],
+    masteryScore:      r.masteryScore ?? 0,
+    accuracyRate:      r.accuracyRate ?? 0,
+    lastSeenAt:        r.lastSeenAt,
+    srsNextReviewDate: r.srsNextReviewDate,
+    exposureCount:     r.exposureCount ?? 0,
+  }));
+  const repeatOffenderIds = computeRepeatOffenders(priorityInputs);
+  if (repeatOffenderIds.length > 0) {
+    candidates.push({
+      kind: 'repeat_offenders',
+      href: `/vocab/practice/quiz?mode=briefing&wordIds=${repeatOffenderIds.join(',')}`,
+      action: 'Open the case',
+      title: `Repeat Offenders — ${repeatOffenderIds.length} words`,
+      reason: 'These words keep slipping — the file has been open a while.',
+      durationMinutes: Math.max(2, Math.ceil(repeatOffenderIds.length * 0.5)),
+      outcome: 'Clear the backlog before it grows.',
+    });
+  }
+  if (requiredPace !== null && remainingWords > 0) {
+    candidates.push({
+      kind: 'deadline_file', href: '/vocab/practice', action: 'Work the file',
+      title: `The Deadline File — ${requiredPace} words today`,
+      reason: `${daysUntilDeadline} day${daysUntilDeadline === 1 ? '' : 's'} left. This is today's assigned pace.`,
+      durationMinutes: Math.max(3, Math.ceil(requiredPace * 0.5)),
+      outcome: 'Stay on pace for your deadline.',
+    });
+  }
+  if (quizSession) {
+    candidates.push({
+      kind: 'fresh', href: `/vocab/study/${quizSession.themeId}/quiz`, action: 'Test your recall',
+      title: `Check what stayed from ${quizSession.name}`,
+      reason: 'You have seen these words; tested recall is the next useful step.',
+      durationMinutes: Math.max(3, Math.ceil(quizSession.wordCount * 0.5)),
+      outcome: 'Turn exposure into measured mastery.',
+    });
+  }
+  if (learnSession) {
+    const inProgress = Boolean(inProgressTheme && inProgressTheme.id === learnSession.themeId);
+    candidates.push({
+      kind: 'fresh', href: `/vocab/study/${learnSession.themeId}`,
+      action: inProgress ? 'Continue session' : 'Start learning',
+      title: inProgress ? `Continue ${learnSession.name}` : `Open a new case: ${learnSession.name}`,
+      reason: inProgress
+        ? 'This set is already open — finishing it keeps the thread intact.'
+        : 'Nothing urgent is pending — a good moment to open new ground.',
+      durationMinutes: Math.max(4, Math.ceil(learnSession.wordCount * 0.45)),
+      outcome: inProgress
+        ? 'Finish learning this set and prepare its recall check.'
+        : 'Learn a manageable set and prepare it for recall.',
+    });
+  }
+  if (candidates.length === 0) {
+    candidates.push({
+      kind: 'fresh', href: '/vocab/study', action: 'Start learning',
+      title: 'Begin a focused vocabulary session',
+      reason: 'Your review queue is clear — a good moment to add a small set.',
+      durationMinutes: 5,
+      outcome: 'Learn a manageable set and prepare it for recall.',
+    });
+  }
+
+  const recommendation = sortByBriefingPriority(candidates)[0];
 
   const goalProgress = Math.min(100, Math.round((reviewedCount / dynamicDailyTarget) * 100));
 

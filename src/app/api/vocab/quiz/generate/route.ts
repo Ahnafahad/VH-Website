@@ -321,6 +321,52 @@ export async function POST(req: NextRequest) {
       });
     }
 
+    // ── Briefing quiz — curated cross-theme word lists (Repeat Offenders,
+    // The Deadline File). Unlike 'letter', words are NOT restricted to one
+    // starting letter, so distractors must draw from the full bank, not a
+    // letter-filtered slice — and the question ceiling matches 'practice'
+    // (20), not the smaller theme-quiz ceiling (10), since these lists are
+    // deliberately sized like a real practice session. ─────────────────────
+    if (type === 'briefing') {
+      const { wordIds } = body as { wordIds: unknown };
+      if (!Array.isArray(wordIds) || wordIds.length === 0) {
+        throw new ApiException('wordIds must be a non-empty array', 400);
+      }
+
+      const allowedIds = await filterAccessibleWordIds(user.id, wordIds as number[]);
+      if (allowedIds.length === 0) {
+        throw new ApiException('No accessible words in the provided wordIds for your tier', 403);
+      }
+
+      const rawWords = await db
+        .select()
+        .from(vocabWords)
+        .where(inArray(vocabWords.id, allowedIds));
+
+      if (rawWords.length === 0) {
+        throw new ApiException('No words found for the provided wordIds', 404);
+      }
+
+      const rawQCount = (body as Record<string, unknown>).questionCount;
+      const requestedCount: number = typeof rawQCount === 'number' && [10, 15, 20].includes(rawQCount)
+        ? rawQCount : PRACTICE_MAX_QUESTIONS;
+      const questionCount = Math.min(requestedCount, rawWords.length, PRACTICE_MAX_QUESTIONS);
+
+      const bank = await getAllWordsCached();
+      const correctWords = shuffle(rawWords).slice(0, questionCount).map(toWordForDistractor);
+      const pool          = bank.map(toWordForDistractor);
+
+      return buildSession({
+        userId:      user.id,
+        themeId:     null,
+        sessionType: 'practice', // briefing sessions reuse the practice DB bucket
+        correctWords,
+        pool,
+        progress,
+        userEmail:   email,
+      });
+    }
+
     // ── Exam quiz (IBA-style) — Advanced students only ────────────────────────
     if (type === 'exam') {
       const studentLevel = await getStudentLevel(user.id);
@@ -377,7 +423,7 @@ export async function POST(req: NextRequest) {
       });
     }
 
-    throw new ApiException('type must be "study", "practice", "letter", or "exam"', 400);
+    throw new ApiException('type must be "study", "practice", "letter", "briefing", or "exam"', 400);
   }, '/api/vocab/quiz/generate');
 }
 

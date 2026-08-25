@@ -6,6 +6,17 @@ import { eq, and, sql } from 'drizzle-orm';
 import { unstable_cache } from 'next/cache';
 import { VocabCacheTag } from './cache-keys';
 import { PHASE1_MAX_UNIT_ORDER } from './constants';
+import { sortByBriefingPriority, type BriefingKind } from './briefing';
+
+export interface StudyBriefingCard {
+  kind:            BriefingKind;
+  title:           string;
+  subtitle:        string;
+  href:            string;
+  wordCount:       number;
+  durationMinutes: number;
+  themeId:         number;
+}
 
 export type ThemeStatus = 'not_started' | 'flashcards_done' | 'quiz_pending' | 'complete';
 
@@ -33,6 +44,7 @@ async function _getStudyData(email: string): Promise<{
   totalPoints:    number;
   masteredWords:  number;
   totalWords:     number;
+  briefingCards:  StudyBriefingCard[];
 } | null> {
   const [user] = await db
     .select({ id: users.id })
@@ -129,7 +141,40 @@ async function _getStudyData(email: string): Promise<{
     .filter(t => t.status === 'complete')
     .reduce((acc, t) => acc + t.wordCount, 0);
 
-  return { units: result, phase, resumeThemeId, totalPoints, masteredWords, totalWords };
+  // ── Today's Briefing ──────────────────────────────────────────────────────
+
+  const briefingCards: StudyBriefingCard[] = [];
+
+  const resumeTheme = resumeThemeId ? allThemes.find(t => t.id === resumeThemeId) : undefined;
+  if (resumeTheme) {
+    briefingCards.push({
+      kind:            'resume',
+      title:           'Open Case',
+      subtitle:        `${resumeTheme.name} — pick up where you left off`,
+      href:            `/vocab/study/${resumeTheme.id}`,
+      wordCount:       resumeTheme.wordCount,
+      durationMinutes: Math.max(3, Math.ceil(resumeTheme.wordCount * 0.45)),
+      themeId:         resumeTheme.id,
+    });
+  }
+
+  const freshTheme = allThemes.find(t => t.status === 'not_started');
+  if (freshTheme) {
+    briefingCards.push({
+      kind:            'fresh',
+      title:           'Fresh Leads',
+      subtitle:        `${freshTheme.name} — ${freshTheme.wordCount} new words`,
+      href:            `/vocab/study/${freshTheme.id}`,
+      wordCount:       freshTheme.wordCount,
+      durationMinutes: Math.max(4, Math.ceil(freshTheme.wordCount * 0.45)),
+      themeId:         freshTheme.id,
+    });
+  }
+
+  return {
+    units: result, phase, resumeThemeId, totalPoints, masteredWords, totalWords,
+    briefingCards: sortByBriefingPriority(briefingCards),
+  };
 }
 
 export function getStudyData(email: string) {

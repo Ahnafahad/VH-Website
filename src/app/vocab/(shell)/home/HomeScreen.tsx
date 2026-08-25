@@ -5,7 +5,7 @@ import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { Lock, X, Target, Clock3, ArrowRight } from 'lucide-react';
-import type { HomeData, MasteryBreakdown, SessionsData } from '@/lib/vocab/home-data';
+import type { HomeData, HomeRecommendation, MasteryBreakdown, SessionsData } from '@/lib/vocab/home-data';
 import { useSafeNavigate } from '@/hooks/useSafeNavigate';
 import ProgressRing from '@/components/vocab/ProgressRing';
 import AnimatedNumber from '@/components/vocab/AnimatedNumber';
@@ -14,7 +14,7 @@ import FullAccessDeadlineModal from '@/components/vocab/FullAccessDeadlineModal'
 import UpgradeModal from '@/components/vocab/UpgradeModal';
 import { FREE_WORD_POOL, PAID_WORD_POOL } from '@/lib/vocab/constants';
 import { useVocabFeedback } from '@/lib/vocab/use-vocab-feedback';
-import type { LearningRecommendation } from '@/lib/vocab/recommendation';
+import type { BriefingKind } from '@/lib/vocab/briefing';
 import { RETENTION_EVENTS, trackRetention } from '@/lib/vocab/retention-events';
 import { Capacitor } from '@capacitor/core';
 import { scheduleReminders, readReminderEnabled } from '@/lib/vocab/local-reminders';
@@ -747,16 +747,14 @@ function ProgressSection({
 
 // ─── Main HomeScreen ──────────────────────────────────────────────────────────
 
-const RECOMMENDATION_ART: Record<LearningRecommendation['kind'], string> = {
-  resume_quiz:    'home/recommendation-resume-quiz.webp',
-  due_review:     'home/recommendation-due-review.webp',
-  resume_learning:'home/recommendation-resume-learning.webp',
-  ready_quiz:     'home/recommendation-start-recall.webp',
-  repair:         'home/recommendation-repair-weak.webp',
-  new_learning:   'home/recommendation-learn-new.webp',
+const RECOMMENDATION_ART: Record<BriefingKind, string> = {
+  resume:           'home/recommendation-resume-quiz.webp',
+  repeat_offenders: 'home/recommendation-repair-weak.webp',
+  deadline_file:    'home/study-deadline.svg',
+  fresh:            'home/recommendation-learn-new.webp',
 };
 
-function NextAction({ recommendation, onStart }: { recommendation: LearningRecommendation; onStart: () => void }) {
+function NextAction({ recommendation, onStart }: { recommendation: HomeRecommendation; onStart: () => void }) {
   return (
     <motion.section className="lx-next-action" aria-labelledby="lx-next-action-title"
       initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .24, ease: [0.16, 1, 0.3, 1] }}>

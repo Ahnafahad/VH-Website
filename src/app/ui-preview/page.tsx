@@ -215,6 +215,7 @@ export default function UIPreviewPage() {
               totalPoints:   1240,
               masteredWords: 42,
               totalWords:    200,
+              briefingCards: [],
             }}
             letterIndex={[]}
             reviewData={{ dueWords: [], weakWords: [] }}
