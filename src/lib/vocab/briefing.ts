@@ -15,6 +15,17 @@ import { rankByPriority, type WordPriorityInput } from './priority-score';
 
 export type BriefingKind = 'resume' | 'repeat_offenders' | 'deadline_file' | 'fresh';
 
+/**
+ * A resume card always sorts first (see KIND_PRIORITY below), so an
+ * in-progress session left untouched this long is treated as abandoned
+ * rather than let it permanently block repeat_offenders/deadline_file/fresh.
+ */
+export const RESUME_STALE_DAYS = 5;
+
+export function isResumeStale(startedAt: Date, now: Date = new Date()): boolean {
+  return now.getTime() - startedAt.getTime() > RESUME_STALE_DAYS * 86_400_000;
+}
+
 const KIND_PRIORITY: Record<BriefingKind, number> = {
   resume:           0,
   repeat_offenders: 1,

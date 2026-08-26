@@ -7,7 +7,7 @@ import { FREE_WORD_POOL, PAID_WORD_POOL } from './constants';
 import { unstable_cache } from 'next/cache';
 import { VocabCacheTag } from './cache-keys';
 import { dhakaWeekStart } from './dhaka-time';
-import { sortByBriefingPriority, computeRequiredPace, computeRepeatOffenders, type BriefingKind } from './briefing';
+import { sortByBriefingPriority, computeRequiredPace, computeRepeatOffenders, isResumeStale, type BriefingKind } from './briefing';
 import type { WordPriorityInput } from './priority-score';
 import { isAdminRole } from '@/lib/auth/roles';
 
@@ -187,6 +187,7 @@ async function _getHomeData(email: string): Promise<HomeData | null> {
       themeId: vocabQuizSessions.themeId,
       sessionType: vocabQuizSessions.sessionType,
       total: vocabQuizSessions.totalQuestions,
+      startedAt: vocabQuizSessions.startedAt,
       answered: sql<number>`count(${vocabQuizAnswers.id})`,
     })
       .from(vocabQuizSessions)
@@ -275,7 +276,9 @@ async function _getHomeData(email: string): Promise<HomeData | null> {
   const isAdmin     = isAdminRole(user.role);
   const hasPaidAccess = isAdmin || accessRows.length > 0;
 
-  const activeQuiz = activeQuizRows[0] && Number(activeQuizRows[0].answered ?? 0) > 0
+  const activeQuiz = activeQuizRows[0]
+    && Number(activeQuizRows[0].answered ?? 0) > 0
+    && !isResumeStale(activeQuizRows[0].startedAt, now)
     ? {
         id: activeQuizRows[0].id,
         href: activeQuizRows[0].sessionType === 'study' && activeQuizRows[0].themeId

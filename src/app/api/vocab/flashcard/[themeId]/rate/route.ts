@@ -228,8 +228,8 @@ export async function POST(
       });
     }
 
-    // Log SRS event for beta-tester audit trail (Habib only).
-    if (user.id === 10) {
+    // Log SRS event for algorithm audit trail.
+    {
       const intervalBefore   = existing ? (existing.srsIntervalDays ?? 1) : 0;
       const repsBefore       = existing ? (existing.srsRepetitions ?? 0)  : 0;
       const srsState = existing

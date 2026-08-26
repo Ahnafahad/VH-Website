@@ -6,7 +6,7 @@ import { eq, and, sql } from 'drizzle-orm';
 import { unstable_cache } from 'next/cache';
 import { VocabCacheTag } from './cache-keys';
 import { PHASE1_MAX_UNIT_ORDER } from './constants';
-import { sortByBriefingPriority, type BriefingKind } from './briefing';
+import { sortByBriefingPriority, isResumeStale, type BriefingKind } from './briefing';
 
 export interface StudyBriefingCard {
   kind:            BriefingKind;
@@ -83,7 +83,7 @@ async function _getStudyData(email: string): Promise<{
       .orderBy(vocabThemes.order),
 
     db
-      .select({ themeId: vocabFlashcardSessions.themeId, status: vocabFlashcardSessions.status })
+      .select({ themeId: vocabFlashcardSessions.themeId, status: vocabFlashcardSessions.status, startedAt: vocabFlashcardSessions.startedAt })
       .from(vocabFlashcardSessions)
       .where(eq(vocabFlashcardSessions.userId, user.id)),
 
@@ -105,8 +105,8 @@ async function _getStudyData(email: string): Promise<{
   const flashcardMap  = new Map(flashcardSessions.map(s => [s.themeId, s.status]));
   const quizDoneSet   = new Set(completedQuizzes.map(q => q.themeId));
 
-  // Find resume theme (in-progress flashcard session)
-  const resumeSession  = flashcardSessions.find(s => s.status === 'in_progress');
+  // Find resume theme (in-progress flashcard session, unless abandoned)
+  const resumeSession  = flashcardSessions.find(s => s.status === 'in_progress' && !isResumeStale(s.startedAt));
   const resumeThemeId  = resumeSession?.themeId ?? null;
 
   // Build result
