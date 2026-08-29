@@ -148,11 +148,12 @@ function UploadPdfTab({
 }: {
   sessions: ClassSession[]; initialMaterials: Material[]; onUploaded: (m: Material) => void;
 }) {
+  const { product: adminProduct } = useAdminProduct();
   const [file,        setFile]        = useState<File | null>(null);
   const [title,       setTitle]       = useState('');
   const [titleManual, setTitleManual] = useState(false);
   const [subject,     setSubjectRaw]  = useState<SubjectKey>(SUBJECTS[0].key);
-  const [course,      setCourseRaw]   = useState<CourseKey>(COURSES[0].key);
+  const [course,      setCourseRaw]   = useState<CourseKey>(adminProduct);
   const [batch,       setBatch]       = useState<BatchKey | null>(() => getLastUsedBatch() ?? BATCHES[0].key);
   const [docType,     setDocTypeRaw]  = useState<DocTypeKey>(DOC_TYPES[0].key);
   const [number,      setNumberRaw]   = useState('');
@@ -172,6 +173,14 @@ function UploadPdfTab({
   // Mirrors touched.topic but readable synchronously inside async PDF-heading
   // callbacks (state would be stale there).
   const topicTouchedRef = React.useRef(false);
+
+  // Keep the course selector aligned with the admin panel's active FBS/IBA
+  // mode if the admin hasn't picked one by hand — otherwise a standalone
+  // upload silently saves under whichever course this form happened to
+  // mount with, regardless of which panel the admin is looking at.
+  useEffect(() => {
+    if (!touched.course) setCourseRaw(adminProduct);
+  }, [adminProduct, touched.course]);
 
   const setSubject = (v: SubjectKey) => { setSubjectRaw(v); setTouched(t => ({ ...t, subject: true })); setProvenance(p => ({ ...p, subject: null })); };
   const setCourse  = (v: CourseKey)  => { setCourseRaw(v);  setTouched(t => ({ ...t, course: true }));  setProvenance(p => ({ ...p, course: null })); };

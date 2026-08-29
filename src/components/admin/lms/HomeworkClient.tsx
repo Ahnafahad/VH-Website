@@ -145,15 +145,16 @@ function assignmentFormFromEditing(editing: Assignment): AssignmentForm {
 }
 
 function AssignmentModal({
-  open, editing, sessions, allMaterials, batches, onClose, onSaved,
+  open, editing, sessions, allMaterials, batches, defaultProduct, onClose, onSaved,
 }: {
   open: boolean; editing: Assignment | null;
   sessions: ClassSession[];
   allMaterials: MaterialOption[];
   batches: BatchOption[];
+  defaultProduct: string;
   onClose: () => void; onSaved: (a: Assignment) => void;
 }) {
-  const [form, setForm] = useState<AssignmentForm>(() => editing ? assignmentFormFromEditing(editing) : defaultForm);
+  const [form, setForm] = useState<AssignmentForm>(() => editing ? assignmentFormFromEditing(editing) : { ...defaultForm, product: defaultProduct });
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState('');
   const [uploadFile, setUploadFile] = useState<File | null>(null);
@@ -170,7 +171,7 @@ function AssignmentModal({
   // as ClassesClient's SessionModal).
   useEffect(() => {
     if (!open) return;
-    setForm(editing ? assignmentFormFromEditing(editing) : defaultForm);
+    setForm(editing ? assignmentFormFromEditing(editing) : { ...defaultForm, product: defaultProduct });
     setError('');
     setUploadFile(null);
     setUploadProgress(0);
@@ -898,6 +899,7 @@ export default function HomeworkClient({ initialAssignments, sessions, allMateri
         sessions={sessions}
         allMaterials={allMaterials}
         batches={batches}
+        defaultProduct={product}
         onClose={() => { setModalOpen(false); setEditing(null); }}
         onSaved={handleSaved}
       />
