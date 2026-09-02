@@ -376,34 +376,26 @@ function UnitAccordion({
     navigate(`/vocab/study/${theme.id}`);
   }
 
-  // Check if the entire unit is locked (all themes are locked)
-  const entireUnitLocked = unit.themes.length > 0 && unit.themes.every(t => t.locked);
+  // Entire unit locked (phase-2 gate) — nothing inside a user can open, so
+  // render the locked-unit card in place of the accordion entirely rather
+  // than layering it over a (much shorter) collapsed header.
+  if (unit.themes.length > 0 && unit.themes.every(t => t.locked)) {
+    return <LockedUnitOverlay unitName={unit.name} />;
+  }
 
   return (
     <div
       className="overflow-hidden rounded-2xl"
       style={{
         background: 'linear-gradient(135deg, var(--color-lx-surface) 0%, rgba(20,20,20,0.9) 100%)',
-        border:     entireUnitLocked
-          ? '1px solid rgba(201,168,76,0.18)'
-          : '1px solid var(--color-lx-border)',
-        position:   'relative',
+        border:     '1px solid var(--color-lx-border)',
       }}
     >
-      {/* ── Locked unit overlay (phase-2 gate) ─────────────────── */}
-      {entireUnitLocked && (
-        <LockedUnitOverlay unitName={unit.name} />
-      )}
-
       {/* Header row */}
       <button
-        onClick={entireUnitLocked ? undefined : onToggle}
+        onClick={onToggle}
         className="flex w-full flex-col p-4"
-        style={{
-          color:   'var(--color-lx-text-primary)',
-          cursor:  entireUnitLocked ? 'default' : 'pointer',
-          opacity: entireUnitLocked ? 0.35 : 1,
-        }}
+        style={{ color: 'var(--color-lx-text-primary)', cursor: 'pointer' }}
       >
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
