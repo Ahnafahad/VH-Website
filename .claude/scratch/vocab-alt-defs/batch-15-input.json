@@ -1,0 +1,650 @@
+[
+  {
+    "id": 1742,
+    "word": "Benefactor",
+    "pos": "noun",
+    "current_definition": "A person who gives money, support, or other practical help to another person, a school, a charity, or any organization in need.",
+    "synonyms": [
+      "patron",
+      "donor"
+    ],
+    "antonyms": [
+      "adversary"
+    ]
+  },
+  {
+    "id": 1743,
+    "word": "Benevolent",
+    "pos": "adjective",
+    "current_definition": "Kind and genuinely generous — wanting to do good for others and acting on that wish, often in a position of power or influence.",
+    "synonyms": [
+      "charitable",
+      "kind-hearted"
+    ],
+    "antonyms": [
+      "malevolent"
+    ]
+  },
+  {
+    "id": 1744,
+    "word": "Bequest",
+    "pos": "noun",
+    "current_definition": "Money, property, or possessions left to a specific person or organization in a will — a gift that only takes effect after the giver has died.",
+    "synonyms": [
+      "legacy",
+      "inheritance"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": 1745,
+    "word": "Largess",
+    "pos": "noun",
+    "current_definition": "The generous giving of money or gifts, especially by someone wealthy or powerful; a spirit of open-handed generosity toward those below or around you.",
+    "synonyms": [
+      "generosity",
+      "munificence"
+    ],
+    "antonyms": [
+      "stinginess"
+    ]
+  },
+  {
+    "id": 1746,
+    "word": "Philanthropy",
+    "pos": "noun",
+    "current_definition": "The organized and ongoing practice of giving money, time, or resources to help people or benefit society — usually on a large or structured scale, not just a single act.",
+    "synonyms": [
+      "charity",
+      "benevolence"
+    ],
+    "antonyms": [
+      "misanthropy"
+    ]
+  },
+  {
+    "id": 1747,
+    "word": "Prodigal",
+    "pos": "adjective",
+    "current_definition": "Spending money or using resources in a very free and wasteful way, far beyond what is sensible or sustainable.",
+    "synonyms": [
+      "lavish",
+      "extravagant"
+    ],
+    "antonyms": [
+      "frugal"
+    ]
+  },
+  {
+    "id": 1748,
+    "word": "Provident",
+    "pos": "adjective",
+    "current_definition": "Careful to think ahead and prepare for future needs; wise about setting aside resources so that you and those who depend on you are taken care of later.",
+    "synonyms": [
+      "prudent",
+      "far-sighted"
+    ],
+    "antonyms": [
+      "improvident"
+    ]
+  },
+  {
+    "id": 1749,
+    "word": "Solicitous",
+    "pos": "adjective",
+    "current_definition": "Showing close, warm attention to someone's comfort or well-being; actively concerned with what another person needs and quick to provide it.",
+    "synonyms": [
+      "attentive",
+      "caring"
+    ],
+    "antonyms": [
+      "indifferent"
+    ]
+  },
+  {
+    "id": 1750,
+    "word": "Abnegate",
+    "pos": "verb",
+    "current_definition": "To give up or deny yourself something you want or have a right to, usually as a matter of principle, religious devotion, or personal discipline.",
+    "synonyms": [
+      "renounce",
+      "relinquish"
+    ],
+    "antonyms": [
+      "indulge"
+    ]
+  },
+  {
+    "id": 1751,
+    "word": "Abstinent",
+    "pos": "adjective",
+    "current_definition": "Choosing to go without something, especially alcohol, certain foods, or other physical pleasures, as a matter of personal discipline, health, or belief.",
+    "synonyms": [
+      "abstemious",
+      "self-denying"
+    ],
+    "antonyms": [
+      "indulgent"
+    ]
+  },
+  {
+    "id": 1752,
+    "word": "Ascetic",
+    "pos": "adjective",
+    "current_definition": "Marked by deliberate rejection of physical comfort and pleasure, usually for spiritual or religious reasons; extremely simple and self-denying in how one lives.",
+    "synonyms": [
+      "austere",
+      "spartan",
+      "hermit",
+      "monk"
+    ],
+    "antonyms": [
+      "hedonistic"
+    ]
+  },
+  {
+    "id": 1753,
+    "word": "Austere",
+    "pos": "adjective",
+    "current_definition": "Very plain and bare, with nothing extra, comfortable, or decorative — stripped down to the minimum.",
+    "synonyms": [
+      "stark",
+      "severe"
+    ],
+    "antonyms": [
+      "lavish"
+    ]
+  },
+  {
+    "id": 1754,
+    "word": "Celibacy",
+    "pos": "noun",
+    "current_definition": "The deliberate choice to remain unmarried and to abstain from sexual relations, most often made as part of a religious commitment or vow.",
+    "synonyms": [
+      "abstinence",
+      "chastity"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": 1755,
+    "word": "Forbear",
+    "pos": "verb",
+    "current_definition": "To stop yourself from doing something you are tempted or provoked to do; to hold back through patient self-control rather than react.",
+    "synonyms": [
+      "restrain",
+      "refrain"
+    ],
+    "antonyms": [
+      "indulge"
+    ]
+  },
+  {
+    "id": 1756,
+    "word": "Forego",
+    "pos": "verb",
+    "current_definition": "To choose not to have or do something you could have; to willingly give something up or go without it.",
+    "synonyms": [
+      "forgo",
+      "relinquish"
+    ],
+    "antonyms": [
+      "indulge"
+    ]
+  },
+  {
+    "id": 1757,
+    "word": "Forsake",
+    "pos": "verb",
+    "current_definition": "To give up something you once valued or held to; to leave it behind completely and for good.",
+    "synonyms": [
+      "abandon",
+      "renounce"
+    ],
+    "antonyms": [
+      "uphold"
+    ]
+  },
+  {
+    "id": 1758,
+    "word": "Frugal",
+    "pos": "adjective",
+    "current_definition": "Careful and sensible about spending money and using resources; avoiding waste and spending only what is truly needed.",
+    "synonyms": [
+      "thrifty",
+      "economical"
+    ],
+    "antonyms": [
+      "extravagant"
+    ]
+  },
+  {
+    "id": 1759,
+    "word": "Parsimonious",
+    "pos": "adjective",
+    "current_definition": "Extremely and unreasonably unwilling to spend money; so reluctant to part with anything that it becomes mean and unjust toward others.",
+    "synonyms": [
+      "miserly",
+      "tight-fisted"
+    ],
+    "antonyms": [
+      "generous"
+    ]
+  },
+  {
+    "id": 1760,
+    "word": "Sobriety",
+    "pos": "noun",
+    "current_definition": "The state of not being under the influence of alcohol or drugs; being clear-headed and in full control of your faculties.",
+    "synonyms": [
+      "abstinence",
+      "temperance"
+    ],
+    "antonyms": [
+      "intoxication"
+    ]
+  },
+  {
+    "id": 1761,
+    "word": "Temperate",
+    "pos": "adjective",
+    "current_definition": "Behaving with self-control and moderation; not going to extremes in appetite, emotion, or personal habits.",
+    "synonyms": [
+      "moderate",
+      "restrained"
+    ],
+    "antonyms": [
+      "extreme"
+    ]
+  },
+  {
+    "id": 1762,
+    "word": "Adulterate",
+    "pos": "verb",
+    "current_definition": "To make something impure or weaker by secretly mixing in an inferior or harmful substance.",
+    "synonyms": [
+      "contaminate",
+      "corrupt"
+    ],
+    "antonyms": [
+      "purify"
+    ]
+  },
+  {
+    "id": 1763,
+    "word": "Artful",
+    "pos": "adjective",
+    "current_definition": "Clever at getting what you want through indirect or deceptive means; cunning without appearing so.",
+    "synonyms": [
+      "cunning",
+      "crafty"
+    ],
+    "antonyms": [
+      "guileless"
+    ]
+  },
+  {
+    "id": 1764,
+    "word": "Charlatan",
+    "pos": "noun",
+    "current_definition": "A person who falsely claims to have expert knowledge or skills in order to cheat or impress others.",
+    "synonyms": [
+      "fraud",
+      "impostor"
+    ],
+    "antonyms": [
+      "expert"
+    ]
+  },
+  {
+    "id": 1765,
+    "word": "Chicanery",
+    "pos": "noun",
+    "current_definition": "The use of clever tricks and dishonest arguments to confuse or manipulate people, especially in legal or political situations.",
+    "synonyms": [
+      "trickery",
+      "deception"
+    ],
+    "antonyms": [
+      "honesty"
+    ]
+  },
+  {
+    "id": 1766,
+    "word": "Delude",
+    "pos": "verb",
+    "current_definition": "To cause someone — or yourself — to believe something that is not true; to keep a false belief alive in someone's mind.",
+    "synonyms": [
+      "deceive",
+      "mislead"
+    ],
+    "antonyms": [
+      "enlighten"
+    ]
+  },
+  {
+    "id": 1767,
+    "word": "Duplicity",
+    "pos": "noun",
+    "current_definition": "The practice of saying one thing while secretly meaning or doing another; deliberate two-faced dishonesty in your dealings with others.",
+    "synonyms": [
+      "deceit",
+      "double-dealing"
+    ],
+    "antonyms": [
+      "sincerity"
+    ]
+  },
+  {
+    "id": 1768,
+    "word": "Fabrication",
+    "pos": "noun",
+    "current_definition": "A story, claim, or piece of evidence that has been completely made up; a lie presented as fact.",
+    "synonyms": [
+      "invention",
+      "lie"
+    ],
+    "antonyms": [
+      "truth"
+    ]
+  },
+  {
+    "id": 1769,
+    "word": "Finesse",
+    "pos": "noun",
+    "current_definition": "Skill and subtle cleverness in handling a difficult or delicate situation.",
+    "synonyms": [
+      "skill",
+      "delicacy",
+      "manoeuvre",
+      "navigate"
+    ],
+    "antonyms": [
+      "clumsiness"
+    ]
+  },
+  {
+    "id": 1770,
+    "word": "Guile",
+    "pos": "noun",
+    "current_definition": "Clever, subtle cunning used to trick or deceive others; the ability to get what you want through indirect and deceptive means rather than honest effort.",
+    "synonyms": [
+      "cunning",
+      "craftiness"
+    ],
+    "antonyms": [
+      "naivety"
+    ]
+  },
+  {
+    "id": 1771,
+    "word": "Specious",
+    "pos": "adjective",
+    "current_definition": "Seeming correct or reasonable on the surface but actually wrong or misleading when examined closely.",
+    "synonyms": [
+      "misleading",
+      "plausible"
+    ],
+    "antonyms": [
+      "sound"
+    ]
+  },
+  {
+    "id": 1772,
+    "word": "Ambiguous",
+    "pos": "adjective",
+    "current_definition": "Open to more than one meaning or interpretation; unclear in a way that causes confusion or misunderstanding.",
+    "synonyms": [
+      "unclear",
+      "vague"
+    ],
+    "antonyms": [
+      "clear"
+    ]
+  },
+  {
+    "id": 1773,
+    "word": "Circuitous",
+    "pos": "adjective",
+    "current_definition": "Taking a longer, more roundabout path than necessary — used both for physical routes and for the way someone speaks at length without getting to the point.",
+    "synonyms": [
+      "roundabout",
+      "indirect"
+    ],
+    "antonyms": [
+      "direct"
+    ]
+  },
+  {
+    "id": 1774,
+    "word": "Circumlocution",
+    "pos": "noun",
+    "current_definition": "The use of far more words than needed to say something simple; talking around a subject rather than addressing it directly.",
+    "synonyms": [
+      "verbosity",
+      "wordiness"
+    ],
+    "antonyms": [
+      "brevity"
+    ]
+  },
+  {
+    "id": 1775,
+    "word": "Elliptical",
+    "pos": "adjective",
+    "current_definition": "Using fewer words than are needed, leaving out information so the meaning becomes unclear or hard to follow.",
+    "synonyms": [
+      "indirect",
+      "cryptic"
+    ],
+    "antonyms": [
+      "explicit"
+    ]
+  },
+  {
+    "id": 1776,
+    "word": "Equivocal",
+    "pos": "adjective",
+    "current_definition": "Deliberately unclear or capable of being read in more than one way, usually to avoid making a firm commitment or taking a clear position.",
+    "synonyms": [
+      "ambiguous",
+      "noncommittal"
+    ],
+    "antonyms": [
+      "unequivocal"
+    ]
+  },
+  {
+    "id": 1777,
+    "word": "Euphemism",
+    "pos": "noun",
+    "current_definition": "A mild or indirect word or phrase used in place of one that might seem too harsh, blunt, or upsetting.",
+    "synonyms": [
+      "softener",
+      "substitute"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": 1778,
+    "word": "Insinuate",
+    "pos": "verb",
+    "current_definition": "To suggest something unpleasant, critical, or offensive in an indirect way, without stating it openly.",
+    "synonyms": [
+      "imply",
+      "hint"
+    ],
+    "antonyms": [
+      "state"
+    ]
+  },
+  {
+    "id": 1779,
+    "word": "Mendacious",
+    "pos": "adjective",
+    "current_definition": "Habitually dishonest; given to telling lies, especially in a smooth or convincing way.",
+    "synonyms": [
+      "dishonest",
+      "lying"
+    ],
+    "antonyms": [
+      "truthful"
+    ]
+  },
+  {
+    "id": 1780,
+    "word": "Obfuscate",
+    "pos": "verb",
+    "current_definition": "To make something deliberately confusing or hard to understand; to cloud the meaning of something in order to hide the truth.",
+    "synonyms": [
+      "obscure",
+      "confuse"
+    ],
+    "antonyms": [
+      "clarify"
+    ]
+  },
+  {
+    "id": 1781,
+    "word": "Oblique",
+    "pos": "adjective",
+    "current_definition": "Not direct or straightforward — an oblique remark hints at something without stating it; an oblique angle is neither a right angle nor parallel to a surface.",
+    "synonyms": [
+      "indirect",
+      "slanting"
+    ],
+    "antonyms": [
+      "direct"
+    ]
+  },
+  {
+    "id": 1782,
+    "word": "Ostensible",
+    "pos": "adjective",
+    "current_definition": "Appearing to be the real reason or situation on the surface, but possibly concealing the true motive underneath.",
+    "synonyms": [
+      "apparent",
+      "supposed"
+    ],
+    "antonyms": [
+      "actual"
+    ]
+  },
+  {
+    "id": 1783,
+    "word": "Avow",
+    "pos": "verb",
+    "current_definition": "To state or admit something openly and without embarrassment; to declare something clearly and in public.",
+    "synonyms": [
+      "declare",
+      "affirm"
+    ],
+    "antonyms": [
+      "deny"
+    ]
+  },
+  {
+    "id": 1785,
+    "word": "Credulous",
+    "pos": "adjective",
+    "current_definition": "Too ready or willing to believe things without questioning them or asking for evidence; easily fooled.",
+    "synonyms": [
+      "gullible",
+      "naive"
+    ],
+    "antonyms": [
+      "skeptical"
+    ]
+  },
+  {
+    "id": 1786,
+    "word": "Disinterested",
+    "pos": "adjective",
+    "current_definition": "Having no personal stake in the outcome and therefore able to be fair; not influenced by self-interest or personal gain.",
+    "synonyms": [
+      "impartial",
+      "neutral"
+    ],
+    "antonyms": [
+      "biased"
+    ]
+  },
+  {
+    "id": 1787,
+    "word": "Explicit",
+    "pos": "adjective",
+    "current_definition": "Stated in a way that is fully clear and detailed, with nothing left to guess or interpret.",
+    "synonyms": [
+      "clear",
+      "direct"
+    ],
+    "antonyms": [
+      "implicit"
+    ]
+  },
+  {
+    "id": 1788,
+    "word": "Fidelity",
+    "pos": "noun",
+    "current_definition": "Faithfulness and loyalty, especially in a personal relationship; not betraying someone's trust.",
+    "synonyms": [
+      "loyalty",
+      "faithfulness"
+    ],
+    "antonyms": [
+      "betrayal"
+    ]
+  },
+  {
+    "id": 1789,
+    "word": "Impartial",
+    "pos": "adjective",
+    "current_definition": "Treating all sides or all people fairly and equally; not favouring anyone because of personal feelings or connections.",
+    "synonyms": [
+      "fair",
+      "unbiased"
+    ],
+    "antonyms": [
+      "biased"
+    ]
+  },
+  {
+    "id": 1790,
+    "word": "Ingenuous",
+    "pos": "adjective",
+    "current_definition": "Honest and open in a way that shows no attempt to deceive; sometimes so straightforward as to seem naive or innocent.",
+    "synonyms": [
+      "sincere",
+      "open"
+    ],
+    "antonyms": [
+      "disingenuous"
+    ]
+  },
+  {
+    "id": 1791,
+    "word": "Manifest",
+    "pos": "adjective",
+    "current_definition": "Clear and obvious to anyone who looks; easily seen or understood without needing to be explained.",
+    "synonyms": [
+      "obvious",
+      "evident"
+    ],
+    "antonyms": [
+      "hidden"
+    ]
+  },
+  {
+    "id": 1792,
+    "word": "Unwitting",
+    "pos": "adjective",
+    "current_definition": "Not aware of what you are involved in or what you have done; unintentional and done without knowledge.",
+    "synonyms": [
+      "unknowing",
+      "unintentional"
+    ],
+    "antonyms": [
+      "deliberate"
+    ]
+  }
+]

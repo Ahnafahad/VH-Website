@@ -1,0 +1,252 @@
+[
+  {
+    "word_id": 1080,
+    "alt_definition": "publicly adopt and support",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1081,
+    "alt_definition": "system of social and political beliefs",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1082,
+    "alt_definition": "public statement of beliefs and plans",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1083,
+    "alt_definition": "following accepted traditional beliefs",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1084,
+    "alt_definition": "strongly biased toward one side",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1085,
+    "alt_definition": "aggressive attack on opposing views",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1086,
+    "alt_definition": "active supporter of an idea",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1087,
+    "alt_definition": "fundamental belief or principle",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1088,
+    "alt_definition": "list of matters to address",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1089,
+    "alt_definition": "clever deception for advantage",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1090,
+    "alt_definition": "exclusive close-knit social group",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1091,
+    "alt_definition": "secret cooperation for dishonest ends",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1092,
+    "alt_definition": "involvement in another's wrongdoing",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1093,
+    "alt_definition": "deliberately kept secret",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1094,
+    "alt_definition": "secretive to avoid notice",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1095,
+    "alt_definition": "gradually harmful yet hard to notice",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1096,
+    "alt_definition": "secret dishonest scheme",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1097,
+    "alt_definition": "privately owned and legally protected",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1098,
+    "alt_definition": "secretly done to avoid detection",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1099,
+    "alt_definition": "bitter and hostile",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1100,
+    "alt_definition": "offensively obvious",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1101,
+    "alt_definition": "criticize extremely harshly",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1102,
+    "alt_definition": "deserving blame",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1103,
+    "alt_definition": "officially clear someone of blame",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1104,
+    "alt_definition": "shockingly obvious and wrong",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1105,
+    "alt_definition": "deep public shame",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1106,
+    "alt_definition": "famous for serious wrongdoing",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1107,
+    "alt_definition": "widely known for something bad",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1108,
+    "alt_definition": "deserving strong moral condemnation",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1109,
+    "alt_definition": "brand as socially shameful",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1110,
+    "alt_definition": "deeply immoral behavior",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1111,
+    "alt_definition": "committed supporter or follower",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1112,
+    "alt_definition": "persuade through persistent flattery",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1113,
+    "alt_definition": "respectful submission to another",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1114,
+    "alt_definition": "obedient and easy to control",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1115,
+    "alt_definition": "existing in name only",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1116,
+    "alt_definition": "excessively flattering and submissive",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1117,
+    "alt_definition": "annoyingly interfering and bossy",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1118,
+    "alt_definition": "express mild disapproval",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1119,
+    "alt_definition": "submissive and lacking self-respect",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1120,
+    "alt_definition": "self-serving flatterer of the powerful",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1121,
+    "alt_definition": "take without permission or officially allocate",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1122,
+    "alt_definition": "independent and self-governing",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1123,
+    "alt_definition": "administration burdened by rules and paperwork",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1124,
+    "alt_definition": "reduce or restrict",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1125,
+    "alt_definition": "wealthy and influential business leader",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1126,
+    "alt_definition": "unfairly favoring relatives or friends",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1127,
+    "alt_definition": "fatherly or relating to fathers",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1128,
+    "alt_definition": "male family or community head",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1129,
+    "alt_definition": "demanding immediate unquestioned obedience",
+    "general_connotation": "negative"
+  }
+]

@@ -1,0 +1,516 @@
+[
+  {
+    "id": 1793,
+    "word": "Affectation",
+    "pos": "noun",
+    "current_definition": "A way of speaking or behaving that is put on to impress others rather than being natural; a manner someone adopts that does not feel genuine.",
+    "synonyms": [
+      "pretense",
+      "pose"
+    ],
+    "antonyms": [
+      "naturalness"
+    ]
+  },
+  {
+    "id": 1795,
+    "word": "Contrived",
+    "pos": "adjective",
+    "current_definition": "Deliberately arranged or forced in a way that feels unnatural and artificial; lacking the quality of something said or done sincerely.",
+    "synonyms": [
+      "artificial",
+      "forced"
+    ],
+    "antonyms": [
+      "genuine"
+    ]
+  },
+  {
+    "id": 1796,
+    "word": "Countenance",
+    "pos": "noun",
+    "current_definition": "A person's face or the expression on it.",
+    "synonyms": [
+      "face",
+      "expression",
+      "tolerate",
+      "permit"
+    ],
+    "antonyms": [
+      "forbid"
+    ]
+  },
+  {
+    "id": 1797,
+    "word": "Derogatory",
+    "pos": "adjective",
+    "current_definition": "Showing disrespect or a low opinion of someone or something; expressing the idea that a person or group is inferior or not worth respect.",
+    "synonyms": [
+      "insulting",
+      "demeaning"
+    ],
+    "antonyms": [
+      "complimentary"
+    ]
+  },
+  {
+    "id": 1798,
+    "word": "Pejorative",
+    "pos": "adjective",
+    "current_definition": "Having a negative or disapproving tone built into it — said of words or phrases that carry a judgment without explicitly stating one.",
+    "synonyms": [
+      "derogatory",
+      "disparaging"
+    ],
+    "antonyms": [
+      "complimentary"
+    ]
+  },
+  {
+    "id": 1799,
+    "word": "Pious",
+    "pos": "adjective",
+    "current_definition": "Deeply religious and devout; genuinely devoted to religious practice and belief.",
+    "synonyms": [
+      "devout",
+      "sanctimonious"
+    ],
+    "antonyms": [
+      "irreverent"
+    ]
+  },
+  {
+    "id": 1800,
+    "word": "Sanctimonious",
+    "pos": "adjective",
+    "current_definition": "Acting as though you are morally better than other people; making a public show of your own virtue or righteousness in a way that is irritating and insincere.",
+    "synonyms": [
+      "self-righteous",
+      "preachy"
+    ],
+    "antonyms": [
+      "humble"
+    ]
+  },
+  {
+    "id": 1801,
+    "word": "Unctuous",
+    "pos": "adjective",
+    "current_definition": "Excessively eager to please, agree, and flatter in a way that feels slick and insincere; so smooth in manner that people feel uncomfortable rather than reassured.",
+    "synonyms": [
+      "obsequious",
+      "sycophantic"
+    ],
+    "antonyms": [
+      "sincere"
+    ]
+  },
+  {
+    "id": 1802,
+    "word": "Allege",
+    "pos": "verb",
+    "current_definition": "To state that someone has done something wrong, or that something is true, without yet being able to prove it.",
+    "synonyms": [
+      "claim",
+      "assert"
+    ],
+    "antonyms": [
+      "prove"
+    ]
+  },
+  {
+    "id": 1803,
+    "word": "Apocryphal",
+    "pos": "adjective",
+    "current_definition": "Widely repeated and believed but almost certainly not true; a story or claim that sounds convincing but has never actually been verified.",
+    "synonyms": [
+      "fictitious",
+      "dubious"
+    ],
+    "antonyms": [
+      "verified"
+    ]
+  },
+  {
+    "id": 1804,
+    "word": "Conjecture",
+    "pos": "noun",
+    "current_definition": "An opinion or conclusion reached without solid supporting evidence; an informed guess rather than an established fact.",
+    "synonyms": [
+      "speculation",
+      "supposition"
+    ],
+    "antonyms": [
+      "fact"
+    ]
+  },
+  {
+    "id": 1805,
+    "word": "Dubious",
+    "pos": "adjective",
+    "current_definition": "Not clearly reliable or trustworthy; giving enough reason for serious doubt.",
+    "synonyms": [
+      "questionable",
+      "suspect"
+    ],
+    "antonyms": [
+      "trustworthy"
+    ]
+  },
+  {
+    "id": 1806,
+    "word": "Provisional",
+    "pos": "adjective",
+    "current_definition": "Formally put in place for now but expected to change once more information becomes available; arranged but not yet final.",
+    "synonyms": [
+      "temporary",
+      "interim"
+    ],
+    "antonyms": [
+      "final"
+    ]
+  },
+  {
+    "id": 1807,
+    "word": "Purported",
+    "pos": "adjective",
+    "current_definition": "Said or claimed to be something, but not yet confirmed as true; supposedly the case, without firm proof behind it.",
+    "synonyms": [
+      "alleged",
+      "supposed"
+    ],
+    "antonyms": [
+      "confirmed"
+    ]
+  },
+  {
+    "id": 1808,
+    "word": "Purportedly",
+    "pos": "adverb",
+    "current_definition": "According to what has been claimed but without proof to back it up; reportedly, though not verified by anyone independent.",
+    "synonyms": [
+      "allegedly",
+      "supposedly"
+    ],
+    "antonyms": [
+      "demonstrably"
+    ]
+  },
+  {
+    "id": 1809,
+    "word": "Putative",
+    "pos": "adjective",
+    "current_definition": "Widely assumed or generally believed to be the case, even without formal proof or official confirmation.",
+    "synonyms": [
+      "presumed",
+      "supposed"
+    ],
+    "antonyms": [
+      "confirmed"
+    ]
+  },
+  {
+    "id": 1810,
+    "word": "Spurious",
+    "pos": "adjective",
+    "current_definition": "False or not genuine; or based on reasoning that appears correct on the surface but falls apart under careful examination.",
+    "synonyms": [
+      "false",
+      "bogus"
+    ],
+    "antonyms": [
+      "genuine"
+    ]
+  },
+  {
+    "id": 1811,
+    "word": "Tentative",
+    "pos": "adjective",
+    "current_definition": "Not yet decided or confirmed; done or arranged with hesitation because the outcome is still uncertain and subject to change.",
+    "synonyms": [
+      "uncertain",
+      "hesitant"
+    ],
+    "antonyms": [
+      "definite"
+    ]
+  },
+  {
+    "id": 1812,
+    "word": "Tenuous",
+    "pos": "adjective",
+    "current_definition": "Very weak, thin, or slight; barely held together by evidence, and likely to collapse under any serious examination.",
+    "synonyms": [
+      "weak",
+      "fragile"
+    ],
+    "antonyms": [
+      "strong"
+    ]
+  },
+  {
+    "id": 1813,
+    "word": "Acerbic",
+    "pos": "adjective",
+    "current_definition": "Sharp and harshly critical in tone; the kind of language or humor that stings because it is both clever and merciless.",
+    "synonyms": [
+      "caustic",
+      "sharp"
+    ],
+    "antonyms": [
+      "gentle"
+    ]
+  },
+  {
+    "id": 1814,
+    "word": "Burlesque",
+    "pos": "noun",
+    "current_definition": "A comic work — a performance, sketch, or piece of writing — that mocks something serious by treating it in a wildly exaggerated, ridiculous way.",
+    "synonyms": [
+      "parody",
+      "satire"
+    ],
+    "antonyms": [
+      "tribute"
+    ]
+  },
+  {
+    "id": 1815,
+    "word": "Caricature",
+    "pos": "noun",
+    "current_definition": "A drawing or description of a person that exaggerates their most noticeable features until they look absurd; a distorted, mocking likeness.",
+    "synonyms": [
+      "cartoon",
+      "parody"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": 1816,
+    "word": "Caustic",
+    "pos": "adjective",
+    "current_definition": "So sharply critical in speech or writing that the words seem to burn; biting and scornful in a way that leaves a mark.",
+    "synonyms": [
+      "acerbic",
+      "scathing"
+    ],
+    "antonyms": [
+      "gentle"
+    ]
+  },
+  {
+    "id": 1817,
+    "word": "Facetious",
+    "pos": "adjective",
+    "current_definition": "Making jokes or treating something lightly at a moment when the situation clearly calls for seriousness; humorously inappropriate.",
+    "synonyms": [
+      "flippant",
+      "frivolous"
+    ],
+    "antonyms": [
+      "sincere"
+    ]
+  },
+  {
+    "id": 1818,
+    "word": "Farcical",
+    "pos": "adjective",
+    "current_definition": "So disorganized, chaotic, or absurd that it is impossible to take seriously; resembling a bad comedy rather than a real, competently run event.",
+    "synonyms": [
+      "absurd",
+      "ridiculous"
+    ],
+    "antonyms": [
+      "serious"
+    ]
+  },
+  {
+    "id": 1819,
+    "word": "Invective",
+    "pos": "noun",
+    "current_definition": "Harsh, violently angry language used to attack a person or group; a stream of bitter, abusive words directed at a specific target.",
+    "synonyms": [
+      "abuse",
+      "tirade"
+    ],
+    "antonyms": [
+      "praise"
+    ]
+  },
+  {
+    "id": 1820,
+    "word": "Ironic",
+    "pos": "adjective",
+    "current_definition": "Saying or expressing the opposite of what the words literally mean, usually to make a point or to be funny.",
+    "synonyms": [
+      "sardonic",
+      "wry"
+    ],
+    "antonyms": [
+      "sincere"
+    ]
+  },
+  {
+    "id": 1821,
+    "word": "Lampoon",
+    "pos": "verb",
+    "current_definition": "To publicly attack or mock a person or institution through sharp, exaggerated ridicule, usually in print or on stage.",
+    "synonyms": [
+      "satirize",
+      "mock"
+    ],
+    "antonyms": [
+      "tribute"
+    ]
+  },
+  {
+    "id": 1822,
+    "word": "Parody",
+    "pos": "noun",
+    "current_definition": "A work that closely imitates the style of a well-known piece or genre in an exaggerated way, in order to make fun of it.",
+    "synonyms": [
+      "spoof",
+      "satire"
+    ],
+    "antonyms": [
+      "tribute"
+    ]
+  },
+  {
+    "id": 1823,
+    "word": "Arbiter",
+    "pos": "noun",
+    "current_definition": "A person given the authority or recognized standing to settle a dispute and reach a judgment that both sides agree in advance to accept.",
+    "synonyms": [
+      "judge",
+      "referee"
+    ],
+    "antonyms": [
+      "disputant"
+    ]
+  },
+  {
+    "id": 1824,
+    "word": "Defame",
+    "pos": "verb",
+    "current_definition": "To damage someone's reputation by making false, harmful statements about them in public, whether spoken or in writing.",
+    "synonyms": [
+      "slander",
+      "libel"
+    ],
+    "antonyms": [
+      "praise"
+    ]
+  },
+  {
+    "id": 1825,
+    "word": "Indignant",
+    "pos": "adjective",
+    "current_definition": "Feeling or showing strong anger because something seems deeply unfair or wrong; righteously angry at a perceived injustice done to oneself or others.",
+    "synonyms": [
+      "outraged",
+      "offended"
+    ],
+    "antonyms": [
+      "indifferent"
+    ]
+  },
+  {
+    "id": 1826,
+    "word": "Libel",
+    "pos": "noun",
+    "current_definition": "A false and damaging statement about a person that is written, printed, or published in a way that harms their reputation.",
+    "synonyms": [
+      "defamation",
+      "slander"
+    ],
+    "antonyms": [
+      "vindicate"
+    ]
+  },
+  {
+    "id": 1827,
+    "word": "Litigate",
+    "pos": "verb",
+    "current_definition": "To take a legal dispute to court and argue it through the full formal legal process, rather than resolving it privately outside court.",
+    "synonyms": [
+      "sue",
+      "contest"
+    ],
+    "antonyms": [
+      "settle"
+    ]
+  },
+  {
+    "id": 1828,
+    "word": "Perjury",
+    "pos": "noun",
+    "current_definition": "The crime of deliberately telling a lie while under oath in a court of law or in another official legal proceeding.",
+    "synonyms": [
+      "false testimony",
+      "false swearing"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": 1829,
+    "word": "Precedent",
+    "pos": "noun",
+    "current_definition": "An earlier decision or action that serves as a guide or rule for handling similar cases in the future, especially in a legal context.",
+    "synonyms": [
+      "model",
+      "standard"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": 1830,
+    "word": "Rebut",
+    "pos": "verb",
+    "current_definition": "To prove or argue that a claim, accusation, or piece of evidence is wrong; to counter an opposing argument directly with facts or reasoning of your own.",
+    "synonyms": [
+      "refute",
+      "counter"
+    ],
+    "antonyms": [
+      "confirm"
+    ]
+  },
+  {
+    "id": 1831,
+    "word": "Recrimination",
+    "pos": "noun",
+    "current_definition": "An accusation made in response to being accused; the mutual blaming that occurs when two sides attack each other instead of working toward any solution.",
+    "synonyms": [
+      "countercharge",
+      "reproach"
+    ],
+    "antonyms": [
+      "reconciliation"
+    ]
+  },
+  {
+    "id": 1832,
+    "word": "Slander",
+    "pos": "noun",
+    "current_definition": "A false and damaging spoken statement about a person that harms their reputation.",
+    "synonyms": [
+      "defamation",
+      "libel"
+    ],
+    "antonyms": [
+      "vindicate"
+    ]
+  },
+  {
+    "id": 1833,
+    "word": "Stipulate",
+    "pos": "verb",
+    "current_definition": "To state clearly that something is a required condition, especially as part of a contract, agreement, or formal legal document.",
+    "synonyms": [
+      "specify",
+      "require"
+    ],
+    "antonyms": []
+  }
+]

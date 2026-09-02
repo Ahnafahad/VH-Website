@@ -1,0 +1,50 @@
+help opposing sides reach agreement,positive,1536
+make something harmful less severe,positive,1537
+soften someone's anger,positive,1538
+quietly accept without objecting,negative,1540
+official pardon for a group,positive,1541
+surrender after prolonged resistance,negative,1542
+peaceful harmony between groups,positive,1543
+general agreement within a group,positive,1544
+solemn and binding agreement,neutral,1545
+tactful and careful with secrets,positive,1546
+impossible to stop or change,negative,1547
+stubbornly difficult to resolve,negative,1548
+careful to avoid needless risk,positive,1549
+give up possession or control,neutral,1550
+yield to overwhelming pressure,negative,1551
+related to beauty or art,neutral,1552
+a place's mood or atmosphere,neutral,1553
+very old and no longer used,negative,1554
+short witty memorable saying,positive,1555
+category sharing an artistic style,neutral,1556
+surrounding social environment,neutral,1557
+newly invented word or phrase,neutral,1558
+strongly smelling of something,neutral,1559
+award or honor for achievement,positive,1560
+excessive and uncritical praise,negative,1561
+recognize value and feel grateful,positive,1562
+formal approval and praise,positive,1563
+highly respected in a field,positive,1564
+raise in status or praise highly,positive,1565
+praise enthusiastically and at length,positive,1566
+praise formally and respectfully,positive,1567
+deeply respect and admire,positive,1568
+unwaveringly loyal despite hardship,positive,1569
+promote with repeated public praise,neutral,1570
+related to farming and farmland,neutral,1571
+highest or perfect example,positive,1572
+pleasantly peaceful and rural,positive,1573
+related to home and household,neutral,1574
+animals of a region or era,neutral,1575
+highly fertile and productive,positive,1576
+cultivating crops and raising animals,neutral,1577
+peaceful and almost perfectly pleasant,positive,1578
+charmingly rough and rural,positive,1579
+racial separation with unequal rights,negative,1581
+constant source of misery,negative,1582
+something that spoils places or situations,negative,1583
+erase every visible trace,negative,1584
+grant voting and civic rights,positive,1585
+directly harmful or poisonous,negative,1586
+gradually harmful and hard to detect,negative,1587

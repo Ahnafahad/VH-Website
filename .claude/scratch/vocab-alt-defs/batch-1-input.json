@@ -1,0 +1,645 @@
+[
+  {
+    "id": 1029,
+    "word": "Autocratic",
+    "pos": "adjective",
+    "current_definition": "Ruling or behaving as if one holds complete power and no one else's opinion matters—unwilling to share control or be questioned by anyone.",
+    "synonyms": [
+      "dictatorial",
+      "despotic"
+    ],
+    "antonyms": [
+      "democratic"
+    ]
+  },
+  {
+    "id": 1030,
+    "word": "Coerce",
+    "pos": "verb",
+    "current_definition": "To force someone to do something by threatening them with punishment, violence, or serious harm if they refuse—they comply not by choice but out of fear.",
+    "synonyms": [
+      "compel",
+      "intimidate"
+    ],
+    "antonyms": [
+      "persuade"
+    ]
+  },
+  {
+    "id": 1031,
+    "word": "Despot",
+    "pos": "noun",
+    "current_definition": "A ruler who holds absolute, unchecked power and uses it harshly—without elections, legal limits, or accountability to anyone.",
+    "synonyms": [
+      "tyrant",
+      "dictator"
+    ],
+    "antonyms": [
+      "democrat"
+    ]
+  },
+  {
+    "id": 1032,
+    "word": "Hegemony",
+    "pos": "noun",
+    "current_definition": "The dominance of one country, group, or institution over others—exercised not always by direct force, but through political pressure, economic power, or cultural influence.",
+    "synonyms": [
+      "dominance",
+      "supremacy"
+    ],
+    "antonyms": [
+      "subordination"
+    ]
+  },
+  {
+    "id": 1033,
+    "word": "Imperial",
+    "pos": "adjective",
+    "current_definition": "Relating to an empire or its ruler—describing laws, authority, or ambitions that belong to or come from an empire.",
+    "synonyms": [
+      "sovereign",
+      "commanding"
+    ],
+    "antonyms": [
+      "subordinate"
+    ]
+  },
+  {
+    "id": 1034,
+    "word": "Martial",
+    "pos": "adjective",
+    "current_definition": "Relating to war, soldiers, or the military—used for anything connected with armed force, combat, or military authority.",
+    "synonyms": [
+      "military",
+      "warlike"
+    ],
+    "antonyms": [
+      "civilian"
+    ]
+  },
+  {
+    "id": 1035,
+    "word": "Pacify",
+    "pos": "verb",
+    "current_definition": "To calm someone who is angry, upset, or difficult—to bring them to a quieter, more manageable state.",
+    "synonyms": [
+      "appease",
+      "calm"
+    ],
+    "antonyms": [
+      "provoke"
+    ]
+  },
+  {
+    "id": 1036,
+    "word": "Prevail",
+    "pos": "verb",
+    "current_definition": "To succeed or win, especially against difficulty or strong opposition.",
+    "synonyms": [
+      "triumph",
+      "dominate"
+    ],
+    "antonyms": [
+      "fail"
+    ]
+  },
+  {
+    "id": 1037,
+    "word": "Proscribe",
+    "pos": "verb",
+    "current_definition": "To officially ban something—to declare it forbidden by law or authority so that no one is permitted to do or use it.",
+    "synonyms": [
+      "prohibit",
+      "ban"
+    ],
+    "antonyms": [
+      "permit"
+    ]
+  },
+  {
+    "id": 1038,
+    "word": "Subjugate",
+    "pos": "verb",
+    "current_definition": "To bring a people, nation, or group under complete control by force—to defeat them so thoroughly that they have no choice but to obey.",
+    "synonyms": [
+      "dominate",
+      "conquer"
+    ],
+    "antonyms": [
+      "liberate"
+    ]
+  },
+  {
+    "id": 1039,
+    "word": "Usurp",
+    "pos": "verb",
+    "current_definition": "To take power, a position, or a right that belongs to someone else—usually by force or deception, and without any legal right to do so.",
+    "synonyms": [
+      "seize",
+      "overthrow"
+    ],
+    "antonyms": [
+      "relinquish"
+    ]
+  },
+  {
+    "id": 1040,
+    "word": "Aristocratic",
+    "pos": "adjective",
+    "current_definition": "Belonging to the highest social class—the nobility—by birth or family title.",
+    "synonyms": [
+      "noble",
+      "patrician"
+    ],
+    "antonyms": [
+      "common"
+    ]
+  },
+  {
+    "id": 1041,
+    "word": "Bourgeois",
+    "pos": "adjective",
+    "current_definition": "(adjective) Relating to the middle class, especially in a way that suggests conventional thinking, comfort-seeking, and material values. (noun) A member of the middle class, particularly one seen as overly focused on property and social respectability.",
+    "synonyms": [
+      "middle-class",
+      "conventional"
+    ],
+    "antonyms": [
+      "proletarian"
+    ]
+  },
+  {
+    "id": 1042,
+    "word": "Condescend",
+    "pos": "verb",
+    "current_definition": "To speak or behave as though you are better than the person you are dealing with—treating them as less intelligent or less important.",
+    "synonyms": [
+      "patronize",
+      "belittle"
+    ],
+    "antonyms": [
+      "respect"
+    ]
+  },
+  {
+    "id": 1043,
+    "word": "Denizen",
+    "pos": "noun",
+    "current_definition": "A person, animal, or plant that lives in or regularly occupies a particular place—used to describe any established inhabitant of a specific environment.",
+    "synonyms": [
+      "inhabitant",
+      "resident"
+    ],
+    "antonyms": [
+      "outsider"
+    ]
+  },
+  {
+    "id": 1044,
+    "word": "Genteel",
+    "pos": "adjective",
+    "current_definition": "Polite and refined in a way that suggests good social standing; sometimes used with a hint of mockery—suggesting someone is trying too hard to appear respectable.",
+    "synonyms": [
+      "refined",
+      "polished"
+    ],
+    "antonyms": [
+      "coarse"
+    ]
+  },
+  {
+    "id": 1045,
+    "word": "Hierarchy",
+    "pos": "noun",
+    "current_definition": "A system in which people, groups, or things are ranked one above another according to power, status, or importance—with the most powerful at the top and the least powerful at the bottom.",
+    "synonyms": [
+      "pecking order",
+      "ranking"
+    ],
+    "antonyms": [
+      "equality"
+    ]
+  },
+  {
+    "id": 1046,
+    "word": "Indigenous",
+    "pos": "adjective",
+    "current_definition": "Originating naturally in a particular place and having lived or existed there since before others arrived—native to a region, not brought in from outside.",
+    "synonyms": [
+      "native",
+      "aboriginal"
+    ],
+    "antonyms": [
+      "foreign"
+    ]
+  },
+  {
+    "id": 1047,
+    "word": "Patrician",
+    "pos": "adjective",
+    "current_definition": "(adjective) Belonging to or typical of the upper class—refined, cultured, and accustomed to privilege. (noun) A member of the highest social class; historically, a member of the Roman nobility.",
+    "synonyms": [
+      "aristocratic",
+      "noble"
+    ],
+    "antonyms": [
+      "plebeian"
+    ]
+  },
+  {
+    "id": 1048,
+    "word": "Patronize",
+    "pos": "verb",
+    "current_definition": "To speak to or treat someone as though they are less intelligent or capable than they are—often without realizing you are doing it.",
+    "synonyms": [
+      "condescend",
+      "belittle"
+    ],
+    "antonyms": [
+      "respect"
+    ]
+  },
+  {
+    "id": 1049,
+    "word": "Plebeian",
+    "pos": "adjective",
+    "current_definition": "(adjective) Relating to ordinary people rather than the upper class; sometimes used to suggest a lack of culture or refinement. (noun) A common person—in ancient Rome, any citizen who was not a patrician; more broadly, someone from the lower social orders.",
+    "synonyms": [
+      "common",
+      "lowborn"
+    ],
+    "antonyms": [
+      "patrician"
+    ]
+  },
+  {
+    "id": 1050,
+    "word": "Proletariat",
+    "pos": "noun",
+    "current_definition": "The working class—those who earn wages by their labour, typically in manual or industrial work, and who own no significant property or capital.",
+    "synonyms": [
+      "working class",
+      "labourers"
+    ],
+    "antonyms": [
+      "bourgeoisie"
+    ]
+  },
+  {
+    "id": 1051,
+    "word": "Stratum",
+    "pos": "noun",
+    "current_definition": "A distinct layer or level within a larger structure—in social terms, a recognisable class or group defined by income, education, or status.",
+    "synonyms": [
+      "layer",
+      "tier"
+    ],
+    "antonyms": [
+      "whole"
+    ]
+  },
+  {
+    "id": 1052,
+    "word": "Abdicate",
+    "pos": "verb",
+    "current_definition": "To give up a throne or the highest position of power—to step down formally from a role of supreme authority.",
+    "synonyms": [
+      "resign",
+      "relinquish"
+    ],
+    "antonyms": [
+      "assume"
+    ]
+  },
+  {
+    "id": 1053,
+    "word": "Ascendancy",
+    "pos": "noun",
+    "current_definition": "A position of growing or established dominance over others—the state of having power or influence that is clearly rising or firmly held.",
+    "synonyms": [
+      "dominance",
+      "supremacy"
+    ],
+    "antonyms": [
+      "decline"
+    ]
+  },
+  {
+    "id": 1054,
+    "word": "Consecrate",
+    "pos": "verb",
+    "current_definition": "To officially declare something sacred or holy through a religious ceremony—setting it apart for divine use.",
+    "synonyms": [
+      "sanctify",
+      "dedicate"
+    ],
+    "antonyms": [
+      "desecrate"
+    ]
+  },
+  {
+    "id": 1055,
+    "word": "Coup",
+    "pos": "noun",
+    "current_definition": "A sudden seizure of power from a government—usually carried out by a small group such as the military, and often without warning or a popular vote.",
+    "synonyms": [
+      "takeover",
+      "overthrow"
+    ],
+    "antonyms": [
+      "election"
+    ]
+  },
+  {
+    "id": 1056,
+    "word": "Culminate",
+    "pos": "verb",
+    "current_definition": "To reach the highest or final point after a process of building or development—to end in a particular outcome after a long lead-up.",
+    "synonyms": [
+      "climax",
+      "conclude"
+    ],
+    "antonyms": [
+      "begin"
+    ]
+  },
+  {
+    "id": 1057,
+    "word": "Inaugurate",
+    "pos": "verb",
+    "current_definition": "To formally install someone in a position of authority through an official ceremony.",
+    "synonyms": [
+      "install",
+      "launch"
+    ],
+    "antonyms": [
+      "dissolve"
+    ]
+  },
+  {
+    "id": 1058,
+    "word": "Legacy",
+    "pos": "noun",
+    "current_definition": "Something handed down from a person, era, or event—whether money, property, ideas, or lasting consequences—that continues to shape the present long after its source is gone.",
+    "synonyms": [
+      "inheritance",
+      "bequest"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": 1059,
+    "word": "Mandate",
+    "pos": "noun",
+    "current_definition": "To officially require or order that something be done.",
+    "synonyms": [],
+    "antonyms": []
+  },
+  {
+    "id": 1060,
+    "word": "Marshal",
+    "pos": "verb",
+    "current_definition": "(verb) To organise people, facts, or resources carefully and deliberately—especially in preparation for an effort or argument. (noun) A high-ranking military officer or a law-enforcement official with senior authority.",
+    "synonyms": [
+      "organise",
+      "mobilise"
+    ],
+    "antonyms": [
+      "scatter"
+    ]
+  },
+  {
+    "id": 1061,
+    "word": "Preeminent",
+    "pos": "adjective",
+    "current_definition": "Better than all others in a particular field or area—the most respected, distinguished, or important of its kind.",
+    "synonyms": [
+      "foremost",
+      "supreme"
+    ],
+    "antonyms": [
+      "obscure"
+    ]
+  },
+  {
+    "id": 1062,
+    "word": "Preempt",
+    "pos": "verb",
+    "current_definition": "To act before someone else can, in order to prevent what they were planning to do—or to replace something before it happens by doing something first.",
+    "synonyms": [
+      "forestall",
+      "prevent"
+    ],
+    "antonyms": [
+      "allow"
+    ]
+  },
+  {
+    "id": 1063,
+    "word": "Promulgate",
+    "pos": "verb",
+    "current_definition": "To make a new law, rule, or official decision publicly known and formally put into effect—to announce it as binding authority.",
+    "synonyms": [
+      "decree",
+      "enact"
+    ],
+    "antonyms": [
+      "repeal"
+    ]
+  },
+  {
+    "id": 1064,
+    "word": "Anarchy",
+    "pos": "noun",
+    "current_definition": "A state in which there is no working government or law—where normal social order has broken down and no authority is in control. More broadly, any situation of complete disorder and confusion.",
+    "synonyms": [
+      "chaos",
+      "disorder"
+    ],
+    "antonyms": [
+      "order"
+    ]
+  },
+  {
+    "id": 1065,
+    "word": "Bastion",
+    "pos": "noun",
+    "current_definition": "A place, person, or institution that strongly defends a particular belief, way of life, or set of values—a last strong point of resistance against change or attack.",
+    "synonyms": [
+      "stronghold",
+      "fortress"
+    ],
+    "antonyms": [
+      "weakness"
+    ]
+  },
+  {
+    "id": 1066,
+    "word": "Chasm",
+    "pos": "noun",
+    "current_definition": "A deep, wide gap between two things—used literally for a physical gap in the earth, and figuratively for a large and serious division between people, groups, or ideas.",
+    "synonyms": [
+      "gulf",
+      "divide"
+    ],
+    "antonyms": [
+      "bridge"
+    ]
+  },
+  {
+    "id": 1067,
+    "word": "Faction",
+    "pos": "noun",
+    "current_definition": "A small, organised group within a larger organisation—one that has its own goals and often pushes against the main group's leadership or direction.",
+    "synonyms": [
+      "splinter group",
+      "bloc"
+    ],
+    "antonyms": [
+      "whole"
+    ]
+  },
+  {
+    "id": 1068,
+    "word": "Foment",
+    "pos": "verb",
+    "current_definition": "To stir up or encourage the development of something dangerous or violent—especially trouble, rebellion, or unrest—by feeding people's anger or dissatisfaction.",
+    "synonyms": [
+      "incite",
+      "instigate"
+    ],
+    "antonyms": [
+      "suppress"
+    ]
+  },
+  {
+    "id": 1069,
+    "word": "Insurgent",
+    "pos": "noun",
+    "current_definition": "(noun) A person who takes up arms or organises resistance against their own government or an occupying force—not yet recognised as a formal army. (adjective) Describing such a person or the movement they belong to.",
+    "synonyms": [
+      "rebel",
+      "revolutionary"
+    ],
+    "antonyms": [
+      "loyalist"
+    ]
+  },
+  {
+    "id": 1070,
+    "word": "Martyr",
+    "pos": "noun",
+    "current_definition": "A person who suffers greatly or dies for a belief, cause, or religion—and whose suffering makes them a symbol that inspires others to continue the same fight.",
+    "synonyms": [
+      "sacrifice",
+      "hero"
+    ],
+    "antonyms": [
+      "traitor"
+    ]
+  },
+  {
+    "id": 1071,
+    "word": "Polarize",
+    "pos": "verb",
+    "current_definition": "To divide people or opinion into two sharply opposed and hostile camps, with very little middle ground left between them.",
+    "synonyms": [
+      "divide",
+      "split"
+    ],
+    "antonyms": [
+      "unite"
+    ]
+  },
+  {
+    "id": 1072,
+    "word": "Protagonist",
+    "pos": "noun",
+    "current_definition": "The main character in a story, film, or play—the central figure whose actions drive the plot.",
+    "synonyms": [
+      "hero",
+      "champion"
+    ],
+    "antonyms": [
+      "antagonist"
+    ]
+  },
+  {
+    "id": 1074,
+    "word": "Sedition",
+    "pos": "noun",
+    "current_definition": "Speech, writing, or action intended to encourage people to rebel against or disobey the authority of the state—not yet open revolt, but deliberate effort to undermine the government's power.",
+    "synonyms": [
+      "incitement",
+      "subversion"
+    ],
+    "antonyms": [
+      "loyalty"
+    ]
+  },
+  {
+    "id": 1075,
+    "word": "Subversive",
+    "pos": "adjective",
+    "current_definition": "(adjective) Intended to secretly weaken or destroy an established system, government, or set of values—working against authority from the inside rather than through open confrontation. (noun) A person who works in this way.",
+    "synonyms": [
+      "seditious",
+      "disruptive"
+    ],
+    "antonyms": [
+      "loyal"
+    ]
+  },
+  {
+    "id": 1076,
+    "word": "Capitalism",
+    "pos": "noun",
+    "current_definition": "An economic system in which businesses, factories, and property are owned by private individuals rather than the state—and in which profit, competition, and market prices determine what is produced and how wealth is distributed.",
+    "synonyms": [
+      "free market",
+      "private enterprise"
+    ],
+    "antonyms": [
+      "socialism"
+    ]
+  },
+  {
+    "id": 1077,
+    "word": "Doctrinaire",
+    "pos": "adjective",
+    "current_definition": "Rigidly committed to a set of ideas or principles, and unwilling to adjust them to fit reality—applying a doctrine even when the facts clearly argue against it.",
+    "synonyms": [
+      "dogmatic",
+      "inflexible"
+    ],
+    "antonyms": [
+      "pragmatic"
+    ]
+  },
+  {
+    "id": 1078,
+    "word": "Dogmatic",
+    "pos": "adjective",
+    "current_definition": "Stating beliefs as though they are absolute facts that cannot be questioned or doubted—refusing to consider any other view or any evidence to the contrary.",
+    "synonyms": [
+      "doctrinaire",
+      "rigid"
+    ],
+    "antonyms": [
+      "open-minded"
+    ]
+  },
+  {
+    "id": 1079,
+    "word": "Egalitarian",
+    "pos": "adjective",
+    "current_definition": "(adjective) Believing in or promoting the principle that all people are equal and deserve equal rights, opportunities, and treatment. (noun) A person who holds this belief.",
+    "synonyms": [
+      "equal",
+      "democratic"
+    ],
+    "antonyms": [
+      "elitist"
+    ]
+  }
+]

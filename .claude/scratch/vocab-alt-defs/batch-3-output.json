@@ -1,0 +1,252 @@
+[
+  {
+    "word_id": 1130,
+    "alt_definition": "extra benefit tied to a job",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1131,
+    "alt_definition": "exclusive right or privilege",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1132,
+    "alt_definition": "person or thing serving as substitute",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1133,
+    "alt_definition": "wealthy and financially comfortable",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1134,
+    "alt_definition": "feature providing comfort or convenience",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1135,
+    "alt_definition": "related to cooking",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1136,
+    "alt_definition": "luxuriously and excessively self-indulgent",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1137,
+    "alt_definition": "show off to attract attention",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1138,
+    "alt_definition": "impressive but absurdly excessive",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1139,
+    "alt_definition": "exceptionally generous",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1140,
+    "alt_definition": "richly luxurious and lavish",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1141,
+    "alt_definition": "showy and designed to impress",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1142,
+    "alt_definition": "able to pay all debts",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1143,
+    "alt_definition": "utterly miserable and degrading",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1144,
+    "alt_definition": "extreme greed for wealth",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1145,
+    "alt_definition": "enviously desire another's possessions",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1146,
+    "alt_definition": "serious lack of something",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1147,
+    "alt_definition": "excessive supply beyond demand",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1148,
+    "alt_definition": "impossible to satisfy",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1149,
+    "alt_definition": "motivated mainly by money",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1150,
+    "alt_definition": "too little of something",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1151,
+    "alt_definition": "aggressively greedy and grasping",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1152,
+    "alt_definition": "waste recklessly",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1153,
+    "alt_definition": "extremely bad",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1154,
+    "alt_definition": "lacking life's basic necessities",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1155,
+    "alt_definition": "extremely poor and needy",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1156,
+    "alt_definition": "person living by begging",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1157,
+    "alt_definition": "contemptibly small or inadequate",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1158,
+    "alt_definition": "dirty or morally corrupt",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1159,
+    "alt_definition": "extreme filth and neglect",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1160,
+    "alt_definition": "absence of movement or progress",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1161,
+    "alt_definition": "chosen without reason or rule",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1162,
+    "alt_definition": "careful about possible consequences",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1163,
+    "alt_definition": "expert with refined taste",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1164,
+    "alt_definition": "standard used for judgment",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1165,
+    "alt_definition": "notice or understand something unclear",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1166,
+    "alt_definition": "carefully tell things apart",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1167,
+    "alt_definition": "recognize what makes things different",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1168,
+    "alt_definition": "fair and impartial",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1169,
+    "alt_definition": "demanding extremely high standards",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1170,
+    "alt_definition": "clear and convincing",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1171,
+    "alt_definition": "excessively careful about details",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1172,
+    "alt_definition": "wise and carefully considered",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1173,
+    "alt_definition": "clear and easy to understand",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1174,
+    "alt_definition": "requiring great care and effort",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1175,
+    "alt_definition": "directly relevant to the subject",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1176,
+    "alt_definition": "meet the required standards",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1177,
+    "alt_definition": "extremely thorough and demanding",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1178,
+    "alt_definition": "wise and insightful",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1179,
+    "alt_definition": "honest and extremely careful",
+    "general_connotation": "positive"
+  }
+]

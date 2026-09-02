@@ -1,0 +1,652 @@
+[
+  {
+    "id": 1231,
+    "word": "Prepossess",
+    "pos": "verb",
+    "current_definition": "To create a strong, favorable impression on someone right from the first moment; to charm or win over immediately.",
+    "synonyms": [
+      "charm",
+      "captivate"
+    ],
+    "antonyms": [
+      "repel"
+    ]
+  },
+  {
+    "id": 1232,
+    "word": "Querulous",
+    "pos": "adjective",
+    "current_definition": "Constantly complaining or finding fault in a whiny, irritable way, often about small or unimportant things.",
+    "synonyms": [
+      "grumbling",
+      "peevish"
+    ],
+    "antonyms": [
+      "content"
+    ]
+  },
+  {
+    "id": 1233,
+    "word": "Sardonic",
+    "pos": "adjective",
+    "current_definition": "Using humor or remarks that are mocking and a little cruel, showing that you think little of the person or situation you are commenting on.",
+    "synonyms": [
+      "mocking",
+      "cynical"
+    ],
+    "antonyms": [
+      "sincere"
+    ]
+  },
+  {
+    "id": 1234,
+    "word": "Supercilious",
+    "pos": "adjective",
+    "current_definition": "Behaving as though you believe you are far superior to the people around you and that they barely deserve your attention.",
+    "synonyms": [
+      "haughty",
+      "condescending"
+    ],
+    "antonyms": [
+      "humble"
+    ]
+  },
+  {
+    "id": 1235,
+    "word": "Temerity",
+    "pos": "noun",
+    "current_definition": "The willingness to do something that is dangerously bold or disrespectful, especially when it is likely to cause serious trouble or offence.",
+    "synonyms": [
+      "nerve",
+      "recklessness"
+    ],
+    "antonyms": [
+      "caution"
+    ]
+  },
+  {
+    "id": 1236,
+    "word": "Alacrity",
+    "pos": "noun",
+    "current_definition": "Eager, cheerful readiness and quickness to act or respond, with no sign of reluctance or hesitation.",
+    "synonyms": [
+      "eagerness",
+      "enthusiasm"
+    ],
+    "antonyms": [
+      "reluctance"
+    ]
+  },
+  {
+    "id": 1237,
+    "word": "Ardent",
+    "pos": "adjective",
+    "current_definition": "Feeling or showing something — a belief, a desire, an emotion — with great intensity and passion; deeply committed or enthusiastic.",
+    "synonyms": [
+      "passionate",
+      "fervent"
+    ],
+    "antonyms": [
+      "indifferent"
+    ]
+  },
+  {
+    "id": 1238,
+    "word": "Capricious",
+    "pos": "adjective",
+    "current_definition": "Changing one's mind, mood, or direction suddenly and without clear reason, making it very hard for others to predict what comes next.",
+    "synonyms": [
+      "unpredictable",
+      "fickle"
+    ],
+    "antonyms": [
+      "consistent"
+    ]
+  },
+  {
+    "id": 1239,
+    "word": "Choleric",
+    "pos": "adjective",
+    "current_definition": "Quick to become angry; having a temperament that moves easily into irritation or rage, often over minor things.",
+    "synonyms": [
+      "cantankerous",
+      "hot-tempered"
+    ],
+    "antonyms": [
+      "placid"
+    ]
+  },
+  {
+    "id": 1240,
+    "word": "Fervor",
+    "pos": "noun",
+    "current_definition": "Intense, deeply felt enthusiasm or passion for a cause, belief, or activity — strong enough that it shows clearly in how a person speaks or acts.",
+    "synonyms": [
+      "passion",
+      "zeal"
+    ],
+    "antonyms": [
+      "apathy"
+    ]
+  },
+  {
+    "id": 1241,
+    "word": "Frenetic",
+    "pos": "adjective",
+    "current_definition": "Moving, happening, or working at a wild, almost out-of-control speed, as if driven by too much nervous energy to slow down.",
+    "synonyms": [
+      "frenzied",
+      "hectic"
+    ],
+    "antonyms": [
+      "calm"
+    ]
+  },
+  {
+    "id": 1242,
+    "word": "Impetuous",
+    "pos": "adjective",
+    "current_definition": "Acting suddenly on a feeling or idea without stopping to think about the consequences; driven by strong impulse rather than careful thought.",
+    "synonyms": [
+      "rash",
+      "impulsive"
+    ],
+    "antonyms": [
+      "cautious"
+    ]
+  },
+  {
+    "id": 1243,
+    "word": "Irascible",
+    "pos": "adjective",
+    "current_definition": "Having a very short temper; easily and quickly angered, especially by small frustrations or delays.",
+    "synonyms": [
+      "irritable",
+      "hot-headed"
+    ],
+    "antonyms": [
+      "even-tempered"
+    ]
+  },
+  {
+    "id": 1244,
+    "word": "Mercurial",
+    "pos": "adjective",
+    "current_definition": "Changing mood, opinion, or behavior very quickly and unpredictably, so that those around you never know quite what to expect next.",
+    "synonyms": [
+      "volatile",
+      "unpredictable"
+    ],
+    "antonyms": [
+      "steady"
+    ]
+  },
+  {
+    "id": 1245,
+    "word": "Petulant",
+    "pos": "adjective",
+    "current_definition": "Showing childish, sulky bad temper when something does not go the way you want, often over a small or trivial matter.",
+    "synonyms": [
+      "sulky",
+      "irritable"
+    ],
+    "antonyms": [
+      "good-natured"
+    ]
+  },
+  {
+    "id": 1246,
+    "word": "Aloof",
+    "pos": "adjective",
+    "current_definition": "Cool and distant in manner; not friendly or interested in mixing with others.",
+    "synonyms": [
+      "distant",
+      "detached"
+    ],
+    "antonyms": [
+      "warm"
+    ]
+  },
+  {
+    "id": 1247,
+    "word": "Antipathy",
+    "pos": "noun",
+    "current_definition": "A strong, lasting feeling of dislike or opposition toward someone or something.",
+    "synonyms": [
+      "aversion",
+      "hostility"
+    ],
+    "antonyms": [
+      "affinity"
+    ]
+  },
+  {
+    "id": 1248,
+    "word": "Diffident",
+    "pos": "adjective",
+    "current_definition": "Lacking confidence in oneself; hesitant to speak up or put oneself forward.",
+    "synonyms": [
+      "timid",
+      "bashful"
+    ],
+    "antonyms": [
+      "assertive"
+    ]
+  },
+  {
+    "id": 1249,
+    "word": "Equanimity",
+    "pos": "noun",
+    "current_definition": "A calm, steady state of mind that does not change even in difficult or stressful situations.",
+    "synonyms": [
+      "composure",
+      "serenity"
+    ],
+    "antonyms": [
+      "agitation"
+    ]
+  },
+  {
+    "id": 1250,
+    "word": "Indifferent",
+    "pos": "adjective",
+    "current_definition": "Having no particular interest in or concern about something; neither for nor against.",
+    "synonyms": [
+      "apathetic",
+      "unconcerned"
+    ],
+    "antonyms": [
+      "passionate"
+    ]
+  },
+  {
+    "id": 1251,
+    "word": "Obdurate",
+    "pos": "adjective",
+    "current_definition": "Stubbornly refusing to change one's mind or feelings, even when pressured or given good reasons.",
+    "synonyms": [
+      "stubborn",
+      "inflexible"
+    ],
+    "antonyms": [
+      "yielding"
+    ]
+  },
+  {
+    "id": 1252,
+    "word": "Reclusive",
+    "pos": "adjective",
+    "current_definition": "Preferring to live or spend time alone and away from other people; deliberately avoiding company.",
+    "synonyms": [
+      "solitary",
+      "withdrawn"
+    ],
+    "antonyms": [
+      "sociable"
+    ]
+  },
+  {
+    "id": 1253,
+    "word": "Reticent",
+    "pos": "adjective",
+    "current_definition": "Unwilling to talk openly about one's thoughts, feelings, or personal matters.",
+    "synonyms": [
+      "reserved",
+      "guarded"
+    ],
+    "antonyms": [
+      "forthcoming"
+    ]
+  },
+  {
+    "id": 1254,
+    "word": "Stoic",
+    "pos": "adjective",
+    "current_definition": "Enduring pain, hardship, or difficulty without complaining or showing emotion.",
+    "synonyms": [
+      "impassive",
+      "resilient"
+    ],
+    "antonyms": [
+      "emotional"
+    ]
+  },
+  {
+    "id": 1255,
+    "word": "Tacit",
+    "pos": "adjective",
+    "current_definition": "Understood or agreed upon without being said out loud; implied rather than stated directly.",
+    "synonyms": [
+      "implicit",
+      "unspoken"
+    ],
+    "antonyms": [
+      "explicit"
+    ]
+  },
+  {
+    "id": 1256,
+    "word": "Taciturn",
+    "pos": "adjective",
+    "current_definition": "A person who speaks very little by nature; habitually quiet and not inclined to conversation.",
+    "synonyms": [
+      "tight-lipped",
+      "uncommunicative"
+    ],
+    "antonyms": [
+      "talkative"
+    ]
+  },
+  {
+    "id": 1257,
+    "word": "Affable",
+    "pos": "adjective",
+    "current_definition": "Easy to talk to and pleasant in manner; friendly and approachable with everyone.",
+    "synonyms": [
+      "genial",
+      "approachable"
+    ],
+    "antonyms": [
+      "unfriendly"
+    ]
+  },
+  {
+    "id": 1258,
+    "word": "Amiable",
+    "pos": "adjective",
+    "current_definition": "Having a kind, good-natured character that makes people like you and feel comfortable around you.",
+    "synonyms": [
+      "good-natured",
+      "likeable"
+    ],
+    "antonyms": [
+      "disagreeable"
+    ]
+  },
+  {
+    "id": 1259,
+    "word": "Assiduous",
+    "pos": "adjective",
+    "current_definition": "Working with great care, effort, and persistence over a long period of time; extremely thorough and diligent.",
+    "synonyms": [
+      "diligent",
+      "painstaking"
+    ],
+    "antonyms": [
+      "negligent"
+    ]
+  },
+  {
+    "id": 1260,
+    "word": "Avuncular",
+    "pos": "adjective",
+    "current_definition": "Kind, warm, and gently helpful toward younger or less experienced people, in the way a friendly uncle might be.",
+    "synonyms": [
+      "paternal",
+      "benevolent"
+    ],
+    "antonyms": [
+      "harsh"
+    ]
+  },
+  {
+    "id": 1261,
+    "word": "Charisma",
+    "pos": "noun",
+    "current_definition": "A natural ability to attract, inspire, or charm people through one's personality, energy, or presence.",
+    "synonyms": [
+      "magnetism",
+      "charm"
+    ],
+    "antonyms": [
+      "dullness"
+    ]
+  },
+  {
+    "id": 1262,
+    "word": "Congenial",
+    "pos": "adjective",
+    "current_definition": "Pleasant and suited to one's tastes or personality; agreeable in company or in atmosphere.",
+    "synonyms": [
+      "agreeable",
+      "compatible"
+    ],
+    "antonyms": [
+      "uncongenial"
+    ]
+  },
+  {
+    "id": 1263,
+    "word": "Consummate",
+    "pos": "adjective",
+    "current_definition": "Supremely skilled; showing the highest level of ability achieved through long training and experience.",
+    "synonyms": [
+      "masterful",
+      "accomplished"
+    ],
+    "antonyms": [
+      "amateur"
+    ]
+  },
+  {
+    "id": 1264,
+    "word": "Convivial",
+    "pos": "adjective",
+    "current_definition": "Lively, friendly, and enjoying the company of others, especially in a social setting with food or drink.",
+    "synonyms": [
+      "sociable",
+      "festive"
+    ],
+    "antonyms": [
+      "gloomy"
+    ]
+  },
+  {
+    "id": 1265,
+    "word": "Emulate",
+    "pos": "verb",
+    "current_definition": "To try to match or be as good as someone admired, by copying their methods or working just as hard.",
+    "synonyms": [
+      "imitate",
+      "model"
+    ],
+    "antonyms": [
+      "ignore"
+    ]
+  },
+  {
+    "id": 1266,
+    "word": "Fraternal",
+    "pos": "adjective",
+    "current_definition": "Showing the kind of warm friendship, loyalty, and support that exists between brothers.",
+    "synonyms": [
+      "brotherly",
+      "comradely"
+    ],
+    "antonyms": [
+      "hostile"
+    ]
+  },
+  {
+    "id": 1267,
+    "word": "Gregarious",
+    "pos": "adjective",
+    "current_definition": "Naturally enjoying being with other people; lively and sociable in groups.",
+    "synonyms": [
+      "outgoing",
+      "sociable"
+    ],
+    "antonyms": [
+      "introverted"
+    ]
+  },
+  {
+    "id": 1268,
+    "word": "Urbane",
+    "pos": "adjective",
+    "current_definition": "Polite, smooth, and confident in social situations in a way that seems effortless and sophisticated.",
+    "synonyms": [
+      "suave",
+      "refined"
+    ],
+    "antonyms": [
+      "crude"
+    ]
+  },
+  {
+    "id": 1269,
+    "word": "Affinity",
+    "pos": "noun",
+    "current_definition": "A natural feeling of being drawn to or connected with someone or something; a sense of belonging together.",
+    "synonyms": [
+      "kinship",
+      "connection"
+    ],
+    "antonyms": [
+      "aversion"
+    ]
+  },
+  {
+    "id": 1270,
+    "word": "Assimilate",
+    "pos": "verb",
+    "current_definition": "To become fully absorbed into a new culture or group, adopting its customs, language, and way of life.",
+    "synonyms": [
+      "integrate",
+      "adapt"
+    ],
+    "antonyms": [
+      "segregate"
+    ]
+  },
+  {
+    "id": 1271,
+    "word": "Congregate",
+    "pos": "verb",
+    "current_definition": "To come together in a group in one place, usually for a shared purpose or out of shared interest.",
+    "synonyms": [
+      "gather",
+      "assemble"
+    ],
+    "antonyms": [
+      "disperse"
+    ]
+  },
+  {
+    "id": 1272,
+    "word": "Cosmopolitan",
+    "pos": "adjective",
+    "current_definition": "Comfortable with and made up of people and ideas from many different countries and cultures; at home in the wider world.",
+    "synonyms": [
+      "worldly",
+      "multicultural"
+    ],
+    "antonyms": [
+      "provincial"
+    ]
+  },
+  {
+    "id": 1273,
+    "word": "Emigrate",
+    "pos": "verb",
+    "current_definition": "To leave one's home country permanently in order to settle and live in another country.",
+    "synonyms": [
+      "relocate",
+      "migrate"
+    ],
+    "antonyms": [
+      "remain"
+    ]
+  },
+  {
+    "id": 1274,
+    "word": "Expatriate",
+    "pos": "noun",
+    "current_definition": "A person who lives outside their home country, usually for work or personal choice, often for an extended time.",
+    "synonyms": [
+      "migrant",
+      "emigrant"
+    ],
+    "antonyms": [
+      "native"
+    ]
+  },
+  {
+    "id": 1275,
+    "word": "Extrovert",
+    "pos": "noun",
+    "current_definition": "A person who gains energy from being around other people and feels most alive in social situations.",
+    "synonyms": [
+      "socialite",
+      "outgoing person"
+    ],
+    "antonyms": [
+      "introvert"
+    ]
+  },
+  {
+    "id": 1276,
+    "word": "Immigrate",
+    "pos": "verb",
+    "current_definition": "To come into a new country to live there permanently, having left one's home country behind.",
+    "synonyms": [
+      "settle",
+      "relocate"
+    ],
+    "antonyms": [
+      "depart"
+    ]
+  },
+  {
+    "id": 1277,
+    "word": "Acumen",
+    "pos": "noun",
+    "current_definition": "The ability to make quick, accurate judgments and smart decisions, especially in a particular field.",
+    "synonyms": [
+      "shrewdness",
+      "sharpness"
+    ],
+    "antonyms": [
+      "obtuseness"
+    ]
+  },
+  {
+    "id": 1278,
+    "word": "Acute",
+    "pos": "adjective",
+    "current_definition": "Having a sharp, perceptive mind; quick to notice and understand things clearly.",
+    "synonyms": [
+      "keen",
+      "sharp"
+    ],
+    "antonyms": [
+      "dull"
+    ]
+  },
+  {
+    "id": 1279,
+    "word": "Adroit",
+    "pos": "adjective",
+    "current_definition": "Clever and skilful in using the mind or hands; handling difficult situations with ease and intelligence.",
+    "synonyms": [
+      "deft",
+      "clever"
+    ],
+    "antonyms": [
+      "clumsy"
+    ]
+  },
+  {
+    "id": 1280,
+    "word": "Aptitude",
+    "pos": "noun",
+    "current_definition": "A natural ability or talent for learning or doing something well, often evident from an early age.",
+    "synonyms": [
+      "talent",
+      "gift"
+    ],
+    "antonyms": [
+      "inaptitude"
+    ]
+  }
+]

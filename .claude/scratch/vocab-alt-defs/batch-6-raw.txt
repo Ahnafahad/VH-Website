@@ -1,0 +1,50 @@
+sharp and practically perceptive,positive,1281
+intellectual rather than emotional,neutral,1282
+skillful and nimble,positive,1283
+deeply and widely knowledgeable,positive,1284
+sharply clear and direct,positive,1285
+highly skilled and competent,positive,1286
+immature and inexperienced,negative,1287
+hasty and insufficiently thorough,negative,1288
+casual amateur with shallow knowledge,negative,1289
+superficially clever but shallow,negative,1290
+socially awkward and tactless,negative,1291
+pompously elaborate in speech,negative,1292
+unnecessary and unjustified,negative,1293
+unskilled and clumsy,negative,1294
+overly focused on minor rules,negative,1295
+done with minimal care,negative,1296
+person hostile to culture,negative,1297
+concerned only with the surface,negative,1298
+severe emotional suffering,negative,1299
+worried about what may happen,negative,1300
+grieving a loved one's death,negative,1301
+persistently troubled from all sides,negative,1302
+make fearful or discouraged,negative,1303
+deeply unhappy and hopeless,negative,1304
+express deep grief or regret,negative,1305
+exaggeratedly mournful and gloomy,negative,1306
+gloomy silent and withdrawn,negative,1307
+make anxious or unsettled,negative,1308
+gently sad and mournful,negative,1309
+nervous fear about what lies ahead,negative,1310
+promising future success,positive,1311
+cheerful and carefree,positive,1312
+overflowing with cheerful enthusiasm,positive,1313
+show triumphant joy,positive,1314
+deep happiness and contentment,positive,1315
+period of greatest success,positive,1316
+light humor about serious matters,neutral,1317
+favorable for success,positive,1318
+finding something valuable by chance,positive,1320
+feel intense hatred or disgust,negative,1321
+sharply bitter and irritating,negative,1322
+strong active hostility,negative,1323
+trouble or pressure relentlessly,negative,1324
+eager to argue or fight,negative,1325
+boldly rude and disrespectful,negative,1326
+deep and lasting bitterness,negative,1327
+retaliatory act of harm,negative,1328
+angry or violent conflict,negative,1329
+complete lack of interest or feeling,negative,1330
+too satisfied to notice problems,negative,1331

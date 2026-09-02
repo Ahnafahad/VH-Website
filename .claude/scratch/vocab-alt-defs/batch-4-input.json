@@ -1,0 +1,649 @@
+[
+  {
+    "id": 1180,
+    "word": "Debauchery",
+    "pos": "noun",
+    "current_definition": "Wild, excessive behavior involving alcohol, pleasure, and self-indulgence carried to a harmful or shameful degree.",
+    "synonyms": [
+      "excess",
+      "indulgence"
+    ],
+    "antonyms": [
+      "restraint"
+    ]
+  },
+  {
+    "id": 1181,
+    "word": "Degenerate",
+    "pos": "verb",
+    "current_definition": "To slowly fall to a lower, worse, or more harmful condition than before.",
+    "synonyms": [
+      "decline",
+      "deteriorate",
+      "(adjective) corrupt",
+      "debased"
+    ],
+    "antonyms": [
+      "improve",
+      "(adjective) upright"
+    ]
+  },
+  {
+    "id": 1182,
+    "word": "Depravity",
+    "pos": "noun",
+    "current_definition": "A state of deep moral corruption; wicked or evil behavior that goes far beyond normal wrongdoing.",
+    "synonyms": [
+      "wickedness",
+      "corruption"
+    ],
+    "antonyms": [
+      "virtue"
+    ]
+  },
+  {
+    "id": 1183,
+    "word": "Dissipate",
+    "pos": "verb",
+    "current_definition": "To gradually waste or spend money, energy, or resources until nothing is left.",
+    "synonyms": [
+      "squander",
+      "scatter"
+    ],
+    "antonyms": [
+      "accumulate"
+    ]
+  },
+  {
+    "id": 1184,
+    "word": "Illicit",
+    "pos": "adjective",
+    "current_definition": "Not allowed by law or by the rules of society; forbidden and usually done in secret.",
+    "synonyms": [
+      "illegal",
+      "unlawful"
+    ],
+    "antonyms": [
+      "lawful"
+    ]
+  },
+  {
+    "id": 1185,
+    "word": "Malfeasance",
+    "pos": "noun",
+    "current_definition": "Wrongdoing or illegal action carried out by someone in a position of official power or public trust.",
+    "synonyms": [
+      "misconduct",
+      "wrongdoing"
+    ],
+    "antonyms": [
+      "integrity"
+    ]
+  },
+  {
+    "id": 1186,
+    "word": "Nefarious",
+    "pos": "adjective",
+    "current_definition": "Wicked and criminal in a way that is openly shocking; morally outrageous.",
+    "synonyms": [
+      "villainous",
+      "criminal"
+    ],
+    "antonyms": [
+      "honorable"
+    ]
+  },
+  {
+    "id": 1187,
+    "word": "Perfidy",
+    "pos": "noun",
+    "current_definition": "A deliberate act of betrayal by someone who was trusted; breaking faith with those who relied on you.",
+    "synonyms": [
+      "treachery",
+      "betrayal"
+    ],
+    "antonyms": [
+      "loyalty"
+    ]
+  },
+  {
+    "id": 1188,
+    "word": "Profligate",
+    "pos": "adjective",
+    "current_definition": "Recklessly wasteful with money or resources; also used to describe someone with no moral restraint.",
+    "synonyms": [
+      "wasteful",
+      "extravagant"
+    ],
+    "antonyms": [
+      "frugal"
+    ]
+  },
+  {
+    "id": 1189,
+    "word": "Absolve",
+    "pos": "verb",
+    "current_definition": "To officially declare that someone is free from blame, guilt, or punishment; to release a person from an obligation or responsibility.",
+    "synonyms": [
+      "exonerate",
+      "acquit"
+    ],
+    "antonyms": [
+      "condemn"
+    ]
+  },
+  {
+    "id": 1190,
+    "word": "Alleviate",
+    "pos": "verb",
+    "current_definition": "To make a problem, pain, or bad feeling less severe, without removing it completely.",
+    "synonyms": [
+      "ease",
+      "relieve"
+    ],
+    "antonyms": [
+      "worsen"
+    ]
+  },
+  {
+    "id": 1191,
+    "word": "Clemency",
+    "pos": "noun",
+    "current_definition": "Mercy or leniency shown toward someone who could be punished severely; a decision to reduce or forgive a penalty.",
+    "synonyms": [
+      "mercy",
+      "leniency"
+    ],
+    "antonyms": [
+      "severity"
+    ]
+  },
+  {
+    "id": 1192,
+    "word": "Condone",
+    "pos": "verb",
+    "current_definition": "To accept or allow behaviour that most people consider wrong, either by saying nothing or by approving of it openly.",
+    "synonyms": [
+      "excuse",
+      "overlook"
+    ],
+    "antonyms": [
+      "condemn"
+    ]
+  },
+  {
+    "id": 1193,
+    "word": "Contrite",
+    "pos": "adjective",
+    "current_definition": "Feeling or showing deep, sincere sorrow for having done something wrong; genuinely sorry and ashamed.",
+    "synonyms": [
+      "remorseful",
+      "penitent"
+    ],
+    "antonyms": [
+      "unrepentant"
+    ]
+  },
+  {
+    "id": 1194,
+    "word": "Indulgent",
+    "pos": "adjective",
+    "current_definition": "Too willing to allow or forgive bad behaviour; giving people whatever they want without setting firm limits.",
+    "synonyms": [
+      "lenient",
+      "permissive"
+    ],
+    "antonyms": [
+      "strict"
+    ]
+  },
+  {
+    "id": 1195,
+    "word": "Peccadillo",
+    "pos": "noun",
+    "current_definition": "A small, unimportant fault or sin; a minor act of wrongdoing that people do not usually take very seriously.",
+    "synonyms": [
+      "minor offence",
+      "indiscretion"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": 1196,
+    "word": "Penitent",
+    "pos": "adjective",
+    "current_definition": "Feeling sorry for doing wrong and willing to accept punishment or do whatever is needed to make things right.",
+    "synonyms": [
+      "remorseful",
+      "contrite"
+    ],
+    "antonyms": [
+      "impenitent"
+    ]
+  },
+  {
+    "id": 1197,
+    "word": "Reparation",
+    "pos": "noun",
+    "current_definition": "Something done or paid to make up for harm or damage caused; compensation given to people who have been wronged.",
+    "synonyms": [
+      "compensation",
+      "restitution"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": 1199,
+    "word": "Transgress",
+    "pos": "verb",
+    "current_definition": "To go beyond an accepted limit or rule; to do something that is morally or legally wrong.",
+    "synonyms": [
+      "violate",
+      "offend"
+    ],
+    "antonyms": [
+      "comply"
+    ]
+  },
+  {
+    "id": 1200,
+    "word": "Unconscionable",
+    "pos": "adjective",
+    "current_definition": "So wrong or unfair that no reasonable person could accept it; going far beyond what is morally or legally allowable.",
+    "synonyms": [
+      "outrageous",
+      "unscrupulous"
+    ],
+    "antonyms": [
+      "reasonable"
+    ]
+  },
+  {
+    "id": 1201,
+    "word": "Admonish",
+    "pos": "verb",
+    "current_definition": "To warn or firmly advise someone that their behaviour is wrong, usually in a calm but serious way; to tell someone off without harsh punishment.",
+    "synonyms": [
+      "warn",
+      "reprimand"
+    ],
+    "antonyms": [
+      "praise"
+    ]
+  },
+  {
+    "id": 1202,
+    "word": "Censure",
+    "pos": "noun",
+    "current_definition": "An official, formal statement or act declaring that someone has behaved wrongly; to issue such a statement against someone.",
+    "synonyms": [
+      "condemnation",
+      "rebuke"
+    ],
+    "antonyms": [
+      "approval"
+    ]
+  },
+  {
+    "id": 1203,
+    "word": "Chastise",
+    "pos": "verb",
+    "current_definition": "To criticise or punish someone harshly, especially after they have done something wrong; to scold in a forceful, sometimes harsh way.",
+    "synonyms": [
+      "scold",
+      "punish"
+    ],
+    "antonyms": [
+      "commend"
+    ]
+  },
+  {
+    "id": 1204,
+    "word": "Flout",
+    "pos": "verb",
+    "current_definition": "To openly disobey or show no respect for a rule, law, or accepted standard, often in a bold or deliberate way.",
+    "synonyms": [
+      "defy",
+      "disregard"
+    ],
+    "antonyms": [
+      "obey"
+    ]
+  },
+  {
+    "id": 1205,
+    "word": "Injunction",
+    "pos": "noun",
+    "current_definition": "An official order from a court or authority that commands someone to do something or, more often, to stop doing something.",
+    "synonyms": [
+      "order",
+      "directive"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": 1206,
+    "word": "Rebuke",
+    "pos": "noun",
+    "current_definition": "A sharp, direct expression of disapproval given by someone in authority; to speak to someone in a way that makes clear their behaviour was wrong.",
+    "synonyms": [
+      "reprimand",
+      "scolding"
+    ],
+    "antonyms": [
+      "praise"
+    ]
+  },
+  {
+    "id": 1207,
+    "word": "Reproach",
+    "pos": "noun",
+    "current_definition": "A feeling or expression of disappointment and disapproval directed at someone; to express that feeling to someone directly.",
+    "synonyms": [
+      "blame",
+      "criticism"
+    ],
+    "antonyms": [
+      "approval"
+    ]
+  },
+  {
+    "id": 1208,
+    "word": "Stricture",
+    "pos": "noun",
+    "current_definition": "A harsh critical comment directed at a person's behaviour or work.",
+    "synonyms": [
+      "criticism",
+      "restriction"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": 1209,
+    "word": "Benign",
+    "pos": "adjective",
+    "current_definition": "Gentle, kind, and unlikely to cause harm; having a pleasant and harmless effect on others.",
+    "synonyms": [
+      "gentle",
+      "harmless"
+    ],
+    "antonyms": [
+      "harmful"
+    ]
+  },
+  {
+    "id": 1210,
+    "word": "Civil",
+    "pos": "adjective",
+    "current_definition": "Polite and respectful in behaviour, especially toward people one disagrees with; meeting the basic standard of good manners.",
+    "synonyms": [
+      "polite",
+      "courteous"
+    ],
+    "antonyms": [
+      "rude"
+    ]
+  },
+  {
+    "id": 1211,
+    "word": "Decorous",
+    "pos": "adjective",
+    "current_definition": "Behaving in a way that is proper, calm, and appropriate for the situation; showing good taste and self-control in conduct.",
+    "synonyms": [
+      "proper",
+      "dignified"
+    ],
+    "antonyms": [
+      "improper"
+    ]
+  },
+  {
+    "id": 1212,
+    "word": "Impeccable",
+    "pos": "adjective",
+    "current_definition": "So perfect that no fault can be found; meeting the highest possible standard in every detail.",
+    "synonyms": [
+      "flawless",
+      "faultless"
+    ],
+    "antonyms": [
+      "flawed"
+    ]
+  },
+  {
+    "id": 1213,
+    "word": "Innocuous",
+    "pos": "adjective",
+    "current_definition": "Completely harmless; unlikely to upset, offend, or cause any damage to anyone.",
+    "synonyms": [
+      "harmless",
+      "inoffensive"
+    ],
+    "antonyms": [
+      "harmful"
+    ]
+  },
+  {
+    "id": 1214,
+    "word": "Magnanimous",
+    "pos": "adjective",
+    "current_definition": "Very generous and forgiving, especially toward someone who has done wrong or who is in a weaker position; showing a noble, big-hearted spirit.",
+    "synonyms": [
+      "generous",
+      "forgiving"
+    ],
+    "antonyms": [
+      "petty"
+    ]
+  },
+  {
+    "id": 1215,
+    "word": "Pristine",
+    "pos": "adjective",
+    "current_definition": "In perfect, original condition, with nothing damaged, spoiled, or corrupted; completely clean and unspoiled.",
+    "synonyms": [
+      "spotless",
+      "unblemished"
+    ],
+    "antonyms": [
+      "tarnished"
+    ]
+  },
+  {
+    "id": 1216,
+    "word": "Salutary",
+    "pos": "adjective",
+    "current_definition": "Producing a good or useful effect, especially by serving as a warning or lesson; beneficial even if it feels uncomfortable.",
+    "synonyms": [
+      "beneficial",
+      "instructive"
+    ],
+    "antonyms": [
+      "harmful"
+    ]
+  },
+  {
+    "id": 1217,
+    "word": "Sublime",
+    "pos": "adjective",
+    "current_definition": "Of such outstanding quality, beauty, or greatness that it seems almost beyond what is normally possible; causing deep admiration or wonder.",
+    "synonyms": [
+      "magnificent",
+      "transcendent"
+    ],
+    "antonyms": [
+      "ordinary"
+    ]
+  },
+  {
+    "id": 1218,
+    "word": "Adamant",
+    "pos": "adjective",
+    "current_definition": "Completely unwilling to change one's mind or position, no matter what arguments or pressure are applied.",
+    "synonyms": [
+      "unyielding",
+      "inflexible"
+    ],
+    "antonyms": [
+      "flexible"
+    ]
+  },
+  {
+    "id": 1219,
+    "word": "Incorrigible",
+    "pos": "adjective",
+    "current_definition": "So set in bad habits or a fixed way of behaving that no punishment, correction, or persuasion can bring about change.",
+    "synonyms": [
+      "unreformable",
+      "hopeless"
+    ],
+    "antonyms": [
+      "reformed"
+    ]
+  },
+  {
+    "id": 1220,
+    "word": "Intransigent",
+    "pos": "adjective",
+    "current_definition": "Refusing to compromise or reach any agreement; holding a position so firmly that no middle ground is possible.",
+    "synonyms": [
+      "uncompromising",
+      "stubborn"
+    ],
+    "antonyms": [
+      "compliant"
+    ]
+  },
+  {
+    "id": 1221,
+    "word": "Inveterate",
+    "pos": "adjective",
+    "current_definition": "Having a habit, attitude, or way of life so deeply fixed over a long time that it is almost impossible to change.",
+    "synonyms": [
+      "habitual",
+      "deep-rooted"
+    ],
+    "antonyms": [
+      "occasional"
+    ]
+  },
+  {
+    "id": 1222,
+    "word": "Relentless",
+    "pos": "adjective",
+    "current_definition": "Never stopping or letting up; continuing with full force despite difficulties, setbacks, or the passage of time.",
+    "synonyms": [
+      "unceasing",
+      "persistent"
+    ],
+    "antonyms": [
+      "intermittent"
+    ]
+  },
+  {
+    "id": 1223,
+    "word": "Resolute",
+    "pos": "adjective",
+    "current_definition": "Having a firm, clear purpose and the steady determination to carry it through, especially when facing opposition or hardship.",
+    "synonyms": [
+      "determined",
+      "steadfast"
+    ],
+    "antonyms": [
+      "wavering"
+    ]
+  },
+  {
+    "id": 1224,
+    "word": "Robust",
+    "pos": "adjective",
+    "current_definition": "Strong and sturdy in body or in construction; able to withstand rough conditions without breaking down.",
+    "synonyms": [
+      "sturdy",
+      "vigorous"
+    ],
+    "antonyms": [
+      "weak"
+    ]
+  },
+  {
+    "id": 1225,
+    "word": "Staunch",
+    "pos": "adjective",
+    "current_definition": "Loyal and committed to a person, cause, or belief in a way that does not waver even under serious pressure.",
+    "synonyms": [
+      "steadfast",
+      "devoted"
+    ],
+    "antonyms": [
+      "disloyal"
+    ]
+  },
+  {
+    "id": 1226,
+    "word": "Tenacious",
+    "pos": "adjective",
+    "current_definition": "Holding on to a goal, belief, or position with great determination and refusing to let go even when the situation becomes very difficult.",
+    "synonyms": [
+      "persistent",
+      "dogged"
+    ],
+    "antonyms": [
+      "yielding"
+    ]
+  },
+  {
+    "id": 1227,
+    "word": "Audacity",
+    "pos": "noun",
+    "current_definition": "The willingness to do or say something that most people would consider shockingly bold or rude; reckless daring.",
+    "synonyms": [
+      "nerve",
+      "boldness"
+    ],
+    "antonyms": [
+      "timidity"
+    ]
+  },
+  {
+    "id": 1228,
+    "word": "Disdain",
+    "pos": "noun",
+    "current_definition": "A strong feeling that someone or something is far beneath you and not worth your time or respect.",
+    "synonyms": [
+      "contempt",
+      "scorn",
+      "despise"
+    ],
+    "antonyms": [
+      "admiration",
+      "respect"
+    ]
+  },
+  {
+    "id": 1229,
+    "word": "Egocentric",
+    "pos": "adjective",
+    "current_definition": "Thinking only of oneself and one's own needs, interests, and views, with little or no awareness of how others feel.",
+    "synonyms": [
+      "self-absorbed",
+      "self-centered"
+    ],
+    "antonyms": [
+      "altruistic"
+    ]
+  },
+  {
+    "id": 1230,
+    "word": "Narcissism",
+    "pos": "noun",
+    "current_definition": "Extreme admiration of oneself — one's looks, abilities, or importance — to a degree that leaves little room for genuine care about others.",
+    "synonyms": [
+      "self-love",
+      "vanity"
+    ],
+    "antonyms": [
+      "humility"
+    ]
+  }
+]

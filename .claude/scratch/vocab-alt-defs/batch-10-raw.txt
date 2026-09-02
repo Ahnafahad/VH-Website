@@ -1,0 +1,50 @@
+smooth sweet and flowing,positive,1485
+deliver a formal speech,neutral,1486
+brief use of words,neutral,1487
+raise a sensitive subject,neutral,1488
+logical and easy to follow,positive,1489
+powerfully persuasive or engaging,positive,1490
+clear in few words,positive,1491
+in agreement or harmony,neutral,1492
+draw out a response,neutral,1493
+art of persuasive language,neutral,1495
+brief with nothing wasted,positive,1496
+brief and unfriendly,negative,1497
+indirect recognizable reference,neutral,1498
+comparison through shared similarity,neutral,1499
+short story of an incident,neutral,1500
+dull and unoriginal from overuse,negative,1501
+used in informal speech,neutral,1502
+stray from the main topic,negative,1503
+unrelated and unnecessary,negative,1504
+not meant literally,neutral,1505
+subtle meaningful difference,neutral,1506
+ordinary and unimaginative,negative,1507
+hard to notice immediately,neutral,1508
+only indirectly connected,negative,1509
+overused phrase or idea,negative,1510
+overly preachy and instructive,negative,1511
+morally improve through teaching,positive,1512
+strongly urge to act,neutral,1513
+worn out through repetition,negative,1514
+long moralizing talk,negative,1515
+bland and uninteresting,negative,1516
+dull obvious moral saying,negative,1517
+plain and unpoetic,negative,1518
+say again for emphasis,neutral,1519
+excessively sweet or sentimental,negative,1520
+more than needed,negative,1521
+explain or repeat excessively,negative,1522
+leader exploiting fear and prejudice,negative,1523
+strongly disapprove of,negative,1524
+question truth or integrity,negative,1525
+make extremely angry,negative,1526
+deliberately start conflict or trouble,negative,1527
+prove wrong with evidence,neutral,1528
+protest firmly to an authority,neutral,1529
+firmly reject or disown,neutral,1530
+long angry critical speech,negative,1531
+willing to cooperate or agree,positive,1532
+calm anger through concessions,neutral,1533
+make pain or worry milder,positive,1534
+intended to reduce hostility,positive,1535

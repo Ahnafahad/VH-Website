@@ -1,0 +1,4027 @@
+[
+  {
+    "word_id": 1319,
+    "alt_definition": "cheerfully confident of success",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1394,
+    "alt_definition": "having conflicting feelings",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1494,
+    "alt_definition": "using very few words",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1073,
+    "alt_definition": "stubbornly resistant to authority",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1668,
+    "alt_definition": "impossible to describe",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1640,
+    "alt_definition": "become less intense",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1580,
+    "alt_definition": "make a bad situation better",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1794,
+    "alt_definition": "give a false impression",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1539,
+    "alt_definition": "calm someone who is angry",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1353,
+    "alt_definition": "mock with contempt",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1784,
+    "alt_definition": "open and honest speech",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1381,
+    "alt_definition": "strong habitual liking",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1198,
+    "alt_definition": "brief relief from hardship",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1705,
+    "alt_definition": "perfect example of a type",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1701,
+    "alt_definition": "something outside the normal pattern",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1029,
+    "alt_definition": "ruling with unchecked power",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1030,
+    "alt_definition": "force through threats",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1031,
+    "alt_definition": "harsh ruler with absolute power",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1032,
+    "alt_definition": "dominance through power or influence",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1033,
+    "alt_definition": "relating to an empire",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1034,
+    "alt_definition": "relating to war or soldiers",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1035,
+    "alt_definition": "calm anger or unrest",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1036,
+    "alt_definition": "win despite opposition",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1037,
+    "alt_definition": "officially ban",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1038,
+    "alt_definition": "force under complete control",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1039,
+    "alt_definition": "wrongfully seize power or rights",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1040,
+    "alt_definition": "belonging to the hereditary upper class",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1041,
+    "alt_definition": "middle-class and materialistic",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1042,
+    "alt_definition": "treat others as inferior",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1043,
+    "alt_definition": "established inhabitant of a place",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1044,
+    "alt_definition": "politely refined and respectable",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1045,
+    "alt_definition": "system of ranked levels",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1046,
+    "alt_definition": "native to a particular place",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1047,
+    "alt_definition": "upper-class and refined",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1048,
+    "alt_definition": "treat as less capable",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1049,
+    "alt_definition": "common and socially unrefined",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1050,
+    "alt_definition": "the wage-earning working class",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1051,
+    "alt_definition": "distinct layer or social level",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1052,
+    "alt_definition": "formally give up supreme power",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1053,
+    "alt_definition": "dominant power or influence",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1054,
+    "alt_definition": "declare sacred through ceremony",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1055,
+    "alt_definition": "sudden seizure of government power",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1056,
+    "alt_definition": "reach a final high point",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1057,
+    "alt_definition": "formally install in office",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1058,
+    "alt_definition": "lasting inheritance from the past",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1059,
+    "alt_definition": "officially require",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1060,
+    "alt_definition": "organize for a purpose",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1061,
+    "alt_definition": "surpassing all others",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1062,
+    "alt_definition": "act first to prevent",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1063,
+    "alt_definition": "officially announce and enact",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1064,
+    "alt_definition": "absence of authority and order",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1065,
+    "alt_definition": "strong defender or stronghold",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1066,
+    "alt_definition": "deep gap or major division",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1067,
+    "alt_definition": "dissenting group within a larger one",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1068,
+    "alt_definition": "stir up harmful unrest",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1069,
+    "alt_definition": "armed rebel against authority",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1070,
+    "alt_definition": "one who suffers for a cause",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1071,
+    "alt_definition": "divide into opposing camps",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1072,
+    "alt_definition": "story's central character",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1074,
+    "alt_definition": "incitement to rebel against government",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1075,
+    "alt_definition": "secretly undermining established authority",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1076,
+    "alt_definition": "economic system based on private ownership",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1077,
+    "alt_definition": "rigidly following theory over reality",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1078,
+    "alt_definition": "insisting beliefs cannot be questioned",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1079,
+    "alt_definition": "supporting equal rights and opportunities",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1080,
+    "alt_definition": "publicly adopt and support",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1081,
+    "alt_definition": "system of social and political beliefs",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1082,
+    "alt_definition": "public statement of beliefs and plans",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1083,
+    "alt_definition": "following accepted traditional beliefs",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1084,
+    "alt_definition": "strongly biased toward one side",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1085,
+    "alt_definition": "aggressive attack on opposing views",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1086,
+    "alt_definition": "active supporter of an idea",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1087,
+    "alt_definition": "fundamental belief or principle",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1088,
+    "alt_definition": "list of matters to address",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1089,
+    "alt_definition": "clever deception for advantage",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1090,
+    "alt_definition": "exclusive close-knit social group",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1091,
+    "alt_definition": "secret cooperation for dishonest ends",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1092,
+    "alt_definition": "involvement in another's wrongdoing",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1093,
+    "alt_definition": "deliberately kept secret",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1094,
+    "alt_definition": "secretive to avoid notice",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1095,
+    "alt_definition": "gradually harmful yet hard to notice",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1096,
+    "alt_definition": "secret dishonest scheme",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1097,
+    "alt_definition": "privately owned and legally protected",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1098,
+    "alt_definition": "secretly done to avoid detection",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1099,
+    "alt_definition": "bitter and hostile",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1100,
+    "alt_definition": "offensively obvious",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1101,
+    "alt_definition": "criticize extremely harshly",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1102,
+    "alt_definition": "deserving blame",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1103,
+    "alt_definition": "officially clear someone of blame",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1104,
+    "alt_definition": "shockingly obvious and wrong",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1105,
+    "alt_definition": "deep public shame",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1106,
+    "alt_definition": "famous for serious wrongdoing",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1107,
+    "alt_definition": "widely known for something bad",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1108,
+    "alt_definition": "deserving strong moral condemnation",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1109,
+    "alt_definition": "brand as socially shameful",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1110,
+    "alt_definition": "deeply immoral behavior",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1111,
+    "alt_definition": "committed supporter or follower",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1112,
+    "alt_definition": "persuade through persistent flattery",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1113,
+    "alt_definition": "respectful submission to another",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1114,
+    "alt_definition": "obedient and easy to control",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1115,
+    "alt_definition": "existing in name only",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1116,
+    "alt_definition": "excessively flattering and submissive",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1117,
+    "alt_definition": "annoyingly interfering and bossy",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1118,
+    "alt_definition": "express mild disapproval",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1119,
+    "alt_definition": "submissive and lacking self-respect",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1120,
+    "alt_definition": "self-serving flatterer of the powerful",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1121,
+    "alt_definition": "take without permission or officially allocate",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1122,
+    "alt_definition": "independent and self-governing",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1123,
+    "alt_definition": "administration burdened by rules and paperwork",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1124,
+    "alt_definition": "reduce or restrict",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1125,
+    "alt_definition": "wealthy and influential business leader",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1126,
+    "alt_definition": "unfairly favoring relatives or friends",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1127,
+    "alt_definition": "fatherly or relating to fathers",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1128,
+    "alt_definition": "male family or community head",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1129,
+    "alt_definition": "demanding immediate unquestioned obedience",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1130,
+    "alt_definition": "extra benefit tied to a job",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1131,
+    "alt_definition": "exclusive right or privilege",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1132,
+    "alt_definition": "person or thing serving as substitute",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1133,
+    "alt_definition": "wealthy and financially comfortable",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1134,
+    "alt_definition": "feature providing comfort or convenience",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1135,
+    "alt_definition": "related to cooking",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1136,
+    "alt_definition": "luxuriously and excessively self-indulgent",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1137,
+    "alt_definition": "show off to attract attention",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1138,
+    "alt_definition": "impressive but absurdly excessive",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1139,
+    "alt_definition": "exceptionally generous",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1140,
+    "alt_definition": "richly luxurious and lavish",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1141,
+    "alt_definition": "showy and designed to impress",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1142,
+    "alt_definition": "able to pay all debts",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1143,
+    "alt_definition": "utterly miserable and degrading",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1144,
+    "alt_definition": "extreme greed for wealth",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1145,
+    "alt_definition": "enviously desire another's possessions",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1146,
+    "alt_definition": "serious lack of something",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1147,
+    "alt_definition": "excessive supply beyond demand",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1148,
+    "alt_definition": "impossible to satisfy",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1149,
+    "alt_definition": "motivated mainly by money",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1150,
+    "alt_definition": "too little of something",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1151,
+    "alt_definition": "aggressively greedy and grasping",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1152,
+    "alt_definition": "waste recklessly",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1153,
+    "alt_definition": "extremely bad",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1154,
+    "alt_definition": "lacking life's basic necessities",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1155,
+    "alt_definition": "extremely poor and needy",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1156,
+    "alt_definition": "person living by begging",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1157,
+    "alt_definition": "contemptibly small or inadequate",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1158,
+    "alt_definition": "dirty or morally corrupt",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1159,
+    "alt_definition": "extreme filth and neglect",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1160,
+    "alt_definition": "absence of movement or progress",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1161,
+    "alt_definition": "chosen without reason or rule",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1162,
+    "alt_definition": "careful about possible consequences",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1163,
+    "alt_definition": "expert with refined taste",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1164,
+    "alt_definition": "standard used for judgment",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1165,
+    "alt_definition": "notice or understand something unclear",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1166,
+    "alt_definition": "carefully tell things apart",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1167,
+    "alt_definition": "recognize what makes things different",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1168,
+    "alt_definition": "fair and impartial",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1169,
+    "alt_definition": "demanding extremely high standards",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1170,
+    "alt_definition": "clear and convincing",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1171,
+    "alt_definition": "excessively careful about details",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1172,
+    "alt_definition": "wise and carefully considered",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1173,
+    "alt_definition": "clear and easy to understand",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1174,
+    "alt_definition": "requiring great care and effort",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1175,
+    "alt_definition": "directly relevant to the subject",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1176,
+    "alt_definition": "meet the required standards",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1177,
+    "alt_definition": "extremely thorough and demanding",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1178,
+    "alt_definition": "wise and insightful",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1179,
+    "alt_definition": "honest and extremely careful",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1180,
+    "alt_definition": "wild harmful self-indulgence",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1181,
+    "alt_definition": "gradually become worse",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1182,
+    "alt_definition": "extreme moral corruption",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1183,
+    "alt_definition": "gradually waste resources",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1184,
+    "alt_definition": "forbidden by law or society",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1185,
+    "alt_definition": "official wrongdoing or misconduct",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1186,
+    "alt_definition": "wicked criminal",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1187,
+    "alt_definition": "deliberate betrayal of trust",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1188,
+    "alt_definition": "recklessly wasteful",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1189,
+    "alt_definition": "free from blame",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1190,
+    "alt_definition": "make less severe",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1191,
+    "alt_definition": "mercy toward someone punishable",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1192,
+    "alt_definition": "accept wrongdoing without objection",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1193,
+    "alt_definition": "deeply sorry for wrongdoing",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1194,
+    "alt_definition": "overly permissive",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1195,
+    "alt_definition": "minor fault or wrongdoing",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1196,
+    "alt_definition": "sorry and seeking forgiveness",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1197,
+    "alt_definition": "compensation for harm",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1199,
+    "alt_definition": "break a rule or limit",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1200,
+    "alt_definition": "shockingly wrong or unfair",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1201,
+    "alt_definition": "seriously warn or scold",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1202,
+    "alt_definition": "official statement of disapproval",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1203,
+    "alt_definition": "scold or punish harshly",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1204,
+    "alt_definition": "openly defy rules",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1205,
+    "alt_definition": "official court order",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1206,
+    "alt_definition": "sharp expression of disapproval",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1207,
+    "alt_definition": "disappointed blame or criticism",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1208,
+    "alt_definition": "harsh critical remark",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1209,
+    "alt_definition": "gentle and harmless",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1210,
+    "alt_definition": "polite and respectful",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1211,
+    "alt_definition": "proper and dignified",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1212,
+    "alt_definition": "completely without faults",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1213,
+    "alt_definition": "harmless and inoffensive",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1214,
+    "alt_definition": "generous and forgiving",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1215,
+    "alt_definition": "perfectly clean and unspoiled",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1216,
+    "alt_definition": "beneficial despite discomfort",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1217,
+    "alt_definition": "extremely beautiful and impressive",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1218,
+    "alt_definition": "unwilling to change position",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1219,
+    "alt_definition": "impossible to correct or reform",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1220,
+    "alt_definition": "refusing any compromise",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1221,
+    "alt_definition": "fixed through long habit",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1222,
+    "alt_definition": "never stopping or easing",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1223,
+    "alt_definition": "firmly determined",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1224,
+    "alt_definition": "strong and sturdy",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1225,
+    "alt_definition": "firmly loyal and committed",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1226,
+    "alt_definition": "determined and persistent",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1227,
+    "alt_definition": "shocking or reckless boldness",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1228,
+    "alt_definition": "feeling superior contempt",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1229,
+    "alt_definition": "self-centered",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1230,
+    "alt_definition": "extreme self-admiration",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1231,
+    "alt_definition": "charm at first sight",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1232,
+    "alt_definition": "constantly whiny and complaining",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1233,
+    "alt_definition": "mocking and cruelly humorous",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1234,
+    "alt_definition": "arrogantly superior and dismissive",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1235,
+    "alt_definition": "reckless or disrespectful boldness",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1236,
+    "alt_definition": "eager and cheerful readiness",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1237,
+    "alt_definition": "deeply passionate and devoted",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1238,
+    "alt_definition": "suddenly and unpredictably changeable",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1239,
+    "alt_definition": "easily and quickly angered",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1240,
+    "alt_definition": "intense passion and enthusiasm",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1241,
+    "alt_definition": "wildly fast and uncontrolled",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1242,
+    "alt_definition": "acting rashly without thought",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1243,
+    "alt_definition": "easily angered and irritable",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1244,
+    "alt_definition": "rapidly and unpredictably changeable",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1245,
+    "alt_definition": "childishly sulky and irritable",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1246,
+    "alt_definition": "emotionally distant and unfriendly",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1247,
+    "alt_definition": "strong lasting dislike",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1248,
+    "alt_definition": "shy and lacking confidence",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1249,
+    "alt_definition": "calmness under pressure",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1250,
+    "alt_definition": "uninterested and unconcerned",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1251,
+    "alt_definition": "stubbornly refusing to change",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1252,
+    "alt_definition": "deliberately avoiding other people",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1253,
+    "alt_definition": "unwilling to speak openly",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1254,
+    "alt_definition": "enduring hardship without complaint",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1255,
+    "alt_definition": "understood without being spoken",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1256,
+    "alt_definition": "habitually speaking very little",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1257,
+    "alt_definition": "friendly and approachable",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1258,
+    "alt_definition": "kind and pleasant",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1259,
+    "alt_definition": "careful and persistently hardworking",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1260,
+    "alt_definition": "kind and gently supportive",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1261,
+    "alt_definition": "natural power to charm",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1262,
+    "alt_definition": "pleasant and well suited",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1263,
+    "alt_definition": "supremely skilled and accomplished",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1264,
+    "alt_definition": "lively friendly and sociable",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1265,
+    "alt_definition": "strive to match someone admired",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1266,
+    "alt_definition": "warmly loyal and brotherly",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1267,
+    "alt_definition": "outgoing and highly sociable",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1268,
+    "alt_definition": "polished and socially confident",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1269,
+    "alt_definition": "natural attraction or connection",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1270,
+    "alt_definition": "adopt a group's culture",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1271,
+    "alt_definition": "gather together in one place",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1272,
+    "alt_definition": "worldly and culturally diverse",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1273,
+    "alt_definition": "leave home country to settle abroad",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1274,
+    "alt_definition": "person living outside home country",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1275,
+    "alt_definition": "outgoing socially energized person",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1276,
+    "alt_definition": "enter another country to settle",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1277,
+    "alt_definition": "sharp practical judgment",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1278,
+    "alt_definition": "quick to notice and understand",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1279,
+    "alt_definition": "clever and skillful",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1280,
+    "alt_definition": "natural ability to learn",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1281,
+    "alt_definition": "sharp and practically perceptive",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1282,
+    "alt_definition": "intellectual rather than emotional",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1283,
+    "alt_definition": "skillful and nimble",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1284,
+    "alt_definition": "deeply and widely knowledgeable",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1285,
+    "alt_definition": "sharply clear and direct",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1286,
+    "alt_definition": "highly skilled and competent",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1287,
+    "alt_definition": "immature and inexperienced",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1288,
+    "alt_definition": "hasty and insufficiently thorough",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1289,
+    "alt_definition": "casual amateur with shallow knowledge",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1290,
+    "alt_definition": "superficially clever but shallow",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1291,
+    "alt_definition": "socially awkward and tactless",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1292,
+    "alt_definition": "pompously elaborate in speech",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1293,
+    "alt_definition": "unnecessary and unjustified",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1294,
+    "alt_definition": "unskilled and clumsy",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1295,
+    "alt_definition": "overly focused on minor rules",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1296,
+    "alt_definition": "done with minimal care",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1297,
+    "alt_definition": "person hostile to culture",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1298,
+    "alt_definition": "concerned only with the surface",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1299,
+    "alt_definition": "severe emotional suffering",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1300,
+    "alt_definition": "worried about what may happen",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1301,
+    "alt_definition": "grieving a loved one's death",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1302,
+    "alt_definition": "persistently troubled from all sides",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1303,
+    "alt_definition": "make fearful or discouraged",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1304,
+    "alt_definition": "deeply unhappy and hopeless",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1305,
+    "alt_definition": "express deep grief or regret",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1306,
+    "alt_definition": "exaggeratedly mournful and gloomy",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1307,
+    "alt_definition": "gloomy silent and withdrawn",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1308,
+    "alt_definition": "make anxious or unsettled",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1309,
+    "alt_definition": "gently sad and mournful",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1310,
+    "alt_definition": "nervous fear about what lies ahead",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1311,
+    "alt_definition": "promising future success",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1312,
+    "alt_definition": "cheerful and carefree",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1313,
+    "alt_definition": "overflowing with cheerful enthusiasm",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1314,
+    "alt_definition": "show triumphant joy",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1315,
+    "alt_definition": "deep happiness and contentment",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1316,
+    "alt_definition": "period of greatest success",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1317,
+    "alt_definition": "light humor about serious matters",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1318,
+    "alt_definition": "favorable for success",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1320,
+    "alt_definition": "finding something valuable by chance",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1321,
+    "alt_definition": "feel intense hatred or disgust",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1322,
+    "alt_definition": "sharply bitter and irritating",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1323,
+    "alt_definition": "strong active hostility",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1324,
+    "alt_definition": "trouble or pressure relentlessly",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1325,
+    "alt_definition": "eager to argue or fight",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1326,
+    "alt_definition": "boldly rude and disrespectful",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1327,
+    "alt_definition": "deep and lasting bitterness",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1328,
+    "alt_definition": "retaliatory act of harm",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1329,
+    "alt_definition": "angry or violent conflict",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1330,
+    "alt_definition": "complete lack of interest or feeling",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1331,
+    "alt_definition": "too satisfied to notice problems",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1332,
+    "alt_definition": "drain energy and strength",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1333,
+    "alt_definition": "habitually lazy",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1334,
+    "alt_definition": "unable to move or act",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1335,
+    "alt_definition": "weaken from neglect or inactivity",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1336,
+    "alt_definition": "sluggish and low on energy",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1337,
+    "alt_definition": "state of sluggishness and fatigue",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1338,
+    "alt_definition": "slow dull and unthinking",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1339,
+    "alt_definition": "following accepted customs or ideas",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1340,
+    "alt_definition": "aimless and lacking a plan",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1341,
+    "alt_definition": "temporarily inactive but able to revive",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1342,
+    "alt_definition": "vague unease and low energy",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1343,
+    "alt_definition": "state of being completely forgotten",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1344,
+    "alt_definition": "extreme unwillingness to make effort",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1345,
+    "alt_definition": "causing sleep or dullness",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1346,
+    "alt_definition": "not moving or changing",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1347,
+    "alt_definition": "extreme physical or mental sluggishness",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1348,
+    "alt_definition": "make embarrassed or ashamed",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1349,
+    "alt_definition": "make seem unimportant or inferior",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1350,
+    "alt_definition": "confused and unable to think clearly",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1351,
+    "alt_definition": "emotional release bringing relief",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1352,
+    "alt_definition": "distress from failure or embarrassment",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1354,
+    "alt_definition": "speak of as having little value",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1355,
+    "alt_definition": "excessively tearful and sentimental",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1356,
+    "alt_definition": "make deeply ashamed or embarrassed",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1357,
+    "alt_definition": "wistful longing for the past",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1358,
+    "alt_definition": "quietly thoughtful and slightly sad",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1359,
+    "alt_definition": "deeply moving with sadness",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1360,
+    "alt_definition": "strangely unconventional but harmless",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1361,
+    "alt_definition": "minor personal weakness or quirk",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1362,
+    "alt_definition": "person who challenges accepted beliefs",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1363,
+    "alt_definition": "distinctive personal habit or trait",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1364,
+    "alt_definition": "traveling from place to place",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1365,
+    "alt_definition": "independent person who defies conventions",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1366,
+    "alt_definition": "regularly traveling for professional work",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1367,
+    "alt_definition": "strong long-standing personal preference",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1368,
+    "alt_definition": "nobly idealistic but impractical",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1369,
+    "alt_definition": "dishonest or unpredictable person",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1370,
+    "alt_definition": "remarkably unusual or exceptional",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1371,
+    "alt_definition": "unconcerned with right or wrong",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1372,
+    "alt_definition": "belief that morality has no validity",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1373,
+    "alt_definition": "showing romantic or sexual desire",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1374,
+    "alt_definition": "person who distrusts good motives",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1375,
+    "alt_definition": "concerning human existence and meaning",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1376,
+    "alt_definition": "person who believes fate is fixed",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1377,
+    "alt_definition": "belief that pleasure matters most",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1378,
+    "alt_definition": "intensely and irrationally attracted",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1379,
+    "alt_definition": "disliking and distrusting humanity",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1380,
+    "alt_definition": "belief that nothing has meaning or value",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1382,
+    "alt_definition": "natural tendency toward something",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1383,
+    "alt_definition": "direct and complete opposite",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1384,
+    "alt_definition": "a direct logical consequence",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1385,
+    "alt_definition": "confirm with independent evidence",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1386,
+    "alt_definition": "reach a logical conclusion",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1387,
+    "alt_definition": "based on observation or experiment",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1388,
+    "alt_definition": "project trends beyond known data",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1389,
+    "alt_definition": "imagined rather than real",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1390,
+    "alt_definition": "conclude from indirect evidence",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1391,
+    "alt_definition": "propose as an unproven assumption",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1392,
+    "alt_definition": "a basis for reasoning",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1393,
+    "alt_definition": "combination into a coherent whole",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1395,
+    "alt_definition": "smugly and pointlessly foolish",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1396,
+    "alt_definition": "completely senseless or meaningless",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1397,
+    "alt_definition": "strangely out of place",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1398,
+    "alt_definition": "vague and poorly defined",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1399,
+    "alt_definition": "annoyingly slow to understand",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1400,
+    "alt_definition": "unnecessarily repetitive",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1401,
+    "alt_definition": "true by repeating the same idea",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1402,
+    "alt_definition": "a brief memorable general truth",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1403,
+    "alt_definition": "a truth accepted without proof",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1404,
+    "alt_definition": "an authoritative formal statement",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1405,
+    "alt_definition": "serve as a clear example",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1406,
+    "alt_definition": "a brief rule for living",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1407,
+    "alt_definition": "an experienced trusted guide",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1408,
+    "alt_definition": "new and original",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1409,
+    "alt_definition": "an accepted model or framework",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1410,
+    "alt_definition": "a guiding rule or principle",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1411,
+    "alt_definition": "most noticeable or important",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1412,
+    "alt_definition": "a standard for judging quality",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1413,
+    "alt_definition": "an imagined perfect society",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1414,
+    "alt_definition": "difficult for nonexperts to understand",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1415,
+    "alt_definition": "secretive and little-known",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1416,
+    "alt_definition": "mysterious and hard to interpret",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1417,
+    "alt_definition": "a deeply puzzling mystery",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1418,
+    "alt_definition": "not meant for general audiences",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1419,
+    "alt_definition": "not allowing substances through",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1420,
+    "alt_definition": "present but hidden or inactive",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1421,
+    "alt_definition": "little known or discussed",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1422,
+    "alt_definition": "not allowing light through",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1423,
+    "alt_definition": "a chronological record of events",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1424,
+    "alt_definition": "related to thinking and knowing",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1425,
+    "alt_definition": "fully aware of something",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1426,
+    "alt_definition": "a thorough concise collection of information",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1427,
+    "alt_definition": "covering nearly every aspect",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1428,
+    "alt_definition": "thoroughly covering every possibility",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1429,
+    "alt_definition": "formally enroll at a university",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1430,
+    "alt_definition": "focused on qualities not quantities",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1431,
+    "alt_definition": "highly specialized and hard to understand",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1432,
+    "alt_definition": "related to the physical senses",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1433,
+    "alt_definition": "able to feel and perceive",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1434,
+    "alt_definition": "naturally and inseparably present",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1435,
+    "alt_definition": "inborn rather than learned",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1436,
+    "alt_definition": "essential to its very nature",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1437,
+    "alt_definition": "examining one's own thoughts",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1438,
+    "alt_definition": "ordinary and unexciting",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1439,
+    "alt_definition": "almost physically noticeable",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1440,
+    "alt_definition": "obviously true beyond argument",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1441,
+    "alt_definition": "read very carefully",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1442,
+    "alt_definition": "think deeply and repeatedly",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1443,
+    "alt_definition": "examine closely and critically",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1444,
+    "alt_definition": "real and physically perceptible",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1445,
+    "alt_definition": "total and without exceptions",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1446,
+    "alt_definition": "existing as an idea",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1447,
+    "alt_definition": "without clear shape or structure",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1448,
+    "alt_definition": "something misplaced in time",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1449,
+    "alt_definition": "stated without any doubt",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1450,
+    "alt_definition": "covering a very wide range",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1451,
+    "alt_definition": "an impossible imagined hope",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1452,
+    "alt_definition": "final and authoritative",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1453,
+    "alt_definition": "reasoning through opposing ideas",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1454,
+    "alt_definition": "unable to be changed",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1455,
+    "alt_definition": "place side by side for contrast",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1456,
+    "alt_definition": "seeming contradiction with hidden truth",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1457,
+    "alt_definition": "insulting speech about God",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1458,
+    "alt_definition": "summon through magic",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1459,
+    "alt_definition": "of secret mystical traditions",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1460,
+    "alt_definition": "belief against official doctrine",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1461,
+    "alt_definition": "words recited for magical power",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1462,
+    "alt_definition": "impossible to reverse or withdraw",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1463,
+    "alt_definition": "worldly rather than sacred",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1464,
+    "alt_definition": "openly declare a belief",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1465,
+    "alt_definition": "aggressively urge others to convert",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1466,
+    "alt_definition": "physical disrespect toward something sacred",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1467,
+    "alt_definition": "too sacred or important to challenge",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1468,
+    "alt_definition": "formal study of God and religion",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1469,
+    "alt_definition": "person unsure whether God exists",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1470,
+    "alt_definition": "person believing no gods exist",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1471,
+    "alt_definition": "interpret in a particular way",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1472,
+    "alt_definition": "spread widely among many people",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1473,
+    "alt_definition": "inward-looking and closed to outsiders",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1474,
+    "alt_definition": "failure to foresee long-term effects",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1475,
+    "alt_definition": "narrowly focused on local concerns",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1476,
+    "alt_definition": "regionally narrow and unsophisticated",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1477,
+    "alt_definition": "independent of religious authority",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1478,
+    "alt_definition": "harsh mixture of clashing sounds",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1479,
+    "alt_definition": "rhythmic rise and fall",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1480,
+    "alt_definition": "annoyingly talkative about trivial matters",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1481,
+    "alt_definition": "gesture dramatically while speaking",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1482,
+    "alt_definition": "excessively dramatic and attention-seeking",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1483,
+    "alt_definition": "deliberate exaggeration for emphasis",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1484,
+    "alt_definition": "fond of talking at length",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1485,
+    "alt_definition": "smooth sweet and flowing",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1486,
+    "alt_definition": "deliver a formal speech",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1487,
+    "alt_definition": "brief use of words",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1488,
+    "alt_definition": "raise a sensitive subject",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1489,
+    "alt_definition": "logical and easy to follow",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1490,
+    "alt_definition": "powerfully persuasive or engaging",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1491,
+    "alt_definition": "clear in few words",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1492,
+    "alt_definition": "in agreement or harmony",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1493,
+    "alt_definition": "draw out a response",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1495,
+    "alt_definition": "art of persuasive language",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1496,
+    "alt_definition": "brief with nothing wasted",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1497,
+    "alt_definition": "brief and unfriendly",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1498,
+    "alt_definition": "indirect recognizable reference",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1499,
+    "alt_definition": "comparison through shared similarity",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1500,
+    "alt_definition": "short story of an incident",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1501,
+    "alt_definition": "dull and unoriginal from overuse",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1502,
+    "alt_definition": "used in informal speech",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1503,
+    "alt_definition": "stray from the main topic",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1504,
+    "alt_definition": "unrelated and unnecessary",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1505,
+    "alt_definition": "not meant literally",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1506,
+    "alt_definition": "subtle meaningful difference",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1507,
+    "alt_definition": "ordinary and unimaginative",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1508,
+    "alt_definition": "hard to notice immediately",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1509,
+    "alt_definition": "only indirectly connected",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1510,
+    "alt_definition": "overused phrase or idea",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1511,
+    "alt_definition": "overly preachy and instructive",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1512,
+    "alt_definition": "morally improve through teaching",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1513,
+    "alt_definition": "strongly urge to act",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1514,
+    "alt_definition": "worn out through repetition",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1515,
+    "alt_definition": "long moralizing talk",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1516,
+    "alt_definition": "bland and uninteresting",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1517,
+    "alt_definition": "dull obvious moral saying",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1518,
+    "alt_definition": "plain and unpoetic",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1519,
+    "alt_definition": "say again for emphasis",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1520,
+    "alt_definition": "falsely sweet and sentimental",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1521,
+    "alt_definition": "more than needed",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1522,
+    "alt_definition": "explain or repeat excessively",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1523,
+    "alt_definition": "leader exploiting fear and prejudice",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1524,
+    "alt_definition": "strongly disapprove of",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1525,
+    "alt_definition": "question truth or integrity",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1526,
+    "alt_definition": "make extremely angry",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1527,
+    "alt_definition": "deliberately start conflict or trouble",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1528,
+    "alt_definition": "prove wrong with evidence",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1529,
+    "alt_definition": "protest firmly to an authority",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1530,
+    "alt_definition": "firmly reject or disown",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1531,
+    "alt_definition": "long angry critical speech",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1532,
+    "alt_definition": "willing to cooperate or agree",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1533,
+    "alt_definition": "calm anger through concessions",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1534,
+    "alt_definition": "make pain or worry milder",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1535,
+    "alt_definition": "intended to reduce hostility",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1536,
+    "alt_definition": "help opposing sides reach agreement",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1537,
+    "alt_definition": "make something harmful less severe",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1538,
+    "alt_definition": "soften someone's anger",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1540,
+    "alt_definition": "quietly accept without objecting",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1541,
+    "alt_definition": "official pardon for a group",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1542,
+    "alt_definition": "surrender after prolonged resistance",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1543,
+    "alt_definition": "peaceful harmony between groups",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1544,
+    "alt_definition": "general agreement within a group",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1545,
+    "alt_definition": "solemn and binding agreement",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1546,
+    "alt_definition": "tactful and careful with secrets",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1547,
+    "alt_definition": "impossible to stop or change",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1548,
+    "alt_definition": "stubbornly difficult to resolve",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1549,
+    "alt_definition": "careful to avoid needless risk",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1550,
+    "alt_definition": "give up possession or control",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1551,
+    "alt_definition": "yield to overwhelming pressure",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1552,
+    "alt_definition": "related to beauty or art",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1553,
+    "alt_definition": "a place's mood or atmosphere",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1554,
+    "alt_definition": "very old and no longer used",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1555,
+    "alt_definition": "short witty memorable saying",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1556,
+    "alt_definition": "category sharing an artistic style",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1557,
+    "alt_definition": "surrounding social environment",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1558,
+    "alt_definition": "newly invented word or phrase",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1559,
+    "alt_definition": "strongly smelling of something",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1560,
+    "alt_definition": "award or honor for achievement",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1561,
+    "alt_definition": "excessive and uncritical praise",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1562,
+    "alt_definition": "recognize value and feel grateful",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1563,
+    "alt_definition": "formal approval and praise",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1564,
+    "alt_definition": "highly respected in a field",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1565,
+    "alt_definition": "raise in status or praise highly",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1566,
+    "alt_definition": "praise enthusiastically and at length",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1567,
+    "alt_definition": "praise formally and respectfully",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1568,
+    "alt_definition": "deeply respect and admire",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1569,
+    "alt_definition": "unwaveringly loyal despite hardship",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1570,
+    "alt_definition": "promote with repeated public praise",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1571,
+    "alt_definition": "related to farming and farmland",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1572,
+    "alt_definition": "highest or perfect example",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1573,
+    "alt_definition": "pleasantly peaceful and rural",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1574,
+    "alt_definition": "related to home and household",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1575,
+    "alt_definition": "animals of a region or era",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1576,
+    "alt_definition": "highly fertile and productive",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1577,
+    "alt_definition": "cultivating crops and raising animals",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1578,
+    "alt_definition": "peaceful and almost perfectly pleasant",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1579,
+    "alt_definition": "charmingly rough and rural",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1581,
+    "alt_definition": "racial separation with unequal rights",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1582,
+    "alt_definition": "constant source of misery",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1583,
+    "alt_definition": "something that spoils places or situations",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1584,
+    "alt_definition": "erase every visible trace",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1585,
+    "alt_definition": "grant voting and civic rights",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1586,
+    "alt_definition": "directly harmful or poisonous",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1587,
+    "alt_definition": "gradually harmful and hard to detect",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1588,
+    "alt_definition": "assign to a lower position",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1589,
+    "alt_definition": "forcibly keep groups apart",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1590,
+    "alt_definition": "suggesting evil or danger",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1591,
+    "alt_definition": "lower in rank or importance",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1592,
+    "alt_definition": "increase by adding to it",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1593,
+    "alt_definition": "grow rapidly and vigorously",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1594,
+    "alt_definition": "merge into one unified whole",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1595,
+    "alt_definition": "something that completes or enhances",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1596,
+    "alt_definition": "meeting point of flowing waters",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1597,
+    "alt_definition": "available in very large amounts",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1598,
+    "alt_definition": "one small increase in a series",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1599,
+    "alt_definition": "combine parts to work together",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1600,
+    "alt_definition": "related to motion",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1601,
+    "alt_definition": "a seemingly countless number",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1602,
+    "alt_definition": "restore a used-up supply",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1603,
+    "alt_definition": "completely filled with something",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1604,
+    "alt_definition": "consist of specified parts",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1605,
+    "alt_definition": "an overwhelming flood",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1606,
+    "alt_definition": "persistently present in one place",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1607,
+    "alt_definition": "immense scale or seriousness",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1608,
+    "alt_definition": "continuing without any pause",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1609,
+    "alt_definition": "far beyond reasonable limits",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1610,
+    "alt_definition": "completely cover with floodwater",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1611,
+    "alt_definition": "massive and solidly unified",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1612,
+    "alt_definition": "lasting or returning yearly",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1613,
+    "alt_definition": "spread gradually through every part",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1614,
+    "alt_definition": "be present throughout something",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1615,
+    "alt_definition": "astonishingly large or impressive",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1616,
+    "alt_definition": "multiply and spread rapidly",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1617,
+    "alt_definition": "producing unusually large amounts",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1618,
+    "alt_definition": "given equally in return",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1619,
+    "alt_definition": "an unwanted excess",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1620,
+    "alt_definition": "present seemingly everywhere",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1621,
+    "alt_definition": "never stopping or weakening",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1622,
+    "alt_definition": "something that existed earlier",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1623,
+    "alt_definition": "trigger for important change",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1624,
+    "alt_definition": "happening at the same time",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1625,
+    "alt_definition": "helping produce a result",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1626,
+    "alt_definition": "dependent on an uncertain condition",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1627,
+    "alt_definition": "happening by lucky chance",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1628,
+    "alt_definition": "early signal of coming change",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1629,
+    "alt_definition": "about to happen",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1630,
+    "alt_definition": "ominous sign of future events",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1631,
+    "alt_definition": "earlier thing leading to another",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1632,
+    "alt_definition": "directly cause or produce",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1633,
+    "alt_definition": "gradually bring about a condition",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1634,
+    "alt_definition": "more than can be managed",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1635,
+    "alt_definition": "cause something serious too soon",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1636,
+    "alt_definition": "pouring out in large amounts",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1637,
+    "alt_definition": "an indirect or unintended consequence",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1638,
+    "alt_definition": "delayed harmful consequence",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1639,
+    "alt_definition": "produce many new things",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1641,
+    "alt_definition": "catastrophic final destruction",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1642,
+    "alt_definition": "gradual breaking apart",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1643,
+    "alt_definition": "naturally very short-lived",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1644,
+    "alt_definition": "temporary pause in activity",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1645,
+    "alt_definition": "just beginning to develop",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1646,
+    "alt_definition": "easily shaped or influenced",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1647,
+    "alt_definition": "complete dramatic transformation",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1648,
+    "alt_definition": "decisive to what follows",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1649,
+    "alt_definition": "sudden and extremely steep",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1650,
+    "alt_definition": "occasional and irregular",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1651,
+    "alt_definition": "briefly present before passing",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1652,
+    "alt_definition": "harmful or unfavorable",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1653,
+    "alt_definition": "requiring prolonged great effort",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1654,
+    "alt_definition": "gradual loss through pressure",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1655,
+    "alt_definition": "make severely weak",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1656,
+    "alt_definition": "gradually or subtly harmful",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1657,
+    "alt_definition": "gradually intrude beyond rightful bounds",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1658,
+    "alt_definition": "urgent need requiring action",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1659,
+    "alt_definition": "free from entanglement or danger",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1660,
+    "alt_definition": "restraint on freedom or progress",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1661,
+    "alt_definition": "complex confusing maze",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1662,
+    "alt_definition": "demanding beyond reason",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1663,
+    "alt_definition": "strict with little flexibility",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1664,
+    "alt_definition": "unrestrained outpouring",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1665,
+    "alt_definition": "delicately light and otherworldly",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1666,
+    "alt_definition": "quickly fading from existence",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1667,
+    "alt_definition": "glowing intensely from heat",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1669,
+    "alt_definition": "giving off bright light",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1670,
+    "alt_definition": "deeply insightful",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1671,
+    "alt_definition": "emit tiny flashes of light",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1672,
+    "alt_definition": "meaningful and genuinely important",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1673,
+    "alt_definition": "able to withstand criticism",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1674,
+    "alt_definition": "rise beyond normal limits",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1675,
+    "alt_definition": "long-lasting or repeatedly recurring",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1676,
+    "alt_definition": "medical condition present at birth",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1677,
+    "alt_definition": "destroy a large proportion",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1678,
+    "alt_definition": "dry out completely",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1679,
+    "alt_definition": "swell outward from internal pressure",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1680,
+    "alt_definition": "complete lack of power",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1681,
+    "alt_definition": "unable to act effectively",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1682,
+    "alt_definition": "cancerous and spreading",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1683,
+    "alt_definition": "fake illness to avoid duty",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1684,
+    "alt_definition": "at the point of death",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1685,
+    "alt_definition": "ease symptoms without curing",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1686,
+    "alt_definition": "study of disease processes",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1687,
+    "alt_definition": "whole formed from separate parts",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1688,
+    "alt_definition": "off course or wrong",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1689,
+    "alt_definition": "cleverly bypass by indirect means",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1690,
+    "alt_definition": "convenient but potentially unprincipled",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1691,
+    "alt_definition": "make happen more quickly",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1692,
+    "alt_definition": "collapse after a promising start",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1693,
+    "alt_definition": "put into practical effect",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1694,
+    "alt_definition": "supposed cure for every problem",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1695,
+    "alt_definition": "practical and realistic",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1696,
+    "alt_definition": "publicly take back a claim",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1697,
+    "alt_definition": "formally give up",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1698,
+    "alt_definition": "practical rather than attractive",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1699,
+    "alt_definition": "european revival of art and learning",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1700,
+    "alt_definition": "unwanted departure from normal",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1702,
+    "alt_definition": "perfect or typical example",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1703,
+    "alt_definition": "fundamentally different from each other",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1704,
+    "alt_definition": "drawn from many varied sources",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1706,
+    "alt_definition": "force pulling objects together",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1707,
+    "alt_definition": "small model of something larger",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1708,
+    "alt_definition": "exceptionally talented young person",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1709,
+    "alt_definition": "strictly limit",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1710,
+    "alt_definition": "matching in size or degree",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1711,
+    "alt_definition": "touching or sharing a border",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1712,
+    "alt_definition": "describe or mark out precisely",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1713,
+    "alt_definition": "separate and distinct",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1714,
+    "alt_definition": "made of similar parts",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1715,
+    "alt_definition": "outer edge or boundary",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1716,
+    "alt_definition": "prevent in advance",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1717,
+    "alt_definition": "state of being near",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1718,
+    "alt_definition": "isolate from outside contact",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1719,
+    "alt_definition": "effectively the same as",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1720,
+    "alt_definition": "the same throughout",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1721,
+    "alt_definition": "shorten while preserving meaning",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1722,
+    "alt_definition": "assign for a specific purpose",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1723,
+    "alt_definition": "combination of metals or elements",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1724,
+    "alt_definition": "almost immeasurably small",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1725,
+    "alt_definition": "essential to the whole",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1726,
+    "alt_definition": "far smaller than expected",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1727,
+    "alt_definition": "necessary as a precondition",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1728,
+    "alt_definition": "basic and poorly developed",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1729,
+    "alt_definition": "failing before completion",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1730,
+    "alt_definition": "approach and speak to aggressively",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1731,
+    "alt_definition": "likely to cause argument",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1732,
+    "alt_definition": "complete and embarrassing failure",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1733,
+    "alt_definition": "shockingly bad or wrong",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1734,
+    "alt_definition": "make a problem worse",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1735,
+    "alt_definition": "irritate beyond patience",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1736,
+    "alt_definition": "incapable of producing results",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1737,
+    "alt_definition": "persistently unlucky",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1738,
+    "alt_definition": "slow and heavy",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1739,
+    "alt_definition": "make last unnecessarily long",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1740,
+    "alt_definition": "completely block progress",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1741,
+    "alt_definition": "selfless concern for others",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1742,
+    "alt_definition": "person who gives support",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1743,
+    "alt_definition": "kind and generous",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1744,
+    "alt_definition": "gift left in a will",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1745,
+    "alt_definition": "generosity from someone powerful",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1746,
+    "alt_definition": "organized giving for public good",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1747,
+    "alt_definition": "wasteful with money",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1748,
+    "alt_definition": "prepared for future needs",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1749,
+    "alt_definition": "warmly attentive and caring",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1750,
+    "alt_definition": "deny oneself something desired",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1751,
+    "alt_definition": "choosing to avoid physical pleasures",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1752,
+    "alt_definition": "rejecting comfort for spiritual discipline",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1753,
+    "alt_definition": "plain and without comforts",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1754,
+    "alt_definition": "choosing neither marriage nor sex",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1755,
+    "alt_definition": "patiently hold oneself back",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1756,
+    "alt_definition": "pass up an available option",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1757,
+    "alt_definition": "abandon completely",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1758,
+    "alt_definition": "careful not to waste money",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1759,
+    "alt_definition": "unreasonably unwilling to spend",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1760,
+    "alt_definition": "freedom from alcohol or drugs",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1761,
+    "alt_definition": "moderate and self-controlled",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1762,
+    "alt_definition": "make impure by adding inferior material",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1763,
+    "alt_definition": "cleverly deceptive",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1764,
+    "alt_definition": "fake expert who deceives others",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1765,
+    "alt_definition": "clever dishonest trickery",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1766,
+    "alt_definition": "make someone believe something false",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1767,
+    "alt_definition": "two-faced dishonesty",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1768,
+    "alt_definition": "made-up claim presented as fact",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1769,
+    "alt_definition": "skillful handling of delicate situations",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1770,
+    "alt_definition": "cleverness used to deceive",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1771,
+    "alt_definition": "seemingly reasonable but actually false",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1772,
+    "alt_definition": "open to multiple meanings",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1773,
+    "alt_definition": "unnecessarily long and indirect",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1774,
+    "alt_definition": "using too many indirect words",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1775,
+    "alt_definition": "shortened until unclear",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1776,
+    "alt_definition": "deliberately unclear and noncommittal",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1777,
+    "alt_definition": "mild substitute for harsh wording",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1778,
+    "alt_definition": "indirectly suggest something unpleasant",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1779,
+    "alt_definition": "habitually dishonest",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1780,
+    "alt_definition": "deliberately make hard to understand",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1781,
+    "alt_definition": "indirect or slanting",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1782,
+    "alt_definition": "apparent but possibly not real",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1783,
+    "alt_definition": "declare openly",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1785,
+    "alt_definition": "too ready to believe",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1786,
+    "alt_definition": "unbiased by personal gain",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1787,
+    "alt_definition": "fully clear and directly stated",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1788,
+    "alt_definition": "faithfulness to someone",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1789,
+    "alt_definition": "fair and unbiased",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1790,
+    "alt_definition": "openly honest and innocent",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1791,
+    "alt_definition": "plainly obvious",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1792,
+    "alt_definition": "unaware and unintentional",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1793,
+    "alt_definition": "unnatural behavior meant to impress",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1795,
+    "alt_definition": "forced and unnatural",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1796,
+    "alt_definition": "face or facial expression",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1797,
+    "alt_definition": "insulting and disrespectful",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1798,
+    "alt_definition": "having a built-in negative slant",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1799,
+    "alt_definition": "deeply devoted to religion",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1800,
+    "alt_definition": "acting morally superior",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1801,
+    "alt_definition": "smoothly flattering and insincere",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1802,
+    "alt_definition": "claim without proof",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1803,
+    "alt_definition": "widely repeated but likely untrue",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1804,
+    "alt_definition": "guess without solid evidence",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1805,
+    "alt_definition": "unreliable or doubtful",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1806,
+    "alt_definition": "temporary and subject to change",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1807,
+    "alt_definition": "claimed but not proven",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1808,
+    "alt_definition": "according to unproven claims",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1809,
+    "alt_definition": "generally believed but unconfirmed",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1810,
+    "alt_definition": "false or not genuine",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1811,
+    "alt_definition": "hesitant and not yet firm",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1812,
+    "alt_definition": "very weak or slight",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1813,
+    "alt_definition": "sharply and harshly critical",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1814,
+    "alt_definition": "exaggerated comic mockery",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1815,
+    "alt_definition": "exaggerated mocking portrayal",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1816,
+    "alt_definition": "harshly critical and damaging",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1817,
+    "alt_definition": "inappropriately joking",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1818,
+    "alt_definition": "absurdly chaotic or incompetent",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1819,
+    "alt_definition": "harsh abusive language",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1820,
+    "alt_definition": "expressing the opposite meaning",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1821,
+    "alt_definition": "mock through sharp exaggeration",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1822,
+    "alt_definition": "comic exaggerated imitation",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1823,
+    "alt_definition": "person authorized to settle disputes",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1824,
+    "alt_definition": "harm reputation through false claims",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1825,
+    "alt_definition": "angry over perceived injustice",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1826,
+    "alt_definition": "false published statement harming reputation",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1827,
+    "alt_definition": "resolve a dispute in court",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1828,
+    "alt_definition": "lying under oath",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1829,
+    "alt_definition": "earlier case guiding later decisions",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1830,
+    "alt_definition": "counter a claim with evidence",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1831,
+    "alt_definition": "accusation made in response",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1832,
+    "alt_definition": "spoken lie harming someone's reputation",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1833,
+    "alt_definition": "state as a required condition",
+    "general_connotation": "neutral"
+  }
+]

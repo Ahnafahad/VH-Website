@@ -1,0 +1,252 @@
+[
+  {
+    "word_id": 1332,
+    "alt_definition": "drain energy and strength",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1333,
+    "alt_definition": "habitually lazy",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1334,
+    "alt_definition": "unable to move or act",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1335,
+    "alt_definition": "weaken from neglect or inactivity",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1336,
+    "alt_definition": "sluggish and low on energy",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1337,
+    "alt_definition": "state of sluggishness and fatigue",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1338,
+    "alt_definition": "slow dull and unthinking",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1339,
+    "alt_definition": "following accepted customs or ideas",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1340,
+    "alt_definition": "aimless and lacking a plan",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1341,
+    "alt_definition": "temporarily inactive but able to revive",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1342,
+    "alt_definition": "vague unease and low energy",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1343,
+    "alt_definition": "state of being completely forgotten",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1344,
+    "alt_definition": "extreme unwillingness to make effort",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1345,
+    "alt_definition": "causing sleep or dullness",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1346,
+    "alt_definition": "not moving or changing",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1347,
+    "alt_definition": "extreme physical or mental sluggishness",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1348,
+    "alt_definition": "make embarrassed or ashamed",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1349,
+    "alt_definition": "make seem unimportant or inferior",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1350,
+    "alt_definition": "confused and unable to think clearly",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1351,
+    "alt_definition": "emotional release bringing relief",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1352,
+    "alt_definition": "distress from failure or embarrassment",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1354,
+    "alt_definition": "speak of as having little value",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1355,
+    "alt_definition": "excessively tearful and sentimental",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1356,
+    "alt_definition": "make deeply ashamed or embarrassed",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1357,
+    "alt_definition": "wistful longing for the past",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1358,
+    "alt_definition": "quietly thoughtful and slightly sad",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1359,
+    "alt_definition": "deeply moving with sadness",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1360,
+    "alt_definition": "strangely unconventional but harmless",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1361,
+    "alt_definition": "minor personal weakness or quirk",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1362,
+    "alt_definition": "person who challenges accepted beliefs",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1363,
+    "alt_definition": "distinctive personal habit or trait",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1364,
+    "alt_definition": "traveling from place to place",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1365,
+    "alt_definition": "independent person who defies conventions",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1366,
+    "alt_definition": "regularly traveling for professional work",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1367,
+    "alt_definition": "strong long-standing personal preference",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1368,
+    "alt_definition": "nobly idealistic but impractical",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1369,
+    "alt_definition": "dishonest or unpredictable person",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1370,
+    "alt_definition": "remarkably unusual or exceptional",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1371,
+    "alt_definition": "unconcerned with right or wrong",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1372,
+    "alt_definition": "belief that morality has no validity",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1373,
+    "alt_definition": "showing romantic or sexual desire",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1374,
+    "alt_definition": "person who distrusts good motives",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1375,
+    "alt_definition": "concerning human existence and meaning",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1376,
+    "alt_definition": "person who believes fate is fixed",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1377,
+    "alt_definition": "belief that pleasure matters most",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1378,
+    "alt_definition": "intensely and irrationally attracted",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1379,
+    "alt_definition": "disliking and distrusting humanity",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1380,
+    "alt_definition": "belief that nothing has meaning or value",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1382,
+    "alt_definition": "natural tendency toward something",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1383,
+    "alt_definition": "direct and complete opposite",
+    "general_connotation": "neutral"
+  }
+]

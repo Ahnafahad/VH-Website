@@ -1,0 +1,650 @@
+[
+  {
+    "id": 1536,
+    "word": "Mediate",
+    "pos": "verb",
+    "current_definition": "To act as a neutral go-between for two sides in a dispute, helping them reach an agreement without taking either side.",
+    "synonyms": [
+      "arbitrate",
+      "negotiate"
+    ],
+    "antonyms": [
+      "antagonize"
+    ]
+  },
+  {
+    "id": 1537,
+    "word": "Mitigate",
+    "pos": "verb",
+    "current_definition": "To make something harmful, serious, or painful less severe; to lessen the impact of something bad.",
+    "synonyms": [
+      "lessen",
+      "reduce"
+    ],
+    "antonyms": [
+      "worsen"
+    ]
+  },
+  {
+    "id": 1538,
+    "word": "Mollify",
+    "pos": "verb",
+    "current_definition": "To soften someone's anger or resentment, usually by speaking gently or showing understanding for their feelings.",
+    "synonyms": [
+      "soothe",
+      "calm"
+    ],
+    "antonyms": [
+      "inflame"
+    ]
+  },
+  {
+    "id": 1540,
+    "word": "Acquiesce",
+    "pos": "verb",
+    "current_definition": "To accept or go along with something without objecting, even if one is not fully in agreement; to consent quietly.",
+    "synonyms": [
+      "consent",
+      "comply"
+    ],
+    "antonyms": [
+      "resist"
+    ]
+  },
+  {
+    "id": 1541,
+    "word": "Amnesty",
+    "pos": "noun",
+    "current_definition": "An official pardon given to a group of people, freeing them from punishment for past offenses, often as part of a peace settlement.",
+    "synonyms": [
+      "pardon",
+      "clemency"
+    ],
+    "antonyms": [
+      "punishment"
+    ]
+  },
+  {
+    "id": 1542,
+    "word": "Capitulate",
+    "pos": "verb",
+    "current_definition": "To stop resisting and give in to an opponent or a demand, especially after a long period of holding out.",
+    "synonyms": [
+      "surrender",
+      "yield"
+    ],
+    "antonyms": [
+      "resist"
+    ]
+  },
+  {
+    "id": 1543,
+    "word": "Concord",
+    "pos": "noun",
+    "current_definition": "A state of agreement, harmony, or peaceful relations between people or groups; the absence of conflict.",
+    "synonyms": [
+      "harmony",
+      "accord"
+    ],
+    "antonyms": [
+      "discord"
+    ]
+  },
+  {
+    "id": 1544,
+    "word": "Consensus",
+    "pos": "noun",
+    "current_definition": "A general agreement reached by a group as a whole, in which most or all members accept the outcome even if no one gets everything they wanted.",
+    "synonyms": [
+      "agreement",
+      "accord"
+    ],
+    "antonyms": [
+      "deadlock"
+    ]
+  },
+  {
+    "id": 1545,
+    "word": "Covenant",
+    "pos": "noun",
+    "current_definition": "A formal, binding agreement or promise between two parties, often carrying moral or solemn weight beyond an ordinary contract.",
+    "synonyms": [
+      "pact",
+      "agreement"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": 1546,
+    "word": "Discreet",
+    "pos": "adjective",
+    "current_definition": "Careful and tactful in speech or behavior, especially to avoid causing embarrassment or revealing sensitive information.",
+    "synonyms": [
+      "tactful",
+      "judicious"
+    ],
+    "antonyms": [
+      "indiscreet"
+    ]
+  },
+  {
+    "id": 1547,
+    "word": "Inexorable",
+    "pos": "adjective",
+    "current_definition": "Impossible to stop, slow down, or persuade to change course; continuing with unstoppable force regardless of opposition.",
+    "synonyms": [
+      "relentless",
+      "unstoppable"
+    ],
+    "antonyms": [
+      "yielding"
+    ]
+  },
+  {
+    "id": 1548,
+    "word": "Intractable",
+    "pos": "adjective",
+    "current_definition": "Extremely difficult to deal with, manage, or resolve; stubbornly resistant to any solution or compromise.",
+    "synonyms": [
+      "stubborn",
+      "unmanageable"
+    ],
+    "antonyms": [
+      "manageable"
+    ]
+  },
+  {
+    "id": 1549,
+    "word": "Prudent",
+    "pos": "adjective",
+    "current_definition": "Showing good judgment and careful thought before acting, especially to avoid unnecessary risk or harm.",
+    "synonyms": [
+      "cautious",
+      "sensible"
+    ],
+    "antonyms": [
+      "reckless"
+    ]
+  },
+  {
+    "id": 1550,
+    "word": "Relinquish",
+    "pos": "verb",
+    "current_definition": "To willingly give up, let go of, or hand over something one has possessed or controlled, often with some reluctance.",
+    "synonyms": [
+      "surrender",
+      "release"
+    ],
+    "antonyms": [
+      "retain"
+    ]
+  },
+  {
+    "id": 1551,
+    "word": "Succumb",
+    "pos": "verb",
+    "current_definition": "To give in to something overwhelming, such as pressure, temptation, or a superior force, after trying to withstand it.",
+    "synonyms": [
+      "yield",
+      "relent"
+    ],
+    "antonyms": [
+      "resist"
+    ]
+  },
+  {
+    "id": 1552,
+    "word": "Aesthetic",
+    "pos": "adjective",
+    "current_definition": "Relating to beauty, art, or the way something looks and feels to the senses.",
+    "synonyms": [
+      "artistic",
+      "visual",
+      "style",
+      "sensibility"
+    ],
+    "antonyms": [
+      "unappealing"
+    ]
+  },
+  {
+    "id": 1553,
+    "word": "Ambience",
+    "pos": "noun",
+    "current_definition": "The mood, feeling, or atmosphere that a place or piece of writing gives off.",
+    "synonyms": [
+      "atmosphere",
+      "mood"
+    ],
+    "antonyms": [
+      "sterility"
+    ]
+  },
+  {
+    "id": 1554,
+    "word": "Archaic",
+    "pos": "adjective",
+    "current_definition": "Very old and no longer in common use; belonging to an earlier time in history.",
+    "synonyms": [
+      "obsolete",
+      "antiquated"
+    ],
+    "antonyms": [
+      "modern"
+    ]
+  },
+  {
+    "id": 1555,
+    "word": "Epigram",
+    "pos": "noun",
+    "current_definition": "A short, clever saying that expresses a truth or idea in a witty and memorable way.",
+    "synonyms": [
+      "aphorism",
+      "witticism"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": 1556,
+    "word": "Genre",
+    "pos": "noun",
+    "current_definition": "A category of writing, art, or music that shares a common style, form, or subject matter.",
+    "synonyms": [
+      "category",
+      "form"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": 1557,
+    "word": "Milieu",
+    "pos": "noun",
+    "current_definition": "The social setting or environment in which a person lives or in which something takes place.",
+    "synonyms": [
+      "environment",
+      "setting"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": 1558,
+    "word": "Neologism",
+    "pos": "noun",
+    "current_definition": "A newly invented word or phrase that has recently entered the language, often to name something new.",
+    "synonyms": [
+      "coinage",
+      "new word"
+    ],
+    "antonyms": [
+      "archaism"
+    ]
+  },
+  {
+    "id": 1559,
+    "word": "Redolent",
+    "pos": "adjective",
+    "current_definition": "Strongly smelling of something; full of a particular scent.",
+    "synonyms": [
+      "evocative",
+      "suggestive"
+    ],
+    "antonyms": [
+      "devoid"
+    ]
+  },
+  {
+    "id": 1560,
+    "word": "Accolade",
+    "pos": "noun",
+    "current_definition": "An award, honor, or expression of strong approval given to recognize someone's achievement or excellence.",
+    "synonyms": [
+      "honor",
+      "tribute"
+    ],
+    "antonyms": [
+      "disgrace"
+    ]
+  },
+  {
+    "id": 1561,
+    "word": "Adulation",
+    "pos": "noun",
+    "current_definition": "Excessive admiration or praise, often to a degree that seems over the top or uncritical.",
+    "synonyms": [
+      "worship",
+      "glorification"
+    ],
+    "antonyms": [
+      "contempt"
+    ]
+  },
+  {
+    "id": 1562,
+    "word": "Appreciate",
+    "pos": "verb",
+    "current_definition": "To recognize the value or quality of someone or something and feel grateful for it.",
+    "synonyms": [
+      "value",
+      "recognize"
+    ],
+    "antonyms": [
+      "overlook"
+    ]
+  },
+  {
+    "id": 1563,
+    "word": "Approbation",
+    "pos": "noun",
+    "current_definition": "Official or formal approval and praise, especially from an authority or group whose opinion matters.",
+    "synonyms": [
+      "approval",
+      "endorsement"
+    ],
+    "antonyms": [
+      "censure"
+    ]
+  },
+  {
+    "id": 1564,
+    "word": "Eminent",
+    "pos": "adjective",
+    "current_definition": "Respected, well-known, and highly regarded within a particular field or profession.",
+    "synonyms": [
+      "distinguished",
+      "prominent"
+    ],
+    "antonyms": [
+      "obscure"
+    ]
+  },
+  {
+    "id": 1565,
+    "word": "Exalt",
+    "pos": "verb",
+    "current_definition": "To raise someone to a higher status or position, or to praise them very highly, treating them as great or noble.",
+    "synonyms": [
+      "elevate",
+      "glorify"
+    ],
+    "antonyms": [
+      "humble"
+    ]
+  },
+  {
+    "id": 1566,
+    "word": "Extol",
+    "pos": "verb",
+    "current_definition": "To praise someone or something enthusiastically and at length, emphasizing their outstanding qualities.",
+    "synonyms": [
+      "acclaim",
+      "celebrate"
+    ],
+    "antonyms": [
+      "condemn"
+    ]
+  },
+  {
+    "id": 1567,
+    "word": "Laud",
+    "pos": "verb",
+    "current_definition": "To praise someone formally and with great respect, typically in writing or a dignified speech.",
+    "synonyms": [
+      "commend",
+      "honor"
+    ],
+    "antonyms": [
+      "criticize"
+    ]
+  },
+  {
+    "id": 1568,
+    "word": "Revere",
+    "pos": "verb",
+    "current_definition": "To feel deep respect and admiration for someone, often because of their moral character, wisdom, or achievements.",
+    "synonyms": [
+      "admire",
+      "venerate"
+    ],
+    "antonyms": [
+      "despise"
+    ]
+  },
+  {
+    "id": 1569,
+    "word": "Steadfast",
+    "pos": "adjective",
+    "current_definition": "Firm, loyal, and unwavering in one's commitments, beliefs, or support, even when conditions are difficult.",
+    "synonyms": [
+      "resolute",
+      "unwavering"
+    ],
+    "antonyms": [
+      "fickle"
+    ]
+  },
+  {
+    "id": 1570,
+    "word": "Tout",
+    "pos": "verb",
+    "current_definition": "To promote or praise someone or something publicly and often repeatedly, usually to build their reputation or attract attention.",
+    "synonyms": [
+      "promote",
+      "publicize"
+    ],
+    "antonyms": [
+      "disparage"
+    ]
+  },
+  {
+    "id": 1571,
+    "word": "Agrarian",
+    "pos": "adjective",
+    "current_definition": "Relating to farming, cultivated land, or the way of life built around working the soil.",
+    "synonyms": [
+      "agricultural",
+      "rural"
+    ],
+    "antonyms": [
+      "industrial"
+    ]
+  },
+  {
+    "id": 1572,
+    "word": "Apotheosis",
+    "pos": "noun",
+    "current_definition": "The highest or greatest point of something; the perfect example of a quality.",
+    "synonyms": [
+      "pinnacle",
+      "culmination"
+    ],
+    "antonyms": [
+      "nadir"
+    ]
+  },
+  {
+    "id": 1573,
+    "word": "Bucolic",
+    "pos": "adjective",
+    "current_definition": "Relating to the pleasant, peaceful side of country life; charmingly rural.",
+    "synonyms": [
+      "pastoral",
+      "verdant"
+    ],
+    "antonyms": [
+      "urban"
+    ]
+  },
+  {
+    "id": 1574,
+    "word": "Domestic",
+    "pos": "adjective",
+    "current_definition": "Relating to the home and the tasks or animals kept within it.",
+    "synonyms": [
+      "household",
+      "homegrown"
+    ],
+    "antonyms": [
+      "foreign"
+    ]
+  },
+  {
+    "id": 1575,
+    "word": "Fauna",
+    "pos": "noun",
+    "current_definition": "All the animal life found in a particular region or period of time.",
+    "synonyms": [
+      "wildlife",
+      "animals"
+    ],
+    "antonyms": [
+      "flora"
+    ]
+  },
+  {
+    "id": 1576,
+    "word": "Fecund",
+    "pos": "adjective",
+    "current_definition": "Producing or able to produce a great deal; fertile and highly productive.",
+    "synonyms": [
+      "fertile",
+      "productive"
+    ],
+    "antonyms": [
+      "barren"
+    ]
+  },
+  {
+    "id": 1577,
+    "word": "Husbandry",
+    "pos": "noun",
+    "current_definition": "The practice of farming, especially the breeding, raising, and care of crops and animals.",
+    "synonyms": [
+      "farming",
+      "cultivation"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": 1578,
+    "word": "Idyllic",
+    "pos": "adjective",
+    "current_definition": "Extremely pleasant, peaceful, and happy in a way that seems almost too perfect to be real.",
+    "synonyms": [
+      "perfect",
+      "serene"
+    ],
+    "antonyms": [
+      "grim"
+    ]
+  },
+  {
+    "id": 1579,
+    "word": "Rustic",
+    "pos": "adjective",
+    "current_definition": "Characteristic of the countryside; simple and roughly made in a charming, old-fashioned way.",
+    "synonyms": [
+      "rural",
+      "rough-hewn",
+      "countryman",
+      "peasant"
+    ],
+    "antonyms": [
+      "refined",
+      "urban"
+    ]
+  },
+  {
+    "id": 1581,
+    "word": "Apartheid",
+    "pos": "noun",
+    "current_definition": "A political system that forcibly separates people by race and gives one group far fewer rights and opportunities than another.",
+    "synonyms": [
+      "segregation",
+      "discrimination"
+    ],
+    "antonyms": [
+      "integration"
+    ]
+  },
+  {
+    "id": 1582,
+    "word": "Bane",
+    "pos": "noun",
+    "current_definition": "A person, thing, or force that causes constant suffering, misery, or ruin.",
+    "synonyms": [
+      "curse",
+      "scourge"
+    ],
+    "antonyms": [
+      "blessing"
+    ]
+  },
+  {
+    "id": 1583,
+    "word": "Blight",
+    "pos": "noun",
+    "current_definition": "Something that damages, destroys, or ruins a place or situation, making it much worse.",
+    "synonyms": [
+      "scourge",
+      "plague",
+      "ruin",
+      "devastate"
+    ],
+    "antonyms": [
+      "blessing",
+      "restore"
+    ]
+  },
+  {
+    "id": 1584,
+    "word": "Efface",
+    "pos": "verb",
+    "current_definition": "To rub out or remove something completely; to make something disappear as if it had never existed.",
+    "synonyms": [
+      "erase",
+      "obliterate"
+    ],
+    "antonyms": [
+      "preserve"
+    ]
+  },
+  {
+    "id": 1585,
+    "word": "Enfranchise",
+    "pos": "verb",
+    "current_definition": "To give a person or group the right to vote or to take full part in a society's political life.",
+    "synonyms": [
+      "empower",
+      "liberate"
+    ],
+    "antonyms": [
+      "disenfranchise"
+    ]
+  },
+  {
+    "id": 1586,
+    "word": "Noxious",
+    "pos": "adjective",
+    "current_definition": "Harmful or poisonous in a way that is fairly direct and obvious, often through smell, fumes, or physical contact.",
+    "synonyms": [
+      "toxic",
+      "poisonous"
+    ],
+    "antonyms": [
+      "harmless"
+    ]
+  },
+  {
+    "id": 1587,
+    "word": "Pernicious",
+    "pos": "adjective",
+    "current_definition": "Causing serious harm in a way that is gradual and hard to detect; quietly and steadily destructive.",
+    "synonyms": [
+      "insidious",
+      "harmful"
+    ],
+    "antonyms": [
+      "beneficial"
+    ]
+  }
+]

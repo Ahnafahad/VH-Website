@@ -1,0 +1,40 @@
+unnatural behavior meant to impress,negative,1793
+forced and unnatural,negative,1795
+face or facial expression,neutral,1796
+insulting and disrespectful,negative,1797
+expressing disapproval or contempt,negative,1798
+deeply devoted to religion,positive,1799
+acting morally superior,negative,1800
+smoothly flattering and insincere,negative,1801
+claim without proof,neutral,1802
+widely repeated but likely untrue,negative,1803
+guess without solid evidence,neutral,1804
+unreliable or doubtful,negative,1805
+temporary and subject to change,neutral,1806
+claimed but not proven,neutral,1807
+according to unproven claims,neutral,1808
+generally believed but unconfirmed,neutral,1809
+false or not genuine,negative,1810
+uncertain and not final,neutral,1811
+very weak or slight,negative,1812
+sharply and harshly critical,negative,1813
+exaggerated comic mockery,neutral,1814
+exaggerated mocking portrayal,negative,1815
+bitingly harsh and critical,negative,1816
+inappropriately joking,negative,1817
+absurdly chaotic or incompetent,negative,1818
+harsh abusive language,negative,1819
+expressing the opposite meaning,neutral,1820
+mock through sharp exaggeration,negative,1821
+comic exaggerated imitation,neutral,1822
+person authorized to settle disputes,neutral,1823
+harm reputation through false claims,negative,1824
+angry over perceived injustice,negative,1825
+false published statement harming reputation,negative,1826
+resolve a dispute in court,neutral,1827
+lying under oath,negative,1828
+earlier case guiding later decisions,neutral,1829
+counter a claim with evidence,neutral,1830
+accusation made in response,negative,1831
+spoken lie harming someone's reputation,negative,1832
+state as a required condition,neutral,1833

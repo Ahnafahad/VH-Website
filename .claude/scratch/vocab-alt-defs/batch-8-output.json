@@ -1,0 +1,252 @@
+[
+  {
+    "word_id": 1384,
+    "alt_definition": "a direct logical consequence",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1385,
+    "alt_definition": "confirm with independent evidence",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1386,
+    "alt_definition": "reach a logical conclusion",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1387,
+    "alt_definition": "based on observation or experiment",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1388,
+    "alt_definition": "project trends beyond known data",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1389,
+    "alt_definition": "imagined rather than real",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1390,
+    "alt_definition": "conclude from indirect evidence",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1391,
+    "alt_definition": "propose as an unproven assumption",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1392,
+    "alt_definition": "a basis for reasoning",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1393,
+    "alt_definition": "combination into a coherent whole",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1395,
+    "alt_definition": "smugly and pointlessly foolish",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1396,
+    "alt_definition": "completely senseless or meaningless",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1397,
+    "alt_definition": "strangely out of place",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1398,
+    "alt_definition": "vague and poorly defined",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1399,
+    "alt_definition": "annoyingly slow to understand",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1400,
+    "alt_definition": "unnecessarily repetitive",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1401,
+    "alt_definition": "true by repeating the same idea",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1402,
+    "alt_definition": "a brief memorable general truth",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1403,
+    "alt_definition": "a truth accepted without proof",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1404,
+    "alt_definition": "an authoritative formal statement",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1405,
+    "alt_definition": "serve as a clear example",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1406,
+    "alt_definition": "a brief rule for living",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1407,
+    "alt_definition": "an experienced trusted guide",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1408,
+    "alt_definition": "new and original",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1409,
+    "alt_definition": "an accepted model or framework",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1410,
+    "alt_definition": "a guiding rule or principle",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1411,
+    "alt_definition": "most noticeable or important",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1412,
+    "alt_definition": "a standard for judging quality",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1413,
+    "alt_definition": "an imagined perfect society",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1414,
+    "alt_definition": "difficult for nonexperts to understand",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1415,
+    "alt_definition": "secretive and little-known",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1416,
+    "alt_definition": "mysterious and hard to interpret",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1417,
+    "alt_definition": "a deeply puzzling mystery",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1418,
+    "alt_definition": "not meant for general audiences",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1419,
+    "alt_definition": "not allowing substances through",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1420,
+    "alt_definition": "present but hidden or inactive",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1421,
+    "alt_definition": "little known or discussed",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1422,
+    "alt_definition": "not allowing light through",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1423,
+    "alt_definition": "a chronological record of events",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1424,
+    "alt_definition": "related to thinking and knowing",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1425,
+    "alt_definition": "fully aware of something",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1426,
+    "alt_definition": "a thorough concise collection of information",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1427,
+    "alt_definition": "covering nearly every aspect",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1428,
+    "alt_definition": "thoroughly covering every possibility",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1429,
+    "alt_definition": "formally enroll at a university",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1430,
+    "alt_definition": "focused on qualities not quantities",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1431,
+    "alt_definition": "highly specialized and hard to understand",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1432,
+    "alt_definition": "related to the physical senses",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1433,
+    "alt_definition": "able to feel and perceive",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1434,
+    "alt_definition": "naturally and inseparably present",
+    "general_connotation": "neutral"
+  }
+]

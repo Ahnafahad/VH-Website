@@ -1,0 +1,830 @@
+[
+  {
+    "id": 1130,
+    "word": "Perquisite",
+    "pos": "noun",
+    "current_definition": "A benefit or privilege granted to an employee in addition to their salary; something regarded as a special right attached to a position.",
+    "synonyms": [
+      "perk",
+      "privilege",
+      "benefit",
+      "bonus",
+      "entitlement"
+    ],
+    "antonyms": [
+      "penalty",
+      "obligation",
+      "liability"
+    ]
+  },
+  {
+    "id": 1131,
+    "word": "Prerogative",
+    "pos": "noun",
+    "current_definition": "A right or privilege exclusive to a particular individual or class; a special power or authority.",
+    "synonyms": [
+      "right",
+      "privilege",
+      "entitlement",
+      "authority",
+      "power"
+    ],
+    "antonyms": [
+      "obligation",
+      "duty",
+      "restriction",
+      "prohibition"
+    ]
+  },
+  {
+    "id": 1132,
+    "word": "Surrogate",
+    "pos": "noun",
+    "current_definition": "A person or thing that acts as a substitute for another; a deputy or replacement serving in place of the original.",
+    "synonyms": [
+      "substitute",
+      "proxy",
+      "stand-in",
+      "replacement",
+      "deputy"
+    ],
+    "antonyms": [
+      "original",
+      "principal",
+      "authentic"
+    ]
+  },
+  {
+    "id": 1133,
+    "word": "Affluent",
+    "pos": "adjective",
+    "current_definition": "Having a great deal of money and material wealth; prosperous and comfortable in financial terms.",
+    "synonyms": [
+      "wealthy",
+      "rich",
+      "prosperous",
+      "well-off",
+      "moneyed"
+    ],
+    "antonyms": [
+      "poor",
+      "destitute",
+      "impoverished",
+      "indigent"
+    ]
+  },
+  {
+    "id": 1134,
+    "word": "Amenity",
+    "pos": "noun",
+    "current_definition": "A desirable or useful feature or facility that adds comfort or convenience to a place; a pleasant or agreeable aspect.",
+    "synonyms": [
+      "facility",
+      "comfort",
+      "convenience",
+      "benefit",
+      "feature"
+    ],
+    "antonyms": [
+      "hardship",
+      "discomfort",
+      "inconvenience"
+    ]
+  },
+  {
+    "id": 1135,
+    "word": "Culinary",
+    "pos": "adjective",
+    "current_definition": "Of or relating to cooking, food preparation, or the kitchen; pertaining to the art or practice of cookery.",
+    "synonyms": [
+      "gastronomic",
+      "epicurean",
+      "gourmet",
+      "food-related"
+    ],
+    "antonyms": [
+      "inedible",
+      "unrefined"
+    ]
+  },
+  {
+    "id": 1136,
+    "word": "Decadent",
+    "pos": "adjective",
+    "current_definition": "Luxuriously self-indulgent; characterized by moral or cultural decline through excessive pleasure-seeking.",
+    "synonyms": [
+      "self-indulgent",
+      "dissolute",
+      "debauched",
+      "corrupt",
+      "indulgent"
+    ],
+    "antonyms": [
+      "austere",
+      "ascetic",
+      "modest",
+      "frugal",
+      "self-restrained"
+    ]
+  },
+  {
+    "id": 1137,
+    "word": "Flaunt",
+    "pos": "verb",
+    "current_definition": "To display something ostentatiously, especially wealth or possessions, in order to attract attention or provoke envy.",
+    "synonyms": [
+      "show off",
+      "display",
+      "parade",
+      "exhibit",
+      "boast"
+    ],
+    "antonyms": [
+      "conceal",
+      "hide",
+      "downplay",
+      "suppress"
+    ]
+  },
+  {
+    "id": 1138,
+    "word": "Grandiose",
+    "pos": "adjective",
+    "current_definition": "Extravagantly large, ambitious, or impressive; seemingly impressive but in a way that is excessive or absurd.",
+    "synonyms": [
+      "elaborate",
+      "pompous",
+      "ostentatious",
+      "magnificent",
+      "imposing"
+    ],
+    "antonyms": [
+      "modest",
+      "humble",
+      "understated",
+      "plain"
+    ]
+  },
+  {
+    "id": 1139,
+    "word": "Munificent",
+    "pos": "adjective",
+    "current_definition": "Larger or more generous than is usual or necessary; characterised by lavish generosity.",
+    "synonyms": [
+      "generous",
+      "lavish",
+      "bountiful",
+      "charitable",
+      "beneficent"
+    ],
+    "antonyms": [
+      "stingy",
+      "miserly",
+      "mean",
+      "niggardly",
+      "parsimonious"
+    ]
+  },
+  {
+    "id": 1140,
+    "word": "Opulent",
+    "pos": "adjective",
+    "current_definition": "Ostentatiously rich and luxurious; demonstrating wealth through lavish display of resources.",
+    "synonyms": [
+      "luxurious",
+      "lavish",
+      "sumptuous",
+      "palatial",
+      "magnificent"
+    ],
+    "antonyms": [
+      "austere",
+      "spartan",
+      "modest",
+      "plain"
+    ]
+  },
+  {
+    "id": 1141,
+    "word": "Ostentatious",
+    "pos": "adjective",
+    "current_definition": "Characterised by a vulgar or pretentious display of wealth and resources, primarily designed to impress or attract notice.",
+    "synonyms": [
+      "showy",
+      "flamboyant",
+      "pretentious",
+      "extravagant",
+      "flashy"
+    ],
+    "antonyms": [
+      "modest",
+      "humble",
+      "unpretentious",
+      "understated",
+      "restrained"
+    ]
+  },
+  {
+    "id": 1142,
+    "word": "Solvent",
+    "pos": "adjective",
+    "current_definition": "Having assets in excess of liabilities; financially stable and able to meet all monetary obligations.",
+    "synonyms": [
+      "financially stable",
+      "creditworthy",
+      "debt-free",
+      "prosperous"
+    ],
+    "antonyms": [
+      "insolvent",
+      "bankrupt",
+      "indebted",
+      "broke"
+    ]
+  },
+  {
+    "id": 1143,
+    "word": "Abject",
+    "pos": "adjective",
+    "current_definition": "Experienced or present to the most extreme degree; utterly hopeless or degrading; completely without pride or dignity.",
+    "synonyms": [
+      "wretched",
+      "miserable",
+      "deplorable",
+      "degrading",
+      "pitiful"
+    ],
+    "antonyms": [
+      "admirable",
+      "dignified",
+      "proud",
+      "exalted"
+    ]
+  },
+  {
+    "id": 1144,
+    "word": "Avarice",
+    "pos": "noun",
+    "current_definition": "Extreme greed for wealth or material gain; an insatiable desire to accumulate riches.",
+    "synonyms": [
+      "greed",
+      "covetousness",
+      "cupidity",
+      "rapacity",
+      "acquisitiveness"
+    ],
+    "antonyms": [
+      "generosity",
+      "charity",
+      "benevolence",
+      "altruism"
+    ]
+  },
+  {
+    "id": 1145,
+    "word": "Covet",
+    "pos": "verb",
+    "current_definition": "To yearn intensely to possess or have something belonging to another person; to desire enviously.",
+    "synonyms": [
+      "desire",
+      "envy",
+      "crave",
+      "long for",
+      "lust after"
+    ],
+    "antonyms": [
+      "scorn",
+      "disdain",
+      "renounce",
+      "relinquish"
+    ]
+  },
+  {
+    "id": 1146,
+    "word": "Dearth",
+    "pos": "noun",
+    "current_definition": "A scarcity or insufficient quantity of something; a serious lack of a needed resource or supply.",
+    "synonyms": [
+      "scarcity",
+      "shortage",
+      "lack",
+      "deficiency",
+      "paucity"
+    ],
+    "antonyms": [
+      "abundance",
+      "plenty",
+      "surplus",
+      "excess"
+    ]
+  },
+  {
+    "id": 1147,
+    "word": "Glut",
+    "pos": "noun",
+    "current_definition": "An excessively abundant supply of something, typically more than the market or demand can absorb.",
+    "synonyms": [
+      "surplus",
+      "excess",
+      "oversupply",
+      "overabundance",
+      "surfeit"
+    ],
+    "antonyms": [
+      "shortage",
+      "scarcity",
+      "dearth",
+      "deficit"
+    ]
+  },
+  {
+    "id": 1148,
+    "word": "Insatiable",
+    "pos": "adjective",
+    "current_definition": "Impossible to satisfy regardless of how much is given; having an unlimited or unquenchable desire.",
+    "synonyms": [
+      "unquenchable",
+      "voracious",
+      "greedy",
+      "rapacious",
+      "relentless"
+    ],
+    "antonyms": [
+      "satisfiable",
+      "content",
+      "moderate",
+      "sated"
+    ]
+  },
+  {
+    "id": 1149,
+    "word": "Mercenary",
+    "pos": "adjective",
+    "current_definition": "Primarily concerned with making money at the expense of ethics; motivated by financial gain above all other considerations.",
+    "synonyms": [
+      "avaricious",
+      "greedy",
+      "venal",
+      "acquisitive",
+      "money-grubbing"
+    ],
+    "antonyms": [
+      "altruistic",
+      "selfless",
+      "charitable",
+      "idealistic"
+    ]
+  },
+  {
+    "id": 1150,
+    "word": "Paucity",
+    "pos": "noun",
+    "current_definition": "The presence of something only in small or insufficient quantities; a serious scarcity of what is needed.",
+    "synonyms": [
+      "scarcity",
+      "shortage",
+      "dearth",
+      "lack",
+      "insufficiency"
+    ],
+    "antonyms": [
+      "abundance",
+      "surplus",
+      "plenty",
+      "wealth"
+    ]
+  },
+  {
+    "id": 1151,
+    "word": "Rapacious",
+    "pos": "adjective",
+    "current_definition": "Aggressively greedy or grasping; plundering and seizing by force; voraciously acquisitive.",
+    "synonyms": [
+      "greedy",
+      "avaricious",
+      "plundering",
+      "predatory",
+      "voracious"
+    ],
+    "antonyms": [
+      "generous",
+      "selfless",
+      "content",
+      "satisfied"
+    ]
+  },
+  {
+    "id": 1152,
+    "word": "Squander",
+    "pos": "verb",
+    "current_definition": "To waste money, time, or resources in a reckless or foolish manner; to allow something valuable to be lost through neglect.",
+    "synonyms": [
+      "waste",
+      "fritter away",
+      "dissipate",
+      "lavish",
+      "throw away"
+    ],
+    "antonyms": [
+      "save",
+      "conserve",
+      "preserve",
+      "accumulate"
+    ]
+  },
+  {
+    "id": 1153,
+    "word": "Abysmal",
+    "pos": "adjective",
+    "current_definition": "Extremely bad or appalling; so deep or severe as to seem immeasurably hopeless or terrible.",
+    "synonyms": [
+      "terrible",
+      "dreadful",
+      "appalling",
+      "dire",
+      "atrocious"
+    ],
+    "antonyms": [
+      "excellent",
+      "outstanding",
+      "superb",
+      "wonderful"
+    ]
+  },
+  {
+    "id": 1154,
+    "word": "Destitute",
+    "pos": "adjective",
+    "current_definition": "Without the basic necessities of life; in a state of extreme poverty with no financial resources whatsoever.",
+    "synonyms": [
+      "impoverished",
+      "poverty-stricken",
+      "penniless",
+      "indigent",
+      "bankrupt"
+    ],
+    "antonyms": [
+      "wealthy",
+      "affluent",
+      "prosperous",
+      "comfortable"
+    ]
+  },
+  {
+    "id": 1155,
+    "word": "Indigent",
+    "pos": "adjective",
+    "current_definition": "Poor and needy; lacking the basic necessities of life; in a condition of extreme financial want.",
+    "synonyms": [
+      "destitute",
+      "impoverished",
+      "poverty-stricken",
+      "needy",
+      "penurious"
+    ],
+    "antonyms": [
+      "wealthy",
+      "affluent",
+      "prosperous",
+      "comfortable"
+    ]
+  },
+  {
+    "id": 1156,
+    "word": "Mendicant",
+    "pos": "noun",
+    "current_definition": "A person who lives by begging; one who depends entirely on charity or alms for survival.",
+    "synonyms": [
+      "beggar",
+      "pauper",
+      "vagrant",
+      "supplicant",
+      "almsman"
+    ],
+    "antonyms": [
+      "benefactor",
+      "donor",
+      "philanthropist",
+      "provider"
+    ]
+  },
+  {
+    "id": 1157,
+    "word": "Paltry",
+    "pos": "adjective",
+    "current_definition": "Contemptibly small or inadequate in amount; trivial and of little value or significance.",
+    "synonyms": [
+      "meager",
+      "pitiful",
+      "trifling",
+      "negligible",
+      "inadequate"
+    ],
+    "antonyms": [
+      "substantial",
+      "considerable",
+      "generous",
+      "ample"
+    ]
+  },
+  {
+    "id": 1158,
+    "word": "Sordid",
+    "pos": "adjective",
+    "current_definition": "Involving immoral or dishonest activities; dirty, filthy, or wretched in condition; ignoble in nature.",
+    "synonyms": [
+      "wretched",
+      "squalid",
+      "dirty",
+      "filthy",
+      "vile"
+    ],
+    "antonyms": [
+      "noble",
+      "clean",
+      "reputable",
+      "honourable",
+      "dignified"
+    ]
+  },
+  {
+    "id": 1159,
+    "word": "Squalor",
+    "pos": "noun",
+    "current_definition": "A state of being extremely dirty and unpleasant, especially as a result of poverty or neglect; filth and wretchedness.",
+    "synonyms": [
+      "filth",
+      "wretchedness",
+      "sordidness",
+      "griminess",
+      "degradation"
+    ],
+    "antonyms": [
+      "cleanliness",
+      "luxury",
+      "comfort",
+      "purity"
+    ]
+  },
+  {
+    "id": 1160,
+    "word": "Stagnation",
+    "pos": "noun",
+    "current_definition": "A state of inactivity or lack of development; failure to flow, move, or progress.",
+    "synonyms": [
+      "stasis",
+      "standstill",
+      "inertia"
+    ],
+    "antonyms": [
+      "progress",
+      "growth",
+      "development"
+    ]
+  },
+  {
+    "id": 1161,
+    "word": "Arbitrary",
+    "pos": "adjective",
+    "current_definition": "Based on personal whim or random choice rather than any clear rule, reason, or fairness.",
+    "synonyms": [
+      "random",
+      "capricious"
+    ],
+    "antonyms": [
+      "principled"
+    ]
+  },
+  {
+    "id": 1162,
+    "word": "Circumspect",
+    "pos": "adjective",
+    "current_definition": "Careful to think through all possible consequences before acting or speaking; cautious and watchful.",
+    "synonyms": [
+      "cautious",
+      "prudent"
+    ],
+    "antonyms": [
+      "reckless"
+    ]
+  },
+  {
+    "id": 1163,
+    "word": "Connoisseur",
+    "pos": "noun",
+    "current_definition": "A person with deep knowledge and refined taste in a particular subject, especially art, food, or music.",
+    "synonyms": [
+      "expert",
+      "authority"
+    ],
+    "antonyms": [
+      "novice"
+    ]
+  },
+  {
+    "id": 1164,
+    "word": "Criterion",
+    "pos": "noun",
+    "current_definition": "A standard or rule used to judge, evaluate, or make a decision about something.",
+    "synonyms": [
+      "standard",
+      "measure"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": 1165,
+    "word": "Discern",
+    "pos": "verb",
+    "current_definition": "To see, notice, or understand something that is not immediately obvious, often through careful observation or thought.",
+    "synonyms": [
+      "detect",
+      "perceive"
+    ],
+    "antonyms": [
+      "overlook"
+    ]
+  },
+  {
+    "id": 1166,
+    "word": "Discriminate",
+    "pos": "verb",
+    "current_definition": "To recognize and understand the difference between two or more things; to tell them apart with care.",
+    "synonyms": [
+      "separate",
+      "differentiate"
+    ],
+    "antonyms": [
+      "equate"
+    ]
+  },
+  {
+    "id": 1167,
+    "word": "Distinguish",
+    "pos": "verb",
+    "current_definition": "To notice or point out what makes one thing different from another.",
+    "synonyms": [
+      "differentiate",
+      "identify"
+    ],
+    "antonyms": [
+      "confuse"
+    ]
+  },
+  {
+    "id": 1168,
+    "word": "Equitable",
+    "pos": "adjective",
+    "current_definition": "Fair and impartial to everyone involved, giving each person what they reasonably deserve.",
+    "synonyms": [
+      "fair",
+      "just"
+    ],
+    "antonyms": [
+      "biased"
+    ]
+  },
+  {
+    "id": 1169,
+    "word": "Exacting",
+    "pos": "adjective",
+    "current_definition": "Demanding very high standards and close attention to every detail; not willing to accept anything less than the best.",
+    "synonyms": [
+      "demanding",
+      "rigorous"
+    ],
+    "antonyms": [
+      "lenient"
+    ]
+  },
+  {
+    "id": 1170,
+    "word": "Cogent",
+    "pos": "adjective",
+    "current_definition": "So clear and well-reasoned that it is hard to argue against; powerfully convincing.",
+    "synonyms": [
+      "convincing",
+      "compelling"
+    ],
+    "antonyms": [
+      "weak"
+    ]
+  },
+  {
+    "id": 1171,
+    "word": "Fastidious",
+    "pos": "adjective",
+    "current_definition": "Very attentive to cleanliness, accuracy, or quality, sometimes to a degree that others find excessive.",
+    "synonyms": [
+      "meticulous",
+      "fussy"
+    ],
+    "antonyms": [
+      "careless"
+    ]
+  },
+  {
+    "id": 1172,
+    "word": "Judicious",
+    "pos": "adjective",
+    "current_definition": "Showing good sense and careful thought when making decisions; wise and well-considered.",
+    "synonyms": [
+      "prudent",
+      "sensible"
+    ],
+    "antonyms": [
+      "rash"
+    ]
+  },
+  {
+    "id": 1173,
+    "word": "Lucid",
+    "pos": "adjective",
+    "current_definition": "Expressed in a way that is very easy to understand; clear and organized in thought or language.",
+    "synonyms": [
+      "clear",
+      "coherent"
+    ],
+    "antonyms": [
+      "muddled"
+    ]
+  },
+  {
+    "id": 1174,
+    "word": "Painstaking",
+    "pos": "adjective",
+    "current_definition": "Done with extremely careful attention to every small detail, requiring great effort and patience.",
+    "synonyms": [
+      "meticulous",
+      "thorough"
+    ],
+    "antonyms": [
+      "hasty"
+    ]
+  },
+  {
+    "id": 1175,
+    "word": "Pertinent",
+    "pos": "adjective",
+    "current_definition": "Directly related to or useful for the subject being discussed or considered.",
+    "synonyms": [
+      "relevant",
+      "applicable"
+    ],
+    "antonyms": [
+      "irrelevant"
+    ]
+  },
+  {
+    "id": 1176,
+    "word": "Qualify",
+    "pos": "verb",
+    "current_definition": "To meet the necessary requirements or standards needed for something.",
+    "synonyms": [
+      "certify",
+      "entitle"
+    ],
+    "antonyms": [
+      "disqualify"
+    ]
+  },
+  {
+    "id": 1177,
+    "word": "Rigorous",
+    "pos": "adjective",
+    "current_definition": "Extremely thorough and demanding, leaving no room for error or shortcuts.",
+    "synonyms": [
+      "strict",
+      "demanding"
+    ],
+    "antonyms": [
+      "lax"
+    ]
+  },
+  {
+    "id": 1178,
+    "word": "Sagacious",
+    "pos": "adjective",
+    "current_definition": "Having or showing a deep ability to understand things and make good decisions; wise in a practical way.",
+    "synonyms": [
+      "wise",
+      "shrewd"
+    ],
+    "antonyms": [
+      "foolish"
+    ]
+  },
+  {
+    "id": 1179,
+    "word": "Scrupulous",
+    "pos": "adjective",
+    "current_definition": "Extremely careful to be honest and to do what is morally right; also used to mean very precise and thorough.",
+    "synonyms": [
+      "principled",
+      "meticulous"
+    ],
+    "antonyms": [
+      "dishonest"
+    ]
+  }
+]

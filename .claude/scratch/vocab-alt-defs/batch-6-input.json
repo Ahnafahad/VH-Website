@@ -1,0 +1,656 @@
+[
+  {
+    "id": 1281,
+    "word": "Astute",
+    "pos": "adjective",
+    "current_definition": "Having the ability to understand a situation quickly and use it to one's advantage; mentally sharp in a practical way.",
+    "synonyms": [
+      "shrewd",
+      "perceptive"
+    ],
+    "antonyms": [
+      "naive"
+    ]
+  },
+  {
+    "id": 1282,
+    "word": "Cerebral",
+    "pos": "adjective",
+    "current_definition": "Relating to intellectual thought rather than emotion or physical action; requiring or showing careful mental effort.",
+    "synonyms": [
+      "intellectual",
+      "analytical"
+    ],
+    "antonyms": [
+      "instinctive"
+    ]
+  },
+  {
+    "id": 1283,
+    "word": "Dexterous",
+    "pos": "adjective",
+    "current_definition": "Skilled and nimble with the hands or, more broadly, with the mind; also spelled dextrous (both forms are correct and interchangeable).",
+    "synonyms": [
+      "nimble",
+      "capable"
+    ],
+    "antonyms": [
+      "clumsy"
+    ]
+  },
+  {
+    "id": 1284,
+    "word": "Erudite",
+    "pos": "adjective",
+    "current_definition": "Having or showing deep, wide-ranging knowledge gained through extensive reading and study.",
+    "synonyms": [
+      "learned",
+      "scholarly"
+    ],
+    "antonyms": [
+      "ignorant"
+    ]
+  },
+  {
+    "id": 1285,
+    "word": "Incisive",
+    "pos": "adjective",
+    "current_definition": "Intelligently clear and direct; cutting straight to the heart of a matter without unnecessary words.",
+    "synonyms": [
+      "sharp",
+      "penetrating"
+    ],
+    "antonyms": [
+      "vague"
+    ]
+  },
+  {
+    "id": 1286,
+    "word": "Proficient",
+    "pos": "adjective",
+    "current_definition": "Highly competent and skilled at something as a result of practice and experience.",
+    "synonyms": [
+      "skilled",
+      "competent"
+    ],
+    "antonyms": [
+      "incompetent"
+    ]
+  },
+  {
+    "id": 1287,
+    "word": "Callow",
+    "pos": "adjective",
+    "current_definition": "Immature and inexperienced, lacking the judgment that comes with age and real-world exposure.",
+    "synonyms": [
+      "naive",
+      "immature"
+    ],
+    "antonyms": [
+      "seasoned"
+    ]
+  },
+  {
+    "id": 1288,
+    "word": "Cursory",
+    "pos": "adjective",
+    "current_definition": "Done quickly and without proper attention to detail; hasty and therefore incomplete or unreliable.",
+    "synonyms": [
+      "hasty",
+      "careless"
+    ],
+    "antonyms": [
+      "thorough"
+    ]
+  },
+  {
+    "id": 1289,
+    "word": "Dilettante",
+    "pos": "noun",
+    "current_definition": "A person who takes up an art, science, or subject as a casual interest rather than as a serious pursuit, resulting in only shallow knowledge.",
+    "synonyms": [
+      "amateur",
+      "dabbler"
+    ],
+    "antonyms": [
+      "expert"
+    ]
+  },
+  {
+    "id": 1290,
+    "word": "Facile",
+    "pos": "adjective",
+    "current_definition": "Appearing neat and clever on the surface but lacking real depth, thought, or effort; too easy to be trustworthy.",
+    "synonyms": [
+      "glib",
+      "simplistic"
+    ],
+    "antonyms": [
+      "considered"
+    ]
+  },
+  {
+    "id": 1291,
+    "word": "Gauche",
+    "pos": "adjective",
+    "current_definition": "Awkward and lacking social grace; behaving in a way that is tactless or embarrassingly unsophisticated.",
+    "synonyms": [
+      "tactless",
+      "awkward"
+    ],
+    "antonyms": [
+      "polished"
+    ]
+  },
+  {
+    "id": 1292,
+    "word": "Grandiloquent",
+    "pos": "adjective",
+    "current_definition": "Using overly elaborate, pompous language designed to impress rather than to communicate clearly.",
+    "synonyms": [
+      "pompous",
+      "bombastic"
+    ],
+    "antonyms": [
+      "plain-spoken"
+    ]
+  },
+  {
+    "id": 1293,
+    "word": "Gratuitous",
+    "pos": "adjective",
+    "current_definition": "Added without good reason; uncalled for and unnecessary, often to an offensive or excessive degree.",
+    "synonyms": [
+      "unnecessary",
+      "unwarranted"
+    ],
+    "antonyms": [
+      "justified"
+    ]
+  },
+  {
+    "id": 1294,
+    "word": "Inept",
+    "pos": "adjective",
+    "current_definition": "Lacking the skill or competence to do something; notably clumsy or incompetent.",
+    "synonyms": [
+      "incompetent",
+      "clumsy"
+    ],
+    "antonyms": [
+      "skilled"
+    ]
+  },
+  {
+    "id": 1295,
+    "word": "Pedantic",
+    "pos": "adjective",
+    "current_definition": "Overly concerned with minor rules, technical details, or formal correctness in a way that misses the broader point.",
+    "synonyms": [
+      "nitpicking",
+      "fussy"
+    ],
+    "antonyms": [
+      "flexible"
+    ]
+  },
+  {
+    "id": 1296,
+    "word": "Perfunctory",
+    "pos": "adjective",
+    "current_definition": "Carried out with minimal effort and no genuine care, as a mere formality or out of habit rather than real intent.",
+    "synonyms": [
+      "routine",
+      "mechanical"
+    ],
+    "antonyms": [
+      "attentive"
+    ]
+  },
+  {
+    "id": 1297,
+    "word": "Philistine",
+    "pos": "noun",
+    "current_definition": "A person who is indifferent or openly hostile to culture, art, and intellectual life, preferring only what is practical or commercial.",
+    "synonyms": [
+      "barbarian",
+      "boor",
+      "(adjective) uncultured",
+      "crass"
+    ],
+    "antonyms": [
+      "aesthete",
+      "(adjective) cultured"
+    ]
+  },
+  {
+    "id": 1298,
+    "word": "Superficial",
+    "pos": "adjective",
+    "current_definition": "Concerned only with what is obvious or on the surface; lacking depth of understanding, feeling, or analysis.",
+    "synonyms": [
+      "shallow",
+      "skin-deep"
+    ],
+    "antonyms": [
+      "thorough"
+    ]
+  },
+  {
+    "id": 1299,
+    "word": "Anguish",
+    "pos": "noun",
+    "current_definition": "Severe mental or emotional suffering, often caused by loss, fear, or a painful situation with no easy resolution.",
+    "synonyms": [
+      "agony",
+      "torment",
+      "distress"
+    ],
+    "antonyms": [
+      "relief",
+      "comfort"
+    ]
+  },
+  {
+    "id": 1300,
+    "word": "Apprehensive",
+    "pos": "adjective",
+    "current_definition": "Feeling worried and uneasy about something that may happen in the future; anticipating trouble or danger.",
+    "synonyms": [
+      "anxious",
+      "uneasy"
+    ],
+    "antonyms": [
+      "confident"
+    ]
+  },
+  {
+    "id": 1301,
+    "word": "Bereaved",
+    "pos": "adjective",
+    "current_definition": "In a state of deep grief following the death of a loved one; having recently suffered such a loss.",
+    "synonyms": [
+      "grieving",
+      "mournful"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": 1302,
+    "word": "Beset",
+    "pos": "verb",
+    "current_definition": "To trouble or afflict someone persistently and from all sides, leaving little room for escape or relief.",
+    "synonyms": [
+      "plague",
+      "afflict"
+    ],
+    "antonyms": [
+      "relieve"
+    ]
+  },
+  {
+    "id": 1303,
+    "word": "Daunt",
+    "pos": "verb",
+    "current_definition": "To make someone feel intimidated or discouraged, especially when facing a difficult or overwhelming challenge.",
+    "synonyms": [
+      "intimidate",
+      "discourage"
+    ],
+    "antonyms": [
+      "embolden"
+    ]
+  },
+  {
+    "id": 1304,
+    "word": "Despondent",
+    "pos": "adjective",
+    "current_definition": "Deeply unhappy and without hope; feeling that the situation will not improve and that efforts are useless.",
+    "synonyms": [
+      "dejected",
+      "hopeless"
+    ],
+    "antonyms": [
+      "hopeful"
+    ]
+  },
+  {
+    "id": 1305,
+    "word": "Lament",
+    "pos": "verb",
+    "current_definition": "To express deep sorrow, regret, or grief, especially over something that has been lost or cannot be changed.",
+    "synonyms": [
+      "mourn",
+      "grieve",
+      "elegy",
+      "dirge"
+    ],
+    "antonyms": [
+      "celebrate",
+      "celebration"
+    ]
+  },
+  {
+    "id": 1306,
+    "word": "Lugubrious",
+    "pos": "adjective",
+    "current_definition": "Mournful and gloomy in an exaggerated or theatrical way; looking or sounding sorrowful to a marked degree.",
+    "synonyms": [
+      "mournful",
+      "doleful"
+    ],
+    "antonyms": [
+      "cheerful"
+    ]
+  },
+  {
+    "id": 1307,
+    "word": "Morose",
+    "pos": "adjective",
+    "current_definition": "Sullen, gloomy, and not willing to talk or smile; withdrawn into a silent, unhappy state.",
+    "synonyms": [
+      "sullen",
+      "gloomy"
+    ],
+    "antonyms": [
+      "cheerful"
+    ]
+  },
+  {
+    "id": 1308,
+    "word": "Perturb",
+    "pos": "verb",
+    "current_definition": "To make someone feel anxious, unsettled, or mentally disturbed, usually by something unexpected or troubling.",
+    "synonyms": [
+      "unsettle",
+      "disturb"
+    ],
+    "antonyms": [
+      "reassure"
+    ]
+  },
+  {
+    "id": 1309,
+    "word": "Plaintive",
+    "pos": "adjective",
+    "current_definition": "Having a sad, mournful quality, especially in sound; expressing sorrow in a way that is gentle rather than angry.",
+    "synonyms": [
+      "mournful",
+      "sorrowful"
+    ],
+    "antonyms": [
+      "cheerful"
+    ]
+  },
+  {
+    "id": 1310,
+    "word": "Trepidation",
+    "pos": "noun",
+    "current_definition": "A feeling of fear or anxiety about something that is about to happen; a nervous uncertainty about the future.",
+    "synonyms": [
+      "dread",
+      "anxiety"
+    ],
+    "antonyms": [
+      "confidence"
+    ]
+  },
+  {
+    "id": 1311,
+    "word": "Auspicious",
+    "pos": "adjective",
+    "current_definition": "Showing signs that something good or successful is likely to happen; giving a promising start.",
+    "synonyms": [
+      "promising",
+      "favourable"
+    ],
+    "antonyms": [
+      "inauspicious"
+    ]
+  },
+  {
+    "id": 1312,
+    "word": "Blithe",
+    "pos": "adjective",
+    "current_definition": "Cheerful and carefree, showing a light and happy spirit.",
+    "synonyms": [
+      "carefree",
+      "lighthearted"
+    ],
+    "antonyms": [
+      "gloomy"
+    ]
+  },
+  {
+    "id": 1313,
+    "word": "Ebullient",
+    "pos": "adjective",
+    "current_definition": "Overflowing with enthusiasm, energy, and high spirits; very lively and cheerful.",
+    "synonyms": [
+      "exuberant",
+      "buoyant"
+    ],
+    "antonyms": [
+      "sullen"
+    ]
+  },
+  {
+    "id": 1314,
+    "word": "Exult",
+    "pos": "verb",
+    "current_definition": "To feel or show great joy and triumph, especially after a success or victory.",
+    "synonyms": [
+      "rejoice",
+      "revel"
+    ],
+    "antonyms": [
+      "mourn"
+    ]
+  },
+  {
+    "id": 1315,
+    "word": "Felicity",
+    "pos": "noun",
+    "current_definition": "A state of deep happiness and contentment.",
+    "synonyms": [
+      "bliss",
+      "joy"
+    ],
+    "antonyms": [
+      "misery"
+    ]
+  },
+  {
+    "id": 1316,
+    "word": "Heyday",
+    "pos": "noun",
+    "current_definition": "The period in a person's life or an era when they were most successful, popular, or powerful.",
+    "synonyms": [
+      "prime",
+      "peak"
+    ],
+    "antonyms": [
+      "decline"
+    ]
+  },
+  {
+    "id": 1317,
+    "word": "Levity",
+    "pos": "noun",
+    "current_definition": "A light, humorous attitude toward something; the quality of treating serious matters with fun or playfulness.",
+    "synonyms": [
+      "humour",
+      "lightness"
+    ],
+    "antonyms": [
+      "solemnity"
+    ]
+  },
+  {
+    "id": 1318,
+    "word": "Propitious",
+    "pos": "adjective",
+    "current_definition": "Giving a good chance of success; favourable to a particular outcome or event.",
+    "synonyms": [
+      "favourable",
+      "opportune"
+    ],
+    "antonyms": [
+      "unfavourable"
+    ]
+  },
+  {
+    "id": 1320,
+    "word": "Serendipity",
+    "pos": "noun",
+    "current_definition": "The experience of finding something good or valuable by chance, without having looked for it.",
+    "synonyms": [
+      "chance",
+      "fortune"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": 1321,
+    "word": "Abhor",
+    "pos": "verb",
+    "current_definition": "To feel a very strong hatred or disgust toward something, finding it deeply offensive or wrong.",
+    "synonyms": [
+      "detest",
+      "loathe"
+    ],
+    "antonyms": [
+      "adore"
+    ]
+  },
+  {
+    "id": 1322,
+    "word": "Acrid",
+    "pos": "adjective",
+    "current_definition": "Having a sharp, bitter, and unpleasant smell or taste that irritates the senses.",
+    "synonyms": [
+      "caustic",
+      "bitter"
+    ],
+    "antonyms": [
+      "pleasant"
+    ]
+  },
+  {
+    "id": 1323,
+    "word": "Animosity",
+    "pos": "noun",
+    "current_definition": "A strong feeling of hostility or active dislike directed at another person or group.",
+    "synonyms": [
+      "hostility",
+      "enmity"
+    ],
+    "antonyms": [
+      "goodwill"
+    ]
+  },
+  {
+    "id": 1324,
+    "word": "Beleaguer",
+    "pos": "verb",
+    "current_definition": "To cause persistent trouble, worry, or difficulty for someone; to put someone under constant pressure or attack.",
+    "synonyms": [
+      "harass",
+      "besiege"
+    ],
+    "antonyms": [
+      "support"
+    ]
+  },
+  {
+    "id": 1325,
+    "word": "Belligerent",
+    "pos": "adjective",
+    "current_definition": "Eager or quick to argue, fight, or show aggression; openly hostile in manner or attitude.",
+    "synonyms": [
+      "aggressive",
+      "combative"
+    ],
+    "antonyms": [
+      "peaceful"
+    ]
+  },
+  {
+    "id": 1326,
+    "word": "Insolent",
+    "pos": "adjective",
+    "current_definition": "Showing a rude lack of respect, especially toward someone in authority; boldly disrespectful.",
+    "synonyms": [
+      "impudent",
+      "impertinent"
+    ],
+    "antonyms": [
+      "respectful"
+    ]
+  },
+  {
+    "id": 1327,
+    "word": "Rancour",
+    "pos": "noun",
+    "current_definition": "Deep, lasting bitterness or ill will, especially from a past injury or injustice that has not been forgiven.",
+    "synonyms": [
+      "bitterness",
+      "malice"
+    ],
+    "antonyms": [
+      "goodwill"
+    ]
+  },
+  {
+    "id": 1328,
+    "word": "Reprisal",
+    "pos": "noun",
+    "current_definition": "An act of harm or punishment carried out in retaliation for something done by another person or group.",
+    "synonyms": [
+      "retaliation",
+      "revenge"
+    ],
+    "antonyms": [
+      "forgiveness"
+    ]
+  },
+  {
+    "id": 1329,
+    "word": "Strife",
+    "pos": "noun",
+    "current_definition": "Angry or violent conflict between people or groups; a state of ongoing disagreement and struggle.",
+    "synonyms": [
+      "conflict",
+      "discord"
+    ],
+    "antonyms": [
+      "harmony"
+    ]
+  },
+  {
+    "id": 1330,
+    "word": "Apathy",
+    "pos": "noun",
+    "current_definition": "A complete lack of interest, feeling, or motivation; the state of not caring about things that normally matter.",
+    "synonyms": [
+      "indifference",
+      "listlessness"
+    ],
+    "antonyms": [
+      "enthusiasm"
+    ]
+  },
+  {
+    "id": 1331,
+    "word": "Complacent",
+    "pos": "adjective",
+    "current_definition": "Feeling so satisfied with one's current situation that one stops trying to improve or stays unaware of possible problems.",
+    "synonyms": [
+      "self-satisfied",
+      "smug"
+    ],
+    "antonyms": [
+      "vigilant"
+    ]
+  }
+]

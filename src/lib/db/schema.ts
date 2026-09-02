@@ -346,6 +346,20 @@ export const vocabWords = sqliteTable('vocab_words', {
   index('idx_vocab_words_theme_id').on(t.themeId),
 ]);
 
+// Alternate (Vocabulary.com-style) definition per word, generated separately.
+// Does NOT replace vocab_words.definition — additive only, not read anywhere yet.
+export const vocabWordAltDefinitions = sqliteTable('vocab_word_alt_definitions', {
+  id:                  integer('id').primaryKey({ autoIncrement: true }),
+  wordId:              integer('word_id').notNull().unique().references(() => vocabWords.id, { onDelete: 'cascade' }),
+  altDefinition:       text('alt_definition').notNull(),
+  // General semantic valence, distinct from vocab_words.connotation (which is
+  // curated for the Word Charge game and uses pos/neg/inapplicable).
+  generalConnotation:  text('general_connotation').notNull(), // 'positive' | 'negative' | 'neutral'
+  status:              text('status').notNull().default('draft'), // 'draft' | 'approved'
+  createdAt:           integer('created_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
+  updatedAt:           integer('updated_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
+});
+
 // ─── User Progress ────────────────────────────────────────────────────────────
 // One row per user — overall stats, streak, points, deadline, phase.
 

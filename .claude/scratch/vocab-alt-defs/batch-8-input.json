@@ -1,0 +1,659 @@
+[
+  {
+    "id": 1384,
+    "word": "Corollary",
+    "pos": "noun",
+    "current_definition": "A conclusion or result that follows naturally and directly from something already proved or established, requiring little additional argument.",
+    "synonyms": [
+      "consequence",
+      "implication"
+    ],
+    "antonyms": [
+      "antecedent"
+    ]
+  },
+  {
+    "id": 1385,
+    "word": "Corroborate",
+    "pos": "verb",
+    "current_definition": "To confirm or support a claim, theory, or finding with independent evidence that points to the same conclusion.",
+    "synonyms": [
+      "confirm",
+      "substantiate"
+    ],
+    "antonyms": [
+      "contradict"
+    ]
+  },
+  {
+    "id": 1386,
+    "word": "Deduce",
+    "pos": "verb",
+    "current_definition": "To reach a specific conclusion by applying general principles or established facts in a logical, step-by-step way.",
+    "synonyms": [
+      "reason",
+      "conclude"
+    ],
+    "antonyms": [
+      "assume"
+    ]
+  },
+  {
+    "id": 1387,
+    "word": "Empirical",
+    "pos": "adjective",
+    "current_definition": "Based on direct observation, experiment, or measured data rather than on theory, tradition, or assumption alone.",
+    "synonyms": [
+      "observational",
+      "data-driven"
+    ],
+    "antonyms": [
+      "theoretical"
+    ]
+  },
+  {
+    "id": 1388,
+    "word": "Extrapolate",
+    "pos": "verb",
+    "current_definition": "To extend known data or a trend beyond the observed range in order to estimate what is likely to hold in new or future cases.",
+    "synonyms": [
+      "project",
+      "extend"
+    ],
+    "antonyms": [
+      "interpolate"
+    ]
+  },
+  {
+    "id": 1389,
+    "word": "Hypothetical",
+    "pos": "adjective",
+    "current_definition": "Involving a situation or scenario that is imagined rather than real, used as a basis for reasoning or testing an argument.",
+    "synonyms": [
+      "theoretical",
+      "speculative"
+    ],
+    "antonyms": [
+      "actual"
+    ]
+  },
+  {
+    "id": 1390,
+    "word": "Infer",
+    "pos": "verb",
+    "current_definition": "To draw a probable conclusion from specific evidence or observations, without that conclusion being directly stated or proved.",
+    "synonyms": [
+      "conclude",
+      "gather"
+    ],
+    "antonyms": [
+      "state"
+    ]
+  },
+  {
+    "id": 1391,
+    "word": "Postulate",
+    "pos": "verb",
+    "current_definition": "To put forward a claim or assumption as a starting point for reasoning or further investigation, without yet proving it.",
+    "synonyms": [
+      "propose",
+      "hypothesise"
+    ],
+    "antonyms": [
+      "prove"
+    ]
+  },
+  {
+    "id": 1392,
+    "word": "Premise",
+    "pos": "noun",
+    "current_definition": "A statement or assumption that is accepted as a starting point from which a conclusion is then drawn through reasoning.",
+    "synonyms": [
+      "assumption",
+      "basis"
+    ],
+    "antonyms": [
+      "conclusion"
+    ]
+  },
+  {
+    "id": 1393,
+    "word": "Synthesis",
+    "pos": "noun",
+    "current_definition": "The combination of separate ideas, findings, or elements into a single coherent whole that is more complete than any individual part.",
+    "synonyms": [
+      "integration",
+      "combination"
+    ],
+    "antonyms": [
+      "analysis"
+    ]
+  },
+  {
+    "id": 1395,
+    "word": "Fatuous",
+    "pos": "adjective",
+    "current_definition": "Smugly or pointlessly foolish; showing a lack of intelligence or good judgment in a way that the speaker seems unaware of.",
+    "synonyms": [
+      "foolish",
+      "vacuous"
+    ],
+    "antonyms": [
+      "astute"
+    ]
+  },
+  {
+    "id": 1396,
+    "word": "Inane",
+    "pos": "adjective",
+    "current_definition": "Lacking any sense, significance, or intelligent content; completely empty of meaning or value.",
+    "synonyms": [
+      "vapid",
+      "senseless"
+    ],
+    "antonyms": [
+      "meaningful"
+    ]
+  },
+  {
+    "id": 1397,
+    "word": "Incongruous",
+    "pos": "adjective",
+    "current_definition": "Out of place or inconsistent with the surrounding context; not fitting together in a natural or logical way.",
+    "synonyms": [
+      "inconsistent",
+      "jarring"
+    ],
+    "antonyms": [
+      "fitting"
+    ]
+  },
+  {
+    "id": 1398,
+    "word": "Nebulous",
+    "pos": "adjective",
+    "current_definition": "So vague, unclear, or loosely formed that it is difficult to grasp or pin down; lacking definite shape or content.",
+    "synonyms": [
+      "vague",
+      "hazy"
+    ],
+    "antonyms": [
+      "precise"
+    ]
+  },
+  {
+    "id": 1399,
+    "word": "Obtuse",
+    "pos": "adjective",
+    "current_definition": "Annoyingly slow to understand; lacking sharpness of intellect.",
+    "synonyms": [
+      "dense",
+      "dull"
+    ],
+    "antonyms": [
+      "sharp"
+    ]
+  },
+  {
+    "id": 1400,
+    "word": "Redundant",
+    "pos": "adjective",
+    "current_definition": "Repeating information that has already been clearly stated, adding nothing new.",
+    "synonyms": [
+      "repetitive",
+      "superfluous"
+    ],
+    "antonyms": [
+      "essential"
+    ]
+  },
+  {
+    "id": 1401,
+    "word": "Tautological",
+    "pos": "adjective",
+    "current_definition": "Describing a statement that is true only because it repeats the same idea in different words, giving the appearance of reasoning without actually proving anything.",
+    "synonyms": [
+      "circular",
+      "repetitive"
+    ],
+    "antonyms": [
+      "substantive"
+    ]
+  },
+  {
+    "id": 1402,
+    "word": "Aphorism",
+    "pos": "noun",
+    "current_definition": "A short, memorable statement that expresses a general truth or clever observation about life.",
+    "synonyms": [
+      "adage",
+      "saying"
+    ],
+    "antonyms": [
+      "essay"
+    ]
+  },
+  {
+    "id": 1403,
+    "word": "Axiom",
+    "pos": "noun",
+    "current_definition": "A statement accepted as obviously true without proof, used as a starting point for further reasoning.",
+    "synonyms": [
+      "postulate",
+      "truism"
+    ],
+    "antonyms": [
+      "paradox"
+    ]
+  },
+  {
+    "id": 1404,
+    "word": "Dictum",
+    "pos": "noun",
+    "current_definition": "A formal or authoritative statement of a principle or opinion, especially one made by a judge, expert, or institution.",
+    "synonyms": [
+      "decree",
+      "pronouncement"
+    ],
+    "antonyms": [
+      "suggestion"
+    ]
+  },
+  {
+    "id": 1405,
+    "word": "Exemplify",
+    "pos": "verb",
+    "current_definition": "To be a perfect or typical example of something; to illustrate a concept by providing a clear example.",
+    "synonyms": [
+      "embody",
+      "illustrate"
+    ],
+    "antonyms": [
+      "contradict"
+    ]
+  },
+  {
+    "id": 1406,
+    "word": "Maxim",
+    "pos": "noun",
+    "current_definition": "A short, widely accepted rule or piece of advice about how to behave or live well.",
+    "synonyms": [
+      "adage",
+      "rule"
+    ],
+    "antonyms": [
+      "exception"
+    ]
+  },
+  {
+    "id": 1407,
+    "word": "Mentor",
+    "pos": "noun",
+    "current_definition": "An experienced person who gives guidance, advice, and support to someone less experienced over a period of time.",
+    "synonyms": [
+      "guide",
+      "adviser",
+      "coach"
+    ],
+    "antonyms": [
+      "novice"
+    ]
+  },
+  {
+    "id": 1408,
+    "word": "Novel",
+    "pos": "adjective",
+    "current_definition": "New and original in a way that has not been seen or thought of before.",
+    "synonyms": [
+      "original",
+      "unprecedented",
+      "fiction",
+      "narrative"
+    ],
+    "antonyms": [
+      "conventional"
+    ]
+  },
+  {
+    "id": 1409,
+    "word": "Paradigm",
+    "pos": "noun",
+    "current_definition": "A typical example or model that represents a broader system of ideas, beliefs, or methods accepted by a community at a given time.",
+    "synonyms": [
+      "model",
+      "framework"
+    ],
+    "antonyms": [
+      "anomaly"
+    ]
+  },
+  {
+    "id": 1410,
+    "word": "Precept",
+    "pos": "noun",
+    "current_definition": "A general rule or principle intended to guide thought, behaviour, or moral conduct.",
+    "synonyms": [
+      "principle",
+      "guideline"
+    ],
+    "antonyms": [
+      "impulse"
+    ]
+  },
+  {
+    "id": 1411,
+    "word": "Salient",
+    "pos": "adjective",
+    "current_definition": "Most noticeable, important, or relevant among the features of something; standing out clearly.",
+    "synonyms": [
+      "prominent",
+      "striking"
+    ],
+    "antonyms": [
+      "peripheral"
+    ]
+  },
+  {
+    "id": 1412,
+    "word": "Touchstone",
+    "pos": "noun",
+    "current_definition": "A reliable standard or test by which the quality, value, or truth of something is judged.",
+    "synonyms": [
+      "benchmark",
+      "criterion"
+    ],
+    "antonyms": [
+      "irrelevance"
+    ]
+  },
+  {
+    "id": 1413,
+    "word": "Utopia",
+    "pos": "noun",
+    "current_definition": "An imagined place or society that is perfect in every respect, especially in its laws, politics, and social conditions.",
+    "synonyms": [
+      "paradise",
+      "ideal"
+    ],
+    "antonyms": [
+      "dystopia"
+    ]
+  },
+  {
+    "id": 1414,
+    "word": "Abstruse",
+    "pos": "adjective",
+    "current_definition": "Difficult to understand because it requires specialised knowledge or very deep thinking; not accessible to a general audience.",
+    "synonyms": [
+      "recondite",
+      "impenetrable"
+    ],
+    "antonyms": [
+      "straightforward"
+    ]
+  },
+  {
+    "id": 1415,
+    "word": "Arcane",
+    "pos": "adjective",
+    "current_definition": "Known or understood by very few people; requiring secret or specialised knowledge that has not been widely shared.",
+    "synonyms": [
+      "mysterious",
+      "little-known"
+    ],
+    "antonyms": [
+      "common"
+    ]
+  },
+  {
+    "id": 1416,
+    "word": "Cryptic",
+    "pos": "adjective",
+    "current_definition": "Having a hidden or puzzling meaning that is difficult to interpret; deliberately brief and unclear.",
+    "synonyms": [
+      "puzzling",
+      "mysterious"
+    ],
+    "antonyms": [
+      "explicit"
+    ]
+  },
+  {
+    "id": 1417,
+    "word": "Enigma",
+    "pos": "noun",
+    "current_definition": "A person, thing, or situation that is deeply puzzling and very difficult to understand or explain.",
+    "synonyms": [
+      "mystery",
+      "puzzle"
+    ],
+    "antonyms": [
+      "certainty"
+    ]
+  },
+  {
+    "id": 1418,
+    "word": "Esoteric",
+    "pos": "adjective",
+    "current_definition": "Intended for or understood by only a small group of people with specialised knowledge or interest; not for general audiences.",
+    "synonyms": [
+      "recondite",
+      "specialised"
+    ],
+    "antonyms": [
+      "popular"
+    ]
+  },
+  {
+    "id": 1419,
+    "word": "Impervious",
+    "pos": "adjective",
+    "current_definition": "Not allowing liquid, light, or another substance to pass through; physically sealed against penetration.",
+    "synonyms": [
+      "resistant",
+      "unaffected"
+    ],
+    "antonyms": [
+      "vulnerable"
+    ]
+  },
+  {
+    "id": 1420,
+    "word": "Latent",
+    "pos": "adjective",
+    "current_definition": "Present but not yet visible, active, or developed; existing in a hidden or dormant state.",
+    "synonyms": [
+      "dormant",
+      "hidden"
+    ],
+    "antonyms": [
+      "apparent"
+    ]
+  },
+  {
+    "id": 1421,
+    "word": "Obscure",
+    "pos": "adjective",
+    "current_definition": "Not known to many people; difficult to find or little discussed, especially because it has been neglected or forgotten.",
+    "synonyms": [
+      "unknown",
+      "forgotten",
+      "conceal",
+      "cloud"
+    ],
+    "antonyms": [
+      "celebrated",
+      "reveal"
+    ]
+  },
+  {
+    "id": 1422,
+    "word": "Opaque",
+    "pos": "adjective",
+    "current_definition": "Not allowing light to pass through; not transparent or clear as a physical material.",
+    "synonyms": [
+      "unclear",
+      "impenetrable"
+    ],
+    "antonyms": [
+      "transparent"
+    ]
+  },
+  {
+    "id": 1423,
+    "word": "Chronicle",
+    "pos": "noun",
+    "current_definition": "A detailed written record of events arranged in the order in which they happened.",
+    "synonyms": [
+      "account",
+      "record",
+      "document"
+    ],
+    "antonyms": [
+      "omit"
+    ]
+  },
+  {
+    "id": 1424,
+    "word": "Cognitive",
+    "pos": "adjective",
+    "current_definition": "Relating to the mental processes involved in gaining knowledge, such as thinking, remembering, reasoning, and understanding.",
+    "synonyms": [
+      "mental",
+      "intellectual"
+    ],
+    "antonyms": [
+      "physical"
+    ]
+  },
+  {
+    "id": 1425,
+    "word": "Cognizant",
+    "pos": "adjective",
+    "current_definition": "Fully aware of and attentive to a fact or situation, especially one that requires careful consideration.",
+    "synonyms": [
+      "aware",
+      "conscious"
+    ],
+    "antonyms": [
+      "oblivious"
+    ]
+  },
+  {
+    "id": 1426,
+    "word": "Compendium",
+    "pos": "noun",
+    "current_definition": "A thorough but concise collection of information on a subject, often drawn from many sources and arranged for easy reference.",
+    "synonyms": [
+      "digest",
+      "anthology"
+    ],
+    "antonyms": [
+      "fragment"
+    ]
+  },
+  {
+    "id": 1427,
+    "word": "Comprehensive",
+    "pos": "adjective",
+    "current_definition": "Covering all or nearly all aspects of a subject; thorough enough that little or nothing important is left out.",
+    "synonyms": [
+      "thorough",
+      "complete"
+    ],
+    "antonyms": [
+      "partial"
+    ]
+  },
+  {
+    "id": 1428,
+    "word": "Exhaustive",
+    "pos": "adjective",
+    "current_definition": "Examining every possibility, element, or case with great thoroughness; leaving nothing out.",
+    "synonyms": [
+      "thorough",
+      "complete"
+    ],
+    "antonyms": [
+      "superficial"
+    ]
+  },
+  {
+    "id": 1429,
+    "word": "Matriculate",
+    "pos": "verb",
+    "current_definition": "To be formally enrolled as a student at a university or college, marking official entry into a degree programme.",
+    "synonyms": [
+      "enrol",
+      "register"
+    ],
+    "antonyms": [
+      "withdraw"
+    ]
+  },
+  {
+    "id": 1430,
+    "word": "Qualitative",
+    "pos": "adjective",
+    "current_definition": "Relating to the nature, characteristics, or qualities of something rather than to numbers or measurable quantities.",
+    "synonyms": [
+      "descriptive",
+      "interpretive"
+    ],
+    "antonyms": [
+      "quantitative"
+    ]
+  },
+  {
+    "id": 1431,
+    "word": "Recondite",
+    "pos": "adjective",
+    "current_definition": "Dealing with very specialised or little-known information that requires deep study to understand; known to very few experts.",
+    "synonyms": [
+      "abstruse",
+      "obscure"
+    ],
+    "antonyms": [
+      "accessible"
+    ]
+  },
+  {
+    "id": 1432,
+    "word": "Sensory",
+    "pos": "adjective",
+    "current_definition": "Relating to the physical senses—sight, hearing, touch, taste, and smell—and the information they deliver to the brain.",
+    "synonyms": [
+      "perceptual",
+      "physical"
+    ],
+    "antonyms": [
+      "mental"
+    ]
+  },
+  {
+    "id": 1433,
+    "word": "Sentient",
+    "pos": "adjective",
+    "current_definition": "Able to have subjective experiences and feelings; capable of perceiving and responding to one's environment in a conscious way.",
+    "synonyms": [
+      "conscious",
+      "aware"
+    ],
+    "antonyms": [
+      "insentient"
+    ]
+  },
+  {
+    "id": 1434,
+    "word": "Inherent",
+    "pos": "adjective",
+    "current_definition": "Existing as a permanent and inseparable part of something; built into its very nature rather than added from outside.",
+    "synonyms": [
+      "inborn",
+      "essential"
+    ],
+    "antonyms": [
+      "acquired"
+    ]
+  }
+]

@@ -1,0 +1,671 @@
+[
+  {
+    "id": 1332,
+    "word": "Enervate",
+    "pos": "verb",
+    "current_definition": "To drain someone of energy, strength, or vitality, leaving them feeling weak and unable to act.",
+    "synonyms": [
+      "exhaust",
+      "drain"
+    ],
+    "antonyms": [
+      "invigorate"
+    ]
+  },
+  {
+    "id": 1333,
+    "word": "Indolent",
+    "pos": "adjective",
+    "current_definition": "Habitually lazy and reluctant to make any effort; avoiding activity or work without a pressing reason.",
+    "synonyms": [
+      "lazy",
+      "idle"
+    ],
+    "antonyms": [
+      "industrious"
+    ]
+  },
+  {
+    "id": 1334,
+    "word": "Inert",
+    "pos": "adjective",
+    "current_definition": "Unable or unwilling to move or act; lacking all energy or motivation.",
+    "synonyms": [
+      "motionless",
+      "passive"
+    ],
+    "antonyms": [
+      "active"
+    ]
+  },
+  {
+    "id": 1335,
+    "word": "Languish",
+    "pos": "verb",
+    "current_definition": "To lose strength and vitality over time; to exist in a state of weakness, neglect, or inactivity without improvement.",
+    "synonyms": [
+      "stagnate",
+      "wither"
+    ],
+    "antonyms": [
+      "flourish"
+    ]
+  },
+  {
+    "id": 1336,
+    "word": "Lethargic",
+    "pos": "adjective",
+    "current_definition": "Feeling sluggish, drowsy, and unable to find the energy to act or think clearly; affected by a lack of vitality.",
+    "synonyms": [
+      "sluggish",
+      "drowsy"
+    ],
+    "antonyms": [
+      "energetic"
+    ]
+  },
+  {
+    "id": 1337,
+    "word": "Lethargy",
+    "pos": "noun",
+    "current_definition": "A state of physical or mental sluggishness and lack of energy that makes it hard to think or act normally.",
+    "synonyms": [
+      "sluggishness",
+      "torpor"
+    ],
+    "antonyms": [
+      "vitality"
+    ]
+  },
+  {
+    "id": 1338,
+    "word": "Bovine",
+    "pos": "adjective",
+    "current_definition": "Slow, dull, and showing very little thought or feeling; resembling the placid, unresponsive nature of cattle.",
+    "synonyms": [
+      "dull",
+      "stolid"
+    ],
+    "antonyms": [
+      "sharp"
+    ]
+  },
+  {
+    "id": 1339,
+    "word": "Conventional",
+    "pos": "adjective",
+    "current_definition": "Following the accepted customs, standards, or ideas of a society; not original or daring.",
+    "synonyms": [
+      "traditional",
+      "orthodox"
+    ],
+    "antonyms": [
+      "unconventional"
+    ]
+  },
+  {
+    "id": 1340,
+    "word": "Desultory",
+    "pos": "adjective",
+    "current_definition": "Done without a clear plan, purpose, or enthusiasm; jumping from one thing to another in a half-hearted way.",
+    "synonyms": [
+      "aimless",
+      "haphazard"
+    ],
+    "antonyms": [
+      "focused"
+    ]
+  },
+  {
+    "id": 1341,
+    "word": "Dormant",
+    "pos": "adjective",
+    "current_definition": "Temporarily inactive, sleeping, or not developing, but capable of becoming active again.",
+    "synonyms": [
+      "inactive",
+      "latent"
+    ],
+    "antonyms": [
+      "active"
+    ]
+  },
+  {
+    "id": 1342,
+    "word": "Malaise",
+    "pos": "noun",
+    "current_definition": "A general feeling of unease, dissatisfaction, or lack of energy that is difficult to name or explain precisely.",
+    "synonyms": [
+      "unease",
+      "listlessness"
+    ],
+    "antonyms": [
+      "vitality"
+    ]
+  },
+  {
+    "id": 1343,
+    "word": "Oblivion",
+    "pos": "noun",
+    "current_definition": "The state of being completely forgotten, especially by the public or by history.",
+    "synonyms": [
+      "obscurity",
+      "anonymity"
+    ],
+    "antonyms": [
+      "fame"
+    ]
+  },
+  {
+    "id": 1344,
+    "word": "Sloth",
+    "pos": "noun",
+    "current_definition": "Extreme laziness and unwillingness to make any effort; a persistent reluctance to work or act.",
+    "synonyms": [
+      "laziness",
+      "idleness"
+    ],
+    "antonyms": [
+      "industry"
+    ]
+  },
+  {
+    "id": 1345,
+    "word": "Soporific",
+    "pos": "adjective",
+    "current_definition": "Causing or tending to cause drowsiness or sleep; so dull that it makes a person lose concentration.",
+    "synonyms": [
+      "sleep-inducing",
+      "tedious",
+      "sedative",
+      "narcotic"
+    ],
+    "antonyms": [
+      "stimulating",
+      "stimulant"
+    ]
+  },
+  {
+    "id": 1346,
+    "word": "Static",
+    "pos": "adjective",
+    "current_definition": "Not moving, changing, or developing; remaining in the same condition over a long period.",
+    "synonyms": [
+      "stationary",
+      "stagnant",
+      "interference",
+      "noise"
+    ],
+    "antonyms": [
+      "dynamic",
+      "clarity"
+    ]
+  },
+  {
+    "id": 1347,
+    "word": "Torpor",
+    "pos": "noun",
+    "current_definition": "A state of physical or mental sluggishness; an almost total lack of activity or alertness, as though the mind has shut down.",
+    "synonyms": [
+      "sluggishness",
+      "lethargy"
+    ],
+    "antonyms": [
+      "vigor"
+    ]
+  },
+  {
+    "id": 1348,
+    "word": "Abash",
+    "pos": "verb",
+    "current_definition": "To make someone feel embarrassed, self-conscious, or ashamed, usually in front of others.",
+    "synonyms": [
+      "embarrass",
+      "discomfit"
+    ],
+    "antonyms": [
+      "embolden"
+    ]
+  },
+  {
+    "id": 1349,
+    "word": "Belittle",
+    "pos": "verb",
+    "current_definition": "To speak of or treat someone or something as less important or valuable than they really are; to make a person feel small.",
+    "synonyms": [
+      "denigrate",
+      "demean"
+    ],
+    "antonyms": [
+      "praise"
+    ]
+  },
+  {
+    "id": 1350,
+    "word": "Bemused",
+    "pos": "adjective",
+    "current_definition": "Confused and unable to think clearly; puzzled by something that is hard to make sense of.",
+    "synonyms": [
+      "puzzled",
+      "perplexed"
+    ],
+    "antonyms": [
+      "clear-headed"
+    ]
+  },
+  {
+    "id": 1351,
+    "word": "Catharsis",
+    "pos": "noun",
+    "current_definition": "A sudden, powerful release of strong emotion—such as grief, anger, or guilt—that brings a sense of relief or renewal.",
+    "synonyms": [
+      "release",
+      "purging"
+    ],
+    "antonyms": [
+      "suppression"
+    ]
+  },
+  {
+    "id": 1352,
+    "word": "Chagrin",
+    "pos": "noun",
+    "current_definition": "A feeling of annoyance, embarrassment, or disappointment caused by failing at something or being made to look foolish.",
+    "synonyms": [
+      "embarrassment",
+      "vexation",
+      "embarrass",
+      "irritate"
+    ],
+    "antonyms": [
+      "satisfaction",
+      "please"
+    ]
+  },
+  {
+    "id": 1354,
+    "word": "Disparage",
+    "pos": "verb",
+    "current_definition": "To express the opinion that someone or something has little value or is not worthy of respect, often in an offhand or dismissive way.",
+    "synonyms": [
+      "denigrate",
+      "deprecate"
+    ],
+    "antonyms": [
+      "praise"
+    ]
+  },
+  {
+    "id": 1355,
+    "word": "Maudlin",
+    "pos": "adjective",
+    "current_definition": "Weakly and excessively sentimental, especially in a tearful or self-pitying way, often as a result of drinking too much.",
+    "synonyms": [
+      "sentimental",
+      "tearful"
+    ],
+    "antonyms": [
+      "unsentimental"
+    ]
+  },
+  {
+    "id": 1356,
+    "word": "Mortify",
+    "pos": "verb",
+    "current_definition": "To make someone feel extremely embarrassed or humiliated; to cause a deep sense of shame.",
+    "synonyms": [
+      "humiliate",
+      "shame"
+    ],
+    "antonyms": [
+      "honour"
+    ]
+  },
+  {
+    "id": 1357,
+    "word": "Nostalgia",
+    "pos": "noun",
+    "current_definition": "A sentimental longing or wistful affection for a period in the past, often one that feels happier or simpler than the present.",
+    "synonyms": [
+      "longing",
+      "wistfulness"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": 1358,
+    "word": "Pensive",
+    "pos": "adjective",
+    "current_definition": "Engaged in serious, quiet thought, often with a hint of sadness or worry underlying the reflection.",
+    "synonyms": [
+      "thoughtful",
+      "reflective"
+    ],
+    "antonyms": [
+      "carefree"
+    ]
+  },
+  {
+    "id": 1359,
+    "word": "Poignant",
+    "pos": "adjective",
+    "current_definition": "Causing a sharp feeling of sadness or regret, especially because something is beautiful, tender, or associated with loss.",
+    "synonyms": [
+      "moving",
+      "touching"
+    ],
+    "antonyms": [
+      "unemotional"
+    ]
+  },
+  {
+    "id": 1360,
+    "word": "Eccentric",
+    "pos": "adjective",
+    "current_definition": "Behaving in ways that are unusual and different from what most people consider normal, though not in a harmful way.",
+    "synonyms": [
+      "unconventional",
+      "quirky",
+      "oddity",
+      "character"
+    ],
+    "antonyms": [
+      "conventional",
+      "conformist"
+    ]
+  },
+  {
+    "id": 1361,
+    "word": "Foible",
+    "pos": "noun",
+    "current_definition": "A minor personal weakness, odd habit, or slight peculiarity in someone's character, usually regarded with tolerance rather than strong criticism.",
+    "synonyms": [
+      "quirk",
+      "idiosyncrasy"
+    ],
+    "antonyms": [
+      "virtue"
+    ]
+  },
+  {
+    "id": 1362,
+    "word": "Iconoclast",
+    "pos": "noun",
+    "current_definition": "A person who actively challenges or attacks widely accepted beliefs, customs, or institutions, often in a deliberate and public way.",
+    "synonyms": [
+      "rebel",
+      "maverick"
+    ],
+    "antonyms": [
+      "traditionalist"
+    ]
+  },
+  {
+    "id": 1363,
+    "word": "Idiosyncrasy",
+    "pos": "noun",
+    "current_definition": "A distinctive habit, mannerism, or way of thinking that belongs to one particular person and sets them apart from everyone else.",
+    "synonyms": [
+      "quirk",
+      "peculiarity"
+    ],
+    "antonyms": [
+      "norm"
+    ]
+  },
+  {
+    "id": 1364,
+    "word": "Itinerant",
+    "pos": "adjective",
+    "current_definition": "Travelling from place to place for occupational or practical reasons—as a worker, trader, or preacher might—rather than settling permanently in any one location.",
+    "synonyms": [
+      "travelling",
+      "nomadic",
+      "wanderer",
+      "nomad"
+    ],
+    "antonyms": [
+      "settled",
+      "resident"
+    ]
+  },
+  {
+    "id": 1365,
+    "word": "Maverick",
+    "pos": "noun",
+    "current_definition": "A person who thinks and acts independently and refuses to follow the rules or expectations of the group they belong to.",
+    "synonyms": [
+      "individualist",
+      "nonconformist",
+      "unconventional",
+      "independent"
+    ],
+    "antonyms": [
+      "conformist",
+      "orthodox"
+    ]
+  },
+  {
+    "id": 1366,
+    "word": "Peripatetic",
+    "pos": "adjective",
+    "current_definition": "Moving between different locations as a regular feature of one’s professional life; associated historically with Aristotle’s school of philosophy and in modern use applied especially to academics, consultants, and other professionals who work across multiple sites. Higher in register than itinerant.",
+    "synonyms": [
+      "mobile",
+      "wide-ranging"
+    ],
+    "antonyms": [
+      "settled"
+    ]
+  },
+  {
+    "id": 1367,
+    "word": "Predilection",
+    "pos": "noun",
+    "current_definition": "A strong personal preference or particular liking for something, especially one that is long-standing or deeply felt.",
+    "synonyms": [
+      "preference",
+      "penchant"
+    ],
+    "antonyms": [
+      "aversion"
+    ]
+  },
+  {
+    "id": 1368,
+    "word": "Quixotic",
+    "pos": "adjective",
+    "current_definition": "Idealistic and impractical to the point of being unrealistic; inspired by noble or romantic aims that have little chance of succeeding.",
+    "synonyms": [
+      "idealistic",
+      "impractical"
+    ],
+    "antonyms": [
+      "pragmatic"
+    ]
+  },
+  {
+    "id": 1369,
+    "word": "Rogue",
+    "pos": "noun",
+    "current_definition": "A person who behaves in a dishonest or unpredictable way, outside the rules others follow; also used affectionately for a mischievous but likeable person.",
+    "synonyms": [
+      "scoundrel",
+      "reprobate",
+      "errant",
+      "wayward"
+    ],
+    "antonyms": [
+      "conformist",
+      "compliant"
+    ]
+  },
+  {
+    "id": 1370,
+    "word": "Singular",
+    "pos": "adjective",
+    "current_definition": "Remarkably unusual or extraordinary; standing out from everything or everyone else in a striking way.",
+    "synonyms": [
+      "remarkable",
+      "extraordinary"
+    ],
+    "antonyms": [
+      "ordinary"
+    ]
+  },
+  {
+    "id": 1371,
+    "word": "Amoral",
+    "pos": "adjective",
+    "current_definition": "Having no moral code; not concerned with whether actions are right or wrong, neither following nor rejecting ethical standards.",
+    "synonyms": [
+      "unprincipled",
+      "unethical"
+    ],
+    "antonyms": [
+      "moral"
+    ]
+  },
+  {
+    "id": 1372,
+    "word": "Amoralism",
+    "pos": "noun",
+    "current_definition": "The belief or doctrine that moral categories such as right and wrong do not apply or have no real meaning.",
+    "synonyms": [
+      "moral indifferentism",
+      "relativism"
+    ],
+    "antonyms": [
+      "moralism"
+    ]
+  },
+  {
+    "id": 1373,
+    "word": "Amorous",
+    "pos": "adjective",
+    "current_definition": "Showing or feeling romantic love or strong sexual attraction toward someone.",
+    "synonyms": [
+      "romantic",
+      "passionate"
+    ],
+    "antonyms": [
+      "indifferent"
+    ]
+  },
+  {
+    "id": 1374,
+    "word": "Cynic",
+    "pos": "noun",
+    "current_definition": "A person who believes that people are motivated entirely by self-interest and doubts that anyone acts out of genuine goodness.",
+    "synonyms": [
+      "skeptic",
+      "doubter"
+    ],
+    "antonyms": [
+      "idealist"
+    ]
+  },
+  {
+    "id": 1375,
+    "word": "Existential",
+    "pos": "adjective",
+    "current_definition": "Relating to human existence, its meaning, freedom, and the choices that define a person's life.",
+    "synonyms": [
+      "philosophical",
+      "fundamental"
+    ],
+    "antonyms": [
+      "trivial"
+    ]
+  },
+  {
+    "id": 1376,
+    "word": "Fatalist",
+    "pos": "noun",
+    "current_definition": "A person who accepts that all events are determined in advance and that human effort cannot change what will happen.",
+    "synonyms": [
+      "defeatist",
+      "determinist"
+    ],
+    "antonyms": [
+      "optimist"
+    ]
+  },
+  {
+    "id": 1377,
+    "word": "Hedonism",
+    "pos": "noun",
+    "current_definition": "The philosophy or way of life based on the idea that pleasure is the highest good and the proper goal of human action.",
+    "synonyms": [
+      "self-indulgence",
+      "pleasure-seeking"
+    ],
+    "antonyms": [
+      "asceticism"
+    ]
+  },
+  {
+    "id": 1378,
+    "word": "Infatuated",
+    "pos": "adjective",
+    "current_definition": "Filled with an intense, unreasoning passion or attraction for someone or something, often to a degree that clouds judgment.",
+    "synonyms": [
+      "besotted",
+      "smitten"
+    ],
+    "antonyms": [
+      "indifferent"
+    ]
+  },
+  {
+    "id": 1379,
+    "word": "Misanthropic",
+    "pos": "adjective",
+    "current_definition": "Reflecting a deep distrust or dislike of people in general; tending to avoid human company because of a low opinion of humanity.",
+    "synonyms": [
+      "cynical",
+      "antisocial"
+    ],
+    "antonyms": [
+      "philanthropic"
+    ]
+  },
+  {
+    "id": 1380,
+    "word": "Nihilism",
+    "pos": "noun",
+    "current_definition": "The belief that life has no meaning, that moral values have no basis, and that existence itself is without purpose or truth.",
+    "synonyms": [
+      "defeatism",
+      "pessimism"
+    ],
+    "antonyms": [
+      "idealism"
+    ]
+  },
+  {
+    "id": 1382,
+    "word": "Propensity",
+    "pos": "noun",
+    "current_definition": "A natural tendency to behave in a certain way or to be affected by a certain condition; an inborn leaning toward something.",
+    "synonyms": [
+      "tendency",
+      "predisposition"
+    ],
+    "antonyms": [
+      "aversion"
+    ]
+  },
+  {
+    "id": 1383,
+    "word": "Antithesis",
+    "pos": "noun",
+    "current_definition": "The direct opposite of something; the sharpest possible contrast between two things.",
+    "synonyms": [
+      "opposite",
+      "contrast"
+    ],
+    "antonyms": [
+      "complement"
+    ]
+  }
+]

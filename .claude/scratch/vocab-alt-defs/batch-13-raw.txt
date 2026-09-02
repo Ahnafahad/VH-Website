@@ -1,0 +1,50 @@
+delayed harmful consequence,negative,1638
+produce many new things,neutral,1639
+catastrophic final destruction,negative,1641
+gradual breaking apart,neutral,1642
+naturally very short-lived,neutral,1643
+temporary pause in activity,neutral,1644
+just beginning to develop,neutral,1645
+easily shaped or influenced,neutral,1646
+complete dramatic transformation,neutral,1647
+decisive to what follows,neutral,1648
+sudden and extremely steep,neutral,1649
+occasional and irregular,neutral,1650
+briefly present before passing,neutral,1651
+harmful or unfavorable,negative,1652
+requiring prolonged great effort,negative,1653
+gradual loss through pressure,negative,1654
+make severely weak,negative,1655
+gradually or subtly harmful,negative,1656
+gradually intrude beyond rightful bounds,negative,1657
+urgent need requiring action,negative,1658
+free from entanglement or danger,positive,1659
+restraint on freedom or progress,negative,1660
+complex confusing maze,negative,1661
+demanding beyond reason,negative,1662
+strict with little flexibility,negative,1663
+unrestrained outpouring,neutral,1664
+delicately light and otherworldly,positive,1665
+quickly fading from existence,neutral,1666
+glowing intensely from heat,neutral,1667
+giving off bright light,positive,1669
+deeply insightful,positive,1670
+emit tiny flashes of light,positive,1671
+meaningful and genuinely important,positive,1672
+able to withstand criticism,positive,1673
+rise beyond normal limits,positive,1674
+long-lasting or repeatedly recurring,negative,1675
+present from birth,neutral,1676
+destroy a large proportion,negative,1677
+dry out completely,negative,1678
+swell outward from internal pressure,negative,1679
+complete lack of power,negative,1680
+unable to act effectively,negative,1681
+cancerous and spreading,negative,1682
+fake illness to avoid duty,negative,1683
+at the point of death,negative,1684
+ease symptoms without curing,positive,1685
+study of disease processes,neutral,1686
+whole formed from separate parts,neutral,1687
+off course or wrong,negative,1688
+cleverly bypass by indirect means,neutral,1689

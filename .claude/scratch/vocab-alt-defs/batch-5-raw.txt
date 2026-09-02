@@ -1,0 +1,50 @@
+charm at first sight,positive,1231
+constantly whiny and complaining,negative,1232
+mocking and cruelly humorous,negative,1233
+arrogantly superior and dismissive,negative,1234
+reckless or disrespectful boldness,negative,1235
+eager and cheerful readiness,positive,1236
+deeply passionate and devoted,positive,1237
+suddenly and unpredictably changeable,negative,1238
+easily and quickly angered,negative,1239
+intense passion and enthusiasm,positive,1240
+wildly fast and uncontrolled,negative,1241
+acting rashly without thought,negative,1242
+easily angered and irritable,negative,1243
+rapidly and unpredictably changeable,negative,1244
+childishly sulky and irritable,negative,1245
+emotionally distant and unfriendly,negative,1246
+strong lasting dislike,negative,1247
+shy and lacking confidence,negative,1248
+calmness under pressure,positive,1249
+uninterested and unconcerned,negative,1250
+stubbornly refusing to change,negative,1251
+deliberately avoiding other people,neutral,1252
+unwilling to speak openly,neutral,1253
+enduring hardship without complaint,positive,1254
+understood without being spoken,neutral,1255
+habitually speaking very little,neutral,1256
+friendly and approachable,positive,1257
+kind and pleasant,positive,1258
+careful and persistently hardworking,positive,1259
+kind and gently supportive,positive,1260
+natural power to charm,positive,1261
+pleasant and well suited,positive,1262
+supremely skilled and accomplished,positive,1263
+lively friendly and sociable,positive,1264
+strive to match someone admired,positive,1265
+warmly loyal and brotherly,positive,1266
+outgoing and highly sociable,positive,1267
+polished and socially confident,positive,1268
+natural attraction or connection,positive,1269
+adopt a group's culture,neutral,1270
+gather together in one place,neutral,1271
+worldly and culturally diverse,positive,1272
+leave home country to settle abroad,neutral,1273
+person living outside home country,neutral,1274
+outgoing socially energized person,neutral,1275
+enter another country to settle,neutral,1276
+sharp practical judgment,positive,1277
+quick to notice and understand,positive,1278
+clever and skillful,positive,1279
+natural ability to learn,positive,1280

@@ -1,0 +1,662 @@
+[
+  {
+    "id": 1690,
+    "word": "Expedient",
+    "pos": "adjective",
+    "current_definition": "Useful or effective for a particular immediate purpose, but often chosen for convenience or self-interest rather than for principled reasons.",
+    "synonyms": [
+      "convenient",
+      "practical"
+    ],
+    "antonyms": [
+      "principled"
+    ]
+  },
+  {
+    "id": 1691,
+    "word": "Expedite",
+    "pos": "verb",
+    "current_definition": "To make a process or task happen more quickly than it would under normal conditions; to speed it up.",
+    "synonyms": [
+      "accelerate",
+      "hasten"
+    ],
+    "antonyms": [
+      "delay"
+    ]
+  },
+  {
+    "id": 1692,
+    "word": "Founder",
+    "pos": "verb",
+    "current_definition": "(Of a plan, effort, or organisation) to fail completely, especially after a promising start.",
+    "synonyms": [
+      "fail",
+      "collapse"
+    ],
+    "antonyms": [
+      "succeed"
+    ]
+  },
+  {
+    "id": 1693,
+    "word": "Implement",
+    "pos": "verb",
+    "current_definition": "To put a plan, policy, or decision into practical effect; to actually carry it out.",
+    "synonyms": [
+      "execute",
+      "apply",
+      "tool",
+      "instrument"
+    ],
+    "antonyms": [
+      "abandon"
+    ]
+  },
+  {
+    "id": 1694,
+    "word": "Panacea",
+    "pos": "noun",
+    "current_definition": "A supposed remedy or solution claimed to fix all problems at once; a cure-all that rarely delivers in practice.",
+    "synonyms": [
+      "cure-all",
+      "fix-all"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": 1695,
+    "word": "Pragmatic",
+    "pos": "adjective",
+    "current_definition": "Focused on practical results and what actually works in the real world, rather than on theory, ideology, or rigid principles.",
+    "synonyms": [
+      "practical",
+      "realistic"
+    ],
+    "antonyms": [
+      "idealistic"
+    ]
+  },
+  {
+    "id": 1696,
+    "word": "Recant",
+    "pos": "verb",
+    "current_definition": "To formally and publicly take back a belief, statement, or accusation that one previously held or made, often under pressure or in light of new evidence.",
+    "synonyms": [
+      "retract",
+      "withdraw"
+    ],
+    "antonyms": [
+      "maintain"
+    ]
+  },
+  {
+    "id": 1697,
+    "word": "Renounce",
+    "pos": "verb",
+    "current_definition": "To formally give up a right, title, claim, or privilege, usually in a public and permanent way.",
+    "synonyms": [
+      "relinquish",
+      "abandon"
+    ],
+    "antonyms": [
+      "uphold"
+    ]
+  },
+  {
+    "id": 1698,
+    "word": "Utilitarian",
+    "pos": "adjective",
+    "current_definition": "Designed to be useful and practical rather than beautiful or decorative; concerned with producing the most benefit for the greatest number of people.",
+    "synonyms": [
+      "functional",
+      "practical",
+      "pragmatist"
+    ],
+    "antonyms": [
+      "ornamental"
+    ]
+  },
+  {
+    "id": 1699,
+    "word": "Renaissance",
+    "pos": "noun",
+    "current_definition": "The period of European history from the 14th to the 16th century, marked by a great flowering of art, science, and learning.",
+    "synonyms": [
+      "rebirth",
+      "awakening",
+      "revival",
+      "resurgence"
+    ],
+    "antonyms": [
+      "decline"
+    ]
+  },
+  {
+    "id": 1700,
+    "word": "Aberration",
+    "pos": "noun",
+    "current_definition": "A departure from what is normal or expected, especially one that is unwanted or suggests something has gone wrong.",
+    "synonyms": [
+      "deviation",
+      "anomaly"
+    ],
+    "antonyms": [
+      "norm"
+    ]
+  },
+  {
+    "id": 1702,
+    "word": "Archetype",
+    "pos": "noun",
+    "current_definition": "The most perfect or typical example of a kind of person or thing; an original model that others seem to copy.",
+    "synonyms": [
+      "prototype",
+      "exemplar"
+    ],
+    "antonyms": [
+      "oddity"
+    ]
+  },
+  {
+    "id": 1703,
+    "word": "Disparate",
+    "pos": "adjective",
+    "current_definition": "Made up of parts or elements that are so different from one another that they seem to have nothing in common.",
+    "synonyms": [
+      "divergent",
+      "heterogeneous"
+    ],
+    "antonyms": [
+      "uniform"
+    ]
+  },
+  {
+    "id": 1704,
+    "word": "Eclectic",
+    "pos": "adjective",
+    "current_definition": "Drawing from a wide variety of sources, styles, or ideas rather than following a single approach.",
+    "synonyms": [
+      "wide-ranging",
+      "diverse"
+    ],
+    "antonyms": [
+      "narrow"
+    ]
+  },
+  {
+    "id": 1706,
+    "word": "Gravity",
+    "pos": "noun",
+    "current_definition": "The natural force that pulls objects toward one another, keeping planets in orbit and feet on the ground.",
+    "synonyms": [
+      "gravitation",
+      "seriousness",
+      "weight"
+    ],
+    "antonyms": [
+      "levity"
+    ]
+  },
+  {
+    "id": 1707,
+    "word": "Microcosm",
+    "pos": "noun",
+    "current_definition": "A small place, group, or system that contains, in miniature, all the features and complexities of something much larger.",
+    "synonyms": [
+      "miniature",
+      "model"
+    ],
+    "antonyms": [
+      "macrocosm"
+    ]
+  },
+  {
+    "id": 1708,
+    "word": "Prodigy",
+    "pos": "noun",
+    "current_definition": "A young person who has an extraordinary natural talent that far exceeds what is normal for their age.",
+    "synonyms": [
+      "genius",
+      "virtuoso"
+    ],
+    "antonyms": [
+      "mediocrity"
+    ]
+  },
+  {
+    "id": 1709,
+    "word": "Circumscribe",
+    "pos": "verb",
+    "current_definition": "To restrict or limit the range, freedom, or power of something or someone.",
+    "synonyms": [
+      "restrict",
+      "confine"
+    ],
+    "antonyms": [
+      "expand"
+    ]
+  },
+  {
+    "id": 1710,
+    "word": "Commensurate",
+    "pos": "adjective",
+    "current_definition": "Matching in size, degree, or importance; in proportion to something else.",
+    "synonyms": [
+      "proportionate",
+      "equivalent"
+    ],
+    "antonyms": [
+      "disproportionate"
+    ]
+  },
+  {
+    "id": 1711,
+    "word": "Contiguous",
+    "pos": "adjective",
+    "current_definition": "Sharing a border or touching at the edge; directly next to or connected with something.",
+    "synonyms": [
+      "adjacent",
+      "bordering"
+    ],
+    "antonyms": [
+      "separate"
+    ]
+  },
+  {
+    "id": 1712,
+    "word": "Delineate",
+    "pos": "verb",
+    "current_definition": "To describe, mark out, or explain something precisely and in clear detail.",
+    "synonyms": [
+      "define",
+      "specify"
+    ],
+    "antonyms": [
+      "blur"
+    ]
+  },
+  {
+    "id": 1713,
+    "word": "Discrete",
+    "pos": "adjective",
+    "current_definition": "Individually separate and distinct; existing as a clearly defined unit rather than blending into a whole.",
+    "synonyms": [
+      "separate",
+      "distinct"
+    ],
+    "antonyms": [
+      "continuous"
+    ]
+  },
+  {
+    "id": 1714,
+    "word": "Homogeneous",
+    "pos": "adjective",
+    "current_definition": "Made up of parts or members that are all of the same kind or very similar to one another.",
+    "synonyms": [
+      "consistent",
+      "standardised"
+    ],
+    "antonyms": [
+      "heterogeneous"
+    ]
+  },
+  {
+    "id": 1715,
+    "word": "Periphery",
+    "pos": "noun",
+    "current_definition": "The outer edge or boundary of an area, group, or subject; the part furthest from the centre.",
+    "synonyms": [
+      "edge",
+      "margin"
+    ],
+    "antonyms": [
+      "centre"
+    ]
+  },
+  {
+    "id": 1716,
+    "word": "Preclude",
+    "pos": "verb",
+    "current_definition": "To prevent something from happening or to make it impossible in advance.",
+    "synonyms": [
+      "prevent",
+      "prohibit"
+    ],
+    "antonyms": [
+      "allow"
+    ]
+  },
+  {
+    "id": 1717,
+    "word": "Proximity",
+    "pos": "noun",
+    "current_definition": "The state of being near or close to someone or something in space, time, or relationship.",
+    "synonyms": [
+      "nearness",
+      "closeness"
+    ],
+    "antonyms": [
+      "distance"
+    ]
+  },
+  {
+    "id": 1718,
+    "word": "Sequester",
+    "pos": "verb",
+    "current_definition": "To isolate or set apart a person, group, or thing from outside contact or influence.",
+    "synonyms": [
+      "isolate",
+      "seclude"
+    ],
+    "antonyms": [
+      "integrate"
+    ]
+  },
+  {
+    "id": 1719,
+    "word": "Tantamount",
+    "pos": "adjective",
+    "current_definition": "Effectively the same as something else; equal to something in value, meaning, or effect.",
+    "synonyms": [
+      "equivalent",
+      "comparable"
+    ],
+    "antonyms": [
+      "unlike"
+    ]
+  },
+  {
+    "id": 1720,
+    "word": "Uniform",
+    "pos": "adjective",
+    "current_definition": "The same throughout; not varying in form, quality, or degree from one part or instance to another.",
+    "synonyms": [
+      "consistent",
+      "standardised"
+    ],
+    "antonyms": [
+      "variable"
+    ]
+  },
+  {
+    "id": 1721,
+    "word": "Abridge",
+    "pos": "verb",
+    "current_definition": "To shorten a piece of writing or speech by cutting parts out while keeping the essential meaning.",
+    "synonyms": [
+      "condense",
+      "shorten"
+    ],
+    "antonyms": [
+      "expand"
+    ]
+  },
+  {
+    "id": 1722,
+    "word": "Allocate",
+    "pos": "verb",
+    "current_definition": "To set aside or distribute a resource, such as money, space, or time, for a particular purpose or person.",
+    "synonyms": [
+      "assign",
+      "apportion"
+    ],
+    "antonyms": [
+      "withhold"
+    ]
+  },
+  {
+    "id": 1723,
+    "word": "Alloy",
+    "pos": "noun",
+    "current_definition": "A material made by combining two or more metals, or a metal and another element, to produce a substance with improved qualities.",
+    "synonyms": [
+      "mixture",
+      "blend",
+      "combine",
+      "mix"
+    ],
+    "antonyms": [
+      "pure element",
+      "separate"
+    ]
+  },
+  {
+    "id": 1724,
+    "word": "Infinitesimal",
+    "pos": "adjective",
+    "current_definition": "Extremely small; so tiny that it is almost impossible to measure or notice.",
+    "synonyms": [
+      "microscopic",
+      "negligible"
+    ],
+    "antonyms": [
+      "enormous"
+    ]
+  },
+  {
+    "id": 1725,
+    "word": "Integral",
+    "pos": "adjective",
+    "current_definition": "Necessary to make something complete; forming an essential part of a whole rather than being optional or additional.",
+    "synonyms": [
+      "essential",
+      "fundamental"
+    ],
+    "antonyms": [
+      "peripheral"
+    ]
+  },
+  {
+    "id": 1726,
+    "word": "Minuscule",
+    "pos": "adjective",
+    "current_definition": "Very tiny in size or amount; far smaller than what is typical or expected.",
+    "synonyms": [
+      "tiny",
+      "diminutive"
+    ],
+    "antonyms": [
+      "enormous"
+    ]
+  },
+  {
+    "id": 1727,
+    "word": "Requisite",
+    "pos": "adjective",
+    "current_definition": "Required by a particular situation or purpose; necessary as a condition before something can happen or be accepted.",
+    "synonyms": [
+      "required",
+      "necessary",
+      "requirement",
+      "necessity"
+    ],
+    "antonyms": [
+      "optional",
+      "luxury"
+    ]
+  },
+  {
+    "id": 1728,
+    "word": "Rudimentary",
+    "pos": "adjective",
+    "current_definition": "At the most basic or early stage of development; involving only the simplest skills, knowledge, or features.",
+    "synonyms": [
+      "basic",
+      "elementary"
+    ],
+    "antonyms": [
+      "advanced"
+    ]
+  },
+  {
+    "id": 1729,
+    "word": "Abortive",
+    "pos": "adjective",
+    "current_definition": "Describes an attempt or plan that fails before it is finished or before it achieves anything.",
+    "synonyms": [
+      "failed",
+      "unsuccessful"
+    ],
+    "antonyms": [
+      "successful"
+    ]
+  },
+  {
+    "id": 1730,
+    "word": "Accost",
+    "pos": "verb",
+    "current_definition": "To approach someone in a sudden, bold, or aggressive way and speak to them, often causing discomfort.",
+    "synonyms": [
+      "confront",
+      "waylay"
+    ],
+    "antonyms": [
+      "avoid"
+    ]
+  },
+  {
+    "id": 1731,
+    "word": "Contentious",
+    "pos": "adjective",
+    "current_definition": "Likely to cause disagreement or argument; also describes a person who enjoys arguing or picking fights.",
+    "synonyms": [
+      "divisive",
+      "controversial"
+    ],
+    "antonyms": [
+      "harmonious"
+    ]
+  },
+  {
+    "id": 1732,
+    "word": "Debacle",
+    "pos": "noun",
+    "current_definition": "A sudden, complete failure or disaster, often one that is embarrassing or very public.",
+    "synonyms": [
+      "fiasco",
+      "catastrophe"
+    ],
+    "antonyms": [
+      "triumph"
+    ]
+  },
+  {
+    "id": 1733,
+    "word": "Egregious",
+    "pos": "adjective",
+    "current_definition": "So bad or wrong that it stands out clearly and shocks people; much worse than ordinary mistakes.",
+    "synonyms": [
+      "flagrant",
+      "glaring"
+    ],
+    "antonyms": [
+      "minor"
+    ]
+  },
+  {
+    "id": 1734,
+    "word": "Exacerbate",
+    "pos": "verb",
+    "current_definition": "To make a bad situation or problem even worse, often when it was already serious.",
+    "synonyms": [
+      "worsen",
+      "aggravate"
+    ],
+    "antonyms": [
+      "alleviate"
+    ]
+  },
+  {
+    "id": 1735,
+    "word": "Exasperate",
+    "pos": "verb",
+    "current_definition": "To irritate or frustrate a person so much that they feel they have completely run out of patience.",
+    "synonyms": [
+      "infuriate",
+      "frustrate"
+    ],
+    "antonyms": [
+      "placate"
+    ]
+  },
+  {
+    "id": 1736,
+    "word": "Futile",
+    "pos": "adjective",
+    "current_definition": "Having no chance of success or useful result, no matter how much effort is put in.",
+    "synonyms": [
+      "pointless",
+      "useless"
+    ],
+    "antonyms": [
+      "effective"
+    ]
+  },
+  {
+    "id": 1737,
+    "word": "Hapless",
+    "pos": "adjective",
+    "current_definition": "Persistently unlucky; describes someone who seems to attract misfortune without doing anything to deserve it.",
+    "synonyms": [
+      "unfortunate",
+      "luckless"
+    ],
+    "antonyms": [
+      "fortunate"
+    ]
+  },
+  {
+    "id": 1738,
+    "word": "Ponderous",
+    "pos": "adjective",
+    "current_definition": "Moving or progressing in a very slow, heavy, and labored way; also describes speech or writing that feels unnecessarily long and dull.",
+    "synonyms": [
+      "sluggish",
+      "laborious"
+    ],
+    "antonyms": [
+      "nimble"
+    ]
+  },
+  {
+    "id": 1739,
+    "word": "Protract",
+    "pos": "verb",
+    "current_definition": "To make something last much longer than it needs to or should, often causing frustration.",
+    "synonyms": [
+      "prolong",
+      "extend"
+    ],
+    "antonyms": [
+      "shorten"
+    ]
+  },
+  {
+    "id": 1740,
+    "word": "Stymie",
+    "pos": "verb",
+    "current_definition": "To prevent someone from making progress or achieving a goal; to block or obstruct completely.",
+    "synonyms": [
+      "thwart",
+      "obstruct"
+    ],
+    "antonyms": [
+      "facilitate"
+    ]
+  },
+  {
+    "id": 1741,
+    "word": "Altruism",
+    "pos": "noun",
+    "current_definition": "The habit of caring about others and acting to help them, with no expectation of getting anything back. A truly altruistic act costs the giver something and benefits someone else entirely.",
+    "synonyms": [
+      "selflessness",
+      "generosity"
+    ],
+    "antonyms": [
+      "selfishness"
+    ]
+  }
+]

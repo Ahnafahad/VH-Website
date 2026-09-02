@@ -1,0 +1,645 @@
+[
+  {
+    "id": 1435,
+    "word": "Innate",
+    "pos": "adjective",
+    "current_definition": "Present from birth; belonging to a person's character or ability from the very beginning, not learned through experience.",
+    "synonyms": [
+      "inborn",
+      "natural"
+    ],
+    "antonyms": [
+      "learned"
+    ]
+  },
+  {
+    "id": 1436,
+    "word": "Intrinsic",
+    "pos": "adjective",
+    "current_definition": "Belonging to something as its essential, fundamental character; valuable or true in and of itself, not because of external factors.",
+    "synonyms": [
+      "fundamental",
+      "essential"
+    ],
+    "antonyms": [
+      "extrinsic"
+    ]
+  },
+  {
+    "id": 1437,
+    "word": "Introspective",
+    "pos": "adjective",
+    "current_definition": "Given to examining one's own thoughts, feelings, and motivations; turned inward rather than toward the outside world.",
+    "synonyms": [
+      "reflective",
+      "contemplative"
+    ],
+    "antonyms": [
+      "outward"
+    ]
+  },
+  {
+    "id": 1438,
+    "word": "Mundane",
+    "pos": "adjective",
+    "current_definition": "Relating to ordinary, everyday life; lacking excitement or special interest; routine and unremarkable.",
+    "synonyms": [
+      "ordinary",
+      "routine"
+    ],
+    "antonyms": [
+      "extraordinary"
+    ]
+  },
+  {
+    "id": 1439,
+    "word": "Palpable",
+    "pos": "adjective",
+    "current_definition": "So strong or obvious that it can almost be physically felt; capable of being touched or clearly perceived by the senses.",
+    "synonyms": [
+      "perceptible",
+      "noticeable"
+    ],
+    "antonyms": [
+      "imperceptible"
+    ]
+  },
+  {
+    "id": 1440,
+    "word": "Patent",
+    "pos": "adjective",
+    "current_definition": "Clearly and obviously true; plain to see without any need for explanation or argument.",
+    "synonyms": [
+      "obvious",
+      "evident"
+    ],
+    "antonyms": [
+      "hidden"
+    ]
+  },
+  {
+    "id": 1441,
+    "word": "Peruse",
+    "pos": "verb",
+    "current_definition": "To read or look over something carefully and with close attention, taking time to absorb the details.",
+    "synonyms": [
+      "examine",
+      "study"
+    ],
+    "antonyms": [
+      "skim"
+    ]
+  },
+  {
+    "id": 1442,
+    "word": "Ruminate",
+    "pos": "verb",
+    "current_definition": "To think deeply and at length about something, turning it over repeatedly in the mind.",
+    "synonyms": [
+      "ponder",
+      "deliberate"
+    ],
+    "antonyms": [
+      "dismiss"
+    ]
+  },
+  {
+    "id": 1443,
+    "word": "Scrutinize",
+    "pos": "verb",
+    "current_definition": "To examine something very closely and critically, looking for flaws, details, or hidden information.",
+    "synonyms": [
+      "examine",
+      "inspect"
+    ],
+    "antonyms": [
+      "overlook"
+    ]
+  },
+  {
+    "id": 1444,
+    "word": "Tangible",
+    "pos": "adjective",
+    "current_definition": "Real and concrete enough to be touched or clearly experienced; not abstract or imaginary.",
+    "synonyms": [
+      "concrete",
+      "real"
+    ],
+    "antonyms": [
+      "abstract"
+    ]
+  },
+  {
+    "id": 1445,
+    "word": "Absolute",
+    "pos": "adjective",
+    "current_definition": "Complete and total, with no exceptions or limitations; not relative to anything else.",
+    "synonyms": [
+      "unconditional",
+      "total"
+    ],
+    "antonyms": [
+      "relative"
+    ]
+  },
+  {
+    "id": 1446,
+    "word": "Abstract",
+    "pos": "adjective",
+    "current_definition": "Existing as a concept or idea rather than as a concrete, physical thing; dealing with general principles rather than specific examples.",
+    "synonyms": [
+      "theoretical",
+      "conceptual"
+    ],
+    "antonyms": [
+      "concrete"
+    ]
+  },
+  {
+    "id": 1447,
+    "word": "Amorphous",
+    "pos": "adjective",
+    "current_definition": "Having no clear or fixed shape, structure, or definition; vague and without definite boundaries.",
+    "synonyms": [
+      "shapeless",
+      "vague"
+    ],
+    "antonyms": [
+      "defined"
+    ]
+  },
+  {
+    "id": 1448,
+    "word": "Anachronism",
+    "pos": "noun",
+    "current_definition": "Something — a person, object, idea, or custom — that belongs to a different time period and seems out of place in the present.",
+    "synonyms": [
+      "relic",
+      "incongruity"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": 1449,
+    "word": "Categorical",
+    "pos": "adjective",
+    "current_definition": "Absolute and unconditional; stated without any exceptions, doubts, or qualifications.",
+    "synonyms": [
+      "unqualified",
+      "unequivocal"
+    ],
+    "antonyms": [
+      "qualified"
+    ]
+  },
+  {
+    "id": 1450,
+    "word": "Catholic",
+    "pos": "adjective",
+    "current_definition": "(lowercase) Including or concerning a very wide range of things; broad in scope and interests; universal in reach.",
+    "synonyms": [
+      "broad",
+      "universal"
+    ],
+    "antonyms": [
+      "narrow"
+    ]
+  },
+  {
+    "id": 1451,
+    "word": "Chimera",
+    "pos": "noun",
+    "current_definition": "An impossible or wildly unrealistic idea or hope; something that exists only in the imagination and cannot be achieved.",
+    "synonyms": [
+      "illusion",
+      "fantasy"
+    ],
+    "antonyms": [
+      "reality"
+    ]
+  },
+  {
+    "id": 1452,
+    "word": "Definitive",
+    "pos": "adjective",
+    "current_definition": "Final, authoritative, and settling a question completely; the most reliable or complete version of something.",
+    "synonyms": [
+      "conclusive",
+      "authoritative"
+    ],
+    "antonyms": [
+      "provisional"
+    ]
+  },
+  {
+    "id": 1453,
+    "word": "Dialectical",
+    "pos": "adjective",
+    "current_definition": "Relating to a method of reaching truth or understanding by weighing opposing arguments against each other; involving debate between contradictory positions.",
+    "synonyms": [
+      "argumentative",
+      "logical"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": 1454,
+    "word": "Immutable",
+    "pos": "adjective",
+    "current_definition": "Unchanging and unchangeable; remaining the same forever regardless of circumstances.",
+    "synonyms": [
+      "fixed",
+      "permanent"
+    ],
+    "antonyms": [
+      "changeable"
+    ]
+  },
+  {
+    "id": 1455,
+    "word": "Juxtapose",
+    "pos": "verb",
+    "current_definition": "To place two things side by side in order to highlight the contrast or relationship between them.",
+    "synonyms": [
+      "contrast",
+      "compare"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": 1456,
+    "word": "Paradox",
+    "pos": "noun",
+    "current_definition": "A statement or situation that seems contradictory or impossible but may in fact reveal a deeper truth.",
+    "synonyms": [
+      "contradiction",
+      "enigma"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": 1457,
+    "word": "Blasphemy",
+    "pos": "noun",
+    "current_definition": "Speech or writing that speaks about God or sacred things in a deeply disrespectful or offensive way.",
+    "synonyms": [
+      "desecration",
+      "profanity"
+    ],
+    "antonyms": [
+      "reverence"
+    ]
+  },
+  {
+    "id": 1458,
+    "word": "Conjure",
+    "pos": "verb",
+    "current_definition": "To call upon a spirit or supernatural power through a ritual or spoken words.",
+    "synonyms": [
+      "summon",
+      "invoke"
+    ],
+    "antonyms": [
+      "dismiss"
+    ]
+  },
+  {
+    "id": 1459,
+    "word": "Hermetic",
+    "pos": "adjective",
+    "current_definition": "Relating to ancient occult or mystical traditions, especially those involving alchemy or secret knowledge.",
+    "synonyms": [
+      "esoteric",
+      "occult"
+    ],
+    "antonyms": [
+      "accessible"
+    ]
+  },
+  {
+    "id": 1460,
+    "word": "Heresy",
+    "pos": "noun",
+    "current_definition": "A belief or opinion that goes against the official teachings of a religion or other established system of thought, and is therefore considered dangerous or wrong by those in authority.",
+    "synonyms": [
+      "apostasy",
+      "heterodoxy"
+    ],
+    "antonyms": [
+      "orthodoxy"
+    ]
+  },
+  {
+    "id": 1461,
+    "word": "Incantation",
+    "pos": "noun",
+    "current_definition": "A set of words spoken aloud as part of a magic ritual or religious ceremony, believed to have a special power when recited.",
+    "synonyms": [
+      "chant",
+      "invocation"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": 1462,
+    "word": "Irrevocable",
+    "pos": "adjective",
+    "current_definition": "Impossible to take back, change, or undo; final and permanent.",
+    "synonyms": [
+      "permanent",
+      "irreversible"
+    ],
+    "antonyms": [
+      "reversible"
+    ]
+  },
+  {
+    "id": 1463,
+    "word": "Profane",
+    "pos": "adjective",
+    "current_definition": "Not sacred or holy; belonging to the ordinary, worldly realm rather than the spiritual one. Can also describe language or behavior that shows disrespect for sacred things.",
+    "synonyms": [
+      "secular",
+      "irreverent",
+      "desecrate",
+      "defile"
+    ],
+    "antonyms": [
+      "sacred",
+      "consecrate"
+    ]
+  },
+  {
+    "id": 1464,
+    "word": "Profess",
+    "pos": "verb",
+    "current_definition": "To openly declare or claim a belief, feeling, or quality, especially one relating to faith.",
+    "synonyms": [
+      "declare",
+      "affirm"
+    ],
+    "antonyms": [
+      "deny"
+    ]
+  },
+  {
+    "id": 1465,
+    "word": "Proselytize",
+    "pos": "verb",
+    "current_definition": "To try to persuade others to convert to one's own religion, belief, or cause, often in a persistent or aggressive way.",
+    "synonyms": [
+      "convert",
+      "evangelize"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": 1466,
+    "word": "Sacrilege",
+    "pos": "noun",
+    "current_definition": "A physical act of treating something sacred—a holy object, place, or person—with extreme disrespect or contempt.",
+    "synonyms": [
+      "desecration",
+      "violation"
+    ],
+    "antonyms": [
+      "veneration"
+    ]
+  },
+  {
+    "id": 1467,
+    "word": "Sacrosanct",
+    "pos": "adjective",
+    "current_definition": "So holy or important that it must never be questioned, criticized, or changed; treated as completely beyond challenge.",
+    "synonyms": [
+      "inviolable",
+      "hallowed"
+    ],
+    "antonyms": [
+      "secular"
+    ]
+  },
+  {
+    "id": 1468,
+    "word": "Theology",
+    "pos": "noun",
+    "current_definition": "The study of the nature of God, religious belief, and the relationship between humanity and the divine, typically as an academic or formal discipline.",
+    "synonyms": [
+      "divinity",
+      "religious studies"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": 1469,
+    "word": "Agnostic",
+    "pos": "noun",
+    "current_definition": "(noun) A person who believes that whether a god exists is unknown and perhaps unknowable, taking neither a believing nor a disbelieving position.",
+    "synonyms": [
+      "doubter",
+      "skeptic",
+      "(adjective) undecided",
+      "noncommittal"
+    ],
+    "antonyms": [
+      "believer",
+      "(adjective) convinced"
+    ]
+  },
+  {
+    "id": 1470,
+    "word": "Atheist",
+    "pos": "noun",
+    "current_definition": "A person who does not believe in the existence of God or any gods.",
+    "synonyms": [
+      "nonbeliever",
+      "freethinker"
+    ],
+    "antonyms": [
+      "theist"
+    ]
+  },
+  {
+    "id": 1471,
+    "word": "Construe",
+    "pos": "verb",
+    "current_definition": "To interpret or understand the meaning of something in a particular way, especially a statement, action, or law.",
+    "synonyms": [
+      "interpret",
+      "read"
+    ],
+    "antonyms": [
+      "misread"
+    ]
+  },
+  {
+    "id": 1472,
+    "word": "Disseminate",
+    "pos": "verb",
+    "current_definition": "To spread information, ideas, or beliefs widely among a large number of people.",
+    "synonyms": [
+      "circulate",
+      "broadcast"
+    ],
+    "antonyms": [
+      "suppress"
+    ]
+  },
+  {
+    "id": 1473,
+    "word": "Insular",
+    "pos": "adjective",
+    "current_definition": "Narrowly focused on one's own community or way of life, and unwilling or unable to consider outside perspectives or experiences.",
+    "synonyms": [
+      "cloistered",
+      "narrow-minded"
+    ],
+    "antonyms": [
+      "open-minded"
+    ]
+  },
+  {
+    "id": 1474,
+    "word": "Myopia",
+    "pos": "noun",
+    "current_definition": "A lack of foresight or the failure to consider the long-term consequences of one's actions; short-sightedness in thinking or planning.",
+    "synonyms": [
+      "short-sightedness",
+      "narrow-mindedness"
+    ],
+    "antonyms": [
+      "foresight"
+    ]
+  },
+  {
+    "id": 1475,
+    "word": "Parochial",
+    "pos": "adjective",
+    "current_definition": "Having a very limited or narrow outlook, concerned only with local matters and uninterested in broader ideas or the wider world.",
+    "synonyms": [
+      "blinkered",
+      "narrow-minded"
+    ],
+    "antonyms": [
+      "cosmopolitan"
+    ]
+  },
+  {
+    "id": 1476,
+    "word": "Provincial",
+    "pos": "adjective",
+    "current_definition": "(adjective) Characteristic of or limited to a province or region, especially in having an unsophisticated or narrow view of the world beyond one's own locality.",
+    "synonyms": [
+      "(adjective) narrow-minded",
+      "regional",
+      "outsider",
+      "rustic"
+    ],
+    "antonyms": [
+      "(adjective) cosmopolitan",
+      "sophisticate"
+    ]
+  },
+  {
+    "id": 1477,
+    "word": "Secular",
+    "pos": "adjective",
+    "current_definition": "Not connected to or controlled by religious institutions, beliefs, or authority; belonging to the ordinary, non-sacred world.",
+    "synonyms": [
+      "nonreligious",
+      "lay"
+    ],
+    "antonyms": [
+      "sacred"
+    ]
+  },
+  {
+    "id": 1478,
+    "word": "Cacophony",
+    "pos": "noun",
+    "current_definition": "A harsh, jarring mixture of loud sounds that are unpleasant or difficult to bear.",
+    "synonyms": [
+      "din",
+      "clamour"
+    ],
+    "antonyms": [
+      "harmony"
+    ]
+  },
+  {
+    "id": 1479,
+    "word": "Cadence",
+    "pos": "noun",
+    "current_definition": "The rhythmic rise and fall of a voice, piece of writing, or piece of music, giving it a pleasing and flowing quality.",
+    "synonyms": [
+      "rhythm",
+      "lilt"
+    ],
+    "antonyms": [
+      "monotone"
+    ]
+  },
+  {
+    "id": 1480,
+    "word": "Garrulous",
+    "pos": "adjective",
+    "current_definition": "Tending to talk at great length about trivial or unimportant matters, often to the point of becoming tedious or annoying to listeners.",
+    "synonyms": [
+      "voluble",
+      "verbose"
+    ],
+    "antonyms": [
+      "taciturn"
+    ]
+  },
+  {
+    "id": 1481,
+    "word": "Gesticulate",
+    "pos": "verb",
+    "current_definition": "To use energetic or dramatic hand and arm movements while speaking, usually to emphasise or express what one is saying.",
+    "synonyms": [
+      "gesture",
+      "motion"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": 1482,
+    "word": "Histrionic",
+    "pos": "adjective",
+    "current_definition": "Excessively dramatic or theatrical in behaviour or speech; designed to attract attention through overblown emotional display rather than genuine feeling.",
+    "synonyms": [
+      "melodramatic",
+      "theatrical"
+    ],
+    "antonyms": [
+      "understated"
+    ]
+  },
+  {
+    "id": 1483,
+    "word": "Hyperbole",
+    "pos": "noun",
+    "current_definition": "A deliberate and obvious exaggeration used for emphasis or dramatic effect, not meant to be taken literally.",
+    "synonyms": [
+      "exaggeration",
+      "overstatement"
+    ],
+    "antonyms": [
+      "understatement"
+    ]
+  },
+  {
+    "id": 1484,
+    "word": "Loquacious",
+    "pos": "adjective",
+    "current_definition": "Tending to talk a great deal; very chatty or talkative, sometimes engagingly so.",
+    "synonyms": [
+      "talkative",
+      "voluble"
+    ],
+    "antonyms": [
+      "reticent"
+    ]
+  }
+]

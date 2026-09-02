@@ -1,0 +1,197 @@
+[
+  {
+    "id": 1319,
+    "word": "Sanguine",
+    "pos": "adjective",
+    "current_definition": "Optimistic, especially when facing difficulty; cheerfully confident that things will turn out well.",
+    "synonyms": [
+      "optimistic",
+      "hopeful"
+    ],
+    "antonyms": [
+      "pessimistic"
+    ]
+  },
+  {
+    "id": 1394,
+    "word": "Ambivalent",
+    "pos": "adjective",
+    "current_definition": "Having mixed or contradictory feelings about something at the same time, unable to commit to one clear position or attitude.",
+    "synonyms": [
+      "conflicted",
+      "uncertain"
+    ],
+    "antonyms": [
+      "decided"
+    ]
+  },
+  {
+    "id": 1494,
+    "word": "Laconic",
+    "pos": "adjective",
+    "current_definition": "Using very few words; brief in speech or expression, but without any sense of rudeness or coldness.",
+    "synonyms": [
+      "brief",
+      "pithy"
+    ],
+    "antonyms": [
+      "verbose"
+    ]
+  },
+  {
+    "id": 1073,
+    "word": "Recalcitrant",
+    "pos": "adjective",
+    "current_definition": "Stubbornly refusing to obey, cooperate, or change—resisting authority or instruction even when direct pressure is applied.",
+    "synonyms": [
+      "defiant",
+      "obstinate"
+    ],
+    "antonyms": [
+      "compliant"
+    ]
+  },
+  {
+    "id": 1668,
+    "word": "Ineffable",
+    "pos": "adjective",
+    "current_definition": "Too great, beautiful, or extreme to be described in words; beyond ordinary expression.",
+    "synonyms": [
+      "indescribable",
+      "unspeakable"
+    ],
+    "antonyms": [
+      "expressible"
+    ]
+  },
+  {
+    "id": 1640,
+    "word": "Abate",
+    "pos": "verb",
+    "current_definition": "To become less strong, severe, or intense; to gradually die down after reaching a peak.",
+    "synonyms": [
+      "diminish",
+      "subside"
+    ],
+    "antonyms": [
+      "intensify"
+    ]
+  },
+  {
+    "id": 1580,
+    "word": "Ameliorate",
+    "pos": "verb",
+    "current_definition": "To make a bad situation better, even if not perfect; to ease or improve conditions.",
+    "synonyms": [
+      "improve",
+      "alleviate"
+    ],
+    "antonyms": [
+      "worsen"
+    ]
+  },
+  {
+    "id": 1794,
+    "word": "Belie",
+    "pos": "verb",
+    "current_definition": "To give a false impression of something; to show that something is not what it appears to be, or to directly contradict what is claimed.",
+    "synonyms": [
+      "contradict",
+      "misrepresent"
+    ],
+    "antonyms": [
+      "reflect"
+    ]
+  },
+  {
+    "id": 1539,
+    "word": "Placate",
+    "pos": "verb",
+    "current_definition": "To stop someone from feeling angry or hostile, typically by making a practical gesture or giving a small concession.",
+    "synonyms": [
+      "pacify",
+      "soothe"
+    ],
+    "antonyms": [
+      "antagonize"
+    ]
+  },
+  {
+    "id": 1353,
+    "word": "Deride",
+    "pos": "verb",
+    "current_definition": "To laugh at or mock someone with contempt, treating them as stupid or not worth taking seriously.",
+    "synonyms": [
+      "mock",
+      "ridicule"
+    ],
+    "antonyms": [
+      "respect"
+    ]
+  },
+  {
+    "id": 1784,
+    "word": "Candor",
+    "pos": "noun",
+    "current_definition": "The quality of being completely honest and open in what you say, even when the truth is uncomfortable or unwelcome.",
+    "synonyms": [
+      "frankness",
+      "honesty"
+    ],
+    "antonyms": [
+      "evasiveness"
+    ]
+  },
+  {
+    "id": 1381,
+    "word": "Penchant",
+    "pos": "noun",
+    "current_definition": "A strong and habitual liking or preference for a particular thing or activity.",
+    "synonyms": [
+      "fondness",
+      "inclination"
+    ],
+    "antonyms": [
+      "aversion"
+    ]
+  },
+  {
+    "id": 1198,
+    "word": "Respite",
+    "pos": "noun",
+    "current_definition": "A short break from something difficult, painful, or unpleasant; a brief period of relief before something hard continues.",
+    "synonyms": [
+      "relief",
+      "reprieve"
+    ],
+    "antonyms": [
+      "continuation"
+    ]
+  },
+  {
+    "id": 1705,
+    "word": "Epitome",
+    "pos": "noun",
+    "current_definition": "A person or thing that represents the most perfect or concentrated example of a quality or type.",
+    "synonyms": [
+      "embodiment",
+      "quintessence"
+    ],
+    "antonyms": [
+      "antithesis"
+    ]
+  },
+  {
+    "id": 1701,
+    "word": "Anomaly",
+    "pos": "noun",
+    "current_definition": "Something that stands out from the normal pattern around it; a measurable outlier that does not fit expectations.",
+    "synonyms": [
+      "irregularity",
+      "outlier"
+    ],
+    "antonyms": [
+      "norm"
+    ]
+  }
+]

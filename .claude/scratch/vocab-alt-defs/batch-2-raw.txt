@@ -1,0 +1,50 @@
+publicly adopt and support,neutral,1080
+system of social and political beliefs,neutral,1081
+public statement of beliefs and plans,neutral,1082
+following accepted traditional beliefs,neutral,1083
+strongly biased toward one side,negative,1084
+aggressive attack on opposing views,negative,1085
+active supporter of an idea,neutral,1086
+fundamental belief or principle,neutral,1087
+list of matters to address,neutral,1088
+clever deception for advantage,negative,1089
+exclusive close-knit social group,negative,1090
+secret cooperation for dishonest ends,negative,1091
+involvement in another's wrongdoing,negative,1092
+deliberately kept secret,neutral,1093
+secretive to avoid notice,negative,1094
+gradually harmful yet hard to notice,negative,1095
+secret dishonest scheme,negative,1096
+privately owned and legally protected,neutral,1097
+secretly done to avoid detection,negative,1098
+bitter and hostile,negative,1099
+offensively obvious,negative,1100
+criticize extremely harshly,negative,1101
+deserving blame,negative,1102
+officially clear someone of blame,positive,1103
+shockingly obvious and wrong,negative,1104
+deep public shame,negative,1105
+famous for serious wrongdoing,negative,1106
+widely known for something bad,negative,1107
+deserving strong moral condemnation,negative,1108
+brand as socially shameful,negative,1109
+deeply immoral behavior,negative,1110
+committed supporter or follower,neutral,1111
+persuade through persistent flattery,negative,1112
+respectful submission to another,positive,1113
+obedient and easy to control,neutral,1114
+existing in name only,neutral,1115
+excessively flattering and submissive,negative,1116
+annoyingly interfering and bossy,negative,1117
+express mild disapproval,negative,1118
+submissive and lacking self-respect,negative,1119
+self-serving flatterer of the powerful,negative,1120
+take without permission or officially allocate,neutral,1121
+independent and self-governing,positive,1122
+administration burdened by rules and paperwork,negative,1123
+reduce or restrict,neutral,1124
+wealthy and influential business leader,neutral,1125
+unfairly favoring relatives or friends,negative,1126
+fatherly or relating to fathers,neutral,1127
+male family or community head,neutral,1128
+demanding immediate unquestioned obedience,negative,1129

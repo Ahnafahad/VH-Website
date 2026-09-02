@@ -1,0 +1,50 @@
+extra benefit tied to a job,positive,1130
+exclusive right or privilege,neutral,1131
+person or thing serving as substitute,neutral,1132
+wealthy and financially comfortable,positive,1133
+feature providing comfort or convenience,positive,1134
+related to cooking,neutral,1135
+luxuriously and excessively self-indulgent,negative,1136
+show off to attract attention,negative,1137
+impressive but absurdly excessive,negative,1138
+exceptionally generous,positive,1139
+richly luxurious and lavish,positive,1140
+showy and designed to impress,negative,1141
+able to pay all debts,positive,1142
+utterly miserable and degrading,negative,1143
+extreme greed for wealth,negative,1144
+enviously desire another's possessions,negative,1145
+serious lack of something,negative,1146
+excessive supply beyond demand,negative,1147
+impossible to satisfy,negative,1148
+motivated mainly by money,negative,1149
+too little of something,negative,1150
+aggressively greedy and grasping,negative,1151
+waste recklessly,negative,1152
+extremely bad,negative,1153
+lacking life's basic necessities,negative,1154
+extremely poor and needy,negative,1155
+person living by begging,neutral,1156
+contemptibly small or inadequate,negative,1157
+dirty or morally corrupt,negative,1158
+extreme filth and neglect,negative,1159
+absence of movement or progress,negative,1160
+chosen without reason or rule,negative,1161
+careful about possible consequences,positive,1162
+expert with refined taste,positive,1163
+standard used for judgment,neutral,1164
+notice or understand something unclear,neutral,1165
+carefully tell things apart,neutral,1166
+recognize what makes things different,neutral,1167
+fair and impartial,positive,1168
+demanding extremely high standards,negative,1169
+clear and convincing,positive,1170
+excessively careful about details,negative,1171
+wise and carefully considered,positive,1172
+clear and easy to understand,positive,1173
+requiring great care and effort,positive,1174
+directly relevant to the subject,neutral,1175
+meet the required standards,neutral,1176
+extremely thorough and demanding,neutral,1177
+wise and insightful,positive,1178
+honest and extremely careful,positive,1179

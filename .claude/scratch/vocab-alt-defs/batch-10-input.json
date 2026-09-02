@@ -1,0 +1,646 @@
+[
+  {
+    "id": 1485,
+    "word": "Mellifluous",
+    "pos": "adjective",
+    "current_definition": "Having a pleasantly smooth, rich, and sweet sound that flows easily and is agreeable to listen to.",
+    "synonyms": [
+      "dulcet",
+      "honeyed"
+    ],
+    "antonyms": [
+      "harsh"
+    ]
+  },
+  {
+    "id": 1486,
+    "word": "Address",
+    "pos": "verb",
+    "current_definition": "A formal speech delivered to an audience.",
+    "synonyms": [
+      "speak to",
+      "deliver",
+      "speech",
+      "oration"
+    ],
+    "antonyms": [
+      "ignore"
+    ]
+  },
+  {
+    "id": 1487,
+    "word": "Brevity",
+    "pos": "noun",
+    "current_definition": "The quality of using very few words or taking very little time to express something; conciseness.",
+    "synonyms": [
+      "conciseness",
+      "economy"
+    ],
+    "antonyms": [
+      "verbosity"
+    ]
+  },
+  {
+    "id": 1488,
+    "word": "Broach",
+    "pos": "verb",
+    "current_definition": "To bring up a sensitive or difficult subject for the first time in a conversation or discussion.",
+    "synonyms": [
+      "raise",
+      "introduce"
+    ],
+    "antonyms": [
+      "avoid"
+    ]
+  },
+  {
+    "id": 1489,
+    "word": "Coherent",
+    "pos": "adjective",
+    "current_definition": "Logically connected and easy to follow; said of speech, writing, or thought that holds together clearly and makes sense.",
+    "synonyms": [
+      "logical",
+      "lucid"
+    ],
+    "antonyms": [
+      "incoherent"
+    ]
+  },
+  {
+    "id": 1490,
+    "word": "Compelling",
+    "pos": "adjective",
+    "current_definition": "Powerfully persuasive or interesting; strong enough to demand attention or belief.",
+    "synonyms": [
+      "convincing",
+      "forceful"
+    ],
+    "antonyms": [
+      "unconvincing"
+    ]
+  },
+  {
+    "id": 1491,
+    "word": "Concise",
+    "pos": "adjective",
+    "current_definition": "Expressing ideas clearly in a few words, without unnecessary detail or filler.",
+    "synonyms": [
+      "brief",
+      "compact"
+    ],
+    "antonyms": [
+      "wordy"
+    ]
+  },
+  {
+    "id": 1492,
+    "word": "Consonant",
+    "pos": "adjective",
+    "current_definition": "In agreement or harmony with something; consistent with a set of ideas, values, or facts.",
+    "synonyms": [
+      "consistent",
+      "compatible"
+    ],
+    "antonyms": [
+      "inconsistent"
+    ]
+  },
+  {
+    "id": 1493,
+    "word": "Elicit",
+    "pos": "verb",
+    "current_definition": "To draw out a response, feeling, or piece of information from someone, often by careful questioning or skilled communication.",
+    "synonyms": [
+      "draw out",
+      "extract"
+    ],
+    "antonyms": [
+      "suppress"
+    ]
+  },
+  {
+    "id": 1495,
+    "word": "Rhetoric",
+    "pos": "noun",
+    "current_definition": "The art of using language effectively and persuasively, especially in speaking or writing.",
+    "synonyms": [
+      "oratory",
+      "persuasion"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": 1496,
+    "word": "Succinct",
+    "pos": "adjective",
+    "current_definition": "Clearly and briefly expressed, with nothing wasted; saying exactly what needs to be said and no more.",
+    "synonyms": [
+      "pithy",
+      "compact"
+    ],
+    "antonyms": [
+      "rambling"
+    ]
+  },
+  {
+    "id": 1497,
+    "word": "Terse",
+    "pos": "adjective",
+    "current_definition": "Very brief in speech or writing, to the point of seeming unfriendly, impatient, or dismissive.",
+    "synonyms": [
+      "curt",
+      "abrupt"
+    ],
+    "antonyms": [
+      "expansive"
+    ]
+  },
+  {
+    "id": 1498,
+    "word": "Allusion",
+    "pos": "noun",
+    "current_definition": "An indirect reference to a person, event, or work that the speaker expects the audience to recognize, without naming it outright.",
+    "synonyms": [
+      "reference",
+      "hint"
+    ],
+    "antonyms": [
+      "statement"
+    ]
+  },
+  {
+    "id": 1499,
+    "word": "Analogy",
+    "pos": "noun",
+    "current_definition": "A comparison between two things that are different in most ways but share one key similarity, used to make an idea easier to understand.",
+    "synonyms": [
+      "comparison",
+      "parallel"
+    ],
+    "antonyms": [
+      "contrast"
+    ]
+  },
+  {
+    "id": 1500,
+    "word": "Anecdote",
+    "pos": "noun",
+    "current_definition": "A short, informal account of a real or supposedly real incident, often used to illustrate a point or entertain.",
+    "synonyms": [
+      "story",
+      "tale"
+    ],
+    "antonyms": [
+      "statistic"
+    ]
+  },
+  {
+    "id": 1501,
+    "word": "Banal",
+    "pos": "adjective",
+    "current_definition": "So ordinary and overused that it has lost any interest or originality; utterly predictable.",
+    "synonyms": [
+      "trite",
+      "hackneyed"
+    ],
+    "antonyms": [
+      "original"
+    ]
+  },
+  {
+    "id": 1502,
+    "word": "Colloquial",
+    "pos": "adjective",
+    "current_definition": "Characteristic of everyday spoken language rather than formal writing; informal in style.",
+    "synonyms": [
+      "informal",
+      "conversational"
+    ],
+    "antonyms": [
+      "formal"
+    ]
+  },
+  {
+    "id": 1503,
+    "word": "Digress",
+    "pos": "verb",
+    "current_definition": "To wander away from the main topic of a speech or piece of writing, often at length and without warning.",
+    "synonyms": [
+      "ramble",
+      "stray"
+    ],
+    "antonyms": [
+      "focus"
+    ]
+  },
+  {
+    "id": 1504,
+    "word": "Extraneous",
+    "pos": "adjective",
+    "current_definition": "Not directly related to or necessary for the subject being discussed; coming from outside and adding nothing useful.",
+    "synonyms": [
+      "irrelevant",
+      "superfluous"
+    ],
+    "antonyms": [
+      "essential"
+    ]
+  },
+  {
+    "id": 1505,
+    "word": "Figurative",
+    "pos": "adjective",
+    "current_definition": "Using words in a non-literal way — through metaphor, simile, or other images — to suggest meaning beyond the plain sense.",
+    "synonyms": [
+      "metaphorical",
+      "symbolic"
+    ],
+    "antonyms": [
+      "literal"
+    ]
+  },
+  {
+    "id": 1506,
+    "word": "Nuance",
+    "pos": "noun",
+    "current_definition": "A subtle difference in meaning, tone, or feeling that is easy to miss but important to a full understanding.",
+    "synonyms": [
+      "subtlety",
+      "shade"
+    ],
+    "antonyms": [
+      "bluntness"
+    ]
+  },
+  {
+    "id": 1507,
+    "word": "Pedestrian",
+    "pos": "adjective",
+    "current_definition": "Lacking imagination or excitement; dull and unimaginative in a flat, uninspired way.",
+    "synonyms": [
+      "dull",
+      "mediocre"
+    ],
+    "antonyms": [
+      "inspired"
+    ]
+  },
+  {
+    "id": 1508,
+    "word": "Subtle",
+    "pos": "adjective",
+    "current_definition": "Not immediately obvious; working through small, careful signals rather than direct or heavy-handed expression.",
+    "synonyms": [
+      "understated",
+      "delicate"
+    ],
+    "antonyms": [
+      "obvious"
+    ]
+  },
+  {
+    "id": 1509,
+    "word": "Tangential",
+    "pos": "adjective",
+    "current_definition": "Only loosely or indirectly connected to the main point; touching on a subject without engaging it directly.",
+    "synonyms": [
+      "peripheral",
+      "incidental"
+    ],
+    "antonyms": [
+      "central"
+    ]
+  },
+  {
+    "id": 1510,
+    "word": "Cliché",
+    "pos": "noun",
+    "current_definition": "A phrase or idea that was once fresh but has been used so many times it now sounds empty and unthinking.",
+    "synonyms": [
+      "bromide",
+      "truism"
+    ],
+    "antonyms": [
+      "originality"
+    ]
+  },
+  {
+    "id": 1511,
+    "word": "Didactic",
+    "pos": "adjective",
+    "current_definition": "Intended to teach a moral lesson, often in an overly instructive or moralising manner.",
+    "synonyms": [
+      "preachy",
+      "instructive"
+    ],
+    "antonyms": [
+      "subtle"
+    ]
+  },
+  {
+    "id": 1512,
+    "word": "Edify",
+    "pos": "verb",
+    "current_definition": "To improve someone's mind, character, or understanding, especially through instruction with a moral dimension.",
+    "synonyms": [
+      "enlighten",
+      "instruct"
+    ],
+    "antonyms": [
+      "corrupt"
+    ]
+  },
+  {
+    "id": 1513,
+    "word": "Exhort",
+    "pos": "verb",
+    "current_definition": "To strongly urge or appeal to someone to do something, often with passion and a sense of moral urgency.",
+    "synonyms": [
+      "urge",
+      "implore"
+    ],
+    "antonyms": [
+      "discourage"
+    ]
+  },
+  {
+    "id": 1514,
+    "word": "Hackneyed",
+    "pos": "adjective",
+    "current_definition": "So overused or commonplace that it has lost all meaning or power; describing language or ideas worn out by repetition.",
+    "synonyms": [
+      "trite",
+      "stale"
+    ],
+    "antonyms": [
+      "fresh"
+    ]
+  },
+  {
+    "id": 1515,
+    "word": "Homily",
+    "pos": "noun",
+    "current_definition": "A talk or piece of writing that offers moral guidance, often at length and with more preaching than practical insight.",
+    "synonyms": [
+      "sermon",
+      "lecture"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": 1516,
+    "word": "Insipid",
+    "pos": "adjective",
+    "current_definition": "Lacking any strong, interesting, or memorable quality; dull and weak in a way that fails to engage or stimulate.",
+    "synonyms": [
+      "bland",
+      "vapid"
+    ],
+    "antonyms": [
+      "vivid"
+    ]
+  },
+  {
+    "id": 1517,
+    "word": "Platitude",
+    "pos": "noun",
+    "current_definition": "A dull, obvious moral statement offered as though it were a meaningful insight, especially one meant to comfort or advise.",
+    "synonyms": [
+      "truism",
+      "banality"
+    ],
+    "antonyms": [
+      "insight"
+    ]
+  },
+  {
+    "id": 1518,
+    "word": "Prosaic",
+    "pos": "adjective",
+    "current_definition": "Straightforward and matter-of-fact to the point of being dull; lacking imagination or poetic quality.",
+    "synonyms": [
+      "mundane",
+      "humdrum"
+    ],
+    "antonyms": [
+      "vivid"
+    ]
+  },
+  {
+    "id": 1519,
+    "word": "Reiterate",
+    "pos": "verb",
+    "current_definition": "To say or do something again, often more than once, in order to make sure it is understood or remembered.",
+    "synonyms": [
+      "repeat",
+      "restate"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": 1520,
+    "word": "Saccharine",
+    "pos": "adjective",
+    "current_definition": "Excessively sweet, sentimental, or cheerful in a way that feels false or cloying rather than genuine.",
+    "synonyms": [
+      "syrupy",
+      "mawkish"
+    ],
+    "antonyms": [
+      "sincere"
+    ]
+  },
+  {
+    "id": 1521,
+    "word": "Superfluous",
+    "pos": "adjective",
+    "current_definition": "More than what is needed or useful; present in excess so that it adds nothing and may even get in the way.",
+    "synonyms": [
+      "unnecessary",
+      "redundant"
+    ],
+    "antonyms": [
+      "essential"
+    ]
+  },
+  {
+    "id": 1522,
+    "word": "Belabor",
+    "pos": "verb",
+    "current_definition": "To spend too much time explaining or repeating something that is already understood, to the point of becoming tedious.",
+    "synonyms": [
+      "overstate",
+      "harp on"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": 1523,
+    "word": "Demagogue",
+    "pos": "noun",
+    "current_definition": "A leader who gains power by appealing to people's fears and prejudices rather than to reason, often using emotional speech to turn crowds against a particular group.",
+    "synonyms": [
+      "agitator",
+      "rabble-rouser"
+    ],
+    "antonyms": [
+      "statesman"
+    ]
+  },
+  {
+    "id": 1524,
+    "word": "Deprecate",
+    "pos": "verb",
+    "current_definition": "To express strong disapproval of something; to speak of something as having little value or as being wrong.",
+    "synonyms": [
+      "disparage",
+      "belittle"
+    ],
+    "antonyms": [
+      "endorse"
+    ]
+  },
+  {
+    "id": 1525,
+    "word": "Impugn",
+    "pos": "verb",
+    "current_definition": "To call something into doubt or attack it as false or dishonest, especially someone's character, motives, or a stated fact.",
+    "synonyms": [
+      "challenge",
+      "question"
+    ],
+    "antonyms": [
+      "uphold"
+    ]
+  },
+  {
+    "id": 1526,
+    "word": "Incense",
+    "pos": "verb",
+    "current_definition": "To make someone extremely angry; to fill a person or group with outrage.",
+    "synonyms": [
+      "enrage",
+      "infuriate"
+    ],
+    "antonyms": [
+      "placate"
+    ]
+  },
+  {
+    "id": 1527,
+    "word": "Instigate",
+    "pos": "verb",
+    "current_definition": "To cause something—usually a conflict, reaction, or harmful action—to begin, often by deliberately stirring people up.",
+    "synonyms": [
+      "provoke",
+      "incite"
+    ],
+    "antonyms": [
+      "discourage"
+    ]
+  },
+  {
+    "id": 1528,
+    "word": "Refute",
+    "pos": "verb",
+    "current_definition": "To prove that a claim, argument, or person is wrong by using clear evidence or solid reasoning.",
+    "synonyms": [
+      "disprove",
+      "rebut"
+    ],
+    "antonyms": [
+      "confirm"
+    ]
+  },
+  {
+    "id": 1529,
+    "word": "Remonstrate",
+    "pos": "verb",
+    "current_definition": "To protest or argue against something firmly; to make a formal objection or plea to someone in authority.",
+    "synonyms": [
+      "protest",
+      "object"
+    ],
+    "antonyms": [
+      "acquiesce"
+    ]
+  },
+  {
+    "id": 1530,
+    "word": "Repudiate",
+    "pos": "verb",
+    "current_definition": "To firmly reject or refuse to accept something—a claim, an accusation, an idea, or an association—often in a public and forceful way.",
+    "synonyms": [
+      "reject",
+      "disavow"
+    ],
+    "antonyms": [
+      "embrace"
+    ]
+  },
+  {
+    "id": 1531,
+    "word": "Tirade",
+    "pos": "noun",
+    "current_definition": "A long, angry speech that criticizes someone or something harshly and at length, often losing control in the process.",
+    "synonyms": [
+      "rant",
+      "diatribe"
+    ],
+    "antonyms": [
+      "praise"
+    ]
+  },
+  {
+    "id": 1532,
+    "word": "Amenable",
+    "pos": "adjective",
+    "current_definition": "Willing to listen, cooperate, or be guided; open to a suggestion or request without resistance.",
+    "synonyms": [
+      "receptive",
+      "agreeable"
+    ],
+    "antonyms": [
+      "resistant"
+    ]
+  },
+  {
+    "id": 1533,
+    "word": "Appease",
+    "pos": "verb",
+    "current_definition": "To calm someone who is angry or upset by giving them what they want or by making a concession.",
+    "synonyms": [
+      "pacify",
+      "conciliate"
+    ],
+    "antonyms": [
+      "provoke"
+    ]
+  },
+  {
+    "id": 1534,
+    "word": "Assuage",
+    "pos": "verb",
+    "current_definition": "To make a painful feeling, fear, or worry less intense; to bring relief to distress or hunger.",
+    "synonyms": [
+      "relieve",
+      "soothe"
+    ],
+    "antonyms": [
+      "intensify"
+    ]
+  },
+  {
+    "id": 1535,
+    "word": "Conciliatory",
+    "pos": "adjective",
+    "current_definition": "Intended to reduce anger or hostility and bring about goodwill; showing a willingness to meet someone halfway.",
+    "synonyms": [
+      "placating",
+      "diplomatic"
+    ],
+    "antonyms": [
+      "confrontational"
+    ]
+  }
+]

@@ -1,0 +1,50 @@
+assign to a lower position,negative,1588
+forcibly keep groups apart,negative,1589
+suggesting evil or danger,negative,1590
+lower in rank or importance,neutral,1591
+increase by adding to it,neutral,1592
+grow rapidly and vigorously,positive,1593
+merge into one unified whole,neutral,1594
+something that completes or enhances,positive,1595
+meeting point of flowing waters,neutral,1596
+available in very large amounts,neutral,1597
+one small increase in a series,neutral,1598
+combine parts to work together,positive,1599
+related to motion,neutral,1600
+a seemingly countless number,neutral,1601
+restore a used-up supply,positive,1602
+completely filled with something,neutral,1603
+consist of specified parts,neutral,1604
+an overwhelming flood,negative,1605
+persistently present in one place,neutral,1606
+immense scale or seriousness,negative,1607
+continuing without any pause,negative,1608
+far beyond reasonable limits,negative,1609
+completely cover with floodwater,negative,1610
+massive and solidly unified,neutral,1611
+lasting or returning yearly,neutral,1612
+spread gradually through every part,neutral,1613
+be present throughout something,neutral,1614
+astonishingly large or impressive,positive,1615
+multiply and spread rapidly,neutral,1616
+producing unusually large amounts,positive,1617
+given equally in return,neutral,1618
+an unwanted excess,negative,1619
+present seemingly everywhere,neutral,1620
+never stopping or weakening,negative,1621
+something that existed earlier,neutral,1622
+trigger for important change,neutral,1623
+happening at the same time,neutral,1624
+helping produce a result,positive,1625
+dependent on an uncertain condition,neutral,1626
+happening by lucky chance,positive,1627
+early signal of coming change,neutral,1628
+about to happen,neutral,1629
+ominous sign of future events,negative,1630
+earlier thing leading to another,neutral,1631
+directly cause or produce,neutral,1632
+gradually bring about a condition,neutral,1633
+a very large amount,neutral,1634
+cause something serious too soon,negative,1635
+pouring out in large amounts,neutral,1636
+an indirect or unintended consequence,neutral,1637

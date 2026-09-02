@@ -1,0 +1,50 @@
+drain energy and strength,negative,1332
+habitually lazy,negative,1333
+unable to move or act,neutral,1334
+weaken from neglect or inactivity,negative,1335
+sluggish and low on energy,negative,1336
+state of sluggishness and fatigue,negative,1337
+slow dull and unthinking,negative,1338
+following accepted customs or ideas,neutral,1339
+aimless and lacking a plan,negative,1340
+temporarily inactive but able to revive,neutral,1341
+vague unease and low energy,negative,1342
+state of being completely forgotten,negative,1343
+extreme unwillingness to make effort,negative,1344
+causing sleep or dullness,negative,1345
+not moving or changing,neutral,1346
+extreme physical or mental sluggishness,negative,1347
+make embarrassed or ashamed,negative,1348
+make seem unimportant or inferior,negative,1349
+confused and unable to think clearly,neutral,1350
+emotional release bringing relief,positive,1351
+distress from failure or embarrassment,negative,1352
+speak of as having little value,negative,1354
+excessively tearful and sentimental,negative,1355
+make deeply ashamed or embarrassed,negative,1356
+wistful longing for the past,neutral,1357
+quietly thoughtful and slightly sad,neutral,1358
+deeply moving with sadness,positive,1359
+strangely unconventional but harmless,neutral,1360
+minor personal weakness or quirk,negative,1361
+person who challenges accepted beliefs,neutral,1362
+distinctive personal habit or trait,neutral,1363
+traveling from place to place,neutral,1364
+independent person who defies conventions,positive,1365
+regularly traveling for professional work,neutral,1366
+strong long-standing personal preference,neutral,1367
+nobly idealistic but impractical,negative,1368
+dishonest or unpredictable person,negative,1369
+remarkably unusual or exceptional,positive,1370
+unconcerned with right or wrong,negative,1371
+belief that morality has no validity,negative,1372
+showing romantic or sexual desire,positive,1373
+person who distrusts good motives,negative,1374
+concerning human existence and meaning,neutral,1375
+person who believes fate is fixed,negative,1376
+belief that pleasure matters most,negative,1377
+intensely and irrationally attracted,negative,1378
+disliking and distrusting humanity,negative,1379
+belief that nothing has meaning or value,negative,1380
+natural tendency toward something,neutral,1382
+direct and complete opposite,neutral,1383

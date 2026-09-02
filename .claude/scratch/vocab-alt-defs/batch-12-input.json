@@ -1,0 +1,650 @@
+[
+  {
+    "id": 1588,
+    "word": "Relegate",
+    "pos": "verb",
+    "current_definition": "To move someone or something to a lower or less important position; to push to the margins.",
+    "synonyms": [
+      "demote",
+      "marginalize"
+    ],
+    "antonyms": [
+      "elevate"
+    ]
+  },
+  {
+    "id": 1589,
+    "word": "Segregate",
+    "pos": "verb",
+    "current_definition": "To forcibly separate groups of people, keeping them apart based on race, religion, or another characteristic.",
+    "synonyms": [
+      "separate",
+      "divide"
+    ],
+    "antonyms": [
+      "integrate"
+    ]
+  },
+  {
+    "id": 1590,
+    "word": "Sinister",
+    "pos": "adjective",
+    "current_definition": "Giving a strong feeling that something evil, threatening, or dangerous is present or intended.",
+    "synonyms": [
+      "menacing",
+      "malevolent"
+    ],
+    "antonyms": [
+      "benign"
+    ]
+  },
+  {
+    "id": 1591,
+    "word": "Subordinate",
+    "pos": "adjective",
+    "current_definition": "Lower in rank, power, or importance than another; placed in a lesser position.",
+    "synonyms": [
+      "inferior",
+      "secondary",
+      "demote",
+      "subjugate"
+    ],
+    "antonyms": [
+      "superior",
+      "elevate"
+    ]
+  },
+  {
+    "id": 1592,
+    "word": "Augment",
+    "pos": "verb",
+    "current_definition": "To make something larger, stronger, or more valuable by adding to it.",
+    "synonyms": [
+      "enlarge",
+      "increase"
+    ],
+    "antonyms": [
+      "diminish"
+    ]
+  },
+  {
+    "id": 1593,
+    "word": "Burgeon",
+    "pos": "verb",
+    "current_definition": "To grow or expand rapidly, especially in a way that is new and full of energy.",
+    "synonyms": [
+      "flourish",
+      "boom"
+    ],
+    "antonyms": [
+      "wither"
+    ]
+  },
+  {
+    "id": 1594,
+    "word": "Coalesce",
+    "pos": "verb",
+    "current_definition": "To come together and form one larger, unified whole.",
+    "synonyms": [
+      "merge",
+      "unite"
+    ],
+    "antonyms": [
+      "separate"
+    ]
+  },
+  {
+    "id": 1595,
+    "word": "Complement",
+    "pos": "noun; verb",
+    "current_definition": "Something that completes or goes very well with something else, making it more effective or complete.",
+    "synonyms": [
+      "addition",
+      "counterpart"
+    ],
+    "antonyms": [
+      "clash"
+    ]
+  },
+  {
+    "id": 1596,
+    "word": "Confluence",
+    "pos": "noun",
+    "current_definition": "The point where two or more rivers or streams meet and flow together.",
+    "synonyms": [
+      "convergence",
+      "junction"
+    ],
+    "antonyms": [
+      "divergence"
+    ]
+  },
+  {
+    "id": 1597,
+    "word": "Copious",
+    "pos": "adjective",
+    "current_definition": "Present in very large quantities; more than enough.",
+    "synonyms": [
+      "abundant",
+      "plentiful"
+    ],
+    "antonyms": [
+      "scarce"
+    ]
+  },
+  {
+    "id": 1598,
+    "word": "Increment",
+    "pos": "noun",
+    "current_definition": "A small, regular increase or addition, especially one in a series.",
+    "synonyms": [
+      "increase",
+      "addition"
+    ],
+    "antonyms": [
+      "reduction"
+    ]
+  },
+  {
+    "id": 1599,
+    "word": "Integrate",
+    "pos": "verb",
+    "current_definition": "To combine separate parts into a single, working whole so that they function together effectively.",
+    "synonyms": [
+      "combine",
+      "unify"
+    ],
+    "antonyms": [
+      "separate"
+    ]
+  },
+  {
+    "id": 1600,
+    "word": "Kinetic",
+    "pos": "adjective",
+    "current_definition": "Relating to or produced by movement.",
+    "synonyms": [
+      "dynamic",
+      "energetic"
+    ],
+    "antonyms": [
+      "static"
+    ]
+  },
+  {
+    "id": 1601,
+    "word": "Myriad",
+    "pos": "noun; adjective",
+    "current_definition": "A very large, seemingly uncountable number of people or things.",
+    "synonyms": [
+      "multitude",
+      "host"
+    ],
+    "antonyms": [
+      "handful"
+    ]
+  },
+  {
+    "id": 1602,
+    "word": "Replenish",
+    "pos": "verb",
+    "current_definition": "To fill something up again or restore a supply that has been used or reduced.",
+    "synonyms": [
+      "refill",
+      "restore"
+    ],
+    "antonyms": [
+      "deplete"
+    ]
+  },
+  {
+    "id": 1603,
+    "word": "Replete",
+    "pos": "adjective",
+    "current_definition": "Fully stocked or filled with something; having a great deal of something.",
+    "synonyms": [
+      "full",
+      "abundant"
+    ],
+    "antonyms": [
+      "lacking"
+    ]
+  },
+  {
+    "id": 1604,
+    "word": "Comprise",
+    "pos": "verb",
+    "current_definition": "To be made up of particular parts or members; to consist of.",
+    "synonyms": [
+      "constitute",
+      "include"
+    ],
+    "antonyms": [
+      "exclude"
+    ]
+  },
+  {
+    "id": 1605,
+    "word": "Deluge",
+    "pos": "noun; verb",
+    "current_definition": "To flood a place or overwhelm someone with an extremely large amount of something.",
+    "synonyms": [
+      "flood",
+      "torrent"
+    ],
+    "antonyms": [
+      "trickle"
+    ]
+  },
+  {
+    "id": 1606,
+    "word": "Endemic",
+    "pos": "adjective",
+    "current_definition": "Regularly found in a particular place or among a particular group of people and difficult to remove.",
+    "synonyms": [
+      "prevalent",
+      "entrenched"
+    ],
+    "antonyms": [
+      "foreign"
+    ]
+  },
+  {
+    "id": 1607,
+    "word": "Enormity",
+    "pos": "noun",
+    "current_definition": "The very great size, seriousness, or extent of something, especially something difficult or terrible.",
+    "synonyms": [
+      "magnitude",
+      "gravity"
+    ],
+    "antonyms": [
+      "triviality"
+    ]
+  },
+  {
+    "id": 1608,
+    "word": "Incessant",
+    "pos": "adjective",
+    "current_definition": "Never stopping; continuing without any pause or break, often in an annoying way.",
+    "synonyms": [
+      "relentless",
+      "ceaseless"
+    ],
+    "antonyms": [
+      "intermittent"
+    ]
+  },
+  {
+    "id": 1609,
+    "word": "Inordinate",
+    "pos": "adjective",
+    "current_definition": "Far more than is reasonable or expected; well beyond normal limits.",
+    "synonyms": [
+      "excessive",
+      "disproportionate"
+    ],
+    "antonyms": [
+      "moderate"
+    ]
+  },
+  {
+    "id": 1610,
+    "word": "Inundate",
+    "pos": "verb",
+    "current_definition": "To flood a place with water so that it is completely covered.",
+    "synonyms": [
+      "overwhelm",
+      "swamp"
+    ],
+    "antonyms": [
+      "trickle"
+    ]
+  },
+  {
+    "id": 1611,
+    "word": "Monolithic",
+    "pos": "adjective",
+    "current_definition": "Large, solid, and imposing, like a single massive block of stone.",
+    "synonyms": [
+      "massive",
+      "uniform"
+    ],
+    "antonyms": [
+      "fragmented"
+    ]
+  },
+  {
+    "id": 1612,
+    "word": "Perennial",
+    "pos": "adjective",
+    "current_definition": "Lasting for a very long time or recurring repeatedly, year after year.",
+    "synonyms": [
+      "enduring",
+      "persistent"
+    ],
+    "antonyms": [
+      "temporary"
+    ]
+  },
+  {
+    "id": 1613,
+    "word": "Permeate",
+    "pos": "verb",
+    "current_definition": "To spread through every part of something, especially slowly and gradually.",
+    "synonyms": [
+      "penetrate",
+      "saturate"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": 1614,
+    "word": "Pervade",
+    "pos": "verb",
+    "current_definition": "To spread through and be present in every part of a place, situation, or group.",
+    "synonyms": [
+      "permeate",
+      "saturate"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": 1615,
+    "word": "Prodigious",
+    "pos": "adjective",
+    "current_definition": "Impressively large in size, amount, or degree; far beyond what is ordinary or expected.",
+    "synonyms": [
+      "enormous",
+      "extraordinary"
+    ],
+    "antonyms": [
+      "modest"
+    ]
+  },
+  {
+    "id": 1616,
+    "word": "Proliferate",
+    "pos": "verb",
+    "current_definition": "To increase rapidly in number or amount, spreading to many places in a short time.",
+    "synonyms": [
+      "multiply",
+      "spread"
+    ],
+    "antonyms": [
+      "diminish"
+    ]
+  },
+  {
+    "id": 1617,
+    "word": "Prolific",
+    "pos": "adjective",
+    "current_definition": "Producing a large amount of work, output, or results.",
+    "synonyms": [
+      "productive",
+      "abundant"
+    ],
+    "antonyms": [
+      "barren"
+    ]
+  },
+  {
+    "id": 1618,
+    "word": "Reciprocal",
+    "pos": "adjective",
+    "current_definition": "Given, felt, or done in return; shared equally between two people or groups.",
+    "synonyms": [
+      "mutual",
+      "shared"
+    ],
+    "antonyms": [
+      "one-sided"
+    ]
+  },
+  {
+    "id": 1619,
+    "word": "Surfeit",
+    "pos": "noun; verb",
+    "current_definition": "An amount that is far more than is needed or wanted; an excessive oversupply.",
+    "synonyms": [
+      "excess",
+      "glut"
+    ],
+    "antonyms": [
+      "shortage",
+      "scarcity"
+    ]
+  },
+  {
+    "id": 1620,
+    "word": "Ubiquitous",
+    "pos": "adjective",
+    "current_definition": "Seeming to appear everywhere at the same time; present in all places or situations.",
+    "synonyms": [
+      "omnipresent",
+      "universal"
+    ],
+    "antonyms": [
+      "rare"
+    ]
+  },
+  {
+    "id": 1621,
+    "word": "Unremitting",
+    "pos": "adjective",
+    "current_definition": "Never stopping or becoming less strong; continuing without any break or relaxation.",
+    "synonyms": [
+      "relentless",
+      "ceaseless"
+    ],
+    "antonyms": [
+      "intermittent"
+    ]
+  },
+  {
+    "id": 1622,
+    "word": "Antecedent",
+    "pos": "noun",
+    "current_definition": "Coming before something else in time or order.",
+    "synonyms": [
+      "forerunner",
+      "predecessor",
+      "(adjective) prior",
+      "preceding"
+    ],
+    "antonyms": [
+      "consequence",
+      "(adjective) subsequent"
+    ]
+  },
+  {
+    "id": 1623,
+    "word": "Catalyst",
+    "pos": "noun",
+    "current_definition": "A person or event that causes an important change or set of events to begin.",
+    "synonyms": [
+      "trigger",
+      "spark"
+    ],
+    "antonyms": [
+      "deterrent"
+    ]
+  },
+  {
+    "id": 1624,
+    "word": "Concurrent",
+    "pos": "adjective",
+    "current_definition": "Happening or existing at the same time as something else.",
+    "synonyms": [
+      "simultaneous",
+      "parallel"
+    ],
+    "antonyms": [
+      "consecutive"
+    ]
+  },
+  {
+    "id": 1625,
+    "word": "Conducive",
+    "pos": "adjective",
+    "current_definition": "Creating conditions that make a particular result or situation more likely to happen.",
+    "synonyms": [
+      "favourable",
+      "helpful"
+    ],
+    "antonyms": [
+      "detrimental"
+    ]
+  },
+  {
+    "id": 1626,
+    "word": "Contingent",
+    "pos": "adjective",
+    "current_definition": "Depending on something else that may or may not happen; not certain.",
+    "synonyms": [
+      "conditional",
+      "dependent"
+    ],
+    "antonyms": [
+      "unconditional"
+    ]
+  },
+  {
+    "id": 1627,
+    "word": "Fortuitous",
+    "pos": "adjective",
+    "current_definition": "Happening by chance rather than by plan, often with a lucky or beneficial result.",
+    "synonyms": [
+      "accidental",
+      "chance"
+    ],
+    "antonyms": [
+      "deliberate"
+    ]
+  },
+  {
+    "id": 1628,
+    "word": "Harbinger",
+    "pos": "noun",
+    "current_definition": "A person or thing that announces or signals that something—often something significant or unpleasant—is about to happen.",
+    "synonyms": [
+      "omen",
+      "forerunner"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": 1629,
+    "word": "Imminent",
+    "pos": "adjective",
+    "current_definition": "About to happen very soon; likely to occur at any moment.",
+    "synonyms": [
+      "impending",
+      "approaching"
+    ],
+    "antonyms": [
+      "distant"
+    ]
+  },
+  {
+    "id": 1630,
+    "word": "Portent",
+    "pos": "noun",
+    "current_definition": "A sign or warning that something important, often frightening or momentous, is about to happen.",
+    "synonyms": [
+      "omen",
+      "foreboding"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": 1631,
+    "word": "Precursor",
+    "pos": "noun",
+    "current_definition": "Something that comes before and leads to, or makes possible, a later thing or development.",
+    "synonyms": [
+      "forerunner",
+      "predecessor"
+    ],
+    "antonyms": [
+      "successor"
+    ]
+  },
+  {
+    "id": 1632,
+    "word": "Beget",
+    "pos": "verb",
+    "current_definition": "To cause something to come into existence; to produce a result directly from an action or situation.",
+    "synonyms": [
+      "generate",
+      "produce"
+    ],
+    "antonyms": [
+      "prevent"
+    ]
+  },
+  {
+    "id": 1633,
+    "word": "Engender",
+    "pos": "verb",
+    "current_definition": "To bring about a feeling, condition, or situation, especially one that develops gradually from a cause.",
+    "synonyms": [
+      "foster",
+      "arouse"
+    ],
+    "antonyms": [
+      "suppress"
+    ]
+  },
+  {
+    "id": 1634,
+    "word": "Plethora",
+    "pos": "noun",
+    "current_definition": "A very large amount of something, often more than is needed or can easily be managed.",
+    "synonyms": [
+      "abundance",
+      "surplus"
+    ],
+    "antonyms": [
+      "scarcity"
+    ]
+  },
+  {
+    "id": 1635,
+    "word": "Precipitate",
+    "pos": "verb; adjective; noun",
+    "current_definition": "To cause something unpleasant or serious to happen sooner than expected or before anyone is ready.",
+    "synonyms": [
+      "trigger",
+      "hasten"
+    ],
+    "antonyms": [
+      "prevent",
+      "avert"
+    ]
+  },
+  {
+    "id": 1636,
+    "word": "Profuse",
+    "pos": "adjective",
+    "current_definition": "Produced or existing in very large quantities; given or expressed with great generosity or excess.",
+    "synonyms": [
+      "abundant",
+      "lavish"
+    ],
+    "antonyms": [
+      "sparse"
+    ]
+  },
+  {
+    "id": 1637,
+    "word": "Ramification",
+    "pos": "noun",
+    "current_definition": "An unintended or indirect consequence that spreads outward from a central event or decision, often making a situation more complex.",
+    "synonyms": [
+      "consequence",
+      "knock-on effect"
+    ],
+    "antonyms": []
+  }
+]

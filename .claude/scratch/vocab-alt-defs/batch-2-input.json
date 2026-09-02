@@ -1,0 +1,681 @@
+[
+  {
+    "id": 1080,
+    "word": "Espouse",
+    "pos": "verb",
+    "current_definition": "To publicly adopt, support, and promote a belief, cause, or set of ideas—to commit yourself to it openly and speak up for it.",
+    "synonyms": [
+      "advocate",
+      "champion"
+    ],
+    "antonyms": [
+      "oppose"
+    ]
+  },
+  {
+    "id": 1081,
+    "word": "Ideology",
+    "pos": "noun",
+    "current_definition": "A complete set of ideas and beliefs—about how society should be organised, who should hold power, and what is just—that forms the basis of a political movement or system.",
+    "synonyms": [
+      "doctrine",
+      "creed"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": 1082,
+    "word": "Manifesto",
+    "pos": "noun",
+    "current_definition": "A public declaration in which a person, party, or movement sets out its goals, beliefs, and plans—especially before an election or at the start of a campaign.",
+    "synonyms": [
+      "platform",
+      "declaration"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": 1083,
+    "word": "Orthodox",
+    "pos": "adjective",
+    "current_definition": "Conforming to the accepted, established, or traditional beliefs of a religion, field, or group—not questioning or departing from the standard view.",
+    "synonyms": [
+      "conventional",
+      "traditional"
+    ],
+    "antonyms": [
+      "unorthodox"
+    ]
+  },
+  {
+    "id": 1084,
+    "word": "Partisan",
+    "pos": "adjective",
+    "current_definition": "(adjective) Strongly supporting one side or party in a dispute, with little interest in fairness to the other side. (noun) A committed supporter of a cause or party; also, a member of an armed resistance group fighting against an occupying force.",
+    "synonyms": [
+      "biased",
+      "one-sided"
+    ],
+    "antonyms": [
+      "impartial"
+    ]
+  },
+  {
+    "id": 1085,
+    "word": "Polemic",
+    "pos": "noun",
+    "current_definition": "(noun) A forceful, aggressive piece of writing or speech that attacks an opposing view, person, or institution—not trying to be fair, but trying to win the argument and discredit the other side. (adjective) Describing such writing or speech.",
+    "synonyms": [
+      "diatribe",
+      "tirade"
+    ],
+    "antonyms": [
+      "balanced account"
+    ]
+  },
+  {
+    "id": 1086,
+    "word": "Proponent",
+    "pos": "noun",
+    "current_definition": "A person who actively supports and argues in favour of a particular idea, plan, or cause—someone who promotes it and tries to convince others.",
+    "synonyms": [
+      "advocate",
+      "champion"
+    ],
+    "antonyms": [
+      "opponent"
+    ]
+  },
+  {
+    "id": 1087,
+    "word": "Tenet",
+    "pos": "noun",
+    "current_definition": "A core belief or principle that forms part of a larger set of ideas—one of the fundamental points that a religion, movement, or system is built on.",
+    "synonyms": [
+      "principle",
+      "doctrine"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": 1088,
+    "word": "Agenda",
+    "pos": "noun",
+    "current_definition": "A list of items to be discussed or dealt with at a meeting or during a period of activity.",
+    "synonyms": [
+      "plan",
+      "programme"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": 1089,
+    "word": "Artifice",
+    "pos": "noun",
+    "current_definition": "Clever trickery or deliberate deception used to gain an advantage—skill applied not to make something but to fool someone.",
+    "synonyms": [
+      "deception",
+      "cunning"
+    ],
+    "antonyms": [
+      "sincerity"
+    ]
+  },
+  {
+    "id": 1090,
+    "word": "Clique",
+    "pos": "noun",
+    "current_definition": "A small, tight group of people who socialise mostly with each other and deliberately exclude others—giving outsiders the impression they are not welcome.",
+    "synonyms": [
+      "coterie",
+      "faction"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": 1091,
+    "word": "Collusion",
+    "pos": "noun",
+    "current_definition": "Secret cooperation between two or more parties to achieve something dishonest or illegal—especially when they are supposed to be acting independently or against each other.",
+    "synonyms": [
+      "conspiracy",
+      "cooperation"
+    ],
+    "antonyms": [
+      "opposition"
+    ]
+  },
+  {
+    "id": 1092,
+    "word": "Complicity",
+    "pos": "noun",
+    "current_definition": "Involvement in or shared responsibility for a wrongdoing—knowing that something bad is happening and helping it along, even if you are not the one doing it directly.",
+    "synonyms": [
+      "involvement",
+      "participation"
+    ],
+    "antonyms": [
+      "innocence"
+    ]
+  },
+  {
+    "id": 1093,
+    "word": "Covert",
+    "pos": "adjective",
+    "current_definition": "Done in secret and deliberately hidden from public view—especially used for official or organised activities that are kept concealed.",
+    "synonyms": [
+      "secret",
+      "clandestine"
+    ],
+    "antonyms": [
+      "overt"
+    ]
+  },
+  {
+    "id": 1094,
+    "word": "Furtive",
+    "pos": "adjective",
+    "current_definition": "Done quickly and quietly to avoid being noticed—behaving as though you have something to hide, with nervous, secretive movements or glances.",
+    "synonyms": [
+      "secretive",
+      "stealthy"
+    ],
+    "antonyms": [
+      "open"
+    ]
+  },
+  {
+    "id": 1095,
+    "word": "Insidious",
+    "pos": "adjective",
+    "current_definition": "Spreading or developing slowly and harmfully in a way that is hard to notice until serious damage has already been done—dangerous precisely because it does not look dangerous at first.",
+    "synonyms": [
+      "subtle",
+      "stealthy"
+    ],
+    "antonyms": [
+      "obvious"
+    ]
+  },
+  {
+    "id": 1096,
+    "word": "Machination",
+    "pos": "noun",
+    "current_definition": "A secret and clever scheme to achieve a goal, usually by manipulating people or events behind the scenes—always implies dishonest or self-serving intent. Often used in the plural.",
+    "synonyms": [
+      "scheme",
+      "conspiracy"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": 1097,
+    "word": "Proprietary",
+    "pos": "adjective",
+    "current_definition": "Owned by a specific company or person and protected by law—not available for others to use, copy, or sell without permission.",
+    "synonyms": [
+      "private",
+      "exclusive"
+    ],
+    "antonyms": [
+      "public"
+    ]
+  },
+  {
+    "id": 1098,
+    "word": "Surreptitious",
+    "pos": "adjective",
+    "current_definition": "Done in a way that is kept carefully hidden, especially because it would not be approved of if seen—acting in secret to avoid detection.",
+    "synonyms": [
+      "furtive",
+      "covert"
+    ],
+    "antonyms": [
+      "open"
+    ]
+  },
+  {
+    "id": 1099,
+    "word": "Acrimonious",
+    "pos": "adjective",
+    "current_definition": "Full of anger, bitterness, and hostility—used to describe an argument, relationship, or split in which deep resentment is openly expressed.",
+    "synonyms": [
+      "bitter",
+      "hostile"
+    ],
+    "antonyms": [
+      "amicable"
+    ]
+  },
+  {
+    "id": 1100,
+    "word": "Blatant",
+    "pos": "adjective",
+    "current_definition": "So obvious and openly done that it cannot be missed or denied—said of something bad that the person doing it does not even try to hide.",
+    "synonyms": [
+      "flagrant",
+      "brazen"
+    ],
+    "antonyms": [
+      "subtle"
+    ]
+  },
+  {
+    "id": 1101,
+    "word": "Castigate",
+    "pos": "verb",
+    "current_definition": "To criticise someone very severely and harshly—usually in public and using strong language that makes clear how seriously they have failed or wronged others.",
+    "synonyms": [
+      "condemn",
+      "rebuke"
+    ],
+    "antonyms": [
+      "praise"
+    ]
+  },
+  {
+    "id": 1102,
+    "word": "Culpable",
+    "pos": "adjective",
+    "current_definition": "Deserving blame for something wrong or harmful—responsible for a fault or failure, whether through direct action or through negligence.",
+    "synonyms": [
+      "blameworthy",
+      "guilty"
+    ],
+    "antonyms": [
+      "innocent"
+    ]
+  },
+  {
+    "id": 1103,
+    "word": "Exonerate",
+    "pos": "verb",
+    "current_definition": "To officially clear someone of blame or a criminal charge—to formally state that they are not responsible for what they were accused of.",
+    "synonyms": [
+      "acquit",
+      "clear"
+    ],
+    "antonyms": [
+      "convict"
+    ]
+  },
+  {
+    "id": 1104,
+    "word": "Flagrant",
+    "pos": "adjective",
+    "current_definition": "Shockingly obvious and done without any attempt at concealment—used for wrongs so open and bold that they show complete disregard for rules or decency.",
+    "synonyms": [
+      "blatant",
+      "brazen"
+    ],
+    "antonyms": [
+      "subtle"
+    ]
+  },
+  {
+    "id": 1105,
+    "word": "Ignominy",
+    "pos": "noun",
+    "current_definition": "Deep public shame and disgrace—the humiliation of having your reputation destroyed in front of others, especially after a serious failure or moral wrongdoing.",
+    "synonyms": [
+      "disgrace",
+      "humiliation"
+    ],
+    "antonyms": [
+      "honour"
+    ]
+  },
+  {
+    "id": 1106,
+    "word": "Infamous",
+    "pos": "adjective",
+    "current_definition": "Well known for something bad, criminal, or morally shocking—famous in a negative sense, where the reputation is built entirely on wrongdoing or scandal.",
+    "synonyms": [
+      "notorious",
+      "disreputable"
+    ],
+    "antonyms": [
+      "celebrated"
+    ]
+  },
+  {
+    "id": 1107,
+    "word": "Notorious",
+    "pos": "adjective",
+    "current_definition": "Widely known and talked about because of something bad—having a reputation that is established and recognised far beyond the original offence or scandal.",
+    "synonyms": [
+      "infamous",
+      "disreputable"
+    ],
+    "antonyms": [
+      "unknown"
+    ]
+  },
+  {
+    "id": 1108,
+    "word": "Reprehensible",
+    "pos": "adjective",
+    "current_definition": "Deserving very strong moral criticism—so wrong that it cannot be excused or defended, and any decent person should condemn it.",
+    "synonyms": [
+      "deplorable",
+      "inexcusable"
+    ],
+    "antonyms": [
+      "admirable"
+    ]
+  },
+  {
+    "id": 1109,
+    "word": "Stigmatize",
+    "pos": "verb",
+    "current_definition": "To mark or treat a person or group as shameful, inferior, or unacceptable—in a way that becomes a lasting social label that follows them in public life.",
+    "synonyms": [
+      "shame",
+      "brand"
+    ],
+    "antonyms": [
+      "rehabilitate"
+    ]
+  },
+  {
+    "id": 1110,
+    "word": "Turpitude",
+    "pos": "noun",
+    "current_definition": "Behaviour that is deeply immoral, wicked, or corrupt—used especially in legal and formal contexts to describe conduct so dishonest or depraved that it disqualifies a person from holding a position of trust.",
+    "synonyms": [
+      "depravity",
+      "wickedness"
+    ],
+    "antonyms": [
+      "virtue"
+    ]
+  },
+  {
+    "id": 1111,
+    "word": "Adherent",
+    "pos": "noun",
+    "current_definition": "A person who supports and follows a particular leader, belief, movement, or set of ideas—committed enough to identify themselves with it publicly.",
+    "synonyms": [
+      "follower",
+      "supporter"
+    ],
+    "antonyms": [
+      "opponent"
+    ]
+  },
+  {
+    "id": 1112,
+    "word": "Cajole",
+    "pos": "verb",
+    "current_definition": "To persuade someone to do something by using flattery, gentle pressure, or repeated coaxing—not by force, but by wearing down resistance with persistent charm.",
+    "synonyms": [
+      "coax",
+      "wheedle"
+    ],
+    "antonyms": [
+      "force"
+    ]
+  },
+  {
+    "id": 1113,
+    "word": "Deference",
+    "pos": "noun",
+    "current_definition": "Respectful submission to the wishes, judgment, or authority of another—choosing to follow their lead rather than assert your own view, out of respect for their position or expertise.",
+    "synonyms": [
+      "submission",
+      "respect"
+    ],
+    "antonyms": [
+      "defiance"
+    ]
+  },
+  {
+    "id": 1114,
+    "word": "Docile",
+    "pos": "adjective",
+    "current_definition": "Quiet, obedient, and easy to manage or control—willing to follow instructions without resistance or complaint.",
+    "synonyms": [
+      "obedient",
+      "compliant"
+    ],
+    "antonyms": [
+      "defiant"
+    ]
+  },
+  {
+    "id": 1115,
+    "word": "Nominal",
+    "pos": "adjective",
+    "current_definition": "In name only—holding a title or position without the real power, authority, or substance that the title suggests.",
+    "synonyms": [
+      "token",
+      "titular"
+    ],
+    "antonyms": [
+      "actual"
+    ]
+  },
+  {
+    "id": 1116,
+    "word": "Obsequious",
+    "pos": "adjective",
+    "current_definition": "Excessively eager to please or obey someone in authority—flattering and submissive to the point where it becomes obvious and unpleasant to watch.",
+    "synonyms": [
+      "servile",
+      "fawning"
+    ],
+    "antonyms": [
+      "assertive"
+    ]
+  },
+  {
+    "id": 1117,
+    "word": "Officious",
+    "pos": "adjective",
+    "current_definition": "Annoyingly eager to give orders, enforce rules, or interfere in other people's affairs—especially when you have no real authority to do so.",
+    "synonyms": [
+      "meddlesome",
+      "interfering"
+    ],
+    "antonyms": [
+      "restrained"
+    ]
+  },
+  {
+    "id": 1118,
+    "word": "Reprove",
+    "pos": "verb",
+    "current_definition": "To express disapproval of someone's behaviour, usually in a mild or calm way—not a harsh punishment, but a clear signal that what they did was wrong.",
+    "synonyms": [
+      "rebuke",
+      "admonish"
+    ],
+    "antonyms": [
+      "praise"
+    ]
+  },
+  {
+    "id": 1119,
+    "word": "Servile",
+    "pos": "adjective",
+    "current_definition": "Excessively eager to serve or obey others—behaving as though your only purpose is to please those above you, with no independent will or self-respect.",
+    "synonyms": [
+      "submissive",
+      "obsequious"
+    ],
+    "antonyms": [
+      "assertive"
+    ]
+  },
+  {
+    "id": 1120,
+    "word": "Sycophant",
+    "pos": "noun",
+    "current_definition": "A person who flatters and agrees with someone powerful in order to gain favour—saying what that person wants to hear rather than what is true or useful.",
+    "synonyms": [
+      "flatterer",
+      "yes-man"
+    ],
+    "antonyms": [
+      "critic"
+    ]
+  },
+  {
+    "id": 1121,
+    "word": "Appropriate",
+    "pos": "verb",
+    "current_definition": "To take something for one's own use, typically without the owner's permission; to officially allocate money or resources for a specific purpose.",
+    "synonyms": [
+      "commandeer",
+      "seize",
+      "allocate",
+      "earmark"
+    ],
+    "antonyms": [
+      "relinquish",
+      "surrender",
+      "return"
+    ]
+  },
+  {
+    "id": 1122,
+    "word": "Autonomous",
+    "pos": "adjective",
+    "current_definition": "Having the freedom to act independently; self-governing; not controlled by others.",
+    "synonyms": [
+      "independent",
+      "self-governing",
+      "sovereign",
+      "self-sufficient"
+    ],
+    "antonyms": [
+      "dependent",
+      "controlled",
+      "subservient"
+    ]
+  },
+  {
+    "id": 1123,
+    "word": "Bureaucracy",
+    "pos": "noun",
+    "current_definition": "A system of government or management with complex rules and processes; excessive official paperwork and regulation.",
+    "synonyms": [
+      "administration",
+      "officialdom",
+      "red tape",
+      "apparatus"
+    ],
+    "antonyms": [
+      "efficiency",
+      "simplicity",
+      "directness"
+    ]
+  },
+  {
+    "id": 1124,
+    "word": "Curtail",
+    "pos": "verb",
+    "current_definition": "To reduce or limit something; to impose a restriction that cuts something short.",
+    "synonyms": [
+      "restrict",
+      "reduce",
+      "limit",
+      "diminish",
+      "cut back"
+    ],
+    "antonyms": [
+      "expand",
+      "extend",
+      "increase",
+      "amplify"
+    ]
+  },
+  {
+    "id": 1125,
+    "word": "Magnate",
+    "pos": "noun",
+    "current_definition": "A wealthy and influential person, especially in business or industry; a powerful figure in a particular field.",
+    "synonyms": [
+      "tycoon",
+      "mogul",
+      "baron",
+      "industrialist",
+      "plutocrat"
+    ],
+    "antonyms": [
+      "pauper",
+      "commoner",
+      "nobody"
+    ]
+  },
+  {
+    "id": 1126,
+    "word": "Nepotism",
+    "pos": "noun",
+    "current_definition": "The practice of favoring relatives or close friends when giving jobs or other advantages, especially in a position of power.",
+    "synonyms": [
+      "favoritism",
+      "cronyism",
+      "partisanship",
+      "bias"
+    ],
+    "antonyms": [
+      "meritocracy",
+      "impartiality",
+      "fairness"
+    ]
+  },
+  {
+    "id": 1127,
+    "word": "Paternal",
+    "pos": "adjective",
+    "current_definition": "Of or relating to a father; showing fatherly protection, concern, or guidance; characteristic of a caring but controlling authority.",
+    "synonyms": [
+      "fatherly",
+      "protective",
+      "paternalistic",
+      "patriarchal"
+    ],
+    "antonyms": [
+      "maternal",
+      "filial",
+      "indifferent"
+    ]
+  },
+  {
+    "id": 1128,
+    "word": "Patriarch",
+    "pos": "noun",
+    "current_definition": "The male head of a family or tribe; a man who is the founder or dominant figure of a community or organization.",
+    "synonyms": [
+      "elder",
+      "head",
+      "chief",
+      "founder",
+      "father figure"
+    ],
+    "antonyms": [
+      "matriarch",
+      "subordinate"
+    ]
+  },
+  {
+    "id": 1129,
+    "word": "Peremptory",
+    "pos": "adjective",
+    "current_definition": "Insisting on immediate attention or obedience in a brusquely imperious way; not allowing contradiction or refusal.",
+    "synonyms": [
+      "imperious",
+      "commanding",
+      "dictatorial",
+      "high-handed",
+      "authoritative"
+    ],
+    "antonyms": [
+      "respectful",
+      "humble",
+      "tentative",
+      "polite"
+    ]
+  }
+]

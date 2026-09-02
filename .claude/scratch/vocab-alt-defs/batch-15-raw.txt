@@ -1,0 +1,50 @@
+person who gives support,positive,1742
+kind and generous,positive,1743
+gift left in a will,neutral,1744
+generous giving of gifts,positive,1745
+organized giving for public good,positive,1746
+wasteful with money,negative,1747
+prepared for future needs,positive,1748
+warmly attentive and caring,positive,1749
+deny oneself something desired,neutral,1750
+choosing to avoid physical pleasures,neutral,1751
+rejecting comfort for spiritual discipline,neutral,1752
+plain and without comforts,neutral,1753
+choosing neither marriage nor sex,neutral,1754
+patiently hold oneself back,neutral,1755
+choose to give up,neutral,1756
+abandon completely,negative,1757
+careful not to waste money,positive,1758
+unreasonably unwilling to spend,negative,1759
+freedom from alcohol or drugs,positive,1760
+moderate and self-controlled,positive,1761
+make impure by adding inferior material,negative,1762
+cleverly deceptive,negative,1763
+fake expert who deceives others,negative,1764
+clever dishonest trickery,negative,1765
+make someone believe something false,negative,1766
+two-faced dishonesty,negative,1767
+made-up claim presented as fact,negative,1768
+skillful handling of delicate situations,positive,1769
+cleverness used to deceive,negative,1770
+seemingly reasonable but actually false,negative,1771
+open to multiple meanings,neutral,1772
+unnecessarily long and indirect,negative,1773
+using too many indirect words,negative,1774
+shortened until unclear,negative,1775
+deliberately unclear and noncommittal,negative,1776
+mild substitute for harsh wording,neutral,1777
+indirectly suggest something unpleasant,negative,1778
+habitually dishonest,negative,1779
+deliberately make hard to understand,negative,1780
+indirect or slanting,neutral,1781
+apparent but possibly not real,neutral,1782
+declare openly,neutral,1783
+too ready to believe,negative,1785
+unbiased by personal gain,positive,1786
+fully clear and directly stated,neutral,1787
+faithfulness to someone,positive,1788
+fair and unbiased,positive,1789
+openly honest and innocent,positive,1790
+plainly obvious,neutral,1791
+unaware and unintentional,neutral,1792

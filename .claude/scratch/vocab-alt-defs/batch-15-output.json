@@ -1,0 +1,252 @@
+[
+  {
+    "word_id": 1742,
+    "alt_definition": "person who gives support",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1743,
+    "alt_definition": "kind and generous",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1744,
+    "alt_definition": "gift left in a will",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1745,
+    "alt_definition": "generosity from someone powerful",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1746,
+    "alt_definition": "organized giving for public good",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1747,
+    "alt_definition": "wasteful with money",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1748,
+    "alt_definition": "prepared for future needs",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1749,
+    "alt_definition": "warmly attentive and caring",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1750,
+    "alt_definition": "deny oneself something desired",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1751,
+    "alt_definition": "choosing to avoid physical pleasures",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1752,
+    "alt_definition": "rejecting comfort for spiritual discipline",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1753,
+    "alt_definition": "plain and without comforts",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1754,
+    "alt_definition": "choosing neither marriage nor sex",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1755,
+    "alt_definition": "patiently hold oneself back",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1756,
+    "alt_definition": "pass up an available option",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1757,
+    "alt_definition": "abandon completely",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1758,
+    "alt_definition": "careful not to waste money",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1759,
+    "alt_definition": "unreasonably unwilling to spend",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1760,
+    "alt_definition": "freedom from alcohol or drugs",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1761,
+    "alt_definition": "moderate and self-controlled",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1762,
+    "alt_definition": "make impure by adding inferior material",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1763,
+    "alt_definition": "cleverly deceptive",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1764,
+    "alt_definition": "fake expert who deceives others",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1765,
+    "alt_definition": "clever dishonest trickery",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1766,
+    "alt_definition": "make someone believe something false",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1767,
+    "alt_definition": "two-faced dishonesty",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1768,
+    "alt_definition": "made-up claim presented as fact",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1769,
+    "alt_definition": "skillful handling of delicate situations",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1770,
+    "alt_definition": "cleverness used to deceive",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1771,
+    "alt_definition": "seemingly reasonable but actually false",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1772,
+    "alt_definition": "open to multiple meanings",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1773,
+    "alt_definition": "unnecessarily long and indirect",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1774,
+    "alt_definition": "using too many indirect words",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1775,
+    "alt_definition": "shortened until unclear",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1776,
+    "alt_definition": "deliberately unclear and noncommittal",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1777,
+    "alt_definition": "mild substitute for harsh wording",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1778,
+    "alt_definition": "indirectly suggest something unpleasant",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1779,
+    "alt_definition": "habitually dishonest",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1780,
+    "alt_definition": "deliberately make hard to understand",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1781,
+    "alt_definition": "indirect or slanting",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1782,
+    "alt_definition": "apparent but possibly not real",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1783,
+    "alt_definition": "declare openly",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1785,
+    "alt_definition": "too ready to believe",
+    "general_connotation": "negative"
+  },
+  {
+    "word_id": 1786,
+    "alt_definition": "unbiased by personal gain",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1787,
+    "alt_definition": "fully clear and directly stated",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1788,
+    "alt_definition": "faithfulness to someone",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1789,
+    "alt_definition": "fair and unbiased",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1790,
+    "alt_definition": "openly honest and innocent",
+    "general_connotation": "positive"
+  },
+  {
+    "word_id": 1791,
+    "alt_definition": "plainly obvious",
+    "general_connotation": "neutral"
+  },
+  {
+    "word_id": 1792,
+    "alt_definition": "unaware and unintentional",
+    "general_connotation": "neutral"
+  }
+]

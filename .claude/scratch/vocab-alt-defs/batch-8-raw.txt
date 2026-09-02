@@ -1,0 +1,50 @@
+a direct logical consequence,neutral,1384
+confirm with independent evidence,neutral,1385
+reach a logical conclusion,neutral,1386
+based on observation or experiment,neutral,1387
+project trends beyond known data,neutral,1388
+imagined rather than real,neutral,1389
+conclude from indirect evidence,neutral,1390
+propose as an unproven assumption,neutral,1391
+a basis for reasoning,neutral,1392
+combination into a coherent whole,neutral,1393
+smugly and pointlessly foolish,negative,1395
+completely senseless or meaningless,negative,1396
+strangely out of place,negative,1397
+vague and poorly defined,negative,1398
+annoyingly slow to understand,negative,1399
+unnecessarily repetitive,negative,1400
+true by repeating the same idea,negative,1401
+a brief memorable general truth,neutral,1402
+a truth accepted without proof,neutral,1403
+an authoritative formal statement,neutral,1404
+serve as a clear example,neutral,1405
+a brief rule for living,neutral,1406
+an experienced trusted guide,positive,1407
+new and original,positive,1408
+an accepted model or framework,neutral,1409
+a guiding rule or principle,neutral,1410
+most noticeable or important,neutral,1411
+a standard for judging quality,neutral,1412
+an imagined perfect society,positive,1413
+difficult for nonexperts to understand,negative,1414
+known only to specialists,neutral,1415
+mysterious and hard to interpret,negative,1416
+a deeply puzzling mystery,neutral,1417
+understood only by specialists,neutral,1418
+not allowing substances through,neutral,1419
+present but hidden or inactive,neutral,1420
+little known or discussed,neutral,1421
+not allowing light through,neutral,1422
+a chronological record of events,neutral,1423
+related to thinking and knowing,neutral,1424
+fully aware of something,neutral,1425
+a concise collection of information,neutral,1426
+covering nearly every aspect,positive,1427
+thoroughly covering every possibility,positive,1428
+formally enroll at a university,neutral,1429
+focused on qualities not quantities,neutral,1430
+highly specialized and hard to understand,neutral,1431
+related to the physical senses,neutral,1432
+able to feel and perceive,neutral,1433
+naturally and inseparably present,neutral,1434

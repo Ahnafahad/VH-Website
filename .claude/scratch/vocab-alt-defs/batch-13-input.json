@@ -1,0 +1,656 @@
+[
+  {
+    "id": 1638,
+    "word": "Repercussion",
+    "pos": "noun",
+    "current_definition": "An unpleasant or far-reaching result that follows an event, felt some time after the original cause.",
+    "synonyms": [
+      "aftermath",
+      "fallout"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": 1639,
+    "word": "Spawn",
+    "pos": "verb",
+    "current_definition": "To cause a large number of new things—often problems, ideas, or other events—to come into being at once.",
+    "synonyms": [
+      "generate",
+      "breed"
+    ],
+    "antonyms": [
+      "stifle"
+    ]
+  },
+  {
+    "id": 1641,
+    "word": "Apocalypse",
+    "pos": "noun",
+    "current_definition": "A catastrophic event that causes enormous destruction or brings about the end of a way of life; complete and final ruin.",
+    "synonyms": [
+      "catastrophe",
+      "annihilation"
+    ],
+    "antonyms": [
+      "salvation"
+    ]
+  },
+  {
+    "id": 1642,
+    "word": "Dissolution",
+    "pos": "noun",
+    "current_definition": "The process by which something gradually breaks apart, comes to an end, or loses its form.",
+    "synonyms": [
+      "disintegration",
+      "collapse"
+    ],
+    "antonyms": [
+      "formation"
+    ]
+  },
+  {
+    "id": 1643,
+    "word": "Ephemeral",
+    "pos": "adjective",
+    "current_definition": "Lasting for only a very short time by its very nature; fleeting in a way that cannot be changed.",
+    "synonyms": [
+      "fleeting",
+      "momentary"
+    ],
+    "antonyms": [
+      "enduring"
+    ]
+  },
+  {
+    "id": 1644,
+    "word": "Hiatus",
+    "pos": "noun",
+    "current_definition": "A pause or gap in an activity or process, during which nothing happens for a period of time.",
+    "synonyms": [
+      "interruption",
+      "interval"
+    ],
+    "antonyms": [
+      "continuation"
+    ]
+  },
+  {
+    "id": 1645,
+    "word": "Incipient",
+    "pos": "adjective",
+    "current_definition": "Just beginning to develop or appear; in the earliest, barely noticeable stage of a process.",
+    "synonyms": [
+      "emerging",
+      "budding"
+    ],
+    "antonyms": [
+      "established"
+    ]
+  },
+  {
+    "id": 1646,
+    "word": "Malleable",
+    "pos": "adjective",
+    "current_definition": "Able to be shaped, changed, or influenced without breaking; adaptable to new conditions.",
+    "synonyms": [
+      "flexible",
+      "adaptable"
+    ],
+    "antonyms": [
+      "rigid"
+    ]
+  },
+  {
+    "id": 1647,
+    "word": "Metamorphosis",
+    "pos": "noun",
+    "current_definition": "A complete and usually dramatic change in form, character, or nature—often one that happens over time.",
+    "synonyms": [
+      "transformation",
+      "evolution"
+    ],
+    "antonyms": [
+      "stagnation"
+    ]
+  },
+  {
+    "id": 1648,
+    "word": "Pivotal",
+    "pos": "adjective",
+    "current_definition": "Of central importance to how something develops; describing the one moment or factor on which everything else depends.",
+    "synonyms": [
+      "crucial",
+      "decisive"
+    ],
+    "antonyms": [
+      "insignificant"
+    ]
+  },
+  {
+    "id": 1649,
+    "word": "Precipitous",
+    "pos": "adjective",
+    "current_definition": "Happening very suddenly and steeply, especially a sharp decline or drop.",
+    "synonyms": [
+      "sudden",
+      "abrupt"
+    ],
+    "antonyms": [
+      "gradual"
+    ]
+  },
+  {
+    "id": 1650,
+    "word": "Sporadic",
+    "pos": "adjective",
+    "current_definition": "Happening only occasionally and at irregular intervals, with no clear pattern.",
+    "synonyms": [
+      "intermittent",
+      "irregular"
+    ],
+    "antonyms": [
+      "constant"
+    ]
+  },
+  {
+    "id": 1651,
+    "word": "Transient",
+    "pos": "adjective",
+    "current_definition": "Passing through or lasting only a short time; present briefly before moving on.",
+    "synonyms": [
+      "temporary",
+      "fleeting"
+    ],
+    "antonyms": [
+      "permanent"
+    ]
+  },
+  {
+    "id": 1652,
+    "word": "Adverse",
+    "pos": "adjective",
+    "current_definition": "Unfavorable or harmful; working against success or well-being in a way that makes progress difficult.",
+    "synonyms": [
+      "unfavorable",
+      "hostile"
+    ],
+    "antonyms": [
+      "favorable"
+    ]
+  },
+  {
+    "id": 1653,
+    "word": "Arduous",
+    "pos": "adjective",
+    "current_definition": "Requiring a very great amount of effort, endurance, or hard work over a long period of time.",
+    "synonyms": [
+      "grueling",
+      "strenuous"
+    ],
+    "antonyms": [
+      "effortless"
+    ]
+  },
+  {
+    "id": 1654,
+    "word": "Attrition",
+    "pos": "noun",
+    "current_definition": "A gradual reduction in numbers, strength, or resources through sustained pressure, loss, or wear rather than a single blow.",
+    "synonyms": [
+      "erosion",
+      "depletion"
+    ],
+    "antonyms": [
+      "growth"
+    ]
+  },
+  {
+    "id": 1655,
+    "word": "Debilitate",
+    "pos": "verb",
+    "current_definition": "To make someone or something very weak and unable to function properly, especially through prolonged strain or damage.",
+    "synonyms": [
+      "weaken",
+      "incapacitate"
+    ],
+    "antonyms": [
+      "strengthen"
+    ]
+  },
+  {
+    "id": 1656,
+    "word": "Deleterious",
+    "pos": "adjective",
+    "current_definition": "Causing harm or damage, especially in a way that builds up gradually and may not be noticed at first.",
+    "synonyms": [
+      "harmful",
+      "damaging"
+    ],
+    "antonyms": [
+      "beneficial"
+    ]
+  },
+  {
+    "id": 1657,
+    "word": "Encroach",
+    "pos": "verb",
+    "current_definition": "To gradually move into or take over an area, right, or domain that belongs to someone else, often in small steps.",
+    "synonyms": [
+      "intrude",
+      "infringe"
+    ],
+    "antonyms": [
+      "retreat"
+    ]
+  },
+  {
+    "id": 1658,
+    "word": "Exigency",
+    "pos": "noun",
+    "current_definition": "An urgent situation or pressing demand that requires immediate attention or action; a condition of great difficulty or need.",
+    "synonyms": [
+      "urgency",
+      "necessity"
+    ],
+    "antonyms": [
+      "luxury"
+    ]
+  },
+  {
+    "id": 1659,
+    "word": "Extricate",
+    "pos": "verb",
+    "current_definition": "To free someone or something from a difficult, complicated, or dangerous situation that it is trapped in.",
+    "synonyms": [
+      "free",
+      "disentangle"
+    ],
+    "antonyms": [
+      "entangle"
+    ]
+  },
+  {
+    "id": 1660,
+    "word": "Fetter",
+    "pos": "noun",
+    "current_definition": "Something that restricts freedom of action or progress; a constraint that limits what someone can do.",
+    "synonyms": [
+      "constraint",
+      "shackle",
+      "restrict",
+      "hamper"
+    ],
+    "antonyms": [
+      "freedom",
+      "liberate"
+    ]
+  },
+  {
+    "id": 1661,
+    "word": "Labyrinth",
+    "pos": "noun",
+    "current_definition": "A complicated and confusing network of rules, processes, or paths that is very difficult to navigate or find a way through.",
+    "synonyms": [
+      "maze",
+      "tangle"
+    ],
+    "antonyms": [
+      "straightforward path"
+    ]
+  },
+  {
+    "id": 1662,
+    "word": "Onerous",
+    "pos": "adjective",
+    "current_definition": "Involving a very heavy burden of work, responsibility, or difficulty; more demanding than seems fair or reasonable.",
+    "synonyms": [
+      "burdensome",
+      "oppressive"
+    ],
+    "antonyms": [
+      "light"
+    ]
+  },
+  {
+    "id": 1663,
+    "word": "Stringent",
+    "pos": "adjective",
+    "current_definition": "Very strict and demanding, leaving very little room for exceptions or flexibility; applied with great severity.",
+    "synonyms": [
+      "strict",
+      "rigorous"
+    ],
+    "antonyms": [
+      "lenient"
+    ]
+  },
+  {
+    "id": 1664,
+    "word": "Effusion",
+    "pos": "noun",
+    "current_definition": "A free and uncontrolled outpouring of words, feelings, or liquid.",
+    "synonyms": [
+      "outpouring",
+      "gush"
+    ],
+    "antonyms": [
+      "restraint"
+    ]
+  },
+  {
+    "id": 1665,
+    "word": "Ethereal",
+    "pos": "adjective",
+    "current_definition": "So delicate and light as to seem not of this physical world; airy and almost heavenly in quality.",
+    "synonyms": [
+      "delicate",
+      "otherworldly"
+    ],
+    "antonyms": [
+      "coarse"
+    ]
+  },
+  {
+    "id": 1666,
+    "word": "Evanescent",
+    "pos": "adjective",
+    "current_definition": "Lasting only a very short time before vanishing; tending to fade and disappear quickly.",
+    "synonyms": [
+      "fleeting",
+      "transient"
+    ],
+    "antonyms": [
+      "lasting"
+    ]
+  },
+  {
+    "id": 1667,
+    "word": "Incandescent",
+    "pos": "adjective",
+    "current_definition": "Glowing intensely with light or heat; brilliantly bright.",
+    "synonyms": [
+      "radiant",
+      "blazing"
+    ],
+    "antonyms": [
+      "dim"
+    ]
+  },
+  {
+    "id": 1669,
+    "word": "Luminous",
+    "pos": "adjective",
+    "current_definition": "Giving off or full of light; brightly glowing.",
+    "synonyms": [
+      "radiant",
+      "glowing"
+    ],
+    "antonyms": [
+      "dim"
+    ]
+  },
+  {
+    "id": 1670,
+    "word": "Profound",
+    "pos": "adjective",
+    "current_definition": "Showing deep understanding or insight; intellectually penetrating far below the surface.",
+    "synonyms": [
+      "deep",
+      "penetrating"
+    ],
+    "antonyms": [
+      "shallow"
+    ]
+  },
+  {
+    "id": 1671,
+    "word": "Scintillate",
+    "pos": "verb",
+    "current_definition": "To give off small flashes of light; to sparkle.",
+    "synonyms": [
+      "sparkle",
+      "dazzle"
+    ],
+    "antonyms": [
+      "dull"
+    ]
+  },
+  {
+    "id": 1672,
+    "word": "Substantive",
+    "pos": "adjective",
+    "current_definition": "Having real importance, meaning, or value; solid and significant rather than superficial.",
+    "synonyms": [
+      "meaningful",
+      "significant"
+    ],
+    "antonyms": [
+      "trivial"
+    ]
+  },
+  {
+    "id": 1673,
+    "word": "Tenable",
+    "pos": "adjective",
+    "current_definition": "Able to be defended, supported, or maintained against challenge or criticism; reasonable enough to hold.",
+    "synonyms": [
+      "defensible",
+      "reasonable"
+    ],
+    "antonyms": [
+      "indefensible"
+    ]
+  },
+  {
+    "id": 1674,
+    "word": "Transcend",
+    "pos": "verb",
+    "current_definition": "To go beyond the normal limits of something; to rise above and surpass what is ordinarily possible.",
+    "synonyms": [
+      "surpass",
+      "exceed"
+    ],
+    "antonyms": [
+      "fall short of"
+    ]
+  },
+  {
+    "id": 1675,
+    "word": "Chronic",
+    "pos": "adjective",
+    "current_definition": "(of an illness or problem) lasting a long time or recurring constantly; not easily cured or resolved.",
+    "synonyms": [
+      "persistent",
+      "long-standing"
+    ],
+    "antonyms": [
+      "acute"
+    ]
+  },
+  {
+    "id": 1676,
+    "word": "Congenital",
+    "pos": "adjective",
+    "current_definition": "(of a condition) present from the time of birth, whether inherited or caused during development before birth.",
+    "synonyms": [
+      "inborn",
+      "innate"
+    ],
+    "antonyms": [
+      "acquired"
+    ]
+  },
+  {
+    "id": 1677,
+    "word": "Decimate",
+    "pos": "verb",
+    "current_definition": "To destroy or kill a large part of a group, population, or thing; to reduce drastically in number or strength.",
+    "synonyms": [
+      "devastate",
+      "ravage"
+    ],
+    "antonyms": [
+      "replenish"
+    ]
+  },
+  {
+    "id": 1678,
+    "word": "Desiccate",
+    "pos": "verb",
+    "current_definition": "To remove all moisture from something; to dry out completely, leaving it withered and lifeless.",
+    "synonyms": [
+      "dehydrate",
+      "parch"
+    ],
+    "antonyms": [
+      "hydrate"
+    ]
+  },
+  {
+    "id": 1679,
+    "word": "Distend",
+    "pos": "verb",
+    "current_definition": "To swell or stretch outward, especially because of pressure from inside; to cause a body part to bulge abnormally.",
+    "synonyms": [
+      "swell",
+      "bloat"
+    ],
+    "antonyms": [
+      "contract"
+    ]
+  },
+  {
+    "id": 1680,
+    "word": "Impotency",
+    "pos": "noun",
+    "current_definition": "The state of being powerless to act, change, or prevent something.",
+    "synonyms": [
+      "helplessness",
+      "powerlessness"
+    ],
+    "antonyms": [
+      "potency"
+    ]
+  },
+  {
+    "id": 1681,
+    "word": "Impotent",
+    "pos": "adjective",
+    "current_definition": "Completely unable to act effectively or bring about change; lacking all power or influence.",
+    "synonyms": [
+      "powerless",
+      "helpless"
+    ],
+    "antonyms": [
+      "potent"
+    ]
+  },
+  {
+    "id": 1682,
+    "word": "Malignant",
+    "pos": "adjective",
+    "current_definition": "(of a tumour or disease) tending to invade surrounding tissue and spread to other parts of the body; life-threatening.",
+    "synonyms": [
+      "cancerous",
+      "dangerous"
+    ],
+    "antonyms": [
+      "benign"
+    ]
+  },
+  {
+    "id": 1683,
+    "word": "Malinger",
+    "pos": "verb",
+    "current_definition": "To pretend to be ill or more seriously ill than one is in order to avoid work or duty.",
+    "synonyms": [
+      "feign",
+      "fake"
+    ],
+    "antonyms": [
+      "persevere"
+    ]
+  },
+  {
+    "id": 1684,
+    "word": "Moribund",
+    "pos": "adjective",
+    "current_definition": "At the point of death; in a state of dying.",
+    "synonyms": [
+      "dying",
+      "failing"
+    ],
+    "antonyms": [
+      "thriving"
+    ]
+  },
+  {
+    "id": 1685,
+    "word": "Palliate",
+    "pos": "verb",
+    "current_definition": "To make the symptoms of a disease less severe without curing it; more broadly, to reduce the apparent seriousness of something without addressing the underlying cause.",
+    "synonyms": [
+      "relieve",
+      "alleviate"
+    ],
+    "antonyms": [
+      "worsen"
+    ]
+  },
+  {
+    "id": 1686,
+    "word": "Pathology",
+    "pos": "noun",
+    "current_definition": "The branch of medicine concerned with the causes and effects of diseases, especially as seen through laboratory analysis of body tissue.",
+    "synonyms": [
+      "disease study",
+      "diagnosis"
+    ],
+    "antonyms": []
+  },
+  {
+    "id": 1687,
+    "word": "Aggregate",
+    "pos": "noun",
+    "current_definition": "A total or whole formed by combining many separate parts into one amount or group.",
+    "synonyms": [
+      "total",
+      "sum",
+      "combine",
+      "collect"
+    ],
+    "antonyms": [
+      "portion",
+      "separate"
+    ]
+  },
+  {
+    "id": 1688,
+    "word": "Awry",
+    "pos": "adjective",
+    "current_definition": "Not going as planned; wrong or off course.",
+    "synonyms": [
+      "off course",
+      "amiss",
+      "crookedly"
+    ],
+    "antonyms": [
+      "on track",
+      "straight"
+    ]
+  },
+  {
+    "id": 1689,
+    "word": "Circumvent",
+    "pos": "verb",
+    "current_definition": "To get around a rule, obstacle, or difficulty by finding a clever or indirect route rather than confronting it head-on.",
+    "synonyms": [
+      "bypass",
+      "sidestep"
+    ],
+    "antonyms": [
+      "comply with"
+    ]
+  }
+]
