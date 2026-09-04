@@ -1,0 +1,2725 @@
+{
+  "slug": "bth-topical-exam-maths-1",
+  "title": "BTH Topical Exam Maths 1",
+  "bucket": "iba",
+  "description": "Number System - Lectures 1.1-1.3. 90 questions, 90 marks, 100 minutes. Offline sitting — the questions are on the printed paper; answers are entered here.",
+  "sections": [
+    {
+      "order": 1,
+      "title": "Number System - Lectures 1.1-1.3",
+      "marksPerCorrect": 1,
+      "penaltyPerWrong": 0.25,
+      "thresholdPercent": null,
+      "groups": [
+        {
+          "ref": "s1-instructions",
+          "kind": "instruction",
+          "title": null,
+          "content": "**Number System - Lectures 1.1-1.3** — Topical Exam 1.\n\n90 questions, 90 marks, 100 minutes. Each correct answer earns 1 mark; each wrong answer costs 0.25. Unanswered questions score zero.\n\nThis is an **offline sitting**. The questions are on your printed question paper — this screen is the answer sheet. Shade the letter matching your choice for each question number."
+        }
+      ],
+      "questions": [
+        {
+          "number": 1,
+          "group": "s1-instructions",
+          "stem": "What is the units digit of $7^{23}$?",
+          "options": [
+            {
+              "key": "A",
+              "text": "3"
+            },
+            {
+              "key": "B",
+              "text": "1"
+            },
+            {
+              "key": "C",
+              "text": "7"
+            },
+            {
+              "key": "D",
+              "text": "9"
+            },
+            {
+              "key": "E",
+              "text": "0"
+            }
+          ],
+          "correctKey": "A",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 2,
+          "group": null,
+          "stem": "If $x < 0 < y$ and $|x| > |y|$, what is the sign of $x+y$?",
+          "options": [
+            {
+              "key": "A",
+              "text": "Positive"
+            },
+            {
+              "key": "B",
+              "text": "Zero"
+            },
+            {
+              "key": "C",
+              "text": "Cannot be determined"
+            },
+            {
+              "key": "D",
+              "text": "Negative"
+            },
+            {
+              "key": "E",
+              "text": "Depends on whether $x$ is even"
+            }
+          ],
+          "correctKey": "D",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 3,
+          "group": null,
+          "stem": "Which of the following is irrational?",
+          "options": [
+            {
+              "key": "A",
+              "text": "$\\sqrt{50}$"
+            },
+            {
+              "key": "B",
+              "text": "$\\sqrt{49}$"
+            },
+            {
+              "key": "C",
+              "text": "$0.454545\\ldots$"
+            },
+            {
+              "key": "D",
+              "text": "$7/9$"
+            },
+            {
+              "key": "E",
+              "text": "$-12$"
+            }
+          ],
+          "correctKey": "A",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 4,
+          "group": null,
+          "stem": "If $|2x - 5| = 11$, what is the sum of all possible values of $x$?",
+          "options": [
+            {
+              "key": "A",
+              "text": "3"
+            },
+            {
+              "key": "B",
+              "text": "8"
+            },
+            {
+              "key": "C",
+              "text": "11"
+            },
+            {
+              "key": "D",
+              "text": "5"
+            },
+            {
+              "key": "E",
+              "text": "16"
+            }
+          ],
+          "correctKey": "D",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 5,
+          "group": null,
+          "stem": "Two rotating wheels return to their initial orientation every 15 seconds and 20 seconds, respectively. If both are in their initial orientation right now, after how many seconds will they next simultaneously return to their initial orientation?",
+          "options": [
+            {
+              "key": "A",
+              "text": "35"
+            },
+            {
+              "key": "B",
+              "text": "40"
+            },
+            {
+              "key": "C",
+              "text": "75"
+            },
+            {
+              "key": "D",
+              "text": "300"
+            },
+            {
+              "key": "E",
+              "text": "60"
+            }
+          ],
+          "correctKey": "E",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 6,
+          "group": null,
+          "stem": "What is the GCF of 48 and 180?",
+          "options": [
+            {
+              "key": "A",
+              "text": "6"
+            },
+            {
+              "key": "B",
+              "text": "24"
+            },
+            {
+              "key": "C",
+              "text": "12"
+            },
+            {
+              "key": "D",
+              "text": "36"
+            },
+            {
+              "key": "E",
+              "text": "60"
+            }
+          ],
+          "correctKey": "C",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 7,
+          "group": null,
+          "stem": "Two positive integers have a GCF of 12 and an LCM of 144. What is their product?",
+          "options": [
+            {
+              "key": "A",
+              "text": "156"
+            },
+            {
+              "key": "B",
+              "text": "1,728"
+            },
+            {
+              "key": "C",
+              "text": "288"
+            },
+            {
+              "key": "D",
+              "text": "864"
+            },
+            {
+              "key": "E",
+              "text": "2,016"
+            }
+          ],
+          "correctKey": "B",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 8,
+          "group": null,
+          "stem": "What is the largest integer that must divide the product of any four consecutive integers?",
+          "options": [
+            {
+              "key": "A",
+              "text": "6"
+            },
+            {
+              "key": "B",
+              "text": "12"
+            },
+            {
+              "key": "C",
+              "text": "48"
+            },
+            {
+              "key": "D",
+              "text": "24"
+            },
+            {
+              "key": "E",
+              "text": "120"
+            }
+          ],
+          "correctKey": "D",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 9,
+          "group": null,
+          "stem": "If $|2x+7|=|x-1|$, what is the sum of all possible values of $x$?",
+          "options": [
+            {
+              "key": "A",
+              "text": "-12"
+            },
+            {
+              "key": "B",
+              "text": "-6"
+            },
+            {
+              "key": "C",
+              "text": "-10"
+            },
+            {
+              "key": "D",
+              "text": "-2"
+            },
+            {
+              "key": "E",
+              "text": "6"
+            }
+          ],
+          "correctKey": "C",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 10,
+          "group": null,
+          "stem": "How many even integers are there from 1 to 99, inclusive?",
+          "options": [
+            {
+              "key": "A",
+              "text": "49"
+            },
+            {
+              "key": "B",
+              "text": "48"
+            },
+            {
+              "key": "C",
+              "text": "50"
+            },
+            {
+              "key": "D",
+              "text": "98"
+            },
+            {
+              "key": "E",
+              "text": "99"
+            }
+          ],
+          "correctKey": "A",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 11,
+          "group": null,
+          "stem": "If $a$ is irrational, which of the following is always irrational?",
+          "options": [
+            {
+              "key": "A",
+              "text": "All three: $2a$, $a+5$, and $a-3$"
+            },
+            {
+              "key": "B",
+              "text": "$2a$ only"
+            },
+            {
+              "key": "C",
+              "text": "$a+5$ only"
+            },
+            {
+              "key": "D",
+              "text": "$a-3$ only"
+            },
+            {
+              "key": "E",
+              "text": "None of them"
+            }
+          ],
+          "correctKey": "A",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 12,
+          "group": null,
+          "stem": "What is the sign of $(-2)^{10}\\times(-3)^{7}$?",
+          "options": [
+            {
+              "key": "A",
+              "text": "Negative"
+            },
+            {
+              "key": "B",
+              "text": "Positive"
+            },
+            {
+              "key": "C",
+              "text": "Zero"
+            },
+            {
+              "key": "D",
+              "text": "Cannot be determined"
+            },
+            {
+              "key": "E",
+              "text": "Depends on the values"
+            }
+          ],
+          "correctKey": "A",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 13,
+          "group": null,
+          "stem": "What is the LCM of 105 and 165?",
+          "options": [
+            {
+              "key": "A",
+              "text": "315"
+            },
+            {
+              "key": "B",
+              "text": "825"
+            },
+            {
+              "key": "C",
+              "text": "1,155"
+            },
+            {
+              "key": "D",
+              "text": "1,650"
+            },
+            {
+              "key": "E",
+              "text": "3,465"
+            }
+          ],
+          "correctKey": "C",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 14,
+          "group": null,
+          "stem": "Two lighthouses flash every 9 seconds and every 12 seconds, respectively. If they flash together right now, in how many seconds will they next flash together?",
+          "options": [
+            {
+              "key": "A",
+              "text": "21"
+            },
+            {
+              "key": "B",
+              "text": "24"
+            },
+            {
+              "key": "C",
+              "text": "36"
+            },
+            {
+              "key": "D",
+              "text": "30"
+            },
+            {
+              "key": "E",
+              "text": "48"
+            }
+          ],
+          "correctKey": "C",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 15,
+          "group": null,
+          "stem": "What is the units digit of $2^{100}$?",
+          "options": [
+            {
+              "key": "A",
+              "text": "2"
+            },
+            {
+              "key": "B",
+              "text": "6"
+            },
+            {
+              "key": "C",
+              "text": "4"
+            },
+            {
+              "key": "D",
+              "text": "8"
+            },
+            {
+              "key": "E",
+              "text": "0"
+            }
+          ],
+          "correctKey": "B",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 16,
+          "group": null,
+          "stem": "Divisibility by 45 can be tested by checking divisibility by which pair of numbers?",
+          "options": [
+            {
+              "key": "A",
+              "text": "3 and 15"
+            },
+            {
+              "key": "B",
+              "text": "5 and 15"
+            },
+            {
+              "key": "C",
+              "text": "9 and 5"
+            },
+            {
+              "key": "D",
+              "text": "3 and 5"
+            },
+            {
+              "key": "E",
+              "text": "5 and 6"
+            }
+          ],
+          "correctKey": "C",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 17,
+          "group": null,
+          "stem": "How many positive divisors does 90 have?",
+          "options": [
+            {
+              "key": "A",
+              "text": "8"
+            },
+            {
+              "key": "B",
+              "text": "12"
+            },
+            {
+              "key": "C",
+              "text": "10"
+            },
+            {
+              "key": "D",
+              "text": "14"
+            },
+            {
+              "key": "E",
+              "text": "16"
+            }
+          ],
+          "correctKey": "B",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 18,
+          "group": null,
+          "stem": "Three joggers complete a lap in 8, 14, and 21 minutes, respectively. If they start together, after how many minutes will they next all be at the starting point together?",
+          "options": [
+            {
+              "key": "A",
+              "text": "42"
+            },
+            {
+              "key": "B",
+              "text": "84"
+            },
+            {
+              "key": "C",
+              "text": "168"
+            },
+            {
+              "key": "D",
+              "text": "294"
+            },
+            {
+              "key": "E",
+              "text": "336"
+            }
+          ],
+          "correctKey": "C",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 19,
+          "group": null,
+          "stem": "A five-digit number ends in \"00.\" Which of the following must be true about the number?",
+          "options": [
+            {
+              "key": "A",
+              "text": "It is divisible by 25"
+            },
+            {
+              "key": "B",
+              "text": "It is divisible by 8"
+            },
+            {
+              "key": "C",
+              "text": "It is divisible by 9"
+            },
+            {
+              "key": "D",
+              "text": "It is divisible by 3"
+            },
+            {
+              "key": "E",
+              "text": "It is divisible by 6"
+            }
+          ],
+          "correctKey": "A",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 20,
+          "group": null,
+          "stem": "Using the double-and-subtract method, is 4,928 divisible by 7?",
+          "options": [
+            {
+              "key": "A",
+              "text": "No, since $492-16=476$ is not divisible by 7"
+            },
+            {
+              "key": "B",
+              "text": "Yes, since 4,928 is even"
+            },
+            {
+              "key": "C",
+              "text": "No, since the digit sum isn't divisible by 7"
+            },
+            {
+              "key": "D",
+              "text": "Cannot be determined without long division"
+            },
+            {
+              "key": "E",
+              "text": "Yes, since $492-16=476$ is divisible by 7"
+            }
+          ],
+          "correctKey": "E",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 21,
+          "group": null,
+          "stem": "If the product of $n$ negative numbers is positive, which of the following must be true about $n$?",
+          "options": [
+            {
+              "key": "A",
+              "text": "$n$ is odd"
+            },
+            {
+              "key": "B",
+              "text": "$n$ is prime"
+            },
+            {
+              "key": "C",
+              "text": "$n$ is a multiple of 4"
+            },
+            {
+              "key": "D",
+              "text": "$n$ is even"
+            },
+            {
+              "key": "E",
+              "text": "$n$ is negative"
+            }
+          ],
+          "correctKey": "D",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 22,
+          "group": null,
+          "stem": "What is the remainder when the product of any 3 consecutive integers is divided by 6?",
+          "options": [
+            {
+              "key": "A",
+              "text": "1"
+            },
+            {
+              "key": "B",
+              "text": "2"
+            },
+            {
+              "key": "C",
+              "text": "3"
+            },
+            {
+              "key": "D",
+              "text": "0"
+            },
+            {
+              "key": "E",
+              "text": "4"
+            }
+          ],
+          "correctKey": "D",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 23,
+          "group": null,
+          "stem": "What is the remainder when $3^{100}$ is divided by 11?",
+          "options": [
+            {
+              "key": "A",
+              "text": "3"
+            },
+            {
+              "key": "B",
+              "text": "1"
+            },
+            {
+              "key": "C",
+              "text": "5"
+            },
+            {
+              "key": "D",
+              "text": "9"
+            },
+            {
+              "key": "E",
+              "text": "10"
+            }
+          ],
+          "correctKey": "B",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 24,
+          "group": null,
+          "stem": "What is the sum of all positive divisors of 24?",
+          "options": [
+            {
+              "key": "A",
+              "text": "36"
+            },
+            {
+              "key": "B",
+              "text": "60"
+            },
+            {
+              "key": "C",
+              "text": "48"
+            },
+            {
+              "key": "D",
+              "text": "72"
+            },
+            {
+              "key": "E",
+              "text": "84"
+            }
+          ],
+          "correctKey": "B",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 25,
+          "group": null,
+          "stem": "If the sum of five consecutive integers is even, what must be true about the smallest of the five?",
+          "options": [
+            {
+              "key": "A",
+              "text": "It must be odd"
+            },
+            {
+              "key": "B",
+              "text": "It must be even"
+            },
+            {
+              "key": "C",
+              "text": "It must be divisible by 5"
+            },
+            {
+              "key": "D",
+              "text": "It must be negative"
+            },
+            {
+              "key": "E",
+              "text": "It can be either even or odd"
+            }
+          ],
+          "correctKey": "B",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 26,
+          "group": null,
+          "stem": "The sum of four consecutive odd integers is 96. What is the largest of the four integers?",
+          "options": [
+            {
+              "key": "A",
+              "text": "23"
+            },
+            {
+              "key": "B",
+              "text": "25"
+            },
+            {
+              "key": "C",
+              "text": "29"
+            },
+            {
+              "key": "D",
+              "text": "27"
+            },
+            {
+              "key": "E",
+              "text": "31"
+            }
+          ],
+          "correctKey": "D",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 27,
+          "group": null,
+          "stem": "Any set of 7 consecutive integers must contain exactly how many multiples of 7?",
+          "options": [
+            {
+              "key": "A",
+              "text": "0"
+            },
+            {
+              "key": "B",
+              "text": "1"
+            },
+            {
+              "key": "C",
+              "text": "2"
+            },
+            {
+              "key": "D",
+              "text": "7"
+            },
+            {
+              "key": "E",
+              "text": "Cannot be determined"
+            }
+          ],
+          "correctKey": "B",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 28,
+          "group": null,
+          "stem": "A positive integer greater than 10 leaves a remainder of 5 when divided by each of 6, 8, and 10. What is the smallest such integer?",
+          "options": [
+            {
+              "key": "A",
+              "text": "65"
+            },
+            {
+              "key": "B",
+              "text": "95"
+            },
+            {
+              "key": "C",
+              "text": "125"
+            },
+            {
+              "key": "D",
+              "text": "115"
+            },
+            {
+              "key": "E",
+              "text": "135"
+            }
+          ],
+          "correctKey": "C",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 29,
+          "group": null,
+          "stem": "If $x$ is any integer, what is the parity of $x^3+x$?",
+          "options": [
+            {
+              "key": "A",
+              "text": "Always even"
+            },
+            {
+              "key": "B",
+              "text": "Always odd"
+            },
+            {
+              "key": "C",
+              "text": "Even only if $x$ is even"
+            },
+            {
+              "key": "D",
+              "text": "Odd only if $x$ is odd"
+            },
+            {
+              "key": "E",
+              "text": "Cannot be determined"
+            }
+          ],
+          "correctKey": "A",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 30,
+          "group": null,
+          "stem": "If $x$ is rational and $y$ is irrational, which of the following is impossible?",
+          "options": [
+            {
+              "key": "A",
+              "text": "$x+y$ is irrational"
+            },
+            {
+              "key": "B",
+              "text": "$xy=0$ when $x=0$"
+            },
+            {
+              "key": "C",
+              "text": "$x+y$ is rational"
+            },
+            {
+              "key": "D",
+              "text": "$y-x$ is irrational"
+            },
+            {
+              "key": "E",
+              "text": "$x/y=0$ when $x=0$"
+            }
+          ],
+          "correctKey": "C",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 31,
+          "group": null,
+          "stem": "Which of the following numbers has exactly three positive divisors?",
+          "options": [
+            {
+              "key": "A",
+              "text": "27"
+            },
+            {
+              "key": "B",
+              "text": "36"
+            },
+            {
+              "key": "C",
+              "text": "50"
+            },
+            {
+              "key": "D",
+              "text": "25"
+            },
+            {
+              "key": "E",
+              "text": "64"
+            }
+          ],
+          "correctKey": "D",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 32,
+          "group": null,
+          "stem": "For how many integers $x$ does $|x-5| < 3$ hold?",
+          "options": [
+            {
+              "key": "A",
+              "text": "3"
+            },
+            {
+              "key": "B",
+              "text": "4"
+            },
+            {
+              "key": "C",
+              "text": "6"
+            },
+            {
+              "key": "D",
+              "text": "5"
+            },
+            {
+              "key": "E",
+              "text": "7"
+            }
+          ],
+          "correctKey": "D",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 33,
+          "group": null,
+          "stem": "If $|x-4|\\le 6$, what is the largest possible value of $x$?",
+          "options": [
+            {
+              "key": "A",
+              "text": "2"
+            },
+            {
+              "key": "B",
+              "text": "10"
+            },
+            {
+              "key": "C",
+              "text": "4"
+            },
+            {
+              "key": "D",
+              "text": "6"
+            },
+            {
+              "key": "E",
+              "text": "12"
+            }
+          ],
+          "correctKey": "B",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 34,
+          "group": null,
+          "stem": "Is $\\sqrt{225}+\\sqrt2$ rational or irrational?",
+          "options": [
+            {
+              "key": "A",
+              "text": "Rational, since $\\sqrt{225}$ is a whole number"
+            },
+            {
+              "key": "B",
+              "text": "Rational, since both terms are positive"
+            },
+            {
+              "key": "C",
+              "text": "Irrational, since $\\sqrt2$ is irrational"
+            },
+            {
+              "key": "D",
+              "text": "Cannot be determined"
+            },
+            {
+              "key": "E",
+              "text": "Rational, since 225 is a perfect square"
+            }
+          ],
+          "correctKey": "C",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 35,
+          "group": null,
+          "stem": "What is the sign of $(-1)^{100}\\times(-1)^{101}$?",
+          "options": [
+            {
+              "key": "A",
+              "text": "Positive"
+            },
+            {
+              "key": "B",
+              "text": "Zero"
+            },
+            {
+              "key": "C",
+              "text": "Negative"
+            },
+            {
+              "key": "D",
+              "text": "Cannot be determined"
+            },
+            {
+              "key": "E",
+              "text": "Depends on parity of the exponents"
+            }
+          ],
+          "correctKey": "C",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 36,
+          "group": null,
+          "stem": "Which of the following numbers has an ODD number of positive factors?",
+          "options": [
+            {
+              "key": "A",
+              "text": "45"
+            },
+            {
+              "key": "B",
+              "text": "90"
+            },
+            {
+              "key": "C",
+              "text": "120"
+            },
+            {
+              "key": "D",
+              "text": "150"
+            },
+            {
+              "key": "E",
+              "text": "64"
+            }
+          ],
+          "correctKey": "E",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 37,
+          "group": null,
+          "stem": "If $a,b,c$ are three consecutive integers in increasing order and $a$ is even, what is the parity of $a+2b-c$?",
+          "options": [
+            {
+              "key": "A",
+              "text": "Always odd"
+            },
+            {
+              "key": "B",
+              "text": "Even only if $a$ is a multiple of 4"
+            },
+            {
+              "key": "C",
+              "text": "Depends on the value of $a$"
+            },
+            {
+              "key": "D",
+              "text": "Always even"
+            },
+            {
+              "key": "E",
+              "text": "Cannot be determined"
+            }
+          ],
+          "correctKey": "D",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 38,
+          "group": null,
+          "stem": "If $n$ is a positive integer, what is $(n+1)(n+2)-n(n+1)$?",
+          "options": [
+            {
+              "key": "A",
+              "text": "$n+1$"
+            },
+            {
+              "key": "B",
+              "text": "$2n$"
+            },
+            {
+              "key": "C",
+              "text": "$n^2+1$"
+            },
+            {
+              "key": "D",
+              "text": "$2(n+1)$"
+            },
+            {
+              "key": "E",
+              "text": "$2n+1$"
+            }
+          ],
+          "correctKey": "D",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 39,
+          "group": null,
+          "stem": "If $n = 2^a \\times 3^b$ is a perfect square with exactly 15 positive factors, where $a,b$ are both positive integers, what is $a+b$?",
+          "options": [
+            {
+              "key": "A",
+              "text": "4"
+            },
+            {
+              "key": "B",
+              "text": "8"
+            },
+            {
+              "key": "C",
+              "text": "10"
+            },
+            {
+              "key": "D",
+              "text": "14"
+            },
+            {
+              "key": "E",
+              "text": "6"
+            }
+          ],
+          "correctKey": "E",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 40,
+          "group": null,
+          "stem": "If $|a|=|b|$ and $a \\neq b$, which of the following must be true?",
+          "options": [
+            {
+              "key": "A",
+              "text": "$a-b=0$"
+            },
+            {
+              "key": "B",
+              "text": "$ab>0$"
+            },
+            {
+              "key": "C",
+              "text": "$a+b=0$"
+            },
+            {
+              "key": "D",
+              "text": "$a$ and $b$ are both positive"
+            },
+            {
+              "key": "E",
+              "text": "$a$ and $b$ are both negative"
+            }
+          ],
+          "correctKey": "C",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 41,
+          "group": null,
+          "stem": "If $a$ is a factor of both 60 and 84, what is the largest possible value of $a$?",
+          "options": [
+            {
+              "key": "A",
+              "text": "4"
+            },
+            {
+              "key": "B",
+              "text": "12"
+            },
+            {
+              "key": "C",
+              "text": "6"
+            },
+            {
+              "key": "D",
+              "text": "20"
+            },
+            {
+              "key": "E",
+              "text": "24"
+            }
+          ],
+          "correctKey": "B",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 42,
+          "group": null,
+          "stem": "The GCF of two positive integers is 15 and their LCM is 450. If one of the integers is 90, what is the other?",
+          "options": [
+            {
+              "key": "A",
+              "text": "45"
+            },
+            {
+              "key": "B",
+              "text": "60"
+            },
+            {
+              "key": "C",
+              "text": "75"
+            },
+            {
+              "key": "D",
+              "text": "90"
+            },
+            {
+              "key": "E",
+              "text": "150"
+            }
+          ],
+          "correctKey": "C",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 43,
+          "group": null,
+          "stem": "Which of the following is divisible by both 5 and 8?",
+          "options": [
+            {
+              "key": "A",
+              "text": "345"
+            },
+            {
+              "key": "B",
+              "text": "424"
+            },
+            {
+              "key": "C",
+              "text": "350"
+            },
+            {
+              "key": "D",
+              "text": "328"
+            },
+            {
+              "key": "E",
+              "text": "360"
+            }
+          ],
+          "correctKey": "E",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 44,
+          "group": null,
+          "stem": "Which of the following could be the greatest common factor of two distinct positive integers $p$ and $q$? I. 1   II. $p$   III. $p+q$",
+          "options": [
+            {
+              "key": "A",
+              "text": "I only"
+            },
+            {
+              "key": "B",
+              "text": "II only"
+            },
+            {
+              "key": "C",
+              "text": "II and III only"
+            },
+            {
+              "key": "D",
+              "text": "I, II, and III"
+            },
+            {
+              "key": "E",
+              "text": "I and II only"
+            }
+          ],
+          "correctKey": "E",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 45,
+          "group": null,
+          "stem": "What is the largest integer that must divide the product of any five consecutive positive integers?",
+          "options": [
+            {
+              "key": "A",
+              "text": "24"
+            },
+            {
+              "key": "B",
+              "text": "60"
+            },
+            {
+              "key": "C",
+              "text": "100"
+            },
+            {
+              "key": "D",
+              "text": "120"
+            },
+            {
+              "key": "E",
+              "text": "720"
+            }
+          ],
+          "correctKey": "D",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 46,
+          "group": null,
+          "stem": "A number leaves remainders of 1, 3, and 5 when divided by 6, 8, and 10, respectively. What is the smallest such positive number?",
+          "options": [
+            {
+              "key": "A",
+              "text": "115"
+            },
+            {
+              "key": "B",
+              "text": "55"
+            },
+            {
+              "key": "C",
+              "text": "85"
+            },
+            {
+              "key": "D",
+              "text": "145"
+            },
+            {
+              "key": "E",
+              "text": "175"
+            }
+          ],
+          "correctKey": "A",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 47,
+          "group": null,
+          "stem": "How many factors of 196 are themselves perfect squares?",
+          "options": [
+            {
+              "key": "A",
+              "text": "2"
+            },
+            {
+              "key": "B",
+              "text": "3"
+            },
+            {
+              "key": "C",
+              "text": "6"
+            },
+            {
+              "key": "D",
+              "text": "9"
+            },
+            {
+              "key": "E",
+              "text": "4"
+            }
+          ],
+          "correctKey": "E",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 48,
+          "group": null,
+          "stem": "Which of the following is divisible by both 4 and 9?",
+          "options": [
+            {
+              "key": "A",
+              "text": "396"
+            },
+            {
+              "key": "B",
+              "text": "294"
+            },
+            {
+              "key": "C",
+              "text": "342"
+            },
+            {
+              "key": "D",
+              "text": "522"
+            },
+            {
+              "key": "E",
+              "text": "636"
+            }
+          ],
+          "correctKey": "A",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 49,
+          "group": null,
+          "stem": "What is the minimum possible value of $|x+3|+|x-3|$?",
+          "options": [
+            {
+              "key": "A",
+              "text": "0"
+            },
+            {
+              "key": "B",
+              "text": "6"
+            },
+            {
+              "key": "C",
+              "text": "3"
+            },
+            {
+              "key": "D",
+              "text": "9"
+            },
+            {
+              "key": "E",
+              "text": "12"
+            }
+          ],
+          "correctKey": "B",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 50,
+          "group": null,
+          "stem": "Which of the following is divisible by 4 and by 3, but NOT by 9?",
+          "options": [
+            {
+              "key": "A",
+              "text": "312"
+            },
+            {
+              "key": "B",
+              "text": "316"
+            },
+            {
+              "key": "C",
+              "text": "324"
+            },
+            {
+              "key": "D",
+              "text": "342"
+            },
+            {
+              "key": "E",
+              "text": "396"
+            }
+          ],
+          "correctKey": "A",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 51,
+          "group": null,
+          "stem": "What is the least prime number greater than 95?",
+          "options": [
+            {
+              "key": "A",
+              "text": "96"
+            },
+            {
+              "key": "B",
+              "text": "99"
+            },
+            {
+              "key": "C",
+              "text": "101"
+            },
+            {
+              "key": "D",
+              "text": "103"
+            },
+            {
+              "key": "E",
+              "text": "97"
+            }
+          ],
+          "correctKey": "E",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 52,
+          "group": null,
+          "stem": "What is the remainder when $2^{50}$ is divided by 7?",
+          "options": [
+            {
+              "key": "A",
+              "text": "1"
+            },
+            {
+              "key": "B",
+              "text": "4"
+            },
+            {
+              "key": "C",
+              "text": "2"
+            },
+            {
+              "key": "D",
+              "text": "5"
+            },
+            {
+              "key": "E",
+              "text": "6"
+            }
+          ],
+          "correctKey": "B",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 53,
+          "group": null,
+          "stem": "What is the GCF of 90 and 126?",
+          "options": [
+            {
+              "key": "A",
+              "text": "6"
+            },
+            {
+              "key": "B",
+              "text": "9"
+            },
+            {
+              "key": "C",
+              "text": "36"
+            },
+            {
+              "key": "D",
+              "text": "18"
+            },
+            {
+              "key": "E",
+              "text": "54"
+            }
+          ],
+          "correctKey": "D",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 54,
+          "group": null,
+          "stem": "If $n \\equiv 4 \\pmod{12}$, what is the remainder when $n$ is divided by 4?",
+          "options": [
+            {
+              "key": "A",
+              "text": "1"
+            },
+            {
+              "key": "B",
+              "text": "2"
+            },
+            {
+              "key": "C",
+              "text": "3"
+            },
+            {
+              "key": "D",
+              "text": "Cannot be determined"
+            },
+            {
+              "key": "E",
+              "text": "0"
+            }
+          ],
+          "correctKey": "E",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 55,
+          "group": null,
+          "stem": "If $x$ is a nonzero rational number and $y$ is irrational, which of the following could be rational?",
+          "options": [
+            {
+              "key": "A",
+              "text": "$x+y$"
+            },
+            {
+              "key": "B",
+              "text": "$y^2$"
+            },
+            {
+              "key": "C",
+              "text": "$xy$"
+            },
+            {
+              "key": "D",
+              "text": "$x/y$"
+            },
+            {
+              "key": "E",
+              "text": "$y-x$"
+            }
+          ],
+          "correctKey": "B",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 56,
+          "group": null,
+          "stem": "How many prime numbers are there strictly between 90 and 100?",
+          "options": [
+            {
+              "key": "A",
+              "text": "1"
+            },
+            {
+              "key": "B",
+              "text": "0"
+            },
+            {
+              "key": "C",
+              "text": "2"
+            },
+            {
+              "key": "D",
+              "text": "3"
+            },
+            {
+              "key": "E",
+              "text": "4"
+            }
+          ],
+          "correctKey": "A",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 57,
+          "group": null,
+          "stem": "If $x^5 < 0$, what must be true about $x^4$?",
+          "options": [
+            {
+              "key": "A",
+              "text": "$x^4$ is negative"
+            },
+            {
+              "key": "B",
+              "text": "$x^4$ is zero"
+            },
+            {
+              "key": "C",
+              "text": "$x^4$ is positive"
+            },
+            {
+              "key": "D",
+              "text": "$x^4$ is undefined"
+            },
+            {
+              "key": "E",
+              "text": "Cannot be determined"
+            }
+          ],
+          "correctKey": "C",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 58,
+          "group": null,
+          "stem": "What is the sign of $(-5)^7\\times(-2)^4\\times3$?",
+          "options": [
+            {
+              "key": "A",
+              "text": "Positive"
+            },
+            {
+              "key": "B",
+              "text": "Zero"
+            },
+            {
+              "key": "C",
+              "text": "Cannot be determined"
+            },
+            {
+              "key": "D",
+              "text": "Depends on the values"
+            },
+            {
+              "key": "E",
+              "text": "Negative"
+            }
+          ],
+          "correctKey": "E",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 59,
+          "group": null,
+          "stem": "What is the sum of all prime numbers between 70 and 80?",
+          "options": [
+            {
+              "key": "A",
+              "text": "144"
+            },
+            {
+              "key": "B",
+              "text": "150"
+            },
+            {
+              "key": "C",
+              "text": "223"
+            },
+            {
+              "key": "D",
+              "text": "152"
+            },
+            {
+              "key": "E",
+              "text": "229"
+            }
+          ],
+          "correctKey": "C",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 60,
+          "group": null,
+          "stem": "If $x<0$, what is $|x|+x$?",
+          "options": [
+            {
+              "key": "A",
+              "text": "$2x$"
+            },
+            {
+              "key": "B",
+              "text": "$-2x$"
+            },
+            {
+              "key": "C",
+              "text": "$2|x|$"
+            },
+            {
+              "key": "D",
+              "text": "Cannot be determined"
+            },
+            {
+              "key": "E",
+              "text": "0"
+            }
+          ],
+          "correctKey": "E",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 61,
+          "group": null,
+          "stem": "If the product of six integers is negative, what is the minimum number of negative factors among them?",
+          "options": [
+            {
+              "key": "A",
+              "text": "1"
+            },
+            {
+              "key": "B",
+              "text": "0"
+            },
+            {
+              "key": "C",
+              "text": "2"
+            },
+            {
+              "key": "D",
+              "text": "3"
+            },
+            {
+              "key": "E",
+              "text": "6"
+            }
+          ],
+          "correctKey": "A",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 62,
+          "group": null,
+          "stem": "Which of the following is a perfect square?",
+          "options": [
+            {
+              "key": "A",
+              "text": "150"
+            },
+            {
+              "key": "B",
+              "text": "180"
+            },
+            {
+              "key": "C",
+              "text": "200"
+            },
+            {
+              "key": "D",
+              "text": "288"
+            },
+            {
+              "key": "E",
+              "text": "225"
+            }
+          ],
+          "correctKey": "E",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 63,
+          "group": null,
+          "stem": "Is $0.101001000100001\\ldots$ (with an ever-lengthening run of zeros between the 1's) rational or irrational?",
+          "options": [
+            {
+              "key": "A",
+              "text": "Irrational, since its decimal expansion is nonterminating and not eventually periodic"
+            },
+            {
+              "key": "B",
+              "text": "Rational, since it has a visible pattern"
+            },
+            {
+              "key": "C",
+              "text": "Rational, since it is less than 1"
+            },
+            {
+              "key": "D",
+              "text": "Cannot be determined"
+            },
+            {
+              "key": "E",
+              "text": "Rational, since it is a decimal"
+            }
+          ],
+          "correctKey": "A",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 64,
+          "group": null,
+          "stem": "Which of the following is divisible by 11?",
+          "options": [
+            {
+              "key": "A",
+              "text": "583"
+            },
+            {
+              "key": "B",
+              "text": "471"
+            },
+            {
+              "key": "C",
+              "text": "585"
+            },
+            {
+              "key": "D",
+              "text": "692"
+            },
+            {
+              "key": "E",
+              "text": "894"
+            }
+          ],
+          "correctKey": "A",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 65,
+          "group": null,
+          "stem": "How many odd positive divisors does 360 have?",
+          "options": [
+            {
+              "key": "A",
+              "text": "6"
+            },
+            {
+              "key": "B",
+              "text": "4"
+            },
+            {
+              "key": "C",
+              "text": "8"
+            },
+            {
+              "key": "D",
+              "text": "12"
+            },
+            {
+              "key": "E",
+              "text": "24"
+            }
+          ],
+          "correctKey": "A",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 66,
+          "group": null,
+          "stem": "What is the remainder when the square of an odd integer is divided by 4?",
+          "options": [
+            {
+              "key": "A",
+              "text": "1"
+            },
+            {
+              "key": "B",
+              "text": "0"
+            },
+            {
+              "key": "C",
+              "text": "2"
+            },
+            {
+              "key": "D",
+              "text": "3"
+            },
+            {
+              "key": "E",
+              "text": "Cannot be determined"
+            }
+          ],
+          "correctKey": "A",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 67,
+          "group": null,
+          "stem": "If $a$ and $b$ are each divisible by 12, which of the following must also be divisible by 12?",
+          "options": [
+            {
+              "key": "A",
+              "text": "$a+b$ only"
+            },
+            {
+              "key": "B",
+              "text": "$a-b$ only"
+            },
+            {
+              "key": "C",
+              "text": "$ab$ only"
+            },
+            {
+              "key": "D",
+              "text": "$a/b$ only"
+            },
+            {
+              "key": "E",
+              "text": "$a+b$, $a-b$, and $ab$"
+            }
+          ],
+          "correctKey": "E",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 68,
+          "group": null,
+          "stem": "If $N$ is divisible by 6 different prime numbers, what is the least possible value of $N$?",
+          "options": [
+            {
+              "key": "A",
+              "text": "2,310"
+            },
+            {
+              "key": "B",
+              "text": "5,460"
+            },
+            {
+              "key": "C",
+              "text": "15,015"
+            },
+            {
+              "key": "D",
+              "text": "30,030"
+            },
+            {
+              "key": "E",
+              "text": "60,060"
+            }
+          ],
+          "correctKey": "D",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 69,
+          "group": null,
+          "stem": "What is the smallest 4-digit number divisible by 9?",
+          "options": [
+            {
+              "key": "A",
+              "text": "999"
+            },
+            {
+              "key": "B",
+              "text": "1,001"
+            },
+            {
+              "key": "C",
+              "text": "1,017"
+            },
+            {
+              "key": "D",
+              "text": "1,099"
+            },
+            {
+              "key": "E",
+              "text": "1,008"
+            }
+          ],
+          "correctKey": "E",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 70,
+          "group": null,
+          "stem": "If $n$ is an even integer, what is the remainder when $n^2$ is divided by 4?",
+          "options": [
+            {
+              "key": "A",
+              "text": "1"
+            },
+            {
+              "key": "B",
+              "text": "0"
+            },
+            {
+              "key": "C",
+              "text": "2"
+            },
+            {
+              "key": "D",
+              "text": "3"
+            },
+            {
+              "key": "E",
+              "text": "Cannot be determined"
+            }
+          ],
+          "correctKey": "B",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 71,
+          "group": null,
+          "stem": "Which of the following must be irrational?",
+          "options": [
+            {
+              "key": "A",
+              "text": "$\\sqrt{16}$"
+            },
+            {
+              "key": "B",
+              "text": "$0.\\overline{3}$"
+            },
+            {
+              "key": "C",
+              "text": "$3+\\sqrt5$"
+            },
+            {
+              "key": "D",
+              "text": "$(\\sqrt7)^2$"
+            },
+            {
+              "key": "E",
+              "text": "$22/7$"
+            }
+          ],
+          "correctKey": "C",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 72,
+          "group": null,
+          "stem": "If $n=5^a\\times7^b$ is a perfect square with exactly 21 positive factors, where $a,b$ are positive integers, what is $a\\times b$?",
+          "options": [
+            {
+              "key": "A",
+              "text": "6"
+            },
+            {
+              "key": "B",
+              "text": "8"
+            },
+            {
+              "key": "C",
+              "text": "10"
+            },
+            {
+              "key": "D",
+              "text": "14"
+            },
+            {
+              "key": "E",
+              "text": "12"
+            }
+          ],
+          "correctKey": "E",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 73,
+          "group": null,
+          "stem": "How many positive divisors does 100 have?",
+          "options": [
+            {
+              "key": "A",
+              "text": "6"
+            },
+            {
+              "key": "B",
+              "text": "7"
+            },
+            {
+              "key": "C",
+              "text": "8"
+            },
+            {
+              "key": "D",
+              "text": "9"
+            },
+            {
+              "key": "E",
+              "text": "10"
+            }
+          ],
+          "correctKey": "D",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 74,
+          "group": null,
+          "stem": "What is the smallest positive integer by which 180 must be multiplied so that the result is a perfect square?",
+          "options": [
+            {
+              "key": "A",
+              "text": "2"
+            },
+            {
+              "key": "B",
+              "text": "3"
+            },
+            {
+              "key": "C",
+              "text": "10"
+            },
+            {
+              "key": "D",
+              "text": "20"
+            },
+            {
+              "key": "E",
+              "text": "5"
+            }
+          ],
+          "correctKey": "E",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 75,
+          "group": null,
+          "stem": "If $p$ and $q$ are distinct prime numbers, each greater than 5, which of the following must be odd?",
+          "options": [
+            {
+              "key": "A",
+              "text": "$p+q$"
+            },
+            {
+              "key": "B",
+              "text": "$p-q$"
+            },
+            {
+              "key": "C",
+              "text": "$p^2+q^2$"
+            },
+            {
+              "key": "D",
+              "text": "$pq$"
+            },
+            {
+              "key": "E",
+              "text": "$2(p+q)$"
+            }
+          ],
+          "correctKey": "D",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 76,
+          "group": null,
+          "stem": "If $n\\equiv3\\pmod8$, what is the remainder when $3n$ is divided by 8?",
+          "options": [
+            {
+              "key": "A",
+              "text": "0"
+            },
+            {
+              "key": "B",
+              "text": "3"
+            },
+            {
+              "key": "C",
+              "text": "5"
+            },
+            {
+              "key": "D",
+              "text": "1"
+            },
+            {
+              "key": "E",
+              "text": "6"
+            }
+          ],
+          "correctKey": "D",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 77,
+          "group": null,
+          "stem": "If two positive integers have no common factor other than 1, what is their LCM in terms of their product?",
+          "options": [
+            {
+              "key": "A",
+              "text": "Half their product"
+            },
+            {
+              "key": "B",
+              "text": "Equal to their product"
+            },
+            {
+              "key": "C",
+              "text": "Twice their product"
+            },
+            {
+              "key": "D",
+              "text": "Equal to the GCF"
+            },
+            {
+              "key": "E",
+              "text": "Cannot be determined"
+            }
+          ],
+          "correctKey": "B",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 78,
+          "group": null,
+          "stem": "Divisibility by 66 can be tested by checking divisibility by which pair of numbers?",
+          "options": [
+            {
+              "key": "A",
+              "text": "6 and 11"
+            },
+            {
+              "key": "B",
+              "text": "3 and 6"
+            },
+            {
+              "key": "C",
+              "text": "2 and 11"
+            },
+            {
+              "key": "D",
+              "text": "33 and 3"
+            },
+            {
+              "key": "E",
+              "text": "4 and 6"
+            }
+          ],
+          "correctKey": "A",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 79,
+          "group": null,
+          "stem": "Which of the following is divisible by 13?",
+          "options": [
+            {
+              "key": "A",
+              "text": "353"
+            },
+            {
+              "key": "B",
+              "text": "351"
+            },
+            {
+              "key": "C",
+              "text": "359"
+            },
+            {
+              "key": "D",
+              "text": "363"
+            },
+            {
+              "key": "E",
+              "text": "367"
+            }
+          ],
+          "correctKey": "B",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 80,
+          "group": null,
+          "stem": "How many factors of 324 are themselves perfect squares?",
+          "options": [
+            {
+              "key": "A",
+              "text": "3"
+            },
+            {
+              "key": "B",
+              "text": "6"
+            },
+            {
+              "key": "C",
+              "text": "4"
+            },
+            {
+              "key": "D",
+              "text": "8"
+            },
+            {
+              "key": "E",
+              "text": "9"
+            }
+          ],
+          "correctKey": "B",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 81,
+          "group": null,
+          "stem": "A positive integer leaves a remainder of 4 when divided by 9 and a remainder of 2 when divided by 7. What is the smallest such positive integer?",
+          "options": [
+            {
+              "key": "A",
+              "text": "30"
+            },
+            {
+              "key": "B",
+              "text": "42"
+            },
+            {
+              "key": "C",
+              "text": "65"
+            },
+            {
+              "key": "D",
+              "text": "58"
+            },
+            {
+              "key": "E",
+              "text": "72"
+            }
+          ],
+          "correctKey": "D",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 82,
+          "group": null,
+          "stem": "What is the LCM of 12, 18, and 30?",
+          "options": [
+            {
+              "key": "A",
+              "text": "36"
+            },
+            {
+              "key": "B",
+              "text": "90"
+            },
+            {
+              "key": "C",
+              "text": "180"
+            },
+            {
+              "key": "D",
+              "text": "360"
+            },
+            {
+              "key": "E",
+              "text": "540"
+            }
+          ],
+          "correctKey": "C",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 83,
+          "group": null,
+          "stem": "If $N$ is divisible by a prime number that is also even, which of the following must be true about $N$?",
+          "options": [
+            {
+              "key": "A",
+              "text": "$N$ is odd"
+            },
+            {
+              "key": "B",
+              "text": "$N$ is prime"
+            },
+            {
+              "key": "C",
+              "text": "$N$ is a perfect square"
+            },
+            {
+              "key": "D",
+              "text": "$N$ is even"
+            },
+            {
+              "key": "E",
+              "text": "$N$ is divisible by 4"
+            }
+          ],
+          "correctKey": "D",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 84,
+          "group": null,
+          "stem": "If $a$ is a factor of both 84 and 126, what is the largest possible value of $a$?",
+          "options": [
+            {
+              "key": "A",
+              "text": "6"
+            },
+            {
+              "key": "B",
+              "text": "14"
+            },
+            {
+              "key": "C",
+              "text": "21"
+            },
+            {
+              "key": "D",
+              "text": "84"
+            },
+            {
+              "key": "E",
+              "text": "42"
+            }
+          ],
+          "correctKey": "E",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 85,
+          "group": null,
+          "stem": "A six-digit number ends in the digits \"375.\" Which of the following must be true about the number?",
+          "options": [
+            {
+              "key": "A",
+              "text": "It is divisible by 4"
+            },
+            {
+              "key": "B",
+              "text": "It is divisible by 8"
+            },
+            {
+              "key": "C",
+              "text": "It is divisible by 25"
+            },
+            {
+              "key": "D",
+              "text": "It is divisible by 9"
+            },
+            {
+              "key": "E",
+              "text": "It is divisible by 2"
+            }
+          ],
+          "correctKey": "C",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 86,
+          "group": null,
+          "stem": "If $a$ and $b$ are integers and $a^2-b^2$ is odd, what must be true about $a+b$?",
+          "options": [
+            {
+              "key": "A",
+              "text": "$a+b$ is even"
+            },
+            {
+              "key": "B",
+              "text": "$a+b$ is negative"
+            },
+            {
+              "key": "C",
+              "text": "$a$ and $b$ are both odd"
+            },
+            {
+              "key": "D",
+              "text": "$a$ and $b$ are both even"
+            },
+            {
+              "key": "E",
+              "text": "$a+b$ is odd"
+            }
+          ],
+          "correctKey": "E",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 87,
+          "group": null,
+          "stem": "The sum of six consecutive integers is 87. What is the largest of the six integers?",
+          "options": [
+            {
+              "key": "A",
+              "text": "14"
+            },
+            {
+              "key": "B",
+              "text": "17"
+            },
+            {
+              "key": "C",
+              "text": "15"
+            },
+            {
+              "key": "D",
+              "text": "16"
+            },
+            {
+              "key": "E",
+              "text": "18"
+            }
+          ],
+          "correctKey": "B",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 88,
+          "group": null,
+          "stem": "If $m$ is an even integer and $n$ is an odd integer, what is the parity of $m^2 + 3n^2$?",
+          "options": [
+            {
+              "key": "A",
+              "text": "Always odd"
+            },
+            {
+              "key": "B",
+              "text": "Always even"
+            },
+            {
+              "key": "C",
+              "text": "Even only if $m=0$"
+            },
+            {
+              "key": "D",
+              "text": "Odd only if $n$ is prime"
+            },
+            {
+              "key": "E",
+              "text": "Cannot be determined"
+            }
+          ],
+          "correctKey": "A",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 89,
+          "group": null,
+          "stem": "What is the remainder when 137 is divided by 9?",
+          "options": [
+            {
+              "key": "A",
+              "text": "0"
+            },
+            {
+              "key": "B",
+              "text": "2"
+            },
+            {
+              "key": "C",
+              "text": "1"
+            },
+            {
+              "key": "D",
+              "text": "3"
+            },
+            {
+              "key": "E",
+              "text": "8"
+            }
+          ],
+          "correctKey": "B",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 90,
+          "group": null,
+          "stem": "A number leaves a remainder of 7 when divided by 15. What is the remainder when the same number is divided by 5?",
+          "options": [
+            {
+              "key": "A",
+              "text": "0"
+            },
+            {
+              "key": "B",
+              "text": "1"
+            },
+            {
+              "key": "C",
+              "text": "2"
+            },
+            {
+              "key": "D",
+              "text": "3"
+            },
+            {
+              "key": "E",
+              "text": "4"
+            }
+          ],
+          "correctKey": "C",
+          "imageUrl": null,
+          "explanation": null
+        }
+      ]
+    }
+  ]
+}

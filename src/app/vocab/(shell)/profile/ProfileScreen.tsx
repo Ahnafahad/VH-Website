@@ -53,6 +53,9 @@ import { Capacitor } from '@capacitor/core';
 import { readReminderEnabled, writeReminderEnabled, rescheduleFromCache, cancelReminders } from '@/lib/vocab/local-reminders';
 import type { ProfileData, BadgeRow, WordRow } from './page';
 import { LexiArtwork, LexiIcon } from '@/components/vocab/LexiAsset';
+import LivingFlashcard, { type LivingCardWord } from '@/components/vocab/LivingFlashcard';
+import { CardStyleChips } from '@/components/vocab/onboarding/ui';
+import type { CardPrefs } from '@/lib/vocab/card-prefs';
 
 // ─── Badge icons ──────────────────────────────────────────────────────────────
 
@@ -1288,6 +1291,18 @@ export default function ProfileScreen({
                 </p>
               </motion.div>
 
+              {/* ══ SECTION 0: Your Card ══════════════════════════════════ */}
+              {data.cardPreviewWord && (
+                <motion.div variants={settingItem} style={{ marginBottom: 24 }}>
+                  <SectionLabel>Your Card</SectionLabel>
+                  <GoldRule />
+                  <CardStylePanel
+                    word={data.cardPreviewWord}
+                    initial={data.cardPrefs}
+                  />
+                </motion.div>
+              )}
+
               {/* ══ SECTION 1: Study Deadline ══════════════════════════════ */}
               <motion.div variants={settingItem} style={{ marginBottom: 24 }}>
                 <SectionLabel>Study Deadline</SectionLabel>
@@ -2179,6 +2194,51 @@ function SectionLabel({ children, center, icon }: { children: React.ReactNode; c
       }}>
         {children}
       </p>
+    </div>
+  );
+}
+
+/* ─── Card style — edited on the card itself, never as a list of switches ─── */
+
+function CardStylePanel({ word, initial }: { word: LivingCardWord; initial: CardPrefs }) {
+  const reduce = useReducedMotion() ?? false;
+  const [prefs, setPrefs]     = useState(initial);
+  const [flipped, setFlipped] = useState(true);
+  const [error, setError]     = useState('');
+
+  async function apply(next: CardPrefs) {
+    setPrefs(next);              // the card restyles immediately; the save is quiet
+    setError('');
+    try {
+      const res = await fetch('/api/vocab/profile', {
+        method: 'PATCH', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ cardPrefs: next }),
+      });
+      if (!res.ok) throw new Error();
+    } catch {
+      setPrefs(prefs);
+      setError('That change did not save. Try again.');
+    }
+  }
+
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 16, paddingTop: 16 }}>
+      <div style={{ position: 'relative', width: '100%', minHeight: 'min(52vh, 380px)', display: 'flex' }}>
+        <LivingFlashcard
+          word={word}
+          prefs={prefs}
+          isFlipped={flipped}
+          onFlip={() => setFlipped(true)}
+          onFlipBack={() => setFlipped(false)}
+          reduce={reduce}
+        />
+      </div>
+      <CardStyleChips prefs={prefs} setPrefs={apply} />
+      {error && (
+        <p role="alert" style={{ fontFamily: "'Sora', sans-serif", fontSize: 12, color: 'var(--color-lx-accent-red)', margin: 0 }}>
+          {error}
+        </p>
+      )}
     </div>
   );
 }

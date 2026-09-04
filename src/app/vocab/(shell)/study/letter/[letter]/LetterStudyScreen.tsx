@@ -11,6 +11,7 @@ import FlashcardScreen from '../../[themeId]/FlashcardScreen';
 import QuizScreen from '../../[themeId]/quiz/QuizScreen';
 import type { FlashcardSessionData, FlashcardWord } from '@/lib/vocab/flashcard-data';
 import type { LetterWordData } from '@/lib/vocab/letter-data';
+import type { CardPrefs } from '@/lib/vocab/card-prefs';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -18,6 +19,7 @@ interface Props {
   letter:      string;
   words:       LetterWordData[];
   totalPoints: number;
+  cardPrefs:   CardPrefs;
 }
 
 // ─── CSS tokens ───────────────────────────────────────────────────────────────
@@ -193,7 +195,7 @@ function LockedWordRow({ w, index }: { w: LetterWordData; index: number }) {
 
 type ScreenPhase = 'list' | 'flashcard' | 'config' | 'quiz';
 
-export default function LetterStudyScreen({ letter, words, totalPoints }: Props) {
+export default function LetterStudyScreen({ letter, words, totalPoints, cardPrefs }: Props) {
   const router = useRouter();
   const fb     = useVocabFeedback();
   const [phase, setPhase]   = useState<ScreenPhase>('list');
@@ -223,6 +225,9 @@ export default function LetterStudyScreen({ letter, words, totalPoints }: Props)
       synonyms:        w.synonyms,
       antonyms:        w.antonyms,
       exampleSentence: w.exampleSentence || null,
+      altDefinition:   w.altDefinition,
+      connotation:     w.connotation,
+      contrast:        w.contrast,
       masteryLevel:    w.masteryLevel,
       exposureCount:   w.exposureCount,
     }));
@@ -236,6 +241,7 @@ export default function LetterStudyScreen({ letter, words, totalPoints }: Props)
       ratings:      {},
       sessionId:    null,
       totalPoints,
+      cardPrefs,
       letterGroup:  letter,
     };
 

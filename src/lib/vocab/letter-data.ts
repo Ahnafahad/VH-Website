@@ -1,7 +1,8 @@
-import { db, users, vocabUserWordRecords, vocabWords, vocabThemes, vocabUnits } from '@/lib/db';
-import { eq, and, sql, count, inArray, lte } from 'drizzle-orm';
+import { db, vocabUserWordRecords, vocabWords, vocabWordAltDefinitions, vocabWordContrasts } from '@/lib/db';
+import { eq, and, sql } from 'drizzle-orm';
 import { unstable_cache } from 'next/cache';
 import { VocabCacheTag } from './cache-keys';
+import { getUnlockedWordIds } from './access-check';
 
 function safeParseArray(json: string | null): string[] {
   if (!json) return [];
@@ -24,6 +25,10 @@ export interface LetterWordData {
   partOfSpeech:    string;
   synonyms:        string[];
   antonyms:        string[];
+  // Card-preference payload — the user may have any of these switched on.
+  altDefinition:   string | null;
+  connotation:     string | null;
+  contrast:        { word: string; gloss: string } | null;
   masteryLevel:    string;
   masteryScore:    number;
   exposureCount:   number;
@@ -32,50 +37,36 @@ export interface LetterWordData {
 
 /**
  * Get summary of all letters (A–Z) with word counts and mastery stats.
- * @param maxUnitOrder — if provided, only include words from units with order <= this value
+ * Trial users only see the words in their unlocked set.
  */
-export function getLetterIndex(userId: number, maxUnitOrder?: number): Promise<LetterSummary[]> {
+export async function getLetterIndex(userId: number): Promise<LetterSummary[]> {
+  const { ids, key } = await getUnlockedWordIds(userId);
   return unstable_cache(
-    () => _getLetterIndex(userId, maxUnitOrder),
-    ['vocab-letters', String(userId), String(maxUnitOrder ?? 'all')],
+    () => _getLetterIndex(userId, ids),
+    ['vocab-letters', String(userId), key],
     { revalidate: 120, tags: [VocabCacheTag.letters(userId)] },
   )();
 }
 
-async function _getLetterIndex(userId: number, maxUnitOrder?: number): Promise<LetterSummary[]> {
-  // Phase filtering: join through units to restrict by unit order when set.
-  // We build two shapes since Drizzle's fluent builder types tighten after each step.
-  const wordRows = maxUnitOrder !== undefined
-    ? await db
-        .select({
-          word:         vocabWords.word,
-          wordId:       vocabWords.id,
-          masteryLevel: vocabUserWordRecords.masteryLevel,
-        })
-        .from(vocabWords)
-        .innerJoin(vocabUnits, eq(vocabWords.unitId, vocabUnits.id))
-        .leftJoin(
-          vocabUserWordRecords,
-          and(
-            eq(vocabUserWordRecords.wordId, vocabWords.id),
-            eq(vocabUserWordRecords.userId, userId),
-          )
-        )
-        .where(lte(vocabUnits.order, maxUnitOrder))
-    : await db
-        .select({
-          word:         vocabWords.word,
-          wordId:       vocabWords.id,
-          masteryLevel: vocabUserWordRecords.masteryLevel,
-        })
-        .from(vocabWords)
-        .leftJoin(
-          vocabUserWordRecords,
-          and(
-            eq(vocabUserWordRecords.wordId, vocabWords.id),
-            eq(vocabUserWordRecords.userId, userId),
-          )
-        );
+async function _getLetterIndex(userId: number, unlocked: Set<number> | null): Promise<LetterSummary[]> {
+  const allRows = await db
+    .select({
+      word:         vocabWords.word,
+      wordId:       vocabWords.id,
+      masteryLevel: vocabUserWordRecords.masteryLevel,
+    })
+    .from(vocabWords)
+    .leftJoin(vocabWordAltDefinitions, eq(vocabWordAltDefinitions.wordId, vocabWords.id))
+    .leftJoin(vocabWordContrasts, eq(vocabWordContrasts.wordId, vocabWords.id))
+    .leftJoin(
+      vocabUserWordRecords,
+      and(
+        eq(vocabUserWordRecords.wordId, vocabWords.id),
+        eq(vocabUserWordRecords.userId, userId),
+      )
+    );
+
+  const wordRows = unlocked === null ? allRows : allRows.filter(r => unlocked.has(r.wordId));
 
   // Group by first letter
   const letterMap = new Map<string, { total: number; studied: number; familiarPlus: number; wordIds: number[] }>();
@@ -114,11 +105,12 @@ async function _getLetterIndex(userId: number, maxUnitOrder?: number): Promise<L
 
 /**
  * Get all words starting with a specific letter + user mastery records.
- * @param maxUnitOrder — if provided, words in units with order > maxUnitOrder are marked `locked: true`
- *                      (they are still returned, so the UI can render them blurred + preview).
+ * Words outside the user's unlocked set come back with `locked: true` (still
+ * returned, so the UI can render them blurred + preview).
  */
-export async function getLetterWords(userId: number, letter: string, maxUnitOrder?: number): Promise<LetterWordData[]> {
+export async function getLetterWords(userId: number, letter: string): Promise<LetterWordData[]> {
   const upperLetter = letter.toUpperCase();
+  const { ids: unlocked } = await getUnlockedWordIds(userId);
 
   const rows = await db
     .select({
@@ -129,13 +121,17 @@ export async function getLetterWords(userId: number, letter: string, maxUnitOrde
       partOfSpeech:    vocabWords.partOfSpeech,
       synonyms:        vocabWords.synonyms,
       antonyms:        vocabWords.antonyms,
-      unitOrder:       vocabUnits.order,
+      connotation:     vocabWords.connotation,
+      altDefinition:   vocabWordAltDefinitions.altDefinition,
+      contrastWord:    vocabWordContrasts.contrastWord,
+      contrastGloss:   vocabWordContrasts.contrastGloss,
       masteryLevel:    vocabUserWordRecords.masteryLevel,
       masteryScore:    vocabUserWordRecords.masteryScore,
       exposureCount:   vocabUserWordRecords.exposureCount,
     })
     .from(vocabWords)
-    .innerJoin(vocabUnits, eq(vocabWords.unitId, vocabUnits.id))
+    .leftJoin(vocabWordAltDefinitions, eq(vocabWordAltDefinitions.wordId, vocabWords.id))
+    .leftJoin(vocabWordContrasts, eq(vocabWordContrasts.wordId, vocabWords.id))
     .leftJoin(
       vocabUserWordRecords,
       and(
@@ -154,9 +150,12 @@ export async function getLetterWords(userId: number, letter: string, maxUnitOrde
     partOfSpeech:    r.partOfSpeech ?? '',
     synonyms:        safeParseArray(r.synonyms),
     antonyms:        safeParseArray(r.antonyms),
+    altDefinition:   r.altDefinition,
+    connotation:     r.connotation,
+    contrast:        r.contrastWord && r.contrastGloss ? { word: r.contrastWord, gloss: r.contrastGloss } : null,
     masteryLevel:    r.masteryLevel ?? 'new',
     masteryScore:    r.masteryScore ?? 0,
     exposureCount:   r.exposureCount ?? 0,
-    locked:          maxUnitOrder !== undefined && r.unitOrder > maxUnitOrder,
+    locked:          unlocked !== null && !unlocked.has(r.wordId),
   }));
 }

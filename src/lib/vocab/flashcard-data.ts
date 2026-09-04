@@ -1,11 +1,13 @@
 import {
   db, users, vocabThemes, vocabWords, vocabUnits,
   vocabFlashcardSessions, vocabUserWordRecords, vocabUserProgress,
+  vocabWordAltDefinitions, vocabWordContrasts,
 } from '@/lib/db';
 import { eq, and, inArray } from 'drizzle-orm';
 import { unstable_cache } from 'next/cache';
 import { VocabCacheTag } from './cache-keys';
-import { PHASE1_MAX_UNIT_ORDER } from './constants';
+import { canAccessTheme } from './access-check';
+import { toCardPrefs, type CardPrefs } from './card-prefs';
 
 function safeParseArray(json: string | null): string[] {
   if (!json) return [];
@@ -20,6 +22,10 @@ export interface FlashcardWord {
   synonyms:      string[];
   antonyms:      string[];
   exampleSentence: string | null;
+  // Card-preference payload — the user may have any of these switched on.
+  altDefinition: string | null;
+  connotation:   string | null;
+  contrast:      { word: string; gloss: string } | null;
   masteryLevel:  string;
   exposureCount: number;
 }
@@ -33,6 +39,7 @@ export interface FlashcardSessionData {
   ratings:       Record<number, string>;
   sessionId:     number | null;
   totalPoints:   number;
+  cardPrefs:     CardPrefs;
   /** Set for letter-based sessions (e.g. "A"). Switches rating endpoint to practice/rate. */
   letterGroup?:  string;
 }
@@ -46,38 +53,44 @@ async function _getFlashcardSession(
     .from(users).where(eq(users.email, email)).limit(1);
   if (!user) return null;
 
-  // Parallelize: theme metadata (with unit order for phase check),
-  // words, and user progress (for phase)
-  const [[theme], rawWords, [progressForPhase]] = await Promise.all([
+  // Parallelize: theme metadata and words
+  const [[theme], rawWords] = await Promise.all([
     db
       .select({
         id:        vocabThemes.id,
         name:      vocabThemes.name,
         unitId:    vocabThemes.unitId,
         unitName:  vocabUnits.name,
-        unitOrder: vocabUnits.order,
       })
       .from(vocabThemes)
       .innerJoin(vocabUnits, eq(vocabThemes.unitId, vocabUnits.id))
       .where(eq(vocabThemes.id, themeId))
       .limit(1),
     db
-      .select()
+      .select({
+        id:              vocabWords.id,
+        word:            vocabWords.word,
+        definition:      vocabWords.definition,
+        partOfSpeech:    vocabWords.partOfSpeech,
+        synonyms:        vocabWords.synonyms,
+        antonyms:        vocabWords.antonyms,
+        exampleSentence: vocabWords.exampleSentence,
+        connotation:     vocabWords.connotation,
+        altDefinition:   vocabWordAltDefinitions.altDefinition,
+        contrastWord:    vocabWordContrasts.contrastWord,
+        contrastGloss:   vocabWordContrasts.contrastGloss,
+      })
       .from(vocabWords)
+      .leftJoin(vocabWordAltDefinitions, eq(vocabWordAltDefinitions.wordId, vocabWords.id))
+      .leftJoin(vocabWordContrasts, eq(vocabWordContrasts.wordId, vocabWords.id))
       .where(eq(vocabWords.themeId, themeId))
       .orderBy(vocabWords.id),
-    db
-      .select({ phase: vocabUserProgress.phase })
-      .from(vocabUserProgress)
-      .where(eq(vocabUserProgress.userId, user.id))
-      .limit(1),
   ]);
   if (!theme) return null;
   if (rawWords.length === 0) return null;
 
-  // Phase-2 (free) users cannot access themes beyond the free unit cap.
-  const phase = progressForPhase?.phase ?? 2;
-  if (phase === 2 && theme.unitOrder > PHASE1_MAX_UNIT_ORDER) return null;
+  // Trial users can only open themes their unlocked word set reaches.
+  if (!(await canAccessTheme(user.id, themeId))) return null;
 
   const wordIds = rawWords.map(w => w.id);
 
@@ -103,7 +116,14 @@ async function _getFlashcardSession(
       ))
       .limit(1),
     db
-      .select({ totalPoints: vocabUserProgress.totalPoints })
+      .select({
+        totalPoints:           vocabUserProgress.totalPoints,
+        cardDefinitionVariant: vocabUserProgress.cardDefinitionVariant,
+        cardShowExample:       vocabUserProgress.cardShowExample,
+        cardShowSynonyms:      vocabUserProgress.cardShowSynonyms,
+        cardShowConnotation:   vocabUserProgress.cardShowConnotation,
+        cardShowContrast:      vocabUserProgress.cardShowContrast,
+      })
       .from(vocabUserProgress)
       .where(eq(vocabUserProgress.userId, user.id))
       .limit(1),
@@ -162,6 +182,9 @@ async function _getFlashcardSession(
       synonyms:        safeParseArray(w.synonyms),
       antonyms:        safeParseArray(w.antonyms),
       exampleSentence: w.exampleSentence,
+      altDefinition:   w.altDefinition,
+      connotation:     w.connotation,
+      contrast:        w.contrastWord && w.contrastGloss ? { word: w.contrastWord, gloss: w.contrastGloss } : null,
       masteryLevel:    rec?.masteryLevel ?? 'new',
       exposureCount:   rec?.exposureCount ?? 0,
     };
@@ -176,6 +199,7 @@ async function _getFlashcardSession(
     ratings,
     sessionId,
     totalPoints: progress?.totalPoints ?? 0,
+    cardPrefs:   toCardPrefs(progress),
   };
 }
 
@@ -183,6 +207,6 @@ export function getFlashcardSession(email: string, themeId: number) {
   return unstable_cache(
     () => _getFlashcardSession(email, themeId),
     ['vocab-flashcard', email, String(themeId)],
-    { revalidate: 120, tags: [VocabCacheTag.flashcard(email, themeId)] },
+    { revalidate: 120, tags: [VocabCacheTag.flashcard(email, themeId), VocabCacheTag.flashcardAll(email)] },
   )();
 }

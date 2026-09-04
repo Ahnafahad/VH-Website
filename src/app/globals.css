@@ -315,6 +315,13 @@
   border-radius: inherit;
 }
 
+/* Same ring for the living flashcard's front face outside the signed-in
+   shell (anonymous /lexicore and pre-activation /vocab/onboarding). */
+.lx-card-focus:focus-visible {
+  outline: 3px solid var(--color-lx-accent-gold);
+  outline-offset: 3px;
+}
+
 /* LexiCore placeholder styling */
 input::placeholder,
 textarea::placeholder {
@@ -1306,12 +1313,12 @@ textarea::placeholder {
    JS/WAAPI stall on throttled webviews can never leave it stuck visible. */
 @keyframes lx-card-sheen {
   0%   { transform: translateX(-120%); opacity: 0; }
-  50%  { opacity: 0.22; }
+  50%  { opacity: 0.13; }
   100% { transform: translateX(120%); opacity: 0; }
 }
 .lx-card-sheen {
   opacity: 0;
-  animation: lx-card-sheen 0.9s ease-in-out 0.25s both;
+  animation: lx-card-sheen 650ms cubic-bezier(.22,1,.36,1) 120ms both;
 }
 
 @media (prefers-reduced-motion: reduce) {

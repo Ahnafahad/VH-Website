@@ -271,6 +271,13 @@ function generateFromTemplate(s: UserStats): string {
   return TEMPLATES[idx](s);
 }
 
+// Before a first real study session, stats are all zero — DeepSeek has
+// nothing to reason about and tends to improvise something off-voice
+// ("there are two words we need to do"). Skip it entirely; a user who
+// hasn't started yet gets one fixed, focused line instead of stat-driven
+// advice they have no history to make sense of.
+const FIRST_SESSION_MESSAGE = "You haven't started yet. Today's only job is your first session — nothing else matters before that.";
+
 // ─── Public API ───────────────────────────────────────────────────────────────
 
 export async function getDailyMessage(
@@ -302,10 +309,14 @@ export async function getDailyMessage(
   const stats = await getUserStats(user.id, user.name, user.createdAt);
 
   let message: string;
-  try {
-    message = await generateWithDeepSeek(stats);
-  } catch {
-    message = generateFromTemplate(stats);
+  if (stats.daysSinceLastStudy === null) {
+    message = FIRST_SESSION_MESSAGE;
+  } else {
+    try {
+      message = await generateWithDeepSeek(stats);
+    } catch {
+      message = generateFromTemplate(stats);
+    }
   }
 
   await db

@@ -1,6 +1,7 @@
 import {
   db, users, userAccess, vocabUserProgress, vocabUserWordRecords,
   vocabFlashcardSessions, vocabThemes, vocabQuizSessions, vocabQuizAnswers, vocabWords,
+  vocabSyllabuses, vocabUserSyllabuses,
 } from '@/lib/db';
 import { eq, and, lte, gte, gt, count, sql, inArray, min } from 'drizzle-orm';
 import { FREE_WORD_POOL, PAID_WORD_POOL } from './constants';
@@ -10,6 +11,7 @@ import { dhakaWeekStart } from './dhaka-time';
 import { sortByBriefingPriority, computeRequiredPace, computeRepeatOffenders, isResumeStale, type BriefingKind } from './briefing';
 import type { WordPriorityInput } from './priority-score';
 import { isAdminRole } from '@/lib/auth/roles';
+import { getSyllabusCatalogVersion } from './syllabus-prompt';
 
 export interface HomeRecommendation {
   kind:            BriefingKind;
@@ -57,6 +59,8 @@ export interface HomeData {
   nextDueIso:       string | null;
   /** True when the student was upgraded to full access (phase 1) and hasn't set/dismissed a new target date yet. */
   promptFullAccessDeadline: boolean;
+  /** Set when syllabuses exist that this user hasn't been asked about yet — drives the "choose your syllabus" interstitial. */
+  newSyllabusPrompt: { syllabuses: { id: number; name: string; description: string | null }[] } | null;
 }
 
 async function _getHomeData(email: string): Promise<HomeData | null> {
@@ -101,6 +105,8 @@ async function _getHomeData(email: string): Promise<HomeData | null> {
     activeQuizRows,
     nextDueResult,
     wordRecords,
+    allSyllabuses,
+    selectedSyllabusRows,
   ] = await Promise.all([
     // SRS due count
     db.select({ value: count() })
@@ -219,6 +225,14 @@ async function _getHomeData(email: string): Promise<HomeData | null> {
     })
       .from(vocabUserWordRecords)
       .where(eq(vocabUserWordRecords.userId, user.id)),
+
+    db.select({ id: vocabSyllabuses.id, name: vocabSyllabuses.name, description: vocabSyllabuses.description })
+      .from(vocabSyllabuses)
+      .orderBy(vocabSyllabuses.order),
+
+    db.select({ syllabusId: vocabUserSyllabuses.syllabusId })
+      .from(vocabUserSyllabuses)
+      .where(eq(vocabUserSyllabuses.userId, user.id)),
   ]);
 
   // ── Compute basics ────────────────────────────────────────────────────────
@@ -408,7 +422,27 @@ async function _getHomeData(email: string): Promise<HomeData | null> {
     recommendation,
     nextDueIso,
     promptFullAccessDeadline: progress.phase === 1 && progress.fullAccessDeadlineSetAt === null,
+    newSyllabusPrompt: await getNewSyllabusPrompt(progress.lastAnnouncementSeen, allSyllabuses, selectedSyllabusRows),
   };
+}
+
+async function getNewSyllabusPrompt(
+  lastSeen: string | null,
+  allSyllabuses: { id: number; name: string; description: string | null }[],
+  selectedRows: { syllabusId: number }[],
+): Promise<HomeData['newSyllabusPrompt']> {
+  // An empty selection already means unrestricted access to every syllabus,
+  // current and future (see access-check.ts) — nothing to prompt these users
+  // to "add". Only users who've already narrowed their selection need to be
+  // told a newly-added syllabus isn't in it yet.
+  if (selectedRows.length === 0) return null;
+
+  const catalogVersion = await getSyllabusCatalogVersion();
+  if (lastSeen === catalogVersion) return null;
+
+  const selected = new Set(selectedRows.map(r => r.syllabusId));
+  const missing  = allSyllabuses.filter(s => !selected.has(s.id));
+  return missing.length > 0 ? { syllabuses: missing } : null;
 }
 
 export function getHomeData(email: string) {

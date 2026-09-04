@@ -3,9 +3,8 @@ import { redirect }         from 'next/navigation';
 import { authOptions }      from '@/lib/auth';
 import { and, eq, lte }     from 'drizzle-orm';
 import { db }               from '@/lib/db';
-import { users, vocabUserWordRecords, vocabWords, vocabUnits } from '@/lib/db/schema';
-import { getUserPhase }     from '@/lib/vocab/access-check';
-import { PHASE1_MAX_UNIT_ORDER } from '@/lib/vocab/constants';
+import { users, vocabUserWordRecords } from '@/lib/db/schema';
+import { filterAccessibleWordIds } from '@/lib/vocab/access-check';
 import ReviewQuizClient from './ReviewQuizClient';
 
 export default async function ReviewQuizPage() {
@@ -21,34 +20,23 @@ export default async function ReviewQuizPage() {
   if (!user) redirect('/vocab/onboarding');
 
   const now = new Date();
-  const phase = await getUserPhase(user.id);
 
-  const rows = phase !== 2
-    ? await db
-        .select({ wordId: vocabUserWordRecords.wordId })
-        .from(vocabUserWordRecords)
-        .where(and(
-          eq(vocabUserWordRecords.userId, user.id),
-          eq(vocabUserWordRecords.inSrsPool, true),
-          lte(vocabUserWordRecords.srsNextReviewDate, now),
-        ))
-        .orderBy(vocabUserWordRecords.srsNextReviewDate)
-        .limit(30)
-    : await db
-        .select({ wordId: vocabUserWordRecords.wordId })
-        .from(vocabUserWordRecords)
-        .innerJoin(vocabWords, eq(vocabUserWordRecords.wordId, vocabWords.id))
-        .innerJoin(vocabUnits, eq(vocabWords.unitId, vocabUnits.id))
-        .where(and(
-          eq(vocabUserWordRecords.userId, user.id),
-          eq(vocabUserWordRecords.inSrsPool, true),
-          lte(vocabUserWordRecords.srsNextReviewDate, now),
-          lte(vocabUnits.order, PHASE1_MAX_UNIT_ORDER),
-        ))
-        .orderBy(vocabUserWordRecords.srsNextReviewDate)
-        .limit(30);
+  // Over-fetch, then drop anything outside the user's unlocked set — trial
+  // access is a word set, so it can't be expressed as a join condition here.
+  const due = await db
+    .select({ wordId: vocabUserWordRecords.wordId })
+    .from(vocabUserWordRecords)
+    .where(and(
+      eq(vocabUserWordRecords.userId, user.id),
+      eq(vocabUserWordRecords.inSrsPool, true),
+      lte(vocabUserWordRecords.srsNextReviewDate, now),
+    ))
+    .orderBy(vocabUserWordRecords.srsNextReviewDate)
+    .limit(120);
 
-  if (rows.length === 0) redirect('/vocab/review');
+  const wordIds = (await filterAccessibleWordIds(user.id, due.map(r => r.wordId))).slice(0, 30);
 
-  return <ReviewQuizClient wordIds={rows.map(r => r.wordId)} />;
+  if (wordIds.length === 0) redirect('/vocab/review');
+
+  return <ReviewQuizClient wordIds={wordIds} />;
 }

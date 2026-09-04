@@ -13,6 +13,7 @@ import ReviewTab from './ReviewTab';
 import { useVocabFeedback } from '@/lib/vocab/use-vocab-feedback';
 import { LexiArtwork, LexiIcon } from '@/components/vocab/LexiAsset';
 import { BriefingSection } from '@/components/vocab/BriefingCards';
+import SyllabusFilterRow from '@/components/vocab/SyllabusFilterRow';
 
 interface Props {
   data: {
@@ -23,6 +24,9 @@ interface Props {
     masteredWords: number;
     totalWords:    number;
     briefingCards: StudyBriefingCard[];
+    syllabuses:         { id: number; name: string }[];
+    selectedSyllabusIds: number[];
+    syllabusLocked:      boolean;
   };
   letterIndex: LetterSummary[];
   reviewData:  ReviewData;
@@ -256,6 +260,13 @@ export default function StudyScreen({ data, letterIndex, reviewData }: Props) {
       >
         Study
       </h1>
+
+      {/* Syllabus filter — narrows which words show up everywhere below */}
+      <div className="md:max-w-2xl md:w-full md:mx-auto">
+        {!data.syllabusLocked && (
+          <SyllabusFilterRow syllabuses={data.syllabuses} selectedIds={data.selectedSyllabusIds} />
+        )}
+      </div>
 
       {/* Today's Briefing — curated cases, above the manual picker */}
       <div className="md:max-w-2xl md:w-full md:mx-auto" style={{ marginTop: '0.25rem' }}>

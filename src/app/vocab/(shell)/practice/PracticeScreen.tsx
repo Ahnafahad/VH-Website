@@ -9,6 +9,7 @@ import { trackFeature } from '@/lib/analytics/tracker';
 import { LexiArtwork, LexiIcon } from '@/components/vocab/LexiAsset';
 import { BriefingSection } from '@/components/vocab/BriefingCards';
 import { MasteryBar } from '@/components/vocab/MasteryBar';
+import SyllabusFilterRow from '@/components/vocab/SyllabusFilterRow';
 
 type PracticeTab = 'unit' | 'letter';
 
@@ -754,6 +755,13 @@ export default function PracticeScreen({ data }: { data: PracticePageData }) {
             ? 'Select a whole unit or pick individual themes to include'
             : 'Tap letters to include in your practice quiz'}
         </motion.p>
+      </div>
+
+      {/* ── Syllabus filter — narrows which words show up everywhere below ── */}
+      <div className="px-5 md:px-8 mb-4">
+        {!data.syllabusLocked && (
+          <SyllabusFilterRow syllabuses={data.syllabuses} selectedIds={data.selectedSyllabusIds} />
+        )}
       </div>
 
       {/* ── Today's Briefing — curated quiz cases, above the manual picker ── */}

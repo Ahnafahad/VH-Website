@@ -5,7 +5,10 @@ import { authOptions }       from '@/lib/auth';
 import {
   db, users, vocabUserProgress, vocabUserWordRecords,
   vocabWords, vocabUserBadges, vocabAdminSettings,
+  vocabWordAltDefinitions, vocabWordContrasts,
 } from '@/lib/db';
+import { toCardPrefs, type CardPrefs } from '@/lib/vocab/card-prefs';
+import type { LivingCardWord } from '@/components/vocab/LivingFlashcard';
 import { BADGE_DEFS }        from '@/lib/vocab/badges/definitions';
 import ProfileScreen         from './ProfileScreen';
 
@@ -57,6 +60,9 @@ export interface ProfileData {
   dailyTarget:          number;
   notificationsEnabled: boolean;
   emailSummaryEnabled:  boolean;
+  // Card style is edited on a real card, never as a list of switches.
+  cardPrefs:            CardPrefs;
+  cardPreviewWord:      LivingCardWord | null;
 }
 
 // ─── Page (Server Component) ──────────────────────────────────────────────────
@@ -176,6 +182,43 @@ export default async function ProfilePage({
     };
   });
 
+  // ── Card preview word — rich enough that every card option has something
+  //    to show. Falls back to null; the UI then hides the section.
+  const [previewRow] = await db
+    .select({
+      id:              vocabWords.id,
+      word:            vocabWords.word,
+      definition:      vocabWords.definition,
+      partOfSpeech:    vocabWords.partOfSpeech,
+      synonyms:        vocabWords.synonyms,
+      exampleSentence: vocabWords.exampleSentence,
+      connotation:     vocabWords.connotation,
+      altDefinition:   vocabWordAltDefinitions.altDefinition,
+      contrastWord:    vocabWordContrasts.contrastWord,
+      contrastGloss:   vocabWordContrasts.contrastGloss,
+    })
+    .from(vocabWords)
+    .innerJoin(vocabWordAltDefinitions, eq(vocabWordAltDefinitions.wordId, vocabWords.id))
+    .innerJoin(vocabWordContrasts, eq(vocabWordContrasts.wordId, vocabWords.id))
+    .where(sql`${vocabWords.exampleSentence} is not null`)
+    .limit(1);
+
+  const cardPreviewWord: LivingCardWord | null = previewRow
+    ? {
+        id:              previewRow.id,
+        word:            previewRow.word,
+        definition:      previewRow.definition,
+        altDefinition:   previewRow.altDefinition,
+        partOfSpeech:    previewRow.partOfSpeech,
+        synonyms:        (() => { try { const v = JSON.parse(previewRow.synonyms ?? '[]'); return Array.isArray(v) ? v as string[] : []; } catch { return []; } })(),
+        exampleSentence: previewRow.exampleSentence,
+        connotation:     previewRow.connotation,
+        contrast:        previewRow.contrastWord && previewRow.contrastGloss
+          ? { word: previewRow.contrastWord, gloss: previewRow.contrastGloss }
+          : null,
+      }
+    : null;
+
   // ── Assemble ─────────────────────────────────────────────────────────────────
   const data: ProfileData = {
     name:                 user.name          ?? 'Learner',
@@ -198,6 +241,8 @@ export default async function ProfilePage({
     dailyTarget:          progress.dailyTarget          ?? 10,
     notificationsEnabled: progress.notificationsEnabled ?? false,
     emailSummaryEnabled:  progress.emailSummaryEnabled  ?? true,
+    cardPrefs:            toCardPrefs(progress),
+    cardPreviewWord,
   };
 
   return <ProfileScreen data={data} initialTab={tab === 'settings' ? 'settings' : 'profile'} />;

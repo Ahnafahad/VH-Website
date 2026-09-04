@@ -7,7 +7,7 @@ import { getStudyData }     from '@/lib/vocab/study-data';
 import { getPracticePageData } from '@/lib/vocab/practice-data';
 import HomeScreen           from './HomeScreen';
 
-export default async function HomePage() {
+export default async function HomePage({ searchParams }: { searchParams: Promise<{ activated?: string }> }) {
   const session = await getServerSession(authOptions);
   if (!session?.user?.email) redirect('/registration/games?next=/vocab/home');
 
@@ -23,5 +23,6 @@ export default async function HomePage() {
     ]);
   });
 
-  return <HomeScreen data={data} />;
+  const { activated } = await searchParams;
+  return <HomeScreen data={data} justActivated={activated === '1'} />;
 }

@@ -4,7 +4,23 @@ import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react';
 
-const STORAGE_KEY = 'lx-install-prompt-dismissed';
+// v2: replaces the old 'lx-install-prompt-dismissed' permanent flag. Existing
+// users carrying that old key are unaffected by it now (it's just dead) and
+// get a fresh first-seen date under the new time-boxed rules below.
+const STORAGE_KEY = 'lx-install-prompt-v2';
+const TWO_WEEKS_MS = 14 * 24 * 60 * 60 * 1000;
+
+interface StoredState { firstSeenAt: number; dismissedUntil?: number }
+
+function readState(): StoredState | null {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    return raw ? JSON.parse(raw) as StoredState : null;
+  } catch { return null; }
+}
+function writeState(s: StoredState) {
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(s)); } catch { /* ignore */ }
+}
 
 type PromptState = 'android' | 'ios' | null;
 
@@ -14,10 +30,25 @@ export default function InstallPrompt() {
   const [deferredPrompt, setDeferredPrompt] = useState<any>(null);
 
   useEffect(() => {
-    // Don't show if already dismissed or already installed (standalone mode)
-    if (localStorage.getItem(STORAGE_KEY)) return;
     const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
     if (isStandalone) return;
+
+    // Phones only — desktop Chrome/Edge also fire beforeinstallprompt, but
+    // the native browser install affordance already covers desktop.
+    const ua = navigator.userAgent;
+    const isMobile = /android|iphone|ipad|ipod/i.test(ua);
+    if (!isMobile) return;
+
+    const now = Date.now();
+    let stored = readState();
+    if (!stored) {
+      stored = { firstSeenAt: now };
+      writeState(stored);
+    }
+    // The whole feature sunsets 2 weeks after a user first saw it, dismissed or not.
+    if (now - stored.firstSeenAt > TWO_WEEKS_MS) return;
+    // An explicit dismissal suppresses it for 2 weeks from that dismissal.
+    if (stored.dismissedUntil && now < stored.dismissedUntil) return;
 
     // Android: listen for beforeinstallprompt
     const handler = (e: Event) => {
@@ -28,10 +59,9 @@ export default function InstallPrompt() {
     window.addEventListener('beforeinstallprompt', handler);
 
     // iOS detection: no beforeinstallprompt fires
-    const ua = navigator.userAgent;
     const isIOS = /iphone|ipad|ipod/i.test(ua);
     const isSafari = /^((?!chrome|android).)*safari/i.test(ua);
-    if (isIOS && isSafari && !isStandalone) {
+    if (isIOS && isSafari) {
       setState('ios');
     }
 
@@ -39,7 +69,8 @@ export default function InstallPrompt() {
   }, []);
 
   const dismiss = () => {
-    localStorage.setItem(STORAGE_KEY, '1');
+    const stored = readState() ?? { firstSeenAt: Date.now() };
+    writeState({ ...stored, dismissedUntil: Date.now() + TWO_WEEKS_MS });
     setState(null);
   };
 
@@ -50,7 +81,8 @@ export default function InstallPrompt() {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const { outcome } = await (deferredPrompt as any).userChoice;
     if (outcome === 'accepted') {
-      localStorage.setItem(STORAGE_KEY, '1');
+      const stored = readState() ?? { firstSeenAt: Date.now() };
+      writeState({ ...stored, dismissedUntil: Date.now() + TWO_WEEKS_MS });
     }
     setDeferredPrompt(null);
     setState(null);

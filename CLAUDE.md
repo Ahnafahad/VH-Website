@@ -37,6 +37,28 @@ This repo has a persistent index system so no session wastes tokens re-exploring
 - **Local admin testing (DEV ONLY):** to sign in as super-admin (`ahnaf816@gmail.com`) without the Google OAuth round-trip, run the dev server (with the Turso TLS cert env, else the session stays empty), open **`/dev-login`**, and enter the `DEV_LOGIN_CODE` value from `vh-website/.env.local`. Backed by a `dev-login` NextAuth CredentialsProvider in `src/lib/auth.ts`, hard-gated to `NODE_ENV==='development'` (the provider is never constructed in prod and `/dev-login` 404s). Roles come from the DB, so this yields the same super-admin session a real login would. The normal `/auth/signin` page is Google-only and shows nothing about this.
 - **Loose PNGs / logs at both roots:** session debris (screenshots), not assets. Don't index, don't delete unasked
 
+## Automations (skills, hooks, subagents, MCP servers)
+
+New machine? See `MACHINE_SETUP.md` (outer repo root) for what to install/configure first — env vars, the local TLS workaround, and how to re-register the MCP servers below (they're per-machine, not synced via git).
+
+**MCP servers** (`claude mcp list` to check status; registered at local/project scope, not `.mcp.json`, so they don't sync via git):
+- **context7** — live library/framework documentation lookup. Claude invokes it automatically when it needs current docs for a dependency (Next.js, Drizzle, NextAuth, etc.) instead of relying on training-data knowledge, which can be stale for fast-moving libraries.
+- **turso** — direct read access to the live Turso DB (list tables, inspect schema, run `SELECT`s) from inside Claude Code, via `mcp-turso`. Carries a live `TURSO_AUTH_TOKEN` — this is why it's local-scope only, never project-shared. Useful for verifying actual DB state against `schema.ts` (see the drizzle-journal-desync gotcha in `.claude/index/CODEBASE.md` §5) without writing a throwaway script.
+
+**Skills** (`vh-website/.claude/skills/`):
+- `db-schema-change` — the correct workflow for changing the DB schema (edit `schema.ts` → `npx drizzle-kit push`, not `generate` → the `NODE_EXTRA_CA_CERTS`/`win-roots.pem` TLS gotcha → the 2026-08-05 journal-desync gotcha). Both Claude and the user can invoke it (Claude reaches for it automatically on schema-change tasks).
+- `lms-feature-conventions` — Claude-only background knowledge (`user-invocable: false`) on the role-tier system (`isStaffRole`/`isAdminRole`/`isSuperAdminRole`, the `isAdminEmail()`-is-actually-staff-level gotcha, the `isUltimateTesterEmail` visibility-vs-authorization rule) and the LMS shared-primitive modules (tx-retry, vocab points/attempt-stats, `resolveAudience`, admin LMS design tokens). Loaded automatically whenever Claude touches auth/admin/LMS code — not meant to be run as a `/slash` command.
+- Pre-existing: `magic-ui`, `ui-ux-pro-max`, `test-import` (see their own SKILL.md files).
+
+**Hooks** (`vh-website/.claude/settings.json`, team-shared/git-tracked):
+- **PostToolUse** on `Edit|Write|MultiEdit` — after any `.ts`/`.tsx`/`.js`/`.jsx` write under `src/`, runs ESLint on that file and surfaces findings back to Claude. Report-only, never blocks — a lint error doesn't stop the edit.
+- **PreToolUse** on `Edit|Write|MultiEdit` — blocks any attempted edit to `drizzle/**` (generated migrations — use the `db-schema-change` skill's workflow instead) or `.env.local` (live secrets — edit by hand, outside Claude).
+- Personal/local overrides (Bash permission allowlist etc.) stay in the separate, gitignored `.claude/settings.local.json` — untouched by the above.
+
+**Subagents** (`vh-website/.claude/agents/`), invoke via the Agent tool:
+- `security-reviewer` — read-only (Read/Glob/Grep/Bash), checks diffs against this repo's specific known auth bug patterns: the `isAdminEmail()`/`isAdminRole` staff-vs-admin confusion, `isUltimateTesterEmail` leaking into an authorization gate, missing/wrong-tier `requireAdmin()`/`requireStaff()` gates, and content-visibility-vs-authorization conflation. Reach for it on any diff touching `src/lib/auth/**`, `src/app/api/admin/**`, or route-level staff/admin gates.
+- `code-reviewer` — read-only, general PR-review substitute (no CI/CD exists in this repo). Checks admin-LMS design-token discipline, the Server/Client Component `lms-shared.tsx` import boundary, duplicated logic that should reuse a shared primitive (tx-retry, vocab points/attempt-stats, `resolveAudience`), and general repo-style conventions. Extra scrutiny for `src/app/admin/**` (flagged god-node in `graphify-out/GRAPH_REPORT.md`).
+
 ## Behavioral Guidelines
 
 **Tradeoff:** These guidelines bias toward caution over speed. For trivial tasks, use judgment.

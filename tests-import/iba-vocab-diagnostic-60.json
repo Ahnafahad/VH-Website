@@ -1,0 +1,918 @@
+{
+  "slug": "iba-vocab-diagnostic-60",
+  "title": "IBA Vocabulary Diagnostic — 60 Questions",
+  "bucket": "iba",
+  "description": "GRE/SAT-style vocabulary test — 60 questions (Easy → Hard). Synonyms, antonyms, sentence completion, and word-in-context.",
+  "sections": [
+    {
+      "order": 1,
+      "title": "Vocabulary",
+      "marksPerCorrect": 1,
+      "penaltyPerWrong": 0.25,
+      "thresholdPercent": null,
+      "groups": [],
+      "questions": [
+        {
+          "number": 1,
+          "group": null,
+          "stem": "Choose the word closest in meaning to **ABUNDANT**.",
+          "options": [
+            { "key": "A", "text": "scarce" },
+            { "key": "B", "text": "hidden" },
+            { "key": "C", "text": "plentiful" },
+            { "key": "D", "text": "expensive" },
+            { "key": "E", "text": "fresh" }
+          ],
+          "correctKey": "C",
+          "imageUrl": null,
+          "explanation": "*Abundant* = existing in large quantity → plentiful."
+        },
+        {
+          "number": 2,
+          "group": null,
+          "stem": "Choose the word closest in meaning to **RELUCTANT**.",
+          "options": [
+            { "key": "A", "text": "unwilling" },
+            { "key": "B", "text": "tired" },
+            { "key": "C", "text": "angry" },
+            { "key": "D", "text": "confused" },
+            { "key": "E", "text": "hopeful" }
+          ],
+          "correctKey": "A",
+          "imageUrl": null,
+          "explanation": "*Reluctant* = disinclined → unwilling."
+        },
+        {
+          "number": 3,
+          "group": null,
+          "stem": "Despite the ______ weather, the outdoor match was played to the final whistle.",
+          "options": [
+            { "key": "A", "text": "pleasant" },
+            { "key": "B", "text": "mild" },
+            { "key": "C", "text": "sunny" },
+            { "key": "D", "text": "calm" },
+            { "key": "E", "text": "inclement" }
+          ],
+          "correctKey": "E",
+          "imageUrl": null,
+          "explanation": "Weather framed by 'despite' must be bad; *inclement* = stormy/harsh."
+        },
+        {
+          "number": 4,
+          "group": null,
+          "stem": "Choose the word closest in meaning to **DILIGENT**.",
+          "options": [
+            { "key": "A", "text": "lazy" },
+            { "key": "B", "text": "hardworking" },
+            { "key": "C", "text": "clever" },
+            { "key": "D", "text": "honest" },
+            { "key": "E", "text": "quiet" }
+          ],
+          "correctKey": "B",
+          "imageUrl": null,
+          "explanation": "*Diligent* = showing steady, careful effort → hardworking."
+        },
+        {
+          "number": 5,
+          "group": null,
+          "stem": "Choose the word most nearly **OPPOSITE** in meaning to **GENEROUS**.",
+          "options": [
+            { "key": "A", "text": "kind" },
+            { "key": "B", "text": "wealthy" },
+            { "key": "C", "text": "cheerful" },
+            { "key": "D", "text": "stingy" },
+            { "key": "E", "text": "polite" }
+          ],
+          "correctKey": "D",
+          "imageUrl": null,
+          "explanation": "Opposite of *generous* (giving) → stingy."
+        },
+        {
+          "number": 6,
+          "group": null,
+          "stem": "The teacher's remarks were **candid**, sparing no one's feelings. As used here, *candid* most nearly means:",
+          "options": [
+            { "key": "A", "text": "frank" },
+            { "key": "B", "text": "cruel" },
+            { "key": "C", "text": "humorous" },
+            { "key": "D", "text": "brief" },
+            { "key": "E", "text": "vague" }
+          ],
+          "correctKey": "A",
+          "imageUrl": null,
+          "explanation": "Sparing no feelings = openly truthful → frank (not 'cruel', which overshoots)."
+        },
+        {
+          "number": 7,
+          "group": null,
+          "stem": "Choose the word closest in meaning to **FEASIBLE**.",
+          "options": [
+            { "key": "A", "text": "expensive" },
+            { "key": "B", "text": "enjoyable" },
+            { "key": "C", "text": "possible" },
+            { "key": "D", "text": "difficult" },
+            { "key": "E", "text": "temporary" }
+          ],
+          "correctKey": "C",
+          "imageUrl": null,
+          "explanation": "*Feasible* = able to be done → possible."
+        },
+        {
+          "number": 8,
+          "group": null,
+          "stem": "Choose the word most nearly **OPPOSITE** in meaning to **EXPAND**.",
+          "options": [
+            { "key": "A", "text": "grow" },
+            { "key": "B", "text": "stretch" },
+            { "key": "C", "text": "widen" },
+            { "key": "D", "text": "increase" },
+            { "key": "E", "text": "contract" }
+          ],
+          "correctKey": "E",
+          "imageUrl": null,
+          "explanation": "Opposite of *expand* → contract."
+        },
+        {
+          "number": 9,
+          "group": null,
+          "stem": "She was ______ about the surprise party, unable to hide her excitement from anyone.",
+          "options": [
+            { "key": "A", "text": "indifferent" },
+            { "key": "B", "text": "enthusiastic" },
+            { "key": "C", "text": "nervous" },
+            { "key": "D", "text": "doubtful" },
+            { "key": "E", "text": "calm" }
+          ],
+          "correctKey": "B",
+          "imageUrl": null,
+          "explanation": "'Unable to hide her excitement' signals enthusiastic."
+        },
+        {
+          "number": 10,
+          "group": null,
+          "stem": "Choose the word closest in meaning to **FRAGILE**.",
+          "options": [
+            { "key": "A", "text": "strong" },
+            { "key": "B", "text": "heavy" },
+            { "key": "C", "text": "flexible" },
+            { "key": "D", "text": "delicate" },
+            { "key": "E", "text": "smooth" }
+          ],
+          "correctKey": "D",
+          "imageUrl": null,
+          "explanation": "*Fragile* = easily broken → delicate."
+        },
+        {
+          "number": 11,
+          "group": null,
+          "stem": "Choose the word closest in meaning to **POSTPONE**.",
+          "options": [
+            { "key": "A", "text": "cancel" },
+            { "key": "B", "text": "delay" },
+            { "key": "C", "text": "finish" },
+            { "key": "D", "text": "attend" },
+            { "key": "E", "text": "arrange" }
+          ],
+          "correctKey": "B",
+          "imageUrl": null,
+          "explanation": "*Postpone* = put off to a later time → delay."
+        },
+        {
+          "number": 12,
+          "group": null,
+          "stem": "His generous gift was a **boon** to the struggling shelter. As used here, *boon* most nearly means:",
+          "options": [
+            { "key": "A", "text": "burden" },
+            { "key": "B", "text": "surprise" },
+            { "key": "C", "text": "loan" },
+            { "key": "D", "text": "warning" },
+            { "key": "E", "text": "benefit" }
+          ],
+          "correctKey": "E",
+          "imageUrl": null,
+          "explanation": "A *boon* is a timely blessing → benefit (opposite of 'burden')."
+        },
+        {
+          "number": 13,
+          "group": null,
+          "stem": "Choose the word most nearly **OPPOSITE** in meaning to **TEMPORARY**.",
+          "options": [
+            { "key": "A", "text": "permanent" },
+            { "key": "B", "text": "brief" },
+            { "key": "C", "text": "modern" },
+            { "key": "D", "text": "artificial" },
+            { "key": "E", "text": "rapid" }
+          ],
+          "correctKey": "A",
+          "imageUrl": null,
+          "explanation": "Opposite of *temporary* → permanent."
+        },
+        {
+          "number": 14,
+          "group": null,
+          "stem": "The travel writer's **vivid** description made the city feel real to readers. As used here, *vivid* most nearly means:",
+          "options": [
+            { "key": "A", "text": "dull" },
+            { "key": "B", "text": "short" },
+            { "key": "C", "text": "vibrant" },
+            { "key": "D", "text": "false" },
+            { "key": "E", "text": "tedious" }
+          ],
+          "correctKey": "C",
+          "imageUrl": null,
+          "explanation": "*Vivid* = bright and lifelike → vibrant."
+        },
+        {
+          "number": 15,
+          "group": null,
+          "stem": "The detective remained ______, refusing to jump to conclusions before all the evidence was in.",
+          "options": [
+            { "key": "A", "text": "reckless" },
+            { "key": "B", "text": "hasty" },
+            { "key": "C", "text": "biased" },
+            { "key": "D", "text": "skeptical" },
+            { "key": "E", "text": "certain" }
+          ],
+          "correctKey": "D",
+          "imageUrl": null,
+          "explanation": "'Refusing to jump to conclusions' = skeptical."
+        },
+        {
+          "number": 16,
+          "group": null,
+          "stem": "Choose the word closest in meaning to **NUMEROUS**.",
+          "options": [
+            { "key": "A", "text": "single" },
+            { "key": "B", "text": "rare" },
+            { "key": "C", "text": "heavy" },
+            { "key": "D", "text": "empty" },
+            { "key": "E", "text": "many" }
+          ],
+          "correctKey": "E",
+          "imageUrl": null,
+          "explanation": "*Numerous* = many."
+        },
+        {
+          "number": 17,
+          "group": null,
+          "stem": "Choose the word most nearly **OPPOSITE** in meaning to **PRAISE** (verb).",
+          "options": [
+            { "key": "A", "text": "admire" },
+            { "key": "B", "text": "criticize" },
+            { "key": "C", "text": "thank" },
+            { "key": "D", "text": "reward" },
+            { "key": "E", "text": "greet" }
+          ],
+          "correctKey": "B",
+          "imageUrl": null,
+          "explanation": "Opposite of *praise* → criticize."
+        },
+        {
+          "number": 18,
+          "group": null,
+          "stem": "Choose the word closest in meaning to **CONCEAL**.",
+          "options": [
+            { "key": "A", "text": "hide" },
+            { "key": "B", "text": "reveal" },
+            { "key": "C", "text": "protect" },
+            { "key": "D", "text": "carry" },
+            { "key": "E", "text": "destroy" }
+          ],
+          "correctKey": "A",
+          "imageUrl": null,
+          "explanation": "*Conceal* = keep from sight → hide."
+        },
+        {
+          "number": 19,
+          "group": null,
+          "stem": "The instructions were so **ambiguous** that no two students interpreted them the same way. As used here, *ambiguous* most nearly means:",
+          "options": [
+            { "key": "A", "text": "clear" },
+            { "key": "B", "text": "lengthy" },
+            { "key": "C", "text": "simple" },
+            { "key": "D", "text": "unclear" },
+            { "key": "E", "text": "strict" }
+          ],
+          "correctKey": "D",
+          "imageUrl": null,
+          "explanation": "Different interpretations = unclear."
+        },
+        {
+          "number": 20,
+          "group": null,
+          "stem": "Choose the word closest in meaning to **COURTEOUS**.",
+          "options": [
+            { "key": "A", "text": "shy" },
+            { "key": "B", "text": "strict" },
+            { "key": "C", "text": "polite" },
+            { "key": "D", "text": "clever" },
+            { "key": "E", "text": "loud" }
+          ],
+          "correctKey": "C",
+          "imageUrl": null,
+          "explanation": "*Courteous* = well-mannered → polite."
+        },
+        {
+          "number": 21,
+          "group": null,
+          "stem": "The senator's ______ speech won over even her fiercest critics, who admitted they had been moved.",
+          "options": [
+            { "key": "A", "text": "tedious" },
+            { "key": "B", "text": "rambling" },
+            { "key": "C", "text": "inflammatory" },
+            { "key": "D", "text": "eloquent" },
+            { "key": "E", "text": "terse" }
+          ],
+          "correctKey": "D",
+          "imageUrl": null,
+          "explanation": "Winning over critics needs persuasive skill → eloquent."
+        },
+        {
+          "number": 22,
+          "group": null,
+          "stem": "The novel's plot was so **convoluted** that many readers gave up trying to follow it. As used here, *convoluted* most nearly means:",
+          "options": [
+            { "key": "A", "text": "predictable" },
+            { "key": "B", "text": "complicated" },
+            { "key": "C", "text": "exciting" },
+            { "key": "D", "text": "abbreviated" },
+            { "key": "E", "text": "original" }
+          ],
+          "correctKey": "B",
+          "imageUrl": null,
+          "explanation": "*Convoluted* = intricately twisted → complicated."
+        },
+        {
+          "number": 23,
+          "group": null,
+          "stem": "Choose the word closest in meaning to **PRUDENT**.",
+          "options": [
+            { "key": "A", "text": "cautious" },
+            { "key": "B", "text": "wealthy" },
+            { "key": "C", "text": "generous" },
+            { "key": "D", "text": "stubborn" },
+            { "key": "E", "text": "timid" }
+          ],
+          "correctKey": "A",
+          "imageUrl": null,
+          "explanation": "*Prudent* = wisely careful → cautious ('timid' implies fear, not judgment)."
+        },
+        {
+          "number": 24,
+          "group": null,
+          "stem": "Choose the word most nearly **OPPOSITE** in meaning to **CANDID**.",
+          "options": [
+            { "key": "A", "text": "honest" },
+            { "key": "B", "text": "blunt" },
+            { "key": "C", "text": "open" },
+            { "key": "D", "text": "sincere" },
+            { "key": "E", "text": "evasive" }
+          ],
+          "correctKey": "E",
+          "imageUrl": null,
+          "explanation": "Opposite of *candid* (open) → evasive."
+        },
+        {
+          "number": 25,
+          "group": null,
+          "stem": "Far from being ______, his apology seemed rehearsed and hollow, as if read from a script.",
+          "options": [
+            { "key": "A", "text": "lengthy" },
+            { "key": "B", "text": "public" },
+            { "key": "C", "text": "genuine" },
+            { "key": "D", "text": "formal" },
+            { "key": "E", "text": "private" }
+          ],
+          "correctKey": "C",
+          "imageUrl": null,
+          "explanation": "'Rehearsed and hollow' contrasts with genuine."
+        },
+        {
+          "number": 26,
+          "group": null,
+          "stem": "The critic's **scathing** review left the first-time author demoralized for weeks. As used here, *scathing* most nearly means:",
+          "options": [
+            { "key": "A", "text": "lengthy" },
+            { "key": "B", "text": "harshly critical" },
+            { "key": "C", "text": "mildly favorable" },
+            { "key": "D", "text": "confusing" },
+            { "key": "E", "text": "indifferent" }
+          ],
+          "correctKey": "B",
+          "imageUrl": null,
+          "explanation": "*Scathing* = severely critical → harshly critical."
+        },
+        {
+          "number": 27,
+          "group": null,
+          "stem": "Choose the word closest in meaning to **EPHEMERAL**.",
+          "options": [
+            { "key": "A", "text": "eternal" },
+            { "key": "B", "text": "weighty" },
+            { "key": "C", "text": "luminous" },
+            { "key": "D", "text": "short-lived" },
+            { "key": "E", "text": "concealed" }
+          ],
+          "correctKey": "D",
+          "imageUrl": null,
+          "explanation": "*Ephemeral* = lasting a very short time → short-lived."
+        },
+        {
+          "number": 28,
+          "group": null,
+          "stem": "Choose the word closest in meaning to **METICULOUS**.",
+          "options": [
+            { "key": "A", "text": "careful" },
+            { "key": "B", "text": "careless" },
+            { "key": "C", "text": "hurried" },
+            { "key": "D", "text": "reluctant" },
+            { "key": "E", "text": "cheerful" }
+          ],
+          "correctKey": "A",
+          "imageUrl": null,
+          "explanation": "*Meticulous* = extremely careful about detail → careful."
+        },
+        {
+          "number": 29,
+          "group": null,
+          "stem": "The manager's ______ tone discouraged anyone from voicing even the mildest disagreement.",
+          "options": [
+            { "key": "A", "text": "friendly" },
+            { "key": "B", "text": "uncertain" },
+            { "key": "C", "text": "humble" },
+            { "key": "D", "text": "playful" },
+            { "key": "E", "text": "authoritarian" }
+          ],
+          "correctKey": "E",
+          "imageUrl": null,
+          "explanation": "A tone that silences all dissent is authoritarian."
+        },
+        {
+          "number": 30,
+          "group": null,
+          "stem": "Her **frugal** habits allowed her to save steadily despite a modest income. As used here, *frugal* most nearly means:",
+          "options": [
+            { "key": "A", "text": "reckless" },
+            { "key": "B", "text": "generous" },
+            { "key": "C", "text": "thrifty" },
+            { "key": "D", "text": "affluent" },
+            { "key": "E", "text": "careless" }
+          ],
+          "correctKey": "C",
+          "imageUrl": null,
+          "explanation": "*Frugal* = economical → thrifty."
+        },
+        {
+          "number": 31,
+          "group": null,
+          "stem": "Choose the word most nearly **OPPOSITE** in meaning to **VERBOSE**.",
+          "options": [
+            { "key": "A", "text": "concise" },
+            { "key": "B", "text": "talkative" },
+            { "key": "C", "text": "wordy" },
+            { "key": "D", "text": "fluent" },
+            { "key": "E", "text": "loud" }
+          ],
+          "correctKey": "A",
+          "imageUrl": null,
+          "explanation": "Opposite of *verbose* (wordy) → concise."
+        },
+        {
+          "number": 32,
+          "group": null,
+          "stem": "Choose the word closest in meaning to **PLACATE**.",
+          "options": [
+            { "key": "A", "text": "provoke" },
+            { "key": "B", "text": "ignore" },
+            { "key": "C", "text": "confuse" },
+            { "key": "D", "text": "soothe" },
+            { "key": "E", "text": "abandon" }
+          ],
+          "correctKey": "D",
+          "imageUrl": null,
+          "explanation": "*Placate* = calm or appease → soothe (opposite of 'provoke')."
+        },
+        {
+          "number": 33,
+          "group": null,
+          "stem": "Although the theory seemed ______ at first, further evidence eventually confirmed it beyond doubt.",
+          "options": [
+            { "key": "A", "text": "obvious" },
+            { "key": "B", "text": "dubious" },
+            { "key": "C", "text": "simple" },
+            { "key": "D", "text": "proven" },
+            { "key": "E", "text": "popular" }
+          ],
+          "correctKey": "B",
+          "imageUrl": null,
+          "explanation": "'Although ... further evidence confirmed it' implies early doubt → dubious."
+        },
+        {
+          "number": 34,
+          "group": null,
+          "stem": "The diplomat's **tactful** reply managed to avoid offending either delegation. As used here, *tactful* most nearly means:",
+          "options": [
+            { "key": "A", "text": "blunt" },
+            { "key": "B", "text": "dishonest" },
+            { "key": "C", "text": "lengthy" },
+            { "key": "D", "text": "hesitant" },
+            { "key": "E", "text": "diplomatic" }
+          ],
+          "correctKey": "E",
+          "imageUrl": null,
+          "explanation": "*Tactful* = sensitive in dealing with others → diplomatic."
+        },
+        {
+          "number": 35,
+          "group": null,
+          "stem": "Choose the word closest in meaning to **BELLIGERENT**.",
+          "options": [
+            { "key": "A", "text": "peaceful" },
+            { "key": "B", "text": "cheerful" },
+            { "key": "C", "text": "hostile" },
+            { "key": "D", "text": "talkative" },
+            { "key": "E", "text": "nervous" }
+          ],
+          "correctKey": "C",
+          "imageUrl": null,
+          "explanation": "*Belligerent* = eager to fight → hostile."
+        },
+        {
+          "number": 36,
+          "group": null,
+          "stem": "Choose the word most nearly **OPPOSITE** in meaning to **LAVISH** (adjective).",
+          "options": [
+            { "key": "A", "text": "sparse" },
+            { "key": "B", "text": "generous" },
+            { "key": "C", "text": "costly" },
+            { "key": "D", "text": "grand" },
+            { "key": "E", "text": "plentiful" }
+          ],
+          "correctKey": "A",
+          "imageUrl": null,
+          "explanation": "Opposite of *lavish* (abundant/extravagant) → sparse."
+        },
+        {
+          "number": 37,
+          "group": null,
+          "stem": "The witness gave a ______ account of the accident, omitting no detail that might prove relevant.",
+          "options": [
+            { "key": "A", "text": "vague" },
+            { "key": "B", "text": "biased" },
+            { "key": "C", "text": "cursory" },
+            { "key": "D", "text": "reluctant" },
+            { "key": "E", "text": "comprehensive" }
+          ],
+          "correctKey": "E",
+          "imageUrl": null,
+          "explanation": "'Omitting no relevant detail' = comprehensive."
+        },
+        {
+          "number": 38,
+          "group": null,
+          "stem": "Choose the word closest in meaning to **INNOCUOUS**.",
+          "options": [
+            { "key": "A", "text": "dangerous" },
+            { "key": "B", "text": "harmless" },
+            { "key": "C", "text": "guilty" },
+            { "key": "D", "text": "obvious" },
+            { "key": "E", "text": "rude" }
+          ],
+          "correctKey": "B",
+          "imageUrl": null,
+          "explanation": "*Innocuous* = not harmful → harmless."
+        },
+        {
+          "number": 39,
+          "group": null,
+          "stem": "His **condescending** manner gradually alienated the coworkers he claimed to be helping. As used here, *condescending* most nearly means:",
+          "options": [
+            { "key": "A", "text": "friendly" },
+            { "key": "B", "text": "shy" },
+            { "key": "C", "text": "patronizing" },
+            { "key": "D", "text": "generous" },
+            { "key": "E", "text": "anxious" }
+          ],
+          "correctKey": "C",
+          "imageUrl": null,
+          "explanation": "*Condescending* = looking down on others → patronizing."
+        },
+        {
+          "number": 40,
+          "group": null,
+          "stem": "Choose the word closest in meaning to **SUBSTANTIATE**.",
+          "options": [
+            { "key": "A", "text": "weaken" },
+            { "key": "B", "text": "imagine" },
+            { "key": "C", "text": "deny" },
+            { "key": "D", "text": "verify" },
+            { "key": "E", "text": "summarize" }
+          ],
+          "correctKey": "D",
+          "imageUrl": null,
+          "explanation": "*Substantiate* = support with evidence → verify."
+        },
+        {
+          "number": 41,
+          "group": null,
+          "stem": "The professor's ______ prose, dense with untranslated jargon, alienated the very lay readers she hoped to reach.",
+          "options": [
+            { "key": "A", "text": "lucid" },
+            { "key": "B", "text": "succinct" },
+            { "key": "C", "text": "eloquent" },
+            { "key": "D", "text": "candid" },
+            { "key": "E", "text": "abstruse" }
+          ],
+          "correctKey": "E",
+          "imageUrl": null,
+          "explanation": "Dense, jargon-heavy, alienating = hard to understand → abstruse (opposite of 'lucid')."
+        },
+        {
+          "number": 42,
+          "group": null,
+          "stem": "Her **ostensible** reason for resigning was ill health, but colleagues suspected a quieter motive. As used here, *ostensible* most nearly means:",
+          "options": [
+            { "key": "A", "text": "genuine" },
+            { "key": "B", "text": "urgent" },
+            { "key": "C", "text": "apparent" },
+            { "key": "D", "text": "secret" },
+            { "key": "E", "text": "foolish" }
+          ],
+          "correctKey": "C",
+          "imageUrl": null,
+          "explanation": "*Ostensible* = stated but perhaps not real → apparent (trap: 'genuine' is the opposite nuance)."
+        },
+        {
+          "number": 43,
+          "group": null,
+          "stem": "Choose the word closest in meaning to **INCHOATE**.",
+          "options": [
+            { "key": "A", "text": "undeveloped" },
+            { "key": "B", "text": "dishonest" },
+            { "key": "C", "text": "enormous" },
+            { "key": "D", "text": "ancient" },
+            { "key": "E", "text": "hostile" }
+          ],
+          "correctKey": "A",
+          "imageUrl": null,
+          "explanation": "*Inchoate* = just begun, not fully formed → undeveloped."
+        },
+        {
+          "number": 44,
+          "group": null,
+          "stem": "The critic praised the memoir for its ______ honesty, noting the author's refusal to flatter even herself.",
+          "options": [
+            { "key": "A", "text": "mawkish" },
+            { "key": "B", "text": "obsequious" },
+            { "key": "C", "text": "diffident" },
+            { "key": "D", "text": "unsparing" },
+            { "key": "E", "text": "laconic" }
+          ],
+          "correctKey": "D",
+          "imageUrl": null,
+          "explanation": "Refusing to flatter = holding nothing back → unsparing."
+        },
+        {
+          "number": 45,
+          "group": null,
+          "stem": "Choose the word closest in meaning to **PERFIDIOUS**.",
+          "options": [
+            { "key": "A", "text": "loyal" },
+            { "key": "B", "text": "treacherous" },
+            { "key": "C", "text": "generous" },
+            { "key": "D", "text": "garrulous" },
+            { "key": "E", "text": "cautious" }
+          ],
+          "correctKey": "B",
+          "imageUrl": null,
+          "explanation": "*Perfidious* = deceitful, disloyal → treacherous."
+        },
+        {
+          "number": 46,
+          "group": null,
+          "stem": "The candidate's speech was pure **demagoguery**, inflaming the crowd's fears rather than informing them. As used here, *demagoguery* most nearly means:",
+          "options": [
+            { "key": "A", "text": "honesty" },
+            { "key": "B", "text": "diplomacy" },
+            { "key": "C", "text": "scholarship" },
+            { "key": "D", "text": "generosity" },
+            { "key": "E", "text": "manipulative rabble-rousing" }
+          ],
+          "correctKey": "E",
+          "imageUrl": null,
+          "explanation": "*Demagoguery* = stirring emotion/fear for gain → manipulative rabble-rousing."
+        },
+        {
+          "number": 47,
+          "group": null,
+          "stem": "Choose the word closest in meaning to **SANGUINE**.",
+          "options": [
+            { "key": "A", "text": "bloodthirsty" },
+            { "key": "B", "text": "gloomy" },
+            { "key": "C", "text": "optimistic" },
+            { "key": "D", "text": "indifferent" },
+            { "key": "E", "text": "enraged" }
+          ],
+          "correctKey": "C",
+          "imageUrl": null,
+          "explanation": "*Sanguine* = cheerfully confident → optimistic (trap: literal Latin root means 'blood')."
+        },
+        {
+          "number": 48,
+          "group": null,
+          "stem": "Choose the word most nearly **OPPOSITE** in meaning to **LACONIC**.",
+          "options": [
+            { "key": "A", "text": "verbose" },
+            { "key": "B", "text": "terse" },
+            { "key": "C", "text": "blunt" },
+            { "key": "D", "text": "reticent" },
+            { "key": "E", "text": "rude" }
+          ],
+          "correctKey": "A",
+          "imageUrl": null,
+          "explanation": "*Laconic* = using few words; opposite → verbose."
+        },
+        {
+          "number": 49,
+          "group": null,
+          "stem": "Rather than confront the accusation directly, he offered an ______ reply that committed him to nothing.",
+          "options": [
+            { "key": "A", "text": "trenchant" },
+            { "key": "B", "text": "vehement" },
+            { "key": "C", "text": "candid" },
+            { "key": "D", "text": "equivocal" },
+            { "key": "E", "text": "fervent" }
+          ],
+          "correctKey": "D",
+          "imageUrl": null,
+          "explanation": "A reply committing to nothing is equivocal (deliberately ambiguous)."
+        },
+        {
+          "number": 50,
+          "group": null,
+          "stem": "Choose the word closest in meaning to **RECONDITE**.",
+          "options": [
+            { "key": "A", "text": "obvious" },
+            { "key": "B", "text": "obscure" },
+            { "key": "C", "text": "repetitive" },
+            { "key": "D", "text": "courteous" },
+            { "key": "E", "text": "hollow" }
+          ],
+          "correctKey": "B",
+          "imageUrl": null,
+          "explanation": "*Recondite* = little known, deep → obscure."
+        },
+        {
+          "number": 51,
+          "group": null,
+          "stem": "The board's **obsequious** deference to the chief executive stifled any honest debate about strategy. As used here, *obsequious* most nearly means:",
+          "options": [
+            { "key": "A", "text": "hostile" },
+            { "key": "B", "text": "indifferent" },
+            { "key": "C", "text": "fawning" },
+            { "key": "D", "text": "rational" },
+            { "key": "E", "text": "fleeting" }
+          ],
+          "correctKey": "C",
+          "imageUrl": null,
+          "explanation": "*Obsequious* = excessively obedient/flattering → fawning."
+        },
+        {
+          "number": 52,
+          "group": null,
+          "stem": "Choose the word closest in meaning to **PUSILLANIMOUS**.",
+          "options": [
+            { "key": "A", "text": "cowardly" },
+            { "key": "B", "text": "generous" },
+            { "key": "C", "text": "enormous" },
+            { "key": "D", "text": "talkative" },
+            { "key": "E", "text": "truthful" }
+          ],
+          "correctKey": "A",
+          "imageUrl": null,
+          "explanation": "*Pusillanimous* = timid, lacking courage → cowardly."
+        },
+        {
+          "number": 53,
+          "group": null,
+          "stem": "The armistice proved ______; within months the two nations had returned to open war.",
+          "options": [
+            { "key": "A", "text": "durable" },
+            { "key": "B", "text": "decisive" },
+            { "key": "C", "text": "permanent" },
+            { "key": "D", "text": "binding" },
+            { "key": "E", "text": "evanescent" }
+          ],
+          "correctKey": "E",
+          "imageUrl": null,
+          "explanation": "A truce that collapses fast is evanescent (quickly fading; opposite of 'durable')."
+        },
+        {
+          "number": 54,
+          "group": null,
+          "stem": "His **inveterate** optimism survived even the harshest professional setbacks. As used here, *inveterate* most nearly means:",
+          "options": [
+            { "key": "A", "text": "occasional" },
+            { "key": "B", "text": "deep-rooted" },
+            { "key": "C", "text": "recent" },
+            { "key": "D", "text": "feigned" },
+            { "key": "E", "text": "mild" }
+          ],
+          "correctKey": "B",
+          "imageUrl": null,
+          "explanation": "*Inveterate* = long-established, habitual → deep-rooted."
+        },
+        {
+          "number": 55,
+          "group": null,
+          "stem": "Choose the word closest in meaning to **TRUCULENT**.",
+          "options": [
+            { "key": "A", "text": "gentle" },
+            { "key": "B", "text": "truthful" },
+            { "key": "C", "text": "exhausted" },
+            { "key": "D", "text": "aggressive" },
+            { "key": "E", "text": "transparent" }
+          ],
+          "correctKey": "D",
+          "imageUrl": null,
+          "explanation": "*Truculent* = fiercely defiant → aggressive."
+        },
+        {
+          "number": 56,
+          "group": null,
+          "stem": "Choose the word most nearly **OPPOSITE** in meaning to **PROLIX**.",
+          "options": [
+            { "key": "A", "text": "succinct" },
+            { "key": "B", "text": "wordy" },
+            { "key": "C", "text": "tedious" },
+            { "key": "D", "text": "fluent" },
+            { "key": "E", "text": "hostile" }
+          ],
+          "correctKey": "A",
+          "imageUrl": null,
+          "explanation": "*Prolix* = tediously wordy; opposite → succinct."
+        },
+        {
+          "number": 57,
+          "group": null,
+          "stem": "The scholar's ______ command of the primary sources lent her argument an authority few could challenge.",
+          "options": [
+            { "key": "A", "text": "tenuous" },
+            { "key": "B", "text": "cursory" },
+            { "key": "C", "text": "magisterial" },
+            { "key": "D", "text": "dubious" },
+            { "key": "E", "text": "nascent" }
+          ],
+          "correctKey": "C",
+          "imageUrl": null,
+          "explanation": "Authoritative, masterly command → magisterial (traps 'tenuous', 'cursory' mean weak/shallow)."
+        },
+        {
+          "number": 58,
+          "group": null,
+          "stem": "The committee's response was **tepid**, neither endorsing the plan nor rejecting it outright. As used here, *tepid* most nearly means:",
+          "options": [
+            { "key": "A", "text": "hostile" },
+            { "key": "B", "text": "enthusiastic" },
+            { "key": "C", "text": "hasty" },
+            { "key": "D", "text": "generous" },
+            { "key": "E", "text": "lukewarm" }
+          ],
+          "correctKey": "E",
+          "imageUrl": null,
+          "explanation": "*Tepid* = unenthusiastic, half-hearted → lukewarm."
+        },
+        {
+          "number": 59,
+          "group": null,
+          "stem": "In its precise sense, **FULSOME** praise is best described as:",
+          "options": [
+            { "key": "A", "text": "abundant and warmly welcome" },
+            { "key": "B", "text": "excessive to the point of seeming insincere" },
+            { "key": "C", "text": "modest and strictly truthful" },
+            { "key": "D", "text": "scarce and grudging" },
+            { "key": "E", "text": "cheerful and lighthearted" }
+          ],
+          "correctKey": "B",
+          "imageUrl": null,
+          "explanation": "*Fulsome* (precise sense) = so excessive it rings insincere (trap: many assume it just means 'abundant')."
+        },
+        {
+          "number": 60,
+          "group": null,
+          "stem": "Far from being a ______ thinker, she challenged received orthodoxy at every opportunity.",
+          "options": [
+            { "key": "A", "text": "radical" },
+            { "key": "B", "text": "rebellious" },
+            { "key": "C", "text": "original" },
+            { "key": "D", "text": "conventional" },
+            { "key": "E", "text": "brilliant" }
+          ],
+          "correctKey": "D",
+          "imageUrl": null,
+          "explanation": "'Challenged orthodoxy' contrasts with a conventional thinker."
+        }
+      ]
+    }
+  ]
+}

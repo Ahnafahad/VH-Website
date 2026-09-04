@@ -360,6 +360,60 @@ export const vocabWordAltDefinitions = sqliteTable('vocab_word_alt_definitions',
   updatedAt:           integer('updated_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
 });
 
+// ─── Syllabuses ───────────────────────────────────────────────────────────────
+// A word can belong to one, several, or all syllabuses (many-to-many). Existing
+// 805 words all belong to the 'WordSmart' syllabus (backfilled via seed script).
+// unitId/themeId on vocabWords is unrelated — that's WordSmart's own study
+// structure, not a syllabus assignment.
+
+export const vocabSyllabuses = sqliteTable('vocab_syllabuses', {
+  id:        integer('id').primaryKey({ autoIncrement: true }),
+  name:      text('name').notNull(),
+  slug:      text('slug').notNull().unique(),
+  description: text('description'),
+  // Trial (phase 2) allowance: themes unlock in course order until this many of
+  // the syllabus's words are reachable (whole themes only, never a half-open
+  // one). SAT/GRE words are sprinkled across many WordSmart themes, so a theme
+  // count would unlock 4-5 words for them; a word budget doesn't.
+  trialWordCount: integer('trial_word_count').notNull().default(40),
+  order:     integer('order').notNull().default(0),
+  createdAt: integer('created_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
+});
+
+export const vocabWordSyllabuses = sqliteTable('vocab_word_syllabuses', {
+  id:          integer('id').primaryKey({ autoIncrement: true }),
+  wordId:      integer('word_id').notNull().references(() => vocabWords.id, { onDelete: 'cascade' }),
+  syllabusId:  integer('syllabus_id').notNull().references(() => vocabSyllabuses.id, { onDelete: 'cascade' }),
+  createdAt:   integer('created_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
+}, (t) => [
+  unique().on(t.wordId, t.syllabusId),
+  index('idx_vocab_word_syllabuses_syllabus_id').on(t.syllabusId),
+]);
+
+// A user can follow several syllabuses at once (chosen in onboarding, editable later).
+export const vocabUserSyllabuses = sqliteTable('vocab_user_syllabuses', {
+  id:         integer('id').primaryKey({ autoIncrement: true }),
+  userId:     integer('user_id').notNull().references(() => users.id, { onDelete: 'cascade' }),
+  syllabusId: integer('syllabus_id').notNull().references(() => vocabSyllabuses.id, { onDelete: 'cascade' }),
+  createdAt:  integer('created_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
+}, (t) => [
+  unique().on(t.userId, t.syllabusId),
+  index('idx_vocab_user_syllabuses_user_id').on(t.userId),
+]);
+
+// ─── Word Contrasts ───────────────────────────────────────────────────────────
+// "Don't confuse it with…" — a genuine confusable (paronym / overlapping sense /
+// common misuse), not an antonym. Generated in bulk, approved before display.
+export const vocabWordContrasts = sqliteTable('vocab_word_contrasts', {
+  id:            integer('id').primaryKey({ autoIncrement: true }),
+  wordId:        integer('word_id').notNull().unique().references(() => vocabWords.id, { onDelete: 'cascade' }),
+  contrastWord:  text('contrast_word').notNull(),
+  contrastGloss: text('contrast_gloss').notNull(),
+  confusionType: text('confusion_type').notNull(), // 'paronym' | 'overlapping' | 'misuse'
+  status:        text('status').notNull().default('draft'), // 'draft' | 'approved'
+  createdAt:     integer('created_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
+});
+
 // ─── User Progress ────────────────────────────────────────────────────────────
 // One row per user — overall stats, streak, points, deadline, phase.
 
@@ -379,6 +433,12 @@ export const vocabUserProgress = sqliteTable('vocab_user_progress', {
   fullAccessDeadlineSetAt: integer('full_access_deadline_set_at', { mode: 'timestamp' }),
   dailyTarget:          integer('daily_target').notNull().default(10),
   learningGoal:         text('learning_goal').notNull().default('general'),
+  // Flashcard style — chosen in onboarding, editable in vocab settings.
+  cardDefinitionVariant: text('card_definition_variant').notNull().default('standard'), // 'standard' | 'alt'
+  cardShowExample:      integer('card_show_example', { mode: 'boolean' }).notNull().default(true),
+  cardShowSynonyms:     integer('card_show_synonyms', { mode: 'boolean' }).notNull().default(true),
+  cardShowConnotation:  integer('card_show_connotation', { mode: 'boolean' }).notNull().default(sql`0`),
+  cardShowContrast:     integer('card_show_contrast', { mode: 'boolean' }).notNull().default(sql`0`),
   onboardingComplete:   integer('onboarding_complete', { mode: 'boolean' }).notNull().default(false),
   onboardingCompletedAt: integer('onboarding_completed_at', { mode: 'timestamp' }),
   activatedAt:          integer('activated_at', { mode: 'timestamp' }),
@@ -387,6 +447,13 @@ export const vocabUserProgress = sqliteTable('vocab_user_progress', {
   pushSubscription:     text('push_subscription'), // JSON string of PushSubscriptionJSON
   dailyMessage:         text('daily_message'),
   dailyMessageDate:     text('daily_message_date'),  // ISO date string "2026-04-15"
+  // Syllabus catalog version (see syllabus-prompt.ts) this user last saw the
+  // "new syllabus" prompt for. Null = never seen one.
+  lastAnnouncementSeen: text('last_announcement_seen'),
+  // True = this user's vocab_user_syllabuses selection is fixed by an admin
+  // action (e.g. cohort restricted to one syllabus) and the Study/Practice
+  // checkbox filter must not let them change it.
+  syllabusLocked:       integer('syllabus_locked', { mode: 'boolean' }).notNull().default(false),
   createdAt:            integer('created_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
   updatedAt:            integer('updated_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
 });
