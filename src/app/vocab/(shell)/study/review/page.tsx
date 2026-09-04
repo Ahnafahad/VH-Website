@@ -4,6 +4,7 @@ import { authOptions }       from '@/lib/auth';
 import { db, users, vocabUserProgress } from '@/lib/db';
 import { eq }                from 'drizzle-orm';
 import { getReviewWords }    from '@/lib/vocab/review-data';
+import { toCardPrefs }       from '@/lib/vocab/card-prefs';
 import LetterStudyScreen     from '../letter/[letter]/LetterStudyScreen';
 
 interface Props {
@@ -32,7 +33,14 @@ export default async function ReviewStudyPage({ searchParams }: Props) {
 
   const [words, progressRow] = await Promise.all([
     getReviewWords(user.id, wordIds),
-    db.select({ totalPoints: vocabUserProgress.totalPoints })
+    db.select({
+      totalPoints:           vocabUserProgress.totalPoints,
+      cardDefinitionVariant: vocabUserProgress.cardDefinitionVariant,
+      cardShowExample:       vocabUserProgress.cardShowExample,
+      cardShowSynonyms:      vocabUserProgress.cardShowSynonyms,
+      cardShowConnotation:   vocabUserProgress.cardShowConnotation,
+      cardShowContrast:      vocabUserProgress.cardShowContrast,
+    })
       .from(vocabUserProgress)
       .where(eq(vocabUserProgress.userId, user.id))
       .limit(1).then(r => r[0]),
@@ -44,6 +52,7 @@ export default async function ReviewStudyPage({ searchParams }: Props) {
     <LetterStudyScreen
       letter="Review"
       words={words}
+      cardPrefs={toCardPrefs(progressRow)}
       totalPoints={progressRow?.totalPoints ?? 0}
     />
   );

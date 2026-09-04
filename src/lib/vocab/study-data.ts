@@ -1,11 +1,12 @@
 import {
   db, users, vocabUnits, vocabThemes, vocabWords, vocabUserWordRecords,
   vocabFlashcardSessions, vocabQuizSessions, vocabUserProgress,
+  vocabSyllabuses, vocabUserSyllabuses,
 } from '@/lib/db';
 import { eq, and, sql } from 'drizzle-orm';
 import { unstable_cache } from 'next/cache';
 import { VocabCacheTag } from './cache-keys';
-import { PHASE1_MAX_UNIT_ORDER } from './constants';
+import { getUnlockedWordIds } from './access-check';
 import { sortByBriefingPriority, isResumeStale, type BriefingKind } from './briefing';
 
 export interface StudyBriefingCard {
@@ -45,6 +46,9 @@ async function _getStudyData(email: string): Promise<{
   masteredWords:  number;
   totalWords:     number;
   briefingCards:  StudyBriefingCard[];
+  syllabuses:         { id: number; name: string }[];
+  selectedSyllabusIds: number[];
+  syllabusLocked:      boolean;
 } | null> {
   const [user] = await db
     .select({ id: users.id })
@@ -54,11 +58,12 @@ async function _getStudyData(email: string): Promise<{
   if (!user) return null;
 
   // Parallelize all queries — progress, units, themes, sessions, quizzes
-  const [[progress], units, themes, flashcardSessions, completedQuizzes] = await Promise.all([
+  const [[progress], units, themes, flashcardSessions, completedQuizzes, syllabuses, selectedSyllabusRows] = await Promise.all([
     db
       .select({
-        phase:       vocabUserProgress.phase,
-        totalPoints: vocabUserProgress.totalPoints,
+        phase:          vocabUserProgress.phase,
+        totalPoints:    vocabUserProgress.totalPoints,
+        syllabusLocked: vocabUserProgress.syllabusLocked,
       })
       .from(vocabUserProgress)
       .where(eq(vocabUserProgress.userId, user.id))
@@ -97,9 +102,18 @@ async function _getStudyData(email: string): Promise<{
           eq(vocabQuizSessions.sessionType, 'study'),
         )
       ),
+
+    db.select({ id: vocabSyllabuses.id, name: vocabSyllabuses.name })
+      .from(vocabSyllabuses)
+      .orderBy(vocabSyllabuses.order),
+
+    db.select({ syllabusId: vocabUserSyllabuses.syllabusId })
+      .from(vocabUserSyllabuses)
+      .where(eq(vocabUserSyllabuses.userId, user.id)),
   ]);
 
   const phase       = progress?.phase       ?? 2;
+  const { themeIds: unlockedThemes } = await getUnlockedWordIds(user.id);
   const totalPoints = progress?.totalPoints ?? 0;
 
   const flashcardMap  = new Map(flashcardSessions.map(s => [s.themeId, s.status]));
@@ -116,7 +130,7 @@ async function _getStudyData(email: string): Promise<{
       .map(t => {
         const flashStatus = flashcardMap.get(t.id);
         const quizDone    = quizDoneSet.has(t.id);
-        const locked      = phase === 2 && unit.order > PHASE1_MAX_UNIT_ORDER;
+        const locked      = unlockedThemes !== null && !unlockedThemes.has(t.id);
 
         let status: ThemeStatus = 'not_started';
         if (flashStatus === 'in_progress' || flashStatus === 'complete') {
@@ -174,6 +188,9 @@ async function _getStudyData(email: string): Promise<{
   return {
     units: result, phase, resumeThemeId, totalPoints, masteredWords, totalWords,
     briefingCards: sortByBriefingPriority(briefingCards),
+    syllabuses,
+    selectedSyllabusIds: selectedSyllabusRows.map(r => r.syllabusId),
+    syllabusLocked: progress?.syllabusLocked ?? false,
   };
 }
 

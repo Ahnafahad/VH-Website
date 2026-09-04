@@ -6,7 +6,7 @@ import { eq } from 'drizzle-orm';
 
 export default async function VocabIndexPage() {
   const session = await getServerSession(authOptions);
-  if (!session?.user?.email) redirect('/auth/signin?callbackUrl=/vocab');
+  if (!session?.user?.email) redirect('/lexicore');
 
   // Find user in Turso
   const [user] = await db
@@ -15,7 +15,7 @@ export default async function VocabIndexPage() {
     .where(eq(users.email, session.user.email))
     .limit(1);
 
-  if (!user) redirect('/auth/signin');
+  if (!user) redirect('/lexicore');
 
   // Check onboarding status
   const [progress] = await db

@@ -30,7 +30,8 @@ export default async function VocabRootLayout({
   children: React.ReactNode;
 }) {
   const session = await getServerSession(authOptions);
-  if (!session) redirect('/auth/signin?callbackUrl=/vocab');
+  // No login before value: anonymous visitors get the real onboarding, not a wall.
+  if (!session) redirect('/lexicore');
 
   return <>{children}</>;
 }

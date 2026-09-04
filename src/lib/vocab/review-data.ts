@@ -1,4 +1,4 @@
-import { db, vocabUserWordRecords, vocabWords } from '@/lib/db';
+import { db, vocabUserWordRecords, vocabWords, vocabWordAltDefinitions, vocabWordContrasts } from '@/lib/db';
 import { eq, and, lte, gte, or, inArray } from 'drizzle-orm';
 import { sql } from 'drizzle-orm';
 import type { LetterWordData } from './letter-data';
@@ -147,11 +147,17 @@ export async function getReviewWords(userId: number, wordIds: number[]): Promise
       partOfSpeech:    vocabWords.partOfSpeech,
       synonyms:        vocabWords.synonyms,
       antonyms:        vocabWords.antonyms,
+      connotation:     vocabWords.connotation,
+      altDefinition:   vocabWordAltDefinitions.altDefinition,
+      contrastWord:    vocabWordContrasts.contrastWord,
+      contrastGloss:   vocabWordContrasts.contrastGloss,
       masteryLevel:    vocabUserWordRecords.masteryLevel,
       masteryScore:    vocabUserWordRecords.masteryScore,
       exposureCount:   vocabUserWordRecords.exposureCount,
     })
     .from(vocabWords)
+    .leftJoin(vocabWordAltDefinitions, eq(vocabWordAltDefinitions.wordId, vocabWords.id))
+    .leftJoin(vocabWordContrasts, eq(vocabWordContrasts.wordId, vocabWords.id))
     .leftJoin(
       vocabUserWordRecords,
       and(
@@ -170,6 +176,9 @@ export async function getReviewWords(userId: number, wordIds: number[]): Promise
     partOfSpeech:    r.partOfSpeech ?? '',
     synonyms:        safeParseArray(r.synonyms),
     antonyms:        safeParseArray(r.antonyms),
+    altDefinition:   r.altDefinition,
+    connotation:     r.connotation,
+    contrast:        r.contrastWord && r.contrastGloss ? { word: r.contrastWord, gloss: r.contrastGloss } : null,
     masteryLevel:    r.masteryLevel ?? 'new',
     masteryScore:    r.masteryScore ?? 0,
     exposureCount:   r.exposureCount ?? 0,

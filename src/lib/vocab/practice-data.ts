@@ -1,9 +1,10 @@
-import { db, users, vocabUnits, vocabThemes, vocabUserWordRecords, vocabWords, vocabUserProgress, vocabQuizSessions, vocabFlashcardSessions } from '@/lib/db';
+import { db, users, vocabUnits, vocabThemes, vocabUserWordRecords, vocabWords, vocabUserProgress, vocabQuizSessions, vocabFlashcardSessions, vocabSyllabuses, vocabUserSyllabuses } from '@/lib/db';
 import { eq, and, lte, sql, inArray } from 'drizzle-orm';
 import { getLetterIndex, type LetterSummary } from '@/lib/vocab/letter-data';
 import { unstable_cache } from 'next/cache';
 import { VocabCacheTag } from './cache-keys';
-import { PHASE1_MAX_UNIT_ORDER, FREE_WORD_POOL, PAID_WORD_POOL } from './constants';
+import { FREE_WORD_POOL, PAID_WORD_POOL } from './constants';
+import { getUnlockedWordIds } from './access-check';
 import { resolveStudentLevel, type StudentLevel } from './quiz-generator';
 import type { WordPriorityInput } from './priority-score';
 import { sortByBriefingPriority, computeRequiredPace, computeRepeatOffenders, type BriefingKind } from './briefing';
@@ -50,6 +51,9 @@ export interface PracticePageData {
   /** Gates Exam Mode — unlocked at 'advanced' (70% of themes completed). */
   studentLevel:  StudentLevel;
   briefingCards: PracticeBriefingCard[];
+  syllabuses:         { id: number; name: string }[];
+  selectedSyllabusIds: number[];
+  syllabusLocked:      boolean;
 }
 
 async function _getPracticePageData(email: string): Promise<PracticePageData | null> {
@@ -63,7 +67,7 @@ async function _getPracticePageData(email: string): Promise<PracticePageData | n
   // Parallelize all queries after user lookup
   const [
     units, themes, wordCountRows, masteredRows, [progress], letters, completedSessions,
-    flashcardSessions, studyQuizDone, wordRecords, wordsInOrder,
+    flashcardSessions, studyQuizDone, wordRecords, wordsInOrder, syllabuses, selectedSyllabusRows,
   ] = await Promise.all([
     db
       .select({ id: vocabUnits.id, name: vocabUnits.name, order: vocabUnits.order })
@@ -94,10 +98,11 @@ async function _getPracticePageData(email: string): Promise<PracticePageData | n
 
     db
       .select({
-        totalPoints: vocabUserProgress.totalPoints,
-        streakDays:  vocabUserProgress.streakDays,
-        phase:       vocabUserProgress.phase,
-        deadline:    vocabUserProgress.deadline,
+        totalPoints:    vocabUserProgress.totalPoints,
+        streakDays:     vocabUserProgress.streakDays,
+        phase:          vocabUserProgress.phase,
+        deadline:       vocabUserProgress.deadline,
+        syllabusLocked: vocabUserProgress.syllabusLocked,
       })
       .from(vocabUserProgress)
       .where(eq(vocabUserProgress.userId, user.id))
@@ -157,13 +162,21 @@ async function _getPracticePageData(email: string): Promise<PracticePageData | n
       .from(vocabWords)
       .innerJoin(vocabThemes, eq(vocabWords.themeId, vocabThemes.id))
       .orderBy(vocabThemes.order, vocabWords.id),
+
+    db.select({ id: vocabSyllabuses.id, name: vocabSyllabuses.name })
+      .from(vocabSyllabuses)
+      .orderBy(vocabSyllabuses.order),
+
+    db.select({ syllabusId: vocabUserSyllabuses.syllabusId })
+      .from(vocabUserSyllabuses)
+      .where(eq(vocabUserSyllabuses.userId, user.id)),
   ]);
 
   const phase = progress?.phase ?? 2;
-  const maxUnitOrder = phase === 2 ? PHASE1_MAX_UNIT_ORDER : undefined;
 
-  // Now fetch letter index with phase filtering
-  const filteredLetters = await getLetterIndex(user.id, maxUnitOrder);
+  const { themeIds: unlockedThemes } = await getUnlockedWordIds(user.id);
+
+  const filteredLetters = await getLetterIndex(user.id);
 
   const wordCountMap = new Map(wordCountRows.map(r => [r.themeId, r.count]));
   const masteredMap  = new Map(masteredRows.map(r => [r.themeId, r.count]));
@@ -184,6 +197,7 @@ async function _getPracticePageData(email: string): Promise<PracticePageData | n
   for (const t of themes) {
     const wordCount = wordCountMap.get(t.id) ?? 0;
     if (wordCount === 0) continue;
+    if (unlockedThemes && !unlockedThemes.has(t.id)) continue;
     const item: PracticeThemeItem = {
       id:                t.id,
       name:              t.name,
@@ -197,7 +211,6 @@ async function _getPracticePageData(email: string): Promise<PracticePageData | n
   }
 
   const unitItems: PracticeUnitItem[] = units
-    .filter(u => maxUnitOrder === undefined || u.order <= maxUnitOrder)
     .map(u => {
       const unitThemes    = themesByUnit.get(u.id) ?? [];
       const totalWords    = unitThemes.reduce((s, t) => s + t.wordCount, 0);
@@ -293,6 +306,9 @@ async function _getPracticePageData(email: string): Promise<PracticePageData | n
     streakDays:  progress?.streakDays  ?? 0,
     studentLevel,
     briefingCards: sortByBriefingPriority(briefingCards),
+    syllabuses,
+    selectedSyllabusIds: selectedSyllabusRows.map(r => r.syllabusId),
+    syllabusLocked: progress?.syllabusLocked ?? false,
   };
 }
 

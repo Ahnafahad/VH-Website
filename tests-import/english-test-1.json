@@ -1,0 +1,3028 @@
+{
+  "slug": "english-test-1",
+  "title": "English Test 1",
+  "bucket": "iba",
+  "description": "English Test 1 — Vocabulary and Grammar (100 MCQs, 1 mark each, no negative marking). Select the single best answer (A–E) for each question; for Error Detection items, identify the underlined segment (A–D) containing the error, or select E for no error. American English conventions throughout. The exam also includes two hand-graded essays (15 marks each) that are not part of this online test.",
+  "sections": [
+    {
+      "order": 1,
+      "title": "Vocabulary",
+      "marksPerCorrect": 1,
+      "penaltyPerWrong": 0,
+      "thresholdPercent": null,
+      "groups": [],
+      "questions": [
+        {
+          "number": 1,
+          "group": null,
+          "stem": "Through control of the region's undersea cable landing stations and long-term preferential shipping contracts—rather than any outright acquisition of rival firms—the conglomerate secured a lasting ______ over the data-transit market that smaller providers found impossible to challenge. Which choice completes the sentence with the most logical and precise word?",
+          "options": [
+            {
+              "key": "A",
+              "text": "hegemony"
+            },
+            {
+              "key": "B",
+              "text": "monopoly"
+            },
+            {
+              "key": "C",
+              "text": "autonomy"
+            },
+            {
+              "key": "D",
+              "text": "arbitration"
+            },
+            {
+              "key": "E",
+              "text": "solvency"
+            }
+          ],
+          "correctKey": "A",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 2,
+          "group": null,
+          "stem": "Despite lingering objections from a vocal minority of physicists, the wave-based model achieved unmistakable ______ within the discipline, its equations adopted in nearly every textbook published over the following decade. Which choice completes the sentence with the most logical and precise word?",
+          "options": [
+            {
+              "key": "A",
+              "text": "obsolescence"
+            },
+            {
+              "key": "B",
+              "text": "skepticism"
+            },
+            {
+              "key": "C",
+              "text": "parity"
+            },
+            {
+              "key": "D",
+              "text": "ascendancy"
+            },
+            {
+              "key": "E",
+              "text": "decline"
+            }
+          ],
+          "correctKey": "D",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 3,
+          "group": null,
+          "stem": "Critics from three continents have called the violinist the **preeminent** interpreter of the composer's late string quartets, an assessment even her closest rivals privately concede. As used in the sentence, PREEMINENT most nearly means",
+          "options": [
+            {
+              "key": "A",
+              "text": "controversial"
+            },
+            {
+              "key": "B",
+              "text": "foremost"
+            },
+            {
+              "key": "C",
+              "text": "distinguished"
+            },
+            {
+              "key": "D",
+              "text": "obsolete"
+            },
+            {
+              "key": "E",
+              "text": "tolerable"
+            }
+          ],
+          "correctKey": "B",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 4,
+          "group": null,
+          "stem": "Although every other division adopted the expense-reporting software within a week, the logistics team remained ______, filing paper receipts by hand and ignoring three separate directives from headquarters. Which choice completes the sentence with the most logical and precise word?",
+          "options": [
+            {
+              "key": "A",
+              "text": "meticulous"
+            },
+            {
+              "key": "B",
+              "text": "recalcitrant"
+            },
+            {
+              "key": "C",
+              "text": "diligent"
+            },
+            {
+              "key": "D",
+              "text": "contrite"
+            },
+            {
+              "key": "E",
+              "text": "indifferent"
+            }
+          ],
+          "correctKey": "B",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 5,
+          "group": null,
+          "stem": "Unlike most nonprofits, where founders often draw salaries many times larger than entry-level staff, the collective adopted a strictly ______ pay scale, in which the executive director and the newest intern earn precisely the same hourly wage. Which choice completes the sentence with the most logical and precise word?",
+          "options": [
+            {
+              "key": "A",
+              "text": "hierarchical"
+            },
+            {
+              "key": "B",
+              "text": "discretionary"
+            },
+            {
+              "key": "C",
+              "text": "egalitarian"
+            },
+            {
+              "key": "D",
+              "text": "meritocratic"
+            },
+            {
+              "key": "E",
+              "text": "proportional"
+            }
+          ],
+          "correctKey": "C",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 6,
+          "group": null,
+          "stem": "The structural engineer warned that rust beneath the bridge's paint was **insidious**, having weakened key support beams for years without producing any visible crack or warning sign. As used in the sentence, INSIDIOUS most nearly means",
+          "options": [
+            {
+              "key": "A",
+              "text": "gradually and harmfully concealed"
+            },
+            {
+              "key": "B",
+              "text": "suddenly catastrophic"
+            },
+            {
+              "key": "C",
+              "text": "entirely harmless"
+            },
+            {
+              "key": "D",
+              "text": "openly visible"
+            },
+            {
+              "key": "E",
+              "text": "slow-developing but ultimately beneficial"
+            }
+          ],
+          "correctKey": "A",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 7,
+          "group": null,
+          "stem": "Internal emails showed that the plant manager continued shipping meat products past their safety expiration date after being explicitly warned by inspectors, a decision company auditors later called ______, noting that it had knowingly endangered consumers to avoid a one-week production delay. Which choice completes the sentence with the most logical and precise word?",
+          "options": [
+            {
+              "key": "A",
+              "text": "imprudent"
+            },
+            {
+              "key": "B",
+              "text": "unconventional"
+            },
+            {
+              "key": "C",
+              "text": "reprehensible"
+            },
+            {
+              "key": "D",
+              "text": "inadvisable"
+            },
+            {
+              "key": "E",
+              "text": "unfortunate"
+            }
+          ],
+          "correctKey": "C",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 8,
+          "group": null,
+          "stem": "The new assistant agreed with every opinion the director voiced, refilled his coffee before he could ask, and laughed at jokes that were not particularly funny, a pattern of behavior his colleagues found ______ rather than genuinely respectful. Which choice completes the sentence with the most logical and precise word?",
+          "options": [
+            {
+              "key": "A",
+              "text": "courteous"
+            },
+            {
+              "key": "B",
+              "text": "reticent"
+            },
+            {
+              "key": "C",
+              "text": "assertive"
+            },
+            {
+              "key": "D",
+              "text": "obsequious"
+            },
+            {
+              "key": "E",
+              "text": "impartial"
+            }
+          ],
+          "correctKey": "D",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 9,
+          "group": null,
+          "stem": "Shareholders accused the founder of **nepotism** after his son-in-law, who had no experience in manufacturing, was appointed plant manager over four internal candidates with decades of relevant service. As used in the sentence, NEPOTISM most nearly means",
+          "options": [
+            {
+              "key": "A",
+              "text": "corporate restructuring"
+            },
+            {
+              "key": "B",
+              "text": "legitimate succession planning"
+            },
+            {
+              "key": "C",
+              "text": "favoritism toward relatives"
+            },
+            {
+              "key": "D",
+              "text": "favoritism toward top performers"
+            },
+            {
+              "key": "E",
+              "text": "random hiring error"
+            }
+          ],
+          "correctKey": "C",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 10,
+          "group": null,
+          "stem": "Rather than engaging seriously with each employee's goals, the manager skimmed the self-evaluation forms for thirty seconds apiece and checked the same boxes for everyone, turning what was meant to be a substantive review into a ______ exercise. Which choice completes the sentence with the most logical and precise word?",
+          "options": [
+            {
+              "key": "A",
+              "text": "rigorous"
+            },
+            {
+              "key": "B",
+              "text": "candid"
+            },
+            {
+              "key": "C",
+              "text": "protracted"
+            },
+            {
+              "key": "D",
+              "text": "perfunctory"
+            },
+            {
+              "key": "E",
+              "text": "improvised"
+            }
+          ],
+          "correctKey": "D",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 11,
+          "group": null,
+          "stem": "When defense counsel requested a brief continuance to review newly disclosed evidence, the judge issued a ______ denial from the bench, declaring the trial would proceed that afternoon regardless of any further objection. Which choice completes the sentence with the most logical and precise word?",
+          "options": [
+            {
+              "key": "A",
+              "text": "tentative"
+            },
+            {
+              "key": "B",
+              "text": "peremptory"
+            },
+            {
+              "key": "C",
+              "text": "conciliatory"
+            },
+            {
+              "key": "D",
+              "text": "deliberative"
+            },
+            {
+              "key": "E",
+              "text": "provisional"
+            }
+          ],
+          "correctKey": "B",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 12,
+          "group": null,
+          "stem": "Despite modest quarterly earnings, the CEO arrived at the shareholder meeting in a chauffeured car trailed by two more vehicles, wearing enough jewelry to outfit a small boutique, a display that struck many investors as **ostentatious**. As used in the sentence, OSTENTATIOUS most nearly means",
+          "options": [
+            {
+              "key": "A",
+              "text": "reserved"
+            },
+            {
+              "key": "B",
+              "text": "practical"
+            },
+            {
+              "key": "C",
+              "text": "inconspicuous"
+            },
+            {
+              "key": "D",
+              "text": "showy and pretentious"
+            },
+            {
+              "key": "E",
+              "text": "extravagant but tasteful"
+            }
+          ],
+          "correctKey": "D",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 13,
+          "group": null,
+          "stem": "The novel's central merchant is undone not by poor judgment or bad luck but by a consuming ______: even after amassing more wealth than he could spend in ten lifetimes, he continued to falsify ledgers and starve his own workers merely to add another coin to his hoard. Which choice completes the sentence with the most logical and precise word?",
+          "options": [
+            {
+              "key": "A",
+              "text": "remorse"
+            },
+            {
+              "key": "B",
+              "text": "ambition"
+            },
+            {
+              "key": "C",
+              "text": "curiosity"
+            },
+            {
+              "key": "D",
+              "text": "negligence"
+            },
+            {
+              "key": "E",
+              "text": "avarice"
+            }
+          ],
+          "correctKey": "E",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 14,
+          "group": null,
+          "stem": "Marine biologists tracking the newly introduced species along the coastline documented its ______ feeding pattern: within a single season it stripped the kelp beds bare and left native fish populations with almost nothing to sustain them. Which choice completes the sentence with the most logical and precise word?",
+          "options": [
+            {
+              "key": "A",
+              "text": "rapacious"
+            },
+            {
+              "key": "B",
+              "text": "opportunistic"
+            },
+            {
+              "key": "C",
+              "text": "methodical"
+            },
+            {
+              "key": "D",
+              "text": "altruistic"
+            },
+            {
+              "key": "E",
+              "text": "conservative"
+            }
+          ],
+          "correctKey": "A",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 15,
+          "group": null,
+          "stem": "Inspectors who toured the shuttered warehouse found the makeshift dormitory in a state of **squalor**, with mattresses soaked from a leaking roof, garbage piled in the corners, and a stench that lingered in the hallway for weeks after the residents were relocated. As used in the sentence, SQUALOR most nearly means",
+          "options": [
+            {
+              "key": "A",
+              "text": "quiet abandonment"
+            },
+            {
+              "key": "B",
+              "text": "filthy, wretched neglect"
+            },
+            {
+              "key": "C",
+              "text": "harsh but sanitary conditions"
+            },
+            {
+              "key": "D",
+              "text": "temporary inconvenience"
+            },
+            {
+              "key": "E",
+              "text": "modest simplicity"
+            }
+          ],
+          "correctKey": "B",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 16,
+          "group": null,
+          "stem": "Rather than sponsoring a single high-profile donation timed for the cameras, the manufacturing conglomerate directed a fixed percentage of annual profits into a permanent foundation that funded scholarships, clinics, and disaster relief year after year, an institutional commitment to ______ that outlasted any one chief executive. Which choice completes the sentence with the most logical and precise word?",
+          "options": [
+            {
+              "key": "A",
+              "text": "munificence"
+            },
+            {
+              "key": "B",
+              "text": "patronage"
+            },
+            {
+              "key": "C",
+              "text": "philanthropy"
+            },
+            {
+              "key": "D",
+              "text": "altruism"
+            },
+            {
+              "key": "E",
+              "text": "beneficence"
+            }
+          ],
+          "correctKey": "C",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 17,
+          "group": null,
+          "stem": "Despite the firm's record profits, the senior partner remained so **parsimonious** that junior associates were expected to purchase their own printer paper and were denied reimbursement even for client dinners that had secured a lucrative account. As used in the sentence, parsimonious most nearly means",
+          "options": [
+            {
+              "key": "A",
+              "text": "economical and sensible with spending"
+            },
+            {
+              "key": "B",
+              "text": "modest about personal achievements"
+            },
+            {
+              "key": "C",
+              "text": "wasteful with the firm's resources"
+            },
+            {
+              "key": "D",
+              "text": "commendably frugal and disciplined"
+            },
+            {
+              "key": "E",
+              "text": "unreasonably and meanly stingy with money"
+            }
+          ],
+          "correctKey": "E",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 18,
+          "group": null,
+          "stem": "The monks of the mountain order slept on bare wooden boards, ate a single meal of rice at dusk, and owned nothing beyond a robe and a bowl, a ______ regimen intended to strip away worldly attachment rather than to punish the body for its own sake. Which choice completes the sentence with the most logical and precise word?",
+          "options": [
+            {
+              "key": "A",
+              "text": "ascetic"
+            },
+            {
+              "key": "B",
+              "text": "austere"
+            },
+            {
+              "key": "C",
+              "text": "stoic"
+            },
+            {
+              "key": "D",
+              "text": "penitent"
+            },
+            {
+              "key": "E",
+              "text": "indigent"
+            }
+          ],
+          "correctKey": "A",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 19,
+          "group": null,
+          "stem": "The supplier's public sustainability pledges concealed a pattern of quietly substituting inferior materials while billing for premium ones, a ______ that only came to light when an internal auditor cross-referenced invoices with delivery manifests. Which choice completes the sentence with the most logical and precise word?",
+          "options": [
+            {
+              "key": "A",
+              "text": "incompetence"
+            },
+            {
+              "key": "B",
+              "text": "negligence"
+            },
+            {
+              "key": "C",
+              "text": "audacity"
+            },
+            {
+              "key": "D",
+              "text": "indiscretion"
+            },
+            {
+              "key": "E",
+              "text": "duplicity"
+            }
+          ],
+          "correctKey": "E",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 20,
+          "group": null,
+          "stem": "Because the signature on the merger agreement had been obtained through a material misrepresentation of the target company's debt, the court ruled that the fraud ______ the entire contract, rendering it unenforceable from the outset rather than merely voidable at one party's option. Which choice completes the sentence with the most logical and precise word?",
+          "options": [
+            {
+              "key": "A",
+              "text": "ratified"
+            },
+            {
+              "key": "B",
+              "text": "amended"
+            },
+            {
+              "key": "C",
+              "text": "vitiated"
+            },
+            {
+              "key": "D",
+              "text": "postponed"
+            },
+            {
+              "key": "E",
+              "text": "clarified"
+            }
+          ],
+          "correctKey": "C",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 21,
+          "group": null,
+          "stem": "The pharmaceutical study concluded, with impressive-looking regression tables, that the new supplement reduced cardiovascular risk by nearly a third; only when independent statisticians reanalyzed the raw data did they discover that patients who dropped out mid-trial, mostly due to side effects, had been quietly excluded from the final count, exposing the finding's **specious** rigor. As used in the sentence, specious most nearly means",
+          "options": [
+            {
+              "key": "A",
+              "text": "entirely sound and statistically valid"
+            },
+            {
+              "key": "B",
+              "text": "deliberately vague and unclear"
+            },
+            {
+              "key": "C",
+              "text": "needlessly complicated"
+            },
+            {
+              "key": "D",
+              "text": "sincerely and correctly reasoned"
+            },
+            {
+              "key": "E",
+              "text": "plausible on the surface but flawed underneath"
+            }
+          ],
+          "correctKey": "E",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 22,
+          "group": null,
+          "stem": "Asked directly whether the merger would result in layoffs, the spokesperson replied with three minutes of remarks about “evolving organizational synergies” and “workforce optimization pathways,” a display of ______ that left reporters no closer to a yes-or-no answer. Which choice completes the sentence with the most logical and precise word?",
+          "options": [
+            {
+              "key": "A",
+              "text": "eloquence"
+            },
+            {
+              "key": "B",
+              "text": "brevity"
+            },
+            {
+              "key": "C",
+              "text": "candor"
+            },
+            {
+              "key": "D",
+              "text": "circumlocution"
+            },
+            {
+              "key": "E",
+              "text": "rhetoric"
+            }
+          ],
+          "correctKey": "D",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 23,
+          "group": null,
+          "stem": "Because the physician assigned to review the malpractice case held no financial ties to the hospital and had never treated the patient in question, the ethics board considered her capable of a **disinterested** assessment of what had gone wrong during the surgery. As used in the sentence, disinterested most nearly means",
+          "options": [
+            {
+              "key": "A",
+              "text": "impartial because free of personal stake"
+            },
+            {
+              "key": "B",
+              "text": "bored and unengaged with the case"
+            },
+            {
+              "key": "C",
+              "text": "biased in favor of the hospital"
+            },
+            {
+              "key": "D",
+              "text": "unqualified to evaluate the surgery"
+            },
+            {
+              "key": "E",
+              "text": "unwilling to reach a conclusion"
+            }
+          ],
+          "correctKey": "A",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 24,
+          "group": null,
+          "stem": "The CEO devoted the opening ten minutes of every town hall to reminding employees of the company's “unwavering moral compass,” even as internal audits revealed that his own expense reports routinely violated the very ethics code he invoked, a ______ habit that eroded rather than strengthened morale. Which choice completes the sentence with the most logical and precise word?",
+          "options": [
+            {
+              "key": "A",
+              "text": "sanctimonious"
+            },
+            {
+              "key": "B",
+              "text": "candid"
+            },
+            {
+              "key": "C",
+              "text": "diplomatic"
+            },
+            {
+              "key": "D",
+              "text": "contrite"
+            },
+            {
+              "key": "E",
+              "text": "gregarious"
+            }
+          ],
+          "correctKey": "A",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 25,
+          "group": null,
+          "stem": "Local guidebooks in the port town repeat the tale of a seventeenth-century merchant who supposedly weighed his gold against a stray cat to settle a debt dispute; town archivists have combed customs records, court dockets, and parish registers from that decade without finding any trace of the merchant, the debt, or the cat, leading most historians to treat the anecdote as ______. Which choice completes the sentence with the most logical and precise word?",
+          "options": [
+            {
+              "key": "A",
+              "text": "verifiable"
+            },
+            {
+              "key": "B",
+              "text": "plagiarized"
+            },
+            {
+              "key": "C",
+              "text": "apocryphal"
+            },
+            {
+              "key": "D",
+              "text": "classified"
+            },
+            {
+              "key": "E",
+              "text": "prophetic"
+            }
+          ],
+          "correctKey": "C",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 26,
+          "group": null,
+          "stem": "The theater critic's review praised the set design in a single sentence before spending four paragraphs dismantling the lead actor's performance with lines so **acerbic** that the actor reportedly refused to read reviews for the remainder of the run. As used in the sentence, acerbic most nearly means",
+          "options": [
+            {
+              "key": "A",
+              "text": "warmly encouraging"
+            },
+            {
+              "key": "B",
+              "text": "deliberately obscure"
+            },
+            {
+              "key": "C",
+              "text": "mildly amusing"
+            },
+            {
+              "key": "D",
+              "text": "sharply and bitterly critical"
+            },
+            {
+              "key": "E",
+              "text": "carefully balanced"
+            }
+          ],
+          "correctKey": "D",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 27,
+          "group": null,
+          "stem": "When the appellate court sided with the minority shareholders in the buyout dispute, corporate lawyers across the industry took note, since the ruling would now serve as a binding ______ for how similar valuation disagreements were resolved in future cases. Which choice completes the sentence with the most logical and precise word?",
+          "options": [
+            {
+              "key": "A",
+              "text": "anomaly"
+            },
+            {
+              "key": "B",
+              "text": "precedent"
+            },
+            {
+              "key": "C",
+              "text": "formality"
+            },
+            {
+              "key": "D",
+              "text": "loophole"
+            },
+            {
+              "key": "E",
+              "text": "mandate"
+            }
+          ],
+          "correctKey": "B",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 28,
+          "group": null,
+          "stem": "Employees discovered that promotions were granted not according to performance reviews or tenure but according to which candidates happened to have lunch with the regional director that week, a seemingly ______ process that produced no consistent pattern anyone could reconstruct after the fact. Which choice completes the sentence with the most logical and precise word?",
+          "options": [
+            {
+              "key": "A",
+              "text": "meticulous"
+            },
+            {
+              "key": "B",
+              "text": "equitable"
+            },
+            {
+              "key": "C",
+              "text": "systematic"
+            },
+            {
+              "key": "D",
+              "text": "transparent"
+            },
+            {
+              "key": "E",
+              "text": "arbitrary"
+            }
+          ],
+          "correctKey": "E",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 29,
+          "group": null,
+          "stem": "The mediator proposed dividing the disputed inheritance not equally in dollar terms but according to each sibling's documented financial contribution to their late father's care, a plan both parties eventually accepted as **equitable**. As used in the sentence, equitable most nearly means",
+          "options": [
+            {
+              "key": "A",
+              "text": "identical in dollar amount for each party"
+            },
+            {
+              "key": "B",
+              "text": "legally binding on both siblings"
+            },
+            {
+              "key": "C",
+              "text": "more generous than either sibling expected"
+            },
+            {
+              "key": "D",
+              "text": "quick and administratively convenient"
+            },
+            {
+              "key": "E",
+              "text": "fair and just given each party's circumstances"
+            }
+          ],
+          "correctKey": "E",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 30,
+          "group": null,
+          "stem": "Despite three separate bankruptcies over four decades, the entrepreneur remained an ______ speculator, mortgaging each new venture's assets to fund the next high-risk acquisition before the previous one had even turned a profit. Which choice completes the sentence with the most logical and precise word?",
+          "options": [
+            {
+              "key": "A",
+              "text": "reluctant"
+            },
+            {
+              "key": "B",
+              "text": "inveterate"
+            },
+            {
+              "key": "C",
+              "text": "occasional"
+            },
+            {
+              "key": "D",
+              "text": "reformed"
+            },
+            {
+              "key": "E",
+              "text": "novice"
+            }
+          ],
+          "correctKey": "B",
+          "imageUrl": null,
+          "explanation": null
+        }
+      ]
+    },
+    {
+      "order": 2,
+      "title": "Grammar",
+      "marksPerCorrect": 1,
+      "penaltyPerWrong": 0,
+      "thresholdPercent": null,
+      "groups": [],
+      "questions": [
+        {
+          "number": 31,
+          "group": null,
+          "stem": "The regional shipping firm reduced its delivery times significantly **and its customer satisfaction ratings improved markedly** over the following two quarters.",
+          "options": [
+            {
+              "key": "A",
+              "text": "and its customer satisfaction ratings improved markedly"
+            },
+            {
+              "key": "B",
+              "text": "and, its customer satisfaction ratings improved markedly"
+            },
+            {
+              "key": "C",
+              "text": "and its customer satisfaction ratings, improved markedly"
+            },
+            {
+              "key": "D",
+              "text": ", and its customer satisfaction ratings improved markedly"
+            },
+            {
+              "key": "E",
+              "text": "and its customer satisfaction ratings improved, markedly"
+            }
+          ],
+          "correctKey": "D",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 32,
+          "group": null,
+          "stem": "**(A)** Local residents and city officials gathered **(B)** near the entrance **(C)** to admire the bright cheerful mural **(D)** that the community center had commissioned.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Segment A contains the error"
+            },
+            {
+              "key": "B",
+              "text": "Segment B contains the error"
+            },
+            {
+              "key": "C",
+              "text": "Segment C contains the error"
+            },
+            {
+              "key": "D",
+              "text": "Segment D contains the error"
+            },
+            {
+              "key": "E",
+              "text": "No error"
+            }
+          ],
+          "correctKey": "C",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 33,
+          "group": null,
+          "stem": "The committee reviewed every application______ but only three candidates advanced to the interview stage.",
+          "options": [
+            {
+              "key": "A",
+              "text": "(no punctuation)"
+            },
+            {
+              "key": "B",
+              "text": ";"
+            },
+            {
+              "key": "C",
+              "text": ":"
+            },
+            {
+              "key": "D",
+              "text": "—"
+            },
+            {
+              "key": "E",
+              "text": ","
+            }
+          ],
+          "correctKey": "E",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 34,
+          "group": null,
+          "stem": "Marine biologists **have discovered the coral species in 1987** during a routine survey of the reef system, and subsequent studies confirmed its ecological importance.",
+          "options": [
+            {
+              "key": "A",
+              "text": "have discovered the coral species in 1987"
+            },
+            {
+              "key": "B",
+              "text": "discovered the coral species in 1987"
+            },
+            {
+              "key": "C",
+              "text": "were discovering the coral species in 1987"
+            },
+            {
+              "key": "D",
+              "text": "had discovered the coral species in 1987"
+            },
+            {
+              "key": "E",
+              "text": "have been discovering the coral species in 1987"
+            }
+          ],
+          "correctKey": "B",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 35,
+          "group": null,
+          "stem": "What the auditors ultimately uncovered during their exhaustive review of company finances **were troubling inconsistencies in the annual report** that required immediate attention from the board of directors.",
+          "options": [
+            {
+              "key": "A",
+              "text": "were troubling inconsistencies in the annual report"
+            },
+            {
+              "key": "B",
+              "text": "are troubling inconsistencies in the annual report"
+            },
+            {
+              "key": "C",
+              "text": "was troubling inconsistencies in the annual report"
+            },
+            {
+              "key": "D",
+              "text": "have been troubling inconsistencies in the annual report"
+            },
+            {
+              "key": "E",
+              "text": "were being troubling inconsistencies in the annual report"
+            }
+          ],
+          "correctKey": "C",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 36,
+          "group": null,
+          "stem": "**(A)** The software engineer has worked at the startup since 2019, **(B)** and she has led **(C)** three major product launches **(D)** during that time.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Segment A contains the error"
+            },
+            {
+              "key": "B",
+              "text": "Segment B contains the error"
+            },
+            {
+              "key": "C",
+              "text": "Segment C contains the error"
+            },
+            {
+              "key": "D",
+              "text": "Segment D contains the error"
+            },
+            {
+              "key": "E",
+              "text": "No error"
+            }
+          ],
+          "correctKey": "E",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 37,
+          "group": null,
+          "stem": "The observatory ______ data on solar flares since 2010.",
+          "options": [
+            {
+              "key": "A",
+              "text": "collected"
+            },
+            {
+              "key": "B",
+              "text": "was collecting"
+            },
+            {
+              "key": "C",
+              "text": "has collected"
+            },
+            {
+              "key": "D",
+              "text": "collects"
+            },
+            {
+              "key": "E",
+              "text": "will collect"
+            }
+          ],
+          "correctKey": "C",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 38,
+          "group": null,
+          "stem": "Following a decade of careful excavation at a remote coastal settlement **archaeologists finally confirmed the site's origins** and published their findings in a leading academic journal.",
+          "options": [
+            {
+              "key": "A",
+              "text": "archaeologists finally confirmed the site's origins"
+            },
+            {
+              "key": "B",
+              "text": "archaeologists, finally confirmed the site's origins"
+            },
+            {
+              "key": "C",
+              "text": ", archaeologists finally confirmed the site's origins"
+            },
+            {
+              "key": "D",
+              "text": "archaeologists finally, confirmed the site's origins"
+            },
+            {
+              "key": "E",
+              "text": "archaeologists finally confirmed, the site's origins"
+            }
+          ],
+          "correctKey": "C",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 39,
+          "group": null,
+          "stem": "A city library extends generous borrowing privileges to all registered members and local residents holding valid identification**; it also offers extended hours during final examination periods each semester**.",
+          "options": [
+            {
+              "key": "A",
+              "text": "; it also offers extended hours during final examination periods each semester"
+            },
+            {
+              "key": "B",
+              "text": ", it also offers extended hours during final examination periods each semester"
+            },
+            {
+              "key": "C",
+              "text": "it also offers extended hours during final examination periods each semester"
+            },
+            {
+              "key": "D",
+              "text": ": and it also offers extended hours during final examination periods each semester"
+            },
+            {
+              "key": "E",
+              "text": "; and it also offers extended hours during final examination periods each semester"
+            }
+          ],
+          "correctKey": "A",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 40,
+          "group": null,
+          "stem": "**(A)** Last quarter, **(B)** the company reports a significant increase **(C)** in overseas sales, **(D)** which encouraged executives to expand into new markets.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Segment A contains the error"
+            },
+            {
+              "key": "B",
+              "text": "Segment B contains the error"
+            },
+            {
+              "key": "C",
+              "text": "Segment C contains the error"
+            },
+            {
+              "key": "D",
+              "text": "Segment D contains the error"
+            },
+            {
+              "key": "E",
+              "text": "No error"
+            }
+          ],
+          "correctKey": "B",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 41,
+          "group": null,
+          "stem": "The board of directors ______ scheduled to meet next Tuesday to approve the annual budget.",
+          "options": [
+            {
+              "key": "A",
+              "text": "is"
+            },
+            {
+              "key": "B",
+              "text": "are"
+            },
+            {
+              "key": "C",
+              "text": "were"
+            },
+            {
+              "key": "D",
+              "text": "have been"
+            },
+            {
+              "key": "E",
+              "text": "was"
+            }
+          ],
+          "correctKey": "A",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 42,
+          "group": null,
+          "stem": "By the time the new regional data center opens next spring, engineers **will complete the installation of all backup servers** needed to ensure uninterrupted service.",
+          "options": [
+            {
+              "key": "A",
+              "text": "will complete the installation of all backup servers"
+            },
+            {
+              "key": "B",
+              "text": "complete the installation of all backup servers"
+            },
+            {
+              "key": "C",
+              "text": "are completing the installation of all backup servers"
+            },
+            {
+              "key": "D",
+              "text": "will have completed the installation of all backup servers"
+            },
+            {
+              "key": "E",
+              "text": "will be completing the installation of all backup servers"
+            }
+          ],
+          "correctKey": "D",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 43,
+          "group": null,
+          "stem": "A newly approved clinical trial protocol specified three disqualifying conditions **advanced age, prior surgery, and uncontrolled diabetes** before enrollment could proceed at any participating hospital.",
+          "options": [
+            {
+              "key": "A",
+              "text": "advanced age, prior surgery, and uncontrolled diabetes"
+            },
+            {
+              "key": "B",
+              "text": ", advanced age, prior surgery, and uncontrolled diabetes"
+            },
+            {
+              "key": "C",
+              "text": "; advanced age, prior surgery, and uncontrolled diabetes"
+            },
+            {
+              "key": "D",
+              "text": ": advanced age, prior surgery, and uncontrolled diabetes"
+            },
+            {
+              "key": "E",
+              "text": ", which is advanced age, prior surgery, and uncontrolled diabetes"
+            }
+          ],
+          "correctKey": "D",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 44,
+          "group": null,
+          "stem": "**(A)** Every morning before rounds begin, **(B)** the surgeon, **(C)** along with two senior residents, **(D)** review the patient's chart in the intensive care unit.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Segment A contains the error"
+            },
+            {
+              "key": "B",
+              "text": "Segment B contains the error"
+            },
+            {
+              "key": "C",
+              "text": "Segment C contains the error"
+            },
+            {
+              "key": "D",
+              "text": "Segment D contains the error"
+            },
+            {
+              "key": "E",
+              "text": "No error"
+            }
+          ],
+          "correctKey": "D",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 45,
+          "group": null,
+          "stem": "Among the many analysts who cover the firm's quarterly performance, Elena Voss is one of the few who **consistently predicts quarterly earnings with remarkable accuracy**.",
+          "options": [
+            {
+              "key": "A",
+              "text": "consistently predicts quarterly earnings with remarkable accuracy"
+            },
+            {
+              "key": "B",
+              "text": "have consistently predicted quarterly earnings with remarkable accuracy"
+            },
+            {
+              "key": "C",
+              "text": "consistently predict quarterly earnings with remarkable accuracy"
+            },
+            {
+              "key": "D",
+              "text": "consistently predicts, quarterly earnings with remarkable accuracy"
+            },
+            {
+              "key": "E",
+              "text": "has consistently predicted quarterly earnings with remarkable accuracy"
+            }
+          ],
+          "correctKey": "C",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 46,
+          "group": null,
+          "stem": "The engineering team ______ the software for six weeks, and they still have not found the source of the memory leak.",
+          "options": [
+            {
+              "key": "A",
+              "text": "debugged"
+            },
+            {
+              "key": "B",
+              "text": "has debugged"
+            },
+            {
+              "key": "C",
+              "text": "was debugging"
+            },
+            {
+              "key": "D",
+              "text": "has been debugging"
+            },
+            {
+              "key": "E",
+              "text": "debugs"
+            }
+          ],
+          "correctKey": "D",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 47,
+          "group": null,
+          "stem": "While the museum's senior curator **catalogued the newly acquired bronze sculptures** for the upcoming exhibition, she unexpectedly discovered an unrecorded signature on the base of one piece.",
+          "options": [
+            {
+              "key": "A",
+              "text": "catalogued the newly acquired bronze sculptures"
+            },
+            {
+              "key": "B",
+              "text": "was cataloguing the newly acquired bronze sculptures"
+            },
+            {
+              "key": "C",
+              "text": "had catalogued the newly acquired bronze sculptures"
+            },
+            {
+              "key": "D",
+              "text": "had been cataloguing the newly acquired bronze sculptures"
+            },
+            {
+              "key": "E",
+              "text": "has been cataloguing the newly acquired bronze sculptures"
+            }
+          ],
+          "correctKey": "B",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 48,
+          "group": null,
+          "stem": "**(A)** The gallery's new exhibit features paintings **(B)** from three centuries; and it includes **(C)** sculptures donated **(D)** by a local collector.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Segment A contains the error"
+            },
+            {
+              "key": "B",
+              "text": "Segment B contains the error"
+            },
+            {
+              "key": "C",
+              "text": "Segment C contains the error"
+            },
+            {
+              "key": "D",
+              "text": "Segment D contains the error"
+            },
+            {
+              "key": "E",
+              "text": "No error"
+            }
+          ],
+          "correctKey": "B",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 49,
+          "group": null,
+          "stem": "After several weeks of contentious internal debate among senior staff, the newsroom finally accepted **the editor's-in-chief decision** to restructure the entire weekend publishing schedule.",
+          "options": [
+            {
+              "key": "A",
+              "text": "the editor's-in-chief decision"
+            },
+            {
+              "key": "B",
+              "text": "the editor-in-chief's decision"
+            },
+            {
+              "key": "C",
+              "text": "the editor-in-chiefs decision"
+            },
+            {
+              "key": "D",
+              "text": "the editors-in-chief's decision"
+            },
+            {
+              "key": "E",
+              "text": "the editor-in-chief' decision"
+            }
+          ],
+          "correctKey": "B",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 50,
+          "group": null,
+          "stem": "**(A)** Either the plaintiff's attorneys **(B)** or the presiding judge is responsible **(C)** for scheduling the next hearing, **(D)** according to the updated court procedures.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Segment A contains the error"
+            },
+            {
+              "key": "B",
+              "text": "Segment B contains the error"
+            },
+            {
+              "key": "C",
+              "text": "Segment C contains the error"
+            },
+            {
+              "key": "D",
+              "text": "Segment D contains the error"
+            },
+            {
+              "key": "E",
+              "text": "No error"
+            }
+          ],
+          "correctKey": "E",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 51,
+          "group": null,
+          "stem": "Delegates from both nations attended the summit in Geneva______ only the finance ministers spoke publicly about the proposed tariff reductions.",
+          "options": [
+            {
+              "key": "A",
+              "text": ","
+            },
+            {
+              "key": "B",
+              "text": ":"
+            },
+            {
+              "key": "C",
+              "text": "—"
+            },
+            {
+              "key": "D",
+              "text": ";"
+            },
+            {
+              "key": "E",
+              "text": ", so"
+            }
+          ],
+          "correctKey": "D",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 52,
+          "group": null,
+          "stem": "The national park superintendent, along with several senior rangers who monitor endangered species populations, **are scheduled to present the annual wildlife survey** at the upcoming regional conservation summit.",
+          "options": [
+            {
+              "key": "A",
+              "text": "are scheduled to present the annual wildlife survey"
+            },
+            {
+              "key": "B",
+              "text": "were scheduled to present the annual wildlife survey"
+            },
+            {
+              "key": "C",
+              "text": "have been scheduled to present the annual wildlife survey"
+            },
+            {
+              "key": "D",
+              "text": "is scheduled to have presented the annual wildlife survey"
+            },
+            {
+              "key": "E",
+              "text": "is scheduled to present the annual wildlife survey"
+            }
+          ],
+          "correctKey": "E",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 53,
+          "group": null,
+          "stem": "An appellate court recommended that the lower court promptly **reconsider its ruling** in light of significant new evidence presented during the final stage of the appeal.",
+          "options": [
+            {
+              "key": "A",
+              "text": "reconsider its ruling"
+            },
+            {
+              "key": "B",
+              "text": "reconsiders its ruling"
+            },
+            {
+              "key": "C",
+              "text": "reconsidered its ruling"
+            },
+            {
+              "key": "D",
+              "text": "should reconsider its ruling"
+            },
+            {
+              "key": "E",
+              "text": "will reconsider its ruling"
+            }
+          ],
+          "correctKey": "A",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 54,
+          "group": null,
+          "stem": "**(A)** The researchers have discovered the anomaly in 2021 **(B)** while conducting routine fieldwork **(C)** near the volcanic ridge, **(D)** according to a report released last month.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Segment A contains the error"
+            },
+            {
+              "key": "B",
+              "text": "Segment B contains the error"
+            },
+            {
+              "key": "C",
+              "text": "Segment C contains the error"
+            },
+            {
+              "key": "D",
+              "text": "Segment D contains the error"
+            },
+            {
+              "key": "E",
+              "text": "No error"
+            }
+          ],
+          "correctKey": "A",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 55,
+          "group": null,
+          "stem": "By the time the treaty negotiators finally arrived in the war-torn capital after a delayed flight, the provisional government **already collapsed amid widespread civil unrest**.",
+          "options": [
+            {
+              "key": "A",
+              "text": "already collapsed amid widespread civil unrest"
+            },
+            {
+              "key": "B",
+              "text": "was already collapsing amid widespread civil unrest"
+            },
+            {
+              "key": "C",
+              "text": "had already collapsed amid widespread civil unrest"
+            },
+            {
+              "key": "D",
+              "text": "has already collapsed amid widespread civil unrest"
+            },
+            {
+              "key": "E",
+              "text": "had already been collapsing amid widespread civil unrest"
+            }
+          ],
+          "correctKey": "C",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 56,
+          "group": null,
+          "stem": "The lead surgeon, along with two residents, ______ scheduled to perform the transplant on Thursday.",
+          "options": [
+            {
+              "key": "A",
+              "text": "is"
+            },
+            {
+              "key": "B",
+              "text": "are"
+            },
+            {
+              "key": "C",
+              "text": "have been"
+            },
+            {
+              "key": "D",
+              "text": "were"
+            },
+            {
+              "key": "E",
+              "text": "has been being"
+            }
+          ],
+          "correctKey": "A",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 57,
+          "group": null,
+          "stem": "The ambitious startup unveiled **a compact durable aluminum casing** for its next-generation smartphone line at a major technology conference attended by hundreds of industry investors.",
+          "options": [
+            {
+              "key": "A",
+              "text": "a compact durable aluminum casing"
+            },
+            {
+              "key": "B",
+              "text": "a compact, durable, aluminum casing"
+            },
+            {
+              "key": "C",
+              "text": "a compact durable, aluminum casing"
+            },
+            {
+              "key": "D",
+              "text": "a compact, durable aluminum casing"
+            },
+            {
+              "key": "E",
+              "text": "a compact, durable, and aluminum casing"
+            }
+          ],
+          "correctKey": "D",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 58,
+          "group": null,
+          "stem": "**(A)** Its unclear whether the library will extend **(B)** its hours during final exam week, **(C)** but administrators plan **(D)** to announce a decision soon.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Segment A contains the error"
+            },
+            {
+              "key": "B",
+              "text": "Segment B contains the error"
+            },
+            {
+              "key": "C",
+              "text": "Segment C contains the error"
+            },
+            {
+              "key": "D",
+              "text": "Segment D contains the error"
+            },
+            {
+              "key": "E",
+              "text": "No error"
+            }
+          ],
+          "correctKey": "A",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 59,
+          "group": null,
+          "stem": "That researchers across several leading academic institutions continue to dispute the pharmaceutical company's claims about the drug's long-term safety **remain a significant obstacle to regulatory approval** in most jurisdictions.",
+          "options": [
+            {
+              "key": "A",
+              "text": "remain a significant obstacle to regulatory approval"
+            },
+            {
+              "key": "B",
+              "text": "remains, a significant obstacle to regulatory approval"
+            },
+            {
+              "key": "C",
+              "text": "are remaining a significant obstacle to regulatory approval"
+            },
+            {
+              "key": "D",
+              "text": "remains a significant obstacle to regulatory approval"
+            },
+            {
+              "key": "E",
+              "text": "have remained a significant obstacle to regulatory approval"
+            }
+          ],
+          "correctKey": "D",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 60,
+          "group": null,
+          "stem": "Employees at the manufacturing plant **who complete the mandatory safety certification program before the fiscal year ends** will receive a bonus reflected in their year-end compensation package.",
+          "options": [
+            {
+              "key": "A",
+              "text": "who complete the mandatory safety certification program before the fiscal year ends"
+            },
+            {
+              "key": "B",
+              "text": ", who complete the mandatory safety certification program before the fiscal year ends,"
+            },
+            {
+              "key": "C",
+              "text": "who completes the mandatory safety certification program before the fiscal year ends"
+            },
+            {
+              "key": "D",
+              "text": "who completed the mandatory safety certification program before the fiscal year ends"
+            },
+            {
+              "key": "E",
+              "text": ", who completes the mandatory safety certification program before the fiscal year ends"
+            }
+          ],
+          "correctKey": "A",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 61,
+          "group": null,
+          "stem": "**(A)** The quarterly report, **(B)** including the sales figures **(C)** from every regional branch, **(D)** indicate a decline in overall profit this year.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Segment A contains the error"
+            },
+            {
+              "key": "B",
+              "text": "Segment B contains the error"
+            },
+            {
+              "key": "C",
+              "text": "Segment C contains the error"
+            },
+            {
+              "key": "D",
+              "text": "Segment D contains the error"
+            },
+            {
+              "key": "E",
+              "text": "No error"
+            }
+          ],
+          "correctKey": "D",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 62,
+          "group": null,
+          "stem": "The museum curator ______ the exhibit twice since it opened in March, adjusting the lighting each time.",
+          "options": [
+            {
+              "key": "A",
+              "text": "has revised"
+            },
+            {
+              "key": "B",
+              "text": "revised"
+            },
+            {
+              "key": "C",
+              "text": "was revising"
+            },
+            {
+              "key": "D",
+              "text": "revises"
+            },
+            {
+              "key": "E",
+              "text": "had revised"
+            }
+          ],
+          "correctKey": "A",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 63,
+          "group": null,
+          "stem": "Regulatory approval for the merger took nearly eighteen months to secure**, as a result, the two companies have finalized their agreement last week**, exceeding initial industry expectations.",
+          "options": [
+            {
+              "key": "A",
+              "text": ", as a result, the two companies have finalized their agreement last week"
+            },
+            {
+              "key": "B",
+              "text": "; as a result, the two companies finalized their agreement last week"
+            },
+            {
+              "key": "C",
+              "text": "; as a result, the two companies have finalized their agreement last week"
+            },
+            {
+              "key": "D",
+              "text": ", as a result, the two companies finalized their agreement last week"
+            },
+            {
+              "key": "E",
+              "text": "; as a result the two companies finalized their agreement last week"
+            }
+          ],
+          "correctKey": "B",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 64,
+          "group": null,
+          "stem": "An environmental agency's latest report on regional sediment levels, including data gathered from twelve monitoring stations **that tracks seasonal water quality changes indicate a troubling upward trend** in overall pollutant concentration this year.",
+          "options": [
+            {
+              "key": "A",
+              "text": "that tracks seasonal water quality changes indicate a troubling upward trend"
+            },
+            {
+              "key": "B",
+              "text": "that track seasonal water quality changes indicate a troubling upward trend"
+            },
+            {
+              "key": "C",
+              "text": "that tracks seasonal water quality changes indicates a troubling upward trend"
+            },
+            {
+              "key": "D",
+              "text": ", that track seasonal water quality changes indicates a troubling upward trend"
+            },
+            {
+              "key": "E",
+              "text": "that track seasonal water quality changes indicates a troubling upward trend"
+            }
+          ],
+          "correctKey": "E",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 65,
+          "group": null,
+          "stem": "**(A)** The accounting firm submitted its final report two days before auditors had discovered **(B)** a major discrepancy **(C)** in the regulatory filing, **(D)** prompting an internal investigation.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Segment A contains the error"
+            },
+            {
+              "key": "B",
+              "text": "Segment B contains the error"
+            },
+            {
+              "key": "C",
+              "text": "Segment C contains the error"
+            },
+            {
+              "key": "D",
+              "text": "Segment D contains the error"
+            },
+            {
+              "key": "E",
+              "text": "No error"
+            }
+          ],
+          "correctKey": "A",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 66,
+          "group": null,
+          "stem": "Since the early 1990s, the population of migratory falcons along the coastal cliffs, together with several other raptor species, **were showing a marked recovery in yearly nesting counts**.",
+          "options": [
+            {
+              "key": "A",
+              "text": "were showing a marked recovery in yearly nesting counts"
+            },
+            {
+              "key": "B",
+              "text": "have shown a marked recovery in yearly nesting counts"
+            },
+            {
+              "key": "C",
+              "text": "had shown a marked recovery in yearly nesting counts"
+            },
+            {
+              "key": "D",
+              "text": "has shown a marked recovery in yearly nesting counts"
+            },
+            {
+              "key": "E",
+              "text": "shows a marked recovery in yearly nesting counts"
+            }
+          ],
+          "correctKey": "D",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 67,
+          "group": null,
+          "stem": "What the auditors ultimately discovered about the falsified invoices ______ the entire board of the corporation.",
+          "options": [
+            {
+              "key": "A",
+              "text": "surprise"
+            },
+            {
+              "key": "B",
+              "text": "surprised"
+            },
+            {
+              "key": "C",
+              "text": "were surprising"
+            },
+            {
+              "key": "D",
+              "text": "have surprised"
+            },
+            {
+              "key": "E",
+              "text": "are surprising"
+            }
+          ],
+          "correctKey": "B",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 68,
+          "group": null,
+          "stem": "**(A)** What the panel of judges eventually decided were controversial **(B)** among the contestants **(C)** who have trained for months **(D)** to compete in the finals.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Segment A contains the error"
+            },
+            {
+              "key": "B",
+              "text": "Segment B contains the error"
+            },
+            {
+              "key": "C",
+              "text": "Segment C contains the error"
+            },
+            {
+              "key": "D",
+              "text": "Segment D contains the error"
+            },
+            {
+              "key": "E",
+              "text": "No error"
+            }
+          ],
+          "correctKey": "A",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 69,
+          "group": null,
+          "stem": "Facing mounting fuel costs, the regional airline's cost-cutting plan focused on three measures**; fuel-efficient aircraft, renegotiated labor contracts, and a route network that had already been trimmed by nearly fifteen percent**.",
+          "options": [
+            {
+              "key": "A",
+              "text": "; fuel-efficient aircraft, renegotiated labor contracts, and a route network that had already been trimmed by nearly fifteen percent"
+            },
+            {
+              "key": "B",
+              "text": ": fuel-efficient aircraft, renegotiated labor contracts, and a route network that was already trimmed by nearly fifteen percent"
+            },
+            {
+              "key": "C",
+              "text": "; fuel-efficient aircraft, renegotiated labor contracts, and a route network that has already been trimmed by nearly fifteen percent"
+            },
+            {
+              "key": "D",
+              "text": ": fuel-efficient aircraft, renegotiated labor contracts, and a route network that has already been trimmed by nearly fifteen percent"
+            },
+            {
+              "key": "E",
+              "text": ": fuel-efficient aircraft, renegotiated labor contracts, and a route network that is already being trimmed by nearly fifteen percent"
+            }
+          ],
+          "correctKey": "D",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 70,
+          "group": null,
+          "stem": "The museum director praised several talented apprentices but singled out one of the few local sculptors**, who has exhibited bronze work internationally,** for a prestigious solo commission this autumn.",
+          "options": [
+            {
+              "key": "A",
+              "text": ", who has exhibited bronze work internationally,"
+            },
+            {
+              "key": "B",
+              "text": "who have exhibited bronze work internationally"
+            },
+            {
+              "key": "C",
+              "text": "who has exhibited bronze work internationally"
+            },
+            {
+              "key": "D",
+              "text": ", who have exhibited bronze work internationally,"
+            },
+            {
+              "key": "E",
+              "text": "which has exhibited bronze work internationally"
+            }
+          ],
+          "correctKey": "B",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 71,
+          "group": null,
+          "stem": "**(A)** During the final leg of their journey, **(B)** researchers camped for three nights **(C)** beside a formation known locally **(D)** as the steep, granite cliffs.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Segment A contains the error"
+            },
+            {
+              "key": "B",
+              "text": "Segment B contains the error"
+            },
+            {
+              "key": "C",
+              "text": "Segment C contains the error"
+            },
+            {
+              "key": "D",
+              "text": "Segment D contains the error"
+            },
+            {
+              "key": "E",
+              "text": "No error"
+            }
+          ],
+          "correctKey": "D",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 72,
+          "group": null,
+          "stem": "By the time the surveyors reached the peak in 1953, three separate expeditions ______ to chart the same route.",
+          "options": [
+            {
+              "key": "A",
+              "text": "attempted"
+            },
+            {
+              "key": "B",
+              "text": "have attempted"
+            },
+            {
+              "key": "C",
+              "text": "had attempted"
+            },
+            {
+              "key": "D",
+              "text": "were attempting"
+            },
+            {
+              "key": "E",
+              "text": "has attempted"
+            }
+          ],
+          "correctKey": "C",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 73,
+          "group": null,
+          "stem": "Whether the closely divided appellate court would overturn the lower ruling on procedural grounds**, according to several legal analysts, remain a matter of considerable debate among constitutional scholars nationwide**.",
+          "options": [
+            {
+              "key": "A",
+              "text": ", according to several legal analysts, remain a matter of considerable debate among constitutional scholars nationwide"
+            },
+            {
+              "key": "B",
+              "text": ", according to several legal analysts, remains a matter of considerable debate among constitutional scholars nationwide"
+            },
+            {
+              "key": "C",
+              "text": ", according to several legal analysts, remained a matter of considerable debate among constitutional scholars nationwide"
+            },
+            {
+              "key": "D",
+              "text": "according to several legal analysts, remains a matter of considerable debate among constitutional scholars nationwide"
+            },
+            {
+              "key": "E",
+              "text": ", according to several legal analysts, remains a matter of considerable debate among constitutional scholars nationwide"
+            }
+          ],
+          "correctKey": "E",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 74,
+          "group": null,
+          "stem": "**(A)** The infection had already cleared by the time specialists reviewed the follow-up scans, **(B)** and the attending physician noted **(C)** that the treatment protocol **(D)** had succeeded remarkably well.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Segment A contains the error"
+            },
+            {
+              "key": "B",
+              "text": "Segment B contains the error"
+            },
+            {
+              "key": "C",
+              "text": "Segment C contains the error"
+            },
+            {
+              "key": "D",
+              "text": "Segment D contains the error"
+            },
+            {
+              "key": "E",
+              "text": "No error"
+            }
+          ],
+          "correctKey": "E",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 75,
+          "group": null,
+          "stem": "Designed to test a novel anti-inflammatory compound, the clinical trial enrolled its first cohort of patients in March**, researchers already observed a marked reduction in symptom severity among enrolled participants**.",
+          "options": [
+            {
+              "key": "A",
+              "text": ", researchers already observed a marked reduction in symptom severity among enrolled participants"
+            },
+            {
+              "key": "B",
+              "text": "; researchers have already observed a marked reduction in symptom severity among enrolled participants"
+            },
+            {
+              "key": "C",
+              "text": "; researchers already observed a marked reduction in symptom severity among enrolled participants"
+            },
+            {
+              "key": "D",
+              "text": ": researchers have already observed a marked reduction in symptom severity among enrolled participants"
+            },
+            {
+              "key": "E",
+              "text": ", researchers have already observed a marked reduction in symptom severity among enrolled participants"
+            }
+          ],
+          "correctKey": "B",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 76,
+          "group": null,
+          "stem": "By the time cartographers finalized the new coastal survey, the delta's shifting sandbars, along with several newly formed islets, **had already altered the shoreline enough to require revised navigation charts**.",
+          "options": [
+            {
+              "key": "A",
+              "text": "had already altered the shoreline enough to require revised navigation charts"
+            },
+            {
+              "key": "B",
+              "text": "have already altered the shoreline enough to require revised navigation charts"
+            },
+            {
+              "key": "C",
+              "text": "has already altered the shoreline enough to require revised navigation charts"
+            },
+            {
+              "key": "D",
+              "text": "were already altering the shoreline enough to require revised navigation charts"
+            },
+            {
+              "key": "E",
+              "text": "was already altering the shoreline enough to require revised navigation charts"
+            }
+          ],
+          "correctKey": "A",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 77,
+          "group": null,
+          "stem": "**(A)** The board of directors has scheduled its annual meeting **(B)** for the first week of October, **(C)** and it plans to review **(D)** the company's expansion strategy in detail.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Segment A contains the error"
+            },
+            {
+              "key": "B",
+              "text": "Segment B contains the error"
+            },
+            {
+              "key": "C",
+              "text": "Segment C contains the error"
+            },
+            {
+              "key": "D",
+              "text": "Segment D contains the error"
+            },
+            {
+              "key": "E",
+              "text": "No error"
+            }
+          ],
+          "correctKey": "E",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 78,
+          "group": null,
+          "stem": "Although the new policy reduced processing times______ many employees continued to submit paper forms out of habit.",
+          "options": [
+            {
+              "key": "A",
+              "text": ";"
+            },
+            {
+              "key": "B",
+              "text": ":"
+            },
+            {
+              "key": "C",
+              "text": ","
+            },
+            {
+              "key": "D",
+              "text": ", and"
+            },
+            {
+              "key": "E",
+              "text": "(no punctuation)"
+            }
+          ],
+          "correctKey": "C",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 79,
+          "group": null,
+          "stem": "By the close of trading today, the investment committee, having weighed several competing acquisition offers over the past six weeks, **will finalize their recommendation on the proposed merger**.",
+          "options": [
+            {
+              "key": "A",
+              "text": "will finalize their recommendation on the proposed merger"
+            },
+            {
+              "key": "B",
+              "text": "will have finalized their recommendation on the proposed merger"
+            },
+            {
+              "key": "C",
+              "text": "will finalize its recommendation on the proposed merger"
+            },
+            {
+              "key": "D",
+              "text": "has finalized its recommendation on the proposed merger"
+            },
+            {
+              "key": "E",
+              "text": "will have finalized its recommendation on the proposed merger"
+            }
+          ],
+          "correctKey": "E",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 80,
+          "group": null,
+          "stem": "What the engineering team has quietly accomplished since the platform's troubled relaunch **has convinced even the most skeptical investors that the redesigned architecture can scale reliably**.",
+          "options": [
+            {
+              "key": "A",
+              "text": "has convinced even the most skeptical investors that the redesigned architecture can scale reliably"
+            },
+            {
+              "key": "B",
+              "text": "have convinced even the most skeptical investors that the redesigned architecture can scale reliably"
+            },
+            {
+              "key": "C",
+              "text": "has convinced even the most skeptical investors that the redesigned architecture will have scaled reliably"
+            },
+            {
+              "key": "D",
+              "text": "had convinced even the most skeptical investors that the redesigned architecture can scale reliably"
+            },
+            {
+              "key": "E",
+              "text": "have convinced even the most skeptical investors that the redesigned architecture could scale reliably"
+            }
+          ],
+          "correctKey": "A",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 81,
+          "group": null,
+          "stem": "**(A)** Last year, the ensemble has also debuted a new commissioned work, **(B)** even though the orchestra has performed **(C)** its signature symphony continuously **(D)** since 2010.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Segment A contains the error"
+            },
+            {
+              "key": "B",
+              "text": "Segment B contains the error"
+            },
+            {
+              "key": "C",
+              "text": "Segment C contains the error"
+            },
+            {
+              "key": "D",
+              "text": "Segment D contains the error"
+            },
+            {
+              "key": "E",
+              "text": "No error"
+            }
+          ],
+          "correctKey": "A",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 82,
+          "group": null,
+          "stem": "Either the tenant association's officers or the building superintendent, who has managed the property for over a decade, **is responsible for approving any structural repairs that exceed the standard budget**.",
+          "options": [
+            {
+              "key": "A",
+              "text": "is responsible for approving any structural repairs that exceed the standard budget"
+            },
+            {
+              "key": "B",
+              "text": "are responsible for approving any structural repairs that exceed the standard budget"
+            },
+            {
+              "key": "C",
+              "text": "is responsible for approving any structural repairs, that exceed the standard budget"
+            },
+            {
+              "key": "D",
+              "text": "was responsible for approving any structural repairs that exceed the standard budget"
+            },
+            {
+              "key": "E",
+              "text": "are responsible for approving any structural repairs that exceeds the standard budget"
+            }
+          ],
+          "correctKey": "A",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 83,
+          "group": null,
+          "stem": "Dr. Alina Petrova is the only one of the laboratory's senior chemists who ______ published research on rare-earth catalysts to date.",
+          "options": [
+            {
+              "key": "A",
+              "text": "have published"
+            },
+            {
+              "key": "B",
+              "text": "has published"
+            },
+            {
+              "key": "C",
+              "text": "published"
+            },
+            {
+              "key": "D",
+              "text": "was published"
+            },
+            {
+              "key": "E",
+              "text": "had published"
+            }
+          ],
+          "correctKey": "B",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 84,
+          "group": null,
+          "stem": "**(A)** The senior partner, together with several junior associates who had spent the entire weekend preparing exhibits and depositions, are scheduled **(B)** to meet with the client **(C)** on Monday morning **(D)** to discuss settlement options before trial.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Segment A contains the error"
+            },
+            {
+              "key": "B",
+              "text": "Segment B contains the error"
+            },
+            {
+              "key": "C",
+              "text": "Segment C contains the error"
+            },
+            {
+              "key": "D",
+              "text": "Segment D contains the error"
+            },
+            {
+              "key": "E",
+              "text": "No error"
+            }
+          ],
+          "correctKey": "A",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 85,
+          "group": null,
+          "stem": "Recently expanded, the regional symphony's archive, which now includes scores donated by three retired conductors, **contain the conductors's handwritten annotations and reflects decades of interpretive tradition**.",
+          "options": [
+            {
+              "key": "A",
+              "text": "contain the conductors's handwritten annotations and reflects decades of interpretive tradition"
+            },
+            {
+              "key": "B",
+              "text": "contains the conductor's handwritten annotations and reflects decades of interpretive tradition"
+            },
+            {
+              "key": "C",
+              "text": "contains the conductors' handwritten annotations and reflects decades of interpretive tradition"
+            },
+            {
+              "key": "D",
+              "text": "contain the conductors' handwritten annotations and reflects decades of interpretive tradition"
+            },
+            {
+              "key": "E",
+              "text": "contains the conductor's handwritten annotations and reflect decades of interpretive tradition"
+            }
+          ],
+          "correctKey": "C",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 86,
+          "group": null,
+          "stem": "The treaty negotiations stalled for nearly a year over territorial disputes**; delegates have since reconvened twice to draft a revised framework acceptable to all parties**.",
+          "options": [
+            {
+              "key": "A",
+              "text": "; delegates have since reconvened twice to draft a revised framework acceptable to all parties"
+            },
+            {
+              "key": "B",
+              "text": ", delegates have since reconvened twice to draft a revised framework acceptable to all parties"
+            },
+            {
+              "key": "C",
+              "text": "; delegates had since reconvened twice to draft a revised framework acceptable to all parties"
+            },
+            {
+              "key": "D",
+              "text": "; delegates has since reconvened twice to draft a revised framework acceptable to all parties"
+            },
+            {
+              "key": "E",
+              "text": ": delegates have since reconvened twice to draft a revised framework acceptable to all parties"
+            }
+          ],
+          "correctKey": "A",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 87,
+          "group": null,
+          "stem": "**(A)** Engineers tested the prototype extensively; consequently, **(B)** they have released it to the public last month **(C)** after months of rigorous **(D)** quality assurance checks.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Segment A contains the error"
+            },
+            {
+              "key": "B",
+              "text": "Segment B contains the error"
+            },
+            {
+              "key": "C",
+              "text": "Segment C contains the error"
+            },
+            {
+              "key": "D",
+              "text": "Segment D contains the error"
+            },
+            {
+              "key": "E",
+              "text": "No error"
+            }
+          ],
+          "correctKey": "B",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 88,
+          "group": null,
+          "stem": "By the time the redevelopment project reaches its final phase next spring, the population of the historic district, along with the number of registered small businesses, **have already doubled since the initial census was conducted**.",
+          "options": [
+            {
+              "key": "A",
+              "text": "have already doubled since the initial census was conducted"
+            },
+            {
+              "key": "B",
+              "text": "has already doubled since the initial census was conducted"
+            },
+            {
+              "key": "C",
+              "text": "will have doubled since the initial census was conducted"
+            },
+            {
+              "key": "D",
+              "text": "were doubling since the initial census was conducted"
+            },
+            {
+              "key": "E",
+              "text": "will be doubling since the initial census was conducted"
+            }
+          ],
+          "correctKey": "C",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 89,
+          "group": null,
+          "stem": "Based on preliminary sales figures, the company ______ exceed its quarterly revenue target.",
+          "options": [
+            {
+              "key": "A",
+              "text": "will"
+            },
+            {
+              "key": "B",
+              "text": "is going to"
+            },
+            {
+              "key": "C",
+              "text": "will have"
+            },
+            {
+              "key": "D",
+              "text": "would"
+            },
+            {
+              "key": "E",
+              "text": "will be"
+            }
+          ],
+          "correctKey": "B",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 90,
+          "group": null,
+          "stem": "**(A)** The legislature passed the amendment after weeks of debate; **(B)** what troubled critics most was the bill's vague enforcement language, **(C)** which received little scrutiny **(D)** during committee review.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Segment A contains the error"
+            },
+            {
+              "key": "B",
+              "text": "Segment B contains the error"
+            },
+            {
+              "key": "C",
+              "text": "Segment C contains the error"
+            },
+            {
+              "key": "D",
+              "text": "Segment D contains the error"
+            },
+            {
+              "key": "E",
+              "text": "No error"
+            }
+          ],
+          "correctKey": "E",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 91,
+          "group": null,
+          "stem": "Despite repeated attempts to stabilize the reef ecosystem, none of the coral colonies transplanted last year **has survived and researchers now suspect that water temperature fluctuations, rather than nutrient scarcity, caused the widespread die-off**.",
+          "options": [
+            {
+              "key": "A",
+              "text": "has survived and researchers now suspect that water temperature fluctuations, rather than nutrient scarcity, caused the widespread die-off"
+            },
+            {
+              "key": "B",
+              "text": "have survived and researchers now suspect that water temperature fluctuations, rather than nutrient scarcity, caused the widespread die-off"
+            },
+            {
+              "key": "C",
+              "text": "has survived, and researchers now suspect that water temperature fluctuations, rather than nutrient scarcity, caused the widespread die-off"
+            },
+            {
+              "key": "D",
+              "text": "have survived, but researchers now suspect that water temperature fluctuations, rather than nutrient scarcity, caused the widespread die-off"
+            },
+            {
+              "key": "E",
+              "text": "have survived, and researchers now suspect that water temperature fluctuations, rather than nutrient scarcity, caused the widespread die-off"
+            }
+          ],
+          "correctKey": "E",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 92,
+          "group": null,
+          "stem": "**Having spent nearly a decade restoring the cathedral's frescoes, the conservation team's meticulous methods have earned praise from art historians worldwide**, and the restored panels now anchor the museum's permanent collection.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Having spent nearly a decade restoring the cathedral's frescoes, the conservation team's meticulous methods have earned praise from art historians worldwide"
+            },
+            {
+              "key": "B",
+              "text": "Having spent nearly a decade restoring the cathedral's frescoes, the conservation team's meticulous methods has earned praise from art historians worldwide"
+            },
+            {
+              "key": "C",
+              "text": "Having spent nearly a decade restoring the cathedral's frescoes, the conservation team have earned praise from art historians worldwide"
+            },
+            {
+              "key": "D",
+              "text": "The conservation team's methods, having been developed over nearly a decade of restoring the cathedral's frescoes, have earned praise from art historians worldwide"
+            },
+            {
+              "key": "E",
+              "text": "The conservation team, having spent nearly a decade restoring the cathedral's frescoes, has earned praise from art historians worldwide"
+            }
+          ],
+          "correctKey": "E",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 93,
+          "group": null,
+          "stem": "**(A)** Since the experiment began, **(B)** none of the samples have shown any contamination, **(C)** and each of the researchers record **(D)** observations in a shared digital log every hour.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Segment A contains the error"
+            },
+            {
+              "key": "B",
+              "text": "Segment B contains the error"
+            },
+            {
+              "key": "C",
+              "text": "Segment C contains the error"
+            },
+            {
+              "key": "D",
+              "text": "Segment D contains the error"
+            },
+            {
+              "key": "E",
+              "text": "No error"
+            }
+          ],
+          "correctKey": "C",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 94,
+          "group": null,
+          "stem": "Each of the prototypes ______ rigorous stress testing since the redesign began in January.",
+          "options": [
+            {
+              "key": "A",
+              "text": "have undergone"
+            },
+            {
+              "key": "B",
+              "text": "undergo"
+            },
+            {
+              "key": "C",
+              "text": "underwent"
+            },
+            {
+              "key": "D",
+              "text": "have been undergoing"
+            },
+            {
+              "key": "E",
+              "text": "has undergone"
+            }
+          ],
+          "correctKey": "E",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 95,
+          "group": null,
+          "stem": "Engineers measuring the prototype device across dozens of trials have found that its charging speed **is markedly faster than the earlier model, and overall battery life has increased by nearly thirty percent since testing began**.",
+          "options": [
+            {
+              "key": "A",
+              "text": "is markedly faster than the earlier model, and overall battery life has increased by nearly thirty percent since testing began"
+            },
+            {
+              "key": "B",
+              "text": "is markedly faster than that of the earlier model, and overall battery life increased by nearly thirty percent since testing began"
+            },
+            {
+              "key": "C",
+              "text": "is markedly faster than that of the earlier model, and overall battery life has increased by nearly thirty percent since testing began"
+            },
+            {
+              "key": "D",
+              "text": "is markedly faster than that of the earlier model, and overall battery life had increased by nearly thirty percent since testing began"
+            },
+            {
+              "key": "E",
+              "text": "is markedly faster in comparison to the earlier model, and overall battery life has increased by nearly thirty percent since testing began"
+            }
+          ],
+          "correctKey": "C",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 96,
+          "group": null,
+          "stem": "**(A)** The updated employee handbook requires staff **(B)** to arrive on time, **(C)** to complete daily reports, **(D)** and that they follow the dress code at all company events.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Segment A contains the error"
+            },
+            {
+              "key": "B",
+              "text": "Segment B contains the error"
+            },
+            {
+              "key": "C",
+              "text": "Segment C contains the error"
+            },
+            {
+              "key": "D",
+              "text": "Segment D contains the error"
+            },
+            {
+              "key": "E",
+              "text": "No error"
+            }
+          ],
+          "correctKey": "D",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 97,
+          "group": null,
+          "stem": "The foundation's new grant program requires applicants **to submit a detailed budget, demonstrating measurable community impact, and that they secure at least one matching donor** before funds are released.",
+          "options": [
+            {
+              "key": "A",
+              "text": "to submit a detailed budget, demonstrating measurable community impact, and that they secure at least one matching donor"
+            },
+            {
+              "key": "B",
+              "text": "to submit a detailed budget, to demonstrate measurable community impact, and to secure at least one matching donor"
+            },
+            {
+              "key": "C",
+              "text": "submitting a detailed budget, demonstrating measurable community impact, and securing at least one matching donor"
+            },
+            {
+              "key": "D",
+              "text": "to submit a detailed budget, to demonstrate measurable community impact and to secure at least one matching donor"
+            },
+            {
+              "key": "E",
+              "text": "to submit a detailed budget, to demonstrate that community impact has already occurred, and to secure at least one matching donor"
+            }
+          ],
+          "correctKey": "B",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 98,
+          "group": null,
+          "stem": "**Administered twice daily for six weeks, researchers observed that the experimental medication, which had been developed specifically for elderly patients, produced a significant reduction in chronic joint pain** during the twelve-month trial period.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Administered twice daily for six weeks, researchers observed that the experimental medication, which had been developed specifically for elderly patients, produced a significant reduction in chronic joint pain"
+            },
+            {
+              "key": "B",
+              "text": "Administered twice daily for six weeks, the experimental medication which had been developed specifically for elderly patients, produced a significant reduction in chronic joint pain"
+            },
+            {
+              "key": "C",
+              "text": "Administered twice daily for six weeks, the experimental medication, which elderly patients had developed specifically for their own use, produced a significant reduction in chronic joint pain"
+            },
+            {
+              "key": "D",
+              "text": "Administered twice daily for six weeks, the experimental medication, which had been developed specifically for elderly patients, has produced a significant reduction in chronic joint pain"
+            },
+            {
+              "key": "E",
+              "text": "Administered twice daily for six weeks, the experimental medication, which had been developed specifically for elderly patients, produced a significant reduction in chronic joint pain"
+            }
+          ],
+          "correctKey": "E",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 99,
+          "group": null,
+          "stem": "**(A)** Analysts observed that the export volume **(B)** of the coastal province **(C)** is considerably larger than the inland province, **(D)** based on figures released this quarter.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Segment A contains the error"
+            },
+            {
+              "key": "B",
+              "text": "Segment B contains the error"
+            },
+            {
+              "key": "C",
+              "text": "Segment C contains the error"
+            },
+            {
+              "key": "D",
+              "text": "Segment D contains the error"
+            },
+            {
+              "key": "E",
+              "text": "No error"
+            }
+          ],
+          "correctKey": "C",
+          "imageUrl": null,
+          "explanation": null
+        },
+        {
+          "number": 100,
+          "group": null,
+          "stem": "The restoration team spent the summer cleaning the frescoes, repairing cracked plaster, and ______ the faded pigments.",
+          "options": [
+            {
+              "key": "A",
+              "text": "restore"
+            },
+            {
+              "key": "B",
+              "text": "to restore"
+            },
+            {
+              "key": "C",
+              "text": "restored"
+            },
+            {
+              "key": "D",
+              "text": "restoring"
+            },
+            {
+              "key": "E",
+              "text": "having restored"
+            }
+          ],
+          "correctKey": "D",
+          "imageUrl": null,
+          "explanation": null
+        }
+      ]
+    }
+  ]
+}

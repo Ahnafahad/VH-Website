@@ -10,6 +10,7 @@ import { useSafeNavigate } from '@/hooks/useSafeNavigate';
 import ProgressRing from '@/components/vocab/ProgressRing';
 import AnimatedNumber from '@/components/vocab/AnimatedNumber';
 import DeadlineBanner from '@/components/vocab/DeadlineBanner';
+import NewSyllabusesModal from '@/components/vocab/NewSyllabusesModal';
 import FullAccessDeadlineModal from '@/components/vocab/FullAccessDeadlineModal';
 import UpgradeModal from '@/components/vocab/UpgradeModal';
 import { FREE_WORD_POOL, PAID_WORD_POOL } from '@/lib/vocab/constants';
@@ -20,6 +21,7 @@ import { Capacitor } from '@capacitor/core';
 import { scheduleReminders, readReminderEnabled } from '@/lib/vocab/local-reminders';
 import { dhakaHour } from '@/lib/vocab/dhaka-time';
 import { LexiArtwork, LexiIcon } from '@/components/vocab/LexiAsset';
+import { LMark } from '@/components/vocab/onboarding/L';
 
 // Uses the visitor's Dhaka-local hour (not the machine's own timezone) so the
 // greeting is identical during SSR (server runs in UTC) and client hydration
@@ -779,7 +781,7 @@ function NextAction({ recommendation, onStart }: { recommendation: HomeRecommend
   );
 }
 
-export default function HomeScreen({ data }: { data: HomeData }) {
+export default function HomeScreen({ data, justActivated = false }: { data: HomeData; justActivated?: boolean }) {
   const router                 = useRouter();
   const { navigate }           = useSafeNavigate();
   const firstName              = data.userName.split(' ')[0];
@@ -787,8 +789,15 @@ export default function HomeScreen({ data }: { data: HomeData }) {
   const sessionRows            = buildSessions(data.sessions, router);
   const [showUpgrade, setShowUpgrade] = useState(false);
   const [showDeadlinePrompt, setShowDeadlinePrompt] = useState(data.promptFullAccessDeadline);
+  const [newSyllabusPrompt, setNewSyllabusPrompt] = useState(data.newSyllabusPrompt);
+  const [showWelcome, setShowWelcome] = useState(justActivated);
   const prefersReducedMotion   = useReducedMotion();
   const fb                     = useVocabFeedback();
+
+  const dismissWelcome = () => {
+    setShowWelcome(false);
+    router.replace('/vocab/home');
+  };
 
   // Reschedule local notifications with fresh SRS data on every home-screen visit.
   useEffect(() => {
@@ -1063,6 +1072,14 @@ export default function HomeScreen({ data }: { data: HomeData }) {
       {showDeadlinePrompt && (
         <FullAccessDeadlineModal
           onDone={() => { setShowDeadlinePrompt(false); router.refresh(); }}
+        />
+      )}
+
+      {/* ── New syllabuses — mini "choose your syllabus" interstitial ── */}
+      {newSyllabusPrompt && (
+        <NewSyllabusesModal
+          syllabuses={newSyllabusPrompt.syllabuses}
+          onDone={() => { setNewSyllabusPrompt(null); router.refresh(); }}
         />
       )}
 
@@ -1393,6 +1410,68 @@ export default function HomeScreen({ data }: { data: HomeData }) {
       <AnimatePresence>
         {showUpgrade && <UpgradeModal onClose={() => setShowUpgrade(false)} />}
       </AnimatePresence>
+
+      {/* ── First-entry welcome, right after onboarding finishes ── */}
+      <AnimatePresence>
+        {showWelcome && (
+          <ActivationWelcome
+            firstName={firstName}
+            reduce={prefersReducedMotion ?? false}
+            onDone={dismissWelcome}
+          />
+        )}
+      </AnimatePresence>
     </div>
+  );
+}
+
+/* ── First-entry welcome overlay, shown once right after onboarding ── */
+function ActivationWelcome({ firstName, reduce, onDone }: {
+  firstName: string; reduce: boolean; onDone: () => void;
+}) {
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: reduce ? 0.1 : 0.24 }}
+      onClick={onDone}
+      style={{
+        position: 'fixed', inset: 0, zIndex: 60,
+        display: 'flex', alignItems: 'center', justifyContent: 'center',
+        padding: '1.5rem',
+        background: 'rgba(10,10,10,0.86)',
+        backdropFilter: 'blur(6px)',
+      }}
+    >
+      <motion.div
+        initial={reduce ? { opacity: 0 } : { opacity: 0, y: 14, scale: 0.97 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        transition={{ duration: reduce ? 0.1 : 0.3, delay: reduce ? 0 : 0.08, ease: [0.22, 1, 0.36, 1] }}
+        onClick={e => e.stopPropagation()}
+        className="flex w-full max-w-sm flex-col items-center gap-5 rounded-3xl px-6 py-8 text-center"
+        style={{ background: 'var(--color-lx-elevated)', border: '1px solid var(--color-lx-border)' }}
+      >
+        <LMark size={44} />
+        <div className="flex flex-col gap-2">
+          <h2
+            style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: '1.5rem', fontWeight: 700, color: 'var(--color-lx-text-primary)', margin: 0 }}
+          >
+            Welcome in, {firstName}.
+          </h2>
+          <p style={{ fontFamily: "'Sora', sans-serif", fontSize: '0.875rem', lineHeight: 1.6, color: 'var(--color-lx-text-muted)', margin: 0 }}>
+            Everything you just set up is ready. This is where the list lives now.
+          </p>
+        </div>
+        <button
+          type="button"
+          onClick={onDone}
+          className="w-full rounded-2xl py-3.5 text-sm font-semibold"
+          style={{ background: 'var(--color-lx-accent-red)', color: '#fff', fontFamily: "'Sora', sans-serif" }}
+        >
+          Let&rsquo;s go
+        </button>
+      </motion.div>
+    </motion.div>
   );
 }

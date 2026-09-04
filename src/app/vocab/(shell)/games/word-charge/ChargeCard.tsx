@@ -58,9 +58,9 @@ export default function ChargeCard({ word, containerWidth, onCommit, disabled, r
   }
 
   const wordLen  = word.word.length;
-  const wordSize = wordLen > 13 ? 'clamp(1.05rem, 4.6vw, 1.45rem)' :
-                   wordLen > 9  ? 'clamp(1.25rem, 5.6vw, 1.75rem)' :
-                                  'clamp(1.5rem, 7vw, 2.15rem)';
+  const wordSize = wordLen > 9 ? 'clamp(1.05rem, 4.4vw, 1.4rem)' :
+                   wordLen > 6 ? 'clamp(1.2rem, 5vw, 1.55rem)' :
+                                 'clamp(1.5rem, 7vw, 2.15rem)';
 
   return (
     <motion.div

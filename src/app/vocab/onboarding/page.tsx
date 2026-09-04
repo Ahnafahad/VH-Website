@@ -1,13 +1,13 @@
 import { getServerSession } from 'next-auth';
 import { redirect } from 'next/navigation';
 import { authOptions } from '@/lib/auth';
-import { db, users, vocabUserProgress } from '@/lib/db';
-import { eq } from 'drizzle-orm';
-import OnboardingFlow from './OnboardingFlow';
+import { db, users, vocabUserProgress, vocabSyllabuses, vocabWordSyllabuses } from '@/lib/db';
+import { eq, asc, count } from 'drizzle-orm';
+import OnboardingFlow, { type TrackOption } from './OnboardingFlow';
 
 export default async function OnboardingPage() {
   const session = await getServerSession(authOptions);
-  if (!session?.user?.email) redirect('/auth/signin?callbackUrl=/vocab');
+  if (!session?.user?.email) redirect('/lexicore');
 
   const [user] = await db
     .select({ id: users.id, name: users.name, role: users.role })
@@ -44,5 +44,23 @@ export default async function OnboardingPage() {
     redirect('/vocab/home');
   }
 
-  return <OnboardingFlow userId={user.id} userName={user.name} />;
+  // Tracks come from the DB, never a hardcoded list — adding a syllabus is a
+  // data change, not a code change.
+  const tracks: TrackOption[] = await db
+    .select({
+      id:          vocabSyllabuses.id,
+      name:        vocabSyllabuses.name,
+      description: vocabSyllabuses.description,
+      trialWords:  vocabSyllabuses.trialWordCount,
+      totalWords:  count(vocabWordSyllabuses.wordId),
+    })
+    .from(vocabSyllabuses)
+    .leftJoin(vocabWordSyllabuses, eq(vocabWordSyllabuses.syllabusId, vocabSyllabuses.id))
+    .groupBy(vocabSyllabuses.id)
+    .orderBy(asc(vocabSyllabuses.order), asc(vocabSyllabuses.id));
+
+  return <OnboardingFlow userName={user.name} tracks={tracks} />;
 }
+
+// Onboarding reads live per-user state; never serve it from the route cache.
+export const dynamic = 'force-dynamic';

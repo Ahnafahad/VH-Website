@@ -216,6 +216,9 @@ export default function UIPreviewPage() {
               masteredWords: 42,
               totalWords:    200,
               briefingCards: [],
+              syllabuses:         [],
+              selectedSyllabusIds: [],
+              syllabusLocked:      false,
             }}
             letterIndex={[]}
             reviewData={{ dueWords: [], weakWords: [] }}

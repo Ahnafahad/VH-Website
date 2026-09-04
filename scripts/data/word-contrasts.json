@@ -1,0 +1,7106 @@
+[
+ {
+  "wordId": 1029,
+  "word": "Autocratic",
+  "contrastWord": "authoritarian",
+  "contrastGloss": "demanding strict obedience while limiting personal freedom",
+  "confusionType": "overlapping",
+  "confidence": 0.84
+ },
+ {
+  "wordId": 1030,
+  "word": "Coerce",
+  "contrastWord": "compel",
+  "contrastGloss": "force action without necessarily using threats or intimidation",
+  "confusionType": "overlapping",
+  "confidence": 0.88
+ },
+ {
+  "wordId": 1032,
+  "word": "Hegemony",
+  "contrastWord": "imperialism",
+  "contrastGloss": "policy of extending a nation's rule beyond its borders",
+  "confusionType": "overlapping",
+  "confidence": 0.82
+ },
+ {
+  "wordId": 1033,
+  "word": "Imperial",
+  "contrastWord": "imperious",
+  "contrastGloss": "arrogantly commanding and expecting immediate obedience",
+  "confusionType": "paronym",
+  "confidence": 0.97
+ },
+ {
+  "wordId": 1034,
+  "word": "Martial",
+  "contrastWord": "marital",
+  "contrastGloss": "relating to marriage or married partners",
+  "confusionType": "paronym",
+  "confidence": 0.99
+ },
+ {
+  "wordId": 1035,
+  "word": "Pacify",
+  "contrastWord": "appease",
+  "contrastGloss": "calm someone by satisfying demands or making concessions",
+  "confusionType": "overlapping",
+  "confidence": 0.87
+ },
+ {
+  "wordId": 1036,
+  "word": "Prevail",
+  "contrastWord": "persevere",
+  "contrastGloss": "continue despite difficulty without necessarily achieving victory",
+  "confusionType": "overlapping",
+  "confidence": 0.85
+ },
+ {
+  "wordId": 1037,
+  "word": "Proscribe",
+  "contrastWord": "prescribe",
+  "contrastGloss": "officially recommend or direct a treatment or course",
+  "confusionType": "paronym",
+  "confidence": 0.99
+ },
+ {
+  "wordId": 1038,
+  "word": "Subjugate",
+  "contrastWord": "subordinate",
+  "contrastGloss": "place in a lower rank without necessarily using force",
+  "confusionType": "overlapping",
+  "confidence": 0.8
+ },
+ {
+  "wordId": 1039,
+  "word": "Usurp",
+  "contrastWord": "oust",
+  "contrastGloss": "remove someone from office without necessarily taking their position",
+  "confusionType": "overlapping",
+  "confidence": 0.78
+ },
+ {
+  "wordId": 1040,
+  "word": "Aristocratic",
+  "contrastWord": "autocratic",
+  "contrastGloss": "exercising power without sharing control or accepting opposition",
+  "confusionType": "paronym",
+  "confidence": 0.9
+ },
+ {
+  "wordId": 1041,
+  "word": "Bourgeois",
+  "contrastWord": "bourgeoisie",
+  "contrastGloss": "the middle class considered collectively as a social group",
+  "confusionType": "paronym",
+  "confidence": 0.93
+ },
+ {
+  "wordId": 1043,
+  "word": "Denizen",
+  "contrastWord": "citizen",
+  "contrastGloss": "legally recognized member of a particular state",
+  "confusionType": "paronym",
+  "confidence": 0.89
+ },
+ {
+  "wordId": 1044,
+  "word": "Genteel",
+  "contrastWord": "gentle",
+  "contrastGloss": "mild, kind, or soft rather than socially refined",
+  "confusionType": "paronym",
+  "confidence": 0.96
+ },
+ {
+  "wordId": 1045,
+  "word": "Hierarchy",
+  "contrastWord": "patriarchy",
+  "contrastGloss": "social system dominated chiefly by men and fathers",
+  "confusionType": "paronym",
+  "confidence": 0.82
+ },
+ {
+  "wordId": 1046,
+  "word": "Indigenous",
+  "contrastWord": "indigent",
+  "contrastGloss": "extremely poor and lacking basic necessities",
+  "confusionType": "paronym",
+  "confidence": 0.98
+ },
+ {
+  "wordId": 1049,
+  "word": "Plebeian",
+  "contrastWord": "proletarian",
+  "contrastGloss": "belonging specifically to the wage-earning working class",
+  "confusionType": "overlapping",
+  "confidence": 0.86
+ },
+ {
+  "wordId": 1050,
+  "word": "Proletariat",
+  "contrastWord": "plebeians",
+  "contrastGloss": "ordinary lower-status people regardless of their economic role",
+  "confusionType": "overlapping",
+  "confidence": 0.82
+ },
+ {
+  "wordId": 1051,
+  "word": "Stratum",
+  "contrastWord": "strata",
+  "contrastGloss": "plural form referring to multiple layers or levels",
+  "confusionType": "misuse",
+  "confidence": 0.96
+ },
+ {
+  "wordId": 1052,
+  "word": "Abdicate",
+  "contrastWord": "resign",
+  "contrastGloss": "leave an ordinary office or position voluntarily",
+  "confusionType": "overlapping",
+  "confidence": 0.89
+ },
+ {
+  "wordId": 1053,
+  "word": "Ascendancy",
+  "contrastWord": "ascent",
+  "contrastGloss": "an upward climb or movement toward a higher position",
+  "confusionType": "paronym",
+  "confidence": 0.91
+ },
+ {
+  "wordId": 1054,
+  "word": "Consecrate",
+  "contrastWord": "concentrate",
+  "contrastGloss": "focus attention or gather something into one place",
+  "confusionType": "paronym",
+  "confidence": 0.7
+ },
+ {
+  "wordId": 1055,
+  "word": "Coup",
+  "contrastWord": "revolution",
+  "contrastGloss": "broad popular upheaval that transforms a political system",
+  "confusionType": "overlapping",
+  "confidence": 0.92
+ },
+ {
+  "wordId": 1056,
+  "word": "Culminate",
+  "contrastWord": "terminate",
+  "contrastGloss": "bring something to an end without implying a climax",
+  "confusionType": "overlapping",
+  "confidence": 0.88
+ },
+ {
+  "wordId": 1057,
+  "word": "Inaugurate",
+  "contrastWord": "initiate",
+  "contrastGloss": "begin a process without any formal installation ceremony",
+  "confusionType": "overlapping",
+  "confidence": 0.84
+ },
+ {
+  "wordId": 1058,
+  "word": "Legacy",
+  "contrastWord": "heritage",
+  "contrastGloss": "shared traditions and culture inherited across generations",
+  "confusionType": "overlapping",
+  "confidence": 0.84
+ },
+ {
+  "wordId": 1060,
+  "word": "Marshal",
+  "contrastWord": "martial",
+  "contrastGloss": "relating to war, armed forces, or combat",
+  "confusionType": "paronym",
+  "confidence": 0.99
+ },
+ {
+  "wordId": 1061,
+  "word": "Preeminent",
+  "contrastWord": "eminent",
+  "contrastGloss": "highly distinguished without necessarily surpassing everyone else",
+  "confusionType": "paronym",
+  "confidence": 0.96
+ },
+ {
+  "wordId": 1062,
+  "word": "Preempt",
+  "contrastWord": "prevent",
+  "contrastGloss": "stop something by any means, not necessarily by acting first",
+  "confusionType": "overlapping",
+  "confidence": 0.93
+ },
+ {
+  "wordId": 1063,
+  "word": "Promulgate",
+  "contrastWord": "propagate",
+  "contrastGloss": "spread ideas, beliefs, organisms, or information widely",
+  "confusionType": "paronym",
+  "confidence": 0.97
+ },
+ {
+  "wordId": 1064,
+  "word": "Anarchy",
+  "contrastWord": "chaos",
+  "contrastGloss": "complete disorder that need not involve absent government",
+  "confusionType": "overlapping",
+  "confidence": 0.93
+ },
+ {
+  "wordId": 1066,
+  "word": "Chasm",
+  "contrastWord": "schism",
+  "contrastGloss": "formal split between groups over beliefs or loyalties",
+  "confusionType": "paronym",
+  "confidence": 0.96
+ },
+ {
+  "wordId": 1067,
+  "word": "Faction",
+  "contrastWord": "fraction",
+  "contrastGloss": "a numerical part or portion of a whole",
+  "confusionType": "paronym",
+  "confidence": 0.98
+ },
+ {
+  "wordId": 1068,
+  "word": "Foment",
+  "contrastWord": "ferment",
+  "contrastGloss": "undergo chemical change or develop in restless agitation",
+  "confusionType": "paronym",
+  "confidence": 0.95
+ },
+ {
+  "wordId": 1069,
+  "word": "Insurgent",
+  "contrastWord": "terrorist",
+  "contrastGloss": "uses violence chiefly to intimidate civilians or populations",
+  "confusionType": "overlapping",
+  "confidence": 0.9
+ },
+ {
+  "wordId": 1070,
+  "word": "Martyr",
+  "contrastWord": "victim",
+  "contrastGloss": "suffers harm without necessarily serving a cause",
+  "confusionType": "overlapping",
+  "confidence": 0.91
+ },
+ {
+  "wordId": 1071,
+  "word": "Polarize",
+  "contrastWord": "politicize",
+  "contrastGloss": "turn an issue into a matter of politics",
+  "confusionType": "paronym",
+  "confidence": 0.94
+ },
+ {
+  "wordId": 1072,
+  "word": "Protagonist",
+  "contrastWord": "hero",
+  "contrastGloss": "an admirable figure who need not be central",
+  "confusionType": "overlapping",
+  "confidence": 0.97
+ },
+ {
+  "wordId": 1073,
+  "word": "Recalcitrant",
+  "contrastWord": "reluctant",
+  "contrastGloss": "hesitant or unwilling without being defiantly resistant",
+  "confusionType": "paronym",
+  "confidence": 0.95
+ },
+ {
+  "wordId": 1074,
+  "word": "Sedition",
+  "contrastWord": "treason",
+  "contrastGloss": "betrayal of one's country, especially by aiding enemies",
+  "confusionType": "overlapping",
+  "confidence": 0.94
+ },
+ {
+  "wordId": 1075,
+  "word": "Subversive",
+  "contrastWord": "seditious",
+  "contrastGloss": "specifically encouraging rebellion against state authority",
+  "confusionType": "overlapping",
+  "confidence": 0.86
+ },
+ {
+  "wordId": 1076,
+  "word": "Capitalism",
+  "contrastWord": "consumerism",
+  "contrastGloss": "culture emphasizing the continual acquisition of goods",
+  "confusionType": "overlapping",
+  "confidence": 0.9
+ },
+ {
+  "wordId": 1077,
+  "word": "Doctrinaire",
+  "contrastWord": "doctrinal",
+  "contrastGloss": "relating to doctrine without implying rigid adherence",
+  "confusionType": "paronym",
+  "confidence": 0.95
+ },
+ {
+  "wordId": 1078,
+  "word": "Dogmatic",
+  "contrastWord": "dogged",
+  "contrastGloss": "showing persistent determination despite difficulty",
+  "confusionType": "paronym",
+  "confidence": 0.87
+ },
+ {
+  "wordId": 1079,
+  "word": "Egalitarian",
+  "contrastWord": "equitable",
+  "contrastGloss": "fair in context, without requiring identical treatment",
+  "confusionType": "overlapping",
+  "confidence": 0.89
+ },
+ {
+  "wordId": 1080,
+  "word": "Espouse",
+  "contrastWord": "expose",
+  "contrastGloss": "reveal something hidden or leave it unprotected",
+  "confusionType": "paronym",
+  "confidence": 0.92
+ },
+ {
+  "wordId": 1081,
+  "word": "Ideology",
+  "contrastWord": "philosophy",
+  "contrastGloss": "broader framework for understanding knowledge, life, or conduct",
+  "confusionType": "overlapping",
+  "confidence": 0.87
+ },
+ {
+  "wordId": 1082,
+  "word": "Manifesto",
+  "contrastWord": "platform",
+  "contrastGloss": "set of policies a political group supports",
+  "confusionType": "overlapping",
+  "confidence": 0.86
+ },
+ {
+  "wordId": 1085,
+  "word": "Polemic",
+  "contrastWord": "diatribe",
+  "contrastGloss": "bitter verbal attack driven more by anger than argument",
+  "confusionType": "overlapping",
+  "confidence": 0.84
+ },
+ {
+  "wordId": 1086,
+  "word": "Proponent",
+  "contrastWord": "opponent",
+  "contrastGloss": "person who argues or competes against something",
+  "confusionType": "paronym",
+  "confidence": 0.98
+ },
+ {
+  "wordId": 1087,
+  "word": "Tenet",
+  "contrastWord": "tenant",
+  "contrastGloss": "person who rents and occupies property",
+  "confusionType": "paronym",
+  "confidence": 0.99
+ },
+ {
+  "wordId": 1088,
+  "word": "Agenda",
+  "contrastWord": "itinerary",
+  "contrastGloss": "planned route and schedule for a journey",
+  "confusionType": "overlapping",
+  "confidence": 0.86
+ },
+ {
+  "wordId": 1089,
+  "word": "Artifice",
+  "contrastWord": "artifact",
+  "contrastGloss": "object made or modified by human activity",
+  "confusionType": "paronym",
+  "confidence": 0.94
+ },
+ {
+  "wordId": 1090,
+  "word": "Clique",
+  "contrastWord": "click",
+  "contrastGloss": "make a short sharp sound or select onscreen",
+  "confusionType": "paronym",
+  "confidence": 0.96
+ },
+ {
+  "wordId": 1091,
+  "word": "Collusion",
+  "contrastWord": "collision",
+  "contrastGloss": "forceful impact between moving objects or opposing interests",
+  "confusionType": "paronym",
+  "confidence": 0.97
+ },
+ {
+  "wordId": 1092,
+  "word": "Complicity",
+  "contrastWord": "conspiracy",
+  "contrastGloss": "secret agreement to commit an unlawful or harmful act",
+  "confusionType": "overlapping",
+  "confidence": 0.93
+ },
+ {
+  "wordId": 1094,
+  "word": "Furtive",
+  "contrastWord": "secretive",
+  "contrastGloss": "habitually unwilling to reveal information or intentions",
+  "confusionType": "overlapping",
+  "confidence": 0.82
+ },
+ {
+  "wordId": 1095,
+  "word": "Insidious",
+  "contrastWord": "invidious",
+  "contrastGloss": "unfairly discriminatory or likely to provoke resentment",
+  "confusionType": "paronym",
+  "confidence": 0.98
+ },
+ {
+  "wordId": 1096,
+  "word": "Machination",
+  "contrastWord": "conspiracy",
+  "contrastGloss": "secret agreement among people to commit wrongdoing",
+  "confusionType": "overlapping",
+  "confidence": 0.87
+ },
+ {
+  "wordId": 1097,
+  "word": "Proprietary",
+  "contrastWord": "propriety",
+  "contrastGloss": "socially acceptable standards of conduct or manners",
+  "confusionType": "paronym",
+  "confidence": 0.98
+ },
+ {
+  "wordId": 1098,
+  "word": "Surreptitious",
+  "contrastWord": "superstitious",
+  "contrastGloss": "believing events are influenced by supernatural signs",
+  "confusionType": "paronym",
+  "confidence": 0.96
+ },
+ {
+  "wordId": 1099,
+  "word": "Acrimonious",
+  "contrastWord": "acerbic",
+  "contrastGloss": "sharp and cutting in tone or expression",
+  "confusionType": "overlapping",
+  "confidence": 0.84
+ },
+ {
+  "wordId": 1100,
+  "word": "Blatant",
+  "contrastWord": "brazen",
+  "contrastGloss": "shamelessly bold despite expected disapproval",
+  "confusionType": "overlapping",
+  "confidence": 0.9
+ },
+ {
+  "wordId": 1101,
+  "word": "Castigate",
+  "contrastWord": "castrate",
+  "contrastGloss": "remove or disable the reproductive organs",
+  "confusionType": "paronym",
+  "confidence": 0.88
+ },
+ {
+  "wordId": 1102,
+  "word": "Culpable",
+  "contrastWord": "capable",
+  "contrastGloss": "having the ability or qualities needed for something",
+  "confusionType": "paronym",
+  "confidence": 0.98
+ },
+ {
+  "wordId": 1103,
+  "word": "Exonerate",
+  "contrastWord": "extenuate",
+  "contrastGloss": "make wrongdoing seem less serious without clearing blame",
+  "confusionType": "paronym",
+  "confidence": 0.97
+ },
+ {
+  "wordId": 1104,
+  "word": "Flagrant",
+  "contrastWord": "fragrant",
+  "contrastGloss": "having a pleasant or noticeable smell",
+  "confusionType": "paronym",
+  "confidence": 0.99
+ },
+ {
+  "wordId": 1105,
+  "word": "Ignominy",
+  "contrastWord": "infamy",
+  "contrastGloss": "lasting public reputation for evil or wrongdoing",
+  "confusionType": "overlapping",
+  "confidence": 0.89
+ },
+ {
+  "wordId": 1106,
+  "word": "Infamous",
+  "contrastWord": "famous",
+  "contrastGloss": "widely known without necessarily having a bad reputation",
+  "confusionType": "misuse",
+  "confidence": 0.99
+ },
+ {
+  "wordId": 1107,
+  "word": "Notorious",
+  "contrastWord": "notable",
+  "contrastGloss": "worthy of attention without implying a bad reputation",
+  "confusionType": "paronym",
+  "confidence": 0.96
+ },
+ {
+  "wordId": 1109,
+  "word": "Stigmatize",
+  "contrastWord": "stereotype",
+  "contrastGloss": "assign a generalized trait to an entire group",
+  "confusionType": "overlapping",
+  "confidence": 0.84
+ },
+ {
+  "wordId": 1111,
+  "word": "Adherent",
+  "contrastWord": "inherent",
+  "contrastGloss": "existing as a natural or essential part",
+  "confusionType": "paronym",
+  "confidence": 0.94
+ },
+ {
+  "wordId": 1112,
+  "word": "Cajole",
+  "contrastWord": "coerce",
+  "contrastGloss": "compel through force, threats, or intimidation",
+  "confusionType": "overlapping",
+  "confidence": 0.91
+ },
+ {
+  "wordId": 1113,
+  "word": "Deference",
+  "contrastWord": "difference",
+  "contrastGloss": "a point or way in which things differ",
+  "confusionType": "paronym",
+  "confidence": 0.95
+ },
+ {
+  "wordId": 1115,
+  "word": "Nominal",
+  "contrastWord": "notional",
+  "contrastGloss": "existing chiefly as an idea, estimate, or theory",
+  "confusionType": "paronym",
+  "confidence": 0.88
+ },
+ {
+  "wordId": 1116,
+  "word": "Obsequious",
+  "contrastWord": "officious",
+  "contrastGloss": "annoyingly eager to interfere or assert authority",
+  "confusionType": "paronym",
+  "confidence": 0.97
+ },
+ {
+  "wordId": 1117,
+  "word": "Officious",
+  "contrastWord": "obsequious",
+  "contrastGloss": "excessively submissive and flattering toward someone powerful",
+  "confusionType": "paronym",
+  "confidence": 0.97
+ },
+ {
+  "wordId": 1118,
+  "word": "Reprove",
+  "contrastWord": "disprove",
+  "contrastGloss": "show that a claim or belief is false",
+  "confusionType": "paronym",
+  "confidence": 0.9
+ },
+ {
+  "wordId": 1121,
+  "word": "Appropriate",
+  "contrastWord": "expropriate",
+  "contrastGloss": "officially dispossess an owner, usually for public use",
+  "confusionType": "overlapping",
+  "confidence": 0.78
+ },
+ {
+  "wordId": 1122,
+  "word": "Autonomous",
+  "contrastWord": "anonymous",
+  "contrastGloss": "having an identity that is unknown or undisclosed",
+  "confusionType": "paronym",
+  "confidence": 0.96
+ },
+ {
+  "wordId": 1123,
+  "word": "Bureaucracy",
+  "contrastWord": "democracy",
+  "contrastGloss": "government in which power belongs to the people",
+  "confusionType": "paronym",
+  "confidence": 0.81
+ },
+ {
+  "wordId": 1124,
+  "word": "Curtail",
+  "contrastWord": "entail",
+  "contrastGloss": "involve something as a necessary consequence or requirement",
+  "confusionType": "paronym",
+  "confidence": 0.92
+ },
+ {
+  "wordId": 1125,
+  "word": "Magnate",
+  "contrastWord": "magnet",
+  "contrastGloss": "an object or attraction that draws things toward it",
+  "confusionType": "paronym",
+  "confidence": 0.98
+ },
+ {
+  "wordId": 1126,
+  "word": "Nepotism",
+  "contrastWord": "cronyism",
+  "contrastGloss": "unfairly favoring friends and political associates",
+  "confusionType": "overlapping",
+  "confidence": 0.96
+ },
+ {
+  "wordId": 1127,
+  "word": "Paternal",
+  "contrastWord": "parental",
+  "contrastGloss": "relating to either parent or to parenthood generally",
+  "confusionType": "overlapping",
+  "confidence": 0.94
+ },
+ {
+  "wordId": 1128,
+  "word": "Patriarch",
+  "contrastWord": "patriarchal",
+  "contrastGloss": "organized around male authority or dominance",
+  "confusionType": "paronym",
+  "confidence": 0.86
+ },
+ {
+  "wordId": 1129,
+  "word": "Peremptory",
+  "contrastWord": "preemptive",
+  "contrastGloss": "intended to prevent something by acting first",
+  "confusionType": "paronym",
+  "confidence": 0.97
+ },
+ {
+  "wordId": 1130,
+  "word": "Perquisite",
+  "contrastWord": "prerequisite",
+  "contrastGloss": "something required before another thing can happen",
+  "confusionType": "paronym",
+  "confidence": 0.99
+ },
+ {
+  "wordId": 1131,
+  "word": "Prerogative",
+  "contrastWord": "perquisite",
+  "contrastGloss": "an extra benefit received with a job",
+  "confusionType": "paronym",
+  "confidence": 0.9
+ },
+ {
+  "wordId": 1132,
+  "word": "Surrogate",
+  "contrastWord": "delegate",
+  "contrastGloss": "a representative authorized to act for a group",
+  "confusionType": "overlapping",
+  "confidence": 0.72
+ },
+ {
+  "wordId": 1133,
+  "word": "Affluent",
+  "contrastWord": "effluent",
+  "contrastGloss": "liquid waste discharged from a factory or sewer",
+  "confusionType": "paronym",
+  "confidence": 0.98
+ },
+ {
+  "wordId": 1134,
+  "word": "Amenity",
+  "contrastWord": "amnesty",
+  "contrastGloss": "an official pardon granted to a group",
+  "confusionType": "paronym",
+  "confidence": 0.92
+ },
+ {
+  "wordId": 1135,
+  "word": "Culinary",
+  "contrastWord": "cuisine",
+  "contrastGloss": "a particular culture or style of cooking",
+  "confusionType": "overlapping",
+  "confidence": 0.82
+ },
+ {
+  "wordId": 1136,
+  "word": "Decadent",
+  "contrastWord": "decedent",
+  "contrastGloss": "a deceased person, especially in legal contexts",
+  "confusionType": "paronym",
+  "confidence": 0.97
+ },
+ {
+  "wordId": 1137,
+  "word": "Flaunt",
+  "contrastWord": "flout",
+  "contrastGloss": "openly disregard a rule, law, or convention",
+  "confusionType": "paronym",
+  "confidence": 0.99
+ },
+ {
+  "wordId": 1138,
+  "word": "Grandiose",
+  "contrastWord": "grand",
+  "contrastGloss": "impressive in scale or appearance without implied absurdity",
+  "confusionType": "overlapping",
+  "confidence": 0.86
+ },
+ {
+  "wordId": 1139,
+  "word": "Munificent",
+  "contrastWord": "magnificent",
+  "contrastGloss": "exceptionally impressive, beautiful, or excellent",
+  "confusionType": "paronym",
+  "confidence": 0.98
+ },
+ {
+  "wordId": 1140,
+  "word": "Opulent",
+  "contrastWord": "affluent",
+  "contrastGloss": "financially wealthy, without necessarily displaying luxury",
+  "confusionType": "overlapping",
+  "confidence": 0.91
+ },
+ {
+  "wordId": 1141,
+  "word": "Ostentatious",
+  "contrastWord": "pretentious",
+  "contrastGloss": "trying to seem more important or cultured than warranted",
+  "confusionType": "overlapping",
+  "confidence": 0.91
+ },
+ {
+  "wordId": 1142,
+  "word": "Solvent",
+  "contrastWord": "liquid",
+  "contrastGloss": "holding enough readily available cash for immediate payments",
+  "confusionType": "overlapping",
+  "confidence": 0.82
+ },
+ {
+  "wordId": 1143,
+  "word": "Abject",
+  "contrastWord": "dejected",
+  "contrastGloss": "feeling dispirited or depressed after disappointment",
+  "confusionType": "paronym",
+  "confidence": 0.85
+ },
+ {
+  "wordId": 1144,
+  "word": "Avarice",
+  "contrastWord": "envy",
+  "contrastGloss": "resentful desire for what another person possesses",
+  "confusionType": "overlapping",
+  "confidence": 0.87
+ },
+ {
+  "wordId": 1145,
+  "word": "Covet",
+  "contrastWord": "envy",
+  "contrastGloss": "resent someone for possessing a desired advantage",
+  "confusionType": "overlapping",
+  "confidence": 0.94
+ },
+ {
+  "wordId": 1146,
+  "word": "Dearth",
+  "contrastWord": "death",
+  "contrastGloss": "the end of a person or organism's life",
+  "confusionType": "paronym",
+  "confidence": 0.94
+ },
+ {
+  "wordId": 1147,
+  "word": "Glut",
+  "contrastWord": "gluttony",
+  "contrastGloss": "habitual overconsumption, especially of food or drink",
+  "confusionType": "paronym",
+  "confidence": 0.84
+ },
+ {
+  "wordId": 1148,
+  "word": "Insatiable",
+  "contrastWord": "unsatisfied",
+  "contrastGloss": "not fulfilled yet, though satisfaction remains possible",
+  "confusionType": "overlapping",
+  "confidence": 0.95
+ },
+ {
+  "wordId": 1149,
+  "word": "Mercenary",
+  "contrastWord": "mercantile",
+  "contrastGloss": "relating to trade, merchants, or commercial business",
+  "confusionType": "paronym",
+  "confidence": 0.82
+ },
+ {
+  "wordId": 1150,
+  "word": "Paucity",
+  "contrastWord": "poverty",
+  "contrastGloss": "state of being poor, not any general shortage",
+  "confusionType": "overlapping",
+  "confidence": 0.72
+ },
+ {
+  "wordId": 1151,
+  "word": "Rapacious",
+  "contrastWord": "ravenous",
+  "contrastGloss": "extremely hungry, not greedily acquisitive",
+  "confusionType": "paronym",
+  "confidence": 0.87
+ },
+ {
+  "wordId": 1152,
+  "word": "Squander",
+  "contrastWord": "splurge",
+  "contrastGloss": "spend extravagantly for pleasure, not necessarily waste everything",
+  "confusionType": "overlapping",
+  "confidence": 0.78
+ },
+ {
+  "wordId": 1153,
+  "word": "Abysmal",
+  "contrastWord": "abyssal",
+  "contrastGloss": "relating to ocean depths or something immeasurably deep",
+  "confusionType": "paronym",
+  "confidence": 0.94
+ },
+ {
+  "wordId": 1154,
+  "word": "Destitute",
+  "contrastWord": "desolate",
+  "contrastGloss": "empty, abandoned, or bleak rather than extremely poor",
+  "confusionType": "paronym",
+  "confidence": 0.8
+ },
+ {
+  "wordId": 1155,
+  "word": "Indigent",
+  "contrastWord": "indigenous",
+  "contrastGloss": "native to a particular region or environment",
+  "confusionType": "paronym",
+  "confidence": 0.91
+ },
+ {
+  "wordId": 1156,
+  "word": "Mendicant",
+  "contrastWord": "mendacious",
+  "contrastGloss": "dishonest or habitually given to lying",
+  "confusionType": "paronym",
+  "confidence": 0.86
+ },
+ {
+  "wordId": 1157,
+  "word": "Paltry",
+  "contrastWord": "poultry",
+  "contrastGloss": "domesticated birds raised for meat or eggs",
+  "confusionType": "paronym",
+  "confidence": 0.81
+ },
+ {
+  "wordId": 1158,
+  "word": "Sordid",
+  "contrastWord": "squalid",
+  "contrastGloss": "physically filthy and neglected, without necessarily implying immorality",
+  "confusionType": "overlapping",
+  "confidence": 0.84
+ },
+ {
+  "wordId": 1160,
+  "word": "Stagnation",
+  "contrastWord": "recession",
+  "contrastGloss": "period of economic decline, not merely stalled growth",
+  "confusionType": "overlapping",
+  "confidence": 0.86
+ },
+ {
+  "wordId": 1161,
+  "word": "Arbitrary",
+  "contrastWord": "random",
+  "contrastGloss": "determined by chance rather than someone's unsupported choice",
+  "confusionType": "overlapping",
+  "confidence": 0.91
+ },
+ {
+  "wordId": 1162,
+  "word": "Circumspect",
+  "contrastWord": "circumscribed",
+  "contrastGloss": "restricted within fixed limits or boundaries",
+  "confusionType": "paronym",
+  "confidence": 0.88
+ },
+ {
+  "wordId": 1164,
+  "word": "Criterion",
+  "contrastWord": "criteria",
+  "contrastGloss": "plural form referring to multiple standards for judgment",
+  "confusionType": "misuse",
+  "confidence": 0.99
+ },
+ {
+  "wordId": 1165,
+  "word": "Discern",
+  "contrastWord": "discriminate",
+  "contrastGloss": "tell two or more things apart by comparison",
+  "confusionType": "overlapping",
+  "confidence": 0.85
+ },
+ {
+  "wordId": 1166,
+  "word": "Discriminate",
+  "contrastWord": "discern",
+  "contrastGloss": "perceive something unclear rather than compare alternatives",
+  "confusionType": "overlapping",
+  "confidence": 0.85
+ },
+ {
+  "wordId": 1168,
+  "word": "Equitable",
+  "contrastWord": "equal",
+  "contrastGloss": "the same in amount or treatment, whether fair or not",
+  "confusionType": "overlapping",
+  "confidence": 0.97
+ },
+ {
+  "wordId": 1169,
+  "word": "Exacting",
+  "contrastWord": "exact",
+  "contrastGloss": "completely accurate or precise rather than highly demanding",
+  "confusionType": "paronym",
+  "confidence": 0.94
+ },
+ {
+  "wordId": 1170,
+  "word": "Cogent",
+  "contrastWord": "coherent",
+  "contrastGloss": "logically connected and understandable, but not necessarily persuasive",
+  "confusionType": "overlapping",
+  "confidence": 0.91
+ },
+ {
+  "wordId": 1171,
+  "word": "Fastidious",
+  "contrastWord": "meticulous",
+  "contrastGloss": "extremely attentive to detail without implying fussiness",
+  "confusionType": "overlapping",
+  "confidence": 0.76
+ },
+ {
+  "wordId": 1172,
+  "word": "Judicious",
+  "contrastWord": "judicial",
+  "contrastGloss": "relating to courts, judges, or legal decisions",
+  "confusionType": "paronym",
+  "confidence": 0.98
+ },
+ {
+  "wordId": 1173,
+  "word": "Lucid",
+  "contrastWord": "vivid",
+  "contrastGloss": "producing strong, detailed impressions rather than clear reasoning",
+  "confusionType": "overlapping",
+  "confidence": 0.75
+ },
+ {
+  "wordId": 1174,
+  "word": "Painstaking",
+  "contrastWord": "painful",
+  "contrastGloss": "causing physical or emotional pain rather than requiring care",
+  "confusionType": "misuse",
+  "confidence": 0.9
+ },
+ {
+  "wordId": 1176,
+  "word": "Qualify",
+  "contrastWord": "quantify",
+  "contrastGloss": "express or measure something as a numerical amount",
+  "confusionType": "paronym",
+  "confidence": 0.91
+ },
+ {
+  "wordId": 1177,
+  "word": "Rigorous",
+  "contrastWord": "vigorous",
+  "contrastGloss": "energetic and forceful rather than strictly thorough",
+  "confusionType": "paronym",
+  "confidence": 0.96
+ },
+ {
+  "wordId": 1178,
+  "word": "Sagacious",
+  "contrastWord": "salacious",
+  "contrastGloss": "showing an improper interest in sexual matters",
+  "confusionType": "paronym",
+  "confidence": 0.96
+ },
+ {
+  "wordId": 1179,
+  "word": "Scrupulous",
+  "contrastWord": "meticulous",
+  "contrastGloss": "exact about details without implying moral integrity",
+  "confusionType": "overlapping",
+  "confidence": 0.88
+ },
+ {
+  "wordId": 1180,
+  "word": "Debauchery",
+  "contrastWord": "decadence",
+  "contrastGloss": "luxurious self-indulgence associated with moral or cultural decline",
+  "confusionType": "overlapping",
+  "confidence": 0.79
+ },
+ {
+  "wordId": 1182,
+  "word": "Depravity",
+  "contrastWord": "deprivation",
+  "contrastGloss": "lack of necessities, not extreme moral corruption",
+  "confusionType": "paronym",
+  "confidence": 0.97
+ },
+ {
+  "wordId": 1183,
+  "word": "Dissipate",
+  "contrastWord": "disseminate",
+  "contrastGloss": "spread information widely rather than waste resources gradually",
+  "confusionType": "paronym",
+  "confidence": 0.71
+ },
+ {
+  "wordId": 1184,
+  "word": "Illicit",
+  "contrastWord": "elicit",
+  "contrastGloss": "draw out a response, answer, or reaction",
+  "confusionType": "paronym",
+  "confidence": 0.99
+ },
+ {
+  "wordId": 1185,
+  "word": "Malfeasance",
+  "contrastWord": "malpractice",
+  "contrastGloss": "improper professional conduct, especially through negligence",
+  "confusionType": "overlapping",
+  "confidence": 0.83
+ },
+ {
+  "wordId": 1186,
+  "word": "Nefarious",
+  "contrastWord": "notorious",
+  "contrastGloss": "widely known for something bad, not inherently wicked",
+  "confusionType": "overlapping",
+  "confidence": 0.87
+ },
+ {
+  "wordId": 1187,
+  "word": "Perfidy",
+  "contrastWord": "perjury",
+  "contrastGloss": "lying under oath rather than betraying someone's trust",
+  "confusionType": "paronym",
+  "confidence": 0.81
+ },
+ {
+  "wordId": 1188,
+  "word": "Profligate",
+  "contrastWord": "prolific",
+  "contrastGloss": "producing many works, results, or offspring",
+  "confusionType": "paronym",
+  "confidence": 0.98
+ },
+ {
+  "wordId": 1189,
+  "word": "Absolve",
+  "contrastWord": "acquit",
+  "contrastGloss": "declare someone not guilty of a criminal charge",
+  "confusionType": "overlapping",
+  "confidence": 0.88
+ },
+ {
+  "wordId": 1190,
+  "word": "Alleviate",
+  "contrastWord": "eliminate",
+  "contrastGloss": "remove something entirely rather than merely lessen it",
+  "confusionType": "misuse",
+  "confidence": 0.94
+ },
+ {
+  "wordId": 1191,
+  "word": "Clemency",
+  "contrastWord": "amnesty",
+  "contrastGloss": "officially pardon a group for specified offences",
+  "confusionType": "overlapping",
+  "confidence": 0.84
+ },
+ {
+  "wordId": 1192,
+  "word": "Condone",
+  "contrastWord": "condemn",
+  "contrastGloss": "express strong disapproval of wrongdoing",
+  "confusionType": "paronym",
+  "confidence": 0.98
+ },
+ {
+  "wordId": 1193,
+  "word": "Contrite",
+  "contrastWord": "trite",
+  "contrastGloss": "overused and therefore lacking freshness or impact",
+  "confusionType": "paronym",
+  "confidence": 0.92
+ },
+ {
+  "wordId": 1194,
+  "word": "Indulgent",
+  "contrastWord": "lenient",
+  "contrastGloss": "less severe in punishment without implying overindulgence",
+  "confusionType": "overlapping",
+  "confidence": 0.82
+ },
+ {
+  "wordId": 1197,
+  "word": "Reparation",
+  "contrastWord": "restitution",
+  "contrastGloss": "restore or repay what was wrongfully taken",
+  "confusionType": "overlapping",
+  "confidence": 0.87
+ },
+ {
+  "wordId": 1198,
+  "word": "Respite",
+  "contrastWord": "reprieve",
+  "contrastGloss": "delay or cancel a punishment, especially execution",
+  "confusionType": "overlapping",
+  "confidence": 0.91
+ },
+ {
+  "wordId": 1199,
+  "word": "Transgress",
+  "contrastWord": "trespass",
+  "contrastGloss": "enter another person's property without permission",
+  "confusionType": "overlapping",
+  "confidence": 0.75
+ },
+ {
+  "wordId": 1200,
+  "word": "Unconscionable",
+  "contrastWord": "unconscious",
+  "contrastGloss": "not awake or aware of one's surroundings",
+  "confusionType": "paronym",
+  "confidence": 0.96
+ },
+ {
+  "wordId": 1201,
+  "word": "Admonish",
+  "contrastWord": "reprimand",
+  "contrastGloss": "formally express disapproval after misconduct",
+  "confusionType": "overlapping",
+  "confidence": 0.86
+ },
+ {
+  "wordId": 1202,
+  "word": "Censure",
+  "contrastWord": "censor",
+  "contrastGloss": "suppress material judged objectionable",
+  "confusionType": "paronym",
+  "confidence": 0.99
+ },
+ {
+  "wordId": 1203,
+  "word": "Chastise",
+  "contrastWord": "chasten",
+  "contrastGloss": "make someone humbler through correction or suffering",
+  "confusionType": "paronym",
+  "confidence": 0.88
+ },
+ {
+  "wordId": 1204,
+  "word": "Flout",
+  "contrastWord": "flaunt",
+  "contrastGloss": "display something conspicuously to attract attention",
+  "confusionType": "paronym",
+  "confidence": 0.99
+ },
+ {
+  "wordId": 1205,
+  "word": "Injunction",
+  "contrastWord": "indictment",
+  "contrastGloss": "formal accusation that someone committed a crime",
+  "confusionType": "overlapping",
+  "confidence": 0.81
+ },
+ {
+  "wordId": 1206,
+  "word": "Rebuke",
+  "contrastWord": "rebut",
+  "contrastGloss": "argue that a claim or accusation is false",
+  "confusionType": "paronym",
+  "confidence": 0.91
+ },
+ {
+  "wordId": 1207,
+  "word": "Reproach",
+  "contrastWord": "reprove",
+  "contrastGloss": "directly scold someone for improper conduct",
+  "confusionType": "overlapping",
+  "confidence": 0.78
+ },
+ {
+  "wordId": 1208,
+  "word": "Stricture",
+  "contrastWord": "structure",
+  "contrastGloss": "the arrangement or framework of connected parts",
+  "confusionType": "paronym",
+  "confidence": 0.94
+ },
+ {
+  "wordId": 1209,
+  "word": "Benign",
+  "contrastWord": "benevolent",
+  "contrastGloss": "actively kind and motivated to help others",
+  "confusionType": "overlapping",
+  "confidence": 0.91
+ },
+ {
+  "wordId": 1210,
+  "word": "Civil",
+  "contrastWord": "civic",
+  "contrastGloss": "relating to a city or its citizens",
+  "confusionType": "paronym",
+  "confidence": 0.95
+ },
+ {
+  "wordId": 1211,
+  "word": "Decorous",
+  "contrastWord": "decorative",
+  "contrastGloss": "intended to make something look more attractive",
+  "confusionType": "paronym",
+  "confidence": 0.92
+ },
+ {
+  "wordId": 1212,
+  "word": "Impeccable",
+  "contrastWord": "immaculate",
+  "contrastGloss": "perfectly clean, neat, or free from blemishes",
+  "confusionType": "overlapping",
+  "confidence": 0.86
+ },
+ {
+  "wordId": 1213,
+  "word": "Innocuous",
+  "contrastWord": "innocent",
+  "contrastGloss": "not guilty or lacking harmful intent",
+  "confusionType": "overlapping",
+  "confidence": 0.94
+ },
+ {
+  "wordId": 1214,
+  "word": "Magnanimous",
+  "contrastWord": "magnificent",
+  "contrastGloss": "exceptionally splendid, impressive, or beautiful",
+  "confusionType": "paronym",
+  "confidence": 0.94
+ },
+ {
+  "wordId": 1215,
+  "word": "Pristine",
+  "contrastWord": "immaculate",
+  "contrastGloss": "spotlessly clean without necessarily being untouched",
+  "confusionType": "overlapping",
+  "confidence": 0.9
+ },
+ {
+  "wordId": 1216,
+  "word": "Salutary",
+  "contrastWord": "salubrious",
+  "contrastGloss": "health-giving or pleasantly wholesome",
+  "confusionType": "paronym",
+  "confidence": 0.93
+ },
+ {
+  "wordId": 1217,
+  "word": "Sublime",
+  "contrastWord": "subliminal",
+  "contrastGloss": "presented below the level of conscious awareness",
+  "confusionType": "paronym",
+  "confidence": 0.95
+ },
+ {
+  "wordId": 1218,
+  "word": "Adamant",
+  "contrastWord": "obstinate",
+  "contrastGloss": "stubbornly resistant despite reason or persuasion",
+  "confusionType": "overlapping",
+  "confidence": 0.84
+ },
+ {
+  "wordId": 1219,
+  "word": "Incorrigible",
+  "contrastWord": "incorruptible",
+  "contrastGloss": "unable to be bribed or morally compromised",
+  "confusionType": "paronym",
+  "confidence": 0.9
+ },
+ {
+  "wordId": 1220,
+  "word": "Intransigent",
+  "contrastWord": "intransitive",
+  "contrastGloss": "describing a verb that takes no direct object",
+  "confusionType": "paronym",
+  "confidence": 0.93
+ },
+ {
+  "wordId": 1221,
+  "word": "Inveterate",
+  "contrastWord": "invertebrate",
+  "contrastGloss": "an animal that lacks a backbone",
+  "confusionType": "paronym",
+  "confidence": 0.97
+ },
+ {
+  "wordId": 1222,
+  "word": "Relentless",
+  "contrastWord": "restless",
+  "contrastGloss": "unable to relax, remain still, or feel settled",
+  "confusionType": "paronym",
+  "confidence": 0.93
+ },
+ {
+  "wordId": 1223,
+  "word": "Resolute",
+  "contrastWord": "resilient",
+  "contrastGloss": "able to recover quickly after difficulty or damage",
+  "confusionType": "overlapping",
+  "confidence": 0.88
+ },
+ {
+  "wordId": 1224,
+  "word": "Robust",
+  "contrastWord": "resilient",
+  "contrastGloss": "able to recover after strain rather than resist it",
+  "confusionType": "overlapping",
+  "confidence": 0.9
+ },
+ {
+  "wordId": 1225,
+  "word": "Staunch",
+  "contrastWord": "stanch",
+  "contrastGloss": "stop the flow of something, especially blood",
+  "confusionType": "paronym",
+  "confidence": 0.96
+ },
+ {
+  "wordId": 1226,
+  "word": "Tenacious",
+  "contrastWord": "tenuous",
+  "contrastGloss": "weak, slight, or lacking convincing substance",
+  "confusionType": "paronym",
+  "confidence": 0.98
+ },
+ {
+  "wordId": 1227,
+  "word": "Audacity",
+  "contrastWord": "courage",
+  "contrastGloss": "readiness to face danger despite fear",
+  "confusionType": "overlapping",
+  "confidence": 0.83
+ },
+ {
+  "wordId": 1228,
+  "word": "Disdain",
+  "contrastWord": "disgust",
+  "contrastGloss": "strong revulsion rather than a sense of superiority",
+  "confusionType": "overlapping",
+  "confidence": 0.91
+ },
+ {
+  "wordId": 1229,
+  "word": "Egocentric",
+  "contrastWord": "egotistical",
+  "contrastGloss": "convinced of one's importance and inclined to boast",
+  "confusionType": "overlapping",
+  "confidence": 0.88
+ },
+ {
+  "wordId": 1230,
+  "word": "Narcissism",
+  "contrastWord": "vanity",
+  "contrastGloss": "excessive pride, especially in appearance or achievements",
+  "confusionType": "overlapping",
+  "confidence": 0.88
+ },
+ {
+  "wordId": 1231,
+  "word": "Prepossess",
+  "contrastWord": "predispose",
+  "contrastGloss": "make someone inclined or susceptible beforehand",
+  "confusionType": "paronym",
+  "confidence": 0.82
+ },
+ {
+  "wordId": 1232,
+  "word": "Querulous",
+  "contrastWord": "quarrelsome",
+  "contrastGloss": "inclined to argue or pick fights rather than complain",
+  "confusionType": "overlapping",
+  "confidence": 0.86
+ },
+ {
+  "wordId": 1233,
+  "word": "Sardonic",
+  "contrastWord": "sarcastic",
+  "contrastGloss": "using cutting irony without necessarily expressing cynical scorn",
+  "confusionType": "overlapping",
+  "confidence": 0.93
+ },
+ {
+  "wordId": 1234,
+  "word": "Supercilious",
+  "contrastWord": "condescending",
+  "contrastGloss": "patronizing others as less knowledgeable or capable",
+  "confusionType": "overlapping",
+  "confidence": 0.91
+ },
+ {
+  "wordId": 1235,
+  "word": "Temerity",
+  "contrastWord": "timidity",
+  "contrastGloss": "lack of courage or confidence when facing risk",
+  "confusionType": "paronym",
+  "confidence": 0.97
+ },
+ {
+  "wordId": 1236,
+  "word": "Alacrity",
+  "contrastWord": "agility",
+  "contrastGloss": "ability to move quickly and nimbly",
+  "confusionType": "paronym",
+  "confidence": 0.91
+ },
+ {
+  "wordId": 1237,
+  "word": "Ardent",
+  "contrastWord": "arduous",
+  "contrastGloss": "requiring great effort because something is difficult",
+  "confusionType": "paronym",
+  "confidence": 0.95
+ },
+ {
+  "wordId": 1238,
+  "word": "Capricious",
+  "contrastWord": "mercurial",
+  "contrastGloss": "changing rapidly, especially in mood or behavior",
+  "confusionType": "overlapping",
+  "confidence": 0.8
+ },
+ {
+  "wordId": 1241,
+  "word": "Frenetic",
+  "contrastWord": "frantic",
+  "contrastGloss": "panicked and urgently rushed rather than merely high-speed",
+  "confusionType": "overlapping",
+  "confidence": 0.9
+ },
+ {
+  "wordId": 1242,
+  "word": "Impetuous",
+  "contrastWord": "imperious",
+  "contrastGloss": "arrogantly commanding and expecting immediate obedience",
+  "confusionType": "paronym",
+  "confidence": 0.89
+ },
+ {
+  "wordId": 1243,
+  "word": "Irascible",
+  "contrastWord": "irritable",
+  "contrastGloss": "easily annoyed without necessarily flaring into anger",
+  "confusionType": "overlapping",
+  "confidence": 0.86
+ },
+ {
+  "wordId": 1244,
+  "word": "Mercurial",
+  "contrastWord": "capricious",
+  "contrastGloss": "changing on a whim without a clear reason",
+  "confusionType": "overlapping",
+  "confidence": 0.83
+ },
+ {
+  "wordId": 1245,
+  "word": "Petulant",
+  "contrastWord": "peevish",
+  "contrastGloss": "habitually irritable and complaining rather than childishly sulky",
+  "confusionType": "overlapping",
+  "confidence": 0.88
+ },
+ {
+  "wordId": 1246,
+  "word": "Aloof",
+  "contrastWord": "shy",
+  "contrastGloss": "socially hesitant from nervousness or low confidence",
+  "confusionType": "overlapping",
+  "confidence": 0.95
+ },
+ {
+  "wordId": 1247,
+  "word": "Antipathy",
+  "contrastWord": "apathy",
+  "contrastGloss": "absence of interest or feeling, not active dislike",
+  "confusionType": "paronym",
+  "confidence": 0.99
+ },
+ {
+  "wordId": 1248,
+  "word": "Diffident",
+  "contrastWord": "indifferent",
+  "contrastGloss": "unconcerned or uninterested rather than lacking confidence",
+  "confusionType": "paronym",
+  "confidence": 0.97
+ },
+ {
+  "wordId": 1249,
+  "word": "Equanimity",
+  "contrastWord": "unanimity",
+  "contrastGloss": "complete agreement among everyone in a group",
+  "confusionType": "paronym",
+  "confidence": 0.9
+ },
+ {
+  "wordId": 1250,
+  "word": "Indifferent",
+  "contrastWord": "disinterested",
+  "contrastGloss": "impartial because no personal stake influences judgment",
+  "confusionType": "misuse",
+  "confidence": 0.99
+ },
+ {
+  "wordId": 1252,
+  "word": "Reclusive",
+  "contrastWord": "exclusive",
+  "contrastGloss": "restricted to a select group rather than solitary",
+  "confusionType": "paronym",
+  "confidence": 0.93
+ },
+ {
+  "wordId": 1253,
+  "word": "Reticent",
+  "contrastWord": "reluctant",
+  "contrastGloss": "unwilling to act, not specifically unwilling to speak",
+  "confusionType": "misuse",
+  "confidence": 0.98
+ },
+ {
+  "wordId": 1254,
+  "word": "Stoic",
+  "contrastWord": "stolid",
+  "contrastGloss": "naturally unemotional and not easily stirred",
+  "confusionType": "overlapping",
+  "confidence": 0.88
+ },
+ {
+  "wordId": 1255,
+  "word": "Tacit",
+  "contrastWord": "taciturn",
+  "contrastGloss": "habitually speaking very little by nature",
+  "confusionType": "paronym",
+  "confidence": 0.99
+ },
+ {
+  "wordId": 1256,
+  "word": "Taciturn",
+  "contrastWord": "tacit",
+  "contrastGloss": "implied or understood without being spoken",
+  "confusionType": "paronym",
+  "confidence": 0.99
+ },
+ {
+  "wordId": 1257,
+  "word": "Affable",
+  "contrastWord": "amiable",
+  "contrastGloss": "generally good-natured and pleasant beyond conversational approachability",
+  "confusionType": "overlapping",
+  "confidence": 0.86
+ },
+ {
+  "wordId": 1258,
+  "word": "Amiable",
+  "contrastWord": "amicable",
+  "contrastGloss": "friendly and peaceful, usually describing relations or settlements",
+  "confusionType": "paronym",
+  "confidence": 0.99
+ },
+ {
+  "wordId": 1259,
+  "word": "Assiduous",
+  "contrastWord": "arduous",
+  "contrastGloss": "difficult and exhausting rather than persistently diligent",
+  "confusionType": "paronym",
+  "confidence": 0.86
+ },
+ {
+  "wordId": 1260,
+  "word": "Avuncular",
+  "contrastWord": "paternal",
+  "contrastGloss": "fatherly, especially protective, guiding, or authoritative",
+  "confusionType": "overlapping",
+  "confidence": 0.88
+ },
+ {
+  "wordId": 1261,
+  "word": "Charisma",
+  "contrastWord": "charm",
+  "contrastGloss": "a pleasing quality that delights rather than inspires followers",
+  "confusionType": "overlapping",
+  "confidence": 0.84
+ },
+ {
+  "wordId": 1262,
+  "word": "Congenial",
+  "contrastWord": "congenital",
+  "contrastGloss": "present from birth, especially as an inherited condition",
+  "confusionType": "paronym",
+  "confidence": 0.99
+ },
+ {
+  "wordId": 1264,
+  "word": "Convivial",
+  "contrastWord": "congenial",
+  "contrastGloss": "pleasant and compatible without implying lively sociability",
+  "confusionType": "overlapping",
+  "confidence": 0.86
+ },
+ {
+  "wordId": 1265,
+  "word": "Emulate",
+  "contrastWord": "imitate",
+  "contrastGloss": "copy another's behavior without necessarily trying to equal them",
+  "confusionType": "overlapping",
+  "confidence": 0.98
+ },
+ {
+  "wordId": 1266,
+  "word": "Fraternal",
+  "contrastWord": "paternal",
+  "contrastGloss": "relating to fathers rather than brothers",
+  "confusionType": "paronym",
+  "confidence": 0.99
+ },
+ {
+  "wordId": 1267,
+  "word": "Gregarious",
+  "contrastWord": "gracious",
+  "contrastGloss": "courteous, kind, and pleasantly considerate toward others",
+  "confusionType": "paronym",
+  "confidence": 0.9
+ },
+ {
+  "wordId": 1268,
+  "word": "Urbane",
+  "contrastWord": "urban",
+  "contrastGloss": "relating to cities or life in a city",
+  "confusionType": "paronym",
+  "confidence": 0.99
+ },
+ {
+  "wordId": 1269,
+  "word": "Affinity",
+  "contrastWord": "affiliation",
+  "contrastGloss": "a formal association with a group or organization",
+  "confusionType": "overlapping",
+  "confidence": 0.86
+ },
+ {
+  "wordId": 1270,
+  "word": "Assimilate",
+  "contrastWord": "integrate",
+  "contrastGloss": "join a society while retaining a distinct cultural identity",
+  "confusionType": "overlapping",
+  "confidence": 0.95
+ },
+ {
+  "wordId": 1272,
+  "word": "Cosmopolitan",
+  "contrastWord": "metropolitan",
+  "contrastGloss": "relating to a large city or its surrounding area",
+  "confusionType": "overlapping",
+  "confidence": 0.88
+ },
+ {
+  "wordId": 1273,
+  "word": "Emigrate",
+  "contrastWord": "immigrate",
+  "contrastGloss": "enter a foreign country in order to settle there",
+  "confusionType": "paronym",
+  "confidence": 0.99
+ },
+ {
+  "wordId": 1274,
+  "word": "Expatriate",
+  "contrastWord": "emigrant",
+  "contrastGloss": "person viewed as leaving their country to settle elsewhere",
+  "confusionType": "overlapping",
+  "confidence": 0.9
+ },
+ {
+  "wordId": 1275,
+  "word": "Extrovert",
+  "contrastWord": "socialite",
+  "contrastGloss": "person prominent in fashionable society, regardless of temperament",
+  "confusionType": "overlapping",
+  "confidence": 0.76
+ },
+ {
+  "wordId": 1276,
+  "word": "Immigrate",
+  "contrastWord": "emigrate",
+  "contrastGloss": "leave one's home country in order to settle abroad",
+  "confusionType": "paronym",
+  "confidence": 0.99
+ },
+ {
+  "wordId": 1277,
+  "word": "Acumen",
+  "contrastWord": "aptitude",
+  "contrastGloss": "natural capacity to learn or perform a particular skill",
+  "confusionType": "overlapping",
+  "confidence": 0.85
+ },
+ {
+  "wordId": 1278,
+  "word": "Acute",
+  "contrastWord": "astute",
+  "contrastGloss": "practically shrewd, especially in using situations advantageously",
+  "confusionType": "paronym",
+  "confidence": 0.86
+ },
+ {
+  "wordId": 1279,
+  "word": "Adroit",
+  "contrastWord": "adept",
+  "contrastGloss": "highly skilled in a particular activity or field",
+  "confusionType": "overlapping",
+  "confidence": 0.78
+ },
+ {
+  "wordId": 1280,
+  "word": "Aptitude",
+  "contrastWord": "attitude",
+  "contrastGloss": "a settled outlook or manner toward someone or something",
+  "confusionType": "paronym",
+  "confidence": 0.98
+ },
+ {
+  "wordId": 1281,
+  "word": "Astute",
+  "contrastWord": "acute",
+  "contrastGloss": "sharply perceptive without necessarily implying practical advantage",
+  "confusionType": "paronym",
+  "confidence": 0.86
+ },
+ {
+  "wordId": 1283,
+  "word": "Dexterous",
+  "contrastWord": "ambidextrous",
+  "contrastGloss": "equally capable with both the right and left hands",
+  "confusionType": "overlapping",
+  "confidence": 0.94
+ },
+ {
+  "wordId": 1284,
+  "word": "Erudite",
+  "contrastWord": "articulate",
+  "contrastGloss": "able to express ideas clearly and effectively",
+  "confusionType": "overlapping",
+  "confidence": 0.8
+ },
+ {
+  "wordId": 1285,
+  "word": "Incisive",
+  "contrastWord": "decisive",
+  "contrastGloss": "able to make choices quickly and firmly",
+  "confusionType": "paronym",
+  "confidence": 0.94
+ },
+ {
+  "wordId": 1286,
+  "word": "Proficient",
+  "contrastWord": "efficient",
+  "contrastGloss": "working well with minimal waste of time or resources",
+  "confusionType": "overlapping",
+  "confidence": 0.9
+ },
+ {
+  "wordId": 1287,
+  "word": "Callow",
+  "contrastWord": "callous",
+  "contrastGloss": "emotionally insensitive and unconcerned about others' suffering",
+  "confusionType": "paronym",
+  "confidence": 0.97
+ },
+ {
+  "wordId": 1288,
+  "word": "Cursory",
+  "contrastWord": "perfunctory",
+  "contrastGloss": "done as a formality with little care or interest",
+  "confusionType": "overlapping",
+  "confidence": 0.93
+ },
+ {
+  "wordId": 1289,
+  "word": "Dilettante",
+  "contrastWord": "amateur",
+  "contrastGloss": "nonprofessional participant who may still be serious or skilled",
+  "confusionType": "overlapping",
+  "confidence": 0.94
+ },
+ {
+  "wordId": 1290,
+  "word": "Facile",
+  "contrastWord": "simplistic",
+  "contrastGloss": "making something misleadingly simple by ignoring complexity",
+  "confusionType": "overlapping",
+  "confidence": 0.73
+ },
+ {
+  "wordId": 1291,
+  "word": "Gauche",
+  "contrastWord": "gaudy",
+  "contrastGloss": "excessively bright, showy, or ornamented in appearance",
+  "confusionType": "paronym",
+  "confidence": 0.92
+ },
+ {
+  "wordId": 1292,
+  "word": "Grandiloquent",
+  "contrastWord": "eloquent",
+  "contrastGloss": "fluent and persuasive without necessarily being pompous",
+  "confusionType": "overlapping",
+  "confidence": 0.92
+ },
+ {
+  "wordId": 1293,
+  "word": "Gratuitous",
+  "contrastWord": "grateful",
+  "contrastGloss": "feeling or showing thanks for a benefit received",
+  "confusionType": "paronym",
+  "confidence": 0.83
+ },
+ {
+  "wordId": 1294,
+  "word": "Inept",
+  "contrastWord": "inapt",
+  "contrastGloss": "unsuitable or inappropriate rather than lacking skill",
+  "confusionType": "paronym",
+  "confidence": 0.97
+ },
+ {
+  "wordId": 1295,
+  "word": "Pedantic",
+  "contrastWord": "pedagogical",
+  "contrastGloss": "relating to teaching methods or educational practice",
+  "confusionType": "paronym",
+  "confidence": 0.84
+ },
+ {
+  "wordId": 1296,
+  "word": "Perfunctory",
+  "contrastWord": "cursory",
+  "contrastGloss": "hasty and insufficiently detailed, especially an examination",
+  "confusionType": "overlapping",
+  "confidence": 0.93
+ },
+ {
+  "wordId": 1298,
+  "word": "Superficial",
+  "contrastWord": "superfluous",
+  "contrastGloss": "unnecessary because more than what is needed",
+  "confusionType": "paronym",
+  "confidence": 0.97
+ },
+ {
+  "wordId": 1299,
+  "word": "Anguish",
+  "contrastWord": "anxiety",
+  "contrastGloss": "unease or worry, often about future uncertainty",
+  "confusionType": "overlapping",
+  "confidence": 0.91
+ },
+ {
+  "wordId": 1300,
+  "word": "Apprehensive",
+  "contrastWord": "comprehensive",
+  "contrastGloss": "covering all or nearly all relevant elements",
+  "confusionType": "paronym",
+  "confidence": 0.86
+ },
+ {
+  "wordId": 1301,
+  "word": "Bereaved",
+  "contrastWord": "bereft",
+  "contrastGloss": "deprived of something valued, not necessarily through death",
+  "confusionType": "overlapping",
+  "confidence": 0.95
+ },
+ {
+  "wordId": 1302,
+  "word": "Beset",
+  "contrastWord": "besieged",
+  "contrastGloss": "surrounded by attack or overwhelmed by persistent demands",
+  "confusionType": "overlapping",
+  "confidence": 0.81
+ },
+ {
+  "wordId": 1303,
+  "word": "Daunt",
+  "contrastWord": "deter",
+  "contrastGloss": "discourage someone enough to prevent a particular action",
+  "confusionType": "overlapping",
+  "confidence": 0.89
+ },
+ {
+  "wordId": 1304,
+  "word": "Despondent",
+  "contrastWord": "depressed",
+  "contrastGloss": "experiencing low mood, sometimes as a clinical condition",
+  "confusionType": "overlapping",
+  "confidence": 0.9
+ },
+ {
+  "wordId": 1305,
+  "word": "Lament",
+  "contrastWord": "repent",
+  "contrastGloss": "feel sincere remorse for one's own wrongdoing",
+  "confusionType": "overlapping",
+  "confidence": 0.82
+ },
+ {
+  "wordId": 1306,
+  "word": "Lugubrious",
+  "contrastWord": "luxurious",
+  "contrastGloss": "extremely comfortable, elegant, or expensive",
+  "confusionType": "paronym",
+  "confidence": 0.93
+ },
+ {
+  "wordId": 1307,
+  "word": "Morose",
+  "contrastWord": "morbid",
+  "contrastGloss": "unhealthily focused on death or disturbing subjects",
+  "confusionType": "paronym",
+  "confidence": 0.92
+ },
+ {
+  "wordId": 1309,
+  "word": "Plaintive",
+  "contrastWord": "plaintiff",
+  "contrastGloss": "person who brings a civil case to court",
+  "confusionType": "paronym",
+  "confidence": 0.82
+ },
+ {
+  "wordId": 1311,
+  "word": "Auspicious",
+  "contrastWord": "suspicious",
+  "contrastGloss": "inclined to distrust or suggestive of wrongdoing",
+  "confusionType": "paronym",
+  "confidence": 0.93
+ },
+ {
+  "wordId": 1312,
+  "word": "Blithe",
+  "contrastWord": "blasé",
+  "contrastGloss": "unimpressed or unconcerned through overfamiliarity",
+  "confusionType": "overlapping",
+  "confidence": 0.76
+ },
+ {
+  "wordId": 1314,
+  "word": "Exult",
+  "contrastWord": "exalt",
+  "contrastGloss": "praise highly or raise in status",
+  "confusionType": "paronym",
+  "confidence": 0.96
+ },
+ {
+  "wordId": 1315,
+  "word": "Felicity",
+  "contrastWord": "facility",
+  "contrastGloss": "ability or place designed for a particular purpose",
+  "confusionType": "paronym",
+  "confidence": 0.9
+ },
+ {
+  "wordId": 1317,
+  "word": "Levity",
+  "contrastWord": "frivolity",
+  "contrastGloss": "trivial behavior showing an inappropriate lack of seriousness",
+  "confusionType": "overlapping",
+  "confidence": 0.83
+ },
+ {
+  "wordId": 1318,
+  "word": "Propitious",
+  "contrastWord": "prosperous",
+  "contrastGloss": "financially successful or flourishing rather than merely favorable",
+  "confusionType": "paronym",
+  "confidence": 0.9
+ },
+ {
+  "wordId": 1320,
+  "word": "Serendipity",
+  "contrastWord": "coincidence",
+  "contrastGloss": "unexpected concurrence that need not produce anything beneficial",
+  "confusionType": "overlapping",
+  "confidence": 0.94
+ },
+ {
+  "wordId": 1321,
+  "word": "Abhor",
+  "contrastWord": "abjure",
+  "contrastGloss": "formally renounce a belief, claim, or practice",
+  "confusionType": "paronym",
+  "confidence": 0.88
+ },
+ {
+  "wordId": 1322,
+  "word": "Acrid",
+  "contrastWord": "acidic",
+  "contrastGloss": "containing acid or having a distinctly sour quality",
+  "confusionType": "paronym",
+  "confidence": 0.87
+ },
+ {
+  "wordId": 1323,
+  "word": "Animosity",
+  "contrastWord": "anonymity",
+  "contrastGloss": "state of having an unknown or concealed identity",
+  "confusionType": "paronym",
+  "confidence": 0.8
+ },
+ {
+  "wordId": 1324,
+  "word": "Beleaguer",
+  "contrastWord": "belabour",
+  "contrastGloss": "criticize repeatedly or explain something to excess",
+  "confusionType": "paronym",
+  "confidence": 0.88
+ },
+ {
+  "wordId": 1326,
+  "word": "Insolent",
+  "contrastWord": "indolent",
+  "contrastGloss": "habitually lazy and unwilling to make an effort",
+  "confusionType": "paronym",
+  "confidence": 0.98
+ },
+ {
+  "wordId": 1327,
+  "word": "Rancour",
+  "contrastWord": "rancid",
+  "contrastGloss": "spoiled and unpleasant in smell or taste",
+  "confusionType": "paronym",
+  "confidence": 0.67
+ },
+ {
+  "wordId": 1328,
+  "word": "Reprisal",
+  "contrastWord": "reprieve",
+  "contrastGloss": "temporary cancellation or postponement of punishment",
+  "confusionType": "paronym",
+  "confidence": 0.91
+ },
+ {
+  "wordId": 1329,
+  "word": "Strife",
+  "contrastWord": "strive",
+  "contrastGloss": "make a determined effort to achieve something",
+  "confusionType": "paronym",
+  "confidence": 0.92
+ },
+ {
+  "wordId": 1330,
+  "word": "Apathy",
+  "contrastWord": "antipathy",
+  "contrastGloss": "strong instinctive dislike toward someone or something",
+  "confusionType": "paronym",
+  "confidence": 0.95
+ },
+ {
+  "wordId": 1331,
+  "word": "Complacent",
+  "contrastWord": "compliant",
+  "contrastGloss": "willing to obey rules, demands, or authority",
+  "confusionType": "paronym",
+  "confidence": 0.96
+ },
+ {
+  "wordId": 1332,
+  "word": "Enervate",
+  "contrastWord": "energize",
+  "contrastGloss": "give greater energy, strength, or enthusiasm",
+  "confusionType": "misuse",
+  "confidence": 0.95
+ },
+ {
+  "wordId": 1333,
+  "word": "Indolent",
+  "contrastWord": "insolent",
+  "contrastGloss": "boldly rude or disrespectful toward someone",
+  "confusionType": "paronym",
+  "confidence": 0.98
+ },
+ {
+  "wordId": 1335,
+  "word": "Languish",
+  "contrastWord": "languid",
+  "contrastGloss": "lacking energy or moving in a relaxed slow manner",
+  "confusionType": "overlapping",
+  "confidence": 0.73
+ },
+ {
+  "wordId": 1337,
+  "word": "Lethargy",
+  "contrastWord": "apathy",
+  "contrastGloss": "lack of interest or feeling rather than energy",
+  "confusionType": "overlapping",
+  "confidence": 0.91
+ },
+ {
+  "wordId": 1339,
+  "word": "Conventional",
+  "contrastWord": "traditional",
+  "contrastGloss": "handed down through long-established customs or beliefs",
+  "confusionType": "overlapping",
+  "confidence": 0.9
+ },
+ {
+  "wordId": 1340,
+  "word": "Desultory",
+  "contrastWord": "cursory",
+  "contrastGloss": "hasty and superficial rather than aimlessly disconnected",
+  "confusionType": "overlapping",
+  "confidence": 0.85
+ },
+ {
+  "wordId": 1341,
+  "word": "Dormant",
+  "contrastWord": "latent",
+  "contrastGloss": "present but hidden or not yet developed",
+  "confusionType": "overlapping",
+  "confidence": 0.91
+ },
+ {
+  "wordId": 1342,
+  "word": "Malaise",
+  "contrastWord": "ennui",
+  "contrastGloss": "weariness and dissatisfaction caused specifically by boredom",
+  "confusionType": "overlapping",
+  "confidence": 0.86
+ },
+ {
+  "wordId": 1343,
+  "word": "Oblivion",
+  "contrastWord": "oblivious",
+  "contrastGloss": "unaware of what is happening nearby",
+  "confusionType": "paronym",
+  "confidence": 0.89
+ },
+ {
+  "wordId": 1344,
+  "word": "Sloth",
+  "contrastWord": "lethargy",
+  "contrastGloss": "low energy rather than unwillingness to make effort",
+  "confusionType": "overlapping",
+  "confidence": 0.89
+ },
+ {
+  "wordId": 1345,
+  "word": "Soporific",
+  "contrastWord": "somnolent",
+  "contrastGloss": "feeling drowsy rather than causing drowsiness",
+  "confusionType": "overlapping",
+  "confidence": 0.87
+ },
+ {
+  "wordId": 1346,
+  "word": "Static",
+  "contrastWord": "stationary",
+  "contrastGloss": "not moving from a physical position",
+  "confusionType": "overlapping",
+  "confidence": 0.89
+ },
+ {
+  "wordId": 1347,
+  "word": "Torpor",
+  "contrastWord": "stupor",
+  "contrastGloss": "near-unconscious state of severely impaired awareness",
+  "confusionType": "overlapping",
+  "confidence": 0.9
+ },
+ {
+  "wordId": 1348,
+  "word": "Abash",
+  "contrastWord": "abase",
+  "contrastGloss": "degrade or lower someone in status or dignity",
+  "confusionType": "paronym",
+  "confidence": 0.95
+ },
+ {
+  "wordId": 1349,
+  "word": "Belittle",
+  "contrastWord": "berate",
+  "contrastGloss": "scold someone harshly for a fault",
+  "confusionType": "overlapping",
+  "confidence": 0.78
+ },
+ {
+  "wordId": 1350,
+  "word": "Bemused",
+  "contrastWord": "amused",
+  "contrastGloss": "entertained or made to laugh, not confused",
+  "confusionType": "misuse",
+  "confidence": 0.98
+ },
+ {
+  "wordId": 1351,
+  "word": "Catharsis",
+  "contrastWord": "closure",
+  "contrastGloss": "sense of resolution after a painful experience",
+  "confusionType": "overlapping",
+  "confidence": 0.73
+ },
+ {
+  "wordId": 1352,
+  "word": "Chagrin",
+  "contrastWord": "shame",
+  "contrastGloss": "painful self-condemnation over wrongdoing or personal failure",
+  "confusionType": "overlapping",
+  "confidence": 0.77
+ },
+ {
+  "wordId": 1353,
+  "word": "Deride",
+  "contrastWord": "decry",
+  "contrastGloss": "publicly condemn as wrong rather than mock contemptuously",
+  "confusionType": "paronym",
+  "confidence": 0.84
+ },
+ {
+  "wordId": 1354,
+  "word": "Disparage",
+  "contrastWord": "disparate",
+  "contrastGloss": "fundamentally different from one another",
+  "confusionType": "paronym",
+  "confidence": 0.94
+ },
+ {
+  "wordId": 1355,
+  "word": "Maudlin",
+  "contrastWord": "melancholy",
+  "contrastGloss": "deep, lingering sadness without excessive sentimentality",
+  "confusionType": "overlapping",
+  "confidence": 0.78
+ },
+ {
+  "wordId": 1356,
+  "word": "Mortify",
+  "contrastWord": "horrify",
+  "contrastGloss": "shock or disgust intensely rather than embarrass",
+  "confusionType": "misuse",
+  "confidence": 0.79
+ },
+ {
+  "wordId": 1357,
+  "word": "Nostalgia",
+  "contrastWord": "reminiscence",
+  "contrastGloss": "act or memory of recalling the past",
+  "confusionType": "overlapping",
+  "confidence": 0.83
+ },
+ {
+  "wordId": 1358,
+  "word": "Pensive",
+  "contrastWord": "apprehensive",
+  "contrastGloss": "anxious about what may happen next",
+  "confusionType": "paronym",
+  "confidence": 0.74
+ },
+ {
+  "wordId": 1359,
+  "word": "Poignant",
+  "contrastWord": "pungent",
+  "contrastGloss": "having a sharply strong smell or taste",
+  "confusionType": "paronym",
+  "confidence": 0.93
+ },
+ {
+  "wordId": 1360,
+  "word": "Eccentric",
+  "contrastWord": "eclectic",
+  "contrastGloss": "drawing ideas or styles from varied sources",
+  "confusionType": "paronym",
+  "confidence": 0.91
+ },
+ {
+  "wordId": 1361,
+  "word": "Foible",
+  "contrastWord": "idiosyncrasy",
+  "contrastGloss": "distinctive personal trait that need not be a weakness",
+  "confusionType": "overlapping",
+  "confidence": 0.86
+ },
+ {
+  "wordId": 1362,
+  "word": "Iconoclast",
+  "contrastWord": "maverick",
+  "contrastGloss": "independent-minded person who resists group conventions",
+  "confusionType": "overlapping",
+  "confidence": 0.84
+ },
+ {
+  "wordId": 1363,
+  "word": "Idiosyncrasy",
+  "contrastWord": "foible",
+  "contrastGloss": "minor personal weakness, not merely a distinctive trait",
+  "confusionType": "overlapping",
+  "confidence": 0.86
+ },
+ {
+  "wordId": 1364,
+  "word": "Itinerant",
+  "contrastWord": "nomadic",
+  "contrastGloss": "living by continual movement rather than occupational travel",
+  "confusionType": "overlapping",
+  "confidence": 0.88
+ },
+ {
+  "wordId": 1365,
+  "word": "Maverick",
+  "contrastWord": "iconoclast",
+  "contrastGloss": "person who actively attacks established beliefs or traditions",
+  "confusionType": "overlapping",
+  "confidence": 0.84
+ },
+ {
+  "wordId": 1366,
+  "word": "Peripatetic",
+  "contrastWord": "itinerant",
+  "contrastGloss": "traveling place to place, often for practical work",
+  "confusionType": "overlapping",
+  "confidence": 0.87
+ },
+ {
+  "wordId": 1367,
+  "word": "Predilection",
+  "contrastWord": "predisposition",
+  "contrastGloss": "inherent tendency or susceptibility, not a conscious liking",
+  "confusionType": "paronym",
+  "confidence": 0.91
+ },
+ {
+  "wordId": 1368,
+  "word": "Quixotic",
+  "contrastWord": "idealistic",
+  "contrastGloss": "guided by ideals without necessarily being impractical",
+  "confusionType": "overlapping",
+  "confidence": 0.9
+ },
+ {
+  "wordId": 1369,
+  "word": "Rogue",
+  "contrastWord": "rouge",
+  "contrastGloss": "red cosmetic powder used on the cheeks",
+  "confusionType": "paronym",
+  "confidence": 0.97
+ },
+ {
+  "wordId": 1370,
+  "word": "Singular",
+  "contrastWord": "single",
+  "contrastGloss": "consisting of only one person or thing",
+  "confusionType": "overlapping",
+  "confidence": 0.88
+ },
+ {
+  "wordId": 1371,
+  "word": "Amoral",
+  "contrastWord": "immoral",
+  "contrastGloss": "knowingly violating accepted standards of right and wrong",
+  "confusionType": "paronym",
+  "confidence": 0.99
+ },
+ {
+  "wordId": 1372,
+  "word": "Amoralism",
+  "contrastWord": "relativism",
+  "contrastGloss": "view that moral truth varies by culture or perspective",
+  "confusionType": "overlapping",
+  "confidence": 0.81
+ },
+ {
+  "wordId": 1373,
+  "word": "Amorous",
+  "contrastWord": "amorphous",
+  "contrastGloss": "lacking a definite shape, structure, or form",
+  "confusionType": "paronym",
+  "confidence": 0.93
+ },
+ {
+  "wordId": 1374,
+  "word": "Cynic",
+  "contrastWord": "skeptic",
+  "contrastGloss": "person who questions claims without assuming selfish motives",
+  "confusionType": "overlapping",
+  "confidence": 0.92
+ },
+ {
+  "wordId": 1375,
+  "word": "Existential",
+  "contrastWord": "essential",
+  "contrastGloss": "absolutely necessary rather than concerning life's meaning",
+  "confusionType": "paronym",
+  "confidence": 0.88
+ },
+ {
+  "wordId": 1376,
+  "word": "Fatalist",
+  "contrastWord": "determinist",
+  "contrastGloss": "person who believes events follow prior causes",
+  "confusionType": "overlapping",
+  "confidence": 0.83
+ },
+ {
+  "wordId": 1377,
+  "word": "Hedonism",
+  "contrastWord": "epicureanism",
+  "contrastGloss": "philosophy favoring moderate pleasure, friendship, and tranquility",
+  "confusionType": "overlapping",
+  "confidence": 0.76
+ },
+ {
+  "wordId": 1378,
+  "word": "Infatuated",
+  "contrastWord": "devoted",
+  "contrastGloss": "deeply loyal and committed beyond intense attraction",
+  "confusionType": "overlapping",
+  "confidence": 0.75
+ },
+ {
+  "wordId": 1379,
+  "word": "Misanthropic",
+  "contrastWord": "misogynistic",
+  "contrastGloss": "prejudiced against women rather than humanity in general",
+  "confusionType": "paronym",
+  "confidence": 0.94
+ },
+ {
+  "wordId": 1380,
+  "word": "Nihilism",
+  "contrastWord": "cynicism",
+  "contrastGloss": "distrust of people's motives without denying all meaning",
+  "confusionType": "overlapping",
+  "confidence": 0.92
+ },
+ {
+  "wordId": 1381,
+  "word": "Penchant",
+  "contrastWord": "propensity",
+  "contrastGloss": "natural tendency to act, not necessarily a liking",
+  "confusionType": "overlapping",
+  "confidence": 0.88
+ },
+ {
+  "wordId": 1382,
+  "word": "Propensity",
+  "contrastWord": "predilection",
+  "contrastGloss": "strong personal liking rather than an innate tendency",
+  "confusionType": "overlapping",
+  "confidence": 0.88
+ },
+ {
+  "wordId": 1383,
+  "word": "Antithesis",
+  "contrastWord": "antipathy",
+  "contrastGloss": "strong dislike or hostility rather than direct opposition",
+  "confusionType": "paronym",
+  "confidence": 0.89
+ },
+ {
+  "wordId": 1384,
+  "word": "Corollary",
+  "contrastWord": "correlation",
+  "contrastGloss": "statistical or conceptual association, not a logical consequence",
+  "confusionType": "paronym",
+  "confidence": 0.94
+ },
+ {
+  "wordId": 1385,
+  "word": "Corroborate",
+  "contrastWord": "collaborate",
+  "contrastGloss": "work jointly with others on a shared task",
+  "confusionType": "paronym",
+  "confidence": 0.98
+ },
+ {
+  "wordId": 1386,
+  "word": "Deduce",
+  "contrastWord": "induce",
+  "contrastGloss": "infer a general rule from particular observations",
+  "confusionType": "paronym",
+  "confidence": 0.86
+ },
+ {
+  "wordId": 1387,
+  "word": "Empirical",
+  "contrastWord": "experiential",
+  "contrastGloss": "derived from personal experience rather than systematic observation",
+  "confusionType": "overlapping",
+  "confidence": 0.79
+ },
+ {
+  "wordId": 1388,
+  "word": "Extrapolate",
+  "contrastWord": "interpolate",
+  "contrastGloss": "estimate within known data points, not beyond them",
+  "confusionType": "paronym",
+  "confidence": 0.98
+ },
+ {
+  "wordId": 1389,
+  "word": "Hypothetical",
+  "contrastWord": "theoretical",
+  "contrastGloss": "based on abstract principles rather than practical experience",
+  "confusionType": "overlapping",
+  "confidence": 0.82
+ },
+ {
+  "wordId": 1390,
+  "word": "Infer",
+  "contrastWord": "imply",
+  "contrastGloss": "suggest something indirectly rather than draw the conclusion",
+  "confusionType": "misuse",
+  "confidence": 0.99
+ },
+ {
+  "wordId": 1391,
+  "word": "Postulate",
+  "contrastWord": "hypothesize",
+  "contrastGloss": "propose a testable explanation for observed evidence",
+  "confusionType": "overlapping",
+  "confidence": 0.85
+ },
+ {
+  "wordId": 1392,
+  "word": "Premise",
+  "contrastWord": "hypothesis",
+  "contrastGloss": "a tentative explanation intended to be tested",
+  "confusionType": "overlapping",
+  "confidence": 0.82
+ },
+ {
+  "wordId": 1393,
+  "word": "Synthesis",
+  "contrastWord": "synopsis",
+  "contrastGloss": "a brief summary of the main points",
+  "confusionType": "paronym",
+  "confidence": 0.94
+ },
+ {
+  "wordId": 1394,
+  "word": "Ambivalent",
+  "contrastWord": "indifferent",
+  "contrastGloss": "having no strong interest or feeling either way",
+  "confusionType": "misuse",
+  "confidence": 0.96
+ },
+ {
+  "wordId": 1395,
+  "word": "Fatuous",
+  "contrastWord": "facetious",
+  "contrastGloss": "joking inappropriately about something serious",
+  "confusionType": "paronym",
+  "confidence": 0.98
+ },
+ {
+  "wordId": 1396,
+  "word": "Inane",
+  "contrastWord": "insane",
+  "contrastGloss": "mentally disordered or wildly irrational",
+  "confusionType": "paronym",
+  "confidence": 0.93
+ },
+ {
+  "wordId": 1397,
+  "word": "Incongruous",
+  "contrastWord": "inconspicuous",
+  "contrastGloss": "not easily noticed or attracting attention",
+  "confusionType": "paronym",
+  "confidence": 0.91
+ },
+ {
+  "wordId": 1398,
+  "word": "Nebulous",
+  "contrastWord": "ambiguous",
+  "contrastGloss": "open to more than one possible interpretation",
+  "confusionType": "overlapping",
+  "confidence": 0.87
+ },
+ {
+  "wordId": 1399,
+  "word": "Obtuse",
+  "contrastWord": "abstruse",
+  "contrastGloss": "difficult to understand because complex or specialized",
+  "confusionType": "paronym",
+  "confidence": 0.96
+ },
+ {
+  "wordId": 1400,
+  "word": "Redundant",
+  "contrastWord": "repetitive",
+  "contrastGloss": "repeating frequently, though not necessarily adding nothing",
+  "confusionType": "overlapping",
+  "confidence": 0.83
+ },
+ {
+  "wordId": 1401,
+  "word": "Tautological",
+  "contrastWord": "circular",
+  "contrastGloss": "using the conclusion to support its own premise",
+  "confusionType": "overlapping",
+  "confidence": 0.9
+ },
+ {
+  "wordId": 1402,
+  "word": "Aphorism",
+  "contrastWord": "maxim",
+  "contrastGloss": "a brief rule or recommendation for conduct",
+  "confusionType": "overlapping",
+  "confidence": 0.9
+ },
+ {
+  "wordId": 1403,
+  "word": "Axiom",
+  "contrastWord": "theorem",
+  "contrastGloss": "a proposition demonstrated through logical proof",
+  "confusionType": "overlapping",
+  "confidence": 0.94
+ },
+ {
+  "wordId": 1404,
+  "word": "Dictum",
+  "contrastWord": "edict",
+  "contrastGloss": "an official command issued by an authority",
+  "confusionType": "paronym",
+  "confidence": 0.88
+ },
+ {
+  "wordId": 1405,
+  "word": "Exemplify",
+  "contrastWord": "exemplary",
+  "contrastGloss": "outstanding enough to deserve admiration or imitation",
+  "confusionType": "paronym",
+  "confidence": 0.9
+ },
+ {
+  "wordId": 1406,
+  "word": "Maxim",
+  "contrastWord": "maximum",
+  "contrastGloss": "the greatest amount or degree possible",
+  "confusionType": "paronym",
+  "confidence": 0.95
+ },
+ {
+  "wordId": 1407,
+  "word": "Mentor",
+  "contrastWord": "tutor",
+  "contrastGloss": "someone who teaches a particular subject or skill",
+  "confusionType": "overlapping",
+  "confidence": 0.9
+ },
+ {
+  "wordId": 1408,
+  "word": "Novel",
+  "contrastWord": "new",
+  "contrastGloss": "recently made or discovered, without necessarily being original",
+  "confusionType": "overlapping",
+  "confidence": 0.84
+ },
+ {
+  "wordId": 1409,
+  "word": "Paradigm",
+  "contrastWord": "paragon",
+  "contrastGloss": "a person or thing representing perfect excellence",
+  "confusionType": "paronym",
+  "confidence": 0.96
+ },
+ {
+  "wordId": 1410,
+  "word": "Precept",
+  "contrastWord": "concept",
+  "contrastGloss": "an abstract idea rather than a guiding rule",
+  "confusionType": "paronym",
+  "confidence": 0.93
+ },
+ {
+  "wordId": 1411,
+  "word": "Salient",
+  "contrastWord": "sentient",
+  "contrastGloss": "capable of feeling or perceiving sensations",
+  "confusionType": "paronym",
+  "confidence": 0.96
+ },
+ {
+  "wordId": 1412,
+  "word": "Touchstone",
+  "contrastWord": "milestone",
+  "contrastGloss": "an important stage marking progress or development",
+  "confusionType": "overlapping",
+  "confidence": 0.86
+ },
+ {
+  "wordId": 1414,
+  "word": "Abstruse",
+  "contrastWord": "obtuse",
+  "contrastGloss": "annoyingly slow or unwilling to understand",
+  "confusionType": "paronym",
+  "confidence": 0.96
+ },
+ {
+  "wordId": 1415,
+  "word": "Arcane",
+  "contrastWord": "archaic",
+  "contrastGloss": "old-fashioned or no longer in common use",
+  "confusionType": "paronym",
+  "confidence": 0.95
+ },
+ {
+  "wordId": 1416,
+  "word": "Cryptic",
+  "contrastWord": "arcane",
+  "contrastGloss": "known only by a small group of specialists",
+  "confusionType": "overlapping",
+  "confidence": 0.84
+ },
+ {
+  "wordId": 1417,
+  "word": "Enigma",
+  "contrastWord": "conundrum",
+  "contrastGloss": "a difficult problem or question needing a solution",
+  "confusionType": "overlapping",
+  "confidence": 0.87
+ },
+ {
+  "wordId": 1418,
+  "word": "Esoteric",
+  "contrastWord": "exotic",
+  "contrastGloss": "strikingly unusual or originating in a foreign place",
+  "confusionType": "paronym",
+  "confidence": 0.82
+ },
+ {
+  "wordId": 1419,
+  "word": "Impervious",
+  "contrastWord": "imperious",
+  "contrastGloss": "arrogantly commanding and expecting immediate obedience",
+  "confusionType": "paronym",
+  "confidence": 0.95
+ },
+ {
+  "wordId": 1420,
+  "word": "Latent",
+  "contrastWord": "dormant",
+  "contrastGloss": "temporarily inactive but capable of becoming active",
+  "confusionType": "overlapping",
+  "confidence": 0.89
+ },
+ {
+  "wordId": 1421,
+  "word": "Obscure",
+  "contrastWord": "obsolete",
+  "contrastGloss": "no longer used because something newer replaced it",
+  "confusionType": "overlapping",
+  "confidence": 0.9
+ },
+ {
+  "wordId": 1422,
+  "word": "Opaque",
+  "contrastWord": "translucent",
+  "contrastGloss": "allowing some light through without clear visibility",
+  "confusionType": "overlapping",
+  "confidence": 0.94
+ },
+ {
+  "wordId": 1423,
+  "word": "Chronicle",
+  "contrastWord": "chronology",
+  "contrastGloss": "the sequence or arrangement of events by time",
+  "confusionType": "paronym",
+  "confidence": 0.9
+ },
+ {
+  "wordId": 1424,
+  "word": "Cognitive",
+  "contrastWord": "cognizant",
+  "contrastGloss": "aware of a particular fact or situation",
+  "confusionType": "paronym",
+  "confidence": 0.97
+ },
+ {
+  "wordId": 1425,
+  "word": "Cognizant",
+  "contrastWord": "cognitive",
+  "contrastGloss": "relating broadly to thinking, memory, and understanding",
+  "confusionType": "paronym",
+  "confidence": 0.97
+ },
+ {
+  "wordId": 1426,
+  "word": "Compendium",
+  "contrastWord": "encyclopedia",
+  "contrastGloss": "a reference work containing detailed entries on many topics",
+  "confusionType": "overlapping",
+  "confidence": 0.83
+ },
+ {
+  "wordId": 1427,
+  "word": "Comprehensive",
+  "contrastWord": "comprehensible",
+  "contrastGloss": "clear enough to be understood",
+  "confusionType": "paronym",
+  "confidence": 0.98
+ },
+ {
+  "wordId": 1428,
+  "word": "Exhaustive",
+  "contrastWord": "exhausting",
+  "contrastGloss": "causing extreme physical or mental tiredness",
+  "confusionType": "paronym",
+  "confidence": 0.98
+ },
+ {
+  "wordId": 1429,
+  "word": "Matriculate",
+  "contrastWord": "graduate",
+  "contrastGloss": "complete a course of study and receive a qualification",
+  "confusionType": "misuse",
+  "confidence": 0.91
+ },
+ {
+  "wordId": 1430,
+  "word": "Qualitative",
+  "contrastWord": "quantitative",
+  "contrastGloss": "based on numerical measurements and quantities",
+  "confusionType": "paronym",
+  "confidence": 0.96
+ },
+ {
+  "wordId": 1432,
+  "word": "Sensory",
+  "contrastWord": "sensual",
+  "contrastGloss": "associated with physical gratification, especially sexual pleasure",
+  "confusionType": "paronym",
+  "confidence": 0.96
+ },
+ {
+  "wordId": 1433,
+  "word": "Sentient",
+  "contrastWord": "sapient",
+  "contrastGloss": "capable of advanced intelligence and reasoning",
+  "confusionType": "paronym",
+  "confidence": 0.94
+ },
+ {
+  "wordId": 1434,
+  "word": "Inherent",
+  "contrastWord": "innate",
+  "contrastGloss": "present from birth rather than acquired through experience",
+  "confusionType": "overlapping",
+  "confidence": 0.9
+ },
+ {
+  "wordId": 1435,
+  "word": "Innate",
+  "contrastWord": "inherent",
+  "contrastGloss": "inseparable from something's nature, regardless of birth",
+  "confusionType": "overlapping",
+  "confidence": 0.9
+ },
+ {
+  "wordId": 1436,
+  "word": "Intrinsic",
+  "contrastWord": "instrumental",
+  "contrastGloss": "valuable as a means to achieving another end",
+  "confusionType": "overlapping",
+  "confidence": 0.78
+ },
+ {
+  "wordId": 1437,
+  "word": "Introspective",
+  "contrastWord": "introverted",
+  "contrastGloss": "inclined toward quieter settings and limited social stimulation",
+  "confusionType": "paronym",
+  "confidence": 0.93
+ },
+ {
+  "wordId": 1438,
+  "word": "Mundane",
+  "contrastWord": "menial",
+  "contrastGloss": "requiring little skill and carrying low status",
+  "confusionType": "overlapping",
+  "confidence": 0.8
+ },
+ {
+  "wordId": 1439,
+  "word": "Palpable",
+  "contrastWord": "palatable",
+  "contrastGloss": "pleasant to taste or acceptable to consider",
+  "confusionType": "paronym",
+  "confidence": 0.98
+ },
+ {
+  "wordId": 1440,
+  "word": "Patent",
+  "contrastWord": "potent",
+  "contrastGloss": "having great power, influence, or effectiveness",
+  "confusionType": "paronym",
+  "confidence": 0.88
+ },
+ {
+  "wordId": 1441,
+  "word": "Peruse",
+  "contrastWord": "skim",
+  "contrastGloss": "read quickly to grasp only the main points",
+  "confusionType": "misuse",
+  "confidence": 0.99
+ },
+ {
+  "wordId": 1442,
+  "word": "Ruminate",
+  "contrastWord": "reminisce",
+  "contrastGloss": "recall and talk about past experiences, often fondly",
+  "confusionType": "overlapping",
+  "confidence": 0.86
+ },
+ {
+  "wordId": 1443,
+  "word": "Scrutinize",
+  "contrastWord": "criticize",
+  "contrastGloss": "express disapproval by identifying faults or weaknesses",
+  "confusionType": "overlapping",
+  "confidence": 0.85
+ },
+ {
+  "wordId": 1444,
+  "word": "Tangible",
+  "contrastWord": "palpable",
+  "contrastGloss": "strongly perceptible even without being physically touchable",
+  "confusionType": "overlapping",
+  "confidence": 0.86
+ },
+ {
+  "wordId": 1445,
+  "word": "Absolute",
+  "contrastWord": "definitive",
+  "contrastGloss": "authoritative or final enough to settle a question",
+  "confusionType": "overlapping",
+  "confidence": 0.79
+ },
+ {
+  "wordId": 1446,
+  "word": "Abstract",
+  "contrastWord": "abstruse",
+  "contrastGloss": "difficult to understand because of its complexity",
+  "confusionType": "paronym",
+  "confidence": 0.97
+ },
+ {
+  "wordId": 1447,
+  "word": "Amorphous",
+  "contrastWord": "ambiguous",
+  "contrastGloss": "open to more than one possible interpretation",
+  "confusionType": "overlapping",
+  "confidence": 0.85
+ },
+ {
+  "wordId": 1448,
+  "word": "Anachronism",
+  "contrastWord": "archaism",
+  "contrastGloss": "an old-fashioned form surviving from an earlier period",
+  "confusionType": "overlapping",
+  "confidence": 0.9
+ },
+ {
+  "wordId": 1450,
+  "word": "Catholic",
+  "contrastWord": "eclectic",
+  "contrastGloss": "selecting elements from many varied sources or styles",
+  "confusionType": "overlapping",
+  "confidence": 0.83
+ },
+ {
+  "wordId": 1451,
+  "word": "Chimera",
+  "contrastWord": "mirage",
+  "contrastGloss": "a deceptive appearance or hope that seems real",
+  "confusionType": "overlapping",
+  "confidence": 0.82
+ },
+ {
+  "wordId": 1452,
+  "word": "Definitive",
+  "contrastWord": "definite",
+  "contrastGloss": "certain, clearly fixed, or precisely identified",
+  "confusionType": "paronym",
+  "confidence": 0.97
+ },
+ {
+  "wordId": 1453,
+  "word": "Dialectical",
+  "contrastWord": "didactic",
+  "contrastGloss": "intended to teach, sometimes in an overly moralizing way",
+  "confusionType": "paronym",
+  "confidence": 0.89
+ },
+ {
+  "wordId": 1454,
+  "word": "Immutable",
+  "contrastWord": "immovable",
+  "contrastGloss": "unable to be physically moved or emotionally persuaded",
+  "confusionType": "paronym",
+  "confidence": 0.88
+ },
+ {
+  "wordId": 1455,
+  "word": "Juxtapose",
+  "contrastWord": "compare",
+  "contrastGloss": "examine things to identify their similarities and differences",
+  "confusionType": "overlapping",
+  "confidence": 0.86
+ },
+ {
+  "wordId": 1456,
+  "word": "Paradox",
+  "contrastWord": "contradiction",
+  "contrastGloss": "an incompatibility in which both claims cannot be true",
+  "confusionType": "overlapping",
+  "confidence": 0.96
+ },
+ {
+  "wordId": 1457,
+  "word": "Blasphemy",
+  "contrastWord": "heresy",
+  "contrastGloss": "a belief that contradicts an established religious doctrine",
+  "confusionType": "overlapping",
+  "confidence": 0.96
+ },
+ {
+  "wordId": 1458,
+  "word": "Conjure",
+  "contrastWord": "conjecture",
+  "contrastGloss": "form a conclusion from incomplete evidence",
+  "confusionType": "paronym",
+  "confidence": 0.84
+ },
+ {
+  "wordId": 1460,
+  "word": "Heresy",
+  "contrastWord": "apostasy",
+  "contrastGloss": "the abandonment of a religion or previously held belief",
+  "confusionType": "overlapping",
+  "confidence": 0.96
+ },
+ {
+  "wordId": 1461,
+  "word": "Incantation",
+  "contrastWord": "invocation",
+  "contrastGloss": "an appeal calling upon a deity or spirit",
+  "confusionType": "overlapping",
+  "confidence": 0.9
+ },
+ {
+  "wordId": 1462,
+  "word": "Irrevocable",
+  "contrastWord": "irreparable",
+  "contrastGloss": "too badly damaged to be repaired or corrected",
+  "confusionType": "paronym",
+  "confidence": 0.94
+ },
+ {
+  "wordId": 1463,
+  "word": "Profane",
+  "contrastWord": "secular",
+  "contrastGloss": "nonreligious without necessarily showing disrespect toward sacred things",
+  "confusionType": "overlapping",
+  "confidence": 0.91
+ },
+ {
+  "wordId": 1464,
+  "word": "Profess",
+  "contrastWord": "confess",
+  "contrastGloss": "admit something private, shameful, or previously concealed",
+  "confusionType": "paronym",
+  "confidence": 0.94
+ },
+ {
+  "wordId": 1465,
+  "word": "Proselytize",
+  "contrastWord": "convert",
+  "contrastGloss": "cause someone actually to adopt a different belief",
+  "confusionType": "overlapping",
+  "confidence": 0.87
+ },
+ {
+  "wordId": 1466,
+  "word": "Sacrilege",
+  "contrastWord": "blasphemy",
+  "contrastGloss": "offensive speech or expression directed at sacred things",
+  "confusionType": "overlapping",
+  "confidence": 0.96
+ },
+ {
+  "wordId": 1467,
+  "word": "Sacrosanct",
+  "contrastWord": "sanctimonious",
+  "contrastGloss": "making a hypocritical show of moral superiority",
+  "confusionType": "paronym",
+  "confidence": 0.83
+ },
+ {
+  "wordId": 1468,
+  "word": "Theology",
+  "contrastWord": "theocracy",
+  "contrastGloss": "government by religious authorities or divine law",
+  "confusionType": "paronym",
+  "confidence": 0.9
+ },
+ {
+  "wordId": 1469,
+  "word": "Agnostic",
+  "contrastWord": "atheist",
+  "contrastGloss": "person who rejects belief in any gods",
+  "confusionType": "overlapping",
+  "confidence": 0.98
+ },
+ {
+  "wordId": 1470,
+  "word": "Atheist",
+  "contrastWord": "agnostic",
+  "contrastGloss": "person who considers divine existence unknown or unknowable",
+  "confusionType": "overlapping",
+  "confidence": 0.98
+ },
+ {
+  "wordId": 1471,
+  "word": "Construe",
+  "contrastWord": "misconstrue",
+  "contrastGloss": "interpret something incorrectly or in a distorted way",
+  "confusionType": "paronym",
+  "confidence": 0.95
+ },
+ {
+  "wordId": 1473,
+  "word": "Insular",
+  "contrastWord": "isolated",
+  "contrastGloss": "separated from others without necessarily being narrow-minded",
+  "confusionType": "overlapping",
+  "confidence": 0.82
+ },
+ {
+  "wordId": 1476,
+  "word": "Provincial",
+  "contrastWord": "provisional",
+  "contrastGloss": "temporary and subject to later confirmation or revision",
+  "confusionType": "paronym",
+  "confidence": 0.91
+ },
+ {
+  "wordId": 1477,
+  "word": "Secular",
+  "contrastWord": "atheistic",
+  "contrastGloss": "rejecting belief in the existence of any gods",
+  "confusionType": "overlapping",
+  "confidence": 0.94
+ },
+ {
+  "wordId": 1479,
+  "word": "Cadence",
+  "contrastWord": "tempo",
+  "contrastGloss": "speed at which a piece of music is performed",
+  "confusionType": "overlapping",
+  "confidence": 0.84
+ },
+ {
+  "wordId": 1480,
+  "word": "Garrulous",
+  "contrastWord": "loquacious",
+  "contrastGloss": "very talkative without necessarily being tedious or trivial",
+  "confusionType": "overlapping",
+  "confidence": 0.91
+ },
+ {
+  "wordId": 1482,
+  "word": "Histrionic",
+  "contrastWord": "historic",
+  "contrastGloss": "important or influential in the course of history",
+  "confusionType": "paronym",
+  "confidence": 0.88
+ },
+ {
+  "wordId": 1483,
+  "word": "Hyperbole",
+  "contrastWord": "metaphor",
+  "contrastGloss": "comparison that describes one thing as another",
+  "confusionType": "overlapping",
+  "confidence": 0.86
+ },
+ {
+  "wordId": 1484,
+  "word": "Loquacious",
+  "contrastWord": "garrulous",
+  "contrastGloss": "tediously talkative especially about unimportant matters",
+  "confusionType": "overlapping",
+  "confidence": 0.91
+ },
+ {
+  "wordId": 1485,
+  "word": "Mellifluous",
+  "contrastWord": "melodious",
+  "contrastGloss": "pleasantly musical because of an appealing tune",
+  "confusionType": "overlapping",
+  "confidence": 0.84
+ },
+ {
+  "wordId": 1487,
+  "word": "Brevity",
+  "contrastWord": "terseness",
+  "contrastGloss": "extreme verbal shortness that may sound abrupt",
+  "confusionType": "overlapping",
+  "confidence": 0.87
+ },
+ {
+  "wordId": 1488,
+  "word": "Broach",
+  "contrastWord": "brooch",
+  "contrastGloss": "decorative piece of jewellery fastened to clothing",
+  "confusionType": "paronym",
+  "confidence": 0.99
+ },
+ {
+  "wordId": 1489,
+  "word": "Coherent",
+  "contrastWord": "cohesive",
+  "contrastGloss": "forming a unified whole whose parts hold together",
+  "confusionType": "overlapping",
+  "confidence": 0.9
+ },
+ {
+  "wordId": 1490,
+  "word": "Compelling",
+  "contrastWord": "compulsory",
+  "contrastGloss": "required by a rule or authority",
+  "confusionType": "paronym",
+  "confidence": 0.86
+ },
+ {
+  "wordId": 1491,
+  "word": "Concise",
+  "contrastWord": "terse",
+  "contrastGloss": "so brief that it may sound abrupt or unfriendly",
+  "confusionType": "overlapping",
+  "confidence": 0.94
+ },
+ {
+  "wordId": 1492,
+  "word": "Consonant",
+  "contrastWord": "constant",
+  "contrastGloss": "remaining unchanged or occurring continuously over time",
+  "confusionType": "paronym",
+  "confidence": 0.82
+ },
+ {
+  "wordId": 1493,
+  "word": "Elicit",
+  "contrastWord": "illicit",
+  "contrastGloss": "forbidden by law rules or accepted standards",
+  "confusionType": "paronym",
+  "confidence": 0.99
+ },
+ {
+  "wordId": 1494,
+  "word": "Laconic",
+  "contrastWord": "terse",
+  "contrastGloss": "brief in a way that seems abrupt or unfriendly",
+  "confusionType": "overlapping",
+  "confidence": 0.9
+ },
+ {
+  "wordId": 1495,
+  "word": "Rhetoric",
+  "contrastWord": "oratory",
+  "contrastGloss": "art or style of formal public speaking",
+  "confusionType": "overlapping",
+  "confidence": 0.86
+ },
+ {
+  "wordId": 1496,
+  "word": "Succinct",
+  "contrastWord": "terse",
+  "contrastGloss": "brief in a way that may sound unfriendly",
+  "confusionType": "overlapping",
+  "confidence": 0.91
+ },
+ {
+  "wordId": 1497,
+  "word": "Terse",
+  "contrastWord": "concise",
+  "contrastGloss": "brief and clear without implying an unfriendly tone",
+  "confusionType": "overlapping",
+  "confidence": 0.94
+ },
+ {
+  "wordId": 1498,
+  "word": "Allusion",
+  "contrastWord": "illusion",
+  "contrastGloss": "false appearance or mistaken impression of reality",
+  "confusionType": "paronym",
+  "confidence": 0.99
+ },
+ {
+  "wordId": 1499,
+  "word": "Analogy",
+  "contrastWord": "metaphor",
+  "contrastGloss": "implicit comparison describing one thing as another",
+  "confusionType": "overlapping",
+  "confidence": 0.93
+ },
+ {
+  "wordId": 1500,
+  "word": "Anecdote",
+  "contrastWord": "antidote",
+  "contrastGloss": "remedy that counteracts poison or another harmful condition",
+  "confusionType": "paronym",
+  "confidence": 0.99
+ },
+ {
+  "wordId": 1501,
+  "word": "Banal",
+  "contrastWord": "mundane",
+  "contrastGloss": "ordinary or everyday without necessarily being overused",
+  "confusionType": "overlapping",
+  "confidence": 0.88
+ },
+ {
+  "wordId": 1502,
+  "word": "Colloquial",
+  "contrastWord": "slang",
+  "contrastGloss": "highly informal vocabulary often associated with particular groups",
+  "confusionType": "overlapping",
+  "confidence": 0.94
+ },
+ {
+  "wordId": 1503,
+  "word": "Digress",
+  "contrastWord": "regress",
+  "contrastGloss": "return to an earlier or less developed state",
+  "confusionType": "paronym",
+  "confidence": 0.86
+ },
+ {
+  "wordId": 1504,
+  "word": "Extraneous",
+  "contrastWord": "extrinsic",
+  "contrastGloss": "originating outside something rather than forming its essential nature",
+  "confusionType": "paronym",
+  "confidence": 0.79
+ },
+ {
+  "wordId": 1505,
+  "word": "Figurative",
+  "contrastWord": "fictional",
+  "contrastGloss": "invented rather than describing real people or events",
+  "confusionType": "overlapping",
+  "confidence": 0.75
+ },
+ {
+  "wordId": 1506,
+  "word": "Nuance",
+  "contrastWord": "nuisance",
+  "contrastGloss": "person or thing causing annoyance or inconvenience",
+  "confusionType": "paronym",
+  "confidence": 0.97
+ },
+ {
+  "wordId": 1507,
+  "word": "Pedestrian",
+  "contrastWord": "pedantic",
+  "contrastGloss": "excessively concerned with minor rules or academic details",
+  "confusionType": "paronym",
+  "confidence": 0.89
+ },
+ {
+  "wordId": 1508,
+  "word": "Subtle",
+  "contrastWord": "implicit",
+  "contrastGloss": "suggested or understood without being directly stated",
+  "confusionType": "overlapping",
+  "confidence": 0.82
+ },
+ {
+  "wordId": 1509,
+  "word": "Tangential",
+  "contrastWord": "incidental",
+  "contrastGloss": "secondary to the main purpose but still relevant",
+  "confusionType": "overlapping",
+  "confidence": 0.78
+ },
+ {
+  "wordId": 1510,
+  "word": "Cliché",
+  "contrastWord": "stereotype",
+  "contrastGloss": "oversimplified fixed belief about a group or type",
+  "confusionType": "overlapping",
+  "confidence": 0.88
+ },
+ {
+  "wordId": 1511,
+  "word": "Didactic",
+  "contrastWord": "pedantic",
+  "contrastGloss": "overly concerned with minor details or formal rules",
+  "confusionType": "overlapping",
+  "confidence": 0.85
+ },
+ {
+  "wordId": 1512,
+  "word": "Edify",
+  "contrastWord": "educate",
+  "contrastGloss": "develop knowledge or skills through systematic teaching",
+  "confusionType": "overlapping",
+  "confidence": 0.82
+ },
+ {
+  "wordId": 1513,
+  "word": "Exhort",
+  "contrastWord": "extort",
+  "contrastGloss": "obtain something through threats, pressure, or force",
+  "confusionType": "paronym",
+  "confidence": 0.97
+ },
+ {
+  "wordId": 1515,
+  "word": "Homily",
+  "contrastWord": "hominy",
+  "contrastGloss": "dried corn kernels prepared and eaten as food",
+  "confusionType": "paronym",
+  "confidence": 0.83
+ },
+ {
+  "wordId": 1516,
+  "word": "Insipid",
+  "contrastWord": "insidious",
+  "contrastGloss": "gradually harmful while remaining difficult to notice",
+  "confusionType": "paronym",
+  "confidence": 0.94
+ },
+ {
+  "wordId": 1517,
+  "word": "Platitude",
+  "contrastWord": "cliché",
+  "contrastGloss": "any expression or idea made stale through overuse",
+  "confusionType": "overlapping",
+  "confidence": 0.93
+ },
+ {
+  "wordId": 1519,
+  "word": "Reiterate",
+  "contrastWord": "iterate",
+  "contrastGloss": "repeat a process to produce successive improvements",
+  "confusionType": "overlapping",
+  "confidence": 0.86
+ },
+ {
+  "wordId": 1520,
+  "word": "Saccharine",
+  "contrastWord": "saccharin",
+  "contrastGloss": "an artificial sweetener used instead of sugar",
+  "confusionType": "paronym",
+  "confidence": 0.96
+ },
+ {
+  "wordId": 1521,
+  "word": "Superfluous",
+  "contrastWord": "superficial",
+  "contrastGloss": "concerned only with the surface, not deeper substance",
+  "confusionType": "paronym",
+  "confidence": 0.96
+ },
+ {
+  "wordId": 1522,
+  "word": "Belabor",
+  "contrastWord": "elaborate",
+  "contrastGloss": "explain something by adding useful detail",
+  "confusionType": "paronym",
+  "confidence": 0.92
+ },
+ {
+  "wordId": 1523,
+  "word": "Demagogue",
+  "contrastWord": "pedagogue",
+  "contrastGloss": "a teacher, especially one strict about instruction",
+  "confusionType": "paronym",
+  "confidence": 0.91
+ },
+ {
+  "wordId": 1524,
+  "word": "Deprecate",
+  "contrastWord": "depreciate",
+  "contrastGloss": "lose value or reduce an asset's recorded value",
+  "confusionType": "paronym",
+  "confidence": 0.99
+ },
+ {
+  "wordId": 1525,
+  "word": "Impugn",
+  "contrastWord": "impute",
+  "contrastGloss": "attribute an action, quality, or responsibility to someone",
+  "confusionType": "paronym",
+  "confidence": 0.91
+ },
+ {
+  "wordId": 1526,
+  "word": "Incense",
+  "contrastWord": "incite",
+  "contrastGloss": "stir people to act, often violently or unlawfully",
+  "confusionType": "paronym",
+  "confidence": 0.76
+ },
+ {
+  "wordId": 1527,
+  "word": "Instigate",
+  "contrastWord": "investigate",
+  "contrastGloss": "systematically examine facts to discover what happened",
+  "confusionType": "paronym",
+  "confidence": 0.96
+ },
+ {
+  "wordId": 1528,
+  "word": "Refute",
+  "contrastWord": "rebut",
+  "contrastGloss": "answer a claim with an opposing argument",
+  "confusionType": "misuse",
+  "confidence": 0.94
+ },
+ {
+  "wordId": 1529,
+  "word": "Remonstrate",
+  "contrastWord": "demonstrate",
+  "contrastGloss": "show something clearly through evidence or practical display",
+  "confusionType": "paronym",
+  "confidence": 0.77
+ },
+ {
+  "wordId": 1530,
+  "word": "Repudiate",
+  "contrastWord": "refute",
+  "contrastGloss": "prove a claim wrong using evidence or reasoning",
+  "confusionType": "overlapping",
+  "confidence": 0.94
+ },
+ {
+  "wordId": 1532,
+  "word": "Amenable",
+  "contrastWord": "amicable",
+  "contrastGloss": "friendly and peaceful despite possible disagreement",
+  "confusionType": "paronym",
+  "confidence": 0.86
+ },
+ {
+  "wordId": 1533,
+  "word": "Appease",
+  "contrastWord": "please",
+  "contrastGloss": "give someone enjoyment, satisfaction, or approval",
+  "confusionType": "paronym",
+  "confidence": 0.86
+ },
+ {
+  "wordId": 1534,
+  "word": "Assuage",
+  "contrastWord": "appease",
+  "contrastGloss": "calm an angry person through concessions or compliance",
+  "confusionType": "overlapping",
+  "confidence": 0.92
+ },
+ {
+  "wordId": 1536,
+  "word": "Mediate",
+  "contrastWord": "arbitrate",
+  "contrastGloss": "hear opposing sides and impose a binding decision",
+  "confusionType": "overlapping",
+  "confidence": 0.95
+ },
+ {
+  "wordId": 1537,
+  "word": "Mitigate",
+  "contrastWord": "militate",
+  "contrastGloss": "exert a strong influence, usually against an outcome",
+  "confusionType": "paronym",
+  "confidence": 0.94
+ },
+ {
+  "wordId": 1538,
+  "word": "Mollify",
+  "contrastWord": "modify",
+  "contrastGloss": "change something partly without transforming it completely",
+  "confusionType": "paronym",
+  "confidence": 0.96
+ },
+ {
+  "wordId": 1539,
+  "word": "Placate",
+  "contrastWord": "placid",
+  "contrastGloss": "calm and peaceful by nature or appearance",
+  "confusionType": "paronym",
+  "confidence": 0.88
+ },
+ {
+  "wordId": 1540,
+  "word": "Acquiesce",
+  "contrastWord": "assent",
+  "contrastGloss": "express explicit agreement or approval",
+  "confusionType": "overlapping",
+  "confidence": 0.91
+ },
+ {
+  "wordId": 1541,
+  "word": "Amnesty",
+  "contrastWord": "clemency",
+  "contrastGloss": "mercy that reduces punishment, often for one person",
+  "confusionType": "overlapping",
+  "confidence": 0.95
+ },
+ {
+  "wordId": 1542,
+  "word": "Capitulate",
+  "contrastWord": "recapitulate",
+  "contrastGloss": "summarize the main points of something already discussed",
+  "confusionType": "paronym",
+  "confidence": 0.96
+ },
+ {
+  "wordId": 1543,
+  "word": "Concord",
+  "contrastWord": "consensus",
+  "contrastGloss": "general acceptance of a decision or shared opinion",
+  "confusionType": "overlapping",
+  "confidence": 0.87
+ },
+ {
+  "wordId": 1544,
+  "word": "Consensus",
+  "contrastWord": "consent",
+  "contrastGloss": "permission or agreement given by an individual",
+  "confusionType": "overlapping",
+  "confidence": 0.97
+ },
+ {
+  "wordId": 1545,
+  "word": "Covenant",
+  "contrastWord": "contract",
+  "contrastGloss": "legally enforceable agreement defining reciprocal obligations",
+  "confusionType": "overlapping",
+  "confidence": 0.91
+ },
+ {
+  "wordId": 1546,
+  "word": "Discreet",
+  "contrastWord": "discrete",
+  "contrastGloss": "separate and individually distinct rather than continuous",
+  "confusionType": "paronym",
+  "confidence": 1
+ },
+ {
+  "wordId": 1547,
+  "word": "Inexorable",
+  "contrastWord": "inevitable",
+  "contrastGloss": "certain to happen, whether forceful or not",
+  "confusionType": "overlapping",
+  "confidence": 0.93
+ },
+ {
+  "wordId": 1548,
+  "word": "Intractable",
+  "contrastWord": "intransigent",
+  "contrastGloss": "unwilling to change one's views or compromise",
+  "confusionType": "overlapping",
+  "confidence": 0.9
+ },
+ {
+  "wordId": 1549,
+  "word": "Prudent",
+  "contrastWord": "prudish",
+  "contrastGloss": "excessively concerned with sexual propriety or modesty",
+  "confusionType": "paronym",
+  "confidence": 0.96
+ },
+ {
+  "wordId": 1550,
+  "word": "Relinquish",
+  "contrastWord": "renounce",
+  "contrastGloss": "formally reject a belief, claim, or association",
+  "confusionType": "overlapping",
+  "confidence": 0.82
+ },
+ {
+  "wordId": 1551,
+  "word": "Succumb",
+  "contrastWord": "surrender",
+  "contrastGloss": "consciously stop resisting an opponent or authority",
+  "confusionType": "overlapping",
+  "confidence": 0.81
+ },
+ {
+  "wordId": 1552,
+  "word": "Aesthetic",
+  "contrastWord": "ascetic",
+  "contrastGloss": "practicing strict self-denial and avoiding physical pleasures",
+  "confusionType": "paronym",
+  "confidence": 0.99
+ },
+ {
+  "wordId": 1553,
+  "word": "Ambience",
+  "contrastWord": "milieu",
+  "contrastGloss": "the social or cultural surroundings of someone",
+  "confusionType": "overlapping",
+  "confidence": 0.76
+ },
+ {
+  "wordId": 1554,
+  "word": "Archaic",
+  "contrastWord": "obsolete",
+  "contrastGloss": "no longer used because something newer replaced it",
+  "confusionType": "overlapping",
+  "confidence": 0.86
+ },
+ {
+  "wordId": 1555,
+  "word": "Epigram",
+  "contrastWord": "epigraph",
+  "contrastGloss": "a quotation placed at the beginning of a work",
+  "confusionType": "paronym",
+  "confidence": 0.98
+ },
+ {
+  "wordId": 1556,
+  "word": "Genre",
+  "contrastWord": "style",
+  "contrastGloss": "a characteristic manner of expression, not a category",
+  "confusionType": "overlapping",
+  "confidence": 0.84
+ },
+ {
+  "wordId": 1557,
+  "word": "Milieu",
+  "contrastWord": "ambience",
+  "contrastGloss": "the sensory mood or atmosphere of a place",
+  "confusionType": "overlapping",
+  "confidence": 0.76
+ },
+ {
+  "wordId": 1559,
+  "word": "Redolent",
+  "contrastWord": "fragrant",
+  "contrastGloss": "having a distinctly pleasant or sweet smell",
+  "confusionType": "overlapping",
+  "confidence": 0.8
+ },
+ {
+  "wordId": 1560,
+  "word": "Accolade",
+  "contrastWord": "acclaim",
+  "contrastGloss": "enthusiastic public praise rather than a particular honor",
+  "confusionType": "overlapping",
+  "confidence": 0.85
+ },
+ {
+  "wordId": 1561,
+  "word": "Adulation",
+  "contrastWord": "admiration",
+  "contrastGloss": "warm approval that need not be excessive or uncritical",
+  "confusionType": "overlapping",
+  "confidence": 0.93
+ },
+ {
+  "wordId": 1562,
+  "word": "Appreciate",
+  "contrastWord": "depreciate",
+  "contrastGloss": "lose value or reduce something's stated value",
+  "confusionType": "paronym",
+  "confidence": 0.88
+ },
+ {
+  "wordId": 1563,
+  "word": "Approbation",
+  "contrastWord": "probation",
+  "contrastGloss": "a trial period or conditional release under supervision",
+  "confusionType": "paronym",
+  "confidence": 0.91
+ },
+ {
+  "wordId": 1564,
+  "word": "Eminent",
+  "contrastWord": "imminent",
+  "contrastGloss": "expected to happen very soon",
+  "confusionType": "paronym",
+  "confidence": 0.99
+ },
+ {
+  "wordId": 1565,
+  "word": "Exalt",
+  "contrastWord": "exult",
+  "contrastGloss": "show or feel triumphant joy",
+  "confusionType": "paronym",
+  "confidence": 0.97
+ },
+ {
+  "wordId": 1566,
+  "word": "Extol",
+  "contrastWord": "exalt",
+  "contrastGloss": "raise someone in rank, dignity, or status",
+  "confusionType": "paronym",
+  "confidence": 0.91
+ },
+ {
+  "wordId": 1567,
+  "word": "Laud",
+  "contrastWord": "applaud",
+  "contrastGloss": "show approval, especially by clapping",
+  "confusionType": "paronym",
+  "confidence": 0.87
+ },
+ {
+  "wordId": 1568,
+  "word": "Revere",
+  "contrastWord": "reverie",
+  "contrastGloss": "a dreamy state of absorbed thought",
+  "confusionType": "paronym",
+  "confidence": 0.88
+ },
+ {
+  "wordId": 1569,
+  "word": "Steadfast",
+  "contrastWord": "stubborn",
+  "contrastGloss": "unreasonably unwilling to change one's position",
+  "confusionType": "overlapping",
+  "confidence": 0.81
+ },
+ {
+  "wordId": 1570,
+  "word": "Tout",
+  "contrastWord": "taunt",
+  "contrastGloss": "mock or provoke someone with insulting remarks",
+  "confusionType": "paronym",
+  "confidence": 0.92
+ },
+ {
+  "wordId": 1571,
+  "word": "Agrarian",
+  "contrastWord": "rural",
+  "contrastGloss": "related broadly to the countryside, not specifically farming",
+  "confusionType": "overlapping",
+  "confidence": 0.87
+ },
+ {
+  "wordId": 1572,
+  "word": "Apotheosis",
+  "contrastWord": "epitome",
+  "contrastGloss": "the most representative embodiment of a quality",
+  "confusionType": "overlapping",
+  "confidence": 0.78
+ },
+ {
+  "wordId": 1573,
+  "word": "Bucolic",
+  "contrastWord": "idyllic",
+  "contrastGloss": "peaceful and nearly perfect, whether rural or not",
+  "confusionType": "overlapping",
+  "confidence": 0.86
+ },
+ {
+  "wordId": 1574,
+  "word": "Domestic",
+  "contrastWord": "domesticated",
+  "contrastGloss": "tamed or adapted for human use",
+  "confusionType": "paronym",
+  "confidence": 0.92
+ },
+ {
+  "wordId": 1575,
+  "word": "Fauna",
+  "contrastWord": "flora",
+  "contrastGloss": "the plant life of a region or period",
+  "confusionType": "paronym",
+  "confidence": 0.98
+ },
+ {
+  "wordId": 1576,
+  "word": "Fecund",
+  "contrastWord": "prolific",
+  "contrastGloss": "actually producing many works, results, or offspring",
+  "confusionType": "overlapping",
+  "confidence": 0.75
+ },
+ {
+  "wordId": 1577,
+  "word": "Husbandry",
+  "contrastWord": "husband",
+  "contrastGloss": "a man married to another person",
+  "confusionType": "paronym",
+  "confidence": 0.78
+ },
+ {
+  "wordId": 1578,
+  "word": "Idyllic",
+  "contrastWord": "idealistic",
+  "contrastGloss": "guided by ideals more than practical realities",
+  "confusionType": "paronym",
+  "confidence": 0.91
+ },
+ {
+  "wordId": 1579,
+  "word": "Rustic",
+  "contrastWord": "rural",
+  "contrastGloss": "located in or generally related to the countryside",
+  "confusionType": "overlapping",
+  "confidence": 0.9
+ },
+ {
+  "wordId": 1580,
+  "word": "Ameliorate",
+  "contrastWord": "alleviate",
+  "contrastGloss": "reduce suffering or severity without fixing the cause",
+  "confusionType": "overlapping",
+  "confidence": 0.92
+ },
+ {
+  "wordId": 1581,
+  "word": "Apartheid",
+  "contrastWord": "segregation",
+  "contrastGloss": "separation of groups without necessarily constituting a political system",
+  "confusionType": "overlapping",
+  "confidence": 0.91
+ },
+ {
+  "wordId": 1582,
+  "word": "Bane",
+  "contrastWord": "ban",
+  "contrastGloss": "an official prohibition against something",
+  "confusionType": "paronym",
+  "confidence": 0.82
+ },
+ {
+  "wordId": 1583,
+  "word": "Blight",
+  "contrastWord": "plight",
+  "contrastGloss": "a difficult or unfortunate situation",
+  "confusionType": "paronym",
+  "confidence": 0.91
+ },
+ {
+  "wordId": 1584,
+  "word": "Efface",
+  "contrastWord": "deface",
+  "contrastGloss": "spoil a surface's appearance without erasing it",
+  "confusionType": "paronym",
+  "confidence": 0.99
+ },
+ {
+  "wordId": 1585,
+  "word": "Enfranchise",
+  "contrastWord": "emancipate",
+  "contrastGloss": "free someone from legal, social, or political control",
+  "confusionType": "overlapping",
+  "confidence": 0.78
+ },
+ {
+  "wordId": 1586,
+  "word": "Noxious",
+  "contrastWord": "obnoxious",
+  "contrastGloss": "extremely unpleasant or offensive rather than physically harmful",
+  "confusionType": "paronym",
+  "confidence": 0.99
+ },
+ {
+  "wordId": 1587,
+  "word": "Pernicious",
+  "contrastWord": "noxious",
+  "contrastGloss": "directly harmful or poisonous, often through physical exposure",
+  "confusionType": "overlapping",
+  "confidence": 0.86
+ },
+ {
+  "wordId": 1588,
+  "word": "Relegate",
+  "contrastWord": "delegate",
+  "contrastGloss": "assign authority or a task to another person",
+  "confusionType": "paronym",
+  "confidence": 0.99
+ },
+ {
+  "wordId": 1589,
+  "word": "Segregate",
+  "contrastWord": "discriminate",
+  "contrastGloss": "treat people differently without necessarily keeping them physically apart",
+  "confusionType": "overlapping",
+  "confidence": 0.84
+ },
+ {
+  "wordId": 1590,
+  "word": "Sinister",
+  "contrastWord": "malevolent",
+  "contrastGloss": "actively wishing or intending harm rather than merely seeming threatening",
+  "confusionType": "overlapping",
+  "confidence": 0.78
+ },
+ {
+  "wordId": 1591,
+  "word": "Subordinate",
+  "contrastWord": "subservient",
+  "contrastGloss": "excessively submissive or eager to obey",
+  "confusionType": "overlapping",
+  "confidence": 0.89
+ },
+ {
+  "wordId": 1592,
+  "word": "Augment",
+  "contrastWord": "supplement",
+  "contrastGloss": "add something extra to improve or complete what exists",
+  "confusionType": "overlapping",
+  "confidence": 0.82
+ },
+ {
+  "wordId": 1593,
+  "word": "Burgeon",
+  "contrastWord": "flourish",
+  "contrastGloss": "thrive successfully without necessarily expanding rapidly",
+  "confusionType": "overlapping",
+  "confidence": 0.76
+ },
+ {
+  "wordId": 1594,
+  "word": "Coalesce",
+  "contrastWord": "convalesce",
+  "contrastGloss": "gradually recover health or strength after illness",
+  "confusionType": "paronym",
+  "confidence": 0.86
+ },
+ {
+  "wordId": 1595,
+  "word": "Complement",
+  "contrastWord": "compliment",
+  "contrastGloss": "an expression of praise or admiration",
+  "confusionType": "paronym",
+  "confidence": 0.99
+ },
+ {
+  "wordId": 1596,
+  "word": "Confluence",
+  "contrastWord": "influence",
+  "contrastGloss": "power to affect someone's actions, opinions, or development",
+  "confusionType": "paronym",
+  "confidence": 0.74
+ },
+ {
+  "wordId": 1597,
+  "word": "Copious",
+  "contrastWord": "capacious",
+  "contrastGloss": "spacious enough to hold a great deal",
+  "confusionType": "paronym",
+  "confidence": 0.9
+ },
+ {
+  "wordId": 1599,
+  "word": "Integrate",
+  "contrastWord": "incorporate",
+  "contrastGloss": "include something as a part of a larger whole",
+  "confusionType": "overlapping",
+  "confidence": 0.8
+ },
+ {
+  "wordId": 1600,
+  "word": "Kinetic",
+  "contrastWord": "potential",
+  "contrastGloss": "stored by position or condition rather than current motion",
+  "confusionType": "overlapping",
+  "confidence": 0.88
+ },
+ {
+  "wordId": 1602,
+  "word": "Replenish",
+  "contrastWord": "replace",
+  "contrastGloss": "substitute one item for another rather than refill a supply",
+  "confusionType": "overlapping",
+  "confidence": 0.81
+ },
+ {
+  "wordId": 1603,
+  "word": "Replete",
+  "contrastWord": "complete",
+  "contrastGloss": "having every required part rather than being abundantly filled",
+  "confusionType": "paronym",
+  "confidence": 0.91
+ },
+ {
+  "wordId": 1604,
+  "word": "Comprise",
+  "contrastWord": "compose",
+  "contrastGloss": "form or make up a larger whole",
+  "confusionType": "misuse",
+  "confidence": 0.98
+ },
+ {
+  "wordId": 1606,
+  "word": "Endemic",
+  "contrastWord": "epidemic",
+  "contrastGloss": "spreading unusually widely or rapidly within a population",
+  "confusionType": "overlapping",
+  "confidence": 0.97
+ },
+ {
+  "wordId": 1607,
+  "word": "Enormity",
+  "contrastWord": "enormousness",
+  "contrastGloss": "great physical size without implying seriousness or wickedness",
+  "confusionType": "misuse",
+  "confidence": 0.96
+ },
+ {
+  "wordId": 1608,
+  "word": "Incessant",
+  "contrastWord": "insistent",
+  "contrastGloss": "persistently demanding attention or refusing to accept opposition",
+  "confusionType": "paronym",
+  "confidence": 0.94
+ },
+ {
+  "wordId": 1610,
+  "word": "Inundate",
+  "contrastWord": "undulate",
+  "contrastGloss": "move with a smooth rising and falling motion",
+  "confusionType": "paronym",
+  "confidence": 0.72
+ },
+ {
+  "wordId": 1611,
+  "word": "Monolithic",
+  "contrastWord": "homogeneous",
+  "contrastGloss": "uniform in composition without necessarily forming one massive unit",
+  "confusionType": "overlapping",
+  "confidence": 0.79
+ },
+ {
+  "wordId": 1612,
+  "word": "Perennial",
+  "contrastWord": "perpetual",
+  "contrastGloss": "continuing indefinitely without interruption or recurrence",
+  "confusionType": "overlapping",
+  "confidence": 0.92
+ },
+ {
+  "wordId": 1613,
+  "word": "Permeate",
+  "contrastWord": "penetrate",
+  "contrastGloss": "enter through a surface without necessarily spreading throughout",
+  "confusionType": "overlapping",
+  "confidence": 0.9
+ },
+ {
+  "wordId": 1614,
+  "word": "Pervade",
+  "contrastWord": "prevail",
+  "contrastGloss": "prove stronger or remain dominant despite opposition",
+  "confusionType": "paronym",
+  "confidence": 0.88
+ },
+ {
+  "wordId": 1615,
+  "word": "Prodigious",
+  "contrastWord": "prestigious",
+  "contrastGloss": "highly respected or admired because of status or achievement",
+  "confusionType": "paronym",
+  "confidence": 0.97
+ },
+ {
+  "wordId": 1616,
+  "word": "Proliferate",
+  "contrastWord": "propagate",
+  "contrastGloss": "cause an idea or organism to spread or reproduce",
+  "confusionType": "overlapping",
+  "confidence": 0.85
+ },
+ {
+  "wordId": 1617,
+  "word": "Prolific",
+  "contrastWord": "proficient",
+  "contrastGloss": "skilled and competent without necessarily producing a large quantity",
+  "confusionType": "paronym",
+  "confidence": 0.96
+ },
+ {
+  "wordId": 1618,
+  "word": "Reciprocal",
+  "contrastWord": "inverse",
+  "contrastGloss": "opposite in order, direction, or mathematical relationship",
+  "confusionType": "overlapping",
+  "confidence": 0.82
+ },
+ {
+  "wordId": 1619,
+  "word": "Surfeit",
+  "contrastWord": "surplus",
+  "contrastGloss": "an extra amount beyond requirements, often still useful",
+  "confusionType": "overlapping",
+  "confidence": 0.91
+ },
+ {
+  "wordId": 1620,
+  "word": "Ubiquitous",
+  "contrastWord": "universal",
+  "contrastGloss": "applying to every member or case, not every place",
+  "confusionType": "overlapping",
+  "confidence": 0.88
+ },
+ {
+  "wordId": 1622,
+  "word": "Antecedent",
+  "contrastWord": "precedent",
+  "contrastGloss": "an earlier case used as an example or rule",
+  "confusionType": "paronym",
+  "confidence": 0.95
+ },
+ {
+  "wordId": 1623,
+  "word": "Catalyst",
+  "contrastWord": "cause",
+  "contrastGloss": "the underlying reason something happens, not merely its trigger",
+  "confusionType": "overlapping",
+  "confidence": 0.87
+ },
+ {
+  "wordId": 1624,
+  "word": "Concurrent",
+  "contrastWord": "consecutive",
+  "contrastGloss": "following one after another rather than overlapping in time",
+  "confusionType": "paronym",
+  "confidence": 0.96
+ },
+ {
+  "wordId": 1625,
+  "word": "Conducive",
+  "contrastWord": "conductive",
+  "contrastGloss": "able to transmit heat, electricity, or another form of energy",
+  "confusionType": "paronym",
+  "confidence": 0.98
+ },
+ {
+  "wordId": 1626,
+  "word": "Contingent",
+  "contrastWord": "contiguous",
+  "contrastGloss": "touching along a boundary or directly adjoining",
+  "confusionType": "paronym",
+  "confidence": 0.91
+ },
+ {
+  "wordId": 1627,
+  "word": "Fortuitous",
+  "contrastWord": "fortunate",
+  "contrastGloss": "favoured by luck, whether planned or accidental",
+  "confusionType": "misuse",
+  "confidence": 0.97
+ },
+ {
+  "wordId": 1628,
+  "word": "Harbinger",
+  "contrastWord": "omen",
+  "contrastGloss": "an event believed to predict a good or bad outcome",
+  "confusionType": "overlapping",
+  "confidence": 0.86
+ },
+ {
+  "wordId": 1629,
+  "word": "Imminent",
+  "contrastWord": "eminent",
+  "contrastGloss": "famous and highly respected in a field",
+  "confusionType": "paronym",
+  "confidence": 0.99
+ },
+ {
+  "wordId": 1631,
+  "word": "Precursor",
+  "contrastWord": "predecessor",
+  "contrastGloss": "the previous holder of a position or role",
+  "confusionType": "overlapping",
+  "confidence": 0.82
+ },
+ {
+  "wordId": 1632,
+  "word": "Beget",
+  "contrastWord": "beset",
+  "contrastGloss": "trouble or surround persistently with difficulties",
+  "confusionType": "paronym",
+  "confidence": 0.75
+ },
+ {
+  "wordId": 1633,
+  "word": "Engender",
+  "contrastWord": "endanger",
+  "contrastGloss": "put someone or something at risk of harm",
+  "confusionType": "paronym",
+  "confidence": 0.97
+ },
+ {
+  "wordId": 1635,
+  "word": "Precipitate",
+  "contrastWord": "precipitous",
+  "contrastGloss": "dangerously steep or extremely sudden",
+  "confusionType": "paronym",
+  "confidence": 0.96
+ },
+ {
+  "wordId": 1636,
+  "word": "Profuse",
+  "contrastWord": "prolific",
+  "contrastGloss": "producing many works, results, or offspring",
+  "confusionType": "overlapping",
+  "confidence": 0.84
+ },
+ {
+  "wordId": 1637,
+  "word": "Ramification",
+  "contrastWord": "repercussion",
+  "contrastGloss": "an indirect consequence that is usually unwelcome",
+  "confusionType": "overlapping",
+  "confidence": 0.89
+ },
+ {
+  "wordId": 1638,
+  "word": "Repercussion",
+  "contrastWord": "ramification",
+  "contrastGloss": "a branching consequence that adds complexity",
+  "confusionType": "overlapping",
+  "confidence": 0.89
+ },
+ {
+  "wordId": 1639,
+  "word": "Spawn",
+  "contrastWord": "spurn",
+  "contrastGloss": "reject with contempt or disdain",
+  "confusionType": "paronym",
+  "confidence": 0.8
+ },
+ {
+  "wordId": 1642,
+  "word": "Dissolution",
+  "contrastWord": "dilution",
+  "contrastGloss": "weakening a substance by adding another material",
+  "confusionType": "paronym",
+  "confidence": 0.81
+ },
+ {
+  "wordId": 1643,
+  "word": "Ephemeral",
+  "contrastWord": "ethereal",
+  "contrastGloss": "delicately light or seemingly otherworldly",
+  "confusionType": "paronym",
+  "confidence": 0.96
+ },
+ {
+  "wordId": 1644,
+  "word": "Hiatus",
+  "contrastWord": "sabbatical",
+  "contrastGloss": "a planned extended leave from regular work",
+  "confusionType": "overlapping",
+  "confidence": 0.78
+ },
+ {
+  "wordId": 1646,
+  "word": "Malleable",
+  "contrastWord": "mutable",
+  "contrastGloss": "capable of changing in form or character generally",
+  "confusionType": "overlapping",
+  "confidence": 0.76
+ },
+ {
+  "wordId": 1648,
+  "word": "Pivotal",
+  "contrastWord": "vital",
+  "contrastGloss": "absolutely necessary for existence or success",
+  "confusionType": "overlapping",
+  "confidence": 0.82
+ },
+ {
+  "wordId": 1649,
+  "word": "Precipitous",
+  "contrastWord": "precipitate",
+  "contrastGloss": "done rashly or causing an event prematurely",
+  "confusionType": "paronym",
+  "confidence": 0.96
+ },
+ {
+  "wordId": 1650,
+  "word": "Sporadic",
+  "contrastWord": "intermittent",
+  "contrastGloss": "stopping and restarting at intervals, possibly regularly",
+  "confusionType": "overlapping",
+  "confidence": 0.86
+ },
+ {
+  "wordId": 1651,
+  "word": "Transient",
+  "contrastWord": "transitional",
+  "contrastGloss": "relating to passage between two stages",
+  "confusionType": "paronym",
+  "confidence": 0.9
+ },
+ {
+  "wordId": 1652,
+  "word": "Adverse",
+  "contrastWord": "averse",
+  "contrastGloss": "strongly unwilling or opposed to something",
+  "confusionType": "paronym",
+  "confidence": 0.99
+ },
+ {
+  "wordId": 1653,
+  "word": "Arduous",
+  "contrastWord": "onerous",
+  "contrastGloss": "imposing an unfairly heavy burden or obligation",
+  "confusionType": "overlapping",
+  "confidence": 0.87
+ },
+ {
+  "wordId": 1654,
+  "word": "Attrition",
+  "contrastWord": "atrophy",
+  "contrastGloss": "wasting away through disuse, disease, or neglect",
+  "confusionType": "overlapping",
+  "confidence": 0.76
+ },
+ {
+  "wordId": 1655,
+  "word": "Debilitate",
+  "contrastWord": "deteriorate",
+  "contrastGloss": "become progressively worse in quality or condition",
+  "confusionType": "overlapping",
+  "confidence": 0.83
+ },
+ {
+  "wordId": 1656,
+  "word": "Deleterious",
+  "contrastWord": "delirious",
+  "contrastGloss": "acutely confused, often because of illness or fever",
+  "confusionType": "paronym",
+  "confidence": 0.94
+ },
+ {
+  "wordId": 1657,
+  "word": "Encroach",
+  "contrastWord": "infringe",
+  "contrastGloss": "violate a law, right, or agreed restriction",
+  "confusionType": "overlapping",
+  "confidence": 0.87
+ },
+ {
+  "wordId": 1658,
+  "word": "Exigency",
+  "contrastWord": "emergency",
+  "contrastGloss": "a sudden dangerous situation requiring immediate action",
+  "confusionType": "overlapping",
+  "confidence": 0.84
+ },
+ {
+  "wordId": 1659,
+  "word": "Extricate",
+  "contrastWord": "extract",
+  "contrastGloss": "remove or obtain something from a source",
+  "confusionType": "overlapping",
+  "confidence": 0.88
+ },
+ {
+  "wordId": 1660,
+  "word": "Fetter",
+  "contrastWord": "fester",
+  "contrastGloss": "grow increasingly infected, bitter, or troublesome",
+  "confusionType": "paronym",
+  "confidence": 0.85
+ },
+ {
+  "wordId": 1662,
+  "word": "Onerous",
+  "contrastWord": "arduous",
+  "contrastGloss": "requiring sustained effort or endurance to complete",
+  "confusionType": "overlapping",
+  "confidence": 0.87
+ },
+ {
+  "wordId": 1663,
+  "word": "Stringent",
+  "contrastWord": "strident",
+  "contrastGloss": "loud, forceful, and harsh in expression",
+  "confusionType": "paronym",
+  "confidence": 0.96
+ },
+ {
+  "wordId": 1664,
+  "word": "Effusion",
+  "contrastWord": "infusion",
+  "contrastGloss": "the introduction or steeping of one substance in another",
+  "confusionType": "paronym",
+  "confidence": 0.8
+ },
+ {
+  "wordId": 1665,
+  "word": "Ethereal",
+  "contrastWord": "ephemeral",
+  "contrastGloss": "lasting for only a very short time",
+  "confusionType": "paronym",
+  "confidence": 0.96
+ },
+ {
+  "wordId": 1666,
+  "word": "Evanescent",
+  "contrastWord": "effervescent",
+  "contrastGloss": "bubbly, lively, or enthusiastically animated",
+  "confusionType": "paronym",
+  "confidence": 0.91
+ },
+ {
+  "wordId": 1667,
+  "word": "Incandescent",
+  "contrastWord": "iridescent",
+  "contrastGloss": "showing shifting colors as the viewing angle changes",
+  "confusionType": "overlapping",
+  "confidence": 0.87
+ },
+ {
+  "wordId": 1668,
+  "word": "Ineffable",
+  "contrastWord": "infallible",
+  "contrastGloss": "incapable of making mistakes or being wrong",
+  "confusionType": "paronym",
+  "confidence": 0.96
+ },
+ {
+  "wordId": 1669,
+  "word": "Luminous",
+  "contrastWord": "luminescent",
+  "contrastGloss": "producing light through luminescence, usually without significant heat",
+  "confusionType": "paronym",
+  "confidence": 0.84
+ },
+ {
+  "wordId": 1670,
+  "word": "Profound",
+  "contrastWord": "profuse",
+  "contrastGloss": "produced or given in very large amounts",
+  "confusionType": "paronym",
+  "confidence": 0.78
+ },
+ {
+  "wordId": 1672,
+  "word": "Substantive",
+  "contrastWord": "substantial",
+  "contrastGloss": "large in amount, extent, or importance",
+  "confusionType": "paronym",
+  "confidence": 0.96
+ },
+ {
+  "wordId": 1673,
+  "word": "Tenable",
+  "contrastWord": "tenuous",
+  "contrastGloss": "weak, slight, or supported by little evidence",
+  "confusionType": "paronym",
+  "confidence": 0.94
+ },
+ {
+  "wordId": 1675,
+  "word": "Chronic",
+  "contrastWord": "acute",
+  "contrastGloss": "sudden in onset and usually short-lived",
+  "confusionType": "overlapping",
+  "confidence": 0.94
+ },
+ {
+  "wordId": 1676,
+  "word": "Congenital",
+  "contrastWord": "hereditary",
+  "contrastGloss": "genetically passed from parents to their offspring",
+  "confusionType": "misuse",
+  "confidence": 0.97
+ },
+ {
+  "wordId": 1677,
+  "word": "Decimate",
+  "contrastWord": "annihilate",
+  "contrastGloss": "destroy completely, leaving nothing or no survivors",
+  "confusionType": "overlapping",
+  "confidence": 0.82
+ },
+ {
+  "wordId": 1678,
+  "word": "Desiccate",
+  "contrastWord": "dissect",
+  "contrastGloss": "cut apart for detailed examination",
+  "confusionType": "paronym",
+  "confidence": 0.9
+ },
+ {
+  "wordId": 1679,
+  "word": "Distend",
+  "contrastWord": "extend",
+  "contrastGloss": "make something longer or increase its reach",
+  "confusionType": "paronym",
+  "confidence": 0.88
+ },
+ {
+  "wordId": 1682,
+  "word": "Malignant",
+  "contrastWord": "malign",
+  "contrastGloss": "speak maliciously and falsely about someone",
+  "confusionType": "paronym",
+  "confidence": 0.82
+ },
+ {
+  "wordId": 1683,
+  "word": "Malinger",
+  "contrastWord": "linger",
+  "contrastGloss": "remain somewhere longer than expected",
+  "confusionType": "paronym",
+  "confidence": 0.93
+ },
+ {
+  "wordId": 1684,
+  "word": "Moribund",
+  "contrastWord": "morbid",
+  "contrastGloss": "showing an unhealthy interest in death or disease",
+  "confusionType": "paronym",
+  "confidence": 0.96
+ },
+ {
+  "wordId": 1685,
+  "word": "Palliate",
+  "contrastWord": "placate",
+  "contrastGloss": "calm someone who is angry or hostile",
+  "confusionType": "paronym",
+  "confidence": 0.89
+ },
+ {
+  "wordId": 1686,
+  "word": "Pathology",
+  "contrastWord": "etiology",
+  "contrastGloss": "the cause or origin of a disease",
+  "confusionType": "overlapping",
+  "confidence": 0.86
+ },
+ {
+  "wordId": 1687,
+  "word": "Aggregate",
+  "contrastWord": "aggravate",
+  "contrastGloss": "make an unpleasant condition or situation worse",
+  "confusionType": "paronym",
+  "confidence": 0.76
+ },
+ {
+  "wordId": 1688,
+  "word": "Awry",
+  "contrastWord": "wary",
+  "contrastGloss": "cautious because of possible danger",
+  "confusionType": "paronym",
+  "confidence": 0.95
+ },
+ {
+  "wordId": 1689,
+  "word": "Circumvent",
+  "contrastWord": "circumnavigate",
+  "contrastGloss": "travel completely around a place or object",
+  "confusionType": "paronym",
+  "confidence": 0.86
+ },
+ {
+  "wordId": 1690,
+  "word": "Expedient",
+  "contrastWord": "expeditious",
+  "contrastGloss": "done quickly and efficiently",
+  "confusionType": "paronym",
+  "confidence": 0.97
+ },
+ {
+  "wordId": 1691,
+  "word": "Expedite",
+  "contrastWord": "facilitate",
+  "contrastGloss": "make a process easier to accomplish",
+  "confusionType": "overlapping",
+  "confidence": 0.85
+ },
+ {
+  "wordId": 1692,
+  "word": "Founder",
+  "contrastWord": "flounder",
+  "contrastGloss": "struggle clumsily without making effective progress",
+  "confusionType": "paronym",
+  "confidence": 0.99
+ },
+ {
+  "wordId": 1695,
+  "word": "Pragmatic",
+  "contrastWord": "idealistic",
+  "contrastGloss": "guided more by ideals than by practical constraints",
+  "confusionType": "overlapping",
+  "confidence": 0.93
+ },
+ {
+  "wordId": 1696,
+  "word": "Recant",
+  "contrastWord": "renounce",
+  "contrastGloss": "formally give up a right, claim, or allegiance",
+  "confusionType": "overlapping",
+  "confidence": 0.92
+ },
+ {
+  "wordId": 1697,
+  "word": "Renounce",
+  "contrastWord": "recant",
+  "contrastGloss": "withdraw a previously stated belief or assertion",
+  "confusionType": "overlapping",
+  "confidence": 0.92
+ },
+ {
+  "wordId": 1698,
+  "word": "Utilitarian",
+  "contrastWord": "pragmatic",
+  "contrastGloss": "focused on workable results in a particular situation",
+  "confusionType": "overlapping",
+  "confidence": 0.8
+ },
+ {
+  "wordId": 1699,
+  "word": "Renaissance",
+  "contrastWord": "reconnaissance",
+  "contrastGloss": "military observation undertaken to gather information",
+  "confusionType": "paronym",
+  "confidence": 0.97
+ },
+ {
+  "wordId": 1700,
+  "word": "Aberration",
+  "contrastWord": "anomaly",
+  "contrastGloss": "an irregularity that need not indicate something went wrong",
+  "confusionType": "overlapping",
+  "confidence": 0.88
+ },
+ {
+  "wordId": 1701,
+  "word": "Anomaly",
+  "contrastWord": "aberration",
+  "contrastGloss": "an unwelcome deviation suggesting the normal pattern was disrupted",
+  "confusionType": "overlapping",
+  "confidence": 0.88
+ },
+ {
+  "wordId": 1702,
+  "word": "Archetype",
+  "contrastWord": "stereotype",
+  "contrastGloss": "an oversimplified fixed belief about a group",
+  "confusionType": "overlapping",
+  "confidence": 0.94
+ },
+ {
+  "wordId": 1703,
+  "word": "Disparate",
+  "contrastWord": "desperate",
+  "contrastGloss": "feeling extreme urgency or having little hope",
+  "confusionType": "paronym",
+  "confidence": 0.99
+ },
+ {
+  "wordId": 1704,
+  "word": "Eclectic",
+  "contrastWord": "eccentric",
+  "contrastGloss": "unconventional or noticeably strange in behaviour",
+  "confusionType": "paronym",
+  "confidence": 0.94
+ },
+ {
+  "wordId": 1705,
+  "word": "Epitome",
+  "contrastWord": "epithet",
+  "contrastGloss": "a descriptive name or phrase applied to someone",
+  "confusionType": "paronym",
+  "confidence": 0.96
+ },
+ {
+  "wordId": 1706,
+  "word": "Gravity",
+  "contrastWord": "inertia",
+  "contrastGloss": "resistance to any change in an object's motion",
+  "confusionType": "overlapping",
+  "confidence": 0.76
+ },
+ {
+  "wordId": 1708,
+  "word": "Prodigy",
+  "contrastWord": "protégé",
+  "contrastGloss": "a person guided and supported by an influential mentor",
+  "confusionType": "overlapping",
+  "confidence": 0.94
+ },
+ {
+  "wordId": 1709,
+  "word": "Circumscribe",
+  "contrastWord": "circumspect",
+  "contrastGloss": "careful to consider risks before acting",
+  "confusionType": "paronym",
+  "confidence": 0.82
+ },
+ {
+  "wordId": 1710,
+  "word": "Commensurate",
+  "contrastWord": "consummate",
+  "contrastGloss": "supremely skilled or complete in every respect",
+  "confusionType": "paronym",
+  "confidence": 0.92
+ },
+ {
+  "wordId": 1711,
+  "word": "Contiguous",
+  "contrastWord": "continuous",
+  "contrastGloss": "uninterrupted across time, space, or sequence",
+  "confusionType": "paronym",
+  "confidence": 0.95
+ },
+ {
+  "wordId": 1712,
+  "word": "Delineate",
+  "contrastWord": "demarcate",
+  "contrastGloss": "mark the exact boundary between areas",
+  "confusionType": "overlapping",
+  "confidence": 0.68
+ },
+ {
+  "wordId": 1713,
+  "word": "Discrete",
+  "contrastWord": "discreet",
+  "contrastGloss": "careful not to attract attention or reveal secrets",
+  "confusionType": "paronym",
+  "confidence": 0.99
+ },
+ {
+  "wordId": 1715,
+  "word": "Periphery",
+  "contrastWord": "perimeter",
+  "contrastGloss": "the boundary line or measured distance around an area",
+  "confusionType": "overlapping",
+  "confidence": 0.88
+ },
+ {
+  "wordId": 1716,
+  "word": "Preclude",
+  "contrastWord": "exclude",
+  "contrastGloss": "leave someone or something out of a group",
+  "confusionType": "paronym",
+  "confidence": 0.86
+ },
+ {
+  "wordId": 1717,
+  "word": "Proximity",
+  "contrastWord": "propensity",
+  "contrastGloss": "a natural tendency or inclination toward something",
+  "confusionType": "paronym",
+  "confidence": 0.9
+ },
+ {
+  "wordId": 1718,
+  "word": "Sequester",
+  "contrastWord": "quarantine",
+  "contrastGloss": "isolate to prevent the spread of disease",
+  "confusionType": "overlapping",
+  "confidence": 0.78
+ },
+ {
+  "wordId": 1719,
+  "word": "Tantamount",
+  "contrastWord": "paramount",
+  "contrastGloss": "more important than anything else",
+  "confusionType": "paronym",
+  "confidence": 0.96
+ },
+ {
+  "wordId": 1720,
+  "word": "Uniform",
+  "contrastWord": "unanimous",
+  "contrastGloss": "agreed upon by every member of a group",
+  "confusionType": "overlapping",
+  "confidence": 0.7
+ },
+ {
+  "wordId": 1721,
+  "word": "Abridge",
+  "contrastWord": "abbreviate",
+  "contrastGloss": "shorten a word or phrase into a reduced form",
+  "confusionType": "overlapping",
+  "confidence": 0.89
+ },
+ {
+  "wordId": 1723,
+  "word": "Alloy",
+  "contrastWord": "allay",
+  "contrastGloss": "reduce a fear, suspicion, or painful feeling",
+  "confusionType": "paronym",
+  "confidence": 0.94
+ },
+ {
+  "wordId": 1724,
+  "word": "Infinitesimal",
+  "contrastWord": "infinite",
+  "contrastGloss": "limitless in extent, quantity, or duration",
+  "confusionType": "paronym",
+  "confidence": 0.93
+ },
+ {
+  "wordId": 1725,
+  "word": "Integral",
+  "contrastWord": "integer",
+  "contrastGloss": "a whole number without a fractional part",
+  "confusionType": "paronym",
+  "confidence": 0.91
+ },
+ {
+  "wordId": 1727,
+  "word": "Requisite",
+  "contrastWord": "prerequisite",
+  "contrastGloss": "a condition that must be satisfied beforehand",
+  "confusionType": "overlapping",
+  "confidence": 0.9
+ },
+ {
+  "wordId": 1729,
+  "word": "Abortive",
+  "contrastWord": "aborted",
+  "contrastGloss": "deliberately stopped or ended before completion",
+  "confusionType": "overlapping",
+  "confidence": 0.87
+ },
+ {
+  "wordId": 1730,
+  "word": "Accost",
+  "contrastWord": "assault",
+  "contrastGloss": "physically attack or threaten someone with violence",
+  "confusionType": "misuse",
+  "confidence": 0.77
+ },
+ {
+  "wordId": 1731,
+  "word": "Contentious",
+  "contrastWord": "conscientious",
+  "contrastGloss": "careful, responsible, and guided by a sense of duty",
+  "confusionType": "paronym",
+  "confidence": 0.91
+ },
+ {
+  "wordId": 1733,
+  "word": "Egregious",
+  "contrastWord": "gregarious",
+  "contrastGloss": "sociable and fond of being with other people",
+  "confusionType": "paronym",
+  "confidence": 0.96
+ },
+ {
+  "wordId": 1734,
+  "word": "Exacerbate",
+  "contrastWord": "exasperate",
+  "contrastGloss": "irritate someone until they lose patience",
+  "confusionType": "paronym",
+  "confidence": 0.99
+ },
+ {
+  "wordId": 1735,
+  "word": "Exasperate",
+  "contrastWord": "exacerbate",
+  "contrastGloss": "make an existing problem or condition worse",
+  "confusionType": "paronym",
+  "confidence": 0.99
+ },
+ {
+  "wordId": 1737,
+  "word": "Hapless",
+  "contrastWord": "helpless",
+  "contrastGloss": "unable to act or defend oneself without assistance",
+  "confusionType": "paronym",
+  "confidence": 0.96
+ },
+ {
+  "wordId": 1738,
+  "word": "Ponderous",
+  "contrastWord": "pensive",
+  "contrastGloss": "deeply absorbed in serious or reflective thought",
+  "confusionType": "misuse",
+  "confidence": 0.72
+ },
+ {
+  "wordId": 1739,
+  "word": "Protract",
+  "contrastWord": "retract",
+  "contrastGloss": "draw something back or formally withdraw a statement",
+  "confusionType": "paronym",
+  "confidence": 0.94
+ },
+ {
+  "wordId": 1740,
+  "word": "Stymie",
+  "contrastWord": "stifle",
+  "contrastGloss": "suppress an activity, feeling, or expression as it develops",
+  "confusionType": "overlapping",
+  "confidence": 0.76
+ },
+ {
+  "wordId": 1741,
+  "word": "Altruism",
+  "contrastWord": "philanthropy",
+  "contrastGloss": "organized giving of resources for the public good",
+  "confusionType": "overlapping",
+  "confidence": 0.89
+ },
+ {
+  "wordId": 1742,
+  "word": "Benefactor",
+  "contrastWord": "beneficiary",
+  "contrastGloss": "a person who receives money, help, or an advantage",
+  "confusionType": "paronym",
+  "confidence": 0.99
+ },
+ {
+  "wordId": 1743,
+  "word": "Benevolent",
+  "contrastWord": "benign",
+  "contrastGloss": "gentle or harmless rather than actively generous",
+  "confusionType": "overlapping",
+  "confidence": 0.84
+ },
+ {
+  "wordId": 1744,
+  "word": "Bequest",
+  "contrastWord": "inheritance",
+  "contrastGloss": "property received by an heir, with or without a will",
+  "confusionType": "overlapping",
+  "confidence": 0.87
+ },
+ {
+  "wordId": 1745,
+  "word": "Largess",
+  "contrastWord": "largeness",
+  "contrastGloss": "the quality of being great in physical size",
+  "confusionType": "paronym",
+  "confidence": 0.92
+ },
+ {
+  "wordId": 1746,
+  "word": "Philanthropy",
+  "contrastWord": "altruism",
+  "contrastGloss": "selfless concern expressed without expectation of personal reward",
+  "confusionType": "overlapping",
+  "confidence": 0.89
+ },
+ {
+  "wordId": 1747,
+  "word": "Prodigal",
+  "contrastWord": "prodigious",
+  "contrastGloss": "remarkably great in size, extent, or ability",
+  "confusionType": "paronym",
+  "confidence": 0.97
+ },
+ {
+  "wordId": 1748,
+  "word": "Provident",
+  "contrastWord": "providential",
+  "contrastGloss": "occurring opportunely as if through divine intervention",
+  "confusionType": "paronym",
+  "confidence": 0.91
+ },
+ {
+  "wordId": 1749,
+  "word": "Solicitous",
+  "contrastWord": "solicit",
+  "contrastGloss": "ask for or try to obtain something",
+  "confusionType": "paronym",
+  "confidence": 0.86
+ },
+ {
+  "wordId": 1750,
+  "word": "Abnegate",
+  "contrastWord": "negate",
+  "contrastGloss": "cancel out or deny the truth of something",
+  "confusionType": "paronym",
+  "confidence": 0.91
+ },
+ {
+  "wordId": 1751,
+  "word": "Abstinent",
+  "contrastWord": "abstemious",
+  "contrastGloss": "moderate and restrained, especially in eating or drinking",
+  "confusionType": "overlapping",
+  "confidence": 0.9
+ },
+ {
+  "wordId": 1752,
+  "word": "Ascetic",
+  "contrastWord": "aesthetic",
+  "contrastGloss": "concerned with beauty or artistic taste",
+  "confusionType": "paronym",
+  "confidence": 0.98
+ },
+ {
+  "wordId": 1753,
+  "word": "Austere",
+  "contrastWord": "severe",
+  "contrastGloss": "harsh or intense rather than simply plain",
+  "confusionType": "overlapping",
+  "confidence": 0.81
+ },
+ {
+  "wordId": 1754,
+  "word": "Celibacy",
+  "contrastWord": "chastity",
+  "contrastGloss": "sexual restraint or purity without necessarily remaining unmarried",
+  "confusionType": "overlapping",
+  "confidence": 0.91
+ },
+ {
+  "wordId": 1755,
+  "word": "Forbear",
+  "contrastWord": "forebear",
+  "contrastGloss": "an ancestor or person from an earlier generation",
+  "confusionType": "paronym",
+  "confidence": 0.98
+ },
+ {
+  "wordId": 1756,
+  "word": "Forego",
+  "contrastWord": "forbear",
+  "contrastGloss": "restrain oneself from acting, especially under provocation",
+  "confusionType": "overlapping",
+  "confidence": 0.73
+ },
+ {
+  "wordId": 1757,
+  "word": "Forsake",
+  "contrastWord": "forgo",
+  "contrastGloss": "choose to go without a particular option or pleasure",
+  "confusionType": "overlapping",
+  "confidence": 0.83
+ },
+ {
+  "wordId": 1758,
+  "word": "Frugal",
+  "contrastWord": "parsimonious",
+  "contrastGloss": "so unwilling to spend that it becomes unreasonable",
+  "confusionType": "overlapping",
+  "confidence": 0.94
+ },
+ {
+  "wordId": 1759,
+  "word": "Parsimonious",
+  "contrastWord": "frugal",
+  "contrastGloss": "careful with resources without being unreasonably stingy",
+  "confusionType": "overlapping",
+  "confidence": 0.94
+ },
+ {
+  "wordId": 1760,
+  "word": "Sobriety",
+  "contrastWord": "abstinence",
+  "contrastGloss": "deliberate avoidance of alcohol or another activity entirely",
+  "confusionType": "overlapping",
+  "confidence": 0.84
+ },
+ {
+  "wordId": 1761,
+  "word": "Temperate",
+  "contrastWord": "abstinent",
+  "contrastGloss": "avoiding an activity or substance altogether",
+  "confusionType": "overlapping",
+  "confidence": 0.86
+ },
+ {
+  "wordId": 1762,
+  "word": "Adulterate",
+  "contrastWord": "adulate",
+  "contrastGloss": "praise someone excessively or servilely",
+  "confusionType": "paronym",
+  "confidence": 0.91
+ },
+ {
+  "wordId": 1763,
+  "word": "Artful",
+  "contrastWord": "artistic",
+  "contrastGloss": "showing creative skill or sensitivity in the arts",
+  "confusionType": "paronym",
+  "confidence": 0.93
+ },
+ {
+  "wordId": 1766,
+  "word": "Delude",
+  "contrastWord": "elude",
+  "contrastGloss": "escape from capture, understanding, or achievement",
+  "confusionType": "paronym",
+  "confidence": 0.97
+ },
+ {
+  "wordId": 1767,
+  "word": "Duplicity",
+  "contrastWord": "duplication",
+  "contrastGloss": "the act of making or copying something twice",
+  "confusionType": "paronym",
+  "confidence": 0.87
+ },
+ {
+  "wordId": 1768,
+  "word": "Fabrication",
+  "contrastWord": "falsification",
+  "contrastGloss": "alteration of real information to make it misleading",
+  "confusionType": "overlapping",
+  "confidence": 0.84
+ },
+ {
+  "wordId": 1769,
+  "word": "Finesse",
+  "contrastWord": "finagle",
+  "contrastGloss": "obtain something through clever, often dishonest maneuvering",
+  "confusionType": "overlapping",
+  "confidence": 0.72
+ },
+ {
+  "wordId": 1771,
+  "word": "Specious",
+  "contrastWord": "spurious",
+  "contrastGloss": "not genuine or valid, without necessarily seeming plausible",
+  "confusionType": "overlapping",
+  "confidence": 0.93
+ },
+ {
+  "wordId": 1772,
+  "word": "Ambiguous",
+  "contrastWord": "vague",
+  "contrastGloss": "lacking enough detail or precision to be clear",
+  "confusionType": "overlapping",
+  "confidence": 0.96
+ },
+ {
+  "wordId": 1773,
+  "word": "Circuitous",
+  "contrastWord": "circular",
+  "contrastGloss": "returning to its starting point or reasoning in a loop",
+  "confusionType": "paronym",
+  "confidence": 0.89
+ },
+ {
+  "wordId": 1774,
+  "word": "Circumlocution",
+  "contrastWord": "circumvention",
+  "contrastGloss": "getting around a rule, restriction, or obstacle",
+  "confusionType": "paronym",
+  "confidence": 0.82
+ },
+ {
+  "wordId": 1775,
+  "word": "Elliptical",
+  "contrastWord": "cryptic",
+  "contrastGloss": "mysteriously obscure rather than compressed through omitted words",
+  "confusionType": "overlapping",
+  "confidence": 0.76
+ },
+ {
+  "wordId": 1776,
+  "word": "Equivocal",
+  "contrastWord": "ambiguous",
+  "contrastGloss": "open to multiple interpretations without necessarily being evasive",
+  "confusionType": "overlapping",
+  "confidence": 0.94
+ },
+ {
+  "wordId": 1777,
+  "word": "Euphemism",
+  "contrastWord": "understatement",
+  "contrastGloss": "presentation of something as less serious than it is",
+  "confusionType": "overlapping",
+  "confidence": 0.85
+ },
+ {
+  "wordId": 1778,
+  "word": "Insinuate",
+  "contrastWord": "imply",
+  "contrastGloss": "suggest indirectly without necessarily conveying something unpleasant",
+  "confusionType": "overlapping",
+  "confidence": 0.94
+ },
+ {
+  "wordId": 1779,
+  "word": "Mendacious",
+  "contrastWord": "mendicant",
+  "contrastGloss": "a person who lives by begging",
+  "confusionType": "paronym",
+  "confidence": 0.78
+ },
+ {
+  "wordId": 1780,
+  "word": "Obfuscate",
+  "contrastWord": "obscure",
+  "contrastGloss": "make unclear or hidden, not necessarily deliberately",
+  "confusionType": "overlapping",
+  "confidence": 0.93
+ },
+ {
+  "wordId": 1781,
+  "word": "Oblique",
+  "contrastWord": "obtuse",
+  "contrastGloss": "greater than 90 degrees or slow to understand",
+  "confusionType": "paronym",
+  "confidence": 0.84
+ },
+ {
+  "wordId": 1782,
+  "word": "Ostensible",
+  "contrastWord": "ostentatious",
+  "contrastGloss": "showy and designed to attract attention or admiration",
+  "confusionType": "paronym",
+  "confidence": 0.97
+ },
+ {
+  "wordId": 1783,
+  "word": "Avow",
+  "contrastWord": "vow",
+  "contrastGloss": "make a solemn promise or pledge",
+  "confusionType": "paronym",
+  "confidence": 0.94
+ },
+ {
+  "wordId": 1784,
+  "word": "Candor",
+  "contrastWord": "bluntness",
+  "contrastGloss": "directness so sharp that it may seem insensitive",
+  "confusionType": "overlapping",
+  "confidence": 0.73
+ },
+ {
+  "wordId": 1785,
+  "word": "Credulous",
+  "contrastWord": "credible",
+  "contrastGloss": "believable or worthy of trust",
+  "confusionType": "paronym",
+  "confidence": 0.98
+ },
+ {
+  "wordId": 1786,
+  "word": "Disinterested",
+  "contrastWord": "uninterested",
+  "contrastGloss": "having no interest, curiosity, or enthusiasm",
+  "confusionType": "misuse",
+  "confidence": 0.99
+ },
+ {
+  "wordId": 1787,
+  "word": "Explicit",
+  "contrastWord": "specific",
+  "contrastGloss": "precise and particular but not necessarily directly stated",
+  "confusionType": "overlapping",
+  "confidence": 0.82
+ },
+ {
+  "wordId": 1788,
+  "word": "Fidelity",
+  "contrastWord": "fealty",
+  "contrastGloss": "formal loyalty owed to a ruler or superior",
+  "confusionType": "paronym",
+  "confidence": 0.76
+ },
+ {
+  "wordId": 1789,
+  "word": "Impartial",
+  "contrastWord": "disinterested",
+  "contrastGloss": "unbiased because one has no personal stake",
+  "confusionType": "overlapping",
+  "confidence": 0.91
+ },
+ {
+  "wordId": 1790,
+  "word": "Ingenuous",
+  "contrastWord": "ingenious",
+  "contrastGloss": "clever, inventive, or skillfully designed",
+  "confusionType": "paronym",
+  "confidence": 0.99
+ },
+ {
+  "wordId": 1792,
+  "word": "Unwitting",
+  "contrastWord": "unwilling",
+  "contrastGloss": "not prepared or consenting to do something",
+  "confusionType": "paronym",
+  "confidence": 0.96
+ },
+ {
+  "wordId": 1793,
+  "word": "Affectation",
+  "contrastWord": "affection",
+  "contrastGloss": "a feeling of fondness or emotional attachment",
+  "confusionType": "paronym",
+  "confidence": 0.98
+ },
+ {
+  "wordId": 1794,
+  "word": "Belie",
+  "contrastWord": "betray",
+  "contrastGloss": "unintentionally reveal something meant to remain hidden",
+  "confusionType": "overlapping",
+  "confidence": 0.86
+ },
+ {
+  "wordId": 1795,
+  "word": "Contrived",
+  "contrastWord": "convoluted",
+  "contrastGloss": "excessively complicated and difficult to follow",
+  "confusionType": "paronym",
+  "confidence": 0.72
+ },
+ {
+  "wordId": 1796,
+  "word": "Countenance",
+  "contrastWord": "demeanor",
+  "contrastGloss": "a person's overall outward manner and behavior",
+  "confusionType": "overlapping",
+  "confidence": 0.76
+ },
+ {
+  "wordId": 1797,
+  "word": "Derogatory",
+  "contrastWord": "defamatory",
+  "contrastGloss": "damaging someone's reputation, especially through false statements",
+  "confusionType": "overlapping",
+  "confidence": 0.87
+ },
+ {
+  "wordId": 1799,
+  "word": "Pious",
+  "contrastWord": "sanctimonious",
+  "contrastGloss": "making an insincere show of moral superiority",
+  "confusionType": "overlapping",
+  "confidence": 0.94
+ },
+ {
+  "wordId": 1800,
+  "word": "Sanctimonious",
+  "contrastWord": "pious",
+  "contrastGloss": "sincerely devout in religious belief and practice",
+  "confusionType": "overlapping",
+  "confidence": 0.94
+ },
+ {
+  "wordId": 1801,
+  "word": "Unctuous",
+  "contrastWord": "obsequious",
+  "contrastGloss": "excessively submissive and eager to obey",
+  "confusionType": "overlapping",
+  "confidence": 0.85
+ },
+ {
+  "wordId": 1802,
+  "word": "Allege",
+  "contrastWord": "assert",
+  "contrastGloss": "state something confidently without implying it remains unproven",
+  "confusionType": "overlapping",
+  "confidence": 0.88
+ },
+ {
+  "wordId": 1803,
+  "word": "Apocryphal",
+  "contrastWord": "anecdotal",
+  "contrastGloss": "based on personal reports rather than systematic evidence",
+  "confusionType": "overlapping",
+  "confidence": 0.78
+ },
+ {
+  "wordId": 1804,
+  "word": "Conjecture",
+  "contrastWord": "inference",
+  "contrastGloss": "a conclusion drawn logically from available evidence",
+  "confusionType": "overlapping",
+  "confidence": 0.91
+ },
+ {
+  "wordId": 1805,
+  "word": "Dubious",
+  "contrastWord": "ambiguous",
+  "contrastGloss": "open to more than one interpretation",
+  "confusionType": "overlapping",
+  "confidence": 0.68
+ },
+ {
+  "wordId": 1806,
+  "word": "Provisional",
+  "contrastWord": "tentative",
+  "contrastGloss": "uncertain or hesitant rather than formally temporary",
+  "confusionType": "overlapping",
+  "confidence": 0.92
+ },
+ {
+  "wordId": 1807,
+  "word": "Purported",
+  "contrastWord": "putative",
+  "contrastGloss": "generally assumed rather than explicitly claimed to be so",
+  "confusionType": "overlapping",
+  "confidence": 0.89
+ },
+ {
+  "wordId": 1808,
+  "word": "Purportedly",
+  "contrastWord": "reportedly",
+  "contrastGloss": "according to reports, without necessarily signaling skepticism",
+  "confusionType": "overlapping",
+  "confidence": 0.91
+ },
+ {
+  "wordId": 1809,
+  "word": "Putative",
+  "contrastWord": "purported",
+  "contrastGloss": "explicitly claimed to be so, often with skepticism",
+  "confusionType": "overlapping",
+  "confidence": 0.89
+ },
+ {
+  "wordId": 1810,
+  "word": "Spurious",
+  "contrastWord": "specious",
+  "contrastGloss": "superficially plausible but actually misleading or unsound",
+  "confusionType": "paronym",
+  "confidence": 0.96
+ },
+ {
+  "wordId": 1811,
+  "word": "Tentative",
+  "contrastWord": "tenuous",
+  "contrastGloss": "weak or poorly supported rather than merely unconfirmed",
+  "confusionType": "paronym",
+  "confidence": 0.98
+ },
+ {
+  "wordId": 1812,
+  "word": "Tenuous",
+  "contrastWord": "tentative",
+  "contrastGloss": "uncertain or hesitant rather than weakly supported",
+  "confusionType": "paronym",
+  "confidence": 0.98
+ },
+ {
+  "wordId": 1813,
+  "word": "Acerbic",
+  "contrastWord": "acetic",
+  "contrastGloss": "relating to vinegar or its characteristic acid",
+  "confusionType": "paronym",
+  "confidence": 0.75
+ },
+ {
+  "wordId": 1814,
+  "word": "Burlesque",
+  "contrastWord": "parody",
+  "contrastGloss": "comic imitation of a particular work or style",
+  "confusionType": "overlapping",
+  "confidence": 0.86
+ },
+ {
+  "wordId": 1815,
+  "word": "Caricature",
+  "contrastWord": "cartoon",
+  "contrastGloss": "any simplified drawing, without necessarily exaggerating personal features",
+  "confusionType": "overlapping",
+  "confidence": 0.88
+ },
+ {
+  "wordId": 1816,
+  "word": "Caustic",
+  "contrastWord": "sarcastic",
+  "contrastGloss": "using mocking irony without necessarily being severely harsh",
+  "confusionType": "overlapping",
+  "confidence": 0.89
+ },
+ {
+  "wordId": 1817,
+  "word": "Facetious",
+  "contrastWord": "fatuous",
+  "contrastGloss": "foolish and pointless rather than playfully inappropriate",
+  "confusionType": "paronym",
+  "confidence": 0.97
+ },
+ {
+  "wordId": 1818,
+  "word": "Farcical",
+  "contrastWord": "facetious",
+  "contrastGloss": "treating a serious matter with inappropriate humor",
+  "confusionType": "paronym",
+  "confidence": 0.9
+ },
+ {
+  "wordId": 1819,
+  "word": "Invective",
+  "contrastWord": "incentive",
+  "contrastGloss": "something that motivates or encourages action",
+  "confusionType": "paronym",
+  "confidence": 0.79
+ },
+ {
+  "wordId": 1820,
+  "word": "Ironic",
+  "contrastWord": "coincidental",
+  "contrastGloss": "happening together by chance without a meaningful reversal",
+  "confusionType": "misuse",
+  "confidence": 0.98
+ },
+ {
+  "wordId": 1821,
+  "word": "Lampoon",
+  "contrastWord": "parody",
+  "contrastGloss": "comically imitates a recognizable work or style",
+  "confusionType": "overlapping",
+  "confidence": 0.9
+ },
+ {
+  "wordId": 1822,
+  "word": "Parody",
+  "contrastWord": "satire",
+  "contrastGloss": "uses humor to criticize without necessarily imitating a source",
+  "confusionType": "overlapping",
+  "confidence": 0.96
+ },
+ {
+  "wordId": 1823,
+  "word": "Arbiter",
+  "contrastWord": "arbitrary",
+  "contrastGloss": "based on personal whim rather than a reasoned standard",
+  "confusionType": "paronym",
+  "confidence": 0.77
+ },
+ {
+  "wordId": 1824,
+  "word": "Defame",
+  "contrastWord": "disparage",
+  "contrastGloss": "speak slightingly without necessarily making false claims",
+  "confusionType": "overlapping",
+  "confidence": 0.92
+ },
+ {
+  "wordId": 1825,
+  "word": "Indignant",
+  "contrastWord": "indigent",
+  "contrastGloss": "poor and lacking basic material necessities",
+  "confusionType": "paronym",
+  "confidence": 0.98
+ },
+ {
+  "wordId": 1826,
+  "word": "Libel",
+  "contrastWord": "slander",
+  "contrastGloss": "spoken defamation rather than written or published defamation",
+  "confusionType": "overlapping",
+  "confidence": 0.98
+ },
+ {
+  "wordId": 1827,
+  "word": "Litigate",
+  "contrastWord": "mitigate",
+  "contrastGloss": "make something harmful or severe less serious",
+  "confusionType": "paronym",
+  "confidence": 0.93
+ },
+ {
+  "wordId": 1828,
+  "word": "Perjury",
+  "contrastWord": "hearsay",
+  "contrastGloss": "an out-of-court statement repeated as evidence",
+  "confusionType": "overlapping",
+  "confidence": 0.72
+ },
+ {
+  "wordId": 1829,
+  "word": "Precedent",
+  "contrastWord": "precedence",
+  "contrastGloss": "priority or superior rank in order",
+  "confusionType": "paronym",
+  "confidence": 0.98
+ },
+ {
+  "wordId": 1830,
+  "word": "Rebut",
+  "contrastWord": "refute",
+  "contrastGloss": "prove a claim false, not merely answer it",
+  "confusionType": "overlapping",
+  "confidence": 0.95
+ },
+ {
+  "wordId": 1831,
+  "word": "Recrimination",
+  "contrastWord": "incrimination",
+  "contrastGloss": "evidence or accusation that implicates someone in wrongdoing",
+  "confusionType": "paronym",
+  "confidence": 0.86
+ },
+ {
+  "wordId": 1832,
+  "word": "Slander",
+  "contrastWord": "libel",
+  "contrastGloss": "defamation published in writing or another lasting form",
+  "confusionType": "overlapping",
+  "confidence": 0.99
+ },
+ {
+  "wordId": 1833,
+  "word": "Stipulate",
+  "contrastWord": "speculate",
+  "contrastGloss": "form theories without enough evidence for certainty",
+  "confusionType": "paronym",
+  "confidence": 0.85
+ },
+ {
+  "wordId": 1834,
+  "word": "abase",
+  "contrastWord": "abash",
+  "contrastGloss": "make someone feel embarrassed or self-conscious",
+  "confusionType": "paronym",
+  "confidence": 0.9
+ },
+ {
+  "wordId": 1835,
+  "word": "abstemious",
+  "contrastWord": "abstinent",
+  "contrastGloss": "refraining entirely rather than consuming in moderation",
+  "confusionType": "overlapping",
+  "confidence": 0.96
+ },
+ {
+  "wordId": 1836,
+  "word": "accrete",
+  "contrastWord": "accrue",
+  "contrastGloss": "accumulate or become due over time",
+  "confusionType": "paronym",
+  "confidence": 0.94
+ },
+ {
+  "wordId": 1838,
+  "word": "anachronistic",
+  "contrastWord": "archaic",
+  "contrastGloss": "old-fashioned or no longer in general use",
+  "confusionType": "overlapping",
+  "confidence": 0.91
+ },
+ {
+  "wordId": 1839,
+  "word": "antiseptic",
+  "contrastWord": "antibiotic",
+  "contrastGloss": "able to kill or inhibit bacteria, often medicinally",
+  "confusionType": "overlapping",
+  "confidence": 0.88
+ },
+ {
+  "wordId": 1840,
+  "word": "apathetic",
+  "contrastWord": "lethargic",
+  "contrastGloss": "lacking energy rather than interest or concern",
+  "confusionType": "overlapping",
+  "confidence": 0.83
+ },
+ {
+  "wordId": 1842,
+  "word": "arid",
+  "contrastWord": "acrid",
+  "contrastGloss": "unpleasantly sharp or bitter in smell or taste",
+  "confusionType": "paronym",
+  "confidence": 0.95
+ },
+ {
+  "wordId": 1844,
+  "word": "aural",
+  "contrastWord": "oral",
+  "contrastGloss": "relating to the mouth or spoken communication",
+  "confusionType": "paronym",
+  "confidence": 0.99
+ },
+ {
+  "wordId": 1845,
+  "word": "autonomy",
+  "contrastWord": "sovereignty",
+  "contrastGloss": "supreme governing authority, especially over a state",
+  "confusionType": "overlapping",
+  "confidence": 0.82
+ },
+ {
+  "wordId": 1846,
+  "word": "averse",
+  "contrastWord": "adverse",
+  "contrastGloss": "harmful or unfavorable rather than personally unwilling",
+  "confusionType": "paronym",
+  "confidence": 0.99
+ },
+ {
+  "wordId": 1848,
+  "word": "beneficent",
+  "contrastWord": "benevolent",
+  "contrastGloss": "kindly and well-meaning, without necessarily taking helpful action",
+  "confusionType": "overlapping",
+  "confidence": 0.94
+ },
+ {
+  "wordId": 1849,
+  "word": "beneficial",
+  "contrastWord": "beneficent",
+  "contrastGloss": "actively doing good, typically through generous action",
+  "confusionType": "paronym",
+  "confidence": 0.93
+ },
+ {
+  "wordId": 1850,
+  "word": "bereave",
+  "contrastWord": "grieve",
+  "contrastGloss": "feel deep sorrow rather than cause a loss",
+  "confusionType": "paronym",
+  "confidence": 0.91
+ },
+ {
+  "wordId": 1851,
+  "word": "bolster",
+  "contrastWord": "bluster",
+  "contrastGloss": "speak loudly and aggressively with little real effect",
+  "confusionType": "paronym",
+  "confidence": 0.75
+ },
+ {
+  "wordId": 1852,
+  "word": "bombastic",
+  "contrastWord": "boisterous",
+  "contrastGloss": "noisy and energetic in behavior rather than pompous",
+  "confusionType": "overlapping",
+  "confidence": 0.8
+ },
+ {
+  "wordId": 1853,
+  "word": "brook",
+  "contrastWord": "broach",
+  "contrastGloss": "introduce a sensitive subject for discussion",
+  "confusionType": "paronym",
+  "confidence": 0.73
+ },
+ {
+  "wordId": 1854,
+  "word": "callous",
+  "contrastWord": "callus",
+  "contrastGloss": "a hardened patch of skin caused by friction",
+  "confusionType": "paronym",
+  "confidence": 0.99
+ },
+ {
+  "wordId": 1855,
+  "word": "candid",
+  "contrastWord": "blunt",
+  "contrastGloss": "direct in a way that may seem tactless",
+  "confusionType": "overlapping",
+  "confidence": 0.86
+ },
+ {
+  "wordId": 1856,
+  "word": "cantankerous",
+  "contrastWord": "contentious",
+  "contrastGloss": "inclined to provoke arguments or public controversy",
+  "confusionType": "overlapping",
+  "confidence": 0.84
+ },
+ {
+  "wordId": 1857,
+  "word": "cathartic",
+  "contrastWord": "therapeutic",
+  "contrastGloss": "promoting healing without necessarily releasing suppressed emotions",
+  "confusionType": "overlapping",
+  "confidence": 0.87
+ },
+ {
+  "wordId": 1858,
+  "word": "chronology",
+  "contrastWord": "chronicle",
+  "contrastGloss": "a narrative record of events rather than their ordering",
+  "confusionType": "paronym",
+  "confidence": 0.95
+ },
+ {
+  "wordId": 1859,
+  "word": "clandestine",
+  "contrastWord": "confidential",
+  "contrastGloss": "intended for limited disclosure, not secretly conducted",
+  "confusionType": "overlapping",
+  "confidence": 0.79
+ },
+ {
+  "wordId": 1861,
+  "word": "concur",
+  "contrastWord": "conquer",
+  "contrastGloss": "defeat or take control of by force",
+  "confusionType": "paronym",
+  "confidence": 0.94
+ },
+ {
+  "wordId": 1863,
+  "word": "conspicuous",
+  "contrastWord": "conscientious",
+  "contrastGloss": "careful and diligent from a desire to act properly",
+  "confusionType": "paronym",
+  "confidence": 0.94
+ },
+ {
+  "wordId": 1865,
+  "word": "conundrum",
+  "contrastWord": "dilemma",
+  "contrastGloss": "a difficult choice between competing alternatives",
+  "confusionType": "overlapping",
+  "confidence": 0.94
+ },
+ {
+  "wordId": 1867,
+  "word": "correlate",
+  "contrastWord": "cause",
+  "contrastGloss": "directly produce an effect rather than merely vary alongside it",
+  "confusionType": "misuse",
+  "confidence": 0.99
+ },
+ {
+  "wordId": 1868,
+  "word": "credible",
+  "contrastWord": "creditable",
+  "contrastGloss": "deserving praise or recognition rather than belief",
+  "confusionType": "paronym",
+  "confidence": 0.96
+ },
+ {
+  "wordId": 1869,
+  "word": "curative",
+  "contrastWord": "palliative",
+  "contrastGloss": "relieving symptoms without removing the underlying cause",
+  "confusionType": "overlapping",
+  "confidence": 0.97
+ },
+ {
+  "wordId": 1870,
+  "word": "debunk",
+  "contrastWord": "refute",
+  "contrastGloss": "prove a specific claim or argument to be false",
+  "confusionType": "overlapping",
+  "confidence": 0.82
+ },
+ {
+  "wordId": 1871,
+  "word": "defunct",
+  "contrastWord": "dormant",
+  "contrastGloss": "temporarily inactive but still capable of revival",
+  "confusionType": "overlapping",
+  "confidence": 0.9
+ },
+ {
+  "wordId": 1872,
+  "word": "demure",
+  "contrastWord": "demur",
+  "contrastGloss": "raise an objection or express reluctance",
+  "confusionType": "paronym",
+  "confidence": 0.99
+ },
+ {
+  "wordId": 1873,
+  "word": "denounce",
+  "contrastWord": "renounce",
+  "contrastGloss": "formally give up a claim, belief, or association",
+  "confusionType": "paronym",
+  "confidence": 0.98
+ },
+ {
+  "wordId": 1875,
+  "word": "diffidence",
+  "contrastWord": "deference",
+  "contrastGloss": "respectful submission to another's judgment or authority",
+  "confusionType": "paronym",
+  "confidence": 0.88
+ },
+ {
+  "wordId": 1877,
+  "word": "diligent",
+  "contrastWord": "vigilant",
+  "contrastGloss": "staying alert to possible danger or trouble",
+  "confusionType": "overlapping",
+  "confidence": 0.82
+ },
+ {
+  "wordId": 1878,
+  "word": "dirge",
+  "contrastWord": "elegy",
+  "contrastGloss": "a reflective poem mourning someone who has died",
+  "confusionType": "overlapping",
+  "confidence": 0.91
+ },
+ {
+  "wordId": 1879,
+  "word": "disaffected",
+  "contrastWord": "disgruntled",
+  "contrastGloss": "dissatisfied and annoyed, without necessarily withdrawing loyalty",
+  "confusionType": "overlapping",
+  "confidence": 0.89
+ },
+ {
+  "wordId": 1880,
+  "word": "disavow",
+  "contrastWord": "repudiate",
+  "contrastGloss": "reject something as invalid or refuse to accept it",
+  "confusionType": "overlapping",
+  "confidence": 0.82
+ },
+ {
+  "wordId": 1881,
+  "word": "discomfit",
+  "contrastWord": "discomfort",
+  "contrastGloss": "cause physical or emotional unease rather than embarrassment",
+  "confusionType": "misuse",
+  "confidence": 0.98
+ },
+ {
+  "wordId": 1882,
+  "word": "discourse",
+  "contrastWord": "dialogue",
+  "contrastGloss": "a two-way exchange of ideas between participants",
+  "confusionType": "overlapping",
+  "confidence": 0.78
+ },
+ {
+  "wordId": 1883,
+  "word": "dissonant",
+  "contrastWord": "dissident",
+  "contrastGloss": "opposing an established government, policy, or doctrine",
+  "confusionType": "paronym",
+  "confidence": 0.9
+ },
+ {
+  "wordId": 1884,
+  "word": "divergent",
+  "contrastWord": "diverse",
+  "contrastGloss": "showing variety without implying movement away from one point",
+  "confusionType": "overlapping",
+  "confidence": 0.92
+ },
+ {
+  "wordId": 1888,
+  "word": "economical",
+  "contrastWord": "economic",
+  "contrastGloss": "relating to the economy, finance, or commerce",
+  "confusionType": "paronym",
+  "confidence": 0.99
+ },
+ {
+  "wordId": 1889,
+  "word": "effluvium",
+  "contrastWord": "effluent",
+  "contrastGloss": "liquid waste discharged into water or the environment",
+  "confusionType": "paronym",
+  "confidence": 0.94
+ },
+ {
+  "wordId": 1890,
+  "word": "effrontery",
+  "contrastWord": "affront",
+  "contrastGloss": "an action or remark that causes deliberate offense",
+  "confusionType": "paronym",
+  "confidence": 0.84
+ },
+ {
+  "wordId": 1891,
+  "word": "effusive",
+  "contrastWord": "exuberant",
+  "contrastGloss": "full of lively energy and enthusiastic excitement",
+  "confusionType": "overlapping",
+  "confidence": 0.87
+ },
+ {
+  "wordId": 1892,
+  "word": "embellish",
+  "contrastWord": "fabricate",
+  "contrastGloss": "invent something false rather than merely adding details",
+  "confusionType": "overlapping",
+  "confidence": 0.96
+ },
+ {
+  "wordId": 1893,
+  "word": "empathetic",
+  "contrastWord": "sympathetic",
+  "contrastGloss": "showing concern or pity without sharing another's perspective",
+  "confusionType": "overlapping",
+  "confidence": 0.98
+ },
+ {
+  "wordId": 1894,
+  "word": "eradicate",
+  "contrastWord": "mitigate",
+  "contrastGloss": "reduce harm or severity without eliminating the problem",
+  "confusionType": "overlapping",
+  "confidence": 0.87
+ },
+ {
+  "wordId": 1895,
+  "word": "erratic",
+  "contrastWord": "eccentric",
+  "contrastGloss": "unconventional or odd but not necessarily unpredictable",
+  "confusionType": "overlapping",
+  "confidence": 0.92
+ },
+ {
+  "wordId": 1896,
+  "word": "erudition",
+  "contrastWord": "education",
+  "contrastGloss": "the process or system through which people learn",
+  "confusionType": "paronym",
+  "confidence": 0.83
+ },
+ {
+  "wordId": 1897,
+  "word": "exigent",
+  "contrastWord": "exacting",
+  "contrastGloss": "demanding great effort, care, or precision",
+  "confusionType": "paronym",
+  "confidence": 0.96
+ },
+ {
+  "wordId": 1898,
+  "word": "exorbitance",
+  "contrastWord": "extravagance",
+  "contrastGloss": "excessive spending or elaborate and wasteful display",
+  "confusionType": "overlapping",
+  "confidence": 0.78
+ },
+ {
+  "wordId": 1899,
+  "word": "exorbitant",
+  "contrastWord": "extravagant",
+  "contrastGloss": "costing or using more than necessary, often for luxury",
+  "confusionType": "overlapping",
+  "confidence": 0.89
+ },
+ {
+  "wordId": 1900,
+  "word": "exposition",
+  "contrastWord": "exhibition",
+  "contrastGloss": "a public display of art, goods, or skills",
+  "confusionType": "paronym",
+  "confidence": 0.89
+ },
+ {
+  "wordId": 1901,
+  "word": "exuberant",
+  "contrastWord": "exorbitant",
+  "contrastGloss": "unreasonably high in price, amount, or degree",
+  "confusionType": "paronym",
+  "confidence": 0.97
+ },
+ {
+  "wordId": 1902,
+  "word": "fabricate",
+  "contrastWord": "falsify",
+  "contrastGloss": "alter genuine information or evidence to make it false",
+  "confusionType": "overlapping",
+  "confidence": 0.94
+ },
+ {
+  "wordId": 1903,
+  "word": "fallacy",
+  "contrastWord": "falsehood",
+  "contrastGloss": "an untrue statement, often made deliberately",
+  "confusionType": "overlapping",
+  "confidence": 0.93
+ },
+ {
+  "wordId": 1904,
+  "word": "feasible",
+  "contrastWord": "possible",
+  "contrastGloss": "capable of happening whether or not practical",
+  "confusionType": "overlapping",
+  "confidence": 0.99
+ },
+ {
+  "wordId": 1905,
+  "word": "felicitous",
+  "contrastWord": "fortunate",
+  "contrastGloss": "favored by good luck rather than especially well chosen",
+  "confusionType": "overlapping",
+  "confidence": 0.8
+ },
+ {
+  "wordId": 1907,
+  "word": "flippant",
+  "contrastWord": "facetious",
+  "contrastGloss": "joking about something serious, not always disrespectfully",
+  "confusionType": "overlapping",
+  "confidence": 0.96
+ },
+ {
+  "wordId": 1908,
+  "word": "foster",
+  "contrastWord": "foist",
+  "contrastGloss": "force an unwanted thing or idea on someone",
+  "confusionType": "paronym",
+  "confidence": 0.9
+ },
+ {
+  "wordId": 1909,
+  "word": "fulsome",
+  "contrastWord": "effusive",
+  "contrastGloss": "expressing praise freely without implying offensive insincerity",
+  "confusionType": "overlapping",
+  "confidence": 0.86
+ },
+ {
+  "wordId": 1910,
+  "word": "gaffe",
+  "contrastWord": "gaff",
+  "contrastGloss": "a hooked pole used for landing large fish",
+  "confusionType": "paronym",
+  "confidence": 0.91
+ },
+ {
+  "wordId": 1912,
+  "word": "garner",
+  "contrastWord": "garnish",
+  "contrastGloss": "decorate food or add an ornamental accompaniment",
+  "confusionType": "paronym",
+  "confidence": 0.83
+ },
+ {
+  "wordId": 1913,
+  "word": "genial",
+  "contrastWord": "congenial",
+  "contrastGloss": "pleasant because compatible or well suited",
+  "confusionType": "overlapping",
+  "confidence": 0.9
+ },
+ {
+  "wordId": 1915,
+  "word": "goad",
+  "contrastWord": "coax",
+  "contrastGloss": "persuade gently through patience or friendly encouragement",
+  "confusionType": "overlapping",
+  "confidence": 0.86
+ },
+ {
+  "wordId": 1916,
+  "word": "homeostasis",
+  "contrastWord": "equilibrium",
+  "contrastGloss": "a general state of balance between opposing forces",
+  "confusionType": "overlapping",
+  "confidence": 0.87
+ },
+ {
+  "wordId": 1917,
+  "word": "hone",
+  "contrastWord": "home",
+  "contrastGloss": "move or focus toward a precise target",
+  "confusionType": "misuse",
+  "confidence": 0.97
+ },
+ {
+  "wordId": 1918,
+  "word": "impede",
+  "contrastWord": "inhibit",
+  "contrastGloss": "restrain an action, process, or natural tendency",
+  "confusionType": "overlapping",
+  "confidence": 0.8
+ },
+ {
+  "wordId": 1919,
+  "word": "impetus",
+  "contrastWord": "incentive",
+  "contrastGloss": "a promised benefit that motivates a choice",
+  "confusionType": "overlapping",
+  "confidence": 0.89
+ },
+ {
+  "wordId": 1920,
+  "word": "implicit",
+  "contrastWord": "inherent",
+  "contrastGloss": "existing as an essential and permanent characteristic",
+  "confusionType": "overlapping",
+  "confidence": 0.91
+ },
+ {
+  "wordId": 1922,
+  "word": "improvident",
+  "contrastWord": "imprudent",
+  "contrastGloss": "generally unwise or lacking sound judgment",
+  "confusionType": "overlapping",
+  "confidence": 0.89
+ },
+ {
+  "wordId": 1923,
+  "word": "impudent",
+  "contrastWord": "imprudent",
+  "contrastGloss": "unwise because consequences have not been considered",
+  "confusionType": "paronym",
+  "confidence": 0.97
+ },
+ {
+  "wordId": 1924,
+  "word": "inchoate",
+  "contrastWord": "incoherent",
+  "contrastGloss": "lacking logical connection or understandable structure",
+  "confusionType": "paronym",
+  "confidence": 0.96
+ },
+ {
+  "wordId": 1925,
+  "word": "incoherent",
+  "contrastWord": "inchoate",
+  "contrastGloss": "only beginning to develop and not fully formed",
+  "confusionType": "paronym",
+  "confidence": 0.96
+ },
+ {
+  "wordId": 1926,
+  "word": "incontrovertible",
+  "contrastWord": "controversial",
+  "contrastGloss": "likely to provoke disagreement or public dispute",
+  "confusionType": "paronym",
+  "confidence": 0.92
+ },
+ {
+  "wordId": 1927,
+  "word": "incursion",
+  "contrastWord": "excursion",
+  "contrastGloss": "a short trip taken for pleasure or education",
+  "confusionType": "paronym",
+  "confidence": 0.94
+ },
+ {
+  "wordId": 1928,
+  "word": "indict",
+  "contrastWord": "convict",
+  "contrastGloss": "formally find someone guilty of a crime",
+  "confusionType": "misuse",
+  "confidence": 0.95
+ },
+ {
+  "wordId": 1930,
+  "word": "inscrutable",
+  "contrastWord": "unscrupulous",
+  "contrastGloss": "lacking moral principles or concern for fairness",
+  "confusionType": "paronym",
+  "confidence": 0.94
+ },
+ {
+  "wordId": 1931,
+  "word": "insolvent",
+  "contrastWord": "bankrupt",
+  "contrastGloss": "legally placed under a formal debt-resolution process",
+  "confusionType": "overlapping",
+  "confidence": 0.9
+ },
+ {
+  "wordId": 1933,
+  "word": "invocation",
+  "contrastWord": "evocation",
+  "contrastGloss": "the act of bringing memories or feelings to mind",
+  "confusionType": "paronym",
+  "confidence": 0.96
+ },
+ {
+  "wordId": 1934,
+  "word": "jaded",
+  "contrastWord": "cynical",
+  "contrastGloss": "distrustful of people's motives or professed sincerity",
+  "confusionType": "overlapping",
+  "confidence": 0.88
+ },
+ {
+  "wordId": 1935,
+  "word": "jocular",
+  "contrastWord": "jovial",
+  "contrastGloss": "cheerful and sociable without necessarily making jokes",
+  "confusionType": "overlapping",
+  "confidence": 0.91
+ },
+ {
+  "wordId": 1936,
+  "word": "kinship",
+  "contrastWord": "affinity",
+  "contrastGloss": "a natural liking or attraction based on compatibility",
+  "confusionType": "overlapping",
+  "confidence": 0.85
+ },
+ {
+  "wordId": 1937,
+  "word": "laudatory",
+  "contrastWord": "laudable",
+  "contrastGloss": "deserving praise rather than actually expressing it",
+  "confusionType": "paronym",
+  "confidence": 0.98
+ },
+ {
+  "wordId": 1938,
+  "word": "lavish",
+  "contrastWord": "luxurious",
+  "contrastGloss": "providing expensive comfort rather than exceptional abundance",
+  "confusionType": "overlapping",
+  "confidence": 0.87
+ },
+ {
+  "wordId": 1939,
+  "word": "lax",
+  "contrastWord": "lenient",
+  "contrastGloss": "deliberately merciful or tolerant when enforcing standards",
+  "confusionType": "overlapping",
+  "confidence": 0.9
+ },
+ {
+  "wordId": 1940,
+  "word": "levee",
+  "contrastWord": "levy",
+  "contrastGloss": "impose or collect a tax, charge, or contribution",
+  "confusionType": "paronym",
+  "confidence": 0.98
+ },
+ {
+  "wordId": 1942,
+  "word": "litigious",
+  "contrastWord": "litigant",
+  "contrastGloss": "a person or organization involved in a lawsuit",
+  "confusionType": "paronym",
+  "confidence": 0.89
+ },
+ {
+  "wordId": 1944,
+  "word": "mar",
+  "contrastWord": "scar",
+  "contrastGloss": "leave a lasting physical or emotional mark",
+  "confusionType": "overlapping",
+  "confidence": 0.75
+ },
+ {
+  "wordId": 1945,
+  "word": "meticulous",
+  "contrastWord": "scrupulous",
+  "contrastGloss": "careful to act honestly and follow moral principles",
+  "confusionType": "overlapping",
+  "confidence": 0.86
+ },
+ {
+  "wordId": 1946,
+  "word": "modicum",
+  "contrastWord": "minimum",
+  "contrastGloss": "the smallest amount possible, permitted, or required",
+  "confusionType": "paronym",
+  "confidence": 0.93
+ },
+ {
+  "wordId": 1947,
+  "word": "motility",
+  "contrastWord": "mobility",
+  "contrastGloss": "general ability to move or be moved freely",
+  "confusionType": "paronym",
+  "confidence": 0.98
+ },
+ {
+  "wordId": 1948,
+  "word": "multifarious",
+  "contrastWord": "numerous",
+  "contrastGloss": "great in number without necessarily being varied",
+  "confusionType": "overlapping",
+  "confidence": 0.82
+ },
+ {
+  "wordId": 1949,
+  "word": "multiplicity",
+  "contrastWord": "duplicity",
+  "contrastGloss": "deliberate deceit through double-dealing or contradictory behavior",
+  "confusionType": "paronym",
+  "confidence": 0.86
+ },
+ {
+  "wordId": 1951,
+  "word": "obstinate",
+  "contrastWord": "persistent",
+  "contrastGloss": "continuing firmly despite obstacles, without implying unreasonable stubbornness",
+  "confusionType": "overlapping",
+  "confidence": 0.84
+ },
+ {
+  "wordId": 1952,
+  "word": "ornate",
+  "contrastWord": "ostentatious",
+  "contrastGloss": "designed to attract notice or display wealth and status",
+  "confusionType": "overlapping",
+  "confidence": 0.88
+ },
+ {
+  "wordId": 1953,
+  "word": "oscillate",
+  "contrastWord": "fluctuate",
+  "contrastGloss": "vary irregularly rather than swing repeatedly between two points",
+  "confusionType": "overlapping",
+  "confidence": 0.91
+ },
+ {
+  "wordId": 1955,
+  "word": "palliative",
+  "contrastWord": "placebo",
+  "contrastGloss": "an inactive treatment whose benefit comes chiefly from expectation",
+  "confusionType": "overlapping",
+  "confidence": 0.79
+ },
+ {
+  "wordId": 1956,
+  "word": "panegyric",
+  "contrastWord": "eulogy",
+  "contrastGloss": "a speech of praise, especially for someone who has died",
+  "confusionType": "overlapping",
+  "confidence": 0.91
+ },
+ {
+  "wordId": 1957,
+  "word": "parallel",
+  "contrastWord": "analogy",
+  "contrastGloss": "a comparison used to explain one thing through another",
+  "confusionType": "overlapping",
+  "confidence": 0.86
+ },
+ {
+  "wordId": 1958,
+  "word": "parity",
+  "contrastWord": "equity",
+  "contrastGloss": "fairness that may require unequal treatment or resources",
+  "confusionType": "overlapping",
+  "confidence": 0.91
+ },
+ {
+  "wordId": 1959,
+  "word": "pedagogue",
+  "contrastWord": "pedant",
+  "contrastGloss": "someone excessively concerned with minor rules or details",
+  "confusionType": "paronym",
+  "confidence": 0.93
+ },
+ {
+  "wordId": 1960,
+  "word": "perspicacious",
+  "contrastWord": "perspicuous",
+  "contrastGloss": "clearly expressed and therefore easy to understand",
+  "confusionType": "paronym",
+  "confidence": 0.98
+ },
+ {
+  "wordId": 1961,
+  "word": "philanthropic",
+  "contrastWord": "humanitarian",
+  "contrastGloss": "concerned with relieving suffering and protecting human welfare",
+  "confusionType": "overlapping",
+  "confidence": 0.81
+ },
+ {
+  "wordId": 1962,
+  "word": "piquant",
+  "contrastWord": "pungent",
+  "contrastGloss": "sharply strong in smell or taste, sometimes unpleasant",
+  "confusionType": "overlapping",
+  "confidence": 0.91
+ },
+ {
+  "wordId": 1963,
+  "word": "placid",
+  "contrastWord": "complacent",
+  "contrastGloss": "self-satisfied and unaware of possible danger or failure",
+  "confusionType": "paronym",
+  "confidence": 0.92
+ },
+ {
+  "wordId": 1964,
+  "word": "plumb",
+  "contrastWord": "plum",
+  "contrastGloss": "a sweet stone fruit or a deep purple color",
+  "confusionType": "paronym",
+  "confidence": 0.98
+ },
+ {
+  "wordId": 1965,
+  "word": "potentate",
+  "contrastWord": "potentiate",
+  "contrastGloss": "to increase the strength or effect of something",
+  "confusionType": "paronym",
+  "confidence": 0.8
+ },
+ {
+  "wordId": 1966,
+  "word": "precocious",
+  "contrastWord": "premature",
+  "contrastGloss": "occurring too early, often before adequate development",
+  "confusionType": "overlapping",
+  "confidence": 0.91
+ },
+ {
+  "wordId": 1967,
+  "word": "prescience",
+  "contrastWord": "omniscience",
+  "contrastGloss": "knowledge of everything, not merely what lies ahead",
+  "confusionType": "paronym",
+  "confidence": 0.82
+ },
+ {
+  "wordId": 1968,
+  "word": "probity",
+  "contrastWord": "propriety",
+  "contrastGloss": "conformity to accepted standards of correct or decent behavior",
+  "confusionType": "paronym",
+  "confidence": 0.92
+ },
+ {
+  "wordId": 1971,
+  "word": "propinquity",
+  "contrastWord": "proclivity",
+  "contrastGloss": "a natural tendency or inclination toward something",
+  "confusionType": "paronym",
+  "confidence": 0.76
+ },
+ {
+  "wordId": 1972,
+  "word": "prospectus",
+  "contrastWord": "prospect",
+  "contrastGloss": "a possibility or anticipated chance of future success",
+  "confusionType": "paronym",
+  "confidence": 0.95
+ },
+ {
+  "wordId": 1973,
+  "word": "pundit",
+  "contrastWord": "pedant",
+  "contrastGloss": "someone excessively concerned with minor rules or details",
+  "confusionType": "paronym",
+  "confidence": 0.74
+ },
+ {
+  "wordId": 1974,
+  "word": "pungent",
+  "contrastWord": "piquant",
+  "contrastGloss": "pleasantly sharp or spicy rather than overpowering",
+  "confusionType": "overlapping",
+  "confidence": 0.92
+ },
+ {
+  "wordId": 1975,
+  "word": "quell",
+  "contrastWord": "quench",
+  "contrastGloss": "to satisfy thirst or extinguish heat or flame",
+  "confusionType": "paronym",
+  "confidence": 0.88
+ },
+ {
+  "wordId": 1976,
+  "word": "quiescent",
+  "contrastWord": "acquiescent",
+  "contrastGloss": "willing to accept something without protest",
+  "confusionType": "paronym",
+  "confidence": 0.98
+ },
+ {
+  "wordId": 1977,
+  "word": "rampart",
+  "contrastWord": "parapet",
+  "contrastGloss": "a low protective wall along a roof or bridge",
+  "confusionType": "overlapping",
+  "confidence": 0.82
+ },
+ {
+  "wordId": 1978,
+  "word": "rancorous",
+  "contrastWord": "raucous",
+  "contrastGloss": "loud, harsh, and disorderly in sound or behavior",
+  "confusionType": "paronym",
+  "confidence": 0.96
+ },
+ {
+  "wordId": 1979,
+  "word": "raze",
+  "contrastWord": "raise",
+  "contrastGloss": "to lift something or cause it to increase",
+  "confusionType": "paronym",
+  "confidence": 0.99
+ },
+ {
+  "wordId": 1980,
+  "word": "reciprocate",
+  "contrastWord": "retaliate",
+  "contrastGloss": "to answer an injury with deliberate harm or revenge",
+  "confusionType": "overlapping",
+  "confidence": 0.91
+ },
+ {
+  "wordId": 1981,
+  "word": "rectitude",
+  "contrastWord": "certitude",
+  "contrastGloss": "complete conviction that something is true",
+  "confusionType": "paronym",
+  "confidence": 0.82
+ },
+ {
+  "wordId": 1982,
+  "word": "redouble",
+  "contrastWord": "double",
+  "contrastGloss": "to make exactly twice as large or intense",
+  "confusionType": "misuse",
+  "confidence": 0.88
+ },
+ {
+  "wordId": 1983,
+  "word": "remiss",
+  "contrastWord": "amiss",
+  "contrastGloss": "wrong, faulty, or out of proper order",
+  "confusionType": "paronym",
+  "confidence": 0.97
+ },
+ {
+  "wordId": 1984,
+  "word": "reprobate",
+  "contrastWord": "probate",
+  "contrastGloss": "the legal process of validating and administering a will",
+  "confusionType": "paronym",
+  "confidence": 0.91
+ },
+ {
+  "wordId": 1986,
+  "word": "ribald",
+  "contrastWord": "risqué",
+  "contrastGloss": "suggestive or mildly indecent rather than crudely vulgar",
+  "confusionType": "overlapping",
+  "confidence": 0.88
+ },
+ {
+  "wordId": 1988,
+  "word": "salubrious",
+  "contrastWord": "salutary",
+  "contrastGloss": "beneficial or corrective, especially as a lesson or warning",
+  "confusionType": "paronym",
+  "confidence": 0.94
+ },
+ {
+  "wordId": 1990,
+  "word": "satiric",
+  "contrastWord": "sarcastic",
+  "contrastGloss": "using biting mockery, often against a particular person",
+  "confusionType": "overlapping",
+  "confidence": 0.9
+ },
+ {
+  "wordId": 1991,
+  "word": "saturnine",
+  "contrastWord": "sullen",
+  "contrastGloss": "resentfully gloomy and unwilling to speak",
+  "confusionType": "overlapping",
+  "confidence": 0.76
+ },
+ {
+  "wordId": 1993,
+  "word": "scintillating",
+  "contrastWord": "titillating",
+  "contrastGloss": "provocatively exciting or mildly sexually stimulating",
+  "confusionType": "paronym",
+  "confidence": 0.91
+ },
+ {
+  "wordId": 1996,
+  "word": "spendthrift",
+  "contrastWord": "thrifty",
+  "contrastGloss": "careful and economical with money or resources",
+  "confusionType": "misuse",
+  "confidence": 0.96
+ },
+ {
+  "wordId": 1997,
+  "word": "squalid",
+  "contrastWord": "sordid",
+  "contrastGloss": "morally degraded, shameful, or unpleasantly sleazy",
+  "confusionType": "overlapping",
+  "confidence": 0.84
+ },
+ {
+  "wordId": 1999,
+  "word": "staid",
+  "contrastWord": "stayed",
+  "contrastGloss": "remained in a place or continued unchanged",
+  "confusionType": "paronym",
+  "confidence": 0.98
+ },
+ {
+  "wordId": 2000,
+  "word": "sterile",
+  "contrastWord": "sanitary",
+  "contrastGloss": "clean enough to protect health and prevent disease",
+  "confusionType": "overlapping",
+  "confidence": 0.89
+ },
+ {
+  "wordId": 2002,
+  "word": "strident",
+  "contrastWord": "stringent",
+  "contrastGloss": "strict, exacting, and strongly enforced",
+  "confusionType": "paronym",
+  "confidence": 0.98
+ },
+ {
+  "wordId": 2003,
+  "word": "substantiate",
+  "contrastWord": "substantial",
+  "contrastGloss": "considerable in size, importance, or solidity",
+  "confusionType": "paronym",
+  "confidence": 0.94
+ },
+ {
+  "wordId": 2004,
+  "word": "subterfuge",
+  "contrastWord": "pretext",
+  "contrastGloss": "a stated reason concealing the real motive",
+  "confusionType": "overlapping",
+  "confidence": 0.82
+ },
+ {
+  "wordId": 2005,
+  "word": "sullen",
+  "contrastWord": "saturnine",
+  "contrastGloss": "habitually gloomy and somber by temperament",
+  "confusionType": "overlapping",
+  "confidence": 0.76
+ },
+ {
+  "wordId": 2006,
+  "word": "supplant",
+  "contrastWord": "supplement",
+  "contrastGloss": "add to something to improve or complete it",
+  "confusionType": "paronym",
+  "confidence": 0.99
+ },
+ {
+  "wordId": 2007,
+  "word": "synergy",
+  "contrastWord": "symbiosis",
+  "contrastGloss": "a close relationship between unlike organisms or groups",
+  "confusionType": "overlapping",
+  "confidence": 0.81
+ },
+ {
+  "wordId": 2008,
+  "word": "taut",
+  "contrastWord": "taught",
+  "contrastGloss": "gave instruction or caused someone to learn",
+  "confusionType": "paronym",
+  "confidence": 0.99
+ },
+ {
+  "wordId": 2009,
+  "word": "temperament",
+  "contrastWord": "temperance",
+  "contrastGloss": "moderation and self-restraint, especially regarding alcohol",
+  "confusionType": "paronym",
+  "confidence": 0.93
+ },
+ {
+  "wordId": 2010,
+  "word": "temporal",
+  "contrastWord": "temporary",
+  "contrastGloss": "lasting for only a limited period",
+  "confusionType": "paronym",
+  "confidence": 0.97
+ },
+ {
+  "wordId": 2011,
+  "word": "tenacity",
+  "contrastWord": "temerity",
+  "contrastGloss": "reckless boldness that disregards possible consequences",
+  "confusionType": "paronym",
+  "confidence": 0.87
+ },
+ {
+  "wordId": 2012,
+  "word": "therapeutic",
+  "contrastWord": "palliative",
+  "contrastGloss": "relieving symptoms without curing the underlying condition",
+  "confusionType": "overlapping",
+  "confidence": 0.87
+ },
+ {
+  "wordId": 2013,
+  "word": "timbre",
+  "contrastWord": "timber",
+  "contrastGloss": "wood prepared for building or carpentry",
+  "confusionType": "paronym",
+  "confidence": 0.99
+ },
+ {
+  "wordId": 2014,
+  "word": "tractable",
+  "contrastWord": "docile",
+  "contrastGloss": "submissively quiet and readily obedient",
+  "confusionType": "overlapping",
+  "confidence": 0.74
+ },
+ {
+  "wordId": 2015,
+  "word": "transitory",
+  "contrastWord": "transitional",
+  "contrastGloss": "relating to passage from one state to another",
+  "confusionType": "paronym",
+  "confidence": 0.9
+ },
+ {
+  "wordId": 2016,
+  "word": "truculent",
+  "contrastWord": "turbulent",
+  "contrastGloss": "disorderly, unstable, or violently agitated",
+  "confusionType": "paronym",
+  "confidence": 0.94
+ },
+ {
+  "wordId": 2019,
+  "word": "vacillate",
+  "contrastWord": "oscillate",
+  "contrastGloss": "move repeatedly between positions, directions, or values",
+  "confusionType": "overlapping",
+  "confidence": 0.91
+ },
+ {
+  "wordId": 2020,
+  "word": "vacuous",
+  "contrastWord": "vacant",
+  "contrastGloss": "empty, unoccupied, or showing no immediate awareness",
+  "confusionType": "overlapping",
+  "confidence": 0.88
+ },
+ {
+  "wordId": 2021,
+  "word": "vapid",
+  "contrastWord": "vacuous",
+  "contrastGloss": "empty of intelligence, meaning, or real substance",
+  "confusionType": "overlapping",
+  "confidence": 0.89
+ },
+ {
+  "wordId": 2023,
+  "word": "veracity",
+  "contrastWord": "voracity",
+  "contrastGloss": "extreme eagerness or an immense appetite",
+  "confusionType": "paronym",
+  "confidence": 0.99
+ },
+ {
+  "wordId": 2024,
+  "word": "verdant",
+  "contrastWord": "vernal",
+  "contrastGloss": "relating specifically to the season of spring",
+  "confusionType": "paronym",
+  "confidence": 0.91
+ },
+ {
+  "wordId": 2025,
+  "word": "vex",
+  "contrastWord": "perplex",
+  "contrastGloss": "confuse completely without necessarily causing annoyance",
+  "confusionType": "overlapping",
+  "confidence": 0.83
+ },
+ {
+  "wordId": 2026,
+  "word": "vicarious",
+  "contrastWord": "precarious",
+  "contrastGloss": "dangerously unstable, uncertain, or insecure",
+  "confusionType": "paronym",
+  "confidence": 0.88
+ },
+ {
+  "wordId": 2027,
+  "word": "vigilant",
+  "contrastWord": "vigilante",
+  "contrastGloss": "someone who enforces justice without legal authority",
+  "confusionType": "paronym",
+  "confidence": 0.96
+ },
+ {
+  "wordId": 2028,
+  "word": "vignette",
+  "contrastWord": "anecdote",
+  "contrastGloss": "a short account of an actual incident",
+  "confusionType": "overlapping",
+  "confidence": 0.9
+ },
+ {
+  "wordId": 2029,
+  "word": "vindicate",
+  "contrastWord": "vindictive",
+  "contrastGloss": "driven by a spiteful desire for revenge",
+  "confusionType": "paronym",
+  "confidence": 0.94
+ },
+ {
+  "wordId": 2030,
+  "word": "vindictive",
+  "contrastWord": "vindicate",
+  "contrastGloss": "clear from blame or prove to be right",
+  "confusionType": "paronym",
+  "confidence": 0.94
+ },
+ {
+  "wordId": 2031,
+  "word": "viscous",
+  "contrastWord": "vicious",
+  "contrastGloss": "deliberately cruel, violent, or dangerously aggressive",
+  "confusionType": "paronym",
+  "confidence": 0.99
+ },
+ {
+  "wordId": 2032,
+  "word": "visionary",
+  "contrastWord": "idealist",
+  "contrastGloss": "person guided by ideals despite practical constraints",
+  "confusionType": "overlapping",
+  "confidence": 0.82
+ },
+ {
+  "wordId": 2033,
+  "word": "vituperative",
+  "contrastWord": "vociferous",
+  "contrastGloss": "loud and forceful, but not necessarily insulting",
+  "confusionType": "paronym",
+  "confidence": 0.72
+ },
+ {
+  "wordId": 2035,
+  "word": "whimsical",
+  "contrastWord": "capricious",
+  "contrastGloss": "changing unpredictably through impulse rather than playfulness",
+  "confusionType": "overlapping",
+  "confidence": 0.84
+ }
+]
