@@ -23,11 +23,11 @@ const TABS: { id: BoardId; label: string }[] = [
 ];
 
 function BoardList({
-  entries, valueLabel, currentUserId, unit,
-}: { entries: RankedBoardEntry[]; valueLabel: string; currentUserId: number; unit?: string }) {
+  entries, valueLabel, currentUserId, unit, limit = 20, allowExpand = true,
+}: { entries: RankedBoardEntry[]; valueLabel: string; currentUserId: number; unit?: string; limit?: number; allowExpand?: boolean }) {
   const [showAll, setShowAll] = useState(false);
-  const { top, rest, total } = paginateBoard(entries, 20);
-  const visible = showAll ? [...top, ...rest] : top;
+  const { top, rest, total } = paginateBoard(entries, limit);
+  const visible = showAll && allowExpand ? [...top, ...rest] : top;
 
   if (total === 0) {
     return (
@@ -67,7 +67,7 @@ function BoardList({
           </div>
         ))}
       </div>
-      {rest.length > 0 && (
+      {allowExpand && rest.length > 0 && (
         <button
           type="button"
           onClick={() => setShowAll(s => !s)}
@@ -76,7 +76,7 @@ function BoardList({
             background: 'none', border: 'none', cursor: 'pointer', padding: 0,
           }}
         >
-          {showAll ? 'Show top 20 only' : `Show all (${total})`}
+          {showAll ? `Show top ${limit} only` : `Show all (${total})`}
         </button>
       )}
     </div>
@@ -131,7 +131,7 @@ export default function LeaderboardBoardsScreen({ batchName, currentUserId, lexi
                 <p style={{ fontSize: T_SM, color: 'rgba(250,245,239,0.40)', marginBottom: 10 }}>
                   {latestTest.testTitle ?? 'No published, results-visible test yet in your batch.'}
                 </p>
-                <BoardList entries={latestTest.entries} valueLabel="Score" currentUserId={currentUserId} />
+                <BoardList entries={latestTest.entries} valueLabel="Score" currentUserId={currentUserId} limit={5} allowExpand={false} />
               </>
             )}
 
@@ -140,7 +140,7 @@ export default function LeaderboardBoardsScreen({ batchName, currentUserId, lexi
                 <p style={{ fontSize: T_XS, color: 'rgba(250,245,239,0.40)', marginBottom: 10 }}>
                   Average percentage across all your non-diagnostic tests.
                 </p>
-                <BoardList entries={allTests} valueLabel="Avg %" currentUserId={currentUserId} unit="%" />
+                <BoardList entries={allTests} valueLabel="Avg %" currentUserId={currentUserId} unit="%" limit={5} allowExpand={false} />
               </>
             )}
           </>
