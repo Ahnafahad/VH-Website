@@ -174,12 +174,27 @@ async function _getPracticePageData(email: string): Promise<PracticePageData | n
 
   const phase = progress?.phase ?? 2;
 
-  const { themeIds: unlockedThemes } = await getUnlockedWordIds(user.id);
+  const { ids: unlockedIds, themeIds: unlockedThemes } = await getUnlockedWordIds(user.id);
 
   const filteredLetters = await getLetterIndex(user.id);
 
   const wordCountMap = new Map(wordCountRows.map(r => [r.themeId, r.count]));
   const masteredMap  = new Map(masteredRows.map(r => [r.themeId, r.count]));
+
+  // Full access (ids === null) keeps the raw per-theme totals below. Otherwise
+  // a theme's displayed count is only the words this user's syllabus
+  // selection actually unlocks — a theme can be reachable (unlockedThemes)
+  // while still containing words from a syllabus the user didn't pick.
+  let accessibleCountByTheme: Map<number, number> | null = null;
+  const accessibleWordsInOrder = unlockedIds ? wordsInOrder.filter(w => unlockedIds.has(w.id)) : wordsInOrder;
+  if (unlockedIds !== null) {
+    accessibleCountByTheme = new Map();
+    for (const w of accessibleWordsInOrder) {
+      if (w.themeId !== null) {
+        accessibleCountByTheme.set(w.themeId, (accessibleCountByTheme.get(w.themeId) ?? 0) + 1);
+      }
+    }
+  }
 
   // Familiar-or-above count per theme, derived from already-fetched wordRecords +
   // wordsInOrder (no extra round trip) — same threshold LetterCard already uses.
@@ -195,9 +210,10 @@ async function _getPracticePageData(email: string): Promise<PracticePageData | n
   // Group themes under their parent unit (only include themes that have words)
   const themesByUnit = new Map<number, PracticeThemeItem[]>();
   for (const t of themes) {
-    const wordCount = wordCountMap.get(t.id) ?? 0;
-    if (wordCount === 0) continue;
+    const rawCount = wordCountMap.get(t.id) ?? 0;
+    if (rawCount === 0) continue;
     if (unlockedThemes && !unlockedThemes.has(t.id)) continue;
+    const wordCount = accessibleCountByTheme ? (accessibleCountByTheme.get(t.id) ?? 0) : rawCount;
     const item: PracticeThemeItem = {
       id:                t.id,
       name:              t.name,
@@ -263,7 +279,7 @@ async function _getPracticePageData(email: string): Promise<PracticePageData | n
     // (matches the size of an average theme); ceiling of 20 matches the
     // app's normal practice-quiz ceiling.
     const targetSize = Math.min(Math.max(requiredPace, 12), 20);
-    const nextWordIds = wordsInOrder
+    const nextWordIds = accessibleWordsInOrder
       .map(w => w.id)
       .filter(id => !masteredWordIds.has(id))
       .slice(0, targetSize);
@@ -288,7 +304,9 @@ async function _getPracticePageData(email: string): Promise<PracticePageData | n
     flashcardDoneSet.has(t.id) && !studyQuizDoneSet.has(t.id) && (wordCountMap.get(t.id) ?? 0) > 0
   );
   if (freshCaseTheme) {
-    const wordCount = wordCountMap.get(freshCaseTheme.id) ?? 0;
+    const wordCount = accessibleCountByTheme
+      ? (accessibleCountByTheme.get(freshCaseTheme.id) ?? 0)
+      : (wordCountMap.get(freshCaseTheme.id) ?? 0);
     briefingCards.push({
       kind:            'fresh',
       title:           'Fresh Case',

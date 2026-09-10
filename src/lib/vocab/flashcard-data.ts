@@ -6,7 +6,7 @@ import {
 import { eq, and, inArray } from 'drizzle-orm';
 import { unstable_cache } from 'next/cache';
 import { VocabCacheTag } from './cache-keys';
-import { canAccessTheme } from './access-check';
+import { canAccessTheme, getUnlockedWordIds } from './access-check';
 import { toCardPrefs, type CardPrefs } from './card-prefs';
 
 function safeParseArray(json: string | null): string[] {
@@ -92,7 +92,15 @@ async function _getFlashcardSession(
   // Trial users can only open themes their unlocked word set reaches.
   if (!(await canAccessTheme(user.id, themeId))) return null;
 
-  const wordIds = rawWords.map(w => w.id);
+  // A theme can be reachable while still holding words from a syllabus the
+  // user didn't pick (SAT/GRE words live inside WordSmart themes) — narrow
+  // the actual card list to the words this user unlocked, not the theme's
+  // full contents.
+  const { ids: unlockedIds } = await getUnlockedWordIds(user.id);
+  const accessibleWords = unlockedIds ? rawWords.filter(w => unlockedIds.has(w.id)) : rawWords;
+  if (accessibleWords.length === 0) return null;
+
+  const wordIds = accessibleWords.map(w => w.id);
 
   // Parallelize: word records (filtered to theme's words), session, and progress
   const [records, [existing], [progress]] = await Promise.all([
@@ -152,7 +160,7 @@ async function _getFlashcardSession(
         userId:           user.id,
         themeId,
         currentCardIndex: 0,
-        totalCards:       rawWords.length,
+        totalCards:       accessibleWords.length,
         ratings:          '{}',
         status:           'in_progress',
         startedAt:        new Date(),
@@ -161,7 +169,7 @@ async function _getFlashcardSession(
         target: [vocabFlashcardSessions.userId, vocabFlashcardSessions.themeId],
         set: {
           currentCardIndex: 0,
-          totalCards:       rawWords.length,
+          totalCards:       accessibleWords.length,
           ratings:          '{}',
           status:           'in_progress',
           startedAt:        new Date(),
@@ -172,7 +180,7 @@ async function _getFlashcardSession(
     sessionId = inserted?.id ?? null;
   }
 
-  const words: FlashcardWord[] = rawWords.map(w => {
+  const words: FlashcardWord[] = accessibleWords.map(w => {
     const rec = recordMap.get(w.id);
     return {
       id:              w.id,

@@ -58,7 +58,7 @@ async function _getStudyData(email: string): Promise<{
   if (!user) return null;
 
   // Parallelize all queries — progress, units, themes, sessions, quizzes
-  const [[progress], units, themes, flashcardSessions, completedQuizzes, syllabuses, selectedSyllabusRows] = await Promise.all([
+  const [[progress], units, themes, flashcardSessions, completedQuizzes, syllabuses, selectedSyllabusRows, wordThemeRows] = await Promise.all([
     db
       .select({
         phase:          vocabUserProgress.phase,
@@ -110,11 +110,28 @@ async function _getStudyData(email: string): Promise<{
     db.select({ syllabusId: vocabUserSyllabuses.syllabusId })
       .from(vocabUserSyllabuses)
       .where(eq(vocabUserSyllabuses.userId, user.id)),
+
+    db.select({ id: vocabWords.id, themeId: vocabWords.themeId })
+      .from(vocabWords),
   ]);
 
   const phase       = progress?.phase       ?? 2;
-  const { themeIds: unlockedThemes } = await getUnlockedWordIds(user.id);
+  const { ids: unlockedIds, themeIds: unlockedThemes } = await getUnlockedWordIds(user.id);
   const totalPoints = progress?.totalPoints ?? 0;
+
+  // Full access (ids === null) keeps the raw per-theme count. Otherwise a
+  // theme's displayed count is only the words this user's syllabus selection
+  // actually unlocks — a theme can be reachable (unlockedThemes) while still
+  // containing words from a syllabus the user didn't pick.
+  let accessibleCountByTheme: Map<number, number> | null = null;
+  if (unlockedIds !== null) {
+    accessibleCountByTheme = new Map();
+    for (const w of wordThemeRows) {
+      if (w.themeId !== null && unlockedIds.has(w.id)) {
+        accessibleCountByTheme.set(w.themeId, (accessibleCountByTheme.get(w.themeId) ?? 0) + 1);
+      }
+    }
+  }
 
   const flashcardMap  = new Map(flashcardSessions.map(s => [s.themeId, s.status]));
   const quizDoneSet   = new Set(completedQuizzes.map(q => q.themeId));
@@ -131,6 +148,7 @@ async function _getStudyData(email: string): Promise<{
         const flashStatus = flashcardMap.get(t.id);
         const quizDone    = quizDoneSet.has(t.id);
         const locked      = unlockedThemes !== null && !unlockedThemes.has(t.id);
+        const wordCount   = accessibleCountByTheme ? (accessibleCountByTheme.get(t.id) ?? 0) : t.wordCount;
 
         let status: ThemeStatus = 'not_started';
         if (flashStatus === 'in_progress' || flashStatus === 'complete') {
@@ -139,7 +157,7 @@ async function _getStudyData(email: string): Promise<{
           else status = 'flashcards_done';
         }
 
-        return { id: t.id, name: t.name, order: t.order, wordCount: t.wordCount, status, locked };
+        return { id: t.id, name: t.name, order: t.order, wordCount, status, locked };
       });
 
     const complete     = unitThemes.filter(t => t.status === 'complete').length;

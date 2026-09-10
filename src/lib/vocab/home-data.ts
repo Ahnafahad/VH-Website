@@ -1,9 +1,9 @@
 import {
   db, users, userAccess, vocabUserProgress, vocabUserWordRecords,
   vocabFlashcardSessions, vocabThemes, vocabQuizSessions, vocabQuizAnswers, vocabWords,
-  vocabSyllabuses, vocabUserSyllabuses,
+  vocabSyllabuses, vocabUserSyllabuses, vocabWordAltDefinitions, vocabWordContrasts,
 } from '@/lib/db';
-import { eq, and, lte, gte, gt, count, sql, inArray, min } from 'drizzle-orm';
+import { eq, and, lte, gte, gt, count, sql, inArray, isNotNull, min } from 'drizzle-orm';
 import { FREE_WORD_POOL, PAID_WORD_POOL } from './constants';
 import { unstable_cache } from 'next/cache';
 import { VocabCacheTag } from './cache-keys';
@@ -12,6 +12,9 @@ import { sortByBriefingPriority, computeRequiredPace, computeRepeatOffenders, is
 import type { WordPriorityInput } from './priority-score';
 import { isAdminRole } from '@/lib/auth/roles';
 import { getSyllabusCatalogVersion } from './syllabus-prompt';
+import { getUnlockedWordIds } from './access-check';
+import { toCardPrefs, type CardPrefs } from './card-prefs';
+import type { LivingCardWord } from '@/components/vocab/LivingFlashcard';
 
 export interface HomeRecommendation {
   kind:            BriefingKind;
@@ -61,6 +64,13 @@ export interface HomeData {
   promptFullAccessDeadline: boolean;
   /** Set when syllabuses exist that this user hasn't been asked about yet — drives the "choose your syllabus" interstitial. */
   newSyllabusPrompt: { syllabuses: { id: number; name: string; description: string | null }[] } | null;
+  /** Set for old, syllabus-locked users who never went through onboarding — drives the reduced onboarding modal. */
+  reducedOnboarding: {
+    syllabuses: { id: number; name: string; description: string | null }[];
+    selectedSyllabusIds: number[];
+    cardPrefs: CardPrefs;
+    sampleWord: LivingCardWord | null;
+  } | null;
 }
 
 async function _getHomeData(email: string): Promise<HomeData | null> {
@@ -422,7 +432,14 @@ async function _getHomeData(email: string): Promise<HomeData | null> {
     recommendation,
     nextDueIso,
     promptFullAccessDeadline: progress.phase === 1 && progress.fullAccessDeadlineSetAt === null,
-    newSyllabusPrompt: await getNewSyllabusPrompt(progress.lastAnnouncementSeen, allSyllabuses, selectedSyllabusRows),
+    // Locked users get the reduced onboarding modal instead — the "add a
+    // syllabus" prompt below assumes a normal, unlocked selection.
+    newSyllabusPrompt: progress.syllabusLocked
+      ? null
+      : await getNewSyllabusPrompt(progress.lastAnnouncementSeen, allSyllabuses, selectedSyllabusRows),
+    reducedOnboarding: progress.syllabusLocked
+      ? await getReducedOnboardingPrompt(user.id, progress, allSyllabuses, selectedSyllabusRows)
+      : null,
   };
 }
 
@@ -443,6 +460,61 @@ async function getNewSyllabusPrompt(
   const selected = new Set(selectedRows.map(r => r.syllabusId));
   const missing  = allSyllabuses.filter(s => !selected.has(s.id));
   return missing.length > 0 ? { syllabuses: missing } : null;
+}
+
+async function getReducedOnboardingPrompt(
+  userId: number,
+  progress: Parameters<typeof toCardPrefs>[0],
+  allSyllabuses: { id: number; name: string; description: string | null }[],
+  selectedRows: { syllabusId: number }[],
+): Promise<HomeData['reducedOnboarding']> {
+  // A real word from what this user can already open, so the card-style step
+  // previews on content they'll actually study — not an arbitrary word that
+  // might belong to a syllabus they haven't unlocked.
+  const { ids: unlockedIds } = await getUnlockedWordIds(userId);
+  const idList = unlockedIds ? [...unlockedIds].slice(0, 200) : [];
+
+  let sampleWord: LivingCardWord | null = null;
+  if (idList.length > 0) {
+    const [row] = await db
+      .select({
+        id:              vocabWords.id,
+        word:            vocabWords.word,
+        definition:      vocabWords.definition,
+        partOfSpeech:    vocabWords.partOfSpeech,
+        synonyms:        vocabWords.synonyms,
+        exampleSentence: vocabWords.exampleSentence,
+        connotation:     vocabWords.connotation,
+        altDefinition:   vocabWordAltDefinitions.altDefinition,
+        contrastWord:    vocabWordContrasts.contrastWord,
+        contrastGloss:   vocabWordContrasts.contrastGloss,
+      })
+      .from(vocabWords)
+      .leftJoin(vocabWordAltDefinitions, eq(vocabWordAltDefinitions.wordId, vocabWords.id))
+      .leftJoin(vocabWordContrasts, eq(vocabWordContrasts.wordId, vocabWords.id))
+      .where(and(inArray(vocabWords.id, idList), isNotNull(vocabWords.exampleSentence)))
+      .limit(1);
+    if (row) {
+      sampleWord = {
+        id: row.id,
+        word: row.word,
+        definition: row.definition,
+        altDefinition: row.altDefinition,
+        partOfSpeech: row.partOfSpeech,
+        synonyms: (() => { try { const v = JSON.parse(row.synonyms ?? '[]'); return Array.isArray(v) ? v as string[] : []; } catch { return []; } })(),
+        exampleSentence: row.exampleSentence,
+        connotation: row.connotation,
+        contrast: row.contrastWord && row.contrastGloss ? { word: row.contrastWord, gloss: row.contrastGloss } : null,
+      };
+    }
+  }
+
+  return {
+    syllabuses: allSyllabuses,
+    selectedSyllabusIds: selectedRows.map(r => r.syllabusId),
+    cardPrefs: toCardPrefs(progress),
+    sampleWord,
+  };
 }
 
 export function getHomeData(email: string) {

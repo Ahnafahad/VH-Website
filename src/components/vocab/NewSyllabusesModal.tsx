@@ -19,6 +19,7 @@ export default function NewSyllabusesModal({ syllabuses, onDone }: {
 }) {
   const [chosen, setChosen] = useState<Set<number>>(new Set());
   const [saving, setSaving] = useState(false);
+  const [error, setError] = useState(false);
 
   const toggle = (id: number) => {
     setChosen(prev => {
@@ -31,14 +32,20 @@ export default function NewSyllabusesModal({ syllabuses, onDone }: {
 
   const save = async (body: Record<string, unknown>) => {
     setSaving(true);
+    setError(false);
     try {
-      await fetch('/api/vocab/syllabuses', {
+      const res = await fetch('/api/vocab/syllabuses', {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(body),
       });
-    } finally {
+      if (!res.ok) {
+        setError(true);
+        return;
+      }
       onDone();
+    } finally {
+      setSaving(false);
     }
   };
 
@@ -144,6 +151,20 @@ export default function NewSyllabusesModal({ syllabuses, onDone }: {
             >
               {chosen.size > 0 ? `Add ${chosen.size} syllabus${chosen.size === 1 ? '' : 'es'}` : 'Add syllabuses'}
             </motion.button>
+            {error && (
+              <p
+                role="alert"
+                style={{
+                  fontFamily: "'Sora', sans-serif",
+                  fontSize: '0.78rem',
+                  color: 'var(--color-lx-danger)',
+                  textAlign: 'center',
+                  margin: 0,
+                }}
+              >
+                Couldn’t save that — check your connection and try again.
+              </p>
+            )}
             <button
               onClick={handleSkip}
               disabled={saving}

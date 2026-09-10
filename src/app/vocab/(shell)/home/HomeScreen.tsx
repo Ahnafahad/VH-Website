@@ -11,6 +11,7 @@ import ProgressRing from '@/components/vocab/ProgressRing';
 import AnimatedNumber from '@/components/vocab/AnimatedNumber';
 import DeadlineBanner from '@/components/vocab/DeadlineBanner';
 import NewSyllabusesModal from '@/components/vocab/NewSyllabusesModal';
+import ReducedOnboardingModal from '@/components/vocab/ReducedOnboardingModal';
 import FullAccessDeadlineModal from '@/components/vocab/FullAccessDeadlineModal';
 import UpgradeModal from '@/components/vocab/UpgradeModal';
 import { FREE_WORD_POOL, PAID_WORD_POOL } from '@/lib/vocab/constants';
@@ -790,6 +791,7 @@ export default function HomeScreen({ data, justActivated = false }: { data: Home
   const [showUpgrade, setShowUpgrade] = useState(false);
   const [showDeadlinePrompt, setShowDeadlinePrompt] = useState(data.promptFullAccessDeadline);
   const [newSyllabusPrompt, setNewSyllabusPrompt] = useState(data.newSyllabusPrompt);
+  const [reducedOnboarding, setReducedOnboarding] = useState(data.reducedOnboarding);
   const [showWelcome, setShowWelcome] = useState(justActivated);
   const prefersReducedMotion   = useReducedMotion();
   const fb                     = useVocabFeedback();
@@ -1080,6 +1082,17 @@ export default function HomeScreen({ data, justActivated = false }: { data: Home
         <NewSyllabusesModal
           syllabuses={newSyllabusPrompt.syllabuses}
           onDone={() => { setNewSyllabusPrompt(null); router.refresh(); }}
+        />
+      )}
+
+      {/* ── Reduced onboarding — old, syllabus-locked users who never onboarded ── */}
+      {reducedOnboarding && (
+        <ReducedOnboardingModal
+          syllabuses={reducedOnboarding.syllabuses}
+          selectedSyllabusIds={reducedOnboarding.selectedSyllabusIds}
+          cardPrefs={reducedOnboarding.cardPrefs}
+          sampleWord={reducedOnboarding.sampleWord}
+          onDone={() => { setReducedOnboarding(null); router.refresh(); }}
         />
       )}
 
