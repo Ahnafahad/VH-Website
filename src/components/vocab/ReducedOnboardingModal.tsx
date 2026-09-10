@@ -157,7 +157,7 @@ export default function ReducedOnboardingModal({
               >
                 <Header
                   title="What are you studying for?"
-                  subtitle="You’re set up for WordSmart — add SAT or GRE if you need them, or just confirm to continue."
+                  subtitle="Pick one or more — this decides which words you’ll see."
                 />
 
                 <div className="flex flex-col gap-2.5">

@@ -470,12 +470,13 @@ async function getReducedOnboardingPrompt(
 ): Promise<HomeData['reducedOnboarding']> {
   // A real word from what this user can already open, so the card-style step
   // previews on content they'll actually study — not an arbitrary word that
-  // might belong to a syllabus they haven't unlocked.
+  // might belong to a syllabus they haven't unlocked. `ids: null` means full
+  // access (nothing to restrict the sample to), not "no words".
   const { ids: unlockedIds } = await getUnlockedWordIds(userId);
-  const idList = unlockedIds ? [...unlockedIds].slice(0, 200) : [];
+  const idList = unlockedIds ? [...unlockedIds].slice(0, 200) : null;
 
   let sampleWord: LivingCardWord | null = null;
-  if (idList.length > 0) {
+  if (idList === null || idList.length > 0) {
     const [row] = await db
       .select({
         id:              vocabWords.id,
@@ -492,7 +493,9 @@ async function getReducedOnboardingPrompt(
       .from(vocabWords)
       .leftJoin(vocabWordAltDefinitions, eq(vocabWordAltDefinitions.wordId, vocabWords.id))
       .leftJoin(vocabWordContrasts, eq(vocabWordContrasts.wordId, vocabWords.id))
-      .where(and(inArray(vocabWords.id, idList), isNotNull(vocabWords.exampleSentence)))
+      .where(idList === null
+        ? isNotNull(vocabWords.exampleSentence)
+        : and(inArray(vocabWords.id, idList), isNotNull(vocabWords.exampleSentence)))
       .limit(1);
     if (row) {
       sampleWord = {
