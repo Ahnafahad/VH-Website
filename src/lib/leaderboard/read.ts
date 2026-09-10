@@ -1,20 +1,20 @@
 /**
  * DB reads for the multi-board leaderboard. Read-only — no writes.
  *
- * Batch scoping: every board is scoped to one `batches` row (name × product),
- * mirroring the "cohort = test × batch × product" rule already used for
- * per-test Top 5 (lib/tests/service.ts). A board's cohort = users whose
- * `users.batch` matches the batch name AND who hold active `user_access` for
- * the batch's product. This is the same definition for all three boards, so
- * LexiCore, Latest Test and All Tests always describe the same group of
- * people for a given batch — no cross-batch/cross-product mixing.
+ * Batch scoping: every board is scoped to the viewer's batch name × the full
+ * set of products they hold active access to under it, mirroring the cohort
+ * rule used for per-test Top 5 (lib/tests/service.ts — batch name match +
+ * product intersection). A board's cohort = users whose `users.batch`
+ * matches the batch name AND who hold active `user_access` for ANY of those
+ * products — a student with both iba and fbs access must see the same full
+ * cohort a single-product student sees, not a narrower slice of it.
  */
 
 import { db } from '@/lib/db';
 import {
   users, userAccess, batches, vocabUserProgress, tests, testWindows, testAttempts,
 } from '@/lib/db/schema';
-import type { Batch, UserProduct } from '@/lib/db/schema';
+import type { UserProduct } from '@/lib/db/schema';
 import { and, eq, inArray, ne } from 'drizzle-orm';
 import { resultsVisible } from '@/lib/tests/windows';
 import { isTestAllowedForProducts } from '@/lib/tests/access';
@@ -23,34 +23,46 @@ import {
   rankLexiCoreBoard, type RankedBoardEntry, type AllTestsAttempt,
 } from './boards';
 
-/** Resolves the batch (name × product) that scopes a viewer's boards, from
- * their own `users.batch` string and active product grants. Null when the
- * viewer has no batch assigned or no matching active batch row exists —
- * boards render empty in that case, not a crash. */
+/** A viewer's batch scope: the batch name plus every active product they
+ * hold access to under it. Students commonly hold more than one product
+ * (e.g. iba + fbs) — the cohort for every board must include all of them,
+ * not just one arbitrarily picked product, or the board silently narrows to
+ * a fraction of the true batch (see 2026-09-10 dashboard-vs-backend bug). */
+export interface ViewerBatch {
+  name: string;
+  products: UserProduct[];
+}
+
+/** Resolves the batch scope for a viewer, from their own `users.batch`
+ * string and active product grants. Null when the viewer has no batch
+ * assigned or no matching active batch row exists — boards render empty in
+ * that case, not a crash. */
 export async function getViewerBatch(
   viewer: { batch: string | null; products: UserProduct[] },
-): Promise<Batch | null> {
+): Promise<ViewerBatch | null> {
   if (!viewer.batch || viewer.products.length === 0) return null;
-  const [batch] = await db
-    .select()
+  const rows = await db
+    .select({ product: batches.product })
     .from(batches)
     .where(and(
       eq(batches.name, viewer.batch),
       inArray(batches.product, viewer.products),
       eq(batches.status, 'active'),
-    ))
-    .limit(1);
-  return batch ?? null;
+    ));
+  if (rows.length === 0) return null;
+  const matched = new Set(rows.map(r => r.product));
+  return { name: viewer.batch, products: viewer.products.filter(p => matched.has(p)) };
 }
 
-/** userId → displayName for everyone in this batch's cohort. */
-async function getCohort(batch: Batch): Promise<Map<number, string>> {
+/** userId → displayName for everyone in this batch's cohort (any of the
+ * viewer's active products, not just one). */
+async function getCohort(batch: ViewerBatch): Promise<Map<number, string>> {
   const rows = await db
     .select({ id: users.id, name: users.name })
     .from(users)
     .innerJoin(userAccess, and(
       eq(userAccess.userId, users.id),
-      eq(userAccess.product, batch.product),
+      inArray(userAccess.product, batch.products),
       eq(userAccess.active, true),
     ))
     .where(and(eq(users.batch, batch.name), ne(users.status, 'inactive')));
@@ -59,7 +71,7 @@ async function getCohort(batch: Batch): Promise<Map<number, string>> {
 
 // ─── LexiCore board ───────────────────────────────────────────────────────────
 
-export async function getLexiCoreBoard(batch: Batch): Promise<RankedBoardEntry[]> {
+export async function getLexiCoreBoard(batch: ViewerBatch): Promise<RankedBoardEntry[]> {
   const cohort = await getCohort(batch);
   if (cohort.size === 0) return [];
 
@@ -77,10 +89,10 @@ export async function getLexiCoreBoard(batch: Batch): Promise<RankedBoardEntry[]
 
 // ─── Shared: cohort's visible non-diagnostic submitted attempts ──────────────
 
-async function getVisibleCohortAttempts(cohort: Map<number, string>, product: string) {
+async function getVisibleCohortAttempts(cohort: Map<number, string>, products: UserProduct[]) {
   const eligibleTests = (await db.select().from(tests).where(eq(tests.status, 'published')))
     .filter(isTestBoardEligible)
-    .filter(t => isTestAllowedForProducts(t, [product]));
+    .filter(t => isTestAllowedForProducts(t, products));
   if (eligibleTests.length === 0) return { attempts: [], testById: new Map<number, typeof eligibleTests[number]>() };
 
   const testIds = eligibleTests.map(t => t.id);
@@ -116,11 +128,11 @@ export interface LatestTestBoard {
   testTitle: string | null;
 }
 
-export async function getLatestTestBoard(batch: Batch): Promise<LatestTestBoard> {
+export async function getLatestTestBoard(batch: ViewerBatch): Promise<LatestTestBoard> {
   const cohort = await getCohort(batch);
   if (cohort.size === 0) return { entries: [], testTitle: null };
 
-  const { attempts, testById } = await getVisibleCohortAttempts(cohort, batch.product);
+  const { attempts, testById } = await getVisibleCohortAttempts(cohort, batch.products);
   if (attempts.length === 0) return { entries: [], testTitle: null };
 
   const lastByTest = new Map<number, number>();
@@ -150,11 +162,11 @@ export async function getLatestTestBoard(batch: Batch): Promise<LatestTestBoard>
 // PROPOSAL, not user-approved: average percentage across every non-diagnostic
 // submitted attempt in the cohort. See build report for the exact formula.
 
-export async function getAllTestsBoard(batch: Batch): Promise<RankedBoardEntry[]> {
+export async function getAllTestsBoard(batch: ViewerBatch): Promise<RankedBoardEntry[]> {
   const cohort = await getCohort(batch);
   if (cohort.size === 0) return [];
 
-  const { attempts, testById } = await getVisibleCohortAttempts(cohort, batch.product);
+  const { attempts, testById } = await getVisibleCohortAttempts(cohort, batch.products);
   if (attempts.length === 0) return [];
 
   const rows: AllTestsAttempt[] = [];

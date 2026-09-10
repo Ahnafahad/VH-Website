@@ -37,7 +37,7 @@ export async function GET(_req: NextRequest) {
     ]);
 
     return {
-      batch: { name: batch.name, product: batch.product },
+      batch: { name: batch.name },
       boards: { lexicore, latestTest, allTests },
     };
   }, '/api/leaderboard');

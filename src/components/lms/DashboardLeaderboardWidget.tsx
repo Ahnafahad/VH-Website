@@ -6,7 +6,7 @@ import { Trophy } from 'lucide-react';
 import type { RankedBoardEntry } from '@/lib/leaderboard/boards';
 
 interface LeaderboardResponse {
-  batch: { name: string; product: string } | null;
+  batch: { name: string } | null;
   boards: {
     latestTest: { entries: RankedBoardEntry[]; testTitle: string | null };
   };
