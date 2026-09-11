@@ -46,3 +46,9 @@ A knowledge graph of this codebase lives at:
 
 Before exploring files, read graphify-out/GRAPH_REPORT.md to orient yourself.
 When asked about a feature, check the graph first before opening files.
+
+## Before making any change
+
+- **Understand the problem or the vision first.** Don't start editing off a guess at what the user meant. If their request is even slightly ambiguous (e.g. something as underspecified as "okay, this"), stop and ask simple, direct questions before doing anything.
+- **Give the user a simple but detailed snapshot of what your change would do before making it.** Plain language: what files/behavior change, what stays the same, any risk. Let them confirm or correct before you act.
+- **Default to working in a git worktree, not the main tree.** Only make changes directly in the main working tree if the user explicitly gives permission to do so.

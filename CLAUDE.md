@@ -8,14 +8,19 @@
 
 This repo has a persistent index system so no session wastes tokens re-exploring. **Do not search or explore the codebase before checking the index — it already tells you where everything is.**
 
-1. **Session start:** Read `D:\VH Website\.claude\index\SESSIONS.md` (last 2–3 entries) + `D:\VH Website\.claude\index\STATE.md`. That tells you where things stand, what was last worked on, and current git/deploy facts. Read `D:\VH Website\.claude\index\CODEBASE.md` sections only as the task needs them — file locations, routes, DB tables, scripts, gotchas all live there.
-2. **Deep architecture questions:** read `D:\VH Website\vh-website\graphify-out\GRAPH_REPORT.md` (knowledge graph: 797 nodes, 32 communities, god nodes flagged) before grepping unfamiliar code.
-3. **Core files** (used by nearly every API route): `src/lib/db/index.ts` (db client), `src/lib/api-utils.ts` (safeApiHandler, validateAuth, ApiException), `src/lib/auth.ts` (NextAuth + getServerSession), `src/lib/db/schema.ts` (all tables), `src/lib/db-access-control.ts` (roles), `src/middleware.ts` (route protection), `src/lib/utils.ts` (cn). Feature lookup pattern: API → `src/app/api/[feature]/`, UI → `src/components/[feature]/`, logic → `src/lib/[feature]/`, pages → `src/app/[feature]/`.
-4. **Heavy reading:** the index exists so you rarely need bulk exploration — check it first. For large multi-file reading jobs that the index doesn't cover, consider delegating to a subagent instead of reading everything yourself.
-5. **Session end = git push (MANDATORY):** any `git push` to GitHub marks the end of a work session. BEFORE pushing, always:
-   - Append a 3–6 line entry to `.claude/index/SESSIONS.md` (format defined in that file).
+The index is split by concern so a normal session only ever reads a small, current slice of it — not an ever-growing log:
+
+1. **Session start — read `STATE.md` in full, that's it.** `.claude/index/STATE.md` is a small (~4KB), always-current snapshot: open security items, git/deploy facts, genuinely open work, environment quirks. It has no commit history and nothing "resolved" or "superseded" — stale facts get replaced in place, not appended to. Skim `.claude/index/SESSIONS.md`'s top 2-3 entries only if you need very recent narrative detail STATE.md doesn't carry.
+2. **`SESSIONS.md` is a search-only archive, not a proactive read.** It holds the last ~10 session write-ups (newest on top); older ones rotate out to `.claude/index/archive/SESSIONS-archive-*.md`. Grep either only when a task needs the story behind a specific past change — don't read either file in full by default. Same for `.claude/index/archive/STATE-archive-*.md` (old STATE.md content, before a trim).
+3. Read `.claude/index/CODEBASE.md` sections only as the task needs them — file locations, routes, DB tables, scripts, gotchas all live there.
+4. **Deep architecture questions:** read `D:\VH Website\vh-website\graphify-out\GRAPH_REPORT.md` (knowledge graph: 797 nodes, 32 communities, god nodes flagged) before grepping unfamiliar code.
+5. **Core files** (used by nearly every API route): `src/lib/db/index.ts` (db client), `src/lib/api-utils.ts` (safeApiHandler, validateAuth, ApiException), `src/lib/auth.ts` (NextAuth + getServerSession), `src/lib/db/schema.ts` (all tables), `src/lib/db-access-control.ts` (roles), `src/middleware.ts` (route protection), `src/lib/utils.ts` (cn). Feature lookup pattern: API → `src/app/api/[feature]/`, UI → `src/components/[feature]/`, logic → `src/lib/[feature]/`, pages → `src/app/[feature]/`.
+6. **Heavy reading:** the index exists so you rarely need bulk exploration — check it first. For large multi-file reading jobs that the index doesn't cover, consider delegating to a subagent instead of reading everything yourself.
+7. **Session end = git push (MANDATORY):** any `git push` to GitHub marks the end of a work session. BEFORE pushing, always:
+   - Append a **short** entry (the format below — 1-3 lines under "Did", not a full writeup) to `.claude/index/SESSIONS.md`.
+   - If `SESSIONS.md` now holds more than ~10 entries, cut the oldest ones out to a dated file under `.claude/index/archive/` (same format, one-line header noting the date range) — keep today's entry in the live file so the pre-push hook can find it.
    - Update the affected section of `.claude/index/CODEBASE.md` if files/routes/tables/scripts were added, moved, or removed.
-   - Update `.claude/index/STATE.md` (git state, deploy, open-work status) — include the commit being pushed.
+   - Update `.claude/index/STATE.md` **in place** — edit/replace the relevant fact (git state, deploy, open-work status), don't append a new paragraph on top of an old one. If something listed as open is now resolved, delete that bullet rather than striking it through.
    - Include these index updates in the commit when pushing the outer repo, so the index on GitHub always matches the code.
 
    This is not optional. A push without an index update means the next session starts blind.
@@ -34,7 +39,7 @@ This repo has a persistent index system so no session wastes tokens re-exploring
 - **DB:** Turso (libSQL) + Drizzle. Schema: `vh-website/src/lib/db/schema.ts`. Schema changes reach DB via `npx drizzle-kit push` (NOT generate). Local Node→Turso needs TLS workaround: `NODE_EXTRA_CA_CERTS` → `win-roots.pem` at repo root
 - **Deploy:** Vercel, region bom1, 11 cron jobs in `vh-website/vercel.json`. npm is canonical (bun.lock is stale)
 - **Dev servers** (`.claude/launch.json`): vh-website → :6960, lecture-template → :7788, omr-station → :8765
-- **Local admin testing (DEV ONLY):** to sign in as super-admin (`ahnaf816@gmail.com`) without the Google OAuth round-trip, run the dev server (with the Turso TLS cert env, else the session stays empty), open **`/dev-login`**, and enter the `DEV_LOGIN_CODE` value from `vh-website/.env.local`. Backed by a `dev-login` NextAuth CredentialsProvider in `src/lib/auth.ts`, hard-gated to `NODE_ENV==='development'` (the provider is never constructed in prod and `/dev-login` 404s). Roles come from the DB, so this yields the same super-admin session a real login would. The normal `/auth/signin` page is Google-only and shows nothing about this.
+- **Local admin testing (DEV ONLY):** to sign in as super-admin (`ahnaf816@gmail.com`) without the Google OAuth round-trip, either open **`/dev-login`** in a browser (dev server running, Turso TLS cert env set) and enter the login code, or — cheaper, zero browser tokens — run `bash scripts/dev-login.sh [port]` against a running dev server: it auto-detects the port (6960-6975), decrypts the code, does the NextAuth `csrf` + `callback/dev-login` POST dance, leaves a curl cookie jar (`curl -b <jar> ...` for authed API calls), and writes a Playwright session-injection snippet to `.playwright-mcp/pw-login.js` for an authed browser. The login code itself is stored as a Fernet-encrypted `DEV_LOGIN_FERNET_KEY`/`DEV_LOGIN_FERNET_TOKEN` pair in `vh-website/.env.local` (decrypted via `scripts/decrypt-dev-login-code.mjs`, using the `fernet` npm package) rather than plaintext. Both `scripts/dev-login.sh` and `scripts/decrypt-dev-login-code.mjs` are deliberately gitignored — local-only, never commit. **Gotcha:** the code is non-ASCII (CJK); curl.exe on Windows/MSYS mangles non-ASCII argv strings to `?`, so the code must be passed via `--data-urlencode name@<winpath-file>`, not as a literal argv string — `dev-login.sh` already does this correctly. Backed by a `dev-login` NextAuth CredentialsProvider in `src/lib/auth.ts`, hard-gated to `NODE_ENV==='development'` (the provider is never constructed in prod and `/dev-login` 404s). Roles come from the DB, so this yields the same super-admin session a real login would. The normal `/auth/signin` page is Google-only and shows nothing about this.
 - **Loose PNGs / logs at both roots:** session debris (screenshots), not assets. Don't index, don't delete unasked
 
 ## Automations (skills, hooks, subagents, MCP servers)
@@ -62,6 +67,10 @@ New machine? See `MACHINE_SETUP.md` (outer repo root) for what to install/config
 ## Behavioral Guidelines
 
 **Tradeoff:** These guidelines bias toward caution over speed. For trivial tasks, use judgment.
+
+### 0. Understand the problem before touching anything
+
+Do not make a change until you actually understand the problem or the vision behind the request — not just the literal words. If the user's message is even slightly ambiguous (e.g. they say something as underspecified as "okay, this" while pointing at something unclear, or a request could reasonably mean two different things), **stop and ask simple, direct questions** before doing anything. Guessing at intent and building the wrong thing costs more than one clarifying question.
 
 ### 1. Think Before Coding
 
