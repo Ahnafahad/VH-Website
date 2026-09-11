@@ -1,6 +1,6 @@
 /**
  * Auto-assigns a random 6-digit student ID to students in qualifying cohorts
- * (currently IBA 2026-27). Called from the admin user create/update routes so
+ * (currently IBA and FBS 2026-27). Called from the admin user create/update routes so
  * that any student newly added to — or moved into — the cohort receives an ID,
  * mirroring how `grantFullVocabAccessIfEligible` works.
  *
@@ -16,6 +16,7 @@ import { eq } from 'drizzle-orm';
 // as new cohorts are onboarded — no other code changes needed.
 const STUDENT_ID_BATCHES: { product: string; batch: string }[] = [
   { product: 'iba', batch: '2026-27' },
+  { product: 'fbs', batch: '2026-27' },
 ];
 
 export function qualifiesForStudentId(batch: string | null, products: string[]): boolean {
