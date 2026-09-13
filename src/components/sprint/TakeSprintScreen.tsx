@@ -87,12 +87,10 @@ export default function TakeSprintScreen({ setId, title, questions }: TakeSprint
   }
 
   return (
-    <main className="min-h-screen bg-exam-base text-exam-ink">
-      <div
-        className="border-b border-exam-border bg-exam-surface sticky top-0 z-10"
-        style={{ paddingTop: 'max(1.5rem, env(safe-area-inset-top))' }}
-      >
-        <div className="max-w-2xl mx-auto px-4 pb-4 flex items-center justify-between">
+    <main className="min-h-screen bg-exam-base text-exam-ink" style={{ paddingTop: 'max(6rem, calc(6rem + env(safe-area-inset-top)))' }}>
+      {/* Masthead — sticky top-24 (6rem) clears the fixed floating nav on scroll */}
+      <div className="border-b border-exam-border bg-exam-surface sticky top-24 z-10">
+        <div className="max-w-2xl mx-auto px-4 py-4 flex items-center justify-between">
           <div>
             <p className="text-exam-gold text-xs font-bold uppercase tracking-widest">{title}</p>
             <p className="text-exam-ink-faint text-xs mt-0.5">Question {index + 1} of {questions.length}</p>
