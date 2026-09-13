@@ -17,6 +17,7 @@ export default function robots(): MetadataRoute.Robots {
           "/ui-preview/",
           "/fbsorientation",
           "/fbsorientation-assets/",
+          "/reading-speed-test",
         ],
       },
     ],

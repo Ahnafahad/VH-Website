@@ -1768,3 +1768,28 @@ export type SprintSet       = typeof sprintSets.$inferSelect;
 export type SprintQuestion  = typeof sprintQuestions.$inferSelect;
 export type SprintAttempt   = typeof sprintAttempts.$inferSelect;
 export type SprintAnswer    = typeof sprintAnswers.$inferSelect;
+
+// ══════════════════════════════════════════════════════════════════════════════
+// READING SPEED TEST — hidden, link-only WPM + comprehension check-in. Access is
+// any logged-in user; no navbar entry. Passage/question content is static
+// (src/data/reading-speed-passages.ts), not DB-backed — only attempts are stored.
+// ══════════════════════════════════════════════════════════════════════════════
+
+export const readingSpeedAttempts = sqliteTable('reading_speed_attempts', {
+  id:                      integer('id').primaryKey({ autoIncrement: true }),
+  userId:                  integer('user_id').notNull().references(() => users.id, { onDelete: 'cascade' }),
+  passageId:               text('passage_id').notNull(),
+  wordCount:               integer('word_count').notNull(),
+  readingMs:               integer('reading_ms').notNull(),
+  rawWpm:                  integer('raw_wpm').notNull(),
+  correctCount:            integer('correct_count').notNull(),
+  totalQuestions:          integer('total_questions').notNull(),
+  // verified = correctCount >= 4/5 — the WPM is only leaderboard-eligible when true.
+  verified:                integer('verified', { mode: 'boolean' }).notNull(),
+  visibilityInterruptions: integer('visibility_interruptions').notNull().default(0),
+  createdAt:               integer('created_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
+}, (t) => [
+  index('idx_reading_speed_attempts_user').on(t.userId),
+]);
+
+export type ReadingSpeedAttempt = typeof readingSpeedAttempts.$inferSelect;
