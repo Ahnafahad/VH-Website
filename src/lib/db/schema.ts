@@ -1700,3 +1700,71 @@ export const auditLog = sqliteTable('audit_log', {
 
 export type AuditLog    = typeof auditLog.$inferSelect;
 export type NewAuditLog = typeof auditLog.$inferInsert;
+
+// ══════════════════════════════════════════════════════════════════════════════
+// SPRINT — in-class FBS question sets (Accounting/Economics/Business Studies).
+// A set is a single-sitting round of MCQs: students see a stopwatch per
+// question (display only, no forced advance), answer or skip, and immediately
+// see the correct key + explanation (if authored) before moving on. One
+// attempt per student per set. Top-5 leaderboard per set, ranked by accuracy
+// then total time. No calendar unlock/windows — a set is simply visible once
+// its status is 'active'.
+// ══════════════════════════════════════════════════════════════════════════════
+
+export const sprintSets = sqliteTable('sprint_sets', {
+  id:        integer('id').primaryKey({ autoIncrement: true }),
+  subject:   text('subject').notNull(),   // LmsSubject — accounting | economics | business_studies
+  title:     text('title').notNull(),
+  // 'draft' | 'active' — draft sets are admin-only, invisible to students.
+  status:    text('status').notNull().default('draft'),
+  createdBy: integer('created_by').references(() => users.id),
+  createdAt: integer('created_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
+}, (t) => [
+  index('idx_sprint_sets_subject_status').on(t.subject, t.status),
+]);
+
+export const sprintQuestions = sqliteTable('sprint_questions', {
+  id:          integer('id').primaryKey({ autoIncrement: true }),
+  setId:       integer('set_id').notNull().references(() => sprintSets.id, { onDelete: 'cascade' }),
+  number:      integer('number').notNull(),      // 1..N, position within the set
+  stem:        text('stem').notNull(),
+  options:     text('options').notNull(),        // JSON [{key,text}]
+  correctKey:  text('correct_key').notNull(),
+  explanation: text('explanation'),              // null = not shown after reveal
+}, (t) => [
+  unique().on(t.setId, t.number),
+  index('idx_sprint_questions_set').on(t.setId),
+]);
+
+// One per (set, user) — enforces the single-attempt rule. totalTimeMs is the
+// client-reported sum of per-question stopwatch time (this is an untimed
+// practice tool, not a proctored exam — no server-side anti-cheat needed).
+export const sprintAttempts = sqliteTable('sprint_attempts', {
+  id:             integer('id').primaryKey({ autoIncrement: true }),
+  setId:          integer('set_id').notNull().references(() => sprintSets.id, { onDelete: 'cascade' }),
+  userId:         integer('user_id').notNull().references(() => users.id, { onDelete: 'cascade' }),
+  totalCorrect:   integer('total_correct').notNull(),
+  totalQuestions: integer('total_questions').notNull(),
+  totalTimeMs:    integer('total_time_ms').notNull(),
+  submittedAt:    integer('submitted_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
+}, (t) => [
+  unique().on(t.setId, t.userId),
+  index('idx_sprint_attempts_set').on(t.setId),
+]);
+
+export const sprintAnswers = sqliteTable('sprint_answers', {
+  id:          integer('id').primaryKey({ autoIncrement: true }),
+  attemptId:   integer('attempt_id').notNull().references(() => sprintAttempts.id, { onDelete: 'cascade' }),
+  questionId:  integer('question_id').notNull().references(() => sprintQuestions.id, { onDelete: 'cascade' }),
+  selectedKey: text('selected_key'),             // null = skipped
+  isCorrect:   integer('is_correct', { mode: 'boolean' }).notNull(),
+  timeSpentMs: integer('time_spent_ms').notNull().default(0),
+}, (t) => [
+  unique().on(t.attemptId, t.questionId),
+  index('idx_sprint_answers_question').on(t.questionId),
+]);
+
+export type SprintSet       = typeof sprintSets.$inferSelect;
+export type SprintQuestion  = typeof sprintQuestions.$inferSelect;
+export type SprintAttempt   = typeof sprintAttempts.$inferSelect;
+export type SprintAnswer    = typeof sprintAnswers.$inferSelect;

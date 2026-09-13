@@ -266,7 +266,7 @@ export default function DashboardScreen({ data, userName, studentId, userId, pro
 
               {/* ── 6. Games Strip ── */}
               <motion.div variants={iv} className="mb-10">
-                <GamesStrip games={games} />
+                <GamesStrip games={games} products={products} />
               </motion.div>
             </>
           )}

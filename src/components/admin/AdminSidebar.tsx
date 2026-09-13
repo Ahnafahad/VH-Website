@@ -43,6 +43,7 @@ import {
   Stethoscope,
   Drama,
   Route,
+  Timer,
 } from 'lucide-react';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
@@ -89,6 +90,7 @@ const INSTRUCTOR_NAV_SECTIONS: NavSection[] = [
       { href: '/admin/students',      label: 'Progress',      icon: LineChart },
       { href: '/admin/tests',         label: 'Tests & marks', icon: ClipboardList },
       { href: '/admin/marathon',      label: 'Marathon',      icon: Route },
+      { href: '/admin/sprint',        label: 'Sprint',        icon: Timer },
       { href: '/admin/analytics',     label: 'LMS statistics', icon: BarChart3 },
       { href: '/admin/diagnosis-fbs', label: 'Diagnosis FBS', icon: Stethoscope },
     ],
@@ -124,6 +126,7 @@ const NAV_SECTIONS: NavSection[] = [
     items: [
       { href: '/admin/tests',       label: 'Tests & marks',icon: ClipboardList },
       { href: '/admin/marathon',    label: 'Marathon',    icon: Route         },
+      { href: '/admin/sprint',      label: 'Sprint',      icon: Timer         },
       { href: '/admin/analytics',   label: 'LMS statistics',icon: BarChart3 },
       { href: '/admin/vocab',       label: 'Vocabulary',  icon: BookOpen      },
       { href: '/admin/words',       label: 'Word Bank',   icon: Database      },

@@ -2,12 +2,14 @@
 
 import { motion, useReducedMotion } from 'motion/react';
 import Link from 'next/link';
-import { BookOpenText, Calculator, ClipboardList, CalendarPlus, Route } from 'lucide-react';
+import { BookOpenText, Calculator, ClipboardList, CalendarPlus, Route, Timer } from 'lucide-react';
 import type { LucideProps } from 'lucide-react';
 import type { DashboardGames } from '@/lib/lms/dashboard-data';
+import type { UserProduct } from '@/lib/db/schema';
 
 interface Props {
   games: DashboardGames;
+  products: UserProduct[];
 }
 
 interface GameBlock {
@@ -62,11 +64,19 @@ const BLOCKS: GameBlock[] = [
     icon: Route,
     stat: () => 'Chapter drills →',
   },
+  {
+    name: 'Sprint',
+    href: '/sprint',
+    icon: Timer,
+    stat: () => 'In-class MCQ rounds →',
+  },
 ];
 
-export default function GamesStrip({ games }: Props) {
+export default function GamesStrip({ games, products }: Props) {
   const prefersReduced = useReducedMotion();
-  const visibleBlocks = BLOCKS.filter(block => block.href !== '/games/fbs-accounting' || games.accounting !== null);
+  const hasFbs = products.includes('fbs') || products.includes('fbs_detailed');
+  const visibleBlocks = BLOCKS.filter(block => block.href !== '/games/fbs-accounting' || games.accounting !== null)
+    .filter(block => block.href !== '/sprint' || hasFbs);
 
   return (
     <div>
