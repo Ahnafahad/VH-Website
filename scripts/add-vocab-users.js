@@ -25,7 +25,7 @@ function loadEnv() {
 const USERS = [
   { email: 'ahnaf816@gmail.com',        name: 'Ahnaf'         },
   { email: 'hasanxsarower@gmail.com',    name: 'Hasan Sarower' },
-  { email: 'rahmitasnim234@gmail.com',   name: 'Rahmita Tasnim'},
+  { email: 'rahmitasnim234@gmail.com',   name: 'Rahmi Tasnim'  },
 ];
 
 async function run() {

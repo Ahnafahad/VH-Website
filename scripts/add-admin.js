@@ -1,7 +1,7 @@
 // Add rahmitasnim2342@gmail.com as admin
 
 const email = 'rahmitasnim2342@gmail.com';
-const name = 'Rahmita Tasnim';
+const name = 'Rahmi Tasnim';
 
 print('\n📋 Adding new admin...\n');
 

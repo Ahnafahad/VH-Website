@@ -47,3 +47,24 @@ export interface SprintLeaderboardRow {
   totalTimeMs: number;
   isMe: boolean;
 }
+
+/** Per-question option-distribution breakdown for the instructor live view. */
+export interface SprintLiveQuestionStat {
+  id: number;
+  number: number;
+  stem: string;
+  options: SprintOption[];
+  correctKey: string;
+  counts: Record<string, number>; // option key -> number of students who picked it
+  skipped: number;
+  correctCount: number;
+  answeredCount: number; // responses so far, excluding skips
+}
+
+export interface SprintLiveStats {
+  set: { id: number; subject: LmsSubject; title: string; status: string };
+  questionCount: number;
+  submittedCount: number;
+  questions: SprintLiveQuestionStat[];
+  leaderboard: SprintLeaderboardRow[]; // full roster, not capped to top 5
+}

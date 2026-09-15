@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { motion, Variants } from 'framer-motion';
 import { ChevronDown, Loader2, Users } from 'lucide-react';
@@ -23,7 +23,6 @@ interface StudentsProgressClientProps {
   initialBatches: BatchOption[];
   initialBatch:   string | null;
   initialStudents: StudentSummary[];
-  atRiskStudents?: AtRiskStudentProp[];
 }
 
 type AtRiskPopoverApi = ReturnType<typeof useAtRiskPopover>;
@@ -276,7 +275,6 @@ export default function StudentsProgressClient({
   initialBatches,
   initialBatch,
   initialStudents,
-  atRiskStudents = [],
 }: StudentsProgressClientProps) {
   const router = useRouter();
   const [batches]  = useState<BatchOption[]>(initialBatches);
@@ -284,6 +282,16 @@ export default function StudentsProgressClient({
   const [students, setStudents] = useState<StudentSummary[]>(initialStudents);
   const [loading, setLoading]   = useState(false);
   const [loadError, setLoadError] = useState(false);
+  // Fetched client-side after mount, not blocking initial page render — the
+  // at-risk scan fans out a heavy per-student metrics read (minutes at
+  // current data volume). See src/app/api/admin/students/at-risk/route.ts.
+  const [atRiskStudents, setAtRiskStudents] = useState<AtRiskStudentProp[]>([]);
+  useEffect(() => {
+    fetch('/api/admin/students/at-risk')
+      .then(res => res.ok ? res.json() : null)
+      .then(data => { if (data) setAtRiskStudents(data.atRiskStudents); })
+      .catch(() => {});
+  }, []);
   const atRiskMap = React.useMemo(() => {
     const m = new Map<number, AtRiskBadgeReason[]>();
     for (const s of atRiskStudents) m.set(s.id, s.reasons);

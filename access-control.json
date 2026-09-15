@@ -24,7 +24,7 @@
     },
     {
       "id": "admin_004",
-      "name": "Rahmita Tasnim",
+      "name": "Rahmi Tasnim",
       "email": "rahmitasnim2342@gmail.com",
       "role": "admin",
       "permissions": ["read", "write", "admin"],

@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { ConfirmDialog } from '@/components/admin/lms/lms-shared';
 import { SUBJECT_LABELS } from '@/lib/lms/subject-constants';
@@ -85,6 +86,12 @@ export default function SprintAdminPage() {
                 </div>
                 <div className="flex items-center gap-2">
                   <span className={s.status === 'active' ? 'text-emerald-600 text-xs font-semibold' : 'text-muted-foreground text-xs'}>{s.status}</span>
+                  <Button variant="outline" size="sm" render={<Link href={`/admin/sprint/${s.id}/live`} />}>
+                    Monitor
+                  </Button>
+                  <Button variant="outline" size="sm" render={<Link href={`/sprint/${s.id}/present`} />}>
+                    Present
+                  </Button>
                   <Button variant="outline" size="sm" onClick={() => toggleStatus(s)}>
                     {s.status === 'active' ? 'Deactivate' : 'Activate'}
                   </Button>

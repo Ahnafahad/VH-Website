@@ -14,7 +14,7 @@ const CRON_SECRET = process.env.CRON_SECRET;
 
 const REMAINING_RECIPIENTS = [
   { name: 'Hasan', email: 'hasanxsarower@gmail.com' },
-  { name: 'Rahmita', email: 'rahmitasnim2342@gmail.com' },
+  { name: 'Rahmi', email: 'rahmitasnim2342@gmail.com' },
   { name: 'Habibur', email: 'habiburrahmanrayat@gmail.com' },
   { name: 'Kaif', email: 'kaifkabir2004@gmail.com' },
   { name: 'Ahnaf', email: 'ahnafahad16@gmail.com' },

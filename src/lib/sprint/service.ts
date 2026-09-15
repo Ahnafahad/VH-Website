@@ -13,6 +13,7 @@ import { ApiException } from '@/lib/api-utils';
 import type {
   SprintOption, SprintSetListEntry, SprintTakingQuestion,
   SprintSubmitAnswer, SprintAttemptResult, SprintLeaderboardRow,
+  SprintLiveStats, SprintLiveQuestionStat,
 } from './types';
 
 // ─── Lookups ──────────────────────────────────────────────────────────────────
@@ -144,6 +145,81 @@ export async function getLeaderboard(setId: number, userId: number): Promise<Spr
   const mine = ranked.find(r => r.isMe);
   if (mine && !top5.some(r => r.isMe)) top5.push(mine);
   return top5;
+}
+
+// ─── Instructor live monitor (submission count, per-question breakdown, full leaderboard) ──
+
+export async function getLiveStats(setId: number): Promise<SprintLiveStats> {
+  const set = await getSet(setId);
+  if (!set) throw new ApiException('Set not found', 404, 'SET_NOT_FOUND');
+
+  const questions = await db.select().from(sprintQuestions).where(eq(sprintQuestions.setId, setId));
+  questions.sort((a, b) => a.number - b.number);
+
+  const [submittedRow, optionCounts, leaderboardRows] = await Promise.all([
+    db.select({ count: sql<number>`count(*)` }).from(sprintAttempts).where(eq(sprintAttempts.setId, setId)).get(),
+    db.select({
+      questionId: sprintAnswers.questionId,
+      selectedKey: sprintAnswers.selectedKey,
+      count: sql<number>`count(*)`,
+    }).from(sprintAnswers)
+      .innerJoin(sprintQuestions, eq(sprintQuestions.id, sprintAnswers.questionId))
+      .where(eq(sprintQuestions.setId, setId))
+      .groupBy(sprintAnswers.questionId, sprintAnswers.selectedKey),
+    db.select({
+      userId: sprintAttempts.userId, name: users.name,
+      totalCorrect: sprintAttempts.totalCorrect, totalQuestions: sprintAttempts.totalQuestions,
+      totalTimeMs: sprintAttempts.totalTimeMs,
+    }).from(sprintAttempts)
+      .innerJoin(users, eq(users.id, sprintAttempts.userId))
+      .where(eq(sprintAttempts.setId, setId))
+      .orderBy(desc(sprintAttempts.totalCorrect), asc(sprintAttempts.totalTimeMs)),
+  ]);
+
+  const countsByQuestion = new Map<number, Map<string, number>>();
+  for (const row of optionCounts) {
+    const key = row.selectedKey ?? '__skipped';
+    if (!countsByQuestion.has(row.questionId)) countsByQuestion.set(row.questionId, new Map());
+    countsByQuestion.get(row.questionId)!.set(key, row.count);
+  }
+
+  const liveQuestions: SprintLiveQuestionStat[] = questions.map(q => {
+    const counts = countsByQuestion.get(q.id) ?? new Map();
+    let answeredCount = 0;
+    const optionCounts: Record<string, number> = {};
+    for (const [key, count] of counts) {
+      if (key === '__skipped') continue;
+      optionCounts[key] = count;
+      answeredCount += count;
+    }
+    return {
+      id: q.id, number: q.number, stem: q.stem,
+      options: JSON.parse(q.options) as SprintOption[],
+      correctKey: q.correctKey,
+      counts: optionCounts,
+      skipped: counts.get('__skipped') ?? 0,
+      correctCount: optionCounts[q.correctKey] ?? 0,
+      answeredCount,
+    };
+  });
+
+  const leaderboard: SprintLeaderboardRow[] = leaderboardRows.map((r, i) => ({
+    rank: i + 1,
+    userId: r.userId,
+    name: r.name,
+    totalCorrect: r.totalCorrect,
+    totalQuestions: r.totalQuestions,
+    totalTimeMs: r.totalTimeMs,
+    isMe: false,
+  }));
+
+  return {
+    set: { id: set.id, subject: set.subject as LmsSubject, title: set.title, status: set.status },
+    questionCount: questions.length,
+    submittedCount: submittedRow?.count ?? 0,
+    questions: liveQuestions,
+    leaderboard,
+  };
 }
 
 // ─── Admin ──────────────────────────────────────────────────────────────────────

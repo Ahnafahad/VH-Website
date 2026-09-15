@@ -7,7 +7,6 @@ import { eq, desc, and, inArray } from 'drizzle-orm';
 import UsersClient from '@/components/admin/UsersClient';
 import type { AdminUserRow, AdminAccessRequest, AdminBatch } from '@/components/admin/UsersClient';
 import { getActiveBatches } from '@/lib/batches/read';
-import { getAtRiskStudents, type AtRiskStudent } from '@/lib/students/at-risk';
 
 export const metadata = { title: 'Users — VH Admin' };
 
@@ -106,10 +105,9 @@ export default async function AdminUsersPage() {
     redirect('/auth/signin');
   }
 
-  const [initialData, accessRequests, atRiskStudents] = await Promise.all([
+  const [initialData, accessRequests] = await Promise.all([
     fetchInitialUsers(),
     fetchAccessRequests(),
-    getAtRiskStudents().catch(() => [] as AtRiskStudent[]),
   ]);
 
   // Batches table may not exist yet in this environment — degrade to an
@@ -128,7 +126,6 @@ export default async function AdminUsersPage() {
       initialTotal={initialData.total}
       initialAccessRequests={accessRequests}
       initialBatches={initialBatches}
-      atRiskStudents={atRiskStudents}
     />
   );
 }
