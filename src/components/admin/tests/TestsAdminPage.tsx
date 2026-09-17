@@ -530,9 +530,10 @@ function blankForm(): WindowFormState {
 }
 
 function WindowsManager({
-  test, onRefresh, showToast,
+  test, isAdmin, onRefresh, showToast,
 }: {
   test: AdminTest;
+  isAdmin: boolean;
   onRefresh: () => void;
   showToast: (type: ToastType, msg: string) => void;
 }) {
@@ -731,7 +732,7 @@ function WindowsManager({
                 </p>
               )}
               <div style={{ display: 'flex', gap: 6, marginTop: 8, flexWrap: 'wrap' }}>
-                {w.state !== 'open' && w.status !== 'closed' && (
+                {isAdmin && w.state !== 'open' && w.status !== 'closed' && (
                   <Btn size="sm" variant="outline" onClick={() => patchStatus(w.id, 'open')} disabled={saving}>
                     Activate Now
                   </Btn>
@@ -1324,7 +1325,7 @@ function TestRow({
           {/* Tab content */}
           <div style={{ padding: '18px 18px 22px' }}>
             {tab === 'windows' && (
-              <WindowsManager test={test} onRefresh={onRefresh} showToast={showToast} />
+              <WindowsManager test={test} isAdmin={isAdmin} onRefresh={onRefresh} showToast={showToast} />
             )}
             {tab === 'attempts' && (
               <AttemptsTable testId={test.id} showToast={showToast} />

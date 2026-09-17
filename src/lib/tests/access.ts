@@ -13,6 +13,10 @@ export function isTestStaff(user: Pick<UserWithProducts, 'role'>): boolean {
   return isStaffRole(user.role);
 }
 
+export function canActivateTestWindow(user: Pick<UserWithProducts, 'role'>): boolean {
+  return user.role === 'admin' || user.role === 'super_admin';
+}
+
 /** Product-only half of the access rule — usable where there's a product
  * (e.g. a leaderboard batch) but no specific user. */
 export function isTestAllowedForProducts(test: Pick<Test, 'allowedProducts'>, products: string[]): boolean {

@@ -14,6 +14,7 @@ import { db } from '@/lib/db';
 import { testWindows, testAttempts, classSessions } from '@/lib/db/schema';
 import { safeApiHandler, ApiException } from '@/lib/api-utils';
 import { requireStaff } from '@/lib/tests/route-helpers';
+import { canActivateTestWindow } from '@/lib/tests/access';
 
 const bodySchema = z.object({
   status: z.enum(['scheduled', 'open', 'closed']).optional(),
@@ -28,12 +29,16 @@ export async function PATCH(
   { params }: { params: Promise<{ windowId: string }> },
 ) {
   return safeApiHandler(async () => {
-    await requireStaff();
+    const staff = await requireStaff();
     const windowId = parseInt((await params).windowId, 10);
 
     const parsed = bodySchema.safeParse(await req.json());
     if (!parsed.success) throw new ApiException('Invalid body', 400);
     const { status, opensAt, closesAt, durationMinutes, classSessionId } = parsed.data;
+
+    if (status === 'open' && !canActivateTestWindow(staff)) {
+      throw new ApiException('Only admins can activate test windows', 403, 'ADMIN_REQUIRED');
+    }
 
     const window = await db.select().from(testWindows)
       .where(eq(testWindows.id, windowId)).get();
