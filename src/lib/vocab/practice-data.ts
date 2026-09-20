@@ -4,7 +4,7 @@ import { getLetterIndex, type LetterSummary } from '@/lib/vocab/letter-data';
 import { unstable_cache } from 'next/cache';
 import { VocabCacheTag } from './cache-keys';
 import { FREE_WORD_POOL, PAID_WORD_POOL } from './constants';
-import { getUnlockedWordIds } from './access-check';
+import { getUnlockedWordIds, filterAccessibleWordIds } from './access-check';
 import { resolveStudentLevel, type StudentLevel } from './quiz-generator';
 import type { WordPriorityInput } from './priority-score';
 import { sortByBriefingPriority, computeRequiredPace, computeRepeatOffenders, type BriefingKind } from './briefing';
@@ -392,13 +392,23 @@ export async function getPracticeData(email: string): Promise<PracticeData | nul
     return { words: [], totalPoints: progress?.totalPoints ?? 0, streakDays: progress?.streakDays ?? 0 };
   }
 
+  // Narrow to words this user's syllabus selection / trial budget actually
+  // unlocks — same gate the quiz-generate API's other modes apply, so a due
+  // SRS record for a word outside the current selection never surfaces here.
+  const allowedIds = new Set(await filterAccessibleWordIds(user.id, dueRecords.map(r => r.wordId)));
+  const accessibleDueRecords = dueRecords.filter(r => allowedIds.has(r.wordId));
+
+  if (accessibleDueRecords.length === 0) {
+    return { words: [], totalPoints: progress?.totalPoints ?? 0, streakDays: progress?.streakDays ?? 0 };
+  }
+
   // Load only the needed words using SQL IN filter
-  const wordIds  = dueRecords.map(r => r.wordId);
+  const wordIds  = accessibleDueRecords.map(r => r.wordId);
   const wordMap  = new Map<number, typeof vocabWords.$inferSelect>();
   const wordRows = await db.select().from(vocabWords).where(inArray(vocabWords.id, wordIds));
   wordRows.forEach(w => wordMap.set(w.id, w));
 
-  const words: PracticeWord[] = dueRecords
+  const words: PracticeWord[] = accessibleDueRecords
     .map(r => {
       const w = wordMap.get(r.wordId);
       if (!w) return null;
