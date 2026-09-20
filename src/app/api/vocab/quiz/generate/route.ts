@@ -211,14 +211,25 @@ export async function POST(req: NextRequest) {
       }
 
       // Fetch all words in selected themes
-      const rawWords = await db
+      const themeWords = await db
         .select()
         .from(vocabWords)
         .where(inArray(vocabWords.themeId, themeIds as number[]));
 
-      if (rawWords.length === 0) {
+      if (themeWords.length === 0) {
         throw new ApiException('No words found for the selected themes', 404);
       }
+
+      // Phase/syllabus gate: canAccessTheme above only requires the theme to
+      // have SOME accessible word, so narrow to the words this user is
+      // actually allowed to study — otherwise a syllabus-filtered or
+      // trial-limited user gets quizzed on every word in the theme.
+      const allowedThemeWordIds = await filterAccessibleWordIds(user.id, themeWords.map(w => w.id));
+      if (allowedThemeWordIds.length === 0) {
+        throw new ApiException('No accessible words in the selected themes for your tier', 403);
+      }
+      const allowedThemeWordSet = new Set(allowedThemeWordIds);
+      const rawWords = themeWords.filter(w => allowedThemeWordSet.has(w.id));
 
       // Get per-word user records for priority scoring
       const wordIds = rawWords.map(w => w.id);
