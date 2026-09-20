@@ -715,6 +715,19 @@ export default function ClassDetailClient({
                     {(recording.fileSize / 1_000_000).toFixed(1)} MB
                   </span>
                 )}
+                {recording.status === 'available' && (
+                  <Link
+                    href={`/dashboard/classes/${classSession.id}/recording`}
+                    className="cdc-link"
+                    style={{
+                      display: 'flex', alignItems: 'center', gap: 4, fontSize: T_SM, fontWeight: 600,
+                      color: INFO, textDecoration: 'none',
+                    }}
+                  >
+                    <Video size={13} strokeWidth={2} aria-hidden />
+                    Watch recording
+                  </Link>
+                )}
               </div>
               {recording.errorMessage && (
                 <p style={{
