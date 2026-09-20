@@ -222,9 +222,16 @@ export default function StudyScreen({ data, letterIndex, reviewData }: Props) {
 
   const reviewCount = reviewData.dueWords.length + reviewData.weakWords.length;
 
-  // Check if all unlocked themes across all units are complete
+  // Check if all unlocked themes across all units are complete. A syllabus
+  // filter (e.g. WordSmart only) can narrow "unlocked" to a subset of the
+  // bank — finishing just that subset isn't "complete", it's a cue to widen
+  // the filter, so only take over the screen once every syllabus is in view
+  // (or the filter is locked and the user has no other option anyway).
   const allUnlockedThemes = data.units.flatMap(u => u.themes).filter(t => !t.locked);
-  const allComplete = allUnlockedThemes.length > 0 &&
+  const filterNarrowed = !data.syllabusLocked &&
+    data.selectedSyllabusIds.length > 0 &&
+    data.selectedSyllabusIds.length < data.syllabuses.length;
+  const allComplete = !filterNarrowed && allUnlockedThemes.length > 0 &&
     allUnlockedThemes.every(t => t.status === 'complete');
 
   if (allComplete) {
