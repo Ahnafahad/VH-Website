@@ -42,11 +42,14 @@ export default function OnboardingFlow({ userName, tracks }: { userName: string;
   const quizRef = useRef<Promise<QuizSession | null> | null>(null);
 
   useEffect(() => {
-    trackRetention(RETENTION_EVENTS.onboardingStarted);
     const draft = readDraft();
-    if (draft) setPrefs(draft.prefs);
+    // No draft = they skipped the first half (/lexicore) — e.g. signed in on
+    // the main website and came straight here. Send them to the start.
+    if (!draft) { router.replace('/lexicore'); return; }
+    trackRetention(RETENTION_EVENTS.onboardingStarted);
+    setPrefs(draft.prefs);
 
-    const ids = draft?.weakWordIds.slice(0, 5) ?? [];
+    const ids = draft.weakWordIds.slice(0, 5);
     if (ids.length === 0) { setWords([]); setStage('result'); return; }
 
     fetch(`/api/vocab/onboarding/repair-words?ids=${ids.join(',')}`)
@@ -58,7 +61,7 @@ export default function OnboardingFlow({ userName, tracks }: { userName: string;
         else quizRef.current = generateQuiz(got.map(w => w.id));
       })
       .catch(() => { setWords([]); setStage('result'); });
-  }, []);
+  }, [router]);
 
   const submit = useCallback(async (deadline: Date | null, wordsPerDay: number) => {
     setError('');

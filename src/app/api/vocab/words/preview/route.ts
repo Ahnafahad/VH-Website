@@ -12,7 +12,8 @@
 
 import { NextRequest, NextResponse } from 'next/server';
 import { inArray, eq } from 'drizzle-orm';
-import { db, vocabWords, vocabThemes } from '@/lib/db';
+import { db, users, vocabWords, vocabThemes } from '@/lib/db';
+import { getUnlockedWordIds } from '@/lib/vocab/access-check';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
 
@@ -24,7 +25,7 @@ export async function GET(req: NextRequest) {
 
   const { searchParams } = req.nextUrl;
 
-  let wordRows: { word: string; partOfSpeech: string; definition: string }[] = [];
+  let wordRows: { id: number; word: string; partOfSpeech: string; definition: string }[] = [];
 
   try {
     if (searchParams.has('wordIds')) {
@@ -32,7 +33,7 @@ export async function GET(req: NextRequest) {
         .split(',').map(Number).filter(n => !isNaN(n) && n > 0);
       if (ids.length > 0) {
         wordRows = await db
-          .select({ word: vocabWords.word, partOfSpeech: vocabWords.partOfSpeech, definition: vocabWords.definition })
+          .select({ id: vocabWords.id, word: vocabWords.word, partOfSpeech: vocabWords.partOfSpeech, definition: vocabWords.definition })
           .from(vocabWords)
           .where(inArray(vocabWords.id, ids));
       }
@@ -41,7 +42,7 @@ export async function GET(req: NextRequest) {
         .split(',').map(Number).filter(n => !isNaN(n) && n > 0);
       if (ids.length > 0) {
         wordRows = await db
-          .select({ word: vocabWords.word, partOfSpeech: vocabWords.partOfSpeech, definition: vocabWords.definition })
+          .select({ id: vocabWords.id, word: vocabWords.word, partOfSpeech: vocabWords.partOfSpeech, definition: vocabWords.definition })
           .from(vocabWords)
           .where(inArray(vocabWords.themeId, ids));
       }
@@ -49,7 +50,7 @@ export async function GET(req: NextRequest) {
       const id = parseInt(searchParams.get('themeId')!, 10);
       if (!isNaN(id)) {
         wordRows = await db
-          .select({ word: vocabWords.word, partOfSpeech: vocabWords.partOfSpeech, definition: vocabWords.definition })
+          .select({ id: vocabWords.id, word: vocabWords.word, partOfSpeech: vocabWords.partOfSpeech, definition: vocabWords.definition })
           .from(vocabWords)
           .where(eq(vocabWords.themeId, id));
       }
@@ -58,8 +59,14 @@ export async function GET(req: NextRequest) {
     return NextResponse.json({ words: [] });
   }
 
+  // Only hint words the user's syllabus selection / trial budget unlocks —
+  // themes mix syllabuses, so a theme-level query shows other syllabuses' words.
+  const [user] = await db.select({ id: users.id }).from(users).where(eq(users.email, session.user.email)).limit(1);
+  if (!user) return NextResponse.json({ words: [] });
+  const { ids: unlockedIds } = await getUnlockedWordIds(user.id);
+
   const words = wordRows
-    .filter(r => r.word && r.definition)
+    .filter(r => r.word && r.definition && (unlockedIds === null || unlockedIds.has(r.id)))
     .map(r => ({
       word:       r.word,
       pos:        r.partOfSpeech || null,

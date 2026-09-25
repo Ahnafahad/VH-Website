@@ -88,7 +88,9 @@ async function _getHomeData(email: string): Promise<HomeData | null> {
     .where(eq(vocabUserProgress.userId, user.id))
     .limit(1);
 
-  if (!progress) return null;
+  // A progress row can exist before onboarding (e.g. full-access batch grants
+  // insert one when an admin adds the student) — that's still a first visit.
+  if (!progress || !progress.onboardingComplete) return null;
 
   const [weeklyRecall] = await db.select({ value: count() })
     .from(vocabQuizAnswers)

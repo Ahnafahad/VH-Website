@@ -245,7 +245,10 @@ async function _getPracticePageData(email: string): Promise<PracticePageData | n
   const briefingCards: PracticeBriefingCard[] = [];
 
   // Repeat Offenders — priority-ranked weak/overdue words (priority-score.ts)
-  const priorityInputs: WordPriorityInput[] = wordRecords.map(r => ({
+  // Records persist across syllabus changes — only offer words still in the selection.
+  const priorityInputs: WordPriorityInput[] = wordRecords
+    .filter(r => unlockedIds === null || unlockedIds.has(r.wordId))
+    .map(r => ({
     wordId:            r.wordId,
     masteryLevel:      (r.masteryLevel ?? 'new') as WordPriorityInput['masteryLevel'],
     masteryScore:      r.masteryScore ?? 0,
@@ -301,7 +304,8 @@ async function _getPracticePageData(email: string): Promise<PracticePageData | n
   );
   const studyQuizDoneSet = new Set(studyQuizDone.map(s => s.themeId));
   const freshCaseTheme = themes.find(t =>
-    flashcardDoneSet.has(t.id) && !studyQuizDoneSet.has(t.id) && (wordCountMap.get(t.id) ?? 0) > 0
+    flashcardDoneSet.has(t.id) && !studyQuizDoneSet.has(t.id) &&
+    (accessibleCountByTheme ? (accessibleCountByTheme.get(t.id) ?? 0) : (wordCountMap.get(t.id) ?? 0)) > 0
   );
   if (freshCaseTheme) {
     const wordCount = accessibleCountByTheme

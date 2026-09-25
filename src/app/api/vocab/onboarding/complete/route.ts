@@ -73,6 +73,8 @@ export async function POST(req: Request) {
     onboardingComplete:    true,
     onboardingCompletedAt: new Date(),
     activatedAt:           new Date(),
+    // They just picked their syllabuses — don't also send them through the reduced onboarding.
+    syllabusLocked:        false,
     // They're getting the current syllabus set fresh — nothing new to prompt about.
     lastAnnouncementSeen:  await getSyllabusCatalogVersion(),
   };

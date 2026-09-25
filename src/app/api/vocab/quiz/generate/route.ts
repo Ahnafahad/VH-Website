@@ -106,6 +106,18 @@ function toWordForDistractor(w: {
   };
 }
 
+/**
+ * Narrow a distractor pool to the user's syllabus selection / trial set, so
+ * wrong options don't surface words from syllabuses they didn't pick.
+ * ponytail: falls back to the unfiltered pool when too few remain to fill 4
+ * distractors (tiny trial sets, one-letter slices) — correctness over purity.
+ */
+async function accessiblePool<T extends { id: number }>(userId: number, words: T[]): Promise<T[]> {
+  const allowed = new Set(await filterAccessibleWordIds(userId, words.map(w => w.id)));
+  const mine = words.filter(w => allowed.has(w.id));
+  return mine.length >= 5 ? mine : words;
+}
+
 // ─── Route handler ────────────────────────────────────────────────────────────
 
 export async function POST(req: NextRequest) {
@@ -162,10 +174,15 @@ export async function POST(req: NextRequest) {
       }
 
       // Fetch all words in the theme
-      const rawWords = await db
+      const themeWords = await db
         .select()
         .from(vocabWords)
         .where(eq(vocabWords.themeId, themeId));
+
+      // Same word-level gate as practice: a theme mixes syllabuses, so only
+      // quiz the words this user's selection / trial budget unlocks.
+      const allowedSet = new Set(await filterAccessibleWordIds(user.id, themeWords.map(w => w.id)));
+      const rawWords = themeWords.filter(w => allowedSet.has(w.id));
 
       if (rawWords.length === 0) {
         throw new ApiException('No words found for this theme', 404);
@@ -182,7 +199,7 @@ export async function POST(req: NextRequest) {
       const allWords = await getAllWordsCached();
       // Shuffle so every quiz picks a different subset when theme > STUDY_MAX_QUESTIONS
       const correctWords = shuffle(rawWords).slice(0, questionCount).map(toWordForDistractor);
-      const pool        = allWords.map(toWordForDistractor);
+      const pool        = (await accessiblePool(user.id, allWords)).map(toWordForDistractor);
 
       return buildSession({
         userId:         user.id,
@@ -319,7 +336,7 @@ export async function POST(req: NextRequest) {
         ? bank.filter(w => w.word.charAt(0).toUpperCase() === letter)
         : bank;
       const correctWords = shuffle(rawWords).slice(0, questionCount).map(toWordForDistractor);
-      const pool         = allWords.map(toWordForDistractor);
+      const pool         = (await accessiblePool(user.id, allWords)).map(toWordForDistractor);
 
       return buildSession({
         userId:      user.id,
@@ -365,7 +382,7 @@ export async function POST(req: NextRequest) {
 
       const bank = await getAllWordsCached();
       const correctWords = shuffle(rawWords).slice(0, questionCount).map(toWordForDistractor);
-      const pool          = bank.map(toWordForDistractor);
+      const pool          = (await accessiblePool(user.id, bank)).map(toWordForDistractor);
 
       return buildSession({
         userId:      user.id,

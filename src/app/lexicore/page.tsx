@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from 'next';
 import { getServerSession } from 'next-auth';
 import { redirect } from 'next/navigation';
 import { authOptions } from '@/lib/auth';
-import { db, vocabWords, vocabWordAltDefinitions, vocabWordContrasts } from '@/lib/db';
+import { db, users, vocabUserProgress, vocabWords, vocabWordAltDefinitions, vocabWordContrasts } from '@/lib/db';
 import { eq, and, isNotNull, or } from 'drizzle-orm';
 import WelcomeFlow from './WelcomeFlow';
 import type { LivingCardWord } from '@/components/vocab/LivingFlashcard';
@@ -66,7 +66,19 @@ async function getDemoWord(): Promise<LivingCardWord | null> {
 
 export default async function LexiCoreWelcomePage() {
   const session = await getServerSession(authOptions);
-  if (session?.user?.email) redirect('/vocab');
+  if (session?.user?.email) {
+    // Signed in on the main website ≠ onboarded to LexiCore: only skip this
+    // (the first half of onboarding) once they've finished it. Staff skip
+    // onboarding entirely (see /vocab/onboarding), so send them through too.
+    const [row] = await db
+      .select({ role: users.role, done: vocabUserProgress.onboardingComplete })
+      .from(users)
+      .leftJoin(vocabUserProgress, eq(vocabUserProgress.userId, users.id))
+      .where(eq(users.email, session.user.email))
+      .limit(1);
+    const isStaff = row?.role === 'admin' || row?.role === 'super_admin' || row?.role === 'instructor';
+    if (row?.done || isStaff) redirect('/vocab');
+  }
 
   const demoWord = await getDemoWord();
 
