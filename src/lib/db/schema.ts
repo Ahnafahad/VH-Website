@@ -1770,6 +1770,92 @@ export type SprintAttempt   = typeof sprintAttempts.$inferSelect;
 export type SprintAnswer    = typeof sprintAnswers.$inferSelect;
 
 // ══════════════════════════════════════════════════════════════════════════════
+// REDLINE — Sentence Correction Mastery. 850-question bank served as 20-question
+// levels (finish one → next unlocks). Every response is stored with its full
+// interaction signals (confidence, hints, answer changes, timing, transfer
+// result) so the dashboard can map topic-wise weaknesses. Content is imported by
+// scripts/import-redline.mjs; only the first attempt at a level feeds analysis.
+// ══════════════════════════════════════════════════════════════════════════════
+
+// Single row (id=1): the module's on/off switch. Staff can always preview.
+export const redlineConfig = sqliteTable('redline_config', {
+  id:        integer('id').primaryKey(),
+  active:    integer('active', { mode: 'boolean' }).notNull().default(false),
+  updatedAt: integer('updated_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
+});
+
+export const redlineQuestions = sqliteTable('redline_questions', {
+  id:              integer('id').primaryKey({ autoIncrement: true }),
+  number:          integer('number').notNull().unique(),   // source worksheet question number (1-850)
+  sourceId:        text('source_id').notNull(),            // 'sc-0001'
+  level:           integer('level'),                       // null while held out of the levels
+  position:        integer('position'),                    // 1..N within the level
+  status:          text('status').notNull().default('live'), // 'live' | 'held'
+  holdReason:      text('hold_reason'),
+  skillId:         text('skill_id').notNull(),             // canonical skill (src/lib/redline/taxonomy.json)
+  secondarySkills: text('secondary_skills').notNull().default('[]'), // JSON canonical skill ids
+  difficultyLabel: text('difficulty_label').notNull(),
+  difficultyScore: real('difficulty_score').notNull(),
+  correctKey:      text('correct_key').notNull(),
+  content:         text('content').notNull(),              // JSON RedlineContent (sentence, options, teaching, distractor autopsy, transfer…)
+  staff:           text('staff').notNull(),                // JSON RedlineStaffNotes (QA + author notes — never sent to students)
+}, (t) => [
+  index('idx_redline_questions_level').on(t.level, t.position),
+  index('idx_redline_questions_skill').on(t.skillId),
+]);
+
+export const redlineAttempts = sqliteTable('redline_attempts', {
+  id:             integer('id').primaryKey({ autoIncrement: true }),
+  userId:         integer('user_id').notNull().references(() => users.id, { onDelete: 'cascade' }),
+  level:          integer('level').notNull(),
+  attemptNo:      integer('attempt_no').notNull(),         // 1 = first attempt (the one that feeds analysis)
+  isFirst:        integer('is_first', { mode: 'boolean' }).notNull(),
+  startedAt:      integer('started_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
+  finishedAt:     integer('finished_at', { mode: 'timestamp' }), // null = in progress; finishing unlocks the next level
+  totalCorrect:   integer('total_correct').notNull().default(0),
+  totalQuestions: integer('total_questions').notNull(),
+  totalTimeMs:    integer('total_time_ms').notNull().default(0),
+}, (t) => [
+  unique().on(t.userId, t.level, t.attemptNo),
+  index('idx_redline_attempts_user').on(t.userId),
+  index('idx_redline_attempts_level').on(t.level),
+]);
+
+export const redlineResponses = sqliteTable('redline_responses', {
+  id:              integer('id').primaryKey({ autoIncrement: true }),
+  attemptId:       integer('attempt_id').notNull().references(() => redlineAttempts.id, { onDelete: 'cascade' }),
+  userId:          integer('user_id').notNull().references(() => users.id, { onDelete: 'cascade' }),
+  questionId:      integer('question_id').notNull().references(() => redlineQuestions.id, { onDelete: 'cascade' }),
+  position:        integer('position').notNull(),
+  isFirst:         integer('is_first', { mode: 'boolean' }).notNull(), // denormalised from the attempt
+  selectedKey:     text('selected_key'),                   // null = skipped ("I don't know")
+  isCorrect:       integer('is_correct', { mode: 'boolean' }).notNull(),
+  confidence:      text('confidence'),                     // 'sure' | 'unsure' | 'guess' | null
+  firstClickMs:    integer('first_click_ms').notNull().default(0),
+  totalTimeMs:     integer('total_time_ms').notNull().default(0),
+  changes:         text('changes').notNull().default('[]'), // JSON [{key, t}] every option pick before locking
+  hint1Ms:         integer('hint1_ms'),                    // ms into the question when hint 1 was opened
+  hint2Ms:         integer('hint2_ms'),
+  dwellMs:         integer('dwell_ms').notNull().default(0), // time spent on the explanation
+  transferKey:     text('transfer_key'),
+  transferCorrect: integer('transfer_correct', { mode: 'boolean' }),
+  transferMs:      integer('transfer_ms'),
+  klass:           text('klass').notNull(),                // mastered | fragile | lucky | slip | gap | misconception
+  skillId:         text('skill_id').notNull(),
+  errorFamily:     text('error_family'),                   // set when a wrong option was picked
+  trapType:        text('trap_type'),
+  createdAt:       integer('created_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
+}, (t) => [
+  unique().on(t.attemptId, t.questionId),
+  index('idx_redline_responses_user').on(t.userId, t.isFirst),
+  index('idx_redline_responses_question').on(t.questionId),
+]);
+
+export type RedlineQuestion = typeof redlineQuestions.$inferSelect;
+export type RedlineAttempt  = typeof redlineAttempts.$inferSelect;
+export type RedlineResponse = typeof redlineResponses.$inferSelect;
+
+// ══════════════════════════════════════════════════════════════════════════════
 // READING SPEED TEST — hidden, link-only WPM + comprehension check-in. Access is
 // any logged-in user; no navbar entry. Passage/question content is static
 // (src/data/reading-speed-passages.ts), not DB-backed — only attempts are stored.

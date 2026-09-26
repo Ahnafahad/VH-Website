@@ -5,6 +5,8 @@ import { getUserByEmail } from '@/lib/db-access-control';
 import { getDashboardData } from '@/lib/lms/dashboard-data';
 import DashboardScreen from '@/components/lms/DashboardScreen';
 import type { UserProduct } from '@/lib/db/schema';
+import { canAccessRedline, isRedlineStaff } from '@/lib/redline/access';
+import { getConfig as getRedlineConfig } from '@/lib/redline/service';
 
 export const metadata = { title: 'Dashboard — VH' };
 
@@ -28,6 +30,7 @@ export default async function DashboardPage({ searchParams }: PageProps) {
       : user.products[0];
 
   const data = await getDashboardData(user, activeProduct);
+  const showRedline = canAccessRedline(user) && (isRedlineStaff(user) || (await getRedlineConfig()).active);
 
   return (
     <DashboardScreen
@@ -37,6 +40,7 @@ export default async function DashboardPage({ searchParams }: PageProps) {
       userId={user.id}
       products={user.products}
       activeProduct={activeProduct}
+      showRedline={showRedline}
     />
   );
 }

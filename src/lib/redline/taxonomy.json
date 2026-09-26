@@ -1,0 +1,523 @@
+{
+  "skills": [
+    {
+      "id": "parallelism",
+      "label": "Parallelism",
+      "aliases": [
+        "parallelism"
+      ]
+    },
+    {
+      "id": "correlative",
+      "label": "Correlative Pairs",
+      "aliases": [
+        "correlative parallelism"
+      ]
+    },
+    {
+      "id": "idiom",
+      "label": "Idiom & Prepositions",
+      "aliases": [
+        "idiom / preposition",
+        "idiom/preposition",
+        "idiom / usage"
+      ]
+    },
+    {
+      "id": "comparisons",
+      "label": "Comparisons",
+      "aliases": [
+        "comparisons",
+        "comparative idiom"
+      ]
+    },
+    {
+      "id": "sv-agreement",
+      "label": "Subject-Verb Agreement",
+      "aliases": [
+        "subject-verb agreement",
+        "subject–verb agreement"
+      ]
+    },
+    {
+      "id": "modifiers",
+      "label": "Modifiers",
+      "aliases": [
+        "modifier attachment",
+        "dangling / misplaced modifier",
+        "dangling/misplaced modifier"
+      ]
+    },
+    {
+      "id": "tense",
+      "label": "Verb Tense & Aspect",
+      "aliases": [
+        "verb tense / aspect",
+        "verb tense/aspect",
+        "sequence of tenses"
+      ]
+    },
+    {
+      "id": "pronoun-agreement",
+      "label": "Pronoun Agreement",
+      "aliases": [
+        "pronoun agreement"
+      ]
+    },
+    {
+      "id": "pronoun-reference",
+      "label": "Pronoun Reference",
+      "aliases": [
+        "pronoun reference"
+      ]
+    },
+    {
+      "id": "logic",
+      "label": "Logical Meaning",
+      "aliases": [
+        "logical predication",
+        "logical meaning"
+      ]
+    },
+    {
+      "id": "fragments",
+      "label": "Fragments & Run-ons",
+      "aliases": [
+        "sentence fragment / completeness",
+        "sentence fragment/completeness",
+        "run-on / clause boundary",
+        "run-on/clause boundary",
+        "sentence structure",
+        "punctuation / clause structure"
+      ]
+    },
+    {
+      "id": "concision",
+      "label": "Concision & Redundancy",
+      "aliases": [
+        "redundancy",
+        "concision"
+      ]
+    },
+    {
+      "id": "subjunctive",
+      "label": "Subjunctive & Modals",
+      "aliases": [
+        "subjunctive / mandative construction",
+        "conditional sentences / modal verbs"
+      ]
+    },
+    {
+      "id": "relative",
+      "label": "Relative Clauses & Appositives",
+      "aliases": [
+        "relative clauses",
+        "appositive / supplementary information",
+        "appositive/supplementary information"
+      ]
+    },
+    {
+      "id": "diction",
+      "label": "Diction",
+      "aliases": [
+        "diction",
+        "adjective vs adverb"
+      ]
+    },
+    {
+      "id": "coordination",
+      "label": "Coordination & Subordination",
+      "aliases": [
+        "subordination",
+        "coordination",
+        "contrastive coordination & relative clauses",
+        "additive phrases vs conjunctions",
+        "ellipsis / auxiliary inversion",
+        "elliptical clauses",
+        "elliptical clauses / auxiliary verbs"
+      ]
+    },
+    {
+      "id": "number",
+      "label": "Number, Quantity & Possessives",
+      "aliases": [
+        "count vs mass / quantity",
+        "singular vs plural form",
+        "possessive form",
+        "quantity expression"
+      ]
+    },
+    {
+      "id": "voice",
+      "label": "Voice & Verbals",
+      "aliases": [
+        "active vs passive construction",
+        "gerund / infinitive choice"
+      ]
+    }
+  ],
+  "families": [
+    {
+      "id": "dangling-modifier",
+      "label": "Modifier attached to the wrong noun",
+      "skill": "modifiers",
+      "patterns": [
+        "dangl",
+        "misplaced",
+        "modifier (attach|proximity)",
+        "participial (phrase|modif)",
+        "modifies the wrong",
+        "attaches to"
+      ]
+    },
+    {
+      "id": "parallel-break",
+      "label": "Broken parallel structure",
+      "skill": "parallelism",
+      "patterns": [
+        "parallel",
+        "correlative",
+        "not only",
+        "either.*or",
+        "neither",
+        "list (item|structure)",
+        "unbalanced"
+      ]
+    },
+    {
+      "id": "comparison-error",
+      "label": "Illogical or malformed comparison",
+      "skill": "comparisons",
+      "patterns": [
+        "compar",
+        "\\bthan\\b",
+        "\\bas\\b.{0,20}\\bas\\b",
+        "superlative",
+        "multiplier",
+        "ratio"
+      ]
+    },
+    {
+      "id": "sv-agreement",
+      "label": "Verb fails to agree with its subject",
+      "skill": "sv-agreement",
+      "patterns": [
+        "subject verb",
+        "agreement (error|mismatch)",
+        "singular (verb|subject)",
+        "plural (verb|subject)",
+        "verb (number|agreement)",
+        "number mismatch",
+        "attract"
+      ]
+    },
+    {
+      "id": "pronoun-error",
+      "label": "Pronoun mismatch or unclear reference",
+      "skill": "pronoun-reference",
+      "patterns": [
+        "pronoun",
+        "antecedent",
+        "ambiguous reference",
+        "vague (reference|this|which)",
+        "reflexive"
+      ]
+    },
+    {
+      "id": "tense-error",
+      "label": "Wrong tense, aspect or time sequence",
+      "skill": "tense",
+      "patterns": [
+        "tense",
+        "perfect",
+        "aspect",
+        "\\bpast\\b",
+        "future",
+        "\\bpresent\\b",
+        "sequence",
+        "historical",
+        "progressive"
+      ]
+    },
+    {
+      "id": "subjunctive-error",
+      "label": "Missed subjunctive or modal form",
+      "skill": "subjunctive",
+      "patterns": [
+        "subjunctive",
+        "mandative",
+        "modal",
+        "conditional",
+        "hypothetical",
+        "counterfactual"
+      ]
+    },
+    {
+      "id": "idiom-error",
+      "label": "Non-standard idiom or preposition",
+      "skill": "idiom",
+      "patterns": [
+        "idiom",
+        "preposition",
+        "collocation",
+        "gerund",
+        "infinitive"
+      ]
+    },
+    {
+      "id": "wordiness",
+      "label": "Wordy or redundant phrasing",
+      "skill": "concision",
+      "patterns": [
+        "wordy",
+        "redundan",
+        "nominal",
+        "concis",
+        "verbose",
+        "circumlocution",
+        "repetit",
+        "unnecessary",
+        "padding",
+        "tautolog"
+      ]
+    },
+    {
+      "id": "meaning-distortion",
+      "label": "Changes or garbles the meaning",
+      "skill": "logic",
+      "patterns": [
+        "meaning",
+        "illogical",
+        "predicat",
+        "equat",
+        "distort",
+        "absurd",
+        "logic",
+        "contradict",
+        "nonsens",
+        "unintended",
+        "causal"
+      ]
+    },
+    {
+      "id": "fragment-runon",
+      "label": "Fragment, run-on or comma splice",
+      "skill": "fragments",
+      "patterns": [
+        "fragment",
+        "run on",
+        "splice",
+        "incomplete",
+        "finite verb",
+        "missing verb",
+        "clause boundary",
+        "no main",
+        "independent clause"
+      ]
+    },
+    {
+      "id": "relative-error",
+      "label": "Misused relative clause or appositive",
+      "skill": "relative",
+      "patterns": [
+        "relative",
+        "whose",
+        "whom",
+        "appositive",
+        "restrictive"
+      ]
+    },
+    {
+      "id": "voice-error",
+      "label": "Awkward voice or verbal form",
+      "skill": "voice",
+      "patterns": [
+        "passive",
+        "active",
+        "voice",
+        "agent",
+        "verbal"
+      ]
+    },
+    {
+      "id": "diction-error",
+      "label": "Wrong word choice",
+      "skill": "diction",
+      "patterns": [
+        "diction",
+        "word choice",
+        "connotation",
+        "misused",
+        "confus",
+        "wrong word",
+        "colloquial",
+        "informal",
+        "register",
+        "imprecise"
+      ]
+    },
+    {
+      "id": "connector-error",
+      "label": "Wrong connector or clause linkage",
+      "skill": "coordination",
+      "patterns": [
+        "conjunction",
+        "connector",
+        "coordinat",
+        "subordinat",
+        "conjunctive",
+        "transition",
+        "contrast",
+        "semicolon"
+      ]
+    },
+    {
+      "id": "number-error",
+      "label": "Number, quantity or possessive slip",
+      "skill": "number",
+      "patterns": [
+        "plural",
+        "singular",
+        "\\bcount\\b",
+        "\\bmass\\b",
+        "quantity",
+        "fewer",
+        "amount",
+        "possess",
+        "apostrophe"
+      ]
+    }
+  ],
+  "traps": [
+    {
+      "id": "keeps-original",
+      "label": "Kept the original sentence",
+      "patterns": []
+    },
+    {
+      "id": "partial-fix",
+      "label": "Fixed one error, kept another",
+      "patterns": [
+        "fix",
+        "correct",
+        "resolv",
+        "repair",
+        "eliminat",
+        "avoid",
+        "remov",
+        "solv"
+      ]
+    },
+    {
+      "id": "sounds-sophisticated",
+      "label": "Chose the formal-sounding option",
+      "patterns": [
+        "sophisticat",
+        "formal",
+        "academic",
+        "elevated",
+        "complex",
+        "impressive",
+        "elaborat",
+        "refined",
+        "erudite"
+      ]
+    },
+    {
+      "id": "concise-bias",
+      "label": "Chose the shortest option",
+      "patterns": [
+        "short",
+        "concise",
+        "brevity",
+        "simple",
+        "streamlin",
+        "compact",
+        "economical",
+        "trim"
+      ]
+    },
+    {
+      "id": "sounds-natural",
+      "label": "Chose the natural-sounding option",
+      "patterns": [
+        "natural",
+        "colloquial",
+        "conversational",
+        "everyday",
+        "common",
+        "familiar",
+        "fluent",
+        "spoken",
+        "sounds right",
+        "smooth",
+        "rhythm",
+        "plausible",
+        "thorough",
+        "complete",
+        "clear",
+        "elegant"
+      ]
+    },
+    {
+      "id": "surface-cue",
+      "label": "Matched a surface cue",
+      "patterns": [
+        "keyword",
+        "resembl",
+        "mirror",
+        "echo",
+        "match",
+        "similar",
+        "nearest",
+        "adjacent",
+        "proximity",
+        "looks",
+        "contains",
+        "supplies",
+        "provides",
+        "features",
+        "keeps",
+        "retain",
+        "maintain",
+        "includes",
+        "places",
+        "\\buses\\b",
+        "mimic",
+        "attempts"
+      ]
+    },
+    {
+      "id": "other",
+      "label": "Other trap",
+      "patterns": []
+    }
+  ],
+  "trapBase": {
+    "keeps-original": 0.197,
+    "surface-cue": 0.159,
+    "sounds-sophisticated": 0.09,
+    "partial-fix": 0.226,
+    "concise-bias": 0.063,
+    "other": 0.159,
+    "sounds-natural": 0.106
+  },
+  "familyBase": {
+    "tense-error": 0.081,
+    "dangling-modifier": 0.058,
+    "meaning-distortion": 0.082,
+    "wordiness": 0.081,
+    "fragment-runon": 0.041,
+    "idiom-error": 0.159,
+    "diction-error": 0.023,
+    "relative-error": 0.022,
+    "subjunctive-error": 0.025,
+    "parallel-break": 0.089,
+    "connector-error": 0.048,
+    "voice-error": 0.026,
+    "pronoun-error": 0.07,
+    "number-error": 0.047,
+    "comparison-error": 0.107,
+    "sv-agreement": 0.039
+  }
+}

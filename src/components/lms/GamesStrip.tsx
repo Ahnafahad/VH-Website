@@ -2,7 +2,7 @@
 
 import { motion, useReducedMotion } from 'motion/react';
 import Link from 'next/link';
-import { BookOpenText, Calculator, ClipboardList, CalendarPlus, Route, Timer } from 'lucide-react';
+import { BookOpenText, Calculator, ClipboardList, CalendarPlus, PenLine, Route, Timer } from 'lucide-react';
 import type { LucideProps } from 'lucide-react';
 import type { DashboardGames } from '@/lib/lms/dashboard-data';
 import type { UserProduct } from '@/lib/db/schema';
@@ -10,6 +10,8 @@ import type { UserProduct } from '@/lib/db/schema';
 interface Props {
   games: DashboardGames;
   products: UserProduct[];
+  /** Redline (Sentence Correction Mastery) is open to this student. */
+  showRedline?: boolean;
 }
 
 interface GameBlock {
@@ -70,13 +72,20 @@ const BLOCKS: GameBlock[] = [
     icon: Timer,
     stat: () => 'In-class MCQ rounds →',
   },
+  {
+    name: 'Redline',
+    href: '/redline',
+    icon: PenLine,
+    stat: () => 'Sentence correction levels →',
+  },
 ];
 
-export default function GamesStrip({ games, products }: Props) {
+export default function GamesStrip({ games, products, showRedline = false }: Props) {
   const prefersReduced = useReducedMotion();
   const hasFbs = products.includes('fbs') || products.includes('fbs_detailed');
   const visibleBlocks = BLOCKS.filter(block => block.href !== '/games/fbs-accounting' || games.accounting !== null)
-    .filter(block => block.href !== '/sprint' || hasFbs);
+    .filter(block => block.href !== '/sprint' || hasFbs)
+    .filter(block => block.href !== '/redline' || showRedline);
 
   return (
     <div>

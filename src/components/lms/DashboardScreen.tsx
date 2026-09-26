@@ -28,6 +28,8 @@ interface Props {
   products?: UserProduct[];
   /** Which product `data` is currently scoped to. */
   activeProduct?: UserProduct;
+  /** Redline tile visibility (IBA 2026-27 with the module switched on, or staff). */
+  showRedline?: boolean;
 }
 
 const PRODUCT_LABELS: Record<UserProduct, string> = {
@@ -58,7 +60,7 @@ const itemVariantsReduced: Variants = {
   visible: { opacity: 1, y: 0 },
 };
 
-export default function DashboardScreen({ data, userName, studentId, userId, products = [], activeProduct }: Props) {
+export default function DashboardScreen({ data, userName, studentId, userId, products = [], activeProduct, showRedline = false }: Props) {
   const hasAccess = data.hasAccess === true;
   const d = hasAccess ? (data as DashboardData) : null;
   const prefersReduced = useReducedMotion();
@@ -266,7 +268,7 @@ export default function DashboardScreen({ data, userName, studentId, userId, pro
 
               {/* ── 6. Games Strip ── */}
               <motion.div variants={iv} className="mb-10">
-                <GamesStrip games={games} products={products} />
+                <GamesStrip games={games} products={products} showRedline={showRedline} />
               </motion.div>
             </>
           )}
