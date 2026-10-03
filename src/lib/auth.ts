@@ -3,6 +3,7 @@ import GoogleProvider from 'next-auth/providers/google'
 import CredentialsProvider from 'next-auth/providers/credentials'
 import { OAuth2Client } from 'google-auth-library'
 import { timingSafeEqual } from 'crypto'
+import fernet from 'fernet'
 import {
   isEmailAuthorized,
   getUserByEmail,
@@ -17,7 +18,9 @@ import { db, users } from '@/lib/db'
 // Lets local development sign in as the super-admin without the Google OAuth
 // round-trip. HARD-GATED to NODE_ENV==='development': on Vercel NODE_ENV is
 // 'production', so the provider below is never even constructed. Requires the
-// DEV_LOGIN_CODE env var (kept in .env.local, which is gitignored).
+// DEV_LOGIN_FERNET_KEY/DEV_LOGIN_FERNET_TOKEN env vars (kept in .env.local,
+// which is gitignored) — the token is a Fernet encryption of the real login
+// code, decrypted at request time.
 const IS_DEV = process.env.NODE_ENV === 'development'
 const DEV_LOGIN_EMAIL = 'ahnaf816@gmail.com'
 
@@ -29,13 +32,26 @@ function codeMatches(input: string, expected: string): boolean {
   return timingSafeEqual(a, b)
 }
 
+function decryptDevLoginCode(): string | null {
+  const key = process.env.DEV_LOGIN_FERNET_KEY
+  const token = process.env.DEV_LOGIN_FERNET_TOKEN
+  if (!key || !token) return null
+  try {
+    const secret = new fernet.Secret(key)
+    return new fernet.Token({ secret, token, ttl: 0 }).decode()
+  } catch (e) {
+    console.error('dev-login: failed to decrypt DEV_LOGIN_FERNET_TOKEN:', e)
+    return null
+  }
+}
+
 export const authOptions: NextAuthOptions = {
   providers: [
     GoogleProvider({
       clientId:     process.env.GOOGLE_CLIENT_ID!,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
     }),
-    ...(IS_DEV && process.env.DEV_LOGIN_CODE
+    ...(IS_DEV && process.env.DEV_LOGIN_FERNET_KEY && process.env.DEV_LOGIN_FERNET_TOKEN
       ? [
           CredentialsProvider({
             id: 'dev-login',
@@ -46,7 +62,7 @@ export const authOptions: NextAuthOptions = {
             async authorize(credentials) {
               // Re-check the gate at call time — belt and suspenders.
               if (process.env.NODE_ENV !== 'development') return null
-              const expected = process.env.DEV_LOGIN_CODE
+              const expected = decryptDevLoginCode()
               if (!expected) return null
               const got = (credentials?.code ?? '').trim()
               if (!got || !codeMatches(got, expected.trim())) {

@@ -60,6 +60,10 @@ yarn-error.log*
 
 # local-only dev tools (never pushed — see scripts/dev-login.sh header)
 scripts/dev-login.sh
+scripts/decrypt-dev-login-code.mjs
+
+# local-only UI/UX audit report (never published)
+public/ui-ux-audit-report.html
 
 # typescript
 *.tsbuildinfo
