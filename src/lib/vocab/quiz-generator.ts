@@ -100,6 +100,54 @@ export function isTypedQuestion(q: Pick<GeneratedQuestion, 'type'>): boolean {
 interface AIQuestionResult {
   questionText: string;
   explanation:  string;
+  /** correct_usage only: the sentence that uses the word correctly. */
+  correctSentence?: string;
+  /** correct_usage only: the two sentences that misuse it. */
+  wrongSentences?:  string[];
+}
+
+/**
+ * Build a correct_usage question whose options are the three sentences
+ * (answered by letter, like synonym/antonym). The stem is written here, not by
+ * the AI, and the correct sentence's position is randomised here.
+ *
+ * Returns null when the AI didn't deliver 3 distinct sentences that each
+ * contain the target word — the caller then downgrades to a plain fill-blank.
+ */
+export function buildCorrectUsageQuestion(
+  q:  QuizQuestionInput,
+  ai: AIQuestionResult,
+): GeneratedQuestion | null {
+  const { correctSentence, wrongSentences } = ai;
+  if (!correctSentence || wrongSentences?.length !== 2) return null;
+
+  const sentences = [correctSentence, ...wrongSentences].map(s => s.trim());
+  if (new Set(sentences.map(s => s.toLowerCase())).size !== 3) return null;
+
+  // Prefix match so natural inflections (placate → placated) still count.
+  const escaped = q.correct.word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const hasWord = new RegExp(`\\b${escaped}`, 'i');
+  if (!sentences.every(s => hasWord.test(s))) return null;
+
+  const correctIndex = Math.floor(Math.random() * 3);
+  const ordered = [...sentences.slice(1)];
+  ordered.splice(correctIndex, 0, sentences[0]);
+
+  return {
+    id:            randomUUID(),
+    type:          'correct_usage',
+    questionText:  `Which sentence uses “${q.correct.word}” correctly?`,
+    options:       ordered.map((word, idx) => ({
+      letter: OPTION_LETTERS[idx],
+      wordId: 0,
+      word,
+    })),
+    correctLetter: OPTION_LETTERS[correctIndex],
+    correctWordId: q.correct.id,
+    explanation:   ai.explanation,
+    inputMode:     'choice',
+    optionKind:    'string',
+  };
 }
 
 function blankTarget(example: string, word: string): string | null {
@@ -160,7 +208,7 @@ function buildPrompt(
     const typeInstructions: Record<VocabQuestionType, string> = {
       fill_blank: `Write a fill-in-the-blank sentence where the blank clearly fits only the correct word. The sentence should use context (NOT the definition verbatim or the example sentence). Difficulty: ${difficulty}.`,
       analogy: `Write an analogy question in the format "Word A : Word B :: ${correct.word} : ___". Choose Word A and Word B so the relationship mirrors how ${correct.word} relates to its correct answer. The blank must be filled by the correct answer word. Difficulty: ${difficulty}.`,
-      correct_usage: `Write 3 short sentences. Exactly ONE uses "${correct.word}" correctly in context. The other two use it incorrectly or in a misleading way. The question prompt should ask: "Which sentence uses the word correctly?" Do NOT mention the word in your questionText — embed it naturally in the sentences. Difficulty: ${difficulty}.`,
+      correct_usage: `Write 3 short sentences that each contain the word "${correct.word}" (or a natural inflection of it). Exactly ONE uses it correctly in context; the other two misuse it in a plausible-sounding way (wrong meaning, wrong register, or a contradiction) — not obviously absurd. Keep all three similar in length and structure so length doesn't give the answer away. Return them as "correctSentence" (string) and "wrongSentences" (array of exactly 2 strings). questionText is ignored for this type — write any short placeholder. The explanation must say why the correct sentence fits and what is wrong with the other two; the sentences are shuffled before display, so NEVER refer to them by position or letter (first/second/A/B) — quote a short phrase from each instead. Difficulty: ${difficulty}.`,
       type_word: `The student must TYPE the word "${correct.word}" from memory — no options are shown. Write a prompt that paraphrases the word's meaning in your own words (do NOT quote the definition verbatim and do NOT mention the word or any of its close derivatives). End the prompt with: "Type the word." Difficulty: ${difficulty}.`,
       type_cloze: `The student must TYPE the missing word "${correct.word}" from memory — no options are shown. Write a fill-in-the-blank sentence using ___ where the context points clearly and uniquely to the correct word (NOT the definition verbatim or the example sentence). Difficulty: ${difficulty}.`,
       // synonym/antonym questions are built locally without AI — never sent in prompts.
@@ -191,7 +239,7 @@ IMPORTANT: Do NOT reuse the example sentence verbatim. Do NOT reveal which optio
   return `You are a vocabulary quiz writer for advanced Bangladeshi university entrance exam preparation (IBA, BUP, FBS level). Write ${inputs.length} quiz question(s) using the word data provided.
 
 Rules:
-- questionText must NOT contain the correct answer word or its definition.
+- questionText must NOT contain the correct answer word or its definition (correct_usage is the exception: its sentences contain the word).
 - Explanation must be 1–2 sentences: state what the word means and why it fits the context.
 - For fill_blank: use ___ (three underscores) to mark the blank.
 - Never reuse example sentences verbatim.
@@ -204,6 +252,7 @@ Output format (JSON array, one object per question):
     "explanation": "..."
   }
 ]
+For correct_usage questions only, each object also has "correctSentence" and "wrongSentences" as described in its instruction.
 
 ${questionBlocks.join('\n\n')}`;
 }
@@ -234,8 +283,15 @@ function parseAIResponse(rawText: string, provider: string): AIQuestionResult[] 
     ) {
       throw new Error(`${provider} response item missing required fields`);
     }
-    const obj = item as Record<string, string>;
-    return { questionText: obj.questionText, explanation: obj.explanation };
+    const obj = item as Record<string, unknown>;
+    return {
+      questionText:    obj.questionText as string,
+      explanation:     obj.explanation as string,
+      correctSentence: typeof obj.correctSentence === 'string' ? obj.correctSentence : undefined,
+      wrongSentences:  Array.isArray(obj.wrongSentences)
+        ? obj.wrongSentences.filter((s): s is string => typeof s === 'string')
+        : undefined,
+    };
   });
 }
 
@@ -333,9 +389,18 @@ export async function generateQuizQuestions(
     if (results.length !== inputs.length) {
       throw new Error(`AI returned ${results.length} questions, expected ${inputs.length}`);
     }
-    return inputs.map((q, i) => {
-      const { correct, selection }      = q;
-      const { questionText, explanation } = results[i];
+    return inputs.map((input, i) => {
+      let q = input;
+      let { questionText, explanation } = results[i];
+      if (q.type === 'correct_usage') {
+        const usage = buildCorrectUsageQuestion(q, results[i]);
+        if (usage) return usage;
+        // No usable sentences (AI botched them, or no AI at all) — ask a plain
+        // fill-in-the-blank with word options instead of an unanswerable question.
+        q = { ...q, type: 'fill_blank' };
+        ({ questionText, explanation } = buildDeterministicQuestionCopy(q));
+      }
+      const { correct, selection } = q;
       const typed = isTypedQuestion(q);
       const options = typed ? [] : selection.allOptions.map((w, idx) => ({
         letter:  LETTERS[idx],

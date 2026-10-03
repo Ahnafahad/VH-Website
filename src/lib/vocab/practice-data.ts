@@ -179,7 +179,6 @@ async function _getPracticePageData(email: string): Promise<PracticePageData | n
   const filteredLetters = await getLetterIndex(user.id);
 
   const wordCountMap = new Map(wordCountRows.map(r => [r.themeId, r.count]));
-  const masteredMap  = new Map(masteredRows.map(r => [r.themeId, r.count]));
 
   // Full access (ids === null) keeps the raw per-theme totals below. Otherwise
   // a theme's displayed count is only the words this user's syllabus
@@ -200,11 +199,16 @@ async function _getPracticePageData(email: string): Promise<PracticePageData | n
   // wordsInOrder (no extra round trip) — same threshold LetterCard already uses.
   const wordIdToTheme = new Map(wordsInOrder.map(w => [w.id, w.themeId]));
   const familiarPlusByTheme = new Map<number, number>();
+  const masteredByTheme = new Map<number, number>();
   for (const r of wordRecords) {
+    // Records persist across syllabus changes — count only words still in the
+    // selection so numerators match the filtered wordCount denominators.
+    if (unlockedIds !== null && !unlockedIds.has(r.wordId)) continue;
     if (r.masteryLevel !== 'familiar' && r.masteryLevel !== 'strong' && r.masteryLevel !== 'mastered') continue;
     const themeId = wordIdToTheme.get(r.wordId);
     if (themeId === undefined) continue;
     familiarPlusByTheme.set(themeId, (familiarPlusByTheme.get(themeId) ?? 0) + 1);
+    if (r.masteryLevel === 'mastered') masteredByTheme.set(themeId, (masteredByTheme.get(themeId) ?? 0) + 1);
   }
 
   // Group themes under their parent unit (only include themes that have words)
@@ -218,7 +222,7 @@ async function _getPracticePageData(email: string): Promise<PracticePageData | n
       id:                t.id,
       name:              t.name,
       wordCount,
-      masteredCount:     masteredMap.get(t.id) ?? 0,
+      masteredCount:     masteredByTheme.get(t.id) ?? 0,
       familiarPlusCount: familiarPlusByTheme.get(t.id) ?? 0,
     };
     const arr = themesByUnit.get(t.unitId) ?? [];

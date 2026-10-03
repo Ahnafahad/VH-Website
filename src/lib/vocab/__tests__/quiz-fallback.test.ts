@@ -8,7 +8,7 @@ vi.mock('@/lib/db', () => ({
   vocabErrorLogs: {},
 }));
 
-import { buildDeterministicQuestionCopy, type QuizQuestionInput } from '../quiz-generator';
+import { buildCorrectUsageQuestion, buildDeterministicQuestionCopy, type QuizQuestionInput } from '../quiz-generator';
 
 function input(type: QuizQuestionInput['type'], exampleSentence = 'Her sagacious advice prevented a costly mistake.'): QuizQuestionInput {
   const word = {
@@ -47,5 +47,31 @@ describe('deterministic quiz fallback', () => {
   it('falls back to a definition when no example can be blanked', () => {
     const result = buildDeterministicQuestionCopy(input('analogy', 'A different example.'));
     expect(result.questionText).toContain('having good judgement');
+  });
+});
+
+describe('correct_usage question', () => {
+  const ai = {
+    questionText: 'ignored',
+    explanation:  'Only the first fits.',
+    correctSentence: 'Her sagacious advice prevented a mistake.',
+    wrongSentences:  ['A sagacious rock fell down the hill.', 'He was sagacious about being foolish.'],
+  };
+
+  it('offers the three sentences as options and keys the correct letter to the right one', () => {
+    for (let n = 0; n < 30; n++) {
+      const q = buildCorrectUsageQuestion(input('correct_usage'), ai)!;
+      expect(q.options).toHaveLength(3);
+      expect(q.optionKind).toBe('string');
+      expect(q.options.find(o => o.letter === q.correctLetter)!.word).toBe(ai.correctSentence);
+    }
+  });
+
+  it('rejects results without 3 distinct sentences that all contain the word', () => {
+    const q = input('correct_usage');
+    expect(buildCorrectUsageQuestion(q, { ...ai, correctSentence: undefined })).toBeNull();
+    expect(buildCorrectUsageQuestion(q, { ...ai, wrongSentences: ['Only one sagacious.'] })).toBeNull();
+    expect(buildCorrectUsageQuestion(q, { ...ai, wrongSentences: [ai.correctSentence, 'Another sagacious one.'] })).toBeNull();
+    expect(buildCorrectUsageQuestion(q, { ...ai, wrongSentences: ['No target word here.', 'A sagacious one.'] })).toBeNull();
   });
 });

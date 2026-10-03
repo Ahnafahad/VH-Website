@@ -391,7 +391,8 @@ function OptionCard({ opt, phase, selectedLetter, result, index, onSelect }: Opt
         lineHeight: 1.25,
         flex: 1,
         transition: 'color 0.22s',
-        textTransform: 'capitalize',
+        // Words get Title Case; full sentences (correct_usage options) must keep their own casing.
+        textTransform: /[.!?]$/.test(opt.word) ? 'none' : 'capitalize',
       }}>
         {opt.word}
       </span>

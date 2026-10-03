@@ -108,7 +108,6 @@ async function _getHomeData(email: string): Promise<HomeData | null> {
     dueResult,
     reviewedToday,
     lastSession,
-    masteryRows,
     weakResult,
     flashcardSessions,
     completedQuizzes,
@@ -150,15 +149,6 @@ async function _getHomeData(email: string): Promise<HomeData | null> {
       ))
       .orderBy(sql`${vocabFlashcardSessions.startedAt} DESC`)
       .limit(1),
-
-    // Mastery breakdown
-    db.select({
-      level: vocabUserWordRecords.masteryLevel,
-      cnt:   count(),
-    })
-      .from(vocabUserWordRecords)
-      .where(eq(vocabUserWordRecords.userId, user.id))
-      .groupBy(vocabUserWordRecords.masteryLevel),
 
     // Weak words count (new or learning)
     db.select({ value: count() })
@@ -255,9 +245,12 @@ async function _getHomeData(email: string): Promise<HomeData | null> {
   // ── Mastery breakdown ─────────────────────────────────────────────────────
 
   const breakdown: MasteryBreakdown = { new: 0, learning: 0, familiar: 0, strong: 0, mastered: 0 };
-  for (const row of masteryRows) {
-    const lvl = row.level as keyof MasteryBreakdown;
-    if (lvl in breakdown) breakdown[lvl] = row.cnt;
+  // Records persist across syllabus changes — only count words still in the selection.
+  const { ids: selectedWordIds } = await getUnlockedWordIds(user.id);
+  for (const row of wordRecords) {
+    if (selectedWordIds !== null && !selectedWordIds.has(row.wordId)) continue;
+    const lvl = row.masteryLevel as keyof MasteryBreakdown;
+    if (lvl in breakdown) breakdown[lvl]++;
   }
 
   // ── Sessions logic ────────────────────────────────────────────────────────

@@ -5,6 +5,7 @@ import { AnimatePresence, motion, useMotionValue, useTransform, type PanInfo } f
 import { RotateCcw } from 'lucide-react';
 import { LexiArtwork, LexiIcon } from '@/components/vocab/LexiAsset';
 import { speak } from '@/lib/vocab/speak';
+import { trackFeature } from '@/lib/analytics/tracker';
 import type { CardPrefs } from '@/lib/vocab/card-prefs';
 
 export interface LivingCardWord {
@@ -17,6 +18,44 @@ export interface LivingCardWord {
   exampleSentence: string | null;
   connotation?:    string | null;
   contrast?:       { word: string; gloss: string } | null;
+}
+
+// iOS WebKit (Safari + Chrome iOS) has shown the hidden face bleeding through
+// the revealed one. We can't reproduce it off-device, so once a flip settles we
+// hit-test the card and report to analytics_events (name 'flashcard_flip_diag',
+// userId attached): one baseline per page load on iOS, plus up to 3 leaks.
+let flipDiagSent = false;
+let flipLeaksSent = 0;
+
+function describeEl(el: Element): string {
+  return `${el.tagName.toLowerCase()}${el.className && typeof el.className === 'string' ? '.' + el.className.split(' ')[0] : ''}`;
+}
+
+function reportFlipDiag(front: HTMLElement | null, back: HTMLElement | null, flipped: boolean, reduce: boolean) {
+  const shown  = flipped ? back : front;
+  const hidden = flipped ? front : back;
+  if (!shown || !hidden) return;
+  const ua    = navigator.userAgent;
+  const isIos = /iPhone|iPad|iPod/.test(ua) || (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1);
+
+  const r     = shown.getBoundingClientRect();
+  const stack = document.elementsFromPoint(r.left + r.width / 2, r.top + r.height / 2);
+  const leak  = stack.some(el => hidden.contains(el));
+
+  if (leak ? flipLeaksSent >= 3 : (flipDiagSent || !isIos)) return;
+  if (leak) flipLeaksSent++; else flipDiagSent = true;
+
+  const cs = getComputedStyle(hidden);
+  trackFeature('flashcard_flip_diag', 'vocab', {
+    leak, flipped, reduce,
+    hiddenFace: { display: cs.display, visibility: cs.visibility, backface: cs.backfaceVisibility, webkitBackface: cs.getPropertyValue('-webkit-backface-visibility') },
+    topElements: stack.slice(0, 4).map(describeEl),
+    supportsBackface:       CSS.supports('backface-visibility', 'hidden'),
+    supportsWebkitBackface: CSS.supports('-webkit-backface-visibility', 'hidden'),
+    standalone: Boolean((navigator as Navigator & { standalone?: boolean }).standalone),
+    dpr: window.devicePixelRatio, vw: window.innerWidth, vh: window.innerHeight,
+    ua,
+  });
 }
 
 /**
@@ -69,6 +108,27 @@ export default function LivingFlashcard({
   }
 
   const flipDuration = reduce ? 0.12 : 0.46;
+
+  // Once a flip has finished, take the inactive face out of rendering entirely
+  // (display:none) — visibility/backface-visibility alone still let it bleed
+  // through on iOS WebKit. `settled` is false the instant isFlipped changes
+  // (derived, not an effect) so both faces are present for the whole rotation.
+  const [settledFlip, setSettledFlip] = useState(isFlipped);
+  const settled = settledFlip === isFlipped;
+  useEffect(() => {
+    if (settled) return;
+    const t = setTimeout(() => setSettledFlip(isFlipped), flipDuration * 1000 + 80);
+    return () => clearTimeout(t);
+  }, [settled, isFlipped, flipDuration]);
+
+  const frontRef = useRef<HTMLDivElement>(null);
+  const backRef  = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    if (!settled) return;
+    const id = requestAnimationFrame(() => reportFlipDiag(frontRef.current, backRef.current, isFlipped, reduce));
+    return () => cancelAnimationFrame(id);
+  }, [settled, isFlipped, reduce]);
+
   const speakWord    = useCallback(() => speak(word.word), [word.word]);
   const canSwipe     = Boolean(onSwipeRate) && isFlipped;
 
@@ -148,6 +208,7 @@ export default function LivingFlashcard({
         >
           {/* ── FRONT ─────────────────────────────────── */}
           <motion.div
+            ref={frontRef}
             role="button"
             tabIndex={0}
             aria-label="Reveal definition"
@@ -162,6 +223,7 @@ export default function LivingFlashcard({
             transition={{ duration: reduce ? 0.12 : 0 }}
             style={{
               backfaceVisibility: 'hidden',
+              WebkitBackfaceVisibility: 'hidden',
               // Belt-and-suspenders against WebKit flattening the 3D context
               // (which kills backface-visibility): snap this face's own
               // visibility at the flip midpoint, when it's edge-on either way.
@@ -178,6 +240,7 @@ export default function LivingFlashcard({
               padding: '2rem',
               cursor: !isFlipped ? 'pointer' : 'default',
               overflow: 'hidden',
+              ...(!reduce && settled && isFlipped ? { display: 'none' } : {}),
             }}
             className={!isFlipped ? 'lx-card-focus' : undefined}
           >
@@ -251,11 +314,13 @@ export default function LivingFlashcard({
 
           {/* ── BACK ──────────────────────────────────── */}
           <motion.div
+            ref={backRef}
             aria-label="Definition revealed"
             animate={{ opacity: reduce ? (isFlipped ? 1 : 0) : 1 }}
             transition={{ duration: reduce ? 0.12 : 0 }}
             style={{
               backfaceVisibility: 'hidden',
+              WebkitBackfaceVisibility: 'hidden',
               // Symmetric gate to the front face — see comment there.
               visibility: reduce ? 'visible' : (isFlipped ? 'visible' : 'hidden'),
               pointerEvents: reduce && !isFlipped ? 'none' : undefined,
@@ -271,6 +336,7 @@ export default function LivingFlashcard({
               overflowY: 'auto',
               scrollbarWidth: 'none',
               msOverflowStyle: 'none',
+              ...(!reduce && settled && !isFlipped ? { display: 'none' } : {}),
             }}
             className="hide-scrollbar"
           >
