@@ -227,7 +227,7 @@ async function fetchInstructorLoad(teachingUsers: { id: number; name: string }[]
 interface StatCard {
   label:    string;
   value:    number;
-  icon:     React.ElementType;
+  icon:     React.ComponentType<import('lucide-react').LucideProps>;
   href:     string;
 }
 
@@ -237,7 +237,7 @@ interface QuickLink {
   label:   string;
   desc:    string;
   href:    string;
-  icon:    React.ElementType;
+  icon:    React.ComponentType<import('lucide-react').LucideProps>;
   section: string;
 }
 

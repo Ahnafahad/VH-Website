@@ -113,7 +113,7 @@ function Chip({ label, tone = 'neutral' }: { label: string; tone?: 'neutral' | '
 
 // ─── Tab button ───────────────────────────────────────────────────────────────
 
-function TabButton({ label, active, onClick, icon: Icon }: { label: string; active: boolean; onClick: () => void; icon: React.ElementType }) {
+function TabButton({ label, active, onClick, icon: Icon }: { label: string; active: boolean; onClick: () => void; icon: React.ComponentType<import('lucide-react').LucideProps> }) {
   return (
     <motion.button
       onClick={onClick}
