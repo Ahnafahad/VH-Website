@@ -1,0 +1,265 @@
+{
+  "schema_version": 1,
+  "set_id": "confident-arrogant",
+  "title": "Belief, without superiority",
+  "words": [
+    {
+      "word": "confident",
+      "sense": "sure of your own ability",
+      "connotation": "usually positive",
+      "register": "general",
+      "misconceptions": [
+        "self-belief requires thinking others are inferior"
+      ]
+    },
+    {
+      "word": "arrogant",
+      "sense": "acting as though you are superior to others",
+      "connotation": "negative",
+      "register": "general",
+      "misconceptions": [
+        "speaking with certainty is always arrogance"
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "regard_for_others",
+      "description": "whether self-belief includes a claim of superiority"
+    }
+  ],
+  "edges": [
+    {
+      "id": "confident__arrogant",
+      "a": "confident",
+      "b": "arrogant",
+      "boundary_rule": "Confidence trusts your own ability; arrogance assumes you are above other people.",
+      "clues_a": [
+        "trusts own preparation"
+      ],
+      "clues_b": [
+        "dismisses others as inferior"
+      ],
+      "irrelevant_clues": [
+        "speaks loudly",
+        "large audience"
+      ]
+    }
+  ],
+  "chains": [
+    {
+      "id": "ca_tutorial_flip",
+      "edge_id": "confident__arrogant",
+      "domain": "presentation",
+      "characters": [
+        "Ari"
+      ],
+      "purpose": "tutorial",
+      "difficulty": 1,
+      "beats": [
+        {
+          "id": "ca_tutorial_flip_b1",
+          "text": "Ari believes she can handle the presentation after practising it carefully.",
+          "best_word": "confident",
+          "fit": {
+            "confident": 0.96,
+            "arrogant": 0.15
+          },
+          "decisive_clue": "after practising it carefully",
+          "reason": "Her belief rests on preparation, with no claim that other people are inferior.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "arrogant": "misses_the_decisive_clue"
+          },
+          "hints": {
+            "attention": "What does Ari say about the other people?",
+            "axis": "Separate belief in yourself from contempt for others.",
+            "contrast": "Being sure you can succeed does not require putting anyone else down."
+          }
+        },
+        {
+          "id": "ca_tutorial_flip_b2",
+          "text": "She also says nobody else on the team is capable of doing it properly.",
+          "best_word": "arrogant",
+          "fit": {
+            "confident": 0.55,
+            "arrogant": 0.98
+          },
+          "decisive_clue": "nobody else on the team is capable",
+          "reason": "Dismissing everyone else introduces superiority; self-belief alone no longer captures her attitude.",
+          "shift_type": "corrupt",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "confident": "overlooks_contempt_for_others"
+          },
+          "hints": {
+            "attention": "What does Ari say about the other people?",
+            "axis": "Separate belief in yourself from contempt for others.",
+            "contrast": "Being sure you can succeed does not require putting anyone else down."
+          }
+        },
+        {
+          "id": "ca_tutorial_flip_b3",
+          "text": "Even when a teammate offers a useful improvement, Ari says their ideas are beneath her.",
+          "best_word": "arrogant",
+          "fit": {
+            "confident": 0.3,
+            "arrogant": 0.98
+          },
+          "decisive_clue": "their ideas are beneath her",
+          "reason": "The new detail reinforces contempt for teammates rather than simply trust in her own ability.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "confident": "misses_the_decisive_clue"
+          },
+          "hints": {
+            "attention": "What does Ari say about the other people?",
+            "axis": "Separate belief in yourself from contempt for others.",
+            "contrast": "Being sure you can succeed does not require putting anyone else down."
+          }
+        }
+      ],
+      "feedback_short": "One detail changed the meaning: Ari put everyone else below her.",
+      "feedback_deep": "The first statement concerned Ari’s own preparation. Dismissing teammates introduced superiority. Speaking to a large audience does not remove that claim.",
+      "contrast_rule": "Confidence trusts your own ability; arrogance assumes you are above other people.",
+      "hints": {
+        "attention": "What does Ari say about the other people?",
+        "axis": "Separate belief in yourself from contempt for others.",
+        "contrast": "Being sure you can succeed does not require putting anyone else down."
+      }
+    },
+    {
+      "id": "ca_tutorial_hold",
+      "edge_id": "confident__arrogant",
+      "domain": "music_rehearsal",
+      "characters": [
+        "Sam"
+      ],
+      "purpose": "tutorial",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "ca_tutorial_hold_b1",
+          "text": "Sam tells the band, “I have practised my part and I can do this.”",
+          "best_word": "confident",
+          "fit": {
+            "confident": 0.98,
+            "arrogant": 0.16
+          },
+          "decisive_clue": "I have practised my part",
+          "reason": "Sam trusts preparation without claiming superiority.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "arrogant": "misses_the_decisive_clue"
+          },
+          "hints": {
+            "attention": "Did Sam put anybody else down?",
+            "axis": "Focus on respect for others, not audience size.",
+            "contrast": "Believing you can handle pressure is different from considering others beneath you."
+          }
+        },
+        {
+          "id": "ca_tutorial_hold_b2",
+          "text": "The band learns the audience will be much larger; Sam still believes the practice will be enough.",
+          "best_word": "confident",
+          "fit": {
+            "confident": 0.97,
+            "arrogant": 0.2
+          },
+          "decisive_clue": "the practice will be enough",
+          "reason": "The larger audience adds pressure, not contempt for anyone else.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "arrogant": "misses_the_decisive_clue"
+          },
+          "hints": {
+            "attention": "Did Sam put anybody else down?",
+            "axis": "Focus on respect for others, not audience size.",
+            "contrast": "Believing you can handle pressure is different from considering others beneath you."
+          }
+        },
+        {
+          "id": "ca_tutorial_hold_b3",
+          "text": "Sam says this firmly, then thanks a bandmate for a useful suggestion.",
+          "best_word": "confident",
+          "fit": {
+            "confident": 0.98,
+            "arrogant": 0.12
+          },
+          "decisive_clue": "thanks a bandmate for a useful suggestion",
+          "reason": "A firm manner coexists with respect; there is no claim of superiority.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "arrogant": "misses_the_decisive_clue"
+          },
+          "hints": {
+            "attention": "Did Sam put anybody else down?",
+            "axis": "Focus on respect for others, not audience size.",
+            "contrast": "Believing you can handle pressure is different from considering others beneath you."
+          }
+        }
+      ],
+      "feedback_short": "A bigger audience changes the pressure, not Sam’s respect for other people.",
+      "feedback_deep": "The audience grows and Sam speaks firmly, but still respects a teammate’s contribution. Neither detail implies superiority.",
+      "contrast_rule": "Confidence trusts your own ability; arrogance assumes you are above other people.",
+      "hints": {
+        "attention": "Did Sam put anybody else down?",
+        "axis": "Focus on respect for others, not audience size.",
+        "contrast": "Believing you can handle pressure is different from considering others beneath you."
+      }
+    }
+  ]
+}
