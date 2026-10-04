@@ -2,8 +2,8 @@
    renders and is playable. The premium visual pass — depth, material, light, motion polish — is
    still owed by Phase 1 and should replace or extend this file. Host apps override the tokens. */
 .lw-game {
-  --lw-bg: #0b0d14; --lw-surface: #141826; --lw-object: #1c2236; --lw-line: #2a3150;
-  --lw-ink: #f2f4fb; --lw-muted: #9aa3c0; --lw-accent: #8fb4ff; --lw-secondary: #c9a6ff;
+  --lw-bg: #0F0F0F; --lw-surface: #1A1A1A; --lw-object: #242424; --lw-line: #333333;
+  --lw-ink: #F5F5F5; --lw-muted: #B0B0B0; --lw-accent: #E63946; --lw-secondary: #F4A828;
   --lw-radius: 18px; --lw-font: inherit; --lw-display: inherit;
   position: relative; min-height: 100dvh; display: flex; flex-direction: column; gap: 20px;
   padding: 16px clamp(16px, 4vw, 48px) 24px; overflow: hidden; isolation: isolate;
@@ -43,7 +43,7 @@
 .lw-mini-tile { padding: 10px 16px; border: 1px solid var(--lw-line); border-radius: 12px; background: var(--lw-object); letter-spacing: .12em; text-transform: uppercase; font-size: .8rem; }
 .lw-desktop { display: none; }
 
-.lw-primary { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 48px; padding: 0 24px; border: 0; border-radius: 999px; background: var(--lw-accent); color: #0b0d14; font-weight: 600; text-decoration: none; cursor: pointer; }
+.lw-primary { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 48px; padding: 0 24px; border: 0; border-radius: 999px; background: var(--lw-accent); color: #F5F5F5; font-weight: 600; text-decoration: none; cursor: pointer; }
 .lw-primary:disabled { opacity: .4; cursor: not-allowed; }
 .lw-text-button { min-height: 44px; padding: 0 12px; border: 0; background: none; color: var(--lw-muted); text-decoration: underline; cursor: pointer; }
 
