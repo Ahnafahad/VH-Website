@@ -1879,3 +1879,30 @@ export const readingSpeedAttempts = sqliteTable('reading_speed_attempts', {
 ]);
 
 export type ReadingSpeedAttempt = typeof readingSpeedAttempts.$inferSelect;
+
+// Operational Admin — private financial and extra-class records.
+export const operationalEntries = sqliteTable('operational_entries', {
+  id:          integer('id').primaryKey({ autoIncrement: true }),
+  kind:        text('kind', { enum: ['expense', 'income'] }).notNull(),
+  date:        text('date').notNull(), // Bangladesh calendar date (YYYY-MM-DD)
+  amountMinor: integer('amount_minor').notNull(), // BDT in paisa
+  category:    text('category').notNull(), // expense category or income source
+  description: text('description').notNull().default(''),
+  createdBy:   integer('created_by').notNull().references(() => users.id),
+  createdAt:   integer('created_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
+  updatedAt:   integer('updated_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
+}, (t) => [index('idx_operational_entries_kind_date').on(t.kind, t.date)]);
+
+export const operationalExtraClasses = sqliteTable('operational_extra_classes', {
+  id:           integer('id').primaryKey({ autoIncrement: true }),
+  instructorId: integer('instructor_id').notNull().references(() => users.id),
+  subject:      text('subject').notNull(),
+  startsAt:     integer('starts_at', { mode: 'timestamp' }).notNull(),
+  endsAt:       integer('ends_at', { mode: 'timestamp' }).notNull(),
+  roomNumber:   text('room_number').notNull(),
+  status:       text('status', { enum: ['scheduled', 'completed', 'cancelled'] }).notNull().default('scheduled'),
+  notes:        text('notes').notNull().default(''),
+  createdBy:    integer('created_by').notNull().references(() => users.id),
+  createdAt:    integer('created_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
+  updatedAt:    integer('updated_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
+}, (t) => [index('idx_operational_extra_classes_starts_at').on(t.startsAt)]);

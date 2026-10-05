@@ -110,6 +110,7 @@ const NAV_SECTIONS: NavSection[] = [
     label: null,
     items: [
       { href: '/admin', label: 'Overview', icon: LayoutDashboard },
+      { href: '/admin/operational', label: 'Operational Admin', icon: ClipboardList },
     ],
   },
   {

@@ -15,6 +15,7 @@ import {
 } from '@/lib/db/schema';
 import { eq, and, gte, lt, ne, or, isNull, isNotNull, desc, sql } from 'drizzle-orm';
 import { formatDhaka } from '@/lib/lms/time';
+import { isOperationalAdmin } from '@/lib/lms/operations';
 import ClassCloseoutPrompt, { type CloseoutSession } from '@/components/admin/ClassCloseoutPrompt';
 import { getAtRiskStudents, type AtRiskStudent } from '@/lib/students/at-risk';
 import { Suspense } from 'react';
@@ -259,6 +260,7 @@ const QUICK_LINKS: QuickLink[] = [
   { label: 'Registrations', desc: 'Review sign-up submissions',        href: '/admin/registrations',      icon: UserCheck,     section: 'PEOPLE'          },
   { label: 'Announcements', desc: 'Send email announcements',          href: '/admin/announcements',      icon: Megaphone,     section: 'PEOPLE'          },
   // SYSTEM
+  { label: 'Operational Admin', desc: 'Instructor history, finances, and extra classes', href: '/admin/operational', icon: ClipboardList, section: 'SYSTEM' },
   { label: 'Analytics',   desc: 'Platform usage and metrics',          href: '/admin/analytics',          icon: BarChart3,     section: 'SYSTEM'          },
   { label: 'Google Cal',  desc: 'Connect Google Calendar & Meet',      href: '/admin/settings/google',    icon: Settings,      section: 'SYSTEM'          },
 ];
@@ -512,7 +514,8 @@ export default async function AdminOverviewPage() {
       {/* ── Quick links by section ───────────────────────────────────────────── */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: 28 }}>
         {sections.map((section) => {
-          const links = QUICK_LINKS.filter((l) => l.section === section);
+          const links = QUICK_LINKS.filter((l) => l.section === section &&
+            (l.href !== '/admin/operational' || isOperationalAdmin(role)));
           return (
             <div key={section}>
               {/* Section label */}
