@@ -153,6 +153,7 @@ export const authOptions: NextAuthOptions = {
           const access = computeAccessFromProducts(userInfo)
           session.user.role        = userInfo.role as 'super_admin' | 'admin' | 'instructor' | 'student'
           session.user.isAdmin     = await isAdminEmail(session.user.email)
+          session.user.readOnly    = !!userInfo.readOnly
           session.user.permissions = ['read']
           session.user.studentId   = userInfo.studentId ?? undefined
           session.user.class       = userInfo.class     ?? undefined
@@ -165,9 +166,15 @@ export const authOptions: NextAuthOptions = {
     },
 
     async jwt({ token, user }) {
+      // Keep the read-only flag fresh on every token read (granting/revoking applies without a re-login).
+      if (!user?.email && token.email) {
+        const current = await getUserByEmail(token.email)
+        token.readOnly = !!current?.readOnly
+      }
       if (user?.email) {
         const userInfo = await getUserByEmail(user.email)
         if (userInfo) {
+          token.readOnly    = !!userInfo.readOnly
           const access    = computeAccessFromProducts(userInfo)
           token.role        = userInfo.role as 'super_admin' | 'admin' | 'instructor' | 'student'
           token.isAdmin     = await isAdminEmail(user.email)

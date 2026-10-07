@@ -12,6 +12,7 @@ declare module "next-auth" {
       image?: string | null
       role?: 'super_admin' | 'admin' | 'instructor' | 'student'
       isAdmin?: boolean
+      readOnly?: boolean
       permissions?: string[]
       studentId?: string
       class?: string
@@ -35,6 +36,7 @@ declare module "next-auth/jwt" {
   interface JWT {
     role?: 'super_admin' | 'admin' | 'instructor' | 'student'
     isAdmin?: boolean
+    readOnly?: boolean
     permissions?: string[]
     studentId?: string
     class?: string

@@ -26,6 +26,7 @@ export default async function AdminLayout({
   const adminName  = session.user.name  ?? 'Admin';
   const adminEmail = session.user.email ?? '';
   const staffRole  = role as 'super_admin' | 'admin' | 'instructor';
+  const readOnly   = !!session.user.readOnly;
 
   // ── Render ─────────────────────────────────────────────────────────────────
   return (
@@ -71,6 +72,11 @@ export default async function AdminLayout({
             maxWidth:  '100%',
           }}
         >
+          {readOnly && (
+            <p role="status" style={{ margin: '0 0 16px', padding: '10px 14px', borderRadius: 8, border: '1px solid #E1D4CB', background: '#FAF5EF', color: '#3D1A10', fontSize: 13 }}>
+              <strong>Read-only access.</strong> You can view everything here, but any change you try to save will be rejected.
+            </p>
+          )}
           {children}
         </div>
       </main>

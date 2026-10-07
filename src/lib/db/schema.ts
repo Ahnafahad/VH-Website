@@ -17,6 +17,8 @@ export const users = sqliteTable('users', {
   notes:     text('notes'),
   whatsapp:          text('whatsapp'),
   isTeaching:        integer('is_teaching', { mode: 'boolean' }).default(false),
+  // Read-only staff: can open every admin page but every write request is rejected (src/middleware.ts).
+  readOnly:          integer('read_only', { mode: 'boolean' }).notNull().default(false),
   // ── Avatars ────────────────────────────────────────────────────────────────
   // Exclusivity is enforced by a UNIQUE INDEX on this column (SQLite allows many
   // NULLs under a unique index), so two students can never hold the same character.
