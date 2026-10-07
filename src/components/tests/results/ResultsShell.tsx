@@ -90,7 +90,7 @@ export default function ResultsShell({ status, data, errorMsg }: Props) {
   if (status === 'error')   return <ErrorState message={errorMsg} />;
   if (!data)                return <LoadingSkeleton />;
 
-  const { me, classStats, questionAnalytics, sections, answerKey, test } = data;
+  const { me, classStats, questionAnalytics, sections, answerKey, test, radar } = data;
 
   return (
     <div className="min-h-screen bg-[var(--color-exam-base)] text-[var(--color-exam-ink)]">
@@ -104,7 +104,7 @@ export default function ResultsShell({ status, data, errorMsg }: Props) {
         >
           {/* ── 1. Scorecard Hero ─────────────────────────────────────────── */}
           <motion.div variants={sectionVariants}>
-            <ScorecardHero me={me} test={test} classStats={classStats} />
+            <ScorecardHero me={me} test={test} classStats={classStats} radar={radar} />
           </motion.div>
 
           {/* ── No attempt notice (class stats still shown below) ─────────── */}

@@ -6,7 +6,7 @@
 import { db } from '@/lib/db';
 import {
   users, userAccess, classSessions, classAttendance,
-  testAttempts, tests, vocabUserProgress,
+  testAttempts, tests, vocabUserProgress, assignments, assignmentSubmissions,
 } from '@/lib/db/schema';
 import { and, eq, inArray, isNull, or, lte, desc } from 'drizzle-orm';
 import { getTestResults } from '@/lib/tests/service';
@@ -30,7 +30,7 @@ export async function listBatches(): Promise<BatchListResponse> {
   const rows = await db
     .select({ batch: users.batch })
     .from(users)
-    .where(eq(users.role, 'student'));
+    .where(and(eq(users.role, 'student'), eq(users.status, 'active')));
 
   const counts = new Map<string, number>();
   for (const r of rows) {
@@ -111,6 +111,36 @@ export async function getBatchSummaries(batch: string): Promise<BatchSummaryResp
     attendedByUser.get(row.userId)!.add(row.sessionId);
   }
 
+  // Homework already past due for any product in this batch (batch NULL = every batch).
+  const dueHomework = productSet.size > 0
+    ? await db.select({ id: assignments.id, product: assignments.product })
+        .from(assignments)
+        .where(and(
+          inArray(assignments.product, Array.from(productSet)),
+          lte(assignments.dueAt, now),
+          or(isNull(assignments.batch), eq(assignments.batch, batch)),
+        ))
+    : [];
+  const homeworkByProduct = new Map<string, number[]>();
+  for (const h of dueHomework) {
+    const list = homeworkByProduct.get(h.product) ?? [];
+    list.push(h.id);
+    homeworkByProduct.set(h.product, list);
+  }
+  const submissionRows = dueHomework.length
+    ? await db.select({ userId: assignmentSubmissions.userId, assignmentId: assignmentSubmissions.assignmentId })
+        .from(assignmentSubmissions)
+        .where(and(
+          inArray(assignmentSubmissions.assignmentId, dueHomework.map(h => h.id)),
+          inArray(assignmentSubmissions.userId, userIds),
+        ))
+    : [];
+  const submittedByUser = new Map<number, Set<number>>();
+  for (const r of submissionRows) {
+    if (!submittedByUser.has(r.userId)) submittedByUser.set(r.userId, new Set());
+    submittedByUser.get(r.userId)!.add(r.assignmentId);
+  }
+
   // Last submitted test per user.
   const submittedAttempts = await db.select().from(testAttempts)
     .where(and(inArray(testAttempts.userId, userIds), eq(testAttempts.status, 'submitted')));
@@ -154,6 +184,23 @@ export async function getBatchSummaries(batch: string): Promise<BatchSummaryResp
       }
     }
 
+    // Per-test percentages, oldest first, for the average and the trend.
+    const pcts = submittedAttempts
+      .filter(a => a.userId === u.id && a.submittedAt && testById.get(a.testId)?.totalMarks)
+      .sort((a, b) => a.submittedAt!.getTime() - b.submittedAt!.getTime())
+      .map(a => ((a.totalScore ?? 0) / testById.get(a.testId)!.totalMarks) * 100);
+    const avgTestPercentage = pcts.length ? round2(pcts.reduce((s, p) => s + p, 0) / pcts.length) : null;
+    let trend: StudentSummary['trend'] = null;
+    if (pcts.length >= 2) {
+      const earlier = pcts.slice(0, -1);
+      const delta = pcts[pcts.length - 1] - earlier.reduce((s, p) => s + p, 0) / earlier.length;
+      trend = delta >= 5 ? 'up' : delta <= -5 ? 'down' : 'flat';
+    }
+
+    const dueIds = new Set(products.flatMap(p => homeworkByProduct.get(p) ?? []));
+    const handedIn = submittedByUser.get(u.id) ?? new Set<number>();
+    const homeworkSubmitted = [...dueIds].filter(id => handedIn.has(id)).length;
+
     const progress = progressByUser.get(u.id);
 
     return {
@@ -167,6 +214,11 @@ export async function getBatchSummaries(batch: string): Promise<BatchSummaryResp
       totalSessions,
       lastTest,
       lexicorePoints: progress?.totalPoints ?? 0,
+      testsTaken: pcts.length,
+      avgTestPercentage,
+      trend,
+      homeworkSubmitted,
+      homeworkDue: dueIds.size,
     };
   }).sort((a, b) => a.name.localeCompare(b.name));
 

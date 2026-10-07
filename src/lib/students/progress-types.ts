@@ -48,6 +48,14 @@ export interface StudentSummary {
   lastTest:         StudentSummaryLastTest | null;
   /** vocabUserProgress.totalPoints (lifetime), 0 if no LexiCore progress */
   lexicorePoints:   number;
+  /** submitted tests with a score, and the mean of their percentages (null if none) */
+  testsTaken:        number;
+  avgTestPercentage: number | null;
+  /** last test vs the average of earlier ones (±5 points = up/down); null with fewer than 2 tests */
+  trend:             'up' | 'down' | 'flat' | null;
+  /** homework already past due that applies to the student, and how many they handed in */
+  homeworkSubmitted: number;
+  homeworkDue:       number;
 }
 
 export interface StudentSummaryLastTest {

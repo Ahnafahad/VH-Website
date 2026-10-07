@@ -1,11 +1,11 @@
-import { and, desc, eq, lte } from 'drizzle-orm';
+import { and, desc, eq, inArray, lte } from 'drizzle-orm';
 import { z } from 'zod';
 import { db } from '@/lib/db';
 import { classSessions, operationalEntries, operationalExtraClasses, users } from '@/lib/db/schema';
 import { ApiException } from '@/lib/api-utils';
 import {
-  buildInstructorReport, extraClassInput, financialEntryInput, operationalSections,
-  type OperationalSection,
+  buildInstructorReport, expenseEntryInput, extraClassInput, financialEntryInput, operationalSections,
+  isOperationalAdmin, type OperationalSection,
 } from './operations';
 
 export function parseOperationalSection(value: string): OperationalSection {
@@ -58,9 +58,25 @@ export async function readOperationalSection(section: OperationalSection) {
     };
   }
   const kind = section === 'expenses' ? 'expense' : 'income';
-  const entries = await db.select().from(operationalEntries).where(eq(operationalEntries.kind, kind))
+  const rows = await db.select({ entry: operationalEntries, paidByName: users.name }).from(operationalEntries)
+    .leftJoin(users, eq(operationalEntries.paidBy, users.id)).where(eq(operationalEntries.kind, kind))
     .orderBy(desc(operationalEntries.date), desc(operationalEntries.id));
-  return { entries };
+  const entries = rows.map(({ entry, paidByName }) => ({ ...entry, paidByName }));
+  if (kind === 'income') return { entries };
+  const payers = await db.select({ id: users.id, name: users.name }).from(users)
+    .where(inArray(users.role, ['admin', 'super_admin'])).orderBy(users.name);
+  return { entries, payers };
+}
+
+export async function deleteOperationalRecord(section: OperationalSection, id: number) {
+  if (section === 'instructors') throw new ApiException('Instructor report is read-only', 405);
+  const [deleted] = section === 'extra-classes'
+    ? await db.delete(operationalExtraClasses).where(eq(operationalExtraClasses.id, id)).returning()
+    : await db.delete(operationalEntries).where(and(
+      eq(operationalEntries.id, id), eq(operationalEntries.kind, section === 'expenses' ? 'expense' : 'income'),
+    )).returning();
+  if (!deleted) throw new ApiException('Record not found', 404);
+  return { deleted: true };
 }
 
 export async function saveOperationalRecord(
@@ -85,9 +101,21 @@ export async function saveOperationalRecord(
     if (!saved) throw new ApiException('Extra class not found', 404);
     return { id: saved.id };
   }
-  const input = parseInput(financialEntryInput, body);
   const kind = section === 'expenses' ? 'expense' : 'income';
-  const values = { kind, date: input.date, amountMinor: input.amount, category: input.category, description: input.description } as const;
+  const base = { kind, ...(kind === 'expense' ? {} : { paidBy: null, reimbursedAt: null }) } as const;
+  let values;
+  if (kind === 'expense') {
+    const input = parseInput(expenseEntryInput, body);
+    if (input.paidBy !== null) {
+      const payer = await db.select({ role: users.role }).from(users).where(eq(users.id, input.paidBy)).get();
+      if (!payer || !isOperationalAdmin(payer.role)) throw new ApiException('Select an admin as the payer', 400);
+    }
+    values = { ...base, date: input.date, amountMinor: input.amount, category: input.category,
+      description: input.description, paidBy: input.paidBy, reimbursedAt: input.reimbursedAt };
+  } else {
+    const input = parseInput(financialEntryInput, body);
+    values = { ...base, date: input.date, amountMinor: input.amount, category: input.category, description: input.description };
+  }
   const [saved] = id === undefined
     ? await db.insert(operationalEntries).values({ ...values, createdBy: adminId }).returning()
     : await db.update(operationalEntries).set({ ...values, updatedAt: new Date() })

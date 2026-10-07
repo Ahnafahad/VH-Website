@@ -7,7 +7,11 @@ describe('test window activation access', () => {
     expect(canActivateTestWindow({ role: 'super_admin' })).toBe(true);
   });
 
-  it('rejects instructors', () => {
-    expect(canActivateTestWindow({ role: 'instructor' })).toBe(false);
+  it('allows instructors', () => {
+    expect(canActivateTestWindow({ role: 'instructor' })).toBe(true);
+  });
+
+  it('rejects students', () => {
+    expect(canActivateTestWindow({ role: 'student' })).toBe(false);
   });
 });

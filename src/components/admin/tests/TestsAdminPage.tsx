@@ -37,6 +37,7 @@ import {
   X,
   ZapOff,
 } from 'lucide-react';
+import { useAdminProduct } from '@/components/admin/AdminProductContext';
 import { BUCKET_LABELS, type TestBucket, type AttemptStatus, type TestMode } from '@/lib/tests/types';
 import {
   BG,
@@ -340,9 +341,10 @@ const PRODUCTS = ['iba', 'fbs', 'fbs_detailed'] as const;
 type Product = typeof PRODUCTS[number];
 
 function TestSettings({
-  test, onRefresh, showToast,
+  test, isAdmin, onRefresh, showToast,
 }: {
   test: AdminTest;
+  isAdmin: boolean;
   onRefresh: () => void;
   showToast: (type: ToastType, msg: string) => void;
 }) {
@@ -354,6 +356,7 @@ function TestSettings({
     (test.allowedProducts as Product[] | null) ?? []
   );
   const [syllabus, setSyllabus] = useState(test.syllabus ?? '');
+  const [confirmDeleteTest, setConfirmDeleteTest] = useState(false);
 
   async function patch(body: Record<string, unknown>) {
     setSaving(true);
@@ -377,6 +380,25 @@ function TestSettings({
     }
   }
 
+  async function deleteTest() {
+    setConfirmDeleteTest(false);
+    setSaving(true);
+    try {
+      const res = await fetch(`/api/admin/tests/${test.id}`, { method: 'DELETE' });
+      if (!res.ok) {
+        const d = await res.json() as { error?: string };
+        showToast('error', d.error ?? 'Failed to delete test');
+      } else {
+        showToast('success', 'Test deleted.');
+        onRefresh();
+      }
+    } catch {
+      showToast('error', 'Network error.');
+    } finally {
+      setSaving(false);
+    }
+  }
+
   function toggleProduct(p: Product) {
     setSelectedProducts(prev =>
       prev.includes(p) ? prev.filter(x => x !== p) : [...prev, p]
@@ -385,7 +407,7 @@ function TestSettings({
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
-      <SectionTitle>Test Settings (admin only)</SectionTitle>
+      <SectionTitle>Test Settings</SectionTitle>
 
       {/* Status */}
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, alignItems: 'center' }}>
@@ -511,6 +533,31 @@ function TestSettings({
           </Btn>
         </div>
       </div>
+
+      {isAdmin && test.status !== 'published' && (
+        <div>
+          <div style={{ fontSize: T_BASE, fontWeight: 600, color: C.text, fontFamily: SANS, marginBottom: 6 }}>
+            Delete this test
+          </div>
+          <p style={{ fontSize: T_SM, color: C.textMuted, fontFamily: SANS, margin: '0 0 8px' }}>
+            Permanently removes this {test.status} test with its windows and questions. Refused if any student has attempted it.
+          </p>
+          <Btn size="sm" variant="outline" danger onClick={() => setConfirmDeleteTest(true)} disabled={saving}>
+            <Trash2 size={12} /> Delete test
+          </Btn>
+        </div>
+      )}
+      {confirmDeleteTest && (
+        <ConfirmDialog
+          open
+          title="Delete Test"
+          message={`Permanently delete "${test.title}" with all its windows and questions? This cannot be undone.`}
+          confirmLabel="Delete"
+          destructive
+          onConfirm={deleteTest}
+          onCancel={() => setConfirmDeleteTest(false)}
+        />
+      )}
     </div>
   );
 }
@@ -530,10 +577,9 @@ function blankForm(): WindowFormState {
 }
 
 function WindowsManager({
-  test, isAdmin, onRefresh, showToast,
+  test, onRefresh, showToast,
 }: {
   test: AdminTest;
-  isAdmin: boolean;
   onRefresh: () => void;
   showToast: (type: ToastType, msg: string) => void;
 }) {
@@ -732,7 +778,7 @@ function WindowsManager({
                 </p>
               )}
               <div style={{ display: 'flex', gap: 6, marginTop: 8, flexWrap: 'wrap' }}>
-                {isAdmin && w.state !== 'open' && w.status !== 'closed' && (
+                {w.state !== 'open' && w.status !== 'closed' && (
                   <Btn size="sm" variant="outline" onClick={() => patchStatus(w.id, 'open')} disabled={saving}>
                     Activate Now
                   </Btn>
@@ -1251,7 +1297,7 @@ function TestRow({
     { key: 'windows',   label: 'Windows'    },
     { key: 'attempts',  label: 'Attempts'   },
     { key: 'analytics', label: 'Analytics'  },
-    { key: 'settings',  label: 'Settings',  adminOnly: true },
+    { key: 'settings',  label: 'Settings'   },
     { key: 'answerKey', label: 'Answer Key', adminOnly: true },
   ];
 
@@ -1325,7 +1371,7 @@ function TestRow({
           {/* Tab content */}
           <div style={{ padding: '18px 18px 22px' }}>
             {tab === 'windows' && (
-              <WindowsManager test={test} isAdmin={isAdmin} onRefresh={onRefresh} showToast={showToast} />
+              <WindowsManager test={test} onRefresh={onRefresh} showToast={showToast} />
             )}
             {tab === 'attempts' && (
               <AttemptsTable testId={test.id} showToast={showToast} />
@@ -1333,8 +1379,8 @@ function TestRow({
             {tab === 'analytics' && (
               <TestAnalytics testId={test.id} />
             )}
-            {tab === 'settings' && isAdmin && (
-              <TestSettings test={test} onRefresh={onRefresh} showToast={showToast} />
+            {tab === 'settings' && (
+              <TestSettings test={test} isAdmin={isAdmin} onRefresh={onRefresh} showToast={showToast} />
             )}
             {tab === 'answerKey' && isAdmin && (
               <AnswerKeyEditor testId={test.id} showToast={showToast} />
@@ -1352,6 +1398,9 @@ export default function TestsAdminPage({ isAdmin }: { isAdmin: boolean }) {
   const [tests, setTests] = useState<AdminTest[] | null>(null);
   const [loading, setLoading] = useState(false);
   const { toast, show: showToast } = useToast();
+  // The sidebar IBA/FBS switch decides which bucket of tests is listed.
+  const { product } = useAdminProduct();
+  const bucket: TestBucket = product === 'iba' ? 'iba' : 'du_fbs';
 
   const [filter, setFilter] = useState<'all' | 'draft' | 'published' | 'archived'>('all');
   const [search, setSearch] = useState('');
@@ -1371,7 +1420,8 @@ export default function TestsAdminPage({ isAdmin }: { isAdmin: boolean }) {
 
   useEffect(() => { load(); }, [load]);
 
-  const filtered = (tests ?? []).filter(t => {
+  const bucketTests = (tests ?? []).filter(t => t.bucket === bucket);
+  const filtered = bucketTests.filter(t => {
     if (filter !== 'all' && t.status !== filter) return false;
     if (search.trim()) {
       const q = search.toLowerCase();
@@ -1483,7 +1533,7 @@ export default function TestsAdminPage({ isAdmin }: { isAdmin: boolean }) {
       {/* Filtered empty */}
       {!loading && tests && tests.length > 0 && filtered.length === 0 && (
         <p style={{ fontSize: T_BASE, color: C.textMuted, textAlign: 'center', padding: '32px 0' }}>
-          No tests match your filter.
+          {bucketTests.length === 0 ? `No ${BUCKET_LABELS[bucket]} tests yet — switch IBA/FBS in the sidebar to see the others.` : 'No tests match your filter.'}
         </p>
       )}
 
@@ -1496,7 +1546,7 @@ export default function TestsAdminPage({ isAdmin }: { isAdmin: boolean }) {
         }}>
           <Info size={14} style={{ color: C.infoText, flexShrink: 0, marginTop: 1 }} />
           <p style={{ margin: 0, fontSize: T_SM, color: C.infoText, fontFamily: SANS, lineHeight: 1.5 }}>
-            You are viewing as <strong>Instructor</strong>. Test settings and answer key editing require Admin access.
+            You are viewing as <strong>Instructor</strong>. Answer key editing and deleting tests require Admin access.
           </p>
         </div>
       )}

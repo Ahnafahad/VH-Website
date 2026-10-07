@@ -9,10 +9,13 @@ type Me = NonNullable<ResultsPayload['me']>;
 type Test = ResultsPayload['test'];
 type ClassStats = ResultsPayload['classStats'];
 
+type Radar = NonNullable<ResultsPayload['radar']>;
+
 interface Props {
   me: Me | null;
   test: Test;
   classStats: ClassStats;
+  radar?: ResultsPayload['radar'];
 }
 
 // ─── Rank medallion ───────────────────────────────────────────────────────────
@@ -98,6 +101,62 @@ function PercentileArc({ percentile }: { percentile: number }) {
   );
 }
 
+// ─── Spider chart: you vs the top-5 average ──────────────────────────────────
+
+function SpiderChart({ axes }: { axes: Radar }) {
+  const c = 100, R = 60;
+  const point = (i: number, value: number) => {
+    const angle = (-90 + (360 / axes.length) * i) * (Math.PI / 180);
+    return [c + Math.cos(angle) * R * (value / 100), c + Math.sin(angle) * R * (value / 100)] as const;
+  };
+  const polygon = (pick: (a: Radar[number]) => number) =>
+    axes.map((a, i) => point(i, pick(a)).join(',')).join(' ');
+  const summary = axes.map(a => `${a.label}: you ${a.me}, top 5 ${a.top5}`).join('; ');
+
+  return (
+    <div className="flex flex-col items-center gap-1">
+      <svg width="236" height="189" viewBox="-30 -4 260 208" role="img" aria-label={`Spider chart. ${summary}`}>
+        {[25, 50, 75, 100].map(ring => (
+          <polygon key={ring} points={polygon(() => ring)} fill="none" stroke="var(--color-exam-border)" strokeWidth="1" />
+        ))}
+        {axes.map((a, i) => {
+          const [x, y] = point(i, 100);
+          const [lx, ly] = point(i, 128);
+          return (
+            <g key={a.key}>
+              <line x1={c} y1={c} x2={x} y2={y} stroke="var(--color-exam-border)" strokeWidth="1" />
+              <text
+                x={lx} y={ly + 3} fontSize="9.5" fill="var(--color-exam-ink-muted)"
+                textAnchor={Math.abs(lx - c) < 6 ? 'middle' : lx > c ? 'start' : 'end'}
+              >
+                {a.label}
+              </text>
+            </g>
+          );
+        })}
+        <polygon
+          points={polygon(a => a.top5)} fill="none" stroke="var(--color-exam-ink-faint)"
+          strokeWidth="1.5" strokeDasharray="4 3" strokeLinejoin="round"
+        />
+        <motion.polygon
+          points={polygon(a => a.me)}
+          fill="var(--color-exam-gold)" fillOpacity="0.28" stroke="var(--color-exam-gold)"
+          strokeWidth="2" strokeLinejoin="round"
+          initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.6, duration: 0.5 }}
+        />
+      </svg>
+      <div className="flex items-center gap-4 text-xs text-[var(--color-exam-ink-faint)]">
+        <span className="flex items-center gap-1.5">
+          <span className="inline-block w-3 h-0.5" style={{ background: 'var(--color-exam-gold)' }} /> You
+        </span>
+        <span className="flex items-center gap-1.5">
+          <span className="inline-block w-3 border-t border-dashed" style={{ borderColor: 'var(--color-exam-ink-faint)' }} /> Top 5 avg
+        </span>
+      </div>
+    </div>
+  );
+}
+
 // ─── Mode chip ───────────────────────────────────────────────────────────────
 
 function ModeChip({ mode }: { mode: string }) {
@@ -131,7 +190,7 @@ const scoreVariants: Variants = {
   },
 };
 
-export default function ScorecardHero({ me, test, classStats }: Props) {
+export default function ScorecardHero({ me, test, classStats, radar }: Props) {
   const bucketLabel = BUCKET_LABELS[test.bucket] ?? test.bucket.toUpperCase();
 
   return (
@@ -211,9 +270,10 @@ export default function ScorecardHero({ me, test, classStats }: Props) {
               <div className="hidden sm:block w-px h-28 bg-[var(--color-exam-border)] self-center" />
 
               {/* Right cluster: rank + percentile */}
-              <div className="flex items-center gap-8 sm:gap-10">
+              <div className="flex flex-wrap items-center justify-center gap-8 sm:gap-10">
                 <RankMedallion rank={me.rank} total={classStats.totalStudents} />
                 <PercentileArc percentile={me.percentile} />
+                {radar && <SpiderChart axes={radar} />}
               </div>
             </div>
 

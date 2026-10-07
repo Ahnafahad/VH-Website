@@ -37,7 +37,7 @@ export async function PATCH(
     const { status, opensAt, closesAt, durationMinutes, classSessionId } = parsed.data;
 
     if (status === 'open' && !canActivateTestWindow(staff)) {
-      throw new ApiException('Only admins can activate test windows', 403, 'ADMIN_REQUIRED');
+      throw new ApiException('Only staff can activate test windows', 403, 'ADMIN_REQUIRED');
     }
 
     const window = await db.select().from(testWindows)

@@ -12,10 +12,16 @@ import {
   registrations,
   classSessions,
   sessionRequests,
+  operationalEntries,
+  vocabErrorLogs,
+  analyticsEvents,
+  userAccess,
+  batches,
 } from '@/lib/db/schema';
-import { eq, and, gte, lt, ne, or, isNull, isNotNull, desc, sql } from 'drizzle-orm';
+import { eq, and, gte, lt, ne, or, isNull, isNotNull, inArray, desc, sql } from 'drizzle-orm';
 import { formatDhaka } from '@/lib/lms/time';
 import { isOperationalAdmin } from '@/lib/lms/operations';
+import { segmentCondition } from '@/lib/admin/user-segments';
 import ClassCloseoutPrompt, { type CloseoutSession } from '@/components/admin/ClassCloseoutPrompt';
 import { getAtRiskStudents, type AtRiskStudent } from '@/lib/students/at-risk';
 import { Suspense } from 'react';
@@ -67,11 +73,15 @@ async function fetchStats() {
     todaySessionsResult,
     pendingRequestsResult,
     pendingRegsResult,
+    oldestRegResult,
   ] = await Promise.all([
-    // Active students = users with role 'student' and status 'active'
+    // Enrolled = active student whose assigned batch is still current (batch status 'active')
+    // and who holds active access to that batch's product. A student in two batches counts once.
     db
-      .select({ count: sql<number>`count(*)` })
+      .select({ count: sql<number>`count(distinct ${users.id})` })
       .from(users)
+      .innerJoin(userAccess, and(eq(userAccess.userId, users.id), eq(userAccess.active, true)))
+      .innerJoin(batches, and(eq(batches.name, users.batch), eq(batches.product, userAccess.product), eq(batches.status, 'active')))
       .where(and(eq(users.role, 'student'), eq(users.status, 'active')))
       .get()
       .catch(() => null),
@@ -84,6 +94,7 @@ async function fetchStats() {
         and(
           gte(classSessions.scheduledAt, todayStartUtc),
           lt(classSessions.scheduledAt, todayEndUtc),
+          ne(classSessions.status, 'cancelled'),
         ),
       )
       .get()
@@ -104,6 +115,14 @@ async function fetchStats() {
       .where(eq(registrations.status, 'pending'))
       .get()
       .catch(() => null),
+
+    // Oldest pending registration (unix seconds) - shown as an age on the card
+    db
+      .select({ oldest: sql<number | null>`min(${registrations.createdAt})` })
+      .from(registrations)
+      .where(eq(registrations.status, 'pending'))
+      .get()
+      .catch(() => null),
   ]);
 
   return {
@@ -111,6 +130,9 @@ async function fetchStats() {
     todayClasses:     Number(todaySessionsResult?.count  ?? 0),
     pendingRequests:  Number(pendingRequestsResult?.count ?? 0),
     pendingRegs:      Number(pendingRegsResult?.count    ?? 0),
+    oldestPendingRegDays: oldestRegResult?.oldest
+      ? Math.floor((Date.now() / 1000 - Number(oldestRegResult.oldest)) / 86400)
+      : null,
   };
 }
 
@@ -230,6 +252,8 @@ interface StatCard {
   value:    number;
   icon:     React.ElementType;
   href:     string;
+  /** One line saying exactly what the number counts (and anything notable about it). */
+  hint:     string;
 }
 
 // ─── Quick link data ──────────────────────────────────────────────────────────
@@ -315,6 +339,73 @@ async function AtRiskSection() {
   );
 }
 
+// --- Data health ---------------------------------------------------------------
+// Things that are wrong or stuck and would otherwise only be found by accident.
+
+interface HealthItem { label: string; detail: string; count: string; href: string }
+
+async function fetchDataHealth(includeMoney: boolean): Promise<HealthItem[]> {
+  const countUsers = (key: Parameters<typeof segmentCondition>[0]) =>
+    db.select({ n: sql<number>`count(*)` }).from(users).where(segmentCondition(key)).get()
+      .then(r => Number(r?.n ?? 0)).catch(() => 0);
+  const dayAgo = new Date(Date.now() - 24 * 60 * 60 * 1000);
+
+  const [noAccess, neverLoggedIn, staleRegs, owed, serverErrors, clientErrors] = await Promise.all([
+    countUsers('batch_without_access'),
+    countUsers('enrolled_never_logged_in'),
+    db.select({ n: sql<number>`count(*)` }).from(registrations)
+      .where(and(eq(registrations.status, 'pending'), lt(registrations.createdAt, new Date(Date.now() - 14 * 86400000)))).get()
+      .then(r => Number(r?.n ?? 0)).catch(() => 0),
+    includeMoney
+      ? db.select({ n: sql<number>`coalesce(sum(${operationalEntries.amountMinor}), 0)` }).from(operationalEntries)
+          .where(and(eq(operationalEntries.kind, 'expense'), isNotNull(operationalEntries.paidBy), isNull(operationalEntries.reimbursedAt))).get()
+          .then(r => Number(r?.n ?? 0)).catch(() => 0)
+      : Promise.resolve(0),
+    db.select({ n: sql<number>`count(*)` }).from(vocabErrorLogs)
+      .where(sql`${vocabErrorLogs.createdAt} >= ${dayAgo.toISOString().slice(0, 19) + 'Z'}`).get()
+      .then(r => Number(r?.n ?? 0)).catch(() => 0),
+    db.select({ n: sql<number>`count(*)` }).from(analyticsEvents)
+      .where(and(inArray(analyticsEvents.name, ['client_error', 'unhandled_rejection']), gte(analyticsEvents.createdAt, dayAgo))).get()
+      .then(r => Number(r?.n ?? 0)).catch(() => 0),
+  ]);
+
+  const items: HealthItem[] = [];
+  if (noAccess > 0) items.push({ label: 'Students with a batch but no access', detail: 'They are assigned to a batch yet cannot open any content.', count: String(noAccess), href: '/admin/users?segment=batch_without_access' });
+  if (neverLoggedIn > 0) items.push({ label: 'Enrolled students who never logged in', detail: 'Enrolled, but have not signed in even once.', count: String(neverLoggedIn), href: '/admin/users?segment=enrolled_never_logged_in' });
+  if (staleRegs > 0) items.push({ label: 'Registrations waiting over 14 days', detail: 'Still pending; contact, enrol or cancel them.', count: String(staleRegs), href: '/admin/registrations' });
+  if (owed > 0) items.push({ label: 'Expenses not yet reimbursed', detail: 'Paid from a person\'s pocket, still owed from the treasury.', count: `BDT ${(owed / 100).toLocaleString('en-BD', { minimumFractionDigits: 2 })}`, href: '/admin/operational' });
+  if (serverErrors + clientErrors > 0) items.push({ label: 'Errors in the last 24 hours', detail: `${serverErrors} server, ${clientErrors} in the browser.`, count: String(serverErrors + clientErrors), href: '/admin/errors' });
+  return items;
+}
+
+function DataHealthSection({ items }: { items: HealthItem[] }) {
+  return (
+    <section aria-labelledby="data-health-heading" style={{ marginBottom: 32 }}>
+      <p id="data-health-heading" style={{ margin: '0 0 10px', fontSize: T_XS, fontWeight: 600, color: MUTED, letterSpacing: '0.1em', textTransform: 'uppercase' }}>
+        Data health
+      </p>
+      {items.length === 0 ? (
+        <p style={{ margin: 0, fontSize: T_BASE, color: MUTED }}>All clear: nothing stuck or inconsistent.</p>
+      ) : (
+        <div style={{ border: `1px solid ${BORDER}`, borderRadius: R_LG, overflow: 'hidden' }}>
+          {items.map((item, i) => (
+            <Link key={item.label} href={item.href} className="vh-quick-card" style={{
+              display: 'flex', alignItems: 'center', gap: 12, padding: '12px 16px', textDecoration: 'none',
+              borderTop: i === 0 ? 'none' : `1px solid ${BORDER}`, background: SURFACE,
+            }}>
+              <span style={{ minWidth: 0, flex: 1 }}>
+                <span style={{ display: 'block', fontSize: T_BASE, fontWeight: 600, color: INK_SOFT }}>{item.label}</span>
+                <span style={{ display: 'block', fontSize: T_SM, color: MUTED }}>{item.detail}</span>
+              </span>
+              <span style={{ fontSize: T_MD, fontWeight: 700, color: WARN, fontVariantNumeric: 'tabular-nums' }}>{item.count}</span>
+            </Link>
+          ))}
+        </div>
+      )}
+    </section>
+  );
+}
+
 export default async function AdminOverviewPage() {
   const session = await getServerSession(authOptions);
   if (!session?.user?.email) redirect('/auth/signin');
@@ -324,10 +415,11 @@ export default async function AdminOverviewPage() {
   }
 
   const teachingUsers = await fetchTeachingUsers();
-  const [stats, closeoutSessions, instructorLoad] = await Promise.all([
+  const [stats, closeoutSessions, instructorLoad, dataHealth] = await Promise.all([
     fetchStats(),
     fetchCloseoutSessions(),
     fetchInstructorLoad(teachingUsers),
+    role !== 'instructor' ? fetchDataHealth(isOperationalAdmin(role)) : Promise.resolve([] as HealthItem[]),
   ]);
   const adminName = session.user.name ?? 'Admin';
 
@@ -336,10 +428,10 @@ export default async function AdminOverviewPage() {
   const timeLabel = formatDhaka(now, 'time');
 
   const statCards: StatCard[] = [
-    { label: 'Active Students',       value: stats.activeStudents,  icon: Users,         href: '/admin/users' },
-    { label: "Today's Classes",       value: stats.todayClasses,    icon: CalendarDays,  href: '/admin/today' },
-    { label: 'Pending Requests',      value: stats.pendingRequests, icon: CalendarClock, href: '/admin/bookings' },
-    { label: 'Pending Registrations', value: stats.pendingRegs,     icon: UserCheck,     href: '/admin/registrations' },
+    { label: 'Enrolled Students',     value: stats.activeStudents,  icon: Users,         href: '/admin/users?segment=enrolled', hint: 'Active students in a current batch with active access' },
+    { label: "Today's Classes",       value: stats.todayClasses,    icon: CalendarDays,  href: '/admin/today', hint: 'Scheduled or completed today, cancelled excluded' },
+    { label: 'Pending Requests',      value: stats.pendingRequests, icon: CalendarClock, href: '/admin/bookings', hint: '1-on-1 session requests awaiting a reply' },
+    { label: 'Pending Registrations', value: stats.pendingRegs,     icon: UserCheck,     href: '/admin/registrations', hint: stats.oldestPendingRegDays === null ? 'None waiting' : `Oldest waiting ${stats.oldestPendingRegDays} days` },
   ];
 
   // Group quick links by section
@@ -460,10 +552,14 @@ export default async function AdminOverviewPage() {
               <p style={{ margin: 0, fontSize: T_2XL, fontWeight: 700, color: INK_SOFT, lineHeight: 1, letterSpacing: '-0.02em' }}>
                 {card.value}
               </p>
+              <p style={{ margin: '6px 0 0', fontSize: T_XS, color: MUTED, lineHeight: 1.35 }}>{card.hint}</p>
             </Link>
           );
         })}
       </div>
+
+      {/* ── Data health ─────────────────────────────────────────────────────── */}
+      {role !== 'instructor' && <DataHealthSection items={dataHealth} />}
 
       {/* ── Instructor load ─────────────────────────────────────────────────── */}
       {instructorLoad.instructors.length > 0 && (

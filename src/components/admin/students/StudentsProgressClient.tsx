@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { motion, Variants } from 'framer-motion';
-import { ChevronDown, Loader2, Users } from 'lucide-react';
+import { ArrowDownRight, ArrowRight, ArrowUpRight, ChevronDown, Loader2, Users } from 'lucide-react';
 import type { BatchOption, StudentSummary } from '@/lib/students/progress-types';
 import { AtRiskBadge, AtRiskPopover, useAtRiskPopover, type AtRiskBadgeReason } from '@/components/admin/lms/lms-shared';
 import {
@@ -66,6 +66,31 @@ function AttendancePill({ pct }: { pct: number | null }) {
       <span style={{ fontSize: T_BASE, fontWeight: 600, color: pct == null ? MUTED : INK_SOFT }}>
         {pct == null ? '—' : `${Math.round(pct)}%`}
       </span>
+    </div>
+  );
+}
+
+// ─── Homework + average-test cells ────────────────────────────────────────────
+
+function HomeworkCell({ student }: { student: StudentSummary }) {
+  if (student.homeworkDue === 0) return <span style={{ fontSize: T_SM, color: MUTED }}>—</span>;
+  const pct = (student.homeworkSubmitted / student.homeworkDue) * 100;
+  return (
+    <span style={{ fontSize: T_BASE, fontWeight: 600, color: pct >= 80 ? OK : pct >= 50 ? WARN : RED }}>
+      {student.homeworkSubmitted}/{student.homeworkDue}
+    </span>
+  );
+}
+
+function AvgTestCell({ student }: { student: StudentSummary }) {
+  if (student.avgTestPercentage == null) return <span style={{ fontSize: T_SM, color: MUTED }}>—</span>;
+  const Trend = student.trend === 'up' ? ArrowUpRight : student.trend === 'down' ? ArrowDownRight : ArrowRight;
+  const trendColor = student.trend === 'up' ? OK : student.trend === 'down' ? RED : MUTED;
+  return (
+    <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+      <span style={{ fontSize: T_BASE, fontWeight: 700, color: SLATE }}>{Math.round(student.avgTestPercentage)}%</span>
+      <span style={{ fontSize: T_XS, color: MUTED }}>({student.testsTaken})</span>
+      {student.trend && <Trend size={14} style={{ color: trendColor }} aria-label={`Trend ${student.trend}`} />}
     </div>
   );
 }
@@ -140,7 +165,7 @@ function StudentRow({ student, index, onClick, atRiskReasons, popover }: {
       whileHover={{ backgroundColor: SURFACE_ALT }}
       style={{
         display:      'grid',
-        gridTemplateColumns: '2fr 110px 1.4fr 100px',
+        gridTemplateColumns: '2fr 100px 90px 1.1fr 1.3fr',
         padding:      '12px 16px',
         cursor:       'pointer',
         alignItems:   'center',
@@ -174,6 +199,12 @@ function StudentRow({ student, index, onClick, atRiskReasons, popover }: {
       {/* Attendance */}
       <AttendancePill pct={student.attendancePercent} />
 
+      {/* Homework */}
+      <HomeworkCell student={student} />
+
+      {/* Average test + trend */}
+      <AvgTestCell student={student} />
+
       {/* Last test */}
       <div style={{ minWidth: 0 }}>
         {student.lastTest ? (
@@ -190,10 +221,6 @@ function StudentRow({ student, index, onClick, atRiskReasons, popover }: {
         )}
       </div>
 
-      {/* LexiCore */}
-      <div style={{ fontSize: T_BASE, fontWeight: 600, color: RED, textAlign: 'right' }}>
-        {student.lexicorePoints.toLocaleString()}
-      </div>
     </motion.div>
   );
 }
@@ -259,10 +286,12 @@ function StudentCard({ student, index, onClick, atRiskReasons, popover }: {
           </span>
         </div>
         <div>
-          <p style={{ margin: '0 0 2px', fontSize: 10, fontWeight: 600, color: MUTED, textTransform: 'uppercase', letterSpacing: '0.05em' }}>LexiCore</p>
-          <span style={{ fontSize: T_SM, color: RED, fontWeight: 700 }}>
-            {student.lexicorePoints.toLocaleString()}
-          </span>
+          <p style={{ margin: '0 0 2px', fontSize: 10, fontWeight: 600, color: MUTED, textTransform: 'uppercase', letterSpacing: '0.05em' }}>Homework</p>
+          <HomeworkCell student={student} />
+        </div>
+        <div>
+          <p style={{ margin: '0 0 2px', fontSize: 10, fontWeight: 600, color: MUTED, textTransform: 'uppercase', letterSpacing: '0.05em' }}>Avg Test</p>
+          <AvgTestCell student={student} />
         </div>
       </div>
     </motion.div>
@@ -286,11 +315,12 @@ export default function StudentsProgressClient({
   // at-risk scan fans out a heavy per-student metrics read (minutes at
   // current data volume). See src/app/api/admin/students/at-risk/route.ts.
   const [atRiskStudents, setAtRiskStudents] = useState<AtRiskStudentProp[]>([]);
+  const [atRiskFailed, setAtRiskFailed] = useState(false);
   useEffect(() => {
     fetch('/api/admin/students/at-risk')
       .then(res => res.ok ? res.json() : null)
-      .then(data => { if (data) setAtRiskStudents(data.atRiskStudents); })
-      .catch(() => {});
+      .then(data => { if (data) setAtRiskStudents(data.atRiskStudents); else setAtRiskFailed(true); })
+      .catch(() => setAtRiskFailed(true));
   }, []);
   const atRiskMap = React.useMemo(() => {
     const m = new Map<number, AtRiskBadgeReason[]>();
@@ -331,8 +361,17 @@ export default function StudentsProgressClient({
             Students Progress
           </h1>
           <p style={{ margin: '4px 0 0', fontSize: T_BASE, color: MUTED }}>
-            Attendance, test performance, and LexiCore at a glance
+            Attendance, homework and test performance at a glance
           </p>
+          <p style={{ margin: '6px 0 0', fontSize: T_XS, color: MUTED, lineHeight: 1.5 }}>
+            Attendance = classes attended of completed classes that apply to them. Homework = handed in of homework already past due.
+            Avg Test = mean score across submitted tests, with the number of tests; the arrow compares the latest test with the earlier average (up or down by 5+ points).
+          </p>
+          {atRiskFailed && (
+            <p role="alert" style={{ margin: '8px 0 0', fontSize: T_SM, color: WARN }}>
+              At-risk flags could not be loaded (the scan timed out). Reload to retry.
+            </p>
+          )}
         </div>
 
         {/* Batch selector — pills (desktop/tablet) */}
@@ -414,9 +453,9 @@ export default function StudentsProgressClient({
 
             {/* Desktop table */}
             <div id="students-table" style={{ background: SURFACE, border: `1px solid ${BORDER}`, borderRadius: R_LG, overflow: 'hidden' }}>
-              <div style={{ display: 'grid', gridTemplateColumns: '2fr 110px 1.4fr 100px', padding: '10px 16px', background: SURFACE_ALT, borderBottom: `1px solid ${BORDER}` }}>
-                {['Student', 'Attendance', 'Last Test', 'LexiCore'].map((h, i) => (
-                  <span key={h} style={{ fontSize: T_XS, fontWeight: 600, color: MUTED, letterSpacing: '0.06em', textTransform: 'uppercase', textAlign: i === 3 ? 'right' : 'left' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: '2fr 100px 90px 1.1fr 1.3fr', padding: '10px 16px', background: SURFACE_ALT, borderBottom: `1px solid ${BORDER}` }}>
+                {['Student', 'Attendance', 'Homework', 'Avg Test', 'Last Test'].map((h) => (
+                  <span key={h} style={{ fontSize: T_XS, fontWeight: 600, color: MUTED, letterSpacing: '0.06em', textTransform: 'uppercase', textAlign: 'left' }}>
                     {h}
                   </span>
                 ))}

@@ -1887,6 +1887,10 @@ export const operationalEntries = sqliteTable('operational_entries', {
   date:        text('date').notNull(), // Bangladesh calendar date (YYYY-MM-DD)
   amountMinor: integer('amount_minor').notNull(), // BDT in paisa
   category:    text('category').notNull(), // expense category or income source
+  // Expenses only. paidBy null = paid by the organization; otherwise the admin who fronted it.
+  paidBy:      integer('paid_by').references(() => users.id),
+  // Treasury settlement date (YYYY-MM-DD) for expenses a person fronted; null = not yet reimbursed.
+  reimbursedAt: text('reimbursed_at'),
   description: text('description').notNull().default(''),
   createdBy:   integer('created_by').notNull().references(() => users.id),
   createdAt:   integer('created_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),

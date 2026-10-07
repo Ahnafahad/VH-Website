@@ -65,6 +65,8 @@ export interface BatchOption {
 
 interface Props {
   initial: TodayData;
+  /** The server-side fetch failed, so `initial` is empty rather than genuinely "no classes". */
+  loadFailed?: boolean;
   sessions: TodaySession[]; // upcoming sessions for "next" empty state
   batches: BatchOption[];
 }
@@ -855,9 +857,13 @@ function SessionCard({ session, index, batches, onRefresh }: {
         {/* Header row */}
         <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 12, marginBottom: 12 }}>
           <div style={{ minWidth: 0 }}>
-            <p style={{ margin: '0 0 4px', fontSize: 15, fontWeight: 700, color: SLATE, letterSpacing: '-0.02em' }}>
+            <Link
+              href={`/admin/classes/${session.id}`}
+              className="lms-int"
+              style={{ display: 'block', margin: '0 0 4px', fontSize: 15, fontWeight: 700, color: SLATE, letterSpacing: '-0.02em', textDecoration: 'none' }}
+            >
               {session.title}
-            </p>
+            </Link>
             <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', alignItems: 'center' }}>
               <SubjectBadge subject={session.subject} />
               <StatusBadge status={session.status} />
@@ -921,6 +927,19 @@ function SessionCard({ session, index, batches, onRefresh }: {
               <Users size={12} aria-hidden />
               Take Attendance
             </motion.button>
+
+            <Link
+              href={`/admin/classes/${session.id}`}
+              className="lms-int"
+              style={{
+                display: 'flex', alignItems: 'center', gap: 8, textDecoration: 'none',
+                padding: '8px 12px', borderRadius: R_MD, background: SURFACE,
+                border: `1px solid ${BORDER}`, color: SLATE, fontSize: T_SM, fontWeight: 600,
+              }}
+            >
+              Class details &amp; recording bot
+              <ChevronRight size={12} aria-hidden />
+            </Link>
 
             {session.meetLink && (
               <a
@@ -1079,9 +1098,10 @@ function SessionCard({ session, index, batches, onRefresh }: {
 
 // ─── Main component ───────────────────────────────────────────────────────────
 
-export default function TodayClient({ initial, batches }: Props) {
+export default function TodayClient({ initial, batches, loadFailed = false }: Props) {
   const { product } = useAdminProduct();
   const [data, setData] = useState(initial);
+  const [failed, setFailed] = useState(loadFailed);
   const [refreshing, setRefreshing] = useState(false);
   const [toast, setToast] = useState<string | null>(null);
 
@@ -1091,9 +1111,12 @@ export default function TodayClient({ initial, batches }: Props) {
     setRefreshing(true);
     try {
       const res = await fetch('/api/lms/admin/today');
+      if (!res.ok) throw new Error('Failed');
       const json = await res.json() as { sessions: TodaySession[]; assignmentsDue48h: number };
       setData(json);
+      setFailed(false);
     } catch {
+      setFailed(true);
       setToast('Could not refresh');
     } finally {
       setRefreshing(false);
@@ -1149,8 +1172,15 @@ export default function TodayClient({ initial, batches }: Props) {
         </div>
       </div>
 
+      {failed && (
+        <div role="alert" style={{ display: 'flex', alignItems: 'center', gap: 12, flexWrap: 'wrap', marginBottom: 16, padding: '12px 16px', borderRadius: R_MD, border: `1px solid ${RED}`, background: SURFACE, color: RED, fontSize: T_BASE }}>
+          Could not load today&apos;s classes, so the list below may be incomplete.
+          <button type="button" onClick={refresh} disabled={refreshing} className="lms-int" style={{ padding: '6px 12px', borderRadius: R_MD, border: `1px solid ${BORDER}`, background: SURFACE, color: INK_SOFT, fontSize: T_SM, fontWeight: 600, cursor: 'pointer' }}>Retry</button>
+        </div>
+      )}
+
       {/* Sessions */}
-      {sessions.length === 0 ? (
+      {sessions.length === 0 && !failed ? (
         <div style={{
           background: BG, border: `1px dashed ${BORDER}`,
           borderRadius: R_LG, padding: '48px 24px', textAlign: 'center',

@@ -7,6 +7,7 @@ import { assertRoleAssignable } from '@/lib/admin/role-guards';
 import type { UserProduct } from '@/lib/db/schema';
 import { grantFullVocabAccessIfEligible } from '@/lib/vocab/full-access-batches';
 import { assignStudentIdIfEligible } from '@/lib/students/assign-student-id';
+import { isSegmentKey, segmentCondition } from '@/lib/admin/user-segments';
 
 // GET — list users
 export async function GET(request: NextRequest) {
@@ -20,6 +21,7 @@ export async function GET(request: NextRequest) {
     const search  = searchParams.get('search');
     const batch   = searchParams.get('batch');
     const product = searchParams.get('product');
+    const segment = searchParams.get('segment');
 
     const pageParam  = searchParams.get('page');
     const limitParam = searchParams.get('limit');
@@ -31,6 +33,7 @@ export async function GET(request: NextRequest) {
     if (role)   conditions.push(eq(users.role, role));
     if (status) conditions.push(eq(users.status, status));
     if (batch)  conditions.push(eq(users.batch, batch));
+    if (isSegmentKey(segment)) conditions.push(segmentCondition(segment));
     if (search) {
       conditions.push(or(
         like(users.name,  `%${search}%`),

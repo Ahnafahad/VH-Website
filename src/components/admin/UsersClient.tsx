@@ -27,6 +27,7 @@ import {
   Mail,
   Users,
 } from 'lucide-react';
+import { SEGMENT_KEYS, SEGMENT_LABELS, isSegmentKey, type SegmentCounts, type SegmentKey } from '@/lib/admin/user-segments-shared';
 import { ConfirmDialog, Modal, AtRiskBadge, AtRiskPopover, useAtRiskPopover, type AtRiskBadgeReason, RED, RED_DARK, SLATE, BORDER, BORDER_FIELD, MUTED, BG, SURFACE, SURFACE_ALT, SURFACE_SHELL, BEIGE, INK_SOFT, OK, OK_BG, WARN, WARN_BG, R_SM, R_MD, R_LG, R_PILL, SHADOW_LG, T_XS, T_SM, T_BASE, T_LG } from './lms/lms-shared';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
@@ -75,6 +76,7 @@ interface DetailedUser extends AdminUserRow {
 }
 
 interface UsersClientProps {
+  segmentCounts:         SegmentCounts;
   initialUsers:          AdminUserRow[];
   initialTotal:          number;
   initialAccessRequests: AdminAccessRequest[];
@@ -83,7 +85,7 @@ interface UsersClientProps {
 
 // ─── Constants ────────────────────────────────────────────────────────────────
 
-const PAGE_SIZE       = 20;
+const PAGE_SIZE       = 50;
 const DEBOUNCE_MS     = 300;
 const PRODUCTS        = ['iba', 'fbs', 'fbs_detailed'] as const;
 const PRODUCT_LABELS  = { iba: 'IBA', fbs: 'FBS', fbs_detailed: 'FBS Detailed' } as const;
@@ -1451,6 +1453,7 @@ function BulkEditModal({
 // ─── Main Component ───────────────────────────────────────────────────────────
 
 export default function UsersClient({
+  segmentCounts,
   initialUsers,
   initialTotal,
   initialAccessRequests,
@@ -1460,11 +1463,13 @@ export default function UsersClient({
   // at-risk scan fans out a heavy per-student metrics read (minutes at
   // current data volume). See src/app/api/admin/students/at-risk/route.ts.
   const [atRiskStudents, setAtRiskStudents] = useState<AdminAtRiskStudent[]>([]);
+  const [atRiskFailed, setAtRiskFailed] = useState(false);
+  const [notice, setNotice] = useState('');
   useEffect(() => {
     fetch('/api/admin/students/at-risk')
       .then(res => res.ok ? res.json() : null)
-      .then(data => { if (data) setAtRiskStudents(data.atRiskStudents); })
-      .catch(() => {});
+      .then(data => { if (data) setAtRiskStudents(data.atRiskStudents); else setAtRiskFailed(true); })
+      .catch(() => setAtRiskFailed(true));
   }, []);
   const atRiskMap = React.useMemo(() => {
     const m = new Map<number, AtRiskBadgeReason[]>();
@@ -1482,6 +1487,9 @@ export default function UsersClient({
   const [search,        setSearch]        = useState(() => searchParams.get('search') ?? '');
   const [roleFilter,    setRoleFilter]    = useState<'all' | 'student' | 'instructor' | 'admin' | 'super_admin'>(
     () => (searchParams.get('role') as 'student' | 'instructor' | 'admin' | 'super_admin' | null) ?? 'all',
+  );
+  const [segmentFilter, setSegmentFilter] = useState<SegmentKey | ''>(
+    () => { const s = searchParams.get('segment'); return isSegmentKey(s) ? s : ''; },
   );
   const [batchFilter,   setBatchFilter]   = useState(() => searchParams.get('batch') ?? '');
   const [productFilter, setProductFilter] = useState(() => searchParams.get('product') ?? '');
@@ -1531,8 +1539,8 @@ export default function UsersClient({
   const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const totalPages  = Math.ceil(total / PAGE_SIZE);
 
-  interface Filters { q: string; role: string; batch: string; product: string; status: string }
-  const currentFilters = (): Filters => ({ q: search, role: roleFilter, batch: batchFilter, product: productFilter, status: statusFilter });
+  interface Filters { q: string; role: string; batch: string; product: string; status: string; segment: string }
+  const currentFilters = (): Filters => ({ q: search, role: roleFilter, batch: batchFilter, product: productFilter, status: statusFilter, segment: segmentFilter });
 
   // ── Fetch users ────────────────────────────────────────────────────────────
   const fetchUsers = useCallback(async (
@@ -1547,6 +1555,7 @@ export default function UsersClient({
       if (filters.batch)            params.set('batch',   filters.batch);
       if (filters.product)          params.set('product', filters.product);
       if (filters.status)           params.set('status',  filters.status);
+      if (filters.segment)          params.set('segment', filters.segment);
       params.set('page',  String(pg));
       params.set('limit', String(PAGE_SIZE));
 
@@ -1563,8 +1572,10 @@ export default function UsersClient({
         lastStudyDate: null,
       })));
       setTotal(data.count);
+      setNotice('');
     } catch {
-      // keep current data on error
+      // keep the rows on screen, but say they are stale
+      setNotice('Could not refresh the user list. The rows below may be out of date.');
     } finally {
       setLoading(false);
     }
@@ -1578,6 +1589,7 @@ export default function UsersClient({
     if (filters.batch)          params.set('batch',   filters.batch);
     if (filters.product)        params.set('product', filters.product);
     if (filters.status)         params.set('status',  filters.status);
+    if (filters.segment)        params.set('segment', filters.segment);
     if (pg > 1)                 params.set('page',    String(pg));
     const qs = params.toString();
     router.replace(qs ? `${pathname}?${qs}` : pathname, { scroll: false });
@@ -1598,7 +1610,7 @@ export default function UsersClient({
       if (debounceRef.current) clearTimeout(debounceRef.current);
     };
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [search, roleFilter, batchFilter, productFilter, statusFilter]);
+  }, [search, roleFilter, batchFilter, productFilter, statusFilter, segmentFilter]);
 
   // Pagination
   const handlePageChange = (newPage: number) => {
@@ -1631,6 +1643,7 @@ export default function UsersClient({
       });
     } catch {
       // panel stays open with basic data
+      setNotice('Could not load full details for that user; showing basic info only.');
     } finally {
       setPanelLoading(false);
     }
@@ -1650,10 +1663,10 @@ export default function UsersClient({
   };
 
   // ── Role filter counts (current page only, like the existing chips) ────────
-  const studentCount    = userList.filter(u => u.role === 'student').length;
-  const instructorCount = userList.filter(u => u.role === 'instructor').length;
-  const adminCount      = userList.filter(u => u.role === 'admin').length;
-  const superAdminCount = userList.filter(u => u.role === 'super_admin').length;
+  const studentCount    = segmentCounts.student;
+  const instructorCount = segmentCounts.instructor;
+  const adminCount      = segmentCounts.admin;
+  const superAdminCount = segmentCounts.super_admin;
 
   // ── Batch filter options — empty when the batches table has no rows yet ────
   const batchOptions = Array.from(new Set(initialBatches.map(b => b.name))).sort();
@@ -1704,7 +1717,7 @@ export default function UsersClient({
               <FilterChip
                 label="All"
                 active={roleFilter === 'all'}
-                count={total}
+                count={segmentCounts.total}
                 onClick={() => setRoleFilter('all')}
               />
               <FilterChip
@@ -1790,6 +1803,32 @@ export default function UsersClient({
               )}
             </div>
           </div>
+
+          {(notice || atRiskFailed) && (
+            <p role="alert" style={{ margin: '0 0 12px', padding: '10px 14px', borderRadius: R_MD, border: `1px solid ${WARN}`, background: WARN_BG, color: WARN, fontSize: T_SM }}>
+              {notice || 'At-risk flags could not be loaded (the scan timed out). Reload to retry.'}
+            </p>
+          )}
+
+          {/* Segments: whole-population groups (counts cover every user, not just this page) */}
+          <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap', alignItems: 'center', marginBottom: 6 }}>
+            <span style={{ fontSize: T_XS, fontWeight: 600, color: MUTED, letterSpacing: '0.06em', textTransform: 'uppercase', marginRight: 4 }}>
+              Segments
+            </span>
+            {SEGMENT_KEYS.map(key => (
+              <span key={key} title={SEGMENT_LABELS[key].help}>
+                <FilterChip
+                  label={SEGMENT_LABELS[key].label}
+                  active={segmentFilter === key}
+                  count={segmentCounts[key]}
+                  onClick={() => setSegmentFilter(segmentFilter === key ? '' : key)}
+                />
+              </span>
+            ))}
+          </div>
+          <p style={{ margin: '0 0 12px', fontSize: T_SM, color: MUTED, minHeight: 18 }}>
+            {segmentFilter ? SEGMENT_LABELS[segmentFilter].help : 'Pick a segment to filter the table. Counts cover every user.'}
+          </p>
 
           {/* Secondary filters: batch / product / status */}
           <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginBottom: 16 }}>

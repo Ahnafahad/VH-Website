@@ -50,6 +50,14 @@ export async function validateAuth(): Promise<{ email: string; name?: string }> 
   return { email: session.user.email, name: session.user.name || undefined };
 }
 
+// Routes rarely pass a context, so recover the route from the stack: production frames look like
+// ".../.next/server/app/api/admin/tests/route.js". Falls back to a generic label.
+function routeFromStack(error: unknown): string {
+  const stack = (error instanceof Error ? error.stack ?? '' : '').split('\\').join('/');
+  const match = stack.match(/\/app\/(api\/[^:()]*?)\/route\.[cm]?[jt]s/);
+  return match ? '/' + match[1] : 'api (route unknown)';
+}
+
 export async function safeApiHandler<T>(
   handler: () => Promise<T>,
   context?: string,
@@ -58,16 +66,16 @@ export async function safeApiHandler<T>(
     const result = await handler();
     return NextResponse.json(result);
   } catch (error) {
-    // Log 500-class failures to vocab_error_logs when a context is provided.
+    // Log 500-class failures to vocab_error_logs for every route (the table backs /admin/errors).
     // 4xx ApiExceptions (auth noise, validation) are intentionally skipped.
-    if (context) {
+    {
       const is5xx =
         error instanceof ApiException ? error.status >= 500 : error instanceof Error;
       if (is5xx) {
         logVocabErrorSafe({
           source:  'api',
           severity: 'error',
-          context,
+          context: context ?? routeFromStack(error),
           message: error instanceof Error ? error.message : String(error),
           detail: {
             stack:  error instanceof Error ? error.stack : undefined,

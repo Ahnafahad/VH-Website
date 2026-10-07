@@ -126,6 +126,7 @@ export interface ResultsPayload {
   questionAnalytics: Record<number, { correctCount: number; wrongCount: number; skippedCount: number }>;
   sections: TakingSection[];
   answerKey: Record<number, string | null>;
+  radar: Array<{ key: string; label: string; me: number; top5: number }> | null;
 }
 
 // ─── POST responses ──────────────────────────────────────────────────────────

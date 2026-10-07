@@ -1,8 +1,12 @@
 import { getServerSession } from 'next-auth/next';
 import { authOptions } from '@/lib/auth';
+import { cache } from 'react';
 import { redirect, notFound } from 'next/navigation';
 import { getStudentDetail } from '@/lib/students/progress';
 import StudentDetailClient from '@/components/admin/students/StudentDetailClient';
+
+// generateMetadata and the page both need the detail; cache() makes the heavy read run once per request.
+const getDetail = cache((id: number) => getStudentDetail(id));
 
 interface PageProps {
   params: Promise<{ id: string }>;
@@ -10,7 +14,7 @@ interface PageProps {
 
 export async function generateMetadata({ params }: PageProps) {
   const { id } = await params;
-  const detail = await getStudentDetail(Number(id));
+  const detail = await getDetail(Number(id));
   return { title: detail ? `${detail.profile.name} — Progress — VH Admin` : 'Student Progress — VH Admin' };
 }
 
@@ -22,7 +26,7 @@ export default async function AdminStudentDetailPage({ params }: PageProps) {
   }
 
   const { id } = await params;
-  const detail = await getStudentDetail(Number(id));
+  const detail = await getDetail(Number(id));
   if (!detail) notFound();
 
   return <StudentDetailClient detail={detail} />;

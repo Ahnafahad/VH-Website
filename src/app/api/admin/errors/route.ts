@@ -67,7 +67,7 @@ export async function GET(req: NextRequest) {
 
     // ── 7-day counts per source (for filter chips) ────────────────────────────
     const sevenDaysAgo     = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString();
-    const sevenDaysAgoUnix = Math.floor(Date.now() / 1000) - 7 * 24 * 60 * 60;
+    const sevenDaysAgoDate = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000);
 
     const [dbCounts] = await Promise.all([
       db
@@ -89,7 +89,7 @@ export async function GET(req: NextRequest) {
           and(
             eq(analyticsEvents.module, 'vocab'),
             inArray(analyticsEvents.name, ['client_error', 'unhandled_rejection']),
-            gte(analyticsEvents.createdAt, sevenDaysAgoUnix as unknown as Date),
+            gte(analyticsEvents.createdAt, sevenDaysAgoDate),
           )
         ),
     ]);
@@ -144,16 +144,14 @@ export async function GET(req: NextRequest) {
     }
 
     if (fetchClientLogs) {
-      // Convert before-cursor (ISO string) to unix timestamp for analytics_events
-      const beforeUnix = before
-        ? Math.floor(new Date(before).getTime() / 1000)
-        : null;
+      // analytics_events.created_at is a timestamp column: compare against a Date, not a raw number
+      const beforeDate = before ? new Date(before) : null;
 
       const clientConditions = and(
         eq(analyticsEvents.module, 'vocab'),
         inArray(analyticsEvents.name, ['client_error', 'unhandled_rejection']),
-        beforeUnix
-          ? lt(analyticsEvents.createdAt, beforeUnix as unknown as Date)
+        beforeDate
+          ? lt(analyticsEvents.createdAt, beforeDate)
           : undefined,
       );
 

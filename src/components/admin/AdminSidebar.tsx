@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { signOut } from 'next-auth/react';
 import AdminProductToggle from './AdminProductToggle';
+import { INSTRUCTOR_NAV_SECTIONS, NAV_SECTIONS } from './admin-nav';
 import { motion, Variants } from 'framer-motion';
 import {
   BEIGE,
@@ -21,44 +22,10 @@ import {
   T_XS,
 } from './lms/lms-shared';
 import {
-  LayoutDashboard,
-  BookOpen,
-  Users,
-  Trophy,
-  Megaphone,
   LogOut,
-  Database,
-  BarChart3,
-  ClipboardList,
-  CalendarDays,
-  FileText,
-  BookMarked,
-  Rss,
-  CalendarCheck,
-  Settings,
-  CalendarClock,
-  UserCheck,
-  TriangleAlert,
-  LineChart,
-  Stethoscope,
-  Drama,
-  Route,
-  Timer,
-  PenLine,
 } from 'lucide-react';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
-
-interface NavItem {
-  href:  string;
-  label: string;
-  icon:  React.ElementType;
-}
-
-interface NavSection {
-  label: string | null; // null = no section header (top-level)
-  items: NavItem[];
-}
 
 interface AdminSidebarProps {
   adminName:  string;
@@ -67,95 +34,6 @@ interface AdminSidebarProps {
 }
 
 // ─── Nav sections ─────────────────────────────────────────────────────────────
-
-const INSTRUCTOR_NAV_SECTIONS: NavSection[] = [
-  {
-    label: null,
-    items: [
-      { href: '/admin/today', label: 'Today', icon: CalendarCheck },
-    ],
-  },
-  {
-    label: 'TEACHING',
-    items: [
-      { href: '/admin/classes',            label: 'Classes',   icon: CalendarDays  },
-      { href: '/admin/materials',          label: 'Materials', icon: FileText      },
-      { href: '/admin/homework',           label: 'Homework',  icon: BookMarked    },
-      { href: '/admin/bookings',           label: 'Bookings',  icon: CalendarClock },
-      { href: '/admin/announcements-feed', label: 'Feed',      icon: Rss           },
-    ],
-  },
-  {
-    label: 'MARKS & INSIGHTS',
-    items: [
-      { href: '/admin/students',      label: 'Progress',      icon: LineChart },
-      { href: '/admin/tests',         label: 'Tests & marks', icon: ClipboardList },
-      { href: '/admin/marathon',      label: 'Marathon',      icon: Route },
-      { href: '/admin/sprint',        label: 'Sprint',        icon: Timer },
-      { href: '/admin/redline',       label: 'Redline',       icon: PenLine },
-      { href: '/admin/analytics',     label: 'LMS statistics', icon: BarChart3 },
-      { href: '/admin/diagnosis-fbs', label: 'Diagnosis FBS', icon: Stethoscope },
-    ],
-  },
-  {
-    label: 'SETTINGS',
-    items: [
-      { href: '/admin/settings/google', label: 'Google Calendar', icon: Settings },
-    ],
-  },
-];
-
-const NAV_SECTIONS: NavSection[] = [
-  {
-    label: null,
-    items: [
-      { href: '/admin', label: 'Overview', icon: LayoutDashboard },
-      { href: '/admin/operational', label: 'Operational Admin', icon: ClipboardList },
-    ],
-  },
-  {
-    label: 'TEACHING',
-    items: [
-      { href: '/admin/today',              label: 'Today',    icon: CalendarCheck },
-      { href: '/admin/classes',            label: 'Classes',  icon: CalendarDays  },
-      { href: '/admin/materials',          label: 'Materials',icon: FileText      },
-      { href: '/admin/homework',           label: 'Homework', icon: BookMarked    },
-      { href: '/admin/bookings',           label: 'Bookings', icon: CalendarClock },
-      { href: '/admin/announcements-feed', label: 'Feed',     icon: Rss           },
-    ],
-  },
-  {
-    label: 'MARKS & PRACTICE',
-    items: [
-      { href: '/admin/tests',       label: 'Tests & marks',icon: ClipboardList },
-      { href: '/admin/marathon',    label: 'Marathon',    icon: Route         },
-      { href: '/admin/sprint',      label: 'Sprint',      icon: Timer         },
-      { href: '/admin/redline',     label: 'Redline',     icon: PenLine       },
-      { href: '/admin/analytics',   label: 'LMS statistics',icon: BarChart3 },
-      { href: '/admin/vocab',       label: 'Vocabulary',  icon: BookOpen      },
-      { href: '/admin/words',       label: 'Word Bank',   icon: Database      },
-      { href: '/admin/leaderboard', label: 'Leaderboard', icon: Trophy        },
-      { href: '/admin/diagnosis-fbs', label: 'Diagnosis FBS', icon: Stethoscope },
-    ],
-  },
-  {
-    label: 'STUDENTS & COMMS',
-    items: [
-      { href: '/admin/students',      label: 'Progress',       icon: LineChart },
-      { href: '/admin/users',         label: 'Users',          icon: Users     },
-      { href: '/admin/registrations', label: 'Registrations',  icon: UserCheck },
-      { href: '/admin/announcements', label: 'Announcements',  icon: Megaphone },
-      { href: '/admin/avatars',       label: 'Avatars',        icon: Drama    },
-    ],
-  },
-  {
-    label: 'SYSTEM',
-    items: [
-      { href: '/admin/errors',           label: 'Error Logs',     icon: TriangleAlert },
-      { href: '/admin/settings/google',  label: 'Google Calendar', icon: Settings  },
-    ],
-  },
-];
 
 // ─── Motion variants ─────────────────────────────────────────────────────────
 
@@ -185,9 +63,9 @@ const navItemVariants: Variants = {
 
 // ─── Helpers ─────────────────────────────────────────────────────────────────
 
-function isActive(href: string, pathname: string): boolean {
+function isActive(href: string, pathname: string, also: string[] = []): boolean {
   if (href === '/admin') return pathname === '/admin';
-  return pathname === href || pathname.startsWith(href + '/');
+  return [href, ...also].some(h => pathname === h || pathname.startsWith(h + '/'));
 }
 
 function getInitials(name: string): string {
@@ -267,7 +145,7 @@ export default function AdminSidebar({ adminName, adminEmail, role }: AdminSideb
               )}
 
               {section.items.map((item) => {
-                const active = isActive(item.href, pathname);
+                const active = isActive(item.href, pathname, item.also);
                 const Icon   = item.icon;
 
                 return (
@@ -488,7 +366,7 @@ export default function AdminSidebar({ adminName, adminEmail, role }: AdminSideb
             )}
 
             {section.items.map((item) => {
-              const active = isActive(item.href, pathname);
+              const active = isActive(item.href, pathname, item.also);
               const Icon   = item.icon;
 
               return (

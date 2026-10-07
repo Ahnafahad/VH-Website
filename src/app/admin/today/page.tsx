@@ -15,14 +15,17 @@ export default async function TodayPage() {
 
   // Fetch today's sessions server-side so the page has data on first paint
   let data = { sessions: [] as Parameters<typeof TodayClient>[0]['initial']['sessions'], assignmentsDue48h: 0 };
+  let loadFailed = false;
   try {
     const res = await adminApiFetch('/api/lms/admin/today');
     if (res.ok) {
       const json = await res.json() as typeof data;
       data = json;
+    } else {
+      loadFailed = true;
     }
   } catch {
-    // render empty state; client can refresh
+    loadFailed = true;
   }
 
   let batches: BatchOption[] = [];
@@ -33,5 +36,5 @@ export default async function TodayPage() {
     // batch dropdown degrades to "All batches" only
   }
 
-  return <TodayClient initial={data} sessions={data.sessions} batches={batches} />;
+  return <TodayClient initial={data} sessions={data.sessions} batches={batches} loadFailed={loadFailed} />;
 }

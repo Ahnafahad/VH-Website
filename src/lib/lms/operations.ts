@@ -23,6 +23,22 @@ export const financialEntryInput = z.object({
   description: z.string().trim().max(2000).default(''),
 });
 
+export const expenseCategories = [
+  'Stationery', 'Printing & Photocopy', 'Rent', 'Utilities', 'Internet & Phone',
+  'Refreshments', 'Transport', 'Marketing & Ads', 'Software & Subscriptions',
+  'Equipment & Furniture', 'Instructor Payment', 'Events', 'Miscellaneous',
+] as const;
+
+// paidBy null = the organization paid directly; otherwise an admin fronted it and may later be
+// reimbursed from the treasury (reimbursedAt = settlement date).
+export const expenseEntryInput = financialEntryInput.extend({
+  category: z.enum(expenseCategories, { message: 'Select a category' }),
+  paidBy: z.number().int().positive().nullable(),
+  reimbursedAt: date.nullable(),
+}).refine(value => value.paidBy !== null || value.reimbursedAt === null, {
+  message: 'Only an expense paid by a person can be reimbursed', path: ['reimbursedAt'],
+});
+
 export const extraClassInput = z.object({
   instructorId: z.number().int().positive(),
   subject: z.string().trim().min(1, 'Subject is required').max(120),
@@ -84,6 +100,9 @@ export interface FinancialEntryRecord {
   amountMinor: number;
   category: string;
   description: string;
+  paidBy: number | null;
+  paidByName: string | null;
+  reimbursedAt: string | null;
 }
 
 export interface ExtraClassRecord {

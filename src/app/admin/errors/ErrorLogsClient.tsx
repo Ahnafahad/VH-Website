@@ -25,6 +25,26 @@ import {
   T_XS, T_SM, T_BASE, T_LG, T_XL, SPIN_CSS,
 } from '@/components/admin/lms/lms-shared';
 
+type Area = 'all' | 'admin' | 'lms' | 'tests' | 'vocab' | 'other';
+
+const AREAS: { value: Area; label: string }[] = [
+  { value: 'all',   label: 'All areas' },
+  { value: 'admin', label: 'Admin'     },
+  { value: 'lms',   label: 'LMS'       },
+  { value: 'tests', label: 'Tests'     },
+  { value: 'vocab', label: 'LexiCore'  },
+  { value: 'other', label: 'Other'     },
+];
+
+/** Which part of the site an error came from, judged by its route/page path. */
+function areaOf(context: string): Exclude<Area, 'all'> {
+  if (/^\/(api\/)?admin/.test(context)) return 'admin';
+  if (/^\/(api\/)?(lms|dashboard)/.test(context)) return 'lms';
+  if (/^\/(api\/)?(tests|sprint|marathon|redline|fbs-diagnosis|results)/.test(context)) return 'tests';
+  if (/vocab/.test(context)) return 'vocab';
+  return 'other';
+}
+
 // ─── Types ────────────────────────────────────────────────────────────────────
 
 type Source = 'all' | 'quiz_generation' | 'api' | 'client';
@@ -96,6 +116,7 @@ export default function ErrorLogsClient() {
   const [rows,       setRows]      = useState<ErrorLogRow[]>([]);
   const [counts,     setCounts]    = useState<ApiResponse['counts']>({ quiz_generation: 0, api: 0, client: 0 });
   const [source,     setSource]    = useState<Source>('all');
+  const [area,       setArea]      = useState<Area>('all');
   const [loading,    setLoading]   = useState(true);
   const [loadingMore, setLoadingMore] = useState(false);
   const [nextBefore, setNextBefore] = useState<string | null>(null);
@@ -204,6 +225,7 @@ export default function ErrorLogsClient() {
     );
   }
 
+  const visibleRows = area === 'all' ? rows : rows.filter(r => areaOf(r.context) === area);
   const totalCount = counts.quiz_generation + counts.api + counts.client;
 
   const filterChips: { value: Source; label: string; count: number }[] = [
@@ -279,6 +301,17 @@ export default function ErrorLogsClient() {
             </span>
           </button>
         ))}
+        <span style={{ width: 1, background: BORDER, margin: '0 4px' }} aria-hidden />
+        {AREAS.map(a => (
+          <button
+            key={a.value}
+            onClick={() => setArea(a.value)}
+            className="lms-btn lms-btn-ghost"
+            style={{ ...S.chip, ...(area === a.value ? S.chipActive : {}) }}
+          >
+            {a.label}
+          </button>
+        ))}
       </div>
 
       {/* List */}
@@ -286,7 +319,7 @@ export default function ErrorLogsClient() {
         <div style={S.center}>
           <Loader2 size={24} style={{ animation: 'spin 1s linear infinite', color: MUTED }} />
         </div>
-      ) : rows.length === 0 ? (
+      ) : visibleRows.length === 0 ? (
         <div style={S.emptyState}>
           <TriangleAlert size={32} color={MUTED} aria-hidden />
           <p style={S.emptyTitle}>No failures logged. That&apos;s the goal.</p>
@@ -297,7 +330,7 @@ export default function ErrorLogsClient() {
         </div>
       ) : (
         <div style={S.list}>
-          {rows.map(row => {
+          {visibleRows.map(row => {
             const isOpen = expanded.has(row.id);
             return (
               <div key={row.id} style={S.card}>

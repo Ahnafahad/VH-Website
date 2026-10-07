@@ -7,6 +7,7 @@ import { eq, desc, and, inArray } from 'drizzle-orm';
 import UsersClient from '@/components/admin/UsersClient';
 import type { AdminUserRow, AdminAccessRequest, AdminBatch } from '@/components/admin/UsersClient';
 import { getActiveBatches } from '@/lib/batches/read';
+import { getSegmentCounts } from '@/lib/admin/user-segments';
 
 export const metadata = { title: 'Users — VH Admin' };
 
@@ -16,7 +17,7 @@ async function fetchInitialUsers(): Promise<{ users: AdminUserRow[]; total: numb
     .select()
     .from(users)
     .orderBy(desc(users.createdAt))
-    .limit(20);
+    .limit(50);
 
   const ids = rows.map(u => u.id);
 
@@ -105,9 +106,10 @@ export default async function AdminUsersPage() {
     redirect('/auth/signin');
   }
 
-  const [initialData, accessRequests] = await Promise.all([
+  const [initialData, accessRequests, segmentCounts] = await Promise.all([
     fetchInitialUsers(),
     fetchAccessRequests(),
+    getSegmentCounts(),
   ]);
 
   // Batches table may not exist yet in this environment — degrade to an
@@ -126,6 +128,7 @@ export default async function AdminUsersPage() {
       initialTotal={initialData.total}
       initialAccessRequests={accessRequests}
       initialBatches={initialBatches}
+      segmentCounts={segmentCounts}
     />
   );
 }

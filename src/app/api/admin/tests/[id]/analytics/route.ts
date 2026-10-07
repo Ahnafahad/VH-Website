@@ -6,10 +6,11 @@
  */
 
 import { NextRequest } from 'next/server';
-import { and, eq, inArray } from 'drizzle-orm';
+import { and, eq, inArray, sql } from 'drizzle-orm';
+import { segmentCondition } from '@/lib/admin/user-segments';
 import { db } from '@/lib/db';
 import {
-  tests, testSections, testQuestions, testAttempts, testAnswers, testViolations, users, userAccess,
+  tests, testSections, testQuestions, testAttempts, testAnswers, testViolations, users,
 } from '@/lib/db/schema';
 import { safeApiHandler, ApiException } from '@/lib/api-utils';
 import { requireStaff } from '@/lib/tests/route-helpers';
@@ -86,23 +87,14 @@ export async function GET(
     const allowedProducts = test.allowedProducts
       ? (JSON.parse(test.allowedProducts) as string[])
       : null;
-    let eligibleCount: number;
-    if (!allowedProducts || allowedProducts.length === 0) {
-      const rows = await db.select({ id: users.id }).from(users)
-        .where(and(eq(users.role, 'student'), eq(users.status, 'active')));
-      eligibleCount = rows.length;
-    } else {
-      const rows = await db.selectDistinct({ userId: userAccess.userId })
-        .from(userAccess)
-        .innerJoin(users, eq(userAccess.userId, users.id))
-        .where(and(
-          eq(users.role, 'student'),
-          eq(users.status, 'active'),
-          eq(userAccess.active, true),
-          inArray(userAccess.product, allowedProducts),
-        ));
-      eligibleCount = rows.length;
-    }
+    // Enrolled students only (active, current batch, active access) so participation is not
+    // diluted by sign-ups who were never enrolled; with allowedProducts, also need that access.
+    const restricted = allowedProducts && allowedProducts.length > 0
+      ? sql`${users.id} IN (SELECT user_id FROM user_access WHERE active = 1 AND product IN (${sql.join(allowedProducts.map(p => sql`${p}`), sql`, `)}))`
+      : undefined;
+    const rows = await db.select({ id: users.id }).from(users)
+      .where(and(segmentCondition('enrolled'), restricted));
+    const eligibleCount = rows.length;
 
     const input: AnalyticsInput = {
       eligibleCount,

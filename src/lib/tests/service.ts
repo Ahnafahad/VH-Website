@@ -13,6 +13,7 @@ import { and, eq, inArray } from 'drizzle-orm';
 import { effectiveWindowState, resultsVisible, type EffectiveWindowState } from './windows';
 import { scoreAttempt, computeRanks, rankCohort, shouldRankByCohort, type AttemptScore } from './scoring';
 import { parseChosenSections } from './diagnostic';
+import { computeRadar, type RadarAxis } from './radar';
 import { getUserById } from '@/lib/db-access-control';
 
 // ─── Listing ──────────────────────────────────────────────────────────────────
@@ -253,6 +254,8 @@ export interface TestResultsPayload {
   questionAnalytics: Record<number, { correctCount: number; wrongCount: number; skippedCount: number }>;
   sections: TakingSection[];
   answerKey: Record<number, string | null>; // questionId → correctKey (revealed post-close)
+  /** viewer vs top-5 average on the spider-chart axes; null without an attempt or a cohort to compare */
+  radar: RadarAxis[] | null;
 }
 
 export async function getTestResults(testId: number, userId: number): Promise<TestResultsPayload | null> {
@@ -417,6 +420,25 @@ export async function getTestResults(testId: number, userId: number): Promise<Te
   const answerKey: Record<number, string | null> = {};
   for (const qid of allQuestionIds) answerKey[qid] = keyMap.get(qid) ?? null;
 
+  let radar: RadarAxis[] | null = null;
+  if (mine) {
+    const selectedByAttempt = new Map<number, Map<number, string | null>>();
+    for (const a of allAnswers) {
+      if (!selectedByAttempt.has(a.attemptId)) selectedByAttempt.set(a.attemptId, new Map());
+      selectedByAttempt.get(a.attemptId)!.set(a.questionId, a.selectedKey);
+    }
+    radar = computeRadar({
+      questionIds: allQuestionIds,
+      correctKey: keyMap,
+      cohort: cohortAttempts.map(a => ({
+        attemptId: a.id, score: a.totalScore ?? 0, selected: selectedByAttempt.get(a.id) ?? new Map(),
+      })),
+      topAttemptIds: [...ranks].sort((a, b) => a.rank - b.rank).slice(0, 5).map(r => r.attemptId),
+      myAttemptId: mine.id,
+      totalMarks: attemptedMarks,
+    });
+  }
+
   return {
     test: {
       slug: test.slug,
@@ -430,6 +452,7 @@ export async function getTestResults(testId: number, userId: number): Promise<Te
     questionAnalytics,
     sections,
     answerKey,
+    radar,
   };
 }
 
