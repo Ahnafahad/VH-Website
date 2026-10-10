@@ -1,0 +1,68 @@
+{
+  "select": {
+    "web": 6,
+    "native": "light"
+  },
+  "switch": {
+    "web": [
+      6,
+      12,
+      6
+    ],
+    "native": "light"
+  },
+  "lock": {
+    "web": 18,
+    "native": "medium"
+  },
+  "arrival": {
+    "web": 4,
+    "native": "light"
+  },
+  "best": {
+    "web": [
+      12,
+      40,
+      12
+    ],
+    "native": "success"
+  },
+  "defensible": {
+    "web": [
+      10,
+      50,
+      6
+    ],
+    "native": "light"
+  },
+  "incorrect": {
+    "web": [
+      24,
+      60,
+      16
+    ],
+    "native": "warning"
+  },
+  "hold": {
+    "web": [
+      18,
+      30,
+      18
+    ],
+    "native": "success"
+  },
+  "mastery": {
+    "web": [
+      20,
+      50,
+      20,
+      50,
+      60
+    ],
+    "native": "success"
+  },
+  "hint": {
+    "web": 5,
+    "native": "light"
+  }
+}

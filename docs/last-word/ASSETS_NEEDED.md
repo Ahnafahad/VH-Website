@@ -1,6 +1,6 @@
 # Last Word — assets needed
 
-**Status:** spec ready for production. **Part I** is the visual specification (how the game looks, moment by moment, and its three signature elements). **Part II** lists every file to make: 52 assets, 12 of them must-have. The game is built to run with **zero** of these files: every asset has a procedural or code-drawn placeholder. When you drop in a real file, it replaces the placeholder with **no code change**.
+**Status:** all 52 assets produced and validated. **Part I** is the visual specification (how the game looks, moment by moment, and its three signature elements). **Part II** lists every file to make: 52 assets, 12 of them must-have. The game is built to run with **zero** of these files: every asset has a procedural or code-drawn placeholder. When you drop in a real file, it replaces the placeholder with **no code change**.
 
 - **Source of truth:** [`src/features/last-word/assets/asset-manifest.json`](../../src/features/last-word/assets/asset-manifest.json). This document mirrors it. If they ever disagree, the manifest wins (the validator reads it).
 - **Where files go:** `public/last-word/assets/<folder>/<filename>`, with the exact names below.
@@ -627,64 +627,64 @@ The status icons carry meaning in **shape**, not colour (§41: no meaning by col
 ## 11. Checklist
 
 ### Must-have (12)
-- [ ] `models/word-tile.full.glb`
-- [ ] `models/word-tile.standard.glb`
-- [ ] `images/chamber-backdrop.landscape.webp`
-- [ ] `images/chamber-backdrop.portrait.webp`
-- [ ] `audio/sfx/arrival.mp3`
-- [ ] `audio/sfx/select.mp3`
-- [ ] `audio/sfx/switch.mp3`
-- [ ] `audio/sfx/lock.mp3`
-- [ ] `audio/sfx/best.mp3`
-- [ ] `audio/sfx/defensible.mp3`
-- [ ] `audio/sfx/incorrect.mp3`
-- [ ] `audio/sfx/mastery.mp3`
+- [x] `models/word-tile.full.glb`
+- [x] `models/word-tile.standard.glb`
+- [x] `images/chamber-backdrop.landscape.webp`
+- [x] `images/chamber-backdrop.portrait.webp`
+- [x] `audio/sfx/arrival.mp3`
+- [x] `audio/sfx/select.mp3`
+- [x] `audio/sfx/switch.mp3`
+- [x] `audio/sfx/lock.mp3`
+- [x] `audio/sfx/best.mp3`
+- [x] `audio/sfx/defensible.mp3`
+- [x] `audio/sfx/incorrect.mp3`
+- [x] `audio/sfx/mastery.mp3`
 
 ### Nice-to-have — 3D and visuals (17)
-- [ ] `models/fulcrum.glb` *(signature)*
-- [ ] `models/evidence-pane.glb` *(signature)*
-- [ ] `models/chamber-shell.full.glb`
-- [ ] `models/chamber-shell.standard.glb`
-- [ ] `models/lock-ring.glb`
-- [ ] `models/mastery-node.glb`
-- [ ] `textures/chamber-env.hdr`
-- [ ] `textures/noise-grain.webp`
-- [ ] `textures/soft-glow.webp`
-- [ ] `textures/spark.webp`
-- [ ] `textures/fracture-mask.webp`
-- [ ] `textures/tile-surface.lite.webp`
-- [ ] `textures/star-dust.webp`
-- [ ] `images/launch-sculpture.webp`
-- [ ] `images/og-last-word.png`
-- [ ] `icons/last-word-wordmark.svg`
-- [ ] `haptics/patterns.json` (only to tune the defaults)
+- [x] `models/fulcrum.glb` *(signature)*
+- [x] `models/evidence-pane.glb` *(signature)*
+- [x] `models/chamber-shell.full.glb`
+- [x] `models/chamber-shell.standard.glb`
+- [x] `models/lock-ring.glb`
+- [x] `models/mastery-node.glb`
+- [x] `textures/chamber-env.hdr`
+- [x] `textures/noise-grain.webp`
+- [x] `textures/soft-glow.webp`
+- [x] `textures/spark.webp`
+- [x] `textures/fracture-mask.webp`
+- [x] `textures/tile-surface.lite.webp`
+- [x] `textures/star-dust.webp`
+- [x] `images/launch-sculpture.webp`
+- [x] `images/og-last-word.png`
+- [x] `icons/last-word-wordmark.svg`
+- [x] `haptics/patterns.json` (only to tune the defaults)
 
 ### Nice-to-have — audio (8)
-- [ ] `audio/sfx/hold.mp3`
-- [ ] `audio/sfx/perfect-read.mp3`
-- [ ] `audio/sfx/review-due.mp3`
-- [ ] `audio/sfx/hint.mp3`
-- [ ] `audio/sfx/ui-tap.mp3`
-- [ ] `audio/sfx/reveal.mp3`
-- [ ] `audio/music/chamber-ambience.mp3`
-- [ ] `audio/music/map-ambience.mp3`
+- [x] `audio/sfx/hold.mp3`
+- [x] `audio/sfx/perfect-read.mp3`
+- [x] `audio/sfx/review-due.mp3`
+- [x] `audio/sfx/hint.mp3`
+- [x] `audio/sfx/ui-tap.mp3`
+- [x] `audio/sfx/reveal.mp3`
+- [x] `audio/music/chamber-ambience.mp3`
+- [x] `audio/music/map-ambience.mp3`
 
 ### Nice-to-have — icons (15)
-- [ ] `icons/hint.svg`
-- [ ] `icons/lock.svg`
-- [ ] `icons/switch.svg`
-- [ ] `icons/hold.svg`
-- [ ] `icons/perfect-read.svg`
-- [ ] `icons/review.svg`
-- [ ] `icons/mastery-map.svg`
-- [ ] `icons/quick-run.svg`
-- [ ] `icons/continue.svg`
-- [ ] `icons/status-new.svg`
-- [ ] `icons/status-getting-it.svg`
-- [ ] `icons/status-reliable.svg`
-- [ ] `icons/status-fluent.svg`
-- [ ] `icons/status-mastered.svg`
-- [ ] `icons/status-review-due.svg`
+- [x] `icons/hint.svg`
+- [x] `icons/lock.svg`
+- [x] `icons/switch.svg`
+- [x] `icons/hold.svg`
+- [x] `icons/perfect-read.svg`
+- [x] `icons/review.svg`
+- [x] `icons/mastery-map.svg`
+- [x] `icons/quick-run.svg`
+- [x] `icons/continue.svg`
+- [x] `icons/status-new.svg`
+- [x] `icons/status-getting-it.svg`
+- [x] `icons/status-reliable.svg`
+- [x] `icons/status-fluent.svg`
+- [x] `icons/status-mastered.svg`
+- [x] `icons/status-review-due.svg`
 
 Optional `.webm` (Opus) twins of any audio file are welcome and are validated when present.
 
