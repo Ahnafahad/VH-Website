@@ -13,12 +13,13 @@
     "generate:access-control": "node scripts/generate-access-control.js",
     "parse-accounting": "node scripts/parse-accounting-questions.js",
     "migrate:users": "node scripts/migrate-access-control-to-db.js",
-    "prebuild": "npm run generate:access-control && npm run parse-accounting",
+    "prebuild": "npm run generate:access-control && npm run parse-accounting && node scripts/last-word/validate-assets.mjs --write --no-fail",
     "cap:sync": "cap sync android",
     "android:open": "cap open android",
     "typecheck": "tsc --noEmit",
     "test:stack": "playwright test --config playwright.last-word.config.ts",
-    "verify:stack-peers": "node scripts/verify-last-word-peers.mjs"
+    "verify:stack-peers": "node scripts/verify-last-word-peers.mjs",
+    "last-word:validate-assets": "node scripts/last-word/validate-assets.mjs"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.1078.0",

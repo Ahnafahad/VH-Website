@@ -40,6 +40,10 @@ The technical bootstrap was verified before the game checkpoint: typecheck, lint
 - Preserved the existing `0004_operational_admin` migration. Renamed the unapplied Last Word migration from `0004_last_word` to `0005_last_word` and gave it journal index 5. The essay feature has its own pending database work; do not conflate those schemas or claim either was deployed.
 - Preserved all existing essay routes, components, and schema additions. No production database or external content rows were modified as part of this handover.
 
+## Assets
+
+The full asset production spec is [`docs/last-word/ASSETS_NEEDED.md`](../ASSETS_NEEDED.md) (49 assets, 12 must-have), driven by `src/features/last-word/assets/asset-manifest.json` and checked by `npm run last-word:validate-assets`. The game runs on procedural placeholders until files are dropped in. Decisions are logged in [`docs/last-word/DECISIONS.md`](../DECISIONS.md).
+
 ## Curriculum and data boundaries
 
 The existing `vocab_word_contrasts` table was identified by a read-only check on 2026-10-04: **888 rows, all draft** then. It is the source dataset for commonly confused words; preserve its IDs, wording, and statuses. Recheck it read-only when implementation starts because the live database may have changed. `vocab_confusion_pairs` records student mistakes and is a different dataset. The four tracked JSON sets demonstrate content shape; they are not a replacement for approved curriculum or a complete content QA pipeline.

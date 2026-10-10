@@ -8,7 +8,11 @@ export default defineConfig({
   use: {
     baseURL: 'http://127.0.0.1:6976',
     trace: 'retain-on-failure',
-    launchOptions: { args: ['--use-angle=swiftshader', '--enable-unsafe-swiftshader'] },
+    launchOptions: {
+      args: ['--use-angle=swiftshader', '--enable-unsafe-swiftshader'],
+      // Hosts with a preinstalled Chromium of a different build (e.g. CI images) can point at it.
+      executablePath: process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE || undefined,
+    },
   },
   webServer: {
     command: 'node ./node_modules/next/dist/bin/next dev --hostname 127.0.0.1 --port 6976',
