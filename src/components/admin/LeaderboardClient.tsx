@@ -56,7 +56,7 @@ const RANK_ACCENT: Record<number, {
   border: string;
   bg:     string;
   color:  string;
-  icon:   React.ElementType;
+  icon:   React.ComponentType<import('lucide-react').LucideProps>;
 }> = {
   1: { border: '#C9A84C', bg: 'rgba(201,168,76,0.07)',  color: '#92400E', icon: Crown  },
   2: { border: '#8A9BA8', bg: 'rgba(138,155,168,0.07)', color: '#475569', icon: Medal  },
@@ -598,7 +598,7 @@ function SectionCard({
   title:       string;
   desc:        string;
   iconBg:      string;
-  icon:        React.ElementType;
+  icon:        React.ComponentType<import('lucide-react').LucideProps>;
   iconColor:   string;
   count:       number;
   countLabel:  string;

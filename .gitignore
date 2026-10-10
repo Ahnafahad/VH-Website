@@ -129,3 +129,8 @@ android/local.properties
 /graphify-out/converted/
 /graphify-out/cache/
 /graphify-out/.graphify_chunk_*.json
+
+# Read-only upstream sources and local bootstrap verification output
+/.references/
+/test-results/
+/playwright-report/

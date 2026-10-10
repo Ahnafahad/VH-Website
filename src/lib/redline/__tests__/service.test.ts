@@ -68,7 +68,7 @@ beforeEach(async () => {
     CREATE TABLE users (
       id INTEGER PRIMARY KEY AUTOINCREMENT, email TEXT NOT NULL UNIQUE, name TEXT NOT NULL, role TEXT NOT NULL,
       status TEXT NOT NULL, student_id TEXT UNIQUE, batch TEXT, class TEXT, notes TEXT, whatsapp TEXT,
-      is_teaching INTEGER, avatar_character_id INTEGER, avatar_custom_request TEXT, avatar_request_status TEXT,
+      is_teaching INTEGER, read_only INTEGER NOT NULL DEFAULT 0, avatar_character_id INTEGER, avatar_custom_request TEXT, avatar_request_status TEXT,
       onboarding_skips INTEGER NOT NULL, onboarded_at INTEGER, push_subscription TEXT,
       notify_materials INTEGER NOT NULL, notify_announcements INTEGER NOT NULL, notify_comment_reply INTEGER NOT NULL,
       created_at INTEGER NOT NULL, updated_at INTEGER NOT NULL);

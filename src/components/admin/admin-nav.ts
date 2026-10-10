@@ -30,7 +30,7 @@ import {
 export interface NavItem {
   href:  string;
   label: string;
-  icon:  React.ElementType;
+  icon:  React.ComponentType<import('lucide-react').LucideProps>;
   also?: string[]; // extra route prefixes that keep this item highlighted
 }
 

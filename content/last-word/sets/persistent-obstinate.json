@@ -1,0 +1,476 @@
+{
+  "schema_version": 1,
+  "set_id": "persistent-obstinate",
+  "title": "The goal and the method",
+  "words": [
+    {
+      "word": "persistent",
+      "sense": "continuing toward a goal despite difficulty",
+      "connotation": "usually positive or neutral",
+      "register": "general",
+      "misconceptions": [
+        "all refusal to stop is persistence"
+      ]
+    },
+    {
+      "word": "obstinate",
+      "sense": "unreasonably refusing to change despite good reason",
+      "connotation": "usually negative",
+      "register": "general",
+      "misconceptions": [
+        "any continued effort is obstinacy"
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "adaptability_to_evidence",
+      "description": "whether someone updates a method after strong reasons"
+    },
+    {
+      "id": "reasonableness",
+      "description": "whether continuing the current approach remains reasonable"
+    }
+  ],
+  "edges": [
+    {
+      "id": "persistent__obstinate",
+      "a": "persistent",
+      "b": "obstinate",
+      "boundary_rule": "Persistence keeps the goal while adapting; obstinacy refuses to change despite good reason.",
+      "clues_a": [
+        "changes method after feedback",
+        "tries again after ordinary difficulty"
+      ],
+      "clues_b": [
+        "refuses valid evidence",
+        "rejects reasonable compromise"
+      ],
+      "irrelevant_clues": [
+        "task takes a long time",
+        "other people are impatient"
+      ]
+    }
+  ],
+  "chains": [
+    {
+      "id": "po_diagnostic_1",
+      "edge_id": "persistent__obstinate",
+      "domain": "gardening",
+      "characters": [
+        "Rafi"
+      ],
+      "purpose": "diagnostic",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "po_diagnostic_1_b1",
+          "text": "After two trays of seedlings fail, Rafi adjusts the watering with advice from a gardener and starts another tray.",
+          "best_word": "persistent",
+          "fit": {
+            "persistent": 0.98,
+            "obstinate": 0.15
+          },
+          "decisive_clue": "adjusts the watering with advice",
+          "reason": "He continues while adapting to useful advice.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "obstinate": "treats_continued_effort_as_refusal"
+          },
+          "hints": {
+            "attention": "How does the person respond to a useful reason to change?",
+            "axis": "Look at adaptability, not just continued effort.",
+            "contrast": "Continuing toward a goal can include changing the method."
+          }
+        }
+      ],
+      "feedback_short": "Rafi changes the method and keeps pursuing the goal.",
+      "feedback_deep": "He treats failure as a reason to adjust the watering, not as a reason to abandon the seedlings.",
+      "contrast_rule": "Persistence keeps the goal while adapting; obstinacy refuses to change despite good reason.",
+      "hints": {
+        "attention": "How does the person respond to a useful reason to change?",
+        "axis": "Look at adaptability, not just continued effort.",
+        "contrast": "Continuing toward a goal can include changing the method."
+      }
+    },
+    {
+      "id": "po_diagnostic_2",
+      "edge_id": "persistent__obstinate",
+      "domain": "shared_workshop",
+      "characters": [
+        "Tara"
+      ],
+      "purpose": "diagnostic",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "po_diagnostic_2_b1",
+          "text": "Tara sees a measurement proving her shelf will not fit, but refuses an easy adjustment because she will not change her original plan.",
+          "best_word": "obstinate",
+          "fit": {
+            "persistent": 0.3,
+            "obstinate": 0.98
+          },
+          "decisive_clue": "refuses an easy adjustment",
+          "reason": "She rejects a valid reason to change, not merely a discouraging setback.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "persistent": "ignores_response_to_evidence"
+          },
+          "hints": {
+            "attention": "How does the person respond to a useful reason to change?",
+            "axis": "Look at adaptability, not just continued effort.",
+            "contrast": "Continuing toward a goal can include changing the method."
+          }
+        }
+      ],
+      "feedback_short": "Tara rejects a fix even after the problem is demonstrated.",
+      "feedback_deep": "A clear measurement and a workable correction make her refusal unreasonable. Difficulty alone is not the issue.",
+      "contrast_rule": "Persistence keeps the goal while adapting; obstinacy refuses to change despite good reason.",
+      "hints": {
+        "attention": "How does the person respond to a useful reason to change?",
+        "axis": "Look at adaptability, not just continued effort.",
+        "contrast": "Continuing toward a goal can include changing the method."
+      }
+    },
+    {
+      "id": "po_probe",
+      "edge_id": "persistent__obstinate",
+      "domain": "community_archive",
+      "characters": [
+        "Isha"
+      ],
+      "purpose": "probe",
+      "difficulty": 7,
+      "beats": [
+        {
+          "id": "po_probe_b1",
+          "text": "Isha wants to preserve old recordings; after a failed trial, she asks what went wrong and arranges another attempt.",
+          "best_word": "persistent",
+          "fit": {
+            "persistent": 0.97,
+            "obstinate": 0.2
+          },
+          "decisive_clue": "asks what went wrong",
+          "reason": "She continues while investigating how to improve.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 4,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "obstinate": "misses_the_decisive_clue"
+          },
+          "hints": {
+            "attention": "How does the person respond to a useful reason to change?",
+            "axis": "Look at adaptability, not just continued effort.",
+            "contrast": "Continuing toward a goal can include changing the method."
+          }
+        },
+        {
+          "id": "po_probe_b2",
+          "text": "A technician demonstrates that her chosen format loses words, so Isha accepts a different format and carries on.",
+          "best_word": "persistent",
+          "fit": {
+            "persistent": 0.98,
+            "obstinate": 0.12
+          },
+          "decisive_clue": "accepts a different format",
+          "reason": "Accepting the evidence while retaining the purpose shows flexible continued effort.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 4,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "obstinate": "misses_the_decisive_clue"
+          },
+          "hints": {
+            "attention": "How does the person respond to a useful reason to change?",
+            "axis": "Look at adaptability, not just continued effort.",
+            "contrast": "Continuing toward a goal can include changing the method."
+          }
+        },
+        {
+          "id": "po_probe_b3",
+          "text": "A colleague calls the project a waste of time, but gives no new reason; Isha follows the workable revised plan.",
+          "best_word": "persistent",
+          "fit": {
+            "persistent": 0.96,
+            "obstinate": 0.32
+          },
+          "decisive_clue": "gives no new reason",
+          "reason": "Unsupported disapproval does not make continuing an effective plan unreasonable.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 4,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "obstinate": "treats_any_disagreement_as_good_reason"
+          },
+          "hints": {
+            "attention": "How does the person respond to a useful reason to change?",
+            "axis": "Look at adaptability, not just continued effort.",
+            "contrast": "Continuing toward a goal can include changing the method."
+          }
+        }
+      ],
+      "feedback_short": "Isha keeps the purpose, accepts a better route, and resists pressure that adds no evidence.",
+      "feedback_deep": "Her commitment is to preserving the recordings, not to defending her first plan. A deadline is relevant, but it does not invalidate a workable revised method.",
+      "contrast_rule": "Persistence keeps the goal while adapting; obstinacy refuses to change despite good reason.",
+      "hints": {
+        "attention": "How does the person respond to a useful reason to change?",
+        "axis": "Look at adaptability, not just continued effort.",
+        "contrast": "Continuing toward a goal can include changing the method."
+      }
+    },
+    {
+      "id": "po_flip",
+      "edge_id": "persistent__obstinate",
+      "domain": "school_project",
+      "characters": [
+        "Leena"
+      ],
+      "purpose": "practice",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "po_flip_b1",
+          "text": "Leena’s model bridge breaks twice, but she studies each break and tries again.",
+          "best_word": "persistent",
+          "fit": {
+            "persistent": 0.96,
+            "obstinate": 0.25
+          },
+          "decisive_clue": "studies each break and tries again",
+          "reason": "She learns from ordinary difficulty and continues.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "obstinate": "misses_the_decisive_clue"
+          },
+          "hints": {
+            "attention": "How does the person respond to a useful reason to change?",
+            "axis": "Look at adaptability, not just continued effort.",
+            "contrast": "Continuing toward a goal can include changing the method."
+          }
+        },
+        {
+          "id": "po_flip_b2",
+          "text": "Her teacher proves that the design cannot meet the weight requirement, but Leena refuses even to consider a change.",
+          "best_word": "obstinate",
+          "fit": {
+            "persistent": 0.3,
+            "obstinate": 0.98
+          },
+          "decisive_clue": "refuses even to consider a change",
+          "reason": "The explicit refusal to consider valid evidence makes the continued approach unreasonable.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "persistent": "ignores_response_to_evidence"
+          },
+          "hints": {
+            "attention": "How does the person respond to a useful reason to change?",
+            "axis": "Look at adaptability, not just continued effort.",
+            "contrast": "Continuing toward a goal can include changing the method."
+          }
+        },
+        {
+          "id": "po_flip_b3",
+          "text": "After inspecting the results herself, Leena accepts the problem, redesigns the bridge, and keeps working toward the same goal.",
+          "best_word": "persistent",
+          "fit": {
+            "persistent": 0.98,
+            "obstinate": 0.16
+          },
+          "decisive_clue": "accepts the problem, redesigns the bridge",
+          "reason": "Her goal remains, but she now adapts the method to valid evidence.",
+          "shift_type": "rehabilitate",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "obstinate": "fails_to_update_after_adaptation"
+          },
+          "hints": {
+            "attention": "How does the person respond to a useful reason to change?",
+            "axis": "Look at adaptability, not just continued effort.",
+            "contrast": "Continuing toward a goal can include changing the method."
+          }
+        }
+      ],
+      "feedback_short": "The goal stayed. The method changed. That response to evidence is the boundary.",
+      "feedback_deep": "Leena first works through ordinary setbacks, then refuses a demonstrated requirement. When she accepts that requirement and redesigns, continued effort becomes reasonable again.",
+      "contrast_rule": "Persistence keeps the goal while adapting; obstinacy refuses to change despite good reason.",
+      "hints": {
+        "attention": "How does the person respond to a useful reason to change?",
+        "axis": "Look at adaptability, not just continued effort.",
+        "contrast": "Continuing toward a goal can include changing the method."
+      }
+    },
+    {
+      "id": "po_hold",
+      "edge_id": "persistent__obstinate",
+      "domain": "route_planning",
+      "characters": [
+        "Mina"
+      ],
+      "purpose": "practice",
+      "difficulty": 5,
+      "beats": [
+        {
+          "id": "po_hold_b1",
+          "text": "When a footpath closes, Mina studies the map and finds another open route to the campsite.",
+          "best_word": "persistent",
+          "fit": {
+            "persistent": 0.97,
+            "obstinate": 0.2
+          },
+          "decisive_clue": "finds another open route",
+          "reason": "She adapts the route while keeping a reasonable destination.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 4,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "obstinate": "misses_the_decisive_clue"
+          },
+          "hints": {
+            "attention": "How does the person respond to a useful reason to change?",
+            "axis": "Look at adaptability, not just continued effort.",
+            "contrast": "Continuing toward a goal can include changing the method."
+          }
+        },
+        {
+          "id": "po_hold_b2",
+          "text": "Rain makes the walk less pleasant, but the ranger confirms the new route is safe, so Mina continues.",
+          "best_word": "persistent",
+          "fit": {
+            "persistent": 0.96,
+            "obstinate": 0.28
+          },
+          "decisive_clue": "the ranger confirms the new route is safe",
+          "reason": "Discomfort is distracting, but the available evidence still supports continuing.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 4,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "obstinate": "confuses_discomfort_with_good_reason_to_stop"
+          },
+          "hints": {
+            "attention": "How does the person respond to a useful reason to change?",
+            "axis": "Look at adaptability, not just continued effort.",
+            "contrast": "Continuing toward a goal can include changing the method."
+          }
+        },
+        {
+          "id": "po_hold_b3",
+          "text": "An impatient friend complains about the delay without identifying any problem with the route; Mina follows the checked path.",
+          "best_word": "persistent",
+          "fit": {
+            "persistent": 0.95,
+            "obstinate": 0.35
+          },
+          "decisive_clue": "without identifying any problem with the route",
+          "reason": "Impatience adds pressure but no relevant reason to reject the checked route.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 4,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "obstinate": "treats_any_disagreement_as_good_reason"
+          },
+          "hints": {
+            "attention": "How does the person respond to a useful reason to change?",
+            "axis": "Look at adaptability, not just continued effort.",
+            "contrast": "Continuing toward a goal can include changing the method."
+          }
+        }
+      ],
+      "feedback_short": "Pressure to stop is not evidence that the revised plan is wrong.",
+      "feedback_deep": "Mina uses relevant information to change the route. Rain and impatience make the task harder but do not give a sound reason to abandon a safe, workable plan.",
+      "contrast_rule": "Persistence keeps the goal while adapting; obstinacy refuses to change despite good reason.",
+      "hints": {
+        "attention": "How does the person respond to a useful reason to change?",
+        "axis": "Look at adaptability, not just continued effort.",
+        "contrast": "Continuing toward a goal can include changing the method."
+      }
+    }
+  ]
+}

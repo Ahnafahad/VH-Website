@@ -29,6 +29,7 @@ export async function createAttendanceFixtureSchema(client: ReturnType<typeof cr
       notes TEXT,
       whatsapp TEXT,
       is_teaching INTEGER,
+      read_only INTEGER NOT NULL DEFAULT 0,
       avatar_character_id INTEGER,
       avatar_custom_request TEXT,
       avatar_request_status TEXT,

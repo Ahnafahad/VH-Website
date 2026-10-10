@@ -17,8 +17,8 @@ interface ToggleRowProps {
   description: string;
   enabled:     boolean;
   onToggle:    (v: boolean) => void;
-  iconOn:      React.ElementType;
-  iconOff:     React.ElementType;
+  iconOn:      React.ComponentType<import('lucide-react').LucideProps>;
+  iconOff:     React.ComponentType<import('lucide-react').LucideProps>;
 }
 
 function ToggleRow({ title, description, enabled, onToggle, iconOn: IconOn, iconOff: IconOff }: ToggleRowProps) {

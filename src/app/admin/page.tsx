@@ -250,7 +250,7 @@ async function fetchInstructorLoad(teachingUsers: { id: number; name: string }[]
 interface StatCard {
   label:    string;
   value:    number;
-  icon:     React.ElementType;
+  icon:     React.ComponentType<import('lucide-react').LucideProps>;
   href:     string;
   /** One line saying exactly what the number counts (and anything notable about it). */
   hint:     string;
@@ -262,7 +262,7 @@ interface QuickLink {
   label:   string;
   desc:    string;
   href:    string;
-  icon:    React.ElementType;
+  icon:    React.ComponentType<import('lucide-react').LucideProps>;
   section: string;
 }
 

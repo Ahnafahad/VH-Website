@@ -36,6 +36,7 @@ const BASE_MAIN_LINKS = [
 const STUDENT_MAIN_LINKS = [
   { label: 'Dashboard', href: '/dashboard' },
   { label: 'Vocab', href: '/vocab/home' },
+  { label: 'Last Word', href: '/last-word' },
   { label: 'Tests', href: '/tests' },
   { label: 'Zap', href: '/games/mental-math' },
 ];

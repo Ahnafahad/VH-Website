@@ -13,7 +13,7 @@ export default function MainSiteShell({ children }: { children: React.ReactNode 
   const isExamTaking = pathname.endsWith('/take');
   // Sprint's instructor presenter mode is projected full-screen — no room for the site nav.
   const isSprintPresent = pathname.startsWith('/sprint/') && pathname.endsWith('/present');
-  const hideChrome = isVocab || isExamTaking || isSprintPresent;
+  const hideChrome = isVocab || isExamTaking || isSprintPresent || pathname.startsWith('/last-word');
 
   return (
     <>

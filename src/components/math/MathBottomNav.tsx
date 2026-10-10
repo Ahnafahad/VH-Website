@@ -14,7 +14,7 @@ export interface MathBottomNavProps {
 interface TabConfig {
   key:   MathNavTab;
   label: string;
-  icon:  React.ElementType;
+  icon:  React.ComponentType<import('lucide-react').LucideProps>;
 }
 
 const TABS: TabConfig[] = [

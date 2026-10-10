@@ -849,7 +849,7 @@ export function PageHeader({ title, subtitle, action }: {
 // ─── Empty state ──────────────────────────────────────────────────────────────
 
 export function EmptyState({ icon: Icon, message, action }: {
-  icon: React.ElementType; message: string; action?: React.ReactNode;
+  icon: React.ComponentType<import('lucide-react').LucideProps>; message: string; action?: React.ReactNode;
 }) {
   return (
     <div style={{
@@ -1004,7 +1004,7 @@ export function Toggle({ checked, onChange, label, ariaLabel }: {
 export function IconBtn({
   icon: Icon, onClick, label, danger, disabled, href,
 }: {
-  icon: React.ElementType; onClick?: () => void; label: string;
+  icon: React.ComponentType<import('lucide-react').LucideProps>; onClick?: () => void; label: string;
   danger?: boolean; disabled?: boolean; href?: string;
 }) {
   const shared = {

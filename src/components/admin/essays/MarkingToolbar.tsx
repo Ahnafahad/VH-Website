@@ -27,7 +27,7 @@ export function imageFilterCss(a: ImageAdjust): string {
   return parts.join(' ');
 }
 
-const TOOLS: { tool: MarkTool; icon: React.ElementType; label: string; key: string }[] = [
+const TOOLS: { tool: MarkTool; icon: React.ComponentType<import('lucide-react').LucideProps>; label: string; key: string }[] = [
   { tool: 'pen', icon: PenTool, label: 'Pen', key: 'P' },
   { tool: 'hl', icon: Highlighter, label: 'Highlighter', key: 'H' },
   { tool: 'eraser', icon: Eraser, label: 'Eraser', key: 'E' },
@@ -39,7 +39,7 @@ const TOOLS: { tool: MarkTool; icon: React.ElementType; label: string; key: stri
   { tool: 'hand', icon: Hand, label: 'Move around', key: 'V' },
 ];
 
-const SHAPES: { shape: EssayShapeKind; icon: React.ElementType; label: string }[] = [
+const SHAPES: { shape: EssayShapeKind; icon: React.ComponentType<import('lucide-react').LucideProps>; label: string }[] = [
   { shape: 'line', icon: Slash, label: 'Line' },
   { shape: 'arrow', icon: ArrowUpRight, label: 'Arrow' },
   { shape: 'rect', icon: Square, label: 'Box' },
